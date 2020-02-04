@@ -1,0 +1,8 @@
+caf_compile_executable(allocatable_p2p_event_post allocatable_p2p_event_post.f90)
+set_target_properties(build_allocatable_p2p_event_post
+  PROPERTIES MIN_IMAGES 4
+  )
+caf_compile_executable(static_event_post_issue_293 static_event_post_issue_293.f90)
+set_target_properties(build_static_event_post_issue_293
+  PROPERTIES MIN_IMAGES 3
+  )

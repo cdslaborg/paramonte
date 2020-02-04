@@ -1,0 +1,130 @@
+# To update the project's gitignore, try at the root directory:
+#
+#     git config --global core.excludesfile .gitignore
+#
+# For instructions to untrack existing objects in the project see:
+# https://stackoverflow.com/questions/24290358/remove-a-folder-from-git-tracking
+
+#########################
+# Compiled source
+#########################
+
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.lib
+*.obj
+*.pdb
+*.mod
+*.smod
+*.asv
+*.png
+*.out
+
+#########################
+# Packages              #
+#########################
+
+# unpack these files and commit the raw source.
+# git has its own builtin compression methods.
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+######################
+# Logs and databases #
+######################
+
+*.log
+*.sql
+*.sqlite
+
+######################
+# OS generated files #
+######################
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+######################
+# C++/Fortran
+######################
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+#########################
+# ParaMonte output files
+#########################
+
+build/*
+temp/*
+bin/*
+
+*_log.txt
+*_time.txt
+*_chain.txt
+*_report.txt
+*_restart.txt
+*.stderr
+*.temp
+*.rfn
+
+#########################
+# CMake
+#########################
+
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps

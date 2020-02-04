@@ -1,0 +1,6 @@
+recursive-include paramonte *
+include paramonte.in
+include CHANGES.md
+include README.md
+include LICENSE
+include *.py

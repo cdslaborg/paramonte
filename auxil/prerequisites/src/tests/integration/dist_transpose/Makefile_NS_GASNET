@@ -1,0 +1,32 @@
+# Choose desired compiler (options: gnu, intel, cray):
+include /scratch2/scratchdirs/afanfa/GASNet-1.22.4/aries-conduit/aries-par.mak #/scratch/scratchdirs/afanfa/GASNet-1.22.4/gemini-conduit/gemini-par.mak
+compiler=gnu
+executable=coarray_distributed_transpose
+
+opencoarrays_dir=/global/u1/a/afanfa/Coarray/opencoarrays/gasnet
+
+ifeq ($(compiler),gnu)
+  opt=-L $(opencoarrays_dir)
+  compile=/global/u1/a/afanfa/gcc/bin/gfortran -Ofast -fcoarray=lib
+  lib=-lcaf_gasnet
+else
+  ifeq ($(compiler),intel)
+    compile=ifort -coarray=shared -standard-semantics -O3 -coarray-num-images=2
+  else
+    ifeq ($(compiler),cray)
+      compile=ftn -ew -h caf
+    endif
+  endif
+endif
+
+objects = walltime.o
+
+$(executable): coarray_distributed_transpose.o $(objects)
+	$(GASNET_LD) $(GASNET_LDFLAGS) $(LIBCAF_FLAGS) $(opt) coarray_distributed_transpose.o $(objects) -lgfortran -lm -o $(executable) $(lib) $(GASNET_LIBS)
+
+coarray_distributed_transpose.o: coarray_distributed_transpose.f90 $(objects)
+	$(compile) -cpp -c coarray_distributed_transpose.f90
+
+.PHONY : clean
+clean :
+	-rm -f  coarray_distributed_transpose.o *.mod $(executable) core fort.*

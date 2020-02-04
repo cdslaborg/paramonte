@@ -1,0 +1,38 @@
+# Choose desired compiler (options: gnu, intel, cray):
+include /home/rouson/Downloads/GASNet-1.22.4/smp-conduit/smp-par.mak
+compiler=gnu
+executable=coarray-shear
+fft=fft_sse.a
+opencoarrays_dir=/opt/opencoarrays/lib
+
+ifeq ($(compiler),gnu)
+  opt=-L $(opencoarrays_dir)
+  compile=gfortran -fcoarray=lib
+  lib=-lcaf_gasnet
+else
+  ifeq ($(compiler),intel)
+    compile=ifort -coarray=shared -standard-semantics -O3 -coarray-num-images=2
+  else
+    ifeq ($(compiler),cray)
+      compile=ftn -ew -h caf
+    endif
+  endif
+endif
+
+objects = walltime.o
+
+$(executable): coarray-shear.o $(objects) Makefile
+	$(GASNET_LD) $(GASNET_LDFLAGS) $(LIBCAF_FLAGS) $(opt) coarray-shear.o $(objects) -lgfortran -lm -o $(executable) $(lib) $(fft) $(GASNET_LIBS)
+
+coarray-shear.o: coarray-shear.f90 $(objects) Makefile
+	$(compile) -c coarray-shear.f90
+
+global_field.o: global_field.f90 local_field.o Makefile
+	$(compile) -c global_field.f90
+
+local_field.o: local_field.f90 Makefile
+	$(compile) $(OPTS) -c local_field.f90
+
+.PHONY : clean
+clean :
+	-rm -f  coarray-shear.o *.mod $(executable) core fort.*

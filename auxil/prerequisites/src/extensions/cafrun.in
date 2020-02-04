@@ -1,0 +1,280 @@
+#!/usr/bin/env bash
+#
+# Coarray Fortran (CAF) Executable Launcher version @CAF_VERSION@
+#
+# Copyright (c) 2015-2016, Sourcery, Inc.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Sourcery, Inc., nor the
+#       names of its contributors may be used to endorse or promote products
+#       derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL SOURCERY, INC., BE LIABLE FOR ANY
+# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# This script invokes the chosen Fortran compiler with the received command-line
+# arguments.  Current assumptions:
+#    1. The only argument is either an informational flag or a CAF executable
+#       file.
+#    2. The environment variable "FC" is used to determine the identity fo the Fortran compiler/linker.
+#    3. If "FC" is empty, a default value of "mpifort" is used.
+
+# Exit on error. Append "|| true" if you expect an error.
+set -o errexit
+# Exit on error inside any functions or subshells.
+set -o errtrace
+# Do not allow use of undefined vars. Use ${VAR:-} to use an undefined VAR
+set -o nounset
+# Catch the error in case mysqldump fails (but gzip succeeds) in `mysqldump |gzip`
+set -o pipefail
+# Turn on traces, useful while debugging but commented out by default
+# set -o xtrace
+
+
+#---------------------
+# Configured variables
+#---------------------
+#
+# CAF_VERSION, MPIEXEC, MPIEXEC_NUMPROC_FLAG, MPIEXEC_PREFLAGS, MPIEXEC_POSTFLAGS,
+# HAVE_FAILED_IMG
+#
+
+caf_version='@CAF_VERSION@'
+CAFRUN="@MPIEXEC@"
+if [[ "${CAFRUN}" == @*@ ]]; then
+  CAFRUN=mpiexec
+fi
+have_failed_img=@HAVE_FAILED_IMG@
+if [[ ${have_failed_img} == @*@ ]]; then
+  have_failed_img=false
+fi
+numproc_flag='@MPIEXEC_NUMPROC_FLAG@'
+if [[ ${numproc_flag} == @*@ ]]; then
+  numproc_flag='-np'
+fi
+preflags="@MPIEXEC_PREFLAGS@"
+preflags="${preflags//;/ }"
+if [[ "${preflags}" == @*@ ]]; then
+  unset preflags
+fi
+postflags="@MPIEXEC_POSTFLAGS@"
+postflags="${postflags//;/ }"
+if [[ "${postflags}" == @*@ ]]; then
+  unset postflags
+fi
+#-------------------------
+# End configured variables
+#-------------------------
+
+if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
+  __i_am_main_script="0" # false
+
+  # shellcheck disable=SC2154
+  if [[ "${__usage+x}" ]]; then
+    if [[ "${BASH_SOURCE[1]}" == "${0}" ]]; then
+      __i_am_main_script="1" # true
+    fi
+    __caf_tmp_source_idx=1
+  fi
+else
+  # shellcheck disable=SC2034
+  __i_am_main_script="1" # true
+fi
+
+# Set magic variables for current file, directory, os, etc.
+__dir="$(cd "$(dirname "${BASH_SOURCE[${__caf_tmp_source_idx:-0}]}")" && pwd)"
+__file="${__dir}/$(basename "${BASH_SOURCE[${__caf_tmp_source_idx:-0}]}")"
+# shellcheck disable=SC2034
+__base="$(basename "${__file}")"
+cmd="${__base}"
+
+# Set installation prefix. Compute this dynamically assuming this script is in a bin/ subdir
+# Dereference symbolic links and canonicalize (i.e., abs path) prefix in case stow, homebrew, etc being used
+# mac OS doesn't have readlink -f, so need to crawl symlinks manually.
+# See: https://stackoverflow.com/questions/1055671/how-can-i-get-the-behavior-of-gnus-readlink-f-on-a-mac
+current_dir="${PWD}"
+cd "${__dir}" || exit 5
+  target_file="${__file}"
+  max_iter=1000
+  iter=0
+  while [[ -L "${target_file}" ]]; do
+    target_file="$(readlink "${target_file}")"
+    cd "$(dirname "${target_file}")" || exit 5
+    target_file="$(basename "${target_file}")"
+    if ((++iter >= max_iter)); then
+      echo "Failed to compute OpenCoarrays instalation prefix!" >&2
+      echo "Likely cause: circular symlink cycles." >&2
+      echo "Aborting!" >&2
+      exit 200
+    fi
+  done
+  true_dir="$(pwd -P)"
+  true_dir="${true_dir%/}"
+  # shellcheck disable=SC2034
+  prefix="${true_dir%/bin}"
+  # echo "Install prefix is ${prefix}" # for debugging
+cd "${current_dir}" || exit 5
+# echo "Current directory is $(pwd)"
+# echo "This script is in ${__dir}"
+
+# Error tracing
+# requires `set -o errtrace`
+__caf_err_report() {
+  local error_code
+  error_code=${?}
+  echo "Error in ${__file} in function ${1} on line ${2}. Please report this error at http://bit.ly/OpenCoarrays-new-issue" >&2
+  exit ${error_code}
+}
+# Always provide an error backtrace
+trap '__caf_err_report "${FUNCNAME:-.}" ${LINENO}' ERR
+
+
+usage() {
+  echo ""
+  echo " ${cmd} - Coarray Fortran executable launcher for OpenCoarrays"
+  echo ""
+  echo " Usage: ${cmd} [options] ..."
+  echo ""
+  echo " Options:"
+  echo "   --help, -h               Show this help message"
+  echo "   --version, -v, -V        Report version and copyright information"
+  echo "   --wraps, -w,             Report info about the wrapped MPI launcher"
+  echo "   -np <N>,                 Number of images, N, to execute, N must be a positive integer"
+  echo "   --reenable-auto-cleanup  Turn off failed images support (if library support is present)"
+  echo "                            This option re-enables MPI auto cleanup, which is disabled by"
+  echo "                            by default if GFortran/OpenCoarrays/MPI all support failed"
+  echo "                            images through MPI ULFM. When MPI auto cleanup is disabled and"
+  echo "                            failed image support is present, OpenCoarrays triggers cleanup"
+  echo "                            explicitly when a failed/stopped image is encountered in an"
+  echo "                            image control statement without a \`stat=\` clause."
+  echo "   --show, -s,              Show the command that the wrapper will execute. You can pass"
+  echo "                            this as the first argument and then the additional arguments"
+  echo "                            that you're planning to pass to perform a dry run."
+  echo ""
+  echo " Example usage:"
+  echo ""
+  echo "   ${cmd} -np 2 foo foo_arg1 foo_arg2"
+  echo "   ${cmd} -v"
+  echo "   ${cmd} --help"
+  echo "   ${cmd} --show"
+  echo "   ${cmd} -s -np 4 my_exe"
+  echo "   ${cmd} -np 4 --reenable-auto-cleanup ./my_exe arg1 arg2"
+  echo ""
+  echo " Notes:"
+  echo "   [options] must be a CAF executable file, one of the above arguments,"
+  echo "   or an argument to the program name returned by caf --wraps"
+  echo ""
+}
+
+i=0
+disable_failed_images=false
+for arg in "${@}"; do
+  ((i+=1))
+  if [[ "${arg}" == "--reenable-auto-cleanup" ]]; then
+    # Strip "--reenable-auto-cleanup" from args
+    set -- "${@:1:$((i - 1))}" "${@:$((i+1)):$((${#} - i))}"
+    if ! ${have_failed_img}; then
+      echo "Library was not built with failed image support, so passing \`--reenable-auto-cleanup\` is a noop" >&2
+    fi
+    disable_failed_images=true
+  fi
+done
+
+if ! ${disable_failed_images}; then
+  if ${have_failed_img}; then
+    if [[ -n "${preflags:-}" ]]; then
+      preflags+=(--disable-auto-cleanup)
+    else
+      preflags=(--disable-auto-cleanup)
+    fi
+  fi
+fi
+
+# Print useage information if caf is invoked without arguments
+if ((${#} == 0)); then
+  usage
+  exit 1
+elif [[ "${1}" == -[vV] || "${1}" == '--version' ]]; then
+  echo ""
+  echo "OpenCoarrays Coarray Fortran Executable Launcher (cafrun version ${caf_version})"
+  echo "Copyright (C) 2015-2016 Sourcery, Inc."
+  echo ""
+  echo "OpenCoarrays comes with NO WARRANTY, to the extent permitted by law."
+  echo "You may redistribute copies of OpenCoarrays under the terms of the"
+  echo "BSD 3-Clause License.  For more information about these matters, see"
+  echo "the file named LICENSE."
+  echo ""
+elif [[ "${1}" == -w || "${1}" == --wraps ]]; then
+  "${CAFRUN}" --version
+elif [[ "${1}" == -h || "${1}" == --help ]]; then
+  usage
+elif [[ "${1}" == -s || "${1}" == --show ]]; then
+  if ((${#} > 4)); then
+    mpiexec_args=("${2:-${numproc_flag}}" "${3:-<number_of_images>}")
+    if [[ -n "${preflags[*]:-}" ]]; then
+      mpiexec_args+=("${preflags[@]}")
+    fi
+    mpiexec_args+=("${4:-/path/to/coarray_Fortran_program}")
+    if [[ -n "${postflags[*]:-}" ]]; then
+      mpiexec_args+=("${postflags[@]}")
+    fi
+    if [[ -n "${*:5:$((${#} - 4))}" ]]; then
+      mpiexec_args+=("${@:5:$((${#} - 4))}")
+    fi
+    echo "${CAFRUN} ${mpiexec_args[*]}"
+  else
+    mpiexec_args=("${2:-${numproc_flag}}" "${3:-<number_of_images>}")
+    if [[ -n "${preflags[*]:-}" ]]; then
+      mpiexec_args+=("${preflags[@]}")
+    fi
+    mpiexec_args+=("${4:-/path/to/coarray_Fortran_program}")
+    if [[ -n "${postflags[*]:-}" ]]; then
+      mpiexec_args+=("${postflags[@]}")
+    fi
+    mpiexec_args+=("[arg4 [arg5 [...]]]")
+    echo "${CAFRUN} ${mpiexec_args[*]}"
+  fi
+elif [[ "${1}" == -np || "${1}" == -n ]]; then
+  # shellcheck disable=SC1001
+  if [[ "${2}" =~ ^[\-0-9]+$ ]] && (( ${2} > 0)) && ((${#} > 2)); then
+    mpiexec_args=("${numproc_flag}" "${2}")
+    if [[ -n "${preflags[*]:-}" ]]; then
+      mpiexec_args+=("${preflags[@]}")
+    fi
+    mpiexec_args+=("${3}")
+    if [[ -n "${postflags[*]:-}" ]]; then
+      mpiexec_args+=("${postflags[@]}")
+    fi
+    if [[ -n "${*:4:$((${#} - 3))}" ]]; then
+      mpiexec_args+=("${@:4:$((${#} - 3))}")
+    fi
+
+    if "${CAFRUN}" "${mpiexec_args[@]//''/}" ; then
+      exit $?
+    else
+      return_code=$?
+      echo "Error: Command:" >&2
+      echo "   \`${CAFRUN}" "${mpiexec_args[*]//''/}\`" >&2
+      echo "failed to run." >&2
+      exit "${return_code}"
+    fi
+  else
+    echo "You must pass \"-np\", \"<number_of_images>\", \"/path/to/coarray_Fortran_program\" as the first 3 arguments to ${cmd}."
+    exit 1
+  fi
+fi

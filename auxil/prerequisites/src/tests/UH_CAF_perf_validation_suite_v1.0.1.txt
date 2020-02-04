@@ -1,0 +1,7 @@
+Tarball removed.
+
+The UH CAF performance validation suite is still in the git history,
+if it cannot be obtained elsewhere.
+
+The latest official release of this software appears to be at:
+https://github.com/uhhpctools/caf-testsuite/releases/latest

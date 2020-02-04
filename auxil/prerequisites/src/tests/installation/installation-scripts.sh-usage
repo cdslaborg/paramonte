@@ -1,0 +1,22 @@
+  -b --install-branch [arg]   Install the specified repository development branch.
+  -B --list-branches [arg]    List the available branches in the specified package's repository.
+  -c --with-c [arg]           Use specified C compiler. 
+  -C --with-cxx [arg]         Use specified C++ compiler. 
+  -d --debug                  Enable debug mode.
+  -D --print-downloader [arg] Print download program for package specified in argument.
+  -e --verbose                Enable verbose mode, print script as it is executed.
+  -f --with-fortran [arg]     Use specified Fortran compiler. 
+  -h --help                   Print this page.
+  -i --install-prefix [arg]   Install package in specified path. Default="${OPENCOARRAYS_SRC_DIR}/prerequisites/installations/${package_name:-}/${version_to_build:-}"
+  -I --install-version [arg]  Install package version.
+  -j --num-threads [arg]      Number of threads to use when invoking make. Default="1"
+  -l --list-packages          Print packages this script can install.
+  -m --with-cmake [arg]       Use specified CMake installation. Default="cmake"
+  -M --with-mpi [arg]         Use specified MPI installation.
+  -n --no-color               Disable color output.
+  -p --package [arg]          Install specified package. Default="opencoarrays"
+  -P --print-path [arg]       Print installation directory for specified package.
+  -U --print-url [arg]        Print download location for specified package.
+  -v --version                Print OpenCoarrays version number.
+  -V --print-version [arg]    Print version number for specified package.
+  -y --yes-to-all             Build non-interactively by assuming affirmative user responses.

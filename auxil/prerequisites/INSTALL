@@ -1,0 +1,160 @@
+Developer/quickstart installation guide
+=======================================
+
+ This guide assumes that the reader is on a *nix operating system.
+
+ Please report any issues encountered or bugs to:
+
+    <https://github.com/sourceryinstitute/OpenCoarrays/issues>
+
+
+How to build OpenCoarrays for the very impatient
+------------------------------------------------
+
+    mkdir opencoarrays-build
+    cd opencoarrays-build
+    export FC=/path/to/gfortran
+    export CC=/path/to/gcc
+    cmake /path/to/OpenCoarrays/source \
+      -DCMAKE_INSTALL_PREFIX=/path/to/desired/installation/location
+    make
+    make test # optional; verify build works
+    make install
+
+
+Intended audience
+-----------------
+
+ * GCC developers
+ * Package maintainers
+ * Experienced users who are comfortable installing software from source (with
+   CMake)
+
+ A markdown document (best viewed online) with more detailed instructions is
+ available. It is locally available at ./INSTALL.md and viewable online at:
+
+    <https://github.com/sourceryinstitute/OpenCoarrays/blob/master/INSTALL.md>
+
+
+Prerequisite software
+---------------------
+
+ Before installing OpenCoarrays you will need:
+
+ * CMake 3.4 or newer
+ * GFortran 6.1 or newer
+ * A standard conforming C compiler, GCC 6.1 or newer is preferred, but clang
+   and other alternatives should be fine too
+ * An MPI 3 implementation. MPICH 3.2 or newer is recommended, but others,
+   such as OpenMPI, should work as well.
+
+ CMake binary and source distributions can be obtained from:
+
+    <https://cmake.org/download/>
+
+ MPICH may be obtained from <http://www.mpich.org/downloads/>.
+
+
+Before you start
+----------------
+
+ Please ensure that your environment is configured so that:
+
+ * The MPI-3 implementation's `mpiexec` and compiler wrapper scripts
+   are at the front of your `$PATH`. (Load the MPICH environment module, if
+   applicable, to accomplish this.)
+ * Your environment is setup to use the compilers you wish to build and use
+   OpenCoarrays with. (LD_LIBRARY_PATH is set, if needed, etc.)
+
+ Also, you will need the OpenCoarrays source, which you presumably already
+ have if you are reading this. The latest stable OpenCoarrays release can be
+ obtained at:
+
+    <https://github.com/sourceryinstitute/OpenCoarrays/releases/latest>
+
+ or the latest development version may be obtained from Github, either through
+ the web UI or using git:
+
+    git clone https://github.com/sourceryinstitute/OpenCoarrays
+
+
+Configure, build and install OpenCoarrays
+-----------------------------------------
+
+ OpenCoarrays does *NOT* allow in-source builds. Once you have obtained the
+ source code, you must create a build directory. This may be a subdirectory of
+ the top level source directory, or in a completely un-related location.
+
+    mkdir opencoarrays-build
+    cd opencoarrays-build
+
+ Next tell CMake which C and Fortran compilers you want to use and configure
+ the project with CMake. The Fortran compiler must be GFortran 6.1 or later.
+ The OpenCoarrays build system uses system introspection and other means to
+ ensure the version of the library built has interfaces matching the version
+ of GFortran specified at compile time. No CMake configuration options should
+ need tinkering with. A list of CMake variables that modify the OpenCoarrays
+ build will be given at the end of this document.
+
+    export FC=/path/to/gfortran  # You can use the version on your PATH
+    export CC=/path/to/gcc
+
+    cmake /path/to/OpenCoarrays/source \
+       -DCMAKE_INSTALL_PREFIX=/path/to/desired/install/location
+
+ Next build the library, wrapper scripts, and test programs, optionally run
+ the tests and install OpenCoarrays:
+
+    make -j 8  # Parallel builds are supported
+    make test  # invoke ctest
+    make install
+
+
+Configure options
+-----------------
+
+ The OpenCoarrays build system attempts to set the best possible default
+ settings for your Fortran compiler and MPI implementation through intro-
+ spection. However, some bugs or use cases may warrant tweaking the config-
+ uration. Each of the following options may be set using the `-D` flag to
+ cmake or using the CMake gui interfaces, ccmake or cmake-gui. e.g.,
+
+    cmake /path/to/source -DVAR=VALUE
+
+ Basic configure options:
+
+ CMAKE_INSTALL_PREFIX
+	Tell cmake where to install OpenCoarrays. Default=/usr/local
+	Example: cmake .. -DCMAKE_INSTALL_PREFIX=/opt/OpenCoarrays/2.2.0
+
+ CMAKE_BUILD_TYPE
+	Specify the build type. Default value: Release
+	Options to pick from are:
+	 * Debug
+	 * Release
+	 * MinSizeRel
+	 * RelWithDebInfo
+	 * CodeCoverage
+	Example: cmake .. -DCMAKE_BUILD_TYPE=Debug
+
+ CAF_ENABLE_FAILED_IMAGES
+	Enable failed image support. Defaults to TRUE if experimental fault
+	tolerance features are detected to be present in the MPI
+	implementation. FALSE/unavailable if the MPI installation does not support it
+	Example: cmake .. -DCAF_ENABLE_FAILED_IMAGES=FALSE
+
+ CAF_EXPOSE_INIT_FINALIZE
+	Expose caf_init and caf_finalize in the OpenCoarrays extensions
+	module. This helps facilitate hybrid MPI-CAF programming.
+	Default=FALSE
+	Example: cmake .. -DCAF_EXPOSE_INIT_FINALIZE=TRUE
+
+ CAF_RUN_DEVELOPER_TESTS
+	Run tests intended for developers that trigger known failures due to
+	bugs, regressions and other issues. Default=FALSE unless user sets
+	the environment variable OPENCOARRAYS_DEVELOPER=TRUE
+	Example: cmake .. -DCAF_RUN_DEVELOPER_TESTS=TRUE
+
+ For a look at all of the possible CMake settings, many/most of which are
+ default CMake options, please run `ccmake /path/to/source` or
+ `cmake-gui /path/to/source`.

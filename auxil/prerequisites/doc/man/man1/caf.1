@@ -1,0 +1,41 @@
+.TH CAF 1 2017\-09\-12 OpenCoarrays\-1.9.1 "caf compiler wrapper manual"
+.SH NAME
+.PP
+\fB\fCcaf\fR \- OpenCoarrays compiler wrapper to compile and link coarray Fortran source files and programs
+.SH SYNOPSIS
+.PP
+\fB\fCcaf\fR [compiler\-options] [linker\-options] \fI<fortran\-source\-file>\fP [\fIobject\-files\fP] [libraries]
+.SH DESCRIPTION
+.PP
+\fB\fCcaf\fR is a compiler wrapper script which is generated when the OpenCoarrays library \[la]https://github.com/sourceryinstitute/OpenCoarrays#readme\[ra] that ensures coarray fortran programs are compiled with the same fortran compiler OpenCoarrays was built for,
+.BR gfortran (1)
+by default, and that the linker links against the appropriate parallel runtime, MPI by default. The \fB\fCcaf\fR compiler wrapper serves a similar purpose to the MPI fortran wrapper compiler,
+.BR mpifort (1).
+\fB\fCcaf\fR embeds the full path to the Fortran compiler it was built for, and to the parallel runtime libraries it links against, and a relative path, based on the install location of \fB\fCcaf\fR itself, to the OpenCoarrays library. This ensures that the API and ABI of OpenCoarrays is always consistent with the Fortran compiler it was built for, and the parallel runtime it uses. To upgrade the parallel runtime, e.g., MPI, or the Fortran compiler, you will need to rebuild and install OpenCoarrays, which will regenerate and reinstall the \fB\fCcaf\fR wrapper script.
+.PP
+\fB\fCcaf\fR tries to be smart about how it calls the underlying compiler and linker. Any user specified libraries will be inserted before the OpenCoarrays library, \fIlibcaf_mpi\fP, and before the parallel runtime libraries. This ensures that the linker will be able to resolve any references to the OpenCoarrays library and the parallel runtime library made by user supplied libraries. In addition any options not recognized by \fB\fCcaf\fR itself, as outlined below in the OPTIONS section. To see the default command \fB\fCcaf\fR will invoke, run \fB\fCcaf \-\-show\fR\&. To see how \fB\fCcaf\fR would execute a specific command, i.e., perform a dry\-run, pass the full command you wish to run, with the additional \fB\fC\-\-show\fR option as the very first option or argument after \fB\fCcaf\fR\&. (e.g., \fB\fCcaf \-\-show \-c foo.f90 \-o foo.f90.o\fR or \fB\fCcaf \-\-show foo.f90.o bar.f90.o \-lblas \-o a.out\fR)
+.SH OPTIONS
+.TP
+\fB\fC\-\-help\fR, \fB\fC\-h\fR
+Print a brief help/usage message and return without performing any substantive action.
+.TP
+\fB\fC\-\-show\fR, \fB\fC\-s\fR
+Print the default invocation of the underlying compiler, including what flags are passed, etc. This also functions as a dry\-run for executing a specific command, showing the user how the compiler would be called with the additional files and arguments passed by the user.
+.TP
+\fB\fC\-\-version\fR, \fB\fC\-V\fR, \fB\fC\-v\fR
+Print OpenCoarrays version and copyright information and exit.
+.TP
+\fB\fC\-\-wrapping\fR, \fB\fC\-\-wraps\fR, \fB\fC\-w\fR
+Report the name and version of the Fortran compiler \fB\fCcaf\fR is wrapping and exit.
+.SH BUGS
+.PP
+For a list of bugs currently affecting OpenCoarrays, or to report a new one, please report any bugs to the OpenCoarrays project at \[la]https://github.com/sourceryinstitute/OpenCoarrays/issues\[ra]
+.SH AUTHOR
+.PP
+Izaak Beekman \[la]izaak@izaakbeekman.com\[ra]
+.SH SEE ALSO
+.PP
+.BR cafrun (1),
+.BR gfortran (1),
+.BR mpifort (1),
+OpenCoarrays project page \[la]https://github.com/sourceryinstitute/OpenCoarrays#readme\[ra], OpenCoarrays website \[la]http://www.opencoarrays.org\[ra]

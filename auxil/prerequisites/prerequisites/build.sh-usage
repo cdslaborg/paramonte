@@ -1,0 +1,26 @@
+  -b --install-branch [arg]   Install the specified repository development branch.
+  -B --list-branches [arg]    List the available branches in the specified package's repository.
+  -c --with-c [arg]           Use the specified C compiler. Default="gcc"
+  -C --with-cxx [arg]         Use the specified C++ compiler. Default="g++"
+  -d --debug                  Enable debug mode.
+  -D --print-downloader [arg] Print download program for package specified in argument. 
+  -e --verbose                Enable verbose mode, print script as it is executed.
+  -f --with-fortran [arg]     Specify Fortran compiler location. Default="gfortran"
+  -h --help                   This page.
+  -i --install-prefix [arg]   Install package in specified path. Default="${OPENCOARRAYS_SRC_DIR%/}/prerequisites/installations/"
+  -I --install-version [arg]  Package version to install. (To see default, use -V or --print-version)
+  -j --num-threads [arg]      Number of threads to use when invoking make. Default="4"
+  -l --list-packages          List the packages this script can install.
+  -m --with-cmake [arg]       Use the specified CMake installation. Default="cmake"
+  -M --with-mpi [arg]         Use the specified MPI installation. 
+  -n --no-color               Disable color output.
+  -o --only-download          Download (without building) the package source specified by -p or --package.
+  -p --package [arg]          Package to install. 
+  -P --print-path [arg]       Print installation path for package specified in argument.
+  -r --prefix-root [arg]      Installation path to which package name/version will be appended. (Example: -r /opt).
+  -u --from-url [arg]         Specify a URL from which to download a package. 
+  -U --print-url [arg]        Print URL for package specified in argument. 
+  -v --version                Print OpenCoarrays version number.
+  -V --print-version [arg]    Print installation version for package specified in argument.
+  -y --yes-to-all             Build non-interactively by assuming affirmative user responses.
+  -Z --bootstrap              Enable bootstrap build for robustness when building the required GCC version with an old GCC version.

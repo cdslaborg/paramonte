@@ -1,0 +1,20 @@
+	MHz := 3600.e6         !--- clock frequency of i7-3820
+
+	program
+
+	time :	double = 1./MHz     !-- time/tick
+
+	entry "WALLTIME"
+	entry "_WALLTIME"
+
+	RAX,RDX = TSC       !-- read time-stamp counter ticks
+	RDX &= $000fffff    !-- convert tricks to 64-bit float
+	RDX |= $43300000
+	RDX <<= 32
+	RDX |= RAX
+
+	[RSP-8] = RDX       !-- multiply ticks by time/tick
+    LO XM0 = [RSP-8]
+    XM0.v1 *= time
+
+	RET

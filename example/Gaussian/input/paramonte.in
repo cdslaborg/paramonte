@@ -1,0 +1,98 @@
+!**********************************************************************************************************************************
+!**********************************************************************************************************************************
+!
+!  ParaMonte: plain powerful parallel Monte Carlo library.
+!
+!  Copyright (C) 2012-present, The Computational Data Science Lab
+!
+!  This file is part of ParaMonte library. 
+!
+!  ParaMonte is free software: you can redistribute it and/or modify
+!  it under the terms of the GNU Lesser General Public License as published by
+!  the Free Software Foundation, version 3 of the License.
+!
+!  ParaMonte is distributed in the hope that it will be useful,
+!  but WITHOUT ANY WARRANTY; without even the implied warranty of
+!  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!  GNU Lesser General Public License for more details.
+!
+!  You should have received a copy of the GNU Lesser General Public License
+!  along with ParaMonte.  If not, see <https://www.gnu.org/licenses/>.
+!
+!**********************************************************************************************************************************
+!**********************************************************************************************************************************
+
+! ParaMonte input file for sampling a multivariate 4-dimensional Gaussian distribution as implemented in the accompanying source files.
+! USAGE:
+! Comments must begin with an exclamation mark (!).
+! Comments can appear anywhere on an empty line or, after a value assignment.
+! all variable assignments are optional and can be commented out. In such cases, appropriate default values will be assigned.
+! Use ParaDRAM namelist (group) name to group a set ParaDRAM simulation specification variables: 
+! The order of the input variables in the namelist groups is irrelevant and unimportant.
+! Variables can be defined multiple times, but only the last definition will be considered as input.
+! All variable names are case insensitive. However, for clarity, this software follows the Camel-Case code-writing practice.
+! String values must be enclosed with either single or double quotation marks.
+! Logical values are case-insensitive and can be either .true., true, or t for a TRUE value, and .false., false, or f for a FALSE value.
+! All vectors and arrays in the input file begin with index 1. This is following the convention of 
+! the majority of science-oriented programming languages: Fortran, Julia, Mathematica, MATLAB, and R.
+
+&ParaDRAM
+
+    ! Base
+
+    description                         = "
+This\n
+    is a\n
+        test\n
+            run."
+   !outputColumnWidth                    = 25
+    outputRealPrecision                    = 17
+   !outputDelimiter                        = ","
+    outputFileName                      = "./out/"
+   !sampleSize                          = 111
+    randomSeed                          = 2136275,
+    chainFileFormat                     = "compact"
+   !variableNameList                    = "x","y"
+    domainLowerLimitVec                 = 4*-1.e300
+    domainUpperLimitVec                 = 4*1.e300
+    parallelizationModel                = "single chain"
+    targetAcceptanceRate                = 0.23e0
+    progressReportPeriod                = 1000
+    maxNumDomainCheckToWarn             = 100
+    maxNumDomainCheckToStop             = 1000
+    inputFileHasPriority                = false
+    restartFileFormat                   = "binary"
+    silentModeRequested                 = false
+   !mpiFinalizeRequested                = true
+
+    ! MCMC
+
+    chainSize                           = 30000
+    startPointVec                       = 4*1.e0
+   !sampleRefinementCount               = 10
+    sampleRefinementMethod              = "BatchMeans"
+    randomStartPointDomainLowerLimitVec = 4*-100.e0
+    randomStartPointDomainUpperLimitVec = 4*100.0
+    randomStartPointRequested           = true
+
+    ! DRAM
+
+    scaleFactor                         = "Gelman"
+    proposalModel                       = "normal"
+    adaptiveUpdateCount                 = 10000000
+    adaptiveUpdatePeriod                = 35
+    greedyAdaptationCount               = 0
+   !delayedRejectionCount               = 5
+   !delayedRejectionScaleFactorVec      = 5*1.
+   !burninAdaptationMeasure             = 1.
+   !proposalStartStdVec                 = 4*1.0
+   !proposalStartCorMat                 =   1,0,0,0,
+   !                                        0,1,0,0,
+   !                                        0,0,1,0,
+   !                                        0,0,0,1,
+   !proposalStartCovMat                 =   100,0,0,0,
+   !                                        0,100,0,0,
+   !                                        0,0,100,0,
+   !                                        0,0,0,100,
+
+/

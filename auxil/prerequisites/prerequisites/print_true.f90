@@ -1,0 +1,2 @@
+print *,.true.
+end

@@ -1,0 +1,18 @@
+# Adapted from http://www.cmake.org/Wiki/CMake_FAQ#Can_I_do_.22make_uninstall.22_with_CMake.3F May 1, 2014
+
+if(NOT EXISTS "@CMAKE_BINARY_DIR@/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: @CMAKE_BINARY_DIR@/install_manifest.txt")
+endif(NOT EXISTS "@CMAKE_BINARY_DIR@/install_manifest.txt")
+
+file(READ "@CMAKE_BINARY_DIR@/install_manifest.txt" files)
+string(REGEX REPLACE "\n" ";" files "${files}")
+file(WRITE "@CMAKE_BINARY_DIR@/sha256_install_manifest.txt" "")
+foreach(file ${files})
+  if(IS_SYMLINK $ENV{DESTDIR}${file})
+    list(APPEND symbolic_links ${file})
+  endif()
+  file(SHA256 $ENV{DESTDIR}${file} ${file}_sha256)
+  message(STATUS "${${file}_sha256}  $ENV{DESTDIR}${file}")
+  file(APPEND "@CMAKE_BINARY_DIR@/sha256_install_manifest.txt" "${${file}_sha256}  $ENV{DESTDIR}${file}\n")
+endforeach()
+message(STATUS "Symbolic links: ${symbolic_links}")

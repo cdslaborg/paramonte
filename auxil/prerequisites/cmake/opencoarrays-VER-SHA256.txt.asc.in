@@ -1,0 +1,12 @@
+Mac users can use GPGTools - https://gpgtools.org
+Comment: Download Izaak Beekman's GPG public key from your
+Comment: trusted key server or from
+Comment: https://izaakbeekman.com/izaak.pubkey.txt
+Comment: Next add it to your GPG keyring, e.g.,
+Comment: `curl https://izaakbeekman.com/izaak.pubkey.txt | gpg --import`
+Comment: Make sure you have verified that the release archive's
+Comment: SHA256 checksum matches the provided
+Comment: opencoarrays-@git_version@-SHA256.txt and ensure that this file
+Comment: and it's signature are in the same directory. Then
+Comment: verify with:
+Comment: `gpg --verify opencoarrays-@git_version@-SHA256.txt.asc`

@@ -1,0 +1,13 @@
+  -c --with-c [arg]           Use specified C compiler. Default="gcc"
+  -C --with-cxx [arg]         Use specified C++ compiler. Default="g++"
+  -d --debug                  Enable debug mode.
+  -e --verbose                Enable verbose mode, print script as it is executed.
+  -f --with-fortran [arg]     Use specified Fortran compiler. Default="gfortran"
+  -h --help                   Print this page.
+  -i --install-prefix [arg]   Install package in specified path. Default="${OPENCOARRAYS_SRC_DIR}/prerequisites/installations/opencoarrays/${version_to_build:-}"
+  -j --num-threads [arg]      Number of threads to use when invoking make. Default="1"
+  -m --with-cmake [arg]       Use specified CMake installation. Default="cmake"
+  -n --no-color               Disable color output.
+  -v --version                Print OpenCoarrays version number and copyright.
+  -V --version-number         Print OpenCoarrays version number.
+  -y --yes-to-all             Build non-interactively by assuming affirmative user responses.

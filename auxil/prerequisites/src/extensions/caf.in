@@ -1,0 +1,377 @@
+#!/usr/bin/env bash
+#
+# OpenCoarrays version @CAF_VERSION@
+#
+# Coarray Fortran (CAF) Compiler Wrapper
+#
+# Invokes the chosen Fortran compiler with the received command-line
+# arguments.
+#
+# Copyright (c) 2015-2018, Sourcery Institute
+# Copyright (c) 2015-2018, Sourcery, Inc.
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Sourcery, Inc., nor the
+#       names of its contributors may be used to endorse or promote products
+#       derived from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL SOURCERY, INC., BE LIABLE FOR ANY
+# DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+# Exit on error. Append "|| true" if you expect an error.
+set -o errexit
+# Exit on error inside any functions or subshells.
+set -o errtrace
+# Do not allow use of undefined vars. Use ${VAR:-} to use an undefined VAR
+set -o nounset
+# Catch the error in case mysqldump fails (but gzip succeeds) in `mysqldump |gzip`
+set -o pipefail
+# Turn on traces, useful while debugging but commented out by default
+# set -o xtrace
+
+#---------------------------
+# Begin configured variables
+#---------------------------
+# List of variables needing configuration:
+#
+# CAF_VERSION, opencoarrays_aware_compiler, Fortran_COMPILER, CAF_MODDIR,
+# CAF_MPI_Fortran_LINK_FLAGS, CAF_MPI_Fortran_COMPILE_FLAGS,
+# CAF_LIBS, CAF_MPI_LIBS
+#
+
+caf_version='@CAF_VERSION@' # fetched from `git describe` and/or
+# `.VERSION` file
+oca_compiler="@opencoarrays_aware_compiler@" # True for GFortran > 5.0.0
+
+# Compiler used to build OpenCoarrays; runtime must match compiler used during build
+cafc="@Fortran_COMPILER@"
+if [[ "${cafc}" == @*@ ]]; then
+  cafc=gfortran
+fi
+caf_mod_dir="@CAF_MODDIR@"    # location of extensions module, needed for non-OCA compilers
+mod_dir_flag="-I"
+
+
+# Ideally these should be absolute paths. Since they are array
+# variables multiple libs (absolute or not) can be specified provided
+# proper quoting is used, when @var@ is expanded. (i.e., expands with
+# double quotes around each library w/path to ensure proper word
+# splittling for paths with spaces) Handling of paths is complex
+# between CMake and pkg-config: pkg-config (new enough versions) will
+# theoretically expand paths with spaces escaped or the path
+# quoted. CMake handles spaces in paths natively, but also sort of
+# punts by making ; a field separator... So long story short,
+# pkg-config output *should* __ALREADY__ handle word splitting, and
+# variables expanded from CMake should be appropriately quoted.
+
+# shellcheck disable=SC2054
+mpi_link_flags=(@CAF_MPI_Fortran_LINK_FLAGS@) # e.g. `pkg-config
+# --libs-only-other mpich`
+# __*AND*__ `pkg-config
+# --libs-only-L`
+mpi_compile_flags=(@CAF_MPI_Fortran_COMPILE_FLAGS@)
+caf_libs=(@CAF_LIBS@) # e.g. "libcaf_mpi" "libcaf_extensions",
+# preferably full paths, but could be
+# combination of -L... and -lcaf_mpi...
+mpi_libs=(@CAF_MPI_LIBS@) # e.g. `pkg-config --libs-only-l` or full paths
+# to MPI libs
+
+#-------------------------
+# End configured variables
+#-------------------------
+
+if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
+  __i_am_main_script="0" # false
+
+  # shellcheck disable=SC2154
+  if [[ "${__usage+x}" ]]; then
+    if [[ "${BASH_SOURCE[1]}" == "${0}" ]]; then
+      __i_am_main_script="1" # true
+    fi
+    __caf_tmp_source_idx=1
+  fi
+else
+  # shellcheck disable=SC2034
+  __i_am_main_script="1" # true
+fi
+
+# Set magic variables for current file, directory, os, etc.
+__dir="$(cd "$(dirname "${BASH_SOURCE[${__caf_tmp_source_idx:-0}]}")" && pwd)"
+__file="${__dir}/$(basename "${BASH_SOURCE[${__caf_tmp_source_idx:-0}]}")"
+# shellcheck disable=SC2034
+__base="$(basename "${__file}")"
+cmd="${__base}"
+
+# Set installation prefix. Compute this dynamically assuming this script is in a bin/ subdir
+# Dereference symbolic links and canonicalize (i.e., abs path) prefix in case stow, homebrew, etc being used
+# mac OS doesn't have readlink -f, so need to crawl symlinks manually.
+# See: https://stackoverflow.com/questions/1055671/how-can-i-get-the-behavior-of-gnus-readlink-f-on-a-mac
+current_dir="${PWD}"
+cd "${__dir}" || exit 5
+  target_file="${__file}"
+  max_iter=1000
+  iter=0
+  while [[ -L "${target_file}" ]]; do
+    target_file="$(readlink "${target_file}")"
+    cd "$(dirname "${target_file}")" || exit 5
+    target_file="$(basename "${target_file}")"
+    if ((++iter >= max_iter)); then
+      echo "Failed to compute OpenCoarrays instalation prefix!" >&2
+      echo "Likely cause: circular symlink cycles." >&2
+      echo "Aborting!" >&2
+      exit 200
+    fi
+  done
+  true_dir="$(pwd -P)"
+  true_dir="${true_dir%/}"
+  # shellcheck disable=SC2034
+  prefix="${true_dir%/bin}"
+  # echo "Install prefix is ${prefix}" # for debugging
+cd "${current_dir}" || exit 5
+# echo "Current directory is $(pwd)"
+# echo "This script is in ${__dir}"
+
+# Error tracing
+# requires `set -o errtrace`
+__caf_err_report() {
+  local error_code
+  error_code=${?}
+  echo "Error in ${__file} in function ${1} on line ${2}. Please report this error at http://bit.ly/OpenCoarrays-new-issue" >&2
+  exit ${error_code}
+}
+# Always provide an error backtrace
+trap '__caf_err_report "${FUNCNAME:-.}" ${LINENO}' ERR
+
+# See if we are compiling or compiling and/or linking
+__only_compiling () {
+    for arg in "${@}"; do
+      if [[ "${arg}" == "-c" ]]; then
+        return 0
+      fi
+    done
+    return 1
+}
+
+#--------------------------------------------------------------------------
+# End configured variables, now process them and build compile/link command
+#--------------------------------------------------------------------------
+
+
+substitute_lib () {
+  # Try to substitute a shared or static library if requested library is missing
+  # Some package managers only install dynamic or static libs
+  if ! [[ -f "${1}" ]] ; then
+      case "${1##*.}" in
+          a|lib)
+              for suff in so dylib dll ; do
+                  if [[ -f "${1%.*}.${suff}" ]] ; then
+                      echo "${1%.*}.${suff}"
+                      return
+                  fi
+              done
+              # If we get here, original lib DNE, and no alternates found
+              echo "Failed to find static library ${1} or shared library alternatives." >&2
+              exit 1
+          ;;
+          so|dylib|dll)
+              for suff in a lib ; do
+                  if [[ -f "${1%.*}.${suff}" ]] ; then
+                      echo "${1%.*}.${suff}"
+                      return
+                  fi
+              done
+              # If we get here, original lib DNE, and no alternates found
+              echo "Failed to find shared library ${1} or static library alternatives." >&2
+              exit 1
+          ;;
+      esac
+  else
+    echo "${1}"
+  fi
+}
+
+# Always make extensions module available, user can choose whether to `use` it or not
+caf_pre_flags=("${mod_dir_flag}${prefix%/}/${caf_mod_dir}")
+
+if [[ "${oca_compiler}" == true ]]; then
+  if [[ -z "${caf_pre_flags[*]:-}" ]]; then
+    caf_pre_flags=('-fcoarray=lib')
+  else
+    caf_pre_flags+=('-fcoarray=lib')
+  fi
+fi
+if [[ -n "${mpi_compile_flags[*]:-}" ]]; then
+  for compileflag in "${mpi_compile_flags[@]:-}"; do
+      caf_pre_flags+=("${compileflag}")
+  done
+fi
+if [[ -n "${mpi_link_flags[*]:-}" ]]; then
+  if ! __only_compiling "${@}"; then
+    for linkflag in "${mpi_link_flags[@]:-}"; do
+      caf_pre_flags+=("${linkflag}")
+    done
+  fi
+fi
+
+# Now do libraries, IN CORRECT ORDER, to append to command
+if [[ -n "${caf_libs[*]:-}" ]]; then
+  for lib in "${caf_libs[@]:-}"; do
+    caf_added_libs+=("$(substitute_lib "${prefix%/}/${lib}")")
+  done
+fi
+if [[ -n "${mpi_libs[*]:-}" ]]; then
+  for lib in "${mpi_libs[@]:-}"; do
+    caf_added_libs+=("$(substitute_lib "${lib}")")
+  done
+fi
+
+usage() {
+  echo ""
+  echo " ${cmd} - Fortran compiler wrapper for OpenCoarrays"
+  echo ""
+  echo " Usage: ${cmd} <fortran-source-file> [compiler-options] [object-files] [linker-options]"
+  echo ""
+  echo " Wrapper options:"
+  echo "   --help, -h               Show this help message and exit"
+  echo "   --version, -v, -V        Report version and copyright information and exit"
+  echo "   --wrapping, -w, --wraps  Report the name of the wrapped compiler and exit"
+  echo "   --show, -s, -show        Show how this wrapper will call the compiler and exit (dry run)"
+  echo ""
+  echo " Example usage:"
+  echo ""
+  echo "   ${cmd} foo.f90 -o foo"
+  echo "   ${cmd} -v"
+  echo "   ${cmd} --help"
+  echo "   ${cmd} -s"
+  echo ""
+  echo "OpenCoarrays ${caf_version} ${cmd} supports three categories of compilers"
+  echo "with the following restrictions for each use case:"
+  echo ""
+  echo " 1. With an OpenCoarrays-Aware (OCA) compiler (GNU 5.1.0 or later),"
+  echo "   a. If any of the options listed above appear, any remaining arguments are ignored."
+  echo "   b. If present, any Fortran <source-file(s)> must have a name of the form:"
+  echo "      *.f90, *.F90, *.f, or *.F. "
+  echo ""
+  echo " 2. With non-OCA CAF compilers (Intel or Cray),"
+  echo "   a. Observe restrictions 1a-d above."
+  echo "   b. Access OpenCoarrays collective subroutines via use association with an only clause,"
+  echo "      e.g., 'use opencoarrays, only : co_sum,co_broadcast' "
+  echo ""
+  echo " 3. With non-CAF compilers (all compilers not named above),"
+  echo "   a. Observe restrictions 1a-d above."
+  echo "   b. Access OpenCoarrays capabilities via use association ('use opencoarrays')."
+  echo "   c. The only CAF statements or expressions allowed are the following:"
+  echo "      * 'num_images()' "
+  echo "      * 'this_image()' with or without arguments"
+  echo "      * 'sync all' with or without arguments."
+  echo "      * 'sync images' with or without arguments."
+  echo "      * 'error stop' without arguments."
+  echo "      * 'co_sum', 'co_broadcast', 'co_max', 'co_min', or 'co_reduce'"
+  echo ""
+  echo " The caf wrapper will append -L..., -l..., and other required flags as necessary"
+  echo " to link against OpenCoarrays, using values that get set during the OpenCoarrays"
+  echo " build and installation."
+  echo ""
+}
+
+# Print useage information if caf is invoked without arguments
+if ((${#} == 0)); then
+  usage | ${PAGER:-less -i -F -X -M -J}
+  exit 1
+fi
+
+if [[ ${1} == -[vV] || ${1} == '--version' ]]; then
+  echo ""
+  echo "OpenCoarrays Coarray Fortran Compiler Wrapper (caf version ${caf_version})"
+  echo "Copyright (C) 2015-2018 Sourcery Institute"
+  echo "Copyright (C) 2015-2018 Sourcery, Inc."
+  echo ""
+  echo "OpenCoarrays comes with NO WARRANTY, to the extent permitted by law."
+  echo "You may redistribute copies of OpenCoarrays under the terms of the"
+  echo "BSD 3-Clause License.  For more information about these matters, see"
+  echo "the file named LICENSE that is distributed with OpenCoarrays."
+  echo ""
+  exit 0
+elif [[ ${1} == '-w' || ${1} == '--wraps' || ${1} == '--wrapping' ]]; then
+  echo "${cmd} wraps ${cafc}"
+  exit 0
+elif [[ ${1} == '-s' || ${1} == '--show' || ${1} == '-show' ]]; then
+  if (($# > 1)); then
+    args="${*:2:$((${#} - 1))}"
+  else
+    args="\${@}"
+  fi
+  if [[ "${caf_pre_flags[*]:-}" ]]; then
+    compiler_args=("${caf_pre_flags[@]}")
+  fi
+  if [[ "${args}" ]]; then
+    compiler_args+=("${args}")
+  fi
+  if [[ "${caf_added_libs[*]:-}" ]]; then
+    if ! __only_compiling "${@}"; then
+      compiler_args+=("${caf_added_libs[@]}")
+    fi
+  fi
+  echo "${cafc}" "${compiler_args[@]}"
+  exit 0
+elif [[ ${1} == '-h' || ${1} == '--help' ]]; then
+  # Print usage information
+  usage | ${PAGER:-less -i -F -X -M -J}
+  exit 0
+elif [[ "${oca_compiler:-}" != "true" ]]; then
+  # Transform file(s) with the .f90, .F90, .f, or .F extension, if present:
+  # Loop over all arguments and perform simple search & replace source transformation on any Fortran sources
+  i=0
+  for arg in "${@}"; do
+    src_extension="${arg##*.}"
+    ((i+=1)) # Increment i to keep track of which arg we're processing
+    if [[ "${src_extension}" == [fF]90 || "${src_extension}" == [fF] ]]; then
+      # Edit & copy the source to replace CAF syntax with calls to public procedures in opencoarrays.f90:
+      sed -e 's/sync all/call sync_all/g' -e 's/error stop/call error_stop/g' \
+        -e 's/sync images/call sync_images/g' "${arg}" >"caf-${arg}"
+      # Replace the file name in command-line argment $i with the new name before invoking the compiler:
+      set -- "${@:1:$((i - 1))}" "caf-${arg}" "${@:$((i + 1)):$((${#} - i))}"
+    fi
+  done
+fi
+
+# Invoke the compiler along with all command-line arguments:
+if [[ "${caf_pre_flags[*]:-}" ]]; then
+  compiler_args=("${caf_pre_flags[@]}")
+fi
+if [[ "${*:-}" ]]; then
+  compiler_args+=("${@}")
+fi
+if [[ "${caf_added_libs[*]:-}" ]]; then
+  if ! __only_compiling "${@}" ; then
+    compiler_args+=("${caf_added_libs[@]}")
+  fi
+fi
+#set -o xtrace # Show what we're doing
+set +o errtrace
+set +o errexit
+if "${cafc}" "${compiler_args[@]}" ; then
+  exit $?
+else
+  return_code=$?
+  echo "Error: comand:" >&2
+  echo "   \`${cafc} ${compiler_args[*]}\`" >&2
+  echo "failed to compile." >&2
+  exit "${return_code}"
+fi

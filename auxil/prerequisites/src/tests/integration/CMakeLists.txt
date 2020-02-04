@@ -1,0 +1,8 @@
+if (opencoarrays_aware_compiler)
+  add_subdirectory(coarrayHelloWorld)
+  if (NOT ("${CMAKE_BUILD_TYPE}" MATCHES "CodeCoverage"))
+    add_subdirectory(dist_transpose )
+  endif()
+  add_subdirectory(pde_solvers)
+  add_subdirectory(events)
+endif()

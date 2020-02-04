@@ -1,0 +1,11 @@
+  -d --debug                 Enable debug mode.
+  -D --print-downloader      Print default download program.
+  -e --verbose               Enable verbose mode, print script as it is executed.
+  -h --help                  This page.
+  -i --install-dir [arg]     Install OFP in specified path. Default="${OPENCOARRAYS_SRC_DIR}/prerequisites/installations/"
+  -I --install-version [arg] OFP version to install. (To see default, use -V or --print-version)
+  -j --num-threads [arg]     Number of threads to use when invoking make. Default="1"
+  -n --no-color              Disable color output.
+  -P --print-path            Print OFP installation path.
+  -U --print-url             Print OFP URL.
+  -V --print-version         Print OFP version.

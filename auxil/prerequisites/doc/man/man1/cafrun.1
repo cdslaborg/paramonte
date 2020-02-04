@@ -1,0 +1,75 @@
+.TH CAFRUN 1 2017\-09\-12 OpenCoarrays\-1.9.1 "cafrun coarray Fortran job launcher manual"
+.SH NAME
+.PP
+\fB\fCcafrun\fR \- Coarray Fortran executable launcher for OpenCoarrays
+.SH SYNOPSIS
+.PP
+\fB\fCcafrun\fR [\fB\fC\-s\fR] \fB\fC\-np\fR <N> \fI</path/to/coarray\-executable>\fP [arg1 [arg2 ...]]
+.SH DESCRIPTION
+.PP
+\fB\fCcafrun\fR is wrapper script which will launch Coarray Fortran
+executables across <N> images using the appropriate parallel
+runtime that OpenCoarrays was compiled against, (e.g.,
+.BR mpiexec (1)).
+\fB\fCcafrun\fR ensures the correct flags are passed to the
+parallel runtime job launcher, as determined by system introspection
+at OpenCoarrays build time. Advanced users may compile their Coarray
+Fortran code however they please, but we recommend using the
+.BR caf (1)
+
+compiler wrapper script for a more user friendly experience.
+.PP
+To see the default command run by \fB\fCcafrun\fR, add the \fB\fC\-s\fR or \fB\fC\-\-show\fR
+flags. To see how a specific command would be executed, simply
+construct the command you plan to use to launch your job, and add
+\fB\fC\-s\fR or \fB\fC\-\-show\fR as the very first flag after \fB\fCcafrun\fR, e.g.,
+\fB\fCcafrun \-s ...\fR to see how \fB\fCcafrun\fR is translating your invocation for
+the parallel runtime job launcher (e.g.,
+.BR mpiexec (1)).
+.SH OPTIONS
+.TP
+\fB\fC\-\-help\fR, \fB\fC\-h\fR
+Print a brief help/usage message and return without
+performing any substantive action.
+.TP
+\fB\fC\-np\fR <N>
+Mandatory flag with argument to specify the number of Coarray
+Fortran images to be spawned. <N> must be a positive integer.
+.TP
+\fB\fC\-\-reenable\-auto\-cleanup\fR
+If OpenCoarrays is built supporting failed images, which requires
+GFortran >= 7.0 and an MPI implementation with user level failure
+mitigation support (ULFM) and NOT disabling it at build time, then
+\fB\fCcafrun\fR turns OFF mpi auto cleanup, and handles cleanup in the
+OpenCoarrays library. This is required to properly support failed
+images. \fB\fC\-\-reenable\-auto\-cleanup\fR re\-enables the parallel runtime's
+auto cleanup features which breaks the failed images functionality
+but provides more robust error detection and application
+aborting. If failed images support was not enabled at OpenCoarrays
+build time, then this flag is a noop.
+.TP
+\fB\fC\-\-show\fR, \fB\fC\-s\fR
+Print the default invocation of the underlying parallel
+runtime's job launcher (e.g., \fB\fCmpiexec\fR), including what flags are
+passed, etc. This also functions as a dry\-run for executing a
+specific \fB\fCcafrun\fR command, showing the user how the compiler would
+be called with the additional files and arguments passed by the
+user.
+.TP
+\fB\fC\-\-version\fR, \fB\fC\-V\fR, \fB\fC\-v\fR
+Print OpenCoarrays version and copyright information and exit.
+.TP
+\fB\fC\-\-wrapping\fR, \fB\fC\-\-wraps\fR, \fB\fC\-w\fR
+Report the version of the parallel runtime \fB\fCcafrun\fR is wrapping and exit.
+.SH BUGS
+.PP
+For a list of bugs currently affecting OpenCoarrays, or to report a new one, please report any bugs to the OpenCoarrays project at \[la]https://github.com/sourceryinstitute/OpenCoarrays/issues\[ra]
+.SH AUTHOR
+.PP
+Izaak Beekman \[la]izaak@izaakbeekman.com\[ra]
+.SH SEE ALSO
+.PP
+.BR caf (1),
+.BR mpiexec (1),
+.BR gfortran (1),
+OpenCoarrays project page \[la]https://github.com/sourceryinstitute/OpenCoarrays#readme\[ra], OpenCoarrays website \[la]http://www.opencoarrays.org\[ra]

@@ -1,0 +1,27 @@
+! do not change the of contents of this file.
+! used for building ParaMonte library.
+! any line preceded by the exclamation mark (!) is comment and will be ignored.
+!
+!  Test_mod.f90
+!  Test_Decoration_mod.f90
+!  Test_Err_mod.f90
+!  Test_DateTime_mod.f90
+!  Test_String_mod.f90
+!  Test_System_mod.f90
+!  Test_Path_mod.f90
+!  Test_FileList_mod.f90
+!  Test_Timer_mod.f90
+!  Test_TimerCPU_mod.f90
+!  Test_RandomSeed_mod.f90
+!  Test_FileContents_mod.f90
+!  Test_File_mod.f90
+!  Test_CrossCorr_mod.f90
+!  Test_Matrix_mod.f90
+!  Test_CorrCoef_mod.f90
+!  Test_TranGaus_mod.f90
+!  Test_Math_mod.f90
+!  Test_BandSpectrum_mod.f90
+!  Test_Batse_mod.f90
+!  Test_Statistics_mod.f90
+  Test_ParaMonte_mod.f90
+  main.f90

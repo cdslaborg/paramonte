@@ -1,0 +1,24 @@
+#!/bin/bash --login
+#PBS -q debug
+#PBS -l mppwidth=48
+#PBS -l mppnppn=24
+#PBS -l walltime=00:30:00
+#PBS -j oe
+module load craype-hugepages8M
+module unload darshan
+module swap PrgEnv-pgi PrgEnv-cray
+module load java/1.6.0_13
+export PATH=/global/u1/s/sameer/pkgs/tau-2.23/craycnl/bin:$PATH
+export TAU_MAKEFILE=/global/u1/s/sameer/pkgs/tau-2.23/craycnl/lib/Makefile.tau-cray-cce822-mpi-pdt
+export TAU_COMM_MATRIX=1
+export PATH=/global/homes/s/sameer/tau2/craycnl/binutils-2.23.1/bin:$PATH
+export TAU_SAMPLING=1
+# change to the directory from which the job was submitted
+cd $PBS_O_WORKDIR
+# Get total number of processes and the number per node
+#export NPROC=‘qstat -f $PBS_JOBID | awk ’/mppwidth/ {print $3}’‘
+#export NTASK=‘qstat -f $PBS_JOBID | awk ’/mppnppn/ {print $3}’‘
+echo "Starting job $PBS_JOBID at ‘date‘"
+time aprun -n48 -N24 ./burgers_caf
+#time aprun -n$NPROC -N $NTASK ./parallel_tmps
+echo "Finished job $PBS_JOBID at ‘date‘"

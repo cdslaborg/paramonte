@@ -1,0 +1,14 @@
+  -d --debug                  Enable debug mode.
+  -D --print-downloader [arg] Print download program for package specified in argument. 
+  -e --verbose                Enable verbose mode, print script as it is executed.
+  -h --help                   This page.
+  -i --install-dir [arg]      Install package in specified path. Default="/opt"
+  -I --install-version [arg]  Package version to install. (To see default, use -V or --print-version)
+  -l --list-packages          List the packages this script can install.
+  -n --no-color               Disable color output.
+  -N --print-names            Print the names of the files that install with the specified package.
+  -p --package [arg]          Package to install. 
+  -P --print-path [arg]       Print installation path for package specified in argument.
+  -U --print-url [arg]        Print URL for package specified in argument. 
+  -v --version                Print OpenCoarrays version number.
+  -V --print-version [arg]    Print installation version for package specified in argument.

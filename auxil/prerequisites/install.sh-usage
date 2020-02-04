@@ -1,0 +1,26 @@
+  -b --install-branch [arg]   Install the specified repository development branch (Examples: -b trunk or -b gcc-7-branch).
+  -B --list-branches [arg]    List the available branches in a package's repository (Currently only '-B gcc' is supported).
+  -c --with-c [arg]           Use specified C compiler (Example: -c /usr/local/bin/gcc).
+  -C --with-cxx [arg]         Use specified C++ compiler (Example: -C /usr/local/bin/g++).
+  -d --debug                  Enable debug mode. 
+  -D --print-downloader [arg] Print download program for package specified in argument (Example: -D gcc).
+  -e --verbose                Enable verbose mode, print script as it is executed.
+  -f --with-fortran [arg]     Use specified Fortran compiler (Example: -f /usr/local/bin/gfortran).
+  -h --help                   Print this page.
+  -i --install-prefix [arg]   Install package in specified path. Default="${OPENCOARRAYS_SRC_DIR}/prerequisites/installations/${package_name:-}/${version_to_build:-}" 
+  -I --install-version [arg]  Install package version (Example: -I 7.2.0).
+  -j --num-threads [arg]      Number of threads to use when invoking make (Example: -j 8). Default="4"
+  -l --list-packages          Print packages this script can install.
+  -m --with-cmake [arg]       Use specified CMake installation (Example: -m /usr/local/bin/cmake).
+  -M --with-mpi [arg]         Use specified MPI installation (Examples: -M /usr/local/ or -m /opt/mpich-3.2/).
+  -n --no-color               Disable color output.
+  -o --only-download          Download (without building) the source for the package specified by -p or --package.
+  -p --package [arg]          Install specified package (Examples: -p gcc or -p mpich). Default="opencoarrays"
+  -P --print-path [arg]       Print installation directory for specified package (Example: -P gcc).
+  -r --prefix-root [arg]      Installation path to which package name/version will be appended. (Example: -r /opt).
+  -u --from-url [arg]         Specify a URL to use for downloading a package (Example: -u https://github.com/sourceryinstitute/gcc/archive/teams-rc3.tar.gz).
+  -U --print-url [arg]        Print download location for specified package (Example: -U gcc).
+  -v --version                Print OpenCoarrays version number.
+  -V --print-version [arg]    Print version number for specified package (Example: -V mpich).
+  -y --yes-to-all             Build non-interactively by assuming affirmative user responses.
+  -Z --bootstrap              Enable bootstrap build for robustness when building the required GCC version with an old GCC version.

@@ -1,0 +1,26 @@
+#!/bin/bash --login
+#PBS -q debug
+#PBS -l mppwidth=48
+#PBS -l mppnppn=24
+#PBS -l walltime=00:30:00
+#PBS -N burgers_caf_48
+#PBS -e burgers_caf.$PBS_JOBID.err
+#PBS -o burgers_caf.$PBS_JOBID.out
+#PBS -j oe
+module load craype-hugepages8M
+#module unload darshan
+module swap PrgEnv-pgi PrgEnv-cray
+# change to the directory from which the job was submitted
+cd $PBS_O_WORKDIR
+# Get total number of processes and the number per node
+export NPROC=`qstat -f $PBS_JOBID |awk '/\.mppwidth/ {print $3}'`
+export NTASK=`qstat -f $PBS_JOBID |awk '/\.mppnppn/ {print $3}'`
+echo NPROC = $NPROC
+echo NTASK = $NTASK
+mkdir ${NPROC}_${NTASK}
+cd ${NPROC}_${NTASK}
+echo "NNODES = $NPROC , NTASKS_PER_NODE = $NTASK" >> burgers_${NPROC}_${NTASK}.cray
+for i in {1..5}
+do
+ aprun -n$NPROC -N $NTASK ../burgers_caf_$NPROC >> burgers_${NPROC}_${NTASK}.cray
+done
