@@ -1239,6 +1239,7 @@ ${MPIEXEC_OPTION} \
 -DCFI_ENABLED=${CFI_ENABLED} \
 -DOMP_ENABLED=${OMP_ENABLED} \
 ${ParaMonte_ROOT_DIR} \
+--verbose=1 \
 )
 verify $? "build with cmake"
 
