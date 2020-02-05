@@ -27,6 +27,7 @@ import sys as _sys
 import _paramonte as _pm
 import warnings as _warnings
 
+pmReleaseVersion = "1.0.0"
 fileAbsDir = _os.path.dirname(_os.path.abspath(__file__))
 verificationStatusFilePath = _os.path.join( fileAbsDir, "verificationEnabled.txt" )
 
@@ -127,6 +128,7 @@ def verify(reset = True):
                                                 )
                 if isYes:
                     installMPI()
+                    writeVerificationStatusFile(verified=True)
                 else:
                     _pm.note( msg   = "Skipping the MPI library installation... \n"
                                     + "It is now the user's responsibility to install the \n"
@@ -145,8 +147,8 @@ def verify(reset = True):
                             , marginTop = 1
                             , marginBot = 1
                             )
+                    writeVerificationStatusFile(verified=False)
 
-            writeVerificationStatusFile(verified=False)
             dispFinalMessage()
 
         else:
@@ -380,7 +382,7 @@ def installMPI():
 
         mpiFileNameExt = mpiFileName + mpiFileExt
         mpiFilePath = _os.path.join( fileAbsDir, mpiFileNameExt )
-        download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + _pm.version + "/" + mpiFileNameExt
+        download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + pmReleaseVersion + "/" + mpiFileNameExt
                 , filePath = mpiFilePath
                 )
 
@@ -422,13 +424,20 @@ def installMPI():
                 tf.extractall(path=fileAbsDir)
                 mpiExtractDir = _os.path.join( fileAbsDir, mpiFileName )
 
-                _pm.note( msg   = "Use the following serial number when asked by the installer: C44K-74BR9CFG"
+                _pm.note( msg   = "If needed, use the following serial number when asked by the installer: \n\n"
+                                + "    C44K-74BR9CFG\n\n"
+                                + "If this is your personal computer, choose \n\n"
+                                + "    'install as root'\n\n"
+                                + "in the graphical user interface that appears in your session. \n"
+                                + "Otherwise, if you are using ParaMonte on a public server, \n"
+                                + "for example, on a supercomputer, choose the third option:\n\n"
+                                + "   'install as current user'"
                         , methodName = _pm.names.paramonte
                         , marginTop = 1
                         , marginBot = 1
                         )
 
-                mpiInstallScriptPath = _os.path.join( mpiExtractDir, "install.sh" )
+                mpiInstallScriptPath = _os.path.join( mpiExtractDir, "install_GUI.sh" )
                 if not _os.path.exists(mpiInstallScriptPath):
                     _pm.abort   ( msg   = "Internal error occurred.\n"
                                         + "Failed to detect the Intel MPI installation Bash script.\n"
@@ -443,7 +452,7 @@ def installMPI():
 
             except Exception as e:
 
-                raise CritError(messages.crit_error_bad_command+" "+str(e))
+                print(str(e))
                 _pm.abort   ( msg   = "Unzipping of Intel MPI runtime library tarball failed.\n"
                                     + "Make sure you have tar software installed on your system and try again."
                             , methodName = _pm.names.paramonte
@@ -467,19 +476,157 @@ def installMPI():
             try:
                 subprocess.check_call( mpiInstallScriptPath, shell = True )
             except Exception as e:
-                raise CritError(messages.crit_error_bad_command+" "+str(e))
+                print(str(e))
+                _pm.abort   ( msg   = "Intel MPI runtime libraries installation for \n"
+                                    + "64-bit architecture appears to have failed.\n"
+                                    + "Please report this error at:\n\n"
+                                    + "    https://github.com/cdslaborg/paramonte/issues\n\n"
+                                    + "Visit https://www.cdslab.org/pm for more instructions \n"
+                                    + "to build and use ParaMonte on your system."
+                            , methodName = _pm.names.paramonte
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+
+
+            _pm.note( msg = "Intel MPI runtime libraries installation for \n"
+                          + "64-bit architecture appears to have succeeded.\n"
+                          + "Searching for the MPI runtime environment setup file..."
+                    , methodName = _pm.names.paramonte
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
 
             _os.chdir(currentDir)
 
+            from pathlib import Path
+            home = str(Path.home())
             setupFilePath = _os.path.join( fileAbsDir, "setup.sh" )
-            mpiRootDir = _os.path.join( "opt", "intel", "compilers_and_libraries_" + mpiVersion, "linux", "mpi", "intel64" )
-            mpiBinDir = _os.path.join( mpiRootDir, "bin" )
-            mpiLibDir = _os.path.join( mpiRootDir, "lib" )
-            mpivarsFilePath = _os.path.join( mpiBinDir, "mpivars.sh" )
-            with open(setupFilePath, "w") as setupFile:
-                setupFile.write(mpiBinDir)
-                setupFile.write(mpiLibDir)
-                setupFile.write("source " + mpivarsFilePath)
+
+            mpiRootDirNotFound = True
+            installationRootDirList = [ "/opt", home ]
+            while mpiRootDirNotFound:
+
+                for installationRootDir in installationRootDirList:
+                    mpiTrunkDir = _os.path.join( "intel", "compilers_and_libraries_" + mpiVersion, "linux", "mpi", "intel64" )
+                    mpiRootDir = _os.path.join( installationRootDir, mpiTrunkDir )
+                    if _os.path.isdir(mpiRootDir):
+                        mpiRootDirNotFound = False
+                        break
+
+                if mpiRootDirNotFound:
+                    _pm.warn( msg = "Failed to detect the installation root path for Intel MPI runtime libraries \n"
+                                  + "for 64-bit architecture on your system. If you specified a different installation \n"
+                                  + "root path at the time intallation, please copy and paste it below.\n"
+                                  + "Note that the installation root path is part of the path that replaces: \n\n"
+                                  + "    " + "opt" + "\n\n"
+                                  + "in the following path: \n\n"
+                                  + "    " + _os.path.join( "opt" , mpiTrunkDir )
+                            , methodName = _pm.names.paramonte
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+                    answer = input  ( "\n    Please type the root path of MPI installation below and press ENTER."
+                                    + "\n    If you don't know the root path, simply press ENTER to quit:\n"
+                                    )
+                    if len(answer.strip())==0:
+                        _pm.warn( msg = "Skipping the MPI runtime library environmental path setup..."
+                            , methodName = _pm.names.paramonte
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+                        break
+                    else:
+                        installationRootDirList = [ answer ]
+                        continue
+
+            if mpiRootDirNotFound:
+
+                _pm.warn( msg   = "Failed to find the MPI runtime environment setup file on your system.\n"
+                                + "This is highly unusual. Normally, Intel MPI libraries must be installed\n"
+                                + "in the following directory:\n\n"
+                                + "    " + mpiRootDir + "\n\n"
+                                + "If you cannot manually find the Intel MPI installation directory,\n"
+                                + "it is likely that the installation might have somehow failed.\n"
+                                + "If you do find the installation directory, try to locate the\n"
+                                + "'mpivars.sh' file which is normally installed in the following path:\n\n"
+                                + "    " + mpivarsFilePath + "\n\n"
+                                + "Before attempting to run any parallel ParaMonte simulation, \n"
+                                + "make sure you source this file, like the following:\n\n"
+                                + "    source " + mpivarsFilePath + "\n\n"
+                                + "where you will have to replace the path in the above with the \n"
+                                + "correct path that you find on your system."
+                        , methodName = _pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+
+            else:
+
+                mpiBinDir = _os.path.join( mpiRootDir, "bin" )
+                mpiLibDir = _os.path.join( mpiRootDir, "lib" )
+                mpivarsFilePath = _os.path.join( mpiBinDir, "mpivars.sh" )
+                if _os.path.isfile(mpivarsFilePath):
+
+                    with open(setupFilePath, "w") as setupFile:
+                        setupFile.write(mpiBinDir+"\n")
+                        setupFile.write(mpiLibDir+"\n")
+                        setupFile.write("source " + mpivarsFilePath)
+
+                    _pm.note( msg = "To ensure all MPI routine environmental variables \n"
+                                  + "are properly load, source the following Bash script \n"
+                                  + "in your Bash environment before calling mpiexec, like:\n\n"
+                                  + "    source " + mpivarsFilePath + "\n\n"
+                                  + "Alternatively, ParaMonte can also automatically add \n"
+                                  + "the required script to your '.bashrc' file, so that \n"
+                                  + "all required MPI environmental variables are loaded \n"
+                                  + "automatically before any ParaMonte usage from any \n"
+                                  + "Bash command line on your system."
+                            , methodName = _pm.names.paramonte
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+
+                    isYes = getUserResponse ( msg = "\n    Would you like ParaMonte to add the MPI runtime"
+                                                    "\n    environmental variables to your Bash environment (y/n)? " 
+                                                    )
+
+                    if isYes:
+                        _os.system( "chmod 777 ~/.bashrc")
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte MPI runtime library initialization >>>' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo 'source " + mpivarsFilePath + "' >>  ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte MPI runtime library initialization <<<' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && source ~/.bashrc" )
+
+                        _pm.note( msg = "If you intend to run parallel simulations right now,\n"
+                                      + "it is highly recommneded t close your current shell environment\n"
+                                      + "and open a new Bash shell environment. This is to ensure that all\n"
+                                      + "MPI library environmental variables are properly set in your shell."
+                                , methodName = _pm.names.paramonte
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
+
+                    else:
+                        _pm.warn( msg = "skipping...\n"
+                                      + "It is now your responsibility to ensure that the MPI runtime \n"
+                                      + "environmental variables in your Bash environment are properly \n"
+                                      + "set up before attempting to run any parallel ParaMonte simulation. \n"
+                                      + "You can do so by running the following command in every Bash session:\n\n"
+                                      + "    source " + mpivarsFilePath + "\n\n"
+                                      + "Alternatively, ParaMonte can also automatically add \n"
+                                      + "the required script to your '.bashrc' file, so that \n"
+                                      + "all required MPI environmental variables are loaded \n"
+                                      + "automatically before any ParaMonte usage from any \n"
+                                      + "Bash command line on your system."
+                                , methodName = _pm.names.paramonte
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
 
     else:
 
@@ -600,7 +747,7 @@ def build():
 
         except Exception as e:
 
-            raise CritError(messages.crit_error_bad_command+" "+str(e))
+            print(str(e))
             _pm.abort   ( msg   = "Unzipping of ParaMonte tarball failed.\n"
                                 + "Make sure you have tar software installed on your system and try again."
                         , methodName = _pm.names.paramonte
@@ -629,7 +776,15 @@ def build():
                                     , "--yes-to-all"
                                     ], shell = True )
         except Exception as e:
-            raise CritError(messages.crit_error_bad_command+" "+str(e))
+            print(str(e))
+            _pm.abort   ( msg   = "Local installation of ParaMonte failed.\n"
+                                + "Please report this issue at \n\n"
+                                + "    https://github.com/cdslaborg/paramonte/issues"
+                        , methodName = _pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+
 
         _os.chdir(currentDir)
 

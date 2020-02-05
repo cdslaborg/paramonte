@@ -568,7 +568,7 @@ for PMCS in $PMCS_LIST; do
                                 echo >&2 "************************************************************************************************************************************"
                                 echo >&2 ""
 
-                                chmod +x buildParaMonte.sh
+                                $(chmod +x buildParaMonte.sh && \
                                 buildParaMonte.sh \
                                 ${compiler_suite_flag} \
                                 ${build_type_flag} \
@@ -584,7 +584,8 @@ for PMCS in $PMCS_LIST; do
                                 ${gcc_bootstrap_flag} \
                                 ${fortran_flag} \
                                 ${mpiexec_flag} \
-                                ${num_images_flag}
+                                ${num_images_flag} \
+                                )
 
                             fi
 
