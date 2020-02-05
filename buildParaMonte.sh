@@ -1227,7 +1227,8 @@ echo >&2
 
 
 (cd ${ParaMonte_BLD_DIR} && \
-cmake \
+cmake  \
+--verbose=1 \
 ${FC_OPTION} \
 ${MPIEXEC_OPTION} \
 -DPMCS=${PMCS} \
@@ -1239,7 +1240,6 @@ ${MPIEXEC_OPTION} \
 -DCFI_ENABLED=${CFI_ENABLED} \
 -DOMP_ENABLED=${OMP_ENABLED} \
 ${ParaMonte_ROOT_DIR} \
---verbose=1 \
 )
 verify $? "build with cmake"
 
