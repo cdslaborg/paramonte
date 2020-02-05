@@ -571,7 +571,6 @@ def build():
                                                 )
 
         currentDir = _os.getcwd()
-        #_os.chdir(fileAbsDir)
 
         pmGitTarPath = _os.path.join( fileAbsDir, "master.tar.gz" )
         download( url = "https://github.com/cdslaborg/paramonte/archive/master.tar.gz"
@@ -579,10 +578,6 @@ def build():
                 )
 
         pmGitRootDir = _os.path.join( fileAbsDir, "paramonte-master" )
-        #_os.mkdir(pmGitRootDir)
-
-        #err = _os.system("cd " + fileAbsDir + " && tar xvzf " + pmGitTarPath)
-        #_os.chdir(currentDir)
 
         try:
 
@@ -613,8 +608,6 @@ def build():
                         , marginBot = 1
                         )
 
-        #import stat
-        #_os.chmod( pmGitInstallScriptPath, stat.S_IXUSR )
         err = _os.system("chmod +x " + pmGitInstallScriptPath)
         if err != 0:
             _pm.warn( msg   = "The following action failed:\n\n"

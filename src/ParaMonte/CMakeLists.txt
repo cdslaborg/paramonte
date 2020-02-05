@@ -110,14 +110,69 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/Batse_mod.f90
 )
 
+# search for static libraries
+
+function(find_static_library LIB_NAME OUT)
+
+    if (WIN32)
+        set(CMAKE_FIND_LIBRARY_SUFFIXES ".lib")
+    elseif (UNIX)
+        set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+    endif()      
+
+    find_library(
+        FOUND_${LIB_NAME}_STATIC
+        ${LIB_NAME}
+        )
+
+    if (FOUND_${LIB_NAME}_STATIC)
+        get_filename_component(ABS_FILE ${FOUND_${LIB_NAME}_STATIC} ABSOLUTE)
+        set(${OUT} ${ABS_FILE} PARENT_SCOPE)
+    else()
+        message ( WARNING
+                " \n"
+                " ${pmwarn}\n"
+                " ${pmattn} Unable to find ${LIB_NAME}${CMAKE_FIND_LIBRARY_SUFFIXES}\n"
+                " ${pmattn} Please report any failures to shahmoradi@utexas.edu"
+                )
+        set(${OUT} "" PARENT_SCOPE)
+    endif()
+
+
+endfunction()
+
 # Have the .mod files placed in the lib folder
 
 if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
-    ADD_LIBRARY(${PMLIB} STATIC ${ParaMonte_SOURCE_FILES})
+
+    add_library(${PMLIB} STATIC ${ParaMonte_SOURCE_FILES})
+
 elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
-    ADD_LIBRARY(${PMLIB} SHARED ${ParaMonte_SOURCE_FILES})
-   #ADD_LIBRARY(${PMLIB} MODULE ${ParaMonte_SOURCE_FILES})
+
+    add_library(${PMLIB} SHARED ${ParaMonte_SOURCE_FILES})
+   #add_library(${PMLIB} MODULE ${ParaMonte_SOURCE_FILES})
+
+    if (gnu_compiler)
+        find_static_library(libgfortran LIBGFORTRAN_PATH)
+        find_static_library(libquadmath LIBQUADMATH_PATH)
+        if (${BTYPE} MATCHES "[dD][eE][bB][uU][gG]")
+            target_link_libraries(${PMLIB} debug ${LIBGFORTRAN_PATH})
+            target_link_libraries(${PMLIB} debug ${LIBQUADMATH_PATH})
+        else() #if (${BTYPE} MATCHES "[rR][eE][lL][eE][aA][sS][eE]")
+            target_link_libraries(${PMLIB} optimized ${LIBGFORTRAN_PATH})
+            target_link_libraries(${PMLIB} optimized ${LIBQUADMATH_PATH})
+        endif()
+    elseif(intel_compiler)
+        find_static_library(libifcoremt LIBIFCOREMT_PATH)
+        if (${BTYPE} MATCHES "[dD][eE][bB][uU][gG]")
+            target_link_libraries(${PMLIB} debug ${LIBIFCOREMT_PATH})
+        else() #if (${BTYPE} MATCHES "[rR][eE][lL][eE][aA][sS][eE]")
+            target_link_libraries(${PMLIB} optimized ${LIBIFCOREMT_PATH})
+        endif()
+    endif()
+
 else()
+
     message ( FATAL_ERROR 
             " \n"
             "${pmfatal}\n"
@@ -126,6 +181,7 @@ else()
             "   LTYPE=${LTYPE}\n"
             " \n"
             )    
+
 endif()
 
 if (MPI_ENABLED)

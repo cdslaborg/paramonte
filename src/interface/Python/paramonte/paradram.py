@@ -768,12 +768,13 @@ class ParaDRAM:
 
         if isWin32:
 
-            pathList = _os.environ['PATH'].split(';')
             mpiFound = False
-            for path in pathList:
-                if ('mpi\\intel64\\bin' in path) or ('mpi\intel64\bin' in path):
-                    mpiFound = True
-                    break
+            if "PATH" in _os.environ:
+                pathList = _os.environ["PATH"].split(";")
+                for path in pathList:
+                    if ("mpi\\intel64\\bin" in path) or ("mpi\intel64\bin" in path):
+                        mpiFound = True
+                        break
             if mpiFound:
                 bldMode = buildMode
                 if bldMode=="testing": bldMode = "release"
@@ -782,37 +783,44 @@ class ParaDRAM:
 
         else:
 
+            if "LD_LIBRARY_PATH" not in _os.environ:
+                _os.environ["LD_LIBRARY_PATH"] = "."
+                if self._mpiDisabled:
+                    _pm.warn( msg   = "LD_LIBRARY_PATH environmental variable is not defined in your Python session.\n"
+                                    + "Consider running the following command in your Bash shell before running Python.\n"
+                                    + "and using ParaMonte library:\n\n"
+                                    + "    export LD_LIBRARY_PATH=."
+                            , methodName = _pm.names.paradram
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
             _os.environ["LD_LIBRARY_PATH"] = fileAbsDir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
 
-            gnuRootPath = _os.path.join( fileAbsDir, "/paramonte-master/build/prerequisites/prerequisites/installations/gnu/8.3.0/" )
-            if _os.path.exists(gnuRootPath):
-                for f in os.scandir(gnuRootPath):
-                    if f.is_dir() and ("lib" in f.name):
-                        _os.environ["LD_LIBRARY_PATH"] = f.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            from _pmreqs import getLocalInstallDir
+            localInstallDir = getLocalInstallDir()
 
-            mpiRootPath = _os.path.join( fileAbsDir, "/paramonte-master/build/prerequisites/prerequisites/installations/mpich/3.2/" )
-            if _os.path.exists(mpiRootPath):
-                _os.environ["PATH"] = _os.path.join(mpiRootPath,"/bin") + _os.pathsep + _os.environ["PATH"]
-                for f in os.scandir(mpiRootPath):
-                    if f.is_dir() and ("lib" in f.name):
-                        _os.environ["LD_LIBRARY_PATH"] = f.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            if localInstallDir.gnu.root is not None:
+                for object in _os.scandir(localInstallDir.gnu.root):
+                    if object.is_dir() and ("lib" in object.name):
+                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
 
-           #try:
-           #    _os.execv(_sys.argv[0], _sys.argv)
-           #except:
-           #    _pm.warn( msg   = "Failed to properly modify the dynamic libraries environmental path."
-           #            , methodName = _pm.names.paradram
-           #            , marginTop = 1
-           #            , marginBot = 1
-           #            )
+            if localInstallDir.mpi.root is not None: 
+                if localInstallDir.mpi.bin is not None: _os.environ["PATH"] = localInstallDir.mpi.bin + _os.pathsep + _os.environ["PATH"]
+                for object in _os.scandir(localInstallDir.mpi.root):
+                    if object.is_dir() and ("lib" in object.name):
+                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+                if localInstallDir.mpi.lib is not None: _os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
 
         try:
+
             pmdll = _ct.CDLL(libpath)
+
         except Exception as e:
+
             import logging
-            logger = logging.Logger('catch_all')
+            logger = logging.Logger("catch_all")
             logger.error(e, exc_info=True)
-            #logger.exception(e)
+
             from _pmreqs import buildInstructionNote
             _pm.abort( msg  = "Failed to load the required ParaMonte shared library (DLL).\n"
                             + "This is either due to the incompatibility of the DLL with your\n"
