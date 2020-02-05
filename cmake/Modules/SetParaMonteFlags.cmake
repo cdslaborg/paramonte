@@ -318,7 +318,7 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
             CACHE STRING "GNU Fortran compiler dynamic library flags" )
 
         set(FL_LIB_FLAGS 
-            -fPIC -shared 
+            -fPIC -shared -Wl,-rpath=.
             CACHE STRING "GNU Fortran linker dynamic library flags" )
 
     else(intel_compiler)
@@ -328,7 +328,7 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
                 -fpic -dynamiclib -arch_only i386 -noall_load -weak_references_mismatches non-weak # -threads"
                 CACHE STRING "Intel Mac Fortran compiler dynamic library flags" )
             set(FL_LIB_FLAGS
-                -shared -dynamiclib -arch_only i386 -noall_load -weak_references_mismatches non-weak # -threads"
+                -shared -dynamiclib -arch_only i386 -noall_load -weak_references_mismatches non-weak -Wl,-rpath,. # -threads"
                 CACHE STRING "Intel Apple Fortran linker dynamic library flags" )
                 # https://software.intel.com/en-us/fortran-compiler-developer-guide-and-reference-creating-shared-libraries
         elseif(WIN32)
@@ -344,7 +344,7 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
                 -fpic -shared #-threads -fast -static-intel # -fpic: Request compiler to generate position-independent code.
                 CACHE STRING "Intel Linux Fortran compiler dynamic library flags" )
             set(FL_LIB_FLAGS
-                -shared #-threads -fast -static-intel
+                -shared -Wl,-rpath,. #-threads -fast -static-intel
                 CACHE STRING "Intel Linux Fortran linker dynamic library flags" )
         endif()
     endif()
