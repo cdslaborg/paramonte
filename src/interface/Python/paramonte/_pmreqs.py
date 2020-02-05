@@ -370,17 +370,17 @@ def installMPI():
 
         if isWin32:
             mpiFileExt = ".exe"
-            mpiVersion = "2019.6.166"
-            mpiFileName = "w_mpi_p_" + mpiVersion
+            mpiVersion = "2019.4.245"
+            mpiFileName = "w_mpi-rt_p_" + mpiVersion
             
         if isLinux:
             mpiFileExt = ".tgz"
-            mpiVersion = "2019.6.166"
+            mpiVersion = "2018.2.199"
             mpiFileName = "l_mpi-rt_" + mpiVersion
 
         mpiFileNameExt = mpiFileName + mpiFileExt
         mpiFilePath = _os.path.join( fileAbsDir, mpiFileNameExt )
-        download( url = "https://github.com/cdslaborg/paramonte/releases/download/stable/" + mpiFileNameExt
+        download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + _pm.version + "/" + mpiFileNameExt
                 , filePath = mpiFilePath
                 )
 
