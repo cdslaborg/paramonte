@@ -380,7 +380,7 @@ def installMPI():
 
         mpiFileNameExt = mpiFileName + mpiFileExt
         mpiFilePath = _os.path.join( fileAbsDir, mpiFileNameExt )
-        download( url = "https://github.com/cdslaborg/paramonte/releases/download/impi/" + mpiFileNameExt
+        download( url = "https://github.com/cdslaborg/paramonte/releases/download/stable/" + mpiFileNameExt
                 , filePath = mpiFilePath
                 )
 
