@@ -568,8 +568,9 @@ for PMCS in $PMCS_LIST; do
                                 echo >&2 "************************************************************************************************************************************"
                                 echo >&2 ""
 
-                                $(chmod +x buildParaMonte.sh && \
-                                buildParaMonte.sh \
+                                $(cd ${ParaMonte_ROOT_DIR} && \
+                                chmod +x ./buildParaMonte.sh && \
+                                ./buildParaMonte.sh \
                                 ${compiler_suite_flag} \
                                 ${build_type_flag} \
                                 ${lib_type_flag} \
