@@ -771,9 +771,12 @@ def build():
         try:
            #_os.system( pmGitInstallScriptPath + "--lang python --test_enabled true --exam_enabled true --yes-to-all" )
             subprocess.check_call(  [ pmGitInstallScriptPath
-                                    , "--lang python"
-                                    , "--test_enabled true"
-                                    , "--exam_enabled true"
+                                    , "--lang"
+                                    , "python"
+                                    , "--test_enabled"
+                                    , "true"
+                                    , "--exam_enabled"
+                                    , "true"
                                     , "--yes-to-all"
                                     ], shell = True )
         except Exception as e:
