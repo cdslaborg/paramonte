@@ -875,7 +875,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 else
                     echo >&2 "-- ParaMonte - cmake ${cmakeVersionRequired} missing."
                     echo >&2 "-- ParaMonte - installing the prerequisites...this can take a while."
-                    (cd ${ParaMonte_REQ_DIR} && ./install.sh --package cmake --install-version ${cmakeVersionRequired})
+                    (cd ${ParaMonte_REQ_DIR} && chmod +x ./install.sh && ./install.sh --package cmake --install-version ${cmakeVersionRequired})
                     verify $? "installation of cmake"
                 fi
                 if [ -z ${PM_PRE_PATH+x} ]; then
@@ -898,7 +898,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     ##########################################################################
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} missing."
                     echo >&2 "-- ParaMonte - installing the prerequisites...this can take a while."
-                    (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) || 
+                    (cd ${ParaMonte_REQ_DIR} && chmod +x ./install.sh && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) || 
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             echo >&2
@@ -906,7 +906,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                             echo >&2
                             if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                                 GCC_BOOTSTRAP="--bootstrap"
-                                (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
+                                (cd ${ParaMonte_REQ_DIR} && chmod +x ./install.sh && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
                                 verify $? "${CURRENT_PKG} installation"
                             else
                                 verify 1 "${CURRENT_PKG} installation"
@@ -937,7 +937,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     ##########################################################################
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} missing."
                     echo >&2 "-- ParaMonte - installing the prerequisites...this can take a while."
-                    (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) || 
+                    (cd ${ParaMonte_REQ_DIR} && chmod +x ./install.sh && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) || 
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             echo >&2
@@ -945,7 +945,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                             echo >&2
                             if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                                 GCC_BOOTSTRAP="--bootstrap"
-                                (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
+                                (cd ${ParaMonte_REQ_DIR} && chmod +x ./install.sh && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
                                 verify $? "${CURRENT_PKG} installation"
                             else
                                 verify 1 "${CURRENT_PKG} installation"
@@ -986,7 +986,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     ##########################################################################
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} missing."
                     echo >&2 "-- ParaMonte - installing the prerequisites...this can take a while."
-                    (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) || 
+                    (cd ${ParaMonte_REQ_DIR} && chmod +x ./install.sh && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) || 
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             echo >&2
@@ -994,7 +994,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                             echo >&2
                             if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                                 GCC_BOOTSTRAP="--bootstrap"
-                                (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
+                                (cd ${ParaMonte_REQ_DIR} && chmod +x ./install.sh && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
                                 verify $? "${CURRENT_PKG} installation"
                             else
                                 verify 1 "${CURRENT_PKG} installation"
