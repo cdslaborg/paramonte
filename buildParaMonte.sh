@@ -206,17 +206,14 @@ while [ "$1" != "" ]; do
         -M | --mpiexec )        shift
                                 MPIEXEC_PATH=$1; export MPIEXEC_PATH
                                 ;;
-        -F | --fresh )          shift
-                                FRESH_INSTALL_ENABLED=true; export FRESH_INSTALL_ENABLED
-                                ;;
-        -y | --yes-to-all )     shift
-                                YES_TO_ALL_DISABLED=false; export YES_TO_ALL_DISABLED
-                                ;;
-        -B | --bootstrap )      shift
-                                GCC_BOOTSTRAP="--bootstrap"; export GCC_BOOTSTRAP
-                                ;;
         -n | --num_images )     shift
                                 FOR_COARRAY_NUM_IMAGES=$1
+                                ;;
+        -F | --fresh )          FRESH_INSTALL_ENABLED=true; export FRESH_INSTALL_ENABLED
+                                ;;
+        -y | --yes-to-all )     YES_TO_ALL_DISABLED=false; export YES_TO_ALL_DISABLED
+                                ;;
+        -B | --bootstrap )      GCC_BOOTSTRAP="--bootstrap"; export GCC_BOOTSTRAP
                                 ;;
         -a | --clean )          shift
                                 CLEAN=true

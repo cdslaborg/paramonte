@@ -769,6 +769,7 @@ def build():
 
         import subprocess
         try:
+           #_os.system( pmGitInstallScriptPath + "--lang python --test_enabled true --exam_enabled true --yes-to-all" )
             subprocess.check_call(  [ pmGitInstallScriptPath
                                     , "--lang python"
                                     , "--test_enabled true"
