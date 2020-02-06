@@ -866,7 +866,7 @@ def build():
         import subprocess
         try:
             _os.system( "find " + pmGitRootDir + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
-            _os.system( pmGitInstallScriptPath + " --lang python --test_enabled true --exam_enabled true --yes-to-all" )
+            _os.system( pmGitInstallScriptPath + " --lang python --test_enabled true --exam_enabled false --yes-to-all" )
         except Exception as e:
             print(str(e))
             _pm.abort   ( msg   = "Local installation of ParaMonte failed.\n"
