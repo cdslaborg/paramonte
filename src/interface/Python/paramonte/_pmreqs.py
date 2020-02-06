@@ -75,7 +75,7 @@ def verify(reset = True):
 
     # ensure messages are printed only for the first-time import
 
-    if reset: writeVerificationStatusFile(verified=True)
+    if reset: writeVerificationStatusFile(verificationEnabled=True)
 
     with open(verificationStatusFilePath, "r") as verificationStatusFile:
         verificationEnabledStr = verificationStatusFile.readline()
@@ -100,6 +100,10 @@ def verify(reset = True):
         if (_pm.arch=="x64") and (isWin32 or isLinux or isMacOS):
 
             displayParaMontePythonBanner()
+
+            # library path
+
+            if not isWin32: setupUnixPath()
 
             # search for the MPI library
 
@@ -128,7 +132,7 @@ def verify(reset = True):
                                                 )
                 if isYes:
                     installMPI()
-                    writeVerificationStatusFile(verified=True)
+                    writeVerificationStatusFile(verificationEnabled=True)
                 else:
                     _pm.note( msg   = "Skipping the MPI library installation... \n"
                                     + "It is now the user's responsibility to install the \n"
@@ -147,7 +151,11 @@ def verify(reset = True):
                             , marginTop = 1
                             , marginBot = 1
                             )
-                    writeVerificationStatusFile(verified=False)
+                    writeVerificationStatusFile(verificationEnabled=False)
+
+            else:
+
+                writeVerificationStatusFile(verificationEnabled=False)
 
             dispFinalMessage()
 
@@ -201,6 +209,89 @@ def warnForUnsupportedPlatform():
             , marginBot = 1
             , methodName = _pm.names.paramonte
             )
+    return None
+
+####################################################################################################################################
+
+def getBashrcContents():
+    bashrcPath = _os.path.expanduser("~/.bashrc")
+    if _os.path.isfile(bashrcPath):
+        with open(bashrcPath,"r") as bashrcFile:
+            bashFileContents = bashrcFile.read()
+    else:
+        bashFileContents = ""
+        with open(bashrcPath,"w") as bashrcFile:
+            pass
+    return bashFileContents
+
+####################################################################################################################################
+
+def setupUnixPath():
+
+    bashFileContents = getBashrcContents()
+    dlibcmd = "export LD_LIBRARY_PATH=" + fileAbsDir + ":$LD_LIBRARY_PATH"
+    if dlibcmd not in bashFileContents:
+        _os.system( "chmod 777 ~/.bashrc")
+        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+        _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte shared library setup >>>' >> ~/.bashrc" )
+        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
+        _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
+        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+        _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
+        _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte shared library setup <<<' >> ~/.bashrc" )
+        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+        _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
+
+    localInstallDir = getLocalInstallDir()
+    if localInstallDir is not None:
+        if localInstallDir.root is not None:
+
+            if localInstallDir.gnu is not None:
+                pathcmd = None
+                dlibcmd = None
+                if localInstallDir.gnu.bin is not None: pathcmd = "export PATH=" + localInstallDir.gnu.bin + ":$PATH"
+                if localInstallDir.gnu.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.gnu.lib + ":$LD_LIBRARY_PATH"
+                if (pathcmd is not None) or (dlibcmd is not None):
+                    _os.system( "chmod 777 ~/.bashrc")
+                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local GNU installation setup >>>' >> ~/.bashrc" )
+                    if pathcmd is not None:
+                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
+                    if dlibcmd not in bashFileContents:
+                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local GNU installation setup <<<' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
+
+            if localInstallDir.mpi is not None:
+                pathcmd = None
+                dlibcmd = None
+                if localInstallDir.mpi.bin is not None: pathcmd = "export PATH=" + localInstallDir.mpi.bin + ":$PATH"
+                if localInstallDir.mpi.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.mpi.lib + ":$LD_LIBRARY_PATH"
+                if (pathcmd is not None) or (dlibcmd is not None):
+                    _os.system( "chmod 777 ~/.bashrc")
+                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local MPI installation setup >>>' >> ~/.bashrc" )
+                    if pathcmd is not None:
+                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
+                    if dlibcmd not in bashFileContents:
+                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local MPI installation setup <<<' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
+
     return None
 
 ####################################################################################################################################
@@ -400,7 +491,7 @@ def installMPI():
             err = 0
             err = _os.system(mpiFilePath)
             if err==0:
-                writeVerificationStatusFile(verified=True)
+                writeVerificationStatusFile(verificationEnabled=True)
                 _pm.note( msg   = "Intel MPI library installation appears to have succeeded. \n"
                                 + "A reboot of your system or restart of your Python environment may \n"
                                 + "be required before using the parallel features of ParaMonte."
@@ -587,25 +678,28 @@ def installMPI():
                             , marginBot = 1
                             )
 
-                    isYes = getUserResponse ( msg = "\n    Would you like ParaMonte to add the MPI runtime"
-                                                    "\n    environmental variables to your Bash environment (y/n)? " 
-                                                    )
+                    #isYes = getUserResponse ( msg = "\n    MPI runtime variables are essential for parallel ParaMonte"
+                    #                                "\n    simulation. Would you like ParaMonte to add the MPI runtime"
+                    #                                "\n    environmental variables to your Bash environment (y/n)? " 
+                    #                                )
+                    #
+                    #if isYes:
 
-                    if isYes:
+                    bashFileContents = getBashrcContents()
+                    mpivarsFileCommand = "source " + mpivarsFilePath
+                    if mpivarsFileCommand not in bashFileContents:
                         _os.system( "chmod 777 ~/.bashrc")
                         _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte MPI runtime library initialization >>>' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo 'source " + mpivarsFilePath + "' >>  ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + mpivarsFileCommand + "' >>  ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte MPI runtime library initialization <<<' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && source ~/.bashrc" )
 
                         _pm.note( msg = "If you intend to run parallel simulations right now,\n"
-                                      + "it is highly recommneded t close your current shell environment\n"
-                                      + "and open a new Bash shell environment. This is to ensure that all\n"
-                                      + "MPI library environmental variables are properly set in your shell."
+                                      + "it is highly recommneded that you close your current shell environment\n"
+                                      + "and open a new Bash shell environment. This is to ensure that all MPI\n"
+                                      + "library environmental variables are properly set in your shell."
                                 , methodName = _pm.names.paramonte
                                 , marginTop = 1
                                 , marginBot = 1
@@ -643,9 +737,9 @@ def installMPI():
 
 ####################################################################################################################################
 
-def writeVerificationStatusFile(verified):
+def writeVerificationStatusFile(verificationEnabled):
     with open(verificationStatusFilePath, "w") as verificationStatusFile:
-        verificationStatusFile.write(str(verified))
+        verificationStatusFile.write(str(verificationEnabled))
     return None
 
 ####################################################################################################################################
@@ -705,17 +799,19 @@ def build():
                         + "The installation of these software will require 4 to 5 Gb of free space \n"
                         + "on your system (where the ParaMonte-Python interface is already installed).\n"
                         + "Note that the installation script is in Bash and therefore requires Bash shell.\n"
+                        + "An existing recent installation of the GNU Compiler Collection (GCC) on your\n"
+                        + "system would be also highly desirable and will significantly cut the build time.\n"
                         + "Also, downloading the prerequisites requires access to the Internet.\n"
-                        + "If you have an Internet firewall active on your system, please make sure to \n"
+                        + "If you have an Internet firewall active on your system, please make sure to\n"
                         + "turn it off before.\n"
                 , methodName = _pm.names.paramonte
                 , marginTop = 1
                 , marginBot = 1
                 )
 
-        buildEnabled = getUserResponse( msg =   "\n    Do you wish to download and install the ParaMonte library"
-                                                "\n    and its prerequisites on your system now (y/n)? " 
-                                                )
+        buildEnabled = getUserResponse  ( msg   = "\n    Do you wish to download and install the ParaMonte library"
+                                                + "\n    and its prerequisites on your system now (y/n)? " 
+                                        )
 
         currentDir = _os.getcwd()
 
@@ -831,6 +927,8 @@ def build():
                     , marginTop = 1
                     , marginBot = 2
                     )
+
+        writeVerificationStatusFile(verificationEnabled=True)
 
     return None
 

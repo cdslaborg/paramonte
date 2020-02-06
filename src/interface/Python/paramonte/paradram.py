@@ -1054,7 +1054,10 @@ class ParaDRAM:
             if self._mpiDisabled:
                 self.chainList = chainList
                 _pm.note( msg   = "The processed chain file(s) are now stored as a Python list in \n"
-                                + "the new component \"chainList\" of the ParaDRAM-instance object."
+                                + "the new component \"chainList\" of the ParaDRAM-instance object.\n"
+                                + "For example, to access the contents of the first chain file, try:\n\n"
+                                + "    pmpd.chainList[0].df\n\n"
+                                + "where you replace 'pmpd' with the name you are using for your ParaDRAM object."
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
@@ -1220,7 +1223,10 @@ class ParaDRAM:
             if self._mpiDisabled:
                 self.markovChainList = markovChainList
                 _pm.note( msg   = "The processed Markov chain file(s) are now stored as a Python list in \n"
-                                + "the new component \"markovChainList\" of the ParaDRAM-instance object."
+                                + "the new component \"markovChainList\" of the ParaDRAM-instance object.\n"
+                                + "For example, to access the contents of the first Markov chain, try:\n\n"
+                                + "    pmpd.markovChainList[0].df\n\n"
+                                + "where you replace 'pmpd' with the name you are using for your ParaDRAM object."
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
@@ -1377,7 +1383,10 @@ class ParaDRAM:
             if self._mpiDisabled:
                 self.sampleList = sampleList
                 _pm.note( msg   = "The processed sample file(s) are now stored as a Python list in \n"
-                                + "the new component \"sampleList\" of the ParaDRAM-instance object."
+                                + "the new component \"sampleList\" of the ParaDRAM-instance object.\n"
+                                + "For example, to access the contents of the first sample file, try:\n\n"
+                                + "    pmpd.sampleList[0].df\n\n"
+                                + "where you replace 'pmpd' with the name you are using for your ParaDRAM object."
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1

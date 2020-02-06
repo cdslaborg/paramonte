@@ -11,13 +11,13 @@ ParaMonte design goals
 
 ParaMonte has been developed while bearing the following design goals in mind:  
 
--  Full automation of all Monte Carlo simulations to the highest levels possible to ensure the highest-level of user-friendliness of the library and minimal time investment requirements for building, running, and post-processing of simulation models.  
--  Interoperability of the core library with as many programming languages as currently possible, including C/C++, Fortran, Python, with ongoing efforts to support other popular programming languages.  
--  High-Performance meticulously-low-level implementation of the library to ensure the fastest-possible Monte Carlo simulations.  
--  Parallelizability of all simulations via two-sided/one-sided MPI/Coarray communications while requiring zero-parallel-coding efforts from the user.  
--  Virtually zero-dependence on external libraries to ensure hassle-free ParaMonte library builds and ParaMonte simulation runs.  
--  Fully-deterministic reproducibility and automatically-enabled restart functionality for all simulations up 16 digits of precision as requested by the user.  
--  Comprehensive-reporting and post-processing of each simulation and its results, as well as their automatic storage in external files to ensure the simulation results will be comprehensible and reproducible at any time in the distant future.  
+-  **Full automation** of all Monte Carlo simulations to the highest levels possible to ensure the highest-level of user-friendliness of the library and minimal time investment requirements for building, running, and post-processing of simulation models.  
+-  **Interoperability** of the core library with as many programming languages as currently possible, including C/C++, Fortran, Python, with ongoing efforts to support other popular programming languages.  
+-  **High-Performance** meticulously-low-level implementation of the library to ensure the fastest-possible Monte Carlo simulations.  
+-  **Parallelizability** of all simulations via two-sided/one-sided MPI/Coarray communications while requiring zero-parallel-coding efforts from the user.  
+-  **Zero-dependence** on external libraries to ensure hassle-free ParaMonte library builds and ParaMonte simulation runs.  
+-  **Fully-deterministic reproducibility** and automatically-enabled restart functionality for all simulations up 16 digits of precision as requested by the user.  
+-  **Comprehensive-reporting and post-processing** of each simulation and its results, as well as their automatic storage in external files to ensure the simulation results will be comprehensible and reproducible at any time in the distant future.  
 
 Installation  
 ============  
@@ -36,7 +36,7 @@ The Python interface of ParaMonte depends on a number of Python standard, as wel
 Parallelism  
 ===========  
 
-ParaMonte relies on Message Passing Interface (MPI) standard for inter-processor communications. In order to run a parallel simulation you will have to install a compatible MPI library. On Windows and Linux operating systems, we highly recommend downloading and installing Intel MPI library which is available free of charge. On MacOS, we recommend OpenMPI as Intel MPI library does not support MacOS.  
+ParaMonte relies on Message Passing Interface (MPI) standard for inter-processor communications. In order to run a parallel simulation you will have to install a compatible MPI library. On Windows and Linux operating systems, we highly recommend downloading and installing Intel MPI library which is available free of charge. On MacOS, we recommend MPICH since Intel MPI library does not support MacOS. In most cases, the ParaMonte library should be able to automatically install the required libraries on your system, with your permission.  
 
 Citing ParaMonte  
 ================  

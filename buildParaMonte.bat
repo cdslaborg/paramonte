@@ -149,8 +149,8 @@ echo. -- ParaMonte - link type: !LTYPE!
 :: set shared library Fortran linker flags
 
 REM set FC_LIB_FLAGS=/libs:dll /threads %= these flags are actually included by default in recent ifort implementations =%
-set FC_LIB_FLAGS=/threads
-set FL_LIB_FLAGS=/threads
+set FC_LIB_FLAGS=/threads /libs:static
+set FL_LIB_FLAGS=/threads /libs:static
 set FPP_DLL_FLAGS=
 
 set MULTITHREADING=
@@ -161,14 +161,13 @@ if !FL_LIB_FLAGS!==/threads (
 if !ParaMonte_LIB_ENABLED!==true (
     if !LTYPE!==dynamic (
         set FPP_DLL_FLAGS=/define:DLL_ENABLED
-        set FC_LIB_FLAGS=!FC_LIB_FLAGS! /libs:dll
+        REM set FC_LIB_FLAGS=!FC_LIB_FLAGS! /libs:dll
         set FL_LIB_FLAGS=!FL_LIB_FLAGS! /dll
     ) else (
-        set FC_LIB_FLAGS=!FC_LIB_FLAGS! /libs:static
-        REM set FC_LIB_FLAGS=!FC_LIB_FLAGS!
-        if !BTYPE!==debug (
-            set FC_LIB_FLAGS=!FC_LIB_FLAGS! %= /dbglibs not added automatically by Intel compiler =%
-        )
+        REM set FC_LIB_FLAGS=!FC_LIB_FLAGS! /libs:static
+        REM if !BTYPE!==debug (
+        REM     set FC_LIB_FLAGS=!FC_LIB_FLAGS! %= /dbglibs not added automatically by Intel compiler =%
+        REM )
         if !BTYPE!==release (
             set FL_LIB_FLAGS=!FL_LIB_FLAGS! /Qipo-c %= generate single optimized object file if needed =%
         )

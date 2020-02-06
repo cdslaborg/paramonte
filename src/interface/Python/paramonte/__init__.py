@@ -52,8 +52,14 @@ The routines currently supported by the Python interface of ParaMonte include:
         
         Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
 
-        EXAMPLE USAGE:
+        EXAMPLE SERIAL USAGE
+        ====================
 
+        Copy and paste the following code enclosed between the 
+        two comment lines in your python/ipython/jupyter session
+        (make sure the indentation of the pasted lines is correct):
+
+            ##################################
             import paramonte as pm
             import numpy as np
             def getLogFunc(Point):
@@ -64,6 +70,50 @@ The routines currently supported by the Python interface of ParaMonte include:
             pmpd.runSampler ( ndim = 2
                             , getLogFunc = getLogFunc
                             )
+            ##################################
+
+        EXAMPLE PARALLEL USAGE
+        ======================
+
+        Copy and paste the following code enclosed between the 
+        two comment lines in your python/ipython/jupyter session
+        (make sure the indentation of the pasted lines is correct):
+
+            ##################################
+            with open("main.py", "w") as file:
+                file.write  ('''
+            import paramonte as pm
+            import numpy as np
+            def getLogFunc(Point):
+                # return the log of the standard multivariate 
+                # Normal density function with ndim dimensions
+                return -0.5 * np.sum( np.double( Point )**2 )
+            pmpd = pm.ParaDRAM()
+            pmpd.runSampler ( ndim = 2
+                            , getLogFunc = getLogFunc
+                            , mpiEnabled = True
+                            )
+            ''')
+            ##################################
+
+        This will generate a main.py Python script file in the current
+        working directory of your Python session. Now, you can execute 
+        this Python script file (main.py) in parallel in two ways:
+        
+            1.  from inside ipython or jupyter: type the following,
+
+                   !mpiexec -np 3 python main.py
+
+            2.  outside of Python environment, 
+                from within a Bash shell (on Linux or Mac) or,
+                from within an Anaconda command prompt on Windows,
+                type the following,
+
+                   mpiexec -np 3 python main.py
+
+            In both case, the script 'main.py' will run on 3 processors.
+            Feel free to change the number of processors to any number desired.
+            But do not request more than the number of physical cores on your system.
 
 """
 
