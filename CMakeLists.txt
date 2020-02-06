@@ -118,7 +118,7 @@ if ("${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
             "   Please create a directory outside the ParaMonte library source tree or\n"
             "   create a directory inside the ParaMonte library source tree, then change the directory to it and\n"
             "   build under that outside directory, in a manner such as the following,\n\n"
-            "       $ buildDir=$(uname -s)$(uname -p) # set build folder to OS name + architecture\n"
+            "       $ buildDir=$(uname -s)$(uname -m) # set build folder to OS name + architecture\n"
             "       $ mkdir $\{buildDir\}\n"
             "       $ cd $\{buildDir\}\n"
             "       $ CC=gcc FC=gfortran cmake -DBUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/install/dir /path/to/ParaMonte/src/dir\n\n"
@@ -590,7 +590,7 @@ if (NOT DEFINED PMLIB)
     if (WIN32)
         set(ARCHITECTURE ${PLATFORM})
     else()
-        EXECUTE_PROCESS( COMMAND uname -p COMMAND tr -d "\n" OUTPUT_VARIABLE ARCHITECTURE )
+        EXECUTE_PROCESS( COMMAND uname -m COMMAND tr -d "\n" OUTPUT_VARIABLE ARCHITECTURE )
         string(REPLACE "x86_64" "x64" ARCHITECTURE ${ARCHITECTURE})
     endif()
 
