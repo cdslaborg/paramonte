@@ -154,9 +154,7 @@ set FL_LIB_FLAGS=/threads /libs:static
 set FPP_DLL_FLAGS=
 
 set MULTITHREADING=
-if !FL_LIB_FLAGS!==/threads (
-    set MULTITHREADING=mt
-)
+echo.!FL_LIB_FLAGS! | find /I "threads">Nul && ( set "MULTITHREADING=mt" )
 
 if !ParaMonte_LIB_ENABLED!==true (
     if !LTYPE!==dynamic (

@@ -142,7 +142,7 @@ if not "%1"=="" (
             if defined CAFTYPE_LIST set DELIM=/
             set CAFTYPE_LIST=!CAFTYPE_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
-            for %%V in ( "single" "shared" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
+            for %%V in ( "none" "single" "shared" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
             if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
         )
         shift
@@ -231,39 +231,43 @@ if "!FLAG_SUPPORTED!"=="true" (
 REM echo warnings
 
 if defined CAFTYPE_LIST (
-    if defined MPI_ENABLED_LIST (
-        for %%a in ("!MPI_ENABLED_LIST:/=" "!") do (
-            if %%~a==true (
-                echo.
-                echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot 
-                echo.-- ParaMonte - WARNING: be specified along with the MPI flag "--mpi %%~a".
-                echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
-                REM goto LABEL_ERR
-            )
-        )
-    )
-    if defined LANG_LIST (
-        for %%l in ("!LANG_LIST:/=" "!") do (
-            if %%l NEQ "fortran" (
-                if defined CAFTYPE_LIST (
-                    echo.
-                    echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
-                    echo.-- ParaMonte - WARNING: specified along with the %%~l language "--lang %%~l".
-                    echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
-                    REM goto LABEL_ERR
+    for %%c in ("!CAFTYPE_LIST:/=" "!") do (
+        if %%c NEQ "none" (
+            if defined MPI_ENABLED_LIST (
+                for %%a in ("!MPI_ENABLED_LIST:/=" "!") do (
+                    if %%~a==true (
+                        echo.
+                        echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot 
+                        echo.-- ParaMonte - WARNING: be specified along with the MPI flag "--mpi %%~a".
+                        echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
+                        REM goto LABEL_ERR
+                    )
                 )
             )
-        )
-    )
-    if defined LANG_LIST (
-        for %%l in ("!LANG_LIST:/=" "!") do (
-            if %%l NEQ "fortran" (
-                if defined CAFTYPE_LIST (
-                    echo.
-                    echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
-                    echo.-- ParaMonte - WARNING: specified along with the %%~l language "--lang %%~l".
-                    echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
-                    REM goto LABEL_ERR
+            if defined LANG_LIST (
+                for %%l in ("!LANG_LIST:/=" "!") do (
+                    if %%l NEQ "fortran" (
+                        if defined CAFTYPE_LIST (
+                            echo.
+                            echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
+                            echo.-- ParaMonte - WARNING: specified along with the %%~l language "--lang %%~l".
+                            echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
+                            REM goto LABEL_ERR
+                        )
+                    )
+                )
+            )
+            if defined LANG_LIST (
+                for %%l in ("!LANG_LIST:/=" "!") do (
+                    if %%l NEQ "fortran" (
+                        if defined CAFTYPE_LIST (
+                            echo.
+                            echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
+                            echo.-- ParaMonte - WARNING: specified along with the %%~l language "--lang %%~l".
+                            echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
+                            REM goto LABEL_ERR
+                        )
+                    )
                 )
             )
         )
@@ -358,7 +362,7 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
 REM build
 
-set PAR_TYPE_LIST=!MPI_ENABLED_LIST!/!CAFTYPE_LIST!
+REM set PAR_TYPE_LIST=!MPI_ENABLED_LIST!/!CAFTYPE_LIST!
 
 for %%G in ("!LANG_LIST:/=" "!") do (
 
@@ -368,73 +372,82 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
             for %%H in ("!HEAP_ARRAY_ENABLED_LIST:/=" "!") do (
 
-                for %%P in ("!PAR_TYPE_LIST:/=" "!") do (
+                for %%C in ("!CAFTYPE_LIST:/=" "!") do (
 
-                    set BENABLED=true
+                    for %%M in ("!MPI_ENABLED_LIST:/=" "!") do (
 
-                    set ParaMonte_OBJ_ENABLED=true
-                    set ParaMonte_LIB_ENABLED=true
-                    set ParaMonteExample_EXE_ENABLED=true
-                    set ParaMonteExample_RUN_ENABLED=true
+                        set BENABLED=true
 
-                    set BTYPE=%%~B
-                    set LTYPE=%%~L
-                    set HEAP_ARRAY_ENABLED=%%~H
-                    if %%~L==dynamic (
-                        if %%~H==false set BENABLED=false
-                    )
+                        set ParaMonte_OBJ_ENABLED=true
+                        set ParaMonte_LIB_ENABLED=true
+                        set ParaMonteExample_EXE_ENABLED=true
+                        set ParaMonteExample_RUN_ENABLED=true
 
-                    set CAFTYPE=none
-                    set MPI_ENABLED=false
-                    if %%~P==true   set MPI_ENABLED=%%~P
-                    if %%~G==fortran (
-                        if %%~P==single set CAFTYPE=%%~P
-                        if %%~P==shared set CAFTYPE=%%~P
-                        set CFI_ENABLED=false
-                        set ParaMonteTest_OBJ_ENABLED=true
-                        set ParaMonteTest_EXE_ENABLED=true
-                        set ParaMonteTest_RUN_ENABLED=true
-                    ) else (
-                        if %%~P==single set BENABLED=false
-                        if %%~P==shared set BENABLED=false
-                        set CFI_ENABLED=true
-                        set ParaMonteTest_OBJ_ENABLED=false
-                        set ParaMonteTest_EXE_ENABLED=false
-                        set ParaMonteTest_RUN_ENABLED=false
-                    )
+                        set BTYPE=%%~B
+                        set LTYPE=%%~L
+                        set HEAP_ARRAY_ENABLED=%%~H
+                        if %%~L==dynamic (
+                            if %%~H==false set BENABLED=false
+                        )
 
-                    if !BENABLED!==true (
+                        if %%~G==fortran (
+                            set CFI_ENABLED=false
+                            set ParaMonteTest_OBJ_ENABLED=true
+                            set ParaMonteTest_EXE_ENABLED=true
+                            set ParaMonteTest_RUN_ENABLED=true
+                        ) else (
+                            set CFI_ENABLED=true
+                            set ParaMonteTest_OBJ_ENABLED=false
+                            set ParaMonteTest_EXE_ENABLED=false
+                            set ParaMonteTest_RUN_ENABLED=false
+                        )
 
-                        echo.
-                        echo.************************************************************************************************************************************
-                        echo.**** ParaMonte - current library build: --lang %%~G --build %%~B --lib %%~L --heap %%~H --mpi !MPI_ENABLED! caf_type !CAFTYPE!
-                        echo.************************************************************************************************************************************
-                        echo.
+                        if %%C NEQ "none" (
+                            if %%~P==true (
+                                set BENABLED=false
+                            )
+                            if %%H NEQ "true" (
+                                set BENABLED=false
+                            )
+                            if !CFI_ENABLED!==true (
+                                set BENABLED=false
+                            )
+                        )
 
-                        call buildParaMonte.bat
+                        if !BENABLED!==true (
 
-                    )
+                            echo.
+                            echo.************************************************************************************************************************************
+                            echo.**** ParaMonte - current library build: --lang %%~G --build %%~B --lib %%~L --heap %%~H --mpi %%~M caf_type %%~C
+                            echo.************************************************************************************************************************************
+                            echo.
 
-                    if !ERRORLEVEL! NEQ 0 (
-                        echo.
-                        echo.-- ParaMonte - Fatal Error: ParaMonte library build failed for the following configuration:
-                        echo.-- ParaMonte - 
-                        echo.-- ParaMonte -               language: %%~G
-                        echo.-- ParaMonte -             build type: %%~B
-                        echo.-- ParaMonte -           library type: %%~L
-                        echo.-- ParaMonte -           Coarray type: !CAFTYPE!
-                        echo.-- ParaMonte -     heap array enabled: %%~H
-                        echo.-- ParaMonte -            MPI enabled: !MPI_ENABLED!
-                        echo.-- ParaMonte - 
-                        echo.-- ParaMonte - Please report this error at: 
-                        echo.-- ParaMonte - 
-                        echo.-- ParaMonte -     https://github.com/cdslaborg/paramonte/issues
-                        echo.-- ParaMonte - 
-                        echo.-- ParaMonte - gracefully exiting...
-                        echo.
-                        cd %~dp0
-                        set ERRORLEVEL=1
-                        exit /B 1
+                            call buildParaMonte.bat
+
+                        )
+
+                        if !ERRORLEVEL! NEQ 0 (
+                            echo.
+                            echo.-- ParaMonte - Fatal Error: ParaMonte library build failed for the following configuration:
+                            echo.-- ParaMonte - 
+                            echo.-- ParaMonte -               language: %%~G
+                            echo.-- ParaMonte -             build type: %%~B
+                            echo.-- ParaMonte -           library type: %%~L
+                            echo.-- ParaMonte -     heap array enabled: %%~H
+                            echo.-- ParaMonte -           Coarray type: %%~C
+                            echo.-- ParaMonte -            MPI enabled: %%~M
+                            echo.-- ParaMonte - 
+                            echo.-- ParaMonte - Please report this error at: 
+                            echo.-- ParaMonte - 
+                            echo.-- ParaMonte -     https://github.com/cdslaborg/paramonte/issues
+                            echo.-- ParaMonte - 
+                            echo.-- ParaMonte - gracefully exiting...
+                            echo.
+                            cd %~dp0
+                            set ERRORLEVEL=1
+                            exit /B 1
+                        )
+
                     )
 
                 )

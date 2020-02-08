@@ -68,7 +68,9 @@ contains
         ChainSizeObj%desc   = &
         "chainSize determines the number of non-refined, potentially auto-correlated, but unique, samples &
         &drawn by the MCMC sampler before stopping " // methodName // ". &
-        &chainSize must be a positive integer of a minimum value ndim+1 or larger, &
+        &For example, if you specify chainSize = 10000, then 10000 unique sample points (with no duplicates) will be drawn &
+        &from the target objective function that the user has provided. &
+        &The input value for chainSize must be a positive integer of a minimum value ndim+1 or larger, &
         &where ndim is the number of variables that define the domain of the objective function to be sampled. &
         &The default value is " // num2str(ChainSizeObj%def) // "."
     end function constructChainSize
