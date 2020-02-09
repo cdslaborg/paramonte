@@ -50,16 +50,18 @@ if [ -d "${TARGET_DIR}" ]; then
     echo >&2 "-- ParaMonte - compressing all subdirectories in the directory: ${TARGET_DIR}"
     echo >&2
     cd "${TARGET_DIR}"
-    for subdir in ${TARGET_DIR}/*; do
+    for subdir in ./*; do
         if [ -d "${subdir}" ]; then
             tarfile="${subdir}.tar.gz"
             if [ -f "${tarfile}" ]; then
                 echo >&2 "-- ParaMonte - WARNING: compressed subdirectory already exists: ${tarfile}"
                 echo >&2 "-- ParaMonte - WARNING: skipping..."
             else
-                echo >&2 "-- ParaMonte - compressing subdirectory: ${TARGET_DIR}"
+                echo >&2 "-- ParaMonte - compressing subdirectory: ${subdir}"
                 tar -zcvf ${tarfile} ${subdir}
             fi
+        else
+            echo >&2 "-- ParaMonte - WARNING: non-directory object detected: ${subdir}"
         fi
     done
 else
