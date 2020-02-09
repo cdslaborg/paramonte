@@ -58,8 +58,7 @@ if [ -d "${TARGET_DIR}" ]; then
                 echo >&2 "-- ParaMonte - WARNING: skipping..."
             else
                 echo >&2 "-- ParaMonte - compressing subdirectory: ${TARGET_DIR}"
-                cd $subdir;
-                tar -zcvf ${subdir}.tar.gz ${subdir}
+                tar -zcvf ${tarfile} ${subdir}
             fi
         fi
     done
