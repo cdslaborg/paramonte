@@ -385,9 +385,12 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
                         set BTYPE=%%~B
                         set LTYPE=%%~L
+                        set CAFTYPE=%%~C
+                        set MPI_ENABLED=%%~M
                         set HEAP_ARRAY_ENABLED=%%~H
-                        if %%~L==dynamic (
-                            if %%~H==false set BENABLED=false
+
+                        if !LTYPE!==dynamic (
+                            if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
                         )
 
                         if %%~G==fortran (
@@ -402,11 +405,11 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                             set ParaMonteTest_RUN_ENABLED=false
                         )
 
-                        if %%C NEQ "none" (
-                            if %%~P==true (
+                        if !CAFTYPE! NEQ none (
+                            if !MPI_ENABLED!==true (
                                 set BENABLED=false
                             )
-                            if %%H NEQ "true" (
+                            if !HEAP_ARRAY_ENABLED! NEQ true (
                                 set BENABLED=false
                             )
                             if !CFI_ENABLED!==true (

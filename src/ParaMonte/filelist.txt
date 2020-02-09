@@ -87,7 +87,7 @@
   ParaDRAM_mod@Setup_smod.f90
   ParaMonte.f90
   !
-!  Cosmology_mod.f90
-!  StarFormation_mod.f90
-!  BandSpectrum_mod.f90
-!  Batse_mod.f90
+  Cosmology_mod.f90
+  StarFormation_mod.f90
+  BandSpectrum_mod.f90
+  Batse_mod.f90
