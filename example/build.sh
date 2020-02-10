@@ -300,7 +300,11 @@ do
             fi
         fi
         if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
-            LINKER="gfortran"
+            if [ "${MPI_ENABLED}" = "true" ]; then
+                LINKER="mpifort"
+            else
+                LINKER="gfortran"
+            fi
         fi
     fi
 
@@ -323,6 +327,7 @@ do
         if [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ]; then
             {
             echo "# usage:"
+            echo "# "
             echo "#     source ./${RUN_FILE_NAME} -n number_of_processors"
             echo "# "
             echo "# where number_of_processors is an integer representing the number"
@@ -348,6 +353,27 @@ do
             } >> ${RUN_FILE_NAME}
         fi
         {
+        echo ""
+        echo "FILE_DIR=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
+        echo "if [ -z \${PATH+x} ]; then"
+        echo "    PATH=."
+        echo "else"
+        echo "    if [[ \":\$PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
+        echo "        PATH=\"${FILE_DIR}:\${PATH}\""
+        echo "    fi"
+        echo "fi"
+        echo "export LD_LIBRARY_PATH"
+        echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+        echo "    LD_LIBRARY_PATH=."
+        echo "else"
+        echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
+        echo "        LD_LIBRARY_PATH=\"${FILE_DIR}:\${LD_LIBRARY_PATH}\""
+        echo "    fi"
+        echo "fi"
+        echo "export LD_LIBRARY_PATH"
+        echo "export PATH"
+        echo ""
+        echo ""
         echo "if [ -z \${FOR_COARRAY_NUM_IMAGES+x} ]; then"
         echo "    FOR_COARRAY_NUM_IMAGES=${FOR_COARRAY_NUM_IMAGES}"
         echo "fi"
@@ -357,11 +383,6 @@ do
         if [ -f "./setup.sh" ]; then
             echo "source ./setup.sh" >> ${RUN_FILE_NAME}
             echo "" >> ${RUN_FILE_NAME}
-        fi
-        if [ "${PM_LIB_TYPE}" = "dynamic" ]; then
-            echo "export LD_LIBRARY_PATH=${FILE_DIR}:\${LD_LIBRARY_PATH}" > ${RUN_FILE_NAME}
-            echo "" >> ${RUN_FILE_NAME}
-            # export LD_LIBRARY_PATH=${FILE_DIR}:${LD_LIBRARY_PATH}
         fi
 
         echo "# run ParaMonte example executable" >> ${RUN_FILE_NAME}

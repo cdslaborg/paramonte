@@ -403,6 +403,36 @@ fi
 export cmakeInstallEnabled
 
 ####################################################################################################################################
+# set local dependencies
+####################################################################################################################################
+
+ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
+export ParaMonte_REQ_DIR
+ParaMonte_REQ_INSTALL_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations"
+ParaMonte_GNU_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/gnu/8.3.0"
+ParaMonte_MPI_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/mpich/3.2"
+ParaMonte_CAF_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/opencoarrays/2.8.0"
+ParaMonte_CMAKE_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/cmake/${cmakeVersionRequired}"
+
+ParaMonte_GNU_BIN_DIR="${ParaMonte_GNU_ROOT_DIR}/bin"
+ParaMonte_CAF_BIN_DIR="${ParaMonte_CAF_ROOT_DIR}/bin"
+ParaMonte_MPI_BIN_DIR="${ParaMonte_MPI_ROOT_DIR}/bin"
+ParaMonte_CMAKE_BIN_DIR="${ParaMonte_CMAKE_ROOT_DIR}/bin"
+
+ParaMonte_GNU_LIB_DIR="${ParaMonte_GNU_ROOT_DIR}/lib64"
+ParaMonte_MPI_LIB_DIR="${ParaMonte_MPI_ROOT_DIR}/lib"
+ParaMonte_CAF_LIB_DIR="${ParaMonte_CAF_ROOT_DIR}/lib64"
+
+ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_BIN_DIR}/caf"
+export ParaMonte_CAF_WRAPPER_PATH
+
+ParaMonte_CAF_SETUP_PATH="${ParaMonte_CAF_ROOT_DIR}/setup.sh"
+export ParaMonte_CAF_SETUP_PATH
+
+ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"
+export ParaMonte_CMAKE_PATH
+
+####################################################################################################################################
 # set compiler suite
 ####################################################################################################################################
 
@@ -624,8 +654,8 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                     PMCS=intel
                     COMPILER_VERSION=${intelFortranCompilerVersion}
                     Fortran_COMPILER_PATH="${intelFortranCompilerPath}"
-                    #MPIEXEC_PATH=$(dirname "${Fortran_COMPILER_PATH}")/mpiexec
-                    MPIEXEC_PATH=$(command -v mpiexec)
+                    MPIEXEC_PATH=$(dirname "${intelFortranMpiWrapperPath}")/mpiexec
+                    #MPIEXEC_PATH=$(command -v mpiexec)
                     prereqInstallAllowed=false
                 else
                     PMCS=gnu
@@ -649,7 +679,7 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                     if ! ${intelFortranMpiWrapperPath+false}; then
                         COMPILER_VERSION=${intelFortranCompilerVersion}
                         Fortran_COMPILER_PATH="${intelFortranCompilerPath}"
-                        MPIEXEC_PATH=$(dirname "${Fortran_COMPILER_PATH}")/mpiexec
+                        MPIEXEC_PATH=$(dirname "${intelFortranMpiWrapperPath}")/mpiexec
                     else
                         errorOccurred=true
                     fi
@@ -697,7 +727,7 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
         if [ "${MPI_ENABLED}" = "true" ]; then
             if [ -z ${MPIEXEC_PATH+x} ]; then
                 mpiInstallEnabled=true
-                #gnuInstallEnabled=true
+                gnuInstallEnabled=true
                 if [ "${prereqInstallAllowed}" = "true" ]; then
                     echo >&2
                     echo >&2 "-- ParaMonte - WARNING: GNU Fortran compiler could not be found on your system."
@@ -720,8 +750,8 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                 cafInstallEnabled=false
             else
                 cafInstallEnabled=true
-                #mpiInstallEnabled=true
-                #gnuInstallEnabled=true
+                mpiInstallEnabled=true
+                gnuInstallEnabled=true
             fi
         fi
 
@@ -807,8 +837,8 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
     if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${gnuInstallEnabled}" = "true" ] || [ "${cmakeInstallEnabled}" = "true" ]; then
 
-        ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
-        CAF_SETUP_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/2.8.0/setup.sh"
+        #ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
+        #ParaMonte_CAF_SETUP_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/2.8.0/setup.sh"
 
         if [ "${FRESH_INSTALL_ENABLED}" = "true" ]; then
             rm -rf "${ParaMonte_REQ_DIR}"
@@ -852,6 +882,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
                 cp -rv "${ParaMonte_ROOT_DIR}/auxil/prerequisites" "${ParaMonte_REQ_DIR}/../"
                 verify $? "installation setup of prerequisites"
+                chmod +x -R "${ParaMonte_REQ_DIR}"
 
             else
 
@@ -865,26 +896,19 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
         if [ "${answer}" = "y" ]; then
 
-            unset PM_PRE_PATH
-
             # check cmake
 
             if [ "${cmakeInstallEnabled}" = "true" ]; then
-                CMAKE_BIN_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/cmake/${cmakeVersionRequired}/bin"
-                CMAKE_PATH="${CMAKE_BIN_PATH}/cmake"
-                if [[ -f "${CMAKE_PATH}" ]]; then
+                # ParaMonte_CMAKE_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/cmake/${cmakeVersionRequired}/bin"
+                # ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"
+                if [[ -f "${ParaMonte_CMAKE_PATH}" ]]; then
                     echo >&2 "-- ParaMonte - cmake ${cmakeVersionRequired} detected."
-                    cmakeInstallEnabled=false
+                    #cmakeInstallEnabled=false
                 else
                     echo >&2 "-- ParaMonte - cmake ${cmakeVersionRequired} missing."
                     echo >&2 "-- ParaMonte - installing the prerequisites...this can take a while."
                     (cd ${ParaMonte_REQ_DIR} && chmod +x ./install.sh && ./install.sh  --yes-to-all --package cmake --install-version ${cmakeVersionRequired} )
                     verify $? "installation of cmake"
-                fi
-                if [ -z ${PM_PRE_PATH+x} ]; then
-                    PM_PRE_PATH="${CMAKE_BIN_PATH}"
-                else
-                    PM_PRE_PATH="${PM_PRE_PATH}:${CMAKE_BIN_PATH}"
                 fi
             fi
 
@@ -892,11 +916,11 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
             CURRENT_PKG="MPICH library"
             if [ "${mpiInstallEnabled}" = "true" ]; then
-                MPI_BIN_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/mpich/3.2/bin"
-                MPIEXEC_PATH="${MPI_BIN_PATH}/mpiexec"
+                #ParaMonte_MPI_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/mpich/3.2/bin"
+                MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
                 if [[ -f "${MPIEXEC_PATH}" ]]; then
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} detected."
-                    mpiInstallEnabled=false
+                    #mpiInstallEnabled=false
                 else
                     ##########################################################################
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} missing."
@@ -919,11 +943,6 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                         fi
                     }
                     ##########################################################################
-                fi
-                if [ -z ${PM_PRE_PATH+x} ]; then
-                    PM_PRE_PATH="${MPI_BIN_PATH}"
-                else
-                    PM_PRE_PATH="${PM_PRE_PATH}:${MPI_BIN_PATH}"
                 fi
             fi
 
@@ -931,11 +950,11 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
             CURRENT_PKG="GNU compiler collection"
             if [ "${gnuInstallEnabled}" = "true" ]; then
-                GCC_BIN_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/gnu/8.3.0/bin"
-                Fortran_COMPILER_PATH="${GCC_BIN_PATH}/gfortran"
+                #ParaMonte_GNU_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/gnu/8.3.0/bin"
+                Fortran_COMPILER_PATH="${ParaMonte_GNU_BIN_DIR}/gfortran"
                 if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} detected."
-                    gnuInstallEnabled=false
+                    #gnuInstallEnabled=false
                 else
                     ##########################################################################
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} missing."
@@ -959,32 +978,27 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     }
                     ##########################################################################
                 fi
-                if [ -z ${PM_PRE_PATH+x} ]; then
-                    PM_PRE_PATH="${GCC_BIN_PATH}"
-                else
-                    PM_PRE_PATH="${PM_PRE_PATH}:${GCC_BIN_PATH}"
-                fi
             fi
 
-            # set up setup.sh file
+            # # set up setup.sh file
 
-            SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
-            export SETUP_FILE_PATH
-            echo "# ParaMonte runtime environment setup script." > ${SETUP_FILE_PATH}
-            echo "# Source this Bash script in your Bash environment like," >> ${SETUP_FILE_PATH}
-            echo "#     source ${SETUP_FILE_PATH}" >> ${SETUP_FILE_PATH}
-            echo "# before compiling your source files and linking with ParaMonte library." >> ${SETUP_FILE_PATH}
-            echo "" >> ${SETUP_FILE_PATH}
+            # SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
+            # export SETUP_FILE_PATH
+
+            # echo "# ParaMonte runtime environment setup script." > ${SETUP_FILE_PATH}
+            # echo "# Source this Bash script in your Bash environment like," >> ${SETUP_FILE_PATH}
+            # echo "#     source ./setup.sh" >> ${SETUP_FILE_PATH}
+            # echo "# before compiling your source files and linking with ParaMonte library." >> ${SETUP_FILE_PATH}
+            # echo "" >> ${SETUP_FILE_PATH}
 
             # check caf
 
             CURRENT_PKG="OpenCoarrays compiler wrapper"
             if [ "${cafInstallEnabled}" = "true" ]; then
-                CAF_BIN_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/2.8.0/bin"
-                CAF_PATH="${CAF_BIN_PATH}/caf"
-                if [[ -f "${CAF_PATH}" ]]; then
+                #ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_BIN_DIR}/caf"
+                if [[ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]]; then
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} detected."
-                    cafInstallEnabled=false
+                    #cafInstallEnabled=false
                 else
                     ##########################################################################
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} missing."
@@ -1008,34 +1022,184 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     }
                     ##########################################################################
                 fi
-                Fortran_COMPILER_PATH="${CAF_PATH}"
-                if [ -z ${PM_PRE_PATH+x} ]; then
-                    PM_PRE_PATH="${CAF_BIN_PATH}"
-                else
-                    PM_PRE_PATH="${PM_PRE_PATH}:${CAF_BIN_PATH}"
-                fi
-                echo "source ${CAF_SETUP_PATH}" >> ${SETUP_FILE_PATH}
-                echo "" >> ${SETUP_FILE_PATH}
+                Fortran_COMPILER_PATH="${ParaMonte_CAF_WRAPPER_PATH}"
             fi
 
-            if [ -f "${CAF_SETUP_PATH}" ]; then
-              source "${CAF_SETUP_PATH}"
+            if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
+                source "${ParaMonte_CAF_SETUP_PATH}"
+                # echo "" >> ${SETUP_FILE_PATH}
+                # echo "source ${ParaMonte_CAF_SETUP_PATH}" >> ${SETUP_FILE_PATH}
+                # echo "" >> ${SETUP_FILE_PATH}
             fi
-
-            if ! [ -z ${PM_PRE_PATH+x} ]; then
-
-                PATH="${PM_PRE_PATH}:${PATH}"
-                export PATH
-
-                echo "PATH=${PM_PRE_PATH}:\${PATH}" >> ${SETUP_FILE_PATH}
-                echo "" >> ${SETUP_FILE_PATH}
-
-            fi
-            chmod +x ${SETUP_FILE_PATH}
 
         fi
 
     fi
+
+fi
+
+####################################################################################################################################
+# set up PATH & LD_LIBRARY_PATH
+####################################################################################################################################
+
+if [ -d "${ParaMonte_CMAKE_BIN_DIR}" ]; then
+    if [ -z ${PATH+x} ]; then
+        PATH="${ParaMonte_CMAKE_BIN_DIR}"
+    else
+        if [[ ":$PATH:" != *":${ParaMonte_CMAKE_BIN_DIR}:"* ]]; then
+            PATH="${ParaMonte_CMAKE_BIN_DIR}:${PATH}"
+        fi
+    fi
+fi
+
+####################################################################################################################################
+# set up setup.sh file
+####################################################################################################################################
+
+if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ]; then
+
+    SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
+    export SETUP_FILE_PATH
+    {
+    echo "# ParaMonte runtime environment setup script."
+    echo "# Source this Bash script in your Bash environment like,"
+    echo "#     source ./setup.sh"
+    echo "# before compiling your source files and linking with ParaMonte library."
+    echo ""
+    } > ${SETUP_FILE_PATH}
+    chmod +x ${SETUP_FILE_PATH}
+
+    if [[ -f "${SETUP_FILE_PATH}" ]]; then
+        if [[ -f "${ParaMonte_CAF_SETUP_PATH}" ]]; then
+            {
+            echo ""
+            echo "source ${ParaMonte_CAF_SETUP_PATH}"
+            echo ""
+            } >> ${SETUP_FILE_PATH}
+            if [ "${LTYPE}" = "dynamic" ]; then
+                {
+                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+                echo "    LD_LIBRARY_PATH=."
+                echo "else"
+                echo "    FILE_DIR=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
+                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
+                echo "        LD_LIBRARY_PATH=\"${FILE_DIR}:\${LD_LIBRARY_PATH}\""
+                echo "    fi"
+                echo "fi"
+                echo "export LD_LIBRARY_PATH"
+                echo ""
+                } >> ${SETUP_FILE_PATH}
+            fi
+        fi
+    fi
+
+    if [ -d "${ParaMonte_GNU_BIN_DIR}" ]; then
+        if [ -z ${PATH+x} ]; then
+            PATH="${ParaMonte_GNU_BIN_DIR}"
+        else
+            if [[ ":$PATH:" != *":${ParaMonte_GNU_BIN_DIR}:"* ]]; then
+                PATH="${ParaMonte_GNU_BIN_DIR}:${PATH}"
+            fi
+        fi
+        if [ -z ${LD_LIBRARY_PATH+x} ]; then
+            LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}"
+        else
+            if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
+            fi
+        fi
+        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+            {
+            echo "if [ -z \${PATH+x} ]; then"
+            echo "    export PATH=\"${ParaMonte_GNU_BIN_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$PATH:\" != *\":${ParaMonte_GNU_BIN_DIR}:\"* ]]; then"
+            echo "        export PATH=\"${ParaMonte_GNU_BIN_DIR}:\${PATH}\""
+            echo "    fi"
+            echo "fi"
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    export LD_LIBRARY_PATH=\"${ParaMonte_GNU_LIB_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${ParaMonte_GNU_LIB_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${ParaMonte_GNU_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+            } >> ${SETUP_FILE_PATH}
+        fi
+    fi
+
+    if [ -d "${ParaMonte_MPI_BIN_DIR}" ]; then
+        if [ -z ${PATH+x} ]; then
+            PATH="${ParaMonte_MPI_BIN_DIR}"
+        else
+            if [[ ":$PATH:" != *":${ParaMonte_MPI_BIN_DIR}:"* ]]; then
+                PATH="${ParaMonte_MPI_BIN_DIR}:${PATH}"
+            fi
+        fi
+        if [ -z ${LD_LIBRARY_PATH+x} ]; then
+            LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}"
+        else
+            if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_MPI_LIB_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
+            fi
+        fi
+        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+            {
+            echo "if [ -z \${PATH+x} ]; then"
+            echo "    export PATH=\"${ParaMonte_MPI_BIN_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$PATH:\" != *\":${ParaMonte_MPI_BIN_DIR}:\"* ]]; then"
+            echo "        export PATH=\"${ParaMonte_MPI_BIN_DIR}:\${PATH}\""
+            echo "    fi"
+            echo "fi"
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    export LD_LIBRARY_PATH=\"${ParaMonte_MPI_LIB_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${ParaMonte_MPI_LIB_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${ParaMonte_MPI_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+            } >> ${SETUP_FILE_PATH}
+        fi
+    fi
+
+    if [ -d "${ParaMonte_CAF_BIN_DIR}" ]; then
+        if [ -z ${PATH+x} ]; then
+            PATH="${ParaMonte_CAF_BIN_DIR}"
+        else
+            if [[ ":$PATH:" != *":${ParaMonte_CAF_BIN_DIR}:"* ]]; then
+                PATH="${ParaMonte_CAF_BIN_DIR}:${PATH}"
+            fi
+        fi
+        if [ -z ${LD_LIBRARY_PATH+x} ]; then
+            LD_LIBRARY_PATH="${ParaMonte_CAF_LIB_DIR}"
+        else
+            if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_CAF_LIB_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${ParaMonte_CAF_LIB_DIR}:${LD_LIBRARY_PATH}"
+            fi
+        fi
+        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+            {
+            echo "if [ -z \${PATH+x} ]; then"
+            echo "    export PATH=\"${ParaMonte_CAF_BIN_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$PATH:\" != *\":${ParaMonte_CAF_BIN_DIR}:\"* ]]; then"
+            echo "        export PATH=\"${ParaMonte_CAF_BIN_DIR}:\${PATH}\""
+            echo "    fi"
+            echo "fi"
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    export LD_LIBRARY_PATH=\"${ParaMonte_CAF_LIB_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${ParaMonte_CAF_LIB_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${ParaMonte_CAF_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+            } >> ${SETUP_FILE_PATH}
+        fi
+    fi
+
+    export PATH
+    export LD_LIBRARY_PATH
 
 fi
 
@@ -1059,7 +1223,7 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
         chmod +x getCompilerVersion.exe
         ./getCompilerVersion.exe && {
             COMPILER_VERSION=$(head -n 1 getCompilerVersion.tmp)
-            echo >&2 "-- ParaMonteCompiler - ${PMCS} ${LANG} compiler version: {COMPILER_VERSION}"
+            echo >&2 "-- ParaMonteCompiler - ${PMCS} ${LANG} compiler version: ${COMPILER_VERSION}"
             isParaMonteCompatibleCompiler=$(head -n 1 isParaMonteCompatibleCompiler.tmp)
             if [ "$isParaMonteCompatibleCompiler" = "true" ]; then
                 echo >&2 "-- ParaMonteCompiler - ${PMCS} ${LANG} compiler is ParaMonte compatible!"
@@ -1228,8 +1392,14 @@ echo >&2 "-- ParaMonte - CMAKE Fortran compiler option: ${FC_OPTION}"
 echo >&2 "-- ParaMonte - CMAKE mpiexec option: ${MPIEXEC_OPTION}"
 echo >&2
 
+if [ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${cafInstallEnabled}" = "true" ]; then
+    ParaMonte_CAF_SETUP_PATH_CMD="source ${ParaMonte_CAF_SETUP_PATH}"
+else
+    ParaMonte_CAF_SETUP_PATH_CMD=""
+fi
 
 (cd ${ParaMonte_BLD_DIR} && \
+${ParaMonte_CAF_SETUP_PATH_CMD} && \
 cmake  \
 --verbose=1 \
 ${FC_OPTION} \
@@ -1261,7 +1431,7 @@ export LD_LIBRARY_PATH
 if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
     if [ "${MPI_ENABLED}" = "true" ]; then
         (cd ${ParaMonte_BLD_DIR}/test/bin && \
-        mpiexec -np ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte \
+        "${MPIEXEC_PATH}" -np ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte \
         )
     else
         if [ "${PMCS}" = "gnu" ]; then

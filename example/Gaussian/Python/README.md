@@ -21,15 +21,15 @@
 
 ## Build  
 
-The instructions for building the Python interface of ParaMonte library are identical to the C interface, except that, the library type at the time of build must be set to `dynamic` (as oppposed to `static`).
+The instructions for building the Python interface of ParaMonte library are identical to the C interface, except that, the library type at the time of build must be set to `dynamic` (as opposed to `static`).
 
 ## Usage  
 
 **Environment**  
 
-- **Install Anaconda distribution of Python 3**: The Python interface of ParaMonte minimally requires the following Python libraries: `numpy`, `scipy`, `pandas`, `seaborn`, `weakref`. The Anaconda distribution of Python automatically comes with all of these packages when installed on your system.  
+- **Install Anaconda distribution of Python 3**: The Python interface of ParaMonte minimally requires the following Python libraries: `numpy`, `scipy`, `pandas`, `seaborn`. The Anaconda distribution of Python automatically comes with all of these packages when installed on your system.  
 
-- **Optionally install a compatible MPI library**: For parallel simulations (via MPI), you will also need an MPI library already installed on your system. We recommend Intel MPI library which is avaialable for free from their website. On MacOS, OpenMPI can be used as Intel MPI library currently (as of January 2020) does not support MacOS.  
+- **Optionally install a compatible MPI library**: For parallel simulations (via MPI), you will also need an MPI library already installed on your system. We recommend Intel MPI library which is avaialable for free from their website. On macOS, OpenMPI can be used as Intel MPI library currently (as of January 2020) does not support macOS.  
 
 **Running the ParaMonte example**  
 

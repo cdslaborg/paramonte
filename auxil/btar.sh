@@ -22,7 +22,11 @@
 #
 #**********************************************************************************************************************************
 #**********************************************************************************************************************************
-
+#
+# Usage:
+#
+#   ./auxil/btar.sh --dir ./bin/
+#
 ####################################################################################################################################
 # parse arguments
 ####################################################################################################################################
@@ -53,12 +57,14 @@ if [ -d "${TARGET_DIR}" ]; then
     for subdir in ./*; do
         if [ -d "${subdir}" ]; then
             tarfile="${subdir}.tar.gz"
+            #cd "${subdir}"
             if [ -f "${tarfile}" ]; then
                 echo >&2 "-- ParaMonte - WARNING: compressed subdirectory already exists: ${tarfile}"
                 echo >&2 "-- ParaMonte - WARNING: skipping..."
             else
                 echo >&2 "-- ParaMonte - compressing subdirectory: ${subdir}"
-                tar -zcvf ${tarfile} ${subdir}
+                tar -zcvf ${tarfile} --exclude="${subdir}/setup.sh" ${subdir}
+                #cd ..
             fi
         else
             echo >&2 "-- ParaMonte - WARNING: non-directory object detected: ${subdir}"

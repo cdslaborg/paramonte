@@ -2,7 +2,7 @@
 > 
 > Copyright (C) 2012-present, The Computational Data Science Lab  
 > 
-> This file is part of ParaMonte library.   
+> This file is part of the ParaMonte library.   
 > 
 > ParaMonte is free software: you can redistribute it and/or modify  
 > it under the terms of the GNU Lesser General Public License as published by  
@@ -17,7 +17,7 @@
 > along with ParaMonte.  If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).  
   
 
-**NOTE:** For complete clear instructions on installation and building of ParaMonte, please visit [cdslab.org/pm](https://www.cdslab.org/pm). All of the steps described below will be automatically done for you if you build the entire library by following the instructions provided in the aforementioned web-link.  
+**NOTE:** For complete clear instructions on the installation and building of ParaMonte, please visit [cdslab.org/pm](https://www.cdslab.org/pm). **All of the steps described below will be automatically done for you if you build the entire library by following the instructions provided in the aforementioned web-link.**  
 
 ## Build  
 
@@ -27,7 +27,7 @@ Building this example requires the following components in the same folder and t
 - the example input file `paramonte.in`,  
 - on Windows,  
     - the `build.bat` script, available in the grandparent directory of this folder,  
-    - currently the only compiler that the build script recognizes is Intel Fortran (`ifort`) compiler,  
+    - currently, the only compiler that the build script recognizes is Intel Fortran (`ifort`) compiler,  
     - optionally, if running in parallel, the installation of Intel MPI library is required, which is available free of charge,  
 - on Linux,  
     - either Intel Fortran (`ifort`) or GNU Fortran (`gfortran`) compiler,  
@@ -49,17 +49,17 @@ Building this example requires the following components in the same folder and t
 - **Install Intel Parallel Studio**: If you are a student/teacher/faculty/open-source-developer, you can also download and install, free of charge, the most recent **Intel Parallel Studio** on your system which, by default, includes the Intel MPI library.  
 
 - **Open the right command-line interface to build/run ParaMonte example**: If the ParaMonte library that you intend to use is built for 64-bit architecture, then make sure you open a 64-bit instance of the command-line interface in either of the two cases below:  
-    - If you have installed Intel Parallel Studio, open an instance of the **command-line interface** that comes with Intel Parallel Studio from the list of programs in Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
-    - Otherwise, if you do not have Intel Parallel Studio, open an instance of the **command-line interface** that comes with Microsoft Visual Studio from the list of programs in Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
+    - If you have installed Intel Parallel Studio, open an instance of the **command-line interface** that comes with Intel Parallel Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
+    - Otherwise, if you do not have Intel Parallel Studio, open an instance of the **command-line interface** that comes with Microsoft Visual Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
 
-- **Build the ParaMonte example**:  
-    Buid the example via Intel Parallel Studio command-line interface,  
+-   **Build the ParaMonte example**:  
+    Build the example via Intel Parallel Studio command-line interface,  
     ```
     build.bat  
     ```
-    The build script will automatically detect whether a parallel application has be built. By default, the name of the output executable is `runExample.exe`.  
+    The build script will automatically detect whether a parallel application has been built. By default, the name of the output executable is `runExample.exe`.  
 
-- **Run the ParaMonte example executable**:  
+-   **Run the ParaMonte example executable**:  
     - For serial applications simply type the name of the output executable,  
         ```
         runExample.exe
@@ -70,9 +70,33 @@ Building this example requires the following components in the same folder and t
         ```
         where `NUM_PROCESSES` represents the number of processes on which the application will run.  
 
-### Linux  
+### Unix  
 
 **Environment**  
+
+-   If you intend to run serial ParaMonte applications, **install either Intel Fortran compiler (ifort >2018) or, GNU Fortran compiler (gfortran >7.0.0)**. If you follow the full installation instructions of ParaMonte, the prerequisites will be automatically installed for you.  
+
+-   If you intend to run MPI parallel ParaMonte applications, **install either Intel Parallel Studio (>2018) or, GNU Compiler Collection (>7.0.0) and MPICH (>3.2) on your system**. If you follow the full installation instructions of ParaMonte, the prerequisites will be automatically installed for you. Note that on macOS, only the latter option is available since the Intel MPI library does not support macOS.  
+
+-   If you intend to run Coarray parallel ParaMonte applications, **install either Intel Parallel Studio (>2018) or, GNU Compiler Collection (>7.0.0) and OpenCoarrays (>2.8.0) on your system**. If you follow the full installation instructions of ParaMonte, the prerequisites will be automatically installed for you. Note that on macOS, only the latter option is available since the Intel MPI library does not support macOS.  
+
+-   Open a Bash shell, change directory to the ParaMonte example's directory, then build the executable via,  
+    ```
+    build.sh  
+    ```
+    The build script will automatically detect whether a parallel application has to be built. By default, the name of the output executable is `runExample.exe`. The script will also generate a new Bash script named `run.sh`. To run the generated example executable, type,  
+    ```
+    ./run.sh
+    ```
+    The script will automatically detect whether the application has to be run in parallel or serial. If the application is parallel, you can also pass the number of cores on which you want to run the example via,  
+    ```
+    ./run.sh --num_images NUM_PROCESSOR
+    ```  
+    or,  
+    ```
+    ./run.sh -n NUM_PROCESSOR
+    ```  
+    where you will have to replace `NUM_PROCESSOR` with your desired number of processes.  
 
 
 **For more information**, visit [cdslab.org/pm](https://www.cdslab.org/pm) or contact Amir Shahmoradi: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  

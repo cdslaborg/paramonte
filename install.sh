@@ -106,11 +106,9 @@ while [ "$1" != "" ]; do
         -M | --mpiexec )        shift
                                 MPIEXEC_PATH="$1"
                                 ;;
-        -F | --fresh )          shift
-                                fresh_flag="--fresh"
+        -F | --fresh )          fresh_flag="--fresh"
                                 ;;
-        -y | --yes-to-all )     shift
-                                yes_to_all_flag="--yes-to-all"
+        -y | --yes-to-all )     yes_to_all_flag="--yes-to-all"
                                 ;;
         -B | --bootstrap )      shift
                                 gcc_bootstrap_flag="--bootstrap"
@@ -587,6 +585,8 @@ for PMCS in $PMCS_LIST; do
                                 ${mpiexec_flag} \
                                 ${num_images_flag} \
                                 )
+
+                                fresh_flag=""
 
                             fi
 
