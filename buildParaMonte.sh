@@ -888,7 +888,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 if ! [ -d "${ParaMonte_REQ_DIR}" ]; then
                     mkdir "${ParaMonte_REQ_DIR}"
                 fi
-                (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf prerequisites.tar.gz -C prerequisites --strip-components 1)
+                (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf opencoarrays.tar.gz -C prerequisites --strip-components 1)
                 verify $? "unpacking of prerequisites"
                 # chmod +x -R "${ParaMonte_REQ_DIR}"
 
