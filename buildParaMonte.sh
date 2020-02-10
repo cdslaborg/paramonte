@@ -833,6 +833,8 @@ if [ "${FRESH_INSTALL_ENABLED}" = "true" ]; then
     gnuInstallEnabled=true
 fi
 
+chmod 777 -R "${ParaMonte_ROOT_DIR}/auxil/prerequisites"
+
 if [ "${prereqInstallAllowed}" = "true" ]; then
 
     if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${gnuInstallEnabled}" = "true" ] || [ "${cmakeInstallEnabled}" = "true" ]; then
