@@ -62,6 +62,7 @@ set CAFTYPE_LIST=
 set MPI_ENABLED_LIST=
 set HEAP_ARRAY_ENABLED_LIST=
 set FOR_COARRAY_NUM_IMAGES=
+set DRY_RUN=false
 
 echo.
 type .\auxil\ParaMonteBanner.txt
@@ -78,7 +79,7 @@ set VALUE_SUPPORTED=true
 
 if not "%1"=="" (
 
-    echo.-- ParaMonte - processing: %1 %2
+    echo.-- ParaMonte - processing: %1
 
     set FLAG=%1
     set VALUE=%2
@@ -196,6 +197,13 @@ if not "%1"=="" (
         for %%V in ( "true" "false" ) do ( if /I "!ParaMonte_FLAG_CLEANUP_ENABLED!"=="%%~V" set "VALUE_SUPPORTED=true" )
         if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
         shift
+    )
+
+    REM --dryrun
+
+    if "!FLAG!"=="--dryrun" (
+        set FLAG_SUPPORTED=true
+        set DRY_RUN=true
     )
 
     REM --help
@@ -362,6 +370,12 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
 REM build
 
+if !DRY_RUN!==true (
+    set FRESH_RUN=false
+) else (
+    set FRESH_RUN=true
+)
+
 REM set PAR_TYPE_LIST=!MPI_ENABLED_LIST!/!CAFTYPE_LIST!
 
 for %%G in ("!LANG_LIST:/=" "!") do (
@@ -378,10 +392,10 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
                         set BENABLED=true
 
-                        set ParaMonte_OBJ_ENABLED=true
-                        set ParaMonte_LIB_ENABLED=true
-                        set ParaMonteExample_EXE_ENABLED=true
-                        set ParaMonteExample_RUN_ENABLED=true
+                        set ParaMonte_OBJ_ENABLED=!FRESH_RUN!
+                        set ParaMonte_LIB_ENABLED=!FRESH_RUN!
+                        set ParaMonteExample_EXE_ENABLED=!FRESH_RUN!
+                        set ParaMonteExample_RUN_ENABLED=!FRESH_RUN!
 
                         set BTYPE=%%~B
                         set LTYPE=%%~L
@@ -395,9 +409,9 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
                         if %%~G==fortran (
                             set CFI_ENABLED=false
-                            set ParaMonteTest_OBJ_ENABLED=true
-                            set ParaMonteTest_EXE_ENABLED=true
-                            set ParaMonteTest_RUN_ENABLED=true
+                            set ParaMonteTest_OBJ_ENABLED=!FRESH_RUN!
+                            set ParaMonteTest_EXE_ENABLED=!FRESH_RUN!
+                            set ParaMonteTest_RUN_ENABLED=!FRESH_RUN!
                         ) else (
                             set CFI_ENABLED=true
                             set ParaMonteTest_OBJ_ENABLED=false
