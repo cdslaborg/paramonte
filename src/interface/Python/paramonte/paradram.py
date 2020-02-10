@@ -730,16 +730,16 @@ class ParaDRAM:
 
             if libFound: # check if lib file exists
                 break
-            else:
-                if self._mpiDisabled:
-                    _pm.warn( msg   = "ParaMonte dynamic library for the requested build mode " + buildMode + " not found.\n"
-                                    + "Searching for ParaMonte dynamic library in other build modes..."
-                            , methodName = _pm.names.paradram
-                            , marginTop = 1
-                            , marginBot = 1
-                            )
-                #libname = libname.replace(buildMode,mode)
-                #buildMode = mode
+            #else:
+            #    if self._mpiDisabled:
+            #        _pm.warn( msg   = "ParaMonte dynamic library for the requested build mode " + buildMode + " not found.\n"
+            #                        + "Searching for ParaMonte dynamic library in other build modes..."
+            #                , methodName = _pm.names.paradram
+            #                , marginTop = 1
+            #                , marginBot = 1
+            #                )
+            #    #libname = libname.replace(buildMode,mode)
+            #    #buildMode = mode
 
         if not libFound:
             from _pmreqs import buildInstructionNote
@@ -799,18 +799,17 @@ class ParaDRAM:
             from _pmreqs import getLocalInstallDir
             localInstallDir = getLocalInstallDir()
 
-            if localInstallDir is not None:
-                if localInstallDir.gnu.root is not None:
-                    for object in _os.scandir(localInstallDir.gnu.root):
-                        if object.is_dir() and ("lib" in object.name):
-                            _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            if localInstallDir.gnu.root is not None:
+                for object in _os.scandir(localInstallDir.gnu.root):
+                    if object.is_dir() and ("lib" in object.name):
+                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
 
-                if localInstallDir.mpi.root is not None: 
-                    if localInstallDir.mpi.bin is not None: _os.environ["PATH"] = localInstallDir.mpi.bin + _os.pathsep + _os.environ["PATH"]
-                    for object in _os.scandir(localInstallDir.mpi.root):
-                        if object.is_dir() and ("lib" in object.name):
-                            _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-                    if localInstallDir.mpi.lib is not None: _os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            if localInstallDir.mpi.root is not None: 
+                if localInstallDir.mpi.bin is not None: _os.environ["PATH"] = localInstallDir.mpi.bin + _os.pathsep + _os.environ["PATH"]
+                for object in _os.scandir(localInstallDir.mpi.root):
+                    if object.is_dir() and ("lib" in object.name):
+                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+                if localInstallDir.mpi.lib is not None: _os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
 
         try:
 

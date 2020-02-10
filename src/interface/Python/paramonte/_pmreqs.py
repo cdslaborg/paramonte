@@ -243,62 +243,59 @@ def setupUnixPath():
         _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
 
     localInstallDir = getLocalInstallDir()
-    if localInstallDir is not None:
-        if localInstallDir.root is not None:
+    if localInstallDir.root is not None:
 
-            if localInstallDir.gnu is not None:
-                pathcmd = None
-                dlibcmd = None
-                if localInstallDir.gnu.bin is not None: pathcmd = "export PATH=" + localInstallDir.gnu.bin + ":$PATH"
-                if localInstallDir.gnu.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.gnu.lib + ":$LD_LIBRARY_PATH"
-                if (pathcmd is not None) or (dlibcmd is not None):
-                    if (pathcmd not in bashFileContents) or (dlibcmd not in bashFileContents):
-                        _os.system( "chmod 777 ~/.bashrc")
-                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local GNU installation setup >>>' >> ~/.bashrc" )
-                        if pathcmd is not None:
-                            if pathcmd not in bashFileContents:
-                                _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
-                        if dlibcmd is not None:
-                            if dlibcmd not in bashFileContents:
-                                _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
-                    if pathcmd not in bashFileContents or dlibcmd not in bashFileContents:
-                        _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local GNU installation setup <<<' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
+        pathcmd = None
+        dlibcmd = None
+        if localInstallDir.gnu.bin is not None: pathcmd = "export PATH=" + localInstallDir.gnu.bin + ":$PATH"
+        if localInstallDir.gnu.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.gnu.lib + ":$LD_LIBRARY_PATH"
+        if (pathcmd is not None) or (dlibcmd is not None):
+            if (pathcmd not in bashFileContents) or (dlibcmd not in bashFileContents):
+                _os.system( "chmod 777 ~/.bashrc")
+                _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local GNU installation setup >>>' >> ~/.bashrc" )
+                if pathcmd is not None:
+                    if pathcmd not in bashFileContents:
+                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
+                if dlibcmd is not None:
+                    if dlibcmd not in bashFileContents:
+                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
+            if pathcmd not in bashFileContents or dlibcmd not in bashFileContents:
+                _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local GNU installation setup <<<' >> ~/.bashrc" )
+                _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
 
-            if localInstallDir.mpi is not None:
-                pathcmd = None
-                dlibcmd = None
-                if localInstallDir.mpi.bin is not None: pathcmd = "export PATH=" + localInstallDir.mpi.bin + ":$PATH"
-                if localInstallDir.mpi.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.mpi.lib + ":$LD_LIBRARY_PATH"
-                if (pathcmd is not None) or (dlibcmd is not None):
-                    if (pathcmd not in bashFileContents) or (dlibcmd not in bashFileContents):
-                        _os.system( "chmod 777 ~/.bashrc")
-                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local MPI installation setup >>>' >> ~/.bashrc" )
-                        if pathcmd is not None:
-                            if pathcmd not in bashFileContents:
-                                _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
-                        if dlibcmd is not None:
-                            if dlibcmd not in bashFileContents:
-                                _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
-                                _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
-                    if pathcmd not in bashFileContents or dlibcmd not in bashFileContents:
-                        _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local MPI installation setup <<<' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
+        pathcmd = None
+        dlibcmd = None
+        if localInstallDir.mpi.bin is not None: pathcmd = "export PATH=" + localInstallDir.mpi.bin + ":$PATH"
+        if localInstallDir.mpi.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.mpi.lib + ":$LD_LIBRARY_PATH"
+        if (pathcmd is not None) or (dlibcmd is not None):
+            if (pathcmd not in bashFileContents) or (dlibcmd not in bashFileContents):
+                _os.system( "chmod 777 ~/.bashrc")
+                _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local MPI installation setup >>>' >> ~/.bashrc" )
+                if pathcmd is not None:
+                    if pathcmd not in bashFileContents:
+                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
+                if dlibcmd is not None:
+                    if dlibcmd not in bashFileContents:
+                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
+            if pathcmd not in bashFileContents or dlibcmd not in bashFileContents:
+                _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local MPI installation setup <<<' >> ~/.bashrc" )
+                _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
 
     return None
 
@@ -309,19 +306,33 @@ class _Struct:
 
 def getLocalInstallDir():
 
-    localInstallDir = None
+    localInstallDir = _Struct()
+    localInstallDir.root = None
+
+    localInstallDir.mpi = _Struct()
+    localInstallDir.mpi.root = None
+    localInstallDir.mpi.bin = None
+    localInstallDir.mpi.lib = None
+
+    localInstallDir.gnu = _Struct()
+    localInstallDir.gnu.root = None
+    localInstallDir.gnu.bin = None
+    localInstallDir.gnu.lib = None
+
+    localInstallDir.caf = _Struct()
+    localInstallDir.caf.root = None
+    localInstallDir.caf.bin = None
+    localInstallDir.caf.lib = None
+
+
     pmGitRootDir = _os.path.join( fileAbsDir , "paramonte-master" )
+
     if _os.path.isdir(pmGitRootDir):
 
-        localInstallDir = _Struct()
         localInstallDir.root = pmGitRootDir
 
         # mpi
 
-        localInstallDir.mpi = _Struct()
-        localInstallDir.mpi.root = None
-        localInstallDir.mpi.bin = None
-        localInstallDir.mpi.lib = None
         _ = _os.path.join( localInstallDir.root, "build", "prerequisites", "prerequisites", "installations", "mpich", "3.2" )
         if _os.path.isdir(_):
             localInstallDir.mpi.root = _
@@ -332,10 +343,6 @@ def getLocalInstallDir():
 
         # gnu
 
-        localInstallDir.gnu = _Struct()
-        localInstallDir.gnu.root = None
-        localInstallDir.gnu.bin = None
-        localInstallDir.gnu.lib = None
         _ = _os.path.join( localInstallDir.root, "build", "prerequisites", "prerequisites", "installations", "gnu", "8.3.0" )
         if _os.path.isdir(_):
             localInstallDir.gnu.root = _
@@ -346,10 +353,6 @@ def getLocalInstallDir():
 
         # caf
 
-        localInstallDir.caf = _Struct()
-        localInstallDir.caf.root = None
-        localInstallDir.caf.bin = None
-        localInstallDir.caf.lib = None
         _ = _os.path.join( localInstallDir.root, "build", "prerequisites", "prerequisites", "installations", "opencoarrays", "2.8.0" )
         if _os.path.isdir(_):
             localInstallDir.caf.root = _
@@ -734,7 +737,7 @@ def installMPI():
 
         _pm.warn( msg   = "To use ParaMonte in parallel on Mac Operating Systems, \n"
                         + "ParaMonte needs to build the MPICH MPI library on your system. \n"
-                        + "To ensure full consistency we recommend building the parallel \n"
+                        + "To ensure full consistency, we recommend building the parallel \n"
                         + "object files of ParaMonte library on your system along with MPICH.\n\n"
                         + "Requesting a full build of ParaMonte library on your system..."
                 , marginTop = 1
@@ -925,18 +928,19 @@ def build():
                     bashFileContents = getBashrcContents()
                     setupFilePathCmd = "source " + setupFilePath
                     if setupFilePathCmd not in bashFileContents:
-                    _os.system( "chmod 777 ~/.bashrc")
-                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte library local installation setup >>>' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '" + setupFilePathCmd + "' >>  ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte library local installation setup <<<' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc")
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte library local installation setup >>>' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '" + setupFilePathCmd + "' >>  ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte library local installation setup <<<' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
 
                     _pm.warn( msg   = "Whenever you intend to use ParaMonte in the future, before opening your Python session, \n"
                                     + "please execute the following command in your Bash shell to ensure all required paths \n"
                                     + "are properly defined in your environment:\n\n"
                                     + "    " + setupFilePathCmd + " \n\n"
+                                    + "mission accomplished."
                             , methodName = _pm.names.paramonte
                             , marginTop = 1
                             , marginBot = 1
