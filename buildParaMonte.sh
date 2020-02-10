@@ -717,7 +717,7 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
             if [ "${prereqInstallAllowed}" = "true" ]; then
                 echo >&2
                 echo >&2 "-- ParaMonte - WARNING: GNU Fortran compiler could not be found on your system."
-                echo >&2 "-- ParaMonte - WARNING: If you do not have GNU compiler suite installed on your system."
+                echo >&2 "-- ParaMonte - WARNING: If you do not have GNU compiler suite installed on your system,"
                 echo >&2 "-- ParaMonte - WARNING: ParaMonte may be able to install the compiler suite for you. To do so,"
                 echo >&2 "-- ParaMonte - WARNING: drop the input argument -s or --compiler_suite when calling the script."
                 echo >&2
@@ -725,15 +725,16 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
         fi
 
         if [ "${MPI_ENABLED}" = "true" ]; then
+            MPIEXEC_PATH=$(dirname "${gnuFortranMpiWrapperPath}")/mpiexec
             if [ -z ${MPIEXEC_PATH+x} ]; then
                 mpiInstallEnabled=true
                 gnuInstallEnabled=true
                 if [ "${prereqInstallAllowed}" = "true" ]; then
                     echo >&2
-                    echo >&2 "-- ParaMonte - WARNING: GNU Fortran compiler could not be found on your system."
-                    echo >&2 "-- ParaMonte - WARNING: If you do not have GNU compiler suite installed on your system."
-                    echo >&2 "-- ParaMonte - WARNING: ParaMonte may be able to install the compiler suite for you. To do so,"
-                    echo >&2 "-- ParaMonte - WARNING: drop the input argument -s or --compiler_suite when calling the script."
+                    echo >&2 "-- ParaMonte - WARNING: The mpiexec executable could not be found on your system."
+                    echo >&2 "-- ParaMonte - WARNING: If you do not have an MPI library installed on your system,"
+                    echo >&2 "-- ParaMonte - WARNING: ParaMonte may be able to install one for you. To do so, drop the"
+                    echo >&2 "-- ParaMonte - WARNING: input argument -s or --compiler_suite when calling the script."
                     echo >&2
                 fi
             else
