@@ -1,2 +1,0 @@
-add_executable( ISO_Fortran_binding_tests ISO_Fortran_binding_tests.c )
-target_link_libraries( ISO_Fortran_binding_tests ISO_Fortran_binding_static )

@@ -1,3 +1,0 @@
-add_subdirectory(psnap)
-add_subdirectory(mpi_dist_transpose)
-add_subdirectory(BurgersMPI)

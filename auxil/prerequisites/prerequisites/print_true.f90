@@ -1,2 +1,0 @@
-print *,.true.
-end

@@ -1,1 +1,0 @@
-caf_compile_executable(asynchronous_hello_world async-hello.F90)
