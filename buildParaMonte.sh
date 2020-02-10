@@ -833,7 +833,7 @@ if [ "${FRESH_INSTALL_ENABLED}" = "true" ]; then
     gnuInstallEnabled=true
 fi
 
-chmod 777 -R "${ParaMonte_ROOT_DIR}/auxil/prerequisites"
+# chmod 777 -R "${ParaMonte_ROOT_DIR}/auxil/prerequisites"
 
 if [ "${prereqInstallAllowed}" = "true" ]; then
 
@@ -882,9 +882,12 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 echo >&2 "-- ParaMonte - generating directory: ${ParaMonte_REQ_DIR}/"
                 mkdir -p "${ParaMonte_REQ_DIR}/"
 
-                cp -rv "${ParaMonte_ROOT_DIR}/auxil/prerequisites" "${ParaMonte_REQ_DIR}/../"
+                # cp -rv "${ParaMonte_ROOT_DIR}/auxil/prerequisites" "${ParaMonte_REQ_DIR}/../"
+                cp -rv "${ParaMonte_ROOT_DIR}/auxil/prerequisites.tar.gz" "${ParaMonte_REQ_DIR}/../"
                 verify $? "installation setup of prerequisites"
-                chmod +x -R "${ParaMonte_REQ_DIR}"
+                (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf prerequisites.tar.gz "${ParaMonte_REQ_DIR}")
+                verify $? "unpacking of prerequisites"
+                # chmod +x -R "${ParaMonte_REQ_DIR}"
 
             else
 
