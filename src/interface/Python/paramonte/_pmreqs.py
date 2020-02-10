@@ -895,9 +895,10 @@ def build():
             import glob
             import shutil
             pythonBinDir = _os.path.join( pmGitRootDir , "bin" , "Python" , "paramonte" )
-            fileList = glob.glob( _os.path.join( pythonBinDir + "libparamonte_*" ) )
+            fileList = glob.glob( _os.path.join( pythonBinDir , "libparamonte_*" ) )
 
             if len(fileList)>0:
+
                 _pm.note( msg   = "ParaMonte kernel libraries build appears to have succeeded. \n"
                                 + "copying the kernel files to the paramonte Python module directory..."
                         , methodName = _pm.names.paramonte
@@ -916,17 +917,33 @@ def build():
                         , marginTop = 1
                         , marginBot = 1
                         )
+
                 setupFilePath = _os.path.join( pmGitRootDir , "build", "prerequisites", "prerequisites", "installations", "opencoarrays", "2.8.0", "setup.sh" )
+
                 if _os.path.exists(setupFilePath):
+
+                    bashFileContents = getBashrcContents()
+                    setupFilePathCmd = "source " + setupFilePath
+                    if setupFilePathCmd not in bashFileContents:
+                    _os.system( "chmod 777 ~/.bashrc")
+                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte library local installation setup >>>' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '" + setupFilePathCmd + "' >>  ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte library local installation setup <<<' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                    _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
+
                     _pm.warn( msg   = "Whenever you intend to use ParaMonte in the future, before opening your Python session, \n"
                                     + "please execute the following command in your Bash shell to ensure all required paths \n"
                                     + "are properly defined in your environment:\n\n"
-                                    + "source " + setupFilePath + " \n\n"
+                                    + "    " + setupFilePathCmd + " \n\n"
                             , methodName = _pm.names.paramonte
                             , marginTop = 1
                             , marginBot = 1
                             )
+
             else:
+
                 _pm.abort( msg  = "ParaMonte kernel libraries build and installation appears to have failed. \n"
                                 + "You can check this path:\n\n"
                                 + pythonBinDir + "\n\n"
