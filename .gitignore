@@ -4,6 +4,8 @@
 #
 # For instructions to untrack existing objects in the project see:
 # https://stackoverflow.com/questions/24290358/remove-a-folder-from-git-tracking
+# git config core.filemode true
+# https://stackoverflow.com/questions/14267441/automatically-apply-git-update-index-chmod-x-to-executable-files
 
 #########################
 # Compiled source

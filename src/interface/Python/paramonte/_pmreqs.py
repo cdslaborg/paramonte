@@ -252,22 +252,26 @@ def setupUnixPath():
                 if localInstallDir.gnu.bin is not None: pathcmd = "export PATH=" + localInstallDir.gnu.bin + ":$PATH"
                 if localInstallDir.gnu.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.gnu.lib + ":$LD_LIBRARY_PATH"
                 if (pathcmd is not None) or (dlibcmd is not None):
-                    _os.system( "chmod 777 ~/.bashrc")
-                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local GNU installation setup >>>' >> ~/.bashrc" )
-                    if pathcmd is not None:
-                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
-                    if dlibcmd not in bashFileContents:
-                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local GNU installation setup <<<' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
+                    if (pathcmd not in bashFileContents) or (dlibcmd not in bashFileContents):
+                        _os.system( "chmod 777 ~/.bashrc")
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local GNU installation setup >>>' >> ~/.bashrc" )
+                        if pathcmd is not None:
+                            if pathcmd not in bashFileContents:
+                                _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
+                        if dlibcmd is not None:
+                            if dlibcmd not in bashFileContents:
+                                _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
+                    if pathcmd not in bashFileContents or dlibcmd not in bashFileContents:
+                        _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local GNU installation setup <<<' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
 
             if localInstallDir.mpi is not None:
                 pathcmd = None
@@ -275,22 +279,26 @@ def setupUnixPath():
                 if localInstallDir.mpi.bin is not None: pathcmd = "export PATH=" + localInstallDir.mpi.bin + ":$PATH"
                 if localInstallDir.mpi.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.mpi.lib + ":$LD_LIBRARY_PATH"
                 if (pathcmd is not None) or (dlibcmd is not None):
-                    _os.system( "chmod 777 ~/.bashrc")
-                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local MPI installation setup >>>' >> ~/.bashrc" )
-                    if pathcmd is not None:
-                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
-                    if dlibcmd not in bashFileContents:
-                        _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local MPI installation setup <<<' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                    _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
+                    if (pathcmd not in bashFileContents) or (dlibcmd not in bashFileContents):
+                        _os.system( "chmod 777 ~/.bashrc")
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local MPI installation setup >>>' >> ~/.bashrc" )
+                        if pathcmd is not None:
+                            if pathcmd not in bashFileContents:
+                                _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
+                        if dlibcmd is not None:
+                            if dlibcmd not in bashFileContents:
+                                _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
+                                _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
+                    if pathcmd not in bashFileContents or dlibcmd not in bashFileContents:
+                        _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local MPI installation setup <<<' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
 
     return None
 
@@ -694,33 +702,33 @@ def installMPI():
                         _os.system( "chmod 777 ~/.bashrc && echo '" + mpivarsFileCommand + "' >>  ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte MPI runtime library initialization <<<' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
-                        _os.system( "chmod 777 ~/.bashrc && source ~/.bashrc" )
+                        _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
 
                         _pm.note( msg = "If you intend to run parallel simulations right now,\n"
-                                      + "it is highly recommneded that you close your current shell environment\n"
+                                      + "we highly recommned you to close your current shell environment\n"
                                       + "and open a new Bash shell environment. This is to ensure that all MPI\n"
-                                      + "library environmental variables are properly set in your shell."
+                                      + "library environmental variables are properly set in your shell environment."
                                 , methodName = _pm.names.paramonte
                                 , marginTop = 1
                                 , marginBot = 1
                                 )
 
-                    else:
-                        _pm.warn( msg = "skipping...\n"
-                                      + "It is now your responsibility to ensure that the MPI runtime \n"
-                                      + "environmental variables in your Bash environment are properly \n"
-                                      + "set up before attempting to run any parallel ParaMonte simulation. \n"
-                                      + "You can do so by running the following command in every Bash session:\n\n"
-                                      + "    source " + mpivarsFilePath + "\n\n"
-                                      + "Alternatively, ParaMonte can also automatically add \n"
-                                      + "the required script to your '.bashrc' file, so that \n"
-                                      + "all required MPI environmental variables are loaded \n"
-                                      + "automatically before any ParaMonte usage from any \n"
-                                      + "Bash command line on your system."
-                                , methodName = _pm.names.paramonte
-                                , marginTop = 1
-                                , marginBot = 1
-                                )
+                    #else:
+                    #    _pm.warn( msg = "skipping...\n"
+                    #                  + "It is now your responsibility to ensure that the MPI runtime \n"
+                    #                  + "environmental variables in your Bash environment are properly \n"
+                    #                  + "set up before attempting to run any parallel ParaMonte simulation. \n"
+                    #                  + "You can do so by running the following command in every Bash session:\n\n"
+                    #                  + "    source " + mpivarsFilePath + "\n\n"
+                    #                  + "Alternatively, ParaMonte can also automatically add \n"
+                    #                  + "the required script to your '.bashrc' file, so that \n"
+                    #                  + "all required MPI environmental variables are loaded \n"
+                    #                  + "automatically before any ParaMonte usage from any \n"
+                    #                  + "Bash command line on your system."
+                    #            , methodName = _pm.names.paramonte
+                    #            , marginTop = 1
+                    #            , marginBot = 1
+                    #            )
 
     else:
 
@@ -813,122 +821,132 @@ def build():
                                                 + "\n    and its prerequisites on your system now (y/n)? " 
                                         )
 
-        currentDir = _os.getcwd()
+        if buildEnabled:
 
-        pmGitTarPath = _os.path.join( fileAbsDir, "master.tar.gz" )
-        download( url = "https://github.com/cdslaborg/paramonte/archive/master.tar.gz"
-                , filePath = pmGitTarPath
-                )
+            currentDir = _os.getcwd()
 
-        pmGitRootDir = _os.path.join( fileAbsDir, "paramonte-master" )
+            pmGitTarPath = _os.path.join( fileAbsDir, "master.tar.gz" )
+            download( url = "https://github.com/cdslaborg/paramonte/archive/master.tar.gz"
+                    , filePath = pmGitTarPath
+                    )
 
-        try:
+            pmGitRootDir = _os.path.join( fileAbsDir, "paramonte-master" )
 
-            import tarfile
-            tf = tarfile.open(pmGitTarPath)
-            tf.extractall(path=fileAbsDir) # path=pmGitRootDir)
+            try:
 
-            pmGitInstallScriptPath = _os.path.join( pmGitRootDir, "install.sh" )
-            if not _os.path.exists(pmGitInstallScriptPath):
-                _pm.abort   ( msg   = "Internal error occurred.\n"
-                                    + "Failed to detect the ParaMonte installation Bash script.\n"
-                                    + "Please report this issue at \n\n"
-                                    + "    https://github.com/cdslaborg/paramonte/issues\n\n"
-                                    + "Visit https://www.cdslab.org/pm for instructions \n"
-                                    + "to build ParaMonte object files on your system."
+                import tarfile
+                tf = tarfile.open(pmGitTarPath)
+                tf.extractall(path=fileAbsDir) # path=pmGitRootDir)
+
+                pmGitInstallScriptPath = _os.path.join( pmGitRootDir, "install.sh" )
+                if not _os.path.exists(pmGitInstallScriptPath):
+                    _pm.abort   ( msg   = "Internal error occurred.\n"
+                                        + "Failed to detect the ParaMonte installation Bash script.\n"
+                                        + "Please report this issue at \n\n"
+                                        + "    https://github.com/cdslaborg/paramonte/issues\n\n"
+                                        + "Visit https://www.cdslab.org/pm for instructions \n"
+                                        + "to build ParaMonte object files on your system."
+                                , methodName = _pm.names.paramonte
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
+
+            except Exception as e:
+
+                print(str(e))
+                _pm.abort   ( msg   = "Unzipping of ParaMonte tarball failed.\n"
+                                    + "Make sure you have tar software installed on your system and try again."
                             , methodName = _pm.names.paramonte
                             , marginTop = 1
                             , marginBot = 1
                             )
 
-        except Exception as e:
-
-            print(str(e))
-            _pm.abort   ( msg   = "Unzipping of ParaMonte tarball failed.\n"
-                                + "Make sure you have tar software installed on your system and try again."
+            err = _os.system("chmod +x " + pmGitInstallScriptPath)
+            if err != 0:
+                _pm.warn( msg   = "The following action failed:\n\n"
+                                + "chmod +x " + pmGitInstallScriptPath + "\n\n"
+                                + "skipping..."
                         , methodName = _pm.names.paramonte
                         , marginTop = 1
                         , marginBot = 1
                         )
 
-        err = _os.system("chmod +x " + pmGitInstallScriptPath)
-        if err != 0:
-            _pm.warn( msg   = "The following action failed:\n\n"
-                            + "chmod +x " + pmGitInstallScriptPath + "\n\n"
-                            + "skipping..."
-                    , methodName = _pm.names.paramonte
-                    , marginTop = 1
-                    , marginBot = 1
-                    )
+            _os.chdir(pmGitRootDir)
 
-        _os.chdir(pmGitRootDir)
+            import subprocess
+            try:
+                _os.system( "find " + pmGitRootDir + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
+                _os.system( pmGitInstallScriptPath + " --lang python --test_enabled true --exam_enabled false --yes-to-all" )
+            except Exception as e:
+                print(str(e))
+                _pm.abort   ( msg   = "Local installation of ParaMonte failed.\n"
+                                    + "Please report this issue at \n\n"
+                                    + "    https://github.com/cdslaborg/paramonte/issues"
+                            , methodName = _pm.names.paramonte
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
 
-        import subprocess
-        try:
-            _os.system( "find " + pmGitRootDir + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
-            _os.system( pmGitInstallScriptPath + " --lang python --test_enabled true --exam_enabled false --yes-to-all" )
-        except Exception as e:
-            print(str(e))
-            _pm.abort   ( msg   = "Local installation of ParaMonte failed.\n"
+
+            _os.chdir(currentDir)
+
+            # copy files to module folder
+
+            import glob
+            import shutil
+            pythonBinDir = _os.path.join( pmGitRootDir , "bin" , "Python" , "paramonte" )
+            fileList = glob.glob( _os.path.join( pythonBinDir + "libparamonte_*" ) )
+
+            if len(fileList)>0:
+                _pm.note( msg   = "ParaMonte kernel libraries build appears to have succeeded. \n"
+                                + "copying the kernel files to the paramonte Python module directory..."
+                        , methodName = _pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+                for file in fileList:
+                    _pm.note( msg   = "file: " + file
+                            , methodName = _pm.names.paramonte
+                            , marginTop = 0
+                            , marginBot = 0
+                            )
+                    shutil.copy(file, fileAbsDir)
+                _pm.note( msg   = "ParaMonte kernel libraries should be now usable on your system."
+                        , methodName = _pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+                setupFilePath = _os.path.join( pmGitRootDir , "build", "prerequisites", "prerequisites", "installations", "opencoarrays", "2.8.0", "setup.sh" )
+                if _os.path.exists(setupFilePath):
+                    _pm.warn( msg   = "Whenever you intend to use ParaMonte in the future, before opening your Python session, \n"
+                                    + "please execute the following command in your Bash shell to ensure all required paths \n"
+                                    + "are properly defined in your environment:\n\n"
+                                    + "source " + setupFilePath + " \n\n"
+                            , methodName = _pm.names.paramonte
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+            else:
+                _pm.abort( msg  = "ParaMonte kernel libraries build and installation appears to have failed. \n"
+                                + "You can check this path:\n\n"
+                                + pythonBinDir + "\n\n"
+                                + "to find out if any shared objects with the prefix 'libparamonte_' have been generated or not.\n"
                                 + "Please report this issue at \n\n"
                                 + "    https://github.com/cdslaborg/paramonte/issues"
                         , methodName = _pm.names.paramonte
                         , marginTop = 1
-                        , marginBot = 1
+                        , marginBot = 2
                         )
 
+            writeVerificationStatusFile(verificationEnabled=True)
 
-        _os.chdir(currentDir)
-
-        # copy files to module folder
-
-        import glob
-        import shutil
-        pythonBinDir = _os.path.join( pmGitRootDir , "bin" , "Python" , "paramonte" )
-        fileList = glob.glob( _os.path.join( pythonBinDir + "libparamonte_*" ) )
-
-        if len(fileList)>0:
-            _pm.note( msg   = "ParaMonte kernel libraries build appears to have succeeded. \n"
-                            + "copying the kernel files to the paramonte Python module directory..."
-                    , methodName = _pm.names.paramonte
-                    , marginTop = 1
-                    , marginBot = 1
-                    )
-            for file in fileList:
-                _pm.note( msg   = "file: " + file
-                        , methodName = _pm.names.paramonte
-                        , marginTop = 0
-                        , marginBot = 0
-                        )
-                shutil.copy(file, fileAbsDir)
-            _pm.note( msg   = "ParaMonte kernel libraries should be now usable on your system."
-                    , methodName = _pm.names.paramonte
-                    , marginTop = 1
-                    , marginBot = 1
-                    )
-            setupFilePath = _os.path.join( pmGitRootDir , "build", "prerequisites", "prerequisites", "installations", "opencoarrays", "2.8.0", "setup.sh" )
-            if _os.path.exists(setupFilePath):
-                _pm.warn( msg   = "Whenever you intend to use ParaMonte in the future, before opening your Python session, \n"
-                                + "please execute the following command in your Bash shell to ensure all required paths \n"
-                                + "are properly defined in your environment:\n\n"
-                                + "source " + setupFilePath + " \n\n"
-                        , methodName = _pm.names.paramonte
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
         else:
-            _pm.abort( msg  = "ParaMonte kernel libraries build and installation appears to have failed. \n"
-                            + "You can check this path:\n\n"
-                            + pythonBinDir + "\n\n"
-                            + "to find out if any shared objects with the prefix 'libparamonte_' have been generated or not.\n"
-                            + "Please report this issue at \n\n"
-                            + "    https://github.com/cdslaborg/paramonte/issues"
+
+            _pm.warn( msg   = "Aborting the ParaMonte Python local build on your system."
                     , methodName = _pm.names.paramonte
                     , marginTop = 1
-                    , marginBot = 2
+                    , marginBot = 1
                     )
-
-        writeVerificationStatusFile(verificationEnabled=True)
 
     return None
 
