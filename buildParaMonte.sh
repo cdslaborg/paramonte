@@ -885,7 +885,10 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 # cp -rv "${ParaMonte_ROOT_DIR}/auxil/prerequisites" "${ParaMonte_REQ_DIR}/../"
                 cp -rv "${ParaMonte_ROOT_DIR}/auxil/prerequisites.tar.gz" "${ParaMonte_REQ_DIR}/../"
                 verify $? "installation setup of prerequisites"
-                (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf prerequisites.tar.gz "${ParaMonte_REQ_DIR}")
+                if ! [ -d "${ParaMonte_REQ_DIR}" ]; then
+                    mkdir "${ParaMonte_REQ_DIR}"
+                fi
+                (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf prerequisites.tar.gz -C prerequisites --strip-components 1)
                 verify $? "unpacking of prerequisites"
                 # chmod +x -R "${ParaMonte_REQ_DIR}"
 
