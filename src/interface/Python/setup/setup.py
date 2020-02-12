@@ -22,11 +22,6 @@
 #**********************************************************************************************************************************
 #**********************************************************************************************************************************
 
-# python -m pip install --user --upgrade setuptools wheel
-# python setup.py sdist bdist_wheel
-# twine upload --repository testpypi dist/*
-# twine upload --repository pypi dist/*
-
 import setuptools
 
 with open("README.md", "r") as fh:
@@ -79,6 +74,3 @@ setuptools.setup( name                          = "paramonte"
                                                     , "Operating System :: Unix"
                                                     ]
                 )
-
-#import paramonte
-#paramonte._pmreqs.verify()

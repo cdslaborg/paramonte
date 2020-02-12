@@ -26,7 +26,7 @@ import numpy as _np
 import typing as _tp
 import pandas as _pd
 import weakref as _wref
-from scipy.signal import correlate as _ccor
+#from scipy.signal import correlate as _ccor
 
 import _message as msg
 import _dfutils as dfutils
@@ -194,6 +194,7 @@ class AutoCorr:
         nlag = len(rowindex)
         acf = _np.zeros((nvar,nlag))
 
+        from scipy.signal import correlate as _ccor
         for icnt, ivar in enumerate(colindex):
             xdata = self._dfref().iloc[rowindex,ivar].values.flatten() - _np.mean(self._dfref().iloc[rowindex,ivar].values.flatten())
             acf[icnt] = _ccor   ( xdata

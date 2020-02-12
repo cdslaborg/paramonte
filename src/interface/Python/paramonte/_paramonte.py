@@ -39,6 +39,7 @@ import _pmutils as pmutils
 versionFileName = _os.path.join( _os.path.dirname(_os.path.abspath(__file__)), ".VERSION" )
 with open(versionFileName) as versionFile:
     version = versionFile.readline()
+    version = "".join(version.splitlines())
 versionFile.close()
 
 arch = "x86" if "32" in _platform.architecture()[0] else "x64"

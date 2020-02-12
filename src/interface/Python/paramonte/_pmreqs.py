@@ -97,7 +97,7 @@ def verify(reset = True):
 
         # ensure 64-bit architecture
 
-        if (_pm.arch=="x64") and (isWin32 or isLinux or isMacOS):
+        if (_pm.arch=="x64") and (isWin32 or isLinux): # or isMacOS):
 
             displayParaMontePythonBanner()
 
@@ -191,8 +191,8 @@ def download(url,filePath):
 ####################################################################################################################################
 
 def warnForUnsupportedPlatform():
-    _pm.warn( msg   = "The ParaMonte C/Fortran sampler kernel is currently exclusively available \n"
-                    + "on AMD64 (64-bit) architecture for Windows/Linux/MacOS Operating Systems (OS). \n"
+    _pm.warn( msg   = "The ParaMonte sampler kernel is currently exclusively available \n"
+                    + "on AMD64 (64-bit) architecture for Windows/Linux Operating Systems (OS). \n"
                     + "Your system appears to be of a different architecture or OS. As a result, \n"
                     + "the core sampler routines of ParaMonte will not be available on your system. However, \n"
                     + "the generic Python interface of ParaMonte will is available on your system, which can \n"
@@ -200,6 +200,8 @@ def warnForUnsupportedPlatform():
                     + "already-performed ParaMonte simulations or other similar Monte Carlo simulations. \n"
                     + "There are ongoing efforts, right now as you read this message, to further increase the \n"
                     + "availability of ParaMonte library on a wider-variety of platforms and architectures. \n"
+                    + "If you are a Mac user, please check back by April 1, 2020 for a new release of ParaMonte \n"
+                    + "with support for macOS. \n"
                     + "Stay tuned for updates by visiting https://www.cdslab.org/pm\n\n"
                     + "That said,\n\n"
                     + "if your platform is non-Windows and is compatible with GNU Compiler Collection (GCC),\n\n"
@@ -378,7 +380,7 @@ def findMPI():
             if ("mpiintel64bin" in pathLower):
                 mpivarsFilePath = _os.path.join( path, "mpivars.bat" )
                 if _os.path.exists(mpivarsFilePath):
-                    mpivarsCommand = '"' + mpivarsFilePath + '" quiet'
+                    mpivarsCommand = '"' + mpivarsFilePath + '"'
                     _pm.note( msg   = "Intel MPI library for 64-bit architecture detected at: \n\n"
                                     + "    " + path + "\n\n"
                                     + "To perform ParaMonte simulations in parallel on a single node, run the \n"
@@ -409,7 +411,10 @@ def findMPI():
 
                     setupFilePath = _os.path.join( fileAbsDir, "setup.bat" )
                     with open(setupFilePath, "w") as setupFile:
-                        setupFile.write("call " + mpivarsCommand)
+                        setupFile.write("@echo off\n")
+                        setupFile.write("cd " + path + " && mpivars.bat quiet\n")
+                        setupFile.write("cd " + fileAbsDir + "\n")
+                        setupFile.write("@echo on\n")
 
                     return path
                     break
@@ -476,6 +481,12 @@ def installMPI():
             mpiFileExt = ".exe"
             mpiVersion = "2019.4.245"
             mpiFileName = "w_mpi-rt_p_" + mpiVersion
+            downloadList = ["impi.dll","impi.pdb"]
+            for mpiFileNameExt in ["impi.dll","impi.pdb","libfabric.dll"]:
+                mpiFilePath = _os.path.join( fileAbsDir, mpiFileNameExt )
+                download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + pmReleaseVersion + "/" + mpiFileNameExt
+                        , filePath = mpiFilePath
+                        )
             
         if isLinux:
             mpiFileExt = ".tgz"
@@ -489,7 +500,15 @@ def installMPI():
                 )
 
         _pm.note( msg = "Installing the Intel MPI library for 64-bit architecture...\n"
-                      + "file location: "  + mpiFilePath
+                      + "file location: " + mpiFilePath
+                , methodName = _pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
+
+        _pm.warn( msg = "Please do not change the default installation location MPI suggested by the installer.\n"
+                      + "If you do change the default path, the onus will be on you to ensure the path to the \n"
+                      + "MPI runtime libraries exist in the environmental PATH variable of your session."
                 , methodName = _pm.names.paramonte
                 , marginTop = 1
                 , marginBot = 1
@@ -504,8 +523,8 @@ def installMPI():
             if err==0:
                 writeVerificationStatusFile(verificationEnabled=True)
                 _pm.note( msg   = "Intel MPI library installation appears to have succeeded. \n"
-                                + "A reboot of your system or restart of your Python environment may \n"
-                                + "be required before using the parallel features of ParaMonte."
+                                + "Now close your Python environment and the command-line interface \n"
+                                + "and reopen a new fresh (Anaconda) command prompt."
                         , methodName = _pm.names.paramonte
                         , marginTop = 1
                         , marginBot = 1
@@ -619,7 +638,7 @@ def installMPI():
                 if mpiRootDirNotFound:
                     _pm.warn( msg = "Failed to detect the installation root path for Intel MPI runtime libraries \n"
                                   + "for 64-bit architecture on your system. If you specified a different installation \n"
-                                  + "root path at the time intallation, please copy and paste it below.\n"
+                                  + "root path at the time installation, please copy and paste it below.\n"
                                   + "Note that the installation root path is part of the path that replaces: \n\n"
                                   + "    " + "opt" + "\n\n"
                                   + "in the following path: \n\n"
@@ -782,7 +801,7 @@ def displayParaMontePythonBanner():
 
 ####################################################################################################################################
 
-def build():
+def build(flags=""):
 
     if isWin32:
 
@@ -814,7 +833,7 @@ def build():
                         + "system would be also highly desirable and will significantly cut the build time.\n"
                         + "Also, downloading the prerequisites requires access to the Internet.\n"
                         + "If you have an Internet firewall active on your system, please make sure to\n"
-                        + "turn it off before.\n"
+                        + "turn it off before proceeding with the local installation of ParaMonte."
                 , methodName = _pm.names.paramonte
                 , marginTop = 1
                 , marginBot = 1
@@ -879,7 +898,7 @@ def build():
             import subprocess
             try:
                 _os.system( "find " + pmGitRootDir + " -type f -iname \"*.sh\" -exec chmod +x {} \;" )
-                _os.system( pmGitInstallScriptPath + " --lang python --test_enabled true --exam_enabled false --yes-to-all" )
+                _os.system( pmGitInstallScriptPath + " --lang python --test_enabled true --exam_enabled false --yes-to-all " + flags )
             except Exception as e:
                 print(str(e))
                 _pm.abort   ( msg   = "Local installation of ParaMonte failed.\n"
@@ -963,7 +982,7 @@ def build():
 
         else:
 
-            _pm.warn( msg   = "Aborting the ParaMonte Python local build on your system."
+            _pm.warn( msg   = "Aborting the ParaMonte-for-Python local build on your system."
                     , methodName = _pm.names.paramonte
                     , marginTop = 1
                     , marginBot = 1

@@ -268,7 +268,7 @@ class _ParaDRAMChain:
 
         # add GridPlot
 
-        endColindex = _np.min( [self._offset+3, self._offset+self.ndim-1] )
+        endColindex = _np.min( [self._offset+3, self._offset+self.ndim] )
         self.plot.grid = _pm.vis.GridPlot   ( dataFrame = self.df
                                             , columns = self.df.columns[self._offset:endColindex]
                                             , scatterplot_kws = {"ccolumns": "SampleLogFunc"}

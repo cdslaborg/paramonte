@@ -325,7 +325,7 @@ echo.
 if not defined LANG_LIST                        set LANG_LIST=c/fortran/python
 if not defined BTYPE_LIST                       set BTYPE_LIST=release/testing/debug
 if not defined LTYPE_LIST                       set LTYPE_LIST=static/dynamic
-if not defined CAFTYPE_LIST                     set CAFTYPE_LIST=single/shared
+if not defined CAFTYPE_LIST                     set CAFTYPE_LIST=none/single/shared
 if not defined MPI_ENABLED_LIST                 set MPI_ENABLED_LIST=true/false
 if not defined HEAP_ARRAY_ENABLED_LIST          set HEAP_ARRAY_ENABLED_LIST=true/false
 if not defined ParaMonte_FLAG_CLEANUP_ENABLED   set ParaMonte_FLAG_CLEANUP_ENABLED=false
@@ -338,7 +338,7 @@ set Fortran_IS_MISSING=true
 for %%G in ("!LANG_LIST:/=" "!") do (
     if %%~G==fortran (
         if !Fortran_IS_MISSING!==true (
-            if defined TEMP (
+            if not defined TEMP (
                 set TEMP=%%~G
             ) else (
                 set TEMP=!TEMP!/%%~G
@@ -348,7 +348,7 @@ for %%G in ("!LANG_LIST:/=" "!") do (
     )
     if %%~G==c (
         if !C_IS_MISSING!==true (
-            if defined TEMP (
+            if not defined TEMP (
                 set TEMP=%%~G
             ) else (
                 set TEMP=!TEMP!/%%~G
@@ -358,7 +358,7 @@ for %%G in ("!LANG_LIST:/=" "!") do (
     )
     if %%~G==python (
         if !C_IS_MISSING!==true (
-            if defined TEMP (
+            if not defined TEMP (
                 set TEMP=%%~G
             ) else (
                 set TEMP=!TEMP!/%%~G
@@ -367,6 +367,7 @@ for %%G in ("!LANG_LIST:/=" "!") do (
         )
     )
 )
+set LANG_LIST=!TEMP!
 
 REM build
 
@@ -377,6 +378,13 @@ if !DRY_RUN!==true (
 )
 
 REM set PAR_TYPE_LIST=!MPI_ENABLED_LIST!/!CAFTYPE_LIST!
+
+echo. LANG_LIST=!LANG_LIST!
+echo. BTYPE_LIST=!BTYPE_LIST!
+echo. LTYPE_LIST=!LTYPE_LIST!
+echo. HEAP_ARRAY_ENABLED_LIST=!HEAP_ARRAY_ENABLED_LIST!
+echo. CAFTYPE_LIST=!CAFTYPE_LIST!
+echo. MPI_ENABLED_LIST=!MPI_ENABLED_LIST!
 
 for %%G in ("!LANG_LIST:/=" "!") do (
 
@@ -403,10 +411,6 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                         set MPI_ENABLED=%%~M
                         set HEAP_ARRAY_ENABLED=%%~H
 
-                        if !LTYPE!==dynamic (
-                            if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
-                        )
-
                         if %%~G==fortran (
                             set CFI_ENABLED=false
                             set ParaMonteTest_OBJ_ENABLED=!FRESH_RUN!
@@ -419,11 +423,18 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                             set ParaMonteTest_RUN_ENABLED=false
                         )
 
-                        if !CAFTYPE! NEQ none (
+                        set CAF_ENABLED=true
+                        if !CAFTYPE!==none set CAF_ENABLED=false
+
+                        if !LTYPE!==dynamic (
+                            if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
+                            if !CAF_ENABLED!==true set BENABLED=false
+                        )
+                        if !CAF_ENABLED!==true (
                             if !MPI_ENABLED!==true (
                                 set BENABLED=false
                             )
-                            if !HEAP_ARRAY_ENABLED! NEQ true (
+                            if !HEAP_ARRAY_ENABLED!==false (
                                 set BENABLED=false
                             )
                             if !CFI_ENABLED!==true (

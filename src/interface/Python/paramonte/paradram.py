@@ -365,12 +365,20 @@ class ParaDRAM:
             SpecDRAM = _SpecDRAM()
             nameListParaDRAM = ""
 
-            # setup outputfilename if it is None
-            if self.spec.outputFileName == None:
-                from _SpecBase import _genOutputFileName
-                self.spec.outputFileName = _genOutputFileName(_pm.names.paradram)
+            # setup outputFileName if it is None
+
+            from _SpecBase import _genOutputFileName
+            if self.spec.outputFileName is None:
+                self.spec.outputFileName = _os.path.join( _os.getcwd() , _genOutputFileName(_pm.names.paradram) )
+            else:
+                #if not _os.path.isabs(self.spec.outputFileName):
+                    #headTailList = _os.path.split(self.spec.outputFileName)
+                    #if headTailList[1]=="":
+                    if self.spec.outputFileName[-1] == "\\" or self.spec.outputFileName[-1] == "/":
+                        self.spec.outputFileName = _os.path.join( _os.path.abspath( self.spec.outputFileName ) , _genOutputFileName(_pm.names.paradram) )
 
             # ParaMonte variables
+
             if   self.spec.sampleSize                            is not None: nameListParaDRAM += SpecBase.sampleSize                            (self.spec.sampleSize                         )
             if   self.spec.randomSeed                            is not None: nameListParaDRAM += SpecBase.randomSeed                            (self.spec.randomSeed                         )
             if   self.spec.description                           is not None: nameListParaDRAM += SpecBase.description                           (self.spec.description                        )
@@ -768,18 +776,26 @@ class ParaDRAM:
 
         if isWin32:
 
-            mpiFound = False
             if "PATH" in _os.environ:
-                pathList = _os.environ["PATH"].split(";")
-                for path in pathList:
-                    if ("mpi\\intel64\\bin" in path) or ("mpi\intel64\bin" in path):
-                        mpiFound = True
-                        break
+                _os.environ["PATH"] = fileAbsDir + _os.pathsep + _os.environ["PATH"]
+            else:
+                _os.environ["PATH"] = fileAbsDir
+
+            mpiFound = False
+            pathList = _os.environ["PATH"].split(";")
+            for path in pathList:
+                pathLower = path.lower().replace("\\","")
+                if ("mpiintel64bin" in pathLower):
+                    mpiFound = True
+                    break
+
             if mpiFound:
-                bldMode = buildMode
-                if bldMode=="testing": bldMode = "release"
+                #bldMode = buildMode
+                #if bldMode=="testing": bldMode = "release"
                 mpiPath = _os.path.join(path,"release")
                 _os.environ["PATH"] = mpiPath + _os.pathsep + _os.environ["PATH"]
+                libfabricPath = _os.path.join(_os.path.dirname(path),"libfabric","bin")
+                _os.environ["PATH"] = libfabricPath + _os.pathsep + _os.environ["PATH"]
 
         else:
 
@@ -794,7 +810,19 @@ class ParaDRAM:
                             , marginTop = 1
                             , marginBot = 1
                             )
-            _os.environ["LD_LIBRARY_PATH"] = fileAbsDir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            libdir = "/usr/lib"
+            if _os.path.isdir(libdir):
+                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            libdir = "/usr/local/lib"
+            if _os.path.isdir(libdir):
+                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            libdir = "/usr/lib64"
+            if _os.path.isdir(libdir):
+                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            libdir = "/usr/local/lib64"
+            if _os.path.isdir(libdir):
+                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            _os.environ["LD_LIBRARY_PATH"]  = fileAbsDir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
 
             from _pmreqs import getLocalInstallDir
             localInstallDir = getLocalInstallDir()
@@ -973,8 +1001,8 @@ class ParaDRAM:
 
         """
 
-        if file == None:
-            if self.spec.outputFileName == None:
+        if file is None:
+            if self.spec.outputFileName is None:
                 _pm.abort   ( msg   = "'file' is neither given as input nor set as a ParaDRAM object property.\n"
                                     + "This information is essential, otherwise how could the output files be found?\n"
                                     + "All that is needed is the unique name (including path) of the simulation name shared\n"
@@ -986,19 +1014,8 @@ class ParaDRAM:
             else:
                 file = self.spec.outputFileName
 
-        # ensure the input path is not a directory
-
-        if _os.path.isdir(file):
-            _pm.abort   ( msg   = "'file' cannot point to a directory.\n"
-                                + "Provide a string as the value of file that points to a unique chain file or\n"
-                                + "to the unique name (including path) of the simulation name shared among its output files.\n"
-                        , methodName = _pm.names.paradram
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
-
-        if delimiter == None:
-            if self.spec.outputDelimiter == None:
+        if delimiter is None:
+            if self.spec.outputDelimiter is None:
                 delimiter   = ","
                 if self._mpiDisabled:
                     _pm.warn( msg   = "delimiter is neither given as input nor set as a ParaDRAM object property.\n"
@@ -1018,11 +1035,21 @@ class ParaDRAM:
         else:
             # search for files matching the input pattern
             import glob
-            file += "*_chain.txt"
-            FileList = glob.glob(file)
+            pattern = file + "*_chain.txt"
+            FileList = glob.glob(pattern)
+            if len(FileList)==0:
+                # ensure the input path is not a directory
+                if _os.path.isdir(file):
+                    _pm.abort   ( msg   = "file='" + file + "' cannot point to a directory.\n"
+                                        + "Provide a string as the value of file that points to a unique chain file or\n"
+                                        + "to the unique name (including path) of the simulation name shared among its output files.\n"
+                                , methodName = _pm.names.paradram
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
 
         if self._mpiDisabled:
-            _pm.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + file + '"'
+            _pm.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
                     , methodName = _pm.names.paradram
                     , marginTop = 0
                     , marginBot = 0
@@ -1141,8 +1168,8 @@ class ParaDRAM:
 
         """
 
-        if file == None:
-            if self.spec.outputFileName == None:
+        if file is None:
+            if self.spec.outputFileName is None:
                 _pm.abort   ( msg   = "'file' is neither given as input nor set as a ParaDRAM object property.\n"
                                     + "This information is essential, otherwise how could the output files be found?\n"
                                     + "All that is needed is the unique name (including path) of the simulation name shared\n"
@@ -1154,19 +1181,8 @@ class ParaDRAM:
             else:
                 file = self.spec.outputFileName
 
-        # ensure the input path is not a directory
-
-        if _os.path.isdir(file):
-            _pm.abort   ( msg   = "'file' cannot point to a directory.\n"
-                                + "Provide a string as the value of file that points to a unique chain file or\n"
-                                + "to the unique name (including path) of the simulation name shared among its output files.\n"
-                        , methodName = _pm.names.paradram
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
-
-        if delimiter == None:
-            if self.spec.outputDelimiter == None:
+        if delimiter is None:
+            if self.spec.outputDelimiter is None:
                 delimiter   = ","
                 if self._mpiDisabled:
                     _pm.warn( msg   = "delimiter is neither given as input nor set as a ParaDRAM object property.\n"
@@ -1186,11 +1202,21 @@ class ParaDRAM:
         else:
             # search for files matching the input pattern
             import glob
-            file += "*_chain.txt"
-            FileList = glob.glob(file)
+            pattern = file + "*_chain.txt"
+            FileList = glob.glob(pattern)
+            if len(FileList)==0:
+                # ensure the input path is not a directory
+                if _os.path.isdir(file):
+                    _pm.abort   ( msg   = "file='" + file + "' cannot point to a directory.\n"
+                                        + "Provide a string as the value of file that points to a unique chain file or\n"
+                                        + "to the unique name (including path) of the simulation name shared among its output files.\n"
+                                , methodName = _pm.names.paradram
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
 
         if self._mpiDisabled:
-            _pm.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + file + '"'
+            _pm.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
                     , methodName = _pm.names.paradram
                     , marginTop = 0
                     , marginBot = 0
@@ -1307,8 +1333,8 @@ class ParaDRAM:
 
         """
 
-        if file == None:
-            if self.spec.outputFileName == None:
+        if file is None:
+            if self.spec.outputFileName is None:
                 _pm.abort   ( msg   = "'file' is neither given as input nor set as a ParaDRAM object property.\n"
                                     + "This information is essential, otherwise how could the output files be found?\n"
                                     + "All that is needed is the unique name (including path) of the simulation name shared\n"
@@ -1318,16 +1344,8 @@ class ParaDRAM:
             else:
                 file = self.spec.outputFileName
 
-        # ensure the input path is not a directory
-        if _os.path.isdir(file):
-            _pm.abort   ( msg   = "'file' cannot point to a directory.\n"
-                                + "Provide a string as the value of file that points to a unique sample file or\n"
-                                + "to the unique name (including path) of the simulation name shared among its output files.\n"
-                        , methodName = _pm.names.paradram
-                        )
-
-        if delimiter == None:
-            if self.spec.outputDelimiter == None:
+        if delimiter is None:
+            if self.spec.outputDelimiter is None:
                 delimiter   = ","
                 if self._mpiDisabled:
                     _pm.warn( msg   = "delimiter is neither given as input nor set as a ParaDRAM object property.\n"
@@ -1347,11 +1365,19 @@ class ParaDRAM:
         else:
             # search for files matching the input pattern
             import glob
-            file += "*_sample.txt"
-            FileList = glob.glob(file)
+            pattern = file + "*_sample.txt"
+            FileList = glob.glob(pattern)
+            if len(FileList)==0:
+                # ensure the input path is not a directory
+                if _os.path.isdir(file):
+                    _pm.abort   ( msg   = "file='" + file + "' cannot point to a directory.\n"
+                                        + "Provide a string as the value of file that points to a unique sample file or\n"
+                                        + "to the unique name (including path) of the simulation name shared among its output files.\n"
+                                , methodName = _pm.names.paradram
+                                )
 
         if self._mpiDisabled:
-            _pm.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + file + '"'
+            _pm.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
                     , methodName = _pm.names.paradram
                     , marginTop = 0
                     , marginBot = 0

@@ -137,14 +137,14 @@ for %%l in (!LANG_LIST!) do (
 
             echo. -- ParaMonteExample%%l - copying ParaMonte library Python setup files...
             echo. -- ParaMonteExample%%l - from: !ParaMontePython_SRC_DIR!\setup        %= no need for final slash here =%
-            echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BIN_DIR_CURRENT!\    %= final slash tells this is folder =%
+            echo. -- ParaMonteExample%%l -   to: !ParaMontePython_BIN_ROOT_DIR!\        %= final slash tells this is folder =%
             xcopy /s /Y "!ParaMontePython_SRC_DIR!\setup" "!ParaMontePython_BIN_ROOT_DIR!\"
 
             REM PyPI build - ParaMonte library license files
 
             echo. -- ParaMonteExample%%l - copying ParaMonte library license file...
             echo. -- ParaMonteExample%%l - from: !ParaMonte_ROOT_DIR!\LICENSE %= no need for final slash here =%
-            echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BLD_DIR_CURRENT!\LICENSE %= final slash tells this is folder =%
+            echo. -- ParaMonteExample%%l -   to: !ParaMontePython_BIN_ROOT_DIR!\LICENSE %= final slash tells this is folder =%
             copy "!ParaMonte_ROOT_DIR!\LICENSE" "!ParaMontePython_BIN_ROOT_DIR!\LICENSE"
 
             REM PyPI build - ParaMonte library CHANGES.md files
@@ -152,7 +152,7 @@ for %%l in (!LANG_LIST!) do (
             echo. -- ParaMonteExample%%l - copying ParaMonte library CHANGES.md file...
             echo. -- ParaMonteExample%%l - from: !ParaMonte_ROOT_DIR!\CHANGES.md %= no need for final slash here =%
             echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BLD_DIR_CURRENT!\CHANGES.md
-            copy "!ParaMonte_ROOT_DIR!\CHANGES.md" "!ParaMontePython_BIN_ROOT_DIR!\CHANGES.md"
+            REM copy "!ParaMonte_ROOT_DIR!\CHANGES.md" "!ParaMontePython_BIN_ROOT_DIR!\CHANGES.md"
 
         )
 
@@ -163,7 +163,12 @@ for %%l in (!LANG_LIST!) do (
         echo. -- ParaMonteExample%%l - from: !ParaMonteExample_INP_DIR_CURRENT!     %= no need for final slash here =%
         echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BLD_DIR_CURRENT!\    %= final slash tells this is folder =%
         xcopy /s /Y "!ParaMonteExample_INP_DIR_CURRENT!" "!ParaMonteExample_BLD_DIR_CURRENT!\"
-        xcopy /s /Y "!ParaMonteExample_INP_DIR_CURRENT!" "!ParaMontePython_BIN_ROOT_DIR!\"
+        if !IS_Python_LANG!==true (
+            xcopy /s /Y "!ParaMonteExample_INP_DIR_CURRENT!" "!ParaMontePython_BIN_ROOT_DIR!\"
+        )
+        if !IS_FortranC_LANG!==true (
+            xcopy /s /Y "!ParaMonteExample_INP_DIR_CURRENT!" "!ParaMonteExample_BIN_DIR_CURRENT!\"
+        )
 
         REM ParaMonte library example source files
 

@@ -111,7 +111,14 @@ The routines currently supported by the Python interface of ParaMonte include:
 
                    mpiexec -np 3 python main.py
 
-            In both case, the script 'main.py' will run on 3 processors.
+            NOTE: On Windows platform, if you are using Intel MPI library,
+            NOTE: you may also specify the extra flag -localonly to run only
+            NOTE: on one node, but also to avoid the use of Hydra service and
+            NOTE: its registration. If you are not on a Windows cluster, (e.g., 
+            NOTE: you are using your personal device), then we recommend 
+            NOTE: specifying this flag.
+
+            In both cases above, the script 'main.py' will run on 3 processors.
             Feel free to change the number of processors to any number desired.
             But do not request more than the number of physical cores on your system.
 
@@ -130,3 +137,7 @@ __credits__ = "Peter O'Donnell Fellowship"
 __version__ = _pm.version
 
 verify(reset=False)
+
+def helpme():
+    print(__doc__)
+    return None

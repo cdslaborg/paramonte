@@ -24,6 +24,10 @@ Installation
 
 The latest release of ParaMonte can be installed from PyPI using `pip`:  
 
+    pip3 install --user paramonte  
+
+or,  
+
     pip install --user paramonte  
 
 Alternatively, you can build the library from the source in the GitHub repository of the project ([https://github.com/cdslaborg/paramonte](https://github.com/cdslaborg/paramonte)). For instructions, please visit: [cdslab.org/pm](https://github.com/cdslaborg/paramonte)  
