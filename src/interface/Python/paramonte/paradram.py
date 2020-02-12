@@ -706,6 +706,73 @@ class ParaDRAM:
 
         _sys.stdout.flush()
 
+        # setup env
+
+        if isWin32:
+
+            if "PATH" in _os.environ:
+                _os.environ["PATH"] = fileAbsDir + _os.pathsep + _os.environ["PATH"]
+            else:
+                _os.environ["PATH"] = fileAbsDir
+
+            mpiFound = False
+            pathList = _os.environ["PATH"].split(";")
+            for path in pathList:
+                pathLower = path.lower().replace("\\","")
+                if ("mpiintel64bin" in pathLower):
+                    mpiFound = True
+                    break
+
+            if mpiFound:
+                #bldMode = buildMode
+                #if bldMode=="testing": bldMode = "release"
+                mpiPath = _os.path.join(path,"release")
+                _os.environ["PATH"] = mpiPath + _os.pathsep + _os.environ["PATH"]
+                libfabricPath = _os.path.join(_os.path.dirname(path),"libfabric","bin")
+                _os.environ["PATH"] = libfabricPath + _os.pathsep + _os.environ["PATH"]
+
+        else:
+
+            if "LD_LIBRARY_PATH" not in _os.environ:
+                _os.environ["LD_LIBRARY_PATH"] = "."
+                if self._mpiDisabled:
+                    _pm.warn( msg   = "LD_LIBRARY_PATH environmental variable is not defined in your Python session.\n"
+                                    + "Consider running the following command in your Bash shell before running Python.\n"
+                                    + "and using ParaMonte library:\n\n"
+                                    + "    export LD_LIBRARY_PATH=."
+                            , methodName = _pm.names.paradram
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+            libdir = "/usr/lib"
+            if _os.path.isdir(libdir):
+                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            libdir = "/usr/local/lib"
+            if _os.path.isdir(libdir):
+                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            libdir = "/usr/lib64"
+            if _os.path.isdir(libdir):
+                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            libdir = "/usr/local/lib64"
+            if _os.path.isdir(libdir):
+                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            _os.environ["LD_LIBRARY_PATH"]  = fileAbsDir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+
+            from _pmreqs import getLocalInstallDir
+            localInstallDir = getLocalInstallDir()
+
+            if localInstallDir.gnu.root is not None:
+                for object in _os.scandir(localInstallDir.gnu.root):
+                    if object.is_dir() and ("lib" in object.name):
+                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+
+            if localInstallDir.mpi.root is not None: 
+                if localInstallDir.mpi.bin is not None: _os.environ["PATH"] = localInstallDir.mpi.bin + _os.pathsep + _os.environ["PATH"]
+                for object in _os.scandir(localInstallDir.mpi.root):
+                    if object.is_dir() and ("lib" in object.name):
+                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+                if localInstallDir.mpi.lib is not None: _os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+
         # import ParaMonte dll define result (None) AND argument (pointer to a c function) type
 
         from ctypes.util import find_library
@@ -773,71 +840,6 @@ class ParaDRAM:
                                         , _ct.POINTER(_ct.c_double)     # Point
                                         )
         getLogFunc_pntr = _getLogFunc_proc(getLogFunc)
-
-        if isWin32:
-
-            if "PATH" in _os.environ:
-                _os.environ["PATH"] = fileAbsDir + _os.pathsep + _os.environ["PATH"]
-            else:
-                _os.environ["PATH"] = fileAbsDir
-
-            mpiFound = False
-            pathList = _os.environ["PATH"].split(";")
-            for path in pathList:
-                pathLower = path.lower().replace("\\","")
-                if ("mpiintel64bin" in pathLower):
-                    mpiFound = True
-                    break
-
-            if mpiFound:
-                #bldMode = buildMode
-                #if bldMode=="testing": bldMode = "release"
-                mpiPath = _os.path.join(path,"release")
-                _os.environ["PATH"] = mpiPath + _os.pathsep + _os.environ["PATH"]
-                libfabricPath = _os.path.join(_os.path.dirname(path),"libfabric","bin")
-                _os.environ["PATH"] = libfabricPath + _os.pathsep + _os.environ["PATH"]
-
-        else:
-
-            if "LD_LIBRARY_PATH" not in _os.environ:
-                _os.environ["LD_LIBRARY_PATH"] = "."
-                if self._mpiDisabled:
-                    _pm.warn( msg   = "LD_LIBRARY_PATH environmental variable is not defined in your Python session.\n"
-                                    + "Consider running the following command in your Bash shell before running Python.\n"
-                                    + "and using ParaMonte library:\n\n"
-                                    + "    export LD_LIBRARY_PATH=."
-                            , methodName = _pm.names.paradram
-                            , marginTop = 1
-                            , marginBot = 1
-                            )
-            libdir = "/usr/lib"
-            if _os.path.isdir(libdir):
-                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-            libdir = "/usr/local/lib"
-            if _os.path.isdir(libdir):
-                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-            libdir = "/usr/lib64"
-            if _os.path.isdir(libdir):
-                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-            libdir = "/usr/local/lib64"
-            if _os.path.isdir(libdir):
-                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-            _os.environ["LD_LIBRARY_PATH"]  = fileAbsDir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-
-            from _pmreqs import getLocalInstallDir
-            localInstallDir = getLocalInstallDir()
-
-            if localInstallDir.gnu.root is not None:
-                for object in _os.scandir(localInstallDir.gnu.root):
-                    if object.is_dir() and ("lib" in object.name):
-                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-
-            if localInstallDir.mpi.root is not None: 
-                if localInstallDir.mpi.bin is not None: _os.environ["PATH"] = localInstallDir.mpi.bin + _os.pathsep + _os.environ["PATH"]
-                for object in _os.scandir(localInstallDir.mpi.root):
-                    if object.is_dir() and ("lib" in object.name):
-                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-                if localInstallDir.mpi.lib is not None: _os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
 
         try:
 
