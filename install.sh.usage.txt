@@ -30,7 +30,7 @@
                                   the default is "C Fortran Python".
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
                                   If you are not sure whether you have any of the two installed on your system,
-                                  leave this option out. The sctipt will automatically search for the appropriate
+                                  leave this option out. The script will automatically search for the appropriate
                                   compilers and libraries. If they are not found, it will ask for your permission
                                   to install the missing components.
         -b | --build_type       : the ParaMonte library build type: release, testing, debug
