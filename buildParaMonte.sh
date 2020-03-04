@@ -889,7 +889,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 if ! [ -d "${ParaMonte_REQ_DIR}" ]; then
                     mkdir "${ParaMonte_REQ_DIR}"
                 fi
-                (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf "${tarFileName}" -C prerequisites --strip-components 1)
+                (cd "${ParaMonte_REQ_DIR}/../" && tar -xvzf "${tarFileName}" -C prerequisites --strip-components 1)
                 verify $? "unpacking of prerequisites"
                 # chmod +x -R "${ParaMonte_REQ_DIR}"
 
