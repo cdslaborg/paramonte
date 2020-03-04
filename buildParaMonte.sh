@@ -396,7 +396,7 @@ cmakeInstallEnabled=false
 compareVersions "${cmakeVersion}" "${cmakeVersionRequired}"
 if [ "$?" = "2" ]; then
     cmakeInstallEnabled=true
-    echo >&2 "-- ParaMonte - the current cmake installation is NOT ParaMonte compatible!"
+    echo >&2 "-- ParaMonte - failed to detect a ParaMonte-compatible installation of cmake!"
 else
     echo >&2 "-- ParaMonte - the current cmake installation is ParaMonte compatible!"
 fi
