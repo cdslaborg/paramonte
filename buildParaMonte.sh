@@ -883,13 +883,13 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 echo >&2 "-- ParaMonte - generating directory: ${ParaMonte_REQ_DIR}/"
                 mkdir -p "${ParaMonte_REQ_DIR}/"
 
-                tarFileName = "prerequisites.tar.gz"
+                tarFileName="prerequisites.tar.gz"
                 cp -rv "${ParaMonte_ROOT_DIR}/auxil/${tarFileName}" "${ParaMonte_REQ_DIR}/../"
                 verify $? "installation setup of prerequisites"
                 if ! [ -d "${ParaMonte_REQ_DIR}" ]; then
                     mkdir "${ParaMonte_REQ_DIR}"
                 fi
-                (cd "${ParaMonte_REQ_DIR}/../" && tar -xvzf "${tarFileName}" -C prerequisites --strip-components 1)
+                (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf "${tarFileName}" -C prerequisites --strip-components 1)
                 verify $? "unpacking of prerequisites"
                 # chmod +x -R "${ParaMonte_REQ_DIR}"
 
