@@ -385,20 +385,27 @@ verify() {
 ####################################################################################################################################
 
 cmakeVersion="$(cmake --version)"
-cmakeVersion=${cmakeVersion:14:18}
-#echo >&2 "cmake version: ${cmakeVersion}"
-cmakeVersion=${cmakeVersion#c*[0-9]}
-cmakeVersion=${cmakeVersion%\-*}
+#cmakeVersion=${cmakeVersion:14:18}
+##echo >&2 "cmake version: ${cmakeVersion}"
+#cmakeVersion=${cmakeVersion#c*[0-9]}
+#cmakeVersion=${cmakeVersion%\-*}
+cmakeVersionArray=($cmakeVersion)
+cmakeVersion=${cmakeVersionArray[2]}
 cmakeVersionRequired=3.14.0
 echo "-- ParaMonte - cmake version: ${cmakeVersion}"
 echo "-- ParaMonte - cmake version required: ${cmakeVersionRequired}"
-cmakeInstallEnabled=false
-compareVersions "${cmakeVersion}" "${cmakeVersionRequired}"
-if [ "$?" = "2" ]; then
+
+if [ "${cmakeVersion}" = "" ]; then
     cmakeInstallEnabled=true
-    echo >&2 "-- ParaMonte - failed to detect a ParaMonte-compatible installation of cmake!"
 else
-    echo >&2 "-- ParaMonte - the current cmake installation is ParaMonte compatible!"
+    cmakeInstallEnabled=false
+    compareVersions "${cmakeVersion}" "${cmakeVersionRequired}"
+    if [ "$?" = "2" ]; then
+        cmakeInstallEnabled=true
+        echo >&2 "-- ParaMonte - failed to detect a ParaMonte-compatible installation of cmake!"
+    else
+        echo >&2 "-- ParaMonte - the current cmake installation is ParaMonte compatible!"
+    fi
 fi
 export cmakeInstallEnabled
 
