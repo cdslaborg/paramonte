@@ -5,7 +5,7 @@ Usage:
 
 Example:
 
-    buildParaMonte.sh --lang C/Fortran --build release --lib dynamic/static --heap true --mpi false/true --np 3
+    install.bat --lang C/Fortran --build release --lib dynamic/static --heap true --mpi false/true --np 3
 
 Flag definitions:
 

@@ -140,9 +140,9 @@ if not defined COMPILER_VERSION (
 
 )
 
-echo. -- ParaMonte - COMPILER_VERSION=!COMPILER_VERSION!
-echo. -- ParaMonte - CFI_ENABLED=!CFI_ENABLED!
-echo. -- ParaMonte - TEST_RUN_ENABLED=!ParaMonteTest_RUN_ENABLED!
+echo. -- ParaMonte - COMPILER_VERSION: !COMPILER_VERSION!
+echo. -- ParaMonte - TEST_RUN_ENABLED: !ParaMonteTest_RUN_ENABLED!
+echo. -- ParaMonte - CFI_ENABLED: !CFI_ENABLED!
 echo. -- ParaMonte - build type: !BTYPE!
 echo. -- ParaMonte - link type: !LTYPE!
 

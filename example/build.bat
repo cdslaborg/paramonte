@@ -222,11 +222,11 @@ if !TARGET_LANG!==Fortran (
         set FOR_COARRAY_NUM_IMAGES=!NUM_PROCESS!
     )
 
-    set COMPILER_FLAGS=
-    if !BTYPE!==debug   set COMPILER_FLAGS=/debug:full /CB /Od /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /check:bounds /fpe-all:0 /Qdiag-error-limit:10 /Qdiag-disable:5268 /Qdiag-disable:7025 /Qtrapuv
-    if !BTYPE!==release set COMPILER_FLAGS=/O3 /Qip /Qipo /Qunroll /Qunroll-aggressive /Qinline-dllimport
-    if !BTYPE!==testing set COMPILER_FLAGS=/Od
-    if !LTYPE!==dynamic set COMPILER_FLAGS=!COMPILER_FLAGS! /fpp /DIS_COMPATIBLE_COMPILER
+    set COMPILER_FLAGS=/fpp
+    if !LTYPE!==dynamic set COMPILER_FLAGS=!COMPILER_FLAGS! /DIS_COMPATIBLE_COMPILER
+    if !BTYPE!==debug   set COMPILER_FLAGS=!COMPILER_FLAGS! /debug:full /CB /Od /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /check:bounds /fpe-all:0 /Qdiag-error-limit:10 /Qdiag-disable:5268 /Qdiag-disable:7025 /Qtrapuv
+    if !BTYPE!==release set COMPILER_FLAGS=!COMPILER_FLAGS! /O3 /Qip /Qipo /Qunroll /Qunroll-aggressive /Qinline-dllimport
+    if !BTYPE!==testing set COMPILER_FLAGS=!COMPILER_FLAGS! /Od
 
 )
 

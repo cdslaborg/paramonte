@@ -100,12 +100,18 @@ Thumbs.db
 *.app
 
 #########################
-# ParaMonte output files
+# ParaMonte temp folders
 #########################
 
-build/*
-temp/*
-bin/*
+**/.ipynb_checkpoints/*
+**/build/*
+**/temp/*
+**/bin/*
+**/_*/*
+
+#########################
+# ParaMonte temp files
+#########################
 
 *_log.txt
 *_time.txt
@@ -115,6 +121,7 @@ bin/*
 *.stderr
 *.temp
 *.rfn
+_*.*
 
 #########################
 # CMake

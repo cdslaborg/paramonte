@@ -402,8 +402,8 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
                         set ParaMonte_OBJ_ENABLED=!FRESH_RUN!
                         set ParaMonte_LIB_ENABLED=!FRESH_RUN!
-                        set ParaMonteExample_EXE_ENABLED=!FRESH_RUN!
-                        set ParaMonteExample_RUN_ENABLED=!FRESH_RUN!
+                        set ParaMonteExample_EXE_ENABLED=true
+                        set ParaMonteExample_RUN_ENABLED=true
 
                         set BTYPE=%%~B
                         set LTYPE=%%~L

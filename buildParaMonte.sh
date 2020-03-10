@@ -979,7 +979,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     echo >&2 "-- ParaMonte - ${CURRENT_PKG} missing."
                     echo >&2 "-- ParaMonte - installing the prerequisites...this can take a while."
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) || 
+                    (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) || 
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             echo >&2
