@@ -107,6 +107,7 @@ Thumbs.db
 **/build/*
 **/temp/*
 **/bin/*
+**/___*___/*
 
 #########################
 # ParaMonte temp files
@@ -120,6 +121,7 @@ Thumbs.db
 *.stderr
 *.temp
 *.rfn
+___*___.*
 
 
 #########################
