@@ -420,7 +420,7 @@ echo >&2
 
 if [ "${BUILD_SUCCEEDED}" = "true" ]; then
 
-    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - To run the example's executable with the propoer environmental setup, try:"
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - To run the example's executable with the proper environmental setup, try:"
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     source ./${RUN_FILE_NAME}"
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
