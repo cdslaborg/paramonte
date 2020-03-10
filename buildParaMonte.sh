@@ -1330,7 +1330,7 @@ if [ -z ${CFI_ENABLED+x} ]; then
 fi
 export ParaMonte_BLD_DIR
 
-echo >&2 "-- ${BUILD_NAME} - ParaMonte build directory: ${ParaMonte_BLD_DIR}"
+echo >&2 "-- ${BUILD_NAME} - build directory: ${ParaMonte_BLD_DIR}"
 if [ -d "${ParaMonte_BLD_DIR}" ]; then
     echo >&2 "-- ${BUILD_NAME} - ParaMonte build directory already exists. skipping..."
 else
