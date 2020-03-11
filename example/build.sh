@@ -61,7 +61,7 @@ However, the onus on you to ensure compiler/library availability and compatibili
                                 : If not provided, the default is 3.
         -h | --help             : help with the sctipt usage
 
-NOTE: ALL FLAGS ARE OPTIONAL. If not provided, appropriate values will be set for each flag.
+NOTE: ALL FLAGS ARE OPTIONAL. If not provided, appropriate values will be set for each missing flag.
 NOTE: 
 NOTE: If the compiler flags, -f | --compiler_flags, option is specified, it will override all default compiler flags.
 NOTE: If not provided, appropriate values will be set for each flag.
