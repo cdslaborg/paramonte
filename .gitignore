@@ -107,7 +107,7 @@ Thumbs.db
 **/build/*
 **/temp/*
 **/bin/*
-**/_*/*
+**/___*___/*
 
 #########################
 # ParaMonte temp files
@@ -121,7 +121,8 @@ Thumbs.db
 *.stderr
 *.temp
 *.rfn
-_*.*
+___*___.*
+
 
 #########################
 # CMake
