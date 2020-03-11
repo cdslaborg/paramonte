@@ -34,11 +34,11 @@ module StarFormation_mod
     real(RK)    , parameter :: ZMAX = 1.0e2_RK
 
     abstract interface
-    function getLogSFR_proc(zplus1,logzplus1,twiceLogLumDisMpc) result(logSFR)
+    function getLogRate_proc(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
         import :: RK, IK
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
-        real(RK)                :: logSFR
-    end function getLogSFR_proc
+        real(RK)                :: logRate
+    end function getLogRate_proc
     end interface
 
 !***********************************************************************************************************************************
@@ -49,9 +49,9 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    pure function getLogDensitySFRH06(logzplus1) result(logDensitySFR)
+    pure function getLogRateDensityH06(logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogDensitySFRH06
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06
 #endif
         use Constants_mod, only: RK
         implicit none
@@ -73,14 +73,14 @@ contains
         else
             logDensitySFR = logzplus1*g2 + logNormFac2
         end if
-    end function getLogDensitySFRH06
+    end function getLogRateDensityH06
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    pure function getLogDensitySFRL08(logzplus1) result(logDensitySFR)
+    pure function getLogRateDensityL08(logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogDensitySFRL08
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08
 #endif
         use Constants_mod, only: RK
         implicit none
@@ -102,15 +102,15 @@ contains
         else
             logDensitySFR = logzplus1*g2 + logNormFac2
         end if
-    end function getLogDensitySFRL08
+    end function getLogRateDensityL08
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
     ! Metalicity corrected SFR of Butler, Bloom et al 2010
-    pure function getLogDensitySFRB10(logzplus1) result(logDensitySFR)
+    pure function getLogRateDensityB10(logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogDensitySFRB10
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityB10
 #endif
         use Constants_mod, only: IK, RK
         implicit none
@@ -132,16 +132,16 @@ contains
         else
             logDensitySFR = logzplus1*g2 + logNormFac2
         end if
-    end function getLogDensitySFRB10
+    end function getLogRateDensityB10
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
     ! returns the Comoving Star Formation Rate Density according to Eqn 15 of Madau 2014: Cosmic Star-Formation History
     ! densitySFR(z) = 0.015 * (1+z)^2.7 / ( 1 + [(1+z)/2.9]^5.6 )
-    pure function getLogDensitySFRM14(zplus1,logzplus1) result(logDensitySFR)
+    pure function getLogRateDensityM14(zplus1,logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogDensitySFRM14
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14
 #endif
         use Constants_mod, only: RK
         implicit none
@@ -153,75 +153,75 @@ contains
         real(RK), parameter     :: zplus1Break = 2.9_RK
         real(RK), parameter     :: zplus1Coeff = 1._RK / (zplus1Break**upperExp)
         logDensitySFR = logAmplitude + lowerExp*logzplus1 - log( 1._RK + zplus1Coeff * zplus1**upperExp )
-    end function getLogDensitySFRM14
+    end function getLogRateDensityM14
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    pure function getLogSFRH06(zplus1,logzplus1,twiceLogLumDisMpc) result(logSFR)
+    pure function getLogRateH06(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogSFRH06
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateH06
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
         use Constants_mod, only: RK, PI
         implicit none
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
         real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
-        real(RK)                :: logSFR
-        logSFR  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
-                + getLogDensitySFRH06(logzplus1)
-    end function getLogSFRH06
+        real(RK)                :: logRate
+        logRate  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+                + getLogRateDensityH06(logzplus1)
+    end function getLogRateH06
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    pure function getLogSFRL08(zplus1,logzplus1,twiceLogLumDisMpc) result(logSFR)
+    pure function getLogRateL08(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogSFRL08
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateL08
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
         use Constants_mod, only: RK, PI
         implicit none
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
         real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
-        real(RK)                :: logSFR
-        logSFR  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
-                + getLogDensitySFRL08(logzplus1)
-    end function getLogSFRL08
+        real(RK)                :: logRate
+        logRate  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+                + getLogRateDensityL08(logzplus1)
+    end function getLogRateL08
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    pure function getLogSFRB10(zplus1,logzplus1,twiceLogLumDisMpc) result(logSFR)
+    pure function getLogRateB10(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogSFRB10
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateB10
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
         use Constants_mod, only: RK, PI
         implicit none
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
         real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
-        real(RK)                :: logSFR
-        logSFR  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
-                + getLogDensitySFRB10(logzplus1)
-    end function getLogSFRB10
+        real(RK)                :: logRate
+        logRate  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+                + getLogRateDensityB10(logzplus1)
+    end function getLogRateB10
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    pure function getLogSFRM14(zplus1,logzplus1,twiceLogLumDisMpc) result(logSFR)
+    pure function getLogRateM14(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogSFRM14
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateM14
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
         use Constants_mod, only: RK, PI
         implicit none
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
         real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
-        real(RK)                :: logSFR
-        logSFR  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
-                + getLogDensitySFRM14(zplus1,logzplus1)
-    end function getLogSFRM14
+        real(RK)                :: logRate
+        logRate  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+                + getLogRateDensityM14(zplus1,logzplus1)
+    end function getLogRateM14
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
