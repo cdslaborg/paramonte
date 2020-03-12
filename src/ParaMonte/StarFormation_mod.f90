@@ -175,6 +175,7 @@ contains
         real(RK), parameter     :: zplus1Coeff = 1._RK / (zplus1Break**upperExp)
         logDensitySFR = logAmplitude + lowerExp*logzplus1 - log( 1._RK + zplus1Coeff * zplus1**upperExp )
     end function getLogRateDensityM17
+
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
@@ -188,7 +189,7 @@ contains
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
         real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
         real(RK)                :: logRate
-        logRate  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+        logRate = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
                 + getLogRateDensityH06(logzplus1)
     end function getLogRateH06
 
@@ -205,7 +206,7 @@ contains
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
         real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
         real(RK)                :: logRate
-        logRate  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+        logRate = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
                 + getLogRateDensityL08(logzplus1)
     end function getLogRateL08
 
@@ -222,7 +223,7 @@ contains
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
         real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
         real(RK)                :: logRate
-        logRate  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+        logRate = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
                 + getLogRateDensityB10(logzplus1)
     end function getLogRateB10
 
@@ -239,7 +240,7 @@ contains
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
         real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
         real(RK)                :: logRate
-        logRate  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+        logRate = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
                 + getLogRateDensityM14(zplus1,logzplus1)
     end function getLogRateM14
 
@@ -256,7 +257,7 @@ contains
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
         real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
         real(RK)                :: logRate
-        logRate  = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+        logRate = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
                 + getLogRateDensityM17(zplus1,logzplus1)
     end function getLogRateM17
 
