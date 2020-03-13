@@ -486,6 +486,9 @@ contains
 #if defined CAF_ENABLED || defined MPI_ENABLED
             if (PD%Image%count==1_IK .or. PD%SpecBase%ParallelizationModel%isMultiChain) then
 
+                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Estimated maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode:" )
+                call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Image%count ) )
+
                 call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency:" )
                 if (PD%SpecBase%ParallelizationModel%isMultiChain) then
                     call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
@@ -493,8 +496,26 @@ contains
                     call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNKNOWN" )
                 end if
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Estimated maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode:" )
-                call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Image%count ) )
+                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency:" )
+                if (PD%SpecBase%ParallelizationModel%isMultiChain) then
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
+                else
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNKNOWN" )
+                end if
+
+                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
+                if (PD%SpecBase%ParallelizationModel%isMultiChain) then
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
+                else
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNKNOWN" )
+                end if
+
+                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
+                if (PD%SpecBase%ParallelizationModel%isMultiChain) then
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
+                else
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNKNOWN" )
+                end if
 
                 if (PD%Image%count==1_IK) then
                     msg = PD%name// " is being used in parallel mode but with only one processor.\n&
@@ -538,6 +559,10 @@ contains
 
                     avgCommTimePerFunCallPerNode = PD%Stats%avgCommTimePerFunCall / real(PD%Image%count-1_IK,kind=RK)
 
+                    !***************************************************************************************************************
+                    ! compute the optimal parallelism effciency with the current MCMC sampling efficiency
+                    !***************************************************************************************************************
+
                     ! compute fraction of points sampled by the first image
 
                     maxSpeedup = 1._RK
@@ -555,11 +580,14 @@ contains
                         end if
                     end do loopOptimalImageCount
 
+                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Estimated maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode:" )
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( currentSpeedup ) )
+
                     call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency:" )
                     call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( maxSpeedupImageCount ) )
 
-                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Estimated maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode:" )
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( currentSpeedup ) )
+                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency:" )
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( maxSpeedup ) )
 
                     if (currentSpeedup<1._RK) then
                         formatIn = "(g0.6)"
@@ -588,6 +616,40 @@ contains
                                     , marginBot  = 0_IK             &
                                     , msg        = msg              )
                     end if
+
+                    !***************************************************************************************************************
+                    ! compute the absolute optimal parallelism effciency under any MCMC sampling efficiency
+                    !***************************************************************************************************************
+
+                    imageCount = 1_IK
+                    maxSpeedup = 1._RK
+                    maxSpeedupImageCount = 1_IK
+                    loopAbsoluteOptimalImageCount: do 
+                        imageCount = imageCount + 1_IK
+                        parSecTime = PD%Stats%avgTimePerFunCalInSec / imageCount
+                        comSecTime = (imageCount-1_IK) * avgCommTimePerFunCallPerNode  ! assumption: communication time grows linearly with the number of nodes
+                        speedup = serialTime / (seqSecTime+parSecTime+comSecTime)
+                        if (maxSpeedup>speedup) then
+                            maxSpeedupImageCount = imageCount - 1_IK
+                            exit loopAbsoluteOptimalImageCount
+                        end if
+                        maxSpeedup = max( maxSpeedup , speedup )
+                    end do loopAbsoluteOptimalImageCount
+
+                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( maxSpeedupImageCount ) )
+
+                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( maxSpeedup ) )
+
+                    msg = "This simulation will likely NOT benefit from any additional computing processor beyond the predicted absolute optimal number, "//num2str(maxSpeedupImageCount) &
+                        //", in the above. This is true for any value of MCMC sampling efficiency."
+                    call PD%note( prefix     = PD%brand         &
+                                , outputUnit = PD%LogFile%unit  &
+                                , newline    = NLC              &
+                                , marginTop  = 0_IK             &
+                                , marginBot  = 1_IK             &
+                                , msg        = msg              )
 
                 end block
 
