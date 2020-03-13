@@ -66,6 +66,7 @@ double getLogFunc   (
     const double LOG_SQRT_DET_INV_COV = 0.581575404902840;          // logarithm of square root of the determinant of the inverse covariance matrix
 
     // subtract mean vector from the input point
+
     double NormedPoint[NDIM];
 	for(int i = 0; i < NDIM; i++){
         NormedPoint[i] = Point[i] - MEAN[i];
