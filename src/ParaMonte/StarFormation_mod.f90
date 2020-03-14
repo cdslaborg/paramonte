@@ -180,7 +180,7 @@ contains
 !***********************************************************************************************************************************
 
     ! Mordau Comoving Star Formation Rate Density with updated parameters from Fermi 2018
-    ! densitySFR(z) = 0.013 * (1+z)^2.99 / ( 1 + [(1+z)/3.63]^6.19 )
+    ! densitySFR(z) = 0.013 * (1+z)^2.99 / ( 1 + [(1+z)/2.63]^6.19 )
     pure function getLogRateDensityF18(zplus1,logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18
@@ -285,7 +285,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-pure function getLogRateF18(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
+    pure function getLogRateF18(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateF18
 #endif
