@@ -158,7 +158,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! returns the Comoving Star Formation Rate Density according to Eqn 15 of Madau 2017: Cosmic Star-Formation History
+    ! returns the Comoving Star Formation Rate Density according to Eqn 1 of Madau 2017: Cosmic Star-Formation History
     ! densitySFR(z) = 0.01 * (1+z)^2.6 / ( 1 + [(1+z)/3.2]^6.2 )
     pure function getLogRateDensityM17(zplus1,logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -175,6 +175,27 @@ contains
         real(RK), parameter     :: zplus1Coeff = 1._RK / (zplus1Break**upperExp)
         logDensitySFR = logAmplitude + lowerExp*logzplus1 - log( 1._RK + zplus1Coeff * zplus1**upperExp )
     end function getLogRateDensityM17
+    
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! Mordau Comoving Star Formation Rate Density with updated parameters from Fermi 2018
+    ! densitySFR(z) = 0.013 * (1+z)^2.99 / ( 1 + [(1+z)/3.63]^6.19 )
+    pure function getLogRateDensityF18(zplus1,logzplus1) result(logDensitySFR)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18
+#endif
+        use Constants_mod, only: RK
+        implicit none
+        real(RK), intent(in)    :: zplus1, logzplus1
+        real(RK)                :: logDensitySFR
+        real(RK), parameter     :: logAmplitude = log(0.013_RK)
+        real(RK), parameter     :: lowerExp = 2.99_RK
+        real(RK), parameter     :: upperExp = 6.19_RK
+        real(RK), parameter     :: zplus1Break = 2.63_RK
+        real(RK), parameter     :: zplus1Coeff = 1._RK / (zplus1Break**upperExp)
+        logDensitySFR = logAmplitude + lowerExp*logzplus1 - log( 1._RK + zplus1Coeff * zplus1**upperExp )
+    end function getLogRateDensityF18
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -264,4 +285,20 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+pure function getLogRateF18(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateF18
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
+        real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
+        real(RK)                :: logRate
+        logRate = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+                + getLogRateDensityF18(zplus1,logzplus1)
+    end function getLogRateF18
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
 end module StarFormation_mod
