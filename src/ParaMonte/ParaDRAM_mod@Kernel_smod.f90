@@ -196,6 +196,12 @@ contains
                 PD%isDryRun = .not. PD%isFreshRun
             end if
 
+#if defined CAF_ENABLED
+            sync all
+#elif defined MPI_ENABLED
+            call mpi_barrier(mpi_comm_world,ierrMPI)
+#endif
+
             if (PD%Image%isMaster) then
 
                 ! set up the chain file
