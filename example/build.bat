@@ -205,7 +205,6 @@ echo. -- ParaMonte - ParaMonte library target language: !TARGET_LANG!
 
 set NUM_PROCESS=3
 set EXE_NAME=runExample.exe
-set LINKER_FLAGS=/link /out:!EXE_NAME!
 
 set COMPILER_NAME=
 if !TARGET_LANG!==Fortran (
@@ -213,6 +212,7 @@ if !TARGET_LANG!==Fortran (
     set SEXT=f90
     set COMPILER_NAME=ifort
     set COMPILER_SUITE=intel
+    set LINKER_FLAGS=/link /out:!EXE_NAME!
 
     if !PTYPE!==mpi (
         set COMPILER_NAME=mpiifort -fc=ifort
@@ -235,6 +235,7 @@ if !TARGET_LANG!==C (
     set SEXT=c
     set COMPILER_NAME=icl
     set COMPILER_SUITE=intel
+    set LINKER_FLAGS=/link /Fe:!EXE_NAME!
 
     if !PTYPE!==mpi set COMPILER_NAME=mpiicc.bat -cc=!COMPILER_NAME!.exe
 
