@@ -91,7 +91,7 @@ contains
         km = nRefinement - 1_IK
         h(1) = 1._RK
         numFuncEval = 0_IK
-        do refinementStage=1,NSTEP
+        do refinementStage = 1, NSTEP
             call doQuadTrap(getFunc,lowerLim,upperLim,s(refinementStage),refinementStage,numFuncEvalNew)
             numFuncEval = numFuncEval + numFuncEvalNew
             if (refinementStage>=nRefinement) then
