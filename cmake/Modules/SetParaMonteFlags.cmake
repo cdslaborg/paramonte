@@ -325,7 +325,7 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
         if (APPLE)
             set(FC_LIB_FLAGS 
-                -fpic -dynamiclib -noall_load -weak_references_mismatches # non-weak -threads -arch_only i386
+                -fpic -dynamiclib -noall_load # -weak_references_mismatches non-weak -threads -arch_only i386
                 CACHE STRING "Intel Mac Fortran compiler dynamic library flags" )
             set(FL_LIB_FLAGS
                 -shared -dynamiclib -noall_load -weak_references_mismatches -Wl,-rpath,. # non-weak -threads -arch_only i386
@@ -599,19 +599,18 @@ set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" CACHE STRING "CXX default compiler 
 set(FCL_FLAGS "${FCL_FLAGS_DEFAULT}" "${FCL_PARALLELIZATION_FLAGS}" "${FCL_BUILD_FLAGS}" )
 set(CCL_FLAGS "${CCL_FLAGS_DEFAULT}" "${CCL_BUILD_FLAGS}" )
 
-unset(HEAP_ARRAY_FLAGS)
 if (HEAP_ARRAY_ENABLED)
     if (intel_compiler)
         if (WIN32)
             #set(FCL_FLAGS "${FCL_FLAGS}" /heap-arrays:10 )
-            set(HEAP_ARRAY_FLAGS "${HEAP_ARRAY_FLAGS}" /heap-arrays:10 )
+            set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" /heap-arrays:10 )
         else()
             #set(FCL_FLAGS "${FCL_FLAGS}" -heap-arrays=10 )
-            set(HEAP_ARRAY_FLAGS "${HEAP_ARRAY_FLAGS}" -heap-arrays=10 )
+            set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" -heap-arrays=10 )
         endif()
     elseif(gnu_compiler)
         #set(FCL_FLAGS "${FCL_FLAGS}" -fmax-stack-var-size=10 )
-        set(HEAP_ARRAY_FLAGS "${HEAP_ARRAY_FLAGS}" -fmax-stack-var-size=10 )
+        set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" -fmax-stack-var-size=10 )
     endif()
 endif()
 
