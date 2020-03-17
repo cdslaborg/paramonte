@@ -25,7 +25,7 @@
 module System_mod
 
     use JaggedArray_mod, only: CharVec_type
-    use Constants_mod, only: IK
+    use Constants_mod, only: IK, NLC
     use Err_mod, only: Err_type
     implicit none
 
@@ -130,6 +130,7 @@ contains
         implicit none
         class(OS_type)  , intent(out)   :: OS
         character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME // "@queryOS()"
+        character(:)    , allocatable   :: osname
 
         OS%Err%occurred = .false.
         OS%Err%msg = ""
@@ -137,7 +138,7 @@ contains
         if (allocated(OS%name)) deallocate(OS%name); allocate( character(MAX_OS_NAME_LEN) :: OS%name )
         call getEnvVar( name="OS", value=OS%name, Err=OS%Err )
         if (OS%Err%occurred) then
-            OS%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type.\n" // OS%Err%msg
+            OS%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type." // NLC // OS%Err%msg
             OS%name = ""
             return
         end if
@@ -165,20 +166,21 @@ contains
             if (allocated(OS%name)) deallocate(OS%name); allocate( character(MAX_OS_NAME_LEN) :: OS%name )
             call getEnvVar( name="OSTYPE", value=OS%name, Err=OS%Err )
             if (OS%Err%occurred) then
-                OS%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type.\n" // OS%Err%msg
+                OS%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type." // NLC // OS%Err%msg
                 OS%name = ""
                 return
             end if
 
             OS%name = trim(adjustl(OS%name))
+            osname = getLowerCase(OS%name)
 
-            blockNonWindowsOS: if (getLowerCase(OS%name(1:6))=="darwin") then
+            blockNonWindowsOS: if (index(osname,"darwin")/=0) then
 
                 OS%isDarwin = .true.
                 OS%isLinux = .false.
                 return
 
-            elseif (getLowerCase(OS%name(1:5))=="linux") then blockNonWindowsOS
+            elseif (index(osname,"linux")/=0) then blockNonWindowsOS
 
                 OS%isDarwin = .false.
                 OS%isLinux = .true.
@@ -190,19 +192,17 @@ contains
 
                     integer                     :: idummy
                     type(RandomFileName_type)   :: RFN
-                    character(:), allocatable   :: osname
                     RFN = RandomFileName_type(key="queryOS")
                     if (RFN%Err%occurred) then
                         OS%Err = RFN%Err
-                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring OS type.\n" // OS%Err%msg
+                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring OS type." // NLC // OS%Err%msg
                         OS%name = ""
                         return
                     end if
 
                     call executeCmd( command="uname > "//RFN%path, Err=OS%Err )
                     if (OS%Err%occurred) then
-                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while executing command 'uname > "// RFN%path // "'.\n" // &
-                                     OS%Err%msg
+                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while executing command 'uname > "// RFN%path // "'." // NLC // OS%Err%msg
                         OS%name = ""
                         return
                     end if
@@ -246,16 +246,14 @@ contains
 
                     call sleep( seconds=0.5_RK, Err=OS%Err )
                     if (OS%Err%occurred) then
-                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while calling subroutine sleep() for querying file = '" // &
-                                     RFN%path // "'.\n" // OS%Err%msg
+                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while calling subroutine sleep() for querying file = '" // RFN%path // "'." // NLC // OS%Err%msg
                         OS%name = ""
                         return
                     end if
 
                     call removeFile( path=RFN%path, isWindows=.false., Err=OS%Err )
                     if (OS%Err%occurred) then
-                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while removing file = '"// RFN%path // "'.\n" // &
-                                     OS%Err%msg
+                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while removing file = '"// RFN%path // "'." // NLC // OS%Err%msg
                         OS%name = ""
                         return
                     end if
@@ -657,8 +655,7 @@ contains
 
         call executeCmd( command=command // " 2> " // stdErr, Err=Err )
         if (Err%occurred) then
-            Err%msg =   PROCEDURE_NAME // &
-                        ": Error occurred while attempting to write the system info to external file.\n" // Err%msg
+            Err%msg =   PROCEDURE_NAME // ": Error occurred while attempting to write the system info to external file." // NLC // Err%msg
             return
         end if
 
@@ -762,12 +759,12 @@ contains
         if (present(count)) count = nRecord
 
         ! remove the files
-        call removeFile(filename,isWindows,Err)
+        call removeFile(filename,OpSy%isWindows,Err)
         if (Err%occurred) then
             Err%msg = PROCEDURE_NAME // Err%msg
             return
         end if
-        call removeFile(stdErr,isWindows,Err)
+        call removeFile(stdErr,OpSy%isWindows,Err)
         if (Err%occurred) then
             Err%msg = PROCEDURE_NAME // Err%msg
             return
@@ -867,7 +864,7 @@ contains
             counter = counter + 1
             call executeCmd( command=cmd, Err=Err )
             if (Err%occurred) then
-                Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'.\n"
+                Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'." // NLC
                 return
             end if
             ! ensure file is copied
@@ -934,7 +931,7 @@ contains
             counter = counter + 1
             call executeCmd( command=cmd, Err=Err )
             if (Err%occurred) then
-                Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'.\n"
+                Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'." // NLC
                 return
             end if
             ! ensure file is removed

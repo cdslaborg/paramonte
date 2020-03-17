@@ -48,14 +48,14 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: abort
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use Constants_mod, only: RK
+        use Constants_mod, only: NLC
         use Decoration_mod, only: write
         implicit none
         type(Err_type), intent(in)          :: Err
         character(*), intent(in), optional  :: prefix, newline
         integer     , intent(in), optional  :: outputUnit
 
-        character(:), allocatable           :: pfx, msg
+        character(:), allocatable           :: pfx, msg, nlstr
         character(63)                       :: dummyChar1, dummyChar2, imageChar
 
 #if defined CAF_ENABLED
@@ -77,18 +77,18 @@ contains
             write(dummyChar1,"(g0)") Err%stat
             write(dummyChar2,"(g0)") Err%statNull
             if (present(newline)) then
-               !msg =   Err%msg // newline // "Error Code: " // trim(adjustl(dummyChar1)) // ". Null Error Code: " // trim(adjustl(dummyChar2)) // "."
-                msg =   Err%msg // newline // "Error Code: " // trim(adjustl(dummyChar1)) // "."
+                nlstr = newline
             else
-               !msg =   Err%msg           // " Error Code: " // trim(adjustl(dummyChar1)) // ". Null Error Code: " // trim(adjustl(dummyChar2)) // "."
-                msg =   Err%msg           // " Error Code: " // trim(adjustl(dummyChar1)) // "."
+                nlstr = NLC
             end if
+           !msg =   Err%msg // nlstr // "Error Code: " // trim(adjustl(dummyChar1)) // ". Null Error Code: " // trim(adjustl(dummyChar2)) // "."
+            msg =   Err%msg // nlstr // "Error Code: " // trim(adjustl(dummyChar1)) // "."
         end if
         if (present(prefix)) then
-            call informUser(msg,prefix // " - FATAL: ",newline,outputUnit)
+            call informUser(msg,prefix // " - FATAL: ",nlstr,outputUnit)
             pfx = prefix
         else
-            call informUser(msg," - ",newline,outputUnit)
+            call informUser(msg," - ",nlstr,outputUnit)
             pfx = ""
         end if
 
