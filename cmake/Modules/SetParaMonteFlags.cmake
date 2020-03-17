@@ -325,10 +325,10 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
         if (APPLE)
             set(FC_LIB_FLAGS 
-                -fpic -dynamiclib -noall_load -weak_references_mismatches non-weak # -threads -arch_only i386
+                -fpic -dynamiclib -noall_load -weak_references_mismatches # non-weak -threads -arch_only i386
                 CACHE STRING "Intel Mac Fortran compiler dynamic library flags" )
             set(FL_LIB_FLAGS
-                -shared -dynamiclib -noall_load -weak_references_mismatches non-weak -Wl,-rpath,. # -threads -arch_only i386
+                -shared -dynamiclib -noall_load -weak_references_mismatches -Wl,-rpath,. # non-weak -threads -arch_only i386
                 CACHE STRING "Intel Apple Fortran linker dynamic library flags" )
                 # https://software.intel.com/en-us/fortran-compiler-developer-guide-and-reference-creating-shared-libraries
         elseif(WIN32)
