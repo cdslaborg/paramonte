@@ -630,6 +630,11 @@ contains
         ! determine the operating system
         if (present(OS)) then
             OpSy = OS
+write(*,*) OpSy%isWindows, OS%isWindows
+write(*,*) OpSy%isDarwin, OS%isDarwin
+write(*,*) OpSy%isLinux, OS%isLinux
+write(*,*) OpSy%slash, OS%slash
+read(*,*)
         else
             call OpSy%query()
             if (OpSy%Err%occurred) then
