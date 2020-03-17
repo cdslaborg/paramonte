@@ -213,7 +213,8 @@ set_target_properties( ${PMLIB} PROPERTIES Fortran_MODULE_DIRECTORY "${ParaMonte
 #string(REPLACE ";" " " FCL_FLAGS ${FCL_FLAGS})
 #string(REPLACE ";" " " FC_LIB_FLAGS ${FC_LIB_FLAGS})
 message( STATUS "${pmattn} ParaMonte library build compile flags: ${FCL_FLAGS} ${FC_LIB_FLAGS}" )
-target_compile_options( ${PMLIB} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
+#target_compile_options( ${PMLIB} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
+target_compile_options( ${PMLIB} BEFORE PRIVATE "${HEAP_ARRAY_FLAGS}" "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
 
 message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}" )
 target_link_options( ${PMLIB} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}} )
