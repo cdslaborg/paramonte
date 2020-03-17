@@ -597,10 +597,10 @@ contains
                                 " microseconds) to see any performance benefits from " // &
                                 PD%SpecBase%ParallelizationModel%val // " parallelization model for this simulation. "
                         if (maxSpeedupImageCount==1_IK) then
-                            msg = msg// "Consider running the simulation in serial mode in the future (if used within &
+                            msg = msg// "Consider simulating in the serial mode in the future (if used within &
                                         &the same computing environment and with the same configuration as used here)."
                         else
-                            msg = msg// "Consider running the simulation on " // num2str(maxSpeedupImageCount) // " processors in the future &
+                            msg = msg// "Consider simulating on " // num2str(maxSpeedupImageCount) // " processors in the future &
                                         &(if used within the same computing environment and with the same configuration as used here)."
                         end if
                         call PD%note( prefix     = PD%brand         &

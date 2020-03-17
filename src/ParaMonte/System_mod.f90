@@ -450,7 +450,7 @@ contains
         if (present(exitstat)) then
             exitstatDefault = exitstat
         else
-            exitstatDefault = -huge(0)
+            exitstatDefault = -huge(0_IK)
         end if
 
         if (present(Err)) then
@@ -459,19 +459,19 @@ contains
             allocate( character(MAX_REC_LEN) :: Err%msg )
 
             call execute_command_line( command, wait=waitDefault, exitstat=exitstatDefault, cmdstat=Err%stat, cmdmsg=Err%msg )
-            if (Err%stat==0) then
+            if (Err%stat==0_IK) then
                 return
-            elseif (Err%stat==-1) then
+            elseif (Err%stat==-1_IK) then
                 Err%occurred = .true.
                 Err%msg =   PROCEDURE_NAME // &
                             ": Error occurred. The processor does not support command execution of the command: " // command
                 return
-            elseif (Err%stat==-2 .and. wait) then
+            elseif (Err%stat==-2_IK .and. waitDefault) then
                 Err%occurred = .true.
                 Err%msg =   PROCEDURE_NAME // ": Error occurred. The processor had to wait for the execution of the command: " // &
                             command // ", but the processor does not support asynchronous command execution."
                 return
-            elseif (Err%stat>0 .and. wait) then
+            elseif (Err%stat>0_IK .and. waitDefault) then
                 Err%occurred = .true.
                 Err%msg =   PROCEDURE_NAME // ": Unknown error occurred while attempting to execute the command: " // command // &
                             ". The compiler/processor's explanatory message: " // trim(adjustl(Err%msg))

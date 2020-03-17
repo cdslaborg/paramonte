@@ -381,7 +381,6 @@ end module ParaDRAM_mod
         procedure(getLogFunc_proc)  :: getLogFunc
 
         type(ParaDRAM_type)         :: PD
-        integer                     :: i
 
         ! call runParaDRAM
 
