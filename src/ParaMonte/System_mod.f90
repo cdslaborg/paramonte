@@ -188,6 +188,8 @@ contains
 
             else blockNonWindowsOS
 
+                if (allocated(OS%name)) deallocate(OS%name); allocate( character(MAX_OS_NAME_LEN) :: OS%name )
+
                 blockUnknownOS: block
 
                     integer                     :: idummy
@@ -216,6 +218,7 @@ contains
                     end if
 
                     read(idummy,*,iostat=OS%Err%stat) OS%name
+
                     if ( is_iostat_eor(OS%Err%stat) ) then
                         OS%Err%occurred = .true.
                         OS%Err%msg =    PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to read &
@@ -630,11 +633,6 @@ contains
         ! determine the operating system
         if (present(OS)) then
             OpSy = OS
-write(*,*) OpSy%isWindows, OS%isWindows
-write(*,*) OpSy%isDarwin, OS%isDarwin
-write(*,*) OpSy%isLinux, OS%isLinux
-write(*,*) OpSy%slash, OS%slash
-read(*,*)
         else
             call OpSy%query()
             if (OpSy%Err%occurred) then
