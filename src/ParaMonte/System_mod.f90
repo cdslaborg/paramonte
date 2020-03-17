@@ -59,6 +59,8 @@ module System_mod
     type :: OS_type
         character(:), allocatable       :: name, slash
         logical                         :: isWindows = .false.
+        logical                         :: isDarwin = .false.
+        logical                         :: isLinux = .false.
         type(Err_type)                  :: Err
     contains
         procedure, pass                 :: query => queryOS
@@ -103,14 +105,14 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    function constructSystemInfo(isWindowsOS) result(SystemInfo)
+    function constructSystemInfo(OS) result(SystemInfo)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSystemInfo
 #endif
         implicit none
-        type(SystemInfo_type)           :: SystemInfo
-        logical, intent(in), optional   :: isWindowsOS
-        call getSystemInfo( SystemInfo%List, SystemInfo%Err, isWindowsOS, SystemInfo%nRecord )
+        type(SystemInfo_type)               :: SystemInfo
+        type(OS_type), intent(in), optional :: OS
+        call getSystemInfo( SystemInfo%List, SystemInfo%Err, OS, SystemInfo%nRecord )
     end function constructSystemInfo
 
 !***********************************************************************************************************************************
@@ -132,7 +134,7 @@ contains
         OS%Err%occurred = .false.
         OS%Err%msg = ""
 
-        allocate( character(MAX_OS_NAME_LEN) :: OS%name )
+        if (allocated(OS%name)) deallocate(OS%name); allocate( character(MAX_OS_NAME_LEN) :: OS%name )
         call getEnvVar( name="OS", value=OS%name, Err=OS%Err )
         if (OS%Err%occurred) then
             OS%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type.\n" // OS%Err%msg
@@ -142,100 +144,140 @@ contains
 
         OS%name = trim(adjustl(OS%name))
 
-        if (len(OS%name)>=7_IK) then
+        blockOS: if (len(OS%name)>=7_IK) then
 
             if (getLowerCase(OS%name(1:7))=="windows") then
 
                 OS%isWindows = .true.
+                OS%isDarwin = .false.
+                OS%isLinux = .false.
                 OS%slash = "\"
 
             end if
 
-        else ! it's either Linux- or Darwin- based OS
+        else blockOS ! it's either Linux- or Darwin- based OS
 
             if (allocated(OS%name)) deallocate( OS%name )
             allocate( character(MAX_OS_NAME_LEN) :: OS%name )
             OS%isWindows = .false.
             OS%slash = "/"
 
-            blockNameOS: block
+            if (allocated(OS%name)) deallocate(OS%name); allocate( character(MAX_OS_NAME_LEN) :: OS%name )
+            call getEnvVar( name="OSTYPE", value=OS%name, Err=OS%Err )
+            if (OS%Err%occurred) then
+                OS%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type.\n" // OS%Err%msg
+                OS%name = ""
+                return
+            end if
 
-                integer                     :: idummy
-                type(RandomFileName_type)   :: RFN
-                RFN = RandomFileName_type(key="queryOS")
-                if (RFN%Err%occurred) then
-                    OS%Err = RFN%Err
-                    OS%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring OS type.\n" // OS%Err%msg
-                    OS%name = ""
-                    return
-                end if
+            OS%name = trim(adjustl(OS%name))
 
-                call executeCmd( command="uname > "//RFN%path, Err=OS%Err )
-                if (OS%Err%occurred) then
-                    OS%Err%msg = PROCEDURE_NAME // ": Error occurred while executing command 'uname > "// RFN%path // "'.\n" // &
-                                 OS%Err%msg
-                    OS%name = ""
-                    return
-                end if
+            blockNonWindowsOS: if (getLowerCase(OS%name(1:6))=="darwin") then
 
-                open(newunit=idummy,file=RFN%path,status="old",iostat=OS%Err%stat)
-                if (OS%Err%stat>0) then
-                    OS%Err%occurred = .true.
-                    OS%Err%msg =    PROCEDURE_NAME // ": Unknown error occurred while opening file = '" // RFN%path // "'."
-                    OS%name = ""
-                    return
-                end if
+                OS%isDarwin = .true.
+                OS%isLinux = .false.
+                return
 
-                read(idummy,*,iostat=OS%Err%stat) OS%name
-                if ( is_iostat_eor(OS%Err%stat) ) then
-                    OS%Err%occurred = .true.
-                    OS%Err%msg =    PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to read &
-                                    &the Operating System's name from file = '" // RFN%path // "'."
-                    OS%name = ""
-                    return
-                elseif ( is_iostat_end(OS%Err%stat) ) then
-                    OS%Err%occurred = .true.
-                    OS%Err%msg =    PROCEDURE_NAME // ": End-Of-File error condition occurred while attempting to read &
-                                    &the Operating System's name from file = '" // RFN%path // "'."
-                    OS%name = ""
-                    return
-                elseif ( OS%Err%stat>0 ) then
-                    OS%Err%occurred = .true.
-                    OS%Err%msg =    PROCEDURE_NAME // ": Unknown error condition occurred while attempting to read &
-                                    &the Operating System's name from file = '" // RFN%path // "'."
-                    OS%name = ""
-                    return
-                end if
+            elseif (getLowerCase(OS%name(1:5))=="linux") then blockNonWindowsOS
 
-                close(idummy)
-                if (OS%Err%stat>0) then
-                    OS%Err%occurred = .true.
-                    OS%Err%msg = PROCEDURE_NAME // ": Unknown error occurred while closing file = '" // RFN%path // "'."
-                    OS%name = ""
-                    return
-                end if
+                OS%isDarwin = .false.
+                OS%isLinux = .true.
+                return
 
-                call sleep( seconds=0.5_RK, Err=OS%Err )
-                if (OS%Err%occurred) then
-                    OS%Err%msg = PROCEDURE_NAME // ": Error occurred while calling subroutine sleep() for querying file = '" // &
-                                 RFN%path // "'.\n" // OS%Err%msg
-                    OS%name = ""
-                    return
-                end if
+            else blockNonWindowsOS
 
-                call removeFile( path=RFN%path, isWindows=.false., Err=OS%Err )
-                if (OS%Err%occurred) then
-                    OS%Err%msg = PROCEDURE_NAME // ": Error occurred while removing file = '"// RFN%path // "'.\n" // &
-                                 OS%Err%msg
-                    OS%name = ""
-                    return
-                end if
+                blockUnknownOS: block
 
-            end block blockNameOS
+                    integer                     :: idummy
+                    type(RandomFileName_type)   :: RFN
+                    character(:), allocatable   :: osname
+                    RFN = RandomFileName_type(key="queryOS")
+                    if (RFN%Err%occurred) then
+                        OS%Err = RFN%Err
+                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring OS type.\n" // OS%Err%msg
+                        OS%name = ""
+                        return
+                    end if
 
-        end if
+                    call executeCmd( command="uname > "//RFN%path, Err=OS%Err )
+                    if (OS%Err%occurred) then
+                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while executing command 'uname > "// RFN%path // "'.\n" // &
+                                     OS%Err%msg
+                        OS%name = ""
+                        return
+                    end if
 
-        OS%name = trim(adjustl(OS%name))
+                    open(newunit=idummy,file=RFN%path,status="old",iostat=OS%Err%stat)
+                    if (OS%Err%stat>0) then
+                        OS%Err%occurred = .true.
+                        OS%Err%msg =    PROCEDURE_NAME // ": Unknown error occurred while opening file = '" // RFN%path // "'."
+                        OS%name = ""
+                        return
+                    end if
+
+                    read(idummy,*,iostat=OS%Err%stat) OS%name
+                    if ( is_iostat_eor(OS%Err%stat) ) then
+                        OS%Err%occurred = .true.
+                        OS%Err%msg =    PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to read &
+                                        &the Operating System's name from file = '" // RFN%path // "'."
+                        OS%name = ""
+                        return
+                    elseif ( is_iostat_end(OS%Err%stat) ) then
+                        OS%Err%occurred = .true.
+                        OS%Err%msg =    PROCEDURE_NAME // ": End-Of-File error condition occurred while attempting to read &
+                                        &the Operating System's name from file = '" // RFN%path // "'."
+                        OS%name = ""
+                        return
+                    elseif ( OS%Err%stat>0 ) then
+                        OS%Err%occurred = .true.
+                        OS%Err%msg =    PROCEDURE_NAME // ": Unknown error condition occurred while attempting to read &
+                                        &the Operating System's name from file = '" // RFN%path // "'."
+                        OS%name = ""
+                        return
+                    end if
+
+                    close(idummy)
+                    if (OS%Err%stat>0) then
+                        OS%Err%occurred = .true.
+                        OS%Err%msg = PROCEDURE_NAME // ": Unknown error occurred while closing file = '" // RFN%path // "'."
+                        OS%name = ""
+                        return
+                    end if
+
+                    call sleep( seconds=0.5_RK, Err=OS%Err )
+                    if (OS%Err%occurred) then
+                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while calling subroutine sleep() for querying file = '" // &
+                                     RFN%path // "'.\n" // OS%Err%msg
+                        OS%name = ""
+                        return
+                    end if
+
+                    call removeFile( path=RFN%path, isWindows=.false., Err=OS%Err )
+                    if (OS%Err%occurred) then
+                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while removing file = '"// RFN%path // "'.\n" // &
+                                     OS%Err%msg
+                        OS%name = ""
+                        return
+                    end if
+
+                    OS%name = trim(adjustl(OS%name))
+                    osname = getLowerCase(OS%name)
+                    if (index(osname,"darwin")/=0) then
+                        OS%isDarwin = .true.
+                        OS%isLinux = .false.
+                    elseif (index(osname,"linux")/=0) then
+                        OS%isLinux = .true.
+                        OS%isDarwin = .false.
+                    else
+                        OS%isLinux = .false.
+                        OS%isDarwin = .false.
+                    end if
+
+                end block blockUnknownOS
+
+            end if blockNonWindowsOS
+
+        end if blockOS
 
     end subroutine queryOS
 
@@ -549,7 +591,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine getSystemInfo(List,Err,isWindowsOS,count)
+    subroutine getSystemInfo(List,Err,OS,count)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSystemInfo
 #endif
@@ -561,13 +603,14 @@ contains
         implicit none
         type(CharVec_type), allocatable, intent(out)    :: List(:)
         type(Err_type), intent(out)                     :: Err
-        logical, intent(in), optional                   :: isWindowsOS
+        type(OS_type), intent(in), optional             :: OS
         integer(IK), intent(out), optional              :: count
 
+        type(OS_type)                                   :: OpSy
         character(len=:), allocatable                   :: command,filename,stdErr
         character(len=MAX_REC_LEN)                      :: record
         integer(IK)                                     :: fileUnit,counter,nRecord
-        logical                                         :: fileIsOpen, isWindows
+        logical                                         :: fileIsOpen
 
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@getSystemInfo()"
 
@@ -587,26 +630,29 @@ contains
         stdErr = filename // ".stderr"
 
         ! determine the operating system
-        if (present(isWindowsOS)) then
-            isWindows = isWindowsOS
+        if (present(OS)) then
+            OpSy = OS
         else
-            block
-                type(OS_type) :: OS
-                call OS%query()
-                if (OS%Err%occurred) then
-                    Err = OS%Err
-                    Err%msg = PROCEDURE_NAME // Err%msg
-                    return
-                end if
-                isWindows = OS%isWindows
-            end block
+            call OpSy%query()
+            if (OpSy%Err%occurred) then
+                Err = OpSy%Err
+                Err%msg = PROCEDURE_NAME // Err%msg
+                return
+            end if
         end if
 
-        if (isWindows) then  ! it's Windows cmd
+        if (OpSy%isWindows) then
             command = "systeminfo > " // filename
-        else
+        elseif (OpSy%isDarwin) then
+            command = "uname -a >> " // filename // "; sysctl -a | grep machdep.cpu >> " // filename
+        elseif (OpSy%isLinux) then
             !command = "uname -a >> " // filename // "; lshw -short >> " // filename // "; lscpu >> " // filename
             command = "uname -a >> " // filename // "; lscpu >> " // filename
+        else ! unknown operating system
+            allocate(List(1))
+            List(1)%record = "Unknown operating system: " // OpSy%name
+            if (present(count)) count = 1_IK
+            return
         end if
 
         call executeCmd( command=command // " 2> " // stdErr, Err=Err )

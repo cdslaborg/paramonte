@@ -235,7 +235,7 @@ contains
             use Constants_mod, only: IK
             use System_mod, only: SystemInfo_type
             integer(IK) :: irecord
-            PM%SystemInfo = SystemInfo_type(isWindowsOS=PM%OS%isWindows)
+            PM%SystemInfo = SystemInfo_type(OS=PM%OS)
             if (PM%SystemInfo%Err%occurred) then
                 PM%Err = PM%SystemInfo%Err
                 PM%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//PM%Err%msg
