@@ -617,8 +617,8 @@ contains
                         mv_Err%msg =    PROCEDURE_NAME // &
                                         ": Error occurred while attempting to compute the Cholesky factorization of the &
                                         &covariance matrix of the proposal distribution of " // mc_methodName // "'s sampler. &
-                                        &This is highly unusual, and can be indicative of some major underlying problems. &
-                                        &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations.\n&
+                                        &This is highly unusual, and can be indicative of some major underlying problems.\n&
+                                        &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations. &
                                         &In such case, consider increasing the value of the input variable adaptiveUpdatePeriod.\n&
                                         &Restarting the simulation might resolve the error."
                         call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
