@@ -115,6 +115,7 @@ contains
         end if
 
         flush(output_unit) ! call execute_command_line(" ")
+        flush(outputUnit)
 
         ! wait for one second:
         block
@@ -124,16 +125,18 @@ contains
             real(RK)        :: countRate
             call system_clock( count=countOld, count_rate=countRate, count_max=countMax )
             if (countOld/=-huge(0_int64) .and. countRate/=0._RK .and. countMax==0_int64) then
-                do
+                loopWait: do
                     call system_clock( count=countNew )
                     if (countNew==countMax) then
                         error stop
+                    elseif ( real(countNew-countOld,kind=RK) / countRate >= 2._RK ) then
+                        exit loopWait
                     end if
-                    if ( (countNew-countOld) / countRate >= 1._RK ) exit
                     cycle
-                end do
+                end do loopWait
             end if
         end block
+
 #if defined MPI_ENABLED
         block
             use mpi
