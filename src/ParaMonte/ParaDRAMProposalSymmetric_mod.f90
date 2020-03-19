@@ -704,7 +704,7 @@ contains
                                 &Such error is highly unusual, and requires an in depth investigation of the case.\n&
                                 &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations. &
                                 &In such case, consider increasing the value of the input variable adaptiveUpdatePeriod.\n&
-                                &It may also be that your input objective function may have been correctly implemented.\n&
+                                &It may also be that your input objective function has been incorrectly implemented.\n&
                                 &Restarting the simulation might resolve the error."
                 call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                 return
