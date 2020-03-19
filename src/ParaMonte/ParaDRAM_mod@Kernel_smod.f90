@@ -25,7 +25,7 @@
 submodule (ParaDRAM_mod) Kernel_smod
 
     use, intrinsic :: iso_fortran_env, only: output_unit
-    use Constants_mod, only: IK, RK
+    !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
     use Err_mod, only: Err_type
 #if defined MPI_ENABLED
     use mpi

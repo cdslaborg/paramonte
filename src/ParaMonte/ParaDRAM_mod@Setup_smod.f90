@@ -24,7 +24,7 @@
 
 submodule (ParaDRAM_mod) Setup_smod
 
-    use Constants_mod, only: RK, IK
+    !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
     implicit none
 
     character(*), parameter :: SUBMODULE_NAME = MODULE_NAME // "@Setup_smod"
