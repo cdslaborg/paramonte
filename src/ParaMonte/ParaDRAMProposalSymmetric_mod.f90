@@ -701,8 +701,8 @@ contains
                 mv_Err%msg =    PROCEDURE_NAME // &
                                 ": Error occurred while computing the Cholesky factorization of &
                                 &a matrix needed for the computation of the Adaptation measure. &
-                                &Such error is highly unusual, and requires an in depth investigation of the case. &
-                                &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations.\n&
+                                &Such error is highly unusual, and requires an in depth investigation of the case.\n&
+                                &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations. &
                                 &In such case, consider increasing the value of the input variable adaptiveUpdatePeriod.\n&
                                 &It may also be that your input objective function may have been correctly implemented.\n&
                                 &Restarting the simulation might resolve the error."
