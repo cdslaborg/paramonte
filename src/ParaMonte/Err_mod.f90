@@ -56,7 +56,7 @@ contains
         integer     , intent(in), optional  :: outputUnit
 
         character(:), allocatable           :: pfx, msg, nlstr
-        character(63)                       :: dummyChar1, dummyChar2, imageChar
+        character(63)                       :: dummyChar1, imageChar !, dummyChar2
 
 #if defined CAF_ENABLED
         write(imageChar ,"(g0)") this_image()
@@ -71,21 +71,23 @@ contains
         imageChar =  "1"
 #endif
 
+        if (present(newline)) then
+            nlstr = newline
+        else
+            nlstr = NLC
+        end if
+
         if (Err%stat==Err%statNull) then    ! it's a null error code, ignore it and do not report the error code
             msg = Err%msg
         else
             write(dummyChar1,"(g0)") Err%stat
-            write(dummyChar2,"(g0)") Err%statNull
-            if (present(newline)) then
-                nlstr = newline
-            else
-                nlstr = NLC
-            end if
+           !write(dummyChar2,"(g0)") Err%statNull
            !msg =   Err%msg // nlstr // "Error Code: " // trim(adjustl(dummyChar1)) // ". Null Error Code: " // trim(adjustl(dummyChar2)) // "."
             msg =   Err%msg // nlstr // "Error Code: " // trim(adjustl(dummyChar1)) // "."
         end if
+
         if (present(prefix)) then
-            call informUser(msg,prefix // " - FATAL: ",nlstr,outputUnit)
+            call informUser(msg,prefix//" - FATAL: ",nlstr,outputUnit)
             pfx = prefix
         else
             call informUser(msg," - ",nlstr,outputUnit)
