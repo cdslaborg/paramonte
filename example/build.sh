@@ -162,7 +162,8 @@ INTEL_Fortran_COMPILER_FLAGS="-standard-semantics"
 if [[ "$PMLIB_FULL_NAME" =~ .*"release".* ]]; then
     PM_BLD_TYPE=release
     GNU_C_COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS} -O3"
-    GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O3 -funroll-loops -finline-functions -ftree-vectorize"
+    GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O3 -funroll-loops"
+   #GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O3 -funroll-loops -finline-functions -ftree-vectorize"
     INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} -O3"
     INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -O3 -ip -ipo -unroll -unroll-aggressive -finline-functions"
 fi
