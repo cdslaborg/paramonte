@@ -65,7 +65,7 @@ contains
             use mpi
             integer :: imageID, ierrMPI
             call mpi_comm_rank(mpi_comm_world, imageID, ierrMPI)
-            write(imageChar ,"(g0)") imageID
+            write(imageChar ,"(g0)") imageID + 1_IK
         end block
 #else
         imageChar =  "1"

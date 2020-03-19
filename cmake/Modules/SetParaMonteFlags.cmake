@@ -119,7 +119,7 @@ else()
    #-flto                     # enable interprocedural optimization between files.
     -funroll-loops            # [=n] set the maximum number of times to unroll loops (no number n means automatic).
     -finline-functions        # consider all functions for inlining, even if they are not declared inline.
-    -ftree-vectorize          # perform vectorization on trees. enables -ftree-loop-vectorize and -ftree-slp-vectorize. 
+   #-ftree-vectorize          # perform vectorization on trees. enables -ftree-loop-vectorize and -ftree-slp-vectorize. 
     )
 endif()
 if (DEFINED INTEL_Fortran_RELEASE_FLAGS)
@@ -240,7 +240,7 @@ else()
     -flto                     # enable interprocedural optimization between files.
     -funroll-loops            # [=n] set the maximum number of times to unroll loops (no number n means automatic).
     -finline-functions        # consider all functions for inlining, even if they are not declared inline.
-    -ftree-vectorize          # perform vectorization on trees. enables -ftree-loop-vectorize and -ftree-slp-vectorize. 
+   #-ftree-vectorize          # perform vectorization on trees. enables -ftree-loop-vectorize and -ftree-slp-vectorize. 
     )
 endif()
 if (DEFINED INTEL_CXX_RELEASE_FLAGS)
