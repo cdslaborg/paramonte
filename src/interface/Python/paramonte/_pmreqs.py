@@ -481,7 +481,7 @@ def findMPI():
             _pm.note( msg   = "MPI runtime libraries detected at: \n\n"
                     + "    " + path + "\n\n"
                     + "To perform ParaMonte simulations in parallel on a single node, run the \n"
-                    + "following two commands, in the form and order specified, in a Bash shell, \n\n"
+                    + "following command, in the form and order specified, in a Bash shell, \n\n"
                     + "    mpiexec -n NUM_PROCESSES python main.py\n\n"
                     + "where, \n\n"
                     + "    0.   the first command defines the essential environment variables and, \n"
