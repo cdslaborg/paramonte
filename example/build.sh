@@ -155,24 +155,23 @@ echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ParaMonte library's base name
 
 unset PM_BLD_TYPE
 unset GNU_C_COMPILER_FLAGS
-unset GNU_Fortran_COMPILER_FLAGS
 unset INTEL_C_COMPILER_FLAGS
+GNU_Fortran_COMPILER_FLAGS="-std=gnu"
 INTEL_Fortran_COMPILER_FLAGS="-standard-semantics"
 
 if [[ "$PMLIB_FULL_NAME" =~ .*"release".* ]]; then
     PM_BLD_TYPE=release
     GNU_C_COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS} -O3"
-    GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O3 -funroll-loops"
-   #GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O3 -funroll-loops -finline-functions -ftree-vectorize"
+    GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O3 -funroll-loops -finline-functions -ftree-vectorize"
     INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} -O3"
     INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -O3 -ip -ipo -unroll -unroll-aggressive -finline-functions"
 fi
 if [[ "$PMLIB_FULL_NAME" =~ .*"testing".* ]]; then
     PM_BLD_TYPE=testing
-    GNU_C_COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS} -O2"
-    GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O2"
+    GNU_C_COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS} -O0"
+    GNU_Fortran_COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -O0"
     INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} -O2"
-    INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -O2"
+    INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -O0"
 fi
 if [[ "$PMLIB_FULL_NAME" =~ .*"debug".* ]]; then
     PM_BLD_TYPE=debug

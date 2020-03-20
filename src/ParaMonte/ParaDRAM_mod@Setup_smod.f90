@@ -483,7 +483,6 @@ contains
             call PD%Decor%write(PD%LogFile%unit,1,0,1, "Number of processes (images):" )
             call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Image%count ) )
 
-#if defined CAF_ENABLED || defined MPI_ENABLED
             if (PD%Image%count==1_IK .or. PD%SpecBase%ParallelizationModel%isMultiChain) then
 
                 call PD%Decor%write(PD%LogFile%unit,1,0,1, "Estimated maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode:" )
@@ -517,6 +516,7 @@ contains
                     call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNKNOWN" )
                 end if
 
+#if defined CAF_ENABLED || defined MPI_ENABLED
                 if (PD%Image%count==1_IK) then
                     msg = PD%name// " is being used in parallel mode but with only one processor.\n&
                                     &This is computationally inefficient.\n&
@@ -652,9 +652,8 @@ contains
                                 , msg        = msg              )
 
                 end block
-
-            end if
 #endif
+            end if
 
             call PD%Decor%write(PD%LogFile%unit,1,0,1, "Burnin location in the compact chain, based on the occurrence likelihood:" )
             call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%BurninLoc%compact ) )

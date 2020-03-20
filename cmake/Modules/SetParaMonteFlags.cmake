@@ -113,14 +113,114 @@ else()
     -diag-disable=10397       # optimization reporting will be enabled at link time when performing interprocedural optimizations.
     #-vec                      # enable vectorization.
     )
-    set(GNU_Fortran_RELEASE_FLAGS "${GNU_Fortran_RELEASE_FLAGS}"
-    #-static-libgfortran -static-libgcc 
-    -O3                       # set the optimizations level
-   #-flto                     # enable interprocedural optimization between files.
-    -funroll-loops            # [=n] set the maximum number of times to unroll loops (no number n means automatic).
-    -finline-functions        # consider all functions for inlining, even if they are not declared inline.
-   #-ftree-vectorize          # perform vectorization on trees. enables -ftree-loop-vectorize and -ftree-slp-vectorize. 
-    )
+    if(APPLE)
+        # GNU 9.3 -O results in runtime crashes of the examples on Mac (except -O0)
+        set(GNU_Fortran_RELEASE_FLAGS "${GNU_Fortran_RELEASE_FLAGS}"
+        -fauto-inc-dec 
+        -fbranch-count-reg 
+        -fcombine-stack-adjustments 
+        -fcompare-elim 
+        -fcprop-registers 
+        -fdce 
+        -fdefer-pop 
+        #-fdelayed-branch 
+        -fdse 
+        -fforward-propagate 
+        -fguess-branch-probability 
+        -fif-conversion 
+        -fif-conversion2 
+        -finline-functions-called-once 
+        -fipa-profile 
+        -fipa-pure-const 
+        -fipa-reference 
+        -fipa-reference-addressable 
+        -fmerge-constants 
+        -fmove-loop-invariants 
+        -fomit-frame-pointer 
+        -freorder-blocks 
+        -fshrink-wrap 
+        -fshrink-wrap-separate 
+        -fsplit-wide-types 
+        -fssa-backprop 
+        -fssa-phiopt 
+        -ftree-bit-ccp 
+        -ftree-ccp 
+        -ftree-ch 
+        -ftree-coalesce-vars 
+        -ftree-copy-prop 
+        -ftree-dce 
+        -ftree-dominator-opts 
+        -ftree-dse 
+        -ftree-forwprop 
+        -ftree-fre 
+        -ftree-phiprop 
+        -ftree-pta 
+        -ftree-scev-cprop 
+        -ftree-sink 
+        -ftree-slsr 
+        -ftree-sra 
+        -ftree-ter 
+        -funit-at-a-time
+        -falign-functions  -falign-jumps 
+        -falign-labels  -falign-loops 
+        -fcaller-saves 
+        -fcode-hoisting 
+        -fcrossjumping 
+        -fcse-follow-jumps  -fcse-skip-blocks 
+        -fdelete-null-pointer-checks 
+        -fdevirtualize  -fdevirtualize-speculatively 
+        -fexpensive-optimizations 
+        -fgcse  -fgcse-lm  
+        -fhoist-adjacent-loads 
+        -finline-functions 
+        -finline-small-functions 
+        -findirect-inlining 
+        -fipa-bit-cp  -fipa-cp  -fipa-icf 
+        -fipa-ra  -fipa-sra  -fipa-vrp 
+        -fisolate-erroneous-paths-dereference 
+        -flra-remat 
+        -foptimize-sibling-calls 
+        -foptimize-strlen 
+        -fpartial-inlining 
+        -fpeephole2 
+        -freorder-blocks-algorithm=stc 
+        -freorder-blocks-and-partition  -freorder-functions 
+        -frerun-cse-after-loop  
+        -fschedule-insns  -fschedule-insns2 
+        -fsched-interblock  -fsched-spec 
+        -fstore-merging 
+        -fstrict-aliasing 
+        -fthread-jumps 
+        -ftree-builtin-call-dce 
+        -ftree-pre 
+        -ftree-switch-conversion  -ftree-tail-merge 
+        -ftree-vrp
+        -fgcse-after-reload 
+        -fipa-cp-clone
+        -floop-interchange 
+        -floop-unroll-and-jam 
+        -fpeel-loops 
+        -fpredictive-commoning 
+        -fsplit-paths 
+        -ftree-loop-distribute-patterns 
+        -ftree-loop-distribution 
+        -ftree-loop-vectorize 
+        -ftree-partial-pre 
+        -ftree-slp-vectorize 
+        -funswitch-loops 
+        -fvect-cost-model 
+        -fversion-loops-for-strides
+        )
+    else()
+        set(GNU_Fortran_RELEASE_FLAGS "${GNU_Fortran_RELEASE_FLAGS}"
+        #-static-libgfortran -static-libgcc 
+        -O3                       # set the optimizations level
+        #-flto                    # enable interprocedural optimization between files.
+        -funroll-loops            # [=n] set the maximum number of times to unroll loops (no number n means automatic).
+        -finline-functions        # consider all functions for inlining, even if they are not declared inline.
+        -ftree-vectorize          # perform vectorization on trees. enables -ftree-loop-vectorize and -ftree-slp-vectorize. 
+        )
+    endif()
 endif()
 if (DEFINED INTEL_Fortran_RELEASE_FLAGS)
     set(INTEL_Fortran_RELEASE_FLAGS "${INTEL_Fortran_RELEASE_FLAGS}" CACHE STRING "Intel Fortran compiler/linker release build flags" FORCE)
@@ -240,7 +340,7 @@ else()
     -flto                     # enable interprocedural optimization between files.
     -funroll-loops            # [=n] set the maximum number of times to unroll loops (no number n means automatic).
     -finline-functions        # consider all functions for inlining, even if they are not declared inline.
-   #-ftree-vectorize          # perform vectorization on trees. enables -ftree-loop-vectorize and -ftree-slp-vectorize. 
+    -ftree-vectorize          # perform vectorization on trees. enables -ftree-loop-vectorize and -ftree-slp-vectorize. 
     )
 endif()
 if (DEFINED INTEL_CXX_RELEASE_FLAGS)

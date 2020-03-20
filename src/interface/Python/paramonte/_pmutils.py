@@ -94,3 +94,24 @@ class Timer:
         self.end = _time.time()
         if msg=="": msg = "done in " + str(_np.round(self.end-self.start,decimals=6)) + " seconds." 
         if msg is not None: print( msg )
+
+####################################################################################################################################
+#### check application installation status
+####################################################################################################################################
+
+def which(program):
+    import os
+    def is_exe(fpath):
+        return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+
+    fpath, fname = os.path.split(program)
+    if fpath:
+        if is_exe(program):
+            return program
+    else:
+        for path in os.environ["PATH"].split(os.pathsep):
+            exe_file = os.path.join(path, program)
+            if is_exe(exe_file):
+                return exe_file
+
+    return None

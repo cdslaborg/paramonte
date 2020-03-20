@@ -97,7 +97,7 @@ def verify(reset = True):
 
         # ensure 64-bit architecture
 
-        if (_pm.arch=="x64") and (isWin32 or isLinux): # or isMacOS):
+        if (_pm.arch=="x64") and (isWin32 or isLinux or isMacOS):
 
             displayParaMontePythonBanner()
 
@@ -113,9 +113,9 @@ def verify(reset = True):
                                 + "The MPI runtime libraries are required for parallel simulations via ParaMonte library. \n"
                                 + "You can download and install the proper versions of an MPI library free of charge \n"
                                 + "from either Intel website (https://software.intel.com/en-us/mpi-library) \n"
-                                + "for Windows and Linux operating systems) or from MPICH website (www.mpich.org) \n"
-                                + "for Mac operating systems. Alternatively, ParaMonte can install these \n"
-                                + "library for you automatically now. \n\n"
+                                + "for Windows and Linux operating systems) or from the Open-MPI website \n"
+                                + "(https://www.open-mpi.org/ for Darwin operating system).\n"
+                                + "Alternatively, ParaMonte can install these library for you automatically now. \n\n"
                                 + "If you don't know how to download and install the correct MPI runtime library version, \n"
                                 + "we strongly recommend that you let ParaMonte install this library for you now. \n"
                                 + "If so, ParaMonte will need access to the World-Wide-Web to download the library \n"
@@ -192,7 +192,7 @@ def download(url,filePath):
 
 def warnForUnsupportedPlatform():
     _pm.warn( msg   = "The ParaMonte sampler kernel is currently exclusively available \n"
-                    + "on AMD64 (64-bit) architecture for Windows/Linux Operating Systems (OS). \n"
+                    + "on AMD64 (64-bit) architecture for Windows/Linux/Darwin Operating Systems (OS). \n"
                     + "Your system appears to be of a different architecture or OS. As a result, \n"
                     + "the core sampler routines of ParaMonte will not be available on your system. However, \n"
                     + "the generic Python interface of ParaMonte will is available on your system, which can \n"
@@ -219,20 +219,36 @@ def getBashrcContents():
     bashrcPath = _os.path.expanduser("~/.bashrc")
     if _os.path.isfile(bashrcPath):
         with open(bashrcPath,"r") as bashrcFile:
-            bashFileContents = bashrcFile.read()
+            bashrcFileContents = bashrcFile.read()
     else:
-        bashFileContents = ""
+        bashrcFileContents = ""
         with open(bashrcPath,"w") as bashrcFile:
             pass
-    return bashFileContents
+    return bashrcFileContents
+
+####################################################################################################################################
+
+def getBashProfileContents():
+    bashProfilePath = _os.path.expanduser("~/.bash_profile")
+    bashProfileFileExists = _os.path.isfile(bashProfilePath)
+    bashProfileFileContents = ""
+    if bashProfileFileExists:
+        with open(bashProfilePath,"r") as bashProfileFile:
+            bashProfileFileContents = bashProfileFile.read()
+    if ".bashrc" not in bashProfileFileContents:
+        with open(bashProfilePath,"a+") as bashProfileFile:
+            bashProfileFile.write("\n[ -f $HOME/.bashrc ] && . $HOME/.bashrc\n")
+    return bashProfileFileContents
+
+####################################################################################################################################
 
 ####################################################################################################################################
 
 def setupUnixPath():
 
-    bashFileContents = getBashrcContents()
+    bashrcFileContents = getBashrcContents()
     dlibcmd = "export LD_LIBRARY_PATH=" + fileAbsDir + ":$LD_LIBRARY_PATH"
-    if dlibcmd not in bashFileContents:
+    if dlibcmd not in bashrcFileContents:
         _os.system( "chmod 777 ~/.bashrc")
         _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
         _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte shared library setup >>>' >> ~/.bashrc" )
@@ -252,23 +268,23 @@ def setupUnixPath():
         if localInstallDir.gnu.bin is not None: pathcmd = "export PATH=" + localInstallDir.gnu.bin + ":$PATH"
         if localInstallDir.gnu.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.gnu.lib + ":$LD_LIBRARY_PATH"
         if (pathcmd is not None) or (dlibcmd is not None):
-            if (pathcmd not in bashFileContents) or (dlibcmd not in bashFileContents):
+            if (pathcmd not in bashrcFileContents) or (dlibcmd not in bashrcFileContents):
                 _os.system( "chmod 777 ~/.bashrc")
                 _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local GNU installation setup >>>' >> ~/.bashrc" )
                 if pathcmd is not None:
-                    if pathcmd not in bashFileContents:
+                    if pathcmd not in bashrcFileContents:
                         _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
                 if dlibcmd is not None:
-                    if dlibcmd not in bashFileContents:
+                    if dlibcmd not in bashrcFileContents:
                         _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
-            if pathcmd not in bashFileContents or dlibcmd not in bashFileContents:
+            if pathcmd not in bashrcFileContents or dlibcmd not in bashrcFileContents:
                 _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local GNU installation setup <<<' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
@@ -278,23 +294,23 @@ def setupUnixPath():
         if localInstallDir.mpi.bin is not None: pathcmd = "export PATH=" + localInstallDir.mpi.bin + ":$PATH"
         if localInstallDir.mpi.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.mpi.lib + ":$LD_LIBRARY_PATH"
         if (pathcmd is not None) or (dlibcmd is not None):
-            if (pathcmd not in bashFileContents) or (dlibcmd not in bashFileContents):
+            if (pathcmd not in bashrcFileContents) or (dlibcmd not in bashrcFileContents):
                 _os.system( "chmod 777 ~/.bashrc")
                 _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local MPI installation setup >>>' >> ~/.bashrc" )
                 if pathcmd is not None:
-                    if pathcmd not in bashFileContents:
+                    if pathcmd not in bashrcFileContents:
                         _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
                 if dlibcmd is not None:
-                    if dlibcmd not in bashFileContents:
+                    if dlibcmd not in bashrcFileContents:
                         _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
-            if pathcmd not in bashFileContents or dlibcmd not in bashFileContents:
+            if pathcmd not in bashrcFileContents or dlibcmd not in bashrcFileContents:
                 _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local MPI installation setup <<<' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
@@ -715,9 +731,9 @@ def installMPI():
                     #
                     #if isYes:
 
-                    bashFileContents = getBashrcContents()
+                    bashrcFileContents = getBashrcContents()
                     mpivarsFileCommand = "source " + mpivarsFilePath
-                    if mpivarsFileCommand not in bashFileContents:
+                    if mpivarsFileCommand not in bashrcFileContents:
                         _os.system( "chmod 777 ~/.bashrc")
                         _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte MPI runtime library initialization >>>' >> ~/.bashrc" )
@@ -753,17 +769,110 @@ def installMPI():
                     #            )
 
     else:
-
+        
         _pm.warn( msg   = "To use ParaMonte in parallel on Mac Operating Systems, \n"
-                        + "ParaMonte needs to build the MPICH MPI library on your system. \n"
-                        + "To ensure full consistency, we recommend building the parallel \n"
-                        + "object files of ParaMonte library on your system along with MPICH.\n\n"
-                        + "Requesting a full build of ParaMonte library on your system..."
+                        + "ParaMonte needs to build the Open-MPI library on your system. \n"
+                        #+ "To ensure full consistency, we recommend building the parallel \n"
+                        #+ "object files of ParaMonte library on your system along with Open-MPI.\n\n"
+                        + "Building ParaMonte library prerequisites on your system..."
                 , marginTop = 1
                 , marginBot = 1
                 , methodName = _pm.names.paramonte
                 )
-        build()
+        buildParaMontePrereqsForMac()
+
+####################################################################################################################################
+
+def buildParaMontePrereqsForMac()
+
+    _pm.note( msg = "Checking if Homebrew exists on your system..."
+            , methodName = _pm.names.paramonte
+            , marginTop = 1
+            , marginBot = 1
+            )
+
+    import shutil
+    if shutil.which("brew") is None:
+
+        _pm.note( msg = "Failed to detect Homebrew on your system. Installing Homebrew..."
+                , methodName = _pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
+        err = _os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
+        if err != 0:
+            _pm.abort( msg  = "Failed to install Homebrew on your system.\n"
+                            + "Homebrew is required to install and build ParaMonte components and prerequisites.\n"
+                            + "Please install Homebrew manually on your system and retry the ParaMonte installation process.\n"
+                            + "skipping..."
+                    , methodName = _pm.names.paramonte
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
+
+    # cmake
+
+    _pm.note( msg = "Installing cmake..."
+            , methodName = _pm.names.paramonte
+            , marginTop = 1
+            , marginBot = 1
+            )
+    err1 = _os.system("brew install cmake")
+    err2 = _os.system("brew link cmake")
+    if err1 != 0 or err2 != 0:
+        _pm.warn( msg   = "Failed to install and link cmake on your system.\n"
+                        + "cmake is required to install and build\n"
+                        + "ParaMonte components and prerequisites.\n"
+                        + "Please install the cmake manually on your system and\n"
+                        + "retry the ParaMonte installation process if it fails.\n"
+                        + "skipping..."
+                , methodName = _pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
+
+    # gnu
+
+    _pm.note( msg = "Installing GNU Compiler Collection..."
+            , methodName = _pm.names.paramonte
+            , marginTop = 1
+            , marginBot = 1
+            )
+    err1 = _os.system("brew install gcc")
+    err2 = _os.system("brew link gcc")
+    if err1 != 0 or err2 != 0:
+        _pm.warn( msg   = "Failed to install and link GNU Compiler Collection on your system.\n"
+                        + "The GNU Compiler Collection is required to install\n"
+                        + "and build ParaMonte components and prerequisites.\n"
+                        + "Please install the GNU Compiler Collection manually on your\n"
+                        + "system and retry the ParaMonte installation process if it fails.\n"
+                        + "skipping..."
+                , methodName = _pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
+
+    # open-mpi
+
+    _pm.note( msg = "Installing Open-MPI..."
+            , methodName = _pm.names.paramonte
+            , marginTop = 1
+            , marginBot = 1
+            )
+    err1 = _os.system("brew install open-mpi")
+    err2 = _os.system("brew link open-mpi")
+    if err1 != 0 or err2 != 0:
+        _pm.warn( msg   = "Failed to install and link Open-MPI on your system.\n"
+                        + "Open-MPI is required to install and build\n"
+                        + "ParaMonte components and prerequisites.\n"
+                        + "Please install the Open-MPI manually on your\n"
+                        + "system and retry the ParaMonte installation process if it fails.\n"
+                        + "skipping..."
+                , methodName = _pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
+
 
 ####################################################################################################################################
 
@@ -824,9 +933,9 @@ def build(flags=""):
                         + "The kernel library build requires ParaMonte-compatible versions of the following \n"
                         + "compilers and parallelism libraries to be installed on your system: \n\n"
                         + "    GNU compiler collection (GCC >8.3)\n"
-                        + "    MPI library (MPICH >3.2)\n"
+                        + "    MPI library (MPICH >3.2) on Linux OS or Open-MPI on Darwin OS\n"
                         + "    OpenCoarrays >2.8\n\n"
-                        + "The installation of these software will require 4 to 5 Gb of free space \n"
+                        + "The full installation of these software will require 4 to 5 Gb of free space \n"
                         + "on your system (where the ParaMonte-Python interface is already installed).\n"
                         + "Note that the installation script is in Bash and therefore requires Bash shell.\n"
                         + "An existing recent installation of the GNU Compiler Collection (GCC) on your\n"
@@ -843,7 +952,10 @@ def build(flags=""):
                                                 + "\n    and its prerequisites on your system now (y/n)? " 
                                         )
 
+
         if buildEnabled:
+
+            if isMacOS: buildParaMontePrereqsForMac()
 
             currentDir = _os.getcwd()
 
@@ -909,7 +1021,6 @@ def build(flags=""):
                             , marginBot = 1
                             )
 
-
             _os.chdir(currentDir)
 
             # copy files to module folder
@@ -944,9 +1055,9 @@ def build(flags=""):
 
                 if _os.path.exists(setupFilePath):
 
-                    bashFileContents = getBashrcContents()
+                    bashrcFileContents = getBashrcContents()
                     setupFilePathCmd = "source " + setupFilePath
-                    if setupFilePathCmd not in bashFileContents:
+                    if setupFilePathCmd not in bashrcFileContents:
                         _os.system( "chmod 777 ~/.bashrc")
                         _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte library local installation setup >>>' >> ~/.bashrc" )
