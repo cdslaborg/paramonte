@@ -472,6 +472,11 @@ def findMPI():
                     return path
                     break
 
+    elif isMacOS:
+
+        import shutil
+        return _os.path.dirname(shutil.which("mpiexec"))
+
     else:
 
         LocalInstallDir = getLocalInstallDir()
@@ -783,7 +788,7 @@ def installMPI():
 
 ####################################################################################################################################
 
-def buildParaMontePrereqsForMac()
+def buildParaMontePrereqsForMac():
 
     _pm.note( msg = "Checking if Homebrew exists on your system..."
             , methodName = _pm.names.paramonte
