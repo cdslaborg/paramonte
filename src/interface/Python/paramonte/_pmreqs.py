@@ -478,7 +478,7 @@ def findMPI():
         path = shutil.which("mpiexec")
         if path is not None:
             path = _os.path.dirname(path)
-                _pm.note( msg   = "MPI runtime libraries detected at: \n\n"
+            _pm.note( msg   = "MPI runtime libraries detected at: \n\n"
                     + "    " + path + "\n\n"
                     + "To perform ParaMonte simulations in parallel on a single node, run the \n"
                     + "following two commands, in the form and order specified, in a Bash shell, \n\n"
