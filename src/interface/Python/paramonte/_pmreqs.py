@@ -403,7 +403,7 @@ def findMPI():
                                     + "following two commands, in the form and order specified, on a Python-aware, \n"
                                     + "mpiexec-aware command-line interface such as Anaconda 3 command-prompt:\n\n"
                                     + "    " + mpivarsCommand + "\n\n"
-                                    + "    mpiexec -localonly -np NUM_PROCESSES python main.py\n\n"
+                                    + "    mpiexec -localonly -n NUM_PROCESSES python main.py\n\n"
                                     + "where, \n\n"
                                     + "    0.   the first command defines the essential environment variables and, \n"
                                     + "         the second command runs in the simulation in parallel, in which, \n"
@@ -449,7 +449,7 @@ def findMPI():
                                     + "To perform ParaMonte simulations in parallel on a single node, run the \n"
                                     + "following two commands, in the form and order specified, in a Bash shell, \n\n"
                                     + "    source " + mpivarsCommand + "\n\n"
-                                    + "    mpiexec -np NUM_PROCESSES python main.py\n\n"
+                                    + "    mpiexec -n NUM_PROCESSES python main.py\n\n"
                                     + "where, \n\n"
                                     + "    0.   the first command defines the essential environment variables and, \n"
                                     + "         the second command runs in the simulation in parallel, in which, \n"
@@ -475,7 +475,29 @@ def findMPI():
     elif isMacOS:
 
         import shutil
-        return _os.path.dirname(shutil.which("mpiexec"))
+        path = shutil.which("mpiexec")
+        if path is not None:
+            path = _os.path.dirname(path)
+                _pm.note( msg   = "MPI runtime libraries detected at: \n\n"
+                    + "    " + path + "\n\n"
+                    + "To perform ParaMonte simulations in parallel on a single node, run the \n"
+                    + "following two commands, in the form and order specified, in a Bash shell, \n\n"
+                    + "    mpiexec -n NUM_PROCESSES python main.py\n\n"
+                    + "where, \n\n"
+                    + "    0.   the first command defines the essential environment variables and, \n"
+                    + "         the second command runs in the simulation in parallel, in which, \n"
+                    + "    1.   you should replace NUM_PROCESSES with the number of processors you \n"
+                    + "         wish to assign to your simulation task, \n"
+                    + "    2.   main.py is the Python file which serves as the entry point to \n"
+                    + "         your simulation, where you call ParaMonte sampler routines. \n\n"
+                    + "For more information on how to install and use and run parallel ParaMonte \n"
+                    + "simulations on Darwin operating systems, visit:\n\n"
+                    + "https://www.cdslab.org/pm"
+            , marginTop = 1
+            , marginBot = 1
+            , methodName = _pm.names.paramonte
+            )
+            return path
 
     else:
 
