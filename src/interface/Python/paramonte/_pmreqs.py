@@ -475,8 +475,25 @@ def findMPI():
     elif isMacOS:
 
         import shutil
-        path = shutil.which("mpiexec")
-        if path is not None:
+
+        gfortranPath = None
+        try:
+            import subprocess
+            gfortranVersion = subprocess.run(args=["gfortran", "--version"],capture_output=True)
+            if "GCC 9." in str(gfortranVersion.stdout): gfortranPath = shutil.which("gfortran")
+        except:
+            pass
+                gfortranPath = None
+
+        mpiexecPath = None
+        try:
+            import subprocess
+            mpiexecVersion = subprocess.run(args=["mpiexec", "--version"],capture_output=True)
+            if "open-mpi" in str(mpiexecVersion.stdout): mpiexecPath = shutil.which("mpiexec")
+        except:
+            pass
+
+        if (mpiexecPath is not None) and (gfortranPath is not None):
             path = _os.path.dirname(path)
             _pm.note( msg   = "MPI runtime libraries detected at: \n\n"
                     + "    " + path + "\n\n"
@@ -795,8 +812,8 @@ def installMPI():
                     #            , marginBot = 1
                     #            )
 
-    else:
-        
+    elif isMacOS:
+
         _pm.warn( msg   = "To use ParaMonte in parallel on Mac Operating Systems, \n"
                         + "ParaMonte needs to build the Open-MPI library on your system. \n"
                         #+ "To ensure full consistency, we recommend building the parallel \n"
@@ -807,6 +824,17 @@ def installMPI():
                 , methodName = _pm.names.paramonte
                 )
         buildParaMontePrereqsForMac()
+
+    else:
+
+        _pm.warn( msg   = "To use ParaMonte in parallel on this unknown Operating System, \n"
+                        + "ParaMonte needs to be built from scratch on your system. \n"
+                        + "Building ParaMonte library prerequisites on your system..."
+                , marginTop = 1
+                , marginBot = 1
+                , methodName = _pm.names.paramonte
+                )
+        build()
 
 ####################################################################################################################################
 
@@ -865,8 +893,8 @@ def buildParaMontePrereqsForMac():
             , marginTop = 1
             , marginBot = 1
             )
-    err1 = _os.system("brew install gcc")
-    err2 = _os.system("brew link gcc")
+    err1 = _os.system("brew install gcc@9")
+    err2 = _os.system("brew link gcc@9")
     if err1 != 0 or err2 != 0:
         _pm.warn( msg   = "Failed to install and link GNU Compiler Collection on your system.\n"
                         + "The GNU Compiler Collection is required to install\n"

@@ -688,7 +688,11 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                     if ! ${intelFortranMpiWrapperPath+false}; then
                         COMPILER_VERSION=${intelFortranCompilerVersion}
                         Fortran_COMPILER_PATH="${intelFortranCompilerPath}"
-                        MPIEXEC_PATH=$(dirname "${intelFortranMpiWrapperPath}")/mpiexec
+                        if [ -f "${intelFortranMpiWrapperPath}" ]; then
+                            MPIEXEC_PATH=$(dirname "${intelFortranMpiWrapperPath}")/mpiexec
+                        else
+                            unset MPIEXEC_PATH
+                        fi
                     else
                         errorOccurred=true
                     fi
@@ -734,8 +738,11 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
         fi
 
         if [ "${MPI_ENABLED}" = "true" ]; then
-            MPIEXEC_PATH=$(dirname "${gnuFortranMpiWrapperPath}")/mpiexec
-            if [ -z ${MPIEXEC_PATH+x} ]; then
+            if [ -f "${gnuFortranMpiWrapperPath}" ]; then
+                MPIEXEC_PATH=$(dirname "${gnuFortranMpiWrapperPath}")/mpiexec
+                mpiInstallEnabled=false
+            else
+                unset MPIEXEC_PATH
                 mpiInstallEnabled=true
                 gnuInstallEnabled=true
                 if [ "${prereqInstallAllowed}" = "true" ]; then
@@ -746,8 +753,6 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                     echo >&2 "-- ${BUILD_NAME} - WARNING: input argument -s or --compiler_suite when calling the script."
                     echo >&2
                 fi
-            else
-                mpiInstallEnabled=false
             fi
         else
             mpiInstallEnabled=false
