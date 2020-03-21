@@ -483,7 +483,6 @@ def findMPI():
             if "GCC 9." in str(gfortranVersion.stdout): gfortranPath = shutil.which("gfortran")
         except:
             pass
-                gfortranPath = None
 
         mpiexecPath = None
         try:
@@ -494,7 +493,7 @@ def findMPI():
             pass
 
         if (mpiexecPath is not None) and (gfortranPath is not None):
-            path = _os.path.dirname(path)
+            path = _os.path.dirname(mpiexecPath)
             _pm.note( msg   = "MPI runtime libraries detected at: \n\n"
                     + "    " + path + "\n\n"
                     + "To perform ParaMonte simulations in parallel on a single node, run the \n"
