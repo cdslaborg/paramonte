@@ -32,7 +32,8 @@
 # to redirect output to the external file install.sh.out, try:
 # install.sh >install.sh.out 2>&1
 # to redirect output to the external file install.sh.out and run the installation in background, try:
-# install.sh >install.sh.out 2>&1 &; jobs; disown
+# install.sh >install.sh.out 2>&1 &
+# jobs; disown
 
 FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
