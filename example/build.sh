@@ -56,7 +56,7 @@ However, the onus on you to ensure compiler/library availability and compatibili
         -f | --compiler_flags   : compiler flags. If specified, it will override all default compiler flags.
                                 : If not provided, appropriate values will be set for each flag.
                                 : If multiple space-delimited flags are passed, enclose all with "".
-        -n | --num_images       : the default number of processes (coarray images) on which the ParaMonte 
+        -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte 
                                 : examples/tests (if any) will be run: positive integer
                                 : If not provided, the default is 3.
         -h | --help             : help with the sctipt usage
@@ -82,7 +82,7 @@ while [ "$1" != "" ]; do
         -f | --compiler_flags ) shift
                                 USER_SELECTED_COMPILER_FLAGS=$1
                                 ;;
-        -n | --num_images )     shift
+        -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES=$1
                                 ;;
         -h | --help )           usage
@@ -335,7 +335,7 @@ do
             echo ""
             echo "while [ \"\$1\" != \"\" ]; do"
             echo "    case \$1 in"
-            echo "        -n | --num_images )   shift"
+            echo "        -n | --nproc )        shift"
             echo "                              FOR_COARRAY_NUM_IMAGES=\$1"
             echo "                              ;;"
             echo "        * )                   echo >\&2 \"-- ParaMonteExampleRunScript - FATAL: the input flag is not recognized: \$1\""
@@ -389,7 +389,7 @@ do
         echo "" >> ${RUN_FILE_NAME}
         echo "chmod +x ${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
         if [ "${MPI_ENABLED}" = "true" ]; then
-            echo "mpiexec -np \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
+            echo "mpiexec -n \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
             echo "" >> ${RUN_FILE_NAME}
         else
             if [ "${CAF_ENABLED}" = "true" ]; then

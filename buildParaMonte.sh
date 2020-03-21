@@ -147,9 +147,9 @@ cat << EndOfMessage
     flag definitions:
 
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
-        -b | --build_type       : the ParaMonte library build type: release, testing, debug
-        -l | --lib_type         : the ParaMonte library type: static, dynamic
-        -c | --caf_type         : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
+        -b | --build            : the ParaMonte library build type: release, testing, debug
+        -l | --lib              : the ParaMonte library type: static, dynamic
+        -c | --caf              : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
         -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
         -i | --cfi_enabled      : the ParaMonte library C-Fortran interface enabled? must be true if the library is to be called from non-Fortran languages: true, false
         -e | --heap_enabled     : the ParaMonte library heap array allocation enabled?: true, false
@@ -160,7 +160,7 @@ cat << EndOfMessage
         -F | --fresh            : enables a fresh installation of all of the prerequisites of ParaMonte library. Applicable only to GNU compiler suite.
         -y | --yes-to-all       : if a fresh installation of all of the prerequisites is needed, automatically answer yes to all permission requests.
         -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
-        -n | --num_images       : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
+        -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
         -a | --clean            : clean the environmental variables upon exit, if flag is provided.
         -h | --help             : help with the sctipt usage
 
@@ -181,13 +181,13 @@ while [ "$1" != "" ]; do
         -s | --compiler_suite ) shift
                                 PMCS=$1
                                 ;;
-        -b | --build_type )     shift
+        -b | --build )          shift
                                 BTYPE=$1
                                 ;;
-        -l | --lib_type )       shift
+        -l | --lib )            shift
                                 LTYPE=$1
                                 ;;
-        -c | --caf_type )       shift
+        -c | --caf )            shift
                                 CAFTYPE=$1
                                 ;;
         -m | --mpi_enabled )    shift
@@ -211,7 +211,7 @@ while [ "$1" != "" ]; do
         -M | --mpiexec )        shift
                                 MPIEXEC_PATH=$1; export MPIEXEC_PATH
                                 ;;
-        -n | --num_images )     shift
+        -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES=$1
                                 ;;
         -F | --fresh )          FRESH_INSTALL_ENABLED=true; export FRESH_INSTALL_ENABLED
@@ -255,7 +255,7 @@ if [ "${CFI_ENABLED}" = "true" ]; then
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
         echo >&2 "-- ${BUILD_NAME} - FATAL:     -i | --cfi_enabled : ${CFI_ENABLED}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf_type : ${CAFTYPE}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
         echo >&2 "-- ${BUILD_NAME} - FATAL: coarray parallelism is not available in C language."
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
@@ -269,7 +269,7 @@ if [ "${MPI_ENABLED}" = "true" ]; then
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
         echo >&2 "-- ${BUILD_NAME} - FATAL:     -m | --mpi_enabled : ${MPI_ENABLED}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf_type : ${CAFTYPE}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
         echo >&2 "-- ${BUILD_NAME} - FATAL: coarray parallelism cannot be mixed with MPI in the current version of ParaMonte."
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
@@ -282,8 +282,8 @@ if [ "${LTYPE}" = "dynamic" ]; then
     if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -l | --lib_type : ${LTYPE}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf_type : ${CAFTYPE}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -l | --lib : ${LTYPE}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
         echo >&2 "-- ${BUILD_NAME} - FATAL: ParaMonte dynamic library build with coarray parallelism currently unsupported."
         echo >&2
         echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
@@ -1456,7 +1456,7 @@ export LD_LIBRARY_PATH
 if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
     if [ "${MPI_ENABLED}" = "true" ]; then
         (cd ${ParaMonte_BLD_DIR}/test/bin && \
-        "${MPIEXEC_PATH}" -np ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte \
+        "${MPIEXEC_PATH}" -n ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte \
         )
     else
         if [ "${PMCS}" = "gnu" ]; then

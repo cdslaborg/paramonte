@@ -261,7 +261,7 @@ echo.
 cd !ParaMonteTest_BIN_DIR!
 
 if !MPI_ENABLED!==true (
-    mpiexec -localonly -np !FOR_COARRAY_NUM_IMAGES! !ParaMonteTest_EXE_NAME!
+    mpiexec -localonly -n !FOR_COARRAY_NUM_IMAGES! !ParaMonteTest_EXE_NAME!
 ) else (
     !ParaMonteTest_EXE_NAME!
 )

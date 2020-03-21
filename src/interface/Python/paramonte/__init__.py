@@ -102,14 +102,14 @@ The routines currently supported by the Python interface of ParaMonte include:
         
             1.  from inside ipython or jupyter: type the following,
 
-                   !mpiexec -np 3 python main.py
+                   !mpiexec -n 3 python main.py
 
             2.  outside of Python environment, 
                 from within a Bash shell (on Linux or Mac) or,
                 from within an Anaconda command prompt on Windows,
                 type the following,
 
-                   mpiexec -np 3 python main.py
+                   mpiexec -n 3 python main.py
 
             NOTE: On Windows platform, if you are using Intel MPI library,
             NOTE: you may also specify the extra flag -localonly to run only

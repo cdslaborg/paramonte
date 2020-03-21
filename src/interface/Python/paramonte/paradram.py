@@ -114,7 +114,7 @@ class ParaDRAM:
 
     4.  call your main Python code from a Python-aware mpiexec-aware command-line via,
 
-            mpi_launcher -np num_process python name_of_yor_python_code.py
+            mpi_launcher -n num_process python name_of_yor_python_code.py
 
         where,
 
@@ -167,7 +167,7 @@ class ParaDRAM:
     Once the script is saved in the file main.py, open a Python-aware and 
     MPI-aware command prompt to run the simulation by the MPI launcher, 
     
-        mpiexec -np 3 python main.py
+        mpiexec -n 3 python main.py
 
     This will execute the Python script main.py on three processes (images).
     Keep in mind that on Windows systems you may need to define MPI environmental 

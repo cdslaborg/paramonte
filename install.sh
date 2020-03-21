@@ -79,13 +79,13 @@ while [ "$1" != "" ]; do
         -s | --compiler_suite ) shift
                                 PMCS_LIST="$1"
                                 ;;
-        -b | --build_type )     shift
+        -b | --build )          shift
                                 BTYPE_LIST="$1"
                                 ;;
-        -l | --lib_type )       shift
+        -l | --lib )            shift
                                 LTYPE_LIST="$1"
                                 ;;
-        -c | --caf_type )       shift
+        -c | --caf )            shift
                                 CAFTYPE_LIST="$1"
                                 ;;
         -m | --mpi_enabled )    shift
@@ -113,7 +113,7 @@ while [ "$1" != "" ]; do
         -B | --bootstrap )      shift
                                 gcc_bootstrap_flag="--bootstrap"
                                 ;;
-        -n | --num_images )     shift
+        -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES="$1"
                                 ;;
         -h | --help )           usage
@@ -254,7 +254,7 @@ if ! [ -z ${BTYPE_LIST+x} ]; then
         if  [[ $BTYPE != [rR][eE][lL][eE][aA][sS][eE]
             && $BTYPE != [tT][eE][sS][tT][iI][nN][gG] 
             && $BTYPE != [dD][eE][bB][uU][gG] ]]; then
-            reportBadValue "-b or --build_type" $BTYPE
+            reportBadValue "-b or --build" $BTYPE
         fi
     done
     if [ "${BTYPE_LIST}" = "" ]; then
@@ -268,7 +268,7 @@ if ! [ -z ${LTYPE_LIST+x} ]; then
     for LTYPE in $LTYPE_LIST; do
         if  [[ $LTYPE != [dD][yY][nN][aA][mM][iI][cC] 
             && $LTYPE != [sS][tT][aA][tT][iI][cC] ]]; then
-            reportBadValue "-l or --lib_type" $LTYPE
+            reportBadValue "-l or --lib" $LTYPE
         fi
     done
     if [ "${LTYPE_LIST}" = "" ]; then
@@ -284,7 +284,7 @@ if ! [ -z ${CAFTYPE_LIST+x} ]; then
             && $CAFTYPE != [sS][iI][nN][gG][lL][eE] 
             && $CAFTYPE != [sS][hH][aA][rR][eE][dD] 
             && $CAFTYPE != [dD][iI][sS][tT][rR][iI][bB][uU][tT][eE][dD] ]]; then
-            reportBadValue "-c or --caf_type" $CAFTYPE
+            reportBadValue "-c or --caf" $CAFTYPE
         fi
     done
     if [ "${CAFTYPE_LIST}" = "" ]; then
@@ -372,13 +372,13 @@ if ! [ -z ${MPIEXEC_PATH+x} ]; then
     fi
 fi
 
-num_images_flag=""
+nproc_flag=""
 if ! [ -z ${FOR_COARRAY_NUM_IMAGES+x} ]; then
     isNumericValue="$(isnumeric ${FOR_COARRAY_NUM_IMAGES})"
     if [ "${isNumericValue}" = "true" ]; then
-        num_images_flag="--num_images ${FOR_COARRAY_NUM_IMAGES}"
+        nproc_flag="--nproc ${FOR_COARRAY_NUM_IMAGES}"
     else
-        reportBadValue "-n or --num_images" $FOR_COARRAY_NUM_IMAGES "The number of processors must be a positive integer."
+        reportBadValue "-n or --nproc" $FOR_COARRAY_NUM_IMAGES "The number of processors must be a positive integer."
     fi
 fi
 
@@ -501,9 +501,9 @@ for PMCS in $PMCS_LIST; do
                                compiler_suite_flag="--compiler_suite ${PMCS}"
                             fi
 
-                            caftype_flag="--caf_type ${CAFTYPE}"
-                            lib_type_flag="--lib_type ${LTYPE}"
-                            build_type_flag="--build_type ${BTYPE}"
+                            caftype_flag="--caf ${CAFTYPE}"
+                            lib_flag="--lib ${LTYPE}"
+                            build_flag="--build ${BTYPE}"
                             cfi_enabled_flag="--cfi_enabled ${CFI_ENABLED}"
                             mpi_enabled_flag="--mpi_enabled ${MPI_ENABLED}"
                             heap_enabled_flag="--heap_enabled ${HEAP_ARRAY_ENABLED}"
@@ -535,8 +535,8 @@ for PMCS in $PMCS_LIST; do
                                 if ! [ "${compiler_suite_flag}" = "" ]; then
                                 echo >&2 "                          ${compiler_suite_flag} \ "
                                 fi
-                                echo >&2 "                          ${build_type_flag} \ "
-                                echo >&2 "                          ${lib_type_flag} \ "
+                                echo >&2 "                          ${build_flag} \ "
+                                echo >&2 "                          ${lib_flag} \ "
                                 echo >&2 "                          ${cfi_enabled_flag} \ "
                                 echo >&2 "                          ${heap_enabled_flag} \ "
                                 echo >&2 "                          ${mpi_enabled_flag} \ "
@@ -558,8 +558,8 @@ for PMCS in $PMCS_LIST; do
                                 if ! [ "${mpiexec_flag}" = "" ]; then
                                 echo >&2 "                          ${mpiexec_flag} \ "
                                 fi
-                                if ! [ "${num_images_flag}" = "" ]; then
-                                echo >&2 "                          ${num_images_flag} \ "
+                                if ! [ "${nproc_flag}" = "" ]; then
+                                echo >&2 "                          ${nproc_flag} \ "
                                 fi
                                 echo >&2 "                          --clean"
                                 echo >&2 ""
@@ -570,8 +570,8 @@ for PMCS in $PMCS_LIST; do
                                 chmod +x ./buildParaMonte.sh && \
                                 ./buildParaMonte.sh \
                                 ${compiler_suite_flag} \
-                                ${build_type_flag} \
-                                ${lib_type_flag} \
+                                ${build_flag} \
+                                ${lib_flag} \
                                 ${cfi_enabled_flag} \
                                 ${heap_enabled_flag} \
                                 ${mpi_enabled_flag} \
@@ -583,7 +583,7 @@ for PMCS in $PMCS_LIST; do
                                 ${gcc_bootstrap_flag} \
                                 ${fortran_flag} \
                                 ${mpiexec_flag} \
-                                ${num_images_flag} \
+                                ${nproc_flag} \
                                 )
 
                                 fresh_flag=""

@@ -62,6 +62,7 @@ set CAFTYPE_LIST=
 set MPI_ENABLED_LIST=
 set HEAP_ARRAY_ENABLED_LIST=
 set FOR_COARRAY_NUM_IMAGES=
+set ParaMonte_FLAG_CLEANUP_ENABLED=false
 set DRY_RUN=false
 
 echo.
@@ -149,9 +150,9 @@ if not "%1"=="" (
         shift
     )
 
-    REM --mpi
+    REM --mpi_enabled
 
-    if "!FLAG!"=="--mpi" (
+    if "!FLAG!"=="--mpi_enabled" (
         set FLAG_SUPPORTED=true
         for %%a in ("!VALUE:/=" "!") do (
             set DELIM=
@@ -164,9 +165,9 @@ if not "%1"=="" (
         shift
     )
 
-    REM --heap
+    REM --heap_enabled
 
-    if "!FLAG!"=="--heap" (
+    if "!FLAG!"=="--heap_enabled" (
         set FLAG_SUPPORTED=true
         for %%a in ("!VALUE:/=" "!") do (
             set DELIM=
@@ -179,24 +180,20 @@ if not "%1"=="" (
         shift
     )
 
-    REM --np
+    REM --nproc
 
-    if "!FLAG!"=="--np" (
+    if "!FLAG!"=="--nproc" (
         set FLAG_SUPPORTED=true
         call :getUpperCase VALUE
         set "FOR_COARRAY_NUM_IMAGES=!VALUE!"
         shift
     )
 
-    REM --cleanup
+    REM --clean
 
-    if "!FLAG!"=="--cleanup" (
+    if "!FLAG!"=="--clean" (
         set FLAG_SUPPORTED=true
-        call :getUpperCase VALUE
-        set "ParaMonte_FLAG_CLEANUP_ENABLED=!VALUE!"
-        for %%V in ( "true" "false" ) do ( if /I "!ParaMonte_FLAG_CLEANUP_ENABLED!"=="%%~V" set "VALUE_SUPPORTED=true" )
-        if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
-        shift
+        set "ParaMonte_FLAG_CLEANUP_ENABLED=true"
     )
 
     REM --dryrun
@@ -246,7 +243,7 @@ if defined CAFTYPE_LIST (
                     if %%~a==true (
                         echo.
                         echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot 
-                        echo.-- ParaMonte - WARNING: be specified along with the MPI flag "--mpi %%~a".
+                        echo.-- ParaMonte - WARNING: be specified along with the MPI flag "--mpi_enabled %%~a".
                         echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
                     )
@@ -307,7 +304,7 @@ if defined LTYPE_LIST (
                 if %%~h==false (
                     if %%~l==dynamic (
                         echo.
-                        echo.-- ParaMonte - WARNING: The stack memory allocation option "--heap %%~h" cannot be 
+                        echo.-- ParaMonte - WARNING: The stack memory allocation option "--heap_enabled %%~h" cannot be 
                         echo.-- ParaMonte - WARNING: specified along with the dynamic library build "--lib %%~l".
                         echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
@@ -446,7 +443,7 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
                             echo.
                             echo.************************************************************************************************************************************
-                            echo.**** ParaMonte - current library build: --lang %%~G --build %%~B --lib %%~L --heap %%~H --mpi %%~M caf_type %%~C
+                            echo.**** ParaMonte - current library build: --lang %%~G --build %%~B --lib %%~L --heap_enabled %%~H --mpi_enabled %%~M --caf %%~C
                             echo.************************************************************************************************************************************
                             echo.
 

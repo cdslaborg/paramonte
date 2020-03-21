@@ -33,11 +33,11 @@
                                   leave this option out. The script will automatically search for the appropriate
                                   compilers and libraries. If they are not found, it will ask for your permission
                                   to install the missing components.
-        -b | --build_type       : the ParaMonte library build type: release, testing, debug
+        -b | --build            : the ParaMonte library build type: release, testing, debug
                                   the default is "release testing debug".
-        -l | --lib_type         : the ParaMonte library type: static, dynamic
+        -l | --lib              : the ParaMonte library type: static, dynamic
                                   the default is "dynamic static" for Fortran and C languages and "dynamic" for Python.
-        -c | --caf_type         : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
+        -c | --caf              : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
                                   the default is "none single shared distributed" for Fortran and "none" for C and Python.
         -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
                                   the default is "true false" resulting in builds for both serial and MPI-parallel libraries.
@@ -54,7 +54,7 @@
         -F | --fresh            : enables a fresh installation of all of the prerequisites of ParaMonte library. Applicable only to GNU compiler suite.
         -y | --yes-to-all       : if a fresh installation of all of the prerequisites is needed, automatically answer yes to all permission requests.
         -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
-        -n | --num_images       : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
+        -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
                                   If not provided, 3 will be used.
         -h | --help             : help with the sctipt usage
 

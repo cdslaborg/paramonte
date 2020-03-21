@@ -1,23 +1,23 @@
 
 Usage:
 
-    install.bat --lang <languages> --build <build types> --lib <library types> --caf <caf types> --mpi <mpi types> --heap <heap array choices> --np <# of processes>
+    install.bat --lang <languages> --build <build types> --lib <library types> --caf <caf types> --mpi_enabled <mpi types> --heap_enabled <heap array choices> --nproc <# of processes>
 
 Example:
 
-    install.bat --lang C/Fortran --build release --lib dynamic/static --heap true --mpi false/true --np 3
+    install.bat --lang C/Fortran --build release --lib dynamic/static --heap_enabled true --mpi_enabled false/true --nproc 3
 
 Flag definitions:
 
-    --lang      : the ParaMonte library language choices to build for. Possible values: C/Fortran/Python
-    --build     : the ParaMonte library build types. Possible values: release, testing, debug
-    --lib       : the ParaMonte library type. Possible values: static, dynamic
-    --caf       : the ParaMonte library Coarray Fortran parallelism type. Possible values: single, shared
-    --mpi       : the ParaMonte library MPI parallelism enabled? Possible values: true, false
-    --heap      : the ParaMonte library heap array allocation enabled? Possible values: true, false
-    --np        : the default number of processes on which the ParaMonte examples/tests (if any) will be run. Possible values: positive integers
-    --cleanup   : clean the environmental variables upon exit. Possible values: true, false. Only one value can be specified.
-    --help      : help with the script usage
+    --lang          : the ParaMonte library language choices to build for. Possible values: C/Fortran/Python
+    --build         : the ParaMonte library build types. Possible values: release, testing, debug
+    --lib           : the ParaMonte library type. Possible values: static, dynamic
+    --caf           : the ParaMonte library Coarray Fortran parallelism type. Possible values: single, shared
+    --mpi_enabled   : the ParaMonte library MPI parallelism enabled? Possible values: true, false
+    --heap_enabled  : the ParaMonte library heap array allocation enabled? Possible values: true, false
+    --nproc         : the default number of processes on which the ParaMonte examples/tests (if any) will be run. Possible values: positive integers
+    --clean         : clean the environmental variables upon exit, if specified.
+    --help          : help with the script usage
 
 NOTE: All flags are optional.
 NOTE: Use the forward-slash character / to separate multiple values for a single flag.
@@ -26,6 +26,6 @@ NOTE: For any option that is not specified, the build will be done for all of th
 NOTE: Some values of some of the flags are inconsistent with each other. For example:
 NOTE:     Coarray Fortran parallelism "--caf single/shared" cannot be specified along with dynamic library "--lib dynamic"
 NOTE:     Coarray Fortran parallelism "--caf single/shared" cannot be specified along with C/Python languages "--lang C/Python"
-NOTE:     Coarray Fortran parallelism "--caf single/shared" cannot be specified along with the MPI library enabled "--mpi true"
+NOTE:     Coarray Fortran parallelism "--caf single/shared" cannot be specified along with the MPI library enabled "--mpi_enabled true"
 NOTE:     Heap memory allocation "--heap true" cannot be specified along with static library "--lib static"
 

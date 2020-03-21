@@ -204,7 +204,7 @@ echo. -- ParaMonte - ParaMonte library target language: !TARGET_LANG!
 :: set default number of processes to be used in parallel mode
 
 set NUM_PROCESS=3
-set EXE_NAME=runExample.exe
+set EXE_NAME=main.exe
 
 set COMPILER_NAME=
 if !TARGET_LANG!==Fortran (
@@ -235,7 +235,7 @@ if !TARGET_LANG!==C (
     set SEXT=c
     set COMPILER_NAME=icl
     set COMPILER_SUITE=intel
-    set LINKER_FLAGS=/link /Fe:!EXE_NAME!
+    set LINKER_FLAGS=/link /out:!EXE_NAME!
 
     if !PTYPE!==mpi set COMPILER_NAME=mpiicc.bat -cc=!COMPILER_NAME!.exe
 
@@ -249,6 +249,7 @@ if !TARGET_LANG!==C (
 
         set COMPILER_NAME=cl
         set COMPILER_SUITE=microsoft visual C++
+        REM set LINKER_FLAGS=/link /Fe:!EXE_NAME!
         if !PTYPE!==mpi set COMPILER_NAME=mpicl -cc=!COMPILER_NAME!
 
         set COMPILER_FLAGS=
@@ -276,9 +277,9 @@ if !ParaMonteExample_EXE_ENABLED! NEQ true goto LABEL_ParaMonteExample_RUN_ENABL
 
 if !PTYPE!==mpi (
     echo. -- ParaMonte - ParaMonte example compiling: "!COMPILER_NAME! !COMPILER_FLAGS! logfunc.!SEXT! main.!SEXT! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
-    call !COMPILER_NAME! !COMPILER_FLAGS! logfunc.!SEXT! main.!SEXT! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
+                                                  call !COMPILER_NAME! !COMPILER_FLAGS! logfunc.!SEXT! main.!SEXT! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
 ) else (
-    !COMPILER_NAME! !COMPILER_FLAGS! logfunc.!SEXT! main.!SEXT! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
+                                                       !COMPILER_NAME! !COMPILER_FLAGS! logfunc.!SEXT! main.!SEXT! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
