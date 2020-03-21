@@ -69,51 +69,53 @@ contains
 
 #if defined CAF_ENABLED
         real(RK)    , allocatable           :: co_AccRate(:)[:]
-        real(RK)    , allocatable           :: co_LogFuncState(:,:)[:]                      ! (0:nd,-1:delayedRejectionCount), -1 corresponds to the current accepted state
-        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)[*] ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
+        real(RK)    , allocatable           :: co_LogFuncState(:,:)[:]                          ! (0:nd,-1:delayedRejectionCount), -1 corresponds to the current accepted state
+        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)[*]     ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
 #else
         real(RK)    , allocatable           :: co_LogFuncState(:,:)
         real(RK)    , allocatable           :: co_AccRate(:)
-        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)    ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
+        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)        ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
 #endif
-        type(SumAccRateSinceStart_type)     :: SumAccRateSinceStart                         ! used to figure out the average acceptance ratio for the entire chain.
-        integer(IK)                         :: numFunCallAcceptedLastAdaptation             ! number of function calls accepted at Last proposal adaptation occurrence
-        integer(IK)                         :: counterAUP                                   ! counter for adaptiveUpdatePeriod
-        integer(IK)                         :: counterAUC                                   ! counter for adaptiveUpdateCount
-        integer(IK)                         :: counterPRP                                   ! counter for progressReportPeriod
-        integer(IK)                         :: counterDRS                                   ! counter for Delayed Rejection Stages
-        integer(IK)                         :: lastState                                    ! dummy temporary argument to hold the value of PD%Stats%NumFunCall%accepted - 1_IK
-        integer(IK)                         :: lastStateWeight                              ! This is used for passing the most recent verbose chain segment to the adaptive updater of the sampler
-        integer(IK)                         :: currentStateWeight                           ! counter for SampleWeight, used only in in restart mode
-        integer(IK)                         :: numFunCallAcceptedPlusOne                    ! counter for SampleWeight, used only in in restart mode
-        integer(IK)                         :: numFunCallAcceptedRejectedLastReport         ! used for progress-report: must be initialized to zero upon entry to the procedure
-        real(RK)                            :: timeElapsedUntilLastReportInSeconds          ! used for progress-report: must be initialized to zero upon entry to the procedure
-        real(RK)                            :: inverseProgressReportPeriod                  ! used for progress-report: inverse of progressReportPeriod
-        real(RK)                            :: sumAccRateLastReport                         ! used for progress-report: must be initialized to zero upon entry to the procedure
-        real(RK)                            :: uniformRnd                                   ! used for random number generation.
-        real(RK)                            :: meanAccRateSinceStart                        ! used for restart file read
+        type(SumAccRateSinceStart_type)     :: SumAccRateSinceStart                             ! used to figure out the average acceptance ratio for the entire chain.
+        integer(IK)                         :: numFunCallAcceptedLastAdaptation                 ! number of function calls accepted at Last proposal adaptation occurrence
+        integer(IK)                         :: counterAUP                                       ! counter for adaptiveUpdatePeriod
+        integer(IK)                         :: counterAUC                                       ! counter for adaptiveUpdateCount
+        integer(IK)                         :: counterPRP                                       ! counter for progressReportPeriod
+        integer(IK)                         :: counterDRS                                       ! counter for Delayed Rejection Stages
+        integer(IK)                         :: lastState                                        ! dummy temporary argument to hold the value of PD%Stats%NumFunCall%accepted - 1_IK
+        integer(IK)                         :: lastStateWeight                                  ! This is used for passing the most recent verbose chain segment to the adaptive updater of the sampler
+        integer(IK)                         :: currentStateWeight                               ! counter for SampleWeight, used only in in restart mode
+        integer(IK)                         :: numFunCallAcceptedPlusOne                        ! counter for SampleWeight, used only in in restart mode
+        integer(IK)                         :: numFunCallAcceptedRejectedLastReport             ! used for progress-report: must be initialized to zero upon entry to the procedure
+        real(RK)                            :: timeElapsedUntilLastReportInSeconds              ! used for progress-report: must be initialized to zero upon entry to the procedure
+        real(RK)                            :: inverseProgressReportPeriod                      ! used for progress-report: inverse of progressReportPeriod
+        real(RK)                            :: sumAccRateLastReport                             ! used for progress-report: must be initialized to zero upon entry to the procedure
+        real(RK)                            :: uniformRnd                                       ! used for random number generation.
+        real(RK)                            :: meanAccRateSinceStart                            ! used for restart file read
         real(RK)                            :: chainAdaptationMeasure
         real(RK)                            :: maxLogFuncRejectedProposal
         logical                             :: samplerUpdateIsGreedy
         logical                             :: samplerUpdateSucceeded
         logical                             :: delayedRejectionRequested
         logical                             :: noDelayedRejectionRequested
+        integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
         integer(IK)                         :: j, imageID, dummy
         integer(IK)                         :: nd
 #if defined CAF_ENABLED || defined MPI_ENABLED
         integer(IK)                         :: imageStartID, imageEndID
 #if defined CAF_ENABLED
-        logical , save                      :: co_proposalFoundSinglChainMode[*]            ! used in the delayed rejection section
+        logical , save                      :: co_proposalFoundSinglChainMode[*]                ! used in the delayed rejection section
 #elif defined MPI_ENABLED
-        logical                             :: co_proposalFoundSinglChainMode               ! used in the delayed rejection section
-        real(RK), allocatable               :: AccRateMatrix(:,:)                           ! matrix of size (-1:PD%SpecDRAM%DelayedRejectionCount%val,1:PD%Image%count)
+        logical                             :: co_proposalFoundSinglChainMode                   ! used in the delayed rejection section
+        real(RK), allocatable               :: AccRateMatrix(:,:)                               ! matrix of size (-1:PD%SpecDRAM%DelayedRejectionCount%val,1:PD%Image%count)
         integer(IK)                         :: ndPlusOne
         integer(IK)                         :: ierrMPI
         integer(IK)                         :: delayedRejectionCountPlusTwo
 #endif
-        PD%Stats%avgCommTimePerFunCall = 0._RK                              ! Until the reporting time, this is in reality, sumCommTimePerFunCall. This is meaningful only in singlChain parallelism
-        PD%Stats%NumFunCall%acceptedRejectedDelayedUnused = PD%Image%count  ! used only in singlChain parallelism, and relevant only on the first image
+        PD%Stats%avgCommTimePerFunCall = 0._RK                                                  ! Until the reporting time, this is in reality, sumCommTimePerFunCall. This is meaningful only in singlChain parallelism
+        PD%Stats%NumFunCall%acceptedRejectedDelayedUnused = PD%Image%count                      ! used only in singlChain parallelism, and relevant only on the first image
 #endif
+        acceptedRejectedDelayedUnusedRestartMode = 0_IK                                         ! used to compute more accurate timings in the restart mode
         PD%Stats%avgTimePerFunCalInSec = 0._RK
         numFunCallAcceptedRejectedLastReport = 0_IK
         timeElapsedUntilLastReportInSeconds = 0._RK
@@ -125,20 +127,20 @@ contains
         if (allocated(co_LogFuncState)) deallocate(co_LogFuncState)
 #if defined CAF_ENABLED
         allocate(co_LogFuncState(0:nd,-1:PD%SpecDRAM%DelayedRejectionCount%val)[*])
-        allocate(co_AccRate(-1:PD%SpecDRAM%DelayedRejectionCount%val)[*])   ! the negative element will contain counterDRS
+        allocate(co_AccRate(-1:PD%SpecDRAM%DelayedRejectionCount%val)[*])                       ! the negative element will contain counterDRS
 #else
         allocate(co_LogFuncState(0:nd,-1:PD%SpecDRAM%DelayedRejectionCount%val))
         allocate(co_AccRate(-1:PD%SpecDRAM%DelayedRejectionCount%val))
 #endif
-        co_AccRate(-1)  = 0._RK                                             ! the real-value counterDRS, indicating the initial delayed rejection stage at which the first point is sampled
-        co_AccRate(0)   = 1._RK                                             ! initial acceptance rate for the first zeroth DR stage.
-        co_AccRate(1:PD%SpecDRAM%DelayedRejectionCount%val) = 0._RK         ! indicates the very first proposal acceptance on image 1
+        co_AccRate(-1)  = 0._RK                                                                 ! the real-value counterDRS, indicating the initial delayed rejection stage at which the first point is sampled
+        co_AccRate(0)   = 1._RK                                                                 ! initial acceptance rate for the first zeroth DR stage.
+        co_AccRate(1:PD%SpecDRAM%DelayedRejectionCount%val) = 0._RK                             ! indicates the very first proposal acceptance on image 1
 
 #if defined MPI_ENABLED
         if (allocated(AccRateMatrix)) deallocate(AccRateMatrix)
-        allocate(AccRateMatrix(-1:PD%SpecDRAM%DelayedRejectionCount%val,1:PD%Image%count)) ! the negative element will contain counterDRS
-        AccRateMatrix = 0._RK                                               ! -huge(1._RK)  ! debug
-        AccRateMatrix(0,1:PD%Image%count) = 1._RK                           ! initial acceptance rate for the first zeroth DR stage.
+        allocate(AccRateMatrix(-1:PD%SpecDRAM%DelayedRejectionCount%val,1:PD%Image%count))      ! the negative element will contain counterDRS
+        AccRateMatrix = 0._RK                                                                   ! -huge(1._RK)  ! debug
+        AccRateMatrix(0,1:PD%Image%count) = 1._RK                                               ! initial acceptance rate for the first zeroth DR stage.
         ndPlusOne = nd + 1_IK
         delayedRejectionCountPlusTwo = PD%SpecDRAM%DelayedRejectionCount%val + 2_IK
 #endif
@@ -146,18 +148,18 @@ contains
         delayedRejectionRequested                       = PD%SpecDRAM%DelayedRejectionCount%val > 0_IK
         noDelayedRejectionRequested                     = .not. delayedRejectionRequested
         if (delayedRejectionRequested) then
-        PD%Stats%NumFunCall%acceptedRejectedDelayed     = 0_IK              ! Markov Chain counter
-        SumAccRateSinceStart%acceptedRejectedDelayed    = 0._RK             ! sum of acceptance rate
+        PD%Stats%NumFunCall%acceptedRejectedDelayed     = 0_IK                                  ! Markov Chain counter
+        SumAccRateSinceStart%acceptedRejectedDelayed    = 0._RK                                 ! sum of acceptance rate
         end if
 
-        SumAccRateSinceStart%acceptedRejected           = 0._RK             ! sum of acceptance rate
-        PD%Stats%NumFunCall%acceptedRejected            = 0_IK              ! Markov Chain counter
-        counterAUC                                      = 0_IK              ! counter for padaptiveUpdateCount.
-        counterPRP                                      = 0_IK              ! counter for progressReportPeriod.
-        counterAUP                                      = 0_IK              ! counter for adaptiveUpdatePeriod. 
-        PD%Stats%NumFunCall%accepted                    = 0_IK              ! Markov Chain acceptance counter.
-        samplerUpdateSucceeded                          = .true.            ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
-        chainAdaptationMeasure                          = 0._RK             ! needed for the first output
+        SumAccRateSinceStart%acceptedRejected           = 0._RK                                 ! sum of acceptance rate
+        PD%Stats%NumFunCall%acceptedRejected            = 0_IK                                  ! Markov Chain counter
+        counterAUC                                      = 0_IK                                  ! counter for padaptiveUpdateCount.
+        counterPRP                                      = 0_IK                                  ! counter for progressReportPeriod.
+        counterAUP                                      = 0_IK                                  ! counter for adaptiveUpdatePeriod. 
+        PD%Stats%NumFunCall%accepted                    = 0_IK                                  ! Markov Chain acceptance counter.
+        samplerUpdateSucceeded                          = .true.                                ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
+        chainAdaptationMeasure                          = 0._RK                                 ! needed for the first output
         numFunCallAcceptedLastAdaptation                = 0_IK
         lastStateWeight                                 = -huge(lastStateWeight)
 
@@ -439,6 +441,12 @@ contains
                     if (PD%isFreshRun) then ! these are used for adaptive proposal updating, so they have to be set on every accepted or rejected iteration (excluding delayed rejections)
                         PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)  = SumAccRateSinceStart%acceptedRejected / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
                         PD%Chain%Weight(PD%Stats%NumFunCall%accepted)       = PD%Chain%Weight(PD%Stats%NumFunCall%accepted) + 1_IK
+                    else
+#if defined CAF_ENABLED || defined MPI_ENABLED
+                        acceptedRejectedDelayedUnusedRestartMode = PD%Stats%NumFunCall%acceptedRejectedDelayedUnused
+#else
+                        acceptedRejectedDelayedUnusedRestartMode = PD%Stats%NumFunCall%acceptedRejectedDelayed
+#endif
                     end if
 
                     if (counterPRP == PD%SpecBase%ProgressReportPeriod%val) then
@@ -1006,11 +1014,11 @@ contains
 #endif
             PD%Stats%avgCommTimePerFunCall = 0._RK
             PD%Stats%NumFunCall%acceptedRejectedDelayedUnused = PD%Stats%NumFunCall%acceptedRejectedDelayed
-            PD%Stats%avgTimePerFunCalInSec = PD%Stats%avgTimePerFunCalInSec / PD%Stats%NumFunCall%acceptedRejectedDelayed
+            PD%Stats%avgTimePerFunCalInSec =  PD%Stats%avgTimePerFunCalInSec / (PD%Stats%NumFunCall%acceptedRejectedDelayedUnused-acceptedRejectedDelayedUnusedRestartMode)
 #if defined CAF_ENABLED || defined MPI_ENABLED
         elseif(PD%Image%isFirst) then
             PD%Stats%avgCommTimePerFunCall =  PD%Stats%avgCommTimePerFunCall / PD%Stats%NumFunCall%acceptedRejectedDelayed
-            PD%Stats%avgTimePerFunCalInSec = (PD%Stats%avgTimePerFunCalInSec / PD%Stats%NumFunCall%acceptedRejectedDelayedUnused) * PD%Image%count
+            PD%Stats%avgTimePerFunCalInSec = (PD%Stats%avgTimePerFunCalInSec / (PD%Stats%NumFunCall%acceptedRejectedDelayedUnused-acceptedRejectedDelayedUnusedRestartMode)) * PD%Image%count
             return
         end if
 #endif
