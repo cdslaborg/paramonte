@@ -627,7 +627,7 @@ class ParaDRAM:
 
         if not errorOccurred: errorOccurred = buildMode not in ["release","testing","debug"]
         if not errorOccurred and stype is not None: 
-            errorOccurred = stype != "gnu" or stype != "intel"
+            errorOccurred = not (stype=="gnu" or stype=="intel")
         if errorOccurred:
             if dummyList is not None: buildMode = "-".join(dummyList)
             _pm.abort   ( msg   = "The input argument buildMode must be of type str.\n"
