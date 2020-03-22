@@ -846,6 +846,7 @@ def buildParaMontePrereqsForMac():
             )
 
     import shutil
+    import subprocess
     if shutil.which("brew") is None:
 
         _pm.note( msg = "Failed to detect Homebrew on your system. Installing Homebrew..."
@@ -868,24 +869,76 @@ def buildParaMontePrereqsForMac():
 
     # cmake
 
-    _pm.note( msg = "Installing cmake..."
-            , methodName = _pm.names.paramonte
-            , marginTop = 1
-            , marginBot = 1
-            )
-    err1 = _os.system("brew install cmake")
-    err2 = _os.system("brew link cmake")
-    if err1 != 0 or err2 != 0:
-        _pm.warn( msg   = "Failed to install and link cmake on your system.\n"
-                        + "cmake is required to install and build\n"
-                        + "ParaMonte components and prerequisites.\n"
-                        + "Please install the cmake manually on your system and\n"
-                        + "retry the ParaMonte installation process if it fails.\n"
-                        + "skipping..."
+    cmakePath = shutil.which("cmake")
+    cmakeInstallationNeeded = False
+    if cmakePath is None:
+        cmakeInstallationNeeded = True
+        _pm.note( msg           = "cmake installation is missing on your system."
+                , methodName    = _pm.names.paramonte
+                , marginTop     = 1
+                , marginBot     = 1
+                )
+    else:
+        _pm.note( msg           = "cmake installation detected at: " + cmakePath + "\n" + "Checking cmake version..."
+                , methodName    = _pm.names.paramonte
+                , marginTop     = 1
+                , marginBot     = 1
+                )
+        try:
+            cmakeVersion = str(subprocess.run(args=["cmake","--version"],capture_output=True).stdout).split(" ")[2].split("-")[0]
+            cmakeVersionList = cmakeVersion.split(".")
+            _pm.note( msg           = "current cmake version: " + cmakeVersion
+                    , methodName    = _pm.names.paramonte
+                    , marginTop     = 1
+                    , marginBot     = 1
+                    )
+            if int(cmakeVersionList[0])>=3 and int(cmakeVersionList[1])>=14:
+                _pm.note( msg           = "cmake version is ParaMonte-compatible!"
+                        , methodName    = _pm.names.paramonte
+                        , marginTop     = 1
+                        , marginBot     = 1
+                        )
+            else:
+                cmakeInstallationNeeded = True
+                _pm.note( msg           = "cmake version is NOT ParaMonte-compatible."
+                        , methodName    = _pm.names.paramonte
+                        , marginTop     = 1
+                        , marginBot     = 1
+                        )
+        except:
+            cmakeInstallationNeeded = True
+            _pm.note( msg           = "Failed to detect the current cmake installation version. skipping..."
+                    , methodName    = _pm.names.paramonte
+                    , marginTop     = 1
+                    , marginBot     = 1
+                    )
+
+    if cmakeInstallationNeeded:
+        _pm.note( msg = "Installing cmake..."
                 , methodName = _pm.names.paramonte
                 , marginTop = 1
                 , marginBot = 1
                 )
+        err1 = _os.system("brew install cmake")
+        err2 = _os.system("brew link --overwrite cmake")
+        cmakeVersionList = str(subprocess.run(args=["cmake","--version"],capture_output=True).stdout).split(" ")[2].split("-")[0].split(".")
+        if int(cmakeVersionList[0])>=3 and int(cmakeVersionList[1])>=14:
+            _pm.note( msg           = "cmake installation succeeded."
+                    , methodName    = _pm.names.paramonte
+                    , marginTop     = 1
+                    , marginBot     = 1
+                    )
+        else:
+            _pm.warn( msg   = "Failed to install and link cmake on your system.\n"
+                            + "cmake is required to install and build\n"
+                            + "ParaMonte components and prerequisites.\n"
+                            + "Please install the cmake manually on your system and\n"
+                            + "retry the ParaMonte installation process if it fails.\n"
+                            + "skipping..."
+                    , methodName = _pm.names.paramonte
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
 
     # gnu
 
