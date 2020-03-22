@@ -881,43 +881,43 @@ def buildParaMontePrereqsForMac():
     else:
         _pm.note( msg           = "cmake installation detected at: " + cmakePath + "\n" + "Checking cmake version..."
                 , methodName    = _pm.names.paramonte
-                , marginTop     = 1
-                , marginBot     = 1
+                , marginTop     = 0
+                , marginBot     = 0
                 )
         try:
             cmakeVersion = str(subprocess.run(args=["cmake","--version"],capture_output=True).stdout).split(" ")[2].split("-")[0]
             cmakeVersionList = cmakeVersion.split(".")
             _pm.note( msg           = "current cmake version: " + cmakeVersion
                     , methodName    = _pm.names.paramonte
-                    , marginTop     = 1
-                    , marginBot     = 1
+                    , marginTop     = 0
+                    , marginBot     = 0
                     )
             if int(cmakeVersionList[0])>=3 and int(cmakeVersionList[1])>=14:
                 _pm.note( msg           = "cmake version is ParaMonte-compatible!"
                         , methodName    = _pm.names.paramonte
-                        , marginTop     = 1
-                        , marginBot     = 1
+                        , marginTop     = 0
+                        , marginBot     = 0
                         )
             else:
                 cmakeInstallationNeeded = True
                 _pm.note( msg           = "cmake version is NOT ParaMonte-compatible."
                         , methodName    = _pm.names.paramonte
-                        , marginTop     = 1
-                        , marginBot     = 1
+                        , marginTop     = 0
+                        , marginBot     = 0
                         )
         except:
             cmakeInstallationNeeded = True
             _pm.note( msg           = "Failed to detect the current cmake installation version. skipping..."
                     , methodName    = _pm.names.paramonte
-                    , marginTop     = 1
-                    , marginBot     = 1
+                    , marginTop     = 0
+                    , marginBot     = 0
                     )
 
     if cmakeInstallationNeeded:
         _pm.note( msg = "Installing cmake..."
                 , methodName = _pm.names.paramonte
-                , marginTop = 1
-                , marginBot = 1
+                , marginTop = 0
+                , marginBot = 0
                 )
         err1 = _os.system("brew install cmake")
         err2 = _os.system("brew link --overwrite cmake")
