@@ -256,6 +256,11 @@ echo >&2 "-- ${BUILD_NAME} - current requested configuration: "
 
 # check flag consistencies
 
+CAF_ENABLED=false
+if [ "${CAFTYPE}" = "single" ] || [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
+    CAF_ENABLED=true
+fi
+
 if [ "${isMacOS}" = "true" ]; then
     if [[ "${PMCS}" =~ .*"intel".* ]]; then
         if [[ "${MPI_ENABLED}" =~ .*"true".* ]]; then
@@ -907,7 +912,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
             echo >&2 "-- ${BUILD_NAME} - WARNING: of either OpenCoarrays, MPICH MPI library (on Linux) or Open-MPI MPI library (on macOS),"
             echo >&2 "-- ${BUILD_NAME} - WARNING: GNU compilers, or CMAKE on your system."
             echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte can install all the prerequisites on your system from the web, if needed."
-            echo >&2 "-- ${BUILD_NAME} - WARNING: Thre prerequisites (GNU compilers) may occupy up to 5Gb of your system's memory."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: The prerequisites build objects may occupy up to 5Gb of your system's memory."
             echo >&2
             if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
                 answerNotGiven=true
