@@ -523,7 +523,7 @@ class ParaDRAM:
                         )
 
         errorOccurred = not isinstance(buildMode,str)
-        if not errorOccurred: errorOccurred = buildMode not in ["release","testing","debug"]
+        if not errorOccurred: errorOccurred = buildMode.split("-")[0] not in ["release","testing","debug"]
         if errorOccurred:
             _pm.abort   ( msg   = "The input argument buildMode must be of type str.\n"
                                 + "It is an optional string argument with default value \"release\"\n."
@@ -614,7 +614,16 @@ class ParaDRAM:
                         , marginBot = 1
                         )
 
-        errorOccurred = not isinstance(buildMode,str)
+        if isinstance(buildMode,str):
+            errorOccurred = False
+            stype = None
+            if "-" in buildMode:
+                dummyList = buildMode.split("-")
+                buildMode = dummyList[0] # build type
+                stype = dummyList[1] # compiler suite
+        else:
+            errorOccurred = True
+
         if not errorOccurred: errorOccurred = buildMode not in ["release","testing","debug"]
         if errorOccurred:
             _pm.abort   ( msg   = "The input argument buildMode must be of type str.\n"
@@ -783,6 +792,9 @@ class ParaDRAM:
         buildModeList.pop(buildModeList.index(buildMode))
         buildModeList.insert(0,buildMode)
         pmcsList = ["intel","gnu"]
+        if stype is not None:
+            pmcsList.pop(pmcsList.index(stype))
+            pmcsList.insert(0,stype)
 
         for buildMode in buildModeList:
 
