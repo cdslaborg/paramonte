@@ -625,6 +625,7 @@ class ParaDRAM:
             errorOccurred = True
 
         if not errorOccurred: errorOccurred = buildMode not in ["release","testing","debug"]
+        if not errorOccurred and stype is not None: errorOccurred = stype != "gnu" or stype != "intel"
         if errorOccurred:
             _pm.abort   ( msg   = "The input argument buildMode must be of type str.\n"
                                 + "It is an optional string argument with default value \"release\"\n."
