@@ -279,7 +279,7 @@ if [ "${isMacOS}" = "true" ]; then
             echo >&2
             echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
             echo >&2 "-- ${BUILD_NAME} - FATAL:     -s | --compiler_suite : ${PMCS}"
-            echo >&2 "-- ${BUILD_NAME} - FATAL:     -m | --caf_enabled : ${CAF_ENABLED}"
+            echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf_enabled : ${CAF_ENABLED}"
             echo >&2 "-- ${BUILD_NAME} - FATAL: \"--compiler_suite ${PMCS}\" cannot be used along with \"--caf_enabled ${CAF_ENABLED}\" on macOS."
             echo >&2 "-- ${BUILD_NAME} - FATAL: For parallel ParaMonte builds on macOS, use \"--compiler_suite gnu\" instead."
             echo >&2
@@ -1174,7 +1174,7 @@ fi
 # set up setup.sh file
 ####################################################################################################################################
 
-if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ]; then
+if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then
 
     SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
     export SETUP_FILE_PATH
@@ -1515,6 +1515,7 @@ if [ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 else
     ParaMonte_CAF_SETUP_PATH_CMD=""
 fi
+if [ "${isMacOS}" = "true" ]; then ParaMonte_CAF_SETUP_PATH_CMD=""; fi
 
 (cd ${ParaMonte_BLD_DIR} && \
 ${ParaMonte_CAF_SETUP_PATH_CMD} && \
