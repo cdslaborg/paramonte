@@ -853,7 +853,9 @@ def buildParaMontePrereqsForMac():
                 , marginTop = 1
                 , marginBot = 1
                 )
+        err = _os.system('xcode-select --install')
         err = _os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
+        err = _os.system('brew --version')
         if err != 0:
             _pm.abort( msg  = "Failed to install Homebrew on your system.\n"
                             + "Homebrew is required to install and build ParaMonte components and prerequisites.\n"

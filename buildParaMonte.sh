@@ -71,6 +71,12 @@ else
     export PLATFORM
 fi
 
+if [[ "${UNAME_PLATFORM}" =~ .*"Darwin".* ]]; then
+    isMacOS=true
+else
+    isMacOS=false
+fi
+
 
 ARCHITECTURE=$(uname -p)
 if [[ "$ARCHITECTURE" =~ .*"64".* ]]; then
@@ -249,6 +255,37 @@ echo >&2 "-- ${BUILD_NAME} - current requested configuration: "
 . ./configParaMonte.sh
 
 # check flag consistencies
+
+if [ "${isMacOS}" = "true" ]; then
+    if [[ "${PMCS}" =~ .*"intel".* ]]; then
+        if [[ "${MPI_ENABLED}" =~ .*"true".* ]]; then
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
+            echo >&2 "-- ${BUILD_NAME} - FATAL:     -s | --compiler_suite : ${PMCS}"
+            echo >&2 "-- ${BUILD_NAME} - FATAL:     -m | --mpi_enabled : ${MPI_ENABLED}"
+            echo >&2 "-- ${BUILD_NAME} - FATAL: \"--compiler_suite ${PMCS}\" cannot be used along with \"--mpi_enabled ${MPI_ENABLED}\" on macOS."
+            echo >&2 "-- ${BUILD_NAME} - FATAL: For parallel ParaMonte builds on macOS, use \"--compiler_suite gnu\" instead."
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+            echo >&2
+            exit 1
+        fi
+        if [[ "${CAF_ENABLED}" =~ .*"true".* ]]; then
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
+            echo >&2 "-- ${BUILD_NAME} - FATAL:     -s | --compiler_suite : ${PMCS}"
+            echo >&2 "-- ${BUILD_NAME} - FATAL:     -m | --caf_enabled : ${CAF_ENABLED}"
+            echo >&2 "-- ${BUILD_NAME} - FATAL: \"--compiler_suite ${PMCS}\" cannot be used along with \"--caf_enabled ${CAF_ENABLED}\" on macOS."
+            echo >&2 "-- ${BUILD_NAME} - FATAL: For parallel ParaMonte builds on macOS, use \"--compiler_suite gnu\" instead."
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+            echo >&2
+            exit 1
+        fi
+    else
+        if [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ]; then PMCS="gnu"; fi
+    fi
+fi
 
 if [ "${CFI_ENABLED}" = "true" ]; then
     if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
@@ -650,6 +687,7 @@ export CAF_ENABLED
 
 prereqInstallAllowed=false
 if [ -z ${PMCS+x} ]; then prereqInstallAllowed=true; fi
+if [ "${isMacOS}" = "true" ]; then prereqInstallAllowed=true; fi
 
 if [ -z ${Fortran_COMPILER_PATH+x} ]; then
 
@@ -866,7 +904,8 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
             echo >&2
             echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte build with the requested configuration requires the installations"
-            echo >&2 "-- ${BUILD_NAME} - WARNING: of either OpenCoarrays, MPICH MPI library, GNU compilers, or CMAKE on your system."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: of either OpenCoarrays, MPICH MPI library (on Linux) or Open-MPI MPI library (on macOS),"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: GNU compilers, or CMAKE on your system."
             echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte can install all the prerequisites on your system from the web, if needed."
             echo >&2 "-- ${BUILD_NAME} - WARNING: Thre prerequisites (GNU compilers) may occupy up to 5Gb of your system's memory."
             echo >&2
@@ -919,6 +958,20 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
         if [ "${answer}" = "y" ]; then
 
+            # check brew on Mac
+
+            if [ "${isMacOS}" = "true" ]; then
+                if command -v brew >/dev/null 2>&1; then
+                    brewCompilerPath=$(command -v brew)
+                    echo >&2 "-- ${BUILD_NAME} - Homebrew detected at: ${brewCompilerPath}"
+                else
+                    echo >&2 "-- ${BUILD_NAME} - Homebrew missing. Installing Homebrew..."
+                    (xcode-select --install && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" )
+                    (command -v brew >/dev/null 2>&1 )
+                    verify $? "installation of brew"
+                fi
+            fi
+
             # check cmake
 
             if [ "${cmakeInstallEnabled}" = "true" ]; then
@@ -930,51 +983,67 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 else
                     echo >&2 "-- ${BUILD_NAME} - cmake ${cmakeVersionRequired} missing."
                     echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && ./install.sh  --yes-to-all --package cmake --install-version ${cmakeVersionRequired} )
-                    verify $? "installation of cmake"
+                    if [ "${isMacOS}" = "true" ]; then
+                        (brew install cmake && brew link cmake )
+                        (command -v cmake >/dev/null 2>&1 )
+                        verify $? "installation of cmake"
+                    else
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && ./install.sh  --yes-to-all --package cmake --install-version ${cmakeVersionRequired} )
+                        verify $? "installation of cmake"
+                    fi
                 fi
             fi
 
             # check mpi
 
-            CURRENT_PKG="MPICH library"
-            if [ "${mpiInstallEnabled}" = "true" ]; then
-                #ParaMonte_MPI_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/mpich/3.2/bin"
-                MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
-                if [[ -f "${MPIEXEC_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} detected."
-                    #mpiInstallEnabled=false
-                else
-                    ##########################################################################
-                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) || 
-                    {
-                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                            echo >&2
-                            read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer 
-                            echo >&2
-                            if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                GCC_BOOTSTRAP="--bootstrap"
-                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                verify $? "${CURRENT_PKG} installation"
+            if [ "${isMacOS}" = "true" ]; then
+                CURRENT_PKG="the Open-MPI library"
+                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                (brew install open-mpi && brew link open-mpi )
+                (command -v mpiexec >/dev/null 2>&1 )
+                verify $? "installation of ${CURRENT_PKG}"
+                MPIEXEC_PATH=$(command -v mpiexec)
+            else
+                CURRENT_PKG="the MPICH library"
+                if [ "${mpiInstallEnabled}" = "true" ]; then
+                    #ParaMonte_MPI_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/mpich/3.2/bin"
+                    MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
+                    if [[ -f "${MPIEXEC_PATH}" ]]; then
+                        echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} detected."
+                        #mpiInstallEnabled=false
+                    else
+                        ##########################################################################
+                        echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                        echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) || 
+                        {
+                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                                echo >&2
+                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer 
+                                echo >&2
+                                if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                    GCC_BOOTSTRAP="--bootstrap"
+                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                    (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    verify $? "installation of ${CURRENT_PKG}"
+                                else
+                                    verify 1 "installation of ${CURRENT_PKG}"
+                                fi
                             else
-                                verify 1 "${CURRENT_PKG} installation"
+                                verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        else
-                            verify 1 "${CURRENT_PKG} installation"
-                        fi
-                    }
-                    ##########################################################################
+                        }
+                        ##########################################################################
+                    fi
                 fi
             fi
 
             # check gnu
 
-            CURRENT_PKG="GNU compiler collection"
+            CURRENT_PKG="the GNU compiler collection"
             if [ "${gnuInstallEnabled}" = "true" ]; then
                 #ParaMonte_GNU_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/gnu/8.3.0/bin"
                 Fortran_COMPILER_PATH="${ParaMonte_GNU_BIN_DIR}/gfortran"
@@ -985,25 +1054,32 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     ##########################################################################
                     echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
                     echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) || 
-                    {
-                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                            echo >&2
-                            read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer 
-                            echo >&2
-                            if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                GCC_BOOTSTRAP="--bootstrap"
-                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                verify $? "${CURRENT_PKG} installation"
+                    if [ "${isMacOS}" = "true" ]; then
+                        (brew install gcc && brew link gcc )
+                        (command -v gfortran >/dev/null 2>&1 )
+                        verify $? "installation of ${CURRENT_PKG}"
+                        Fortran_COMPILER_PATH=$(command -v gfortran)
+                    else
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) || 
+                        {
+                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                                echo >&2
+                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer 
+                                echo >&2
+                                if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                    GCC_BOOTSTRAP="--bootstrap"
+                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                    (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    verify $? "installation of ${CURRENT_PKG}"
+                                else
+                                    verify 1 "installation of ${CURRENT_PKG}"
+                                fi
                             else
-                                verify 1 "${CURRENT_PKG} installation"
+                                verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        else
-                            verify 1 "${CURRENT_PKG} installation"
-                        fi
-                    }
+                        }
+                    fi
                     ##########################################################################
                 fi
             fi
@@ -1021,7 +1097,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
             # check caf
 
-            CURRENT_PKG="OpenCoarrays compiler wrapper"
+            CURRENT_PKG="the OpenCoarrays compiler wrapper"
             if [ "${cafInstallEnabled}" = "true" ]; then
                 #ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_BIN_DIR}/caf"
                 if [[ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]]; then
@@ -1031,25 +1107,32 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     ##########################################################################
                     echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
                     echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) || 
-                    {
-                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                            echo >&2
-                            read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer 
-                            echo >&2
-                            if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                GCC_BOOTSTRAP="--bootstrap"
-                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
-                                verify $? "${CURRENT_PKG} installation"
+                    if [ "${isMacOS}" = "true" ]; then
+                        (brew install opencoarrays && brew link opencoarrays )
+                        (command -v caf >/dev/null 2>&1 )
+                        verify $? "installation of ${CURRENT_PKG}"
+                        ParaMonte_CAF_WRAPPER_PATH=$(command -v caf)
+                    else
+                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                        (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) || 
+                        {
+                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                                echo >&2
+                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer 
+                                echo >&2
+                                if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                    GCC_BOOTSTRAP="--bootstrap"
+                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                    (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
+                                    verify $? "installation of ${CURRENT_PKG}"
+                                else
+                                    verify 1 "${CURRENT_PKG} installation"
+                                fi
                             else
-                                verify 1 "${CURRENT_PKG} installation"
+                                verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        else
-                            verify 1 "${CURRENT_PKG} installation"
-                        fi
-                    }
+                        }
+                    fi
                     ##########################################################################
                 fi
                 Fortran_COMPILER_PATH="${ParaMonte_CAF_WRAPPER_PATH}"
