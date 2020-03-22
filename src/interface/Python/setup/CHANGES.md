@@ -1,5 +1,9 @@
 # Release Notes
 
+## ParaMonte Python v1.0.5, March 21, 2020:
+
+Minor bug fix.
+
 ## ParaMonte Python v1.0.4, March 20, 2020:
 
 support for Mac OS (Darwin) added.
