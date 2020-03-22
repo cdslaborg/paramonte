@@ -617,6 +617,7 @@ class ParaDRAM:
         if isinstance(buildMode,str):
             errorOccurred = False
             stype = None
+            dummyList = None
             if "-" in buildMode:
                 dummyList = buildMode.split("-")
                 buildMode = dummyList[0] # build type
@@ -625,8 +626,10 @@ class ParaDRAM:
             errorOccurred = True
 
         if not errorOccurred: errorOccurred = buildMode not in ["release","testing","debug"]
-        if not errorOccurred and stype is not None: errorOccurred = stype != "gnu" or stype != "intel"
+        if not errorOccurred and stype is not None: 
+            errorOccurred = stype != "gnu" or stype != "intel"
         if errorOccurred:
+            if dummyList is not None: buildMode = "-".join(dummyList)
             _pm.abort   ( msg   = "The input argument buildMode must be of type str.\n"
                                 + "It is an optional string argument with default value \"release\"\n."
                                 + "possible choices are:\n"
