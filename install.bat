@@ -180,6 +180,18 @@ if not "%1"=="" (
         shift
     )
 
+    REM --exam_enabled
+
+    if "!FLAG!"=="--exam_enabled" (
+        set FLAG_SUPPORTED=true
+        set "EXAM_ENABLED=!VALUE!"
+        set VALUE_SUPPORTED=false
+        if !EXAM_ENABLED!==true set "VALUE_SUPPORTED=true"
+        if !EXAM_ENABLED!==false set "VALUE_SUPPORTED=true"
+        if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+        shift
+    )
+
     REM --nproc
 
     if "!FLAG!"=="--nproc" (
@@ -193,7 +205,7 @@ if not "%1"=="" (
 
     if "!FLAG!"=="--clean" (
         set FLAG_SUPPORTED=true
-        set "ParaMonte_FLAG_CLEANUP_ENABLED=true"
+        set ParaMonte_FLAG_CLEANUP_ENABLED=true
     )
 
     REM --dryrun
@@ -210,6 +222,8 @@ if not "%1"=="" (
         type .\install.bat.usage.txt
         exit /b 0
     )
+
+    if !FLAG_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
 
     shift
     goto :LABEL_parseArgLoop
@@ -399,8 +413,8 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
                         set ParaMonte_OBJ_ENABLED=!FRESH_RUN!
                         set ParaMonte_LIB_ENABLED=!FRESH_RUN!
-                        set ParaMonteExample_EXE_ENABLED=true
-                        set ParaMonteExample_RUN_ENABLED=true
+                        set ParaMonteExample_EXE_ENABLED=!EXAM_ENABLED!
+                        set ParaMonteExample_RUN_ENABLED=!EXAM_ENABLED!
 
                         set BTYPE=%%~B
                         set LTYPE=%%~L

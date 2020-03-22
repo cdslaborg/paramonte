@@ -38,7 +38,7 @@ The instructions for building the Python interface of ParaMonte library are iden
 - For **serial** simulations, simply type the name of the Python main script, which, by default, should be `main.py`.  
 - For **parallel** applications, first make sure that the input parameter `mpiEnabled = True` is passed to the `runSampler()` method of your ParaMonte sampler object. Then call the main Python file on the command line with the following syntax,  
     ```
-    mpiexec -np NUM_PROCESSES runExample.exe
+    mpiexec -n NUM_PROCESSES runExample.exe
     ```
     where `NUM_PROCESSES` represents the number of processes on which the application will run.  
 

@@ -24,22 +24,17 @@
 
 :: This is a simple standalone build Batch script for building C/Fortran applications that use ParaMonte library on Windows OS.
 ::
-:: Usage:
+:: Usage - building C/C++ aplications via Intel Visual C/C++ compiler:
 ::
-::      build.bat COMPILER_SUITE PARALLELISM PARAMONTE_LIBRARY_TYPE BUILD_TYPE
+::      build.bat
 ::
-:: where the passed arguments can be one of the following options:
+:: Usage - building C/C++ aplications via Microsoft Visual C/C++ compiler:
 ::
-::      COMPILER_SUITE: intel
-::      PARALLELISM: serial / mpi
-::      PARAMONTE_LIBRARY_TYPE: static / dynamic
-::      BUILD_TYPE: release / testing / debug
+::      build.bat msvc
 ::
-:: All of the above choices except the first depend on the way the ParaMonte library has been built in your case.  
+:: Usage - building Fortran aplications via Intel Visual Fortran compiler:
 ::
-:: Example Usage:
-::
-::      build.bat intel serial static release
+::      build.bat msvc
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: build ParaMonteExample objects and executable
@@ -48,15 +43,6 @@
 @echo off
 set ERRORLEVEL=0
 cd %~dp0
-
-REM if defined "%2" echo %2
-REM if defined "%3" echo %3
-REM if defined "%4" echo %4
-
-REM set COMPILER_SUITE="%1"
-REM set PARALLELISM="%2"
-REM set LTYPE="%3"
-REM set BTYPE="%4"
 
 setlocal EnableDelayedExpansion
 

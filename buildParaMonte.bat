@@ -458,9 +458,9 @@ cd %~dp0
 
 :LABEL_ParaMonteExamples
 
-set ParaMonteExample_ENABLED=false
-if !ParaMonteExample_EXE_ENABLED!==true set ParaMonteExample_ENABLED=true
-if !ParaMonteExample_RUN_ENABLED!==true set ParaMonteExample_ENABLED=true
+REM set ParaMonteExample_ENABLED=false
+REM if !ParaMonteExample_EXE_ENABLED!==true set ParaMonteExample_ENABLED=true
+REM if !ParaMonteExample_RUN_ENABLED!==true set ParaMonteExample_ENABLED=true
 
 :: set path to ParaMonte example source files
 

@@ -70,7 +70,7 @@ Building this example requires the following components in the same folder and t
         ```
     - For parallel applications call `mpiexec`,  
         ```
-        mpiexec -np NUM_PROCESSES runExample.exe
+        mpiexec -n NUM_PROCESSES runExample.exe
         ```
         where `NUM_PROCESSES` represents the number of processes on which the application will run.  
 
@@ -92,7 +92,7 @@ Building this example requires the following components in the same folder and t
     ```
     The script will automatically detect whether the application has to be run in parallel or serial. If the application is parallel, you can also pass the number of cores on which you want to run the example via,  
     ```
-    ./run.sh --num_images NUM_PROCESSOR
+    ./run.sh --nproc NUM_PROCESSOR
     ```  
     or,  
     ```
