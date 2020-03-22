@@ -64,7 +64,7 @@ set CAFTYPE_LIST=
 set MPI_ENABLED_LIST=
 set HEAP_ARRAY_ENABLED_LIST=
 set FOR_COARRAY_NUM_IMAGES=
-set ParaMonte_FLAG_CLEANUP_ENABLED=false
+set ParaMonte_INSTALL_CLEANUP_ENABLED=true
 set DRY_RUN=false
 
 echo.
@@ -219,7 +219,12 @@ if not "%1"=="" (
 
     if "!FLAG!"=="--clean" (
         set FLAG_SUPPORTED=true
-        set ParaMonte_FLAG_CLEANUP_ENABLED=true
+        set "ParaMonte_INSTALL_CLEANUP_ENABLED=!VALUE!"
+        set VALUE_SUPPORTED=false
+        if !ParaMonte_INSTALL_CLEANUP_ENABLED!==true set "VALUE_SUPPORTED=true"
+        if !ParaMonte_INSTALL_CLEANUP_ENABLED!==false set "VALUE_SUPPORTED=true"
+        if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+        shift
     )
 
     REM --dryrun
@@ -347,13 +352,12 @@ echo.
 
 :: set build type
 
-if not defined LANG_LIST                        set LANG_LIST=c/fortran/python
-if not defined BTYPE_LIST                       set BTYPE_LIST=release/testing/debug
-if not defined LTYPE_LIST                       set LTYPE_LIST=static/dynamic
-if not defined CAFTYPE_LIST                     set CAFTYPE_LIST=none/single/shared
-if not defined MPI_ENABLED_LIST                 set MPI_ENABLED_LIST=true/false
-if not defined HEAP_ARRAY_ENABLED_LIST          set HEAP_ARRAY_ENABLED_LIST=true/false
-if not defined ParaMonte_FLAG_CLEANUP_ENABLED   set ParaMonte_FLAG_CLEANUP_ENABLED=false
+if not defined LANG_LIST                            set LANG_LIST=c/fortran/python
+if not defined BTYPE_LIST                           set BTYPE_LIST=release/testing/debug
+if not defined LTYPE_LIST                           set LTYPE_LIST=static/dynamic
+if not defined CAFTYPE_LIST                         set CAFTYPE_LIST=none/single/shared
+if not defined MPI_ENABLED_LIST                     set MPI_ENABLED_LIST=true/false
+if not defined HEAP_ARRAY_ENABLED_LIST              set HEAP_ARRAY_ENABLED_LIST=true/false
 
 REM remove redundancies
 
@@ -548,6 +552,13 @@ echo.
 exit /B 1
 
 :LABEL_EOF
+
+:: undefine all configuration environmental flags
+
+if !ParaMonte_INSTALL_CLEANUP_ENABLED!==true (
+    echo.-- !INSTALL_SCRIPT_NAME! - cleaning up the environment... 
+    call unconfigParaMonte.bat 
+)
 
 echo.
 echo.-- !INSTALL_SCRIPT_NAME! - mission accomplished. 

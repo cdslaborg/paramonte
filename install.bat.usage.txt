@@ -15,8 +15,10 @@ Flag definitions:
     --caf           : the ParaMonte library Coarray Fortran parallelism type. Possible values: single, shared
     --mpi_enabled   : the ParaMonte library MPI parallelism enabled? Possible values: true, false
     --heap_enabled  : the ParaMonte library heap array allocation enabled? Possible values: true, false
+    --test_enabled  : the ParaMonte library testing enabled? Possible values: true, false. If true, tests will be performed where possible.
+    --exam_enabled  : the ParaMonte library example runs enabled? Possible values: true, false. If true, exmaples will be run where possible.
     --nproc         : the default number of processes on which the ParaMonte examples/tests (if any) will be run. Possible values: positive integers
-    --clean         : clean the environmental variables upon exit, if specified.
+    --clean         : clean the environmental variables upon exit. Possible values: true, false. Only one can be specified. The default is true.
     --help          : help with the script usage
 
 NOTE: All flags are optional.
