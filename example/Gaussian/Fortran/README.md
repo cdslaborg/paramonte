@@ -57,16 +57,16 @@ Building this example requires the following components in the same folder and t
     ```
     build.bat  
     ```
-    The build script will automatically detect whether a parallel application has been built. By default, the name of the output executable is `runExample.exe`.  
+    The build script will automatically detect whether a parallel application has been built. By default, the name of the output executable is `main.exe`.  
 
 -   **Run the ParaMonte example executable**:  
     - For serial applications simply type the name of the output executable,  
         ```
-        runExample.exe
+        main.exe
         ```
     - For parallel applications call `mpiexec`,  
         ```
-        mpiexec -np NUM_PROCESSES runExample.exe
+        mpiexec -n NUM_PROCESSES main.exe
         ```
         where `NUM_PROCESSES` represents the number of processes on which the application will run.  
 
@@ -84,13 +84,13 @@ Building this example requires the following components in the same folder and t
     ```
     build.sh  
     ```
-    The build script will automatically detect whether a parallel application has to be built. By default, the name of the output executable is `runExample.exe`. The script will also generate a new Bash script named `run.sh`. To run the generated example executable, type,  
+    The build script will automatically detect whether a parallel application has to be built. By default, the name of the output executable is `main.exe`. The script will also generate a new Bash script named `run.sh`. To run the generated example executable, type,  
     ```
     ./run.sh
     ```
     The script will automatically detect whether the application has to be run in parallel or serial. If the application is parallel, you can also pass the number of cores on which you want to run the example via,  
     ```
-    ./run.sh --num_images NUM_PROCESSOR
+    ./run.sh --nproc NUM_PROCESSOR
     ```  
     or,  
     ```
