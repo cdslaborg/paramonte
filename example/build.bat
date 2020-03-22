@@ -259,7 +259,7 @@ echo. -- ParaMonte - ParaMonte example linker flags: !LINKER_FLAGS!
 
 if not defined ParaMonteExample_EXE_ENABLED set ParaMonteExample_EXE_ENABLED=true
 
-if !ParaMonteExample_EXE_ENABLED! NEQ true goto LABEL_ParaMonteExample_RUN_ENABLED
+if !ParaMonteExample_EXE_ENABLED!==false goto LABEL_ParaMonteExample_RUN_ENABLED
 
 if !PTYPE!==mpi (
     echo. -- ParaMonte - ParaMonte example compiling: "!COMPILER_NAME! !COMPILER_FLAGS! logfunc.!SEXT! main.!SEXT! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
@@ -276,7 +276,7 @@ if !PTYPE!==mpi (
 
 if not defined ParaMonteExample_RUN_ENABLED set ParaMonteExample_RUN_ENABLED=true
 
-if !ParaMonteExample_RUN_ENABLED! NEQ true goto LABEL_EOF
+if !ParaMonteExample_RUN_ENABLED!==false goto LABEL_EOF
 
 if !LTYPE!==static (
     editbin /STACK:99999999 !EXE_NAME!

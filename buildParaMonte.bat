@@ -63,13 +63,15 @@ echo. ::::                                                                      
 echo. ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 echo.
 
+set BUILD_SCRIPT_NAME=ParaMonteBuild
+
 :: set up flags via buildFlags.bat
-echo. -- ParaMonte - configuring ParaMonte build...
+echo. -- !BUILD_SCRIPT_NAME! - configuring ParaMonte build...
 call configParaMonte.bat
 
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- ParaMonte - Fatal Error: ParaMonte library build-flag setup failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library build-flag setup failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -88,8 +90,8 @@ if !CFI_ENABLED!==true set TEMP_DYNAMIC_OR_CFI=true
 if !TEMP_DYNAMIC_OR_CFI!==true (
     if !CAFTYPE! NEQ none (
         echo. 
-        echo. -- ParaMonte - ParaMonte CAF parallelism with dynamic library build or C-interface is not supported.
-        echo. -- ParaMonte - skipping...
+        echo. -- !BUILD_SCRIPT_NAME! - ParaMonte CAF parallelism with dynamic library build or C-interface is not supported.
+        echo. -- !BUILD_SCRIPT_NAME! - skipping...
         echo. 
         cd %~dp0
         set ERRORLEVEL=0
@@ -114,15 +116,15 @@ if !CFI_ENABLED!==true (
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :: echo. operating system
-echo. -- ParaMonte - operating system / platform: !OS! / !PLATFORM!
+echo. -- !BUILD_SCRIPT_NAME! - operating system / platform: !OS! / !PLATFORM!
 
 :: set compiler suite
-echo. -- ParaMonte - COMPILER_SUITE=!COMPILER_SUITE!
+echo. -- !BUILD_SCRIPT_NAME! - COMPILER_SUITE=!COMPILER_SUITE!
 if !COMPILER_SUITE! NEQ intel (
     echo. 
-    echo. -- ParaMonte - Fatal Error: the specified compiler suite !COMPILER_SUITE! is not supported.
-    echo. -- ParaMonte - Fatal Error: only COMPILER_SUITE=intel corresponding to Intel Parallel Studio for Windows is currently supported.
-    echo. -- ParaMonte - gracefully exiting.
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the specified compiler suite !COMPILER_SUITE! is not supported.
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: only COMPILER_SUITE=intel corresponding to Intel Parallel Studio for Windows is currently supported.
+    echo. -- !BUILD_SCRIPT_NAME! - gracefully exiting.
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -133,18 +135,18 @@ if !COMPILER_SUITE! NEQ intel (
 
 if not defined COMPILER_VERSION (
 
-    echo. -- ParaMonte - Detecting intel compiler version...
+    echo. -- !BUILD_SCRIPT_NAME! - Detecting intel compiler version...
     cd .\bmake\
     call getCompilerVersion.bat
     cd %~dp0
 
 )
 
-echo. -- ParaMonte - COMPILER_VERSION: !COMPILER_VERSION!
-echo. -- ParaMonte - TEST_RUN_ENABLED: !ParaMonteTest_RUN_ENABLED!
-echo. -- ParaMonte - CFI_ENABLED: !CFI_ENABLED!
-echo. -- ParaMonte - build type: !BTYPE!
-echo. -- ParaMonte - link type: !LTYPE!
+echo. -- !BUILD_SCRIPT_NAME! - COMPILER_VERSION: !COMPILER_VERSION!
+echo. -- !BUILD_SCRIPT_NAME! - TEST_RUN_ENABLED: !ParaMonteTest_RUN_ENABLED!
+echo. -- !BUILD_SCRIPT_NAME! - CFI_ENABLED: !CFI_ENABLED!
+echo. -- !BUILD_SCRIPT_NAME! - build type: !BTYPE!
+echo. -- !BUILD_SCRIPT_NAME! - link type: !LTYPE!
 
 :: set shared library Fortran linker flags
 
@@ -171,8 +173,8 @@ if !ParaMonte_LIB_ENABLED!==true (
         )
     )
 )
-echo. -- ParaMonte - ParaMonte library linker link flags: !FL_LIB_FLAGS!
-echo. -- ParaMonte - ParaMonte library compiler link flags: !FC_LIB_FLAGS!
+echo. -- !BUILD_SCRIPT_NAME! - ParaMonte library linker link flags: !FL_LIB_FLAGS!
+echo. -- !BUILD_SCRIPT_NAME! - ParaMonte library compiler link flags: !FC_LIB_FLAGS!
 echo.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -180,21 +182,21 @@ echo.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 echo.
-echo. -- ParaMonte - setting up required root directories...
+echo. -- !BUILD_SCRIPT_NAME! - setting up required root directories...
 
 :: define ParaMonte_ROOT_DIR: contains the last backward slash
 
 if not defined ParaMonte_ROOT_DIR set ParaMonte_ROOT_DIR=%~dp0
-echo. -- ParaMonte - project root directory: !ParaMonte_ROOT_DIR!
+echo. -- !BUILD_SCRIPT_NAME! - project root directory: !ParaMonte_ROOT_DIR!
 
 :: set the ParaMonte source files directory
 
 set ParaMonte_SRC_DIR=!ParaMonte_ROOT_DIR!src\ParaMonte
 if exist !ParaMonte_SRC_DIR! (
-    echo. -- ParaMonte - source files directory: !ParaMonte_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - source files directory: !ParaMonte_SRC_DIR!
 ) else (
     echo. 
-    echo. -- ParaMonte - Fatal Error: source files directory does not exist: !ParaMonte_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: source files directory does not exist: !ParaMonte_SRC_DIR!
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -209,16 +211,16 @@ set      ParaMonteInterfaceC_SRC_DIR=!ParaMonteInterface_SRC_DIR!\C
 set ParaMonteInterfacePython_SRC_DIR=!ParaMonteInterface_SRC_DIR!\Python
 
 echo.
-echo. -- ParaMonte - interface source files directories: !ParaMonteInterface_SRC_DIR!
+echo. -- !BUILD_SCRIPT_NAME! - interface source files directories: !ParaMonteInterface_SRC_DIR!
 for %%A in (
     !ParaMonteInterface_SRC_DIR!
     !ParaMonteInterfaceC_SRC_DIR!
     !ParaMonteInterfacePython_SRC_DIR!
     ) do (  if exist %%A (
-                echo. -- ParaMonte - %%A exists.
+                echo. -- !BUILD_SCRIPT_NAME! - %%A exists.
             ) else (
                 echo. 
-                echo. -- ParaMonte - Fatal Error: interface source files directory does not exist: %%A
+                echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: interface source files directory does not exist: %%A
                 echo. 
                 cd %~dp0
                 set ERRORLEVEL=1
@@ -257,8 +259,8 @@ set FPP_FLAGS=/fpp !FPP_CFI_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLA
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 echo.
-echo. -- ParaMonte - setting up Coarray Fortran (CAF) parallelization model. Options: single, shared, distributed
-echo. -- ParaMonte - requested CAF: !CAFTYPE!
+echo. -- !BUILD_SCRIPT_NAME! - setting up Coarray Fortran (CAF) parallelization model. Options: single, shared, distributed
+echo. -- !BUILD_SCRIPT_NAME! - requested CAF: !CAFTYPE!
 
 set CAF_ENABLED=false
 if !CAFTYPE!==single set CAF_ENABLED=true
@@ -266,18 +268,18 @@ if !CAFTYPE!==shared set CAF_ENABLED=true
 if !CAFTYPE!==distributed set CAF_ENABLED=true
 
 if !CAF_ENABLED!==true (
-    echo. -- ParaMonte - enabling Coarray Fortran syntax via preprocesor flag /define:CAF_ENABLED
+    echo. -- !BUILD_SCRIPT_NAME! - enabling Coarray Fortran syntax via preprocesor flag /define:CAF_ENABLED
     set FPP_FLAGS=!FPP_FLAGS! /define:CAF_ENABLED
     set CAF_FLAGS=/Qcoarray=!CAFTYPE!
     if not defined FOR_COARRAY_NUM_IMAGES set FOR_COARRAY_NUM_IMAGES=3
-    echo. -- ParaMonte - number of Coarray images: !FOR_COARRAY_NUM_IMAGES!
+    echo. -- !BUILD_SCRIPT_NAME! - number of Coarray images: !FOR_COARRAY_NUM_IMAGES!
 ) else (
-    echo. -- ParaMonte - ignoring Coarray Fortran parallelization.
+    echo. -- !BUILD_SCRIPT_NAME! - ignoring Coarray Fortran parallelization.
     set CAF_FLAGS=
     set CAFTYPE=
 )
 
-echo. -- ParaMonte - Coarray Fortran flags: !CAF_FLAGS!
+echo. -- !BUILD_SCRIPT_NAME! - Coarray Fortran flags: !CAF_FLAGS!
 echo.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -293,10 +295,10 @@ if !MPI_ENABLED!==true (
         set CCL=mpicc -cc=icl.exe
     ) else (
         echo.
-        echo. -- ParaMonte - Fatal Error: Coarray Fortran cannot be mixed with MPI.
-        echo. -- ParaMonte - CAFTYPE: !CAFTYPE!
-        echo. -- ParaMonte - MPI_ENABLED: !MPI_ENABLED!
-        echo. -- ParaMonte - set MPI_ENABLED and CAFTYPE to appropriate values in the ParaMonte config file and rebuild.
+        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: Coarray Fortran cannot be mixed with MPI.
+        echo. -- !BUILD_SCRIPT_NAME! - CAFTYPE: !CAFTYPE!
+        echo. -- !BUILD_SCRIPT_NAME! - MPI_ENABLED: !MPI_ENABLED!
+        echo. -- !BUILD_SCRIPT_NAME! - set MPI_ENABLED and CAFTYPE to appropriate values in the ParaMonte config file and rebuild.
         echo.
         cd %~dp0
         set ERRORLEVEL=1
@@ -307,7 +309,7 @@ if !MPI_ENABLED!==true (
 set OMP_FLAGS=
 if !OMP_ENABLED!==true set OMP_FLAGS=/Qopenmp
 set FCL_PARALLELIZATION_FLAGS=!CAF_FLAGS! !MPI_FLAGS! !OMP_FLAGS!
-echo. -- ParaMonte - all compiler/linker parallelization flags: !FCL_PARALLELIZATION_FLAGS!
+echo. -- !BUILD_SCRIPT_NAME! - all compiler/linker parallelization flags: !FCL_PARALLELIZATION_FLAGS!
 echo.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -339,7 +341,7 @@ if !COMPILER_SUITE!==intel (
 ) else (
 
     echo. 
-    echo. -- ParaMonte - Fatal Error: No compiler other than Intel Parallel Studio is suppoerted on Windows. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: No compiler other than Intel Parallel Studio is suppoerted on Windows. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -354,12 +356,12 @@ if !HEAP_ARRAY_ENABLED!==true (
 )
 
 echo.
-echo. -- ParaMonte - Fortran preprocessor flags: !FPP_FLAGS!
-echo. -- ParaMonte - Fortran linker library flags: !FL_LIB_FLAGS!
-echo. -- ParaMonte - Fortran compiler library flags: !FC_LIB_FLAGS!
-echo. -- ParaMonte - Fortran compiler/linker all flags: !FCL_FLAGS!
-echo. -- ParaMonte - Fortran compiler/linker default flags: !FCL_FLAGS_DEFAULT!
-echo. -- ParaMonte - Fortran compiler/linker flags in !BTYPE! build mode: !FCL_BUILD_FLAGS!
+echo. -- !BUILD_SCRIPT_NAME! - Fortran preprocessor flags: !FPP_FLAGS!
+echo. -- !BUILD_SCRIPT_NAME! - Fortran linker library flags: !FL_LIB_FLAGS!
+echo. -- !BUILD_SCRIPT_NAME! - Fortran compiler library flags: !FC_LIB_FLAGS!
+echo. -- !BUILD_SCRIPT_NAME! - Fortran compiler/linker all flags: !FCL_FLAGS!
+echo. -- !BUILD_SCRIPT_NAME! - Fortran compiler/linker default flags: !FCL_FLAGS_DEFAULT!
+echo. -- !BUILD_SCRIPT_NAME! - Fortran compiler/linker flags in !BTYPE! build mode: !FCL_BUILD_FLAGS!
 echo.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -369,7 +371,7 @@ echo.
 call !ParaMonte_SRC_DIR!\buildParaMonteSource.bat
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- ParaMonte - Fatal Error: build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -388,10 +390,10 @@ if !CFI_ENABLED! NEQ true goto LABEL_ParaMonteTest
 
 set ParaMontePython_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\Python
 if exist !ParaMontePython_SRC_DIR! (
-    echo. -- ParaMonte - Python source files directory: !ParaMontePython_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - Python source files directory: !ParaMontePython_SRC_DIR!
 ) else (
     echo. 
-    echo. -- ParaMonte - Fatal Error: Python source files directory does not exist: !ParaMontePython_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: Python source files directory does not exist: !ParaMontePython_SRC_DIR!
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -403,7 +405,7 @@ call !ParaMontePython_SRC_DIR!\buildParaMontePython.bat
 
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- ParaMonte - Fatal Error: build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -427,10 +429,10 @@ if !ParaMonteTest_RUN_ENABLED!==true set ParaMonteTest_ENABLED=true
 set ParaMonteTest_SRC_DIR=!ParaMonte_ROOT_DIR!src\test
 if exist !ParaMonteTest_SRC_DIR! (
     echo. 
-    echo. -- ParaMonte - ParaMonte library test source files directory: !ParaMonteTest_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - ParaMonte library test source files directory: !ParaMonteTest_SRC_DIR!
 ) else (
     echo. 
-    echo. -- ParaMonte - Fatal Error: ParaMonte library test source files directory does not exist: !ParaMonteTest_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library test source files directory does not exist: !ParaMonteTest_SRC_DIR!
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -444,7 +446,7 @@ call !ParaMonteTest_SRC_DIR!\buildParaMonteTest.bat
 
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- ParaMonte - Fatal Error: ParaMonte library test build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library test build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -466,10 +468,10 @@ REM if !ParaMonteExample_RUN_ENABLED!==true set ParaMonteExample_ENABLED=true
 
 set ParaMonteExample_SRC_DIR=!ParaMonte_ROOT_DIR!example
 if exist !ParaMonteExample_SRC_DIR! (
-    echo. -- ParaMonte - ParaMonte library example source files directory: !ParaMonteExample_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - ParaMonte library example source files directory: !ParaMonteExample_SRC_DIR!
 ) else (
     echo. 
-    echo. -- ParaMonte - Fatal Error: ParaMonte library example source files directory does not exist: !ParaMonteExample_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library example source files directory does not exist: !ParaMonteExample_SRC_DIR!
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -489,7 +491,7 @@ echo.
 
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- ParaMonte - Fatal Error: ParaMonte library example build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library example build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -498,7 +500,7 @@ if !ERRORLEVEL!==1 (
 if !ERRORLEVEL!==0 (
     echo.
     echo.
-    echo. -- ParaMonte - build successful. 
+    echo. -- !BUILD_SCRIPT_NAME! - build successful. 
     echo.
 )
 

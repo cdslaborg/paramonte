@@ -51,6 +51,8 @@
 set ERRORLEVEL=0
 cd %~dp0
 
+set INSTALL_SCRIPT_NAME=ParaMonteInstall
+
 :: parse arguments
 
 REM type .\bmake\install_usage.txt
@@ -70,7 +72,7 @@ type .\auxil\ParaMonteBanner.txt
 echo.
 
 echo.
-echo.-- ParaMonte - parsing input arguments...
+echo.-- !INSTALL_SCRIPT_NAME! - parsing input arguments...
 echo.
 
 :LABEL_parseArgLoop
@@ -80,7 +82,7 @@ set VALUE_SUPPORTED=true
 
 if not "%1"=="" (
 
-    echo.-- ParaMonte - processing: %1
+    echo.-- !INSTALL_SCRIPT_NAME! - processing: %1
 
     set FLAG=%1
     set VALUE=%2
@@ -180,6 +182,18 @@ if not "%1"=="" (
         shift
     )
 
+    REM --test_enabled
+
+    if "!FLAG!"=="--test_enabled" (
+        set FLAG_SUPPORTED=true
+        set "TEST_ENABLED=!VALUE!"
+        set VALUE_SUPPORTED=false
+        if !TEST_ENABLED!==true set "VALUE_SUPPORTED=true"
+        if !TEST_ENABLED!==false set "VALUE_SUPPORTED=true"
+        if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+        shift
+    )
+
     REM --exam_enabled
 
     if "!FLAG!"=="--exam_enabled" (
@@ -237,13 +251,13 @@ REM check flag/value support
 if "!FLAG_SUPPORTED!"=="true" (
     if "!VALUE_SUPPORTED!" NEQ "true" (
         echo.
-        echo.-- ParaMonte - FATAL: The requested input value "!VALUE!" specified 
-        echo.-- ParaMonte - FATAL: with the input flag "!FLAG!" is not supported.
+        echo.-- !INSTALL_SCRIPT_NAME! - FATAL: The requested input value "!VALUE!" specified 
+        echo.-- !INSTALL_SCRIPT_NAME! - FATAL: with the input flag "!FLAG!" is not supported.
         goto LABEL_ERR
     )
 ) else (
     echo.
-    echo.-- ParaMonte - FATAL: The requested input flag "!FLAG!" is not supported.
+    echo.-- !INSTALL_SCRIPT_NAME! - FATAL: The requested input flag "!FLAG!" is not supported.
     goto LABEL_ERR
 )
 
@@ -256,9 +270,9 @@ if defined CAFTYPE_LIST (
                 for %%a in ("!MPI_ENABLED_LIST:/=" "!") do (
                     if %%~a==true (
                         echo.
-                        echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot 
-                        echo.-- ParaMonte - WARNING: be specified along with the MPI flag "--mpi_enabled %%~a".
-                        echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot 
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: be specified along with the MPI flag "--mpi_enabled %%~a".
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
                     )
                 )
@@ -268,9 +282,9 @@ if defined CAFTYPE_LIST (
                     if %%l NEQ "fortran" (
                         if defined CAFTYPE_LIST (
                             echo.
-                            echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
-                            echo.-- ParaMonte - WARNING: specified along with the %%~l language "--lang %%~l".
-                            echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
+                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
+                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~l language "--lang %%~l".
+                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                             REM goto LABEL_ERR
                         )
                     )
@@ -281,9 +295,9 @@ if defined CAFTYPE_LIST (
                     if %%l NEQ "fortran" (
                         if defined CAFTYPE_LIST (
                             echo.
-                            echo.-- ParaMonte - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
-                            echo.-- ParaMonte - WARNING: specified along with the %%~l language "--lang %%~l".
-                            echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
+                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
+                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~l language "--lang %%~l".
+                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                             REM goto LABEL_ERR
                         )
                     )
@@ -300,9 +314,9 @@ if defined LANG_LIST (
                 for %%a in ("!LTYPE_LIST:/=" "!") do (
                     if %%~a==static (
                         echo.
-                        echo.-- ParaMonte - WARNING: The dynamic library option "--lib %%~a" cannot be 
-                        echo.-- ParaMonte - WARNING: specified along with the %%~l language "--lang %%~l".
-                        echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The dynamic library option "--lib %%~a" cannot be 
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~l language "--lang %%~l".
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
                     )
                 )
@@ -318,9 +332,9 @@ if defined LTYPE_LIST (
                 if %%~h==false (
                     if %%~l==dynamic (
                         echo.
-                        echo.-- ParaMonte - WARNING: The stack memory allocation option "--heap_enabled %%~h" cannot be 
-                        echo.-- ParaMonte - WARNING: specified along with the dynamic library build "--lib %%~l".
-                        echo.-- ParaMonte - WARNING: This configuration will be ignored at build time.
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The stack memory allocation option "--heap_enabled %%~h" cannot be 
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the dynamic library build "--lib %%~l".
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
                     )
                 )
@@ -426,7 +440,7 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                             set CFI_ENABLED=false
                             set ParaMonteTest_OBJ_ENABLED=!FRESH_RUN!
                             set ParaMonteTest_EXE_ENABLED=!FRESH_RUN!
-                            set ParaMonteTest_RUN_ENABLED=!FRESH_RUN!
+                            set ParaMonteTest_RUN_ENABLED=!TEST_ENABLED!
                         ) else (
                             set CFI_ENABLED=true
                             set ParaMonteTest_OBJ_ENABLED=false
@@ -467,20 +481,20 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
                         if !ERRORLEVEL! NEQ 0 (
                             echo.
-                            echo.-- ParaMonte - Fatal Error: ParaMonte library build failed for the following configuration:
-                            echo.-- ParaMonte - 
-                            echo.-- ParaMonte -               language: %%~G
-                            echo.-- ParaMonte -             build type: %%~B
-                            echo.-- ParaMonte -           library type: %%~L
-                            echo.-- ParaMonte -     heap array enabled: %%~H
-                            echo.-- ParaMonte -           Coarray type: %%~C
-                            echo.-- ParaMonte -            MPI enabled: %%~M
-                            echo.-- ParaMonte - 
-                            echo.-- ParaMonte - Please report this error at: 
-                            echo.-- ParaMonte - 
-                            echo.-- ParaMonte -     https://github.com/cdslaborg/paramonte/issues
-                            echo.-- ParaMonte - 
-                            echo.-- ParaMonte - gracefully exiting...
+                            echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: ParaMonte library build failed for the following configuration:
+                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! -               language: %%~G
+                            echo.-- !INSTALL_SCRIPT_NAME! -             build type: %%~B
+                            echo.-- !INSTALL_SCRIPT_NAME! -           library type: %%~L
+                            echo.-- !INSTALL_SCRIPT_NAME! -     heap array enabled: %%~H
+                            echo.-- !INSTALL_SCRIPT_NAME! -           Coarray type: %%~C
+                            echo.-- !INSTALL_SCRIPT_NAME! -            MPI enabled: %%~M
+                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! - Please report this error at: 
+                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! -     https://github.com/cdslaborg/paramonte/issues
+                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting...
                             echo.
                             cd %~dp0
                             set ERRORLEVEL=1
@@ -524,11 +538,11 @@ GOTO:EOF
 :LABEL_ERR
 
 echo.
-echo.-- ParaMonte - To see the list of possible flags and associated values, try:
-echo.-- ParaMonte - 
-echo.-- ParaMonte -     install.bat --help
-echo.-- ParaMonte - 
-echo.-- ParaMonte - gracefully exiting ParaMonte build. 
+echo.-- !INSTALL_SCRIPT_NAME! - To see the list of possible flags and associated values, try:
+echo.-- !INSTALL_SCRIPT_NAME! - 
+echo.-- !INSTALL_SCRIPT_NAME! -     install.bat --help
+echo.-- !INSTALL_SCRIPT_NAME! - 
+echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting ParaMonte build. 
 echo.
 
 exit /B 1
@@ -536,7 +550,7 @@ exit /B 1
 :LABEL_EOF
 
 echo.
-echo.-- ParaMonte - mission accomplished. 
+echo.-- !INSTALL_SCRIPT_NAME! - mission accomplished. 
 echo.
 
 exit /B 0
