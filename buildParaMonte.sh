@@ -24,7 +24,7 @@
 #**********************************************************************************************************************************
 
 # NOTE: Do not change the contents of this file unless you know what the consequences are.
-# This is the Bash sctipt file that builds objects, dynamic libraries, 
+# This is the Bash script file that builds objects, dynamic libraries, 
 # as well as the test and example binaries of the ParaMonte library on non-Windows systems.
 # Upon invocation of this file from a Bash command-line interface, 
 # this file will first call the configuration file configParaMonte.bat to read the user's
@@ -168,7 +168,7 @@ cat << EndOfMessage
         -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
         -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
         -a | --clean            : clean the environmental variables upon exit, if flag is provided.
-        -h | --help             : help with the sctipt usage
+        -h | --help             : help with the script usage
 
 
 EndOfMessage

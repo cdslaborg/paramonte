@@ -565,7 +565,7 @@ def installMPI():
                 , marginBot = 1
                 )
 
-        _pm.warn( msg = "Please do not change the default installation location MPI suggested by the installer.\n"
+        _pm.warn( msg = "Please do not change the default installation location of MPI suggested by the installer.\n"
                       + "If you do change the default path, the onus will be on you to ensure the path to the \n"
                       + "MPI runtime libraries exist in the environmental PATH variable of your session."
                 , methodName = _pm.names.paramonte

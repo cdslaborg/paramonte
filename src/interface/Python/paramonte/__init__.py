@@ -59,18 +59,18 @@ The routines currently supported by the Python interface of ParaMonte include:
         two comment lines in your python/ipython/jupyter session
         (make sure the indentation of the pasted lines is correct):
 
-            ##################################
-            import paramonte as pm
-            import numpy as np
-            def getLogFunc(Point):
-                # return the log of the standard multivariate 
-                # Normal density function with ndim dimensions
-                return -0.5 * np.sum( np.double( Point )**2 )
-            pmpd = pm.ParaDRAM()
-            pmpd.runSampler ( ndim = 2
-                            , getLogFunc = getLogFunc
-                            )
-            ##################################
+##################################
+import paramonte as pm
+import numpy as np
+def getLogFunc(Point):
+    # return the log of the standard multivariate 
+    # Normal density function with ndim dimensions
+    return -0.5 * np.sum( np.double( Point )**2 )
+pmpd = pm.ParaDRAM()
+pmpd.runSampler ( ndim = 2
+                , getLogFunc = getLogFunc
+                )
+##################################
 
         EXAMPLE PARALLEL USAGE
         ======================
@@ -79,22 +79,22 @@ The routines currently supported by the Python interface of ParaMonte include:
         two comment lines in your python/ipython/jupyter session
         (make sure the indentation of the pasted lines is correct):
 
-            ##################################
-            with open("main.py", "w") as file:
-                file.write  ('''
-            import paramonte as pm
-            import numpy as np
-            def getLogFunc(Point):
-                # return the log of the standard multivariate 
-                # Normal density function with ndim dimensions
-                return -0.5 * np.sum( np.double( Point )**2 )
-            pmpd = pm.ParaDRAM()
-            pmpd.runSampler ( ndim = 2
-                            , getLogFunc = getLogFunc
-                            , mpiEnabled = True
-                            )
-            ''')
-            ##################################
+##################################
+with open("main.py", "w") as file:
+    file.write  ('''
+import paramonte as pm
+import numpy as np
+def getLogFunc(Point):
+    # return the log of the standard multivariate 
+    # Normal density function with ndim dimensions
+    return -0.5 * np.sum( np.double( Point )**2 )
+pmpd = pm.ParaDRAM()
+pmpd.runSampler ( ndim = 2
+                , getLogFunc = getLogFunc
+                , mpiEnabled = True
+                )
+''')
+##################################
 
         This will generate a main.py Python script file in the current
         working directory of your Python session. Now, you can execute 

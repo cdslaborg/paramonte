@@ -59,7 +59,7 @@ However, the onus on you to ensure compiler/library availability and compatibili
         -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte 
                                 : examples/tests (if any) will be run: positive integer
                                 : If not provided, the default is 3.
-        -h | --help             : help with the sctipt usage
+        -h | --help             : help with the script usage
 
 NOTE: ALL FLAGS ARE OPTIONAL. If not provided, appropriate values will be set for each missing flag.
 NOTE: 

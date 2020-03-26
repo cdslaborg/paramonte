@@ -258,10 +258,16 @@ class _ParaDRAMChain:
 
         xindex = self._offset
         yindex = self._offset + 1
+        if self.ndim==1: xindex, yindex = yindex-1, xindex-1
+            
         self.plot.density = _pm.vis.DensityMapPlot  ( dataFrame = self.df
                                                     , xcolumn = xindex
                                                     , ycolumn = yindex
                                                     )
+        #print(self.stats.maxLogFunc.idrow,xindex,yindex)
+        #print(self.df)
+        #print(self.df.iat[self.stats.maxLogFunc.idrow,xindex])
+        #print(self.df.iat[self.stats.maxLogFunc.idrow,yindex])
         self.plot.density.target.__init__   ( value = [ self.df.iat[self.stats.maxLogFunc.idrow,xindex], self.df.iat[self.stats.maxLogFunc.idrow,yindex] ]
                                             , scatter_kws = {"label":"maxLogFunc"}
                                             )

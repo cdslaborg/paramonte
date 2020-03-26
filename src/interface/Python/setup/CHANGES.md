@@ -1,5 +1,9 @@
 # Release Notes
 
+## ParaMonte Python v1.0.7, March 26, 2020:
+
+Minor corrections.
+
 ## ParaMonte Python v1.0.6, March 22, 2020:
 
 Minor bug fixes.

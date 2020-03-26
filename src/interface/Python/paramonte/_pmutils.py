@@ -23,7 +23,6 @@
 #**********************************************************************************************************************************
 
 import _message as _msg
-import time as _time
 import numpy as _np
 import sys as _sys
 
@@ -76,6 +75,8 @@ def getSize(obj, seen=None):
 #### _Timer class
 ####################################################################################################################################
 
+import numpy as _np
+import time as _time
 class Timer:
 
     def __init__(self,_methodName):

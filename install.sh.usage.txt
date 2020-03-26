@@ -56,7 +56,7 @@
         -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
         -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
                                   If not provided, 3 will be used.
-        -h | --help             : help with the sctipt usage
+        -h | --help             : help with the script usage
 
     NOTE: All flags are optional.
     NOTE: If you specify multiple options for any flag, you must enclose all options together with quotation marks "".

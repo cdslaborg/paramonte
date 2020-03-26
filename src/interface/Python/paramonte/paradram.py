@@ -135,16 +135,18 @@ class ParaDRAM:
 
     Here is a Python script main.py for a parallel ParaDRAM simulation:
 
-        from paramonte import ParaDRAM
-        pmpd = ParaDRAM()
-        def getLogFunc(Point): 
-            # return the natural logarithm of the ndim-dimensional 
-            # non-normalized Standard Gaussian density function
-            return -sum(Point**2)
-        pmpd.runSampler ( ndim = 1
-                        , getLogFunc = getLogFunc
-                        , mpiEnabled = True
-                        )
+##################################
+from paramonte import ParaDRAM
+pmpd = ParaDRAM()
+def getLogFunc(Point): 
+    # return the natural logarithm of the ndim-dimensional 
+    # non-normalized Standard Gaussian density function
+    return -sum(Point**2)
+pmpd.runSampler ( ndim = 1
+                , getLogFunc = getLogFunc
+                , mpiEnabled = True
+                )
+##################################
 
     where, 
     
@@ -189,11 +191,13 @@ class ParaDRAM:
     The best way to learn about individual ParaDRAM simulation attributes
     is to a run a minimal serial simulation with the following Python script, 
 
-        from paramonte import ParaDRAM
-        pmpd = ParaDRAM()
-        pmpd.outputFileName = "./test"
-        def getLogFunc(Point): return -sum(Point**2)
-        pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
+##################################
+from paramonte import ParaDRAM
+pmpd = ParaDRAM()
+pmpd.outputFileName = "./test"
+def getLogFunc(Point): return -sum(Point**2)
+pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
+##################################
 
     Running this code will generate a set of simulation output files (in the current 
     working directory of Python) that begin with the prefix "test_process_1". Among 

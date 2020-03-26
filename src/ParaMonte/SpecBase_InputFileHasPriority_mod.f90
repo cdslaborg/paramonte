@@ -69,7 +69,7 @@ contains
         &the user's programming environment (if any is provided). Note that this feature is useful when, for example, some " // &
         methodName // " variables have to computed and specified at runtime and therefore, cannot be specified prior to the &
         &program execution. Currently, this functionality (i.e., prioritizing the input file values to input-procedure-argument &
-        &values) is available only in the Fortran-interface of " // methodName // ". &
+        &values) is available only in the Fortran-interface to the " // methodName // ". &
         &The default value is " // log2str(InputFileHasPriorityObj%def) // "."
     end function constructInputFileHasPriority
 

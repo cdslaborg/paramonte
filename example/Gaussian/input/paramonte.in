@@ -27,7 +27,7 @@
 ! Comments must begin with an exclamation mark (!).
 ! Comments can appear anywhere on an empty line or, after a value assignment.
 ! all variable assignments are optional and can be commented out. In such cases, appropriate default values will be assigned.
-! Use ParaDRAM namelist (group) name to group a set of ParaDRAM simulation specification variables: 
+! Use ParaDRAM namelist (group) name to group a set of ParaDRAM simulation specification variables.
 ! The order of the input variables in the namelist groups is irrelevant and unimportant.
 ! Variables can be defined multiple times, but only the last definition will be considered as input.
 ! All variable names are case insensitive. However, for clarity, this software follows the camelCase code-writing practice.
@@ -35,6 +35,11 @@
 ! Logical values are case-insensitive and can be either .true., true, or t for a TRUE value, and .false., false, or f for a FALSE value.
 ! All vectors and arrays in the input file begin with index 1. This is following the convention of 
 ! the majority of science-oriented programming languages: Fortran, Julia, Mathematica, MATLAB, and R.
+!
+! For comprehensive guidelines on the input file organization and rules, visit: 
+!
+!   https://www.cdslab.org/paramonte/notes/usage/interface/
+
 
 &ParaDRAM
 
@@ -45,9 +50,9 @@ This\n
     is a\n
         test\n
             run."
-   !outputColumnWidth                    = 25
-    outputRealPrecision                    = 17
-   !outputDelimiter                        = ","
+   !outputColumnWidth                   = 25
+    outputRealPrecision                 = 17
+   !outputDelimiter                     = ","
     outputFileName                      = "./out/"
    !sampleSize                          = 111
     randomSeed                          = 2136275,

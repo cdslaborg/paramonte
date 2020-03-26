@@ -118,11 +118,12 @@ Thumbs.db
 *_chain.txt
 *_report.txt
 *_restart.txt
+*_restart.bin
+*_progress.txt
 *.stderr
 *.temp
 *.rfn
 ___*___.*
-
 
 #########################
 # CMake
@@ -139,3 +140,20 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+#########################
+# latex files
+#########################
+
+*.tex
+
+#########################
+# photos
+#########################
+
+*.pdf
+*.png
+*.gif
+*.jpg
+*.jpeg
+*.tiff
