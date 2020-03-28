@@ -189,7 +189,7 @@ echo. -- ParaMonte - ParaMonte library target language: !TARGET_LANG!
 
 :: set default number of processes to be used in parallel mode
 
-set NUM_PROCESS=3
+if not defined nproc set nproc=3
 set EXE_NAME=main.exe
 
 set COMPILER_NAME=
@@ -205,7 +205,7 @@ if !TARGET_LANG!==Fortran (
     )
 
     if !PTYPE!==cafshared (
-        set FOR_COARRAY_NUM_IMAGES=!NUM_PROCESS!
+        set FOR_COARRAY_NUM_IMAGES=!nproc!
     )
 
     set COMPILER_FLAGS=/fpp
@@ -296,9 +296,9 @@ REM https://software.intel.com/en-us/mpi-developer-reference-windows-compilation
 
 if !PTYPE!==mpi (
     echo. 
-    echo. -- ParaMonte - running MPI-parallelized ParaMonte example on !NUM_PROCESS! processes...
+    echo. -- ParaMonte - running MPI-parallelized ParaMonte example on !nproc! processes...
     echo. 
-    mpiexec -localonly -n !NUM_PROCESS! !EXE_NAME!
+    mpiexec -localonly -n !nproc! !EXE_NAME!
 ) else (
     echo. 
     echo. -- ParaMonte - running serial ParaMonte example on 1 process...
