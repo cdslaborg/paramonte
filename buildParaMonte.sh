@@ -770,7 +770,7 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
             gnuInstallEnabled=false
         else
             gnuInstallEnabled=true
-            if [ "${prereqInstallAllowed}" = "true" ]; then
+            if [ "${prereqInstallAllowed}" = "false" ]; then # xxx should this be true?
                 echo >&2
                 echo >&2 "-- ${BUILD_NAME} - WARNING: GNU Fortran compiler could not be found on your system."
                 echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have GNU compiler suite installed on your system,"
@@ -788,7 +788,7 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                 unset MPIEXEC_PATH
                 mpiInstallEnabled=true
                 gnuInstallEnabled=true
-                if [ "${prereqInstallAllowed}" = "true" ]; then
+                if [ "${prereqInstallAllowed}" = "false" ]; then # xxx should this be true?
                     echo >&2
                     echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
                     echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
@@ -1016,7 +1016,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     #ParaMonte_MPI_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/mpich/3.2/bin"
                     MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
                     if [[ -f "${MPIEXEC_PATH}" ]]; then
-                        echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} detected."
+                        echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected."
                         #mpiInstallEnabled=false
                     else
                         ##########################################################################
@@ -1053,7 +1053,13 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 #ParaMonte_GNU_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/gnu/8.3.0/bin"
                 Fortran_COMPILER_PATH="${ParaMonte_GNU_BIN_DIR}/gfortran"
                 if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} detected."
+                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected."
+                    if [[ ":$PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
+                        PATH="${ParaMonte_GNU_LIB_DIR}:${PATH}"
+                    fi
+                    if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
+                        LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
+                    fi
                     #gnuInstallEnabled=false
                 else
                     ##########################################################################
@@ -1106,7 +1112,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
             if [ "${cafInstallEnabled}" = "true" ]; then
                 #ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_BIN_DIR}/caf"
                 if [[ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} detected."
+                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected."
                     #cafInstallEnabled=false
                 else
                     ##########################################################################
