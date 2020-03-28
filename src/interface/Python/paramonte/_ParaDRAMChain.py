@@ -189,11 +189,12 @@ class _ParaDRAMChain:
         self.stats.covmat()
         _timer.toc()
 
-        self.stats.maxLogFunc = _Struct()
-        self.stats.maxLogFunc.idrow = self.df[["SampleLogFunc"]].idxmax().values[0]
-        self.stats.maxLogFunc.value = self.df[["SampleLogFunc"]].iat[self.stats.maxLogFunc.idrow,0]
-        self.stats.maxLogFunc.dfrow = self.df.iloc[self.stats.maxLogFunc.idrow,:]
-        self.stats.maxLogFunc.state = self.df.iloc[self.stats.maxLogFunc.idrow,self._offset:]
+        self.stats.maxLogFunc = _pm.stats.getMaxLogFunc(dataFrame = self.df)
+        #self.stats.maxLogFunc = _Struct()
+        #self.stats.maxLogFunc.idrow = self.df[["SampleLogFunc"]].idxmax().values[0]
+        #self.stats.maxLogFunc.value = self.df[["SampleLogFunc"]].iat[self.stats.maxLogFunc.idrow,0]
+        #self.stats.maxLogFunc.dfrow = self.df.iloc[self.stats.maxLogFunc.idrow,:]
+        #self.stats.maxLogFunc.state = self.df.iloc[self.stats.maxLogFunc.idrow,self._offset:]
 
         # add chain autocorrelation
 

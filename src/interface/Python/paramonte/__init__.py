@@ -67,7 +67,7 @@ def getLogFunc(Point):
     # Normal density function with ndim dimensions
     return -0.5 * np.sum( np.double( Point )**2 )
 pmpd = pm.ParaDRAM()
-pmpd.runSampler ( ndim = 2
+pmpd.runSampler ( ndim = 3
                 , getLogFunc = getLogFunc
                 )
 ##################################
@@ -89,7 +89,7 @@ def getLogFunc(Point):
     # Normal density function with ndim dimensions
     return -0.5 * np.sum( np.double( Point )**2 )
 pmpd = pm.ParaDRAM()
-pmpd.runSampler ( ndim = 2
+pmpd.runSampler ( ndim = 3
                 , getLogFunc = getLogFunc
                 , mpiEnabled = True
                 )

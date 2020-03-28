@@ -745,6 +745,11 @@ class GridPlot:
                 which represents the target value associated with the 
                 corresponding variable on the x axis of the plot, 
                 from left to right. 
+                If not provided, the default will be set to the state 
+                (coordinates) of the "SampleLongFunc" column in the 
+                input dataframe to the object. This would work only 
+                when the input dataframe is the contents of a ParaMonte 
+                output chain or sample file.
             also, any attributes of the Target class.
 
         Returns
@@ -757,6 +762,10 @@ class GridPlot:
         diag_target_kws = target_kws.copy()
         diag_target_kws["axhline_kws"] = None
         diag_target_kws["scatter_kws"] = None
+        if values is None:
+            from _statistics import getMaxLogFunc
+            maxLogFunc = getMaxLogFunc(dataFrame=self._dfref())
+            values = maxLogFunc.state
         for irow, targetRow in enumerate(self.currentFig.targetList[:]):
 
             for icol,target in enumerate(targetRow):

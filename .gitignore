@@ -17,6 +17,7 @@
 *.exe
 *.o
 *.so
+*.so.5
 *.lib
 *.obj
 *.pdb

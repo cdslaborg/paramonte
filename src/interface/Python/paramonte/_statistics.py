@@ -24,3 +24,21 @@
 
 from _AutoCorr import AutoCorr
 from _CorCovMat import CorCovMat, CorMat, CovMat
+
+import numpy as _np
+import typing as _tp
+import pandas as _pd
+import weakref as _wref
+
+class _Struct: pass
+
+def getMaxLogFunc( dataFrame : _pd.DataFrame
+                 , column    : _tp.Optional[ str ] = "SampleLogFunc"
+                 ):
+    _offset = dataFrame.columns.get_loc(column) + 1
+    maxLogFunc = _Struct()
+    maxLogFunc.idrow = dataFrame[[column]].idxmax().values[0]
+    maxLogFunc.value = dataFrame[[column]].iat[maxLogFunc.idrow,0]
+    maxLogFunc.dfrow = dataFrame.iloc[maxLogFunc.idrow,:]
+    maxLogFunc.state = dataFrame.iloc[maxLogFunc.idrow,_offset:]
+    return maxLogFunc

@@ -941,6 +941,19 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                             , marginBot = 1
                             )
 
+        if self._mpiDisabled:
+            _pm.note( msg   = "To read the generated output files sample or chain files, try the following:\n\n"
+                            + "    pmpd.readSample()      # to read the final i.i.d. sample from the output sample file. \n"
+                            + "    pmpd.readChain()       # to read the uniquely-accepted points from the output chain file. \n"
+                            + "    pmpd.readMarkovChain() # to read the Markov Chain. Not recommended for extremely-large chains.\n\n"
+                            + "Replace 'pmpd' with the name you are using for your ParaDRAM object.\n"
+                            + "For more information and examples on the usage, visit:\n\n"
+                            + "    https://www.cdslab.org/paramonte/"
+                    , methodName = _pm.names.paradram
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
+
         return None
 
     ################################################################################################################################
@@ -951,7 +964,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     , file          : _tp.Optional[str] = None
                     , delimiter     : _tp.Optional[str] = None
                     , parseContents : _tp.Optional[bool] = True
-                    , returnEnabled : _tp.Optional[bool] = False
+                    , renabled      : _tp.Optional[bool] = False
                     ) -> _tp.List[_ParaDRAMChain] :
         """
         Return a list of the contents of a set of ParaDRAM output 
@@ -988,7 +1001,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 If set to True, the contents of the file will be parsed and 
                 stored in a component of the object named 'contents'. 
                 The default value is True. 
-            returnEnabled
+            renabled
                 If set to False, the contents of the file(s) will be stored as a 
                 list in a (new) component of the ParaDRAM object named 'chainList'
                 and None will be the return value of the method.
@@ -1017,7 +1030,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     with the same name as the column header is also created 
                     for the object which contains the data stored in that column 
                     of the chain file.
-            If returnEnabled = True, the list of objects will be returned as the
+            If renabled = True, the list of objects will be returned as the
             return value of the method. Otherwise, the list will be stored in a
             component of the ParaDRAM object named 'chainList'.
 
@@ -1095,7 +1108,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                                     )
             chainList.append(Chain)
 
-        if returnEnabled:
+        if renabled:
             print("\n")
             return chainList
         else:
@@ -1103,9 +1116,13 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 self.chainList = chainList
                 _pm.note( msg   = "The processed chain file(s) are now stored as a Python list in \n"
                                 + "the new component \"chainList\" of the ParaDRAM-instance object.\n"
-                                + "For example, to access the contents of the first chain file, try:\n\n"
+                                + "For example, to access the contents of the first (or the only) chain file, try:\n\n"
                                 + "    pmpd.chainList[0].df\n\n"
-                                + "where you replace 'pmpd' with the name you are using for your ParaDRAM object."
+                                + "To access plots, try:\n\n"
+                                + "    pmpd.chainList[0].plot.<PRESS TAB TO SEE THE LIST OF PLOTS>\n\n"
+                                + "Replace 'pmpd' with the name you are using for your ParaDRAM object.\n"
+                                + "For more information and examples on the usage, visit:\n\n"
+                                + "    https://www.cdslab.org/paramonte/"
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
@@ -1118,7 +1135,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , file          : _tp.Optional[str] = None
                         , delimiter     : _tp.Optional[str] = None
                         , parseContents : _tp.Optional[bool] = True
-                        , returnEnabled : _tp.Optional[bool] = False
+                        , renabled      : _tp.Optional[bool] = False
                         ) -> _tp.List[_ParaDRAMChain] :
         """
         Return a list of the unweighted (Markov-chain) contents of a set of 
@@ -1155,7 +1172,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 If set to True, the contents of the file will be parsed and 
                 stored in a component of the object named 'contents'.
                 The default value is True.
-            returnEnabled
+            renabled
                 If set to False, the contents of the file(s) will be stored as a 
                 list in a (new) component of the ParaDRAM object named 'markovChainList'
                 and None will be the return value of the method.
@@ -1184,7 +1201,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     with the same name as the column header is also created 
                     for the object which contains the data stored in that column 
                     of the chain file.
-            If returnEnabled = True, the list of objects will be returned as the
+            If renabled = True, the list of objects will be returned as the
             return value of the method. Otherwise, the list will be stored in a
             component of the ParaDRAM object named 'markovChainList'.
 
@@ -1263,7 +1280,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                                     )
             markovChainList.append(Chain)
 
-        if returnEnabled:
+        if renabled:
             print("\n")
             return markovChainList
         else:
@@ -1271,9 +1288,13 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 self.markovChainList = markovChainList
                 _pm.note( msg   = "The processed Markov chain file(s) are now stored as a Python list in \n"
                                 + "the new component \"markovChainList\" of the ParaDRAM-instance object.\n"
-                                + "For example, to access the contents of the first Markov chain, try:\n\n"
+                                + "For example, to access the contents of the first (or the only) Markov chain, try:\n\n"
                                 + "    pmpd.markovChainList[0].df\n\n"
-                                + "where you replace 'pmpd' with the name you are using for your ParaDRAM object."
+                                + "To access plots, try:\n\n"
+                                + "    pmpd.markovChainList[0].plot.<PRESS TAB TO SEE THE LIST OF PLOTS>\n\n"
+                                + "Replace 'pmpd' with the name you are using for your ParaDRAM object.\n"
+                                + "For more information and examples on the usage, visit:\n\n"
+                                + "    https://www.cdslab.org/paramonte/"
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
@@ -1285,7 +1306,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     , file          : _tp.Optional[str] = None
                     , delimiter     : _tp.Optional[str] = None
                     , parseContents : _tp.Optional[bool] = True
-                    , returnEnabled : _tp.Optional[bool] = False
+                    , renabled      : _tp.Optional[bool] = False
                     ) -> _tp.List[_ParaDRAMChain] :
         """
         Return a list of the contents of a set of ParaDRAM output 
@@ -1322,7 +1343,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 If set to True, the contents of the file will be parsed and 
                 stored in a component of the object named 'contents'.
                 The default value is True.
-            returnEnabled
+            renabled
                 If set to False, the contents of the file(s) will be stored as a 
                 list in a (new) component of the ParaDRAM object named 'sampleList'
                 and None will be the return value of the method.
@@ -1349,7 +1370,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     with the same name as the column header is also created 
                     for the object which contains the data stored in that column 
                     of the sample file.
-            If returnEnabled = True, the list of objects will be returned as the
+            If renabled = True, the list of objects will be returned as the
             return value of the method. Otherwise, the list will be stored in a
             component of the ParaDRAM object named 'sampleList'.
 
@@ -1423,7 +1444,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                                     )
             sampleList.append(Sample)
 
-        if returnEnabled:
+        if renabled:
             print("\n")
             return sampleList
         else:
@@ -1431,9 +1452,13 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 self.sampleList = sampleList
                 _pm.note( msg   = "The processed sample file(s) are now stored as a Python list in \n"
                                 + "the new component \"sampleList\" of the ParaDRAM-instance object.\n"
-                                + "For example, to access the contents of the first sample file, try:\n\n"
+                                + "For example, to access the contents of the first (or the only) sample file, try:\n\n"
                                 + "    pmpd.sampleList[0].df\n\n"
-                                + "where you replace 'pmpd' with the name you are using for your ParaDRAM object."
+                                + "To access plots, try:\n\n"
+                                + "    pmpd.sampleList[0].plot.<PRESS TAB TO SEE THE LIST OF PLOTS>\n\n"
+                                + "Replace 'pmpd' with the name you are using for your ParaDRAM object.\n"
+                                + "For more information and examples on the usage, visit:\n\n"
+                                + "    https://www.cdslab.org/paramonte/"
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
