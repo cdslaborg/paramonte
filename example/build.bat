@@ -146,7 +146,7 @@ if !PTYPE!==mpi (
         echo. -- ParaMonte - Intel C MPI library wrapper at: "!MPICC_PATH!"
     ) else (
         echo.
-        echo. -- ParaMonte - Fatal Error: The build script cannot find MPI library wrappers.
+        echo. -- ParaMonte - Fatal Error: The build-script cannot find MPI library wrappers.
         echo. -- ParaMonte - Fatal Error: To build MPI-parallel ParaMonte examples, 
         echo. -- ParaMonte - Fatal Error: you need Intel's MPI library installed on your system.
         echo. -- ParaMonte - Fatal Error: you can download the latest Intel MPI library from their website.

@@ -23,7 +23,7 @@
 #**********************************************************************************************************************************
 #**********************************************************************************************************************************
 
-# NOTE: This is not a standalone build script. It must only be called by buildParaMonte.sh script in the root directory of the project.
+# NOTE: This is not a standalone build-script. It must only be called by buildParaMonte.sh script in the root directory of the project.
 
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # build ParaMonte library example objects and executable

@@ -242,7 +242,7 @@ class AutoCorr:
         self.plot.line = LinePlot   ( dataFrame = self.df
                                     , xcolumns = "Lag"
                                     , ycolumns = colnames
-                                    , ccolumns = ccolumns
+                                    , ccolumns = None #ccolumns
                                     , lc_kws =  {
                                                 #"linewidth":0.75,
                                                 #"cmap":"viridis",
@@ -264,7 +264,7 @@ class AutoCorr:
         self.plot.scatter = ScatterPlot ( dataFrame = self.df
                                         , xcolumns = "Lag"
                                         , ycolumns = colnames
-                                        , ccolumns = ccolumns
+                                        , ccolumns = None #ccolumns
                                         #, scatter_kws = {}
                                         , colorbar_kws =    {
                                                             "extend":"neither",

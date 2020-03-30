@@ -32,8 +32,8 @@ cat << EndOfMessage
 This is a simple standalone Bash script for building C/Fortran applications that use ParaMonte library on Unix-like OS.
 The compiler name and flags are automatically inferred from the library name. Note this requires the existence of the 
 required compiler and libraries on your system. These libraries should be automatically installed on your system 
-when you build ParaMonte via the provided build scripts at the root of the project.
-You can override the compiler options and flags by providing the following optional arguments to this build script.
+when you build ParaMonte via the provided build-scripts at the root of the project.
+You can override the compiler options and flags by providing the following optional arguments to this build-script.
 However, the onus on you to ensure compiler/library availability and compatibility with the ParaMonte library.
 
     usage:

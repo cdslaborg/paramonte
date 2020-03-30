@@ -17,7 +17,7 @@
 > along with ParaMonte.  If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).  
   
 
-**NOTE:** For complete clear instructions on the installation and building of ParaMonte, please visit [cdslab.org/pm](https://www.cdslab.org/pm). All of the steps described below will be automatically done for you if you build the entire library by following the instructions provided in the aforementioned web-link.  
+**NOTE:** For complete clear instructions on the build process and the installation of the ParaMonte library, please visit [cdslab.org/pm](https://www.cdslab.org/paramonte). All of the steps described below will be automatically done for you if you build the entire library by following the instructions provided in the aforementioned web-link.  
 
 ## Build  
 
@@ -101,4 +101,4 @@ Building this example requires the following components in the same folder and t
     where you will have to replace `NUM_PROCESSOR` with your desired number of processes.  
 
 
-**For more information**, visit [cdslab.org/pm](https://www.cdslab.org/pm) or contact Amir Shahmoradi: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
+**For more information**, visit [cdslab.org/pm](https://www.cdslab.org/paramonte) or contact Amir Shahmoradi: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
