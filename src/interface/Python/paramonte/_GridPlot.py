@@ -137,7 +137,7 @@ class GridPlot:
                                 alpha": 1,
                                 }
             The default is {}. 
-            If set to None, no histograms will be added to diagonal of the grid plot. 
+            If set to None, no kdeplots will be added to the grid plot. 
         lineplot_kws
             optional dictionary of keyword arguments to be passed to an instance of 
             ParaMonte's LinePlot class for making colored line plots of the requested 
@@ -167,15 +167,17 @@ class GridPlot:
         kdecorner
             optional string representing the corner (upper/lower triangle) of the grid 
             plot where the kdeplots will be added. 
-            Possible values are: "upper", "lower", None. 
-            The default is "lower". 
-            If set to None, the corner will be automatically determined. 
+            Possible values are: "upper", "lower", "auto", None. 
+            The default is "auto", which is the lower or any empty corner. 
+            If set to "auto", the corner will be automatically determined. 
+            If set to None, no kdeplots will be added to the grid plot. 
         lscorner
             optional string representing the corner (upper/lower triangle) of the grid 
             plot where the line/scatter plots will be added. 
-            Possible values are: "upper", "lower", None. 
-            The default is "upper".
-            If set to None, the corner will be automatically determined. 
+            Possible values are: "upper", "lower", "auto", None. 
+            The default is "auto", which is the upper or any empty corner. 
+            If set to "auto", the corner will be automatically determined. 
+            If set to None, no scatter or line plots will be added to the grid plot. 
 
     Attributes
     ----------
@@ -223,8 +225,8 @@ class GridPlot:
                 , scatterplot_kws   : _tp.Optional[_tp.Dict] = ()
                 , colorbar_kws      : _tp.Optional[_tp.Dict] = ()
                 , outputFile        : _tp.Optional[str] = None
-                , kdecorner         : _tp.Optional[str] = None
-                , lscorner          : _tp.Optional[str] = None
+                , kdecorner         : _tp.Optional[str] = "auto"
+                , lscorner          : _tp.Optional[str] = "auto"
                 , _methodName       : _tp.Optional[str] = ""
                 ):
 
@@ -310,15 +312,15 @@ class GridPlot:
         scatterplotEnabled = self.scatterplot_kws is not None
         lineplotEnabled = self.lineplot_kws is not None
         distplotEnabled = self.distplot_kws is not None
-        kdeplotEnabled = self.kdeplot_kws is not None
-        lsplotEnabled = scatterplotEnabled or lineplotEnabled
+        kdeplotEnabled = (self.kdeplot_kws is not None) and (self.kdecorner is not None)
+        lsplotEnabled = (scatterplotEnabled or lineplotEnabled) and (self.lscorner is not None)
 
         if self.set_kws==(): self.set_kws={}
 
         kdeUpperEnabled = False
         kdeLowerEnabled = False
         if kdeplotEnabled:
-            if self.kdecorner is None:
+            if self.kdecorner=="auto":
                 kdeLowerEnabled = True
             elif isinstance(self.kdecorner,str):
                 if "upper" in self.kdecorner: kdeUpperEnabled = True
@@ -329,16 +331,28 @@ class GridPlot:
 
         lsUpperEnabled = False
         lsLowerEnabled = False
-        if scatterplotEnabled or lineplotEnabled:
-            if self.lscorner is None:
+        if lsplotEnabled:
+            if self.lscorner=="auto":
                 lsUpperEnabled = not kdeUpperEnabled
                 lsLowerEnabled = not kdeLowerEnabled
+                lsplotEnabled = lsLowerEnabled or lsUpperEnabled
             elif isinstance(self.lscorner,str):
                 if "upper" in self.lscorner: lsUpperEnabled = True
-                if "lower" in self.lscorner: lsLowerEnabled = True
+                if "lower" in self.lscorner: 
+                    lsLowerEnabled = True
+                    if self.kdecorner=="auto":
+                        kdeUpperEnabled = not lsUpperEnabled
+                        kdeLowerEnabled = not lsLowerEnabled
+                        kdeplotEnabled = kdeLowerEnabled or kdeUpperEnabled
             else:
                 raise Exception ( "The input argument 'lscorner' must be either 'lower', 'upper' or\n"
                                 + "a concatanation of both, or otherwise None." )
+        elif kdeplotEnabled:
+            if self.kdecorner=="auto":
+                kdeUpperEnabled = True
+                kdeLowerEnabled = True
+            
+
 
         if self.kdeplot_kws==(): self.kdeplot_kws={}
         if isinstance(self.kdeplot_kws,dict):

@@ -110,14 +110,14 @@ def verify(reset = True):
             mpiBinPath = findMPI()
             if mpiBinPath is None:
                 _pm.warn( msg   = "The MPI runtime libraries for 64-bit architecture could not be detected on your system. \n"
-                                + "The MPI runtime libraries are required for parallel simulations via ParaMonte library. \n"
-                                + "You can download and install the proper versions of an MPI library free of charge \n"
-                                + "from either Intel website (https://software.intel.com/en-us/mpi-library) \n"
-                                + "for Windows and Linux operating systems) or from the Open-MPI website \n"
-                                + "(https://www.open-mpi.org/ for Darwin operating system).\n"
-                                + "Alternatively, ParaMonte can install these library for you automatically now. \n\n"
+                                + "The MPI runtime libraries are required for the parallel ParaMonte simulations. \n"
+                                + "For Windows and Linux operating systems, you can download and install the Intel MPI runtime \n"
+                                + "libraries, free of charge, from Intel website (https://software.intel.com/en-us/mpi-library) \n"
+                                + "For macOS (Darwin operating system), you will have to download and install the Open-MPI library \n"
+                                + "(https://www.open-mpi.org/).\n\n"
+                                + "Alternatively, the ParaMonte library can automatically install these library for you now. \n\n"
                                 + "If you don't know how to download and install the correct MPI runtime library version, \n"
-                                + "we strongly recommend that you let ParaMonte install this library for you now. \n"
+                                + "we strongly recommend that you let the ParaMonte library to install this library for you. \n"
                                 + "If so, ParaMonte will need access to the World-Wide-Web to download the library \n"
                                 + "and will need your administrative permission to install it on your system. \n"
                                 + "Therefore, if you have any active firewall on your system such as ZoneAlarm, \n"
@@ -813,11 +813,11 @@ def installMPI():
 
     elif isMacOS:
 
-        _pm.warn( msg   = "To use ParaMonte in parallel on Mac Operating Systems, \n"
-                        + "ParaMonte needs to build the Open-MPI library on your system. \n"
+        _pm.warn( msg   = "To use the ParaMonte kernel routines in parallel on macOS, \n"
+                        + "the Open-MPI library will have to be installed on your system. \n"
                         #+ "To ensure full consistency, we recommend building the parallel \n"
                         #+ "object files of ParaMonte library on your system along with Open-MPI.\n\n"
-                        + "Building ParaMonte library prerequisites on your system..."
+                        + "Building the ParaMonte library prerequisites on your system..."
                 , marginTop = 1
                 , marginBot = 1
                 , methodName = _pm.names.paramonte
