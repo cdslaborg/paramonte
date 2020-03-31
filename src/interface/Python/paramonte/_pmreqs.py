@@ -817,6 +817,17 @@ def installMPI():
                         + "the Open-MPI library will have to be installed on your system. \n"
                         #+ "To ensure full consistency, we recommend building the parallel \n"
                         #+ "object files of ParaMonte library on your system along with Open-MPI.\n\n"
+                        + "\n"
+                        + "If this installation of the prerequisites is being done from within \n"
+                        + "a Jupyter notebook and the installation fails:\n"
+                        + "\n"
+                        + "    1. quit the Jupyter notebook.\n"
+                        + "    2. enter an IPython session on the command-prompt:\n"
+                        + "        - On Windows, use Anaconda3 command-prompt.\n"
+                        + "        - On Linux / macOS, use the Bash terminal.\n"
+                        + "    3. import paramonte as pm\n"
+                        + "    4. pm.verify()\n"
+                        + "\n"
                         + "Building the ParaMonte library prerequisites on your system..."
                 , marginTop = 1
                 , marginBot = 1
