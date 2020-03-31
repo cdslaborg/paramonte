@@ -508,10 +508,10 @@ class GridPlot:
         nkdeplotStr = str( (kdeUpperEnabled+kdeLowerEnabled) * nrow * (nrow-1) // 2 )
 
         self.currentFig.targetList      = [ [ [] for j in range(nrow) ] for i in range(nrow) ]
-        self.currentFig.kdeplotList     = [ [ [] for j in range(nrow) ] for i in range(nrow) ]
+       #self.currentFig.kdeplotList     = [ [ [] for j in range(nrow) ] for i in range(nrow) ]
         self.currentFig.lineplotList    = [ [ [] for j in range(nrow) ] for i in range(nrow) ]
         self.currentFig.scatterplotList = [ [ [] for j in range(nrow) ] for i in range(nrow) ]
-        self.currentFig.distplotList    = [ [] for i in range(nrow) ]
+       #self.currentFig.distplotList    = [ [] for i in range(nrow) ]
 
         #####################################
         #### add distplots as needed
