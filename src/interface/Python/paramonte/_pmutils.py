@@ -25,6 +25,7 @@
 import _message as _msg
 import numpy as _np
 import sys as _sys
+import os as _os
 
 class _struct:
     pass
@@ -116,3 +117,66 @@ def which(program):
                 return exe_file
 
     return None
+
+####################################################################################################################################
+#### get file list
+####################################################################################################################################
+
+def getFileList(file,fileType,methodName,_mpiDisabled):
+
+    suffix = "_" + fileType + ".txt"
+    if _os.path.isfile(file): # check if the input path is a full path to a file
+        FileList = [file]
+        pattern = file
+        if suffix != file[-len(suffix):]:
+            _msg.warn   ( msg   = "The name of the input file: \n\n"
+                                + "    " + file + "\n\n"
+                                + "does not end with the expected suffix '" + suffix + "' for a " + fileType + " file type.\n"
+                        , methodName = methodName
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+    elif _os.path.isdir(file): # ensure the input path is not a directory
+        _msg.abort  ( msg   = "file='" + file + "' cannot point to a directory.\n"
+                            + "Provide a string as the value of file that points to a unique " + fileType + " file or\n"
+                            + "to the unique name (including path) of the simulation name shared among its output files.\n"
+                    , methodName = methodName
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
+    else:
+
+        # search for files matching the input pattern
+
+        import glob
+        if file[-1:]=="*":
+            pattern = file
+        else:
+            pattern = file + "*" # + suffix
+
+        _ = glob.glob(pattern)
+        FileList = []
+        for filename in _:
+            if suffix in filename: FileList.append(filename)
+        if len(FileList)==0:
+            _msg.abort  ( msg   = "Failed to detect any " + fileType + " files with the requested pattern: \n\n"
+                                + "    " + file + "\n\n"
+                                + "Provide a string, as the value of the input argument 'file', that either \n\n"
+                                + "    - points to one or more " + fileType + " files, or, \n"
+                                + "    - represents the unique name of a ParaMonte simulation. \n"
+                                + "      This unique-name is the common prefix in the names of \n"
+                                + "      the output files of a ParaMonte simulation."
+                        , methodName = methodName
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+        else:
+            pattern += suffix
+
+    if _mpiDisabled:
+        _msg.note   ( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
+                    , methodName = methodName
+                    , marginTop = 0
+                    , marginBot = 0
+                    )
+    return FileList

@@ -1055,7 +1055,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 if self._mpiDisabled:
                     _pm.warn( msg   = "delimiter is neither given as input nor set as a ParaDRAM object property.\n"
                                     + "This information is essential for successful reading of the requested chain file(s).\n"
-                                    + "Proceeding with the default assumtion of comma-delimited chain file contents..."
+                                    + "Proceeding with the default assumption of comma-delimited chain file contents..."
                             , methodName = _pm.names.paradram
                             , marginTop = 1
                             , marginBot = 1
@@ -1063,32 +1063,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             else:
                 delimiter = self.spec.outputDelimiter
 
-        # check if the input path is a full path to a file
-
-        if _os.path.isfile(file):
-            FileList = [file]
-        else:
-            # search for files matching the input pattern
-            import glob
-            pattern = file + "*_chain.txt"
-            FileList = glob.glob(pattern)
-            if len(FileList)==0:
-                # ensure the input path is not a directory
-                if _os.path.isdir(file):
-                    _pm.abort   ( msg   = "file='" + file + "' cannot point to a directory.\n"
-                                        + "Provide a string as the value of file that points to a unique chain file or\n"
-                                        + "to the unique name (including path) of the simulation name shared among its output files.\n"
-                                , methodName = _pm.names.paradram
-                                , marginTop = 1
-                                , marginBot = 1
-                                )
-
-        if self._mpiDisabled:
-            _pm.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
-                    , methodName = _pm.names.paradram
-                    , marginTop = 0
-                    , marginBot = 0
-                    )
+        FileList = _pm.pmutils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
 
         chainList = []
         for file in FileList:
@@ -1226,7 +1201,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 if self._mpiDisabled:
                     _pm.warn( msg   = "delimiter is neither given as input nor set as a ParaDRAM object property.\n"
                                     + "This information is essential for successful reading of the requested chain file(s).\n"
-                                    + "Proceeding with the default assumtion of comma-delimited chain file contents..."
+                                    + "Proceeding with the default assumption of comma-delimited chain file contents..."
                             , methodName = _pm.names.paradram
                             , marginTop = 1
                             , marginBot = 1
@@ -1234,32 +1209,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             else:
                 delimiter = self.spec.outputDelimiter
 
-        # check if the input path is a full path to a file
-
-        if _os.path.isfile(file):
-            FileList = [file]
-        else:
-            # search for files matching the input pattern
-            import glob
-            pattern = file + "*_chain.txt"
-            FileList = glob.glob(pattern)
-            if len(FileList)==0:
-                # ensure the input path is not a directory
-                if _os.path.isdir(file):
-                    _pm.abort   ( msg   = "file='" + file + "' cannot point to a directory.\n"
-                                        + "Provide a string as the value of file that points to a unique chain file or\n"
-                                        + "to the unique name (including path) of the simulation name shared among its output files.\n"
-                                , methodName = _pm.names.paradram
-                                , marginTop = 1
-                                , marginBot = 1
-                                )
-
-        if self._mpiDisabled:
-            _pm.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
-                    , methodName = _pm.names.paradram
-                    , marginTop = 0
-                    , marginBot = 0
-                    )
+        FileList = _pm.pmutils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
 
         markovChainList = []
         for file in FileList:
@@ -1393,7 +1343,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 if self._mpiDisabled:
                     _pm.warn( msg   = "delimiter is neither given as input nor set as a ParaDRAM object property.\n"
                                     + "This information is essential for successful reading of the requested sample file(s).\n"
-                                    + "Proceeding with the default assumtion of comma-delimited sample file contents..."
+                                    + "Proceeding with the default assumption of comma-delimited sample file contents..."
                             , methodName = _pm.names.paradram
                             , marginTop = 1
                             , marginBot = 1
@@ -1401,30 +1351,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             else:
                 delimiter = self.spec.outputDelimiter
 
-        # check if the input path is a full path to a file
-
-        if _os.path.isfile(file):
-            FileList = [file]
-        else:
-            # search for files matching the input pattern
-            import glob
-            pattern = file + "*_sample.txt"
-            FileList = glob.glob(pattern)
-            if len(FileList)==0:
-                # ensure the input path is not a directory
-                if _os.path.isdir(file):
-                    _pm.abort   ( msg   = "file='" + file + "' cannot point to a directory.\n"
-                                        + "Provide a string as the value of file that points to a unique sample file or\n"
-                                        + "to the unique name (including path) of the simulation name shared among its output files.\n"
-                                , methodName = _pm.names.paradram
-                                )
-
-        if self._mpiDisabled:
-            _pm.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
-                    , methodName = _pm.names.paradram
-                    , marginTop = 0
-                    , marginBot = 0
-                    )
+        FileList = _pm.pmutils.getFileList(file,"sample",_pm.names.paradram,self._mpiDisabled)
 
         sampleList = []
         for file in FileList:
