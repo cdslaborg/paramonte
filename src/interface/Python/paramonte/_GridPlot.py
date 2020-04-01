@@ -635,6 +635,7 @@ class GridPlot:
         # set the ticks and labels
 
         nrowMinusOne = nrow - 1
+        from matplotlib.pyplot import setp
         for irow, row in enumerate(self.currentFig.pairgrid.axes[:]):
             for icol, ax in enumerate(row):
                 if self._lowerEnabled:
@@ -643,9 +644,18 @@ class GridPlot:
                     if irow < nrowMinusOne:
                         ax.set_xlabel("")
                 elif self._upperEnabled:
-                    if icol>irow:
+                    if not kdeplotEnabled:
+                        if icol != irow:
+                            ax.set_ylabel("")
+                            ax.set_xlabel("")
+                        if icol == irow:
+                            ax.set_xlabel(colnames[irow])
+                            ax.set_ylabel(colnames[icol])
+                            ax.xaxis.set_tick_params(which='both', labelbottom=True)
+                            ax.yaxis.set_tick_params(which='both', labelbottom=True)
+                    elif icol > irow:
                         ax.set_ylabel("")
-                        ax.set_xlabel("")
+                        ax.set_xlabel("")                
 
         # add colorbar
 
@@ -708,8 +718,16 @@ class GridPlot:
         """
 
         allhidden = part=="all"
-        if allhidden or part=="upper": self.currentFig.pairgrid.map_upper(hide_current_axis)
-        if allhidden or part=="lower": self.currentFig.pairgrid.map_lower(hide_current_axis)
+        if allhidden or part=="upper": self.currentFig.pairgrid.map_upper(hide_current_axis)    
+        if allhidden or part=="lower":
+            self.currentFig.pairgrid.map_lower(hide_current_axis)
+            colnames = dfutils.getColNamesIndex(self._dfref().columns,self.columns)[0]
+            for i in range(len(colnames)):
+                ax=self.currentFig.pairgrid.axes[:][i][i]
+                ax.set_xlabel(colnames[i])
+                ax.set_ylabel(colnames[i])
+                ax.xaxis.set_tick_params(which='both', labelbottom=True)
+                ax.yaxis.set_tick_params(which='both', labelbottom=True)
         if allhidden or part=="diag" : self.currentFig.pairgrid.map_diag(hide_current_axis)
 
     ################################################################################################################################
@@ -734,8 +752,24 @@ class GridPlot:
         """
 
         allshown = part=="all"
-        if allshown or part=="upper": self.currentFig.pairgrid.map_upper(show_current_axis)
-        if allshown or part=="lower": self.currentFig.pairgrid.map_lower(show_current_axis)
+        if allshown or part=="upper": self.currentFig.pairgrid.map_upper(show_current_axis)      
+        if allshown or part=="lower": 
+            self.currentFig.pairgrid.map_lower(show_current_axis)
+            colnames = dfutils.getColNamesIndex(self._dfref().columns,self.columns)[0]
+            colnamesLength=len(colnames)
+            for i in range(colnamesLength):
+                ax=self.currentFig.pairgrid.axes[:][i][i]
+                if colnamesLength-1>i>0:
+                    ax.set_xlabel('')
+                    ax.set_ylabel('')
+                    ax.xaxis.set_tick_params(which='both', labelbottom=False)
+                    ax.yaxis.set_tick_params(which='both', labelbottom=False)
+                elif i==0:
+                    ax.xaxis.set_tick_params(which='both', labelbottom=False)
+                    ax.set_xlabel('')
+                else:
+                    ax.yaxis.set_tick_params(which='both', labelbottom=False)
+                    ax.set_ylabel('')             
         if allshown or part=="diag" : self.currentFig.pairgrid.map_diag(show_current_axis)
 
     ################################################################################################################################
