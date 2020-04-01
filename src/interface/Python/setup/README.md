@@ -1,4 +1,4 @@
-[![ParaMonte - Plain Powerful Parallel Monte Carlo Library](https://raw.githubusercontent.com/shahmoradi/paramonte/gh-pages/images/paramonte.png)](https://cdslab.org/paramonte/)  
+[![ParaMonte - Plain Powerful Parallel Monte Carlo Library](https://raw.githubusercontent.com/shahmoradi/paramonte/gh-pages/images/paramonte.png)](https://www.cdslab.org/paramonte/)  
   
 <br>
   
@@ -35,12 +35,12 @@ Alternatively, you can build the library from the source in the GitHub repositor
 Dependencies  
 ============  
 
-The Python interface of ParaMonte depends on several Python standard modules, as well as third-party libraries. These include numpy, scipy, pandas, matplotlib, and seaborn. The last two (plotting) libraries are only used for the post-processing of simulation results and are therefore not needed if you do not plan to use the post-processing functionalities of ParaMonte. If you have a recent version of Anaconda Python distribution installed on your system, then all of the dependencies already exist and are automatically installed on your system.  
+The Python interface of ParaMonte depends on several Python standard modules, as well as third-party libraries. These include `numpy`, `scipy`, `pandas`, `matplotlib`, and `seaborn`. The last two (plotting) libraries are only used for the post-processing of simulation results and are therefore not needed if you do not plan to use the post-processing features of the ParaMonte library. If you have a recent version of Anaconda Python distribution installed on your system, then all of the dependencies already exist and are automatically installed on your system.  
 
 Parallelism  
 ===========  
 
-ParaMonte relies on Message Passing Interface (MPI) standard for inter-processor communications. To run a parallel simulation you will have a compatible MPI library installed on your system. In most cases, ParaMonte can automatically install the required MPI libraries on your system (with your permission), when you download, install, and `import paramonte` into your Python environment for the first time. If the automatic installation is unsuccessful, you can also install the libraries manually on your system. On Windows and Linux operating systems, we highly recommend downloading and installing [Intel MPI library](https://software.intel.com/en-us/mpi-library), which is available free of charge. On macOS, we recommend [MPICH](https://www.mpich.org/downloads/) since the Intel MPI library does not support macOS.  
+The ParaMonte library relies on the Message Passing Interface (MPI) standard for inter-processor communications. To run a parallel simulation, you will have to have a compatible MPI runtime library installed on your system. In most cases, ParaMonte will automatically install the required missing libraries on your system (with your permission). These automatic checks and installations happen when you download, install, and `import paramonte as pm`, for the first time, into your Python environment. If the automatic installation is unsuccessful, you can also install the libraries manually on your system. On Windows and Linux operating systems, we highly recommend downloading and installing the [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), which is available to the public free of charge. On macOS, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
 
 Citing ParaMonte  
 ================  
@@ -49,8 +49,8 @@ The paper for this package is already in the publication process. Until then, if
 
 -  Amir Shahmoradi (2013). A Multivariate Fit Luminosity Function and World Model for Long Gamma-Ray Bursts. The Astrophysical Journal (ApJ) 766:111-133 ([PDF link](https://www.cdslab.org/pubs/Shahmoradi_2013a.pdf)).  
 
-Authors  
-=======  
+Authors and contributors  
+========================  
 
 - [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi):  
     - astrophysicist/bioinformatician by training (and a science-lover in general),  
@@ -64,6 +64,11 @@ Authors
     - currently a UTA Physics member,  
     - deep philosophical thinker,  
     - contact: [Fatemeh.Bagheri@uta.edu](mailto:"Fatemeh.Bagheri@uta.edu")  
+
+- [Joshua Osborne](https://www.cdslab.org/people/#joshua-alexander-osborne):  
+    - physicist / Computational Data Scientist by training,  
+    - currently a UTA Physics member,  
+    - contact: [joshuaalexanderosborne@gmail.com](mailto:"joshuaalexanderosborne@gmail.com")  
 
 License  
 =======  
