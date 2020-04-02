@@ -49,7 +49,7 @@ contains
 
         implicit none
 
-        character(len=*), parameter         :: PROCEDURE_NAME = MODULE_NAME // "@CrossCorr_mod()"
+        character(len=*), parameter         :: PROCEDURE_NAME = MODULE_NAME // "@getBatchMeansIAC()"
 
         integer(IK), intent(in)             :: np
         real(RK), intent(in)                :: Point(np)
