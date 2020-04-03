@@ -251,7 +251,6 @@ class GridPlot:
         self._isdryrun = True
         self.plot()
         self._isdryrun = False
-
     ################################################################################################################################
 
     def __call__( self
@@ -326,8 +325,9 @@ class GridPlot:
                 if "upper" in self.kdecorner: kdeUpperEnabled = True
                 if "lower" in self.kdecorner: kdeLowerEnabled = True
             else:
-                raise Exception ( "The input argument 'kdecorner' must be either 'lower', 'upper' or\n"
-                                + "a concatanation of both, or otherwise None." )
+                raise Exception ( "The input argument 'kdecorner' must be either,\n\n"
+                                + "    'upper', 'lower', 'upper-lower', 'auto',\n\n"
+                                + "or otherwise None." )
 
         lsUpperEnabled = False
         lsLowerEnabled = False
@@ -345,8 +345,9 @@ class GridPlot:
                         kdeLowerEnabled = not lsLowerEnabled
                         kdeplotEnabled = kdeLowerEnabled or kdeUpperEnabled
             else:
-                raise Exception ( "The input argument 'lscorner' must be either 'lower', 'upper' or\n"
-                                + "a concatanation of both, or otherwise None." )
+                raise Exception ( "The input argument 'lscorner' must be either,\n\n"
+                                + "    'upper', 'lower', 'upper-lower', 'auto',\n\n"
+                                + "or otherwise None." )
         elif kdeplotEnabled:
             if self.kdecorner=="auto":
                 kdeUpperEnabled = True
@@ -356,6 +357,7 @@ class GridPlot:
 
         if self.kdeplot_kws==(): self.kdeplot_kws={}
         if isinstance(self.kdeplot_kws,dict):
+            #self.kdeplot_kws["cbar"]=True if lsplotEnabled==False else False
             self.kdeplot_kws["cbar"] = False
             if "cmap" not in self.kdeplot_kws.keys():           self.kdeplot_kws["cmap"] = "Blues"
             if "alpha" not in self.kdeplot_kws.keys():          self.kdeplot_kws["alpha"] = 1
@@ -644,7 +646,7 @@ class GridPlot:
                     if irow < nrowMinusOne:
                         ax.set_xlabel("")
                 elif self._upperEnabled:
-                    if not kdeplotEnabled:
+                    if (not kdeplotEnabled):
                         if icol != irow:
                             ax.set_ylabel("")
                             ax.set_xlabel("")
@@ -668,11 +670,13 @@ class GridPlot:
                         cbarLabel = scatterplot.ccolumns
                         if len(cbarLabel)==0: cbarLabel = "Count from the Series Start"
                         break
-                elif lineplot != []:
+                if lineplot != []:
+                    if mappable is None and line.ccolumns is not None:
                         mappable = lineplot.currentFig.lineCollection
                         cbarLabel = lineplot.ccolumns
                         if len(cbarLabel)==0: cbarLabel = "Count from the Series Start"
                         break
+
 
 #        sccolumnsEnabled = False
 #        if "ccolumns" in self.scatterplot_kws.keys():
@@ -690,7 +694,7 @@ class GridPlot:
 #                mappable = self.currentFig.lineplotList[1][0].currentFig.lineCollection
 #            cbarLabel = self.lineplot_kws["ccolumns"]
 #        #elif kdeplotEnabled and self.kdeplot_kws is not None:
-
+        
         if mappable is not None:
             self.currentFig.figure.colorbar = self.currentFig.figure.colorbar(mappable=mappable,ax=self.currentFig.pairgrid.axes)
             self.currentFig.figure.colorbar.set_label(cbarLabel)
@@ -698,7 +702,7 @@ class GridPlot:
 
     ################################################################################################################################
 
-    def hide(self,part="all"):
+    def hide(self,part="all",colorbar=''):
         """
         hides the requested part of the grid plot.
 
@@ -707,32 +711,37 @@ class GridPlot:
             part
                 a string with the following possible values:
                     - "lower": hides the lower triangle of the grid plot.
-                    - "upper": hides the lower triangle of the grid plot.
+                    - "upper": hides the upper triangle of the grid plot.
                     - "diag" : hides the diagonal of the grid plot.
                     - "all"  : hides all grid plots.
+            colorbar
+                -"hide": hides colorbar otherwise the colobar will be shown
 
         Returns
         -------
             None.
 
         """
-
+        
         allhidden = part=="all"
         if allhidden or part=="upper": self.currentFig.pairgrid.map_upper(hide_current_axis)    
         if allhidden or part=="lower":
             self.currentFig.pairgrid.map_lower(hide_current_axis)
             colnames = dfutils.getColNamesIndex(self._dfref().columns,self.columns)[0]
-            for i in range(len(colnames)):
-                ax=self.currentFig.pairgrid.axes[:][i][i]
-                ax.set_xlabel(colnames[i])
-                ax.set_ylabel(colnames[i])
-                ax.xaxis.set_tick_params(which='both', labelbottom=True)
-                ax.yaxis.set_tick_params(which='both', labelbottom=True)
+            if part != 'all':
+                for i in range(len(colnames)):
+                    ax=self.currentFig.pairgrid.axes[:][i][i]
+                    ax.set_xlabel(colnames[i])
+                    ax.set_ylabel(colnames[i])
+                    ax.xaxis.set_tick_params(which='both', labelbottom=True)
+                    ax.yaxis.set_tick_params(which='both', labelbottom=True)
         if allhidden or part=="diag" : self.currentFig.pairgrid.map_diag(hide_current_axis)
+        if colorbar=='remove':
+            self.currentFig.figure.colorbar.remove()
 
     ################################################################################################################################
 
-    def show(self,part="all"):
+    def show(self,part="all",colorbar=''):
         """
         shows the requested part of the grid plot.
 
@@ -752,7 +761,7 @@ class GridPlot:
         """
 
         allshown = part=="all"
-        if allshown or part=="upper": self.currentFig.pairgrid.map_upper(show_current_axis)      
+        if allshown or part=="upper": self.currentFig.pairgrid.map_upper(show_current_axis)
         if allshown or part=="lower": 
             self.currentFig.pairgrid.map_lower(show_current_axis)
             colnames = dfutils.getColNamesIndex(self._dfref().columns,self.columns)[0]
@@ -771,7 +780,7 @@ class GridPlot:
                     ax.yaxis.set_tick_params(which='both', labelbottom=False)
                     ax.set_ylabel('')             
         if allshown or part=="diag" : self.currentFig.pairgrid.map_diag(show_current_axis)
-
+        
     ################################################################################################################################
 
     def addTarget   ( self

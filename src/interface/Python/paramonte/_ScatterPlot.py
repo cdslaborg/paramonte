@@ -375,6 +375,7 @@ class ScatterPlot:
         else:
             ccolindex = []
             ccolnames = []
+            self.scatter_kws['c'] = None
 
         # check the lengths are consistent
 
