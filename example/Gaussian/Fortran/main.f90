@@ -51,7 +51,6 @@ use paramonte, only: runParaDRAM
 use LogFunc_mod, only: getLogFunc, NDIM
 
 implicit none
-external :: runparadram
 
 call runParaDRAM( NDIM &
                 , getLogFunc &

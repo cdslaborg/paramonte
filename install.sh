@@ -87,10 +87,10 @@ while [ "$1" != "" ]; do
         -l | --lib )            shift
                                 LTYPE_LIST="$1"
                                 ;;
-        -p | --parallelism )    shift
+        -p | --par )            shift
                                 PARALLELISM_LIST="$1"
                                 ;;
-        -m | --memory )         shift
+        -m | --mem )            shift
                                 MEMORY_LIST="$1"
                                 ;;
         -t | --test_enabled )   shift

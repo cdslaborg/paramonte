@@ -36,9 +36,9 @@
                                   the default is "release testing debug".
         -l | --lib              : the ParaMonte library type: static, dynamic
                                   the default is "dynamic static" for Fortran and C languages and "dynamic" for Python.
-        -m | --memory           : the ParaMonte library memory allocation type for arrays: stack, heap
+        -m | --mem              : the ParaMonte library memory allocation type for arrays: stack, heap
                                   the default is "stack heap" resulting in builds for both stack and heap memory allocations.
-        -p | --parallelism      : the ParaMonte library parallelism type: none mpi cafsingle cafshared cafdistributed
+        -p | --par              : the ParaMonte library parallelism type: none mpi cafsingle cafshared cafdistributed
                                   the default is all parallelism options resulting in serial, MPI, and Coarray-parallel library builds.
         -t | --test_enabled     : the ParaMonte library test run enabled?: true, false
                                   the default is true.

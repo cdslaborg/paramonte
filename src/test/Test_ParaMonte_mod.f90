@@ -88,7 +88,11 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+#if defined CFI_ENABLED
     function getLogFunc(ndim,Point) result(logFunc) bind(C)
+#else
+    function getLogFunc(ndim,Point) result(logFunc)
+#endif
         ! This function returns the probability density function of the standard multivariate normal distribution of ndim dimensions.
         use Statistics_mod, only: getLogProbGausMix
         use Constants_mod, only : IK, RK

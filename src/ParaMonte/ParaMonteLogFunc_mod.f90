@@ -31,7 +31,11 @@ module ParaMonteLogFunc_mod
     ! Fortran interface to the objective function implementation (getLogFunc). Here, `proc` stands for the procedure interface.
 
     abstract interface
+#if defined CFI_ENABLED
         function getLogFunc_proc(ndim,Point) result(logFunc) bind(C)
+#else
+        function getLogFunc_proc(ndim,Point) result(logFunc)
+#endif
             import :: IK, RK
 #if defined CFI_ENABLED
             integer(IK), intent(in), value  :: ndim

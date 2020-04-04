@@ -73,7 +73,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    function getLogFunc(ndim,Point) result(logFunc) bind(C)
+    function getLogFunc(ndim,Point) result(logFunc)
         ! This function returns the probability density function of the standard multivariate normal distribution of ndim dimensions.
         implicit none
         integer(IK), intent(in) :: ndim

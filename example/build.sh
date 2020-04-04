@@ -122,7 +122,7 @@ unset EXAMPLE_LANGUAGE
 unset PM_COMPILER_SUITE
 if [[ "$PMLIB_FULL_NAME" =~ .*"_fortran_".* ]]; then
     FILE_EXT=f90
-    SRC_FILES="paramonte.${FILE_EXT}"
+    SRC_FILES="paramonte.${FILE_EXT}"; export SRC_FILES
     EXAMPLE_LANGUAGE=Fortran
     if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* ]]; then
         PM_COMPILER_SUITE=intel
@@ -255,23 +255,24 @@ echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - inferred compiler choice(s): 
 
 if [ -z ${USER_SELECTED_COMPILER+x} ]; then
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - user-selected compiler/linker: none"
-    if [ -z ${USER_SELECTED_COMPILER_FLAGS+x} ]; then
-        if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
-            if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then COMPILER_FLAGS=${INTEL_C_COMPILER_FLAGS}; fi
-            if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -fpp -DIS_COMPATIBLE_COMPILER"; fi
-        fi
-        if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
-            if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then COMPILER_FLAGS=${GNU_C_COMPILER_FLAGS}; fi
-            if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -cpp -DIS_COMPATIBLE_COMPILER"; fi
-        fi
-        echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - inferred compiler/linker flags(s): ${COMPILER_FLAGS}"
-    else
-        COMPILER_FLAGS="${USER_SELECTED_COMPILER_FLAGS}"
-        echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - user-selected compiler/linker flags: ${USER_SELECTED_COMPILER_FLAGS}"
-    fi
 else
     COMPILER_LIST="${USER_SELECTED_COMPILER}"
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - user-selected compiler/linker: ${USER_SELECTED_COMPILER}"
+fi
+
+if [ -z ${USER_SELECTED_COMPILER+x} ] && [ -z ${USER_SELECTED_COMPILER_FLAGS+x} ]; then
+    if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
+        if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then COMPILER_FLAGS=${INTEL_C_COMPILER_FLAGS}; fi
+        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -fpp -DIS_COMPATIBLE_COMPILER"; fi
+    fi
+    if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
+        if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then COMPILER_FLAGS=${GNU_C_COMPILER_FLAGS}; fi
+        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -cpp -DIS_COMPATIBLE_COMPILER"; fi
+    fi
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - inferred compiler/linker flags(s): ${COMPILER_FLAGS}"
+else
+    COMPILER_FLAGS="${USER_SELECTED_COMPILER_FLAGS}"
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - user-selected compiler/linker flags: ${USER_SELECTED_COMPILER_FLAGS}"
 fi
 
 ####################################################################################################################################
@@ -286,7 +287,7 @@ do
 
     echo >&2
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - compiling ParaMonte example with ${COMPILER}"
-    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${COMPILER} ${COMPILER_FLAGS} logfunc.${FILE_EXT} main.${FILE_EXT} ${PMLIB_FULL_PATH} -o ${PM_EXAM_EXE_NAME}"
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${COMPILER} ${COMPILER_FLAGS} ${SRC_FILES} ${PMLIB_FULL_PATH} -o ${PM_EXAM_EXE_NAME}"
 
     ${COMPILER} ${COMPILER_FLAGS} ${SRC_FILES} -c
 
