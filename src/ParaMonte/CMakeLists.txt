@@ -98,11 +98,11 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/ParaDRAMRefinedChain_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetric_mod.f90
+    ${ParaMonte_SRC_DIR}/ParaMonte_mod.f90
     ${ParaMonte_SRC_DIR}/ParaMCMC_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90
-    ${ParaMonte_SRC_DIR}/ParaMonte.f90
     ${ParaMonte_SRC_DIR}/Cosmology_mod.f90
     ${ParaMonte_SRC_DIR}/StarFormation_mod.f90
     ${ParaMonte_SRC_DIR}/BandSpectrum_mod.f90
