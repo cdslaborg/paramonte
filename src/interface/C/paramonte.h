@@ -23,9 +23,9 @@
 //**********************************************************************************************************************************
 //  
 //  Description:
-//        - C header file containing ParaMonte library function prototypes that can be called from C/C++
+//        - The C header file containing the prototypes of the ParaMonte library routines to be called from C/C++.
 //  Prototypes:
-//        - runParaDRAM
+//        - runParaDRAM()
 //  Author:
 //        - Computational Data Science Lab, Monday 9:03 AM, May 16 2016, ICES, UT Austin
 //

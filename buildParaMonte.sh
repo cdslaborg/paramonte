@@ -1464,12 +1464,13 @@ export ParaMonte_BIN_DIR
 # set ParaMonte library source directories
 ####################################################################################################################################
 
-           ParaMonteTest_SRC_DIR=${ParaMonte_ROOT_DIR}/src/test
-        ParaMonteExample_SRC_DIR=${ParaMonte_ROOT_DIR}/example
-      ParaMonteInterface_SRC_DIR=${ParaMonte_ROOT_DIR}/src/interface
-     ParaMonteInterfaceC_SRC_DIR=${ParaMonteInterface_SRC_DIR}/C
-ParaMonteInterfacePython_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Python
-     ParaMontePythonTest_SRC_DIR=${ParaMonteInterfacePython_SRC_DIR}/test
+            ParaMonteTest_SRC_DIR=${ParaMonte_ROOT_DIR}/src/test
+         ParaMonteExample_SRC_DIR=${ParaMonte_ROOT_DIR}/example
+       ParaMonteInterface_SRC_DIR=${ParaMonte_ROOT_DIR}/src/interface
+      ParaMonteInterfaceC_SRC_DIR=${ParaMonteInterface_SRC_DIR}/C
+ ParaMonteInterfacePython_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Python
+ParaMonteInterfaceFortran_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Fortran
+      ParaMontePythonTest_SRC_DIR=${ParaMonteInterfacePython_SRC_DIR}/test
 
 export ParaMonteTest_SRC_DIR
 export ParaMonteExample_SRC_DIR
@@ -1477,6 +1478,7 @@ export ParaMontePythonTest_SRC_DIR
 export ParaMonteInterface_SRC_DIR
 export ParaMonteInterfaceC_SRC_DIR
 export ParaMonteInterfacePython_SRC_DIR
+export ParaMonteInterfaceFortran_SRC_DIR
 
 ####################################################################################################################################
 # build ParaMonte

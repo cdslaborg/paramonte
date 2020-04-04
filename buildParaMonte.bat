@@ -388,12 +388,12 @@ if !CFI_ENABLED! NEQ true goto LABEL_ParaMonteTest
 
 :: setup Python library source files directory
 
-set ParaMontePython_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\Python
-if exist !ParaMontePython_SRC_DIR! (
-    echo. -- !BUILD_SCRIPT_NAME! - Python source files directory: !ParaMontePython_SRC_DIR!
+set ParaMonteInterfacePython_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\Python
+if exist !ParaMonteInterfacePython_SRC_DIR! (
+    echo. -- !BUILD_SCRIPT_NAME! - Python source files directory: !ParaMonteInterfacePython_SRC_DIR!
 ) else (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: Python source files directory does not exist: !ParaMontePython_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: Python source files directory does not exist: !ParaMonteInterfacePython_SRC_DIR!
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -401,7 +401,7 @@ if exist !ParaMontePython_SRC_DIR! (
 )
 echo.
 
-call !ParaMontePython_SRC_DIR!\buildParaMontePython.bat
+call !ParaMonteInterfacePython_SRC_DIR!\buildParaMontePython.bat
 
 if !ERRORLEVEL!==1 (
     echo. 
@@ -480,8 +480,8 @@ if exist !ParaMonteExample_SRC_DIR! (
 echo.
 
 REM if !ParaMonteExample_ENABLED! NEQ true goto LABEL_EOF
-
-set ParaMonteC_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\C
+set ParaMonteInterfaceC_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\C
+set ParaMonteInterfaceFortran_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\Fortran
 
 :: build ParaMonte examples
 

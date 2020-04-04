@@ -26,11 +26,10 @@ module LogFunc_mod
 
     ! MultiVariate Normal (MVN) specifications: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
 
-    use, intrinsic :: iso_fortran_env, only: RK => real64, IK => int32
+    !use, intrinsic :: iso_fortran_env, only: RK => real64, IK => int32
+    use paramonte, only: IK, RK
 
     implicit none
-
-    character(*), parameter :: MODULE_NAME = "@Gaussian_mod"
 
     ! number of dimensions of the distribution
 
@@ -74,7 +73,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    function getLogFunc(ndim,Point) result(logFunc)
+    function getLogFunc(ndim,Point) result(logFunc) bind(C)
         ! This function returns the probability density function of the standard multivariate normal distribution of ndim dimensions.
         implicit none
         integer(IK), intent(in) :: ndim

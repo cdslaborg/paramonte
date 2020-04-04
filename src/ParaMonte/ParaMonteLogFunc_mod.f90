@@ -28,16 +28,14 @@ module ParaMonteLogFunc_mod
 
     use Constants_mod, only : IK, RK
 
-    ! C/Fortran interface for the objective function
+    ! Fortran interface to the objective function implementation (getLogFunc). Here, `proc` stands for the procedure interface.
 
     abstract interface
-#if defined CFI_ENABLED
         function getLogFunc_proc(ndim,Point) result(logFunc) bind(C)
             import :: IK, RK
+#if defined CFI_ENABLED
             integer(IK), intent(in), value  :: ndim
 #else
-        function getLogFunc_proc(ndim,Point) result(logFunc)
-            import :: IK, RK
             integer(IK), intent(in)         :: ndim
 #endif
             real(RK), intent(in)            :: Point(ndim)

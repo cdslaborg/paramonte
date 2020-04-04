@@ -22,11 +22,15 @@
 !**********************************************************************************************************************************
 !**********************************************************************************************************************************
 
+! Keep in mind that Fortran is case-insensitive, except for character values and string values. 
+! So, feel free to use upper-case or lower-case for the Fortran syntax and entity names.
+! The ParaMonte library uses camelCase convention for variable naming.
+
 #if defined IS_COMPATIBLE_COMPILER
 
 program main
 
-use ParaMonte, only: ParaDRAM
+use paramonte, only: ParaDRAM
 use LogFunc_mod, only: getLogFunc, NDIM
 
 implicit none
@@ -43,6 +47,7 @@ end program main
 
 program main
 
+use paramonte, only: runParaDRAM
 use LogFunc_mod, only: getLogFunc, NDIM
 
 implicit none

@@ -141,3 +141,5 @@ verify(reset=False)
 def helpme():
     print(__doc__)
     return None
+
+def getVersion(): return "ParaMonte Python Interface Version " + __version__

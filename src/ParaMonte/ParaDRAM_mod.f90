@@ -24,7 +24,7 @@
 
 module ParaDRAM_mod
 
-    use Constants_mod, only: IK, RK
+    use Constants_mod, only: IK, RK, CK
     use ParaMonte_mod, only: ParaMonteNumFunCall_type
     use ParaMCMC_mod, only: ParaMCMC_type, ParaMCMC_Statistics_type, ParaMCMC_Chain_type
     use SpecDRAM_mod, only: SpecDRAM_type
@@ -366,7 +366,7 @@ end module ParaDRAM_mod
     subroutine runParaDRAM  ( ndim          &
                             , getLogFunc    &
                             , inputFile     &
-                            )
+                            ) bind(C, name="runParaDRAM")
 #if defined DLL_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAM
 #endif

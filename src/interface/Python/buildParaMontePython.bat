@@ -28,7 +28,7 @@
 
 :: set ParaMonte test source directory
 
-set ParaMontePythonTest_SRC_DIR=!ParaMontePython_SRC_DIR!\test
+set ParaMontePythonTest_SRC_DIR=!ParaMonteInterfacePython_SRC_DIR!\test
 
 :: generate Python library directory
 
@@ -50,9 +50,9 @@ echo.
 :: copy necessary ParaMonte Python library files in Python's directory
 
 echo. -- ParaMontePython - copying paramonte library files to the Python directory
-echo. -- ParaMontePython - from: !ParaMontePython_SRC_DIR!\paramonte       %= no need for final slash here =%
-echo. -- ParaMontePython -   to: !ParaMontePythonTest_BLD_DIR!\paramonte\  %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMontePython_SRC_DIR!\paramonte" "!ParaMontePythonTest_BLD_DIR!\paramonte\"
+echo. -- ParaMontePython - from: !ParaMonteInterfacePython_SRC_DIR!\paramonte   %= no need for final slash here =%
+echo. -- ParaMontePython -   to: !ParaMontePythonTest_BLD_DIR!\paramonte\       %= final slash tells this is folder =%
+xcopy /s /Y "!ParaMonteInterfacePython_SRC_DIR!\paramonte" "!ParaMontePythonTest_BLD_DIR!\paramonte\"
 echo.
 
 :: copy necessary ParaMonte Python DLL files in Python's directory

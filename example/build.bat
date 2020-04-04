@@ -176,9 +176,11 @@ if errorlevel 1 (
         exit /B 1
     ) else (
         set TARGET_LANG=C
+        set SEXT=c
     )
 ) else (
     set TARGET_LANG=Fortran
+    set SEXT=f90
 )
 
 echo. -- ParaMonte - ParaMonte library target language: !TARGET_LANG!
@@ -190,15 +192,16 @@ echo. -- ParaMonte - ParaMonte library target language: !TARGET_LANG!
 :: set default number of processes to be used in parallel mode
 
 if not defined nproc set nproc=3
+set SRC_FILES=logfunc.!SEXT! main.!SEXT!
 set EXE_NAME=main.exe
 
 set COMPILER_NAME=
 if !TARGET_LANG!==Fortran (
 
-    set SEXT=f90
     set COMPILER_NAME=ifort
     set COMPILER_SUITE=intel
     set LINKER_FLAGS=/link /out:!EXE_NAME!
+    set SRC_FILES=paramonte.!SEXT! !SRC_FILES!
 
     if !PTYPE!==mpi (
         set COMPILER_NAME=mpiifort -fc=ifort
@@ -208,8 +211,7 @@ if !TARGET_LANG!==Fortran (
         set FOR_COARRAY_NUM_IMAGES=!nproc!
     )
 
-    set COMPILER_FLAGS=/fpp
-    if !LTYPE!==dynamic set COMPILER_FLAGS=!COMPILER_FLAGS! /DIS_COMPATIBLE_COMPILER
+    set COMPILER_FLAGS=/fpp /DIS_COMPATIBLE_COMPILER
     if !BTYPE!==debug   set COMPILER_FLAGS=!COMPILER_FLAGS! /debug:full /CB /Od /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /check:bounds /fpe-all:0 /Qdiag-error-limit:10 /Qdiag-disable:5268 /Qdiag-disable:7025 /Qtrapuv
     if !BTYPE!==release set COMPILER_FLAGS=!COMPILER_FLAGS! /O3 /Qip /Qipo /Qunroll /Qunroll-aggressive /Qinline-dllimport
     if !BTYPE!==testing set COMPILER_FLAGS=!COMPILER_FLAGS! /Od
@@ -218,7 +220,6 @@ if !TARGET_LANG!==Fortran (
 
 if !TARGET_LANG!==C (
 
-    set SEXT=c
     set COMPILER_NAME=icl
     set COMPILER_SUITE=intel
     set LINKER_FLAGS=/link /out:!EXE_NAME!
@@ -262,10 +263,10 @@ if not defined ParaMonteExample_EXE_ENABLED set ParaMonteExample_EXE_ENABLED=tru
 if !ParaMonteExample_EXE_ENABLED!==false goto LABEL_ParaMonteExample_RUN_ENABLED
 
 if !PTYPE!==mpi (
-    echo. -- ParaMonte - ParaMonte example compiling: "!COMPILER_NAME! !COMPILER_FLAGS! logfunc.!SEXT! main.!SEXT! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
-                                                  call !COMPILER_NAME! !COMPILER_FLAGS! logfunc.!SEXT! main.!SEXT! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
+    echo. -- ParaMonte - ParaMonte example compiling: "!COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
+                                                  call !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
 ) else (
-                                                       !COMPILER_NAME! !COMPILER_FLAGS! logfunc.!SEXT! main.!SEXT! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
+                                                       !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

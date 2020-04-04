@@ -24,8 +24,7 @@
 
 module Test_ParaMonte_mod
 
-    !use Constants_mod, only: IK, RK
-    use ParaMonte, only: MODULE_NAME, ParaDRAM, IK, RK
+    use Constants_mod, only: IK, RK
     use Test_mod, only: Test_type
 
     implicit none
@@ -49,6 +48,7 @@ contains
 
     subroutine test_ParaDRAM()
 
+        use ParaDRAM_mod, only: MODULE_NAME
         implicit none
 
         Test = Test_type(moduleName=MODULE_NAME)
@@ -63,9 +63,10 @@ contains
 
     subroutine test_runParaDRAM()
 
+        use ParaDRAM_mod, only: ParaDRAM_type
         implicit none
         character(:), allocatable   :: internalFile
-        type(ParaDRAM)              :: PD
+        type(ParaDRAM_type)         :: PD
 
         internalFile = "&ParaDRAM randomSeed = 1111 chainSize = 30000 /"
 
@@ -87,11 +88,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-#if defined CFI_ENABLED
     function getLogFunc(ndim,Point) result(logFunc) bind(C)
-#else
-    function getLogFunc(ndim,Point) result(logFunc)
-#endif
         ! This function returns the probability density function of the standard multivariate normal distribution of ndim dimensions.
         use Statistics_mod, only: getLogProbGausMix
         use Constants_mod, only : IK, RK
