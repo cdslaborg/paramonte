@@ -44,7 +44,7 @@ set ParaMonteExample_BLD_DIR=!ParaMonte_BLD_DIR!\example
 
 :: select examples to build
 
-set EXAM_LIST=Gaussian
+set EXAM_LIST=MVN
 
 :: select languages for which to build
 
@@ -97,11 +97,11 @@ for %%l in (!LANG_LIST!) do (
         REM set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\!PMLIB_NAME!_!ParaMonteVersion!
         set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\!PMLIB_NAME!
         if !IS_Python_LANG!==true set ParaMonteExample_BIN_DIR_CURRENT=!ParaMontePython_BIN_ROOT_DIR!\paramonte
-        echo. -- ParaMonte - ParaMonte library binaries directory: !ParaMonteExample_BIN_DIR_CURRENT!
+        echo. -- ParaMonte - The ParaMonte library binaries directory: !ParaMonteExample_BIN_DIR_CURRENT!
 
         set ParaMonteExample_BLD_DIR_CURRENT=!ParaMonteExample_LNG_DIR!\%%e
         if not exist !ParaMonteExample_BLD_DIR_CURRENT! (
-            echo. -- ParaMonteExample%%l - ParaMonte library %%e example directory: !ParaMonteExample_BLD_DIR_CURRENT!
+            echo. -- ParaMonteExample%%l - The ParaMonte library %%e example directory: !ParaMonteExample_BLD_DIR_CURRENT!
             mkdir "!ParaMonteExample_BLD_DIR_CURRENT!\"
         )
 
@@ -133,21 +133,21 @@ for %%l in (!LANG_LIST!) do (
             xcopy /s /Y "!ParaMonteInterfacePython_SRC_DIR!\paramonte" "!ParaMonteExample_BLD_DIR_CURRENT!\paramonte\"
             xcopy /s /Y "!ParaMonteInterfacePython_SRC_DIR!\paramonte" "!ParaMonteExample_BIN_DIR_CURRENT!\"
 
-            REM PyPI build - ParaMonte library Python setup files
+            REM PyPI build - The ParaMonte library Python setup files
 
             echo. -- ParaMonteExample%%l - copying the ParaMonte library Python setup files...
             echo. -- ParaMonteExample%%l - from: !ParaMonteInterfacePython_SRC_DIR!\setup   %= no need for final slash here =%
             echo. -- ParaMonteExample%%l -   to: !ParaMontePython_BIN_ROOT_DIR!\            %= final slash tells this is folder =%
             xcopy /s /Y "!ParaMonteInterfacePython_SRC_DIR!\setup" "!ParaMontePython_BIN_ROOT_DIR!\"
 
-            REM PyPI build - ParaMonte library license files
+            REM PyPI build - The ParaMonte library license files
 
             echo. -- ParaMonteExample%%l - copying the ParaMonte library license file...
             echo. -- ParaMonteExample%%l - from: !ParaMonte_ROOT_DIR!\LICENSE %= no need for final slash here =%
             echo. -- ParaMonteExample%%l -   to: !ParaMontePython_BIN_ROOT_DIR!\LICENSE %= final slash tells this is folder =%
             copy "!ParaMonte_ROOT_DIR!\LICENSE" "!ParaMontePython_BIN_ROOT_DIR!\LICENSE"
 
-            REM PyPI build - ParaMonte library CHANGES.md files
+            REM PyPI build - The ParaMonte library CHANGES.md files
 
             echo. -- ParaMonteExample%%l - copying the ParaMonte library CHANGES.md file...
             echo. -- ParaMonteExample%%l - from: !ParaMonte_ROOT_DIR!\CHANGES.md %= no need for final slash here =%
@@ -252,7 +252,7 @@ if %ERRORLEVEL%==1 (
 if %ERRORLEVEL%==0 (
     echo.
     echo.
-    echo. -- ParaMonteExample - ParaMonte library example build successful. 
+    echo. -- ParaMonteExample - The ParaMonte library example build successful. 
     echo.
 )
 

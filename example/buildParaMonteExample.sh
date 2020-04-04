@@ -43,7 +43,7 @@ set ParaMonteExample_BLD_DIR=${ParaMonte_BLD_DIR}/example
 
 # select examples to build
 
-EXAM_LIST="Gaussian"
+EXAM_LIST="MVN"
 export EXAM_LIST
 
 # select languages for which to build

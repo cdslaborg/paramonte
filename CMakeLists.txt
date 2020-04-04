@@ -345,16 +345,16 @@ include(SetParaMonteCompilerVersion)
 # Flags configuring the ParaMonte library build
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-option(DLL_ENABLED                                  "Define DLL_ENABLED preprocessor flag" OFF)
-option(ParaMonte_OBJ_ENABLED                        "Build ParaMonte library object files" ON)
-option(ParaMonteTest_OBJ_ENABLED                    "Build ParaMonte library test object files, intended only for developers" ON)
-option(ParaMonteTest_EXE_ENABLED                    "Build ParaMonte library test executables, intended only for developers" OFF)
-option(ParaMonteTest_RUN_ENABLED                    "Run ParaMonte library developer tests, intended only for developers" OFF)
-option(ParaMonteExampleGaussianFortran_OBJ_ENABLED  "Build ParaMonte library examples' object files for Fortran " OFF)
-option(ParaMonteExampleGaussianFortran_EXE_ENABLED  "Build ParaMonte library examples' executables for Fortran" OFF)
-option(ParaMonteExampleGaussianFortran_RUN_ENABLED  "Run ParaMonte library examples' executables for Fortran" OFF)
-option(ParaMonteExampleGaussianPython_BLD_ENABLED   "Build ParaMonte library examples' sctips for Python" OFF)
-option(ParaMonteExampleGaussianPython_RUN_ENABLED   "Run ParaMonte library examples' sctips for Python" OFF)
+option(DLL_ENABLED                             "Define DLL_ENABLED preprocessor flag" OFF)
+option(ParaMonte_OBJ_ENABLED                   "Build ParaMonte library object files" ON)
+option(ParaMonteTest_OBJ_ENABLED               "Build ParaMonte library test object files, intended only for developers" ON)
+option(ParaMonteTest_EXE_ENABLED               "Build ParaMonte library test executables, intended only for developers" OFF)
+option(ParaMonteTest_RUN_ENABLED               "Run ParaMonte library developer tests, intended only for developers" OFF)
+option(ParaMonteExampleMVNFortran_OBJ_ENABLED  "Build ParaMonte library examples' object files for Fortran " OFF)
+option(ParaMonteExampleMVNFortran_EXE_ENABLED  "Build ParaMonte library examples' executables for Fortran" OFF)
+option(ParaMonteExampleMVNFortran_RUN_ENABLED  "Run ParaMonte library examples' executables for Fortran" OFF)
+option(ParaMonteExampleMVNPython_BLD_ENABLED   "Build ParaMonte library examples' sctips for Python" OFF)
+option(ParaMonteExampleMVNPython_RUN_ENABLED   "Run ParaMonte library examples' sctips for Python" OFF)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # define library linking type

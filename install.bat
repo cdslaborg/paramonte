@@ -60,9 +60,8 @@ REM type .\bmake\install_usage.txt
 set LANG_LIST=
 set BTYPE_LIST=
 set LTYPE_LIST=
-set CAFTYPE_LIST=
-set MPI_ENABLED_LIST=
-set HEAP_ARRAY_ENABLED_LIST=
+set MEMORY_LIST=
+set PARALLELISM_LIST=
 set FOR_COARRAY_NUM_IMAGES=
 set ParaMonte_INSTALL_CLEANUP_ENABLED=true
 set DRY_RUN=false
@@ -137,46 +136,31 @@ if not "%1"=="" (
         shift
     )
 
-    REM --caf
+    REM --par
 
-    if "!FLAG!"=="--caf" (
+    if "!FLAG!"=="--par" (
         set FLAG_SUPPORTED=true
         for %%a in ("!VALUE:/=" "!") do (
             set DELIM=
-            if defined CAFTYPE_LIST set DELIM=/
-            set CAFTYPE_LIST=!CAFTYPE_LIST!!DELIM!%%~a
+            if defined PARALLELISM_LIST set DELIM=/
+            set PARALLELISM_LIST=!PARALLELISM_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
-            for %%V in ( "none" "single" "shared" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
+            for %%V in ( "none" "mpi" "cafsingle" "cafshared" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
             if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
         )
         shift
     )
 
-    REM --mpi_enabled
+    REM --mem
 
-    if "!FLAG!"=="--mpi_enabled" (
+    if "!FLAG!"=="--mem" (
         set FLAG_SUPPORTED=true
         for %%a in ("!VALUE:/=" "!") do (
             set DELIM=
-            if defined MPI_ENABLED_LIST set DELIM=/
-            set MPI_ENABLED_LIST=!MPI_ENABLED_LIST!!DELIM!%%~a
+            if defined MEMORY_LIST set DELIM=/
+            set MEMORY_LIST=!MEMORY_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
-            for %%V in ( "true" "false" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
-            if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
-        )
-        shift
-    )
-
-    REM --heap_enabled
-
-    if "!FLAG!"=="--heap_enabled" (
-        set FLAG_SUPPORTED=true
-        for %%a in ("!VALUE:/=" "!") do (
-            set DELIM=
-            if defined HEAP_ARRAY_ENABLED_LIST set DELIM=/
-            set HEAP_ARRAY_ENABLED_LIST=!HEAP_ARRAY_ENABLED_LIST!!DELIM!%%~a
-            set VALUE_SUPPORTED=false
-            for %%V in ( "true" "false" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
+            for %%V in ( "stack" "heap" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
             if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
         )
         shift
@@ -268,44 +252,29 @@ if "!FLAG_SUPPORTED!"=="true" (
 
 REM echo warnings
 
-if defined CAFTYPE_LIST (
-    for %%c in ("!CAFTYPE_LIST:/=" "!") do (
-        if %%c NEQ "none" (
-            if defined MPI_ENABLED_LIST (
-                for %%a in ("!MPI_ENABLED_LIST:/=" "!") do (
-                    if %%~a==true (
+if defined PARALLELISM_LIST (
+    for %%P in ("!PARALLELISM_LIST:/=" "!") do (
+        set PARALLELISM=%%~P
+        set INITIALS=!PARALLELISM:~0,3!
+        if !INITIALS!==caf (
+            if defined LANG_LIST (
+                for %%G in ("!LANG_LIST:/=" "!") do (
+                    if %%G NEQ "fortran" (
                         echo.
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot 
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: be specified along with the MPI flag "--mpi_enabled %%~a".
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray parallelism flag "--par %%~P" cannot be 
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~G language "--lang %%~G".
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
                     )
                 )
             )
-            if defined LANG_LIST (
-                for %%l in ("!LANG_LIST:/=" "!") do (
-                    if %%l NEQ "fortran" (
-                        if defined CAFTYPE_LIST (
-                            echo.
-                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
-                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~l language "--lang %%~l".
-                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
-                            REM goto LABEL_ERR
-                        )
-                    )
-                )
-            )
-            if defined LANG_LIST (
-                for %%l in ("!LANG_LIST:/=" "!") do (
-                    if %%l NEQ "fortran" (
-                        if defined CAFTYPE_LIST (
-                            echo.
-                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray flag "--caf !CAFTYPE_LIST!" cannot be 
-                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~l language "--lang %%~l".
-                            echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
-                            REM goto LABEL_ERR
-                        )
-                    )
+            if defined LTYPE_LIST (
+                for %%L in ("!LTYPE_LIST:/=" "!") do (
+                    echo.
+                    echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray parallelism flag "--par %%~P" cannot be 
+                    echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the dynamic library build flag "--lib %%~L".
+                    echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
+                    REM goto LABEL_ERR
                 )
             )
         )
@@ -314,13 +283,13 @@ if defined CAFTYPE_LIST (
 
 if defined LANG_LIST (
     if defined LTYPE_LIST (
-        for %%l in ("!LANG_LIST:/=" "!") do (
-            if %%~l==python (
-                for %%a in ("!LTYPE_LIST:/=" "!") do (
-                    if %%~a==static (
+        for %%G in ("!LANG_LIST:/=" "!") do (
+            if %%~G==python (
+                for %%L in ("!LTYPE_LIST:/=" "!") do (
+                    if %%~L==static (
                         echo.
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The dynamic library option "--lib %%~a" cannot be 
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~l language "--lang %%~l".
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The dynamic library option "--lib %%~L" cannot be 
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~G language "--lang %%~G".
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
                     )
@@ -331,14 +300,14 @@ if defined LANG_LIST (
 )
 
 if defined LTYPE_LIST (
-    if defined HEAP_ARRAY_ENABLED_LIST (
-        for %%l in ("!LTYPE_LIST:/=" "!") do (
-            for %%h in ("!HEAP_ARRAY_ENABLED_LIST:/=" "!") do (
-                if %%~h==false (
-                    if %%~l==dynamic (
+    if defined MEMORY_LIST (
+        for %%L in ("!LTYPE_LIST:/=" "!") do (
+            for %%M in ("!MEMORY_LIST:/=" "!") do (
+                if %%~M==stack (
+                    if %%~L==dynamic (
                         echo.
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The stack memory allocation option "--heap_enabled %%~h" cannot be 
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the dynamic library build "--lib %%~l".
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The stack memory allocation option "--mem %%~M" cannot be 
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the dynamic library build "--lib %%~L".
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
                     )
@@ -352,12 +321,11 @@ echo.
 
 :: set build type
 
-if not defined LANG_LIST                            set LANG_LIST=c/fortran/python
-if not defined BTYPE_LIST                           set BTYPE_LIST=release/testing/debug
-if not defined LTYPE_LIST                           set LTYPE_LIST=static/dynamic
-if not defined CAFTYPE_LIST                         set CAFTYPE_LIST=none/single/shared
-if not defined MPI_ENABLED_LIST                     set MPI_ENABLED_LIST=true/false
-if not defined HEAP_ARRAY_ENABLED_LIST              set HEAP_ARRAY_ENABLED_LIST=true/false
+if not defined LANG_LIST        set LANG_LIST=c/fortran/python
+if not defined BTYPE_LIST       set BTYPE_LIST=release/testing/debug
+if not defined LTYPE_LIST       set LTYPE_LIST=static/dynamic
+if not defined PARALLELISM_LIST set PARALLELISM_LIST=none/mpi/cafsingle/cafshared
+if not defined MEMORY_LIST      set MEMORY_LIST=true/false
 
 REM remove redundancies
 
@@ -406,14 +374,11 @@ if !DRY_RUN!==true (
     set FRESH_RUN=true
 )
 
-REM set PAR_TYPE_LIST=!MPI_ENABLED_LIST!/!CAFTYPE_LIST!
-
 echo. LANG_LIST=!LANG_LIST!
 echo. BTYPE_LIST=!BTYPE_LIST!
 echo. LTYPE_LIST=!LTYPE_LIST!
-echo. HEAP_ARRAY_ENABLED_LIST=!HEAP_ARRAY_ENABLED_LIST!
-echo. CAFTYPE_LIST=!CAFTYPE_LIST!
-echo. MPI_ENABLED_LIST=!MPI_ENABLED_LIST!
+echo. MEMORY_LIST=!MEMORY_LIST!
+echo. PARALLELISM_LIST=!PARALLELISM_LIST!
 
 for %%G in ("!LANG_LIST:/=" "!") do (
 
@@ -421,90 +386,98 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
         for %%L in ("!LTYPE_LIST:/=" "!") do (
 
-            for %%H in ("!HEAP_ARRAY_ENABLED_LIST:/=" "!") do (
+            for %%M in ("!MEMORY_LIST:/=" "!") do (
 
-                for %%C in ("!CAFTYPE_LIST:/=" "!") do (
+                for %%P in ("!PARALLELISM_LIST:/=" "!") do (
 
-                    for %%M in ("!MPI_ENABLED_LIST:/=" "!") do (
+                    set BENABLED=true
 
-                        set BENABLED=true
+                    set ParaMonte_OBJ_ENABLED=!FRESH_RUN!
+                    set ParaMonte_LIB_ENABLED=!FRESH_RUN!
+                    set ParaMonteExample_EXE_ENABLED=!EXAM_ENABLED!
+                    set ParaMonteExample_RUN_ENABLED=!EXAM_ENABLED!
 
-                        set ParaMonte_OBJ_ENABLED=!FRESH_RUN!
-                        set ParaMonte_LIB_ENABLED=!FRESH_RUN!
-                        set ParaMonteExample_EXE_ENABLED=!EXAM_ENABLED!
-                        set ParaMonteExample_RUN_ENABLED=!EXAM_ENABLED!
+                    set BTYPE=%%~B
+                    set LTYPE=%%~L
+                    set HEAP_ARRAY_ENABLED=false
+                    if %%~M==heap set HEAP_ARRAY_ENABLED=true
 
-                        set BTYPE=%%~B
-                        set LTYPE=%%~L
-                        set CAFTYPE=%%~C
-                        set MPI_ENABLED=%%~M
-                        set HEAP_ARRAY_ENABLED=%%~H
+                    if %%~G==fortran (
+                        set CFI_ENABLED=false
+                        set ParaMonteTest_OBJ_ENABLED=!FRESH_RUN!
+                        set ParaMonteTest_EXE_ENABLED=!FRESH_RUN!
+                        set ParaMonteTest_RUN_ENABLED=!TEST_ENABLED!
+                    ) else (
+                        set CFI_ENABLED=true
+                        set ParaMonteTest_OBJ_ENABLED=false
+                        set ParaMonteTest_EXE_ENABLED=false
+                        set ParaMonteTest_RUN_ENABLED=false
+                    )
 
-                        if %%~G==fortran (
-                            set CFI_ENABLED=false
-                            set ParaMonteTest_OBJ_ENABLED=!FRESH_RUN!
-                            set ParaMonteTest_EXE_ENABLED=!FRESH_RUN!
-                            set ParaMonteTest_RUN_ENABLED=!TEST_ENABLED!
-                        ) else (
-                            set CFI_ENABLED=true
-                            set ParaMonteTest_OBJ_ENABLED=false
-                            set ParaMonteTest_EXE_ENABLED=false
-                            set ParaMonteTest_RUN_ENABLED=false
-                        )
-
+                    set CAFTYPE=
+                    set CAF_ENABLED=false
+                    set MPI_ENABLED=false
+                    set PARALLELISM=%%~P
+                    if !PARALLELISM!==mpi set MPI_ENABLED=true
+                    set INITIALS=!PARALLELISM:~0,3!
+                    if !INITIALS!==caf (
                         set CAF_ENABLED=true
-                        if !CAFTYPE!==none set CAF_ENABLED=false
+                        set CAFTYPE=!PARALLELISM:~3!
+                    )
 
-                        if !LTYPE!==dynamic (
-                            if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
-                            if !CAF_ENABLED!==true set BENABLED=false
+                    if !LTYPE!==dynamic (
+                        if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
+                        if !CAF_ENABLED!==true set BENABLED=false
+                    )
+                    if !CAF_ENABLED!==true (
+                        if !MPI_ENABLED!==true (
+                            set BENABLED=false
                         )
-                        if !CAF_ENABLED!==true (
-                            if !MPI_ENABLED!==true (
-                                set BENABLED=false
-                            )
-                            if !HEAP_ARRAY_ENABLED!==false (
-                                set BENABLED=false
-                            )
-                            if !CFI_ENABLED!==true (
-                                set BENABLED=false
-                            )
+                        if !HEAP_ARRAY_ENABLED!==false (
+                            set BENABLED=false
                         )
-
-                        if !BENABLED!==true (
-
-                            echo.
-                            echo.************************************************************************************************************************************
-                            echo.**** ParaMonte - current library build: --lang %%~G --build %%~B --lib %%~L --heap_enabled %%~H --mpi_enabled %%~M --caf %%~C
-                            echo.************************************************************************************************************************************
-                            echo.
-
-                            call buildParaMonte.bat
-
+                        if !CFI_ENABLED!==true (
+                            set BENABLED=false
                         )
+                    )
 
-                        if !ERRORLEVEL! NEQ 0 (
-                            echo.
-                            echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: ParaMonte library build failed for the following configuration:
-                            echo.-- !INSTALL_SCRIPT_NAME! - 
-                            echo.-- !INSTALL_SCRIPT_NAME! -               language: %%~G
-                            echo.-- !INSTALL_SCRIPT_NAME! -             build type: %%~B
-                            echo.-- !INSTALL_SCRIPT_NAME! -           library type: %%~L
-                            echo.-- !INSTALL_SCRIPT_NAME! -     heap array enabled: %%~H
-                            echo.-- !INSTALL_SCRIPT_NAME! -           Coarray type: %%~C
-                            echo.-- !INSTALL_SCRIPT_NAME! -            MPI enabled: %%~M
-                            echo.-- !INSTALL_SCRIPT_NAME! - 
-                            echo.-- !INSTALL_SCRIPT_NAME! - Please report this error at: 
-                            echo.-- !INSTALL_SCRIPT_NAME! - 
-                            echo.-- !INSTALL_SCRIPT_NAME! -     https://github.com/cdslaborg/paramonte/issues
-                            echo.-- !INSTALL_SCRIPT_NAME! - 
-                            echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting...
-                            echo.
-                            cd %~dp0
-                            set ERRORLEVEL=1
-                            exit /B 1
-                        )
+                    if !BENABLED!==true (
 
+                        echo.
+                        echo.************************************************************************************************************************************
+                        echo.**** ParaMonte - current library build: --lang %%~G --build %%~B --lib %%~L --mem %%~M --par %%~P
+                        echo.************************************************************************************************************************************
+                        echo.
+
+                        call buildParaMonte.bat
+
+                    ) else (
+
+                        echo.
+                        echo.-- !INSTALL_SCRIPT_NAME! - inconsistent configuration flags detected. skipping...
+                        echo.
+
+                    )
+
+                    if !ERRORLEVEL! NEQ 0 (
+                        echo.
+                        echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: ParaMonte library build failed for the following configuration:
+                        echo.-- !INSTALL_SCRIPT_NAME! - 
+                        echo.-- !INSTALL_SCRIPT_NAME! -               language: %%~G
+                        echo.-- !INSTALL_SCRIPT_NAME! -             build type: %%~B
+                        echo.-- !INSTALL_SCRIPT_NAME! -           library type: %%~L
+                        echo.-- !INSTALL_SCRIPT_NAME! -      momory allocation: %%~M
+                        echo.-- !INSTALL_SCRIPT_NAME! -            parallelism: %%~P
+                        echo.-- !INSTALL_SCRIPT_NAME! - 
+                        echo.-- !INSTALL_SCRIPT_NAME! - Please report this error at: 
+                        echo.-- !INSTALL_SCRIPT_NAME! - 
+                        echo.-- !INSTALL_SCRIPT_NAME! -     https://github.com/cdslaborg/paramonte/issues
+                        echo.-- !INSTALL_SCRIPT_NAME! - 
+                        echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting...
+                        echo.
+                        cd %~dp0
+                        set ERRORLEVEL=1
+                        exit /B 1
                     )
 
                 )
