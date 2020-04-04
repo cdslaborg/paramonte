@@ -60,9 +60,8 @@ usage()
 unset LANG_LIST
 unset BTYPE_LIST
 unset LTYPE_LIST
-unset CAFTYPE_LIST
-unset MPI_ENABLED_LIST
-unset HEAP_ARRAY_ENABLED_LIST
+unset PARALLELISM_LIST
+unset MEMORY_LIST
 unset ParaMonteTest_RUN_ENABLED
 unset ParaMonteExample_RUN_ENABLED
 unset Fortran_COMPILER_PATH
@@ -88,14 +87,11 @@ while [ "$1" != "" ]; do
         -l | --lib )            shift
                                 LTYPE_LIST="$1"
                                 ;;
-        -c | --caf )            shift
-                                CAFTYPE_LIST="$1"
+        -p | --parallelism )    shift
+                                PARALLELISM_LIST="$1"
                                 ;;
-        -m | --mpi_enabled )    shift
-                                MPI_ENABLED_LIST="$1"
-                                ;;
-        -e | --heap_enabled )   shift
-                                HEAP_ARRAY_ENABLED_LIST="$1"
+        -m | --memory )         shift
+                                MEMORY_LIST="$1"
                                 ;;
         -t | --test_enabled )   shift
                                 ParaMonteTest_RUN_ENABLED="$1"
@@ -197,11 +193,10 @@ reportConflict()
 {
     usage
     echo >&2 ""
-    echo >&2 "-- ParaMonte - FATAL: conflicting flag values detected."
-    echo >&2 "-- ParaMonte - FATAL: $1"
-    echo >&2 ""
-    echo >&2 "-- ParaMonte - gracefully exiting."
-    echo >&2 ""
+    echo >&2 "-- ParaMonte - WARNING: conflicting flag values detected."
+    echo >&2 "-- ParaMonte - WARNING: $1"
+    echo >&2 "-- ParaMonte - WARNING: The requested build configuration will ignored."
+    echo >&2 "-- ParaMonte - skipping..."
     echo >&2 ""
     exit 1
 }
@@ -281,47 +276,35 @@ if ! [ -z ${LTYPE_LIST+x} ]; then
     fi
 fi
 
-if ! [ -z ${CAFTYPE_LIST+x} ]; then
-    for CAFTYPE in $CAFTYPE_LIST; do
-        if  [[ $CAFTYPE != [nN][oO][nN][eE] 
-            && $CAFTYPE != [sS][iI][nN][gG][lL][eE] 
-            && $CAFTYPE != [sS][hH][aA][rR][eE][dD] 
-            && $CAFTYPE != [dD][iI][sS][tT][rR][iI][bB][uU][tT][eE][dD] ]]; then
-            reportBadValue "-c or --caf" $CAFTYPE
+if ! [ -z ${PARALLELISM_LIST+x} ]; then
+    for PARALLELISM in $PARALLELISM_LIST; do
+        if  [[ $PARALLELISM != [nN][oO][nN][eE] 
+            && $PARALLELISM != [cC][aA][fF][sS][iI][nN][gG][lL][eE] 
+            && $PARALLELISM != [cC][aA][fF][sS][hH][aA][rR][eE][dD] 
+            && $PARALLELISM != [cC][aA][fF][dD][iI][sS][tT][rR][iI][bB][uU][tT][eE][dD] 
+            && $PARALLELISM != [mM][pP][iI] 
+            ]]; then
+            reportBadValue "-p or --parallelism" $PARALLELISM
         fi
     done
-    if [ "${CAFTYPE_LIST}" = "" ]; then
-        unset CAFTYPE_LIST
+    if [ "${PARALLELISM_LIST}" = "" ]; then
+        unset PARALLELISM_LIST
     else
-        CAFTYPE_LIST="$(getLowerCase $CAFTYPE_LIST)"
+        PARALLELISM_LIST="$(getLowerCase $PARALLELISM_LIST)"
     fi
 fi
 
-if ! [ -z ${MPI_ENABLED_LIST+x} ]; then
-    for MPI_ENABLED in $MPI_ENABLED_LIST; do
-        if  [[ $MPI_ENABLED != [tT][rR][uU][eE] 
-            && $MPI_ENABLED != [fF][aA][lL][sS][eE] ]]; then
-            reportBadValue "-m or --mpi_enabled" $MPI_ENABLED
+if ! [ -z ${MEMORY_LIST+x} ]; then
+    for MEMORY in $MEMORY_LIST; do
+        if  [[ $MEMORY != [hH][eE][aA][pP] 
+            && $MEMORY != [sS][tT][aA][cC][kK] ]]; then
+            reportBadValue "-m or --memory" $MEMORY
         fi
     done
-    if [ "${MPI_ENABLED_LIST}" = "" ]; then
-        unset MPI_ENABLED_LIST
+    if [ "${MEMORY_LIST}" = "" ]; then
+        unset MEMORY_LIST
     else
-        MPI_ENABLED_LIST="$(getLowerCase $MPI_ENABLED_LIST)"
-    fi
-fi
-
-if ! [ -z ${HEAP_ARRAY_ENABLED_LIST+x} ]; then
-    for HEAP_ARRAY_ENABLED in $HEAP_ARRAY_ENABLED_LIST; do
-        if  [[ $HEAP_ARRAY_ENABLED != [tT][rR][uU][eE] 
-            && $HEAP_ARRAY_ENABLED != [fF][aA][lL][sS][eE] ]]; then
-            reportBadValue "-e or --heap_enabled" $HEAP_ARRAY_ENABLED
-        fi
-    done
-    if [ "${HEAP_ARRAY_ENABLED_LIST}" = "" ]; then
-        unset HEAP_ARRAY_ENABLED_LIST
-    else
-        HEAP_ARRAY_ENABLED_LIST="$(getLowerCase $HEAP_ARRAY_ENABLED_LIST)"
+        MEMORY_LIST="$(getLowerCase $MEMORY_LIST)"
     fi
 fi
 
@@ -389,19 +372,17 @@ fi
 # verify arguments consistencies
 ####################################################################################################################################
 
-if ! [ -z ${CAFTYPE_LIST+x} ]; then
-    for CAFTYPE in $CAFTYPE_LIST; do
-        if  [ "${CAFTYPE}" != "none" ]; then
+if ! [ -z ${PARALLELISM_LIST+x} ]; then
+    for PARALLELISM in $PARALLELISM_LIST; do
+        if  [[ "${PARALLELISM}" =~ .*"caf".* ]]; then
             for LANG in $LANG_LIST; do
                 if  [ "${LANG}" != "fortran" ]; then
-                    reportConflict "Coarray Fortran parallelism cannot be used to build library for ${LANG} language."
+                    reportConflict "Coarray Fortran parallelism cannot be used to build the ParaMonte library for the ${LANG} language."
                 fi
             done
-            for MPI_ENABLED in $MPI_ENABLED_LIST; do
-                if  [ "${MPI_ENABLED}" = "true" ]; then
-                    reportConflict "Coarray Fortran parallelism cannot be mixed with MPI."
-                fi
-            done
+            if  [[ "${PARALLELISM}" =~ .*"mpi".* ]]; then
+                reportConflict "Coarray Fortran parallelism cannot be mixed with MPI."
+            fi
             for LTYPE in $LTYPE_LIST; do
                 if  [ "${LTYPE}" = "dynamic" ]; then
                     reportConflict "Coarray Fortran parallelism cannot be used with dynamic library build option."
@@ -457,14 +438,11 @@ fi
 if [ -z ${LTYPE_LIST+x} ]; then
     LTYPE_LIST="static dynamic"
 fi
-if [ -z ${CAFTYPE_LIST+x} ]; then
-    CAFTYPE_LIST="none single shared distributed"
+if [ -z ${PARALLELISM_LIST+x} ]; then
+    PARALLELISM_LIST="none mpi cafsingle cafshared cafdistributed"
 fi
-if [ -z ${MPI_ENABLED_LIST+x} ]; then
-    MPI_ENABLED_LIST="true false"
-fi
-if [ -z ${HEAP_ARRAY_ENABLED_LIST+x} ]; then
-    HEAP_ARRAY_ENABLED_LIST="true false"
+if [ -z ${MEMORY_LIST+x} ]; then
+    MEMORY_LIST="stack heap"
 fi
 if [ -z ${ParaMonteTest_RUN_ENABLED+x} ]; then
     ParaMonteTest_RUN_ENABLED="true"
@@ -475,8 +453,8 @@ fi
 
 if [ "${LANG_LIST}" = "python" ]; then
     LTYPE_LIST="dynamic"
-    CAFTYPE_LIST="none"
-    HEAP_ARRAY_ENABLED_LIST="true"
+    PARALLELISM_LIST="none mpi"
+    MEMORY_LIST="heap"
 fi
 
 for PMCS in $PMCS_LIST; do
@@ -487,113 +465,113 @@ for PMCS in $PMCS_LIST; do
 
             for LTYPE in $LTYPE_LIST; do
 
-                for HEAP_ARRAY_ENABLED in $HEAP_ARRAY_ENABLED_LIST; do
+                for MEMORY in $MEMORY_LIST; do
 
-                    for MPI_ENABLED in $MPI_ENABLED_LIST; do
+                    for PARALLELISM in $PARALLELISM_LIST; do
 
-                        for CAFTYPE in $CAFTYPE_LIST; do
+                        BENABLED=true
 
-                            BENABLED=true
+                        test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
+                        exam_enabled_flag="--exam_enabled ${ParaMonteExample_RUN_ENABLED}"
 
-                            test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
-                            exam_enabled_flag="--exam_enabled ${ParaMonteExample_RUN_ENABLED}"
+                        if [ "${PMCS}" = "none" ]; then
+                           compiler_suite_flag=""
+                        else
+                           compiler_suite_flag="--compiler_suite ${PMCS}"
+                        fi
 
-                            if [ "${PMCS}" = "none" ]; then
-                               compiler_suite_flag=""
-                            else
-                               compiler_suite_flag="--compiler_suite ${PMCS}"
-                            fi
+                        caftype_flag="--caf none"
+                        mpi_enabled_flag="--mpi_enabled false"
+                        if [[ "${PARALLELISM}" =~ .*"caf".* ]]; then
+                            caftype_flag="--caf ${PARALLELISM:3}"
+                        elif [[ "${PARALLELISM}" =~ .*"mpi".* ]]; then
+                            mpi_enabled_flag="--mpi_enabled true"
+                        fi
+                        lib_flag="--lib ${LTYPE}"
+                        build_flag="--build ${BTYPE}"
+                        cfi_enabled_flag="--cfi_enabled ${CFI_ENABLED}"
+                        heap_enabled_flag="--heap_enabled true"
+                        if [ "${MEMORY}" = "stack" ]; then
+                            heap_enabled_flag="--heap_enabled false"
+                        fi
 
-                            caftype_flag="--caf ${CAFTYPE}"
-                            lib_flag="--lib ${LTYPE}"
-                            build_flag="--build ${BTYPE}"
-                            cfi_enabled_flag="--cfi_enabled ${CFI_ENABLED}"
-                            mpi_enabled_flag="--mpi_enabled ${MPI_ENABLED}"
-                            heap_enabled_flag="--heap_enabled ${HEAP_ARRAY_ENABLED}"
+                        # verify no conflict
 
-                            # verify no conflict
-
-                            #if [ "${LTYPE}" = "dynamic" ] && [ "${HEAP_ARRAY_ENABLED}" != "true" ]; then
-                            #    BENABLED=false
-                            #fi
-
-                            if ! [ "${CAFTYPE}" = "none" ]; then
-                                if [ "${MPI_ENABLED}" = "true" ] || [ "${CFI_ENABLED}" = "true" ] || [ "${LTYPE}" = "dynamic" ]; then
-                                    BENABLED=false
-                                fi
-                            fi
-
-                            if [ "${LTYPE}" = "dynamic" ] && [ "${HEAP_ARRAY_ENABLED}" = "false" ]; then
+                        if [[ "${PARALLELISM}" =~ .*"caf".* ]]; then
+                            if [ "${CFI_ENABLED}" = "true" ] || [ "${LTYPE}" = "dynamic" ]; then
                                 BENABLED=false
                             fi
+                        fi
 
-                            if [ "${BENABLED}" = "true" ]; then
+                        if [ "${LTYPE}" = "dynamic" ] && [ "${MEMORY}" = "stack" ]; then
+                            BENABLED=false
+                        fi
 
-                                echo >&2 ""
-                                echo >&2 "************************************************************************************************************************************"
-                                echo >&2 ""
-                                echo >&2 "-- ParaMonte - invoking: "
-                                echo >&2 ""
-                                echo >&2 "                          buildParaMonte.sh \ "
-                                if ! [ "${compiler_suite_flag}" = "" ]; then
-                                echo >&2 "                          ${compiler_suite_flag} \ "
-                                fi
-                                echo >&2 "                          ${build_flag} \ "
-                                echo >&2 "                          ${lib_flag} \ "
-                                echo >&2 "                          ${cfi_enabled_flag} \ "
-                                echo >&2 "                          ${heap_enabled_flag} \ "
-                                echo >&2 "                          ${mpi_enabled_flag} \ "
-                                echo >&2 "                          ${caftype_flag} \ "
-                                echo >&2 "                          ${test_enabled_flag} \ "
-                                echo >&2 "                          ${exam_enabled_flag} \ "
-                                if ! [ "${yes_to_all_flag}" = "" ]; then
-                                echo >&2 "                          ${yes_to_all_flag} \ "
-                                fi
-                                if ! [ "${fresh_flag}" = "" ]; then
-                                echo >&2 "                          ${fresh_flag} \ "
-                                fi
-                                if ! [ "${gcc_bootstrap_flag}" = "" ]; then
-                                echo >&2 "                          ${gcc_bootstrap_flag} \ "
-                                fi
-                                if ! [ "${fortran_flag}" = "" ]; then
-                                echo >&2 "                          ${fortran_flag} \ "
-                                fi
-                                if ! [ "${mpiexec_flag}" = "" ]; then
-                                echo >&2 "                          ${mpiexec_flag} \ "
-                                fi
-                                if ! [ "${nproc_flag}" = "" ]; then
-                                echo >&2 "                          ${nproc_flag} \ "
-                                fi
-                                echo >&2 "                          --clean"
-                                echo >&2 ""
-                                echo >&2 "************************************************************************************************************************************"
-                                echo >&2 ""
+                        if [ "${BENABLED}" = "true" ]; then
 
-                                (cd ${ParaMonte_ROOT_DIR} && \
-                                chmod +x ./buildParaMonte.sh && \
-                                ./buildParaMonte.sh \
-                                ${compiler_suite_flag} \
-                                ${build_flag} \
-                                ${lib_flag} \
-                                ${cfi_enabled_flag} \
-                                ${heap_enabled_flag} \
-                                ${mpi_enabled_flag} \
-                                ${caftype_flag} \
-                                ${test_enabled_flag} \
-                                ${exam_enabled_flag} \
-                                ${yes_to_all_flag} \
-                                ${fresh_flag} \
-                                ${gcc_bootstrap_flag} \
-                                ${fortran_flag} \
-                                ${mpiexec_flag} \
-                                ${nproc_flag} \
-                                )
-
-                                fresh_flag=""
-
+                            echo >&2 ""
+                            echo >&2 "************************************************************************************************************************************"
+                            echo >&2 ""
+                            echo >&2 "-- ParaMonte - invoking: "
+                            echo >&2 ""
+                            echo >&2 "                          buildParaMonte.sh \ "
+                            if ! [ "${compiler_suite_flag}" = "" ]; then
+                            echo >&2 "                          ${compiler_suite_flag} \ "
                             fi
+                            echo >&2 "                          ${build_flag} \ "
+                            echo >&2 "                          ${lib_flag} \ "
+                            echo >&2 "                          ${cfi_enabled_flag} \ "
+                            echo >&2 "                          ${heap_enabled_flag} \ "
+                            echo >&2 "                          ${mpi_enabled_flag} \ "
+                            echo >&2 "                          ${caftype_flag} \ "
+                            echo >&2 "                          ${test_enabled_flag} \ "
+                            echo >&2 "                          ${exam_enabled_flag} \ "
+                            if ! [ "${yes_to_all_flag}" = "" ]; then
+                            echo >&2 "                          ${yes_to_all_flag} \ "
+                            fi
+                            if ! [ "${fresh_flag}" = "" ]; then
+                            echo >&2 "                          ${fresh_flag} \ "
+                            fi
+                            if ! [ "${gcc_bootstrap_flag}" = "" ]; then
+                            echo >&2 "                          ${gcc_bootstrap_flag} \ "
+                            fi
+                            if ! [ "${fortran_flag}" = "" ]; then
+                            echo >&2 "                          ${fortran_flag} \ "
+                            fi
+                            if ! [ "${mpiexec_flag}" = "" ]; then
+                            echo >&2 "                          ${mpiexec_flag} \ "
+                            fi
+                            if ! [ "${nproc_flag}" = "" ]; then
+                            echo >&2 "                          ${nproc_flag} \ "
+                            fi
+                            echo >&2 "                          --clean"
+                            echo >&2 ""
+                            echo >&2 "************************************************************************************************************************************"
+                            echo >&2 ""
 
-                        done
+                            (cd ${ParaMonte_ROOT_DIR} && \
+                            chmod +x ./buildParaMonte.sh && \
+                            ./buildParaMonte.sh \
+                            ${compiler_suite_flag} \
+                            ${build_flag} \
+                            ${lib_flag} \
+                            ${cfi_enabled_flag} \
+                            ${heap_enabled_flag} \
+                            ${mpi_enabled_flag} \
+                            ${caftype_flag} \
+                            ${test_enabled_flag} \
+                            ${exam_enabled_flag} \
+                            ${yes_to_all_flag} \
+                            ${fresh_flag} \
+                            ${gcc_bootstrap_flag} \
+                            ${fortran_flag} \
+                            ${mpiexec_flag} \
+                            ${nproc_flag} \
+                            )
+
+                            fresh_flag=""
+
+                        fi
 
                     done
 

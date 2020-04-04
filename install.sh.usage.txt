@@ -6,9 +6,8 @@
         -s <compiler suite: intel gnu> \
         -b <build mode: release testing debug> \
         -l <library type: static dynamic> \
-        -c <coarray: none single shared distributed> \
-        -m <mpi enabled: true false> \
-        -e <heap allocation enabled: true false>
+        -p <parallelism type: none mpi cafsingle cafshared cafdistributed> \
+        -m <memory allocation type: stack heap>
         -t <ParaMonte test run enabled: true false>
         -x <ParaMonte example run enabled: true false>
         -f <path to Fortran compiler>
@@ -21,7 +20,7 @@
 
     example:
 
-        source install.sh -L "Python C" -b "release debug" -l dynamic -c none -m "true false" -e true -n 3
+        source install.sh -L "Python C" -b "release debug" -l dynamic -p "none mpi" -m heap -n 3
 
     flag definitions:
 
@@ -37,12 +36,10 @@
                                   the default is "release testing debug".
         -l | --lib              : the ParaMonte library type: static, dynamic
                                   the default is "dynamic static" for Fortran and C languages and "dynamic" for Python.
-        -c | --caf              : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
-                                  the default is "none single shared distributed" for Fortran and "none" for C and Python.
-        -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
-                                  the default is "true false" resulting in builds for both serial and MPI-parallel libraries.
-        -e | --heap_enabled     : the ParaMonte library heap array allocation enabled?: true, false
-                                  the default is "true false" resulting in builds for both stack and heap memory allocations.
+        -m | --memory           : the ParaMonte library memory allocation type for arrays: stack, heap
+                                  the default is "stack heap" resulting in builds for both stack and heap memory allocations.
+        -p | --parallelism      : the ParaMonte library parallelism type: none mpi cafsingle cafshared cafdistributed
+                                  the default is all parallelism options resulting in serial, MPI, and Coarray-parallel library builds.
         -t | --test_enabled     : the ParaMonte library test run enabled?: true, false
                                   the default is true.
         -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
@@ -61,8 +58,7 @@
     NOTE: All flags are optional.
     NOTE: If you specify multiple options for any flag, you must enclose all options together with quotation marks "".
     NOTE: Some flags conflict with each other:
-    NOTE:     The flag -c single or -c shared or -c distributed cannot be specified with -L Python or -L C or -L "C Python".
-    NOTE:     The flag -c single or -c shared or -c distributed cannot be specified with -l dynamic (dynamically-linked library).
-    NOTE:     The flag -c single or -c shared or -c distributed cannot be specified with -m true (mpi enabled).
-    NOTE:     The flag -e false (stack memory allocation) cannot be specified with -L Python.
+    NOTE:     The flag -m cafsingle or -m cafshared or -m cafdistributed cannot be specified with -L Python or -L C or -L "C Python".
+    NOTE:     The flag -m cafsingle or -m cafshared or -m cafdistributed cannot be specified with -l dynamic (dynamically-linked library).
+    NOTE:     The flag -m stack (stack memory allocation) cannot be specified with -L Python.
 
