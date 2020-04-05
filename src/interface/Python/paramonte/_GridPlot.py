@@ -653,13 +653,22 @@ class GridPlot:
                         if icol == irow:
                             ax.set_xlabel(colnames[irow])
                             ax.set_ylabel(colnames[icol])
-                            ax.xaxis.set_tick_params(which='both', labelbottom=True)
-                            ax.yaxis.set_tick_params(which='both', labelbottom=True)
+                            ax.xaxis.set_tick_params(which="both", labelbottom=True)
+                            ax.yaxis.set_tick_params(which="both", labelbottom=True)
                     elif icol > irow:
                         ax.set_ylabel("")
                         ax.set_xlabel("")                
 
+        import matplotlib.pyplot as _plt
+        _plt.subplots_adjust(hspace=0.15, wspace=0.15)
+
         # add colorbar
+
+        self._addcbar()
+
+    ################################################################################################################################
+
+    def _addcbar(self):
 
         mappable = None
         for scatterplotrow, lineplotrow in zip( self.currentFig.scatterplotList[:], self.currentFig.lineplotList[:] ):
@@ -671,38 +680,20 @@ class GridPlot:
                         if len(cbarLabel)==0: cbarLabel = "Count from the Series Start"
                         break
                 if lineplot != []:
-                    if mappable is None and line.ccolumns is not None:
+                    if mappable is None and lineplot.ccolumns is not None:
                         mappable = lineplot.currentFig.lineCollection
                         cbarLabel = lineplot.ccolumns
                         if len(cbarLabel)==0: cbarLabel = "Count from the Series Start"
                         break
 
-
-#        sccolumnsEnabled = False
-#        if "ccolumns" in self.scatterplot_kws.keys():
-#            self.scatterplot_kws["ccolumns"] is not None: sccolumnsEnabled = True
-#        if scatterplotEnabled and self.scatterplot_kws["ccolumns"] is not None:
-#            if self.currentFig.scatterplotList[0][1] != []:
-#                mappable = self.currentFig.scatterplotList[0][1].currentFig.scatter 
-#            else:
-#                mappable = self.currentFig.scatterplotList[1][0].currentFig.scatter
-#            cbarLabel = self.scatterplot_kws["ccolumns"]
-#        elif lineplotEnabled and self.lineplot_kws["ccolumns"] is not None:
-#            if self.currentFig.lineplotList[0][1] != []:
-#                mappable = self.currentFig.lineplotList[0][1].currentFig.lineCollection 
-#            else:
-#                mappable = self.currentFig.lineplotList[1][0].currentFig.lineCollection
-#            cbarLabel = self.lineplot_kws["ccolumns"]
-#        #elif kdeplotEnabled and self.kdeplot_kws is not None:
-        
         if mappable is not None:
-            self.currentFig.figure.colorbar = self.currentFig.figure.colorbar(mappable=mappable,ax=self.currentFig.pairgrid.axes)
-            self.currentFig.figure.colorbar.set_label(cbarLabel)
+            self.currentFig.figure.cbar = self.currentFig.figure.colorbar(mappable=mappable,ax=self.currentFig.pairgrid.axes)
+            self.currentFig.figure.cbar.set_label(cbarLabel)
             self.currentFig.figure.set_figwidth(self.currentFig.figure.get_figwidth()*1.3333)
 
     ################################################################################################################################
 
-    def hide(self,part="all",colorbar=''):
+    def hide(self,part="all"):
         """
         hides the requested part of the grid plot.
 
@@ -710,38 +701,39 @@ class GridPlot:
         ----------
             part
                 a string with the following possible values:
-                    - "lower": hides the lower triangle of the grid plot.
-                    - "upper": hides the upper triangle of the grid plot.
-                    - "diag" : hides the diagonal of the grid plot.
-                    - "all"  : hides all grid plots.
-            colorbar
-                -"hide": hides colorbar otherwise the colobar will be shown
-
+                    - "lower"   : hides the lower triangle of the grid plot.
+                    - "upper"   : hides the upper triangle of the grid plot.
+                    - "diag"    : hides the diagonal of the grid plot.
+                    - "all"     : hides all grid plots and the colorbar.
+                    - "cbar"    : hides the colorbar of the grid plot.
+                    the string can also be a mix of the above keywords, 
+                    separated by the + sign or some other delimiter. 
+                    For example, "lower+upper+cbar"
         Returns
         -------
             None.
 
         """
-        
-        allhidden = part=="all"
-        if allhidden or part=="upper": self.currentFig.pairgrid.map_upper(hide_current_axis)    
-        if allhidden or part=="lower":
+
+        allhidden = "all" in part
+        if allhidden or ("upper" in part): self.currentFig.pairgrid.map_upper(hide_current_axis)    
+        if allhidden or ("lower" in part):
             self.currentFig.pairgrid.map_lower(hide_current_axis)
             colnames = dfutils.getColNamesIndex(self._dfref().columns,self.columns)[0]
-            if part != 'all':
+            if not allhidden:
                 for i in range(len(colnames)):
                     ax=self.currentFig.pairgrid.axes[:][i][i]
                     ax.set_xlabel(colnames[i])
                     ax.set_ylabel(colnames[i])
-                    ax.xaxis.set_tick_params(which='both', labelbottom=True)
-                    ax.yaxis.set_tick_params(which='both', labelbottom=True)
-        if allhidden or part=="diag" : self.currentFig.pairgrid.map_diag(hide_current_axis)
-        if colorbar=='remove':
-            self.currentFig.figure.colorbar.remove()
+                    ax.xaxis.set_tick_params(which="both", labelbottom=True)
+                    ax.yaxis.set_tick_params(which="both", labelbottom=True)
+        if allhidden or ("diag" in part): self.currentFig.pairgrid.map_diag(hide_current_axis)
+        if allhidden or ("cbar" in part): self.currentFig.figure.cbar.remove()
+        #self.currentFig.figure.set_figwidth(self.currentFig.figure.get_figwidth()*1.3333)
 
     ################################################################################################################################
 
-    def show(self,part="all",colorbar=''):
+    def show(self,part="all"):
         """
         shows the requested part of the grid plot.
 
@@ -749,10 +741,14 @@ class GridPlot:
         ----------
             part
                 a string with the following possible values:
-                    - "lower": shows the lower triangle of the grid plot.
-                    - "upper": shows the lower triangle of the grid plot.
-                    - "diag" : shows the diagonal of the grid plot.
-                    - "all"  : shows all grid plots.
+                    - "lower"   : shows the lower triangle of the grid plot.
+                    - "upper"   : shows the lower triangle of the grid plot.
+                    - "diag"    : shows the diagonal of the grid plot.
+                    - "all"     : shows all grid plots.
+                    - "cbar"    : shows the colorbar of the grid plot.
+                    the string can also be a mix of the above keywords, 
+                    separated by the + sign or some other delimiter. 
+                    For example, "lower+upper+cbar"
 
         Returns
         -------
@@ -760,27 +756,28 @@ class GridPlot:
 
         """
 
-        allshown = part=="all"
-        if allshown or part=="upper": self.currentFig.pairgrid.map_upper(show_current_axis)
-        if allshown or part=="lower": 
+        allshown = "all" in part
+        if allshown or ("upper" in part): self.currentFig.pairgrid.map_upper(show_current_axis)
+        if allshown or ("lower" in part): 
             self.currentFig.pairgrid.map_lower(show_current_axis)
             colnames = dfutils.getColNamesIndex(self._dfref().columns,self.columns)[0]
             colnamesLength=len(colnames)
             for i in range(colnamesLength):
                 ax=self.currentFig.pairgrid.axes[:][i][i]
                 if colnamesLength-1>i>0:
-                    ax.set_xlabel('')
-                    ax.set_ylabel('')
-                    ax.xaxis.set_tick_params(which='both', labelbottom=False)
-                    ax.yaxis.set_tick_params(which='both', labelbottom=False)
+                    ax.set_xlabel("")
+                    ax.set_ylabel("")
+                    ax.xaxis.set_tick_params(which="both", labelbottom=False)
+                    ax.yaxis.set_tick_params(which="both", labelbottom=False)
                 elif i==0:
-                    ax.xaxis.set_tick_params(which='both', labelbottom=False)
-                    ax.set_xlabel('')
+                    ax.xaxis.set_tick_params(which="both", labelbottom=False)
+                    ax.set_xlabel("")
                 else:
-                    ax.yaxis.set_tick_params(which='both', labelbottom=False)
-                    ax.set_ylabel('')             
-        if allshown or part=="diag" : self.currentFig.pairgrid.map_diag(show_current_axis)
-        
+                    ax.yaxis.set_tick_params(which="both", labelbottom=False)
+                    ax.set_ylabel("")             
+        if allshown or ("diag" in part): self.currentFig.pairgrid.map_diag(show_current_axis)
+        if allshown or ("cbar" in part): self._addcbar()
+
     ################################################################################################################################
 
     def addTarget   ( self
