@@ -44,7 +44,7 @@ set ParaMonteExample_BLD_DIR=!ParaMonte_BLD_DIR!\example
 
 :: select examples to build
 
-set EXAM_LIST=MVN
+set EXAM_LIST=mvn
 
 :: select languages for which to build
 
