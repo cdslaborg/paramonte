@@ -452,9 +452,9 @@ if [ -z ${ParaMonteExample_RUN_ENABLED+x} ]; then
 fi
 
 if [ "${LANG_LIST}" = "python" ]; then
-    LTYPE_LIST="dynamic"
-    PARALLELISM_LIST="none mpi"
     MEMORY_LIST="heap"
+    LTYPE_LIST="dynamic"
+    if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
 fi
 
 for PMCS in $PMCS_LIST; do

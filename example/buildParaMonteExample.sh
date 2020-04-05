@@ -199,9 +199,9 @@ echo >&2 "-- ParaMonte - EXAM_LANG=${EXAM_LANG}"
             # PyPI build - ParaMonte library CHANGES.md files
 
             echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library CHANGES.md file..."
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonte_ROOT_DIR}/CHANGES.md"
+            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md"
             echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
-            cp "${ParaMonte_ROOT_DIR}/CHANGES.md" "${ParaMonteExample_BIN_DIR_CURRENT}/CHANGES.md"
+            cp "${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md" "${ParaMonteExample_BIN_DIR_CURRENT}/CHANGES.md"
 
         fi
 
@@ -227,12 +227,11 @@ echo >&2 "-- ParaMonte - EXAM_LANG=${EXAM_LANG}"
             echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
             cp ${ParaMonteExample_SRC_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
             cp ${ParaMonteExample_SRC_DIR_CURRENT}/* ${ParaMonteExample_BIN_DIR_CURRENT}/
+            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT}"
+            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
+            cp ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT} ${ParaMonteExample_BLD_DIR_CURRENT}/
+            cp ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT} ${ParaMonteExample_BIN_DIR_CURRENT}/
         fi
-
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT}"
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
-        cp ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT} ${ParaMonteExample_BLD_DIR_CURRENT}/
-        cp ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT} ${ParaMonteExample_BIN_DIR_CURRENT}/
 
         if [ "${IS_Python_LANG}" = "true" ]; then
 
