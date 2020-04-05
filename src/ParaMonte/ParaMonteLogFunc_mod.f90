@@ -5,7 +5,7 @@
 !
 !  Copyright (C) 2012-present, The Computational Data Science Lab
 !
-!  This file is part of ParaMonte library. 
+!  This file is part of the ParaMonte library. 
 !
 !  ParaMonte is free software: you can redistribute it and/or modify
 !  it under the terms of the GNU Lesser General Public License as published by
@@ -31,11 +31,7 @@ module ParaMonteLogFunc_mod
     ! Fortran interface to the objective function implementation (getLogFunc). Here, `proc` stands for the procedure interface.
 
     abstract interface
-#if defined CFI_ENABLED
         function getLogFunc_proc(ndim,Point) result(logFunc) bind(C)
-#else
-        function getLogFunc_proc(ndim,Point) result(logFunc)
-#endif
             import :: IK, RK
 #if defined CFI_ENABLED
             integer(IK), intent(in), value  :: ndim

@@ -5,7 +5,7 @@
 !
 !  Copyright (C) 2012-present, The Computational Data Science Lab
 !
-!  This file is part of ParaMonte library. 
+!  This file is part of the ParaMonte library. 
 !
 !  ParaMonte is free software: you can redistribute it and/or modify
 !  it under the terms of the GNU Lesser General Public License as published by
@@ -30,33 +30,45 @@
 
 program main
 
-use paramonte, only: ParaDRAM
-use LogFunc_mod, only: getLogFunc, NDIM
+    ! This is the Object-Oriented-Programming (OOP) style interface to the ParaMonte routines.
+    ! This is more flexible but less portable, as its compilation requires the same compiler 
+    ! brand and version with which the ParaMonte library has been built.
 
-implicit none
-type(ParaDRAM) :: pd
+    use paramonte, only: ParaDRAM
+    use LogFunc_mod, only: getLogFunc, NDIM
 
-call pd%runSampler  ( ndim = NDIM &
-                    , getLogFunc = getLogFunc &
-                    , inputFile = "./paramonte.in" &
-                    )
+    implicit none
+    type(ParaDRAM) :: pd
 
-end program main
+    call pd%runSampler  ( ndim = NDIM &
+                        , getLogFunc = getLogFunc &
+                        , inputFile = "./paramonte.in" &    ! this is optional argument
+                        ! You can also specify simulation specifications as input arguments, like 
+                        ! the following. This is possible only from the OOP interface to ParaDRAM.
+                        , adaptiveUpdateCount = 0 &         ! this is optional argument
+                        , chainSize = 10000 &               ! this is optional argument
+                        )
+
+    end program main
 
 #else
 
-program main
+    ! This is the simple procedural interface to the ParaMonte routines.
+    ! The first two arguments to the sampler routines are mandatory.
+    ! The inputFile argument is optional.
 
-use paramonte, only: runParaDRAM
-use LogFunc_mod, only: getLogFunc, NDIM
+    program main
 
-implicit none
+    use paramonte, only: runParaDRAM
+    use LogFunc_mod, only: getLogFunc, NDIM
 
-call runParaDRAM( NDIM &
-                , getLogFunc &
-                , "./paramonte.in" &
-                )
+    implicit none
 
-end program main
+    call runParaDRAM( NDIM &
+                    , getLogFunc &
+                    , "./paramonte.in" & ! this is optional argument
+                    )
+
+    end program main
 
 #endif

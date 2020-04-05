@@ -5,7 +5,7 @@
 !
 !  Copyright (C) 2012-present, The Computational Data Science Lab
 !
-!  This file is part of ParaMonte library. 
+!  This file is part of the ParaMonte library. 
 !
 !  ParaMonte is free software: you can redistribute it and/or modify
 !  it under the terms of the GNU Lesser General Public License as published by
@@ -366,7 +366,7 @@ end module ParaDRAM_mod
     subroutine runParaDRAM  ( ndim          &
                             , getLogFunc    &
                             , inputFile     &
-                            ) !bind(C, name="runParaDRAM")
+                            ) bind(C, name="runParaDRAM")
 #if defined DLL_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAM
 #endif
