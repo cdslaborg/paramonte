@@ -43,7 +43,7 @@
 
 &ParaDRAM
 
-    ! Base
+    ! Base specifications
 
     description                         = "
 This\n
@@ -53,7 +53,10 @@ This\n
    !outputColumnWidth                   = 25
     outputRealPrecision                 = 17
    !outputDelimiter                     = ","
-    outputFileName                      = "./out/"
+    outputFileName                      = "./out/"  ! the last / character indicates that this is 
+                                                    ! the folder where the output files will have to stored.
+                                                    ! However, since no output filename prefix has been specified,
+                                                    ! the output filenames will be assigned a randomly-generated prefix.
    !sampleSize                          = 111
     randomSeed                          = 2136275,
     chainFileFormat                     = "compact"
@@ -61,7 +64,7 @@ This\n
     domainLowerLimitVec                 = 4*-1.e300
     domainUpperLimitVec                 = 4*1.e300
     parallelizationModel                = "single chain"
-    targetAcceptanceRate                = 0.23e0
+   !targetAcceptanceRate                = 0.23e0
     progressReportPeriod                = 1000
     maxNumDomainCheckToWarn             = 100
     maxNumDomainCheckToStop             = 1000
@@ -70,7 +73,7 @@ This\n
     silentModeRequested                 = false
    !mpiFinalizeRequested                = true
 
-    ! MCMC
+    ! MCMC specifications
 
     chainSize                           = 30000
     startPointVec                       = 4*1.e0
@@ -78,9 +81,9 @@ This\n
     sampleRefinementMethod              = "BatchMeans"
     randomStartPointDomainLowerLimitVec = 4*-100.e0
     randomStartPointDomainUpperLimitVec = 4*100.0
-    randomStartPointRequested           = true
+    randomStartPointRequested           = false
 
-    ! DRAM
+    ! DRAM specifications
 
     scaleFactor                         = "2*0.5*Gelman"
     proposalModel                       = "normal"
