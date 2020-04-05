@@ -87,8 +87,14 @@ for %%l in (!LANG_LIST!) do (
     if %%l==Python set IS_Python_LANG=true
 
     set IS_FortranC_LANG=false
-    if %%l==C set IS_FortranC_LANG=true
-    if %%l==Fortran set IS_FortranC_LANG=true
+    if %%l==C (
+        set LANG_FILE_EXT=c
+        set IS_FortranC_LANG=true
+    )
+    if %%l==Fortran (
+        set LANG_FILE_EXT=f90
+        set IS_FortranC_LANG=true
+    )
 
     for %%e in (!EXAM_LIST!) do ( 
 
@@ -176,10 +182,19 @@ for %%l in (!LANG_LIST!) do (
         echo. -- ParaMonteExample%%l - copying the ParaMonte library %%e example source files in %%l language...
 
         if !IS_FortranC_LANG!==true (
+
             echo. -- ParaMonteExample%%l - from: !ParaMonteExample_SRC_DIR_CURRENT! %= no need for final slash here =%
             echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BLD_DIR_CURRENT! %= final slash tells this is folder =%
+            echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BIN_DIR_CURRENT! %= final slash tells this is folder =%
             xcopy /s /Y "!ParaMonteExample_SRC_DIR_CURRENT!" "!ParaMonteExample_BLD_DIR_CURRENT!\"
             xcopy /s /Y "!ParaMonteExample_SRC_DIR_CURRENT!" "!ParaMonteExample_BIN_DIR_CURRENT!\"
+
+            echo. -- ParaMonteExample%%l - from: !ParaMonteExample_SRC_DIR!\main.!LANG_FILE_EXT! %= no need for final slash here =%
+            echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BLD_DIR_CURRENT! %= final slash tells this is folder =%
+            echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BIN_DIR_CURRENT! %= final slash tells this is folder =%
+            xcopy /s /Y "!ParaMonteExample_SRC_DIR!\main.!LANG_FILE_EXT!" "!ParaMonteExample_BLD_DIR_CURRENT!\"
+            xcopy /s /Y "!ParaMonteExample_SRC_DIR!\main.!LANG_FILE_EXT!" "!ParaMonteExample_BIN_DIR_CURRENT!\"
+
         )
 
         if !IS_Python_LANG!==true (
@@ -208,11 +223,13 @@ for %%l in (!LANG_LIST!) do (
             echo. -- ParaMonteExample%%l - copying the ParaMonte library Fortran module file paradram_mod.mod...
             echo. -- ParaMonteExample%%l - from: !ParaMonte_MOD_DIR! %= no need for final slash here =%
             echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BLD_DIR_CURRENT! %= final slash tells this is folder =%
+            echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BIN_DIR_CURRENT! %= final slash tells this is folder =%
             xcopy /s /Y "!ParaMonte_MOD_DIR!\paradram_mod.mod" "!ParaMonteExample_BLD_DIR_CURRENT!\"
             xcopy /s /Y "!ParaMonte_MOD_DIR!\paradram_mod.mod" "!ParaMonteExample_BIN_DIR_CURRENT!\"
             echo. -- ParaMonteExample%%l - copying the ParaMonte library Fortran module file paramonte.f90...
             echo. -- ParaMonteExample%%l - from: !ParaMonteInterfaceFortran_SRC_DIR! %= no need for final slash here =%
             echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BLD_DIR_CURRENT!\ %= final slash tells this is folder =%
+            echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BIN_DIR_CURRENT!\ %= final slash tells this is folder =%
             xcopy /s /Y "!ParaMonteInterfaceFortran_SRC_DIR!" "!ParaMonteExample_BLD_DIR_CURRENT!\"
             xcopy /s /Y "!ParaMonteInterfaceFortran_SRC_DIR!" "!ParaMonteExample_BIN_DIR_CURRENT!\"
         )
@@ -220,6 +237,7 @@ for %%l in (!LANG_LIST!) do (
             echo. -- ParaMonteExample%%l - copying the ParaMonte library C header file paramonte.h...
             echo. -- ParaMonteExample%%l - from: !ParaMonteInterfaceC_SRC_DIR!          %= no need for final slash here =%
             echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BLD_DIR_CURRENT!\    %= final slash tells this is folder =%
+            echo. -- ParaMonteExample%%l -   to: !ParaMonteExample_BIN_DIR_CURRENT!\    %= final slash tells this is folder =%
             xcopy /s /Y "!ParaMonteInterfaceC_SRC_DIR!" "!ParaMonteExample_BLD_DIR_CURRENT!\"
             xcopy /s /Y "!ParaMonteInterfaceC_SRC_DIR!" "!ParaMonteExample_BIN_DIR_CURRENT!\"
         )

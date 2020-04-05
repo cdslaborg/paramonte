@@ -23,7 +23,8 @@
 
 Building this example requires the following components in the same folder and the following software installed on your system:  
 
-- the example source files,  
+- the example source files (`logfunc.h`, `logfunc.c` and `main.c`),  
+- the ParaMonte library signature file (`paramonte.h`),  
 - the example input file `paramonte.in`,  
 - on Windows,  
     - the `build.bat` script, available in the grandparent directory of this folder,  

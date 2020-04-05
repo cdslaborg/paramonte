@@ -53,7 +53,7 @@ program main
 
 #else
 
-    ! This is the simple procedural interface to the ParaMonte routines.
+    ! This is the default simple procedural interface to the ParaMonte routines.
     ! The first two arguments to the sampler routines are mandatory.
     ! The inputFile argument is optional.
 

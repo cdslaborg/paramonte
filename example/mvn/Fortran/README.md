@@ -23,7 +23,8 @@
 
 Building this example requires the following components in the same folder and the following software installed on your system:  
 
-- the example source files,  
+- the example source files (`logfunc.f90` and `main.f90`),  
+- the ParaMonte library signature file (`paramonte.f90`),  
 - the example input file `paramonte.in`,  
 - on Windows,  
     - the `build.bat` script, available in the grandparent directory of this folder,  

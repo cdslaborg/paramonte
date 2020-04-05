@@ -93,8 +93,14 @@ echo >&2 "-- ParaMonte - EXAM_LANG=${EXAM_LANG}"
     if [ "${EXAM_LANG}" = "Python" ]; then IS_Python_LANG=true; fi
 
     IS_FortranC_LANG=false
-    if [ "${EXAM_LANG}" = "C" ]; then IS_FortranC_LANG=true; fi
-    if [ "${EXAM_LANG}" = "Fortran" ]; then IS_FortranC_LANG=true; fi
+    if [ "${EXAM_LANG}" = "C" ]; then 
+        IS_FortranC_LANG=true;
+        LANG_FILE_EXT="c"
+    fi
+    if [ "${EXAM_LANG}" = "Fortran" ]; then
+        IS_FortranC_LANG=true;
+        LANG_FILE_EXT="f90"
+    fi
 
     for EXAM in $EXAM_LIST
     do
@@ -222,6 +228,11 @@ echo >&2 "-- ParaMonte - EXAM_LANG=${EXAM_LANG}"
             cp ${ParaMonteExample_SRC_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
             cp ${ParaMonteExample_SRC_DIR_CURRENT}/* ${ParaMonteExample_BIN_DIR_CURRENT}/
         fi
+
+        echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT}"
+        echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
+        cp ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT} ${ParaMonteExample_BLD_DIR_CURRENT}/
+        cp ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT} ${ParaMonteExample_BIN_DIR_CURRENT}/
 
         if [ "${IS_Python_LANG}" = "true" ]; then
 
