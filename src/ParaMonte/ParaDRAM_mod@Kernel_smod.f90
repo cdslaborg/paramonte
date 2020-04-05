@@ -101,7 +101,6 @@ contains
         integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
         integer(IK)                         :: j, imageID, dummy
         integer(IK)                         :: nd
-        integer(IK)                         :: antiChainFileUnit
 #if defined CAF_ENABLED || defined MPI_ENABLED
         integer(IK)                         :: imageStartID, imageEndID
 #if defined CAF_ENABLED
@@ -163,11 +162,6 @@ contains
         chainAdaptationMeasure                          = 0._RK                                 ! needed for the first output
         numFunCallAcceptedLastAdaptation                = 0_IK
         lastStateWeight                                 = -huge(lastStateWeight)
-
-        !###########################################################################################################################
-        open(newunit=antiChainFileUnit,file="antiChain.txt", status="replace")
-        !###########################################################################################################################
-
 
         call PD%Timer%tic()
 
@@ -911,7 +905,6 @@ contains
                         call PD%Timer%toc()
                         co_LogFuncState(0,counterDRS) = getLogFunc(nd,co_LogFuncState(1:nd,counterDRS))
                         call PD%Timer%toc(); PD%Stats%avgTimePerFunCalInSec = PD%Stats%avgTimePerFunCalInSec + PD%Timer%Time%delta
-                        write(antiChainFileUnit,"(*(g0.15,:,','))") co_LogFuncState(0:nd,counterDRS)
 
                         ! accept or reject the proposed state
 
@@ -972,8 +965,6 @@ contains
         end do loopMarkovChain
 
         call PD%Timer%toc()
-
-        close(antiChainFileUnit)
 
         !***************************************************************************************************************************
         !***************************************************************************************************************************
