@@ -366,7 +366,7 @@ end module ParaDRAM_mod
     subroutine runParaDRAM  ( ndim          &
                             , getLogFunc    &
                             , inputFile     &
-                            ) bind(C, name="runParaDRAM")
+                            )
 #if defined DLL_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAM
 #endif
@@ -376,11 +376,11 @@ end module ParaDRAM_mod
 
         implicit none
 
-        integer(IK) , intent(in)    :: ndim
-        character(*), intent(in)    :: inputFile
-        procedure(getLogFunc_proc)  :: getLogFunc
+        integer(IK) , intent(in)            :: ndim
+        procedure(getLogFunc_proc)          :: getLogFunc
+        character(*), intent(in), optional  :: inputFile
 
-        type(ParaDRAM_type)         :: PD
+        type(ParaDRAM_type)                 :: PD
 
         ! call runParaDRAM
 

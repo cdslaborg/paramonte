@@ -54,25 +54,26 @@ module paramonte
     implicit none
 
     ! The procedural interface to the ParaDRAM sampler routine of the ParaMonte library.
-    ! For the object oriented interface, you must pass the IS_COMPATIBLE_COMPILER 
-    ! preprocessor flag to the compiler at the time of comipling this module.
+    ! For the object oriented interface in the above, you must pass the IS_COMPATIBLE_COMPILER 
+    ! preprocessor flag to the compiler at the time of compiling this module.
+    ! Otherwise, by default, the following procedural interface will be used.
 
     interface
         subroutine runParaDRAM  ( ndim          &
                                 , getLogFunc    &
                                 , inputFile     &
-                                ) bind(C, name="runParaDRAM")
+                                )
             implicit none
-            integer(IK) , intent(in)    :: ndim
-            character(*), intent(in)    :: inputFile
-            procedure(getLogFunc_proc)  :: getLogFunc
+            integer(IK) , intent(in)            :: ndim
+            procedure(getLogFunc_proc)          :: getLogFunc
+            character(*), intent(in), optional  :: inputFile
         end subroutine runParaDRAM
     end interface
 
     ! The Fortran objective function interface (getLogFunc). Here, `proc` stands for the procedure interface.
 
     abstract interface
-        function getLogFunc_proc(ndim,Point) result(logFunc) bind(C)
+        function getLogFunc_proc(ndim,Point) result(logFunc)
             import :: IK, RK
             integer(IK) , intent(in)    :: ndim
             real(RK)    , intent(in)    :: Point(ndim)
