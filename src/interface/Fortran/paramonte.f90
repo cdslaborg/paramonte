@@ -42,6 +42,10 @@ module paramonte
 
 #if defined IS_COMPATIBLE_COMPILER
 
+    ! Use the identifiers here to access the Object-Oriented interface to the ParaMonte routines.
+    ! To enable the object-oriented interface, you must pass the IS_COMPATIBLE_COMPILER 
+    ! preprocessor flag to the compiler at the time of compiling this module.
+
     use ParaDRAM_mod, only: IK, RK, CK
     use ParaDRAM_mod, only: getLogFunc_proc
     use ParaDRAM_mod, only: getLogFunc_interface => getLogFunc_proc
@@ -50,13 +54,12 @@ module paramonte
 
 #else
 
+    ! This is the procedural interface to the ParaDRAM sampler routine of the ParaMonte library.
+    ! By default, if the preprocessor flag IS_COMPATIBLE_COMPILER is not passed to the compiler,
+    ! the following procedural interface will be used.
+
     use, intrinsic :: iso_fortran_env, only: IK => int32, RK => real64
     implicit none
-
-    ! The procedural interface to the ParaDRAM sampler routine of the ParaMonte library.
-    ! For the object oriented interface in the above, you must pass the IS_COMPATIBLE_COMPILER 
-    ! preprocessor flag to the compiler at the time of compiling this module.
-    ! Otherwise, by default, the following procedural interface will be used.
 
     interface
         subroutine runParaDRAM  ( ndim          &

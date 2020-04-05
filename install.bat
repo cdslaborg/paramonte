@@ -51,7 +51,7 @@
 set ERRORLEVEL=0
 cd %~dp0
 
-set INSTALL_SCRIPT_NAME=ParaMonteInstall
+set "INSTALL_SCRIPT_NAME=ParaMonte install.bat"
 
 :: parse arguments
 
@@ -324,8 +324,8 @@ echo.
 if not defined LANG_LIST        set LANG_LIST=c/fortran/python
 if not defined BTYPE_LIST       set BTYPE_LIST=release/testing/debug
 if not defined LTYPE_LIST       set LTYPE_LIST=static/dynamic
+if not defined MEMORY_LIST      set MEMORY_LIST=stack/heap
 if not defined PARALLELISM_LIST set PARALLELISM_LIST=none/mpi/cafsingle/cafshared
-if not defined MEMORY_LIST      set MEMORY_LIST=true/false
 
 REM remove redundancies
 
@@ -519,7 +519,7 @@ echo.-- !INSTALL_SCRIPT_NAME! - To see the list of possible flags and associated
 echo.-- !INSTALL_SCRIPT_NAME! - 
 echo.-- !INSTALL_SCRIPT_NAME! -     install.bat --help
 echo.-- !INSTALL_SCRIPT_NAME! - 
-echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting ParaMonte build. 
+echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting the !INSTALL_SCRIPT_NAME! script. 
 echo.
 
 exit /B 1

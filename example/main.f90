@@ -28,7 +28,7 @@
 
 #if defined IS_COMPATIBLE_COMPILER
 
-program main
+    program main
 
     ! This is the Object-Oriented-Programming (OOP) style interface to the ParaMonte routines.
     ! This is more flexible but less portable, as its compilation requires the same compiler 

@@ -25,7 +25,7 @@
 !  Statistics_mod.f90
 !  CorrCoef_mod.f90
 !  TranGaus_mod.f90
-!  CrossCorr_mod.f90
+  CrossCorr_mod.f90
 !  Integration_mod.f90
 !  QuadPackSPR_mod.f90
 !  QuadPackDPR_mod.f

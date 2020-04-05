@@ -366,7 +366,7 @@ end module ParaDRAM_mod
     subroutine runParaDRAM  ( ndim          &
                             , getLogFunc    &
                             , inputFile     &
-                            )
+                            ) !bind(C, name="runParaDRAM")
 #if defined DLL_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAM
 #endif

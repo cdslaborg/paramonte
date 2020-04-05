@@ -26,13 +26,12 @@
 //**********************************************************************************************************************************
 //  
 //  Description:
-//        - returns the log(probability) (in Neper base) of an ndim-dimensional Multivariate Normal ((MVN) probability density (pdf),
-//        - that is, with mean zero, and an identity covariance matrix.
+//        - returns the log(PDF) (in Neper base) of an ndim-dimensional Multivariate Normal (MVN) probability density function (PDF)
 //  Input:
-//        - ndim: number of dimensions of the domain of the Gaussian function (length of the vector X)
-//        - Point: the input real-valued vector of length ndim, at which log(pdf) is computed.
+//        - ndim: number of dimensions of the domain of the MVN function (length of the vector X)
+//        - Point: the input real-valued vector of length ndim, at which log(PDF) is computed.
 //  Output:
-//        - logFunc: real scalar number representing the log Gaussian pdf
+//        - logFunc: real scalar number representing the log MVN PDF
 //  Author:
 //        - Computational Data Science Lab, Monday 9:03 AM, May 16 2016, ICES, UT Austin
 //
@@ -72,7 +71,7 @@ double getLogFunc   (
         NormedPoint[i] = Point[i] - MEAN[i];
     }
 
-    // compute the log probability density function of the bivariate Gaussian
+    // compute the log probability density function of the MVN
 
     double exponentTerm = 0.;
 	for(int i = 0; i < NDIM; i++){
