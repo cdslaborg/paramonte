@@ -1,5 +1,9 @@
 # Release Notes
 
+## ParaMonte Python v1.0.11, April 4, 2020:
+
+Minor enhancements and bug fixes to the GridPlot.
+
 ## ParaMonte Python v1.0.10, March 28, 2020:
 
 Minor bug fix.
