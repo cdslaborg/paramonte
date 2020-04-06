@@ -1,5 +1,9 @@
 # Release Notes
 
+## ParaMonte Python v1.0.12, April 6, 2020:
+
+Minor enhancements and bug fixes to the kernel routines.
+
 ## ParaMonte Python v1.0.11, April 4, 2020:
 
 Minor enhancements and bug fixes to the GridPlot.

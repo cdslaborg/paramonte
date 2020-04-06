@@ -441,6 +441,13 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                         )
                     )
 
+                    if %%~G==python (
+                        if !LTYPE!==static set BENABLED=false
+                        if !LTYPE! NEQ dynamic set BENABLED=false
+                        if !CAF_ENABLED!==true set BENABLED=false
+                        if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
+                    )
+
                     if !BENABLED!==true (
 
                         echo.

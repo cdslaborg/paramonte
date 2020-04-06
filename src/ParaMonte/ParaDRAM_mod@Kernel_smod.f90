@@ -1062,7 +1062,6 @@ contains
                                                             , estimatedTimeToFinishInSeconds
                 flush(PD%TimeFile%unit)
 
-
             else
 
                !read( PD%TimeFile%unit, PD%TimeFile%format  ) numFunCallAcceptedRejectedLastReport  &
@@ -1073,6 +1072,7 @@ contains
                                                             , timeElapsedSinceLastReportInSeconds   &
                                                             , timeElapsedUntilLastReportInSeconds   &
                                                             , estimatedTimeToFinishInSeconds
+                SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * numFunCallAcceptedRejectedLastReport
 
             end if
 

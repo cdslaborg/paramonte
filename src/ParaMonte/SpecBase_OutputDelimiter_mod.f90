@@ -68,10 +68,8 @@ contains
         OutputDelimiterObj%def = ","
         if (allocated(OutputDelimiterObj%null)) deallocate(OutputDelimiterObj%null)
         allocate(character(MAX_DELIMITER_LEN) :: OutputDelimiterObj%null)
-        do i = 1, MAX_DELIMITER_LEN
-            OutputDelimiterObj%null(i:i) = NULL_SK
-        end do
-        OutputDelimiterObj%desc     = &
+        OutputDelimiterObj%null = repeat(NULL_SK, MAX_DELIMITER_LEN)
+        OutputDelimiterObj%desc = &
         "outputDelimiter is a string variable, containing a sequence of one or more characters (excluding digits, the period &
         &symbol '.', and the addition and subtraction operators: '+' and '-'), that is used to specify the boundary between &
         &separate, independent information elements in the tabular output files of " // methodName // ". &
@@ -108,13 +106,15 @@ contains
         integer(IK) , intent(in)                    :: outputColumnWidth
         OutputDelimiterObj%val = trim(adjustl(outputDelimiter))
         if (OutputDelimiterObj%val==OutputDelimiterObj%null) then
+            if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
             if (outputColumnWidth==0_IK) then
-                if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
                 OutputDelimiterObj%val = OutputDelimiterObj%def
             else
-                if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
                 OutputDelimiterObj%val = " "
             end if
+        elseif (OutputDelimiterObj%val=="") then
+            if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
+            OutputDelimiterObj%val = " "
         end if
     end subroutine setOutputDelimiter
 
