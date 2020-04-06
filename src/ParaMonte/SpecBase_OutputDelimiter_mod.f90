@@ -28,7 +28,7 @@ module SpecBase_OutputDelimiter_mod
     implicit none
 
     character(*), parameter         :: MODULE_NAME = "@SpecBase_OutputDelimiter_mod"
-    integer(IK), parameter          :: MAX_DELIMITER_LEN = 63
+    integer(IK), parameter          :: MAX_DELIMITER_LEN = 63_IK
 
     character(:), allocatable       :: outputDelimiter ! namelist input
 

@@ -53,8 +53,8 @@ This\n
    !outputColumnWidth                   = 25
     outputRealPrecision                 = 17
    !outputDelimiter                     = ","
-    outputFileName                      = "./out/"  ! the last / character indicates that this is 
-                                                    ! the folder where the output files will have to stored.
+    outputFileName                      = "./out/"  ! the last forward-slash character indicates that this 
+                                                    ! is the folder where the output files will have to stored.
                                                     ! However, since no output filename prefix has been specified,
                                                     ! the output filenames will be assigned a randomly-generated prefix.
    !sampleSize                          = 111

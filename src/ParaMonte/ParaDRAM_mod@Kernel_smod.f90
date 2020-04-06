@@ -1064,14 +1064,20 @@ contains
 
             else
 
-               !read( PD%TimeFile%unit, PD%TimeFile%format  ) numFunCallAcceptedRejectedLastReport  &
-                read( PD%TimeFile%unit, *                   ) numFunCallAcceptedRejectedLastReport  &
-                                                            , numFunCallAccepted_dummy              &
-                                                            , meanAccRateSinceStart                 &
-                                                            , meanAccRateSinceLastReport            &
-                                                            , timeElapsedSinceLastReportInSeconds   &
-                                                            , timeElapsedUntilLastReportInSeconds   &
-                                                            , estimatedTimeToFinishInSeconds
+                block
+                    use String_mod, only: String_type
+                    type(String_type) :: Record
+                    allocate( character(600) :: Record%value )
+                    read(PD%TimeFile%unit, "(A)" ) Record%value
+                    Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),PD%SpecBase%OutputDelimiter%val,Record%nPart)
+                    read(Record%Parts(1)%record,*) numFunCallAcceptedRejectedLastReport
+                    read(Record%Parts(2)%record,*) numFunCallAccepted_dummy
+                    read(Record%Parts(3)%record,*) meanAccRateSinceStart
+                    read(Record%Parts(4)%record,*) meanAccRateSinceLastReport
+                    read(Record%Parts(5)%record,*) timeElapsedSinceLastReportInSeconds
+                    read(Record%Parts(6)%record,*) timeElapsedUntilLastReportInSeconds
+                    read(Record%Parts(7)%record,*) estimatedTimeToFinishInSeconds
+                end block
                 SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * numFunCallAcceptedRejectedLastReport
 
             end if
