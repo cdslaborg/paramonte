@@ -51,7 +51,8 @@
 This\n
     is a\n
         multi-line\n
-            description."
+            description."                                   ! strings must be enclosed with "" or '' and can be continued on multiple lines.
+                                                            ! No comments within strings are allowed.
    !outputColumnWidth                   = 25                ! this is an example of a variable that is commented out and 
                                                             ! therefore, its value won't be read by the sampler routine.
                                                             ! To pass it to the routine, simply remove the ! mark at 
