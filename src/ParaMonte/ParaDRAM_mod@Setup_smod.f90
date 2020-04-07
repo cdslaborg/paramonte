@@ -825,6 +825,16 @@ contains
             end do
             call PD%Decor%write(PD%LogFile%unit,0,1)
 
+            if (PD%RefinedChain%numRefinement==0_IK) then
+                call PD%warn( prefix = PD%brand &
+                            , newline = "\n" &
+                            , outputUnit = PD%LogFile%unit &
+                            , msg = "The user-specified sampleRefinementCount ("// num2str(PD%SpecMCMC%SampleRefinementCount%val) // ") &
+                                    &is too small to ensure an accurate computation of the decorrelated i.i.d. effective sample size. &
+                                    &No refinement of the Markov chain was performed." &
+                            )
+            end if
+
             ! report the final Effective Sample Size (ESS) based on IAC
 
             blockEffectiveSampleSize: associate( effectiveSampleSize => sum(PD%RefinedChain%Weight(1:PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%compact)) )
@@ -842,12 +852,12 @@ contains
 
             ! generate output refined sample if requested
 
-            blockSampleFileGeneration: if (PD%SpecBase%SampleSize%val==0) then
+            blockSampleFileGeneration: if (PD%SpecBase%SampleSize%val==0_IK) then
 
                 call PD%note( prefix        = PD%brand          &
                             , outputUnit    = PD%LogFile%unit   &
                             , newline       = "\n"              &
-                            , msg           = "Skipping decorrelated sample generation and output file, as requested by user..." )
+                            , msg           = "Skipping the generation of the decorrelated sample and output file, as requested by the user..." )
 
             else blockSampleFileGeneration
 
@@ -910,41 +920,46 @@ contains
 
                     if (PD%SpecBase%SampleSize%val<0_IK) PD%SpecBase%SampleSize%val = abs(PD%SpecBase%SampleSize%val) * PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose
 
-                    if (PD%SpecBase%SampleSize%val<PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) then
-                        call PD%warn    ( prefix = PD%brand &
-                                        , newline = "\n" &
-                                        , outputUnit = PD%LogFile%unit &
-                                        , msg = "The user-requested sample size ("// num2str(PD%SpecBase%SampleSize%val) // ") &
-                                                &is smaller than the potentially-optimal i.i.d. sample size &
-                                                &(" // num2str(PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) // "). &
-                                                &The output sample contains i.i.d. samples, however, the sample-size &
-                                                &could have been larger if it had been set to the optimal size. &
-                                                &To get the optimal size in the future runs, set sampleSize = -1, or drop&
-                                                &it from the input list." &
-                                        )
-                    elseif (PD%SpecBase%SampleSize%val>PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) then
-                        call PD%warn    ( prefix = PD%brand &
-                                        , newline = "\n" &
-                                        , outputUnit = PD%LogFile%unit &
-                                        , msg = "The user-requested sample size ("// num2str(PD%SpecBase%SampleSize%val) // ") &
-                                                &is larger than the potentially-optimal i.i.d. sample size &
-                                                &(" // num2str(PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) // "). &
-                                                &The resulting sample likely contains duplicates and is not independently &
-                                                &and identically distributed (i.i.d.).\nTo get the optimal &
-                                                &size in the future runs, set sampleSize = -1, or drop &
-                                                &it from the input list." &
-                                        )
-                    else
-                        call PD%warn    ( prefix = PD%brand &
-                                        , newline = "\n" &
-                                        , outputUnit = PD%LogFile%unit &
-                                        , msg = "How lucky that could be! &
-                                                &The user-requested sample size (" // num2str(PD%SpecBase%SampleSize%val) // ") &
-                                                &is equal to the potentially-optimal i.i.d. sample size determined by "//PD%name//"." &
-                                        )
+                    if (PD%SpecBase%SampleSize%val/=0_IK) then
+                        if (PD%SpecBase%SampleSize%val<PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) then
+                            call PD%warn    ( prefix = PD%brand &
+                                            , newline = "\n" &
+                                            , marginTop = 0_IK &
+                                            , outputUnit = PD%LogFile%unit &
+                                            , msg = "The user-specified sample size ("// num2str(PD%SpecBase%SampleSize%val) // ") &
+                                                    &is smaller than the potentially-optimal i.i.d. sample size &
+                                                    &(" // num2str(PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) // "). &
+                                                    &The output sample contains i.i.d. samples, however, the sample-size &
+                                                    &could have been larger if it had been set to the optimal size. &
+                                                    &To get the optimal size in the future runs, set sampleSize = -1, or drop&
+                                                    &it from the input list." &
+                                            )
+                        elseif (PD%SpecBase%SampleSize%val>PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) then
+                            call PD%warn    ( prefix = PD%brand &
+                                            , newline = "\n" &
+                                            , marginTop = 0_IK &
+                                            , outputUnit = PD%LogFile%unit &
+                                            , msg = "The user-specified sample size ("// num2str(PD%SpecBase%SampleSize%val) // ") &
+                                                    &is larger than the potentially-optimal i.i.d. sample size &
+                                                    &(" // num2str(PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) // "). &
+                                                    &The resulting sample likely contains duplicates and is not independently &
+                                                    &and identically distributed (i.i.d.).\nTo get the optimal &
+                                                    &size in the future runs, set sampleSize = -1, or drop &
+                                                    &it from the input list." &
+                                            )
+                        else
+                            call PD%warn    ( prefix = PD%brand &
+                                            , newline = "\n" &
+                                            , marginTop = 0_IK &
+                                            , outputUnit = PD%LogFile%unit &
+                                            , msg = "How lucky that could be! &
+                                                    &The user-specified sample size (" // num2str(PD%SpecBase%SampleSize%val) // ") &
+                                                    &is equal to the potentially-optimal i.i.d. sample size determined by "//PD%name//"." &
+                                            )
+                        end if
                     end if
 
-                    ! regenerate the refined sample, this time with the user-requested sample size.
+                    ! regenerate the refined sample, this time with the user-specified sample size.
 
                     call PD%RefinedChain%get( CFC                       = PD%Chain &
                                             , Err                       = PD%Err &

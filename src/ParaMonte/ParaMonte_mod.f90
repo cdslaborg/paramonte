@@ -729,7 +729,12 @@ contains
                                 NLC//PM%name//" cannot overwrite an already-completed simulation."//&
                                 NLC//"Please provide an alternative file name for the new simulation outputs."
             elseif (PM%LogFile%exists .and. PM%TimeFile%exists .and. PM%RestartFile%exists .and. PM%ChainFile%exists) then  ! restart mode
-                PM%Err%occurred = .false.
+                if (PM%SpecBase%SampleSize%val==0_IK) then ! sampling is already complete
+                    PM%Err%occurred = .true.
+                    PM%Err%msg = PROCEDURE_NAME//": Error occurred. The input variable sampleSize = 0 indicates that the output files belong to a completed simulation."
+                else
+                    PM%Err%occurred = .false.
+                end if
             else
                 PM%Err%occurred = .true.
                 PM%Err%msg = PROCEDURE_NAME//": Error occurred. For a successful simulation restart, all output files are necessary."//NLC//"List of missing simulation output files:"
