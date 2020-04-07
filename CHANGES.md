@@ -1,12 +1,16 @@
-# Release Notes
+# ParaMonte kernel release notes
 
-## ParaMonte C/Fortran/Python v1.0.0, January 1, 2020 -- Initial release:
+To access the latest release of the package, visit [the ParaMonte GitHub repository](https://github.com/cdslaborg/paramonte/releases){:target="_blank"}.  
+
+## **Version 1.0.0**, January 1, 2020 -- Initial release:
+
+This is the first public release of the ParaMonte library.
 
 ### New features  
 
-- ParaDRAM routine.  
-- ParaMonte Interface to C, Fortran, and Python Programming languages.  
-- ParaMonte simulation output visualization via ParaMonte's Python interface.  
+- ParaDRAM sampler: **Para**llel **D**elayed-**R**ejection **A**daptive Metropolis-Hastings **M**arkov Chain Monte Carlo Sampler.   
+- ParaMonte Interface to C/C++/Fortran/Python Programming languages.  
+- ParaMonte simulation-output visualization via the ParaMonte Python interface.  
 
 ### Compiler support  
 

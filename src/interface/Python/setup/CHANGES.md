@@ -1,4 +1,4 @@
-# Release Notes
+# ParaMonte Python Release Notes
 
 ## ParaMonte Python v1.0.12, April 6, 2020:
 

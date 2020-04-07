@@ -334,6 +334,7 @@ contains
                 call informUser ( prefix = TAB // TAB       &
                                 , outputUnit = outputUnit   &
                                 , newline = "\n"            &
+                                , marginTop = 0_IK          &
                                 , marginBot = 0_IK          &
                                 , msg = "UNDEFINED. It will be constructed from the Correlation Matrix (ProposalStartCorMat) &
                                         &and the Standard Deviation vector (ProposalStartStdVec)." &

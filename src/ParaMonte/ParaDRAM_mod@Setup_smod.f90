@@ -677,7 +677,7 @@ contains
             call PD%Decor%write(PD%LogFile%unit,1,0,1, "Location of the first occurrence of maximum-logFunc in the compact chain:" )
             call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%LogFuncMode%Loc%compact ) )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Location of the first occurrence of maximum-logFunc in the verbose chain:" )
+            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Location of the first occurrence of maximum-logFunc in the verbose (Markov) chain:" )
             call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%LogFuncMode%Loc%verbose ) )
 
             call PD%Decor%write(PD%LogFile%unit,1,0,1, "Maximum-logFunc value (maximum of the user-specified objective function):" )
@@ -902,7 +902,6 @@ contains
 
                 end if
 
-
                 !*******************************************************************************************************************
                 ! begin sample file generation
                 !*******************************************************************************************************************
@@ -916,7 +915,7 @@ contains
                                         , newline = "\n" &
                                         , outputUnit = PD%LogFile%unit &
                                         , msg = "The user-requested sample size ("// num2str(PD%SpecBase%SampleSize%val) // ") &
-                                                &is smaller than the optimal i.i.d. sample size &
+                                                &is smaller than the potentially-optimal i.i.d. sample size &
                                                 &(" // num2str(PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) // "). &
                                                 &The output sample contains i.i.d. samples, however, the sample-size &
                                                 &could have been larger if it had been set to the optimal size. &
@@ -928,7 +927,7 @@ contains
                                         , newline = "\n" &
                                         , outputUnit = PD%LogFile%unit &
                                         , msg = "The user-requested sample size ("// num2str(PD%SpecBase%SampleSize%val) // ") &
-                                                &is larger than the optimal i.i.d. sample size &
+                                                &is larger than the potentially-optimal i.i.d. sample size &
                                                 &(" // num2str(PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose) // "). &
                                                 &The resulting sample likely contains duplicates and is not independently &
                                                 &and identically distributed (i.i.d.).\nTo get the optimal &
@@ -941,7 +940,7 @@ contains
                                         , outputUnit = PD%LogFile%unit &
                                         , msg = "How lucky that could be! &
                                                 &The user-requested sample size (" // num2str(PD%SpecBase%SampleSize%val) // ") &
-                                                &is equal to the optimal i.i.d. sample size determined by "//PD%name//"." &
+                                                &is equal to the potentially-optimal i.i.d. sample size determined by "//PD%name//"." &
                                         )
                     end if
 
