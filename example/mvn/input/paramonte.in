@@ -40,6 +40,8 @@
 !
 !   https://www.cdslab.org/paramonte/notes/usage/interface/
 
+! The following &ParaDRAM namelist group assigns the simulation specifications of 
+! an example ParaDRAM sampling of a 4-dimensional Multivariate Normal Distribution.
 
 &ParaDRAM
 
@@ -48,53 +50,55 @@
     description                         = "
 This\n
     is a\n
-        test\n
-            run."
-   !outputColumnWidth                   = 25
+        multi-line\n
+            description."
+   !outputColumnWidth                   = 25                ! this is an example of a variable that is commented out and 
+                                                            ! therefore, its value won't be read by the sampler routine.
+                                                            ! To pass it to the routine, simply remove the ! mark at 
+                                                            ! the beginning of the line.
     outputRealPrecision                 = 17
    !outputDelimiter                     = ","
-    outputFileName                      = "./out/"  ! the last forward-slash character indicates that this 
-                                                    ! is the folder where the output files will have to stored.
-                                                    ! However, since no output filename prefix has been specified,
-                                                    ! the output filenames will be assigned a randomly-generated prefix.
+    outputFileName                      = "./out/"          ! the last forward-slash character indicates that this 
+                                                            ! is the folder where the output files will have to stored.
+                                                            ! However, since no output filename prefix has been specified,
+                                                            ! the output filenames will be assigned a randomly-generated prefix.
    !sampleSize                          = 111
     randomSeed                          = 2136275,
     chainFileFormat                     = "compact"
    !variableNameList                    = "x","y"
-    domainLowerLimitVec                 = 4*-1.e300
-    domainUpperLimitVec                 = 4*1.e300
-    parallelizationModel                = "single chain"
+    domainLowerLimitVec                 = 4*-1.e300         ! repetition pattern rules apply again here. 4 dimensions => 4-element vector of values.
+    domainUpperLimitVec                 = 4*1.e300          ! repetition pattern rules apply again here. 4 dimensions => 4-element vector of values.
+    parallelizationModel                = "single chain"    ! "singleChain" would also work. Similarly, "multichain", "multi chain", or "multiChain".
    !targetAcceptanceRate                = 0.23e0
     progressReportPeriod                = 1000
     maxNumDomainCheckToWarn             = 100
     maxNumDomainCheckToStop             = 1000
-    inputFileHasPriority                = false
     restartFileFormat                   = "binary"
-    silentModeRequested                 = false
-   !mpiFinalizeRequested                = true
+    silentModeRequested                 = false             ! FALSE, false, .false., .f., and f would be also all valid logical values representing False
+   !mpiFinalizeRequested                = true              ! TRUE, true, .true., .t., and t would be also all valid logical values representing True
 
     ! MCMC specifications
 
     chainSize                           = 30000
-    startPointVec                       = 4*1.e0
+    startPointVec                       = 4*1.e0            ! four values of 1.e0 are specified here by the repetition pattern symbol *
    !sampleRefinementCount               = 10
     sampleRefinementMethod              = "BatchMeans"
-    randomStartPointDomainLowerLimitVec = 4*-100.e0
-    randomStartPointDomainUpperLimitVec = 4*100.0
+    randomStartPointDomainLowerLimitVec = 4*-100.e0         ! repetition pattern rules apply again here. 4 dimensions => 4-element vector of values.
+    randomStartPointDomainUpperLimitVec = 4*100.0           ! repetition pattern rules apply again here. 4 dimensions => 4-element vector of values.
     randomStartPointRequested           = false
 
     ! DRAM specifications
 
-    scaleFactor                         = "2*0.5*Gelman"
-    proposalModel                       = "normal"
+    scaleFactor                         = "2*0.5*Gelman"    ! The asterisk here means multiplication since it is enclosed within quotation marks.
+    proposalModel                       = "normal"          ! or "uniform" as you wish.
     adaptiveUpdateCount                 = 10000000
     adaptiveUpdatePeriod                = 35
     greedyAdaptationCount               = 0
    !delayedRejectionCount               = 5
    !delayedRejectionScaleFactorVec      = 5*1.
    !burninAdaptationMeasure             = 1.
-   !proposalStartStdVec                 = 4*1.0
-   !proposalStartCorMat                 =   1,0,0,0,
+   !proposalStartStdVec                 = 4*1.0             ! repetition pattern rules apply again here. 4 dimensions => 4-element vector of values.
+   !proposalStartCorMat                 =   1,0,0,0,        ! 2-dimensional correlation-matrix definition, although it is commented out and won't be read.
    !                                        0,1,0,0,
    !                                        0,0,1,0,
    !                                        0,0,0,1,
