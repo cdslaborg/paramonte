@@ -3,22 +3,24 @@
 This project follows [Semantic Versioning](https://semver.org/). 
 To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
 
-## **Version 1.0.0**, January 1, 2020 -- Initial release:
+## **Version 1.x.x**  
+
+### **Version 1.0.0**, January 1, 2020 -- Initial release  
 
 This is the first public release of the ParaMonte library.  
 
-### New features  
+**New features**  
 
 - ParaDRAM sampler: **Para**llel **D**elayed-**R**ejection **A**daptive Metropolis-Hastings **M**arkov Chain Monte Carlo Sampler.  
 - ParaMonte Interface to the C/C++/Fortran/Python Programming languages.  
 - ParaMonte simulation-output visualization via the ParaMonte Python interface.  
 
-### Compiler support  
+**Compiler support**  
 
 - Intel Parallel Studio (>2018.0.0)
 - GNU Compiler Collection (>7.0.0)
 
-### Compiler / MPI library used for this binary release  
+**Compiler / MPI library used for this binary release**  
 
 - **Windows**: Intel Parallel Studio Version 19.0.4.245 Build 20190417 / Intel(R) MPI Library 2019 Update 4 for Windows
 - **Linux**: Intel Parallel Studio Version 18.0.2 20180210 / Intel(R) MPI Library for Linux OS, Version 2018 Update 2 Build 20180125
