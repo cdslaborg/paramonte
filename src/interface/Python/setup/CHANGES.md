@@ -1,6 +1,16 @@
 # ParaMonte Python release notes
 
+This project follows [Semantic Versioning](https://semver.org/). 
 To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
+
+## **Version 1.0.0**, January 1, 2020 -- Initial release:
+
+This is the first public release of the ParaMonte library.  
+
+**New features**  
+-   ParaDRAM sampler: **Para**llel **D**elayed-**R**ejection **A**daptive Metropolis-Hastings **M**arkov Chain Monte Carlo Sampler.  
+-   ParaMonte Interface to the Python Programming languages.  
+-   ParaMonte simulation-output visualization via the ParaMonte Python interface.  
 
 ### Version  1.0.12, April 6, 2020:
 
@@ -49,13 +59,3 @@ minor bug fixes to the parallel routines.
 ### Version  1.0.1, February 13, 2020:
 
 minor bug fixes.
-
-## **Version 1.0.0**, January 1, 2020 -- Initial release:
-
-This is the first public release of the ParaMonte library.  
-
-### New features  
-
-- ParaDRAM sampler: **Para**llel **D**elayed-**R**ejection **A**daptive Metropolis-Hastings **M**arkov Chain Monte Carlo Sampler.  
-- ParaMonte Interface to the Python Programming languages.  
-- ParaMonte simulation-output visualization via the ParaMonte Python interface.  

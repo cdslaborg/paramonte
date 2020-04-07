@@ -1,5 +1,6 @@
 # ParaMonte kernel C/C++/Fortran release notes
 
+This project follows [Semantic Versioning](https://semver.org/). 
 To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
 
 ## **Version 1.0.0**, January 1, 2020 -- Initial release:
