@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.0.0**, January 1, 2020 -- Initial release  
+### **Version 1.0.0** -- January 1, 2020 -- Initial release  
 
 This is the first public release of the ParaMonte library.  
 
@@ -25,5 +25,5 @@ This is the first public release of the ParaMonte library.
 - **Windows**: Intel Parallel Studio Version 19.0.4.245 Build 20190417 / Intel(R) MPI Library 2019 Update 4 for Windows
 - **Linux**: Intel Parallel Studio Version 18.0.2 20180210 / Intel(R) MPI Library for Linux OS, Version 2018 Update 2 Build 20180125
 - **Linux**: GNU 8.3 / MPICH 3.2
-- **Mac**: Intel Parallel Studio Version 19.1.0.166 20191121
-- **Mac**: GNU 9.3 / Open-MPI 4.0
+- **macOS**: Intel Parallel Studio Version 19.1.0.166 20191121
+- **macOS**: GNU 9.3 / Open-MPI 4.0
