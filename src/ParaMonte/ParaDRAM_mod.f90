@@ -317,7 +317,7 @@ end module ParaDRAM_mod
 #if defined DLL_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAM
 #endif
-        use, intrinsic :: iso_c_binding, only: c_char, c_funptr, c_f_procpointer
+        use, intrinsic :: iso_c_binding, only: c_char, c_funptr, c_f_procpointer !, c_null_char
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
         use Constants_mod, only: IK, RK
         use ParaDRAM_mod, only: ParaDRAM_type
@@ -335,7 +335,13 @@ end module ParaDRAM_mod
 
         ! reconstruct the input file
 
-        if (lenInputFile==0) then
+        !i = 1
+        !do
+        !    if (InputFileVec(i)==c_null_char) exit
+        !    i = i + 1_IK
+        !end do
+
+        if (lenInputFile==0_IK) then
             inputFileStr = ""
         else
             allocate(character(lenInputFile) :: inputFileStr)

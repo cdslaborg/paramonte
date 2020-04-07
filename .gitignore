@@ -126,6 +126,7 @@ Thumbs.db
 *.temp
 *.rfn
 ___*___.*
+copyFiles.sh
 
 #########################
 # CMake

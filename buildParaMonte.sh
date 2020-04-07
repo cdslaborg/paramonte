@@ -67,6 +67,7 @@ if [[ "$PLATFORM" =~ .*"unknown".* ]]; then
     echo >&2
     echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
     echo >&2
+    exit 1
 else
     export PLATFORM
 fi
