@@ -159,7 +159,11 @@ echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ParaMonte library's base name
 
 unset PM_BLD_TYPE
 unset GNU_C_COMPILER_FLAGS
-unset INTEL_C_COMPILER_FLAGS
+if [[ "$PMLIB_FULL_NAME" =~ .*"darwin".* ]]; then
+    INTEL_C_COMPILER_FLAGS="-no-multibyte-chars"
+else
+    unset INTEL_C_COMPILER_FLAGS
+fi
 GNU_Fortran_COMPILER_FLAGS="-std=gnu"
 INTEL_Fortran_COMPILER_FLAGS="-standard-semantics"
 
