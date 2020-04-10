@@ -68,7 +68,7 @@ contains
         GreedyAdaptationCountObj%desc   = &
         "If greedyAdaptationCount is set to a positive integer then the first greedyAdaptationCount number of &
         &the adaptive updates of the sampler will be made using only the 'unique' accepted points in the MCMC chain. &
-        &This is useful for example, the function to be sampled by " // methodName // " is high dimensional, &
+        &This is useful, for example, when the function to be sampled by " // methodName // " is high dimensional, &
         &in which case, the adaptive updates to " // methodName // "'s sampler distribution will less likely lead to &
         &numerical instabilities, for example, a singular covariance matrix for the multivariate proposal sampler. &
         &The variable greedyAdaptationCount must be a non-negative integer, and not larger than the value of adaptiveUpdateCount. &
