@@ -1,0 +1,74 @@
+classdef SpecDRAM_AdaptiveUpdatePeriod_class < handle
+
+    properties (Constant)
+        CLASS_NAME  = "@SpecDRAM_AdaptiveUpdatePeriod_class"
+    end
+
+    properties
+        val         = []
+        def         = []
+        desc        = []
+    end
+
+%***********************************************************************************************************************************
+%***********************************************************************************************************************************
+
+    methods (Access = public)
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+        function self = SpecDRAM_AdaptiveUpdatePeriod_class(nd,methodName)
+            self.def    = nd * 4;   % max(nd+1,100)
+            self.desc   = "Every adaptiveUpdatePeriod calls to the objective function, the parameters of the proposal distribution will be updated. "   ...
+                        + "In parallel mode, this update will happen every adaptiveUpdatePeriod or more calls to the objective function. "              ...
+                        + "The variable adaptiveUpdatePeriod must be a positive integer of value ndim+1 or larger. "                                    ...
+                        + "The larger the value of adaptiveUpdatePeriod, the easier it will be "                                                        ...
+                        + "for " + methodName + " kernel to keep the sampling efficiency within the desired range (if requested). "                     ...
+                        + "However, too large values for adaptiveUpdatePeriod will only delay the adaptation of the proposal distribution to "          ...
+                        + "the global structure of the objective function that is being sampled. "                                                      ...
+                        + "If adaptiveUpdatePeriod>=chainSize, then no adaptive updates to the proposal distribution will be made. "                    ...
+                        + "The default value is 4 * ndim, where ndim is the dimension of the sampling space. "                                   ...
+                        + "In this particular " + methodName + " simulation, this corresponds to the value "                                            ...
+                        + num2str(self.def) + "."                                                                                                       ...
+                        ;
+        end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+        function set(self, adaptiveUpdatePeriod)
+            if isempty(adaptiveUpdatePeriod)
+                self.val = self.def;
+            else
+                self.val = adaptiveUpdatePeriod;
+            end
+        end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+        function Err = checkForSanity(self, Err, methodName)
+            FUNCTION_NAME = "@checkForSanity()";
+            if self.val < 1
+                Err.occurred    = true;
+                Err.msg         = Err.msg                                                                                                       ...
+                                + self.CLASS_NAME + FUNCTION_NAME + ": Error occurred. "                                                        ...
+                                + "Invalid requested value for adaptiveUpdatePeriod. "                                                          ...
+                                + "The input requested value for adaptiveUpdatePeriod (" + num2str(self.val)                                    ...
+                                + ") cannot be less than 1. If you are not sure of the appropriate value for adaptiveUpdatePeriod, drop it "    ...
+                                + "from the input list. " + methodName + " will automatically assign an appropriate value to it."               ...
+                                + newline + newline                                                                                             ...
+                                ;
+            end
+        end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+    end
+
+%***********************************************************************************************************************************
+%***********************************************************************************************************************************
+
+end
