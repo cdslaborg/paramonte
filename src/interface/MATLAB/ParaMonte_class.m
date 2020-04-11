@@ -315,7 +315,7 @@ classdef ParaMonte_class < handle
                 end
             end
 
-            if isempty(self.specs.outputFileName)
+            if isempty(self.spec.outputFileName)
                 self.SpecBase.outputFileName.dir = convertCharsToStrings(currentWorkingDir) + self.SpecBase.outputFileName.slashOS;
             end
 

@@ -1,4 +1,4 @@
-classdef specs < handle
+classdef spec < handle
 
     properties
         sampleSize                          = []

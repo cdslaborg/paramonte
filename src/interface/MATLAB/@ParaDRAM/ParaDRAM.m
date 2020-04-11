@@ -10,7 +10,7 @@ classdef ParaDRAM < ParaMCMC_class
     end
 
     properties (Access = public)
-        specs               = []
+        spec                = []
         Stats               = ParaDRAM_Statistics_class()
         Chain               = []
         RefinedChain        = []
@@ -30,47 +30,47 @@ classdef ParaDRAM < ParaMCMC_class
         
         self.RefinedChain   = ParaDRAMRefinedChain_class();
 
-        self.specs          = specs();
+        self.spec           = spec();
 
         ...ParaMonte variables
-        self.specs.sampleSize                           = [];
-        self.specs.randomSeed                           = [];
-        self.specs.description                          = [];
-        self.specs.outputFileName                       = [];
-        self.specs.outputDelimiter                      = [];
-        self.specs.chainFileFormat                      = [];
-        self.specs.variableNameList                     = [];
-        self.specs.restartFileFormat                    = [];
-        self.specs.outputColumnWidth                    = [];
-        self.specs.outputRealPrecision                  = [];
-        self.specs.silentModeRequested                  = [];
-        self.specs.domainLowerLimitVec                  = [];
-        self.specs.domainUpperLimitVec                  = [];
-        self.specs.parallelizationModel                 = [];
-        self.specs.progressReportPeriod                 = [];
-        self.specs.targetAcceptanceRate                 = [];
-        self.specs.maxNumDomainCheckToWarn              = [];
-        self.specs.maxNumDomainCheckToStop              = [];
+        self.spec.sampleSize                            = [];
+        self.spec.randomSeed                            = [];
+        self.spec.description                           = [];
+        self.spec.outputFileName                        = [];
+        self.spec.outputDelimiter                       = [];
+        self.spec.chainFileFormat                       = [];
+        self.spec.variableNameList                      = [];
+        self.spec.restartFileFormat                     = [];
+        self.spec.outputColumnWidth                     = [];
+        self.spec.outputRealPrecision                   = [];
+        self.spec.silentModeRequested                   = [];
+        self.spec.domainLowerLimitVec                   = [];
+        self.spec.domainUpperLimitVec                   = [];
+        self.spec.parallelizationModel                  = [];
+        self.spec.progressReportPeriod                  = [];
+        self.spec.targetAcceptanceRate                  = [];
+        self.spec.maxNumDomainCheckToWarn               = [];
+        self.spec.maxNumDomainCheckToStop               = [];
         ...ParaMCMC variables
-        self.specs.chainSize                            = [];
-        self.specs.startPointVec                        = [];
-        self.specs.sampleRefinementCount                = [];
-        self.specs.sampleRefinementMethod               = [];
-        self.specs.randomStartPointRequested            = [];
-        self.specs.randomStartPointDomainLowerLimitVec  = [];
-        self.specs.randomStartPointDomainUpperLimitVec  = [];
+        self.spec.chainSize                             = [];
+        self.spec.startPointVec                         = [];
+        self.spec.sampleRefinementCount                 = [];
+        self.spec.sampleRefinementMethod                = [];
+        self.spec.randomStartPointRequested             = [];
+        self.spec.randomStartPointDomainLowerLimitVec   = [];
+        self.spec.randomStartPointDomainUpperLimitVec   = [];
         ...ParaDRAM variables
-        self.specs.scaleFactor                          = [];
-        self.specs.proposalModel                        = [];
-        self.specs.proposalStartCovMat                  = [];
-        self.specs.proposalStartCorMat                  = [];
-        self.specs.proposalStartStdVec                  = [];
-        self.specs.adaptiveUpdateCount                  = [];
-        self.specs.adaptiveUpdatePeriod                 = [];
-        self.specs.greedyAdaptationCount                = [];
-        self.specs.delayedRejectionCount                = [];
-        self.specs.burninAdaptationMeasure              = [];
-        self.specs.delayedRejectionScaleFactorVec       = [];
+        self.spec.scaleFactor                           = [];
+        self.spec.proposalModel                         = [];
+        self.spec.proposalStartCovMat                   = [];
+        self.spec.proposalStartCorMat                   = [];
+        self.spec.proposalStartStdVec                   = [];
+        self.spec.adaptiveUpdateCount                   = [];
+        self.spec.adaptiveUpdatePeriod                  = [];
+        self.spec.greedyAdaptationCount                 = [];
+        self.spec.delayedRejectionCount                 = [];
+        self.spec.burninAdaptationMeasure               = [];
+        self.spec.delayedRejectionScaleFactorVec        = [];
 
     end
 
