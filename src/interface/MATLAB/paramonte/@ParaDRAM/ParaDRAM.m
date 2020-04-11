@@ -17,10 +17,11 @@ classdef ParaDRAM < ParaMCMC_class
 %   Copy and paste this code into your MATLAB command line to run it:
 %
 %       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%       pmlibRootDir = '../'; % set this path to the ParaMonte library root directory
+%       % set the following  path to the ParaMonte library root directory
+%       pmlibRootDir = '../'; 
 %       addpath( genpath(pmlibRootDir) );
-%       %The following lambda function returns the natural logarithm of the
-%       %ndim-dimensional non-normalized Standard Gaussian density function
+%       % The following lambda function returns the natural logarithm of the
+%       % ndim-dimensional non-normalized Standard Gaussian density function
 %       getLogFunc = @(point) -0.5 * sum(point.^2);
 %       pmpd = ParaDRAM();
 %       pmpd.runSampler ( 4 ... number of dimensions of the objective function
@@ -202,9 +203,17 @@ classdef ParaDRAM < ParaMCMC_class
 %
 %   To unset an already-set input simulation specification, simply set the
 %   simulation attribute to None or re-instantiate the object.
+%
+%***********************************************************************************************************************************
+%***********************************************************************************************************************************
+
+    properties (Access = public)
+        spec = [];
+    end
 
 %***********************************************************************************************************************************
 %***********************************************************************************************************************************
+
 
     methods (Access = public)
 
@@ -212,52 +221,8 @@ classdef ParaDRAM < ParaMCMC_class
         %***************************************************************************************************************************
 
         function self = ParaDRAM()
-
-            addpath(genpath(pwd));
-
-            self.RefinedChain = ParaDRAMRefinedChain_class();
+            
             self.spec = spec();
-
-            ...ParaMonte variables
-            self.spec.sampleSize                            = [];
-            self.spec.randomSeed                            = [];
-            self.spec.description                           = [];
-            self.spec.outputFileName                        = [];
-            self.spec.outputDelimiter                       = [];
-            self.spec.chainFileFormat                       = [];
-            self.spec.variableNameList                      = [];
-            self.spec.restartFileFormat                     = [];
-            self.spec.outputColumnWidth                     = [];
-            self.spec.outputRealPrecision                   = [];
-            self.spec.silentModeRequested                   = [];
-            self.spec.domainLowerLimitVec                   = [];
-            self.spec.domainUpperLimitVec                   = [];
-            self.spec.parallelizationModel                  = [];
-            self.spec.progressReportPeriod                  = [];
-            self.spec.targetAcceptanceRate                  = [];
-            self.spec.maxNumDomainCheckToWarn               = [];
-            self.spec.maxNumDomainCheckToStop               = [];
-            ...ParaMCMC variables
-            self.spec.chainSize                             = [];
-            self.spec.startPointVec                         = [];
-            self.spec.sampleRefinementCount                 = [];
-            self.spec.sampleRefinementMethod                = [];
-            self.spec.randomStartPointRequested             = [];
-            self.spec.randomStartPointDomainLowerLimitVec   = [];
-            self.spec.randomStartPointDomainUpperLimitVec   = [];
-            ...ParaDRAM variables
-            self.spec.scaleFactor                           = [];
-            self.spec.proposalModel                         = [];
-            self.spec.proposalStartCovMat                   = [];
-            self.spec.proposalStartCorMat                   = [];
-            self.spec.proposalStartStdVec                   = [];
-            self.spec.adaptiveUpdateCount                   = [];
-            self.spec.adaptiveUpdatePeriod                  = [];
-            self.spec.greedyAdaptationCount                 = [];
-            self.spec.delayedRejectionCount                 = [];
-            self.spec.burninAdaptationMeasure               = [];
-            self.spec.delayedRejectionScaleFactorVec        = [];
-
         end
 
         %***************************************************************************************************************************
