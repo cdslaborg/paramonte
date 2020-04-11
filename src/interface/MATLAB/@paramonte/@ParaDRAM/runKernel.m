@@ -12,7 +12,7 @@ function runKernel  ( self          ...
                                                     % co_counterDRS, 0 means false, 1 means true
 
     SumAccRateSinceStart = SumAccRateSinceStart_class();
-    
+
     acceptedRejectedDelayedUnusedRestartMode    = 0;                                            % used to compute more accurate timings in the restart mode
     self.Stats.avgTimePerFunCalInSec            = 0.0;
     numFunCallAcceptedRejectedLastReport        = 0;
@@ -150,9 +150,9 @@ function runKernel  ( self          ...
     self.Stats.LogFuncMode.Loc.compact  = 0;
 
     if self.Image.isFirst
-        fprintf( 1, "            Accepted/Total Func. Call   Dynamic/Overall Acc. Rate   Elapsed/Remained Time [s]\n" );
-        fprintf( 1, "            =========================   =========================   =========================\n" );
-        fprintf( 1, "                                                                                             " );
+        fprintf( 1, "            Accepted/Total Func. Call   Dynamic/Overall Acc. Rate   Elapsed/Remained Time [s]\n"   );
+        fprintf( 1, "            =========================   =========================   =========================\n"   );
+        fprintf( 1, "                                                                                             "     );
     end
 
     imageID = 1;    % needed even in the case of serial run to assign a proper value to self.Chain.ProcessID
@@ -231,7 +231,7 @@ function runKernel  ( self          ...
             SumAccRateSinceStart.acceptedRejected = SumAccRateSinceStart.acceptedRejected + co_AccRate(counterDRS+2);
 
         else % blockProposalAccepted
-        
+
             counterDRS                              = self.SpecDRAM.delayedRejectionCount.val;
             SumAccRateSinceStart.acceptedRejected   = SumAccRateSinceStart.acceptedRejected + co_AccRate(counterDRS+2);
 
@@ -290,7 +290,7 @@ function runKernel  ( self          ...
                 end
             else
                 if self.SpecBase.restartFileFormat.isBinary
-%                            meanAccRateSinceStart = read(self.RestartFile.unit)
+                % meanAccRateSinceStart = read(self.RestartFile.unit)
                 else
                     fgets(self.RestartFile.unit);
                     meanAccRateSinceStart = fgets(self.RestartFile.unit);

@@ -3,14 +3,16 @@ clear all;
 close all;
 clear classes;
 format compact; format long;
-addpath(genpath('..\.')) % lib codes
+pmlibRootDir = '../'; % set this path to the paramonte library root dir
+addpath( genpath(pmlibRootDir) ) 
 filePath = mfilename('fullpath');
 [scriptPath,fileName,fileExt] = fileparts(filePath); cd(scriptPath); % Change working directory to source code directory.
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
-                pd = ParaDRAM();
+pd = ParaDRAM();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
     ...ParaMonte variables...
 % pd.spec.sampleSize                              = 1000;                         % Works
 pd.spec.randomSeed                              = 7;                            % Works
