@@ -119,11 +119,7 @@ classdef paramonte < handle
 %               Feel free to change the number of processors to any number desired.
 %               But do not request more than the number of physical cores on your system.
 %
-    properties (Constant, Access = protected)
-        CLASS_NAME = "@paramonte"
-    end
-
-    properties (Access = public, Hidden)
+    properties (Access = public)
         authors             = []
         credits             = []
         version             = []
@@ -131,7 +127,7 @@ classdef paramonte < handle
         ParaDRAM            = []
     end
 %
-%    properties (Access = public)
+%    properties (Access = public, Hidden)
 %        spec                = []
 %        Stats               = ParaDRAM_Statistics_class()
 %        Chain               = []
