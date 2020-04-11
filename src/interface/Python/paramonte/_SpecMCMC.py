@@ -39,42 +39,42 @@ class _SpecMCMC():
         if isinstance(chainSize,int):
             return "chainSize=" + str(chainSize) + _delim
         else:
-            raise TypeError("chainSize must be of type int.")
+            raise TypeError("The input specification, chainSize, must be of type int.")
 
     def startPointVec(self,startPointVec):
         if isinstance(startPointVec,(list,tuple,_np.ndarray)):
             return "startPointVec=" + str(_np.array(list(startPointVec)).flatten()).strip('[]') + _delim
         else:
-            raise TypeError("startPointVec must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+            raise TypeError("The input specification, startPointVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
 
     def sampleRefinementCount(self,sampleRefinementCount):
         if isinstance(sampleRefinementCount,int):
             return "sampleRefinementCount=" + str(sampleRefinementCount) + _delim
         else:
-            raise TypeError("sampleRefinementCount must be of type int.")
+            raise TypeError("The input specification, sampleRefinementCount, must be of type int.")
 
     def sampleRefinementMethod(self,sampleRefinementMethod):
         if isinstance(sampleRefinementMethod,str):
             return "sampleRefinementMethod=" + "'" + str(sampleRefinementMethod) + "'" + _delim
         else:
-            raise TypeError("sampleRefinementMethod must be of type str.")
+            raise TypeError("The input specification, sampleRefinementMethod, must be of type str.")
 
     def randomStartPointRequested(self,randomStartPointRequested):
         if isinstance(randomStartPointRequested,bool):
             return "randomStartPointRequested=" + str(randomStartPointRequested) + _delim
         else:
-            raise TypeError("randomStartPointRequested must be of type bool (True or False).")
+            raise TypeError("The input specification, randomStartPointRequested, must be of type bool (True or False).")
 
     def randomStartPointDomainLowerLimitVec(self,randomStartPointDomainLowerLimitVec):
         if isinstance(randomStartPointDomainLowerLimitVec,(list,tuple,_np.ndarray)):
             return "randomStartPointDomainLowerLimitVec=" + str(_np.array(list(randomStartPointDomainLowerLimitVec)).flatten()).strip('[]') + _delim
         else:
-            raise TypeError("randomStartPointDomainLowerLimitVec must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+            raise TypeError("The input specification, randomStartPointDomainLowerLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
 
     def randomStartPointDomainUpperLimitVec(self,randomStartPointDomainUpperLimitVec):
         if isinstance(randomStartPointDomainUpperLimitVec,(list,tuple,_np.ndarray)):
             return "randomStartPointDomainUpperLimitVec=" + str(_np.array(list(randomStartPointDomainUpperLimitVec)).flatten()).strip('[]') + _delim
         else:
-            raise TypeError("randomStartPointDomainUpperLimitVec must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+            raise TypeError("The input specification, randomStartPointDomainUpperLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
 
 ####################################################################################################################################
