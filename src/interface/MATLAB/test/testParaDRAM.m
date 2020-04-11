@@ -10,72 +10,74 @@ filePath = mfilename('fullpath');
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
-pd = ParaDRAM();
+pm = paramonte();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
+return
+pmpd = pm.ParaDRAM()
 
     ...ParaMonte variables...
-% pd.spec.sampleSize                              = 1000;                         % Works
-pd.spec.randomSeed                              = 7;                            % Works
-pd.spec.description                             = "Hi there";                   % Works
-pd.spec.outputFileName                          = "./out/temp/";                % Works
-pd.spec.outputDelimiter                         = "|";                          % Works
-pd.spec.chainFileFormat                         = 'verbose';                    % Works
-pd.spec.variableNameList                        = ["Variable-X", "Variable-Y"]; % Works
-% pd.spec.restartFileFormat                       = [];                         % Not implemented properly yet.
-pd.spec.outputColumnWidth                       = 13;                           % Works
-pd.spec.outputRealPrecision                     = 6;                            % Works
-pd.spec.silentModeRequested                     = 0;                            % Works
-pd.spec.domainLowerLimitVec                     = [-4,-4];                      % Works
-pd.spec.domainUpperLimitVec                     = [+4,+4];                      % Works
-pd.spec.progressReportPeriod                    = 100;                          % Works
-pd.spec.targetAcceptanceRate                    = 0.5;                          % Works
-% pd.spec.maxNumDomainCheckToWarn                 = [];
-% pd.spec.maxNumDomainCheckToStop                 = [];
+% pmpd.spec.sampleSize                              = 1000;                       % Works
+pmpd.spec.randomSeed                              = 7;                            % Works
+pmpd.spec.description                             = "Hi there";                   % Works
+pmpd.spec.outputFileName                          = "./out/temp/";                % Works
+pmpd.spec.outputDelimiter                         = "|";                          % Works
+pmpd.spec.chainFileFormat                         = 'verbose';                    % Works
+pmpd.spec.variableNameList                        = ["Variable-X", "Variable-Y"]; % Works
+% pmpd.spec.restartFileFormat                       = [];                         % Not implemented properly yet.
+pmpd.spec.outputColumnWidth                       = 13;                           % Works
+pmpd.spec.outputRealPrecision                     = 6;                            % Works
+pmpd.spec.silentModeRequested                     = 0;                            % Works
+pmpd.spec.domainLowerLimitVec                     = [-4,-4];                      % Works
+pmpd.spec.domainUpperLimitVec                     = [+4,+4];                      % Works
+pmpd.spec.progressReportPeriod                    = 100;                          % Works
+pmpd.spec.targetAcceptanceRate                    = 0.5;                          % Works
+% pmpd.spec.maxNumDomainCheckToWarn                 = [];
+% pmpd.spec.maxNumDomainCheckToStop                 = [];
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMCMC variables...
-pd.spec.chainSize                               = 5000;                         % Works
-pd.spec.startPointVec                           = [0.6,1.2];                    % Works
-pd.spec.sampleRefinementCount                   = 1;                            % Works
-% pd.spec.sampleRefinementMethod                  = "SomeRandomName";             % Works
-pd.spec.randomStartPointRequested               = 1;                            % Works
-pd.spec.randomStartPointDomainLowerLimitVec     = [0.5, 1.0];                   % Works
-pd.spec.randomStartPointDomainUpperLimitVec     = [1.0, 1.5];                   % Works
+pmpd.spec.chainSize                               = 5000;                         % Works
+pmpd.spec.startPointVec                           = [0.6,1.2];                    % Works
+pmpd.spec.sampleRefinementCount                   = 1;                            % Works
+% pmpd.spec.sampleRefinementMethod                  = "SomeRandomName";             % Works
+pmpd.spec.randomStartPointRequested               = 1;                            % Works
+pmpd.spec.randomStartPointDomainLowerLimitVec     = [0.5, 1.0];                   % Works
+pmpd.spec.randomStartPointDomainUpperLimitVec     = [1.0, 1.5];                   % Works
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaDRAM variables...
-% pd.spec.scaleFactor                             = "2.5";                        % Problem: Doesn't work for '1', "1", '2.5', "2.5", '2.5*Gelman' or "2.5*Gelman"
-pd.spec.proposalModel                           = "uniform";                    % Works
-pd.spec.proposalStartCovMat                     = [0.5, 0.2; 0.1, 0.3];         % Works
-pd.spec.proposalStartCorMat                     = [0.4, 0.1; 0.2, 0.3];         % Works
-pd.spec.proposalStartStdVec                     = [1, 1];                       % Works
-pd.spec.adaptiveUpdateCount                     = 2;                            % Works
-pd.spec.adaptiveUpdatePeriod                    = 25;                           % Works
-pd.spec.greedyAdaptationCount                   = 2;                            % Works
-pd.spec.delayedRejectionCount                   = 2;                            % Works
-pd.spec.burninAdaptationMeasure                 = 0.5;                          % Works
-pd.spec.delayedRejectionScaleFactorVec          = [3, 4];                       % Works
+% pmpd.spec.scaleFactor                             = "2.5";                        % Problem: Doesn't work for '1', "1", '2.5', "2.5", '2.5*Gelman' or "2.5*Gelman"
+pmpd.spec.proposalModel                           = "uniform";                    % Works
+pmpd.spec.proposalStartCovMat                     = [0.5, 0.2; 0.1, 0.3];         % Works
+pmpd.spec.proposalStartCorMat                     = [0.4, 0.1; 0.2, 0.3];         % Works
+pmpd.spec.proposalStartStdVec                     = [1, 1];                       % Works
+pmpd.spec.adaptiveUpdateCount                     = 2;                            % Works
+pmpd.spec.adaptiveUpdatePeriod                    = 25;                           % Works
+pmpd.spec.greedyAdaptationCount                   = 2;                            % Works
+pmpd.spec.delayedRejectionCount                   = 2;                            % Works
+pmpd.spec.burninAdaptationMeasure                 = 0.5;                          % Works
+pmpd.spec.delayedRejectionScaleFactorVec          = [3, 4];                       % Works
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ndim = 2;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-pd.runSampler(ndim, @getLogFunc);
+pmpd.runSampler(ndim, @getLogFunc);
 fclose('all');
 
 for i = 1 : ndim
 
     figure;
-    histfit(pd.Chain.State(i,:));
+    histfit(pmpd.Chain.State(i,:));
     
     figure;
-    plot(pd.Chain.State(i,:));
+    plot(pmpd.Chain.State(i,:));
     set(gca,'xscale','log')
     
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-system(pd.LogFile.Path.modified);
-system(pd.TimeFile.Path.modified);
-system(pd.ChainFile.Path.modified);
-system(pd.SampleFile.Path.modified);
+system(pmpd.LogFile.Path.modified);
+system(pmpd.TimeFile.Path.modified);
+system(pmpd.ChainFile.Path.modified);
+system(pmpd.SampleFile.Path.modified);

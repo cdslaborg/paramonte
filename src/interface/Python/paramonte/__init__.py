@@ -132,7 +132,7 @@ import _paramonte as _pm
 from paradram import ParaDRAM
 from _pmreqs import verify, build
 
-__author__  = "The Computational Data Science Lab @ The University of Texas"
+__authors__ = "The Computational Data Science Lab @ The University of Texas"
 __credits__ = "Peter O'Donnell Fellowship"
 __version__ = _pm.version
 
