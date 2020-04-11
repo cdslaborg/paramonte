@@ -125,6 +125,7 @@ Thumbs.db
 *.stderr
 *.temp
 *.rfn
+*.bin
 ___*___.*
 copyFiles.sh
 
