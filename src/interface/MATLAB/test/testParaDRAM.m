@@ -14,9 +14,9 @@ pm = paramonte();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 pmpd = pm.ParaDRAM();
-
+return
     ...ParaMonte variables...
-% pmpd.spec.sampleSize                              = 1000;                       % Works
+% pmpd.spec.sampleSize                            = 1000;                       % Works
 pmpd.spec.randomSeed                              = 7;                            % Works
 pmpd.spec.description                             = "Hi there";                   % Works
 pmpd.spec.outputFileName                          = "./out/temp/";                % Works

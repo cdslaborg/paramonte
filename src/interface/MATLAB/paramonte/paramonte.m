@@ -142,7 +142,38 @@ classdef paramonte < handle
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-        function self = paramonte()
+        function self = paramonte(varargin)
+
+            % check interface type
+
+            errorOccurred = false;
+            matlabEnabled = false;
+            if nargin==1
+                if isa(varargin{1},'char')
+                    if strcmp(lower(varargin{1}),'matlab')
+                        matlabEnabled = true;
+                    else
+                        errorOccurred = true;
+                    end
+                elseif isa(varargin{1},'string')
+                    if strcmp(lower(varargin{1}),"matlab")
+                        matlabEnabled = true;
+                    else
+                        errorOccurred = true;
+                    end
+                end
+            elseif nargin~=0
+                errorOccurred = true;
+            end
+            if errorOccurred
+                disp( [ newline, 'The paramonte class constructor takes at most one argument of value ''matlab''. you have entered:', newline ] )
+                disp(varargin)
+                disp(   [ newline, 'Pass the input value ''matlab'' only if you know what it means. Otherwise, do not pass any input values. ' ...
+                        , 'ParaMonte will properly set things up for you.', newline ...
+                        ])
+                disp('');
+                error(['Gracefully exiting the ParaMonte constructor.']);
+            end
 
             self.rootPath = mfilename('fullpath'); [self.rootPath,~,~] = fileparts(self.rootPath);
             addpath(genpath(self.rootPath));
@@ -154,7 +185,11 @@ classdef paramonte < handle
             versionFileID = fopen(versionFilePath);
             self.version = fgetl(versionFileID);
 
-            self.ParaDRAM = ParaDRAM();
+            if matlabEnabled
+                self.ParaDRAM = @ParaDRAM_MATLAB;
+            else
+                self.ParaDRAM = @ParaDRAM;
+            end
 
         end
 

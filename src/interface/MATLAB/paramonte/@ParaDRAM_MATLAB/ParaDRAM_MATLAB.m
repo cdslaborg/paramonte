@@ -1,5 +1,5 @@
-classdef ParaDRAM < ParaMCMC_class
-%   This is the ParaDRAM class for generating instances of serial and parallel
+classdef ParaDRAM_MATLAB < ParaMCMC_class
+%   This is the ParaDRAM_MATLAB class for generating instances of serial and parallel
 %   Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
 %   sampler of the ParaMonte library.
 %
@@ -203,74 +203,131 @@ classdef ParaDRAM < ParaMCMC_class
 %   To unset an already-set input simulation specification, simply set the
 %   simulation attribute to None or re-instantiate the object.
 
+    properties (Constant, Access = protected)
+        SUB_CLASS2_NAME     = "@ParaDRAM_class"
+    end
+
+    properties (Access = public, Hidden)
+        SpecDRAM            = []
+        Proposal            = []
+    end
+
+    properties (Access = public)
+        spec                = []
+        Stats               = ParaDRAM_Statistics_class()
+        Chain               = []
+        RefinedChain        = []
+    end
+
 %***********************************************************************************************************************************
 %***********************************************************************************************************************************
 
     methods (Access = public)
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
 
-        function self = ParaDRAM()
+    function self = ParaDRAM()
 
-            addpath(genpath(pwd));
+        addpath(genpath(pwd));
 
-            self.RefinedChain = ParaDRAMRefinedChain_class();
-            self.spec = spec();
+        self.RefinedChain   = ParaDRAMRefinedChain_class();
 
-            ...ParaMonte variables
-            self.spec.sampleSize                            = [];
-            self.spec.randomSeed                            = [];
-            self.spec.description                           = [];
-            self.spec.outputFileName                        = [];
-            self.spec.outputDelimiter                       = [];
-            self.spec.chainFileFormat                       = [];
-            self.spec.variableNameList                      = [];
-            self.spec.restartFileFormat                     = [];
-            self.spec.outputColumnWidth                     = [];
-            self.spec.outputRealPrecision                   = [];
-            self.spec.silentModeRequested                   = [];
-            self.spec.domainLowerLimitVec                   = [];
-            self.spec.domainUpperLimitVec                   = [];
-            self.spec.parallelizationModel                  = [];
-            self.spec.progressReportPeriod                  = [];
-            self.spec.targetAcceptanceRate                  = [];
-            self.spec.maxNumDomainCheckToWarn               = [];
-            self.spec.maxNumDomainCheckToStop               = [];
-            ...ParaMCMC variables
-            self.spec.chainSize                             = [];
-            self.spec.startPointVec                         = [];
-            self.spec.sampleRefinementCount                 = [];
-            self.spec.sampleRefinementMethod                = [];
-            self.spec.randomStartPointRequested             = [];
-            self.spec.randomStartPointDomainLowerLimitVec   = [];
-            self.spec.randomStartPointDomainUpperLimitVec   = [];
-            ...ParaDRAM variables
-            self.spec.scaleFactor                           = [];
-            self.spec.proposalModel                         = [];
-            self.spec.proposalStartCovMat                   = [];
-            self.spec.proposalStartCorMat                   = [];
-            self.spec.proposalStartStdVec                   = [];
-            self.spec.adaptiveUpdateCount                   = [];
-            self.spec.adaptiveUpdatePeriod                  = [];
-            self.spec.greedyAdaptationCount                 = [];
-            self.spec.delayedRejectionCount                 = [];
-            self.spec.burninAdaptationMeasure               = [];
-            self.spec.delayedRejectionScaleFactorVec        = [];
+        self.spec           = spec();
 
-        end
+        ...ParaMonte variables
+        self.spec.sampleSize                            = [];
+        self.spec.randomSeed                            = [];
+        self.spec.description                           = [];
+        self.spec.outputFileName                        = [];
+        self.spec.outputDelimiter                       = [];
+        self.spec.chainFileFormat                       = [];
+        self.spec.variableNameList                      = [];
+        self.spec.restartFileFormat                     = [];
+        self.spec.outputColumnWidth                     = [];
+        self.spec.outputRealPrecision                   = [];
+        self.spec.silentModeRequested                   = [];
+        self.spec.domainLowerLimitVec                   = [];
+        self.spec.domainUpperLimitVec                   = [];
+        self.spec.parallelizationModel                  = [];
+        self.spec.progressReportPeriod                  = [];
+        self.spec.targetAcceptanceRate                  = [];
+        self.spec.maxNumDomainCheckToWarn               = [];
+        self.spec.maxNumDomainCheckToStop               = [];
+        ...ParaMCMC variables
+        self.spec.chainSize                             = [];
+        self.spec.startPointVec                         = [];
+        self.spec.sampleRefinementCount                 = [];
+        self.spec.sampleRefinementMethod                = [];
+        self.spec.randomStartPointRequested             = [];
+        self.spec.randomStartPointDomainLowerLimitVec   = [];
+        self.spec.randomStartPointDomainUpperLimitVec   = [];
+        ...ParaDRAM variables
+        self.spec.scaleFactor                           = [];
+        self.spec.proposalModel                         = [];
+        self.spec.proposalStartCovMat                   = [];
+        self.spec.proposalStartCorMat                   = [];
+        self.spec.proposalStartStdVec                   = [];
+        self.spec.adaptiveUpdateCount                   = [];
+        self.spec.adaptiveUpdatePeriod                  = [];
+        self.spec.greedyAdaptationCount                 = [];
+        self.spec.delayedRejectionCount                 = [];
+        self.spec.burninAdaptationMeasure               = [];
+        self.spec.delayedRejectionScaleFactorVec        = [];
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+    end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+    runSampler(self, ndim, getLogFunc)
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+    runKernel(self, getLogFunc)
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+    reportProgress(self)
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
 
     end % methods (dynamic)
 
 %***********************************************************************************************************************************
 %***********************************************************************************************************************************
 
-    methods (Hidden)
-        % These methods have been implemented to override the default 'handle' class methods, 
-        % so that they won't pop-up after pressing 'Tab' button.
+    methods (Static)
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+        function burninLoc = getBurninLoc(lenLogFunc, refLogFunc, LogFunc)
+            negLogIncidenceProb = log(lenLogFunc);
+            burninLoc = 0;
+            while true
+                burninLoc = burninLoc + 1;
+                if burninLoc < lenLogFunc && (refLogFunc - LogFunc(burninLoc)) > negLogIncidenceProb, continue; end
+                break;
+            end
+        end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+    end
+
+%***********************************************************************************************************************************
+%***********************************************************************************************************************************
+
+    methods (Hidden)    % These methods have been implemented to override the default 'handle' class methods, so that they won't pop-up after pressing 'Tab' button
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
         function addlistener    (self)  end
         function delete         (self)  end
         function findobj        (self)  end
@@ -278,6 +335,10 @@ classdef ParaDRAM < ParaMCMC_class
         function valid          (self)  end
         function listener       (self)  end
         function notify         (self)  end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
     end
 
 %***********************************************************************************************************************************

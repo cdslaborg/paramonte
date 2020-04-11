@@ -44,7 +44,10 @@ classdef spec < handle
 %***********************************************************************************************************************************
 %***********************************************************************************************************************************
 
-    methods (Hidden)    % These methods have been implemented to override the default 'handle' class methods, so that they won't pop-up after pressing 'Tab' button
+    methods (Hidden)
+    
+    % These methods have been implemented to override the default 'handle' class methods, 
+    % so that they won't pop-up after pressing 'Tab' button.
 
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
