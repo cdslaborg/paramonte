@@ -151,18 +151,31 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine warn(msg,prefix,newline,outputUnit)
+    subroutine warn(msg,prefix,newline,outputUnit,marginTop,marginBot)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warn
 #endif
+        use Constants_mod, only: IK
         implicit none
         character(*), intent(in)            :: msg
         character(*), intent(in), optional  :: prefix, newline
-        integer     , intent(in), optional  :: outputUnit
+        integer(IK) , intent(in), optional  :: outputUnit,marginTop,marginBot
         if (present(prefix)) then
-            call informUser(msg,prefix // " - WARNING: ",newline,outputUnit)
+            call informUser ( msg           = msg                       &
+                            , prefix        = prefix // " - WARNING: "  &
+                            , newline       = newline                   &
+                            , outputUnit    = outputUnit                &
+                            , marginTop     = marginTop                 &
+                            , marginBot     = marginBot                 &
+                            )
         else
-            call informUser(msg," - WARNING: ",newline,outputUnit)
+            call informUser ( msg           = msg                       &
+                            , prefix        = " - WARNING: "            &
+                            , newline       = newline                   &
+                            , outputUnit    = outputUnit                &
+                            , marginTop     = marginTop                 &
+                            , marginBot     = marginBot                 &
+                            )
         end if
     end subroutine warn
 

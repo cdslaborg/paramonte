@@ -74,23 +74,23 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/SpecBase_MaxNumDomainCheckToStop_mod.f90
     ${ParaMonte_SRC_DIR}/SpecBase_mod.f90
     ${ParaMonte_SRC_DIR}/SpecMCMC_ChainSize_mod.f90
+    ${ParaMonte_SRC_DIR}/SpecMCMC_ScaleFactor_mod.f90
     ${ParaMonte_SRC_DIR}/SpecMCMC_StartPointVec_mod.f90
+    ${ParaMonte_SRC_DIR}/SpecMCMC_ProposalModel_mod.f90
+    ${ParaMonte_SRC_DIR}/SpecMCMC_ProposalStartCovMat_mod.f90
+    ${ParaMonte_SRC_DIR}/SpecMCMC_ProposalStartCorMat_mod.f90
+    ${ParaMonte_SRC_DIR}/SpecMCMC_ProposalStartStdVec_mod.f90
     ${ParaMonte_SRC_DIR}/SpecMCMC_SampleRefinementCount_mod.f90
     ${ParaMonte_SRC_DIR}/SpecMCMC_SampleRefinementMethod_mod.f90
     ${ParaMonte_SRC_DIR}/SpecMCMC_RandomStartPointRequested_mod.f90
     ${ParaMonte_SRC_DIR}/SpecMCMC_RandomStartPointDomainLowerLimitVec_mod.f90
     ${ParaMonte_SRC_DIR}/SpecMCMC_RandomStartPointDomainUpperLimitVec_mod.f90
     ${ParaMonte_SRC_DIR}/SpecMCMC_mod.f90
-    ${ParaMonte_SRC_DIR}/SpecDRAM_ScaleFactor_mod.f90
-    ${ParaMonte_SRC_DIR}/SpecDRAM_ProposalModel_mod.f90
     ${ParaMonte_SRC_DIR}/SpecDRAM_AdaptiveUpdateCount_mod.f90
     ${ParaMonte_SRC_DIR}/SpecDRAM_AdaptiveUpdatePeriod_mod.f90
     ${ParaMonte_SRC_DIR}/SpecDRAM_GreedyAdaptationCount_mod.f90
     ${ParaMonte_SRC_DIR}/SpecDRAM_DelayedRejectionCount_mod.f90
     ${ParaMonte_SRC_DIR}/SpecDRAM_BurninAdaptationMeasure_mod.f90
-    ${ParaMonte_SRC_DIR}/SpecDRAM_ProposalStartCovMat_mod.f90
-    ${ParaMonte_SRC_DIR}/SpecDRAM_ProposalStartCorMat_mod.f90
-    ${ParaMonte_SRC_DIR}/SpecDRAM_ProposalStartStdVec_mod.f90
     ${ParaMonte_SRC_DIR}/SpecDRAM_DelayedRejectionScaleFactorVec_mod.f90
     ${ParaMonte_SRC_DIR}/SpecDRAM_mod.f90
     ${ParaMonte_SRC_DIR}/ParaMonteLogFunc_mod.f90

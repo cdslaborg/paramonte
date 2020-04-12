@@ -121,6 +121,7 @@ contains
     ! Intel does not complain. Until GFortran comes up with a fix, we have to live with this interface.
     function constructProposalSymmetric ( ndim &
                                         , SpecBase &
+                                        , SpecMCMC &
                                         , SpecDRAM &
                                         , Image &
                                         , name &
@@ -137,6 +138,7 @@ contains
         use ParaMonte_mod, only: LogFile_type
         use ParaMonte_mod, only: RestartFile_type
         use SpecBase_mod, only: SpecBase_type
+        use SpecMCMC_mod, only: SpecMCMC_type
         use SpecDRAM_mod, only: SpecDRAM_type
         use ParaDRAM_mod, only: ParaDRAM_type
         use String_mod, only: num2str
@@ -146,6 +148,7 @@ contains
 
         integer(IK)             , intent(in)    :: ndim
         type(SpecBase_type)     , intent(in)    :: SpecBase
+        type(SpecMCMC_type)     , intent(in)    :: SpecMCMC
         type(SpecDRAM_type)     , intent(in)    :: SpecDRAM
         type(Image_type)        , intent(in)    :: Image
         character(*)            , intent(in)    :: name
@@ -179,14 +182,14 @@ contains
         mc_DomainLowerLimitVec              = SpecBase%DomainLowerLimitVec%Val
         mc_DomainUpperLimitVec              = SpecBase%DomainUpperLimitVec%Val
         mc_DelayedRejectionScaleFactorVec   = SpecDRAM%delayedRejectionScaleFactorVec%Val
-        mc_isNormal                         = SpecDRAM%ProposalModel%isNormal
+        mc_isNormal                         = SpecMCMC%ProposalModel%isNormal
         mc_Image                            = Image
         mc_methodName                       = name
         mc_methodBrand                      = brand
         mc_logFileUnit                      = LogFile%unit
         mc_restartFileUnit                  = RestartFile%unit
         mc_restartFileFormat                = RestartFile%format
-        mc_defaultScaleFactorSq             = SpecDRAM%ScaleFactor%val**2
+        mc_defaultScaleFactorSq             = SpecMCMC%ScaleFactor%val**2
        !Proposal%AccRate%sumUpToLastUpdate  = 0._RK
         mc_maxNumDomainCheckToWarn          = SpecBase%MaxNumDomainCheckToWarn%val
         mc_maxNumDomainCheckToStop          = SpecBase%MaxNumDomainCheckToStop%val
@@ -218,14 +221,14 @@ contains
         allocate( comv_CholDiagLower(ndim,0:ndim,0:mc_DelayedRejectionCount) )
 #endif
 
-        if ( SpecDRAM%ProposalStartCovMat%isPresent ) then
-            comv_CholDiagLower(1:ndim,1:ndim,0) = SpecDRAM%ProposalStartCovMat%Val
+        if ( SpecMCMC%ProposalStartCovMat%isPresent ) then
+            comv_CholDiagLower(1:ndim,1:ndim,0) = SpecMCMC%ProposalStartCovMat%Val
         else
             block
                 use Statistics_mod, only: getCovMatFromCorMat
                 comv_CholDiagLower(1:ndim,1:ndim,0) = getCovMatFromCorMat   ( nd = ndim &
-                                                                            , StdVec = SpecDRAM%ProposalStartStdVec%Val &
-                                                                            , CorMat = SpecDRAM%ProposalStartCorMat%Val &
+                                                                            , StdVec = SpecMCMC%ProposalStartStdVec%Val &
+                                                                            , CorMat = SpecMCMC%ProposalStartCorMat%Val &
                                                                             )
             end block
         end if

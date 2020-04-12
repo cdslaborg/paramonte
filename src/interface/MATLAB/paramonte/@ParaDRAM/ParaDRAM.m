@@ -1,4 +1,4 @@
-classdef ParaDRAM < ParaMCMC_class
+classdef ParaDRAM
 %   This is the ParaDRAM class for generating instances of serial and parallel
 %   Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
 %   sampler of the ParaMonte library.
@@ -9,6 +9,40 @@ classdef ParaDRAM < ParaMCMC_class
 %
 %   Once you set the desired attributes to the desired values,
 %   call the ParaDRAM sampler via the object's method runSampler().
+%
+%   Attributes
+%   ----------
+%
+%       buildMode
+%           optional string argument with default value "release".
+%           possible choices are:
+%               "debug"
+%                   to be used for identifying sources of bug
+%                   and causes of code crash.
+%               "release"
+%                   to be used in all other normal scenarios
+%                   for maximum runtime efficiency.
+%       mpiEnabled
+%           optional logical (boolean) indicator which is False by default.
+%           If it is set to True, it will cause the ParaDRAM simulation
+%           to run in parallel on the requested number of processors.
+%           See ParaDRAM class information on how
+%           to run a simulation in parallel.
+%       inputFilePath
+%           optional string input representing the path to
+%           an external input namelist of simulation specifications.
+%           USE THIS OPTIONAL ARGUMENT WITH CAUTION AND
+%           ONLY IF YOU KNOW WHAT YOU ARE DOING.
+%
+%           ====================================================
+%           Specifying this option will cause ParaDRAM to ignore
+%           all other paraDRAM simulation specifications set by
+%           the user via ParaDRAM instance attributes.
+%           ====================================================
+%   
+%   Returns
+%   -------
+%       Object of class ParaDRAM
 %
 %   Minimal serial example
 %   ----------------------
@@ -208,6 +242,9 @@ classdef ParaDRAM < ParaMCMC_class
 %***********************************************************************************************************************************
 
     properties (Access = public)
+        mpiEnabled = false;
+        inputFile = [];
+        buildMode = "release";
         spec = [];
     end
 
@@ -221,8 +258,13 @@ classdef ParaDRAM < ParaMCMC_class
         %***************************************************************************************************************************
 
         function self = ParaDRAM()
-            self.spec = spec();
+            self.spec = SpecDRAM();
         end
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        runSampler(ndim,inputFile)
 
         %***************************************************************************************************************************
         %***************************************************************************************************************************

@@ -69,7 +69,7 @@ This\n
    !sampleSize                          = 111
     randomSeed                          = 2136275,
     chainFileFormat                     = "compact"
-   !variableNameList                    = "variable1"       ! Notice the missing fourth variable name here. 
+    variableNameList                    = "variable1"       ! Notice the missing fourth variable name here. 
                                         , "variable2"       ! Any missing variable name will be automatically assigned an appropriate name. 
                                         , "variable3"
     domainLowerLimitVec                 = 4*-1.e300         ! repetition pattern rules apply again here. 4 dimensions => 4-element vector of values.

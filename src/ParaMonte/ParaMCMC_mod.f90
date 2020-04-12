@@ -59,15 +59,15 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine setupParaMCMC(PMC)
+    subroutine setupParaMCMC(PMPM)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMCMC
 #endif
         use SpecMCMC_mod, only: SpecMCMC_type
         implicit none
-        class(ParaMCMC_type), intent(inout)    :: PMC
+        class(ParaMCMC_type), intent(inout)    :: PMPM
         character(*), parameter :: PROCEDURE_NAME = "@setupParaMCMC()"
-        PMC%SpecMCMC = SpecMCMC_type(PMC%name)
+        PMPM%SpecMCMC = SpecMCMC_type(nd=PMPM%nd%val,methodName=PMPM%name)
     end subroutine setupParaMCMC
 
 !***********************************************************************************************************************************

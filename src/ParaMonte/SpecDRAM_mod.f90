@@ -25,55 +25,40 @@
 module SpecDRAM_mod
 
     ! ParaDRAM Spec variable types
-    use SpecDRAM_ScaleFactor_mod                    , only: ScaleFactor_type
-    use SpecDRAM_ProposalModel_mod                  , only: ProposalModel_type
-    use SpecDRAM_ProposalStartCovMat_mod            , only: ProposalStartCovMat_type
-    use SpecDRAM_ProposalStartCorMat_mod            , only: ProposalStartCorMat_type
-    use SpecDRAM_ProposalStartStdVec_mod            , only: ProposalStartStdVec_type
-    use SpecDRAM_AdaptiveUpdateCount_mod            , only: AdaptiveUpdateCount_type
-    use SpecDRAM_AdaptiveUpdatePeriod_mod           , only: AdaptiveUpdatePeriod_type
-    use SpecDRAM_GreedyAdaptationCount_mod          , only: GreedyAdaptationCount_type
-    use SpecDRAM_DelayedRejectionCount_mod          , only: DelayedRejectionCount_type
-    use SpecDRAM_BurninAdaptationMeasure_mod        , only: BurninAdaptationMeasure_type
-    use SpecDRAM_DelayedRejectionScaleFactorVec_mod , only: DelayedRejectionScaleFactorVec_type
+    use SpecDRAM_AdaptiveUpdateCount_mod                , only: AdaptiveUpdateCount_type
+    use SpecDRAM_AdaptiveUpdatePeriod_mod               , only: AdaptiveUpdatePeriod_type
+    use SpecDRAM_GreedyAdaptationCount_mod              , only: GreedyAdaptationCount_type
+    use SpecDRAM_DelayedRejectionCount_mod              , only: DelayedRejectionCount_type
+    use SpecDRAM_BurninAdaptationMeasure_mod            , only: BurninAdaptationMeasure_type
+    use SpecDRAM_DelayedRejectionScaleFactorVec_mod     , only: DelayedRejectionScaleFactorVec_type
 
     ! ParaDRAM namelist variables
-    use SpecDRAM_ScaleFactor_mod                    , only: scaleFactor
-    use SpecDRAM_ProposalModel_mod                  , only: proposalModel
-    use SpecDRAM_AdaptiveUpdateCount_mod            , only: adaptiveUpdateCount
-    use SpecDRAM_AdaptiveUpdatePeriod_mod           , only: adaptiveUpdatePeriod
-    use SpecDRAM_GreedyAdaptationCount_mod          , only: greedyAdaptationCount
-    use SpecDRAM_DelayedRejectionCount_mod          , only: delayedRejectionCount
-    use SpecDRAM_BurninAdaptationMeasure_mod        , only: burninAdaptationMeasure
-    use SpecDRAM_ProposalStartCovMat_mod            , only: ProposalStartCovMat
-    use SpecDRAM_ProposalStartCorMat_mod            , only: ProposalStartCorMat
-    use SpecDRAM_ProposalStartStdVec_mod            , only: ProposalStartStdVec
-    use SpecDRAM_DelayedRejectionScaleFactorVec_mod , only: delayedRejectionScaleFactorVec
+    use SpecDRAM_AdaptiveUpdateCount_mod                , only: adaptiveUpdateCount
+    use SpecDRAM_AdaptiveUpdatePeriod_mod               , only: adaptiveUpdatePeriod
+    use SpecDRAM_GreedyAdaptationCount_mod              , only: greedyAdaptationCount
+    use SpecDRAM_DelayedRejectionCount_mod              , only: delayedRejectionCount
+    use SpecDRAM_BurninAdaptationMeasure_mod            , only: burninAdaptationMeasure
+    use SpecDRAM_DelayedRejectionScaleFactorVec_mod     , only: delayedRejectionScaleFactorVec
 
     implicit none
 
-    type                                            :: SpecDRAM_type
-        type(ScaleFactor_type)                      :: ScaleFactor
-        type(ProposalModel_type)                    :: ProposalModel
-        type(ProposalStartCovMat_type)              :: ProposalStartCovMat
-        type(ProposalStartCorMat_type)              :: ProposalStartCorMat
-        type(ProposalStartStdVec_type)              :: ProposalStartStdVec
-        type(AdaptiveUpdateCount_type)              :: AdaptiveUpdateCount
-        type(AdaptiveUpdatePeriod_type)             :: AdaptiveUpdatePeriod
-        type(GreedyAdaptationCount_type)            :: GreedyAdaptationCount
-        type(DelayedRejectionCount_type)            :: DelayedRejectionCount
-        type(BurninAdaptationMeasure_type)          :: BurninAdaptationMeasure
-        type(DelayedRejectionScaleFactorVec_type)   :: DelayedRejectionScaleFactorVec
+    type                                                :: SpecDRAM_type
+        type(AdaptiveUpdateCount_type)                  :: AdaptiveUpdateCount
+        type(AdaptiveUpdatePeriod_type)                 :: AdaptiveUpdatePeriod
+        type(GreedyAdaptationCount_type)                :: GreedyAdaptationCount
+        type(DelayedRejectionCount_type)                :: DelayedRejectionCount
+        type(BurninAdaptationMeasure_type)              :: BurninAdaptationMeasure
+        type(DelayedRejectionScaleFactorVec_type)       :: DelayedRejectionScaleFactorVec
     contains
-        procedure, pass                             :: nullifyNameListVar
-        procedure, pass                             :: setFromInputFile
-        procedure, pass                             :: setFromInputArgs
-        procedure, pass                             :: reportValues
-        procedure, pass                             :: checkForSanity
+        procedure, pass                                 :: nullifyNameListVar
+        procedure, pass                                 :: setFromInputFile
+        procedure, pass                                 :: setFromInputArgs
+        procedure, pass                                 :: reportValues
+        procedure, pass                                 :: checkForSanity
     end type SpecDRAM_type
 
     interface SpecDRAM_type
-        module procedure                            :: constructSpecDRAM
+        module procedure                                :: constructSpecDRAM
     end interface SpecDRAM_type
 
 !***********************************************************************************************************************************
@@ -97,18 +82,13 @@ contains
         character(*), intent(in)    :: methodName
        !integer(IK), intent(in)     :: chainSizeDef
         type(SpecDRAM_type)         :: SpecDRAM
-        SpecDRAM%ScaleFactor                    = ScaleFactor_type                      (nd,methodName)
-        SpecDRAM%ProposalModel                  = ProposalModel_type                    ()
-        SpecDRAM%ProposalStartCovMat            = ProposalStartCovMat_type              (nd,methodName)
-        SpecDRAM%ProposalStartCorMat            = ProposalStartCorMat_type              (nd,methodName)
-        SpecDRAM%ProposalStartStdVec            = ProposalStartStdVec_type              (nd,methodName)
-        SpecDRAM%AdaptiveUpdatePeriod           = AdaptiveUpdatePeriod_type             (nd,methodName)
+        SpecDRAM%AdaptiveUpdatePeriod                   = AdaptiveUpdatePeriod_type             (nd,methodName)
         ! ATTN: AdaptiveUpdateCount has to be constructed after AdaptiveUpdatePeriod. It depends on it.
-        SpecDRAM%AdaptiveUpdateCount            = AdaptiveUpdateCount_type              (methodName) ! ,chainSizeDef,SpecDRAM%AdaptiveUpdatePeriod%def)
-        SpecDRAM%GreedyAdaptationCount          = GreedyAdaptationCount_type            (methodName)
-        SpecDRAM%DelayedRejectionCount          = DelayedRejectionCount_type            (methodName)
-        SpecDRAM%BurninAdaptationMeasure        = BurninAdaptationMeasure_type          (methodName)
-        SpecDRAM%DelayedRejectionScaleFactorVec = DelayedRejectionScaleFactorVec_type   (nd,methodName)
+        SpecDRAM%AdaptiveUpdateCount                    = AdaptiveUpdateCount_type              (methodName) ! ,chainSizeDef,SpecDRAM%AdaptiveUpdatePeriod%def)
+        SpecDRAM%GreedyAdaptationCount                  = GreedyAdaptationCount_type            (methodName)
+        SpecDRAM%DelayedRejectionCount                  = DelayedRejectionCount_type            (methodName)
+        SpecDRAM%BurninAdaptationMeasure                = BurninAdaptationMeasure_type          (methodName)
+        SpecDRAM%DelayedRejectionScaleFactorVec         = DelayedRejectionScaleFactorVec_type   (nd,methodName)
     end function constructSpecDRAM
 
 !***********************************************************************************************************************************
@@ -123,16 +103,11 @@ contains
         class(SpecDRAM_type), intent(in)    :: SpecDRAM
         integer(IK), intent(in)             :: nd
         ! nullify SpecDRAM variables to be read form the input namelist file
-        call SpecDRAM%ScaleFactor%nullifyNameListVar()
-        call SpecDRAM%ProposalModel%nullifyNameListVar()
-        call SpecDRAM%ProposalStartCovMat%nullifyNameListVar(nd)
-        call SpecDRAM%ProposalStartCorMat%nullifyNameListVar(nd)
-        call SpecDRAM%ProposalStartStdVec%nullifyNameListVar(nd)
-        call SpecDRAM%AdaptiveUpdateCount%nullifyNameListVar()
-        call SpecDRAM%AdaptiveUpdatePeriod%nullifyNameListVar()
-        call SpecDRAM%GreedyAdaptationCount%nullifyNameListVar()
-        call SpecDRAM%DelayedRejectionCount%nullifyNameListVar()
-        call SpecDRAM%BurninAdaptationMeasure%nullifyNameListVar()
+        call SpecDRAM%AdaptiveUpdateCount           %nullifyNameListVar()
+        call SpecDRAM%AdaptiveUpdatePeriod          %nullifyNameListVar()
+        call SpecDRAM%GreedyAdaptationCount         %nullifyNameListVar()
+        call SpecDRAM%DelayedRejectionCount         %nullifyNameListVar()
+        call SpecDRAM%BurninAdaptationMeasure       %nullifyNameListVar()
         call SpecDRAM%DelayedRejectionScaleFactorVec%nullifyNameListVar()
     end subroutine nullifyNameListVar
 
@@ -150,11 +125,6 @@ contains
         type(Err_type), intent(out)         :: Err
         Err%occurred = .false.
         Err%msg = ""
-        call SpecDRAM%ScaleFactor                   %set(scaleFactor)
-        call SpecDRAM%ProposalModel                 %set(trim(adjustl(proposalModel)))
-        call SpecDRAM%ProposalStartCovMat           %set(ProposalStartCovMat)
-        call SpecDRAM%ProposalStartCorMat           %set(ProposalStartCorMat)
-        call SpecDRAM%ProposalStartStdVec           %set(ProposalStartStdVec)
         call SpecDRAM%AdaptiveUpdateCount           %set(adaptiveUpdateCount)
         call SpecDRAM%AdaptiveUpdatePeriod          %set(adaptiveUpdatePeriod)
         call SpecDRAM%GreedyAdaptationCount         %set(greedyAdaptationCount)
@@ -168,11 +138,6 @@ contains
 
     subroutine setFromInputArgs ( SpecDRAM &
                                 ! input arguments to the specific ParaDRAM routine
-                                , scaleFactor                       &
-                                , proposalModel                     &
-                                , proposalStartCovMat               &
-                                , proposalStartCorMat               &
-                                , proposalStartStdVec               &
                                 , adaptiveUpdateCount               &
                                 , adaptiveUpdatePeriod              &
                                 , greedyAdaptationCount             &
@@ -189,11 +154,6 @@ contains
         class(SpecDRAM_type), intent(inout) :: SpecDRAM
 
         ! ParaDRAM variables
-        character(*), intent(in), optional  :: scaleFactor
-        character(*), intent(in), optional  :: proposalModel
-        real(RK)    , intent(in), optional  :: proposalStartCovMat(:,:)
-        real(RK)    , intent(in), optional  :: proposalStartCorMat(:,:)
-        real(RK)    , intent(in), optional  :: proposalStartStdVec(:)
         integer(IK) , intent(in), optional  :: adaptiveUpdateCount
         integer(IK) , intent(in), optional  :: adaptiveUpdatePeriod
         integer(IK) , intent(in), optional  :: greedyAdaptationCount
@@ -201,11 +161,6 @@ contains
         real(RK)    , intent(in), optional  :: burninAdaptationMeasure
         real(RK)    , intent(in), optional  :: delayedRejectionScaleFactorVec(:)
 
-        if (present(scaleFactor))                       call SpecDRAM%ScaleFactor                   %set(scaleFactor)
-        if (present(proposalModel))                     call SpecDRAM%ProposalModel                 %set(trim(adjustl(proposalModel)))
-        if (present(proposalStartCovMat))               call SpecDRAM%ProposalStartCovMat           %set(proposalStartCovMat)
-        if (present(proposalStartCorMat))               call SpecDRAM%ProposalStartCorMat           %set(proposalStartCorMat)
-        if (present(proposalStartStdVec))               call SpecDRAM%ProposalStartStdVec           %set(proposalStartStdVec)
         if (present(adaptiveUpdateCount))               call SpecDRAM%AdaptiveUpdateCount           %set(adaptiveUpdateCount)
         if (present(adaptiveUpdatePeriod))              call SpecDRAM%AdaptiveUpdatePeriod          %set(adaptiveUpdatePeriod)
         if (present(greedyAdaptationCount))             call SpecDRAM%GreedyAdaptationCount         %set(greedyAdaptationCount)
@@ -218,21 +173,25 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine reportValues(SpecDRAM,prefix,outputUnit,isMasterImage,methodName,splashModeRequested)
+    subroutine reportValues ( SpecDRAM              &
+                            , prefix                &
+                            , outputUnit            &
+                            , isMasterImage         &
+                            , splashModeRequested   &
+                            )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: reportValues
 #endif
         use Decoration_mod, only: TAB
         use Constants_mod, only: IK, RK
-        use Err_mod, only: note, informUser
+        use Err_mod, only: note
         implicit none
         class(SpecDRAM_type), intent(in)    :: SpecDRAM
-        character(*), intent(in)            :: prefix, methodName
+        character(*), intent(in)            :: prefix
         integer(IK), intent(in)             :: outputUnit
         logical, intent(in)                 :: isMasterImage, splashModeRequested
         character(:), allocatable           :: formatStr, formatVal
         integer(IK)                         :: ndim, i
-        real(RK), allocatable               :: Row(:)
 
         formatStr = "(*(g0,' '))"
         formatVal = "('" // TAB // TAB // "',*(g0,' '))"
@@ -287,82 +246,7 @@ contains
             end if
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%DelayedRejectionScaleFactorVec%desc )
 
-
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "scaleFactor"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecDRAM%ScaleFactor%str
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%ScaleFactor%desc )
-
-
-            !***********************************************************************************************************************
-            ! proposal distribution
-            !***********************************************************************************************************************
-
-            block
-                use Decoration_mod, only: writeDecoratedText
-                call writeDecoratedText ( text = "\n" // methodName // " proposal specifications\n" &
-                                        , marginTop = 1     &
-                                        , marginBot = 1     &
-                                        , newline = "\n"    &
-                                        , outputUnit = outputUnit )
-            end block
-
-
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "proposalModel"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecDRAM%ProposalModel%val
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%ProposalModel%desc )
-
-
-            ndim = size(SpecDRAM%ProposalStartCovMat%Val(:,1))
-            allocate( Row(ndim) )
-
-
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "proposalStartCovMat"
-            write(outputUnit,formatStr)
-            if ( SpecDRAM%ProposalStartCovMat%isPresent ) then
-                ! User has provided the Start Covariance Matrix
-                do i = 1,ndim
-                    Row = SpecDRAM%ProposalStartCovMat%Val(i,:)
-                    write(outputUnit,formatVal) Row
-                end do
-            else
-                ! User has not provided the Start Covariance Matrix
-                call informUser ( prefix = TAB // TAB       &
-                                , outputUnit = outputUnit   &
-                                , newline = "\n"            &
-                                , marginTop = 0_IK          &
-                                , marginBot = 0_IK          &
-                                , msg = "UNDEFINED. It will be constructed from the Correlation Matrix (ProposalStartCorMat) &
-                                        &and the Standard Deviation vector (ProposalStartStdVec)." &
-                                )
-            end if
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%ProposalStartCovMat%desc )
-
-
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "proposalStartCorMat"
-            write(outputUnit,formatStr)
-            do i = 1,ndim
-                Row = SpecDRAM%ProposalStartCorMat%Val(i,:)
-                write(outputUnit,formatVal) Row
-            end do
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%ProposalStartCorMat%desc )
-
-
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "proposalStartStdVec"
-            write(outputUnit,formatStr)
-            do i = 1,ndim
-                write(outputUnit,formatVal) SpecDRAM%ProposalStartStdVec%Val(i)
-            end do
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%ProposalStartStdVec%desc )
-
         end if
-
 
     end subroutine reportValues
 
@@ -380,16 +264,11 @@ contains
         integer(IK), intent(in)             :: nd
         character(*), intent(in)            :: methodName
         type(Err_type), intent(inout)       :: Err
-        call SpecDRAM%ScaleFactor%checkForSanity                    (Err,methodName)
-        call SpecDRAM%ProposalModel%checkForSanity                  (Err,methodName)
         call SpecDRAM%AdaptiveUpdateCount%checkForSanity            (Err,methodName)
         call SpecDRAM%AdaptiveUpdatePeriod%checkForSanity           (Err,methodName)
         call SpecDRAM%GreedyAdaptationCount%checkForSanity          (Err,methodName)
         call SpecDRAM%DelayedRejectionCount%checkForSanity          (Err,methodName)
         call SpecDRAM%BurninAdaptationMeasure%checkForSanity        (Err,methodName)
-        call SpecDRAM%ProposalStartCovMat%checkForSanity            (Err,methodName,nd)
-        call SpecDRAM%ProposalStartCorMat%checkForSanity            (Err,methodName,nd)
-        call SpecDRAM%ProposalStartStdVec%checkForSanity            (Err,methodName,nd)
         call SpecDRAM%DelayedRejectionScaleFactorVec%checkForSanity (Err,methodName,SpecDRAM%DelayedRejectionCount%val)
     end subroutine checkForSanity
 

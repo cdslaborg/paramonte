@@ -224,19 +224,19 @@ contains
             call PD%SpecMCMC%setFromInputArgs   ( domainLowerLimitVec                   = PD%SpecBase%DomainLowerLimitVec%Val   &
                                                 , domainUpperLimitVec                   = PD%SpecBase%DomainUpperLimitVec%Val   &
                                                 , chainSize                             = chainSize                             &
+                                                , scaleFactor                           = scaleFactor                           &
                                                 , startPointVec                         = startPointVec                         &
+                                                , proposalModel                         = proposalModel                         &
+                                                , proposalStartCovMat                   = proposalStartCovMat                   &
+                                                , proposalStartCorMat                   = proposalStartCorMat                   &
+                                                , proposalStartStdVec                   = proposalStartStdVec                   &
                                                 , sampleRefinementCount                 = sampleRefinementCount                 &
                                                 , sampleRefinementMethod                = sampleRefinementMethod                &
                                                 , randomStartPointRequested             = randomStartPointRequested             &
                                                 , randomStartPointDomainLowerLimitVec   = randomStartPointDomainLowerLimitVec   &
                                                 , randomStartPointDomainUpperLimitVec   = randomStartPointDomainUpperLimitVec   &
                                                 )
-            call PD%SpecDRAM%setFromInputArgs   ( scaleFactor                           = scaleFactor                           &
-                                                , proposalModel                         = proposalModel                         &
-                                                , proposalStartCovMat                   = proposalStartCovMat                   &
-                                                , proposalStartCorMat                   = proposalStartCorMat                   &
-                                                , proposalStartStdVec                   = proposalStartStdVec                   &
-                                                , adaptiveUpdateCount                   = adaptiveUpdateCount                   &
+            call PD%SpecDRAM%setFromInputArgs   ( adaptiveUpdateCount                   = adaptiveUpdateCount                   &
                                                 , adaptiveUpdatePeriod                  = adaptiveUpdatePeriod                  &
                                                 , greedyAdaptationCount                 = greedyAdaptationCount                 &
                                                 , delayedRejectionCount                 = delayedRejectionCount                 &
@@ -280,8 +280,8 @@ contains
 
         if (PD%isFreshRun) then
             call PD%SpecBase%reportValues(prefix=PD%brand,outputUnit=PD%LogFile%unit,isMasterImage=PD%Image%isMaster)
-            call PD%SpecMCMC%reportValues(prefix=PD%brand,outputUnit=PD%LogFile%unit,isMasterImage=PD%Image%isMaster,splashModeRequested=PD%SpecBase%SilentModeRequested%isFalse)
-            call PD%SpecDRAM%reportValues(prefix=PD%brand,outputUnit=PD%LogFile%unit,isMasterImage=PD%Image%isMaster,methodName=PD%name,splashModeRequested=PD%SpecBase%SilentModeRequested%isFalse)
+            call PD%SpecMCMC%reportValues(prefix=PD%brand,outputUnit=PD%LogFile%unit,isMasterImage=PD%Image%isMaster,methodName=PD%name,splashModeRequested=PD%SpecBase%SilentModeRequested%isFalse)
+            call PD%SpecDRAM%reportValues(prefix=PD%brand,outputUnit=PD%LogFile%unit,isMasterImage=PD%Image%isMaster,splashModeRequested=PD%SpecBase%SilentModeRequested%isFalse)
         end if
 
         !***************************************************************************************************************************
@@ -369,11 +369,12 @@ contains
         ! setup the proposal distribution
         !***************************************************************************************************************************
 
-        if (PD%SpecDRAM%ProposalModel%isNormal .or. PD%SpecDRAM%ProposalModel%isUniform) then
+        if (PD%SpecMCMC%ProposalModel%isNormal .or. PD%SpecMCMC%ProposalModel%isUniform) then
             !ProposalSymmetric = ProposalSymmetric_type(ndim = ndim, PD = PD)
             !PD%Proposal => ProposalSymmetric
             allocate( PD%Proposal, source = ProposalSymmetric_type  ( ndim          = ndim &
                                                                     , SpecBase      = PD%SpecBase &
+                                                                    , SpecMCMC      = PD%SpecMCMC &
                                                                     , SpecDRAM      = PD%SpecDRAM &
                                                                     , Image         = PD%Image &
                                                                     , name          = PD%name &
@@ -382,7 +383,7 @@ contains
                                                                     , RestartFile   = PD%RestartFile &
                                                                     ) &
                     )
-        !elseif (PD%SpecDRAM%ProposalModel%isUniform) then
+        !elseif (PD%SpecMCMC%ProposalModel%isUniform) then
         !    allocate( PD%Proposal, source = ProposalUniform_type(ndim = ndim, PD = PD) )
         else
             PD%Err%msg = PROCEDURE_NAME // ": Internal error occurred. Unsupported proposal distribution for " // PD%name // "."
@@ -1347,7 +1348,12 @@ contains
 
         ! ParaMCMC namelist variables
         use SpecMCMC_ChainSize_mod                          , only: chainSize
+        use SpecMCMC_ScaleFactor_mod                        , only: scaleFactor
         use SpecMCMC_StartPointVec_mod                      , only: startPointVec
+        use SpecMCMC_ProposalModel_mod                      , only: proposalModel
+        use SpecMCMC_ProposalStartCovMat_mod                , only: ProposalStartCovMat
+        use SpecMCMC_ProposalStartCorMat_mod                , only: ProposalStartCorMat
+        use SpecMCMC_ProposalStartStdVec_mod                , only: ProposalStartStdVec
         use SpecMCMC_SampleRefinementCount_mod              , only: sampleRefinementCount
         use SpecMCMC_sampleRefinementMethod_mod             , only: sampleRefinementMethod
         use SpecMCMC_RandomStartPointRequested_mod          , only: randomStartPointRequested
@@ -1355,11 +1361,6 @@ contains
         use SpecMCMC_RandomStartPointDomainUpperLimitVec_mod, only: randomStartPointDomainUpperLimitVec
 
         ! ParaDRAM namelist variables
-        use SpecDRAM_ScaleFactor_mod                        , only: scaleFactor
-        use SpecDRAM_ProposalModel_mod                      , only: proposalModel
-        use SpecDRAM_ProposalStartCovMat_mod                , only: ProposalStartCovMat
-        use SpecDRAM_ProposalStartCorMat_mod                , only: ProposalStartCorMat
-        use SpecDRAM_ProposalStartStdVec_mod                , only: ProposalStartStdVec
         use SpecDRAM_AdaptiveUpdateCount_mod                , only: adaptiveUpdateCount
         use SpecDRAM_AdaptiveUpdatePeriod_mod               , only: adaptiveUpdatePeriod
         use SpecDRAM_greedyAdaptationCount_mod              , only: greedyAdaptationCount
@@ -1399,7 +1400,12 @@ contains
 
         ! ParaMCMC variables
         namelist /ParaDRAM/ chainSize
+        namelist /ParaDRAM/ scaleFactor
         namelist /ParaDRAM/ startPointVec
+        namelist /ParaDRAM/ proposalModel
+        namelist /ParaDRAM/ proposalStartCovMat
+        namelist /ParaDRAM/ proposalStartCorMat
+        namelist /ParaDRAM/ proposalStartStdVec
         namelist /ParaDRAM/ sampleRefinementCount
         namelist /ParaDRAM/ sampleRefinementMethod
         namelist /ParaDRAM/ randomStartPointRequested
@@ -1407,11 +1413,6 @@ contains
         namelist /ParaDRAM/ randomStartPointDomainUpperLimitVec
 
         ! ParaDRAM variables
-        namelist /ParaDRAM/ scaleFactor
-        namelist /ParaDRAM/ proposalModel
-        namelist /ParaDRAM/ proposalStartCovMat
-        namelist /ParaDRAM/ proposalStartCorMat
-        namelist /ParaDRAM/ proposalStartStdVec
         namelist /ParaDRAM/ adaptiveUpdateCount
         namelist /ParaDRAM/ adaptiveUpdatePeriod
         namelist /ParaDRAM/ greedyAdaptationCount

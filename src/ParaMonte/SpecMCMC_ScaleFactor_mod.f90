@@ -22,12 +22,12 @@
 !**********************************************************************************************************************************
 !**********************************************************************************************************************************
 
-module SpecDRAM_ScaleFactor_mod
+module SpecMCMC_ScaleFactor_mod
 
     use Constants_mod, only: RK, IK
     implicit none
 
-    character(*), parameter         :: MODULE_NAME = "@SpecDRAM_ScaleFactor_mod"
+    character(*), parameter         :: MODULE_NAME = "@SpecMCMC_ScaleFactor_mod"
     integer(IK), parameter          :: MAX_LEN_STRING_SCALE_FACTOR = 127
 
     character(:), allocatable       :: scaleFactor
@@ -205,4 +205,4 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-end module SpecDRAM_ScaleFactor_mod
+end module SpecMCMC_ScaleFactor_mod

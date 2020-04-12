@@ -41,11 +41,43 @@ class _SpecMCMC():
         else:
             raise TypeError("The input specification, chainSize, must be of type int.")
 
+    def scaleFactor(self,scaleFactor):
+        if isinstance(scaleFactor,str):
+            return "scaleFactor=" + "'" + str(scaleFactor) + "'" + _delim
+        else:
+            raise TypeError("The input specification, scaleFactor, must be of type str.")
+
     def startPointVec(self,startPointVec):
         if isinstance(startPointVec,(list,tuple,_np.ndarray)):
             return "startPointVec=" + str(_np.array(list(startPointVec)).flatten()).strip('[]') + _delim
         else:
             raise TypeError("The input specification, startPointVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+
+    def proposalModel(self,proposalModel):
+        if isinstance(proposalModel,str):
+            return "proposalModel=" + "'" + str(proposalModel) + "'" + _delim
+        else:
+            raise TypeError("The input specification, proposalModel, must be of type str.")
+
+    def proposalStartCovMat(self,proposalStartCovMat):
+        if isinstance(proposalStartCovMat,(list,tuple,_np.ndarray)):
+            return "proposalStartCovMat=" + str(_np.array(list(proposalStartCovMat)).flatten()).strip('[]') + _delim
+        else:
+            raise TypeError("The input specification, proposalStartCovMat, must be a symmetric 2-dimensional list, tuple, or numpy matrix of ndim-by-ndim or, "
+                            "a list, tuple, or numpy vector of ndim**2 or less elements of type float.")
+
+    def proposalStartCorMat(self,proposalStartCorMat):
+        if isinstance(proposalStartCorMat,(list,tuple,_np.ndarray)):
+            return "proposalStartCorMat=" + str(_np.array(list(proposalStartCorMat)).flatten()).strip('[]') + _delim
+        else:
+            raise TypeError("The input specification, proposalStartCorMat, must be a symmetric 2-dimensional list, tuple, or numpy matrix of ndim-by-ndim or, "
+                            "a list, tuple, or numpy vector of ndim**2 or less elements of type float.")
+
+    def proposalStartStdVec(self,proposalStartStdVec):
+        if isinstance(proposalStartStdVec,(list,tuple,_np.ndarray)):
+            return "proposalStartStdVec=" + str(_np.array(list(proposalStartStdVec)).flatten()).strip('[]') + _delim
+        else:
+            raise TypeError("The input specification, proposalStartStdVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
 
     def sampleRefinementCount(self,sampleRefinementCount):
         if isinstance(sampleRefinementCount,int):

@@ -22,12 +22,12 @@
 !**********************************************************************************************************************************
 !**********************************************************************************************************************************
 
-module SpecDRAM_ProposalModel_mod
+module SpecMCMC_ProposalModel_mod
 
     use Constants_mod, only: IK
     implicit none
 
-    character(*), parameter         :: MODULE_NAME = "@SpecDRAM_ProposalModel_mod"
+    character(*), parameter         :: MODULE_NAME = "@SpecMCMC_ProposalModel_mod"
 
     integer(IK), parameter          :: MAX_LEN_PROPOSAL_MODEL = 63_IK
 
@@ -146,4 +146,4 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-end module SpecDRAM_ProposalModel_mod
+end module SpecMCMC_ProposalModel_mod
