@@ -25,6 +25,7 @@
 import os as _os
 import numpy as _np
 import sys as _sys
+
 _sys.path.append(_os.path.dirname(__file__))
 
 _delim = ","
@@ -47,52 +48,21 @@ class _SpecBase():
         else:
             raise TypeError("The input specification, randomSeed, must be of type int.")
 
-    def description(self,description):
-        if isinstance(description,str):
-            hasSingleQuote = "'" in description
-            hasDoubleQuote = '"' in description
-            if hasSingleQuote:
-                if hasDoubleQuote:
-                    raise TypeError ( "The input specification, description, cannot contain both single-quote and double-quote characters. "
-                                    + "Use only one type of quotation marks in your input string. description = "
-                                    + description 
-                                    )
-                else:
-                    return "description=" + '"' + description + '"' + _delim
-            else:
-                return "description=" + "'" + description + "'" + _delim
-        else:
-            raise TypeError("The input specification, description, must be of type str.")
+    def description(self,description): return "description=" + verifyEncloseString(description,"description") + _delim
 
-    def outputFileName(self,outputFileName):
-        if isinstance(outputFileName,str):
-            return "outputFileName=" + "'" + outputFileName + "'" + _delim
-        else:
-            raise TypeError("The input specification, outputFileName, must be of type str.")
+    def outputFileName(self,outputFileName): return "outputFileName=" + verifyEncloseString(outputFileName,"outputFileName") + _delim
 
-    def outputDelimiter(self,outputDelimiter):
-        if isinstance(outputDelimiter,str):
-            return "outputDelimiter=" + "'" + str(outputDelimiter) + "'" + _delim
-        else:
-            raise TypeError("The input specification, outputDelimiter, must be of type str.")
+    def outputDelimiter(self,outputDelimiter): return "outputDelimiter=" + verifyEncloseString(outputDelimiter,"outputDelimiter") + _delim
 
-    def chainFileFormat(self,chainFileFormat):
-        if isinstance(chainFileFormat,str):
-            return "chainFileFormat=" + "'" + str(chainFileFormat) + "'" + _delim
-        else:
-            raise TypeError("The input specification, chainFileFormat, must be of type str.")
+    def chainFileFormat(self,chainFileFormat):  return "chainFileFormat=" + verifyEncloseString(chainFileFormat,"chainFileFormat") + _delim
 
     def variableNameList(self,variableNameList):
         if isinstance(variableNameList,(list,tuple)):
-            return "variableNameList=" + _delim.join("'{0}'".format(_) for _ in list(variableNameList)) + _delim
+            return "variableNameList=" + _delim.join("{0}".format(verifyEncloseString(_,"variableNameList["+str(i)+"]")) for i,_ in enumerate(list(variableNameList))) + _delim
         else:
             raise TypeError("The input specification, variableNameList, must be either a list or tuple of ndim or less elements, each element of which must be of type str.")
 
-    def restartFileFormat(self,restartFileFormat):
-        if isinstance(restartFileFormat,str):
-            return "restartFileFormat=" + "'" + str(restartFileFormat) + "'" + _delim
-        else:
-            raise TypeError("The input specification, restartFileFormat, must be of type str.")
+    def restartFileFormat(self,restartFileFormat): return "restartFileFormat=" + verifyEncloseString(restartFileFormat,"restartFileFormat") + _delim
 
     def outputColumnWidth(self,outputColumnWidth):
         if isinstance(outputColumnWidth,int):
@@ -176,3 +146,33 @@ def _genOutputFileName(methodName):
             + "{:03d}".format(round(dt.microsecond/1000))
 
 ####################################################################################################################################
+#### enclose string with either single or double quotation . Return None if string contains both quotation symbols
+####################################################################################################################################
+
+def encloseString(string):
+    hasSingleQuote = "'" in string
+    hasDoubleQuote = '"' in string
+    if hasSingleQuote:
+        if hasDoubleQuote:
+            return None
+        else:
+            return '"' + string + '"'
+    else:
+        return "'" + string + "'"
+
+####################################################################################################################################
+#### verify string value of the input variable does not contain both single and double quotations.
+####################################################################################################################################
+
+def verifyEncloseString(variableValue,variableName):
+    if isinstance(variableValue,str):
+        enclosedString = encloseString(variableValue)
+        if enclosedString:
+            return enclosedString
+        else:
+            raise TypeError ( "The input specification, " + variableName + ", cannot contain both single-quote and double-quote characters. "
+                            + "Use only one type of quotation marks in your input string. " + variableName + " = "
+                            + variableValue 
+                            )
+    else:
+        raise TypeError("The input specification, " + variableName + ", must be of type str.")
