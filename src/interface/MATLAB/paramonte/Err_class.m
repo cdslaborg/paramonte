@@ -103,7 +103,6 @@ classdef Err_class < handle
 
         function informUser(msg, prefix, newLine, outputUnit, wrapSplit, wrapWidth, marginTop, marginBot)
             
-            msg         = strrep(msg, '\n', newline);
             Decoration  = Decoration_class([],[],[],[]);
 
             if ~isempty(outputUnit) ,   stdout  = outputUnit;   else,   stdout  = 1     ; end
