@@ -186,9 +186,9 @@ classdef paramonte < handle
             self.version = fgetl(versionFileID);
 
             if matlabEnabled
-                self.ParaDRAM = @ParaDRAM_MATLAB;
+                self.ParaDRAM = ParaDRAM_MATLAB;
             else
-                self.ParaDRAM = @ParaDRAM;
+                self.ParaDRAM = ParaDRAM;
             end
 
         end
