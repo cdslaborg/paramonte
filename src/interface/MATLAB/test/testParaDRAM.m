@@ -10,11 +10,12 @@ filePath = mfilename('fullpath');
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
-pm = paramonte("matlab");
+pm = paramonte(); % "matlab"
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 pmpd = pm.ParaDRAM();
-
+pmpd.runSampler(1,@getLogFunc)
+return
     ...ParaMonte variables...
 % pmpd.spec.sampleSize                            = 1000;                       % Works
 pmpd.spec.randomSeed                              = 7;                            % Works

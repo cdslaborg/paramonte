@@ -26,66 +26,59 @@
 %%%% SpecDRAM specification type-checking class
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-classdef SpecDRAM
-
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
-
-    properties (Access = public)
-        delim = ",";
-    end
+classdef SpecDRAMVerify < SpecVerification
 
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
     methods (Access = public)
 
-        %function self = SpecDRAM()
-        %end
+        function self = SpecDRAMVerify(objectName)
+            self.objectName = objectName;
+        end
 
         function result = scaleFactor(self,scaleFactor)
-            result = verifySpec(scaleFactor,self.objectName+"scaleFactor","string",delim);
+            result = self.verifySpec(scaleFactor,"string");
         end
 
         function result = proposalModel(self,proposalModel)
-            result = verifySpec(proposalModel,self.objectName+"proposalModel","string",delim);
+            result = self.verifySpec(proposalModel,"string");
         end
 
         function result = proposalStartCovMat(self,proposalStartCovMat)
-            result = verifySpec(proposalStartCovMat,self.objectName+"proposalStartCovMat","real",delim);
+            result = self.verifySpec(proposalStartCovMat,"real");
         end
 
         function result = proposalStartCorMat(self,proposalStartCorMat)
-            result = verifySpec(proposalStartCorMat,self.objectName+"proposalStartCorMat","real",delim);
+            result = self.verifySpec(proposalStartCorMat,"real");
         end
 
         function result = proposalStartStdVec(self,proposalStartStdVec)
-            result = verifySpec(proposalStartStdVec,self.objectName+"proposalStartStdVec","real",delim);
+            result = self.verifySpec(proposalStartStdVec,"real");
         end
 
         function result = adaptiveUpdateCount(self,adaptiveUpdateCount)
-            result = verifySpec(adaptiveUpdateCount,self.objectName+"adaptiveUpdateCount","integer",delim);
+            result = self.verifySpec(adaptiveUpdateCount,"integer");
         end
 
         function result = adaptiveUpdatePeriod(self,adaptiveUpdatePeriod)
-            result = verifySpec(adaptiveUpdatePeriod,self.objectName+"adaptiveUpdatePeriod","integer",delim);
+            result = self.verifySpec(adaptiveUpdatePeriod,"integer");
         end
 
         function result = greedyAdaptationCount(self,greedyAdaptationCount)
-            result = verifySpec(greedyAdaptationCount,self.objectName+"greedyAdaptationCount","integer",delim);
+            result = self.verifySpec(greedyAdaptationCount,"integer");
         end
 
         function result = delayedRejectionCount(self,delayedRejectionCount)
-            result = verifySpec(delayedRejectionCount,self.objectName+"delayedRejectionCount","integer",delim);
+            result = self.verifySpec(delayedRejectionCount,"integer");
         end
 
         function result = burninAdaptationMeasure(self,burninAdaptationMeasure)
-            result = verifySpec(burninAdaptationMeasure,self.objectName+"burninAdaptationMeasure","integer",delim);
+            result = self.verifySpec(burninAdaptationMeasure,"integer");
         end
 
         function result = delayedRejectionScaleFactorVec(self,delayedRejectionScaleFactorVec)
-            result = verifySpec(delayedRejectionScaleFactorVec,self.objectName+"delayedRejectionScaleFactorVec","real",delim);
+            result = self.verifySpec(delayedRejectionScaleFactorVec,"real");
         end
 
     end % methods (dynamic)
@@ -93,4 +86,4 @@ classdef SpecDRAM
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-end % classdef SpecDRAM
+end % classdef SpecDRAMVerify

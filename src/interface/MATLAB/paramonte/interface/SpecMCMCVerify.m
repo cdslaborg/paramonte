@@ -26,51 +26,43 @@
 %%%% SpecMCMC specification type-checking class
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-classdef SpecMCMC
-
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
-
-    properties (Access = public)
-        delim = ",";
-        objectName = "ParaMonte.spec";
-    end
+classdef SpecMCMCVerify < SpecVerification
 
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
     methods (Access = public)
 
-        %function self = SpecMCMC()
-        %end
+        function self = SpecMCMCVerify(objectName)
+            self.objectName = objectName;
+        end
 
         function result = chainSize(self,chainSize)
-            result = verifySpec(chainSize,self.objectName+"chainSize","integer",delim);
+            result = verifySpec(chainSize,"integer");
         end
 
         function result = startPointVec(self,startPointVec)
-            result = verifySpec(startPointVec,self.objectName+"startPointVec","real",delim);
+            result = verifySpec(startPointVec,"real");
         end
 
         function result = sampleRefinementCount(self,sampleRefinementCount)
-            result = verifySpec(sampleRefinementCount,self.objectName+"sampleRefinementCount","integer",delim);
+            result = verifySpec(sampleRefinementCount,"integer");
         end
 
         function result = sampleRefinementMethod(self,sampleRefinementMethod)
-            result = verifySpec(sampleRefinementMethod,self.objectName+"sampleRefinementMethod","string",delim);
+            result = verifySpec(sampleRefinementMethod,"string");
         end
 
         function result = randomStartPointRequested(self,randomStartPointRequested)
-            result = verifySpec(randomStartPointRequested,self.objectName+"randomStartPointRequested","logical",delim);
+            result = verifySpec(randomStartPointRequested,"logical");
         end
 
         function result = randomStartPointDomainLowerLimitVec(self,randomStartPointDomainLowerLimitVec)
-            result = verifySpec(randomStartPointDomainLowerLimitVec,self.objectName+"randomStartPointDomainLowerLimitVec","real",delim);
+            result = verifySpec(randomStartPointDomainLowerLimitVec,"real");
         end
 
         function result = randomStartPointDomainUpperLimitVec(self,randomStartPointDomainUpperLimitVec)
-            result = verifySpec(randomStartPointDomainUpperLimitVec,self.objectName+"randomStartPointDomainUpperLimitVec","real",delim);
+            result = verifySpec(randomStartPointDomainUpperLimitVec,"real");
         end
 
     end % methods (dynamic)
@@ -78,4 +70,4 @@ classdef SpecMCMC
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-end % classdef SpecMCMC
+end % classdef SpecDRAMVerify

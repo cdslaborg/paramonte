@@ -10,6 +10,6 @@ function enclosedString = encloseString(inputString)
             enclosedString = '"' + inputString + '"';
         end
     else
-        enclosedString = "'" + inputString + "'"
+        enclosedString = "'" + inputString + "'";
     end
 end

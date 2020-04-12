@@ -26,102 +26,95 @@
 %%%% SpecBase specification type-checking class
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-classdef SpecBaseVerify
-
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
-
-    properties (Access = public)
-        delim = ",";
-    end
+classdef SpecBaseVerify < SpecVerification
 
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
     methods (Access = public)
 
-        %function self = SpecBaseVerify()
-        %end
+        function self = SpecBaseVerify(objectName)
+            self.objectName = objectName;
+        end
 
         function result = sampleSize(self,sampleSize)
-            result = verifySpec(sampleSize,self.objectName+"sampleSize","real",delim);
+            result = self.verifySpec(sampleSize,"real");
         end
 
         function result = randomSeed(self,randomSeed)
-            result = verifySpec(randomSeed,self.objectName+"randomSeed","integer",delim);
+            result = self.verifySpec(randomSeed,"integer");
         end
 
         function result = description(self,description)
-            result = verifySpec(description,self.objectName+"description","string",delim);
+            result = self.verifySpec(description,"string");
         end
 
         function result = outputFileName(self,outputFileName)
-            result = verifySpec(outputFileName,self.objectName+"outputFileName","string",delim);
+            result = self.verifySpec(outputFileName,"string");
         end
 
         function result = outputDelimiter(self,outputDelimiter)
-            result = verifySpec(outputDelimiter,self.objectName+"outputDelimiter","string",delim);
+            result = self.verifySpec(outputDelimiter,"string");
         end
 
         function result = chainFileFormat(self,chainFileFormat)
-            result = verifySpec(chainFileFormat,self.objectName+"chainFileFormat","string",delim);
+            result = self.verifySpec(chainFileFormat,"string");
         end
 
         function result = variableNameList(self,variableNameList)
-            result = verifySpec(variableNameList,self.objectName+"variableNameList","string",delim);
+            result = self.verifySpec(variableNameList,"string");
         end
 
         function result = restartFileFormat(self,restartFileFormat)
-            result = verifySpec(restartFileFormat,self.objectName+"restartFileFormat","string",delim);
+            result = self.verifySpec(restartFileFormat,"string");
         end
 
         function result = outputColumnWidth(self,outputColumnWidth)
-            result = verifySpec(outputColumnWidth,self.objectName+"outputColumnWidth","integer",delim);
+            result = self.verifySpec(outputColumnWidth,"integer");
         end
 
         function result = outputRealPrecision(self,outputRealPrecision)
-            result = verifySpec(outputRealPrecision,self.objectName+"outputRealPrecision","integer",delim);
+            result = self.verifySpec(outputRealPrecision,"integer");
         end
 
         function result = silentModeRequested(self,silentModeRequested)
-            result = verifySpec(silentModeRequested,self.objectName+"silentModeRequested","logical",delim);
+            result = self.verifySpec(silentModeRequested,"logical");
         end
 
         function result = domainLowerLimitVec(self,domainLowerLimitVec)
-            result = verifySpec(domainLowerLimitVec,self.objectName+"domainLowerLimitVec","real",delim);
+            result = self.verifySpec(domainLowerLimitVec,"real");
         end
 
         function result = domainUpperLimitVec(self,domainUpperLimitVec)
-            result = verifySpec(domainUpperLimitVec,self.objectName+"domainUpperLimitVec","real",delim);
+            result = self.verifySpec(domainUpperLimitVec,"real");
         end
 
         function result = parallelizationModel(self,parallelizationModel)
-            result = verifySpec(parallelizationModel,self.objectName+"parallelizationModel","string",delim);
+            result = self.verifySpec(parallelizationModel,"string");
         end
 
         function result = progressReportPeriod(self,progressReportPeriod)
-            result = verifySpec(progressReportPeriod,self.objectName+"progressReportPeriod","integer",delim);
+            result = self.verifySpec(progressReportPeriod,"integer");
         end
 
         function result = targetAcceptanceRate(self,targetAcceptanceRate)
-            result = verifySpec(targetAcceptanceRate,self.objectName+"targetAcceptanceRate","real",delim);
+            result = self.verifySpec(targetAcceptanceRate,"real");
         end
 
         function result = mpiFinalizeRequested(self,mpiFinalizeRequested)
-            result = verifySpec(mpiFinalizeRequested,self.objectName+"mpiFinalizeRequested","logical",delim);
+            result = self.verifySpec(mpiFinalizeRequested,"logical");
         end
 
         function result = maxNumDomainCheckToWarn(self,maxNumDomainCheckToWarn)
-            result = verifySpec(maxNumDomainCheckToWarn,self.objectName+"maxNumDomainCheckToWarn","integer",delim);
+            result = self.verifySpec(maxNumDomainCheckToWarn,"integer");
         end
 
         function result = maxNumDomainCheckToStop(self,maxNumDomainCheckToStop)
-            result = verifySpec(maxNumDomainCheckToStop,self.objectName+"maxNumDomainCheckToStop","integer",delim);
+            result = self.verifySpec(maxNumDomainCheckToStop,"integer");
         end
 
         function result = interfaceType(self)
-            result = "interfaceType=" + "'MATLAB " + version + "'" + self.delim
+            result = "interfaceType=" + "'MATLAB " + version + "'" + self.delim;
         end
 
     end % methods (dynamic)

@@ -378,6 +378,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 #if not _os.path.isabs(self.spec.outputFileName):
                     #headTailList = _os.path.split(self.spec.outputFileName)
                     #if headTailList[1]=="":
+                    self.spec.outputFileName = SpecBase.outputFileName(self.spec.outputFileName)
                     if self.spec.outputFileName[-1] == "\\" or self.spec.outputFileName[-1] == "/":
                         self.spec.outputFileName = _os.path.join( _os.path.abspath( self.spec.outputFileName ) , _genOutputFileName(_pm.names.paradram) )
 
@@ -687,8 +688,8 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             parallelism = "_mpi"
         else:
             parallelism = ""
-            _pm.note( msg   = "Running ParaDRAM sampler in serial mode...\n"
-                            + "To run ParaDRAM sampler in parallel mode visit: cdslab.org/pm\n"
+            _pm.note( msg   = "Running the ParaDRAM sampler in serial mode...\n"
+                            + "To run the ParaDRAM sampler in parallel mode visit: cdslab.org/pm\n"
                             + "If you are using Jupyter notebook, check Jupyter's terminal window\n"
                             + "for simulation progress and report."
                     , methodName = _pm.names.paradram
@@ -804,18 +805,18 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             pmcsList.pop(pmcsList.index(stype))
             pmcsList.insert(0,stype)
 
+        if isWin32: libnameSuffix = "_c" + parallelism + "_windows_" + _pm.arch + "_mt.dll"
+        if isMacOS: libnameSuffix = "_c" + parallelism + "_darwin_" + _pm.arch + "_mt.dylib"
+        if isLinux: libnameSuffix = "_c" + parallelism + "_linux_" + _pm.arch + "_mt.so"
         for buildMode in buildModeList:
 
             for pmcs in pmcsList:
 
-                libname = "libparamonte_dynamic_heap_" + buildMode + "_" + pmcs + "_c" + parallelism
-                if isWin32: libname += "_windows_" + _pm.arch + "_mt"
-                if isMacOS: libname += "_darwin_" + _pm.arch + "_mt"
-                if isLinux: libname += "_linux_" + _pm.arch + "_mt"
-                libname +=  { 'darwin' : '.dylib'
-                            , 'win32'  : '.dll'
-                            , 'cygwin' : '.dll'
-                            }.get(platform, '.so')
+                libname = "libparamonte_dynamic_heap_" + buildMode + "_" + pmcs + libnameSuffix
+                #libname +=  { 'darwin' : ".dylib"
+                #            , 'win32'  : ".dll"
+                #            , 'cygwin' : ".dll"
+                #            }.get(platform, ".so")
 
                 libpath = find_library(libname)
                 if libpath==None: libpath = _os.path.join( fileAbsDir, libname )
