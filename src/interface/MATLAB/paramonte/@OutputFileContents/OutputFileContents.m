@@ -1,4 +1,4 @@
-classdef ParaMonteChainSampleFileContents < dynamicprops
+classdef OutputFileContents < dynamicprops
 %   This is the OutputFileContents class for generating instances 
 %   of ParaMonte output file contents. The ParaMonte read* methods
 %   return an object or a list of objects of class OutputFileContents.
