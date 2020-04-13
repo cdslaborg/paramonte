@@ -118,7 +118,13 @@ classdef SpecBase_class < handle
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "description" + "\n\n");
-            Err_class.informUser(self.description.val, Decoration_class.TAB + Decoration_class.TAB, '', outputUnit, [], 125, 0, 0);
+            self.Err.msg = self.description.val;
+            self.Err.prefix = Decoration_class.TAB + Decoration_class.TAB;
+            self.Err.outputUnit = outputUnit;
+            self.Err.wrapWidth = 125;
+            self.Err.marginTop = 0;
+            self.Err.marginBot = 0;
+            self.Err.informUser();
             if self.silentModeRequested.isFalse, Err_class.note(self.description.desc, prefix, '', outputUnit, '', []); end
 
             %-----------------------------------------------------------------------------------------------------------------------

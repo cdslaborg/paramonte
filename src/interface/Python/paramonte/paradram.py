@@ -946,7 +946,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             _pm.note( msg   = "To read the generated output files sample or chain files, try the following:\n\n"
                             + "    pmpd.readSample()      # to read the final i.i.d. sample from the output sample file. \n"
                             + "    pmpd.readChain()       # to read the uniquely-accepted points from the output chain file. \n"
-                            + "    pmpd.readMarkovChain() # to read the Markov Chain. Not recommended for extremely-large chains.\n\n"
+                            + "    pmpd.readMarkovChain() # to read the Markov Chain. NOT recommended for extremely-large chains.\n\n"
                             + "Replace 'pmpd' with the name you are using for your ParaDRAM object.\n"
                             + "For more information and examples on the usage, visit:\n\n"
                             + "    https://www.cdslab.org/paramonte/"

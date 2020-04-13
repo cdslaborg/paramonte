@@ -203,7 +203,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
                     if any(StateNew <= mc_DomainLowerLimitVec) || any(StateNew >= mc_DomainUpperLimitVec)
                         domainCheckCounter = domainCheckCounter + 1;
                         if domainCheckCounter == mc_MaxNumDomainCheckToWarn
-                            mv_Err.warn(mc_MaxNumDomainCheckToWarnMsg, mc_methodBrand, [], mc_logFileUnit);
+                            mv_Err.warn(mc_MaxNumDomainCheckToWarnMsg, mc_methodBrand, [], mc_logFileUnit, [], []);
                         end
                         if domainCheckCounter == mc_MaxNumDomainCheckToStop
                             mv_Err.msg = mc_MaxNumDomainCheckToStopMsg;
@@ -226,7 +226,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
                     if any(StateNew <= mc_DomainLowerLimitVec) || any(StateNew >= mc_DomainUpperLimitVec)
                         domainCheckCounter = domainCheckCounter + 1;
                         if domainCheckCounter == mc_MaxNumDomainCheckToWarn
-                            mv_Err.warn(mc_MaxNumDomainCheckToWarnMsg, mc_methodBrand, [], mc_logFileUnit);
+                            mv_Err.warn(mc_MaxNumDomainCheckToWarnMsg, mc_methodBrand, [], mc_logFileUnit, [], []);
                         end
                         if domainCheckCounter == mc_MaxNumDomainCheckToStop
                             mv_Err.msg = mc_MaxNumDomainCheckToStopMsg;

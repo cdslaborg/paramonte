@@ -38,31 +38,31 @@ classdef SpecMCMCVerify < SpecVerification
         end
 
         function result = chainSize(self,chainSize)
-            result = verifySpec(chainSize,"integer");
+            result = self.verifySpec(chainSize,"integer");
         end
 
         function result = startPointVec(self,startPointVec)
-            result = verifySpec(startPointVec,"real");
+            result = self.verifySpec(startPointVec,"real");
         end
 
         function result = sampleRefinementCount(self,sampleRefinementCount)
-            result = verifySpec(sampleRefinementCount,"integer");
+            result = self.verifySpec(sampleRefinementCount,"integer");
         end
 
         function result = sampleRefinementMethod(self,sampleRefinementMethod)
-            result = verifySpec(sampleRefinementMethod,"string");
+            result = self.verifySpec(sampleRefinementMethod,"string");
         end
 
         function result = randomStartPointRequested(self,randomStartPointRequested)
-            result = verifySpec(randomStartPointRequested,"logical");
+            result = self.verifySpec(randomStartPointRequested,"logical");
         end
 
         function result = randomStartPointDomainLowerLimitVec(self,randomStartPointDomainLowerLimitVec)
-            result = verifySpec(randomStartPointDomainLowerLimitVec,"real");
+            result = self.verifySpec(randomStartPointDomainLowerLimitVec,"real");
         end
 
         function result = randomStartPointDomainUpperLimitVec(self,randomStartPointDomainUpperLimitVec)
-            result = verifySpec(randomStartPointDomainUpperLimitVec,"real");
+            result = self.verifySpec(randomStartPointDomainUpperLimitVec,"real");
         end
 
     end % methods (dynamic)

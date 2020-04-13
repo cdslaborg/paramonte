@@ -160,7 +160,7 @@ def getFileList(file,fileType,methodName,_mpiDisabled):
             if suffix in filename: FileList.append(filename)
         if len(FileList)==0:
             _msg.abort  ( msg   = "Failed to detect any " + fileType + " files with the requested pattern: \n\n"
-                                + "    " + file + "\n\n"
+                                + "    " + pattern + "\n\n"
                                 + "Provide a string, as the value of the input argument 'file', that either \n\n"
                                 + "    - points to one or more " + fileType + " files, or, \n"
                                 + "    - represents the unique name of a ParaMonte simulation. \n"

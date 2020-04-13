@@ -85,7 +85,7 @@ This\n
 
     ! MCMC specifications
 
-    chainSize                           = 30000
+    chainSize                           = 3000
     startPointVec                       = 4*1.e0            ! four values of 1.e0 are specified here by the repetition pattern symbol *
    !sampleRefinementCount               = 10
     sampleRefinementMethod              = "BatchMeans"

@@ -16,12 +16,13 @@ function namelist = getInputFile(self)
         % set up outputFileName
 
         if isempty(self.spec.outputFileName)
-            self.spec.outputFileName = fullfile( string(pwd) , genOutputFileName(self.methodName) );
+            self.spec.outputFileName = fullfile( string(pwd) , self.genOutputFileName() );
         else
-            self.spec.outputFileName = SpecBase.outputFileName(self.spec.outputFileName);
-            if strcmp(outputFileName(end),"\\") || strcmp(outputFileName(end),"/")
-                self.spec.outputFileName = fullfile( string(GetFullPath(self.spec.outputFileName,'lean')) , genOutputFileName(self.methodName) );
+            self.spec.outputFileName = convertStringsToChars(SpecBase.outputFileName(self.spec.outputFileName));
+            if endsWith(self.spec.outputFileName,'\') || endsWith(self.spec.outputFileName,"/")
+                self.spec.outputFileName = fullfile( string(GetFullPath(self.spec.outputFileName,'lean')) , self.genOutputFileName() );
             end
+            self.spec.outputFileName = string(outputFileName);
         end
 
         % ParaMonte variables
@@ -76,12 +77,17 @@ function namelist = getInputFile(self)
 
     else
 
+        if exist(self.inputFile,"file")
+            namelist = string(GetFullPath(self.inputFile,'lean'));
+        else
+            namelist = string(self.inputFile);
+        end
         if ~self.mpiEnabled
-            warning ( newline ...
-                    + "Input namelist file is given by the user." + newline + ...
-                    + "All simulation specifications will be read from the input file." + newline ...
-                    );
-
+            self.Err.msg = "Input namelist file is given by the user." + newline + ...
+                           "All simulation specifications will be read from the input file.";
+            self.Err.warn();
+        end
+        
     end
 
 end

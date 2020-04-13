@@ -6,12 +6,22 @@ classdef Err_class < handle
     end
 
     properties
-        marginTop               = 1;
-        marginBot               = 1;
-        occurred                = [];
-        stat                    = [];
-        statNull                = [];
-        msg                     = '';
+        msg
+        prefix
+        wrapSplit
+        wrapWidth
+        marginTop
+        marginBot
+        outputUnit
+        occurred
+        newline
+        stat
+        statNull
+        resetEnabled
+    end
+
+    properties(Hidden)
+        fullprefix
     end
 
     %*******************************************************************************************************************************
@@ -22,49 +32,117 @@ classdef Err_class < handle
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = Err_class()
-            self.occurred    = false;
-            self.stat        = -intmax;
-            self.statNull    = -intmax;
+        function self = Err_class(resetEnabled)
+            self.resetEnabled = true;
+            self.reset();
         end
 
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function abort(self, prefix, newLine, outputUnit)
+        function abort(self)
 
             Decoration  = Decoration_class([],[],[],[]);
             imageChar   = num2str(1);
-            msg         = self.msg;
 
-            if ~isempty(prefix)
-                self.informUser(msg, prefix + " - FATAL: "  , newLine, outputUnit, [], [], [], []);
-                pfx = prefix;
+            if isempty(self.prefix)
+                self.fullprefix = " - FATAL: ";
+                self.informUser();
             else
-                self.informUser(msg, " - "                  , newLine, outputUnit, [], [], [], []);
-                pfx = "";
+                self.fullprefix = self.prefix + " - FATAL: ";
+                self.informUser();
             end
 
-            if ~isempty(outputUnit)
-                if outputUnit ~= 1
-                    Decoration.write(outputUnit, 1, 0, 1, pfx + " - Please Correct the error(s) and rerun the simulation.");
-                    Decoration.write(outputUnit, 1, 0, 1, pfx + " - For further help, contact Amir Shahmoradi via:");
-                    Decoration.write(outputUnit, 0, 0, 1, pfx + " - a.shahmoradi@gmail.com");
-                    Decoration.write(outputUnit, 0, 0, 1, pfx + " - shahmoradi@utexas.edu");
-                    Decoration.write(outputUnit, 0, 0, 1, pfx + " - cdslab.org/ParaMonte/");
-                    Decoration.write(outputUnit, 1, 2, 1, pfx + " - Gracefully Exiting on image " + strtrim(imageChar) + ".");
+            if self.outputUnit == 1
+                % notify the user on screen too
+                Decoration.write(1, 1, 0, 1, self.fullprefix + " - FATAL: Runtime error occurred.");
+                Decoration.write(1, 0, 0, 1, self.fullprefix + " - FATAL: For more information please see the report file.");
+                Decoration.write(1, 0, 2, 1, self.fullprefix + " - FATAL: Gracefully Exiting on image " + strtrim(imageChar) + ".");
+            else
+                Decoration.write(self.outputUnit, 1, 0, 1, self.fullprefix + " - Please Correct the error(s) and rerun the simulation.");
+                Decoration.write(self.outputUnit, 1, 0, 1, self.fullprefix + " - For further help, contact the ParaMonte authors via:");
+                Decoration.write(self.outputUnit, 0, 0, 1, self.fullprefix + " - cdslab.org/ParaMonte/");
+                Decoration.write(self.outputUnit, 1, 2, 1, self.fullprefix + " - Gracefully Exiting on image " + strtrim(imageChar) + ".");
+            end
+
+            error stop
+
+        end
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        function warn(self)
+            if isempty(convertStringsToChars(self.prefix))
+                self.fullprefix = " - WARNING: ";
+                self.informUser();
+            else
+                self.fullprefix = self.prefix + " - WARNING: ";
+                self.informUser();
+            end
+        end
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        function note(self)
+            if isempty(convertStringsToChars(self.prefix))
+                self.fullprefix = " - NOTE: ";
+                self.informUser();
+            else
+                self.fullprefix = self.prefix + " - NOTE: ";
+                self.informUser();
+            end
+        end
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        %function informUser(msg, prefix, newLine, outputUnit, wrapSplit, wrapWidth, marginTop, marginBot)
+        function informUser(self)
+
+            Decoration  = Decoration_class([],[],[],[]);
+
+            List = Decoration.getListOfLines(self.msg, self.newline);
+
+            lenList = length(List);
+            for i = 1 : lenList
+                ListJustified       = Decoration.wrapText(List{i}, self.wrapWidth, self.wrapSplit , []);
+                lenListJustified    = length(ListJustified);
+                for ijustified = 1 : lenListJustified
+                    padTopCurrent = 0;
+                    padBotCurrent = 0;
+                    if (i == 1) && (ijustified == 1)                        , padTopCurrent = self.marginTop; end % the very first line
+                    if (i == lenList) && (ijustified == lenListJustified)   , padBotCurrent = self.marginBot; end % the very last line
+                    Decoration.write(self.outputUnit, padTopCurrent, padBotCurrent   , 1, self.fullprefix + ListJustified{ijustified});
                 end
             end
 
-            if outputUnit ~= 1
-                % notify the user on screen too
-                Decoration.write(1, 1, 0, 1, pfx + " - FATAL: Runtime error occurred.");
-                Decoration.write(1, 0, 0, 1, pfx + " - FATAL: For more information please see the report file.");
-                Decoration.write(1, 0, 2, 1, pfx + " - FATAL: Gracefully Exiting on image " + strtrim(imageChar) + ".");
+            if self.marginBot==2, Decoration.write(self.outputUnit,[],[],[],[]); end
+
+            if self.resetEnabled
+                self.reset()
             end
-            
-            error stop
-            
+
+        end % function informUser
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        function reset(self)
+
+            self.msg        = "";
+            self.prefix     = "";
+            self.wrapSplit  = " ";
+            self.wrapWidth  = 100;
+            self.marginTop  = 1;
+            self.marginBot  = 1;
+            self.outputUnit = 1;
+            self.occurred   = false;
+            self.newline    = newline;
+            self.stat       = -intmax;
+            self.statNull   = -intmax;
+
         end
 
         %***************************************************************************************************************************
@@ -75,82 +153,16 @@ classdef Err_class < handle
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-    methods(Static)
-
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-
-        function warn(msg, prefix, newLine, outputUnit)
-            if ~isempty(prefix)
-                Err_class.informUser(msg, prefix + " - WARNING: " , newLine, outputUnit, [], [], [], []);
-            else
-                Err_class.informUser(msg, " - WARNING: "          , newLine, outputUnit, [], [], [], []);
-            end
-        end
-
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-
-        function note(msg, prefix, newLine, outputUnit, marginTop, marginBot)
-
-            if ~isempty(prefix)
-                Err_class.informUser(msg, prefix + " - NOTE: ", newLine, outputUnit, [], [], marginTop, marginBot);
-            else
-                Err_class.informUser(msg, " - NOTE: "         , newLine, outputUnit, [], [], marginTop, marginBot);
-            end
-        end
-
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-
-        function informUser(msg, prefix, newLine, outputUnit, wrapSplit, wrapWidth, marginTop, marginBot)
-            
-            Decoration  = Decoration_class([],[],[],[]);
-
-            if ~isempty(outputUnit) ,   stdout  = outputUnit;   else,   stdout  = 1     ; end
-            if ~isempty(prefix)     ,   pfx     = prefix    ;   else,   pfx     = ""    ; end
-            if ~isempty(wrapSplit)  ,   split   = wrapSplit ;   else,   split   = " "   ; end
-            if ~isempty(wrapWidth)  ,   width   = wrapWidth ;   else,   width   = 100   ; end
-            if ~isempty(marginTop)  ,   padTop  = marginTop ;   else,   padTop  = 1     ; end
-            if ~isempty(marginBot)  ,   padBot  = marginBot ;   else,   padBot  = 1     ; end
-
-            List = Decoration.getListOfLines(msg, newline);
-
-            lenList = length(List);
-            for i = 1 : lenList
-                ListJustified       = Decoration.wrapText(List{i}, width, split , []);
-                lenListJustified    = length(ListJustified);
-                for ijustified = 1 : lenListJustified
-                    padTopCurrent = 0;
-                    padBotCurrent = 0;
-                    if (i == 1) && (ijustified == 1)                        , padTopCurrent = padTop; end % the very first line
-                    if (i == lenList) && (ijustified == lenListJustified)   , padBotCurrent = padBot; end % the very last line
-                    Decoration.write(stdout, padTopCurrent, padBotCurrent   , 1, pfx + ListJustified{ijustified});
-                end
-            end
-
-            if isempty(marginBot), Decoration.write(stdout,[],[],[],[]); end
-
-        end % function informUser
-
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-
-    end % methods(Static)
-
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
-
     methods (Hidden)
-        % These methods have been implemented to override the default 'handle' class methods, 
+        % These methods have been implemented to override the default 'handle' class methods,
         % so that they won't pop-up after pressing 'Tab' button.
-        function addlistener    (self)  end
-        function delete         (self)  end
-        function findobj        (self)  end
-        function findprop       (self)  end
-        function valid          (self)  end
-        function listener       (self)  end
-        function notify         (self)  end
+        function addlistener    ();  end
+        function delete         ();  end
+        function findobj        ();  end
+        function findprop       ();  end
+        function valid          ();  end
+        function listener       ();  end
+        function notify         ();  end
     end
 
     %*******************************************************************************************************************************

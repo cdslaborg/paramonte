@@ -1,4 +1,4 @@
-classdef ParaDRAM
+classdef ParaDRAM < ParaMonteSampler_class
 %   This is the ParaDRAM class for generating instances of serial and parallel
 %   Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
 %   sampler of the ParaMonte library.
@@ -241,19 +241,6 @@ classdef ParaDRAM
 %***********************************************************************************************************************************
 %***********************************************************************************************************************************
 
-    properties (Access = public)
-        mpiEnabled = false;
-        inputFile = [];
-        buildMode = "release";
-        spec = [];
-    end
-
-    properties (Access = public, Hidden)
-        Err = Err_class();
-        methodName = "ParaDRAM"
-        objectName = []
-    end
-
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
@@ -264,6 +251,8 @@ classdef ParaDRAM
 
         function self = ParaDRAM()
             self.spec = SpecDRAM();
+            self.Err.prefix = self.methodName;
+            self.Err.resetEnabled = false;
         end
 
         %***************************************************************************************************************************
@@ -274,27 +263,14 @@ classdef ParaDRAM
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
+        %readChain(self)
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
     end % methods (dynamic)
 
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-    methods (Hidden)
-        % These methods have been implemented to override the default 'handle' class methods, 
-        % so that they won't pop-up after pressing 'Tab' button.
-        function addlistener    (self)  end
-        function delete         (self)  end
-        function findobj        (self)  end
-        function findprop       (self)  end
-        function valid          (self)  end
-        function listener       (self)  end
-        function notify         (self)  end
-        function name = getMyName(self)
-            name = inputname(1);
-        end
-    end
-
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
-
-end
+end % classdef ParaDRAM < ParaMonteSampler_class
