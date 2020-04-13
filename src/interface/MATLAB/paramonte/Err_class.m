@@ -32,7 +32,7 @@ classdef Err_class < handle
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = Err_class(resetEnabled)
+        function self = Err_class()
             self.resetEnabled = true;
             self.reset();
         end
@@ -121,7 +121,7 @@ classdef Err_class < handle
             if self.marginBot==2, Decoration.write(self.outputUnit,[],[],[],[]); end
 
             if self.resetEnabled
-                self.reset()
+                self.reset();
             end
 
         end % function informUser

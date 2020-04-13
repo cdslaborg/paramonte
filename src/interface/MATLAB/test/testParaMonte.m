@@ -10,14 +10,14 @@ filePath = mfilename('fullpath');
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
-pm = paramonte("matlab"); % 
+pm = paramonte(); % "matlab"
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 pmpd = pm.ParaDRAM();
 %pmpd.inputFile = './paramonte.in';
 pmpd.spec.chainSize = 1000;
-pmpd.runSampler(4,@getLogFunc)
-%pmpd.readChain("ParaDRAM_run_130420_132101_394_process_1_chain.txt")
+%pmpd.runSampler(4,@getLogFunc)
+pmpd.readChain("ParaDRAM_run_")
 return
     ...ParaMonte variables...
 % pmpd.spec.sampleSize                            = 1000;                       % Works

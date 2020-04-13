@@ -51,10 +51,10 @@ classdef OutputFileContents < dynamicprops
     properties(Access = public)
         file = [];
         delimiter = [];
-        count = [];
-        stats = [];
-        ndim = [];
-        df = [];
+        %count = [];
+        %stats = [];
+        %ndim = [];
+        %df = [];
     end
 
     properties(Hidden)
@@ -91,6 +91,8 @@ classdef OutputFileContents < dynamicprops
             timer = Timer_class();
             timer.tic()
 
+            self.file
+            file
             d = importdata  ( self.file ...
                             ..., "delimiter", self.delimiter ...
                             );
@@ -101,7 +103,9 @@ classdef OutputFileContents < dynamicprops
                 end
             end
             self.offset = icol + 1; % index of the first variable
+            self.addprop("ndim");
             self.ndim   = colheadersLen - self.offset + 1;
+            self.addprop("count");
             self.count  = length(d.data(:,1));
 
             if markovChainRequested
@@ -119,6 +123,7 @@ classdef OutputFileContents < dynamicprops
                 end
             end
 
+            self.addprop("df");
             self.df = array2table(d.data,'VariableNames',d.colheaders);
 
             updateUser([]);
@@ -134,6 +139,7 @@ classdef OutputFileContents < dynamicprops
             %%%% statistics
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+            self.addprop("stats");
             self.stats = struct();
 
             % add chain cormat

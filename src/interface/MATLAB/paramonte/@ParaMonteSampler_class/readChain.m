@@ -89,7 +89,6 @@ function chainList = readChain(self,varargin)
     delimiter = [];
     renabled = [];
     scriptName = mfilename();
-    nargin
     if nargin>1
         file = varargin{1};
     end
