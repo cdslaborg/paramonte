@@ -13,7 +13,7 @@ classdef ParaMonteSampler_class < dynamicprops
 
     properties (Access = public, Hidden)
         Err = Err_class();
-        methodName = "ParaDRAM";
+        methodName = "";
         objectName = [];
     end
 
