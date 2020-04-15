@@ -77,16 +77,13 @@ classdef ParaMonte_class < handle
             self.LogFile.unit       = 1;            % temporarily set the report file to stdout.
             self.Decor              = Decoration_class([],[],[],[]);  % initialize the TAB character and decoration symbol to the default values.
 
-            self.Err.occurred       = false;
-            self.Err.msg            = "";
-
             self.name               = name;
             self.date               = date;
             self.brand              = Decoration_class.TAB + Decoration_class.TAB + self.name;
             self.version            = "Version " + version;
 
-            self.Image.id             = 1;
-            self.Image.count          = 1;
+            self.Image.id           = 1;
+            self.Image.count        = 1;
 
             self.Image.name         = "@process(" + num2str(self.Image.id) + ")";
             self.Image.isFirst      = self.Image.id == 1;
@@ -103,8 +100,11 @@ classdef ParaMonte_class < handle
             self.OS.queryOS();
             if self.OS.Err.occurred
                 self.Err            = self.OS.Err;
-                self.Err.msg        = PROCEDURE_NAME + ": Error occurred while querying OS type." + Constants.NLC + self.Err.msg;
-                self.abort(self.Err, self.brand, Constants.NLC, self.LogFile.unit);
+                self.Err.msg        = FUNCTION_NAME + ": Error occurred while querying OS type." + Constants.NLC + self.Err.msg;
+                self.Err.prefix     = self.brand;
+                self.Err.newLine    = newline;
+                self.Err.outputUnit = self.LogFile.unit;
+                self.abort();
             end
 
             % get system info by all images
@@ -114,7 +114,10 @@ classdef ParaMonte_class < handle
             if self.SystemInfo.Err.occurred
                 self.Err            = self.SystemInfo.Err;
                 self.Err.msg        = FUNCTION_NAME + ": Error occurred while collecting system info." + Constants.NLC + self.Err.msg;
-                self.abort(self.Err, self.brand, Constants.NLC, self.LogFile.unit);
+                self.Err.prefix     = self.brand;
+                self.Err.newLine    = newline;
+                self.Err.outputUnit = self.LogFile.unit;
+                self.abort();
             end
 
             if self.Image.isFirst    % blockSplashByFirstImage
@@ -123,13 +126,13 @@ classdef ParaMonte_class < handle
             end
 
             function index_val = index(str, sub_str)
-                index_val       = strfind(str, sub_str);
+                index_val   = strfind(str, sub_str);
                 if isempty(index_val), index_val = 0; else, index_val = index_val(1); end
             end
 
             % Set the default and null values for ParaMonte SpecBase
 
-            self.SpecBase           = SpecBase_class(self.nd.val, self.name);
+            self.SpecBase = SpecBase_class(self.nd.val, self.name);
 
         end % function setupParaMonte
 
@@ -219,12 +222,6 @@ classdef ParaMonte_class < handle
 
             fprintf(self.LogFile.unit, self.SystemInfo.info);
 
-            % for j = 1 : self.SystemInfo.nRecord
-                % self.Decor.List = self.Decor.wrapText(self.SystemInfo.List(j).record, 132);
-                % for i = 1,size(self.Decor.List)
-                    % fprintf(self.LogFile.unit, self.Decor.List(i).record);
-                % end
-            % end
             self.Decor.write(self.LogFile.unit, [], [], [], []);
 
         end % function addCompilerPlatformInfo
@@ -248,14 +245,18 @@ classdef ParaMonte_class < handle
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-        function warnUserAboutMissingNamelist(prefix, name, namelist, outputUnit)
-            msg =   "No namelist group of variables named " + namelist + " was detected in user's input file for " + name + " options.\n"...
+        function warnUserAboutMissingNamelist(self, prefix, name, namelist, outputUnit)
+            msg =   "No namelist group of variables named " + namelist + " was detected in user's input file for " + name + " options." + newline   ...
                     + "All " + name + " options will be assigned appropriate default values."...
                     ;
-            global Err
-            Err.warn(prefix, outputUnit, "\n", msg);
+            self.Err.reset();
+            self.Err.prefix      = prefix;
+            self.Err.outputUnit  = outputUnit;
+            self.Err.msg         = msg;
+            self.Err.warn();
             if outputUnit ~= 1
-                Err.warn(prefix, 1, "\n", msg);
+                Err.outputUnit  = 1;
+                Err.warn();
             end
         end
 
@@ -263,34 +264,40 @@ classdef ParaMonte_class < handle
     %*******************************************************************************************************************************
 
         function setupOutputFiles(self)
+
             FUNCTION_NAME = self.CLASS_NAME + "@setupOutputFiles()";
 
             if self.SpecBase.outputFileName.original == self.SpecBase.outputFileName.def
-                msg     = "No user-input filename prefix for " + self.name + " output files detected." + Constants.NLC            ...
-                        + "Generating appropriate filenames for " + self.name + " output files from the current date and time..." ...
-                        ;
+                msg = "No user-input filename prefix for " + self.name + " output files detected." + Constants.NLC            ...
+                    + "Generating appropriate filenames for " + self.name + " output files from the current date and time..." ...
+                    ;
             else
                 msg = "Variable outputFileName detected among the input variables to " + self.name + ":" + Constants.NLC + self.SpecBase.outputFileName.original;
             end
 
             self.SpecBase.outputFileName.queryPath(self.SpecBase.outputFileName.original, self.OS);
+            
+            self.Err.prefix         = self.brand;
+            self.Err.newLine        = newline;
+            self.Err.outputUnit     = self.LogFile.unit;
+            self.Err.resetEnabled   = false;
 
             if self.SpecBase.outputFileName.Err.occurred
-                self.Err        = self.SpecBase.outputFileName.Err;
-                self.Err.msg    = FUNCTION_NAME + ": Error occurred while attempting to construct outputFileName path type." + Constants.NLC + self.Err.msg;
-                self.Err.abort(self.brand, Constants.NLC, self.LogFile.unit);
+                self.Err            = self.SpecBase.outputFileName.Err;
+                self.Err.msg        = FUNCTION_NAME + ": Error occurred while attempting to construct outputFileName path type." + Constants.NLC + self.Err.msg;
+                self.Err.abort();
             end
 
             self.SpecBase.outputFileName.namePrefix = self.SpecBase.outputFileName.name + self.SpecBase.outputFileName.ext;
 
             % get the current working directory
 
-            currentWorkingDir   = pwd;
-            currentWorkingDir   = strtrim(currentWorkingDir);
+            currentWorkingDir       = pwd;
+            currentWorkingDir       = strtrim(currentWorkingDir);
 
             if isempty(currentWorkingDir)
-                self.Err.msg    = FUNCTION_NAME + ":Error occurred while fetching the current working directory via pwd." + Constants.NLC;
-                self.abort(self.Err, self.brand, NLC, self.LogFile.unit);
+                self.Err.msg        = FUNCTION_NAME + ":Error occurred while fetching the current working directory via pwd." + Constants.NLC;
+                self.Err.abort();
             end
 
             msg = msg + Constants.NLC + Constants.NLC + "Absolute path to the current working directory:" + Constants.NLC + strrep(currentWorkingDir, '\', '\\');
@@ -306,11 +313,11 @@ classdef ParaMonte_class < handle
 
             if self.Image.isFirst && self.SpecBase.outputFileName.dir ~= pwd
                 if ~exist(self.SpecBase.outputFileName.dir, 'dir')
-                    status = mkdir(self.SpecBase.outputFileName.dir);
-                    self.Err.occurred = ~status;
+                    [status, self.Err.msg]  = mkdir(self.SpecBase.outputFileName.dir);
+                    self.Err.occurred       = ~status;
                     if self.Err.occurred
-                        self.Err.msg = FUNCTION_NAME + ": Error occurred while making directory = '" + self.SpecBase.outputFileName.dir + "'." + Constants.NLC + self.Err.msg;
-                        self.Err.abort(self.brand, newline, self.LogFile.unit);
+                        self.Err.msg        = FUNCTION_NAME + ": Error occurred while making directory = '" + self.SpecBase.outputFileName.dir + "'." + Constants.NLC + self.Err.msg;
+                        self.Err.abort();
                     end
                 end
             end
@@ -320,9 +327,9 @@ classdef ParaMonte_class < handle
             end
 
             if isempty(strtrim(char(self.SpecBase.outputFileName.namePrefix)))
-                msg     =  msg + Constants.NLC + Constants.NLC + "No user-input filename prefix for " + self.name + " output files detected." + Constants.NLC...
-                        + "Generating appropriate filenames for " + self.name + " output files from the current date and time..."                         ...
-                        ;
+                msg =  msg + Constants.NLC + Constants.NLC + "No user-input filename prefix for " + self.name + " output files detected." + Constants.NLC...
+                    + "Generating appropriate filenames for " + self.name + " output files from the current date and time..."                         ...
+                    ;
                 self.SpecBase.outputFileName.namePrefix = self.SpecBase.outputFileName.def;
             end
 
@@ -330,12 +337,11 @@ classdef ParaMonte_class < handle
 
 
             % Variable msg will be used down this subroutine, so it should not be changed beyond this point
+
             msg  =  msg + Constants.NLC + Constants.NLC + self.name + " output files will be prefixed with:" + Constants.NLC + strrep(self.SpecBase.outputFileName.pathPrefix,'\',"\\");
 
             if self.Image.isFirst
-                self.Err.msg = msg;
-                self.Err.prefix = self.brand;
-                self.Err.outputUnit = self.LogFile.unit;
+                self.Err.msg        = msg;
                 self.Err.note();
             end
 
@@ -343,9 +349,7 @@ classdef ParaMonte_class < handle
             % Generate the output filenames, search for pre-existing runs, and open the report file:
 
             if self.Image.isFirst
-                self.Err.msg = "Searching for previous runs of " + self.name + "...";
-                self.Err.prefix = self.brand;
-                self.Err.outputUnit = self.LogFile.unit;
+                self.Err.msg        = "Searching for previous runs of " + self.name + "...";
                 self.Err.note();
             end
 
@@ -381,37 +385,37 @@ classdef ParaMonte_class < handle
 
             self.Err.occurred = isfile(char(self.LogFile.Path.original));
             if self.Err.occurred
-                self.Err.msg    = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                + strrep(self.LogFile.Path.original, '\', '\\') + "'";
-                self.Err.abort(self.brand, Constants.NLC, self.LogFile.unit);
+                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+                                    + strrep(self.LogFile.Path.original, '\', '\\') + "'";
+                self.Err.abort();
             end
 
             self.Err.occurred = isfile(char(self.SampleFile.Path.original));
             if self.Err.occurred
-                self.Err.msg    = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                + strrep(self.SampleFile.Path.original, '\', '\\') + "'";
-                self.Err.abort(self.brand, Constants.NLC, self.SampleFile.unit);
+                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+                                    + strrep(self.SampleFile.Path.original, '\', '\\') + "'";
+                self.Err.abort();
             end
 
             self.Err.occurred = isfile(char(self.TimeFile.Path.original));
             if self.Err.occurred
-                self.Err.msg    = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                + strrep(self.TimeFile.Path.original, '\', '\\') + "'";
-                self.Err.abort(self.brand, Constants.NLC, self.TimeFile.unit);
+                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+                                    + strrep(self.TimeFile.Path.original, '\', '\\') + "'";
+                self.Err.abort();
             end
 
             self.Err.occurred = isfile(char(self.ChainFile.Path.original));
             if self.Err.occurred
-                self.Err.msg    = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                + strrep(self.ChainFile.Path.original, '\', '\\') + "'";
-                self.Err.abort(self.brand, Constants.NLC, self.ChainFile.unit);
+                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+                                    + strrep(self.ChainFile.Path.original, '\', '\\') + "'";
+                self.Err.abort();
             end
 
             self.Err.occurred = isfile(char(self.RestartFile.Path.original));
             if self.Err.occurred
-                self.Err.msg    = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                + strrep(self.RestartFile.Path.original, '\', '\\') + "'";
-                self.Err.abort(self.brand, Constants.NLC, self.RestartFile.unit);
+                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+                                    + strrep(self.RestartFile.Path.original, '\', '\\') + "'";
+                self.Err.abort();
             end
 
             self.isDryRun   = self.LogFile.exists || self.TimeFile.exists || self.RestartFile.exists || self.ChainFile.exists || self.SampleFile.exists; % not fresh, if any file exists
@@ -419,13 +423,14 @@ classdef ParaMonte_class < handle
 
             if self.isFreshRun
                 if self.Image.isFirst
-                    self.Err.msg = "No pre-existing " + self.name + " run detected." + newline + "Starting a fresh ParaDRAM run...";
-                    self.Err.prefix = self.brand;
-                    self.Err.outputUnit = self.LogFile.unit;
+                    self.Err.msg        = "No pre-existing " + self.name + " run detected." + newline + "Starting a fresh ParaDRAM run...";
                     self.Err.note();
                 end
             else
-                if self.Image.isFirst, self.note(self.brand, self.LogFile.unit, Constants.NLC, "Previous run of " + self.name + " detected." + Constants.NLC + "Searching for restart files..." ); end
+                if self.Image.isFirst
+                    self.Err.msg = "Previous run of " + self.name + " detected." + Constants.NLC + "Searching for restart files...";
+                    self.Err.note();
+                end
                 if self.SampleFile.exists % sampling is already complete
                     self.Err.occurred   = true;
                     self.Err.msg        = FUNCTION_NAME + ": Error occurred. Output sample file detected: " + self.SampleFile.Path.original ...
@@ -442,7 +447,7 @@ classdef ParaMonte_class < handle
                     if ~self.ChainFile.exists,      self.Err.msg = self.Err.msg + Constants.NLC + self.ChainFile.Path.original;     end
                     if ~self.RestartFile.exists,    self.Err.msg = self.Err.msg + Constants.NLC + self.RestartFile.Path.original;   end
                 end
-                if self.Err.occurred, self.abort(self.Err, self.brand, Constants.NLC, self.LogFile.unit); end
+                if self.Err.occurred, self.Err.abort(); end
             end
 
 
@@ -482,102 +487,84 @@ classdef ParaMonte_class < handle
 
                 % print the stdout message for generating / appending the output report file(s)
 
-                self.Err.msg = workingOn + char(self.LogFile.suffix) + " file:";
-                self.Err.prefix = self.brand;
-                self.Err.outputUnit = self.LogFile.unit;
-                self.Err.marginBot = 0;
+                self.Err.msg        = workingOn + char(self.LogFile.suffix) + " file:";
+                self.Err.marginBot  = 0;
                 self.Err.note();
 
                 % print the the output report file name of the images
 
-                self.Err.msg = strrep(self.LogFile.Path.original, '\', '\\');
-                self.Err.prefix = self.brand;
-                self.Err.outputUnit = self.LogFile.unit;
-                self.Err.marginTop = 0;
-                self.Err.marginBot = 0;
+                self.Err.msg        = strrep(self.LogFile.Path.original, '\', '\\');
+                self.Err.marginTop  = 0;
+                self.Err.marginBot  = 0;
                 self.Err.note();
 
-                self.Err.msg = "Please see the output " + self.LogFile.suffix + " and " + self.TimeFile.suffix + " files for further realtime simulation details.";
-                self.Err.prefix = self.brand;
-                self.Err.outputUnit = self.LogFile.unit;
-                self.Err.marginTop = 3;
-                self.Err.marginBot = 3;
+                self.Err.msg        = "Please see the output " + self.LogFile.suffix + " and " + self.TimeFile.suffix + " files for further realtime simulation details.";
+                self.Err.marginTop  = 3;
+                self.Err.marginBot  = 3;
                 self.Err.note();
 
             end
 
-
             % open the output files
 
+            self.Err.marginTop      = 1;
+            self.Err.marginBot      = 1;
+            
             if self.Image.isMaster
+            
                 [self.LogFile.unit, self.Err.msg] = fopen(self.LogFile.Path.original, "w");
+                self.Err.outputUnit = self.LogFile.unit;
+                
                 if self.Err.msg
-                    self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.LogFile.suffix + " file='" + self.LogFile.Path.original + "'.";
-                    self.Err.abort(self.brand, Constants.NLC, self.LogFile.unit);
+                    self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.LogFile.suffix + " file='" + strrep(self.LogFile.Path.original, '\', '\\') + "'.";
+                    self.Err.abort();
                 end
 
                 % rewrite the same old stuff to all report files
+
                 if self.isFreshRun
                     self.addSplashScreen();
                     if self.SpecBase.silentModeRequested.isFalse, self.addCompilerPlatformInfo(); end   % this takes about 0.75 seconds to execute on Stampede Login nodes.
                     self.noteUserAboutEnvSetup();
-                    self.Err.msg = msg;
-                    self.Err.prefix = self.brand;
-                    self.Err.outputUnit = self.LogFile.unit;
+                    self.Err.msg    = msg;
                     self.Err.note();
                 end
 
                 % open/append the output files
 
                 if self.isFreshRun
-                    self.Err.msg = workingOn + self.TimeFile.suffix + " file:" + Constants.NLC + strrep(self.TimeFile.Path.original, '\', '\\');
-                    self.Err.prefix = self.brand;
-                    self.Err.outputUnit = self.LogFile.unit;
+                    self.Err.msg    = workingOn + self.TimeFile.suffix + " file:" + Constants.NLC + strrep(self.TimeFile.Path.original, '\', '\\');
                     self.Err.note();
                 end
 
                 [self.TimeFile.unit, self.Err.msg] = fopen(self.TimeFile.Path.original, "w");
                 if self.Err.msg
-                    self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.TimeFile.suffix + " file='" + strrep(self.TimeFile.Path.original, '\', '\\') + "'.";
-                    self.Err.prefix = self.brand;
-                    self.Err.outputUnit = self.LogFile.unit;
+                    self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.TimeFile.suffix + " file='" + strrep(self.TimeFile.Path.original, '\', '\\') + "'.";
                     self.Err.abort();
                 end
 
                 if self.isFreshRun
-                    self.Err.msg = workingOn + self.ChainFile.suffix + "file:" + Constants.NLC + strrep(self.ChainFile.Path.original, '\', '\\');
-                    self.Err.prefix = self.brand;
-                    self.Err.outputUnit = self.LogFile.unit;
+                    self.Err.msg    = workingOn + self.ChainFile.suffix + "file:" + Constants.NLC + strrep(self.ChainFile.Path.original, '\', '\\');
                     self.Err.note();
                 end
 
                 [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, "w");
                 if self.Err.msg
-                    self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + strrep(self.ChainFile.Path.original, '\', '\\') + "'.";
-                    self.Err.prefix = self.brand;
-                    self.Err.outputUnit = self.LogFile.unit;
+                    self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + strrep(self.ChainFile.Path.original, '\', '\\') + "'.";
                     self.Err.abort();
                 end
-
 
                 [self.RestartFile.unit, self.Err.msg] = fopen(self.RestartFile.Path.original, "w");
                 if self.Err.msg
                     self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.RestartFile.suffix + " file='" + strrep(self.RestartFile.Path.original, '\', '\\') + "'.";
-                    self.Err.prefix = self.brand;
-                    self.Err.outputUnit = self.LogFile.unit;
                     self.Err.abort();
                 end
 
                 if self.isFreshRun
-                    self.Decor.writeDecoratedText   ( " " + Constants.NLC + self.name + " simulation specifications" + Constants.NLC  ...
-                                                    , []                                                                        ...
-                                                    , []                                                                        ...
-                                                    , []                                                                        ...
-                                                    , []                                                                        ...
-                                                    , 1                                                                         ...
-                                                    , 1                                                                         ...
-                                                    , self.LogFile.unit                                                         ...
-                                                    , Constants.NLC                                                             ...
+                    self.Decor.writeDecoratedText   ( " " + Constants.NLC + self.name + " simulation specifications" + Constants.NLC    ...
+                                                    , [], [], [], [], 1, 1                                                              ...
+                                                    , self.LogFile.unit                                                                 ...
+                                                    , Constants.NLC                                                                     ...
                                                     ) ;
                 end
 

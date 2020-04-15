@@ -16,7 +16,9 @@ pm = paramonte("matlab"); %
 pmpd = pm.ParaDRAM();
 %pmpd.inputFile = './paramonte.in';
 pmpd.spec.chainSize = 1000;
-pmpd.runSampler(4,@getLogFunc)
+pmpd.spec.outputFileName                          = "./out/temp/";                % Works
+pmpd.spec.proposalModel                           = "abc";                    % Works
+pmpd.runSampler(4,@getLogFunc);
 %pmpd.readChain("ParaDRAM_run_")
 return
     ...ParaMonte variables...

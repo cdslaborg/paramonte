@@ -113,25 +113,28 @@ classdef SpecBase_class < handle
 
         function reportValues(self, prefix, outputUnit)
 
-            formatVal   = Decoration_class.TAB + Decoration_class.TAB;
+            formatVal           = Decoration_class.TAB + Decoration_class.TAB;
+            
+            Err                 = Err_class();
+            Err.prefix          = prefix;
+            Err.outputUnit      = outputUnit;
+            Err.resetEnabled    = false;
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "description" + "\n\n");
-            self.Err.msg = self.description.val;
-            self.Err.prefix = Decoration_class.TAB + Decoration_class.TAB;
-            self.Err.outputUnit = outputUnit;
-            self.Err.wrapWidth = 125;
-            self.Err.marginTop = 0;
-            self.Err.marginBot = 0;
-            self.Err.informUser();
-            if self.silentModeRequested.isFalse, Err_class.note(self.description.desc, prefix, '', outputUnit, '', []); end
+            Err.fullprefix      = formatVal;
+            Err.msg             = self.description.val;
+            Err.informUser();
+            Err.msg             = self.description.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "silentModeRequested" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.silentModeRequested.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.silentModeRequested.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.silentModeRequested.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -139,7 +142,8 @@ classdef SpecBase_class < handle
             for i = 1 : length(self.domainLowerLimitVec.Val)
                 fprintf(outputUnit, formatVal + num2str(self.domainLowerLimitVec.Val(i)) + "\n");
             end
-            if self.silentModeRequested.isFalse, Err_class.note(self.domainLowerLimitVec.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.domainLowerLimitVec.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -147,7 +151,8 @@ classdef SpecBase_class < handle
             for i = 1 : length(self.domainUpperLimitVec.Val)
                 fprintf(outputUnit, formatVal + num2str(self.domainUpperLimitVec.Val(i)) + "\n");
             end
-            if self.silentModeRequested.isFalse, Err_class.note(self.domainUpperLimitVec.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.domainUpperLimitVec.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -155,19 +160,22 @@ classdef SpecBase_class < handle
             for i = 1: length(self.variableNameList.Val)
                 fprintf(outputUnit, formatVal + char(self.variableNameList.Val{i}) + "\n");
             end
-            if self.silentModeRequested.isFalse, Err_class.note(self.variableNameList.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.variableNameList.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "parallelizationModel" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.parallelizationModel.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.parallelizationModel.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.parallelizationModel.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "outputFileName" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(strrep(self.outputFileName.modified, '\', '\\')) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.outputFileName.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.outputFileName.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -177,13 +185,15 @@ classdef SpecBase_class < handle
             else
                 fprintf(outputUnit, formatVal + num2str(self.targetAcceptanceRate.val) + "\n");
             end
-            if self.silentModeRequested.isFalse, Err_class.note(self.targetAcceptanceRate.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.targetAcceptanceRate.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "sampleSize" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.sampleSize.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.sampleSize.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.sampleSize.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -194,55 +204,64 @@ classdef SpecBase_class < handle
             else
                 fprintf(outputUnit, formatVal + num2str(self.randomSeed.seed) + "\n");
             end
-            if self.silentModeRequested.isFalse, Err_class.note(self.randomSeed.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.randomSeed.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "outputColumnWidth" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.outputColumnWidth.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.outputColumnWidth.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.outputColumnWidth.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "outputDelimiter" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.outputDelimiter.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.outputDelimiter.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.outputDelimiter.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "outputRealPrecision" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.outputRealPrecision.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.outputRealPrecision.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.outputRealPrecision.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "chainFileFormat" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.chainFileFormat.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.chainFileFormat.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.chainFileFormat.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "restartFileFormat" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.restartFileFormat.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.restartFileFormat.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.restartFileFormat.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "progressReportPeriod" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.progressReportPeriod.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.progressReportPeriod.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.progressReportPeriod.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "maxNumDomainCheckToWarn" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.maxNumDomainCheckToWarn.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.maxNumDomainCheckToWarn.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.maxNumDomainCheckToWarn.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "maxNumDomainCheckToStop" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.maxNumDomainCheckToStop.val) + "\n");
-            if self.silentModeRequested.isFalse, Err_class.note(self.maxNumDomainCheckToStop.desc, prefix, '', outputUnit, [], []); end
+            Err.msg             = self.maxNumDomainCheckToStop.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
         end

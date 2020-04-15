@@ -77,7 +77,6 @@ classdef Path_class < handle
                 OS = OS_class();
                 OS.queryOS();
                 if OS.Err.occurred
-                    self.Err.stat       = OS.Err.stat;
                     self.Err.occurred   = OS.Err.occurred;
                     self.Err.msg        = FUNCTION + ": Error occurred while querying OS type." + newline + self.Err.msg;
                 end
@@ -87,17 +86,17 @@ classdef Path_class < handle
             end
 
             if OSisWindows
-                [self.modified, self.Err] = self.winifyPath(self.original);
+                self.modified       = self.winifyPath(self.original);
                 if self.Err.occurred
-                    self.Err.msg        = FUNCTION_NAME + ": Error occurred while making path='" + self.original + "' compatible with Windows OS." + newline + self.Err.msg;
+                    self.Err.msg    = FUNCTION_NAME + ": Error occurred while making path='" + self.original + "' compatible with Windows OS." + newline + self.Err.msg;
                     return
                 end
             else
                 % if the path contains both / and \, then assume that it is already in linux style
                 if index(self.original,"/") == 0   % path is given in Windows style
-                    self.modified = self.linifyPath(self.original);
+                    self.modified   = self.linifyPath(self.original);
                 else
-                    self.modified = self.original;
+                    self.modified   = self.original;
                 end
             end
 
@@ -125,11 +124,9 @@ classdef Path_class < handle
         % this routine strictly assumes that there is no dangling \ in the input Linux path, and if there is, then either it is used
         % to escape the special shell characters, or otherwise, the path is a Windows path.
 
-        function [outputPath, Err] = winifyPath(inputPath)
+        function outputPath = winifyPath(inputPath)
 
             FUNCTION_NAME   = "@winifyPath()";
-            Err.occurred    = false;
-            Err.msg         = "";
 
             % note that multiple \ character in sequence is meaningless in Linux (basically \\ reduces to \),
             % and in Windows means the same as a single \. Therefore, reduce all sequential \ characters to a single \.
@@ -215,14 +212,9 @@ classdef Path_class < handle
     %*******************************************************************************************************************************
 
         function [Err, slashOS] = getSlashOS(slashOS)
+            FUNCTION_NAME   = "@getSlashOS()";
             Err             = Err_class();
             OS              = OS_class();
-
-            FUNCTION_NAME   = "@getSlashOS()";
-
-            Err.occurred    = false;
-            Err.msg         = "";
-
             OS.queryOS();
 
             if OS.Err.occurred
@@ -242,32 +234,27 @@ classdef Path_class < handle
     %*******************************************************************************************************************************
 
         function [Err, outputPath] = modifyPath(inputPath)
-            Err             = Err_class();
-            OS              = OS_class();
-
             FUNCTION_NAME   = "@modifyPath()";
-
+            Err             = Err_class();
             outputPath      = strtrim(inputPath);
-            Err.occurred    = false;
-            Err.msg         = "";
-
+            OS              = OS_class();
             OS.queryOS();
 
             if OS.Err.occurred
-                Err = OS.Err;
-                Err.msg = FUNCTION_NAME + ": Error occurred while modifying inputPath='" + outputPath + "'.\n" + Err.msg;
+                Err     = OS.Err;
+                Err.msg = FUNCTION_NAME + ": Error occurred while modifying inputPath='" + outputPath + "'." + newline + Err.msg;
                 return
             end
 
             if OS.isWindows
-                [outputPath, Err] = Path_class.winifyPath(inputPath);
+                outputPath  = Path_class.winifyPath(inputPath);
                 if Err.occurred
-                    Err.msg =  FUNCTION_NAME + ": Error occurred while making path='"...
-                               + inputPath + "' compatible with Windows OS." + newline + Err.msg;
+                    Err.msg =  FUNCTION_NAME + ": Error occurred while making path='"       ...
+                            + inputPath + "' compatible with Windows OS." + newline + Err.msg;
                     return
                 end
             else
-                outputPath = Path_class.linifyPath(inputPath);
+                outputPath  = Path_class.linifyPath(inputPath);
             end
         end
 

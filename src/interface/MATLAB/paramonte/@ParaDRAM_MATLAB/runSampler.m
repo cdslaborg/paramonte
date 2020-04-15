@@ -77,10 +77,14 @@ function runSampler ( self          ...
                                     , self.spec.delayedRejectionScaleFactorVec          ...
                                     ) ;
 
+    self.Err.prefix         = self.brand;
+    self.Err.newLine        = newline;
+    self.Err.outputUnit     = self.LogFile.unit;
+    self.Err.resetEnabled   = false;
 
     if self.Err.occurred
-        self.Err.msg    = FUNCTION_NAME + self.Err.msg;
-        self.Err.abort(self.brand, "\n", self.LogFile.unit);
+        self.Err.msg        = FUNCTION_NAME + self.Err.msg;
+        self.Err.abort();
     end
 
     %***********************************************************************************************************************
@@ -93,18 +97,18 @@ function runSampler ( self          ...
     elseif self.SpecBase.parallelizationModel.isMultiChain
         self.Image.isMaster = true;
     else
-        self.Err.msg    = FUNCTION_NAME + ": Error occurred. Unknown parallelism requested via the input variable parallelizationModel='"...
-                        + self.SpecBase.parallelizationModel.val + "'.";
+        self.Err.msg        = FUNCTION_NAME + ": Error occurred. Unknown parallelism requested via the input variable parallelizationModel='"...
+                            + self.SpecBase.parallelizationModel.val + "'.";
         self.Err.abort(self.brand, "\n", self.LogFile.unit);
     end
-    self.Image.isNotMaster = ~self.Image.isMaster;
+    self.Image.isNotMaster  = ~self.Image.isMaster;
 
 
     %***********************************************************************************************************************
     % setup log file and open output files
     %***********************************************************************************************************************
 
-    self.Chain = ChainFileContents_class(ndim, self.SpecBase.variableNameList.Val, [], [], [], [], [], []);
+    self.Chain              = ChainFileContents_class(ndim, self.SpecBase.variableNameList.Val, [], [], [], [], [], []);
 
     self.setupOutputFiles();
 
@@ -124,8 +128,8 @@ function runSampler ( self          ...
     % perform variable value sanity checks
     %***********************************************************************************************************************
 
-    self.Err.msg = "";
-    self.Err.occurred = false;
+    self.Err.msg            = "";
+    self.Err.occurred       = false;
 
     self.SpecBase.checkForSanity (self.name, self.Err);
 
@@ -134,8 +138,8 @@ function runSampler ( self          ...
     self.SpecDRAM.checkForSanity (self.Err, self.name, ndim);
 
     if self.Err.occurred
-            self.Err.msg = FUNCTION_NAME + self.Err.msg;
-            self.Err.abort(self.brand, "\n", self.LogFile.unit);
+            self.Err.msg    = FUNCTION_NAME + self.Err.msg;
+            self.Err.abort();
     end
 
 
@@ -166,7 +170,7 @@ function runSampler ( self          ...
         self.Proposal = ParaDRAMProposalSymmetric_class(ndim, self);
     else
         self.Err.msg = FUNCTION_NAME + ": Internal error occurred. Unsupported proposal distribution for " + self.name + "."
-        self.Err.abort(self.brand, "\n", self.LogFile.unit);
+        self.Err.abort();
     end
 
 

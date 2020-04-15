@@ -62,14 +62,20 @@ classdef SpecMCMC_class < handle
 
         function reportValues(self, prefix, outputUnit, splashModeRequested)
 
-            Decoration = Decoration_class([],[],[],[]);
-            formatVal = Decoration.TAB + Decoration.TAB;
+            Decoration          = Decoration_class([],[],[],[]);
+            formatVal           = Decoration.TAB + Decoration.TAB;
+            
+            Err                 = Err_class();
+            Err.prefix          = prefix;
+            Err.outputUnit      = outputUnit;
+            Err.resetEnabled    = false;
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "chainSize\n\n");
             fprintf(outputUnit,  formatVal + num2str(self.chainSize.val) + "\n");
-            if splashModeRequested, Err_class.note(self.chainSize.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.chainSize.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -77,7 +83,8 @@ classdef SpecMCMC_class < handle
             for i = 1 : length(self.randomStartPointDomainLowerLimitVec.Val)
                 fprintf(outputUnit,  formatVal + num2str(self.randomStartPointDomainLowerLimitVec.Val(i))+ "\n");
             end
-            if splashModeRequested == true, Err_class.note(self.randomStartPointDomainLowerLimitVec.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.randomStartPointDomainLowerLimitVec.desc;
+            if splashModeRequested == true, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -85,7 +92,8 @@ classdef SpecMCMC_class < handle
             for i = 1 : length(self.randomStartPointDomainUpperLimitVec.Val)
                 fprintf(outputUnit, formatVal + self.randomStartPointDomainUpperLimitVec.Val(i) + "\n");
             end
-            if splashModeRequested == true, Err_class.note(self.randomStartPointDomainUpperLimitVec.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.randomStartPointDomainUpperLimitVec.desc;
+            if splashModeRequested == true, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -93,25 +101,29 @@ classdef SpecMCMC_class < handle
             for i = 1 : length(self.startPointVec.Val)
                 fprintf(outputUnit, formatVal + self.startPointVec.Val(i) + "\n");
             end
-            if splashModeRequested == true, Err_class.note(self.startPointVec.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.startPointVec.desc;
+            if splashModeRequested == true, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "randomStartPointRequested" + "\n\n");
             fprintf(outputUnit, formatVal + self.randomStartPointRequested.val + "\n");
-            if splashModeRequested == true, Err_class.note(self.randomStartPointRequested.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.randomStartPointRequested.desc;
+            if splashModeRequested == true, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "sampleRefinementCount" + "\n\n");
             fprintf(outputUnit, formatVal + self.sampleRefinementCount.val + "\n");
-            if splashModeRequested == true, Err_class.note(self.sampleRefinementCount.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.sampleRefinementCount.desc;
+            if splashModeRequested == true, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit, "\n" + "sampleRefinementMethod" + "\n\n");
             fprintf(outputUnit, formatVal + self.sampleRefinementMethod.val + "\n");
-            if splashModeRequested == true, Err_class.note(self.sampleRefinementMethod.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.sampleRefinementMethod.desc;
+            if splashModeRequested == true, Err.note(); end
             %-----------------------------------------------------------------------------------------------------------------------
 
         end % function reportValues

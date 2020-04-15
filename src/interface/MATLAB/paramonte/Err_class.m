@@ -14,7 +14,7 @@ classdef Err_class < handle
         marginBot
         outputUnit
         occurred
-        newline
+        newLine
         stat
         statNull
         resetEnabled
@@ -103,7 +103,7 @@ classdef Err_class < handle
 
             Decoration  = Decoration_class([],[],[],[]);
 
-            List = Decoration.getListOfLines(self.msg, self.newline);
+            List = Decoration.getListOfLines(self.msg, self.newLine);
 
             lenList = length(List);
             for i = 1 : lenList
@@ -114,7 +114,7 @@ classdef Err_class < handle
                     padBotCurrent = 0;
                     if (i == 1) && (ijustified == 1)                        , padTopCurrent = self.marginTop; end % the very first line
                     if (i == lenList) && (ijustified == lenListJustified)   , padBotCurrent = self.marginBot; end % the very last line
-                    Decoration.write(self.outputUnit, padTopCurrent, padBotCurrent   , 1, self.fullprefix + ListJustified{ijustified});
+                    Decoration.write(self.outputUnit, padTopCurrent, padBotCurrent, 1, self.fullprefix + ListJustified{ijustified});
                 end
             end
 
@@ -139,7 +139,7 @@ classdef Err_class < handle
             self.marginBot  = 1;
             self.outputUnit = 1;
             self.occurred   = false;
-            self.newline    = newline;
+            self.newLine    = newline;
             self.stat       = -intmax;
             self.statNull   = -intmax;
 
