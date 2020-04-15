@@ -77,37 +77,47 @@ classdef SpecDRAM_class < handle
 
         function reportValues(self, prefix, outputUnit, methodName, splashModeRequested)
 
-            formatVal = Decoration_class.TAB + Decoration_class.TAB;
+            formatVal           = Decoration_class.TAB + Decoration_class.TAB;
+            
+            Err                 = Err_class();
+            Err.prefix          = prefix;
+            Err.outputUnit      = outputUnit;
+            Err.resetEnabled    = false;
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit,  "\n" + "adaptiveUpdatePeriod" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.adaptiveUpdatePeriod.val) + "\n");
-            if splashModeRequested, Err_class.note(self.adaptiveUpdatePeriod.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.adaptiveUpdatePeriod.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit,  "\n" + "adaptiveUpdateCount" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.adaptiveUpdateCount.val) + "\n");
-            if splashModeRequested, Err_class.note(self.adaptiveUpdateCount.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.adaptiveUpdateCount.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit,  "\n" + "greedyAdaptationCount" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.greedyAdaptationCount.val) + "\n");
-            if splashModeRequested, Err_class.note(self.greedyAdaptationCount.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.greedyAdaptationCount.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit,  "\n" + "burninAdaptationMeasure" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.burninAdaptationMeasure.val) + "\n");
-            if splashModeRequested, Err_class.note(self.burninAdaptationMeasure.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.burninAdaptationMeasure.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit,  "\n" + "delayedRejectionCount" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.delayedRejectionCount.val) + "\n");
-            if splashModeRequested, Err_class.note(self.delayedRejectionCount.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.delayedRejectionCount.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -119,13 +129,15 @@ classdef SpecDRAM_class < handle
                     fprintf(outputUnit, formatVal + num2str(self.delayedRejectionScaleFactorVec.Val(i)) + "\n");
                 end
             end
-            if splashModeRequested, Err_class.note(self.delayedRejectionScaleFactorVec.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.delayedRejectionScaleFactorVec.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit,  "\n" + "scaleFactor" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.scaleFactor.str) + "\n");
-            if splashModeRequested, Err_class.note(self.scaleFactor.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.scaleFactor.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -133,18 +145,19 @@ classdef SpecDRAM_class < handle
             % proposal distribution
             %***********************************************************************************************************************
 
-            Decoration = Decoration_class([],[],[],[]);
+            Decoration          = Decoration_class([],[],[],[]);
 
             Decoration.writeDecoratedText(" " + newline + methodName + " proposal specifications" + newline, [], [], [], [], 1, 1, outputUnit, "\n");
 
 
             fprintf(outputUnit,  "\n" + "proposalModel" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(self.proposalModel.val) + "\n");
-            if splashModeRequested, Err_class.note(self.proposalModel.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.proposalModel.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
-            ndim = length(self.proposalStartCovMat.Val(:,1));
+            ndim                = length(self.proposalStartCovMat.Val(:,1));
 
             fprintf(outputUnit,  "\n" + "proposalStartCovMat" + "\n\n");
             if self.proposalStartCovMat.isPresent
@@ -155,20 +168,23 @@ classdef SpecDRAM_class < handle
                 end
             else
                 % User has not provided the Start Covariance Matrix
-                Err_class.informUser("UNDEFINED. It will be constructed from the Correlation Matrix (ProposalStartCorMat)"    ...
-                                        + "and the Standard Deviation vector (ProposalStartStdVec)."                          ...
-                                        , Decoration_class.TAB + Decoration_class.TAB, "\n", outputUnit, [], [], [], 0);
+                Err.fullprefix  = formatVal;
+                Err.msg         = "UNDEFINED. It will be constructed from the Correlation Matrix (ProposalStartCorMat)"        ...
+                                + "and the Standard Deviation vector (ProposalStartStdVec).";
+                Err.informUser();
             end
-            if splashModeRequested, Err_class.note(self.proposalStartCovMat.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.proposalStartCovMat.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
             fprintf(outputUnit,  "\n" + "proposalStartCorMat" + "\n\n");
             for i = 1 : ndim
-                Row = self.proposalStartCorMat.Val(i,:);
+                Row             = self.proposalStartCorMat.Val(i,:);
                 fprintf(outputUnit, formatVal + num2str(Row) + "\n");
             end
-            if splashModeRequested, Err_class.note(self.proposalStartCorMat.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.proposalStartCorMat.desc;
+            if splashModeRequested, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------
 
@@ -176,7 +192,8 @@ classdef SpecDRAM_class < handle
             for i = 1 : ndim
                 fprintf(outputUnit, formatVal + num2str(self.proposalStartStdVec.Val(i)) + "\n");
             end
-            if splashModeRequested, Err_class.note(self.proposalStartStdVec.desc, prefix, "\n", outputUnit, [], []); end
+            Err.msg             = self.proposalStartStdVec.desc;
+            if splashModeRequested, Err.note(); end
 
         end
 

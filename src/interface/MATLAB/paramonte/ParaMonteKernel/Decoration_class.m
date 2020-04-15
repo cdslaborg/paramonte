@@ -418,11 +418,11 @@ classdef Decoration_class < handle
                         ListOfLines{counterLine} = "";
                         break;
                     end
-                elseif delimIsCStyle && (string(counterString : counterString) == "\")
+                elseif delimIsCStyle && (string(counterString : counterString) == '\')
                     counterString = counterString + 1;
                     counterRecord = counterRecord + 1;
-                    dumstr(counterRecord : counterRecord) = "\";
-                    if string(counterString : counterString) == "\", counterString = counterString + 1; end
+                    dumstr(counterRecord : counterRecord) = '\';
+                    if string(counterString : counterString) == '\', counterString = counterString + 1; end
                 else
                     counterRecord = counterRecord + 1;
                     dumstr(counterRecord : counterRecord) = string(counterString : counterString);
