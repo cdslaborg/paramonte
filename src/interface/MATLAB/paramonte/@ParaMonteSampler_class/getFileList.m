@@ -30,11 +30,17 @@ function fileList = getFileList(self,file,fileType)
         end
 
         dirList = dir(pattern);
+
+        if isempty(dirList)
+            
+        end
+
         counter = 0;
+        fileList = [];
         for ifile = 1:length(dirList)
             if contains(dirList(ifile).name,suffix)
                 counter = counter + 1;
-                fileList(ifile) = fullfile( string(dirList(ifile).folder) , string(dirList(ifile).name) );
+                fileList = [ fileList , fullfile( string(dirList(ifile).folder) , string(dirList(ifile).name) ) ];
             end
         end
 
@@ -47,8 +53,8 @@ function fileList = getFileList(self,file,fileType)
                             + "      This unique-name is the common prefix in the names of" + newline ...
                             + "      the output files of a given " + self.methodName + " simulation.";
             self.Err.abort();
-        else
-            pattern = pattern + suffix;
+        %else
+        %    pattern = pattern + suffix;
         end
 
     end

@@ -147,17 +147,17 @@ classdef paramonte < handle
             % check interface type
 
             errorOccurred = false;
-            matlabEnabled = false;
+            matlabKernelEnabled = false;
             if nargin==1
                 if isa(varargin{1},'char')
                     if strcmp(lower(varargin{1}),'matlab')
-                        matlabEnabled = true;
+                        matlabKernelEnabled = true;
                     else
                         errorOccurred = true;
                     end
                 elseif isa(varargin{1},'string')
                     if strcmp(lower(varargin{1}),"matlab")
-                        matlabEnabled = true;
+                        matlabKernelEnabled = true;
                     else
                         errorOccurred = true;
                     end
@@ -185,8 +185,8 @@ classdef paramonte < handle
             versionFileID = fopen(versionFilePath);
             self.version = fgetl(versionFileID);
 
-            if matlabEnabled
-                self.ParaDRAM = ParaDRAM_MATLAB;
+            if matlabKernelEnabled
+                self.ParaDRAM = ParaDRAM_class;
             else
                 self.ParaDRAM = ParaDRAM;
             end

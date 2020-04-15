@@ -1,4 +1,4 @@
-function logFunc = getLogFunc(Point)
+function logFunc = getLogFunc(point)
 
 % This function returns the probability density function of the standard multivariate normal distribution of ndim dimensions.
     
@@ -11,8 +11,10 @@ function logFunc = getLogFunc(Point)
 
 %----------------------------------------------------------------------
 
-    logFunc = -0.5 * sum(Point.^2);
+    %logFunc = -0.5 * sum(point.^2);
 
+    % Rosenbrock test function
+    logFunc = -log( 100.0 * (point(2)-point(1)^2)^2 + (point(1)-1.0)^2 );
 %----------------------------------------------------------------------   
 
 end
