@@ -15,12 +15,20 @@ pm = paramonte("matlab"); %
 
 pmpd = pm.ParaDRAM();
 %pmpd.inputFile = './paramonte.in';
+<<<<<<< HEAD
 pmpd.spec.chainSize = 1000;
 pmpd.spec.outputFileName                          = "./out/temp/";                % Works
 pmpd.spec.proposalModel                           = "abc";                    % Works
 pmpd.runSampler(4,@getLogFunc);
 %pmpd.readChain("ParaDRAM_run_")
 return
+=======
+pmpd.spec.chainSize = 10000;
+pmpd.spec.adaptiveUpdateCount = 0;
+%pmpd.runSampler(2,@getLogFunc)
+%pmpd.readChain("D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_140420_161148_147")
+%return
+>>>>>>> fc2f29b5337492a6c2cf86961a50c3cd11a37717
     ...ParaMonte variables...
 % pmpd.spec.sampleSize                            = 1000;                       % Works
 pmpd.spec.randomSeed                              = 7;                            % Works

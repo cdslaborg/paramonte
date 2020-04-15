@@ -91,12 +91,18 @@ classdef OutputFileContents < dynamicprops
             timer = Timer_class();
             timer.tic()
 
-            self.file
-            file
             d = importdata  ( self.file ...
                             ..., "delimiter", self.delimiter ...
                             );
-            colheadersLen = length(d.colheaders);
+            if isfield(d,"colheaders")
+                colheadersLen = length(d.colheaders);
+            else
+                Err.marginTop = 1;
+                Err.marginBot = 0;
+                Err.msg = "The structure of the file """ + self.file + """ does not match a " + methodName + " " + fileType + "file." + newline ...
+                        + "Verify the contents of this file before attempting to read this file.";
+                Err.abort();
+            end
             for icol = 1:colheadersLen
                 if strcmp(d.colheaders{icol},"SampleLogFunc")
                     break
@@ -180,10 +186,11 @@ classdef OutputFileContents < dynamicprops
 %            self.stats.acf()
 %            timer.toc()
 %
-%            ############################################################################################################################
-%            #### graphics
-%            ############################################################################################################################
-%
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% graphics
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %            timer.tic( msg = "adding graphics tools... " )
 %
 %            # add HistPlot
@@ -194,25 +201,17 @@ classdef OutputFileContents < dynamicprops
 %                                                , columns = self.df.columns[self.offset:]
 %                                                )
 %
-%            # add LinePlot
-%
-%            self.plot.line = _pm.vis.LinePlot   ( dataFrame = self.df
-%                                                , ycolumns = self.df.columns[self.offset:]
-%                                                , ccolumns = "SampleLogFunc"
-%                                                , lc_kws =  {
-%                                                            #"linewidth":0.75,
-%                                                            #"cmap":"viridis",
-%                                                            "cmap":"autumn",
-%                                                            #"alpha":0.5,
-%                                                            }
-%                                                , colorbar_kws =    {
-%                                                                    "extend":"neither",
-%                                                                    "orientation":"vertical",
-%                                                                    #"spacing":"uniform",
-%                                                                    }
-%                                                #, legend_kws = None
-%                                                )
-%
+            % add LinePlot
+
+            self.addprop("plot");
+            self.plot = struct();
+            self.plot.line = LinePlot( self.df );
+            self.plot.line.ccolumns = "SampleLogFunc";
+            self.plot.line.ycolumns = self.df.Properties.VariableNames(self.offset:end);
+            self.plot.line.gca_kws = { "xscale", "linear" };
+            self.plot.line.plot_kws = { "linewidth", 0.75 };
+            self.plot.line.legend_kws = {};
+
 %            # add ScatterPlot
 %
 %            self.plot.scatter = _pm.vis.ScatterPlot ( dataFrame = self.df

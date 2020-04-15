@@ -55,14 +55,14 @@ classdef Err_class < handle
 
             if self.outputUnit == 1
                 % notify the user on screen too
-                Decoration.write(1, 1, 0, 1, self.fullprefix + " - FATAL: Runtime error occurred.");
-                Decoration.write(1, 0, 0, 1, self.fullprefix + " - FATAL: For more information please see the report file.");
-                Decoration.write(1, 0, 2, 1, self.fullprefix + " - FATAL: Gracefully Exiting on image " + strtrim(imageChar) + ".");
+                Decoration.write(1, 1, 0, 1, self.fullprefix + "Runtime error occurred.");
+                Decoration.write(1, 0, 0, 1, self.fullprefix + "For more information please see the report file.");
+                Decoration.write(1, 0, 2, 1, self.fullprefix + "Gracefully Exiting on image " + strtrim(imageChar) + ".");
             else
-                Decoration.write(self.outputUnit, 1, 0, 1, self.fullprefix + " - Please Correct the error(s) and rerun the simulation.");
-                Decoration.write(self.outputUnit, 1, 0, 1, self.fullprefix + " - For further help, contact the ParaMonte authors via:");
-                Decoration.write(self.outputUnit, 0, 0, 1, self.fullprefix + " - cdslab.org/ParaMonte/");
-                Decoration.write(self.outputUnit, 1, 2, 1, self.fullprefix + " - Gracefully Exiting on image " + strtrim(imageChar) + ".");
+                Decoration.write(self.outputUnit, 1, 0, 1, self.fullprefix + "Please Correct the error(s) and rerun the simulation.");
+                Decoration.write(self.outputUnit, 1, 0, 1, self.fullprefix + "For further help, contact the ParaMonte authors via:");
+                Decoration.write(self.outputUnit, 0, 0, 1, self.fullprefix + "cdslab.org/ParaMonte/");
+                Decoration.write(self.outputUnit, 1, 2, 1, self.fullprefix + "Gracefully Exiting on image " + strtrim(imageChar) + ".");
             end
 
             error stop

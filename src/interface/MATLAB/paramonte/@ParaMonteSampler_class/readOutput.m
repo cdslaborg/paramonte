@@ -43,9 +43,10 @@ function outputList = readOutput(self,file,delimiter,fileType)
     outputList = cell(fileListLen,1);
     markovChainRequested = false;
     for ifile = fileListLen:-1:1
-        filePathModified = string( strrep(fileList{ifile},'\','\\') );
+        filePathModified = string( strrep(fileList(ifile),'\','\\') );
         if ~self.mpiEnabled
             self.Err.msg = "processing file: " + filePathModified;
+            self.Err.marginTop = 1;
             self.Err.marginBot = 0;
             self.Err.note();
         end
@@ -67,8 +68,7 @@ function outputList = readOutput(self,file,delimiter,fileType)
         if ~self.mpiEnabled
             self.Err.marginTop = 1;
             self.Err.marginBot = 1;
-            self.Err.msg    = "The processed " + fileType + " file(s) are now stored as  list in" + newline ...
-                            + "the new component """ + outputListFullName + """ of the " + self.methodName + " -instance object." + newline ...
+            self.Err.msg    = "The processed " + fileType + " file(s) are now stored in the newly-created component """ + outputListFullName + """ of the " + self.methodName + " object. " ...
                             + "For example, to access the contents of the first (or the only) " + fileType + " file, try:" + newline + newline ...
                             + "    " + outputListFullName + "{1}.df" + newline + newline ...
                             + "To access the plotting tools, try:" + newline + newline ...

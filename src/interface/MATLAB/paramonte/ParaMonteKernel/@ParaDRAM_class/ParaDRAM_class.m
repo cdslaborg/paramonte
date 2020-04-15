@@ -1,5 +1,5 @@
-classdef ParaDRAM_MATLAB < ParaMCMC_class
-%   This is the ParaDRAM_MATLAB class for generating instances of serial and parallel
+classdef ParaDRAM_class < ParaMCMC_class
+%   This is the ParaDRAMKernel class for generating instances of serial and parallel
 %   Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
 %   sampler of the ParaMonte library.
 %
@@ -227,7 +227,7 @@ classdef ParaDRAM_MATLAB < ParaMCMC_class
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = ParaDRAM_MATLAB()
+        function self = ParaDRAM_class()
 
             addpath(genpath(pwd));
 
