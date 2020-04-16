@@ -33,14 +33,14 @@ classdef Path_class < handle
     end
 
     properties
-        original    = []
-        modified    = []
-        dir         = []
-        name        = []
-        base        = []
-        ext         = []
-        slashOS     = []
-        Err         = Err_class()
+        original                = []
+        modified                = []
+        dir                     = []
+        name                    = []
+        base                    = []
+        ext                     = []
+        slashOS                 = []
+        Err                     = Err_class()
     end
 
 %***********************************************************************************************************************************
@@ -65,9 +65,9 @@ classdef Path_class < handle
             FUNCTION_NAME = "@queryPath()";
 
             if ~isempty(inputPath)
-                self.original = strtrim(inputPath);
+                self.original       = strtrim(inputPath);
             else
-                self.original = "";
+                self.original       = "";
             end
 
             if ~isempty(OS)
@@ -241,8 +241,8 @@ classdef Path_class < handle
             OS.queryOS();
 
             if OS.Err.occurred
-                Err     = OS.Err;
-                Err.msg = FUNCTION_NAME + ": Error occurred while modifying inputPath='" + outputPath + "'." + newline + Err.msg;
+                Err         = OS.Err;
+                Err.msg     = FUNCTION_NAME + ": Error occurred while modifying inputPath='" + outputPath + "'." + newline + Err.msg;
                 return
             end
 

@@ -21,15 +21,15 @@ classdef OS_class < handle
 
         function queryOS(self)
             
-            FUNCTION_NAME   = self.CLASS_NAME + "@queryOS()";
+            FUNCTION_NAME       = self.CLASS_NAME + "@queryOS()";
             
-            self.Err.occurred = false;
-            self.Err.msg    = "";
+            self.Err.occurred   = false;
+            self.Err.msg        = "";
 
             if ispc
                 self.name           = "WINDOWS";
                 self.isWindows      = true;
-                self.slash = "\";
+                self.slash          = '\';
             elseif ismac
                 self.name           = "MAC";
                 self.isWindows      = false;
@@ -42,8 +42,7 @@ classdef OS_class < handle
                 self.name           = "";
                 self.isWindows      = false;
                 self.Err.occurred   = false;
-                self.Err.msg        = FUNCTION_NAME + ": Unknown error occurred while attempting to read "...
-                                    + "the Operating System's name";
+                self.Err.msg        = FUNCTION_NAME + ": Unknown error occurred while attempting to read the Operating System's name";
             end
 
 

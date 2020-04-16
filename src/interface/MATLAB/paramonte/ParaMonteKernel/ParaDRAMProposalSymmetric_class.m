@@ -186,6 +186,9 @@ classdef ParaDRAMProposalSymmetric_class < handle
                     mc_methodBrand                  ...
                     mc_isNormal                     ...
                     mv_Err
+                    
+            mv_Err.prefix       = mc_methodBrand;
+            mv_Err.outputUnit   = mc_logFileUnit;
 
             domainCheckCounter = 0;
 
@@ -203,11 +206,12 @@ classdef ParaDRAMProposalSymmetric_class < handle
                     if any(StateNew <= mc_DomainLowerLimitVec) || any(StateNew >= mc_DomainUpperLimitVec)
                         domainCheckCounter = domainCheckCounter + 1;
                         if domainCheckCounter == mc_MaxNumDomainCheckToWarn
-                            mv_Err.warn(mc_MaxNumDomainCheckToWarnMsg, mc_methodBrand, [], mc_logFileUnit, [], []);
+                            mv_Err.msg      = mc_MaxNumDomainCheckToWarnMsg;
+                            mv_Err.warn();
                         end
                         if domainCheckCounter == mc_MaxNumDomainCheckToStop
-                            mv_Err.msg = mc_MaxNumDomainCheckToStopMsg;
-                            mv_Err.abort(mc_methodBrand, newline, mc_logFileUnit);
+                            mv_Err.msg      = mc_MaxNumDomainCheckToStopMsg;
+                            mv_Err.abort();
                         end
                         continue
                     end
@@ -224,13 +228,14 @@ classdef ParaDRAMProposalSymmetric_class < handle
                                             ) ;
 
                     if any(StateNew <= mc_DomainLowerLimitVec) || any(StateNew >= mc_DomainUpperLimitVec)
-                        domainCheckCounter = domainCheckCounter + 1;
+                        domainCheckCounter  = domainCheckCounter + 1;
                         if domainCheckCounter == mc_MaxNumDomainCheckToWarn
-                            mv_Err.warn(mc_MaxNumDomainCheckToWarnMsg, mc_methodBrand, [], mc_logFileUnit, [], []);
+                            mv_Err.msg      = mc_MaxNumDomainCheckToWarnMsg;
+                            mv_Err.warn();
                         end
                         if domainCheckCounter == mc_MaxNumDomainCheckToStop
-                            mv_Err.msg = mc_MaxNumDomainCheckToStopMsg;
-                            mv_Err.abort(mc_methodBrand, newline, mc_logFileUnit);
+                            mv_Err.msg      = mc_MaxNumDomainCheckToStopMsg;
+                            mv_Err.abort();
                         end
                         continue
                     end
@@ -251,7 +256,10 @@ classdef ParaDRAMProposalSymmetric_class < handle
                                                 )
 
             FUNCTION_NAME           = SUB_CLASS_NAME + "@doAutoTune()";
-
+            
+            mv_Err.prefix           = mc_methodBrand;
+            mv_Err.outputUnit       = mc_logFileUnit;
+            
             CovMatUpperOld          = comv_CholDiagLower(1:mc_ndim, 2:mc_ndim+1, 1);
             mv_logSqrtDetOld_save   = sum(log(comv_CholDiagLower(1:mc_ndim, 1, 1)));
 
@@ -274,7 +282,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
                             + "Such error is highly unusual, and requires an in depth investigation of the case. "      ...
                             + "Restarting the simulation might resolve the error."                                      ...
                             ;
-                mv_Err.abort(mc_methodBrand, newline, mc_logFileUnit);
+                mv_Err.abort();
                 return
             end
             hellingerDistSq = 1 - exp(0.5 * (mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum);
