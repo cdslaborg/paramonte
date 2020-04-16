@@ -1,4 +1,4 @@
-classdef LinePlot < dynamicprops 
+classdef LinePlot < Plot1D
 %   This is the LinePlot class for generating instances 
 %   of line figures based on matplotlib library's 
 %   line() and functions.
@@ -151,28 +151,26 @@ classdef LinePlot < dynamicprops
     %*******************************************************************************************************************************
 
     properties (Access = public)
-        rows = {};
-        xcolumns = {};
+
+        %rows = {};
+        %xcolumns = {};
         ycolumns = {};
         ccolumns = {};
-        colormap = {};
-        colorbar_kws = {};
-        gca_kws = [];
-        gcf_kws = {};
-        legend_kws = {};
-        currentFig = struct();
-        outputFile = [];
-        % scatter properties
+        %gca_kws = [];
+        %gcf_kws = {};
         scatter_kws = {};
-        % line properties
-        plot_kws = {};
+        %legend_kws = {};
         surface_kws = {};
+        colorbar_kws = {};
+        colormap = {};
+        %currentFig = struct();
+        %outputFile = [];
 
     end
 
     properties (Access = protected, Hidden)
-        dfref = [];
-        isdryrun = [];
+        %dfref = [];
+        %isdryrun = [];
     end
 
     %*******************************************************************************************************************************
@@ -185,37 +183,17 @@ classdef LinePlot < dynamicprops
 
         function self = LinePlot(dataFrame)
 
-            self.dfref      = dataFrame;
-            %self.target    = Target()
-            self.isdryrun = true;
-            self.plot();
-            self.isdryrun = false;
+            self@Plot1D(dataFrame);
+            %self.dfref      = dataFrame;
+            %%self.target    = Target()
+            %self.isdryrun = true;
+            %self.plot();
+            %self.isdryrun = false;
 
         end
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-
-        function exportFig(self,varargin)
-
-            set(0, 'CurrentFigure', self.currentFig.gcf);
-            if any(contains(string(varargin),"-transparent"))
-                transparencyRequested = true;
-                set(self.currentFig.gcf,'color','none');
-                set(gca,'color','none');
-            else
-                transparencyRequested = false;
-            end
-            export_fig(varargin{:});
-            if transparencyRequested
-                set(self.currentFig.gcf,'color','default');
-                set(gca,'color','default');
-            end
-
-        end
-
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %***********************************************************************************************************************
+        %***********************************************************************************************************************
 
         function plot(self,varargin)
         %   Generate a line plot from the selected columns of the object's dataframe.
@@ -233,26 +211,7 @@ classdef LinePlot < dynamicprops
             %%%% parse arguments
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            vararginLen = length(varargin);
-            for i = 1:2:vararginLen
-                propertyDoesNotExist = true;
-                selfProperties = properties(self);
-                selfPropertiesLen = length(selfProperties);
-                for ip = 1:selfPropertiesLen
-                    if strcmp(string(varargin{i}),string(selfProperties{ip}))
-                        propertyDoesNotExist = false;
-                        if i < vararginLen
-                            self.(selfProperties{ip}) = varargin{i+1};
-                        else
-                            error("The corresponding value for the property """ + string(selfProperties{ip}) + """ is missing as input argument.");
-                        end
-                        break;
-                    end
-                end
-                if propertyDoesNotExist
-                    error("The requested the property """ + string(varargin{i}) + """ does not exist.");
-                end
-            end
+            self.parseArgs(varargin{:})
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% set what to plot
@@ -357,9 +316,7 @@ classdef LinePlot < dynamicprops
 
             hold on; box on;
 
-            if lgEnabled
-                lglabels = [];
-            end
+            lglabels = [];
             if cEnabled
                 colormap(self.colormap);
             end
@@ -435,36 +392,7 @@ classdef LinePlot < dynamicprops
                 self.currentFig.colorbar = [];
             end
 
-            % add legend
-
-            if lgEnabled
-                if isa(self.legend_kws,"cell")
-                    if isempty(self.legend_kws)
-                        self.legend_kws = [ self.legend_kws , {lglabels} ];
-                    end
-                    [fontsize, keyFound] = getKeyVal("fontsize",self.legend_kws{:});
-                    if ~keyFound
-                        fontsize_kws = {"fontsize",self.currentFig.ylabel.FontSize};
-                        self.legend_kws = [ self.legend_kws , fontsize_kws ];
-                    end
-                    self.currentFig.legend = legend(self.legend_kws{:});
-                else
-                    error   ( "The input argument 'legend_kws' must be a cell array of string values." ...
-                            );
-                end
-            else
-                legend(self.currentFig.gca,'off');
-            end
-
-            if isa(self.gca_kws,"cell")
-                if ~isempty(self.gca_kws)
-                    set(gca, self.gca_kws{:})
-                end
-            end
-
-            if isa(self.outputFile,"string") || isa(self.outputFile,"char")
-                self.exportFig(self.outputFile,"-m2 -transparent");
-            end
+            self.doStuffPlot1D(lgEnabled,lglabels)
 
             hold off;
 

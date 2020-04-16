@@ -18,8 +18,11 @@ function [colnames, colindex] = getColNamesIndex( dfColumns, columns )
     end
 
     dfColumnsLen = length(dfColumns);
+    for j = dfColumnsLen:-1:1
+        dfColumnsString(j) = string(dfColumns{j});
+    end
     if allColumnsNeeded
-        colnames = string(dfColumns);
+        colnames = dfColumnsString;
         colindex = 1:1:length(colnames);
     else
         for i = columnsLen:-1:1
@@ -27,13 +30,15 @@ function [colnames, colindex] = getColNamesIndex( dfColumns, columns )
             if isa(columns(i),"string") || isa(columns(i),"char")
                 if isNumericString(columns(i))
                     colindex(i) = str2double(columns(i));
-                    colnames(i) = string(dfColumns{colindex(i)});
+                    colnames(i) = dfColumnsString(colindex(i));
                     errorOccurred = false;
                 else % is alphabetical string
-                    colnames(i) = columns(i);
+                    %colnames(i) = columns(i);
+                    colnameLower = columns(i);
                     for j = 1:dfColumnsLen
-                        if strcmp(colnames(i),dfColumns{j})
+                        if strcmpi(colnameLower,dfColumnsString(j))
                             errorOccurred = false;
+                            colnames(i) = dfColumnsString(j);
                             colindex(i) = j;
                             break;
                         end
@@ -45,6 +50,7 @@ function [colnames, colindex] = getColNamesIndex( dfColumns, columns )
                 colnames(i) = string(dfColumns{colindex(i)});
                 errorOccurred = false;
             end
+            if errorOccurred; break; end
         end
 
         if errorOccurred
@@ -52,7 +58,7 @@ function [colnames, colindex] = getColNamesIndex( dfColumns, columns )
             for i = 1:dfColumnsLen
                 dummy = dummy + " """ + string(dfColumns{i}) + """ ";
             end
-            error   ( "The " + string(i) + " input element of the ""columns"" variable is neither numeric, nor char or string:" + newline ...
+            error   ( "The " + string(i) + "th input element of the ""columns"" variable is neither numeric, nor char or string:" + newline ...
                         + "    columns = " + string(columns(i)) + newline ...
                         + "The input column names of the data table: " + newline ...
                         + dummy + newline ...

@@ -205,12 +205,7 @@ classdef OutputFileContents < dynamicprops
 
             self.addprop("plot");
             self.plot = struct();
-            self.plot.line = LinePlot( self.df );
-            self.plot.line.ccolumns = "SampleLogFunc";
-            self.plot.line.ycolumns = self.df.Properties.VariableNames(self.offset:end);
-            self.plot.line.gca_kws = { "xscale", "linear" };
-            self.plot.line.plot_kws = { "linewidth", 0.75 };
-            self.plot.line.legend_kws = {};
+            self.resetPlot("line","hard");
 
 %            # add ScatterPlot
 %
@@ -285,6 +280,67 @@ classdef OutputFileContents < dynamicprops
             end
 
         end % constructor
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        function resetPlot(self,varargin)
+            requestedPlotTypeList = [];
+            if nargin==1
+                requestedPlotTypeList = [requestedPlotTypeList, "all"];
+            else
+                plotTypes = {"line","linescatter","all"};
+                for requestedPlotTypeCell = varargin{1}
+                    if isa(requestedPlotTypeCell,"cell")
+                        requestedPlotType = string(requestedPlotTypeCell{1});
+                    else
+                        requestedPlotType = string(requestedPlotTypeCell);
+                    end
+                    plotTypeNotFound = true;
+                    for plotTypeCell = plotTypes
+                        plotType = string(plotTypeCell{1});
+                        if strcmpi(plotType,requestedPlotType)
+                            requestedPlotTypeList = [ requestedPlotTypeList , plotType ];
+                            plotTypeNotFound = false;
+                            break;
+                        end
+                    end
+                    if plotTypeNotFound
+                        error   ( newline ...
+                                + "The input plot-type argument, " + varargin{1} + ", to the resetPlot method" + newline ...
+                                + "did not match any plot type. Possible plot types include:" + newline ...
+                                + "line, linescatter." + newline ...
+                                );
+                    end
+                end
+            end
+
+            resetTypeIsHard = false;
+            if nargin==3
+                if strcmpi(varargin{2},"hard")
+                    resetTypeIsHard = true;
+                end
+            end
+
+            for requestedPlotTypeCell = requestedPlotTypeList
+                requestedPlotType = string(requestedPlotTypeCell);
+                if strcmpi(requestedPlotTypeList,"line")
+                    if resetTypeIsHard
+                        self.plot.line = LineScatterPlot( self.df, plotType );
+                    else
+                        self.plot.line.reset();
+                    end
+                    self.plot.line.ccolumns = "SampleLogFunc";
+                    self.plot.line.ycolumns = self.df.Properties.VariableNames(self.offset:end);
+                    self.plot.line.gca_kws = { "xscale", "linear" };
+                    self.plot.line.plot_kws = { "linewidth", 0.75 , 'Color', uint8([200 200 200]) };
+                    self.plot.line.surface_kws = []; %{"linewidth", 0.75};
+                    self.plot.line.scatter_kws = {};
+                    self.plot.line.legend_kws = {};
+                end
+            end
+
+        end
 
         %***************************************************************************************************************************
         %***************************************************************************************************************************

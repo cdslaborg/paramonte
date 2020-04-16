@@ -1,4 +1,4 @@
-classdef LinePlot < dynamicprops 
+classdef LineScatterPlot < Plot1D
 %   This is the LinePlot class for generating instances 
 %   of line figures based on matplotlib library's 
 %   line() and functions.
@@ -151,25 +151,47 @@ classdef LinePlot < dynamicprops
     %*******************************************************************************************************************************
 
     properties (Access = public)
-        rows = {};
-        xcolumns = {};
-        ycolumns = {};
-        ccolumns = {};
-        gca_kws = [];
-        gcf_kws = {};
-        plot_kws = {};
-        legend_kws = {};
-        surface_kws = {};
-        colorbar_kws = {};
-        colormap = {};
-        currentFig = struct();
-        outputFile = [];
+
+        ycolumns
+        ccolumns
+        plot_kws
+        surface_kws
+        scatter_kws
+        colorbar_kws
+        colormap
 
     end
 
     properties (Access = protected, Hidden)
-        dfref = [];
-        isdryrun = [];
+        %dfref = [];
+        %isdryrun = [];
+        plotType
+    end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+    methods (Hidden)
+
+        %***********************************************************************************************************************
+        %***********************************************************************************************************************
+
+        function reset(self)
+
+            reset@Plot1D(self);
+            self.ycolumns = {};
+            self.ccolumns = {};
+            self.plot_kws = [];
+            self.surface_kws = {};
+            self.scatter_kws = {};
+            self.colorbar_kws = {};
+            self.colormap = {};
+
+        end
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
     end
 
     %*******************************************************************************************************************************
@@ -180,9 +202,11 @@ classdef LinePlot < dynamicprops
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = LinePlot(dataFrame)
+        function self = LineScatterPlot(varargin) % expected input arguments: dataFrame, plotType
 
-            self.dfref      = dataFrame;
+            self@Plot1D(varargin{1});
+            self.plotType = varargin{2};
+            self.reset()
             %self.target    = Target()
             self.isdryrun = true;
             self.plot();
@@ -190,29 +214,8 @@ classdef LinePlot < dynamicprops
 
         end
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-
-        function exportFig(self,varargin)
-
-            set(0, 'CurrentFigure', self.currentFig.gcf);
-            if any(contains(string(varargin),"-transparent"))
-                transparencyRequested = true;
-                set(self.currentFig.gcf,'color','none');
-                set(gca,'color','none');
-            else
-                transparencyRequested = false;
-            end
-            export_fig(varargin{:});
-            if transparencyRequested
-                set(self.currentFig.gcf,'color','default');
-                set(gca,'color','default');
-            end
-
-        end
-
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %***********************************************************************************************************************
+        %***********************************************************************************************************************
 
         function plot(self,varargin)
         %   Generate a line plot from the selected columns of the object's dataframe.
@@ -230,44 +233,36 @@ classdef LinePlot < dynamicprops
             %%%% parse arguments
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            vararginLen = length(varargin);
-            for i = 1:2:vararginLen
-                propertyDoesNotExist = true;
-                selfProperties = properties(self);
-                selfPropertiesLen = length(selfProperties);
-                for ip = 1:selfPropertiesLen
-                    if strcmp(string(varargin{i}),string(selfProperties{ip}))
-                        propertyDoesNotExist = false;
-                        if i < vararginLen
-                            self.(selfProperties{ip}) = varargin{i+1};
-                        else
-                            error("The corresponding value for the property """ + string(selfProperties{ip}) + """ is missing as input argument.");
-                        end
-                        break;
-                    end
-                end
-                if propertyDoesNotExist
-                    error("The requested the property """ + string(varargin{i}) + """ does not exist.");
-                end
-            end
+            self.parseArgs(varargin{:})
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% set what to plot
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
             plotEnabled = isa(self.plot_kws,"cell");
             surfaceEnabled = isa(self.surface_kws,"cell");
+            scatterEnabled = isa(self.scatter_kws,"cell");
+            colorScatterEnabled = false;
+            %if scatterEnabled
+            %    if getKeyVal(self.scatter_kws)
+            %    key = string(self.scatter_kws)
+            %    if strcmpcolorScatterEnabled = 
+            %end
+
             cEnabled =  ( isa(self.colormap,"cell") || isa(self.colormap,"string") || isa(self.colormap,"char") ) && ...
                         ( isa(self.ccolumns,"cell") || isa(self.ccolumns,"string") || isa(self.ccolumns,"char") ) && ...
-                        isa(self.surface_kws,"cell");
-            lgEnabled = isa(self.legend_kws,"cell") && (~cEnabled);
+                        ( isa(self.surface_kws,"cell") || isa(self.scatter_kws,"cell") );
+            lgEnabled = isa(self.legend_kws,"cell") && ~cEnabled;
 
-            if ~any( strcmp( self.plot_kws , "linewidth" ) )
-                self.plot_kws(end+1:end+2) = {"linewidth",1};
+            if scatterEnabled
+                self.scatter_kws = addKeyVal("marker",".",self.scatter_kws{:});
             end
 
-            if cEnabled && isempty(self.colormap)
+            if plotEnabled
+                self.plot_kws = addKeyVal("linewidth",1,self.plot_kws{:});
+            end
+
+            if cEnabled && ~getVecLen(string(self.colormap))
                 self.colormap = "autumn";
             end
 
@@ -354,50 +349,70 @@ classdef LinePlot < dynamicprops
 
             hold on; box on;
 
-            if lgEnabled
-                lglabels = [];
-            end
+            lglabels = [];
             if cEnabled
                 colormap(self.colormap);
             end
 
-            for i = 1:maxLenColumns
+            if scatterEnabled || surfaceEnabled || plotEnabled
 
-                if xcolindexlen>1
-                    xdata = self.dfref{rowindex,xcolindex(i)};
-                end
-                if ycolindexlen>1
-                    ydata = self.dfref{rowindex,ycolindex(i)};
-                end
-                if ccolindexlen>1
-                    cdata = self.dfref{rowindex,ccolindex(i)};
-                end
+                for i = 1:maxLenColumns
 
-                if lgEnabled
-                    if xcolindexlen<2 && ycolindexlen>=1
-                        lglabels = [ lglabels , ycolnames(i) ];
-                    elseif xcolindexlen>1 && ycolindexlen<2
-                        lglabels = [ lglabels , xcolnames(i) ];
-                    else
-                        lglabels = [ lglabels , xcolnames(i)+"-"+ycolnames(i) ];
+                    if xcolindexlen>1
+                        xdata = self.dfref{rowindex,xcolindex(i)};
                     end
-                end
+                    if ycolindexlen>1
+                        ydata = self.dfref{rowindex,ycolindex(i)};
+                    end
+                    if ccolindexlen>1
+                        cdata = self.dfref{rowindex,ccolindex(i)};
+                    end
 
-                % add plot
+                    if lgEnabled
+                        if xcolindexlen<2 && ycolindexlen>=1
+                            lglabels = [ lglabels , ycolnames(i) ];
+                        elseif xcolindexlen>1 && ycolindexlen<2
+                            lglabels = [ lglabels , xcolnames(i) ];
+                        else
+                            lglabels = [ lglabels , xcolnames(i)+"-"+ycolnames(i) ];
+                        end
+                    end
 
-                if cEnabled
-                    self.currentFig.surface = color_line(xdata,ydata,cdata,self.surface_kws{:});
-                else
-                    self.currentFig.plot = plot ( xdata ...
-                                                , ydata ...
-                                                , self.plot_kws{:} ...
-                                                );
-                end
+                    % add plot
 
-            end % loop plot
+                    if plotEnabled
+                        self.currentFig.plot = plot ( xdata ...
+                                                    , ydata ...
+                                                    , self.plot_kws{:} ...
+                                                    );
+                    end
 
-            if surfaceEnabled || plotEnabled
+                    if surfaceEnabled
+                        self.currentFig.surface = color_line(xdata,ydata,cdata,self.surface_kws{:});
+                    end
+
+                    if scatterEnabled 
+                        if cEnabled
+                            self.currentFig.scatter = scatter   ( xdata ...
+                                                                , ydata ...
+                                                                , 5 ...
+                                                                , cdata ...
+                                                                , self.scatter_kws{:} ...
+                                                                );
+                        else
+                            %plot_kws = {};
+                            %if ~isa(self.plot_kws,"cell"); plot_kws = self.plot_kws;
+                            self.currentFig.plot = plot ( xdata ...
+                                                    , ydata ...
+                                                    , self.scatter_kws{:} ...
+                                                    );
+                        end
+                    end
+
+                end % loop plot
+
                 self.currentFig.gca = gca;
+
             end
 
             % add axis labels
@@ -416,7 +431,7 @@ classdef LinePlot < dynamicprops
 
             % add line colorbar
 
-            colorbarEnabled = cEnabled && isa(self.colorbar_kws,"cell") && ccolindexlen==1;
+            colorbarEnabled = cEnabled && isa(self.colorbar_kws,"cell"); %&& ccolindexlen==1;
             if colorbarEnabled
                 [fontsize, keyFound] = getKeyVal("fontsize",self.colorbar_kws{:});
                 if keyFound
@@ -432,36 +447,7 @@ classdef LinePlot < dynamicprops
                 self.currentFig.colorbar = [];
             end
 
-            % add legend
-
-            if lgEnabled
-                if isa(self.legend_kws,"cell")
-                    if isempty(self.legend_kws)
-                        self.legend_kws = [ self.legend_kws , {lglabels} ];
-                    end
-                    [fontsize, keyFound] = getKeyVal("fontsize",self.legend_kws{:});
-                    if ~keyFound
-                        fontsize_kws = {"fontsize",self.currentFig.ylabel.FontSize};
-                        self.legend_kws = [ self.legend_kws , fontsize_kws ];
-                    end
-                    self.currentFig.legend = legend(self.legend_kws{:});
-                else
-                    error   ( "The input argument 'legend_kws' must be a cell array of string values." ...
-                            );
-                end
-            else
-                legend(self.currentFig.gca,'off');
-            end
-
-            if isa(self.gca_kws,"cell")
-                if ~isempty(self.gca_kws)
-                    set(gca, self.gca_kws{:})
-                end
-            end
-
-            if isa(self.outputFile,"string") || isa(self.outputFile,"char")
-                self.exportFig(self.outputFile,"-m2 -transparent");
-            end
+            self.doStuffPlot1D(lgEnabled,lglabels)
 
             hold off;
 
