@@ -11,7 +11,7 @@ function runKernel  ( self          ...
                                                     % overhead cost: co_proposalFound, co_samplerUpdateOccurred,
                                                     % co_counterDRS, 0 means false, 1 means true
 
-    SumAccRateSinceStart = SumAccRateSinceStart_class();
+    SumAccRateSinceStart                        = SumAccRateSinceStart_class();
 
     acceptedRejectedDelayedUnusedRestartMode    = 0;                                            % used to compute more accurate timings in the restart mode
     self.Stats.avgTimePerFunCalInSec            = 0.0;
@@ -48,6 +48,9 @@ function runKernel  ( self          ...
     lastStateWeight                         = -intmax;
 
     self.Timer.tic;
+    
+    self.Err.prefix     = self.brand;
+    self.Err.outputUnit = self.LogFile.unit;
 
     if self.isFreshRun  % blockDryRunSetup
 
@@ -75,7 +78,7 @@ function runKernel  ( self          ...
 
         if self.Err.occurred
             self.Err.msg    = FUNCTION_NAME + self.Err.msg;
-            self.Err.abort(self.brand, newline, self.LogFile.unit);
+            self.Err.abort();
         end
 
         if self.Chain.Count.compact <= CHAIN_RESTART_OFFSET
@@ -93,16 +96,16 @@ function runKernel  ( self          ...
             self.Err    = copyFile(self.ChainFile.Path.original, RFN.path, self.OS.isWindows);
 
             if self.Err.occurred
-                self.Err.msg = FUNCTION_NAME + self.Err.msg;
-                self.Err.abort( self.brand, newline, self.LogFile.unit );
+                self.Err.msg    = FUNCTION_NAME + self.Err.msg;
+                self.Err.abort();
             end
 
             % reopen the chain file to resume the simulation
 
             [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, "w");
             if self.Err.msg
-                self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + self.ChainFile.Path.original + "'.";
-                self.Err.abort(self.brand, Constants.NLC, self.RestartFile.unit);
+                self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + self.ChainFile.Path.original + "'.";
+                self.Err.abort();
             end
 
             % rewrite the chain file
@@ -119,8 +122,8 @@ function runKernel  ( self          ...
 
             self.Err = removeFile(RFN.path, self.OS.isWindows);
             if self.Err.occurred
-                self.Err.msg = FUNCTION_NAME + self.Err.msg;
-                self.Err.abort( self.brand, newline, self.LogFile.unit );
+                self.Err.msg    = FUNCTION_NAME + self.Err.msg;
+                self.Err.abort();
             end
 
         end

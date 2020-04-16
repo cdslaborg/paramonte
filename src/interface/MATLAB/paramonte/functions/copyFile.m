@@ -26,9 +26,9 @@ function Err = copyFile(pathOld, pathNew, isWindows)
     counter = 0;
     while true
         counter = counter + 1;
-        Err = SystemInfo_class.executeCmd(cmd);
+        Err     = SystemInfo_class.executeCmd(cmd);
         if Err.occurred
-            Err.msg = FUNCTION_NAME + ": Error occurred while executing command " + cmd + "'.\n";
+            Err.msg     = FUNCTION_NAME + ": Error occurred while executing command " + cmd + "'.\n";
             return
         end
         % ensure file is copied

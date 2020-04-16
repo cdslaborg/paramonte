@@ -77,10 +77,10 @@ function runSampler ( self          ...
                                     , self.spec.delayedRejectionScaleFactorVec          ...
                                     ) ;
 
+    self.Err.resetEnabled   = false;
     self.Err.prefix         = self.brand;
     self.Err.newLine        = newline;
     self.Err.outputUnit     = self.LogFile.unit;
-    self.Err.resetEnabled   = false;
 
     if self.Err.occurred
         self.Err.msg        = FUNCTION_NAME + self.Err.msg;
@@ -91,7 +91,7 @@ function runSampler ( self          ...
     % Now depending on the requested parallelism type, determine the process master/slave type and open output files
     %***********************************************************************************************************************
 
-    self.Image.isMaster = false;
+    self.Image.isMaster     = false;
     if self.SpecBase.parallelizationModel.isSinglChain
         if self.Image.isFirst, self.Image.isMaster = true; end
     elseif self.SpecBase.parallelizationModel.isMultiChain
@@ -99,7 +99,7 @@ function runSampler ( self          ...
     else
         self.Err.msg        = FUNCTION_NAME + ": Error occurred. Unknown parallelism requested via the input variable parallelizationModel='"...
                             + self.SpecBase.parallelizationModel.val + "'.";
-        self.Err.abort(self.brand, "\n", self.LogFile.unit);
+        self.Err.abort();
     end
     self.Image.isNotMaster  = ~self.Image.isMaster;
 
@@ -167,9 +167,9 @@ function runSampler ( self          ...
     %***********************************************************************************************************************
 
     if self.SpecDRAM.proposalModel.isNormal || self.SpecDRAM.proposalModel.isUniform
-        self.Proposal = ParaDRAMProposalSymmetric_class(ndim, self);
+        self.Proposal   = ParaDRAMProposalSymmetric_class(ndim, self);
     else
-        self.Err.msg = FUNCTION_NAME + ": Internal error occurred. Unsupported proposal distribution for " + self.name + "."
+        self.Err.msg    = FUNCTION_NAME + ": Internal error occurred. Unsupported proposal distribution for " + self.name + "."
         self.Err.abort();
     end
 
@@ -194,6 +194,11 @@ function runSampler ( self          ...
     % start ParaDRAM post-processing
     %***********************************************************************************************************************
 
+    self.Err.reset();
+    self.Err.resetEnabled   = false;
+    self.Err.prefix         = self.brand;
+    
+    
     if self.Image.isMaster  % blockMasterPostProcessing
 
         logFileColWidthStr = num2str(max(self.SpecBase.outputRealPrecision.val, self.SpecBase.variableNameList.MaxLen.val) + 9);
@@ -287,11 +292,10 @@ function runSampler ( self          ...
         % precision = "%0." + self.SpecBase.outputRealPrecision.val + "E";
 
         if self.Image.isFirst
-            self.Err.note   ( "Computing the Markov chain's statistical properties..."  ...
-                            , self.brand                                                ...
-                            , newline                                                   ...
-                            , 1, 3, []                                                  ...
-                            ) ;
+            self.Err.msg        = "Computing the Markov chain's statistical properties...";
+            self.Err.outputUnit = 1;
+            self.Err.marginTop  = 3;
+            self.Err.note() ;
         end
 
         self.Decor.writeDecoratedText   ( " " + newline + "Markov chain's statistical properties" + newline ...
@@ -306,12 +310,12 @@ function runSampler ( self          ...
         self.Stats.Chain.Mean   = zeros(ndim);
         self.Stats.Chain.CovMat = zeros(ndim,ndim);
         [self.Stats.Chain.CovMat, self.Stats.Chain.Mean]    ...
-                                    = getWeiSamCovUppMeanTrans  ( self.Chain.Count.compact - self.Stats.BurninLoc.compact + 1                   ...
-                                                                , self.Stats.Chain.count                                                        ...
-                                                                , ndim                                                                          ...
-                                                                , self.Chain.State(1:ndim,self.Stats.BurninLoc.compact:self.Chain.Count.compact)...
-                                                                , self.Chain.Weight(self.Stats.BurninLoc.compact:self.Chain.Count.compact)      ...
-                                                                ) ;
+                                = getWeiSamCovUppMeanTrans  ( self.Chain.Count.compact - self.Stats.BurninLoc.compact + 1                   ...
+                                                            , self.Stats.Chain.count                                                        ...
+                                                            , ndim                                                                          ...
+                                                            , self.Chain.State(1:ndim,self.Stats.BurninLoc.compact:self.Chain.Count.compact)...
+                                                            , self.Chain.Weight(self.Stats.BurninLoc.compact:self.Chain.Count.compact)      ...
+                                                            ) ;
 
         % transpose the covariance and correlation matrices
 
@@ -386,10 +390,10 @@ function runSampler ( self          ...
         %***********************************************************************************************************************
 
         % report refined sample statistics, and generate output refined sample if requested.
-
+        
         if self.Image.isFirst
-            self.Err.note   ( "Computing the final decorrelated sample size..." ...
-                            , self.brand, newline, 1, [], []) ;
+            self.Err.msg    = "Computing the final decorrelated sample size...";
+            self.Err.note();
         end
 
        [self.Err, self.Chain]   = self.RefinedChain.get ( self.Chain                                ...
@@ -398,10 +402,13 @@ function runSampler ( self          ...
                                                         , self.SpecMCMC.sampleRefinementCount.val   ...
                                                         , self.SpecMCMC.sampleRefinementMethod.val  ...
                                                         ) ;
-
+        self.Err.resetEnabled   = false;
+        self.Err.prefix         = self.brand;
+        self.Err.outputUnit     = self.LogFile.unit;
+        
         if self.Err.occurred
-            self.Err.msg = FUNCTION_NAME + self.Err.msg;
-            self.Err.abort( self.brand, newline, self.LogFile.unit );
+            self.Err.msg        = FUNCTION_NAME + self.Err.msg;
+            self.Err.abort();
         end
 
         % compute the maximum integrated autocorrelation times for each variable
@@ -438,9 +445,8 @@ function runSampler ( self          ...
         % generate output refined sample if requested
 
         if self.SpecBase.sampleSize.val == 0    % blockSampleFileGeneration
-
-            self.Err.note   ( "Skipping decorrelated sample generation and output file, as requested by user..."    ...
-                             , self.brand, newline, self.LogFile.unit, [], [] );
+            self.Err.msg    = "Skipping decorrelated sample generation and output file, as requested by user...";
+            self.Err.note();
 
         else % blockSampleFileGeneration
 
@@ -449,23 +455,24 @@ function runSampler ( self          ...
             %*******************************************************************************************************************
 
             % report to the report-file(s)
-
-            self.Err.note   ( "Generating the output " + self.SampleFile.suffix + " file:" + newline + strrep(self.SampleFile.Path.original, '\', '\\') ...
-                            , self.brand, newline, self.LogFile.unit, [], [] );
+            
+            self.Err.msg    = "Generating the output " + self.SampleFile.suffix + " file:" + newline + strrep(self.SampleFile.Path.original, '\', '\\');
+            self.Err.note();
 
             if self.Image.isFirst
 
                 % print the message for the generating the output sample file on the first image
-
-                self.Err.note   ( "Generating the output " + self.SampleFile.suffix + " file:"  ...
-                                , self.brand, newline, 1, [], 0 );
-
-                self.Err.note   ( strrep(self.SampleFile.Path.original, '\', '\\')  ...
-                                , self.brand, newline, 1, 0, 0 );
-
-                % print the message for the generating the output sample file on the rest of the images in order
-
-                self.Decor.write(1,0,1,[]," ");
+                
+                self.Err.outputUnit = 1;
+                
+                self.Err.msg        = "Generating the output " + self.SampleFile.suffix + " file:";
+                self.Err.marginBot  = 0;
+                self.Err.note();
+                
+                self.Err.msg        = strrep(self.SampleFile.Path.original, '\', '\\');
+                self.Err.marginTop  = 0;
+                self.Err.marginBot  = 0;
+                self.Err.note();
 
             end
 
@@ -476,39 +483,34 @@ function runSampler ( self          ...
             if self.SpecBase.sampleSize.val ~= -1
 
                 if self.SpecBase.sampleSize.val < 0, self.SpecBase.sampleSize.val = abs(self.SpecBase.sampleSize.val) * self.RefinedChain.Count(self.RefinedChain.numRefinement+1).verbose; end
-
+                
+                self.Err.outputUnit = self.LogFile.unit;
                 if self.SpecBase.sampleSize.val < self.RefinedChain.Count(self.RefinedChain.numRefinement+1).verbose
-                    self.Err.warn   ( "The user-requested sample size (" + num2str(self.SpecBase.sampleSize.val) + ") "         ...
+                    self.Err.msg    = "The user-requested sample size (" + num2str(self.SpecBase.sampleSize.val) + ") "         ...
                                     + "is smaller than the optimal i.i.d. sample size "                                         ...
                                     + "(" + num2str(self.RefinedChain.Count(self.RefinedChain.numRefinement+1).verbose) + "). " ...
                                     + "The output sample contains i.i.d. samples, however, the sample-size "                    ...
                                     + "could have been larger if it had been set to the optimal size. "                         ...
                                     + "To get the optimal size in the future runs, set sampleSize = -1, or drop "               ...
                                     + "it from the input list."                                                                 ...
-                                    , self.brand                                                                                ...
-                                    , newline                                                                                   ...
-                                    , self.LogFile.unit                                                                         ...
-                                    ) ;
+                                    ;
+                    self.Err.warn() ;
                 elseif self.SpecBase.sampleSize.val > self.RefinedChain.Count(self.RefinedChain.numRefinement+1).verbose
-                    self.Err.warn   ( "The user-requested sample size (" + num2str(self.SpecBase.sampleSize.val) + ") "         ...
+                    self.Err.msg    = "The user-requested sample size (" + num2str(self.SpecBase.sampleSize.val) + ") "         ...
                                     + "is larger than the optimal i.i.d. sample size "                                          ...
                                     + "(" + num2str(self.RefinedChain.Count(self.RefinedChain.numRefinement+1).verbose) + "). " ...
                                     + "The resulting sample likely contains duplicates and is not independently "               ...
                                     + "and identically distributed (i.i.d.)." + newline + "To get the optimal "                 ...
                                     + "size in the future runs, set sampleSize = -1, or drop "                                  ...
                                     + "it from the input list."                                                                 ...
-                                    , self.brand                                                                                ...
-                                    , newline                                                                                   ...
-                                    , self.LogFile.unit                                                                         ...
-                                    ) ;
+                                    ;
+                    self.Err.warn() ;
                 else
-                    self.Err.warn   ( "How lucky that could be! "                                                               ...
+                    self.Err.msg    = "How lucky that could be! "                                                               ...
                                     + "The user-requested sample size (" + num2str(self.SpecBase.sampleSize.val) + ") "         ...
                                     + "is equal to the optimal i.i.d. sample size determined by " + self.name + "."             ...
-                                    , self.brand                                                                                ...
-                                    , newline                                                                                   ...
-                                    , self.LogFile.unit                                                                         ...
-                                    ) ;
+                                    ;
+                    self.Err.warn() ;
                 end
 
                 % regenerate the refined sample, this time with the user-requested sample size.
@@ -520,8 +522,8 @@ function runSampler ( self          ...
                                                                 , self.SpecMCMC.sampleRefinementMethod.val  ...
                                                                 ) ;
                 if self.Err.occurred
-                    self.Err.msg = FUNCTION_NAME + self.Err.msg;
-                    self.Err.abort  ( self.brand, newline, self.LogFile.unit );
+                    self.Err.msg    = FUNCTION_NAME + self.Err.msg;
+                    self.Err.abort();
                 end
 
             end
@@ -530,8 +532,8 @@ function runSampler ( self          ...
 
             [self.SampleFile.unit, self.Err.msg] = fopen(self.SampleFile.Path.original, "w");
             if self.Err.msg
-                self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + " " + self.SampleFile.suffix + " file='" + self.SampleFile.Path.original + "'.";
-                self.Err.abort( self.brand, newline, self.LogFile.unit );
+                self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + " " + self.SampleFile.suffix + " file='" + self.SampleFile.Path.original + "'.";
+                self.Err.abort();
             end
 
             % write to the output sample file
@@ -544,11 +546,10 @@ function runSampler ( self          ...
             %***********************************************************************************************************************
 
             if self.Image.isFirst
-                self.Err.note   ( "Computing the output sample's statistical properties..." ...
-                                , self.brand                                                ...
-                                , newline                                                   ...
-                                , 1, 1, []                                                  ...
-                                ) ;
+                self.Err.msg        = "Computing the output sample's statistical properties...";
+                self.Err.marginTop  = 2;
+                self.Err.outputUnit = 1;
+                self.Err.note();
             end
 
             self.Decor.writeDecoratedText   ( " " + newline + "Output sample's statistical properties" + newline    ...
@@ -645,11 +646,16 @@ function runSampler ( self          ...
         self.Decor.write( self.LogFile.unit, 3, 0, 0, "" );
 
         % Mission accomplished.
-
-        self.Err.note( "Mission Accomplished.", self.brand, newline, self.LogFile.unit, [], [] );
+        
+        self.Err.msg            = "Mission Accomplished.";
+        self.Err.outputUnit     = self.LogFile.unit;
+        self.Err.note();
+        
         if 1 ~= self.LogFile.unit && self.Image.isFirst
             self.Decor.write( 1, 1, 1, [], []);
-            self.Err.note( "Mission Accomplished." , self.brand, newline, 1, [], [] );
+            self.Err.msg        = "Mission Accomplished.";
+            self.Err.outputUnit = 1;
+            self.Err.note();
             self.Decor.write( 1, 1, 1, [], []);
         end
 

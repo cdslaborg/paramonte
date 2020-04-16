@@ -80,7 +80,7 @@ classdef SpecDRAM_ScaleFactor_class < handle
             % First convert the scaleFactor string to real value:
 
             String.value = strrep(self.str, " ", "");   % remove the white spaces
-            String.value = strtrim(String.value);
+            String.value = lower(strtrim(String.value));
 
             if length(String.value) == 0
                 Err.occurred    = true;
@@ -96,24 +96,25 @@ classdef SpecDRAM_ScaleFactor_class < handle
 
             % Now split the string by "*" to real coefficient and character (gelman) parts for further evaluations
 
-            String.Parts = split(String.value, "*");
-            self.val = 1;
+            String.Parts    = split(String.value, "*");
+            self.val        = 1;
             for i = 1 : length(String.Parts)
                 if lower(String.Parts(i)) == "gelman"
                     self.val = self.val * self.defVal;
                 else
-                    self.val = self.val * String.Parts(i);
-                    if Err.stat ~= 0
+                    number   = str2double(String.Parts(i));
+                    if isnan(number)
                         Err.occurred    = true;
                         Err.msg         = Err.msg                                                                                                           ...
                                         + self.CLASS_NAME + FUNCTION_NAME + ": Error occurred while reading real number. "                                  ...
                                         + "The input string value for the variable scaleFactor (" + self.str + ") does not appear to follow "               ...
-                                        + "the standard syntax rules of " + methodName + " for this variable. '" + String.Parts(i).record                   ...
+                                        + "the standard syntax rules of " + methodName + " for this variable. '" + String.Parts(i)                          ...
                                         + "' cannot be parsed into any meaningful token. Please correct the input value, or drop it from the input list, "  ...
                                         + "in which case, " + methodName + " will automatically assign an appropriate value to it." + newline + newline     ...
                                         ;
                         return
                     end
+                    self.val = self.val * number;
                 end
             end
 
