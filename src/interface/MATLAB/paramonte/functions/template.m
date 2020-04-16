@@ -1,3 +1,3 @@
-function out = templete(are1, arg2)
+function out = template(are1, arg2)
 
 end

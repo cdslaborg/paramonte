@@ -189,12 +189,12 @@ classdef ChainFileContents_class < handle
                     self.Count.resized = chainSizeDefault;
                 end
                 if self.Count.resized < chainSizeDefault
-                    Err.occurred = true;
-                    Err.msg     = FUNCTION_NAME + ": input resizedChainSize cannot be smaller than the input chainSize:" + newline  ...
-                                + "    resizedChainSize = " + num2str(self.Count.resized) + newline                                 ...
-                                + "           chainSize = " + num2str(chainSizeDefault) + newline                                   ...
-                                + "It appears that the user has manipulated the output chain file."                                 ...
-                                ;
+                    Err.occurred    = true;
+                    Err.msg         = FUNCTION_NAME + ": input resizedChainSize cannot be smaller than the input chainSize:" + newline  ...
+                                    + "    resizedChainSize = " + num2str(self.Count.resized) + newline                                 ...
+                                    + "           chainSize = " + num2str(chainSizeDefault) + newline                                   ...
+                                    + "It appears that the user has manipulated the output chain file."                                 ...
+                                    ;
                     return
                 end
 
@@ -474,7 +474,7 @@ classdef ChainFileContents_class < handle
                 else
                     self.Err.occurred   = true;
                     self.Err.msg        = FUNCTION_NAME + "Internal error occurred. For formatted chain files, chainFileFormat must be given.";
-                    self.Err.abort([], [], []);
+                    self.Err.abort();
                 end
             end
 

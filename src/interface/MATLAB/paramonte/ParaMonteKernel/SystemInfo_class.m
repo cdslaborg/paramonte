@@ -40,7 +40,7 @@ classdef SystemInfo_class < handle
         function [info, Err, count] = getSystemInfo(isWindowsOS)
 
             FUNCTION_NAME = SystemInfo_class.CLASS_NAME + "@getSystemInfo()";
-            Err = Err_class();
+            Err     = Err_class();
             Err.msg = "";
 
             % generate a brand new, non-existing filename
@@ -61,7 +61,7 @@ classdef SystemInfo_class < handle
                 OS = OS_class();
                 OS.queryOS();
                 if OS.Err.occurred
-                    Err = OS.Err;
+                    Err     = OS.Err;
                     Err.msg = FUNCTION_NAME + Err.msg;
                     return
                 end
@@ -93,14 +93,14 @@ classdef SystemInfo_class < handle
             Err = executeCmd("del " + filename);
             if (Err.occurred == 0) && (Err.msg == ("Could Not Find " + pwd + '\' + filename + newline))
                 Err.msg =   FUNCTION_NAME + ": Error occurred while attempting to delete file " + filename;
-                Err.abort([], [], 1);
+                Err.abort();
                 return
             end
 
             Err = executeCmd("del " + stdErr);
             if (Err.occurred == 0) && (Err.msg == ("Could Not Find " + pwd + '\' + stdErr + newline))
                 Err.msg =   FUNCTION_NAME + ": Error occurred while attempting to delete file " + stdErr;
-                Err.abort([], [], 1);
+                Err.abort();
                 return
             end
 

@@ -1,4 +1,4 @@
-classdef templete < handle
+classdef template < handle
 
     properties (Constant)
     end
