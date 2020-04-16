@@ -19,12 +19,12 @@ pmpd.spec.chainSize = 10000;
 pmpd.spec.adaptiveUpdateCount = 0;
 
 %pmpd.runSampler(2,@getLogFunc);
-pmpd.readChain("D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_140420_161148_147");
+%pmpd.readChain("D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_140420_161148_147");
 
-%pmpd.spec.chainSize                             = 10000;
-%pmpd.spec.outputFileName                        = "./out/temp/";                % Works
-%pmpd.runSampler(4,@getLogFunc);
-%pmpd.readChain("ParaDRAM_run_")
+pmpd.spec.chainSize                             = 10000;
+pmpd.spec.outputFileName                        = "./out/temp/";                % Works
+pmpd.runSampler(4,@getLogFunc);
+pmpd.readChain("ParaDRAM_run_")
 
 return
 % pmpd.spec.chainSize                             = 10000;
