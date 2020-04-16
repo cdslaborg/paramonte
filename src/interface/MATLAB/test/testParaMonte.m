@@ -10,16 +10,16 @@ filePath = mfilename('fullpath');
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
-pm = paramonte("matlab"); % 
+pm = paramonte("matlab");
+%pm = paramonte(); % "matlab"
 pmpd = pm.ParaDRAM();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 %pmpd.inputFile = './paramonte.in';
-% pmpd.spec.chainSize                             = 10000;
-% pmpd.spec.outputFileName                        = "./out/temp/";                % Works
-% pmpd.runSampler(4,@getLogFunc);
-% %pmpd.readChain("ParaDRAM_run_")
-% return
-
+pmpd.spec.chainSize                             = 10000;
+pmpd.spec.outputFileName                        = "./out/temp/";                % Works
+pmpd.runSampler(4,@getLogFunc);
+%pmpd.readChain("ParaDRAM_run_")
+return
 % pmpd.spec.chainSize                             = 10000;
 % pmpd.spec.adaptiveUpdateCount                   = 0;
 %pmpd.runSampler(2,@getLogFunc)
@@ -55,7 +55,7 @@ pmpd.spec.randomStartPointDomainLowerLimitVec   = [0.5, 1.0];                   
 pmpd.spec.randomStartPointDomainUpperLimitVec   = [1.0, 1.5];                   % Works
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaDRAM variables...
-pmpd.spec.scaleFactor                           = "1.2 * gelman";                        % Works
+pmpd.spec.scaleFactor                           = "1.2 * gelman";               % Works
 pmpd.spec.proposalModel                         = "normal";                     % Works
 pmpd.spec.proposalStartCovMat                   = [0.5, 0.2; 0.1, 0.3];         % Works
 pmpd.spec.proposalStartCorMat                   = [0.4, 0.1; 0.2, 0.3];         % Works
