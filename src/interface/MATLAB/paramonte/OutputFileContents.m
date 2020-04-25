@@ -59,6 +59,7 @@ classdef OutputFileContents < dynamicprops
 
     properties(Hidden)
         offset = [];
+        Err
     end
 
     %*******************************************************************************************************************************
@@ -82,12 +83,13 @@ classdef OutputFileContents < dynamicprops
             %%%% data
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+            self.Err = Err;
             self.file = file;
             self.delimiter = delimiter;
 
-            Err.marginTop = 0;
-            Err.marginBot = 0;
-            Err.msg = "reading file contents... "; Err.note();
+            self.Err.marginTop = 0;
+            self.Err.marginBot = 0;
+            self.Err.msg = "reading file contents... "; self.Err.note();
             timer = Timer_class();
             timer.tic()
 
@@ -97,11 +99,11 @@ classdef OutputFileContents < dynamicprops
             if isfield(d,"colheaders")
                 colheadersLen = length(d.colheaders);
             else
-                Err.marginTop = 1;
-                Err.marginBot = 0;
-                Err.msg = "The structure of the file """ + self.file + """ does not match a " + methodName + " " + fileType + "file." + newline ...
+                self.Err.marginTop = 1;
+                self.Err.marginBot = 0;
+                self.Err.msg = "The structure of the file """ + self.file + """ does not match a " + methodName + " " + fileType + "file." + newline ...
                         + "Verify the contents of this file before attempting to read this file.";
-                Err.abort();
+                self.Err.abort();
             end
             for icol = 1:colheadersLen
                 if strcmp(d.colheaders{icol},"SampleLogFunc")
@@ -109,9 +111,9 @@ classdef OutputFileContents < dynamicprops
                 end
             end
             self.offset = icol + 1; % index of the first variable
-            self.addprop("ndim");
+            prop="ndim"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             self.ndim   = colheadersLen - self.offset + 1;
-            self.addprop("count");
+            prop="count"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             self.count  = length(d.data(:,1));
 
             if markovChainRequested
@@ -129,23 +131,24 @@ classdef OutputFileContents < dynamicprops
                 end
             end
 
-            self.addprop("df");
+            prop="df"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             self.df = array2table(d.data,'VariableNames',d.colheaders);
 
             updateUser([]);
 
             if mpiEnabled
-                Err.marginTop = 0;
-                Err.marginBot = 1;
-                Err.msg = "ndim = " + string(self.ndim) + ", count = " + string(self.count);
-                Err.note();
+                self.Err.marginTop = 0;
+                self.Err.marginBot = 1;
+                self.Err.msg = "ndim = " + string(self.ndim) + ", count = " + string(self.count);
+                self.Err.note();
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% statistics
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            self.addprop("stats");
+            prop="stats"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+
             self.stats = struct();
 
             % add chain cormat
@@ -203,9 +206,19 @@ classdef OutputFileContents < dynamicprops
 %
             % add LinePlot
 
-            self.addprop("plot");
+            prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             self.plot = struct();
             self.resetPlot("line","hard");
+            self.resetPlot("line3","hard");
+            self.resetPlot("scatter","hard");
+            self.resetPlot("scatter3","hard");
+            self.resetPlot("lineScatter","hard");
+            self.resetPlot("lineScatter3","hard");
+            %self.resetPlot("hist","hard");
+            %self.resetPlot("hist2","hard");
+            %self.resetPlot("histfit","hard");
+            %self.resetPlot("grid","hard");
+            self.plot.reset = @self.resetPlot;
 
 %            # add ScatterPlot
 %
@@ -273,23 +286,30 @@ classdef OutputFileContents < dynamicprops
             function updateUser(msg)
                 if isempty(msg)
                     timer.toc();
-                    Err.msg = "done in " + sprintf("%.6f",string(timer.delta)) + " seconds."; Err.note();
+                    self.Err.msg = "done in " + sprintf("%.6f",string(timer.delta)) + " seconds."; self.Err.note();
                 else
-                    Err.msg = msg; Err.note();
+                    self.Err.msg = msg; self.Err.note();
                 end
             end
 
         end % constructor
+
+    end % methods (Access = public)
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+    methods (Access = public, Hidden)
 
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
         function resetPlot(self,varargin)
             requestedPlotTypeList = [];
+            plotTypeList = ["line","scatter","lineScatter","line3","scatter3","lineScatter3","hist","hist2","histfit","grid"];
             if nargin==1
-                requestedPlotTypeList = [requestedPlotTypeList, "all"];
+                requestedPlotTypeList = plotTypeList;
             else
-                plotTypes = {"line","linescatter","all"};
                 for requestedPlotTypeCell = varargin{1}
                     if isa(requestedPlotTypeCell,"cell")
                         requestedPlotType = string(requestedPlotTypeCell{1});
@@ -297,9 +317,9 @@ classdef OutputFileContents < dynamicprops
                         requestedPlotType = string(requestedPlotTypeCell);
                     end
                     plotTypeNotFound = true;
-                    for plotTypeCell = plotTypes
+                    for plotTypeCell = plotTypeList
                         plotType = string(plotTypeCell{1});
-                        if strcmpi(plotType,requestedPlotType)
+                        if strcmp(plotType,requestedPlotType)
                             requestedPlotTypeList = [ requestedPlotTypeList , plotType ];
                             plotTypeNotFound = false;
                             break;
@@ -309,35 +329,142 @@ classdef OutputFileContents < dynamicprops
                         error   ( newline ...
                                 + "The input plot-type argument, " + varargin{1} + ", to the resetPlot method" + newline ...
                                 + "did not match any plot type. Possible plot types include:" + newline ...
-                                + "line, linescatter." + newline ...
+                                + "line, lineScatter." + newline ...
                                 );
                     end
                 end
             end
 
             resetTypeIsHard = false;
-            if nargin==3
-                if strcmpi(varargin{2},"hard")
-                    resetTypeIsHard = true;
-                end
+            if nargin==3 && strcmpi(varargin{2},"hard")
+                resetTypeIsHard = true;
+                msgPrefix = "creating the ";
+                msgSuffix = " plot object from scrach...";
+            else
+                msgPrefix = "reseting the properties of the ";
+                msgSuffix = " plot...";
             end
 
+            self.Err.marginTop = 0;
+            self.Err.marginBot = 0;
+
             for requestedPlotTypeCell = requestedPlotTypeList
+
+                self.Err.msg = msgPrefix + requestedPlotType + msgSuffix;
+                self.Err.note();
+
                 requestedPlotType = string(requestedPlotTypeCell);
-                if strcmpi(requestedPlotTypeList,"line")
-                    if resetTypeIsHard
-                        self.plot.line = LineScatterPlot( self.df, plotType );
-                    else
-                        self.plot.line.reset();
-                    end
-                    self.plot.line.ccolumns = "SampleLogFunc";
-                    self.plot.line.ycolumns = self.df.Properties.VariableNames(self.offset:end);
-                    self.plot.line.gca_kws = { "xscale", "linear" };
-                    self.plot.line.plot_kws = { "linewidth", 0.75 , 'Color', uint8([200 200 200]) };
-                    self.plot.line.surface_kws = []; %{"linewidth", 0.75};
-                    self.plot.line.scatter_kws = {};
-                    self.plot.line.legend_kws = {};
+                requestedPlotTypeLower = lower(requestedPlotType);
+                plotName = "";
+
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                is3d = false;
+                if contains(requestedPlotTypeLower,"3")
+                    is3d = true;
                 end
+
+                % line
+
+                if strcmp(requestedPlotTypeLower,"line") || strcmp(requestedPlotTypeLower,"line3")
+                    plotName = "line"; if is3d; plotName = plotName + "3"; end
+                    if resetTypeIsHard
+                        self.plot.(plotName) = LineScatterPlot( self.df, plotName );
+                    else
+                        self.plot.(plotName).reset();
+                    end
+                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset:end);
+                    self.plot.(plotName).ccolumns = "SampleLogFunc";
+                    self.plot.(plotName).gca_kws.xscale = "linear";
+                    self.plot.(plotName).plot_kws.linewidth = 1;
+                    self.plot.(plotName).surface_kws.linewidth = 1;
+                end
+
+                % scatter / scatter3
+
+                if strcmp(requestedPlotTypeLower,"scatter") || strcmp(requestedPlotTypeLower,"scatter3")
+                    plotName = "scatter"; if is3d; plotName = plotName + "3"; end
+                    if resetTypeIsHard
+                        self.plot.(plotName) = LineScatterPlot( self.df, plotName );
+                    else
+                        self.plot.(plotName).reset();
+                    end
+                    self.plot.(plotName).ccolumns = "SampleLogFunc";
+                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset:end);
+                    self.plot.(plotName).gca_kws.xscale = "linear";
+                    self.plot.(plotName).scatter_kws.size = 10;
+                end
+
+                % lineScatter / lineScatter3
+
+                if strcmp(requestedPlotTypeLower,"linescatter") || strcmp(requestedPlotTypeLower,"linescatter3")
+                    plotName = "lineScatter"; if is3d; plotName = plotName + "3"; end
+                    if resetTypeIsHard
+                        self.plot.(plotName) = LineScatterPlot( self.df, plotName );
+                    else
+                        self.plot.(plotName).reset();
+                    end
+                    self.plot.(plotName).surface_kws.enabled = false;
+                    self.plot.(plotName).ccolumns = "SampleLogFunc";
+                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset:end);
+                    self.plot.(plotName).gca_kws.xscale = "linear";
+                    if is3d
+                        self.plot.(plotName).plot_kws.color = [200 200 200 75] / 255;
+                    else
+                        self.plot.(plotName).plot_kws.linewidth = 1;
+                        self.plot.(plotName).plot_kws.color = uint8([200 200 200 100]);
+                        self.plot.(plotName).scatter_kws.size = 20;
+                    end
+                end
+
+                % 3d
+
+                if is3d
+                    self.plot.(plotName).xcolumns = self.df.Properties.VariableNames(self.offset);
+                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset+1);
+                    self.plot.(plotName).zcolumns = "SampleLogFunc";
+                end
+
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                % hist / hist2 / histfit
+
+                isHist = strcmp(requestedPlotTypeLower,"hist");
+                isHist2 = strcmp(requestedPlotTypeLower,"hist2");
+                isHistfit = strcmp(requestedPlotTypeLower,"histfit");
+                if isHist || isHist2 || isHistfit
+                    if resetTypeIsHard
+                        self.plot.(requestedPlotTypeLower) = HistPlot( self.df, requestedPlotTypeLower );
+                    else
+                        self.plot.(requestedPlotTypeLower).reset();
+                    end
+                    if isHist
+                        self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset:end);
+                    else
+                        self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset);
+                        if isHist2
+                            self.plot.(requestedPlotTypeLower).ycolumns = self.df.Properties.VariableNames(self.offset+1);
+                        end
+                    end
+                end
+
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                % grid
+
+                isGrid = strcmp(requestedPlotTypeLower,"grid");
+                if isGrid
+                    %self.plot.(requestedPlotTypeLower).columns = string(self.df.Properties.VariableNames(self.offset:end));
+                    if resetTypeIsHard
+                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset:self.offset+2)); %end) ); % columns
+                    else
+                        self.plot.(requestedPlotTypeLower).reset();
+                    end
+                    self.plot.(requestedPlotTypeLower).ccolumn = string(self.df.Properties.VariableNames(self.offset-1));
+                end
+
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
             end
 
         end

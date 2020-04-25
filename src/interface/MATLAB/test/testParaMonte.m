@@ -10,28 +10,28 @@ filePath = mfilename('fullpath');
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
-pm = paramonte("matlab");
-%pm = paramonte(); % "matlab"
+%pm = paramonte("matlab");
+pm = paramonte(); % "matlab"
 pmpd = pm.ParaDRAM();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
 %pmpd.inputFile = './paramonte.in';
 pmpd.spec.chainSize = 10000;
 pmpd.spec.adaptiveUpdateCount = 0;
 
 %pmpd.runSampler(2,@getLogFunc);
-%pmpd.readChain("D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_140420_161148_147");
+%pmpd.readChain("D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_180420_213248_768");
+
+%pmpd.spec.chainSize                             = 10000;
+%pmpd.spec.outputFileName                        = ["./out/temp/"];                % Works
+%pmpd.runSampler(4,@getLogFunc);
+%pmpd.readChain("ParaDRAM_run_")
 
 pmpd.spec.chainSize                             = 10000;
-pmpd.spec.outputFileName                        = "./out/temp/";                % Works
-pmpd.runSampler(4,@getLogFunc);
-pmpd.readChain("ParaDRAM_run_")
-
+pmpd.spec.adaptiveUpdateCount                   = 0;
+%pmpd.runSampler(20,@getLogFunc)
+pmpd.readChain("ParaDRAM_run_180420_213248_768"); %"ParaDRAM_run_180420_151344_607";%"D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_160420_023054_530");
 return
-% pmpd.spec.chainSize                             = 10000;
-% pmpd.spec.adaptiveUpdateCount                   = 0;
-%pmpd.runSampler(2,@getLogFunc)
-%pmpd.readChain("D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_140420_161148_147")
-%return
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMonte variables...
 % pmpd.spec.sampleSize                            = 1000;                         % Works

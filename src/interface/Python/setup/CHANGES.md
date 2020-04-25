@@ -1,7 +1,7 @@
 # ParaMonte Python release notes
 
 This project follows [Semantic Versioning](https://semver.org/). 
-To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
+To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases) or [the ParaMonte page on the Python Package Index](https://pypi.org/project/paramonte/).  
 
 ## **Version 1.x.x**  
 

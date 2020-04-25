@@ -18,6 +18,7 @@ function runSampler(self,ndim,getLogFunc)
 %       None
 
     self.objectName = inputname(1);
+    self.ndim = ndim;
 
     self.Err.marginTop = 0;
     self.Err.marginBot = 1;
@@ -151,7 +152,7 @@ function runSampler(self,ndim,getLogFunc)
         self.Err.abort();
     end
 
-    expression = string(libname + "(ndim,inputFile,~isdeployed())");
+    expression = string(libname + "(ndim,inputFile,isdeployed())");
     eval(expression);
 
     if ~self.mpiEnabled

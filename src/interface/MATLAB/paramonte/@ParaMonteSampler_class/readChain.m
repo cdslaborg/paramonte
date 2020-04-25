@@ -1,4 +1,4 @@
-function chainList = readChain(self,varargin)
+function [chainList] = readChain(self,varargin)
 %   Return a list of the contents of a set of ParaDRAM output
 %   chain files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName
@@ -106,10 +106,17 @@ function chainList = readChain(self,varargin)
         self.Err.abort();
     end
 
-    if isempty(renabled)
-        self.readOutput(file,delimiter,"chain");
+    %if isempty(renabled)
+    if nargout==0
+        prop="chainList"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+        self.chainList = self.readOutput(file,delimiter,"chain");
+    elseif nargout==1
+        chainList = self.readOutput(file,delimiter,"chain");
     else
-        outputList = self.readOutput(file,delimiter,"chain");
+        self.Err.msg    = "The method, " + self.objectName + "." + scriptName + "(file,delimiter,renabled)" + newline ...
+                        + "optionally outputs one variable (chainList) or nothing. If the latter is chosen by the user, " + newline ...
+                        + "then the output chainList will be instead added as a component of the " + self.object + " object.";
+        self.Err.abort();
     end
 
 end

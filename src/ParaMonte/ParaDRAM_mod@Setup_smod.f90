@@ -493,28 +493,28 @@ contains
                 if (PD%SpecBase%ParallelizationModel%isMultiChain) then
                     call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
                 else
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNKNOWN" )
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNDEFINED" )
                 end if
 
                 call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency:" )
                 if (PD%SpecBase%ParallelizationModel%isMultiChain) then
                     call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
                 else
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNKNOWN" )
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNDEFINED" )
                 end if
 
                 call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
                 if (PD%SpecBase%ParallelizationModel%isMultiChain) then
                     call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
                 else
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNKNOWN" )
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNDEFINED" )
                 end if
 
                 call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
                 if (PD%SpecBase%ParallelizationModel%isMultiChain) then
                     call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
                 else
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNKNOWN" )
+                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNDEFINED" )
                 end if
 
 #if defined CAF_ENABLED || defined MPI_ENABLED

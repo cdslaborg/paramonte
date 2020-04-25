@@ -4,6 +4,7 @@ classdef SpecVerification
     %*******************************************************************************************************************************
 
     properties (Access = public)
+        ndim = [];
         delim = ",";
         objectName = "";
     end
@@ -13,7 +14,7 @@ classdef SpecVerification
 
     methods(Access = public)
 
-        function verifiedSpecString = verifySpec(self,variableValue,variableType)
+        function verifiedSpecString = verifySpec(self,variableValue,variableType,maxVariableLength)
 
             % verify string value of the input variable does not contain both single and double quotations.
 
@@ -38,72 +39,102 @@ classdef SpecVerification
                 typeMustBeLogical = true;
                 possibleTypes = "logical";
             else
-                error("Internal Error: unrecognized variableType: " + string(variableType) );
+                error(newline + "Internal Error: unrecognized variableType: " + string(variableType) + newline + newline );
             end
 
-            objectNameCorrected = self.objectName;
+            objectNameCorrected = self.objectName + ".spec." + variableName;
             verifiedSpecString = variableName + "=";
             variableValueLen = length(variableValue);
 
-            for i = 1:variableValueLen
+            if variableValueLen > maxVariableLength
 
-                if variableValueLen>1; objectNameCorrected = self.objectName + "(" + string(i) + ")"; end;
-
-                if isa(variableValue(i),"cell")
-                    value = variableValue{i};
-                else
-                    value = variableValue(i);
+                variableValueList = "";
+                for i = 1:variableValueLen
+                    variableValueList = variableValueList + string(variableValue(i));
+                    if i<variableValueLen; variableValueList = variableValueList + " "; end
                 end
+                error   ( newline ...
+                        + "The length of the value of input specification, " + objectNameCorrected + ", cannot be larger than " + string(maxVariableLength) + "." + newline ...
+                        + "You have specified:" + newline + newline ...
+                        + "    " + objectNameCorrected + " = """ + string(variableValueList) + """" + newline ...
+                        );
 
-                typeIsWrong = false;
+            else
 
-                if typeMustBeReal
+                for i = 1:variableValueLen
 
-                    if isa(value,"numeric")
-                        verifiedSpecString = verifiedSpecString + value + self.delim;
+                    if variableValueLen>1; objectNameCorrected = self.objectName + "(" + string(i) + ")"; end;
+
+                    if isa(variableValue(i),"cell")
+                        value = variableValue{i};
                     else
-                        typeIsWrong = true;
+                        value = variableValue(i);
                     end
 
-                elseif typeMustBeString
+                    typeIsWrong = false;
 
-                    if isa(value,"string") || isa(value,"char")
-                        enclosedString = encloseString( string(value) );
-                        if isempty(enclosedString)
-                            error   ( "The input specification, " + objectNameCorrected + ", cannot contain both single-quote and double-quote characters. " ...
-                                    + "Use only one type of quotation marks in your input string. " + objectNameCorrected + " = " ...
-                                    + string(value)  ...
-                                    );
+                    if typeMustBeReal
+
+                        if isa(value,"numeric")
+                            verifiedSpecString = verifiedSpecString + value + self.delim;
                         else
-                            verifiedSpecString = verifiedSpecString + enclosedString + self.delim;
+                            typeIsWrong = true;
                         end
-                    else
-                        typeIsWrong = true;
+
+                    elseif typeMustBeString
+
+                        if isa(value,"string") || isa(value,"char")
+                            enclosedString = encloseString( string(value) );
+                            if isempty(enclosedString)
+                                error   ( newline ...
+                                        + "The input specification, " + objectNameCorrected + ", cannot contain both single-quote and double-quote characters. " ...
+                                        + "Use only one type of quotation marks in your input string. " + objectNameCorrected + " = " ...
+                                        + string(value)  ...
+                                        + newline+ newline ...
+                                        );
+                            else
+                                verifiedSpecString = verifiedSpecString + enclosedString + self.delim;
+                            end
+                        else
+                            typeIsWrong = true;
+                        end
+
+                    elseif typeMustBeInteger
+
+                        if isa(value,"numeric")
+                            verifiedSpecString = verifiedSpecString + int32(value) + self.delim;
+                        else
+                            typeIsWrong = true;
+                        end
+
+                    elseif typeMustBeLogical
+
+                        if isa(value,"logical")
+                            verifiedSpecString = verifiedSpecString + string(value) + self.delim;
+                        elseif isa(value,"numeric")
+                            if value==0
+                                verifiedSpecString = verifiedSpecString + ".false." + self.delim;
+                            elseif value==1
+                                verifiedSpecString = verifiedSpecString + ".true." + self.delim;
+                            else
+                                typeIsWrong = true;
+                            end
+                        else
+                            typeIsWrong = true;
+                        end
+
                     end
 
-                elseif typeMustBeInteger
-
-                    if isa(value,"numeric")
-                        verifiedSpecString = verifiedSpecString + int32(value) + self.delim;
-                    else
-                        typeIsWrong = true;
+                    if typeIsWrong
+                        error   ( newline ...
+                                + "The input specification, " + objectNameCorrected + ", must be of type " + possibleTypes + ". You have entered:" + newline  + newline ...
+                                + "    " + objectNameCorrected + " = " + string(value) + newline ...
+                                );
                     end
 
-                elseif typeMustBeLogical
+                end % for loop
 
-                    if isa(value,"logical")
-                        verifiedSpecString = verifiedSpecString + string(value) + self.delim;
-                    else
-                        typeIsWrong = true;
-                    end
-
-                end
-
-                if typeIsWrong
-                    error("The input specification, " + objectNameCorrected + ", must be of type " + possibleTypes + ".");
-                end
-
-            end % for loop
+            end % if-block
 
         end % function
 

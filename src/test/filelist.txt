@@ -23,5 +23,5 @@
 !  Test_BandSpectrum_mod.f90
 !  Test_Batse_mod.f90
 !  Test_Statistics_mod.f90
-  Test_ParaMonte_mod.f90
-  main.f90
+!  Test_ParaMonte_mod.f90
+!  main.f90

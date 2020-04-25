@@ -8,9 +8,9 @@ function namelist = getInputFile(self)
         %%%% begin namelist generation from arguments
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        SpecBase = SpecBaseVerify(self.objectName);
-        SpecMCMC = SpecMCMCVerify(self.objectName);
-        SpecDRAM = SpecDRAMVerify(self.objectName);
+        SpecBase = SpecBaseVerify(self.objectName, self.ndim);
+        SpecMCMC = SpecMCMCVerify(self.objectName, self.ndim);
+        SpecDRAM = SpecDRAMVerify(self.objectName, self.ndim);
         namelist = "";
 
         % set up outputFileName
@@ -18,11 +18,12 @@ function namelist = getInputFile(self)
         if isempty(self.spec.outputFileName)
             self.spec.outputFileName = fullfile( string(pwd) , self.genOutputFileName() );
         else
-            self.spec.outputFileName = convertStringsToChars(SpecBase.outputFileName(self.spec.outputFileName));
-            if endsWith(self.spec.outputFileName,'\') || endsWith(self.spec.outputFileName,"/")
-                self.spec.outputFileName = fullfile( string(GetFullPath(self.spec.outputFileName,'lean')) , self.genOutputFileName() );
+            if length(string(self.spec.outputFileName))==1
+                if (isa(self.spec.outputFileName,"char") || isa(self.spec.outputFileName,"string")) && (endsWith(self.spec.outputFileName,'\') || endsWith(self.spec.outputFileName,'/'))
+                    self.spec.outputFileName = fullfile( string(GetFullPath(convertStringsToChars(self.spec.outputFileName),'lean')) , self.genOutputFileName() );
+                end
             end
-            self.spec.outputFileName = string(outputFileName);
+            self.spec.outputFileName = string(self.spec.outputFileName);
         end
 
         % ParaMonte variables

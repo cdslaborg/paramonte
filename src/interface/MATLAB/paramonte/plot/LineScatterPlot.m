@@ -1,4 +1,4 @@
-classdef LineScatterPlot < Plot1D
+classdef LineScatterPlot < BasePlot
 %   This is the LinePlot class for generating instances 
 %   of line figures based on matplotlib library's 
 %   line() and functions.
@@ -152,20 +152,20 @@ classdef LineScatterPlot < Plot1D
 
     properties (Access = public)
 
-        ycolumns
         ccolumns
-        plot_kws
-        surface_kws
-        scatter_kws
         colorbar_kws
         colormap
+        target
 
     end
 
     properties (Access = protected, Hidden)
         %dfref = [];
         %isdryrun = [];
+        is3d
         plotType
+        isLinePlot = false;
+        isScatterPlot = false;
     end
 
     %*******************************************************************************************************************************
@@ -178,14 +178,49 @@ classdef LineScatterPlot < Plot1D
 
         function reset(self)
 
-            reset@Plot1D(self);
+            reset@BasePlot(self);
+            prop="xcolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            prop="ycolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            self.xcolumns = {};
             self.ycolumns = {};
             self.ccolumns = {};
-            self.plot_kws = [];
-            self.surface_kws = {};
-            self.scatter_kws = {};
-            self.colorbar_kws = {};
             self.colormap = {};
+
+            if self.isLinePlot
+
+                self.plot_kws = struct();
+                self.plot_kws.enabled = true;
+                self.plot_kws.linewidth = {};
+                self.plot_kws.singleOptions = {};
+                self.plot_kws.color = {};
+
+                self.surface_kws = struct();
+                self.surface_kws.enabled = true;
+                self.surface_kws.facecolor = "none";
+                self.surface_kws.edgecolor = "flat";
+                self.surface_kws.edgealpha = 0.5;
+                self.surface_kws.linestyle = "-";
+                self.surface_kws.marker = "none";
+
+            end
+
+            if self.isScatterPlot
+                self.scatter_kws = struct();
+                self.scatter_kws.marker = [];
+                self.scatter_kws.singleOptions = {};
+                self.scatter_kws.size = [];
+                self.scatter_kws.enabled = true;
+            end
+
+            self.colorbar_kws = struct();
+            self.colorbar_kws.enabled = true;
+            self.colorbar_kws.fontsize = [];
+
+            self.isdryrun = true;
+            self.plot();
+            self.isdryrun = false;
+
+            self.target = Target();
 
         end
 
@@ -204,14 +239,24 @@ classdef LineScatterPlot < Plot1D
 
         function self = LineScatterPlot(varargin) % expected input arguments: dataFrame, plotType
 
-            self@Plot1D(varargin{1});
-            self.plotType = varargin{2};
+            self = self@BasePlot(varargin{1});
+            self.plotType = lower(string(varargin{2}));
+            if contains(self.plotType,"line")
+                self.isLinePlot = true;
+                prop="plot_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="surface_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            end
+            if contains(self.plotType,"scatter")
+                self.isScatterPlot = true;
+                prop="scatter_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            end
+            if contains(self.plotType,"3")
+                prop="zcolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                self.is3d = true;
+            else
+                self.is3d = false;
+            end
             self.reset()
-            %self.target    = Target()
-            self.isdryrun = true;
-            self.plot();
-            self.isdryrun = false;
-
         end
 
         %***********************************************************************************************************************
@@ -239,34 +284,43 @@ classdef LineScatterPlot < Plot1D
             %%%% set what to plot
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            plotEnabled = isa(self.plot_kws,"cell");
-            surfaceEnabled = isa(self.surface_kws,"cell");
-            scatterEnabled = isa(self.scatter_kws,"cell");
-            colorScatterEnabled = false;
-            %if scatterEnabled
+            %if self.scatter_kws.enabled
             %    if getKeyVal(self.scatter_kws)
             %    key = string(self.scatter_kws)
-            %    if strcmpcolorScatterEnabled = 
+            %    if strcmpcolorself.scatter_kws.enabled = 
             %end
 
-            cEnabled =  ( isa(self.colormap,"cell") || isa(self.colormap,"string") || isa(self.colormap,"char") ) && ...
-                        ( isa(self.ccolumns,"cell") || isa(self.ccolumns,"string") || isa(self.ccolumns,"char") ) && ...
-                        ( isa(self.surface_kws,"cell") || isa(self.scatter_kws,"cell") );
-            lgEnabled = isa(self.legend_kws,"cell") && ~cEnabled;
+            cEnabled =  ( isa(self.colormap,"string") || isa(self.colormap,"cell") || isa(self.colormap,"char") ) && ...
+                        ( isa(self.ccolumns,"string") || isa(self.ccolumns,"cell") || isa(self.ccolumns,"char") ) && ...
+                        ( ( self.isLinePlot && self.surface_kws.enabled ) || ( self.isScatterPlot && self.scatter_kws.enabled ) );
+            lgEnabled = self.legend_kws.enabled && ~cEnabled;
 
-            if scatterEnabled
-                self.scatter_kws = addKeyVal("marker",".",self.scatter_kws{:});
+            %if any(strcmp(properties(self),"scatter_kws")) && self.scatter_kws.enabled
+            if self.isScatterPlot && self.scatter_kws.enabled
+                key = "marker"; val = ".";
+                if isfield(self.scatter_kws,key) && isempty(self.scatter_kws.(key))
+                    self.scatter_kws.(key) = val;
+                end
+                key = "size"; val = 10;
+                if isfield(self.scatter_kws,key) && isempty(self.scatter_kws.(key))
+                    self.scatter_kws.(key) = val;
+                end
             end
 
-            if plotEnabled
-                self.plot_kws = addKeyVal("linewidth",1,self.plot_kws{:});
+            if self.isLinePlot && self.plot_kws.enabled
+                key = "linewidth"; val = 1;
+                if isfield(self.plot_kws,key) && isempty(self.plot_kws.(key))
+                    self.plot_kws.(key) = val;
+                end
             end
 
-            if cEnabled && ~getVecLen(string(self.colormap))
-                self.colormap = "autumn";
+            if cEnabled && ~getVecLen(self.colormap)
+                if self.is3d
+                    self.colormap = "winter";
+                else
+                    self.colormap = "autumn";
+                end
             end
-
-            figEnabled = isa(self.gcf_kws,"cell");
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
@@ -274,10 +328,12 @@ classdef LineScatterPlot < Plot1D
 
             % generate figure and axes if needed
 
-            if figEnabled
-                self.currentFig.gcf = figure(self.gcf_kws{:});
+            if self.gcf_kws.enabled
+                gcf_kws_cell = convertStruct2Cell(self.gcf_kws,{"enabled","singleOptions"});
+                if isfield(self.gcf_kws,"singleOptions"); gcf_kws_cell = { gcf_kws_cell{:} , self.gcf_kws.singleOptions{:} }; end
+                self.currentFig.gcf = figure( gcf_kws_cell{:} );
             else
-                set(0, 'CurrentFigure', gcf);
+                set(0, "CurrentFigure", gcf);
                 self.currentFig.gcf = gcf;
             end
 
@@ -302,7 +358,15 @@ classdef LineScatterPlot < Plot1D
 
             [ycolnames, ycolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ycolumns);
 
-            % set line plot color data
+            if self.is3d && getVecLen(self.zcolumns)
+                [zcolnames, zcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.zcolumns);
+            else
+                zcolindex = [];
+                zcolnames = "Count";
+                zdata = rowindex;
+            end
+
+            % set color data
 
             if cEnabled
                 if getVecLen(self.ccolumns)
@@ -322,16 +386,19 @@ classdef LineScatterPlot < Plot1D
 
             xcolindexlen = length(xcolindex);
             ycolindexlen = length(ycolindex);
+            zcolindexlen = length(zcolindex);
             ccolindexlen = length(ccolindex);
             maxLenColumns = max (   [ xcolindexlen ...
                                     , ycolindexlen ...
+                                    , zcolindexlen ...
                                     , ccolindexlen ...
                                     ] ...
                                 );
 
-            if xcolindexlen~=maxLenColumns && xcolindexlen>1; error("length of xcolumns must be either 1 or equal to the lengths of ycolumns or ccolumns."); end
-            if ycolindexlen~=maxLenColumns && ycolindexlen>1; error("length of ycolumns must be either 1 or equal to the lengths of xcolumns or ccolumns."); end
-            if ccolindexlen~=maxLenColumns && ccolindexlen>1; error("length of ccolumns must be either 1 or equal to the lengths of xcolumns or ycolumns."); end
+            if xcolindexlen~=maxLenColumns && xcolindexlen>1; error("length of xcolumns must be either 1 or equal to the maximum of the lengths of ycolumns, zcolumns, ccolumns."); end
+            if ycolindexlen~=maxLenColumns && ycolindexlen>1; error("length of ycolumns must be either 1 or equal to the maximum of the lengths of xcolumns, zcolumns, ccolumns."); end
+            if zcolindexlen~=maxLenColumns && zcolindexlen>1; error("length of zcolumns must be either 1 or equal to the maximum of the lengths of xcolumns, ycolumns, ccolumns."); end
+            if ccolindexlen~=maxLenColumns && ccolindexlen>1; error("length of ccolumns must be either 1 or equal to the maximum of the lengths of xcolumns, ycolumns, zcolumns."); end
 
             % assign data in case of single column assignments
 
@@ -341,20 +408,43 @@ classdef LineScatterPlot < Plot1D
             if ycolindexlen==1
                 ydata = self.dfref{rowindex,ycolindex};
             end
+            if zcolindexlen==1
+                zdata = self.dfref{rowindex,zcolindex};
+            end
             if ccolindexlen==1
                 cdata = self.dfref{rowindex,ccolindex};
             end
 
-            % add line plot
+            %%%%%%%%%%%%%%%%%%%%%%%
+            % get keyword arguments
+            %%%%%%%%%%%%%%%%%%%%%%%
 
-            hold on; box on;
+            if self.isLinePlot
+                plot_kws_cell = convertStruct2Cell(self.plot_kws,{"enabled","singleOptions"});
+            end
+            if self.isScatterPlot
+                scatter_kws_cell = convertStruct2Cell(self.scatter_kws,{"enabled","singleOptions","color","size"});
+            end
+            if self.isLinePlot
+                surface_kws_cell = convertStruct2Cell(self.surface_kws,{"enabled","singleOptions","color","size"});
+            end
+
+            %%%%%%%%%%%%%%%
+            % add line plot
+            %%%%%%%%%%%%%%%
+
+            box on; grid on;
 
             lglabels = [];
             if cEnabled
                 colormap(self.colormap);
             end
 
-            if scatterEnabled || surfaceEnabled || plotEnabled
+            if (self.isScatterPlot && self.scatter_kws.enabled) || (self.isLinePlot && (self.surface_kws.enabled || self.plot_kws.enabled))
+
+                if ~self.is3d
+                    zdata = zeros(length(rowindex(:)),1);
+                end
 
                 for i = 1:maxLenColumns
 
@@ -364,11 +454,14 @@ classdef LineScatterPlot < Plot1D
                     if ycolindexlen>1
                         ydata = self.dfref{rowindex,ycolindex(i)};
                     end
+                    if zcolindexlen>1
+                        zdata = self.dfref{rowindex,zcolindex(i)};
+                    end
                     if ccolindexlen>1
                         cdata = self.dfref{rowindex,ccolindex(i)};
                     end
 
-                    if lgEnabled
+                    if lgEnabled && ~self.is3d
                         if xcolindexlen<2 && ycolindexlen>=1
                             lglabels = [ lglabels , ycolnames(i) ];
                         elseif xcolindexlen>1 && ycolindexlen<2
@@ -380,33 +473,72 @@ classdef LineScatterPlot < Plot1D
 
                     % add plot
 
-                    if plotEnabled
-                        self.currentFig.plot = plot ( xdata ...
-                                                    , ydata ...
-                                                    , self.plot_kws{:} ...
-                                                    );
-                    end
-
-                    if surfaceEnabled
-                        self.currentFig.surface = color_line(xdata,ydata,cdata,self.surface_kws{:});
-                    end
-
-                    if scatterEnabled 
-                        if cEnabled
-                            self.currentFig.scatter = scatter   ( xdata ...
-                                                                , ydata ...
-                                                                , 5 ...
-                                                                , cdata ...
-                                                                , self.scatter_kws{:} ...
-                                                                );
-                        else
-                            %plot_kws = {};
-                            %if ~isa(self.plot_kws,"cell"); plot_kws = self.plot_kws;
-                            self.currentFig.plot = plot ( xdata ...
-                                                    , ydata ...
-                                                    , self.scatter_kws{:} ...
-                                                    );
+                    if self.isLinePlot
+                        if self.plot_kws.enabled
+                            if self.is3d
+                                if self.surface_kws.enabled
+                                    self.currentFig.surface = surface   ( "XData",[xdata(:) xdata(:)] ...
+                                                                        , "YData",[ydata(:) ydata(:)] ...
+                                                                        , "ZData",[zdata(:) zdata(:)] ...
+                                                                        , "CData",[cdata(:) cdata(:)] ...
+                                                                        , surface_kws_cell{:} ...
+                                                                        );
+                                    view(3);
+                                    hold on;
+                                else
+                                    self.currentFig.plot3 = plot3   ( xdata ...
+                                                                    , ydata ...
+                                                                    , zdata ...
+                                                                    , plot_kws_cell{:} ...
+                                                                    );
+                                end
+                            else
+                                self.currentFig.plot = plot ( xdata ...
+                                                            , ydata ...
+                                                            , plot_kws_cell{:} ...
+                                                            );
+                            end
+                            hold on;
                         end
+                    end
+
+                    if self.isScatterPlot && self.scatter_kws.enabled
+                        if cEnabled
+                            if self.is3d
+                                self.currentFig.scatter3 = scatter3 ( xdata ...
+                                                                    , ydata ...
+                                                                    , zdata ...
+                                                                    , self.scatter_kws.size ...
+                                                                    , cdata ...
+                                                                    , scatter_kws_cell{:} ...
+                                                                    );
+                            else
+                                self.currentFig.scatter = scatter   ( xdata ...
+                                                                    , ydata ...
+                                                                    , self.scatter_kws.size ...
+                                                                    , cdata ...
+                                                                    , scatter_kws_cell{:} ...
+                                                                    );
+                            end
+                        else
+                            if self.is3d
+                                %plot_kws = {};
+                                %if ~isa(self.plot_kws,"cell"); plot_kws = self.plot_kws;
+                                self.currentFig.plot = plot3( xdata ...
+                                                            , ydata ...
+                                                            , zdata ...
+                                                            , scatter_kws_cell{:} ...
+                                                            );
+                            else
+                                %plot_kws = {};
+                                %if ~isa(self.plot_kws,"cell"); plot_kws = self.plot_kws;
+                                self.currentFig.plot = plot ( xdata ...
+                                                            , ydata ...
+                                                            , scatter_kws_cell{:} ...
+                                                            );
+                            end
+                        end
+                        hold on;
                     end
 
                 end % loop plot
@@ -429,27 +561,33 @@ classdef LineScatterPlot < Plot1D
                 self.currentFig.ylabel = ylabel(ycolnames(1));
             end
 
+            if self.is3d
+            if zcolindexlen>1
+                self.currentFig.zlabel = zlabel("Variable Values");
+            else
+                self.currentFig.zlabel = zlabel(zcolnames(1));
+            end
+            end
+
             % add line colorbar
 
-            colorbarEnabled = cEnabled && isa(self.colorbar_kws,"cell"); %&& ccolindexlen==1;
-            if colorbarEnabled
-                [fontsize, keyFound] = getKeyVal("fontsize",self.colorbar_kws{:});
-                if keyFound
-                    fontsize_kws = {"fontsize",fontsize};
-                else
-                    fontsize_kws = {"fontsize",self.currentFig.ylabel.FontSize};
-                    self.colorbar_kws = [ self.colorbar_kws , fontsize_kws ];
+            if self.colorbar_kws.enabled && cEnabled
+                if isempty(self.colorbar_kws.fontsize) || ~isa(self.colorbar_kws.fontsize,"numeric")
+                    self.colorbar_kws.fontsize = self.currentFig.ylabel.FontSize;
                 end
-                self.currentFig.colorbar = colorbar(self.colorbar_kws{:});
-                ylabel(self.currentFig.colorbar,ccolnames(1),fontsize_kws{:});
+                colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","singleOptions"});
+                self.currentFig.colorbar = colorbar(colorbar_kws_cell{:});
+                ylabel(self.currentFig.colorbar,ccolnames(1),"fontsize",self.colorbar_kws.fontsize);
             else
                 colorbar('off');
                 self.currentFig.colorbar = [];
             end
 
-            self.doStuffPlot1D(lgEnabled,lglabels)
+            if ~self.is3d || (self.is3d && ~isempty(self.legend_kws))
+                self.doBasePlotStuff(lgEnabled,lglabels)
+            end
 
-            hold off;
+            grid on; hold off;
 
         end % function plot
 

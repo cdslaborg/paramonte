@@ -63,8 +63,8 @@ function outputList = readOutput(self,file,delimiter,fileType)
     if nargout==0
         outputListName = fileType + "List";
         outputListFullName = self.objectName + "." + outputListName;
-        p = addprop(self,outputListName);
-        self.(outputListName) = outputList;
+        prop="outputListName"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+        self.outputListName = outputList;
         if ~self.mpiEnabled
             self.Err.marginTop = 1;
             self.Err.marginBot = 1;

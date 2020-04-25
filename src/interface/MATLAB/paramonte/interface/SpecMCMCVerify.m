@@ -33,36 +33,57 @@ classdef SpecMCMCVerify < SpecVerification
 
     methods (Access = public)
 
-        function self = SpecMCMCVerify(objectName)
+        function self = SpecMCMCVerify(objectName,ndim)
             self.objectName = objectName;
+            self.ndim = ndim;
         end
 
         function result = chainSize(self,chainSize)
-            result = self.verifySpec(chainSize,"integer");
+            result = self.verifySpec(chainSize,"integer",1);
+        end
+
+        function result = scaleFactor(self,scaleFactor)
+            result = self.verifySpec(scaleFactor,"string",1);
         end
 
         function result = startPointVec(self,startPointVec)
-            result = self.verifySpec(startPointVec,"real");
+            result = self.verifySpec(startPointVec,"real",self.ndim);
+        end
+
+        function result = proposalModel(self,proposalModel)
+            result = self.verifySpec(proposalModel,"string",1);
+        end
+
+        function result = proposalStartCovMat(self,proposalStartCovMat)
+            result = self.verifySpec(proposalStartCovMat,"real",self.ndim^2);
+        end
+
+        function result = proposalStartCorMat(self,proposalStartCorMat)
+            result = self.verifySpec(proposalStartCorMat,"real",self.ndim^2);
+        end
+
+        function result = proposalStartStdVec(self,proposalStartStdVec)
+            result = self.verifySpec(proposalStartStdVec,"real",self.ndim);
         end
 
         function result = sampleRefinementCount(self,sampleRefinementCount)
-            result = self.verifySpec(sampleRefinementCount,"integer");
+            result = self.verifySpec(sampleRefinementCount,"integer",1);
         end
 
         function result = sampleRefinementMethod(self,sampleRefinementMethod)
-            result = self.verifySpec(sampleRefinementMethod,"string");
+            result = self.verifySpec(sampleRefinementMethod,"string",1);
         end
 
         function result = randomStartPointRequested(self,randomStartPointRequested)
-            result = self.verifySpec(randomStartPointRequested,"logical");
+            result = self.verifySpec(randomStartPointRequested,"logical",1);
         end
 
         function result = randomStartPointDomainLowerLimitVec(self,randomStartPointDomainLowerLimitVec)
-            result = self.verifySpec(randomStartPointDomainLowerLimitVec,"real");
+            result = self.verifySpec(randomStartPointDomainLowerLimitVec,"real",self.ndim);
         end
 
         function result = randomStartPointDomainUpperLimitVec(self,randomStartPointDomainUpperLimitVec)
-            result = self.verifySpec(randomStartPointDomainUpperLimitVec,"real");
+            result = self.verifySpec(randomStartPointDomainUpperLimitVec,"real",self.ndim);
         end
 
     end % methods (dynamic)

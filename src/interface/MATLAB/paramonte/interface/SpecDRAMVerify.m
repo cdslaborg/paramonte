@@ -31,54 +31,43 @@ classdef SpecDRAMVerify < SpecVerification
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
+    properties(Access=public,Hidden)
+        delayedRejectionCountVal = [];
+    end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
     methods (Access = public)
 
-        function self = SpecDRAMVerify(objectName)
+        function self = SpecDRAMVerify(objectName,ndim)
             self.objectName = objectName;
-        end
-
-        function result = scaleFactor(self,scaleFactor)
-            result = self.verifySpec(scaleFactor,"string");
-        end
-
-        function result = proposalModel(self,proposalModel)
-            result = self.verifySpec(proposalModel,"string");
-        end
-
-        function result = proposalStartCovMat(self,proposalStartCovMat)
-            result = self.verifySpec(proposalStartCovMat,"real");
-        end
-
-        function result = proposalStartCorMat(self,proposalStartCorMat)
-            result = self.verifySpec(proposalStartCorMat,"real");
-        end
-
-        function result = proposalStartStdVec(self,proposalStartStdVec)
-            result = self.verifySpec(proposalStartStdVec,"real");
+            self.ndim = ndim;
         end
 
         function result = adaptiveUpdateCount(self,adaptiveUpdateCount)
-            result = self.verifySpec(adaptiveUpdateCount,"integer");
+            result = self.verifySpec(adaptiveUpdateCount,"integer",1);
         end
 
         function result = adaptiveUpdatePeriod(self,adaptiveUpdatePeriod)
-            result = self.verifySpec(adaptiveUpdatePeriod,"integer");
+            result = self.verifySpec(adaptiveUpdatePeriod,"integer",1);
         end
 
         function result = greedyAdaptationCount(self,greedyAdaptationCount)
-            result = self.verifySpec(greedyAdaptationCount,"integer");
+            result = self.verifySpec(greedyAdaptationCount,"integer",1);
         end
 
         function result = delayedRejectionCount(self,delayedRejectionCount)
-            result = self.verifySpec(delayedRejectionCount,"integer");
+            result = self.verifySpec(delayedRejectionCount,"integer",1);
+            self.delayedRejectionCountVal = delayedRejectionCount;
         end
 
         function result = burninAdaptationMeasure(self,burninAdaptationMeasure)
-            result = self.verifySpec(burninAdaptationMeasure,"integer");
+            result = self.verifySpec(burninAdaptationMeasure,"integer",1);
         end
 
         function result = delayedRejectionScaleFactorVec(self,delayedRejectionScaleFactorVec)
-            result = self.verifySpec(delayedRejectionScaleFactorVec,"real");
+            result = self.verifySpec(delayedRejectionScaleFactorVec,"real",self.delayedRejectionCountVal);
         end
 
     end % methods (dynamic)

@@ -33,84 +33,85 @@ classdef SpecBaseVerify < SpecVerification
 
     methods (Access = public)
 
-        function self = SpecBaseVerify(objectName)
+        function self = SpecBaseVerify(objectName,ndim)
             self.objectName = objectName;
+            self.ndim = ndim;
         end
 
         function result = sampleSize(self,sampleSize)
-            result = self.verifySpec(sampleSize,"real");
+            result = self.verifySpec(sampleSize,"real",1);
         end
 
         function result = randomSeed(self,randomSeed)
-            result = self.verifySpec(randomSeed,"integer");
+            result = self.verifySpec(randomSeed,"integer",1);
         end
 
         function result = description(self,description)
-            result = self.verifySpec(description,"string");
+            result = self.verifySpec(description,"string",1);
         end
 
         function result = outputFileName(self,outputFileName)
-            result = self.verifySpec(outputFileName,"string");
+            result = self.verifySpec(outputFileName,"string",1);
         end
 
         function result = outputDelimiter(self,outputDelimiter)
-            result = self.verifySpec(outputDelimiter,"string");
+            result = self.verifySpec(outputDelimiter,"string",1);
         end
 
         function result = chainFileFormat(self,chainFileFormat)
-            result = self.verifySpec(chainFileFormat,"string");
+            result = self.verifySpec(chainFileFormat,"string",1);
         end
 
         function result = variableNameList(self,variableNameList)
-            result = self.verifySpec(variableNameList,"string");
+            result = self.verifySpec(variableNameList,"string",self.ndim);
         end
 
         function result = restartFileFormat(self,restartFileFormat)
-            result = self.verifySpec(restartFileFormat,"string");
+            result = self.verifySpec(restartFileFormat,"string",1);
         end
 
         function result = outputColumnWidth(self,outputColumnWidth)
-            result = self.verifySpec(outputColumnWidth,"integer");
+            result = self.verifySpec(outputColumnWidth,"integer",1);
         end
 
         function result = outputRealPrecision(self,outputRealPrecision)
-            result = self.verifySpec(outputRealPrecision,"integer");
+            result = self.verifySpec(outputRealPrecision,"integer",1);
         end
 
         function result = silentModeRequested(self,silentModeRequested)
-            result = self.verifySpec(silentModeRequested,"logical");
+            result = self.verifySpec(silentModeRequested,"logical",1);
         end
 
         function result = domainLowerLimitVec(self,domainLowerLimitVec)
-            result = self.verifySpec(domainLowerLimitVec,"real");
+            result = self.verifySpec(domainLowerLimitVec,"real",self.ndim);
         end
 
         function result = domainUpperLimitVec(self,domainUpperLimitVec)
-            result = self.verifySpec(domainUpperLimitVec,"real");
+            result = self.verifySpec(domainUpperLimitVec,"real",self.ndim);
         end
 
         function result = parallelizationModel(self,parallelizationModel)
-            result = self.verifySpec(parallelizationModel,"string");
+            result = self.verifySpec(parallelizationModel,"string",1);
         end
 
         function result = progressReportPeriod(self,progressReportPeriod)
-            result = self.verifySpec(progressReportPeriod,"integer");
+            result = self.verifySpec(progressReportPeriod,"integer",1);
         end
 
         function result = targetAcceptanceRate(self,targetAcceptanceRate)
-            result = self.verifySpec(targetAcceptanceRate,"real");
+            result = self.verifySpec(targetAcceptanceRate,"real",1);
         end
 
         function result = mpiFinalizeRequested(self,mpiFinalizeRequested)
-            result = self.verifySpec(mpiFinalizeRequested,"logical");
+            result = self.verifySpec(mpiFinalizeRequested,"logical",1);
         end
 
         function result = maxNumDomainCheckToWarn(self,maxNumDomainCheckToWarn)
-            result = self.verifySpec(maxNumDomainCheckToWarn,"integer");
+            result = self.verifySpec(maxNumDomainCheckToWarn,"integer",1);
         end
 
         function result = maxNumDomainCheckToStop(self,maxNumDomainCheckToStop)
-            result = self.verifySpec(maxNumDomainCheckToStop,"integer");
+            result = self.verifySpec(maxNumDomainCheckToStop,"integer",1);
         end
 
         function result = interfaceType(self)
