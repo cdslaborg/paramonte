@@ -46,7 +46,6 @@ classdef OutputFileContents < dynamicprops
 %       OutputFileContents
 %
 %   ----------------------------------------------------------------------
-%   """
 
     properties(Access = public)
         file = [];
@@ -153,11 +152,13 @@ classdef OutputFileContents < dynamicprops
 
             % add chain cormat
 
-%            self.stats.cormat = _pm.stats.CorMat( dataFrame     = self.df
-%                                                , columns       = range(self.offset,self.offset+self.ndim)
-%                                                , method        = "pearson"
-%                                                )
-%            
+            updateUser("generating the correlation matrix of the data...");
+            self.stats.cormat = CorCovMat   ( self.df ...
+                                            , self.offset:self.offset+self.ndim-1 ...
+                                            , "pearson" ...
+                                            , self.Err ...
+                                            );
+            updateUser([]);
 %            timer.tic( msg = "computing sample correlation matrix... " )
 %            self.stats.cormat()
 %            timer.toc()
@@ -194,94 +195,17 @@ classdef OutputFileContents < dynamicprops
             %%%% graphics
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%            timer.tic( msg = "adding graphics tools... " )
-%
-%            # add HistPlot
-%
-%            self.plot = _Struct()
-%
-%            self.plot.hist = _pm.vis.HistPlot   ( dataFrame = self.df
-%                                                , columns = self.df.columns[self.offset:]
-%                                                )
-%
-            % add LinePlot
-
             prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             self.plot = struct();
-            self.resetPlot("line","hard");
-            self.resetPlot("line3","hard");
-            self.resetPlot("scatter","hard");
-            self.resetPlot("scatter3","hard");
-            self.resetPlot("lineScatter","hard");
-            self.resetPlot("lineScatter3","hard");
-            self.resetPlot("histogram","hard");
-            self.resetPlot("histogram2","hard");
-            self.resetPlot("histfit","hard");
-            self.resetPlot("grid","hard");
+
+            for plotType = ["line","line3","scatter","scatter3","lineScatter","lineScatter3","histogram","histogram2","histfit","grid"]
+                %updateUser("generating " + plotType + " plot...");
+                self.resetPlot(plotType,"hard");
+                updateUser([]);
+            end
             self.plot.reset = @self.resetPlot;
 
-%            # add ScatterPlot
-%
-%            self.plot.scatter = _pm.vis.ScatterPlot ( dataFrame = self.df
-%                                                    , ycolumns = self.df.columns[self.offset:]
-%                                                    , ccolumns = "SampleLogFunc"
-%                                                    #, scatter_kws = {}
-%                                                    , colorbar_kws =    {
-%                                                                        "extend":"neither",
-%                                                                        "orientation":"vertical",
-%                                                                        #"spacing":"uniform",
-%                                                                        }
-%                                                    #, legend_kws = None
-%                                                    )
-%
-%            # add DensityMapPlot
-%
-%            xindex = self.offset
-%            yindex = self.offset + 1
-%            if self.ndim==1: xindex, yindex = yindex-1, xindex-1
-%                
-%            self.plot.density = _pm.vis.DensityMapPlot  ( dataFrame = self.df
-%                                                        , xcolumn = xindex
-%                                                        , ycolumn = yindex
-%                                                        )
-%            #print(self.stats.maxLogFunc.idrow,xindex,yindex)
-%            #print(self.df)
-%            #print(self.df.iat[self.stats.maxLogFunc.idrow,xindex])
-%            #print(self.df.iat[self.stats.maxLogFunc.idrow,yindex])
-%            self.plot.density.target.__init__   ( value = [ self.df.iat[self.stats.maxLogFunc.idrow,xindex], self.df.iat[self.stats.maxLogFunc.idrow,yindex] ]
-%                                                , scatter_kws = {"label":"maxLogFunc"}
-%                                                )
-%
-%            # add GridPlot
-%
-%            endColindex = _np.min( [self.offset+3, self.offset+self.ndim] )
-%            self.plot.grid = _pm.vis.GridPlot   ( dataFrame = self.df
-%                                                , columns = self.df.columns[self.offset:endColindex]
-%                                                , scatterplot_kws = {"ccolumns": "SampleLogFunc"}
-%                                                , _methodName = _pm.names.paradram
-%                                                )
-%
-%            # add ScatterLinePlot
-%
-%            self.plot._scatterline = _pm.vis.ScatterLinePlot( dataFrame = self.df
-%                                                            , ycolumns = self.df.columns[self.offset:]
-%                                                            , lccolumns = "SampleLogFunc"
-%                                                            , lc_kws =  {
-%                                                                        #"linewidth":0.75,
-%                                                                        #"cmap":"viridis",
-%                                                                        "cmap":"autumn",
-%                                                                        #"alpha":0.5,
-%                                                                        }
-%                                                            #, scatter_kws = {}
-%                                                            , colorbar_kws =    {
-%                                                                                "extend":"neither",
-%                                                                                "orientation":"vertical",
-%                                                                                #"spacing":"uniform",
-%                                                                                }
-%                                                            #, legend_kws = None
-%                                                            )
-%
-%            timer.toc()
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             function updateUser(msg)
                 if isempty(msg)
@@ -289,6 +213,7 @@ classdef OutputFileContents < dynamicprops
                     self.Err.msg = "done in " + sprintf("%.6f",string(timer.delta)) + " seconds."; self.Err.note();
                 else
                     self.Err.msg = msg; self.Err.note();
+                    timer.toc();
                 end
             end
 

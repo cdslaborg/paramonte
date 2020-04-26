@@ -5,10 +5,7 @@ classdef BasePlot < dynamicprops
 
     properties (Access = public)
 
-        rows
-        gca_kws
         gcf_kws
-        legend_kws
         currentFig
         outputFile
 
@@ -17,6 +14,10 @@ classdef BasePlot < dynamicprops
     properties (Access = protected, Hidden)
         dfref = [];
         isdryrun = [];
+    end
+
+    properties (Access = private)
+        isHeatmap
     end
 
     %*******************************************************************************************************************************
@@ -34,7 +35,14 @@ classdef BasePlot < dynamicprops
             catch
                 self.dfref = [];
             end
-            %self.reset();
+            self.isHeatmap = false;
+            if (nargin==2 && strcmp(varargin{2},"heatmap"))
+                self.isHeatmap = true;
+            else
+                prop="rows"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="gca_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="legend_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            end
 
         end
 
@@ -81,22 +89,27 @@ classdef BasePlot < dynamicprops
 
         function reset(self)
 
-            self.rows = {};
+            if ~self.isHeatmap
+
+                self.rows = {};
+
+                self.legend_kws = struct();
+                self.legend_kws.labels = {};
+                self.legend_kws.enabled = true;
+                self.legend_kws.fontsize = [];
+                self.legend_kws.singleOptions = {};
+
+                self.gca_kws.xscale = "linear";
+                self.gca_kws.yscale = "linear";
+
+            end
+
             self.gca_kws = struct();
             self.gcf_kws = struct();
-            self.legend_kws = struct();
             self.currentFig = struct();
             self.outputFile = [];
 
-            self.legend_kws.labels = {};
-            self.legend_kws.enabled = true;
-            self.legend_kws.fontsize = [];
-            self.legend_kws.singleOptions = {};
-
             self.gcf_kws.enabled = true;
-
-            self.gca_kws.xscale = "linear";
-            self.gca_kws.yscale = "linear";
 
         end
 
@@ -140,32 +153,36 @@ classdef BasePlot < dynamicprops
 
         function doBasePlotStuff(self, lgEnabled, lglabels)
 
-            % add legend
+            if ~self.isHeatmap
 
-            if lgEnabled
-                if isa(self.legend_kws.labels,"cell")
-                    if isempty(self.legend_kws.labels)
-                        self.legend_kws.labels = {lglabels{:}};
+                % add legend
+
+                if lgEnabled
+                    if isa(self.legend_kws.labels,"cell")
+                        if isempty(self.legend_kws.labels)
+                            self.legend_kws.labels = {lglabels{:}};
+                        end
+                        if isempty(self.legend_kws.fontsize)
+                            self.legend_kws.fontsize = self.currentFig.xlabel.FontSize;
+                        end
+                        legend_kws_cell = convertStruct2Cell(self.legend_kws,{"enabled","singleOptions","labels"});
+                        self.currentFig.legend = legend(self.legend_kws.labels{:},legend_kws_cell{:},self.legend_kws.singleOptions{:});
+                    else
+                        error   ( newline ...
+                                + "The input ""legend_kws.labels"" must be a cell array of string values." ...
+                                + newline ...
+                                );
                     end
-                    if isempty(self.legend_kws.fontsize)
-                        self.legend_kws.fontsize = self.currentFig.xlabel.FontSize;
-                    end
-                    legend_kws_cell = convertStruct2Cell(self.legend_kws,{"enabled","singleOptions","labels"});
-                    self.currentFig.legend = legend(self.legend_kws.labels{:},legend_kws_cell{:},self.legend_kws.singleOptions{:});
                 else
-                    error   ( newline ...
-                            + "The input ""legend_kws.labels"" must be a cell array of string values." ...
-                            + newline ...
-                            );
+                    legend(self.currentFig.gca,"off");
                 end
-            else
-                legend(self.currentFig.gca,"off");
-            end
 
-            if ~isempty(self.gca_kws)
-                gca_kws_cell = convertStruct2Cell(self.gca_kws,{"enabled","singleOptions","labels"});
-                if isfield(self.gca_kws,"singleOptions"); gca_kws_cell = { gca_kws_cell{:}, self.gca_kws.singleOptions{:} }; end
-                set(gca, gca_kws_cell{:})
+                if ~isempty(self.gca_kws)
+                    gca_kws_cell = convertStruct2Cell(self.gca_kws,{"enabled","singleOptions","labels"});
+                    if isfield(self.gca_kws,"singleOptions"); gca_kws_cell = { gca_kws_cell{:}, self.gca_kws.singleOptions{:} }; end
+                    set(gca, gca_kws_cell{:});
+                end
+
             end
 
             if isa(self.outputFile,"string") || isa(self.outputFile,"char")

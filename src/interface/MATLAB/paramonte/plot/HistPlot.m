@@ -98,7 +98,7 @@ classdef HistPlot < BasePlot
                 self.isHistfit = true;
                 prop="histfit_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             end
-            self.reset()
+            self.reset();
         end
 
         %***********************************************************************************************************************
@@ -316,4 +316,4 @@ classdef HistPlot < BasePlot
     %***************************************************************************************************************************
     %***************************************************************************************************************************
 
-end % classdef LinePlot
+end % classdef HistPlot
