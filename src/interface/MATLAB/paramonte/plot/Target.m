@@ -82,7 +82,6 @@ classdef Target < dynamicprops
         hline_kws
         vline_kws
         scatter_kws
-        outputFile
         currentFig
     end
 
@@ -124,7 +123,7 @@ classdef Target < dynamicprops
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = Target(self, varargin)
+        function self = Target(varargin)
             self.reset()
             self.parseArgs(varargin{:});
         end
@@ -154,7 +153,7 @@ classdef Target < dynamicprops
             for fname = ["hline_kws","vline_kws","scatter_kws"]
                 if contains(fname,"line")
                     if ~isfield(self.(fname),"linewidth") || isempty(self.(fname).linewidth)
-                        self.(fname).linewidth = 1.5;
+                        self.(fname).linewidth = 1;
                     end
                     if ~isfield(self.(fname),"linestyle") || isempty(self.(fname).linestyle)
                         self.(fname).linestyle = "-";
@@ -182,18 +181,20 @@ classdef Target < dynamicprops
                 self.scatter_kws.singleOptions = {'filled'};
             end
 
+            % generate figure and axes if needed
+
+            if ~isfield(self.currentFig,"gcf") || isempty(self.currentFig.gcf)
+                self.currentFig.gcf = get(groot,'CurrentFigure');
+            end
+            self.currentFig.gca = [];
+            if (~isfield(self.currentFig,"gca") || isempty(self.currentFig.gca)) && ~isempty(self.currentFig.gcf)
+                self.currentFig.gca = self.currentFig.gcf.CurrentAxes;
+            end
+
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            % generate figure and axes if needed
-
-            %if ~isfield(self.currentFig,"gcf") || isempty(self.currentFig.gcf)
-            self.currentFig.gcf = gcf;
-            %end
-            %if ~isfield(self.currentFig,"gca") || isempty(self.currentFig.gca)
-            self.currentFig.gca = gca;
-            %end
             set(0, "CurrentFigure", self.currentFig.gcf);
             set(self.currentFig.gcf, "CurrentAxes", self.currentFig.gca);
             hold on;
@@ -231,7 +232,7 @@ classdef Target < dynamicprops
                     hline_kws_cell = { hline_kws_cell{:}, fnameList{i}, self.hline_kws.(fnameList{i}) };
                 end
             end
-            hline_kws_cell = [ hline_kws_cell{:}, self.hline_kws.singleOptions{:} ];
+            hline_kws_cell = { hline_kws_cell{:}, self.hline_kws.singleOptions{:} };
 
             vline_kws_cell = {};
             fnameList = fieldnames(self.vline_kws);
@@ -258,13 +259,13 @@ classdef Target < dynamicprops
 
             if self.hline_kws.enabled
                 line( xlimCurrent, [self.value(2),self.value(2)] ...
-                    ..., hline_kws_cell ...
+                    , hline_kws_cell{:} ...
                     );
             end
 
             if self.vline_kws.enabled
                 line( [self.value(1),self.value(1)], ylimCurrent ...
-                    ..., vline_kws_cell ...
+                    , vline_kws_cell{:} ...
                     );
             end
 

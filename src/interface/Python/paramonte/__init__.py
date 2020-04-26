@@ -8,7 +8,7 @@
 #
 #  Copyright (C) 2012-present, The Computational Data Science Lab
 #
-#  This file is part of ParaMonte library. 
+#  This file is part of ParaMonte library.
 #
 #  ParaMonte is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Lesser General Public License as published by
@@ -30,32 +30,32 @@ This is the Python interface to ParaMonte: Plain Powerful Parallel Monte Carlo l
 What is ParaMonte?
 ==================
 
-ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical 
-objective functions of arbitrary-dimensions, in particular, the posterior distributions 
-of Bayesian models in data science, Machine Learning, and scientific inference, with the 
-design goal of unifying the 
+ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical
+objective functions of arbitrary-dimensions, in particular, the posterior distributions
+of Bayesian models in data science, Machine Learning, and scientific inference, with the
+design goal of unifying the
 
-    **automation** (of Monte Carlo simulations), 
-    **user-friendliness** (of the library), 
-    **accessibility** (from multiple programming environments), 
-    **high-performance** (at runtime), and 
-    **scalability** (across many parallel processors).  
+    **automation** (of Monte Carlo simulations),
+    **user-friendliness** (of the library),
+    **accessibility** (from multiple programming environments),
+    **high-performance** (at runtime), and
+    **scalability** (across many parallel processors).
 
-For more information on the installation, usage, and examples, visit: 
+For more information on the installation, usage, and examples, visit:
 
-    https://www.cdslab.org/paramonte  
+    https://www.cdslab.org/paramonte
 
 The routines currently supported by the Python interface of ParaMonte include:
 
     ParaDRAM
     ========
-        
+
         Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
 
         EXAMPLE SERIAL USAGE
         ====================
 
-        Copy and paste the following code enclosed between the 
+        Copy and paste the following code enclosed between the
         two comment lines in your python/ipython/jupyter session
         (make sure the indentation of the pasted lines is correct):
 
@@ -63,7 +63,7 @@ The routines currently supported by the Python interface of ParaMonte include:
 import paramonte as pm
 import numpy as np
 def getLogFunc(Point):
-    # return the log of the standard multivariate 
+    # return the log of the standard multivariate
     # Normal density function with ndim dimensions
     return -0.5 * np.sum( np.double( Point )**2 )
 pmpd = pm.ParaDRAM()
@@ -75,7 +75,7 @@ pmpd.runSampler ( ndim = 3
         EXAMPLE PARALLEL USAGE
         ======================
 
-        Copy and paste the following code enclosed between the 
+        Copy and paste the following code enclosed between the
         two comment lines in your python/ipython/jupyter session
         (make sure the indentation of the pasted lines is correct):
 
@@ -85,7 +85,7 @@ with open("main.py", "w") as file:
 import paramonte as pm
 import numpy as np
 def getLogFunc(Point):
-    # return the log of the standard multivariate 
+    # return the log of the standard multivariate
     # Normal density function with ndim dimensions
     return -0.5 * np.sum( np.double( Point )**2 )
 pmpd = pm.ParaDRAM()
@@ -97,14 +97,14 @@ pmpd.runSampler ( ndim = 3
 ##################################
 
         This will generate a main.py Python script file in the current
-        working directory of your Python session. Now, you can execute 
+        working directory of your Python session. Now, you can execute
         this Python script file (main.py) in parallel in two ways:
-        
+
             1.  from inside ipython or jupyter: type the following,
 
                    !mpiexec -n 3 python main.py
 
-            2.  outside of Python environment, 
+            2.  outside of Python environment,
                 from within a Bash shell (on Linux or Mac) or,
                 from within an Anaconda command prompt on Windows,
                 type the following,
@@ -114,8 +114,8 @@ pmpd.runSampler ( ndim = 3
             NOTE: On Windows platform, if you are using Intel MPI library,
             NOTE: you may also specify the extra flag -localonly to run only
             NOTE: on one node, but also to avoid the use of Hydra service and
-            NOTE: its registration. If you are not on a Windows cluster, (e.g., 
-            NOTE: you are using your personal device), then we recommend 
+            NOTE: its registration. If you are not on a Windows cluster, (e.g.,
+            NOTE: you are using your personal device), then we recommend
             NOTE: specifying this flag.
 
             In both cases above, the script 'main.py' will run on 3 processors.

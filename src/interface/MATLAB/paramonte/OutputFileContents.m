@@ -214,10 +214,10 @@ classdef OutputFileContents < dynamicprops
             self.resetPlot("scatter3","hard");
             self.resetPlot("lineScatter","hard");
             self.resetPlot("lineScatter3","hard");
-            %self.resetPlot("hist","hard");
-            %self.resetPlot("hist2","hard");
-            %self.resetPlot("histfit","hard");
-            %self.resetPlot("grid","hard");
+            self.resetPlot("histogram","hard");
+            self.resetPlot("histogram2","hard");
+            self.resetPlot("histfit","hard");
+            self.resetPlot("grid","hard");
             self.plot.reset = @self.resetPlot;
 
 %            # add ScatterPlot
@@ -306,7 +306,7 @@ classdef OutputFileContents < dynamicprops
 
         function resetPlot(self,varargin)
             requestedPlotTypeList = [];
-            plotTypeList = ["line","scatter","lineScatter","line3","scatter3","lineScatter3","hist","hist2","histfit","grid"];
+            plotTypeList = ["line","scatter","lineScatter","line3","scatter3","lineScatter3","histogram","histogram2","histfit","grid"];
             if nargin==1
                 requestedPlotTypeList = plotTypeList;
             else
@@ -429,8 +429,8 @@ classdef OutputFileContents < dynamicprops
 
                 % hist / hist2 / histfit
 
-                isHist = strcmp(requestedPlotTypeLower,"hist");
-                isHist2 = strcmp(requestedPlotTypeLower,"hist2");
+                isHist = strcmp(requestedPlotTypeLower,"histogram");
+                isHist2 = strcmp(requestedPlotTypeLower,"histogram2");
                 isHistfit = strcmp(requestedPlotTypeLower,"histfit");
                 if isHist || isHist2 || isHistfit
                     if resetTypeIsHard
@@ -439,7 +439,10 @@ classdef OutputFileContents < dynamicprops
                         self.plot.(requestedPlotTypeLower).reset();
                     end
                     if isHist
-                        self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset:end);
+                        self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset:self.offset+2);
+                        self.plot.(requestedPlotTypeLower).histogram_kws.facealpha = 0.6;
+                        self.plot.(requestedPlotTypeLower).histogram_kws.facecolor = "auto";
+                        self.plot.(requestedPlotTypeLower).histogram_kws.edgecolor = "none";
                     else
                         self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset);
                         if isHist2
@@ -456,7 +459,7 @@ classdef OutputFileContents < dynamicprops
                 if isGrid
                     %self.plot.(requestedPlotTypeLower).columns = string(self.df.Properties.VariableNames(self.offset:end));
                     if resetTypeIsHard
-                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset:self.offset+2)); %end) ); % columns
+                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset:self.offset+2));
                     else
                         self.plot.(requestedPlotTypeLower).reset();
                     end

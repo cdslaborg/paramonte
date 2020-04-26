@@ -1,0 +1,623 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ParaDRAM</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-04-26"><meta name="DC.source" content="ParaDRAM.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">classdef</span> ParaDRAM &lt; ParaMonteSampler_class
+<span class="comment">%   This is the ParaDRAM class for generating instances of serial and parallel</span>
+<span class="comment">%   Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo</span>
+<span class="comment">%   sampler of the ParaMonte library.</span>
+<span class="comment">%</span>
+<span class="comment">%   All ParaDRAM class attributes (input arguments to the ParaDRAM constructor)</span>
+<span class="comment">%   are optional and all attributes can be also set after a ParaDRAM instance</span>
+<span class="comment">%   is returned by the constructor.</span>
+<span class="comment">%</span>
+<span class="comment">%   Once you set the desired attributes to the desired values,</span>
+<span class="comment">%   call the ParaDRAM sampler via the object's method runSampler().</span>
+<span class="comment">%</span>
+<span class="comment">%   Attributes</span>
+<span class="comment">%   ----------</span>
+<span class="comment">%</span>
+<span class="comment">%       buildMode</span>
+<span class="comment">%           optional string argument with default value "release".</span>
+<span class="comment">%           possible choices are:</span>
+<span class="comment">%               "debug"</span>
+<span class="comment">%                   to be used for identifying sources of bug</span>
+<span class="comment">%                   and causes of code crash.</span>
+<span class="comment">%               "release"</span>
+<span class="comment">%                   to be used in all other normal scenarios</span>
+<span class="comment">%                   for maximum runtime efficiency.</span>
+<span class="comment">%       mpiEnabled</span>
+<span class="comment">%           optional logical (boolean) indicator which is False by default.</span>
+<span class="comment">%           If it is set to True, it will cause the ParaDRAM simulation</span>
+<span class="comment">%           to run in parallel on the requested number of processors.</span>
+<span class="comment">%           See ParaDRAM class information on how</span>
+<span class="comment">%           to run a simulation in parallel.</span>
+<span class="comment">%       inputFilePath</span>
+<span class="comment">%           optional string input representing the path to</span>
+<span class="comment">%           an external input namelist of simulation specifications.</span>
+<span class="comment">%           USE THIS OPTIONAL ARGUMENT WITH CAUTION AND</span>
+<span class="comment">%           ONLY IF YOU KNOW WHAT YOU ARE DOING.</span>
+<span class="comment">%</span>
+<span class="comment">%           ====================================================</span>
+<span class="comment">%           Specifying this option will cause ParaDRAM to ignore</span>
+<span class="comment">%           all other paraDRAM simulation specifications set by</span>
+<span class="comment">%           the user via ParaDRAM instance attributes.</span>
+<span class="comment">%           ====================================================</span>
+<span class="comment">%</span>
+<span class="comment">%   Returns</span>
+<span class="comment">%   -------</span>
+<span class="comment">%       Object of class ParaDRAM</span>
+<span class="comment">%</span>
+<span class="comment">%   Minimal serial example</span>
+<span class="comment">%   ----------------------</span>
+<span class="comment">%</span>
+<span class="comment">%   Here is a MATLAB script main.m for a serial ParaDRAM simulation.</span>
+<span class="comment">%   Copy and paste this code into your MATLAB command line to run it:</span>
+<span class="comment">%</span>
+<span class="comment">%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">%       % set the following  path to the ParaMonte library root directory</span>
+<span class="comment">%       pmlibRootDir = '../';</span>
+<span class="comment">%       addpath( genpath(pmlibRootDir) );</span>
+<span class="comment">%       % The following lambda function returns the natural logarithm of the</span>
+<span class="comment">%       % ndim-dimensional non-normalized Standard Gaussian density function</span>
+<span class="comment">%       getLogFunc = @(point) -0.5 * sum(point.^2);</span>
+<span class="comment">%       pmpd = ParaDRAM();</span>
+<span class="comment">%       pmpd.runSampler ( 4 ... number of dimensions of the objective function</span>
+<span class="comment">%                       , getLogFunc ... the mathematical objective function</span>
+<span class="comment">%                       );</span>
+<span class="comment">%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">%</span>
+<span class="comment">%   where,</span>
+<span class="comment">%</span>
+<span class="comment">%       ndim</span>
+<span class="comment">%           represents the number of dimensions of the domain</span>
+<span class="comment">%           of the user's objective function getLogFunc() and,</span>
+<span class="comment">%</span>
+<span class="comment">%       getLogFunc()</span>
+<span class="comment">%           represents the user's objective function to be sampled,</span>
+<span class="comment">%           which must take a single input argument of type numpy</span>
+<span class="comment">%           float64 array of length ndim and must return the</span>
+<span class="comment">%           natural logarithm of the objective function.</span>
+<span class="comment">%</span>
+<span class="comment">%   Parallel simulations</span>
+<span class="comment">%   --------------------</span>
+<span class="comment">%</span>
+<span class="comment">%   To run ParaDRAM sampler in parallel mode visit: cdslab.org/pm</span>
+<span class="comment">%   You can also use the following commands on the Python command-line,</span>
+<span class="comment">%</span>
+<span class="comment">%       import paramonte as pm</span>
+<span class="comment">%       pm.verify()</span>
+<span class="comment">%</span>
+<span class="comment">%   to obtain specific information on how to run a parallel simulation,</span>
+<span class="comment">%   in particular, in relation to your current installation of ParaMonte.</span>
+<span class="comment">%   In general, for parallel simulations:</span>
+<span class="comment">%</span>
+<span class="comment">%   0.  ensure you need and will get a speedup by running the ParaDRAM sampler in parallel.</span>
+<span class="comment">%       Typically, if a single evaluation of the objective function takes much longer than</span>
+<span class="comment">%       a few milliseconds, your simulation may then benefit from the parallel run.</span>
+<span class="comment">%</span>
+<span class="comment">%   1.  ensure you have an MPI library installed, preferably, Intel MPI.</span>
+<span class="comment">%       An MPI library should be automatically installed on your system with ParaMonte.</span>
+<span class="comment">%       If needed, you can download the Intel MPI library from their website and install it.</span>
+<span class="comment">%</span>
+<span class="comment">%   2.  set the input keyword argument mpiEnabled in runSampler() to True (the default is False),</span>
+<span class="comment">%</span>
+<span class="comment">%   3.  before running the parallel simulation, in particular, on Windows systems, you may</span>
+<span class="comment">%       need to define the necessary MPI environmental variables on your system.</span>
+<span class="comment">%       To get information on how to define the variables, use paramonte function</span>
+<span class="comment">%       verify() as described in the above.</span>
+<span class="comment">%</span>
+<span class="comment">%   4.  call your main Python code from a Python-aware mpiexec-aware command-line via,</span>
+<span class="comment">%</span>
+<span class="comment">%           mpi_launcher -n num_process python name_of_yor_python_code.py</span>
+<span class="comment">%</span>
+<span class="comment">%       where,</span>
+<span class="comment">%</span>
+<span class="comment">%       1.  mpi_launcher is the name of the MPI launcher</span>
+<span class="comment">%           from the MPI library that you have installed.</span>
+<span class="comment">%           For example, the Intel MPI library launcher is named mpiexec,</span>
+<span class="comment">%           also recognized by Microsoft and OpenMPI.</span>
+<span class="comment">%</span>
+<span class="comment">%       2.  num_process: replace this with the number of</span>
+<span class="comment">%           cores on which you want to run the program.</span>
+<span class="comment">%           Do not assign more processes than the number of</span>
+<span class="comment">%           available physical cores on your device/cluster.</span>
+<span class="comment">%           Assigning more cores than physically available on</span>
+<span class="comment">%           your system will only slow down your simulation.</span>
+<span class="comment">%</span>
+<span class="comment">%   Minimal parallel example</span>
+<span class="comment">%   ------------------------</span>
+<span class="comment">%</span>
+<span class="comment">%   Here is a Python script main.py for a parallel ParaDRAM simulation:</span>
+<span class="comment">%</span>
+<span class="comment">%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">%      from paramonte import ParaDRAM</span>
+<span class="comment">%      pmpd = ParaDRAM()</span>
+<span class="comment">%      def getLogFunc(Point):</span>
+<span class="comment">%          # return the natural logarithm of the ndim-dimensional</span>
+<span class="comment">%          # non-normalized Standard Gaussian density function</span>
+<span class="comment">%          return -sum(Point**2)</span>
+<span class="comment">%      pmpd.runSampler ( ndim = 1</span>
+<span class="comment">%                      , getLogFunc = getLogFunc</span>
+<span class="comment">%                      , mpiEnabled = True</span>
+<span class="comment">%                      )</span>
+<span class="comment">%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">%</span>
+<span class="comment">%   where,</span>
+<span class="comment">%</span>
+<span class="comment">%       ndim</span>
+<span class="comment">%           represents the number of dimensions of the domain</span>
+<span class="comment">%           of the user's objective function getLogFunc() and,</span>
+<span class="comment">%</span>
+<span class="comment">%       getLogFunc()</span>
+<span class="comment">%           represents the user's objective function that is to be sampled.</span>
+<span class="comment">%           This function must take a single input argument of type numpy</span>
+<span class="comment">%           float64 array of length ndim and must return the natural</span>
+<span class="comment">%           logarithm of the objective function.</span>
+<span class="comment">%</span>
+<span class="comment">%</span>
+<span class="comment">%       mpiEnabled</span>
+<span class="comment">%           is a logical (boolean) indicator that, if True, will</span>
+<span class="comment">%           cause the ParaDRAM simulation to run in parallel</span>
+<span class="comment">%           on the requested number of processors.</span>
+<span class="comment">%</span>
+<span class="comment">%   Once the script is saved in the file main.py, open a Python-aware and</span>
+<span class="comment">%   MPI-aware command prompt to run the simulation by the MPI launcher,</span>
+<span class="comment">%</span>
+<span class="comment">%       mpiexec -n 3 python main.py</span>
+<span class="comment">%</span>
+<span class="comment">%   This will execute the Python script main.py on three processes (images).</span>
+<span class="comment">%   Keep in mind that on Windows systems you may need to define MPI environmental</span>
+<span class="comment">%   variables before a parallel simulation, as descibed in the above.</span>
+<span class="comment">%</span>
+<span class="comment">%   ParaDRAM Class Attributes</span>
+<span class="comment">%   -------------------------</span>
+<span class="comment">%</span>
+<span class="comment">%   (see also: cdslab.org/pm)</span>
+<span class="comment">%</span>
+<span class="comment">%   All input specifications (attributes) of a ParaDRAM simulation are optional.</span>
+<span class="comment">%   However, it is recomended that you provide as much information as possible</span>
+<span class="comment">%   about the specific ParaDRAM simulation and the objective function to be sampled</span>
+<span class="comment">%   via ParaDRAM simulation specifications.</span>
+<span class="comment">%</span>
+<span class="comment">%   The ParaDRAM simulation specifications have lengthy comprehensive descriptions</span>
+<span class="comment">%   that appear in full in the output report file of every ParaDRAM simulation.</span>
+<span class="comment">%</span>
+<span class="comment">%   The best way to learn about individual ParaDRAM simulation attributes</span>
+<span class="comment">%   is to a run a minimal serial simulation with the following Python script,</span>
+<span class="comment">%</span>
+<span class="comment">%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">%       from paramonte import ParaDRAM</span>
+<span class="comment">%       pmpd = ParaDRAM()</span>
+<span class="comment">%       pmpd.outputFileName = "./test"</span>
+<span class="comment">%       def getLogFunc(Point): return -sum(Point**2)</span>
+<span class="comment">%       pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )</span>
+<span class="comment">%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">%</span>
+<span class="comment">%   Running this code will generate a set of simulation output files (in the current</span>
+<span class="comment">%   working directory of Python) that begin with the prefix "test_process_1". Among</span>
+<span class="comment">%   these, the file "test_process_1_report.txt" contains the full description of all</span>
+<span class="comment">%   input specifications of the ParaDRAM simulation as well as other information</span>
+<span class="comment">%   about the simulation results and statistics.</span>
+<span class="comment">%</span>
+<span class="comment">%   Naming conventions</span>
+<span class="comment">%   ------------------</span>
+<span class="comment">%</span>
+<span class="comment">%   camelCase naming style is used throughout the entire ParaMonte library, across</span>
+<span class="comment">%   all programming languages: C/Fortran/Julia/MATLAB/Python</span>
+<span class="comment">%</span>
+<span class="comment">%   all simulation specifications start with a lowercase letter, including</span>
+<span class="comment">%   scalar/vector/matrix int, float, string, or boolean variables.</span>
+<span class="comment">%</span>
+<span class="comment">%   The name of any variable that represents a vector of values is suffixed with "Vec",</span>
+<span class="comment">%   for example: startPointVec, domainLowerLimitVec, ...</span>
+<span class="comment">%</span>
+<span class="comment">%   The name of any variable that represents a matrix of values is suffixed with "Mat",</span>
+<span class="comment">%   for example: proposalStartCorMat, ...</span>
+<span class="comment">%</span>
+<span class="comment">%   The name of any variable that represents a list of varying-size values is suffixed</span>
+<span class="comment">%   with "List", for example: variableNameList, ...</span>
+<span class="comment">%</span>
+<span class="comment">%   all functions or class methods begin with a lowercase verb.</span>
+<span class="comment">%</span>
+<span class="comment">%   significant attempt has been made to end all boolean variables with a passive verb,</span>
+<span class="comment">%   such that the full variable name virtually forms an English-language statement</span>
+<span class="comment">%   that should be either True or False, set by the user.</span>
+<span class="comment">%</span>
+<span class="comment">%   Tips</span>
+<span class="comment">%   ----</span>
+<span class="comment">%</span>
+<span class="comment">%   when running ParaMonte samplers, in particular on multiple cores in parallel,</span>
+<span class="comment">%   it would be best to close any such aggressive software/applications as</span>
+<span class="comment">%   Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte</span>
+<span class="comment">%   simulation output files, potentially causing the sampler to</span>
+<span class="comment">%   crash before successful completion of the simulation.</span>
+<span class="comment">%   These situations should however happen only scarcely.</span>
+<span class="comment">%</span>
+<span class="comment">%   on Windows systems, when restarting an old interrupted ParaDRAM simulation,</span>
+<span class="comment">%   ensure your Python session is also restarted before the simulation</span>
+<span class="comment">%   restart. This is needed as Windows sometimes locks the access to</span>
+<span class="comment">%   all or some of the simulation output files.</span>
+<span class="comment">%</span>
+<span class="comment">%   To unset an already-set input simulation specification, simply set the</span>
+<span class="comment">%   simulation attribute to None or re-instantiate the object.</span>
+<span class="comment">%</span>
+<span class="comment">%***********************************************************************************************************************************</span>
+<span class="comment">%***********************************************************************************************************************************</span>
+
+    <span class="comment">%*******************************************************************************************************************************</span>
+    <span class="comment">%*******************************************************************************************************************************</span>
+
+    <span class="keyword">methods</span> (Access = public)
+
+        <span class="comment">%***************************************************************************************************************************</span>
+        <span class="comment">%***************************************************************************************************************************</span>
+
+        <span class="keyword">function</span> self = ParaDRAM()
+            self.spec = SpecDRAM();
+            self.methodName = <span class="string">"ParaDRAM"</span>;
+            self.Err.prefix = self.methodName;
+            self.Err.resetEnabled = false;
+        <span class="keyword">end</span>
+
+        <span class="comment">%***************************************************************************************************************************</span>
+        <span class="comment">%***************************************************************************************************************************</span>
+
+        runSampler(self,ndim,inputFile)
+
+        <span class="comment">%***************************************************************************************************************************</span>
+        <span class="comment">%***************************************************************************************************************************</span>
+
+    <span class="keyword">end</span> <span class="comment">% methods (dynamic)</span>
+
+    <span class="comment">%*******************************************************************************************************************************</span>
+    <span class="comment">%*******************************************************************************************************************************</span>
+
+<span class="keyword">end</span> <span class="comment">% classdef ParaDRAM &lt; ParaMonteSampler_class</span>
+</pre><pre class="codeoutput">ans = 
+  ParaDRAM with properties:
+
+    mpiEnabled: 0
+     inputFile: []
+     buildMode: "release"
+          spec: [1&times;1 SpecDRAM]
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+classdef ParaDRAM < ParaMonteSampler_class
+%   This is the ParaDRAM class for generating instances of serial and parallel
+%   Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
+%   sampler of the ParaMonte library.
+%
+%   All ParaDRAM class attributes (input arguments to the ParaDRAM constructor)
+%   are optional and all attributes can be also set after a ParaDRAM instance
+%   is returned by the constructor.
+%
+%   Once you set the desired attributes to the desired values,
+%   call the ParaDRAM sampler via the object's method runSampler().
+%
+%   Attributes
+%   REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+%
+%       buildMode
+%           optional string argument with default value "release".
+%           possible choices are:
+%               "debug"
+%                   to be used for identifying sources of bug
+%                   and causes of code crash.
+%               "release"
+%                   to be used in all other normal scenarios
+%                   for maximum runtime efficiency.
+%       mpiEnabled
+%           optional logical (boolean) indicator which is False by default.
+%           If it is set to True, it will cause the ParaDRAM simulation
+%           to run in parallel on the requested number of processors.
+%           See ParaDRAM class information on how
+%           to run a simulation in parallel.
+%       inputFilePath
+%           optional string input representing the path to
+%           an external input namelist of simulation specifications.
+%           USE THIS OPTIONAL ARGUMENT WITH CAUTION AND
+%           ONLY IF YOU KNOW WHAT YOU ARE DOING.
+%
+%           ====================================================
+%           Specifying this option will cause ParaDRAM to ignore
+%           all other paraDRAM simulation specifications set by
+%           the user via ParaDRAM instance attributes.
+%           ====================================================
+%   
+%   Returns
+%   REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+%       Object of class ParaDRAM
+%
+%   Minimal serial example
+%   REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+%
+%   Here is a MATLAB script main.m for a serial ParaDRAM simulation.
+%   Copy and paste this code into your MATLAB command line to run it:
+%
+%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       % set the following  path to the ParaMonte library root directory
+%       pmlibRootDir = '../'; 
+%       addpath( genpath(pmlibRootDir) );
+%       % The following lambda function returns the natural logarithm of the
+%       % ndim-dimensional non-normalized Standard Gaussian density function
+%       getLogFunc = @(point) -0.5 * sum(point.^2);
+%       pmpd = ParaDRAM();
+%       pmpd.runSampler ( 4 ... number of dimensions of the objective function
+%                       , getLogFunc ... the mathematical objective function
+%                       );
+%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   where,
+%
+%       ndim
+%           represents the number of dimensions of the domain
+%           of the user's objective function getLogFunc() and,
+%
+%       getLogFunc()
+%           represents the user's objective function to be sampled,
+%           which must take a single input argument of type numpy
+%           float64 array of length ndim and must return the
+%           natural logarithm of the objective function.
+%
+%   Parallel simulations
+%   REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+%
+%   To run ParaDRAM sampler in parallel mode visit: cdslab.org/pm
+%   You can also use the following commands on the Python command-line,
+%
+%       import paramonte as pm
+%       pm.verify()
+%
+%   to obtain specific information on how to run a parallel simulation,
+%   in particular, in relation to your current installation of ParaMonte.
+%   In general, for parallel simulations:
+%
+%   0.  ensure you need and will get a speedup by running the ParaDRAM sampler in parallel.
+%       Typically, if a single evaluation of the objective function takes much longer than
+%       a few milliseconds, your simulation may then benefit from the parallel run.
+%
+%   1.  ensure you have an MPI library installed, preferably, Intel MPI.
+%       An MPI library should be automatically installed on your system with ParaMonte.
+%       If needed, you can download the Intel MPI library from their website and install it.
+%
+%   2.  set the input keyword argument mpiEnabled in runSampler() to True (the default is False),
+%
+%   3.  before running the parallel simulation, in particular, on Windows systems, you may
+%       need to define the necessary MPI environmental variables on your system.
+%       To get information on how to define the variables, use paramonte function
+%       verify() as described in the above.
+%
+%   4.  call your main Python code from a Python-aware mpiexec-aware command-line via,
+%
+%           mpi_launcher -n num_process python name_of_yor_python_code.py
+%
+%       where,
+%
+%       1.  mpi_launcher is the name of the MPI launcher
+%           from the MPI library that you have installed.
+%           For example, the Intel MPI library launcher is named mpiexec,
+%           also recognized by Microsoft and OpenMPI.
+%
+%       2.  num_process: replace this with the number of
+%           cores on which you want to run the program.
+%           Do not assign more processes than the number of
+%           available physical cores on your device/cluster.
+%           Assigning more cores than physically available on
+%           your system will only slow down your simulation.
+%
+%   Minimal parallel example
+%   REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+%
+%   Here is a Python script main.py for a parallel ParaDRAM simulation:
+%
+%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      from paramonte import ParaDRAM
+%      pmpd = ParaDRAM()
+%      def getLogFunc(Point):
+%          # return the natural logarithm of the ndim-dimensional
+%          # non-normalized Standard Gaussian density function
+%          return -sum(Point**2)
+%      pmpd.runSampler ( ndim = 1
+%                      , getLogFunc = getLogFunc
+%                      , mpiEnabled = True
+%                      )
+%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   where,
+%
+%       ndim
+%           represents the number of dimensions of the domain
+%           of the user's objective function getLogFunc() and,
+%
+%       getLogFunc()
+%           represents the user's objective function that is to be sampled.
+%           This function must take a single input argument of type numpy
+%           float64 array of length ndim and must return the natural
+%           logarithm of the objective function.
+%
+%
+%       mpiEnabled
+%           is a logical (boolean) indicator that, if True, will
+%           cause the ParaDRAM simulation to run in parallel
+%           on the requested number of processors.
+%
+%   Once the script is saved in the file main.py, open a Python-aware and
+%   MPI-aware command prompt to run the simulation by the MPI launcher,
+%
+%       mpiexec -n 3 python main.py
+%
+%   This will execute the Python script main.py on three processes (images).
+%   Keep in mind that on Windows systems you may need to define MPI environmental
+%   variables before a parallel simulation, as descibed in the above.
+%
+%   ParaDRAM Class Attributes
+%   REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-
+%
+%   (see also: cdslab.org/pm)
+%
+%   All input specifications (attributes) of a ParaDRAM simulation are optional.
+%   However, it is recomended that you provide as much information as possible
+%   about the specific ParaDRAM simulation and the objective function to be sampled
+%   via ParaDRAM simulation specifications.
+%
+%   The ParaDRAM simulation specifications have lengthy comprehensive descriptions
+%   that appear in full in the output report file of every ParaDRAM simulation.
+%
+%   The best way to learn about individual ParaDRAM simulation attributes
+%   is to a run a minimal serial simulation with the following Python script,
+%
+%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       from paramonte import ParaDRAM
+%       pmpd = ParaDRAM()
+%       pmpd.outputFileName = "./test"
+%       def getLogFunc(Point): return -sum(Point**2)
+%       pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
+%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Running this code will generate a set of simulation output files (in the current
+%   working directory of Python) that begin with the prefix "test_process_1". Among
+%   these, the file "test_process_1_report.txt" contains the full description of all
+%   input specifications of the ParaDRAM simulation as well as other information
+%   about the simulation results and statistics.
+%
+%   Naming conventions
+%   REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+%
+%   camelCase naming style is used throughout the entire ParaMonte library, across
+%   all programming languages: C/Fortran/Julia/MATLAB/Python
+%
+%   all simulation specifications start with a lowercase letter, including
+%   scalar/vector/matrix int, float, string, or boolean variables.
+%
+%   The name of any variable that represents a vector of values is suffixed with "Vec",
+%   for example: startPointVec, domainLowerLimitVec, ...
+%
+%   The name of any variable that represents a matrix of values is suffixed with "Mat",
+%   for example: proposalStartCorMat, ...
+%
+%   The name of any variable that represents a list of varying-size values is suffixed
+%   with "List", for example: variableNameList, ...
+%
+%   all functions or class methods begin with a lowercase verb.
+%
+%   significant attempt has been made to end all boolean variables with a passive verb,
+%   such that the full variable name virtually forms an English-language statement
+%   that should be either True or False, set by the user.
+%
+%   Tips
+%   REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+%
+%   when running ParaMonte samplers, in particular on multiple cores in parallel,
+%   it would be best to close any such aggressive software/applications as
+%   Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte
+%   simulation output files, potentially causing the sampler to
+%   crash before successful completion of the simulation.
+%   These situations should however happen only scarcely.
+%
+%   on Windows systems, when restarting an old interrupted ParaDRAM simulation,
+%   ensure your Python session is also restarted before the simulation
+%   restart. This is needed as Windows sometimes locks the access to
+%   all or some of the simulation output files.
+%
+%   To unset an already-set input simulation specification, simply set the
+%   simulation attribute to None or re-instantiate the object.
+%
+%***********************************************************************************************************************************
+%***********************************************************************************************************************************
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+    methods (Access = public)
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        function self = ParaDRAM()
+            self.spec = SpecDRAM();
+            self.methodName = "ParaDRAM";
+            self.Err.prefix = self.methodName;
+            self.Err.resetEnabled = false;
+        end
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        runSampler(self,ndim,inputFile)
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+    end % methods (dynamic)
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+end % classdef ParaDRAM < ParaMonteSampler_class
+##### SOURCE END #####
+--></body></html>

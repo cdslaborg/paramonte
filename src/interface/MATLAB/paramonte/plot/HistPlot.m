@@ -5,12 +5,13 @@ classdef HistPlot < BasePlot
 
     properties (Access = public)
         xcolumns
+        target
     end
 
     properties (Access = protected, Hidden)
         plotType
-        isHist = false;
-        isHist2 = false;
+        isHistogram = false;
+        isHistogram2 = false;
         isHistfit = false;
     end
 
@@ -23,22 +24,49 @@ classdef HistPlot < BasePlot
         %***********************************************************************************************************************
 
         function reset(self)
+
             reset@BasePlot(self);
             self.xcolumns = {};
-            if self.isHist
-                self.histogram_kws = {};
-            elseif self.isHist2
-                self.histogram2_kws = {};
-                self.colorbar_kws = {};
+
+            if self.isHistogram
+
+                self.histogram_kws = struct();
+                self.histogram_kws.enabled = true;
+                self.histogram_kws.edgecolor = {};
+                self.histogram_kws.singleOptions = {};
+
+            elseif self.isHistogram2
+
                 self.ycolumns = {};
                 self.colormap = {};
+
+                self.histogram2_kws = struct();
+                self.histogram2_kws.enabled = true;
+                self.histogram2_kws.edgecolor = {};
+                self.histogram2_kws.facecolor = {};
+                self.histogram2_kws.displaystyle = {};
+                self.histogram2_kws.singleOptions = {};
+
+                self.colorbar_kws = struct();
+                self.colorbar_kws.enabled = true;
+                self.colorbar_kws.fontsize = [];
+                self.colorbar_kws.singleOptions = {};
+
+                self.legend_kws.enabled = false;
+
             elseif self.isHistfit
-                self.histfit_kws = {};
+
+                self.histfit_kws = struct();
+                self.histfit_kws.enabled = true;
+                self.histfit_kws.singleOptions = {};
+
             end
-            %self.target    = Target()
+
             self.isdryrun = true;
             self.plot();
             self.isdryrun = false;
+            self.target = Target();
+
         end
 
         %***************************************************************************************************************************
@@ -57,11 +85,11 @@ classdef HistPlot < BasePlot
         function self = HistPlot(varargin) % expected input arguments: dataFrame, plotType
             self = self@BasePlot(varargin{1});
             self.plotType = lower(string(varargin{2}));
-            if strcmp(self.plotType,"hist")
-                self.isHist = true;
+            if strcmp(self.plotType,"histogram")
+                self.isHistogram = true;
                 prop="histogram_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            elseif strcmp(self.plotType,"hist2")
-                self.isHist2 = true;
+            elseif strcmp(self.plotType,"histogram2")
+                self.isHistogram2 = true;
                 prop="histogram2_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
                 prop="colorbar_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
                 prop="ycolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
@@ -98,23 +126,17 @@ classdef HistPlot < BasePlot
             %%%% set what to plot
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            histEnabled = self.isHist && (isa(self.histogram_kws,"string") || isa(self.histogram_kws,"cell"));
-            hist2Enabled = self.isHist2 && (isa(self.histogram2_kws,"string") || isa(self.histogram2_kws,"cell"));
-            histfitEnabled = self.isHistfit && (isa(self.histfit_kws,"string") || isa(self.histfit_kws,"cell"));
-
-            lgEnabled = ( isa(self.legend_kws,"string") || isa(self.legend_kws,"cell") );
-
-            if histEnabled
-                self.histogram_kws = addKeyVal("EdgeColor","none",self.histogram_kws{:});
-            elseif hist2Enabled
-                self.histogram2_kws = addKeyVal("EdgeColor","none",self.histogram2_kws{:});
-                self.histogram2_kws = addKeyVal("FaceColor","flat",self.histogram2_kws{:});
-                self.histogram2_kws = addKeyVal("DisplayStyle","bar3",self.histogram2_kws{:});
-            %elseif histfitEnabled
-                %self.histfit_kws = addKeyVal("EdgeColor","none",self.histfit_kws{:});
+            if self.isHistogram && self.histogram_kws.enabled
+                fname = "histogram_kws";
+                key = "edgecolor"; val = "none"; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
             end
 
-            figEnabled = isa(self.gcf_kws,"string") || isa(self.gcf_kws,"cell");
+            if self.isHistogram2 && self.histogram2_kws.enabled
+                fname = "histogram2_kws";
+                key = "edgecolor"; val = "none"; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
+                key = "facecolor"; val = "flat"; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
+                key = "displaystyle"; val = "bar3"; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
+            end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
@@ -122,8 +144,10 @@ classdef HistPlot < BasePlot
 
             % generate figure and axes if needed
 
-            if figEnabled
-                self.currentFig.gcf = figure(self.gcf_kws{:});
+            if self.gcf_kws.enabled
+                gcf_kws_cell = convertStruct2Cell(self.gcf_kws,{"enabled","singleOptions"});
+                if isfield(self.gcf_kws,"singleOptions"); gcf_kws_cell = { gcf_kws_cell{:} , self.gcf_kws.singleOptions{:} }; end
+                self.currentFig.gcf = figure( gcf_kws_cell{:} );
             else
                 set(0, "CurrentFigure", gcf);
                 self.currentFig.gcf = gcf;
@@ -152,7 +176,7 @@ classdef HistPlot < BasePlot
                 xdata = self.dfref{rowindex,xcolindex};
             end
 
-            if self.isHist2
+            if self.isHistogram2
                 [ycolnames, ycolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ycolumns);
                 ycolindexlen = length(ycolindex);
                 maxLenColumns = max(maxLenColumns,ycolindexlen);
@@ -164,25 +188,41 @@ classdef HistPlot < BasePlot
 
             if xcolindexlen~=maxLenColumns && xcolindexlen>1; error("length of xcolumns must be either 1 or equal to the maximum of the lengths of ycolumns."); end
 
+            %%%%%%%%%%%%%%%%%%%%%%%
+            % get keyword arguments
+            %%%%%%%%%%%%%%%%%%%%%%%
+
+            if self.isHistogram
+                histogram_kws_cell = convertStruct2Cell(self.histogram_kws,{"enabled","singleOptions"});
+            end
+            if self.isHistogram2
+                histogram2_kws_cell = convertStruct2Cell(self.histogram2_kws,{"enabled","singleOptions"});
+            end
+            if self.isHistfit
+                histfit_kws_cell = convertStruct2Cell(self.histfit_kws,{"enabled","singleOptions"});
+            end
+
+            %%%%%%%%%%%%%%%
             % add line plot
+            %%%%%%%%%%%%%%%
 
             box on; grid on;
 
             lglabels = [];
 
-            if histEnabled || hist2Enabled || histfitEnabled
+            if (self.isHistogram && self.histogram_kws.enabled) || (self.isHistogram2 && self.histogram2_kws.enabled) || (self.isHistfit && self.histfit_kws.enabled)
 
                 for i = 1:maxLenColumns
 
                     if xcolindexlen>1
                         xdata = self.dfref{rowindex,xcolindex(i)};
                     end
-                    if hist2Enabled && ycolindexlen>1
+                    if (self.isHistogram2 && self.histogram2_kws.enabled) && ycolindexlen>1
                         ydata = self.dfref{rowindex,ycolindex(i)};
                     end
 
-                    if lgEnabled
-                        if hist2Enabled 
+                    if self.legend_kws.enabled
+                        if (self.isHistogram2 && self.histogram2_kws.enabled) 
                             if xcolindexlen<2 && ycolindexlen>=1
                                 lglabels = [ lglabels , ycolnames(i) ];
                             elseif xcolindexlen>1 && ycolindexlen<2
@@ -197,20 +237,20 @@ classdef HistPlot < BasePlot
 
                     % add plot
 
-                    if histEnabled
+                    if self.isHistogram && self.histogram_kws.enabled
                         self.currentFig.histogram = histogram   ( xdata ...
-                                                                , self.histogram_kws{:} ...
+                                                                , histogram_kws_cell{:} ...
                                                                 );
                         hold on;
-                    elseif hist2Enabled
+                    elseif self.isHistogram2 && self.histogram2_kws.enabled
                         self.currentFig.histogram2 = histogram2 ( xdata ...
                                                                 , ydata ...
-                                                                , self.histogram2_kws{:} ...
+                                                                , histogram2_kws_cell{:} ...
                                                                 );
                         hold on;
-                    elseif histfitEnabled
+                    elseif self.isHistfit && self.histfit_kws.enabled
                         self.currentFig.histogram = histfit ( xdata ...
-                                                            , self.histfit_kws{:} ...
+                                                            , histfit_kws_cell{:} ...
                                                             );
                         hold on;
                     end
@@ -221,7 +261,7 @@ classdef HistPlot < BasePlot
 
             end
 
-            if self.isHist2
+            if self.isHistogram2
                 if ~getVecLen(self.colormap)
                     self.colormap = flipud(cold());
                 end
@@ -236,7 +276,7 @@ classdef HistPlot < BasePlot
                 self.currentFig.xlabel = xlabel(xcolnames(1));
             end
 
-            if self.isHist2
+            if self.isHistogram2
                 if ycolindexlen>1
                     self.currentFig.ylabel = ylabel("Variable Values");
                 else
@@ -249,25 +289,20 @@ classdef HistPlot < BasePlot
 
             % add line colorbar
 
-            colorbarEnabled = self.isHist2 && ( isa(self.colorbar_kws,"string") || isa(self.colorbar_kws,"cell") ); %&& ccolindexlen==1;
+            colorbarEnabled = self.isHistogram2 && self.colorbar_kws.enabled;
             if colorbarEnabled
-                [fontsize, keyFound] = getKeyVal("fontsize",self.colorbar_kws{:});
-                if keyFound
-                    fontsize_kws = {"fontsize",fontsize};
-                else
-                    fontsize_kws = {"fontsize",self.currentFig.ylabel.FontSize};
-                    self.colorbar_kws = [ self.colorbar_kws , fontsize_kws ];
+                if isempty(self.colorbar_kws.fontsize) || ~isa(self.colorbar_kws.fontsize,"numeric")
+                    self.colorbar_kws.fontsize = self.currentFig.ylabel.FontSize;
                 end
-                self.currentFig.colorbar = colorbar(self.colorbar_kws{:});
-                ylabel(self.currentFig.colorbar,"Density of Points",fontsize_kws{:});
+                colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","singleOptions"});
+                self.currentFig.colorbar = colorbar(colorbar_kws_cell{:});
+                ylabel(self.currentFig.colorbar,"Density of Points","fontsize",self.colorbar_kws.fontsize);
             else
                 colorbar('off');
                 self.currentFig.colorbar = [];
             end
 
-            if ~self.isHist2 || (self.isHist2 && ~isempty(self.legend_kws))
-                self.doBasePlotStuff(lgEnabled,lglabels);
-            end
+            self.doBasePlotStuff(self.legend_kws.enabled,lglabels);
 
             hold off;
 

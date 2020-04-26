@@ -186,6 +186,24 @@ classdef LineScatterPlot < BasePlot
             self.ccolumns = {};
             self.colormap = {};
 
+            self.isLinePlot = false;
+            if contains(self.plotType,"line")
+                self.isLinePlot = true;
+                prop="plot_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="surface_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            end
+            self.isScatterPlot = false;
+            if contains(self.plotType,"scatter")
+                self.isScatterPlot = true;
+                prop="scatter_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            end
+            if contains(self.plotType,"3")
+                prop="zcolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                self.is3d = true;
+            else
+                self.is3d = false;
+            end
+
             if self.isLinePlot
 
                 self.plot_kws = struct();
@@ -241,21 +259,6 @@ classdef LineScatterPlot < BasePlot
 
             self = self@BasePlot(varargin{1});
             self.plotType = lower(string(varargin{2}));
-            if contains(self.plotType,"line")
-                self.isLinePlot = true;
-                prop="plot_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                prop="surface_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            end
-            if contains(self.plotType,"scatter")
-                self.isScatterPlot = true;
-                prop="scatter_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            end
-            if contains(self.plotType,"3")
-                prop="zcolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                self.is3d = true;
-            else
-                self.is3d = false;
-            end
             self.reset()
         end
 
@@ -306,7 +309,12 @@ classdef LineScatterPlot < BasePlot
                     self.scatter_kws.(key) = val;
                 end
             end
-
+%if self.isLinePlot
+%"begin self.plot_kws"
+%self.plot_kws
+%"end self.plot_kws"
+%end
+%return
             if self.isLinePlot && self.plot_kws.enabled
                 key = "linewidth"; val = 1;
                 if isfield(self.plot_kws,key) && isempty(self.plot_kws.(key))
@@ -583,7 +591,7 @@ classdef LineScatterPlot < BasePlot
                 self.currentFig.colorbar = [];
             end
 
-            if ~self.is3d || (self.is3d && ~isempty(self.legend_kws))
+            if ~self.is3d || (self.is3d && self.legend_kws.enabled)
                 self.doBasePlotStuff(lgEnabled,lglabels)
             end
 
