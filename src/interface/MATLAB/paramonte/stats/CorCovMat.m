@@ -7,9 +7,11 @@ classdef CorCovMat < dynamicprops
     end
 
     properties(Hidden)
+        cormatPrecision
         matrixType
         isCorMat
         dfref
+        title
         Err
     end
 
@@ -24,34 +26,25 @@ classdef CorCovMat < dynamicprops
         function self = CorCovMat   ( dataFrame ...
                                     , columns ...
                                     , method ...
+                                    , rows ...
                                     , Err ...
                                     )
             self.Err = Err;
             self.dfref = dataFrame;
             self.columns = columns;
+            self.cormatPrecision = 2;
             if ~isempty(method)
                 prop="method"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
                 self.method = method;
             end
             self.columns = columns;
-            self.rows = [];
+            self.rows = []; if ~isempty(rows); self.rows = rows; end
             self.df = [];
-
-            self.get();
-
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            %%%% graphics
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             self.plot = struct();
 
-            for plotType = ["heatmap"]
-                self.resetPlot(plotType,"hard");
-            end
-            self.plot.reset = @self.resetPlot;
-
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            self.get();
 
         end
 
@@ -92,8 +85,6 @@ classdef CorCovMat < dynamicprops
 
             % check columns presence
 
-            % check columns presence
-
             if getVecLen(self.columns)
                 [colnames, ~] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns); % colindex
             else
@@ -118,6 +109,33 @@ classdef CorCovMat < dynamicprops
             end
             self.df.Properties.VariableNames = colnames;
             self.df.Properties.RowNames = colnames;
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% graphics
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            for plotType = ["heatmap"]
+                self.resetPlot(plotType,"hard");
+            end
+            self.plot.reset = @self.resetPlot;
+            self.plot.heatmap.title = self.title;
+            if self.isCorMat; self.plot.heatmap.precision = self.cormatPrecision; end
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            % set title for the heatmap
+
+            if isempty(self.title)
+                if self.isCorMat
+                    self.title = "The " + self.method + "'s Correlation Strength Matrix";
+                else
+                    self.title = "The Covariance Matrix";
+                end
+            end
+            try
+                self.plot.heatmap.title = self.title;
+                if self.isCorMat; self.plot.heatmap.precision = self.cormatPrecision; end
+            end
 
         end % get
 

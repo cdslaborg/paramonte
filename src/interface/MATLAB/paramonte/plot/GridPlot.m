@@ -36,7 +36,6 @@ classdef GridPlot < BasePlot
         colorbar_kws
         colormap
         layout
-        target
 
     end
 
@@ -71,7 +70,7 @@ classdef GridPlot < BasePlot
 
             self.layout.axis.main.margin.bottom = 0.07; % 0.14; 
             self.layout.axis.main.margin.right = 0.10;
-            self.layout.axis.main.margin.left = 0.05; %0.1;
+            self.layout.axis.main.margin.left = 0.07; %0.1;
             self.layout.axis.main.margin.top = 0.0;
             self.layout.axis.main.origin.x = 0.02;
             self.layout.axis.main.origin.y = 0.00;

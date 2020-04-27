@@ -118,11 +118,13 @@ classdef OutputFileContents < dynamicprops
             if markovChainRequested
                 cumSumWeight = cumsum(d.data(:,self.offset-2));
                 if cumSumWeight(end) ~= self.count % it is indeed a compact chain
-                    dMarkov = zeros( cumSumWeight(end) , self.ndim + self.offset );
+                    dMarkov = zeros( cumSumWeight(end) , self.ndim + self.offset - 1 );
                     istart = 1;
                     for irow = 1:self.count
                         iend = cumSumWeight(irow);
-                        dMarkov(istart:iend,:) = d.data(irow,:);
+                        for i = istart:iend
+                            dMarkov(i,:) = d.data(irow,:);
+                        end
                         istart = iend + 1;
                     end
                     d.data = dMarkov;
@@ -152,44 +154,37 @@ classdef OutputFileContents < dynamicprops
 
             % add chain cormat
 
-            updateUser("generating the correlation matrix of the data...");
+            updateUser("computing the sample correlation matrix...");
             self.stats.cormat = CorCovMat   ( self.df ...
                                             , self.offset:self.offset+self.ndim-1 ...
-                                            , "pearson" ...
+                                            , "pearson" ... method
+                                            , [] ... rows
                                             , self.Err ...
                                             );
             updateUser([]);
-%            timer.tic( msg = "computing sample correlation matrix... " )
-%            self.stats.cormat()
-%            timer.toc()
-%
-%            # add chain covmat
-%
-%            self.stats.covmat = _pm.stats.CovMat( dataFrame     = self.df
-%                                                , columns       = range(self.offset,self.offset+self.ndim)
-%                                                )
-%
-%            timer.tic( msg = "computing sample covariance matrix... " )
-%            self.stats.covmat()
-%            timer.toc()
-%
-%            self.stats.maxLogFunc = _pm.stats.getMaxLogFunc(dataFrame = self.df)
-%            #self.stats.maxLogFunc = _Struct()
-%            #self.stats.maxLogFunc.idrow = self.df[["SampleLogFunc"]].idxmax().values[0]
-%            #self.stats.maxLogFunc.value = self.df[["SampleLogFunc"]].iat[self.stats.maxLogFunc.idrow,0]
-%            #self.stats.maxLogFunc.dfrow = self.df.iloc[self.stats.maxLogFunc.idrow,:]
-%            #self.stats.maxLogFunc.state = self.df.iloc[self.stats.maxLogFunc.idrow,self.offset:]
-%
-%            # add chain autocorrelation
-%
-%            self.stats.acf = _pm.stats.AutoCorr ( dataFrame     = self.df
-%                                                , columns       = range(self.offset-1,self.offset+self.ndim)
-%                                                )
-%
-%            timer.tic( msg = "computing autocorrelations... " )
-%            self.stats.acf()
-%            timer.toc()
-%
+
+            % add chain covmat
+
+            updateUser("computing the sample covariance matrix...");
+            self.stats.covmat = CorCovMat   ( self.df ...
+                                            , self.offset:self.offset+self.ndim-1 ...
+                                            , [] ... method
+                                            , [] ... rows
+                                            , self.Err ...
+                                            );
+            updateUser([]);
+
+            % add chain autocorr
+
+            updateUser("computing the sample autocorrelation...");
+            self.stats.autocorr = AutoCorr  ( self.df ...
+                                            , self.offset-1:self.offset+self.ndim-1 ...
+                                            , [] ... rows
+                                            , self.Err ...
+                                            );
+            updateUser([]);
+
+            %self.stats.maxLogFunc = getMax(self.df,"SampleLogFunc");
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% graphics
@@ -384,7 +379,7 @@ classdef OutputFileContents < dynamicprops
                 if isGrid
                     %self.plot.(requestedPlotTypeLower).columns = string(self.df.Properties.VariableNames(self.offset:end));
                     if resetTypeIsHard
-                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset:self.offset+2));
+                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset:self.offset+3));
                     else
                         self.plot.(requestedPlotTypeLower).reset();
                     end

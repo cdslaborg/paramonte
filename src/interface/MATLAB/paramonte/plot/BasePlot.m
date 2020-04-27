@@ -54,8 +54,16 @@ classdef BasePlot < dynamicprops
             set(0, "CurrentFigure", self.currentFig.gcf);
             if any(contains(string(varargin),"-transparent"))
                 transparencyRequested = true;
-                set(self.currentFig.gcf,"color","none");
-                set(gca,"color","none");
+                try
+                    set(self.currentFig.gcf,"color","none");
+                catch
+                    warning("failed to set the color property of gcf to ""none"".");
+                end
+                try
+                    set(gca,"color","none");
+                catch
+                    warning("failed to set the color property of gca to ""none"".");
+                end
             else
                 transparencyRequested = false;
             end
@@ -71,8 +79,16 @@ classdef BasePlot < dynamicprops
             %end
             export_fig(varargin{:});
             if transparencyRequested
-                set(self.currentFig.gcf,"color","default");
-                set(gca,"color","default");
+                try
+                    set(self.currentFig.gcf,"color","default");
+                catch
+                    warning("failed to set the color property of gcf back to ""default"".");
+                end
+                try
+                    set(gca,"color","default");
+                catch
+                    warning("failed to set the color property of gca back to ""default"".");
+                end
             end
 
         end
@@ -94,17 +110,19 @@ classdef BasePlot < dynamicprops
                 self.rows = {};
 
                 self.legend_kws = struct();
+                self.legend_kws.box = "off";
                 self.legend_kws.labels = {};
                 self.legend_kws.enabled = true;
                 self.legend_kws.fontsize = [];
+                self.legend_kws.interpreter = "none";
                 self.legend_kws.singleOptions = {};
 
+                self.gca_kws = struct();
                 self.gca_kws.xscale = "linear";
                 self.gca_kws.yscale = "linear";
 
             end
 
-            self.gca_kws = struct();
             self.gcf_kws = struct();
             self.currentFig = struct();
             self.outputFile = [];

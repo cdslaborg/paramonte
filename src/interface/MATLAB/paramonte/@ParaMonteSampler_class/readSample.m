@@ -1,4 +1,4 @@
-function [chainList] = readChain(self,varargin)
+function [sampleList] = readSample(self,varargin)
 %   Return a list of the contents of a set of ParaDRAM output
 %   chain files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName
@@ -34,12 +34,6 @@ function [chainList] = readChain(self,varargin)
 %           If set to True, the contents of the file will be parsed and
 %           stored in a component of the object named 'contents'.
 %           The default value is True.
-%       renabled
-%           If set to False, the contents of the file(s) will be stored as a
-%           list in a (new) component of the ParaDRAM object named 'chainList'
-%           and None will be the return value of the method.
-%           If set to True, the reverse will done.
-%           The default value is False.
 %
 %   Returns
 %   -------
@@ -65,7 +59,7 @@ function [chainList] = readChain(self,varargin)
 %               of the chain file.
 %       If renabled = True, the list of objects will be returned as the
 %       return value of the method. Otherwise, the list will be stored in a
-%       component of the ParaDRAM object named 'chainList'.
+%       component of the ParaDRAM object named 'sampleList'.
 %
 
     if isempty(self.objectName); self.objectName = inputname(1); end

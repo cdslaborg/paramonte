@@ -1,4 +1,4 @@
-function [chainList] = readChain(self,varargin)
+function [markovChainList] = readMarkovChain(self,varargin)
 %   Return a list of the contents of a set of ParaDRAM output
 %   chain files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName
@@ -36,7 +36,7 @@ function [chainList] = readChain(self,varargin)
 %           The default value is True.
 %       renabled
 %           If set to False, the contents of the file(s) will be stored as a
-%           list in a (new) component of the ParaDRAM object named 'chainList'
+%           list in a (new) component of the ParaDRAM object named 'markovChainList'
 %           and None will be the return value of the method.
 %           If set to True, the reverse will done.
 %           The default value is False.
@@ -65,7 +65,7 @@ function [chainList] = readChain(self,varargin)
 %               of the chain file.
 %       If renabled = True, the list of objects will be returned as the
 %       return value of the method. Otherwise, the list will be stored in a
-%       component of the ParaDRAM object named 'chainList'.
+%       component of the ParaDRAM object named 'markovChainList'.
 %
 
     if isempty(self.objectName); self.objectName = inputname(1); end

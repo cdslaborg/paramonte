@@ -4,6 +4,7 @@ classdef HeatmapPlot < BasePlot
     %*******************************************************************************************************************************
 
     properties (Access = public)
+        title
         xcolumns
         ycolumns
         colormap
@@ -29,8 +30,9 @@ classdef HeatmapPlot < BasePlot
             self.xcolumns = {};
             self.ycolumns = {};
 
-            self.precision = 2;
+            self.precision = [];
 
+            title = [];
             self.heatmap_kws = struct();
             self.heatmap_kws.enabled = true;
             self.heatmap_kws.ColorLimits = [];
@@ -66,6 +68,23 @@ classdef HeatmapPlot < BasePlot
         function self = HeatmapPlot(dataFrame) % expected input arguments: dataFrame
             self = self@BasePlot(dataFrame,"heatmap");
             self.reset();
+        end
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        function adjustColorLimits(self,newLimits)
+            if nargin==1
+                dum = max(abs(self.currentFig.heatmap.ColorLimits));
+                newLimits = [-dum dum];
+            elseif nargin~=2
+                error   ( newline ...
+                        + "colorLimits() method takes only one optional argument newLimits. If newLimits is provided as input argument, "  ...
+                        + "the ColorLimits property of the heatmap plot will be set to newLimits." ...
+                        + newline ...
+                        );
+            end
+            self.currentFig.heatmap.ColorLimits = newLimits;
         end
 
         %***********************************************************************************************************************
@@ -162,6 +181,12 @@ classdef HeatmapPlot < BasePlot
                 %ylabel(self.currentFig.colorbar,self.colorbar_kws.label,self.colorbar_kws.fontsize);
             %else
                 colorbar("off");
+            end
+
+            % add title if needed
+
+            if ~isempty(self.title)
+                title(self.title);
             end
 
             self.doBasePlotStuff([],[]);

@@ -30,7 +30,10 @@ pmpd.spec.adaptiveUpdateCount = 0;
 pmpd.spec.chainSize                             = 10000;
 pmpd.spec.adaptiveUpdateCount                   = 0;
 %pmpd.runSampler(20,@getLogFunc)
-pmpd.readChain("ParaDRAM_run_180420_213248_768"); %"ParaDRAM_run_180420_151344_607";%"D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_160420_023054_530");
+pmpd.spec.outputFileName = "ParaDRAM_run_180420_213248_768";
+pmpd.readMarkovChain();
+pmpd.readSample();
+pmpd.readChain(); %"ParaDRAM_run_180420_151344_607";%"D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_160420_023054_530");
 return
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMonte variables...

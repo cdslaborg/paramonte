@@ -23,6 +23,7 @@ classdef ParaMonteSampler_class < dynamicprops
 
     methods (Access = public)
         [chainList] = readChain(self,varargin)
+        [sampleList] = readSample(self,varargin)
     end
 
     %*******************************************************************************************************************************

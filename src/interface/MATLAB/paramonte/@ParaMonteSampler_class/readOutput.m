@@ -1,6 +1,33 @@
-function outputList = readOutput(self,file,delimiter,fileType)
+function outputList = readOutput(self,varargin) % callerName,file,delimiter
+
+    if isempty(self.objectName); self.objectName = inputname(1); end
 
     self.Err.marginTop = 0;
+
+    file = [];
+    delimiter = [];
+    errorOccurred = false;
+    markovChainRequested = false;
+    if nargin==1; errorOccurred = true; end
+    if nargin>1
+        callerName = varargin{1};
+        if strcmp(callerName,"readChain")
+            fileType = "chain";
+        elseif strcmp(callerName,"readSample")
+            fileType = "sample";
+        elseif strcmp(callerName,"readMarkovChain")
+            fileType = "chain";
+            markovChainRequested = true;
+        end
+    end
+    if nargin>2; file = varargin{2}; end
+    if nargin>3; delimiter = varargin{3}; end
+    if nargin>4 || errorOccurred
+        self.Err.msg    = callerName + "takes only two input arguments (file, delimiter). Correct usage:" + newline + newline ...
+                        + "    " + callerName + "(file,delimiter)" + newline + newline ...
+                        + "where ""file"" is the name of the file to be read, delimiter is the delimiter used in the file,";
+        self.Err.abort();
+    end
 
     if isempty(file)
         if isempty(self.spec.outputFileName)
@@ -41,7 +68,6 @@ function outputList = readOutput(self,file,delimiter,fileType)
     fileListLen = length(fileList);
 
     outputList = cell(fileListLen,1);
-    markovChainRequested = false;
     for ifile = fileListLen:-1:1
         filePathModified = string( strrep(fileList(ifile),'\','\\') );
         if ~self.mpiEnabled

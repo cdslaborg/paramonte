@@ -83,6 +83,8 @@ classdef Target < dynamicprops
         vline_kws
         scatter_kws
         currentFig
+        xlimits
+        ylimits
     end
 
     properties (Hidden)
@@ -99,6 +101,8 @@ classdef Target < dynamicprops
 
         function reset(self)
 
+            xlimits = [];
+            ylimits = [];
             self.value = [];
             self.hline_kws = struct();
             self.vline_kws = struct();
@@ -183,11 +187,11 @@ classdef Target < dynamicprops
 
             % generate figure and axes if needed
 
-            if ~isfield(self.currentFig,"gcf") || isempty(self.currentFig.gcf)
+            if ~isfield(self.currentFig,"gcf") || ~isgraphics(self.currentFig.gcf)
                 self.currentFig.gcf = get(groot,'CurrentFigure');
             end
             self.currentFig.gca = [];
-            if (~isfield(self.currentFig,"gca") || isempty(self.currentFig.gca)) && ~isempty(self.currentFig.gcf)
+            if (~isfield(self.currentFig,"gca") || isempty(isgraphics(self.currentFig.gca))) && ~isempty(self.currentFig.gcf)
                 self.currentFig.gca = self.currentFig.gcf.CurrentAxes;
             end
 
@@ -201,7 +205,7 @@ classdef Target < dynamicprops
 
             % set what to plot
 
-            targetExists = isa(self.value,"numeric") && length(self.value)==2;
+            targetExists = isa(self.value,"numeric") && length(self.value(1,:))==2;
             if ~targetExists
                 error   ( newline ...
                         + "The input target value must be a pair of numeric scalars representing the X and Y coordinates of the target." ...
@@ -257,24 +261,35 @@ classdef Target < dynamicprops
             xlimCurrent = self.currentFig.gca.XLim;
             ylimCurrent = self.currentFig.gca.YLim;
 
-            if self.hline_kws.enabled
-                line( xlimCurrent, [self.value(2),self.value(2)] ...
-                    , hline_kws_cell{:} ...
-                    );
-            end
+            if isempty(self.xlimits); xlimits = xlimCurrent; end
+            if isempty(self.ylimits); ylimits = ylimCurrent; end
 
-            if self.vline_kws.enabled
-                line( [self.value(1),self.value(1)], ylimCurrent ...
-                    , vline_kws_cell{:} ...
-                    );
-            end
+            for irow = 1:length(self.value(:,1))
 
-            if self.scatter_kws.enabled
-                scatter ( self.value(1), self.value(2) ...
-                        , self.scatter_kws.size ...
-                        , self.scatter_kws.color ...
-                        , scatter_kws_cell{:} ...
-                        );
+                if self.hline_kws.enabled
+                    yline   ( ...
+                            self.value(irow,2), ...
+                            ... self.xlimits, [self.value(irow,2),self.value(irow,2)] ...
+                            hline_kws_cell{:} ...
+                            );
+                end
+
+                if self.vline_kws.enabled
+                    xline   ( ...
+                            self.value(irow,1), ...
+                            ... [self.value(irow,1),self.value(irow,1)], self.ylimits, ...
+                            vline_kws_cell{:} ...
+                            );
+                end
+
+                if self.scatter_kws.enabled
+                    scatter ( self.value(irow,1), self.value(irow,2) ...
+                            , self.scatter_kws.size ...
+                            , self.scatter_kws.color ...
+                            , scatter_kws_cell{:} ...
+                            );
+                end
+
             end
 
             self.currentFig.gca.XLim = xlimCurrent;
