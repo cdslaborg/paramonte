@@ -225,41 +225,52 @@ classdef OutputFileContents < dynamicprops
         %***************************************************************************************************************************
 
         function resetPlot(self,varargin)
+
+            resetTypeIsHard = false;
             requestedPlotTypeList = [];
             plotTypeList = ["line","scatter","lineScatter","line3","scatter3","lineScatter3","histogram","histogram2","histfit","grid"];
+            lenVariableNames = length(self.df.Properties.VariableNames);
+
             if nargin==1
                 requestedPlotTypeList = plotTypeList;
             else
-                for requestedPlotTypeCell = varargin{1}
-                    if isa(requestedPlotTypeCell,"cell")
-                        requestedPlotType = string(requestedPlotTypeCell{1});
-                    else
-                        requestedPlotType = string(requestedPlotTypeCell);
-                    end
-                    plotTypeNotFound = true;
-                    for plotTypeCell = plotTypeList
-                        plotType = string(plotTypeCell{1});
-                        if strcmp(plotType,requestedPlotType)
-                            requestedPlotTypeList = [ requestedPlotTypeList , plotType ];
-                            plotTypeNotFound = false;
-                            break;
+                argOne = string(varargin{1});
+                if length(argOne)==1 && strcmpi(argOne,"hard")
+                    requestedPlotTypeList = plotTypeList;
+                    resetTypeIsHard = true;
+                else
+                    for requestedPlotTypeCell = varargin{1}
+                        if isa(requestedPlotTypeCell,"cell")
+                            requestedPlotType = string(requestedPlotTypeCell{1});
+                        else
+                            requestedPlotType = string(requestedPlotTypeCell);
                         end
-                    end
-                    if plotTypeNotFound
-                        error   ( newline ...
-                                + "The input plot-type argument, " + varargin{1} + ", to the resetPlot method" + newline ...
-                                + "did not match any plot type. Possible plot types include:" + newline ...
-                                + "line, lineScatter." + newline ...
-                                );
+                        plotTypeNotFound = true;
+                        for plotTypeCell = plotTypeList
+                            plotType = string(plotTypeCell{1});
+                            if strcmp(plotType,requestedPlotType)
+                                requestedPlotTypeList = [ requestedPlotTypeList , plotType ];
+                                plotTypeNotFound = false;
+                                break;
+                            end
+                        end
+                        if plotTypeNotFound
+                            error   ( newline ...
+                                    + "The input plot-type argument, " + varargin{1} + ", to the resetPlot method" + newline ...
+                                    + "did not match any plot type. Possible plot types include:" + newline ...
+                                    + "line, lineScatter." + newline ...
+                                    );
+                        end
                     end
                 end
             end
 
-            resetTypeIsHard = false;
-            if nargin==3 && strcmpi(varargin{2},"hard")
+            if nargin==3 && strcmpi(varargin{2},"hard"); resetTypeIsHard = true; end
+
+            if resetTypeIsHard
                 resetTypeIsHard = true;
                 msgPrefix = "creating the ";
-                msgSuffix = " plot object from scrach...";
+                msgSuffix = " plot object from scratch...";
             else
                 msgPrefix = "reseting the properties of the ";
                 msgSuffix = " plot...";
@@ -270,11 +281,12 @@ classdef OutputFileContents < dynamicprops
 
             for requestedPlotTypeCell = requestedPlotTypeList
 
+                requestedPlotType = string(requestedPlotTypeCell);
+                requestedPlotTypeLower = lower(requestedPlotType);
+
                 self.Err.msg = msgPrefix + requestedPlotType + msgSuffix;
                 self.Err.note();
 
-                requestedPlotType = string(requestedPlotTypeCell);
-                requestedPlotTypeLower = lower(requestedPlotType);
                 plotName = "";
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -293,10 +305,12 @@ classdef OutputFileContents < dynamicprops
                     else
                         self.plot.(plotName).reset();
                     end
-                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset:end);
+                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
                     self.plot.(plotName).ccolumns = "SampleLogFunc";
                     self.plot.(plotName).gca_kws.xscale = "linear";
+                    self.plot.(plotName).plot_kws.enabled = false;
                     self.plot.(plotName).plot_kws.linewidth = 1;
+                    self.plot.(plotName).surface_kws.enabled = true;
                     self.plot.(plotName).surface_kws.linewidth = 1;
                 end
 
@@ -310,7 +324,7 @@ classdef OutputFileContents < dynamicprops
                         self.plot.(plotName).reset();
                     end
                     self.plot.(plotName).ccolumns = "SampleLogFunc";
-                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset:end);
+                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
                     self.plot.(plotName).gca_kws.xscale = "linear";
                     self.plot.(plotName).scatter_kws.size = 10;
                 end
@@ -326,7 +340,7 @@ classdef OutputFileContents < dynamicprops
                     end
                     self.plot.(plotName).surface_kws.enabled = false;
                     self.plot.(plotName).ccolumns = "SampleLogFunc";
-                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset:end);
+                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
                     self.plot.(plotName).gca_kws.xscale = "linear";
                     if is3d
                         self.plot.(plotName).plot_kws.color = [200 200 200 75] / 255;
@@ -359,7 +373,7 @@ classdef OutputFileContents < dynamicprops
                         self.plot.(requestedPlotTypeLower).reset();
                     end
                     if isHist
-                        self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset:self.offset+2);
+                        self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset); %:self.offset+2);
                         self.plot.(requestedPlotTypeLower).histogram_kws.facealpha = 0.6;
                         self.plot.(requestedPlotTypeLower).histogram_kws.facecolor = "auto";
                         self.plot.(requestedPlotTypeLower).histogram_kws.edgecolor = "none";
@@ -379,7 +393,8 @@ classdef OutputFileContents < dynamicprops
                 if isGrid
                     %self.plot.(requestedPlotTypeLower).columns = string(self.df.Properties.VariableNames(self.offset:end));
                     if resetTypeIsHard
-                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset:self.offset+3));
+                        endIndx = min(lenVariableNames,self.offset+4);
+                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset:endIndx));
                     else
                         self.plot.(requestedPlotTypeLower).reset();
                     end

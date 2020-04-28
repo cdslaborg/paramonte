@@ -1,15 +1,26 @@
-function parseArgs(self,varargin)
+function out = parseArgs(self,varargin)
 
     vararginLen = length(varargin);
-    for i = 1:2:vararginLen
-        propertyDoesNotExist = true;
+    if isa(self,"struct")
+        selfProperties = fieldnames(self);
+        selfPropertiesLen = length(selfProperties);
+    else
         selfProperties = properties(self);
         selfPropertiesLen = length(selfProperties);
+    end
+
+    for i = 1:2:vararginLen
+        propertyDoesNotExist = true;
+        vararginString = string(varargin{i});
         for ip = 1:selfPropertiesLen
-            if strcmp(string(varargin{i}),string(selfProperties{ip}))
+            if strcmp(vararginString,string(selfProperties(ip)))
                 propertyDoesNotExist = false;
                 if i < vararginLen
-                    self.(selfProperties{ip}) = varargin{i+1};
+                    if isa(self.(selfProperties{ip}),"struct") && isa(varargin{i+1},"cell")
+                        self.(selfProperties{ip}) = parseArgs( self.(selfProperties{ip}) , varargin{i+1}{:} );
+                    else
+                        self.(selfProperties{ip}) = varargin{i+1};
+                    end
                 else
                     error("The corresponding value for the property """ + string(selfProperties{ip}) + """ is missing as input argument.");
                 end
@@ -17,8 +28,10 @@ function parseArgs(self,varargin)
             end
         end
         if propertyDoesNotExist
-            error("The requested the property """ + string(varargin{i}) + """ does not exist.");
+            error("The requested property """ + string(varargin{i}) + """ does not exist.");
         end
     end
+
+    out = self;
 
 end

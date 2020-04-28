@@ -102,11 +102,22 @@ classdef CorCovMat < dynamicprops
 
             % construct the matrix dataframe
 
-            if  self.isCorMat
-                self.df = array2table( corr( self.dfref{rowindex,colnames} , "type" , self.method ) );
+            rowindexLen = length(rowindex);
+            colnamesLen = length(colnames);
+            if  rowindexLen > colnamesLen
+                if  self.isCorMat
+                    self.df = array2table( corr( self.dfref{rowindex,colnames} , "type" , self.method ) );
+                else
+                    self.df = array2table( cov( self.dfref{rowindex,colnames} ) );
+                end
             else
-                self.df = array2table( cov( self.dfref{rowindex,colnames} ) );
+                warning ( "The number of columns (" + string(colnamesLen) + ") is more than the number of rows (" + string(rowindexLen) + ") in the data-frame (Table). " ...
+                        + "The " + self.matrixType + " matrix cannot be computed." ...
+                        ...+ newline ...
+                        );
+                self.df = array2table( NaN(colnamesLen , colnamesLen) );
             end
+
             self.df.Properties.VariableNames = colnames;
             self.df.Properties.RowNames = colnames;
 
@@ -189,7 +200,7 @@ classdef CorCovMat < dynamicprops
             if nargin==3 && strcmpi(varargin{2},"hard")
                 resetTypeIsHard = true;
                 msgPrefix = "creating the ";
-                msgSuffix = " plot object from scrach...";
+                msgSuffix = " plot object from scratch...";
             else
                 msgPrefix = "reseting the properties of the ";
                 msgSuffix = " plot...";

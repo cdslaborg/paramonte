@@ -136,16 +136,21 @@ classdef AutoCorr < dynamicprops
             acf = zeros(nlag,nvar);
             bounds_array = zeros(2,nvar);
 
-            for i = 1:length(colindex)
-                [acf(:,i),lags,bounds_array(:,i)] = autocorr( self.dfref{rowindex,colindex(i)}, nlag-1 );
+            if nlag>0
+                for i = 1:length(colindex)
+                    [acf(:,i),lags,bounds_array(:,i)] = autocorr( self.dfref{rowindex,colindex(i)}, nlag-1 );
+                end
+                self.df = array2table([lags,acf]);
+                colnames = "ACF_" + colnames;
+                self.df.Properties.VariableNames = ["Lag", colnames];
+                self.df.Properties.RowNames = string(lags);
+                self.bounds = array2table(bounds_array);
+                self.bounds.Properties.VariableNames = colnames;
+                self.bounds.Properties.RowNames = ["upperLimit","lowerLimit"];
+            else
+                warning("The sample size is less than 2. No autocorrelations will be computed.");
+                self.df = array2table(NaN(1,nvar));
             end
-            self.df = array2table([lags,acf]);
-            colnames = "ACF_" + colnames;
-            self.df.Properties.VariableNames = ["Lag", colnames];
-            self.df.Properties.RowNames = string(lags);
-            self.bounds = array2table(bounds_array);
-            self.bounds.Properties.VariableNames = colnames;
-            self.bounds.Properties.RowNames = ["upperLimit","lowerLimit"];
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% graphics
@@ -249,7 +254,7 @@ classdef AutoCorr < dynamicprops
             if nargin==3 && strcmpi(varargin{2},"hard")
                 resetTypeIsHard = true;
                 msgPrefix = "creating the ";
-                msgSuffix = " plot object from scrach...";
+                msgSuffix = " plot object from scratch...";
             else
                 msgPrefix = "reseting the properties of the ";
                 msgSuffix = " plot...";
