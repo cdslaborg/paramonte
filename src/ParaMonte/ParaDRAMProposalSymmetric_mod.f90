@@ -434,7 +434,10 @@ contains
                             ": Error occurred while computing the Cholesky factorization of &
                             &a matrix needed for the computation of the proposal distribution's adaptation measure. &
                             &Such error is highly unusual, and requires an in depth investigation of the case. &
-                            &Restarting the simulation might resolve the error."
+                            &It may also be that your input objective function has been incorrectly implemented.\n&
+                            &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
+                            &the same value that is expected as input to your objective function's implementation.\n&
+                            &Otherwise, restarting the simulation might resolve the error."
             call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
         end if
@@ -511,7 +514,7 @@ contains
 
             ! combine old and new covariance matrices if both exist
 
-            blockMergeCovMat: if (mv_sampleSizeOld_save==0) then
+            blockMergeCovMat: if (mv_sampleSizeOld_save==0_IK) then
 
                 ! There is no prior old Covariance matrix to combine with the new one from the new chain
 
@@ -623,7 +626,10 @@ contains
                                         &This is highly unusual, and can be indicative of some major underlying problems.\n&
                                         &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations. &
                                         &In such case, consider increasing the value of the input variable adaptiveUpdatePeriod.\n&
-                                        &Restarting the simulation might resolve the error."
+                                        &It may also be that your input objective function has been incorrectly implemented.\n&
+                                        &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
+                                        &the same value that is expected as input to your objective function's implementation.\n&
+                                        &Otherwise, restarting the simulation might resolve the error."
                         call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                !        call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mv_Err%msg )
                !        j = j + 1_IK
@@ -696,7 +702,7 @@ contains
             logSqrtDetNew = sum(log( comv_CholDiagLower(1:nd,0,0) ))
             do j = 1, nd
                 do i = 1,j
-                    CovMatUpperCurrent(i,j) = 0.5_RK * ( comv_CholDiagLower(i,j,0) + CovMatUpperOld(i,j) )
+                    CovMatUpperCurrent(i,j) = 0.5_RK * ( comv_CholDiagLower(i,j,0) + CovMatUpperOld(i,j) ) ! dummy
                 end do
             end do
             call getLogSqrtDetPosDefMat(nd,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
@@ -708,11 +714,13 @@ contains
                                 &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations. &
                                 &In such case, consider increasing the value of the input variable adaptiveUpdatePeriod.\n&
                                 &It may also be that your input objective function has been incorrectly implemented.\n&
-                                &Restarting the simulation might resolve the error."
+                                &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
+                                &the same value that is expected as input to your objective function's implementation.\n&
+                                &Otherwise, restarting the simulation might resolve the error."
                 call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                 return
             end if
-            hellingerDistSq = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
+            !hellingerDistSq = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
             if (hellingerDistSq<0._RK) then
                 call warn   ( prefix = mc_methodBrand &
                             , outputUnit = mc_logFileUnit &

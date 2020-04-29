@@ -16,24 +16,15 @@ pmpd = pm.ParaDRAM();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %pmpd.inputFile = './paramonte.in';
-pmpd.spec.chainSize = 10000;
-pmpd.spec.adaptiveUpdateCount = 0;
 
+%pmpd.spec.chainSize = 10000;
+%pmpd.spec.adaptiveUpdateCount = 2100000000;
+%pmpd.spec.adaptiveUpdatePeriod = 3000;
 %pmpd.runSampler(2,@getLogFunc);
-%pmpd.readChain("D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_180420_213248_768");
-
-%pmpd.spec.chainSize                             = 10000;
-%pmpd.spec.outputFileName                        = ["./out/temp/"];                % Works
-%pmpd.runSampler(4,@getLogFunc);
-%pmpd.readChain("ParaDRAM_run_")
-
-pmpd.spec.chainSize                             = 10000;
-pmpd.spec.adaptiveUpdateCount                   = 1000000;
-%pmpd.runSampler(20,@getLogFunc)
-pmpd.spec.outputFileName = "D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_270420_233234_959";
-pmpd.readMarkovChain();
-pmpd.readSample();
+pmpd.spec.outputFileName = "D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_280420_015239";
+%pmpd.readMarkovChain();
 pmpd.readChain(); %"ParaDRAM_run_180420_151344_607";%"D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_160420_023054_530");
+%pmpd.readSample();
 return
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMonte variables...

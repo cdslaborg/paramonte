@@ -132,11 +132,11 @@ classdef AutoCorr < dynamicprops
             % compute the autocorrelations
 
             nvar = length(colindex);
-            nlag = length(rowindex)-1;
+            nlag = length(rowindex);
             acf = zeros(nlag,nvar);
             bounds_array = zeros(2,nvar);
 
-            if nlag>0
+            if nlag>1
                 for i = 1:length(colindex)
                     [acf(:,i),lags,bounds_array(:,i)] = autocorr( self.dfref{rowindex,colindex(i)}, nlag-1 );
                 end

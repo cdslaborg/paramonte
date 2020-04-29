@@ -376,7 +376,7 @@ contains
                         end if
 #endif
 
-                        ! Note: after every adaptive update of the sampler, counterAUP is reset to 1.
+                        ! Note: after every adaptive update of the sampler, counterAUP is reset to 0.
                         if (counterAUP==0_IK .and. samplerUpdateSucceeded) then
                             numFunCallAcceptedLastAdaptation = numFunCallAcceptedLastAdaptation + 1_IK
                             lastStateWeight = 0_IK
@@ -523,7 +523,11 @@ contains
 
                         counterAUP = 0_IK
                         counterAUC = counterAUC + 1_IK
-                        if (counterAUC==PD%SpecDRAM%AdaptiveUpdateCount%val) chainAdaptationMeasure = 0._RK
+                        !if (counterAUC==PD%SpecDRAM%AdaptiveUpdateCount%val) chainAdaptationMeasure = 0._RK
+
+                    else blockSamplerAdaptation
+
+                        chainAdaptationMeasure = 0._RK
 
                     end if blockSamplerAdaptation
 
