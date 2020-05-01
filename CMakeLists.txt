@@ -553,6 +553,8 @@ endif()
 #: generate ParaMonte library build directories, object files, and dynamic libraries
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+#include_directories(BEFORE ${ParaMonte_LIB_DIR})
+
 # message( STATUS " ${pmattn} CMAKE_EXECUTABLE_SUFFIX_Fortran: ${CMAKE_EXECUTABLE_SUFFIX_Fortran}" )
 
 # Define the executable name
