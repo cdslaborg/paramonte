@@ -99,9 +99,9 @@ classdef OutputFileContents < dynamicprops
                 colheadersLen = length(d.colheaders);
             else
                 self.Err.marginTop = 1;
-                self.Err.marginBot = 0;
-                self.Err.msg = "The structure of the file """ + self.file + """ does not match a " + methodName + " " + fileType + "file." + newline ...
-                        + "Verify the contents of this file before attempting to read this file.";
+                self.Err.marginBot = 1;
+                self.Err.msg    = "The structure of the file """ + self.file + """ does not match a " + methodName + " " + fileType + "file. " ...
+                                + "Verify the contents of this file before attempting to read this file.";
                 self.Err.abort();
             end
             for icol = 1:colheadersLen
@@ -117,7 +117,7 @@ classdef OutputFileContents < dynamicprops
 
             if markovChainRequested
                 cumSumWeight = cumsum(d.data(:,self.offset-2));
-                if cumSumWeight(end) ~= self.count % it is indeed a compact chain
+                if cumSumWeight(end) > self.count % it is indeed a compact chain
                     dMarkov = zeros( cumSumWeight(end) , self.ndim + self.offset - 1 );
                     istart = 1;
                     for irow = 1:self.count
@@ -129,6 +129,12 @@ classdef OutputFileContents < dynamicprops
                     end
                     d.data = dMarkov;
                     self.count = cumSumWeight(end);
+                elseif cumSumWeight(end) < self.count % there is something wrong about this chain output file
+                    self.Err.marginTop = 1;
+                    self.Err.marginBot = 1;
+                    self.Err.msg    = "The internal contents of the file """ + self.file + """ does not match a " + methodName + " " + fileType + "file. " ...
+                                    + "In particular, the SampleWeight data column in this file appears to contain values that are either non-positive or non-integer.";
+                    self.Err.abort();
                 end
             end
 

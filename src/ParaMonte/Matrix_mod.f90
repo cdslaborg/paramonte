@@ -88,8 +88,8 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! ATTN: Do not call this routine when nd = 1. Results may be wrong. There is no need to call this routine when nd = 1.
-    ! This code returns the inverse matrix of a symmetric-positive-definite input matrixو
+    ! ATTN: Do not call this routine when nd = 1. There is no need to call this routine when nd = 1.
+    ! This code returns the inverse matrix of a symmetric-positive-definite input matrix.
     ! which is given in the upper triangle of MatInvMat.
     ! On output MatInvMat is completely overwritten by in the inverse of the matrix.
     ! Also returns: determinant of the inverse matrix.
@@ -139,7 +139,8 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! ATTN: Do not call this routine when nd = 1. Results may be wrong. There is no need to call this routine when nd = 1.
+    ! ATTN: Do not call this routine when nd = 1. There is no need to call this routine when nd = 1.
+    ! for nd==1: InvMatFromCholFac = 1._RK / Diagonal(1)**2
     ! Returns the inverse of a matrix whose Cholesky Lower triangle is given in the lower part of CholeskyLower,
     ! and its diagonal elements in Diagonal.
     pure function getInvMatFromCholFac(nd,CholeskyLower,Diagonal) result(InvMatFromCholFac)
@@ -154,7 +155,7 @@ contains
         real(RK)                :: summ
         integer(IK)             :: i,j,k
         !if (nd==1) then
-        !    InvMatFromCholFac(1) = sqrt(PosDefMat(1))
+        !    InvMatFromCholFac(1) = 1._RK / Diagonal(1)**2
         !    return
         !end if
         InvMatFromCholFac = 0._RK
@@ -176,8 +177,9 @@ contains
         do i = 1,nd
             do j = i,nd
                 InvMatFromCholFac(j,i) = dot_product(InvMatFromCholFac(j:nd,j),InvMatFromCholFac(j:nd,i))
+                InvMatFromCholFac(i,j) = InvMatFromCholFac(j,i)
             end do
-            InvMatFromCholFac(i,i:nd) = InvMatFromCholFac(i:nd,i)
+            !InvMatFromCholFac(i,i:nd) = InvMatFromCholFac(i:nd,i)
         end do
     end function getInvMatFromCholFac
 
@@ -648,6 +650,22 @@ contains
             end do
         end do loopIndx
     end function sortPosDefMat
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    pure subroutine symmetrizeUpperSquareMatrix(nd,UpperSquareMatrix)
+        use Constants_mod, only: RK, IK
+        implicit none
+        integer(IK) , intent(in)    :: nd
+        integer(RK) , intent(inout) :: UpperSquareMatrix(nd,nd)
+        integer(IK)                 :: i, j
+        do j = 1, nd
+            do i = 1,j-1
+                UpperSquareMatrix(j,i) = UpperSquareMatrix(i,j)
+            end do
+        end do
+    end subroutine symmetrizeUpperSquareMatrix
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

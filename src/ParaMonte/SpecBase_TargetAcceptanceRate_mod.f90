@@ -29,11 +29,12 @@ module SpecBase_TargetAcceptanceRate_mod
 
     character(*), parameter         :: MODULE_NAME = "@SpecBase_TargetAcceptanceRate_mod"
 
-    real(RK)                        :: targetAcceptanceRate ! namelist input
+    real(RK)                        :: TargetAcceptanceRate(2) ! namelist input
 
     type                            :: TargetAcceptanceRate_type
         logical                     :: scalingRequested
-        real(RK)                    :: val
+        real(RK)                    :: Val(2)
+        real(RK)                    :: Def(2)
         real(RK)                    :: null
         character(:), allocatable   :: desc
     contains
@@ -64,18 +65,10 @@ contains
         character(*), intent(in)            :: methodName
         type(TargetAcceptanceRate_type)     :: TargetAcceptanceRateObj
         TargetAcceptanceRateObj%scalingRequested = .true.
+        TargetAcceptanceRateObj%Def = [ 0._RK, 1._RK ]
         TargetAcceptanceRateObj%null = NULL_RK
         TargetAcceptanceRateObj%desc = &
-        "targetAcceptanceRate sets an optimal target for the ratio of the number of accepted objective function calls to the &
-        &total number of function calls by " // methodName // ". By default, it is a real number between 0 and 1. &
-        &If provided by the user, " // methodName // " will attempt (but not guarantee) to bring the average acceptance ratio &
-        &of the sampler as close to the user-provided target ratio as possible. The success of " // methodName // &
-        " in keeping the average acceptance ratio close to the requested target value depends heavily on:\n&
-        &    1) the value of adaptiveUpdatePeriod; the larger, the easier.\n&
-        &    2) the value of adaptiveUpdateCount; the larger, the easier.\n&
-        &Note that the acceptance ratio adjustments will only occur every adaptiveUpdatePeriod sampling steps for a total &
-        &number of adaptiveUpdateCount. &
-        &There is no default value for targetAcceptanceRate, as the acceptance ratio is not directly adjusted during sampling."
+#include "SpecBase_TargetAcceptanceRate_desc.f90"
     end function constructTargetAcceptanceRate
 
 !***********************************************************************************************************************************
@@ -87,22 +80,34 @@ contains
 #endif
         implicit none
         class(TargetAcceptanceRate_type), intent(in)  :: TargetAcceptanceRateObj
-        targetAcceptanceRate = TargetAcceptanceRateObj%null
+        TargetAcceptanceRate = TargetAcceptanceRateObj%null
     end subroutine nullifyNameListVar
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine setTargetAcceptanceRate(TargetAcceptanceRateObj,targetAcceptanceRate)
+    subroutine setTargetAcceptanceRate(TargetAcceptanceRateObj,TargetAcceptanceRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setTargetAcceptanceRate
 #endif
         use Constants_mod, only: RK
         implicit none
         class(TargetAcceptanceRate_type), intent(inout)     :: TargetAcceptanceRateObj
-        real(RK), intent(in)                                :: targetAcceptanceRate
-        TargetAcceptanceRateObj%val = targetAcceptanceRate
-        if (TargetAcceptanceRateObj%val==TargetAcceptanceRateObj%null) TargetAcceptanceRateObj%scalingRequested = .false.
+        real(RK), intent(in)                                :: TargetAcceptanceRate(2)
+        logical                                             :: lowerLimitSet, upperLimitSet
+        TargetAcceptanceRateObj%Val = TargetAcceptanceRate
+        lowerLimitSet = TargetAcceptanceRateObj%Val(1)/=TargetAcceptanceRateObj%null
+        upperLimitSet = TargetAcceptanceRateObj%Val(2)/=TargetAcceptanceRateObj%null
+        if      ( lowerLimitSet .and. (.not. upperLimitSet) ) then
+            TargetAcceptanceRateObj%Val(2) = TargetAcceptanceRateObj%Val(1)
+        elseif  ( upperLimitSet .and. (.not. lowerLimitSet) ) then
+            TargetAcceptanceRateObj%Val(1) = TargetAcceptanceRateObj%Val(2)
+        elseif  ( .not. (lowerLimitSet .or.  upperLimitSet) ) then
+            TargetAcceptanceRateObj%Val = TargetAcceptanceRateObj%Def
+            TargetAcceptanceRateObj%scalingRequested = .false.
+        elseif ( all(TargetAcceptanceRateObj%Val==TargetAcceptanceRateObj%Def) ) then
+            TargetAcceptanceRateObj%scalingRequested = .false.
+        end if
     end subroutine setTargetAcceptanceRate
 
 !***********************************************************************************************************************************
@@ -120,19 +125,21 @@ contains
         type(Err_type), intent(inout)       :: Err
         character(*), parameter             :: PROCEDURE_NAME = "@checkForSanity()"
         if (.not. TargetAcceptanceRateObj%scalingRequested) return
-        if ( TargetAcceptanceRateObj%val<=0._RK ) then
+        if ( any(TargetAcceptanceRateObj%val<0._RK) .or. any(TargetAcceptanceRateObj%val>1._RK) ) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &The target acceptance ratio targetAcceptanceRate (" // num2str(TargetAcceptanceRateObj%val) // &
-                        ") cannot be less than or equal to 0.\n\n"
+                        &The target acceptance ratio limits targetAcceptanceRate [" // &
+                        num2str(TargetAcceptanceRateObj%val) // "," // num2str(TargetAcceptanceRateObj%val) // &
+                        "] cannot be less than 0 or larger than 1.\n\n"
         end if
-        if ( TargetAcceptanceRateObj%val>=1._RK ) then
+        if ( all(TargetAcceptanceRateObj%val==0._RK) .or. all(TargetAcceptanceRateObj%val==1._RK) ) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &The target acceptance ratio targetAcceptanceRate (" // num2str(TargetAcceptanceRateObj%val) // &
-                        ") cannot be larger than or equal to 1.\n\n"
+                        &The target acceptance ratio limits targetAcceptanceRate [" // &
+                        num2str(TargetAcceptanceRateObj%val) // "," // num2str(TargetAcceptanceRateObj%val) // &
+                        "] cannot be both 0 or both 1.\n\n"
         end if
     end subroutine checkForSanity
 

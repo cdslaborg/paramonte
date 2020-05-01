@@ -76,7 +76,7 @@ module ParaDRAMProposal_mod
                                     , samplerUpdateIsGreedy     &
                                     , meanAccRateSinceStart     &
                                     , samplerUpdateSucceeded    &
-                                    , hellingerDistSq           &
+                                    , adaptationMeasure         &
                                     )
             use Constants_mod, only: IK, RK
             import :: Proposal_type
@@ -88,7 +88,7 @@ module ParaDRAMProposal_mod
             logical    , intent(in)             :: samplerUpdateIsGreedy
             real(RK)   , intent(in)             :: meanAccRateSinceStart
             logical    , intent(out)            :: samplerUpdateSucceeded
-            real(RK)   , intent(inout)          :: hellingerDistSq
+            real(RK)   , intent(out)            :: adaptationMeasure
         end subroutine doAdaptation_proc
     end interface
 

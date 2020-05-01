@@ -92,7 +92,8 @@ contains
         real(RK)                            :: sumAccRateLastReport                             ! used for progress-report: must be initialized to zero upon entry to the procedure
         real(RK)                            :: uniformRnd                                       ! used for random number generation.
         real(RK)                            :: meanAccRateSinceStart                            ! used for restart file read
-        real(RK)                            :: chainAdaptationMeasure
+        real(RK)                            :: adaptationMeasure
+        real(RK)                            :: adaptationMeasureDummy
         real(RK)                            :: maxLogFuncRejectedProposal
         logical                             :: samplerUpdateIsGreedy
         logical                             :: samplerUpdateSucceeded
@@ -152,6 +153,7 @@ contains
         SumAccRateSinceStart%acceptedRejectedDelayed    = 0._RK                                 ! sum of acceptance rate
         end if
 
+        adaptationMeasure                               = 0._RK                                 ! needed for the first output
         SumAccRateSinceStart%acceptedRejected           = 0._RK                                 ! sum of acceptance rate
         PD%Stats%NumFunCall%acceptedRejected            = 0_IK                                  ! Markov Chain counter
         counterAUC                                      = 0_IK                                  ! counter for padaptiveUpdateCount.
@@ -159,7 +161,6 @@ contains
         counterAUP                                      = 0_IK                                  ! counter for adaptiveUpdatePeriod. 
         PD%Stats%NumFunCall%accepted                    = 0_IK                                  ! Markov Chain acceptance counter.
         samplerUpdateSucceeded                          = .true.                                ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
-        chainAdaptationMeasure                          = 0._RK                                 ! needed for the first output
         numFunCallAcceptedLastAdaptation                = 0_IK
         lastStateWeight                                 = -huge(lastStateWeight)
 
@@ -386,7 +387,7 @@ contains
 
                             PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)    = imageID
                             PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)  = counterDRS
-                            PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)   = chainAdaptationMeasure
+                            PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)   = adaptationMeasure
                             PD%Chain%Weight(PD%Stats%NumFunCall%accepted)       = 0_IK
                             PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)      = co_LogFuncState(0,-1)
                             PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)   = co_LogFuncState(1:nd,-1)
@@ -509,11 +510,14 @@ contains
                                                         , samplerUpdateIsGreedy     = samplerUpdateIsGreedy                                                                 &
                                                         , meanAccRateSinceStart     = meanAccRateSinceStart                                                                 &
                                                         , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                &
-                                                        , hellingerDistSq           = chainAdaptationMeasure                                                                &
+                                                        , adaptationMeasure         = adaptationMeasureDummy                                                                &
                                                         )
 
                         PD%Chain%Weight(PD%Stats%NumFunCall%accepted) = dummy   ! needed for the restart mode, not needed in the fresh run
-                        if (PD%Stats%NumFunCall%accepted/=numFunCallAcceptedLastAdaptation) then
+                        if (PD%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then
+                            adaptationMeasure = adaptationMeasure + adaptationMeasureDummy ! this is the worst-case upper-bound
+                        else
+                            adaptationMeasure = adaptationMeasureDummy
                             PD%Chain%Weight(numFunCallAcceptedLastAdaptation) = PD%Chain%Weight(numFunCallAcceptedLastAdaptation) + lastStateWeight
                         end if
                         if (samplerUpdateSucceeded) then
@@ -523,11 +527,11 @@ contains
 
                         counterAUP = 0_IK
                         counterAUC = counterAUC + 1_IK
-                        !if (counterAUC==PD%SpecDRAM%AdaptiveUpdateCount%val) chainAdaptationMeasure = 0._RK
+                        if (counterAUC==PD%SpecDRAM%AdaptiveUpdateCount%val) adaptationMeasure = 0._RK
 
-                    else blockSamplerAdaptation
+                    !else blockSamplerAdaptation
 
-                        chainAdaptationMeasure = 0._RK
+                        !adaptationMeasure = 0._RK
 
                     end if blockSamplerAdaptation
 

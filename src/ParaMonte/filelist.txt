@@ -47,11 +47,11 @@
 !  SpecBase_ParallelizationModel_mod.f90
 !  SpecBase_InputFileHasPriority_mod.f90
 !  SpecBase_ProgressReportPeriod_mod.f90
-!  SpecBase_TargetAcceptanceRate_mod.f90
+  SpecBase_TargetAcceptanceRate_mod.f90
 !  SpecBase_MpiFinalizeRequested_mod.f90
 !  SpecBase_MaxNumDomainCheckToWarn_mod.f90
 !  SpecBase_MaxNumDomainCheckToStop_mod.f90
-!  SpecBase_mod.f90
+  SpecBase_mod.f90
 !  !
 !  SpecMCMC_ChainSize_mod.f90
 !  SpecMCMC_ScaleFactor_mod.f90

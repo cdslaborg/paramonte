@@ -66,7 +66,7 @@ module SpecBase_mod
     use SpecBase_ParallelizationModel_mod           , only: ParallelizationModel
     use SpecBase_InputFileHasPriority_mod           , only: inputFileHasPriority
     use SpecBase_ProgressReportPeriod_mod           , only: progressReportPeriod
-    use SpecBase_TargetAcceptanceRate_mod           , only: targetAcceptanceRate
+    use SpecBase_TargetAcceptanceRate_mod           , only: TargetAcceptanceRate
     use SpecBase_MpiFinalizeRequested_mod           , only: mpiFinalizeRequested
     use SpecBase_MaxNumDomainCheckToWarn_mod        , only: maxNumDomainCheckToWarn
     use SpecBase_MaxNumDomainCheckToStop_mod        , only: maxNumDomainCheckToStop
@@ -231,7 +231,7 @@ contains
         call SpecBase%ProgressReportPeriod          %set(progressReportPeriod)
         call SpecBase%ParallelizationModel          %set(parallelizationModel)
         call SpecBase%InputFileHasPriority          %set(inputFileHasPriority)
-        call SpecBase%TargetAcceptanceRate          %set(targetAcceptanceRate)
+        call SpecBase%TargetAcceptanceRate          %set(TargetAcceptanceRate)
         call SpecBase%MpiFinalizeRequested          %set(mpiFinalizeRequested)
         call SpecBase%MaxNumDomainCheckToWarn       %set(maxNumDomainCheckToWarn)
         call SpecBase%MaxNumDomainCheckToStop       %set(maxNumDomainCheckToStop)
@@ -262,7 +262,7 @@ contains
                                 , silentModeRequested &
                                 , parallelizationModel &
                                 , progressReportPeriod &
-                                , targetAcceptanceRate &
+                                , TargetAcceptanceRate &
                                 , mpiFinalizeRequested &
                                 , maxNumDomainCheckToWarn &
                                 , maxNumDomainCheckToStop &
@@ -297,7 +297,7 @@ contains
         real(RK)    , intent(in), optional  :: domainUpperLimitVec(:)
         character(*), intent(in), optional  :: parallelizationModel
         integer(IK) , intent(in), optional  :: progressReportPeriod
-        real(RK)    , intent(in), optional  :: targetAcceptanceRate
+        real(RK)    , intent(in), optional  :: TargetAcceptanceRate(2)
         logical     , intent(in), optional  :: mpiFinalizeRequested
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToWarn
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToStop
@@ -320,7 +320,7 @@ contains
         if (present(outputRealPrecision))           call SpecBase%OutputRealPrecision           %set(outputRealPrecision)
         if (present(silentModeRequested))           call SpecBase%SilentModeRequested           %set(silentModeRequested)
         if (present(progressReportPeriod))          call SpecBase%ProgressReportPeriod          %set(progressReportPeriod)
-        if (present(targetAcceptanceRate))          call SpecBase%TargetAcceptanceRate          %set(targetAcceptanceRate)
+        if (present(TargetAcceptanceRate))          call SpecBase%TargetAcceptanceRate          %set(TargetAcceptanceRate)
         if (present(mpiFinalizeRequested))          call SpecBase%MpiFinalizeRequested          %set(mpiFinalizeRequested)
         if (present(maxNumDomainCheckToWarn))       call SpecBase%MaxNumDomainCheckToWarn       %set(maxNumDomainCheckToWarn)
         if (present(maxNumDomainCheckToStop))       call SpecBase%MaxNumDomainCheckToStop       %set(maxNumDomainCheckToStop)
@@ -428,10 +428,14 @@ contains
             write(outputUnit,formatStr)
             write(outputUnit,formatStr) "targetAcceptanceRate"
             write(outputUnit,formatStr)
-            if ( SpecBase%TargetAcceptanceRate%val == SpecBase%TargetAcceptanceRate%null ) then
-                write(outputUnit,formatVal) "UNDEFINED"
+            if ( SpecBase%TargetAcceptanceRate%scalingRequested ) then
+                if ( SpecBase%TargetAcceptanceRate%Val(1)==SpecBase%TargetAcceptanceRate%Val(2) ) then
+                    write(outputUnit,formatVal) SpecBase%TargetAcceptanceRate%Val(1)
+                else
+                    write(outputUnit,formatVal) "[", SpecBase%TargetAcceptanceRate%Val(1), ",", SpecBase%TargetAcceptanceRate%Val(2), "]"
+                end if
             else
-                write(outputUnit,formatVal) SpecBase%TargetAcceptanceRate%val
+                write(outputUnit,formatVal) "UNDEFINED"
             end if
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%TargetAcceptanceRate%desc )
 

@@ -57,7 +57,7 @@ contains
                                 , domainUpperLimitVec                   &
                                 , parallelizationModel                  &
                                 , progressReportPeriod                  &
-                                , targetAcceptanceRate                  &
+                                , TargetAcceptanceRate                  &
                                 , mpiFinalizeRequested                  &
                                 , maxNumDomainCheckToWarn               &
                                 , maxNumDomainCheckToStop               &
@@ -124,7 +124,7 @@ contains
         logical     , intent(in), optional  :: silentModeRequested
         character(*), intent(in), optional  :: parallelizationModel
         integer(IK) , intent(in), optional  :: progressReportPeriod
-        real(RK)    , intent(in), optional  :: targetAcceptanceRate
+        real(RK)    , intent(in), optional  :: TargetAcceptanceRate(2)
         logical     , intent(in), optional  :: mpiFinalizeRequested
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToWarn
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToStop
@@ -216,7 +216,7 @@ contains
                                                 , domainUpperLimitVec                   = domainUpperLimitVec                   &
                                                 , parallelizationModel                  = parallelizationModel                  &
                                                 , progressReportPeriod                  = progressReportPeriod                  &
-                                                , targetAcceptanceRate                  = targetAcceptanceRate                  &
+                                                , TargetAcceptanceRate                  = TargetAcceptanceRate                  &
                                                 , mpiFinalizeRequested                  = mpiFinalizeRequested                  &
                                                 , maxNumDomainCheckToWarn               = maxNumDomainCheckToWarn               &
                                                 , maxNumDomainCheckToStop               = maxNumDomainCheckToStop               &
@@ -1338,7 +1338,7 @@ contains
         use SpecBase_ParallelizationModel_mod               , only: parallelizationModel
         use SpecBase_InputFileHasPriority_mod               , only: inputFileHasPriority
         use SpecBase_ProgressReportPeriod_mod               , only: progressReportPeriod
-        use SpecBase_TargetAcceptanceRate_mod               , only: targetAcceptanceRate
+        use SpecBase_TargetAcceptanceRate_mod               , only: TargetAcceptanceRate
         use SpecBase_MpiFinalizeRequested_mod               , only: mpiFinalizeRequested
         use SpecBase_MaxNumDomainCheckToWarn_mod            , only: maxNumDomainCheckToWarn
         use SpecBase_MaxNumDomainCheckToStop_mod            , only: maxNumDomainCheckToStop
@@ -1390,7 +1390,7 @@ contains
         namelist /ParaDRAM/ parallelizationModel
         namelist /ParaDRAM/ progressReportPeriod
         namelist /ParaDRAM/ inputFileHasPriority
-        namelist /ParaDRAM/ targetAcceptanceRate
+        namelist /ParaDRAM/ TargetAcceptanceRate
         namelist /ParaDRAM/ mpiFinalizeRequested
         namelist /ParaDRAM/ maxNumDomainCheckToWarn
         namelist /ParaDRAM/ maxNumDomainCheckToStop

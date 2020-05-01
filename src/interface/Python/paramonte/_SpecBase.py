@@ -107,8 +107,8 @@ class _SpecBase():
             raise TypeError("The input specification, progressReportPeriod, must be of type int.")
 
     def targetAcceptanceRate(self,targetAcceptanceRate):
-        if isinstance(targetAcceptanceRate,float):
-            return "targetAcceptanceRate=" + str(targetAcceptanceRate) + _delim
+        if isinstance(targetAcceptanceRate,(float,list,tuple,_np.ndarray)):
+            return "targetAcceptanceRate=" + str(_np.array(list(targetAcceptanceRate)).flatten()).strip('[]') + _delim
         else:
             raise TypeError("The input specification, targetAcceptanceRate, must be of type float.")
 

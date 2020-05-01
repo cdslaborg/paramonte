@@ -103,6 +103,10 @@ classdef GridPlot < BasePlot
             %                                                    + self.layout.colorbar.width ...
             %                                                    );
 
+            for i = 1:self.plotTypeListLen
+                self.layout.axis.subplot.(self.plotTypeList{i}) = struct();
+            end
+
             self.updateLayout();
 
             self.isdryrun = true;
@@ -212,26 +216,54 @@ classdef GridPlot < BasePlot
 
                     %self.layout.subplot.(self.plotTypeList(i)).ycolumns = {};
 
+                    if strcmp(self.plotTypeList(i),"histogram2")
+                        if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"histogram2_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).histogram2_kws)
+                            self.layout.subplot.(self.plotTypeList(i)).histogram2_kws = struct();
+                        end
+                        keyList = ["numbins", "showemptybins"]; 
+                        valueList = {[100 100], "off"};
+                        for j = 1:length(keyList)
+                            prop = keyList(j);
+                            defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)).histogram2_kws,prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).histogram2_kws.(prop));
+                            if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).histogram2_kws.(prop) = valueList{j}; end
+                        end
+                        prop = "colormap";
+                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
+                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = {}; end
+                    end
+
                     if ccolumnIsPresent
                         if contains(self.plotTypeList(i),"3")
                             self.layout.subplot.(self.plotTypeList(i)).zcolumns = self.ccolumn;
                         end
-                        if strcmp(self.plotTypeList(i),"histogram2")
-                            self.layout.subplot.(self.plotTypeList(i)).histogram2_kws.numbins = [100 100];
-                            self.layout.subplot.(self.plotTypeList(i)).histogram2_kws.showemptybins = "off";
-                            self.layout.subplot.(self.plotTypeList(i)).colormap = {};
-                        else
+                        if ~strcmp(self.plotTypeList(i),"histogram2")
                             self.layout.subplot.(self.plotTypeList(i)).ccolumns = self.ccolumn;
                             if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"plot_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).plot_kws)
                                 self.layout.subplot.(self.plotTypeList(i)).plot_kws = struct();
                             end
-                            self.layout.subplot.(self.plotTypeList(i)).plot_kws.linewidth = 0.75;
-                            self.layout.subplot.(self.plotTypeList(i)).plot_kws.color = uint8([200 200 200 100]);
-                            self.layout.subplot.(self.plotTypeList(i)).plot_kws.enabled = true;
-                            self.layout.subplot.(self.plotTypeList(i)).surface_kws.enabled = false;
-                            self.layout.subplot.(self.plotTypeList(i)).colormap = {}; % self.colormap
+                            keyList = ["linewidth", "color", "enabled"]; 
+                            valueList = {0.75, uint8([200 200 200 100]), true};
+                            for j = 1:length(keyList)
+                                prop = keyList(j);
+                                defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)).plot_kws,prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).plot_kws.(prop));
+                                if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).plot_kws.(prop) = valueList{j}; end
+                            end
+                            if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"surface_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).surface_kws)
+                                self.layout.subplot.(self.plotTypeList(i)).surface_kws = struct();
+                            end
+                            if ~isfield(self.layout.subplot.(self.plotTypeList(i)).surface_kws,"enabled") || isempty(self.layout.subplot.(self.plotTypeList(i)).surface_kws.enabled)
+                                self.layout.subplot.(self.plotTypeList(i)).surface_kws.enabled = false;
+                            end
+                            prop = "colormap";
+                            defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
+                            if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = {}; end
                         end
-                        self.layout.subplot.(self.plotTypeList(i)).colorbar_kws.enabled = false;
+                        prop = "colorbar_kws";
+                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
+                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = struct(); end
+                        prop = "enabled";
+                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)).colorbar_kws,prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).colorbar_kws.(prop));
+                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).colorbar_kws.(prop) = false; end
                     end
 
                 end

@@ -99,7 +99,7 @@ classdef SpecBaseVerify < SpecVerification
         end
 
         function result = targetAcceptanceRate(self,targetAcceptanceRate)
-            result = self.verifySpec(targetAcceptanceRate,"real",1);
+            result = self.verifySpec(targetAcceptanceRate,"real",2);
         end
 
         function result = mpiFinalizeRequested(self,mpiFinalizeRequested)

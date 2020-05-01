@@ -1,6 +1,6 @@
-clc;
-clear all;
-close all;
+%clc;
+%clear all;
+%close all;
 clear classes;
 format compact; format long;
 pmlibRootDir = '../'; % set this path to the paramonte library root dir
@@ -20,8 +20,10 @@ pmpd = pm.ParaDRAM();
 %pmpd.spec.chainSize = 10000;
 %pmpd.spec.adaptiveUpdateCount = 2100000000;
 %pmpd.spec.adaptiveUpdatePeriod = 3000;
-%pmpd.runSampler(2,@getLogFunc);
-pmpd.spec.outputFileName = "D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_280420_015239";
+pmpd.spec.randomSeed = 35671;
+pmpd.spec.targetAcceptanceRate = [ 0.99 0.9999 ];
+pmpd.runSampler(2,@getLogFunc);
+%pmpd.spec.outputFileName = "D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_300420_012424_780";
 %pmpd.readMarkovChain();
 pmpd.readChain(); %"ParaDRAM_run_180420_151344_607";%"D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_160420_023054_530");
 %pmpd.readSample();

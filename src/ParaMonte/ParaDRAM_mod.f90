@@ -113,7 +113,7 @@ module ParaDRAM_mod
                                 , domainUpperLimitVec                   &
                                 , parallelizationModel                  &
                                 , progressReportPeriod                  &
-                                , targetAcceptanceRate                  &
+                                , TargetAcceptanceRate                  &
                                 , mpiFinalizeRequested                  &
                                 , maxNumDomainCheckToWarn               &
                                 , maxNumDomainCheckToStop               &
@@ -172,7 +172,7 @@ module ParaDRAM_mod
         real(RK)    , intent(in), optional  :: domainUpperLimitVec(ndim)
         character(*), intent(in), optional  :: parallelizationModel
         integer(IK) , intent(in), optional  :: progressReportPeriod
-        real(RK)    , intent(in), optional  :: targetAcceptanceRate
+        real(RK)    , intent(in), optional  :: TargetAcceptanceRate(2)
         logical     , intent(in), optional  :: mpiFinalizeRequested
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToWarn
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToStop

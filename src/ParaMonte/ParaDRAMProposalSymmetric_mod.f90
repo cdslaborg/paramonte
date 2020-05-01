@@ -87,6 +87,7 @@ module ParaDRAMProposalSymmetric_mod
     logical         , save                  :: mc_delayedRejectionRequested
     real(RK)        , save                  :: mc_ndimInverse
     real(RK)        , save                  :: mc_targetAcceptanceRate
+    real(RK)        , save                  :: mc_TargetAcceptanceRateLimit(2)
    !real(RK)        , save                  :: mc_maxScaleFactor != 2._RK
    !real(RK)        , save                  :: mc_maxScaleFactorSq != mc_maxScaleFactor**2
     real(RK)        , save  , allocatable   :: mc_DelayedRejectionScaleFactorVec(:)
@@ -94,7 +95,7 @@ module ParaDRAMProposalSymmetric_mod
     real(RK)        , save  , allocatable   :: mc_DomainUpperLimitVec(:)
     character(:)    , save  , allocatable   :: mc_MaxNumDomainCheckToWarnMsg
     character(:)    , save  , allocatable   :: mc_MaxNumDomainCheckToStopMsg
-    character(:)    , save  , allocatable   :: mc_negativeHellingerDistSqMsg
+    character(:)    , save  , allocatable   :: mc_negativeTotalVariationMsg
     character(:)    , save  , allocatable   :: mc_restartFileFormat
     character(:)    , save  , allocatable   :: mc_methodBrand
     character(:)    , save  , allocatable   :: mc_methodName
@@ -198,7 +199,8 @@ contains
         mc_scalingRequested                 = SpecBase%TargetAcceptanceRate%scalingRequested
 
         if (mc_scalingRequested) then
-            mc_targetAcceptanceRate         = SpecBase%TargetAcceptanceRate%val
+            mc_TargetAcceptanceRateLimit    = SpecBase%TargetAcceptanceRate%Val
+            mc_targetAcceptanceRate         = sum(mc_TargetAcceptanceRateLimit) / 2._RK
         else
             mc_targetAcceptanceRate         = 1._RK !0.234_RK
         end if
@@ -279,7 +281,7 @@ contains
 
         ! This will be used for Domain boundary checking during the simulation
 
-        mc_negativeHellingerDistSqMsg = MODULE_NAME//"@doAdaptation(): Non-positive adaptation measure detected, possibly due to round-off error: "
+        mc_negativeTotalVariationMsg = MODULE_NAME//"@doAdaptation(): Non-positive adaptation measure detected, possibly due to round-off error: "
         mc_MaxNumDomainCheckToWarnMsg = MODULE_NAME//"@getNew(): "//num2str(mc_MaxNumDomainCheckToWarn)//&
                                         " proposals were drawn out of the objective function's Domain without any acceptance."
         mc_MaxNumDomainCheckToStopMsg = MODULE_NAME//"@getNew(): "//num2str(mc_MaxNumDomainCheckToStop)//&
@@ -395,7 +397,7 @@ contains
 !***********************************************************************************************************************************
 
     ! ATTN: This routine may need further correction for the delayed rejection method
-    subroutine doAutoTune   ( hellingerDistSq   &
+    subroutine doAutoTune   ( adaptationMeasure &
                             , AutoTuneScaleSq   &
                             )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -408,7 +410,7 @@ contains
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAutoTune()"
        !class(ProposalSymmetric_type), intent(inout)    :: Proposal
         real(RK)   , intent(in)                         :: AutoTuneScaleSq(1)
-        real(RK)   , intent(inout)                      :: hellingerDistSq
+        real(RK)   , intent(inout)                      :: adaptationMeasure
         real(RK)                                        :: logSqrtDetNew, logSqrtDetSum, mv_logSqrtDetOld_save
         real(RK)                                        :: CovMatUpperOld(1,1), CovMatUpperCurrent(1,1)
         logical                                         :: singularityOccurred
@@ -441,7 +443,7 @@ contains
             call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
         end if
-        hellingerDistSq = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
+        adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
 
     end subroutine doAutoTune
 
@@ -455,7 +457,7 @@ contains
                             , samplerUpdateIsGreedy     &
                             , meanAccRateSinceStart     &
                             , samplerUpdateSucceeded    &
-                            , hellingerDistSq           &
+                            , adaptationMeasure         &
                             )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doAdaptation
@@ -478,7 +480,7 @@ contains
         logical    , intent(in)                         :: samplerUpdateIsGreedy
         real(RK)   , intent(in)                         :: meanAccRateSinceStart
         logical    , intent(out)                        :: samplerUpdateSucceeded
-        real(RK)   , intent(inout)                      :: hellingerDistSq
+        real(RK)   , intent(out)                        :: adaptationMeasure
 
         integer(IK)                                     :: i, j
         real(RK)                                        :: MeanNew(nd)
@@ -488,7 +490,7 @@ contains
         real(RK)                                        :: logSqrtDetNew
         real(RK)                                        :: logSqrtDetSum
         real(RK)                                        :: adaptiveScaleFactor
-        logical                                         :: hellingerComputationNeeded ! only used to avoid redundant Hellinger computation, if no update occurs
+        logical                                         :: adaptationMeasureComputationNeeded ! only used to avoid redundant affinity computation, if no update occurs
         logical                                         :: singularityOccurred, scalingNeeded
         integer(IK)                                     :: sampleSizeOld, sampleSizeCurrent
 
@@ -592,19 +594,24 @@ contains
 
             blockPosDefCheck: if (comv_CholDiagLower(1,0,0)>0._RK) then
 
-                singularityOccurred = .false.
+                !singularityOccurred = .false.
                 samplerUpdateSucceeded = .true.
-                hellingerComputationNeeded = .true.
+                adaptationMeasureComputationNeeded = .true.
                 mv_sampleSizeOld_save = mv_sampleSizeOld_save + sampleSizeCurrent
 
             else blockPosDefCheck
 
+                adaptationMeasure = 0._RK
+                !singularityOccurred = .true.
+                samplerUpdateSucceeded = .false.
+                adaptationMeasureComputationNeeded = .false.
+                mv_sampleSizeOld_save = sampleSizeOld
+
                 ! it may be a good idea to add a warning message printed out here for the singularity occurrence
 
-                singularityOccurred = .true.
-                samplerUpdateSucceeded = .false.
-                hellingerComputationNeeded = .false.
-                mv_sampleSizeOld_save = sampleSizeOld
+                call warn   ( prefix = mc_methodBrand &
+                            , outputUnit = mc_logFileUnit &
+                            , msg = "Singularity occurred while updating the proposal distribution's covariance matrix." )
 
                 ! recover the old upper covariance matrix
 
@@ -616,30 +623,26 @@ contains
 
                 ! ensure the old Cholesky factorization can be recovered
 
-                !j = 0_IK
-                !do
-                    call getCholeskyFactor( nd, comv_CholDiagLower(1:nd,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
-                    if (comv_CholDiagLower(1,0,0)<0._RK) then
-                        mv_Err%msg =    PROCEDURE_NAME // &
-                                        ": Error occurred while attempting to compute the Cholesky factorization of the &
-                                        &covariance matrix of the proposal distribution of " // mc_methodName // "'s sampler. &
-                                        &This is highly unusual, and can be indicative of some major underlying problems.\n&
-                                        &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations. &
-                                        &In such case, consider increasing the value of the input variable adaptiveUpdatePeriod.\n&
-                                        &It may also be that your input objective function has been incorrectly implemented.\n&
-                                        &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
-                                        &the same value that is expected as input to your objective function's implementation.\n&
-                                        &Otherwise, restarting the simulation might resolve the error."
-                        call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
-               !        call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mv_Err%msg )
-               !        j = j + 1_IK
-               !        do i = 1, nd
-               !            write(mc_logFileUnit,
-               !            comv_CholDiagLower(i,i,0) = comv_CholDiagLower(i,i,0) + 2_IK**j * EPS_RK
-               !        end do
-                    end if
-               !    exit
-               !end do
+                call getCholeskyFactor( nd, comv_CholDiagLower(1:nd,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
+                if (comv_CholDiagLower(1,0,0)<0._RK) then
+                    write(mc_logFileUnit,"(A)")
+                    write(mc_logFileUnit,"(A)") "Singular covariance matrix detected:"
+                    write(mc_logFileUnit,"(A)")
+                    do j = 1, nd
+                        write(mc_logFileUnit,"(*(E25.15))") comv_CholDiagLower(1:j,j,0)
+                    end do
+                    mv_Err%msg =    PROCEDURE_NAME // &
+                                    ": Error occurred while attempting to compute the Cholesky factorization of the &
+                                    &covariance matrix of the proposal distribution of " // mc_methodName // "'s sampler. &
+                                    &This is highly unusual, and can be indicative of some major underlying problems.\n&
+                                    &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations. &
+                                    &In such case, consider increasing the value of the input variable adaptiveUpdatePeriod.\n&
+                                    &It may also be that your input objective function has been incorrectly implemented.\n&
+                                    &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
+                                    &the same value that is expected as input to your objective function's implementation.\n&
+                                    &Otherwise, restarting the simulation might resolve the error."
+                    call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                end if
 
             end if blockPosDefCheck
 
@@ -663,7 +666,7 @@ contains
             samplerUpdateSucceeded = .false.
             if (mv_sampleSizeOld_save==0 .or. mc_scalingRequested) then
                 scalingNeeded = .true.
-                hellingerComputationNeeded = .true.
+                adaptationMeasureComputationNeeded = .true.
                 ! save the old covariance matrix for the computation of the adaptation measure
                 do j = 1, nd
                     do i = 1,j
@@ -671,7 +674,8 @@ contains
                     end do
                 end do
             else
-                hellingerComputationNeeded = .false.
+                adaptationMeasure = 0._RK
+                adaptationMeasureComputationNeeded = .false.
             end if
 
 
@@ -680,25 +684,30 @@ contains
         ! adjust the scale of the covariance matrix and the Cholesky factor, if needed
 
         if (scalingNeeded) then
-            mv_adaptiveScaleFactorSq_save = (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
-            adaptiveScaleFactor = sqrt(mv_adaptiveScaleFactorSq_save)
-            do j = 1, nd
-                ! update the Cholesky diagonal elements
-                comv_CholDiagLower(j,0,0) = comv_CholDiagLower(j,0,0) * adaptiveScaleFactor
-                ! update covariance matrix
-                do i = 1,j
-                    comv_CholDiagLower(i,j,0) = comv_CholDiagLower(i,j,0) * mv_adaptiveScaleFactorSq_save
+            if ( meanAccRateSinceStart < mc_TargetAcceptanceRateLimit(1) .or. meanAccRateSinceStart > mc_TargetAcceptanceRateLimit(2) ) then
+                mv_adaptiveScaleFactorSq_save = (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
+                adaptiveScaleFactor = sqrt(mv_adaptiveScaleFactorSq_save)
+                do j = 1, nd
+                    ! update the Cholesky diagonal elements
+                    comv_CholDiagLower(j,0,0) = comv_CholDiagLower(j,0,0) * adaptiveScaleFactor
+                    ! update covariance matrix
+                    do i = 1,j
+                        comv_CholDiagLower(i,j,0) = comv_CholDiagLower(i,j,0) * mv_adaptiveScaleFactorSq_save
+                    end do
+                    ! update the Cholesky factorization
+                    do i = j+1, nd
+                        comv_CholDiagLower(i,j,0) = comv_CholDiagLower(i,j,0) * adaptiveScaleFactor
+                    end do
                 end do
-                ! update the Cholesky factorization
-                do i = j+1, nd
-                    comv_CholDiagLower(i,j,0) = comv_CholDiagLower(i,j,0) * adaptiveScaleFactor
-                end do
-            end do
+            end if
         end if
 
         ! compute the adaptivity only if any updates has occurred
 
-        if (hellingerComputationNeeded) then
+        blockAdaptationMeasureComputation: if (adaptationMeasureComputationNeeded) then
+
+            ! use the universal upper bound
+
             logSqrtDetNew = sum(log( comv_CholDiagLower(1:nd,0,0) ))
             do j = 1, nd
                 do i = 1,j
@@ -707,6 +716,12 @@ contains
             end do
             call getLogSqrtDetPosDefMat(nd,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
             if (singularityOccurred) then
+                write(mc_logFileUnit,"(A)")
+                write(mc_logFileUnit,"(A)") "Singular covariance matrix detected while computing the Adaptation measure:"
+                write(mc_logFileUnit,"(A)")
+                do j = 1, nd
+                    write(mc_logFileUnit,"(*(E25.15))") CovMatUpperCurrent(1:j,j)
+                end do
                 mv_Err%msg =    PROCEDURE_NAME // &
                                 ": Error occurred while computing the Cholesky factorization of &
                                 &a matrix needed for the computation of the Adaptation measure. &
@@ -718,18 +733,22 @@ contains
                                 &the same value that is expected as input to your objective function's implementation.\n&
                                 &Otherwise, restarting the simulation might resolve the error."
                 call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
-                return
             end if
-            !hellingerDistSq = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
-            if (hellingerDistSq<0._RK) then
+            !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
+            adaptationMeasure = sqrt( 1._RK - exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum ) ) ! totalVariationUpperBound
+
+            if (adaptationMeasure<0._RK) then
                 call warn   ( prefix = mc_methodBrand &
                             , outputUnit = mc_logFileUnit &
-                            , msg = mc_negativeHellingerDistSqMsg//num2str(hellingerDistSq) )
-                hellingerDistSq = 0._RK
+                            , msg = mc_negativeTotalVariationMsg//num2str(adaptationMeasure) )
+                adaptationMeasure = 0._RK
             end if
+
             ! update the higher-stage delayed-rejection Cholesky Lower matrices
+
             if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
-        end if
+
+        end if blockAdaptationMeasureComputation
 
     end subroutine doAdaptation
 
