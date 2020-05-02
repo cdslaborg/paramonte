@@ -100,7 +100,7 @@ contains
         logical                             :: delayedRejectionRequested
         logical                             :: noDelayedRejectionRequested
         integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
-        integer(IK)                         :: j, imageID, dummy
+        integer(IK)                         :: imageID, dummy
         integer(IK)                         :: nd
 #if defined CAF_ENABLED || defined MPI_ENABLED
         integer(IK)                         :: imageStartID, imageEndID
@@ -383,46 +383,7 @@ contains
 
                         blockFreshDryRun: if (PD%isFreshRun) then
 
-                            !******************************************** output write **********************************************
-                            !********************************************************************************************************
-
-                            ! if new point has been sampled, write the previous sampled point to output file
-
-                            blockOutputWrite: if (PD%Stats%NumFunCall%accepted>0_IK) then
-                                if (PD%SpecBase%ChainFileFormat%isCompact) then
-                                    write(PD%ChainFile%unit,PD%ChainFile%format ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
-                                                                                , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
-                                                                                , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
-                                                                                , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
-                                                                                , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
-                                                                                , PD%Chain%Weight(PD%Stats%NumFunCall%accepted)         &
-                                                                                , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
-                                                                                , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
-                                elseif (PD%SpecBase%ChainFileFormat%isBinary) then
-                                    write(PD%ChainFile%unit                     ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
-                                                                                , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
-                                                                                , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
-                                                                                , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
-                                                                                , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
-                                                                                , PD%Chain%Weight(PD%Stats%NumFunCall%accepted)         &
-                                                                                , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
-                                                                                , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
-                                elseif (PD%SpecBase%ChainFileFormat%isVerbose) then
-                                    do j = 1, PD%Chain%Weight(PD%Stats%NumFunCall%accepted)
-                                    write(PD%ChainFile%unit,PD%ChainFile%format ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
-                                                                                , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
-                                                                                , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
-                                                                                , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
-                                                                                , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
-                                                                                , 1_IK                                                  &
-                                                                                , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
-                                                                                , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
-                                    end do
-                                end if
-                            end if blockOutputWrite
-
-                            !*******************************************************************************************************
-                            !******************************************* output write **********************************************
+                            call writeOutput()
 
                             PD%Stats%NumFunCall%accepted = PD%Stats%NumFunCall%accepted + 1_IK
 
@@ -442,15 +403,16 @@ contains
 
                         else blockFreshDryRun ! in restart mode: determine the correct value of co_proposalFound_samplerUpdateOccurred(1)
 
-                            PD%Stats%NumFunCall%accepted = PD%Stats%NumFunCall%accepted + 1_IK
-
-                            if (PD%Stats%NumFunCall%accepted==PD%Chain%Count%compact) then
+                            numFunCallAcceptedPlusOne = PD%Stats%NumFunCall%accepted + 1_IK
+                            if (numFunCallAcceptedPlusOne==PD%Chain%Count%compact) then
                                 PD%isFreshRun = .true.
+                                call writeOutput()
                                 PD%isDryRun = .not. PD%isFreshRun
-                                PD%Chain%Weight(PD%Stats%NumFunCall%accepted) = 0_IK
-                                SumAccRateSinceStart%acceptedRejected = PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted-1) * real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
-                                if (delayedRejectionRequested) SumAccRateSinceStart%acceptedRejectedDelayed = PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted-1) * real(PD%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK)
+                                PD%Chain%Weight(numFunCallAcceptedPlusOne) = 0_IK
+                                SumAccRateSinceStart%acceptedRejected = PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted) * real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
+                                if (delayedRejectionRequested) SumAccRateSinceStart%acceptedRejectedDelayed = PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted) * real(PD%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK)
                             end if
+                            PD%Stats%NumFunCall%accepted = numFunCallAcceptedPlusOne
                             numFunCallAcceptedPlusOne = PD%Stats%NumFunCall%accepted + 1_IK
 
                         end if blockFreshDryRun
@@ -510,32 +472,10 @@ contains
                         co_proposalFound_samplerUpdateOccurred(1) = -1_IK  ! equivalent to co_missionAccomplished = .true.
                         inverseProgressReportPeriod = 1._RK / (PD%Stats%NumFunCall%acceptedRejected-numFunCallAcceptedRejectedLastReport)
 
-                        blockLastOutputWrite: if (PD%isFreshRun) then
-
-                            ! write the last sampled point to the output files
-
-                            if (PD%SpecBase%ChainFileFormat%isCompact .or. PD%SpecBase%ChainFileFormat%isVerbose) then
-                                write(PD%ChainFile%unit,PD%ChainFile%format ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
-                                                                            , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
-                                                                            , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
-                                                                            , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
-                                                                            , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
-                                                                            , 1_IK                                                  &
-                                                                            , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
-                                                                            , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
-                            elseif (PD%SpecBase%ChainFileFormat%isBinary) then
-                                write(PD%ChainFile%unit                     ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
-                                                                            , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
-                                                                            , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
-                                                                            , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
-                                                                            , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
-                                                                            , 1_IK                                                  &
-                                                                            , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
-                                                                            , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
-                            end if
+                        if (PD%isFreshRun) then
+                            call writeOutput()
                             flush(PD%ChainFile%unit)
-
-                        end if blockLastOutputWrite
+                        end if
 
                         call reportProgress()
 
@@ -1041,6 +981,57 @@ contains
         !***************************************************************************************************************************
 
     contains
+
+        !***************************************************************************************************************************
+        !***************************************************************************************************************************
+
+        subroutine writeOutput()
+
+            implicit none
+            integer(IK) :: j
+
+            !******************************************** output write **********************************************
+            !********************************************************************************************************
+
+            ! if new point has been sampled, write the previous sampled point to output file
+
+            blockOutputWrite: if (PD%Stats%NumFunCall%accepted>0_IK) then
+                if (PD%SpecBase%ChainFileFormat%isCompact) then
+                    write(PD%ChainFile%unit,PD%ChainFile%format ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
+                                                                , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
+                                                                , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
+                                                                , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
+                                                                , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
+                                                                , PD%Chain%Weight(PD%Stats%NumFunCall%accepted)         &
+                                                                , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
+                                                                , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
+                elseif (PD%SpecBase%ChainFileFormat%isBinary) then
+                    write(PD%ChainFile%unit                     ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
+                                                                , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
+                                                                , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
+                                                                , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
+                                                                , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
+                                                                , PD%Chain%Weight(PD%Stats%NumFunCall%accepted)         &
+                                                                , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
+                                                                , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
+                elseif (PD%SpecBase%ChainFileFormat%isVerbose) then
+                    do j = 1, PD%Chain%Weight(PD%Stats%NumFunCall%accepted)
+                    write(PD%ChainFile%unit,PD%ChainFile%format ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
+                                                                , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
+                                                                , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
+                                                                , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
+                                                                , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
+                                                                , 1_IK                                                  &
+                                                                , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
+                                                                , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
+                    end do
+                end if
+            end if blockOutputWrite
+
+            !*******************************************************************************************************
+            !******************************************* output write **********************************************
+
+        end subroutine writeOutput
 
         !***************************************************************************************************************************
         !***************************************************************************************************************************
