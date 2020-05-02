@@ -658,7 +658,7 @@ contains
         use Constants_mod, only: RK, IK
         implicit none
         integer(IK) , intent(in)    :: nd
-        integer(RK) , intent(inout) :: UpperSquareMatrix(nd,nd)
+        real(RK)    , intent(inout) :: UpperSquareMatrix(nd,nd)
         integer(IK)                 :: i, j
         do j = 1, nd
             do i = 1,j-1
