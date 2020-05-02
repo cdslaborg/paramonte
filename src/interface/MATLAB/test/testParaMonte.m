@@ -21,7 +21,7 @@ pmpd = pm.ParaDRAM();
 %pmpd.spec.adaptiveUpdateCount = 2100000000;
 %pmpd.spec.adaptiveUpdatePeriod = 3000;
 pmpd.spec.randomSeed = 35671;
-pmpd.spec.targetAcceptanceRate = [ 0.99 0.9999 ];
+%pmpd.spec.targetAcceptanceRate = 0.4;
 pmpd.runSampler(2,@getLogFunc);
 %pmpd.spec.outputFileName = "D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_300420_012424_780";
 %pmpd.readMarkovChain();
