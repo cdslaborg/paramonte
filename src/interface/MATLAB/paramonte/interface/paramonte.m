@@ -175,7 +175,9 @@ classdef paramonte < handle
                 error(['Gracefully exiting the ParaMonte constructor.']);
             end
 
-            self.rootPath = mfilename('fullpath'); [self.rootPath,~,~] = fileparts(self.rootPath);
+            self.rootPath = mfilename('fullpath');
+            [self.rootPath,~,~] = fileparts(self.rootPath);
+            self.rootPath = string( getFullPath( convertStringsToChars(fullfile(self.rootPath,'..')) , 'lean' ) );
             addpath(genpath(self.rootPath));
 
             self.authors = "The Computational Data Science Lab @ The University of Texas";

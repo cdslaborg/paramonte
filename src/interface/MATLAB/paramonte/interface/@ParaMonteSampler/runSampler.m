@@ -1,4 +1,4 @@
-function runSampler(self,ndim,getLogFunc)
+function runSampler(self,ndim,getLogFunc,varargin)
 %   Run ParaDRAM sampler and return nothing.
 %   
 %   Parameters
@@ -18,6 +18,16 @@ function runSampler(self,ndim,getLogFunc)
 %       None
 
     self.objectName = inputname(1);
+
+    if nargin~=3
+        self.Err.msg    = "The method " + self.objectName + ".runSampler(ndim,getLogFunc) takes only two input arguments:" + newline + newline ...
+                        + "          ndim:  the number of dimensions of the domain of the " + newline ...
+                        + "                 mathematical objective function to be sampled," + newline ...
+                        + "    getLogFunc:  a MATLAB handle to the MATLAB function implementing " + newline ...
+                        + "                 the mathematical objective function to be sampled,";
+        self.Err.abort();
+    end
+
     self.ndim = ndim;
 
     self.Err.marginTop = 0;
@@ -33,6 +43,11 @@ function runSampler(self,ndim,getLogFunc)
     end
 
     if ~isa(getLogFunc,"function_handle")
+        %if exist("getLogFunc") && ( isa(YourVar,'function_handle')
+        %    if isequal(getLogFunc,
+        %    end
+        %end
+    %else
         self.Err.msg    = "The input argument getLogFunc must be a callable function. " + newline ...
                         + "It represents the user's objective function to be sampled, " + newline ...
                         + "which must take a single input argument of type numpy " + newline ...
@@ -41,14 +56,32 @@ function runSampler(self,ndim,getLogFunc)
         self.Err.abort();
     end
 
+    if ~isempty(self.inputFile) && ~isa(self.inputFile,"string")
+        self.Err.msg    = "The input argument " + self.objectName + ".inputFile must be of type string. " + newline ...
+                        + "It is an optional string input representing the path to " + newline ...
+                        + "an external input namelist of simulation specifications. " + newline ...
+                        + "USE THIS OPTIONAL ARGUMENT WITH CAUTION AND " + newline ...
+                        + "ONLY IF YOU KNOW WHAT YOU ARE DOING. " + newline ...
+                        + "Specifying this option will cause ParaDRAM to ignore " + newline ...
+                        + "all other paraDRAM simulation specifications set by " + newline ...
+                        + "the user via ParaDRAM instance attributes. " + newline ...
+                        + "You have entered " + self.objectName + ".inputFile = """ + string(self.inputFile) + """.";
+        self.Err.warn();
+    end
+
+    inputFile = [convertStringsToChars(self.getInputFile())];
+    %inputFile = self.getInputFile()
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     errorOccurred = ~isa(self.buildMode,"string");
-    stype = [];
+    cstype = [];
     if ~errorOccurred
         buildModeSplitList = strsplit(lower(self.buildMode),"-");
         if strcmp(buildModeSplitList(1),"release") || strcmp(buildModeSplitList(1),"testing") || strcmp(buildModeSplitList(1),"debug")
             if length(buildModeSplitList) > 1
-                stype = buildModeSplitList(2);
-                errorOccurred = ~( strcmp(stype,"gnu") || strcmp(stype,"intel") );
+                cstype = buildModeSplitList(2);
+                errorOccurred = ~( strcmp(cstype,"gnu") || strcmp(cstype,"intel") );
             end
         else
             errorOccurred = true;
@@ -78,25 +111,9 @@ function runSampler(self,ndim,getLogFunc)
         self.Err.abort();
     end
 
-    if ~isempty(self.inputFile) && ~isa(self.inputFile,"string")
-        self.Err.msg    = "The input argument " + self.objectName + ".inputFile must be of type string. " + newline ...
-                        + "It is an optional string input representing the path to " + newline ...
-                        + "an external input namelist of simulation specifications. " + newline ...
-                        + "USE THIS OPTIONAL ARGUMENT WITH CAUTION AND " + newline ...
-                        + "ONLY IF YOU KNOW WHAT YOU ARE DOING. " + newline ...
-                        + "Specifying this option will cause ParaDRAM to ignore " + newline ...
-                        + "all other paraDRAM simulation specifications set by " + newline ...
-                        + "the user via ParaDRAM instance attributes. " + newline ...
-                        + "You have entered " + self.objectName + ".inputFile = """ + string(self.inputFile) + """.";
-        self.Err.warn();
-    end
-
-    inputFile = [convertStringsToChars(self.getInputFile())];
-    %inputFile = self.getInputFile()
-
-    isWin32 = ispc;
-    isMacOS = ismac;
-    isLinux = isunix;
+    self.isWin32 = ispc;
+    self.isMacOS = ismac;
+    self.isLinux = isunix;
 
     if self.mpiEnabled
         parallelism = "_mpi";
@@ -119,23 +136,23 @@ function runSampler(self,ndim,getLogFunc)
 
     pmcsListRef = ["intel","gnu"];
     pmcsList = pmcsListRef;
-    if ~isempty(stype)
-        pmcsList = [stype];
+    if ~isempty(cstype)
+        pmcsList = [cstype];
         for pmcs = pmcsListRef
-            if ~strcmp(pmcs,stype)
+            if ~strcmp(pmcs,cstype)
                 pmcsList = [ pmcsList , [pmcs] ];
             end
         end
     end
 
     libFound = false;
-    if isWin32; libnameSuffix = "_windows_" + getArch() + "_mt"; end
-    if isMacOS; libnameSuffix = "_darwin_" + getArch() + "_mt"; end
-    if isLinux; libnameSuffix = "_linux_" + getArch() + "_mt"; end
+    if self.isWin32; libNameSuffix = "_windows_" + getArch() + "_mt"; end
+    if self.isMacOS; libNameSuffix = "_darwin_" + getArch() + "_mt"; end
+    if self.isLinux; libNameSuffix = "_linux_" + getArch() + "_mt"; end
     for buildMode = buildModeList
         for pmcs = pmcsList
-            libname = "libparamonte_dynamic_heap_" + buildMode + "_" + pmcs + "_m" + parallelism + libnameSuffix;
-            if exist(libname,'file')==3; libFound = true; break; end
+            libName = "libparamonte_dynamic_heap_" + buildMode + "_" + pmcs + "_m" + parallelism + libNameSuffix;
+            if exist(libName,'file')==3; libFound = true; break; end
         end
         if libFound; break; end
     end
@@ -147,13 +164,46 @@ function runSampler(self,ndim,getLogFunc)
                         + "the dynamic libraries. Please report this issue at:" + newline + newline ...
                         + "    <a href=""https://github.com/cdslaborg/paramonte/issues"">https://github.com/cdslaborg/paramonte/issues</a>" + newline + newline ...
                         + "Visit <a href=""https://www.cdslab.org/paramonte/"">https://www.cdslab.org/paramonte/</a> for instructions" + newline ...
-                        + "to build ParaMonte object files on your system."; ...+ newline ...
-                        ...+ buildInstructionNote % xxxxxxxxxxxx...
+                        + "to build ParaMonte object files on your system."; %...+ newline ...
+                        %...+ buildInstructionNote % xxxxxxxxxxxx...
         self.Err.abort();
     end
 
-    expression = string(libname + "(ndim,inputFile,isdeployed())");
-    eval(expression);
+    if nargout==0
+        self.libName = libName;
+    elseif nargout==2
+        varargout{1} = libName;
+    end
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function logFunc = getLogFuncNested(point)
+        logFunc = getLogFunc(point);
+    end
+
+    getLogFuncSpec = functions(getLogFunc);
+    if strcmp(getLogFuncSpec.function,"getLogFunc") %|| strcmp(getLogFuncSpec.function,"simple")
+        expression = string(self.libName + "(isdeployed(),ndim,inputFile)");
+    else
+        expression = string(self.libName + "(isdeployed(),ndim,inputFile,@getLogFuncNested)");
+    end
+
+    %try
+        eval(expression);
+    %catch
+    %    if self.mpiEnabled
+    %        reportFileSuffix = "_process_*_report.txt";
+    %    else
+    %        reportFileSuffix = "_process_1_report.txt";
+    %    end
+    %    self.Err.msg    = "The " + self.methodName + " simulation failed. Please see the contents of the simulation's output report file(s) for potential diagnostic messages:" + newline + newline ...
+    %                    + "    " + strrep(self.spec.outputFileName+reportFileSuffix,'\','\\') ...
+    %                    ;
+    %    self.Err.abort();
+    %end
+    eval("clear "+self.libName);
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     if ~self.mpiEnabled
         self.Err.msg    = "To read the generated output files sample or chain files, try the following:" + newline + newline ...

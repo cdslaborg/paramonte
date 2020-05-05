@@ -16,7 +16,7 @@ function logFunc = getLogFunc(point)
 %----------------------------------------------------------------------
 
     % Rosenbrock test function
-    %logFunc = -log( 100.0 * (point(2)-point(1)^2)^2 + (point(1)-1.0)^2 );
+    logFunc = -log( 100.0 * (point(2)-point(1)^2)^2 + (point(1)-1.0)^2 );
 %----------------------------------------------------------------------   
 
 end

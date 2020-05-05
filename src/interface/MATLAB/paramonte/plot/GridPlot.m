@@ -134,7 +134,7 @@ classdef GridPlot < BasePlot
 
             self = self@BasePlot(varargin{1});
             try
-                self.columns = string(varargin{2});
+                self.columns = varargin{2};
             catch
                 error   ( "GridPlot requires two input arguments: " + newline + newline ...
                         + "    the data Table " + newline ...
@@ -166,6 +166,13 @@ classdef GridPlot < BasePlot
 
             %parseArgs(self,varargin{:});
             self.parseArgs(varargin{:});
+
+            % ensure the number of subplots is consistent with the existing layout
+
+            if length(self.columns)~=self.layout.axis.main.nrow || length(self.columns)~=self.layout.axis.main.ncol
+                self.currentFig.subplotList = [];
+                self.updateLayout();
+            end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% adjust figure position
@@ -302,6 +309,14 @@ classdef GridPlot < BasePlot
             end
             set(0, "CurrentFigure", self.currentFig.gcf);
 
+            % set columns to plot
+
+            if getVecLen(self.columns)
+                [colnames, colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
+            else
+                error("the component ""columns"" of the GridPlot object appears to be empty.");
+            end
+
             % construct plot handles
 
             self.lowerEnabled = any(strcmp(self.plotTypeList,self.layout.plotType.lower));
@@ -369,8 +384,8 @@ classdef GridPlot < BasePlot
             columns.min = zeros(self.layout.axis.main.nrow,1);
             columns.max = zeros(self.layout.axis.main.nrow,1);
             for i = 1:self.layout.axis.main.nrow
-                minvalue = min(self.dfref.(self.columns{i}));
-                maxvalue = max(self.dfref.(self.columns{i}));
+                minvalue = min(self.dfref.(colnames(i)));
+                maxvalue = max(self.dfref.(colnames(i)));
                 margin = 0.1 * (maxvalue - minvalue);
                 columns.min(i) = minvalue - margin;
                 columns.max(i) = maxvalue + margin;
@@ -401,8 +416,8 @@ classdef GridPlot < BasePlot
 
                         hold on;
 
-                        xcolumns = self.columns(icol);
-                        ycolumns = self.columns(irow);
+                        xcolumns = colnames(icol);
+                        ycolumns = colnames(irow);
 
                         if isLower
                             currentPlotType = self.layout.plotType.lower;
@@ -619,7 +634,13 @@ classdef GridPlot < BasePlot
 
             % compute the statistics
 
-            columnsLen = length(self.columns);
+            if getVecLen(self.columns)
+                [colnames, colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
+            else
+                error("the component ""columns"" of the GridPlot object appears to be empty.");
+            end
+
+            columnsLen = length(colnames);
             if isfield(props,"values")
                 values = props.values;
             else
@@ -632,11 +653,11 @@ classdef GridPlot < BasePlot
                 end
                 for i = 1:columnsLen
                     if statIsMode
-                        values(i) = self.dfref.(self.columns{i})(irowMax);
+                        values(i) = self.dfref.(colnames(i))(irowMax);
                     elseif statIsMean
-                        values(i) = mean(self.dfref.(self.columns{i}));
+                        values(i) = mean(self.dfref.(colnames(i)));
                     elseif statIsMedian
-                        values(i) = median(self.dfref.(self.columns{i}));
+                        values(i) = median(self.dfref.(colnames(i)));
                     end
                 end
             end
@@ -733,13 +754,21 @@ classdef GridPlot < BasePlot
 
                     colormap(self.colormap);
 
-                    ccolumnValues = self.dfref.(self.ccolumn);
+                    % get column names
+
+                    if getVecLen(self.ccolumn)
+                        [ccolname, ccolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ccolumn);
+                    else
+                        error("the component ""ccolumn"" of the GridPlot object appears to be empty.");
+                    end
+
+                    ccolumnValues = self.dfref.(ccolname);
                     colorbarLimit = [ min(ccolumnValues) max(ccolumnValues) ]; % Colorbar range
                     caxis(colorbarLimit);
                     set(self.currentFig.gca,"CLim",colorbarLimit);
                     self.currentFig.colorbar = colorbar(colorbar_kws_cell{:});
 
-                    colorbarLabel = self.ccolumn;
+                    colorbarLabel = ccolname;
                     ylabel(self.currentFig.colorbar,colorbarLabel,"fontsize",self.layout.colorbar.fontsize);
 
                     set ( self.currentFig.colorbar ...
@@ -784,7 +813,7 @@ classdef GridPlot < BasePlot
                             self.currentFig.subplotList{irow,icol}.currentFig.gca.XLabel.String = "";
                         else
                             set(self.currentFig.subplotList{irow,icol}.currentFig.gca, "XTickLabelMode", "auto");
-                            self.currentFig.subplotList{irow,icol}.currentFig.gca.XLabel.String = self.columns{icol};
+                            self.currentFig.subplotList{irow,icol}.currentFig.gca.XLabel.String = colnames{icol};
                         end
                     end
                     if icol > 1
@@ -793,7 +822,7 @@ classdef GridPlot < BasePlot
                             self.currentFig.subplotList{irow,icol}.currentFig.gca.YLabel.String = "";
                         else
                             set(self.currentFig.subplotList{irow,icol}.currentFig.gca, "YTickLabelMode", "auto")
-                            self.currentFig.subplotList{irow,icol}.currentFig.gca.YLabel.String = self.columns{irow};
+                            self.currentFig.subplotList{irow,icol}.currentFig.gca.YLabel.String = colnames{irow};
                         end
                     end
                     if ~(icol==1)
@@ -862,14 +891,16 @@ classdef GridPlot < BasePlot
             if isfield(self,"currentFig") && isfield(self.currentFig,"gca") && isgraphics(self.currentFig.gca)
                 set(self.currentFig.gca,"position",self.getMainAxisPosition());
             end
-            if any(strcmp(fieldnames(self.currentFig),"colorbar"))
+            if any(strcmp(fieldnames(self.currentFig),"colorbar")) && isgraphics(self.currentFig.colorbar)
                 set(self.currentFig.colorbar,"position",self.getColorbarAxisPosition());
             end
-            if isfield(self.currentFig,"subplotList")
+            if isfield(self.currentFig,"subplotList") && ~isempty(self.currentFig.subplotList)
                 for irow = 1:self.layout.axis.main.nrow
                     for icol = 1:self.layout.axis.main.ncol
                         jrow = self.layout.axis.main.nrow-irow+1;
-                        set ( self.currentFig.subplotList{irow,icol}.currentFig.gca, "position", self.getSubplotAxisPosition(jrow,icol) );
+                        if isgraphics(self.currentFig.subplotList{irow,icol}.currentFig.gca)
+                            set ( self.currentFig.subplotList{irow,icol}.currentFig.gca, "position", self.getSubplotAxisPosition(jrow,icol) );
+                        end
                     end
                 end
             end

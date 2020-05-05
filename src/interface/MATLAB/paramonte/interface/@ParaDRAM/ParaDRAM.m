@@ -1,4 +1,4 @@
-classdef ParaDRAM < ParaMonteSampler_class
+classdef ParaDRAM < ParaMonteSampler
 %   This is the ParaDRAM class for generating instances of serial and parallel
 %   Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
 %   sampler of the ParaMonte library.
@@ -250,8 +250,10 @@ classdef ParaDRAM < ParaMonteSampler_class
         %***************************************************************************************************************************
 
         function self = ParaDRAM()
+            self = self@ParaMonteSampler();
             self.spec = SpecDRAM();
             self.methodName = "ParaDRAM";
+            self.method.isParaDRAM = true;
             self.Err.prefix = self.methodName;
             self.Err.resetEnabled = false;
         end
@@ -259,7 +261,7 @@ classdef ParaDRAM < ParaMonteSampler_class
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        runSampler(self,ndim,inputFile)
+        runSampler(self,ndim,getLogFunc,varargin)
         [markovChainList] = readMarkovChain(self,varargin)
 
         %***************************************************************************************************************************
@@ -270,4 +272,4 @@ classdef ParaDRAM < ParaMonteSampler_class
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-end % classdef ParaDRAM < ParaMonteSampler_class
+end % classdef ParaDRAM < ParaMonteSampler

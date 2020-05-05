@@ -41,10 +41,8 @@ classdef Err_class < handle
         %***************************************************************************************************************************
 
         function abort(self)
-
             Decoration  = Decoration_class([],[],[],[]);
             imageChar   = num2str(1);
-
             if isempty(self.prefix)
                 self.fullprefix = " - FATAL: ";
                 self.informUser();
@@ -52,11 +50,10 @@ classdef Err_class < handle
                 self.fullprefix = self.prefix + " - FATAL: ";
                 self.informUser();
             end
-
             if self.outputUnit == 1
                 % notify the user on screen too
                 Decoration.write(1, 1, 0, 1, self.fullprefix + "Runtime error occurred.");
-                Decoration.write(1, 0, 0, 1, self.fullprefix + "For more information please see the report file.");
+                Decoration.write(1, 0, 0, 1, self.fullprefix + "For more information, please see the output report file.");
                 Decoration.write(1, 0, 2, 1, self.fullprefix + "Gracefully Exiting on image " + strtrim(imageChar) + ".");
             else
                 Decoration.write(self.outputUnit, 1, 0, 1, self.fullprefix + "Please Correct the error(s) and rerun the simulation.");
@@ -64,9 +61,7 @@ classdef Err_class < handle
                 Decoration.write(self.outputUnit, 0, 0, 1, self.fullprefix + "cdslab.org/ParaMonte/");
                 Decoration.write(self.outputUnit, 1, 2, 1, self.fullprefix + "Gracefully Exiting on image " + strtrim(imageChar) + ".");
             end
-
-            error stop
-
+            error(newline+"ParaMonte simulation failed."+newline);
         end
 
         %***************************************************************************************************************************

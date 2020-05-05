@@ -24,11 +24,10 @@
 
 module ParaDRAMProposalSymmetric_mod
   
-    use ParaDRAMProposal_mod, only: Proposal_type
+    use ParaDRAMProposal_mod, only: Proposal_type, ProposalErr
     use ParaMonte_mod, only: Image_type
     use Constants_mod, only: IK, RK
     use String_mod, only: IntStr_type
-    use Err_mod, only: Err_type
 
     implicit none
 
@@ -107,7 +106,6 @@ module ParaDRAMProposalSymmetric_mod
     real(RK)        , save                  :: mv_logSqrtDetOld_save
     real(RK)        , save                  :: mv_adaptiveScaleFactorSq_save    ! = 1._RK
     integer(IK)     , save                  :: mv_sampleSizeOld_save            ! = 0_IK
-    type(Err_type)  , save                  :: mv_Err
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -161,6 +159,8 @@ contains
 
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@constructProposalSymmetric()"
         integer                                 :: i, j
+
+        ProposalErr%occurred = .false.
 
         !***************************************************************************************************************************
         ! setup sampler update global save variables
@@ -257,10 +257,10 @@ contains
 #endif
         end block
         if (comv_CholDiagLower(1,0,0)<0._RK) then
-            mv_Err%msg = mc_Image%name // PROCEDURE_NAME // ": Singular input covariance matrix by user was detected. This is strange.\nCovariance matrix lower triangle:"
+            ProposalErr%msg = mc_Image%name // PROCEDURE_NAME // ": Singular input covariance matrix by user was detected. This is strange.\nCovariance matrix lower triangle:"
             do j = 1, ndim
                 do i = 1, j
-                    mv_Err%msg = mv_Err%msg // "\n" // num2str(comv_CholDiagLower(1:i,j,0))
+                    ProposalErr%msg = ProposalErr%msg // "\n" // num2str(comv_CholDiagLower(1:i,j,0))
                 end do
             end do
 #if defined CAF_ENABLED
@@ -272,7 +272,9 @@ contains
                 call mpi_barrier(mpi_comm_world,ierrMPI)
             end block
 #endif
-            call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+            ProposalErr%occurred = .true.
+            call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+            return
         end if
 
         ! Scale the higher-stage delayed-rejection Cholesky Lower matrices
@@ -346,8 +348,10 @@ contains
                         call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
                     end if
                     if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
-                        mv_Err%msg = mc_MaxNumDomainCheckToStopMsg
-                        call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                        ProposalErr%occurred = .true.
+                        ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
+                        call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                        return
                     end if
                     cycle loopBoundaryCheckNormal
                 end if
@@ -381,8 +385,10 @@ contains
                         call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
                     end if
                     if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
-                        mv_Err%msg = mc_MaxNumDomainCheckToStopMsg
-                        call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                        ProposalErr%occurred = .true.
+                        ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
+                        call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                        return
                     end if
                     cycle loopBoundaryCheckUniform
                 end if
@@ -432,7 +438,8 @@ contains
         CovMatUpperCurrent = 0.5_RK * ( comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0) + CovMatUpperOld )
         call getLogSqrtDetPosDefMat(1_IK,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
         if (singularityOccurred) then
-            mv_Err%msg =    PROCEDURE_NAME // &
+            ProposalErr%occurred = .true.
+            ProposalErr%msg = PROCEDURE_NAME // &
                             ": Error occurred while computing the Cholesky factorization of &
                             &a matrix needed for the computation of the proposal distribution's adaptation measure. &
                             &Such error is highly unusual, and requires an in depth investigation of the case. &
@@ -440,7 +447,7 @@ contains
                             &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
                             &the same value that is expected as input to your objective function's implementation.\n&
                             &Otherwise, restarting the simulation might resolve the error."
-            call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+            call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
         end if
         adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
@@ -611,7 +618,10 @@ contains
 
                 call warn   ( prefix = mc_methodBrand &
                             , outputUnit = mc_logFileUnit &
-                            , msg = "Singularity occurred while updating the proposal distribution's covariance matrix." )
+                            , marginTop = 0_IK &
+                            , marginBot = 0_IK &
+                            , msg = "Singularity occurred while updating the proposal distribution's covariance matrix." &
+                            )
 
                 ! recover the old upper covariance matrix
 
@@ -631,7 +641,8 @@ contains
                     do j = 1, nd
                         write(mc_logFileUnit,"(*(E25.15))") comv_CholDiagLower(1:j,j,0)
                     end do
-                    mv_Err%msg =    PROCEDURE_NAME // &
+                    ProposalErr%occurred = .true.
+                    ProposalErr%msg = PROCEDURE_NAME // &
                                     ": Error occurred while attempting to compute the Cholesky factorization of the &
                                     &covariance matrix of the proposal distribution of " // mc_methodName // "'s sampler. &
                                     &This is highly unusual, and can be indicative of some major underlying problems.\n&
@@ -641,7 +652,8 @@ contains
                                     &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
                                     &the same value that is expected as input to your objective function's implementation.\n&
                                     &Otherwise, restarting the simulation might resolve the error."
-                    call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                    call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                    return
                 end if
 
             end if blockPosDefCheck
@@ -722,7 +734,8 @@ contains
                 do j = 1, nd
                     write(mc_logFileUnit,"(*(E25.15))") CovMatUpperCurrent(1:j,j)
                 end do
-                mv_Err%msg =    PROCEDURE_NAME // &
+                ProposalErr%occurred = .true.
+                ProposalErr%msg = PROCEDURE_NAME // &
                                 ": Error occurred while computing the Cholesky factorization of &
                                 &a matrix needed for the computation of the Adaptation measure. &
                                 &Such error is highly unusual, and requires an in depth investigation of the case.\n&
@@ -732,7 +745,8 @@ contains
                                 &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
                                 &the same value that is expected as input to your objective function's implementation.\n&
                                 &Otherwise, restarting the simulation might resolve the error."
-                call abort( Err = mv_Err, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                return
             end if
             !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
             adaptationMeasure = sqrt( 1._RK - exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum ) ) ! totalVariationUpperBound

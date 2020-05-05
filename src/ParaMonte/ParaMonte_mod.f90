@@ -227,6 +227,7 @@ contains
             PM%Err = PM%OS%Err
             PM%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type."//NLC//PM%Err%msg
             call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
 
         ! get system info by all images
@@ -240,6 +241,7 @@ contains
                 PM%Err = PM%SystemInfo%Err
                 PM%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//PM%Err%msg
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                return
             end if
         end block
 
@@ -258,6 +260,7 @@ contains
                 PM%Err = PM%InputFile%Err
                 PM%Err%msg = PROCEDURE_NAME//": Error occurred while attempting to setup the user's input file='"//inputFile//"'."//NLC//PM%Err%msg
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                return
             end if
             ! determine if the file is internal
             PM%InputFile%isInternal = PM%inputFileArgIsPresent .and. .not.PM%InputFile%exists .and. index(getLowerCase(inputFile),"&"//getLowerCase(PM%name)) > 0 
@@ -570,6 +573,7 @@ contains
             PM%Err = PM%SpecBase%OutputFileName%Err
             PM%Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to construct OutputFileName path type." //NLC// PM%Err%msg
             call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
 
         PM%SpecBase%OutputFileName%namePrefix = PM%SpecBase%OutputFileName%name // PM%SpecBase%OutputFileName%ext
@@ -588,6 +592,7 @@ contains
         if (PM%Err%stat/=0) then
             PM%Err%msg = PROCEDURE_NAME//": Error occurred while fetching the current working directory via getcwd()."//NLC
             call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
         msg = msg //NLC//NLC// "Absolute path to the current working directory:"//NLC//currentWorkingDir
 
@@ -605,6 +610,7 @@ contains
             if (PM%Err%occurred) then
                 PM%Err%msg = PROCEDURE_NAME//": Error occurred while making directory = '"//PM%SpecBase%OutputFileName%dir//"'."//NLC//PM%Err%msg
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                return
             end if
         end if
 
@@ -686,6 +692,7 @@ contains
         if (PM%Err%occurred) then
             PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%LogFile%Path%original // PM%Err%msg
             call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
 
         inquire( file = PM%SampleFile%Path%original, exist = PM%SampleFile%exists, iostat = PM%SampleFile%Err%stat )
@@ -693,6 +700,7 @@ contains
         if (PM%Err%occurred) then
             PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%SampleFile%Path%original // PM%Err%msg
             call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
 
         inquire( file = PM%TimeFile%Path%original, exist = PM%TimeFile%exists, iostat = PM%TimeFile%Err%stat )
@@ -700,6 +708,7 @@ contains
         if (PM%Err%occurred) then
             PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%TimeFile%Path%original // PM%Err%msg
             call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
 
         inquire( file = PM%ChainFile%Path%original, exist = PM%ChainFile%exists, iostat = PM%ChainFile%Err%stat )
@@ -707,6 +716,7 @@ contains
         if (PM%Err%occurred) then
             PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%ChainFile%Path%original // PM%Err%msg
             call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
 
         inquire( file = PM%RestartFile%Path%original, exist = PM%RestartFile%exists, iostat = PM%RestartFile%Err%stat )
@@ -714,6 +724,7 @@ contains
         if (PM%Err%occurred) then
             PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%RestartFile%Path%original // PM%Err%msg
             call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
 
         PM%isDryRun = PM%LogFile%exists .or. PM%TimeFile%exists .or. PM%RestartFile%exists .or. PM%ChainFile%exists .or. PM%SampleFile%exists ! not fresh, if any file exists
@@ -743,7 +754,8 @@ contains
                 if (.not. PM%ChainFile%exists)      PM%Err%msg = PM%Err%msg//NLC//PM%ChainFile%Path%original
                 if (.not. PM%RestartFile%exists)    PM%Err%msg = PM%Err%msg//NLC//PM%RestartFile%Path%original
             end if
-            if (PM%Err%occurred) call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
 
         ! open/append the output files:
@@ -849,6 +861,7 @@ contains
             if (PM%Err%occurred) then
                 PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening " // PM%name // PM%LogFile%suffix // " file='" // PM%LogFile%Path%original // "'."
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                return
             end if
 
             ! rewrite the same old stuff to all report files
@@ -876,6 +889,7 @@ contains
             if (PM%Err%occurred) then
                 PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening " // PM%name // PM%TimeFile%suffix // " file='" // PM%TimeFile%Path%original // "'."
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                return
             end if
 
             if (PM%isFreshRun) call PM%note( prefix = PM%brand, outputUnit = PM%LogFile%unit, newline = NLC, msg = workingOn//PM%ChainFile%suffix//"file:"//NLC//PM%ChainFile%Path%original )
@@ -891,6 +905,7 @@ contains
             if (PM%Err%occurred) then
                 PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening " // PM%name // PM%ChainFile%suffix // " file='" // PM%ChainFile%Path%original // "'."
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                return
             end if
 
             PM%RestartFile%unit = 3000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
@@ -904,6 +919,7 @@ contains
             if (PM%Err%occurred) then
                 PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening " // PM%name // PM%RestartFile%suffix // " file='" // PM%RestartFile%Path%original // "'."
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                return
             end if
 
             if (PM%isFreshRun) then

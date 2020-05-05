@@ -24,15 +24,15 @@
 % OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 % OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-function File = GetFullPath(File, Style)
-% GetFullPath - Get absolute canonical path of a file or folder
+function File = getFullPath(File, Style)
+% getFullPath - Get absolute canonical path of a file or folder
 % Absolute path names are safer than relative paths, when e.g. a GUI or TIMER
 % callback changes the current directory. Only canonical paths without "." and
 % ".." can be recognized uniquely.
 % Long path names (>259 characters) require a magic initial key "\\?\" to be
 % handled by Windows API functions, e.g. for Matlab's FOPEN, DIR and EXIST.
 %
-% FullName = GetFullPath(Name, Style)
+% FullName = getFullPath(Name, Style)
 % INPUT:
 %   Name:  String or cell string, absolute or relative name of a file or
 %          folder. The path need not exist. Unicode strings, UNC paths and long
@@ -56,29 +56,29 @@ function File = GetFullPath(File, Style)
 %   some at 259 already. Don't blame me.
 %   The 'fat' style is useful e.g. when Matlab's DIR command is called for a
 %   folder with les than 260 characters, but together with the file name this
-%   limit is exceeded. Then "dir(GetFullPath([folder, '\*.*], 'fat'))" helps.
+%   limit is exceeded. Then "dir(getFullPath([folder, '\*.*], 'fat'))" helps.
 %
 % EXAMPLES:
 %   cd(tempdir);                    % Assumed as 'C:\Temp' here
-%   GetFullPath('File.Ext')         % 'C:\Temp\File.Ext'
-%   GetFullPath('..\File.Ext')      % 'C:\File.Ext'
-%   GetFullPath('..\..\File.Ext')   % 'C:\File.Ext'
-%   GetFullPath('.\File.Ext')       % 'C:\Temp\File.Ext'
-%   GetFullPath('*.txt')            % 'C:\Temp\*.txt'
-%   GetFullPath('..')               % 'C:\'
-%   GetFullPath('..\..\..')         % 'C:\'
-%   GetFullPath('Folder\')          % 'C:\Temp\Folder\'
-%   GetFullPath('D:\A\..\B')        % 'D:\B'
-%   GetFullPath('\\Server\Folder\Sub\..\File.ext')
+%   getFullPath('File.Ext')         % 'C:\Temp\File.Ext'
+%   getFullPath('..\File.Ext')      % 'C:\File.Ext'
+%   getFullPath('..\..\File.Ext')   % 'C:\File.Ext'
+%   getFullPath('.\File.Ext')       % 'C:\Temp\File.Ext'
+%   getFullPath('*.txt')            % 'C:\Temp\*.txt'
+%   getFullPath('..')               % 'C:\'
+%   getFullPath('..\..\..')         % 'C:\'
+%   getFullPath('Folder\')          % 'C:\Temp\Folder\'
+%   getFullPath('D:\A\..\B')        % 'D:\B'
+%   getFullPath('\\Server\Folder\Sub\..\File.ext')
 %                                   % '\\Server\Folder\File.ext'
-%   GetFullPath({'..', 'new'})      % {'C:\', 'C:\Temp\new'}
-%   GetFullPath('.', 'fat')         % '\\?\C:\Temp\File.Ext'
+%   getFullPath({'..', 'new'})      % {'C:\', 'C:\Temp\new'}
+%   getFullPath('.', 'fat')         % '\\?\C:\Temp\File.Ext'
 %
 % COMPILE:
-%   Automatic: InstallMex GetFullPath.c uTest_GetFullPath
-%   Manual:    mex -O GetFullPath.c
+%   Automatic: InstallMex getFullPath.c uTest_getFullPath
+%   Manual:    mex -O getFullPath.c
 %   Download:  http://www.n-simon.de/mex
-% Run the unit-test uTest_GetFullPath after compiling.
+% Run the unit-test uTest_getFullPath after compiling.
 %
 % Tested: Matlab 2009a, 2015b(32/64), 2016b, 2018b, Win7/10
 %         Compiler: LCC2.4/3.8, BCC5.5, OWC1.8, MSVC2008/2010
@@ -89,8 +89,8 @@ function File = GetFullPath(File, Style)
 
 % $JRev: R-M V:038 Sum:C/6JMzUYsYsc Date:19-May-2019 17:25:55 $
 % $License: BSD (use/copy/change/redistribute on own risk, mention the author) $
-% $UnitTest: uTest_GetFullPath $
-% $File: Tools\GLFile\GetFullPath.m $
+% $UnitTest: uTest_getFullPath $
+% $File: Tools\GLFile\getFullPath.m $
 % History:
 % 001: 20-Apr-2010 22:28, Successor of Rel2AbsPath.
 % 010: 27-Jul-2008 21:59, Consider leading separator in M-version also.
@@ -119,7 +119,7 @@ function File = GetFullPath(File, Style)
 
 % Difference between M- and Mex-version:
 % - Mex does not work under MacOS/Unix.
-% - Mex calls Windows API function GetFullPath.
+% - Mex calls Windows API function getFullPath.
 % - Mex is much faster.
 
 % Magic prefix for long Windows names:
@@ -128,11 +128,11 @@ if nargin < 2
 end
 
 % Handle cell strings:
-% NOTE: It is faster to create a function @cell\GetFullPath.m under Linux, but
+% NOTE: It is faster to create a function @cell\getFullPath.m under Linux, but
 % under Windows this would shadow the fast C-Mex.
 if isa(File, 'cell')
    for iC = 1:numel(File)
-      File{iC} = GetFullPath(File{iC}, Style);
+      File{iC} = getFullPath(File{iC}, Style);
    end
    return;
 end
@@ -149,9 +149,9 @@ if isempty(hasDataRead)
    %   Show a warning, if the slower Matlab version is used - commented, because
    %   this is not a problem and it might be even useful when the MEX-folder is
    %   not inlcuded in the path yet.
-   %   warning('JSimon:GetFullPath:NoMex', ...
-   %      ['GetFullPath: Using slow Matlab-version instead of fast Mex.', ...
-   %       char(10), 'Compile: InstallMex GetFullPath.c']);
+   %   warning('JSimon:getFullPath:NoMex', ...
+   %      ['getFullPath: Using slow Matlab-version instead of fast Mex.', ...
+   %       char(10), 'Compile: InstallMex getFullPath.c']);
    %end
    
    % DATAREAD is deprecated in 2011b, but still available. In Matlab 6.5, REGEXP

@@ -78,11 +78,13 @@ function [markovChainList] = readMarkovChain(self,varargin)
         if ~any(strcmp(properties(self),output)); self.addprop(output); end
         self.(output) = self.readOutput(callerName,varargin{:});
     elseif nargout==1
-        eval(output+" = self.readOutput(callerName,varargin{:})");
+        %eval(output+" = self.readOutput(callerName,varargin{:})");
+        varargout{1} = self.readOutput(callerName,varargin{:});
     else
-        self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file,delimiter)" + newline ...
-                        + "optionally outputs one variable (" + output + ") or nothing. If the latter is chosen by the user, " + newline ...
-                        + "then the output " + output + " will be instead added as a component of the " + self.object + " object.";
+        self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file,delimiter)" ...
+                        + "optionally outputs one variable (" + output + ") or nothing. If the latter is chosen by the user " ...
+                        + "(that is, no output is provivded to the method, " + self.objectName + "." + callerName + "), then the output " + output + ...
+                        + " will be instead added as a component of the " + self.object + " object.";
         self.Err.abort();
     end
 

@@ -43,20 +43,25 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine abort(Err,prefix,newline,outputUnit)
+    subroutine abort(Err,prefix,newline,outputUnit,returnEnabled)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: abort
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use Constants_mod, only: NLC
+        use Constants_mod, only: NLC, SOFT_EXIT_ENABLED
         use Decoration_mod, only: write
         implicit none
         type(Err_type), intent(in)          :: Err
         character(*), intent(in), optional  :: prefix, newline
         integer     , intent(in), optional  :: outputUnit
+        logical     , intent(in), optional  :: returnEnabled
 
+        logical                             :: returnEnabledDefault
         character(:), allocatable           :: pfx, msg, nlstr
         character(63)                       :: dummyChar1, imageChar !, dummyChar2
+
+        returnEnabledDefault = SOFT_EXIT_ENABLED
+        if (present(returnEnabled)) returnEnabledDefault = returnEnabled
 
 #if defined CAF_ENABLED
         write(imageChar ,"(g0)") this_image()
@@ -96,21 +101,19 @@ contains
 
         if (present(outputUnit)) then
             if (outputUnit/=output_unit) then
-
                 call write(outputUnit,1,0,1, pfx // " - Please Correct the error(s) and rerun the simulation." )
                 call write(outputUnit,1,0,1, pfx // " - For further help, contact Amir Shahmoradi via:" )
                 call write(outputUnit,0,0,1, pfx // " - a.shahmoradi@gmail.com" )
                 call write(outputUnit,0,0,1, pfx // " - shahmoradi@utexas.edu" )
                 call write(outputUnit,0,0,1, pfx // " - cdslab.org/ParaMonte/" )
                 call write(outputUnit,1,2,1, pfx // " - Gracefully Exiting on image " // trim(adjustl(imageChar)) // "." )
-
             end if
         end if
 
         if (outputUnit/=output_unit) then
             ! notify the user on screen too
             call write(output_unit,1,0,1, pfx // " - FATAL: Runtime error occurred." )
-            call write(output_unit,0,0,1, pfx // " - FATAL: For more information please see the report file." )
+            call write(output_unit,0,0,1, pfx // " - FATAL: For more information, please see the output report file." )
             call write(output_unit,0,2,1, pfx // " - FATAL: Gracefully Exiting on image " // trim(adjustl(imageChar)) // "." )
         end if
 
@@ -128,6 +131,7 @@ contains
                 loopWait: do
                     call system_clock( count=countNew )
                     if (countNew==countMax) then
+                        if (returnEnabledDefault) return
                         error stop
                     elseif ( real(countNew-countOld,kind=RK) / countRate >= 2._RK ) then
                         exit loopWait
@@ -144,6 +148,7 @@ contains
             errcode = 1; call mpi_abort(mpi_comm_world, errcode, ierrMPI)
         end block
 #endif
+        if (returnEnabledDefault) return
         error stop
 
     end subroutine abort

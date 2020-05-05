@@ -20,7 +20,7 @@ function namelist = getInputFile(self)
         else
             if length(string(self.spec.outputFileName))==1
                 if (isa(self.spec.outputFileName,"char") || isa(self.spec.outputFileName,"string")) && (endsWith(self.spec.outputFileName,'\') || endsWith(self.spec.outputFileName,'/'))
-                    self.spec.outputFileName = fullfile( string(GetFullPath(convertStringsToChars(self.spec.outputFileName),'lean')) , self.genOutputFileName() );
+                    self.spec.outputFileName = fullfile( string(getFullPath(convertStringsToChars(self.spec.outputFileName),'lean')) , self.genOutputFileName() );
                 end
             end
             self.spec.outputFileName = string(self.spec.outputFileName);
@@ -79,7 +79,7 @@ function namelist = getInputFile(self)
     else
 
         if exist(self.inputFile,"file")
-            namelist = string(GetFullPath(self.inputFile,'lean'));
+            namelist = string(getFullPath(self.inputFile,'lean'));
         else
             namelist = string(self.inputFile);
         end

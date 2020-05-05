@@ -1,4 +1,4 @@
-classdef ParaMonteSampler_class < dynamicprops
+classdef ParaMonteSampler < dynamicprops
 %   Base class for the ParaMonte sampler routines
 
     %*******************************************************************************************************************************
@@ -15,6 +15,11 @@ classdef ParaMonteSampler_class < dynamicprops
         Err = Err_class();
         methodName = "";
         objectName = [];
+        libName = [];
+        isWin32 = false;
+        isMacOS = false;
+        isLinux = false;
+        method = struct();
         ndim = [];
     end
 
@@ -22,8 +27,23 @@ classdef ParaMonteSampler_class < dynamicprops
     %*******************************************************************************************************************************
 
     methods (Access = public)
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+
+        function self = ParaMonteSampler()
+            %filePath = mfilename("fullpath"); addpath(genpath(filePath),"-begin");
+            self.method.isParaDRAM = false;
+            self.method.isParaNest = false;
+            self.method.isParaTemp = false;
+        end
+
+        %***************************************************************************************************************************
+        %***************************************************************************************************************************
+    
         [chainList] = readChain(self,varargin)
         [sampleList] = readSample(self,varargin)
+        runSampler(self,ndim,getLogFunc,varargin)
     end
 
     %*******************************************************************************************************************************
@@ -49,4 +69,4 @@ classdef ParaMonteSampler_class < dynamicprops
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-end % classdef ParaMonteSamplerRoutine
+end % classdef ParaMonteSampler

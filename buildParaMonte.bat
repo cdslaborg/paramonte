@@ -250,9 +250,9 @@ if !COMPILER_SUITE!==intel (
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: set up preprocessor flags
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
+REM echo. FPP_FLAGS_EXTRA = !FPP_FLAGS_EXTRA!
 REM /define:IS_ENABLED
-set FPP_FLAGS=/fpp !FPP_CFI_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !USER_PREPROCESSOR_MACROS!
+set FPP_FLAGS=/fpp !FPP_CFI_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !USER_PREPROCESSOR_MACROS! !FPP_FLAGS_EXTRA!
 :: to save the intermediate files use this on the command line: FPP /Qsave_temps <original file> <intermediate file>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

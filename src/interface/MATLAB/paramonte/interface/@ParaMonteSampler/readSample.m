@@ -1,4 +1,4 @@
-function [sampleList] = readSample(self,varargin)
+function [varargout] = readSample(self,varargin)
 %   Return a list of the contents of a set of ParaDRAM output
 %   chain files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName
@@ -69,14 +69,17 @@ function [sampleList] = readSample(self,varargin)
     output = chainType + "List";
 
     if nargout==0
-        if ~any(strcmp(properties(self),output)); self.addprop(output); end
-        self.(output) = self.readOutput(callerName,varargin{:});
+        %if ~any(strcmp(properties(self),output)); self.addprop(output); end
+        %self.(output) = self.readOutput(callerName,varargin{:});
+        self.readOutput(callerName,varargin{:});
     elseif nargout==1
-        eval(output+" = self.readOutput(callerName,varargin{:})");
+        %eval(output+" = self.readOutput(callerName,varargin{:})");
+        varargout{1} = self.readOutput(callerName,varargin{:});
     else
-        self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file,delimiter)" + newline ...
-                        + "optionally outputs one variable (" + output + ") or nothing. If the latter is chosen by the user, " + newline ...
-                        + "then the output " + output + " will be instead added as a component of the " + self.object + " object.";
+        self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file,delimiter)" ...
+                        + "optionally outputs one variable (" + output + ") or nothing. If the latter is chosen by the user " ...
+                        + "(that is, no output is provivded to the method, " + self.objectName + "." + callerName + "), then the output " + output + ...
+                        + " will be instead added as a component of the " + self.object + " object.";
         self.Err.abort();
     end
 

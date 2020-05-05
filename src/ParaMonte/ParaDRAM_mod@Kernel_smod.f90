@@ -26,6 +26,7 @@ submodule (ParaDRAM_mod) Kernel_smod
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
+    use ParaDRAMProposal_mod, only: ProposalErr
     use Err_mod, only: Err_type
 #if defined MPI_ENABLED
     use mpi
@@ -82,7 +83,6 @@ contains
         integer(IK)                         :: counterAUC                                       ! counter for adaptiveUpdateCount
         integer(IK)                         :: counterPRP                                       ! counter for progressReportPeriod
         integer(IK)                         :: counterDRS                                       ! counter for Delayed Rejection Stages
-       !integer(IK)                         :: lastState                                        ! dummy temporary argument to hold the value of PD%Stats%NumFunCall%accepted - 1_IK
         integer(IK)                         :: lastStateWeight                                  ! This is used for passing the most recent verbose chain segment to the adaptive updater of the sampler
         integer(IK)                         :: currentStateWeight                               ! counter for SampleWeight, used only in in restart mode
         integer(IK)                         :: numFunCallAcceptedPlusOne                        ! counter for SampleWeight, used only in in restart mode
@@ -544,6 +544,9 @@ contains
                                                         , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                &
                                                         , adaptationMeasure         = adaptationMeasure                                                                     &
                                                         )
+#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+                        if(ProposalErr%occurred) then; PD%Err%occurred = .true.; return; end if
+#endif
 
                         PD%Chain%Weight(PD%Stats%NumFunCall%accepted) = dummy   ! needed for the restart mode, not needed in the fresh run
                         if (PD%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then
@@ -723,7 +726,9 @@ contains
                                                                             , counterDRS    = counterDRS                            &
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1)    &
                                                                             )
-
+#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+                    if(ProposalErr%occurred) then; PD%Err%occurred = .true.; return; end if
+#endif
                     call random_number(uniformRnd) ! only for the purpose of restart mode reproducibility
 
 #if defined CAF_ENABLED
@@ -851,7 +856,9 @@ contains
                                                                             , counterDRS    = counterDRS                            &
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1)    &
                                                                             )
-
+#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+                    if(ProposalErr%occurred) then; PD%Err%occurred = .true.; return; end if
+#endif
                     call random_number(uniformRnd) ! only for the purpose of restart mode reproducibility
 
                     if (PD%isFreshRun .or. numFunCallAcceptedPlusOne==PD%Chain%Count%compact) then

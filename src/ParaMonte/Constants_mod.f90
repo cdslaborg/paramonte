@@ -34,6 +34,12 @@ module Constants_mod
 
     implicit none
 
+#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+    logical     , parameter :: SOFT_EXIT_ENABLED = .true.
+#else
+    logical     , parameter :: SOFT_EXIT_ENABLED = .false.
+#endif
+
     ! Constants for comutational accuracy
 
     integer     , parameter :: SPR = real32                                             ! single precision real kind

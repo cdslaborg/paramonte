@@ -168,6 +168,7 @@ contains
                                 , version = "1.0.0"       &
                                 , inputFile = inputFile   &
                                 )
+        if (PD%Err%occurred) return
 
         !***************************************************************************************************************************
         ! Initialize ParaMCMC variables
@@ -188,10 +189,8 @@ contains
         call PD%getSpecFromInputFile(ndim)
         if (PD%Err%occurred) then
             PD%Err%msg = PROCEDURE_NAME // PD%Err%msg
-            call PD%abort   ( Err = PD%Err                 &
-                            , prefix = PD%brand            &
-                            , newline = "\n"               &
-                            , outputUnit = PD%LogFile%unit )
+            call PD%abort( Err = PD%Err, prefix = PD%brand, newline = "\n", outputUnit = PD%LogFile%unit )
+            return
         end if
 
         !***************************************************************************************************************************
@@ -247,6 +246,7 @@ contains
         if (PD%Err%occurred) then
             PD%Err%msg = PROCEDURE_NAME // PD%Err%msg
             call PD%abort( Err = PD%Err, prefix = PD%brand, newline = "\n", outputUnit = PD%LogFile%unit )
+            return
         end if
 
         !***************************************************************************************************************************
@@ -260,11 +260,8 @@ contains
             PD%Image%isMaster = .true.
         else
             PD%Err%msg = PROCEDURE_NAME//": Error occurred. Unknown parallelism requested via the input variable parallelizationModel='"//PD%SpecBase%ParallelizationModel%val//"'."
-            call PD%abort( Err = PD%Err &
-                         , prefix = PD%brand &
-                         , newline = "\n" &
-                         , outputUnit = PD%LogFile%unit &
-                         )
+            call PD%abort( Err = PD%Err, prefix = PD%brand, newline = "\n", outputUnit = PD%LogFile%unit )
+            return
         end if
         PD%Image%isNotMaster = .not. PD%Image%isMaster
 
@@ -273,6 +270,11 @@ contains
         !***************************************************************************************************************************
 
         call PD%setupOutputFiles()
+        if (PD%Err%occurred) then
+            PD%Err%msg = PROCEDURE_NAME // PD%Err%msg
+            call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+            return
+        end if
 
         !***************************************************************************************************************************
         ! report variable values to the log file
@@ -312,6 +314,7 @@ contains
             if (PD%Err%occurred) then
                 PD%Err%msg = PROCEDURE_NAME // PD%Err%msg
                 call PD%abort( Err = PD%Err, prefix = PD%brand, newline = "\n", outputUnit = PD%LogFile%unit )
+                return
             end if
 
         end if
@@ -381,13 +384,19 @@ contains
                                                                     , brand         = PD%brand &
                                                                     , LogFile       = PD%LogFile &
                                                                     , RestartFile   = PD%RestartFile &
-                                                                    ) &
-                    )
+                                                                    ) )
+#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+            block
+                use ParaDRAMProposal_mod, only: ProposalErr
+                if(ProposalErr%occurred) return
+            end block
+#endif
         !elseif (PD%SpecMCMC%ProposalModel%isUniform) then
         !    allocate( PD%Proposal, source = ProposalUniform_type(ndim = ndim, PD = PD) )
         else
             PD%Err%msg = PROCEDURE_NAME // ": Internal error occurred. Unsupported proposal distribution for " // PD%name // "."
             call PD%abort( Err = PD%Err, prefix = PD%brand, newline = "\n", outputUnit = PD%LogFile%unit )
+            return
         end if
 
         !***************************************************************************************************************************
@@ -403,6 +412,9 @@ contains
         end if
 
         call PD%runKernel( getLogFunc = getLogFunc )
+#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+        if(PD%Err%occurred) return
+#endif
 
         if (PD%isFreshRun .and. PD%Image%isMaster) then
             call PD%Decor%writeDecoratedText( text = "\nExiting " // PD%name // " sampling - " // getNiceDateTime() // "\n" &
@@ -755,10 +767,10 @@ contains
 
             formatStr = "(1A" // logFileColWidthStr // ",*(E" // logFileColWidthStr // "." // PD%SpecBase%OutputRealPrecision%str // "))"
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Chain size excluding burnin:" )
+            call PD%Decor%write(PD%LogFile%unit,1,0,1, "length of the Markov Chain excluding burnin:" )
             call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str(PD%Stats%Chain%count) )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Mean and standard deviation of the Markov chain:")
+            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Mean and standard deviation of the Markov chain variables:")
             write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "", "Mean", "Standard Deviation"
             do i = 1, ndim
                 write( PD%LogFile%unit , formatStr ) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Chain%Mean(i), sqrt(PD%Stats%Chain%CovMat(i,i))
@@ -779,7 +791,7 @@ contains
             end do
             call PD%Decor%write(PD%LogFile%unit,0,1)
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Quantiles of the Markov chain's variables:")
+            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Quantiles of the Markov chain variables:")
             write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "Quantile", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
             do iq = 1, QPROB%count
                 write( PD%LogFile%unit , formatStr ) trim(adjustl(QPROB%Name(iq))), (PD%Stats%Chain%Quantile(iq,i),i=1,ndim)
@@ -808,11 +820,8 @@ contains
 
             if (PD%Err%occurred) then
                 PD%Err%msg = PROCEDURE_NAME // PD%Err%msg
-                call PD%abort( Err = PD%Err                 &
-                             , prefix = PD%brand            &
-                             , newline = NLC                &
-                             , outputUnit = PD%LogFile%unit &
-                             )
+                call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                return
             end if
 
             ! compute the maximum integrated autocorrelation times for each variable
@@ -971,11 +980,8 @@ contains
                                             )
                     if (PD%Err%occurred) then
                         PD%Err%msg = PROCEDURE_NAME // PD%Err%msg
-                        call PD%abort   ( Err = PD%Err &
-                                        , prefix = PD%brand &
-                                        , newline = NLC &
-                                        , outputUnit = PD%LogFile%unit &
-                                        )
+                        call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                        return
                     end if
 
                 end if
@@ -992,6 +998,7 @@ contains
                 if (PD%Err%occurred) then
                     PD%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//PD%name//" "//PD%SampleFile%suffix//" file='"//PD%SampleFile%Path%original//"'."
                     call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                    return
                 end if
 
                 ! determine the sample file's contents' format
@@ -1155,6 +1162,7 @@ contains
                         if (RefinedChainThisImage%Err%occurred) then
                             PD%Err%msg = PROCEDURE_NAME//RefinedChainThisImage%Err%msg
                             call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                            return
                         end if
 
                         ! sort the refined chain on the current image
@@ -1185,6 +1193,7 @@ contains
                                 if (RefinedChainThatImage%Err%occurred) then
                                     PD%Err%msg = PROCEDURE_NAME//RefinedChainThatImage%Err%msg
                                     call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                                    return
                                 end if
 
                                 do i = 0, ndim

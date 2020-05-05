@@ -57,6 +57,7 @@ set "INSTALL_SCRIPT_NAME=ParaMonte install.bat"
 
 REM type .\bmake\install_usage.txt
 
+set FPP_FLAGS_EXTRA=
 set LANG_LIST=
 set BTYPE_LIST=
 set LTYPE_LIST=
@@ -208,6 +209,14 @@ if not "%1"=="" (
         if !ParaMonte_INSTALL_CLEANUP_ENABLED!==true set "VALUE_SUPPORTED=true"
         if !ParaMonte_INSTALL_CLEANUP_ENABLED!==false set "VALUE_SUPPORTED=true"
         if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+        shift
+    )
+
+    REM --clf preprocessor/Compiler/linker flags
+
+    if "!FLAG!"=="--fpp" (
+        set FLAG_SUPPORTED=true
+        set FPP_FLAGS_EXTRA=%2
         shift
     )
 

@@ -307,9 +307,13 @@ end module ParaDRAM_mod
 
 #if defined CFI_ENABLED
 
-    ! The C/C++ interface of ParaDRAM
+    ! The C-style interface to ParaDRAM
 
+#if defined MATLAB_ENABLED
+    function runParaDRAM    ( ndim          &
+#else
     subroutine runParaDRAM  ( ndim          &
+#endif
                             , getLogFunc4C  &
                             , InputFileVec  &
                             , lenInputFile  &
@@ -332,6 +336,10 @@ end module ParaDRAM_mod
         character(:), allocatable                               :: inputFileStr
         type(ParaDRAM_type)                                     :: PD
         integer                                                 :: i
+#if defined MATLAB_ENABLED
+        integer(IK)                                             :: runParaDRAM
+        runParaDRAM = 0_IK
+#endif
 
         ! reconstruct the input file
 
@@ -363,11 +371,16 @@ end module ParaDRAM_mod
 
         nullify(getLogFunc)
 
+#if defined MATLAB_ENABLED
+        if (PD%Err%occurred) runParaDRAM = -1_IK
+    end function runParaDRAM
+#else
     end subroutine runParaDRAM
+#endif
 
 #else
 
-    ! The simplistic Fortran interface of ParaDRAM
+    ! The procedural Fortran interface to ParaDRAM
 
     subroutine runParaDRAM  ( ndim          &
                             , getLogFunc    &

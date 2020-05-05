@@ -25,10 +25,13 @@
 module ParaDRAMProposal_mod
 
     use Constants_mod, only: IK, RK
+    use Err_mod, only: Err_type
 
     implicit none
 
     character(*), parameter :: MODULE_NAME = "@ParaDRAMProposal_mod"
+
+    type(Err_type), save :: ProposalErr
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

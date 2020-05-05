@@ -360,8 +360,13 @@ classdef OutputFileContents < dynamicprops
                 % 3d
 
                 if is3d
-                    self.plot.(plotName).xcolumns = self.df.Properties.VariableNames(self.offset);
-                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset+1);
+                    if self.ndim==1
+                        self.plot.(plotName).xcolumns = {};
+                        self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);
+                    else
+                        self.plot.(plotName).xcolumns = self.df.Properties.VariableNames(self.offset);
+                        self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset+1);
+                    end
                     self.plot.(plotName).zcolumns = "SampleLogFunc";
                 end
 
@@ -386,7 +391,7 @@ classdef OutputFileContents < dynamicprops
                     else
                         self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset);
                         if isHist2
-                            self.plot.(requestedPlotTypeLower).ycolumns = self.df.Properties.VariableNames(self.offset+1);
+                            self.plot.(requestedPlotTypeLower).ycolumns = self.df.Properties.VariableNames(self.offset-1);
                         end
                     end
                 end
@@ -400,7 +405,7 @@ classdef OutputFileContents < dynamicprops
                     %self.plot.(requestedPlotTypeLower).columns = string(self.df.Properties.VariableNames(self.offset:end));
                     if resetTypeIsHard
                         endIndx = min(lenVariableNames,self.offset+4);
-                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset:endIndx));
+                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset-1:endIndx));
                     else
                         self.plot.(requestedPlotTypeLower).reset();
                     end
