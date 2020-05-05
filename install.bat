@@ -101,7 +101,7 @@ if not "%1"=="" (
             if defined LANG_LIST set DELIM=/
             set LANG_LIST=!LANG_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
-            for %%V in ( "c" "fortran" "python" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
+            for %%V in ( "c" "fortran" "python" "matlab" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
             if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
         )
         shift
@@ -293,7 +293,10 @@ if defined PARALLELISM_LIST (
 if defined LANG_LIST (
     if defined LTYPE_LIST (
         for %%G in ("!LANG_LIST:/=" "!") do (
-            if %%~G==python (
+            set LANG_IS_DYNAMIC=false
+            if %%~G==python set LANG_IS_DYNAMIC=true
+            if %%~G==matlab set LANG_IS_DYNAMIC=true
+            if !LANG_IS_DYNAMIC!==true (
                 for %%L in ("!LTYPE_LIST:/=" "!") do (
                     if %%~L==static (
                         echo.
@@ -330,7 +333,7 @@ echo.
 
 :: set build type
 
-if not defined LANG_LIST        set LANG_LIST=c/fortran/python
+if not defined LANG_LIST        set LANG_LIST=c/fortran/matlab/python
 if not defined BTYPE_LIST       set BTYPE_LIST=release/testing/debug
 if not defined LTYPE_LIST       set LTYPE_LIST=static/dynamic
 if not defined MEMORY_LIST      set MEMORY_LIST=stack/heap
@@ -341,6 +344,7 @@ REM remove redundancies
 set TEMP=
 set C_IS_MISSING=true
 set Fortran_IS_MISSING=true
+set MATLAB_IS_MISSING=true
 for %%G in ("!LANG_LIST:/=" "!") do (
     if %%~G==fortran (
         if !Fortran_IS_MISSING!==true (
@@ -370,6 +374,16 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                 set TEMP=!TEMP!/%%~G
             )
             set C_IS_MISSING=false
+        )
+    )
+    if %%~G==matlab (
+        if !MATLAB_IS_MISSING!==true (
+            if not defined TEMP (
+                set TEMP=%%~G
+            ) else (
+                set TEMP=!TEMP!/%%~G
+            )
+            set MATLAB_IS_MISSING=false
         )
     )
 )
@@ -406,6 +420,7 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                     set ParaMonteExample_EXE_ENABLED=!EXAM_ENABLED!
                     set ParaMonteExample_RUN_ENABLED=!EXAM_ENABLED!
 
+                    set INTERFACE_LANGUAGE=%%~G
                     set BTYPE=%%~B
                     set LTYPE=%%~L
                     set HEAP_ARRAY_ENABLED=false
@@ -448,6 +463,13 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                         if !CFI_ENABLED!==true (
                             set BENABLED=false
                         )
+                    )
+
+                    if %%~G==matlab (
+                        if !LTYPE!==static set BENABLED=false
+                        if !LTYPE! NEQ dynamic set BENABLED=false
+                        if !CAF_ENABLED!==true set BENABLED=false
+                        if !HEAP_ARRAY_ENABLED!==false set BENABLED=false
                     )
 
                     if %%~G==python (

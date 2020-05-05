@@ -45,11 +45,10 @@ module SpecBase_mod
     use SpecBase_MpiFinalizeRequested_mod           , only: MpiFinalizeRequested_type
     use SpecBase_MaxNumDomainCheckToWarn_mod        , only: MaxNumDomainCheckToWarn_type
     use SpecBase_MaxNumDomainCheckToStop_mod        , only: MaxNumDomainCheckToStop_type
-!#if defined CFI_ENABLED
     use SpecBase_InterfaceType_mod                  , only: InterfaceType_type
-!#endif
 
     ! ParaMonte namelist variables
+
     use SpecBase_SampleSize_mod                     , only: sampleSize
     use SpecBase_RandomSeed_mod                     , only: randomSeed
     use SpecBase_Description_mod                    , only: description
@@ -70,9 +69,7 @@ module SpecBase_mod
     use SpecBase_MpiFinalizeRequested_mod           , only: mpiFinalizeRequested
     use SpecBase_MaxNumDomainCheckToWarn_mod        , only: maxNumDomainCheckToWarn
     use SpecBase_MaxNumDomainCheckToStop_mod        , only: maxNumDomainCheckToStop
-!#if defined CFI_ENABLED
     use SpecBase_InterfaceType_mod                  , only: interfaceType
-!#endif
 
     implicit none
 
@@ -99,9 +96,7 @@ module SpecBase_mod
         type(MpiFinalizeRequested_type)         :: MpiFinalizeRequested
         type(MaxNumDomainCheckToWarn_type)      :: MaxNumDomainCheckToWarn
         type(MaxNumDomainCheckToStop_type)      :: MaxNumDomainCheckToStop
-!#if defined CFI_ENABLED
         type(InterfaceType_type)                :: InterfaceType
-!#endif
     contains
         procedure, pass                         :: nullifyNameListVar
         procedure, pass                         :: setFromInputFile
@@ -152,9 +147,7 @@ contains
         SpecBase%MpiFinalizeRequested           = MpiFinalizeRequested_type(methodName)
         SpecBase%MaxNumDomainCheckToWarn        = MaxNumDomainCheckToWarn_type()
         SpecBase%MaxNumDomainCheckToStop        = MaxNumDomainCheckToStop_type()
-!#if defined CFI_ENABLED
         SpecBase%InterfaceType                  = InterfaceType_type()
-!#endif
     end function constructSpecBase
 
 !***********************************************************************************************************************************
@@ -189,9 +182,7 @@ contains
         call SpecBase%MpiFinalizeRequested          %nullifyNameListVar()
         call SpecBase%MaxNumDomainCheckToWarn       %nullifyNameListVar()
         call SpecBase%MaxNumDomainCheckToStop       %nullifyNameListVar()
-!#if defined CFI_ENABLED
         call SpecBase%InterfaceType                 %nullifyNameListVar()
-!#endif
     end subroutine nullifyNameListVar
 
 !***********************************************************************************************************************************
@@ -235,9 +226,7 @@ contains
         call SpecBase%MpiFinalizeRequested          %set(mpiFinalizeRequested)
         call SpecBase%MaxNumDomainCheckToWarn       %set(maxNumDomainCheckToWarn)
         call SpecBase%MaxNumDomainCheckToStop       %set(maxNumDomainCheckToStop)
-!#if defined CFI_ENABLED
         call SpecBase%InterfaceType                 %set(interfaceType)
-!#endif
 
         if (Err%occurred) Err%msg = PROCEDURE_NAME // Err%msg
 
@@ -361,13 +350,11 @@ contains
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%Description%desc )
 
 
-!#if !defined CFI_ENABLED
             write(outputUnit,formatStr)
             write(outputUnit,formatStr) "inputFileHasPriority"
             write(outputUnit,formatStr)
             write(outputUnit,formatVal) SpecBase%InputFileHasPriority%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%InputFileHasPriority%desc )
-!#endif
 
 
             write(outputUnit,formatStr)

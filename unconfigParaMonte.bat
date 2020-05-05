@@ -37,6 +37,7 @@ set                    ParaMonteTest_EXE_ENABLED=
 set                    ParaMonteTest_RUN_ENABLED=
 set                 ParaMonteExample_EXE_ENABLED=
 set                 ParaMonteExample_RUN_ENABLED=
+set                           INTERFACE_LANGUAGE=
 set                                        BTYPE=
 set                                        LTYPE=
 set                           HEAP_ARRAY_ENABLED=

@@ -49,7 +49,7 @@ echo.
 
 :: copy necessary ParaMonte Python library files in Python's directory
 
-echo. -- ParaMontePython - copying paramonte library files to the Python directory
+echo. -- ParaMontePython - copying ParaMonte library source files to the Python build directory
 echo. -- ParaMontePython - from: !ParaMonteInterfacePython_SRC_DIR!\paramonte   %= no need for final slash here =%
 echo. -- ParaMontePython -   to: !ParaMontePythonTest_BLD_DIR!\paramonte\       %= final slash tells this is folder =%
 xcopy /s /Y "!ParaMonteInterfacePython_SRC_DIR!\paramonte" "!ParaMontePythonTest_BLD_DIR!\paramonte\"
@@ -57,7 +57,7 @@ echo.
 
 :: copy necessary ParaMonte Python DLL files in Python's directory
 
-echo. -- ParaMontePython - copying paramonte DLL files to the Python directory
+echo. -- ParaMontePython - copying ParaMonte DLL files to the Python build directory
 echo. -- ParaMontePython - from: !ParaMonte_LIB_DIR!\!PMLIB_NAME!.* %= no need for final slash here =%
 echo. -- ParaMontePython -   to: !ParaMontePythonTest_BLD_DIR!\paramonte\   %= final slash tells this is folder =%
 xcopy /s /Y "!ParaMonte_LIB_DIR!\!PMLIB_NAME!.*" "!ParaMontePythonTest_BLD_DIR!\paramonte\"
@@ -65,7 +65,7 @@ echo.
 
 :: copy necessary ParaMonte Python library files in Python's directory
 
-echo. -- ParaMontePython - copying paramonte library test files to the Python directory
+echo. -- ParaMontePython - copying the ParaMonte library test files to the Python build directory
 echo. -- ParaMontePython - from: !ParaMontePythonTest_SRC_DIR!\!PYTHON_TEST_FILENAME!  %= no need for final slash here =%
 echo. -- ParaMontePython -   to: !ParaMontePythonTest_BLD_DIR!\                        %= final slash tells this is folder =%
 xcopy /s /Y "!ParaMontePythonTest_SRC_DIR!\!PYTHON_TEST_FILENAME!" "!ParaMontePythonTest_BLD_DIR!\"
@@ -73,7 +73,7 @@ echo.
 
 :: copy necessary input files in Python's directory
 
-echo. -- ParaMontePython - copying input files to the Python directory
+echo. -- ParaMontePython - copying the test input files to the ParaMonte Python build directory
 echo. -- ParaMontePython - from: !ParaMonteTest_SRC_DIR!\input   %= no need for final slash here =%
 echo. -- ParaMontePython -   to: !ParaMontePythonTest_BLD_DIR!\input\  %= final slash tells this is folder =%
 xcopy /s /Y "!ParaMonteTest_SRC_DIR!\input" "!ParaMontePythonTest_BLD_DIR!\input\"

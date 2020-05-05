@@ -38,6 +38,13 @@ if not defined                ParaMonteExample_EXE_ENABLED set                Pa
 if not defined                ParaMonteExample_RUN_ENABLED set                ParaMonteExample_RUN_ENABLED=true
 if not defined              ParaMonte_FLAG_CLEANUP_ENABLED set              ParaMonte_FLAG_CLEANUP_ENABLED=true
 
+:: define the ParaMonte interface language (all must be lower-case. Also make sure CFI_ENABLED is set perperly):
+::                         c:   Full-blown highly optimized production-level library build
+::                   fortran:   Fast compilation, used only for testing purposes during the development. No optimizations performed.
+::                    matlab:   Used only for development step. No optimizations performed.
+::                    python:   Used only for development step. No optimizations performed.
+if not defined                          INTERFACE_LANGUAGE set                          INTERFACE_LANGUAGE=fortran
+
 :: define build type:
 ::                   release:   Full-blown highly optimized production-level library build
 ::                   testing:   Fast compilation, used only for testing purposes during the development. No optimizations performed.
@@ -61,7 +68,7 @@ if not defined                 HEAP_ARRAY_ENABLED set                HEAP_ARRAY_
 ::                              It is also fine to set this flag to true for Fortran application. However, the syntax of the Fortran objective function that
 ::                              is passed to ParaMonte library will have to conform to the rules of C-Fortran interoperability standard,
 ::                              as given in the abstract interface in the ParaMonte source file: ParaMonteLogFunc_mod.f90
-if not defined                        CFI_ENABLED set                       CFI_ENABLED=T
+if not defined                        CFI_ENABLED set                       CFI_ENABLED=true
 
 :: set Coarray Fortran (CAF) parallelization model:
 ::                      none:   No Coarray Parallelization will be performed. Serial library will be built.   
@@ -76,7 +83,7 @@ if not defined                            CAFTYPE set                           
 if not defined             FOR_COARRAY_NUM_IMAGES set            FOR_COARRAY_NUM_IMAGES=3
 
 :: set other parallelization model flags:
-if not defined                        MPI_ENABLED set                       MPI_ENABLED=T
+if not defined                        MPI_ENABLED set                       MPI_ENABLED=false
 if not defined                        OMP_ENABLED set                       OMP_ENABLED=false
 
 :: set Fortran/C compiler suite: currently only intel is supported on Windows systems.

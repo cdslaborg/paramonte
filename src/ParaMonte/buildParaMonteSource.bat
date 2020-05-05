@@ -46,19 +46,22 @@ set MEMORY_ALLOCATION=stack
 if !HEAP_ARRAY_ENABLED!==true set MEMORY_ALLOCATION=heap
 
 :: define ParaMonte_BLD_DIR (win64, win32), compiler (intel), build type (debug, release, testing), lib type (static, dynamic), parallelization mode
+
 set ParaMonte_BLD_DIR=!ParaMonte_BLD_ROOT_DIR!\build\win!PLATFORM!\!COMPILER_SUITE!\!COMPILER_VERSION!\!BTYPE!\!LTYPE!\!MEMORY_ALLOCATION!\!PARALLELIZATION_DIR!
-if !CFI_ENABLED!==true (
-    set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\C
-)else (
-    set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\Fortran
-)
+
+if !INTERFACE_LANGUAGE!==c set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\C
+if !INTERFACE_LANGUAGE!==matlab set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\MATLAB
+if !INTERFACE_LANGUAGE!==python set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\Python
+if !INTERFACE_LANGUAGE!==fortran set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\Fortran
+
 if exist !ParaMonte_BLD_DIR! (
     echo. -- ParaMonte - !ParaMonte_BLD_DIR! already exists. skipping...
 ) else (
     echo. -- ParaMonte - generating !BTYPE! library directory: !ParaMonte_BLD_DIR!
     mkdir !ParaMonte_BLD_DIR!
 )
-echo. -- ParaMonte - all generated build files will be stored at: %~dp0!ParaMonte_BLD_DIR!
+echo. -- ParaMonte - all generated build files will be stored at:
+echo. -- ParaMonte -     %~dp0!ParaMonte_BLD_DIR!
 
 :: generate object files directory
 set ParaMonte_OBJ_DIR=!ParaMonte_BLD_DIR!\obj

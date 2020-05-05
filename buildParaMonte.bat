@@ -101,15 +101,22 @@ if !TEMP_DYNAMIC_OR_CFI!==true (
 endlocal
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: set interoperability mode preprocessor's flag
+:: set language interface preprocessor's flag
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-set FPP_CFI_FLAG=
-set INTERFACE_LANGUAGE=fortran
 if !CFI_ENABLED!==true (
     set FPP_CFI_FLAG=/define:CFI_ENABLED
-    set INTERFACE_LANGUAGE=c
+    REM XXX INTERFACE_LANGUAGE probably needs special care here
+    if not defined INTERFACE_LANGUAGE set INTERFACE_LANGUAGE=c
+) else (
+    if not defined INTERFACE_LANGUAGE set INTERFACE_LANGUAGE=fortran
 )
+
+set "FPP_LANG_FLAG="
+if !INTERFACE_LANGUAGE!==c set FPP_LANG_FLAG=/define:C_ENABLED
+if !INTERFACE_LANGUAGE!==fortran set FPP_LANG_FLAG=/define:FORTRAN_ENABLED
+if !INTERFACE_LANGUAGE!==matlab set FPP_LANG_FLAG=/define:MATLAB_ENABLED
+if !INTERFACE_LANGUAGE!==python set FPP_LANG_FLAG=/define:PYTHON_ENABLED
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: report build spec and setup flags
@@ -208,6 +215,7 @@ echo.
 
 set       ParaMonteInterface_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface
 set      ParaMonteInterfaceC_SRC_DIR=!ParaMonteInterface_SRC_DIR!\C
+set ParaMonteInterfaceMATLAB_SRC_DIR=!ParaMonteInterface_SRC_DIR!\MATLAB
 set ParaMonteInterfacePython_SRC_DIR=!ParaMonteInterface_SRC_DIR!\Python
 
 echo.
@@ -215,6 +223,7 @@ echo. -- !BUILD_SCRIPT_NAME! - interface source files directories: !ParaMonteInt
 for %%A in (
     !ParaMonteInterface_SRC_DIR!
     !ParaMonteInterfaceC_SRC_DIR!
+    !ParaMonteInterfaceMATLAB_SRC_DIR!
     !ParaMonteInterfacePython_SRC_DIR!
     ) do (  if exist %%A (
                 echo. -- !BUILD_SCRIPT_NAME! - %%A exists.
@@ -252,7 +261,7 @@ if !COMPILER_SUITE!==intel (
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 REM echo. FPP_FLAGS_EXTRA = !FPP_FLAGS_EXTRA!
 REM /define:IS_ENABLED
-set FPP_FLAGS=/fpp !FPP_CFI_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !USER_PREPROCESSOR_MACROS! !FPP_FLAGS_EXTRA!
+set FPP_FLAGS=/fpp !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !USER_PREPROCESSOR_MACROS! !FPP_FLAGS_EXTRA!
 :: to save the intermediate files use this on the command line: FPP /Qsave_temps <original file> <intermediate file>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -381,40 +390,6 @@ if !ERRORLEVEL!==1 (
 cd %~dp0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: generate ParaMonte library Python build directories and object files
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-if !LTYPE!==static goto LABEL_ParaMonteTest
-if !CFI_ENABLED! NEQ true goto LABEL_ParaMonteTest
-
-:: setup Python library source files directory
-
-set ParaMonteInterfacePython_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\Python
-if exist !ParaMonteInterfacePython_SRC_DIR! (
-    echo. -- !BUILD_SCRIPT_NAME! - Python source files directory: !ParaMonteInterfacePython_SRC_DIR!
-) else (
-    echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: Python source files directory does not exist: !ParaMonteInterfacePython_SRC_DIR!
-    echo. 
-    cd %~dp0
-    set ERRORLEVEL=1
-    exit /B 1
-)
-echo.
-
-call !ParaMonteInterfacePython_SRC_DIR!\buildParaMontePython.bat
-
-if !ERRORLEVEL!==1 (
-    echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
-    echo. 
-    cd %~dp0
-    set ERRORLEVEL=1
-    exit /B 1
-)
-cd %~dp0
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: generate ParaMonte library TEST build directories and object files
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -441,13 +416,95 @@ if exist !ParaMonteTest_SRC_DIR! (
 )
 echo.
 
-if !ParaMonteTest_ENABLED! NEQ true goto LABEL_ParaMonteExamples
+if !ParaMonteTest_ENABLED! NEQ true goto LABEL_ParaMonteInterface
 
 call !ParaMonteTest_SRC_DIR!\buildParaMonteTest.bat
 
 if !ERRORLEVEL!==1 (
     echo. 
     echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library test build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
+cd %~dp0
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: generate ParaMonte library interface build directories and object files
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:LABEL_ParaMonteInterface
+
+REM if !ParaMonteExample_ENABLED! NEQ true goto LABEL_EOF
+set ParaMonteInterfaceC_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\C
+set ParaMonteInterfaceFortran_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\Fortran
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: generate ParaMonte library MATLAB build directories and object files
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if !LTYPE!==static goto LABEL_ParaMontePython
+if !CFI_ENABLED! NEQ true goto LABEL_ParaMontePython
+if !INTERFACE_LANGUAGE! NEQ matlab goto LABEL_ParaMontePython
+
+:: setup MATLAB library source files directory
+
+set ParaMonteInterfaceMATLAB_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\MATLAB
+if exist !ParaMonteInterfaceMATLAB_SRC_DIR! (
+    echo. -- !BUILD_SCRIPT_NAME! - MATLAB source files directory: !ParaMonteInterfaceMATLAB_SRC_DIR!
+) else (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: MATLAB source files directory does not exist: !ParaMonteInterfaceMATLAB_SRC_DIR!
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
+echo.
+
+call !ParaMonteInterfaceMATLAB_SRC_DIR!\buildParaMonteMATLAB.bat
+
+if !ERRORLEVEL!==1 (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
+cd %~dp0
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: generate ParaMonte library Python build directories and object files
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:LABEL_ParaMontePython
+
+if !LTYPE!==static goto LABEL_ParaMonteExamples
+if !CFI_ENABLED! NEQ true goto LABEL_ParaMonteExamples
+if !INTERFACE_LANGUAGE! NEQ python goto LABEL_ParaMonteExamples
+
+:: setup Python library source files directory
+
+set ParaMonteInterfacePython_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\Python
+if exist !ParaMonteInterfacePython_SRC_DIR! (
+    echo. -- !BUILD_SCRIPT_NAME! - Python source files directory: !ParaMonteInterfacePython_SRC_DIR!
+) else (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: Python source files directory does not exist: !ParaMonteInterfacePython_SRC_DIR!
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
+echo.
+
+call !ParaMonteInterfacePython_SRC_DIR!\buildParaMontePython.bat
+
+if !ERRORLEVEL!==1 (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -479,10 +536,6 @@ if exist !ParaMonteExample_SRC_DIR! (
     exit /B 1
 )
 echo.
-
-REM if !ParaMonteExample_ENABLED! NEQ true goto LABEL_EOF
-set ParaMonteInterfaceC_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\C
-set ParaMonteInterfaceFortran_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\Fortran
 
 :: build ParaMonte examples
 
