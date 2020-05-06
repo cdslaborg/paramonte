@@ -139,18 +139,18 @@ for %%e in (!EXAM_LIST!) do (
     )
     mkdir "!ParaMonteExample_BLD_DIR_CURRENT!\"
 
-    REM ParaMonte library kernel files
+    REM The ParaMonte library kernel files
 
     set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_BLD_DIR_CURRENT!
     if !LANG_IS_Python!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte
-    if !LANG_IS_MATLAB!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte\bin
+    if !LANG_IS_MATLAB!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte\lib
 
     echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library files...
     echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonte_LIB_DIR!                %= no need for final slash here =%
     echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_LIB_DIR_CURRENT! %= final slash tells this is folder =%
     xcopy /s /Y "!ParaMonte_LIB_DIR!\!PMLIB_NAME!.*" "!ParaMonteExample_LIB_DIR_CURRENT!\"
 
-    REM ParaMonte library example required files
+    REM The ParaMonte library example required files
 
     echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library !EXAM_NAME! example required files in !LANG_NAME! language...
 
@@ -160,7 +160,7 @@ for %%e in (!EXAM_LIST!) do (
         echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT! %= final slash tells this is folder =%
         xcopy /s /Y "!ParaMonteExample_SRC_DIR!\build.bat" "!ParaMonteExample_BLD_DIR_CURRENT!\"
 
-        REM ParaMonte library example header/module files
+        REM The ParaMonte library example header/module files
 
         if !LANG_IS_Fortran!==true (
 
@@ -200,13 +200,14 @@ for %%e in (!EXAM_LIST!) do (
         echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library license file...
         echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonte_ROOT_DIR!\LICENSE %= no need for final slash here =%
         echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\LICENSE %= final slash tells this is folder =%
-        copy "!ParaMonte_ROOT_DIR!\LICENSE" "!ParaMonteExample_BLD_DIR_CURRENT!\LICENSE"
+        copy "!ParaMonte_ROOT_DIR!\LICENSE" "!ParaMonteExample_BLD_DIR_CURRENT!\paramonte\LICENSE"
 
         REM The ParaMonte library CHANGES.md files
 
         echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library CHANGES.md file...
-        echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonte_ROOT_DIR!\CHANGES.md %= no need for final slash here =%
-        echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\CHANGES.md
+        echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonteInterfaceMATLAB_SRC_DIR!\CHANGES.md %= no need for final slash here =%
+        echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\paramonte\CHANGES.md
+        copy "!ParaMonteInterfaceMATLAB_SRC_DIR!\CHANGES.md" "!ParaMonteExample_BLD_DIR_CURRENT!\paramonte\CHANGES.md"
 
     )
 
@@ -235,12 +236,13 @@ for %%e in (!EXAM_LIST!) do (
         REM The ParaMonte library CHANGES.md files
 
         echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library CHANGES.md file...
-        echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonte_ROOT_DIR!\CHANGES.md %= no need for final slash here =%
+        echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonteInterfacePython_SRC_DIR!\CHANGES.md %= no need for final slash here =%
         echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\CHANGES.md
+        copy "!ParaMonteInterfacePython_SRC_DIR!\CHANGES.md" "!ParaMonteExample_BLD_DIR_CURRENT!\CHANGES.md"
 
     )
 
-    REM ParaMonte library example input files
+    REM The ParaMonte library example input files
 
     set ParaMonteExample_INP_DIR_CURRENT=!ParaMonteExample_SRC_DIR!\!EXAM_NAME!\input
     echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library !EXAM_NAME! example input files in !LANG_NAME! language...
@@ -248,7 +250,7 @@ for %%e in (!EXAM_LIST!) do (
     echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\    %= final slash tells this is folder =%
     xcopy /s /Y "!ParaMonteExample_INP_DIR_CURRENT!" "!ParaMonteExample_BLD_DIR_CURRENT!\"
 
-    REM ParaMonte library example source files
+    REM The ParaMonte library example source files
 
     set ParaMonteExample_SRC_DIR_CURRENT=!ParaMonteExample_SRC_DIR!\!EXAM_NAME!\!LANG_NAME!
     echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library !EXAM_NAME! example source files in !LANG_NAME! language...
@@ -349,7 +351,7 @@ for %%e in (!EXAM_LIST!) do (
     set EXAM_NAME=%%e
     echo. -- ParaMonteExample!LANG_NAME! - Building and running the ParaMonte library's !EXAM_NAME! example.
 
-    REM ParaMonte library example build and run if requested
+    REM The ParaMonte library example build and run if requested
 
     if !ParaMonteExample_RUN_ENABLED!==true (
 
