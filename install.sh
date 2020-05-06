@@ -221,6 +221,7 @@ if ! [ -z ${LANG_LIST+x} ]; then
     for LANG in $LANG_LIST; do
         if  [[ $LANG != [cC]
             && $LANG != [fF][oO][rR][tT][rR][aA][nN]
+            && $LANG != [mM][aA][tT][lL][aA][bB]
             && $LANG != [pP][yY][tT][hH][oO][nN] ]]; then
             reportBadValue "-L or --lang" $LANG
         fi
@@ -394,7 +395,7 @@ fi
 
 if ! [ -z ${LANG_LIST+x} ]; then
     for LANG in $LANG_LIST; do
-        if  [ "${LANG}" = "python" ]; then
+        if  [ "${LANG}" = "matlab" ] || [ "${LANG}" = "python" ]; then
             for LTYPE in $LTYPE_LIST; do
                 if  [ "${LTYPE}" = "static" ]; then
                     reportConflict "ParaMonte static library build is not possible for usage from Python language."
@@ -409,25 +410,24 @@ fi
 ####################################################################################################################################
 
 if [ -z ${LANG_LIST+x} ]; then
-    LANG_LIST="fortran c python"
+    LANG_LIST="fortran c matlab python"
 fi
-CFI_ENABLED_LIST=""
-C_IS_MISSING=true
-Fortran_IS_MISSING=true
-for LANG in $LANG_LIST; do
-    if [ "${LANG}" = "fortran" ]; then
-        if [ "${Fortran_IS_MISSING}" = "true" ]; then
-            CFI_ENABLED_LIST="${CFI_ENABLED_LIST} false"
-            Fortran_IS_MISSING=false
-        fi
-    fi
-    if [ "${LANG}" = "python" ] || [ "${LANG}" = "c" ]; then
-        if [ "${C_IS_MISSING}" = "true" ]; then
-            CFI_ENABLED_LIST="${CFI_ENABLED_LIST} true"
-            C_IS_MISSING=false
-        fi
-    fi
-done
+# # CFI_ENABLED_LIST=""
+# C_IS_MISSING=true
+# Fortran_IS_MISSING=true
+# MATLAB_IS_MISSING=true
+# Python_IS_MISSING=true
+# for LANG in $LANG_LIST; do
+    # if [ "${LANG}" = "c" ]; then
+        # if [ "${C_IS_MISSING}" = "true" ]; then
+            # # CFI_ENABLED_LIST="${CFI_ENABLED_LIST} true"
+            # C_IS_MISSING=false
+        # fi
+    # fi
+    # if [ "${LANG}" = "fortran" ]; then if [ "${Fortran_IS_MISSING}" = "true" ]; then Fortran_IS_MISSING=false; fi; fi
+    # if [ "${LANG}" = "matlab" ]; then if [ "${MATLAB_IS_MISSING}" = "true" ]; then MATLAB_IS_MISSING=false; fi; fi
+    # if [ "${LANG}" = "python" ]; then if [ "${Python_IS_MISSING}" = "true" ]; then Python_IS_MISSING=false; fi; fi
+# done
 
 if [ -z ${PMCS_LIST+x} ]; then
     PMCS_LIST="none"
@@ -451,6 +451,12 @@ if [ -z ${ParaMonteExample_RUN_ENABLED+x} ]; then
     ParaMonteExample_RUN_ENABLED="true"
 fi
 
+if [ "${LANG_LIST}" = "matlab" ]; then
+    MEMORY_LIST="heap"
+    LTYPE_LIST="dynamic"
+    if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
+fi
+
 if [ "${LANG_LIST}" = "python" ]; then
     MEMORY_LIST="heap"
     LTYPE_LIST="dynamic"
@@ -459,7 +465,8 @@ fi
 
 for PMCS in $PMCS_LIST; do
 
-    for CFI_ENABLED in $CFI_ENABLED_LIST; do
+    #for CFI_ENABLED in $CFI_ENABLED_LIST; do
+    for INTERFACE_LANGUAGE in $LANG_LIST; do
 
         for BTYPE in $BTYPE_LIST; do
 
@@ -470,6 +477,12 @@ for PMCS in $PMCS_LIST; do
                     for PARALLELISM in $PARALLELISM_LIST; do
 
                         BENABLED=true
+
+                        interface_language_flag="--lang ${INTERFACE_LANGUAGE}"
+                        cfi_enabled_flag="--cfi_enabled true"
+                        if [ "${INTERFACE_LANGUAGE}" = "fortran" ]; then
+                            cfi_enabled_flag="--cfi_enabled false"
+                        fi
 
                         test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
                         exam_enabled_flag="--exam_enabled ${ParaMonteExample_RUN_ENABLED}"
@@ -489,7 +502,6 @@ for PMCS in $PMCS_LIST; do
                         fi
                         lib_flag="--lib ${LTYPE}"
                         build_flag="--build ${BTYPE}"
-                        cfi_enabled_flag="--cfi_enabled ${CFI_ENABLED}"
                         heap_enabled_flag="--heap_enabled true"
                         if [ "${MEMORY}" = "stack" ]; then
                             heap_enabled_flag="--heap_enabled false"
@@ -515,6 +527,7 @@ for PMCS in $PMCS_LIST; do
                             echo >&2 "-- ParaMonte - invoking: "
                             echo >&2 ""
                             echo >&2 "                          buildParaMonte.sh \ "
+                            echo >&2 "                          ${interface_language_flag} \ "
                             if ! [ "${compiler_suite_flag}" = "" ]; then
                             echo >&2 "                          ${compiler_suite_flag} \ "
                             fi
@@ -552,6 +565,7 @@ for PMCS in $PMCS_LIST; do
                             (cd ${ParaMonte_ROOT_DIR} && \
                             chmod +x ./buildParaMonte.sh && \
                             ./buildParaMonte.sh \
+                            ${interface_language_flag} \
                             ${compiler_suite_flag} \
                             ${build_flag} \
                             ${lib_flag} \

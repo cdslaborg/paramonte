@@ -25,9 +25,9 @@
 
 # NOTE: This is not a standalone build-script. It must only be called by buildParaMonte.sh script in the root directory of the project.
 
-#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # build ParaMonte library example objects and executable
-#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 echo >&2 
 echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
@@ -36,6 +36,57 @@ echo >&2 "                                                  ParaMonte Library Ex
 echo >&2 "::::                                                                                                                            ::::"
 echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 echo >&2 
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# setup examples' interface language
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+unset LANG_NAME
+LANG_IS_C=false
+LANG_IS_MATLAB=false
+LANG_IS_Python=false
+LANG_IS_Fortran=false
+LANG_IS_DYNAMIC=false
+LANG_IS_FortranC=false
+
+if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+    LANG_IS_DYNAMIC=true
+    LANG_IS_MATLAB=true
+    LANG_FILE_EXT=m
+    LANG_NAME=MATLAB
+fi
+
+if [ "${INTERFACE_LANGUAGE}" = "python" ]; then
+    LANG_IS_DYNAMIC=true
+    LANG_IS_Python=true
+    LANG_FILE_EXT=py
+    LANG_NAME=Python
+fi
+
+if [ "${INTERFACE_LANGUAGE}" = "fortran" ]; then
+    LANG_IS_FortranC=true
+    LANG_IS_Fortran=true
+    LANG_FILE_EXT=f90
+    LANG_NAME=Fortran
+fi
+
+if [ "${INTERFACE_LANGUAGE}" = "c" ]; then
+    LANG_IS_FortranC=true
+    LANG_FILE_EXT=c
+    LANG_IS_C=true
+    LANG_NAME=C
+fi
+
+if [ -z ${LANG_NAME+x} ]; then
+    echo >&2
+    echo >&2 "-- ParaMonteExample - Fatal Error: unrecognized or no language specified. exiting..."
+    echo >&2
+    exit 1
+fi
+
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# build examples
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # set and make example directories
 
@@ -46,257 +97,257 @@ set ParaMonteExample_BLD_DIR=${ParaMonte_BLD_DIR}/example
 EXAM_LIST="mvn"
 export EXAM_LIST
 
-# select languages for which to build
-
-set EXAM_LANG_LIST=
-if [ "${CFI_ENABLED}" = "true" ]; then
-    EXAM_LANG_LIST="C"
-    if [ "${LTYPE}" = "dynamic" ]; then
-        EXAM_LANG_LIST="${EXAM_LANG_LIST} Python"
-    fi
-else
-    EXAM_LANG_LIST="Fortran"
-fi
-export EXAM_LANG_LIST
-
 echo >&2
-echo >&2 "-- ParaMonte - EXAM_LANG_LIST=${EXAM_LANG_LIST}"
+echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte library example interface language: ${INTERFACE_LANGUAGE}"
 echo >&2
 
 # make example build directory
 
 ParaMonteExample_BLD_DIR=${ParaMonte_BLD_DIR}/example
-echo >&2 "-- ParaMonte - ParaMonte examples root directory: ${ParaMonteExample_BLD_DIR}"
+echo >&2 "-- ParaMonteExample${LANG_NAME} - ParaMonte examples root directory: ${ParaMonteExample_BLD_DIR}"
 if [[ -d "${ParaMonteExample_BLD_DIR}" ]]; then
-    echo >&2 "-- ParaMonte - ParaMonte  examples root directory already exists. skipping..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - ParaMonte  examples root directory already exists. skipping..."
 else
-    echo >&2 "-- ParaMonte - generating ParaMonte examples root directory..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - generating ParaMonte examples root directory..."
     mkdir "${ParaMonteExample_BLD_DIR}/"
 fi
 export ParaMonteExample_BLD_DIR
 
-# build examples
+echo >&2 
+echo >&2 "-- ParaMonteExample${LANG_NAME} - generating ParaMonte examples in ${LANG_NAME} language..."
+echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte ${LANG_NAME} examples directory: ${ParaMonteExample_BLD_DIR}"
 
-for EXAM_LANG in $EXAM_LANG_LIST
+for EXAM_NAME in $EXAM_LIST
 do
 
-echo >&2
-echo >&2 "-- ParaMonte - EXAM_LANG=${EXAM_LANG}"
+    echo >&2
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - EXAM_NAME=${EXAM_NAME}"
+    echo >&2
 
-    ParaMonteExample_LNG_DIR="${ParaMonteExample_BLD_DIR}/$EXAM_LANG"
-
-    echo >&2 
-    echo >&2 "-- ParaMonteExample${EXAM_LANG} - generating ParaMonte examples in ${EXAM_LANG} language..."
-    echo >&2 "-- ParaMonteExample${EXAM_LANG} - ParaMonte ${EXAM_LANG} examples directory: ${ParaMonteExample_LNG_DIR}"
-
-    IS_Python_LANG=false
-    if [ "${EXAM_LANG}" = "Python" ]; then IS_Python_LANG=true; fi
-
-    IS_FortranC_LANG=false
-    if [ "${EXAM_LANG}" = "C" ]; then 
-        IS_FortranC_LANG=true;
-        LANG_FILE_EXT="c"
+    ParaMonteExample_BLD_DIR_CURRENT="${ParaMonteExample_BLD_DIR}/${EXAM_NAME}"
+    if [[ -d "${ParaMonteExample_BLD_DIR_CURRENT}" ]]; then
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - ParaMonte ${EXAM_NAME} example build directory already exists. deleting the old contents..."
+        rm -rf "${ParaMonteExample_BLD_DIR_CURRENT}"
     fi
-    if [ "${EXAM_LANG}" = "Fortran" ]; then
-        IS_FortranC_LANG=true;
-        LANG_FILE_EXT="f90"
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - generating ParaMonte ${EXAM_NAME} example build directory..."
+    mkdir -p "${ParaMonteExample_BLD_DIR_CURRENT}/"
+
+    # The ParaMonte library kernel files
+
+    ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_BLD_DIR_CURRENT}"
+    if [ "${LANG_IS_Python}" = "true" ]; then ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_LIB_DIR_CURRENT}/paramonte"; fi
+    if [ "${LANG_IS_MATLAB}" = "true" ]; then ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_LIB_DIR_CURRENT}/paramonte/lib"; fi
+
+    if [[ -d "${ParaMonteExample_LIB_DIR_CURRENT}" ]]; then
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - ParaMonte ${EXAM_NAME} example library directory already exists. skipping..."
+    else
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - generating ParaMonte ${EXAM_NAME} example library directory..."
+        mkdir -p "${ParaMonteExample_LIB_DIR_CURRENT}/"
     fi
 
-    for EXAM in $EXAM_LIST
-    do
+    echo >&2
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
+    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+    cp "${PMLIB_FULL_PATH}" "${ParaMonteExample_LIB_DIR_CURRENT}/"
 
-        echo >&2
-        echo >&2 "-- ParaMonte - EXAM=${EXAM}"
+    # The ParaMonte library example required files
 
-        # set the binaries directory
+    echo >&2
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library ${EXAM_NAME} example build files in ${LANG_NAME} language..."
 
-        # set ParaMonteExample_BIN_DIR_CURRENT=${ParaMonte_BIN_DIR}/${PMLIB_BASE_NAME}_${ParaMonteVersion}
-        ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/${PMLIB_BASE_NAME}"
-        if [ "${IS_Python_LANG}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/Python"; fi
+    if [ "${LANG_IS_FortranC}" = "true" ]; then
 
-        echo >&2
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} - current ParaMonte example binary/library directory: ${ParaMonteExample_BIN_DIR_CURRENT}"
-
-        if [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then
-            echo >&2 "-- ParaMonte - ParaMonte binary/library directory already exists. skipping..."
-        else
-            echo >&2 "-- ParaMonte - generating ParaMonte binary/library directory..."
-            mkdir -p "${ParaMonteExample_BIN_DIR_CURRENT}"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_SRC_DIR}"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
+        cp "${ParaMonteExample_SRC_DIR}/build.sh" "${ParaMonteExample_BLD_DIR_CURRENT}/"
+        chmod +x ${ParaMonteExample_BLD_DIR_CURRENT}/build.sh
+        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+            cp "${SETUP_FILE_PATH}" "${ParaMonteExample_BLD_DIR_CURRENT}/"
         fi
 
-        echo >&2
-        ParaMonteExample_BLD_DIR_CURRENT="${ParaMonteExample_LNG_DIR}/${EXAM}"
-        if [[ -d "${ParaMonteExample_BLD_DIR_CURRENT}" ]]; then
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - ParaMonte ${EXAM} example build directory already exists. skipping..."
-        else
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - generating ParaMonte ${EXAM} example build directory..."
-            mkdir -p "${ParaMonteExample_BLD_DIR_CURRENT}/"
-        fi
+        # The ParaMonte library example header/module files
 
-        # ParaMonte library files
-
-        ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_BLD_DIR_CURRENT}"
-        if [ "${IS_Python_LANG}" = "true" ]; then ParaMonteExample_LIB_DIR_CURRENT="${ParaMonteExample_LIB_DIR_CURRENT}/paramonte"; fi
-        if [[ -d "${ParaMonteExample_LIB_DIR_CURRENT}" ]]; then
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - ParaMonte ${EXAM} example library directory already exists. skipping..."
-        else
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - generating ParaMonte ${EXAM} example library directory..."
-            mkdir -p "${ParaMonteExample_LIB_DIR_CURRENT}/"
-        fi
-
-        echo >&2
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library files..."
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${PMLIB_FULL_PATH}"
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-        cp "${PMLIB_FULL_PATH}" "${ParaMonteExample_LIB_DIR_CURRENT}/"
-
-        if [ "${IS_Python_LANG}" = "true" ]; then
-            mkdir -p "${ParaMonteExample_BIN_DIR_CURRENT}/paramonte/" && \
-            cp "${PMLIB_FULL_PATH}" "${ParaMonteExample_BIN_DIR_CURRENT}/paramonte/"
-        else
-            cp "${PMLIB_FULL_PATH}" "${ParaMonteExample_BIN_DIR_CURRENT}/"
-        fi
-
-        # ParaMonte library example build files
-
-        echo >&2
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library ${EXAM} example build files in ${EXAM_LANG} language..."
-
-        if [ "${IS_FortranC_LANG}" = "true" ]; then
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteExample_SRC_DIR}"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
-            cp "${ParaMonteExample_SRC_DIR}/build.sh" "${ParaMonteExample_BLD_DIR_CURRENT}/"
-            cp "${ParaMonteExample_SRC_DIR}/build.sh" "${ParaMonteExample_BIN_DIR_CURRENT}/"
-            chmod +x ${ParaMonteExample_BLD_DIR_CURRENT}/build.sh
-            chmod +x ${ParaMonteExample_BIN_DIR_CURRENT}/build.sh
-            if [[ -f "${SETUP_FILE_PATH}" ]]; then
-                cp "${SETUP_FILE_PATH}" "${ParaMonteExample_BLD_DIR_CURRENT}/"
-                cp "${SETUP_FILE_PATH}" "${ParaMonteExample_BIN_DIR_CURRENT}/"
-            fi
-        fi
-
-        if [ "${IS_Python_LANG}" = "true" ]; then
-
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteInterfacePython_SRC_DIR}/paramonte"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
-            cp -R "${ParaMonteInterfacePython_SRC_DIR}/paramonte" "${ParaMonteExample_BLD_DIR_CURRENT}/"
-            cp -R "${ParaMonteInterfacePython_SRC_DIR}/paramonte" "${ParaMonteExample_BIN_DIR_CURRENT}/"
-
-            # PyPI build - ParaMonte library Python setup files
-
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library Python setup files..."
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteInterfacePython_SRC_DIR}/setup/*"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BIN_DIR_CURRENT}/"
-            cp ${ParaMonteInterfacePython_SRC_DIR}/setup/* "${ParaMonteExample_BIN_DIR_CURRENT}/"
-
-            # PyPI build - ParaMonte library license files
-
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library license file..."
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonte_ROOT_DIR}/LICENSE"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE"
-            cp "${ParaMonte_ROOT_DIR}/LICENSE" "${ParaMonteExample_BIN_DIR_CURRENT}/LICENSE"
-
-            # PyPI build - ParaMonte library CHANGES.md files
-
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library CHANGES.md file..."
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
-            cp "${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md" "${ParaMonteExample_BIN_DIR_CURRENT}/CHANGES.md"
-
-        fi
-
-        # ParaMonte library example input files
-
-        ParaMonteExample_INP_DIR_CURRENT="${ParaMonteExample_SRC_DIR}/${EXAM}/input"
-        echo >&2
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library ${EXAM} example input files in ${EXAM_LANG} language..."
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteExample_INP_DIR_CURRENT}"
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
-        cp -R ${ParaMonteExample_INP_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
-        cp -R ${ParaMonteExample_INP_DIR_CURRENT}/* ${ParaMonteExample_BIN_DIR_CURRENT}/
-
-        # ParaMonte library example source files
-
-        ParaMonteExample_SRC_DIR_CURRENT="${ParaMonteExample_SRC_DIR}/${EXAM}/${EXAM_LANG}"
-
-        echo >&2
-        echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library ${EXAM} example source files in ${EXAM_LANG} language..."
-
-        if [ "${IS_FortranC_LANG}" = "true" ]; then
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteExample_SRC_DIR_CURRENT}/*"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
-            cp ${ParaMonteExample_SRC_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
-            cp ${ParaMonteExample_SRC_DIR_CURRENT}/* ${ParaMonteExample_BIN_DIR_CURRENT}/
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT}"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
-            cp ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT} ${ParaMonteExample_BLD_DIR_CURRENT}/
-            cp ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT} ${ParaMonteExample_BIN_DIR_CURRENT}/
-        fi
-
-        if [ "${IS_Python_LANG}" = "true" ]; then
-
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteExample_SRC_DIR_CURRENT}/README.md"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
-            cp ${ParaMonteExample_SRC_DIR_CURRENT}/README.md ${ParaMonteExample_BLD_DIR_CURRENT}/
-
-            PythonScriptFileName=main.py
-            if [ "${MPI_ENABLED}" = "true" ]; then PythonScriptFileName=main_mpi.py; fi
-            cp ${ParaMonteExample_SRC_DIR_CURRENT}/${PythonScriptFileName} ${ParaMonteExample_BLD_DIR_CURRENT}/
-            cp ${ParaMonteExample_SRC_DIR_CURRENT}/${PythonScriptFileName} ${ParaMonteExample_BIN_DIR_CURRENT}/
-
-        fi
-
-        # ParaMonte library example header/module files
-
-        if [ "${EXAM_LANG}" = "Fortran" ]; then
+        if [ "${LANG_NAME}" = "Fortran" ]; then
             echo >&2
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library Fortran module file paramonte.mod..."
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonte_MOD_DIR}"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library Fortran module file paramonte.mod..."
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_MOD_DIR}"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
             cp ${ParaMonte_MOD_DIR}/paradram_mod.mod ${ParaMonteExample_BLD_DIR_CURRENT}/
-            cp ${ParaMonte_MOD_DIR}/paradram_mod.mod ${ParaMonteExample_BIN_DIR_CURRENT}/
             echo >&2
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library Fortran module file paramonte.f90..."
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteInterfaceFortran_SRC_DIR}"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library Fortran module file paramonte.f90..."
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfaceFortran_SRC_DIR}"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
             cp ${ParaMonteInterfaceFortran_SRC_DIR}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
-            cp ${ParaMonteInterfaceFortran_SRC_DIR}/* ${ParaMonteExample_BIN_DIR_CURRENT}/
         fi
-        if [ "${EXAM_LANG}" = "C" ]; then
+        if [ "${LANG_NAME}" = "C" ]; then
             echo >&2
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - copying the ParaMonte library C header file paramonte.h..."
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} - from: ${ParaMonteInterfaceC_SRC_DIR}"
-            echo >&2 "-- ParaMonteExample${EXAM_LANG} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library C header file paramonte.h..."
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfaceC_SRC_DIR}"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
             cp ${ParaMonteInterfaceC_SRC_DIR}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
-            cp ${ParaMonteInterfaceC_SRC_DIR}/* ${ParaMonteExample_BIN_DIR_CURRENT}/
         fi
 
-        # ParaMonte library example build and run if requested
+    fi
 
-        echo >&2
-        if [ "${ParaMonteExample_RUN_ENABLED}" = "true" ] && [ "${IS_FortranC_LANG}" = "true" ]; then
-            (cd ${ParaMonteExample_BLD_DIR_CURRENT} && ./build.sh)
-            if [ $? -eq 0 ]; then
-                echo >&2 "-- ParaMonteExample - ParaMonte example build successful."
-                echo >&2
-            else
-                echo >&2 "-- ParaMonteExample - Failed to build the example. exiting..."
-                echo >&2
-                exit 1
-            fi
-            (cd ${ParaMonteExample_BLD_DIR_CURRENT} && ./run.sh)
-            if [ $? -eq 0 ]; then
-                echo >&2 "-- ParaMonteExample - ParaMonte example run successful."
-                echo >&2
-            else
-                echo >&2 "-- ParaMonteExample - Failed to run the example. exiting..."
-                echo >&2
-                exit 1
-            fi
+    if [ "${LANG_IS_MATLAB}" = "true" ]; then
+
+        # The ParaMonte MATLAB library files
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
+        cp -R "${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte" "${ParaMonteExample_BLD_DIR_CURRENT}/"
+
+        # The ParaMonte library license files
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library license file..."
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/LICENSE"
+        cp "${ParaMonte_ROOT_DIR}/LICENSE" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/LICENSE"
+
+        # The ParaMonte library CHANGES.md files
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/CHANGES.md"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+        cp "${ParaMonteInterfaceMATLAB_SRC_DIR}/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+
+    fi
+
+    if [ "${LANG_IS_Python}" = "true" ]; then
+
+        # The ParaMonte Python library files
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfacePython_SRC_DIR}/paramonte"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
+        cp -R "${ParaMonteInterfacePython_SRC_DIR}/paramonte" "${ParaMonteExample_BLD_DIR_CURRENT}/"
+
+        # PyPI build - ParaMonte library Python setup files
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library Python setup files..."
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfacePython_SRC_DIR}/setup/*"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
+        cp ${ParaMonteInterfacePython_SRC_DIR}/setup/* "${ParaMonteExample_BLD_DIR_CURRENT}/"
+
+        # PyPI build - ParaMonte library license files
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library license file..."
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE"
+        cp "${ParaMonte_ROOT_DIR}/LICENSE" "${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE"
+
+        # PyPI build - ParaMonte library CHANGES.md files
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+        cp "${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+
+    fi
+
+    # The ParaMonte library example input files
+
+    ParaMonteExample_INP_DIR_CURRENT="${ParaMonteExample_SRC_DIR}/${EXAM_NAME}/input"
+    echo >&2
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library ${EXAM_NAME} example input files in ${LANG_NAME} language..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_INP_DIR_CURRENT}"
+    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
+    cp -R ${ParaMonteExample_INP_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
+
+    # The ParaMonte library example source files
+
+    ParaMonteExample_SRC_DIR_CURRENT="${ParaMonteExample_SRC_DIR}/${EXAM_NAME}/${LANG_NAME}"
+
+    echo >&2
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library ${EXAM_NAME} example source files in ${LANG_NAME} language..."
+
+    if [ "${LANG_IS_FortranC}" = "true" ]; then
+
+        # copy the example files
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_SRC_DIR_CURRENT}/*"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
+        cp ${ParaMonteExample_SRC_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT}"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
+        cp ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT} ${ParaMonteExample_BLD_DIR_CURRENT}/
+
+    fi
+
+    if [ "${LANG_IS_Python}" = "true" ]; then
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_SRC_DIR_CURRENT}/README.md"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
+        cp ${ParaMonteExample_SRC_DIR_CURRENT}/README.md ${ParaMonteExample_BLD_DIR_CURRENT}/
+
+        PythonScriptFileName=main.py
+        if [ "${MPI_ENABLED}" = "true" ]; then PythonScriptFileName=main_mpi.py; fi
+        cp ${ParaMonteExample_SRC_DIR_CURRENT}/${PythonScriptFileName} ${ParaMonteExample_BLD_DIR_CURRENT}/
+
+    fi
+
+done
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#: copy the first example to the bin directory
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+ParaMonteExample_BLD_DIR_CURRENT="${ParaMonteExample_BLD_DIR}/mvn"
+
+if ! [ -d "${ParaMonte_BIN_DIR}" ]; then mkdir "${ParaMonte_BIN_DIR}/"; fi
+
+ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/${PMLIB_BASE_NAME}"
+if [ "${LANG_IS_DYNAMIC}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/${LANG_NAME}"; fi
+if ! [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then mkdir "${ParaMonteExample_BIN_DIR_CURRENT}/"; fi
+
+echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte ${LANG_NAME} library binary directory: ${ParaMonteExample_BIN_DIR_CURRENT}"
+
+if [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - ParaMonte binary/library directory already exists. skipping..."
+else
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - generating ParaMonte binary/library directory..."
+    mkdir -p "${ParaMonteExample_BIN_DIR_CURRENT}"
+fi
+
+echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files to the bin folder..."
+echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_BLD_DIR_CURRENT}"
+echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BIN_DIR_CURRENT}"
+cp -R "${ParaMonteExample_BLD_DIR_CURRENT}" "${ParaMonteExample_BIN_DIR_CURRENT}/" || {
+    echo >&2
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: copy failed."
+    echo >&2
+    exit 1
+}
+
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# The ParaMonte library example build and run if requested
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+for EXAM_NAME in $EXAM_LIST
+do
+
+    echo >&2
+    if [ "${ParaMonteExample_RUN_ENABLED}" = "true" ] && [ "${LANG_IS_FortranC}" = "true" ]; then
+        ParaMonteExample_BLD_DIR_CURRENT="${ParaMonteExample_BLD_DIR}/${EXAM_NAME}"
+        (cd ${ParaMonteExample_BLD_DIR_CURRENT} && ./build.sh)
+        if [ $? -eq 0 ]; then
+            echo >&2 "-- ParaMonteExample - ParaMonte example build successful."
+            echo >&2
+        else
+            echo >&2 "-- ParaMonteExample - Failed to build the example. exiting..."
+            echo >&2
+            exit 1
         fi
-
-    done
-
-    # echo >&2 
+        (cd ${ParaMonteExample_BLD_DIR_CURRENT} && ./run.sh)
+        if [ $? -eq 0 ]; then
+            echo >&2 "-- ParaMonteExample - ParaMonte example run successful."
+            echo >&2
+        else
+            echo >&2 "-- ParaMonteExample - Failed to run the example. exiting..."
+            echo >&2
+            exit 1
+        fi
+    fi
 
 done

@@ -43,12 +43,12 @@ export ParaMonte_ROOT_DIR
 #export ParaMonte_ROOT_DIR="${ParaMonte_ROOT_DIR:-${PWD%/}}"
 
 if [[ ! -f "$(pwd)/build${BUILD_NAME}.sh" ]]; then
-  echo >&2
-  echo >&2 "-- ${BUILD_NAME} - FATAL: build failed."
-  echo >&2 "-- ${BUILD_NAME} - FATAL: Please run this script inside the top-level ParaMonte library root directory."
-  echo >&2 "-- ${BUILD_NAME} - FATAL: This is the directory which contains this file in the GitHub repository of ParaMonte."
-  echo >&2
-  exit 1
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME} - FATAL: build failed."
+    echo >&2 "-- ${BUILD_NAME} - FATAL: Please run this script inside the top-level ParaMonte library root directory."
+    echo >&2 "-- ${BUILD_NAME} - FATAL: This is the directory which contains this file in the GitHub repository of ParaMonte."
+    echo >&2
+    exit 1
 fi
 
 UNAME_PLATFORM="$(uname -s)"
@@ -129,6 +129,7 @@ cat << EndOfMessage
     usage:
 
         buildParaMonte.sh
+        -L <language: C/Fortran/MATLAB/Python>
         -s <compiler suite: intel/gnu>
         -b <build mode: release/testing/debug>
         -l <library type: static/dynamic>
@@ -153,6 +154,7 @@ cat << EndOfMessage
 
     flag definitions:
 
+        -L | --lang             : the ParaMonte library interface programming language: C, Fortran, MATLAB, Python
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
         -b | --build            : the ParaMonte library build type: release, testing, debug
         -l | --lib              : the ParaMonte library type: static, dynamic
@@ -178,6 +180,7 @@ EndOfMessage
 unset PMCS
 unset MPIEXEC_PATH
 unset GCC_BOOTSTRAP
+unset INTERFACE_LANGUAGE
 unset Fortran_COMPILER_PATH
 FRESH_INSTALL_ENABLED=false
 YES_TO_ALL_DISABLED=true
@@ -185,6 +188,9 @@ CLEAN=false
 
 while [ "$1" != "" ]; do
     case $1 in
+        -L | --lang )           shift
+                                INTERFACE_LANGUAGE=$1
+                                ;;
         -s | --compiler_suite ) shift
                                 PMCS=$1
                                 ;;
@@ -256,6 +262,14 @@ echo >&2 "-- ${BUILD_NAME} - current requested configuration: "
 . ./configParaMonte.sh
 
 # check flag consistencies
+
+if [ -z ${INTERFACE_LANGUAGE+x} ]; then
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME} - FATAL: The INTERFACE_LANGUAGE must be specified as input."
+    echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+    echo >&2
+    exit 1
+fi
 
 CAF_ENABLED=false
 if [ "${CAFTYPE}" = "single" ] || [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
@@ -1418,8 +1432,10 @@ echo >&2 "-- ${BUILD_NAME} - setting up build directories..."
 echo >&2 
 
 ParaMonte_BLD_DIR=${ParaMonte_ROOT_DIR}/build/${PLATFORM}${ARCHITECTURE}/${PMCS}/${COMPILER_VERSION}/${BTYPE}/${LTYPE}/${MEMORY_ALLOCATION}/${PARALLELIZATION_DIR}
-if [ ${CFI_ENABLED} = "true" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/C; fi
-if [ ${CFI_ENABLED} = "false" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/Fortran; fi
+if [ ${INTERFACE_LANGUAGE} = "c" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/C; fi
+if [ ${INTERFACE_LANGUAGE} = "fortran" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/Fortran; fi
+if [ ${INTERFACE_LANGUAGE} = "matlab" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/MATLAB; fi
+if [ ${INTERFACE_LANGUAGE} = "python" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/Python; fi
 if [ -z ${CFI_ENABLED+x} ]; then
     echo >&2 "-- ${BUILD_NAME} - FATAL: CFI_ENABLED must be set to either true or false."
     echo >&2 "-- ${BUILD_NAME} - FATAL: you have provided CFI_ENABLED=${CFI_ENABLED}"
@@ -1469,15 +1485,19 @@ export ParaMonte_BIN_DIR
          ParaMonteExample_SRC_DIR=${ParaMonte_ROOT_DIR}/example
        ParaMonteInterface_SRC_DIR=${ParaMonte_ROOT_DIR}/src/interface
       ParaMonteInterfaceC_SRC_DIR=${ParaMonteInterface_SRC_DIR}/C
+ ParaMonteInterfaceMATLAB_SRC_DIR=${ParaMonteInterface_SRC_DIR}/MATLAB
  ParaMonteInterfacePython_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Python
 ParaMonteInterfaceFortran_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Fortran
       ParaMontePythonTest_SRC_DIR=${ParaMonteInterfacePython_SRC_DIR}/test
+      ParaMonteMATLABTest_SRC_DIR=${ParaMonteInterfaceMATLAB_SRC_DIR}/test
 
 export ParaMonteTest_SRC_DIR
 export ParaMonteExample_SRC_DIR
+export ParaMonteMATLABTest_SRC_DIR
 export ParaMontePythonTest_SRC_DIR
 export ParaMonteInterface_SRC_DIR
 export ParaMonteInterfaceC_SRC_DIR
+export ParaMonteInterfaceMATLAB_SRC_DIR
 export ParaMonteInterfacePython_SRC_DIR
 export ParaMonteInterfaceFortran_SRC_DIR
 
@@ -1532,6 +1552,7 @@ cmake  \
 --verbose=1 \
 ${FC_OPTION} \
 ${MPIEXEC_OPTION} \
+-DINTERFACE_LANGUAGE=${INTERFACE_LANGUAGE} \
 -DPMCS=${PMCS} \
 -DMPI_ENABLED=${MPI_ENABLED} \
 -DCAFTYPE=${CAFTYPE} \
@@ -1617,10 +1638,69 @@ echo >&2 "-- ${BUILD_NAME} - ParaMonte installed-library base name: ${PMLIB_BASE
 echo >&2 
 
 ####################################################################################################################################
+# build ParaMonte MATLAB test
+####################################################################################################################################
+
+if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
+
+    echo >&2 
+    echo >&2 "-- ${BUILD_NAME}PythonTest - building ParaMonte MATLAB test..."
+    ParaMonteMATLABTest_BLD_DIR=${ParaMonte_BLD_DIR}/test/MATLAB
+    export ParaMonteMATLABTest_BLD_DIR
+    
+    MATLAB_TEST_FILENAME=testParaMonte_${BTYPE}
+    if [ "${CAF_ENABLED}" = "true" ]; then MATLAB_TEST_FILENAME=${MATLAB_TEST_FILENAME}_${CAFTYPE}; fi
+    if [ "${MPI_ENABLED}" = "true" ]; then MATLAB_TEST_FILENAME=${MATLAB_TEST_FILENAME}_mpi; fi
+    if [ "${OMP_ENABLED}" = "true" ]; then MATLAB_TEST_FILENAME=${MATLAB_TEST_FILENAME}_omp; fi
+    MATLAB_TEST_FILENAME=${MATLAB_TEST_FILENAME}.py
+
+    if [[ -d "$ParaMonteMATLABTest_BLD_DIR" ]]
+    then
+        echo >&2 "-- ${BUILD_NAME}MATLABTest - ${ParaMonteMATLABTest_BLD_DIR} already exists. skipping..."
+    else
+        echo >&2 "-- ${BUILD_NAME}MATLABTest - generating MATLAB files directory: ${ParaMonteMATLABTest_BLD_DIR}"
+        mkdir "${ParaMonteMATLABTest_BLD_DIR}"
+    fi
+
+    # copy necessary ParaMonte MATLAB library files in MATLAB's directory
+
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying ParaMonte library files to the MATLAB directory"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
+    cp -R ${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte ${ParaMonteMATLABTest_BLD_DIR}/
+    echo >&2 
+
+    # copy necessary ParaMonte MATLAB DLL files in MATLAB's directory
+
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying ParaMonte shared library files to the MATLAB directory"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonte_LIB_DIR}/${PMLIB_FULL_NAME}"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
+    cp ${ParaMonte_LIB_DIR}/${PMLIB_FULL_NAME} ${ParaMonteMATLABTest_BLD_DIR}/paramonte/
+    echo >&2 
+
+    # copy necessary ParaMonte MATLAB library files in MATLAB's directory
+
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying ParaMonte library test files to the MATLAB directory"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteMATLABTest_SRC_DIR}/${MATLAB_TEST_FILENAME}"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/"
+    cp ${ParaMonteMATLABTest_SRC_DIR}/${MATLAB_TEST_FILENAME} ${ParaMonteMATLABTest_BLD_DIR}/
+    echo >&2 
+
+    # copy necessary input files in MATLAB's directory
+
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying input files to the MATLAB directory"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteTest_SRC_DIR}/input"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/input/"
+    cp -R ${ParaMonteTest_SRC_DIR}/input ${ParaMonteMATLABTest_BLD_DIR}/
+    echo >&2 
+
+fi
+
+####################################################################################################################################
 # build ParaMonte Python test
 ####################################################################################################################################
 
-if [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
+if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
     echo >&2 
     echo >&2 "-- ${BUILD_NAME}PythonTest - building ParaMonte Python test..."

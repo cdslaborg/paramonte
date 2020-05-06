@@ -395,6 +395,24 @@ else()
     set( FPP_CFI_FLAG  CACHE STRING "Path to the Python interpreter" )
 endif()
 
+if (${INTERFACE_LANGUAGE} MATCHES "[cC]")
+    set( FPP_LANG_FLAG -DC_ENABLED  CACHE STRING "C language interface enabled" )
+elseif (${INTERFACE_LANGUAGE} MATCHES "[fF][oO][rR][tT][rR][aA][nN]")
+    set( FPP_LANG_FLAG -DFORTRAN_ENABLED  CACHE STRING "Fortran language interface enabled" )
+elseif (${INTERFACE_LANGUAGE} MATCHES "[mM][aA][tT][lL][aA][bB]")
+    set( FPP_LANG_FLAG -DMATLAB_ENABLED  CACHE STRING "MATLAB language interface enabled" )
+elseif (${INTERFACE_LANGUAGE} MATCHES "[pP][yY][tT][hH][oO][nN]")
+    set( FPP_LANG_FLAG -DPYTHON_ENABLED  CACHE STRING "Python language interface enabled" )
+else()
+    message (FATAL_ERROR
+            " \n"
+            "${pmfatal}\n"
+            "   Unrecognized interface language detected.\n"
+            "   INTERFACE_LANGUAGE: ${INTERFACE_LANGUAGE}\n"
+            "   possible values are: C/Fortran/MATLAB/Python.\n"
+            )
+endif()
+
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # report build spec and setup flags
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -498,7 +516,7 @@ elseif (gnu_compiler)
     set( FPP_FLAGS -cpp )
 endif()
 set(FPP_FLAGS 
-    "${FPP_FLAGS}" "${FPP_CFI_FLAG}" "${FPP_BUILD_FLAGS}" "${FPP_FCL_FLAGS}" "${FPP_DLL_FLAGS}" "${USER_PREPROCESSOR_MACROS}"
+    "${FPP_FLAGS}" "${FPP_CFI_FLAG}" "${FPP_LANG_FLAG}" "${FPP_BUILD_FLAGS}" "${FPP_FCL_FLAGS}" "${FPP_DLL_FLAGS}" "${USER_PREPROCESSOR_MACROS}"
     CACHE STRING "Fortran compiler preprocessor flags" FORCE )
 #add_definitions(${FPP_FLAGS})
 

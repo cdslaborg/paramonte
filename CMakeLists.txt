@@ -342,7 +342,7 @@ include(SetParaMonteCompilerVersion)
 #endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# Flags configuring the ParaMonte library build
+# flags configuring the ParaMonte library build
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 option(DLL_ENABLED                             "Define DLL_ENABLED preprocessor flag" OFF)
@@ -355,6 +355,12 @@ option(ParaMonteExampleMVNFortran_EXE_ENABLED  "Build ParaMonte library examples
 option(ParaMonteExampleMVNFortran_RUN_ENABLED  "Run ParaMonte library examples' executables for Fortran" OFF)
 option(ParaMonteExampleMVNPython_BLD_ENABLED   "Build ParaMonte library examples' sctips for Python" OFF)
 option(ParaMonteExampleMVNPython_RUN_ENABLED   "Run ParaMonte library examples' sctips for Python" OFF)
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# define library interface language (all must be lower-case)
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+set ( INTERFACE_LANGUAGE "c" CACHE STRING "Select the build interface language (c/fortran/matlab/python: all must be lower case)" )
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # define library linking type

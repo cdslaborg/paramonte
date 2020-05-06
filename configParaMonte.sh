@@ -44,6 +44,20 @@ export ParaMonteExample_RUN_ENABLED
 
 echo " "
 
+####################################################################################################################################
+
+#    set interface language:   c, fortran, matlab, python (all must be lower case)
+
+if [ -z ${INTERFACE_LANGUAGE+x} ]; then
+    ############################################################
+    INTERFACE_LANGUAGE=c
+    ############################################################
+    export INTERFACE_LANGUAGE
+fi
+echo "    interface language: $INTERFACE_LANGUAGE"
+
+####################################################################################################################################
+
 # unset compiler suite: intel, gnu
 
 if [ -z ${PMCS+x} ]
