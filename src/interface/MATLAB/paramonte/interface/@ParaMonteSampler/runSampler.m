@@ -191,9 +191,9 @@ function runSampler(self,ndim,getLogFunc,varargin)
     else
         expression = string(self.libName + "(iscmd,ndim,inputFile,@getLogFuncNested)");
     end
-
+    eval(expression);
     %try
-        eval(expression);
+    %    eval(expression);
     %catch
     %    if self.mpiEnabled
     %        reportFileSuffix = "_process_*_report.txt";

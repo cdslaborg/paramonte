@@ -20,7 +20,7 @@ function varargout = readOutput(self,varargin) % callerName,file,delimiter
             markovChainRequested = true;
         end
     end
-    if nargin>2; file = varargin{2}; end
+    if nargin>2; file = convertStringsToChars(varargin{2}); end
     if nargin>3; delimiter = varargin{3}; end
     if nargin>4 || errorOccurred
         self.Err.msg    = callerName + "takes only two input arguments (file, delimiter). Correct usage:" + newline + newline ...
