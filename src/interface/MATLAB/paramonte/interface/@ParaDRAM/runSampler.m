@@ -1,7 +1,4 @@
 function runSampler(self,ndim,getLogFunc,varargin)
-    %functions(getLogFunc)
-    %global getLogFuncHandle
-    %getLogFuncHandle = getLogFuncHandleArg;
-    %return
+    self.objectName = inputname(1);
     runSampler@ParaMonteSampler(self,ndim,getLogFunc,varargin{:})
 end

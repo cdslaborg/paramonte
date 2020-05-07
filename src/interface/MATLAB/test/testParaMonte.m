@@ -1,6 +1,6 @@
 %C:\Users\<username>\AppData\Roaming\MathWorks\MATLAB
-%cd D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\paramonte\bin
-%mex -nojvm CC=icc paramonte.c libparamonte_dynamic_heap_testing_intel_c_windows_x64_mt.lib -output libparamonte_dynamic_heap_testing_intel_m_windows_x64_mt
+%cd D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\bin
+%mex -nojvm CC=icl paramonte.c libparamonte_dynamic_heap_testing_intel_c_windows_x64_mt.lib -output libparamonte_dynamic_heap_testing_intel_windows_x64_mt
 %[status,cmdout] = system('matlab -nosplash -nojvm -r "testParaMonte,exit"','-echo');
 %clc;
 %clear all;
@@ -27,7 +27,7 @@ pmpd.spec.chainSize = 20000;
 %pmpd.spec.startPointVec = -10;
 pmpd.spec.randomSeed = 35671;
 pmpd.spec.proposalModel = "normal";
-%pmpd.spec.targetAcceptanceRate = 0.2;
+pmpd.spec.targetAcceptanceRate = 0.2;
 pmpd.runSampler(2,@getLogFunc); %@(point)-0.5*sum(point.^2)); %
 %pmpd.spec.outputFileName = "D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_300420_012424_780";
 %pmpd.readMarkovChain();

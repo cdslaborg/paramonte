@@ -148,7 +148,7 @@ for %%e in (!EXAM_LIST!) do (
     echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library files...
     echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonte_LIB_DIR!                %= no need for final slash here =%
     echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_LIB_DIR_CURRENT! %= final slash tells this is folder =%
-    xcopy /s /Y "!ParaMonte_LIB_DIR!\!PMLIB_NAME!.*" "!ParaMonteExample_LIB_DIR_CURRENT!\"
+    xcopy /s /Y "!ParaMonte_LIB_DIR!\*.*" "!ParaMonteExample_LIB_DIR_CURRENT!\"
 
     REM The ParaMonte library example required files
 
@@ -236,9 +236,9 @@ for %%e in (!EXAM_LIST!) do (
         REM The ParaMonte library CHANGES.md files
 
         echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library CHANGES.md file...
-        echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonteInterfacePython_SRC_DIR!\CHANGES.md %= no need for final slash here =%
+        echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonteInterfacePython_SRC_DIR!\setup\CHANGES.md %= no need for final slash here =%
         echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\CHANGES.md
-        copy "!ParaMonteInterfacePython_SRC_DIR!\CHANGES.md" "!ParaMonteExample_BLD_DIR_CURRENT!\CHANGES.md"
+        copy "!ParaMonteInterfacePython_SRC_DIR!\setup\CHANGES.md" "!ParaMonteExample_BLD_DIR_CURRENT!\CHANGES.md"
 
     )
 
@@ -355,6 +355,7 @@ for %%e in (!EXAM_LIST!) do (
 
     if !ParaMonteExample_RUN_ENABLED!==true (
 
+        set ParaMonteExample_BLD_DIR_CURRENT=!ParaMonteExample_BLD_DIR!\!EXAM_NAME!
         cd !ParaMonteExample_BLD_DIR_CURRENT!
         if !LANG_IS_FortranC!==true (
             call build.bat

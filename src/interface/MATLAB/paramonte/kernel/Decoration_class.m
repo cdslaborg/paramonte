@@ -388,7 +388,7 @@ classdef Decoration_class < handle
             delimIsCStyle   = ((delimLen == 2) && (delimiter=="\n"));
 
             maxNumSplit     = 1 + floor(stringLen / delimLen);
-            ListOfLines     = blanks(maxNumSplit);
+            ListOfLines     = {blanks(maxNumSplit)};
 
             counterLine     = 0;
             counterRecord   = 0;

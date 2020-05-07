@@ -499,7 +499,7 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 
                     if !ERRORLEVEL! NEQ 0 (
                         echo.
-                        echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: ParaMonte library build failed for the following configuration:
+                        echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: The ParaMonte library build failed for the following configuration:
                         echo.-- !INSTALL_SCRIPT_NAME! - 
                         echo.-- !INSTALL_SCRIPT_NAME! -               language: %%~G
                         echo.-- !INSTALL_SCRIPT_NAME! -             build type: %%~B

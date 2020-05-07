@@ -17,8 +17,6 @@ function runSampler(self,ndim,getLogFunc,varargin)
 %   -------
 %       None
 
-    self.objectName = inputname(1);
-
     if nargin~=3
         self.Err.msg    = "The method " + self.objectName + ".runSampler(ndim,getLogFunc) takes only two input arguments:" + newline + newline ...
                         + "          ndim:  the number of dimensions of the domain of the " + newline ...
@@ -120,8 +118,7 @@ function runSampler(self,ndim,getLogFunc,varargin)
     else
         parallelism = "";
         self.Err.msg    = "Running the ParaDRAM sampler in serial mode..." + newline ...
-                        + "To run the ParaDRAM sampler in parallel mode visit: cdslab.org/pm" + newline ...
-                        + "check the opened terminal for simulation progress and report.";
+                        + "To run the ParaDRAM sampler in parallel mode visit: cdslab.org/pm";
         self.Err.note();
     end
     buildModeListRef = ["release","testing","debug"];
@@ -151,7 +148,7 @@ function runSampler(self,ndim,getLogFunc,varargin)
     if self.isLinux; libNameSuffix = "_linux_" + getArch() + "_mt"; end
     for buildMode = buildModeList
         for pmcs = pmcsList
-            libName = "libparamonte_dynamic_heap_" + buildMode + "_" + pmcs + "_m" + parallelism + libNameSuffix;
+            libName = "libparamonte_dynamic_heap_" + buildMode + "_" + pmcs + parallelism + libNameSuffix;
             if exist(libName,'file')==3; libFound = true; break; end
         end
         if libFound; break; end
@@ -180,12 +177,19 @@ function runSampler(self,ndim,getLogFunc,varargin)
     function logFunc = getLogFuncNested(point)
         logFunc = getLogFunc(point);
     end
-
     getLogFuncSpec = functions(getLogFunc);
-    if strcmp(getLogFuncSpec.function,"getLogFunc") %|| strcmp(getLogFuncSpec.function,"simple")
-        expression = string(self.libName + "(isdeployed(),ndim,inputFile)");
+
+    iscmd = isdeployed() || batchStartupOptionUsed;
+
+    if ~(self.mpiEnabled || iscmd)
+        self.Err.msg = "check the opened terminal for simulation progress and report.";
+        self.Err.note();
+    end
+
+    if strcmp(getLogFuncSpec.type,"simple") && strcmp(getLogFuncSpec.function,"getLogFunc")
+        expression = string(self.libName + "(iscmd,ndim,inputFile)");
     else
-        expression = string(self.libName + "(isdeployed(),ndim,inputFile,@getLogFuncNested)");
+        expression = string(self.libName + "(iscmd,ndim,inputFile,@getLogFuncNested)");
     end
 
     %try

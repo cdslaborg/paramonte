@@ -45,15 +45,6 @@ cd(fileparts(mfilename('fullpath'))); % Change working directory to source code 
 
 NDIM = 4; % number of dimensions of the distribution
 
-function logFunc = getLogFunc(point)
-    mean    =   [ 0.0,0.0,0.0,0.0];     % mean of the Multivariate Normal distribution
-    covmat  =   [ 1.0,0.5,0.5,0.5 ;     ... covariance matrix of the Multivariate Normal distribution
-                , 0.5,1.0,0.5,0.5 ;     ...
-                , 0.5,0.5,1.0,0.5 ;     ...
-                , 0.5,0.5,0.5,1.0 ]
-    logFunc = log(mvnpdf(point,mean,covmat));
-end
-
 % create a ParaMonte object
 
 pm = paramonte(); % use paramonte("matlab") to use the MATLAB kernel instead of interface
@@ -68,8 +59,17 @@ pmpd = pm.ParaDRAM();
 % KEEP IN MIND: if you set pmpd.inputFile to any non-empty value, then
 % the inputFile will override any values specified via pmpd.spec properties.
 
-pmpd.inputFile = string(currentDir) + "/paramonte.in";
+% pmpd.inputFile = fullfile( string(currentDir) , "paramonte.in" );
 
 pmpd.runSampler ( NDIM          ... number of dimensions of the objective function
-                , getLogFunc    ... the objective function: multivariate normal distribution
+                , @getLogFunc   ... the objective function: multivariate normal distribution
                 );
+
+function logFunc = getLogFunc(point)
+    mean    =   [ 0.0,0.0,0.0,0.0 ];      % mean of the Multivariate Normal distribution
+    covmat  =   [ 1.0,0.5,0.5,0.5       ... covariance matrix of the Multivariate Normal distribution
+                ; 0.5,1.0,0.5,0.5       ...
+                ; 0.5,0.5,1.0,0.5       ...
+                ; 0.5,0.5,0.5,1.0 ];
+    logFunc = log(mvnpdf(point,mean,covmat));
+end
