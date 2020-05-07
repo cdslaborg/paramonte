@@ -58,15 +58,19 @@ pmpd = pm.ParaDRAM();
 % also set as attributes of the pmpd.spec component of the object.
 % KEEP IN MIND: if you set pmpd.inputFile to any non-empty value, then
 % the inputFile will override any values specified via pmpd.spec properties.
-
 % pmpd.inputFile = fullfile( string(currentDir) , "paramonte.in" );
+
+pmpd.buildMode = "release";
+pmpd.mpiEnabled = false;
+pmpd.spec.chainSize = 10000;
+pmpd.spec.randomSeed = 31731;
 
 pmpd.runSampler ( NDIM          ... number of dimensions of the objective function
                 , @getLogFunc   ... the objective function: multivariate normal distribution
                 );
 
 function logFunc = getLogFunc(point)
-    mean    =   [ 0.0,0.0,0.0,0.0 ];      % mean of the Multivariate Normal distribution
+    mean    =   [ 0.0;0.0;0.0;0.0 ];      % mean of the Multivariate Normal distribution
     covmat  =   [ 1.0,0.5,0.5,0.5       ... covariance matrix of the Multivariate Normal distribution
                 ; 0.5,1.0,0.5,0.5       ...
                 ; 0.5,0.5,1.0,0.5       ...

@@ -58,9 +58,13 @@ pmpd = pm.ParaDRAM();
 % also set as attributes of the pmpd.spec component of the object.
 % KEEP IN MIND: if you set pmpd.inputFile to any non-empty value, then
 % the inputFile will override any values specified via pmpd.spec properties.
-
 % pmpd.inputFile = fullfile( string(currentDir) , "paramonte.in" );
+
+pmpd.buildMode = "testing";
+pmpd.mpiEnabled = false;
 pmpd.spec.chainSize = 10000;
+pmpd.spec.randomSeed = "31731";
+
 pmpd.runSampler ( NDIM          ... number of dimensions of the objective function
                 , @getLogFunc   ... the objective function: multivariate normal distribution
                 );
