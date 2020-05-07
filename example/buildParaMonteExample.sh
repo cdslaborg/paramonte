@@ -275,15 +275,15 @@ do
 
     fi
 
-    if [ "${LANG_IS_Python}" = "true" ]; then
+    if [ "${LANG_IS_MATLAB}" = "true" ] || [ "${LANG_IS_Python}" = "true" ]; then
 
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_SRC_DIR_CURRENT}/README.md"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
         cp ${ParaMonteExample_SRC_DIR_CURRENT}/README.md ${ParaMonteExample_BLD_DIR_CURRENT}/
 
-        PythonScriptFileName=main.py
-        if [ "${MPI_ENABLED}" = "true" ]; then PythonScriptFileName=main_mpi.py; fi
-        cp ${ParaMonteExample_SRC_DIR_CURRENT}/${PythonScriptFileName} ${ParaMonteExample_BLD_DIR_CURRENT}/
+        scriptFileName=main.${LANG_FILE_EXT}
+        if [ "${MPI_ENABLED}" = "true" ]; then scriptFileName=main_mpi.${LANG_FILE_EXT}; fi
+        cp ${ParaMonteExample_SRC_DIR_CURRENT}/${scriptFileName} ${ParaMonteExample_BLD_DIR_CURRENT}/
 
     fi
 
@@ -313,7 +313,7 @@ fi
 echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files to the bin folder..."
 echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_BLD_DIR_CURRENT}"
 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BIN_DIR_CURRENT}"
-cp -R "${ParaMonteExample_BLD_DIR_CURRENT}" "${ParaMonteExample_BIN_DIR_CURRENT}/" || {
+cp -R "${ParaMonteExample_BLD_DIR_CURRENT}"/* "${ParaMonteExample_BIN_DIR_CURRENT}" || {
     echo >&2
     echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: copy failed."
     echo >&2
