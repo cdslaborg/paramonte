@@ -187,6 +187,11 @@ for %%e in (!EXAM_LIST!) do (
 
     )
 
+    if !LANG_IS_DYNAMIC!==true (
+        REM The ParaMonte MATLAB kernel version file
+        copy /y "!ParaMonte_ROOT_DIR!\.VERSION" "!ParaMonteExample_BLD_DIR_CURRENT!\paramonte\.VERSION_KERNEL"
+    )
+
     if !LANG_IS_MATLAB!==true (
 
         REM The ParaMonte MATLAB library files

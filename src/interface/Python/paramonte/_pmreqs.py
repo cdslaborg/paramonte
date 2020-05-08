@@ -27,7 +27,6 @@ import sys as _sys
 import _paramonte as _pm
 import warnings as _warnings
 
-pmReleaseVersion = "1.0.0"
 fileAbsDir = _os.path.dirname(_os.path.abspath(__file__))
 verificationStatusFilePath = _os.path.join( fileAbsDir, "verificationEnabled.txt" )
 
@@ -543,7 +542,7 @@ def installMPI():
             downloadList = ["impi.dll","impi.pdb"]
             for mpiFileNameExt in ["impi.dll","impi.pdb","libfabric.dll"]:
                 mpiFilePath = _os.path.join( fileAbsDir, mpiFileNameExt )
-                download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + pmReleaseVersion + "/" + mpiFileNameExt
+                download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + _pm.version.dump("kernel") + "/" + mpiFileNameExt
                         , filePath = mpiFilePath
                         )
             
@@ -554,7 +553,7 @@ def installMPI():
 
         mpiFileNameExt = mpiFileName + mpiFileExt
         mpiFilePath = _os.path.join( fileAbsDir, mpiFileNameExt )
-        download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + pmReleaseVersion + "/" + mpiFileNameExt
+        download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + _pm.version.dump("kernel") + "/" + mpiFileNameExt
                 , filePath = mpiFilePath
                 )
 
@@ -1018,12 +1017,12 @@ def dispFinalMessage():
 
 def displayParaMontePythonBanner():
     bannerFilePath = _os.path.join( fileAbsDir, "ParaMontePythonBanner.txt")
-    offset = ( len(_pm.version) - 5 ) // 2
+    offset = ( len(_pm.version.dump("interface")) - 5 ) // 2
     print("")
     with open(bannerFilePath,"r") as file:
         for line in file:
             if "Version" in line:
-                line = line.replace(" "*offset+"Version 1.0.0","Version "+_pm.version)
+                line = line.replace(" "*offset+"Version 1.0.0","Version "+_pm.version.dump("interface"))
             print(line,end="")
     print("")
     return None

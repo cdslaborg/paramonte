@@ -18,7 +18,7 @@ cd(fileparts(mfilename('fullpath'))); % Change working directory to source code 
 pm = paramonte(); % "matlab"
 pmpd = pm.ParaDRAM();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
-
+return
 %pmpd.inputFile = './paramonte.in';
 
 pmpd.spec.chainSize = 20000;

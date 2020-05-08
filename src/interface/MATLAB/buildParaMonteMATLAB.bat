@@ -39,11 +39,11 @@ set "MATLAB_root_DIR="
 set "MATLAB_EXE_PATH="
 set "MATLAB_BIN_DIR="
 
-set "INSTALL_LOC=C:\Program Files\MATLAB\/C:\Program Files (x86)\MATLAB\"
-set MATLAB_VERSIONS=R2025b/R2025a/R2024b/R2024a/R2023b/R2023a/R2022b/R2022a/R2021b/R2021a/R2020b/R2020a/R2019b/R2019a/R2018b/R2018a/R2017b/R2017a
+set "INSTALL_LOC_LIST=C:\Program Files\MATLAB\/C:\Program Files (x86)\MATLAB\"
+set MATLAB_VERSION_LIST=R2025b/R2025a/R2024b/R2024a/R2023b/R2023a/R2022b/R2022a/R2021b/R2021a/R2020b/R2020a/R2019b/R2019a/R2018b/R2018a/R2017b/R2017a
 
-for %%D in ("!INSTALL_LOC:/=" "!") do (
-    for %%V in ("!MATLAB_VERSIONS:/=" "!") do (
+for %%D in ("!INSTALL_LOC_LIST:/=" "!") do (
+    for %%V in ("!MATLAB_VERSION_LIST:/=" "!") do (
         set "MATLAB_root_DIR_TEMP=%%~D%%~V"
         set "MATLAB_BIN_DIR_TEMP=!MATLAB_root_DIR_TEMP!\bin"
         set "MATLAB_EXE_PATH_TEMP=!MATLAB_BIN_DIR_TEMP!\matlab.exe"
@@ -58,15 +58,15 @@ for %%D in ("!INSTALL_LOC:/=" "!") do (
     )
 )
 
-echo. -- ParaMonteMATLAB - WARNING: Exhausted all possible search paths for a MATLAB installation, bu failed to find MATLAB.
-echo. -- ParaMonteMATLAB - WARNING: The ParaMonte MATLAB build will not be functional without building the required DLL libraries.
+echo. -- ParaMonteMATLAB - WARNING: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB.
+echo. -- ParaMonteMATLAB - WARNING: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries.
 echo. -- ParaMonteMATLAB - WARNING: Please add MATLAB to your environmental variable PATH and rerun the install script.
 echo. -- ParaMonteMATLAB - WARNING: For example, on your current Windows command-line, try:
 echo. -- ParaMonteMATLAB - WARNING: 
 echo. -- ParaMonteMATLAB - WARNING:     set "PATH=PATH_TO_MATLAB_BIN_DIR;!PATH!
 echo. -- ParaMonteMATLAB - WARNING: 
 echo. -- ParaMonteMATLAB - WARNING: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current 
-echo. -- ParaMonteMATLAB - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on 64-bit Windows 
+echo. -- ParaMonteMATLAB - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit Windows 
 echo. -- ParaMonteMATLAB - WARNING: Operating Systems is a string like the following:
 echo. -- ParaMonteMATLAB - WARNING: 
 echo. -- ParaMonteMATLAB - WARNING:     C:\Program Files\MATLAB\2020a\bin\
@@ -113,8 +113,7 @@ if defined MATLAB_BIN_DIR (
     echo. -- ParaMonteMATLAB - compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
     cd !ParaMonteMATLAB_BLD_LIB_DIR!
     REM CC=icl COMPFLAGS="!MATLAB_BUILD_FLAGS!"
-    call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME! 
-    echo. ERRORLEVEL=!ERRORLEVEL!
+    call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
     if !ERRORLEVEL!==0 (
         echo.
         echo. -- ParaMonteMATLAB - the ParaMonte MATLAB dynamic library build appears to have succeeded.
@@ -131,7 +130,7 @@ if defined MATLAB_BIN_DIR (
         echo. -- ParaMonteMATLAB - Once you are sure of the existence of these components in your 
         echo. -- ParaMonteMATLAB - Windows command line environment, run the following command:
         echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB -     "!MATLAB_BIN_DIR!\mex.bat" -setup C.
+        echo. -- ParaMonteMATLAB -     "!MATLAB_BIN_DIR!\mex.bat" -setup C
         echo. -- ParaMonteMATLAB - 
         echo. -- ParaMonteMATLAB - Among the options displayed, you should see the command to setup
         echo. -- ParaMonteMATLAB - the Intel Parallel Studio icl compiler on your system.
@@ -151,7 +150,7 @@ if defined MATLAB_BIN_DIR (
         echo. -- ParaMonteMATLAB - 
         echo. -- ParaMonteMATLAB -     https://github.com/cdslaborg/paramonte/issues
         echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB - gracefully exiting...
+        echo. -- ParaMonteMATLAB - gracefully exiting The ParaMonte build script.
         echo. 
         cd %~dp0
         set ERRORLEVEL=1

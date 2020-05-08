@@ -120,19 +120,16 @@ classdef paramonte < handle
 %               But do not request more than the number of physical cores on your system.
 %
     properties (Access = public)
-        authors             = []
-        credits             = []
-        version             = []
-        rootPath            = []
-        ParaDRAM            = []
+        authors     = [];
+        credits     = [];
+        version     = [];
+        rootPath    = [];
+        ParaDRAM    = [];
     end
-%
-%    properties (Access = public, Hidden)
-%        spec                = []
-%        Stats               = ParaDRAM_Statistics_class()
-%        Chain               = []
-%        RefinedChain        = []
-%    end
+
+    properties (Access = protected)
+        platform    = [];
+    end
 
 %***********************************************************************************************************************************
 %***********************************************************************************************************************************
@@ -182,10 +179,7 @@ classdef paramonte < handle
 
             self.authors = "The Computational Data Science Lab @ The University of Texas";
             self.credits = "Peter O'Donnell Fellowship";
-
-            versionFilePath = fullfile(self.rootPath,'.VERSION');
-            versionFileID = fopen(versionFilePath);
-            self.version = fgetl(versionFileID);
+            self.version = Version_class(self.rootPath);
 
             if matlabKernelEnabled
                 self.ParaDRAM = ParaDRAM_class;
@@ -193,18 +187,18 @@ classdef paramonte < handle
                 self.ParaDRAM = ParaDRAM;
             end
 
+            self.platform.isWin32 = ispc;
+            self.platform.isMacOS = ismac;
+            self.platform.isLinux = isunix;
+
         end
 
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function result = getVersion(self)
-            result = ["ParaMonte Python Interface Version " + self.version];
-        end
-
-
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+        %function result = getVersion(self)
+        %    result = ["ParaMonte MATLAB Version " + self.version];
+        %end
 
     end % methods (dynamic)
 
