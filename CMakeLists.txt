@@ -391,7 +391,7 @@ option( HEAP_ARRAY_ENABLED "Allocate all arrays and automatic objects on the Hea
 #               is passed to ParaMonte library will have to conform to the rules of C-Fortran interoperability standard,
 #               as given in the abstract interface in the ParaMonte source file: ParaMonteLogFunc_mod.f90
 
-option( CFI_ENABLED "Enable C-Fortran interoperability (required when calling ParaMonte from languages other than Fortran)" OFF )
+option( CFI_ENABLED "Enable C-Fortran interoperability (required when calling ParaMonte from languages other than Fortran)" ON )
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # set ParaMonte parallelism
@@ -573,12 +573,6 @@ if (NOT DEFINED PMLIB)
         set(MEMORY_ALLOCATION heap)
     else()
         set(MEMORY_ALLOCATION stack)
-    endif()
-
-    if (CFI_ENABLED)
-        set(INTERFACE_LANGUAGE c)
-    else()
-        set(INTERFACE_LANGUAGE fortran)
     endif()
 
     set(PMLIB paramonte_${LTYPE}_${MEMORY_ALLOCATION}_${BTYPE}_${PMCS}_${INTERFACE_LANGUAGE} )

@@ -149,7 +149,7 @@ do
     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files..."
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-    cp "${PMLIB_FULL_PATH}" "${ParaMonteExample_LIB_DIR_CURRENT}/"
+    cp -R "${ParaMonte_LIB_DIR}/"* "${ParaMonteExample_LIB_DIR_CURRENT}/"
 
     # The ParaMonte library example required files
 
@@ -190,58 +190,70 @@ do
 
     fi
 
-    if [ "${LANG_IS_MATLAB}" = "true" ]; then
+    if [ "${LANG_IS_DYNAMIC}" = "true" ]; then
 
-        # The ParaMonte MATLAB library files
+        # The ParaMonte kernel version file
 
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte"
-        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
-        cp -R "${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte" "${ParaMonteExample_BLD_DIR_CURRENT}/"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library kernel version file..."
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/.VERSION"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/.VERSION_KERNEL"
+        cp "${ParaMonte_ROOT_DIR}/.VERSION" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/.VERSION_KERNEL"
 
-        # The ParaMonte library license files
 
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library license file..."
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE"
-        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/LICENSE"
-        cp "${ParaMonte_ROOT_DIR}/LICENSE" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/LICENSE"
+        if [ "${LANG_IS_MATLAB}" = "true" ]; then
 
-        # The ParaMonte library CHANGES.md files
+            # The ParaMonte MATLAB library files
 
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/CHANGES.md"
-        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
-        cp "${ParaMonteInterfaceMATLAB_SRC_DIR}/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
+            cp -R "${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte" "${ParaMonteExample_BLD_DIR_CURRENT}/"
 
-    fi
+            # The ParaMonte library license files
 
-    if [ "${LANG_IS_Python}" = "true" ]; then
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library license file..."
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/LICENSE"
+            cp "${ParaMonte_ROOT_DIR}/LICENSE" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/LICENSE"
 
-        # The ParaMonte Python library files
+            # The ParaMonte library CHANGES.md files
 
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfacePython_SRC_DIR}/paramonte"
-        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
-        cp -R "${ParaMonteInterfacePython_SRC_DIR}/paramonte" "${ParaMonteExample_BLD_DIR_CURRENT}/"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/CHANGES.md"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+            cp "${ParaMonteInterfaceMATLAB_SRC_DIR}/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
 
-        # PyPI build - ParaMonte library Python setup files
+        fi
 
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library Python setup files..."
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfacePython_SRC_DIR}/setup/*"
-        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
-        cp ${ParaMonteInterfacePython_SRC_DIR}/setup/* "${ParaMonteExample_BLD_DIR_CURRENT}/"
+        if [ "${LANG_IS_Python}" = "true" ]; then
 
-        # PyPI build - ParaMonte library license files
+            # The ParaMonte Python library files
 
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library license file..."
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE"
-        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE"
-        cp "${ParaMonte_ROOT_DIR}/LICENSE" "${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfacePython_SRC_DIR}/paramonte"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
+            cp -R "${ParaMonteInterfacePython_SRC_DIR}/paramonte" "${ParaMonteExample_BLD_DIR_CURRENT}/"
 
-        # PyPI build - ParaMonte library CHANGES.md files
+            # PyPI build - ParaMonte library Python setup files
 
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md"
-        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
-        cp "${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library Python setup files..."
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfacePython_SRC_DIR}/setup/*"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
+            cp ${ParaMonteInterfacePython_SRC_DIR}/setup/* "${ParaMonteExample_BLD_DIR_CURRENT}/"
+
+            # PyPI build - ParaMonte library license files
+
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library license file..."
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE"
+            cp "${ParaMonte_ROOT_DIR}/LICENSE" "${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE"
+
+            # PyPI build - ParaMonte library CHANGES.md files
+
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md"
+            echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+            cp "${ParaMonteInterfacePython_SRC_DIR}/setup/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+
+        fi
 
     fi
 

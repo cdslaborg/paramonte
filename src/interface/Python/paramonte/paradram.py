@@ -805,9 +805,9 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             pmcsList.pop(pmcsList.index(stype))
             pmcsList.insert(0,stype)
 
-        if isWin32: libnameSuffix = "_c" + parallelism + "_windows_" + _pm.arch + "_mt.dll"
-        if isMacOS: libnameSuffix = "_c" + parallelism + "_darwin_" + _pm.arch + "_mt.dylib"
-        if isLinux: libnameSuffix = "_c" + parallelism + "_linux_" + _pm.arch + "_mt.so"
+        if isWin32: libnameSuffix = "_python" + parallelism + "_windows_" + _pm.arch + "_mt.dll"
+        if isMacOS: libnameSuffix = "_python" + parallelism + "_darwin_" + _pm.arch + "_mt.dylib"
+        if isLinux: libnameSuffix = "_python" + parallelism + "_linux_" + _pm.arch + "_mt.so"
         for buildMode in buildModeList:
 
             for pmcs in pmcsList:

@@ -116,11 +116,11 @@ contains
             InterfaceTypeObj%val=InterfaceTypeObj%def
         end if
         interfaceLowerCase = getLowerCase(InterfaceTypeObj%val)
-        if (index(interfaceLowerCase,"fortran")) then
+        if (index(interfaceLowerCase,"fortran")/=0) then
             InterfaceTypeObj%isFortran = .true.
-        elseif (index(interfaceLowerCase,"matlab")) then
+        elseif (index(interfaceLowerCase,"matlab")/=0) then
             InterfaceTypeObj%isMATLAB = .true.
-        elseif (index(interfaceLowerCase,"python")) then
+        elseif (index(interfaceLowerCase,"python")/=0) then
             InterfaceTypeObj%isPython = .true.
         else
             InterfaceTypeObj%isClang = .true.

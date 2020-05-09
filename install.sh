@@ -479,10 +479,12 @@ for PMCS in $PMCS_LIST; do
                         BENABLED=true
 
                         interface_language_flag="--lang ${INTERFACE_LANGUAGE}"
-                        cfi_enabled_flag="--cfi_enabled true"
                         if [ "${INTERFACE_LANGUAGE}" = "fortran" ]; then
-                            cfi_enabled_flag="--cfi_enabled false"
+                            CFI_ENABLED="false"
+                        else
+                            CFI_ENABLED="true"
                         fi
+                        cfi_enabled_flag="--cfi_enabled ${CFI_ENABLED}"
 
                         test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
                         exam_enabled_flag="--exam_enabled ${ParaMonteExample_RUN_ENABLED}"
@@ -515,8 +517,10 @@ for PMCS in $PMCS_LIST; do
                             fi
                         fi
 
-                        if [ "${LTYPE}" = "dynamic" ] && [ "${MEMORY}" = "stack" ]; then
-                            BENABLED=false
+                        if [ "${LTYPE}" = "dynamic" ]; then
+                            if [ "${MEMORY}" = "stack" ]; then BENABLED=false; fi
+                        else
+                            if [ "${INTERFACE_LANGUAGE}" = "matlab" ] || [ "${INTERFACE_LANGUAGE}" = "python" ]; then BENABLED=false; fi
                         fi
 
                         if [ "${BENABLED}" = "true" ]; then
