@@ -27,20 +27,7 @@
 import os
 import numpy as np
 import paramonte as pm
-from scipy.stats import multivariate_normal
-
-NDIM = 4 # number of dimensions of the distribution
-
-mvn = multivariate_normal   ( mean =  [0.0,0.0,0.0,0.0]
-                            , cov = [ [1.0,0.5,0.5,0.5]
-                                    , [0.5,1.0,0.5,0.5]
-                                    , [0.5,0.5,1.0,0.5]
-                                    , [0.5,0.5,0.5,1.0]
-                                    ]
-                            )
-
-def getLogFunc(point):
-    return np.log(mvn.pdf(point))
+from logfunc import getLogFunc, NDIM
 
 # define a ParaMonte sampler instance
 
@@ -48,6 +35,7 @@ pmpd = pm.ParaDRAM()
 
 pmpd.runSampler ( ndim = NDIM               # number of dimensions of the objective function
                 , getLogFunc = getLogFunc   # the objective function: multivariate normal distribution
+                , mpiEnabled = True         # flag to request a parallel simulation
                 # NOTE: inputFilePath is optional: all simulation specifications can be set as attributes of pmpd.spec
                 , inputFilePath = os.path.dirname(os.path.abspath(__file__)) + "/paramonte.in"
                 )

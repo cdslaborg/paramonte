@@ -63,7 +63,7 @@ pmpd = pm.ParaDRAM();
 pmpd.buildMode = "testing";
 pmpd.mpiEnabled = false;
 pmpd.spec.chainSize = 10000;
-pmpd.spec.randomSeed = "31731";
+pmpd.spec.randomSeed = 31731;
 
 pmpd.runSampler ( NDIM          ... number of dimensions of the objective function
                 , @getLogFunc   ... the objective function: multivariate normal distribution

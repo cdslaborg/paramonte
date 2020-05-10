@@ -32,44 +32,46 @@ format compact; format long;
 
 % set path to the ParaMonte library
 
-pmlibRootDir = './'; % set this path to the paramonte library root dir
+pmlibRootDir = './'; % change this path to the ParaMonte library root directory
 addpath(genpath(pmlibRootDir));
 
 % change MATLAB's working directory to the folder containing this script
 
 filePath = mfilename('fullpath');
-[currentDir,fileName,fileExt] = fileparts(filePath); cd(currentDir); % Change working directory to source code directory.
+[currentDir,fileName,fileExt] = fileparts(filePath); cd(currentDir);
 cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
 
-% define the objective function
+% instantiate an object of class logfunc containing:
+%     - the objective function (getLogFunc)
+%     - its number of dimensions (NDIM)
 
-NDIM = 4; % number of dimensions of the distribution
-
-function logFunc = getLogFunc(point)
-    mean    =   [ 0.0,0.0,0.0,0.0];     % mean of the Multivariate Normal distribution
-    covmat  =   [ 1.0,0.5,0.5,0.5 ;     ... covariance matrix of the Multivariate Normal distribution
-                , 0.5,1.0,0.5,0.5 ;     ...
-                , 0.5,0.5,1.0,0.5 ;     ...
-                , 0.5,0.5,0.5,1.0 ]
-    logFunc = log(mvnpdf(point,mean,covmat));
-end
+logFunc = logfunc(); 
 
 % create a ParaMonte object
+% To use the ParaMonte MATLAB kernel instead of the ParaMonte MATLAB interface, try:
+% pm = paramonte("matlab");
 
-pm = paramonte(); % use paramonte("matlab") to use the MATLAB kernel instead of interface
+pm = paramonte();
 
 % create a ParaDRAM simulation object
 
 pmpd = pm.ParaDRAM();
 
-% specifity path to the input specification file. 
+% specify the path to the input specification file.
 % This is optional: all simulation specifications can be 
 % also set as attributes of the pmpd.spec component of the object.
 % KEEP IN MIND: if you set pmpd.inputFile to any non-empty value, then
 % the inputFile will override any values specified via pmpd.spec properties.
-
+% comment the following line to specify the simulation input specifications 
+% solely from within this script:
 pmpd.inputFile = string(currentDir) + "/paramonte.in";
 
-pmpd.runSampler ( NDIM          ... number of dimensions of the objective function
-                , getLogFunc    ... the objective function: multivariate normal distribution
+% indicate that this is a parallel simulation on multiple processors (this is required):
+
+pmpd.mpiEnabled = true;
+
+% run the ParaDRAM simulation
+
+pmpd.runSampler ( logFunc.NDIM  ... number of dimensions of the objective function
+                , @logFunc.get  ... the objective function: multivariate normal distribution
                 );

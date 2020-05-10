@@ -93,7 +93,7 @@ export ARCHITECTURE
 
 read -r ParaMonteVersion < .VERSION
 
-#echo "$(cat ./auxil/ParaMonteBanner.txt)"
+#echo "$(cat ./auxil/.ParaMonteBanner)"
 
 echo >&2 
 echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
@@ -1492,8 +1492,8 @@ export ParaMonte_BIN_DIR
  ParaMonteInterfaceMATLAB_SRC_DIR=${ParaMonteInterface_SRC_DIR}/MATLAB
  ParaMonteInterfacePython_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Python
 ParaMonteInterfaceFortran_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Fortran
-      ParaMontePythonTest_SRC_DIR=${ParaMonteInterfacePython_SRC_DIR}/test
       ParaMonteMATLABTest_SRC_DIR=${ParaMonteInterfaceMATLAB_SRC_DIR}/test
+      ParaMontePythonTest_SRC_DIR=${ParaMonteInterfacePython_SRC_DIR}/test
 
 export ParaMonteTest_SRC_DIR
 export ParaMonteExample_SRC_DIR
@@ -1853,11 +1853,19 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
 
     # copy necessary ParaMonte MATLAB library files in MATLAB's directory
 
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying ParaMonte library files to the MATLAB directory"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying the ParaMonte library files to the MATLAB directory"
     echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte"
     echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
     cp -R "${ParaMonteInterfaceMATLAB_SRC_DIR}"/paramonte "${ParaMonteMATLABTest_BLD_DIR}"/
     echo >&2 
+
+    # copy necessary ParaMonte library auxiliary files
+
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying the ParaMonte library auxiliary files"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteInterface_SRC_DIR}/auxil"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
+    cp -R "${ParaMonteInterface_SRC_DIR}/auxil" "${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
+    echo >&2
 
     # copy necessary ParaMonte MATLAB dynamic library files in MATLAB's directory
 
@@ -1869,7 +1877,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
 
     # copy necessary ParaMonte MATLAB library files in MATLAB's directory
 
-    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying ParaMonte library test files to the MATLAB directory"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest - copying the ParaMonte library test files to the MATLAB directory"
     echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteMATLABTest_SRC_DIR}/${MATLAB_TEST_FILENAME}"
     echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/"
     cp "${ParaMonteMATLABTest_SRC_DIR}"/${MATLAB_TEST_FILENAME} "${ParaMonteMATLABTest_BLD_DIR}"/
@@ -1912,15 +1920,23 @@ if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
 
     # copy necessary ParaMonte Python library files in Python's directory
 
-    echo >&2 "-- ${BUILD_NAME}PythonTest - copying ParaMonte library files to the Python directory"
+    echo >&2 "-- ${BUILD_NAME}PythonTest - copying the ParaMonte library files to the Python directory"
     echo >&2 "-- ${BUILD_NAME}PythonTest - from: ${ParaMonteInterfacePython_SRC_DIR}/paramonte"
     echo >&2 "-- ${BUILD_NAME}PythonTest -   to: ${ParaMontePythonTest_BLD_DIR}/paramonte/"
     cp -R "${ParaMonteInterfacePython_SRC_DIR}"/paramonte "${ParaMontePythonTest_BLD_DIR}"/
     echo >&2 
 
+    # copy necessary ParaMonte library auxiliary files
+
+    echo >&2 "-- ${BUILD_NAME}PythonTest - copying the ParaMonte library auxiliary files"
+    echo >&2 "-- ${BUILD_NAME}PythonTest - from: ${ParaMonteInterface_SRC_DIR}/auxil"
+    echo >&2 "-- ${BUILD_NAME}PythonTest -   to: ${ParaMontePythonTest_BLD_DIR}/paramonte/"
+    cp -R "${ParaMonteInterface_SRC_DIR}/auxil" "${ParaMontePythonTest_BLD_DIR}/paramonte/"
+    echo >&2
+
     # copy necessary ParaMonte Python DLL files in Python's directory
 
-    echo >&2 "-- ${BUILD_NAME}PythonTest - copying ParaMonte shared library files to the Python directory"
+    echo >&2 "-- ${BUILD_NAME}PythonTest - copying the ParaMonte shared library files to the Python directory"
     echo >&2 "-- ${BUILD_NAME}PythonTest - from: ${ParaMonte_LIB_DIR}/${PMLIB_FULL_NAME}"
     echo >&2 "-- ${BUILD_NAME}PythonTest -   to: ${ParaMontePythonTest_BLD_DIR}/paramonte/"
     cp "${ParaMonte_LIB_DIR}"/* "${ParaMontePythonTest_BLD_DIR}"/paramonte/
@@ -1928,7 +1944,7 @@ if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
 
     # copy necessary ParaMonte Python library files in Python's directory
 
-    echo >&2 "-- ${BUILD_NAME}PythonTest - copying ParaMonte library test files to the Python directory"
+    echo >&2 "-- ${BUILD_NAME}PythonTest - copying the ParaMonte library test files to the Python directory"
     echo >&2 "-- ${BUILD_NAME}PythonTest - from: ${ParaMontePythonTest_SRC_DIR}/${PYTHON_TEST_FILENAME}"
     echo >&2 "-- ${BUILD_NAME}PythonTest -   to: ${ParaMontePythonTest_BLD_DIR}/"
     cp "${ParaMontePythonTest_SRC_DIR}"/${PYTHON_TEST_FILENAME} "${ParaMontePythonTest_BLD_DIR}"/
@@ -1955,7 +1971,7 @@ source ./example/buildParaMonteExample.sh
 ####################################################################################################################################
 
 echo >&2 
-echo >&2 "-- ${BUILD_NAME} - copying ParaMonte binary/library files to the bin directory..."
+echo >&2 "-- ${BUILD_NAME} - copying the ParaMonte binary/library files to the bin directory..."
 ParaMonte_BIN_DIR=${ParaMonte_ROOT_DIR}/bin
 export ParaMonte_BIN_DIR
 mkdir -p ${ParaMonte_BIN_DIR}

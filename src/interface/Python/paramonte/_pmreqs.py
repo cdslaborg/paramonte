@@ -27,8 +27,7 @@ import sys as _sys
 import _paramonte as _pm
 import warnings as _warnings
 
-fileAbsDir = _os.path.dirname(_os.path.abspath(__file__))
-verificationStatusFilePath = _os.path.join( fileAbsDir, "verificationEnabled.txt" )
+verificationStatusFilePath = _os.path.join( _pm.path.auxil, ".verificationEnabled" )
 
 platform = _sys.platform.lower()
 isWin32 = True if platform=="win32" else False
@@ -98,7 +97,7 @@ def verify(reset = True):
 
         if (_pm.arch=="x64") and (isWin32 or isLinux or isMacOS):
 
-            displayParaMontePythonBanner()
+            displayParaMonteBanner()
 
             # library path
 
@@ -111,7 +110,7 @@ def verify(reset = True):
                 _pm.warn( msg   = "The MPI runtime libraries for 64-bit architecture could not be detected on your system. \n"
                                 + "The MPI runtime libraries are required for the parallel ParaMonte simulations. \n"
                                 + "For Windows and Linux operating systems, you can download and install the Intel MPI runtime \n"
-                                + "libraries, free of charge, from Intel website (https://software.intel.com/en-us/mpi-library) \n"
+                                + "libraries, free of charge, from Intel website (https://software.intel.com/en-us/mpi-library). \n"
                                 + "For macOS (Darwin operating system), you will have to download and install the Open-MPI library \n"
                                 + "(https://www.open-mpi.org/).\n\n"
                                 + "Alternatively, the ParaMonte library can automatically install these library for you now. \n\n"
@@ -199,13 +198,12 @@ def warnForUnsupportedPlatform():
                     + "already-performed ParaMonte simulations or other similar Monte Carlo simulations. \n"
                     + "There are ongoing efforts, right now as you read this message, to further increase the \n"
                     + "availability of ParaMonte library on a wider-variety of platforms and architectures. \n"
-                    + "If you are a Mac user, please check back by April 1, 2020 for a new release of ParaMonte \n"
-                    + "with support for macOS. \n"
-                    + "Stay tuned for updates by visiting https://www.cdslab.org/pm\n\n"
+                    + "Stay tuned for updates by visiting, \n\n" 
+                    + "    https://www.cdslab.org/paramonte\n\n"
                     + "That said,\n\n"
                     + "if your platform is non-Windows and is compatible with GNU Compiler Collection (GCC),\n\n"
                     + "you can also build the required ParaMonte kernel's shared object files on your system\n"
-                    + "by calling ParaMonte module's build() function from within your Python enviroment."
+                    + "by calling ParaMonte module's build() function from within your Python environment."
             , marginTop = 1
             , marginBot = 1
             , methodName = _pm.names.paramonte
@@ -218,26 +216,26 @@ def getBashrcContents():
     bashrcPath = _os.path.expanduser("~/.bashrc")
     if _os.path.isfile(bashrcPath):
         with open(bashrcPath,"r") as bashrcFile:
-            bashrcFileContents = bashrcFile.read()
+            bashrcContents = bashrcFile.read()
     else:
-        bashrcFileContents = ""
+        bashrcContents = ""
         with open(bashrcPath,"w") as bashrcFile:
             pass
-    return bashrcFileContents
+    return bashrcContents
 
 ####################################################################################################################################
 
 def getBashProfileContents():
     bashProfilePath = _os.path.expanduser("~/.bash_profile")
     bashProfileFileExists = _os.path.isfile(bashProfilePath)
-    bashProfileFileContents = ""
+    bashProfileContents = ""
     if bashProfileFileExists:
         with open(bashProfilePath,"r") as bashProfileFile:
-            bashProfileFileContents = bashProfileFile.read()
-    if ".bashrc" not in bashProfileFileContents:
+            bashProfileContents = bashProfileFile.read()
+    if ".bashrc" not in bashProfileContents:
         with open(bashProfilePath,"a+") as bashProfileFile:
             bashProfileFile.write("\n[ -f $HOME/.bashrc ] && . $HOME/.bashrc\n")
-    return bashProfileFileContents
+    return bashProfileContents
 
 ####################################################################################################################################
 
@@ -245,9 +243,9 @@ def getBashProfileContents():
 
 def setupUnixPath():
 
-    bashrcFileContents = getBashrcContents()
-    dlibcmd = "export LD_LIBRARY_PATH=" + fileAbsDir + ":$LD_LIBRARY_PATH"
-    if dlibcmd not in bashrcFileContents:
+    bashrcContents = getBashrcContents()
+    dlibcmd = "export LD_LIBRARY_PATH=" + _pm.path.lib + ":$LD_LIBRARY_PATH"
+    if dlibcmd not in bashrcContents:
         _os.system( "chmod 777 ~/.bashrc")
         _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
         _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte shared library setup >>>' >> ~/.bashrc" )
@@ -267,23 +265,23 @@ def setupUnixPath():
         if localInstallDir.gnu.bin is not None: pathcmd = "export PATH=" + localInstallDir.gnu.bin + ":$PATH"
         if localInstallDir.gnu.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.gnu.lib + ":$LD_LIBRARY_PATH"
         if (pathcmd is not None) or (dlibcmd is not None):
-            if (pathcmd not in bashrcFileContents) or (dlibcmd not in bashrcFileContents):
+            if (pathcmd not in bashrcContents) or (dlibcmd not in bashrcContents):
                 _os.system( "chmod 777 ~/.bashrc")
                 _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local GNU installation setup >>>' >> ~/.bashrc" )
                 if pathcmd is not None:
-                    if pathcmd not in bashrcFileContents:
+                    if pathcmd not in bashrcContents:
                         _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
                 if dlibcmd is not None:
-                    if dlibcmd not in bashrcFileContents:
+                    if dlibcmd not in bashrcContents:
                         _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
-            if pathcmd not in bashrcFileContents or dlibcmd not in bashrcFileContents:
+            if pathcmd not in bashrcContents or dlibcmd not in bashrcContents:
                 _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local GNU installation setup <<<' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
@@ -293,23 +291,23 @@ def setupUnixPath():
         if localInstallDir.mpi.bin is not None: pathcmd = "export PATH=" + localInstallDir.mpi.bin + ":$PATH"
         if localInstallDir.mpi.lib is not None: dlibcmd = "export LD_LIBRARY_PATH=" + localInstallDir.mpi.lib + ":$LD_LIBRARY_PATH"
         if (pathcmd is not None) or (dlibcmd is not None):
-            if (pathcmd not in bashrcFileContents) or (dlibcmd not in bashrcFileContents):
+            if (pathcmd not in bashrcContents) or (dlibcmd not in bashrcContents):
                 _os.system( "chmod 777 ~/.bashrc")
                 _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local MPI installation setup >>>' >> ~/.bashrc" )
                 if pathcmd is not None:
-                    if pathcmd not in bashrcFileContents:
+                    if pathcmd not in bashrcContents:
                         _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" )
                 if dlibcmd is not None:
-                    if dlibcmd not in bashrcFileContents:
+                    if dlibcmd not in bashrcContents:
                         _os.system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" )
-            if pathcmd not in bashrcFileContents or dlibcmd not in bashrcFileContents:
+            if pathcmd not in bashrcContents or dlibcmd not in bashrcContents:
                 _os.system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local MPI installation setup <<<' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                 _os.system( "chmod 777 ~/.bashrc && sh ~/.bashrc" )
@@ -342,7 +340,7 @@ def getLocalInstallDir():
     localInstallDir.caf.lib = None
 
 
-    pmGitRootDir = _os.path.join( fileAbsDir , "paramonte-master" )
+    pmGitRootDir = _os.path.join( _pm.path.root , "paramonte-master" )
 
     if _os.path.isdir(pmGitRootDir):
 
@@ -424,11 +422,11 @@ def findMPI():
                             , methodName = _pm.names.paramonte
                             )
 
-                    setupFilePath = _os.path.join( fileAbsDir, "setup.bat" )
+                    setupFilePath = _os.path.join( _pm.path.root, "setup.bat" )
                     with open(setupFilePath, "w") as setupFile:
                         setupFile.write("@echo off\n")
                         setupFile.write("cd " + path + " && mpivars.bat quiet\n")
-                        setupFile.write("cd " + fileAbsDir + "\n")
+                        setupFile.write("cd " + _pm.path.root + "\n")
                         setupFile.write("@echo on\n")
 
                     return path
@@ -464,7 +462,7 @@ def findMPI():
                             , methodName = _pm.names.paramonte
                             )
 
-                    setupFilePath = _os.path.join( fileAbsDir, "setup.sh" )
+                    setupFilePath = _os.path.join( _pm.path.root, "setup.sh" )
                     with open(setupFilePath, "w") as setupFile:
                         setupFile.write("source " + mpivarsCommand)
 
@@ -539,10 +537,10 @@ def installMPI():
             mpiFileExt = ".exe"
             mpiVersion = "2019.4.245"
             mpiFileName = "w_mpi-rt_p_" + mpiVersion
-            downloadList = ["impi.dll","impi.pdb"]
-            for mpiFileNameExt in ["impi.dll","impi.pdb","libfabric.dll"]:
-                mpiFilePath = _os.path.join( fileAbsDir, mpiFileNameExt )
-                download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + _pm.version.dump("kernel") + "/" + mpiFileNameExt
+            downloadList = ["impi.dll","impi.pdb","libfabric.dll"]
+            for mpiFileNameExt in downloadList:
+                mpiFilePath = _os.path.join( _pm.path.root, mpiFileNameExt )
+                download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + _pm.version.kernel.dump() + "/" + mpiFileNameExt
                         , filePath = mpiFilePath
                         )
             
@@ -552,8 +550,8 @@ def installMPI():
             mpiFileName = "l_mpi-rt_" + mpiVersion
 
         mpiFileNameExt = mpiFileName + mpiFileExt
-        mpiFilePath = _os.path.join( fileAbsDir, mpiFileNameExt )
-        download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + _pm.version.dump("kernel") + "/" + mpiFileNameExt
+        mpiFilePath = _os.path.join( _pm.path.root, mpiFileNameExt )
+        download( url = "https://github.com/cdslaborg/paramonte/releases/download/" + _pm.version.kernel.dump() + "/" + mpiFileNameExt
                 , filePath = mpiFilePath
                 )
 
@@ -564,7 +562,7 @@ def installMPI():
                 , marginBot = 1
                 )
 
-        _pm.warn( msg = "Please do not change the default installation location of MPI suggested by the installer.\n"
+        _pm.warn( msg = "Please do not change the default installation location of the MPI library suggested by the installer.\n"
                       + "If you do change the default path, the onus will be on you to ensure the path to the \n"
                       + "MPI runtime libraries exist in the environmental PATH variable of your session."
                 , methodName = _pm.names.paramonte
@@ -600,8 +598,8 @@ def installMPI():
 
                 import tarfile
                 tf = tarfile.open(mpiFilePath)
-                tf.extractall(path=fileAbsDir)
-                mpiExtractDir = _os.path.join( fileAbsDir, mpiFileName )
+                tf.extractall(path=_pm.path.root)
+                mpiExtractDir = _os.path.join( _pm.path.root, mpiFileName )
 
                 _pm.note( msg   = "If needed, use the following serial number when asked by the installer: \n\n"
                                 + "    C44K-74BR9CFG\n\n"
@@ -680,7 +678,7 @@ def installMPI():
 
             from pathlib import Path
             home = str(Path.home())
-            setupFilePath = _os.path.join( fileAbsDir, "setup.sh" )
+            setupFilePath = _os.path.join( _pm.path.root, "setup.sh" )
 
             mpiRootDirNotFound = True
             installationRootDirList = [ "/opt", home ]
@@ -773,9 +771,9 @@ def installMPI():
                     #
                     #if isYes:
 
-                    bashrcFileContents = getBashrcContents()
+                    bashrcContents = getBashrcContents()
                     mpivarsFileCommand = "source " + mpivarsFilePath
-                    if mpivarsFileCommand not in bashrcFileContents:
+                    if mpivarsFileCommand not in bashrcContents:
                         _os.system( "chmod 777 ~/.bashrc")
                         _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte MPI runtime library initialization >>>' >> ~/.bashrc" )
@@ -1015,14 +1013,14 @@ def dispFinalMessage():
 
 ####################################################################################################################################
 
-def displayParaMontePythonBanner():
-    bannerFilePath = _os.path.join( fileAbsDir, "ParaMontePythonBanner.txt")
-    offset = ( len(_pm.version.dump("interface")) - 5 ) // 2
+def displayParaMonteBanner():
+    bannerFilePath = _os.path.join( _pm.path.auxil, ".ParaMonteBanner")
+    offset = ( len(_pm.version.interface.dump()) - 5 ) // 2
     print("")
     with open(bannerFilePath,"r") as file:
         for line in file:
             if "Version" in line:
-                line = line.replace(" "*offset+"Version 1.0.0","Version "+_pm.version.dump("interface"))
+                line = line.replace(" "*offset+"Version 0.0.0","Version "+_pm.version.interface.dump())
             print(line,end="")
     print("")
     return None
@@ -1078,18 +1076,18 @@ def build(flags=""):
 
             currentDir = _os.getcwd()
 
-            pmGitTarPath = _os.path.join( fileAbsDir, "master.tar.gz" )
+            pmGitTarPath = _os.path.join( _pm.path.root, "master.tar.gz" )
             download( url = "https://github.com/cdslaborg/paramonte/archive/master.tar.gz"
                     , filePath = pmGitTarPath
                     )
 
-            pmGitRootDir = _os.path.join( fileAbsDir, "paramonte-master" )
+            pmGitRootDir = _os.path.join( _pm.path.root, "paramonte-master" )
 
             try:
 
                 import tarfile
                 tf = tarfile.open(pmGitTarPath)
-                tf.extractall(path=fileAbsDir) # path=pmGitRootDir)
+                tf.extractall(path=_pm.path.root) # path=pmGitRootDir)
 
                 pmGitInstallScriptPath = _os.path.join( pmGitRootDir, "install.sh" )
                 if not _os.path.exists(pmGitInstallScriptPath):
@@ -1107,7 +1105,7 @@ def build(flags=""):
             except Exception as e:
 
                 print(str(e))
-                _pm.abort   ( msg   = "Unzipping of ParaMonte tarball failed.\n"
+                _pm.abort   ( msg   = "Unzipping of the ParaMonte tarball failed.\n"
                                     + "Make sure you have tar software installed on your system and try again."
                             , methodName = _pm.names.paramonte
                             , marginTop = 1
@@ -1152,7 +1150,7 @@ def build(flags=""):
             if len(fileList)>0:
 
                 _pm.note( msg   = "ParaMonte kernel libraries build appears to have succeeded. \n"
-                                + "copying the kernel files to the paramonte Python module directory..."
+                                + "copying the kernel files to the ParaMonte Python module directory..."
                         , methodName = _pm.names.paramonte
                         , marginTop = 1
                         , marginBot = 1
@@ -1163,7 +1161,7 @@ def build(flags=""):
                             , marginTop = 0
                             , marginBot = 0
                             )
-                    shutil.copy(file, fileAbsDir)
+                    shutil.copy(file, _pm.path.lib)
                 _pm.note( msg   = "ParaMonte kernel libraries should be now usable on your system."
                         , methodName = _pm.names.paramonte
                         , marginTop = 1
@@ -1174,9 +1172,9 @@ def build(flags=""):
 
                 if _os.path.exists(setupFilePath):
 
-                    bashrcFileContents = getBashrcContents()
+                    bashrcContents = getBashrcContents()
                     setupFilePathCmd = "source " + setupFilePath
-                    if setupFilePathCmd not in bashrcFileContents:
+                    if setupFilePathCmd not in bashrcContents:
                         _os.system( "chmod 777 ~/.bashrc")
                         _os.system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" )
                         _os.system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte library local installation setup >>>' >> ~/.bashrc" )

@@ -182,6 +182,14 @@ if exist !ParaMonteMATLABTest_BLD_DIR! (
 )
 echo.
 
+:: The ParaMonte library auxil files
+
+echo. -- ParaMonteMATLAB - copying the ParaMonte library auxiliary files
+echo. -- ParaMonteMATLAB - from: !ParaMonteInterface_SRC_DIR!\auxil                 %= no need for final slash here =%
+echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\paramonte\auxil\     %= final slash tells this is folder =%
+xcopy /s /Y "!ParaMonteInterface_SRC_DIR!\auxil" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\auxil\"
+echo.
+
 :: copy necessary ParaMonte MATLAB library files in MATLAB's source directory
 
 echo. -- ParaMonteMATLAB - copying the paramonte library source files to the MATLAB build directory

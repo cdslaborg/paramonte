@@ -145,7 +145,7 @@ set(CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_SOURCE_DIR}/cmake/Modules/overrideDe
 # banner
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-file(READ "${CMAKE_CURRENT_LIST_DIR}/auxil/ParaMonteBanner.txt" ParaMonte_BANNER)
+file(READ "${CMAKE_CURRENT_LIST_DIR}/auxil/.ParaMonteBanner" ParaMonte_BANNER)
 message("${pmcolor}\n${ParaMonte_BANNER}${ColorReset}")
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

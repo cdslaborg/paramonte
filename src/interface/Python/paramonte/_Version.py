@@ -23,47 +23,42 @@
 #**********************************************************************************************************************************
 
 import os as _os
-import sys as _sys
-import numpy as _np
-import typing as _tp
-import pandas as _pd
-import platform as _platform
-
-from _message import note, warn, abort
-import _visualization as vis
-import _statistics as stats
-import _dfutils as dfutils
-import _pmutils as pmutils
 
 ####################################################################################################################################
 
-class _Struct:
-    pass
+# get version
 
-####################################################################################################################################
+class Version:
 
-path = _Struct()
-path.root = _os.path.dirname(_os.path.abspath(__file__))
-path.auxil = _os.path.join(path.root,"auxil")
-path.home = _os.path.expanduser("~")
-path.lib = path.root
+    def __init__(self,versionPath,versionType):
+        self._versionList = ["interface","kernel"]
+        self._versionPath = versionPath
+        self._versionType = versionType
+        self._versionSave = None
+        self._checkVersionType()
 
-_sys.path.append(path.root)
+    def get(self): return "ParaMonte Python " + self._versionType.capitalize() + " Version " + self.dump()
 
-####################################################################################################################################
+    def dump(self):
+        for versionType in self._versionList:
+            if versionType==self._versionType:
+                if self._versionSave is None:
+                    versionFileName = ".VERSION_" + versionType.upper()
+                    versionFilePath = _os.path.join(self._versionPath, versionFileName)
+                    try:
+                        with open(versionFilePath,"r") as versionFile: 
+                            self._versionSave = versionFile.readline().strip("\n")
+                    except:
+                        self._versionSave = "UNKNOWN"
+                    return self._versionSave
+                else:
+                    return self._versionSave
 
-arch = "x86" if "32" in _platform.architecture()[0] else "x64"
-
-####################################################################################################################################
-
-names = _Struct()
-names.paramonte = "ParaMonte"
-names.paradram = "ParaDRAM"
-names.paranest = "ParaNest"
-names.paratemp = "ParaTemp"
-
-####################################################################################################################################
-
-from _Version import Version
-version = _Struct()
-for versionType in ["interface","kernel"]: setattr(version,versionType,Version(path.auxil,versionType))
+    def _checkVersionType(self):
+        versionTypeNotFound = True
+        for versionType in self._versionList:
+            if versionType==self._versionType:
+                versionTypeNotFound = False
+                break
+        if versionTypeNotFound:
+            _sys.exit("The input versionType is not a valid recognized version type. Possible values: " + " ".join(versionList))

@@ -52,7 +52,7 @@ for /f "tokens=*" %%i in ('head.bat 1 "..\.VERSION"') do set "ParaMonteVersion=%
 cd %~dp0
 
 REM echo. 
-REM type .\auxil\ParaMonteBanner.txt
+REM type .\auxil\.ParaMonteBanner
 REM echo. 
 
 echo. 

@@ -47,6 +47,14 @@ if exist !ParaMontePythonTest_BLD_DIR! (
 )
 echo.
 
+:: The ParaMonte library auxil files
+
+echo. -- ParaMontePython - copying the ParaMonte library auxiliary files
+echo. -- ParaMontePython - from: !ParaMonteInterface_SRC_DIR!\auxil                 %= no need for final slash here =%
+echo. -- ParaMontePython -   to: !ParaMontePythonTest_BLD_DIR!\paramonte\auxil\     %= final slash tells this is folder =%
+xcopy /s /Y "!ParaMonteInterface_SRC_DIR!\auxil" "!ParaMontePythonTest_BLD_DIR!\paramonte\auxil\"
+echo.
+
 :: copy necessary ParaMonte Python library files in Python's directory
 
 echo. -- ParaMontePython - copying ParaMonte library source files to the Python build directory

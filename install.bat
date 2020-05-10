@@ -68,7 +68,7 @@ set ParaMonte_INSTALL_CLEANUP_ENABLED=true
 set DRY_RUN=false
 
 echo.
-type .\auxil\ParaMonteBanner.txt
+type .\auxil\.ParaMonteBanner
 echo.
 
 echo.
