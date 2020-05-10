@@ -42,10 +42,12 @@ class _Struct:
 
 ####################################################################################################################################
 
+from pathlib import Path as _Path
 path = _Struct()
 path.root = _os.path.dirname(_os.path.abspath(__file__))
 path.auxil = _os.path.join(path.root,"auxil")
-path.home = _os.path.expanduser("~")
+#path.home = _os.path.expanduser("~")
+path.home = str(_Path.home())
 path.lib = path.root
 
 _sys.path.append(path.root)

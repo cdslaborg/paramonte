@@ -121,7 +121,7 @@ classdef paramonte %< dynamicprops
 %               But do not request more than the number of physical cores on your system.
 %
     properties (Access = public)
-        webpage         = "<a href=""https://www.cdslab.org/paramonte/"">https://www.cdslab.org/paramonte/</a>";
+        website         = [];
         authors         = [];
         credits         = [];
         version         = [];
@@ -160,6 +160,13 @@ classdef paramonte %< dynamicprops
             addpath(genpath(self.path.root),'-begin');
             self.path.lib = fullfile(self.path.root, "lib");
             self.path.auxil = fullfile(self.path.root, "auxil");
+
+            self.website = struct();
+            self.website.home.url = "<a href=""https://www.cdslab.org/paramonte/"">https://www.cdslab.org/paramonte/</a>";
+            self.website.github.issues.url = "<a href=""https://github.com/cdslaborg/paramonte/issues"">https://github.com/cdslaborg/paramonte/issues</a>";
+            self.website.intel.mpi.home.url = "<a href=""https://software.intel.com/en-us/mpi-library"">https://software.intel.com/en-us/mpi-library</a>";
+            self.website.intel.mpi.windows.url = "<a href=""https://software.intel.com/en-us/get-started-with-mpi-for-windows"">https://software.intel.com/en-us/get-started-with-mpi-for-windows</a>";
+            self.website.openmpi.home.url = "<a href=""https://www.open-mpi.org/"">https://www.open-mpi.org/</a>";
 
             self.platform.isWin32 = ispc;
             self.platform.isMacOS = ismac;
@@ -294,7 +301,7 @@ classdef paramonte %< dynamicprops
             catch
                 error   ( newline ...
                         + "Failed to read the ParaMonte verification status file. It looks like someone has messed up your ParaMonte library. Visit: " ...
-                        + self.webpage + "to download a fresh version of the ParaMonte MATLAB library." ...
+                        + "    " + self.website.home.url + "to download a fresh version of the ParaMonte MATLAB library." ...
                         + newline ...
                         );
             end
@@ -333,9 +340,9 @@ classdef paramonte %< dynamicprops
                         self.Err.msg    = "The MPI runtime libraries for 64-bit architecture could not be detected on your system. " ...
                                         + "The MPI runtime libraries are required for the parallel ParaMonte simulations. " ...
                                         + "For Windows and Linux operating systems, you can download and install the Intel MPI runtime " ...
-                                        + "libraries, free of charge, from Intel website (https://software.intel.com/en-us/mpi-library). " ...
+                                        + "libraries, free of charge, from Intel website (" + self.website.intel.mpi.home.url + "). " ...
                                         + "For macOS (Darwin operating system), you will have to download and install the Open-MPI library " ...
-                                        + "(https://www.open-mpi.org/)." + newline + newline ...
+                                        + "(" + self.website.openmpi.home.url + ")." + newline + newline ...
                                         + "Alternatively, the ParaMonte library can automatically install these library for you now. " + newline + newline ...
                                         + "If you don't know how to download and install the correct MPI runtime library version, " ...
                                         + "we strongly recommend that you let the ParaMonte library to install this library for you. " ...
@@ -361,7 +368,7 @@ classdef paramonte %< dynamicprops
                                             + "    pm = paramonte();" + newline ...
                                             + "    pm.verify();" + newline + newline ...
                                             + "For more information visit:" + newline + newline ...
-                                            + "    " + self.webpage;
+                                            + "    " + self.website.home.url;
                             self.Err.note();
                             self.writeVerificationStatusFile("False");
                         end
@@ -409,7 +416,7 @@ classdef paramonte %< dynamicprops
                                 + "    -- Intel Parallel Studio >2018, which is built on top of MSVS" + newline + newline ...
                                 + "If you don't have these software already installed on your system, " + newline ...
                                 + "please visit the following page for the installation instructions:" + newline + newline ...
-                                + "    " + self.webpage + newline + newline ...
+                                + "    " + self.website.home.url + newline + newline ...
                                 + "Follow the website's instructions to build the ParaMonte library on your system.";
                 self.Err.abort();
 
@@ -452,9 +459,9 @@ classdef paramonte %< dynamicprops
                             self.Err.msg    = "Internal error occurred." + newline ...
                                             + "Failed to detect the ParaMonte installation Bash script." + newline ...
                                             + "Please report this issue at " + newline + newline ...
-                                            + "    https://github.com/cdslaborg/paramonte/issues" + newline + newline ...
+                                            + "    " + self.website.github.issues.url + newline + newline ...
                                             + "Visit, " ...
-                                            + "    " + self.webpage + newline + newline ...
+                                            + "    " + self.website.home.url + newline + newline ...
                                             + "for instructions to build ParaMonte library on your system.";
                             self.Err.abort();
                         end
@@ -479,11 +486,11 @@ classdef paramonte %< dynamicprops
                     if errorOccurred1 || errorOccurred2
                         self.Err.msg    = "Local installation of ParaMonte failed." + newline ...
                                         + "Please report this issue at " + newline + newline ...
-                                        + "    https://github.com/cdslaborg/paramonte/issues";
+                                        + "    " + self.website.github.issues.url;
                         self.Err.abort();
                     end
 
-                    dummy = cd(originalDir);
+                    cd(originalDir);
 
                     % copy files to the library folder
 
@@ -497,7 +504,7 @@ classdef paramonte %< dynamicprops
                                         + string(strrep(matlabBinDir,'\','\\')) + newline + newline ...
                                         + "to find out if any shared objects with the prefix 'libparamonte_' have been generated or not." + newline ...
                                         + "Please report this issue at " + newline + newline ...
-                                        + "    https://github.com/cdslaborg/paramonte/issues";
+                                        + "    " + self.website.github.issues.url;
                         self.Err.abort();
 
                     else
@@ -577,7 +584,7 @@ classdef paramonte %< dynamicprops
                             + "There are ongoing efforts, right now as you read this message, to further increase the " ...
                             + "availability of ParaMonte library on a wider-variety of platforms and architectures. " ...
                             + "Stay tuned for updates by visiting " + newline + newline ...
-                            + "    " + self.webpage + newline + newline ...
+                            + "    " + self.website.home.url + newline + newline ...
                             + "That said," + newline + newline ...
                             + "if your platform is non-Windows and is compatible with GNU Compiler Collection (GCC)," + newline + newline ...
                             + "you can also build the required ParaMonte kernel's shared object files on your system " ...
@@ -785,14 +792,14 @@ classdef paramonte %< dynamicprops
                                             + "    2.   -localonly indicates a parallel simulation on only a single node (this " + newline ...
                                             + "         flag will obviate the need for MPI library credentials registration). " + newline ...
                                             + "         For more information, visit: " + newline + newline ...
-                                            + "         https://software.intel.com/en-us/get-started-with-mpi-for-windows " + newline ...
+                                            + "             " + self.website.intel.mpi.windows.url + newline + newline ...
                                             + "    3.   main.m is the MATLAB file which serves as the entry point to " + newline ...
                                             + "         your simulation, where you call ParaMonte sampler routines. " + newline + newline ...
                                             + "Note that the above two commands must be executed on a command-line that recognizes " + newline ...
                                             + "both MATLAB and mpiexec applications, such as the Intel Parallel Studio's command-prompt. " + newline ...
                                             + "For more information, in particular, on how to register to run Hydra services " + newline ...
                                             + "for multi-node simulations on Windows servers, visit: " + newline + newline ...
-                                            + "    " + self.webpage;
+                                            + "    " + self.website.home.url;
                             self.Err.marginTop = 1;
                             self.Err.marginBot = 1;
                             self.Err.prefix = self.names.paramonte;
@@ -838,7 +845,7 @@ classdef paramonte %< dynamicprops
                                             + "         your simulation, where you call ParaMonte sampler routines. " + newline + newline ...
                                             + "For more information on how to install and use and run parallel ParaMonte " + newline ...
                                             + "simulations on Linux systems, visit:" + newline + newline ...
-                                            + "    " + self.webpage;
+                                            + "    " + self.website.home.url;
                             self.Err.msgmarginTop = 1;
                             self.Err.msgmarginBot = 1;
                             self.Err.msgmethodName = self.names.paramonte;
@@ -893,7 +900,7 @@ classdef paramonte %< dynamicprops
                                     + "         your simulation, where you call ParaMonte sampler routines. " + newline + newline ...
                                     + "For more information on how to install and use and run parallel ParaMonte " + newline ...
                                     + "simulations on Darwin operating systems, visit:" + newline + newline ...
-                                    + "    " + self.webpage;
+                                    + "    " + self.website.home.url;
                     self.Err.marginTop = 1;
                     self.Err.marginBot = 1;
                     self.Err.prefix = self.names.paramonte;
@@ -997,9 +1004,9 @@ classdef paramonte %< dynamicprops
                             self.Err. msg   = "Internal error occurred." + newline ...
                                             + "Failed to detect the Intel MPI installation Bash script." + newline ...
                                             + "Please report this issue at " + newline + newline ...
-                                            + "    https://github.com/cdslaborg/paramonte/issues" + newline + newline ...
-                                            + "Visit, "
-                                            + "    " + self.webpage + newline + newline ...
+                                            + "    " + self.website.github.issues.url + newline + newline ...
+                                            + "Visit, " ...
+                                            + "    " + self.website.home.url + newline + newline ...
                                             + "for instructions to build the ParaMonte library on your system.";
                             self.Err.abort();
                         end
@@ -1027,9 +1034,9 @@ classdef paramonte %< dynamicprops
                         self.Err.msg    = "Intel MPI runtime libraries installation for " + newline ...
                                         + "64-bit architecture appears to have failed." + newline ...
                                         + "Please report this error at:" + newline + newline ...
-                                        + "    https://github.com/cdslaborg/paramonte/issues" + newline + newline ...
-                                        + "Visit, "
-                                        + "    " + self.webpage + newline + newline ...
+                                        + "    " + self.website.github.issues.url + newline + newline ...
+                                        + "Visit, " ...
+                                        + "    " + self.website.home.url + newline + newline ...
                                         + "for instructions to build the ParaMonte library on your system.";
                         self.Err.abort();
                     end
@@ -1039,17 +1046,20 @@ classdef paramonte %< dynamicprops
                                     + "Searching for the MPI runtime environment setup file...";
                     self.Err.note();
 
-                    oldDir = cd(originalDir);
+                    cd(originalDir);
 
                     setupFilePath = fullfile( self.path.lib, "setup.sh" );
 
                     mpiRootDirNotFound = true;
                     installationRootDirList = [ "/opt", self.path.home ];
+                    mpiRootDir = [];
+                    mpivarsFilePathDefault = [];
                     while mpiRootDirNotFound
                         for installationRootDir = installationRootDirList
                             mpiTrunkDir = fullfile("intel", "compilers_and_libraries_" + mpiVersion, "linux", "mpi", "intel64");
-                            mpiRootDir = fullfile(installationRootDir, mpiTrunkDir);
-                            if isfolder(mpiRootDir)
+                            mpiRootDir = [ mpiRootDir, string(fullfile(installationRootDir, mpiTrunkDir)) ];
+                            mpivarsFilePathDefault = [ mpivarsFilePathDefault , fullfile(mpiRootDir,"bin","mpivars.sh") ];
+                            if isfolder(mpiRootDir(end))
                                 mpiRootDirNotFound = false;
                                 break
                             end
@@ -1082,23 +1092,29 @@ classdef paramonte %< dynamicprops
                         self.Err.msg    = "Failed to find the MPI runtime environment setup file on your system." + newline ...
                                         + "This is highly unusual. Normally, Intel MPI libraries must be installed" + newline ...
                                         + "in the following directory:" + newline + newline ...
-                                        + "    " + string(strrep(mpiRootDir,'\','\\')) + newline + newline ...
+                                        + "    " + string(strrep(mpiRootDir(1),'\','\\')) + newline + newline ...
+                                        + "or," + newline + newline ...
+                                        + "    " + string(strrep(mpiRootDir(2),'\','\\')) + newline + newline ...
                                         + "If you cannot manually find the Intel MPI installation directory," + newline ...
                                         + "it is likely that the installation might have somehow failed." + newline ...
                                         + "If you do find the installation directory, try to locate the" + newline ...
                                         + "'mpivars.sh' file which is normally installed in the following path:" + newline + newline ...
-                                        + "    " + string(strrep(mpivarsFilePath,'\','\\')) + newline + newline ...
+                                        + "    " + string(strrep(mpivarsFilePathDefault(1),'\','\\')) + newline + newline ...
+                                        + "or," + newline + newline ...
+                                        + "    " + string(strrep(mpivarsFilePathDefault(2),'\','\\')) + newline + newline ...
                                         + "Before attempting to run any parallel ParaMonte simulation, " + newline ...
                                         + "make sure you source this file, like the following:" + newline + newline ...
-                                        + "    source " + string(strrep(mpivarsFilePath,'\','\\')) + newline + newline ...
+                                        + "    source " + string(strrep(mpivarsFilePathDefault(1),'\','\\')) + newline + newline ...
+                                        + "or," + newline + newline ...
+                                        + "    source " + string(strrep(mpivarsFilePathDefault(2),'\','\\')) + newline + newline ...
                                         + "where you will have to replace the path in the above with the " + newline ...
                                         + "correct path that you find on your system.";
                         self.Err.warn();
 
                     else
 
-                        mpiBinDir = fullfile(mpiRootDir, "bin");
-                        mpiLibDir = fullfile(mpiRootDir, "lib");
+                        mpiBinDir = fullfile(mpiRootDir(end), "bin");
+                        mpiLibDir = fullfile(mpiRootDir(end), "lib");
                         mpivarsFilePath = fullfile(mpiBinDir, "mpivars.sh");
                         if isfile(mpivarsFilePath)
 
@@ -1136,7 +1152,16 @@ classdef paramonte %< dynamicprops
                                                 + "and open a new Bash shell environment. This is to ensure that all MPI" + newline ...
                                                 + "library environmental variables are properly set in your shell environment.";
                                 self.Err.note();
+
                             end
+
+                        else
+
+                            self.Err.msg    = "ParaMonte was able to detect an MPI library path on your system, however," + newline ...
+                                            + "the MPI installation appears to be corrupted. The required mpivars.sh " + newline ...
+                                            + "does not exist:" + newline + newline ...
+                                            + string(strrep(mpivarsFilePath,'\','\\'));
+                            self.Err.abort();
 
                         end
 
@@ -1149,7 +1174,7 @@ classdef paramonte %< dynamicprops
                 self.Err.msg    = "To use the ParaMonte kernel routines in parallel on macOS, " + newline ...
                                 + "the Open-MPI library will have to be installed on your system. " + newline ...
                                 + "Building the ParaMonte library prerequisites on your system...";
-                self.Err.note();
+                self.Err.warn();
                 self.buildParaMontePrereqsForMac();
 
             else
@@ -1157,7 +1182,7 @@ classdef paramonte %< dynamicprops
                 self.Err.msg    = "To use ParaMonte in parallel on this unknown Operating System, " + newline ...
                                 + "ParaMonte needs to be built from scratch on your system. " + newline ...
                                 + "Building ParaMonte library prerequisites on your system...";
-                self.Err.note();
+                self.Err.warn();
                 self.build();
 
             end
@@ -1181,10 +1206,10 @@ classdef paramonte %< dynamicprops
                 self.Err.msg = "Failed to detect Homebrew on your system. Installing Homebrew...";
                 self.Err.note();
 
-                [errorOccurred, ~] = system('xcode-select --install');
-                [errorOccurred, ~] = system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"');
-                [errorOccurred, ~] = system('brew --version');
-                if errorOccurred
+                [errorOccurred1, ~] = system('xcode-select --install');
+                [errorOccurred2, ~] = system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"');
+                [errorOccurred3, ~] = system('brew --version');
+                if errorOccurred1 || errorOccurred2 || errorOccurred3
                     self.Err.msg    = "Failed to install Homebrew on your system." + newline ...
                                     + "Homebrew is required to install and build ParaMonte components and prerequisites." + newline ...
                                     + "Please install Homebrew manually on your system and retry the ParaMonte installation process." + newline ...
@@ -1197,9 +1222,14 @@ classdef paramonte %< dynamicprops
             % cmake
 
             cmakeInstallationNeeded = false;
-            cmakePath = shutil.which("cmake");
             [~,cmakePath] = system("command -v cmake");
-            if isfile(cmakePath)
+            if ~isfile(cmakePath)
+
+                cmakeInstallationNeeded = true;
+                self.Err.msg = "cmake installation is missing on your system.";
+                self.Err.note();
+
+            else
 
                 self.Err.msg = "cmake installation detected at: " + string(strrep(cmakePath,'\','\\')) + "\n" + "Checking cmake version...";
                 self.Err.marginTop  = 0;
@@ -1207,26 +1237,30 @@ classdef paramonte %< dynamicprops
                 self.Err.note();
 
                 [errorOccurred,cmakeVersion] = system("cmake --version");
-                cmakeVersion = strsplit(cmakeVersion," "); cmakeVersion = strsplit(cmakeVersion{3},"-"); cmakeVersion = string(cmakeVersion{1});
-                cmakeVersionList = string(strsplit(cmakeVersion,"."));
+                if errorOccurred
 
-                self.Err.msg = "current cmake version: " + cmakeVersion;
-                self.Err.note();
-
-                if str2double(cmakeVersionList{1})>=3 && str2double(cmakeVersionList{2})>=14
-                    self.Err.msg = "cmake version is ParaMonte-compatible!";
-                    self.Err.note();
-                else
                     cmakeInstallationNeeded = true;
-                    self.Err.msg = "cmake version is NOT ParaMonte-compatible.";
+                    self.Err.msg = "Failed to detect the current cmake installation version. skipping...";
                     self.Err.note();
+
+                else
+
+                    cmakeVersion = strsplit(cmakeVersion," "); cmakeVersion = strsplit(cmakeVersion{3},"-"); cmakeVersion = string(cmakeVersion{1});
+                    cmakeVersionList = string(strsplit(cmakeVersion,"."));
+
+                    self.Err.msg = "current cmake version: " + cmakeVersion;
+                    self.Err.note();
+
+                    if str2double(cmakeVersionList{1})>=3 && str2double(cmakeVersionList{2})>=14
+                        self.Err.msg = "cmake version is ParaMonte-compatible!";
+                        self.Err.note();
+                    else
+                        cmakeInstallationNeeded = true;
+                        self.Err.msg = "cmake version is NOT ParaMonte-compatible.";
+                        self.Err.note();
+                    end
+
                 end
-
-            else
-
-                cmakeInstallationNeeded = true;
-                self.Err.msg = "Failed to detect the current cmake installation version. skipping...";
-                self.Err.note();
 
             end
 
@@ -1235,8 +1269,14 @@ classdef paramonte %< dynamicprops
                 self.Err.msg = "Installing cmake...";
                 self.Err.note();
 
-                [~,~] = system("brew install cmake");
-                [~,~] = system("brew link --overwrite cmake");
+                [errorOccurred1,~] = system("brew install cmake");
+                [errorOccurred2,~] = system("brew link --overwrite cmake");
+                if errorOccurred1 || errorOccurred2
+                    self.Err.msg = "cmake installation or linking failed.";
+                    self.Err.marginTop = 1;
+                    self.Err.marginBot = 1;
+                    self.Err.abort();
+                end
 
                 [~,cmakeVersion] = system("cmake --version");
                 cmakeVersion = strsplit(cmakeVersion," "); cmakeVersion = strsplit(cmakeVersion{3},"-"); cmakeVersion = string(cmakeVersion{1});
@@ -1328,9 +1368,11 @@ classdef paramonte %< dynamicprops
             fprintf(1,"\n");
             text = fileread(bannerFilePath);
             lineList = string(strsplit(text,newline));
-            for line = lineList
-                if contains(line,"Version")
-                    line = strrep(line, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+            for lineElement = lineList
+                if contains(lineElement,"Version")
+                    line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+                else
+                    line = lineElement;
                 end
                 fprintf(1,line);
             end

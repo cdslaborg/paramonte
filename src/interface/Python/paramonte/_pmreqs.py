@@ -676,18 +676,19 @@ def installMPI():
 
             _os.chdir(currentDir)
 
-            from pathlib import Path
-            home = str(Path.home())
             setupFilePath = _os.path.join( _pm.path.root, "setup.sh" )
 
             mpiRootDirNotFound = True
-            installationRootDirList = [ "/opt", home ]
+            installationRootDirList = [ "/opt", _pm.path.home ]
             while mpiRootDirNotFound:
 
+                mpiRootDir = []
+                mpivarsFilePathDefault = []
                 for installationRootDir in installationRootDirList:
                     mpiTrunkDir = _os.path.join( "intel", "compilers_and_libraries_" + mpiVersion, "linux", "mpi", "intel64" )
-                    mpiRootDir = _os.path.join( installationRootDir, mpiTrunkDir )
-                    if _os.path.isdir(mpiRootDir):
+                    mpiRootDir.append( _os.path.join( installationRootDir, mpiTrunkDir ) )
+                    mpivarsFilePathDefault.append( _os.path.join( mpiRootDir[-1] , "bin" , "mpivars.sh" ) )
+                    if _os.path.isdir(mpiRootDir[-1]):
                         mpiRootDirNotFound = False
                         break
 
@@ -720,17 +721,23 @@ def installMPI():
             if mpiRootDirNotFound:
 
                 _pm.warn( msg   = "Failed to find the MPI runtime environment setup file on your system.\n"
-                                + "This is highly unusual. Normally, Intel MPI libraries must be installed\n"
+                                + "This is highly unusual. Normally, Intel MPI libraries is installed\n"
                                 + "in the following directory:\n\n"
-                                + "    " + mpiRootDir + "\n\n"
+                                + "    " + mpiRootDir[0] + "\n\n"
+                                + "or,\n\n"
+                                + "    " + mpiRootDir[1] + "\n\n"
                                 + "If you cannot manually find the Intel MPI installation directory,\n"
                                 + "it is likely that the installation might have somehow failed.\n"
                                 + "If you do find the installation directory, try to locate the\n"
                                 + "'mpivars.sh' file which is normally installed in the following path:\n\n"
-                                + "    " + mpivarsFilePath + "\n\n"
+                                + "    " + mpivarsFilePathDefault[0] + "\n\n"
+                                + "or,\n\n"
+                                + "    " + mpivarsFilePathDefault[1] + "\n\n"
                                 + "Before attempting to run any parallel ParaMonte simulation, \n"
                                 + "make sure you source this file, like the following:\n\n"
-                                + "    source " + mpivarsFilePath + "\n\n"
+                                + "    source " + mpivarsFilePathDefault[0] + "\n\n"
+                                + "or,\n\n"
+                                + "    source " + mpivarsFilePathDefault[1] + "\n\n"
                                 + "where you will have to replace the path in the above with the \n"
                                 + "correct path that you find on your system."
                         , methodName = _pm.names.paramonte
@@ -740,8 +747,8 @@ def installMPI():
 
             else:
 
-                mpiBinDir = _os.path.join( mpiRootDir, "bin" )
-                mpiLibDir = _os.path.join( mpiRootDir, "lib" )
+                mpiBinDir = _os.path.join( mpiRootDir[-1], "bin" )
+                mpiLibDir = _os.path.join( mpiRootDir[-1], "lib" )
                 mpivarsFilePath = _os.path.join( mpiBinDir, "mpivars.sh" )
                 if _os.path.isfile(mpivarsFilePath):
 
@@ -808,6 +815,18 @@ def installMPI():
                     #            , marginBot = 1
                     #            )
 
+                else:
+
+                    _pm.abort   ( msg   = "ParaMonte was able to detect an MPI library path on your system, however,\n"
+                                        + "the MPI installation appears to be corrupted. The required mpivars.sh \n"
+                                        + "does not exist:\n\n"
+                                        + mpivarsFilePath
+                                , methodName = _pm.names.paramonte
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
+                    self.Err.abort();
+
     elif isMacOS:
 
         _pm.warn( msg   = "To use the ParaMonte kernel routines in parallel on macOS, \n"
@@ -862,10 +881,10 @@ def buildParaMontePrereqsForMac():
                 , marginTop = 1
                 , marginBot = 1
                 )
-        err = _os.system('xcode-select --install')
-        err = _os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
-        err = _os.system('brew --version')
-        if err != 0:
+        err1 = _os.system('xcode-select --install')
+        err2 = _os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
+        err3 = _os.system('brew --version')
+        if err1 != 0 or err2 != 0 or err3 != 0:
             _pm.abort( msg  = "Failed to install Homebrew on your system.\n"
                             + "Homebrew is required to install and build ParaMonte components and prerequisites.\n"
                             + "Please install Homebrew manually on your system and retry the ParaMonte installation process.\n"
@@ -877,8 +896,8 @@ def buildParaMontePrereqsForMac():
 
     # cmake
 
-    cmakePath = shutil.which("cmake")
     cmakeInstallationNeeded = False
+    cmakePath = shutil.which("cmake")
     if cmakePath is None:
         cmakeInstallationNeeded = True
         _pm.note( msg           = "cmake installation is missing on your system."
@@ -922,13 +941,23 @@ def buildParaMontePrereqsForMac():
                     )
 
     if cmakeInstallationNeeded:
+
         _pm.note( msg = "Installing cmake..."
                 , methodName = _pm.names.paramonte
                 , marginTop = 0
                 , marginBot = 0
                 )
+
         err1 = _os.system("brew install cmake")
         err2 = _os.system("brew link --overwrite cmake")
+
+        if err1 != 0 or err2 != 0:
+            _pm.abort   ( msg = "cmake installation or linking failed."
+                        , methodName = _pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+
         cmakeVersionList = str(subprocess.run(args=["cmake","--version"],capture_output=True).stdout).split(" ")[2].split("-")[0].split(".")
         if int(cmakeVersionList[0])>=3 and int(cmakeVersionList[1])>=14:
             _pm.note( msg           = "cmake installation succeeded."
@@ -955,8 +984,10 @@ def buildParaMontePrereqsForMac():
             , marginTop = 1
             , marginBot = 1
             )
+
     err1 = _os.system("brew install gcc@9")
     err2 = _os.system("brew link gcc@9")
+
     if err1 != 0 or err2 != 0:
         _pm.warn( msg   = "Failed to install and link GNU Compiler Collection on your system.\n"
                         + "The GNU Compiler Collection is required to install\n"
@@ -976,8 +1007,10 @@ def buildParaMontePrereqsForMac():
             , marginTop = 1
             , marginBot = 1
             )
+
     err1 = _os.system("brew install open-mpi")
     err2 = _os.system("brew link open-mpi")
+
     if err1 != 0 or err2 != 0:
         _pm.warn( msg   = "Failed to install and link Open-MPI on your system.\n"
                         + "Open-MPI is required to install and build\n"
@@ -1147,7 +1180,20 @@ def build(flags=""):
             pythonBinDir = _os.path.join( pmGitRootDir , "bin" , "Python" , "paramonte" )
             fileList = glob.glob( _os.path.join( pythonBinDir , "libparamonte_*" ) )
 
-            if len(fileList)>0:
+            if len(fileList)==0:
+
+                _pm.abort( msg  = "ParaMonte kernel libraries build and installation appears to have failed. \n"
+                                + "You can check this path:\n\n"
+                                + pythonBinDir + "\n\n"
+                                + "to find out if any shared objects with the prefix 'libparamonte_' have been generated or not.\n"
+                                + "Please report this issue at \n\n"
+                                + "    https://github.com/cdslaborg/paramonte/issues"
+                        , methodName = _pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 2
+                        )
+
+            else:
 
                 _pm.note( msg   = "ParaMonte kernel libraries build appears to have succeeded. \n"
                                 + "copying the kernel files to the ParaMonte Python module directory..."
@@ -1155,6 +1201,7 @@ def build(flags=""):
                         , marginTop = 1
                         , marginBot = 1
                         )
+
                 for file in fileList:
                     _pm.note( msg   = "file: " + file
                             , methodName = _pm.names.paramonte
@@ -1162,6 +1209,7 @@ def build(flags=""):
                             , marginBot = 0
                             )
                     shutil.copy(file, _pm.path.lib)
+
                 _pm.note( msg   = "ParaMonte kernel libraries should be now usable on your system."
                         , methodName = _pm.names.paramonte
                         , marginTop = 1
@@ -1192,19 +1240,6 @@ def build(flags=""):
                             , marginTop = 1
                             , marginBot = 1
                             )
-
-            else:
-
-                _pm.abort( msg  = "ParaMonte kernel libraries build and installation appears to have failed. \n"
-                                + "You can check this path:\n\n"
-                                + pythonBinDir + "\n\n"
-                                + "to find out if any shared objects with the prefix 'libparamonte_' have been generated or not.\n"
-                                + "Please report this issue at \n\n"
-                                + "    https://github.com/cdslaborg/paramonte/issues"
-                        , methodName = _pm.names.paramonte
-                        , marginTop = 1
-                        , marginBot = 2
-                        )
 
             writeVerificationStatusFile(verificationEnabled=True)
 
