@@ -5,7 +5,7 @@
 %
 %  Copyright (C) 2012-present, The Computational Data Science Lab
 %
-%  This file is part of ParaMonte library. 
+%  This file is part of ParaMonte library.
 %
 %  ParaMonte is free software: you can redistribute it and/or modify
 %  it under the terms of the GNU Lesser General Public License as published by
@@ -21,105 +21,134 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-classdef paramonte %< dynamicprops
-%   This is the MATLAB interface to ParaMonte: Plain Powerful Parallel Monte Carlo library.
-%   
+%
+%   paramonte - This is the MATLAB interface to the ParaMonte: Plain Powerful Parallel Monte Carlo library.
+%
 %   What is ParaMonte?
 %   ==================
-%   
-%   ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical 
-%   objective functions of arbitrary-dimensions, in particular, the posterior distributions 
-%   of Bayesian models in data science, Machine Learning, and scientific inference, with the 
-%   design goal of unifying the 
-%   
-%       **automation** (of Monte Carlo simulations), 
-%       **user-friendliness** (of the library), 
-%       **accessibility** (from multiple programming environments), 
-%       **high-performance** (at runtime), and 
-%       **scalability** (across many parallel processors).  
-%   
-%   For more information on the installation, usage, and examples, visit: 
-%   
-%       https://www.cdslab.org/paramonte  
-%   
+%
+%   ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical
+%   objective functions of arbitrary-dimensions, in particular, the posterior distributions
+%   of Bayesian models in data science, Machine Learning, and scientific inference, with the
+%   design goal of unifying the
+%
+%       **automation** (of Monte Carlo simulations),
+%       **user-friendliness** (of the library),
+%       **accessibility** (from multiple programming environments),
+%       **high-performance** (at runtime), and
+%       **scalability** (across many parallel processors).
+%
+%   For more information on the installation, usage, and examples, visit:
+%
+%       https://www.cdslab.org/paramonte
+%
 %   The routines currently supported by the MATLAB interface of ParaMonte include:
-%   
+%
 %       ParaDRAM
 %       ========
-%           
+%
 %           Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
-%   
+%
 %           EXAMPLE SERIAL USAGE
 %           ====================
-%   
-%           Copy and paste the following code enclosed between the 
-%           two comment lines in your MATLAB session
-%           (make sure the indentation of the pasted lines is correct):
-%   
-%   ##################################
-%   import paramonte as pm
-%   import numpy as np
-%   def getLogFunc(Point)
-%       # return the log of the standard multivariate 
-%       # Normal density function with ndim dimensions
-%       return -0.5 * np.sum( np.double( Point )**2 )
-%   pmpd = pm.ParaDRAM()
-%   pmpd.runSampler ( ndim = 3
-%                   , getLogFunc = getLogFunc
-%                   )
-%   ##################################
-%   
+%
+%           Copy and paste the following code enclosed between the
+%           two comment lines in your MATLAB session:
+%
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
+%               addpath(genpath(pmlibRootDir));
+%               pm = paramonte();
+%               pmpd = pm.ParaDRAM();
+%               pmpd.runSampler ( 4                 ... number of dimensions of the objective function
+%                               , @(x) -sum(x.^2)   ... the natural log of the objective function
+%                               );
+%               pmpd.readChain();
+%               pmpd.chainList{1}.plot.grid.plot();
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%           The mathematical objective function in the above example is a
+%           is a multivariate Normal distribution centered at the origin,
+%           whose natural logarithm is returned by the lambda (Anonymous)
+%           function defined as a function handle input to the ParaDRAM
+%           sampler.
+%
 %           EXAMPLE PARALLEL USAGE
 %           ======================
-%   
-%           Copy and paste the following code enclosed between the 
-%           two comment lines in your MATLAB session
-%           (make sure the indentation of the pasted lines is correct):
-%   
-%   ##################################
-%   with open("main.m", "w") as file:
-%       file.write  ('''
-%   import paramonte as pm
-%   import numpy as np
-%   def getLogFunc(Point)
-%       # return the log of the standard multivariate 
-%       # Normal density function with ndim dimensions
-%       return -0.5 * np.sum( np.double( Point )**2 )
-%   pmpd = pm.ParaDRAM()
-%   pmpd.runSampler ( ndim = 3
-%                   , getLogFunc = getLogFunc
-%                   , mpiEnabled = True
-%                   )
-%   ''')
-%   ##################################
-%   
-%           This will generate a main.m MATLAB script file in the current
-%           working directory of your MATLAB session. Now, you can execute 
-%           this MATLAB script file (main.m) in parallel in two ways:
-%           
-%               1.  from inside MATLAB: type the following,
-%   
-%                      !mpiexec -n 3 matlab main.m
-%   
-%               2.  outside of MATLAB environment, 
-%                   from within a Bash shell (on Linux or Mac) or,
-%                   from within an Anaconda command prompt on Windows,
-%                   type the following,
-%   
-%                      mpiexec -n 3 matlab main.m
-%   
-%               NOTE: On Windows platform, if you are using Intel MPI library,
-%               NOTE: you may also specify the extra flag -localonly to run only
-%               NOTE: on one node, but also to avoid the use of Hydra service and
-%               NOTE: its registration. If you are not on a Windows cluster, (e.g., 
-%               NOTE: you are using your personal device), then we recommend 
-%               NOTE: specifying this flag.
-%   
-%               In both cases above, the script 'main.m' will run on 3 processors.
-%               Feel free to change the number of processors to any number desired.
-%               But do not request more than the number of physical cores on your system.
 %
+%           First, make sure you have the required MPI libraries on your System:
+%           (You can skip this step if you know that you already have 
+%           a compatible MPI library installed on your system). 
+%           On the MATLAB command line type the following, 
+%
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
+%               addpath(genpath(pmlibRootDir));
+%               pm = paramonte();
+%               pm.verify();
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%           This will verify the existence of a valid MPI library on your system and,
+%           if missing, will install the MPI library on your system (with your permission).
+%
+%           Once the MPI installation is verified, 
+%           copy and paste the following code enclosed 
+%           between the two comment lines in your MATLAB session:
+%           (You may want to restart your MATLAB session to ensure the MPI 
+%           environmental variables have been loaded in your MATLAB session)
+%
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               fid = fopen("main_mpi.m", "w")
+%               sourceCode = ...
+%               "pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory" + newline + ...
+%               "addpath(genpath(pmlibRootDir));" + newline + ...
+%               "pm = paramonte();" + newline + ...
+%               "pmpd = pm.ParaDRAM();" + newline + ...
+%               "pmpd.mpiEnabled = true;" + newline + ...
+%               "pmpd.runSampler ( 4                 ... number of dimensions of the objective function" + newline + ...
+%               "                , @(x) -sum(x.^2)   ... the natural log of the objective function" + newline + ...
+%               "                );"
+%               fprintf( fid, "%s\n", sourceCode );
+%               fclose(fid);
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%           This will generate a main_mpi.m MATLAB script file in the current
+%           working directory of your MATLAB session. Now, you can execute
+%           this MATLAB script file (main_mpi.m) in parallel in two ways:
+%
+%               1.  from inside MATLAB, on Windows:
+%
+%                   a.  On Windows: type the following,
+%
+%                       !mpiexec -localonly -n 3 matlab -batch main_mpi.m
+%
+%                   b.  On macOS/Linux: type the following,
+%
+%                       !mpiexec -n 3 matlab -batch main_mpi.m
+%
+%               2.  outside of MATLAB environment,
+%
+%                   a.  On Windows: from within a MATLAB-enabled command prompt, type the following,
+%
+%                       mpiexec -localonly -n 3 matlab -batch main_mpi.m
+%
+%                   b.  On macOS/Linux: from within a Bash terminal, type the following, 
+%
+%                       mpiexec -n 3 matlab -batch main_mpi.m
+%
+%               NOTE: In the above MPI launcher commands for Windows OS, 
+%               NOTE: we assumed that you would be using the Intel MPI library, hence, 
+%               NOTE: the reason for the extra flag -localonly. This flag runs the parallel 
+%               NOTE: code only on one node, but in doing so, it avoids the use of Hydra service 
+%               NOTE: and its registration. If you are not on a Windows cluster, (e.g., you are 
+%               NOTE: using your personal device), then we recommend specifying this flag.
+%
+%               In both cases in the above, the script 'main_mpi.m' will run on 3 processors.
+%               Feel free to change the number of processors to any number desired. But do not 
+%               request more than the number of physical cores available on your system.
+%
+classdef paramonte %< dynamicprops
+
     properties (Access = public)
         website         = [];
         authors         = [];
@@ -137,6 +166,7 @@ classdef paramonte %< dynamicprops
 
     properties (Access = public, Hidden)
         platform = [];
+        prereqs
         names
         path
     end
@@ -158,8 +188,10 @@ classdef paramonte %< dynamicprops
             [self.path.root,~,~] = fileparts(self.path.root);
             self.path.root = string( getFullPath(fullfile(self.path.root,"..",".."),'lean') );
             addpath(genpath(self.path.root),'-begin');
-            self.path.lib = fullfile(self.path.root, "lib");
-            self.path.auxil = fullfile(self.path.root, "auxil");
+            self.path.lib = string(fullfile(self.path.root, "lib"));
+            self.path.auxil = string(fullfile(self.path.root, "auxil"));
+
+            self.prereqs = struct();
 
             self.website = struct();
             self.website.home.url = "<a href=""https://www.cdslab.org/paramonte/"">https://www.cdslab.org/paramonte/</a>";
@@ -238,15 +270,15 @@ classdef paramonte %< dynamicprops
 
         function verify(self,varargin)
         %    checks (or rechecks) the requirements of the installed ParaMonte library
-        %    
+        %
         %    Parameters
         %    ----------
         %        reset
-        %            boolean whose default value is True. If True, 
-        %            a thorough verification of the existence of the required 
-        %            libraries will performed, as if it is the first ParaMonte 
+        %            boolean whose default value is True. If True,
+        %            a thorough verification of the existence of the required
+        %            libraries will performed, as if it is the first ParaMonte
         %            module import.
-        %    
+        %
         %    Returns
         %    -------
         %        None
@@ -448,12 +480,12 @@ classdef paramonte %< dynamicprops
                         self.buildParaMontePrereqsForMac();
                     end
 
-                    pmGitTarPath = fullfile( self.path.root, "master.tar.gz" );
+                    pmGitTarPath = fullfile( self.path.lib, "master.tar.gz" );
                     pmGitTarPath = websave(pmGitTarPath,"https://github.com/cdslaborg/paramonte/archive/master.tar.gz");
-                    pmGitRootDir = fullfile(self.path.root, "paramonte-master");
+                    pmGitRootDir = fullfile(self.path.lib, "paramonte-master");
 
                     try
-                        untar(pmGitTarPath,self.path.root);
+                        untar(pmGitTarPath,self.path.lib);
                         pmGitInstallScriptPath = fullfile(pmGitRootDir, "install.sh");
                         if ~isfile(pmGitInstallScriptPath)
                             self.Err.msg    = "Internal error occurred." + newline ...
@@ -600,7 +632,7 @@ classdef paramonte %< dynamicprops
         function setupUnixPath(self)
 
             bashrcContents = getBashrcContents();
-            dlibcmd = "export LD_LIBRARY_PATH=" + string(fullfile(self.path.root,"lib")) + ":$LD_LIBRARY_PATH";
+            dlibcmd = "export LD_LIBRARY_PATH=" + self.path.lib + ":$LD_LIBRARY_PATH";
             if ~contains(bashrcContents,dlibcmd)
                 [~,~] = system( "chmod 777 ~/.bashrc");
                 [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
@@ -716,7 +748,7 @@ classdef paramonte %< dynamicprops
             localInstallDir.caf.bin = [];
             localInstallDir.caf.lib = [];
 
-            pmGitRootDir = fullfile( self.path.root , "paramonte-master" );
+            pmGitRootDir = fullfile( self.path.lib , "paramonte-master" );
 
             if isfolder(pmGitRootDir)
 
@@ -923,6 +955,17 @@ classdef paramonte %< dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        function dependencyList = getDependencyList(self)
+            fileName = ".dependencies_";
+            if self.platform.isWin32; fileName = fileName + "windows"; end
+            if self.platform.isMacOS; fileName = fileName + "macos"; end
+            if self.platform.isLinux; fileName = fileName + "linux"; end
+            text = fileread(fullfile(self.path.auxil,fileName));
+            dependencyList = [string(strsplit(text,newline))];
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         function installMPI(self)
 
             self.Err.prefix = self.names.paramonte;
@@ -935,31 +978,21 @@ classdef paramonte %< dynamicprops
                                 + "Please make sure your firewall allows access to the Internet.";
                 self.Err.note();
 
-                if self.platform.isWin32
-                    mpiFileExt = ".exe";
-                    mpiVersion = "2019.4.245";
-                    mpiFileName = "w_mpi-rt_p_" + mpiVersion;
-                    downloadList = ["impi.dll","impi.pdb","libfabric.dll"];
-                    for mpiFileNameExt = downloadList
-                        mpiFilePath = fullfile( self.path.lib, mpiFileNameExt );
-                        mpiFilePath = websave(mpiFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.dump("kernel") + "/" + mpiFileNameExt);
+                self.prereqs.list = self.getDependencyList();
+                for dependency = self.prereqs.list
+                    fullFilePath = fullfile( self.path.lib, dependency );
+                    fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.dump("kernel") + "/" + dependency);
+                    if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
+                    if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
+                    if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
+                        self.prereqs.mpi.intel.fullFileName = string( dependency );
+                        self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
+                        self.prereqs.mpi.intel.version = string( dependency{1}(length(intelMpiFilePrefix)+1,end-length(intelMpiFileSuffix)+1) );
                     end
                 end
 
-                if self.platform.isLinux
-                    mpiFileExt = ".tgz";
-                    mpiVersion = "2018.2.199";
-                    mpiFileName = "l_mpi-rt_" + mpiVersion;
-                end
-
-                mpiFileNameExt = mpiFileName + mpiFileExt;
-                mpiFilePath = fullfile(self.path.lib, mpiFileNameExt);
-                mpiFilePath = download  ( "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.dump("kernel") + "/" + mpiFileNameExt ...
-                                        , mpiFilePath ...
-                                        );
-
                 self.Err.msg    = "Installing the Intel MPI library for 64-bit architecture..." + newline ...
-                                + "file location: " + string(strrep(mpiFilePath,'\','\\'));
+                                + "file location: " + string(strrep(self.prereqs.mpi.intel.fullFilePath,'\','\\'));
                 self.Err.note();
 
                 self.Err.msg    = "Please do not change the default installation location of the MPI library suggested by the installer." + newline ...
@@ -968,7 +1001,7 @@ classdef paramonte %< dynamicprops
                 self.Err.warn();
 
                 if self.platform.isWin32
-                    [errorOccurred, output] = system(mpiFilePath);
+                    [errorOccurred, output] = system(self.prereqs.mpi.intel.fullFilePath);
                     if errorOccurred
                         self.Err.msg    = "Intel MPI library installation might have failed. Exit flag: " + string(errorOccurred) + "." ...
                                         + "mpiexec command output: " + string(output);
@@ -986,7 +1019,7 @@ classdef paramonte %< dynamicprops
 
                     try
 
-                        untar(mpiFilePath,self.path.lib);
+                        untar(self.prereqs.mpi.intel.fullFilePath,self.path.lib);
                         mpiExtractDir = fullfile(self.path.lib, mpiFileName);
 
                         self.Err.msg    = "If needed, use the following serial number when asked by the installer:" + newline + newline ...
@@ -1298,7 +1331,7 @@ classdef paramonte %< dynamicprops
                 end
 
             end
-            
+
             % gnu
 
             self.Err.msg = "Installing GNU Compiler Collection...";
