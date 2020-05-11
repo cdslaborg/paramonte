@@ -10,6 +10,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/cdslaborg/paramonte?style=flat-square) 
 ![GitHub language count](https://img.shields.io/github/languages/count/cdslaborg/paramonte?style=flat-square) 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cdslaborg/paramonte?style=flat-square) 
+![supported languages](https://img.shields.io/badge/supported%20%2F%20languages-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen) 
 
 ParaMonte: Plain Powerful Parallel Monte Carlo Library
 ======================================================
