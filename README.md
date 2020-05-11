@@ -2,7 +2,7 @@
   
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/cdslaborg/paramonte?color=orange)](https://github.com/cdslaborg/paramonte/releases) 
 ![GitHub Release Date](https://img.shields.io/github/release-date/cdslaborg/paramonte?color=orange) 
-![GitHub All Releases](https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=green) 
+![GitHub All Releases](https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen) 
 ![GitHub repo size](https://img.shields.io/github/repo-size/cdslaborg/paramonte) 
 ![GitHub language count](https://img.shields.io/github/languages/count/cdslaborg/paramonte) 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cdslaborg/paramonte?color=red) 
