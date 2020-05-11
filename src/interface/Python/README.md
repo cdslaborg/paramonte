@@ -55,7 +55,9 @@ The Python interface of ParaMonte depends on several Python standard modules, as
 Parallelism  
 ===========  
 
-The ParaMonte library relies on the Message Passing Interface (MPI) standard for inter-processor communications. To run a parallel simulation, you will have to have a compatible MPI runtime library installed on your system. In most cases, ParaMonte will automatically install the required missing libraries on your system (with your permission). These automatic checks and installations happen when you download, install, and `import paramonte as pm`, for the first time, into your Python environment. If the automatic installation is unsuccessful, you can also install the libraries manually on your system. On Windows and Linux operating systems, we highly recommend downloading and installing the [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), which is available to the public free of charge. On macOS, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
+The ParaMonte library relies on the Message Passing Interface (MPI) standard for inter-processor communications. To run a parallel simulation, you will have to have a compatible MPI runtime library installed on your system. In most cases, ParaMonte will automatically install the required missing libraries on your system (with your permission). These automatic checks and installations happen when you download, install, and `import paramonte as pm`, for the first time, into your Python environment. If the automatic installation is unsuccessful, you can also install the libraries manually on your system.  
++ On Windows and Linux operating systems, we highly recommend downloading and installing the [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), which is available to the public free of charge.  
++ On macOS, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
 
 Citing ParaMonte  
 ================  
@@ -65,23 +67,23 @@ As per the license terms, we kindly ask you to cite the ParaMonte library if you
 Authors and contributors  
 ========================  
 
-- [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi):  
-    - astrophysicist/bioinformatician by training (and a science-lover in general),  
-    - Ph.D. in computational physics/bioinformatics from the University of Texas at Austin,  
-    - currently a faculty member of Physics and Data Science at The University of Texas at Arlington,  
-    - with teaching/research experience/background in computational and data sciences, statistics, data analysis, and modeling, stochastic processes, Monte Carlo Methods, Bayesian probability theory, high energy physics, astronomy and astrophysics, computational physics, Molecular Dynamics simulations, biomedical science and MRI data analysis, bioinformatics and evolutionary biology (viral evolution, protein dynamics, and interactions),  
-    - contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
++   [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi):  
+    +   astrophysicist/bioinformatician by training (and a science-lover in general),  
+    +   Ph.D. in computational physics/bioinformatics from the University of Texas at Austin,  
+    +   currently a faculty member of Physics and Data Science at The University of Texas at Arlington,  
+    +   with teaching/research experience/background in computational and data sciences, statistics, data analysis, and modeling, stochastic processes, Monte Carlo Methods, Bayesian probability theory, high energy physics, astronomy and astrophysics, computational physics, Molecular Dynamics simulations, biomedical science and MRI data analysis, bioinformatics and evolutionary biology (viral evolution, protein dynamics, and interactions),  
+    +   contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
 
-- [Fatemeh Bagheri](https://www.linkedin.com/in/fbagheri):  
-    - physicist / cosmologist by training,  
-    - currently a UTA Physics member,  
-    - deep philosophical thinker,  
-    - contact: [Fatemeh.Bagheri@uta.edu](mailto:"Fatemeh.Bagheri@uta.edu")  
++   [Fatemeh Bagheri](https://www.linkedin.com/in/fbagheri):  
+    +   physicist / cosmologist by training,  
+    +   currently a UTA Physics member,  
+    +   deep philosophical thinker,  
+    +   contact: [Fatemeh.Bagheri@uta.edu](mailto:"Fatemeh.Bagheri@uta.edu")  
 
-- [Joshua Osborne](https://www.cdslab.org/people/#joshua-alexander-osborne):  
-    - physicist / Computational Data Scientist by training,  
-    - currently a UTA Physics member,  
-    - contact: [joshuaalexanderosborne@gmail.com](mailto:"joshuaalexanderosborne@gmail.com")  
++ [Joshua Osborne](https://www.cdslab.org/people/#joshua-alexander-osborne):  
+    +   physicist / Computational Data Scientist by training,  
+    +   currently a UTA Physics member,  
+    +   contact: [joshuaalexanderosborne@gmail.com](mailto:"joshuaalexanderosborne@gmail.com")  
 
 License  
 =======  
@@ -91,26 +93,23 @@ License
 Example usage instructions  
 ==========================  
 
-+ **Install a Python 3 distribution**, preferably, the Anaconda distribution of Python. The Anaconda distribution of Python automatically ships with all of the ParaMonte Python package dependencies when installed on your system.  
++   **Install a Python 3 distribution**, preferably, the Anaconda distribution of Python. The Anaconda distribution of Python automatically ships with all of the ParaMonte Python package dependencies when installed on your system.  
 
-+ **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is available for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
++   **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is available for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
 
-+ **Running the ParaMonte simulations**  
-
-+ Open an Anaconda command-line interface or `jupyter` notebook.  
-
-+ Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this [logfunc.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/Python/logfunc.py) file.  
-
-+ For **serial** simulations, download this example generic serial [main.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply type the name of the Python main script, `python main.py` on the Bash terminal or the Anaconda command line.  
-+ For **parallel** simulations, download this example generic serial [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
-    + on Windows (within the Anaconda command line or a terminal that recognizes both `mpiexec` and `python` software),  
-    ```  
-    mpiexec -localonly -n 3 python main_mpi.py
-    ```  
-    + on macOS or Linux (within a Bash terminal),  
-    ```  
-    mpiexec -n 3 python main_mpi.py
-    ```  
-Here, the parallel simulation is performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise, it will only degrade the performance of your parallel simulations. For example, if you are running the parallel simulation on a personal quad-cores laptop, set the number of processes to either 3 or 4 at most.
-+ Enjoy the unification of simplicity, efficiency, and parallelism in Monte Carlo simulations!
-+ The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte  
++   **Running the ParaMonte simulations**  
+    +   Open an Anaconda command-line interface or `jupyter` notebook.  
+    +   Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this [logfunc.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/Python/logfunc.py) file.  
+    +   For **serial** simulations, download this example generic serial [main.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply type the name of the Python main script, `python main.py` on the Bash terminal or the Anaconda command line.  
+    +   For **parallel** simulations, download this example generic serial [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
+        +   on Windows (within the Anaconda command line or a terminal that recognizes both `mpiexec` and `python` software),  
+            ```  
+            mpiexec -localonly -n 3 python main_mpi.py
+            ```  
+        +   on macOS or Linux (within a Bash terminal),  
+            ```  
+            mpiexec -n 3 python main_mpi.py
+            ```  
+        Here, the parallel simulations are performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise, it will only degrade the performance of your parallel simulations. For example, if you are running the parallel simulation on a personal quad-cores laptop, set the number of processes to either 3 or 4 at most.  
+    +   Enjoy the unification of simplicity, efficiency, and parallelism in Monte Carlo simulations!  
+    +   The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte  

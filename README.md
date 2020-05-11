@@ -50,7 +50,9 @@ Beyond an optional MPI runtime library for parallel simulations, the ParaMonte k
 Parallelism  
 ===========  
 
-The ParaMonte library relies on the Message Passing Interface (MPI) standard for inter-processor communications. To run a parallel simulation, you will have to have a compatible MPI runtime library installed on your system. In most cases, ParaMonte will automatically install the required missing libraries on your system (with your permission). These automatic checks and installations happen when you download and build the library for the first time on your system. If the automatic installation is unsuccessful, you can also install the libraries manually on your system. On Windows and Linux operating systems, we highly recommend downloading and installing the [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), which is available to the public free of charge. On macOS, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
+The ParaMonte library relies on the Message Passing Interface (MPI) standard for inter-processor communications. To run a parallel simulation, you will have to have a compatible MPI runtime library installed on your system. In most cases, ParaMonte will automatically install the required missing libraries on your system (with your permission). These automatic checks and installations happen when you download and build the library for the first time on your system. If the automatic installation is unsuccessful, you can also install the libraries manually on your system.  
++   On Windows and Linux operating systems, we highly recommend downloading and installing the [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), which is available to the public free of charge.  
++   On macOS, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
 
 Citing ParaMonte  
 ================  
@@ -60,28 +62,28 @@ As per the license terms, we kindly ask you to cite the ParaMonte library if you
 Authors and contributors  
 ========================  
 
-+ [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi)  
-    + astrophysicist/bioinformatician by training (and a science-lover in general),  
-    + Ph.D. in computational physics/bioinformatics from the University of Texas at Austin,  
-    + currently a faculty member of Physics and Data Science at The University of Texas at Arlington,  
-    + with teaching/research experience/background in computational and data sciences, statistics, data analysis, and modeling, stochastic processes, Monte Carlo Methods, Bayesian probability theory, high energy physics, astronomy and astrophysics, computational physics, Molecular Dynamics simulations, biomedical science and MRI data analysis, bioinformatics and evolutionary biology (viral evolution, protein dynamics, and interactions),  
-    + contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
++   [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi)  
+    +   astrophysicist/bioinformatician by training (and a science-lover in general),  
+    +   Ph.D. in computational physics/bioinformatics from the University of Texas at Austin,  
+    +   currently a faculty member of Physics and Data Science at The University of Texas at Arlington,  
+    +   with teaching/research experience/background in computational and data sciences, statistics, data analysis, and modeling, stochastic processes, Monte Carlo Methods, Bayesian probability theory, high energy physics, astronomy and astrophysics, computational physics, Molecular Dynamics simulations, biomedical science and MRI data analysis, bioinformatics and evolutionary biology (viral evolution, protein dynamics, and interactions),  
+    +   contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
 
-+ [Fatemeh Bagheri](https://www.linkedin.com/in/fbagheri)  
-    + physicist / cosmologist by training,  
-    + currently a UTA Physics member,  
-    + deep philosophical thinker,  
-    + contact: [Fatemeh.Bagheri@uta.edu](mailto:"Fatemeh.Bagheri@uta.edu")  
++   [Fatemeh Bagheri](https://www.linkedin.com/in/fbagheri)  
+    +   physicist / cosmologist by training,  
+    +   currently a UTA Physics member,  
+    +   deep philosophical thinker,  
+    +   contact: [Fatemeh.Bagheri@uta.edu](mailto:"Fatemeh.Bagheri@uta.edu")  
 
-- [**Shashank Kumbhare**](https://www.cdslab.org/people/#shashank-kumbhare)  
-    - physicist / Computational Data Scientist,  
-    - currently a UTA Physics member,  
-    - contact: [shashankkumbhare8@gmail.com](mailto:"shashankkumbhare8@gmail.com")  
++   [Shashank Kumbhare](https://www.cdslab.org/people/#shashank-kumbhare)  
+    +   physicist / Computational Data Scientist,  
+    +   currently a UTA Physics member,  
+    +   contact: [shashankkumbhare8@gmail.com](mailto:"shashankkumbhare8@gmail.com")  
 
-+ [Joshua Osborne](https://www.cdslab.org/people/#joshua-alexander-osborne)  
-    + physicist / Computational Data Scientist by training,  
-    + currently a UTA Physics member,  
-    + contact: [joshuaalexanderosborne@gmail.com](mailto:"joshuaalexanderosborne@gmail.com")  
++   [Joshua Osborne](https://www.cdslab.org/people/#joshua-alexander-osborne)  
+    +   physicist / Computational Data Scientist by training,  
+    +   currently a UTA Physics member,  
+    +   contact: [joshuaalexanderosborne@gmail.com](mailto:"joshuaalexanderosborne@gmail.com")  
 
 License  
 =======  
@@ -91,10 +93,10 @@ License
 Example usage instructions  
 ==========================  
 
-+ For complete organized up-to-date instructions, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
++   For complete organized up-to-date instructions, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
 
-+ For a quick look into *language-specific* README.md instructions, visit:  
-    + **C/C++**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/C](https://github.com/cdslaborg/paramonte/tree/master/src/interface/C)  
-    + **Fortran**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/Fortran](https://github.com/cdslaborg/paramonte/tree/master/src/interface/Fortran)  
-    + **MATLAB**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/MATLAB](https://github.com/cdslaborg/paramonte/tree/master/src/interface/MATLAB)  
-    + **Python**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/Python](https://github.com/cdslaborg/paramonte/tree/master/src/interface/Python)  
++   For a quick look into *language-specific* README.md instructions, visit:  
+    +   **C/C++**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/C](https://github.com/cdslaborg/paramonte/tree/master/src/interface/C)  
+    +   **Fortran**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/Fortran](https://github.com/cdslaborg/paramonte/tree/master/src/interface/Fortran)  
+    +   **MATLAB**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/MATLAB](https://github.com/cdslaborg/paramonte/tree/master/src/interface/MATLAB)  
+    +   **Python**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/Python](https://github.com/cdslaborg/paramonte/tree/master/src/interface/Python)  
