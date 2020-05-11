@@ -88,7 +88,7 @@ Example usage instructions
 ## Quick start  
 
 + Go to the [release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases),  
-+ Decide on the parallelism paradigm that you want to use: serial / MPI (the Coarray Fortran implementation is not available as a prebuilt dynamic library),  
++ Decide on the parallelism paradigm that you want to use: serial / MPI,  
 + Decide on the Operating System (OS) on which you want to run the ParaMonte simulations: Windows / macOS / Linux,  
 + Learn about the naming convention used for the ParaMonte prebuilt libraries [here](https://www.cdslab.org/paramonte/notes/installation/readme/#naming-convention-used-for-paramonte-library-builds),  
 + Download the prebuilt ParaMonte library of your choice based on the decisions you have made in the above,    
@@ -102,49 +102,48 @@ Example usage instructions
 
 ### Building and running ParaMonte simulations on Windows  
 
-+   **Install the Microsoft Visual Studio (>2017)**: You will need to have a recent Microsoft Visual Studio (MSVS) installed on your system. The community edition of this software is available free of charge. When installing MSVS, make sure to install all the C++ components of the Visual Studio.  
++   **Install the Microsoft Visual Studio (>2017)**: You will need to have a recent Microsoft Visual Studio (MSVS) installed on your system. The community edition of this software is available free of charge. When installing MSVS, make sure to install all the C++ components and compiler of the Visual Studio.  
 
-+   **Install the Intel Parallel Studio**: If you are a student/teacher/faculty/open-source-developer, you can also download and install, free of charge, the most recent **Intel Parallel Studio** on your system which, by default, includes the Intel MPI library.  
++   Optionally **Install the Intel Parallel Studio**: If you are a student/teacher/faculty/open-source-developer, you can also download and install, free of charge, the most recent **Intel Parallel Studio** on your system which, by default, includes the Intel MPI library.  
 
 +   **Open the right command-line interface to build/run the ParaMonte example**: If the ParaMonte library that you intend to use is built for 64-bit architecture, then make sure you open a 64-bit instance of the command-line interface in either of the two cases below:  
     +   If you have installed Intel Parallel Studio, open an instance of the **command-line interface** that comes with Intel Parallel Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
     +   Otherwise, if you do not have Intel Parallel Studio, open an instance of the **command-line interface** that comes with Microsoft Visual Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
 
 +   **Build the ParaMonte example**:  
-    Build the example via the Intel Parallel Studio command-line interface,  
-    ```  
-    build.bat  
-    ```  
+    +   To Build the example via the Intel Parallel Studio command-line interface,  
+        ```  
+        build.bat  
+        ```  
+    +   To build the example via the Microsoft Visual Studio C/C++ compiler,  
+        ```  
+        build.bat msvc  
+        ```  
+        where the passed argument `msvc` implies the use of Microsoft Visual C++ compiler for building the application.  
     The build script will automatically detect whether a parallel simulation has been built. By default, the name of the output executable is `main.exe`.  
 
 +   **Run the ParaMonte example executable**:  
     +   For serial simulations, simply type the name of the output executable,  
-        ```  
+        ```
         main.exe
-        ```  
+        ```
     +   For parallel simulations, invoke the MPI launcher `mpiexec`,  
-        ```  
+        ```
         mpiexec -n NUM_PROCESSES main.exe
-        ```  
+        ```
         where `NUM_PROCESSES` represents the number of processes on which the simulation will run.  
 
 ### Building and running ParaMonte simulations on macOS / Linux  
 
 +   If you intend to run **serial** ParaMonte simulations, install either,  
-    +   **the Intel Fortran compiler (ifort >2018)**, or,  
-    +   **the GNU Fortran compiler (gfortran >7.0.0)**,  
+    +   **the Intel C/C++ compiler (icc/icpc >2018)**, or,  
+    +   **the GNU C/C++ compiler (gcc/g++ >7.0.0)**,  
     on your system. If you follow the full installation instructions of the ParaMonte library, these compiler prerequisites will be automatically installed for you.  
 
 +   If you intend to run **MPI parallel** ParaMonte simulations, install either,  
     +   **the Intel Parallel Studio (>2018)** on Linux, or,  
     +   **the GNU Compiler Collection (>7.0.0) and the MPICH (>3.2) library** on Linux,  
     +   **the GNU Compiler Collection (>7.0.0) and the OpenMPI (>4.0) library** on macOS,  
-    on your system. If you follow the full installation instructions of the ParaMonte library, these compiler prerequisites will be automatically installed for you.  
-    Note that on **macOS**, only the latter option (the GNU compilers) is available since the Intel MPI library does not support the macOS platform.  
-
-+   If you intend to run Coarray parallel ParaMonte simulations, install either,  
-    +   **the Intel Parallel Studio (>2018)**, or,  
-    +   **the GNU Compiler Collection (>7.0.0) and OpenCoarrays (>2.8.0)**, 
     on your system. If you follow the full installation instructions of the ParaMonte library, these compiler prerequisites will be automatically installed for you.  
     Note that on **macOS**, only the latter option (the GNU compilers) is available since the Intel MPI library does not support the macOS platform.  
 
