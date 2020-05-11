@@ -95,7 +95,7 @@ Example usage instructions
 
 + **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is available for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
 
-+ **Running the ParaMonte example**  
++ **Running the ParaMonte simulations**  
 
 + Open an Anaconda command-line interface or `jupyter` notebook.  
 
