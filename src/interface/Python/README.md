@@ -60,9 +60,7 @@ The ParaMonte library relies on the Message Passing Interface (MPI) standard for
 Citing ParaMonte  
 ================  
 
-The paper for this package is already in the publication process. Until then, if you use this package, we kindly ask you to cite:  
-
--  Amir Shahmoradi (2013). A Multivariate Fit Luminosity Function and World Model for Long Gamma-Ray Bursts. The Astrophysical Journal (ApJ) 766:111-133 ([PDF link](https://www.cdslab.org/pubs/Shahmoradi_2013a.pdf)).  
+As per the license terms, we kindly ask you to cite the ParaMonte library if you use the library or any parts of it in your research, education, or software development. Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) for the full citation and reference information.  
 
 Authors and contributors  
 ========================  
@@ -107,11 +105,11 @@ Example usage instructions
 + For **parallel** simulations, download this example generic serial [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
     + on Windows (within the Anaconda command line or a terminal that recognizes both `mpiexec` and `python` software),  
     ```  
-    mpiexec -localonly -n 3 python main_mpi.exe
+    mpiexec -localonly -n 3 python main_mpi.py
     ```  
     + on macOS or Linux (within a Bash terminal),  
     ```  
-    mpiexec -n 3 main_mpi.exe
+    mpiexec -n 3 python main_mpi.py
     ```  
 Here, the parallel simulation is performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise, it will only degrade the performance of your parallel simulations. For example, if you are running the parallel simulation on a personal quad-cores laptop, set the number of processes to either 3 or 4 at most.
 + Enjoy the unification of simplicity, efficiency, and parallelism in Monte Carlo simulations!
