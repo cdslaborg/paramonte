@@ -4,6 +4,7 @@
 [![GitHub](https://img.shields.io/github/license/cdslaborg/paramonte)](https://github.com/cdslaborg/paramonte/blob/master/LICENSE)
 ![GitHub Release Date](https://img.shields.io/github/release-date/cdslaborg/paramonte?color=orange) 
 ![GitHub All Releases](https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen) 
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/paramonte?color=brightgreen)](https://pypi.org/project/paramonte/) 
 ![GitHub repo size](https://img.shields.io/github/repo-size/cdslaborg/paramonte) 
 ![GitHub language count](https://img.shields.io/github/languages/count/cdslaborg/paramonte) 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cdslaborg/paramonte?color=blue) 
