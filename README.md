@@ -57,14 +57,9 @@ The ParaMonte library relies on the Message Passing Interface (MPI) standard for
 Citing ParaMonte  
 ================  
   
-The ParaMonte library is an honor-ware, and,  
-its currency is acknowledgement and citations.  
+The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.  
   
-As per the ParaMonte library license agreement terms,  
-if you use any parts of this library for any purposes,  
-we ask you to acknowledge the ParaMonte library's usage  
-in your work (education/research/industry/development/...)  
-by citing the ParaMonte library's main publications as listed here:  
+As per the ParaMonte library license agreement terms, if you use any parts of this library for any purposes, we ask you to acknowledge the ParaMonte library's usage in your work (education/research/industry/development/...) by citing the ParaMonte library's main publications as listed here:  
   
     @article{shahmoradi2013multivariate,  
       title={A multivariate fit luminosity function and world model for long gamma-ray bursts},  
