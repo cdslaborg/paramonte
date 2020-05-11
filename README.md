@@ -1,6 +1,6 @@
 [![ParaMonte: Plain Powerful Parallel Monte Carlo Library](https://www.cdslab.org/paramonte/images/paramonte.png)](https://www.cdslab.org/paramonte)  
   
-<a href="https://github.com/cdslaborg/paramonte/blob/master/LICENSE" target="_blank"><img alt="GitHub" src="https://img.shields.io/github/license/cdslaborg/paramonte?color=orange&style=flat-square"></a>
+[![GitHub](https://img.shields.io/github/license/cdslaborg/paramonte?color=orange&style=flat-square)](https://github.com/cdslaborg/paramonte/blob/master/LICENSE) 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/cdslaborg/paramonte?color=orange&label=kernel%20release&style=flat-square)](https://github.com/cdslaborg/paramonte/releases) 
 ![GitHub Release Date](https://img.shields.io/github/release-date/cdslaborg/paramonte?color=orange&style=flat-square) 
 [![PyPI](https://img.shields.io/pypi/v/paramonte?color=orange&label=pypi%20release&style=flat-square)](https://pypi.org/project/paramonte/) 
@@ -13,8 +13,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/cdslaborg/paramonte?style=flat-square) 
 [![GitHub commit activity](https://img.shields.io/badge/reference-%20%09arXiv%3A1209.4647-blueviolet?style=flat-square)](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work)  
 
-[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte)
-
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte)](https://twitter.com/intent/tweet?text=ParaMonte:%20Plain%20Powerfull%20Parallel%20Monte%20Carlo%20Library:&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte)
   
 ParaMonte: Plain Powerful Parallel Monte Carlo Library
 ======================================================
