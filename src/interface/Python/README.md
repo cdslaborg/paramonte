@@ -93,13 +93,13 @@ License
 Example usage instructions  
 ==========================  
 
-+ **Install a Python 3 distribution**, preferrably, the Anaconda distribution of Python. The Anaconda distribution of Python automatically ships with all of the ParaMonte Python package dependencies when installed on your system.  
++ **Install a Python 3 distribution**, preferably, the Anaconda distribution of Python. The Anaconda distribution of Python automatically ships with all of the ParaMonte Python package dependencies when installed on your system.  
 
-+ **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is avaialable for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
++ **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is available for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
 
 + **Running the ParaMonte example**  
 
-+ Open an Anaconda command-line interface, or `jupyter` notebook.  
++ Open an Anaconda command-line interface or `jupyter` notebook.  
 
 + Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this [logfunc.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/Python/logfunc.py) file.  
 
@@ -113,6 +113,6 @@ Example usage instructions
     ```  
     mpiexec -n 3 main_mpi.exe
     ```  
-Here, the parallel simulation is performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise it will only degrade the performance of your parallel simulations.  
+Here, the parallel simulation is performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise, it will only degrade the performance of your parallel simulations. For example, if you are running the parallel simulation on a personal quad-cores laptop, set the number of processes to either 3 or 4 at most.
 + Enjoy the unification of simplicity, efficiency, and parallelism in Monte Carlo simulations!
 + The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte  
