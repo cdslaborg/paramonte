@@ -10,7 +10,7 @@
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/paramonte?color=brightgreen&label=pypi%20downloads&style=flat-square)](https://pypi.org/project/paramonte/) 
 ![GitHub repo size](https://img.shields.io/github/repo-size/cdslaborg/paramonte?style=flat-square) 
 ![GitHub language count](https://img.shields.io/github/languages/count/cdslaborg/paramonte?style=flat-square) 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cdslaborg/paramonte?style=flat-square) 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/cdslaborg/paramonte?style=flat-square) 
   
 ParaMonte: Plain Powerful Parallel Monte Carlo Library
 ======================================================
