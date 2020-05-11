@@ -1,7 +1,7 @@
 [![ParaMonte: Plain Powerful Parallel Monte Carlo Library](https://www.cdslab.org/paramonte/images/paramonte.png)](https://www.cdslab.org/paramonte)  
   
 [![GitHub](https://img.shields.io/github/license/cdslaborg/paramonte?color=orange)](https://github.com/cdslaborg/paramonte/blob/master/LICENSE) 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/cdslaborg/paramonte?color=orange)](https://github.com/cdslaborg/paramonte/releases) 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/cdslaborg/paramonte?color=orange&label=kernel%20release)](https://github.com/cdslaborg/paramonte/releases) 
 ![GitHub Release Date](https://img.shields.io/github/release-date/cdslaborg/paramonte?color=orange) 
 [![PyPI](https://img.shields.io/pypi/v/paramonte?color=orange&label=pypi%20release)](https://pypi.org/project/paramonte/) 
 ![GitHub All Releases](https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen&label=kernel%20downloads) 
