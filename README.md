@@ -1,6 +1,6 @@
 [![ParaMonte: Plain Powerful Parallel Monte Carlo Library](https://www.cdslab.org/paramonte/images/paramonte.png)](https://www.cdslab.org/paramonte)  
   
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/cdslaborg/paramonte) 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/cdslaborg/paramonte)  
 ![GitHub repo size](https://img.shields.io/github/repo-size/cdslaborg/paramonte) 
 ![GitHub Release Date](https://img.shields.io/github/release-date/cdslaborg/paramonte)
 
