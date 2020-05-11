@@ -29,7 +29,7 @@ ParaMonte design goals
 ParaMonte has been developed while bearing the following design goals in mind:  
 
 -  **Full automation** of all Monte Carlo simulations to the highest levels possible to ensure the highest level of user-friendliness of the library and minimal time investment requirements for building, running, and post-processing of simulation models.  
--  **Interoperability** of the core library with as many programming languages as currently possible, including C/C++, Fortran, Python, with ongoing efforts to support other popular programming languages.  
+-  **Interoperability** of the core library with as many programming languages as currently possible, including C/C++, Fortran, MATLAB, Python, with ongoing efforts to support other popular programming languages.  
 -  **High-Performance** meticulously-low-level implementation of the library to ensure the fastest-possible Monte Carlo simulations.  
 -  **Parallelizability** of all simulations via two-sided and one-sided MPI/Coarray communications while requiring zero-parallel-coding efforts by the user.  
 -  **Zero-dependence** on external libraries to ensure hassle-free ParaMonte library builds and ParaMonte simulation runs.  
