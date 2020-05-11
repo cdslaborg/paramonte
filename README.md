@@ -5,7 +5,7 @@
 ![GitHub All Releases](https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen) 
 ![GitHub repo size](https://img.shields.io/github/repo-size/cdslaborg/paramonte) 
 ![GitHub language count](https://img.shields.io/github/languages/count/cdslaborg/paramonte) 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cdslaborg/paramonte) 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cdslaborg/paramonte?color=blue) 
 
 ParaMonte: Plain Powerful Parallel Monte Carlo Library
 ======================================================
