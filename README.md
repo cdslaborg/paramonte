@@ -3,17 +3,15 @@
 [![GitHub](https://img.shields.io/github/license/cdslaborg/paramonte?color=orange&style=flat-square)](https://github.com/cdslaborg/paramonte/blob/master/LICENSE) 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/cdslaborg/paramonte?color=orange&label=kernel%20release&style=flat-square)](https://github.com/cdslaborg/paramonte/releases) 
 ![GitHub Release Date](https://img.shields.io/github/release-date/cdslaborg/paramonte?color=orange&style=flat-square) 
-[![PyPI](https://img.shields.io/pypi/v/paramonte?color=orange&label=pypi%20release&style=flat-square)](https://pypi.org/project/paramonte/)  
-
+[![PyPI](https://img.shields.io/pypi/v/paramonte?color=orange&label=pypi%20release&style=flat-square)](https://pypi.org/project/paramonte/) 
+![PyPI - Status](https://img.shields.io/pypi/status/paramonte?style=flat-square) 
+![supported languages](https://img.shields.io/badge/interface-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-blue) 
 ![GitHub All Releases](https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen&label=kernel%20downloads&style=flat-square) 
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/paramonte?color=brightgreen&label=pypi%20downloads&style=flat-square)](https://pypi.org/project/paramonte/) 
-![PyPI - Status](https://img.shields.io/pypi/status/paramonte?style=flat-square) 
 ![GitHub repo size](https://img.shields.io/github/repo-size/cdslaborg/paramonte?style=flat-square) 
 ![GitHub language count](https://img.shields.io/github/languages/count/cdslaborg/paramonte?style=flat-square) 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cdslaborg/paramonte?style=flat-square)  
-
-![supported languages](https://img.shields.io/badge/interface-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-blue) 
-
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cdslaborg/paramonte?style=flat-square) 
+  
 ParaMonte: Plain Powerful Parallel Monte Carlo Library
 ======================================================
 
