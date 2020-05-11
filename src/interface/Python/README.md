@@ -1,5 +1,20 @@
 [![ParaMonte - Plain Powerful Parallel Monte Carlo Library](https://raw.githubusercontent.com/shahmoradi/paramonte/gh-pages/images/paramonte.png)](https://www.cdslab.org/paramonte/)  
   
+[![GitHub](https://img.shields.io/github/license/cdslaborg/paramonte?color=orange&style=flat-square)](https://github.com/cdslaborg/paramonte/blob/master/LICENSE) 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/cdslaborg/paramonte?color=orange&label=kernel%20release&style=flat-square)](https://github.com/cdslaborg/paramonte/releases) 
+![GitHub Release Date](https://img.shields.io/github/release-date/cdslaborg/paramonte?color=orange&style=flat-square) 
+[![PyPI - release version](https://img.shields.io/pypi/v/paramonte?color=orange&label=pypi%20release&style=flat-square)](https://pypi.org/project/paramonte/) 
+![PyPI - Status](https://img.shields.io/pypi/status/paramonte?style=flat-square) 
+[![supported languages](https://img.shields.io/badge/interface-C%20%2F%20C%2B%2B%20%2F%20Fortran%20%2F%20MATLAB%20%2F%20Python-brightgreen?style=flat-square)](https://github.com/cdslaborg/paramonte/tree/master/src/interface) 
+![GitHub All Releases](https://img.shields.io/github/downloads/cdslaborg/paramonte/total?color=brightgreen&label=kernel%20downloads&style=flat-square) 
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/paramonte?color=brightgreen&label=pypi%20downloads&style=flat-square)](https://pypi.org/project/paramonte/) 
+![GitHub repo size](https://img.shields.io/github/repo-size/cdslaborg/paramonte?style=flat-square) 
+![GitHub language count](https://img.shields.io/github/languages/count/cdslaborg/paramonte?style=flat-square) 
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/y/cdslaborg/paramonte?style=flat-square)](https://github.com/cdslaborg/paramonte/graphs/contributors) 
+[![citations and references](https://img.shields.io/badge/reference-%20%09arXiv%3A1209.4647-blueviolet?style=flat-square)](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work)  
+
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte)](https://twitter.com/intent/tweet?text=ParaMonte%20-%20Plain%20Powerfull%20Parallel%20Monte%20Carlo%20Library:&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte)
+  
 <br>
   
 ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical objective functions of arbitrary-dimensions, in particular, the posterior distributions of Bayesian models in data science, Machine Learning, and scientific inference, with the design goal of unifying the **automation** (of Monte Carlo simulations), **user-friendliness** (of the library), **accessibility** (from multiple programming environments), **high-performance** (at runtime), and **scalability** (across many parallel processors).  
@@ -72,5 +87,32 @@ Authors and contributors
 
 License  
 =======  
+  
+[GNU Lesser General Public License](https://github.com/cdslaborg/paramonte/blob/master/LICENSE)  
+  
+Example usage instructions  
+==========================  
 
-[GNU Lesser General Public License](https://github.com/cdslaborg/paramonte/blob/master/LICENSE.txt)
++ **Install a Python 3 distribution**, preferrably, the Anaconda distribution of Python. The Anaconda distribution of Python automatically ships with all of the ParaMonte Python package dependencies when installed on your system.  
+
++ **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is avaialable for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
+
++ **Running the ParaMonte example**  
+
++ Open an Anaconda command-line interface, or `jupyter` notebook.  
+
++ Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this [logfunc.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/Python/logfunc.py) file.  
+
++ For **serial** simulations, download this example generic serial [main.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply type the name of the Python main script, `python main.py` on the Bash terminal or the Anaconda command line.  
++ For **parallel** simulations, download this example generic serial [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
+    + on Windows (within the Anaconda command line or a terminal that recognizes both `mpiexec` and `python` software),  
+    ```  
+    mpiexec -localonly -n 3 python main_mpi.exe
+    ```  
+    + on macOS or Linux (within a Bash terminal),  
+    ```  
+    mpiexec -n 3 main_mpi.exe
+    ```  
+Here, the parallel simulation is performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise it will only degrade the performance of your parallel simulations.  
++ Enjoy the unification of simplicity, efficiency, and parallelism in Monte Carlo simulations!
++ The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte  
