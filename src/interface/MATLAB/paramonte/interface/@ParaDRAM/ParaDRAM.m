@@ -1,245 +1,190 @@
-classdef ParaDRAM < ParaMonteSampler
-%   This is the ParaDRAM class for generating instances of serial and parallel
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   ParaMonte: plain powerful parallel Monte Carlo library.
+%
+%   Copyright (C) 2012-present, The Computational Data Science Lab
+%
+%   This file is part of the ParaMonte library.
+%
+%   ParaMonte is free software: you can redistribute it and/or modify it 
+%   under the terms of the GNU Lesser General Public License as published 
+%   by the Free Software Foundation, version 3 of the License.
+%
+%   ParaMonte is distributed in the hope that it will be useful,
+%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%   GNU Lesser General Public License for more details.
+%
+%   You should have received a copy of the GNU Lesser General Public License
+%   along with the ParaMonte library. If not, see, 
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/LICENSE
+%
+%   ACKNOWLEDGMENT
+%
+%   As per the ParaMonte library license agreement terms, 
+%   if you use any parts of this library for any purposes, 
+%   we ask you to acknowledge the ParaMonte library's usage
+%   in your work (education/research/industry/development/...)
+%   by citing the ParaMonte library as described on this page:
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   ParaDRAM - This is the ParaDRAM class for generating instances of serial and parallel
 %   Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
 %   sampler of the ParaMonte library.
-%
-%   All ParaDRAM class attributes (input arguments to the ParaDRAM constructor)
-%   are optional and all attributes can be also set after a ParaDRAM instance
-%   is returned by the constructor.
-%
+%   
 %   Once you set the desired attributes to the desired values,
 %   call the ParaDRAM sampler via the object's method runSampler().
+%
+%   Parameters
+%   ----------
+%
+%       None. The ParaDRAM constructor does not take any input arguments.
+%       All class attributes can be set after an instance
+%       is returned by the constructor.
 %
 %   Attributes
 %   ----------
 %
-%       buildMode
-%           optional string argument with default value "release".
-%           possible choices are:
-%               "debug"
-%                   to be used for identifying sources of bug
-%                   and causes of code crash.
-%               "release"
-%                   to be used in all other normal scenarios
-%                   for maximum runtime efficiency.
-%       mpiEnabled
-%           optional logical (boolean) indicator which is False by default.
-%           If it is set to True, it will cause the ParaDRAM simulation
-%           to run in parallel on the requested number of processors.
-%           See ParaDRAM class information on how
-%           to run a simulation in parallel.
-%       inputFilePath
-%           optional string input representing the path to
-%           an external input namelist of simulation specifications.
-%           USE THIS OPTIONAL ARGUMENT WITH CAUTION AND
-%           ONLY IF YOU KNOW WHAT YOU ARE DOING.
+%       See below for information on the attributes (properties).  
 %
-%           ====================================================
-%           Specifying this option will cause ParaDRAM to ignore
-%           all other paraDRAM simulation specifications set by
-%           the user via ParaDRAM instance attributes.
-%           ====================================================
+%   Methods
+%   -------
+%
+%       See below for information on the methods.  
 %   
 %   Returns
 %   -------
+%
 %       Object of class ParaDRAM
 %
 %   Minimal serial example
 %   ----------------------
 %
-%   Here is a MATLAB script main.m for a serial ParaDRAM simulation.
-%   Copy and paste this code into your MATLAB command line to run it:
+%       Here is a MATLAB script main.m for a serial ParaDRAM simulation.
+%       Copy and paste this code into your MATLAB command line to run it:
 %
-%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%       % set the following  path to the ParaMonte library root directory
-%       pmlibRootDir = '../'; 
-%       addpath( genpath(pmlibRootDir) );
-%       % The following lambda function returns the natural logarithm of the
-%       % ndim-dimensional non-normalized Standard Gaussian density function
-%       getLogFunc = @(point) -0.5 * sum(point.^2);
-%       pmpd = ParaDRAM();
-%       pmpd.runSampler ( 4 ... number of dimensions of the objective function
-%                       , getLogFunc ... the mathematical objective function
-%                       );
-%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       Copy and paste the following code enclosed between the
+%       two comment lines in your MATLAB session:
 %
-%   where,
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
+%           addpath(genpath(pmlibRootDir));
+%           pm = paramonte();
+%           pmpd = pm.ParaDRAM();
+%           pmpd.runSampler ( 4                 ... number of dimensions of the objective function
+%                           , @(x) -sum(x.^2)   ... the natural log of the objective function
+%                           );
+%           pmpd.readChain();
+%           pmpd.chainList{1}.plot.grid.plot();
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%       ndim
-%           represents the number of dimensions of the domain
-%           of the user's objective function getLogFunc() and,
+%       The mathematical objective function in the above example is a
+%       is a multivariate Normal distribution centered at the origin,
+%       whose natural logarithm is returned by the lambda (Anonymous)
+%       function defined as a function handle input to the ParaDRAM
+%       sampler.
 %
-%       getLogFunc()
-%           represents the user's objective function to be sampled,
-%           which must take a single input argument of type numpy
-%           float64 array of length ndim and must return the
-%           natural logarithm of the objective function.
+%       Running this code will generate a set of simulation output files (in the current
+%       working directory of MATLAB). Among these, the file suffixed with "_report.txt" 
+%       contains the full description of all input specifications of the ParaDRAM 
+%       simulation as well as other information about the simulation results.
 %
 %   Parallel simulations
 %   --------------------
 %
-%   To run ParaDRAM sampler in parallel mode visit: cdslab.org/pm
-%   You can also use the following commands on the Python command-line,
-%
-%       import paramonte as pm
-%       pm.verify()
-%
-%   to obtain specific information on how to run a parallel simulation,
-%   in particular, in relation to your current installation of ParaMonte.
-%   In general, for parallel simulations:
-%
 %   0.  ensure you need and will get a speedup by running the ParaDRAM sampler in parallel.
 %       Typically, if a single evaluation of the objective function takes much longer than
-%       a few milliseconds, your simulation may then benefit from the parallel run.
+%       a few milliseconds, your simulation may then benefit from the parallel simulation.
 %
-%   1.  ensure you have an MPI library installed, preferably, Intel MPI.
-%       An MPI library should be automatically installed on your system with ParaMonte.
-%       If needed, you can download the Intel MPI library from their website and install it.
+%   1.  First, ensure the required MPI libraries are installed on your System:
+%       (You can skip this step if you know that you already have 
+%       a compatible MPI library installed on your system). 
+%       On the MATLAB command line type the following, 
 %
-%   2.  set the input keyword argument mpiEnabled in runSampler() to True (the default is False),
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
+%           addpath(genpath(pmlibRootDir));
+%           pm = paramonte();
+%           pm.verify();
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   3.  before running the parallel simulation, in particular, on Windows systems, you may
-%       need to define the necessary MPI environmental variables on your system.
-%       To get information on how to define the variables, use paramonte function
-%       verify() as described in the above.
+%       This will verify the existence of a valid MPI library on your system and,
+%       if missing, will install the MPI library on your system (with your permission).
 %
-%   4.  call your main Python code from a Python-aware mpiexec-aware command-line via,
+%   2.  Once the MPI installation is verified, 
+%       copy and paste the following code enclosed 
+%       between the two comment lines in your MATLAB session:
 %
-%           mpi_launcher -n num_process python name_of_yor_python_code.py
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%           fid = fopen("main_mpi.m", "w")
+%           sourceCode = ...
+%           "pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory" + newline + ...
+%           "addpath(genpath(pmlibRootDir));" + newline + ...
+%           "pm = paramonte();" + newline + ...
+%           "pmpd = pm.ParaDRAM();" + newline + ...
+%           "pmpd.mpiEnabled = true;" + newline + ...
+%           "pmpd.runSampler ( 4                 ... number of dimensions of the objective function" + newline + ...
+%           "                , @(x) -sum(x.^2)   ... the natural log of the objective function" + newline + ...
+%           "                );"
+%           fprintf( fid, "%s\n", sourceCode );
+%           fclose(fid);
+%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%       where,
+%   3.  This will generate a main_mpi.m MATLAB script file in the current
+%       working directory of your MATLAB session. Now, you can execute
+%       this MATLAB script file (main_mpi.m) in parallel. To do so, 
+%       you need to call MATLAB on a command-line, out of MATLAB.
 %
-%       1.  mpi_launcher is the name of the MPI launcher
-%           from the MPI library that you have installed.
-%           For example, the Intel MPI library launcher is named mpiexec,
-%           also recognized by Microsoft and OpenMPI.
+%           a.  On Windows: 
 %
-%       2.  num_process: replace this with the number of
-%           cores on which you want to run the program.
-%           Do not assign more processes than the number of
-%           available physical cores on your device/cluster.
-%           Assigning more cores than physically available on
-%           your system will only slow down your simulation.
+%               from within command prompt that recognizes both MATLAB and mpiexec, 
+%               (ideally, the Intel Parallel Studio's command-prompt)
+%               type the following,
 %
-%   Minimal parallel example
-%   ------------------------
+%                   mpiexec -localonly -n 3 matlab -batch "main_mpi"
 %
-%   Here is a Python script main.py for a parallel ParaDRAM simulation:
-%
-%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%      from paramonte import ParaDRAM
-%      pmpd = ParaDRAM()
-%      def getLogFunc(Point):
-%          # return the natural logarithm of the ndim-dimensional
-%          # non-normalized Standard Gaussian density function
-%          return -sum(Point**2)
-%      pmpd.runSampler ( ndim = 1
-%                      , getLogFunc = getLogFunc
-%                      , mpiEnabled = True
-%                      )
-%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   where,
-%
-%       ndim
-%           represents the number of dimensions of the domain
-%           of the user's objective function getLogFunc() and,
-%
-%       getLogFunc()
-%           represents the user's objective function that is to be sampled.
-%           This function must take a single input argument of type numpy
-%           float64 array of length ndim and must return the natural
-%           logarithm of the objective function.
+%               NOTE: In the above MPI launcher commands for Windows OS, 
+%               NOTE: we assumed that you would be using the Intel MPI library, hence, 
+%               NOTE: the reason for the extra flag -localonly. This flag runs the parallel 
+%               NOTE: code only on one node, but in doing so, it avoids the use of Hydra service 
+%               NOTE: and its registration. If you are not on a Windows cluster, (e.g., you are 
+%               NOTE: using your personal device), then we recommend specifying this flag.
 %
 %
-%       mpiEnabled
-%           is a logical (boolean) indicator that, if True, will
-%           cause the ParaDRAM simulation to run in parallel
-%           on the requested number of processors.
+%           b.  On macOS/Linux: 
 %
-%   Once the script is saved in the file main.py, open a Python-aware and
-%   MPI-aware command prompt to run the simulation by the MPI launcher,
+%               from within a Bash terminal that recognizes both MATLAB and mpiexec, 
+%               type the following,
 %
-%       mpiexec -n 3 python main.py
+%                       mpiexec -n 3 matlab -batch "main_mpi"
 %
-%   This will execute the Python script main.py on three processes (images).
-%   Keep in mind that on Windows systems you may need to define MPI environmental
-%   variables before a parallel simulation, as descibed in the above.
+%       NOTE: In both cases in the above, the script 'main_mpi.m' will run on 3 processors.
+%       NOTE: Feel free to change the number of processors to any number desired. But do not 
+%       NOTE: request more than the available number of physical cores on your system.
 %
-%   ParaDRAM Class Attributes
-%   -------------------------
+%       WARNING: Do not add postprocessing codes (such as reading and plotting the output samples)
+%       WARNING: in your parallel code. There is no point in doing so, since MATLAB will run in `-batch`
+%       WARNING: mode for parallel simulations, disabling all plotting capabilities. Moreover, if you read
+%       WARNING: and postprocess the output files in parallel mode, the task will be done by all of the parallel
+%       WARNING: processes, potentially overwriting each others external activities.
+%       WARNING: Only perform the sampling (by calling the sampler routine) in parallel mode.
 %
-%   (see also: cdslab.org/pm)
+%   ParaDRAM Simulation Attributes
+%   ------------------------------
 %
-%   All input specifications (attributes) of a ParaDRAM simulation are optional.
-%   However, it is recomended that you provide as much information as possible
-%   about the specific ParaDRAM simulation and the objective function to be sampled
-%   via ParaDRAM simulation specifications.
+%       The ParaDRAM simulation specifications have lengthy comprehensive descriptions
+%       that appear in full in the output report files of every ParaDRAM simulation.
 %
-%   The ParaDRAM simulation specifications have lengthy comprehensive descriptions
-%   that appear in full in the output report file of every ParaDRAM simulation.
+%       The best way to learn about individual ParaDRAM simulation attributes
+%       is to a run a minimal serial simulation as given in the above.
 %
-%   The best way to learn about individual ParaDRAM simulation attributes
-%   is to a run a minimal serial simulation with the following Python script,
+%       See also: https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
 %
-%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%       from paramonte import ParaDRAM
-%       pmpd = ParaDRAM()
-%       pmpd.outputFileName = "./test"
-%       def getLogFunc(Point): return -sum(Point**2)
-%       pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
-%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Running this code will generate a set of simulation output files (in the current
-%   working directory of Python) that begin with the prefix "test_process_1". Among
-%   these, the file "test_process_1_report.txt" contains the full description of all
-%   input specifications of the ParaDRAM simulation as well as other information
-%   about the simulation results and statistics.
-%
-%   Naming conventions
-%   ------------------
-%
-%   camelCase naming style is used throughout the entire ParaMonte library, across
-%   all programming languages: C/Fortran/Julia/MATLAB/Python
-%
-%   all simulation specifications start with a lowercase letter, including
-%   scalar/vector/matrix int, float, string, or boolean variables.
-%
-%   The name of any variable that represents a vector of values is suffixed with "Vec",
-%   for example: startPointVec, domainLowerLimitVec, ...
-%
-%   The name of any variable that represents a matrix of values is suffixed with "Mat",
-%   for example: proposalStartCorMat, ...
-%
-%   The name of any variable that represents a list of varying-size values is suffixed
-%   with "List", for example: variableNameList, ...
-%
-%   all functions or class methods begin with a lowercase verb.
-%
-%   significant attempt has been made to end all boolean variables with a passive verb,
-%   such that the full variable name virtually forms an English-language statement
-%   that should be either True or False, set by the user.
-%
-%   Tips
-%   ----
-%
-%   when running ParaMonte samplers, in particular on multiple cores in parallel,
-%   it would be best to close any such aggressive software/applications as
-%   Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte
-%   simulation output files, potentially causing the sampler to
-%   crash before successful completion of the simulation.
-%   These situations should however happen only scarcely.
-%
-%   on Windows systems, when restarting an old interrupted ParaDRAM simulation,
-%   ensure your Python session is also restarted before the simulation
-%   restart. This is needed as Windows sometimes locks the access to
-%   all or some of the simulation output files.
-%
-%   To unset an already-set input simulation specification, simply set the
-%   simulation attribute to None or re-instantiate the object.
-%
-%***********************************************************************************************************************************
-%***********************************************************************************************************************************
+classdef ParaDRAM < ParaMonteSampler
 
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************

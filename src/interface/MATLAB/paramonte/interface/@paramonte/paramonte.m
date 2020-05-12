@@ -1,28 +1,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   ParaMonte: plain powerful parallel Monte Carlo library.
+%
+%   Copyright (C) 2012-present, The Computational Data Science Lab
+%
+%   This file is part of the ParaMonte library.
+%
+%   ParaMonte is free software: you can redistribute it and/or modify it 
+%   under the terms of the GNU Lesser General Public License as published 
+%   by the Free Software Foundation, version 3 of the License.
+%
+%   ParaMonte is distributed in the hope that it will be useful,
+%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%   GNU Lesser General Public License for more details.
+%
+%   You should have received a copy of the GNU Lesser General Public License
+%   along with the ParaMonte library. If not, see, 
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/LICENSE
+%
+%   ACKNOWLEDGMENT
+%
+%   As per the ParaMonte library license agreement terms, 
+%   if you use any parts of this library for any purposes, 
+%   we ask you to acknowledge the ParaMonte library's usage
+%   in your work (education/research/industry/development/...)
+%   by citing the ParaMonte library as described on this page:
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%  ParaMonte: plain powerful parallel Monte Carlo library.
-%
-%  Copyright (C) 2012-present, The Computational Data Science Lab
-%
-%  This file is part of ParaMonte library.
-%
-%  ParaMonte is free software: you can redistribute it and/or modify
-%  it under the terms of the GNU Lesser General Public License as published by
-%  the Free Software Foundation, version 3 of the License.
-%
-%  ParaMonte is distributed in the hope that it will be useful,
-%  but WITHOUT ANY WARRANTY; without even the implied warranty of
-%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%  GNU Lesser General Public License for more details.
-%
-%  You should have received a copy of the GNU Lesser General Public License
-%  along with ParaMonte.  If not, see <https://www.gnu.org/licenses/>.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   paramonte - This is the MATLAB interface to the ParaMonte: Plain Powerful Parallel Monte Carlo library.
+%   paramonte - This is the MATLAB interface to ParaMonte: Plain Powerful Parallel Monte Carlo library.
 %
 %   What is ParaMonte?
 %   ==================
@@ -38,122 +48,141 @@
 %       **high-performance** (at runtime), and
 %       **scalability** (across many parallel processors).
 %
-%   For more information on the installation, usage, and examples, visit:
+%   For more information on the installation, usage, and examples, visit:  
 %
 %       https://www.cdslab.org/paramonte
 %
-%   The routines currently supported by the MATLAB interface of ParaMonte include:
+%   To get quick help on the paramonte class, navigate to 
+%   the ParaMonte root directory and, type the following commands 
+%   enclosed between the two comment lines in your MATLAB session,
 %
-%       ParaDRAM
-%       ========
+%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
+%       addpath(genpath(pmlibRootDir));
+%       pm = paramonte();
+%       doc pm
+%       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%           Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
+%   Parameters
+%   ----------
 %
-%           EXAMPLE SERIAL USAGE
-%           ====================
+%       kernelType (optional)
+%           An optional string with only one possible value "matlab".
+%           If specified, the MATLAB implementation of the ParaMonte 
+%           kernel routines will be used. Currently, only the ParaDRAM
+%           routine has an equivalent implementation in pure MATLAB.
+%           Keep in mind that the kernel routines implemented in MATLAB
+%           are typically 10 times slower than the equivalent routines
+%           implemented in Fortran.
+%           If not provided, the default Fortran kernel routines will be used.
 %
-%           Copy and paste the following code enclosed between the
-%           two comment lines in your MATLAB session:
+%   Attributes
+%   ----------
 %
-%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%               pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
-%               addpath(genpath(pmlibRootDir));
-%               pm = paramonte();
-%               pmpd = pm.ParaDRAM();
-%               pmpd.runSampler ( 4                 ... number of dimensions of the objective function
-%                               , @(x) -sum(x.^2)   ... the natural log of the objective function
-%                               );
-%               pmpd.readChain();
-%               pmpd.chainList{1}.plot.grid.plot();
-%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%       See below for information on the attributes (properties).  
 %
-%           The mathematical objective function in the above example is a
-%           is a multivariate Normal distribution centered at the origin,
-%           whose natural logarithm is returned by the lambda (Anonymous)
-%           function defined as a function handle input to the ParaDRAM
-%           sampler.
+%   Methods
+%   -------
 %
-%           EXAMPLE PARALLEL USAGE
-%           ======================
+%       See below for information on the attributes (properties).  
 %
-%           First, make sure you have the required MPI libraries on your System:
-%           (You can skip this step if you know that you already have 
-%           a compatible MPI library installed on your system). 
-%           On the MATLAB command line type the following, 
+%   Naming conventions
+%   ------------------
 %
-%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%               pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
-%               addpath(genpath(pmlibRootDir));
-%               pm = paramonte();
-%               pm.verify();
-%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   camelCase naming style is used throughout the entire ParaMonte library, across
+%   all programming languages: C/Fortran/Julia/MATLAB/Python
 %
-%           This will verify the existence of a valid MPI library on your system and,
-%           if missing, will install the MPI library on your system (with your permission).
+%   all simulation specifications start with a lowercase letter, including
+%   scalar/vector/matrix int, float, string, or boolean variables.
 %
-%           Once the MPI installation is verified, 
-%           copy and paste the following code enclosed 
-%           between the two comment lines in your MATLAB session:
-%           (You may want to restart your MATLAB session to ensure the MPI 
-%           environmental variables have been loaded in your MATLAB session)
+%   The name of any variable that represents a vector of values is suffixed with "Vec",
+%   for example: startPointVec, domainLowerLimitVec, ...
 %
-%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%               fid = fopen("main_mpi.m", "w")
-%               sourceCode = ...
-%               "pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory" + newline + ...
-%               "addpath(genpath(pmlibRootDir));" + newline + ...
-%               "pm = paramonte();" + newline + ...
-%               "pmpd = pm.ParaDRAM();" + newline + ...
-%               "pmpd.mpiEnabled = true;" + newline + ...
-%               "pmpd.runSampler ( 4                 ... number of dimensions of the objective function" + newline + ...
-%               "                , @(x) -sum(x.^2)   ... the natural log of the objective function" + newline + ...
-%               "                );"
-%               fprintf( fid, "%s\n", sourceCode );
-%               fclose(fid);
-%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   The name of any variable that represents a matrix of values is suffixed with "Mat",
+%   for example: proposalStartCorMat, ...
 %
-%           This will generate a main_mpi.m MATLAB script file in the current
-%           working directory of your MATLAB session. Now, you can execute
-%           this MATLAB script file (main_mpi.m) in parallel in two ways:
+%   The name of any variable that represents a list of varying-size values is suffixed
+%   with "List", for example: variableNameList, ...
 %
-%               1.  from inside MATLAB, on Windows:
+%   all functions or class methods begin with a lowercase verb.
 %
-%                   a.  On Windows: type the following,
+%   significant attempt has been made to end all boolean variables with a passive verb,
+%   such that the full variable name virtually forms an English-language statement
+%   that should be either True or False, set by the user.
 %
-%                       !mpiexec -localonly -n 3 matlab -batch main_mpi.m
+%   Tips
+%   ----
 %
-%                   b.  On macOS/Linux: type the following,
+%   When running ParaMonte samplers, in particular on multiple cores in parallel,
+%   it would be best to close any such aggressive software/applications as
+%   Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte
+%   simulation output files, potentially causing the sampler to
+%   crash before successful completion of the simulation.
+%   These situations should however happen only scarcely.
 %
-%                       !mpiexec -n 3 matlab -batch main_mpi.m
+%   On Windows systems, when restarting an old interrupted ParaDRAM simulation,
+%   ensure your MATLAB session is also restarted before the simulation restart. 
+%   This may be needed as Windows sometimes locks access to some or all of the
+%   simulation output files.
 %
-%               2.  outside of MATLAB environment,
-%
-%                   a.  On Windows: from within a MATLAB-enabled command prompt, type the following,
-%
-%                       mpiexec -localonly -n 3 matlab -batch main_mpi.m
-%
-%                   b.  On macOS/Linux: from within a Bash terminal, type the following, 
-%
-%                       mpiexec -n 3 matlab -batch main_mpi.m
-%
-%               NOTE: In the above MPI launcher commands for Windows OS, 
-%               NOTE: we assumed that you would be using the Intel MPI library, hence, 
-%               NOTE: the reason for the extra flag -localonly. This flag runs the parallel 
-%               NOTE: code only on one node, but in doing so, it avoids the use of Hydra service 
-%               NOTE: and its registration. If you are not on a Windows cluster, (e.g., you are 
-%               NOTE: using your personal device), then we recommend specifying this flag.
-%
-%               In both cases in the above, the script 'main_mpi.m' will run on 3 processors.
-%               Feel free to change the number of processors to any number desired. But do not 
-%               request more than the number of physical cores available on your system.
+%   To unset an already-set input simulation specification, simply set the
+%   simulation attribute to empty double `[]` or re-instantiate the object.
 %
 classdef paramonte %< dynamicprops
 
     properties (Access = public)
+        %
+        %       website
+        %           A structure containing some web addresses relevant to the ParaMonte library
         website         = [];
+        %
+        %       authors
+        %           A string containing the ParaMonte library authors
         authors         = [];
+        %
+        %       credits
+        %           A string containing the the acknowledgment statement
         credits         = [];
+        %
+        %       version
+        %           A structure containing the ParaMonte library version information
+        %
+        %           interface
+        %               An object of class Version containing the 
+        %               ParaMonte library interface version get() and dump() methods.
+        %               Example usage:
+        %                   
+        %                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %                   pm = paramonte();
+        %                   pm.version.interface.get()  % prints the full interface version info
+        %                   pm.version.interface.dump() % prints the only interface version
+        %                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %
+        %           kernel
+        %               An object of class Version containing the 
+        %               ParaMonte library kernel version get() and dump() methods.
+        %               Example usage:
+        %                   
+        %                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %                   pm = paramonte();
+        %                   pm.version.kernel.get()     % prints the full kernel version info
+        %                   pm.version.kernel.dump()    % prints the only kernel version
+        %                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         version         = [];
+        %
+        %           Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
+        %
+        %           To see the description and an example usage of the ParaDRAM routine, 
+        %           type the following commands enclosed between the two comment lines 
+        %           in your MATLAB session:
+        %
+        %               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %               pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
+        %               addpath(genpath(pmlibRootDir));
+        %               pm = paramonte();
+        %               pmpd = pm.ParaDRAM();
+        %               doc pmpd
+        %               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ParaDRAM        = [];
     end
 
@@ -269,19 +298,19 @@ classdef paramonte %< dynamicprops
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function verify(self,varargin)
-        %    checks (or rechecks) the requirements of the installed ParaMonte library
+        %   checks (or rechecks) the requirements of the installed ParaMonte library
         %
-        %    Parameters
-        %    ----------
-        %        reset
-        %            boolean whose default value is True. If True,
-        %            a thorough verification of the existence of the required
-        %            libraries will performed, as if it is the first ParaMonte
-        %            module import.
-        %
-        %    Returns
-        %    -------
-        %        None
+        %   Parameters
+        %   ----------
+        %       reset
+        %           boolean whose default value is true. If true,
+        %           a thorough verification of the existence of the required
+        %           libraries will performed, as if it is the first ParaMonte
+        %           module import.
+        %   
+        %   Returns
+        %   -------
+        %       None
 
             self.objectName = inputname(1);
 
@@ -423,6 +452,14 @@ classdef paramonte %< dynamicprops
             end
 
         end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end % methods (dynamic)
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods (Access=public, Hidden)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -594,14 +631,6 @@ classdef paramonte %< dynamicprops
             end
 
         end
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    end % methods (dynamic)
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    methods (Access=public, Hidden)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1423,6 +1452,15 @@ classdef paramonte %< dynamicprops
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function result = helpme()
+        %   Returns the help documentation for the object as a string
+        %
+        %   Parameters
+        %   ----------
+        %       None
+        %
+        %   Returns
+        %   -------
+        %       None
             result = help(paramonte);
         end
 

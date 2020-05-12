@@ -232,17 +232,17 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
     Tips
     ----
 
-    when running ParaMonte samplers, in particular on multiple cores in parallel,
+    When running ParaMonte samplers, in particular on multiple cores in parallel,
     it would be best to close any such aggressive software/applications as
     Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte
     simulation output files, potentially causing the sampler to
     crash before successful completion of the simulation.
     These situations should however happen only scarcely.
 
-    on Windows systems, when restarting an old interrupted ParaDRAM simulation,
-    ensure your Python session is also restarted before the simulation
-    restart. This is needed as Windows sometimes locks the access to
-    all or some of the simulation output files.
+    On Windows systems, when restarting an old interrupted ParaDRAM simulation,
+    ensure your MATLAB session is also restarted before the simulation restart. 
+    This may be needed as Windows sometimes locks access to some or all of the
+    simulation output files.
 
     To unset an already-set input simulation specification, simply set the
     simulation attribute to None or re-instantiate the object.
