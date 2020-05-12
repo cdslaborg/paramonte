@@ -120,7 +120,7 @@
 %       between the two comment lines in your MATLAB session:
 %
 %           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%           fid = fopen("main_mpi.m", "w")
+%           fid = fopen("main_mpi.m", "w");
 %           sourceCode = ...
 %           "pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory" + newline + ...
 %           "addpath(genpath(pmlibRootDir));" + newline + ...
@@ -129,7 +129,7 @@
 %           "pmpd.mpiEnabled = true;" + newline + ...
 %           "pmpd.runSampler ( 4                 ... number of dimensions of the objective function" + newline + ...
 %           "                , @(x) -sum(x.^2)   ... the natural log of the objective function" + newline + ...
-%           "                );"
+%           "                );";
 %           fprintf( fid, "%s\n", sourceCode );
 %           fclose(fid);
 %           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,7 +160,7 @@
 %               from within a Bash terminal that recognizes both MATLAB and mpiexec, 
 %               type the following,
 %
-%                       mpiexec -n 3 matlab -batch "main_mpi"
+%                   mpiexec -n 3 matlab -batch "main_mpi"
 %
 %       NOTE: In both cases in the above, the script 'main_mpi.m' will run on 3 processors.
 %       NOTE: Feel free to change the number of processors to any number desired. But do not 
@@ -183,6 +183,8 @@
 %       is to a run a minimal serial simulation as given in the above.
 %
 %       See also: https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 classdef ParaDRAM < ParaMonteSampler
 

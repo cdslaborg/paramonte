@@ -1,22 +1,63 @@
-function runSampler(self,ndim,getLogFunc,varargin)
-%   Run ParaDRAM sampler and return nothing.
-%   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   ParaMonte: plain powerful parallel Monte Carlo library.
+%
+%   Copyright (C) 2012-present, The Computational Data Science Lab
+%
+%   This file is part of the ParaMonte library.
+%
+%   ParaMonte is free software: you can redistribute it and/or modify it
+%   under the terms of the GNU Lesser General Public License as published
+%   by the Free Software Foundation, version 3 of the License.
+%
+%   ParaMonte is distributed in the hope that it will be useful,
+%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%   GNU Lesser General Public License for more details.
+%
+%   You should have received a copy of the GNU Lesser General Public License
+%   along with the ParaMonte library. If not, see,
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/LICENSE
+%
+%   ACKNOWLEDGMENT
+%
+%   As per the ParaMonte library license agreement terms,
+%   if you use any parts of this library for any purposes,
+%   we ask you to acknowledge the ParaMonte library's usage
+%   in your work (education/research/industry/development/...)
+%   by citing the ParaMonte library as described on this page:
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   runSampler(ndim,getLogFunc)
+%
+%   Run the kernel sampler and return nothing.
+%
 %   Parameters
 %   ----------
+%
 %       ndim
 %           integer representing the number of dimensions of the
 %           domain of the user's objective function getLogFunc().
 %           It must be a positive integer.
+%
 %       getLogFunc()
 %           represents the user's objective function to be sampled,
 %           which must take a single input argument of type numpy
 %           float64 array of length ndim and must return the
 %           natural logarithm of the objective function.
-%   
+%
 %   Returns
 %   -------
+%
 %       None
-
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+function runSampler(self,ndim,getLogFunc,varargin)
     if nargin~=3
         self.Err.msg    = "The method " + self.objectName + ".runSampler(ndim,getLogFunc) takes only two input arguments:" + newline + newline ...
                         + "          ndim:  the number of dimensions of the domain of the " + newline ...
