@@ -166,12 +166,12 @@
 %       NOTE: Feel free to change the number of processors to any number desired. But do not 
 %       NOTE: request more than the available number of physical cores on your system.
 %
-%       WARNING: Do not add postprocessing codes (such as reading and plotting the output samples)
-%       WARNING: in your parallel code. There is no point in doing so, since MATLAB will run in `-batch`
-%       WARNING: mode for parallel simulations, disabling all plotting capabilities. Moreover, if you read
-%       WARNING: and postprocess the output files in parallel mode, the task will be done by all of the parallel
-%       WARNING: processes, potentially overwriting each others external activities.
-%       WARNING: Only perform the sampling (by calling the sampler routine) in parallel mode.
+%   WARNING: Do not add postprocessing codes (such as reading and plotting the output samples)
+%   WARNING: in your parallel code. There is no point in doing so, since MATLAB will run in `-batch`
+%   WARNING: mode for parallel simulations, disabling all plotting capabilities. Moreover, if you read
+%   WARNING: and postprocess the output files in parallel mode, the task will be done by all of the parallel
+%   WARNING: processes, potentially overwriting each others external activities.
+%   WARNING: Only perform the sampling (by calling the sampler routine) in parallel mode.
 %
 %   ParaDRAM Simulation Attributes
 %   ------------------------------
