@@ -1,7 +1,145 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   ParaMonte: plain powerful parallel Monte Carlo library.
+%
+%   Copyright (C) 2012-present, The Computational Data Science Lab
+%
+%   This file is part of the ParaMonte library.
+%
+%   ParaMonte is free software: you can redistribute it and/or modify it
+%   under the terms of the GNU Lesser General Public License as published
+%   by the Free Software Foundation, version 3 of the License.
+%
+%   ParaMonte is distributed in the hope that it will be useful,
+%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%   GNU Lesser General Public License for more details.
+%
+%   You should have received a copy of the GNU Lesser General Public License
+%   along with the ParaMonte library. If not, see,
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/LICENSE
+%
+%   ACKNOWLEDGMENT
+%
+%   As per the ParaMonte library license agreement terms,
+%   if you use any parts of this library for any purposes,
+%   we ask you to acknowledge the ParaMonte library's usage
+%   in your work (education/research/industry/development/...)
+%   by citing the ParaMonte library as described on this page:
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   GridPlot(dataFrame, plotType)
+%
+%   This is the GridPlot class for generating instances of square grid plots 
+%   comprised of histogram/histfit/line/scatter/lineScatter subplots
+%   based on a wide variety of ParaMonte's plotting functions.
+%
+%   NOTE: This is a low-level ParaMonte class and is not meant
+%   NOTE: to be directly instantiated by the user.
+%
+%   Parameters
+%   ----------
+%
+%       dataFrame
+%
+%           a MATLAB data Table from which the selected data will be plotted.
+%           This is a low-level internal argument and is not meant
+%           to be accessed or be provided by the user.
+%
+%       columns
+%
+%           a string or array of strings or cell array of chars representing the 
+%           names of the columns from the dataFrame to add to the plot.
+%
+%   Attributes
+%   ----------
+%
+%       ccolumn (standing for color-columns)
+%
+%           optional property that determines the column of dataFrame to serve
+%           as the color-mapping-values for each line/point element in the line/scatter 
+%           plot. It can be either a char vector or a string, or the index of the column 
+%           of interest from the input dataFrame.
+%
+%           Example usage:
+%
+%               1.  ccolumn = 7 % column #7 of the dataFrame
+%               2.  ccolumn = "SampleLogFunc" % the column of the dataFrame with this name
+%
+%       colormap
+%
+%           A string or any other value that the colormap function of MATLAB accepts as input.
+%
+%           Example usage:
+%
+%               1.  colormap = "autumn"
+%               1.  colormap = "winter"
+%
+%           If colormap is not provided or is empty, the default will be "autumn".
+%
+%       colorbar_kws
+%
+%           A MATLAB struct() whose components' values are passed to MATLAB's colorbar function.
+%           If your desired attribute is missing from the fieldnames of colorbar_kws, simply add
+%           a new field named as the attribute and assign the desired value to it.
+%
+%           Example usage:
+%
+%               colorbar_kws.enabled = true % add colorbar
+%               colorbar_kws.location = "west"
+%
+%           If a desired property is missing among the struct fields, simply add the field
+%           and its value to colorbar_kws.
+%
+%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
+%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
+%           WARNING: For example, colorbar_kws.color and colorbar_kws.Color are the same,
+%           WARNING: and only one of the two will be processed.
+%
+%       layout
+%
+%           A MATLAB struct() containing an extensive amount of information about the layout 
+%           and the overall design of the grid plot, with the following components:
+%
+%               - layout.colorbar   :   the layout and design of the colorbar of the plot
+%               - layout.subplot    :   the layout and design of the subplots of the plot
+%               - layout.axes       :   the layout and design of the gridplot's axes and the subplots' axes
+%               - layout.update()   :   a method that reflects the new layout changes into the grid-plot, when called.
+%               - layout.plotType   :   a struct() with components: diag, lower, upper, each of which contains 
+%                                       the type of plot to be added to the corresponding section of the grid plot.
+%                                       possible values for each section includes:
+%
+%                                           diag: histogram, histfit
+%                                           lower: histogram2, line, scatter, linescatter, line3, scatter3, linescatter3
+%                                           upper: histogram2, line, scatter, linescatter, line3, scatter3, linescatter3
+%
+%                                       WARNING: Although it is possible to add 3d subplots to the gridplot
+%                                       WARNING: (line3, scatter3, linescatter3), there is no practical use
+%                                       WARNING: for them. Therefore, you should use them at your own risk.
+%                                       WARNING: Perhaps the most meaningful scenario would be when the third 
+%                                       WARNING: Z-axis variable is the same column as the ccolumn of the grid-plot. 
+%                                       WARNING: If you find the 3D plots useful, or find bugs with the 3d subplots, 
+%                                       WARNING: please report it at: https://github.com/cdslaborg/paramonte/issues
+%
+%   Superclass Attributes
+%   ----------------------
+%
+%       See the documentation for the BasePlot class
+%
+%   Returns
+%   -------
+%
+%       an object of GridPlot class
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 classdef GridPlot < BasePlot
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties (Access = protected, Hidden)
         %dfref = [];
@@ -19,6 +157,7 @@ classdef GridPlot < BasePlot
         lowerEnabled
         upperEnabled
         diagEnabled
+        colnames
     end
 
     properties (Access = public)
@@ -39,13 +178,11 @@ classdef GridPlot < BasePlot
 
     end
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Hidden)
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function reset(self)
 
@@ -113,24 +250,21 @@ classdef GridPlot < BasePlot
             self.plot();
             self.isdryrun = false;
 
-            %self.target = GridTarget(self.dfref, self.columns, self.currentFig);
+            % self.target = GridTarget(self.dfref, self.columns, self.currentFig);
 
         end
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Access = public)
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = GridPlot(varargin) % expected input arguments: dataFrame, plotType
+        function self = GridPlot(varargin) % expected input arguments: dataFrame, dataFrame column names to plot
 
             self = self@BasePlot(varargin{1});
             try
@@ -145,20 +279,80 @@ classdef GridPlot < BasePlot
             self.reset()
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function helpme(self,varargin)
+            %
+            %   Open the documentation for the input object's name in string format, otherwise, 
+            %   open the documentation page for the class of the object owning the helpme() method.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       This function takes at most one string argument, 
+            %       which is the name of the object for which help is needed.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. 
+            %
+            %   Example
+            %   -------
+            %
+            %       helpme("plot")
+            %
+            methodNotFound = true;
+            if nargin==2
+                if strcmpi(varargin{1},"update")
+                    cmd = "doc self.updateLayout";
+                    methodNotFound = false;
+                else
+                    methodList = ["plot","helpme","addTarget","show","hide","rotateAxisLabels"];
+                    for method = methodList
+                        if strcmpi(varargin{1},method)
+                            methodNotFound = false;
+                            cmd = "doc self." + method;
+                        end
+                    end
+                end
+            elseif nargin~=1
+                error("The helpme() method takes at most one argument that must be string.");
+            end
+            if methodNotFound
+                cmd = "doc self";
+            end
+            eval(cmd);
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function plot(self,varargin)
-        %   Generate a line plot from the selected columns of the object's dataframe.
-        %   
-        %   Parameters
-        %   ----------
-        %       None
-        %   
-        %   Returns
-        %   -------
-        %       None. However, this method causes side-effects by manipulating 
-        %       the existing attributes of the object.
+            %
+            %   Generate a plot from the selected columns of the object's dataFrame.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       Any property,value pair of the object.
+            %       If the property is a struct(), then its value must be given as a cell array,
+            %       with consecutive elements representing the struct's property-name,property-value pairs.
+            %       Note that all of these property-value pairs can be also directly set directly via the 
+            %       object's attributes, before calling the plot() method.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. However, this method causes side-effects by manipulating
+            %       the existing attributes of the object.
+            %
+            %   Example
+            %   -------
+            %
+            %       plot("ccolumn",8)
+            %       plot("colormap","autumn")
+            %       plot( "gcf_kws", {"enabled",true,"color","none"} )
+            %
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% parse arguments
@@ -312,7 +506,7 @@ classdef GridPlot < BasePlot
             % set columns to plot
 
             if getVecLen(self.columns)
-                [colnames, colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
+                [self.colnames, colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
             else
                 error("the component ""columns"" of the GridPlot object appears to be empty.");
             end
@@ -384,8 +578,8 @@ classdef GridPlot < BasePlot
             columns.min = zeros(self.layout.axis.main.nrow,1);
             columns.max = zeros(self.layout.axis.main.nrow,1);
             for i = 1:self.layout.axis.main.nrow
-                minvalue = min(self.dfref.(colnames(i)));
-                maxvalue = max(self.dfref.(colnames(i)));
+                minvalue = min(self.dfref.(self.colnames(i)));
+                maxvalue = max(self.dfref.(self.colnames(i)));
                 margin = 0.1 * (maxvalue - minvalue);
                 columns.min(i) = minvalue - margin;
                 columns.max(i) = maxvalue + margin;
@@ -416,8 +610,8 @@ classdef GridPlot < BasePlot
 
                         hold on;
 
-                        xcolumns = colnames(icol);
-                        ycolumns = colnames(irow);
+                        xcolumns = self.colnames(icol);
+                        ycolumns = self.colnames(irow);
 
                         if isLower
                             currentPlotType = self.layout.plotType.lower;
@@ -541,25 +735,112 @@ classdef GridPlot < BasePlot
 
         end % function plot
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function hide(self,varargin)
+            %
+            %   Hide the requested section(s) of the gridplot
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       varargin (optional)
+            %
+            %           A comma-separated sequence of strings to char-vectors each of which can be one of the following: 
+            %
+            %               "diag"      : corresponding to the diagonal subplots in the grid plot
+            %               "upper"     : corresponding to the upper traingle of the grid plot
+            %               "lower"     : corresponding to the lower traingle of the grid plot
+            %               "colorbar"  : corresponding to the colorbar object of the grid plot
+            %
+            %           if no input argument is provided, the action is performed for all plot sections listed in the above.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. 
+            %
+            %   Example
+            %   -------
+            %
+            %       hide() % hide all parts of the grid plot
+            %       hide("diag","colorbar") % hide the diagonal subplots and the colorbar of the grid plot
+            %       hide("lower") % hide the lower traingle subplots of the grid plot
+            %
             self.hideShow("hide",varargin{:})
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function show(self,varargin)
+            %
+            %   Show the requested section(s) of the gridplot
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       varargin (optional)
+            %
+            %           A comma-separated sequence of strings to char-vectors each of which can be one of the following: 
+            %
+            %               "diag"      : corresponding to the diagonal subplots in the grid plot
+            %               "upper"     : corresponding to the upper traingle of the grid plot
+            %               "lower"     : corresponding to the lower traingle of the grid plot
+            %               "colorbar"  : corresponding to the colorbar object of the grid plot
+            %
+            %           if no input argument is provided, the action is performed for all plot sections listed in the above.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. 
+            %
+            %   Example
+            %   -------
+            %
+            %       show() % show all parts of the grid plot
+            %       show("diag","colorbar") % show the diagonal subplots and the colorbar of the grid plot
+            %       show("lower") % show the lower traingle subplots of the grid plot
+            %
             self.hideShow("show",varargin{:})
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function rotateAxisLabels(self,varargin)
-
+            %
+            %   Rotate the axes labels of the subplots of the grid plot
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       varargin (optional)
+            %
+            %           No input arguments:
+            %
+            %               Both X-axes and Y-axes labels are rotated by 45 degrees with respect to the horizontal line
+            %
+            %           One input arguments:
+            %
+            %               Both X-axes and Y-axes are rotated by the input numeric value (in degrees) with respect to the horizontal line
+            %
+            %           Two input arguments (spearated by comma):
+            %
+            %               The x-axes labels are rotated by the first input numeric value (in degrees) with respect to the horizontal line
+            %               The Y-axes labels are rotated by the second input numeric value (in degrees) with respect to the horizontal line
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. 
+            %
+            %   Example
+            %   -------
+            %
+            %       rotateAxisLabels(20) % rotate all axes labels by 20 degrees with respect to the horizontal line.
+            %       rotateAxisLabels(20,70) % rotate all X-axes/Y-axes labels by 20/70 degrees with respect to the horizontal line.
+            %       rotateAxisLabels() % rotate all axes by 45 degrees with respect to the horizontal line.
+            %
             if nargin==1
                 degreeX = 45;
                 degreeY = 45;
@@ -587,22 +868,60 @@ classdef GridPlot < BasePlot
 
         end % function rotateAxisLabels
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function addTarget(self,varargin)
-        %   Add a target on an existing plot (the current active axes object)
-        %   based on the 'value' attribute of the target object.
-        %   
-        %   Parameters
-        %   ----------
-        %       None
-        %   
-        %   Returns
-        %   -------
-        %       None. However, this method causes side-effects by manipulating 
-        %       the existing attributes of the object.
-
+            %
+            %   Add target objects to the subplots of the grid plot.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       varargin
+            %
+            %           No/empty input argument:
+            %
+            %               If no or an empty input argument is provided, then by default, the target values to be 
+            %               added to the subplots will be the location of the mode of the data in the "SampleLogFunc" 
+            %               column of the input dataFrame (dfref).
+            %               object's attributes, before calling the plot() method.
+            %
+            %           One input argument:
+            %
+            %               The single input argument must be a string or char vector with the following possible values:
+            %
+            %                   "mode"      : use the location of the mode of the "SampleLogFunc" column of the dataFrame as the target value
+            %                   "mean"      : use the mean values of each pair of variables as the target value on each subplot.
+            %                   "median"    : use the median values of each pair of variables as the target value on each subplot.
+            %
+            %           More than one input arguments:
+            %
+            %               pairs of key,value sequences are also possible as input. The possible keys include:
+            %
+            %                   "hline_kws", {}     : the values specified in the cell array, are directly passed to `hline_kws` 
+            %                                       : component of Target_class object of each subplot.
+            %                   "vline_kws", {}     : the values specified in the cell array, are directly passed to `vline_kws` 
+            %                                       : component of Target_class object of each subplot.
+            %                   "scatter_kws", {}   : the values specified in the cell array, are directly passed to `scatter_kws` 
+            %                                       : component of Target_class object of each subplot.
+            %                   "values", values    : A numeric vector of same length as the number of variables used in the gridplot
+            %                                       : (that is, the number of row or columns in the grid plot)
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. However, this method causes side-effects by manipulating the existing attributes 
+            %       of the `target` components of the `subplot` components of the `axes` component of `layout`.
+            %
+            %   Example
+            %   -------
+            %
+            %       addTarget() % use the location of the mode of `SampleLogFunc` data-column as the target values on subplots
+            %       addTarget("mode") % same as above
+            %       addTarget("mean") % use the mean of the vaiables on each axis of each subplot as the target values
+            %       addTarget("values",[1.3, 0.2, -0.5, 10]) % set the target values corresponding to each of the four variables in 
+            %                                                % the grid plot (assuming that there are 4 columns/rows of subplots)
+            %
             if nargin==1
                 statistic = "mode";
             else
@@ -635,12 +954,12 @@ classdef GridPlot < BasePlot
             % compute the statistics
 
             if getVecLen(self.columns)
-                [colnames, colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
+                [self.colnames, colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
             else
                 error("the component ""columns"" of the GridPlot object appears to be empty.");
             end
 
-            columnsLen = length(colnames);
+            columnsLen = length(self.colnames);
             if isfield(props,"values")
                 values = props.values;
             else
@@ -653,11 +972,11 @@ classdef GridPlot < BasePlot
                 end
                 for i = 1:columnsLen
                     if statIsMode
-                        values(i) = self.dfref.(colnames(i))(irowMax);
+                        values(i) = self.dfref.(self.colnames(i))(irowMax);
                     elseif statIsMean
-                        values(i) = mean(self.dfref.(colnames(i)));
+                        values(i) = mean(self.dfref.(self.colnames(i)));
                     elseif statIsMedian
-                        values(i) = median(self.dfref.(colnames(i)));
+                        values(i) = median(self.dfref.(self.colnames(i)));
                     end
                 end
             end
@@ -688,18 +1007,15 @@ classdef GridPlot < BasePlot
 
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end % methods
 
-    %***************************************************************************************************************************
-    %***************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods(Access=public, Hidden)
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function hideShow(self,varargin)
 
@@ -733,7 +1049,8 @@ classdef GridPlot < BasePlot
                         colorbarRequested = true;
                     else
                         error   ( newline ...
-                                + "Unrecognized input argument pass to the " + methodName + "() method: " + part ...
+                                + "Unrecognized input argument pass to the " + methodName + "() method: " + newline + newline ...
+                                + join(part," ") + newline + newline ...
                                 + "The " + methodName + "() method accepts only a list of comma-separated string values representing the ""part"" of the grid plot to " + methodName + ". " ...
                                 + "Alternatively, if no argument is passed to " + methodName + "(), then all subplots will be affected." + newline ...
                                 );
@@ -800,8 +1117,7 @@ classdef GridPlot < BasePlot
 
         end % function hideShow
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function setAxisLabels(self)
         % show or hide axis labels and ticks depending on the presence of the neighbor subplots
@@ -813,7 +1129,7 @@ classdef GridPlot < BasePlot
                             self.currentFig.subplotList{irow,icol}.currentFig.gca.XLabel.String = "";
                         else
                             set(self.currentFig.subplotList{irow,icol}.currentFig.gca, "XTickLabelMode", "auto");
-                            self.currentFig.subplotList{irow,icol}.currentFig.gca.XLabel.String = colnames{icol};
+                            self.currentFig.subplotList{irow,icol}.currentFig.gca.XLabel.String = self.colnames(icol);
                         end
                     end
                     if icol > 1
@@ -822,7 +1138,7 @@ classdef GridPlot < BasePlot
                             self.currentFig.subplotList{irow,icol}.currentFig.gca.YLabel.String = "";
                         else
                             set(self.currentFig.subplotList{irow,icol}.currentFig.gca, "YTickLabelMode", "auto")
-                            self.currentFig.subplotList{irow,icol}.currentFig.gca.YLabel.String = colnames{irow};
+                            self.currentFig.subplotList{irow,icol}.currentFig.gca.YLabel.String = self.colnames(irow);
                         end
                     end
                     if ~(icol==1)
@@ -835,8 +1151,7 @@ classdef GridPlot < BasePlot
             end
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function position = getColorbarAxisPosition(self)
             position =  [ self.layout.colorbar.origin.x ...
@@ -846,8 +1161,7 @@ classdef GridPlot < BasePlot
                         ];
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function position = getMainAxisPosition(self)
             position =  [ self.layout.axis.main.origin.x ...
@@ -857,8 +1171,7 @@ classdef GridPlot < BasePlot
                         ];
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function position = getSubplotAxisPosition(self,irow,icol)
             position =  [ (icol-1)*(self.layout.axis.subplot.interspace + self.layout.axis.subplot.width)   + self.layout.axis.main.margin.left ...
@@ -868,10 +1181,31 @@ classdef GridPlot < BasePlot
                         ];
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function updateLayout(self)
+            %
+            %   Update the layout of the grid plot with the new changes.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       None.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. However, this method causes side-effects by manipulating
+            %       the existing attributes of the object.
+            %
+            %   Example
+            %   -------
+            %
+            %       For xample, change the left/bottom margin of the main axis of the figure to provide room for lengthy variable names.
+            %       Then call the update() method of layout to reflect the changes.
+            %
+            %           update()
+            %
             self.layout.axis.main.height = 1 - self.layout.axis.main.margin.top;
             self.layout.axis.main.width = 1 - self.layout.axis.main.margin.right;
             self.layout.axis.main.nrow = length(self.columns);
@@ -906,12 +1240,10 @@ classdef GridPlot < BasePlot
             end
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end
 
-    %***************************************************************************************************************************
-    %***************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end % classdef GridPlot

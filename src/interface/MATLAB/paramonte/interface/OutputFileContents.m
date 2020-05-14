@@ -54,13 +54,11 @@ classdef OutputFileContents < dynamicprops
         Err
     end
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Access = public)
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function self = OutputFileContents  ( file ...
                                             , fileType ...
@@ -176,11 +174,11 @@ classdef OutputFileContents < dynamicprops
             % add chain autocorr
 
             updateUser("computing the sample autocorrelation...");
-            self.stats.autocorr = AutoCorr  ( self.df ...
-                                            , self.offset-1:self.offset+self.ndim-1 ...
-                                            , [] ... rows
-                                            , self.Err ...
-                                            );
+            self.stats.autocorr = AutoCorr_class( self.df ...
+                                                , self.offset-1:self.offset+self.ndim-1 ...
+                                                , [] ... rows
+                                                , self.Err ...
+                                                );
             updateUser([]);
 
             %self.stats.maxLogFunc = getMax(self.df,"SampleLogFunc");
@@ -198,6 +196,7 @@ classdef OutputFileContents < dynamicprops
                 updateUser([]);
             end
             self.plot.reset = @self.resetPlot;
+            self.plot.helpme = @self.helpme;
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -213,18 +212,95 @@ classdef OutputFileContents < dynamicprops
 
         end % constructor
 
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function helpme(self,varargin)
+            %
+            %   Open the documentation for the input object's name in string format, otherwise, 
+            %   open the documentation page for the class of the object owning the helpme() method.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       This function takes at most one string argument, 
+            %       which is the name of the object for which help is needed.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. 
+            %
+            %   Example
+            %   -------
+            %
+            %       helpme("plot")
+            %
+            methodNotFound = true;
+            if nargin==2
+                if strcmpi(varargin{1},"reset")
+                    cmd = "doc self.resetPlot";
+                    methodNotFound = false;
+                else
+                    methodList = ["plot","helpme"];
+                    for method = methodList
+                        if strcmpi(varargin{1},method)
+                            methodNotFound = false;
+                            cmd = "doc self." + method;
+                        end
+                    end
+                end
+            elseif nargin~=1
+                error("The helpme() method takes at most one argument that must be string.");
+            end
+            if methodNotFound
+                cmd = "doc self";
+            end
+            eval(cmd);
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     end % methods (Access = public)
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Access = public, Hidden)
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function resetPlot(self,varargin)
-
+            %
+            %   Reset the properties of the plot to the original default settings.
+            %   Use this method when you change many attributes of the plot
+            %   and you want to clean up
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       plotNames
+            %
+            %           An optional string or array of string values representing the names of plots to reset.
+            %           If no value is provided, then all plots will be reset.
+            %
+            %       resetType
+            %
+            %           An optional string with possible value of "hard".
+            %           If provided, the plot object will be regenerated from scratch.
+            %           This includes reading the original data frame again and reseting everything.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. 
+            %
+            %   Example
+            %   -------
+            %
+            %       reset("line3") % reset line3 plot to the default dettings
+            %       reset("line3","hard") % regenerate line3 plot from scratch
+            %       reset(["line","line3"],"hard") % regenerate line and line3 plots from scratch
+            %       reset("hard") % regenrate all plots from scratch
+            %
             resetTypeIsHard = false;
             requestedPlotTypeList = [];
             plotTypeList = ["line","scatter","lineScatter","line3","scatter3","lineScatter3","histogram","histogram2","histfit","grid"];
@@ -345,7 +421,7 @@ classdef OutputFileContents < dynamicprops
                         self.plot.(plotName).plot_kws.color = [200 200 200 75] / 255;
                     else
                         self.plot.(plotName).plot_kws.linewidth = 1;
-                        self.plot.(plotName).plot_kws.color = uint8([200 200 200 100]);
+                        self.plot.(plotName).plot_kws.color = uint8([200 200 200 200]);
                         self.plot.(plotName).scatter_kws.size = 20;
                     end
                 end
@@ -411,13 +487,11 @@ classdef OutputFileContents < dynamicprops
 
         end
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end % methods (Access = public)
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Hidden, Static)
         % These methods have been implemented to override the default 'handle' class methods,
@@ -431,7 +505,6 @@ classdef OutputFileContents < dynamicprops
         function notify         ();  end
     end
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end % classdef OutputFileContents < handle
