@@ -225,11 +225,18 @@ classdef paramonte %< dynamicprops
             self.prereqs = struct();
 
             self.website = struct();
-            self.website.home.url = "<a href=""https://www.cdslab.org/paramonte/"">https://www.cdslab.org/paramonte/</a>";
-            self.website.github.issues.url = "<a href=""https://github.com/cdslaborg/paramonte/issues"">https://github.com/cdslaborg/paramonte/issues</a>";
-            self.website.intel.mpi.home.url = "<a href=""https://software.intel.com/en-us/mpi-library"">https://software.intel.com/en-us/mpi-library</a>";
-            self.website.intel.mpi.windows.url = "<a href=""https://software.intel.com/en-us/get-started-with-mpi-for-windows"">https://software.intel.com/en-us/get-started-with-mpi-for-windows</a>";
-            self.website.openmpi.home.url = "<a href=""https://www.open-mpi.org/"">https://www.open-mpi.org/</a>";
+            self.website.home.url = "https://www.cdslab.org/paramonte/";
+            self.website.github.issues.url = "https://github.com/cdslaborg/paramonte/issues";
+            self.website.intel.mpi.home.url = "https://software.intel.com/en-us/mpi-library";
+            self.website.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-with-mpi-for-windows";
+            self.website.openmpi.home.url = "https://www.open-mpi.org/";
+            if usejava('desktop') && ~batchStartupOptionUsed
+                self.website.home.url = "<a href=" + self.website.home.url + ">" + self.website.home.url + "</a>";
+                self.website.github.issues.url = "<a href=" + self.website.github.issues.url + ">" + self.website.github.issues.url + "</a>";
+                self.website.intel.mpi.home.url = "<a href=" + self.website.intel.mpi.home.url + ">" + self.website.intel.mpi.home.url + "</a>";
+                self.website.intel.mpi.windows.url = "<a href=" + self.website.intel.mpi.windows.url + ">" + self.website.intel.mpi.windows.url + "</a>";
+                self.website.openmpi.home.url = "<a href=" + self.website.openmpi.home.url + ">" + self.website.openmpi.home.url + "</a>";
+            end
 
             self.platform.isWin32 = ispc;
             self.platform.isMacOS = ismac;
@@ -294,6 +301,12 @@ classdef paramonte %< dynamicprops
             end
 
             self.verify("reset",false)
+
+            if ~self.platform.isWin32
+                LD_LIBRARY_PATH = getenv("LD_LIBRARY_PATH");
+                if isempty(LD_LIBRARY_PATH); LD_LIBRARY_PATH = ""; end
+                setenv("LD_LIBRARY_PATH",self.path.lib+":"+LD_LIBRARY_PATH);
+            end
 
         end
 
@@ -427,10 +440,10 @@ classdef paramonte %< dynamicprops
                                         + "please make sure your firewall allows ParaMonte to access the Internet.";
                         self.Err.warn();
 
-                        isYes = self.getUserResponse( newline ...
-                                                    + "    Do you wish to download and install the MPI runtime library" + newline ...
-                                                    + "    for parallel simulations on your system now (y/n)? " ...
-                                                    );
+                        isYes = getUserResponse ( newline ...
+                                                + "    Do you wish to download and install the MPI runtime library" + newline ...
+                                                + "    for parallel simulations on your system now (y/n)? " ...
+                                                );
                         if isYes
                             self.installMPI();
                             self.writeVerificationStatusFile("True");
@@ -689,7 +702,7 @@ classdef paramonte %< dynamicprops
                 [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc" );
             end
 
-            localInstallDir = getLocalInstallDir();
+            localInstallDir = self.getLocalInstallDir();
             if ~isempty(localInstallDir.root)
 
                 pathcmd = [];
@@ -921,9 +934,9 @@ classdef paramonte %< dynamicprops
                                             + "For more information on how to install and use and run parallel ParaMonte " + newline ...
                                             + "simulations on Linux systems, visit:" + newline + newline ...
                                             + "    " + self.website.home.url;
-                            self.Err.msgmarginTop = 1;
-                            self.Err.msgmarginBot = 1;
-                            self.Err.msgmethodName = self.names.paramonte;
+                            self.Err.marginTop = 1;
+                            self.Err.marginBot = 1;
+                            self.Err.prefix = self.names.paramonte;
                             self.Err.note();
 
                             setupFilePath = fullfile(self.path.lib, "setup.sh");
@@ -1424,14 +1437,34 @@ classdef paramonte %< dynamicprops
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function dispFinalMessage(self)
-            self.Err.msg    = "To check for the MPI library installation status or display the above messages " + newline ...
-                            + "in the future, use the following commands on the MATLAB command-line: " + newline + newline ...
-                            + "    pm = paramonte();" + newline ...
-                            + "    pm.verify()";
             self.Err.prefix = self.names.paramonte;
             self.Err.marginTop = 1;
             self.Err.marginBot = 1;
+            self.Err.msg    = "To check for the MPI library installation status or display the above messages " + newline ...
+                            + "in the future, use the following commands on the MATLAB command-line: " + newline + newline ...
+                            + "    pm = paramonte();" + newline ...
+                            + "    pm.verify()" ...
+                            ;
             self.Err.note();
+            if ~self.platform.isWin32
+                self.Err.msg    = "Now, for both serial and parallel simulations: before using the ParaMonte kernel libraries, " + newline ...
+                                + "you have to quit your current MATLAB session (and reopen/restart it for serial simulations). " + newline ...
+                                + "If you are opening your MATLAB session from a Bash (Linux/masOS) terminal or if you intend to " + newline ...
+                                + "perform parallel simulations from within the Bash terminal, it is imperative that you run the " + newline ...
+                                + "following Bash command in your terminal after closing MATLAB session:" + newline + newline ...
+                                + "    source ~/.bashrc" ...
+                                ;
+                self.Err.warn();
+                isYes = getUserResponse ( newline ...
+                                        + "    Shall we quit MATLAB now to perform the aforementioned tasks (y/n)? " ...
+                                        );
+                if isYes
+                    exit;
+                else
+                    self.Err.msg = "Continuing with ParaMonte at the risk of failing to run any parallel simulations...";
+                    self.Err.warn();
+                end
+            end
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1443,16 +1476,18 @@ classdef paramonte %< dynamicprops
             offset = fix( (versionLen - 4) / 2 );
             fprintf(1,"\n");
             text = fileread(bannerFilePath);
-            lineList = string(strsplit(text,newline));
-            for lineElement = lineList
-                if contains(lineElement,"Version")
-                    line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
-                else
-                    line = lineElement;
-                end
-                fprintf(1,line);
-            end
-            fprintf(1,"\n");
+            %lineList = string(strsplit(text,newline));
+            %for lineElement = lineList
+            %    if contains(lineElement,"Version")
+            %        line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+            %    else
+            %        line = lineElement;
+            %    end
+            %    fprintf(1,line);
+            %end
+            newText = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+            fprintf(1,newText);
+            fprintf(1,"\n\n");
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -33,7 +33,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 function isYes = getUserResponse(varargin)
-    if nargin==0 || (nargin==1 && isempty(varargin{1})); msg = ""; end
+    if nargin==0 || (nargin==1 && isempty(varargin{1}))
+        msg = ""
+    elseif nargin==1
+        msg = string(varargin{1});
+    else
+        error(newline + "Invalid number of arguments to getUserResponse()." + newline);
+    end
     while true
         answer = lower(string(input(msg,"s")));
         if strcmp(answer,"y")

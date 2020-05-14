@@ -1785,14 +1785,16 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             # if ${BTYPE}==testing set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_TESTING_FLAGS!"
             # if ${BTYPE}==release set "MATLAB_BUILD_FLAGS=!MATLAB_BUILD_FLAGS!!INTEL_CPP_RELEASE_FLAGS!"
             MEX_FLAGS="-v -nojvm"
+            CFLAGS="COMPFLAGS='-fPIC -shared -Wl,-rpath=.'"
+            LINKFLAGS="LINKFLAGS='-fPIC -shared -Wl,-rpath=.'"
             if [ "${BTYPE}" = "debug" ]; then MEX_FLAGS="${MEX_FLAGS} -g"; fi
             if [ "${BTYPE}" = "release" ]; then MEX_FLAGS="${MEX_FLAGS} -O"; fi
             echo >&2 "-- ${BUILD_NAME}MATLAB - generating the ParaMonte MATLAB dynamic library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
             echo >&2 "-- ${BUILD_NAME}MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
-            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} ${ParaMonte_SRC_DIR}/paramonte.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
+            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} ${CFLAGS} ${LINKFLAGS} ${ParaMonte_SRC_DIR}/paramonte.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
             # CC=icl COMPFLAGS="${MATLAB_BUILD_FLAGS}"
             cd "${ParaMonteMATLAB_BLD_LIB_DIR}"
-            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${ParaMonte_SRC_DIR}/paramonte.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
+            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${CFLAGS}" "${LINKFLAGS}" "${ParaMonte_SRC_DIR}/paramonte.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
                 echo >&2 "-- ${BUILD_NAME}MATLAB - The ParaMonte MATLAB dynamic library build appears to have succeeded."
             else
@@ -1843,8 +1845,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     if [ "${OMP_ENABLED}" = "true" ]; then MATLAB_TEST_FILENAME=${MATLAB_TEST_FILENAME}_omp; fi
     MATLAB_TEST_FILENAME=${MATLAB_TEST_FILENAME}.m
 
-    if [[ -d "$ParaMonteMATLABTest_BLD_DIR" ]]
-    then
+    if [ -d "${ParaMonteMATLABTest_BLD_DIR}" ]; then
         echo >&2 "-- ${BUILD_NAME}MATLABTest - ${ParaMonteMATLABTest_BLD_DIR} already exists. skipping..."
     else
         echo >&2 "-- ${BUILD_NAME}MATLABTest - generating MATLAB files directory: ${ParaMonteMATLABTest_BLD_DIR}"
@@ -1869,9 +1870,16 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
 
     # copy necessary ParaMonte MATLAB dynamic library files in MATLAB's directory
 
+    if [ -d "${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib" ]; then
+        echo >&2 "-- ${BUILD_NAME}MATLABTest - ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib already exists. skipping..."
+    else
+        echo >&2 "-- ${BUILD_NAME}MATLABTest - generating MATLAB files directory: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
+        mkdir "${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
+    fi
+
     echo >&2 "-- ${BUILD_NAME}MATLABTest - copying the ParaMonte library files..."
     echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${PMLIB_FULL_PATH}"
-    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/"
+    echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
     cp -R "${ParaMonte_LIB_DIR}/"* "${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
     echo >&2 
 
