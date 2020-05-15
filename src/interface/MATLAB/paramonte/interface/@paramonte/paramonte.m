@@ -172,6 +172,14 @@ classdef paramonte %< dynamicprops
         %                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         version         = [];
         %
+        %           A MATLAB struct with three logical components:
+        %
+        %               isWin32 : true if the operating system is Windows
+        %               isLinux : true if the operating system is Linux
+        %               ismacOS : true if the operating system is macOS (Darwin)
+        %
+        platform = struct();
+        %
         %           Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
         %
         %           To see the description and an example usage of the ParaDRAM routine, 
@@ -193,10 +201,10 @@ classdef paramonte %< dynamicprops
         verificationStatusFilePath
         buildInstructionNote
         objectName
+        platform
     end
 
     properties (Access = public, Hidden)
-        platform = [];
         prereqs
         names
         path
