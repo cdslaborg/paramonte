@@ -574,7 +574,7 @@ classdef paramonte %< dynamicprops
                         self.Err.abort();
                     end
 
-                    [errorOccurred, ~] = system("chmod +x " + string(strrep(pmGitInstallScriptPath,'\','\\')));
+                    [errorOccurred, ~] = system("chmod +x " + string(strrep(pmGitInstallScriptPath,'\','\\')), "-echo");
                     if errorOccurred
                         self.Err.msg    = "The following action failed:" + newline + newline ...
                                         + "chmod +x " + string(strrep(pmGitInstallScriptPath,'\','\\')) + newline + newline ...
@@ -584,8 +584,8 @@ classdef paramonte %< dynamicprops
 
                     originalDir = cd(pmGitRootDir);
 
-                    [errorOccurred1, ~] = system( ['find ', pmGitRootDir, ' -type f -iname \"*.sh\" -exec chmod +x {} \;'] );
-                    [errorOccurred2, ~] = system( pmGitInstallScriptPath + " --lang matlab --test_enabled true --exam_enabled false --yes-to-all " + flags );
+                    [errorOccurred1, ~] = system( ['find ', pmGitRootDir, ' -type f -iname \"*.sh\" -exec chmod +x {} \;'], "-echo" );
+                    [errorOccurred2, ~] = system( pmGitInstallScriptPath + " --lang matlab --test_enabled true --exam_enabled false --yes-to-all " + flags, "-echo" );
                     if errorOccurred1 || errorOccurred2
                         self.Err.msg    = "Local installation of ParaMonte failed." + newline ...
                                         + "Please report this issue at " + newline + newline ...
@@ -635,13 +635,13 @@ classdef paramonte %< dynamicprops
                             bashrcContents = getBashrcContents();
                             setupFilePathCmd = "source " + setupFilePath;
                             if ~contains(bashrcContents,setupFilePathCmd)
-                                [~, ~] = system( "chmod 777 ~/.bashrc");
-                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte library local installation setup >>>' >> ~/.bashrc" );
-                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '" + setupFilePathCmd + "' >>  ~/.bashrc" );
-                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte library local installation setup <<<' >> ~/.bashrc" );
-                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                                [~, ~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc" );
+                                [~, ~] = system( "chmod 777 ~/.bashrc", "-echo");
+                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte library local installation setup >>>' >> ~/.bashrc", "-echo" );
+                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '" + setupFilePathCmd + "' >>  ~/.bashrc", "-echo" );
+                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte library local installation setup <<<' >> ~/.bashrc", "-echo" );
+                                [~, ~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                                [~, ~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc", "-echo" );
                             end
                             self.Err.msg    = "Whenever you intend to use ParaMonte in the future, before opening your MATLAB session, " + newline ...
                                             + "please execute the following command in your Bash shell to ensure all required paths " + newline ...
@@ -697,16 +697,16 @@ classdef paramonte %< dynamicprops
             bashrcContents = getBashrcContents();
             dlibcmd = "export LD_LIBRARY_PATH=" + self.path.lib + ":$LD_LIBRARY_PATH";
             if ~contains(bashrcContents,dlibcmd)
-                [~,~] = system( "chmod 777 ~/.bashrc");
-                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte shared library setup >>>' >> ~/.bashrc" );
-                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" );
-                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" );
-                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" );
-                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" );
-                [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte shared library setup <<<' >> ~/.bashrc" );
-                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc" );
+                [~,~] = system( "chmod 777 ~/.bashrc", "-echo");
+                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte shared library setup >>>' >> ~/.bashrc", "-echo" );
+                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc", "-echo" );
+                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc", "-echo" );
+                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc", "-echo" );
+                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc", "-echo" );
+                [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte shared library setup <<<' >> ~/.bashrc", "-echo" );
+                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc", "-echo" );
             end
 
             localInstallDir = self.getLocalInstallDir();
@@ -722,30 +722,30 @@ classdef paramonte %< dynamicprops
                 dlibcmdNotInBashrcContents = ~contains(bashrcContents,dlibcmd);
                 if pathcmdIsNotEmpty || dlibcmdIsNotEmpty
                     if pathcmdNotInBashrcContents || dlibcmdNotInBashrcContents
-                        [~,~] = system( "chmod 777 ~/.bashrc");
-                        [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                        [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local GNU installation setup >>>' >> ~/.bashrc" );
+                        [~,~] = system( "chmod 777 ~/.bashrc", "-echo");
+                        [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                        [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local GNU installation setup >>>' >> ~/.bashrc", "-echo" );
                         if pathcmdIsNotEmpty
                             if pathcmdNotInBashrcContents
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc", "-echo" );
                             end
                         end
                         if dlibcmdIsNotEmpty
                             if dlibcmdNotInBashrcContents
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc", "-echo" );
                             end
                         end
                     end
                     if pathcmdNotInBashrcContents || dlibcmdNotInBashrcContents
-                        [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local GNU installation setup <<<' >> ~/.bashrc" );
-                        [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                        [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc" );
+                        [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local GNU installation setup <<<' >> ~/.bashrc", "-echo" );
+                        [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                        [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc", "-echo" );
                     end
                 end
 
@@ -759,30 +759,30 @@ classdef paramonte %< dynamicprops
                 dlibcmdNotInBashrcContents = ~contains(bashrcContents,dlibcmd);
                 if pathcmdIsNotEmpty || dlibcmdIsNotEmpty
                     if pathcmdNotInBashrcContents || dlibcmdNotInBashrcContents
-                        [~,~] = system( "chmod 777 ~/.bashrc");
-                        [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                        [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local MPI installation setup >>>' >> ~/.bashrc" );
+                        [~,~] = system( "chmod 777 ~/.bashrc", "-echo");
+                        [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo");
+                        [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte local MPI installation setup >>>' >> ~/.bashrc", "-echo" );
                         if pathcmdIsNotEmpty
                             if pathcmdNotInBashrcContents
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${PATH+x} ]; then' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export PATH=.' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + pathcmd + "' >>  ~/.bashrc", "-echo" );
                             end
                         end
                         if dlibcmdIsNotEmpty
                             if dlibcmdNotInBashrcContents
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'if [ -z ${LD_LIBRARY_PATH+x} ]; then' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '    export LD_LIBRARY_PATH=.' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo 'fi' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + dlibcmd + "' >>  ~/.bashrc", "-echo" );
                             end
                         end
                     end
                     if pathcmdNotInBashrcContents || dlibcmdNotInBashrcContents
-                        [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local MPI installation setup <<<' >> ~/.bashrc" );
-                        [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                        [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc" );
+                        [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte local MPI installation setup <<<' >> ~/.bashrc", "-echo" );
+                        [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                        [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc", "-echo" );
                     end
                 end
             end
@@ -961,9 +961,9 @@ classdef paramonte %< dynamicprops
 
                 gfortranPath = [];
                 try
-                    [~,gfortranVersion] = system("gfortran --version");
+                    [~,gfortranVersion] = system("gfortran --version", "-echo");
                     if contains(string(gfortranVersion), "GCC 9.")
-                        [~,gfortranPath] = system("command -v gfortran");
+                        [~,gfortranPath] = system("command -v gfortran", "-echo");
                     end
                 catch
                     warning("failed to capture gfortran version");
@@ -971,9 +971,9 @@ classdef paramonte %< dynamicprops
 
                 mpiexecPath = [];
                 try
-                    [~,mpiexecVersion] = system("mpiexec --version");
+                    [~,mpiexecVersion] = system("mpiexec --version", "-echo");
                     if contains(string(mpiexecVersion), "open-mpi")
-                        [~,mpiexecPath] = system("command -v mpiexec");
+                        [~,mpiexecPath] = system("command -v mpiexec", "-echo");
                     end
                 catch
                     warning("failed to capture mpiexec version");
@@ -1066,7 +1066,7 @@ classdef paramonte %< dynamicprops
                 self.Err.warn();
 
                 if self.platform.isWin32
-                    [errorOccurred, output] = system(self.prereqs.mpi.intel.fullFilePath);
+                    [errorOccurred, output] = system(self.prereqs.mpi.intel.fullFilePath, "-echo");
                     if errorOccurred
                         self.Err.msg    = "Intel MPI library installation might have failed. Exit flag: " + string(errorOccurred) + "." ...
                                         + "mpiexec command output: " + string(output);
@@ -1117,7 +1117,7 @@ classdef paramonte %< dynamicprops
 
                     end
 
-                    [errorOccurred, ~] = system("chmod +x " + mpiInstallScriptPath);
+                    [errorOccurred, ~] = system("chmod +x " + mpiInstallScriptPath, "-echo");
                     if errorOccurred
                         self.Err.msg    = "The following action failed:" + newline + newline ...
                                         + "chmod +x " + string(strrep(mpiInstallScriptPath,'\','\\')) + newline + newline ...
@@ -1127,7 +1127,7 @@ classdef paramonte %< dynamicprops
 
                     originalDir = cd(mpiExtractDir);
 
-                    [errorOccurred, ~] = system(mpiInstallScriptPath);
+                    [errorOccurred, ~] = system(mpiInstallScriptPath, "-echo");
                     if errorOccurred
                         self.Err.msg    = "Intel MPI runtime libraries installation for " + newline ...
                                         + "64-bit architecture appears to have failed." + newline ...
@@ -1237,13 +1237,13 @@ classdef paramonte %< dynamicprops
                             mpivarsFileCommand = "source " + mpivarsFilePath;
                             if ~contains(bashrcContents,mpivarsFileCommand)
 
-                                [~,~] = system( "chmod 777 ~/.bashrc");
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte MPI runtime library initialization >>>' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + string(strrep(mpivarsFileCommand,'\','\\')) + "' >>  ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte MPI runtime library initialization <<<' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc" );
+                                [~,~] = system( "chmod 777 ~/.bashrc", "-echo");
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte MPI runtime library initialization >>>' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + string(strrep(mpivarsFileCommand,'\','\\')) + "' >>  ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte MPI runtime library initialization <<<' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                                [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc", "-echo" );
 
                                 self.Err.msg    = "If you intend to run parallel simulations right now," + newline ...
                                                 + "we highly recommned you to close your current shell environment" + newline ...
@@ -1298,15 +1298,15 @@ classdef paramonte %< dynamicprops
             self.Err.msg = "Checking if Homebrew exists on your system...";
             self.Err.note();
 
-            [~,brewPath] = system("command -v brew");
+            [~,brewPath] = system("command -v brew", "-echo");
             if ~isfile(brewPath)
 
                 self.Err.msg = "Failed to detect Homebrew on your system. Installing Homebrew...";
                 self.Err.note();
 
-                [errorOccurred1, ~] = system('xcode-select --install');
-                [errorOccurred2, ~] = system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"');
-                [errorOccurred3, ~] = system('brew --version');
+                [errorOccurred1, ~] = system('xcode-select --install', "-echo");
+                [errorOccurred2, ~] = system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"', "-echo");
+                [errorOccurred3, ~] = system('brew --version', "-echo");
                 if errorOccurred1 || errorOccurred2 || errorOccurred3
                     self.Err.msg    = "Failed to install Homebrew on your system." + newline ...
                                     + "Homebrew is required to install and build ParaMonte components and prerequisites." + newline ...
@@ -1320,7 +1320,7 @@ classdef paramonte %< dynamicprops
             % cmake
 
             cmakeInstallationNeeded = false;
-            [~,cmakePath] = system("command -v cmake");
+            [~,cmakePath] = system("command -v cmake", "-echo");
             if ~isfile(cmakePath)
 
                 cmakeInstallationNeeded = true;
@@ -1334,7 +1334,7 @@ classdef paramonte %< dynamicprops
                 self.Err.marginBot  = 0;
                 self.Err.note();
 
-                [errorOccurred,cmakeVersion] = system("cmake --version");
+                [errorOccurred,cmakeVersion] = system("cmake --version", "-echo");
                 if errorOccurred
 
                     cmakeInstallationNeeded = true;
@@ -1367,8 +1367,8 @@ classdef paramonte %< dynamicprops
                 self.Err.msg = "Installing cmake...";
                 self.Err.note();
 
-                [errorOccurred1,~] = system("brew install cmake");
-                [errorOccurred2,~] = system("brew link --overwrite cmake");
+                [errorOccurred1,~] = system("brew install cmake", "-echo");
+                [errorOccurred2,~] = system("brew link --overwrite cmake", "-echo");
                 if errorOccurred1 || errorOccurred2
                     self.Err.msg = "cmake installation or linking failed.";
                     self.Err.marginTop = 1;
@@ -1376,7 +1376,7 @@ classdef paramonte %< dynamicprops
                     self.Err.abort();
                 end
 
-                [~,cmakeVersion] = system("cmake --version");
+                [~,cmakeVersion] = system("cmake --version", "-echo");
                 cmakeVersion = strsplit(cmakeVersion," "); cmakeVersion = strsplit(cmakeVersion{3},"-"); cmakeVersion = string(cmakeVersion{1});
                 cmakeVersionList = string(strsplit(cmakeVersion,"."));
 
@@ -1402,8 +1402,8 @@ classdef paramonte %< dynamicprops
             self.Err.msg = "Installing GNU Compiler Collection...";
             self.Err.note();
 
-            [errorOccurred1,~] = system("brew install gcc@9");
-            [errorOccurred2,~] = system("brew link gcc@9");
+            [errorOccurred1,~] = system("brew install gcc@9", "-echo");
+            [errorOccurred2,~] = system("brew link gcc@9", "-echo");
 
             if errorOccurred1 || errorOccurred2
                 self.Err.msg    = "Failed to install and link GNU Compiler Collection on your system." + newline ...
@@ -1420,8 +1420,8 @@ classdef paramonte %< dynamicprops
             self.Err.msg = "Installing Open-MPI...";
             self.Err.note();
 
-            [errorOccurred1,~] = system("brew install open-mpi");
-            [errorOccurred2,~] = system("brew link open-mpi");
+            [errorOccurred1,~] = system("brew install open-mpi", "-echo");
+            [errorOccurred2,~] = system("brew link open-mpi", "-echo");
 
             if errorOccurred1 || errorOccurred2
                 self.Err.msg    = "Failed to install and link Open-MPI on your system." + newline ...
