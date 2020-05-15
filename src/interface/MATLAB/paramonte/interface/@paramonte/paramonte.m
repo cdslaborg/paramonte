@@ -201,7 +201,6 @@ classdef paramonte %< dynamicprops
         verificationStatusFilePath
         buildInstructionNote
         objectName
-        platform
     end
 
     properties (Access = public, Hidden)
