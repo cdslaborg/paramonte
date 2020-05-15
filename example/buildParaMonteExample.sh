@@ -162,7 +162,7 @@ do
     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files..."
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-    cp -R "${ParaMonte_LIB_DIR}/"* "${ParaMonteExample_LIB_DIR_CURRENT}/"
+    cp -R "${ParaMonte_LIB_DIR}/"libparamonte_* "${ParaMonteExample_LIB_DIR_CURRENT}/"
 
     # The ParaMonte library dll dependency files
 
