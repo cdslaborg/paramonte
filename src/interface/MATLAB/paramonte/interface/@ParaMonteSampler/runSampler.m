@@ -204,7 +204,7 @@ function runSampler(self,ndim,getLogFunc,varargin)
                         if status~=1; errorOccurred = true; end
                     end
                     if ~errorOccurred && isempty(dir(fullfile(pmLocalDir,"libparamonte_*")))
-                        [status, errMsg, msgID] = copyfile("self.path.lib/*", "pmLocalDir", "f");
+                        [status, errMsg, msgID] = copyfile(self.path.lib, pmLocalDir, "f");
                         if status~=0; errorOccurred = true; end
                     end
                     if errorOccurred
