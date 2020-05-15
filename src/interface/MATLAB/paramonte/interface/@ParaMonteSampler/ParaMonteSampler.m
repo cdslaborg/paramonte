@@ -37,9 +37,11 @@
 %   Parameters
 %   ----------
 %
-%       None. The ParaDRAM constructor does not take any input arguments.
-%       All class attributes can be set after an instance
-%       is returned by the constructor.
+%       platform
+%
+%           A MATLAB struct containing the platform logical values (isMacOS, isWin32, isLinux).
+%           Note that ll class attributes can be set after an instance
+%           is returned by the constructor.
 %
 %   Attributes
 %   ----------
@@ -150,11 +152,9 @@ classdef ParaMonteSampler < dynamicprops
         Err = Err_class();
         methodName = "";
         objectName = [];
+        platform = [];
         libName = [];
-        isWin32 = false;
-        isMacOS = false;
-        isLinux = false;
-        method = struct();
+        method = [];
         ndim = [];
     end
 
@@ -166,11 +166,15 @@ classdef ParaMonteSampler < dynamicprops
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = ParaMonteSampler()
+        function self = ParaMonteSampler(platform)
             %filePath = mfilename("fullpath"); addpath(genpath(filePath),"-begin");
+            self.method = struct();
             self.method.isParaDRAM = false;
             self.method.isParaNest = false;
             self.method.isParaTemp = false;
+            self.platform = platform;
+            self.platform.isMacOS = ismac;
+            self.platform.isLinux = isunix;
         end
 
         %***************************************************************************************************************************

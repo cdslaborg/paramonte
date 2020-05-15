@@ -42,9 +42,11 @@
 %   Parameters
 %   ----------
 %
-%       None. The ParaDRAM constructor does not take any input arguments.
-%       All class attributes can be set after an instance
-%       is returned by the constructor.
+%       platform
+%
+%           A MATLAB struct containing the platform logical values (isMacOS, isWin32, isLinux).
+%           Note that ll class attributes can be set after an instance
+%           is returned by the constructor.
 %
 %   Attributes
 %   ----------
@@ -196,8 +198,8 @@ classdef ParaDRAM < ParaMonteSampler
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = ParaDRAM()
-            self = self@ParaMonteSampler();
+        function self = ParaDRAM(platform)
+            self = self@ParaMonteSampler(platform);
             self.spec = SpecDRAM();
             self.methodName = "ParaDRAM";
             self.method.isParaDRAM = true;

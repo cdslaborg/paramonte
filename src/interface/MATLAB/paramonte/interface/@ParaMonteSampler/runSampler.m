@@ -150,10 +150,6 @@ function runSampler(self,ndim,getLogFunc,varargin)
         self.Err.abort();
     end
 
-    self.isWin32 = ispc;
-    self.isMacOS = ismac;
-    self.isLinux = isunix;
-
     if self.mpiEnabled
         parallelism = "_mpi";
     else
@@ -184,9 +180,9 @@ function runSampler(self,ndim,getLogFunc,varargin)
     end
 
     libFound = false;
-    if self.isWin32; libNameSuffix = "_windows_" + getArch() + "_mt"; end
-    if self.isMacOS; libNameSuffix = "_darwin_" + getArch() + "_mt"; end
-    if self.isLinux; libNameSuffix = "_linux_" + getArch() + "_mt"; end
+    if self.platform.isWin32; libNameSuffix = "_windows_" + getArch() + "_mt"; end
+    if self.platform.isMacOS; libNameSuffix = "_darwin_" + getArch() + "_mt"; end
+    if self.platform.isLinux; libNameSuffix = "_linux_" + getArch() + "_mt"; end
     for buildMode = buildModeList
         for pmcs = pmcsList
             libName = "libparamonte_dynamic_heap_" + buildMode + "_" + pmcs + parallelism + libNameSuffix;
@@ -194,6 +190,7 @@ function runSampler(self,ndim,getLogFunc,varargin)
         end
         if libFound; break; end
     end
+    self.libName = libName;
 
     if ~libFound
         self.Err.msg    = "Exhausted all possible ParaMonte dynamic library search" + newline ...
@@ -205,12 +202,6 @@ function runSampler(self,ndim,getLogFunc,varargin)
                         + "to build ParaMonte object files on your system."; %...+ newline ...
                         %...+ buildInstructionNote % xxxxxxxxxxxx...
         self.Err.abort();
-    end
-
-    if nargout==0
-        self.libName = libName;
-    elseif nargout==2
-        varargout{1} = libName;
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

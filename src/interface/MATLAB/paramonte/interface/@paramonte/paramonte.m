@@ -240,7 +240,7 @@ classdef paramonte %< dynamicprops
 
             self.platform.isWin32 = ispc;
             self.platform.isMacOS = ismac;
-            self.platform.isLinux = isunix;
+            self.platform.isLinux = isunix && ~ismac;
 
             self.authors = "The Computational Data Science Lab @ The University of Texas";
             self.credits = "Peter O'Donnell Fellowship / Texas Advanced Computing Center";
@@ -297,7 +297,7 @@ classdef paramonte %< dynamicprops
             if matlabKernelEnabled
                 self.ParaDRAM = ParaDRAM_class;
             else
-                self.ParaDRAM = ParaDRAM;
+                self.ParaDRAM = ParaDRAM(self.platform);
             end
 
             self.verify("reset",false)
