@@ -212,6 +212,8 @@ function runSampler(self,ndim,getLogFunc,varargin)
                                         + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
                                         + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
                         self.Err.warn();
+                    else
+                        break;
                     end
                 else
                     warning(newline + "Failed to detect the local library installation directory on this system. This is highly unusual. skipping..." + newline);
