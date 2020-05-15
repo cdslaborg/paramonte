@@ -173,8 +173,6 @@ classdef ParaMonteSampler < dynamicprops
             self.method.isParaNest = false;
             self.method.isParaTemp = false;
             self.platform = platform;
-            self.platform.isMacOS = ismac;
-            self.platform.isLinux = isunix;
         end
 
         %***************************************************************************************************************************
