@@ -67,7 +67,7 @@ fi
 UNAME_PLATFORM="$(uname -s)"
 case "${UNAME_PLATFORM}" in
     Linux*)     PLATFORM=linux;;
-    Darwin*)    PLATFORM=mac;;
+    Darwin*)    PLATFORM=darwin;;
     CYGWIN*)    PLATFORM=cygwin;;
     MINGW*)     PLATFORM=mingw;;
     *)          PLATFORM="unknown:${UNAME_PLATFORM}"
@@ -110,14 +110,14 @@ read -r ParaMonteVersion < .VERSION
 echo >&2 
 echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 echo >&2 "::::                                                                                                                            ::::"
-echo >&2 "                                      ParaMonte library version ${ParaMonteVersion} build on ${PLATFORM}                            "
+echo >&2 "                                      ParaMonte library version ${ParaMonteVersion} build on ${OSNAME}                              "
 echo >&2 "::::                                                                                                                            ::::"
 echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 echo >&2
 
 echo >&2
 echo >&2 "-- ${BUILD_NAME} - current directory: ${FILE_DIR}"
-echo >&2 "-- ${BUILD_NAME} - current system's platform: ${PLATFORM}"
+echo >&2 "-- ${BUILD_NAME} - current system's platform: ${OSNAME}"
 echo >&2 "-- ${BUILD_NAME} - current system's architecture: ${ARCHITECTURE}"
 
 ####################################################################################################################################
