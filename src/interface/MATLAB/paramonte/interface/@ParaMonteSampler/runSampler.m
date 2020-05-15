@@ -232,7 +232,20 @@ function runSampler(self,ndim,getLogFunc,varargin)
     else
         expression = string(self.libName + "(iscmd,ndim,inputFile,@getLogFuncNested)");
     end
+
+    isGNU = contains(self.libName,"gnu");
+    if isGNU
+        setenv('GFORTRAN_STDIN_UNIT' , '5') 
+        setenv('GFORTRAN_STDOUT_UNIT', '6') 
+        setenv('GFORTRAN_STDERR_UNIT', '0')
+    end
     eval(expression);
+    if isGNU
+        setenv('GFORTRAN_STDIN_UNIT' , '-1') 
+        setenv('GFORTRAN_STDOUT_UNIT', '-1') 
+        setenv('GFORTRAN_STDERR_UNIT', '-1')
+    end
+
     %try
     %    eval(expression);
     %catch

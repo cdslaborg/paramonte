@@ -1531,6 +1531,7 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
     FC_OPTION=""
 else
     FC_OPTION="-DFC=${Fortran_COMPILER_PATH}"
+    export Fortran_COMPILER_PATH
 fi
 if [ -z ${MPIEXEC_PATH+x} ]; then
     MPIEXEC_OPTION=""
@@ -1673,7 +1674,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
 
     if [ -z ${MATLAB_EXE_PATH+x} ]; then
         if [ "${isMacOS}" = "true" ]; then
-            INSTALL_LOC_LIST="/Applications/MATLAB_" "R2020a.app"
+            INSTALL_LOC_LIST="/Applications/MATLAB_"
         else
             INSTALL_LOC_LIST="/usr/local/MATLAB"
         fi

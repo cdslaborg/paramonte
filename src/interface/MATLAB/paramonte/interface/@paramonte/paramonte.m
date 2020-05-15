@@ -1036,14 +1036,16 @@ classdef paramonte %< dynamicprops
 
                 self.prereqs.list = self.getDependencyList();
                 for dependency = self.prereqs.list
-                    fullFilePath = fullfile( self.path.lib, dependency );
-                    fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.dump("kernel") + "/" + dependency);
-                    if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
-                    if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
-                    if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
-                        self.prereqs.mpi.intel.fullFileName = string( dependency );
-                        self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
-                        self.prereqs.mpi.intel.version = string( dependency{1}(length(intelMpiFilePrefix)+1,end-length(intelMpiFileSuffix)+1) );
+                    if ~contains(dependency,"!") % avoid comments
+                        fullFilePath = fullfile( self.path.lib, dependency );
+                        fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.dump("kernel") + "/" + dependency);
+                        if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
+                        if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
+                        if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
+                            self.prereqs.mpi.intel.fullFileName = string( dependency );
+                            self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
+                            self.prereqs.mpi.intel.version = string( dependency{1}(length(intelMpiFilePrefix)+1,end-length(intelMpiFileSuffix)+1) );
+                        end
                     end
                 end
 

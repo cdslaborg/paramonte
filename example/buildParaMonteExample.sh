@@ -152,6 +152,31 @@ do
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
     cp -R "${ParaMonte_LIB_DIR}/"* "${ParaMonteExample_LIB_DIR_CURRENT}/"
 
+    # The ParaMonte library dll dependency files
+
+    if ! [ "${PMCS}" = "intel" ]; then
+        if ! [ -z ${Fortran_COMPILER_PATH+x} ]; then
+            Fortran_COMPILER_DIR=$(dirname "${Fortran_COMPILER_PATH}")
+            Fortran_COMPILER_ROOT_DIR="${Fortran_COMPILER_DIR}"/..
+            for Fortran_COMPILER_LIB_SUBDIR in "lib64"
+            do
+                Fortran_COMPILER_LIB_DIR="${Fortran_COMPILER_ROOT_DIR}"/"${Fortran_COMPILER_LIB_SUBDIR}"
+                if [ -d "${Fortran_COMPILER_LIB_DIR}" ]; then
+                    echo >&2
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency files..."
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+                    cp -R "${Fortran_COMPILER_LIB_DIR}/"libgfortran.so.* "${ParaMonteExample_LIB_DIR_CURRENT}/"
+                    break
+                fi
+            done
+        else
+            echo >&2
+            echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: the ParaMonte library dll dependency files could not be found."
+            echo >&2
+        fi
+    fi
+
     # The ParaMonte library example required files
 
     echo >&2
