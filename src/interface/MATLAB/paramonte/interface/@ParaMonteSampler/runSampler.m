@@ -192,35 +192,7 @@ function runSampler(self,ndim,getLogFunc,varargin)
     end
     self.libName = libName;
 
-    if libFound
-        if isunix
-            localInstallDirList = ["/usr/local/lib","/usr/lib"];
-            for localInstallDir = localInstallDirList
-                if isdir(localInstallDir)
-                    pmLocalDir = fullfile(localInstallDir,"paramonte");
-                    errorOccurred = false;
-                    if ~isdir(pmLocalDir)
-                        [status, errMsg, msgID] = mkdir(pmLocalDir);
-                        if status~=1; errorOccurred = true; end
-                    end
-                    if ~errorOccurred && isempty(dir(fullfile(pmLocalDir,"libparamonte_*")))
-                        [status, errMsg, msgID] = copyfile(self.path.lib, pmLocalDir, "f");
-                        if status~=0; errorOccurred = true; end
-                    end
-                    if errorOccurred
-                        self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
-                                        + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
-                                        + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
-                        self.Err.warn();
-                    else
-                        break;
-                    end
-                else
-                    warning(newline + "Failed to detect the local library installation directory on this system. This is highly unusual. skipping..." + newline);
-                end
-            end
-        end
-    else
+    if ~libFound
         self.Err.msg    = "Exhausted all possible ParaMonte dynamic library search" + newline ...
                         + "names but could not find any compatible library." + newline ...
                         + "It appears your ParaMonte Python interface is missing" + newline ...
