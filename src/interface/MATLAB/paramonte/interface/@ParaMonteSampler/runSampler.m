@@ -211,7 +211,7 @@ function runSampler(self,ndim,getLogFunc,varargin)
                         self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
                                         + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
                                         + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
-                        self.Err.warning();
+                        self.Err.warn();
                     end
                 else
                     warning(newline + "Failed to detect the local library installation directory on this system. This is highly unusual. skipping..." + newline);
