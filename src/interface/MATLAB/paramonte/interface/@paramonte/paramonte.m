@@ -501,25 +501,27 @@ classdef paramonte %< dynamicprops
 
         function installParaMonte(self)
             if isunix
-                pmLocalFileList = getFileNameList(self.path.lib);
+                %pmLocalFileList = getFileNameList(self.path.lib);
                 installRootDirList = ["/usr/local/lib","/usr/lib"];
                 for installRootDir = installRootDirList
                     if isdir(installRootDir)
-                        pmInstallDir = fullfile(installRootDir,"paramonte");
                         errorOccurred = false;
-                        if ~isdir(pmInstallDir)
-                            [status, errMsg, msgID] = mkdir(pmInstallDir);
-                            if status~=1; errorOccurred = true; end
-                        end
-                        if ~errorOccurred
-                            pmInstallFileList = getFileNameList(pmInstallDir);
-                            for localFile = pmLocalFileList
-                                if ~any(strcmp(pmInstallFileList, localFile))
-                                    [status, errMsg, msgID] = copyfile(fullfile(self.path.lib,localFile), pmInstallDir, "f");
-                                    if status~=0; errorOccurred = true; break; end
-                                end
-                            end
-                        end
+                        pmInstallDir = fullfile(installRootDir,"paramonte");
+                        %if ~isdir(pmInstallDir)
+                        %    [status, errMsg, msgID] = mkdir(pmInstallDir);
+                        %    if status~=1; errorOccurred = true; end
+                        %end
+                        %if ~errorOccurred
+                            [status, errMsg, msgID] = copyfile(self.path.lib, pmInstallDir, "f");
+                            if status~=0; errorOccurred = true; end
+                            %pmInstallFileList = getFileNameList(pmInstallDir);
+                            %for localFile = pmLocalFileList
+                            %    if ~any(strcmp(pmInstallFileList, localFile))
+                            %        [status, errMsg, msgID] = copyfile(fullfile(self.path.lib,localFile), pmInstallDir, "f");
+                            %        if status~=0; errorOccurred = true; break; end
+                            %    end
+                            %end
+                        %end
                         if errorOccurred
                             self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
                                             + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
