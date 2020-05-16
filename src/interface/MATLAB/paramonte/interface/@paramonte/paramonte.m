@@ -483,9 +483,9 @@ classdef paramonte %< dynamicprops
 
                 end
 
-            end
+                self.installParaMonte();
 
-            self.installParaMonte();
+            end
 
         end
 
