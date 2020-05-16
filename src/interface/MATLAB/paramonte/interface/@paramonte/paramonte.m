@@ -506,13 +506,13 @@ classdef paramonte %< dynamicprops
                 for installRootDir = installRootDirList
                     if isdir(installRootDir)
                         errorOccurred = false;
-                        pmInstallDir = fullfile(installRootDir,"paramonte");
+                        %pmInstallDir = fullfile(installRootDir,"paramonte");
                         %if ~isdir(pmInstallDir)
                         %    [status, errMsg, msgID] = mkdir(pmInstallDir);
                         %    if status~=1; errorOccurred = true; end
                         %end
                         %if ~errorOccurred
-                            [status, errMsg, msgID] = copyfile(self.path.lib, pmInstallDir, "f");
+                            [status, errMsg, msgID] = copyfile(self.path.lib, installRootDir, "f");
                             if status~=0; errorOccurred = true; end
                             %pmInstallFileList = getFileNameList(pmInstallDir);
                             %for localFile = pmLocalFileList
