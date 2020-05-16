@@ -477,15 +477,15 @@ classdef paramonte %< dynamicprops
                     end
 
                     self.dispFinalMessage();
-                    self.installParaMonte();
 
                 else
 
                     self.warnForUnsupportedPlatform();
                     self.build();
-                    self.installParaMonte();
 
                 end
+
+                self.installParaMonte();
 
             end
 
@@ -514,7 +514,8 @@ classdef paramonte %< dynamicprops
                         %    if status~=1; errorOccurred = true; end
                         %end
                         %if ~errorOccurred
-                            [status, errMsg, msgID] = copyfile(fullfile(self.path.lib,"*.dylib"), installRootDir, "f");
+                            if self.platform.isMacOS; filePath = "*.dylib"; else; filePath = "*"; end
+                            [status, errMsg, msgID] = copyfile(fullfile(self.path.lib,filePath), installRootDir, "f");
                             if status~=0; errorOccurred = true; end
                             %pmInstallFileList = getFileNameList(pmInstallDir);
                             %for localFile = pmLocalFileList
@@ -1510,15 +1511,15 @@ classdef paramonte %< dynamicprops
                                 + "by your system." ...
                                 ;
                 self.Err.warn();
-                isYes = getUserResponse ( newline ...
-                                        + "    Shall we quit MATLAB now to perform the aforementioned tasks (y/n)? " ...
-                                        );
-                if isYes
-                    exit;
-                else
-                    self.Err.msg = "Continuing with ParaMonte at the risk of failing to run any parallel simulations...";
-                    self.Err.warn();
-                end
+                %isYes = getUserResponse ( newline ...
+                %                        + "    Shall we quit MATLAB now to perform the aforementioned tasks (y/n)? " ...
+                %                        );
+                %if isYes
+                %    exit;
+                %else
+                %    self.Err.msg = "Continuing with ParaMonte at the risk of failing to run any parallel simulations...";
+                %    self.Err.warn();
+                %end
             end
         end
 
