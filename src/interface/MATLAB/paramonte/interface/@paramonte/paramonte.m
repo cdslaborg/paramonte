@@ -514,7 +514,7 @@ classdef paramonte %< dynamicprops
                         %    if status~=1; errorOccurred = true; end
                         %end
                         %if ~errorOccurred
-                            [status, errMsg, msgID] = copyfile(self.path.lib, installRootDir, "f");
+                            [status, errMsg, msgID] = copyfile(fullfile(self.path.lib,"*.dylib"), installRootDir, "f");
                             if status~=0; errorOccurred = true; end
                             %pmInstallFileList = getFileNameList(pmInstallDir);
                             %for localFile = pmLocalFileList
