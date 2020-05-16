@@ -348,6 +348,8 @@ classdef paramonte %< dynamicprops
             %
             self.objectName = inputname(1);
 
+            setenv('PATH', ['/usr/local/bin:',getenv('PATH')]);
+
             invalidArgumentProvided = false;
             if nargin==1
                 reset = true;
