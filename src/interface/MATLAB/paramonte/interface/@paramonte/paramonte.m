@@ -487,14 +487,14 @@ classdef paramonte %< dynamicprops
                     localInstallDirList = ["/usr/local/lib","/usr/lib"];
                     for localInstallDir = localInstallDirList
                         if isdir(localInstallDir)
-                            pmLocalDir = fullfile(localInstallDir,"paramonte");
+                            pmLocalDir = localInstallDir; % fullfile(localInstallDir,"paramonte");
                             errorOccurred = false;
                             if ~isdir(pmLocalDir)
                                 [status, errMsg, msgID] = mkdir(pmLocalDir);
                                 if status~=1; errorOccurred = true; end
                             end
-                            if ~errorOccurred && isempty(dir(fullfile(pmLocalDir,"libparamonte_*")))
-                                [status, errMsg, msgID] = copyfile(self.path.lib, pmLocalDir, "f");
+                            if ~errorOccurred && isempty(dir(fullfile(pmLocalDir,"libparamonte_*.dylib")))
+                                [status, errMsg, msgID] = copyfile(fullfile(self.path.lib,"libparamonte_*.dylib"), pmLocalDir, "f");
                                 if status~=0; errorOccurred = true; end
                             end
                             if errorOccurred
