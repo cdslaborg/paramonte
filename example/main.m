@@ -72,9 +72,9 @@ pmpd = pm.ParaDRAM();
 % also set as attributes of the pmpd.spec component of the object.
 % KEEP IN MIND: if you set pmpd.inputFile to any non-empty value, then
 % the inputFile will override any values specified via pmpd.spec properties.
-% comment the following line to specify the simulation input specifications 
-% solely from within this script:
-pmpd.inputFile = string(currentDir) + "/paramonte.in";
+% uncomment the following line to specify the simulation input specifications 
+% solely from within the external input file:
+% pmpd.inputFile = string(currentDir) + "/paramonte.in";
 
 % run the ParaDRAM simulation
 
