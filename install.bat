@@ -113,7 +113,7 @@ if not "%1"=="" (
             if defined LANG_LIST set DELIM=/
             set LANG_LIST=!LANG_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
-            for %%V in ( "c" "fortran" "python" "matlab" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
+            for %%V in ( "c" "fortran" "matlab" "python" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
             if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
         )
         shift
@@ -306,8 +306,8 @@ if defined LANG_LIST (
     if defined LTYPE_LIST (
         for %%G in ("!LANG_LIST:/=" "!") do (
             set LANG_IS_DYNAMIC=false
-            if %%~G==python set LANG_IS_DYNAMIC=true
             if %%~G==matlab set LANG_IS_DYNAMIC=true
+            if %%~G==python set LANG_IS_DYNAMIC=true
             if !LANG_IS_DYNAMIC!==true (
                 for %%L in ("!LTYPE_LIST:/=" "!") do (
                     if %%~L==static (
@@ -357,6 +357,7 @@ set TEMP=
 set C_IS_MISSING=true
 set Fortran_IS_MISSING=true
 set MATLAB_IS_MISSING=true
+set Python_IS_MISSING=true
 for %%G in ("!LANG_LIST:/=" "!") do (
     if %%~G==fortran (
         if !Fortran_IS_MISSING!==true (
@@ -378,16 +379,6 @@ for %%G in ("!LANG_LIST:/=" "!") do (
             set C_IS_MISSING=false
         )
     )
-    if %%~G==python (
-        if !C_IS_MISSING!==true (
-            if not defined TEMP (
-                set TEMP=%%~G
-            ) else (
-                set TEMP=!TEMP!/%%~G
-            )
-            set C_IS_MISSING=false
-        )
-    )
     if %%~G==matlab (
         if !MATLAB_IS_MISSING!==true (
             if not defined TEMP (
@@ -396,6 +387,16 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                 set TEMP=!TEMP!/%%~G
             )
             set MATLAB_IS_MISSING=false
+        )
+    )
+    if %%~G==python (
+        if !Python_IS_MISSING!==true (
+            if not defined TEMP (
+                set TEMP=%%~G
+            ) else (
+                set TEMP=!TEMP!/%%~G
+            )
+            set Python_IS_MISSING=false
         )
     )
 )

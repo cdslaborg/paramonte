@@ -504,7 +504,7 @@ classdef paramonte %< dynamicprops
         function installParaMonte(self)
             if isunix
                 %pmLocalFileList = getFileNameList(self.path.lib);
-                installRootDirList = ["/usr/local/lib","/usr/lib"];
+                installRootDirList = ["/usr/local/lib64","/usr/local/lib","/usr/lib64","/usr/lib"];
                 for installRootDir = installRootDirList
                     if isdir(installRootDir)
                         errorOccurred = false;
@@ -514,7 +514,9 @@ classdef paramonte %< dynamicprops
                         %    if status~=1; errorOccurred = true; end
                         %end
                         %if ~errorOccurred
-                            if self.platform.isMacOS; filePath = "*.dylib"; else; filePath = "*"; end
+                            filePath = "*";
+                            if self.platform.isLinux; filePath = "*.so*"; end
+                            if self.platform.isMacOS; filePath = "*.dylib"; end
                             [status, errMsg, msgID] = copyfile(fullfile(self.path.lib,filePath), installRootDir, "f");
                             if status~=0; errorOccurred = true; end
                             %pmInstallFileList = getFileNameList(pmInstallDir);
@@ -525,13 +527,13 @@ classdef paramonte %< dynamicprops
                             %    end
                             %end
                         %end
-                        if errorOccurred
+                        if errorOccurred && contains(installRootDir,"local")
                             self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
                                             + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
                                             + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
                             self.Err.warn();
-                        else
-                            break;
+                        %else
+                        %    break;
                         end
                     else
                         warning(newline + "Failed to detect the local library installation directory on this system. This is highly unusual. skipping..." + newline);
