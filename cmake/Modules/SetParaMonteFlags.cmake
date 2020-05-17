@@ -397,6 +397,14 @@ endif()
 set( Python_PATH "" CACHE STRING "Path to the Python interpreter" )
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ParaMonte Version Preprocessor Flag
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if (DEFINED ParaMonteVersion)
+    set( FPP_PARAMONTE_VERSION_FLAG -DPARAMONTE_VERSION="'${ParaMonteVersion}'" )
+endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # set interoperability mode preprocessor's flag (FPP_CFI_FLAG)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -528,7 +536,7 @@ elseif (gnu_compiler)
     set( FPP_FLAGS -cpp )
 endif()
 set(FPP_FLAGS 
-    "${FPP_FLAGS}" "${FPP_CFI_FLAG}" "${FPP_LANG_FLAG}" "${FPP_BUILD_FLAGS}" "${FPP_FCL_FLAGS}" "${FPP_DLL_FLAGS}" "${USER_PREPROCESSOR_MACROS}"
+    "${FPP_PARAMONTE_VERSION_FLAG}" "${FPP_FLAGS}" "${FPP_CFI_FLAG}" "${FPP_LANG_FLAG}" "${FPP_BUILD_FLAGS}" "${FPP_FCL_FLAGS}" "${FPP_DLL_FLAGS}" "${USER_PREPROCESSOR_MACROS}"
     CACHE STRING "Fortran compiler preprocessor flags" FORCE )
 #add_definitions(${FPP_FLAGS})
 

@@ -176,8 +176,8 @@ contains
 
         call PD%setupParaMonte  ( nd = ndim               &
                                 , name = PMSM%ParaDRAM    &
-                                , date = "May 23 2018"    &
-                                , version = "1.0.0"       &
+                               !, date = "May 23 2018"    &
+                               !, version = "1.0.0"       &
                                 , inputFile = inputFile   &
                                 )
         if (PD%Err%occurred) return

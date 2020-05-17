@@ -169,7 +169,8 @@ contains
     ! PM%InputFile%exists = .true. if the input file exists and opens and assigns to it a unit number and sets
     ! and PM%InputFile%isOpen = .true. if the opening process is successful.
     ! If the input file exists, the path used to open it successfully will be also written to InpuFile%Path%modified
-    subroutine setupParaMonte(PM,nd,name,date,version,inputFile)
+    !subroutine setupParaMonte(PM,nd,name,date,version,inputFile)
+    subroutine setupParaMonte(PM,nd,name,inputFile)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMonte
 #endif
@@ -181,7 +182,7 @@ contains
         implicit none
         class(ParaMonte_type), intent(inout)    :: PM
         integer(IK), intent(in)                 :: nd
-        character(*), intent(in)                :: name, date, version
+        character(*), intent(in)                :: name !, date, version
         character(*), intent(in), optional      :: inputFile
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@setupParaMonte()"
 
@@ -197,9 +198,17 @@ contains
         PM%Err%msg = ""
 
         PM%name     = name
-        PM%date     = date
         PM%brand    = TAB // TAB // PM%name
-        PM%version  = "Version " // version
+#if defined IFORT_ENABLED || __GFORTRAN__
+        PM%date     = "Build: " // __TIMESTAMP__
+#else
+        PM%date     = "Unknown Release Date"
+#endif
+#if defined PARAMONTE_VERSION
+        PM%version  = "Version " // PARAMONTE_VERSION
+#else
+        PM%version  = "Unknown Version"
+#endif
 
         ! setup general processor / coarray image variables
 
@@ -310,8 +319,12 @@ contains
         PM%Decor%text = &
         "\n\n"// &
         !PM%name // "\n" // &
-        "ParaMonte\n" // &
+        "ParaMonte\n"// &
+        "Plain Powerful Parallel\n"// &
+        "Monte Carlo Library\n"// &
+        "\n"// &
         PM%version // "\n" // &
+        "\n"// &
         PM%date // "\n" // &
         "\n"// &
         "Department of Physics\n"// &

@@ -57,11 +57,37 @@ set ParaMonte_BLD_ROOT_DIR=%cd%
 :: change directory to the folder containing this batch file 
 cd %~dp0
 
-:: fetch ParaMonte library version
+:: fetch ParaMonte library kernel version
+
+set "ParaMonteVersion="
 
 cd .\bmake\
 for /f "tokens=*" %%i in ('head.bat 1 "..\.VERSION"') do set "ParaMonteVersion=%%i"
 cd %~dp0
+
+set "FPP_PARAMONTE_VERSION_FLAG="
+if defined ParaMonteVersion (
+    set FPP_PARAMONTE_VERSION_FLAG=/define:PARAMONTE_VERSION='!ParaMonteVersion!'
+)
+
+:: fetch ParaMonte library kernel release date
+
+set dayName=!date:~0,3!
+set year=!date:~10,4!
+set day=!date:~7,2!
+
+set m=100
+for %%m in (Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec) do (
+    set /a m+=1
+    set month[!m:~-2!]=%%m
+)
+set monthNow=%date:~3,3%
+set monthNow=%monthNow: =%
+set monthName=!month[%monthNow%]!
+set ParaMonteRelease=!dayName!.!monthName!.!day!.!year!
+
+set "FPP_PARAMONTE_RELEASE_FLAG="
+set FPP_PARAMONTE_RELEASE_FLAG=/define:PARAMONTE_RELEASE='!ParaMonteRelease!'
 
 REM echo. 
 REM type .\auxil\.ParaMonteBanner
@@ -71,6 +97,7 @@ echo.
 echo. ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 echo. ::::                                                                                                                            ::::
 echo.                                       ParaMonte library version !ParaMonteVersion! build on Windows
+echo.                                                         !ParaMonteRelease!
 echo. ::::                                                                                                                            ::::
 echo. ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 echo.
@@ -116,6 +143,7 @@ endlocal
 :: set language interface preprocessor's flag
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+set "FPP_CFI_FLAG="
 if !CFI_ENABLED!==true (
     set FPP_CFI_FLAG=/define:CFI_ENABLED
     REM XXX INTERFACE_LANGUAGE probably needs special care here
@@ -273,7 +301,8 @@ if !COMPILER_SUITE!==intel (
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 REM echo. FPP_FLAGS_EXTRA = !FPP_FLAGS_EXTRA!
 REM /define:IS_ENABLED
-set FPP_FLAGS=/fpp !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !USER_PREPROCESSOR_MACROS! !FPP_FLAGS_EXTRA!
+set FPP_FLAGS=/fpp /define:PARAMONTE_VERSION=^"'!ParaMonteVersion!'^" !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !USER_PREPROCESSOR_MACROS! !FPP_FLAGS_EXTRA!
+REM set FPP_FLAGS=/fpp !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !USER_PREPROCESSOR_MACROS! !FPP_FLAGS_EXTRA!
 :: to save the intermediate files use this on the command line: FPP /Qsave_temps <original file> <intermediate file>
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

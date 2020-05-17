@@ -105,6 +105,13 @@ export ARCHITECTURE
 
 read -r ParaMonteVersion < .VERSION
 
+# set ParaMonte version (to be used by cmake)
+
+unset FPP_PARAMONTE_VERSION_FLAG
+if [ -z ${ParaMonteVersion+x} ]; then
+    export ParaMonteVersion
+)
+
 #echo "$(cat ./auxil/.ParaMonteBanner)"
 
 echo >&2 
