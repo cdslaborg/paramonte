@@ -110,7 +110,7 @@ read -r ParaMonteVersion < .VERSION
 unset FPP_PARAMONTE_VERSION_FLAG
 if [ -z ${ParaMonteVersion+x} ]; then
     export ParaMonteVersion
-)
+fi
 
 #echo "$(cat ./auxil/.ParaMonteBanner)"
 
