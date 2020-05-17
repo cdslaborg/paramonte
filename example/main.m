@@ -64,7 +64,6 @@ logFunc = logfunc();
 % instead of the following:
 pm = paramonte();
 
-
 % create a ParaDRAM simulation object
 
 pmpd = pm.ParaDRAM();
