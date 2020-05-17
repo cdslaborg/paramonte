@@ -67,7 +67,8 @@
 %   ----------
 %
 %       kernelType (optional)
-%           An optional string with only one possible value "matlab".
+%
+%           An optional string with only one possible value "matdram".
 %           If specified, the MATLAB implementation of the ParaMonte 
 %           kernel routines will be used. Currently, only the ParaDRAM
 %           routine has an equivalent implementation in pure MATLAB.
@@ -276,15 +277,16 @@ classdef paramonte %< dynamicprops
 
             errorOccurred = false;
             matlabKernelEnabled = false;
+            matlabKernelName = "matdram";
             if nargin==1
                 if isa(varargin{1},"char")
-                    if strcmpi(varargin{1},"matlab")
+                    if strcmpi(varargin{1},matlabKernelName)
                         matlabKernelEnabled = true;
                     else
                         errorOccurred = true;
                     end
                 elseif isa(varargin{1},'string')
-                    if strcmpi(varargin{1},"matlab")
+                    if strcmpi(varargin{1},matlabKernelName)
                         matlabKernelEnabled = true;
                     else
                         errorOccurred = true;
@@ -294,9 +296,9 @@ classdef paramonte %< dynamicprops
                 errorOccurred = true;
             end
             if errorOccurred
-                self.Err.msg    = "The paramonte class constructor takes at most one argument of value ""matlab"". You have entered:" + newline + newline ...
+                self.Err.msg    = "The paramonte class constructor takes at most one argument of value """ + matlabKernelName + """. You have entered:" + newline + newline ...
                                 + "    " + string(strrep(join(string(varargin)," "),'\','\\')) ...
-                                + "Pass the input value ""matlab"" only if you know what it means. Otherwise, do not pass any input values. " ...
+                                + "Pass the input value """ + matlabKernelName + """ only if you know what it means. Otherwise, do not pass any input values. " ...
                                 + "ParaMonte will properly set things up for you.";
                 self.Err.abort()
             end
