@@ -611,8 +611,13 @@ contains
 #if defined IFORT_ENABLED
             use ifport ! only: getcwd
 #endif
+#if defined IFORT_ENABLED || __GFORTRAN__
             PM%Err%stat = getcwd(currentWorkingDir)
             currentWorkingDir = trim(adjustl(currentWorkingDir))
+#else
+            PM%Err%stat = 0_IK
+            currentWorkingDir = "."
+#endif
         end block
         if (PM%Err%stat/=0) then
             PM%Err%msg = PROCEDURE_NAME//": Error occurred while fetching the current working directory via getcwd()."//NLC

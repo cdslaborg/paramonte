@@ -1073,7 +1073,7 @@ classdef paramonte %< dynamicprops
             if self.platform.isMacOS; fileName = fileName + "macos"; end
             if self.platform.isLinux; fileName = fileName + "linux"; end
             text = fileread(fullfile(self.path.auxil,fileName));
-            dependencyList = [string(strsplit(text,newline))];
+            dependencyList = [string(strtrim(strsplit(text,newline)))];
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1094,13 +1094,16 @@ classdef paramonte %< dynamicprops
                 for dependency = self.prereqs.list
                     if ~contains(dependency,"!") % avoid comments
                         fullFilePath = fullfile( self.path.lib, dependency );
-                        fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.dump("kernel") + "/" + dependency);
+                        fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.kernel.dump() + "/" + dependency);
                         if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
                         if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
                         if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
                             self.prereqs.mpi.intel.fullFileName = string( dependency );
                             self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
-                            self.prereqs.mpi.intel.version = string( dependency{1}(length(intelMpiFilePrefix)+1,end-length(intelMpiFileSuffix)+1) );
+                            self.prereqs.mpi.intel.version = string( dependency{1}(1:end-4) );
+                            mpiFileName = self.prereqs.mpi.intel.version;
+                            self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
+                            self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
                         end
                     end
                 end
@@ -1122,48 +1125,45 @@ classdef paramonte %< dynamicprops
                         self.Err.warn();
                     else
                         self.writeVerificationStatusFile("True");
-                        self.Err.msg    = "Intel MPI library installation appears to have succeeded. " + newline ...
+                        self.Err.msg    = "The Intel MPI library installation appears to have succeeded. " + newline ...
                                         + "Now close your MATLAB environment and the command-line interface " + newline ...
-                                        + "and reopen a new fresh (Anaconda) command prompt.";
+                                        + "and reopen a new fresh command prompt.";
                         self.Err.note();
                     end
                 end
 
                 if self.platform.isLinux
 
-                    try
+                    disp("untarring "+self.prereqs.mpi.intel.fullFilePath + " at " + self.path.lib);
+                    untar(self.prereqs.mpi.intel.fullFilePath,self.path.lib);
+                    %try
+                    %catch
+                    %    self.Err.msg    = "Unzipping of Intel MPI runtime library tarball failed." + newline ...
+                    %                    + "Make sure you have tar software installed on your system and try again.";
+                    %    self.Err.abort();
+                    %end
 
-                        untar(self.prereqs.mpi.intel.fullFilePath,self.path.lib);
-                        mpiExtractDir = fullfile(self.path.lib, mpiFileName);
+                    mpiExtractDir = fullfile(self.path.lib, mpiFileName);
+                    self.Err.msg    = ..."If needed, use the following serial number when asked by the installer:" + newline + newline ...
+                                    ...+ "    C44K-74BR9CFG" + newline + newline ...
+                                    "When asked to choose the installation directory: if this is your personal computer, choose " + newline + newline ...
+                                    + "    'install as root'" + newline + newline ...
+                                    + "in the graphical user interface that appears in your session. " + newline + newline ...
+                                    + "Otherwise, if you are using ParaMonte on a public server, " + newline ...
+                                    + "for example, on a supercomputer, choose the third option:" + newline + newline ...
+                                    + "   'install as current user'";
+                    self.Err.note();
 
-                        self.Err.msg    = "If needed, use the following serial number when asked by the installer:" + newline + newline ...
-                                        + "    C44K-74BR9CFG" + newline + newline ...
-                                        + "If this is your personal computer, choose " + newline + newline ...
-                                        + "    'install as root'" + newline + newline ...
-                                        + "in the graphical user interface that appears in your session. " + newline + newline ...
-                                        + "Otherwise, if you are using ParaMonte on a public server, " + newline ...
-                                        + "for example, on a supercomputer, choose the third option:" + newline + newline ...
-                                        + "   'install as current user'";
-                        self.Err.note();
-
-                        mpiInstallScriptPath = fullfile( mpiExtractDir, "install_GUI.sh");
-                        if ~isfile(mpiInstallScriptPath)
-                            self.Err. msg   = "Internal error occurred." + newline ...
-                                            + "Failed to detect the Intel MPI installation Bash script." + newline ...
-                                            + "Please report this issue at " + newline + newline ...
-                                            + "    " + self.website.github.issues.url + newline + newline ...
-                                            + "Visit, " ...
-                                            + "    " + self.website.home.url + newline + newline ...
-                                            + "for instructions to build the ParaMonte library on your system.";
-                            self.Err.abort();
-                        end
-
-                    catch
-
-                        self.Err.msg    = "Unzipping of Intel MPI runtime library tarball failed." + newline ...
-                                        + "Make sure you have tar software installed on your system and try again.";
+                    mpiInstallScriptPath = fullfile( mpiExtractDir, "install.sh");
+                    if ~isfile(mpiInstallScriptPath)
+                        self.Err. msg   = "Internal error occurred." + newline ...
+                                        + "Failed to detect the Intel MPI installation Bash script." + newline ...
+                                        + "Please report this issue at " + newline + newline ...
+                                        + "    " + self.website.github.issues.url + newline + newline ...
+                                        + "Visit, " ...
+                                        + "    " + self.website.home.url + newline + newline ...
+                                        + "for instructions to build the ParaMonte library on your system.";
                         self.Err.abort();
-
                     end
 
                     [errorOccurred, ~] = system("chmod +x " + mpiInstallScriptPath, "-echo");
@@ -1175,7 +1175,6 @@ classdef paramonte %< dynamicprops
                     end
 
                     originalDir = cd(mpiExtractDir);
-
                     [errorOccurred, ~] = system(mpiInstallScriptPath, "-echo");
                     if errorOccurred
                         self.Err.msg    = "Intel MPI runtime libraries installation for " + newline ...
