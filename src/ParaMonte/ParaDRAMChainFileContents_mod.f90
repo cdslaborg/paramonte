@@ -410,7 +410,6 @@ contains
 
             if (allocated(Record%value)) deallocate(Record%value) ! set up the record string that keeps the contents of each line
             if (isBinary) then
-!write(*,*) "lenHeader: ", lenHeader
                 allocate( character(lenHeader) :: Record%value )
                 read(chainFileUnit) Record%value
             else
