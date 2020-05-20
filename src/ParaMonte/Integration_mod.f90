@@ -134,15 +134,14 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadRombOpen
 #endif
-
         implicit none
-        integer(IK), intent(in)     :: nRefinement
-        real(RK), intent(in)        :: lowerLim,upperLim,maxRelativeError
-        real(RK), intent(out)       :: integral, relativeError
-        integer(IK), intent(out)    :: numFuncEval, ierr
+        integer(IK) , intent(in)    :: nRefinement
+        real(RK)    , intent(in)    :: lowerLim,upperLim,maxRelativeError
+        real(RK)    , intent(out)   :: integral, relativeError
+        integer(IK) , intent(out)   :: numFuncEval, ierr
         integer(IK)                 :: refinementStage,km,numFuncEvalNew
-        integer, parameter          :: NSTEP = 20_IK
-        real(RK), parameter         :: ONE_OVER_NINE = 1._RK / 9._RK
+        integer     , parameter     :: NSTEP = 20_IK
+        real(RK)    , parameter     :: ONE_OVER_NINE = 1._RK / 9._RK
         real(RK)                    :: h(NSTEP+1),s(NSTEP+1)
         procedure(integrand_proc)   :: getFunc
         procedure(integrator_proc)  :: integrate

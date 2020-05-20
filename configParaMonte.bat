@@ -55,7 +55,7 @@ if not defined              ParaMonte_FLAG_CLEANUP_ENABLED set              Para
 ::                   fortran:   Fast compilation, used only for testing purposes during the development. No optimizations performed.
 ::                    matlab:   Used only for development step. No optimizations performed.
 ::                    python:   Used only for development step. No optimizations performed.
-if not defined                          INTERFACE_LANGUAGE set                          INTERFACE_LANGUAGE=fortran
+if not defined                          INTERFACE_LANGUAGE set       INTERFACE_LANGUAGE=fortran
 
 :: define build type:
 ::                   release:   Full-blown highly optimized production-level library build
