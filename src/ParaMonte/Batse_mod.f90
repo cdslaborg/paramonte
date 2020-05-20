@@ -25,7 +25,7 @@
 !
 !   As per the ParaMonte library license agreement terms,
 !   if you use any parts of this library for any purposes,
-!   we ask you to acknowledge the ParaMonte library's usage
+!   we ask you to acknowledge the use of the ParaMonte library
 !   in your work (education/research/industry/development/...)
 !   by citing the ParaMonte library as described on this page:
 !
@@ -76,7 +76,7 @@ module Batse_mod
     type(GRB_type) :: GRB
 #endif
 
-    real(RK), allocatable :: Trigger(:)
+    integer(RK), allocatable :: Trigger(:)
     !integer(IK) :: Trigger(NLGRB)
     !integer(IK) :: TriggerSGRB(NSGRB)
 

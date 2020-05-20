@@ -61,7 +61,7 @@ Citing ParaMonte
 
 The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.  
   
-As per the ParaMonte library license agreement terms, if you use any parts of this library for any purposes, we ask you to acknowledge the ParaMonte library's usage in your work (education/research/industry/development/...) by citing the ParaMonte library's main publications as listed here:  
+As per the ParaMonte library license agreement terms, if you use any parts of this library for any purposes, we ask you to acknowledge the use of the ParaMonte library in your work (education/research/industry/development/...) by citing the ParaMonte library's main publications as listed here:  
   
 **BibTeX citation entries:**  
   
