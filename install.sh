@@ -35,17 +35,20 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-# NOTE: Do not change the contents of this file unless you know what the consequences are.
-# This is the Bash script file that builds objects, dynamic libraries, 
-# as well as the test and example binaries of the ParaMonte library on non-Windows systems.
-# Upon invocation of this file from a Bash command-line interface, 
-# this script will parse the user-provided flags and their values 
-# to build the ParaMonte library.
-# to redirect output to the external file install.sh.out, try:
-# install.sh >install.sh.out 2>&1
-# to redirect output to the external file install.sh.out and run the installation in background, try:
-# install.sh >install.sh.out 2>&1 &
-# jobs; disown
+#   NOTE: Do not change the contents of this file unless you know what the consequences are.
+#   This is the Bash script file that builds objects, dynamic libraries, 
+#   as well as the test and example binaries of the ParaMonte library on non-Windows systems.
+#   Upon invocation of this file from a Bash command-line interface, 
+#   this script will parse the user-provided flags and their values 
+#   to build the ParaMonte library.
+#   to redirect output to the external file install.sh.out, try:
+#
+#       install.sh >install.sh.out 2>&1
+#
+#   to redirect output to the external file install.sh.out and run the installation in background, try:
+#
+#       install.sh >install.sh.out 2>&1 &
+#       jobs; disown
 
 FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
