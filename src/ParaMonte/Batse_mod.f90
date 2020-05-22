@@ -43,21 +43,32 @@ module Batse_mod
     character(*), parameter :: MODULE_NAME = "@Batse_mod"
 
     integer(IK) , parameter :: NLGRB = 1366, NSGRB = 565, NVAR = 4
-    real(RK)    , parameter :: MIN_LOG10PH53_4_LOGPBOLZERO  = 4.92_RK
     real(RK)    , parameter :: MAX_LOG10PH53_4_LOGPBOLZERO  = 6.318167895318538_RK
-    real(RK)    , parameter :: MIN_LOGPH53_4_LOGPBOLZERO    = MIN_LOG10PH53_4_LOGPBOLZERO * LN10
+    real(RK)    , parameter :: MIN_LOG10PH53_4_LOGPBOLZERO  = 4.92_RK
     real(RK)    , parameter :: MAX_LOGPH53_4_LOGPBOLZERO    = MAX_LOG10PH53_4_LOGPBOLZERO * LN10
+    real(RK)    , parameter :: MIN_LOGPH53_4_LOGPBOLZERO    = MIN_LOG10PH53_4_LOGPBOLZERO * LN10
+    real(RK)    , parameter :: DIF_LOGPH53_4_LOGPBOLZERO    = MAX_LOGPH53_4_LOGPBOLZERO - MIN_LOGPH53_4_LOGPBOLZERO
 
     ! Parameters for the effective peak flux of SGRBs (P64ms conversion to P1024):
 
     ! The scale of the change in BATSE efficiency for different GRB durations.
-    real(RK)    , parameter :: ERFC_HEIGHT                  = LN10 * (+0.282313526464596_RK)
+    real(RK)    , parameter :: THRESH_ERFC_BASE             = +0.146314238936889_RK
+
+    ! The scale of the change in BATSE efficiency for different GRB durations.
+    real(RK)    , parameter :: THRESH_ERFC_AMP              = +0.570285374263156_RK
 
     ! Mean duration in the Error function used to model the connection between the peak fluxes in 64 and 1024 ms.
-    real(RK)    , parameter :: ERFC_AVG                     = LN10 * (-0.483553339256463_RK)
+    real(RK)    , parameter :: THRESH_ERFC_AVG              = -0.480811530417719_RK
 
     ! scale of the duration in the Error function used to model the connection between the peak fluxes in 64 and 1024 ms.
-    real(RK)    , parameter :: ERFC_STD                     = LN10 * (+1.051469898469480_RK)
+    real(RK)    , parameter :: THRESH_ERFC_STD              = +1.292443569094922_RK
+
+    ! The height of the ERFC function.
+    real(RK)    , parameter :: THRESH_ERFC_HEIGHT           = 2_IK * THRESH_ERFC_AMP
+
+    ! correction that must be added to logPbol64ms to convert it to effective peak flux.
+    ! Effective LogPbol limit above which trigger efficiency is 100%, for any Log(Epk) and Log(dur). It is equivalent to maximum Log(Pbol) at very long durations.
+    real(RK)    , parameter :: THRESH_LOGPBOL64_CORRECTION  = DIF_LOGPH53_4_LOGPBOLZERO - MIN_LOGPH53_4_LOGPBOLZERO + THRESH_ERFC_HEIGHT
 
     ! GRB attributes
     type :: Event_type
@@ -310,6 +321,26 @@ contains
         real(RK), intent(in)    :: logEpk, logPF53
         real(RK)                :: logPbol
         logPbol = logPF53 - getLogPF53(logEpk,0._RK)
+    end function getLogPbol
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    pure function getLogEffectivePeakPhotonFlux(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getEffectivePeakPhotonFlux
+#endif
+        ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
+        ! To do so, the observed T90 duration of the event is also necessary as input.
+        ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
+        use, intrinsic :: iso_fortran_env, only: real32
+        use Constants_mod, only: RK
+        implicit none
+        real(RK), intent(in)    :: logPeakPhotonFlux64ms, logT90
+        real(RK)                :: logEffectivePeakPhotonFlux
+        logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms &
+                                    - THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=real32)) 
+                                  ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms
     end function getLogPbol
 
 !***********************************************************************************************************************************
