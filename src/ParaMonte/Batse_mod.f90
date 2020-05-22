@@ -87,7 +87,7 @@ module Batse_mod
     type(GRB_type) :: GRB
 #endif
 
-    integer(RK), allocatable :: Trigger(:)
+    integer(IK), allocatable :: Trigger(:)
     !integer(IK) :: Trigger(NLGRB)
     !integer(IK) :: TriggerSGRB(NSGRB)
 
@@ -341,7 +341,7 @@ contains
         logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms &
                                     - THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=real32)) 
                                   ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms
-    end function getLogPbol
+    end function getLogEffectivePeakPhotonFlux
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
