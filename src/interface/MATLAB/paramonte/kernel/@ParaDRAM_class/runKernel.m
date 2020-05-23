@@ -212,16 +212,19 @@ function runKernel  ( self          ...
                                                                                             ) ;
 
             else % blockFreshDryRun : in restart mode: determine the correct value of co_proposalFound_samplerUpdateOccurred(1)
-
-                if self.Stats.NumFunCall.accepted == self.Chain.Count.compact
+            
+                numFunCallAcceptedPlusOne = self.Stats.NumFunCall.accepted + 1;
+                if numFunCallAcceptedPlusOne == self.Chain.Count.compact
                     self.isFreshRun                                     = true;
+                    self.writeOutput();
                     self.isDryRun                                       = ~self.isFreshRun;
-                    self.Chain.Weight(self.Stats.NumFunCall.accepted)   = 0;
-                    SumAccRateSinceStart.acceptedRejected               = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted-1) * self.Stats.NumFunCall.acceptedRejected;
+                    self.Chain.Weight(numFunCallAcceptedPlusOne)        = 0;
+                    SumAccRateSinceStart.acceptedRejected               = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted) * self.Stats.NumFunCall.acceptedRejected;
                     if delayedRejectionRequested
-                        SumAccRateSinceStart.acceptedRejectedDelayed    = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted-1) * self.Stats.NumFunCall.acceptedRejectedDelayed;
+                        SumAccRateSinceStart.acceptedRejectedDelayed    = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted) * self.Stats.NumFunCall.acceptedRejectedDelayed;
                     end
                 end
+                self.Stats.NumFunCall.accepted                          = numFunCallAcceptedPlusOne;
                 numFunCallAcceptedPlusOne                               = self.Stats.NumFunCall.accepted + 1;
 
             end % blockFreshDryRun
@@ -264,6 +267,29 @@ function runKernel  ( self          ...
             counterPRP = 0;
             self.reportProgress(); % xxx
         end
+
+        %*******************************************************************************************************************
+        %********************************************* last output write ***************************************************
+
+        if self.Stats.NumFunCall.accepted == self.SpecMCMC.chainSize.val    % blockLastSample: co_missionAccomplished = true
+
+            % on 3 images Windows, sustituting co_missionAccomplished with the following leads to 10% less communication overhead for 1D Gaussian example
+            % on 3 images Linux  , sustituting co_missionAccomplished with the following leads to 16% less communication overhead for 1D Gaussian example
+            % on 5 images Linux  , sustituting co_missionAccomplished with the following leads to 11% less communication overhead for 1D Gaussian example
+
+            co_proposalFound_samplerUpdateOccurred(1) = -1; % equivalent to co_missionAccomplished = true
+            inverseProgressReportPeriod = 1 / (self.Stats.NumFunCall.acceptedRejected - numFunCallAcceptedRejectedLastReport);
+
+            if self.isFreshRun  % blockLastOutputWrite
+                self.writeOutput();
+            end % blockLastOutputWrite
+
+            self.reportProgress();
+
+        end % blockLastSample
+
+        %********************************************* last output write ***************************************************
+        %*******************************************************************************************************************
 
         %*******************************************************************************************************************
         %******************************************** Proposal Adaptation **************************************************
@@ -312,8 +338,13 @@ function runKernel  ( self          ...
                                                                                             ) ;
 
             self.Chain.Weight(self.Stats.NumFunCall.accepted) = dummy;  % needed for the restart mode, not needed in the fresh run
-            if self.Stats.NumFunCall.accepted ~= numFunCallAcceptedLastAdaptation
-                self.Chain.Weight(numFunCallAcceptedLastAdaptation) = self.Chain.Weight(numFunCallAcceptedLastAdaptation) + lastStateWeight;
+            if self.Stats.NumFunCall.accepted == numFunCallAcceptedLastAdaptation
+                %adaptationMeasure = adaptationMeasure + adaptationMeasureDummy;    % this is the worst-case upper-bound
+                self.Chain.Adaptation(self.Stats.NumFunCall.accepted)   = self.Chain.Adaptation(self.Stats.NumFunCall.accepted) + adaptationMeasure; % this is the worst-case upper-bound
+            else
+                !adaptationMeasure = adaptationMeasureDummy
+                self.Chain.Adaptation(self.Stats.NumFunCall.accepted)   = adaptationMeasure;
+                self.Chain.Weight(numFunCallAcceptedLastAdaptation)     = self.Chain.Weight(numFunCallAcceptedLastAdaptation) + lastStateWeight;
             end
             if samplerUpdateSucceeded
                 lastStateWeight = currentStateWeight;   % self.Chain.Weight(self.Stats.NumFunCall.accepted) % informative, do not remove
@@ -322,115 +353,11 @@ function runKernel  ( self          ...
 
             counterAUP = 0;
             counterAUC = counterAUC + 1;
-            if counterAUC == self.SpecDRAM.adaptiveUpdateCount.val, chainAdaptationMeasure = 0; end
+            %if counterAUC == self.SpecDRAM.adaptiveUpdateCount.val, chainAdaptationMeasure = 0; end
 
         end % blockSamplerAdaptation
 
         %******************************************** Proposal Adaptation **************************************************
-        %*******************************************************************************************************************
-
-
-        %*******************************************************************************************************************
-        %************************************************* output write ****************************************************
-
-        % if new point has been sampled, write the previous sampled point to output file
-
-        if self.isFreshRun && co_proposalFound_samplerUpdateOccurred(1) == 1 && lastState > 0   % blockOutputWrite
-
-            if self.SpecBase.chainFileFormat.isCompact
-                fprintf(self.ChainFile.unit , self.ChainFile.format                     ...
-                                            , self.Chain.ProcessID  (lastState)         ...
-                                            , self.Chain.DelRejStage(lastState)         ...
-                                            , self.Chain.MeanAccRate(lastState)         ...
-                                            , self.Chain.Adaptation (lastState)         ...
-                                            , self.Chain.BurninLoc  (lastState)         ...
-                                            , self.Chain.Weight     (lastState)         ...
-                                            , self.Chain.LogFunc    (lastState)         ...
-                                            , self.Chain.State (1:nd,lastState)         ...
-                                            ) ;
-            elseif self.SpecBase.chainFileFormat.isBinary
-
-                fprintf(self.ChainFile.unit , self.ChainFile.format                     ...
-                                            , self.Chain.ProcessID  (lastState)         ...
-                                            , self.Chain.DelRejStage(lastState)         ...
-                                            , self.Chain.MeanAccRate(lastState)         ...
-                                            , self.Chain.Adaptation (lastState)         ...
-                                            , self.Chain.BurninLoc  (lastState)         ...
-                                            , 1                                         ...
-                                            , self.Chain.LogFunc    (lastState)         ...
-                                            , self.Chain.State (1:nd,lastState)         ...
-                                            ) ;
-            elseif self.SpecBase.chainFileFormat.isVerbose
-
-                for j = 1 : self.Chain.Weight(lastState)
-                fprintf(self.ChainFile.unit , self.ChainFile.format                     ...
-                                            , self.Chain.ProcessID  (lastState)         ...
-                                            , self.Chain.DelRejStage(lastState)         ...
-                                            , self.Chain.MeanAccRate(lastState)         ...
-                                            , self.Chain.Adaptation (lastState)         ...
-                                            , self.Chain.BurninLoc  (lastState)         ...
-                                            , 1                                         ...
-                                            , self.Chain.LogFunc    (lastState)         ...
-                                            , self.Chain.State (1:nd,lastState)         ...
-                                            ) ;
-                end
-
-            end
-
-        end % blockOutputWrite
-
-        %************************************************* output write ****************************************************
-        %*******************************************************************************************************************
-
-        %*******************************************************************************************************************
-        %********************************************* last output write ***************************************************
-
-        if self.Stats.NumFunCall.accepted == self.SpecMCMC.chainSize.val    % blockLastSample: co_missionAccomplished = true
-
-            % on 3 images Windows, sustituting co_missionAccomplished with the following leads to 10% less communication overhead for 1D Gaussian example
-            % on 3 images Linux  , sustituting co_missionAccomplished with the following leads to 16% less communication overhead for 1D Gaussian example
-            % on 5 images Linux  , sustituting co_missionAccomplished with the following leads to 11% less communication overhead for 1D Gaussian example
-
-            co_proposalFound_samplerUpdateOccurred(1) = -1; % equivalent to co_missionAccomplished = true
-            inverseProgressReportPeriod = 1 / (self.Stats.NumFunCall.acceptedRejected - numFunCallAcceptedRejectedLastReport);
-
-            if self.isFreshRun  % blockLastOutputWrite
-
-                % write the last sampled point to the output files
-
-                lastState = self.Stats.NumFunCall.accepted;
-
-                if self.SpecBase.chainFileFormat.isCompact || self.SpecBase.chainFileFormat.isVerbose
-                    fprintf(self.ChainFile.unit , self.ChainFile.format                 ...
-                                                , self.Chain.ProcessID  (lastState)     ...
-                                                , self.Chain.DelRejStage(lastState)     ...
-                                                , self.Chain.MeanAccRate(lastState)     ...
-                                                , self.Chain.Adaptation (lastState)     ...
-                                                , self.Chain.BurninLoc  (lastState)     ...
-                                                , 1                                     ...
-                                                , self.Chain.LogFunc    (lastState)     ...
-                                                , self.Chain.State (1:nd,lastState)     ...
-                                                ) ;
-                elseif self.SpecBase.ChainFileFormat.isBinary
-                    fprintf(self.ChainFile.unit , self.ChainFile.format                 ...
-                                                , self.Chain.ProcessID  (lastState)     ...
-                                                , self.Chain.DelRejStage(lastState)     ...
-                                                , self.Chain.MeanAccRate(lastState)     ...
-                                                , self.Chain.Adaptation (lastState)     ...
-                                                , self.Chain.BurninLoc  (lastState)     ...
-                                                , 1                                     ...
-                                                , self.Chain.LogFunc    (lastState)     ...
-                                                , self.Chain.State (1:nd,lastState)     ...
-                                                ) ;
-                end
-
-            end % blockLastOutputWrite
-
-            self.reportProgress();
-
-        end % blockLastSample
-
-        %********************************************* last output write ***************************************************
         %*******************************************************************************************************************
 
         if co_proposalFound_samplerUpdateOccurred(1) == -1, break; end % loopMarkovChain: we are done: co_missionAccomplished = true
