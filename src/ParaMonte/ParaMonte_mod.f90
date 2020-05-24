@@ -188,7 +188,7 @@ contains
 
         PM%Timer = Timer_type(PM%Err)
         if (PM%Err%occurred) then
-            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while setting up " // PM%name // "timer."//NLC// PM%Err%msg
+            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while setting up the " // PM%name // "timer."//NLC// PM%Err%msg
         end if
         PM%nd%val = nd
         PM%LogFile%unit = output_unit   ! temporarily set the report file to stdout.
@@ -388,7 +388,7 @@ contains
         ! report the interface type to ParaMonte
 
 !#if defined CFI_ENABLED
-        call PM%Decor%writeDecoratedText( text="\n"//PM%name//" library interface specifications\n" &
+        call PM%Decor%writeDecoratedText( text="\nParaMonte library interface specifications\n" &
                                         , symbol="*" &
                                         , width=132 &
                                         , thicknessHorz=4 &
@@ -406,7 +406,7 @@ contains
 
         ! report the ParaMonte compiler version and options
 
-        call PM%Decor%writeDecoratedText( text="\n"//PM%name//" library compiler version\n" &
+        call PM%Decor%writeDecoratedText( text="\nParaMonte library compiler version\n" &
                                         , symbol="*" &
                                         , width=132 &
                                         , thicknessHorz=4 &
@@ -421,7 +421,7 @@ contains
             write(PM%LogFile%unit,"(*(g0))") PM%Decor%List(i)%record
         end do
 
-        call PM%Decor%writeDecoratedText( text="\n"//PM%name//" library compiler options\n" &
+        call PM%Decor%writeDecoratedText( text="\nParaMonte library compiler options\n" &
                                         , symbol="*" &
                                         , width=132 &
                                         , thicknessHorz=4 &
@@ -465,7 +465,7 @@ contains
 #endif
         implicit none
         class(ParaMonte_type), intent(inout) :: PM
-        call PM%Decor%writeDecoratedText( text = "\nSetting up " // PM%name // " environment\n" &
+        call PM%Decor%writeDecoratedText( text = "\nSetting up the " // PM%name // " simulation environment\n" &
                                         , marginTop = 1     &
                                         , marginBot = 1     &
                                         , newline = "\n"    &
