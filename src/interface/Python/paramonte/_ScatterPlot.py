@@ -291,7 +291,7 @@ class ScatterPlot:
             if "alpha" not in self.scatter_kws.keys(): self.scatter_kws["alpha"] = 1
             if "edgecolor" not in self.scatter_kws.keys(): self.scatter_kws["edgecolor"] = ""
             if "zorder" not in self.scatter_kws.keys(): self.scatter_kws["zorder"] = 2
-            #if cEnabled: self.scatter_kws["c"] = cdata
+            #if cEnabled: self.scatter_kws["c"] = list(cdata)
         elif scatterEnabled:
             raise Exception ( "The input argument 'scatter_kws' must be None or a dictionary,\n"
                             + "each (key,value) pair of which represents an (attribute,value)\n"
