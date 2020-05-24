@@ -33,7 +33,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 function arch = getArch()
-    computerArch = computer("arch");
+    computerArch = computer('arch');
     if contains(computerArch,"64")
         arch = "x64";
     elseif contains(computerArch,"32")

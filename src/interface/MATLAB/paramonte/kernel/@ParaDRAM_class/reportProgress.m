@@ -22,19 +22,24 @@ function reportProgress(self)
                                         , estimatedTimeToFinishInSeconds            ...
                                         ) ;
     else
-        fprintf ( self.TimeFile.unit    , self.TimeFile.format                      ...
-                                        , numFunCallAcceptedRejectedLastReport      ...
-                                        , numFunCallAccepted_dummy                  ...
-                                        , meanAccRateSinceStart                     ...
-                                        , meanAccRateSinceLastReport                ...
-                                        , timeElapsedSinceLastReportInSeconds       ...
-                                        , timeElapsedUntilLastReportInSeconds       ...
-                                        , estimatedTimeToFinishInSeconds            ...
-                                        ) ;
+
+        Record.value    = fgets(self.TimeFile.unit);
+        Record.Parts    = split(strtrim(Record.value), self.SpecBase.outputDelimiter.val);
+        
+        numFunCallAcceptedRejectedLastReport    = str2num(Record.Parts{1});
+        numFunCallAccepted_dummy                = str2num(Record.Parts{2});
+        meanAccRateSinceStart                   = str2num(Record.Parts{3});
+        meanAccRateSinceLastReport              = str2num(Record.Parts{4});
+        timeElapsedSinceLastReportInSeconds     = str2num(Record.Parts{5});
+        timeElapsedUntilLastReportInSeconds     = str2num(Record.Parts{6});
+        estimatedTimeToFinishInSeconds          = str2num(Record.Parts{7});
+
+        SumAccRateSinceStart.acceptedRejected   = meanAccRateSinceStart * numFunCallAcceptedRejectedLastReport;
+
     end
 
     % report progress in the standard output
-    
+
     formatStr   = "            %14d / %8d" + "   " + "%16.4f / %6.4f" + "   " + "%14.4f / %8.4f" ;
     if self.Image.isFirst
         fprintf ( 1, repmat('\b', 1, 93));

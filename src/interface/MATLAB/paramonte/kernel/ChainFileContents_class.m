@@ -109,7 +109,7 @@ classdef ChainFileContents_class < handle
                 elseif lower(chainFileForm) == "compact"
                     isCompact   = true;
                 elseif lower(chainFileForm) == "verbose"
-                    isVerbose   = false
+                    isVerbose   = false;
                 else
                     Err.occurred    = true;
                     Err.msg         = FUNCTION_NAME + ": Unrecognized chain file form: " + chainFileForm;
@@ -129,10 +129,10 @@ classdef ChainFileContents_class < handle
 
                 if chainFileUnit == -1
                     Err.occurred    = true;
-                    Err.msg         = FUNCTION_NAME + ": Unable to poen the file located at: " + chainFilePathTrimmed + newline;
+                    Err.msg         = FUNCTION_NAME + ": Unable to open the file located at: " + chainFilePathTrimmed + newline;
                     return
-                else
-                    fclose(chainFileUnit);
+%                else
+%                    fclose(chainFileUnit);
                 end
 
                 % get the number of records in file, minus header line
@@ -141,43 +141,39 @@ classdef ChainFileContents_class < handle
                     chainSizeDefault = chainSize;
                 else
                     if isBinary
-                        % [chainFileUnit, Err.msg] = fopen(chainFilePathTrimmed);
-                        % if Err.msg
-                            % Err.occurred    = true;
-                            % Err.msg         = FUNCTION_NAME + ": Unable to open the file located at: " + chainFilePathTrimmed + newline;
-                            % return
-                        % end
+                        [chainFileUnit, Err.msg] = fopen(chainFilePathTrimmed);
+                        if Err.msg
+                            Err.occurred    = true;
+                            Err.msg         = FUNCTION_NAME + ": Unable to open the file located at: " + chainFilePathTrimmed + newline;
+                            return
+                        end
 
-                        % Record.value = fread(chainFileUnit);
+                        Record.value = fread(chainFileUnit);
 
-                        % State(ndim) = zeros(ndim);
+                        State(ndim) = zeros(ndim);
 
-                        % chainSizeDefault = 0;
+                        chainSizeDefault = 0;
 
-                        % while true  % loopFindChainSizeDefault
-                            % read(chainFileUnit,iostat=Err%stat) processID, delRejStage, meanAccRate, adaptation, burninLoc, weight, logFunc, State
-                            % if Err.stat == 0
-                                % chainSizeDefault = chainSizeDefault + 1;
-                            % elseif is_iostat_end(Err.stat)
-                                % break % loopFindChainSizeDefault
-                            % elseif is_iostat_eor(Err.stat)
-                                % Err.occurred    = true;
-                                % Err.msg         = FUNCTION_NAME + ": Incomplete record detected while reading the input binary chain file at: " + chainFilePathTrimmed + newline;
-                                % return
-                            % else
-                                % Err.occurred    = true;
-                                % Err.msg         = FUNCTION_NAME + ": IO error occurred while reading the input binary chain file at: " + chainFilePathTrimmed + newline;
-                                % return
-                            % end
-                        % end
-                        % fclose(chainFileUnit);
-                    % else
-                        % getNumRecordInFile(chainFilePathTrimmed, chainSizeDefault, Err, exclude="");
-                        % if Err.occurred
-                            % Err.msg = FUNCTION_NAME + Err.msg;
-                            % return
-                        % end
-                        % chainSizeDefault = chainSizeDefault - 1;
+                        while true  % loopFindChainSizeDefault
+%                            read(chainFileUnit,iostat=Err%stat) processID, delRejStage, meanAccRate, adaptation, burninLoc, weight, logFunc, State
+                            if Err.stat == 0
+                                chainSizeDefault = chainSizeDefault + 1;
+                            elseif is_iostat_end(Err.stat)
+                                break % loopFindChainSizeDefault
+                            elseif is_iostat_eor(Err.stat)
+                                Err.occurred    = true;
+                                Err.msg         = FUNCTION_NAME + ": Incomplete record detected while reading the input binary chain file at: " + chainFilePathTrimmed + newline;
+                                return
+                            else
+                                Err.occurred    = true;
+                                Err.msg         = FUNCTION_NAME + ": IO error occurred while reading the input binary chain file at: " + chainFilePathTrimmed + newline;
+                                return
+                            end
+                        end
+                        fclose(chainFileUnit);
+                    else
+                        chainSizeDefault = getNumRecordInFile(chainFileUnit);
+                        chainSizeDefault = chainSizeDefault - 1;
                     end
                 end
 
@@ -281,7 +277,7 @@ classdef ChainFileContents_class < handle
                 if ~isempty(ndim)
                     self.ndim = ndim;
                 else
-                    Record.Parts = Record.SplitStr(Record.value, self.delimiter, Record.nPart);
+                    Record.Parts = Record.SplitStr(Record.value, self.delimiter, Record.nPart); %xxx
                     self.numDefCol = 0;
                     for i = 1 : Record.nPart    % loopFindNumDefCol
                         if index(Record.Parts(i), "LogFunc") > 0
@@ -310,8 +306,10 @@ classdef ChainFileContents_class < handle
 
                 if isBinary
                   % Record.value = fgets(chainFileUnit);
+                    Record.value = convertCharsToStrings(Record.value);
                 else
                     Record.value = fgets(chainFileUnit);
+                    Record.value = convertCharsToStrings(Record.value);
                 end
                 self.ColHeader = split(strtrim(Record.value), self.delimiter);
                 for i = 1 : length(self.ColHeader)
@@ -340,7 +338,6 @@ classdef ChainFileContents_class < handle
                         Record.value = fgets(chainFileUnit);
                         Record.Parts = split(strtrim(Record.value), self.delimiter);
                         Record.nPart = length(Record.Parts);
-
                         self.ProcessID  (iState) = Record.Parts(1);
                         self.DelRejStage(iState) = Record.Parts(2);
                         self.MeanAccRate(iState) = Record.Parts(3);
@@ -356,38 +353,50 @@ classdef ChainFileContents_class < handle
                     end
                 else % is verbose form
                     if chainSizeDefault > 0
-                        self.Count.compact = 1
+                        self.Count.compact = 1;
                         State = zeros(1, ndim);
                         % read the first sample
-                        Record.value = fgets(chainFileUnit)
+                        Record.value = fgets(chainFileUnit);
                         Record.Parts = split(strtrim(Record.value), self.delimiter);
-
-                        self.ProcessID  (self.Count.compact) = Record.Parts(1);
-                        self.DelRejStage(self.Count.compact) = Record.Parts(2);
-                        self.MeanAccRate(self.Count.compact) = Record.Parts(3);
-                        self.Adaptation (self.Count.compact) = Record.Parts(4);
-                        self.BurninLoc  (self.Count.compact) = Record.Parts(5);
-                        self.Weight     (self.Count.compact) = Record.Parts(6);
-                        self.LogFunc    (self.Count.compact) = Record.Parts(7);
+                        self.ProcessID  (self.Count.compact) = str2num(Record.Parts{1});
+                        self.DelRejStage(self.Count.compact) = str2num(Record.Parts{2});
+                        self.MeanAccRate(self.Count.compact) = str2num(Record.Parts{3});
+                        self.Adaptation (self.Count.compact) = str2num(Record.Parts{4});
+                        self.BurninLoc  (self.Count.compact) = str2num(Record.Parts{5});
+                        self.Weight     (self.Count.compact) = str2num(Record.Parts{6});
+                        self.LogFunc    (self.Count.compact) = str2num(Record.Parts{7});
 
                         for i = 1 : self.ndim
-                            self.State(i, self.Count.compact) = Record.Parts(7+i);
+                            self.State(i, self.Count.compact) = str2num(Record.Parts{7+i});
                         end
 
                         % read the rest of samples beyond the first, if any exist
                         newUniqueSampleDetected = false;
                         for iState = 2 : chainSizeDefault
                             Record.value = fgets(chainFileUnit);
-                            Record.Parts = split(strtrim(Record.value), self.delimiter);
-                            ProcessID   = Record.Parts(1);
-                            DelRejStage = Record.Parts(2);
-                            MeanAccRate = Record.Parts(3);
-                            Adaptation  = Record.Parts(4);
-                            BurninLoc   = Record.Parts(5);
-                            Weight      = Record.Parts(6);
-                            LogFunc     = Record.Parts(7);
-                            for i = 1 : self.ndim
-                                State(i) = Record.Parts(7+i);
+                            if Record.value ~= -1
+                                Record.Parts = split(strtrim(Record.value), self.delimiter);
+                                ProcessID   = str2num(Record.Parts{1});
+                                DelRejStage = str2num(Record.Parts{2});
+                                MeanAccRate = str2num(Record.Parts{3});
+                                Adaptation  = str2num(Record.Parts{4});
+                                BurninLoc   = str2num(Record.Parts{5});
+                                Weight      = str2num(Record.Parts{6});
+                                LogFunc     = str2num(Record.Parts{7});
+                                for i = 1 : self.ndim
+                                    State(i) = str2num(Record.Parts{7+i});
+                                end
+                            else                                
+                                % ProcessID   = 0;
+                                % DelRejStage = 0;
+                                % MeanAccRate = 0;
+                                % Adaptation  = 0;
+                                % BurninLoc   = 0;
+                                % Weight      = 1;
+                                % LogFunc     = 0;
+                                % for i = 1 : self.ndim
+                                    % State(i) = 0;
+                                % end
                             end
                             newUniqueSampleDetected =  LogFunc        ~= self.LogFunc    (self.Count.compact)   ...
                                                     || MeanAccRate    ~= self.MeanAccRate(self.Count.compact)   ...
@@ -396,7 +405,7 @@ classdef ChainFileContents_class < handle
                                                     || Weight         ~= self.Weight     (self.Count.compact)   ...
                                                     || DelRejStage    ~= self.DelRejStage(self.Count.compact)   ...
                                                     || ProcessID      ~= self.ProcessID  (self.Count.compact)   ...
-                                                    || any( self.State(1:self.ndim, self.Count.compact) ~= self.State(1:CFC.ndim, CFC.Count.compact) );
+                                                    || any( self.State(1:self.ndim, self.Count.compact) ~= self.State(1:self.ndim, self.Count.compact) );
                             if newUniqueSampleDetected
                                 self.Count.compact                     =  self.Count.compact + 1;
                                 self.LogFunc         (self.Count.compact)   = LogFunc           ;
@@ -423,8 +432,8 @@ classdef ChainFileContents_class < handle
                     self.Count.verbose = chainSizeDefault;
                     if self.Count.verbose ~= sum(self.Weight(1:self.Count.compact))
                         Err.occurred    = true;
-                        Err.msg         = FUNCTION_NAME + ": Internal error occurred. CountVerbose/=sum(Weight): "      ...
-                                        + num2str(self.Count.verbose) + num2str(sum(self.Weight(1:self.Count.compact))) ...
+                        Err.msg         = FUNCTION_NAME + ": Internal error occurred. CountVerbose /= sum(Weight): "      ...
+                                        + num2str(self.Count.verbose) + " , "+ num2str(sum(self.Weight(1:self.Count.compact))) ...
                                         ;
                         return
                     else
@@ -442,8 +451,7 @@ classdef ChainFileContents_class < handle
                 fclose(chainFileUnit);
 
                 % set the rest of elements to zero
-
-              % if self.Count.resized > chainSizeDefault, self.nullify(startIndex = self.Count.compact + 1, endIndex = self.Count.resized);
+                % if self.Count.resized > chainSizeDefault, self.nullify(startIndex = self.Count.compact + 1, endIndex = self.Count.resized);
 
             else % blockFileExistence
 
@@ -503,7 +511,7 @@ classdef ChainFileContents_class < handle
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-        function writeChainFile(self, ndim, compactStartIndex, compactEndIndex, chainFileUnit, chainFileForm, chainFileFormat)
+        function writeChainFile(self, ndim, compactStartIndex, compactEndIndex, chainFileUnit, chainFileForm, chainFileFormat, headerFormat)
 
             FUNCTION_NAME       = self.CLASS_NAME + "@writeChainFile()";
 
@@ -530,7 +538,7 @@ classdef ChainFileContents_class < handle
             end
             if self.Err.occurred, self.Err.abort([], [], []); end
 
-            self.writeHeader(ndim, chainFileUnit, isBinary, chainFileFormat);
+            self.writeHeader(ndim, chainFileUnit, isBinary, headerFormat);
 
             if compactStartIndex <= compactEndIndex
                 if isCompact
@@ -561,15 +569,15 @@ classdef ChainFileContents_class < handle
                 elseif isVerbose
                     for i = compactStartIndex : compactEndIndex
                         for j = 1 : self.Weight(i)
-                            % chainFileFormat
-                            fprintf(chainFileUnit   , num2str(self.ProcessID    (i))    ...
-                                                    + num2str(self.DelRejStage  (i))    ...
-                                                    + num2str(self.MeanAccRate  (i))    ...
-                                                    + num2str(self.Adaptation   (i))    ...
-                                                    + num2str(self.BurninLoc    (i))    ...
-                                                    + num2str(1                    )    ...
-                                                    + num2str(self.LogFunc      (i))    ...
-                                                    + num2str(self.State (1:ndim,i))    ...
+                            fprintf(chainFileUnit   , chainFileFormat                   ...
+                                                    , self.ProcessID    (i)             ...
+                                                    , self.DelRejStage  (i)             ...
+                                                    , self.MeanAccRate  (i)             ...
+                                                    , self.Adaptation   (i)             ...
+                                                    , self.BurninLoc    (i)             ...
+                                                    , 1                                 ...
+                                                    , self.LogFunc      (i)             ...
+                                                    , self.State (1:ndim,i)             ...
                                                     ) ;
                         end
                     end

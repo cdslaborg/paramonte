@@ -36,6 +36,8 @@ function out = writeOutput(self)
     
     % if new point has been sampled, write the previous sampled point to output file
 
+    nd = self.nd.val;
+
     if self.Stats.NumFunCall.accepted > 0   % blockOutputWrite
 
         if self.SpecBase.chainFileFormat.isCompact

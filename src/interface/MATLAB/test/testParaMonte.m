@@ -49,35 +49,36 @@ cd(fileparts(mfilename('fullpath'))); % Change working directory to source code 
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 %pm = paramonte("matlab");
-pm = paramonte(); % "matlab"
-pmpd = pm.ParaDRAM();
+%pm = paramonte(); % "matlab"
+%pmpd = pm.ParaDRAM();
+pmpd = ParaDRAM_class();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
-return
-%pmpd.inputFile = './paramonte.in';
+% return
+% %pmpd.inputFile = './paramonte.in';
 
-pmpd.spec.chainSize = 20000;
-%pmpd.spec.adaptiveUpdateCount = 2100000000;
-%pmpd.spec.adaptiveUpdatePeriod = 3000;
-%pmpd.spec.startPointVec = -10;
-pmpd.spec.randomSeed = 35671;
-pmpd.spec.proposalModel = "normal";
-pmpd.spec.targetAcceptanceRate = 0.2;
-pmpd.runSampler(2,@getLogFunc); %@(point)-0.5*sum(point.^2)); %
-%pmpd.spec.outputFileName = "D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_300420_012424_780";
-%pmpd.readMarkovChain();
-pmpd.readChain(); %"ParaDRAM_run_180420_151344_607";%"D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_160420_023054_530");
-%pmpd.readSample();
-return
+% pmpd.spec.chainSize = 20000;
+% %pmpd.spec.adaptiveUpdateCount = 2100000000;
+% %pmpd.spec.adaptiveUpdatePeriod = 3000;
+% %pmpd.spec.startPointVec = -10;
+% pmpd.spec.randomSeed = 35671;
+% pmpd.spec.proposalModel = "normal";
+% pmpd.spec.targetAcceptanceRate = 0.2;
+% pmpd.runSampler(2,@getLogFunc); %@(point)-0.5*sum(point.^2)); %
+% %pmpd.spec.outputFileName = "D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_300420_012424_780";
+% %pmpd.readMarkovChain();
+% pmpd.readChain(); %"ParaDRAM_run_180420_151344_607";%"D:\Dropbox\Projects\20180101_ParaMonte\git\src\interface\MATLAB\test\ParaDRAM_run_160420_023054_530");
+% %pmpd.readSample();
+% return
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMonte variables...
 % pmpd.spec.sampleSize                            = 1000;                         % Works
-% pmpd.spec.randomSeed                            = 7;                            % Works
+pmpd.spec.randomSeed                            = 7;                            % Works
 pmpd.spec.description                           = "Hi there";                   % Works
-pmpd.spec.outputFileName                        = "./out/temp/";                % Works
+pmpd.spec.outputFileName                        = "./out/temp/MyRestartSimulation";                % Works
 pmpd.spec.outputDelimiter                       = "|";                          % Works
 pmpd.spec.chainFileFormat                       = 'verbose';                    % Works
 pmpd.spec.variableNameList                      = ["Variable-X", "Variable-Y"]; % Works
-% pmpd.spec.restartFileFormat                     = [];                           % Not implemented properly yet.
+pmpd.spec.restartFileFormat                     = "ASCII";                           % Not implemented properly yet.
 pmpd.spec.outputColumnWidth                     = 13;                           % Works
 pmpd.spec.outputRealPrecision                   = 6;                            % Works
 pmpd.spec.silentModeRequested                   = 0;                            % Works
@@ -126,12 +127,13 @@ for i = 1 : ndim
     figure;
     plot(pmpd.Chain.State(i,:));
     set(gca,'xscale','log')
-    
+  
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-system(pmpd.LogFile.Path.modified);
-system(pmpd.TimeFile.Path.modified);
-system(pmpd.ChainFile.Path.modified);
-system(pmpd.SampleFile.Path.modified);
+%system(pmpd.LogFile.Path.modified);
+%system(pmpd.TimeFile.Path.modified);
+%system(pmpd.ChainFile.Path.modified);
+%system(pmpd.SampleFile.Path.modified);
+system(pmpd.RestartFile.Path.modified);

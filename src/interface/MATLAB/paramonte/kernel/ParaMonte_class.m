@@ -383,40 +383,40 @@ classdef ParaMonte_class < handle
             self.SampleFile.Path            = Path_class(fullOutputFileName + char(self.SampleFile.suffix)     + char(self.SampleFile.Path.ext) , self.OS );
             self.RestartFile.Path           = Path_class(fullOutputFileName + char(self.RestartFile.suffix)    + char(self.RestartFile.Path.ext), self.OS );
 
-            self.Err.occurred = isfile(char(self.LogFile.Path.original));
-            if self.Err.occurred
-                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                    + strrep(self.LogFile.Path.original, '\', '\\') + "'";
-                self.Err.abort();
-            end
-
-            self.Err.occurred = isfile(char(self.SampleFile.Path.original));
-            if self.Err.occurred
-                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                    + strrep(self.SampleFile.Path.original, '\', '\\') + "'";
-                self.Err.abort();
-            end
-
-            self.Err.occurred = isfile(char(self.TimeFile.Path.original));
-            if self.Err.occurred
-                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                    + strrep(self.TimeFile.Path.original, '\', '\\') + "'";
-                self.Err.abort();
-            end
-
-            self.Err.occurred = isfile(char(self.ChainFile.Path.original));
-            if self.Err.occurred
-                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                    + strrep(self.ChainFile.Path.original, '\', '\\') + "'";
-                self.Err.abort();
-            end
-
-            self.Err.occurred = isfile(char(self.RestartFile.Path.original));
-            if self.Err.occurred
-                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
-                                    + strrep(self.RestartFile.Path.original, '\', '\\') + "'";
-                self.Err.abort();
-            end
+            self.LogFile.exists     = isfile(char(self.LogFile.Path.original));
+%            if self.Err.occurred
+%                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+%                                    + strrep(self.LogFile.Path.original, '\', '\\') + "'";
+%                self.Err.abort();
+%            end
+%
+            self.SampleFile.exists  = isfile(char(self.SampleFile.Path.original));
+%            if self.Err.occurred
+%                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+%                                    + strrep(self.SampleFile.Path.original, '\', '\\') + "'";
+%                self.Err.abort();
+%            end
+%
+            self.TimeFile.exists    = isfile(char(self.TimeFile.Path.original));
+%            if self.Err.occurred
+%                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+%                                    + strrep(self.TimeFile.Path.original, '\', '\\') + "'";
+%                self.Err.abort();
+%            end
+%
+            self.ChainFile.exists   = isfile(char(self.ChainFile.Path.original));
+%            if self.Err.occurred
+%                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+%                                    + strrep(self.ChainFile.Path.original, '\', '\\') + "'";
+%                self.Err.abort();
+%            end
+%
+            self.RestartFile.exists = isfile(char(self.RestartFile.Path.original));
+%            if self.Err.occurred
+%                self.Err.msg        = FUNCTION_NAME + ": Error occurred while inquiring the existence of file='"...
+%                                    + strrep(self.RestartFile.Path.original, '\', '\\') + "'";
+%                self.Err.abort();
+%            end
 
             self.isDryRun   = self.LogFile.exists || self.TimeFile.exists || self.RestartFile.exists || self.ChainFile.exists || self.SampleFile.exists; % not fresh, if any file exists
             self.isFreshRun = ~self.isDryRun;
@@ -433,19 +433,19 @@ classdef ParaMonte_class < handle
                 end
                 if self.SampleFile.exists % sampling is already complete
                     self.Err.occurred   = true;
-                    self.Err.msg        = FUNCTION_NAME + ": Error occurred. Output sample file detected: " + self.SampleFile.Path.original ...
-                                        + Constants.NLC + self.name + " cannot overwrite an already-completed simulation."                  ...
-                                        + Constants.NLC + "Please provide an alternative file name for the new simulation outputs."         ...
+                    self.Err.msg        = strrep(FUNCTION_NAME + ": Error occurred. Output sample file detected: " + self.SampleFile.Path.original  ...
+                                        + Constants.NLC + self.name + " cannot overwrite an already-completed simulation."                          ...
+                                        + Constants.NLC + "Please provide an alternative file name for the new simulation outputs.", '\', '\\')     ...
                                         ;
                 elseif self.LogFile.exists && self.TimeFile.exists && self.RestartFile.exists && self.ChainFile.exists % restart mode
                     self.Err.occurred   = false;
                 else
                     self.Err.occurred   = true;
                     self.Err.msg = FUNCTION_NAME + ": Error occurred. For a successful simulation restart, all output files are necessary." + Constants.NLC + "List of missing simulation output files:";
-                    if ~self.LogFile.exists,        self.Err.msg = self.Err.msg + Constants.NLC + self.LogFile.Path.original;       end
-                    if ~self.TimeFile.exists,       self.Err.msg = self.Err.msg + Constants.NLC + self.TimeFile.Path.original;      end
-                    if ~self.ChainFile.exists,      self.Err.msg = self.Err.msg + Constants.NLC + self.ChainFile.Path.original;     end
-                    if ~self.RestartFile.exists,    self.Err.msg = self.Err.msg + Constants.NLC + self.RestartFile.Path.original;   end
+                    if ~self.LogFile.exists,        self.Err.msg = strrep(self.Err.msg + Constants.NLC + self.LogFile.Path.original,    '\', '\\');       end
+                    if ~self.TimeFile.exists,       self.Err.msg = strrep(self.Err.msg + Constants.NLC + self.TimeFile.Path.original,   '\', '\\');      end
+                    if ~self.ChainFile.exists,      self.Err.msg = strrep(self.Err.msg + Constants.NLC + self.ChainFile.Path.original,  '\', '\\');     end
+                    if ~self.RestartFile.exists,    self.Err.msg = strrep(self.Err.msg + Constants.NLC + self.RestartFile.Path.original,'\', '\\');   end
                 end
                 if self.Err.occurred, self.Err.abort(); end
             end
@@ -511,17 +511,16 @@ classdef ParaMonte_class < handle
             self.Err.marginBot      = 1;
             
             if self.Image.isMaster
-            
-                [self.LogFile.unit, self.Err.msg] = fopen(self.LogFile.Path.original, "w");
-                self.Err.outputUnit = self.LogFile.unit;
                 
+                % open LogFile
+                if self.LogFile.exists,     opentype = "r+";    else, opentype = "w"; end
+                [self.LogFile.unit, self.Err.msg] = fopen(self.LogFile.Path.original, opentype);
+                self.Err.outputUnit = self.LogFile.unit;
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.LogFile.suffix + " file='" + strrep(self.LogFile.Path.original, '\', '\\') + "'.";
                     self.Err.abort();
                 end
-
                 % rewrite the same old stuff to all report files
-
                 if self.isFreshRun
                     self.addSplashScreen();
                     if self.SpecBase.silentModeRequested.isFalse, self.addCompilerPlatformInfo(); end   % this takes about 0.75 seconds to execute on Stampede Login nodes.
@@ -530,31 +529,35 @@ classdef ParaMonte_class < handle
                     self.Err.note();
                 end
 
-                % open/append the output files
-
+                % workingOn on TimeFile
                 if self.isFreshRun
                     self.Err.msg    = workingOn + self.TimeFile.suffix + " file:" + Constants.NLC + strrep(self.TimeFile.Path.original, '\', '\\');
                     self.Err.note();
                 end
-
-                [self.TimeFile.unit, self.Err.msg] = fopen(self.TimeFile.Path.original, "w");
+                % open TimeFile
+                if self.TimeFile.exists,    opentype = "r+";    else, opentype = "w"; end
+                [self.TimeFile.unit, self.Err.msg] = fopen(self.TimeFile.Path.original, opentype);
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.TimeFile.suffix + " file='" + strrep(self.TimeFile.Path.original, '\', '\\') + "'.";
                     self.Err.abort();
                 end
 
+                % workingOn on ChainFile
                 if self.isFreshRun
                     self.Err.msg    = workingOn + self.ChainFile.suffix + "file:" + Constants.NLC + strrep(self.ChainFile.Path.original, '\', '\\');
                     self.Err.note();
                 end
-
-                [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, "w");
+                % open ChainFile
+                if self.ChainFile.exists,   opentype = "r+";    else, opentype = "w"; end
+                [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, opentype);
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + strrep(self.ChainFile.Path.original, '\', '\\') + "'.";
                     self.Err.abort();
                 end
 
-                [self.RestartFile.unit, self.Err.msg] = fopen(self.RestartFile.Path.original, "w");
+                % open ChainFile
+                if self.RestartFile.exists, opentype = "r+";    else, opentype = "w"; end
+                [self.RestartFile.unit, self.Err.msg] = fopen(self.RestartFile.Path.original, opentype);
                 if self.Err.msg
                     self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.RestartFile.suffix + " file='" + strrep(self.RestartFile.Path.original, '\', '\\') + "'.";
                     self.Err.abort();
