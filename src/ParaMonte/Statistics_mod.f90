@@ -1504,7 +1504,7 @@ contains
   
     ! Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
     ! This is algorithm is similar to getRandMVU, with the only difference that points are drawn randomly from the surface of the ellipsoid instead of inside of its interior.
-    ! Note that the distribution of points on the ellipsoid's surface is NOT uniform.
+    ! Note that the distribution of points on the surface of the ellipsoid is NOT uniform.
     ! Regions of high curvature will have more points randomly sampled from them.
     ! generating uniform random points on arbitrary-dimension ellipsoids is not a task with trivial solution!
     function getRandPointOnEllipsoid(nd,MeanVec,CholeskyLower,Diagonal)
