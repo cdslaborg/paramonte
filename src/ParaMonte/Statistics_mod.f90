@@ -2418,7 +2418,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! returns the uniform CDF on support [0,1). rather redundant, isn't it? but sometimes, needed
+    ! returns the uniform CDF on support [0,1). rather redundant, aint it? but sometimes, needed
     function getUniformCDF(x)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUniformCDF
