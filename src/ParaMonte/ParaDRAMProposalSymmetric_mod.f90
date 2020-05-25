@@ -521,7 +521,7 @@ contains
 
         blockSufficientSampleSizeCheck: if (chainSize>nd) then
 
-            ! get the new sample's upper covariance matrix and Mean
+            ! get the upper covariance matrix and Mean of the new sample
 
             if (samplerUpdateIsGreedy) then
                 sampleSizeCurrent = chainSize
