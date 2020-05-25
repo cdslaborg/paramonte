@@ -513,7 +513,7 @@ classdef ParaMonte_class < handle
             if self.Image.isMaster
                 
                 % open LogFile
-                if self.LogFile.exists,     opentype = "r+";    else, opentype = "w"; end
+                if self.LogFile.exists,     opentype = "a+";    else, opentype = "w"; end
                 [self.LogFile.unit, self.Err.msg] = fopen(self.LogFile.Path.original, opentype);
                 self.Err.outputUnit = self.LogFile.unit;
                 if self.Err.msg
@@ -555,7 +555,7 @@ classdef ParaMonte_class < handle
                     self.Err.abort();
                 end
 
-                % open ChainFile
+                % open RestartFile
                 if self.RestartFile.exists, opentype = "r+";    else, opentype = "w"; end
                 [self.RestartFile.unit, self.Err.msg] = fopen(self.RestartFile.Path.original, opentype);
                 if self.Err.msg

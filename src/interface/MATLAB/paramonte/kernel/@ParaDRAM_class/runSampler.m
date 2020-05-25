@@ -148,7 +148,6 @@ function runSampler ( self          ...
     %***********************************************************************************************************************
 
     if self.isFreshRun
-        % self.TimeFile.format
         fprintf (self.TimeFile.unit , self.TimeFile.headerFormat                ...
                                     , "NumFuncCallTotal"                        ...
                                     , "NumFuncCallAccepted"                     ...
@@ -159,6 +158,9 @@ function runSampler ( self          ...
                                     , "TimeRemainedToFinishInSeconds")          ...
                                     ;
         self.Chain.writeHeader ( ndim, self.ChainFile.unit, self.SpecBase.chainFileFormat.isBinary, self.ChainFile.headerFormat);
+    else
+        if self.Image.isMaster, fgets(self.TimeFile.unit)   % read the header line of the time file, only by master images
+%        self.Chain.getLenHeader(ndim, self.SpecBase.chainFileFormat.isBinary, self.ChainFile.headerFormat);
     end
 
 
@@ -395,7 +397,7 @@ disp("length(self.Chain.State(i,self.Stats.BurninLoc.compact:self.Chain.Count.co
         %***********************************************************************************************************************
 
         % report refined sample statistics, and generate output refined sample if requested.
-        
+
         if self.Image.isFirst
             self.Err.msg    = "Computing the final decorrelated sample size...";
             self.Err.note();

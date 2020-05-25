@@ -131,15 +131,15 @@ classdef ChainFileContents_class < handle
                     Err.occurred    = true;
                     Err.msg         = FUNCTION_NAME + ": Unable to open the file located at: " + chainFilePathTrimmed + newline;
                     return
-%                else
-%                    fclose(chainFileUnit);
+                else
+%                   fclose(chainFileUnit);  % xxx
                 end
 
                 % get the number of records in file, minus header line
 
-                if ~isempty(chainSize)
-                    chainSizeDefault = chainSize;
-                else
+%                if ~isempty(chainSize)
+%                    chainSizeDefault = chainSize;
+%                else
                     if isBinary
                         [chainFileUnit, Err.msg] = fopen(chainFilePathTrimmed);
                         if Err.msg
@@ -155,7 +155,7 @@ classdef ChainFileContents_class < handle
                         chainSizeDefault = 0;
 
                         while true  % loopFindChainSizeDefault
-%                            read(chainFileUnit,iostat=Err%stat) processID, delRejStage, meanAccRate, adaptation, burninLoc, weight, logFunc, State
+                            % read(chainFileUnit,iostat=Err%stat) processID, delRejStage, meanAccRate, adaptation, burninLoc, weight, logFunc, State
                             if Err.stat == 0
                                 chainSizeDefault = chainSizeDefault + 1;
                             elseif is_iostat_end(Err.stat)
@@ -175,7 +175,7 @@ classdef ChainFileContents_class < handle
                         chainSizeDefault = getNumRecordInFile(chainFileUnit);
                         chainSizeDefault = chainSizeDefault - 1;
                     end
-                end
+%                end
 
                 % set the number of elements in the Chain components
 
@@ -334,20 +334,21 @@ classdef ChainFileContents_class < handle
                         % CFC%Count%verbose = CFC%Count%verbose + CFC%Weight(iState)
                     % end do
                 elseif isCompact
-                    for iState = 1 : chainSizeDefault
+                    for iState = 1 : chainSizeDefault   % xxx
                         Record.value = fgets(chainFileUnit);
-                        Record.Parts = split(strtrim(Record.value), self.delimiter);
-                        Record.nPart = length(Record.Parts);
-                        self.ProcessID  (iState) = Record.Parts(1);
-                        self.DelRejStage(iState) = Record.Parts(2);
-                        self.MeanAccRate(iState) = Record.Parts(3);
-                        self.Adaptation (iState) = Record.Parts(4);
-                        self.BurninLoc  (iState) = Record.Parts(5);
-                        self.Weight     (iState) = Record.Parts(6);
-                        self.LogFunc    (iState) = Record.Parts(7);
-
-                        for i = 1 : self.ndim
-                            self.State(i, iState) = Record.Parts(7+i);
+                        if Record.value ~= -1   % xxx
+                            Record.Parts = split(strtrim(Record.value), self.delimiter);
+                            Record.nPart = length(Record.Parts);
+                            self.ProcessID  (iState) = str2num(Record.Parts{1});
+                            self.DelRejStage(iState) = str2num(Record.Parts{2});
+                            self.MeanAccRate(iState) = str2num(Record.Parts{3});
+                            self.Adaptation (iState) = str2num(Record.Parts{4});
+                            self.BurninLoc  (iState) = str2num(Record.Parts{5});
+                            self.Weight     (iState) = str2num(Record.Parts{6});
+                            self.LogFunc    (iState) = str2num(Record.Parts{7});
+                            for i = 1 : self.ndim
+                                self.State(i, iState) = str2num(Record.Parts{7+i});
+                            end
                         end
                         self.Count.verbose = self.Count.verbose + self.Weight(iState);
                     end
@@ -365,7 +366,6 @@ classdef ChainFileContents_class < handle
                         self.BurninLoc  (self.Count.compact) = str2num(Record.Parts{5});
                         self.Weight     (self.Count.compact) = str2num(Record.Parts{6});
                         self.LogFunc    (self.Count.compact) = str2num(Record.Parts{7});
-
                         for i = 1 : self.ndim
                             self.State(i, self.Count.compact) = str2num(Record.Parts{7+i});
                         end
@@ -386,17 +386,6 @@ classdef ChainFileContents_class < handle
                                 for i = 1 : self.ndim
                                     State(i) = str2num(Record.Parts{7+i});
                                 end
-                            else                                
-                                % ProcessID   = 0;
-                                % DelRejStage = 0;
-                                % MeanAccRate = 0;
-                                % Adaptation  = 0;
-                                % BurninLoc   = 0;
-                                % Weight      = 1;
-                                % LogFunc     = 0;
-                                % for i = 1 : self.ndim
-                                    % State(i) = 0;
-                                % end
                             end
                             newUniqueSampleDetected =  LogFunc        ~= self.LogFunc    (self.Count.compact)   ...
                                                     || MeanAccRate    ~= self.MeanAccRate(self.Count.compact)   ...
@@ -451,7 +440,9 @@ classdef ChainFileContents_class < handle
                 fclose(chainFileUnit);
 
                 % set the rest of elements to zero
-                % if self.Count.resized > chainSizeDefault, self.nullify(startIndex = self.Count.compact + 1, endIndex = self.Count.resized);
+                if self.Count.resized > chainSizeDefault
+                    % self.nullify(startIndex = self.Count.compact + 1, endIndex = self.Count.resized);
+                end
 
             else % blockFileExistence
 
@@ -543,16 +534,16 @@ classdef ChainFileContents_class < handle
             if compactStartIndex <= compactEndIndex
                 if isCompact
                     for i = compactStartIndex : compactEndIndex
-                        % chainFileFormat
-                        % fprintf(chainFileUnit   , num2str(self.ProcessID    (i))    ...
-                                                % + num2str(self.DelRejStage  (i))    ...
-                                                % + num2str(self.MeanAccRate  (i))    ...
-                                                % + num2str(self.Adaptation   (i))    ...
-                                                % + num2str(self.BurninLoc    (i))    ...
-                                                % + num2str(self.Weight       (i))    ...
-                                                % + num2str(self.LogFunc      (i))    ...
-                                                % + num2str(self.State (1:ndim,i))    ...
-                                                % ) ;
+                        fprintf(chainFileUnit   , chainFileFormat                   ...
+                                                    , self.ProcessID    (i)         ...
+                                                    , self.DelRejStage  (i)         ...
+                                                    , self.MeanAccRate  (i)         ...
+                                                    , self.Adaptation   (i)         ...
+                                                    , self.BurninLoc    (i)         ...
+                                                    , self.Weight       (i)         ...
+                                                    , self.LogFunc      (i)         ...
+                                                    , self.State (1:ndim,i)         ...
+                                                    ) ;
                     end
                 elseif isBinary
                     % for i = compactStartIndex : compactEndIndex

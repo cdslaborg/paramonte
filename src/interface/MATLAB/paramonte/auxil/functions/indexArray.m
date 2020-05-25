@@ -39,12 +39,10 @@
 function Indx = indexArray(n, Array)
 
     Indx = zeros(1, n);
-disp("n = " + num2str(n));
-disp("length(Array) = " + num2str(length(Array)));
     sorted_Array = sort(Array);
-    
+
     for i = 1 : length(Array)
         Indx(i) = find(Array == sorted_Array(i));
     end
-    
+
 end

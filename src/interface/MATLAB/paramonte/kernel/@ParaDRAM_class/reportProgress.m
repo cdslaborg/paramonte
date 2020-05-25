@@ -11,7 +11,6 @@ function reportProgress(self)
         meanAccRateSinceLastReport          = (SumAccRateSinceStart.acceptedRejected - sumAccRateLastReport) * inverseProgressReportPeriod;
         estimatedTimeToFinishInSeconds      = (self.SpecMCMC.chainSize.val - self.Stats.NumFunCall.accepted) * timeElapsedUntilLastReportInSeconds / self.Stats.NumFunCall.accepted;
        
-        % self.TimeFile.format
         fprintf ( self.TimeFile.unit    , self.TimeFile.format                      ...
                                         , self.Stats.NumFunCall.acceptedRejected    ...
                                         , self.Stats.NumFunCall.accepted            ...
@@ -24,18 +23,18 @@ function reportProgress(self)
     else
 
         Record.value    = fgets(self.TimeFile.unit);
-        Record.Parts    = split(strtrim(Record.value), self.SpecBase.outputDelimiter.val);
+        if Record.value ~= -1
+            Record.Parts    = split(strtrim(Record.value), self.SpecBase.outputDelimiter.val);
+            numFunCallAcceptedRejectedLastReport    = str2num(Record.Parts{1});
+            numFunCallAccepted_dummy                = str2num(Record.Parts{2});
+            meanAccRateSinceStart                   = str2num(Record.Parts{3});
+            meanAccRateSinceLastReport              = str2num(Record.Parts{4});
+            timeElapsedSinceLastReportInSeconds     = str2num(Record.Parts{5});
+            timeElapsedUntilLastReportInSeconds     = str2num(Record.Parts{6});
+            estimatedTimeToFinishInSeconds          = str2num(Record.Parts{7});
+            SumAccRateSinceStart.acceptedRejected   = meanAccRateSinceStart * numFunCallAcceptedRejectedLastReport;
+        end
         
-        numFunCallAcceptedRejectedLastReport    = str2num(Record.Parts{1});
-        numFunCallAccepted_dummy                = str2num(Record.Parts{2});
-        meanAccRateSinceStart                   = str2num(Record.Parts{3});
-        meanAccRateSinceLastReport              = str2num(Record.Parts{4});
-        timeElapsedSinceLastReportInSeconds     = str2num(Record.Parts{5});
-        timeElapsedUntilLastReportInSeconds     = str2num(Record.Parts{6});
-        estimatedTimeToFinishInSeconds          = str2num(Record.Parts{7});
-
-        SumAccRateSinceStart.acceptedRejected   = meanAccRateSinceStart * numFunCallAcceptedRejectedLastReport;
-
     end
 
     % report progress in the standard output

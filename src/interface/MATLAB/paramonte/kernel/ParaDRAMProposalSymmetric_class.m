@@ -460,8 +460,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
 
             if class(meanAccRateSinceStart) == "char", meanAccRateSinceStart = str2num(meanAccRateSinceStart); end
             if scalingNeeded
-meanAccRateSinceStart
-mc_targetAcceptanceRate
+
                 mv_adaptiveScaleFactorSq_save   = (meanAccRateSinceStart / mc_targetAcceptanceRate)^mc_ndimInverse;
                 adaptiveScaleFactor             = sqrt(mv_adaptiveScaleFactorSq_save);
               

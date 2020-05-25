@@ -119,6 +119,11 @@ function runKernel  ( self          ...
                                         , self.ChainFile.headerFormat                       ...
                                         ) ;
 
+%************************************************************************************************************
+% Restart mode old chain ends here
+fprintf(self.ChainFile.unit, "-----------------Old chain with less two points till here.---------------\n");
+%************************************************************************************************************
+
             % remove the temporary copy of the chain file
 
             self.Err = removeFile(RFN.path, self.OS.isWindows);
@@ -177,9 +182,10 @@ function runKernel  ( self          ...
         % as the first point by the first coarray imageID.
 
         if co_proposalFound_samplerUpdateOccurred(1) == 1   % blockProposalAccepted: co_proposalAccepted = true
-
+%xxx
             lastState                       = self.Stats.NumFunCall.accepted;
             self.Stats.NumFunCall.accepted  = self.Stats.NumFunCall.accepted + 1;
+%xxx
             currentStateWeight              = 0;
 
             % communicate the accepted logFunc and State from the winning image to master/all images: co_LogFuncState
@@ -207,8 +213,11 @@ function runKernel  ( self          ...
                                                                                             ) ;
 
             else % blockFreshDryRun : in restart mode: determine the correct value of co_proposalFound_samplerUpdateOccurred(1)
-
                 numFunCallAcceptedPlusOne = self.Stats.NumFunCall.accepted + 1;
+% disp("numFunCallAcceptedPlusOne = ");
+% disp(numFunCallAcceptedPlusOne);
+% disp("self.Chain.Count.compact = ");
+% disp(self.Chain.Count.compact)
                 if numFunCallAcceptedPlusOne == self.Chain.Count.compact
                     self.isFreshRun                                     = true;
                     self.writeOutput();
