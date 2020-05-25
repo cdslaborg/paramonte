@@ -158,7 +158,7 @@ contains
                 ipVerbose = ipVerbose + 1
                 if (ipVerbose>npEffective) exit loopComputeVarPoint
                 if (ipVerbose>CumSumWeight(ip)) then
-                    ip = ip + 1 ! by definition, ip never become > np, otherwise it's a disastrous coding bug
+                    ip = ip + 1 ! by definition, ip never become > np, otherwise it leads to disastrous errors
                     diffSquared = ( Point(ip) - avgPoint )**2
                 end if
                 varPoint = varPoint + diffSquared 

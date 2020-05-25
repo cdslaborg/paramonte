@@ -380,7 +380,7 @@ contains
         !    Err%msg = PROCEDURE_NAME // Err%msg
         !    return
         !end if
-        !if (OSisWindows) then  ! it's Windows cmd
+        !if (OSisWindows) then  ! it is Windows cmd
         !    command = "del " // filename // "; del " // stdErr
         !else
         !    command = "rm " // filename // "; rm " // stdErr

@@ -360,7 +360,7 @@ contains
         end if
 
         ! The format setup of setupOutputFiles() uses the generic g0 edit descriptor. Here the format is revised to be more specific.
-        ! g0 edit descriptor's format is slightly more arbitrary and compiler-dependent.
+        ! g0 edit descriptor format is slightly more arbitrary and compiler-dependent.
 
         if (PD%SpecBase%OutputColumnWidth%val>0) then
             PD%TimeFile%format  =   "("     // &

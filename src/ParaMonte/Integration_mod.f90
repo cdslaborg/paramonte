@@ -119,7 +119,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! integrate getFunc() using Romberg's adaptive extrapolation method on an Open interval (lowerLim,upperLim).
+    ! integrate getFunc() using Romberg adaptive extrapolation method on an Open interval (lowerLim,upperLim).
     recursive subroutine doQuadRombOpen ( getFunc &
                                         , integrate &
                                         , lowerLim &

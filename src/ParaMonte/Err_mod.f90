@@ -94,7 +94,7 @@ contains
             nlstr = NLC
         end if
 
-        if (Err%stat==Err%statNull) then    ! it's a null error code, ignore it and do not report the error code
+        if (Err%stat==Err%statNull) then    ! it is a null error code, ignore it and do not report the error code
             msg = Err%msg
         else
             write(dummyChar1,"(g0)") Err%stat
