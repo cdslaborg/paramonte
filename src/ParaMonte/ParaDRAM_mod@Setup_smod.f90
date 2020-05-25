@@ -1027,7 +1027,7 @@ contains
                 close(PD%SampleFile%unit)
 
                 !***********************************************************************************************************************
-                ! Compute the refined sample's statistical properties
+                ! Compute the statistical properties of the refined sample
                 !***********************************************************************************************************************
 
                 if (PD%Image%isFirst) then
