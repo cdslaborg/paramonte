@@ -73,7 +73,7 @@ module Path_mod
                                                     "`" // & ! — shell syntax.
                                                     "{" // & ! — brace expansion.
                                                     "|" // & ! — shell syntax.
-                                                    "}" // & ! — needs to be escaped in zsh, other shells are more lenient when there's no matching opening brace.
+                                                    "}" // & ! — needs to be escaped in zsh, other shells are more lenient when there is no matching opening brace.
                                                     "~"      ! — home directory expansion when at the beginning of a filename; zsh wildcard; safe when it is the last character.
 
 #else
