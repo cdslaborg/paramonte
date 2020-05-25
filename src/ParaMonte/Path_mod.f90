@@ -63,7 +63,7 @@ module Path_mod
                                                     "," // & ! — only inside brace expansion.
                                                     ";" // & ! — shell syntax.
                                                     "<" // & ! — shell syntax.
-                                                    "=" // & ! — in zsh, when it's at the beginning of a file name (filename expansion with PATH lookup).
+                                                    "=" // & ! — in zsh, when it is at the beginning of a file name (filename expansion with PATH lookup).
                                                     ">" // & ! — shell syntax.
                                                     "?" // & ! — sh wildcard.
                                                     "[" // & ! — sh wildcard.
