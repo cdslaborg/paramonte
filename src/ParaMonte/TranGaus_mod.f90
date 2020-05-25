@@ -2668,7 +2668,7 @@ contains
                 if ( (stdTranGaus>=lowerLim) .and. (stdTranGaus<=upperLim) ) exit
             end do
 
-        ! In other cases (xmin < lowerLim < xmax), use Chopin's algorithm
+        ! In other cases (xmin < lowerLim < xmax), use the algorithm of Chopin
         else blockRange
 
             ! Large data tables and design variables are used here
