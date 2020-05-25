@@ -719,7 +719,7 @@ contains
             call PD%Decor%write(PD%LogFile%unit,0,1)
 
             !***********************************************************************************************************************
-            ! Compute the MCMC chain's statistical properties
+            ! Compute the statistical properties of the MCMC chain
             !***********************************************************************************************************************
 
             if (PD%Image%isFirst) then
