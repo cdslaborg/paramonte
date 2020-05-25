@@ -2768,13 +2768,13 @@ contains
                         ylk = VEC_YU(k+1_IK)
                     end if
 
-                    if (simy < ylk) then  ! That's what happens most of the time 
+                    if (simy < ylk) then  ! That is what happens most of the time 
                         stdTranGaus = VEC_X(k) + unifrndFixed*d*VEC_YU(k) / ylk
                         return
                     end if
                     call random_number(unifrnd)
                     sim = VEC_X(k) + d * unifrnd
-                    ! Otherwise, check you're below the pdf curve
+                    ! Otherwise, check if we are below the pdf curve
                     if (sim**2 + 2*log(simy) + ALPHA < 0) then
                         stdTranGaus = sim
                         return
