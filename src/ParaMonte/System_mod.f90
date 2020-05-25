@@ -168,7 +168,7 @@ contains
 
             end if
 
-        else blockOS ! it's either Linux- or Darwin- based OS
+        else blockOS ! it is either Linux- or Darwin- based OS
 
             if (allocated(OS%name)) deallocate( OS%name )
             allocate( character(MAX_OS_NAME_LEN) :: OS%name )
