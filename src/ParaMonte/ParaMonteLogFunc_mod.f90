@@ -59,7 +59,7 @@ module ParaMonteLogFunc_mod
         end function getLogFunc_proc
     end interface
 
-    ! Fortran interface for the objective function's gradient
+    ! Fortran interface for the gradient of the objective function
 
     abstract interface
         function getGradLogFunc_proc(ndim,Point) result(GradLogFunc)
@@ -71,7 +71,7 @@ module ParaMonteLogFunc_mod
     end interface
 
 
-    ! C-interoperable interface for the objective function's gradient
+    ! C-interoperable interface for the gradient of the objective function
 
 #if defined CFI_ENABLED
     abstract interface
