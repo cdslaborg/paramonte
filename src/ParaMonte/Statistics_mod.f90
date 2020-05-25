@@ -1630,7 +1630,7 @@ contains
 !***********************************************************************************************************************************
 
     ! returns integer random number in the range [lowerBound,upperBound],
-    ! using Lecuyer's real random number generator Statistics@getRandRealLecuyer()
+    ! using the real random number generator of Lecuyer: Statistics@getRandRealLecuyer()
     function getRandIntLecuyer(lowerBound,upperBound,idum)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandIntLecuyer
@@ -1645,7 +1645,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! returns integer random number in the range [lowerBound,upperBound], using Fortran's built-in random number generator.
+    ! returns integer random number in the range [lowerBound,upperBound], using built-in random number generator of Fortran.
     function getRandInt(lowerBound,upperBound)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandInt
