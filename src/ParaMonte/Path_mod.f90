@@ -497,7 +497,7 @@ contains
             if ( dotPos==0 .or. dotPos==lenFilename ) then     ! there is no extension
                 name = fullName
                 ext = ""
-            elseif ( dotPos==1 ) then   ! it's all extension, no file name.
+            elseif ( dotPos==1 ) then   ! it is all extension, no file name.
                 name = ""
                 ext  = fullName(1:)
             else
