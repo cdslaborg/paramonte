@@ -2545,7 +2545,7 @@ contains
     ! 
     !   [X,P] = getTranGaus(...) also returns the vector of probabilities of X.
     ! 
-    !   This implements an extension of Chopin's algorithm detailed in
+    !   This implements an extension of the algorithm of Chopin detailed in
     !   N. Chopin, "Fast simulation of truncated Gaussian distributions", Stat
     !   Comput (2011) 21:275-288
     ! 
