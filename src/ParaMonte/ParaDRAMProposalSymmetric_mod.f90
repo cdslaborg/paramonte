@@ -846,7 +846,7 @@ contains
                 comv_CholDiagLower(j+1:mc_ndim,j,istage) = comv_CholDiagLower(j+1:mc_ndim,j,istage-1) * mc_DelayedRejectionScaleFactorVec(istage)
             end do
         end do
-        ! There is no need to check for positive-definiteness of the comv_CholDiagLower, it's already checked on the first image.
+        ! There is no need to check for positive-definiteness of the comv_CholDiagLower, it is already checked on the first image.
     end subroutine updateDelRejCholDiagLower
 
 !***********************************************************************************************************************************
