@@ -973,7 +973,7 @@ contains
         real(RK)   , intent(in)            :: Point(np,nd)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
         real(RK)   , intent(out)           :: CovMat(nd,nd)          ! Covariance matrix of the input data
         real(RK)   , intent(out)           :: Mean(nd)               ! Mean vector
-        real(RK)   , intent(out), optional :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the sample's mean position
+        real(RK)   , intent(out), optional :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the mean position of the sample
         real(RK)   , intent(out), optional :: InvCovMat(nd,nd)       ! Inverse Covariance matrix of the input data
         real(RK)   , intent(out), optional :: sqrtDetInvCovMat       ! sqrt determinant of the inverse covariance matrix
         real(RK)   , dimension(nd)         :: DummyVec
@@ -1023,7 +1023,7 @@ contains
         real(RK)   , intent(in)            :: Point(nd,np)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
         real(RK)   , intent(out)           :: CovMat(nd,nd)          ! Covariance matrix of the input data
         real(RK)   , intent(out)           :: Mean(nd)               ! Mean vector
-        real(RK)   , intent(out), optional :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the sample's mean position
+        real(RK)   , intent(out), optional :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the mean position of the sample
         real(RK)   , intent(out), optional :: InvCovMat(nd,nd)       ! Inverse Covariance matrix of the input data
         real(RK)   , intent(out), optional :: sqrtDetInvCovMat       ! sqrt determinant of the inverse covariance matrix
         real(RK)   , dimension(nd)         :: DummyVec
