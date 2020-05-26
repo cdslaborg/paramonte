@@ -182,6 +182,7 @@ contains
                     GRB%Event(igrb)%logSbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logSbol )
                 else
                     GRB%Event(igrb)%logPbol = LN10 * GRB%Event(igrb)%logPbol
+                    GRB%Event(igrb)%logPF53 = GRB%Event(igrb)%logPF53 - THRESH_ERFC_AMP * erfc( (GRB%Event(igrb)%logT90-THRESH_ERFC_AVG) * THRESH_ERFC_STD_INV )
                 end if
 
                 ! write the converted data to output file
