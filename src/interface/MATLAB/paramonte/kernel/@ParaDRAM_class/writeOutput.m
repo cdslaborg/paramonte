@@ -32,16 +32,13 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function out = writeOutput(self)
+function out = writeOutput(self, lastState)
     
     % if new point has been sampled, write the previous sampled point to output file
 
-    global  co_proposalFound_samplerUpdateOccurred
-
     nd          = self.nd.val;
-    lastState   = self.Stats.NumFunCall.accepted;
 
-    if co_proposalFound_samplerUpdateOccurred(1) == 1 && lastState > 0    % blockOutputWrite
+    if  lastState > 0    % blockOutputWrite
         if self.SpecBase.chainFileFormat.isCompact
             fprintf(self.ChainFile.unit , self.ChainFile.format                 ...
                                         , self.Chain.ProcessID  (lastState)     ...
