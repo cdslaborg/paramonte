@@ -50,7 +50,7 @@ module paramonte
 
     ! ParaMonte default integer, real, and complex kinds are defined by IK, RK, and CK below.
     ! Use IK and RK from this module for integer and real kind specifications in your Fortran codes
-    ! to ensure the highest level of consistency with the ParaMonte library's integer and real kinds. 
+    ! to ensure the highest level of consistency with the integer and real kinds of the ParaMonte library.
 
 #if defined IS_COMPATIBLE_COMPILER
 
