@@ -549,22 +549,22 @@ classdef ParaDRAMProposalSymmetric_class < handle
                     mv_MeanOld_save                 ...
                     mc_ndim
 
-            fprintf(mc_restartFileUnit, "\n%s"  , "sampleSizeOld"                           ...
-                                                , num2str(mv_sampleSizeOld_save)            ...
-                                                , "logSqrtDetOld"                           ...
-                                                , num2str(mv_logSqrtDetOld_save)            ...
-                                                , "adaptiveScaleFactorSq"                   ...
-                                                , num2str(mv_adaptiveScaleFactorSq_save)    ...
-                                                ) ;
+            fprintf(mc_restartFileUnit, "\n%s\n%.25f\n%s\n%.25f\n%s\n%.25f"  , "sampleSizeOld"                   ...
+                                                                    , mv_sampleSizeOld_save             ...
+                                                                    , "logSqrtDetOld"                   ...
+                                                                    , mv_logSqrtDetOld_save             ...
+                                                                    , "adaptiveScaleFactorSq"           ...
+                                                                    , mv_adaptiveScaleFactorSq_save     ...
+                                                                    ) ;
 
             fprintf(mc_restartFileUnit, "\n%s", "MeanOld");
-            fprintf(mc_restartFileUnit, "\n%d", mv_MeanOld_save.');
+            fprintf(mc_restartFileUnit, "\n%.25f", mv_MeanOld_save.');
 
             fprintf(mc_restartFileUnit, "\n%s", "comv_chol");
-            fprintf(mc_restartFileUnit, "\n%d", comv_chol(:,:,1).');
+            fprintf(mc_restartFileUnit, "\n%.25f", comv_chol(:,:,1).');
             
             fprintf(mc_restartFileUnit, "\n%s", "comv_covMat");
-            fprintf(mc_restartFileUnit, "\n%d", comv_covMat(:,:,1).');
+            fprintf(mc_restartFileUnit, "\n%.25f", comv_covMat(:,:,1).');
             
             fprintf(mc_restartFileUnit, "\n");
 
@@ -577,9 +577,10 @@ classdef ParaDRAMProposalSymmetric_class < handle
 
             global mc_restartFileUnit mc_ndim
 
-            for i = 1 : 8 + mc_ndim * (mc_ndim + 2)
+            for i = 1 : 9 + mc_ndim + 2*(mc_ndim)^2
                 fgets(mc_restartFileUnit);
             end
+
         end
 
     %*******************************************************************************************************************************

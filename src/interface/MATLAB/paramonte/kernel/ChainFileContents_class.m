@@ -175,7 +175,7 @@ classdef ChainFileContents_class < handle
                         chainSizeDefault = getNumRecordInFile(chainFileUnit);
                         chainSizeDefault = chainSizeDefault - 1;
                     end
-%                end
+ %               end
 
                 % set the number of elements in the Chain components
 

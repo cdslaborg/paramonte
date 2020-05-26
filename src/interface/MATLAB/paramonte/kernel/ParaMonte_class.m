@@ -420,6 +420,7 @@ classdef ParaMonte_class < handle
 
             self.isDryRun   = self.LogFile.exists || self.TimeFile.exists || self.RestartFile.exists || self.ChainFile.exists || self.SampleFile.exists; % not fresh, if any file exists
             self.isFreshRun = ~self.isDryRun;
+%            if self.isFreshRun, self.SpecMCMC.chainSize.val = self.SpecMCMC.chainSize.val + 1; end
 
             if self.isFreshRun
                 if self.Image.isFirst

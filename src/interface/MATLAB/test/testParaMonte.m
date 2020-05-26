@@ -79,8 +79,8 @@ pmpd.spec.outputDelimiter                       = "|";                          
 pmpd.spec.chainFileFormat                       = "compact";                    % Works
 pmpd.spec.variableNameList                      = ["Variable-X", "Variable-Y"]; % Works
 pmpd.spec.restartFileFormat                     = "ASCII";                           % Not implemented properly yet.
-pmpd.spec.outputColumnWidth                     = 13;                           % Works
-pmpd.spec.outputRealPrecision                   = 6;                            % Works
+pmpd.spec.outputColumnWidth                     = 25;                           % Works
+pmpd.spec.outputRealPrecision                   = 17;                            % Works
 pmpd.spec.silentModeRequested                   = 0;                            % Works
 pmpd.spec.domainLowerLimitVec                   = [-4,-4];                      % Works
 pmpd.spec.domainUpperLimitVec                   = [+4,+4];                      % Works
@@ -119,21 +119,21 @@ pmpd.spec.delayedRejectionScaleFactorVec        = [3, 4];                       
 pmpd.runSampler(ndim, @getLogFunc);
 fclose('all');
 
-for i = 1 : ndim
-
-    figure;
-    histfit(pmpd.Chain.State(i,:));
-    
-    figure;
-    plot(pmpd.Chain.State(i,:));
-    set(gca,'xscale','log')
-  
-end
+% for i = 1 : ndim
+% 
+%     figure;
+%     histfit(pmpd.Chain.State(i,:));
+%     
+%     figure;
+%     plot(pmpd.Chain.State(i,:));
+%     set(gca,'xscale','log')
+%   
+% end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %system(pmpd.LogFile.Path.modified);
 %system(pmpd.TimeFile.Path.modified);
-%system(pmpd.ChainFile.Path.modified);
+system(pmpd.ChainFile.Path.modified);
 %system(pmpd.SampleFile.Path.modified);
-system(pmpd.RestartFile.Path.modified);
+%system(pmpd.RestartFile.Path.modified);

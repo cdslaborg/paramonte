@@ -4,6 +4,7 @@ function reportProgress(self)
             numFunCallAcceptedRejectedLastReport numFunCallAccepted_dummy
 
     if self.isFreshRun
+
         self.Timer.toc();
         timeElapsedSinceLastReportInSeconds         = self.Timer.total - timeElapsedUntilLastReportInSeconds;
         timeElapsedUntilLastReportInSeconds         = self.Timer.total;
@@ -20,6 +21,7 @@ function reportProgress(self)
                                         , timeElapsedUntilLastReportInSeconds       ...
                                         , estimatedTimeToFinishInSeconds            ...
                                         ) ;
+
     else
 
         Record.value    = fgets(self.TimeFile.unit);
@@ -34,7 +36,7 @@ function reportProgress(self)
             estimatedTimeToFinishInSeconds          = str2num(Record.Parts{7});
             SumAccRateSinceStart.acceptedRejected   = meanAccRateSinceStart * numFunCallAcceptedRejectedLastReport;
         end
-        
+
     end
 
     % report progress in the standard output

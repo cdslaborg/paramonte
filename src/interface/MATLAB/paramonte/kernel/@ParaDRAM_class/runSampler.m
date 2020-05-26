@@ -159,7 +159,7 @@ function runSampler ( self          ...
                                     ;
         self.Chain.writeHeader ( ndim, self.ChainFile.unit, self.SpecBase.chainFileFormat.isBinary, self.ChainFile.headerFormat);
     else
-        if self.Image.isMaster, fgets(self.TimeFile.unit)   % read the header line of the time file, only by master images
+        if self.Image.isMaster, fgets(self.TimeFile.unit); end   % read the header line of the time file, only by master images
 %        self.Chain.getLenHeader(ndim, self.SpecBase.chainFileFormat.isBinary, self.ChainFile.headerFormat);
     end
 
@@ -336,10 +336,10 @@ function runSampler ( self          ...
         QPROB                       = QuantileProbability_class();
         self.Stats.Chain.Quantile   = zeros(QPROB.count, ndim);
 
-disp("self.Chain.Count.compact = " + num2str(self.Chain.Count.compact));
-disp("self.Stats.BurninLoc.compact = " + num2str(self.Stats.BurninLoc.compact));
-disp("np = self.Chain.Count.compact - self.Stats.BurninLoc.compact + 1 = " + num2str(self.Chain.Count.compact - self.Stats.BurninLoc.compact + 1));
-disp("length(self.Chain.State(i,self.Stats.BurninLoc.compact:self.Chain.Count.compact)) = " + num2str(length(self.Chain.State(i,self.Stats.BurninLoc.compact:self.Chain.Count.compact))));
+% disp("self.Chain.Count.compact = " + num2str(self.Chain.Count.compact));
+% disp("self.Stats.BurninLoc.compact = " + num2str(self.Stats.BurninLoc.compact));
+% disp("np = self.Chain.Count.compact - self.Stats.BurninLoc.compact + 1 = " + num2str(self.Chain.Count.compact - self.Stats.BurninLoc.compact + 1));
+% disp("length(self.Chain.State(i,self.Stats.BurninLoc.compact:self.Chain.Count.compact)) = " + num2str(length(self.Chain.State(i,self.Stats.BurninLoc.compact:self.Chain.Count.compact))));
 
         for i = 1 : ndim
             self.Stats.Chain.Quantile(1:QPROB.count,i)  = getQuantile   ( self.Chain.Count.compact - self.Stats.BurninLoc.compact + 1               ...

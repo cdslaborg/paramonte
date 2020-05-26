@@ -4,7 +4,7 @@ classdef ParaMCMC_class < ParaMonte_class
         SUB_CLASS1_NAME  = "@ParaMCMC_class"
     end
 
-    properties (Access = protected)
+    properties (Access = public)
         SpecMCMC    = []
     end
 
