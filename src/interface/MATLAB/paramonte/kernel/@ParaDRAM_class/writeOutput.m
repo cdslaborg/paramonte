@@ -32,11 +32,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function out = writeOutput(self, lastState)
+function out = writeOutput(self)
     
     % if new point has been sampled, write the previous sampled point to output file
 
     nd          = self.nd.val;
+    lastState   = self.Stats.NumFunCall.accepted;
 
     if  lastState > 0    % blockOutputWrite
         if self.SpecBase.chainFileFormat.isCompact

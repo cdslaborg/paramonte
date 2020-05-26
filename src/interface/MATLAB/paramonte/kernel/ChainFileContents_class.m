@@ -109,7 +109,7 @@ classdef ChainFileContents_class < handle
                 elseif lower(chainFileForm) == "compact"
                     isCompact   = true;
                 elseif lower(chainFileForm) == "verbose"
-                    isVerbose   = false;
+                    isVerbose   = true;
                 else
                     Err.occurred    = true;
                     Err.msg         = FUNCTION_NAME + ": Unrecognized chain file form: " + chainFileForm;
@@ -173,6 +173,7 @@ classdef ChainFileContents_class < handle
                         fclose(chainFileUnit);
                     else
                         chainSizeDefault = getNumRecordInFile(chainFileUnit);
+                        if chainSizeDefault == 0, self.Count.compact = 0; return; end
                         chainSizeDefault = chainSizeDefault - 1;
                     end
  %               end
@@ -311,6 +312,7 @@ classdef ChainFileContents_class < handle
                     Record.value = fgets(chainFileUnit);
                     Record.value = convertCharsToStrings(Record.value);
                 end
+                
                 self.ColHeader = split(strtrim(Record.value), self.delimiter);
                 for i = 1 : length(self.ColHeader)
                     self.ColHeader(i) = strtrim(self.ColHeader(i));

@@ -74,12 +74,12 @@ pmpd = ParaDRAM_class();
 % pmpd.spec.sampleSize                            = 1000;                         % Works
 pmpd.spec.randomSeed                            = 7;                            % Works
 pmpd.spec.description                           = "Hi there";                   % Works
-pmpd.spec.outputFileName                        = "./out/temp/Restart";         % Works
-pmpd.spec.outputDelimiter                       = "|";                          % Works
+pmpd.spec.outputFileName                        = "./out/temp/restart";         % Works
+%pmpd.spec.outputDelimiter                       = "|";                          % Works
 pmpd.spec.chainFileFormat                       = "verbose";                    % Works
 pmpd.spec.variableNameList                      = ["Variable-X", "Variable-Y"]; % Works
 pmpd.spec.restartFileFormat                     = "ASCII";                           % Not implemented properly yet.
-pmpd.spec.outputColumnWidth                     = 25;                           % Works
+%pmpd.spec.outputColumnWidth                     = 25;                           % Works
 pmpd.spec.outputRealPrecision                   = 17;                            % Works
 pmpd.spec.silentModeRequested                   = 0;                            % Works
 pmpd.spec.domainLowerLimitVec                   = [-4,-4];                      % Works
@@ -134,6 +134,6 @@ fclose('all');
 
 %system(pmpd.LogFile.Path.modified);
 %system(pmpd.TimeFile.Path.modified);
-system(pmpd.ChainFile.Path.modified);
+%system(pmpd.ChainFile.Path.modified);
 %system(pmpd.SampleFile.Path.modified);
 %system(pmpd.RestartFile.Path.modified);

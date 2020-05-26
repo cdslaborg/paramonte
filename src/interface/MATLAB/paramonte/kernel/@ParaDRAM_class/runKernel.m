@@ -122,7 +122,7 @@ function runKernel  ( self          ...
             %***************************************************************************************************************
             %***************************************************************************************************************
             %                               Restart mode old chain ends here
-               fprintf(self.ChainFile.unit, "---------------  Old chain with less two points till here  --------------\n");
+            %   fprintf(self.ChainFile.unit, "---------------  Old chain with less two points till here  --------------\n");
             %***************************************************************************************************************
             %***************************************************************************************************************
 
@@ -185,13 +185,7 @@ function runKernel  ( self          ...
 
         if co_proposalFound_samplerUpdateOccurred(1) == 1   % blockProposalAccepted: co_proposalAccepted = true
 
-            lastState                       = self.Stats.NumFunCall.accepted;
-
-            if self.isFreshRun
-                self.Stats.NumFunCall.accepted  = self.Stats.NumFunCall.accepted + 1;
-            end
-
-            currentStateWeight              = 0;
+            currentStateWeight  = 0;
 
             % Note: after every adaptive update of the sampler, counterAUP is reset to 1.
             if counterAUP == 0 && samplerUpdateSucceeded
@@ -204,10 +198,12 @@ function runKernel  ( self          ...
                 %***********************************************************************************************************
                 %************************************************* output write ********************************************
 
-                self.writeOutput(lastState);
+                self.writeOutput();
 
                 %************************************************* output write ********************************************
                 %***********************************************************************************************************
+
+                self.Stats.NumFunCall.accepted  = self.Stats.NumFunCall.accepted + 1;
 
                 self.Chain.ProcessID    (self.Stats.NumFunCall.accepted)    = imageID;
                 self.Chain.DelRejStage  (self.Stats.NumFunCall.accepted)    = counterDRS;
@@ -228,7 +224,7 @@ function runKernel  ( self          ...
                 numFunCallAcceptedPlusOne = self.Stats.NumFunCall.accepted + 1;
                 if numFunCallAcceptedPlusOne == self.Chain.Count.compact
                     self.isFreshRun                                     = true;
-                    self.writeOutput(self.Stats.NumFunCall.accepted);
+                    self.writeOutput();
                     self.isDryRun                                       = ~self.isFreshRun;
                     self.Chain.Weight(numFunCallAcceptedPlusOne)        = 0;
                     SumAccRateSinceStart.acceptedRejected               = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted) * self.Stats.NumFunCall.acceptedRejected;
@@ -293,7 +289,7 @@ function runKernel  ( self          ...
             inverseProgressReportPeriod = 1 / (self.Stats.NumFunCall.acceptedRejected - numFunCallAcceptedRejectedLastReport);
 
             if self.isFreshRun
-                self.writeOutput(self.Stats.NumFunCall.accepted);
+                self.writeOutput();
             end
 
             self.reportProgress();

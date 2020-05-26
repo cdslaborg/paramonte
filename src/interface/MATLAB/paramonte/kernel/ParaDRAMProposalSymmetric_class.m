@@ -459,6 +459,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
             % adjust the scale of the covariance matrix and the Cholesky factor, if needed
 
             if class(meanAccRateSinceStart) == "char", meanAccRateSinceStart = str2num(meanAccRateSinceStart); end
+
             if scalingNeeded
 
                 mv_adaptiveScaleFactorSq_save   = (meanAccRateSinceStart / mc_targetAcceptanceRate)^mc_ndimInverse;
