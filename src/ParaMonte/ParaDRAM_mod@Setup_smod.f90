@@ -424,9 +424,7 @@ contains
         end if
 
         call PD%runKernel( getLogFunc = getLogFunc )
-#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
-        if(PD%Err%occurred) return
-#endif
+        if(PD%Err%occurred) return ! relevant only for MATLAB
 
         if (PD%isFreshRun .and. PD%Image%isMaster) then
             call PD%Decor%writeDecoratedText( text = "\nExiting " // PD%name // " sampling - " // getNiceDateTime() // "\n" &

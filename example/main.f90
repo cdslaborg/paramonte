@@ -57,8 +57,8 @@
                         , inputFile = "./paramonte.in" &    ! this is optional argument
                         ! You can also specify simulation specifications as input arguments, like 
                         ! the following. This is possible only from the OOP interface to ParaDRAM.
-                        , adaptiveUpdateCount = 100000 &    ! this is optional argument
-                        , chainSize = 30000 &               ! this is optional argument
+                        , greedyAdaptationCount = 0 &       ! this is optional argument
+                        , description = "an example run" &  ! this is optional argument
                         ! More optional arguments can appear here. 
                         ! See the ParaDRAM routine's list of input arguments.
                         )

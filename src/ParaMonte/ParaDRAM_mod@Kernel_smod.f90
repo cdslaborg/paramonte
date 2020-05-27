@@ -196,7 +196,7 @@ contains
             call PD%Chain%get   ( chainFilePath = PD%ChainFile%Path%original        &
                                 , chainFileForm = PD%SpecBase%ChainFileFormat%val   &
                                 , Err = PD%Err                                      &
-                                , resizedChainSize = PD%SpecMCMC%ChainSize%val      &
+                                , targetChainSize = PD%SpecMCMC%ChainSize%val       &
                                 , lenHeader = PD%Chain%lenHeader                    &
                                 , ndim = nd                                         &
                                 , delimiter = PD%SpecBase%OutputDelimiter%val       &
@@ -204,6 +204,7 @@ contains
             if (PD%Err%occurred) then
                 PD%Err%msg = PROCEDURE_NAME//PD%Err%msg
                 call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                return
             end if
 
             if (PD%Chain%Count%compact<=CHAIN_RESTART_OFFSET) then
@@ -233,6 +234,7 @@ contains
                     if (PD%Err%occurred) then
                         PD%Err%msg = PROCEDURE_NAME//PD%Err%msg
                         call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                        return
                     end if
 
                     ! reopen the chain file to resume the simulation
@@ -247,6 +249,7 @@ contains
                     if (PD%Err%occurred) then
                         PD%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//PD%name//" "//PD%ChainFile%suffix//" file='"//PD%ChainFile%Path%original//"'."
                         call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                        return
                     end if
 
                     ! rewrite the chain file
@@ -265,6 +268,7 @@ contains
                     if (PD%Err%occurred) then
                         PD%Err%msg = PROCEDURE_NAME//PD%Err%msg
                         call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                        return
                     end if
 
                 end block
@@ -943,7 +947,7 @@ contains
         !***************************************************************************************************************************
         !********************************************** end of loopMarkovChain *****************************************************
 
-        PD%chain%Count%resized = PD%Stats%NumFunCall%accepted
+        PD%chain%Count%target  = PD%Stats%NumFunCall%accepted
         PD%chain%Count%compact = PD%Stats%NumFunCall%accepted
         PD%chain%Count%verbose = PD%Stats%NumFunCall%acceptedRejected
 

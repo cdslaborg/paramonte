@@ -203,7 +203,7 @@ contains
         integer(IK), intent(in)             :: outputUnit
         logical, intent(in)                 :: isMasterImage, splashModeRequested
         character(:), allocatable           :: formatStr, formatVal
-        integer(IK)                         :: ndim, i
+        integer(IK)                         :: i
 
         formatStr = "(*(g0,' '))"
         formatVal = "('" // TAB // TAB // "',*(g0,' '))"

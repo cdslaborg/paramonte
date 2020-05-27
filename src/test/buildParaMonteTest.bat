@@ -130,7 +130,17 @@ if !MPI_ENABLED!==true (
         /module:!ParaMonteTest_MOD_DIR!     %=path to output ParaMonte Test module files=% ^
         /I:!ParaMonteTest_MOD_DIR!          %=path to required ParaMonte Test module files=%  ^
         /I:!ParaMonte_MOD_DIR!              %=path to input ParaMonte module files=%  ^
-        /c !ParaMonteTest_SRC_DIR!\%%A      %=path to input ParaMonte Test source file=%
+        /c !ParaMonteTest_SRC_DIR!\%%A      %=path to input ParaMonte Test source file=% ^
+        || (
+            REM if !ERRORLEVEL! NEQ 0 (
+            echo.
+            echo. -- ParaMonteTest - Fatal Error: compilation of the object file for %%A failed.
+            echo. -- ParaMonteTest - build failed. exiting...
+            echo.
+            cd %~dp0
+            set ERRORLEVEL=1
+            exit /B 1
+        )
         if !ERRORLEVEL! NEQ 0 (
             echo. 
             echo. -- ParaMonteTest - Fatal Error: compilation of the object file for %%A failed.
@@ -147,9 +157,9 @@ if !MPI_ENABLED!==true (
 
         !FCL! !FCL_FLAGS! !FPP_FLAGS! ^
         /module:!ParaMonteTest_MOD_DIR!     %=path to output ParaMonte Test module files=% ^
-        /I:!ParaMonteTest_MOD_DIR!          %=path to required ParaMonte Test module files=%  ^
-        /I:!ParaMonte_MOD_DIR!              %=path to input ParaMonte module files=%  ^
-        /c !ParaMonteTest_SRC_DIR!\%%A      %=path to input ParaMonte Test source file=%  ^
+        /I:!ParaMonteTest_MOD_DIR!          %=path to required ParaMonte Test module files=% ^
+        /I:!ParaMonte_MOD_DIR!              %=path to input ParaMonte module files=% ^
+        /c !ParaMonteTest_SRC_DIR!\%%A      %=path to input ParaMonte Test source file=% ^
         || (
             echo. 
             echo. -- ParaMonteTest - Fatal Error: compilation of the object file for %%A failed.
@@ -195,7 +205,14 @@ REM )
 echo. -- ParaMonteTest - deleting old executable (if any) at: !ParaMonteTest_BIN_DIR!\!ParaMonteTest_EXE_NAME!
 
 cd !ParaMonteTest_BIN_DIR!
-del !ParaMonteTest_EXE_NAME!
+del !ParaMonteTest_EXE_NAME! || (
+    echo. 
+    echo. -- ParaMonteTest - Fatal Error: deletion of the old executable at !ParaMonteTest_BIN_DIR!\!ParaMonteTest_EXE_NAME! failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
     echo. -- ParaMonteTest - Fatal Error: deletion of the old executable at !ParaMonteTest_BIN_DIR!\!ParaMonteTest_EXE_NAME! failed. exiting...
@@ -214,7 +231,16 @@ if !MPI_ENABLED!==true (
     /I:!ParaMonteTest_MOD_DIR! ^
     /I:!ParaMonte_MOD_DIR! ^
     !ParaMonteTest_EXE_REQUIRED_OBJ_FILES! ^
-    /exe:!ParaMonteTest_BIN_DIR!\!ParaMonteTest_EXE_NAME!
+    /exe:!ParaMonteTest_BIN_DIR!\!ParaMonteTest_EXE_NAME! ^
+    || (
+        echo. 
+        echo. -- ParaMonteTest - Fatal Error: linking of the test object files may have likely failed.
+        echo. -- ParaMonteTest - build may have likely failed. continuing...
+        echo. 
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
 
 ) else (
 
@@ -223,7 +249,16 @@ if !MPI_ENABLED!==true (
     /I:!ParaMonteTest_MOD_DIR! ^
     /I:!ParaMonte_MOD_DIR! ^
     !ParaMonteTest_EXE_REQUIRED_OBJ_FILES! ^
-    /exe:!ParaMonteTest_BIN_DIR!\!ParaMonteTest_EXE_NAME!
+    /exe:!ParaMonteTest_BIN_DIR!\!ParaMonteTest_EXE_NAME! ^
+    || (
+        echo. 
+        echo. -- ParaMonteTest - Fatal Error: linking of the test object files may have likely failed.
+        echo. -- ParaMonteTest - build may have likely failed. continuing...
+        echo. 
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
 
 )
 
@@ -267,15 +302,31 @@ echo.
 echo. -- ParaMonteTest - copying input files to the bin directory
 echo. -- ParaMonteTest - from: !ParaMonteTest_SRC_DIR!\input   %= no need for final slash here =%
 echo. -- ParaMonteTest -   to: !ParaMonteTest_BIN_DIR!\input\  %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMonteTest_SRC_DIR!\input" "!ParaMonteTest_BIN_DIR!\input\"
+xcopy /s /Y "!ParaMonteTest_SRC_DIR!\input" "!ParaMonteTest_BIN_DIR!\input\" || goto LABEL_copyErrorOccured
 echo.
 
 cd !ParaMonteTest_BIN_DIR!
 
 if !MPI_ENABLED!==true (
-    mpiexec -localonly -n !FOR_COARRAY_NUM_IMAGES! !ParaMonteTest_EXE_NAME!
+    mpiexec -localonly -n !FOR_COARRAY_NUM_IMAGES! !ParaMonteTest_EXE_NAME! || (
+        echo.
+        echo.
+        echo. -- ParaMonteTest - the ParaMonte library MPI-parallel test run failed. exiting...
+        echo.
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
 ) else (
-    !ParaMonteTest_EXE_NAME!
+    !ParaMonteTest_EXE_NAME! || (
+        echo.
+        echo.
+        echo. -- ParaMonteTest - the ParaMonte library test run failed. exiting...
+        echo.
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
 )
 
 if !ERRORLEVEL!==0 ( 
@@ -295,3 +346,11 @@ if !ERRORLEVEL!==0 (
 
 exit /B 0
 
+:LABEL_copyErrorOccured
+
+echo. 
+echo. -- ParaMonteExample!LANG_NAME! - Fatal Error: failed to copy contents. exiting...
+echo. 
+cd %~dp0
+set ERRORLEVEL=1
+exit /B 1

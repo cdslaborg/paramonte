@@ -189,6 +189,8 @@ contains
         PM%Timer = Timer_type(PM%Err)
         if (PM%Err%occurred) then
             PM%Err%msg = PROCEDURE_NAME // ": Error occurred while setting up the " // PM%name // "timer."//NLC// PM%Err%msg
+            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            return
         end if
         PM%nd%val = nd
         PM%LogFile%unit = output_unit   ! temporarily set the report file to stdout.
@@ -784,8 +786,10 @@ contains
                 if (.not. PM%ChainFile%exists)      PM%Err%msg = PM%Err%msg//NLC//PM%ChainFile%Path%original
                 if (.not. PM%RestartFile%exists)    PM%Err%msg = PM%Err%msg//NLC//PM%RestartFile%Path%original
             end if
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
-            return
+            if (PM%Err%occurred) then
+                call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                return
+            end if
         end if
 
         ! open/append the output files:

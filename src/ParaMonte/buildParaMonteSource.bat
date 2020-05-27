@@ -137,8 +137,9 @@ if !MPI_ENABLED!==true (
         call !FCL! !FCL_FLAGS! !FPP_FLAGS! !FC_LIB_FLAGS! ^
         /module:!ParaMonte_MOD_DIR!     %=path to output ParaMonte example module files=% ^
         /I:!ParaMonte_MOD_DIR!          %=path to input ParaMonte module files=%  ^
-        /c !ParaMonte_SRC_DIR!\%%A      %=path to input ParaMonte example source files=%
-        if !ERRORLEVEL! NEQ 0 (
+        /c !ParaMonte_SRC_DIR!\%%A      %=path to input ParaMonte example source files=% ^
+        || (
+            REM if !ERRORLEVEL! NEQ 0 (
             echo.
             echo. -- ParaMonte - Fatal Error: compilation of the object file for %%A failed.
             echo. -- ParaMonte - build failed. exiting...

@@ -1837,7 +1837,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
                 echo >&2 "-- ${BUILD_NAME}MATLAB -     MEX configured to use 'gcc' for C language compilation."
                 echo >&2 "-- ${BUILD_NAME}MATLAB - "
                 echo >&2 "-- ${BUILD_NAME}MATLAB - This ensures that your MATLAB is already set to use an appropriate compiler for building applications."
-                echo >&2 "-- ${BUILD_NAME}MATLAB - Please report this error at: "
+                echo >&2 "-- ${BUILD_NAME}MATLAB - If you cannot identify the cause of the failure, Please report this error at: "
                 echo >&2 "-- ${BUILD_NAME}MATLAB - "
                 echo >&2 "-- ${BUILD_NAME}MATLAB -     https://github.com/cdslaborg/paramonte/issues"
                 echo >&2 "-- ${BUILD_NAME}MATLAB - "

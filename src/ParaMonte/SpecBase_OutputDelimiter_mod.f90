@@ -76,7 +76,6 @@ contains
         implicit none
         type(OutputDelimiter_type)  :: OutputDelimiterObj
         character(*), intent(in)    :: methodName
-        integer                     :: i
         OutputDelimiterObj%def = ","
         if (allocated(OutputDelimiterObj%null)) deallocate(OutputDelimiterObj%null)
         allocate(character(MAX_DELIMITER_LEN) :: OutputDelimiterObj%null)

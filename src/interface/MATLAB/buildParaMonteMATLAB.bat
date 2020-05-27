@@ -125,12 +125,13 @@ if defined MATLAB_BIN_DIR (
     echo. -- ParaMonteMATLAB - compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
     cd !ParaMonteMATLAB_BLD_LIB_DIR!
     REM CC=icl COMPFLAGS="!MATLAB_BUILD_FLAGS!"
-    call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
-    if !ERRORLEVEL!==0 (
+    call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME! && (
+    REM if !ERRORLEVEL!==0 (
         echo.
         echo. -- ParaMonteMATLAB - the ParaMonte MATLAB dynamic library build appears to have succeeded.
         echo.
-    ) else (
+    ) || (
+    REM ) else (
         echo. 
         echo. -- ParaMonteMATLAB - Fatal Error: The ParaMonte MATLAB library build failed.
         echo. -- ParaMonteMATLAB - Please make sure you have the following components installed
@@ -199,7 +200,7 @@ echo.
 echo. -- ParaMonteMATLAB - copying the ParaMonte library auxiliary files
 echo. -- ParaMonteMATLAB - from: !ParaMonteInterface_SRC_DIR!\auxil                 %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\paramonte\auxil\     %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMonteInterface_SRC_DIR!\auxil" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\auxil\"
+xcopy /s /Y "!ParaMonteInterface_SRC_DIR!\auxil" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\auxil\" || goto LABEL_copyErrorOccured
 echo.
 
 :: copy necessary ParaMonte MATLAB library files in MATLAB's source directory
@@ -207,7 +208,7 @@ echo.
 echo. -- ParaMonteMATLAB - copying the paramonte library source files to the MATLAB build directory
 echo. -- ParaMonteMATLAB - from: !ParaMonteInterfaceMATLAB_SRC_DIR!\paramonte   %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\paramonte\       %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMonteInterfaceMATLAB_SRC_DIR!\paramonte" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\"
+xcopy /s /Y "!ParaMonteInterfaceMATLAB_SRC_DIR!\paramonte" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\" || goto LABEL_copyErrorOccured
 echo.
 
 :: copy necessary ParaMonte MATLAB DLL files in MATLAB's build directory
@@ -215,7 +216,7 @@ echo.
 echo. -- ParaMonteMATLAB - copying the paramonte DLL files to the MATLAB build directory
 echo. -- ParaMonteMATLAB - from: !ParaMonte_LIB_DIR!\!PMLIB_NAME!.* %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\paramonte\   %= final slash tells this is folder =%
-xcopy /s /Y /i "!ParaMonte_LIB_DIR!\*.*" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\lib"
+xcopy /s /Y /i "!ParaMonte_LIB_DIR!\*.*" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\lib" || goto LABEL_copyErrorOccured
 echo.
 
 :: copy necessary ParaMonte MATLAB library files in MATLAB's directory
@@ -223,7 +224,7 @@ echo.
 echo. -- ParaMonteMATLAB - copying the paramonte library test files to the MATLAB build directory
 echo. -- ParaMonteMATLAB - from: !ParaMonteMATLABTest_SRC_DIR!\!MATLAB_TEST_FILENAME!  %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\                        %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMonteMATLABTest_SRC_DIR!\!MATLAB_TEST_FILENAME!" "!ParaMonteMATLABTest_BLD_DIR!\"
+xcopy /s /Y "!ParaMonteMATLABTest_SRC_DIR!\!MATLAB_TEST_FILENAME!" "!ParaMonteMATLABTest_BLD_DIR!\" || goto LABEL_copyErrorOccured
 echo.
 
 :: copy necessary input files in MATLAB's directory
@@ -231,5 +232,17 @@ echo.
 echo. -- ParaMonteMATLAB - copying the test input files to the paramonte MATLAB build directory
 echo. -- ParaMonteMATLAB - from: !ParaMonteTest_SRC_DIR!\input   %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\input\  %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMonteTest_SRC_DIR!\input" "!ParaMonteMATLABTest_BLD_DIR!\input\"
+xcopy /s /Y "!ParaMonteTest_SRC_DIR!\input" "!ParaMonteMATLABTest_BLD_DIR!\input\" || goto LABEL_copyErrorOccured
 echo.
+
+cd %~dp0
+exit /B 0
+
+:LABEL_copyErrorOccured
+
+echo. 
+echo. -- ParaMonteExample!LANG_NAME! - Fatal Error: failed to copy contents. exiting...
+echo. 
+cd %~dp0
+set ERRORLEVEL=1
+exit /B 1

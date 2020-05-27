@@ -38,7 +38,13 @@ module Err_mod
 
     character(*), parameter :: MODULE_NAME = "@Err_mod"
 
-    logical, parameter :: ERR_HANDLING_REQUESTED = .false.
+    logical     , parameter :: ERR_HANDLING_REQUESTED = .false.
+
+#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+    logical     , parameter :: SOFT_EXIT_ENABLED = .true.
+#else
+    logical     , parameter :: SOFT_EXIT_ENABLED = .false.
+#endif
 
     type :: Err_type
         logical                     :: occurred = .false.
@@ -60,8 +66,8 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: abort
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use Constants_mod, only: NLC, SOFT_EXIT_ENABLED
         use Decoration_mod, only: write
+        use Constants_mod, only: NLC
         implicit none
         type(Err_type), intent(in)          :: Err
         character(*), intent(in), optional  :: prefix, newline
@@ -72,8 +78,11 @@ contains
         character(:), allocatable           :: pfx, msg, nlstr
         character(63)                       :: dummyChar1, imageChar !, dummyChar2
 
-        returnEnabledDefault = SOFT_EXIT_ENABLED
-        if (present(returnEnabled)) returnEnabledDefault = returnEnabled
+        if (present(returnEnabled)) then
+            returnEnabledDefault = returnEnabled
+        else
+            returnEnabledDefault = SOFT_EXIT_ENABLED
+        end if
 
 #if defined CAF_ENABLED
         write(imageChar ,"(g0)") this_image()

@@ -106,7 +106,14 @@ set BUILD_SCRIPT_NAME=ParaMonteBuild
 
 :: set up flags via buildFlags.bat
 echo. -- !BUILD_SCRIPT_NAME! - configuring ParaMonte build...
-call configParaMonte.bat
+call configParaMonte.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library build-flag setup failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 
 if !ERRORLEVEL!==1 (
     echo. 
@@ -184,7 +191,15 @@ if not defined COMPILER_VERSION (
 
     echo. -- !BUILD_SCRIPT_NAME! - Detecting intel compiler version...
     cd .\bmake\
-    call getCompilerVersion.bat
+    call getCompilerVersion.bat || (
+        echo. 
+        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to fetch the Fortran compiler version.
+        echo. -- !BUILD_SCRIPT_NAME! - gracefully exiting.
+        echo. 
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
     cd %~dp0
 
 )
@@ -420,7 +435,14 @@ echo.
 :: generate ParaMonte library build directories, object files, and dynamic libraries
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-call !ParaMonte_SRC_DIR!\buildParaMonteSource.bat
+call !ParaMonte_SRC_DIR!\buildParaMonteSource.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
     echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
@@ -460,11 +482,17 @@ echo.
 
 if !ParaMonteTest_ENABLED! NEQ true goto LABEL_ParaMonteInterface
 
-call !ParaMonteTest_SRC_DIR!\buildParaMonteTest.bat
-
+call !ParaMonteTest_SRC_DIR!\buildParaMonteTest.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library test failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library test build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library test failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -505,11 +533,17 @@ if exist !ParaMonteInterfaceMATLAB_SRC_DIR! (
 )
 echo.
 
-call !ParaMonteInterfaceMATLAB_SRC_DIR!\buildParaMonteMATLAB.bat
-
+call !ParaMonteInterfaceMATLAB_SRC_DIR!\buildParaMonteMATLAB.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library MATLAB build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library MATLAB build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -542,11 +576,17 @@ if exist !ParaMonteInterfacePython_SRC_DIR! (
 )
 echo.
 
-call !ParaMonteInterfacePython_SRC_DIR!\buildParaMontePython.bat
-
+call !ParaMonteInterfacePython_SRC_DIR!\buildParaMontePython.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library Python build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library Python build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -582,12 +622,17 @@ echo.
 :: build ParaMonte examples
 
 echo.
-call !ParaMonteExample_SRC_DIR!\buildParaMonteExample.bat
-echo.
-
+call !ParaMonteExample_SRC_DIR!\buildParaMonteExample.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library examples build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library example build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library examples build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -599,6 +644,7 @@ if !ERRORLEVEL!==0 (
     echo. -- !BUILD_SCRIPT_NAME! - build successful. 
     echo.
 )
+echo.
 
 cd %~dp0
 
@@ -611,7 +657,14 @@ cd %~dp0
 :: undefine all configuration environmental flags
 
 if !ParaMonte_FLAG_CLEANUP_ENABLED!==true (
-    call unconfigParaMonte.bat 
+    call unconfigParaMonte.bat || (
+        echo. 
+        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library cleanup failed. exiting...
+        echo. 
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
 )
 
 cd !ParaMonte_BLD_ROOT_DIR!
