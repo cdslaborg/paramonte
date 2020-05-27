@@ -233,7 +233,8 @@ echo. -- !BUILD_SCRIPT_NAME! - setting up required root directories...
 
 :: define ParaMonte_ROOT_DIR: contains the last backward slash
 
-if not defined ParaMonte_ROOT_DIR set ParaMonte_ROOT_DIR=%~dp0
+REM if not defined ParaMonte_ROOT_DIR set ParaMonte_ROOT_DIR=%~dp0
+set ParaMonte_ROOT_DIR=%~dp0
 echo. -- !BUILD_SCRIPT_NAME! - project root directory: !ParaMonte_ROOT_DIR!
 
 :: set the ParaMonte source files directory

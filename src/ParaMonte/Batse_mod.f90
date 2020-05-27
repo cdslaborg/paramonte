@@ -42,7 +42,7 @@ module Batse_mod
 
     character(*), parameter :: MODULE_NAME = "@Batse_mod"
 
-    integer(IK) , parameter :: NLGRB = 1366, NSGRB = 565, NVAR = 4
+    integer(IK) , parameter :: NLGRB = 1366_IK, NSGRB = 565_IK, NVAR = 4_IK
     real(RK)    , parameter :: MAX_LOG10PH53_4_LOGPBOLZERO  = 6.318167895318538_RK
     real(RK)    , parameter :: MIN_LOG10PH53_4_LOGPBOLZERO  = 4.92_RK
     real(RK)    , parameter :: MAX_LOGPH53_4_LOGPBOLZERO    = MAX_LOG10PH53_4_LOGPBOLZERO * LN10
@@ -155,20 +155,11 @@ contains
             ! read BATSE GRB data
             do igrb = 1, GRB%count
 
-                if (isLgrb) then
-                    read(inFileUnit,*   ) Trigger(igrb)             &
-                                        , GRB%Event(igrb)%logPF53   &
-                                        , GRB%Event(igrb)%logEpk    &
-                                        , GRB%Event(igrb)%logSbol   &
-                                        , GRB%Event(igrb)%logT90
-                else
-                    read(inFileUnit,*   ) Trigger(igrb)             &
-                                        , GRB%Event(igrb)%logPbol   &
-                                        , GRB%Event(igrb)%logSbol   &
-                                        , GRB%Event(igrb)%logEpk    &
-                                        , GRB%Event(igrb)%logT90    &
-                                        , GRB%Event(igrb)%logPF53
-                end if
+                read(inFileUnit,*   ) Trigger(igrb)             &
+                                    , GRB%Event(igrb)%logPF53   &
+                                    , GRB%Event(igrb)%logEpk    &
+                                    , GRB%Event(igrb)%logSbol   &
+                                    , GRB%Event(igrb)%logT90
 
                 ! convert all values to logarithm in base Neper
                 GRB%Event(igrb)%logPF53 = LN10 * GRB%Event(igrb)%logPF53
@@ -176,12 +167,12 @@ contains
                 GRB%Event(igrb)%logSbol = LN10 * GRB%Event(igrb)%logSbol
                 GRB%Event(igrb)%logT90  = LN10 * GRB%Event(igrb)%logT90
 
+                ! convert photon count data to energy in units of ergs
+
+                GRB%Event(igrb)%logPbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logPF53 )
                 if (isLgrb) then
-                    ! convert photon count data to energy in units of ergs
-                    GRB%Event(igrb)%logPbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logPF53 )
                     GRB%Event(igrb)%logSbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logSbol )
                 else
-                    GRB%Event(igrb)%logPbol = LN10 * GRB%Event(igrb)%logPbol
                     GRB%Event(igrb)%logPF53 = GRB%Event(igrb)%logPF53 - THRESH_ERFC_AMP * erfc( (GRB%Event(igrb)%logT90-THRESH_ERFC_AVG) * THRESH_ERFC_STD_INV )
                 end if
 

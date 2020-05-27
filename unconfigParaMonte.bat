@@ -42,6 +42,7 @@ REM cd %~dp0
 set ERRORLEVEL=1
 
 set               ParaMonte_FLAG_CLEANUP_ENABLED=
+set                           ParaMonte_ROOT_DIR=
 set                        ParaMonte_OBJ_ENABLED=
 set                        ParaMonte_LIB_ENABLED=
 set                    ParaMonteTest_OBJ_ENABLED=
