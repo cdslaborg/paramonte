@@ -605,9 +605,7 @@ classdef LineScatterPlot < BasePlot
             box on; grid on;
 
             lglabels = [];
-            if cEnabled
-                colormap(self.colormap);
-            else
+            if ~cEnabled
                 if self.isScatterPlot && self.scatter_kws.enabled
                     scatter_colors = lines(maxLenColumns);
                 end
@@ -728,6 +726,9 @@ classdef LineScatterPlot < BasePlot
                 end % loop plot
 
                 self.currentFig.gca = gca;
+                if cEnabled
+                    colormap(self.currentFig.gca,self.colormap);
+                end
 
             end
 

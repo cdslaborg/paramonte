@@ -481,6 +481,9 @@ contains
         open( newunit = sampleFileUnit &
             , file = sampleFilePath &
             , status = "old" &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+            , SHARED &
+#endif
             )
 
         ! read header

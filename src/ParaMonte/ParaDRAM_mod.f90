@@ -376,11 +376,12 @@ end module ParaDRAM_mod
 
         ! call runParaDRAM
 
-        call PD%runSampler  ( ndim = ndim               &
-                            , getLogFunc = getLogFunc   &
-                            , inputFile = inputFileStr  &
-                            )
-
+        if (ndim>0_IK) then
+            call PD%runSampler  ( ndim = ndim               &
+                                , getLogFunc = getLogFunc   &
+                                , inputFile = inputFileStr  &
+                                )
+        end if
         nullify(getLogFunc)
 
 #if defined MATLAB_ENABLED

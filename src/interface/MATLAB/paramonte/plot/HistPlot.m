@@ -35,8 +35,15 @@
 %   HistPlot(dataFrame, plotType)
 %
 %   This is the HistPlot class for generating instances of
-%   histogram/histogram2/histfit/ plots, built upon MATLAB's 
-%   builtin functions: histogram, histogram2, histfit.
+%   histfit/histogram/histogram2/contourf/contour3/contour plots, built upon MATLAB's 
+%   builtin functions: histogram, histogram2, histfit, contourf, contour3, contour.
+%
+%   Note that all objects instantiated from this class generate density plots of the input data. 
+%   The histfit/histogram objects generate 1-dimensional density maps.
+%   The histogram2/contourf/contour3/contour objects generate 2-dimensional density maps.
+%   In case of contourf/contour3/contour objects, the density of the input data is first 
+%   computed and smoothed by a Gaussian kernel density estimator and then passed 
+%   to the MATLAB intrinsic plotting functions contourf/contour3/contour.
 %
 %   NOTE: This is a low-level ParaMonte class and is not meant
 %   NOTE: to be directly instantiated by the user.
@@ -59,7 +66,7 @@
 %   Attributes
 %   ----------
 %
-%       ycolumns (available only in histogram2 objects)
+%       ycolumns (available only in histogram2/contourf/contour3/contour objects)
 %
 %           optional property that determines the columns of dataFrame to serve as
 %           the y-values. It can have multiple forms:
@@ -84,7 +91,7 @@
 %
 %           The default value is the names of all columns of the input dataFrame.
 %
-%       colormap (available only in histogram2 objects) 
+%       colormap (available only in histogram2/contourf/contour3/contour objects) 
 %
 %           A MATLAB struct() property with two components:
 %
@@ -98,7 +105,7 @@
 %
 %           If colormap is not provided or is empty, the default will be "winter".
 %
-%       colorbar_kws (available only in histogram2 objects) 
+%       colorbar_kws (available only in histogram2/contourf/contour3/contour objects) 
 %
 %           A MATLAB struct() whose components' values are passed to MATLAB's colorbar function.
 %           If your desired attribute is missing from the fieldnames of colorbar_kws, simply add
@@ -115,6 +122,24 @@
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
 %           WARNING: For example, colorbar_kws.color and colorbar_kws.Color are the same,
+%           WARNING: and only one of the two will be processed.
+%
+%       histfit_kws (available only in histfit objects)
+%
+%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
+%           are directly passed to the `histfit()` function of MATLAB.
+%           This property exists only if the object is instantiated as a histogram object.
+%
+%           Example usage:
+%
+%               histfit_kws.enabled = true; % add histfit()
+%
+%           If a desired property is missing among the struct fields, simply add the field
+%           and its value to histfit_kws.
+%
+%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
+%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
+%           WARNING: For example, histfit_kws.Enabled and histfit_kws.enabled are the same,
 %           WARNING: and only one of the two will be processed.
 %
 %       histogram_kws (available only in histogram objects)
@@ -144,7 +169,7 @@
 %
 %           Example usage:
 %
-%               histogram2_kws.enabled = true; % add histogram()
+%               histogram2_kws.enabled = true; % add histogram2()
 %               histogram2_kws.edgecolor = "none";
 %
 %           If a desired property is missing among the struct fields, simply add the field
@@ -155,22 +180,61 @@
 %           WARNING: histogram2_kws.edgecolor and histogram2_kws.Edgecolor are the same,
 %           WARNING: and only one of the two will be processed.
 %
-%       histfit_kws (available only in histfit objects)
+%       contourf_kws (available only in contourf objects)
 %
 %           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `histfit()` function of MATLAB.
+%           are directly passed to the `contourf()` function of MATLAB.
 %           This property exists only if the object is instantiated as a histogram object.
 %
 %           Example usage:
 %
-%               histfit_kws.enabled = true;
+%               contourf_kws.enabled = true; % add contourf()
+%               contourf_kws.linecolor = "none";
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to histfit_kws.
+%           and its value to contourf_kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, histfit_kws.Enabled and histfit_kws.enabled are the same,
+%           WARNING: contourf_kws.linecolor and contourf_kws.LineColor are the same,
+%           WARNING: and only one of the two will be processed.
+%
+%       contour3_kws (available only in contour3 objects)
+%
+%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
+%           are directly passed to the `contour3()` function of MATLAB.
+%           This property exists only if the object is instantiated as a histogram object.
+%
+%           Example usage:
+%
+%               contour3_kws.enabled = true; % add contour3()
+%               contour3_kws.linewidth = 1;
+%
+%           If a desired property is missing among the struct fields, simply add the field
+%           and its value to contour3_kws.
+%
+%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
+%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
+%           WARNING: contour3_kws.linewidth and contour3_kws.LineWidth are the same,
+%           WARNING: and only one of the two will be processed.
+%
+%       contour_kws (available only in contour objects)
+%
+%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
+%           are directly passed to the `contour()` function of MATLAB.
+%           This property exists only if the object is instantiated as a histogram object.
+%
+%           Example usage:
+%
+%               contour_kws.enabled = true; % add contour()
+%               contour_kws.linewidth = 1;
+%
+%           If a desired property is missing among the struct fields, simply add the field
+%           and its value to contour_kws.
+%
+%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
+%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
+%           WARNING: contour_kws.linewidth and contour_kws.LineWidth are the same,
 %           WARNING: and only one of the two will be processed.
 %
 %       target
@@ -203,6 +267,9 @@ classdef HistPlot < BasePlot
         plotType
         isHistogram = false;
         isHistogram2 = false;
+        isContourf = false;
+        isContour3 = false;
+        isContour = false;
         isHistfit = false;
     end
 
@@ -224,17 +291,41 @@ classdef HistPlot < BasePlot
                 self.histogram_kws.edgecolor = {};
                 self.histogram_kws.singleOptions = {};
 
-            elseif self.isHistogram2
+            elseif self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
 
                 self.ycolumns = {};
                 self.colormap = {};
 
-                self.histogram2_kws = struct();
-                self.histogram2_kws.enabled = true;
-                self.histogram2_kws.edgecolor = {};
-                self.histogram2_kws.facecolor = {};
-                self.histogram2_kws.displaystyle = {};
-                self.histogram2_kws.singleOptions = {};
+                if self.isHistogram2
+                    self.histogram2_kws = struct();
+                    self.histogram2_kws.enabled = true;
+                    self.histogram2_kws.edgecolor = {};
+                    self.histogram2_kws.facecolor = {};
+                    self.histogram2_kws.displaystyle = {};
+                    self.histogram2_kws.singleOptions = {};
+                end
+
+                if self.isContourf
+                    self.contourf_kws = struct();
+                    self.contourf_kws.enabled = true;
+                    self.contourf_kws.levels = 8;
+                    self.contourf_kws.linecolor = "none";
+                    self.contourf_kws.singleOptions = {};
+                end
+
+                if self.isContour3
+                    self.contour3_kws = struct();
+                    self.contour3_kws.enabled = true;
+                    self.contour3_kws.levels = 50;
+                    self.contour3_kws.singleOptions = {};
+                end
+
+                if self.isContour
+                    self.contour_kws = struct();
+                    self.contour_kws.enabled = true;
+                    self.contour_kws.levels = 8;
+                    self.contour_kws.singleOptions = {};
+                end
 
                 self.colorbar_kws = struct();
                 self.colorbar_kws.enabled = true;
@@ -271,18 +362,25 @@ classdef HistPlot < BasePlot
         function self = HistPlot(varargin) % expected input arguments: dataFrame, plotType
             self = self@BasePlot(varargin{1});
             self.plotType = lower(string(varargin{2}));
-            if strcmp(self.plotType,"histogram")
+            if strcmpi(self.plotType,"histogram")
                 self.isHistogram = true;
                 prop="histogram_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            elseif strcmp(self.plotType,"histogram2")
-                self.isHistogram2 = true;
-                prop="histogram2_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                prop="colorbar_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                prop="ycolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                prop="colormap"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            elseif strcmp(self.plotType,"histfit")
+            elseif strcmpi(self.plotType,"histfit")
                 self.isHistfit = true;
                 prop="histfit_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            else
+                if strcmpi(self.plotType,"histogram2"); self.isHistogram2 = true; dummy_kws="histogram2_kws"; end
+                if strcmpi(self.plotType,"contourf"); self.isContourf = true; dummy_kws="contourf_kws"; end
+                if strcmpi(self.plotType,"contour3"); self.isContour3 = true; dummy_kws="contour3_kws"; end
+                if strcmpi(self.plotType,"contour"); self.isContour = true; dummy_kws="contour_kws"; end
+                if self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
+                    prop=dummy_kws; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                    prop="colorbar_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                    prop="ycolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                    prop="colormap"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                else
+                    error("The requested plot type " + string(self.plotType) + " is not reqcognized.");
+                end
             end
             self.reset();
         end
@@ -385,6 +483,17 @@ classdef HistPlot < BasePlot
                 key = "displaystyle"; val = "bar3"; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
             end
 
+            if self.isContourf && self.contourf_kws.enabled
+                fname = "contourf_kws";
+            end
+
+            if self.isContour3 && self.contour3_kws.enabled
+                fname = "contour3_kws";
+            end
+            if self.isContour && self.contour_kws.enabled
+                fname = "contour_kws";
+            end
+
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -423,7 +532,7 @@ classdef HistPlot < BasePlot
                 xdata = self.dfref{rowindex,xcolindex};
             end
 
-            if self.isHistogram2
+            if self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
                 [ycolnames, ycolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ycolumns);
                 ycolindexlen = length(ycolindex);
                 maxLenColumns = max(maxLenColumns,ycolindexlen);
@@ -445,6 +554,15 @@ classdef HistPlot < BasePlot
             if self.isHistogram2
                 histogram2_kws_cell = convertStruct2Cell(self.histogram2_kws,{"enabled","singleOptions"});
             end
+            if self.isContourf
+                contourf_kws_cell = convertStruct2Cell(self.contourf_kws,{"enabled","levels","singleOptions"});
+            end
+            if self.isContour3
+                contour3_kws_cell = convertStruct2Cell(self.contour3_kws,{"enabled","levels","singleOptions"});
+            end
+            if self.isContour
+                contour_kws_cell = convertStruct2Cell(self.contour_kws,{"enabled","levels","singleOptions"});
+            end
             if self.isHistfit
                 histfit_kws_cell = convertStruct2Cell(self.histfit_kws,{"enabled","singleOptions"});
             end
@@ -457,19 +575,47 @@ classdef HistPlot < BasePlot
 
             lglabels = [];
 
-            if (self.isHistogram && self.histogram_kws.enabled) || (self.isHistogram2 && self.histogram2_kws.enabled) || (self.isHistfit && self.histfit_kws.enabled)
+            if (self.isContourf && self.contourf_kws.enabled) || (self.isContour3 && self.contour3_kws.enabled) || (self.isContour && self.contour_kws.enabled)
+                gridSize = 2^9;
+                [bandwidth,density,crdx,crdy] = kde2d([xdata(:),ydata(:)],gridSize);
+            end
+
+            if (self.isHistogram && self.histogram_kws.enabled) ...
+            || (self.isHistogram2 && self.histogram2_kws.enabled) ...
+            || (self.isHistfit && self.histfit_kws.enabled) ...
+            || (self.isContourf && self.contourf_kws.enabled) ...
+            || (self.isContour3 && self.contour3_kws.enabled) ...
+            || (self.isContour && self.contour_kws.enabled)
 
                 for i = 1:maxLenColumns
 
+                    kde2dComputationNeeded = false;
                     if xcolindexlen>1
                         xdata = self.dfref{rowindex,xcolindex(i)};
+                        if self.isContourf && self.contourf_kws.enabled; kde2dComputationNeeded = true; end
+                        if self.isContour3 && self.contour3_kws.enabled; kde2dComputationNeeded = true; end
+                        if self.isContour && self.contour_kws.enabled; kde2dComputationNeeded = true; end
                     end
-                    if (self.isHistogram2 && self.histogram2_kws.enabled) && ycolindexlen>1
-                        ydata = self.dfref{rowindex,ycolindex(i)};
+                    if (self.isHistogram2 && self.histogram2_kws.enabled) ...
+                    || (self.isContourf && self.contourf_kws.enabled) ...
+                    || (self.isContour3 && self.contour3_kws.enabled) ...
+                    || (self.isContour && self.contour_kws.enabled)
+                        if ycolindexlen>1
+                            ydata = self.dfref{rowindex,ycolindex(i)};
+                            if self.isContourf && self.contourf_kws.enabled; kde2dComputationNeeded = true; end
+                            if self.isContour3 && self.contour3_kws.enabled; kde2dComputationNeeded = true; end
+                            if self.isContour && self.contour_kws.enabled; kde2dComputationNeeded = true; end
+                        end
+                    end
+                    if kde2dComputationNeeded
+                        [bandwidth,density,crdx,crdy] = kde2d([xdata(:),ydata(:)],gridSize);
                     end
 
                     if self.legend_kws.enabled
-                        if (self.isHistogram2 && self.histogram2_kws.enabled) 
+                        if (self.isHistogram2 && self.histogram2_kws.enabled) ...
+                        ||  (self.isContourf && self.contourf_kws.enabled) ...
+                        ||  (self.isContour3 && self.contour3_kws.enabled) ...
+                        ||  (self.isContour && self.contour_kws.enabled)
                             if xcolindexlen<2 && ycolindexlen>=1
                                 lglabels = [ lglabels , ycolnames(i) ];
                             elseif xcolindexlen>1 && ycolindexlen<2
@@ -495,6 +641,42 @@ classdef HistPlot < BasePlot
                                                                 , histogram2_kws_cell{:} ...
                                                                 );
                         hold on;
+                    elseif self.isContourf && self.contourf_kws.enabled
+                        self.currentFig.contourf = struct();
+                        self.currentFig.contourf.matrix = [];
+                        self.currentFig.contourf.object = [];
+                        [ self.currentFig.contourf.matrix ...
+                        , self.currentFig.contourf.object ] = contourf  ( crdx ...
+                                                                        , crdy ...
+                                                                        , density ...
+                                                                        , self.contourf_kws.levels ...
+                                                                        , contourf_kws_cell{:} ...
+                                                                        );
+                        hold on;
+                    elseif self.isContour3 && self.contour3_kws.enabled
+                        self.currentFig.contour3 = struct();
+                        self.currentFig.contour3.matrix = [];
+                        self.currentFig.contour3.object = [];
+                        [ self.currentFig.contour3.matrix ...
+                        , self.currentFig.contour3.object ] = contour3  ( crdx ...
+                                                                        , crdy ...
+                                                                        , density ...
+                                                                        , self.contour3_kws.levels ...
+                                                                        , contour3_kws_cell{:} ...
+                                                                        );
+                        hold on;
+                    elseif self.isContour && self.contour_kws.enabled
+                        self.currentFig.contour = struct();
+                        self.currentFig.contour.matrix = [];
+                        self.currentFig.contour.object = [];
+                        [ self.currentFig.contour.matrix ...
+                        , self.currentFig.contour.object ] = contour( crdx ...
+                                                                    , crdy ...
+                                                                    , density ...
+                                                                    , self.contour_kws.levels ...
+                                                                    , contour_kws_cell{:} ...
+                                                                    );
+                        hold on;
                     elseif self.isHistfit && self.histfit_kws.enabled
                         self.currentFig.histogram = histfit ( xdata ...
                                                             , histfit_kws_cell{:} ...
@@ -508,11 +690,15 @@ classdef HistPlot < BasePlot
 
             end
 
-            if self.isHistogram2
+            if self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
                 if ~getVecLen(self.colormap)
-                    self.colormap = flipud(cold());
+                    if self.isContour3 || self.isContour
+                        self.colormap = "parula";
+                    else
+                        self.colormap = flipud(cold());
+                    end
                 end
-                colormap(self.colormap);
+                colormap(self.currentFig.gca,self.colormap);
             end
 
             % add axis labels
@@ -523,7 +709,7 @@ classdef HistPlot < BasePlot
                 self.currentFig.xlabel = xlabel(xcolnames(1));
             end
 
-            if self.isHistogram2
+            if self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
                 if ycolindexlen>1
                     self.currentFig.ylabel = ylabel("Variable Values");
                 else
@@ -536,7 +722,7 @@ classdef HistPlot < BasePlot
 
             % add line colorbar
 
-            colorbarEnabled = self.isHistogram2 && self.colorbar_kws.enabled;
+            colorbarEnabled = (self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour) && self.colorbar_kws.enabled;
             if colorbarEnabled
                 if isempty(self.colorbar_kws.fontsize) || ~isa(self.colorbar_kws.fontsize,"numeric")
                     self.colorbar_kws.fontsize = self.currentFig.ylabel.FontSize;

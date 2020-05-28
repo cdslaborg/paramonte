@@ -190,7 +190,7 @@ classdef OutputFileContents < dynamicprops
             prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             self.plot = struct();
 
-            for plotType = ["line","line3","scatter","scatter3","lineScatter","lineScatter3","histogram","histogram2","histfit","grid"]
+            for plotType = ["line","line3","scatter","scatter3","lineScatter","lineScatter3","histogram","histogram2","histfit","contour","contourf","contour3","grid"]
                 %updateUser("generating " + plotType + " plot...");
                 self.resetPlot(plotType,"hard");
                 updateUser([]);
@@ -303,7 +303,7 @@ classdef OutputFileContents < dynamicprops
             %
             resetTypeIsHard = false;
             requestedPlotTypeList = [];
-            plotTypeList = ["line","scatter","lineScatter","line3","scatter3","lineScatter3","histogram","histogram2","histfit","grid"];
+            plotTypeList = ["line","scatter","lineScatter","line3","scatter3","lineScatter3","histogram","histogram2","histfit","contour","contourf","contour3","grid"];
             lenVariableNames = length(self.df.Properties.VariableNames);
 
             if nargin==1
@@ -367,7 +367,7 @@ classdef OutputFileContents < dynamicprops
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 is3d = false;
-                if contains(requestedPlotTypeLower,"3")
+                if contains(requestedPlotTypeLower,"3") && ( contains(requestedPlotTypeLower,"scatter") || contains(requestedPlotTypeLower,"line"))
                     is3d = true;
                 end
 
@@ -441,12 +441,15 @@ classdef OutputFileContents < dynamicprops
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                % hist / hist2 / histfit
+                % hist / hist2 / histfit / contour / contourf / contour3
 
                 isHist = strcmp(requestedPlotTypeLower,"histogram");
                 isHist2 = strcmp(requestedPlotTypeLower,"histogram2");
                 isHistfit = strcmp(requestedPlotTypeLower,"histfit");
-                if isHist || isHist2 || isHistfit
+                isContour = strcmp(requestedPlotTypeLower,"contour");
+                isContourf = strcmp(requestedPlotTypeLower,"contourf");
+                isContour3 = strcmp(requestedPlotTypeLower,"contour3");
+                if isHist || isHist2 || isHistfit || isContour || isContourf || isContour3
                     if resetTypeIsHard
                         self.plot.(requestedPlotTypeLower) = HistPlot( self.df, requestedPlotTypeLower );
                     else
@@ -459,8 +462,12 @@ classdef OutputFileContents < dynamicprops
                         self.plot.(requestedPlotTypeLower).histogram_kws.edgecolor = "none";
                     else
                         self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset);
-                        if isHist2
-                            self.plot.(requestedPlotTypeLower).ycolumns = self.df.Properties.VariableNames(self.offset-1);
+                        if isHist2 || isContour || isContourf || isContour3
+                            if self.ndim==1
+                                self.plot.(requestedPlotTypeLower).ycolumns = self.df.Properties.VariableNames(self.offset-1);
+                            else
+                                self.plot.(requestedPlotTypeLower).ycolumns = self.df.Properties.VariableNames(self.offset+1);
+                            end
                         end
                     end
                 end

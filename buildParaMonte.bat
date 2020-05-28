@@ -298,8 +298,8 @@ echo.
 :: set preprocessor build flags
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-set FPP_BUILD_FLAGS=
-if !BTYPE!==debug set FPP_BUILD_FLAGS=/define:DBG_ENABLED
+set FPP_BUILD_FLAGS=/define:OS_IS_WINDOWS
+if !BTYPE!==debug set FPP_BUILD_FLAGS=!FPP_BUILD_FLAGS! /define:DBG_ENABLED
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: set default C/CPP/Fortran compilers/linkers

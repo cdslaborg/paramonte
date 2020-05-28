@@ -226,7 +226,15 @@ contains
                 chainSizeDefault = chainSize
             else ! here chainSizeDefault is indeed max(chainSize) depending on the file format: verbose or compact
                 if (isBinary) then
-                    open(newunit=chainFileUnit,file=chainFilePathTrimmed,status="old",form=thisForm,iostat=Err%stat)
+                    open( newunit = chainFileUnit &
+                        , file = chainFilePathTrimmed &
+                        , status = "old" &
+                        , form = thisForm &
+                        , iostat = Err%stat &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                        , SHARED &
+#endif
+                        )
                     if (Err%stat/=0) then
                         Err%occurred = .true.
                         Err%msg = PROCEDURE_NAME//": Unable to open the file located at: "//chainFilePathTrimmed//NLC
@@ -321,7 +329,15 @@ contains
                 if (allocated(Record%value)) deallocate(Record%value)
                 allocate( character(99999) :: Record%value )
 
-                open(newunit=chainFileUnit,file=chainFilePathTrimmed,status="old",form=thisForm,iostat=Err%stat)
+                open( newunit = chainFileUnit &
+                    , file = chainFilePathTrimmed &
+                    , status = "old" &
+                    , form = thisForm &
+                    , iostat = Err%stat &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                    , SHARED &
+#endif
+                    )
                 if (Err%stat/=0) then
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": Unable to open the file located at: "//chainFilePathTrimmed//"."//NLC
@@ -400,7 +416,15 @@ contains
 
             ! reopen the file to read the contents
 
-            open(newunit=chainFileUnit,file=chainFilePathTrimmed,status="old",form=thisForm,iostat=Err%stat)
+            open( newunit = chainFileUnit &
+                , file = chainFilePathTrimmed &
+                , status = "old" &
+                , form = thisForm &
+                , iostat = Err%stat &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                , SHARED &
+#endif
+                )
             if (Err%stat/=0) then
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME//": Unable to open the file located at: "//chainFilePathTrimmed //"."//NLC
@@ -720,7 +744,11 @@ contains
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
         end if
-        if (CFC%Err%occurred) call abort(CFC%Err)
+
+        if (CFC%Err%occurred) then
+            call abort(CFC%Err)
+            return
+        end if
 
         call CFC%writeHeader(ndim,chainFileUnit,isBinary,chainFileFormat)
 

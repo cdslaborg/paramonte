@@ -999,11 +999,14 @@ contains
                 ! open the output sample file
 
                 PD%SampleFile%unit = 3000001 + PD%Image%id  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
-                open( unit      = PD%SampleFile%unit           &
-                    , file      = PD%SampleFile%Path%original  &
-                    , status    = PD%SampleFile%status         &
-                    , iostat    = PD%SampleFile%Err%stat       &
-                    , position  = PD%SampleFile%Position%value )
+                open( unit      = PD%SampleFile%unit            &
+                    , file      = PD%SampleFile%Path%original   &
+                    , status    = PD%SampleFile%status          &
+                    , iostat    = PD%SampleFile%Err%stat        &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                    , SHARED                                    &
+#endif
+                    , position  = PD%SampleFile%Position%value  )
                 PD%Err = PD%SampleFile%getOpenErr(PD%SampleFile%Err%stat)
                 if (PD%Err%occurred) then
                     PD%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//PD%name//" "//PD%SampleFile%suffix//" file='"//PD%SampleFile%Path%original//"'."
@@ -1488,6 +1491,9 @@ contains
                     , file = PD%InputFile%Path%modified &
                     , status = PD%InputFile%status      &
                     , iostat = PD%InputFile%Err%stat    &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                    , SHARED                            &
+#endif
                     )
                 PD%Err = PD%InputFile%getOpenErr(PD%InputFile%Err%stat)
                 if (PD%Err%occurred) then

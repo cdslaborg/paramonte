@@ -882,6 +882,7 @@ contains
 #endif
 
         ! open the output files
+        ! Intel ifort SHARED attribute is essential for file ulocking
 
         blockMasterFileSetup: if (PM%Image%isMaster) then
 
@@ -890,6 +891,9 @@ contains
                 , file = PM%LogFile%Path%original           &
                 , status = PM%LogFile%status                &
                 , iostat = PM%LogFile%Err%stat              &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                , SHARED                                    &
+#endif
                 , position = PM%LogFile%Position%value      )
             PM%Err = PM%LogFile%getOpenErr(PM%LogFile%Err%stat)
             if (PM%Err%occurred) then
@@ -918,6 +922,9 @@ contains
                 , file = PM%TimeFile%Path%original          &
                 , status = PM%TimeFile%status               &
                 , iostat = PM%TimeFile%Err%stat             &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                , SHARED                                    &
+#endif
                 , position = PM%TimeFile%Position%value     )
             PM%Err = PM%TimeFile%getOpenErr(PM%TimeFile%Err%stat)
             if (PM%Err%occurred) then
@@ -934,6 +941,9 @@ contains
                 , form = PM%ChainFile%Form%value            &
                 , status = PM%ChainFile%status              &
                 , iostat = PM%ChainFile%Err%stat            &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                , SHARED                                    &
+#endif
                 , position = PM%ChainFile%Position%value    )
             PM%Err = PM%ChainFile%getOpenErr(PM%ChainFile%Err%stat)
             if (PM%Err%occurred) then
@@ -948,6 +958,9 @@ contains
                 , form = PM%RestartFile%Form%value          &
                 , status = PM%RestartFile%status            &
                 , iostat = PM%RestartFile%Err%stat          &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                , SHARED                                    &
+#endif
                 , position = PM%RestartFile%Position%value  )
             PM%Err = PM%RestartFile%getOpenErr(PM%RestartFile%Err%stat)
             if (PM%Err%occurred) then

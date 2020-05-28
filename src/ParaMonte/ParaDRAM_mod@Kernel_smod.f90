@@ -244,6 +244,9 @@ contains
                         , form = PD%ChainFile%Form%value            &
                         , status = PD%ChainFile%status              &
                         , iostat = PD%ChainFile%Err%stat            &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                        , SHARED                                    &
+#endif
                         , position = PD%ChainFile%Position%value    )
                     PD%Err = PD%ChainFile%getOpenErr(PD%ChainFile%Err%stat)
                     if (PD%Err%occurred) then
