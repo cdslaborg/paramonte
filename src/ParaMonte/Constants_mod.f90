@@ -110,13 +110,14 @@ module Constants_mod
 
     ! Cosmological constants
 
-    real(RK), parameter :: LIGHT_SPEED = 3.e5_RK                                ! LIGHT_SPEED is the speed of light (Km/s).
-    real(RK), parameter :: HUBBLE_CONST = 7.1e1_RK                              ! HUBBLE_CONST is the Hubble constant in units of km/s/MPc.
-    real(RK), parameter :: LS2HC = LIGHT_SPEED / HUBBLE_CONST                   ! the speed of light in units of km/s divided by the Hubble constant.
-    real(RK), parameter :: MPC2CM = 3.09e24_RK                                  ! 1 Mega Parsec = MPC2CM centimeters.
-    real(RK), parameter :: LOG10MPC2CMSQ4PI = log10(4._RK*PI) + 2*log10(MPC2CM) ! Log10(MPC2CM centimeters.
-    real(RK), parameter :: OMEGA_DE = 0.7_RK                                    ! Dark Energy density.
-    real(RK), parameter :: OMEGA_DM = 0.3_RK                                    ! Dark Matter density.
+    !real(RK), parameter :: LIGHT_SPEED = 3.e5_RK                                ! LIGHT_SPEED is the speed of light (Km/s).
+    !real(RK), parameter :: HUBBLE_TIME_GYRS = 13.8_RK		                     ! hubble time (liddle 2003, page 57) in units of gyrs
+    !real(RK), parameter :: HUBBLE_CONST = 7.1e1_RK                              ! HUBBLE_CONST is the Hubble constant in units of km/s/MPc.
+    !real(RK), parameter :: LS2HC = LIGHT_SPEED / HUBBLE_CONST                   ! the speed of light in units of km/s divided by the Hubble constant.
+    !real(RK), parameter :: MPC2CM = 3.09e24_RK                                  ! 1 Mega Parsec = MPC2CM centimeters.
+    !real(RK), parameter :: LOG10MPC2CMSQ4PI = log10(4._RK*PI) + 2*log10(MPC2CM) ! Log10(MPC2CM centimeters.
+    !real(RK), parameter :: OMEGA_DE = 0.7_RK                                    ! Dark Energy density.
+    !real(RK), parameter :: OMEGA_DM = 0.3_RK                                    ! Dark Matter density.
 
     character(len=1), parameter :: CARRIAGE_RETURN = achar(13)
     character(len=1), parameter :: ESCAPE = achar(27)

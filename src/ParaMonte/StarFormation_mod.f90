@@ -53,6 +53,22 @@ module StarFormation_mod
     end function getLogRate_proc
     end interface
 
+    abstract interface
+    function getRateDensity_proc(zplus1) result(rateDensity)
+        import :: RK, IK
+        real(RK), intent(in)    :: zplus1
+        real(RK)                :: logRate
+    end function getRateDensity_proc
+    end interface
+
+    abstract interface
+    function getMergerDelayTimePDF_proc(mergerDelayTime) result(mergerDelayTimeProb)
+        import :: RK, IK
+        real(RK), intent(in)    :: mergerDelayTime
+        real(RK)                :: mergerDelayTimeProb
+    end function getMergerDelayTimePDF_proc
+    end interface
+
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
@@ -310,6 +326,87 @@ contains
         logRate = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
                 + getLogRateDensityF18(zplus1,logzplus1)
     end function getLogRateF18
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    function getBinaryMergerRate( zplus1 &
+                                , zplus1Max &
+                                , maxRelativeError &
+                                , nRefinement &
+                                , getStarFormationRateDensity &
+                                , getMergerDelayTimePDF &
+                                ) result(binaryMergerRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRate
+#endif
+        use, intrinsic :: iso_fortran_env, only: output_unit
+        use Constants_mod, only: RK, HUGE_RK
+        use Cosmology_mod, only: getLookBackTime
+        use Integration_mod, only: doQuadRombOpen, midinf, ErrorMessage
+        implicit none
+        real(RK)    , intent(in)                :: zplus1
+        real(RK)    , intent(in), optional      :: zplus1Max, maxRelativeError
+        integer(IK) , intent(in), optional      :: nRefinement
+        procedure(getRateDensity_proc)          :: getStarFormationRateDensity
+        procedure(getMergerDelayTimePDF_proc)   :: getMergerDelayTimePDF
+        integer(IK)                             :: neval, ierr, nRefinementDefault
+        real(RK)                                :: zplus1MaxDefault, maxRelativeErrorDefault, relerr
+        real(RK)                                :: binaryMergerRate, lookBackTimeRef
+
+        nRefinementDefault = 5_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
+        zplus1MaxDefault = HUGE_RK; if (present(zplus1Max)) zplus1MaxDefault = zplus1Max
+        maxRelativeErrorDefault = 1.e-6_RK; if (present(maxRelativeError)) maxRelativeErrorDefault = maxRelativeError
+
+        lookBackTimeRef = getLookBackTime   ( zplus1 = zplus1 &
+                                            , maxRelativeError = maxRelativeErrorDefault &
+                                            , nRefinement = nRefinementDefault &
+                                            )
+
+        call doQuadRombOpen ( getFunc           = getBinaryMergerRateIntegrand          &
+                            , integrate         = midinf                                &
+                            , lowerLim          = zplus1                                &
+                            , upperLim          = zplus1MaxDefault                      &
+                            , maxRelativeError  = maxRelativeErrorDefault               &
+                            , nRefinement       = nRefinementDefault                    &
+                            , integral          = binaryMergerRate                      &
+                            , relativeError     = relerr                                &
+                            , numFuncEval       = neval                                 &
+                            , ierr              = ierr                                  &
+                            )
+        if (ierr/=0_IK) then
+            write(output_unit,"(A)") ErrorMessage(ierr)
+            error stop
+        end if
+
+    contains
+
+        function getBinaryMergerRateIntegrand(zplus1) result(binaryMergerRateIntegrand)
+
+            use Cosmology_mod, only: getUniverseAgeDerivative
+            implicit none
+            real(RK)    , intent(in)    :: zplus1
+            real(RK)                    :: binaryMergerRateIntegrand !,lognormpdf
+            real(RK)                    :: mergerDelayTime
+
+            ! note that zp<z always, so that delay>0.
+            mergerDelayTime = getLookBackTime   ( zplus1 = zplus1 &
+                                                , maxRelativeError = maxRelativeErrorDefault &
+                                                , nRefinement = nRefinementDefault &
+                                                ) 
+            mergerDelayTime = mergerDelayTime - lookBackTimeRef    
+            if (mergerDelayTime<=0._RK) then
+                write(output_unit,"(A)") "The mergerDelayTime is non-positive in getBinaryMergerRateIntegrand(): (zplus1, mergerDelayTime) = ", zplus1, mergerDelayTime
+                error stop
+            end if
+
+            binaryMergerRateIntegrand   = getMergerDelayTimePDF(mergerDelayTime) &
+                                        * getStarFormationRateDensity(zplus1) &
+                                        * getUniverseAgeDerivative(zplus1)
+
+        end function getBinaryMergerRateIntegrand
+
+    end function getBinaryMergerRate
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

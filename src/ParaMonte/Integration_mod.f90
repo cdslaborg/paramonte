@@ -40,7 +40,9 @@ module Integration_mod
   
     implicit none
 
-    character(len=117) :: ErrorMessage(3) = &
+    real(RK), parameter :: ONE_THIRD = 1._RK / 3._RK
+
+    character(len=117)  :: ErrorMessage(3) = &
     [ "@Integration_mod@doQuadRombClosed(): Too many steps in doQuadRombClosed().                                           " &
     , "@Integration_mod@doQuadRombClosed()@doPolInterp(): Input lowerLim, upperLim to doQuadRombClosed() are likely equal.  " &
     , "@Integration_mod@doQuadRombOpen()@doPolInterp(): Input lowerLim, upperLim to doQuadRombOpen() are likely equal.      " &
@@ -61,8 +63,8 @@ module Integration_mod
             implicit none
             integer(IK) , intent(in)        :: refinementStage
             real(RK)    , intent(in)        :: lowerLim,upperLim
-            real(RK)    , intent(out)       :: integral
             integer(IK) , intent(out)       :: numFuncEval
+            real(RK)    , intent(inout)     :: integral
             procedure(integrand_proc)       :: getFunc
         end subroutine integrator_proc
   
@@ -224,7 +226,7 @@ contains
         implicit none
         integer(IK), intent(in)     :: refinementStage
         real(RK), intent(in)        :: lowerLim,upperLim
-        real(RK), intent(out)       :: integral
+        real(RK), intent(inout)     :: integral
         integer(IK), intent(out)    :: numFuncEval
         integer(IK)                 :: iFuncEval
         real(RK)                    :: del,sum,tnm,x
@@ -248,7 +250,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     recursive subroutine midexp(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: midexp
@@ -256,10 +258,11 @@ contains
         implicit none
         integer(IK) , intent(in)    :: refinementStage
         real(RK)    , intent(in)    :: lowerLim,upperLim
-        real(RK)    , intent(out)   :: integral
         integer(IK) , intent(out)   :: numFuncEval
+        real(RK)    , intent(inout) :: integral
         procedure(integrand_proc)   :: getFunc
-        real(RK)                    :: ddel,del,summ,tnm,x,lowerLimTrans,upperLimTrans
+        real(RK)                    :: ddel,del,summ,x,lowerLimTrans,upperLimTrans
+        real(RK)                    :: inverseThreeNumFuncEval
         integer(IK)                 :: iFuncEval
         upperLimTrans = exp(-lowerLim)
         lowerLimTrans = exp(-upperLim)
@@ -268,8 +271,8 @@ contains
             integral = (upperLimTrans-lowerLimTrans)*getTransFunc(0.5_RK*(lowerLimTrans+upperLimTrans))
         else
             numFuncEval = 3**(refinementStage-2)
-            tnm = numFuncEval
-            del = (upperLimTrans-lowerLimTrans)/(3._RK*tnm)
+            inverseThreeNumFuncEval = ONE_THIRD / numFuncEval
+            del = (upperLimTrans-lowerLimTrans) * inverseThreeNumFuncEval
             ddel = del + del
             x = lowerLimTrans + 0.5_RK*del
             summ=0._RK
@@ -279,13 +282,14 @@ contains
                 summ = summ + getTransFunc(x)
                 x = x + del
             end do
-            integral = ( integral + (upperLimTrans-lowerLimTrans)*summ/tnm ) / 3._RK
+            integral = ONE_THIRD * integral + (upperLimTrans-lowerLimTrans) * summ * inverseThreeNumFuncEval
             numFuncEval = 2_IK * numFuncEval
         end if
     contains
         function getTransFunc(x)
-            real(RK), intent(in) :: x
-            real(RK)             :: getTransFunc
+            implicit none
+            real(RK), intent(in)    :: x
+            real(RK)                :: getTransFunc
             getTransFunc = getFunc(-log(x)) / x
         end function getTransFunc
     end subroutine midexp
@@ -293,35 +297,81 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine midpnt(getFunc,lowerLimit,upperLimit,integral,refinementStage,numFuncEval)
+    ! must be: lowerLim*upperLim > 0.0
+    ! integrate a function on a semi-infinite interval
+	subroutine midinf(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
+        implicit none
+        real(RK)    , intent(in)    :: lowerLim,upperLim
+        integer(IK) , intent(in)    :: refinementStage
+        integer(IK) , intent(out)   :: numFuncEval
+        real(RK)    , intent(inout) :: integral
+        procedure(integrand_proc)   :: getFunc
+        real(RK)                    :: lowerLimTrans, upperLimTrans, del, ddel, summ, x
+        real(RK)                    :: inverseThreeNumFuncEval
+        integer(IK)                 :: iFuncEval
+        upperLimTrans = 1.0_RK / lowerLim
+        lowerLimTrans = 1.0_RK / upperLim
+        if (refinementStage == 1_IK) then
+            numFuncEval = 1_IK
+            integral = (upperLimTrans-lowerLimTrans) * getTransFunc(0.5_RK * (lowerLimTrans+upperLimTrans))
+        else
+            numFuncEval = 3**(refinementStage-2)
+            inverseThreeNumFuncEval = ONE_THIRD / numFuncEval
+            del = (upperLimTrans-lowerLimTrans) * inverseThreeNumFuncEval
+            ddel = del + del
+            x = lowerLimTrans + 0.5_RK * del
+            summ = 0._RK
+            do iFuncEval = 1, numFuncEval
+                summ = summ + getTransFunc(x)
+                x = x + ddel
+                summ = summ + getTransFunc(x)
+                x = x + del
+            end do
+            integral = ONE_THIRD * integral + (upperLimTrans-lowerLimTrans) * summ * inverseThreeNumFuncEval
+            numFuncEval = 2_IK * numFuncEval
+        end if
+	contains
+		function getTransFunc(x)
+            implicit none
+            real(RK), intent(in)    :: x
+            real(RK)                :: getTransFunc
+            getTransFunc = getFunc(1.0_RK/x) / x**2
+		end function getTransFunc
+	end subroutine midinf
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    subroutine midpnt(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: midpnt
 #endif
         implicit none
         integer(IK) , intent(in)    :: refinementStage
-        real(RK)    , intent(in)    :: lowerLimit,upperLimit
-        real(RK)    , intent(out)   :: integral
+        real(RK)    , intent(in)    :: lowerLim, upperLim
+        real(RK)    , intent(inout) :: integral
         integer(IK) , intent(out)   :: numFuncEval
         procedure(integrand_proc)   :: getFunc
-        integer                     :: iFuncEval
-        real(RK) ddel,del,summ,tnm,x
+        integer(IK)                 :: iFuncEval
+        real(RK)                    :: ddel,del,summ,x
+        real(RK)                    :: inverseThreeNumFuncEval
         if (refinementStage==1) then
             numFuncEval = 1_IK
-            integral = (upperLimit-lowerLimit) * getFunc( 0.5_RK * (lowerLimit+upperLimit) )
+            integral = (upperLim-lowerLim) * getFunc( 0.5_RK * (lowerLim+upperLim) )
         else
             numFuncEval = 3**(refinementStage-2)
-            tnm = numFuncEval
-            del = (upperLimit-lowerLimit) / (3.0_RK*tnm)
+            inverseThreeNumFuncEval = ONE_THIRD / numFuncEval
+            del = (upperLim-lowerLim) * inverseThreeNumFuncEval
             ddel = del+del
-            x = lowerLimit + 0.5_RK*del
+            x = lowerLim + 0.5_RK*del
             summ = 0._RK
-            do iFuncEval = 1,numFuncEval
+            do iFuncEval = 1, numFuncEval
                 summ = summ + getFunc(x)
                 x = x + ddel
                 summ = summ + getFunc(x)
                 x = x + del
             end do
-            integral = ( integral + (upperLimit-lowerLimit)*summ/tnm ) / 3._RK
+            integral = ONE_THIRD * integral + (upperLim-lowerLim) * summ * inverseThreeNumFuncEval
             numFuncEval = 2_IK * numFuncEval
         end if
     end subroutine midpnt

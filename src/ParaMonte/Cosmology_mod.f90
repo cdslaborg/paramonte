@@ -46,6 +46,8 @@ module Cosmology_mod
 
     real(RK), parameter :: LIGHT_SPEED = 3.e5_RK                                    ! LIGHT_SPEED is the speed of light (Km/s).
     real(RK), parameter :: HUBBLE_CONST = 7.1e1_RK                                  ! HUBBLE_CONST is the Hubble constant in units of km/s/MPc.
+    real(RK), parameter :: HUBBLE_TIME_GYRS = 13.8_RK                                ! hubble time (liddle 2003, page 57) in units of gyrs
+    real(RK), parameter :: INVERSE_HUBBLE_CONST = 1._RK / HUBBLE_CONST              ! inverse of HUBBLE_CONST.
     real(RK), parameter :: LS2HC = LIGHT_SPEED / HUBBLE_CONST                       ! the speed of light in units of km/s divided by the Hubble constant.
     real(RK), parameter :: LOGLS2HC = log(LIGHT_SPEED) - log(HUBBLE_CONST)          ! log speed of light in units of km/s divided by the Hubble constant.
     real(RK), parameter :: MPC2CM = 3.09e24_RK                                      ! 1 Mega Parsec = MPC2CM centimeters.
@@ -125,6 +127,75 @@ contains
         psi0=x0**0.33333333*(1.5874010519682-6.2992105236833d-3*x0*x0+7.5375168659459d-5*x0**4)
         ldiswickram=LS2HC*zplus1*(psi0-psi)/(OMEGA_DE**0.16666666*OMEGA_DM**0.33333333)
     end function ldiswickram
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+    function getLookBackTime(zplus1,maxRelativeError,nRefinement) result(lookBackTime)
+        !   This function calculates the lookback time in GYrs at given redshift for the assumed cosmological parameters.
+        !   The input parameters are:
+        !        -           zplus1: the redshift plus one
+        !        - maxRelativeError: the maximum tolerance for error in the numerical integration  (default = 1.e-6)
+        !        -      nRefinement: the number of refinements in Romberg's numerical integration  (default = 5)
+        !   The rest of the required parameters are taken from the module:
+        !       -  HUBBLE_TIME_GYRS: The Hubble time in units of Gyrs (Giga Years). It should be a number close to 13.8 Gyrs (Liddle, 2003, Page 57).
+        !       -          OMEGA_DE: the dark energy density,
+        !       -          OMEGA_DM: the dark matter density.
+        !   The integration is performed using Romberg's interation method.
+        !   Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
+
+        use, intrinsic :: iso_fortran_env, only: output_unit
+        use Integration_mod, only: doQuadRombClosed, ErrorMessage
+        use Constants_mod, only: RK, IK
+        implicit none
+        real(RK)    , intent(in)            :: zplus1
+        real(RK)    , intent(in), optional  :: maxRelativeError
+        integer(IK) , intent(in), optional  :: nRefinement
+        real(RK)    , parameter             :: ZPLUS1_MIN = 1._RK
+        real(RK)                            :: lookBackTime
+        real(RK)                            :: maxRelativeErrorDefault, relerr
+        integer(IK)                         :: neval, ierr, nRefinementDefault
+
+        nRefinementDefault = 5_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
+        maxRelativeErrorDefault = 1.e-6_RK; if (present(maxRelativeError)) maxRelativeErrorDefault = maxRelativeError
+
+        call doQuadRombClosed   ( getFunc           = getIntegrand              &
+                                , lowerLim          = ZPLUS1_MIN                &
+                                , upperLim          = zplus1                    &
+                                , maxRelativeError  = maxRelativeErrorDefault   &
+                                , nRefinement       = nRefinementDefault        &
+                                , integral          = lookBackTime              &
+                                , relativeError     = relerr                    &
+                                , numFuncEval       = neval                     &
+                                , ierr              = ierr                      &
+                                )
+        if (ierr/=0_IK) then
+            write(output_unit,"(A)") ErrorMessage(ierr)
+            error stop
+        end if
+        lookBackTime = HUBBLE_TIME_GYRS * lookBackTime
+
+    contains
+
+        function getIntegrand(zplus1) result(integrand)
+            use Constants_mod, only: RK
+            implicit none
+            real(RK), intent(in)    :: zplus1
+            real(RK)                :: integrand
+            integrand = 1._RK / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )
+        end function getIntegrand
+
+    end function getLookBackTime
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    pure function getUniverseAgeDerivative(zplus1) result(universeAgeDerivative)
+        use Constants_mod, only: RK
+        implicit none
+        real(RK), intent(in)    :: zplus1
+        real(RK)                :: universeAgeDerivative
+        universeAgeDerivative = INVERSE_HUBBLE_CONST / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )
+    end function getUniverseAgeDerivative
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
