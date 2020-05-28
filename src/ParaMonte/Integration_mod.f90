@@ -35,9 +35,9 @@
 !***********************************************************************************************************************************
 
 module Integration_mod
-  
+
     use Constants_mod, only: IK, RK
-  
+
     implicit none
 
     real(RK), parameter :: ONE_THIRD = 1._RK / 3._RK
@@ -47,7 +47,7 @@ module Integration_mod
     , "@Integration_mod@doQuadRombClosed()@doPolInterp(): Input lowerLim, upperLim to doQuadRombClosed() are likely equal.  " &
     , "@Integration_mod@doQuadRombOpen()@doPolInterp(): Input lowerLim, upperLim to doQuadRombOpen() are likely equal.      " &
     ]
-  
+
     abstract interface
 
         function integrand_proc(x) result(integrand)
@@ -67,12 +67,12 @@ module Integration_mod
             real(RK)    , intent(inout)     :: integral
             procedure(integrand_proc)       :: getFunc
         end subroutine integrator_proc
-  
+
     end interface
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
 contains
 
 !***********************************************************************************************************************************
@@ -218,7 +218,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     recursive subroutine doQuadTrap(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadTrap
