@@ -83,11 +83,11 @@ Example usage instructions
 
 ## Quick start  
 
-+   Go to the [release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases),  
-+   Decide on the parallelism paradigm that you want to use: serial / MPI,  
-+   Decide on the Operating System (OS) on which you want to run the ParaMonte simulations: Windows / macOS / Linux,  
-+   Learn about the naming convention used for the ParaMonte prebuilt libraries [here](https://www.cdslab.org/paramonte/notes/installation/readme/#naming-convention-used-for-paramonte-library-builds),  
-+   Download the prebuilt ParaMonte library of your choice based on the decisions you have made in the above,    
++   Go to the [release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases).  
++   Decide on the parallelism paradigm that you want to use: serial / MPI.  
++   Decide on the Operating System (OS) on which you want to run the ParaMonte simulations: Windows / macOS / Linux.  
++   Learn about the naming convention used for the ParaMonte prebuilt libraries [here](https://www.cdslab.org/paramonte/notes/installation/readme/#naming-convention-used-for-paramonte-library-builds).  
++   Download the prebuilt ParaMonte library of your choice based on the decisions you have made in the above. If you are not sure which prebuilt library is suitable for your needs, use the prebuilt library recommended [here for Windows](https://www.cdslab.org/paramonte/notes/installation/windows/#using-the-prebuilt-paramonte-library), or [here for Linux](https://www.cdslab.org/paramonte/notes/installation/linux/#using-the-prebuilt-paramonte-library), or [here for macOS](https://www.cdslab.org/paramonte/notes/installation/macos/#using-the-prebuilt-paramonte-library).  
 +   Each prebuilt library ships with a full-fledged set of example codes and build scripts. Uncompress the prebuilt library:  
     +   On **Windows**: Simply double-click on the file and select **extract files** from the Windows Explorer menu.  
     +   On **macOS/Linux**: Open a Bash terminal and navigate to the folder containing the compressed library. Use the following command to untar the compressed file,  
