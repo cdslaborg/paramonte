@@ -704,20 +704,20 @@ classdef HistPlot < BasePlot
             % add axis labels
 
             if xcolindexlen>1
-                self.currentFig.xlabel = xlabel("Variable Values");
+                self.currentFig.xlabel = xlabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.xlabel = xlabel(xcolnames(1));
+                self.currentFig.xlabel = xlabel(xcolnames(1), "Interpreter", "none");
             end
 
             if self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
                 if ycolindexlen>1
-                    self.currentFig.ylabel = ylabel("Variable Values");
+                    self.currentFig.ylabel = ylabel("Variable Values", "Interpreter", "none");
                 else
-                    self.currentFig.ylabel = ylabel(ycolnames(1));
+                    self.currentFig.ylabel = ylabel(ycolnames(1), "Interpreter", "none");
                 end
-                self.currentFig.zlabel = zlabel("Count");
+                self.currentFig.zlabel = zlabel("Count", "Interpreter", "none");
             else
-                self.currentFig.ylabel = ylabel("Count");
+                self.currentFig.ylabel = ylabel("Count", "Interpreter", "none");
             end
 
             % add line colorbar
@@ -729,7 +729,7 @@ classdef HistPlot < BasePlot
                 end
                 colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","singleOptions"});
                 self.currentFig.colorbar = colorbar(colorbar_kws_cell{:});
-                ylabel(self.currentFig.colorbar,"Density of Points","fontsize",self.colorbar_kws.fontsize);
+                ylabel(self.currentFig.colorbar,"Density of Points","fontsize",self.colorbar_kws.fontsize, "Interpreter", "none");
             else
                 colorbar('off');
                 self.currentFig.colorbar = [];

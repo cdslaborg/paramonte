@@ -735,22 +735,22 @@ classdef LineScatterPlot < BasePlot
             % add axis labels
 
             if xcolindexlen>1
-                self.currentFig.xlabel = xlabel("Variable Values");
+                self.currentFig.xlabel = xlabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.xlabel = xlabel(xcolnames(1));
+                self.currentFig.xlabel = xlabel(xcolnames(1), "Interpreter", "none");
             end
 
             if ycolindexlen>1
-                self.currentFig.ylabel = ylabel("Variable Values");
+                self.currentFig.ylabel = ylabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.ylabel = ylabel(ycolnames(1));
+                self.currentFig.ylabel = ylabel(ycolnames(1), "Interpreter", "none");
             end
 
             if self.is3d
             if zcolindexlen>1
-                self.currentFig.zlabel = zlabel("Variable Values");
+                self.currentFig.zlabel = zlabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.zlabel = zlabel(zcolnames(1));
+                self.currentFig.zlabel = zlabel(zcolnames(1), "Interpreter", "none");
             end
             end
 
