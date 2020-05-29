@@ -75,7 +75,7 @@ function reportProgress(self)
 
     % report progress in the standard output
 
-    formatStr   = "            %14d / %8d" + "   " + "%16.4f / %6.4f" + "   " + "%14.4f / %8.4f" ;
+    formatStr   = "            %14d / %8d" + "   " + "%16.4f / %6.4f" + "   " + "%11.2f / %11.2f" ;
     if self.Image.isFirst
         fprintf ( 1, repmat('\b', 1, 93));
         fprintf ( 1, formatStr  , self.Stats.NumFunCall.accepted                                                    ...
