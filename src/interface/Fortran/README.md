@@ -104,7 +104,7 @@ Example usage instructions
 
 ### Building and running ParaMonte simulations on Windows  
 
-+   **Note**: Theoretically, you can use any Fortran compiler on Windows to build and link your ParaMonte applications against the ParaMonte library. However, the ParaMonte library example build scripts, as described below, currently only recognize the Intel Fortran compilers.  
++   **Note**: Theoretically, you can use any Fortran compiler on Windows to build and link your applications against the ParaMonte library. However, the ParaMonte library example build scripts, as described below, currently only recognize the Intel Fortran compilers.  
 
 +   **Install the Microsoft Visual Studio (>2017)**: You will need to have a recent Microsoft Visual Studio (MSVS) installed on your system. The community edition of this software is available free of charge. When installing MSVS, make sure to install all the C++ components of the Visual Studio.  
 
