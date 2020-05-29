@@ -213,10 +213,10 @@ function runSampler(self,ndim,getLogFunc,varargin)
 
     iscmd = isdeployed() || batchStartupOptionUsed;
 
-    if ~(self.mpiEnabled || iscmd)
-        self.Err.msg = "check the opened terminal for simulation progress and report.";
-        self.Err.note();
-    end
+    %if ~(self.mpiEnabled || iscmd)
+    %    self.Err.msg = "check the opened terminal for simulation progress and report.";
+    %    self.Err.note();
+    %end
 
     if strcmp(getLogFuncSpec.type,"simple") && strcmp(getLogFuncSpec.function,"getLogFunc")
         expression = string(self.libName + "(iscmd,ndim,inputFile)");

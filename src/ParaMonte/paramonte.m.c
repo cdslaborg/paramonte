@@ -91,15 +91,15 @@ void mexFunction( int nlhs
                 )
 {
 
-#if defined _WIN32
-    int iscmd = mxGetScalar(MEX_ISCMD);
-    if (iscmd==0) {
-        if (AllocConsole()==0) {
-            freopen("CONOUT$", "w", stdout);
-            freopen("CONOUT$", "w", stderr);
-        }
-    }
-#endif
+//#if defined _WIN32
+//    int iscmd = mxGetScalar(MEX_ISCMD);
+//    if (iscmd==0) {
+//        if (AllocConsole()==0) {
+//            freopen("CONOUT$", "w", stdout);
+//            freopen("CONOUT$", "w", stderr);
+//        }
+//    }
+//#endif
 
     /********************************************check for proper number of arguments**********************************************/
 

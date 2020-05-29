@@ -67,10 +67,11 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
+        use ParaMonteLogFunc_mod, only: getLogFunc_proc
+        use Decoration_mod, only: write
         use Constants_mod, only: RK, IK, NEGINF_RK, NLC
         use String_mod, only: num2str
         use Math_mod, only: getCumSum, getLogSubExp
-        use ParaMonteLogFunc_mod, only: getLogFunc_proc
 
         implicit none
 
@@ -114,6 +115,7 @@ contains
         integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
         integer(IK)                         :: imageID, dummy
         integer(IK)                         :: nd
+        character(4*25+2*3+1)               :: txt
 #if defined CAF_ENABLED || defined MPI_ENABLED
         integer(IK)                         :: imageStartID, imageEndID
 #if defined CAF_ENABLED
@@ -301,12 +303,16 @@ contains
         PD%Stats%LogFuncMode%Loc%compact = 0_IK
 
         if (PD%Image%isFirst) then
-            write(output_unit,"(25X,*(A25,3X))" ) "Accepted/Total Func. Call" &
-                                                , "Dynamic/Overall Acc. Rate" &
-                                                , "Elapsed/Remained Time [s]"
-            write(output_unit,"(25X,*(A25,3X))" ) "=========================" &
-                                                , "=========================" &
-                                                , "========================="
+            txt =   repeat(" ",25) &
+                //  "Accepted/Total Func. Call   " &
+                //  "Dynamic/Overall Acc. Rate   " &
+                //  "Elapsed/Remained Time [s] "
+            call write(string=txt)
+            txt =   repeat(" ",25) &
+                //  "=========================   " &
+                //  "=========================   " &
+                //  "========================= "
+            call write(string=txt)
             !call execute_command_line(" ")
             flush(output_unit)
         end if
@@ -985,7 +991,7 @@ contains
         endif
 
         if (PD%Image%isFirst) then
-            write(output_unit,*)
+            call write()
             !call execute_command_line(" ")
             flush(output_unit)
         end if
@@ -1115,12 +1121,23 @@ contains
 
             ! report progress in the standard output
             if (PD%Image%isFirst) then
-                write(output_unit   , "(A,25X,*(A25,3X))",advance="no") CARRIAGE_RETURN &
-                                    , num2str(PD%Stats%NumFunCall%accepted)//" / "//num2str(PD%Stats%NumFunCall%acceptedRejected,formatIn="(1I10)") &
-                                    , num2str(meanAccRateSinceLastReport,"(1F11.3)")//" / "//num2str(SumAccRateSinceStart%acceptedRejected / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK),"(1F10.4)") &
-                                    , num2str(timeElapsedUntilLastReportInSeconds,"(1F10.4)")//" / "//num2str(estimatedTimeToFinishInSeconds,"(1F11.3)")
+                write( &
+#if defined MEXPRINT_ENABLED
+                txt, &
+#else
+                output_unit, advance = "no", &
+#endif
+                fmt = "(A,25X,*(A25,3X))" ) &
+                CARRIAGE_RETURN, &
+                num2str(PD%Stats%NumFunCall%accepted)//" / "//num2str(PD%Stats%NumFunCall%acceptedRejected,formatIn="(1I10)"), &
+                num2str(meanAccRateSinceLastReport,"(1F11.3)")//" / "//num2str(SumAccRateSinceStart%acceptedRejected / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK),"(1F10.4)"), &
+                num2str(timeElapsedUntilLastReportInSeconds,"(1F10.4)")//" / "//num2str(estimatedTimeToFinishInSeconds,"(1F11.3)")
+#if defined MEXPRINT_ENABLED
+                call write(string=txt,advance=.false.)
+#else
                 !call execute_command_line(" ")
                 flush(output_unit)
+#endif
             end if
 
             numFunCallAcceptedRejectedLastReport = PD%Stats%NumFunCall%acceptedRejected

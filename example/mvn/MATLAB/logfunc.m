@@ -37,10 +37,10 @@ classdef logfunc
     properties (Constant)
         NDIM    = 4;                        % number of dimensions of the distribution
         MEAN    =   [ 0.0,0.0,0.0,0.0]';    % mean of the Multivariate Normal distribution
-        COVMAT  =   [ 1.0,0.5,0.5,0.5 ;     ... covariance matrix of the Multivariate Normal distribution
-                    , 0.5,1.0,0.5,0.5 ;     ...
-                    , 0.5,0.5,1.0,0.5 ;     ...
-                    , 0.5,0.5,0.5,1.0 ];
+        COVMAT  =   [ 1.0,0.5,0.5,0.5       ... covariance matrix of the Multivariate Normal distribution
+                    ; 0.5,1.0,0.5,0.5       ...
+                    ; 0.5,0.5,1.0,0.5       ...
+                    ; 0.5,0.5,0.5,1.0 ];
     end
 
     % define the objective function: getLogFunc

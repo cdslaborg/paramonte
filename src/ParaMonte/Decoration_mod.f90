@@ -157,7 +157,15 @@ module Decoration_mod
 !***********************************************************************************************************************************
 
     interface
-    module subroutine write(outputUnit,marginTop,marginBot,count,string)
+    module subroutine write ( outputUnit    &
+                            , marginTop     &
+                            , marginBot     &
+                            , count         &
+                            , string        &
+#if defined MEXPRINT_ENABLED
+                            , advance       &
+#endif
+                            )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: write
 #endif
@@ -167,6 +175,9 @@ module Decoration_mod
         integer(IK) , intent(in), optional  :: outputUnit
         integer(IK) , intent(in), optional  :: marginTop, marginBot, count
         character(*), intent(in), optional  :: string
+#if defined MEXPRINT_ENABLED
+        logical     , intent(in), optional  :: advance
+#endif
     end subroutine write
     end interface
 

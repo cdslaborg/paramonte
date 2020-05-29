@@ -34,6 +34,10 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+#if defined MEXPRINT_ENABLED
+#include "fintrf.h"
+#endif
+
 submodule (Decoration_mod) Routines_mod
 
     implicit none
@@ -290,27 +294,54 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    module subroutine write(outputUnit,marginTop,marginBot,count,string)
+    module subroutine write ( outputUnit    &
+                            , marginTop     &
+                            , marginBot     &
+                            , count         &
+                            , string        &
+#if defined MEXPRINT_ENABLED
+                            , advance       &
+#endif
+                            )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: write
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use Constants_mod, only: IK
+        use Constants_mod, only: IK, NLC
         implicit none
         integer(IK) , intent(in), optional  :: outputUnit
         integer(IK) , intent(in), optional  :: marginTop, marginBot, count
         character(*), intent(in), optional  :: string
         integer(IK)                         :: i, logFileUnit, thisManyTimes
+#if defined MEXPRINT_ENABLED
+        logical     , intent(in), optional  :: advance
+        logical                             :: isStdout, advanceEnabled
+        advanceEnabled = .true.; if (present(advance)) advanceEnabled = advance
+#endif
 
         if (present(outputUnit)) then
+#if defined MEXPRINT_ENABLED
+            isStdout = output_unit == outputUnit
+#endif
             logFileUnit = outputUnit
         else
+#if defined MEXPRINT_ENABLED
+            isStdout = .true.
+#endif
             logFileUnit = output_unit
         end if
 
         if (present(marginTop)) then
             do i = 1, marginTop
+#if defined MEXPRINT_ENABLED
+                if (isStdout) then
+                    call mexPrintf(NLC)
+                else
+                    write(logFileUnit,*)
+                end if
+#else
                 write(logFileUnit,*)
+#endif
             end do
         end if
     
@@ -322,17 +353,45 @@ contains
 
         if (present(string)) then
             do i = 1, thisManyTimes
+#if defined MEXPRINT_ENABLED
+                if (isStdout) then
+                    if (advanceEnabled) then
+                        call mexPrintf(string//NLC)
+                    else
+                        call mexPrintf(string)
+                    end if
+                else
+                    write(logFileUnit,"(g0)") string
+                end if
+#else
                 write(logFileUnit,"(g0)") string
+#endif
             end do
         elseif (.not. ( present(marginBot) .and. present(marginTop) ) ) then
             do i = 1, thisManyTimes
+#if defined MEXPRINT_ENABLED
+                if (isStdout) then
+                    call mexPrintf(NLC)
+                else
+                    write(logFileUnit,*)
+                end if
+#else
                 write(logFileUnit,*)
+#endif
             end do
         end if
     
         if (present(marginBot)) then
             do i = 1, marginBot
+#if defined MEXPRINT_ENABLED
+                if (isStdout) then
+                    call mexPrintf(NLC)
+                else
+                    write(logFileUnit,*)
+                end if
+#else
                 write(logFileUnit,*)
+#endif
             end do
         end if
   
@@ -478,7 +537,7 @@ contains
 
         if ( lineCount /= size(EndOfLineLoc) ) then
             write(output_unit,"(*(g0,:,' '))")  MODULE_NAME // PROCEDURE_NAME // &
-                                                ": Fatal error occurred. lineCount /= size(EndOfLineLoc):", &
+                                                ": Internal error occurred. lineCount /= size(EndOfLineLoc):", &
                                                 lineCount, "/=", size(EndOfLineLoc), EndOfLineLoc
             write(output_unit,"(*(g0,:,' '))")  EndOfSplitLoc
             error stop
@@ -491,8 +550,12 @@ contains
         ListOfLines(indx)%record = string(1:EndOfLineLoc(indx))
         do indx = 2, lineCount
             if ( padLength==0 .and. EndOfLineLoc(indx-1)+1>EndOfLineLoc(indx) ) then
-                write(*,*) string
-                read(*,*)
+                write(output_unit,"(*(g0,:,' '))")  MODULE_NAME // PROCEDURE_NAME // &
+                                                    ": Fatal error occurred. " // &
+                                                    "padLength==0 .and. EndOfLineLoc(indx-1)+1>EndOfLineLoc(indx) " // &
+                                                    "for string: "
+                write(output_unit,"(A)")            string
+                error stop
             end if
             ListOfLines(indx)%record = string(1:padLength) // string(EndOfLineLoc(indx-1)+1:EndOfLineLoc(indx))
         end do
