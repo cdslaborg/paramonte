@@ -332,10 +332,10 @@ contains
 
     function getBinaryMergerRate( zplus1 &
                                 , zplus1Max &
-                                , maxRelativeError &
                                 , nRefinement &
-                                , getStarFormationRateDensity &
+                                , maxRelativeError &
                                 , getMergerDelayTimePDF &
+                                , getStarFormationRateDensity &
                                 ) result(binaryMergerRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRate
