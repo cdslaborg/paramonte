@@ -89,6 +89,7 @@ contains
                                             , numFuncEval &
                                             , ierr &
                                             )
+        !checked by Joshua Osborne on 5/28/2020 at 9:06pm
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadRombClosed
 #endif
@@ -133,6 +134,7 @@ contains
                                         , numFuncEval &
                                         , ierr &
                                         )
+        !checked by Joshua Osborne on 5/28/2020 at 9:03pm
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadRombOpen
 #endif
@@ -300,6 +302,7 @@ contains
     ! must be: lowerLim*upperLim > 0.0
     ! integrate a function on a semi-infinite interval
 	subroutine midinf(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
+    !checked by Joshua Osborne on 5/28/2020 at 8:58pm
         implicit none
         real(RK)    , intent(in)    :: lowerLim,upperLim
         integer(IK) , intent(in)    :: refinementStage
@@ -343,6 +346,7 @@ contains
 !***********************************************************************************************************************************
 
     subroutine midpnt(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
+    !checked by Joshua Osborne on 5/28/2020 at 8:55pm
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: midpnt
 #endif
