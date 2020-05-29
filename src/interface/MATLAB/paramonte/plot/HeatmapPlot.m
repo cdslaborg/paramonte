@@ -376,7 +376,7 @@ classdef HeatmapPlot < BasePlot
                 %end
                 %colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","label","singleOptions"});
                 %colorbar(colorbar_kws_cell{:});
-                %ylabel(self.currentFig.colorbar,self.colorbar_kws.label,self.colorbar_kws.fontsize);
+                %ylabel(self.currentFig.colorbar,self.colorbar_kws.label,self.colorbar_kws.fontsize, "Interpreter", "none");
             %else
                 colorbar("off");
             end

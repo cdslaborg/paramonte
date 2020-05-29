@@ -265,6 +265,7 @@ classdef HistPlot < BasePlot
 
     properties (Access = protected, Hidden)
         plotType
+        gridSizeDefault = 2^9;
         isHistogram = false;
         isHistogram2 = false;
         isContourf = false;
@@ -303,6 +304,10 @@ classdef HistPlot < BasePlot
                     self.histogram2_kws.facecolor = {};
                     self.histogram2_kws.displaystyle = {};
                     self.histogram2_kws.singleOptions = {};
+                end
+
+                if self.isContourf || self.isContour3 || self.isContour
+                    self.gridSize = self.gridSizeDefault;
                 end
 
                 if self.isContourf
@@ -378,6 +383,9 @@ classdef HistPlot < BasePlot
                     prop="colorbar_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
                     prop="ycolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
                     prop="colormap"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                    if ~self.isHistogram2
+                        prop="gridSize"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                    end
                 else
                     error("The requested plot type " + string(self.plotType) + " is not reqcognized.");
                 end
@@ -576,8 +584,8 @@ classdef HistPlot < BasePlot
             lglabels = [];
 
             if (self.isContourf && self.contourf_kws.enabled) || (self.isContour3 && self.contour3_kws.enabled) || (self.isContour && self.contour_kws.enabled)
-                gridSize = 2^9;
-                [bandwidth,density,crdx,crdy] = kde2d([xdata(:),ydata(:)],gridSize);
+                key = "gridSize"; val = self.gridSizeDefault; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
+                [bandwidth,density,crdx,crdy] = kde2d([xdata(:),ydata(:)],self.gridSize);
             end
 
             if (self.isHistogram && self.histogram_kws.enabled) ...
@@ -608,7 +616,7 @@ classdef HistPlot < BasePlot
                         end
                     end
                     if kde2dComputationNeeded
-                        [bandwidth,density,crdx,crdy] = kde2d([xdata(:),ydata(:)],gridSize);
+                        [bandwidth,density,crdx,crdy] = kde2d([xdata(:),ydata(:)],self.gridSize);
                     end
 
                     if self.legend_kws.enabled
@@ -715,9 +723,9 @@ classdef HistPlot < BasePlot
                 else
                     self.currentFig.ylabel = ylabel(ycolnames(1), "Interpreter", "none");
                 end
-                self.currentFig.zlabel = zlabel("Count", "Interpreter", "none");
+                self.currentFig.zlabel = zlabel("Density of Points", "Interpreter", "none");
             else
-                self.currentFig.ylabel = ylabel("Count", "Interpreter", "none");
+                self.currentFig.ylabel = ylabel("Density of Points", "Interpreter", "none");
             end
 
             % add line colorbar
