@@ -98,9 +98,11 @@ Example usage instructions
 
 ### Building and running ParaMonte simulations on Windows  
 
++   **Note**: Theoretically, you can use any C/C++ compiler on Windows to build and link your ParaMonte applications against the ParaMonte library. However, the ParaMonte library example build scripts, as described below, currently only recognize the Microsoft and Intel C/C++ compilers.  
+
 +   **Install the Microsoft Visual Studio (>2017)**: You will need to have a recent Microsoft Visual Studio (MSVS) installed on your system. The community edition of this software is available free of charge. When installing MSVS, make sure to install all the C++ components and compiler of the Visual Studio.  
 
-+   **Optionally Install the Intel Parallel Studio**: If you are a student/teacher/faculty/open-source-developer, you can also download and install, free of charge, the most recent **Intel Parallel Studio** on your system which, by default, includes the Intel MPI library.  
++   **Install the Intel Parallel Studio**: If you are a student/teacher/faculty/open-source-developer, you can also download and install, free of charge, the most recent **Intel Parallel Studio** on your system which, by default, includes the Intel MPI library. You can follow the instructions given [on this page](https://www.cdslab.org/recipes/programming/intel-parallel-studio-installation-windows/intel-parallel-studio-installation-windows) to install the Intel Parallel Studio on your system.  
 
 +   **Open the right command-line interface to build/run the ParaMonte example**: If the ParaMonte library that you intend to use is built for 64-bit architecture, then make sure you open a 64-bit instance of the command-line interface in either of the two cases below:  
     +   If you have installed Intel Parallel Studio, open an instance of the **command-line interface** that comes with Intel Parallel Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
