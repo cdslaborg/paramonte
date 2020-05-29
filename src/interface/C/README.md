@@ -133,6 +133,8 @@ Example usage instructions
 
 ### Building and running ParaMonte simulations on macOS / Linux  
 
++   **Note**: Theoretically, you can use any C/C++ compiler on macOS/Linux to build and link your applications against the ParaMonte library. However, the ParaMonte library example build scripts, as described below, currently only recognize the Intel and GNU C/C++ compilers.  
+
 +   If you intend to run **serial** ParaMonte simulations, install either,  
     +   **the Intel C/C++ compiler (icc/icpc >2018)**, or,  
     +   **the GNU C/C++ compiler (gcc/g++ >7.0.0)**,  
