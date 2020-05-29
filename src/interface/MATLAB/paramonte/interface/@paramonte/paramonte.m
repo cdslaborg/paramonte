@@ -239,11 +239,11 @@ classdef paramonte %< dynamicprops
             self.website.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-with-mpi-for-windows";
             self.website.openmpi.home.url = "https://www.open-mpi.org/";
             if usejava('desktop') && ~batchStartupOptionUsed
-                self.website.home.url = "<a href=" + self.website.home.url + ">" + self.website.home.url + "</a>";
-                self.website.github.issues.url = "<a href=" + self.website.github.issues.url + ">" + self.website.github.issues.url + "</a>";
-                self.website.intel.mpi.home.url = "<a href=" + self.website.intel.mpi.home.url + ">" + self.website.intel.mpi.home.url + "</a>";
-                self.website.intel.mpi.windows.url = "<a href=" + self.website.intel.mpi.windows.url + ">" + self.website.intel.mpi.windows.url + "</a>";
-                self.website.openmpi.home.url = "<a href=" + self.website.openmpi.home.url + ">" + self.website.openmpi.home.url + "</a>";
+                self.website.home.url = "<a href=""" + self.website.home.url + """>" + self.website.home.url + "</a>";
+                self.website.github.issues.url = "<a href=""" + self.website.github.issues.url + """>" + self.website.github.issues.url + "</a>";
+                self.website.intel.mpi.home.url = "<a href=""" + self.website.intel.mpi.home.url + """>" + self.website.intel.mpi.home.url + "</a>";
+                self.website.intel.mpi.windows.url = "<a href=""" + self.website.intel.mpi.windows.url + """>" + self.website.intel.mpi.windows.url + "</a>";
+                self.website.openmpi.home.url = "<a href=""" + self.website.openmpi.home.url + """>" + self.website.openmpi.home.url + "</a>";
             end
 
             self.platform.isWin32 = ispc;
@@ -925,7 +925,7 @@ classdef paramonte %< dynamicprops
                                             + "    " + string(strrep(thisPath,'\','\\')) + newline + newline ...
                                             + "To perform ParaMonte simulations in parallel on a single node, run the " + newline ...
                                             + "following two commands, in the form and order specified, on a MATLAB-aware, " + newline ...
-                                            + "mpiexec-aware command-line interface such as the Intel Parallel Studio's command-prompt:" + newline + newline ...
+                                            + "mpiexec-aware command-line interface, such as the Intel Parallel Studio's command-prompt:" + newline + newline ...
                                             + "    " + string(strrep(mpivarsCommand,'\','\\')) + newline + newline ...
                                             + "    mpiexec -localonly -n NUM_PROCESSES MATLAB -batch 'main_mpi'" + newline + newline ...
                                             + "where, " + newline + newline ...
@@ -1535,17 +1535,17 @@ classdef paramonte %< dynamicprops
             offset = fix( (versionLen - 4) / 2 );
             fprintf(1,"\n");
             text = fileread(bannerFilePath);
-            %lineList = string(strsplit(text,newline));
-            %for lineElement = lineList
-            %    if contains(lineElement,"Version")
-            %        line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
-            %    else
-            %        line = lineElement;
-            %    end
-            %    fprintf(1,line);
-            %end
-            newText = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
-            fprintf(1,newText);
+            lineList = string(strsplit(text,newline));
+            for lineElement = lineList
+                if contains(lineElement,"Version")
+                    line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+                else
+                    line = lineElement;
+                end
+                fprintf(1,line);
+            end
+            %newText = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+            %fprintf(1,newText);
             fprintf(1,"\n\n");
         end
 

@@ -605,9 +605,7 @@ classdef LineScatterPlot < BasePlot
             box on; grid on;
 
             lglabels = [];
-            if cEnabled
-                colormap(self.colormap);
-            else
+            if ~cEnabled
                 if self.isScatterPlot && self.scatter_kws.enabled
                     scatter_colors = lines(maxLenColumns);
                 end
@@ -728,28 +726,31 @@ classdef LineScatterPlot < BasePlot
                 end % loop plot
 
                 self.currentFig.gca = gca;
+                if cEnabled
+                    colormap(self.currentFig.gca,self.colormap);
+                end
 
             end
 
             % add axis labels
 
             if xcolindexlen>1
-                self.currentFig.xlabel = xlabel("Variable Values");
+                self.currentFig.xlabel = xlabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.xlabel = xlabel(xcolnames(1));
+                self.currentFig.xlabel = xlabel(xcolnames(1), "Interpreter", "none");
             end
 
             if ycolindexlen>1
-                self.currentFig.ylabel = ylabel("Variable Values");
+                self.currentFig.ylabel = ylabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.ylabel = ylabel(ycolnames(1));
+                self.currentFig.ylabel = ylabel(ycolnames(1), "Interpreter", "none");
             end
 
             if self.is3d
             if zcolindexlen>1
-                self.currentFig.zlabel = zlabel("Variable Values");
+                self.currentFig.zlabel = zlabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.zlabel = zlabel(zcolnames(1));
+                self.currentFig.zlabel = zlabel(zcolnames(1), "Interpreter", "none");
             end
             end
 
@@ -761,7 +762,7 @@ classdef LineScatterPlot < BasePlot
                 end
                 colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","singleOptions"});
                 self.currentFig.colorbar = colorbar(colorbar_kws_cell{:});
-                ylabel(self.currentFig.colorbar,ccolnames(1),"fontsize",self.colorbar_kws.fontsize);
+                ylabel(self.currentFig.colorbar,ccolnames(1),"fontsize",self.colorbar_kws.fontsize, "Interpreter", "none");
             else
                 colorbar('off');
                 self.currentFig.colorbar = [];

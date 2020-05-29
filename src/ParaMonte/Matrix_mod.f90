@@ -106,7 +106,7 @@ contains
     ! On output MatInvMat is completely overwritten by in the inverse of the matrix.
     ! Also returns: determinant of the inverse matrix.
     ! Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
-    subroutine getInvPosDefMatSqrtDet(nd,MatInvMat,sqrtDetInvPosDefMat)
+    pure subroutine getInvPosDefMatSqrtDet(nd,MatInvMat,sqrtDetInvPosDefMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvPosDefMatSqrtDet
 #endif
@@ -119,6 +119,11 @@ contains
         real(RK)                   :: Diagonal(nd)               ! diagonal terms of the inverse matrix
         real(RK)                   :: summ
         integer(IK)                :: i,j,k
+        if (nd==1_IK) then
+            MatInvMat = 1._RK / MatInvMat
+            sqrtDetInvPosDefMat = MatInvMat(1,1)
+            return
+        end if
         do j=1,nd
             do i=1,j
                 CholeskyLower(i,j) = MatInvMat(i,j)

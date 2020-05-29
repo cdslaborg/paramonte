@@ -213,10 +213,10 @@ function runSampler(self,ndim,getLogFunc,varargin)
 
     iscmd = isdeployed() || batchStartupOptionUsed;
 
-    if ~(self.mpiEnabled || iscmd)
-        self.Err.msg = "check the opened terminal for simulation progress and report.";
-        self.Err.note();
-    end
+    %if ~(self.mpiEnabled || iscmd)
+    %    self.Err.msg = "check the opened terminal for simulation progress and report.";
+    %    self.Err.note();
+    %end
 
     if strcmp(getLogFuncSpec.type,"simple") && strcmp(getLogFuncSpec.function,"getLogFunc")
         expression = string(self.libName + "(iscmd,ndim,inputFile)");
@@ -230,7 +230,11 @@ function runSampler(self,ndim,getLogFunc,varargin)
         setenv('GFORTRAN_STDOUT_UNIT', '6') 
         setenv('GFORTRAN_STDERR_UNIT', '0')
     end
+    munlock(self.libName)
+    eval("clear "+self.libName);
     eval(expression);
+    munlock(self.libName)
+    eval("clear "+self.libName);
     if isGNU
         setenv('GFORTRAN_STDIN_UNIT' , '-1') 
         setenv('GFORTRAN_STDOUT_UNIT', '-1') 
@@ -250,7 +254,6 @@ function runSampler(self,ndim,getLogFunc,varargin)
     %                    ;
     %    self.Err.abort();
     %end
-    eval("clear "+self.libName);
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

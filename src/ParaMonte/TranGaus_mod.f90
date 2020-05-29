@@ -2545,7 +2545,7 @@ contains
     ! 
     !   [X,P] = getTranGaus(...) also returns the vector of probabilities of X.
     ! 
-    !   This implements an extension of Chopin's algorithm detailed in
+    !   This implements an extension of the algorithm of Chopin detailed in
     !   N. Chopin, "Fast simulation of truncated Gaussian distributions", Stat
     !   Comput (2011) 21:275-288
     ! 
@@ -2668,7 +2668,7 @@ contains
                 if ( (stdTranGaus>=lowerLim) .and. (stdTranGaus<=upperLim) ) exit
             end do
 
-        ! In other cases (xmin < lowerLim < xmax), use Chopin's algorithm
+        ! In other cases (xmin < lowerLim < xmax), use the algorithm of Chopin
         else blockRange
 
             ! Large data tables and design variables are used here
@@ -2768,13 +2768,13 @@ contains
                         ylk = VEC_YU(k+1_IK)
                     end if
 
-                    if (simy < ylk) then  ! That's what happens most of the time 
+                    if (simy < ylk) then  ! That is what happens most of the time 
                         stdTranGaus = VEC_X(k) + unifrndFixed*d*VEC_YU(k) / ylk
                         return
                     end if
                     call random_number(unifrnd)
                     sim = VEC_X(k) + d * unifrnd
-                    ! Otherwise, check you're below the pdf curve
+                    ! Otherwise, check if we are below the pdf curve
                     if (sim**2 + 2*log(simy) + ALPHA < 0) then
                         stdTranGaus = sim
                         return

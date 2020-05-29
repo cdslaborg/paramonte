@@ -44,57 +44,57 @@
 
 set ERRORLEVEL=0
 
-echo. 
-echo. -- ParaMonteMATLAB - searching for a MATLAB installation on your system...
-
-set "MATLAB_root_DIR="
-set "MATLAB_EXE_PATH="
-set "MATLAB_BIN_DIR="
-
-set "INSTALL_LOC_LIST=C:\Program Files\MATLAB\/C:\Program Files (x86)\MATLAB\"
-set MATLAB_VERSION_LIST=R2025b/R2025a/R2024b/R2024a/R2023b/R2023a/R2022b/R2022a/R2021b/R2021a/R2020b/R2020a/R2019b/R2019a/R2018b/R2018a/R2017b/R2017a
-
-for %%D in ("!INSTALL_LOC_LIST:/=" "!") do (
-    for %%V in ("!MATLAB_VERSION_LIST:/=" "!") do (
-        set "MATLAB_root_DIR_TEMP=%%~D%%~V"
-        set "MATLAB_BIN_DIR_TEMP=!MATLAB_root_DIR_TEMP!\bin"
-        set "MATLAB_EXE_PATH_TEMP=!MATLAB_BIN_DIR_TEMP!\matlab.exe"
-        if exist !MATLAB_EXE_PATH_TEMP! (
-            set "MATLAB_root_DIR=!MATLAB_root_DIR_TEMP!"
-            set "MATLAB_EXE_PATH=!MATLAB_EXE_PATH_TEMP!"
-            set "MATLAB_BIN_DIR=!MATLAB_BIN_DIR_TEMP!"
-            echo. -- ParaMonteMATLAB - MATLAB %%~V installation detected at: !MATLAB_EXE_PATH!
-            echo. 
-            goto :LABEL_continue
-        )
-    )
-)
-
-echo. -- ParaMonteMATLAB - WARNING: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB.
-echo. -- ParaMonteMATLAB - WARNING: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries.
-echo. -- ParaMonteMATLAB - WARNING: Please add MATLAB to your environmental variable PATH and rerun the install script.
-echo. -- ParaMonteMATLAB - WARNING: For example, on your current Windows command-line, try:
-echo. -- ParaMonteMATLAB - WARNING: 
-echo. -- ParaMonteMATLAB - WARNING:     set "PATH=PATH_TO_MATLAB_BIN_DIR;!PATH!
-echo. -- ParaMonteMATLAB - WARNING: 
-echo. -- ParaMonteMATLAB - WARNING: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current 
-echo. -- ParaMonteMATLAB - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit Windows 
-echo. -- ParaMonteMATLAB - WARNING: Operating Systems is a string like the following:
-echo. -- ParaMonteMATLAB - WARNING: 
-echo. -- ParaMonteMATLAB - WARNING:     C:\Program Files\MATLAB\2020a\bin\
-echo. -- ParaMonteMATLAB - WARNING: 
-echo. -- ParaMonteMATLAB - WARNING: where 2020a in the path points to the MATLAB 2020a version installation on the system. You can also 
-echo. -- ParaMonteMATLAB - WARNING: find the installation location of MATLAB by typing the following command in your MATLAB session:
-echo. -- ParaMonteMATLAB - WARNING: 
-echo. -- ParaMonteMATLAB - WARNING:     matlabroot
-echo. -- ParaMonteMATLAB - WARNING: 
-echo. -- ParaMonteMATLAB - WARNING: skipping the ParaMonte MATLAB build...
-
-REM cd %~dp0
-REM set ERRORLEVEL=1
-REM exit /B 1
-
-:LABEL_continue
+REM echo. 
+REM echo. -- ParaMonteMATLAB - searching for a MATLAB installation on your system...
+REM 
+REM set "MATLAB_ROOT_DIR="
+REM set "MATLAB_EXE_PATH="
+REM set "MATLAB_BIN_DIR="
+REM 
+REM set "INSTALL_LOC_LIST=C:\Program Files\MATLAB\/C:\Program Files (x86)\MATLAB\"
+REM set MATLAB_VERSION_LIST=R2025b/R2025a/R2024b/R2024a/R2023b/R2023a/R2022b/R2022a/R2021b/R2021a/R2020b/R2020a/R2019b/R2019a/R2018b/R2018a/R2017b/R2017a
+REM 
+REM for %%D in ("!INSTALL_LOC_LIST:/=" "!") do (
+REM     for %%V in ("!MATLAB_VERSION_LIST:/=" "!") do (
+REM         set "MATLAB_ROOT_DIR_TEMP=%%~D%%~V"
+REM         set "MATLAB_BIN_DIR_TEMP=!MATLAB_ROOT_DIR_TEMP!\bin"
+REM         set "MATLAB_EXE_PATH_TEMP=!MATLAB_BIN_DIR_TEMP!\matlab.exe"
+REM         if exist !MATLAB_EXE_PATH_TEMP! (
+REM             set "MATLAB_ROOT_DIR=!MATLAB_ROOT_DIR_TEMP!"
+REM             set "MATLAB_EXE_PATH=!MATLAB_EXE_PATH_TEMP!"
+REM             set "MATLAB_BIN_DIR=!MATLAB_BIN_DIR_TEMP!"
+REM             echo. -- ParaMonteMATLAB - MATLAB %%~V installation detected at: !MATLAB_EXE_PATH!
+REM             echo. 
+REM             goto :LABEL_continue
+REM         )
+REM     )
+REM )
+REM 
+REM echo. -- ParaMonteMATLAB - WARNING: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB.
+REM echo. -- ParaMonteMATLAB - WARNING: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries.
+REM echo. -- ParaMonteMATLAB - WARNING: Please add MATLAB to your environmental variable PATH and rerun the install script.
+REM echo. -- ParaMonteMATLAB - WARNING: For example, on your current Windows command-line, try:
+REM echo. -- ParaMonteMATLAB - WARNING: 
+REM echo. -- ParaMonteMATLAB - WARNING:     set "PATH=PATH_TO_MATLAB_BIN_DIR;!PATH!
+REM echo. -- ParaMonteMATLAB - WARNING: 
+REM echo. -- ParaMonteMATLAB - WARNING: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current 
+REM echo. -- ParaMonteMATLAB - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit Windows 
+REM echo. -- ParaMonteMATLAB - WARNING: Operating Systems is a string like the following:
+REM echo. -- ParaMonteMATLAB - WARNING: 
+REM echo. -- ParaMonteMATLAB - WARNING:     C:\Program Files\MATLAB\2020a\bin\
+REM echo. -- ParaMonteMATLAB - WARNING: 
+REM echo. -- ParaMonteMATLAB - WARNING: where 2020a in the path points to the MATLAB 2020a version installation on the system. You can also 
+REM echo. -- ParaMonteMATLAB - WARNING: find the installation location of MATLAB by typing the following command in your MATLAB session:
+REM echo. -- ParaMonteMATLAB - WARNING: 
+REM echo. -- ParaMonteMATLAB - WARNING:     matlabroot
+REM echo. -- ParaMonteMATLAB - WARNING: 
+REM echo. -- ParaMonteMATLAB - WARNING: skipping the ParaMonte MATLAB build...
+REM 
+REM REM cd %~dp0
+REM REM set ERRORLEVEL=1
+REM REM exit /B 1
+REM 
+REM :LABEL_continue
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Build ParaMonte MATLAB
@@ -122,15 +122,16 @@ if defined MATLAB_BIN_DIR (
     if !BTYPE!==release set "MEX_FLAGS=!MEX_FLAGS! -O"
     echo. -- ParaMonteMATLAB - generating the ParaMonte MATLAB dynamic library: !ParaMonteMATLAB_BLD_LIB_DIR!!PMLIB_MATLAB_NAME!
     echo. -- ParaMonteMATLAB - compiler options: !MATLAB_BUILD_FLAGS!
-    echo. -- ParaMonteMATLAB - compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
+    echo. -- ParaMonteMATLAB - compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
     cd !ParaMonteMATLAB_BLD_LIB_DIR!
     REM CC=icl COMPFLAGS="!MATLAB_BUILD_FLAGS!"
-    call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
-    if !ERRORLEVEL!==0 (
+    call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME! && (
+    REM if !ERRORLEVEL!==0 (
         echo.
         echo. -- ParaMonteMATLAB - the ParaMonte MATLAB dynamic library build appears to have succeeded.
         echo.
-    ) else (
+    ) || (
+    REM ) else (
         echo. 
         echo. -- ParaMonteMATLAB - Fatal Error: The ParaMonte MATLAB library build failed.
         echo. -- ParaMonteMATLAB - Please make sure you have the following components installed
@@ -199,7 +200,7 @@ echo.
 echo. -- ParaMonteMATLAB - copying the ParaMonte library auxiliary files
 echo. -- ParaMonteMATLAB - from: !ParaMonteInterface_SRC_DIR!\auxil                 %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\paramonte\auxil\     %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMonteInterface_SRC_DIR!\auxil" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\auxil\"
+xcopy /s /Y "!ParaMonteInterface_SRC_DIR!\auxil" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\auxil\" || goto LABEL_copyErrorOccured
 echo.
 
 :: copy necessary ParaMonte MATLAB library files in MATLAB's source directory
@@ -207,7 +208,7 @@ echo.
 echo. -- ParaMonteMATLAB - copying the paramonte library source files to the MATLAB build directory
 echo. -- ParaMonteMATLAB - from: !ParaMonteInterfaceMATLAB_SRC_DIR!\paramonte   %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\paramonte\       %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMonteInterfaceMATLAB_SRC_DIR!\paramonte" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\"
+xcopy /s /Y "!ParaMonteInterfaceMATLAB_SRC_DIR!\paramonte" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\" || goto LABEL_copyErrorOccured
 echo.
 
 :: copy necessary ParaMonte MATLAB DLL files in MATLAB's build directory
@@ -215,7 +216,7 @@ echo.
 echo. -- ParaMonteMATLAB - copying the paramonte DLL files to the MATLAB build directory
 echo. -- ParaMonteMATLAB - from: !ParaMonte_LIB_DIR!\!PMLIB_NAME!.* %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\paramonte\   %= final slash tells this is folder =%
-xcopy /s /Y /i "!ParaMonte_LIB_DIR!\*.*" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\lib"
+xcopy /s /Y /i "!ParaMonte_LIB_DIR!\*.*" "!ParaMonteMATLABTest_BLD_DIR!\paramonte\lib" || goto LABEL_copyErrorOccured
 echo.
 
 :: copy necessary ParaMonte MATLAB library files in MATLAB's directory
@@ -223,7 +224,7 @@ echo.
 echo. -- ParaMonteMATLAB - copying the paramonte library test files to the MATLAB build directory
 echo. -- ParaMonteMATLAB - from: !ParaMonteMATLABTest_SRC_DIR!\!MATLAB_TEST_FILENAME!  %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\                        %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMonteMATLABTest_SRC_DIR!\!MATLAB_TEST_FILENAME!" "!ParaMonteMATLABTest_BLD_DIR!\"
+xcopy /s /Y "!ParaMonteMATLABTest_SRC_DIR!\!MATLAB_TEST_FILENAME!" "!ParaMonteMATLABTest_BLD_DIR!\" || goto LABEL_copyErrorOccured
 echo.
 
 :: copy necessary input files in MATLAB's directory
@@ -231,5 +232,17 @@ echo.
 echo. -- ParaMonteMATLAB - copying the test input files to the paramonte MATLAB build directory
 echo. -- ParaMonteMATLAB - from: !ParaMonteTest_SRC_DIR!\input   %= no need for final slash here =%
 echo. -- ParaMonteMATLAB -   to: !ParaMonteMATLABTest_BLD_DIR!\input\  %= final slash tells this is folder =%
-xcopy /s /Y "!ParaMonteTest_SRC_DIR!\input" "!ParaMonteMATLABTest_BLD_DIR!\input\"
+xcopy /s /Y "!ParaMonteTest_SRC_DIR!\input" "!ParaMonteMATLABTest_BLD_DIR!\input\" || goto LABEL_copyErrorOccured
 echo.
+
+cd %~dp0
+exit /B 0
+
+:LABEL_copyErrorOccured
+
+echo. 
+echo. -- ParaMonteExample!LANG_NAME! - Fatal Error: failed to copy contents. exiting...
+echo. 
+cd %~dp0
+set ERRORLEVEL=1
+exit /B 1

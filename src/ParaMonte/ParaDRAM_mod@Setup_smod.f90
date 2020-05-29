@@ -360,7 +360,7 @@ contains
         end if
 
         ! The format setup of setupOutputFiles() uses the generic g0 edit descriptor. Here the format is revised to be more specific.
-        ! g0 edit descriptor's format is slightly more arbitrary and compiler-dependent.
+        ! g0 edit descriptor format is slightly more arbitrary and compiler-dependent.
 
         if (PD%SpecBase%OutputColumnWidth%val>0) then
             PD%TimeFile%format  =   "("     // &
@@ -424,9 +424,7 @@ contains
         end if
 
         call PD%runKernel( getLogFunc = getLogFunc )
-#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
-        if(PD%Err%occurred) return
-#endif
+        if(PD%Err%occurred) return ! relevant only for MATLAB
 
         if (PD%isFreshRun .and. PD%Image%isMaster) then
             call PD%Decor%writeDecoratedText( text = "\nExiting " // PD%name // " sampling - " // getNiceDateTime() // "\n" &
@@ -719,7 +717,7 @@ contains
             call PD%Decor%write(PD%LogFile%unit,0,1)
 
             !***********************************************************************************************************************
-            ! Compute the MCMC chain's statistical properties
+            ! Compute the statistical properties of the MCMC chain
             !***********************************************************************************************************************
 
             if (PD%Image%isFirst) then
@@ -1001,11 +999,14 @@ contains
                 ! open the output sample file
 
                 PD%SampleFile%unit = 3000001 + PD%Image%id  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
-                open( unit      = PD%SampleFile%unit           &
-                    , file      = PD%SampleFile%Path%original  &
-                    , status    = PD%SampleFile%status         &
-                    , iostat    = PD%SampleFile%Err%stat       &
-                    , position  = PD%SampleFile%Position%value )
+                open( unit      = PD%SampleFile%unit            &
+                    , file      = PD%SampleFile%Path%original   &
+                    , status    = PD%SampleFile%status          &
+                    , iostat    = PD%SampleFile%Err%stat        &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                    , SHARED                                    &
+#endif
+                    , position  = PD%SampleFile%Position%value  )
                 PD%Err = PD%SampleFile%getOpenErr(PD%SampleFile%Err%stat)
                 if (PD%Err%occurred) then
                     PD%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//PD%name//" "//PD%SampleFile%suffix//" file='"//PD%SampleFile%Path%original//"'."
@@ -1027,7 +1028,7 @@ contains
                 close(PD%SampleFile%unit)
 
                 !***********************************************************************************************************************
-                ! Compute the refined sample's statistical properties
+                ! Compute the statistical properties of the refined sample
                 !***********************************************************************************************************************
 
                 if (PD%Image%isFirst) then
@@ -1490,6 +1491,9 @@ contains
                     , file = PD%InputFile%Path%modified &
                     , status = PD%InputFile%status      &
                     , iostat = PD%InputFile%Err%stat    &
+#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+                    , SHARED                            &
+#endif
                     )
                 PD%Err = PD%InputFile%getOpenErr(PD%InputFile%Err%stat)
                 if (PD%Err%occurred) then

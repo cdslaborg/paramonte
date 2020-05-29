@@ -973,7 +973,7 @@ contains
         real(RK)   , intent(in)            :: Point(np,nd)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
         real(RK)   , intent(out)           :: CovMat(nd,nd)          ! Covariance matrix of the input data
         real(RK)   , intent(out)           :: Mean(nd)               ! Mean vector
-        real(RK)   , intent(out), optional :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the sample's mean position
+        real(RK)   , intent(out), optional :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the mean position of the sample
         real(RK)   , intent(out), optional :: InvCovMat(nd,nd)       ! Inverse Covariance matrix of the input data
         real(RK)   , intent(out), optional :: sqrtDetInvCovMat       ! sqrt determinant of the inverse covariance matrix
         real(RK)   , dimension(nd)         :: DummyVec
@@ -1023,7 +1023,7 @@ contains
         real(RK)   , intent(in)            :: Point(nd,np)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
         real(RK)   , intent(out)           :: CovMat(nd,nd)          ! Covariance matrix of the input data
         real(RK)   , intent(out)           :: Mean(nd)               ! Mean vector
-        real(RK)   , intent(out), optional :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the sample's mean position
+        real(RK)   , intent(out), optional :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the mean position of the sample
         real(RK)   , intent(out), optional :: InvCovMat(nd,nd)       ! Inverse Covariance matrix of the input data
         real(RK)   , intent(out), optional :: sqrtDetInvCovMat       ! sqrt determinant of the inverse covariance matrix
         real(RK)   , dimension(nd)         :: DummyVec
@@ -1504,7 +1504,7 @@ contains
   
     ! Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
     ! This is algorithm is similar to getRandMVU, with the only difference that points are drawn randomly from the surface of the ellipsoid instead of inside of its interior.
-    ! Note that the distribution of points on the ellipsoid's surface is NOT uniform.
+    ! Note that the distribution of points on the surface of the ellipsoid is NOT uniform.
     ! Regions of high curvature will have more points randomly sampled from them.
     ! generating uniform random points on arbitrary-dimension ellipsoids is not a task with trivial solution!
     function getRandPointOnEllipsoid(nd,MeanVec,CholeskyLower,Diagonal)
@@ -1630,7 +1630,7 @@ contains
 !***********************************************************************************************************************************
 
     ! returns integer random number in the range [lowerBound,upperBound],
-    ! using Lecuyer's real random number generator Statistics@getRandRealLecuyer()
+    ! using the real random number generator of Lecuyer: Statistics@getRandRealLecuyer()
     function getRandIntLecuyer(lowerBound,upperBound,idum)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandIntLecuyer
@@ -1645,7 +1645,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! returns integer random number in the range [lowerBound,upperBound], using Fortran's built-in random number generator.
+    ! returns integer random number in the range [lowerBound,upperBound], using built-in random number generator of Fortran.
     function getRandInt(lowerBound,upperBound)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandInt
@@ -2418,7 +2418,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! returns the uniform CDF on support [0,1). rather redundant, isn't it? but sometimes, needed
+    ! returns the uniform CDF on support [0,1). rather redundant, aint it? but sometimes, needed
     function getUniformCDF(x)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUniformCDF

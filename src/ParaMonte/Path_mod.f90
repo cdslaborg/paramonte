@@ -63,7 +63,7 @@ module Path_mod
                                                     "," // & ! — only inside brace expansion.
                                                     ";" // & ! — shell syntax.
                                                     "<" // & ! — shell syntax.
-                                                    "=" // & ! — in zsh, when it's at the beginning of a file name (filename expansion with PATH lookup).
+                                                    "=" // & ! — in zsh, when it is at the beginning of a file name (filename expansion with PATH lookup).
                                                     ">" // & ! — shell syntax.
                                                     "?" // & ! — sh wildcard.
                                                     "[" // & ! — sh wildcard.
@@ -73,8 +73,8 @@ module Path_mod
                                                     "`" // & ! — shell syntax.
                                                     "{" // & ! — brace expansion.
                                                     "|" // & ! — shell syntax.
-                                                    "}" // & ! — needs to be escaped in zsh, other shells are more lenient when there's no matching opening brace.
-                                                    "~"      ! — home directory expansion when at the beginning of a filename; zsh wildcard; safe when it's the last character.
+                                                    "}" // & ! — needs to be escaped in zsh, other shells are more lenient when there is no matching opening brace.
+                                                    "~"      ! — home directory expansion when at the beginning of a filename; zsh wildcard; safe when it is the last character.
 
 #else
 
@@ -497,7 +497,7 @@ contains
             if ( dotPos==0 .or. dotPos==lenFilename ) then     ! there is no extension
                 name = fullName
                 ext = ""
-            elseif ( dotPos==1 ) then   ! it's all extension, no file name.
+            elseif ( dotPos==1 ) then   ! it is all extension, no file name.
                 name = ""
                 ext  = fullName(1:)
             else

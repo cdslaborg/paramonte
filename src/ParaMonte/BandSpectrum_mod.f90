@@ -122,7 +122,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! computes the differential photon count as a function of energy in keV, according to the Band model's lower component.
+    ! computes the differential photon count as a function of energy in keV, given the lower component of the Band model.
     ! NOTE: energy values beyond ebrk should not be passed to this function.
     pure function getPhotonFluxLower(energy,alpha,alphaPlusTwoOverEpk) result(photonFluxLower)
 #if defined DLL_ENABLED && !defined CFI_ENABLED

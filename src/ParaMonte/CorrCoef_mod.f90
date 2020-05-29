@@ -61,7 +61,7 @@ contains
     ! their sum-squared difference of ranks as dStarStar,
     ! the number of standard deviations by which dStarStar deviates from its null-hypothesis expected value as dStarStarSignif,
     ! the two-sided significance level of this deviation as dStarStarProb,
-    ! Spearman's rank correlation as rho,
+    ! the Spearman rank correlation as rho,
     ! the two-sided significance level of its deviation from zero as rhoProb.
     ! The external routines crank and sortAscending are used.
     ! A small value of either dStarStarProb or rhoProb indicates a significant correlation.

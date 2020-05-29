@@ -111,7 +111,7 @@ cd !ParaMonte_OBJ_DIR!
 
 :: Read the name of each file from the ordered list of filenames in filelist.txt to compile
 
-if !ParaMonte_OBJ_ENABLED! NEQ true goto LABEL_ParaMonte_LIB_ENABLED
+if not !ParaMonte_OBJ_ENABLED!==true goto LABEL_ParaMonte_LIB_ENABLED
 
 echo.
 echo. -- ParaMonte - generating object files at: !ParaMonte_OBJ_DIR!
@@ -135,10 +135,30 @@ if !MPI_ENABLED!==true (
     for /F "eol=! tokens=*" %%A in (!ParaMonte_FILE_LIST!) do (
         echo. -- ParaMonte - generating object file for %%A
         call !FCL! !FCL_FLAGS! !FPP_FLAGS! !FC_LIB_FLAGS! ^
-        /module:!ParaMonte_MOD_DIR!     %=path to output ParaMonte example module files=% ^
-        /I:!ParaMonte_MOD_DIR!          %=path to input ParaMonte module files=%  ^
-        /c !ParaMonte_SRC_DIR!\%%A      %=path to input ParaMonte example source files=%
-        if !ERRORLEVEL! NEQ 0 (
+        /module:"!ParaMonte_MOD_DIR!"   %=path to output ParaMonte example module files=% ^
+        /I:"!ParaMonte_MOD_DIR!"        %=path to input ParaMonte module files=%  ^
+        /I:"!MATLAB_INC_DIR!"           %=path to the MATLAB include files=% ^
+        /c "!ParaMonte_SRC_DIR!\%%A"    %=path to input ParaMonte example source files=% ^
+        || (
+            REM if not !ERRORLEVEL!==0 (
+            echo.
+            echo. -- ParaMonte - Fatal Error: compilation of the object file for %%A failed.
+            echo. -- ParaMonte - build failed. exiting...
+            echo.
+            cd %~dp0
+            set ERRORLEVEL=1
+            exit /B 1
+        )
+    )
+    if !INTERFACE_LANGUAGE!==matlab (
+        echo. -- ParaMonte - generating object file for !MATLAB_VERSION_FILE!
+        call !FCL! !FCL_FLAGS! !FPP_FLAGS! !FC_LIB_FLAGS! ^
+        /module:"!ParaMonte_MOD_DIR!"   %=path to output ParaMonte example module files=% ^
+        /I:"!ParaMonte_MOD_DIR!"        %=path to input ParaMonte module files=%  ^
+        /I:"!MATLAB_INC_DIR!"           %=path to the MATLAB include files=% ^
+        /c "!MATLAB_VERSION_FILE!"      %=path to input MATLAB source file=% ^
+        || (
+            REM if not !ERRORLEVEL!==0 (
             echo.
             echo. -- ParaMonte - Fatal Error: compilation of the object file for %%A failed.
             echo. -- ParaMonte - build failed. exiting...
@@ -154,10 +174,29 @@ if !MPI_ENABLED!==true (
     for /F "eol=! tokens=*" %%A in (!ParaMonte_FILE_LIST!) do (
         echo. -- ParaMonte - generating object file for %%A
         !FCL! !FCL_FLAGS! !FPP_FLAGS! !FCL_IPOC_FLAG! !FC_LIB_FLAGS! ^
-        /module:!ParaMonte_MOD_DIR!     %=path to output ParaMonte example module files=% ^
-        /I:!ParaMonte_MOD_DIR!          %=path to input ParaMonte module files=%  ^
-        /c !ParaMonte_SRC_DIR!\%%A      %=path to input ParaMonte example source files=% ^
+        /module:"!ParaMonte_MOD_DIR!"   %=path to output ParaMonte example module files=% ^
+        /I:"!ParaMonte_MOD_DIR!"        %=path to input ParaMonte module files=%  ^
+        /I:"!MATLAB_INC_DIR!"           %=path to the MATLAB include files=% ^
+        /c "!ParaMonte_SRC_DIR!\%%A"    %=path to input ParaMonte example source files=% ^
         || (
+            echo.
+            echo. -- ParaMonte - Fatal Error: compilation of the object file for %%A failed.
+            echo. -- ParaMonte - build failed. exiting...
+            echo.
+            cd %~dp0
+            set ERRORLEVEL=1
+            exit /B 1
+        )
+    )
+    if !INTERFACE_LANGUAGE!==matlab (
+        echo. -- ParaMonte - generating object file for !MATLAB_VERSION_FILE!
+        !FCL! !FCL_FLAGS! !FPP_FLAGS! !FC_LIB_FLAGS! ^
+        /module:"!ParaMonte_MOD_DIR!"   %=path to output ParaMonte example module files=% ^
+        /I:"!ParaMonte_MOD_DIR!"        %=path to input ParaMonte module files=%  ^
+        /I:"!MATLAB_INC_DIR!"           %=path to the MATLAB include files=% ^
+        /c "!MATLAB_VERSION_FILE!"      %=path to input MATLAB source file=% ^
+        || (
+            REM if not !ERRORLEVEL!==0 (
             echo.
             echo. -- ParaMonte - Fatal Error: compilation of the object file for %%A failed.
             echo. -- ParaMonte - build failed. exiting...
@@ -184,11 +223,10 @@ if !OMP_ENABLED!==true set PMLIB_NAME=!PMLIB_NAME!_omp
 set PMLIB_NAME=!PMLIB_NAME!_windows_!PLATFORM!
 if defined MULTITHREADING set PMLIB_NAME=!PMLIB_NAME!_!MULTITHREADING!
 
+:: if not !ParaMonte_LIB_ENABLED!==true goto LABEL_ParaMonteTest_OBJ_ENABLED
+if not !ParaMonte_LIB_ENABLED!==true goto LABEL_EOF
 
-:: if !ParaMonte_LIB_ENABLED! NEQ true goto LABEL_ParaMonteTest_OBJ_ENABLED
-if !ParaMonte_LIB_ENABLED! NEQ true goto LABEL_EOF
-
-REM if !LTYPE! NEQ dynamic goto LABEL_EOF
+REM if not !LTYPE!==dynamic goto LABEL_EOF
 
 cd !ParaMonte_LIB_DIR!
 echo.
@@ -199,8 +237,12 @@ echo.
 if !LTYPE!==dynamic (
 
     !FCL! !FCL_FLAGS! !FL_FLAGS! !FL_LIB_FLAGS! ^
-    /module:!ParaMonte_MOD_DIR!                                 %=path to output ParaMonte example module files=% ^
-    /I:!ParaMonte_MOD_DIR! !ParaMonte_OBJ_DIR!\*.obj            %=path to input ParaMonte module files=%  ^
+    /module:!ParaMonte_MOD_DIR!                         %=path to output ParaMonte example module files=% ^
+    /I:!ParaMonte_MOD_DIR!                              %=path to input ParaMonte module files=% ^
+    "!ParaMonte_OBJ_DIR!"\*.obj                         %=path to the ParaMonte object files=% ^
+    "!MATLAB_LIBMX_FILE!"                               %=path to the MATLAB libmx=% ^
+    "!MATLAB_LIBMEX_FILE!"                              %=path to the MATLAB libmex=% ^
+    "!MATLAB_LIBMAT_FILE!"                              %=path to the MATLAB libmmat=% ^
     /exe:!PMLIB_NAME!.dll
 
 ) else (
@@ -210,15 +252,16 @@ if !LTYPE!==dynamic (
     if !BTYPE!==release (
 
         !FCL! !FCL_FLAGS! !FL_FLAGS! !FL_LIB_FLAGS! ^
-        /module:!ParaMonte_MOD_DIR!                                 %=path to output ParaMonte example module files=% ^
-        /I:!ParaMonte_MOD_DIR! !ParaMonte_OBJ_DIR!\*.obj            %=path to input ParaMonte module files=%
+        /module:"!ParaMonte_MOD_DIR!"                               %=path to output ParaMonte example module files=% ^
+        /I:"!ParaMonte_MOD_DIR!"                                    %=path to input ParaMonte module files=% ^
+        "!ParaMonte_OBJ_DIR!"\*.obj                                 %=path to input ParaMonte object files=%
 
         xilib /out:!PMLIB_NAME!.lib ipo_out.obj
         REM del !ParaMonte_OBJ_DIR!\ipo_out.obj
 
     ) else (
 
-        xilib /out:!PMLIB_NAME!.lib !ParaMonte_OBJ_DIR!\*.obj
+        xilib /out:!PMLIB_NAME!.lib "!ParaMonte_OBJ_DIR!"\*.obj
 
     )
 

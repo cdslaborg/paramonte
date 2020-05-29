@@ -219,14 +219,30 @@ if !TARGET_LANG!==Fortran (
         set COMPILER_NAME=mpiifort -fc=ifort
     )
 
-    if !PTYPE!==cafshared (
-        set FOR_COARRAY_NUM_IMAGES=!nproc!
-    )
-
     set COMPILER_FLAGS=/fpp /DIS_COMPATIBLE_COMPILER
     if !BTYPE!==debug   set COMPILER_FLAGS=!COMPILER_FLAGS! /debug:full /CB /Od /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /check:bounds /fpe-all:0 /Qdiag-error-limit:10 /Qdiag-disable:5268 /Qdiag-disable:7025 /Qtrapuv
     if !BTYPE!==release set COMPILER_FLAGS=!COMPILER_FLAGS! /O3 /Qip /Qipo /Qunroll /Qunroll-aggressive /Qinline-dllimport
     if !BTYPE!==testing set COMPILER_FLAGS=!COMPILER_FLAGS! /Od
+
+    set CAF_ENABLED=false
+    if !PTYPE!==cafsingle (
+        set CAFTYPE=single
+        set CAF_ENABLED=true
+    )
+    if !PTYPE!==cafshared (
+        set CAFTYPE=shared
+        set CAF_ENABLED=true
+    )
+    if !PTYPE!==cafdistributed (
+        set CAFTYPE=distributed
+        set CAF_ENABLED=true
+    )
+    if !CAF_ENABLED!==true (
+        set FOR_COARRAY_NUM_IMAGES=!nproc!
+        set "COARRAY_FLAGS=/Qcoarray:!CAFTYPE! /Qcoarray-num-images:!nproc!"
+        set "LINKER_FLAGS=!COARRAY_FLAGS! !LINKER_FLAGS!"
+        set "COMPILER_FLAGS=!COMPILER_FLAGS! !COARRAY_FLAGS!"
+    )
 
 )
 
@@ -276,9 +292,23 @@ if !ParaMonteExample_EXE_ENABLED!==false goto LABEL_ParaMonteExample_RUN_ENABLED
 
 if !PTYPE!==mpi (
     echo. -- ParaMonte - ParaMonte example compiling: "!COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
-                                                  call !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
+                                                  call !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
+                                                        echo. 
+                                                        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to compile and link the MPI-parallel application. exiting...
+                                                        echo. 
+                                                        cd %~dp0
+                                                        set ERRORLEVEL=1
+                                                        exit /B 1
+                                                  )
 ) else (
-                                                       !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!
+                                                       !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
+                                                        echo. 
+                                                        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to compile and link the application. exiting...
+                                                        echo. 
+                                                        cd %~dp0
+                                                        set ERRORLEVEL=1
+                                                        exit /B 1
+                                                  )
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -311,12 +341,26 @@ if !PTYPE!==mpi (
     echo. 
     echo. -- ParaMonte - running MPI-parallelized ParaMonte example on !nproc! processes...
     echo. 
-    mpiexec -localonly -n !nproc! !EXE_NAME!
+    mpiexec -localonly -n !nproc! !EXE_NAME! || (
+        echo. 
+        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to run the MPI-parallel application. exiting...
+        echo. 
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
 ) else (
     echo. 
     echo. -- ParaMonte - running serial ParaMonte example on 1 process...
     echo. 
-    !EXE_NAME!
+    !EXE_NAME! || (
+        echo. 
+        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to run the serial application. exiting...
+        echo. 
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
 )
 
 goto LABEL_EOF

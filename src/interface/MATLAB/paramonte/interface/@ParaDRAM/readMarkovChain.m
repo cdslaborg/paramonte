@@ -153,8 +153,9 @@ function [markovChainList] = readMarkovChain(self,varargin)
     output = chainType + "List";
 
     if nargout==0
-        if ~any(strcmp(properties(self),output)); self.addprop(output); end
-        self.(output) = self.readOutput(callerName,varargin{:});
+        %if ~any(strcmp(properties(self),output)); self.addprop(output); end
+        %self.(output) = self.readOutput(callerName,varargin{:});
+        self.readOutput(callerName,varargin{:});
     elseif nargout==1
         %eval(output+" = self.readOutput(callerName,varargin{:})");
         varargout{1} = self.readOutput(callerName,varargin{:});

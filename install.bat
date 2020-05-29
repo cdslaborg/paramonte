@@ -500,7 +500,26 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                         echo.************************************************************************************************************************************
                         echo.
 
-                        call buildParaMonte.bat
+                        call buildParaMonte.bat || (
+                            echo.
+                            echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: The ParaMonte library build failed for the following configuration:
+                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! -               language: %%~G
+                            echo.-- !INSTALL_SCRIPT_NAME! -             build type: %%~B
+                            echo.-- !INSTALL_SCRIPT_NAME! -           library type: %%~L
+                            echo.-- !INSTALL_SCRIPT_NAME! -      memory allocation: %%~M
+                            echo.-- !INSTALL_SCRIPT_NAME! -            parallelism: %%~P
+                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! - If you cannot identify the cause of the failure, please report this error at: 
+                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! -     https://github.com/cdslaborg/paramonte/issues
+                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting...
+                            echo.
+                            cd %~dp0
+                            set ERRORLEVEL=1
+                            exit /B 1
+                        )
 
                     ) else (
 
@@ -517,10 +536,10 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                         echo.-- !INSTALL_SCRIPT_NAME! -               language: %%~G
                         echo.-- !INSTALL_SCRIPT_NAME! -             build type: %%~B
                         echo.-- !INSTALL_SCRIPT_NAME! -           library type: %%~L
-                        echo.-- !INSTALL_SCRIPT_NAME! -      momory allocation: %%~M
+                        echo.-- !INSTALL_SCRIPT_NAME! -      memory allocation: %%~M
                         echo.-- !INSTALL_SCRIPT_NAME! -            parallelism: %%~P
                         echo.-- !INSTALL_SCRIPT_NAME! - 
-                        echo.-- !INSTALL_SCRIPT_NAME! - Please report this error at: 
+                        echo.-- !INSTALL_SCRIPT_NAME! - If you cannot identify the cause of the failure, please report this error at: 
                         echo.-- !INSTALL_SCRIPT_NAME! - 
                         echo.-- !INSTALL_SCRIPT_NAME! -     https://github.com/cdslaborg/paramonte/issues
                         echo.-- !INSTALL_SCRIPT_NAME! - 
@@ -581,7 +600,14 @@ exit /B 1
 
 if !ParaMonte_INSTALL_CLEANUP_ENABLED!==true (
     echo.-- !INSTALL_SCRIPT_NAME! - cleaning up the environment... 
-    call unconfigParaMonte.bat 
+    call unconfigParaMonte.bat || (
+        echo. 
+        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library cleanup failed. exiting...
+        echo. 
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
 )
 
 echo.

@@ -521,7 +521,7 @@ contains
 
         blockSufficientSampleSizeCheck: if (chainSize>nd) then
 
-            ! get the new sample's upper covariance matrix and Mean
+            ! get the upper covariance matrix and Mean of the new sample
 
             if (samplerUpdateIsGreedy) then
                 sampleSizeCurrent = chainSize
@@ -846,7 +846,7 @@ contains
                 comv_CholDiagLower(j+1:mc_ndim,j,istage) = comv_CholDiagLower(j+1:mc_ndim,j,istage-1) * mc_DelayedRejectionScaleFactorVec(istage)
             end do
         end do
-        ! There is no need to check for positive-definiteness of the comv_CholDiagLower, it's already checked on the first image.
+        ! There is no need to check for positive-definiteness of the comv_CholDiagLower, it is already checked on the first image.
     end subroutine updateDelRejCholDiagLower
 
 !***********************************************************************************************************************************

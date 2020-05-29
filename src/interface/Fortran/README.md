@@ -93,31 +93,33 @@ Example usage instructions
 +   Decide on the parallelism paradigm that you want to use: serial / MPI (the Coarray Fortran implementation is not available as a prebuilt dynamic library),  
 +   Decide on the Operating System (OS) on which you want to run the ParaMonte simulations: Windows / macOS / Linux,  
 +   Learn about the naming convention used for the ParaMonte prebuilt libraries [here](https://www.cdslab.org/paramonte/notes/installation/readme/#naming-convention-used-for-paramonte-library-builds),  
-+   Download the prebuilt ParaMonte library of your choice based on the decisions you have made in the above,    
++   Download the prebuilt ParaMonte library of your choice based on the decisions you have made in the above. If you are not sure which prebuilt library is suitable for your needs, use the prebuilt library recommended [here for Windows](https://www.cdslab.org/paramonte/notes/installation/windows/#using-the-prebuilt-paramonte-library), or [here for Linux](https://www.cdslab.org/paramonte/notes/installation/linux/#using-the-prebuilt-paramonte-library), or [here for macOS](https://www.cdslab.org/paramonte/notes/installation/macos/#using-the-prebuilt-paramonte-library).  
 +   Each prebuilt library ships with a full-fledged set of example codes and build scripts. Uncompress the prebuilt library:  
-    +   On **Windows**: Simply double-click on the file and select **extract files** from the Windows Explorer menu.  
+    +   On **Windows**: Simply double-click on the zip-file and select **extract files** from the Windows Explorer menu.  
     +   On **macOS/Linux**: Open a Bash terminal and navigate to the folder containing the compressed library. Use the following command to untar the compressed file,  
         ```  
-        tar xvzf libparamonte
+        ls libparamonte*.tar.gz | xargs -i tar xvzf {}
         ```  
-        where you will have to replace `libparamonte` in the command above with the full name of the compressed file.  
+        to extract all libparamonte tar files in the current directory.  
 
 ### Building and running ParaMonte simulations on Windows  
 
++   **Note**: Theoretically, you can use any Fortran compiler on Windows to build and link your applications against the ParaMonte library. However, the ParaMonte library example build scripts, as described below, currently only recognize the Intel Fortran compilers.  
+
 +   **Install the Microsoft Visual Studio (>2017)**: You will need to have a recent Microsoft Visual Studio (MSVS) installed on your system. The community edition of this software is available free of charge. When installing MSVS, make sure to install all the C++ components of the Visual Studio.  
 
-+   **Install the Intel Parallel Studio**: If you are a student/teacher/faculty/open-source-developer, you can also download and install, free of charge, the most recent **Intel Parallel Studio** on your system which, by default, includes the Intel MPI library.  
++   **Install the Intel Parallel Studio**: If you are a student/teacher/faculty/open-source-developer, you can also download and install, free of charge, the most recent **Intel Parallel Studio** on your system which, by default, includes the Intel MPI library. You can follow the instructions given [on this page](https://www.cdslab.org/recipes/programming/intel-parallel-studio-installation-windows/intel-parallel-studio-installation-windows) to install the Intel Parallel Studio on your system.  
 
 +   **Open the right command-line interface to build/run the ParaMonte example**: If the ParaMonte library that you intend to use is built for 64-bit architecture, then make sure you open a 64-bit instance of the command-line interface in either of the two cases below:  
-    +   If you have installed Intel Parallel Studio, open an instance of the **command-line interface** that comes with Intel Parallel Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
+    +   If you have installed Intel Parallel Studio, open an instance of the **command-line interface** that comes with Intel Parallel Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary Intel compiler variables and paths predefined in it.  
     +   Otherwise, if you do not have Intel Parallel Studio, open an instance of the **command-line interface** that comes with Microsoft Visual Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
 
-+   **Build the ParaMonte example**:  
++   **Build and run the ParaMonte example**:  
     Build the example via the Intel Parallel Studio command-line interface,  
     ```  
     build.bat  
     ```  
-    The build script will automatically detect whether a parallel simulation has been built. By default, the name of the output executable is `main.exe`.  
+    The build script will automatically detect whether a parallel simulation has been built. By default, the name of the output executable is `main.exe`. *Note that the build script will both build and run the executable*.  
 
 +   **Run the ParaMonte example executable**:  
     +   For serial simulations, simply type the name of the output executable,  
@@ -128,9 +130,11 @@ Example usage instructions
         ```  
         mpiexec -n NUM_PROCESSES main.exe
         ```  
-        where `NUM_PROCESSES` represents the number of processes on which the simulation will run.  
+        where `NUM_PROCESSES` represents the number of processes on which the simulation will run. If you are using the Intel MPI library to run your ParaMonte application in parallel, we also recommend using the `-localonly` flag. See [this page](https://www.cdslab.org/paramonte/notes/run/#running-the-manually-generated-executable-on-multiple-processors-on-windows) for usage and utilities of this Intel MPI launcher flag.  
 
 ### Building and running ParaMonte simulations on macOS / Linux  
+
++   **Note**: Theoretically, you can use any Fortran compiler on macOS/Linux to build and link your applications against the ParaMonte library. However, the ParaMonte library example build scripts, as described below, currently only recognize the Intel and GNU Fortran compilers.  
 
 +   If you intend to run **serial** ParaMonte simulations, install either,  
     +   **the Intel Fortran compiler (ifort >2018)**, or,  

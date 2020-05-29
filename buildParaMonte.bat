@@ -106,7 +106,14 @@ set BUILD_SCRIPT_NAME=ParaMonteBuild
 
 :: set up flags via buildFlags.bat
 echo. -- !BUILD_SCRIPT_NAME! - configuring ParaMonte build...
-call configParaMonte.bat
+call configParaMonte.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library build-flag setup failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 
 if !ERRORLEVEL!==1 (
     echo. 
@@ -184,7 +191,15 @@ if not defined COMPILER_VERSION (
 
     echo. -- !BUILD_SCRIPT_NAME! - Detecting intel compiler version...
     cd .\bmake\
-    call getCompilerVersion.bat
+    call getCompilerVersion.bat || (
+        echo. 
+        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to fetch the Fortran compiler version.
+        echo. -- !BUILD_SCRIPT_NAME! - gracefully exiting.
+        echo. 
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
     cd %~dp0
 
 )
@@ -233,7 +248,8 @@ echo. -- !BUILD_SCRIPT_NAME! - setting up required root directories...
 
 :: define ParaMonte_ROOT_DIR: contains the last backward slash
 
-if not defined ParaMonte_ROOT_DIR set ParaMonte_ROOT_DIR=%~dp0
+REM if not defined ParaMonte_ROOT_DIR set ParaMonte_ROOT_DIR=%~dp0
+set ParaMonte_ROOT_DIR=%~dp0
 echo. -- !BUILD_SCRIPT_NAME! - project root directory: !ParaMonte_ROOT_DIR!
 
 :: set the ParaMonte source files directory
@@ -282,8 +298,8 @@ echo.
 :: set preprocessor build flags
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-set FPP_BUILD_FLAGS=
-if !BTYPE!==debug set FPP_BUILD_FLAGS=/define:DBG_ENABLED
+set FPP_BUILD_FLAGS=/define:OS_IS_WINDOWS
+if !BTYPE!==debug set FPP_BUILD_FLAGS=!FPP_BUILD_FLAGS! /define:DBG_ENABLED
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: set default C/CPP/Fortran compilers/linkers
@@ -416,10 +432,94 @@ echo. -- !BUILD_SCRIPT_NAME! - Fortran compiler/linker flags in !BTYPE! build mo
 echo.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: check MATLAB's existence
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:: it is imperative to nullify these MATLAB variables for all language builds at all times
+
+set "MATLAB_ROOT_DIR="
+set "MATLAB_EXE_PATH="
+set "MATLAB_BIN_DIR="
+set "MATLAB_LIB_DIR="
+set "MATLAB_INC_DIR=."
+set "MATLAB_LIBMX_FILE="
+set "MATLAB_LIBMEX_FILE="
+set "MATLAB_LIBMAT_FILE="
+set "MATLAB_VERSION_FILE="
+REM set "MATLAB_INC_DIR_FLAG="
+
+if not !INTERFACE_LANGUAGE!==matlab goto LABEL_BUILD_ParaMonte
+
+echo. 
+echo. -- !BUILD_SCRIPT_NAME! - searching for a MATLAB installation on your system...
+
+set "INSTALL_LOC_LIST=C:\Program Files\MATLAB\/C:\Program Files (x86)\MATLAB\"
+set MATLAB_VERSION_LIST=R2025b/R2025a/R2024b/R2024a/R2023b/R2023a/R2022b/R2022a/R2021b/R2021a/R2020b/R2020a/R2019b/R2019a/R2018b/R2018a/R2017b/R2017a
+
+for %%D in ("!INSTALL_LOC_LIST:/=" "!") do (
+    for %%V in ("!MATLAB_VERSION_LIST:/=" "!") do (
+        set "MATLAB_ROOT_DIR_TEMP=%%~D%%~V"
+        set "MATLAB_BIN_DIR_TEMP=!MATLAB_ROOT_DIR_TEMP!\bin"
+        set "MATLAB_EXE_PATH_TEMP=!MATLAB_BIN_DIR_TEMP!\matlab.exe"
+        if exist !MATLAB_EXE_PATH_TEMP! (
+            set "MATLAB_ROOT_DIR=!MATLAB_ROOT_DIR_TEMP!"
+            set "MATLAB_EXE_PATH=!MATLAB_EXE_PATH_TEMP!"
+            set "MATLAB_BIN_DIR=!MATLAB_BIN_DIR_TEMP!"
+            set "MATLAB_INC_DIR=!MATLAB_ROOT_DIR!\extern\include"
+            set "MATLAB_LIB_DIR=!MATLAB_ROOT_DIR!\extern\lib\win64\microsoft"
+            set "MATLAB_LIBMX_FILE=!MATLAB_LIB_DIR!\libmx.lib"
+            set "MATLAB_LIBMEX_FILE=!MATLAB_LIB_DIR!\libmex.lib"
+            set "MATLAB_LIBMAT_FILE=!MATLAB_LIB_DIR!\libmat.lib"
+            set "MATLAB_VERSION_FILE=!MATLAB_ROOT_DIR!\extern\version\fortran_mexapi_version.F"
+            set FPP_FLAGS=!FPP_FLAGS! /define:MEXPRINT_ENABLED /define:MATLAB_MEX_FILE
+            REM set "MATLAB_INC_DIR_FLAG=/I:!MATLAB_INC_DIR!"
+            echo. -- !BUILD_SCRIPT_NAME! - MATLAB %%~V installation detected at: !MATLAB_EXE_PATH!
+            echo. 
+            goto :LABEL_continue
+        )
+    )
+)
+
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB.
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries.
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: Please add MATLAB to your environmental variable PATH and rerun the install script.
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: For example, on your current Windows command-line, try:
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: 
+echo. -- !BUILD_SCRIPT_NAME! - WARNING:     set "PATH=PATH_TO_MATLAB_BIN_DIR;!PATH!
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: 
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current 
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit Windows 
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: Operating Systems is a string like the following:
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: 
+echo. -- !BUILD_SCRIPT_NAME! - WARNING:     C:\Program Files\MATLAB\2020a\bin\
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: 
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: where 2020a in the path points to the MATLAB 2020a version installation on the system. You can also 
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: find the installation location of MATLAB by typing the following command in your MATLAB session:
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: 
+echo. -- !BUILD_SCRIPT_NAME! - WARNING:     matlabroot
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: 
+echo. -- !BUILD_SCRIPT_NAME! - WARNING: skipping the ParaMonte MATLAB build...
+
+REM cd %~dp0
+REM set ERRORLEVEL=1
+REM exit /B 1
+
+:LABEL_continue
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: generate ParaMonte library build directories, object files, and dynamic libraries
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-call !ParaMonte_SRC_DIR!\buildParaMonteSource.bat
+:LABEL_BUILD_ParaMonte
+
+call !ParaMonte_SRC_DIR!\buildParaMonteSource.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
     echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
@@ -459,11 +559,17 @@ echo.
 
 if !ParaMonteTest_ENABLED! NEQ true goto LABEL_ParaMonteInterface
 
-call !ParaMonteTest_SRC_DIR!\buildParaMonteTest.bat
-
+call !ParaMonteTest_SRC_DIR!\buildParaMonteTest.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library test failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library test build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library test failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -504,11 +610,17 @@ if exist !ParaMonteInterfaceMATLAB_SRC_DIR! (
 )
 echo.
 
-call !ParaMonteInterfaceMATLAB_SRC_DIR!\buildParaMonteMATLAB.bat
-
+call !ParaMonteInterfaceMATLAB_SRC_DIR!\buildParaMonteMATLAB.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library MATLAB build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library MATLAB build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -541,11 +653,17 @@ if exist !ParaMonteInterfacePython_SRC_DIR! (
 )
 echo.
 
-call !ParaMonteInterfacePython_SRC_DIR!\buildParaMontePython.bat
-
+call !ParaMonteInterfacePython_SRC_DIR!\buildParaMontePython.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library Python build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library Python build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -581,12 +699,17 @@ echo.
 :: build ParaMonte examples
 
 echo.
-call !ParaMonteExample_SRC_DIR!\buildParaMonteExample.bat
-echo.
-
+call !ParaMonteExample_SRC_DIR!\buildParaMonteExample.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library examples build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
 if !ERRORLEVEL!==1 (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: ParaMonte library example build failed. exiting...
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library examples build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -598,6 +721,7 @@ if !ERRORLEVEL!==0 (
     echo. -- !BUILD_SCRIPT_NAME! - build successful. 
     echo.
 )
+echo.
 
 cd %~dp0
 
@@ -610,7 +734,14 @@ cd %~dp0
 :: undefine all configuration environmental flags
 
 if !ParaMonte_FLAG_CLEANUP_ENABLED!==true (
-    call unconfigParaMonte.bat 
+    call unconfigParaMonte.bat || (
+        echo. 
+        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library cleanup failed. exiting...
+        echo. 
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
 )
 
 cd !ParaMonte_BLD_ROOT_DIR!

@@ -114,8 +114,8 @@
 %                                       possible values for each section includes:
 %
 %                                           diag: histogram, histfit
-%                                           lower: histogram2, line, scatter, linescatter, line3, scatter3, linescatter3
-%                                           upper: histogram2, line, scatter, linescatter, line3, scatter3, linescatter3
+%                                           lower: histogram2, contourf, contour, line, scatter, linescatter, line3, scatter3, linescatter3
+%                                           upper: histogram2, contourf, contour, line, scatter, linescatter, line3, scatter3, linescatter3
 %
 %                                       WARNING: Although it is possible to add 3d subplots to the gridplot
 %                                       WARNING: (line3, scatter3, linescatter3), there is no practical use
@@ -145,9 +145,11 @@ classdef GridPlot < BasePlot
         %dfref = [];
         %isdryrun = [];
         plotTypeList =  [ "line" ...
+                        , "histfit" ...
                         , "histogram" ...
                         , "histogram2" ...
-                        , "histfit" ...
+                        , "contourf" ...
+                        , "contour" ...
                         , "scatter" ...
                         , "scatter3" ...
                         , "lineScatter" ...
@@ -201,7 +203,7 @@ classdef GridPlot < BasePlot
             self.colorbar_kws.fontsize = [];
 
             self.layout.plotType.upper = "lineScatter";
-            self.layout.plotType.lower = "histogram2";
+            self.layout.plotType.lower = "contour"; % "contourf"; % "histogram2";
             self.layout.plotType.diag = "histogram";
             self.layout.update = @self.updateLayout;
 
@@ -413,11 +415,11 @@ classdef GridPlot < BasePlot
 
                 % set color properties
 
-                if ~( strcmp(self.plotTypeList(i),"histogram") || strcmp(self.plotTypeList(i),"histfit") )
+                if ~( strcmpi(self.plotTypeList(i),"histogram") || strcmpi(self.plotTypeList(i),"histfit") )
 
                     %self.layout.subplot.(self.plotTypeList(i)).ycolumns = {};
 
-                    if strcmp(self.plotTypeList(i),"histogram2")
+                    if strcmpi(self.plotTypeList(i),"histogram2")
                         if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"histogram2_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).histogram2_kws)
                             self.layout.subplot.(self.plotTypeList(i)).histogram2_kws = struct();
                         end
@@ -433,11 +435,29 @@ classdef GridPlot < BasePlot
                         if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = {}; end
                     end
 
+                    if strcmpi(self.plotTypeList(i),"contourf")
+                        if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"contourf_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).contourf_kws)
+                            self.layout.subplot.(self.plotTypeList(i)).contourf_kws = struct();
+                        end
+                        prop = "colormap";
+                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
+                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = gray; end
+                    end
+
+                    if strcmpi(self.plotTypeList(i),"contour")
+                        if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"contour_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).contourf_kws)
+                            self.layout.subplot.(self.plotTypeList(i)).contourf_kws = struct();
+                        end
+                        prop = "colormap";
+                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
+                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = {}; end
+                    end
+
                     if ccolumnIsPresent
                         if contains(self.plotTypeList(i),"3")
                             self.layout.subplot.(self.plotTypeList(i)).zcolumns = self.ccolumn;
                         end
-                        if ~strcmp(self.plotTypeList(i),"histogram2")
+                        if ~(strcmpi(self.plotTypeList(i),"histogram2") || strcmpi(self.plotTypeList(i),"contourf") || strcmpi(self.plotTypeList(i),"contour"))
                             self.layout.subplot.(self.plotTypeList(i)).ccolumns = self.ccolumn;
                             if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"plot_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).plot_kws)
                                 self.layout.subplot.(self.plotTypeList(i)).plot_kws = struct();
@@ -457,7 +477,7 @@ classdef GridPlot < BasePlot
                             end
                             prop = "colormap";
                             defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
-                            if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = {}; end
+                            if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = self.colormap; end
                         end
                         prop = "colorbar_kws";
                         defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
@@ -519,7 +539,7 @@ classdef GridPlot < BasePlot
 
             if self.lowerEnabled
                 if isempty(self.layout.plotType.lower)
-                    self.layout.plotType.lower = "histogram2";
+                    self.layout.plotType.lower = "contourf"; %"histogram2";
                 else
                     self.layout.plotType.lower = string(self.layout.plotType.lower);
                 end
@@ -662,7 +682,7 @@ classdef GridPlot < BasePlot
                         if strcmp(currentPlotType,"histogram")
                             self.currentFig.subplotList{irow,icol}.target.hline_kws.enabled = false;
                             self.currentFig.subplotList{irow,icol}.target.scatter_kws.enabled = false;
-                        elseif strcmp(currentPlotType,"histogram2")
+                        elseif strcmp(currentPlotType,"histogram2") || strcmp(currentPlotType,"contourf")
                             self.currentFig.subplotList{irow,icol}.target.hline_kws.enabled = false;
                             self.currentFig.subplotList{irow,icol}.target.vline_kws.enabled = false;
                             self.currentFig.subplotList{irow,icol}.target.scatter_kws.enabled = false;
@@ -1069,7 +1089,7 @@ classdef GridPlot < BasePlot
 
                     colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","singleOptions"});
 
-                    colormap(self.colormap);
+                    colormap(self.currentFig.gca,self.colormap);
 
                     % get column names
 
@@ -1081,9 +1101,9 @@ classdef GridPlot < BasePlot
 
                     ccolumnValues = self.dfref.(ccolname);
                     colorbarLimit = [ min(ccolumnValues) max(ccolumnValues) ]; % Colorbar range
-                    caxis(colorbarLimit);
+                    caxis(self.currentFig.gca,colorbarLimit);
                     set(self.currentFig.gca,"CLim",colorbarLimit);
-                    self.currentFig.colorbar = colorbar(colorbar_kws_cell{:});
+                    self.currentFig.colorbar = colorbar(self.currentFig.gca,colorbar_kws_cell{:});
 
                     colorbarLabel = ccolname;
                     ylabel(self.currentFig.colorbar,colorbarLabel,"fontsize",self.layout.colorbar.fontsize);

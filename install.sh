@@ -600,7 +600,27 @@ for PMCS in $PMCS_LIST; do
                             ${fortran_flag} \
                             ${mpiexec_flag} \
                             ${nproc_flag} \
-                            )
+                            ) || {
+                            echo >&2 ""
+                            echo >&2 "-- ParaMonte "
+                            echo >&2 "-- ParaMonte  - Fatal Error: The ParaMonte library build failed for the following configuration:"
+                            echo >&2 "-- ParaMonte  - "
+                            echo >&2 "-- ParaMonte  -               language: ${INTERFACE_LANGUAGE}"
+                            echo >&2 "-- ParaMonte  -             build type: ${BTYPE}"
+                            echo >&2 "-- ParaMonte  -           library type: ${LTYPE}"
+                            echo >&2 "-- ParaMonte  -      memory allocation: ${MEMORY}"
+                            echo >&2 "-- ParaMonte  -            parallelism: ${PARALLELISM}"
+                            echo >&2 "-- ParaMonte  - "
+                            echo >&2 "-- ParaMonte  - If you cannot identify the cause of the failure, please report this error at: "
+                            echo >&2 "-- ParaMonte  - "
+                            echo >&2 "-- ParaMonte  -     https://github.com/cdslaborg/paramonte/issues"
+                            echo >&2 "-- ParaMonte  - "
+                            echo >&2 "-- ParaMonte  - gracefully exiting..."
+                            echo >&2 ""
+                            cd "${ParaMonte_ROOT_DIR}"
+                            #return
+                            exit 1
+                            }
 
                             fresh_flag=""
 
