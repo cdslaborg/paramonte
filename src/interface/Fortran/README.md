@@ -111,15 +111,15 @@ Example usage instructions
 +   **Install the Intel Parallel Studio**: If you are a student/teacher/faculty/open-source-developer, you can also download and install, free of charge, the most recent **Intel Parallel Studio** on your system which, by default, includes the Intel MPI library. You can follow the instructions given [on this page](https://www.cdslab.org/recipes/programming/intel-parallel-studio-installation-windows/intel-parallel-studio-installation-windows) to install the Intel Parallel Studio on your system.  
 
 +   **Open the right command-line interface to build/run the ParaMonte example**: If the ParaMonte library that you intend to use is built for 64-bit architecture, then make sure you open a 64-bit instance of the command-line interface in either of the two cases below:  
-    +   If you have installed Intel Parallel Studio, open an instance of the **command-line interface** that comes with Intel Parallel Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
+    +   If you have installed Intel Parallel Studio, open an instance of the **command-line interface** that comes with Intel Parallel Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary Intel compiler variables and paths predefined in it.  
     +   Otherwise, if you do not have Intel Parallel Studio, open an instance of the **command-line interface** that comes with Microsoft Visual Studio from the list of programs in the Windows start menu. This is simply a Windows command prompt that has all the necessary compiler variables and paths predefined in it.  
 
-+   **Build the ParaMonte example**:  
++   **Build and run the ParaMonte example**:  
     Build the example via the Intel Parallel Studio command-line interface,  
     ```  
     build.bat  
     ```  
-    The build script will automatically detect whether a parallel simulation has been built. By default, the name of the output executable is `main.exe`.  
+    The build script will automatically detect whether a parallel simulation has been built. By default, the name of the output executable is `main.exe`. *Note that the build script will both build and run the executable*.  
 
 +   **Run the ParaMonte example executable**:  
     +   For serial simulations, simply type the name of the output executable,  
@@ -130,7 +130,7 @@ Example usage instructions
         ```  
         mpiexec -n NUM_PROCESSES main.exe
         ```  
-        where `NUM_PROCESSES` represents the number of processes on which the simulation will run.  
+        where `NUM_PROCESSES` represents the number of processes on which the simulation will run. If you are using the Intel MPI library to run your ParaMonte application in parallel, we also recommend using the `-localonly` flag. See [this page](https://www.cdslab.org/paramonte/notes/run/#running-the-manually-generated-executable-on-multiple-processors-on-windows) for usage and utilities of this Intel MPI launcher flag.  
 
 ### Building and running ParaMonte simulations on macOS / Linux  
 

@@ -121,7 +121,8 @@ function varargout = readOutput(self,varargin) % callerName,file,delimiter
     end
 
     if nargout==0
-        outputListName = fileType + "List";
+        dummy = fileType; if contains(lower(callerName),"markov"); dummy = "markovChain"; end
+        outputListName = dummy + "List"; 
         outputListFullName = self.objectName + "." + outputListName;
         prop=outputListName; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
         self.(outputListName) = outputList;
