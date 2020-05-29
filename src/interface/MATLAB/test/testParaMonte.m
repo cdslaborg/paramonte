@@ -37,8 +37,9 @@
 %mex -nojvm CC=icl paramonte.c libparamonte_dynamic_heap_testing_intel_c_windows_x64_mt.lib -output libparamonte_dynamic_heap_testing_intel_windows_x64_mt
 %[status,cmdout] = system('matlab -nosplash -nojvm -r "testParaMonte,exit"','-echo');
 %clc;
-%clear all;
-%close all;
+clear all;
+close all;
+fclose('all');
 clear classes;
 format compact; format long;
 pmlibRootDir = '../'; % set this path to the paramonte library root dir
@@ -74,46 +75,62 @@ pmpd = ParaDRAM_class();
 % pmpd.spec.sampleSize                            = 1000;                         % Works
 pmpd.spec.randomSeed                            = 7;                            % Works
 pmpd.spec.description                           = "Hi there";                   % Works
-pmpd.spec.outputFileName                        = "./out/temp/restart";         % Works
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------
+flag = 0;
+flag = 1;
+if flag
+    file    = "./out/temp/A_A_A_A_A";
+    if exist(file + "_process_1_chain.txt"),     delete(file + "_process_1_chain.txt");     end
+    if exist(file + "_process_1_progress.txt"),  delete(file + "_process_1_progress.txt");  end
+    if exist(file + "_process_1_report.txt"),    delete(file + "_process_1_report.txt");    end
+    if exist(file + "_process_1_restart.txt"),   delete(file + "_process_1_restart.txt");   end
+    if exist(file + "_process_1_sample.txt"),    delete(file + "_process_1_sample.txt");    end
+    pmpd.spec.outputFileName                    = file;
+else
+    pmpd.spec.outputFileName                    = "./out/temp/restart_verbose";
+end
+%-----------------------------------------------------------------------------------------------------------------------------------------------------------
 %pmpd.spec.outputDelimiter                       = "|";                          % Works
-pmpd.spec.chainFileFormat                       = "verbose";                    % Works
-pmpd.spec.variableNameList                      = ["Variable-X", "Variable-Y"]; % Works
+%pmpd.spec.chainFileFormat                       = "verbose";                    % Works
+%pmpd.spec.variableNameList                      = ["Variable-X", "Variable-Y"]; % Works
 pmpd.spec.restartFileFormat                     = "ASCII";                           % Not implemented properly yet.
 %pmpd.spec.outputColumnWidth                     = 25;                           % Works
-pmpd.spec.outputRealPrecision                   = 17;                            % Works
-pmpd.spec.silentModeRequested                   = 0;                            % Works
-pmpd.spec.domainLowerLimitVec                   = [-4,-4];                      % Works
-pmpd.spec.domainUpperLimitVec                   = [+4,+4];                      % Works
-pmpd.spec.progressReportPeriod                  = 100;                          % Works
-pmpd.spec.targetAcceptanceRate                  = 0.5;                          % Works
+%pmpd.spec.outputRealPrecision                   = 17;                            % Works
+%pmpd.spec.silentModeRequested                   = 0;                            % Works
+%pmpd.spec.domainLowerLimitVec                   = [-4,-4];                      % Works
+%pmpd.spec.domainUpperLimitVec                   = [+4,+4];                      % Works
+%pmpd.spec.progressReportPeriod                  = 100;                          % Works
+%pmpd.spec.targetAcceptanceRate                  = 0.5;                          % Works
 % pmpd.spec.maxNumDomainCheckToWarn               = [];
 % pmpd.spec.maxNumDomainCheckToStop               = [];
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMCMC variables...
 pmpd.spec.chainSize                             = 5000;                         % Works
-pmpd.spec.startPointVec                         = [0.6,1.2];                    % Works
-pmpd.spec.sampleRefinementCount                 = 1;                            % Works
-% pmpd.spec.sampleRefinementMethod                = "someRandomName";             % Works
-pmpd.spec.randomStartPointRequested             = 1;                            % Works
-pmpd.spec.randomStartPointDomainLowerLimitVec   = [0.5, 1.0];                   % Works
-pmpd.spec.randomStartPointDomainUpperLimitVec   = [1.0, 1.5];                   % Works
+%pmpd.spec.startPointVec                         = [0.6,1.2];                    % Works
+%pmpd.spec.sampleRefinementCount                 = 1;                            % Works
+%pmpd.spec.sampleRefinementMethod                = "someRandomName";             % Works
+%pmpd.spec.randomStartPointRequested             = 1;                            % Works
+%pmpd.spec.randomStartPointDomainLowerLimitVec   = [0.5, 1.0];                   % Works
+%pmpd.spec.randomStartPointDomainUpperLimitVec   = [1.0, 1.5];                   % Works
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaDRAM variables...
-pmpd.spec.scaleFactor                           = "1.2 * gelman";               % Works
-pmpd.spec.proposalModel                         = "normal";                     % Works
-pmpd.spec.proposalStartCovMat                   = [0.5, 0.2; 0.1, 0.3];         % Works
-pmpd.spec.proposalStartCorMat                   = [0.4, 0.1; 0.2, 0.3];         % Works
-pmpd.spec.proposalStartStdVec                   = [1, 1];                       % Works
-pmpd.spec.adaptiveUpdateCount                   = 2;                            % Works
-pmpd.spec.adaptiveUpdatePeriod                  = 25;                           % Works
-pmpd.spec.greedyAdaptationCount                 = 2;                            % Works
-pmpd.spec.delayedRejectionCount                 = 2;                            % Works
-pmpd.spec.burninAdaptationMeasure               = 0.5;                          % Works
-pmpd.spec.delayedRejectionScaleFactorVec        = [3, 4];                       % Works
+%pmpd.spec.scaleFactor                           = "1.2 * gelman";               % Works
+%pmpd.spec.proposalModel                         = "normal";                     % Works
+%pmpd.spec.proposalStartCovMat                   = [0.5, 0.2; 0.1, 0.3];         % Works
+%pmpd.spec.proposalStartCorMat                   = [0.4, 0.1; 0.2, 0.3];         % Works
+%pmpd.spec.proposalStartStdVec                   = [1, 1];                       % Works
+%pmpd.spec.adaptiveUpdateCount                   = 2;                            % Works
+%pmpd.spec.adaptiveUpdatePeriod                  = 25;                           % Works
+%pmpd.spec.greedyAdaptationCount                 = 2;                            % Works
+%pmpd.spec.burninAdaptationMeasure               = 0.5;                          % Works
+%pmpd.spec.delayedRejectionCount                 = 2;                            % Works
+%pmpd.spec.delayedRejectionScaleFactorVec        = [3, 4];                       % Works
+    pmpd.spec.delayedRejectionCount             = 10;
+    pmpd.spec.delayedRejectionScaleFactorVec    = [1.1,2,3,1.5,2.1,3,2,1.1,1.2,1.3];
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            ndim = 2;
+            ndim = 14;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 pmpd.runSampler(ndim, @getLogFunc);

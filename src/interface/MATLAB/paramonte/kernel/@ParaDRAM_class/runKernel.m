@@ -1,3 +1,37 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   ParaMonte: plain powerful parallel Monte Carlo library.
+%
+%   Copyright (C) 2012-present, The Computational Data Science Lab
+%
+%   This file is part of the ParaMonte library.
+%
+%   ParaMonte is free software: you can redistribute it and/or modify it 
+%   under the terms of the GNU Lesser General Public License as published 
+%   by the Free Software Foundation, version 3 of the License.
+%
+%   ParaMonte is distributed in the hope that it will be useful,
+%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%   GNU Lesser General Public License for more details.
+%
+%   You should have received a copy of the GNU Lesser General Public License
+%   along with the ParaMonte library. If not, see, 
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/LICENSE
+%
+%   ACKNOWLEDGMENT
+%
+%   As per the ParaMonte library license agreement terms, 
+%   if you use any parts of this library for any purposes, 
+%   we ask you to acknowledge the use of the ParaMonte library
+%   in your work (education/research/industry/development/...)
+%   by citing the ParaMonte library as described on this page:
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 function runKernel  ( self          ...
                     , getLogFunc    ...
                     )
@@ -48,7 +82,7 @@ function runKernel  ( self          ...
     lastStateWeight                         = -intmax;
 
     self.Timer.tic;
-    
+
     self.Err.prefix     = self.brand;
     self.Err.outputUnit = self.LogFile.unit;
 
@@ -79,6 +113,7 @@ function runKernel  ( self          ...
         if self.Err.occurred
             self.Err.msg    = FUNCTION_NAME + self.Err.msg;
             self.Err.abort();
+            return
         end
 
         if self.Chain.Count.compact <= CHAIN_RESTART_OFFSET
@@ -98,6 +133,7 @@ function runKernel  ( self          ...
             if self.Err.occurred
                 self.Err.msg    = FUNCTION_NAME + self.Err.msg;
                 self.Err.abort();
+                return
             end
 
             % reopen the chain file to resume the simulation
@@ -106,6 +142,7 @@ function runKernel  ( self          ...
             if self.Err.msg
                 self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + self.ChainFile.Path.original + "'.";
                 self.Err.abort();
+                return
             end
 
             % rewrite the chain file
@@ -132,6 +169,7 @@ function runKernel  ( self          ...
             if self.Err.occurred
                 self.Err.msg    = FUNCTION_NAME + self.Err.msg;
                 self.Err.abort();
+                return
             end
 
         end
@@ -139,12 +177,12 @@ function runKernel  ( self          ...
     end % blockDryRunSetup
 
     if self.isFreshRun  % this must be done separately from the above blockDryRunSetup
-        self.Chain.BurninLoc(1)  = 1;
-        co_LogFuncState(2:nd+1,2)   = self.SpecMCMC.startPointVec.Val;              % proposal state
+        self.Chain.BurninLoc(1)             = 1;
+        co_LogFuncState(2:nd+1,2)           = self.SpecMCMC.startPointVec.Val;              % proposal state
         self.Timer.toc();
-        co_LogFuncState(1,2)        = getLogFunc(co_LogFuncState(2:nd+1,2));    % proposal logFunc
+        co_LogFuncState(1,2)                = getLogFunc(co_LogFuncState(2:nd+1,2));    % proposal logFunc
         self.Timer.toc();
-        self.Stats.avgTimePerFunCalInSec = self.Stats.avgTimePerFunCalInSec + self.Timer.delta;
+        self.Stats.avgTimePerFunCalInSec    = self.Stats.avgTimePerFunCalInSec + self.Timer.delta;
     else
         co_LogFuncState(2:nd+1,2)   = self.Chain.State(1:nd,1); % proposal logFunc
         co_LogFuncState(1,2)        = self.Chain.LogFunc(1);    % proposal logFunc
@@ -168,9 +206,8 @@ function runKernel  ( self          ...
 
     while true  % loopMarkovChain
 
-        co_proposalFound_samplerUpdateOccurred(2) = 0;  % at each iteration assume no samplerUpdateOccurred, unless it occurs
-
-        co_proposalFound_samplerUpdateOccurred(1) = 0;  % co_proposalFound = false;
+        co_proposalFound_samplerUpdateOccurred(2)   = 0;  % at each iteration assume no samplerUpdateOccurred, unless it occurs
+        co_proposalFound_samplerUpdateOccurred(1)   = 0;  % co_proposalFound = false;
         samplerUpdateIsGreedy = counterAUC < self.SpecDRAM.greedyAdaptationCount.val;
 
         counterDRS = round(co_AccRate(1));
@@ -194,7 +231,7 @@ function runKernel  ( self          ...
             end
 
             if self.isFreshRun  % blockFreshDryRun
-            
+
                 %***********************************************************************************************************
                 %************************************************* output write ********************************************
 
@@ -220,7 +257,7 @@ function runKernel  ( self          ...
                                                                                             ) ;
 
             else % blockFreshDryRun : in restart mode: determine the correct value of co_proposalFound_samplerUpdateOccurred(1)
-            
+
                 numFunCallAcceptedPlusOne = self.Stats.NumFunCall.accepted + 1;
                 if numFunCallAcceptedPlusOne == self.Chain.Count.compact
                     self.isFreshRun                                     = true;
@@ -242,7 +279,7 @@ function runKernel  ( self          ...
                 self.Stats.LogFuncMode.Loc.compact  = self.Stats.NumFunCall.accepted;
             end
 
-            SumAccRateSinceStart.acceptedRejected = SumAccRateSinceStart.acceptedRejected + co_AccRate(counterDRS+2);
+            SumAccRateSinceStart.acceptedRejected   = SumAccRateSinceStart.acceptedRejected + co_AccRate(counterDRS+2);
 
         else % blockProposalAccepted
 
@@ -322,7 +359,7 @@ function runKernel  ( self          ...
                     fprintf(self.RestartFile.unit, "%d" , meanAccRateSinceStart);
                 else
                     % self.RestartFile.format
-                    fprintf(self.RestartFile.unit, "meanAccRateSinceStart" + "\n" + "%.25f", meanAccRateSinceStart);
+                    fprintf(self.RestartFile.unit, "meanAccRateSinceStart" + "\n" + "%.16f", meanAccRateSinceStart);
                     self.Proposal.writeRestartFile(); % xxx
                 end
 
@@ -445,9 +482,9 @@ function runKernel  ( self          ...
     %***********************************************************************************************************************
     %***********************************************************************************************************************
 
-    self.Chain.Count.resized = self.Stats.NumFunCall.accepted;
-    self.Chain.Count.compact = self.Stats.NumFunCall.accepted;
-    self.Chain.Count.verbose = self.Stats.NumFunCall.acceptedRejected;
+    self.Chain.Count.target     = self.Stats.NumFunCall.accepted;
+    self.Chain.Count.compact    = self.Stats.NumFunCall.accepted;
+    self.Chain.Count.verbose    = self.Stats.NumFunCall.acceptedRejected;
 
     if noDelayedRejectionRequested
         self.Stats.NumFunCall.acceptedRejectedDelayed   = self.Stats.NumFunCall.acceptedRejected;

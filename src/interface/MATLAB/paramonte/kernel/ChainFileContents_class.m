@@ -1,3 +1,37 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   ParaMonte: plain powerful parallel Monte Carlo library.
+%
+%   Copyright (C) 2012-present, The Computational Data Science Lab
+%
+%   This file is part of the ParaMonte library.
+%
+%   ParaMonte is free software: you can redistribute it and/or modify it 
+%   under the terms of the GNU Lesser General Public License as published 
+%   by the Free Software Foundation, version 3 of the License.
+%
+%   ParaMonte is distributed in the hope that it will be useful,
+%   but WITHOUT ANY WARRANTY; without even the implied warranty of
+%   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%   GNU Lesser General Public License for more details.
+%
+%   You should have received a copy of the GNU Lesser General Public License
+%   along with the ParaMonte library. If not, see, 
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/LICENSE
+%
+%   ACKNOWLEDGMENT
+%
+%   As per the ParaMonte library license agreement terms, 
+%   if you use any parts of this library for any purposes, 
+%   we ask you to acknowledge the use of the ParaMonte library
+%   in your work (education/research/industry/development/...)
+%   by citing the ParaMonte library as described on this page:
+%
+%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 classdef ChainFileContents_class < handle
 
     properties (Constant)
@@ -42,7 +76,7 @@ classdef ChainFileContents_class < handle
     %*******************************************************************************************************************************
 
         % if chainFilePath is given, the rest of the optional arguments must be also given
-        function self = ChainFileContents_class(ndim, variableNameList, chainFilePath, chainSize, chainFileForm, lenHeader, delimiter, resizedChainSize)
+        function self = ChainFileContents_class(ndim, variableNameList, chainFilePath, chainSize, chainFileForm, lenHeader, delimiter, targetChainSize)
 
             Err             = Err_class();
             Err.occurred    = false;
@@ -64,11 +98,11 @@ classdef ChainFileContents_class < handle
 
             if ~isempty(lenHeader),         self.lenHeader      = lenHeader;        end
             if ~isempty(delimiter),         self.delimiter      = delimiter;        end
-            if ~isempty(resizedChainSize),  self.Count.resized  = resizedChainSize; end
+            if ~isempty(targetChainSize),  self.Count.target  = targetChainSize; end
 
             % read the chain file if the path is given
 
-            if ~isempty(chainFilePath), Err = self.get(chainFilePath, chainFileForm, chainSize, lenHeader, ndim, delimiter, resizedChainSize); end
+            if ~isempty(chainFilePath), Err = self.get(chainFilePath, chainFileForm, chainSize, lenHeader, ndim, delimiter, targetChainSize); end
             if Err.occurred
                 self.Err.occurred   = true;
                 self.Err.msg        = Err.msg;
@@ -80,9 +114,10 @@ classdef ChainFileContents_class < handle
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-        function Err = get(self, chainFilePath, chainFileForm, chainSize, lenHeader, ndim, delimiter, resizedChainSize)
-            % resizedChainSize: >= chainSize, used for the allocation of the chain components
-            % chainSize: <= resizedChainSize, the first chainSize elements of the Chain components will contain the Chain information read from the chain file.
+        function Err = get(self, chainFilePath, chainFileForm, chainSize, lenHeader, ndim, delimiter, targetChainSize)
+            % returns the contents of a ParaDRAM simulation output chain file, always in compact format, regardless of chainFileFormat.
+            % targetChainSize: >= chainSize, used for the allocation of the chain components
+            % chainSize: <= targetChainSize, the first chainSize elements of the Chain components will contain the Chain information read from the chain file.
             %                               , the Chain component elements beyond chainSize will be set to zero.
 
             FUNCTION_NAME = self.CLASS_NAME + "@get()";
@@ -109,7 +144,7 @@ classdef ChainFileContents_class < handle
                 elseif lower(chainFileForm) == "compact"
                     isCompact   = true;
                 elseif lower(chainFileForm) == "verbose"
-                    isVerbose   = true;
+                    isVerbose   = false;
                 else
                     Err.occurred    = true;
                     Err.msg         = FUNCTION_NAME + ": Unrecognized chain file form: " + chainFileForm;
@@ -139,7 +174,7 @@ classdef ChainFileContents_class < handle
 
 %                if ~isempty(chainSize)
 %                    chainSizeDefault = chainSize;
-%                else
+%                else   % here chainSizeDefault is indeed max(chainSize) depending on the file format: verbose or compact
                     if isBinary
                         [chainFileUnit, Err.msg] = fopen(chainFilePathTrimmed);
                         if Err.msg
@@ -171,39 +206,39 @@ classdef ChainFileContents_class < handle
                             end
                         end
                         fclose(chainFileUnit);
-                    else
+                    else    % is not binary
                         chainSizeDefault = getNumRecordInFile(chainFileUnit);
                         if chainSizeDefault == 0, self.Count.compact = 0; return; end
-                        chainSizeDefault = chainSizeDefault - 1;
+                        chainSizeDefault = chainSizeDefault - 1;    % subtract header
                     end
  %               end
 
                 % set the number of elements in the Chain components
 
-                if ~isempty(resizedChainSize)
-                    self.Count.resized = resizedChainSize;
+                if ~isempty(targetChainSize)    % in restart mode, this must be always the case
+                    self.Count.target = targetChainSize;
                 else
-                    self.Count.resized = chainSizeDefault;
+                    self.Count.target = chainSizeDefault;
                 end
-                if self.Count.resized < chainSizeDefault
-                    Err.occurred    = true;
-                    Err.msg         = FUNCTION_NAME + ": input resizedChainSize cannot be smaller than the input chainSize:" + newline  ...
-                                    + "    resizedChainSize = " + num2str(self.Count.resized) + newline                                 ...
-                                    + "           chainSize = " + num2str(chainSizeDefault) + newline                                   ...
-                                    + "It appears that the user has manipulated the output chain file."                                 ...
-                                    ;
-                    return
-                end
+                % if self.Count.target < chainSizeDefault
+                    % Err.occurred    = true;
+                    % Err.msg         = FUNCTION_NAME + ": input targetChainSize cannot be smaller than the input chainSize:" + newline  ...
+                                    % + "    targetChainSize = " + num2str(self.Count.target) + newline                                 ...
+                                    % + "           chainSize = " + num2str(chainSizeDefault) + newline                                   ...
+                                    % + "It appears that the user has manipulated the output chain file."                                 ...
+                                    % ;
+                    % return
+                % end
 
                 % allocate Chain components
 
-                self.ProcessID      = zeros(1, self.Count.resized);
-                self.DelRejStage    = zeros(1, self.Count.resized);
-                self.MeanAccRate    = zeros(1, self.Count.resized);
-                self.Adaptation     = zeros(1, self.Count.resized);
-                self.BurninLoc      = zeros(1, self.Count.resized);
-                self.Weight         = zeros(1, self.Count.resized);
-                self.LogFunc        = zeros(1, self.Count.resized);
+                self.ProcessID      = zeros(1, self.Count.target);
+                self.DelRejStage    = zeros(1, self.Count.target);
+                self.MeanAccRate    = zeros(1, self.Count.target);
+                self.Adaptation     = zeros(1, self.Count.target);
+                self.BurninLoc      = zeros(1, self.Count.target);
+                self.Weight         = zeros(1, self.Count.target);
+                self.LogFunc        = zeros(1, self.Count.target);
 
                 % find the delimiter
 
@@ -320,7 +355,7 @@ classdef ChainFileContents_class < handle
 
                 % read the chain
 
-                self.State          = zeros(self.ndim, self.Count.resized);
+                self.State          = zeros(self.ndim, self.Count.target);
                 self.Count.verbose  = 0;
 
                 if isBinary
@@ -355,7 +390,7 @@ classdef ChainFileContents_class < handle
                         self.Count.verbose = self.Count.verbose + self.Weight(iState);
                     end
                 else % is verbose form
-                    if chainSizeDefault > 0
+                    if chainSizeDefault > 0 % blockChainSizeDefault
                         self.Count.compact = 1;
                         State = zeros(1, ndim);
                         % read the first sample
@@ -374,7 +409,7 @@ classdef ChainFileContents_class < handle
 
                         % read the rest of samples beyond the first, if any exist
                         newUniqueSampleDetected = false;
-                        for iState = 2 : chainSizeDefault
+                        for iState = 2 : chainSizeDefault   % loopOverChainfFileContents
                             Record.value = fgets(chainFileUnit);
                             if Record.value ~= -1
                                 Record.Parts = split(strtrim(Record.value), self.delimiter);
@@ -389,45 +424,56 @@ classdef ChainFileContents_class < handle
                                     State(i) = str2num(Record.Parts{7+i});
                                 end
                             end
-                            newUniqueSampleDetected =  LogFunc        ~= self.LogFunc    (self.Count.compact)   ...
-                                                    || MeanAccRate    ~= self.MeanAccRate(self.Count.compact)   ...
-                                                    || Adaptation     ~= self.Adaptation (self.Count.compact)   ...
-                                                    || BurninLoc      ~= self.BurninLoc  (self.Count.compact)   ...
-                                                    || Weight         ~= self.Weight     (self.Count.compact)   ...
-                                                    || DelRejStage    ~= self.DelRejStage(self.Count.compact)   ...
-                                                    || ProcessID      ~= self.ProcessID  (self.Count.compact)   ...
-                                                    || any( self.State(1:self.ndim, self.Count.compact) ~= self.State(1:self.ndim, self.Count.compact) );
+                            % increment CFC%Count%compact if new sample detected
+                            newUniqueSampleDetected =  LogFunc      ~= self.LogFunc    (self.Count.compact);
+                                                % || MeanAccRate    ~= self.MeanAccRate(self.Count.compact)   ...
+                                                % || Adaptation     ~= self.Adaptation (self.Count.compact)   ...
+                                                % || BurninLoc      ~= self.BurninLoc  (self.Count.compact)   ...
+                                                % || Weight         ~= self.Weight     (self.Count.compact)   ...
+                                                % || DelRejStage    ~= self.DelRejStage(self.Count.compact)   ...
+                                                % || ProcessID      ~= self.ProcessID  (self.Count.compact)   ...
+                                                % || any( self.State(1:self.ndim, self.Count.compact) ~= self.State(1:self.ndim, self.Count.compact) );
                             if newUniqueSampleDetected
-                                self.Count.compact                     =  self.Count.compact + 1;
-                                self.LogFunc         (self.Count.compact)   = LogFunc           ;
-                                self.MeanAccRate     (self.Count.compact)   = MeanAccRate       ;
-                                self.Adaptation      (self.Count.compact)   = Adaptation        ;
-                                self.BurninLoc       (self.Count.compact)   = BurninLoc         ;
-                                self.Weight          (self.Count.compact)   = Weight            ;
-                                self.DelRejStage     (self.Count.compact)   = DelRejStage       ;
-                                self.ProcessID       (self.Count.compact)   = ProcessID         ;
-                                self.State(1:self.ndim, self.Count.compact) = State(1:self.ndim);
+                                self.Count.compact  =  self.Count.compact + 1;
+                                if self.Count.target < self.Count.compact
+                                    Err.occurred    = true;
+                                    Err.msg         = FUNCTION_NAME + ": Fatal error occurred. CFC.Count.target < CFC.Count.compact: "          ...
+                                                    + num2str(self.Count.target) + " ~= " + num2str(self.Count.compact)                         ...
+                                                    + "The contents of the input chain file is longer than the user-requested allocation size." ...
+                                                    ;
+                                    return
+                                end
                             else
-                                self.Weight(self.Count.compact) = self.Weight(self.Count.compact) + 1;
+                                Weight = self.Weight(self.Count.compact) + 1;
                             end
-                        end
-                    else
+                            
+                            % write the latest sample
+                            self.LogFunc         (self.Count.compact)   = LogFunc           ;
+                            self.MeanAccRate     (self.Count.compact)   = MeanAccRate       ;
+                            self.Adaptation      (self.Count.compact)   = Adaptation        ;
+                            self.BurninLoc       (self.Count.compact)   = BurninLoc         ;
+                            self.Weight          (self.Count.compact)   = Weight            ;
+                            self.DelRejStage     (self.Count.compact)   = DelRejStage       ;
+                            self.ProcessID       (self.Count.compact)   = ProcessID         ;
+                            self.State(1:self.ndim, self.Count.compact) = State(1:self.ndim);
+                        end % loopOverChainfFileContents
+                    else    % blockChainSizeDefault
                         self.Count.compact = 0;
                         self.Count.verbose = 0;
                     end
                 end
 
                 if isBinary || isCompact
-                    self.Count.compact = chainSizeDefault;
+                    self.Count.compact  = chainSizeDefault;
                 else
-                    self.Count.verbose = chainSizeDefault;
+                    self.Count.verbose  = chainSizeDefault;
                     if self.Count.verbose ~= sum(self.Weight(1:self.Count.compact))
                         Err.occurred    = true;
-                        Err.msg         = FUNCTION_NAME + ": Internal error occurred. CountVerbose /= sum(Weight): "      ...
-                                        + num2str(self.Count.verbose) + " , "+ num2str(sum(self.Weight(1:self.Count.compact))) ...
+                        Err.msg         = FUNCTION_NAME + ": Internal error occurred. CountVerbose ~= sum(Weight): "            ...
+                                        + num2str(self.Count.verbose) + " ~= "+ num2str(sum(self.Weight(1:self.Count.compact))) ...
                                         ;
                         return
-                    else
+                    elseif isempty(targetChainSize)
                         self.ProcessID      = self.ProcessID   (1:self.Count.compact);
                         self.DelRejStage    = self.DelRejStage (1:self.Count.compact);
                         self.MeanAccRate    = self.MeanAccRate (1:self.Count.compact);
@@ -441,9 +487,9 @@ classdef ChainFileContents_class < handle
 
                 fclose(chainFileUnit);
 
-                % set the rest of elements to zero
-                if self.Count.resized > chainSizeDefault
-                    % self.nullify(startIndex = self.Count.compact + 1, endIndex = self.Count.resized);
+                % set the rest of elements to null values
+                if self.Count.target > chainSizeDefault
+                    % self.nullify(startIndex = self.Count.compact + 1, endIndex = self.Count.target);
                 end
 
             else % blockFileExistence

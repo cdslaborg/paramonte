@@ -58,7 +58,7 @@ function iac = getBatchMeansIAC(np,Point,Weight,batchSize)
     npEffective         = sampleCount * sampleSize;
 
     if sampleCount < 2
-        iac = 1
+        iac = 1;
         return
     end
 
