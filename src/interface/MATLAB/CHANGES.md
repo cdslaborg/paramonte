@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### Version  1.0.0 -- May 23, 2020 -- Initial release  
+### Version  1.0.0 -- June 1, 2020 -- Initial release  
 
 This is the first public release of the ParaMonte MATLAB library.  
 

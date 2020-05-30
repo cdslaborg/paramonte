@@ -5,6 +5,13 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
+### Version  1.1.0 -- June 1, 2020  
+
+Major enhancements to the ParaMonte kernel library.
+Major bug fixes in the ParaMonte Python library.
+The ParaMonte kernel and Python interface versions are now 
+reposted separately as components of the paramonte module. 
+
 ### Version  1.0.12 -- April 6, 2020  
 
 Minor enhancements and bug fixes to the kernel routines.
