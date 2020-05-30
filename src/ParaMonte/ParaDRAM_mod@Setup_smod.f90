@@ -839,7 +839,7 @@ contains
             formatStr = "(2I" // logFileColWidthStr // ",*(E" // logFileColWidthStr // "." // PD%SpecBase%OutputRealPrecision%str // "))"
 
             call PD%Decor%write(PD%LogFile%unit,1,0,1, "Integrated Autocorrelation (IAC) of the Markov chain:")
-            write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "RefinementStage","SampleSize","IAC(SampleLogFunc)",("IAC("//trim(adjustl(PD%SpecBase%VariableNameList%Val(i)))//")",i=1,ndim)
+            write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "RefinementStage","SampleSize","IAC_SampleLogFunc",("IAC_"//trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
             do i = 0, PD%RefinedChain%numRefinement
                 write( PD%LogFile%unit , formatStr ) i, PD%RefinedChain%Count(i)%Verbose, PD%RefinedChain%IAC(0:ndim,i)
             end do
