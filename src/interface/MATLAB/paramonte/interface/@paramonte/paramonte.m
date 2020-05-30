@@ -201,10 +201,8 @@ classdef paramonte %< dynamicprops
         Err = Err_class();
         verificationStatusFilePath
         buildInstructionNote
+        localInstallFailed
         objectName
-    end
-
-    properties (Access = public, Hidden)
         prereqs
         isGUI
         names
@@ -512,10 +510,10 @@ classdef paramonte %< dynamicprops
             if isunix
                 %pmLocalFileList = getFileNameList(self.path.lib);
                 installRootDirList = ["/usr/local/lib64","/usr/local/lib","/usr/lib64","/usr/lib"];
-                installRootDirNotFound = true;
+                self.localInstallFailed = true;
                 for installRootDir = installRootDirList
                     if isfolder(installRootDir)
-                        installRootDirNotFound = false;
+                        self.localInstallFailed = false;
                         errorOccurred = false;
                         %pmInstallDir = fullfile(installRootDir,"paramonte");
                         %if ~isfolder(pmInstallDir)
@@ -546,7 +544,7 @@ classdef paramonte %< dynamicprops
                         end
                     end
                 end
-                if installRootDirNotFound
+                if self.localInstallFailed
                         self.Err.msg = "Failed to detect the local library installation directory on this system. This is highly unusual. skipping...";
                         self.Err.warn();
                 end
