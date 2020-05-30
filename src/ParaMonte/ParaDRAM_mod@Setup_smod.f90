@@ -1010,7 +1010,7 @@ contains
                     , position  = PD%SampleFile%Position%value  )
                 PD%Err = PD%SampleFile%getOpenErr(PD%SampleFile%Err%stat)
                 if (PD%Err%occurred) then
-                    PD%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//PD%name//" "//PD%SampleFile%suffix//" file='"//PD%SampleFile%Path%original//"'. "
+                    PD%Err%msg = PROCEDURE_NAME//": Error occurred while opening the "//PD%name//" "//PD%SampleFile%suffix//" file='"//PD%SampleFile%Path%original//"'. "
                     call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
                     return
                 end if
