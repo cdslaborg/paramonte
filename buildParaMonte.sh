@@ -1567,7 +1567,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
                 MATLAB_BIN_DIR="${MATLAB_ROOT_DIR}/bin"
                 MATLAB_EXE_PATH="${MATLAB_BIN_DIR}/matlab"
                 if [[ -f "${MATLAB_EXE_PATH}" ]]; then
-                    MATLAB_ROOT_DIR_OPTION="-DMATLAB_ROOT_DIR=${MATLAB_ROOT_DIR}"
+                    #MATLAB_ROOT_DIR_OPTION="-DMATLAB_ROOT_DIR=${MATLAB_ROOT_DIR}"
                     MATLAB_EXE_PATH="${MATLAB_EXE_PATH}"
                     MATLAB_BIN_DIR="${MATLAB_BIN_DIR}"
                     echo >&2 "-- ${BUILD_NAME}MATLAB - MATLAB ${MATLAB_VERSION} installation detected at: ${MATLAB_EXE_PATH}"
