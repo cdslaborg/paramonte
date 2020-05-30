@@ -285,7 +285,7 @@ classdef paramonte %< dynamicprops
             matlabKernelName = "matdram";
             matlabInterfName = "interface";
             if nargin==0
-                matlabKernelEnabled = true;
+                matlabKernelEnabled = false;
             elseif nargin==1
                 if isa(varargin{1},"char") || isa(varargin{1},"string")
                     if strcmpi(string(varargin{1}),matlabKernelName)
@@ -1541,16 +1541,19 @@ classdef paramonte %< dynamicprops
             fprintf(1,"\n");
             text = fileread(bannerFilePath);
             lineList = string(strsplit(text,newline));
-            for lineElement = lineList
-                if contains(lineElement,"Version")
-                    line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
-                else
-                    line = lineElement;
+            if self.platform.isWin32 && self.isGUI
+                for lineElement = lineList
+                    if contains(lineElement,"Version")
+                        line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+                    else
+                        line = lineElement;
+                    end
+                    fprintf(1,line);
                 end
-                fprintf(1,line);
+            else
+                newText = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+                fprintf(1,newText);
             end
-            %newText = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
-            %fprintf(1,newText);
             fprintf(1,"\n\n");
         end
 
