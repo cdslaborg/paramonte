@@ -257,16 +257,16 @@ if (MPI_ENABLED)
     target_link_libraries(${PMLIB} PUBLIC ${MPI_Fortran_LIBRARIES})
 endif()
 
-if (NOT WIN32)
-    if (DEFINED MATLAB_ROOT_DIR)
-        target_include_directories(${PMLIB} PUBLIC "${MATLAB_ROOT_DIR}/extern/include")
-        target_link_directories(${PMLIB} BEFORE 
-        PUBLIC "$(MATLAB_ROOT_DIR)/bin/${MATLAB_PLATFORM_SUBDIR}"
-        PUBLIC "$(MATLAB_ROOT_DIR)/extern/bin/${MATLAB_PLATFORM_SUBDIR}"
-        )
-        target_link_libraries(${PMLIB} PUBLIC mx PUBLIC mex PUBLIC mat PUBLIC m PUBLIC stdc++)
-    endif()
-endif()
+#if (NOT WIN32)
+#    if (DEFINED MATLAB_ROOT_DIR)
+#        target_include_directories(${PMLIB} PUBLIC "${MATLAB_ROOT_DIR}/extern/include")
+#        target_link_directories(${PMLIB} BEFORE 
+#        PUBLIC "$(MATLAB_ROOT_DIR)/bin/${MATLAB_PLATFORM_SUBDIR}"
+#        PUBLIC "$(MATLAB_ROOT_DIR)/extern/bin/${MATLAB_PLATFORM_SUBDIR}"
+#        )
+#        target_link_libraries(${PMLIB} PUBLIC mx PUBLIC mex PUBLIC mat PUBLIC m PUBLIC stdc++)
+#    endif()
+#endif()
 
 # define the output modules directory
 
@@ -279,8 +279,10 @@ message( STATUS "${pmattn} ParaMonte library build compile flags: ${FCL_FLAGS} $
 #target_compile_options( ${PMLIB} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
 target_compile_options( ${PMLIB} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
 
-message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS}" )
-target_link_options( ${PMLIB} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS} )
+#message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS}" )
+#target_link_options( ${PMLIB} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS} )
+message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}" )
+target_link_options( ${PMLIB} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}} )
 
 install(TARGETS ${PMLIB} 
         CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
