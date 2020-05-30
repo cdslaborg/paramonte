@@ -10,7 +10,7 @@
     Flag definitions:
 
         --build         : the ParaMonte library build types. Possible values: release, testing, debug
-        --lang          : the ParaMonte library language choices to build for. Possible values: C/Fortran/Python
+        --lang          : the ParaMonte library language choices to build for. Possible values (case-insensitive): C/Fortran/MATLAB/Python
         --lib           : the ParaMonte library type. Possible values: static, dynamic
         --par           : the ParaMonte library parallelism type. Possible values: none mpi cafsingle cafshared
         --mem           : the ParaMonte library memory type for array allocations. Possible values: stack heap
@@ -26,6 +26,6 @@
     NOTE: For any option that is not specified, the build will be done for all of the possible options of the flag.
     NOTE: Some values of some of the flags are inconsistent with each other. For example:
     NOTE:     Coarray Fortran parallelism "--par cafsingle/cafshared" cannot be specified along with dynamic library "--lib dynamic".
-    NOTE:     Coarray Fortran parallelism "--par cafsingle/cafshared" cannot be specified along with C/Python languages "--lang C/Python".
+    NOTE:     Coarray Fortran parallelism "--par cafsingle/cafshared" cannot be specified along with C/MATLAB/Python languages "--lang C/MATLAB/Python".
     NOTE:     Heap memory allocation "--mem heap" cannot be specified along with static library "--lib static".
 
