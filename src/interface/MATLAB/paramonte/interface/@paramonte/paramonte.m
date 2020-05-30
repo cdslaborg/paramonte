@@ -206,6 +206,7 @@ classdef paramonte %< dynamicprops
 
     properties (Access = public, Hidden)
         prereqs
+        isGUI
         names
         path
     end
@@ -226,7 +227,7 @@ classdef paramonte %< dynamicprops
             self.path.root = mfilename('fullpath');
             [self.path.root,~,~] = fileparts(self.path.root);
             self.path.root = string( getFullPath(fullfile(self.path.root,"..",".."),'lean') );
-            addpath(genpath(self.path.root),'-begin');
+            addpath(genpath(self.path.root),"-begin");
             self.path.lib = string(fullfile(self.path.root, "lib"));
             self.path.auxil = string(fullfile(self.path.root, "auxil"));
 
@@ -238,7 +239,12 @@ classdef paramonte %< dynamicprops
             self.website.intel.mpi.home.url = "https://software.intel.com/en-us/mpi-library";
             self.website.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-with-mpi-for-windows";
             self.website.openmpi.home.url = "https://www.open-mpi.org/";
-            if usejava('desktop') && ~batchStartupOptionUsed
+            try
+                self.isGUI = usejava("desktop") || ~batchStartupOptionUsed; % batchStartupOptionUsed is introduced in R2019a and not supported in older versions of MATLAB
+            catch
+                self.isGUI = usejava("desktop");
+            end
+            if  self.isGUI
                 self.website.home.url = "<a href=""" + self.website.home.url + """>" + self.website.home.url + "</a>";
                 self.website.github.issues.url = "<a href=""" + self.website.github.issues.url + """>" + self.website.github.issues.url + "</a>";
                 self.website.intel.mpi.home.url = "<a href=""" + self.website.intel.mpi.home.url + """>" + self.website.intel.mpi.home.url + "</a>";
@@ -276,30 +282,29 @@ classdef paramonte %< dynamicprops
             % check interface type
 
             errorOccurred = false;
-            matlabKernelEnabled = false;
             matlabKernelName = "matdram";
-            if nargin==1
-                if isa(varargin{1},"char")
-                    if strcmpi(varargin{1},matlabKernelName)
+            matlabInterfName = "interface";
+            if nargin==0
+                matlabKernelEnabled = true;
+            elseif nargin==1
+                if isa(varargin{1},"char") || isa(varargin{1},"string")
+                    if strcmpi(string(varargin{1}),matlabKernelName)
                         matlabKernelEnabled = true;
-                    else
-                        errorOccurred = true;
-                    end
-                elseif isa(varargin{1},'string')
-                    if strcmpi(varargin{1},matlabKernelName)
-                        matlabKernelEnabled = true;
+                    elseif strcmpi(string(varargin{1}),matlabInterfName)
+                        matlabKernelEnabled = false;
                     else
                         errorOccurred = true;
                     end
                 end
-            elseif nargin~=0
+            else
                 errorOccurred = true;
             end
             if errorOccurred
-                self.Err.msg    = "The paramonte class constructor takes at most one argument of value """ + matlabKernelName + """. You have entered:" + newline + newline ...
+                self.Err.msg    = "The paramonte class constructor takes at most one argument of value """ ...
+                                + matlabKernelName + """ or """ + matlabInterfName + """. You have entered:" + newline + newline ...
                                 + "    " + string(strrep(join(string(varargin)," "),'\','\\')) ...
-                                + "Pass the input value """ + matlabKernelName + """ only if you know what it means. Otherwise, do not pass any input values. " ...
-                                + "ParaMonte will properly set things up for you.";
+                                + "Pass the input value """ + matlabKernelName + """ only if you know what it means. " ...
+                                + "Otherwise, do not pass any input values. ParaMonte will properly set things up for you.";
                 self.Err.abort()
             end
 
