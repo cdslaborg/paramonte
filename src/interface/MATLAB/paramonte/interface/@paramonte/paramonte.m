@@ -512,8 +512,8 @@ classdef paramonte %< dynamicprops
             if isunix
                 %pmLocalFileList = getFileNameList(self.path.lib);
                 installRootDirList = ["/usr/local/lib64","/usr/local/lib","/usr/lib64","/usr/lib"];
+                installRootDirNotFound = true;
                 for installRootDir = installRootDirList
-                    installRootDirNotFound = true;
                     if isfolder(installRootDir)
                         installRootDirNotFound = false;
                         errorOccurred = false;
