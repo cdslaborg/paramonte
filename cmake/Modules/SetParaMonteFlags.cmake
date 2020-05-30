@@ -54,7 +54,7 @@ else()
         #if (intel_compiler)
         #    set(MATLAB_FPP_FLAGS -DMATLAB_MEX_FILE)
         #elseif(gnu_compiler)
-            set(MATLAB_FPP_FLAGS -DMATLAB_MEX_FILE -D_GNU_SOURCE)
+            set(MATLAB_FPP_FLAGS -DMATLAB_MEX_FILE -D_GNU_SOURCE -DMEXPRINT_ENABLED)
         #endif()
         set(MATLAB_LINKER_FLAGS 
         -Wl,--no-undefined
