@@ -57,7 +57,7 @@ module StarFormation_mod
     function getRateDensity_proc(zplus1) result(rateDensity)
         import :: RK, IK
         real(RK), intent(in)    :: zplus1
-        real(RK)                :: logRate
+        real(RK)                :: rateDensity
     end function getRateDensity_proc
     end interface
 
