@@ -514,11 +514,11 @@ classdef paramonte %< dynamicprops
                 installRootDirList = ["/usr/local/lib64","/usr/local/lib","/usr/lib64","/usr/lib"];
                 for installRootDir = installRootDirList
                     installRootDirNotFound = true;
-                    if isdir(installRootDir)
+                    if isfolder(installRootDir)
                         installRootDirNotFound = false;
                         errorOccurred = false;
                         %pmInstallDir = fullfile(installRootDir,"paramonte");
-                        %if ~isdir(pmInstallDir)
+                        %if ~isfolder(pmInstallDir)
                         %    [status, errMsg, msgID] = mkdir(pmInstallDir);
                         %    if status~=1; errorOccurred = true; end
                         %end
