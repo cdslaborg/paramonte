@@ -513,7 +513,9 @@ classdef paramonte %< dynamicprops
                 %pmLocalFileList = getFileNameList(self.path.lib);
                 installRootDirList = ["/usr/local/lib64","/usr/local/lib","/usr/lib64","/usr/lib"];
                 for installRootDir = installRootDirList
+                    installRootDirNotFound = true;
                     if isdir(installRootDir)
+                        installRootDirNotFound = false;
                         errorOccurred = false;
                         %pmInstallDir = fullfile(installRootDir,"paramonte");
                         %if ~isdir(pmInstallDir)
@@ -542,9 +544,11 @@ classdef paramonte %< dynamicprops
                         %else
                         %    break;
                         end
-                    else
-                        warning(newline + "Failed to detect the local library installation directory on this system. This is highly unusual. skipping..." + newline);
                     end
+                end
+                if installRootDirNotFound
+                        self.Err.msg = "Failed to detect the local library installation directory on this system. This is highly unusual. skipping...";
+                        self.Err.warn();
                 end
             end
         end
