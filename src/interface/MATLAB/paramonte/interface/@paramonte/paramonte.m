@@ -309,9 +309,9 @@ classdef paramonte %< dynamicprops
             end
 
             if matlabKernelEnabled
-                self.ParaDRAM = ParaDRAM_class;
+                self.ParaDRAM = ParaDRAM_class();
             else
-                self.ParaDRAM = ParaDRAM(self.platform);
+                self.ParaDRAM = ParaDRAM(self.platform,self.website);
             end
 
             self.verify("reset",false)
