@@ -839,6 +839,7 @@ contains
             formatStr = "(2I" // logFileColWidthStr // ",*(E" // logFileColWidthStr // "." // PD%SpecBase%OutputRealPrecision%str // "))"
 
             call PD%Decor%write(PD%LogFile%unit,1,0,1, "Integrated Autocorrelation (IAC) of the Markov chain:")
+            !write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "RefinementStage","SampleSize","IAC(SampleLogFunc)",("IAC("//trim(adjustl(PD%SpecBase%VariableNameList%Val(i)))//")",i=1,ndim)
             write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "RefinementStage","SampleSize","IAC_SampleLogFunc",("IAC_"//trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
             do i = 0, PD%RefinedChain%numRefinement
                 write( PD%LogFile%unit , formatStr ) i, PD%RefinedChain%Count(i)%Verbose, PD%RefinedChain%IAC(0:ndim,i)
@@ -1009,7 +1010,7 @@ contains
                     , position  = PD%SampleFile%Position%value  )
                 PD%Err = PD%SampleFile%getOpenErr(PD%SampleFile%Err%stat)
                 if (PD%Err%occurred) then
-                    PD%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//PD%name//" "//PD%SampleFile%suffix//" file='"//PD%SampleFile%Path%original//"'."
+                    PD%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//PD%name//" "//PD%SampleFile%suffix//" file='"//PD%SampleFile%Path%original//"'. "
                     call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
                     return
                 end if
