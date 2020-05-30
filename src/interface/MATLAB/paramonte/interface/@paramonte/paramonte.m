@@ -201,7 +201,7 @@ classdef paramonte %< dynamicprops
         Err = Err_class();
         verificationStatusFilePath
         buildInstructionNote
-        localInstallFailed
+        pmInstallFailed
         objectName
         prereqs
         isGUI
@@ -481,8 +481,6 @@ classdef paramonte %< dynamicprops
 
                     end
 
-                    self.dispFinalMessage();
-
                 else
 
                     self.warnForUnsupportedPlatform();
@@ -510,10 +508,9 @@ classdef paramonte %< dynamicprops
             if isunix
                 %pmLocalFileList = getFileNameList(self.path.lib);
                 installRootDirList = ["/usr/local/lib64","/usr/local/lib","/usr/lib64","/usr/lib"];
-                self.localInstallFailed = true;
+                self.pmInstallFailed = true;
                 for installRootDir = installRootDirList
                     if isfolder(installRootDir)
-                        self.localInstallFailed = false;
                         errorOccurred = false;
                         %pmInstallDir = fullfile(installRootDir,"paramonte");
                         %if ~isfolder(pmInstallDir)
@@ -540,15 +537,23 @@ classdef paramonte %< dynamicprops
                                             + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
                             self.Err.warn();
                         %else
+                            self.pmInstallFailed = false;
                         %    break;
                         end
                     end
                 end
-                if self.localInstallFailed
-                        self.Err.msg = "Failed to detect the local library installation directory on this system. This is highly unusual. skipping...";
-                        self.Err.warn();
+                if self.pmInstallFailed
+                    self.Err.msg =  "Failed to locally install the ParaMonte library on this system. This is highly unusual. " ...
+                                    "If you have administrator previlages on this system (e.g., you are not using a supercomputer), " ...
+                                    "you may want to reopen MATLAB with ""sudo matlab"" command from the Bash terminal. " ...
+                                    "Then, to reinstall ParaMonte, try: " + newline + newline ...
+                                    "     pm = paramonte();" + newline ...
+                                    "     pm.verify();" + newline + newline ...
+                                    "Skipping the installation for now...";
+                    self.Err.warn();
                 end
             end
+            self.dispFinalMessage();
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1510,7 +1515,7 @@ classdef paramonte %< dynamicprops
                             + "    pm.verify()" ...
                             ;
             self.Err.note();
-            if ~self.platform.isWin32 && self.localInstallFailed
+            if ~self.platform.isWin32 && self.pmInstallFailed
                 self.Err.msg    = "Now, for both serial and parallel simulations: before using the ParaMonte kernel libraries, " + newline ...
                                 + "we recommend you to quit your current MATLAB session (and reopen/restart it for serial simulations). " + newline ...
                                 + "If you are opening your MATLAB session from a Bash (Linux/masOS) terminal or if you intend to " + newline ...
