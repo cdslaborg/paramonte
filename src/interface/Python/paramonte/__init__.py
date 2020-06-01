@@ -39,6 +39,7 @@
 """
 This is the Python interface to ParaMonte: Plain Powerful Parallel Monte Carlo library.
 
+
 What is ParaMonte?
 ==================
 
@@ -57,101 +58,148 @@ For more information on the installation, usage, and examples, visit:
 
     https://www.cdslab.org/paramonte
 
-The routines currently supported by the Python interface of ParaMonte include:
+The routines currently supported by the ParaMonte Python library include:
 
     ParaDRAM
     ========
 
-        Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
-
-        EXAMPLE SERIAL USAGE
-        ====================
-
-        Copy and paste the following code enclosed between the
-        two comment lines in your python/ipython/jupyter session
-        (make sure the indentation of the pasted lines is correct):
+    Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
+    For a quick start, example scripts, and instructions on how to use he ParaDRAM sampler,
+    type the following commands in your Python session,
 
 ##################################
 import paramonte as pm
-import numpy as np
-def getLogFunc(Point):
-    # return the log of the standard multivariate
-    # Normal density function with ndim dimensions
-    return -0.5 * np.sum( np.double( Point )**2 )
-pmpd = pm.ParaDRAM()
-pmpd.runSampler ( ndim = 3
-                , getLogFunc = getLogFunc
-                )
+pm.helpme("paradram") # input value is case-insensitive
 ##################################
 
-        EXAMPLE PARALLEL USAGE
-        ======================
-
-        Copy and paste the following code enclosed between the
-        two comment lines in your python/ipython/jupyter session
-        (make sure the indentation of the pasted lines is correct):
+or,
 
 ##################################
-with open("main.py", "w") as file:
-    file.write  ('''
 import paramonte as pm
-import numpy as np
-def getLogFunc(Point):
-    # return the log of the standard multivariate
-    # Normal density function with ndim dimensions
-    return -0.5 * np.sum( np.double( Point )**2 )
-pmpd = pm.ParaDRAM()
-pmpd.runSampler ( ndim = 3
-                , getLogFunc = getLogFunc
-                , mpiEnabled = True
-                )
-''')
+help(pm.ParaDRAM)
 ##################################
 
-        This will generate a main.py Python script file in the current
-        working directory of your Python session. Now, you can execute
-        this Python script file (main.py) in parallel in two ways:
+Naming conventions
+==================
 
-            1.  from inside ipython or jupyter: type the following,
++   The camelCase naming style is used throughout the entire ParaMonte library, across
+    all programming languages. The ParaMonte library is a multi-language cross-platform
+    library. To increase the consistently and similarities of all implementations,
+    a single naming convension had to be used for all different languages.
 
-                   !mpiexec -n 3 python main.py
++   All simulation specifications start with a lowercase letter, including
+    scalar/vector/matrix int, float, string, or boolean variables.
 
-            2.  outside of Python environment,
-                from within a Bash shell (on Linux or Mac) or,
-                from within an Anaconda command prompt on Windows,
-                type the following,
++   The name of any variable that represents a vector of values is normally suffixed with "Vec",
+    for example: startPointVec, domainLowerLimitVec, ...
 
-                   mpiexec -n 3 python main.py
++   The name of any variable that represents a matrix of values is normally suffixed with "Mat",
+    for example: proposalStartCorMat, ...
 
-            NOTE: On Windows platform, if you are using Intel MPI library,
-            NOTE: you may also specify the extra flag -localonly to run only
-            NOTE: on one node, but also to avoid the use of Hydra service and
-            NOTE: its registration. If you are not on a Windows cluster, (e.g.,
-            NOTE: you are using your personal device), then we recommend
-            NOTE: specifying this flag.
++   The name of any variable that represents a list of varying-size values is normally suffixed
+    with "List", for example: variableNameList, ...
 
-            In both cases above, the script 'main.py' will run on 3 processors.
-            Feel free to change the number of processors to any number desired.
-            But do not request more than the number of physical cores on your system.
++   All static functions or methods of classes begin with a lowercase verb.
 
++   Significant attempt has been made to end all boolean variables with a passive verb, such
+    that the full variable name virtually forms  a proposition, that is, an English-language
+    statement that should be either True or False, set by the user.
+
+Tips
+====
+
++   When running the ParaMonte samplers, in particular on multiple cores in parallel,
+    it would be best to close any such aggressive software/applications as
+    Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte
+    simulation output files, potentially causing the sampler to
+    crash before successful completion of the simulation.
+    These situations should however happen only scarcely.
+
++   On Windows systems, when restarting an old interrupted ParaDRAM simulation,
+    ensure your Python session is also restarted before the simulation restart.
+    This may be needed as Windows sometimes locks access to some or all of the
+    simulation output files.
+
++   To unset an already-set input simulation specification, simply set the
+    simulation attribute to None or re-instantiate the object.
+
+-------------------------------------------------------------------------------
 """
 
 import os as _os
 import sys as _sys
+import typing as _tp
 _sys.path.append(_os.path.dirname(__file__))
 
 import _paramonte as _pm
-from paradram import ParaDRAM
-from _pmreqs import verify, build
 
+# objects exposed to the user
+
+from _pmreqs import verify, build
+from paradram import ParaDRAM
 from _paramonte import version
+
 
 __authors__ = "The Computational Data Science Lab @ The University of Texas"
 __credits__ = "Peter O'Donnell Fellowship"
-__version__ = _pm.version.interface
+__version__ = version.interface.get()
 
 verify(reset=False)
 
-def helpme():
-    print(__doc__)
+####################################################################################################################################
+
+# def getVersion():
+#     import warnings
+#     msg = "getVersion() version will be removed in next release. Use paramonte.version object instead."
+#     warnings.warn( msg, DeprecationWarning, stacklevel=2)
+#     return __version__
+
+####################################################################################################################################
+
+def helpme( topic : _tp.Optional[str] = None ):
+    """
+    Prints help on the input object.
+
+    Parameters
+    ----------
+        topic
+            A string value that is the name of an object in paramonte
+            module for which help is needed. To see the list of possible
+            objects. try: pm.helpme("helpme")
+
+    Returns
+    -------
+        None
+    """
+
+    topics =    { "paradram": ParaDRAM
+                , "version" : version
+                , "helpme"  : helpme
+                , "build"   : build
+                }
+
+    usage   = "    Usage:\n\n" \
+            + "        import paramonte as pm\n" \
+            + "        pm.helpme()      # to get help on paramonte module.\n" \
+            + "        pm.helpme(topic) # to get help on topic.\n\n" \
+            + "    where `topic` in the above can be one of the following string values:\n\n" \
+            + "        " + str(list(topics.keys()))
+    
+    if topic is None:
+        print(__doc__)
+    elif isinstance(topic,str) and (topic.lower() in topics.keys()):
+        print(topics[topic.lower()].__doc__ + "\n")
+        if topic.lower()=="helpme": _pm.note( msg = usage, methodName = "helpme()", marginTop = 0, marginBot = 1)
+    else:
+        try:
+            topic = "(" + str(topic) + ") "
+        except:
+            topic = ""
+        _pm.warn( msg   = "The requested object " + topic + "does not exist in paramonte module.\n\n"
+                        + usage
+                , methodName = "helpme()"
+                , marginTop = 1
+                , marginBot = 1
+                )
+
     return None

@@ -340,6 +340,41 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRate
 #endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE, getLogLumDisWicMpc
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK)    , intent(in)                :: zplus1
+        real(RK)    , intent(in), optional      :: zplus1Max, maxRelativeError
+        integer(IK) , intent(in), optional      :: nRefinement
+        procedure(getRateDensity_proc)          :: getStarFormationRateDensity
+        procedure(getMergerDelayTimePDF_proc)   :: getMergerDelayTimePDF
+        real(RK)                                :: binaryMergerRate
+        real(RK), parameter                     :: LOG_COEF = log(4._RK*PI*LS2HC)
+
+        binaryMergerRate    = exp( LOG_COEF + 2_IK*getLogLumDisWicMpc(zplus1) - ( 3._RK*log(zplus1) + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) ) &
+                            * getBinaryMergerRateDensity( zplus1 &
+                                                        , zplus1Max &
+                                                        , nRefinement &
+                                                        , maxRelativeError &
+                                                        , getMergerDelayTimePDF &
+                                                        , getStarFormationRateDensity &
+                                                        )
+
+    end function getBinaryMergerRate
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    function getBinaryMergerRateDensity ( zplus1 &
+                                        , zplus1Max &
+                                        , nRefinement &
+                                        , maxRelativeError &
+                                        , getMergerDelayTimePDF &
+                                        , getStarFormationRateDensity &
+                                        ) result(binaryMergerRateDensity)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRateDensity
+#endif
         use, intrinsic :: iso_fortran_env, only: output_unit
         use Constants_mod, only: RK, HUGE_RK
         use Cosmology_mod, only: getLookBackTime
@@ -352,7 +387,7 @@ contains
         procedure(getMergerDelayTimePDF_proc)   :: getMergerDelayTimePDF
         integer(IK)                             :: neval, ierr, nRefinementDefault
         real(RK)                                :: zplus1MaxDefault, maxRelativeErrorDefault, relerr
-        real(RK)                                :: binaryMergerRate, lookBackTimeRef
+        real(RK)                                :: binaryMergerRateDensity, lookBackTimeRef
 
         nRefinementDefault = 5_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
         zplus1MaxDefault = HUGE_RK; if (present(zplus1Max)) zplus1MaxDefault = zplus1Max
@@ -363,13 +398,13 @@ contains
                                             , nRefinement = nRefinementDefault &
                                             )
 
-        call doQuadRombOpen ( getFunc           = getBinaryMergerRateIntegrand          &
+        call doQuadRombOpen ( getFunc           = getBinaryMergerRateDensityIntegrand   &
                             , integrate         = midinf                                &
                             , lowerLim          = zplus1                                &
                             , upperLim          = zplus1MaxDefault                      &
                             , maxRelativeError  = maxRelativeErrorDefault               &
                             , nRefinement       = nRefinementDefault                    &
-                            , integral          = binaryMergerRate                      &
+                            , integral          = binaryMergerRateDensity               &
                             , relativeError     = relerr                                &
                             , numFuncEval       = neval                                 &
                             , ierr              = ierr                                  &
@@ -381,7 +416,7 @@ contains
 
     contains
 
-        function getBinaryMergerRateIntegrand(zplus1) result(binaryMergerRateIntegrand)
+        function getBinaryMergerRateDensityIntegrand(zplus1) result(binaryMergerRateIntegrand)
 
             use Cosmology_mod, only: getUniverseAgeDerivative
             implicit none
@@ -396,7 +431,7 @@ contains
                                                 ) 
             mergerDelayTime = mergerDelayTime - lookBackTimeRef    
             if (mergerDelayTime<=0._RK) then
-                write(output_unit,"(A)") "The mergerDelayTime is non-positive in getBinaryMergerRateIntegrand(): (zplus1, mergerDelayTime) = ", zplus1, mergerDelayTime
+                write(output_unit,"(A)") "The mergerDelayTime is non-positive in getBinaryMergerRateDensityIntegrand(): (zplus1, mergerDelayTime) = ", zplus1, mergerDelayTime
                 error stop
             end if
 
@@ -404,9 +439,9 @@ contains
                                         * getStarFormationRateDensity(zplus1) &
                                         * getUniverseAgeDerivative(zplus1)
 
-        end function getBinaryMergerRateIntegrand
+        end function getBinaryMergerRateDensityIntegrand
 
-    end function getBinaryMergerRate
+    end function getBinaryMergerRateDensity
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

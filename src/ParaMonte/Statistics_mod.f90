@@ -1539,7 +1539,7 @@ contains
 
     ! returns the complementary error function with fractional error everywhere less than 1.2*10^-7.
     ! amir shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
-    function erfcc(x)
+    pure function erfcc(x)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: erfcc
 #endif
@@ -1558,7 +1558,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
     
-    function getLogProbLogNormS(logMean,inverseVariance,logSqrtInverseVariance,logPoint)
+    pure function getLogProbLogNormS(logMean,inverseVariance,logSqrtInverseVariance,logPoint)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbLogNormS
 #endif
@@ -1572,7 +1572,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
     
-    function GetLogProbLogNormMP(np,logMean,inverseVariance,logSqrtInverseVariance,LogPoint)
+    pure function GetLogProbLogNormMP(np,logMean,inverseVariance,logSqrtInverseVariance,LogPoint)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: GetLogProbLogNormMP
 #endif

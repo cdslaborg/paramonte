@@ -238,9 +238,9 @@ classdef paramonte %< dynamicprops
             self.website.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-with-mpi-for-windows";
             self.website.openmpi.home.url = "https://www.open-mpi.org/";
             try
-                self.isGUI = usejava("desktop") && ~batchStartupOptionUsed; % batchStartupOptionUsed is introduced in R2019a and not supported in older versions of MATLAB
+                self.isGUI = usejava("desktop") && feature("ShowFigureWindows") && ~batchStartupOptionUsed; % batchStartupOptionUsed is introduced in R2019a and not supported in older versions of MATLAB
             catch
-                self.isGUI = usejava("desktop");
+                self.isGUI = usejava("desktop") && ~feature("ShowFigureWindows");
             end
             if  self.isGUI
                 self.website.home.url = "<a href=""" + self.website.home.url + """>" + self.website.home.url + "</a>";

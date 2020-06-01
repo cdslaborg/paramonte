@@ -58,7 +58,7 @@ import ctypes as _ct
 
 class ParaDRAM:
     """
-    This is the ParaDRAM class for generating instances of serial and parallel
+    This is the ParaDRAM class for generating instances of the serial and parallel
     Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
     sampler of the ParaMonte library.
 
@@ -66,23 +66,28 @@ class ParaDRAM:
     are optional and all attributes can be also set after a ParaDRAM instance
     is returned by the constructor.
 
-    Once you set the desired attributes to the desired values,
+    Once you set the optional attributes to your desired values,
     call the ParaDRAM sampler via the object's method runSampler().
 
-    Minimal serial example
-    ----------------------
+    EXAMPLE SERIAL USAGE
+    ====================
 
-    Here is a Python script main.py for a serial ParaDRAM simulation:
+    Copy and paste the following code enclosed between the
+    two comment lines in your python/ipython/jupyter session
+    (make sure the indentations of the pasted lines comply with Python rules):
 
-        from paramonte import ParaDRAM
-        pmpd = ParaDRAM()
-        def getLogFunc(Point):
-            # return the natural logarithm of the ndim-dimensional
-            # non-normalized Standard Gaussian density function
-            return -sum(Point**2)
-        pmpd.runSampler ( ndim = 1
-                        , getLogFunc = getLogFunc
-                        )
+##################################
+import paramonte as pm
+import numpy as np
+def getLogFunc(Point):
+    # return the log of the standard multivariate
+    # Normal density function with ndim dimensions
+    return -0.5 * np.sum( np.double( Point )**2 )
+pmpd = pm.ParaDRAM()
+pmpd.runSampler ( ndim = 4                  # number of dimensions of the objective function
+                , getLogFunc = getLogFunc   # the objective function
+                )
+##################################
 
     where,
 
@@ -96,68 +101,28 @@ class ParaDRAM:
             float64 array of length ndim and must return the
             natural logarithm of the objective function.
 
-    Parallel simulations
-    --------------------
+    EXAMPLE PARALLEL USAGE
+    ======================
 
-    To run ParaDRAM sampler in parallel mode visit: cdslab.org/pm
-    You can also use the following commands on the Python command-line,
-
-        import paramonte as pm
-        pm.verify()
-
-    to obtain specific information on how to run a parallel simulation,
-    in particular, in relation to your current installation of ParaMonte.
-    In general, for parallel simulations:
-
-    0.  ensure you need and will get a speedup by running the ParaDRAM sampler in parallel.
-        Typically, if a single evaluation of the objective function takes much longer than
-        a few milliseconds, your simulation may then benefit from the parallel run.
-
-    1.  ensure you have an MPI library installed, preferably, Intel MPI.
-        An MPI library should be automatically installed on your system with ParaMonte.
-        If needed, you can download the Intel MPI library from their website and install it.
-
-    2.  set the input keyword argument mpiEnabled in runSampler() to True (the default is False),
-
-    3.  before running the parallel simulation, in particular, on Windows systems, you may
-        need to define the necessary MPI environmental variables on your system.
-        To get information on how to define the variables, use paramonte function
-        verify() as described in the above.
-
-    4.  call your main Python code from a Python-aware mpiexec-aware command-line via,
-
-            mpi_launcher -n num_process python name_of_yor_python_code.py
-
-        where,
-
-        1.  mpi_launcher is the name of the MPI launcher
-            from the MPI library that you have installed.
-            For example, the Intel MPI library launcher is named mpiexec,
-            also recognized by Microsoft and OpenMPI.
-
-        2.  num_process: replace this with the number of
-            cores on which you want to run the program.
-            Do not assign more processes than the number of
-            available physical cores on your device/cluster.
-            Assigning more cores than physically available on
-            your system will only slow down your simulation.
-
-    Minimal parallel example
-    ------------------------
-
-    Here is a Python script main.py for a parallel ParaDRAM simulation:
+    Copy and paste the following code enclosed between the
+    two comment lines in your python/ipython/jupyter session
+    (make sure the indentations of the pasted lines comply with Python rules):
 
 ##################################
-from paramonte import ParaDRAM
-pmpd = ParaDRAM()
+with open("main.py", "w") as file:
+    file.write  ('''
+import paramonte as pm
+import numpy as np
 def getLogFunc(Point):
-    # return the natural logarithm of the ndim-dimensional
-    # non-normalized Standard Gaussian density function
-    return -sum(Point**2)
-pmpd.runSampler ( ndim = 1
-                , getLogFunc = getLogFunc
-                , mpiEnabled = True
+    # return the log of the standard multivariate
+    # Normal density function with ndim dimensions
+    return -0.5 * np.sum( np.double( Point )**2 )
+pmpd = pm.ParaDRAM()
+pmpd.mpiEnabled = True
+pmpd.runSampler ( ndim = 4                  # number of dimensions of the objective function
+                , getLogFunc = getLogFunc   # the objective function
                 )
+''')
 ##################################
 
     where,
@@ -178,8 +143,97 @@ pmpd.runSampler ( ndim = 1
             cause the ParaDRAM simulation to run in parallel
             on the requested number of processors.
 
-    Once the script is saved in the file main.py, open a Python-aware and
-    MPI-aware command prompt to run the simulation by the MPI launcher,
+    The above will generate a Parallel-ParaDRAM-simulation Python script in the current working 
+    directory of Python. Note the only difference between the serial and parallel simulation
+    scripts: the extra line `pmpd.mpiEnabled = True` which tell the ParaMonte library to run 
+    the simulation in parallel.
+
+    Assuming that you already have an MPI runtime library installed on your system (see below), 
+    you can now execute this Python script file `main.py` in parallel in two ways:
+
+        1.  from inside ipython or jupyter: type the following,
+
+               !mpiexec -n 3 python main.py
+
+        2.  outside of Python environment,
+            from within a Bash shell (on Linux or Mac) or,
+            from within an Anaconda command prompt on Windows,
+            type the following,
+
+               mpiexec -n 3 python main.py
+
+        NOTE: On Windows platform, if you are using the Intel MPI library,
+        NOTE: we recommend that you also specify the extra flag -localonly, 
+        NOTE:
+        NOTE:     mpiexec -localonly -n 3 python main.py
+        NOTE:
+        NOTE: This will cause the simulations to run in parallel only on a single node,
+        NOTE: but more importantly, it will also prevent the use of Hydra service and
+        NOTE: the requirement for its registration. If you are not on a Windows cluster, 
+        NOTE: (e.g., you are using your personal device), then we highly recommend
+        NOTE: specifying this flag.
+
+        In all cases in the above, the script `main.py` will run on 3 processors.
+        Feel free to change the number of processors to any number desired. But do 
+        not request more than the available number of physical cores on your system.
+
+    TIPS ON PARALLEL USAGE
+    ======================
+
+    For up-to-date detailed instructions on how to run simulations in parallel visit: 
+
+        cdslab.org/pm
+
+    You can also use the following commands on the Python command-line,
+
+##################################
+import paramonte as pm
+pm.verify()
+##################################
+
+    to obtain specific information on how to run a parallel simulation,
+    in particular, in relation to your current installation of ParaMonte.
+    In general, for parallel simulations:
+
+    0.  Ensure you need and will get a speedup by running the ParaDRAM sampler in parallel.
+        Typically, if a single evaluation of the objective function takes much longer than
+        a few milliseconds, your simulation may then benefit from the parallel run.
+
+    1.  Ensure you have an MPI library installed, preferably, the Intel MPI runtime libraries.
+        An MPI library should be automatically installed on your system with ParaMonte.
+        If needed, you can download the Intel MPI library from their website and install it.
+
+    2.  Ensure the ParaDRAM object property `mpiEnabled` is `True` (the default is `False`).
+
+    3.  Before running the parallel simulation, in particular, on Windows systems, you may
+        need to define the necessary MPI environmental variables on your system.
+        To get information on how to define the variables, use the paramonte modules's 
+        function, verify(), as described in the above.
+
+    4.  Call your main Python code from a Python-aware mpiexec-aware command-line via,
+
+            mpi_launcher -n num_process python name_of_yor_python_code.py
+
+        where,
+
+        1.  "mpi_launcher" is the name of the MPI launcher
+            of the MPI runtime library that you have installed.
+            For example, the Intel MPI library's launcher is named mpiexec,
+            also recognized by Microsoft, MPICH, and OpenMPI.
+            Note that on supercomputers, the MPI launcher is usually
+            something other than mpiexec, for example: ibrun, mpirun, ...
+
+        2.  "num_process" represents the number of cores 
+            on which you want to run the program. Replace this
+            with the an integer number, like, 3 (meaning 3 cores).
+
+            Do not assign more processes than the available number of 
+            physical cores on your device/cluster. Assigning more cores 
+            than physically available on your system will only slow down 
+            your simulation.
+
+    Once the above script is saved in the file main.py, open a Python-aware and
+    MPI-aware command prompt to run the simulation in parallel via the MPI launcher,
 
         mpiexec -n 3 python main.py
 
@@ -216,48 +270,6 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
     these, the file "test_process_1_report.txt" contains the full description of all
     input specifications of the ParaDRAM simulation as well as other information
     about the simulation results and statistics.
-
-    Naming conventions
-    ------------------
-
-    camelCase naming style is used throughout the entire ParaMonte library, across
-    all programming languages: C/Fortran/Julia/MATLAB/Python
-
-    all simulation specifications start with a lowercase letter, including
-    scalar/vector/matrix int, float, string, or boolean variables.
-
-    The name of any variable that represents a vector of values is suffixed with "Vec",
-    for example: startPointVec, domainLowerLimitVec, ...
-
-    The name of any variable that represents a matrix of values is suffixed with "Mat",
-    for example: proposalStartCorMat, ...
-
-    The name of any variable that represents a list of varying-size values is suffixed
-    with "List", for example: variableNameList, ...
-
-    all functions or class methods begin with a lowercase verb.
-
-    significant attempt has been made to end all boolean variables with a passive verb,
-    such that the full variable name virtually forms an English-language statement
-    that should be either True or False, set by the user.
-
-    Tips
-    ----
-
-    When running ParaMonte samplers, in particular on multiple cores in parallel,
-    it would be best to close any such aggressive software/applications as
-    Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte
-    simulation output files, potentially causing the sampler to
-    crash before successful completion of the simulation.
-    These situations should however happen only scarcely.
-
-    On Windows systems, when restarting an old interrupted ParaDRAM simulation,
-    ensure your MATLAB session is also restarted before the simulation restart. 
-    This may be needed as Windows sometimes locks access to some or all of the
-    simulation output files.
-
-    To unset an already-set input simulation specification, simply set the
-    simulation attribute to None or re-instantiate the object.
 
     """
 
