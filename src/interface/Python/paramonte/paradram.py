@@ -376,11 +376,12 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
 
         self.spec._freeze()
 
-        self._mpiDisabled = True
+        self.mpiEnabled = False
+        self._mpiDisabled = not self.mpiEnabled
 
     ################################################################################################################################
 
-    def _getInputFile(self,inputFilePath,mpiEnabled):
+    def _getInputFile(self,inputFilePath): #,mpiEnabled):
 
         if inputFilePath is None:
 
@@ -458,7 +459,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
 
         else:
 
-            if not mpiEnabled:
+            if not self.mpiEnabled:
                 _pm.warn( msg = "Input namelist file is given by the user. \n"
                                 + "All simulation specifications will be read from the input file."
                         , methodName = _pm.names.paradram
@@ -480,7 +481,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     , ndim          : int
                     , getLogFunc    : _tp.Callable[[_tp.List[float]], float]
                     , buildMode     : _tp.Optional[str]     = "release"
-                    , mpiEnabled    : _tp.Optional[bool]    = False
+                    , mpiEnabled    : _tp.Optional[bool]    = None
                     , inputFilePath : _tp.Optional[str]     = None
                     ) -> None:
         """
@@ -507,9 +508,11 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         to be used in all other normal scenarios
                         for maximum runtime efficiency.
             mpiEnabled
-                optional logical (boolean) indicator which is False by default.
+                optional logical (boolean) indicator which is None by default.
                 If it is set to True, it will cause the ParaDRAM simulation
                 to run in parallel on the requested number of processors.
+                If it is not provided, its value will taken from the 
+                `mpiEnabled` property of the sampler object.
                 See ParaDRAM class information on how
                 to run a simulation in parallel.
             inputFilePath
@@ -569,17 +572,20 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , marginBot = 1
                         )
 
-        if not isinstance(mpiEnabled,bool):
-            _pm.abort   ( msg   = "The input argument mpiEnabled must be of type bool.\n"
-                                + "It is an optional logical (boolean) indicator which is False by default.\n"
-                                + "If it is set to True, it will cause the ParaDRAM simulation\n"
-                                + "to run in parallel on the requested number of processors.\n"
-                                + "See ParaDRAM class information on how to run a simulation in parallel.\n"
-                                + "You have entered mpiEnabled = " + str(mpiEnabled)
-                        , methodName = _pm.names.paradram
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
+        if mpiEnabled is not None:
+            if isinstance(mpiEnabled,bool):
+                self.mpiEnabled = mpiEnabled
+            else:
+                _pm.abort   ( msg   = "The input argument mpiEnabled must be of type bool.\n"
+                                    + "It is an optional logical (boolean) indicator which is False by default.\n"
+                                    + "If it is set to True, it will cause the ParaDRAM simulation\n"
+                                    + "to run in parallel on the requested number of processors.\n"
+                                    + "See ParaDRAM class information on how to run a simulation in parallel.\n"
+                                    + "You have entered mpiEnabled = " + str(mpiEnabled)
+                            , methodName = _pm.names.paradram
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
 
         if inputFilePath is not None and not isinstance(inputFilePath,str):
             _pm.abort   ( msg   = "The input argument inputFilePath must be of type str.\n"
@@ -616,8 +622,6 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     , mpiEnabled    : _tp.Optional[bool]    = False
                     , inputFilePath : _tp.Optional[str]     = None
                     ) -> None:
-
-        self._mpiDisabled = not mpiEnabled
 
         errorOccurred = not isinstance(ndim,int)
         if not errorOccurred: errorOccurred = ndim < 1
@@ -674,17 +678,21 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , marginBot = 1
                         )
 
-        if not isinstance(mpiEnabled,bool):
-            _pm.abort   ( msg   = "The input argument mpiEnabled must be of type bool.\n"
-                                + "It is an optional logical (boolean) indicator which is False by default.\n"
-                                + "If it is set to True, it will cause the ParaDRAM simulation\n"
-                                + "to run in parallel on the requested number of processors.\n"
-                                + "See ParaDRAM class information on how to run a simulation in parallel.\n"
-                                + "You have entered mpiEnabled = " + str(mpiEnabled)
-                        , methodName = _pm.names.paradram
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
+        if mpiEnabled is not None:
+            if isinstance(mpiEnabled,bool):
+                self.mpiEnabled = mpiEnabled
+                self._mpiDisabled = not mpiEnabled
+            else:
+                _pm.abort   ( msg   = "The input argument mpiEnabled must be of type bool.\n"
+                                    + "It is an optional logical (boolean) indicator which is False by default.\n"
+                                    + "If it is set to True, it will cause the ParaDRAM simulation\n"
+                                    + "to run in parallel on the requested number of processors.\n"
+                                    + "See ParaDRAM class information on how to run a simulation in parallel.\n"
+                                    + "You have entered mpiEnabled = " + str(mpiEnabled)
+                            , methodName = _pm.names.paradram
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
 
         if inputFilePath is not None and not isinstance(inputFilePath,str):
             _pm.abort   ( msg   = "The input argument inputFilePath must be of type str.\n"
@@ -701,20 +709,20 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , marginBot = 1
                         )
 
-        inputFileVec_pntr, inputFileLen = self._getInputFile(inputFilePath,mpiEnabled)
+        inputFileVec_pntr, inputFileLen = self._getInputFile(inputFilePath) #,mpiEnabled)
 
         platform = _sys.platform.lower()
         isWin32 = True if platform=="win32" else False
         isLinux = True if platform=="linux" else False
         isMacOS = True if platform=="darwin" else False
 
-        if mpiEnabled:
+        if self.mpiEnabled:
             parallelism = "_mpi"
         else:
             parallelism = ""
             _pm.note( msg   = "Running the ParaDRAM sampler in serial mode...\n"
                             + "To run the ParaDRAM sampler in parallel mode visit: cdslab.org/pm\n"
-                            + "If you are using Jupyter notebook, check Jupyter's terminal window\n"
+                            + "If you are using Jupyter notebook, check the Jupyter's terminal window\n"
                             + "for simulation progress and report."
                     , methodName = _pm.names.paradram
                     , marginTop = 1

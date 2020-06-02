@@ -560,10 +560,10 @@ def installMPI():
 
         prereqs = _Struct()
         prereqs.list = getDependencyList()
-        if platform.isWin32:
+        if _pm.platform.isWin32:
             intelMpiFilePrefix = "w_mpi-rt_p_"
             intelMpiFileSuffix = ".exe"
-        if platform.isLinux:
+        else: #if _pm.platform.isLinux:
             intelMpiFilePrefix = "l_mpi-rt_"
             intelMpiFileSuffix = ".tgz"
         for dependency in prereqs.list:
@@ -702,12 +702,14 @@ def installMPI():
 
             mpiRootDirNotFound = True
             installationRootDirList = [ "/opt", _pm.path.home ]
+
             while mpiRootDirNotFound:
 
                 mpiRootDir = []
                 mpivarsFilePathDefault = []
+                mpiTrunkDir = _os.path.join( "intel", "compilers_and_libraries_" + prereqs.mpi.intel.version, "linux", "mpi", "intel64" )
+
                 for installationRootDir in installationRootDirList:
-                    mpiTrunkDir = _os.path.join( "intel", "compilers_and_libraries_" + mpiVersion, "linux", "mpi", "intel64" )
                     mpiRootDir.append( _os.path.join( installationRootDir, mpiTrunkDir ) )
                     mpivarsFilePathDefault.append( _os.path.join( mpiRootDir[-1] , "bin" , "mpivars.sh" ) )
                     if _os.path.isdir(mpiRootDir[-1]):
@@ -847,7 +849,6 @@ def installMPI():
                                 , marginTop = 1
                                 , marginBot = 1
                                 )
-                    self.Err.abort();
 
     elif _pm.platform.isMacOS:
 
