@@ -46,7 +46,7 @@ module Cosmology_mod
 
     real(RK), parameter :: LIGHT_SPEED = 3.e5_RK                                    ! LIGHT_SPEED is the speed of light (Km/s).
     real(RK), parameter :: HUBBLE_CONST = 7.1e1_RK                                  ! HUBBLE_CONST is the Hubble constant in units of km/s/MPc.
-    real(RK), parameter :: HUBBLE_TIME_GYRS = 13.8_RK                                ! hubble time (liddle 2003, page 57) in units of gyrs
+    real(RK), parameter :: HUBBLE_TIME_GYRS = 13.8_RK                               ! hubble time (liddle 2003, page 57) in units of gyrs
     real(RK), parameter :: INVERSE_HUBBLE_CONST = 1._RK / HUBBLE_CONST              ! inverse of HUBBLE_CONST.
     real(RK), parameter :: LS2HC = LIGHT_SPEED / HUBBLE_CONST                       ! the speed of light in units of km/s divided by the Hubble constant.
     real(RK), parameter :: LOGLS2HC = log(LIGHT_SPEED) - log(HUBBLE_CONST)          ! log speed of light in units of km/s divided by the Hubble constant.
@@ -130,6 +130,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
+
     function getLookBackTime(zplus1,maxRelativeError,nRefinement) result(lookBackTime)
         !   This function calculates the lookback time in GYrs at given redshift for the assumed cosmological parameters.
         !   The input parameters are:
@@ -155,7 +156,7 @@ contains
         real(RK)                            :: maxRelativeErrorDefault, relerr
         integer(IK)                         :: neval, ierr, nRefinementDefault
 
-        nRefinementDefault = 5_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
+        nRefinementDefault = 7_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
         maxRelativeErrorDefault = 1.e-6_RK; if (present(maxRelativeError)) maxRelativeErrorDefault = maxRelativeError
 
         call doQuadRombClosed   ( getFunc           = getIntegrand              &

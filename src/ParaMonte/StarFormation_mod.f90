@@ -378,7 +378,9 @@ contains
         use, intrinsic :: iso_fortran_env, only: output_unit
         use Constants_mod, only: RK, HUGE_RK
         use Cosmology_mod, only: getLookBackTime
-        use Integration_mod, only: doQuadRombOpen, midinf, ErrorMessage
+        use Integration_mod, only: doQuadRombOpen, ErrorMessage!, midinf
+        use Integration_mod, only: midexp
+       !use Integration_mod, only: midinf
         implicit none
         real(RK)    , intent(in)                :: zplus1
         real(RK)    , intent(in), optional      :: zplus1Max, maxRelativeError
@@ -389,7 +391,7 @@ contains
         real(RK)                                :: zplus1MaxDefault, maxRelativeErrorDefault, relerr
         real(RK)                                :: binaryMergerRateDensity, lookBackTimeRef
 
-        nRefinementDefault = 5_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
+        nRefinementDefault = 7_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
         zplus1MaxDefault = HUGE_RK; if (present(zplus1Max)) zplus1MaxDefault = zplus1Max
         maxRelativeErrorDefault = 1.e-6_RK; if (present(maxRelativeError)) maxRelativeErrorDefault = maxRelativeError
 
@@ -399,7 +401,8 @@ contains
                                             )
 
         call doQuadRombOpen ( getFunc           = getBinaryMergerRateDensityIntegrand   &
-                            , integrate         = midinf                                &
+                            , integrate         = midexp                                &
+                           !, integrate         = midinf                                &
                             , lowerLim          = zplus1                                &
                             , upperLim          = zplus1MaxDefault                      &
                             , maxRelativeError  = maxRelativeErrorDefault               &

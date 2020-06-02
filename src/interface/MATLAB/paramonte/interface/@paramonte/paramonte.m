@@ -1086,6 +1086,7 @@ classdef paramonte %< dynamicprops
             if self.platform.isLinux; fileName = fileName + "linux"; end
             text = fileread(fullfile(self.path.auxil,fileName));
             dependencyList = [string(strtrim(strsplit(text,newline)))];
+            dependencyList = [dependencyList(~contains(dependencyList,"!"))]; % remove comment lines
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1104,7 +1105,7 @@ classdef paramonte %< dynamicprops
 
                 self.prereqs.list = self.getDependencyList();
                 for dependency = self.prereqs.list
-                    if ~contains(dependency,"!") % avoid comments
+                    %if ~contains(dependency,"!") % avoid comments
                         fullFilePath = fullfile( self.path.lib, dependency );
                         fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.kernel.dump() + "/" + dependency);
                         if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
@@ -1117,7 +1118,7 @@ classdef paramonte %< dynamicprops
                             self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
                             self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
                         end
-                    end
+                    %end
                 end
 
                 self.Err.msg    = "Installing the Intel MPI library for 64-bit architecture..." + newline ...
