@@ -1084,8 +1084,8 @@ classdef paramonte %< dynamicprops
             if self.platform.isWin32; fileName = fileName + "windows"; end
             if self.platform.isMacOS; fileName = fileName + "macos"; end
             if self.platform.isLinux; fileName = fileName + "linux"; end
-            text = fileread(fullfile(self.path.auxil,fileName));
-            dependencyList = [string(strtrim(strsplit(text,newline)))];
+            contents = fileread(fullfile(self.path.auxil,fileName));
+            dependencyList = [string(strtrim(strsplit(contents,newline)))];
             dependencyList = [dependencyList(~contains(dependencyList,"!"))]; % remove comment lines
         end
 
@@ -1104,19 +1104,21 @@ classdef paramonte %< dynamicprops
                 self.Err.note();
 
                 self.prereqs.list = self.getDependencyList();
+                if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
+                if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
                 for dependency = self.prereqs.list
                     %if ~contains(dependency,"!") % avoid comments
                         fullFilePath = fullfile( self.path.lib, dependency );
                         fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.kernel.dump() + "/" + dependency);
-                        if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
-                        if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
                         if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
                             self.prereqs.mpi.intel.fullFileName = string( dependency );
                             self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
-                            self.prereqs.mpi.intel.version = string( dependency{1}(1:end-4) );
-                            mpiFileName = self.prereqs.mpi.intel.version;
-                            self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
-                            self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
+                            self.prereqs.mpi.intel.fileName = strsplit(self.prereqs.mpi.intel.fullFileName,intelMpiFileSuffix); self.prereqs.mpi.intel.fileName = self.prereqs.mpi.intel.fileName(1);
+                            self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.fileName,intelMpiFilePrefix); self.prereqs.mpi.intel.version = self.prereqs.mpi.intel.version(2);
+                            %self.prereqs.mpi.intel.version = string( dependency{1}(1:end-4) );
+                            %mpiFileName = self.prereqs.mpi.intel.version;
+                            %self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
+                            %self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
                         end
                     %end
                 end
@@ -1156,7 +1158,7 @@ classdef paramonte %< dynamicprops
                     %    self.Err.abort();
                     %end
 
-                    mpiExtractDir = fullfile(self.path.lib, mpiFileName);
+                    mpiExtractDir = fullfile(self.path.lib, self.prereqs.mpi.intel.fileName);
                     self.Err.msg    = ..."If needed, use the following serial number when asked by the installer:" + newline + newline ...
                                     ...+ "    C44K-74BR9CFG" + newline + newline ...
                                     "When asked to choose the installation directory: if this is your personal computer, choose " + newline + newline ...
