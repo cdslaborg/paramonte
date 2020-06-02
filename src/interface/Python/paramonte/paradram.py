@@ -142,6 +142,7 @@ pmpd.runSampler ( ndim = 4                  # number of dimensions of the object
             is a logical (boolean) indicator that, if True, will
             cause the ParaDRAM simulation to run in parallel
             on the requested number of processors.
+            The default value is False.
 
     The above will generate a Parallel-ParaDRAM-simulation Python script in the current working 
     directory of Python. Note the only difference between the serial and parallel simulation
@@ -381,9 +382,9 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
 
     ################################################################################################################################
 
-    def _getInputFile(self,inputFilePath): #,mpiEnabled):
+    def _getInputFile(self,inputFile): #,mpiEnabled):
 
-        if inputFilePath is None:
+        if inputFile is None:
 
             ############################################################################################################################
             #### begin namelist generation from arguments
@@ -467,7 +468,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , marginBot = 1
                         )
 
-            inputFileVec_pntr = inputFilePath.encode("utf-8")                   # create byte-object from the external input file
+            inputFileVec_pntr = inputFile.encode("utf-8")                   # create byte-object from the external input file
 
         inputFileLen = len(inputFileVec_pntr) # byte-object length
        #inputFileLen_pntr = _ct.byref( _ct.c_size_t( len(inputFileVec_pntr) ) ) # pointer to byte-object length
@@ -482,7 +483,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     , getLogFunc    : _tp.Callable[[_tp.List[float]], float]
                     , buildMode     : _tp.Optional[str]     = "release"
                     , mpiEnabled    : _tp.Optional[bool]    = None
-                    , inputFilePath : _tp.Optional[str]     = None
+                    , inputFile     : _tp.Optional[str]     = None
                     ) -> None:
         """
         Run ParaDRAM sampler and return nothing.
@@ -515,7 +516,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 `mpiEnabled` property of the sampler object.
                 See ParaDRAM class information on how
                 to run a simulation in parallel.
-            inputFilePath
+            inputFile
                 optional string input representing the path to
                 an external input namelist of simulation specifications.
                 USE THIS OPTIONAL ARGUMENT WITH CAUTION AND
@@ -576,7 +577,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             if isinstance(mpiEnabled,bool):
                 self.mpiEnabled = mpiEnabled
             else:
-                _pm.abort   ( msg   = "The input argument mpiEnabled must be of type bool.\n"
+                _pm.abort   ( msg   = "The input argument `mpiEnabled` must be of type bool.\n"
                                     + "It is an optional logical (boolean) indicator which is False by default.\n"
                                     + "If it is set to True, it will cause the ParaDRAM simulation\n"
                                     + "to run in parallel on the requested number of processors.\n"
@@ -587,8 +588,8 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                             , marginBot = 1
                             )
 
-        if inputFilePath is not None and not isinstance(inputFilePath,str):
-            _pm.abort   ( msg   = "The input argument inputFilePath must be of type str.\n"
+        if inputFile is not None and not isinstance(inputFile,str):
+            _pm.abort   ( msg   = "The input argument `inputFile` must be of type str.\n"
                                 + "It is an optional string input representing the path to\n"
                                 + "an external input namelist of simulation specifications.\n"
                                 + "USE THIS OPTIONAL ARGUMENT WITH CAUTION AND\n"
@@ -596,7 +597,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                                 + "Specifying this option will cause ParaDRAM to ignore\n"
                                 + "all other paraDRAM simulation specifications set by\n"
                                 + "the user via ParaDRAM instance attributes.\n"
-                                + "You have entered inputFilePath = " + str(inputFilePath)
+                                + "You have entered inputFile = " + str(inputFile)
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
@@ -610,7 +611,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , getLogFunc2arg
                         , buildMode
                         , mpiEnabled
-                        , inputFilePath
+                        , inputFile
                         )
 
     ################################################################################################################################
@@ -620,7 +621,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     , getLogFunc    : _tp.Callable[[int,_tp.List[float]], float]
                     , buildMode     : _tp.Optional[str]     = "release"
                     , mpiEnabled    : _tp.Optional[bool]    = False
-                    , inputFilePath : _tp.Optional[str]     = None
+                    , inputFile     : _tp.Optional[str]     = None
                     ) -> None:
 
         errorOccurred = not isinstance(ndim,int)
@@ -692,8 +693,8 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                             , marginBot = 1
                             )
 
-        if inputFilePath is not None and not isinstance(inputFilePath,str):
-            _pm.abort   ( msg   = "The input argument inputFilePath must be of type str.\n"
+        if inputFile is not None and not isinstance(inputFile,str):
+            _pm.abort   ( msg   = "The input argument `inputFile` must be of type str.\n"
                                 + "It is an optional string input representing the path to\n"
                                 + "an external input namelist of simulation specifications.\n"
                                 + "USE THIS OPTIONAL ARGUMENT WITH CAUTION AND\n"
@@ -701,13 +702,13 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                                 + "Specifying this option will cause ParaDRAM to ignore\n"
                                 + "all other paraDRAM simulation specifications set by\n"
                                 + "the user via ParaDRAM instance attributes.\n"
-                                + "You have entered inputFilePath = " + str(inputFilePath)
+                                + "You have entered inputFile = " + str(inputFile)
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
                         )
 
-        inputFileVec_pntr, inputFileLen = self._getInputFile(inputFilePath) #,mpiEnabled)
+        inputFileVec_pntr, inputFileLen = self._getInputFile(inputFile) #,mpiEnabled)
 
         platform = _sys.platform.lower()
         isWin32 = True if platform=="win32" else False
