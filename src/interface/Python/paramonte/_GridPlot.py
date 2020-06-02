@@ -495,18 +495,15 @@ class GridPlot:
 
         # check data type
 
-        noDataPassed = False
+        noDataPassed = ""
         if self._dfref is None:
-            noDataPassed = True
-            fatalmsg = "It appears that no data has been passed for plotting.\n"
+            noDataPassed = "It appears that no data has been passed for plotting.\n"
         elif not isinstance(self._dfref,_wref.ref):
-            noDataPassed = True
-            fatalmsg = "It appears that you have messed with the\ninternal representation of data in the object.\n"
+            noDataPassed = "It appears that you have messed with the\ninternal representation of data in the object.\n"
         elif not isinstance(self._dfref(),_pd.DataFrame):
-            noDataPassed = True
-            fatalmsg = ""
+            noDataPassed = ""
         if noDataPassed:
-            raise Exception ( fatalmsg
+            raise Exception ( noDataPassed
                             + "The input data must be a pandas' dataframe.\n"
                             + "Please pass a dataFrame to the constructor or at\n"
                             + "the time of calling the object (which is callable with\n"
@@ -683,6 +680,7 @@ class GridPlot:
     def _addcbar(self):
 
         mappable = None
+        cbarLabel = ""
         for scatterplotrow, lineplotrow in zip( self.currentFig.scatterplotList[:], self.currentFig.lineplotList[:] ):
             for scatterplot, lineplot in zip(scatterplotrow, lineplotrow):
                 if scatterplot != []:

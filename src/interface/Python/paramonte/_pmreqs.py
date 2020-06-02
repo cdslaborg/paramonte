@@ -698,11 +698,13 @@ def installMPI():
 
             _os.chdir(currentDir)
 
-            setupFilePath = _os.path.join( _pm.path.root, "setup.sh" )
+            setupFilePath = _os.path.join( _pm.path.auxil, "setup.sh" )
+
+            installationRootDirList = [ "/opt", _pm.path.home ]
+            mpivarsFilePathDefault = ["",""]
+            mpiRootDir = ["",""]
 
             mpiRootDirNotFound = True
-            installationRootDirList = [ "/opt", _pm.path.home ]
-
             while mpiRootDirNotFound:
 
                 mpiRootDir = []

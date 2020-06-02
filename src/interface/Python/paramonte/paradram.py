@@ -952,8 +952,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
        #    abslibpath =
        #    return _os.system("lsof -p {} | grep {} > /dev/null".format( _os.getpid(), _os.path.abspath(libpath) )) == 0
 
-        def dlclose(libdll):
-               libdll.dlclose(lib._handle)
+        def dlclose(libdll): libdll.dlclose(libdll._handle)
 
         if isWin32:
             handle = _ct.windll.kernel32.LoadLibraryA(libpath)
