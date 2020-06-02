@@ -55,26 +55,55 @@ class _Struct:
 ####################################################################################################################################
 
 from pathlib import Path as _Path
+
 path = _Struct()
 path.root = _os.path.dirname(_os.path.abspath(__file__))
 path.auxil = _os.path.join(path.root,"auxil")
-#path.home = _os.path.expanduser("~")
-path.home = str(_Path.home())
+path.home = str(_Path.home()) # path.home = _os.path.expanduser("~")
 path.lib = path.root
 
 _sys.path.append(path.root)
 
 ####################################################################################################################################
 
-arch = "x86" if "32" in _platform.architecture()[0] else "x64"
+platform = _Struct()
+platform.arch = "x86" if "32" in _platform.architecture()[0] else "x64"
+platform.name = _sys.platform.lower()
+platform.isWin32 = True if platform.name=="win32" else False
+platform.isLinux = True if platform.name=="linux" else False
+platform.isMacOS = True if platform.name=="darwin" else False
 
 ####################################################################################################################################
 
 names = _Struct()
 names.paramonte = "ParaMonte"
 names.paradram = "ParaDRAM"
+names.paradise = "ParaDISE"
 names.paranest = "ParaNest"
 names.paratemp = "ParaTemp"
+
+####################################################################################################################################
+
+website = _Struct()
+
+website.home = _Struct()
+website.home.url = "https://www.cdslab.org/paramonte/"
+
+website.github = _Struct()
+website.github.issues = _Struct()
+website.github.issues.url = "https://github.com/cdslaborg/paramonte/issues"
+
+website.intel = _Struct()
+website.intel.mpi = _Struct()
+website.intel.mpi.home = _Struct()
+website.intel.mpi.home.url = "https://software.intel.com/en-us/mpi-library"
+
+website.intel.mpi.windows = _Struct()
+website.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-with-mpi-for-windows"
+
+website.openmpi = _Struct()
+website.openmpi.home = _Struct()
+website.openmpi.home.url = "https://www.open-mpi.org/"
 
 ####################################################################################################################################
 

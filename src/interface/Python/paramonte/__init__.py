@@ -174,6 +174,7 @@ def helpme( topic : _tp.Optional[str] = None ):
 
     topics =    { "paradram": ParaDRAM
                 , "version" : version
+                , "verify"  : verify
                 , "helpme"  : helpme
                 , "build"   : build
                 }
