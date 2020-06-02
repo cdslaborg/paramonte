@@ -309,6 +309,8 @@ class Target:
         xlimCurrent = self.currentFig.axes.get_xlim()
         ylimCurrent = self.currentFig.axes.get_ylim()
 
+        legendEnabled = False
+
         if axhlineEnabled:
 
                 if "xmin" not in self.axhline_kws.keys(): self.axhline_kws["xmin"] = xlimCurrent[0]

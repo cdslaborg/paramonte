@@ -501,7 +501,7 @@ class GridPlot:
         elif not isinstance(self._dfref,_wref.ref):
             noDataPassed = "It appears that you have messed with the\ninternal representation of data in the object.\n"
         elif not isinstance(self._dfref(),_pd.DataFrame):
-            noDataPassed = ""
+            noDataPassed = "The input data is not a pandas' dataframe.\n"
         if noDataPassed:
             raise Exception ( noDataPassed
                             + "The input data must be a pandas' dataframe.\n"
