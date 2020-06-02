@@ -647,20 +647,18 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , marginBot = 1
                         )
 
+        stype = None
+        dummyList = None
+        errorOccurred = True
         if isinstance(buildMode,str):
             errorOccurred = False
-            stype = None
-            dummyList = None
             if "-" in buildMode:
                 dummyList = buildMode.split("-")
                 buildMode = dummyList[0] # build type
                 stype = dummyList[1] # compiler suite
-        else:
-            errorOccurred = True
 
         if not errorOccurred: errorOccurred = buildMode not in ["release","testing","debug"]
-        if not errorOccurred and stype is not None:
-            errorOccurred = not (stype=="gnu" or stype=="intel")
+        if not errorOccurred and stype is not None: errorOccurred = not (stype=="gnu" or stype=="intel")
         if errorOccurred:
             if dummyList is not None: buildMode = "-".join(dummyList)
             _pm.abort   ( msg   = "The input argument buildMode must be of type str.\n"
@@ -770,16 +768,14 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             for path in pathList:
                 pathLower = path.lower().replace("\\","")
                 if ("mpiintel64bin" in pathLower):
-                    mpiFound = True
+                    #mpiFound = True
+                    #bldMode = buildMode
+                    #if bldMode=="testing": bldMode = "release"
+                    mpiPath = _os.path.join(path,"release")
+                    _os.environ["PATH"] = mpiPath + _os.pathsep + _os.environ["PATH"]
+                    libfabricPath = _os.path.join(_os.path.dirname(path),"libfabric","bin")
+                    _os.environ["PATH"] = libfabricPath + _os.pathsep + _os.environ["PATH"]
                     break
-
-            if mpiFound:
-                #bldMode = buildMode
-                #if bldMode=="testing": bldMode = "release"
-                mpiPath = _os.path.join(path,"release")
-                _os.environ["PATH"] = mpiPath + _os.pathsep + _os.environ["PATH"]
-                libfabricPath = _os.path.join(_os.path.dirname(path),"libfabric","bin")
-                _os.environ["PATH"] = libfabricPath + _os.pathsep + _os.environ["PATH"]
 
         else:
 
@@ -837,9 +833,13 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             pmcsList.pop(pmcsList.index(stype))
             pmcsList.insert(0,stype)
 
-        if isWin32: libnameSuffix = "_python" + parallelism + "_windows_" + _pm.platform.arch + "_mt.dll"
-        if isMacOS: libnameSuffix = "_python" + parallelism + "_darwin_" + _pm.platform.arch + "_mt.dylib"
-        if isLinux: libnameSuffix = "_python" + parallelism + "_linux_" + _pm.platform.arch + "_mt.so"
+        libnameSuffix = "_python" + parallelism
+        if isWin32: libnameSuffix = libnameSuffix + "_windows_" + _pm.platform.arch + "_mt.dll"
+        if isMacOS: libnameSuffix = libnameSuffix + "_darwin_" + _pm.platform.arch + "_mt.dylib"
+        if isLinux: libnameSuffix = libnameSuffix + "_linux_" + _pm.platform.arch + "_mt.so"
+
+        libpath = None
+        libFound = False
         for buildMode in buildModeList:
 
             for pmcs in pmcsList:
