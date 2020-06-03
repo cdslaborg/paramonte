@@ -286,10 +286,10 @@ class ScatterPlot:
 
         if self.scatter_kws==(): self.scatter_kws={}
         if isinstance(self.scatter_kws,dict):
-            if "s" not in self.scatter_kws.keys(): self.scatter_kws["s"] = 8
+            if "s" not in self.scatter_kws.keys(): self.scatter_kws["s"] = 3
             if "cmap" not in self.scatter_kws.keys(): self.scatter_kws["cmap"] = "autumn"
             if "alpha" not in self.scatter_kws.keys(): self.scatter_kws["alpha"] = 1
-            if "edgecolor" not in self.scatter_kws.keys(): self.scatter_kws["edgecolor"] = ""
+            if "edgecolor" not in self.scatter_kws.keys(): self.scatter_kws["edgecolor"] = None
             if "zorder" not in self.scatter_kws.keys(): self.scatter_kws["zorder"] = 2
             #if cEnabled: self.scatter_kws["c"] = list(cdata)
         elif scatterEnabled:
