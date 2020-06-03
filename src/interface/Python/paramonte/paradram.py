@@ -58,8 +58,11 @@ import ctypes as _ct
 
 class ParaDRAM:
     """
-    This is the ParaDRAM class for generating instances of the serial and parallel
-    Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
+
+    .. py:class:: ParaDRAM
+
+    This is the **ParaDRAM** class for generating instances of the **serial** and **parallel**
+    **Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo**
     sampler of the ParaMonte library.
 
     All ParaDRAM class attributes (input arguments to the ParaDRAM constructor)
@@ -69,80 +72,83 @@ class ParaDRAM:
     Once you set the optional attributes to your desired values,
     call the ParaDRAM sampler via the object's method runSampler().
 
-    EXAMPLE SERIAL USAGE
-    ====================
+    **Example serial usage**
 
     Copy and paste the following code enclosed between the
     two comment lines in your python/ipython/jupyter session
     (make sure the indentations of the pasted lines comply with Python rules):
 
-##################################
-import paramonte as pm
-import numpy as np
-def getLogFunc(Point):
-    # return the log of the standard multivariate
-    # Normal density function with ndim dimensions
-    return -0.5 * np.sum( np.double( Point )**2 )
-pmpd = pm.ParaDRAM()
-pmpd.runSampler ( ndim = 4                  # number of dimensions of the objective function
-                , getLogFunc = getLogFunc   # the objective function
-                )
-##################################
+    .. code-block:: python
+        :linenos:
+
+        ##################################
+        import paramonte as pm
+        import numpy as np
+        def getLogFunc(Point):
+            # return the log of the standard multivariate
+            # Normal density function with ndim dimensions
+            return -0.5 * np.sum( np.double( Point )**2 )
+        pmpd = pm.ParaDRAM()
+        pmpd.runSampler ( ndim = 4                  # number of dimensions of the objective function
+                        , getLogFunc = getLogFunc   # the objective function
+                        )
+        ##################################
 
     where,
 
-        ndim
-            represents the number of dimensions of the domain
-            of the user's objective function getLogFunc() and,
+    ``ndim``
+        represents the number of dimensions of the domain
+        of the user's objective function getLogFunc() and,
 
-        getLogFunc()
-            represents the user's objective function to be sampled,
-            which must take a single input argument of type numpy
-            float64 array of length ndim and must return the
-            natural logarithm of the objective function.
+    ``getLogFunc()``
+        represents the user's objective function to be sampled,
+        which must take a single input argument of type numpy
+        float64 array of length ndim and must return the
+        natural logarithm of the objective function.
 
-    EXAMPLE PARALLEL USAGE
-    ======================
+    **Example parallel usage**
 
     Copy and paste the following code enclosed between the
     two comment lines in your python/ipython/jupyter session
     (make sure the indentations of the pasted lines comply with Python rules):
 
-##################################
-with open("main.py", "w") as file:
-    file.write  ('''
-import paramonte as pm
-import numpy as np
-def getLogFunc(Point):
-    # return the log of the standard multivariate
-    # Normal density function with ndim dimensions
-    return -0.5 * np.sum( np.double( Point )**2 )
-pmpd = pm.ParaDRAM()
-pmpd.mpiEnabled = True
-pmpd.runSampler ( ndim = 4                  # number of dimensions of the objective function
-                , getLogFunc = getLogFunc   # the objective function
-                )
-''')
-##################################
+    .. code-block:: python
+        :linenos:
+
+        ##################################
+        with open("main.py", "w") as file:
+            file.write  ('''
+        import paramonte as pm
+        import numpy as np
+        def getLogFunc(Point):
+            # return the log of the standard multivariate
+            # Normal density function with ndim dimensions
+            return -0.5 * np.sum( np.double( Point )**2 )
+        pmpd = pm.ParaDRAM()
+        pmpd.mpiEnabled = True
+        pmpd.runSampler ( ndim = 4                  # number of dimensions of the objective function
+                        , getLogFunc = getLogFunc   # the objective function
+                        )
+        ''')
+        ##################################
 
     where,
 
-        ndim
-            represents the number of dimensions of the domain
-            of the user's objective function getLogFunc() and,
+    ``ndim``
+        represents the number of dimensions of the domain
+        of the user's objective function getLogFunc() and,
 
-        getLogFunc()
-            represents the user's objective function that is to be sampled.
-            This function must take a single input argument of type numpy
-            float64 array of length ndim and must return the natural
-            logarithm of the objective function.
+    ``getLogFunc()``
+        represents the user's objective function that is to be sampled.
+        This function must take a single input argument of type numpy
+        float64 array of length ndim and must return the natural
+        logarithm of the objective function.
 
-
-        mpiEnabled
-            is a logical (boolean) indicator that, if True, will
-            cause the ParaDRAM simulation to run in parallel
-            on the requested number of processors.
-            The default value is False.
+    ``mpiEnabled``
+        is a logical (boolean) indicator that, if True, will
+        cause the ParaDRAM simulation to run in parallel
+        on the requested number of processors.
+        The default value is False.
 
     The above will generate a Parallel-ParaDRAM-simulation Python script in the current working 
     directory of Python. Note the only difference between the serial and parallel simulation
@@ -152,45 +158,56 @@ pmpd.runSampler ( ndim = 4                  # number of dimensions of the object
     Assuming that you already have an MPI runtime library installed on your system (see below), 
     you can now execute this Python script file `main.py` in parallel in two ways:
 
-        1.  from inside ipython or jupyter: type the following,
+    1.  from inside ipython or jupyter: type the following,
 
-               !mpiexec -n 3 python main.py
+        .. code-block:: bash
 
-        2.  outside of Python environment,
-            from within a Bash shell (on Linux or Mac) or,
-            from within an Anaconda command prompt on Windows,
-            type the following,
+            !mpiexec -n 3 python main.py
 
-               mpiexec -n 3 python main.py
+    2.  outside of Python environment,
+        from within a Bash shell (on Linux or Mac) or,
+        from within an Anaconda command prompt on Windows,
+        type the following,
 
-        NOTE: On Windows platform, if you are using the Intel MPI library,
-        NOTE: we recommend that you also specify the extra flag -localonly, 
-        NOTE:
-        NOTE:     mpiexec -localonly -n 3 python main.py
-        NOTE:
-        NOTE: This will cause the simulations to run in parallel only on a single node,
-        NOTE: but more importantly, it will also prevent the use of Hydra service and
-        NOTE: the requirement for its registration. If you are not on a Windows cluster, 
-        NOTE: (e.g., you are using your personal device), then we highly recommend
-        NOTE: specifying this flag.
+        .. code-block:: bash
 
-        In all cases in the above, the script `main.py` will run on 3 processors.
-        Feel free to change the number of processors to any number desired. But do 
-        not request more than the available number of physical cores on your system.
+            mpiexec -n 3 python main.py
 
-    TIPS ON PARALLEL USAGE
-    ======================
+    **Note**
+
+    On Windows platform, if you are using the Intel MPI library,
+    we recommend that you also specify the extra flag -localonly, 
+
+    .. code-block:: bash
+
+        mpiexec -localonly -n 3 python main.py
+
+    This will cause the simulations to run in parallel only on a single node,
+    but more importantly, it will also prevent the use of Hydra service and
+    the requirement for its registration. If you are not on a Windows cluster, 
+    (e.g., you are using your personal device), then we highly recommend
+    specifying this flag.
+
+
+    In all cases in the above, the script `main.py` will run on 3 processors.
+    Feel free to change the number of processors to any number desired. But do 
+    not request more than the available number of physical cores on your system.
+
+    **Tips on parallel usage**
 
     For up-to-date detailed instructions on how to run simulations in parallel visit: 
 
-        cdslab.org/pm
+    `<https://www.cdslab.org/paramonte>`_
 
     You can also use the following commands on the Python command-line,
 
-##################################
-import paramonte as pm
-pm.verify()
-##################################
+    .. code-block:: python
+        :linenos:
+
+        ##################################
+        import paramonte as pm
+        pm.verify()
+        ##################################
 
     to obtain specific information on how to run a parallel simulation,
     in particular, in relation to your current installation of ParaMonte.
@@ -212,6 +229,8 @@ pm.verify()
         function, verify(), as described in the above.
 
     4.  Call your main Python code from a Python-aware mpiexec-aware command-line via,
+
+        .. code-block:: bash
 
             mpi_launcher -n num_process python name_of_yor_python_code.py
 
@@ -236,16 +255,17 @@ pm.verify()
     Once the above script is saved in the file main.py, open a Python-aware and
     MPI-aware command prompt to run the simulation in parallel via the MPI launcher,
 
+    .. code-block:: bash
+
         mpiexec -n 3 python main.py
 
     This will execute the Python script main.py on three processes (images).
     Keep in mind that on Windows systems you may need to define MPI environmental
     variables before a parallel simulation, as descibed in the above.
 
-    ParaDRAM Class Attributes
-    -------------------------
+    **ParaDRAM Class Attributes**
 
-    (see also: cdslab.org/pm)
+    (see also: `<https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/>`_)
 
     All input specifications (attributes) of a ParaDRAM simulation are optional.
     However, it is recomended that you provide as much information as possible
@@ -258,13 +278,16 @@ pm.verify()
     The best way to learn about individual ParaDRAM simulation attributes
     is to a run a minimal serial simulation with the following Python script,
 
-##################################
-from paramonte import ParaDRAM
-pmpd = ParaDRAM()
-pmpd.outputFileName = "./test"
-def getLogFunc(Point): return -sum(Point**2)
-pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
-##################################
+    .. code-block:: python
+        :linenos:
+
+        ##################################
+        from paramonte import ParaDRAM
+        pmpd = ParaDRAM()
+        pmpd.outputFileName = "./test"
+        def getLogFunc(Point): return -sum(Point**2)
+        pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
+        ##################################
 
     Running this code will generate a set of simulation output files (in the current
     working directory of Python) that begin with the prefix "test_process_1". Among

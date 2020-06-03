@@ -55,16 +55,18 @@ class _struct:
 
 class AutoCorr:
     """
-    This is the class for generating object of type CorMat which, 
-    upon construction, will provide methods to compute and plot the 
+    |
+    This is the base class for generating object of type **AutoCorr**.  
+    Upon construction, will provide methods to compute and plot the 
     autocorrelations of the selected columns of the input dataFrame.
 
-    Parameters
-    ----------
-        dataFrame
+    **Parameters**
+
+        :dataFrame:
             a Pandas dataframe based upon the selected comlumns of which 
             the autocorrelations will be computed.
-        columns
+
+        :columns:
             optional argument that determines the columns of the input dataFrame to be 
             used in the computation of the autocorrelations. It can have three forms:
                 1. a list of column indices from the input dataFrame.
@@ -75,7 +77,8 @@ class AutoCorr:
                 2. columns = ["SampleLogFunc","SampleVariable1"]
                 3. columns = range(17,7,-2)
             If not provided, the default behavior includes all columns of the dataFrame.
-        rows
+
+        :rows:
             optional argument that determines the rows of the input dataFrame to be 
             used in the computation of the autocorrelations. It can be either:
                 1. a range(start,stop,step), or, 
@@ -86,7 +89,8 @@ class AutoCorr:
             If not provided, the default behavior includes all rows of the dataFrame.
 
     Attributes
-    ----------
+    ==========
+
         All of the parameters described above, except dataFrame.
             a reference to the dataFrame will be implicitly stored in the object.
         df
@@ -110,6 +114,8 @@ class AutoCorr:
                 , columns       : _tp.Optional[ _tp.Union[ range , _tp.List[int] , _tp.List[str] ] ] = None
                 , rows          : _tp.Optional[ _tp.Union[ range , _tp.List[int] ] ] = None
                 ):
+        """
+        """
 
         self._dfref = None if dataFrame is None else _wref.ref(dataFrame)
         self.columns = columns
