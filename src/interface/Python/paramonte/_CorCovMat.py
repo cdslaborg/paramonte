@@ -43,8 +43,7 @@ import _message as msg
 import _dfutils as dfutils
 #from _HeatMapPlot import HeatMapPlot
 
-class _struct:
-    pass
+class _Struct: pass
 
 ####################################################################################################################################
 #### CorCovMat class
@@ -70,21 +69,25 @@ class CorCovMat:
                 , **kwargs
                 ):
         """
-        calls the get() method of the current instance of the class.
 
-        Parameters
-        ----------
-            reself
-                logical variable. If True, an instance of the object 
-                will be returned upon exit to the calling routine.
-                The default value is False.
-            also, any attributes of the current instance of the class.
+        .. py:method:: __call__(self, reself = False, **kwargs)
 
-        Returns
-        -------
-            the object self if reself = True otherwise, None.
-            However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+        Calls the ``get()`` method of the current instance of the class.
+
+            **Parameters**
+
+                reself
+                    logical variable. If True, an instance of the object 
+                    will be returned upon exit to the calling routine.
+                    The default value is False.
+
+                also, any attributes of the current instance of the class.
+
+            **Returns**
+
+                the object self if ``reself = True`` otherwise, None.
+                However, this method causes side-effects by manipulating 
+                the existing attributes of the object.
 
         """
 
@@ -105,17 +108,20 @@ class CorCovMat:
 
     def get(self):
         """
-        compute the correlation matrix of the selected columns 
+
+        .. py:method:: get(self)
+
+        Computes the correlation matrix of the selected columns 
         of the input dataframe to the object's constructor.
 
-        Parameters
-        ----------
-            None
+            **Parameters**
 
-        Returns
-        -------
-            None. However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+                None
+
+            **Returns**
+
+                None. However, this method causes side-effects by manipulating 
+                the existing attributes of the object.
 
         """
 
@@ -198,7 +204,7 @@ class CorCovMat:
 
         from _HeatMapPlot import HeatMapPlot
 
-        self.plot = _struct()
+        self.plot = _Struct()
         self.plot.heatmap = HeatMapPlot ( dataFrame = self.df
                                         , heatmap_kws = heatmap_kws
                                         , annotPrecision = annotPrecision
@@ -212,61 +218,79 @@ class CorCovMat:
 
 class CorMat(CorCovMat):
     """
-    This is the class for generating object of type CorMat which, 
+
+    .. py:class:: CorMat
+
+    This is the class for generating object of type ``CorMat`` which, 
     upon construction, will provide methods to compute and plot the 
     correlation matrix of the selected columns of the input dataFrame.
 
-    Parameters
-    ----------
-        dataFrame
-            a Pandas dataframe based upon the selected comlumns of which 
-            the correlation matrix will be computed.
-        columns
-            optional argument that determines the columns of the input dataFrame to be 
-            used in the computation of the correlation matrix. It can have three forms:
-                1. a list of column indices from the input dataFrame.
-                2. a list of column names from dataFrame.columns.
-                3. a range(start,stop,step), representing the column indices in dataFrame.
-            Examples:
-                1. columns = [0,1,4,3]
-                2. columns = ["SampleLogFunc","SampleVariable1"]
-                3. columns = range(17,7,-2)
-            If not provided, the default behavior includes all columns of the dataFrame.
-        rows
-            optional argument that determines the rows of the input dataFrame to be 
-            used in the computation of the correlation matrix. It can be either:
-                1. a range(start,stop,step), or, 
-                2. a list of row indices from dataFrame.index.
-            Examples:
-                1. rows = range(17,7,-2)
-                2. rows = [i for i in range(7,17)]
-            If not provided, the default behavior includes all rows of the dataFrame.
-        method
-            optional string value representing the method to be used 
-            for the computation of correlations:
-                1. 'pearson'  : standard correlation coefficient, 
-                2. 'kendall'  : Kendall Tau correlation coefficient, 
-                3. 'spearman' : Spearman rank correlation.
-        The default value is 'pearson'.
+        **Parameters**
 
-    Attributes
-    ----------
-        All of the parameters described above, except dataFrame.
-            a reference to the dataFrame will be implicitly stored in the object.
-        df
-            a pandas dataframe containing the computed correlation matrix
-        plot
-            a structure containing the following plotting tools:
-                heatmap
-                    a callable object of class HeatMap which will enable 
-                    plotting of the correlation matrix.
+            dataFrame
+                a Pandas dataframe based upon the selected comlumns of which 
+                the correlation matrix will be computed.
 
-    Returns
-    -------
-        corMat
-            an object of type class CorMat.
+            columns
+                optional argument that determines the columns of the input dataFrame to be 
+                used in the computation of the correlation matrix. It can have three forms:
 
-    ----------------------------------------------------------------------
+                    1. a list of column indices from the input dataFrame.
+                    2. a list of column names from dataFrame.columns.
+                    3. a ``range(start,stop,step)``, representing the column indices in dataFrame.
+
+                Examples:
+
+                    1. ``columns = [0,1,4,3]``
+                    2. ``columns = ["SampleLogFunc","SampleVariable1"]``
+                    3. ``columns = range(17,7,-2)``
+
+                If not provided, the default behavior includes all columns of the dataFrame.
+
+            rows
+                optional argument that determines the rows of the input dataFrame to be 
+                used in the computation of the correlation matrix. It can be either:
+
+                    1. a ``range(start,stop,step)``, or, 
+                    2. a list of row indices from dataFrame.index.
+
+                Examples:
+
+                    1. ``rows = range(17,7,-2)``
+                    2. ``rows = [i for i in range(7,17)]``
+
+                If not provided, the default behavior includes all rows of the dataFrame.
+
+            method
+                optional string value representing the method to be used 
+                for the computation of correlations:
+                    1. ``'pearson'``    : standard correlation coefficient, 
+                    2. ``'kendall'``    : Kendall Tau correlation coefficient, 
+                    3. ``'spearman'``   : Spearman rank correlation.
+
+                The default value is ``'pearson'``.
+
+        **Attributes**
+
+            All of the parameters described above, except dataFrame.
+                a reference to the dataFrame will be implicitly stored in the object.
+
+            df
+                a pandas dataframe containing the computed correlation matrix
+
+            plot
+                a structure containing the following plotting tools:
+
+                    heatmap
+                        a callable object of class HeatMap which will enable 
+                        plotting of the correlation matrix.
+
+        **Returns**
+
+            self
+                an object of type class ``CorMat``.
+
+    ---------------------------------------------------------------------------
     """
 
     def __init__( self
@@ -288,54 +312,71 @@ class CorMat(CorCovMat):
 
 class CovMat(CorCovMat):
     """
-    This is the class for generating object of type CovMat which, 
+
+    .. py:class:: CovMat
+
+    This is the class for generating object of type ``CovMat`` which, 
     upon construction, will provide methods to compute and plot the 
     covariance matrix of the selected columns of the input dataFrame.
 
-    Parameters
-    ----------
-        dataFrame
-            a Pandas dataframe based upon the selected comlumns of which 
-            the covariance matrix will be computed.
-        columns
-            optional argument that determines the columns of the input dataFrame to be 
-            used in the computation of the covariance matrix. It can have three forms:
-                1. a list of column indices from the input dataFrame.
-                2. a list of column names from dataFrame.columns.
-                3. a range(start,stop,step), representing the column indices in dataFrame.
-            Examples:
-                1. columns = [0,1,4,3]
-                2. columns = ["SampleLogFunc","SampleVariable1"]
-                3. columns = range(17,7,-2)
-            If not provided, the default behavior includes all columns of the dataFrame.
-        rows
-            optional argument that determines the rows of the input dataFrame to be 
-            used in the computation of the covariance matrix. It can be either:
-                1. a range(start,stop,step), or, 
-                2. a list of row indices from dataFrame.index.
-            Examples:
-                1. rows = range(17,7,-2)
-                2. rows = [i for i in range(7,17)]
-            If not provided, the default behavior includes all rows of the dataFrame.
+        **Parameters**
 
-    Attributes
-    ----------
-        All of the parameters described above, except dataFrame.
-            a reference to the dataFrame will be implicitly stored in the object.
-        df
-            a pandas dataframe containing the computed covariance matrix
-        plot
-            a structure containing the following plotting tools:
-                heatmap
-                    a callable object of class HeatMap which will enable 
-                    plotting of the correlation matrix.
+            dataFrame
+                a Pandas dataframe based upon the selected comlumns of which 
+                the covariance matrix will be computed.
 
-    Returns
-    -------
-        covMat
-            an object of type class CovMat.
+            columns
+                optional argument that determines the columns of the input dataFrame to be 
+                used in the computation of the covariance matrix. It can have three forms:
 
-    ----------------------------------------------------------------------
+                    1. a list of column indices from the input dataFrame.
+                    2. a list of column names from dataFrame.columns.
+                    3. a ``range(start,stop,step)``, representing the column indices in dataFrame.
+
+                Examples:
+
+                    1. ``columns = [0,1,4,3]``
+                    2. ``columns = ["SampleLogFunc","SampleVariable1"]``
+                    3. ``columns = range(17,7,-2)``
+
+                If not provided, the default behavior includes all columns of the dataFrame.
+
+            rows
+                optional argument that determines the rows of the input dataFrame to be 
+                used in the computation of the covariance matrix. It can be either:
+
+                    1. a ``range(start,stop,step)``, or, 
+                    2. a list of row indices from dataFrame.index.
+
+                Examples:
+
+                    1. ``rows = range(17,7,-2)``
+                    2. ``rows = [i for i in range(7,17)]``
+
+                If not provided, the default behavior includes all rows of the dataFrame.
+
+        **Attributes**
+
+
+            All of the parameters described above, except dataFrame.
+                a reference to the dataFrame will be implicitly stored in the object.
+
+            df
+                a pandas dataframe containing the computed covariance matrix
+
+            plot
+                a structure containing the following plotting tools:
+
+                    heatmap
+                        a callable object of class HeatMap which will enable 
+                        plotting of the correlation matrix.
+
+        **Returns**
+
+            self
+                an object of type class ``CovMat``.
+
+    ---------------------------------------------------------------------------
     """
 
     def __init__( self

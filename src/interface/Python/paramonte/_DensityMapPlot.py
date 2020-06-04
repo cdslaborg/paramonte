@@ -56,98 +56,134 @@ from _visutils import Target, ParaMonteFigure
 
 class DensityMapPlot:
     """
-    This is the DensityMapPlot class for generating instances 
+
+    .. py:class:: DensityMapPlot
+
+    This is the ``DensityMapPlot`` class for generating instances 
     of 2D densitymap figures based on seaborns library's 
-    kdeplot() and functions.
+    ``kdeplot()`` and functions.
 
-    Usage
-    -----
-    first generate an object of this class by optionally 
-    passing the following parameters described below. Then call 
-    the plot() method. The generated object is also callable with 
-    the same input parameters as the object's constructor.
+        **Usage**
 
-    Parameters
-    ----------
-        dataFrame
-            a Pandas dataframe from which the selected data will be plotted.
-        xcolumn
-            optional argument that determines the columns of dataframe to serve as 
-            the x-values. It can have three forms:
-                1. a column index of the input dataframe.
-                2. a column name of the input dataframe (as in dataFrame.columns).
-            Examples:
-                1. xcolumn = 0
-                2. xcolumn = [0]
-                3. xcolumn = ["SampleVariable1"]
-        If not provided, the default will be the first column of the input dataFrame.
-        ycolumn
-            optional argument that determines the columns of dataframe to serve as 
-            the y-values. It can have three forms:
-                1. a column index of the input dataframe.
-                2. a column name of the input dataframe (as in dataFrame.columns).
-            Examples:
-                1. ycolumn = 0
-                2. ycolumn = [0]
-                3. ycolumn = ["SampleVariable2"]
-        If not provided, the default will be the second column of the input dataFrame.
-        rows
-            optional argument that determines the rows of dataframe 
-            to be visualized. It can be either:
-                1. a range(start,stop,step), or, 
-                2. a list of row indices in dataFrame.index.
-            Examples:
-                1. rows = range(17,7,-2)
-                2. rows = [i for i in range(7,17)]
-            If not provided, the default will include all rows of the dataframe.
-        set_kws
-            optional dictionary of keyword arguments to be passed to seaborn's 
-            set() function. For example: 
-                set_kws = {"style":"darkgrid"}
-            if set to None, then no call to set() function will be made.
-        figure_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            figure() function. For example: 
-                figure_kws = {"facecolor":"w","dpi":150}
-        kdeplot_kws
-            optional dictionary of keyword arguments to be passed to seaborn's 
-            kdeplot() function. For example: 
-                kdeplot_kws = {"n_levels":100,"shade":True,"shade_lowest":True,"cmap":"Blues"}
-            If not set, the default will be None and no kdeplot will be plotted.
-            If both kdeplot_kws and jointplot_kws are set, a jointplot will be plotted.
-        jointplot_kws
-            optional dictionary of keyword arguments to be passed to seaborn's 
-            jointplot() function. For example: 
-                kdeplot_kws = {"n_levels":100,"shade":True,"shade_lowest":True,"cmap":"Blues"}
-            If not set, the default will be None and no jointplot will be plotted.
-            If both kdeplot_kws and jointplot_kws are set, a jointplot will be plotted.
-        outputFile
-            optional string representing the name of the output file in which 
-            the figure will be saved. If not provided, no output file will be generated.
+            First generate an object of this class by optionally 
+            passing the following parameters described below. Then call 
+            the ``plot()`` method. The generated object is also callable with 
+            the same input parameters as the object's constructor.
 
-    Attributes
-    ----------
-        All of the parameters described above, except dataFrame.
-            a reference to the dataFrame will be implicitly stored in the object.
-        target
-            a callable object of ParaMonte library's class Target which can 
-            be used to add target point and lines to the current active plot.
-        currentFig
-            an object of class ParaMonteFigure which is initially None, but upon 
-            making a plot, is populated with attributes representing all outputs 
-            from matplotlib/seaborn function calls, with the following attributes:
-                figure
-                    the output of matplotlib's figure() function.
-                kdeplot
-                    the output of seaborn's kdeplot() function.
-                jointplot
-                    the output of seaborn's jointplot() function.
+        **Parameters**
 
-    Returns
-    -------
-        DensityMapPlot
+            dataFrame
+                a Pandas dataframe from which the selected data will be plotted.
 
-    ----------------------------------------------------------------------
+            xcolumn
+                optional argument that determines the columns of dataframe to serve as 
+                the x-values. It can have three forms:
+
+                    1. a column index of the input dataframe.
+                    2. a column name of the input dataframe (as in ``dataFrame.columns``).
+
+                Examples:
+
+                    1. ``xcolumn = 0``
+                    2. ``xcolumn = [0]``
+                    3. ``xcolumn = ["SampleVariable1"]``
+
+            If not provided, the default will be the first column of the input dataFrame.
+
+            ycolumn
+                optional argument that determines the columns of dataframe to serve as 
+                the y-values. It can have three forms:
+
+                    1. a column index of the input dataframe.
+                    2. a column name of the input dataframe (as in ``dataFrame.columns``).
+
+                Examples:
+
+                    1. ``ycolumn = 0``
+                    2. ``ycolumn = [0]``
+                    3. ``ycolumn = ["SampleVariable2"]``
+
+            If not provided, the default will be the second column of the input dataFrame.
+
+            rows
+                optional argument that determines the rows of dataframe 
+                to be visualized. It can be either:
+
+                    1. a ``range(start,stop,step)``, or, 
+                    2. a list of row indices in dataFrame.index.
+
+                Examples:
+
+                    1. ``rows = range(17,7,-2)``
+                    2. ``rows = [i for i in range(7,17)]``
+
+                If not provided, the default will include all rows of the dataframe.
+
+            set_kws
+                optional dictionary of keyword arguments to be passed to seaborn's 
+                ``set()`` function. For example: 
+
+                    ``set_kws = {"style":"darkgrid"}``
+
+                if set to ``None``, then no call to ``set()`` function will be made.
+
+            figure_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's 
+                ``figure()`` function. For example: 
+
+                    ``figure_kws = {"facecolor":"w","dpi":150}``
+
+            kdeplot_kws
+                optional dictionary of keyword arguments to be passed to seaborn's 
+                ``kdeplot()`` function. For example: 
+
+                    ``kdeplot_kws = {"n_levels":100,"shade":True,"shade_lowest":True,"cmap":"Blues"}``
+
+                If not set, the default will be None and no kdeplot will be plotted.
+                If both ``kdeplot_kws`` and ``jointplot_kws`` are set, a jointplot will be plotted.
+
+            jointplot_kws
+                optional dictionary of keyword arguments to be passed to seaborn's 
+                ``jointplot()`` function. For example: 
+
+                    ``kdeplot_kws = {"n_levels":100,"shade":True,"shade_lowest":True,"cmap":"Blues"}``
+
+                If not set, the default will be None and no jointplot will be plotted.
+                If both ``kdeplot_kws`` and ``jointplot_kws`` are set, a jointplot will be plotted.
+
+            outputFile
+                optional string representing the name of the output file in which 
+                the figure will be saved. If not provided, no output file will be generated.
+
+        **Attributes**
+
+            All of the parameters described above, except dataFrame.
+                a reference to the dataFrame will be implicitly stored in the object.
+
+            target
+                a callable object of ParaMonte library's class Target which can 
+                be used to add target point and lines to the current active plot.
+
+            currentFig
+                an object of class ParaMonteFigure which is initially None, but upon 
+                making a plot, is populated with attributes representing all outputs 
+                from matplotlib/seaborn function calls, with the following attributes:
+
+                    figure
+                        the output of matplotlib's ``figure()`` function.
+
+                    kdeplot
+                        the output of seaborn's ``kdeplot()`` function.
+
+                    jointplot
+                        the output of seaborn's ``jointplot()`` function.
+
+        **Returns**
+
+            self
+                an object of class ``DensityMapPlot``
+
+    ---------------------------------------------------------------------------
     """
 
     def __init__( self
@@ -185,21 +221,26 @@ class DensityMapPlot:
                 , **kwargs
                 ):
         """
+
+        .. py:method:: __call__(self,reself = False, **kwargs)
+
         calls the plot() method of the current instance of the class.
 
-        Parameters
-        ----------
-            reself
-                logical variable. If True, an instance of the object 
-                will be returned upon exit to the calling routine.
-                The default value is False.
-            also, any attributes of the current instance of the class.
+            **Parameters**
 
-        Returns
-        -------
-            the object self if reself = True otherwise, None.
-            However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+                reself
+                    logical variable. If True, an instance of the object 
+                    will be returned upon exit to the calling routine.
+                    The default value is False.
+
+                also, 
+                    any attributes of the current instance of the class.
+
+            **Returns**
+
+                the object self if ``reself = True`` otherwise, None.
+                However, this method causes side-effects by manipulating 
+                the existing attributes of the object.
 
         """
 
@@ -220,17 +261,20 @@ class DensityMapPlot:
 
     def plot(self):
         """
+
+        .. py:method:: plot(self)
+
         Generate a line plot, or scatter plot, or both 
         from the selected columns of the object's dataframe.
 
-        Parameters
-        ----------
-            None
+            **Parameters**
 
-        Returns
-        -------
-            None. However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+                None
+
+            **Returns**
+
+                None. However, this method causes side-effects by manipulating 
+                the existing attributes of the object.
 
         """
 

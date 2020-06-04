@@ -44,18 +44,23 @@ import typing as _tp
 
 def isColorBar(ax):
     """
-    Guesses whether a set of Axes is home to a colorbar
 
-    Parameters
-    ----------
-        ax
-            Axes instance
+    .. py:function:: isColorBar(ax)
 
-    Returns
-    -------
-        True if the x xor y axis satisfies all of the 
-        following and thus looks like a colorbar:
-            No ticks, no tick labels, no axis label
+    Attempts to guess whether an input matplotlib ``Axes`` is
+    home to a ``colorbar`` object.
+
+        **Parameters**
+
+            ax
+                Axes instance
+
+        **Returns**
+
+            a boolean value of ``True`` if the x xor y axis
+            satisfies all of the following and thus looks
+            like a ``colorbar`` object:
+                No ticks, no tick labels, no axis label
 
     """
 
@@ -72,6 +77,22 @@ def isPresentColorBar():
 ####################################################################################################################################
 
 class ParaMonteFigure:
+    """
+
+    .. py:class:: ParaMonteFigure
+
+    An empty class representing a simple structure
+    to contain ParaMonte graphics components.
+
+        **Parameters**
+
+            None
+
+        **Returns**
+
+            None
+
+    """
     pass
 
 ####################################################################################################################################
@@ -80,80 +101,108 @@ class ParaMonteFigure:
 
 class Target:
     """
-    This is the Target class for generating instances 
+
+    .. py:class:: Target
+
+    This is the Target class for generating instances
     of a target on the current active figure and axis.
 
-    Usage
-    -----
-    first generate an object of this class by optionally 
-    passing the following parameters described below. Then call 
-    the plot() method. The generated object is also callable with 
-    the same input parameters as the object's constructor.
+        **Usage**
 
-    Parameters
-    ----------
-        value
-            a pair (list, array, or tuple) of floats, representing the (x,y) cordinates of the target.
-        axes
-            the axes object to which the target must be added.
-            The default is None in which case the output of matplotlib's gca()
-            function wil be used to get the current active axes.
-        axhline_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            axhline() function. For example: 
-                axhline = { "linewidth": 0.5,
-                            "color": "orangered",
-                            "linestyle": ":",
-                            "xmin": 0.1
-                            "xmax": 1.9
-                            }
-            The default is {}, which will be appropriately populated.
-            If set to None, no horizontal target line will be added.
-        axvline_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            axvline() function. For example: 
-                axvline = { "linewidth": 0.5,
-                            "color": "orangered",
-                            "linestyle": ":",
-                            "ymin": 0.1
-                            "ymax": 1.9
-                            }
-            The default is {}, which will be appropriately populated.
-            If set to None, no vertical target line will be added.
-        scatter_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            scatter() function. For example: 
-                scatter_kws = {"s":10,"color":"green"}
-            The default is {}.
-            If set to None, no target point will be plotted.
-        outputFile
-            optional string representing the name of the output file in which 
-            the figure will be saved. If not provided, no output file will be generated.
+        first generate an object of this class by optionally
+        passing the following parameters described below. Then call
+        the ``plot()`` method. The generated object is also callable 
+        with the same input parameters as the object's constructor.
 
-    Attributes
-    ----------
-        All of the parameters described above, except axes.
-            The input axes object (whether provided by the user or fetched by the class)
-            will be stored as a component of the object's attribute currentFig.
-        currentFig
-            an object of class ParaMonteFigure which is initially None, but upon 
-            making a plot, is populated with attributes representing all outputs 
-            from matplotlib/seaborn function calls, with the following attributes:
-                axes
-                    the output of matplotlib's gca() function or,
-                    the input axes object by the user.
-                axhline
-                    the output of matplotlib's axhline() function.
-                axvline
-                    the output of matplotlib's axvline() function.
-                scatter
-                    the output of matplotlib's scatter() function.
+        **Parameters**
 
-    Returns
-    -------
-        Target
+            value
+                a pair (list, array, or tuple) of floats, 
+                representing the (x,y) coordinates of the target.
 
-    ----------------------------------------------------------------------
+            axes
+                the axes object to which the target must be added.
+                The default is None in which case the output of matplotlib's ``gca()``
+                function will be used to get the current active axes.
+
+            axhline_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's
+                ``axhline()`` function. For example:
+
+                .. code-block:: python
+
+                    axhline = { "linewidth": 0.5,
+                                "color": "orangered",
+                                "linestyle": ":",
+                                "xmin": 0.1
+                                "xmax": 1.9
+                                }
+
+                The default is ``{}``, which will be appropriately populated.
+                If set to None, no horizontal target line will be added.
+
+            axvline_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's
+                ``axvline()`` function. For example:
+
+                .. code-block:: python
+
+                    axvline = { "linewidth": 0.5,
+                                "color": "orangered",
+                                "linestyle": ":",
+                                "ymin": 0.1
+                                "ymax": 1.9
+                                }
+
+                The default is ``{}``, which will be appropriately populated.
+                If set to ``None``, no vertical target line will be added.
+
+            scatter_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's
+                ``scatter()`` function. For example:
+
+                .. code-block:: python
+
+                    scatter_kws = {"s":10,"color":"green"}
+
+                The default is ``{}``.
+                If set to ``None``, no target point will be plotted.
+
+            outputFile
+                optional string representing the name of the output file 
+                in which the figure will be saved. If not provided, 
+                no output file will be generated.
+
+        **Attributes**
+
+            All of the parameters described above, except axes.
+                The input axes object (whether provided by the user or fetched by the class)
+                will be stored as a component of the object's attribute ``currentFig``.
+
+            currentFig
+                an object of class ParaMonteFigure which is initially ``None``, but upon
+                making a plot, is populated with attributes representing all outputs
+                from matplotlib/seaborn function calls, with the following attributes:
+
+                    axes
+                        the output of matplotlib's ``gca()`` function or,
+                        the input axes object by the user.
+
+                    axhline
+                        the output of matplotlib's ``axhline()`` function.
+
+                    axvline
+                        the output of matplotlib's ``axvline()`` function.
+
+                    scatter
+                        the output of matplotlib's ``scatter()`` function.
+
+        **Returns**
+
+            self
+                an object of class ``Target``.
+
+    ---------------------------------------------------------------------------
     """
 
     def __init__( self
@@ -185,21 +234,26 @@ class Target:
 
     def __call__(self,**kwargs):
         """
-        calls the plot() method of the current instance of the class.
 
-        Parameters
-        ----------
-            reself
-                logical variable. If True, an instance of the object 
-                will be returned upon exit to the calling routine.
-                The default value is False.
-            also, any attributes of the current instance of the class.
+        .. py:method:: __call__(self, reself = False, **kwargs)
 
-        Returns
-        -------
-            the object self if reself = True otherwise, None.
-            However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+        Calls the ``plot()`` method of the current instance of the class.
+
+            **Parameters**
+
+                reself
+                    logical variable. If ``True``, an instance of the object
+                    will be returned upon exit to the calling routine.
+                    The default value is ``False``.
+
+                also, 
+                    any attributes of the current instance of the class.
+
+            **Returns**
+
+                the object self if ``reself = True`` otherwise, ``None``.
+                However, this method causes side-effects by manipulating
+                the existing attributes of the object.
 
         """
 
@@ -207,7 +261,7 @@ class Target:
         for key in kwargs.keys():
             if hasattr(self,key):
                     setattr(self, key, kwargs[key])
-            elif key=="axes": 
+            elif key=="axes":
                 self.currentFig = ParaMonteFigure()
                 self.currentFig.axes = kwargs[key]
             elif key=="reself":
@@ -224,17 +278,20 @@ class Target:
 
     def plot(self):
         """
+
+        .. py:method:: plot(self)
+
         Add a target on an existing plot (the current active axes object)
-        based on the 'value' attribute of the target object.
+        based on the ``value`` attribute of the target object.
 
-        Parameters
-        ----------
-            None
+            **Parameters**
 
-        Returns
-        -------
-            None. However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+                None
+
+            **Returns**
+
+                None. However, this method causes side-effects by 
+                manipulating the existing attributes of the object.
 
         """
 

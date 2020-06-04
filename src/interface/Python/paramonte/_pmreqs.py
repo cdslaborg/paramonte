@@ -55,25 +55,29 @@ buildInstructionNote    = "If your platform is non-Windows and is compatible wit
 
 def verify(reset = True):
     """
+
+    .. py:function:: verify(reset = True)
+
     checks (or rechecks) the requirements of the installed ParaMonte library
 
-    Parameters
-    ----------
-        reset
-            boolean whose default value is True. If True, 
-            a thorough verification of the existence of the required 
-            libraries will performed, as if it is the first ParaMonte 
-            module import.
+        **Usage**
 
-    Returns
-    -------
-        None
+            .. code-block:: python
 
-    Usage
-    -----
+                import paramonte as pm
+                pm.verify()
 
-        import paramonte as pm
-        pm.verify()
+        **Parameters**
+
+            reset
+                boolean whose default value is ``True``. If ``True``, 
+                a thorough verification of the existence of the required 
+                libraries will performed, as if it is the first ParaMonte 
+                module import.
+
+        **Returns**
+
+            None
 
     """
 
@@ -394,7 +398,11 @@ def getLocalInstallDir():
 
 def findMPI():
     """
+
+    .. py:function:: findMPI()
+
     Returns MPI bin directory if it exists, otherwise None.
+
     """
 
     if _pm.platform.isWin32:
@@ -1086,6 +1094,26 @@ def displayParaMonteBanner():
 ####################################################################################################################################
 
 def build(flags=""):
+    """
+
+    .. py:function:: build(flags="")
+
+    Builds the ParaMonte library kernel on the user's system from scratch.
+
+        **Parameters**
+
+            flags
+                A string can contain any of the ParaMonte install script flags.
+                If the operating system is Unix-based (e.g., Linux or macOS) 
+                then the value of ``flags`` must conform to the rules and 
+                syntax of the flags of the install Bash script of 
+                ParaMonte on GitHub. If the operating system is Windows, 
+                then the value of ``flags`` must conform to the rules and 
+                syntax of the flags of the install Batch script of 
+                ParaMonte on GitHub. 
+                The default value is an empty string ``""``.
+
+    """
 
     if _pm.platform.isWin32:
 

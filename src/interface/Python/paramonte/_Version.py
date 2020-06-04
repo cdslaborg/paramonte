@@ -41,6 +41,34 @@ import os as _os
 # get version
 
 class Version:
+    """
+
+    .. py:class:: Version
+
+    This is the Version class for generating objects
+    that contain the methods for getting and dumping
+    the python-interface or kernel versions of the
+    ParaMonte library installation on the system.
+
+        **Parameters**
+
+            versionPath
+                A string containing the path to either the
+                ParaMonte kernel or interface version file.
+
+            versionType
+                A string containing the type of the version
+                file. It can be one of the following values:
+
+                    "interface"
+                        implying the Python-interface version
+                        number of the ParaMonte library.
+
+                    "kernel"
+                        implying the kernel-routines version
+                        number of the ParaMonte library.
+
+    """
 
     def __init__(self,versionPath,versionType):
         self._versionList = ["interface","kernel"]
@@ -49,16 +77,50 @@ class Version:
         self._versionSave = None
         self._checkVersionType()
 
-    def get(self): return "ParaMonte Python " + self._versionType.capitalize() + " Version " + self.dump()
+    def get(self):
+        """
+
+        .. py:method:: get(self)
+
+        Get the Python-interface or kernel version of the
+        ParaMonte library, in verbose format.
+
+            **Parameters**
+
+                None
+
+            **Returns**
+
+                None
+
+        """
+        return "ParaMonte Python " + self._versionType.capitalize() + " Version " + self.dump()
 
     def dump(self):
+        """
+
+        .. py:method:: dump(self)
+
+        Dump **only the version number** of either
+        the Python-interface or kernel of the
+        ParaMonte library.
+
+            **Parameters**
+
+                None
+
+            **Returns**
+
+                None
+
+        """
         for versionType in self._versionList:
             if versionType==self._versionType:
                 if self._versionSave is None:
                     versionFileName = ".VERSION_" + versionType.upper()
                     versionFilePath = _os.path.join(self._versionPath, versionFileName)
                     try:
-                        with open(versionFilePath,"r") as versionFile: 
+                        with open(versionFilePath,"r") as versionFile:
                             self._versionSave = versionFile.readline().strip("\n")
                     except:
                         self._versionSave = "UNKNOWN"
