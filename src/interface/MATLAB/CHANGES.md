@@ -5,6 +5,12 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
+### Version  1.1.0 -- June 5, 2020  
+
+Enhancements and bug fixes to the kernel routines.
+Several major enhancements and bug fixes to the MATLAB kernel and interface routines.
+MatDRAM now supports fully-deterministic restart functionality.
+
 ### Version  1.0.0 -- June 1, 2020 -- Initial release  
 
 This is the first public release of the ParaMonte MATLAB library.  
