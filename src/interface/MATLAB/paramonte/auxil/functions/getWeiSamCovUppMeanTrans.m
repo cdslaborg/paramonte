@@ -46,7 +46,7 @@ function [CovMatUpper, Mean] = getWeiSamCovUppMeanTrans(np, sumWeight, nd, Point
     % Mean(nd)               : Mean vector
 
     CovMatUpper = zeros(nd,nd);
-    NormedData  = zeros(nd,np);
+%    NormedData  = zeros(nd,np);
     Mean        = zeros(nd, 1);
 
     for i = 1 : np
@@ -56,9 +56,11 @@ function [CovMatUpper, Mean] = getWeiSamCovUppMeanTrans(np, sumWeight, nd, Point
     end
     Mean = Mean / sumWeight;
 
-    for i = 1 : np
-        NormedData(1:nd,i) = Point(1:nd,i) - Mean;
-    end
+%    for i = 1 : np
+%        NormedData(1:nd,i) = Point(1:nd,i) - Mean;
+%    end
+
+    NormedData = Point - Mean;
 
     sumWeightMinusOneInvReal = 1 / (sumWeight-1);
     for j = 1 : nd

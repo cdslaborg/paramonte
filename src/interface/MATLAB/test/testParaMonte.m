@@ -72,14 +72,14 @@ pmpd = ParaDRAM_class();
 % return
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMonte variables...
-pmpd.spec.sampleSize                            = 100;                         % Works
+%pmpd.spec.sampleSize                            = 100;                         % Works
 pmpd.spec.randomSeed                            = 7;                            % Works
 pmpd.spec.description                           = "Hi there";                   % Works
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 flag = 0;
 %flag = 1;
 if flag
-    file    = "./out/temp/A_A_A_A_A";
+    file    = "./out/temp/A_A_A_A";
     if exist(file + "_process_1_chain.txt"),     delete(file + "_process_1_chain.txt");     end
     if exist(file + "_process_1_progress.txt"),  delete(file + "_process_1_progress.txt");  end
     if exist(file + "_process_1_report.txt"),    delete(file + "_process_1_report.txt");    end
@@ -87,11 +87,11 @@ if flag
     if exist(file + "_process_1_sample.txt"),    delete(file + "_process_1_sample.txt");    end
     pmpd.spec.outputFileName                    = file;
 else
-    pmpd.spec.outputFileName                    = "./out/temp/restart_N_50_DRC_20";
+    pmpd.spec.outputFileName                    = "./out/temp/restart";
 end
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 %pmpd.spec.outputDelimiter                       = "|";                          % Works
-pmpd.spec.chainFileFormat                       = "verbose";                    % Works
+pmpd.spec.chainFileFormat                       = "compact";                    % Works
 %pmpd.spec.variableNameList                      = ["Variable-X", "Variable-Y"]; % Works
 pmpd.spec.restartFileFormat                     = "ASCII";                      % Works
 %pmpd.spec.outputColumnWidth                     = 25;                           % Works
@@ -99,13 +99,13 @@ pmpd.spec.restartFileFormat                     = "ASCII";                      
 %pmpd.spec.silentModeRequested                   = 0;                            % Works
 %pmpd.spec.domainLowerLimitVec                   = [-4,-4];                      % Works
 %pmpd.spec.domainUpperLimitVec                   = [+4,+4];                      % Works
-pmpd.spec.progressReportPeriod                  = 100;                          % Works
+%pmpd.spec.progressReportPeriod                  = 100;                          % Works
 %pmpd.spec.targetAcceptanceRate                  = 0.5;                          % Works
 % pmpd.spec.maxNumDomainCheckToWarn               = [];
 % pmpd.spec.maxNumDomainCheckToStop               = [];
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMCMC variables...
-pmpd.spec.chainSize                             = 5000;                         % Works
+pmpd.spec.chainSize                             = 10000;                         % Works
 %pmpd.spec.startPointVec                         = [0.6,1.2];                    % Works
 %pmpd.spec.sampleRefinementCount                 = 1;                            % Works
 %pmpd.spec.sampleRefinementMethod                = "someRandomName";             % Works
@@ -125,14 +125,14 @@ pmpd.spec.chainSize                             = 5000;                         
 %pmpd.spec.burninAdaptationMeasure               = 0.5;                          % Works
 %pmpd.spec.delayedRejectionCount                 = 2;                            % Works
 %pmpd.spec.delayedRejectionScaleFactorVec        = [3, 4];                       % Works
-    pmpd.spec.delayedRejectionCount             = 10;
-    pmpd.spec.delayedRejectionScaleFactorVec    = [1.1,2,3,1.5,2.1,3,2,1.1,1.2,1.3];
+%pmpd.spec.delayedRejectionCount             = 10;
+%pmpd.spec.delayedRejectionScaleFactorVec    = [1.1,2,3,1.5,2.1,3,2,1.1,1.2,1.3];
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            ndim = 25;
+            ndim = 5;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%return
 pmpd.runSampler(ndim, @getLogFunc);
 fclose('all');
 
@@ -149,7 +149,7 @@ fclose('all');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-system(pmpd.LogFile.Path.modified);
+%system(pmpd.LogFile.Path.modified);
 %system(pmpd.TimeFile.Path.modified);
 %system(pmpd.ChainFile.Path.modified);
 %system(pmpd.SampleFile.Path.modified);

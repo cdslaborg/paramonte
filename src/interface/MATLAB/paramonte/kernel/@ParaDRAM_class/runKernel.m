@@ -35,51 +35,52 @@
 function runKernel  ( self          ...
                     , getLogFunc    ...
                     )
-
+flag2 = false;
+%flag2 = true;
     FUNCTION_NAME           = self.SUB_CLASS2_NAME + "@runKernel()";
     CHAIN_RESTART_OFFSET    = 2;
 
-    global timeElapsedUntilLastReportInSeconds SumAccRateSinceStart sumAccRateLastReport inverseProgressReportPeriod numFunCallAcceptedRejectedLastReport
+    % global timeElapsedUntilLastReportInSeconds SumAccRateSinceStart sumAccRateLastReport inverseProgressReportPeriod numFunCallAcceptedRejectedLastReport
+    % 
+    % global co_proposalFound_samplerUpdateOccurred   % merging these scalars would reduce the MPI communication
+    %                                                 % overhead cost: co_proposalFound, co_samplerUpdateOccurred,
+    %                                                 % co_counterDRS, 0 means false, 1 means true
 
-    global co_proposalFound_samplerUpdateOccurred   % merging these scalars would reduce the MPI communication
-                                                    % overhead cost: co_proposalFound, co_samplerUpdateOccurred,
-                                                    % co_counterDRS, 0 means false, 1 means true
+    self.Proposal.Global.SumAccRateSinceStart                   = SumAccRateSinceStart_class();
 
-    SumAccRateSinceStart                        = SumAccRateSinceStart_class();
+    acceptedRejectedDelayedUnusedRestartMode                    = 0;    % used to compute more accurate timings in the restart mode
+    self.Stats.avgTimePerFunCalInSec                            = 0.0;
+    self.Proposal.Global.numFunCallAcceptedRejectedLastReport   = 0;
+    self.Proposal.Global.timeElapsedUntilLastReportInSeconds    = 0.0;
+    self.Proposal.Global.inverseProgressReportPeriod            = 1.0 / self.SpecBase.progressReportPeriod.val; % this remains a constant except for the last the last report of the simulation
+    self.Proposal.Global.sumAccRateLastReport                   = 0.0;
+    nd                                                          = self.nd.val;
 
-    acceptedRejectedDelayedUnusedRestartMode    = 0;                                            % used to compute more accurate timings in the restart mode
-    self.Stats.avgTimePerFunCalInSec            = 0.0;
-    numFunCallAcceptedRejectedLastReport        = 0;
-    timeElapsedUntilLastReportInSeconds         = 0.0;
-    inverseProgressReportPeriod                 = 1.0 / self.SpecBase.progressReportPeriod.val; % this remains a constant except for the last the last report of the simulation
-    sumAccRateLastReport                        = 0.0;
-    nd                                          = self.nd.val;
+    co_LogFuncState                                             = zeros(nd+1, self.SpecDRAM.delayedRejectionCount.val+2);
+    co_AccRate                                                  = zeros(1   , self.SpecDRAM.delayedRejectionCount.val+2);
 
-    co_LogFuncState = zeros(nd+1, self.SpecDRAM.delayedRejectionCount.val+2);
-    co_AccRate      = zeros(1   , self.SpecDRAM.delayedRejectionCount.val+2);
+    co_AccRate(1)                                               = 0;  % the real-value counterDRS, indicating the initial delayed rejection stage at which the first point is sampled
+    co_AccRate(2)                                               = 1;  % initial acceptance rate for the first zeroth DR stage.
+    co_AccRate(3:self.SpecDRAM.delayedRejectionCount.val+2)     = 0;  % indicates the very first proposal acceptance on image 1
 
-    co_AccRate(1)                                           = 0;  % the real-value counterDRS, indicating the initial delayed rejection stage at which the first point is sampled
-    co_AccRate(2)                                           = 1;  % initial acceptance rate for the first zeroth DR stage.
-    co_AccRate(3:self.SpecDRAM.delayedRejectionCount.val+2) = 0;  % indicates the very first proposal acceptance on image 1
-
-    delayedRejectionRequested               = self.SpecDRAM.delayedRejectionCount.val > 0;
-    noDelayedRejectionRequested             = ~delayedRejectionRequested;
+    delayedRejectionRequested                                   = self.SpecDRAM.delayedRejectionCount.val > 0;
+    noDelayedRejectionRequested                                 = ~delayedRejectionRequested;
 
     if delayedRejectionRequested
         self.Stats.NumFunCall.acceptedRejectedDelayed   = 0;    % Markov Chain counter
-        SumAccRateSinceStart.acceptedRejectedDelayed    = 0.0;  % sum of acceptance rate
+        self.Proposal.Global.SumAccRateSinceStart.acceptedRejectedDelayed    = 0.0;  % sum of acceptance rate
     end
 
-    SumAccRateSinceStart.acceptedRejected   = 0.0;  % sum of acceptance rate
-    self.Stats.NumFunCall.acceptedRejected  = 0;    % Markov Chain counter
-    counterAUC                              = 0;    % counter for padaptiveUpdateCount.
-    counterPRP                              = 0;    % counter for progressReportPeriod.
-    counterAUP                              = 0;    % counter for adaptiveUpdatePeriod.
-    self.Stats.NumFunCall.accepted          = 0;    % Markov Chain acceptance counter.
-    samplerUpdateSucceeded                  = true; % needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
-    chainAdaptationMeasure                  = 0.0;  % needed for the first output
-    numFunCallAcceptedLastAdaptation        = 0;
-    lastStateWeight                         = -intmax;
+    self.Proposal.Global.SumAccRateSinceStart.acceptedRejected  = 0.0;  % sum of acceptance rate
+    self.Stats.NumFunCall.acceptedRejected                      = 0;    % Markov Chain counter
+    counterAUC                                                  = 0;    % counter for padaptiveUpdateCount.
+    counterPRP                                                  = 0;    % counter for progressReportPeriod.
+    counterAUP                                                  = 0;    % counter for adaptiveUpdatePeriod.
+    self.Stats.NumFunCall.accepted                              = 0;    % Markov Chain acceptance counter.
+    samplerUpdateSucceeded                                      = true; % needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
+    chainAdaptationMeasure                                      = 0.0;  % needed for the first output
+    numFunCallAcceptedLastAdaptation                            = 0;
+    lastStateWeight                                             = -intmax;
 
     self.Timer.tic;
 
@@ -138,7 +139,7 @@ function runKernel  ( self          ...
 
             % reopen the chain file to resume the simulation
 
-            [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, "w");
+            [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, "W");
             if self.Err.msg
                 self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + self.ChainFile.Path.original + "'.";
                 self.Err.abort();
@@ -206,12 +207,12 @@ function runKernel  ( self          ...
 
     while true  % loopMarkovChain
 
-        co_proposalFound_samplerUpdateOccurred(2)   = 0;  % at each iteration assume no samplerUpdateOccurred, unless it occurs
-        co_proposalFound_samplerUpdateOccurred(1)   = 0;  % co_proposalFound = false;
+        self.Proposal.Global.co_proposalFound_samplerUpdateOccurred(2)   = 0;  % at each iteration assume no samplerUpdateOccurred, unless it occurs
+        self.Proposal.Global.co_proposalFound_samplerUpdateOccurred(1)   = 0;  % co_proposalFound = false;
         samplerUpdateIsGreedy = counterAUC < self.SpecDRAM.greedyAdaptationCount.val;
 
         counterDRS = round(co_AccRate(1));
-        if counterDRS > -1, co_proposalFound_samplerUpdateOccurred(1) = 1; end   % co_proposalFound = true
+        if counterDRS > -1, self.Proposal.Global.co_proposalFound_samplerUpdateOccurred(1) = 1; end   % co_proposalFound = true
 
         %*******************************************************************************************************************
         %**************************************** blockProposalAccepted ****************************************************
@@ -220,7 +221,7 @@ function runKernel  ( self          ...
         % since it is for the first (starting) point, which is assumed to have been accepted
         % as the first point by the first coarray imageID.
 
-        if co_proposalFound_samplerUpdateOccurred(1) == 1   % blockProposalAccepted: co_proposalAccepted = true
+        if self.Proposal.Global.co_proposalFound_samplerUpdateOccurred(1) == 1   % blockProposalAccepted: co_proposalAccepted = true
 
             currentStateWeight  = 0;
 
@@ -235,7 +236,7 @@ function runKernel  ( self          ...
                 %***********************************************************************************************************
                 %************************************************* output write ********************************************
 
-                self.writeOutput();
+                if ~flag2, self.writeOutput(); end
 
                 %************************************************* output write ********************************************
                 %***********************************************************************************************************
@@ -261,12 +262,12 @@ function runKernel  ( self          ...
                 numFunCallAcceptedPlusOne = self.Stats.NumFunCall.accepted + 1;
                 if numFunCallAcceptedPlusOne == self.Chain.Count.compact
                     self.isFreshRun                                     = true;
-                    self.writeOutput();
-                    self.isDryRun                                       = ~self.isFreshRun;
-                    self.Chain.Weight(numFunCallAcceptedPlusOne)        = 0;
-                    SumAccRateSinceStart.acceptedRejected               = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted) * self.Stats.NumFunCall.acceptedRejected;
+                    if ~flag2, self.writeOutput(); end
+                    self.isDryRun                                               = ~self.isFreshRun;
+                    self.Chain.Weight(numFunCallAcceptedPlusOne)                = 0;
+                    self.Proposal.Global.SumAccRateSinceStart.acceptedRejected  = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted) * self.Stats.NumFunCall.acceptedRejected;
                     if delayedRejectionRequested
-                        SumAccRateSinceStart.acceptedRejectedDelayed    = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted) * self.Stats.NumFunCall.acceptedRejectedDelayed;
+                        self.Proposal.Global.SumAccRateSinceStart.acceptedRejectedDelayed    = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted) * self.Stats.NumFunCall.acceptedRejectedDelayed;
                     end
                 end
                 self.Stats.NumFunCall.accepted                          = numFunCallAcceptedPlusOne;
@@ -279,12 +280,12 @@ function runKernel  ( self          ...
                 self.Stats.LogFuncMode.Loc.compact  = self.Stats.NumFunCall.accepted;
             end
 
-            SumAccRateSinceStart.acceptedRejected   = SumAccRateSinceStart.acceptedRejected + co_AccRate(counterDRS+2);
+            self.Proposal.Global.SumAccRateSinceStart.acceptedRejected   = self.Proposal.Global.SumAccRateSinceStart.acceptedRejected + co_AccRate(counterDRS+2);
 
         else % blockProposalAccepted
 
-            counterDRS                              = self.SpecDRAM.delayedRejectionCount.val;
-            SumAccRateSinceStart.acceptedRejected   = SumAccRateSinceStart.acceptedRejected + co_AccRate(counterDRS+2);
+            counterDRS                                                  = self.SpecDRAM.delayedRejectionCount.val;
+            self.Proposal.Global.SumAccRateSinceStart.acceptedRejected  = self.Proposal.Global.SumAccRateSinceStart.acceptedRejected + co_AccRate(counterDRS+2);
 
         end % blockProposalAccepted
 
@@ -297,12 +298,12 @@ function runKernel  ( self          ...
         self.Stats.NumFunCall.acceptedRejected  = self.Stats.NumFunCall.acceptedRejected + 1;
 
         if delayedRejectionRequested
-            SumAccRateSinceStart.acceptedRejectedDelayed    = SumAccRateSinceStart.acceptedRejectedDelayed + sum(co_AccRate(2:counterDRS+2));
+            self.Proposal.Global.SumAccRateSinceStart.acceptedRejectedDelayed    = self.Proposal.Global.SumAccRateSinceStart.acceptedRejectedDelayed + sum(co_AccRate(2:counterDRS+2));
             self.Stats.NumFunCall.acceptedRejectedDelayed   = self.Stats.NumFunCall.acceptedRejectedDelayed + counterDRS + 1;
         end
 
         if self.isFreshRun  % these are used for adaptive proposal updating, so they have to be set on every accepted or rejected iteration (excluding delayed rejections)
-            self.Chain.MeanAccRate  (self.Stats.NumFunCall.accepted)    = SumAccRateSinceStart.acceptedRejected / self.Stats.NumFunCall.acceptedRejected;
+            self.Chain.MeanAccRate  (self.Stats.NumFunCall.accepted)    = self.Proposal.Global.SumAccRateSinceStart.acceptedRejected / self.Stats.NumFunCall.acceptedRejected;
             self.Chain.Weight       (self.Stats.NumFunCall.accepted)    = self.Chain.Weight(self.Stats.NumFunCall.accepted) + 1;
         else
             acceptedRejectedDelayedUnusedRestartMode                    = self.Stats.NumFunCall.acceptedRejectedDelayed;
@@ -322,13 +323,13 @@ function runKernel  ( self          ...
             % on 3 images Linux  , sustituting co_missionAccomplished with the following leads to 16% less communication overhead for 1D Gaussian example
             % on 5 images Linux  , sustituting co_missionAccomplished with the following leads to 11% less communication overhead for 1D Gaussian example
 
-            co_proposalFound_samplerUpdateOccurred(1) = -1; % equivalent to co_missionAccomplished = true
-            inverseProgressReportPeriod = 1 / (self.Stats.NumFunCall.acceptedRejected - numFunCallAcceptedRejectedLastReport);
+            self.Proposal.Global.co_proposalFound_samplerUpdateOccurred(1) = -1; % equivalent to co_missionAccomplished = true
+            self.Proposal.Global.inverseProgressReportPeriod = 1 / (self.Stats.NumFunCall.acceptedRejected - self.Proposal.Global.numFunCallAcceptedRejectedLastReport);
 
             if self.isFreshRun
-                self.writeOutput();
+                if ~flag2, self.writeOutput(); end
             end
-
+if flag2, self.writeOutput2(); end
             self.reportProgress();
 
         end % blockLastSample
@@ -341,7 +342,7 @@ function runKernel  ( self          ...
 
         if counterAUC < self.SpecDRAM.adaptiveUpdateCount.val && counterAUP  == self.SpecDRAM.adaptiveUpdatePeriod.val    % blockSamplerAdaptation
 
-            co_proposalFound_samplerUpdateOccurred(2) = 1;  % istart = numFunCallAcceptedLastAdaptation % = max( numFunCallAcceptedLastAdaptation , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted) ) % this is experimental
+            self.Proposal.Global.co_proposalFound_samplerUpdateOccurred(2) = 1;  % istart = numFunCallAcceptedLastAdaptation % = max( numFunCallAcceptedLastAdaptation , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted) ) % this is experimental
 
             % the order in the following two MUST be preserved as occasionally PD%Stats%NumFunCall%accepted = numFunCallAcceptedLastAdaptation
 
@@ -361,6 +362,7 @@ function runKernel  ( self          ...
                     % self.RestartFile.format
                     fprintf(self.RestartFile.unit, "meanAccRateSinceStart" + "\n" + "%.16f", meanAccRateSinceStart);
                     self.Proposal.writeRestartFile(); % xxx
+
                 end
 
             else
@@ -371,17 +373,17 @@ function runKernel  ( self          ...
                     meanAccRateSinceStart = fgets(self.RestartFile.unit);
                     self.Proposal.readRestartFile();    % xxx
                 end
-                SumAccRateSinceStart.acceptedRejected = meanAccRateSinceStart * self.Stats.NumFunCall.acceptedRejected;
+                self.Proposal.Global.SumAccRateSinceStart.acceptedRejected = meanAccRateSinceStart * self.Stats.NumFunCall.acceptedRejected;
             end
 
-            [samplerUpdateSucceeded, adaptationMeasure] = self.Proposal.doAdaptation    ( nd                                                                                        ...
-                                                                                        , self.Stats.NumFunCall.accepted - numFunCallAcceptedLastAdaptation + 1                     ...
-                                                                                        , self.Chain.State  (1:nd, numFunCallAcceptedLastAdaptation:self.Stats.NumFunCall.accepted) ...
-                                                                                        , self.Chain.Weight (numFunCallAcceptedLastAdaptation:self.Stats.NumFunCall.accepted)       ...
-                                                                                        , samplerUpdateIsGreedy                                                                     ...
-                                                                                        , meanAccRateSinceStart                                                                     ...
-                                                                                        , chainAdaptationMeasure                                                                    ...
-                                                                                        ) ;
+            [samplerUpdateSucceeded, adaptationMeasure] = self.Proposal.doAdaptation( nd                                                                                        ...
+                                                                                    , self.Stats.NumFunCall.accepted - numFunCallAcceptedLastAdaptation + 1                     ...
+                                                                                    , self.Chain.State  (1:nd, numFunCallAcceptedLastAdaptation:self.Stats.NumFunCall.accepted) ...
+                                                                                    , self.Chain.Weight (numFunCallAcceptedLastAdaptation:self.Stats.NumFunCall.accepted)       ...
+                                                                                    , samplerUpdateIsGreedy                                                                     ...
+                                                                                    , meanAccRateSinceStart                                                                     ...
+                                                                                    , chainAdaptationMeasure                                                                    ...
+                                                                                    ) ;
 
             self.Chain.Weight(self.Stats.NumFunCall.accepted) = dummy;  % needed for the restart mode, not needed in the fresh run
             if self.Stats.NumFunCall.accepted == numFunCallAcceptedLastAdaptation
@@ -393,8 +395,8 @@ function runKernel  ( self          ...
                 self.Chain.Weight(numFunCallAcceptedLastAdaptation)     = self.Chain.Weight(numFunCallAcceptedLastAdaptation) + lastStateWeight;
             end
             if samplerUpdateSucceeded
-                lastStateWeight = currentStateWeight;   % self.Chain.Weight(self.Stats.NumFunCall.accepted) % informative, do not remove
-                numFunCallAcceptedLastAdaptation = self.Stats.NumFunCall.accepted;
+                lastStateWeight                     = currentStateWeight;   % self.Chain.Weight(self.Stats.NumFunCall.accepted) % informative, do not remove
+                numFunCallAcceptedLastAdaptation    = self.Stats.NumFunCall.accepted;
             end
 
             counterAUP = 0;
@@ -406,7 +408,7 @@ function runKernel  ( self          ...
         %******************************************** Proposal Adaptation **************************************************
         %*******************************************************************************************************************
 
-        if co_proposalFound_samplerUpdateOccurred(1) == -1, break; end % loopMarkovChain: we are done: co_missionAccomplished = true
+        if self.Proposal.Global.co_proposalFound_samplerUpdateOccurred(1) == -1, break; end % loopMarkovChain: we are done: co_missionAccomplished = true
 
         co_AccRate(1) = -1; % counterDRS at which new proposal is accepted
         maxLogFuncRejectedProposal = Constants.NEGINF_RK;
@@ -487,8 +489,8 @@ function runKernel  ( self          ...
     self.Chain.Count.verbose    = self.Stats.NumFunCall.acceptedRejected;
 
     if noDelayedRejectionRequested
-        self.Stats.NumFunCall.acceptedRejectedDelayed   = self.Stats.NumFunCall.acceptedRejected;
-        SumAccRateSinceStart.acceptedRejectedDelayed    = SumAccRateSinceStart.acceptedRejected;
+        self.Stats.NumFunCall.acceptedRejectedDelayed                       = self.Stats.NumFunCall.acceptedRejected;
+        self.Proposal.Global.SumAccRateSinceStart.acceptedRejectedDelayed   = self.Proposal.Global.SumAccRateSinceStart.acceptedRejected;
     end
 
     if self.Image.isMaster
