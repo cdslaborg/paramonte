@@ -34,7 +34,7 @@
 %
 classdef ParaMonte_class < handle
 
-    properties (Constant, Access = protected)
+    properties (Constant, Access = protected, Hidden)
         CLASS_NAME = "@ParaMonte_class"
     end
 
@@ -548,7 +548,7 @@ classdef ParaMonte_class < handle
             if self.Image.isMaster
                 
                 % open LogFile
-                if self.LogFile.exists,     opentype = "a+";    else, opentype = "w"; end
+                if self.LogFile.exists,     opentype = "A+";    else, opentype = "W"; end
                 [self.LogFile.unit, self.Err.msg] = fopen(self.LogFile.Path.original, opentype);
                 self.Err.outputUnit = self.LogFile.unit;
                 if self.Err.msg
@@ -570,7 +570,7 @@ classdef ParaMonte_class < handle
                     self.Err.note();
                 end
                 % open TimeFile
-                if self.TimeFile.exists,    opentype = "r+";    else, opentype = "w"; end
+                if self.TimeFile.exists,    opentype = "r+";    else, opentype = "W"; end
                 [self.TimeFile.unit, self.Err.msg] = fopen(self.TimeFile.Path.original, opentype);
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.TimeFile.suffix + " file='" + strrep(self.TimeFile.Path.original, '\', '\\') + "'.";
@@ -583,7 +583,7 @@ classdef ParaMonte_class < handle
                     self.Err.note();
                 end
                 % open ChainFile
-                if self.ChainFile.exists,   opentype = "r+";    else, opentype = "w"; end
+                if self.ChainFile.exists,   opentype = "r+";    else, opentype = "W"; end
                 [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, opentype);
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + strrep(self.ChainFile.Path.original, '\', '\\') + "'.";
@@ -591,7 +591,7 @@ classdef ParaMonte_class < handle
                 end
 
                 % open RestartFile
-                if self.RestartFile.exists, opentype = "r+";    else, opentype = "w"; end
+                if self.RestartFile.exists, opentype = "r+";    else, opentype = "W"; end
                 [self.RestartFile.unit, self.Err.msg] = fopen(self.RestartFile.Path.original, opentype);
                 if self.Err.msg
                     self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.RestartFile.suffix + " file='" + strrep(self.RestartFile.Path.original, '\', '\\') + "'.";
@@ -622,6 +622,7 @@ classdef ParaMonte_class < handle
                 self.ChainFile.headerFormat = self.ChainFile.headerFormat + delim + formatStr;
                 if i == length(self.Chain.ColHeader)-1, self.ChainFile.headerFormat = self.ChainFile.headerFormat + "\n"; end
             end
+            
             % ChainFile - format
             self.ChainFile.format           = formatInt + delim + formatInt + delim + formatReal + delim + formatReal + delim + formatInt + delim + formatInt + delim + formatReal;
             for i = 1 : length(self.SpecBase.variableNameList.Val)
@@ -646,9 +647,23 @@ classdef ParaMonte_class < handle
                 self.SampleFile.format  = self.SampleFile.format + delim + formatReal;
                 if i == length(self.SpecBase.variableNameList.Val), self.SampleFile.format = self.SampleFile.format + "\n"; end
             end
+
             %-----------------------------------------------------------------------------------------------------------------------
             % RestartFile - format
-            self.RestartFile.format         = Constants.NLC;
+            self.RestartFile.format         = "\nsampleSizeOld"                         ...
+                                            + "\n%d"                                    ...
+                                            + "\nlogSqrtDetOld"                         ...
+                                            + "\n%.16f"                                 ...
+                                            + "\nadaptiveScaleFactorSq"                 ...
+                                            + "\n%.16f"                                 ...
+                                            + "\nMeanOld"                               ...
+                                            + repmat('\n%.16f', 1, self.nd.val)         ...
+                                            + "\ncomv_chol"                             ...
+                                            + repmat('\n%.16f', 1, (self.nd.val)^2)     ...
+                                            + "\ncomv_covMat"                           ...
+                                            + repmat('\n%.16f', 1, (self.nd.val)^2)     ...
+                                            + "\n"                                      ...
+                                            ;
             %***********************************************************************************************************************
             
         end % function setupOutputFiles

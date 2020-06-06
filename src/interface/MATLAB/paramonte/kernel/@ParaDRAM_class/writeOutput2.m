@@ -32,32 +32,42 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-classdef ParaMCMC_class < ParaMonte_class
+function writeOutput2(self)
+    
+    % if new point has been sampled, write the previous sampled point to output file
 
-    properties (Constant, Access = protected, Hidden)
-        SUB_CLASS1_NAME  = "@ParaMCMC_class"
+    data = [""];
+
+    if self.SpecBase.chainFileFormat.isCompact
+
+        data =  [ self.Chain.ProcessID      ...
+                ; self.Chain.DelRejStage    ...
+                ; self.Chain.MeanAccRate    ...
+                ; self.Chain.Adaptation     ...
+                ; self.Chain.BurninLoc      ...
+                ; self.Chain.Weight         ...
+                ; self.Chain.LogFunc        ...
+                ; self.Chain.State          ...
+                ] ;
+        fprintf(self.ChainFile.unit, self.ChainFile.format, data);
+
+    elseif self.SpecBase.chainFileFormat.isVerbose
+
+        count = ones(1, length(self.Chain.Weight));
+        data = repelem( [ self.Chain.ProcessID      ...
+                        ; self.Chain.DelRejStage    ...
+                        ; self.Chain.MeanAccRate    ...
+                        ; self.Chain.Adaptation     ...
+                        ; self.Chain.BurninLoc      ...
+                        ; count                     ...
+                        ; self.Chain.LogFunc        ...
+                        ; self.Chain.State        ] ...
+                        , 1, self.Chain.Weight      ...
+                        ) ;
+        fprintf(self.ChainFile.unit, self.ChainFile.format, data);
+
     end
 
-    properties (Access = public, Hidden)
-        SpecMCMC    = []
-    end
-
-%***********************************************************************************************************************************
-%***********************************************************************************************************************************
-
-    methods (Access = protected, Hidden)
-
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
-
-        function setupParaMCMC(self)
-            FUNCTION_NAME = self.SUB_CLASS1_NAME + "@setupParaMCMC()";
-            self.SpecMCMC = SpecMCMC_class(self.name);
-        end
-
-    end
-
-%***********************************************************************************************************************************
-%***********************************************************************************************************************************
+    fprintf(self.ChainFile.unit, "\n\t\twriteOutput2");
 
 end

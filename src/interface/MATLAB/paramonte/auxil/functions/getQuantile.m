@@ -36,18 +36,18 @@ function Quantile = getQuantile(np,nq,SortedQuantileProbability,Point,Weight,sum
 
     Quantile    = zeros(nq,1);
 
-    Indx        = zeros(np,1);
+%    Indx        = zeros(np,1);
     SortedQuantileDensity = zeros(nq,1);
 
     iq              = 1;
-    Quantile        = 0;
-    probability     = 0;
+%    Quantile        = 0;
+%    probability     = 0;
     weightCounter   = 0;
 
     Indx = indexArray(np, Point);
 
     if ~isempty(sumWeight)
-        SortedQuantileDensity = round(SortedQuantileProbability * sumWeight);
+        SortedQuantileDensity(:) = round(SortedQuantileProbability * sumWeight);
         for ip = 1 : np % loopWeighted
             for iw = 1 : Weight(Indx(ip))
                 weightCounter = weightCounter + 1;

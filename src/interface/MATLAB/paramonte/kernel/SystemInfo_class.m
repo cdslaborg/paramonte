@@ -124,19 +124,35 @@ classdef SystemInfo_class < handle
 
             % remove the files
 
-            Err = executeCmd("del " + filename);
-            if (Err.occurred == 0) && (Err.msg == ("Could Not Find " + pwd + '\' + filename + newline))
-                Err.msg =   FUNCTION_NAME + ": Error occurred while attempting to delete file " + filename;
-                Err.abort();
-                return
+            if exist(filename)
+                delete(filename);
+            else
+%                Err.msg = FUNCTION_NAME + "Could Not Find " + pwd + '/' + filename + newline;
+%                Err.abort();
+%                return
             end
 
-            Err = executeCmd("del " + stdErr);
-            if (Err.occurred == 0) && (Err.msg == ("Could Not Find " + pwd + '\' + stdErr + newline))
-                Err.msg =   FUNCTION_NAME + ": Error occurred while attempting to delete file " + stdErr;
-                Err.abort();
-                return
+            if exist(stdErr)
+                delete(stdErr);
+            else
+%                Err.msg = FUNCTION_NAME + "Could Not Find " + pwd + '/' + filename + newline;
+%                Err.abort();
+%                return
             end
+
+%            Err = executeCmd("del " + filename);
+%            if (Err.occurred == 0) && (Err.msg == ("Could Not Find " + pwd + '\' + filename + newline))
+%                Err.msg =   FUNCTION_NAME + ": Error occurred while attempting to delete file " + filename;
+%                Err.abort();
+%                return
+%            end
+%
+%            Err = executeCmd("del " + stdErr);
+%            if (Err.occurred == 0) && (Err.msg == ("Could Not Find " + pwd + '\' + stdErr + newline))
+%                Err.msg =   FUNCTION_NAME + ": Error occurred while attempting to delete file " + stdErr;
+%                Err.abort();
+%                return
+%            end
 
         end
 

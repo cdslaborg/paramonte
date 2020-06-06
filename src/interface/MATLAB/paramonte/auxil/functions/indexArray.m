@@ -38,11 +38,6 @@
 %
 function Indx = indexArray(n, Array)
 
-    Indx = zeros(1, n);
-    sorted_Array = sort(Array);
-
-    for i = 1 : length(Array)
-        Indx(i) = find(Array == sorted_Array(i));
-    end
-
+    [~, Indx] = sort(Array);
+       
 end

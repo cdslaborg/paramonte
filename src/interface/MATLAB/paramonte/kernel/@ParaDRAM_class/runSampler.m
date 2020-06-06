@@ -205,7 +205,7 @@ function runSampler ( self          ...
     if self.SpecDRAM.proposalModel.isNormal || self.SpecDRAM.proposalModel.isUniform
         self.Proposal   = ParaDRAMProposalSymmetric_class(ndim, self);
     else
-        self.Err.msg    = FUNCTION_NAME + ": Internal error occurred. Unsupported proposal distribution for " + self.name + "."
+        self.Err.msg    = FUNCTION_NAME + ": Internal error occurred. Unsupported proposal distribution for " + self.name + ".";
         self.Err.abort();
     end
 
@@ -566,7 +566,7 @@ function runSampler ( self          ...
 
             % open the output sample file
 
-            [self.SampleFile.unit, self.Err.msg] = fopen(self.SampleFile.Path.original, "w");
+            [self.SampleFile.unit, self.Err.msg] = fopen(self.SampleFile.Path.original, "W");
             if self.Err.msg
                 self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + " " + self.SampleFile.suffix + " file='" + self.SampleFile.Path.original + "'.";
                 self.Err.abort();

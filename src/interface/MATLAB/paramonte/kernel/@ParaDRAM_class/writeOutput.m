@@ -32,7 +32,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function out = writeOutput(self)
+function writeOutput(self)
     
     % if new point has been sampled, write the previous sampled point to output file
 
@@ -77,5 +77,6 @@ function out = writeOutput(self)
             end
         end
     end % blockOutputWrite
+
 
 end
