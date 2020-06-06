@@ -310,7 +310,7 @@ classdef GridPlot < BasePlot
                     cmd = "doc self.updateLayout";
                     methodNotFound = false;
                 else
-                    methodList = ["plot","helpme","addTarget","show","hide","rotateAxisLabels"];
+                    methodList = ["plot","helpme","addTarget","show","hide","rotateAxisLabels","exportFig"];
                     for method = methodList
                         if strcmpi(varargin{1},method)
                             methodNotFound = false;
@@ -679,7 +679,7 @@ classdef GridPlot < BasePlot
                         for fname = ["hline_kws","vline_kws","scatter_kws"]
                             self.currentFig.subplotList{irow,icol}.target.(fname).color = targetRGB;
                         end
-                        if strcmp(currentPlotType,"histogram")
+                        if strcmp(currentPlotType,"histogram") || strcmp(currentPlotType,"histfit")
                             self.currentFig.subplotList{irow,icol}.target.hline_kws.enabled = false;
                             self.currentFig.subplotList{irow,icol}.target.scatter_kws.enabled = false;
                         elseif strcmp(currentPlotType,"histogram2") || strcmp(currentPlotType,"contourf")
@@ -725,7 +725,7 @@ classdef GridPlot < BasePlot
                         end
 
                         self.currentFig.subplotList{irow,icol}.currentFig.gca.XLim = [ columns.min(icol) columns.max(icol) ];
-                        if ~strcmp(currentPlotType,"histogram")
+                        if ~( strcmpi(currentPlotType,"histogram") || strcmpi(currentPlotType,"histfit") )
                             self.currentFig.subplotList{irow,icol}.currentFig.gca.YLim = [ columns.min(irow) columns.max(irow) ];
                         end
 
@@ -1058,14 +1058,14 @@ classdef GridPlot < BasePlot
                 colorbarRequested = true;
             elseif nargin>2
                 for i = 2:length(varargin)
-                    part = varargin{i};
+                    part = string(varargin{i});
                     if strcmpi(part,"diag")
                         diagRequested  = true;
                     elseif strcmpi(part,"upper")
                         upperRequested = true;
                     elseif strcmpi(part,"lower")
                         lowerRequested = true;
-                    elseif strcmpi(part,"colorbar")
+                    elseif strcmpi(part,"colorbar") || strcmpi(part,"cbar")
                         colorbarRequested = true;
                     else
                         error   ( newline ...
@@ -1116,7 +1116,8 @@ classdef GridPlot < BasePlot
 
                 elseif methodNameIsHide
 
-                    colorbar("off");
+                    %colorbar("off");
+                    set(self.currentFig.colorbar,'visible','off');
 
                 end
 

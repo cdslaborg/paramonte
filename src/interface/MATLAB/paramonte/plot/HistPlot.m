@@ -515,6 +515,7 @@ classdef HistPlot < BasePlot
             else
                 set(0, "CurrentFigure", gcf);
                 self.currentFig.gcf = gcf;
+                hold on;
             end
 
             % check rows presence

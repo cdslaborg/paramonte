@@ -327,6 +327,7 @@ classdef LineScatterPlot < BasePlot
                 self.scatter_kws = struct();
                 self.scatter_kws.marker = [];
                 self.scatter_kws.singleOptions = {};
+                %self.scatter_kws.cdata = [];
                 self.scatter_kws.size = [];
                 self.scatter_kws.enabled = true;
             end
@@ -462,7 +463,8 @@ classdef LineScatterPlot < BasePlot
                 end
             end
 
-            cEnabled =  ( self.isLinePlot && self.surface_kws.enabled ) || ( self.isScatterPlot && self.scatter_kws.enabled );
+            cEnabledScatterPlot = self.isScatterPlot && self.scatter_kws.enabled && ~isfield(self.scatter_kws,"cdata");
+            cEnabled = ( self.isLinePlot && self.surface_kws.enabled ) || cEnabledScatterPlot;
             lgEnabled = self.legend_kws.enabled && ~cEnabled;
 
             if self.isScatterPlot && self.scatter_kws.enabled
@@ -504,6 +506,7 @@ classdef LineScatterPlot < BasePlot
             else
                 set(0, "CurrentFigure", gcf);
                 self.currentFig.gcf = gcf;
+                hold on;
             end
 
             % check rows presence
@@ -592,7 +595,7 @@ classdef LineScatterPlot < BasePlot
                 plot_kws_cell = convertStruct2Cell(self.plot_kws,{"enabled","singleOptions"});
             end
             if self.isScatterPlot
-                scatter_kws_cell = convertStruct2Cell(self.scatter_kws,{"enabled","singleOptions","color","size"});
+                scatter_kws_cell = convertStruct2Cell(self.scatter_kws,{"enabled","singleOptions","cdata","size"});
             end
             if self.isLinePlot
                 surface_kws_cell = convertStruct2Cell(self.surface_kws,{"enabled","singleOptions","color","size"});
@@ -605,13 +608,29 @@ classdef LineScatterPlot < BasePlot
             box on; grid on;
 
             lglabels = [];
-            if ~cEnabled
-                if self.isScatterPlot && self.scatter_kws.enabled
-                    scatter_colors = lines(maxLenColumns);
-                end
-            end
 
             if (self.isScatterPlot && self.scatter_kws.enabled) || (self.isLinePlot && (self.surface_kws.enabled || self.plot_kws.enabled))
+
+                isMultiColorScatterPlot = false;
+                if self.isScatterPlot && ~cEnabledScatterPlot
+                    if getVecLen(self.scatter_kws.cdata)
+                        if all(size(self.scatter_kws.cdata)==[maxLenColumns,3])
+                            isMultiColorScatterPlot = true;
+                            scatterMultiColorList = self.scatter_kws.cdata;
+                        elseif all(size(self.scatter_kws.cdata)==[1,3])
+                            currentScatterMarkerColor = self.scatter_kws.cdata;
+                        else
+                            error   ( "The value specified for the 'scatter_kws.cdata' property of the Scatter Plot object must be either " ...
+                                    + "an RGB triplet vector of size [1,3], or a matrix of size [" + string(maxLenColumns) + ",3 for the " ...
+                                    + "current set of variables that are selected to plot. It can also be an empty object, in which case, " ...
+                                    + "the colors of the objects in the plot will be chosen automatically." ...
+                                    )
+                        end
+                    else
+                        scatterMultiColorList = lines(maxLenColumns);
+                        isMultiColorScatterPlot = true;
+                    end
+                end
 
                 if ~self.is3d
                     zdata = zeros(length(rowindex(:)),1);
@@ -639,6 +658,10 @@ classdef LineScatterPlot < BasePlot
                         else
                             lglabels = [ lglabels , xcolnames(icol)+"-"+ycolnames(icol) ];
                         end
+                    end
+
+                    if isMultiColorScatterPlot
+                        currentScatterMarkerColor = scatterMultiColorList(icol,:);
                     end
 
                     % add plot
@@ -697,7 +720,7 @@ classdef LineScatterPlot < BasePlot
                                                                     , ydata ...
                                                                     , zdata ...
                                                                     , self.scatter_kws.size ...
-                                                                    , scatter_colors(icol,:) ...
+                                                                    , currentScatterMarkerColor ...
                                                                     , scatter_kws_cell{:} ...
                                                                     );
                                %self.currentFig.plot = plot3( xdata ...
@@ -711,7 +734,7 @@ classdef LineScatterPlot < BasePlot
                                 self.currentFig.scatter = scatter   ( xdata ...
                                                                     , ydata ...
                                                                     , self.scatter_kws.size ...
-                                                                    , scatter_colors(icol,:) ...
+                                                                    , currentScatterMarkerColor ...
                                                                     , scatter_kws_cell{:} ...
                                                                     );
                                %self.currentFig.plot = plot ( xdata ...

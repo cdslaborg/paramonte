@@ -206,7 +206,7 @@ class ParaDRAM:
 
             ##################################
             import paramonte as pm
-            pm.verify()
+            pm.verify() # verify the existence of parallel simulation prerequisites 
             ##################################
 
         to obtain specific information on how to run a parallel simulation,
@@ -433,7 +433,7 @@ class ParaDRAM:
                 #if not _os.path.isabs(self.spec.outputFileName):
                     #headTailList = _os.path.split(self.spec.outputFileName)
                     #if headTailList[1]=="":
-                    self.spec.outputFileName = SpecBase.outputFileName(self.spec.outputFileName)
+                    #self.spec.outputFileName = SpecBase.outputFileName(self.spec.outputFileName)
                     if self.spec.outputFileName[-1] == "\\" or self.spec.outputFileName[-1] == "/":
                         self.spec.outputFileName = _os.path.join( _os.path.abspath( self.spec.outputFileName ) , _genOutputFileName(_pm.names.paradram) )
 
@@ -625,6 +625,7 @@ class ParaDRAM:
                             , marginTop = 1
                             , marginBot = 1
                             )
+        self._mpiDisabled = not self.mpiEnabled
 
         if inputFile is not None and not isinstance(inputFile,str):
             _pm.abort   ( msg   = "The input argument `inputFile` must be of type str.\n"
@@ -786,7 +787,6 @@ class ParaDRAM:
         if mpiEnabled is not None:
             if isinstance(mpiEnabled,bool):
                 self.mpiEnabled = mpiEnabled
-                self._mpiDisabled = not mpiEnabled
             else:
                 _pm.abort   ( msg   = "The input argument mpiEnabled must be of type bool.\n"
                                     + "It is an optional logical (boolean) indicator which is False by default.\n"
@@ -798,6 +798,7 @@ class ParaDRAM:
                             , marginTop = 1
                             , marginBot = 1
                             )
+        self._mpiDisabled = not self.mpiEnabled
 
         if inputFile is not None and not isinstance(inputFile,str):
             _pm.abort   ( msg   = "The input argument `inputFile` must be of type str.\n"
@@ -828,7 +829,7 @@ class ParaDRAM:
             _pm.note( msg   = "Running the ParaDRAM sampler in serial mode...\n"
                             + "To run the ParaDRAM sampler in parallel mode visit: cdslab.org/pm\n"
                             + "If you are using Jupyter notebook, check the Jupyter's terminal window\n"
-                            + "for simulation progress and report."
+                            + "for realtime simulation progress and report."
                     , methodName = _pm.names.paradram
                     , marginTop = 1
                     , marginBot = 1

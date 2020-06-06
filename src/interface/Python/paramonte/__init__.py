@@ -77,7 +77,7 @@ The routines currently supported by the ParaMonte Python library include:
 
             ##################################
             import paramonte as pm
-            pm.helpme("paradram") # input value is case-insensitive
+            pm.helpme("paradram") # the input value is case-insensitive
             ##################################
 
         or,
@@ -87,7 +87,7 @@ The routines currently supported by the ParaMonte Python library include:
 
             ##################################
             import paramonte as pm
-            help(pm.ParaDRAM)
+            help(pm.ParaDRAM) # get help on ParaDRAM sampler class
             ##################################
 
 Naming conventions

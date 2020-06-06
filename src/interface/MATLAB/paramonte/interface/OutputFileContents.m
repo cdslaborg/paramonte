@@ -286,7 +286,7 @@ classdef OutputFileContents < dynamicprops
             %
             %           An optional string with possible value of "hard".
             %           If provided, the plot object will be regenerated from scratch.
-            %           This includes reading the original data frame again and reseting everything.
+            %           This includes reading the original data frame again and resetting everything.
             %
             %   Returns
             %   -------
@@ -347,7 +347,7 @@ classdef OutputFileContents < dynamicprops
                 msgPrefix = "creating the ";
                 msgSuffix = " plot object from scratch...";
             else
-                msgPrefix = "reseting the properties of the ";
+                msgPrefix = "resetting the properties of the ";
                 msgSuffix = " plot...";
             end
 
