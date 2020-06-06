@@ -93,13 +93,14 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadRombClosed
 #endif
+        use, intrinsic :: iso_fortran_env, only: DPI => int64
         implicit none
-        integer(IK), intent(in)     :: nRefinement
-        real(RK), intent(in)        :: lowerLim,upperLim,maxRelativeError
-        real(RK), intent(out)       :: integral, relativeError
-        integer(IK), intent(out)    :: ierr, numFuncEval
+        integer(IK) , intent(in)    :: nRefinement
+        real(RK)    , intent(in)    :: lowerLim,upperLim,maxRelativeError
+        real(RK)    , intent(out)   :: integral, relativeError
+        integer(IK) , intent(out)   :: ierr, numFuncEval
         integer(IK)                 :: refinementStage,km,numFuncEvalNew
-        integer(IK), parameter      :: NSTEP = 20_IK
+        integer(IK), parameter      :: NSTEP = 31_IK
         real(RK)                    :: h(NSTEP+1),s(NSTEP+1)
         procedure(integrand_proc)   :: getFunc
         ierr = 0_IK
@@ -138,13 +139,14 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadRombOpen
 #endif
+        use, intrinsic :: iso_fortran_env, only: DPI => int64
         implicit none
         integer(IK) , intent(in)    :: nRefinement
         real(RK)    , intent(in)    :: lowerLim,upperLim,maxRelativeError
         real(RK)    , intent(out)   :: integral, relativeError
         integer(IK) , intent(out)   :: numFuncEval, ierr
         integer(IK)                 :: refinementStage,km,numFuncEvalNew
-        integer     , parameter     :: NSTEP = 20_IK
+        integer(IK) , parameter     :: NSTEP = 20_IK
         real(RK)    , parameter     :: ONE_OVER_NINE = 1._RK / 9._RK
         real(RK)                    :: h(NSTEP+1),s(NSTEP+1)
         procedure(integrand_proc)   :: getFunc
@@ -235,13 +237,13 @@ contains
         procedure(integrand_proc)   :: getFunc
         if (refinementStage==1) then
             numFuncEval = 2_IK
-            integral=0.5_RK*(upperLim-lowerLim)*(getFunc(lowerLim)+getFunc(upperLim))
+            integral = 0.5_RK*(upperLim-lowerLim)*(getFunc(lowerLim)+getFunc(upperLim))
         else
-            numFuncEval=2**(refinementStage-2)
-            tnm=real(numFuncEval,kind=RK)
-            del=(upperLim-lowerLim)/tnm
-            x=lowerLim+0.5*del
-            sum=0._RK
+            numFuncEval = 2**(refinementStage-2)
+            tnm = real(numFuncEval,kind=RK)
+            del = (upperLim-lowerLim) / tnm
+            x = lowerLim + 0.5_RK * del
+            sum = 0._RK
             do iFuncEval = 1, numFuncEval
                 sum=sum+getFunc(x)
                 x=x+del
@@ -338,7 +340,7 @@ contains
             implicit none
             real(RK), intent(in)    :: x
             real(RK)                :: getTransFunc
-            getTransFunc = getFunc(1.0_RK/x) / x**2
+            getTransFunc = getFunc(1._RK/x) / x**2
 		end function getTransFunc
 	end subroutine midinf
 
@@ -363,11 +365,11 @@ contains
             numFuncEval = 1_IK
             integral = (upperLim-lowerLim) * getFunc( 0.5_RK * (lowerLim+upperLim) )
         else
-            numFuncEval = 3**(refinementStage-2)
+            numFuncEval = 3_IK**(refinementStage-2)
             inverseThreeNumFuncEval = ONE_THIRD / numFuncEval
             del = (upperLim-lowerLim) * inverseThreeNumFuncEval
             ddel = del+del
-            x = lowerLim + 0.5_RK*del
+            x = lowerLim + 0.5_RK * del
             summ = 0._RK
             do iFuncEval = 1, numFuncEval
                 summ = summ + getFunc(x)

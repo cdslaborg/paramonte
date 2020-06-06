@@ -69,160 +69,212 @@ def show_current_axis(*args, **kwds):
 
 class GridPlot:
     """
+
+    .. py:class:: GridPlot
+
     This is the GridPlot class for generating instances 
     of matrix-shaped figures of the following form:
-        -   the upper triangle subplots can optionally represent nothing 
-            or the birvariate line-and/or-scatter plots of data.
-        -   the diagonal elements represent the histograms of data.
-        -   the lower triangle subplots can optionally represent nothing 
-            or the birvariate line-and/or-scatter plots of data.
+    The **upper triangle** subplots can optionally represent nothing 
+    or the birvariate line-and/or-scatter plots of data.
+    The **diagonal elements** represent the histograms of data.
+    The **lower triangle** subplots can optionally represent nothing 
+    or the birvariate line-and/or-scatter plots of data.
 
-    Usage
-    -----
-    first generate an object of this class by optionally 
-    passing the following parameters described below. Then call 
-    the plot() method. The generated object is also callable with 
-    the same input parameters as the object's constructor.
+        **Usage**
 
-    Parameters
-    ----------
-        dataFrame
-            a Pandas dataframe from which the selected data will be plotted.
-        columns
-            optional argument that determines the columns of dataframe to serve as 
-            the x-values. It can have three forms:
-                1.  a list of column indices in the input dataFrame.
-                2.  a list of column names in dataFrame.columns.
-                3.  a range(start,stop,step), representing the column indices 
-                    in the input dataFrame.
-            Examples:
-                1.  columns = [0,1,4,3]
-                2.  columns = ["SampleLogFunc","SampleVariable1"]
-                3.  columns = range(17,7,-2)
-            However, in all cases, it must have a length that is either 1 or equal 
-            to the length of ycolumns. If the length is 1, then xcolumns will be 
-            plotted against data corresponding to each element of ycolumns.
-            If not provided, the default will be the count of the rows of the 
-            input dataFrame.
-        rows
-            optional argument that determines the rows of dataframe 
-            to be visualized. It can be either:
-                1.  a range(start,stop,step), or, 
-                2.  a list of row indices in dataFrame.index.
-            Examples:
-                1. rows = range(17,7,-2)
-                2. rows = [i for i in range(7,17)]
-            If not provided, the default includes all rows of the dataframe.
-        set_kws
-            optional dictionary of keyword arguments to be passed to seaborn's 
-            set() function. For example: 
-                set_kws = {"style":"darkgrid"}
-            if set to None, then no call to set() function will be made.
-        pairgrid_kws
-            optional dictionary of keyword arguments to be passed to the PairGrid 
-            class of seaborn library for making a grid of axes on which the data
-            will be plotted.
-            The default is {}. It is recommended that you leave this parameter 
-            unchanged from the default value, otherwise, unpredicted behavior
-            may occur.
-        distplot_kws
-            optional dictionary of keyword arguments to be passed to distplot()
-            function of seaborn library for making histograms of data on the 
-            diagonal elements of the grid plot. For example:
-                distplot_kws =  { "kde":False
-                                , hist_kws = { "histtype": "stepfilled"
-                                             , "linewidth": 1
-                                             }
-                                }
-            The default is {}. 
-            If set to None, no histograms will be added to diagonal of the grid plot. 
-        kdeplot_kws
-            optional dictionary of keyword arguments to be passed to kdeplot()
-            function of seaborn library for making histograms of data on the 
-            diagonal elements of the grid plot. For example:
-                kdeplot_kws =  {"n_levels": 100,
-                                "shade": True,
-                                "shade_lowest": True,
-                                "cmap": "Blues",
-                                "cbar": False,
-                                "zorder": 1,
-                                alpha": 1,
-                                }
-            The default is {}. 
-            If set to None, no kdeplots will be added to the grid plot. 
-        lineplot_kws
-            optional dictionary of keyword arguments to be passed to an instance of 
-            ParaMonte's LinePlot class for making colored line plots of the requested 
-            columns of data on the upper triangle of the grid plot.
-            The default is {}.
-            If set to None, no line plots will be added to upper triangle. 
-        scatterplot_kws
-            optional dictionary of keyword arguments to be passed to an instance of 
-            ParaMonte's ScatterPlot class for making scatter plots of the requested 
-            columns of data on the upper triangle of the grid plot.
-            The default is {}.
-            If set to None, no scatter plots will be added to upper triangle. 
-        colorbar_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            figure.colorbar() function. For example: 
-                colorbar_kws = {"orientation":"vertical"}
-            The default is {}. Despite the potential existence of three types of colored 
-            plots on the grid plot, only one colorbar will be added to the figure.
-            The colorbar preference is in the following order:
-                1. colored scatterplot, if requested,
-                2. colored lineplot, if requested,
-                3. kdeplot, if requested,
-            If set to None, no colorbar will be plotted.
-        outputFile
-            optional string representing the name of the output file in which 
-            the figure will be saved. If not provided, no output file will be generated.
-        kdecorner
-            optional string representing the corner (upper/lower triangle) of the grid 
-            plot where the kdeplots will be added. 
-            Possible values are: "upper", "lower", "auto", None. 
-            The default is "auto", which is the lower or any empty corner. 
-            If set to "auto", the corner will be automatically determined. 
-            If set to None, no kdeplots will be added to the grid plot. 
-        lscorner
-            optional string representing the corner (upper/lower triangle) of the grid 
-            plot where the line/scatter plots will be added. 
-            Possible values are: "upper", "lower", "auto", None. 
-            The default is "auto", which is the upper or any empty corner. 
-            If set to "auto", the corner will be automatically determined. 
-            If set to None, no scatter or line plots will be added to the grid plot. 
+            First generate an object of this class by optionally 
+            passing the following parameters described below. Then call 
+            the ``plot()`` method. The generated object is also callable with 
+            the same input parameters as the object's constructor.
 
-    Attributes
-    ----------
-        All of the parameters described above, except dataFrame.
-            a reference to the dataFrame will be implicitly stored in the object.
-        addTarget
-            a method which calls the individual callable Target objects of each subplot 
-            to add target point and lines to all of the plots.
-        currentFig
-            an object of class ParaMonteFigure which is initially None, but upon 
-            making a plot, is populated with attributes representing all outputs 
-            from matplotlib/seaborn function calls, with the following attributes:
-                figure
-                    the output of matplotlib's figure() function.
-                addTarget
-                    a method which calls an object of ParaMonte library's Target 
-                    class to add target point and lines to all plots of the grid.
-                pairgrid
-                    the output of seaborn's PairGrid() class.
-                scatterplotList
-                    a list each element of which corresponds to one row of the PairGrid, 
-                    and is itself a list of scatterplot objects.
-                lineplotList
-                    a list each element of which corresponds to one row of the PairGrid, 
-                    and is itself a list of lineplot objects.
-                colorbar
-                    the output of matplotlib's Figure.colorbar() function.
+        **Parameters**
 
-    Returns
-    -------
-        GridPlot
 
-    ----------------------------------------------------------------------
+            dataFrame
+                a Pandas dataframe from which the selected data will be plotted.
+
+            columns
+                optional argument that determines the columns of dataframe to serve as 
+                the x-values. It can have three forms:
+
+                    1.  a list of column indices in the input dataFrame.
+                    2.  a list of column names in dataFrame.columns.
+                    3.  a ``range(start,stop,step)``, representing the column indices 
+                        in the input dataFrame.
+
+                Examples:
+
+                    1.  ``columns = [0,1,4,3]``
+                    2.  ``columns = ["SampleLogFunc","SampleVariable1"]``
+                    3.  ``columns = range(17,7,-2)``
+
+                However, in all cases, it must have a length that is either 1 or equal 
+                to the length of ycolumns. If the length is 1, then ``xcolumns`` will be 
+                plotted against data corresponding to each element of ``ycolumns``.
+                If not provided, the default will be the count of the rows of the 
+                input dataFrame.
+
+            rows
+                optional argument that determines the rows of dataframe 
+                to be visualized. It can be either:
+
+                    1.  a ``range(start,stop,step)``, or, 
+                    2.  a list of row indices in ``dataFrame.index``.
+
+                Examples:
+
+                    1. ``rows = range(17,7,-2)``
+                    2. ``rows = [i for i in range(7,17)]``
+
+                If not provided, the default includes all rows of the dataframe.
+
+            set_kws
+                optional dictionary of keyword arguments to be passed to seaborn's 
+                ``set()`` function. For example: 
+
+                .. code-block:: python
+
+                    set_kws = {"style":"darkgrid"}
+
+                If set to ``None``, then no call to ``set()`` function will be made.
+
+            pairgrid_kws
+                optional dictionary of keyword arguments to be passed to the PairGrid 
+                class of seaborn library for making a grid of axes on which the data
+                will be plotted.
+
+                The default is ``{}``. It is recommended that you leave this parameter 
+                unchanged from the default value, otherwise, unpredicted behavior
+                may occur.
+
+            distplot_kws
+                optional dictionary of keyword arguments to be passed to ``distplot()``
+                function of seaborn library for making histograms of data on the 
+                diagonal elements of the grid plot. For example:
+
+                .. code-block:: python
+
+                    distplot_kws =  { "kde":False
+                                    , hist_kws = { "histtype": "stepfilled"
+                                                 , "linewidth": 1
+                                                 }
+                                    }
+
+                The default is ``{}``. 
+                If set to ``None``, no histograms will be added to diagonal of the grid plot. 
+
+            kdeplot_kws
+                optional dictionary of keyword arguments to be passed to ``kdeplot()``
+                function of seaborn library for making histograms of data on the 
+                diagonal elements of the grid plot. For example:
+
+                .. code-block:: python
+
+                    kdeplot_kws = { "n_levels": 100,
+                                    "shade": True,
+                                    "shade_lowest": True,
+                                    "cmap": "Blues",
+                                    "cbar": False,
+                                    "zorder": 1,
+                                    "alpha": 1,
+                                    }
+
+                The default is ``{}``. 
+                If set to ``None``, no kdeplots will be added to the grid plot. 
+
+            lineplot_kws
+                optional dictionary of keyword arguments to be passed to an instance of 
+                ParaMonte's LinePlot class for making colored line plots of the requested 
+                columns of data on the upper triangle of the grid plot.
+                The default is ``{}``.
+                If set to ``None``, no line plots will be added to upper triangle. 
+
+            scatterplot_kws
+                optional dictionary of keyword arguments to be passed to an instance of 
+                ParaMonte's ScatterPlot class for making scatter plots of the requested 
+                columns of data on the upper triangle of the grid plot.
+                The default is ``{}``.
+                If set to ``None``, no scatter plots will be added to upper triangle. 
+
+            colorbar_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's 
+                ``figure.colorbar()`` function. For example: 
+
+                .. code-block:: python
+
+                    colorbar_kws = {"orientation":"vertical"}
+
+                The default is ``{}``. Despite the potential existence of three types of colored 
+                plots on the grid plot, only one colorbar will be added to the figure.
+                The colorbar preference is in the following order:
+
+                    1. colored scatterplot, if requested,
+                    2. colored lineplot, if requested,
+                    3. kdeplot, if requested,
+
+                If set to ``None``, no colorbar will be plotted.
+
+            outputFile
+                optional string representing the name of the output file in which 
+                the figure will be saved. If not provided, no output file will be generated.
+
+            kdecorner
+                optional string representing the corner (upper/lower triangle) of the grid 
+                plot where the kdeplots will be added. 
+                Possible values are: ``"upper"``, ``"lower"``, ``"auto"``, ``None``. 
+                The default is ``"auto"``, which is the lower or any empty corner. 
+                If set to ``"auto"``, the corner will be automatically determined. 
+                If set to ``None``, no kdeplots will be added to the grid plot. 
+
+            lscorner
+                optional string representing the corner (upper/lower triangle) of the grid 
+                plot where the line/scatter plots will be added. 
+                Possible values are: ``"upper"``, ``"lower"``, ``"auto"``, ``None``. 
+                The default is ``"auto"``, which is the upper or any empty corner. 
+                If set to ``"auto"``, the corner will be automatically determined. 
+                If set to ``None``, no scatter or line plots will be added to the grid plot. 
+
+        **Attributes**
+
+            All of the parameters described above, except dataFrame.
+                a reference to the dataFrame will be implicitly stored in the object.
+
+            addTarget
+                a method which calls the individual callable Target objects of each subplot 
+                to add target point and lines to all of the plots.
+
+            currentFig
+                an object of class ParaMonteFigure which is initially None, but upon 
+                making a plot, is populated with attributes representing all outputs 
+                from matplotlib/seaborn function calls, with the following attributes:
+
+                    figure
+                        the output of matplotlib's ``figure()`` function.
+
+                    addTarget
+                        a method which calls an object of ParaMonte library's Target 
+                        class to add target point and lines to all plots of the grid.
+
+                    pairgrid
+                        the output of seaborn's ``PairGrid()`` class.
+
+                    scatterplotList
+                        a list each element of which corresponds to one row of the PairGrid, 
+                        and is itself a list of scatterplot objects.
+
+                    lineplotList
+                        a list each element of which corresponds to one row of the PairGrid, 
+                        and is itself a list of lineplot objects.
+
+                    colorbar
+                        the output of matplotlib's ``Figure.colorbar()`` function.
+
+        **Returns**
+
+            self
+                an object of class ``GridPlot``.
+
+    ---------------------------------------------------------------------------
     """
 
     def __init__( self
@@ -270,21 +322,26 @@ class GridPlot:
                 , **kwargs
                 ):
         """
-        calls the plot() method of the current instance of the class.
 
-        Parameters
-        ----------
-            reself
-                logical variable. If True, an instance of the object 
-                will be returned upon exit to the calling routine.
-                The default value is False.
-            also, any attributes of the current instance of the class.
+        .. py:method:: __call__(self, reself = False, **kwargs)
 
-        Returns
-        -------
-            the object self if reself = True otherwise, None.
-            However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+        calls the ``plot()`` method of the current instance of the class.
+
+            **Parameters**
+
+                reself
+                    logical variable. If ``True``, an instance of the object 
+                    will be returned upon exit to the calling routine.
+                    The default value is False.
+
+                also, 
+                    any attributes of the current instance of the class.
+
+            **Returns**
+
+                the object self if ``reself = True`` otherwise, None.
+                However, this method causes side-effects by manipulating 
+                the existing attributes of the object.
 
         """
 
@@ -305,16 +362,19 @@ class GridPlot:
 
     def plot(self):
         """
+
+        .. py:method:: plot(self)
+
         Generate a grid plot from the selected columns of the object's dataframe.
 
-        Parameters
-        ----------
-            None
+            **Parameters**
 
-        Returns
-        -------
-            None. However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+                None
+
+            **Returns**
+
+                None. However, this method causes side-effects by manipulating 
+                the existing attributes of the object.
 
         """
 
@@ -495,18 +555,15 @@ class GridPlot:
 
         # check data type
 
-        noDataPassed = False
+        noDataPassed = ""
         if self._dfref is None:
-            noDataPassed = True
-            fatalmsg = "It appears that no data has been passed for plotting.\n"
+            noDataPassed = "It appears that no data has been passed for plotting.\n"
         elif not isinstance(self._dfref,_wref.ref):
-            noDataPassed = True
-            fatalmsg = "It appears that you have messed with the\ninternal representation of data in the object.\n"
+            noDataPassed = "It appears that you have messed with the\ninternal representation of data in the object.\n"
         elif not isinstance(self._dfref(),_pd.DataFrame):
-            noDataPassed = True
-            fatalmsg = ""
+            noDataPassed = "The input data is not a pandas' dataframe.\n"
         if noDataPassed:
-            raise Exception ( fatalmsg
+            raise Exception ( noDataPassed
                             + "The input data must be a pandas' dataframe.\n"
                             + "Please pass a dataFrame to the constructor or at\n"
                             + "the time of calling the object (which is callable with\n"
@@ -683,6 +740,7 @@ class GridPlot:
     def _addcbar(self):
 
         mappable = None
+        cbarLabel = ""
         for scatterplotrow, lineplotrow in zip( self.currentFig.scatterplotList[:], self.currentFig.lineplotList[:] ):
             for scatterplot, lineplot in zip(scatterplotrow, lineplotrow):
                 if scatterplot != []:
@@ -707,23 +765,38 @@ class GridPlot:
 
     def hide(self,part="all"):
         """
-        hides the requested part of the grid plot.
 
-        Parameters
-        ----------
+        .. py:method:: hide(self, part = "all")
+
+        Hides the requested part of the grid plot.
+
+        **Parameters**
+
             part
                 a string with the following possible values:
-                    - "lower"   : hides the lower triangle of the grid plot.
-                    - "upper"   : hides the upper triangle of the grid plot.
-                    - "diag"    : hides the diagonal of the grid plot.
-                    - "all"     : hides all grid plots and the colorbar.
-                    - "cbar"    : hides the colorbar of the grid plot.
-                    the string can also be a mix of the above keywords, 
-                    separated by the + sign or some other delimiter. 
-                    For example, "lower+upper+cbar"
-        Returns
-        -------
-            None.
+
+                    "lower"
+                        hides the lower triangle of the grid plot.
+
+                    "upper"
+                        hides the upper triangle of the grid plot.
+
+                    "diag"
+                        hides the diagonal of the grid plot.
+
+                    "all"
+                        hides all grid plots and the colorbar.
+
+                    "cbar"
+                        hides the colorbar of the grid plot.
+
+                    The string can also be a mix of the above keywords, 
+                    separated by the ``+`` sign or some other delimiter. 
+                    For example, ``"lower+upper+cbar"``
+
+        **Returns**
+
+            None
 
         """
 
@@ -747,24 +820,38 @@ class GridPlot:
 
     def show(self,part="all"):
         """
-        shows the requested part of the grid plot.
 
-        Parameters
-        ----------
-            part
-                a string with the following possible values:
-                    - "lower"   : shows the lower triangle of the grid plot.
-                    - "upper"   : shows the lower triangle of the grid plot.
-                    - "diag"    : shows the diagonal of the grid plot.
-                    - "all"     : shows all grid plots.
-                    - "cbar"    : shows the colorbar of the grid plot.
-                    the string can also be a mix of the above keywords, 
-                    separated by the + sign or some other delimiter. 
-                    For example, "lower+upper+cbar"
+        .. py:method:: show(self, part = "all")
 
-        Returns
-        -------
-            None.
+        Shows the requested part of the grid plot.
+
+            **Parameters**
+
+                part
+                    a string with the following possible values:
+
+                        "lower"
+                            shows the lower triangle of the grid plot.
+
+                        "upper"
+                            shows the lower triangle of the grid plot.
+
+                        "diag"
+                            shows the diagonal of the grid plot.
+
+                        "all"
+                            shows all grid plots.
+
+                        "cbar"
+                            shows the colorbar of the grid plot.
+
+                        The string can also be a mix of the above keywords, 
+                        separated by the ``+`` sign or some other delimiter. 
+                        For example, ``"lower+upper+cbar"``
+
+            **Returns**
+
+                None
 
         """
 
@@ -797,31 +884,36 @@ class GridPlot:
                     , **target_kws
                     ):
         """
-        calls target callable associated with each element of 
-        currentFig.targetList of the GridPlot object to add target 
-        points and/or lines to all plots of the GridPlot figure.
-        This method is supposed to called only after a grid plot 
-        has been generated.
 
-        Parameters
-        ----------
-            values
-                a numpy array, or list, or tuple whose length equals the 
-                number of columns/rows of the grid plot, each element of 
-                which represents the target value associated with the 
-                corresponding variable on the x axis of the plot, 
-                from left to right. 
-                If not provided, the default will be set to the state 
-                (coordinates) of the "SampleLongFunc" column in the 
-                input dataframe to the object. This would work only 
-                when the input dataframe is the contents of a ParaMonte 
-                output chain or sample file.
-            also, any attributes of the Target class.
+        .. py:method:: addTarget(self, values = None, **target_kws)
 
-        Returns
-        -------
-            None. However, this method causes side-effects by manipulating 
-            the existing attributes of the Target objects in targetList.
+            calls target callable associated with each element of 
+            currentFig.targetList of the GridPlot object to add target 
+            points and/or lines to all plots of the ``GridPlot`` figure.
+            This method is supposed to called only after a grid plot 
+            has been generated.
+
+            **Parameters**
+
+                values
+                    a numpy array, or list, or tuple whose length equals the 
+                    number of columns/rows of the grid plot, each element of 
+                    which represents the target value associated with the 
+                    corresponding variable on the x axis of the plot, 
+                    from left to right. 
+                    If not provided, the default will be set to the state 
+                    (coordinates) of the "SampleLongFunc" column in the 
+                    input dataframe to the object. This would work only 
+                    when the input dataframe is the contents of a ParaMonte 
+                    output chain or sample file.
+
+                also, 
+                    any attributes of the Target class.
+
+            **Returns**
+
+                None. However, this method causes side-effects by manipulating 
+                the existing attributes of the ``Target`` objects in ``targetList``.
 
         """
 

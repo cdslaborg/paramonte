@@ -36,9 +36,9 @@
 ####################################################################################################################################
 
 # NOTE: Do not change the contents of this file unless you know what the consequences are.
-# This is the Bash script file that builds objects, dynamic libraries, 
+# This is the Bash script file that builds objects, dynamic libraries,
 # as well as the test and example binaries of the ParaMonte library on non-Windows systems.
-# Upon invocation of this file from a Bash command-line interface, 
+# Upon invocation of this file from a Bash command-line interface,
 # this file will first call the configuration file configParaMonte.bat to read the user's
 # requested configuration for building the ParaMonte library.
 
@@ -114,7 +114,7 @@ fi
 
 #echo "$(cat ./auxil/.ParaMonteBanner)"
 
-echo >&2 
+echo >&2
 echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
 echo >&2 "::::                                                                                                                            ::::"
 echo >&2 "                                      ParaMonte library version ${ParaMonteVersion} build on ${OSNAME}                              "
@@ -435,7 +435,7 @@ verify() {
     if [ $1 -eq 0 ]; then
         echo >&2 "-- ${BUILD_NAME} - ParaMonte $2 appears to have succeeded."
     else
-        echo >&2 
+        echo >&2
         echo >&2 "    -- ${BUILD_NAME} - FATAL: ParaMonte $2 appears to have failed."
         echo >&2 "    -- ${BUILD_NAME} - FATAL: If the source of the error cannot be identified,"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: consider a fresh installation of ParaMonte's required compilers by calling"
@@ -454,9 +454,9 @@ verify() {
         echo >&2 "    -- ${BUILD_NAME} - FATAL:     https://github.com/shahmoradi/paramonte/issues"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL: or by contacting the ParaMonte authors directly (e.g., shahmoradi@utexas.edu)."
-        echo >&2 
+        echo >&2
         echo >&2 "    -- ${BUILD_NAME} - gracefully exiting."
-        echo >&2 
+        echo >&2
         exit 1
     fi
 }
@@ -547,7 +547,7 @@ else
             exit 1
         fi
     fi
-    
+
 fi
 
 ####################################################################################################################################
@@ -686,7 +686,7 @@ done
 # detect CAF wrapper
 ####################################################################################################################################
 
-echo >&2  
+echo >&2
 
 CAF_ENABLED=false
 if [ "${CAFTYPE}" != "none" ]; then
@@ -718,7 +718,7 @@ if [ "${CAFTYPE}" != "none" ]; then
     #fi
     if [ "${cafInstallEnabled}" = "true" ]; then
         echo >&2 "-- ${BUILD_NAME}CAF - NOTE: OpenCoarrays caf compiler wrapper could not be found on your system."
-        echo >&2 
+        echo >&2
     fi
 fi
 export CAF_ENABLED
@@ -901,13 +901,13 @@ fi
 #fi
 
 #if [ "${MPI_ENABLED}" = "true" ]; then
-#    echo >&2 
+#    echo >&2
 #    echo >&2 "-- ${BUILD_NAME}MPI - intel Fortran MPI compiler wrapper: ${intelFortranMpiWrapperPath}"
 #    echo >&2 "-- ${BUILD_NAME}MPI - intel Fortran compiler: ${intelFortranCompilerPath}"
-#    echo >&2 
+#    echo >&2
 #    echo >&2 "-- ${BUILD_NAME}MPI - gnu Fortran MPI compiler wrapper: ${gnuFortranMpiWrapperPath}"
 #    echo >&2 "-- ${BUILD_NAME}MPI - gnu Fortran compiler: ${gnuFortranCompilerPath}"
-#    echo >&2 
+#    echo >&2
 #    if [ -z ${intelFortranMpiWrapperPath+x} ] || [ -z ${intelFortranCompilerPath+x} ]; then
 #        #if [ -z ${gnuFortranMpiWrapperPath+x} ] || [ -z ${gnuFortranCompilerPath+x} ]; then
 #            mpiInstallEnabled=true
@@ -1061,11 +1061,11 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                         echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
                         echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
                         chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) || 
+                        (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
                         {
                             if [ -z ${GCC_BOOTSTRAP+x} ]; then
                                 echo >&2
-                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer 
+                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
                                 echo >&2
                                 if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                                     GCC_BOOTSTRAP="--bootstrap"
@@ -1110,11 +1110,11 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                         Fortran_COMPILER_PATH=$(command -v gfortran)
                     else
                         chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) || 
+                        (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
                         {
                             if [ -z ${GCC_BOOTSTRAP+x} ]; then
                                 echo >&2
-                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer 
+                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
                                 echo >&2
                                 if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                                     GCC_BOOTSTRAP="--bootstrap"
@@ -1163,11 +1163,11 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                         ParaMonte_CAF_WRAPPER_PATH=$(command -v caf)
                     else
                         chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) || 
+                        (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
                         {
                             if [ -z ${GCC_BOOTSTRAP+x} ]; then
                                 echo >&2
-                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer 
+                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
                                 echo >&2
                                 if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                                     GCC_BOOTSTRAP="--bootstrap"
@@ -1450,9 +1450,9 @@ export MEMORY_ALLOCATION
 # set ParaMonte library build directories
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-echo >&2 
+echo >&2
 echo >&2 "-- ${BUILD_NAME} - setting up build directories..."
-echo >&2 
+echo >&2
 
 ParaMonte_BLD_DIR=${ParaMonte_ROOT_DIR}/build/${PLATFORM}${ARCHITECTURE}/${PMCS}/${COMPILER_VERSION}/${BTYPE}/${LTYPE}/${MEMORY_ALLOCATION}/${PARALLELIZATION_DIR}
 if [ ${INTERFACE_LANGUAGE} = "c" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/C; fi
@@ -1525,6 +1525,121 @@ export ParaMonteInterfacePython_SRC_DIR
 export ParaMonteInterfaceFortran_SRC_DIR
 
 ####################################################################################################################################
+# check for MATLAB's existence
+####################################################################################################################################
+
+unset MATLAB_ROOT_DIR_OPTION # it is imperative to nullify this MATLAB variable for all language builds at all times
+
+if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
+
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME}MATLAB - searching for a MATLAB installation on your system..."
+
+    unset MATLAB_ROOT_DIR
+    unset MATLAB_EXE_PATH
+    unset MATLAB_BIN_DIR
+
+    if command -v matlab >/dev/null 2>&1; then
+        MATLAB_EXE_PATH=$(command -v matlab)
+        MATLAB_BIN_DIR=$(dirname $MATLAB_EXE_PATH)
+        MATLAB_ROOT_DIR=$(dirname $MATLAB_BIN_DIR)
+        # echo >&2 "-- ${BUILD_NAME} - MATLAB detected at: ${MATLAB_EXE_PATH}"
+    else
+        echo >&2 "-- ${BUILD_NAME} - MATLAB could not be found in among the search paths."
+        echo >&2 "-- ${BUILD_NAME} - searching for MATLAB in the default installation directories..."
+    fi
+
+    if [ -z ${MATLAB_EXE_PATH+x} ]; then
+        if [ "${isMacOS}" = "true" ]; then
+            INSTALL_LOC_LIST="/Applications/MATLAB_"
+        else
+            INSTALL_LOC_LIST="/usr/local/MATLAB"
+        fi
+        MATLAB_VERSION_LIST="R2025b R2025a R2024b R2024a R2023b R2023a R2022b R2022a R2021b R2021a R2020b R2020a R2019b R2019a R2018b R2018a R2017b R2017a"
+
+        for INSTALL_LOC in $INSTALL_LOC_LIST; do
+            for MATLAB_VERSION in $MATLAB_VERSION_LIST; do
+                if [ "${isMacOS}" = "true" ]; then
+                    MATLAB_ROOT_DIR="${INSTALL_LOC_LIST}${MATLAB_VERSION}.app"
+                else
+                    MATLAB_ROOT_DIR="${INSTALL_LOC_LIST}/${MATLAB_VERSION}"
+                fi
+                MATLAB_BIN_DIR="${MATLAB_ROOT_DIR}/bin"
+                MATLAB_EXE_PATH="${MATLAB_BIN_DIR}/matlab"
+                if [[ -f "${MATLAB_EXE_PATH}" ]]; then
+                    #MATLAB_ROOT_DIR_OPTION="-DMATLAB_ROOT_DIR=${MATLAB_ROOT_DIR}"
+                    MATLAB_EXE_PATH="${MATLAB_EXE_PATH}"
+                    MATLAB_BIN_DIR="${MATLAB_BIN_DIR}"
+                    echo >&2 "-- ${BUILD_NAME}MATLAB - MATLAB ${MATLAB_VERSION} installation detected at: ${MATLAB_EXE_PATH}"
+                    echo >&2
+                    break 2
+                fi
+            done
+            # if [ -z ${MATLAB_EXE_PATH+x} ]; then break; fi
+        done
+    fi
+
+    if [ -z ${MATLAB_EXE_PATH+x} ]; then
+
+        EXAMPLE_MATLAB_VERSION="R2020a"
+        if [ "${isMacOS}" = "true" ]; then
+            EXAMPLE_MATLAB_ROOT_DIR="/Applications/MATLAB_${EXAMPLE_MATLAB_VERSION}.app"
+        else
+            EXAMPLE_MATLAB_ROOT_DIR="/usr/local/MATLAB/${EXAMPLE_MATLAB_VERSION}"
+        fi
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Please add MATLAB to your environmental variable PATH and rerun the install script."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: For example, in your current terminal, try:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Operating Systems is a string like the following:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: find the installation location of MATLAB by typing the following command in your MATLAB session:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     matlabroot"
+        echo >&2
+        if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+            answerNotGiven=true
+            while [ "${answerNotGiven}" = "true" ]; do
+                read -p "-- ${BUILD_NAME}MATLAB - Do you wish to continue with the rest of the installation process (y/n)? " answer
+                if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                    answer=y
+                    answerNotGiven=false
+                fi
+                if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                    answer=n
+                    answerNotGiven=false
+                fi
+                if [ "${answerNotGiven}" = "true" ]; then
+                    echo >&2 "-- ${BUILD_NAME}MATLAB - please enter either y or n"
+                fi
+            done
+        else
+            echo >&2 "-- ${BUILD_NAME}MATLAB - Do you wish to continue with the rest of the installation process (y/n)? y"
+            answer=y
+        fi
+        if [ "${answer}" = "y" ]; then
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: skipping the ParaMonte MATLAB dynamic library build..."
+            echo >&2
+        else
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME}MATLAB - exiting the ParaMonte MATLAB library build."
+            echo >&2
+            exit 1
+        fi
+    fi
+
+fi
+
+####################################################################################################################################
 # build ParaMonte
 ####################################################################################################################################
 
@@ -1539,7 +1654,7 @@ export ParaMonteInterfaceFortran_SRC_DIR
 # -DCFI_ENABLED=${CFI_ENABLED} \
 # -DOMP_ENABLED=${OMP_ENABLED}
 # EOF
-# 
+#
 # chmod +x ${ParaMonte_BLD_DIR}/build.sh
 # exec ${ParaMonte_BLD_DIR}/build.sh
 
@@ -1574,8 +1689,9 @@ if [ "${isMacOS}" = "true" ]; then ParaMonte_CAF_SETUP_PATH_CMD=""; fi
 ${ParaMonte_CAF_SETUP_PATH_CMD} && \
 cmake \
 --verbose=1 \
-${FC_OPTION} \
-${MPIEXEC_OPTION} \
+"${FC_OPTION}" \
+"${MPIEXEC_OPTION}" \
+"${MATLAB_ROOT_DIR_OPTION}" \
 -DINTERFACE_LANGUAGE=${INTERFACE_LANGUAGE} \
 -DPMCS=${PMCS} \
 -DMPI_ENABLED=${MPI_ENABLED} \
@@ -1658,15 +1774,32 @@ export PMLIB_FULL_PATH
 export PMLIB_FULL_NAME
 export PMLIB_BASE_NAME
 
-echo >&2 
+echo >&2
 echo >&2 "-- ${BUILD_NAME} - ParaMonte installed-library full path: ${PMLIB_FULL_PATH}"
 echo >&2 "-- ${BUILD_NAME} - ParaMonte installed-library full name: ${PMLIB_FULL_NAME}"
 echo >&2 "-- ${BUILD_NAME} - ParaMonte installed-library base name: ${PMLIB_BASE_NAME}"
-echo >&2 
+echo >&2
 
 ####################################################################################################################################
 # build ParaMonte MATLAB test
 ####################################################################################################################################
+
+####################################################################################################################################
+# check MATLAB's existence
+####################################################################################################################################
+
+# it is imperative to nullify these MATLAB variables for all language builds at all times
+
+unset MATLAB_ROOT_DIR
+unset MATLAB_EXE_PATH
+unset MATLAB_BIN_DIR
+unset MATLAB_LIB_DIR
+      MATLAB_INC_DIR="."
+unset MATLAB_LIBMX_FILE
+unset MATLAB_LIBMEX_FILE
+unset MATLAB_LIBMAT_FILE
+unset MATLAB_VERSION_FILE
+# set "MATLAB_INC_DIR_FLAG="
 
 if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
@@ -1674,17 +1807,17 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     #: check MATLAB's existence
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    echo >&2 
+    echo >&2
     echo >&2 "-- ${BUILD_NAME}MATLAB - searching for a MATLAB installation on your system..."
 
-    unset MATLAB_root_DIR
+    unset MATLAB_ROOT_DIR
     unset MATLAB_EXE_PATH
     unset MATLAB_BIN_DIR
 
     if command -v matlab >/dev/null 2>&1; then
         MATLAB_EXE_PATH=$(command -v matlab)
         MATLAB_BIN_DIR=$(dirname $MATLAB_EXE_PATH)
-        MATLAB_root_DIR=$(dirname $MATLAB_BIN_DIR)
+        MATLAB_ROOT_DIR=$(dirname $MATLAB_BIN_DIR)
         # echo >&2 "-- ${BUILD_NAME} - MATLAB detected at: ${MATLAB_EXE_PATH}"
     else
         echo >&2 "-- ${BUILD_NAME} - MATLAB could not be found in among the search paths."
@@ -1702,18 +1835,18 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         for INSTALL_LOC in $INSTALL_LOC_LIST; do
             for MATLAB_VERSION in $MATLAB_VERSION_LIST; do
                 if [ "${isMacOS}" = "true" ]; then
-                    MATLAB_root_DIR="${INSTALL_LOC_LIST}${MATLAB_VERSION}.app"
+                    MATLAB_ROOT_DIR="${INSTALL_LOC_LIST}${MATLAB_VERSION}.app"
                 else
-                    MATLAB_root_DIR="${INSTALL_LOC_LIST}/${MATLAB_VERSION}"
+                    MATLAB_ROOT_DIR="${INSTALL_LOC_LIST}/${MATLAB_VERSION}"
                 fi
-                MATLAB_BIN_DIR="${MATLAB_root_DIR}/bin"
+                MATLAB_BIN_DIR="${MATLAB_ROOT_DIR}/bin"
                 MATLAB_EXE_PATH="${MATLAB_BIN_DIR}/matlab"
                 if [[ -f "${MATLAB_EXE_PATH}" ]]; then
-                    MATLAB_root_DIR="${MATLAB_root_DIR}"
+                    MATLAB_ROOT_DIR="${MATLAB_ROOT_DIR}"
                     MATLAB_EXE_PATH="${MATLAB_EXE_PATH}"
                     MATLAB_BIN_DIR="${MATLAB_BIN_DIR}"
                     echo >&2 "-- ${BUILD_NAME}MATLAB - MATLAB ${MATLAB_VERSION} installation detected at: ${MATLAB_EXE_PATH}"
-                    echo >&2 
+                    echo >&2
                     break 2
                 fi
             done
@@ -1746,7 +1879,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: find the installation location of MATLAB by typing the following command in your MATLAB session:"
         echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
         echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     matlabroot"
-        echo >&2 
+        echo >&2
         if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
             answerNotGiven=true
             while [ "${answerNotGiven}" = "true" ]; do
@@ -1777,7 +1910,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             echo >&2
             exit 1
         fi
-        
+
     else
 
         #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -1818,7 +1951,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             if [ $? -eq 0 ]; then
                 echo >&2 "-- ${BUILD_NAME}MATLAB - The ParaMonte MATLAB dynamic library build appears to have succeeded."
             else
-                echo >&2 
+                echo >&2
                 echo >&2 "-- ${BUILD_NAME}MATLAB - Fatal Error: The ParaMonte MATLAB library build failed."
                 echo >&2 "-- ${BUILD_NAME}MATLAB - Please make sure you have the following components installed"
                 echo >&2 "-- ${BUILD_NAME}MATLAB - on your system before rerunning the installation script:"
@@ -1842,7 +1975,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
                 echo >&2 "-- ${BUILD_NAME}MATLAB -     https://github.com/cdslaborg/paramonte/issues"
                 echo >&2 "-- ${BUILD_NAME}MATLAB - "
                 echo >&2 "-- ${BUILD_NAME}MATLAB - gracefully exiting The ParaMonte build script."
-                echo >&2 
+                echo >&2
                 exit 1
             fi
             cd "${FILE_DIR}"
@@ -1854,11 +1987,11 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     #: Build ParaMonte MATLAB test
     #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    echo >&2 
+    echo >&2
     echo >&2 "-- ${BUILD_NAME}MATLABTest - building ParaMonte MATLAB test..."
     ParaMonteMATLABTest_BLD_DIR=${ParaMonte_BLD_DIR}/test/MATLAB
     export ParaMonteMATLABTest_BLD_DIR
-    
+
     MATLAB_TEST_FILENAME=testParaMonte_${BTYPE}
     if [ "${CAF_ENABLED}" = "true" ]; then MATLAB_TEST_FILENAME=${MATLAB_TEST_FILENAME}_${CAFTYPE}; fi
     if [ "${MPI_ENABLED}" = "true" ]; then MATLAB_TEST_FILENAME=${MATLAB_TEST_FILENAME}_mpi; fi
@@ -1878,7 +2011,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteInterfaceMATLAB_SRC_DIR}/paramonte"
     echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/"
     cp -R "${ParaMonteInterfaceMATLAB_SRC_DIR}"/paramonte "${ParaMonteMATLABTest_BLD_DIR}"/
-    echo >&2 
+    echo >&2
 
     # copy necessary ParaMonte library auxiliary files
 
@@ -1901,7 +2034,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${PMLIB_FULL_PATH}"
     echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
     cp -R "${ParaMonte_LIB_DIR}/"* "${ParaMonteMATLABTest_BLD_DIR}/paramonte/lib"
-    echo >&2 
+    echo >&2
 
     # copy necessary ParaMonte MATLAB library files in MATLAB's directory
 
@@ -1909,7 +2042,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteMATLABTest_SRC_DIR}/${MATLAB_TEST_FILENAME}"
     echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/"
     cp "${ParaMonteMATLABTest_SRC_DIR}"/${MATLAB_TEST_FILENAME} "${ParaMonteMATLABTest_BLD_DIR}"/
-    echo >&2 
+    echo >&2
 
     # copy necessary input files in MATLAB's directory
 
@@ -1917,7 +2050,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     echo >&2 "-- ${BUILD_NAME}MATLABTest - from: ${ParaMonteTest_SRC_DIR}/input"
     echo >&2 "-- ${BUILD_NAME}MATLABTest -   to: ${ParaMonteMATLABTest_BLD_DIR}/input/"
     cp -R "${ParaMonteTest_SRC_DIR}"/input "${ParaMonteMATLABTest_BLD_DIR}"/
-    echo >&2 
+    echo >&2
 
 fi
 
@@ -1927,11 +2060,11 @@ fi
 
 if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${CFI_ENABLED}" = "true" ]; then
 
-    echo >&2 
+    echo >&2
     echo >&2 "-- ${BUILD_NAME}PythonTest - building ParaMonte Python test..."
     ParaMontePythonTest_BLD_DIR=${ParaMonte_BLD_DIR}/test/Python
     export ParaMontePythonTest_BLD_DIR
-    
+
     PYTHON_TEST_FILENAME=testParaMonte_${BTYPE}
     if [ "${CAF_ENABLED}" = "true" ]; then PYTHON_TEST_FILENAME=${PYTHON_TEST_FILENAME}_${CAFTYPE}; fi
     if [ "${MPI_ENABLED}" = "true" ]; then PYTHON_TEST_FILENAME=${PYTHON_TEST_FILENAME}_mpi; fi
@@ -1952,7 +2085,7 @@ if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     echo >&2 "-- ${BUILD_NAME}PythonTest - from: ${ParaMonteInterfacePython_SRC_DIR}/paramonte"
     echo >&2 "-- ${BUILD_NAME}PythonTest -   to: ${ParaMontePythonTest_BLD_DIR}/paramonte/"
     cp -R "${ParaMonteInterfacePython_SRC_DIR}"/paramonte "${ParaMontePythonTest_BLD_DIR}"/
-    echo >&2 
+    echo >&2
 
     # copy necessary ParaMonte library auxiliary files
 
@@ -1968,7 +2101,7 @@ if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     echo >&2 "-- ${BUILD_NAME}PythonTest - from: ${ParaMonte_LIB_DIR}/${PMLIB_FULL_NAME}"
     echo >&2 "-- ${BUILD_NAME}PythonTest -   to: ${ParaMontePythonTest_BLD_DIR}/paramonte/"
     cp "${ParaMonte_LIB_DIR}"/* "${ParaMontePythonTest_BLD_DIR}"/paramonte/
-    echo >&2 
+    echo >&2
 
     # copy necessary ParaMonte Python library files in Python's directory
 
@@ -1976,7 +2109,7 @@ if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     echo >&2 "-- ${BUILD_NAME}PythonTest - from: ${ParaMontePythonTest_SRC_DIR}/${PYTHON_TEST_FILENAME}"
     echo >&2 "-- ${BUILD_NAME}PythonTest -   to: ${ParaMontePythonTest_BLD_DIR}/"
     cp "${ParaMontePythonTest_SRC_DIR}"/${PYTHON_TEST_FILENAME} "${ParaMontePythonTest_BLD_DIR}"/
-    echo >&2 
+    echo >&2
 
     # copy necessary input files in Python's directory
 
@@ -1984,7 +2117,7 @@ if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
     echo >&2 "-- ${BUILD_NAME}PythonTest - from: ${ParaMonteTest_SRC_DIR}/input"
     echo >&2 "-- ${BUILD_NAME}PythonTest -   to: ${ParaMontePythonTest_BLD_DIR}/input/"
     cp -R "${ParaMonteTest_SRC_DIR}"/input "${ParaMontePythonTest_BLD_DIR}"/
-    echo >&2 
+    echo >&2
 
 fi
 
@@ -1998,7 +2131,7 @@ source ./example/buildParaMonteExample.sh
 # copy ParaMonte binary / library files to the bin directory
 ####################################################################################################################################
 
-echo >&2 
+echo >&2
 echo >&2 "-- ${BUILD_NAME} - copying the ParaMonte binary/library files to the bin directory..."
 ParaMonte_BIN_DIR=${ParaMonte_ROOT_DIR}/bin
 export ParaMonte_BIN_DIR

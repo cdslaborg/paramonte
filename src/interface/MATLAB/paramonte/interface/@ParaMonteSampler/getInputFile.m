@@ -60,6 +60,13 @@ function namelist = getInputFile(self)
             self.spec.outputFileName = string(self.spec.outputFileName);
         end
 
+        if contains(self.spec.outputFileName," ")
+            self.Err.msg    = "The specified path to the simulation output files contains whitespace characters(s). " + newline ...
+                            + "The whitespace characters are infamous for causing software crashes and failures. Be prepared for your simulation to crash. " + newline ...
+                            + "Otherwise, specify a path for the output files that does not contain whitespace character(s).";
+            self.Err.warn();
+        end
+
         % ParaMonte variables
 
         if  ~isempty(self.spec.sampleSize                          );  namelist = namelist + SpecBase.sampleSize                           (self.spec.sampleSize                         ); end

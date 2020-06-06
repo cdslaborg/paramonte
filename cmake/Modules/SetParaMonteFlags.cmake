@@ -35,6 +35,39 @@
 ####################################################################################################################################
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# set up MATLAB
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# unset(MATLAB_FPP_FLAGS)
+# unset(MATLAB_LINKER_FLAGS)
+# #unset(MATLAB_EXPORT_VERSION)
+# unset(MATLAB_PLATFORM_SUBDIR)
+# 
+# if (WIN32)
+# else()
+#     if (DEFINED MATLAB_ROOT_DIR)
+#         if(APPLE)
+#             set(MATLAB_PLATFORM_SUBDIR maci64)
+#         else()
+#             set(MATLAB_PLATFORM_SUBDIR glnxa64)
+#         endif()
+#         #if (intel_compiler)
+#         #    set(MATLAB_FPP_FLAGS -DMATLAB_MEX_FILE)
+#         #elseif(gnu_compiler)
+#             set(MATLAB_FPP_FLAGS -DMATLAB_MEX_FILE -D_GNU_SOURCE -DMEXPRINT_ENABLED)
+#         #endif()
+#         set(MATLAB_LINKER_FLAGS 
+#         -Wl,--no-undefined
+#         -Wl,--as-needed -Wl,-rpath-link,"${MATLAB_ROOT_DIR}/bin/${MATLAB_PLATFORM_SUBDIR}" 
+#         #-L"$(MATLAB_ROOT_DIR)/bin/${MATLAB_PLATFORM_SUBDIR}" 
+#         -Wl,-rpath-link,"$(MATLAB_ROOT_DIR)/extern/bin/${MATLAB_PLATFORM_SUBDIR}" 
+#         -Wl,--version-script,"$(MATLAB_ROOT_DIR)/extern/lib/${MATLAB_PLATFORM_SUBDIR}/fortran_exportsmexfileversion.map" 
+#         )
+#         #set(MATLAB_EXPORT_VERSION -Wl,--version-script,"$(MATLAB_ROOT_DIR)/extern/lib/${MATLAB_PLATFORM_SUBDIR}/fortran_exportsmexfileversion.map")
+#     endif()
+# endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Fortran compiler/linker debug build flags. Will be used only when build mode is set to debug
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 

@@ -154,6 +154,7 @@ classdef ParaMonteSampler < dynamicprops
         objectName = [];
         platform = [];
         libName = [];
+        website = [];
         method = [];
         ndim = [];
     end
@@ -166,12 +167,13 @@ classdef ParaMonteSampler < dynamicprops
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = ParaMonteSampler(platform)
+        function self = ParaMonteSampler(platform,website)
             %filePath = mfilename("fullpath"); addpath(genpath(filePath),"-begin");
             self.method = struct();
             self.method.isParaDRAM = false;
             self.method.isParaNest = false;
             self.method.isParaTemp = false;
+            self.website = website;
             self.platform = platform;
         end
 

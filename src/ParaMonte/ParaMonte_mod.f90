@@ -897,7 +897,13 @@ contains
                 , position = PM%LogFile%Position%value      )
             PM%Err = PM%LogFile%getOpenErr(PM%LogFile%Err%stat)
             if (PM%Err%occurred) then
-                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening " // PM%name // PM%LogFile%suffix // " file='" // PM%LogFile%Path%original // "'."
+                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // PM%name // " " // PM%LogFile%suffix // " file='" // PM%LogFile%Path%original // "'. "
+                if (scan(" ",trim(adjustl(PM%LogFile%Path%original)))/=0) then
+                    PM%Err%msg = PM%Err%msg // "It appears that absolute path used for the output files contains whitespace characters. " &
+                                            // "This could be one potential cause of the simulation failure. " &
+                                            // "The whitespace characters are always problematic in paths. " &
+                                            // "Ensure the path used for the output files does not contain whitespace characters. "
+                end if
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
                 return
             end if
@@ -928,7 +934,7 @@ contains
                 , position = PM%TimeFile%Position%value     )
             PM%Err = PM%TimeFile%getOpenErr(PM%TimeFile%Err%stat)
             if (PM%Err%occurred) then
-                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening " // PM%name // PM%TimeFile%suffix // " file='" // PM%TimeFile%Path%original // "'."
+                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // PM%name // " " // PM%TimeFile%suffix // " file='" // PM%TimeFile%Path%original // "'. "
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
                 return
             end if
@@ -947,7 +953,7 @@ contains
                 , position = PM%ChainFile%Position%value    )
             PM%Err = PM%ChainFile%getOpenErr(PM%ChainFile%Err%stat)
             if (PM%Err%occurred) then
-                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening " // PM%name // PM%ChainFile%suffix // " file='" // PM%ChainFile%Path%original // "'."
+                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // PM%name // " " // PM%ChainFile%suffix // " file='" // PM%ChainFile%Path%original // "'. "
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
                 return
             end if
@@ -964,7 +970,7 @@ contains
                 , position = PM%RestartFile%Position%value  )
             PM%Err = PM%RestartFile%getOpenErr(PM%RestartFile%Err%stat)
             if (PM%Err%occurred) then
-                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening " // PM%name // PM%RestartFile%suffix // " file='" // PM%RestartFile%Path%original // "'."
+                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // PM%name // " " // PM%RestartFile%suffix // " file='" // PM%RestartFile%Path%original // "'. "
                 call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
                 return
             end if

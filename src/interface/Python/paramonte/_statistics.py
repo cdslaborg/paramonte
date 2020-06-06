@@ -47,6 +47,45 @@ class _Struct: pass
 def getMaxLogFunc( dataFrame : _pd.DataFrame
                  , column    : _tp.Optional[ str ] = "SampleLogFunc"
                  ):
+    """
+
+    .. py:function:: getMaxLogFunc(dataFrame, column = "SampleLogFunc")
+
+    Returns a structure with components containing the properties of the 
+    input ``dataFrame``, corresponding to the mode (maximum) of the data 
+    in the column of the dataFrame that is identified by ``column``. 
+
+        **Parameters**
+
+            dataFrame
+                a Pandas dataframe containing the output sample data from a 
+                ParaMonte simulation.
+
+            column
+                A string containing the name of the column of the input 
+                ``dataFrame`` that contains values of the objective function
+                (or its logarithm).
+
+        **Returns**
+
+            maxLogFunc
+                A structure with the following components:
+
+                    idrow
+                        the ID of the row of ``dataFrame`` corresponding to the 
+                        mode of ``column``, 
+                    value
+                        the value of ``column`` at maximum, 
+                    dfrow
+                        the entire row of ``dataFrame`` corresponding to the 
+                        mode of ``column``, 
+                    state
+                        the location (state) within the domain of the objective 
+                        function where the maximum of ``column`` occurs.
+
+
+    """
+
     _offset = dataFrame.columns.get_loc(column) + 1
     maxLogFunc = _Struct()
     maxLogFunc.idrow = dataFrame[[column]].idxmax().values[0]

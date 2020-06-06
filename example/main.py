@@ -41,12 +41,11 @@ import numpy as np
 import paramonte as pm
 from logfunc import getLogFunc, NDIM
 
-# define a ParaMonte sampler instance
-
-pmpd = pm.ParaDRAM()
+pmpd = pm.ParaDRAM() # define a ParaDRAM sampler instance
 
 pmpd.runSampler ( ndim = NDIM               # number of dimensions of the objective function
                 , getLogFunc = getLogFunc   # the objective function: multivariate normal distribution
-                # NOTE: inputFilePath is optional: all simulation specifications can be set as attributes of pmpd.spec
-                , inputFilePath = os.path.dirname(os.path.abspath(__file__)) + "/paramonte.in"
+                # NOTE: inputFile is optional: all simulation specifications can be set as attributes of pmpd.spec
+                # NOTE: However, if specified, then all simulation specification will be read exclusively from the inputFile.
+                , inputFile = os.path.dirname(os.path.abspath(__file__)) + "/paramonte.in"
                 )

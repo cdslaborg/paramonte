@@ -198,8 +198,8 @@ classdef ParaDRAM < ParaMonteSampler
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = ParaDRAM(platform)
-            self = self@ParaMonteSampler(platform);
+        function self = ParaDRAM(platform,website)
+            self = self@ParaMonteSampler(platform,website);
             self.spec = SpecDRAM();
             self.methodName = "ParaDRAM";
             self.method.isParaDRAM = true;

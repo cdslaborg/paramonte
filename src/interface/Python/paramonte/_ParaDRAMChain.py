@@ -51,56 +51,68 @@ class _Struct:
 
 class _ParaDRAMChain:
     """
+
+    .. py:class:: _ParaDRAMChain
+
     This is the _ParaDRAMChain class for generating instances 
-    of ParaDRAM sample/chain. The ParaDRAM class's readSample() or 
-    readChain() methods return an object or a list of objects of 
-    class _ParaDRAMChain.
+    of ParaDRAM sample/chain. The ParaDRAM class's ``readSample()`` or 
+    ``readChain()`` or ``readMarkovChain()`` methods return an object or 
+    a list of objects of class ``_ParaDRAMChain``.
 
-    Parameters
-    ----------
-        file
-            full path to the file containing the sample/chain.
-        delimiter
-            the delimiter used in the sample/chain file, which 
-            must be provided by the user.
-        parseContents
-            If set to True, the contents of the file will be parsed and 
-            stored in a component of the object named 'contents'.
-            The default value is True.
-        markovChainRequested
-            boolean value indicating weather the full Markov Chain
-            has to be generated from the potentially-weighted sample 
-            in the input file. If True, each sampled state in the resulting 
-            output dataframe is guaranteed to have a weight of 1.
+        **Parameters**
 
-    Attributes
-    ----------
-        file
-            full path to the file containing the sample/chain.
-        delimiter
-            the delimiter used in the sample/chain file, which 
-            must be provided by the user.
-        ndim
-            number of dimensions of the domain of the objective 
-            function from which the sample has been drawn.
-        count
-            number of points (states) in the sample/chain file. 
-            This is essentially, the number of rows in the file 
-            minus one (representing the header line).
-        [df]
-            if the input file contents is structured in a format that
-            could be read as a dataframe, then the contents of the file
-            will be stored in the form of a pandas-library DataFrame 
-            in this property (hence called 'df').
-        [contents]
-            if the input file contents is structured in the form of columns,
-            then a property named 'contents' is also added to the object.
-            Each component of contents will named via the header of the file
-            and will contain data from the corresponding column of the file.
+            file
+                full path to the file containing the sample/chain.
 
-    Returns
-    -------
-        _ParaDRAMChain
+            delimiter
+                the delimiter used in the sample/chain file, which 
+                must be provided by the user.
+
+            parseContents
+                If set to ``True``, the contents of the file will be parsed and 
+                stored in a component of the object named ``contents``.
+                The default value is True.
+
+            markovChainRequested
+                boolean value indicating weather the full Markov Chain
+                has to be generated from the potentially-weighted sample 
+                in the input file. If True, each sampled state in the resulting 
+                output dataframe is guaranteed to have a weight of 1.
+
+        **Attributes**
+
+            file
+                full path to the file containing the sample/chain.
+
+            delimiter
+                the delimiter used in the sample/chain file, which 
+                must be provided by the user.
+
+            ndim
+                number of dimensions of the domain of the objective 
+                function from which the sample has been drawn.
+
+            count
+                number of points (states) in the sample/chain file. 
+                This is essentially, the number of rows in the file 
+                minus one (representing the header line).
+
+            [df]
+                if the input file contents is structured in a format that
+                could be read as a dataframe, then the contents of the file
+                will be stored in the form of a pandas-library DataFrame 
+                in this property (hence called ``df``).
+
+            [contents]
+                if the input file contents is structured in the form of columns,
+                then a property named ``contents`` is also added to the object.
+                Each component of contents will named via the header of the file
+                and will contain data from the corresponding column of the file.
+
+        **Returns**
+
+            outputChain
+                an object of class ``_ParaDRAMChain``
 
     ----------------------------------------------------------------------
     """

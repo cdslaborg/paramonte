@@ -211,12 +211,15 @@ function runSampler(self,ndim,getLogFunc,varargin)
     end
     getLogFuncSpec = functions(getLogFunc);
 
-    iscmd = isdeployed() || batchStartupOptionUsed;
-
-    %if ~(self.mpiEnabled || iscmd)
-    %    self.Err.msg = "check the opened terminal for simulation progress and report.";
-    %    self.Err.note();
-    %end
+    try
+        iscmd = isdeployed() || batchStartupOptionUsed; % batchStartupOptionUsed is introduced in R2019a and not supported in older versions of MATLAB
+    catch
+        iscmd = isdeployed();
+    end
+    if ~(self.mpiEnabled || iscmd || self.platform.isWin32)
+        self.Err.msg = "check the Bash terminal (from which you opened MATLAB) for realtime simulation progress and report.";
+        self.Err.note();
+    end
 
     if strcmp(getLogFuncSpec.type,"simple") && strcmp(getLogFuncSpec.function,"getLogFunc")
         expression = string(self.libName + "(iscmd,ndim,inputFile)");
@@ -259,11 +262,11 @@ function runSampler(self,ndim,getLogFunc,varargin)
 
     if ~self.mpiEnabled
         self.Err.msg    = "To read the generated output files sample or chain files, try the following:" + newline + newline ...
-                        + "    " + self.objectName + ".readSample()      # to read the final i.i.d. sample from the output sample file." + newline ...
-                        + "    " + self.objectName + ".readChain()       # to read the uniquely-accepted points from the output chain file." + newline ...
-                        + "    " + self.objectName + ".readMarkovChain() # to read the Markov Chain. NOT recommended for extremely-large chains." + newline + newline ...
+                        + "    " + self.objectName + ".readSample()      %% to read the final i.i.d. sample from the output sample file." + newline + newline ...
+                        + "    " + self.objectName + ".readChain()       %% to read the uniquely-accepted points from the output chain file." + newline + newline ...
+                        + "    " + self.objectName + ".readMarkovChain() %% to read the Markov Chain. NOT recommended for extremely-large chains." + newline + newline + newline ...
                         + "For more information and examples on the usage, visit:" + newline + newline ...
-                        + "    <a href=""https://www.cdslab.org/paramonte/"">https://www.cdslab.org/paramonte/</a>";
+                        + "    " + self.website.home.url;
         self.Err.note();
     end
 

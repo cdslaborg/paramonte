@@ -201,11 +201,10 @@ classdef paramonte %< dynamicprops
         Err = Err_class();
         verificationStatusFilePath
         buildInstructionNote
+        pmInstallFailed
         objectName
-    end
-
-    properties (Access = public, Hidden)
         prereqs
+        isGUI
         names
         path
     end
@@ -238,7 +237,13 @@ classdef paramonte %< dynamicprops
             self.website.intel.mpi.home.url = "https://software.intel.com/en-us/mpi-library";
             self.website.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-with-mpi-for-windows";
             self.website.openmpi.home.url = "https://www.open-mpi.org/";
-            if usejava('desktop') && ~batchStartupOptionUsed
+            try
+                % usejava() is sensitive to char vs. string input arguments. always input char.
+                self.isGUI = usejava('desktop') && feature('ShowFigureWindows') && ~batchStartupOptionUsed; % batchStartupOptionUsed is introduced in R2019a and not supported in older versions of MATLAB
+            catch
+                self.isGUI = usejava('desktop') && feature('ShowFigureWindows');
+            end
+            if  self.isGUI
                 self.website.home.url = "<a href=""" + self.website.home.url + """>" + self.website.home.url + "</a>";
                 self.website.github.issues.url = "<a href=""" + self.website.github.issues.url + """>" + self.website.github.issues.url + "</a>";
                 self.website.intel.mpi.home.url = "<a href=""" + self.website.intel.mpi.home.url + """>" + self.website.intel.mpi.home.url + "</a>";
@@ -276,37 +281,36 @@ classdef paramonte %< dynamicprops
             % check interface type
 
             errorOccurred = false;
-            matlabKernelEnabled = false;
             matlabKernelName = "matdram";
-            if nargin==1
-                if isa(varargin{1},"char")
-                    if strcmpi(varargin{1},matlabKernelName)
+            matlabInterfName = "interface";
+            if nargin==0
+                matlabKernelEnabled = false;
+            elseif nargin==1
+                if isa(varargin{1},"char") || isa(varargin{1},"string")
+                    if strcmpi(string(varargin{1}),matlabKernelName)
                         matlabKernelEnabled = true;
-                    else
-                        errorOccurred = true;
-                    end
-                elseif isa(varargin{1},'string')
-                    if strcmpi(varargin{1},matlabKernelName)
-                        matlabKernelEnabled = true;
+                    elseif strcmpi(string(varargin{1}),matlabInterfName)
+                        matlabKernelEnabled = false;
                     else
                         errorOccurred = true;
                     end
                 end
-            elseif nargin~=0
+            else
                 errorOccurred = true;
             end
             if errorOccurred
-                self.Err.msg    = "The paramonte class constructor takes at most one argument of value """ + matlabKernelName + """. You have entered:" + newline + newline ...
+                self.Err.msg    = "The paramonte class constructor takes at most one argument of value """ ...
+                                + matlabKernelName + """ or """ + matlabInterfName + """. You have entered:" + newline + newline ...
                                 + "    " + string(strrep(join(string(varargin)," "),'\','\\')) ...
-                                + "Pass the input value """ + matlabKernelName + """ only if you know what it means. Otherwise, do not pass any input values. " ...
-                                + "ParaMonte will properly set things up for you.";
+                                + "Pass the input value """ + matlabKernelName + """ only if you know what it means. " ...
+                                + "Otherwise, do not pass any input values. ParaMonte will properly set things up for you.";
                 self.Err.abort()
             end
 
             if matlabKernelEnabled
-                self.ParaDRAM = ParaDRAM_class;
+                self.ParaDRAM = ParaDRAM_class();
             else
-                self.ParaDRAM = ParaDRAM(self.platform);
+                self.ParaDRAM = ParaDRAM(self.platform,self.website);
             end
 
             self.verify("reset",false)
@@ -478,8 +482,6 @@ classdef paramonte %< dynamicprops
 
                     end
 
-                    self.dispFinalMessage();
-
                 else
 
                     self.warnForUnsupportedPlatform();
@@ -507,11 +509,12 @@ classdef paramonte %< dynamicprops
             if isunix
                 %pmLocalFileList = getFileNameList(self.path.lib);
                 installRootDirList = ["/usr/local/lib64","/usr/local/lib","/usr/lib64","/usr/lib"];
+                self.pmInstallFailed = true;
                 for installRootDir = installRootDirList
-                    if isdir(installRootDir)
+                    if isfolder(installRootDir)
                         errorOccurred = false;
                         %pmInstallDir = fullfile(installRootDir,"paramonte");
-                        %if ~isdir(pmInstallDir)
+                        %if ~isfolder(pmInstallDir)
                         %    [status, errMsg, msgID] = mkdir(pmInstallDir);
                         %    if status~=1; errorOccurred = true; end
                         %end
@@ -535,13 +538,23 @@ classdef paramonte %< dynamicprops
                                             + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
                             self.Err.warn();
                         %else
+                            self.pmInstallFailed = false;
                         %    break;
                         end
-                    else
-                        warning(newline + "Failed to detect the local library installation directory on this system. This is highly unusual. skipping..." + newline);
                     end
                 end
+                if self.pmInstallFailed
+                    self.Err.msg    = "Failed to locally install the ParaMonte library on this system. This is highly unusual. " ...
+                                    + "If you have administrator previlages on this system (e.g., you are not using a supercomputer), " ...
+                                    + "you may want to reopen MATLAB with ""sudo matlab"" command from the Bash terminal. " ...
+                                    + "Then, to reinstall ParaMonte, try: " + newline + newline ...
+                                    + "     pm = paramonte();" + newline ...
+                                    + "     pm.verify();" + newline + newline ...
+                                    + "Skipping the installation for now...";
+                    self.Err.warn();
+                end
             end
+            self.dispFinalMessage();
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1072,8 +1085,9 @@ classdef paramonte %< dynamicprops
             if self.platform.isWin32; fileName = fileName + "windows"; end
             if self.platform.isMacOS; fileName = fileName + "macos"; end
             if self.platform.isLinux; fileName = fileName + "linux"; end
-            text = fileread(fullfile(self.path.auxil,fileName));
-            dependencyList = [string(strtrim(strsplit(text,newline)))];
+            contents = fileread(fullfile(self.path.auxil,fileName));
+            dependencyList = [string(strtrim(strsplit(contents,newline)))];
+            dependencyList = [dependencyList(~contains(dependencyList,"!"))]; % remove comment lines
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1091,21 +1105,23 @@ classdef paramonte %< dynamicprops
                 self.Err.note();
 
                 self.prereqs.list = self.getDependencyList();
+                if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
+                if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
                 for dependency = self.prereqs.list
-                    if ~contains(dependency,"!") % avoid comments
+                    %if ~contains(dependency,"!") % avoid comments
                         fullFilePath = fullfile( self.path.lib, dependency );
                         fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.kernel.dump() + "/" + dependency);
-                        if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
-                        if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
                         if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
                             self.prereqs.mpi.intel.fullFileName = string( dependency );
                             self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
-                            self.prereqs.mpi.intel.version = string( dependency{1}(1:end-4) );
-                            mpiFileName = self.prereqs.mpi.intel.version;
-                            self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
-                            self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
+                            self.prereqs.mpi.intel.fileName = strsplit(self.prereqs.mpi.intel.fullFileName,intelMpiFileSuffix); self.prereqs.mpi.intel.fileName = self.prereqs.mpi.intel.fileName(1);
+                            self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.fileName,intelMpiFilePrefix); self.prereqs.mpi.intel.version = self.prereqs.mpi.intel.version(2);
+                            %self.prereqs.mpi.intel.version = string( dependency{1}(1:end-4) );
+                            %mpiFileName = self.prereqs.mpi.intel.version;
+                            %self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
+                            %self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
                         end
-                    end
+                    %end
                 end
 
                 self.Err.msg    = "Installing the Intel MPI library for 64-bit architecture..." + newline ...
@@ -1143,7 +1159,7 @@ classdef paramonte %< dynamicprops
                     %    self.Err.abort();
                     %end
 
-                    mpiExtractDir = fullfile(self.path.lib, mpiFileName);
+                    mpiExtractDir = fullfile(self.path.lib, self.prereqs.mpi.intel.fileName);
                     self.Err.msg    = ..."If needed, use the following serial number when asked by the installer:" + newline + newline ...
                                     ...+ "    C44K-74BR9CFG" + newline + newline ...
                                     "When asked to choose the installation directory: if this is your personal computer, choose " + newline + newline ...
@@ -1503,14 +1519,15 @@ classdef paramonte %< dynamicprops
                             + "    pm.verify()" ...
                             ;
             self.Err.note();
-            if ~self.platform.isWin32
+            if ~self.platform.isWin32 && self.pmInstallFailed
                 self.Err.msg    = "Now, for both serial and parallel simulations: before using the ParaMonte kernel libraries, " + newline ...
                                 + "we recommend you to quit your current MATLAB session (and reopen/restart it for serial simulations). " + newline ...
                                 + "If you are opening your MATLAB session from a Bash (Linux/masOS) terminal or if you intend to " + newline ...
-                                + "perform parallel simulations from within the Bash terminal, it is imperative that you run the " + newline ...
-                                + "following Bash command in your terminal after closing MATLAB session:" + newline + newline ...
+                                + "run parallel simulations from within the Bash terminal, we highly recommend you to close your " + newline ...
+                                + "currently-open Bash terminal(s) and reopen it to start MATLAB. Alternatively, you can run the " + newline ...
+                                + "following Bash command in your terminal after closing your MATLAB session:" + newline + newline ...
                                 + "    source ~/.bashrc" + newline + newline ...
-                                + ", otherwise, there is a possibility that the ParaMonte kernel routines will not be recognized " + newline ...
+                                + "Otherwise, there is a possibility that the ParaMonte kernel routines will not be recognized " + newline ...
                                 + "by your system." ...
                                 ;
                 self.Err.warn();
@@ -1536,16 +1553,19 @@ classdef paramonte %< dynamicprops
             fprintf(1,"\n");
             text = fileread(bannerFilePath);
             lineList = string(strsplit(text,newline));
-            for lineElement = lineList
-                if contains(lineElement,"Version")
-                    line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
-                else
-                    line = lineElement;
+            if self.platform.isWin32 && self.isGUI
+                for lineElement = lineList
+                    if contains(lineElement,"Version")
+                        line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+                    else
+                        line = lineElement;
+                    end
+                    fprintf(1,line);
                 end
-                fprintf(1,line);
+            else
+                newText = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+                fprintf(1,newText);
             end
-            %newText = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
-            %fprintf(1,newText);
             fprintf(1,"\n\n");
         end
 

@@ -55,153 +55,216 @@ from _visutils import Target, ParaMonteFigure
 
 class LinePlot:
     """
-    This is the LinePlot class for generating instances 
-    of line figures based on matplotlib library's 
-    line() and functions.
 
-    Usage
-    -----
-    first generate an object of this class by optionally 
-    passing the following parameters described below. Then call 
-    the plot() method. The generated object is also callable with 
-    the same input parameters as the object's constructor.
+    .. py:class:: LinePlot
 
-    Parameters
-    ----------
-        dataFrame
-            a Pandas dataframe from which the selected data will be plotted.
-        xcolumns
-            optional argument that determines the columns of dataframe to serve as 
-            the x-values. It can have three forms:
-                1.  a list of column indices in the input dataFrame.
-                2.  a list of column names in dataFrame.columns.
-                3.  a range(start,stop,step), representing the column indices 
-                    in the input dataFrame.
-            Examples:
-                1.  xcolumns = [0,1,4,3]
-                2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
-                3.  xcolumns = range(17,7,-2)
-            However, in all cases, it must have a length that is either 1 or equal 
-            to the length of ycolumns. If the length is 1, then xcolumns will be 
-            plotted against data corresponding to each element of ycolumns.
-            If not provided, the default will be the count of the rows of the 
-            input dataFrame.
-        ycolumns
-            optional argument that determines the columns of dataframe to serve 
-            as the y-values. It can have three forms:
-                1.  a list of column indices in the input dataFrame.
-                2.  a list of column names in dataFrame.columns.
-                3.  a range(start,stop,step), representing the column indices 
-                    in the input dataFrame.
-            Examples:
-                1.  ycolumns = [0,1,4,3]
-                2.  ycolumns = ["SampleLogFunc","SampleVariable1"]
-                3.  ycolumns = range(17,7,-2)
-            However, in all cases, it must have a length that is either 1 or 
-            equal to the length of xcolumns. If the length is 1, then ycolumns 
-            will be plotted against data corresponding to each element of xcolumns. 
-            If not provided, the default includes all columns of the dataframe. 
-        ccolumns
-            (line-color-columns) optional argument that determines the columns 
-            of dataframe to serve as the color-values corresponding to each 
-            line-segment in the plot. If provided, a matplotlib LineCollection 
-            will be added to the plot. It can have three forms:
-                1.  a list of column indices in the input dataFrame.
-                2.  a list of column names in dataFrame.columns.
-                3.  a range(start,stop,step), representing the column indices 
-                    in the input dataFrame.
-            Examples:
-                1.  ccolumns = [0,1,4,3]
-                2.  ccolumns = ["SampleLogFunc","SampleVariable1"]
-                3.  ccolumns = range(17,7,-2)
-            However, in all cases, it must have a length that is either 1 or 
-            equal to the lengths of xcolumns or ycolumns, whichever is not 1. 
-            If the length is 1, then the same color will be used for plotting 
-            data corresponding to each element of xcolumns. If not provided, 
-            the default will be the count of the rows of the input dataFrame. 
-            If set to None, no colored LineCollection will be added to the plot.
-        rows
-            optional argument that determines the rows of dataframe 
-            to be visualized. It can be either:
-                1.  a range(start,stop,step), or, 
-                2.  a list of row indices in dataFrame.index.
-            Examples:
-                1.  rows = range(17,7,-2)
-                2.  rows = [i for i in range(7,17)]
-            If not provided, the default includes all rows of the dataframe.
-        lc_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            LineCollection() class. For example: 
-                lc_kws = {"cmap":"autumn"}
-            The default is {}. 
-            If set to None, no colored LineCollection will be plotted.
-        set_kws
-            optional dictionary of keyword arguments to be passed to seaborn's 
-            set() function. For example: 
-                set_kws = {"style":"darkgrid"}
-            if set to None, then no call to set() function will be made.
-        figure_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            figure() function. For example: 
-                figure_kws = {"facecolor":"w","dpi":150}
-        plot_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            plot() function. For example: 
-                plot_kws = {"linewidth":0.5}
-            The default is {}.
-            If set to None, no fixed-color line plot will be plotted. 
-        legend_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            legend() function. If it is set to None, no legend will be added
-            to the plot. If it is set to {}, then the legend will be added 
-            to the plot and automatically adjusted. For example: 
-                legend_kws = {"labels":["Variable1","Variable2"]}
-            legend will be added to plot only if simple line plot with no 
-            color-mappings are requested.
-        colorbar_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            figure.colorbar() function. For example: 
-                colorbar_kws = {"orientation":"vertical"}
-            The default is {}. If set to None, no colorbar will be plotted.
-        outputFile
-            optional string representing the name of the output file in which 
-            the figure will be saved. If not provided, no output file will be generated.
-        axes
-            the axes object to which the plot must be added.
-            The default is None in which case the output of matplotlib's gca()
-            function wil be used to get the current active axes.
+    This is the LinePlot class for generating instances
+    of line figures based on matplotlib library's
+    ``line()`` and functions.
 
-    Attributes
-    ----------
-        All of the parameters described above, except dataFrame.
-            a reference to the dataFrame will be implicitly stored in the object.
-        target
-            a callable object of ParaMonte library's class Target which can 
-            be used to add target point and lines to the current active plot.
-        currentFig
-            an object of class ParaMonteFigure which is initially None, but upon 
-            making a plot, is populated with attributes representing all outputs 
-            from matplotlib/seaborn function calls, with the following attributes:
-                figure
-                    the output of matplotlib's figure() function.
-                axes
-                    the axes on which the plot is made.
-                plot
-                    a list of Line2D objects which is the output 
-                    of matplotlib's plot() function.
-                lineCollection
-                    an object of type LineCollection which is the 
-                    output of matplotlib's LineCollection() class.
-                legend
-                    the output of matplotlib's legend() function.
-                colorbar
-                    the output of matplotlib's Figure.colorbar() function.
+        **Usage**
 
-    Returns
-    -------
-        LinePlot
+            First generate an object of this class by optionally
+            passing the following parameters described below. Then call
+            the ``plot()`` method. The generated object is also callable with
+            the same input parameters as the object's constructor.
 
-    ----------------------------------------------------------------------
+        **Parameters**
+
+            dataFrame
+                a Pandas dataframe from which the selected data will be plotted.
+
+            xcolumns
+                optional argument that determines the columns of dataframe to serve as
+                the x-values. It can have three forms:
+
+                    1.  a list of column indices in the input dataFrame.
+                    2.  a list of column names in dataFrame.columns.
+                    3.  a ``range(start,stop,step)``, representing the column indices
+                        in the input dataFrame.
+
+                Examples:
+
+                    1.  ``xcolumns = [0,1,4,3]``
+                    2.  ``xcolumns = ["SampleLogFunc","SampleVariable1"]``
+                    3.  ``xcolumns = range(17,7,-2)``
+
+                However, in all cases, it must have a length that is either 1 or equal
+                to the length of ycolumns. If the length is 1, then xcolumns will be
+                plotted against data corresponding to each element of ycolumns.
+                If not provided, the default will be the count of the rows of the
+                input dataFrame.
+
+            ycolumns
+                optional argument that determines the columns of dataframe to serve
+                as the y-values. It can have three forms:
+
+                    1.  a list of column indices in the input dataFrame.
+                    2.  a list of column names in dataFrame.columns.
+                    3.  a ``range(start,stop,step)``, representing the column indices
+                        in the input dataFrame.
+
+                Examples:
+
+                    1.  ``ycolumns = [0,1,4,3]``
+                    2.  ``ycolumns = ["SampleLogFunc","SampleVariable1"]``
+                    3.  ``ycolumns = range(17,7,-2)``
+
+                However, in all cases, it must have a length that is either 1 or
+                equal to the length of xcolumns. If the length is 1, then ycolumns
+                will be plotted against data corresponding to each element of xcolumns.
+                If not provided, the default includes all columns of the dataframe.
+
+            ccolumns
+                (line-color-columns) optional argument that determines the columns
+                of dataframe to serve as the color-values corresponding to each
+                line-segment in the plot. If provided, a matplotlib LineCollection
+                will be added to the plot. It can have three forms:
+
+                    1.  a list of column indices in the input dataFrame.
+                    2.  a list of column names in dataFrame.columns.
+                    3.  a ``range(start,stop,step)``, representing the column indices
+                        in the input dataFrame.
+
+                Examples:
+
+                    1.  ``ccolumns = [0,1,4,3]``
+                    2.  ``ccolumns = ["SampleLogFunc","SampleVariable1"]``
+                    3.  ``ccolumns = range(17,7,-2)``
+
+                However, in all cases, it must have a length that is either 1 or
+                equal to the lengths of xcolumns or ycolumns, whichever is not 1.
+                If the length is 1, then the same color will be used for plotting
+                data corresponding to each element of xcolumns. If not provided,
+                the default will be the count of the rows of the input dataFrame.
+                If set to ``None``, no colored ``LineCollection`` will be added to the plot.
+
+            rows
+                optional argument that determines the rows of dataframe
+                to be visualized. It can be either:
+
+                    1.  a ``range(start,stop,step)``, or,
+                    2.  a list of row indices in dataFrame.index.
+
+                Examples:
+
+                    1.  ``rows = range(17,7,-2)``
+                    2.  ``rows = [i for i in range(7,17)]``
+
+                If not provided, the default includes all rows of the dataframe.
+
+            lc_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's
+                ``LineCollection()`` class. For example:
+
+                .. code-block:: python
+
+                    lc_kws = {"cmap":"autumn"}
+
+                The default is ``{}``.
+                If set to ``None``, no colored ``LineCollection`` will be plotted.
+
+            set_kws
+                optional dictionary of keyword arguments to be passed to seaborn's
+                ``set()`` function. For example:
+
+                .. code-block:: python
+
+                    set_kws = {"style":"darkgrid"}
+
+                If set to ``None``, then no call to ``set()`` function will be made.
+
+            figure_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's
+                ``figure()`` function. For example:
+
+                .. code-block:: python
+
+                    figure_kws = {"facecolor":"w","dpi":150}
+
+            plot_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's
+                ``plot()`` function. For example:
+
+                .. code-block:: python
+
+                    plot_kws = {"linewidth":0.5}
+
+                The default is ``{}``.
+                If set to ``None``, no fixed-color line plot will be plotted.
+
+            legend_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's
+                ``legend()`` function. If it is set to None, no legend will be added
+                to the plot. If it is set to ``{}``, then the legend will be added
+                to the plot and automatically adjusted. For example:
+
+                .. code-block:: python
+
+                    legend_kws = {"labels":["Variable1","Variable2"]}
+
+                legend will be added to plot only if simple line plot with no
+                color-mappings are requested.
+
+            colorbar_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's
+                ``figure.colorbar()`` function. For example:
+
+                .. code-block:: python
+
+                    colorbar_kws = {"orientation": "vertical"}
+
+                The default is ``{}``. If set to ``None``, no colorbar will be plotted.
+
+            outputFile
+                optional string representing the name of the output file in which
+                the figure will be saved. If not provided, no output file will be generated.
+
+            axes
+                the axes object to which the plot must be added.
+                The default is ``None`` in which case the output of matplotlib's ``gca()``
+                function will be used to get the current active axes.
+
+        **Attributes**
+
+            All of the parameters described above, except dataFrame.
+                a reference to the dataFrame will be implicitly stored in the object.
+
+            target
+                a callable object of ParaMonte library's class Target which can
+                be used to add target point and lines to the current active plot.
+
+            currentFig
+                an object of class ParaMonteFigure which is initially None, but upon
+                making a plot, is populated with attributes representing all outputs
+                from matplotlib/seaborn function calls, with the following attributes:
+
+                    figure
+                        the output of matplotlib's figure() function.
+
+                    axes
+                        the axes on which the plot is made.
+
+                    plot
+                        a list of Line2D objects which is the output
+                        of matplotlib's ``plot()`` function.
+
+                    lineCollection
+                        an object of type LineCollection which is the
+                        output of matplotlib's ``LineCollection()`` class.
+
+                    legend
+                        the output of matplotlib's ``legend()`` function.
+
+                    colorbar
+                        the output of matplotlib's ``Figure.colorbar()`` function.
+
+        Returns
+
+            self
+                an object of class ``LinePlot``
+
+    ---------------------------------------------------------------------------
     """
 
     def __init__( self
@@ -247,21 +310,26 @@ class LinePlot:
                 , **kwargs
                 ):
         """
-        calls the plot() method of the current instance of the class.
 
-        Parameters
-        ----------
-            reself
-                logical variable. If True, an instance of the object 
-                will be returned upon exit to the calling routine.
-                The default value is False.
-            also, any attributes of the current instance of the class.
+        .. py:method:: __call__(self, reself = False, **kwargs)
 
-        Returns
-        -------
-            the object self if reself = True otherwise, None.
-            However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+        calls the ``plot()`` method of the current instance of the class.
+
+            **Parameters**
+
+                reself
+                    logical variable. If True, an instance of the object
+                    will be returned upon exit to the calling routine.
+                    The default value is False.
+
+                also,
+                    any attributes of the current instance of the class.
+
+            **Returns**
+
+                the object self if ``reself = True`` otherwise, None.
+                However, this method causes side-effects by manipulating
+                the existing attributes of the object.
 
         """
 
@@ -283,16 +351,19 @@ class LinePlot:
     def plot( self
             ):
         """
+
+        .. py:method:: plot(self)
+
         Generate a line plot from the selected columns of the object's dataframe.
 
-        Parameters
-        ----------
-            None
+            **Parameters**
 
-        Returns
-        -------
-            None. However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+                None
+
+            **Returns**
+
+                None. However, this method causes side-effects by manipulating
+                the existing attributes of the object.
 
         """
 

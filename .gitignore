@@ -112,6 +112,7 @@ Thumbs.db
 
 **/.ipynb_checkpoints/*
 **/build/*
+**/trash/*
 **/temp/*
 **/bin/*
 **/___*___/*
@@ -168,3 +169,10 @@ _deps
 *.jpg
 *.jpeg
 *.tiff
+
+#########################
+# documentation
+#########################
+
+**/docs/*
+**/doc/*

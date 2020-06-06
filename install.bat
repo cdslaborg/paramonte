@@ -114,7 +114,7 @@ if not "%1"=="" (
             set LANG_LIST=!LANG_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
             for %%V in ( "c" "fortran" "matlab" "python" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
-            if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+            if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         )
         shift
     )
@@ -129,7 +129,7 @@ if not "%1"=="" (
             set BTYPE_LIST=!BTYPE_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
             for %%V in ( "release" "testing" "debug" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
-            if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+            if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         )
         shift
     )
@@ -144,7 +144,7 @@ if not "%1"=="" (
             set LTYPE_LIST=!LTYPE_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
             for %%V in ( "dynamic" "static" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
-            if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+            if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         )
         shift
     )
@@ -159,7 +159,7 @@ if not "%1"=="" (
             set PARALLELISM_LIST=!PARALLELISM_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
             for %%V in ( "none" "mpi" "cafsingle" "cafshared" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
-            if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+            if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         )
         shift
     )
@@ -174,7 +174,7 @@ if not "%1"=="" (
             set MEMORY_LIST=!MEMORY_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
             for %%V in ( "stack" "heap" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
-            if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+            if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         )
         shift
     )
@@ -187,7 +187,7 @@ if not "%1"=="" (
         set VALUE_SUPPORTED=false
         if !TEST_ENABLED!==true set "VALUE_SUPPORTED=true"
         if !TEST_ENABLED!==false set "VALUE_SUPPORTED=true"
-        if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+        if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         shift
     )
 
@@ -199,7 +199,7 @@ if not "%1"=="" (
         set VALUE_SUPPORTED=false
         if !EXAM_ENABLED!==true set "VALUE_SUPPORTED=true"
         if !EXAM_ENABLED!==false set "VALUE_SUPPORTED=true"
-        if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+        if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         shift
     )
 
@@ -220,7 +220,7 @@ if not "%1"=="" (
         set VALUE_SUPPORTED=false
         if !ParaMonte_INSTALL_CLEANUP_ENABLED!==true set "VALUE_SUPPORTED=true"
         if !ParaMonte_INSTALL_CLEANUP_ENABLED!==false set "VALUE_SUPPORTED=true"
-        if !VALUE_SUPPORTED! NEQ true goto LABEL_REPORT_ERR
+        if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         shift
     )
 

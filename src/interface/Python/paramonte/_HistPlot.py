@@ -54,101 +54,146 @@ from _visutils import Target, ParaMonteFigure
 
 class HistPlot():
     """
+
+    .. py:class:: HistPlot
+
     This is the HistPlot class for generating instances 
-    of histogram figures based on seaborn library's distplot().
-    Usage: first generate an object of this class by optionally 
-    passing the following parameters described below. Then call 
-    the plot() method.
+    of histogram figures based on seaborn library's ``distplot()``.
 
-    Parameters
-    ----------
-        dataFrame
-            a pandas dataframe containing the data to plot.
-        columns
-            optional argument that determines the columns of dataframe to be visualized. 
-            It can have three forms:
-                1. a list of column indices in dataFrame.
-                2. a list of column names in dataFrame.columns.
-                3. a range(start,stop,step), representing the column indices in dataFrame.
-            Examples:
-                1. columns = [0,1,4,3]
-                2. columns = ["SampleLogFunc","SampleVariable1"]
-                3. columns = range(17,7,-2)
-            If not provided, the default behavior includes all columns of the dataframe.
-        rows
-            optional argument that determines the rows of dataframe to be visualized. 
-            It can be either:
-                1. a range(start,stop,step), or, 
-                2. a list of row indices in dataFrame.index.
-            Examples:
-                1. rows = range(17,7,-2)
-                2. rows = [i for i in range(7,17)]
-            If not provided, the default behavior includes all rows of the dataframe.
-        set_kws
-            optional dictionary of keyword arguments to be passed to seaborn's 
-            set() function. For example: 
-                set_kws = {"style":"darkgrid"}
-            if set to None, then no call to set() function will be made.
-        figure_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            figure() function. For example: 
-                figure_kws = {"facecolor":"w","dpi":150}
-        legend_kws
-            optional dictionary of keyword arguments to be passed to matplotlib's 
-            legend() function. If it is not provided, the legend will be added
-            to the plot. If it is set to {}, then the legend will be added 
-            to the plot and automatically adjusted. For example: 
-                legend_kws = {"labels":["Variable1","Variable2"]}
-        distplot_kws
-            optional dictionary of keyword arguments to be passed to seaborn's 
-            distplot() function. For example: 
-                distplot_kws =  {"hist_kws":{ "histtype":"step"
-                                            , "linewidth":0
-                                            , "alpha":1
-                                            , "color":"g"
-                                            }
-                                , "kde":False
-                                }
-        outputFile
-            optional string representing the name of the output file in which 
-            the figure will be saved. If not provided, no output file will be generated.
-            and the corresponding attribute of object will be None.
-        currentFig
-            an object of class ParaMonteFigure containing all outputs from 
-            matplotlib function calls, with the following attributes:
-                figure
-                    the output of matplotlib's figure() function.
-                axes
-                    the output of seaborns's distplot() function.
-                legend
-                    the output of matplotlib's legend() function.
-                outputFile
-                    a string value representing the name of the output file to which 
-                    the figure has been written. 
+        **Usage** 
 
-    Attributes
-    ----------
-        All of the parameters described above, except dataFrame.
-            a reference to the dataFrame will be implicitly stored in the object.
-        target
-            a callable object of ParaMonte library's class Target which can 
-            be used to add target point and lines to the current active plot.
-        currentFig
-            an object of class ParaMonteFigure which is initially None, but upon 
-            making a plot, is populated with attributes representing all outputs 
-            from matplotlib/seaborn function calls, with the following attributes:
-                figure
-                    the output of matplotlib's figure() function.
-                axes
-                    the output of seaborns's heatmap() function.
-                legend
-                    the output of matplotlib's legend() function.
+            First generate an object of this class by optionally 
+            passing the following parameters described below. Then call 
+            the ``plot()`` method.
 
-    Returns
-    -------
-        HistPlot
+        **Parameters**
 
-    ----------------------------------------------------------------------
+            dataFrame
+                a pandas dataframe containing the data to plot.
+
+            columns
+                optional argument that determines the columns of dataframe to be visualized. 
+                It can have three forms:
+
+                    1. a list of column indices in dataFrame.
+                    2. a list of column names in dataFrame.columns.
+                    3. a ``range(start,stop,step)``, representing the column indices in dataFrame.
+
+                Examples:
+
+                    1. ``columns = [0,1,4,3]``
+                    2. ``columns = ["SampleLogFunc","SampleVariable1"]``
+                    3. ``columns = range(17,7,-2)``
+
+                If not provided, the default behavior includes all columns of the dataframe.
+
+            rows
+                optional argument that determines the rows of dataframe to be visualized. 
+                It can be either:
+
+                    1. a ``range(start,stop,step)``, or, 
+                    2. a list of row indices in dataFrame.index.
+
+                Examples:
+
+                    1. ``rows = range(17,7,-2)``
+                    2. ``rows = [i for i in range(7,17)]``
+
+                If not provided, the default behavior includes all rows of the dataframe.
+
+            set_kws
+                optional dictionary of keyword arguments to be passed to seaborn's 
+                ``set()`` function. For example: 
+
+                .. code-block:: python
+
+                    set_kws = {"style":"darkgrid"}
+
+                if set to ``None``, then no call to ``set()`` function will be made.
+
+            figure_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's 
+                ``figure()`` function. For example: 
+
+                .. code-block:: python
+
+                    figure_kws = {"facecolor":"w","dpi":150}
+
+            legend_kws
+                optional dictionary of keyword arguments to be passed to matplotlib's 
+                ``legend()`` function. If it is not provided, the legend will be added
+                to the plot. If it is set to ``{}``, then the legend will be added 
+                to the plot and automatically adjusted. For example: 
+
+                .. code-block:: python
+
+                    legend_kws = {"labels":["Variable1","Variable2"]}
+
+            distplot_kws
+                optional dictionary of keyword arguments to be passed to seaborn's 
+                ``distplot()`` function. For example: 
+
+                .. code-block:: python
+
+                    distplot_kws =  {"hist_kws":{ "histtype":"step"
+                                                , "linewidth":0
+                                                , "alpha":1
+                                                , "color":"g"
+                                                }
+                                    , "kde":False
+                                    }
+
+            outputFile
+                optional string representing the name of the output file in which 
+                the figure will be saved. If not provided, no output file will be generated.
+                and the corresponding attribute of object will be ``None``.
+
+            currentFig
+                an object of class ParaMonteFigure containing all outputs from 
+                matplotlib function calls, with the following attributes:
+
+                    figure
+                        the output of matplotlib's ``figure()`` function.
+
+                    axes
+                        the output of seaborns's ``distplot()`` function.
+
+                    legend
+                        the output of matplotlib's ``legend()`` function.
+
+                    outputFile
+                        a string value representing the name of the output file to which 
+                        the figure has been written. 
+
+        **Attributes**
+
+            All of the parameters described above, except dataFrame.
+                a reference to the dataFrame will be implicitly stored in the object.
+
+            target
+                a callable object of ParaMonte library's class Target which can 
+                be used to add target point and lines to the current active plot.
+
+            currentFig
+                an object of class ParaMonteFigure which is initially None, but upon 
+                making a plot, is populated with attributes representing all outputs 
+                from matplotlib/seaborn function calls, with the following attributes:
+
+                    figure
+                        the output of matplotlib's ``figure()`` function.
+
+                    axes
+                        the output of seaborns's ``heatmap()`` function.
+
+                    legend
+                        the output of matplotlib's ``legend()`` function.
+
+        **Returns**
+
+            self
+                an object of class ``HistPlot``.
+
+    ---------------------------------------------------------------------------
     """
 
     def __init__( self
@@ -184,21 +229,26 @@ class HistPlot():
                 , **kwargs
                 ):
         """
-        calls the plot() method of the current instance of the class.
 
-        Parameters
-        ----------
-            reself
-                logical variable. If True, an instance of the object 
-                will be returned upon exit to the calling routine.
-                The default value is False.
-            also, any attributes of the current instance of the class.
+        .. py:method:: __call__(self, reself = False, **kwargs)
 
-        Returns
-        -------
-            the object self if reself = True otherwise, None.
-            However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+        calls the ``plot()`` method of the current instance of the class.
+
+            **Parameters**
+
+                reself
+                    logical variable. If ``True``, an instance of the object 
+                    will be returned upon exit to the calling routine.
+                    The default value is False.
+
+                also, 
+                    any attributes of the current instance of the class.
+
+            **Returns**
+
+                the object self if ``reself = True`` otherwise, None.
+                However, this method causes side-effects by manipulating 
+                the existing attributes of the object.
 
         """
 
@@ -219,16 +269,19 @@ class HistPlot():
 
     def plot(self):
         """
+
+        .. py:method:: plot(self)
+
         Generate a histogram from the selected columns of object's dataframe.
 
-        Parameters
-        ----------
-            None
+            **Parameters**
 
-        Returns
-        -------
-            None. However, this method causes side-effects by manipulating 
-            the existing attributes of the object.
+                None
+
+            **Returns**
+
+                None. However, this method causes side-effects by manipulating 
+                the existing attributes of the object.
 
         """
 
@@ -294,18 +347,15 @@ class HistPlot():
 
         # check data type
 
-        noDataPassed = False
+        noDataPassed = ""
         if self._dfref is None:
-            noDataPassed = True
-            fatalmsg = "It appears that no data has been passed for plotting.\n"
+            noDataPassed = "It appears that no data has been passed for plotting.\n"
         elif not isinstance(self._dfref,_wref.ref):
-            noDataPassed = True
-            fatalmsg = "It appears that you have messed with the\ninternal representation of data in the object.\n"
+            noDataPassed = "It appears that you have messed with the\ninternal representation of data in the object.\n"
         elif not isinstance(self._dfref(),_pd.DataFrame):
-            noDataPassed = True
-            fatalmsg = ""
+            noDataPassed = "The input data is not a pandas' dataframe.\n"
         if noDataPassed:
-            raise Exception ( fatalmsg
+            raise Exception ( noDataPassed
                             + "The input data must be a pandas' dataframe.\n"
                             + "Please pass a dataFrame to the constructor or at\n"
                             + "the time of calling the object (which is callable with\n"
@@ -348,11 +398,11 @@ class HistPlot():
             if isinstance(self.legend_kws,dict):
                 if self.legend_kws:
                     if "labels" not in self.legend_kws.keys(): self.legend_kws["labels"] = tuple(colnames)
-                    self.currentFig.legend = self.currentFig.axes.legend(**legend_kws)
+                    self.currentFig.legend = self.currentFig.axes.legend(**self.legend_kws)
                 else:
                     self.currentFig.legend = self.currentFig.axes.legend(labels=tuple(colnames))
             else:
-                raise Exception ( "The input argument 'legend_kws' must be a dictionary,\n"
+                raise Exception ( "The input argument `legend_kws` must be a dictionary,\n"
                                 + "each (key,value) pair of which represents an (attribute,value)\n"
                                 + "of matplotlib library's legend() function."
                                 )

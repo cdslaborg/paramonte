@@ -161,7 +161,10 @@ for %%e in (!EXAM_LIST!) do (
     echo. -- ParaMonteExample!LANG_NAME! - copying the ParaMonte library files...
     echo. -- ParaMonteExample!LANG_NAME! - from: !ParaMonte_LIB_DIR!                %= no need for final slash here =%
     echo. -- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_LIB_DIR_CURRENT! %= final slash tells this is folder =%
-    xcopy /s /Y "!ParaMonte_LIB_DIR!\*.*" "!ParaMonteExample_LIB_DIR_CURRENT!\" || goto LABEL_copyErrorOccured
+    xcopy /s /Y "!ParaMonte_LIB_DIR!\libparamonte*.*" "!ParaMonteExample_LIB_DIR_CURRENT!\" || goto LABEL_copyErrorOccured
+    xcopy /s /Y "!ParaMonte_LIB_DIR!\libparamonte*.*" "!ParaMonteExample_LIB_DIR_CURRENT!\" || goto LABEL_copyErrorOccured
+    xcopy /s /Y "!ParaMonte_LIB_DIR!\libparamonte*.*" "!ParaMonteExample_LIB_DIR_CURRENT!\" || goto LABEL_copyErrorOccured
+    xcopy /s /Y "!ParaMonte_LIB_DIR!\libparamonte*.*" "!ParaMonteExample_LIB_DIR_CURRENT!\" || goto LABEL_copyErrorOccured
 
     REM The ParaMonte library example required files
 

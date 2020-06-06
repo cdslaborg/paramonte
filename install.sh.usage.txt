@@ -1,8 +1,8 @@
 
     usage:
 
-        source install.sh \
-        -L <build library for: C Fortran Python> \
+        ./install.sh \
+        -L <build library for: C Fortran MATLAB Python> \
         -s <compiler suite: intel gnu> \
         -b <build mode: release testing debug> \
         -l <library type: static dynamic> \
@@ -20,13 +20,17 @@
 
     example:
 
-        source install.sh -L "Python C" -b "release debug" -l dynamic -p "none mpi" -m heap -n 3
+        ./install.sh -L "Python C" -b "release debug" -l dynamic -p "none mpi" -m heap -n 3
+
+        or equivalently,
+
+        ./install.sh --lang "Python C" --build "release debug" --lib dynamic --par "none mpi" --mem heap --nproc 3
 
     flag definitions:
 
-        -L | --lang             : the ParaMonte library interface language: C Fortran Python
+        -L | --lang             : the ParaMonte library interface language(case-insensitive): C Fortran MATLAB Python
                                   the ParaMonte library will be built for usage from the user-specified languages.
-                                  the default is "C Fortran Python".
+                                  the default is "C Fortran MATLAB Python".
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
                                   If you are not sure whether you have any of the two installed on your system,
                                   leave this option out. The script will automatically search for the appropriate
@@ -35,7 +39,7 @@
         -b | --build            : the ParaMonte library build type: release, testing, debug
                                   the default is "release testing debug".
         -l | --lib              : the ParaMonte library type: static, dynamic
-                                  the default is "dynamic static" for Fortran and C languages and "dynamic" for Python.
+                                  the default is "dynamic static" for C/C++/Fortran languages and "dynamic" for MATLAB/Python.
         -m | --mem              : the ParaMonte library memory allocation type for arrays: stack, heap
                                   the default is "stack heap" resulting in builds for both stack and heap memory allocations.
         -p | --par              : the ParaMonte library parallelism type: none mpi cafsingle cafshared cafdistributed
@@ -58,7 +62,7 @@
     NOTE: All flags are optional.
     NOTE: If you specify multiple options for any flag, you must enclose all options together with quotation marks "".
     NOTE: Some flags conflict with each other:
-    NOTE:     The flag -m cafsingle or -m cafshared or -m cafdistributed cannot be specified with -L Python or -L C or -L "C Python".
+    NOTE:     The flag -m cafsingle or -m cafshared or -m cafdistributed cannot be specified with -L C or -L MATLAB or -L Python.
     NOTE:     The flag -m cafsingle or -m cafshared or -m cafdistributed cannot be specified with -l dynamic (dynamically-linked library).
-    NOTE:     The flag -m stack (stack memory allocation) cannot be specified with -L Python.
+    NOTE:     The flag -m stack (stack memory allocation) cannot be specified with -L MATLAB or -L Python.
 

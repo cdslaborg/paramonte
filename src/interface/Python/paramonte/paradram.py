@@ -58,207 +58,250 @@ import ctypes as _ct
 
 class ParaDRAM:
     """
-    This is the ParaDRAM class for generating instances of serial and parallel
-    Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
+
+    .. py:class:: ParaDRAM
+
+    This is the **ParaDRAM** class for generating instances of the **serial** and **parallel**
+    **Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo**
     sampler of the ParaMonte library.
 
-    All ParaDRAM class attributes (input arguments to the ParaDRAM constructor)
-    are optional and all attributes can be also set after a ParaDRAM instance
-    is returned by the constructor.
+        All ParaDRAM class attributes (input arguments to the ParaDRAM constructor)
+        are optional and all attributes can be also set after a ParaDRAM instance
+        is returned by the constructor.
 
-    Once you set the desired attributes to the desired values,
-    call the ParaDRAM sampler via the object's method runSampler().
+        Once you set the optional attributes to your desired values,
+        call the ParaDRAM sampler via the object's method ``runSampler()``.
 
-    Minimal serial example
-    ----------------------
+        **Example serial usage**
 
-    Here is a Python script main.py for a serial ParaDRAM simulation:
+        Copy and paste the following code enclosed between the
+        two comment lines in your python/ipython/jupyter session
+        (make sure the indentations of the pasted lines comply with Python rules):
 
-        from paramonte import ParaDRAM
-        pmpd = ParaDRAM()
-        def getLogFunc(Point):
-            # return the natural logarithm of the ndim-dimensional
-            # non-normalized Standard Gaussian density function
-            return -sum(Point**2)
-        pmpd.runSampler ( ndim = 1
-                        , getLogFunc = getLogFunc
-                        )
+        .. code-block:: python
+            :linenos:
 
-    where,
-
-        ndim
-            represents the number of dimensions of the domain
-            of the user's objective function getLogFunc() and,
-
-        getLogFunc()
-            represents the user's objective function to be sampled,
-            which must take a single input argument of type numpy
-            float64 array of length ndim and must return the
-            natural logarithm of the objective function.
-
-    Parallel simulations
-    --------------------
-
-    To run ParaDRAM sampler in parallel mode visit: cdslab.org/pm
-    You can also use the following commands on the Python command-line,
-
-        import paramonte as pm
-        pm.verify()
-
-    to obtain specific information on how to run a parallel simulation,
-    in particular, in relation to your current installation of ParaMonte.
-    In general, for parallel simulations:
-
-    0.  ensure you need and will get a speedup by running the ParaDRAM sampler in parallel.
-        Typically, if a single evaluation of the objective function takes much longer than
-        a few milliseconds, your simulation may then benefit from the parallel run.
-
-    1.  ensure you have an MPI library installed, preferably, Intel MPI.
-        An MPI library should be automatically installed on your system with ParaMonte.
-        If needed, you can download the Intel MPI library from their website and install it.
-
-    2.  set the input keyword argument mpiEnabled in runSampler() to True (the default is False),
-
-    3.  before running the parallel simulation, in particular, on Windows systems, you may
-        need to define the necessary MPI environmental variables on your system.
-        To get information on how to define the variables, use paramonte function
-        verify() as described in the above.
-
-    4.  call your main Python code from a Python-aware mpiexec-aware command-line via,
-
-            mpi_launcher -n num_process python name_of_yor_python_code.py
+            ##################################
+            import paramonte as pm
+            import numpy as np
+            def getLogFunc(point):
+                # return the log of the standard multivariate
+                # Normal density function with ndim dimensions
+                return -0.5 * np.sum( np.double( point )**2 )
+            pmpd = pm.ParaDRAM()
+            pmpd.runSampler ( ndim = 4                  # number of dimensions of the objective function
+                            , getLogFunc = getLogFunc   # the objective function
+                            )
+            ##################################
 
         where,
 
-        1.  mpi_launcher is the name of the MPI launcher
-            from the MPI library that you have installed.
-            For example, the Intel MPI library launcher is named mpiexec,
-            also recognized by Microsoft and OpenMPI.
+            ndim
+                represents the number of dimensions of the domain of
+                the user's objective function ``getLogFunc(point)`` and,
 
-        2.  num_process: replace this with the number of
-            cores on which you want to run the program.
-            Do not assign more processes than the number of
-            available physical cores on your device/cluster.
-            Assigning more cores than physically available on
-            your system will only slow down your simulation.
+            getLogFunc(point)
+                represents the user's objective function to be sampled,
+                which must take a single input argument ``point`` of type
+                numpy-float64 array of length ``ndim`` and must return the
+                natural logarithm of the objective function.
 
-    Minimal parallel example
-    ------------------------
+        **Example parallel usage**
 
-    Here is a Python script main.py for a parallel ParaDRAM simulation:
+        Copy and paste the following code enclosed between the
+        two comment lines in your python/ipython/jupyter session
+        (make sure the indentations of the pasted lines comply with Python rules):
 
-##################################
-from paramonte import ParaDRAM
-pmpd = ParaDRAM()
-def getLogFunc(Point):
-    # return the natural logarithm of the ndim-dimensional
-    # non-normalized Standard Gaussian density function
-    return -sum(Point**2)
-pmpd.runSampler ( ndim = 1
-                , getLogFunc = getLogFunc
-                , mpiEnabled = True
-                )
-##################################
+        .. code-block:: python
+            :linenos:
 
-    where,
+            ##################################
+            with open("main.py", "w") as file:
+                file.write  ('''
+            import paramonte as pm
+            import numpy as np
+            def getLogFunc(point):
+                # return the log of the standard multivariate
+                # Normal density function with ndim dimensions
+                return -0.5 * np.sum( np.double( point )**2 )
+            pmpd = pm.ParaDRAM()
+            pmpd.mpiEnabled = True
+            pmpd.runSampler ( ndim = 4                  # number of dimensions of the objective function
+                            , getLogFunc = getLogFunc   # the objective function
+                            )
+            ''')
+            ##################################
 
-        ndim
-            represents the number of dimensions of the domain
-            of the user's objective function getLogFunc() and,
+        where,
 
-        getLogFunc()
-            represents the user's objective function that is to be sampled.
-            This function must take a single input argument of type numpy
-            float64 array of length ndim and must return the natural
-            logarithm of the objective function.
+            ndim
+                represents the number of dimensions of the domain of
+                the user's objective function getLogFunc(point) and,
+
+            getLogFunc(point)
+                represents the user's objective function that is to be sampled.
+                This function must take a single input argument ``point`` of type
+                numpy-float64 array of length ndim and must return the natural
+                logarithm of the objective function.
+
+            mpiEnabled
+                is a logical (boolean) indicator that, if True, will
+                cause the ParaDRAM simulation to run in parallel
+                on the requested number of processors.
+                The default value is ``False``.
+
+        The above will generate a Parallel-ParaDRAM-simulation Python script in the current working
+        directory of Python. Note the only difference between the serial and parallel simulation
+        scripts: the extra line ``pmpd.mpiEnabled = True`` which tell the ParaMonte library to run
+        the simulation in parallel.
+
+        Assuming that you already have an MPI runtime library installed on your system (see below),
+        you can now execute this Python script file ``main.py`` in parallel in two ways:
+
+        1.  from inside ipython or jupyter: type the following,
+
+            .. code-block:: bash
+
+                !mpiexec -n 3 python main.py
+
+        2.  outside of Python environment,
+            from within a Bash shell (on Linux or Mac) or,
+            from within an Anaconda command prompt on Windows,
+            type the following,
+
+            .. code-block:: bash
+
+                mpiexec -n 3 python main.py
+
+        **Note:**
+
+        On Windows platform, if you are using the Intel MPI library,
+        we recommend that you also specify the extra flag -localonly,
+
+        .. code-block:: bash
+
+            mpiexec -localonly -n 3 python main.py
+
+        This will cause the simulations to run in parallel only on a single node,
+        but more importantly, it will also prevent the use of Hydra service and
+        the requirement for its registration. If you are not on a Windows cluster,
+        (e.g., you are using your personal device), then we highly recommend
+        specifying this flag.
 
 
-        mpiEnabled
-            is a logical (boolean) indicator that, if True, will
-            cause the ParaDRAM simulation to run in parallel
-            on the requested number of processors.
+        In all cases in the above, the script ``main.py`` will run on 3 processors.
+        Feel free to change the number of processors to any number desired. But do
+        not request more than the available number of physical cores on your system.
 
-    Once the script is saved in the file main.py, open a Python-aware and
-    MPI-aware command prompt to run the simulation by the MPI launcher,
+        **Tips on parallel usage**
 
-        mpiexec -n 3 python main.py
+        For up-to-date detailed instructions on how to run simulations in parallel visit:
 
-    This will execute the Python script main.py on three processes (images).
-    Keep in mind that on Windows systems you may need to define MPI environmental
-    variables before a parallel simulation, as descibed in the above.
+            https://www.cdslab.org/paramonte
 
-    ParaDRAM Class Attributes
-    -------------------------
+        You can also use the following commands on the Python command-line,
 
-    (see also: cdslab.org/pm)
+        .. code-block:: python
+            :linenos:
 
-    All input specifications (attributes) of a ParaDRAM simulation are optional.
-    However, it is recomended that you provide as much information as possible
-    about the specific ParaDRAM simulation and the objective function to be sampled
-    via ParaDRAM simulation specifications.
+            ##################################
+            import paramonte as pm
+            pm.verify() # verify the existence of parallel simulation prerequisites 
+            ##################################
 
-    The ParaDRAM simulation specifications have lengthy comprehensive descriptions
-    that appear in full in the output report file of every ParaDRAM simulation.
+        to obtain specific information on how to run a parallel simulation,
+        in particular, in relation to your current installation of ParaMonte.
+        In general, for parallel simulations:
 
-    The best way to learn about individual ParaDRAM simulation attributes
-    is to a run a minimal serial simulation with the following Python script,
+        0.  Ensure you need and will get a speedup by running the ParaDRAM sampler
+            in parallel. Typically, if a single evaluation of the objective function
+            takes much longer than a few milliseconds, your simulation may then
+            benefit from the parallel run.
 
-##################################
-from paramonte import ParaDRAM
-pmpd = ParaDRAM()
-pmpd.outputFileName = "./test"
-def getLogFunc(Point): return -sum(Point**2)
-pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
-##################################
+        1.  Ensure you have an MPI library installed, preferably, the Intel MPI
+            runtime libraries. An MPI library should be automatically installed
+            on your system with ParaMonte. If needed, you can download the Intel
+            MPI library from their website and install it.
 
-    Running this code will generate a set of simulation output files (in the current
-    working directory of Python) that begin with the prefix "test_process_1". Among
-    these, the file "test_process_1_report.txt" contains the full description of all
-    input specifications of the ParaDRAM simulation as well as other information
-    about the simulation results and statistics.
+        2.  Ensure the ParaDRAM object property ``mpiEnabled`` is ``True``
+            (the default is ``False``).
 
-    Naming conventions
-    ------------------
+        3.  Before running the parallel simulation, in particular, on Windows systems,
+            you may need to define the necessary MPI environmental variables on your system.
+            To get information on how to define the variables, use the paramonte modules's
+            function, ``verify()``, as described in the above.
 
-    camelCase naming style is used throughout the entire ParaMonte library, across
-    all programming languages: C/Fortran/Julia/MATLAB/Python
+        4.  Call your main Python code from a Python-aware mpiexec-aware command-line via,
 
-    all simulation specifications start with a lowercase letter, including
-    scalar/vector/matrix int, float, string, or boolean variables.
+            .. code-block:: bash
 
-    The name of any variable that represents a vector of values is suffixed with "Vec",
-    for example: startPointVec, domainLowerLimitVec, ...
+                mpi_launcher -n num_process python name_of_yor_python_code.py
 
-    The name of any variable that represents a matrix of values is suffixed with "Mat",
-    for example: proposalStartCorMat, ...
+            where,
 
-    The name of any variable that represents a list of varying-size values is suffixed
-    with "List", for example: variableNameList, ...
+            1.  "mpi_launcher" is the name of the MPI launcher
+                of the MPI runtime library that you have installed.
+                For example, the Intel MPI library's launcher is named mpiexec,
+                also recognized by Microsoft, MPICH, and OpenMPI.
+                Note that on supercomputers, the MPI launcher is usually
+                something other than ``mpiexec``, for example:
+                ``ibrun``, ``mpirun``, ...
 
-    all functions or class methods begin with a lowercase verb.
+            2.  "num_process" represents the number of cores
+                on which you want to run the program. Replace this
+                with the an integer number, like, 3 (meaning 3 cores).
 
-    significant attempt has been made to end all boolean variables with a passive verb,
-    such that the full variable name virtually forms an English-language statement
-    that should be either True or False, set by the user.
+                Do not assign more processes than the available number of
+                physical cores on your device/cluster. Assigning more cores
+                than physically available on your system will only slow down
+                your simulation.
 
-    Tips
-    ----
+        Once the above script is saved in the file ``main.py``, open a Python-aware and
+        MPI-aware command prompt to run the simulation in parallel via the MPI launcher,
 
-    When running ParaMonte samplers, in particular on multiple cores in parallel,
-    it would be best to close any such aggressive software/applications as
-    Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte
-    simulation output files, potentially causing the sampler to
-    crash before successful completion of the simulation.
-    These situations should however happen only scarcely.
+        .. code-block:: bash
 
-    On Windows systems, when restarting an old interrupted ParaDRAM simulation,
-    ensure your MATLAB session is also restarted before the simulation restart. 
-    This may be needed as Windows sometimes locks access to some or all of the
-    simulation output files.
+            mpiexec -n 3 python main.py
 
-    To unset an already-set input simulation specification, simply set the
-    simulation attribute to None or re-instantiate the object.
+        This will execute the Python script main.py on three processes (images).
+        Keep in mind that on Windows systems you may need to define MPI environmental
+        variables before a parallel simulation, as descibed in the above.
 
+        **ParaDRAM Class Attributes**
+
+        See also:
+
+            https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+
+        All input specifications (attributes) of a ParaDRAM simulation are optional.
+        However, it is recomended that you provide as much information as possible
+        about the specific ParaDRAM simulation and the objective function to be sampled
+        via ParaDRAM simulation specifications.
+
+        The ParaDRAM simulation specifications have lengthy comprehensive descriptions
+        that appear in full in the output report file of every ParaDRAM simulation.
+
+        The best way to learn about individual ParaDRAM simulation attributes
+        is to a run a minimal serial simulation with the following Python script,
+
+        .. code-block:: python
+            :linenos:
+
+            ##################################
+            from paramonte import ParaDRAM
+            pmpd = ParaDRAM()
+            pmpd.outputFileName = "./test"
+            def getLogFunc(point): return -sum(point**2)
+            pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
+            ##################################
+
+        Running this code will generate a set of simulation output files (in the current
+        working directory of Python) that begin with the prefix ``test_process_1``. Among
+        these, the file ``test_process_1_report.txt`` contains the full description of all
+        input specifications of the ParaDRAM simulation as well as other information
+        about the simulation results and statistics.
+
+    ---------------------------------------------------------------------------
     """
 
     def __init__( self
@@ -308,12 +351,11 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
         All input parameters are optional and all class attributes
         can be changed after the object construction.
 
-        Parameters
-        ----------
+            **Parameters**
 
-            The list of input parameters to
-            the constructor is extensive. See the
-            help information for ParaDRAM class: help(ParaDRAM)
+                The list of input parameters to
+                the constructor is extensive. See the
+                help information for ParaDRAM class: help(ParaDRAM)
 
         """
 
@@ -364,13 +406,14 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
 
         self.spec._freeze()
 
-        self._mpiDisabled = True
+        self.mpiEnabled = False
+        self._mpiDisabled = not self.mpiEnabled
 
     ################################################################################################################################
 
-    def _getInputFile(self,inputFilePath,mpiEnabled):
+    def _getInputFile(self,inputFile): #,mpiEnabled):
 
-        if inputFilePath is None:
+        if inputFile is None:
 
             ############################################################################################################################
             #### begin namelist generation from arguments
@@ -390,7 +433,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                 #if not _os.path.isabs(self.spec.outputFileName):
                     #headTailList = _os.path.split(self.spec.outputFileName)
                     #if headTailList[1]=="":
-                    self.spec.outputFileName = SpecBase.outputFileName(self.spec.outputFileName)
+                    #self.spec.outputFileName = SpecBase.outputFileName(self.spec.outputFileName)
                     if self.spec.outputFileName[-1] == "\\" or self.spec.outputFileName[-1] == "/":
                         self.spec.outputFileName = _os.path.join( _os.path.abspath( self.spec.outputFileName ) , _genOutputFileName(_pm.names.paradram) )
 
@@ -446,7 +489,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
 
         else:
 
-            if not mpiEnabled:
+            if not self.mpiEnabled:
                 _pm.warn( msg = "Input namelist file is given by the user. \n"
                                 + "All simulation specifications will be read from the input file."
                         , methodName = _pm.names.paradram
@@ -454,7 +497,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , marginBot = 1
                         )
 
-            inputFileVec_pntr = inputFilePath.encode("utf-8")                   # create byte-object from the external input file
+            inputFileVec_pntr = inputFile.encode("utf-8")                   # create byte-object from the external input file
 
         inputFileLen = len(inputFileVec_pntr) # byte-object length
        #inputFileLen_pntr = _ct.byref( _ct.c_size_t( len(inputFileVec_pntr) ) ) # pointer to byte-object length
@@ -468,53 +511,64 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     , ndim          : int
                     , getLogFunc    : _tp.Callable[[_tp.List[float]], float]
                     , buildMode     : _tp.Optional[str]     = "release"
-                    , mpiEnabled    : _tp.Optional[bool]    = False
-                    , inputFilePath : _tp.Optional[str]     = None
+                    , mpiEnabled    : _tp.Optional[bool]    = None
+                    , inputFile     : _tp.Optional[str]     = None
                     ) -> None:
         """
+
+        .. py:method:: runSampler(self, ndim, getLogFunc, buildMode = "release", mpiEnabled = None, inputFile = None)
+
         Run ParaDRAM sampler and return nothing.
 
-        Parameters
-        ----------
-            ndim
-                integer representing the number of dimensions of the
-                domain of the user's objective function getLogFunc().
-                It must be a positive integer.
-            getLogFunc()
-                represents the user's objective function to be sampled,
-                which must take a single input argument of type numpy
-                float64 array of length ndim and must return the
-                natural logarithm of the objective function.
-            buildMode
-                optional string argument with default value "release".
-                possible choices are:
-                    "debug"
-                        to be used for identifying sources of bug
-                        and causes of code crash.
-                    "release"
-                        to be used in all other normal scenarios
-                        for maximum runtime efficiency.
-            mpiEnabled
-                optional logical (boolean) indicator which is False by default.
-                If it is set to True, it will cause the ParaDRAM simulation
-                to run in parallel on the requested number of processors.
-                See ParaDRAM class information on how
-                to run a simulation in parallel.
-            inputFilePath
-                optional string input representing the path to
-                an external input namelist of simulation specifications.
-                USE THIS OPTIONAL ARGUMENT WITH CAUTION AND
-                ONLY IF YOU KNOW WHAT YOU ARE DOING.
+            **Parameters**
 
-                ====================================================
-                Specifying this option will cause ParaDRAM to ignore
-                all other paraDRAM simulation specifications set by
-                the user via ParaDRAM instance attributes.
-                ====================================================
+                ndim
+                    integer representing the number of dimensions of the
+                    domain of the user's objective function ``getLogFunc(point)``.
+                    It must be a positive integer.
 
-        Returns
-        -------
-            None
+                getLogFunc(point)
+                    represents the user's objective function to be sampled,
+                    which must take a single input argument ``point`` of type
+                    numpy-float64 array of length ``ndim`` and must return the
+                    natural logarithm of the objective function.
+
+                buildMode
+                    optional string argument with default value "release".
+                    possible choices are:
+
+                        "debug"
+                            to be used for identifying sources of bug
+                            and causes of code crash.
+
+                        "release"
+                            to be used in all other normal scenarios
+                            for maximum runtime efficiency.
+
+                mpiEnabled
+                    optional logical (boolean) indicator which is None by default.
+                    If it is set to True, it will cause the ParaDRAM simulation
+                    to run in parallel on the requested number of processors.
+                    If it is not provided, its value will taken from the
+                    ``mpiEnabled`` property of the sampler object.
+                    See ParaDRAM class information on how
+                    to run a simulation in parallel.
+
+                inputFile
+                    optional string input representing the path to
+                    an external input namelist of simulation specifications.
+
+                        **Warning**
+
+                        **Use this optional argument with caution and only if
+                        you know what you are doing. Specifying this option
+                        will cause paradram to ignore all other paradram
+                        simulation specifications set by the user via
+                        paradram instance attributes.**
+
+            **Returns**
+
+                None
 
         """
 
@@ -557,20 +611,24 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , marginBot = 1
                         )
 
-        if not isinstance(mpiEnabled,bool):
-            _pm.abort   ( msg   = "The input argument mpiEnabled must be of type bool.\n"
-                                + "It is an optional logical (boolean) indicator which is False by default.\n"
-                                + "If it is set to True, it will cause the ParaDRAM simulation\n"
-                                + "to run in parallel on the requested number of processors.\n"
-                                + "See ParaDRAM class information on how to run a simulation in parallel.\n"
-                                + "You have entered mpiEnabled = " + str(mpiEnabled)
-                        , methodName = _pm.names.paradram
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
+        if mpiEnabled is not None:
+            if isinstance(mpiEnabled,bool):
+                self.mpiEnabled = mpiEnabled
+            else:
+                _pm.abort   ( msg   = "The input argument `mpiEnabled` must be of type bool.\n"
+                                    + "It is an optional logical (boolean) indicator which is False by default.\n"
+                                    + "If it is set to True, it will cause the ParaDRAM simulation\n"
+                                    + "to run in parallel on the requested number of processors.\n"
+                                    + "See ParaDRAM class information on how to run a simulation in parallel.\n"
+                                    + "You have entered mpiEnabled = " + str(mpiEnabled)
+                            , methodName = _pm.names.paradram
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+        self._mpiDisabled = not self.mpiEnabled
 
-        if inputFilePath is not None and not isinstance(inputFilePath,str):
-            _pm.abort   ( msg   = "The input argument inputFilePath must be of type str.\n"
+        if inputFile is not None and not isinstance(inputFile,str):
+            _pm.abort   ( msg   = "The input argument `inputFile` must be of type str.\n"
                                 + "It is an optional string input representing the path to\n"
                                 + "an external input namelist of simulation specifications.\n"
                                 + "USE THIS OPTIONAL ARGUMENT WITH CAUTION AND\n"
@@ -578,49 +636,115 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                                 + "Specifying this option will cause ParaDRAM to ignore\n"
                                 + "all other paraDRAM simulation specifications set by\n"
                                 + "the user via ParaDRAM instance attributes.\n"
-                                + "You have entered inputFilePath = " + str(inputFilePath)
+                                + "You have entered inputFile = " + str(inputFile)
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
                         )
 
-        def getLogFunc2arg(ndim,Point):
-            PointVec = _np.array(Point[0:ndim])
+        def getLogFunc2arg(ndim,point):
+            PointVec = _np.array(point[0:ndim])
             return getLogFunc(PointVec)
 
         self._runSampler( ndim
                         , getLogFunc2arg
                         , buildMode
                         , mpiEnabled
-                        , inputFilePath
+                        , inputFile
                         )
 
     ################################################################################################################################
 
     def _runSampler ( self
                     , ndim          : int
-                    , getLogFunc    : _tp.Callable[[int,_tp.List[float]], float]
+                    , getLogFuncRaw : _tp.Callable[[int,_tp.List[float]], float]
                     , buildMode     : _tp.Optional[str]     = "release"
                     , mpiEnabled    : _tp.Optional[bool]    = False
-                    , inputFilePath : _tp.Optional[str]     = None
+                    , inputFile     : _tp.Optional[str]     = None
                     ) -> None:
+        """
 
-        self._mpiDisabled = not mpiEnabled
+        .. py:method:: _runSampler( self, ndim, getLogFuncRaw, buildMode = "release", mpiEnabled = False, inputFile = None)
+
+        Run ParaDRAM sampler and return nothing. This method is identical to
+        the ``runSampler()`` method, except that the input ``point`` parameter to
+        the user-provided input objective function ``getLogFuncRaw(ndim,point)`` is
+        a C-style raw pointer. This requires the user to guarantee that ``point`` will 
+        be always used with array bounds in their implementation of the objective function. 
+        The use of ``_runSampler()`` in place of ``runSampler()`` leads to a slight 
+        performance gain in the simulations.
+
+            **Example serial usage**
+
+            Copy and paste the following code enclosed between the
+            two comment lines in your python/ipython/jupyter session
+            (make sure the indentations of the pasted lines comply with Python rules):
+
+            .. code-block:: python
+                :linenos:
+
+                ##################################
+                import paramonte as pm
+                import numpy as np
+                def getLogFuncRaw(ndim,point):
+                    # return the log of the standard multivariate
+                    # Normal density function with ndim dimensions
+                    return -0.5 * np.sum( np.double( point[0:ndim] )**2 )
+                pmpd = pm.ParaDRAM()
+                pmpd._runSampler( ndim = 4                      # length of point
+                                , getLogFuncRaw = getLogFuncRaw # the objective function
+                                )
+                ##################################
+
+            where,
+
+                ndim
+                    represents the number of dimensions of the domain of
+                    the user's objective function ``getLogFuncRaw(ndim, point)`` and,
+
+                getLogFuncRaw(ndim, point)
+                    represents the user's objective function to be sampled,
+                    where,
+
+                        ndim
+                            is a 32-bit integer, representing the number of
+                            dimensions of the domain of the user-provided
+                            objective function.
+                        point
+                            is a C-style array-pointer of length ``ndim``
+                            and type float64. Note that the bounds of
+                            ``point`` must be always specified wherever
+                            it is used within the objective function.
+
+                    On output, it must return the natural logarithm of
+                    the objective function.
+
+            **Parameters**
+
+                All input parameters have the same meaning as the parameters
+                of ``runSampler()``. The only difference is in the input
+                parameters to the objective function ``getLogFuncRaw``.
+
+            **Returns**
+
+                None
+
+        """
 
         errorOccurred = not isinstance(ndim,int)
         if not errorOccurred: errorOccurred = ndim < 1
         if errorOccurred:
             _pm.abort   ( msg   = "The input argument ndim must be a positive integer,\n"
                                 + "representing the number of dimensions of the domain of\n"
-                                + "the user's objective function getLogFunc().\n"
+                                + "the user's objective function getLogFuncRaw().\n"
                                 + "You have entered ndim = " + str(ndim)
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
                         )
 
-        if not callable(getLogFunc):
-            _pm.abort   ( msg   = "The input argument getLogFunc must be a callable function.\n"
+        if not callable(getLogFuncRaw):
+            _pm.abort   ( msg   = "The input argument getLogFuncRaw must be a callable function.\n"
                                 + "It represents the user's objective function to be sampled,\n"
                                 + "which must take an input integer ndim representing the number of\n"
                                 + "dimensions of the domain of the objective function to be samples and,\n"
@@ -631,20 +755,18 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , marginBot = 1
                         )
 
+        stype = None
+        dummyList = None
+        errorOccurred = True
         if isinstance(buildMode,str):
             errorOccurred = False
-            stype = None
-            dummyList = None
             if "-" in buildMode:
                 dummyList = buildMode.split("-")
                 buildMode = dummyList[0] # build type
                 stype = dummyList[1] # compiler suite
-        else:
-            errorOccurred = True
 
         if not errorOccurred: errorOccurred = buildMode not in ["release","testing","debug"]
-        if not errorOccurred and stype is not None:
-            errorOccurred = not (stype=="gnu" or stype=="intel")
+        if not errorOccurred and stype is not None: errorOccurred = not (stype=="gnu" or stype=="intel")
         if errorOccurred:
             if dummyList is not None: buildMode = "-".join(dummyList)
             _pm.abort   ( msg   = "The input argument buildMode must be of type str.\n"
@@ -662,20 +784,24 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , marginBot = 1
                         )
 
-        if not isinstance(mpiEnabled,bool):
-            _pm.abort   ( msg   = "The input argument mpiEnabled must be of type bool.\n"
-                                + "It is an optional logical (boolean) indicator which is False by default.\n"
-                                + "If it is set to True, it will cause the ParaDRAM simulation\n"
-                                + "to run in parallel on the requested number of processors.\n"
-                                + "See ParaDRAM class information on how to run a simulation in parallel.\n"
-                                + "You have entered mpiEnabled = " + str(mpiEnabled)
-                        , methodName = _pm.names.paradram
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
+        if mpiEnabled is not None:
+            if isinstance(mpiEnabled,bool):
+                self.mpiEnabled = mpiEnabled
+            else:
+                _pm.abort   ( msg   = "The input argument mpiEnabled must be of type bool.\n"
+                                    + "It is an optional logical (boolean) indicator which is False by default.\n"
+                                    + "If it is set to True, it will cause the ParaDRAM simulation\n"
+                                    + "to run in parallel on the requested number of processors.\n"
+                                    + "See ParaDRAM class information on how to run a simulation in parallel.\n"
+                                    + "You have entered mpiEnabled = " + str(mpiEnabled)
+                            , methodName = _pm.names.paradram
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+        self._mpiDisabled = not self.mpiEnabled
 
-        if inputFilePath is not None and not isinstance(inputFilePath,str):
-            _pm.abort   ( msg   = "The input argument inputFilePath must be of type str.\n"
+        if inputFile is not None and not isinstance(inputFile,str):
+            _pm.abort   ( msg   = "The input argument `inputFile` must be of type str.\n"
                                 + "It is an optional string input representing the path to\n"
                                 + "an external input namelist of simulation specifications.\n"
                                 + "USE THIS OPTIONAL ARGUMENT WITH CAUTION AND\n"
@@ -683,27 +809,27 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                                 + "Specifying this option will cause ParaDRAM to ignore\n"
                                 + "all other paraDRAM simulation specifications set by\n"
                                 + "the user via ParaDRAM instance attributes.\n"
-                                + "You have entered inputFilePath = " + str(inputFilePath)
+                                + "You have entered inputFile = " + str(inputFile)
                         , methodName = _pm.names.paradram
                         , marginTop = 1
                         , marginBot = 1
                         )
 
-        inputFileVec_pntr, inputFileLen = self._getInputFile(inputFilePath,mpiEnabled)
+        inputFileVec_pntr, inputFileLen = self._getInputFile(inputFile) #,mpiEnabled)
 
         platform = _sys.platform.lower()
         isWin32 = True if platform=="win32" else False
         isLinux = True if platform=="linux" else False
         isMacOS = True if platform=="darwin" else False
 
-        if mpiEnabled:
+        if self.mpiEnabled:
             parallelism = "_mpi"
         else:
             parallelism = ""
             _pm.note( msg   = "Running the ParaDRAM sampler in serial mode...\n"
                             + "To run the ParaDRAM sampler in parallel mode visit: cdslab.org/pm\n"
-                            + "If you are using Jupyter notebook, check Jupyter's terminal window\n"
-                            + "for simulation progress and report."
+                            + "If you are using Jupyter notebook, check the Jupyter's terminal window\n"
+                            + "for realtime simulation progress and report."
                     , methodName = _pm.names.paradram
                     , marginTop = 1
                     , marginBot = 1
@@ -750,16 +876,14 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             for path in pathList:
                 pathLower = path.lower().replace("\\","")
                 if ("mpiintel64bin" in pathLower):
-                    mpiFound = True
+                    #mpiFound = True
+                    #bldMode = buildMode
+                    #if bldMode=="testing": bldMode = "release"
+                    mpiPath = _os.path.join(path,"release")
+                    _os.environ["PATH"] = mpiPath + _os.pathsep + _os.environ["PATH"]
+                    libfabricPath = _os.path.join(_os.path.dirname(path),"libfabric","bin")
+                    _os.environ["PATH"] = libfabricPath + _os.pathsep + _os.environ["PATH"]
                     break
-
-            if mpiFound:
-                #bldMode = buildMode
-                #if bldMode=="testing": bldMode = "release"
-                mpiPath = _os.path.join(path,"release")
-                _os.environ["PATH"] = mpiPath + _os.pathsep + _os.environ["PATH"]
-                libfabricPath = _os.path.join(_os.path.dirname(path),"libfabric","bin")
-                _os.environ["PATH"] = libfabricPath + _os.pathsep + _os.environ["PATH"]
 
         else:
 
@@ -817,9 +941,13 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
             pmcsList.pop(pmcsList.index(stype))
             pmcsList.insert(0,stype)
 
-        if isWin32: libnameSuffix = "_python" + parallelism + "_windows_" + _pm.arch + "_mt.dll"
-        if isMacOS: libnameSuffix = "_python" + parallelism + "_darwin_" + _pm.arch + "_mt.dylib"
-        if isLinux: libnameSuffix = "_python" + parallelism + "_linux_" + _pm.arch + "_mt.so"
+        libnameSuffix = "_python" + parallelism
+        if isWin32: libnameSuffix = libnameSuffix + "_windows_" + _pm.platform.arch + "_mt.dll"
+        if isMacOS: libnameSuffix = libnameSuffix + "_darwin_" + _pm.platform.arch + "_mt.dylib"
+        if isLinux: libnameSuffix = libnameSuffix + "_linux_" + _pm.platform.arch + "_mt.so"
+
+        libpath = None
+        libFound = False
         for buildMode in buildModeList:
 
             for pmcs in pmcsList:
@@ -867,12 +995,12 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     )
 
         # define ctypes wrapper function, with the proper result and argument types
-        _getLogFunc_proc = _ct.CFUNCTYPE( _ct.c_double                  # function result
-                                       #, _ct.POINTER(_ct.c_int32)      # ndim
-                                        , _ct.c_int32                   # ndim
-                                        , _ct.POINTER(_ct.c_double)     # Point
-                                        )
-        getLogFunc_pntr = _getLogFunc_proc(getLogFunc)
+        _getLogFuncRaw_proc = _ct.CFUNCTYPE ( _ct.c_double                  # function result
+                                           #, _ct.POINTER(_ct.c_int32)      # ndim
+                                            , _ct.c_int32                   # ndim
+                                            , _ct.POINTER(_ct.c_double)     # point
+                                            )
+        getLogFuncRaw_pntr = _getLogFuncRaw_proc(getLogFuncRaw)
 
         try:
 
@@ -903,17 +1031,17 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
         pmdll.runParaDRAM.restype = None
         #pmdll.runParaDRAM.argtypes =    [ _ct.POINTER(_ct.c_int32)     # ndim
         pmdll.runParaDRAM.argtypes =    [ _ct.c_int32                   # ndim
-                                        , _getLogFunc_proc              # procedure
+                                        , _getLogFuncRaw_proc           # procedure
                                         , _ct.POINTER(_ct.c_char)       # inputFile byte object
                                         , _ct.c_int32                   # lenInpuFile
                                        #, _ct.POINTER(_ct.c_size_t)     # lenInpuFile
                                         , ]
 
-        #def getLogFuncWrapper(ndim_pntr,Point): return getLogFunc(ndim[0],Point)
+        #def getLogFuncRawWrapper(ndim_pntr,point): return getLogFuncRaw(ndim[0],point)
 
         # construct procedure pointer
-        #def getLogFuncWrapper(ndim,Point): return getLogFunc(_np.array(Point[0:ndim]))
-        #getLogFunc_pntr = _getLogFunc_proc(getLogFuncWrapper)
+        #def getLogFuncRawWrapper(ndim,point): return getLogFuncRaw(_np.array(point[0:ndim]))
+        #getLogFuncRaw_pntr = _getLogFuncRaw_proc(getLogFuncRawWrapper)
 
         # construct ndim pointer
         #ndim_pntr = _ct.byref(_ct.c_int32(ndim))
@@ -921,7 +1049,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
         # call ParaMonte
         #pmdll.runParaDRAM   ( ndim_pntr
         pmdll.runParaDRAM   ( _ct.c_int32(ndim)
-                            , getLogFunc_pntr
+                            , getLogFuncRaw_pntr
                             , inputFileVec_pntr
                             , _ct.c_int32(inputFileLen)
                            #, inputFileLen_pntr
@@ -931,8 +1059,7 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
        #    abslibpath =
        #    return _os.system("lsof -p {} | grep {} > /dev/null".format( _os.getpid(), _os.path.abspath(libpath) )) == 0
 
-        def dlclose(libdll):
-               libdll.dlclose(lib._handle)
+        def dlclose(libdll): libdll.dlclose(libdll._handle)
 
         if isWin32:
             handle = _ct.windll.kernel32.LoadLibraryA(libpath)
@@ -980,6 +1107,9 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     , renabled      : _tp.Optional[bool] = False
                     ) -> _tp.List[_ParaDRAMChain] :
         """
+
+        .. py:method:: readChain(self, file = None, delimiter = None, parseContents = True, renabled = False)
+
         Return a list of the contents of a set of ParaDRAM output
         chain files whose names begin the user-provided input file.
         This method is to be only used for postprocessing of the output
@@ -987,65 +1117,75 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
         It is not meant to be called by all processes in parallel mode,
         although it is possible.
 
-        Parameters
-        ----------
-            file
-                A string representing the path to the chain file with
-                the default value of None.
-                The path only needs to uniquely identify the simulation
-                to which the chain file belongs. For example, specifying
-                "./mydir/mysim" as input will lead to a search for a file
-                that begins with "mysim" and ends with "_chain.txt"
-                inside the directory "./mydir/". If there are multiple
-                files with such name, then all of them will be read
-                and returned as a list.
-                If this input argument is not provided by the user, the
-                value of the object attribute outputFileName
-                will be used instead. At least one of the two mentioned
-                routes must provide the path to the chain file otherwise,
-                this method will break by calling sys.exit().
-            delimiter
-                Optional input string representing the delimiter used in the
-                output chain file. If it is not provided as input argument,
-                the value of the corresponding object attribute outputDelimiter
-                will be used instead. If none of the two are available,
-                the default comma delimiter "," will be assumed and used.
-            parseContents
-                If set to True, the contents of the file will be parsed and
-                stored in a component of the object named 'contents'.
-                The default value is True.
-            renabled
-                If set to False, the contents of the file(s) will be stored as a
-                list in a (new) component of the ParaDRAM object named 'chainList'
-                and None will be the return value of the method.
-                If set to True, the reverse will done.
-                The default value is False.
+            **Parameters**
 
-        Returns
-        -------
-            a list of objects, each of which has the following properties:
                 file
-                    full absolute path to the chain file.
+                    A string representing the path to the chain file with
+                    the default value of None.
+                    The path only needs to uniquely identify the simulation
+                    to which the chain file belongs. For example, specifying
+                    "./mydir/mysim" as input will lead to a search for a file
+                    that begins with "mysim" and ends with "_chain.txt"
+                    inside the directory "./mydir/". If there are multiple
+                    files with such name, then all of them will be read
+                    and returned as a list.
+                    If this input argument is not provided by the user, the
+                    value of the object attribute outputFileName
+                    will be used instead. At least one of the two mentioned
+                    routes must provide the path to the chain file otherwise,
+                    this method will break by calling ``sys.exit()``.
+
                 delimiter
-                    the delimiter used in the chain file.
-                ndim
-                    number of dimensions of the domain of the objective function
-                    from which the chain has been drawn.
-                count
-                    the number of unique (weighted) points in the chain file.
-                    This is essentially the number of rows in the chain file
-                    minus one (representing the header line).
-                df
-                    the contents of the chain file in the form of
-                    a pandas-library DataFrame (hence called 'df').
-                dynamic attributes:
-                    corresponding to each column in the chain file, a property
-                    with the same name as the column header is also created
-                    for the object which contains the data stored in that column
-                    of the chain file.
-            If renabled = True, the list of objects will be returned as the
-            return value of the method. Otherwise, the list will be stored in a
-            component of the ParaDRAM object named 'chainList'.
+                    Optional input string representing the delimiter used in the
+                    output chain file. If it is not provided as input argument,
+                    the value of the corresponding object attribute outputDelimiter
+                    will be used instead. If none of the two are available,
+                    the default comma delimiter "," will be assumed and used.
+
+                parseContents
+                    If set to True, the contents of the file will be parsed and
+                    stored in a component of the object named ``contents``.
+                    The default value is ``True``.
+
+                renabled
+                    If set to False, the contents of the file(s) will be stored as a
+                    list in a (new) component of the ParaDRAM object named ``chainList``
+                    and ``None`` will be the return value of the method.
+                    If set to True, the reverse will done.
+                    The default value is ``False``.
+
+            **Returns**
+
+                a list of objects, each of which has the following properties:
+
+                    file
+                        full absolute path to the chain file.
+
+                    delimiter
+                        the delimiter used in the chain file.
+
+                    ndim
+                        number of dimensions of the domain of the objective function
+                        from which the chain has been drawn.
+
+                    count
+                        the number of unique (weighted) points in the chain file.
+                        This is essentially the number of rows in the chain file
+                        minus one (representing the header line).
+
+                    df
+                        the contents of the chain file in the form of
+                        a pandas-library DataFrame (hence called ``df``).
+
+                    dynamic attributes:
+                        corresponding to each column in the chain file, a property
+                        with the same name as the column header is also created
+                        for the object which contains the data stored in that column
+                        of the chain file.
+
+                If ``renabled = True``, the list of objects will be returned as the
+                return value of the method. Otherwise, the list will be stored in a
+                component of the ParaDRAM object named ``chainList``.
 
         """
 
@@ -1126,6 +1266,9 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                         , renabled      : _tp.Optional[bool] = False
                         ) -> _tp.List[_ParaDRAMChain] :
         """
+
+        .. py:method:: readMarkovChain(self, file = None, delimiter = None, parseContents = True, renabled = False)
+
         Return a list of the unweighted (Markov-chain) contents of a set of
         ParaDRAM output chain files, whose names begin the user-provided
         input variable 'file'. This method is to be only used for postprocessing
@@ -1133,65 +1276,75 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
         It is not meant to be called by all processes in parallel mode,
         although it is possible.
 
-        Parameters
-        ----------
-            file
-                A string representing the path to the chain file with
-                the default value of None.
-                The path only needs to uniquely identify the simulation
-                to which the chain file belongs. For example, specifying
-                "./mydir/mysim" as input will lead to a search for a file
-                that begins with "mysim" and ends with "_chain.txt"
-                inside the directory "./mydir/". If there are multiple
-                files with such name, then all of them will be read
-                and returned as a list.
-                If this input argument is not provided by the user, the
-                value of the object attribute outputFileName
-                will be used instead. At least one of the two mentioned
-                routes must provide the path to the chain file otherwise,
-                this method will break by calling sys.exit().
-            delimiter
-                Optional input string representing the delimiter used in the
-                output chain file. If it is not provided as input argument,
-                the value of the corresponding object attribute outputDelimiter
-                will be used instead. If none of the two are available,
-                the default comma delimiter "," will be assumed and used.
-            parseContents
-                If set to True, the contents of the file will be parsed and
-                stored in a component of the object named 'contents'.
-                The default value is True.
-            renabled
-                If set to False, the contents of the file(s) will be stored as a
-                list in a (new) component of the ParaDRAM object named 'markovChainList'
-                and None will be the return value of the method.
-                If set to True, the reverse will done.
-                The default value is False.
+            **Parameters**
 
-        Returns
-        -------
-            a list of objects, each of which has the following properties:
                 file
-                    full absolute path to the chain file.
+                    A string representing the path to the chain file with
+                    the default value of None.
+                    The path only needs to uniquely identify the simulation
+                    to which the chain file belongs. For example, specifying
+                    "./mydir/mysim" as input will lead to a search for a file
+                    that begins with "mysim" and ends with "_chain.txt"
+                    inside the directory "./mydir/". If there are multiple
+                    files with such name, then all of them will be read
+                    and returned as a list.
+                    If this input argument is not provided by the user, the
+                    value of the object attribute outputFileName
+                    will be used instead. At least one of the two mentioned
+                    routes must provide the path to the chain file otherwise,
+                    this method will break by calling ``sys.exit()``.
+
                 delimiter
-                    the delimiter used in the chain file.
-                ndim
-                    number of dimensions of the domain of the objective function
-                    from which the chain has been drawn.
-                count
-                    the number of unique (weighted) points in the chain file.
-                    This is essentially the number of rows in the chain file
-                    minus one (representing the header line).
-                df
-                    the unweighted (Markovian) contents of the chain file in the
-                    form of a pandas-library DataFrame (hence called 'df').
-                dynamic attributes:
-                    corresponding to each column in the chain file, a property
-                    with the same name as the column header is also created
-                    for the object which contains the data stored in that column
-                    of the chain file.
-            If renabled = True, the list of objects will be returned as the
-            return value of the method. Otherwise, the list will be stored in a
-            component of the ParaDRAM object named 'markovChainList'.
+                    Optional input string representing the delimiter used in the
+                    output chain file. If it is not provided as input argument,
+                    the value of the corresponding object attribute outputDelimiter
+                    will be used instead. If none of the two are available,
+                    the default comma delimiter "," will be assumed and used.
+
+                parseContents
+                    If set to True, the contents of the file will be parsed and
+                    stored in a component of the object named ``contents``.
+                    The default value is ``True``.
+
+                renabled
+                    If set to False, the contents of the file(s) will be stored as a
+                    list in a (new) component of the ParaDRAM object named ``markovChainList``
+                    and ``None`` will be the return value of the method.
+                    If set to True, the reverse will done.
+                    The default value is ``False``.
+
+            **Returns**
+
+                a list of objects, each of which has the following properties:
+
+                    file
+                        full absolute path to the chain file.
+
+                    delimiter
+                        the delimiter used in the chain file.
+
+                    ndim
+                        number of dimensions of the domain of the objective function
+                        from which the chain has been drawn.
+
+                    count
+                        the number of unique (weighted) points in the chain file.
+                        This is essentially the number of rows in the chain file
+                        minus one (representing the header line).
+
+                    df
+                        the unweighted (Markovian) contents of the chain file in the
+                        form of a pandas-library DataFrame (hence called ``df``).
+
+                    dynamic attributes:
+                        corresponding to each column in the chain file, a property
+                        with the same name as the column header is also created
+                        for the object which contains the data stored in that column
+                        of the chain file.
+
+                If ``renabled = True``, the list of objects will be returned as the
+                return value of the method. Otherwise, the list will be stored in a
+                component of the ParaDRAM object named ``markovChainList``.
 
         """
 
@@ -1272,6 +1425,9 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
                     , renabled      : _tp.Optional[bool] = False
                     ) -> _tp.List[_ParaDRAMChain] :
         """
+
+        .. py:method:: readSample(self, file = None, delimiter = None, parseContents = True, renabled = False)
+
         Return a list of the contents of a set of ParaDRAM output
         sample files whose names contain the user-provided input file.
         This method is to be only used for postprocessing of the output
@@ -1279,63 +1435,73 @@ pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
         It is not meant to be called by all processes in parallel mode,
         although it is possible.
 
-        Parameters
-        ----------
-            file
-                A string representing the path to the sample file with
-                the default value of None.
-                The path only needs to uniquely identify the simulation
-                to which the sample file belongs. For example, specifying
-                "./mydir/mysim" as input will lead to a search for a file
-                that begins with "mysim" and ends with "_sample.txt"
-                inside the directory "./mydir/". If there are multiple
-                files with such name, then all of them will be read
-                and returned as a list.
-                If this input argument is not provided by the user, the
-                value of the object attribute outputFileName
-                will be used instead. At least one of the two mentioned
-                routes must provide the path to the sample file otherwise,
-                this method will break by calling sys.exit().
-            delimiter
-                Optional input string representing the delimiter used in the
-                output sample file. If it is not provided as input argument,
-                the value of the corresponding object attribute outputDelimiter
-                will be used instead. If none of the two are available,
-                the default comma delimiter "," will be assumed and used.
-            parseContents
-                If set to True, the contents of the file will be parsed and
-                stored in a component of the object named 'contents'.
-                The default value is True.
-            renabled
-                If set to False, the contents of the file(s) will be stored as a
-                list in a (new) component of the ParaDRAM object named 'sampleList'
-                and None will be the return value of the method.
-                If set to True, the reverse will done.
-                The default value is False.
+            **Parameters**
 
-        Returns
-        -------
-            a list of objects, each of which has the following properties:
                 file
-                    full absolute path to the sample file.
+                    A string representing the path to the sample file with
+                    the default value of None.
+                    The path only needs to uniquely identify the simulation
+                    to which the sample file belongs. For example, specifying
+                    "./mydir/mysim" as input will lead to a search for a file
+                    that begins with "mysim" and ends with "_sample.txt"
+                    inside the directory "./mydir/". If there are multiple
+                    files with such name, then all of them will be read
+                    and returned as a list.
+                    If this input argument is not provided by the user, the
+                    value of the object attribute outputFileName
+                    will be used instead. At least one of the two mentioned
+                    routes must provide the path to the sample file otherwise,
+                    this method will break by calling ``sys.exit()``.
+
                 delimiter
-                    the delimiter used in the sample file.
-                ndim
-                    number of dimensions of the domain of the objective function
-                    from which the sample has been drawn.
-                count
-                    number of sampled points in the sample file.
-                df
-                    the contents of the sample file in the form of
-                    a pandas-library DataFrame (hence called 'df').
-                dynamic attributes:
-                    corresponding to each column in the sample file, a property
-                    with the same name as the column header is also created
-                    for the object which contains the data stored in that column
-                    of the sample file.
-            If renabled = True, the list of objects will be returned as the
-            return value of the method. Otherwise, the list will be stored in a
-            component of the ParaDRAM object named 'sampleList'.
+                    Optional input string representing the delimiter used in the
+                    output sample file. If it is not provided as input argument,
+                    the value of the corresponding object attribute outputDelimiter
+                    will be used instead. If none of the two are available,
+                    the default comma delimiter "," will be assumed and used.
+
+                parseContents
+                    If set to True, the contents of the file will be parsed and
+                    stored in a component of the object named ``contents``.
+                    The default value is ``True``.
+
+                renabled
+                    If set to False, the contents of the file(s) will be stored as a
+                    list in a (new) component of the ParaDRAM object named ``sampleList``
+                    and ``None`` will be the return value of the method.
+                    If set to True, the reverse will done.
+                    The default value is ``False``.
+
+            **Returns**
+
+                a list of objects, each of which has the following properties:
+
+                    file
+                        full absolute path to the sample file.
+
+                    delimiter
+                        the delimiter used in the sample file.
+
+                    ndim
+                        number of dimensions of the domain of the objective function
+                        from which the sample has been drawn.
+
+                    count
+                        number of sampled points in the sample file.
+
+                    df
+                        the contents of the sample file in the form of
+                        a pandas-library DataFrame (hence called ``df``).
+
+                    dynamic attributes:
+                        corresponding to each column in the sample file, a property
+                        with the same name as the column header is also created
+                        for the object which contains the data stored in that column
+                        of the sample file.
+
+                If ``renabled = True``, the list of objects will be returned as the
+                return value of the method. Otherwise, the list will be stored in a
+                component of the ParaDRAM object named ``sampleList``.
 
         """
 
