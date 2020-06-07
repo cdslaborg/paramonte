@@ -58,29 +58,12 @@ cd(fileparts(mfilename('fullpath'))); % Change working directory to source code 
 logFunc = logfunc(); 
 
 % create a ParaMonte object:
-% NOTE: MatDRAM is a pure-MATLAB implementation of the ParaMonte library's ParaDRAM routine. 
-% NOTE: To use the MatDRAM kernel instead of the ParaMonte MATLAB interface, try:
-% pm = paramonte("matdram");
-% instead of the following:
+
 pm = paramonte();
 
 % create a ParaDRAM simulation object
 
 pmpd = pm.ParaDRAM();
-
-% specify the path to the input specification file.
-% This is optional: all simulation specifications can be 
-% also set as attributes of the pmpd.spec component of the object.
-% KEEP IN MIND: if you set pmpd.inputFile to any non-empty value, then
-% the inputFile will override any values specified via pmpd.spec properties.
-% uncomment the following line to specify the simulation input specifications 
-% solely from within the external input file:
-% pmpd.inputFile = string(currentDir) + "/paramonte.in";
-
-% NOTE: The following specifications will be ignored if the input file above is uncommented.
-% NOTE: See the following link for the complete list of simulation specifications:
-% NOTE:
-% NOTE:     https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
 
 pmpd.spec.chainSize = 30000;            % the number of uniquely-sampled points 
 pmpd.spec.outputFileName = "./out/";    % only the output folder specified here in the above, implying that 
