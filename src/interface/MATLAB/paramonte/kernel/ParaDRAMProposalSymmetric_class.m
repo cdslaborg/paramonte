@@ -232,7 +232,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
 %StateNew = StateOld' + comv_chol (:,:,counterDRS+1)*randn(nd,1);
 %StateNew = StateNew';
 
-                    if any( StateNew(:) <= self.Global.mc_DomainLowerLimitVec(:) ) || any( StateNew(:) >= self.Global.mc_DomainUpperLimitVec(:) )
+                    if any( StateNew(:) < self.Global.mc_DomainLowerLimitVec(:) ) || any( StateNew(:) > self.Global.mc_DomainUpperLimitVec(:) )
                         domainCheckCounter = domainCheckCounter + 1;
                         if domainCheckCounter == self.Global.mc_MaxNumDomainCheckToWarn
                             self.Global.mv_Err.msg      = self.Global.mc_MaxNumDomainCheckToWarnMsg;
