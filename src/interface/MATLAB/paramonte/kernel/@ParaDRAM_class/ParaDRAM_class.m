@@ -151,7 +151,7 @@ classdef ParaDRAM_class < ParaMCMC_class
     end
 
     properties (Access = public, Hidden)
-        methodName          = "MatDRAM";    % no parallelization implemented in MatDRAM yet
+        methodName          = "MatDRAM";    % the algorithm's name
         mpiEnabled          = false;        % no parallelization implemented in MatDRAM yet
         objectName          = [];           % dynamic name of the user-defined objects
         SpecDRAM            = [];

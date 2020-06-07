@@ -201,6 +201,7 @@ classdef paramonte %< dynamicprops
         Err = Err_class();
         verificationStatusFilePath
         buildInstructionNote
+        matdramKernelEnabled
         pmInstallFailed
         objectName
         prereqs
@@ -284,13 +285,13 @@ classdef paramonte %< dynamicprops
             matlabKernelName = "matdram";
             matlabInterfName = "interface";
             if nargin==0
-                matdramKernelEnabled = true; if isfolder(self.path.lib); matdramKernelEnabled = false; end
+                self.matdramKernelEnabled = true; if isfolder(self.path.lib); self.matdramKernelEnabled = false; end
             elseif nargin==1
                 if isa(varargin{1},"char") || isa(varargin{1},"string")
                     if strcmpi(string(varargin{1}),matlabKernelName)
-                        matdramKernelEnabled = true;
+                        self.matdramKernelEnabled = true;
                     elseif strcmpi(string(varargin{1}),matlabInterfName)
-                        matdramKernelEnabled = false;
+                        self.matdramKernelEnabled = false;
                     else
                         errorOccurred = true;
                     end
@@ -309,13 +310,13 @@ classdef paramonte %< dynamicprops
 
             % set ParaDRAM sampler
 
-            if matdramKernelEnabled
+            if self.matdramKernelEnabled
                 self.ParaDRAM = ParaDRAM_class(self.platform,self.website);
             else
                 self.ParaDRAM = ParaDRAM(self.platform,self.website);
             end
 
-            if matdramKernelEnabled; return; end
+            if self.matdramKernelEnabled; return; end
 
             % verify prereqs
 
@@ -358,6 +359,13 @@ classdef paramonte %< dynamicprops
             %       pm.verify(true)             % resets and performs all checks
             %       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %
+            if self.matdramKernelEnabled
+                self.displayParaMonteBanner();
+                self.Err.msg    = "The ParaMonte MatDRAM library is ready to use!"
+                self.Err.note();
+                return;
+            end
+
             self.objectName = inputname(1);
 
             setenv('PATH', ['/usr/local/bin:',getenv('PATH')]);
