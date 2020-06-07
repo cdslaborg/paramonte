@@ -42,7 +42,12 @@ format compact; format long;
 
 % set path to the ParaMonte library
 
+%%%%%%%%%%%%% IMPORTANT %%%%%%%%%%%%%
+
 pmlibRootDir = './'; % change this path to the ParaMonte library root directory
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 addpath(genpath(pmlibRootDir));
 
 % change MATLAB's working directory to the folder containing this script
@@ -64,6 +69,10 @@ pm = paramonte();
 % create a ParaDRAM simulation object
 
 pmpd = pm.ParaDRAM();
+
+% NOTE: For a complete list of simulation specifications, see:
+% NOTE:
+% NOTE:     https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
 
 pmpd.spec.chainSize = 30000;            % the number of uniquely-sampled points 
 pmpd.spec.outputFileName = "./out/";    % only the output folder specified here in the above, implying that 
