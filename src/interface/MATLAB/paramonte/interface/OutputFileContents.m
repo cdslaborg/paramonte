@@ -91,7 +91,7 @@ classdef OutputFileContents < dynamicprops
             else
                 self.Err.marginTop = 1;
                 self.Err.marginBot = 1;
-                self.Err.msg    = "The structure of the file """ + self.file + """ does not match a " + methodName + " " + fileType + "file. " ...
+                self.Err.msg    = "The structure of the file """ + self.file + """ does not match a " + methodName + " " + fileType + " file. " ...
                                 + "Verify the contents of this file before attempting to read this file.";
                 self.Err.abort();
             end
