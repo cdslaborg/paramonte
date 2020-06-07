@@ -640,7 +640,6 @@ for PMCS in $PMCS_LIST; do
 
         if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
 
-            echo >&2 ""
             echo >&2 "-- ParaMonte - Generating MATLAB MatDRAM library..."
             echo >&2 ""
 
