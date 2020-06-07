@@ -361,7 +361,7 @@ classdef paramonte %< dynamicprops
             %
             if self.matdramKernelEnabled
                 self.displayParaMonteBanner();
-                self.Err.msg    = "The ParaMonte MatDRAM library is ready to use!"
+                self.Err.msg    = "The ParaMonte MatDRAM library is ready to use!";
                 self.Err.note();
                 return;
             end
