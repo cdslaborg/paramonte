@@ -529,7 +529,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
               % end
                 hellingerDistSq = 1.0 - exp(0.5 * (self.Global.mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum);
                 if hellingerDistSq < 0.0
-                    Err_class.warn(self.Global.mc_negativeHellingerDistSqMsg + num2str(hellingerDistSq), self.Global.mc_methodBrand, [], self.Global.mc_logFileUnit);
+                    self.Global.mv_Err.warn(self.Global.mc_negativeHellingerDistSqMsg + num2str(hellingerDistSq), self.Global.mc_methodBrand, [], self.Global.mc_logFileUnit);
                     hellingerDistSq = 0.0;
                 end
                 % update the higher-stage delayed-rejection Cholesky Lower matrices

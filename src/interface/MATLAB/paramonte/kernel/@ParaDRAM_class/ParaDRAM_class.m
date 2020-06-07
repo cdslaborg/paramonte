@@ -43,7 +43,7 @@
 %   Once you set the desired attributes to the desired values,
 %   call the ParaDRAM sampler via the object's method runSampler().
 %
-%   Minimal serial example
+%   Minimal example
 %   ----------------------
 %
 %   Here is a MATLAB script main.m for a serial ParaDRAM simulation.
@@ -72,97 +72,6 @@
 %           which must take a single input argument of type numpy
 %           float64 array of length ndim and must return the
 %           natural logarithm of the objective function.
-%
-%   Parallel simulations
-%   --------------------
-%
-%   To run ParaDRAM sampler in parallel mode visit: cdslab.org/pm
-%   You can also use the following commands on the Python command-line,
-%
-%       import paramonte as pm
-%       pm.verify()
-%
-%   to obtain specific information on how to run a parallel simulation,
-%   in particular, in relation to your current installation of ParaMonte.
-%   In general, for parallel simulations:
-%
-%   0.  ensure you need and will get a speedup by running the ParaDRAM sampler in parallel.
-%       Typically, if a single evaluation of the objective function takes much longer than
-%       a few milliseconds, your simulation may then benefit from the parallel run.
-%
-%   1.  ensure you have an MPI library installed, preferably, Intel MPI.
-%       An MPI library should be automatically installed on your system with ParaMonte.
-%       If needed, you can download the Intel MPI library from their website and install it.
-%
-%   2.  set the input keyword argument mpiEnabled in runSampler() to True (the default is False),
-%
-%   3.  before running the parallel simulation, in particular, on Windows systems, you may
-%       need to define the necessary MPI environmental variables on your system.
-%       To get information on how to define the variables, use paramonte function
-%       verify() as described in the above.
-%
-%   4.  call your main Python code from a Python-aware mpiexec-aware command-line via,
-%
-%           mpi_launcher -n num_process python name_of_yor_python_code.py
-%
-%       where,
-%
-%       1.  mpi_launcher is the name of the MPI launcher
-%           from the MPI library that you have installed.
-%           For example, the Intel MPI library launcher is named mpiexec,
-%           also recognized by Microsoft and OpenMPI.
-%
-%       2.  num_process: replace this with the number of
-%           cores on which you want to run the program.
-%           Do not assign more processes than the number of
-%           available physical cores on your device/cluster.
-%           Assigning more cores than physically available on
-%           your system will only slow down your simulation.
-%
-%   Minimal parallel example
-%   ------------------------
-%
-%   Here is a Python script main.py for a parallel ParaDRAM simulation:
-%
-%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%      from paramonte import ParaDRAM
-%      pmpd = ParaDRAM()
-%      def getLogFunc(Point):
-%          # return the natural logarithm of the ndim-dimensional
-%          # non-normalized Standard Gaussian density function
-%          return -sum(Point**2)
-%      pmpd.runSampler ( ndim = 1
-%                      , getLogFunc = getLogFunc
-%                      , mpiEnabled = True
-%                      )
-%      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   where,
-%
-%       ndim
-%           represents the number of dimensions of the domain
-%           of the user's objective function getLogFunc() and,
-%
-%       getLogFunc()
-%           represents the user's objective function that is to be sampled.
-%           This function must take a single input argument of type numpy
-%           float64 array of length ndim and must return the natural
-%           logarithm of the objective function.
-%
-%
-%       mpiEnabled
-%           is a logical (boolean) indicator that, if True, will
-%           cause the ParaDRAM simulation to run in parallel
-%           on the requested number of processors.
-%
-%   Once the script is saved in the file main.py, open a Python-aware and
-%   MPI-aware command prompt to run the simulation by the MPI launcher,
-%
-%       mpiexec -n 3 python main.py
-%
-%   This will execute the Python script main.py on three processes (images).
-%   Keep in mind that on Windows systems you may need to define MPI environmental
-%   variables before a parallel simulation, as descibed in the above.
 %
 %   ParaDRAM Class Attributes
 %   -------------------------

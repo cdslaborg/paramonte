@@ -77,7 +77,7 @@ pmpd.spec.randomSeed                            = 7;                            
 pmpd.spec.description                           = "Hi there";                   % Works
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 flag = 0;
-%flag = 1;
+flag = 1;
 if flag
     file    = "./out/temp/A_A_A_A";
     if exist(file + "_process_1_chain.txt"),     delete(file + "_process_1_chain.txt");     end
@@ -105,7 +105,7 @@ pmpd.spec.restartFileFormat                     = "ASCII";                      
 % pmpd.spec.maxNumDomainCheckToStop               = [];
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMCMC variables...
-pmpd.spec.chainSize                             = 10000;                         % Works
+pmpd.spec.chainSize                             = 40000;                         % Works
 %pmpd.spec.startPointVec                         = [0.6,1.2];                    % Works
 %pmpd.spec.sampleRefinementCount                 = 1;                            % Works
 %pmpd.spec.sampleRefinementMethod                = "someRandomName";             % Works
