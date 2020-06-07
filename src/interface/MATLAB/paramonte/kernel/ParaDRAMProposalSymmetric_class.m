@@ -222,15 +222,15 @@ classdef ParaDRAMProposalSymmetric_class < handle
 
                 while true  % loopBoundaryCheckNormal: Check for the support Region consistency:
 
-%                    StateNew = mvnrnd(StateOld, comv_chol(:,:,counterDRS+1));
+                    % StateNew = mvnrnd(StateOld, comv_chol(:,:,counterDRS+1));
 
                     StateNew = getRandMVN   ( nd                            ...
                                             , StateOld                      ...
                                             , self.Global.comv_chol (:,:,counterDRS+1)  ...
                                             ) ;
 
-%StateNew = StateOld' + comv_chol (:,:,counterDRS+1)*randn(nd,1);
-%StateNew = StateNew';
+                    %StateNew = StateOld' + comv_chol (:,:,counterDRS+1)*randn(nd,1);
+                    %StateNew = StateNew';
 
                     if any( StateNew(:) < self.Global.mc_DomainLowerLimitVec(:) ) || any( StateNew(:) > self.Global.mc_DomainUpperLimitVec(:) )
                         domainCheckCounter = domainCheckCounter + 1;
