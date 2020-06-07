@@ -651,7 +651,7 @@ for PMCS in $PMCS_LIST; do
             echo >&2 "-- ParaMonte - copying the MatDRAM library files..."
             echo >&2 "-- ParaMonte - from: ${MatDRAM_ORIGIN_PATH}"
             echo >&2 "-- ParaMonte -   to: ${MatDRAM_DESTINATION_PATH}"
-            cp -R "${MatDRAM_ORIGIN_PATH}" "${MatDRAM_DESTINATION_PATH}"
+            cp -R "${MatDRAM_ORIGIN_PATH}/" "${MatDRAM_DESTINATION_PATH}/"
 
             # delete the binary files
 
