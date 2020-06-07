@@ -35,21 +35,34 @@
 classdef logfunc
 
     properties (Constant)
+
         NDIM    = 4;                        % number of dimensions of the distribution
         MEAN    =   [ 0.0,0.0,0.0,0.0]';    % mean of the Multivariate Normal distribution
         COVMAT  =   [ 1.0,0.5,0.5,0.5       ... covariance matrix of the Multivariate Normal distribution
                     ; 0.5,1.0,0.5,0.5       ...
                     ; 0.5,0.5,1.0,0.5       ...
                     ; 0.5,0.5,0.5,1.0 ];
+        INVCOV = inv(logfunc.COVMAT);       % the inverse of the covariance matrix
+
+        % this is the log of the coefficient used in the definition of the MVN.
+
+        MVN_COEF = logfunc.NDIM * log( 1. / sqrt(2.*pi) ) + log( sqrt(det(logfunc.INVCOV)) );
+
     end
 
     % define the objective function: getLogFunc
 
     methods (Static)
         function logFunc = get(point)
+
             % note that the input point is an array of NDIM rows and 1 column.
             % Therefore, the MEAN array must have the same dimensions.
-            logFunc = log(mvnpdf(point,logfunc.MEAN,logfunc.COVMAT));
+
+            % the logarithm of objective function: log(MVN)
+
+            normedPoint = logfunc.MEAN - point;
+            logFunc = logfunc.MVN_COEF - 0.5 * ( dot(normedPoint', logfunc.INVCOV * normedPoint) );
+
         end
     end
 

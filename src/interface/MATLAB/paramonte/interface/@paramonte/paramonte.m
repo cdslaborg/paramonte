@@ -284,13 +284,13 @@ classdef paramonte %< dynamicprops
             matlabKernelName = "matdram";
             matlabInterfName = "interface";
             if nargin==0
-                matlabKernelEnabled = false;
+                matdramKernelEnabled = true; if isfolder(self.path.lib); matdramKernelEnabled = false; end
             elseif nargin==1
                 if isa(varargin{1},"char") || isa(varargin{1},"string")
                     if strcmpi(string(varargin{1}),matlabKernelName)
-                        matlabKernelEnabled = true;
+                        matdramKernelEnabled = true;
                     elseif strcmpi(string(varargin{1}),matlabInterfName)
-                        matlabKernelEnabled = false;
+                        matdramKernelEnabled = false;
                     else
                         errorOccurred = true;
                     end
@@ -307,11 +307,17 @@ classdef paramonte %< dynamicprops
                 self.Err.abort()
             end
 
-            if matlabKernelEnabled
+            % set ParaDRAM sampler
+
+            if matdramKernelEnabled
                 self.ParaDRAM = ParaDRAM_class();
             else
                 self.ParaDRAM = ParaDRAM(self.platform,self.website);
             end
+
+            if matdramKernelEnabled; return; end
+
+            % verify prereqs
 
             self.verify("reset",false)
 
