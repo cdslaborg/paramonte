@@ -78,6 +78,7 @@ set PARALLELISM_LIST=
 set FOR_COARRAY_NUM_IMAGES=
 set ParaMonte_INSTALL_CLEANUP_ENABLED=true
 set DRY_RUN=false
+set MatDRAM_ENABLED=false
 
 echo.
 type .\auxil\.ParaMonteBanner
@@ -203,6 +204,13 @@ if not "%1"=="" (
         shift
     )
 
+    REM --matdram
+
+    if "!FLAG!"=="--matdram" (
+        set FLAG_SUPPORTED=true
+        set MatDRAM_ENABLED=true
+    )
+
     REM --nproc
 
     if "!FLAG!"=="--nproc" (
@@ -271,7 +279,31 @@ if "!FLAG_SUPPORTED!"=="true" (
     goto LABEL_ERR
 )
 
-REM echo warnings
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: build MatDRAM if explicitly requested. WARNING: If true, all other builds will be disabled.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if !MatDRAM_ENABLED!==true (
+    call buildMatDRAM.bat || (
+        echo.
+        echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: The MatDRAM library build failed for the following configuration.
+        echo.-- !INSTALL_SCRIPT_NAME! - If you cannot identify the cause of the failure, please report this error at:
+        echo.-- !INSTALL_SCRIPT_NAME! -
+        echo.-- !INSTALL_SCRIPT_NAME! -     https://github.com/cdslaborg/paramonte/issues
+        echo.-- !INSTALL_SCRIPT_NAME! -
+        echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting...
+        echo.
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
+    goto LABEL_EOF
+    echo. "HEEEEEEEEEEEEEEEEEEEEEEEEELLLL"
+)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: echo warnings
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if defined PARALLELISM_LIST (
     for %%P in ("!PARALLELISM_LIST:/=" "!") do (

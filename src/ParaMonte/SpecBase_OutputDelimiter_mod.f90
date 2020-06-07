@@ -88,6 +88,8 @@ contains
         &To output in Comma-Separated-Values (CSV) format, set outputDelimiter = ','. If the input value is not provided, &
         &the default delimiter '" // OutputDelimiterObj%def // "' will be used when input outputColumnWidth = 0, and a single &
         &space character, '" // OutputDelimiterObj%def // "' will be used when input outputColumnWidth > 0. &
+        &A value of '\t' is interpreted as the TAB character. To avoid this interpretation, use '\\\t' to &
+        &yield '\t' without being interpreted as the TAB character. &
         &The default value is '" // OutputDelimiterObj%def // "'."
     end function constructOutputDelimiter
 
@@ -111,6 +113,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setOutputDelimiter
 #endif
+        use Constants_mod, only: TAB
         implicit none
         class(OutputDelimiter_type), intent(inout)  :: OutputDelimiterObj
         character(*), intent(in)                    :: outputDelimiter
@@ -126,6 +129,10 @@ contains
         elseif (OutputDelimiterObj%val=="") then
             if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
             OutputDelimiterObj%val = " "
+        elseif (OutputDelimiterObj%val=="\t") then
+            OutputDelimiterObj%val = TAB
+        elseif (OutputDelimiterObj%val=="\\t") then
+            OutputDelimiterObj%val = "\t"
         end if
     end subroutine setOutputDelimiter
 

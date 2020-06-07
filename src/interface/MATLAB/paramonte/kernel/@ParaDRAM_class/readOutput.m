@@ -82,8 +82,6 @@ function varargout = readOutput(self,varargin) % callerName,file,delimiter
         file = string(file);
     end
 
-    file = string(getFullPath(convertStringsToChars(file),'lean'));
-
     if isempty(delimiter)
         if isempty(self.spec.outputDelimiter)
             delimiter = ',';

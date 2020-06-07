@@ -87,6 +87,7 @@ fresh_flag=""
 yes_to_all_flag=""
 gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
+MatDRAM_ENABLED="false"
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -127,6 +128,9 @@ while [ "$1" != "" ]; do
         -B | --bootstrap )      shift
                                 gcc_bootstrap_flag="--bootstrap"
                                 ;;
+        -a | --matdram )        shift
+                                MatDRAM_ENABLED="true"
+                                ;;
         -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES="$1"
                                 ;;
@@ -144,6 +148,15 @@ while [ "$1" != "" ]; do
     esac
     shift
 done
+
+####################################################################################################################################
+# determine whether to build MatDRAM or not. NOTE: If true, all other builds will be disabled.
+####################################################################################################################################
+
+export MatDRAM_ENABLED
+if [ "${MatDRAM_ENABLED}" = "true" ]; then
+    
+fi
 
 ####################################################################################################################################
 # auxil
@@ -638,30 +651,31 @@ for PMCS in $PMCS_LIST; do
         # :: if MATLAB, generate MatDRAM
         # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
-
-            echo >&2 "-- ParaMonte - Generating MATLAB MatDRAM library..."
-            echo >&2 ""
-
-            MatDRAM_ORIGIN_PATH=./bin/MATLAB
-            MatDRAM_DESTINATION_PATH=./bin/MatDRAM
-            if ! [ -d "${MatDRAM_DESTINATION_PATH}" ]; then
-                mkdir -p "${MatDRAM_DESTINATION_PATH}"
-            fi
-            echo >&2 "-- ParaMonte - copying the MatDRAM library files..."
-            echo >&2 "-- ParaMonte - from: ${MatDRAM_ORIGIN_PATH}"
-            echo >&2 "-- ParaMonte -   to: ${MatDRAM_DESTINATION_PATH}"
-            cp -frp "${MatDRAM_ORIGIN_PATH}" -T "${MatDRAM_DESTINATION_PATH}"
-
-            # delete the binary files
-
-            rm -rf "${MatDRAM_DESTINATION_PATH}/paramonte/lib"
-
-            # delete the mpi example file
-
-            rm -rf "${MatDRAM_DESTINATION_PATH}/main_mpi.m"
-
-        fi
+# for now, ignore the MatDRAM build on non-Windows OS, after all, the Windows build is currently enough for all platforms.
+#        if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+#
+#            echo >&2 "-- ParaMonte - Generating MATLAB MatDRAM library..."
+#            echo >&2 ""
+#
+#            MatDRAM_ORIGIN_PATH=./bin/MATLAB
+#            MatDRAM_DESTINATION_PATH=./bin/MatDRAM
+#            if ! [ -d "${MatDRAM_DESTINATION_PATH}" ]; then
+#                mkdir -p "${MatDRAM_DESTINATION_PATH}"
+#            fi
+#            echo >&2 "-- ParaMonte - copying the MatDRAM library files..."
+#            echo >&2 "-- ParaMonte - from: ${MatDRAM_ORIGIN_PATH}"
+#            echo >&2 "-- ParaMonte -   to: ${MatDRAM_DESTINATION_PATH}"
+#            cp -frp "${MatDRAM_ORIGIN_PATH}" -T "${MatDRAM_DESTINATION_PATH}"
+#
+#            # delete the binary files
+#
+#            rm -rf "${MatDRAM_DESTINATION_PATH}/paramonte/lib"
+#
+#            # delete the mpi example file
+#
+#            rm -rf "${MatDRAM_DESTINATION_PATH}/main_mpi.m"
+#
+#        fi
 
     done
 

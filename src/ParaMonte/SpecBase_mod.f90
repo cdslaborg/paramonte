@@ -481,12 +481,18 @@ contains
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%OutputColumnWidth%desc )
 
 
+            !block
+            !use Constants_mod, only: TAB
+            !character(:), allocatable :: delimiter
+            !delimiter = SpecBase%OutputDelimiter%val
+            !if (SpecBase%OutputDelimiter%val==TAB) delimiter = "\t"
+            !if (SpecBase%OutputDelimiter%val=="\t") delimiter = "\\t"
             write(outputUnit,formatStr)
             write(outputUnit,formatStr) "outputDelimiter"
             write(outputUnit,formatStr)
             write(outputUnit,formatVal) SpecBase%OutputDelimiter%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%OutputDelimiter%desc )
-
+            !end block
 
             write(outputUnit,formatStr)
             write(outputUnit,formatStr) "outputRealPrecision"

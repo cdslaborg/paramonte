@@ -32,7 +32,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-classdef ParaMonte_class < handle
+classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for adding postprocessing properties 
 
     properties (Constant, Access = protected, Hidden)
         CLASS_NAME = "@ParaMonte_class"
@@ -58,6 +58,8 @@ classdef ParaMonte_class < handle
         SampleFile              = []
         RestartFile             = []
         Decor                   = []
+        website                 = []
+        platform                = []
     end
 
 %***********************************************************************************************************************************
@@ -68,7 +70,7 @@ classdef ParaMonte_class < handle
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-        function self = ParaMonte_class()
+        function self = ParaMonte_class(platform,website)
 
             self.nd                         = [];
             self.name                       = [];
@@ -96,6 +98,8 @@ classdef ParaMonte_class < handle
             self.SampleFile                 = struct('unit', [], 'exists', false, 'suffix', "sample");
             self.RestartFile                = struct('unit', [], 'exists', false, 'suffix', "restart", 'counter', 0);
             self.Decor                      = Decoration_class([],[],[],[]);
+            self.website = website;
+            self.platform = platform;
 
         end
 
