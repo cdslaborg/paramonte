@@ -605,8 +605,6 @@ classdef LineScatterPlot < BasePlot
             % add line/scatter plot
             %%%%%%%%%%%%%%%%%%%%%%%
 
-            box on; grid on;
-
             lglabels = [];
 
             if (self.isScatterPlot && self.scatter_kws.enabled) || (self.isLinePlot && (self.surface_kws.enabled || self.plot_kws.enabled))
@@ -795,7 +793,7 @@ classdef LineScatterPlot < BasePlot
                 self.doBasePlotStuff(lgEnabled,lglabels)
             end
 
-            grid on; hold off;
+            box on; grid on; hold off;
 
         end % function plot
 

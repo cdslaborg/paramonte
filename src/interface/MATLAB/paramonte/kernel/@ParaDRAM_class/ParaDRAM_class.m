@@ -6,8 +6,8 @@
 %
 %   This file is part of the ParaMonte library.
 %
-%   ParaMonte is free software: you can redistribute it and/or modify it 
-%   under the terms of the GNU Lesser General Public License as published 
+%   ParaMonte is free software: you can redistribute it and/or modify it
+%   under the terms of the GNU Lesser General Public License as published
 %   by the Free Software Foundation, version 3 of the License.
 %
 %   ParaMonte is distributed in the hope that it will be useful,
@@ -16,14 +16,14 @@
 %   GNU Lesser General Public License for more details.
 %
 %   You should have received a copy of the GNU Lesser General Public License
-%   along with the ParaMonte library. If not, see, 
+%   along with the ParaMonte library. If not, see,
 %
 %       https://github.com/cdslaborg/paramonte/blob/master/LICENSE
 %
 %   ACKNOWLEDGMENT
 %
-%   As per the ParaMonte library license agreement terms, 
-%   if you use any parts of this library for any purposes, 
+%   As per the ParaMonte library license agreement terms,
+%   if you use any parts of this library for any purposes,
 %   we ask you to acknowledge the use of the ParaMonte library
 %   in your work (education/research/industry/development/...)
 %   by citing the ParaMonte library as described on this page:
@@ -151,8 +151,11 @@ classdef ParaDRAM_class < ParaMCMC_class
     end
 
     properties (Access = public, Hidden)
-        SpecDRAM            = []
-        Proposal            = []
+        methodName          = "MatDRAM";    % no parallelization implemented in MatDRAM yet
+        mpiEnabled          = false;        % no parallelization implemented in MatDRAM yet
+        objectName          = [];           % dynamic name of the user-defined objects
+        SpecDRAM            = [];
+        Proposal            = [];
     end
 
     properties (Access = public)
@@ -170,9 +173,11 @@ classdef ParaDRAM_class < ParaMCMC_class
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = ParaDRAM_class()
+        function self = ParaDRAM_class(platform,website)
 
             addpath(genpath(pwd));
+
+            self = self@ParaMCMC_class(platform,website);
 
             self.RefinedChain   = ParaDRAMRefinedChain_class();
 
@@ -224,6 +229,9 @@ classdef ParaDRAM_class < ParaMCMC_class
         %***************************************************************************************************************************
 
         runSampler(self, ndim, getLogFunc)
+        [markovChainList] = readMarkovChain(self,varargin)
+        [sampleList] = readSample(self,varargin)
+        [chainList] = readChain(self,varargin)
 
         %***************************************************************************************************************************
         %***************************************************************************************************************************
@@ -262,30 +270,16 @@ classdef ParaDRAM_class < ParaMCMC_class
     %*******************************************************************************************************************************
 
         runKernel(self, getLogFunc)
-
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-
         reportProgress(self)
-
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-
         writeOutput(self)
-        
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-        
         writeOutput2(self)
-        
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
-        
         writeRestartFile(self)
-        
+        outputList = readOutput(self,file,delimiter,fileType)
+        fileList = getFileList(self,file,fileType)
+
         %***************************************************************************************************************************
         %***************************************************************************************************************************
-        
+
         % These methods have been implemented to override the default 'handle' class methods, so that they won't pop-up after pressing 'Tab' button
 
         function addlistener(self)  end
@@ -294,14 +288,14 @@ classdef ParaDRAM_class < ParaMCMC_class
         function findprop   (self)  end
         function valid      (self)  end
         function listener   (self)  end
-        function notify     (self)  end        
+        function notify     (self)  end
         function eq         (self)  end
         function ge         (self)  end
         function gt         (self)  end
         function le         (self)  end
         function lt         (self)  end
         function ne         (self)  end
-        
+
         % cannot overrise the folowing method
         % function isvalid    (self)  end
 

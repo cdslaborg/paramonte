@@ -42,20 +42,20 @@
 ::
 ::  Prerequisites:
 ::
-::      See this page for illustrative instructions: 
+::      See this page for illustrative instructions:
 ::
 ::          https://www.cdslab.org/recipes/programming/intel-parallel-studio-installation-windows/intel-parallel-studio-installation-windows
 ::
-::      In sum, you need the following software/compilers: 
+::      In sum, you need the following software/compilers:
 ::
 ::          --  A recent Microsoft Visual Studio (>2017). The community edition of Visual Studio can be downloaded and installed free of charge:
 ::              --  https://visualstudio.microsoft.com/vs/community/
-::              --  Ensure C++ development tools are chosen to be installed at the at the time of installation as 
+::              --  Ensure C++ development tools are chosen to be installed at the at the time of installation as
 ::                  it is required for the intergation of Visual Studio with Intel Studio.
 ::
 ::          --  Install Intel Parallel Studio >2018 (after installing Microsoft Visual Studio >2017).
 ::              --  Intel Parallel Studio is free of charge for students, educators, and open-srouce developers.
-::              --  Once Intel Studio is installed, open Intel's special Windows-command-prompt which 
+::              --  Once Intel Studio is installed, open Intel's special Windows-command-prompt which
 ::                  automatically defines all of the prerequisite environmental variables.
 ::              --  Run this script on the command prompt: install.bat -language -build -memory
 
@@ -78,6 +78,7 @@ set PARALLELISM_LIST=
 set FOR_COARRAY_NUM_IMAGES=
 set ParaMonte_INSTALL_CLEANUP_ENABLED=true
 set DRY_RUN=false
+set MatDRAM_ENABLED=false
 
 echo.
 type .\auxil\.ParaMonteBanner
@@ -203,6 +204,13 @@ if not "%1"=="" (
         shift
     )
 
+    REM --matdram
+
+    if "!FLAG!"=="--matdram" (
+        set FLAG_SUPPORTED=true
+        set MatDRAM_ENABLED=true
+    )
+
     REM --nproc
 
     if "!FLAG!"=="--nproc" (
@@ -261,7 +269,7 @@ REM check flag/value support
 if "!FLAG_SUPPORTED!"=="true" (
     if "!VALUE_SUPPORTED!" NEQ "true" (
         echo.
-        echo.-- !INSTALL_SCRIPT_NAME! - FATAL: The requested input value "!VALUE!" specified 
+        echo.-- !INSTALL_SCRIPT_NAME! - FATAL: The requested input value "!VALUE!" specified
         echo.-- !INSTALL_SCRIPT_NAME! - FATAL: with the input flag "!FLAG!" is not supported.
         goto LABEL_ERR
     )
@@ -271,7 +279,31 @@ if "!FLAG_SUPPORTED!"=="true" (
     goto LABEL_ERR
 )
 
-REM echo warnings
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: build MatDRAM if explicitly requested. WARNING: If true, all other builds will be disabled.
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if !MatDRAM_ENABLED!==true (
+    call buildMatDRAM.bat || (
+        echo.
+        echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: The MatDRAM library build failed for the following configuration.
+        echo.-- !INSTALL_SCRIPT_NAME! - If you cannot identify the cause of the failure, please report this error at:
+        echo.-- !INSTALL_SCRIPT_NAME! -
+        echo.-- !INSTALL_SCRIPT_NAME! -     https://github.com/cdslaborg/paramonte/issues
+        echo.-- !INSTALL_SCRIPT_NAME! -
+        echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting...
+        echo.
+        cd %~dp0
+        set ERRORLEVEL=1
+        exit /B 1
+    )
+    goto LABEL_EOF
+    echo. "HEEEEEEEEEEEEEEEEEEEEEEEEELLLL"
+)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: echo warnings
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if defined PARALLELISM_LIST (
     for %%P in ("!PARALLELISM_LIST:/=" "!") do (
@@ -282,7 +314,7 @@ if defined PARALLELISM_LIST (
                 for %%G in ("!LANG_LIST:/=" "!") do (
                     if %%G NEQ "fortran" (
                         echo.
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray parallelism flag "--par %%~P" cannot be 
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray parallelism flag "--par %%~P" cannot be
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~G language "--lang %%~G".
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
@@ -292,7 +324,7 @@ if defined PARALLELISM_LIST (
             if defined LTYPE_LIST (
                 for %%L in ("!LTYPE_LIST:/=" "!") do (
                     echo.
-                    echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray parallelism flag "--par %%~P" cannot be 
+                    echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The Coarray parallelism flag "--par %%~P" cannot be
                     echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the dynamic library build flag "--lib %%~L".
                     echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                     REM goto LABEL_ERR
@@ -312,7 +344,7 @@ if defined LANG_LIST (
                 for %%L in ("!LTYPE_LIST:/=" "!") do (
                     if %%~L==static (
                         echo.
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The dynamic library option "--lib %%~L" cannot be 
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The dynamic library option "--lib %%~L" cannot be
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the %%~G language "--lang %%~G".
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
@@ -330,7 +362,7 @@ if defined LTYPE_LIST (
                 if %%~M==stack (
                     if %%~L==dynamic (
                         echo.
-                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The stack memory allocation option "--mem %%~M" cannot be 
+                        echo.-- !INSTALL_SCRIPT_NAME! - WARNING: The stack memory allocation option "--mem %%~M" cannot be
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: specified along with the dynamic library build "--lib %%~L".
                         echo.-- !INSTALL_SCRIPT_NAME! - WARNING: This configuration will be ignored at build time.
                         REM goto LABEL_ERR
@@ -503,17 +535,17 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                         call buildParaMonte.bat || (
                             echo.
                             echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: The ParaMonte library build failed for the following configuration:
-                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! -
                             echo.-- !INSTALL_SCRIPT_NAME! -               language: %%~G
                             echo.-- !INSTALL_SCRIPT_NAME! -             build type: %%~B
                             echo.-- !INSTALL_SCRIPT_NAME! -           library type: %%~L
                             echo.-- !INSTALL_SCRIPT_NAME! -      memory allocation: %%~M
                             echo.-- !INSTALL_SCRIPT_NAME! -            parallelism: %%~P
-                            echo.-- !INSTALL_SCRIPT_NAME! - 
-                            echo.-- !INSTALL_SCRIPT_NAME! - If you cannot identify the cause of the failure, please report this error at: 
-                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! -
+                            echo.-- !INSTALL_SCRIPT_NAME! - If you cannot identify the cause of the failure, please report this error at:
+                            echo.-- !INSTALL_SCRIPT_NAME! -
                             echo.-- !INSTALL_SCRIPT_NAME! -     https://github.com/cdslaborg/paramonte/issues
-                            echo.-- !INSTALL_SCRIPT_NAME! - 
+                            echo.-- !INSTALL_SCRIPT_NAME! -
                             echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting...
                             echo.
                             cd %~dp0
@@ -532,17 +564,17 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                     if !ERRORLEVEL! NEQ 0 (
                         echo.
                         echo.-- !INSTALL_SCRIPT_NAME! - Fatal Error: The ParaMonte library build failed for the following configuration:
-                        echo.-- !INSTALL_SCRIPT_NAME! - 
+                        echo.-- !INSTALL_SCRIPT_NAME! -
                         echo.-- !INSTALL_SCRIPT_NAME! -               language: %%~G
                         echo.-- !INSTALL_SCRIPT_NAME! -             build type: %%~B
                         echo.-- !INSTALL_SCRIPT_NAME! -           library type: %%~L
                         echo.-- !INSTALL_SCRIPT_NAME! -      memory allocation: %%~M
                         echo.-- !INSTALL_SCRIPT_NAME! -            parallelism: %%~P
-                        echo.-- !INSTALL_SCRIPT_NAME! - 
-                        echo.-- !INSTALL_SCRIPT_NAME! - If you cannot identify the cause of the failure, please report this error at: 
-                        echo.-- !INSTALL_SCRIPT_NAME! - 
+                        echo.-- !INSTALL_SCRIPT_NAME! -
+                        echo.-- !INSTALL_SCRIPT_NAME! - If you cannot identify the cause of the failure, please report this error at:
+                        echo.-- !INSTALL_SCRIPT_NAME! -
                         echo.-- !INSTALL_SCRIPT_NAME! -     https://github.com/cdslaborg/paramonte/issues
-                        echo.-- !INSTALL_SCRIPT_NAME! - 
+                        echo.-- !INSTALL_SCRIPT_NAME! -
                         echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting...
                         echo.
                         cd %~dp0
@@ -555,6 +587,37 @@ for %%G in ("!LANG_LIST:/=" "!") do (
             )
 
         )
+
+    )
+
+    REM ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    REM :: if MATLAB, generate MatDRAM
+    REM ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+    if %%~G==matlab (
+
+        echo.
+        echo.-- !INSTALL_SCRIPT_NAME! - Generating MATLAB MatDRAM library...
+        echo.
+
+        set MatDRAM_ORIGIN_PATH=.\bin\MATLAB
+        set MatDRAM_DESTINATION_PATH=.\bin\MatDRAM
+        echo.-- !INSTALL_SCRIPT_NAME! - copying the MatDRAM library files...
+        echo.-- !INSTALL_SCRIPT_NAME! - from: !MatDRAM_ORIGIN_PATH!         %= no need for final slash here =%
+        echo.-- !INSTALL_SCRIPT_NAME! -   to: !MatDRAM_DESTINATION_PATH!\   %= final slash tells this is folder =%
+        xcopy /s /Y "!MatDRAM_ORIGIN_PATH!" "!MatDRAM_DESTINATION_PATH!\" || goto LABEL_copyErrorOccured
+
+        REM add the MatDRAM indicator file
+
+        REM xcopy /s /Y "!MatDRAM_DESTINATION_PATH!\paramonte\kernel\.MatDRAM" "!MatDRAM_DESTINATION_PATH!\auxil\" || goto LABEL_copyErrorOccured
+
+        REM delete the binary files
+
+        rd /s /q "!MatDRAM_DESTINATION_PATH!\paramonte\lib" >nul 2>&1 || goto LABEL_delErrorOccured
+
+        REM delete the mpi example file
+
+        del /s /q "!MatDRAM_DESTINATION_PATH!\main_mpi.m" >nul 2>&1 || goto LABEL_delErrorOccured
 
     )
 
@@ -586,12 +649,30 @@ GOTO:EOF
 
 echo.
 echo.-- !INSTALL_SCRIPT_NAME! - To see the list of possible flags and associated values, try:
-echo.-- !INSTALL_SCRIPT_NAME! - 
+echo.-- !INSTALL_SCRIPT_NAME! -
 echo.-- !INSTALL_SCRIPT_NAME! -     install.bat --help
-echo.-- !INSTALL_SCRIPT_NAME! - 
-echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting the !INSTALL_SCRIPT_NAME! script. 
+echo.-- !INSTALL_SCRIPT_NAME! -
+echo.-- !INSTALL_SCRIPT_NAME! - gracefully exiting the !INSTALL_SCRIPT_NAME! script.
 echo.
 
+exit /B 1
+
+:LABEL_copyErrorOccured
+
+echo.
+echo. -- !INSTALL_SCRIPT_NAME! - Fatal Error: failed to copy contents. exiting...
+echo.
+cd %~dp0
+set ERRORLEVEL=1
+exit /B 1
+
+:LABEL_delErrorOccured
+
+echo.
+echo. -- !INSTALL_SCRIPT_NAME! - Fatal Error: failed to delete contents. exiting...
+echo.
+cd %~dp0
+set ERRORLEVEL=1
 exit /B 1
 
 :LABEL_EOF
@@ -599,11 +680,12 @@ exit /B 1
 :: undefine all configuration environmental flags
 
 if !ParaMonte_INSTALL_CLEANUP_ENABLED!==true (
-    echo.-- !INSTALL_SCRIPT_NAME! - cleaning up the environment... 
+    echo.
+    echo.-- !INSTALL_SCRIPT_NAME! - cleaning up the environment...
     call unconfigParaMonte.bat || (
-        echo. 
+        echo.
         echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library cleanup failed. exiting...
-        echo. 
+        echo.
         cd %~dp0
         set ERRORLEVEL=1
         exit /B 1
@@ -611,7 +693,7 @@ if !ParaMonte_INSTALL_CLEANUP_ENABLED!==true (
 )
 
 echo.
-echo.-- !INSTALL_SCRIPT_NAME! - mission accomplished. 
+echo.-- !INSTALL_SCRIPT_NAME! - mission accomplished.
 echo.
 
 exit /B 0
