@@ -87,6 +87,7 @@ fresh_flag=""
 yes_to_all_flag=""
 gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
+MatDRAM_ENABLED="false"
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -126,6 +127,9 @@ while [ "$1" != "" ]; do
                                 ;;
         -B | --bootstrap )      shift
                                 gcc_bootstrap_flag="--bootstrap"
+                                ;;
+        -a | --matdram )        shift
+                                MatDRAM_ENABLED="true"
                                 ;;
         -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES="$1"
@@ -634,38 +638,43 @@ for PMCS in $PMCS_LIST; do
 
         done
 
-        # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        # :: if MATLAB, generate MatDRAM
-        # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-        if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
-
-            echo >&2 "-- ParaMonte - Generating MATLAB MatDRAM library..."
-            echo >&2 ""
-
-            MatDRAM_ORIGIN_PATH=./bin/MATLAB
-            MatDRAM_DESTINATION_PATH=./bin/MatDRAM
-            if ! [ -d "${MatDRAM_DESTINATION_PATH}" ]; then
-                mkdir -p "${MatDRAM_DESTINATION_PATH}"
-            fi
-            echo >&2 "-- ParaMonte - copying the MatDRAM library files..."
-            echo >&2 "-- ParaMonte - from: ${MatDRAM_ORIGIN_PATH}"
-            echo >&2 "-- ParaMonte -   to: ${MatDRAM_DESTINATION_PATH}"
-            cp -R "${MatDRAM_ORIGIN_PATH}" "${MatDRAM_DESTINATION_PATH}"
-
-            # delete the binary files
-
-            rm -rf "${MatDRAM_DESTINATION_PATH}/paramonte/lib"
-
-            # delete the mpi example file
-
-            rm -rf "${MatDRAM_DESTINATION_PATH}/main_mpi.m"
-
-        fi
-
     done
 
 done
+
+####################################################################################################################################
+# if MATLAB enabled, generate MatDRAM
+####################################################################################################################################
+
+if [[ "${LANG_LIST}" == *"matlab"* || "${MatDRAM_ENABLED}"=="true" ]]; then
+
+    if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+
+        echo >&2 "-- ParaMonte - Generating MATLAB MatDRAM library..."
+        echo >&2 ""
+
+        MatDRAM_ORIGIN_PATH=./bin/MATLAB
+        MatDRAM_DESTINATION_PATH=./bin/MatDRAM
+        if ! [ -d "${MatDRAM_DESTINATION_PATH}" ]; then
+            mkdir -p "${MatDRAM_DESTINATION_PATH}"
+        fi
+        echo >&2 "-- ParaMonte - copying the MatDRAM library files..."
+        echo >&2 "-- ParaMonte - from: ${MatDRAM_ORIGIN_PATH}"
+        echo >&2 "-- ParaMonte -   to: ${MatDRAM_DESTINATION_PATH}"
+        cp -R "${MatDRAM_ORIGIN_PATH}" "${MatDRAM_DESTINATION_PATH}"
+
+        # delete the binary files
+
+        rm -rf "${MatDRAM_DESTINATION_PATH}/paramonte/lib"
+
+        # delete the mpi example file
+
+        rm -rf "${MatDRAM_DESTINATION_PATH}/main_mpi.m"
+
+    fi
+
+fi
+
 
 echo >&2 ""
 echo >&2 "-- ParaMonte - all build files are stored at ${ParaMonte_ROOT_DIR}/build/"
