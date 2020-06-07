@@ -63,6 +63,8 @@
 set ERRORLEVEL=0
 cd %~dp0
 
+setlocal EnableDelayedExpansion
+
 set "INSTALL_SCRIPT_NAME=ParaMonte install.bat"
 
 :: parse arguments

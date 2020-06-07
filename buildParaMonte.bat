@@ -49,6 +49,8 @@
 :: silence cmd output
 @echo off
 
+setlocal EnableDelayedExpansion
+
 :: define variables only locally
 ::setlocal
 
