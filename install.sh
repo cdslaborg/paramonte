@@ -150,13 +150,12 @@ while [ "$1" != "" ]; do
 done
 
 ####################################################################################################################################
-# determine whether to build MatDRAM or not. NOTE: If true, all other builds will be disabled.
+# determine whether to build MatDRAM or not. NOTE: If true, all other builds will be disabled. NOT IMPLEMENTED YET. NOT NEEDED.
 ####################################################################################################################################
 
-export MatDRAM_ENABLED
-if [ "${MatDRAM_ENABLED}" = "true" ]; then
-    
-fi
+#export MatDRAM_ENABLED
+#if [ "${MatDRAM_ENABLED}" = "true" ]; then
+#fi
 
 ####################################################################################################################################
 # auxil
