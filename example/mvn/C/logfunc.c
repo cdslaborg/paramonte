@@ -82,11 +82,13 @@ double getLogFunc   (
     // compute the log probability density function of the MVN
 
     double exponentTerm = 0.;
-	for(int i = 0; i < NDIM; i++){
+    int i;
+	for(i = 0; i < NDIM; i++){
 
         double MatMulResult[NDIM];
         MatMulResult[i] = 0.;
-        for(int j = 0; j < NDIM; j++){
+        int j;
+        for(j = 0; j < NDIM; j++){
             MatMulResult[i] += INVCOVMAT[i][j] * NormedPoint[j];
         }
 
