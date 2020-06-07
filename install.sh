@@ -662,7 +662,7 @@ for PMCS in $PMCS_LIST; do
 
             rm -rf "${MatDRAM_DESTINATION_PATH}/main_mpi.m"
 
-        )
+        fi
 
     done
 
