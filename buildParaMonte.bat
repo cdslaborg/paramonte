@@ -49,7 +49,7 @@
 :: silence cmd output
 @echo off
 
-setlocal EnableDelayedExpansion
+:: setlocal EnableDelayedExpansion
 
 :: define variables only locally
 ::setlocal
