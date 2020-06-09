@@ -99,7 +99,7 @@ Example usage instructions
         ```bash  
         sudo matlab
         ```  
-        If `matlab` is not recognized on your command line as an application, you can find the direct path to the MATLAB binary file (`matlab`) by following the instructions given on the [MATLAB website](https://www.mathworks.com/help/matlab/ref/matlabroot.html).  Once the MATLAB interactive environment opens, navigate to the root folder of the ParaMonte library (where the LICENSE file exists) and call the ParaMonte library for the first time via the following commands,  
+        If `matlab` is not recognized on your command line as an application, you can find the direct path to the MATLAB binary file (`matlab`) by following the instructions given on the [MATLAB website](https://www.mathworks.com/help/matlab/ref/matlabroot.html).  Once the MATLAB interactive environment opens, navigate to the root folder of the ParaMonte library (where the LICENSE file exists) and call the ParaMonte library for the first time via the following commands (simply type the commands on the MATLAB command prompt),  
         ```matlab  
         addpath(genpath("./")); % add the ParaMonte library directories to MATLAB's list of search paths.
         pm = paramonte(); % instantiate an object of class paramonte.
