@@ -95,7 +95,7 @@ classdef Err_class < handle
                 Decoration.write(self.outputUnit, 0, 0, 1, self.fullprefix + "cdslab.org/ParaMonte/");
                 Decoration.write(self.outputUnit, 1, 2, 1, self.fullprefix + "Gracefully Exiting on image " + strtrim(imageChar) + ".");
             end
-            error(newline+"ParaMonte simulation failed."+newline);
+            error(newline+"Fatal error occurred."+newline);
         end
 
         %***************************************************************************************************************************
