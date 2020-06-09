@@ -22,7 +22,7 @@ ParaMonte is a serial/parallel library of Monte Carlo routines for sampling math
 
 For more information on the installation, usage, and examples, visit: https://www.cdslab.org/paramonte  
 
-For a quick start with some Jupyter Notebook examples, visit [this page](https://github.com/cdslaborg/paramonte/tree/master/example/jupyter/Python).  
+> For a quick start with some Jupyter Notebook examples, visit [this page](https://github.com/cdslaborg/paramontex/tree/master/Python/Jupyter).  
 
 ParaMonte design goals  
 ======================  
@@ -98,7 +98,7 @@ Example usage instructions
 
 +   **Install a Python 3 distribution**, preferably, the Anaconda distribution of Python. The Anaconda distribution of Python automatically ships with all of the ParaMonte Python package dependencies when installed on your system.  
 
-+   **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is available for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
++   **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation when you import the package into your Python session for the first time). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is available for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
 
 +   **Running the ParaMonte simulations**  
     +   Open an Anaconda command-line interface or `jupyter` notebook.  
