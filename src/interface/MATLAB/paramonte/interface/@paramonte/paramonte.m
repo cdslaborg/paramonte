@@ -1217,7 +1217,7 @@ classdef paramonte %< dynamicprops
                 for dependency = self.prereqs.list
                     %if ~contains(dependency,"!") % avoid comments
                         fullFilePath = fullfile( self.path.lib, dependency );
-                        %fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" +"1.0.0" + "/" + dependency);
+                        fullFilePath = websave(fullFilePath, "https://github.com/cdslaborg/paramonte/releases/download/" + self.version.kernel.dump() + "/" + dependency);
                         if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
                             self.prereqs.mpi.intel.fullFileName = string( dependency );
                             self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
