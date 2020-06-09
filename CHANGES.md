@@ -7,19 +7,19 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ### **Version 1.1.0** -- May 27, 2020  
 
-**Bug fixes**  
-
-+   The build Batch-script for examples on Windows now properly builds and runs coarray applications in parallel.
-+   The fully-deterministic restart functionality is now functional also when chainFileFormat="verbose" in ParaDRAM simulations.
-
-**Enhancements**  
-
-+   The simulation summary report in output report file has been improved.
-+   The error handling in the build Batch-scripts on Windows is now greatly improved.
-
 **New features**  
 
 +   ParaMonte Interface to MATLAB in addition to the currently-available C/C++/Fortran/Python Programming languages.  
+
+**Enhancements**  
+
++   The simulation summary report in the output report file has been improved.
++   The error handling in the build Batch-scripts on Windows is now greatly improved.
+
+**Bug fixes**  
+
++   The build Batch-script for the ParaMonte examples on Windows now properly builds and runs coarray applications in parallel.
++   The fully-deterministic restart functionality is now functional also when chainFileFormat="verbose" in ParaDRAM simulations.
 
 **Compiler support**  
 
