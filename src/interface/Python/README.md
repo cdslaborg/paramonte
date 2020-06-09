@@ -107,15 +107,16 @@ Example usage instructions
     +   Open an Anaconda command-line interface or `jupyter` notebook.  
     +   Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this [logfunc.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/Python/logfunc.py) file.  
     +   For **serial** simulations, download this example generic serial [main.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply type the name of the Python main script, `python main.py` on the Bash terminal or the Anaconda command line.  
-    +   For **parallel** simulations, download this example generic serial [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
+    +   For **parallel** simulations, download this example generic parallel [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
         +   on Windows (within the Anaconda command line or a terminal that recognizes both `mpiexec` and `python` software),  
             ```  
             mpiexec -localonly -n 3 python main_mpi.py
             ```  
+            where the `-localonly` flag is needed only if you are using the Intel MPI runtime libraries (which is the default MPI library used to build the ParaMonte libraries on Windows).  
         +   on macOS or Linux (within a Bash terminal),  
             ```  
             mpiexec -n 3 python main_mpi.py
             ```  
         Here, the parallel simulations are performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise, it will only degrade the performance of your parallel simulations. For example, if you are running the parallel simulation on a personal quad-cores laptop, set the number of processes to either 3 or 4 at most.  
     +   Enjoy the unification of simplicity, efficiency, and parallelism in Monte Carlo simulations!  
-    +   The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte  
+    +   The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the many advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte  

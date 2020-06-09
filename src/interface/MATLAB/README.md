@@ -108,18 +108,19 @@ Example usage instructions
         If needed, follow any extra instructions provided by the library on your MATLAB command prompt. Otherwise, you are all set! Follow the instructions below on how to run your ParaMonte-enabled simulations.  
 
 +   **Running the ParaMonte simulations**  
-    +   Open you.  
-    +   Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this [logfunc.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/Python/logfunc.py) file.  
-    +   For **serial** simulations, download this example generic serial [main.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply type the name of the Python main script, `python main.py` on the Bash terminal or the Anaconda command line.  
-    +   For **parallel** simulations, download this example generic serial [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
-        +   on Windows (within the Anaconda command line or a terminal that recognizes both `mpiexec` and `python` software),  
+    +   Open the MATLAB software.  
+    +   Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this [logfunc.m](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/MATLAB/logfunc.m) file.  
+    +   For **serial** simulations, download this example generic serial [main.m](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main.m) MATLAB main file and save it in the same folder containing the `logfunc.m` file that you downloaded in the above. Then, simply type the name of this MATLAB main script, `main` on the MATLAB command prompt.  
+    +   For **parallel** simulations, download this example generic parallel [main_mpi.m](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.m) MATLAB main file and save it in the same folder containing the `logfunc.m` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the MATLAB main script on a MATLAB-aware MPI-aware Windows or Bash command prompt, similar to the following,  
+        +   on Windows (preferably, on an Intel Parallel Studio command prompt or, the Microsoft Visual Studio's command prompt or, some other command prompt that recognizes both `mpiexec` and `matlab` software),  
             ```  
-            mpiexec -localonly -n 3 python main_mpi.py
+            mpiexec -localonly -n 3 matlab main_mpi.m
             ```  
+            where the `-localonly` flag is needed only if you are using the Intel MPI runtime libraries (which is the default MPI library used to build the ParaMonte libraries on Windows).  
         +   on macOS or Linux (within a Bash terminal),  
             ```  
-            mpiexec -n 3 python main_mpi.py
+            mpiexec -n 3 matlab main_mpi.m
             ```  
         Here, the parallel simulations are performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise, it will only degrade the performance of your parallel simulations. For example, if you are running the parallel simulation on a personal quad-cores laptop, set the number of processes to either 3 or 4 at most.  
     +   Enjoy the unification of simplicity, efficiency, and parallelism in Monte Carlo simulations!  
-    +   The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte  
+    +   The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the many advanced features of the ParaMonte samplers, visit: https://www.cdslab.org/paramonte  
