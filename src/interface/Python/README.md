@@ -22,7 +22,7 @@ ParaMonte is a serial/parallel library of Monte Carlo routines for sampling math
 
 For more information on the installation, usage, and examples, visit: https://www.cdslab.org/paramonte  
 
-> For a quick start with some Jupyter Notebook examples, visit [this page](https://github.com/cdslaborg/paramontex/tree/master/Python/Jupyter).  
+> **For a quick start with some Jupyter Notebook examples, visit [this page](https://github.com/cdslaborg/paramontex/tree/master/Python/Jupyter)**.  
 
 ParaMonte design goals  
 ======================  
