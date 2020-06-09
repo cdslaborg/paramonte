@@ -25,7 +25,7 @@ For more information on the installation, usage, and examples, visit: https://ww
 Quick start  
 ===========
 
-For a quick start with some Jupyter Notebook examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/python/jupyter/). The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/master/Python/Jupyter), a repository dedicated to the ParaMonte library examples.  
+For a quick start with some Jupyter Notebook examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/python/jupyter/). The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/master/Python/Jupyter), a repository dedicated to the ParaMonte library examples.  
 
 ParaMonte design goals  
 ======================  
