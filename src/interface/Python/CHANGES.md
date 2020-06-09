@@ -5,6 +5,10 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
+### Version  1.1.0 -- June 7, 2020  
+
++   Minor bug fix: The `_ScatterLinePlot` dangling class is removed from the package.  
+
 ### Version  1.1.0 -- June 1, 2020  
 
 +   Major enhancements to the ParaMonte kernel library.  

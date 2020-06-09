@@ -308,23 +308,23 @@ class _ParaDRAMChain:
 
         # add ScatterLinePlot
 
-        self.plot._scatterline = _pm.vis.ScatterLinePlot( dataFrame = self.df
-                                                        , ycolumns = self.df.columns[self._offset:]
-                                                        , lccolumns = "SampleLogFunc"
-                                                        , lc_kws =  {
-                                                                    #"linewidth":0.75,
-                                                                    #"cmap":"viridis",
-                                                                    "cmap":"autumn",
-                                                                    #"alpha":0.5,
-                                                                    }
-                                                        #, scatter_kws = {}
-                                                        , colorbar_kws =    {
-                                                                            "extend":"neither",
-                                                                            "orientation":"vertical",
-                                                                            #"spacing":"uniform",
-                                                                            }
-                                                        #, legend_kws = None
-                                                        )
+#       self.plot._scatterline = _pm.vis.ScatterLinePlot( dataFrame = self.df
+#                                                       , ycolumns = self.df.columns[self._offset:]
+#                                                       , lccolumns = "SampleLogFunc"
+#                                                       , lc_kws =  {
+#                                                                   #"linewidth":0.75,
+#                                                                   #"cmap":"viridis",
+#                                                                   "cmap":"autumn",
+#                                                                   #"alpha":0.5,
+#                                                                   }
+#                                                       #, scatter_kws = {}
+#                                                       , colorbar_kws =    {
+#                                                                           "extend":"neither",
+#                                                                           "orientation":"vertical",
+#                                                                           #"spacing":"uniform",
+#                                                                           }
+#                                                       #, legend_kws = None
+#                                                       )
 
         _timer.toc()
 

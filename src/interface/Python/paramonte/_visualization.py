@@ -42,5 +42,5 @@ from _LinePlot import LinePlot
 from _ScatterPlot import ScatterPlot
 from _HeatMapPlot import HeatMapPlot
 from _DensityMapPlot import DensityMapPlot
-from _ScatterLinePlot import ScatterLinePlot
+#from _ScatterLinePlot import ScatterLinePlot
 
