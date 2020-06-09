@@ -92,10 +92,20 @@ Example usage instructions
 +   **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation when you call the library for the first time). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is available for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
 
 +   **Calling the ParaMonte library for the first time**  
-    +   **Windows**
+    +   **Windows**  
         Nothing special needs to be done. You are all set! Follow the instructions below on how to run your ParaMonte-enabled simulations.  
-    +   **Linux/macOS**
-        Nothing special needs to be done. You are all set! Follow the instructions below on how to run ParaMonte-enabled simulations.  
+    +   **Linux/macOS**  
+        Before running any ParaMonte-enabled simulations, we **highly recommend** you run MATLAB as an administrator on your system if you can (for example, if you own the system). This can be done from a Bash terminal via,  
+        ```bash  
+        sudo matlab
+        ```  
+        If `matlab` is not recognized on your command line as an application, you can find the direct path to the MATLAB binary file (`matlab`) by following the instructions given on the [MATLAB website](https://www.mathworks.com/help/matlab/ref/matlabroot.html).  Once the MATLAB interactive environment opens, navigate to the root folder of the ParaMonte library (where the LICENSE file exists) and call the ParaMonte library for the first time via the following commands,  
+        ```matlab  
+        addpath(genpath("./")); % add the ParaMonte library directories to MATLAB's list of search paths.
+        pm = paramonte(); % instantiate an object of class paramonte.
+        pm.verify(); % verify the integrity of the ParaMonte library on your system.
+        ```  
+        If needed, follow any extra instructions provided by the library on your MATLAB command prompt. Otherwise, you are all set! Follow the instructions below on how to run your ParaMonte-enabled simulations.  
 
 +   **Running the ParaMonte simulations**  
     +   Open you.  
