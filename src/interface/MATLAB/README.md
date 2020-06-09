@@ -19,7 +19,7 @@ ParaMonte is a serial/parallel library of Monte Carlo routines for sampling math
 
 For more information on the installation, usage, and examples, visit: https://www.cdslab.org/paramonte  
 
-**For a quick start with some MATLAB Live Script examples, visit [this page](https://github.com/cdslaborg/paramontex/tree/master/MATLAB/mlx)**.  
+**For a quick start with some MATLAB Live Script examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/matlab/mlx/). The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/master/MATLAB/mlx), a repository dedicated to the ParaMonte library examples.  
 
 ParaMonte design goals  
 ======================  
