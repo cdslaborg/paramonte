@@ -792,7 +792,7 @@ def installMPI():
                         setupFile.write("source " + mpivarsFilePath)
 
                     _pm.note( msg = "To ensure all MPI routine environmental variables \n"
-                                  + "are properly load, source the following Bash script \n"
+                                  + "are properly loaded, source the following Bash script \n"
                                   + "in your Bash environment before calling mpiexec, like:\n\n"
                                   + "    source " + mpivarsFilePath + "\n\n"
                                   + "Alternatively, ParaMonte can also automatically add \n"

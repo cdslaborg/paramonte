@@ -459,6 +459,27 @@ classdef paramonte %< dynamicprops
 
                     self.installParaMonte();
 
+                    % get the dependency list
+
+                    self.prereqs.list = self.getDependencyList();
+                    if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
+                    if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
+                    for dependency = self.prereqs.list
+                        %if ~contains(dependency,"!") % avoid comments
+                            fullFilePath = fullfile( self.path.lib, dependency );
+                            if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
+                                self.prereqs.mpi.intel.fullFileName = string( dependency );
+                                self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
+                                self.prereqs.mpi.intel.fileName = strsplit(self.prereqs.mpi.intel.fullFileName,intelMpiFileSuffix); self.prereqs.mpi.intel.fileName = self.prereqs.mpi.intel.fileName(1);
+                                self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.fileName,intelMpiFilePrefix); self.prereqs.mpi.intel.version = self.prereqs.mpi.intel.version(2);
+                                %self.prereqs.mpi.intel.version = string( dependency{1}(1:end-4) );
+                                %mpiFileName = self.prereqs.mpi.intel.version;
+                                %self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
+                                %self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
+                            end
+                        %end
+                    end
+
                     % search for the MPI library
 
                     mpiBinPath = self.findMPI();
@@ -520,10 +541,12 @@ classdef paramonte %< dynamicprops
                 self.Err.prefix = self.names.paramonte;
                 self.Err.marginTop = 1;
                 self.Err.marginBot = 1;
-                self.Err.msg    = "To check for the ParaMonte or the MPI library installations status or to display the above " ...
-                                + "messages in the future, use the following commands on the MATLAB command-line: " + newline + newline ...
+                self.Err.msg    = "To check for the ParaMonte or the MPI library installations status or, " + newline ...
+                                + "to display the above messages in the future, use the following " + newline ...
+                                + "commands on the MATLAB command-line: " + newline ...
+                                + newline ...
                                 + "    pm = paramonte();" + newline ...
-                                + "    pm.verify()" ...
+                                + "    pm.verify();" ...
                                 ;
                 self.Err.note();
 
@@ -1141,8 +1164,8 @@ classdef paramonte %< dynamicprops
                                 fprintf(fid,"source " + string(strrep(mpivarsCommand, '\', '\\')));
                                 fclose(fid);
                             catch
-                                self.Err.msg    = "Failed to create the MPI setup file. " ...
-                                                + "It looks like the ParaMonte library directory is read-only. " ...
+                                self.Err.msg    = "Failed to create the MPI setup file. " + newline ...
+                                                + "It looks like the ParaMonte library directory is read-only. " + newline ...
                                                 + "This can be potentially problematic. Skipping for now...";
                                 self.Err.warn();
                             end
@@ -1150,6 +1173,25 @@ classdef paramonte %< dynamicprops
                             mpiBinPath = thisPath;
                             return
                         end
+                    end
+                end
+
+                if isempty(mpiBinPath)
+                    defaultIntelLinuxMpiPath = self.getDefaultIntelLinuxMpiPath();
+                    if defaultIntelLinuxMpiPath.mpiRootDirNotFound
+                        return
+                    else
+                        self.Err.msg    = "The PATH enviromental variable of your Bash terminal does not point to " + newline ...
+                                        + "any current installation of the Intel MPI runtime libraries on your system, " + newline ...
+                                        + "however, ParaMonte was able to detect a hidden installation of Intel MPI runtime " + newline ...
+                                        + "libraries on your system at, " + newline ...
+                                        + newline ...
+                                        + "    " + string(defaultIntelLinuxMpiPath.mpiRootDir(end)) + newline ...
+                                        + newline ...
+                                        + "Follow the instructions below to ensure that your system's " + newline ... '
+                                        + "MPI runtime libraries will be properly detected in the future.";
+                        self.Err.note();
+                        mpiBinPath = self.setupIntelLinuxMpiPath(defaultIntelLinuxMpiPath);
                     end
                 end
 
@@ -1238,7 +1280,7 @@ classdef paramonte %< dynamicprops
                                 + "Please make sure your firewall allows access to the Internet.";
                 self.Err.note();
 
-                self.prereqs.list = self.getDependencyList();
+                %self.prereqs.list = self.getDependencyList();
                 if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
                 if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
                 for dependency = self.prereqs.list
@@ -1384,34 +1426,22 @@ classdef paramonte %< dynamicprops
 
                     setupFilePath = fullfile( self.path.lib, "setup.sh" );
 
-                    mpiRootDirNotFound = true;
-                    installationRootDirList = [ "/opt", self.path.home ];
-                    mpiRootDir = [];
-                    mpivarsFilePathDefault = [];
-                    while mpiRootDirNotFound
-                        for installationRootDir = installationRootDirList
-                            mpiTrunkDir = fullfile("intel", "compilers_and_libraries_" + self.prereqs.mpi.intel.version, "linux", "mpi", "intel64");
-                            mpiRootDir = [ mpiRootDir, string(fullfile(installationRootDir, mpiTrunkDir)) ];
-                            mpivarsFilePathDefault = [ mpivarsFilePathDefault , fullfile(mpiRootDir,"bin","mpivars.sh") ];
-                            if isfolder(mpiRootDir(end))
-                                mpiRootDirNotFound = false;
-                                break
-                            end
-                        end
-                        if mpiRootDirNotFound
+                    while true
+                        defaultIntelLinuxMpiPath = self.getDefaultIntelLinuxMpiPath();
+                        if defaultIntelLinuxMpiPath.mpiRootDirNotFound
                             self.Err.msg    = "Failed to detect the installation root path for Intel MPI runtime libraries " + newline ...
                                             + "for 64-bit architecture on your system. If you specified a different installation " + newline ...
                                             + "root path at the time installation, please copy and paste it below. " + newline ...
                                             + "Note that the installation root path is part of the path that replaces: " + newline + newline ...
                                             + "    " + "opt" + newline + newline ...
                                             + "in the following path: " + newline + newline ...
-                                            + "    " + string(strrep(fullfile("opt", mpiTrunkDir),'\','\\'));
+                                            + "    " + string(strrep(fullfile("opt", defaultIntelLinuxMpiPath.mpiTrunkDir),'\','\\'));
                             self.Err.warn();
-                            answer = input  ( newline + "    Please type the root path of MPI installation below and press ENTER." ...
+                            answer = input  ( newline + "    Please type the root path to the MPI installation below and press ENTER." ...
                                             + newline + "    If you don't know the root path, simply press ENTER to quit:" ...
                                             + newline , "s" );
                             if getVecLen(strtrim(answer))
-                                installationRootDirList = string(answer);
+                                defaultIntelLinuxMpiPath.installationRootDirList = string(answer);
                                 continue;
                             else
                                 self.Err.msg = "Skipping the MPI runtime library environmental path setup...";
@@ -1421,96 +1451,33 @@ classdef paramonte %< dynamicprops
                         end
                     end
 
-                    if mpiRootDirNotFound
+                    if defaultIntelLinuxMpiPath.mpiRootDirNotFound
 
                         self.Err.msg    = "Failed to find the MPI runtime environment setup file on your system." + newline ...
                                         + "This is highly unusual. Normally, Intel MPI libraries must be installed" + newline ...
                                         + "in the following directory:" + newline + newline ...
-                                        + "    " + string(strrep(mpiRootDir(1),'\','\\')) + newline + newline ...
+                                        + "    " + string(strrep(defaultIntelLinuxMpiPath.mpiRootDir(1),'\','\\')) + newline + newline ...
                                         + "or," + newline + newline ...
-                                        + "    " + string(strrep(mpiRootDir(2),'\','\\')) + newline + newline ...
+                                        + "    " + string(defaultIntelLinuxMpiPath.strrep(mpiRootDir(2),'\','\\')) + newline + newline ...
                                         + "If you cannot manually find the Intel MPI installation directory," + newline ...
                                         + "it is likely that the installation might have somehow failed." + newline ...
                                         + "If you do find the installation directory, try to locate the" + newline ...
                                         + "'mpivars.sh' file which is normally installed in the following path:" + newline + newline ...
-                                        + "    " + string(strrep(mpivarsFilePathDefault(1),'\','\\')) + newline + newline ...
+                                        + "    " + string(strrep(defaultIntelLinuxMpiPath.mpivarsFilePathDefault(1),'\','\\')) + newline + newline ...
                                         + "or," + newline + newline ...
-                                        + "    " + string(strrep(mpivarsFilePathDefault(2),'\','\\')) + newline + newline ...
+                                        + "    " + string(strrep(defaultIntelLinuxMpiPath.mpivarsFilePathDefault(2),'\','\\')) + newline + newline ...
                                         + "Before attempting to run any parallel ParaMonte simulation, " + newline ...
                                         + "make sure you source this file, like the following:" + newline + newline ...
-                                        + "    source " + string(strrep(mpivarsFilePathDefault(1),'\','\\')) + newline + newline ...
+                                        + "    source " + string(strrep(defaultIntelLinuxMpiPath.mpivarsFilePathDefault(1),'\','\\')) + newline + newline ...
                                         + "or," + newline + newline ...
-                                        + "    source " + string(strrep(mpivarsFilePathDefault(2),'\','\\')) + newline + newline ...
+                                        + "    source " + string(strrep(defaultIntelLinuxMpiPath.mpivarsFilePathDefault(2),'\','\\')) + newline + newline ...
                                         + "where you will have to replace the path in the above with the " + newline ...
                                         + "correct path that you find on your system.";
                         self.Err.warn();
 
                     else
 
-                        mpiBinDir = fullfile(mpiRootDir(end), "bin");
-                        mpiLibDir = fullfile(mpiRootDir(end), "lib");
-                        mpivarsFilePath = fullfile(mpiBinDir, "mpivars.sh");
-                        if isfile(mpivarsFilePath)
-
-                            try
-                                fid = fopen(setupFilePath,"w");
-                                fprintf(fid,string(strrep(mpiBinDir,'\','\\'))+"\n");
-                                fprintf(fid,string(strrep(mpiLibDir,'\','\\'))+"\n");
-                                fprintf(fid,"source "+string(strrep(mpivarsFilePath,'\','\\')));
-                                fclose(fid);
-                            catch
-                                self.Err.msg    = "Failed to create the MPI setup file. " ...
-                                                + "It looks like the ParaMonte library directory is read-only. " ...
-                                                + "This can be potentially problematic. Skipping for now...";
-                                self.Err.warn();
-                            end
-
-                            self.Err.msg    = "To ensure all MPI routine environmental variables " + newline ...
-                                            + "are properly load, source the following Bash script " + newline ...
-                                            + "in your Bash environment before calling mpiexec, like:" + newline + newline ...
-                                            + "    source " + string(strrep(mpivarsFilePath,'\','\\')) + newline + newline ...
-                                            + "Alternatively, ParaMonte can also automatically add" + newline ...
-                                            + "the required script to your '.bashrc' file, so that" + newline ...
-                                            + "all required MPI environmental variables are loaded" + newline ...
-                                            + "automatically before any ParaMonte usage from any" + newline ...
-                                            + "Bash command line on your system.";
-                            self.Err.note();
-
-                            bashrcContents = getBashrcContents();
-                            mpivarsFileCommand = "source " + mpivarsFilePath;
-                            if ~contains(bashrcContents,mpivarsFileCommand)
-
-                                [~,~] = system( "chmod 777 ~/.bashrc", "-echo");
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte MPI runtime library initialization >>>' >> ~/.bashrc", "-echo" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '" + string(strrep(mpivarsFileCommand,'\','\\')) + "' >>  ~/.bashrc", "-echo" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte MPI runtime library initialization <<<' >> ~/.bashrc", "-echo" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
-                                [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc", "-echo" );
-
-                            end
-
-                            self.Err.msg    = "If you intend to run parallel simulations right now, you need to, " + newline + newline ...
-                                            + "    1.  quit your current MATLAB session, " + newline ...
-                                            + "    2.  close your current shell environment if you are using any" + newline ...
-                                            + "    3.  open a new fresh Bash terminal (this is essential), " + newline ...
-                                            + "    4.  navigate to the root directory of your parallel ParaMonte simulation code, " + newline ...
-                                            + "    5.  invoke the MPI launcher to run your code in parallel." + newline + newline ...
-                                            + "For detailed instructions on running parallel ParaMonte simulations in MATLAB, " ...
-                                            + "in particular, step 5 in the above, visit the ParaMonte documentation website, " + newline + newline ...
-                                            + "    " + self.website.home.url ...
-                                            ;
-                            self.Err.note();
-
-                        else
-
-                            self.Err.msg    = "ParaMonte was able to detect an MPI library path on your system, however," + newline ...
-                                            + "the MPI installation appears to be corrupted. The required mpivars.sh " + newline ...
-                                            + "does not exist:" + newline + newline ...
-                                            + string(strrep(mpivarsFilePath,'\','\\'));
-                            self.Err.abort();
-
-                        end
+                        mpiBinDir = self.setupIntelLinuxMpiPath(defaultIntelLinuxMpiPath); % returns mpiBinDir
 
                     end
 
@@ -1534,6 +1501,94 @@ classdef paramonte %< dynamicprops
 
             end
 
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function mpiBinDir = setupIntelLinuxMpiPath(self,defaultIntelLinuxMpiPath)
+            mpiBinDir = fullfile(defaultIntelLinuxMpiPath.mpiRootDir(end), "bin");
+            mpiLibDir = fullfile(defaultIntelLinuxMpiPath.mpiRootDir(end), "lib");
+            mpivarsFilePath = fullfile(mpiBinDir, "mpivars.sh");
+            if isfile(mpivarsFilePath)
+
+                try
+                    fid = fopen(setupFilePath,"w");
+                    fprintf(fid,string(strrep(mpiBinDir,'\','\\'))+"\n");
+                    fprintf(fid,string(strrep(mpiLibDir,'\','\\'))+"\n");
+                    fprintf(fid,"source "+string(strrep(mpivarsFilePath,'\','\\')));
+                    fclose(fid);
+                catch
+                    self.Err.msg    = "Failed to create the MPI setup file. " + newline ...
+                                    + "It looks like the ParaMonte library directory is read-only. " + newline ...
+                                    + "This can be potentially problematic. Skipping for now...";
+                    self.Err.warn();
+                end
+
+                self.Err.msg    = "To ensure all MPI routine environmental variables " + newline ...
+                                + "are properly load, source the following Bash script " + newline ...
+                                + "in your Bash environment before calling mpiexec, like:" + newline + newline ...
+                                + "    source " + string(strrep(mpivarsFilePath,'\','\\')) + newline + newline ...
+                                + "Alternatively, ParaMonte can also automatically add" + newline ...
+                                + "the required script to your '.bashrc' file, so that" + newline ...
+                                + "all required MPI environmental variables are loaded" + newline ...
+                                + "automatically before any ParaMonte usage from any" + newline ...
+                                + "Bash command line on your system.";
+                self.Err.note();
+
+                bashrcContents = getBashrcContents();
+                mpivarsFileCommand = "source " + mpivarsFilePath;
+                if ~contains(bashrcContents,mpivarsFileCommand)
+
+                    [~,~] = system( "chmod 777 ~/.bashrc", "-echo");
+                    [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                    [~,~] = system( "chmod 777 ~/.bashrc && echo '# >>> ParaMonte MPI runtime library initialization >>>' >> ~/.bashrc", "-echo" );
+                    [~,~] = system( "chmod 777 ~/.bashrc && echo '" + string(strrep(mpivarsFileCommand,'\','\\')) + "' >>  ~/.bashrc", "-echo" );
+                    [~,~] = system( "chmod 777 ~/.bashrc && echo '# <<< ParaMonte MPI runtime library initialization <<<' >> ~/.bashrc", "-echo" );
+                    [~,~] = system( "chmod 777 ~/.bashrc && echo '' >> ~/.bashrc", "-echo" );
+                    [~,~] = system( "chmod 777 ~/.bashrc && sh ~/.bashrc", "-echo" );
+
+                end
+
+                self.Err.msg    = "If you intend to run parallel simulations right now, you need to, " + newline + newline ...
+                                + "    1.  quit your current MATLAB session, " + newline ...
+                                + "    2.  close your current shell environment if you are using any" + newline ...
+                                + "    3.  open a new fresh Bash terminal (this is essential), " + newline ...
+                                + "    4.  navigate to the root directory of your parallel ParaMonte simulation code, " + newline ...
+                                + "    5.  invoke the MPI launcher to run your code in parallel." + newline + newline ...
+                                + "For detailed instructions on running parallel ParaMonte simulations in MATLAB, " + newline ...
+                                + "in particular, step 5 in the above, visit the ParaMonte documentation website, " + newline + newline ...
+                                + "    " + self.website.home.url ...
+                                ;
+                self.Err.note();
+
+            else
+
+                self.Err.msg    = "ParaMonte was able to detect an MPI library path on your system, however," + newline ...
+                                + "the MPI installation appears to be corrupted. The required mpivars.sh " + newline ...
+                                + "does not exist:" + newline + newline ...
+                                + string(strrep(mpivarsFilePath,'\','\\'));
+                self.Err.abort();
+
+            end
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function mpiPath = getDefaultIntelLinuxMpiPath(self)
+            mpiPath = struct();
+            mpiPath.mpiRootDir = [];
+            mpiPath.mpiRootDirNotFound = true;
+            mpiPath.mpivarsFilePathDefault = [];
+            mpiPath.installationRootDirList = [ "/opt", self.path.home ];
+            for installationRootDir = mpiPath.installationRootDirList
+                mpiPath.mpiTrunkDir = fullfile("intel", "compilers_and_libraries_" + self.prereqs.mpi.intel.version, "linux", "mpi", "intel64");
+                mpiPath.mpiRootDir = [ mpiPath.mpiRootDir, string(fullfile(installationRootDir, mpiPath.mpiTrunkDir)) ];
+                mpiPath.mpivarsFilePathDefault = [ mpiPath.mpivarsFilePathDefault , fullfile(mpiPath.mpiRootDir,"bin","mpivars.sh") ];
+                if isfolder(mpiPath.mpiRootDir(end))
+                    mpiPath.mpiRootDirNotFound = false;
+                    break
+                end
+            end
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -101,11 +101,11 @@ Example usage instructions
         ```  
         If `matlab` is not recognized on your command line as an application, you can find the direct path to the MATLAB binary file (`matlab`) by following the instructions given on the [MATLAB website](https://www.mathworks.com/help/matlab/ref/matlabroot.html).  Once the MATLAB interactive environment opens, navigate to the root folder of the ParaMonte library (where the LICENSE file exists) and call the ParaMonte library for the first time via the following commands (simply type the commands on the MATLAB command prompt),  
         ```matlab  
-        addpath(genpath("./")); % add the ParaMonte library directories to MATLAB's list of search paths.
+        addpath(genpath("./"),"-begin"); % add the ParaMonte library directories to MATLAB's list of search paths.
         pm = paramonte(); % instantiate an object of class paramonte.
         pm.verify(); % verify the integrity of the ParaMonte library on your system.
         ```  
-        If needed, follow any extra instructions provided by the library on your MATLAB command prompt. Otherwise, you are all set! Follow the instructions below on how to run your ParaMonte-enabled simulations.  
+        If needed, follow any extra instructions provided by the library on your MATLAB command prompt. Before beginning to use the ParaMonte library, we strongly recommend that you close your current MATLAB session and the Bash terminal from which you initiated the MATLAB session in **sudo** mode, **entirely**. Then follow the instructions below on how to run your ParaMonte-enabled simulations.  
 
 +   **Running the ParaMonte simulations**  
     +   Open the MATLAB software.  
@@ -114,12 +114,12 @@ Example usage instructions
     +   For **parallel** simulations, download this example generic parallel [main_mpi.m](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.m) MATLAB main file and save it in the same folder containing the `logfunc.m` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the MATLAB main script on a MATLAB-aware MPI-aware Windows or Bash command prompt, similar to the following,  
         +   on Windows (preferably, on an Intel Parallel Studio command prompt or, the Microsoft Visual Studio's command prompt or, some other command prompt that recognizes both `mpiexec` and `matlab` software),  
             ```  
-            mpiexec -localonly -n 3 matlab main_mpi.m
+            mpiexec -localonly -n 3 matlab -batch 'main_mpi'
             ```  
             where the `-localonly` flag is needed only if you are using the Intel MPI runtime libraries (which is the default MPI library used to build the ParaMonte libraries on Windows).  
         +   on macOS or Linux (within a Bash terminal),  
             ```  
-            mpiexec -n 3 matlab main_mpi.m
+            mpiexec -n 3 matlab -batch 'main_mpi'
             ```  
         Here, the parallel simulations are performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise, it will only degrade the performance of your parallel simulations. For example, if you are running the parallel simulation on a personal quad-cores laptop, set the number of processes to either 3 or 4 at most.  
     +   Enjoy the unification of simplicity, efficiency, and parallelism in Monte Carlo simulations!  
