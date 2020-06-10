@@ -1799,23 +1799,26 @@ classdef paramonte %< dynamicprops
             versionLen = self.version.interface.dump();
             versionLen = length(versionLen{1});
             offset = fix( (versionLen - 4) / 2 );
-            fprintf(1,"\n");
             text = fileread(bannerFilePath);
-            lineList = string(strsplit(text,newline));
-            if self.isGUI % (self.platform.isWin32 || self.platform.isMacOS) &&
-                for lineElement = lineList
-                    if contains(lineElement,"Version")
-                        line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
-                    else
-                        line = lineElement;
-                    end
-                    fprintf(1,line);
-                end
-            else
-                newText = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
-                fprintf(1,newText);
-            end
-            fprintf(1,"\n\n");
+            text = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+            text = strrep(text, string(char(13)),"");
+            disp(newline+text+newline);
+            %fprintf(1,"\n");
+            %lineList = string(strsplit(text,newline));
+            %if self.isGUI % (self.platform.isWin32 || self.platform.isMacOS) &&
+            %    for lineElement = lineList
+            %        if contains(lineElement,"Version")
+            %            line = strrep(lineElement, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+            %        else
+            %            line = lineElement;
+            %        end
+            %        fprintf(1,line);
+            %    end
+            %else
+            %    newText = strrep(text, string(repmat(' ',1,offset))+"Version 0.0.0", "Version "+self.version.interface.dump);
+            %    fprintf(1,newText);
+            %end
+            %fprintf(1,"\n\n");
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
