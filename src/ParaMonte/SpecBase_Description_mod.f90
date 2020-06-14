@@ -77,8 +77,8 @@ contains
         implicit none
         type(Description_type)  :: DescriptionObj
         character(*)            :: methodName
-        DescriptionObj%def = "Nothing provided by the user."
-        if ( allocated(DescriptionObj%null) ) deallocate(DescriptionObj%null)
+        DescriptionObj%def = "UNDEFINED"
+        if (allocated(DescriptionObj%null)) deallocate(DescriptionObj%null)
         allocate( character(len=MAX_DESCRIPTION_LEN) :: DescriptionObj%null )
         DescriptionObj%null = repeat(NULL_SK, MAX_DESCRIPTION_LEN)
         DescriptionObj%desc = &
