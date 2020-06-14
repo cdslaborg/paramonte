@@ -99,11 +99,11 @@ Example usage instructions
     +   **Windows**  
         Nothing special needs to be done. You are all set! Follow the instructions below on how to run your ParaMonte-enabled simulations.  
     +   **Linux/macOS**  
-        Before running any ParaMonte-enabled simulations, we **highly recommend** you run MATLAB as an administrator on your system if you can (for example, if you own the system). This can be done from a Bash terminal via,  
+        For the first time, before running any ParaMonte-enabled simulations, we **highly recommend** you to run MATLAB as an administrator on your system if you can (for example, if you own the system). This can be done from a Bash terminal via,  
         ```bash  
         sudo matlab
         ```  
-        If `matlab` is not recognized on your command line as an application, you can find the direct path to the MATLAB binary file (`matlab`) by following the instructions given on the [MATLAB website](https://www.mathworks.com/help/matlab/ref/matlabroot.html).  Once the MATLAB interactive environment opens, navigate to the root folder of the ParaMonte library (where the LICENSE file exists) and call the ParaMonte library for the first time via the following commands (simply type the commands on the MATLAB command prompt),  
+        If `matlab` is not recognized on your command line as an application, seek help from [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/troubleshooting/bash-matlab-command-not-found/). Once the MATLAB interactive environment opens, navigate to the root folder of the ParaMonte library (where the LICENSE file exists) and call the ParaMonte library for the first time via the following commands (simply type the commands on the MATLAB command prompt),  
         ```matlab  
         addpath(genpath("./"),"-begin"); % add the ParaMonte library directories to MATLAB's list of search paths.
         pm = paramonte(); % instantiate an object of class paramonte.
