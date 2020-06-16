@@ -417,7 +417,7 @@ def findMPI():
                     _pm.note( msg   = "Intel MPI library for 64-bit architecture detected at: \n\n"
                                     + "    " + path + "\n\n"
                                     + "To perform ParaMonte simulations in parallel on a single node, run the \n"
-                                    + "following two commands, in the form and order specified, on a Python-aware, \n"
+                                    + "following two commands, in the form and order specified, on a Python-aware \n"
                                     + "mpiexec-aware command-line interface such as Anaconda 3 command-prompt:\n\n"
                                     + "    " + mpivarsCommand + "\n\n"
                                     + "    mpiexec -localonly -n NUM_PROCESSES python main.py\n\n"
