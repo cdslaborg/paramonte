@@ -528,7 +528,7 @@ contains
                                 - 121.506350703598660_RK * logzplus1**2 & 
                                 + 224.621285123736100_RK * logzplus1**3 &
                                 - 210.878836655472500_RK * logzplus1**4 &
-                                + 76.3335749498628400_RK * logzplus1**5 &
+                                + 76.3335749498628400_RK * logzplus1**5
         elseif (logzplus1>0.8241754429663476_RK .and. logzplus1<=1.4243124283074096_RK) then
             logBinaryMergerRate = &
                                 - 10.0515447816113700_RK &
