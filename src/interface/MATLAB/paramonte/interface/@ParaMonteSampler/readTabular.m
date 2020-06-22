@@ -32,7 +32,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function varargout = readOutput(self, varargin) % callerName, file, delimiter
+function varargout = readTabular(self, varargin) % callerName, file, delimiter
 
     if isempty(self.objectName); self.objectName = inputname(1); end
 
@@ -90,7 +90,7 @@ function varargout = readOutput(self, varargin) % callerName, file, delimiter
             self.Err.marginBot = 0;
             self.Err.note();
         end
-        outputList{ifile} = TabledFileContents  ( filePathList(ifile) ...
+        outputList{ifile} = TabularFileContents ( filePathList(ifile) ...
                                                 , fileType ...
                                                 , delimiter ...
                                                 , self.methodName ...

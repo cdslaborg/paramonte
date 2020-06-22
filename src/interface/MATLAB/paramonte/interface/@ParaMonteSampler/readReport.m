@@ -135,7 +135,7 @@ function [varargout] = readReport(self,varargin)
     % read the report file
 
     file = [];
-    if nargin>1; file = convertStringsToChars(varargin{2}); end
+    if nargin>1; file = convertStringsToChars(varargin{1}); end
     if nargin>2
         self.Err.msg    = callerName + " takes only one input argument (file). Correct usage:" + newline + newline ...
                         + "    " + callerName + "(file)" + newline + newline ...

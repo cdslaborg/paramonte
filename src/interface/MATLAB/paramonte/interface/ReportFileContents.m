@@ -50,6 +50,7 @@ classdef ReportFileContents < OutputFileContents
     properties(Hidden)
         lineList = [];
         lineListLen = [];
+        indentLen = 8; % indent length of the records
         dsym = '****'; % decoration symbol
         lineCounter;
         prefix;
@@ -203,7 +204,18 @@ classdef ReportFileContents < OutputFileContents
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function reportParseFailure(self,topic)
-            self.Err.msg = "failed to parse the " + topic + ". This is highly unusual. Skipping... "; 
+            topic = string(strtrim(strrep(strrep(topic,newline,' '),char(13),' ')));
+            self.Err.msg    = "Failed to parse the record """ + topic + """. " ...
+                            + "The structure of the report file appears to have been compromised. Skipping... "; 
+            self.Err.warn();
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function reportMissingValue(self,topic)
+            topic = string(strtrim(strrep(strrep(topic,newline,' '),char(13),' ')));
+            self.Err.msg    = "Failed to parse the value corresponding to the record """ + topic + """. " ...
+                            + "The structure of the report file appears to have been compromised. Skipping... "; 
             self.Err.warn();
         end
 
@@ -245,61 +257,98 @@ classdef ReportFileContents < OutputFileContents
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function stats = parseStats(self)
+        function parseStats(self)
+
+            self.stats = struct();
             if strcmp(self.methodName,"ParaDRAM")
+
                 while true
+
                     self.lineCounter = self.lineCounter + 1; if self.lineCounter>self.lineListLen; break; end
-                    record = self.lineList{self.lineCounter};
-                    if length(record)>5 && strcmp(record(1:6),'stats.')
-                        self.lineCounter = self.lineCounter + 2; % assumes the value starts two rows after item
+                    item = self.lineList{self.lineCounter};
+
+                    if self.isstats(item)
+
+                        % parse the value
+
                         valueIsNumeric = true;
-                        valueStart = self.lineCounter;
+                        valueFound = false;
+                        descFound = false;
                         value = '';
-                        while true
-                            if length(self.lineList{self.lineCounter})>8
-                                dummy = strrep(self.lineList{self.lineCounter},newline,' ');
-                                dummy = strrep(self.lineList{self.lineCounter},char(13),' ');
-                                value = [value, dummy];
-                                if isempty(str2num(dummy))
-                                    valueIsNumeric = false;
-                                end
-                                self.lineCounter = self.lineCounter + 1; if self.lineCounter>self.lineListLen; break; end
-                            else
-                                valueEnd = self.lineCounter - 1;
-                                break;
-                            end
-                        end
                         desc = '';
                         while true
+
                             self.lineCounter = self.lineCounter + 1; if self.lineCounter>self.lineListLen; break; end
-                            if length(self.lineList{self.lineCounter})>8 && contains(self.lineList{self.lineCounter},self.prefix)
-                                dummy = strrep(self.lineList{self.lineCounter},newline,' ');
-                                dummy = strrep(self.lineList{self.lineCounter},char(13),' ');
-                                dummy = strrep(self.lineList{self.lineCounter},self.prefix,' ');
-                                desc = [desc, ' ', strtrim(dummy)];
-                            else
-                                break;
+                            record = strrep(strrep(self.lineList{self.lineCounter},newline,' '), char(13), ' '); % replace newline with space;
+
+                            % check the record is not another item or desc is not found before value.
+
+                            if self.isstats(record) %&& ~(descFound && valueFound)
+                                %self.reportParseFailure(item);
+                                self.lineCounter = self.lineCounter - 1;
+                                break
+                            end
+
+                            % parse the value/description
+
+                            if length(record)>self.indentLen
+                                recordIsDesc = self.isdesc(record);
+                                if recordIsDesc
+                                    if ~valueFound
+                                        self.reportMissingValue(item);
+                                        %self.lineCounter = self.lineCounter - 1;
+                                        break
+                                    end
+                                    descFound = true;
+                                    desc = [ desc, ' ', strtrim( strrep(self.lineList{self.lineCounter},self.prefix,' ') ) ]; % remove prefix, trim, append.
+                                elseif ~descFound
+                                    valueFound = true;
+                                    value = [value, record];
+                                    if isempty(str2num(record))
+                                        valueIsNumeric = false;
+                                    end
+                                end
+                            end
+
+                        end
+
+                        if valueFound && descFound
+                            if valueIsNumeric
+                                value = ['[',value,']'];
+                                %value = strsplit(join(strtrim(self.lineList(valueStart:valueEnd)),' '));
+                                %value = value(~cellfun('isempty',value));
+                                eval(['self.',strtrim(item),'.value=',value,';']);
+                                eval(['self.',strtrim(item),'.description="',strtrim(desc),'";']);
+                                %valueStart = self.lineCounter;
+                            %else
+                            %    value = [];
+                            %    for i = valueStart:valueEnd
+                            %        value = [value, self.lineList{i}, newline];
+                            %    end
+                            %    value = ['''', value, ''''];
+                            %    disp(['self.',strtrim(item),'.value=''',value,''';']);
+                            %    eval(['self.',strtrim(item),'.value=''',value,''';']);
                             end
                         end
-                        if valueIsNumeric
-                            value = ['[',value,']'];
-                            %value = strsplit(join(strtrim(self.lineList(valueStart:valueEnd)),' '));
-                            %value = value(~cellfun('isempty',value));
-                            eval(['self.',strtrim(record),'.value=',value,';']);
-                            eval(['self.',strtrim(record),'.description="',strtrim(desc),'";']);
-                            %valueStart = self.lineCounter;
-                        %else
-                        %    value = [];
-                        %    for i = valueStart:valueEnd
-                        %        value = [value, self.lineList{i}, newline];
-                        %    end
-                        %    value = ['''', value, ''''];
-                        %    disp(['self.',strtrim(record),'.value=''',value,''';']);
-                        %    eval(['self.',strtrim(record),'.value=''',value,''';']);
-                        end
-                    end
-                end
+
+                    end % new item found
+
+                end % while
+
             end
+
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function result = isstats(self,record)
+            result = length(record)>5 && strcmp(record(1:6),'stats.');
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function result = isdesc(self,record)
+            result = contains(record,self.prefix);
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

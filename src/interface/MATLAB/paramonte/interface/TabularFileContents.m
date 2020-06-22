@@ -32,13 +32,13 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   This is the TabledFileContents class for generating instances 
+%   This is the TabularFileContents class for generating instances 
 %   of ParaMonte output file contents. The ParaMonte read* methods
-%   return an object or a list of objects of class TabledFileContents.
+%   return an object or a list of objects of class TabularFileContents.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-classdef TabledFileContents < OutputFileContents
+classdef TabularFileContents < OutputFileContents
 
     properties(Access = public)
         delimiter = [];
@@ -58,7 +58,7 @@ classdef TabledFileContents < OutputFileContents
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = TabledFileContents   ( file ...
+        function self = TabularFileContents   ( file ...
                                             , fileType ...
                                             , delimiter ...
                                             , methodName ...
@@ -480,4 +480,4 @@ classdef TabledFileContents < OutputFileContents
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end % classdef TabledFileContents < handle
+end % classdef TabularFileContents < handle

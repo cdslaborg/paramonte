@@ -420,7 +420,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (PD%isFreshRun .and. PD%Image%isMaster) then
-            call PD%Decor%writeDecoratedText( text = "\nStarting " // PD%name // " sampling - " // getNiceDateTime() // "\n" &
+            call PD%Decor%writeDecoratedText( text = "\nStarting the " // PD%name // " sampling - " // getNiceDateTime() // "\n" &
                                             , marginTop = 1_IK  &
                                             , marginBot = 1_IK  &
                                             , newline = "\n"    &
@@ -431,7 +431,7 @@ contains
         if(PD%Err%occurred) return ! relevant only for MATLAB
 
         if (PD%isFreshRun .and. PD%Image%isMaster) then
-            call PD%Decor%writeDecoratedText( text = "\nExiting " // PD%name // " sampling - " // getNiceDateTime() // "\n" &
+            call PD%Decor%writeDecoratedText( text = "\nExiting the " // PD%name // " sampling - " // getNiceDateTime() // "\n" &
                                             , marginTop = 1_IK  &
                                             , marginBot = 1_IK  &
                                             , newline = "\n"    &
@@ -772,20 +772,19 @@ contains
                 write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.speedup"
                 write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) msg
-                msg = "This is the predicted absolute optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency."
 #if defined CAF_ENABLED || defined MPI_ENABLED
                 if (PD%Image%count==1_IK) then
-                    msg = msg//NLC//PD%name//   " is being used in parallel mode but with only one processor.\n&
-                                                &This is computationally inefficient.\n&
-                                                &Consider using the serial version of the code or provide more processes at runtime."
+                    msg = PD%name// " is being used in parallel mode but with only one processor. This is computationally inefficient. &
+                                    &Consider using the serial version of the code or provide more processes at runtime."
                     call PD%note( prefix     = PD%brand         &
                                 , outputUnit = output_unit      &
-                                , newline    = "\n"             &
+                                , newline    = NLC              &
                                 , marginTop  = 3_IK             &
                                 , marginBot  = 0_IK             &
                                 , msg        = msg              )
                 end if
 #endif
+                msg = "This is the predicted absolute optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency."//NLC//msg
                 call PD%note( prefix     = PD%brand         &
                             , outputUnit = PD%LogFile%unit  &
                             , newline    = NLC              &
