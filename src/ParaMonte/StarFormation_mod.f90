@@ -550,7 +550,7 @@ contains
                                 - 4.06729555225025000_RK * logzplus1**2 & 
                                 + 1.18253386764330200_RK * logzplus1**3 &
                                 - 0.15201156018584210_RK * logzplus1**4
-        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus>3.0411835364579027_RK) then
+        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
             logBinaryMergerRate = 0._RK
         end if
     end function getLogBinaryMergerRateLognormB10
