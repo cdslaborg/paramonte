@@ -41,11 +41,11 @@ module SpecMCMC_ProposalStartCorMat_mod
 
     character(*), parameter         :: MODULE_NAME = "@SpecMCMC_ProposalStartCorMat_mod"
 
-    real(RK), allocatable           :: ProposalStartCorMat(:,:) ! namelist input
+    real(RK), allocatable           :: proposalStartCorMat(:,:) ! namelist input
 
     type                            :: ProposalStartCorMat_type
-        real(RK), allocatable       :: Val(:,:)
-        real(RK), allocatable       :: Def(:,:)
+        real(RK), allocatable       :: val(:,:)
+        real(RK), allocatable       :: def(:,:)
         real(RK)                    :: null
         character(:), allocatable   :: desc
     contains
@@ -66,7 +66,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    function constructProposalStartCorMat(nd,methodName) result(ProposalStartCorMatObj)
+    function constructProposalStartCorMat(nd,methodName) result(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalStartCorMat
 #endif
@@ -75,63 +75,63 @@ contains
         implicit none
         integer(IK), intent(in)         :: nd
         character(*), intent(in)        :: methodName
-        type(ProposalStartCorMat_type)  :: ProposalStartCorMatObj
+        type(ProposalStartCorMat_type)  :: self
         integer(IK)                     :: i
-        allocate( ProposalStartCorMatObj%Def(nd,nd) )
-        ProposalStartCorMatObj%Def = 0._RK
+        allocate( self%def(nd,nd) )
+        self%def = 0._RK
         do i = 1,nd
-            ProposalStartCorMatObj%Def(i,i) = 1._RK
+            self%def(i,i) = 1._RK
         end do
-        ProposalStartCorMatObj%null   = NULL_RK
-        ProposalStartCorMatObj%desc   = &
-        "ProposalStartCorMat is a real-valued positive-definite matrix of size (ndim,ndim), where ndim is the dimension of the &
+        self%null   = NULL_RK
+        self%desc   = &
+        "proposalStartCorMat is a real-valued positive-definite matrix of size (ndim,ndim), where ndim is the dimension of the &
         &sampling space. It serves as the best-guess starting correlation matrix of the proposal distribution used by " &
         // methodName // ". &
         &It is used (along with the input vector ProposalStartStdVec) to construct the covariance matrix of the proposal &
         &distribution when the input covariance matrix is missing in the input list of variables. &
-        &If the covariance matrix is given as input to "//methodName//", any input values for ProposalStartCorMat, &
+        &If the covariance matrix is given as input to "//methodName//", any input values for proposalStartCorMat, &
         &as well as ProposalStartStdVec, will be automatically ignored by "//methodName//". As input to " // methodName // &
-        ", the variable ProposalStartCorMat along with ProposalStartStdVec is especially useful in situations where &
-        &obtaining the best-guess covariance matrix is not trivial. The default value of ProposalStartCorMat is an ndim-by-ndim Identity matrix."
+        ", the variable proposalStartCorMat along with ProposalStartStdVec is especially useful in situations where &
+        &obtaining the best-guess covariance matrix is not trivial. The default value of proposalStartCorMat is an ndim-by-ndim Identity matrix."
     end function constructProposalStartCorMat
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine nullifyNameListVar(ProposalStartCorMatObj,nd)
+    subroutine nullifyNameListVar(self,nd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(ProposalStartCorMat_type), intent(in) :: ProposalStartCorMatObj
+        class(ProposalStartCorMat_type), intent(in) :: self
         integer(IK), intent(in)                     :: nd
-        if (allocated(ProposalStartCorMat)) deallocate(ProposalStartCorMat)
-        allocate(ProposalStartCorMat(nd,nd))
-        ProposalStartCorMat = ProposalStartCorMatObj%null
+        if (allocated(proposalStartCorMat)) deallocate(proposalStartCorMat)
+        allocate(proposalStartCorMat(nd,nd))
+        proposalStartCorMat = self%null
     end subroutine nullifyNameListVar
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine setProposalStartCorMat(ProposalStartCorMatObj,ProposalStartCorMat)
+    subroutine setProposalStartCorMat(self,proposalStartCorMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setProposalStartCorMat
 #endif
         use Constants_mod, only: RK
         implicit none
-        class(ProposalStartCorMat_type), intent(inout)  :: ProposalStartCorMatObj
-        real(RK), intent(in)                            :: ProposalStartCorMat(:,:)
-        ProposalStartCorMatObj%Val = ProposalStartCorMat
-        where (ProposalStartCorMatObj%Val==ProposalStartCorMatObj%null)
-                ProposalStartCorMatObj%Val = ProposalStartCorMatObj%Def
+        class(ProposalStartCorMat_type), intent(inout)  :: self
+        real(RK), intent(in)                            :: proposalStartCorMat(:,:)
+        self%val = proposalStartCorMat
+        where (self%val==self%null)
+            self%val = self%def
         end where
     end subroutine setProposalStartCorMat
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine checkForSanity(ProposalStartCorMatObj,Err,methodName,nd)
+    subroutine checkForSanity(self,Err,methodName,nd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
@@ -140,16 +140,16 @@ contains
         use String_mod, only: num2str
         use Err_mod, only: Err_type
         implicit none
-        class(ProposalStartCorMat_type), intent(in) :: ProposalStartCorMatObj
-        integer(IK), intent(in)             :: nd
-        character(*), intent(in)            :: methodName
-        type(Err_type), intent(inout)       :: Err
-        character(*), parameter             :: PROCEDURE_NAME = "@checkForSanity()"
-        if (.not.isPosDef(nd,ProposalStartCorMatObj%Val)) then
+        class(ProposalStartCorMat_type), intent(in) :: self
+        integer(IK), intent(in)                     :: nd
+        character(*), intent(in)                    :: methodName
+        type(Err_type), intent(inout)               :: Err
+        character(*), parameter                     :: PROCEDURE_NAME = "@checkForSanity()"
+        if (.not.isPosDef(nd,self%val)) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &The input requested ProposalStartCorMat for the proposal of " // methodName // &
+                        &The input requested proposalStartCorMat for the proposal of " // methodName // &
                         " is not a positive-definite matrix.\n\n"
         end if
     end subroutine checkForSanity

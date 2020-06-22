@@ -52,11 +52,12 @@ setuptools.setup( name                          = "paramonte"
                 , python_requires               = '>=3.0'
                 , license                       = "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)"
                 , include_package_data          = True
-                , install_requires              =   [ "numpy>=1.18.0"
-                                                    , "scipy>=1.4.0"
-                                                    , "pandas>=1.0.0"
-                                                    , "seaborn>=0.10.0"
-                                                    , "matplotlib>=3.2.0"
+                , install_requires              =   [ "numpy"
+                                                    , "scipy"
+                                                    , "pandas"
+                                                    , "seaborn"
+                                                    , "packaging"
+                                                    , "matplotlib"
                                                     #, OTHERS:
                                                     #, "platform"
                                                     #, "weakref"

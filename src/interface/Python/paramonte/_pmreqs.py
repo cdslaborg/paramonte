@@ -47,7 +47,7 @@ class _Struct: pass
 
 buildInstructionNote    = "If your platform is non-Windows and is compatible with GNU Compiler Collection (GCC),\n" \
                         + "you can also build the required ParaMonte kernel's shared object files on your system\n" \
-                        + "by calling ParaMonte module's build() function from within your Python enviroment, like:\n\n" \
+                        + "by calling ParaMonte module's build() function from within your Python environment, like:\n\n" \
                         + "    import paramonte as pm\n" \
                         + "    pm.build()"
 
@@ -255,8 +255,6 @@ def getBashProfileContents():
         with open(bashProfilePath,"a+") as bashProfileFile:
             bashProfileFile.write("\n[ -f $HOME/.bashrc ] && . $HOME/.bashrc\n")
     return bashProfileContents
-
-####################################################################################################################################
 
 ####################################################################################################################################
 
@@ -1305,5 +1303,54 @@ def build(flags=""):
                     )
 
     return None
+
+####################################################################################################################################
+
+#def verifyDependencyVersion():
+#
+#    import importlib
+#
+#    moduleVersion = { "scipy": "1.4.0" \
+#                    , "numpy": "1.18.0" \
+#                    , "pandas": "1.0.0" \
+#                    , "seaborn": "0.10.0" \
+#                    , "matplotlib": "3.2.0" \
+#                    }
+#
+#    def reportFailedVersionCheck(moduleNameList):
+#        _pm.warn( msg   = "Failed to verify the versions of the following Python packages \n"
+#                        + "currently installed on your system: \n\n"
+#                        + "Ensure you have the latest version of these Python libraries \n"
+#                        + "installed on your system by typing the following command on \n"
+#                        + "a Python-aware command prompt: \n\n"
+#                        + "    pip install --upgrade --user " + moduleName
+#                , methodName = _pm.names.paramonte
+#                , marginTop = 1
+#                , marginBot = 1
+#                )
+#
+#    def reportFailedVersionCheck(moduleName):
+#        _pm.warn( msg   = "The current installation of Python " + moduleName + " package on your system.\n"
+#                        + "Ensure you have the latest version of this Python library installed on your \n"
+#                        + "system by typing the following command on a Python-aware command prompt: \n\n"
+#                        + "    pip install --upgrade --user " + moduleName
+#                , methodName = _pm.names.paramonte
+#                , marginTop = 1
+#                , marginBot = 1
+#                )
+#
+#    from packaging import version
+#    try:
+#        import numpy as np
+#        if version.parse(np.__version__) < version.parse(1.18.0):
+#            _pm.warn( msg   = "Aborting the ParaMonte-for-Python local build on your system."
+#                    , methodName = _pm.names.paramonte
+#                    , marginTop = 1
+#                    , marginBot = 1
+#                    )
+#    except:
+#        reportFailedVersionCheck("numpy")
+#
+#    return None
 
 ####################################################################################################################################

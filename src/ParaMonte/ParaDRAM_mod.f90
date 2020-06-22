@@ -140,9 +140,9 @@ module ParaDRAM_mod
                                 ! ParaDRAM variables
                                 , scaleFactor                           &
                                 , proposalModel                         &
-                                , proposalStartCovMat                   &
-                                , proposalStartCorMat                   &
                                 , proposalStartStdVec                   &
+                                , proposalStartCorMat                   &
+                                , proposalStartCovMat                   &
                                 , adaptiveUpdateCount                   &
                                 , adaptiveUpdatePeriod                  &
                                 , greedyAdaptationCount                 &
@@ -201,9 +201,9 @@ module ParaDRAM_mod
         ! ParaDRAM variables
         character(*), intent(in), optional  :: scaleFactor
         character(*), intent(in), optional  :: proposalModel
-        real(RK)    , intent(in), optional  :: proposalStartCovMat(ndim,ndim)
-        real(RK)    , intent(in), optional  :: proposalStartCorMat(ndim,ndim)
         real(RK)    , intent(in), optional  :: proposalStartStdVec(ndim)
+        real(RK)    , intent(in), optional  :: proposalStartCorMat(ndim,ndim)
+        real(RK)    , intent(in), optional  :: proposalStartCovMat(ndim,ndim)
         integer(IK) , intent(in), optional  :: adaptiveUpdateCount
         integer(IK) , intent(in), optional  :: adaptiveUpdatePeriod
         integer(IK) , intent(in), optional  :: greedyAdaptationCount

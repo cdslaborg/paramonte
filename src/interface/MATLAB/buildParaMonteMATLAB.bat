@@ -103,8 +103,7 @@ REM :LABEL_continue
 set ParaMonteMATLAB_BLD_LIB_DIR=!ParaMonte_BLD_DIR!\lib
 if defined MATLAB_BIN_DIR (
 
-    set "REPLACEMENT=_"
-    call set PMLIB_MATLAB_NAME=%%PMLIB_NAME:_matlab_=%REPLACEMENT%%%
+    call set PMLIB_MATLAB_NAME=!PMLIB_NAME:_matlab_=_!
     set "MATLAB_BUILD_FLAGS=/DDLL_ENABLED "
 
     REM /subsystem:windows 
@@ -120,7 +119,7 @@ if defined MATLAB_BIN_DIR (
     set "MEX_FLAGS=-v -nojvm"
     if !BTYPE!==debug set "MEX_FLAGS=!MEX_FLAGS! -g"
     if !BTYPE!==release set "MEX_FLAGS=!MEX_FLAGS! -O"
-    echo. -- ParaMonteMATLAB - generating the ParaMonte MATLAB dynamic library: !ParaMonteMATLAB_BLD_LIB_DIR!!PMLIB_MATLAB_NAME!
+    echo. -- ParaMonteMATLAB - generating the ParaMonte MATLAB dynamic library: !ParaMonteMATLAB_BLD_LIB_DIR!\!PMLIB_MATLAB_NAME!
     echo. -- ParaMonteMATLAB - compiler options: !MATLAB_BUILD_FLAGS!
     echo. -- ParaMonteMATLAB - compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
     cd !ParaMonteMATLAB_BLD_LIB_DIR!

@@ -501,6 +501,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+    ! ATTN: This function still needs work. Currently, this is identical to getBinaryMergerRateS15.
     ! compute the binary merger rate as a function of z, according to Shahmoradi and Nemiroff (2015)
     ! equivalent to delayed_rate_Belz_Li(z) in S15
     ! returns 0, if z>6.501_RK or z<0.09_RK

@@ -41,11 +41,11 @@ module SpecMCMC_ProposalStartStdVec_mod
 
     character(*), parameter         :: MODULE_NAME = "@SpecMCMC_ProposalStartStdVec_mod"
 
-    real(RK), allocatable           :: ProposalStartStdVec(:) ! namelist input
+    real(RK), allocatable           :: proposalStartStdVec(:) ! namelist input
 
     type                            :: ProposalStartStdVec_type
-        real(RK), allocatable       :: Val(:)
-        real(RK), allocatable       :: Def(:)
+        real(RK), allocatable       :: val(:)
+        real(RK), allocatable       :: def(:)
         real(RK)                    :: null
         character(:), allocatable   :: desc
     contains
@@ -66,7 +66,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    function constructProposalStartStdVec(nd,methodName) result(ProposalStartStdVecObj)
+    function constructProposalStartStdVec(nd,methodName) result(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalStartStdVec
 #endif
@@ -75,63 +75,63 @@ contains
         implicit none
         integer(IK), intent(in)         :: nd
         character(*), intent(in)        :: methodName
-        type(ProposalStartStdVec_type)  :: ProposalStartStdVecObj
+        type(ProposalStartStdVec_type)  :: self
         integer(IK)                     :: i
-        allocate( ProposalStartStdVecObj%Def(nd) )
-        ProposalStartStdVecObj%Def = 0._RK
+        allocate( self%def(nd) )
+        self%def = 0._RK
         do i = 1,nd
-            ProposalStartStdVecObj%Def(i) = 1._RK
+            self%def(i) = 1._RK
         end do
-        ProposalStartStdVecObj%null   = NULL_RK
-        ProposalStartStdVecObj%desc   = &
-        "ProposalStartStdVec is a real-valued positive vector of length ndim, where ndim is the dimension of the sampling space. &
+        self%null   = NULL_RK
+        self%desc   = &
+        "proposalStartStdVec is a real-valued positive vector of length ndim, where ndim is the dimension of the sampling space. &
         &It serves as the best-guess starting Standard Deviation of each of the components of the proposal distribution. &
         &If the initial covariance matrix (ProposalStartCovMat) is missing as an input variable to " // &
-        methodName // ", then ProposalStartStdVec (along with the input variable ProposalStartCorMat) will be used to construct &
+        methodName // ", then proposalStartStdVec (along with the input variable ProposalStartCorMat) will be used to construct &
         &the initial covariance matrix of the proposal distribution of the MCMC sampler. &
-        &However, if ProposalStartCovMat is present as an input argument to " // methodName // ", then the input ProposalStartStdVec &
+        &However, if ProposalStartCovMat is present as an input argument to " // methodName // ", then the input proposalStartStdVec &
         &along with the input ProposalStartCorMat will be completely ignored and the input value for ProposalStartCovMat &
         &will be used to construct the initial covariance matrix of the proposal distribution of " // methodName // ". &
-        &The default value of ProposalStartStdVec is a vector of unit values (i.e., ones) of length ndim."
+        &The default value of proposalStartStdVec is a vector of unit values (i.e., ones) of length ndim."
     end function constructProposalStartStdVec
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine nullifyNameListVar(ProposalStartStdVecObj,nd)
+    subroutine nullifyNameListVar(self,nd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(ProposalStartStdVec_type), intent(in) :: ProposalStartStdVecObj
+        class(ProposalStartStdVec_type), intent(in) :: self
         integer(IK), intent(in)                     :: nd
-        if (allocated(ProposalStartStdVec)) deallocate(ProposalStartStdVec)
-        allocate(ProposalStartStdVec(nd))
-        ProposalStartStdVec = ProposalStartStdVecObj%null
+        if (allocated(proposalStartStdVec)) deallocate(proposalStartStdVec)
+        allocate(proposalStartStdVec(nd))
+        proposalStartStdVec = self%null
     end subroutine nullifyNameListVar
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine setProposalStartCorMat(ProposalStartStdVecObj,ProposalStartStdVec)
+    subroutine setProposalStartCorMat(self,proposalStartStdVec)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setProposalStartCorMat
 #endif
         use Constants_mod, only: RK
         implicit none
-        class(ProposalStartStdVec_type), intent(inout)  :: ProposalStartStdVecObj
-        real(RK), intent(in)                            :: ProposalStartStdVec(:)
-        ProposalStartStdVecObj%Val = ProposalStartStdVec
-        where (ProposalStartStdVecObj%Val==ProposalStartStdVecObj%null)
-                ProposalStartStdVecObj%Val = ProposalStartStdVecObj%Def
+        class(ProposalStartStdVec_type), intent(inout)  :: self
+        real(RK), intent(in)                            :: proposalStartStdVec(:)
+        self%val = proposalStartStdVec
+        where (self%val==self%null)
+                self%val = self%def
         end where
     end subroutine setProposalStartCorMat
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine checkForSanity(ProposalStartStdVecObj,Err,methodName,nd)
+    subroutine checkForSanity(self,Err,methodName,nd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
@@ -139,19 +139,19 @@ contains
         use String_mod, only: num2str
         use Err_mod, only: Err_type
         implicit none
-        class(ProposalStartStdVec_type), intent(in) :: ProposalStartStdVecObj
+        class(ProposalStartStdVec_type), intent(in) :: self
         integer(IK), intent(in)                     :: nd
         character(*), intent(in)                    :: methodName
         type(Err_type), intent(inout)               :: Err
         character(*), parameter                     :: PROCEDURE_NAME = "@checkForSanity()"
         integer(IK)                                 :: i
         do i = 1,nd
-            if (ProposalStartStdVecObj%Val(i)<=0._RK) then
+            if (self%val(i)<=0._RK) then
                 Err%occurred = .true.
                 Err%msg =   Err%msg // &
                             MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                            &The input requested value (" // num2str(ProposalStartStdVecObj%Val(i)) // ") for the component " // &
-                            num2str(i) // " of the variable ProposalStartStdVec for the proposal distribution of " // &
+                            &The input requested value (" // num2str(self%val(i)) // ") for the component " // &
+                            num2str(i) // " of the variable proposalStartStdVec for the proposal distribution of " // &
                             methodName // " must be a positive real number.\n\n"
             end if
         end do

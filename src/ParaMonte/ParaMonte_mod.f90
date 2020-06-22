@@ -39,7 +39,7 @@ module ParaMonte_mod
     use System_mod, only: SystemInfo_type
     use Decoration_mod, only: Decoration_type
     use Constants_mod, only: RK, IK, CIK, CRK, HUGE_IK, HUGE_RK
-    use String_mod, only: IntStr_type  
+    use String_mod, only: IntStr_type
     use System_mod, only: OS_type
     use Timer_mod, only: Timer_type
     use File_mod, only: File_type
@@ -51,12 +51,12 @@ module ParaMonte_mod
 
     public
 
-    character(*), parameter :: MODULE_NAME = "@ParaMonte_mod"
+    character(*), parameter         :: MODULE_NAME = "@ParaMonte_mod"
 
     type                            :: QuantileProbability_type
         integer(IK)                 :: count = 9_IK
         real(RK)                    :: Value(9) = [0._RK,0.05_RK,0.10_RK,0.25_RK,0.50_RK,0.75_RK,0.90_RK,0.95_RK,1.0_RK]
-        character(4)                :: Name(9) = ["  0%","  5%"," 10%"," 25%"," 50%"," 75%"," 90%"," 95%","100%"]
+        character(4)                :: Name(9) = ["  Q0","  Q5"," Q10"," Q25"," Q50"," Q75"," Q90"," Q95","Q100"]
     end type QuantileProbability_type
     type(QuantileProbability_type), parameter :: QPROB = QuantileProbability_type()
 
@@ -95,6 +95,7 @@ module ParaMonte_mod
     end type Image_type
 
     type, extends(File_type)        :: LogFile_type
+        type(IntStr_type)           :: maxColWidth
         character(6)                :: suffix = "report"
     end type LogFile_type
 
@@ -175,7 +176,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMonte
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use Decoration_mod, only: TAB
+        use Decoration_mod, only: INDENT
         use Constants_mod, only: IK, NLC
         use String_mod, only: getLowerCase, num2str
         use System_mod, only: OS_type
@@ -200,7 +201,7 @@ contains
         PM%Err%msg = ""
 
         PM%name     = name
-        PM%brand    = TAB // TAB // PM%name
+        PM%brand    = INDENT // PM%name
 #if defined IFORT_ENABLED || __GFORTRAN__
         PM%date     = "Build: " // __TIMESTAMP__
 #else
@@ -286,7 +287,7 @@ contains
                 return
             end if
             ! determine if the file is internal
-            PM%InputFile%isInternal = PM%inputFileArgIsPresent .and. .not.PM%InputFile%exists .and. index(getLowerCase(inputFile),"&"//getLowerCase(PM%name)) > 0 
+            PM%InputFile%isInternal = PM%inputFileArgIsPresent .and. .not.PM%InputFile%exists .and. index(getLowerCase(inputFile),"&"//getLowerCase(PM%name)) > 0
             if (.not.(PM%InputFile%isInternal .or. PM%InputFile%exists)) then
                 ! file is given, but is neither a path to an external file, nor an internal file containing a namelist
                 ! Therefore, there must be an error/mistake by the user.
@@ -578,8 +579,10 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupOutputFiles
 #endif
-        use Path_mod, only: MAX_FILE_PATH_LEN, mkdir
+        use Decoration_mod, only: getGenericFormat, INDENT
         use Constants_mod, only: NLC, FILE_EXT
+        use String_mod, only: num2str
+        use Path_mod, only: MAX_FILE_PATH_LEN, mkdir
 
         implicit none
 
@@ -698,7 +701,7 @@ contains
 
         block
             use Path_mod, only: Path_type
-            use String_mod, only: num2str
+            !use String_mod, only: num2str
             character(:), allocatable :: fullOutputFileName
             integer(IK) :: imageID
 
@@ -825,7 +828,7 @@ contains
         ! print the stdout message for generating / appending the output report file
 
         blockLogFileListByFirstImage: if (PM%Image%isFirst) then
-        
+
             ! print the stdout message for generating / appending the output report file(s)
 
             call PM%note( prefix = PM%brand             &
@@ -846,7 +849,7 @@ contains
 #if defined CAF_ENABLED || defined MPI_ENABLED
             if (PM%SpecBase%ParallelizationModel%isMultiChain) then
                 block
-                    use String_mod, only: replaceStr, num2str
+                    use String_mod, only: replaceStr !, num2str
                     integer(IK) :: imageID
                     do imageID = 2, PM%Image%count
                         call PM%note( prefix = PM%brand             &
@@ -858,6 +861,9 @@ contains
                     end do
                 end block
             end if
+            PM%Err%msg = "Running the simulation in parallel on " // num2str(PM%Image%count) // " processes." // NLC
+#else
+            PM%Err%msg = "Running the simulation in serial on " // num2str(PM%Image%count) // " process." // NLC
 #endif
 
             call PM%note( prefix = PM%brand             &
@@ -865,7 +871,8 @@ contains
                         , newline = NLC                 &
                         , marginTop = 3_IK              &
                         , marginBot = 3_IK              &
-                        , msg = "Please see the output " // PM%LogFile%suffix // " and " // PM%TimeFile%suffix // " files for further realtime simulation details." )
+                        , msg = PM%Err%msg // "Please see the output " // PM%LogFile%suffix // " and " // PM%TimeFile%suffix // " files for further realtime simulation details." &
+                        )
 
         end if blockLogFileListByFirstImage
 
@@ -882,7 +889,7 @@ contains
 #endif
 
         ! open the output files
-        ! Intel ifort SHARED attribute is essential for file ulocking
+        ! Intel ifort SHARED attribute is essential for file unlocking
 
         blockMasterFileSetup: if (PM%Image%isMaster) then
 
@@ -987,6 +994,11 @@ contains
 
         ! These must be defined for all images, because they may be passed as arguments to the kernel subroutines.
 
+        PM%LogFile%maxColWidth%val = max(PM%SpecBase%OutputRealPrecision%val, PM%SpecBase%OutputColumnWidth%val, PM%SpecBase%VariableNameList%MaxLen%val) + 9_IK
+        PM%LogFile%maxColWidth%str = num2str(PM%LogFile%maxColWidth%val)
+        PM%LogFile%format = getGenericFormat( width = PM%LogFile%maxColWidth%val &
+                                            , precision = PM%SpecBase%OutputRealPrecision%val &
+                                            , prefix = INDENT ) ! this is the generic indented format required mostly in postprocessing report
         PM%TimeFile%format = "(*(g" // PM%SpecBase%OutputColumnWidth%str // "." // PM%SpecBase%OutputRealPrecision%str // ",:,'" // PM%SpecBase%OutputDelimiter%val // "'))"
         PM%ChainFile%format = PM%TimeFile%format
         PM%SampleFile%format = PM%ChainFile%format

@@ -41,12 +41,12 @@ module SpecMCMC_ProposalStartCovMat_mod
 
     character(*), parameter         :: MODULE_NAME = "@SpecMCMC_ProposalStartCovMat_mod"
 
-    real(RK), allocatable           :: ProposalStartCovMat(:,:) ! namelist input
+    real(RK), allocatable           :: proposalStartCovMat(:,:) ! namelist input
 
     type                            :: ProposalStartCovMat_type
         logical                     :: isPresent
-        real(RK), allocatable       :: Val(:,:)
         real(RK), allocatable       :: Def(:,:)
+        real(RK), allocatable       :: Val(:,:)
         real(RK)                    :: null
         character(:), allocatable   :: desc
     contains
@@ -67,7 +67,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    function constructProposalStartCovMat(nd,methodName) result(ProposalStartCovMatObj)
+    function constructProposalStartCovMat(nd,methodName) result(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalStartCovMat
 #endif
@@ -76,70 +76,87 @@ contains
         implicit none
         integer(IK), intent(in)         :: nd
         character(*), intent(in)        :: methodName
-        type(ProposalStartCovMat_type)  :: ProposalStartCovMatObj
+        type(ProposalStartCovMat_type)  :: self
         integer(IK)                     :: i
-        ProposalStartCovMatObj%isPresent = .false.
-        allocate( ProposalStartCovMatObj%Def(nd,nd) )
-        ProposalStartCovMatObj%Def = 0._RK
+        self%isPresent = .false.
+        allocate( self%Def(nd,nd) )
+        self%Def = 0._RK
         do i = 1,nd
-            ProposalStartCovMatObj%Def(i,i) = 1._RK
+            self%Def(i,i) = 1._RK
         end do
-        ProposalStartCovMatObj%null   = NULL_RK
-        ProposalStartCovMatObj%desc   = &
-        "ProposalStartCovMat is a real-valued positive-definite matrix of size (ndim,ndim), where ndim is the dimension of the &
+        self%null   = NULL_RK
+        self%desc   = &
+        "proposalStartCovMat is a real-valued positive-definite matrix of size (ndim,ndim), where ndim is the dimension of the &
         &sampling space. It serves as the best-guess starting covariance matrix of the proposal distribution. &
         &To bring the sampling efficiency of " // methodName // " to within the desired requested range, the covariance matrix will &
-        &be adaptively updated throughout the simulation, according to the user's requested schedule. If ProposalStartCovMat &
-        &is not provided by the user, its value will be automatically computed from the input variables ProposalStartCorMat and &
-        &ProposalStartStdVec. The default value of ProposalStartCovMat is an ndim-by-ndim Identity matrix."
+        &be adaptively updated throughout the simulation, according to the user's requested schedule. If proposalStartCovMat &
+        &is not provided by the user or it is completely missing from the input file, its value will be automatically computed &
+        &via the input variables proposalStartCorMat and proposalStartStdVec (or via their default values, if not provided). &
+        &The default value of proposalStartCovMat is an ndim-by-ndim Identity matrix."
     end function constructProposalStartCovMat
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine nullifyNameListVar(ProposalStartCovMatObj,nd)
+    subroutine nullifyNameListVar(self,nd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(ProposalStartCovMat_type), intent(in) :: ProposalStartCovMatObj
+        class(ProposalStartCovMat_type), intent(in) :: self
         integer(IK), intent(in)                     :: nd
-        if (allocated(ProposalStartCovMat)) deallocate(ProposalStartCovMat)
-        allocate(ProposalStartCovMat(nd,nd))
-        ProposalStartCovMat = ProposalStartCovMatObj%null
+        if (allocated(proposalStartCovMat)) deallocate(proposalStartCovMat)
+        allocate(proposalStartCovMat(nd,nd))
+        proposalStartCovMat = self%null
     end subroutine nullifyNameListVar
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine setProposalStartCorMat(ProposalStartCovMatObj,ProposalStartCovMat)
+    subroutine setProposalStartCorMat(self, proposalStartStdVec, proposalStartCorMat, proposalStartCovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setProposalStartCorMat
 #endif
+        use Statistics_mod, only: getCovMatFromCorMat
         use Constants_mod, only: RK, IK
         implicit none
-        class(ProposalStartCovMat_type), intent(inout)  :: ProposalStartCovMatObj
-        real(RK), intent(in)                            :: ProposalStartCovMat(:,:)
-        integer(IK)                                     :: i,j,nd
-        nd = size(ProposalStartCovMat(:,1))
-        ProposalStartCovMatObj%Val = ProposalStartCovMat
-        ProposalStartCovMatObj%isPresent = .false.
+        class(ProposalStartCovMat_type), intent(inout)  :: self
+        real(RK), intent(in)                            :: proposalStartCorMat(:,:), proposalStartStdVec(:)
+        real(RK), intent(in), optional                  :: proposalStartCovMat(:,:)
+        integer(IK)                                     :: i, j, nd
+
+        if (present(proposalStartCovMat)) then
+            self%val = proposalStartCovMat
+        else
+            self%val = self%null
+        end if
+
+        self%isPresent = .false.
+        nd = size(proposalStartCorMat(:,1))
         do i = 1, nd
             do j = 1, nd
-                if (ProposalStartCovMatObj%Val(j,i)==ProposalStartCovMatObj%null) then
-                    ProposalStartCovMatObj%Val(j,i) = ProposalStartCovMatObj%Def(j,i)
+                if (self%val(j,i)==self%null) then
+                    self%val(j,i) = self%Def(j,i)
                 else
-                    ProposalStartCovMatObj%isPresent = .true.
+                    self%isPresent = .true.
                 end if
             end do
         end do
+
+        if (self%isPresent) return
+
+        self%val = getCovMatFromCorMat  ( nd = nd &
+                                        , StdVec = proposalStartStdVec &
+                                        , CorMat = proposalStartCorMat &
+                                        )
+
     end subroutine setProposalStartCorMat
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine checkForSanity(ProposalStartCovMatObj,Err,methodName,nd)
+    subroutine checkForSanity(self,Err,methodName,nd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
@@ -148,16 +165,16 @@ contains
         use String_mod, only: num2str
         use Err_mod, only: Err_type
         implicit none
-        class(ProposalStartCovMat_type), intent(in) :: ProposalStartCovMatObj
+        class(ProposalStartCovMat_type), intent(in) :: self
         integer(IK), intent(in)                     :: nd
         character(*), intent(in)                    :: methodName
         type(Err_type), intent(inout)               :: Err
         character(*), parameter                     :: PROCEDURE_NAME = "@checkForSanity()"
-        if (.not.isPosDef(nd,ProposalStartCovMatObj%Val)) then
+        if (.not.isPosDef(nd,self%val)) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &The input requested ProposalStartCovMat for the proposal of " // methodName // &
+                        &The input requested proposalStartCovMat for the proposal of " // methodName // &
                         " is not a positive-definite matrix.\n\n"
         end if
     end subroutine checkForSanity

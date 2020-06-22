@@ -228,7 +228,7 @@ if not !ParaMonte_LIB_ENABLED!==true goto LABEL_EOF
 
 REM if not !LTYPE!==dynamic goto LABEL_EOF
 
-cd !ParaMonte_LIB_DIR!
+cd !ParaMonte_LIB_DIR! && del *.exp *.lib *.dll *.pdb *.obj *.mexw64 *.optrpt
 echo.
 echo. -- ParaMonte - building ParaMonte !LTYPE! library files at: !ParaMonte_LIB_DIR!
 echo. -- ParaMonte - !LTYPE! library filename: !PMLIB_NAME!

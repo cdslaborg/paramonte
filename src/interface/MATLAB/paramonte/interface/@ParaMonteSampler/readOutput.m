@@ -32,7 +32,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function varargout = readOutput(self,varargin) % callerName,file,delimiter
+function varargout = readOutput(self, varargin) % callerName, file, delimiter
 
     if isempty(self.objectName); self.objectName = inputname(1); end
 
@@ -57,32 +57,11 @@ function varargout = readOutput(self,varargin) % callerName,file,delimiter
     if nargin>2; file = convertStringsToChars(varargin{2}); end
     if nargin>3; delimiter = varargin{3}; end
     if nargin>4 || errorOccurred
-        self.Err.msg    = callerName + "takes only two input arguments (file, delimiter). Correct usage:" + newline + newline ...
+        self.Err.msg    = callerName + " takes only two input arguments (file, delimiter). Correct usage:" + newline + newline ...
                         + "    " + callerName + "(file,delimiter)" + newline + newline ...
-                        + "where ""file"" is the name of the file to be read, delimiter is the delimiter used in the file,";
+                        + "where ""file"" is the name of the file to be read, delimiter is the delimiter used in the file.";
         self.Err.abort();
     end
-
-    if isempty(file)
-        if isempty(self.spec.outputFileName)
-            self.Err.msg    = "The " + self.methodName + " input simulation specification " + self.objectName + ".spec.outputFileName is not set. " ...
-                            + "This information is essential, otherwise how could the output files be found? " ...
-                            + "All that is needed is the common section of the paths to the output simulation files (including the simulation name) " ...
-                            + "or simply, the path to the " + fileType + " file.";
-            if ~isempty(self.inputFile)
-                self.Err.msg    = self.Err.msg + newline ...
-                                + "Apparently, you have specified an input file for the simulation via the attribute """ + self.objectName + ".inputFile""." + newline ...
-                                + "Extract the value of outputFileName from this file, and assign it to the simulation specification """ + self.objectName + ".spec.outputFileName"".";
-            end
-            self.Err.abort();
-        else
-            file = string(self.spec.outputFileName);
-        end
-    else
-        file = string(file);
-    end
-
-    file = string(getFullPath(convertStringsToChars(file),'lean'));
 
     if isempty(delimiter)
         if isempty(self.spec.outputDelimiter)
@@ -100,19 +79,18 @@ function varargout = readOutput(self,varargin) % callerName,file,delimiter
         delimiter = string(delimiter);
     end
 
-    fileList = self.getFileList(file,fileType);
-    fileListLen = length(fileList);
+    filePathList = self.getFilePathList(file,fileType);
+    filePathListLen = length(filePathList);
 
-    outputList = cell(fileListLen,1);
-    for ifile = fileListLen:-1:1
-        filePathModified = string( strrep(fileList(ifile),'\','\\') );
+    outputList = cell(filePathListLen,1);
+    for ifile = filePathListLen:-1:1
         if ~self.mpiEnabled
-            self.Err.msg = "processing file: " + filePathModified;
+            self.Err.msg = "processing file: " + filePathList(ifile);
             self.Err.marginTop = 1;
             self.Err.marginBot = 0;
             self.Err.note();
         end
-        outputList{ifile} = OutputFileContents  ( filePathModified ...
+        outputList{ifile} = TabledFileContents  ( filePathList(ifile) ...
                                                 , fileType ...
                                                 , delimiter ...
                                                 , self.methodName ...

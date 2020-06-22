@@ -6,11 +6,11 @@
   Constants_mod.f90
   Misc_mod.f90
   JaggedArray_mod.f90
+  String_mod.f90
   Decoration_mod.f90
   Decoration_mod@Routines_smod.f90
   Err_mod.f90
   DateTime_mod.f90
-  String_mod.f90
   System_mod.f90
   Path_mod.f90
   FileList_mod.f90
@@ -57,9 +57,9 @@
   SpecMCMC_ScaleFactor_mod.f90
   SpecMCMC_StartPointVec_mod.f90
   SpecMCMC_ProposalModel_mod.f90
-  SpecMCMC_ProposalStartCovMat_mod.f90
-  SpecMCMC_ProposalStartCorMat_mod.f90
   SpecMCMC_ProposalStartStdVec_mod.f90
+  SpecMCMC_ProposalStartCorMat_mod.f90
+  SpecMCMC_ProposalStartCovMat_mod.f90
   SpecMCMC_SampleRefinementCount_mod.f90
   SpecMCMC_SampleRefinementMethod_mod.f90
   SpecMCMC_RandomStartPointRequested_mod.f90

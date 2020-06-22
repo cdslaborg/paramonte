@@ -32,7 +32,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   readSample(file,delimiter)
+%   readReport(file,delimiter)
 %
 %   Return a list of the contents of a set of ParaMonte simulation(s) output
 %   sample files whose names begin the user-provided prefix, specified,
@@ -66,12 +66,12 @@
 %
 %           Example usage:
 %
-%               pmpd.readSample("./out/test_run_");
+%               pmpd.readReport("./out/test_run_");
 %
 %           or,
 %
 %               pmpd.spec.outputFileName = "./out/test_run_";
-%               pmpd.readSample();
+%               pmpd.readReport();
 %
 %           Both of the above examples are equivalent.
 %           The latter is recommended as it is less confusing.
@@ -86,18 +86,18 @@
 %
 %           Example usage:
 %
-%               pmpd.readSample("./out/test_run_", " ");
+%               pmpd.readReport("./out/test_run_", " ");
 %
 %           or,
 %
 %               pmpd.spec.outputDelimiter = " ";
-%               pmpd.readSample("./out/test_run_");
+%               pmpd.readReport("./out/test_run_");
 %
 %           or,
 %
 %               pmpd.spec.outputFileName = "./out/test_run_";
 %               pmpd.spec.outputDelimiter = " ";
-%               pmpd.readSample();
+%               pmpd.readReport();
 %
 %           Both of the above examples are equivalent.
 %           The latter is recommended as it is less confusing.
@@ -105,61 +105,76 @@
 %   Returns
 %   -------
 %
-%       sampleList (optional)
+%       reportList (optional)
 %
 %           a cell array of objects, each of which corresponds to the contents
-%           of a unique sample file. Each object has the following components:
+%           of a unique report file. Each object has the following components:
 %
 %               file
-%                   full absolute path to the sample file.
-%
-%               delimiter
-%                   the delimiter used in the sample file.
+%                   full absolute path to the report file.
 %
 %               ndim
 %                   number of dimensions of the domain of the objective function
-%                   for which the sample was generated.
-%
-%               count
-%                   the number of unique (weighted) points in the sample file.
-%                   This is essentially the number of rows in the sample file
-%                   minus one (representing the header line).
-%
-%               df
-%                   the contents of the sample file in the form of
-%                   a MATLAB table (df stands for DataFrame).
-%
-%               dynamic attributes:
-%                   corresponding to each column in the sample file, a property
-%                   with the same name as the column header is also created
-%                   for the object which contains the data stored in that column
-%                   of the sample file.
+%                   for which the report was generated.
 %
 %           If no output argument is provided, a sampleList property will be added
-%           to the parent sampler-object to which the method readSample() belongs.
+%           to the parent sampler-object to which the method readMarkovChain() belongs.
 %           return value of the method. Otherwise, the list will be stored in a
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function [varargout] = readSample(self,varargin)
+function [varargout] = readReport(self,varargin)
 
     if isempty(self.objectName); self.objectName = inputname(1); end
     callerName = string(mfilename());
-    chainType = string(callerName{1}(5:end));
-    chainType = string( [ lower(chainType{1}(1)) , chainType{1}(2:end) ] );
-    output = chainType + "List";
+    outputType = string(callerName{1}(5:end));
+    outputType = string( [ lower(outputType{1}(1)) , outputType{1}(2:end) ] );
+    outputName = outputType + "List";
+    fileType = "report";
+
+    % read the report file
+
+    file = [];
+    if nargin>1; file = convertStringsToChars(varargin{2}); end
+    if nargin>2
+        self.Err.msg    = callerName + " takes only one input argument (file). Correct usage:" + newline + newline ...
+                        + "    " + callerName + "(file)" + newline + newline ...
+                        + "where ""file"" is the name of the file to be read.";
+        self.Err.abort();
+    end
+
+    filePathList = self.getFilePathList(file,outputType);
+    filePathListLen = length(filePathList);
+
+    reportList = cell(filePathListLen,1);
+    for ifile = filePathListLen:-1:1
+        if ~self.mpiEnabled
+            self.Err.msg = "processing file: " + filePathList(ifile);
+            self.Err.marginTop = 1;
+            self.Err.marginBot = 0;
+            self.Err.note();
+        end
+        reportList{ifile} = ReportFileContents  ( filePathList(ifile) ...
+                                                , self.methodName ...
+                                                , self.mpiEnabled ...
+                                                , self.Err ...
+                                                );
+    end
+
+    % output the reportList
 
     if nargout==0
-        %if ~any(strcmp(properties(self),output)); self.addprop(output); end
-        %self.(output) = self.readOutput(callerName,varargin{:});
-        self.readOutput(callerName,varargin{:});
+        outputFullName = self.objectName + "." + outputName;
+        prop=outputName; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+        self.(outputName) = reportList;
+        self.Err.msg    = "The processed " + fileType + " file(s) are now stored in the newly-created component """ + outputFullName + """ of the " + self.methodName + " object as a cell array. " ...
+                        + "For example, to access the contents of the first (or the only) " + fileType + " file, try:";
     elseif nargout==1
-        %eval(output+" = self.readOutput(callerName,varargin{:})");
         varargout{1} = self.readOutput(callerName,varargin{:});
     else
-        self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file,delimiter)" ...
-                        + "optionally outputs one variable (" + output + ") or nothing. If the latter is chosen by the user " ...
-                        + "(that is, no output is provivded to the method, " + self.objectName + "." + callerName + "), then the output " + output + ...
+        self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file)" ...
+                        + "optionally outputs one variable (" + outputName + ") or nothing. If the latter is chosen by the user " ...
+                        + "(that is, no output is provivded to the method, " + self.objectName + "." + callerName + "), then the output " + outputName + ...
                         + " will be instead added as a component of the " + self.object + " object.";
         self.Err.abort();
     end

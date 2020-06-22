@@ -1,5 +1,5 @@
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !   ParaMonte: plain powerful parallel Monte Carlo library.
 !
@@ -31,8 +31,8 @@
 !
 !       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 submodule (ParaDRAM_mod) Setup_smod
 
@@ -41,13 +41,13 @@ submodule (ParaDRAM_mod) Setup_smod
 
     character(*), parameter :: SUBMODULE_NAME = MODULE_NAME // "@Setup_smod"
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module subroutine runSampler( PD                                    &
                                 , ndim                                  &
@@ -69,7 +69,7 @@ contains
                                 , domainUpperLimitVec                   &
                                 , parallelizationModel                  &
                                 , progressReportPeriod                  &
-                                , TargetAcceptanceRate                  &
+                                , targetAcceptanceRate                  &
                                 , mpiFinalizeRequested                  &
                                 , maxNumDomainCheckToWarn               &
                                 , maxNumDomainCheckToStop               &
@@ -84,9 +84,9 @@ contains
                                 ! ParaDRAM variables
                                 , scaleFactor                           &
                                 , proposalModel                         &
-                                , ProposalStartCovMat                   &
-                                , ProposalStartCorMat                   &
-                                , ProposalStartStdVec                   &
+                                , proposalStartStdVec                   &
+                                , proposalStartCorMat                   &
+                                , proposalStartCovMat                   &
                                 , adaptiveUpdateCount                   &
                                 , adaptiveUpdatePeriod                  &
                                 , greedyAdaptationCount                 &
@@ -101,11 +101,15 @@ contains
         use, intrinsic :: iso_fortran_env, only: output_unit, stat_stopped_image
         use ParaDRAMProposalSymmetric_mod, only: ProposalSymmetric_type
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
+        use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
+        use Decoration_mod, only: GENERIC_TABBED_FORMAT
+        use Decoration_mod, only: getGenericFormat
+        use Decoration_mod, only: INDENT
         use Statistics_mod, only: getUpperCorMatFromUpperCovMat
         use Statistics_mod, only: getWeiSamCovUppMeanTrans
         use Statistics_mod, only: getQuantile
         use ParaMonte_mod, only: QPROB
-        use Constants_mod, only: IK, RK, NLC, PMSM
+        use Constants_mod, only: IK, RK, NLC, PMSM, UNDEFINED
         use DateTime_mod, only: getNiceDateTime
         use String_mod, only: num2str
 
@@ -136,7 +140,7 @@ contains
         logical     , intent(in), optional  :: silentModeRequested
         character(*), intent(in), optional  :: parallelizationModel
         integer(IK) , intent(in), optional  :: progressReportPeriod
-        real(RK)    , intent(in), optional  :: TargetAcceptanceRate(2)
+        real(RK)    , intent(in), optional  :: targetAcceptanceRate(2)
         logical     , intent(in), optional  :: mpiFinalizeRequested
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToWarn
         integer(IK) , intent(in), optional  :: maxNumDomainCheckToStop
@@ -153,9 +157,9 @@ contains
         ! ParaDRAM variables
         character(*), intent(in), optional  :: scaleFactor
         character(*), intent(in), optional  :: proposalModel
-        real(RK)    , intent(in), optional  :: proposalStartCovMat(ndim,ndim)
-        real(RK)    , intent(in), optional  :: proposalStartCorMat(ndim,ndim)
         real(RK)    , intent(in), optional  :: proposalStartStdVec(ndim)
+        real(RK)    , intent(in), optional  :: proposalStartCorMat(ndim,ndim)
+        real(RK)    , intent(in), optional  :: proposalStartCovMat(ndim,ndim)
         integer(IK) , intent(in), optional  :: adaptiveUpdateCount
         integer(IK) , intent(in), optional  :: adaptiveUpdatePeriod
         integer(IK) , intent(in), optional  :: greedyAdaptationCount
@@ -167,12 +171,12 @@ contains
 
        !type(ProposalSymmetric_type), target   :: ProposalSymmetric
         integer(IK)                         :: i, iq
-        character(:), allocatable           :: formatStr, logFileColWidthStr, msg
+        character(:), allocatable           :: msg, formatStr, formatStrInt, formatStrReal, formatAllReal
         real(RK)                            :: mcmcSamplingEfficiency
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Initialize SpecBase variables, then check existence of inputFile and open it and return the unit file, if it exists
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call PD%setupParaMonte  ( nd = ndim               &
                                 , name = PMSM%ParaDRAM    &
@@ -182,21 +186,21 @@ contains
                                 )
         if (PD%Err%occurred) return
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Initialize ParaMCMC variables
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call PD%setupParaMCMC()
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Initialize ParaDRAM variables
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         PD%SpecDRAM = SpecDRAM_type( PD%nd%val, PD%name ) ! , PD%SpecMCMC%ChainSize%def )
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! read variables from input file if it exists
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call PD%getSpecFromInputFile(ndim)
         if (PD%Err%occurred) then
@@ -205,9 +209,9 @@ contains
             return
         end if
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! read variables from argument list if needed
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (PD%Image%isFirst) call PD%setWarnAboutProcArgHasPriority()
         if (PD%procArgNeeded) then
@@ -227,7 +231,7 @@ contains
                                                 , domainUpperLimitVec                   = domainUpperLimitVec                   &
                                                 , parallelizationModel                  = parallelizationModel                  &
                                                 , progressReportPeriod                  = progressReportPeriod                  &
-                                                , TargetAcceptanceRate                  = TargetAcceptanceRate                  &
+                                                , targetAcceptanceRate                  = targetAcceptanceRate                  &
                                                 , mpiFinalizeRequested                  = mpiFinalizeRequested                  &
                                                 , maxNumDomainCheckToWarn               = maxNumDomainCheckToWarn               &
                                                 , maxNumDomainCheckToStop               = maxNumDomainCheckToStop               &
@@ -238,9 +242,9 @@ contains
                                                 , scaleFactor                           = scaleFactor                           &
                                                 , startPointVec                         = startPointVec                         &
                                                 , proposalModel                         = proposalModel                         &
-                                                , proposalStartCovMat                   = proposalStartCovMat                   &
-                                                , proposalStartCorMat                   = proposalStartCorMat                   &
                                                 , proposalStartStdVec                   = proposalStartStdVec                   &
+                                                , proposalStartCorMat                   = proposalStartCorMat                   &
+                                                , proposalStartCovMat                   = proposalStartCovMat                   &
                                                 , sampleRefinementCount                 = sampleRefinementCount                 &
                                                 , sampleRefinementMethod                = sampleRefinementMethod                &
                                                 , randomStartPointRequested             = randomStartPointRequested             &
@@ -261,9 +265,9 @@ contains
             return
         end if
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Now depending on the requested parallelism type, determine the process master/slave type and open output files
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         PD%Image%isMaster = .false.
         if (PD%SpecBase%ParallelizationModel%isSinglChain) then
@@ -277,9 +281,9 @@ contains
         end if
         PD%Image%isNotMaster = .not. PD%Image%isMaster
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! setup log file and open output files
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call PD%setupOutputFiles()
         if (PD%Err%occurred) then
@@ -288,9 +292,9 @@ contains
             return
         end if
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! report variable values to the log file
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (PD%isFreshRun) then
             call PD%SpecBase%reportValues(prefix=PD%brand,outputUnit=PD%LogFile%unit,isMasterImage=PD%Image%isMaster)
@@ -298,9 +302,9 @@ contains
             call PD%SpecDRAM%reportValues(prefix=PD%brand,outputUnit=PD%LogFile%unit,isMasterImage=PD%Image%isMaster,splashModeRequested=PD%SpecBase%SilentModeRequested%isFalse)
         end if
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! perform variable value sanity checks
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         PD%Err%msg = ""
         PD%Err%occurred = .false.
@@ -331,9 +335,9 @@ contains
 
         end if
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! setup output files
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         block
             use ParaDRAMChainFileContents_mod, only: ChainFileContents_type
@@ -380,9 +384,9 @@ contains
                                     ")"
         end if
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! setup the proposal distribution
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (PD%SpecMCMC%ProposalModel%isNormal .or. PD%SpecMCMC%ProposalModel%isUniform) then
             !ProposalSymmetric = ProposalSymmetric_type(ndim = ndim, PD = PD)
@@ -411,9 +415,9 @@ contains
             return
         end if
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! run ParaDRAM kernel
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (PD%isFreshRun .and. PD%Image%isMaster) then
             call PD%Decor%writeDecoratedText( text = "\nStarting " // PD%name // " sampling - " // getNiceDateTime() // "\n" &
@@ -434,122 +438,346 @@ contains
                                             , outputUnit = PD%LogFile%unit )
         end if
 
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! start ParaDRAM post-processing
-        !***************************************************************************************************************************
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         blockMasterPostProcessing: if (PD%Image%isMaster) then
 
-            logFileColWidthStr = num2str( max( PD%SpecBase%OutputRealPrecision%val, PD%SpecBase%VariableNameList%MaxLen%val ) + 9_IK )
+            formatStrInt  = "('" // INDENT // "',1A" // PD%LogFile%maxColWidth%str // ",*(I" // PD%LogFile%maxColWidth%str // "))"
+            formatStrReal = "('" // INDENT // "',1A" // PD%LogFile%maxColWidth%str // ",*(E" // PD%LogFile%maxColWidth%str // "." // PD%SpecBase%OutputRealPrecision%str // "))"
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Total number of accepted function calls (unique samples):" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str(PD%Stats%NumFunCall%accepted) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Total number of accepted or rejected function calls:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str(PD%Stats%NumFunCall%acceptedRejected) )
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.numFuncCall.accepted"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%NumFunCall%accepted
+            msg = "This is the total number of accepted function calls (unique samples)."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            !if (PD%SpecDRAM%DelayedRejectionCount%val>0_IK) then
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Total number of accepted or rejected or delayed-rejection (if any requested) function calls:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%NumFunCall%acceptedRejectedDelayed ) )
-            !end if
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if defined CAF_ENABLED || defined MPI_ENABLED
-            !if (PD%SpecBase%ParallelizationModel%isSinglChain) then
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Total number of accepted or rejected or unused function calls (by all processes, including delayed rejections, if any requested):" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str(PD%Stats%NumFunCall%acceptedRejectedDelayedUnused) )
-            !end if
-#endif
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.numFuncCall.acceptedRejected"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%NumFunCall%acceptedRejected
+            msg = "This is the total number of accepted or rejected function calls."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Average MCMC acceptance rate:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str  ( PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted) ) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.numFuncCall.acceptedRejectedDelayed"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%NumFunCall%acceptedRejectedDelayed
+            msg = "This is the total number of accepted or rejected or delayed-rejection (if any requested) function calls."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.numFuncCall.acceptedRejectedDelayedUnused"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%NumFunCall%acceptedRejectedDelayedUnused
+            msg = "This is the total number of accepted or rejected or unused function calls (by all processes, including delayed rejections, if any requested)."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.efficiency.meanAcceptanceRate"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)
+            msg = "This is the average MCMC acceptance rate."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             mcmcSamplingEfficiency = real(PD%Stats%NumFunCall%accepted,kind=RK) / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "MCMC sampling efficiency [ = acceptedFunctionCalls / acceptedPlusRejectedFunctionCalls ]:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str  ( mcmcSamplingEfficiency ) )
 
-            !if (PD%SpecDRAM%DelayedRejectionCount%val>0_IK) then
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "MCMC sampling efficiency (including delayed rejections, if any requested) [ = acceptedFunctionCalls / acceptedPlusRejectedPlusDelayedRejectionFunctionCalls ]:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str  ( real(PD%Stats%NumFunCall%accepted,kind=RK) / real(PD%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK) ) )
-            !end if
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.efficiency.acceptedOverAcceptedRejected"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) mcmcSamplingEfficiency
+            msg =   "This is the MCMC sampling efficiency given the accepted and rejected function calls, that is, &
+                    &the number of accepted function calls divided by the number of (accepted + rejected) function calls."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Total runtime in seconds:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str(PD%Timer%Time%total) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Average effective time cost of each accepted function call, in seconds:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Timer%Time%total / real(PD%Stats%NumFunCall%accepted,kind=RK) ) )
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.efficiency.acceptedOverAcceptedRejectedDelayed"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) real(PD%Stats%NumFunCall%accepted,kind=RK) / real(PD%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK)
+            msg =   "This is the MCMC sampling efficiency given the accepted, rejected, and delayed-rejection (if any requested) function calls, that is, &
+                    &the number of accepted function calls divided by the number of (accepted + rejected + delayed-rejection) function calls."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Average effective time cost of each accepted or rejected function call, in seconds:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Timer%Time%total / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK) ) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if (PD%SpecDRAM%DelayedRejectionCount%val>0_IK) then
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Average effective time cost of each accepted or rejected or delayed-rejection function call, in seconds:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Timer%Time%total / real(PD%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK) ) )
-            end if
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.efficiency.acceptedOverAcceptedRejectedDelayedUnused"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) real(PD%Stats%NumFunCall%accepted,kind=RK) / real(PD%Stats%NumFunCall%acceptedRejectedDelayedUnused,kind=RK)
+            msg =   "This is the MCMC sampling efficiency given the accepted, rejected, delayed-rejection (if any requested), and unused function calls, that is, &
+                    &the number of accepted function calls divided by the number of (accepted + rejected + delayed-rejection + unused) function calls."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-!#if defined CAF_ENABLED || defined MPI_ENABLED
-            !if (PD%SpecBase%ParallelizationModel%isSinglChain) then
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Average effective time cost of each accepted or rejected or unused function call (including delayed-rejections, if any requested), in seconds:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Timer%Time%total / real(PD%Stats%NumFunCall%acceptedRejectedDelayedUnused,kind=RK) ) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Average time cost of inter-process communications per used (accepted or rejected or delayed-rejection) function call, in seconds:" )
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.time.total"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Timer%Time%total
+            msg = "This is the total runtime in seconds."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.time.perFuncCallAccepted"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Timer%Time%total / real(PD%Stats%NumFunCall%accepted,kind=RK)
+            msg = "This is the average effective time cost of each accepted function call, in seconds."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.time.perFuncCallAcceptedRejected"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Timer%Time%total / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
+            msg = "This is the average effective time cost of each accepted or rejected function call, in seconds."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.time.perFuncCallAcceptedRejectedDelayed"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Timer%Time%total / real(PD%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK)
+            msg = "This is the average effective time cost of each accepted or rejected function call (including delayed-rejections, if any requested), in seconds."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.time.perFuncCallAcceptedRejectedDelayedUnused"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Timer%Time%total / real(PD%Stats%NumFunCall%acceptedRejectedDelayedUnused,kind=RK)
+            msg = "This is the average effective time cost of each accepted or rejected or unused function call (including delayed-rejections, if any requested), in seconds."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
             if (PD%Image%count==1_IK) then
-                call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNDEFINED" )
+                msg = UNDEFINED
             else
-                call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%avgCommTimePerFunCall ) )
+                msg = num2str( PD%Stats%avgCommTimePerFunCall )
             end if
-            !end if
-!#endif
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Average pure time cost of each function call, in seconds:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%avgTimePerFunCalInSec ) )
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.time.perInterProcessCommunication"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) msg
+            msg = "This is the average time cost of inter-process communications per used (accepted or rejected or delayed-rejection) function call, in seconds."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Number of processes (images):" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Image%count ) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.time.perFuncCall"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%avgTimePerFunCalInSec
+            msg = "This is the average pure time cost of each function call, in seconds."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.current.numProcess"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Image%count
+            msg = "This is the number of processes (images) used in this simulation."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if (PD%Image%count==1_IK .or. PD%SpecBase%ParallelizationModel%isMultiChain) then
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Estimated maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode:" )
-                call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Image%count ) )
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency:" )
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.current.speedup"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Image%count
+                msg = "This is the estimated maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
                 if (PD%SpecBase%ParallelizationModel%isMultiChain) then
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
+                    msg = "+INFINITY"
                 else
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNDEFINED" )
+                    msg = UNDEFINED
                 end if
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency:" )
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.numProcess"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) msg
+                msg = "This is the predicted optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
                 if (PD%SpecBase%ParallelizationModel%isMultiChain) then
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
+                    msg = "+INFINITY"
                 else
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNDEFINED" )
+                    msg = UNDEFINED
                 end if
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.speedup"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) msg
+                msg = "This is the predicted optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
                 if (PD%SpecBase%ParallelizationModel%isMultiChain) then
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
+                    msg = "+INFINITY"
                 else
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNDEFINED" )
+                    msg = UNDEFINED
                 end if
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.numProcess"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) msg
+                msg = "This is the predicted absolute optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
                 if (PD%SpecBase%ParallelizationModel%isMultiChain) then
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "+INFINITY" )
+                    msg = "+INFINITY"
                 else
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, "UNDEFINED" )
+                    msg = UNDEFINED
                 end if
 
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.speedup"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) msg
+                msg = "This is the predicted absolute optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency."
 #if defined CAF_ENABLED || defined MPI_ENABLED
                 if (PD%Image%count==1_IK) then
-                    msg = PD%name// " is being used in parallel mode but with only one processor.\n&
-                                    &This is computationally inefficient.\n&
-                                    &Consider using the serial version of the code or provide more processes at runtime."
-                    call PD%note( prefix     = PD%brand         &
-                                , outputUnit = PD%LogFile%unit  &
-                                , newline    = "\n"             &
-                                , marginTop  = 0_IK             &
-                                , marginBot  = 1_IK             &
-                                , msg        = msg              )
+                    msg = msg//NLC//PD%name//   " is being used in parallel mode but with only one processor.\n&
+                                                &This is computationally inefficient.\n&
+                                                &Consider using the serial version of the code or provide more processes at runtime."
                     call PD%note( prefix     = PD%brand         &
                                 , outputUnit = output_unit      &
                                 , newline    = "\n"             &
@@ -557,21 +785,34 @@ contains
                                 , marginBot  = 0_IK             &
                                 , msg        = msg              )
                 end if
+#endif
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
 
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if defined CAF_ENABLED || defined MPI_ENABLED
             else
 
                 block
 
-                    use Statistics_mod, only: getGeoPDF
-                    integer(IK) :: imageCount, maxSpeedupImageCount, lenGeoPDF
+                    use Statistics_mod, only: getgeoPDF
+                    logical     :: maxSpeedupFound
+                    integer(IK) :: imageCount, maxSpeedupImageCount, lengeoPDF
                     real(RK)    :: seqSecTime, parSecTime, comSecTime, serialTime, avgCommTimePerFunCallPerNode
-                    real(RK)    :: speedup, currentSpeedup, maxSpeedup
-                    real(RK)    :: firstImageWeight
-                    real(RK)    , allocatable :: GeoPDF(:)
-                    character(:), allocatable :: formatIn
+                    real(RK)    :: currentSpeedup, maxSpeedup
+                    real(RK)    :: speedup, firstImageWeight
+                    real(RK)    , allocatable :: geoPDF(:), speedupVec(:), tempVec(:)
+                    character(:), allocatable :: formatIn, formatScaling
 
-                    GeoPDF = getGeoPDF(successProb=mcmcSamplingEfficiency,minSeqLen=PD%Image%count)
-                    lenGeoPDF = size(GeoPDF)
+                    formatScaling = "('" // INDENT // "',10(E" // PD%LogFile%maxColWidth%str // "." // PD%SpecBase%OutputRealPrecision%str // "))" ! ,:,','
+
+                    geoPDF = getgeoPDF(successProb=mcmcSamplingEfficiency,minSeqLen=10*PD%Image%count)
+                    lengeoPDF = size(geoPDF)
 
                     ! compute the serial and sequential runtime of the code per function call
 
@@ -582,36 +823,64 @@ contains
 
                     avgCommTimePerFunCallPerNode = PD%Stats%avgCommTimePerFunCall / real(PD%Image%count-1_IK,kind=RK)
 
-                    !***************************************************************************************************************
-                    ! compute the optimal parallelism effciency with the current MCMC sampling efficiency
-                    !***************************************************************************************************************
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    ! compute the optimal parallelism efficiency with the current MCMC sampling efficiency
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     ! compute fraction of points sampled by the first image
 
                     maxSpeedup = 1._RK
                     maxSpeedupImageCount = 1_IK
-                    loopOptimalImageCount: do imageCount = 2, max(PD%Image%count,lenGeoPDF)
-                        firstImageWeight = sum(GeoPDF(1:lenGeoPDF:imageCount))
+                    if (allocated(speedupVec)) deallocate(speedupVec); allocate(speedupVec(lengeoPDF))
+                    speedupVec(1) = 1._RK
+                    loopOptimalImageCount: do imageCount = 2, lengeoPDF
+                        firstImageWeight = sum(geoPDF(1:lengeoPDF:imageCount))
                         parSecTime = PD%Stats%avgTimePerFunCalInSec * firstImageWeight ! parallel-section runtime of the code per function call
                         comSecTime = (imageCount-1_IK) * avgCommTimePerFunCallPerNode  ! assumption: communication time grows linearly with the number of nodes
-                        speedup = serialTime / (seqSecTime+parSecTime+comSecTime)
-                        maxSpeedup = max( maxSpeedup , speedup )
-                        if (maxSpeedup==speedup) maxSpeedupImageCount = imageCount
+                        speedupVec(imageCount) = serialTime / (seqSecTime+parSecTime+comSecTime)
+                        maxSpeedup = max( maxSpeedup , speedupVec(imageCount) )
+                        if (maxSpeedup==speedupVec(imageCount)) maxSpeedupImageCount = imageCount
                         if (imageCount==PD%Image%count) then
-                            currentSpeedup = speedup
-                            if (maxSpeedup/=speedup) exit loopOptimalImageCount
+                            currentSpeedup = speedupVec(imageCount)
+                            !if (maxSpeedup/=speedupVec(imageCount)) exit loopOptimalImageCount
                         end if
                     end do loopOptimalImageCount
 
-                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Estimated maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode:" )
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( currentSpeedup ) )
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency:" )
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( maxSpeedupImageCount ) )
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.current.speedup"
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) currentSpeedup
+                    msg = "This is the estimated maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode."
+                    call PD%note( prefix     = PD%brand         &
+                                , outputUnit = PD%LogFile%unit  &
+                                , newline    = NLC              &
+                                , marginTop  = 1_IK             &
+                                , marginBot  = 1_IK             &
+                                , msg        = msg              )
 
-                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency:" )
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( maxSpeedup ) )
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.numProcess"
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) maxSpeedupImageCount
+                    msg = "This is the predicted optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency."
+                    call PD%note( prefix     = PD%brand         &
+                                , outputUnit = PD%LogFile%unit  &
+                                , newline    = NLC              &
+                                , marginTop  = 1_IK             &
+                                , marginBot  = 1_IK             &
+                                , msg        = msg              )
+
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.speedup"
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) maxSpeedup
+                    msg = ""
                     if (currentSpeedup<1._RK) then
                         formatIn = "(g0.6)"
                         msg =   "The time cost of calling the user-provided objective function must be at least " // &
@@ -627,68 +896,184 @@ contains
                                         &(if used within the same computing environment and with the same configuration as used here)."
                         end if
                         call PD%note( prefix     = PD%brand         &
-                                    , outputUnit = PD%LogFile%unit  &
-                                    , newline    = NLC              &
-                                    , marginTop  = 0_IK             &
-                                    , marginBot  = 1_IK             &
-                                    , msg        = msg              )
-                        call PD%note( prefix     = PD%brand         &
                                     , outputUnit = output_unit      &
                                     , newline    = NLC              &
                                     , marginTop  = 3_IK             &
                                     , marginBot  = 0_IK             &
                                     , msg        = msg              )
+                        msg = NLC // msg
                     end if
+                    msg = "This is the predicted optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency." // msg
+                    call PD%note( prefix     = PD%brand         &
+                                , outputUnit = PD%LogFile%unit  &
+                                , newline    = NLC              &
+                                , marginTop  = 1_IK             &
+                                , marginBot  = 1_IK             &
+                                , msg        = msg              )
 
-                    !***************************************************************************************************************
-                    ! compute the absolute optimal parallelism effciency under any MCMC sampling efficiency
-                    !***************************************************************************************************************
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.scaling.strong.speedup"
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    !write(PD%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lengeoPDF)
+                    !write(PD%LogFile%unit,formatStrReal) "speedup" , (speedupVec(imageCount), imageCount = 1, lengeoPDF)
+                    do imageCount = 1, lengeoPDF, 10
+                        write(PD%LogFile%unit,formatScaling) speedupVec(imageCount:min(imageCount+9_IK,lengeoPDF))
+                    end do
+                    msg =   "This is the predicted strong-scaling speedup behavior of the "//PD%SpecBase%ParallelizationModel%val//" parallelization model, &
+                            &given the current MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."
+                    call PD%note( prefix     = PD%brand         &
+                                , outputUnit = PD%LogFile%unit  &
+                                , newline    = NLC              &
+                                , marginTop  = 1_IK             &
+                                , marginBot  = 1_IK             &
+                                , msg        = msg              )
+
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    ! compute the absolute optimal parallelism efficiency under any MCMC sampling efficiency
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     imageCount = 1_IK
                     maxSpeedup = 1._RK
                     maxSpeedupImageCount = 1_IK
+                    speedupVec(1) = 1._RK
+                    maxSpeedupFound = .false.
+                    lenGeoPDF = size(speedupVec)
                     loopAbsoluteOptimalImageCount: do 
                         imageCount = imageCount + 1_IK
+                        if (imageCount>lenGeoPDF) then
+                            if (maxSpeedupFound) exit loopAbsoluteOptimalImageCount
+                            lenGeoPDF = 2_IK * lenGeoPDF
+                            if (allocated(tempVec)) deallocate(tempVec); allocate(tempVec(lenGeoPDF))
+                            tempVec(1:lenGeoPDF/2_IK) = speedupVec
+                            call move_alloc(tempVec,speedupVec)
+                        end if
                         parSecTime = PD%Stats%avgTimePerFunCalInSec / imageCount
                         comSecTime = (imageCount-1_IK) * avgCommTimePerFunCallPerNode  ! assumption: communication time grows linearly with the number of nodes
-                        speedup = serialTime / (seqSecTime+parSecTime+comSecTime)
-                        if (maxSpeedup>speedup) then
+                        speedupVec(imageCount) = serialTime / (seqSecTime+parSecTime+comSecTime)
+                        if (.not.maxSpeedupFound .and. maxSpeedup>speedupVec(imageCount)) then
                             maxSpeedupImageCount = imageCount - 1_IK
-                            exit loopAbsoluteOptimalImageCount
+                            maxSpeedupFound = .true.
+                            !exit loopAbsoluteOptimalImageCount
                         end if
-                        maxSpeedup = max( maxSpeedup , speedup )
+                        maxSpeedup = max( maxSpeedup , speedupVec(imageCount) )
                     end do loopAbsoluteOptimalImageCount
 
-                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( maxSpeedupImageCount ) )
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Predicted absolute optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency:" )
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( maxSpeedup ) )
-
-                    msg = "This simulation will likely NOT benefit from any additional computing processor beyond the predicted absolute optimal number, "//num2str(maxSpeedupImageCount) &
-                        //", in the above. This is true for any value of MCMC sampling efficiency."
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.numProcess"
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) maxSpeedupImageCount
+                    msg = "This is the predicted absolute optimal number of physical computing processes for "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency."
                     call PD%note( prefix     = PD%brand         &
                                 , outputUnit = PD%LogFile%unit  &
                                 , newline    = NLC              &
-                                , marginTop  = 0_IK             &
+                                , marginTop  = 1_IK             &
                                 , marginBot  = 1_IK             &
                                 , msg        = msg              )
+
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.speedup"
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) maxSpeedup
+                    msg =   "This is the predicted absolute optimal maximum speedup gained via "//PD%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency. &
+                            &This simulation will likely NOT benefit from any additional computing processors beyond the predicted absolute optimal number, " // num2str(maxSpeedupImageCount) // ", &
+                            &in the above. This is true for any value of MCMC sampling efficiency. Keep in mind that the predicted absolute optimal number of processors is just an estimate &
+                            &whose accuracy depends on many runtime factors, including the topology of the communication network being used, the number of processors per node, &
+                            &and the number of tasks to each processor or node."
+                    call PD%note( prefix     = PD%brand         &
+                                , outputUnit = PD%LogFile%unit  &
+                                , newline    = NLC              &
+                                , marginTop  = 1_IK             &
+                                , marginBot  = 1_IK             &
+                                , msg        = msg              )
+
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.scaling.strong.speedup"
+                    write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    !write(PD%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lengeoPDF)
+                    !write(PD%LogFile%unit,formatStrReal)"speedup"   , (speedupVec(imageCount), imageCount = 1, lengeoPDF)
+                    do imageCount = 1, lengeoPDF, 10
+                        write(PD%LogFile%unit,formatScaling) speedupVec(imageCount:min(imageCount+9_IK,lengeoPDF))
+                    end do
+                    msg =   "This is the predicted absolute strong-scaling speedup behavior of the "//PD%SpecBase%ParallelizationModel%val//" parallelization model, &
+                            &under any MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."
+                    call PD%note( prefix     = PD%brand         &
+                                , outputUnit = PD%LogFile%unit  &
+                                , newline    = NLC              &
+                                , marginTop  = 1_IK             &
+                                , marginBot  = 1_IK             &
+                                , msg        = msg              )
+
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 end block
 #endif
             end if
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Burnin location in the compact chain, based on the occurrence likelihood:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%BurninLoc%compact ) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Burnin location in the compact chain, based on the value of burninAdaptationMeasure:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%AdaptationBurninLoc%compact ) )
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.compact.burnin.location.likelihoodBased"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%BurninLoc%compact
+            msg = "This is the burnin location in the compact chain, based on the occurrence likelihood."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Burnin location in the verbose (Markov) chain, based on the occurrence likelihood:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%BurninLoc%verbose ) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Burnin location in the verbose (Markov) chain, based on the value of burninAdaptationMeasure:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%AdaptationBurninLoc%verbose ) )
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.compact.burnin.location.adaptationBased"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%AdaptationBurninLoc%compact
+            msg = "This is the burnin location in the compact chain, based on the value of burninAdaptationMeasure simulation specification."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.burnin.location.likelihoodBased"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%BurninLoc%verbose
+            msg = "This is the burnin location in the verbose (Markov) chain, based on the occurrence likelihood."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.burnin.location.adaptationBased"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%AdaptationBurninLoc%verbose
+            msg = "This is the burnin location in the verbose (Markov) chain, based on the value of burninAdaptationMeasure simulation specification."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             ! reset BurninLoc to the maximum value
 
@@ -697,38 +1082,78 @@ contains
                 PD%Stats%BurninLoc%verbose = PD%Stats%AdaptationBurninLoc%verbose
             end if
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Location of the first occurrence of maximum-logFunc in the compact chain:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%LogFuncMode%Loc%compact ) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Location of the first occurrence of maximum-logFunc in the verbose (Markov) chain:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%LogFuncMode%Loc%verbose ) )
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.logFunc.max"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%LogFuncMode%val
+            msg = "This is the maximum logFunc value (the maximum of the user-specified objective function)."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Maximum-logFunc value (maximum of the user-specified objective function):" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( PD%Stats%LogFuncMode%val ) )
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Maximum-logFunc coordinates (mode of the user-specified objective function):" )
-            PD%SpecBase%VariableNameList%MaxLen%val = max( PD%SpecBase%VariableNameList%MaxLen%val , PD%SpecBase%OutputColumnWidth%val )
-            PD%SpecBase%VariableNameList%MaxLen%val = max( PD%SpecBase%VariableNameList%MaxLen%val , PD%SpecBase%OutputRealPrecision%val + 7 )
-            PD%SpecBase%VariableNameList%MaxLen%str = num2str(PD%SpecBase%VariableNameList%MaxLen%val+1)
-            formatStr = "(*(A"//logFileColWidthStr//"))" !formatStr = "(*(g0,:,', '))"
-            write(PD%LogFile%unit,formatStr) (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
-            formatStr = "(*(E"//logFileColWidthStr//"."//PD%SpecBase%OutputRealPrecision%str//"))"
-            write(PD%LogFile%unit,formatStr) PD%Stats%LogFuncMode%Crd
-            call PD%Decor%write(PD%LogFile%unit,0,1)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.compact.logFunc.max.location"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%LogFuncMode%Loc%compact
+            msg = "This is the location of the first occurrence of the maximum logFunc in the compact chain."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            !***********************************************************************************************************************
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.logFunc.max.location"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%LogFuncMode%Loc%verbose
+            msg = "This is the location of the first occurrence of the maximum logFunc in the verbose (Markov) chain."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            formatAllReal = "('" // INDENT // "',*(E" // PD%LogFile%maxColWidth%str // "." // PD%SpecBase%OutputRealPrecision%str // "))"
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.logFunc.max.state"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,PD%LogFile%format) (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), i=1, ndim)
+            write(PD%LogFile%unit,formatAllReal) PD%Stats%LogFuncMode%Crd
+            msg = "This is the coordinates, within the domain of the user-specified objective function, where the maximum logFunc occurs."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! Compute the statistical properties of the MCMC chain
-            !***********************************************************************************************************************
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if (PD%Image%isFirst) then
                 call PD%note( prefix        = PD%brand          &
                             , outputUnit    = output_unit       &
                             , newline       = NLC               &
                             , marginTop     = 3_IK              &
-                            , msg           = "Computing the Markov chain's statistical properties..." )
+                            , msg           = "Computing the statistical properties of the Markov chain..." )
             end if
 
-            call PD%Decor%writeDecoratedText( text = "\nMarkov chain's statistical properties\n" &
+            call PD%Decor%writeDecoratedText( text = "\nThe statistical properties of the Markov chain\n" &
                                             , marginTop = 1_IK  &
                                             , marginBot = 1_IK  &
                                             , newline = "\n"    &
@@ -775,42 +1200,91 @@ contains
 
             ! report the MCMC chain statistics
 
-            formatStr = "(1A" // logFileColWidthStr // ",*(E" // logFileColWidthStr // "." // PD%SpecBase%OutputRealPrecision%str // "))"
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "length of the Markov Chain excluding burnin:" )
-            call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str(PD%Stats%Chain%count) )
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.length.burninExcluded"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%Chain%count
+            msg = "This is the length of the verbose (Markov) Chain excluding burnin."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Mean and standard deviation of the Markov chain variables:")
-            write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "", "Mean", "Standard Deviation"
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.avgStd"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,PD%LogFile%format) "variableName", "Mean", "Standard Deviation"
             do i = 1, ndim
-                write( PD%LogFile%unit , formatStr ) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Chain%Mean(i), sqrt(PD%Stats%Chain%CovMat(i,i))
+                write(PD%LogFile%unit,formatStrReal) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Chain%Mean(i), sqrt(PD%Stats%Chain%CovMat(i,i))
             end do
-            call PD%Decor%write(PD%LogFile%unit,0,1)
+            msg = "This is the mean and standard deviation of the verbose (Markov) chain variables."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Covariance matrix of the Markov chain:")
-            write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.covmat"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,PD%LogFile%format) "", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
             do i = 1, ndim
-                write( PD%LogFile%unit , formatStr ) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Chain%CovMat(1:ndim,i)
+                write(PD%LogFile%unit,formatStrReal) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Chain%CovMat(1:ndim,i)
             end do
-            call PD%Decor%write(PD%LogFile%unit,0,1)
+            msg = "This is the covariance matrix of the verbose (Markov) chain."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Correlation matrix of the Markov chain:")
-            write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.cormat"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,PD%LogFile%format) "", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
             do i = 1, ndim
-                write( PD%LogFile%unit , formatStr ) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Chain%CorMat(1:ndim,i)
+                write(PD%LogFile%unit,formatStrReal) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Chain%CorMat(1:ndim,i)
             end do
-            call PD%Decor%write(PD%LogFile%unit,0,1)
+            msg = "This is the correlation matrix of the verbose (Markov) chain."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Quantiles of the Markov chain variables:")
-            write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "Quantile", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.quantile"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,PD%LogFile%format) "Quantile", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
             do iq = 1, QPROB%count
-                write( PD%LogFile%unit , formatStr ) trim(adjustl(QPROB%Name(iq))), (PD%Stats%Chain%Quantile(iq,i),i=1,ndim)
+                write(PD%LogFile%unit,formatStrReal) trim(adjustl(QPROB%Name(iq))), (PD%Stats%Chain%Quantile(iq,i),i=1,ndim)
             end do
-            call PD%Decor%write(PD%LogFile%unit,0,1)
+            msg = "This is the quantiles table of the variables of the verbose (Markov) chain."
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
 
-            !***********************************************************************************************************************
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! Generate the i.i.d. sample statistics and output file (if requested)
-            !***********************************************************************************************************************
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             ! report refined sample statistics, and generate output refined sample if requested.
 
@@ -836,39 +1310,112 @@ contains
 
             ! compute the maximum integrated autocorrelation times for each variable
 
-            formatStr = "(2I" // logFileColWidthStr // ",*(E" // logFileColWidthStr // "." // PD%SpecBase%OutputRealPrecision%str // "))"
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            call PD%Decor%write(PD%LogFile%unit,1,0,1, "Integrated Autocorrelation (IAC) of the Markov chain:")
-            !write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "RefinementStage","SampleSize","IAC(SampleLogFunc)",("IAC("//trim(adjustl(PD%SpecBase%VariableNameList%Val(i)))//")",i=1,ndim)
-            write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "RefinementStage","SampleSize","IAC_SampleLogFunc",("IAC_"//trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
+            formatStr = "('" // INDENT // "',2I" // PD%LogFile%maxColWidth%str // ",*(E" // PD%LogFile%maxColWidth%str // "." // PD%SpecBase%OutputRealPrecision%str // "))"
+
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.iac"
+            write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(PD%LogFile%unit,PD%LogFile%format) "RefinementStage","SampleSize","IAC_SampleLogFunc",("IAC_"//trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
             do i = 0, PD%RefinedChain%numRefinement
-                write( PD%LogFile%unit , formatStr ) i, PD%RefinedChain%Count(i)%Verbose, PD%RefinedChain%IAC(0:ndim,i)
+                write(PD%LogFile%unit,formatStr) i, PD%RefinedChain%Count(i)%Verbose, PD%RefinedChain%IAC(0:ndim,i)
             end do
-            call PD%Decor%write(PD%LogFile%unit,0,1)
-
+            msg = "This is the table of the Integrated Autocorrelation (IAC) of individual variables in the verbose (Markov) chain, at increasing stages of chain refinements."
             if (PD%RefinedChain%numRefinement==0_IK) then
-                call PD%warn( prefix = PD%brand &
-                            , newline = "\n" &
-                            , outputUnit = PD%LogFile%unit &
-                            , msg = "The user-specified sampleRefinementCount ("// num2str(PD%SpecMCMC%SampleRefinementCount%val) // ") &
+                msg = msg // NLC // "The user-specified sampleRefinementCount ("// num2str(PD%SpecMCMC%SampleRefinementCount%val) // ") &
                                     &is too small to ensure an accurate computation of the decorrelated i.i.d. effective sample size. &
-                                    &No refinement of the Markov chain was performed." &
-                            )
+                                    &No refinement of the Markov chain was performed."
             end if
+            call PD%note( prefix     = PD%brand         &
+                        , outputUnit = PD%LogFile%unit  &
+                        , newline    = NLC              &
+                        , marginTop  = 1_IK             &
+                        , marginBot  = 1_IK             &
+                        , msg        = msg              )
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             ! report the final Effective Sample Size (ESS) based on IAC
 
             blockEffectiveSampleSize: associate( effectiveSampleSize => sum(PD%RefinedChain%Weight(1:PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%compact)) )
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Estimated Effective (decorrelated) Sample Size (ESS):" )
-                call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( effectiveSampleSize ) )
-    
-                if (PD%SpecDRAM%DelayedRejectionCount%val==0_IK) then
-                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Effective sampling efficiency ( = effectiveSampleSize / acceptedPlusRejectedFunctionCalls ):" )
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( real(effectiveSampleSize,kind=RK) / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK) ) )
-                else
-                    call PD%Decor%write(PD%LogFile%unit,1,0,1, "Effective sampling efficiency (including delayed rejections) [ = effectiveSampleSize / acceptedPlusRejectedPlusDelayedRejectionFunctionCalls ]:" )
-                    call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str( real(effectiveSampleSize,kind=RK) / real(PD%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK) ) )
-                end if
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.ess"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) effectiveSampleSize
+                msg = "This is the estimated Effective (decorrelated) Sample Size (ESS) of the final refined chain."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAccepted"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(PD%Stats%NumFunCall%accepted,kind=RK)
+                msg =   "This is the effective MCMC sampling efficiency given the accepted function calls, that is, &
+                        &the final refined effective sample size (ESS) divided by the number of accepted function calls."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAcceptedRejected"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
+                msg =   "This is the effective MCMC sampling efficiency given the accepted and rejected function calls, that is, &
+                        &the final refined effective sample size (ESS) divided by the number of (accepted + rejected) function calls."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAcceptedRejectedDelayed"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(PD%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK)
+                msg =   "This is the effective MCMC sampling efficiency given the accepted, rejected, and delayed-rejection (if any requested) function calls, that is, &
+                        &the final refined effective sample size (ESS) divided by the number of (accepted + rejected + delayed-rejection) function calls."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAcceptedRejectedDelayedUnused"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(PD%Stats%NumFunCall%acceptedRejectedDelayedUnused,kind=RK)
+                msg =   "This is the effective MCMC sampling efficiency given the accepted, rejected, delayed-rejection (if any requested), and unused function calls, that is, &
+                        &the final refined effective sample size (ESS) divided by the number of (accepted + rejected + delayed-rejection + unused) function calls."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
             end associate blockEffectiveSampleSize
 
             ! generate output refined sample if requested
@@ -937,7 +1484,7 @@ contains
                 ! begin sample file generation
                 !*******************************************************************************************************************
 
-                if (PD%SpecBase%SampleSize%val/=-1) then
+                if (PD%SpecBase%SampleSize%val/=-1_IK) then
 
                     if (PD%SpecBase%SampleSize%val<0_IK) PD%SpecBase%SampleSize%val = abs(PD%SpecBase%SampleSize%val) * PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%verbose
 
@@ -1028,19 +1575,19 @@ contains
                 call PD%RefinedChain%write(PD%SampleFile%unit,PD%SampleFile%format,formatStr)
                 close(PD%SampleFile%unit)
 
-                !***********************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 ! Compute the statistical properties of the refined sample
-                !***********************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 if (PD%Image%isFirst) then
                     call PD%note( prefix        = PD%brand          &
                                 , outputUnit    = output_unit       &
                                 , newline       = NLC               &
                                 , marginTop     = 2_IK              &
-                                , msg           = "Computing the output sample's statistical properties..." )
+                                , msg           = "Computing the statistical properties of the final refined sample..." )
                 end if
 
-                call PD%Decor%writeDecoratedText( text = "\nOutput sample's statistical properties\n" &
+                call PD%Decor%writeDecoratedText( text = "\nThe statistical properties of the final refined sample \n" &
                                                 , marginTop = 1_IK  &
                                                 , marginBot = 1_IK  &
                                                 , newline = "\n"    &
@@ -1085,44 +1632,95 @@ contains
                                                                             )
                 end do
 
-                ! report the MCMC chain statistics
+                ! report the refined chain statistics
 
-                formatStr = "(1A" // logFileColWidthStr // ",*(E" // logFileColWidthStr // "." // PD%SpecBase%OutputRealPrecision%str // "))"
+                !formatStr = "(1A" // PD%LogFile%maxColWidth%str // ",*(E" // PD%LogFile%maxColWidth%str // "." // PD%SpecBase%OutputRealPrecision%str // "))"
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Final output sample size:" )
-                call PD%Decor%write(PD%LogFile%unit,0,1,1, num2str(PD%Stats%Sample%count) )
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Mean and standard deviation of the output sample:")
-                write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "", "Mean", "Standard Deviation"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.length"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) PD%Stats%Sample%count
+                msg = "This is the final output refined sample size."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.avgStd"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,PD%LogFile%format) "variableName", "Mean", "Standard Deviation"
                 do i = 1, ndim
-                    write( PD%LogFile%unit , formatStr ) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Sample%Mean(i), sqrt(PD%Stats%Sample%CovMat(i,i))
+                    write(PD%LogFile%unit,formatStrReal) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Sample%Mean(i), sqrt(PD%Stats%Sample%CovMat(i,i))
                 end do
-                call PD%Decor%write(PD%LogFile%unit,0,1)
+                msg = "This is the Mean and standard deviation table of the final output refined sample."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Covariance matrix of the output sample:")
-                write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.covmat"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,PD%LogFile%format) "", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
                 do i = 1, ndim
-                    write( PD%LogFile%unit , formatStr ) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Sample%CovMat(1:ndim,i)
+                    write(PD%LogFile%unit,formatStrReal) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Sample%CovMat(1:ndim,i)
                 end do
-                call PD%Decor%write(PD%LogFile%unit,0,1)
+                msg = "This is the covariance matrix of the final output refined sample."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Correlation matrix of the output sample:")
-                write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.cormat"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,PD%LogFile%format) "", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
                 do i = 1, ndim
-                    write( PD%LogFile%unit , formatStr ) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Sample%CorMat(1:ndim,i)
+                    write(PD%LogFile%unit,formatStrReal) trim(adjustl(PD%SpecBase%VariableNameList%Val(i))), PD%Stats%Sample%CorMat(1:ndim,i)
                 end do
-                call PD%Decor%write(PD%LogFile%unit,0,1)
+                msg = "This is the correlation matrix of the final output refined sample."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
 
-                call PD%Decor%write(PD%LogFile%unit,1,0,1, "Quantiles of the output sample's variables:")
-                write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "Quantile", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.quantile"
+                write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(PD%LogFile%unit,PD%LogFile%format) "Quantile", (trim(adjustl(PD%SpecBase%VariableNameList%Val(i))),i=1,ndim)
                 do iq = 1, QPROB%count
-                    write( PD%LogFile%unit , formatStr ) trim(adjustl(QPROB%Name(iq))), (PD%Stats%Sample%Quantile(iq,i),i=1,ndim)
+                    write(PD%LogFile%unit,formatStrReal) trim(adjustl(QPROB%Name(iq))), (PD%Stats%Sample%Quantile(iq,i),i=1,ndim)
                 end do
-                call PD%Decor%write(PD%LogFile%unit,0,1)
+                msg = "This is the quantiles table of the variables of the final output refined sample."
+                call PD%note( prefix     = PD%brand         &
+                            , outputUnit = PD%LogFile%unit  &
+                            , newline    = NLC              &
+                            , marginTop  = 1_IK             &
+                            , marginBot  = 1_IK             &
+                            , msg        = msg              )
 
-                !***********************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 ! Begin inter-chain convergence test in multiChain parallelization mode
-                !***********************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
 
@@ -1189,10 +1787,15 @@ contains
 
                         ! compute and report the KS convergence probabilities for all images
 
-                        formatStr = "(1I" // logFileColWidthStr // ",*(E" // logFileColWidthStr // "." // PD%SpecBase%OutputRealPrecision%str // "))"
+                        formatStr = "(1I" // PD%LogFile%maxColWidth%str // ",*(E" // PD%LogFile%maxColWidth%str // "." // PD%SpecBase%OutputRealPrecision%str // "))"
 
-                        call PD%Decor%write(PD%LogFile%unit,1,0,1, "Pairwise inter-chain Kolmogorov-Smirnov (KS) convergence (similarity) probabilities:" )
-                        write(PD%LogFile%unit, "(*(A"//logFileColWidthStr//"))") "ProcessID",("probKS("//trim(adjustl(PD%RefinedChain%ColHeader(i)%record))//")",i=0,ndim)
+                        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                        write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                        write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.kstest.prob"
+                        write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                        write(PD%LogFile%unit,PD%LogFile%format) "ProcessID",("probKS("//trim(adjustl(PD%RefinedChain%ColHeader(i)%record))//")",i=0,ndim)
+
                         do imageID = 1, PD%Image%count
 
                             if (imageID/=PD%Image%id) then
@@ -1240,20 +1843,36 @@ contains
 
                                 ! write the inter-chain KS probability table row
 
-                                write( PD%LogFile%unit , formatStr ) imageID, (ProbKS(i), i = 0, ndim)
+                                write(PD%LogFile%unit, formatStr) imageID, (ProbKS(i), i = 0, ndim)
 
                             end if
 
                         end do
-
-                        call PD%note( prefix = PD%brand, outputUnit = PD%LogFile%unit, newline = "\n", msg = "Higher KS probabilities are better, indicating less evidence for a lack of convergence." )
+                        msg =   "This is the table pairwise inter-chain Kolmogorov-Smirnov (KS) convergence (similarity) probabilities. &
+                                &Higher KS probabilities are better, indicating less evidence for a lack of convergence."
+                        call PD%note( prefix     = PD%brand         &
+                                    , outputUnit = PD%LogFile%unit  &
+                                    , newline    = NLC              &
+                                    , marginTop  = 1_IK             &
+                                    , marginBot  = 1_IK             &
+                                    , msg        = msg              )
 
                         ! write the smallest KS probabilities
 
-                        call PD%Decor%write(PD%LogFile%unit,0,0,1, "Smallest KS probability for the inter-chain sampling convergence:" )
-                        call PD%Decor%write(PD%LogFile%unit,0,1,1,  num2str(minProbKS)//" for "//PD%RefinedChain%ColHeader(indexMinProbKS)%record//&
-                                                                    " on the chains generated by processes "//num2str(PD%Image%id)//&
-                                                                    " and "//num2str(imageMinProbKS)//"." )
+                        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                        write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                        write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.kstest.prob.min"
+                        write(PD%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                        write(PD%LogFile%unit,GENERIC_TABBED_FORMAT) minProbKS
+                        msg =   "This is the smallest KS-test probability for the inter-chain sampling convergence, which has happened between "//PD%RefinedChain%ColHeader(indexMinProbKS)%record// &
+                                " on the chains generated by processes "//num2str(PD%Image%id)//" and "//num2str(imageMinProbKS)//"."
+                        call PD%note( prefix     = PD%brand         &
+                                    , outputUnit = PD%LogFile%unit  &
+                                    , newline    = NLC              &
+                                    , marginTop  = 1_IK             &
+                                    , marginBot  = 1_IK             &
+                                    , msg        = msg              )
 
                         ! report the smallest KS probabilities on stdout
 
@@ -1291,15 +1910,15 @@ contains
                 end if blockInterChainConvergence
 #endif
 
-                !***********************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 ! End inter-chain convergence test in multiChain parallelization mode
-                !***********************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             end if blockSampleFileGeneration
 
-            !***********************************************************************************************************************
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             ! End of generating the i.i.d. sample statistics and output file (if requested)
-            !***********************************************************************************************************************
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             call PD%Decor%write(PD%LogFile%unit,1,1)
 
@@ -1334,8 +1953,8 @@ contains
 
     end subroutine runSampler
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module subroutine getSpecFromInputFile(PD,nd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -1361,7 +1980,7 @@ contains
         use SpecBase_ParallelizationModel_mod               , only: parallelizationModel
         use SpecBase_InputFileHasPriority_mod               , only: inputFileHasPriority
         use SpecBase_ProgressReportPeriod_mod               , only: progressReportPeriod
-        use SpecBase_TargetAcceptanceRate_mod               , only: TargetAcceptanceRate
+        use SpecBase_targetAcceptanceRate_mod               , only: targetAcceptanceRate
         use SpecBase_MpiFinalizeRequested_mod               , only: mpiFinalizeRequested
         use SpecBase_MaxNumDomainCheckToWarn_mod            , only: maxNumDomainCheckToWarn
         use SpecBase_MaxNumDomainCheckToStop_mod            , only: maxNumDomainCheckToStop
@@ -1374,9 +1993,9 @@ contains
         use SpecMCMC_ScaleFactor_mod                        , only: scaleFactor
         use SpecMCMC_StartPointVec_mod                      , only: startPointVec
         use SpecMCMC_ProposalModel_mod                      , only: proposalModel
-        use SpecMCMC_ProposalStartCovMat_mod                , only: ProposalStartCovMat
-        use SpecMCMC_ProposalStartCorMat_mod                , only: ProposalStartCorMat
-        use SpecMCMC_ProposalStartStdVec_mod                , only: ProposalStartStdVec
+        use SpecMCMC_proposalStartCovMat_mod                , only: proposalStartCovMat
+        use SpecMCMC_proposalStartCorMat_mod                , only: proposalStartCorMat
+        use SpecMCMC_proposalStartStdVec_mod                , only: proposalStartStdVec
         use SpecMCMC_SampleRefinementCount_mod              , only: sampleRefinementCount
         use SpecMCMC_sampleRefinementMethod_mod             , only: sampleRefinementMethod
         use SpecMCMC_RandomStartPointRequested_mod          , only: randomStartPointRequested
@@ -1413,7 +2032,7 @@ contains
         namelist /ParaDRAM/ parallelizationModel
         namelist /ParaDRAM/ progressReportPeriod
         namelist /ParaDRAM/ inputFileHasPriority
-        namelist /ParaDRAM/ TargetAcceptanceRate
+        namelist /ParaDRAM/ targetAcceptanceRate
         namelist /ParaDRAM/ mpiFinalizeRequested
         namelist /ParaDRAM/ maxNumDomainCheckToWarn
         namelist /ParaDRAM/ maxNumDomainCheckToStop
@@ -1426,9 +2045,9 @@ contains
         namelist /ParaDRAM/ scaleFactor
         namelist /ParaDRAM/ startPointVec
         namelist /ParaDRAM/ proposalModel
-        namelist /ParaDRAM/ proposalStartCovMat
-        namelist /ParaDRAM/ proposalStartCorMat
         namelist /ParaDRAM/ proposalStartStdVec
+        namelist /ParaDRAM/ proposalStartCorMat
+        namelist /ParaDRAM/ proposalStartCovMat
         namelist /ParaDRAM/ sampleRefinementCount
         namelist /ParaDRAM/ sampleRefinementMethod
         namelist /ParaDRAM/ randomStartPointRequested
@@ -1564,7 +2183,7 @@ contains
 
   end subroutine getSpecFromInputFile
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end submodule Setup_smod
