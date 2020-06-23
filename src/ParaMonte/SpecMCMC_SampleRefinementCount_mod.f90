@@ -71,13 +71,13 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSampleRefinementCount
 #endif
-        use Constants_mod, only: IK, NULL_IK, POSINF_IK
+        use Constants_mod, only: IK, NULL_IK !, POSINF_IK
         use String_mod, only: num2str
         use Decoration_mod, only: TAB
         implicit none
         character(*), intent(in)  :: methodName
         type(SampleRefinementCount_type) :: SampleRefinementCountObj
-        SampleRefinementCountObj%def  = POSINF_IK
+        SampleRefinementCountObj%def  = 1_IK !POSINF_IK
         SampleRefinementCountObj%null = NULL_IK
         SampleRefinementCountObj%desc = &
         "When sampleSize < 0, the variable sampleRefinementCount is an integer that dictates the maximum number of times &
