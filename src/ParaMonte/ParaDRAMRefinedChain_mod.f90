@@ -268,7 +268,8 @@ contains
             maxRefinementCountIsReached = RefinedChain%numRefinement==maxRefinementCount
             if (integratedAutoCorrTime<2._RK .or. maxRefinementCountIsReached) then
                 if (Method%isViaCompactChain .and. Method%isViaVerboseChain) then
-                    if (maxRefinementCountIsReached) maxRefinementCount = maxRefinementCount * 2
+                    !if (maxRefinementCountIsReached) maxRefinementCount = maxRefinementCount * 2_IK
+                    maxRefinementCount = maxRefinementCount * 2_IK
                     Method%isViaCompactChain = .false.
                     cycle loopRefinement
                 end if

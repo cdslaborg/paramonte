@@ -45,15 +45,17 @@ classdef ReportFileContents < OutputFileContents
         setup = struct();
         stats = struct();
         spec = struct();
+        lineList = [];
     end
 
     properties(Hidden)
-        lineList = [];
         lineListLen = [];
         indentLen = 8; % indent length of the records
         dsym = '****'; % decoration symbol
         lineCounter;
+        dsymLen;
         prefix;
+        newline = char(10);
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -71,6 +73,7 @@ classdef ReportFileContents < OutputFileContents
             self = self@OutputFileContents(file,methodName,mpiEnabled,Err);
             self.timer.tic();
 
+            self.dsymLen = length(self.dsym); % decoration symbol
             self.prefix = convertStringsToChars(self.methodName + " - NOTE:");
 
             if ispc
@@ -78,7 +81,8 @@ classdef ReportFileContents < OutputFileContents
             else
                 self.contents = strrep(fileread(file),char(13),'');
             end
-            self.lineList = strsplit(self.contents,newline); % strtrim()
+            self.contents = strrep(self.contents,self.newline,[' ',self.newline]);
+            self.lineList = strsplit(self.contents,self.newline); % strtrim()
             self.lineListLen = length(self.lineList);
 
             self.updateUser("parsing the report file contents...");
@@ -91,7 +95,7 @@ classdef ReportFileContents < OutputFileContents
 
             lineStartFound = false;
             while true
-                self.lineCounter = self.lineCounter + 1; if self.lineCounter==self.lineListLen; break; end
+                self.lineCounter = self.lineCounter + 1; if self.lineCounter>=self.lineListLen; break; end
                 record = self.lineList{self.lineCounter};
                 if lineStartFound
                     if ~contains(record,self.dsym)
@@ -149,49 +153,49 @@ classdef ReportFileContents < OutputFileContents
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function helpme(self,varargin)
-            %
-            %   Open the documentation for the input object's name in string format, otherwise, 
-            %   open the documentation page for the class of the object owning the helpme() method.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       This function takes at most one string argument, 
-            %       which is the name of the object for which help is needed.
-            %
-            %   Returns
-            %   -------
-            %
-            %       None. 
-            %
-            %   Example
-            %   -------
-            %
-            %       helpme("plot")
-            %
-            methodNotFound = true;
-            if nargin==2
-                if strcmpi(varargin{1},"reset")
-                    cmd = "doc self.resetPlot";
-                    methodNotFound = false;
-                else
-                    methodList = ["plot","helpme"];
-                    for method = methodList
-                        if strcmpi(varargin{1},method)
-                            methodNotFound = false;
-                            cmd = "doc self." + method;
-                        end
-                    end
-                end
-            elseif nargin~=1
-                error("The helpme() method takes at most one argument that must be string.");
-            end
-            if methodNotFound
-                cmd = "doc self";
-            end
-            eval(cmd);
-        end
+        %function helpme(self,varargin)
+        %    %
+        %    %   Open the documentation for the input object's name in string format, otherwise, 
+        %    %   open the documentation page for the class of the object owning the helpme() method.
+        %    %
+        %    %   Parameters
+        %    %   ----------
+        %    %
+        %    %       This function takes at most one string argument, 
+        %    %       which is the name of the object for which help is needed.
+        %    %
+        %    %   Returns
+        %    %   -------
+        %    %
+        %    %       None. 
+        %    %
+        %    %   Example
+        %    %   -------
+        %    %
+        %    %       helpme("plot")
+        %    %
+        %    methodNotFound = true;
+        %    if nargin==2
+        %        if strcmpi(varargin{1},"reset")
+        %            cmd = "doc self.resetPlot";
+        %            methodNotFound = false;
+        %        else
+        %            methodList = ["plot","helpme"];
+        %            for method = methodList
+        %                if strcmpi(varargin{1},method)
+        %                    methodNotFound = false;
+        %                    cmd = "doc self." + method;
+        %                end
+        %            end
+        %        end
+        %    elseif nargin~=1
+        %        error("The helpme() method takes at most one argument that must be string.");
+        %    end
+        %    if methodNotFound
+        %        cmd = "doc self";
+        %    end
+        %    eval(cmd);
+        %end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -204,7 +208,7 @@ classdef ReportFileContents < OutputFileContents
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function reportParseFailure(self,topic)
-            topic = string(strtrim(strrep(strrep(topic,newline,' '),char(13),' ')));
+            topic = string(strtrim(strrep(strrep(topic,self.newline,' '),char(13),' ')));
             self.Err.msg    = "Failed to parse the record """ + topic + """. " ...
                             + "The structure of the report file appears to have been compromised. Skipping... "; 
             self.Err.warn();
@@ -213,7 +217,7 @@ classdef ReportFileContents < OutputFileContents
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function reportMissingValue(self,topic)
-            topic = string(strtrim(strrep(strrep(topic,newline,' '),char(13),' ')));
+            topic = string(strtrim(strrep(strrep(topic,self.newline,' '),char(13),' ')));
             self.Err.msg    = "Failed to parse the value corresponding to the record """ + topic + """. " ...
                             + "The structure of the report file appears to have been compromised. Skipping... "; 
             self.Err.warn();
@@ -221,26 +225,72 @@ classdef ReportFileContents < OutputFileContents
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function section = parseSection(self,topic)
-            section = [];
-            lineStartFound = false;
+        function result = isSectionHeader(self,record)
+            if length(record)>self.dsymLen && contains(record(1:self.dsymLen),self.dsym)
+                result = true;
+            else
+                result = false;
+            end
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function stopBeforeNextSectionHeader(self)
+            % NOTE: if it is already within a section header, it will skip it and find the next section header.
+            record = self.lineList{self.lineCounter};
+            isCurrentSectionHeader = length(record)>self.dsymLen && contains(record(1:self.dsymLen),self.dsym);
             while true
-                self.lineCounter = self.lineCounter + 1; if self.lineCounter==self.lineListLen; break; end
+                if self.lineCounter==self.lineListLen; break; end
                 record = self.lineList{self.lineCounter};
-                if lineStartFound
-                    if contains(record,self.dsym)
-                        self.lineCounter = self.lineCounter - 1;
-                        break
+                if length(record)>self.dsymLen && contains(record(1:self.dsymLen),self.dsym)
+                    if isCurrentSectionHeader
+                        self.lineCounter = self.lineCounter + 1;
+                        continue;
                     end
+                    self.lineCounter = self.lineCounter - 1;
+                    break;
                 else
-                    if contains(record,topic)
-                        lineStartFound = true;
-                        self.lineCounter = self.lineCounter + 3;
-                        lineStart = self.lineCounter;
-                    end
+                    isCurrentSectionHeader = false;
+                    self.lineCounter = self.lineCounter + 1;
+                    continue;
                 end
             end
-            if lineStartFound
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function skipCurrentSectionHeader(self)
+            while true
+                record = self.lineList{self.lineCounter};
+                if length(record)>self.dsymLen && contains(record(1:self.dsymLen),self.dsym)
+                    self.lineCounter = self.lineCounter + 1; if self.lineCounter==self.lineListLen; break; end
+                    continue;
+                else
+                    break;
+                end
+            end
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function section = parseSection(self,topic)
+            section = [];
+            topicFound = false;
+            while true
+                self.lineCounter = self.lineCounter + 1;
+                if self.lineCounter>=self.lineListLen; break; end
+                record = self.lineList{self.lineCounter};
+                if contains(record,topic)
+                    topicFound = true;
+                    break;
+                else
+                    continue;
+                end
+            end
+            if topicFound
+                self.skipCurrentSectionHeader();
+                lineStart = self.lineCounter;
+                self.stopBeforeNextSectionHeader();
                 section = self.concat(lineStart,self.lineCounter);
             else
                 self.reportParseFailure(topic);
@@ -252,7 +302,7 @@ classdef ReportFileContents < OutputFileContents
         function concatatedString = concat(self,lineStart,lineCounter)
             concatatedString = self.lineList(lineStart:lineCounter);
             %concatatedString = concatatedString(~cellfun('isempty',concatatedString));
-            concatatedString = string(join(concatatedString,newline));
+            concatatedString = string(join(concatatedString,self.newline));
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -279,7 +329,7 @@ classdef ReportFileContents < OutputFileContents
                         while true
 
                             self.lineCounter = self.lineCounter + 1; if self.lineCounter>self.lineListLen; break; end
-                            record = strrep(strrep(self.lineList{self.lineCounter},newline,' '), char(13), ' '); % replace newline with space;
+                            record = strrep(strrep(self.lineList{self.lineCounter},self.newline,' '), char(13), ' '); % replace newline with space;
 
                             % check the record is not another item or desc is not found before value.
 
@@ -323,7 +373,7 @@ classdef ReportFileContents < OutputFileContents
                             %else
                             %    value = [];
                             %    for i = valueStart:valueEnd
-                            %        value = [value, self.lineList{i}, newline];
+                            %        value = [value, self.lineList{i}, self.newline];
                             %    end
                             %    value = ['''', value, ''''];
                             %    disp(['self.',strtrim(item),'.value=''',value,''';']);
