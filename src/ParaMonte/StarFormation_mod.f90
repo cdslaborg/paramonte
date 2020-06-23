@@ -576,14 +576,14 @@ contains
                                 - 13.80128475140318000_RK &
                                 + 79.17963739241087000_RK * logzplus1 &
                                 - 420.9808813943490700_RK * logzplus1**2 &
-                                + 902.4149755380632000_RK * logzplus1**3 &
+                                + 902.4149755380632000_RK * logzplus1**3 
         elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
             logBinaryMergerRate = &
                                 - 10.89131941401880800_RK &
                                 + 21.59483273763076400_RK * logzplus1 & 
                                 - 33.07662054750123000_RK * logzplus1**2 & 
                                 + 29.23608723915102600_RK * logzplus1**3 &
-                                - 11.33984422193848700_RK * logzplus1**4 &
+                                - 11.33984422193848700_RK * logzplus1**4 
         elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
             logBinaryMergerRate = &
                                 - 14.02518830695731000_RK &
@@ -624,13 +624,13 @@ contains
                                 - 14.26464149493092000_RK &
                                 + 84.73477757043948000_RK * logzplus1 &
                                 - 488.5893985602366500_RK * logzplus1**2 &
-                                + 1154.414655194473900_RK * logzplus1**3 &
+                                + 1154.414655194473900_RK * logzplus1**3 
         elseif (logzplus1>0.1441003439737565_RK .and. logzplus1<=0.6575200029167926_RK) then
             logBinaryMergerRate = &
                                 - 11.19700066921606300_RK &
                                 + 20.46712963401572300_RK * logzplus1 & 
                                 - 24.31794334813894300_RK * logzplus1**2 & 
-                                + 12.21213317590724400_RK * logzplus1**3 &
+                                + 12.21213317590724400_RK * logzplus1**3 
         elseif (logzplus1>0.6575200029167926_RK .and. logzplus1<=1.5591966959973538_RK) then
             logBinaryMergerRate = &
                                 - 9.094912666461765000_RK &
@@ -650,7 +650,7 @@ contains
                                 + 9.538876239886940000_RK &
                                 - 8.753418172517534000_RK * logzplus1 & 
                                 - 0.159980818030374640_RK * logzplus1**2 & 
-                                - 0.088551503657680930_RK * logzplus1**3 &
+                                - 0.088551503657680930_RK * logzplus1**3 
         elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
             logBinaryMergerRate = 0._RK
         end if
@@ -734,14 +734,14 @@ contains
                                 - 13.91129314580349600_RK &
                                 + 78.88963489621422000_RK * logzplus1 &
                                 - 420.9801740859396700_RK * logzplus1**2 &
-                                + 902.4783078800951000_RK * logzplus1**3 &
+                                + 902.4783078800951000_RK * logzplus1**3 
         elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
             logBinaryMergerRate = &
                                 - 11.00951046136480500_RK &
                                 + 21.38817515748999000_RK * logzplus1 & 
                                 - 33.29451048508970000_RK * logzplus1**2 & 
                                 + 29.32158835244860400_RK * logzplus1**3 &
-                                - 10.97377449040440000_RK * logzplus1**4 &
+                                - 10.97377449040440000_RK * logzplus1**4 
         elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
             logBinaryMergerRate = &
                                 - 8.254476015464371000_RK &
@@ -782,14 +782,14 @@ contains
                                 - 14.01939141013502300_RK &
                                 + 78.80010843737509000_RK * logzplus1 &
                                 - 420.9593253775164000_RK * logzplus1**2 &
-                                + 902.5668042795056000_RK * logzplus1**3 &
+                                + 902.5668042795056000_RK * logzplus1**3 
         elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
             logBinaryMergerRate = &
                                 - 11.12915953695671500_RK &
                                 + 21.43217730985805500_RK * logzplus1 & 
                                 - 33.75904206577289000_RK * logzplus1**2 & 
                                 + 30.03916282499634200_RK * logzplus1**3 &
-                                - 11.12086545981264500_RK * logzplus1**4 &
+                                - 11.12086545981264500_RK * logzplus1**4 
         elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
             logBinaryMergerRate = &
                                 - 1.802362223155230800_RK &
