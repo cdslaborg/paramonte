@@ -503,7 +503,7 @@ contains
 
     ! computes the natural log of the binary merger rate as a function of logzplus1.
     ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
-    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015).
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK.
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormB10(logzplus1) result(logBinaryMergerRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -560,7 +560,7 @@ contains
 
     ! computes the natural log of the binary merger rate as a function of logzplus1.
     ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
-    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015).
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormF18(logzplus1) result(logBinaryMergerRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -608,7 +608,7 @@ contains
 
     ! computes the natural log of the binary merger rate as a function of logzplus1.
     ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
-    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015).
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormH06(logzplus1) result(logBinaryMergerRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -661,7 +661,7 @@ contains
 
     ! computes the natural log of the binary merger rate as a function of logzplus1.
     ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
-    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015).
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormL08(logzplus1) result(logBinaryMergerRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -718,7 +718,7 @@ contains
 
     ! computes the natural log of the binary merger rate as a function of logzplus1.
     ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
-    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015).
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormM14(logzplus1) result(logBinaryMergerRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -766,7 +766,7 @@ contains
 
     ! computes the natural log of the binary merger rate as a function of logzplus1.
     ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
-    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015).
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormM17(logzplus1) result(logBinaryMergerRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
