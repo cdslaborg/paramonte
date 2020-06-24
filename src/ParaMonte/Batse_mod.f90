@@ -162,6 +162,7 @@ contains
                                     , GRB%Event(igrb)%logT90
 
                 ! convert all values to logarithm in base Neper
+
                 GRB%Event(igrb)%logPF53 = LN10 * GRB%Event(igrb)%logPF53
                 GRB%Event(igrb)%logEpk  = LN10 * GRB%Event(igrb)%logEpk
                 GRB%Event(igrb)%logSbol = LN10 * GRB%Event(igrb)%logSbol
