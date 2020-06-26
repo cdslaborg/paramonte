@@ -146,6 +146,7 @@ module ParaMonte_mod
         type(RestartFile_type)                  :: RestartFile
         type(Decoration_type)                   :: Decor
     contains
+        procedure, pass                         :: reportDesc
         procedure, pass                         :: setupParaMonte
         procedure, pass                         :: addSplashScreen
         procedure, pass                         :: setupOutputFiles
@@ -167,11 +168,11 @@ contains
 
     ! To be called by all images.
     ! Tasks: setup initial variables, as well as construct default and null values for SpecBase. Sets
-    ! PM%InputFile%exists = .true. if the input file exists and opens and assigns to it a unit number and sets
-    ! and PM%InputFile%isOpen = .true. if the opening process is successful.
+    ! self%InputFile%exists = .true. if the input file exists and opens and assigns to it a unit number and sets
+    ! and self%InputFile%isOpen = .true. if the opening process is successful.
     ! If the input file exists, the path used to open it successfully will be also written to InpuFile%Path%modified
-    !subroutine setupParaMonte(PM,nd,name,date,version,inputFile)
-    subroutine setupParaMonte(PM,nd,name,inputFile)
+    !subroutine setupParaMonte(self,nd,name,date,version,inputFile)
+    subroutine setupParaMonte(self,nd,name,inputFile)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMonte
 #endif
@@ -181,43 +182,43 @@ contains
         use String_mod, only: getLowerCase, num2str
         use System_mod, only: OS_type
         implicit none
-        class(ParaMonte_type), intent(inout)    :: PM
+        class(ParaMonte_type), intent(inout)    :: self
         integer(IK), intent(in)                 :: nd
         character(*), intent(in)                :: name !, date, version
         character(*), intent(in), optional      :: inputFile
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@setupParaMonte()"
 
-        PM%Timer = Timer_type(PM%Err)
-        if (PM%Err%occurred) then
-            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while setting up the " // PM%name // "timer."//NLC// PM%Err%msg
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        self%Timer = Timer_type(self%Err)
+        if (self%Err%occurred) then
+            self%Err%msg = PROCEDURE_NAME // ": Error occurred while setting up the " // self%name // "timer."//NLC// self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
-        PM%nd%val = nd
-        PM%LogFile%unit = output_unit   ! temporarily set the report file to stdout.
-        PM%Decor = Decoration_type()    ! initialize the TAB character and decoration symbol to the default values.
+        self%nd%val = nd
+        self%LogFile%unit = output_unit   ! temporarily set the report file to stdout.
+        self%Decor = Decoration_type()    ! initialize the TAB character and decoration symbol to the default values.
 
-        PM%Err%occurred = .false.
-        PM%Err%msg = ""
+        self%Err%occurred = .false.
+        self%Err%msg = ""
 
-        PM%name     = name
-        PM%brand    = INDENT // PM%name
+        self%name     = name
+        self%brand    = INDENT // self%name
 #if defined IFORT_ENABLED || __GFORTRAN__
-        PM%date     = "Build: " // __TIMESTAMP__
+        self%date     = "Build: " // __TIMESTAMP__
 #else
-        PM%date     = "Unknown Release Date"
+        self%date     = "Unknown Release Date"
 #endif
 #if defined PARAMONTE_VERSION
-        PM%version  = "Version " // PARAMONTE_VERSION
+        self%version  = "Version " // PARAMONTE_VERSION
 #else
-        PM%version  = "Unknown Version"
+        self%version  = "Unknown Version"
 #endif
 
         ! setup general processor / coarray image variables
 
 #if defined CAF_ENABLED
-        PM%Image%id             = this_image()
-        PM%Image%count          = num_images()
+        self%Image%id             = this_image()
+        self%Image%count          = num_images()
 #elif defined MPI_ENABLED
         block
             use mpi
@@ -225,32 +226,32 @@ contains
             logical     :: isInitialized
             call mpi_initialized( isInitialized, ierrMPI )
             if (.not. isInitialized) call mpi_init(ierrMPI)
-            call mpi_comm_rank(mpi_comm_world, PM%Image%id, ierrMPI)
-            call mpi_comm_size(mpi_comm_world, PM%Image%count, ierrMPI)
-            PM%Image%id = PM%Image%id + 1_IK ! make the ranks consistent with Fortran coarray indexing conventions
+            call mpi_comm_rank(mpi_comm_world, self%Image%id, ierrMPI)
+            call mpi_comm_size(mpi_comm_world, self%Image%count, ierrMPI)
+            self%Image%id = self%Image%id + 1_IK ! make the ranks consistent with Fortran coarray indexing conventions
         end block
 #else
-        PM%Image%id             = 1_IK
-        PM%Image%count          = 1_IK
+        self%Image%id             = 1_IK
+        self%Image%count          = 1_IK
 #endif
 
-        PM%Image%name           = "@process(" // num2str(PM%Image%id) // ")"
-        PM%Image%isFirst        = PM%Image%id==1_IK
-        PM%Image%isNotFirst     = PM%Image%id/=1_IK
-        PM%Image%isMaster       = .false.  ! ATTN: this will have to change later on, depending on the requested type of parallelism
-        PM%Image%isNotMaster    = .false.
+        self%Image%name           = "@process(" // num2str(self%Image%id) // ")"
+        self%Image%isFirst        = self%Image%id==1_IK
+        self%Image%isNotFirst     = self%Image%id/=1_IK
+        self%Image%isMaster       = .false.  ! ATTN: this will have to change later on, depending on the requested type of parallelism
+        self%Image%isNotMaster    = .false.
 
         ! setup formatting variables
 
-        PM%nd%str = num2str(PM%nd%val)
+        self%nd%str = num2str(self%nd%val)
 
         ! determine OS
 
-        call PM%OS%query()
-        if (PM%OS%Err%occurred) then
-            PM%Err = PM%OS%Err
-            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type."//NLC//PM%Err%msg
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        call self%OS%query()
+        if (self%OS%Err%occurred) then
+            self%Err = self%OS%Err
+            self%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type."//NLC//self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
 
@@ -260,75 +261,75 @@ contains
             use Constants_mod, only: IK
             use System_mod, only: SystemInfo_type
             integer(IK) :: irecord
-            PM%SystemInfo = SystemInfo_type(OS=PM%OS)
-            if (PM%SystemInfo%Err%occurred) then
-                PM%Err = PM%SystemInfo%Err
-                PM%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//PM%Err%msg
-                call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            self%SystemInfo = SystemInfo_type(OS=self%OS)
+            if (self%SystemInfo%Err%occurred) then
+                self%Err = self%SystemInfo%Err
+                self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
         end block
 
-        blockSplashByFirstImage: if (PM%Image%isFirst) then
-            call PM%addSplashScreen()
-            call PM%noteUserAboutEnvSetup()
+        blockSplashByFirstImage: if (self%Image%isFirst) then
+            call self%addSplashScreen()
+            call self%noteUserAboutEnvSetup()
         end if blockSplashByFirstImage
 
         ! check if input file exists by all images
 
-        PM%InputFile%isInternal = .false.
-        PM%inputFileArgIsPresent = present(inputFile)
-        blockInputFileExistence: if (PM%inputFileArgIsPresent) then
-            PM%InputFile = File_type( path=inputFile, status="old", OS=PM%OS )
-            if (PM%InputFile%Err%occurred) then
-                PM%Err = PM%InputFile%Err
-                PM%Err%msg = PROCEDURE_NAME//": Error occurred while attempting to setup the user's input file='"//inputFile//"'."//NLC//PM%Err%msg
-                call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        self%InputFile%isInternal = .false.
+        self%inputFileArgIsPresent = present(inputFile)
+        blockInputFileExistence: if (self%inputFileArgIsPresent) then
+            self%InputFile = File_type( path=inputFile, status="old", OS=self%OS )
+            if (self%InputFile%Err%occurred) then
+                self%Err = self%InputFile%Err
+                self%Err%msg = PROCEDURE_NAME//": Error occurred while attempting to setup the user's input file='"//inputFile//"'."//NLC//self%Err%msg
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
             ! determine if the file is internal
-            PM%InputFile%isInternal = PM%inputFileArgIsPresent .and. .not.PM%InputFile%exists .and. index(getLowerCase(inputFile),"&"//getLowerCase(PM%name)) > 0
-            if (.not.(PM%InputFile%isInternal .or. PM%InputFile%exists)) then
+            self%InputFile%isInternal = self%inputFileArgIsPresent .and. .not.self%InputFile%exists .and. index(getLowerCase(inputFile),"&"//getLowerCase(self%name)) > 0
+            if (.not.(self%InputFile%isInternal .or. self%InputFile%exists)) then
                 ! file is given, but is neither a path to an external file, nor an internal file containing a namelist
                 ! Therefore, there must be an error/mistake by the user.
-                PM%Err%msg =    "The user's input file='"//inputFile//"' is neither the path to an existing " // &
-                                "external input file nor a string containing the input "//PM%name//" specifications namelist. &
+                self%Err%msg =    "The user's input file='"//inputFile//"' is neither the path to an existing " // &
+                                "external input file nor a string containing the input "//self%name//" specifications namelist. &
                                 &This may be due to the user's mistake, providing a wrong path to the input external file or &
-                                &a wrong list of input specifications for the " //PM%name// " simulation. " //PM%name//" will &
+                                &a wrong list of input specifications for the " //self%name// " simulation. " //self%name//" will &
                                 &assume no input specifications file is given by the user..."
-                if (PM%Image%isFirst) call PM%warn(msg=PM%Err%msg, prefix=PM%brand, newline=NLC, outputUnit=PM%LogFile%unit)
-                PM%inputFileArgIsPresent = .false.
+                if (self%Image%isFirst) call self%warn(msg=self%Err%msg, prefix=self%brand, newline=NLC, outputUnit=self%LogFile%unit)
+                self%inputFileArgIsPresent = .false.
             end if
         end if blockInputFileExistence
 
-        if (PM%Image%isFirst) call PM%warnUserAboutInputFilePresence()
+        if (self%Image%isFirst) call self%warnUserAboutInputFilePresence()
 
         ! Set the default and null values for ParaMonte SpecBase
 
-        PM%SpecBase = SpecBase_type(nd=PM%nd%val,methodName=PM%name,imageID=PM%Image%id,imageCount=PM%Image%count)
+        self%SpecBase = SpecBase_type(nd=self%nd%val,methodName=self%name,imageID=self%Image%id,imageCount=self%Image%count)
 
     end subroutine setupParaMonte
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine addSplashScreen(PM)
+    subroutine addSplashScreen(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: addSplashScreen
 #endif
         implicit none
-        class(ParaMonte_type), intent(inout) :: PM
+        class(ParaMonte_type), intent(inout) :: self
 
-        PM%Decor%text = &
+        self%Decor%text = &
         "\n\n"// &
-        !PM%name // "\n" // &
+        !self%name // "\n" // &
         "ParaMonte\n"// &
         "Plain Powerful Parallel\n"// &
         "Monte Carlo Library\n"// &
         "\n"// &
-        PM%version // "\n" // &
+        self%version // "\n" // &
         "\n"// &
-        PM%date // "\n" // &
+        self%date // "\n" // &
         "\n"// &
         "Department of Physics\n"// &
         "Computational & Data Science Lab\n"// &
@@ -363,116 +364,116 @@ contains
         "https://www.cdslab.org/paramonte/\n"// &
         "\n"
 
-        call PM%Decor%writeDecoratedText( text=PM%Decor%text &
-                                        , symbol="*" &
-                                        , width=132 &
-                                        , thicknessHorz=4 &
-                                        , thicknessVert=2 &
-                                        , marginTop=1 &
-                                        , marginBot=2 &
-                                        , outputUnit=PM%LogFile%unit &
-                                        , newLine="\n" &
-                                        )
+        call self%Decor%writeDecoratedText  ( text=self%Decor%text &
+                                            , symbol="*" &
+                                            , width=132 &
+                                            , thicknessHorz=4 &
+                                            , thicknessVert=2 &
+                                            , marginTop=1 &
+                                            , marginBot=2 &
+                                            , outputUnit=self%LogFile%unit &
+                                            , newLine="\n" &
+                                            )
 
     end subroutine addSplashScreen
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine addCompilerPlatformInfo(PM)
+    subroutine addCompilerPlatformInfo(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: addCompilerPlatformInfo
 #endif
         use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
         implicit none
-        class(ParaMonte_type), intent(inout)    :: PM
+        class(ParaMonte_type), intent(inout)    :: self
         integer(IK)                             :: i, j
 
         ! report the interface type to ParaMonte
 
 !#if defined CFI_ENABLED
-        call PM%Decor%writeDecoratedText( text="\nParaMonte library interface specifications\n" &
-                                        , symbol="*" &
-                                        , width=132 &
-                                        , thicknessHorz=4 &
-                                        , thicknessVert=1 &
-                                        , marginTop=2 &
-                                        , marginBot=1 &
-                                        , outputUnit=PM%LogFile%unit &
-                                        , newLine="\n" &
-                                        )
-        PM%Decor%List = PM%Decor%wrapText( PM%SpecBase%InterfaceType%val , 132 )
-        do i = 1,size(PM%Decor%List)
-            write(PM%LogFile%unit,"(*(g0))") PM%Decor%List(i)%record
+        call self%Decor%writeDecoratedText  ( text="\nParaMonte library interface specifications\n" &
+                                            , symbol="*" &
+                                            , width=132 &
+                                            , thicknessHorz=4 &
+                                            , thicknessVert=1 &
+                                            , marginTop=2 &
+                                            , marginBot=1 &
+                                            , outputUnit=self%LogFile%unit &
+                                            , newLine="\n" &
+                                            )
+        self%Decor%List = self%Decor%wrapText( self%SpecBase%InterfaceType%val , 132 )
+        do i = 1,size(self%Decor%List)
+            write(self%LogFile%unit,"(*(g0))") self%Decor%List(i)%record
         end do
 !#endif
 
         ! report the ParaMonte compiler version and options
 
-        call PM%Decor%writeDecoratedText( text="\nParaMonte library compiler version\n" &
-                                        , symbol="*" &
-                                        , width=132 &
-                                        , thicknessHorz=4 &
-                                        , thicknessVert=1 &
-                                        , marginTop=2 &
-                                        , marginBot=1 &
-                                        , outputUnit=PM%LogFile%unit &
-                                        , newLine="\n" &
-                                        )
-        PM%Decor%List = PM%Decor%wrapText( compiler_version() , 132 )
-        do i = 1,size(PM%Decor%List)
-            write(PM%LogFile%unit,"(*(g0))") PM%Decor%List(i)%record
+        call self%Decor%writeDecoratedText  ( text="\nParaMonte library compiler version\n" &
+                                            , symbol="*" &
+                                            , width=132 &
+                                            , thicknessHorz=4 &
+                                            , thicknessVert=1 &
+                                            , marginTop=2 &
+                                            , marginBot=1 &
+                                            , outputUnit=self%LogFile%unit &
+                                            , newLine="\n" &
+                                            )
+        self%Decor%List = self%Decor%wrapText( compiler_version() , 132 )
+        do i = 1,size(self%Decor%List)
+            write(self%LogFile%unit,"(*(g0))") self%Decor%List(i)%record
         end do
 
-        call PM%Decor%writeDecoratedText( text="\nParaMonte library compiler options\n" &
-                                        , symbol="*" &
-                                        , width=132 &
-                                        , thicknessHorz=4 &
-                                        , thicknessVert=1 &
-                                        , marginTop=2 &
-                                        , marginBot=1 &
-                                        , outputUnit=PM%LogFile%unit &
-                                        , newLine="\n" &
-                                        )
-        PM%Decor%List = PM%Decor%wrapText( compiler_options() , 132 )
-        do i = 1,size(PM%Decor%List)
-            write(PM%LogFile%unit,"(*(g0))") PM%Decor%List(i)%record
+        call self%Decor%writeDecoratedText  (text="\nParaMonte library compiler options\n" &
+                                            , symbol="*" &
+                                            , width=132 &
+                                            , thicknessHorz=4 &
+                                            , thicknessVert=1 &
+                                            , marginTop=2 &
+                                            , marginBot=1 &
+                                            , outputUnit=self%LogFile%unit &
+                                            , newLine="\n" &
+                                            )
+        self%Decor%List = self%Decor%wrapText( compiler_options() , 132 )
+        do i = 1,size(self%Decor%List)
+            write(self%LogFile%unit,"(*(g0))") self%Decor%List(i)%record
         end do
 
-        call PM%Decor%writeDecoratedText( text="\nRuntime platform specifications\n" &
-                                        , symbol="*" &
-                                        , width=132 &
-                                        , thicknessHorz=4 &
-                                        , thicknessVert=1 &
-                                        , marginTop=2 &
-                                        , marginBot=1 &
-                                        , outputUnit=PM%LogFile%unit &
-                                        , newLine="\n" &
-                                        )
-        do j = 1, PM%SystemInfo%nRecord
-            PM%Decor%List = PM%Decor%wrapText( PM%SystemInfo%List(j)%record , 132 )
-            do i = 1,size(PM%Decor%List)
-                write(PM%LogFile%unit,"(*(g0))") PM%Decor%List(i)%record
+        call self%Decor%writeDecoratedText  ( text="\nRuntime platform specifications\n" &
+                                            , symbol="*" &
+                                            , width=132 &
+                                            , thicknessHorz=4 &
+                                            , thicknessVert=1 &
+                                            , marginTop=2 &
+                                            , marginBot=1 &
+                                            , outputUnit=self%LogFile%unit &
+                                            , newLine="\n" &
+                                            )
+        do j = 1, self%SystemInfo%nRecord
+            self%Decor%List = self%Decor%wrapText( self%SystemInfo%List(j)%record , 132 )
+            do i = 1,size(self%Decor%List)
+                write(self%LogFile%unit,"(*(g0))") self%Decor%List(i)%record
             end do
         end do
-        call PM%Decor%write(PM%LogFile%unit)
+        call self%Decor%write(self%LogFile%unit)
 
     end subroutine addCompilerPlatformInfo
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine noteUserAboutEnvSetup(PM)
+    subroutine noteUserAboutEnvSetup(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: noteUserAboutEnvSetup
 #endif
         implicit none
-        class(ParaMonte_type), intent(inout) :: PM
-        call PM%Decor%writeDecoratedText( text = "\nSetting up the " // PM%name // " simulation environment\n" &
-                                        , marginTop = 1     &
-                                        , marginBot = 1     &
-                                        , newline = "\n"    &
-                                        , outputUnit = PM%LogFile%unit )
+        class(ParaMonte_type), intent(inout) :: self
+        call self%Decor%writeDecoratedText  ( text = "\nSetting up the " // self%name // " simulation environment\n" &
+                                            , marginTop = 1     &
+                                            , marginBot = 1     &
+                                            , newline = "\n"    &
+                                            , outputUnit = self%LogFile%unit )
     end subroutine noteUserAboutEnvSetup
 
 !***********************************************************************************************************************************
@@ -500,44 +501,44 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine warnUserAboutInputFilePresence(PM)
+    subroutine warnUserAboutInputFilePresence(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutInputFilePresence
 #endif
         use Constants_mod, only: NLC
         implicit none
-        class(ParaMonte_type), intent(inout) :: PM
+        class(ParaMonte_type), intent(inout) :: self
 #if defined CFI_ENABLED
-        if (PM%SpecBase%InterfaceType%isPython) then
-            call PM%note( prefix     = PM%brand &
-                        , outputUnit = PM%LogFile%unit &
-                        , newline    = NLC &
-                        , msg        = "Interfacing Python with "// PM%name //"..." )
-        elseif (PM%SpecBase%InterfaceType%isClang) then
+        if (self%SpecBase%InterfaceType%isPython) then
+            call self%note  ( prefix     = self%brand &
+                            , outputUnit = self%LogFile%unit &
+                            , newline    = NLC &
+                            , msg        = "Interfacing Python with "// self%name //"..." )
+        elseif (self%SpecBase%InterfaceType%isClang) then
 #else
-            if (PM%inputFileArgIsPresent) then
-                if (PM%InputFile%exists) then
-                    call PM%note( prefix     = PM%brand &
-                                , outputUnit = PM%LogFile%unit &
-                                , newline    = NLC &
-                                , msg        = "The user's input file for " // PM%name // " options was detected."// NLC // &
-                                               "All " // PM%name // " options will be read from the input file."// NLC // &
-                                               "Here is " // PM%name // " input options file:"// NLC // PM%inputFile%Path%modified )
-                elseif (PM%InputFile%isInternal) then
-                    call PM%note( prefix     = PM%brand &
-                                , outputUnit = PM%LogFile%unit &
-                                , newline    = NLC &
-                                , msg        = "No external file corresponding to the user's input file for "//PM%name//" options &
-                                               &could be found."//NLC//"The user-provided input file will be processed as an input &
-                                               &string of "//PM%name//" options." )
+            if (self%inputFileArgIsPresent) then
+                if (self%InputFile%exists) then
+                    call self%note  ( prefix     = self%brand &
+                                    , outputUnit = self%LogFile%unit &
+                                    , newline    = NLC &
+                                    , msg        = "The user's input file for " // self%name // " options was detected."// NLC // &
+                                                   "All " // self%name // " options will be read from the input file."// NLC // &
+                                                   "Here is " // self%name // " input options file:"// NLC // self%inputFile%Path%modified )
+                elseif (self%InputFile%isInternal) then
+                    call self%note  ( prefix     = self%brand &
+                                    , outputUnit = self%LogFile%unit &
+                                    , newline    = NLC &
+                                    , msg        = "No external file corresponding to the user's input file for "//self%name//" options &
+                                                   &could be found."//NLC//"The user-provided input file will be processed as an input &
+                                                   &string of "//self%name//" options." )
                 end if
             else
-                call PM%note( prefix     = PM%brand &
-                            , outputUnit = PM%LogFile%unit &
-                            , newline    = NLC &
-                            , msg        = "No " // PM%name  // " input file is provided by the user."//NLC//&
-                                           "Variable values from the procedure arguments will be used instead, where provided."//NLC//&
-                                           "Otherwise, the default options will be used." )
+                call self%note  ( prefix     = self%brand &
+                                , outputUnit = self%LogFile%unit &
+                                , newline    = NLC &
+                                , msg        = "No " // self%name  // " input file is provided by the user."//NLC//&
+                                               "Variable values from the procedure arguments will be used instead, where provided."//NLC//&
+                                               "Otherwise, the default options will be used." )
             end if
 #endif
 #if defined CFI_ENABLED
@@ -548,19 +549,19 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine setWarnAboutProcArgHasPriority(PM)
+    subroutine setWarnAboutProcArgHasPriority(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnAboutProcArgHasPriority
 #endif
         implicit none
-        class(ParaMonte_type), intent(inout) :: PM
+        class(ParaMonte_type), intent(inout) :: self
 #if !defined CFI_ENABLED
         character(:), allocatable            :: msg
 #endif
-        PM%procArgHasPriority = .not. PM%SpecBase%InputFileHasPriority%val
-        PM%procArgNeeded = PM%procArgHasPriority .or. (.not.PM%inputFileArgIsPresent)
+        self%procArgHasPriority = .not. self%SpecBase%InputFileHasPriority%val
+        self%procArgNeeded = self%procArgHasPriority .or. (.not.self%inputFileArgIsPresent)
 #if !defined CFI_ENABLED
-        if (PM%procArgHasPriority) then
+        if (self%procArgHasPriority) then
             msg =   "Variable inputFileHasPriority = .false.\n&
                     &All variable values will be overwritten by the corresponding procedure argument values,\n&
                     &only if provided as procedure arguments."
@@ -568,14 +569,14 @@ contains
             msg =   "Variable inputFileHasPriority = .true.\n&
                     &All variable values will be read from the user-provided input file"
         end if
-        call PM%note( prefix = PM%brand, outputUnit = PM%LogFile%unit, newline = "\n", msg = msg )
+        call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg )
 #endif
     end subroutine setWarnAboutProcArgHasPriority
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine setupOutputFiles(PM)
+    subroutine setupOutputFiles(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupOutputFiles
 #endif
@@ -586,27 +587,27 @@ contains
 
         implicit none
 
-        class(ParaMonte_type), intent(inout)    :: PM
+        class(ParaMonte_type), intent(inout)    :: self
         character(:), allocatable               :: msg, workingOn, currentWorkingDir
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@setupOutputFiles()"
 
-        if (PM%SpecBase%OutputFileName%original==PM%SpecBase%OutputFileName%def) then
-            msg =   "No user-input filename prefix for " // PM%name // " output files detected." // NLC // &
-                    "Generating appropriate filenames for " // PM%name // " output files from the current date and time..."
+        if (self%SpecBase%OutputFileName%original==self%SpecBase%OutputFileName%def) then
+            msg =   "No user-input filename prefix for " // self%name // " output files detected." // NLC // &
+                    "Generating appropriate filenames for " // self%name // " output files from the current date and time..."
         else
-            msg = "Variable outputFileName detected among the input variables to " // PM%name // ":" //NLC// PM%SpecBase%OutputFileName%original
+            msg = "Variable outputFileName detected among the input variables to " // self%name // ":" //NLC// self%SpecBase%OutputFileName%original
         end if
 
-        call PM%SpecBase%OutputFileName%query(OS=PM%OS)
+        call self%SpecBase%OutputFileName%query(OS=self%OS)
 
-        if (PM%SpecBase%OutputFileName%Err%occurred) then
-            PM%Err = PM%SpecBase%OutputFileName%Err
-            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to construct OutputFileName path type." //NLC// PM%Err%msg
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        if (self%SpecBase%OutputFileName%Err%occurred) then
+            self%Err = self%SpecBase%OutputFileName%Err
+            self%Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to construct OutputFileName path type." //NLC// self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
 
-        PM%SpecBase%OutputFileName%namePrefix = PM%SpecBase%OutputFileName%name // PM%SpecBase%OutputFileName%ext
+        self%SpecBase%OutputFileName%namePrefix = self%SpecBase%OutputFileName%name // self%SpecBase%OutputFileName%ext
 
         ! get the current working directory
 
@@ -617,34 +618,34 @@ contains
             use ifport ! only: getcwd
 #endif
 #if defined IFORT_ENABLED || __GFORTRAN__
-            PM%Err%stat = getcwd(currentWorkingDir)
+            self%Err%stat = getcwd(currentWorkingDir)
             currentWorkingDir = trim(adjustl(currentWorkingDir))
 #else
-            PM%Err%stat = 0_IK
+            self%Err%stat = 0_IK
             currentWorkingDir = "."
 #endif
         end block
-        if (PM%Err%stat/=0) then
-            PM%Err%msg = PROCEDURE_NAME//": Error occurred while fetching the current working directory via getcwd()."//NLC
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        if (self%Err%stat/=0) then
+            self%Err%msg = PROCEDURE_NAME//": Error occurred while fetching the current working directory via getcwd()."//NLC
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
         msg = msg //NLC//NLC// "Absolute path to the current working directory:"//NLC//currentWorkingDir
 
-        if (len_trim(adjustl(PM%SpecBase%OutputFileName%dir))==0) then
-            PM%SpecBase%OutputFileName%dir = trim(adjustl(currentWorkingDir)) // PM%SpecBase%OutputFileName%slashOS
-            msg = msg //NLC//NLC// "All output files will be written to the current working directory:"//NLC//PM%SpecBase%OutputFileName%dir
+        if (len_trim(adjustl(self%SpecBase%OutputFileName%dir))==0) then
+            self%SpecBase%OutputFileName%dir = trim(adjustl(currentWorkingDir)) // self%SpecBase%OutputFileName%slashOS
+            msg = msg //NLC//NLC// "All output files will be written to the current working directory:"//NLC//self%SpecBase%OutputFileName%dir
         else
-            msg = msg //NLC//NLC// "Generating the requested directory for ParaDRAM output files:"//NLC//PM%SpecBase%OutputFileName%dir
+            msg = msg //NLC//NLC// "Generating the requested directory for ParaDRAM output files:"//NLC//self%SpecBase%OutputFileName%dir
         end if
 
         ! Generate the output files directory:
 
-        if (PM%Image%isFirst) then
-            PM%Err = mkdir( dirPath = PM%SpecBase%OutputFileName%dir, isWindows = PM%OS%isWindows )
-            if (PM%Err%occurred) then
-                PM%Err%msg = PROCEDURE_NAME//": Error occurred while making directory = '"//PM%SpecBase%OutputFileName%dir//"'."//NLC//PM%Err%msg
-                call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        if (self%Image%isFirst) then
+            self%Err = mkdir( dirPath = self%SpecBase%OutputFileName%dir, isWindows = self%OS%isWindows )
+            if (self%Err%occurred) then
+                self%Err%msg = PROCEDURE_NAME//": Error occurred while making directory = '"//self%SpecBase%OutputFileName%dir//"'."//NLC//self%Err%msg
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
         end if
@@ -661,42 +662,42 @@ contains
         end block
 #endif
 
-        if (len_trim(adjustl(PM%SpecBase%OutputFileName%namePrefix))==0) then
-            msg = msg //NLC//NLC// "No user-input filename prefix for " // PM%name // " output files detected."//NLC//&
-            "Generating appropriate filenames for " // PM%name // " output files from the current date and time..."
-            PM%SpecBase%OutputFileName%namePrefix = PM%SpecBase%OutputFileName%def
+        if (len_trim(adjustl(self%SpecBase%OutputFileName%namePrefix))==0) then
+            msg = msg //NLC//NLC// "No user-input filename prefix for " // self%name // " output files detected."//NLC//&
+            "Generating appropriate filenames for " // self%name // " output files from the current date and time..."
+            self%SpecBase%OutputFileName%namePrefix = self%SpecBase%OutputFileName%def
         end if
 
-        PM%SpecBase%OutputFileName%pathPrefix = PM%SpecBase%OutputFileName%dir // PM%SpecBase%OutputFileName%namePrefix
+        self%SpecBase%OutputFileName%pathPrefix = self%SpecBase%OutputFileName%dir // self%SpecBase%OutputFileName%namePrefix
 
         ! Variable msg will be used down this subroutine, so it should not be changed beyond this point
-        msg  =  msg //NLC//NLC// PM%name // " output files will be prefixed with:"//NLC// PM%SpecBase%OutputFileName%pathPrefix
-        if (PM%Image%isFirst) then
-            call PM%note( prefix = PM%brand, outputUnit = PM%LogFile%unit, newline = NLC, msg = msg )
+        msg  =  msg //NLC//NLC// self%name // " output files will be prefixed with:"//NLC// self%SpecBase%OutputFileName%pathPrefix
+        if (self%Image%isFirst) then
+            call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg )
         end if
 
         ! Generate the output filenames, search for pre-existing runs, and open the report file:
 
-        if (PM%Image%isFirst) call PM%note( prefix = PM%brand, outputUnit = PM%LogFile%unit, newline = NLC, msg = "Searching for previous runs of " // PM%name // "..." )
+        if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "Searching for previous runs of " // self%name // "..." )
 
         ! this block could be all executed by only the master images
 
-        PM%LogFile%Path%Ext = FILE_EXT%ascii
-        PM%TimeFile%Path%Ext = FILE_EXT%ascii
-        PM%ChainFile%Path%Ext = FILE_EXT%ascii
-        PM%SampleFile%Path%Ext = FILE_EXT%ascii
-        PM%RestartFile%Path%Ext = FILE_EXT%ascii
+        self%LogFile%Path%Ext = FILE_EXT%ascii
+        self%TimeFile%Path%Ext = FILE_EXT%ascii
+        self%ChainFile%Path%Ext = FILE_EXT%ascii
+        self%SampleFile%Path%Ext = FILE_EXT%ascii
+        self%RestartFile%Path%Ext = FILE_EXT%ascii
 
-        PM%RestartFile%Form%value = "formatted"
-        if (PM%SpecBase%RestartFileFormat%isBinary) then
-            PM%RestartFile%Form%value = "unformatted"
-            PM%RestartFile%Path%Ext = FILE_EXT%binary
+        self%RestartFile%Form%value = "formatted"
+        if (self%SpecBase%RestartFileFormat%isBinary) then
+            self%RestartFile%Form%value = "unformatted"
+            self%RestartFile%Path%Ext = FILE_EXT%binary
         end if
 
-        PM%ChainFile%Form%value = "formatted"
-        if (PM%SpecBase%ChainFileFormat%isBinary) then
-            PM%ChainFile%Form%value = "unformatted"
-            PM%ChainFile%Path%Ext = FILE_EXT%binary
+        self%ChainFile%Form%value = "formatted"
+        if (self%SpecBase%ChainFileFormat%isBinary) then
+            self%ChainFile%Form%value = "unformatted"
+            self%ChainFile%Path%Ext = FILE_EXT%binary
         end if
 
         block
@@ -706,173 +707,173 @@ contains
             integer(IK) :: imageID
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
-            if (PM%SpecBase%ParallelizationModel%isMultiChain) then
-                imageID = PM%Image%id
+            if (self%SpecBase%ParallelizationModel%isMultiChain) then
+                imageID = self%Image%id
             else
 #endif
                 imageID = 1_IK
 #if defined CAF_ENABLED || defined MPI_ENABLED
             end if
 #endif
-            fullOutputFileName  = PM%SpecBase%OutputFileName%pathPrefix // "_process_" // num2str(imageID) // "_"
-            PM%LogFile%Path     = Path_type( inputPath = fullOutputFileName // PM%LogFile%suffix        // PM%LogFile%Path%Ext      , OS = PM%OS )
-            PM%TimeFile%Path    = Path_type( inputPath = fullOutputFileName // PM%TimeFile%suffix       // PM%TimeFile%Path%Ext     , OS = PM%OS )
-            PM%ChainFile%Path   = Path_type( inputPath = fullOutputFileName // PM%ChainFile%suffix      // PM%ChainFile%Path%Ext    , OS = PM%OS )
-            PM%SampleFile%Path  = Path_type( inputPath = fullOutputFileName // PM%SampleFile%suffix     // PM%SampleFile%Path%Ext   , OS = PM%OS )
-            PM%RestartFile%Path = Path_type( inputPath = fullOutputFileName // PM%RestartFile%suffix    // PM%RestartFile%Path%Ext  , OS = PM%OS )
+            fullOutputFileName  = self%SpecBase%OutputFileName%pathPrefix // "_process_" // num2str(imageID) // "_"
+            self%LogFile%Path     = Path_type( inputPath = fullOutputFileName // self%LogFile%suffix        // self%LogFile%Path%Ext      , OS = self%OS )
+            self%TimeFile%Path    = Path_type( inputPath = fullOutputFileName // self%TimeFile%suffix       // self%TimeFile%Path%Ext     , OS = self%OS )
+            self%ChainFile%Path   = Path_type( inputPath = fullOutputFileName // self%ChainFile%suffix      // self%ChainFile%Path%Ext    , OS = self%OS )
+            self%SampleFile%Path  = Path_type( inputPath = fullOutputFileName // self%SampleFile%suffix     // self%SampleFile%Path%Ext   , OS = self%OS )
+            self%RestartFile%Path = Path_type( inputPath = fullOutputFileName // self%RestartFile%suffix    // self%RestartFile%Path%Ext  , OS = self%OS )
         end block
 
-        inquire( file = PM%LogFile%Path%original, exist = PM%LogFile%exists, iostat = PM%LogFile%Err%stat )
-        PM%Err = PM%LogFile%getInqErr( PM%LogFile%Err%stat )
-        if (PM%Err%occurred) then
-            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%LogFile%Path%original // PM%Err%msg
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        inquire( file = self%LogFile%Path%original, exist = self%LogFile%exists, iostat = self%LogFile%Err%stat )
+        self%Err = self%LogFile%getInqErr( self%LogFile%Err%stat )
+        if (self%Err%occurred) then
+            self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%LogFile%Path%original // self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
 
-        inquire( file = PM%SampleFile%Path%original, exist = PM%SampleFile%exists, iostat = PM%SampleFile%Err%stat )
-        PM%Err = PM%SampleFile%getInqErr( PM%SampleFile%Err%stat )
-        if (PM%Err%occurred) then
-            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%SampleFile%Path%original // PM%Err%msg
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        inquire( file = self%SampleFile%Path%original, exist = self%SampleFile%exists, iostat = self%SampleFile%Err%stat )
+        self%Err = self%SampleFile%getInqErr( self%SampleFile%Err%stat )
+        if (self%Err%occurred) then
+            self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%SampleFile%Path%original // self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
 
-        inquire( file = PM%TimeFile%Path%original, exist = PM%TimeFile%exists, iostat = PM%TimeFile%Err%stat )
-        PM%Err = PM%TimeFile%getInqErr( PM%TimeFile%Err%stat )
-        if (PM%Err%occurred) then
-            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%TimeFile%Path%original // PM%Err%msg
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        inquire( file = self%TimeFile%Path%original, exist = self%TimeFile%exists, iostat = self%TimeFile%Err%stat )
+        self%Err = self%TimeFile%getInqErr( self%TimeFile%Err%stat )
+        if (self%Err%occurred) then
+            self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%TimeFile%Path%original // self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
 
-        inquire( file = PM%ChainFile%Path%original, exist = PM%ChainFile%exists, iostat = PM%ChainFile%Err%stat )
-        PM%Err = PM%ChainFile%getInqErr( PM%ChainFile%Err%stat )
-        if (PM%Err%occurred) then
-            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%ChainFile%Path%original // PM%Err%msg
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        inquire( file = self%ChainFile%Path%original, exist = self%ChainFile%exists, iostat = self%ChainFile%Err%stat )
+        self%Err = self%ChainFile%getInqErr( self%ChainFile%Err%stat )
+        if (self%Err%occurred) then
+            self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%ChainFile%Path%original // self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
 
-        inquire( file = PM%RestartFile%Path%original, exist = PM%RestartFile%exists, iostat = PM%RestartFile%Err%stat )
-        PM%Err = PM%RestartFile%getInqErr( PM%RestartFile%Err%stat )
-        if (PM%Err%occurred) then
-            PM%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // PM%RestartFile%Path%original // PM%Err%msg
-            call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+        inquire( file = self%RestartFile%Path%original, exist = self%RestartFile%exists, iostat = self%RestartFile%Err%stat )
+        self%Err = self%RestartFile%getInqErr( self%RestartFile%Err%stat )
+        if (self%Err%occurred) then
+            self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%RestartFile%Path%original // self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
 
-        PM%isDryRun = PM%LogFile%exists .or. PM%TimeFile%exists .or. PM%RestartFile%exists .or. PM%ChainFile%exists .or. PM%SampleFile%exists ! not fresh, if any file exists
-        PM%isFreshRun = .not. PM%isDryRun
+        self%isDryRun = self%LogFile%exists .or. self%TimeFile%exists .or. self%RestartFile%exists .or. self%ChainFile%exists .or. self%SampleFile%exists ! not fresh, if any file exists
+        self%isFreshRun = .not. self%isDryRun
 
-        if (PM%isFreshRun) then
-            if (PM%Image%isFirst) call PM%note( prefix = PM%brand, outputUnit = PM%LogFile%unit, newline = NLC, msg = "No pre-existing "//PM%name//" run detected."//NLC//"Starting a fresh ParaDRAM run..." )
+        if (self%isFreshRun) then
+            if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "No pre-existing "//self%name//" run detected."//NLC//"Starting a fresh ParaDRAM run..." )
         else
-            if (PM%Image%isFirst) call PM%note( prefix = PM%brand, outputUnit = PM%LogFile%unit, newline = NLC, msg = "Previous run of "//PM%name//" detected."//NLC//"Searching for restart files..." )
-            if (PM%SampleFile%exists) then ! sampling is already complete
-                PM%Err%occurred = .true.
-                PM%Err%msg =    PROCEDURE_NAME//": Error occurred. Output sample file detected: "//PM%SampleFile%Path%original//&
-                                NLC//PM%name//" cannot overwrite an already-completed simulation."//&
+            if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "Previous run of "//self%name//" detected."//NLC//"Searching for restart files..." )
+            if (self%SampleFile%exists) then ! sampling is already complete
+                self%Err%occurred = .true.
+                self%Err%msg =    PROCEDURE_NAME//": Error occurred. Output sample file detected: "//self%SampleFile%Path%original//&
+                                NLC//self%name//" cannot overwrite an already-completed simulation."//&
                                 NLC//"Please provide an alternative file name for the new simulation outputs."
-            elseif (PM%LogFile%exists .and. PM%TimeFile%exists .and. PM%RestartFile%exists .and. PM%ChainFile%exists) then  ! restart mode
-                if (PM%SpecBase%SampleSize%val==0_IK) then ! sampling is already complete
-                    PM%Err%occurred = .true.
-                    PM%Err%msg = PROCEDURE_NAME//": Error occurred. The input variable sampleSize = 0 indicates that the output files belong to a completed simulation."
+            elseif (self%LogFile%exists .and. self%TimeFile%exists .and. self%RestartFile%exists .and. self%ChainFile%exists) then  ! restart mode
+                if (self%SpecBase%SampleSize%val==0_IK) then ! sampling is already complete
+                    self%Err%occurred = .true.
+                    self%Err%msg = PROCEDURE_NAME//": Error occurred. The input variable sampleSize = 0 indicates that the output files belong to a completed simulation."
                 else
-                    PM%Err%occurred = .false.
+                    self%Err%occurred = .false.
                 end if
             else
-                PM%Err%occurred = .true.
-                PM%Err%msg = PROCEDURE_NAME//": Error occurred. For a successful simulation restart, all output files are necessary."//NLC//"List of missing simulation output files:"
-                if (.not. PM%LogFile%exists)        PM%Err%msg = PM%Err%msg//NLC//PM%LogFile%Path%original
-                if (.not. PM%TimeFile%exists)       PM%Err%msg = PM%Err%msg//NLC//PM%TimeFile%Path%original
-                if (.not. PM%ChainFile%exists)      PM%Err%msg = PM%Err%msg//NLC//PM%ChainFile%Path%original
-                if (.not. PM%RestartFile%exists)    PM%Err%msg = PM%Err%msg//NLC//PM%RestartFile%Path%original
+                self%Err%occurred = .true.
+                self%Err%msg = PROCEDURE_NAME//": Error occurred. For a successful simulation restart, all output files are necessary."//NLC//"List of missing simulation output files:"
+                if (.not. self%LogFile%exists)        self%Err%msg = self%Err%msg//NLC//self%LogFile%Path%original
+                if (.not. self%TimeFile%exists)       self%Err%msg = self%Err%msg//NLC//self%TimeFile%Path%original
+                if (.not. self%ChainFile%exists)      self%Err%msg = self%Err%msg//NLC//self%ChainFile%Path%original
+                if (.not. self%RestartFile%exists)    self%Err%msg = self%Err%msg//NLC//self%RestartFile%Path%original
             end if
-            if (PM%Err%occurred) then
-                call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+            if (self%Err%occurred) then
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
         end if
 
         ! open/append the output files:
 
-        if (PM%Image%isMaster) then
-            if (PM%isFreshRun) then
+        if (self%Image%isMaster) then
+            if (self%isFreshRun) then
                 workingOn = "Generating the output "
-                PM%LogFile%status = "new"
-                PM%TimeFile%status = "new"
-                PM%ChainFile%status = "new"
-                PM%SampleFile%status = "new"
-                PM%RestartFile%status = "new"
-                PM%LogFile%Position%value = "asis"
-                PM%TimeFile%Position%value = "asis"
-                PM%ChainFile%Position%value = "asis"
-                PM%SampleFile%Position%value = "asis"
-                PM%RestartFile%Position%value = "asis"
+                self%LogFile%status = "new"
+                self%TimeFile%status = "new"
+                self%ChainFile%status = "new"
+                self%SampleFile%status = "new"
+                self%RestartFile%status = "new"
+                self%LogFile%Position%value = "asis"
+                self%TimeFile%Position%value = "asis"
+                self%ChainFile%Position%value = "asis"
+                self%SampleFile%Position%value = "asis"
+                self%RestartFile%Position%value = "asis"
             else
                 workingOn = "Appending to the existing "
-                PM%LogFile%status = "old"
-                PM%TimeFile%status = "old"
-                PM%ChainFile%status = "old"
-                PM%SampleFile%status = "replace"
-                PM%RestartFile%status = "old"
-                PM%LogFile%Position%value = "append"
-                PM%TimeFile%Position%value = "asis"
-                PM%ChainFile%Position%value = "asis"
-                PM%SampleFile%Position%value = "asis"
-                PM%RestartFile%Position%value = "asis"
+                self%LogFile%status = "old"
+                self%TimeFile%status = "old"
+                self%ChainFile%status = "old"
+                self%SampleFile%status = "replace"
+                self%RestartFile%status = "old"
+                self%LogFile%Position%value = "append"
+                self%TimeFile%Position%value = "asis"
+                self%ChainFile%Position%value = "asis"
+                self%SampleFile%Position%value = "asis"
+                self%RestartFile%Position%value = "asis"
             end if
         end if
 
         ! print the stdout message for generating / appending the output report file
 
-        blockLogFileListByFirstImage: if (PM%Image%isFirst) then
+        blockLogFileListByFirstImage: if (self%Image%isFirst) then
 
             ! print the stdout message for generating / appending the output report file(s)
 
-            call PM%note( prefix = PM%brand             &
-                        , outputUnit = PM%LogFile%unit  &
-                        , newline = NLC                 &
-                        , marginBot = 0_IK              &
-                        , msg = workingOn // PM%LogFile%suffix // " file:" )
+            call self%note  ( prefix = self%brand               &
+                            , outputUnit = self%LogFile%unit    &
+                            , newline = NLC                     &
+                            , marginBot = 0_IK                  &
+                            , msg = workingOn // self%LogFile%suffix // " file:" )
 
             ! print the the output report file name of the images
 
-            call PM%note( prefix = PM%brand             &
-                        , outputUnit = PM%LogFile%unit  &
-                        , newline = NLC                 &
-                        , marginTop = 0_IK              &
-                        , marginBot = 0_IK              &
-                        , msg = PM%LogFile%Path%original )
+            call self%note  ( prefix = self%brand               &
+                            , outputUnit = self%LogFile%unit    &
+                            , newline = NLC                     &
+                            , marginTop = 0_IK                  &
+                            , marginBot = 0_IK                  &
+                            , msg = self%LogFile%Path%original  )
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
-            if (PM%SpecBase%ParallelizationModel%isMultiChain) then
+            if (self%SpecBase%ParallelizationModel%isMultiChain) then
                 block
                     use String_mod, only: replaceStr !, num2str
                     integer(IK) :: imageID
-                    do imageID = 2, PM%Image%count
-                        call PM%note( prefix = PM%brand             &
-                                    , outputUnit = PM%LogFile%unit  &
-                                    , newline = NLC                 &
-                                    , marginTop = 0_IK              &
-                                    , marginBot = 0_IK              &
-                                    , msg = replaceStr( string = PM%LogFile%Path%original, search = "process_1", substitute = "process_"//num2str(imageID) ) )
+                    do imageID = 2, self%Image%count
+                        call self%note  ( prefix = self%brand               &
+                                        , outputUnit = self%LogFile%unit    &
+                                        , newline = NLC                     &
+                                        , marginTop = 0_IK                  &
+                                        , marginBot = 0_IK                  &
+                                        , msg = replaceStr( string = self%LogFile%Path%original, search = "process_1", substitute = "process_"//num2str(imageID) ) )
                     end do
                 end block
             end if
-            PM%Err%msg = "Running the simulation in parallel on " // num2str(PM%Image%count) // " processes." // NLC
+            self%Err%msg = "Running the simulation in parallel on " // num2str(self%Image%count) // " processes." // NLC
 #else
-            PM%Err%msg = "Running the simulation in serial on " // num2str(PM%Image%count) // " process." // NLC
+            self%Err%msg = "Running the simulation in serial on " // num2str(self%Image%count) // " process." // NLC
 #endif
 
-            call PM%note( prefix = PM%brand             &
-                        , outputUnit = PM%LogFile%unit  &
-                        , newline = NLC                 &
-                        , marginTop = 3_IK              &
-                        , marginBot = 3_IK              &
-                        , msg = PM%Err%msg // "Please see the output " // PM%LogFile%suffix // " and " // PM%TimeFile%suffix // " files for further realtime simulation details." &
-                        )
+            call self%note  ( prefix = self%brand               &
+                            , outputUnit = self%LogFile%unit    &
+                            , newline = NLC                     &
+                            , marginTop = 3_IK                  &
+                            , marginBot = 3_IK                  &
+                            , msg = self%Err%msg // "Please see the output " // self%LogFile%suffix // " and " // self%TimeFile%suffix // " files for further realtime simulation details." &
+                            )
 
         end if blockLogFileListByFirstImage
 
@@ -891,120 +892,141 @@ contains
         ! open the output files
         ! Intel ifort SHARED attribute is essential for file unlocking
 
-        blockMasterFileSetup: if (PM%Image%isMaster) then
+        blockMasterFileSetup: if (self%Image%isMaster) then
 
-            PM%LogFile%unit = 1001 + PM%Image%id ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
-            open( unit = PM%LogFile%unit                    &
-                , file = PM%LogFile%Path%original           &
-                , status = PM%LogFile%status                &
-                , iostat = PM%LogFile%Err%stat              &
+            self%LogFile%unit = 1001 + self%Image%id ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
+            open( unit = self%LogFile%unit              &
+                , file = self%LogFile%Path%original     &
+                , status = self%LogFile%status          &
+                , iostat = self%LogFile%Err%stat        &
 #if defined IFORT_ENABLED && defined OS_IS_WINDOWS
-                , SHARED                                    &
+                , SHARED                                &
 #endif
-                , position = PM%LogFile%Position%value      )
-            PM%Err = PM%LogFile%getOpenErr(PM%LogFile%Err%stat)
-            if (PM%Err%occurred) then
-                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // PM%name // " " // PM%LogFile%suffix // " file='" // PM%LogFile%Path%original // "'. "
-                if (scan(" ",trim(adjustl(PM%LogFile%Path%original)))/=0) then
-                    PM%Err%msg = PM%Err%msg // "It appears that absolute path used for the output files contains whitespace characters. " &
+                , position = self%LogFile%Position%value)
+            self%Err = self%LogFile%getOpenErr(self%LogFile%Err%stat)
+            if (self%Err%occurred) then
+                self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%LogFile%suffix // " file='" // self%LogFile%Path%original // "'. "
+                if (scan(" ",trim(adjustl(self%LogFile%Path%original)))/=0) then
+                    self%Err%msg = self%Err%msg // "It appears that absolute path used for the output files contains whitespace characters. " &
                                             // "This could be one potential cause of the simulation failure. " &
                                             // "The whitespace characters are always problematic in paths. " &
                                             // "Ensure the path used for the output files does not contain whitespace characters. "
                 end if
-                call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
 
             ! rewrite the same old stuff to all report files
 
-            if (PM%isFreshRun) then
-                call PM%addSplashScreen()
-                if (PM%SpecBase%SilentModeRequested%isFalse) call PM%addCompilerPlatformInfo()   ! this takes about 0.75 seconds to execute on Stampede Login nodes.
-                call PM%noteUserAboutEnvSetup()
-                call PM%warnUserAboutInputFilePresence()
-                call PM%setWarnAboutProcArgHasPriority()
-                call PM%note( prefix = PM%brand, outputUnit = PM%LogFile%unit, newline = NLC, msg = msg )
+            if (self%isFreshRun) then
+                call self%addSplashScreen()
+                if (self%SpecBase%SilentModeRequested%isFalse) call self%addCompilerPlatformInfo()   ! this takes about 0.75 seconds to execute on Stampede Login nodes.
+                call self%noteUserAboutEnvSetup()
+                call self%warnUserAboutInputFilePresence()
+                call self%setWarnAboutProcArgHasPriority()
+                call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg )
             end if
 
             ! open/append the output files
 
-            if (PM%isFreshRun) call PM%note( prefix = PM%brand, outputUnit = PM%LogFile%unit, newline = NLC, msg = workingOn//PM%TimeFile%suffix//" file:"//NLC//PM%TimeFile%Path%original )
+            if (self%isFreshRun) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = workingOn//self%TimeFile%suffix//" file:"//NLC//self%TimeFile%Path%original )
 
-            PM%TimeFile%unit = 1000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
-            open( unit = PM%TimeFile%unit                   &
-                , file = PM%TimeFile%Path%original          &
-                , status = PM%TimeFile%status               &
-                , iostat = PM%TimeFile%Err%stat             &
+            self%TimeFile%unit = 1000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
+            open( unit = self%TimeFile%unit                 &
+                , file = self%TimeFile%Path%original        &
+                , status = self%TimeFile%status             &
+                , iostat = self%TimeFile%Err%stat           &
 #if defined IFORT_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                    &
 #endif
-                , position = PM%TimeFile%Position%value     )
-            PM%Err = PM%TimeFile%getOpenErr(PM%TimeFile%Err%stat)
-            if (PM%Err%occurred) then
-                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // PM%name // " " // PM%TimeFile%suffix // " file='" // PM%TimeFile%Path%original // "'. "
-                call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                , position = self%TimeFile%Position%value   )
+            self%Err = self%TimeFile%getOpenErr(self%TimeFile%Err%stat)
+            if (self%Err%occurred) then
+                self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%TimeFile%suffix // " file='" // self%TimeFile%Path%original // "'. "
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
 
-            if (PM%isFreshRun) call PM%note( prefix = PM%brand, outputUnit = PM%LogFile%unit, newline = NLC, msg = workingOn//PM%ChainFile%suffix//"file:"//NLC//PM%ChainFile%Path%original )
+            if (self%isFreshRun) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = workingOn//self%ChainFile%suffix//"file:"//NLC//self%ChainFile%Path%original )
 
-            PM%ChainFile%unit = 2000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
-            open( unit = PM%ChainFile%unit                  &
-                , file = PM%ChainFile%Path%original         &
-                , form = PM%ChainFile%Form%value            &
-                , status = PM%ChainFile%status              &
-                , iostat = PM%ChainFile%Err%stat            &
+            self%ChainFile%unit = 2000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
+            open( unit = self%ChainFile%unit                &
+                , file = self%ChainFile%Path%original       &
+                , form = self%ChainFile%Form%value          &
+                , status = self%ChainFile%status            &
+                , iostat = self%ChainFile%Err%stat          &
 #if defined IFORT_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                    &
 #endif
-                , position = PM%ChainFile%Position%value    )
-            PM%Err = PM%ChainFile%getOpenErr(PM%ChainFile%Err%stat)
-            if (PM%Err%occurred) then
-                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // PM%name // " " // PM%ChainFile%suffix // " file='" // PM%ChainFile%Path%original // "'. "
-                call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                , position = self%ChainFile%Position%value  )
+            self%Err = self%ChainFile%getOpenErr(self%ChainFile%Err%stat)
+            if (self%Err%occurred) then
+                self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%ChainFile%suffix // " file='" // self%ChainFile%Path%original // "'. "
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
 
-            PM%RestartFile%unit = 3000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
-            open( unit = PM%RestartFile%unit                &
-                , file = PM%RestartFile%Path%original       &
-                , form = PM%RestartFile%Form%value          &
-                , status = PM%RestartFile%status            &
-                , iostat = PM%RestartFile%Err%stat          &
+            self%RestartFile%unit = 3000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
+            open( unit = self%RestartFile%unit              &
+                , file = self%RestartFile%Path%original     &
+                , form = self%RestartFile%Form%value        &
+                , status = self%RestartFile%status          &
+                , iostat = self%RestartFile%Err%stat        &
 #if defined IFORT_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                    &
 #endif
-                , position = PM%RestartFile%Position%value  )
-            PM%Err = PM%RestartFile%getOpenErr(PM%RestartFile%Err%stat)
-            if (PM%Err%occurred) then
-                PM%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // PM%name // " " // PM%RestartFile%suffix // " file='" // PM%RestartFile%Path%original // "'. "
-                call PM%abort( Err = PM%Err, prefix = PM%brand, newline = NLC, outputUnit = PM%LogFile%unit )
+                , position = self%RestartFile%Position%value)
+            self%Err = self%RestartFile%getOpenErr(self%RestartFile%Err%stat)
+            if (self%Err%occurred) then
+                self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%RestartFile%suffix // " file='" // self%RestartFile%Path%original // "'. "
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
 
-            if (PM%isFreshRun) then
-                call PM%Decor%writeDecoratedText( text = NLC // PM%name // " simulation specifications" // NLC &
-                                                , marginTop = 1     &
-                                                , marginBot = 1     &
-                                                , newline = NLC     &
-                                                , outputUnit = PM%LogFile%unit )
+            if (self%isFreshRun) then
+                call self%Decor%writeDecoratedText  ( text = NLC // self%name // " simulation specifications" // NLC &
+                                                    , marginTop = 1     &
+                                                    , marginBot = 1     &
+                                                    , newline = NLC     &
+                                                    , outputUnit = self%LogFile%unit )
             end if
 
         end if blockMasterFileSetup
 
         ! These must be defined for all images, because they may be passed as arguments to the kernel subroutines.
 
-        PM%LogFile%maxColWidth%val = max(PM%SpecBase%OutputRealPrecision%val, PM%SpecBase%OutputColumnWidth%val, PM%SpecBase%VariableNameList%MaxLen%val) + 9_IK
-        PM%LogFile%maxColWidth%str = num2str(PM%LogFile%maxColWidth%val)
-        PM%LogFile%format = getGenericFormat( width = PM%LogFile%maxColWidth%val &
-                                            , precision = PM%SpecBase%OutputRealPrecision%val &
+        self%LogFile%maxColWidth%val = max(self%SpecBase%OutputRealPrecision%val, self%SpecBase%OutputColumnWidth%val, self%SpecBase%VariableNameList%MaxLen%val) + 9_IK
+        self%LogFile%maxColWidth%str = num2str(self%LogFile%maxColWidth%val)
+        self%LogFile%format = getGenericFormat( width = self%LogFile%maxColWidth%val &
+                                            , precision = self%SpecBase%OutputRealPrecision%val &
                                             , prefix = INDENT ) ! this is the generic indented format required mostly in postprocessing report
-        PM%TimeFile%format = "(*(g" // PM%SpecBase%OutputColumnWidth%str // "." // PM%SpecBase%OutputRealPrecision%str // ",:,'" // PM%SpecBase%OutputDelimiter%val // "'))"
-        PM%ChainFile%format = PM%TimeFile%format
-        PM%SampleFile%format = PM%ChainFile%format
-        PM%RestartFile%format = "(*(g0,:,'"//NLC//"'))"
+        self%TimeFile%format = "(*(g" // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // ",:,'" // self%SpecBase%OutputDelimiter%val // "'))"
+        self%ChainFile%format = self%TimeFile%format
+        self%SampleFile%format = self%ChainFile%format
+        self%RestartFile%format = "(*(g0,:,'"//NLC//"'))"
 
     end subroutine setupOutputFiles
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    subroutine reportDesc(self, msg) !, marginTop, marginBot)
+#if defined DLL_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: reportDesc
+#endif
+        use Constants_mod, only: IK, NLC
+        implicit none
+        class(ParaMonte_type), intent(inout)    :: self
+        character(*), intent(in)                :: msg
+        !integer(IK) , intent(in)                :: marginTop, marginBot
+        !integer(IK)                             :: marginTopDef, marginBotDef
+        call self%note  ( prefix     = self%brand           &
+                        , outputUnit = self%LogFile%unit    &
+                        , newline    = NLC                  &
+                        , marginTop  = 1_IK                 &
+                        , marginBot  = 1_IK                 &
+                        , msg        = msg                  )
+    end subroutine reportDesc
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

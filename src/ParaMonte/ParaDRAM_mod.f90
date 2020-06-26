@@ -83,29 +83,29 @@ module ParaDRAM_mod
     !end interface ParaDRAM_type
 
     interface
-    module subroutine getSpecFromInputFile( PD, nd )
+    module subroutine getSpecFromInputFile( self, nd )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile
 #endif
         use Constants_mod, only: IK
-        class(ParaDRAM_type), intent(inout) :: PD
+        class(ParaDRAM_type), intent(inout) :: self
         integer(IK), intent(in)             :: nd
     end subroutine getSpecFromInputFile
     end interface
 
     interface
-    module subroutine runKernel( PD, getLogFunc )
+    module subroutine runKernel( self, getLogFunc )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
-        class(ParaDRAM_type), intent(inout) :: PD
+        class(ParaDRAM_type), intent(inout) :: self
         procedure(getLogFunc_proc)          :: getLogFunc
     end subroutine runKernel
     end interface
 
     interface
-    module subroutine runSampler( PD                                    &
+    module subroutine runSampler( self                                  &
                                 , ndim                                  &
                                 , getLogFunc                            &
                                 , inputFile                             &
@@ -149,7 +149,7 @@ module ParaDRAM_mod
                                 , delayedRejectionCount                 &
                                 , burninAdaptationMeasure               &
                                 , delayedRejectionScaleFactorVec        &
-                                ) ! result(PD)
+                                ) ! result(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDRAM_type
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
@@ -160,7 +160,7 @@ module ParaDRAM_mod
         implicit none
 
         ! self
-        class(ParaDRAM_type), intent(inout) :: PD
+        class(ParaDRAM_type), intent(inout) :: self
 
         ! mandatory variables
         integer(IK) , intent(in)            :: ndim
@@ -246,7 +246,7 @@ module ParaDRAM_mod
 !        character(len=1,kind=c_char), dimension(*), intent(in)  :: InputFileVec
 !        procedure(getLogFunc_proc), pointer                     :: getLogFunc
 !        character(:), allocatable                               :: inputFileStr
-!        type(ParaDRAM_type)                                     :: PD
+!        type(ParaDRAM_type)                                     :: self
 !        integer                                                 :: i
 !
 !        ! reconstruct the input file
@@ -266,7 +266,7 @@ module ParaDRAM_mod
 !
 !        ! call runParaDRAM
 !
-!        call PD%runSampler  ( ndim = ndim               &
+!        call self%runSampler  ( ndim = ndim               &
 !                            , getLogFunc = getLogFunc   &
 !                            , inputFile = inputFileStr  &
 !                            )
@@ -295,12 +295,12 @@ module ParaDRAM_mod
 !        character(*), intent(in)    :: inputFile
 !        procedure(getLogFunc_proc)  :: getLogFunc
 !
-!        type(ParaDRAM_type)         :: PD
+!        type(ParaDRAM_type)         :: self
 !        integer                     :: i
 !
 !        ! call runParaDRAM
 !
-!        call PD%runSampler  ( ndim = ndim               &
+!        call self%runSampler  ( ndim = ndim               &
 !                            , getLogFunc = getLogFunc   &
 !                            , inputFile = inputFile     &
 !                            )
@@ -346,7 +346,7 @@ end module ParaDRAM_mod
         character(len=1,kind=c_char), dimension(*), intent(in)  :: InputFileVec
         procedure(getLogFunc_proc), pointer                     :: getLogFunc
         character(:), allocatable                               :: inputFileStr
-        type(ParaDRAM_type)                                     :: PD
+        type(ParaDRAM_type)                                     :: self
         integer                                                 :: i
 #if defined MATLAB_ENABLED
         integer(IK)                                             :: runParaDRAM
@@ -377,7 +377,7 @@ end module ParaDRAM_mod
         ! call runParaDRAM
 
         if (ndim>0_IK) then
-            call PD%runSampler  ( ndim = ndim               &
+            call self%runSampler( ndim = ndim               &
                                 , getLogFunc = getLogFunc   &
                                 , inputFile = inputFileStr  &
                                 )
@@ -385,7 +385,7 @@ end module ParaDRAM_mod
         nullify(getLogFunc)
 
 #if defined MATLAB_ENABLED
-        if (PD%Err%occurred) runParaDRAM = -1_IK
+        if (self%Err%occurred) runParaDRAM = -1_IK
     end function runParaDRAM
 #else
     end subroutine runParaDRAM
@@ -412,11 +412,11 @@ end module ParaDRAM_mod
         procedure(getLogFunc_proc)          :: getLogFunc
         character(*), intent(in), optional  :: inputFile
 
-        type(ParaDRAM_type)                 :: PD
+        type(ParaDRAM_type)                 :: self
 
         ! call runParaDRAM
 
-        call PD%runSampler  ( ndim = ndim               &
+        call self%runSampler( ndim = ndim               &
                             , getLogFunc = getLogFunc   &
                             , inputFile = inputFile     &
                             )

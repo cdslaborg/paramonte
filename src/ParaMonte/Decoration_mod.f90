@@ -241,7 +241,6 @@ contains
         character(:), allocatable           :: formatStr
         character(:), allocatable           :: precisionStr
         character(:), allocatable           :: delimDefault
-        logical                             :: isTabbedDefault
 
         widthStr = "0"; if (present(width)) widthStr = num2str(width)
         precisionStr = ".0"; if (present(precision)) precisionStr = "."//num2str(precision)

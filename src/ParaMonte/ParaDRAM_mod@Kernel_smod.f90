@@ -61,7 +61,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    module subroutine runKernel ( PD            &
+    module subroutine runKernel ( self          &
                                 , getLogFunc    &
                                 )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -78,33 +78,33 @@ contains
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME//"@runKernel()"
         integer(IK) , parameter             :: CHAIN_RESTART_OFFSET = 2_IK
 
-        class(ParaDRAM_type), intent(inout) :: PD
+        class(ParaDRAM_type), intent(inout) :: self
         procedure(getLogFunc_proc)          :: getLogFunc
 
 #if defined CAF_ENABLED
         real(RK)    , allocatable           :: co_AccRate(:)[:]
-        real(RK)    , allocatable           :: co_LogFuncState(:,:)[:]                          ! (0:nd,-1:delayedRejectionCount), -1 corresponds to the current accepted state
-        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)[*]     ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
+        real(RK)    , allocatable           :: co_LogFuncState(:,:)[:]                              ! (0:nd,-1:delayedRejectionCount), -1 corresponds to the current accepted state
+        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)[*]         ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
 #else
         real(RK)    , allocatable           :: co_LogFuncState(:,:)
         real(RK)    , allocatable           :: co_AccRate(:)
-        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)        ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
+        integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)            ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
 #endif
-        type(SumAccRateSinceStart_type)     :: SumAccRateSinceStart                             ! used to figure out the average acceptance ratio for the entire chain.
-        integer(IK)                         :: numFunCallAcceptedLastAdaptation                 ! number of function calls accepted at Last proposal adaptation occurrence
-        integer(IK)                         :: counterAUP                                       ! counter for adaptiveUpdatePeriod
-        integer(IK)                         :: counterAUC                                       ! counter for adaptiveUpdateCount
-        integer(IK)                         :: counterPRP                                       ! counter for progressReportPeriod
-        integer(IK)                         :: counterDRS                                       ! counter for Delayed Rejection Stages
-        integer(IK)                         :: lastStateWeight                                  ! This is used for passing the most recent verbose chain segment to the adaptive updater of the sampler
-        integer(IK)                         :: currentStateWeight                               ! counter for SampleWeight, used only in in restart mode
-        integer(IK)                         :: numFunCallAcceptedPlusOne                        ! counter for SampleWeight, used only in in restart mode
-        integer(IK)                         :: numFunCallAcceptedRejectedLastReport             ! used for progress-report: must be initialized to zero upon entry to the procedure
-        real(RK)                            :: timeElapsedUntilLastReportInSeconds              ! used for progress-report: must be initialized to zero upon entry to the procedure
-        real(RK)                            :: inverseProgressReportPeriod                      ! used for progress-report: inverse of progressReportPeriod
-        real(RK)                            :: sumAccRateLastReport                             ! used for progress-report: must be initialized to zero upon entry to the procedure
-        real(RK)                            :: uniformRnd                                       ! used for random number generation.
-        real(RK)                            :: meanAccRateSinceStart                            ! used for restart file read
+        type(SumAccRateSinceStart_type)     :: SumAccRateSinceStart                                 ! used to figure out the average acceptance ratio for the entire chain.
+        integer(IK)                         :: numFunCallAcceptedLastAdaptation                     ! number of function calls accepted at Last proposal adaptation occurrence
+        integer(IK)                         :: counterAUP                                           ! counter for adaptiveUpdatePeriod
+        integer(IK)                         :: counterAUC                                           ! counter for adaptiveUpdateCount
+        integer(IK)                         :: counterPRP                                           ! counter for progressReportPeriod
+        integer(IK)                         :: counterDRS                                           ! counter for Delayed Rejection Stages
+        integer(IK)                         :: lastStateWeight                                      ! This is used for passing the most recent verbose chain segment to the adaptive updater of the sampler
+        integer(IK)                         :: currentStateWeight                                   ! counter for SampleWeight, used only in in restart mode
+        integer(IK)                         :: numFunCallAcceptedPlusOne                            ! counter for SampleWeight, used only in in restart mode
+        integer(IK)                         :: numFunCallAcceptedRejectedLastReport                 ! used for progress-report: must be initialized to zero upon entry to the procedure
+        real(RK)                            :: timeElapsedUntilLastReportInSeconds                  ! used for progress-report: must be initialized to zero upon entry to the procedure
+        real(RK)                            :: inverseProgressReportPeriod                          ! used for progress-report: inverse of progressReportPeriod
+        real(RK)                            :: sumAccRateLastReport                                 ! used for progress-report: must be initialized to zero upon entry to the procedure
+        real(RK)                            :: uniformRnd                                           ! used for random number generation.
+        real(RK)                            :: meanAccRateSinceStart                                ! used for restart file read
         real(RK)                            :: adaptationMeasure
        !real(RK)                            :: adaptationMeasureDummy
         real(RK)                            :: maxLogFuncRejectedProposal
@@ -119,99 +119,99 @@ contains
 #if defined CAF_ENABLED || defined MPI_ENABLED
         integer(IK)                         :: imageStartID, imageEndID
 #if defined CAF_ENABLED
-        logical , save                      :: co_proposalFoundSinglChainMode[*]                ! used in the delayed rejection section
+        logical , save                      :: co_proposalFoundSinglChainMode[*]                    ! used in the delayed rejection section
 #elif defined MPI_ENABLED
-        logical                             :: co_proposalFoundSinglChainMode                   ! used in the delayed rejection section
-        real(RK), allocatable               :: AccRateMatrix(:,:)                               ! matrix of size (-1:PD%SpecDRAM%DelayedRejectionCount%val,1:PD%Image%count)
+        logical                             :: co_proposalFoundSinglChainMode                       ! used in the delayed rejection section
+        real(RK), allocatable               :: AccRateMatrix(:,:)                                   ! matrix of size (-1:self%SpecDRAM%DelayedRejectionCount%val,1:self%Image%count)
         integer(IK)                         :: ndPlusOne
         integer(IK)                         :: ierrMPI
         integer(IK)                         :: delayedRejectionCountPlusTwo
 #endif
-        PD%Stats%avgCommTimePerFunCall = 0._RK                                                  ! Until the reporting time, this is in reality, sumCommTimePerFunCall. This is meaningful only in singlChain parallelism
-        PD%Stats%NumFunCall%acceptedRejectedDelayedUnused = PD%Image%count                      ! used only in singlChain parallelism, and relevant only on the first image
+        self%Stats%avgCommTimePerFunCall = 0._RK                                                    ! Until the reporting time, this is in reality, sumCommTimePerFunCall. This is meaningful only in singlChain parallelism
+        self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Image%count                      ! used only in singlChain parallelism, and relevant only on the first image
 #endif
-        acceptedRejectedDelayedUnusedRestartMode = 0_IK                                         ! used to compute more accurate timings in the restart mode
-        PD%Stats%avgTimePerFunCalInSec = 0._RK
+        acceptedRejectedDelayedUnusedRestartMode = 0_IK                                             ! used to compute more accurate timings in the restart mode
+        self%Stats%avgTimePerFunCalInSec = 0._RK
         numFunCallAcceptedRejectedLastReport = 0_IK
         timeElapsedUntilLastReportInSeconds = 0._RK
-        inverseProgressReportPeriod = 1._RK / real(PD%SpecBase%ProgressReportPeriod%val,kind=RK) ! this remains a constant except for the last the last report of the simulation
+        inverseProgressReportPeriod = 1._RK/real(self%SpecBase%ProgressReportPeriod%val,kind=RK)    ! this remains a constant except for the last the last report of the simulation
         sumAccRateLastReport = 0._RK
-        nd = PD%nd%val
+        nd = self%nd%val
         
         if (allocated(co_AccRate)) deallocate(co_AccRate)
         if (allocated(co_LogFuncState)) deallocate(co_LogFuncState)
 #if defined CAF_ENABLED
-        allocate(co_LogFuncState(0:nd,-1:PD%SpecDRAM%DelayedRejectionCount%val)[*])
-        allocate(co_AccRate(-1:PD%SpecDRAM%DelayedRejectionCount%val)[*])                       ! the negative element will contain counterDRS
+        allocate(co_LogFuncState(0:nd,-1:self%SpecDRAM%DelayedRejectionCount%val)[*])
+        allocate(co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val)[*])                         ! the negative element will contain counterDRS
 #else
-        allocate(co_LogFuncState(0:nd,-1:PD%SpecDRAM%DelayedRejectionCount%val))
-        allocate(co_AccRate(-1:PD%SpecDRAM%DelayedRejectionCount%val))
+        allocate(co_LogFuncState(0:nd,-1:self%SpecDRAM%DelayedRejectionCount%val))
+        allocate(co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val))
 #endif
-        co_AccRate(-1)  = 0._RK                                                                 ! the real-value counterDRS, indicating the initial delayed rejection stage at which the first point is sampled
-        co_AccRate(0)   = 1._RK                                                                 ! initial acceptance rate for the first zeroth DR stage.
-        co_AccRate(1:PD%SpecDRAM%DelayedRejectionCount%val) = 0._RK                             ! indicates the very first proposal acceptance on image 1
+        co_AccRate(-1)  = 0._RK                                                                     ! the real-value counterDRS, indicating the initial delayed rejection stage at which the first point is sampled
+        co_AccRate(0)   = 1._RK                                                                     ! initial acceptance rate for the first zeroth DR stage.
+        co_AccRate(1:self%SpecDRAM%DelayedRejectionCount%val) = 0._RK                               ! indicates the very first proposal acceptance on image 1
 
 #if defined MPI_ENABLED
         if (allocated(AccRateMatrix)) deallocate(AccRateMatrix)
-        allocate(AccRateMatrix(-1:PD%SpecDRAM%DelayedRejectionCount%val,1:PD%Image%count))      ! the negative element will contain counterDRS
-        AccRateMatrix = 0._RK                                                                   ! -huge(1._RK)  ! debug
-        AccRateMatrix(0,1:PD%Image%count) = 1._RK                                               ! initial acceptance rate for the first zeroth DR stage.
+        allocate(AccRateMatrix(-1:self%SpecDRAM%DelayedRejectionCount%val,1:self%Image%count))      ! the negative element will contain counterDRS
+        AccRateMatrix = 0._RK                                                                       ! -huge(1._RK)  ! debug
+        AccRateMatrix(0,1:self%Image%count) = 1._RK                                                 ! initial acceptance rate for the first zeroth DR stage.
         ndPlusOne = nd + 1_IK
-        delayedRejectionCountPlusTwo = PD%SpecDRAM%DelayedRejectionCount%val + 2_IK
+        delayedRejectionCountPlusTwo = self%SpecDRAM%DelayedRejectionCount%val + 2_IK
 #endif
 
-        delayedRejectionRequested                       = PD%SpecDRAM%DelayedRejectionCount%val > 0_IK
+        delayedRejectionRequested                       = self%SpecDRAM%DelayedRejectionCount%val > 0_IK
         noDelayedRejectionRequested                     = .not. delayedRejectionRequested
         if (delayedRejectionRequested) then
-        PD%Stats%NumFunCall%acceptedRejectedDelayed     = 0_IK                                  ! Markov Chain counter
-        SumAccRateSinceStart%acceptedRejectedDelayed    = 0._RK                                 ! sum of acceptance rate
+        self%Stats%NumFunCall%acceptedRejectedDelayed     = 0_IK                                      ! Markov Chain counter
+        SumAccRateSinceStart%acceptedRejectedDelayed    = 0._RK                                     ! sum of acceptance rate
         end if
 
-       !adaptationMeasure                               = 0._RK                                 ! needed for the first output
-        SumAccRateSinceStart%acceptedRejected           = 0._RK                                 ! sum of acceptance rate
-        PD%Stats%NumFunCall%acceptedRejected            = 0_IK                                  ! Markov Chain counter
-        counterAUC                                      = 0_IK                                  ! counter for padaptiveUpdateCount.
-        counterPRP                                      = 0_IK                                  ! counter for progressReportPeriod.
-        counterAUP                                      = 0_IK                                  ! counter for adaptiveUpdatePeriod. 
-        PD%Stats%NumFunCall%accepted                    = 0_IK                                  ! Markov Chain acceptance counter.
-        samplerUpdateSucceeded                          = .true.                                ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
+       !adaptationMeasure                               = 0._RK                                     ! needed for the first output
+        SumAccRateSinceStart%acceptedRejected           = 0._RK                                     ! sum of acceptance rate
+        self%Stats%NumFunCall%acceptedRejected            = 0_IK                                    ! Markov Chain counter
+        counterAUC                                      = 0_IK                                      ! counter for padaptiveUpdateCount.
+        counterPRP                                      = 0_IK                                      ! counter for progressReportPeriod.
+        counterAUP                                      = 0_IK                                      ! counter for adaptiveUpdatePeriod. 
+        self%Stats%NumFunCall%accepted                    = 0_IK                                    ! Markov Chain acceptance counter.
+        samplerUpdateSucceeded                          = .true.                                    ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
         numFunCallAcceptedLastAdaptation                = 0_IK
         lastStateWeight                                 = -huge(lastStateWeight)
 
-        call PD%Timer%tic()
+        call self%Timer%tic()
 
-        blockDryRunSetup: if (PD%isFreshRun) then
+        blockDryRunSetup: if (self%isFreshRun) then
 
-            allocate(PD%Chain%ProcessID     (   PD%SpecMCMC%ChainSize%val))
-            allocate(PD%Chain%DelRejStage   (   PD%SpecMCMC%ChainSize%val))
-            allocate(PD%Chain%MeanAccRate   (   PD%SpecMCMC%ChainSize%val))
-            allocate(PD%Chain%Adaptation    (   PD%SpecMCMC%ChainSize%val))
-            allocate(PD%Chain%BurninLoc     (   PD%SpecMCMC%ChainSize%val))
-            allocate(PD%Chain%Weight        (   PD%SpecMCMC%ChainSize%val))
-            allocate(PD%Chain%State         (nd,PD%SpecMCMC%ChainSize%val))
-            allocate(PD%Chain%LogFunc       (   PD%SpecMCMC%ChainSize%val))
+            allocate(self%Chain%ProcessID   (   self%SpecMCMC%ChainSize%val))
+            allocate(self%Chain%DelRejStage (   self%SpecMCMC%ChainSize%val))
+            allocate(self%Chain%MeanAccRate (   self%SpecMCMC%ChainSize%val))
+            allocate(self%Chain%Adaptation  (   self%SpecMCMC%ChainSize%val))
+            allocate(self%Chain%BurninLoc   (   self%SpecMCMC%ChainSize%val))
+            allocate(self%Chain%Weight      (   self%SpecMCMC%ChainSize%val))
+            allocate(self%Chain%State       (nd,self%SpecMCMC%ChainSize%val))
+            allocate(self%Chain%LogFunc     (   self%SpecMCMC%ChainSize%val))
 
         else blockDryRunSetup
 
-            ! load the existing Chain file into PD%Chain components
+            ! load the existing Chain file into self%Chain components
 
-            call PD%Chain%get   ( chainFilePath = PD%ChainFile%Path%original        &
-                                , chainFileForm = PD%SpecBase%ChainFileFormat%val   &
-                                , Err = PD%Err                                      &
-                                , targetChainSize = PD%SpecMCMC%ChainSize%val       &
-                                , lenHeader = PD%Chain%lenHeader                    &
+            call self%Chain%get ( chainFilePath = self%ChainFile%Path%original      &
+                                , chainFileForm = self%SpecBase%ChainFileFormat%val &
+                                , Err = self%Err                                    &
+                                , targetChainSize = self%SpecMCMC%ChainSize%val     &
+                                , lenHeader = self%Chain%lenHeader                  &
                                 , ndim = nd                                         &
-                                , delimiter = PD%SpecBase%OutputDelimiter%val       &
+                                , delimiter = self%SpecBase%OutputDelimiter%val     &
                                 )
-            if (PD%Err%occurred) then
-                PD%Err%msg = PROCEDURE_NAME//PD%Err%msg
-                call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+            if (self%Err%occurred) then
+                self%Err%msg = PROCEDURE_NAME//self%Err%msg
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
 
-            if (PD%Chain%Count%compact<=CHAIN_RESTART_OFFSET) then
-                PD%isFreshRun = .true.
-                PD%isDryRun = .not. PD%isFreshRun
+            if (self%Chain%Count%compact<=CHAIN_RESTART_OFFSET) then
+                self%isFreshRun = .true.
+                self%isDryRun = .not. self%isFreshRun
             end if
 
 #if defined CAF_ENABLED
@@ -220,7 +220,7 @@ contains
             call mpi_barrier(mpi_comm_world,ierrMPI)
 #endif
 
-            if (PD%Image%isMaster) then
+            if (self%Image%isMaster) then
 
                 ! set up the chain file
 
@@ -231,48 +231,48 @@ contains
 
                     ! create a copy of the chain file, just for the sake of not losing the simulation results
 
-                    RFN = RandomFileName_type(dir = "", key = PD%ChainFile%Path%original//".temporary_restart_copy", ext="") 
-                    call copyFile(pathOld=PD%ChainFile%Path%original,pathNew=RFN%path,isWindows=PD%OS%isWindows,Err=PD%err)
-                    if (PD%Err%occurred) then
-                        PD%Err%msg = PROCEDURE_NAME//PD%Err%msg
-                        call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                    RFN = RandomFileName_type(dir = "", key = self%ChainFile%Path%original//".temporary_restart_copy", ext="") 
+                    call copyFile(pathOld=self%ChainFile%Path%original,pathNew=RFN%path,isWindows=self%OS%isWindows,Err=self%err)
+                    if (self%Err%occurred) then
+                        self%Err%msg = PROCEDURE_NAME//self%Err%msg
+                        call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                         return
                     end if
 
                     ! reopen the chain file to resume the simulation
 
-                    open( newunit = PD%ChainFile%unit               &
-                        , file = PD%ChainFile%Path%original         &
-                        , form = PD%ChainFile%Form%value            &
-                        , status = PD%ChainFile%status              &
-                        , iostat = PD%ChainFile%Err%stat            &
+                    open( newunit = self%ChainFile%unit             &
+                        , file = self%ChainFile%Path%original       &
+                        , form = self%ChainFile%Form%value          &
+                        , status = self%ChainFile%status            &
+                        , iostat = self%ChainFile%Err%stat          &
 #if defined IFORT_ENABLED && defined OS_IS_WINDOWS
                         , SHARED                                    &
 #endif
-                        , position = PD%ChainFile%Position%value    )
-                    PD%Err = PD%ChainFile%getOpenErr(PD%ChainFile%Err%stat)
-                    if (PD%Err%occurred) then
-                        PD%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//PD%name//" "//PD%ChainFile%suffix//" file='"//PD%ChainFile%Path%original//"'."
-                        call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                        , position = self%ChainFile%Position%value  )
+                    self%Err = self%ChainFile%getOpenErr(self%ChainFile%Err%stat)
+                    if (self%Err%occurred) then
+                        self%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//self%name//" "//self%ChainFile%suffix//" file='"//self%ChainFile%Path%original//"'."
+                        call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                         return
                     end if
 
                     ! rewrite the chain file
 
-                    call PD%Chain%writeChainFile( ndim = nd &
+                    call self%Chain%writeChainFile( ndim = nd &
                                                 , compactStartIndex = 1_IK &
-                                                , compactEndIndex = PD%Chain%Count%compact - CHAIN_RESTART_OFFSET &
-                                                , chainFileUnit = PD%ChainFile%unit &
-                                                , chainFileForm = PD%SpecBase%ChainFileFormat%val &
-                                                , chainFileFormat = PD%ChainFile%format &
+                                                , compactEndIndex = self%Chain%Count%compact - CHAIN_RESTART_OFFSET &
+                                                , chainFileUnit = self%ChainFile%unit &
+                                                , chainFileForm = self%SpecBase%ChainFileFormat%val &
+                                                , chainFileFormat = self%ChainFile%format &
                                                 )
 
                     ! remove the temporary copy of the chain file
 
-                    call removeFile(path=RFN%path,isWindows=PD%OS%isWindows,Err=PD%Err)
-                    if (PD%Err%occurred) then
-                        PD%Err%msg = PROCEDURE_NAME//PD%Err%msg
-                        call PD%abort( Err = PD%Err, prefix = PD%brand, newline = NLC, outputUnit = PD%LogFile%unit )
+                    call removeFile(path=RFN%path,isWindows=self%OS%isWindows,Err=self%Err)
+                    if (self%Err%occurred) then
+                        self%Err%msg = PROCEDURE_NAME//self%Err%msg
+                        call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                         return
                     end if
 
@@ -282,27 +282,27 @@ contains
 
         end if blockDryRunSetup
 
-        if (PD%isFreshRun) then ! this must be done separately from the above blockDryRunSetup
+        if (self%isFreshRun) then ! this must be done separately from the above blockDryRunSetup
             
-            PD%Chain%BurninLoc(1)  = 1_IK
+            self%Chain%BurninLoc(1)  = 1_IK
 
-            co_LogFuncState(1:nd,0) = PD%SpecMCMC%StartPointVec%Val    ! proposal state
-            call PD%Timer%toc()
+            co_LogFuncState(1:nd,0) = self%SpecMCMC%StartPointVec%Val   ! proposal state
+            call self%Timer%toc()
             co_LogFuncState(0,0) = getLogFunc( nd, co_LogFuncState(1:nd,0) )    ! proposal logFunc
-            call PD%Timer%toc(); PD%Stats%avgTimePerFunCalInSec = PD%Stats%avgTimePerFunCalInSec + PD%Timer%Time%delta
+            call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta
 
         else
 
-            co_LogFuncState(1:nd,0)     = PD%Chain%State(1:nd,1)    ! proposal logFunc
-            co_LogFuncState(0,0)        = PD%Chain%LogFunc(1)       ! proposal logFunc
+            co_LogFuncState(1:nd,0)     = self%Chain%State(1:nd,1)      ! proposal logFunc
+            co_LogFuncState(0,0)        = self%Chain%LogFunc(1)         ! proposal logFunc
 
         end if
 
         co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,0)  ! set current logFunc and State equal to the first proposal
-        PD%Stats%LogFuncMode%val = -huge(PD%Stats%LogFuncMode%val)
-        PD%Stats%LogFuncMode%Loc%compact = 0_IK
+        self%Stats%LogFuncMode%val = -huge(self%Stats%LogFuncMode%val)
+        self%Stats%LogFuncMode%Loc%compact = 0_IK
 
-        if (PD%Image%isFirst) then
+        if (self%Image%isFirst) then
             txt =   repeat(" ",25) &
                 //  "Accepted/Total Func. Call   " &
                 //  "Dynamic/Overall Acc. Rate   " &
@@ -318,15 +318,15 @@ contains
         end if
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
-        if (PD%SpecBase%ParallelizationModel%isSinglChain) then
+        if (self%SpecBase%ParallelizationModel%isSinglChain) then
             imageStartID = 1_IK
-            imageEndID = PD%Image%count
+            imageEndID = self%Image%count
         else ! isMultiChain
-            imageStartID = PD%Image%id
-            imageEndID = PD%Image%id
+            imageStartID = self%Image%id
+            imageEndID = self%Image%id
         end if
 #else
-        imageID = 1_IK ! needed even in the case of serial run to assign a proper value to PD%Chain%ProcessID
+        imageID = 1_IK ! needed even in the case of serial run to assign a proper value to self%Chain%ProcessID
 #endif
 
         !******************************************** start of loopMarkovChain *****************************************************
@@ -338,20 +338,20 @@ contains
             co_proposalFound_samplerUpdateOccurred(2) = 0_IK ! at each iteration assume no samplerUpdateOccurred, unless it occurs
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
-            blockMasterImage: if (PD%Image%isMaster) then
+            blockMasterImage: if (self%Image%isMaster) then
 #endif
 
                 co_proposalFound_samplerUpdateOccurred(1) = 0_IK ! co_proposalFound = .false.
-                samplerUpdateIsGreedy = counterAUC < PD%SpecDRAM%GreedyAdaptationCount%val
+                samplerUpdateIsGreedy = counterAUC < self%SpecDRAM%GreedyAdaptationCount%val
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
                 loopOverImages: do imageID = imageStartID, imageEndID
 #if defined CAF_ENABLED
-                    call PD%Timer%toc()
-                    if (imageID/=PD%Image%id) co_AccRate(-1:PD%SpecDRAM%DelayedRejectionCount%val) = co_AccRate(-1:PD%SpecDRAM%DelayedRejectionCount%val)[imageID] ! happens only in isSinglChain=TRUE
-                    call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                    call self%Timer%toc()
+                    if (imageID/=self%Image%id) co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val) = co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val)[imageID] ! happens only in isSinglChain=TRUE
+                    call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
 #elif defined MPI_ENABLED
-                    if (imageID/=PD%Image%id) co_AccRate(-1:PD%SpecDRAM%DelayedRejectionCount%val) = AccRateMatrix(-1:PD%SpecDRAM%DelayedRejectionCount%val,imageID) ! happens only in isSinglChain=TRUE
+                    if (imageID/=self%Image%id) co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val) = AccRateMatrix(-1:self%SpecDRAM%DelayedRejectionCount%val,imageID) ! happens only in isSinglChain=TRUE
 #endif
 #endif
 
@@ -372,8 +372,8 @@ contains
                         ! communicate the accepted logFunc and State from the winning image to master/all images: co_LogFuncState
 
 #if defined MPI_ENABLED
-                        if (PD%SpecBase%ParallelizationModel%isSinglChain) then
-                            call PD%Timer%toc()
+                        if (self%SpecBase%ParallelizationModel%isSinglChain) then
+                            call self%Timer%toc()
                             ! broadcast winning image to all processes
                             call mpi_bcast  ( imageID           &   ! buffer
                                             , 1                 &   ! count
@@ -390,13 +390,13 @@ contains
                                             , mpi_comm_world                    &   ! comm
                                             , ierrMPI                           &   ! ierr
                                             )
-                            call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                            call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
                         end if
 #elif defined CAF_ENABLED
-                        if (imageID/=PD%Image%id) then ! Avoid remote connection for something that is available locally.
-                            call PD%Timer%toc()
+                        if (imageID/=self%Image%id) then ! Avoid remote connection for something that is available locally.
+                            call self%Timer%toc()
                             co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,-1)[imageID]
-                            call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                            call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
                         end if
 #endif
 
@@ -406,52 +406,52 @@ contains
                             lastStateWeight = 0_IK
                         end if
 
-                        blockFreshDryRun: if (PD%isFreshRun) then
+                        blockFreshDryRun: if (self%isFreshRun) then
 
                             call writeOutput()
 
-                            PD%Stats%NumFunCall%accepted = PD%Stats%NumFunCall%accepted + 1_IK
+                            self%Stats%NumFunCall%accepted = self%Stats%NumFunCall%accepted + 1_IK
 
-                            PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)    = imageID
-                            PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)  = counterDRS
-                            PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)   = 0._RK ! adaptationMeasure
-                            PD%Chain%Weight(PD%Stats%NumFunCall%accepted)       = 0_IK
-                            PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)      = co_LogFuncState(0,-1)
-                            PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)   = co_LogFuncState(1:nd,-1)
+                            self%Chain%ProcessID(self%Stats%NumFunCall%accepted)    = imageID
+                            self%Chain%DelRejStage(self%Stats%NumFunCall%accepted)  = counterDRS
+                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted)   = 0._RK ! adaptationMeasure
+                            self%Chain%Weight(self%Stats%NumFunCall%accepted)       = 0_IK
+                            self%Chain%LogFunc(self%Stats%NumFunCall%accepted)      = co_LogFuncState(0,-1)
+                            self%Chain%State(1:nd,self%Stats%NumFunCall%accepted)   = co_LogFuncState(1:nd,-1)
 
                             ! find the burnin point
 
-                            PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted) = getBurninLoc ( lenLogFunc    = PD%Stats%NumFunCall%accepted                      &
-                                                                                            , refLogFunc    = PD%Stats%LogFuncMode%val                          &
-                                                                                            , LogFunc       = PD%Chain%LogFunc(1:PD%Stats%NumFunCall%accepted)  &
-                                                                                            )
+                            self%Chain%BurninLoc(self%Stats%NumFunCall%accepted) = getBurninLoc ( lenLogFunc    = self%Stats%NumFunCall%accepted                        &
+                                                                                                , refLogFunc    = self%Stats%LogFuncMode%val                            &
+                                                                                                , LogFunc       = self%Chain%LogFunc(1:self%Stats%NumFunCall%accepted)  &
+                                                                                                )
 
                         else blockFreshDryRun ! in restart mode: determine the correct value of co_proposalFound_samplerUpdateOccurred(1)
 
-                            numFunCallAcceptedPlusOne = PD%Stats%NumFunCall%accepted + 1_IK
-                            if (numFunCallAcceptedPlusOne==PD%Chain%Count%compact) then
-                                PD%isFreshRun = .true.
+                            numFunCallAcceptedPlusOne = self%Stats%NumFunCall%accepted + 1_IK
+                            if (numFunCallAcceptedPlusOne==self%Chain%Count%compact) then
+                                self%isFreshRun = .true.
                                 call writeOutput()
-                                PD%isDryRun = .not. PD%isFreshRun
-                                PD%Chain%Weight(numFunCallAcceptedPlusOne) = 0_IK
-                                SumAccRateSinceStart%acceptedRejected = PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted) * real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
-                                if (delayedRejectionRequested) SumAccRateSinceStart%acceptedRejectedDelayed = PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted) * real(PD%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK)
+                                self%isDryRun = .not. self%isFreshRun
+                                self%Chain%Weight(numFunCallAcceptedPlusOne) = 0_IK
+                                SumAccRateSinceStart%acceptedRejected = self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted) * real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
+                                if (delayedRejectionRequested) SumAccRateSinceStart%acceptedRejectedDelayed = self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted) * real(self%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK)
                             end if
-                            PD%Stats%NumFunCall%accepted = numFunCallAcceptedPlusOne
-                            numFunCallAcceptedPlusOne = PD%Stats%NumFunCall%accepted + 1_IK
+                            self%Stats%NumFunCall%accepted = numFunCallAcceptedPlusOne
+                            numFunCallAcceptedPlusOne = self%Stats%NumFunCall%accepted + 1_IK
 
                         end if blockFreshDryRun
 
-                        if (PD%Stats%LogFuncMode%val < PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)) then
-                            PD%Stats%LogFuncMode%val = PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)
-                            PD%Stats%LogFuncMode%Loc%compact = PD%Stats%NumFunCall%accepted
+                        if (self%Stats%LogFuncMode%val < self%Chain%LogFunc(self%Stats%NumFunCall%accepted)) then
+                            self%Stats%LogFuncMode%val = self%Chain%LogFunc(self%Stats%NumFunCall%accepted)
+                            self%Stats%LogFuncMode%Loc%compact = self%Stats%NumFunCall%accepted
                         end if
 
                         SumAccRateSinceStart%acceptedRejected = SumAccRateSinceStart%acceptedRejected + co_AccRate(counterDRS)
 
                     else blockProposalAccepted
 
-                        counterDRS = PD%SpecDRAM%DelayedRejectionCount%val
+                        counterDRS = self%SpecDRAM%DelayedRejectionCount%val
                         SumAccRateSinceStart%acceptedRejected = SumAccRateSinceStart%acceptedRejected + co_AccRate(counterDRS)
 
                     end if blockProposalAccepted
@@ -462,25 +462,25 @@ contains
                     counterAUP = counterAUP + 1_IK
                     counterPRP = counterPRP + 1_IK
                     currentStateWeight = currentStateWeight + 1_IK
-                    PD%Stats%NumFunCall%acceptedRejected = PD%Stats%NumFunCall%acceptedRejected + 1_IK
+                    self%Stats%NumFunCall%acceptedRejected = self%Stats%NumFunCall%acceptedRejected + 1_IK
 
                     if (delayedRejectionRequested) then
                         SumAccRateSinceStart%acceptedRejectedDelayed = SumAccRateSinceStart%acceptedRejectedDelayed + sum(co_AccRate(0:counterDRS))
-                        PD%Stats%NumFunCall%acceptedRejectedDelayed = PD%Stats%NumFunCall%acceptedRejectedDelayed + counterDRS + 1_IK
+                        self%Stats%NumFunCall%acceptedRejectedDelayed = self%Stats%NumFunCall%acceptedRejectedDelayed + counterDRS + 1_IK
                     end if
 
-                    if (PD%isFreshRun) then ! these are used for adaptive proposal updating, so they have to be set on every accepted or rejected iteration (excluding delayed rejections)
-                        PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)  = SumAccRateSinceStart%acceptedRejected / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
-                        PD%Chain%Weight(PD%Stats%NumFunCall%accepted)       = PD%Chain%Weight(PD%Stats%NumFunCall%accepted) + 1_IK
+                    if (self%isFreshRun) then ! these are used for adaptive proposal updating, so they have to be set on every accepted or rejected iteration (excluding delayed rejections)
+                        self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted)  = SumAccRateSinceStart%acceptedRejected / real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
+                        self%Chain%Weight(self%Stats%NumFunCall%accepted)       = self%Chain%Weight(self%Stats%NumFunCall%accepted) + 1_IK
                     else
 #if defined CAF_ENABLED || defined MPI_ENABLED
-                        acceptedRejectedDelayedUnusedRestartMode = PD%Stats%NumFunCall%acceptedRejectedDelayedUnused
+                        acceptedRejectedDelayedUnusedRestartMode = self%Stats%NumFunCall%acceptedRejectedDelayedUnused
 #else
-                        acceptedRejectedDelayedUnusedRestartMode = PD%Stats%NumFunCall%acceptedRejectedDelayed
+                        acceptedRejectedDelayedUnusedRestartMode = self%Stats%NumFunCall%acceptedRejectedDelayed
 #endif
                     end if
 
-                    if (counterPRP == PD%SpecBase%ProgressReportPeriod%val) then
+                    if (counterPRP == self%SpecBase%ProgressReportPeriod%val) then
                         counterPRP = 0_IK
                         call reportProgress()
                     end if
@@ -488,18 +488,18 @@ contains
                     !********************************************* last output write ***********************************************
                     !***************************************************************************************************************
 
-                    blockLastSample: if (PD%Stats%NumFunCall%accepted==PD%SpecMCMC%ChainSize%val) then !co_missionAccomplished = .true.
+                    blockLastSample: if (self%Stats%NumFunCall%accepted==self%SpecMCMC%ChainSize%val) then !co_missionAccomplished = .true.
 
                         ! on 3 images Windows, sustituting co_missionAccomplished with the following leads to 10% less communication overhead for 1D Gaussian example
                         ! on 3 images Linux  , sustituting co_missionAccomplished with the following leads to 16% less communication overhead for 1D Gaussian example
                         ! on 5 images Linux  , sustituting co_missionAccomplished with the following leads to 11% less communication overhead for 1D Gaussian example
 
                         co_proposalFound_samplerUpdateOccurred(1) = -1_IK  ! equivalent to co_missionAccomplished = .true.
-                        inverseProgressReportPeriod = 1._RK / (PD%Stats%NumFunCall%acceptedRejected-numFunCallAcceptedRejectedLastReport)
+                        inverseProgressReportPeriod = 1._RK / (self%Stats%NumFunCall%acceptedRejected-numFunCallAcceptedRejectedLastReport)
 
-                        if (PD%isFreshRun) then
+                        if (self%isFreshRun) then
                             call writeOutput()
-                            flush(PD%ChainFile%unit)
+                            flush(self%ChainFile%unit)
                         end if
 
                         call reportProgress()
@@ -515,81 +515,81 @@ contains
                     !******************************************** Proposal Adaptation **********************************************
                     !***************************************************************************************************************
 
-                    blockSamplerAdaptation: if ( counterAUC < PD%SpecDRAM%AdaptiveUpdateCount%val .and. counterAUP == PD%SpecDRAM%AdaptiveUpdatePeriod%val ) then
+                    blockSamplerAdaptation: if ( counterAUC < self%SpecDRAM%AdaptiveUpdateCount%val .and. counterAUP == self%SpecDRAM%AdaptiveUpdatePeriod%val ) then
 
-                        co_proposalFound_samplerUpdateOccurred(2) = 1_IK ! istart = numFunCallAcceptedLastAdaptation ! = max( numFunCallAcceptedLastAdaptation , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted) ) ! this is experimental
+                        co_proposalFound_samplerUpdateOccurred(2) = 1_IK ! istart = numFunCallAcceptedLastAdaptation ! = max( numFunCallAcceptedLastAdaptation , self%Chain%BurninLoc(self%Stats%NumFunCall%accepted) ) ! this is experimental
 
-                        ! the order in the following two MUST be preserved as occasionally PD%Stats%NumFunCall%accepted = numFunCallAcceptedLastAdaptation
+                        ! the order in the following two MUST be preserved as occasionally self%Stats%NumFunCall%accepted = numFunCallAcceptedLastAdaptation
 
-                        dummy = PD%Chain%Weight(PD%Stats%NumFunCall%accepted) ! needed for the restart mode, not needed in the fresh run
-                        if (PD%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then    ! no new point has been accepted since last time
-                            PD%Chain%Weight(numFunCallAcceptedLastAdaptation) = currentStateWeight - lastStateWeight
+                        dummy = self%Chain%Weight(self%Stats%NumFunCall%accepted) ! needed for the restart mode, not needed in the fresh run
+                        if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then    ! no new point has been accepted since last time
+                            self%Chain%Weight(numFunCallAcceptedLastAdaptation) = currentStateWeight - lastStateWeight
 #if defined DBG_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
-                            if (mod(PD%Chain%Weight(numFunCallAcceptedLastAdaptation),PD%SpecDRAM%AdaptiveUpdatePeriod%val)/=0) then
-                                write(output_unit,"(*(g0,:,' '))"   ) PROCEDURE_NAME//": Internal error occurred: ", PD%SpecDRAM%AdaptiveUpdatePeriod%val &
-                                                                    , PD%Chain%Weight(numFunCallAcceptedLastAdaptation), currentStateWeight, lastStateWeight
+                            if (mod(self%Chain%Weight(numFunCallAcceptedLastAdaptation),self%SpecDRAM%AdaptiveUpdatePeriod%val)/=0) then
+                                write(output_unit,"(*(g0,:,' '))"   ) PROCEDURE_NAME//": Internal error occurred: ", self%SpecDRAM%AdaptiveUpdatePeriod%val &
+                                                                    , self%Chain%Weight(numFunCallAcceptedLastAdaptation), currentStateWeight, lastStateWeight
                                 !call execute_command_line(" ")
                                 flush(output_unit)
                                 error stop
                             end if
 #endif
                         else
-                            PD%Chain%Weight(numFunCallAcceptedLastAdaptation) = PD%Chain%Weight(numFunCallAcceptedLastAdaptation) - lastStateWeight
-                            PD%Chain%Weight(PD%Stats%NumFunCall%accepted) = currentStateWeight ! needed for the restart mode, not needed in the fresh run
+                            self%Chain%Weight(numFunCallAcceptedLastAdaptation) = self%Chain%Weight(numFunCallAcceptedLastAdaptation) - lastStateWeight
+                            self%Chain%Weight(self%Stats%NumFunCall%accepted) = currentStateWeight ! needed for the restart mode, not needed in the fresh run
                         end if
 
-                        if (PD%isFreshRun) then
-                            meanAccRateSinceStart = PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)
-                            if (PD%SpecBase%RestartFileFormat%isBinary) then
-                                write(PD%RestartFile%unit) meanAccRateSinceStart
+                        if (self%isFreshRun) then
+                            meanAccRateSinceStart = self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted)
+                            if (self%SpecBase%RestartFileFormat%isBinary) then
+                                write(self%RestartFile%unit) meanAccRateSinceStart
                             else
-                                write(PD%RestartFile%unit,PD%RestartFile%format) "meanAccRateSinceStart", meanAccRateSinceStart
-                                call PD%Proposal%writeRestartFile()
+                                write(self%RestartFile%unit,self%RestartFile%format) "meanAccRateSinceStart", meanAccRateSinceStart
+                                call self%Proposal%writeRestartFile()
                             end if
-                            flush(PD%RestartFile%unit)
+                            flush(self%RestartFile%unit)
                         else
-                            if (PD%SpecBase%RestartFileFormat%isBinary) then
-                                read(PD%RestartFile%unit) meanAccRateSinceStart
+                            if (self%SpecBase%RestartFileFormat%isBinary) then
+                                read(self%RestartFile%unit) meanAccRateSinceStart
                             else
-                                !read(PD%RestartFile%unit,PD%RestartFile%format)
-                                !read(PD%RestartFile%unit,PD%RestartFile%format) meanAccRateSinceStart
-                                read(PD%RestartFile%unit,*)
-                                read(PD%RestartFile%unit,*) meanAccRateSinceStart
-                                call PD%Proposal%readRestartFile()
+                                !read(self%RestartFile%unit,self%RestartFile%format)
+                                !read(self%RestartFile%unit,self%RestartFile%format) meanAccRateSinceStart
+                                read(self%RestartFile%unit,*)
+                                read(self%RestartFile%unit,*) meanAccRateSinceStart
+                                call self%Proposal%readRestartFile()
                             end if
-                            SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
+                            SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
                         end if
 
-                        call PD%Proposal%doAdaptation   ( nd                        = nd                                                                                    &
-                                                        , chainSize                 = PD%Stats%NumFunCall%accepted - numFunCallAcceptedLastAdaptation + 1_IK                &
-                                                        , Chain                     = PD%Chain%State(1:nd,numFunCallAcceptedLastAdaptation:PD%Stats%NumFunCall%accepted)    &
-                                                        , ChainWeight               = PD%Chain%Weight(numFunCallAcceptedLastAdaptation:PD%Stats%NumFunCall%accepted)        &
-                                                        , samplerUpdateIsGreedy     = samplerUpdateIsGreedy                                                                 &
-                                                        , meanAccRateSinceStart     = meanAccRateSinceStart                                                                 &
-                                                        , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                &
-                                                        , adaptationMeasure         = adaptationMeasure                                                                     &
+                        call self%Proposal%doAdaptation ( nd                        = nd                                                                                        &
+                                                        , chainSize                 = self%Stats%NumFunCall%accepted - numFunCallAcceptedLastAdaptation + 1_IK                  &
+                                                        , Chain                     = self%Chain%State(1:nd,numFunCallAcceptedLastAdaptation:self%Stats%NumFunCall%accepted)    &
+                                                        , ChainWeight               = self%Chain%Weight(numFunCallAcceptedLastAdaptation:self%Stats%NumFunCall%accepted)        &
+                                                        , samplerUpdateIsGreedy     = samplerUpdateIsGreedy                                                                     &
+                                                        , meanAccRateSinceStart     = meanAccRateSinceStart                                                                     &
+                                                        , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                    &
+                                                        , adaptationMeasure         = adaptationMeasure                                                                         &
                                                         )
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
-                        if(ProposalErr%occurred) then; PD%Err%occurred = .true.; return; end if
+                        if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif
 
-                        PD%Chain%Weight(PD%Stats%NumFunCall%accepted) = dummy   ! needed for the restart mode, not needed in the fresh run
-                        if (PD%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then
+                        self%Chain%Weight(self%Stats%NumFunCall%accepted) = dummy   ! needed for the restart mode, not needed in the fresh run
+                        if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then
                             !adaptationMeasure = adaptationMeasure + adaptationMeasureDummy ! this is the worst-case upper-bound
-                            PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted) = PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted) + adaptationMeasure ! this is the worst-case upper-bound
+                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = self%Chain%Adaptation(self%Stats%NumFunCall%accepted) + adaptationMeasure ! this is the worst-case upper-bound
                         else
                             !adaptationMeasure = adaptationMeasureDummy
-                            PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted) = adaptationMeasure
-                            PD%Chain%Weight(numFunCallAcceptedLastAdaptation) = PD%Chain%Weight(numFunCallAcceptedLastAdaptation) + lastStateWeight
+                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = adaptationMeasure
+                            self%Chain%Weight(numFunCallAcceptedLastAdaptation) = self%Chain%Weight(numFunCallAcceptedLastAdaptation) + lastStateWeight
                         end if
                         if (samplerUpdateSucceeded) then
-                            lastStateWeight = currentStateWeight ! PD%Chain%Weight(PD%Stats%NumFunCall%accepted) ! informative, do not remove
-                            numFunCallAcceptedLastAdaptation = PD%Stats%NumFunCall%accepted
+                            lastStateWeight = currentStateWeight ! self%Chain%Weight(self%Stats%NumFunCall%accepted) ! informative, do not remove
+                            numFunCallAcceptedLastAdaptation = self%Stats%NumFunCall%accepted
                         end if
 
                         counterAUP = 0_IK
                         counterAUC = counterAUC + 1_IK
-                        !if (counterAUC==PD%SpecDRAM%AdaptiveUpdateCount%val) adaptationMeasure = 0._RK
+                        !if (counterAUC==self%SpecDRAM%AdaptiveUpdateCount%val) adaptationMeasure = 0._RK
 
                     !else blockSamplerAdaptation
 
@@ -607,7 +607,7 @@ contains
 #endif
 
 #if defined MPI_ENABLED
-                if (PD%SpecBase%ParallelizationModel%isSinglChain .and. co_proposalFound_samplerUpdateOccurred(1)==0_IK) then
+                if (self%SpecBase%ParallelizationModel%isSinglChain .and. co_proposalFound_samplerUpdateOccurred(1)==0_IK) then
                     imageID = 0_IK  ! broadcast rank # 0 to all processes, indicating unsuccessful sampling
                     call mpi_bcast  ( imageID           &   ! buffer
                                     , 1                 &   ! count
@@ -621,10 +621,10 @@ contains
 
 #if defined CAF_ENABLED
 
-                if (PD%SpecBase%ParallelizationModel%isSinglChain) then
-                    call PD%Timer%toc()
+                if (self%SpecBase%ParallelizationModel%isSinglChain) then
+                    call self%Timer%toc()
                     sync images(*)
-                    call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                    call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
                 end if
 
             else blockMasterImage   ! ATTN: This block should be executed only when singlChain parallelizationModel is requested
@@ -633,27 +633,27 @@ contains
 
                 ! get the accepted proposal from the first image
 
-                call PD%Timer%toc()
+                call self%Timer%toc()
                 co_proposalFound_samplerUpdateOccurred(1:2) = co_proposalFound_samplerUpdateOccurred(1:2)[1]
                 if (co_proposalFound_samplerUpdateOccurred(1)==1_IK) co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,-1)[1]
-                if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call PD%Proposal%getAdaptation()
-                call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call self%Proposal%getAdaptation()
+                call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
 
-                if (PD%isDryRun) then
+                if (self%isDryRun) then
                     if (co_proposalFound_samplerUpdateOccurred(1)==1_IK) then
-                        PD%Stats%NumFunCall%accepted = PD%Stats%NumFunCall%accepted + 1_IK
-                        numFunCallAcceptedPlusOne = PD%Stats%NumFunCall%accepted + 1_IK
+                        self%Stats%NumFunCall%accepted = self%Stats%NumFunCall%accepted + 1_IK
+                        numFunCallAcceptedPlusOne = self%Stats%NumFunCall%accepted + 1_IK
                         currentStateWeight = 1_IK
-                        if (PD%Stats%NumFunCall%accepted==PD%Chain%Count%compact) then
-                            PD%isFreshRun = .true.
-                            PD%isDryRun = .false.
+                        if (self%Stats%NumFunCall%accepted==self%Chain%Count%compact) then
+                            self%isFreshRun = .true.
+                            self%isDryRun = .false.
                         end if
                     else
-                        currentStateWeight = currentStateWeight + PD%Image%count
+                        currentStateWeight = currentStateWeight + self%Image%count
                     end if
 #if defined DBG_ENABLED
                 elseif (co_proposalFound_samplerUpdateOccurred(1)==1_IK) then
-                    PD%Stats%NumFunCall%accepted = PD%Stats%NumFunCall%accepted + 1_IK
+                    self%Stats%NumFunCall%accepted = self%Stats%NumFunCall%accepted + 1_IK
 #endif
                 end if
 
@@ -665,7 +665,7 @@ contains
 
                 ! fetch winning rank to all processes
 
-                call PD%Timer%toc()
+                call self%Timer%toc()
                 call mpi_bcast  ( imageID           &   ! buffer
                                 , 1                 &   ! count
                                 , mpi_integer       &   ! datatype
@@ -673,13 +673,13 @@ contains
                                 , mpi_comm_world    &   ! comm
                                 , ierrMPI           &   ! ierr
                                 )
-                call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
 
                 if (imageID>0_IK) then ! co_ProposalFound = .true., sampling successful
 
                     ! broadcast co_LogFuncState from the winning image to all others
 
-                    call PD%Timer%toc()
+                    call self%Timer%toc()
                     call mpi_bcast  ( co_LogFuncState(0:nd,-1)  &   ! buffer
                                     , ndPlusOne                 &   ! count
                                     , mpi_double_precision      &   ! datatype
@@ -687,25 +687,25 @@ contains
                                     , mpi_comm_world            &   ! comm
                                     , ierrMPI                   &   ! ierr
                                     )
-                    call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                    call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
 
                 end if
 
-                if (PD%isDryRun) then
+                if (self%isDryRun) then
                     if (imageID>0_IK) then ! equivalent to co_proposalFound_samplerUpdateOccurred(1)==1_IK
-                        PD%Stats%NumFunCall%accepted = PD%Stats%NumFunCall%accepted + 1_IK
-                        numFunCallAcceptedPlusOne = PD%Stats%NumFunCall%accepted + 1_IK
+                        self%Stats%NumFunCall%accepted = self%Stats%NumFunCall%accepted + 1_IK
+                        numFunCallAcceptedPlusOne = self%Stats%NumFunCall%accepted + 1_IK
                         currentStateWeight = 1_IK
-                        if (PD%Stats%NumFunCall%accepted==PD%Chain%Count%compact) then
-                            PD%isFreshRun = .true.
-                            PD%isDryRun = .false.
+                        if (self%Stats%NumFunCall%accepted==self%Chain%Count%compact) then
+                            self%isFreshRun = .true.
+                            self%isDryRun = .false.
                         end if
                     else
-                        currentStateWeight = currentStateWeight + PD%Image%count
+                        currentStateWeight = currentStateWeight + self%Image%count
                     end if
 #if defined DBG_ENABLED
                 elseif (co_proposalFound_samplerUpdateOccurred(1)==1_IK) then
-                    PD%Stats%NumFunCall%accepted = PD%Stats%NumFunCall%accepted + 1_IK
+                    self%Stats%NumFunCall%accepted = self%Stats%NumFunCall%accepted + 1_IK
 #endif
                 end if
 
@@ -716,8 +716,8 @@ contains
 
             ! broadcast samplerUpdateOccurred from the root process to all others, and broadcast proposal adaptations if needed
 
-            if (PD%SpecBase%ParallelizationModel%isSinglChain) then
-                call PD%Timer%toc()
+            if (self%SpecBase%ParallelizationModel%isSinglChain) then
+                call self%Timer%toc()
                 call mpi_bcast  ( co_proposalFound_samplerUpdateOccurred  &   ! buffer: XXX: first element not needed except to end the simulation.
                                 , 2                     &   ! count
                                 , mpi_integer           &   ! datatype
@@ -725,8 +725,8 @@ contains
                                 , mpi_comm_world        &   ! comm
                                 , ierrMPI               &   ! ierr
                                 )
-                if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call PD%Proposal%getAdaptation()
-                call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call self%Proposal%getAdaptation()
+                call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
             end if
 
 #endif
@@ -738,43 +738,43 @@ contains
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
 
-            blockSingleChainParallelism: if (PD%SpecBase%ParallelizationModel%isSinglChain) then
+            blockSingleChainParallelism: if (self%SpecBase%ParallelizationModel%isSinglChain) then
 
                 !*******************************************************************************************************************
 
-                loopDelayedRejectionSingleChain: do counterDRS = 0, PD%SpecDRAM%DelayedRejectionCount%val
+                loopDelayedRejectionSingleChain: do counterDRS = 0, self%SpecDRAM%DelayedRejectionCount%val
 
-                    ! PD%Stats%NumFunCall%acceptedRejectedDelayedUnused is relevant only on the first image, despite being updated by all images
-                    PD%Stats%NumFunCall%acceptedRejectedDelayedUnused = PD%Stats%NumFunCall%acceptedRejectedDelayedUnused + PD%Image%count
+                    ! self%Stats%NumFunCall%acceptedRejectedDelayedUnused is relevant only on the first image, despite being updated by all images
+                    self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayedUnused + self%Image%count
 
-                    co_LogFuncState(1:nd,counterDRS) = PD%Proposal%getNew   ( nd            = nd                                    &
+                    co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew   ( nd            = nd                                    &
                                                                             , counterDRS    = counterDRS                            &
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1)    &
                                                                             )
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
-                    if(ProposalErr%occurred) then; PD%Err%occurred = .true.; return; end if
+                    if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif
                     call random_number(uniformRnd) ! only for the purpose of restart mode reproducibility
 
 #if defined CAF_ENABLED
                     ! this is necessary to avoid racing condition on co_LogFuncState and co_proposalFoundSinglChainMode
-                    if (PD%Image%isMaster) then
-                        call PD%Timer%toc()
+                    if (self%Image%isMaster) then
+                        call self%Timer%toc()
                         sync images(*)
-                        call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                        call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
                     else
                         sync images(1)
                     end if
 #endif
 
-                    if (PD%isFreshRun .or. numFunCallAcceptedPlusOne==PD%Chain%Count%compact) then
+                    if (self%isFreshRun .or. numFunCallAcceptedPlusOne==self%Chain%Count%compact) then
 
                         ! accept or reject the proposed state, only if no acceptance has occurred yet
                         if (co_AccRate(-1)<-0.5_RK) then
 
-                            call PD%Timer%toc()
+                            call self%Timer%toc()
                             co_LogFuncState(0,counterDRS) = getLogFunc(nd,co_LogFuncState(1:nd,counterDRS))
-                            call PD%Timer%toc(); PD%Stats%avgTimePerFunCalInSec = PD%Stats%avgTimePerFunCalInSec + PD%Timer%Time%delta
+                            call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta
 
                             if ( co_LogFuncState(0,counterDRS) >= co_LogFuncState(0,-1) ) then ! accept the proposed state
 
@@ -809,13 +809,13 @@ contains
 
                     else
 
-                        if (PD%Image%id==PD%Chain%ProcessID(numFunCallAcceptedPlusOne) .and. &
-                            currentStateWeight+PD%Image%id-1_IK==PD%Chain%Weight(PD%Stats%NumFunCall%accepted) .and. &
-                            counterDRS==PD%Chain%DelRejStage(numFunCallAcceptedPlusOne)) then
+                        if (self%Image%id==self%Chain%ProcessID(numFunCallAcceptedPlusOne) .and. &
+                            currentStateWeight+self%Image%id-1_IK==self%Chain%Weight(self%Stats%NumFunCall%accepted) .and. &
+                            counterDRS==self%Chain%DelRejStage(numFunCallAcceptedPlusOne)) then
 
                             co_AccRate(-1) = real(counterDRS,kind=RK)
-                            co_LogFuncState(   0,counterDRS) = PD%Chain%LogFunc   (numFunCallAcceptedPlusOne)
-                            co_LogFuncState(1:nd,counterDRS) = PD%Chain%State(1:nd,numFunCallAcceptedPlusOne)
+                            co_LogFuncState(   0,counterDRS) = self%Chain%LogFunc   (numFunCallAcceptedPlusOne)
+                            co_LogFuncState(1:nd,counterDRS) = self%Chain%State(1:nd,numFunCallAcceptedPlusOne)
                             co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)
 
                         end if
@@ -826,10 +826,10 @@ contains
 
                     if (delayedRejectionRequested) then ! broadcast the sampling status from the first image to all others
 #if defined CAF_ENABLED
-                        if (PD%Image%isMaster) then ! this is necessary to avoid racing condition on the value of co_proposalFoundSinglChainMode
-                            call PD%Timer%toc()
+                        if (self%Image%isMaster) then ! this is necessary to avoid racing condition on the value of co_proposalFoundSinglChainMode
+                            call self%Timer%toc()
                             sync images(*)
-                            call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                            call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
                         else
                             sync images(1)
                         end if
@@ -853,7 +853,7 @@ contains
 #if defined MPI_ENABLED
                 ! gather all accr on the master image. Avoid unnecessary communication when proposal is on the master image
                 if ( noDelayedRejectionRequested .or. (delayedRejectionRequested .and. .not.co_proposalFoundSinglChainMode) ) then 
-                    call PD%Timer%toc()
+                    call self%Timer%toc()
                     call mpi_gather ( co_AccRate(:)                 & ! send buffer
                                     , delayedRejectionCountPlusTwo  & ! send count
                                     , mpi_double_precision          & ! send datatype
@@ -864,7 +864,7 @@ contains
                                     , mpi_comm_world                & ! comm
                                     , ierrMPI                       & ! mpi error flag
                                     )
-                    call PD%Timer%toc(); PD%Stats%avgCommTimePerFunCall = PD%Stats%avgCommTimePerFunCall + PD%Timer%Time%delta
+                    call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
                 endif
 #endif
 
@@ -875,22 +875,22 @@ contains
                 !*******************************************************************************************************************
 #endif
 
-                loopDelayedRejection: do counterDRS = 0, PD%SpecDRAM%DelayedRejectionCount%val
+                loopDelayedRejection: do counterDRS = 0, self%SpecDRAM%DelayedRejectionCount%val
 
-                    co_LogFuncState(1:nd,counterDRS) = PD%Proposal%getNew   ( nd            = nd                                    &
+                    co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew ( nd            = nd                                    &
                                                                             , counterDRS    = counterDRS                            &
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1)    &
                                                                             )
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
-                    if(ProposalErr%occurred) then; PD%Err%occurred = .true.; return; end if
+                    if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif
                     call random_number(uniformRnd) ! only for the purpose of restart mode reproducibility
 
-                    if (PD%isFreshRun .or. numFunCallAcceptedPlusOne==PD%Chain%Count%compact) then
+                    if (self%isFreshRun .or. numFunCallAcceptedPlusOne==self%Chain%Count%compact) then
 
-                        call PD%Timer%toc()
+                        call self%Timer%toc()
                         co_LogFuncState(0,counterDRS) = getLogFunc(nd,co_LogFuncState(1:nd,counterDRS))
-                        call PD%Timer%toc(); PD%Stats%avgTimePerFunCalInSec = PD%Stats%avgTimePerFunCalInSec + PD%Timer%Time%delta
+                        call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta
 
                         ! accept or reject the proposed state
 
@@ -926,10 +926,10 @@ contains
 
                     else
 
-                        if (currentStateWeight==PD%Chain%Weight(PD%Stats%NumFunCall%accepted) .and. counterDRS==PD%Chain%DelRejStage(numFunCallAcceptedPlusOne)) then
+                        if (currentStateWeight==self%Chain%Weight(self%Stats%NumFunCall%accepted) .and. counterDRS==self%Chain%DelRejStage(numFunCallAcceptedPlusOne)) then
                             co_AccRate(-1) = real(counterDRS,kind=RK)
-                            co_LogFuncState(   0,-1) = PD%Chain%LogFunc   (numFunCallAcceptedPlusOne)
-                            co_LogFuncState(1:nd,-1) = PD%Chain%State(1:nd,numFunCallAcceptedPlusOne)
+                            co_LogFuncState(   0,-1) = self%Chain%LogFunc   (numFunCallAcceptedPlusOne)
+                            co_LogFuncState(1:nd,-1) = self%Chain%State(1:nd,numFunCallAcceptedPlusOne)
                             exit loopDelayedRejection
                         end if
 
@@ -950,61 +950,61 @@ contains
 
         end do loopMarkovChain
 
-        call PD%Timer%toc()
+        call self%Timer%toc()
 
         !***************************************************************************************************************************
         !***************************************************************************************************************************
         !********************************************** end of loopMarkovChain *****************************************************
 
-        PD%chain%Count%target  = PD%Stats%NumFunCall%accepted
-        PD%chain%Count%compact = PD%Stats%NumFunCall%accepted
-        PD%chain%Count%verbose = PD%Stats%NumFunCall%acceptedRejected
+        self%chain%Count%target  = self%Stats%NumFunCall%accepted
+        self%chain%Count%compact = self%Stats%NumFunCall%accepted
+        self%chain%Count%verbose = self%Stats%NumFunCall%acceptedRejected
 
         if (noDelayedRejectionRequested) then
-            PD%Stats%NumFunCall%acceptedRejectedDelayed = PD%Stats%NumFunCall%acceptedRejected
+            self%Stats%NumFunCall%acceptedRejectedDelayed = self%Stats%NumFunCall%acceptedRejected
             SumAccRateSinceStart%acceptedRejectedDelayed = SumAccRateSinceStart%acceptedRejected
         end if
             
 
-        if (PD%Image%isMaster) then
+        if (self%Image%isMaster) then
             block
                 integer(IK) :: i
-                if (PD%SpecDRAM%BurninAdaptationMeasure%val>0.999999_RK) then
-                    PD%Stats%AdaptationBurninLoc%compact = 1_IK
-                    PD%Stats%AdaptationBurninLoc%verbose = 1_IK
+                if (self%SpecDRAM%BurninAdaptationMeasure%val>0.999999_RK) then
+                    self%Stats%AdaptationBurninLoc%compact = 1_IK
+                    self%Stats%AdaptationBurninLoc%verbose = 1_IK
                 else
-                    PD%Stats%AdaptationBurninLoc%compact = PD%Stats%NumFunCall%accepted
-                    PD%Stats%AdaptationBurninLoc%verbose = PD%Stats%NumFunCall%acceptedRejected - PD%Chain%Weight(PD%Stats%NumFunCall%accepted) + 1_IK
-                    loopAdaptationBurnin: do i = PD%Stats%NumFunCall%accepted-1, 1, -1
-                        if (PD%Chain%Adaptation(i)>PD%SpecDRAM%BurninAdaptationMeasure%val) exit loopAdaptationBurnin
-                        PD%Stats%AdaptationBurninLoc%compact = PD%Stats%AdaptationBurninLoc%compact - 1_IK
-                        PD%Stats%AdaptationBurninLoc%verbose = PD%Stats%AdaptationBurninLoc%verbose - PD%Chain%Weight(i)
+                    self%Stats%AdaptationBurninLoc%compact = self%Stats%NumFunCall%accepted
+                    self%Stats%AdaptationBurninLoc%verbose = self%Stats%NumFunCall%acceptedRejected - self%Chain%Weight(self%Stats%NumFunCall%accepted) + 1_IK
+                    loopAdaptationBurnin: do i = self%Stats%NumFunCall%accepted-1, 1, -1
+                        if (self%Chain%Adaptation(i)>self%SpecDRAM%BurninAdaptationMeasure%val) exit loopAdaptationBurnin
+                        self%Stats%AdaptationBurninLoc%compact = self%Stats%AdaptationBurninLoc%compact - 1_IK
+                        self%Stats%AdaptationBurninLoc%verbose = self%Stats%AdaptationBurninLoc%verbose - self%Chain%Weight(i)
                     end do loopAdaptationBurnin
                 end if
             end block
-            PD%Stats%BurninLoc%compact          = PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)
-            PD%Stats%BurninLoc%verbose          = sum(PD%Chain%Weight(1:PD%Stats%BurninLoc%compact-1)) + 1_IK
-            PD%Stats%LogFuncMode%Crd            = PD%Chain%State(1:nd,PD%Stats%LogFuncMode%Loc%compact)
-            PD%Stats%LogFuncMode%Loc%verbose    = sum(PD%Chain%Weight(1:PD%Stats%LogFuncMode%Loc%compact-1)) + 1_IK
-            close(PD%RestartFile%unit)
-            close(PD%ChainFile%unit)
+            self%Stats%BurninLoc%compact        = self%Chain%BurninLoc(self%Stats%NumFunCall%accepted)
+            self%Stats%BurninLoc%verbose        = sum(self%Chain%Weight(1:self%Stats%BurninLoc%compact-1)) + 1_IK
+            self%Stats%LogFuncMode%Crd          = self%Chain%State(1:nd,self%Stats%LogFuncMode%Loc%compact)
+            self%Stats%LogFuncMode%Loc%verbose  = sum(self%Chain%Weight(1:self%Stats%LogFuncMode%Loc%compact-1)) + 1_IK
+            close(self%RestartFile%unit)
+            close(self%ChainFile%unit)
         endif
 
-        if (PD%Image%isFirst) then
+        if (self%Image%isFirst) then
             call write()
             !call execute_command_line(" ")
             flush(output_unit)
         end if
 #if defined CAF_ENABLED || defined MPI_ENABLED
-        if (PD%SpecBase%ParallelizationModel%isMultiChain) then
+        if (self%SpecBase%ParallelizationModel%isMultiChain) then
 #endif
-            PD%Stats%avgCommTimePerFunCall = 0._RK
-            PD%Stats%NumFunCall%acceptedRejectedDelayedUnused = PD%Stats%NumFunCall%acceptedRejectedDelayed
-            PD%Stats%avgTimePerFunCalInSec =  PD%Stats%avgTimePerFunCalInSec / (PD%Stats%NumFunCall%acceptedRejectedDelayedUnused-acceptedRejectedDelayedUnusedRestartMode)
+            self%Stats%avgCommTimePerFunCall = 0._RK
+            self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayed
+            self%Stats%avgTimePerFunCalInSec =  self%Stats%avgTimePerFunCalInSec / (self%Stats%NumFunCall%acceptedRejectedDelayedUnused-acceptedRejectedDelayedUnusedRestartMode)
 #if defined CAF_ENABLED || defined MPI_ENABLED
-        elseif(PD%Image%isFirst) then
-            PD%Stats%avgCommTimePerFunCall =  PD%Stats%avgCommTimePerFunCall / PD%Stats%NumFunCall%acceptedRejectedDelayed
-            PD%Stats%avgTimePerFunCalInSec = (PD%Stats%avgTimePerFunCalInSec / (PD%Stats%NumFunCall%acceptedRejectedDelayedUnused-acceptedRejectedDelayedUnusedRestartMode)) * PD%Image%count
+        elseif(self%Image%isFirst) then
+            self%Stats%avgCommTimePerFunCall =  self%Stats%avgCommTimePerFunCall / self%Stats%NumFunCall%acceptedRejectedDelayed
+            self%Stats%avgTimePerFunCalInSec = (self%Stats%avgTimePerFunCalInSec / (self%Stats%NumFunCall%acceptedRejectedDelayedUnused-acceptedRejectedDelayedUnusedRestartMode)) * self%Image%count
             return
         end if
 #endif
@@ -1027,35 +1027,35 @@ contains
 
             ! if new point has been sampled, write the previous sampled point to output file
 
-            blockOutputWrite: if (PD%Stats%NumFunCall%accepted>0_IK) then
-                if (PD%SpecBase%ChainFileFormat%isCompact) then
-                    write(PD%ChainFile%unit,PD%ChainFile%format ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
-                                                                , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
-                                                                , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
-                                                                , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
-                                                                , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
-                                                                , PD%Chain%Weight(PD%Stats%NumFunCall%accepted)         &
-                                                                , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
-                                                                , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
-                elseif (PD%SpecBase%ChainFileFormat%isBinary) then
-                    write(PD%ChainFile%unit                     ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
-                                                                , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
-                                                                , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
-                                                                , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
-                                                                , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
-                                                                , PD%Chain%Weight(PD%Stats%NumFunCall%accepted)         &
-                                                                , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
-                                                                , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
-                elseif (PD%SpecBase%ChainFileFormat%isVerbose) then
-                    do j = 1, PD%Chain%Weight(PD%Stats%NumFunCall%accepted)
-                    write(PD%ChainFile%unit,PD%ChainFile%format ) PD%Chain%ProcessID(PD%Stats%NumFunCall%accepted)      &
-                                                                , PD%Chain%DelRejStage(PD%Stats%NumFunCall%accepted)    &
-                                                                , PD%Chain%MeanAccRate(PD%Stats%NumFunCall%accepted)    &
-                                                                , PD%Chain%Adaptation(PD%Stats%NumFunCall%accepted)     &
-                                                                , PD%Chain%BurninLoc(PD%Stats%NumFunCall%accepted)      &
-                                                                , 1_IK                                                  &
-                                                                , PD%Chain%LogFunc(PD%Stats%NumFunCall%accepted)        &
-                                                                , PD%Chain%State(1:nd,PD%Stats%NumFunCall%accepted)
+            blockOutputWrite: if (self%Stats%NumFunCall%accepted>0_IK) then
+                if (self%SpecBase%ChainFileFormat%isCompact) then
+                    write(self%ChainFile%unit,self%ChainFile%format ) self%Chain%ProcessID(self%Stats%NumFunCall%accepted)      &
+                                                                    , self%Chain%DelRejStage(self%Stats%NumFunCall%accepted)    &
+                                                                    , self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted)    &
+                                                                    , self%Chain%Adaptation(self%Stats%NumFunCall%accepted)     &
+                                                                    , self%Chain%BurninLoc(self%Stats%NumFunCall%accepted)      &
+                                                                    , self%Chain%Weight(self%Stats%NumFunCall%accepted)         &
+                                                                    , self%Chain%LogFunc(self%Stats%NumFunCall%accepted)        &
+                                                                    , self%Chain%State(1:nd,self%Stats%NumFunCall%accepted)
+                elseif (self%SpecBase%ChainFileFormat%isBinary) then
+                    write(self%ChainFile%unit                       ) self%Chain%ProcessID(self%Stats%NumFunCall%accepted)      &
+                                                                    , self%Chain%DelRejStage(self%Stats%NumFunCall%accepted)    &
+                                                                    , self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted)    &
+                                                                    , self%Chain%Adaptation(self%Stats%NumFunCall%accepted)     &
+                                                                    , self%Chain%BurninLoc(self%Stats%NumFunCall%accepted)      &
+                                                                    , self%Chain%Weight(self%Stats%NumFunCall%accepted)         &
+                                                                    , self%Chain%LogFunc(self%Stats%NumFunCall%accepted)        &
+                                                                    , self%Chain%State(1:nd,self%Stats%NumFunCall%accepted)
+                elseif (self%SpecBase%ChainFileFormat%isVerbose) then
+                    do j = 1, self%Chain%Weight(self%Stats%NumFunCall%accepted)
+                    write(self%ChainFile%unit,self%ChainFile%format ) self%Chain%ProcessID(self%Stats%NumFunCall%accepted)      &
+                                                                    , self%Chain%DelRejStage(self%Stats%NumFunCall%accepted)    &
+                                                                    , self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted)    &
+                                                                    , self%Chain%Adaptation(self%Stats%NumFunCall%accepted)     &
+                                                                    , self%Chain%BurninLoc(self%Stats%NumFunCall%accepted)      &
+                                                                    , 1_IK                                                      &
+                                                                    , self%Chain%LogFunc(self%Stats%NumFunCall%accepted)        &
+                                                                    , self%Chain%State(1:nd,self%Stats%NumFunCall%accepted)
                     end do
                 end if
             end if blockOutputWrite
@@ -1081,23 +1081,23 @@ contains
             integer(IK)                         :: numFunCallAccepted_dummy ! used in restart mode
 
 
-            if (PD%isFreshRun) then
+            if (self%isFreshRun) then
 
-                call PD%Timer%toc()
-                timeElapsedSinceLastReportInSeconds = PD%Timer%Time%total - timeElapsedUntilLastReportInSeconds
-                timeElapsedUntilLastReportInSeconds = PD%Timer%Time%total
-                meanAccRateSinceStart = SumAccRateSinceStart%acceptedRejected / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK)
+                call self%Timer%toc()
+                timeElapsedSinceLastReportInSeconds = self%Timer%Time%total - timeElapsedUntilLastReportInSeconds
+                timeElapsedUntilLastReportInSeconds = self%Timer%Time%total
+                meanAccRateSinceStart = SumAccRateSinceStart%acceptedRejected / real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
                 meanAccRateSinceLastReport = (SumAccRateSinceStart%acceptedRejected-sumAccRateLastReport) * inverseProgressReportPeriod
-                estimatedTimeToFinishInSeconds = real(PD%SpecMCMC%ChainSize%val-PD%Stats%NumFunCall%accepted,kind=RK) * timeElapsedUntilLastReportInSeconds / real(PD%Stats%NumFunCall%accepted,kind=RK)
+                estimatedTimeToFinishInSeconds = real(self%SpecMCMC%ChainSize%val-self%Stats%NumFunCall%accepted,kind=RK) * timeElapsedUntilLastReportInSeconds / real(self%Stats%NumFunCall%accepted,kind=RK)
 
-                write( PD%TimeFile%unit, PD%TimeFile%format ) PD%Stats%NumFunCall%acceptedRejected  &
-                                                            , PD%Stats%NumFunCall%accepted          &
-                                                            , meanAccRateSinceStart                 &
-                                                            , meanAccRateSinceLastReport            &
-                                                            , timeElapsedSinceLastReportInSeconds   &
-                                                            , timeElapsedUntilLastReportInSeconds   &
-                                                            , estimatedTimeToFinishInSeconds
-                flush(PD%TimeFile%unit)
+                write( self%TimeFile%unit, self%TimeFile%format ) self%Stats%NumFunCall%acceptedRejected    &
+                                                                , self%Stats%NumFunCall%accepted            &
+                                                                , meanAccRateSinceStart                     &
+                                                                , meanAccRateSinceLastReport                &
+                                                                , timeElapsedSinceLastReportInSeconds       &
+                                                                , timeElapsedUntilLastReportInSeconds       &
+                                                                , estimatedTimeToFinishInSeconds
+                flush(self%TimeFile%unit)
 
             else
 
@@ -1105,8 +1105,8 @@ contains
                     use String_mod, only: String_type
                     type(String_type) :: Record
                     allocate( character(600) :: Record%value )
-                    read(PD%TimeFile%unit, "(A)" ) Record%value
-                    Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),PD%SpecBase%OutputDelimiter%val,Record%nPart)
+                    read(self%TimeFile%unit, "(A)" ) Record%value
+                    Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),self%SpecBase%OutputDelimiter%val,Record%nPart)
                     read(Record%Parts(1)%record,*) numFunCallAcceptedRejectedLastReport
                     read(Record%Parts(2)%record,*) numFunCallAccepted_dummy
                     read(Record%Parts(3)%record,*) meanAccRateSinceStart
@@ -1120,7 +1120,7 @@ contains
             end if
 
             ! report progress in the standard output
-            if (PD%Image%isFirst) then
+            if (self%Image%isFirst) then
                 write( &
 #if defined MEXPRINT_ENABLED
                 txt, &
@@ -1129,8 +1129,8 @@ contains
 #endif
                 fmt = "(A,25X,*(A25,3X))" ) &
                 CARRIAGE_RETURN, &
-                num2str(PD%Stats%NumFunCall%accepted)//" / "//num2str(PD%Stats%NumFunCall%acceptedRejected,formatIn="(1I10)"), &
-                num2str(meanAccRateSinceLastReport,"(1F11.3)")//" / "//num2str(SumAccRateSinceStart%acceptedRejected / real(PD%Stats%NumFunCall%acceptedRejected,kind=RK),"(1F10.4)"), &
+                num2str(self%Stats%NumFunCall%accepted)//" / "//num2str(self%Stats%NumFunCall%acceptedRejected,formatIn="(1I10)"), &
+                num2str(meanAccRateSinceLastReport,"(1F11.3)")//" / "//num2str(SumAccRateSinceStart%acceptedRejected / real(self%Stats%NumFunCall%acceptedRejected,kind=RK),"(1F10.4)"), &
                 num2str(timeElapsedUntilLastReportInSeconds,"(1F10.4)")//" / "//num2str(estimatedTimeToFinishInSeconds,"(1F11.3)")
 #if defined MEXPRINT_ENABLED
                 call write(string=txt,advance=.false.)
@@ -1140,7 +1140,7 @@ contains
 #endif
             end if
 
-            numFunCallAcceptedRejectedLastReport = PD%Stats%NumFunCall%acceptedRejected
+            numFunCallAcceptedRejectedLastReport = self%Stats%NumFunCall%acceptedRejected
             sumAccRateLastReport = SumAccRateSinceStart%acceptedRejected
 
         end subroutine reportProgress
