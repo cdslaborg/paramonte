@@ -34,6 +34,8 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+#define ParaDISE
+
 submodule (ParaDRAM_mod) Kernel_smod
 
     use, intrinsic :: iso_fortran_env, only: output_unit
@@ -83,10 +85,10 @@ contains
 
 #if defined CAF_ENABLED
         real(RK)    , allocatable           :: co_AccRate(:)[:]
-        real(RK)    , allocatable           :: co_LogFuncState(:,:)[:]                              ! (0:nd,-1:delayedRejectionCount), -1 corresponds to the current accepted state
+        real(RK)    , allocatable           :: co_LogFuncStateLogProb(:,:)[:]                       ! (0:nd,-1:delayedRejectionCount), -1 corresponds to the current accepted state
         integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)[*]         ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
 #else
-        real(RK)    , allocatable           :: co_LogFuncState(:,:)
+        real(RK)    , allocatable           :: co_LogFuncStateLogProb(:,:)
         real(RK)    , allocatable           :: co_AccRate(:)
         integer(IK) , save                  :: co_proposalFound_samplerUpdateOccurred(2)            ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
 #endif
@@ -141,12 +143,12 @@ contains
         ndPlusTwo = nd + 2_IK
         
         if (allocated(co_AccRate)) deallocate(co_AccRate)
-        if (allocated(co_LogFuncState)) deallocate(co_LogFuncState)
+        if (allocated(co_LogFuncStateLogProb)) deallocate(co_LogFuncStateLogProb)
 #if defined CAF_ENABLED
-        allocate(co_LogFuncState(0:ndPlusTwo,-1:self%SpecDRAM%DelayedRejectionCount%val)[*])
+        allocate(co_LogFuncStateLogProb(0:ndPlusTwo,-1:self%SpecDRAM%DelayedRejectionCount%val)[*])
         allocate(co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val)[*])                         ! the negative element will contain counterDRS
 #else
-        allocate(co_LogFuncState(0:ndPlusTwo,-1:self%SpecDRAM%DelayedRejectionCount%val))
+        allocate(co_LogFuncStateLogProb(0:ndPlusTwo,-1:self%SpecDRAM%DelayedRejectionCount%val))
         allocate(co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val))
 #endif
         co_AccRate(-1)  = 0._RK                                                                     ! the real-value counterDRS, indicating the initial delayed rejection stage at which the first point is sampled
@@ -288,19 +290,19 @@ contains
             
             self%Chain%BurninLoc(1)  = 1_IK
 
-            co_LogFuncState(1:nd,0) = self%SpecMCMC%StartPointVec%Val   ! proposal state
+            co_LogFuncStateLogProb(1:nd,0) = self%SpecMCMC%StartPointVec%Val   ! proposal state
             call self%Timer%toc()
-            co_LogFuncState(0,0) = getLogFunc( nd, co_LogFuncState(1:nd,0) )    ! proposal logFunc
+            co_LogFuncStateLogProb(0,0) = getLogFunc( nd, co_LogFuncStateLogProb(1:nd,0) )    ! proposal logFunc
             call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta
 
         else
 
-            co_LogFuncState(1:nd,0)     = self%Chain%State(1:nd,1)      ! proposal logFunc
-            co_LogFuncState(0,0)        = self%Chain%LogFunc(1)         ! proposal logFunc
+            co_LogFuncStateLogProb(1:nd,0)     = self%Chain%State(1:nd,1)      ! proposal logFunc
+            co_LogFuncStateLogProb(0,0)        = self%Chain%LogFunc(1)         ! proposal logFunc
 
         end if
 
-        co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,0)  ! set current logFunc and State equal to the first proposal
+        co_LogFuncStateLogProb(0:nd,-1) = co_LogFuncStateLogProb(0:nd,0)  ! set current logFunc and State equal to the first proposal
         self%Stats%LogFuncMode%val = -huge(self%Stats%LogFuncMode%val)
         self%Stats%LogFuncMode%Loc%compact = 0_IK
 
@@ -371,7 +373,7 @@ contains
 
                         currentStateWeight = 0_IK
 
-                        ! communicate the accepted logFunc and State from the winning image to master/all images: co_LogFuncState
+                        ! communicate the accepted logFunc and State from the winning image to master/all images: co_LogFuncStateLogProb
 
 #if defined MPI_ENABLED
                         if (self%SpecBase%ParallelizationModel%isSinglChain) then
@@ -384,8 +386,8 @@ contains
                                             , mpi_comm_world    &   ! comm
                                             , ierrMPI           &   ! ierr
                                             )
-                            ! broadcast co_LogFuncState from the winning image to all others
-                            call mpi_bcast  ( co_LogFuncState(0:nd,-1)          &   ! buffer
+                            ! broadcast co_LogFuncStateLogProb from the winning image to all others
+                            call mpi_bcast  ( co_LogFuncStateLogProb(0:nd,-1)   &   ! buffer
                                             , ndPlusOne                         &   ! count
                                             , mpi_double_precision              &   ! datatype
                                             , imageID - 1_IK                    &   ! root: broadcasting rank
@@ -397,7 +399,7 @@ contains
 #elif defined CAF_ENABLED
                         if (imageID/=self%Image%id) then ! Avoid remote connection for something that is available locally.
                             call self%Timer%toc()
-                            co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,-1)[imageID]
+                            co_LogFuncStateLogProb(0:nd,-1) = co_LogFuncStateLogProb(0:nd,-1)[imageID]
                             call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
                         end if
 #endif
@@ -418,8 +420,8 @@ contains
                             self%Chain%DelRejStage(self%Stats%NumFunCall%accepted)  = counterDRS
                             self%Chain%Adaptation(self%Stats%NumFunCall%accepted)   = 0._RK ! adaptationMeasure
                             self%Chain%Weight(self%Stats%NumFunCall%accepted)       = 0_IK
-                            self%Chain%LogFunc(self%Stats%NumFunCall%accepted)      = co_LogFuncState(0,-1)
-                            self%Chain%State(1:nd,self%Stats%NumFunCall%accepted)   = co_LogFuncState(1:nd,-1)
+                            self%Chain%LogFunc(self%Stats%NumFunCall%accepted)      = co_LogFuncStateLogProb(0,-1)
+                            self%Chain%State(1:nd,self%Stats%NumFunCall%accepted)   = co_LogFuncStateLogProb(1:nd,-1)
 
                             ! find the burnin point
 
@@ -637,7 +639,7 @@ contains
 
                 call self%Timer%toc()
                 co_proposalFound_samplerUpdateOccurred(1:2) = co_proposalFound_samplerUpdateOccurred(1:2)[1]
-                if (co_proposalFound_samplerUpdateOccurred(1)==1_IK) co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,-1)[1]
+                if (co_proposalFound_samplerUpdateOccurred(1)==1_IK) co_LogFuncStateLogProb(0:nd,-1) = co_LogFuncStateLogProb(0:nd,-1)[1]
                 if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call self%Proposal%bcastAdaptation()
                 call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
 
@@ -679,15 +681,15 @@ contains
 
                 if (imageID>0_IK) then ! co_ProposalFound = .true., sampling successful
 
-                    ! broadcast co_LogFuncState from the winning image to all others
+                    ! broadcast co_LogFuncStateLogProb from the winning image to all others
 
                     call self%Timer%toc()
-                    call mpi_bcast  ( co_LogFuncState(0:nd,-1)  &   ! buffer
-                                    , ndPlusOne                 &   ! count
-                                    , mpi_double_precision      &   ! datatype
-                                    , imageID - 1               &   ! root: broadcasting rank
-                                    , mpi_comm_world            &   ! comm
-                                    , ierrMPI                   &   ! ierr
+                    call mpi_bcast  ( co_LogFuncStateLogProb(0:nd,-1)   &   ! buffer
+                                    , ndPlusOne                         &   ! count
+                                    , mpi_double_precision              &   ! datatype
+                                    , imageID - 1                       &   ! root: broadcasting rank
+                                    , mpi_comm_world                    &   ! comm
+                                    , ierrMPI                           &   ! ierr
                                     )
                     call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
 
@@ -749,17 +751,17 @@ contains
                     ! self%Stats%NumFunCall%acceptedRejectedDelayedUnused is relevant only on the first image, despite being updated by all images
                     self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayedUnused + self%Image%count
 
-                    co_LogFuncState(1:ndPlusTwo,counterDRS) = self%Proposal%getNew  ( nd            = nd                                    &
-                                                                                    , counterDRS    = counterDRS                            &
-                                                                                    , StateOld      = co_LogFuncState(1:nd,counterDRS-1)    &
-                                                                                    )
+                    co_LogFuncStateLogProb(1:ndPlusTwo,counterDRS) = self%Proposal%getNew   ( nd            = nd &
+                                                                                            , counterDRS    = counterDRS &
+                                                                                            , StateOld      = co_LogFuncStateLogProb(1:nd,counterDRS-1) &
+                                                                                            )
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif
                     call random_number(uniformRnd) ! only for the purpose of restart mode reproducibility
 
 #if defined CAF_ENABLED
-                    ! this is necessary to avoid racing condition on co_LogFuncState and co_proposalFoundSinglChainMode
+                    ! this is necessary to avoid racing condition on co_LogFuncStateLogProb and co_proposalFoundSinglChainMode
                     if (self%Image%isMaster) then
                         call self%Timer%toc()
                         sync images(*)
@@ -775,36 +777,36 @@ contains
                         if (co_AccRate(-1)<-0.5_RK) then
 
                             call self%Timer%toc()
-                            co_LogFuncState(0,counterDRS) = getLogFunc(nd,co_LogFuncState(1:nd,counterDRS))
+                            co_LogFuncStateLogProb(0,counterDRS) = getLogFunc(nd,co_LogFuncStateLogProb(1:nd,counterDRS))
                             call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta
 
-                            if ( co_LogFuncState(0,counterDRS) >= co_LogFuncState(0,-1) ) then ! accept the proposed state
+                            if ( co_LogFuncStateLogProb(0,counterDRS) >= co_LogFuncStateLogProb(0,-1) ) then ! accept the proposed state
 
                                 co_AccRate(counterDRS) = 1._RK
                                 co_AccRate(-1) = real(counterDRS,kind=RK)
-                                co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)
+                                co_LogFuncStateLogProb(0:nd,-1) = co_LogFuncStateLogProb(0:nd,counterDRS)
 
-                            elseif ( co_LogFuncState(0,counterDRS) < maxLogFuncRejectedProposal ) then  ! reject the proposed state. This step should be reachable only when delayedRejectionCount > 0
+                            elseif ( co_LogFuncStateLogProb(0,counterDRS) < maxLogFuncRejectedProposal ) then  ! reject the proposed state. This step should be reachable only when delayedRejectionCount > 0
 
                                 co_AccRate(counterDRS) = 0._RK  ! proposal rejected
 
                             else    ! accept with probability co_AccRate
 
                                 if ( counterDRS == 0_IK ) then ! This should be equivalent to maxLogFuncRejectedProposal == NEGINF_RK
-                                    co_AccRate(counterDRS) = exp( co_LogFuncState(0,counterDRS) - co_LogFuncState(0,-1) )
-                                else    ! ensure no arithmetic overflow/underflow. ATT: co_LogFuncState(0,-1) > co_LogFuncState(0,counterDRS) > maxLogFuncRejectedProposal
-                                    co_AccRate(counterDRS) = exp( getLogSubExp( co_LogFuncState(0,counterDRS)   , maxLogFuncRejectedProposal ) &
-                                                                - getLogSubExp( co_LogFuncState(0,-1)           , maxLogFuncRejectedProposal ) )
+                                    co_AccRate(counterDRS) = exp( co_LogFuncStateLogProb(0,counterDRS) - co_LogFuncStateLogProb(0,-1) )
+                                else    ! ensure no arithmetic overflow/underflow. ATT: co_LogFuncStateLogProb(0,-1) > co_LogFuncStateLogProb(0,counterDRS) > maxLogFuncRejectedProposal
+                                    co_AccRate(counterDRS) = exp( getLogSubExp( co_LogFuncStateLogProb(0,counterDRS)   , maxLogFuncRejectedProposal ) &
+                                                                - getLogSubExp( co_LogFuncStateLogProb(0,-1)           , maxLogFuncRejectedProposal ) )
                                 end if
 
                                 if (uniformRnd<co_AccRate(counterDRS)) then ! accept the proposed state
                                     co_AccRate(-1) = real(counterDRS,kind=RK)
-                                    co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)
+                                    co_LogFuncStateLogProb(0:nd,-1) = co_LogFuncStateLogProb(0:nd,counterDRS)
                                 end if
 
                             end if
 
-                            maxLogFuncRejectedProposal = max( maxLogFuncRejectedProposal, co_LogFuncState(0,counterDRS) )
+                            maxLogFuncRejectedProposal = max( maxLogFuncRejectedProposal, co_LogFuncStateLogProb(0,counterDRS) )
 
                         end if
 
@@ -816,9 +818,9 @@ contains
                             counterDRS==self%Chain%DelRejStage(numFunCallAcceptedPlusOne)) then
 
                             co_AccRate(-1) = real(counterDRS,kind=RK)
-                            co_LogFuncState(   0,counterDRS) = self%Chain%LogFunc   (numFunCallAcceptedPlusOne)
-                            co_LogFuncState(1:nd,counterDRS) = self%Chain%State(1:nd,numFunCallAcceptedPlusOne)
-                            co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)
+                            co_LogFuncStateLogProb(   0,counterDRS) = self%Chain%LogFunc   (numFunCallAcceptedPlusOne)
+                            co_LogFuncStateLogProb(1:nd,counterDRS) = self%Chain%State(1:nd,numFunCallAcceptedPlusOne)
+                            co_LogFuncStateLogProb(0:nd,-1) = co_LogFuncStateLogProb(0:nd,counterDRS)
 
                         end if
 
@@ -879,10 +881,10 @@ contains
 
                 loopDelayedRejection: do counterDRS = 0, self%SpecDRAM%DelayedRejectionCount%val
 
-                    co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew ( nd            = nd                                    &
-                                                                            , counterDRS    = counterDRS                            &
-                                                                            , StateOld      = co_LogFuncState(1:nd,counterDRS-1)    &
-                                                                            )
+                    co_LogFuncStateLogProb(1:nd,counterDRS) = self%Proposal%getNew  ( nd            = nd &
+                                                                                    , counterDRS    = counterDRS &
+                                                                                    , StateOld      = co_LogFuncStateLogProb(1:nd,counterDRS-1) &
+                                                                                    )
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif
@@ -891,47 +893,47 @@ contains
                     if (self%isFreshRun .or. numFunCallAcceptedPlusOne==self%Chain%Count%compact) then
 
                         call self%Timer%toc()
-                        co_LogFuncState(0,counterDRS) = getLogFunc(nd,co_LogFuncState(1:nd,counterDRS))
+                        co_LogFuncStateLogProb(0,counterDRS) = getLogFunc(nd,co_LogFuncStateLogProb(1:nd,counterDRS))
                         call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta
 
                         ! accept or reject the proposed state
 
-                        if ( co_LogFuncState(0,counterDRS) >= co_LogFuncState(0,-1) ) then ! accept the proposed state
+                        if ( co_LogFuncStateLogProb(0,counterDRS) >= co_LogFuncStateLogProb(0,-1) ) then ! accept the proposed state
 
                             co_AccRate(counterDRS) = 1._RK
                             co_AccRate(-1) = real(counterDRS,kind=RK)
-                            co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)
+                            co_LogFuncStateLogProb(0:nd,-1) = co_LogFuncStateLogProb(0:nd,counterDRS)
                             exit loopDelayedRejection
 
-                        elseif ( co_LogFuncState(0,counterDRS) < maxLogFuncRejectedProposal ) then  ! reject the proposed state. This step should be reachable only when delayedRejectionCount > 0
+                        elseif ( co_LogFuncStateLogProb(0,counterDRS) < maxLogFuncRejectedProposal ) then  ! reject the proposed state. This step should be reachable only when delayedRejectionCount > 0
 
                             co_AccRate(counterDRS) = 0._RK  ! proposal rejected
 
                         else    ! accept with probability co_AccRate
 
                             if ( counterDRS == 0_IK ) then ! This should be equivalent to maxLogFuncRejectedProposal == NEGINF_RK
-                                co_AccRate(counterDRS) = exp( co_LogFuncState(0,counterDRS) - co_LogFuncState(0,-1) )
-                            else    ! ensure no arithmetic overflow/underflow. ATTN: co_LogFuncState(0,-1) > co_LogFuncState(0,counterDRS) > maxLogFuncRejectedProposal
-                                co_AccRate(counterDRS) = exp( getLogSubExp( co_LogFuncState(0,counterDRS)   , maxLogFuncRejectedProposal ) &
-                                                            - getLogSubExp( co_LogFuncState(0,-1)           , maxLogFuncRejectedProposal ) )
+                                co_AccRate(counterDRS) = exp( co_LogFuncStateLogProb(0,counterDRS) - co_LogFuncStateLogProb(0,-1) )
+                            else    ! ensure no arithmetic overflow/underflow. ATTN: co_LogFuncStateLogProb(0,-1) > co_LogFuncStateLogProb(0,counterDRS) > maxLogFuncRejectedProposal
+                                co_AccRate(counterDRS) = exp( getLogSubExp( co_LogFuncStateLogProb(0,counterDRS)   , maxLogFuncRejectedProposal ) &
+                                                            - getLogSubExp( co_LogFuncStateLogProb(0,-1)           , maxLogFuncRejectedProposal ) )
                             end if
 
                             if (uniformRnd<co_AccRate(counterDRS)) then ! accept the proposed state
                                 co_AccRate(-1) = real(counterDRS,kind=RK)
-                                co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,counterDRS)
+                                co_LogFuncStateLogProb(0:nd,-1) = co_LogFuncStateLogProb(0:nd,counterDRS)
                                 exit loopDelayedRejection
                             end if
 
                         end if
 
-                        maxLogFuncRejectedProposal = max( maxLogFuncRejectedProposal, co_LogFuncState(0,counterDRS) )
+                        maxLogFuncRejectedProposal = max( maxLogFuncRejectedProposal, co_LogFuncStateLogProb(0,counterDRS) )
 
                     else
 
                         if (currentStateWeight==self%Chain%Weight(self%Stats%NumFunCall%accepted) .and. counterDRS==self%Chain%DelRejStage(numFunCallAcceptedPlusOne)) then
                             co_AccRate(-1) = real(counterDRS,kind=RK)
-                            co_LogFuncState(   0,-1) = self%Chain%LogFunc   (numFunCallAcceptedPlusOne)
-                            co_LogFuncState(1:nd,-1) = self%Chain%State(1:nd,numFunCallAcceptedPlusOne)
+                            co_LogFuncStateLogProb(   0,-1) = self%Chain%LogFunc   (numFunCallAcceptedPlusOne)
+                            co_LogFuncStateLogProb(1:nd,-1) = self%Chain%State(1:nd,numFunCallAcceptedPlusOne)
                             exit loopDelayedRejection
                         end if
 
