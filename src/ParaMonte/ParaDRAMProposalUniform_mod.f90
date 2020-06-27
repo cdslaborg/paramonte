@@ -34,5 +34,8 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-#define PARAMETH ParaDRAM
-#include "ParaDRAM_ParaDISE_mod.inc.f90"
+#define UNIFORM
+module ParaDRAMProposalUniform_mod
+#include "ParaDRAMProposal_mod.inc.f90"
+end module ParaDRAMProposalUniform_mod
+#undef UNIFORM

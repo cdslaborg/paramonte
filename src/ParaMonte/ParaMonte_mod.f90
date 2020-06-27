@@ -46,6 +46,7 @@ module ParaMonte_mod
     use Path_mod, only: MAX_FILE_PATH_LEN
     use Err_mod, only: Err_type, informUser, note, warn, abort
     use SpecBase_mod, only: SpecBase_type
+    use ParaMonteChainFileContents_mod, only: ChainFileContents_type
 
     implicit none
 
@@ -144,6 +145,7 @@ module ParaMonte_mod
         type(ChainFile_type)                    :: ChainFile
         type(SampleFile_type)                   :: SampleFile
         type(RestartFile_type)                  :: RestartFile
+        type(ChainFileContents_type)            :: Chain
         type(Decoration_type)                   :: Decor
     contains
         procedure, pass                         :: reportDesc

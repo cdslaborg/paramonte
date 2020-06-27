@@ -37,8 +37,9 @@
 module ParaMCMC_mod
 
     use Constants_mod, only: RK, IK
-    use ParaMonte_mod, only: ParaMonte_type, ParaMonteLogFuncMode_type, ParaMonteStatistics_type, Moment_type
     use SpecMCMC_mod, only: SpecMCMC_type
+    use ParaMonte_mod, only: ParaMonte_type, ParaMonteLogFuncMode_type, ParaMonteStatistics_type, Moment_type
+    use ParaMCMCRefinedChain_mod, only: RefinedChain_type
     implicit none
 
     character(*), parameter                     :: MODULE_NAME = "@ParaMCMC_mod"
@@ -58,6 +59,7 @@ module ParaMCMC_mod
     end type ParaMCMC_Statistics_type
 
     type, extends(ParaMonte_type)               :: ParaMCMC_type
+       type(RefinedChain_type)                  :: RefinedChain
        type(SpecMCMC_type)                      :: SpecMCMC
     contains
         procedure, pass                         :: setupParaMCMC

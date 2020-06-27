@@ -34,9 +34,15 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-module ParaDRAMProposalSymmetric_mod
-  
-    use ParaDRAMProposal_mod, only: Proposal_type, ProposalErr
+#if defined UNIFORM
+#define SAMPLER_NAME getRandMVU
+#else
+#define SAMPLER_NAME getRandMVN
+#endif
+
+!module ParaDRAMProposal_mod
+
+    use ParaDRAMProposalTemplate_mod, only: ProposalTemplate_type, ProposalErr
     use ParaMonte_mod, only: Image_type
     use Constants_mod, only: IK, RK
     use String_mod, only: IntStr_type
@@ -44,7 +50,7 @@ module ParaDRAMProposalSymmetric_mod
     implicit none
 
     !private
-    !public :: ProposalSymmetric_type
+    !public :: Proposal_type
 
     character(*), parameter         :: MODULE_NAME = "@ParaDRAMProposalSymmetric_mod"
 
@@ -56,8 +62,8 @@ module ParaDRAMProposalSymmetric_mod
         real(RK)                    :: target
     end type AccRate_type
 
-    type, extends(Proposal_type)    :: ProposalSymmetric_type
-        !type(AccRate_type)          :: AccRate
+    type, extends(ProposalTemplate_type) :: Proposal_type
+       !type(AccRate_type)          :: AccRate
     contains
         procedure   , nopass        :: getNew
         procedure   , nopass        :: doAdaptation
@@ -66,11 +72,11 @@ module ParaDRAMProposalSymmetric_mod
 #if defined CAF_ENABLED || defined MPI_ENABLED
         procedure   , nopass        :: getAdaptation
 #endif
-    end type ProposalSymmetric_type
+    end type Proposal_type
 
-    interface ProposalSymmetric_type
+    interface Proposal_type
         module procedure :: constructProposalSymmetric
-    end interface ProposalSymmetric_type
+    end interface Proposal_type
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -130,15 +136,16 @@ contains
     ! This interface madness is a result of the internal compiler bug in GFortran as of Jan 2020, which diagnoses a ParaDRAM_type 
     ! argument as circular dependency due to this constructor appearing the type-bound setup procedure of ParaDRAM_type.
     ! Intel does not complain. Until GFortran comes up with a fix, we have to live with this interface.
-    function constructProposalSymmetric ( ndim &
-                                        , SpecBase &
-                                        , SpecMCMC &
-                                        , SpecDRAM &
-                                        , Image &
-                                        , name &
-                                        , brand &
-                                        , LogFile &
-                                        , RestartFile &
+    function constructProposalSymmetric ( pd &
+                                        !  ndim &
+                                        !, SpecBase &
+                                        !, SpecMCMC &
+                                        !, SpecDRAM &
+                                        !, Image &
+                                        !, name &
+                                        !, brand &
+                                        !, LogFile &
+                                        !, RestartFile &
                                         ) result(Proposal)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalSymmetric
@@ -157,20 +164,23 @@ contains
 
         implicit none
 
-        integer(IK)             , intent(in)    :: ndim
-        type(SpecBase_type)     , intent(in)    :: SpecBase
-        type(SpecMCMC_type)     , intent(in)    :: SpecMCMC
-        type(SpecDRAM_type)     , intent(in)    :: SpecDRAM
-        type(Image_type)        , intent(in)    :: Image
-        character(*)            , intent(in)    :: name
-        character(*)            , intent(in)    :: brand
-        type(LogFile_type)      , intent(in)    :: LogFile
-        type(RestartFile_type)  , intent(in)    :: RestartFile
+        !integer(IK)             , intent(in)    :: ndim
+        !type(SpecBase_type)     , intent(in)    :: SpecBase
+        !type(SpecMCMC_type)     , intent(in)    :: SpecMCMC
+        !type(SpecDRAM_type)     , intent(in)    :: SpecDRAM
+        !type(Image_type)        , intent(in)    :: Image
+        !character(*)            , intent(in)    :: name
+        !character(*)            , intent(in)    :: brand
+        !type(LogFile_type)      , intent(in)    :: LogFile
+        !type(RestartFile_type)  , intent(in)    :: RestartFile
 
-        type(ProposalSymmetric_type)            :: Proposal
+        type(ParaDRAM_type)                     :: pd
+        type(Proposal_type)                     :: Proposal
 
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@constructProposalSymmetric()"
-        integer                                 :: i, j
+        integer                                 :: i, j, ndim
+
+        ndim = pd%nd%val
 
         ProposalErr%occurred = .false.
 
@@ -192,26 +202,26 @@ contains
         mc_ndimSqPlusNdim                   = ndim*(ndim+1_IK)
 #endif
         mc_ndim                             = ndim
-        mc_DomainLowerLimitVec              = SpecBase%DomainLowerLimitVec%Val
-        mc_DomainUpperLimitVec              = SpecBase%DomainUpperLimitVec%Val
-        mc_DelayedRejectionScaleFactorVec   = SpecDRAM%delayedRejectionScaleFactorVec%Val
-        mc_isNormal                         = SpecMCMC%ProposalModel%isNormal
-        mc_Image                            = Image
-        mc_methodName                       = name
-        mc_methodBrand                      = brand
-        mc_logFileUnit                      = LogFile%unit
-        mc_restartFileUnit                  = RestartFile%unit
-        mc_restartFileFormat                = RestartFile%format
-        mc_defaultScaleFactorSq             = SpecMCMC%ScaleFactor%val**2
+        mc_DomainLowerLimitVec              = pd%SpecBase%DomainLowerLimitVec%Val
+        mc_DomainUpperLimitVec              = pd%SpecBase%DomainUpperLimitVec%Val
+        mc_DelayedRejectionScaleFactorVec   = pd%SpecDRAM%delayedRejectionScaleFactorVec%Val
+        mc_isNormal                         = pd%SpecMCMC%ProposalModel%isNormal
+        mc_Image                            = pd%Image
+        mc_methodName                       = pd%name
+        mc_methodBrand                      = pd%brand
+        mc_logFileUnit                      = pd%LogFile%unit
+        mc_restartFileUnit                  = pd%RestartFile%unit
+        mc_restartFileFormat                = pd%RestartFile%format
+        mc_defaultScaleFactorSq             = pd%SpecMCMC%ScaleFactor%val**2
        !Proposal%AccRate%sumUpToLastUpdate  = 0._RK
-        mc_maxNumDomainCheckToWarn          = SpecBase%MaxNumDomainCheckToWarn%val
-        mc_maxNumDomainCheckToStop          = SpecBase%MaxNumDomainCheckToStop%val
-        mc_delayedRejectionCount            = SpecDRAM%DelayedRejectionCount%val
+        mc_maxNumDomainCheckToWarn          = pd%SpecBase%MaxNumDomainCheckToWarn%val
+        mc_maxNumDomainCheckToStop          = pd%SpecBase%MaxNumDomainCheckToStop%val
+        mc_delayedRejectionCount            = pd%SpecDRAM%DelayedRejectionCount%val
         mc_delayedRejectionRequested        = mc_DelayedRejectionCount > 0_IK
-        mc_scalingRequested                 = SpecBase%TargetAcceptanceRate%scalingRequested
+        mc_scalingRequested                 = pd%SpecBase%TargetAcceptanceRate%scalingRequested
 
         if (mc_scalingRequested) then
-            mc_TargetAcceptanceRateLimit    = SpecBase%TargetAcceptanceRate%Val
+            mc_TargetAcceptanceRateLimit    = pd%SpecBase%TargetAcceptanceRate%Val
             mc_targetAcceptanceRate         = sum(mc_TargetAcceptanceRateLimit) / 2._RK
         else
             mc_targetAcceptanceRate         = 1._RK !0.234_RK
@@ -235,7 +245,7 @@ contains
         allocate( comv_CholDiagLower(ndim,0:ndim,0:mc_DelayedRejectionCount) )
 #endif
 
-        comv_CholDiagLower(1:ndim,1:ndim,0) = SpecMCMC%ProposalStartCovMat%Val
+        comv_CholDiagLower(1:ndim,1:ndim,0) = pd%SpecMCMC%ProposalStartCovMat%Val
 
         ! Now scale the covariance matrix
 
@@ -249,14 +259,10 @@ contains
 
         block
             use Matrix_mod, only: getCholeskyFactor
-#if defined DBG_ENABLED
-            real(RK), allocatable :: Dummy(:,:)
-            Dummy = comv_CholDiagLower(1:ndim,1:ndim,0)
-            call getCholeskyFactor( ndim, Dummy, comv_CholDiagLower(1:ndim,0,0) )
-            comv_CholDiagLower(1:ndim,1:ndim,0) = Dummy 
-#else
-            call getCholeskyFactor( ndim, comv_CholDiagLower(1:ndim,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) )
-#endif
+            real(RK), allocatable :: CholeskyLower(:,:) ! dummy variable to avoid copy in / copy out
+            CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
+            call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
+            comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower 
         end block
         if (comv_CholDiagLower(1,0,0)<0._RK) then
             ProposalErr%msg = mc_Image%name // PROCEDURE_NAME // ": Singular input covariance matrix by user was detected. This is strange.\nCovariance matrix lower triangle:"
@@ -305,7 +311,8 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: getNew
 #endif
 
-        use Statistics_mod, only: getRandMVN, getRandMVU
+        use Statistics_mod, only: SAMPLER_NAME
+
         use Constants_mod, only: IK, RK
         use Err_mod, only: warn, abort
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -314,90 +321,37 @@ contains
         
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@getNew()"
         
-       !class(ProposalSymmetric_type), intent(inout)    :: Proposal
         integer(IK), intent(in)                         :: nd
         integer(IK), intent(in)                         :: counterDRS
         real(RK)   , intent(in)                         :: StateOld(nd)
         real(RK)                                        :: StateNew(nd)
         integer(IK)                                     :: domainCheckCounter
+        real(RK)                                        :: CholeskyLower(nd,nd) ! dummy variable to avoid copy in / copy out
 
-        domainCheckCounter = 0
+        domainCheckCounter = 0_IK
 
-        if (mc_isNormal) then
-
-            loopBoundaryCheckNormal: do ! Check for the support Region consistency:
-#if defined DBG_ENABLED
-                block
-                real(RK), allocatable :: Dummy(:,:)
-                Dummy = comv_CholDiagLower(1:nd,1:nd,counterDRS)
-                StateNew = getRandMVN   ( nd                                        &
-                                        , StateOld                                  &
-                                        , Dummy                                     &
-                                        , comv_CholDiagLower(1:nd,   0,counterDRS)  &
-                                        )
-                comv_CholDiagLower(1:nd,1:nd,counterDRS) = Dummy
-                end block
-#else
-                StateNew = getRandMVN   ( nd                                        &
-                                        , StateOld                                  &
-                                        , comv_CholDiagLower(1:nd,1:nd,counterDRS)  &
-                                        , comv_CholDiagLower(1:nd,   0,counterDRS)  &
-                                        )
-#endif
-                if ( any(StateNew<=mc_DomainLowerLimitVec) .or. any(StateNew>=mc_DomainUpperLimitVec) ) then
-                    domainCheckCounter = domainCheckCounter + 1
-                    if (domainCheckCounter==mc_MaxNumDomainCheckToWarn) then
-                        call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
-                    end if
-                    if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
-                        ProposalErr%occurred = .true.
-                        ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
-                        call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
-                        return
-                    end if
-                    cycle loopBoundaryCheckNormal
+        CholeskyLower = comv_CholDiagLower(1:nd,1:nd,counterDRS)
+        loopBoundaryCheckNormal: do ! Check for the support Region consistency:
+            StateNew =  SAMPLER_NAME( nd                                    &
+                                    , StateOld                              &
+                                    , CholeskyLower                         &
+                                    , comv_CholDiagLower(1:nd,0,counterDRS) &
+                                    )
+            if ( any(StateNew<=mc_DomainLowerLimitVec) .or. any(StateNew>=mc_DomainUpperLimitVec) ) then
+                domainCheckCounter = domainCheckCounter + 1
+                if (domainCheckCounter==mc_MaxNumDomainCheckToWarn) then
+                    call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
                 end if
-                exit loopBoundaryCheckNormal
-            end do loopBoundaryCheckNormal
-
-        else ! if (mc_isUniform) then
-
-            loopBoundaryCheckUniform: do ! Check for the support Region consistency:
-#if defined DBG_ENABLED
-                block
-                real(RK), allocatable :: Dummy(:,:)
-                Dummy = comv_CholDiagLower(1:nd,1:nd,counterDRS)
-                StateNew = getRandMVU   ( nd                                        &
-                                        , StateOld                                  &
-                                        , Dummy                                     &
-                                        , comv_CholDiagLower(1:nd,   0,counterDRS)  &
-                                        )
-                comv_CholDiagLower(1:nd,1:nd,counterDRS) = Dummy
-                end block
-#else
-                StateNew = getRandMVU   ( nd                                        &
-                                        , StateOld                                  &
-                                        , comv_CholDiagLower(1:nd,1:nd,counterDRS)  &
-                                        , comv_CholDiagLower(1:nd,   0,counterDRS)  &
-                                        )
-#endif
-                if ( any(StateNew<=mc_DomainLowerLimitVec) .or. any(StateNew>=mc_DomainUpperLimitVec) ) then
-                    domainCheckCounter = domainCheckCounter + 1
-                    if (domainCheckCounter==mc_MaxNumDomainCheckToWarn) then
-                        call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
-                    end if
-                    if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
-                        ProposalErr%occurred = .true.
-                        ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
-                        call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
-                        return
-                    end if
-                    cycle loopBoundaryCheckUniform
+                if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
+                    ProposalErr%occurred = .true.
+                    ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
+                    call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                    return
                 end if
-                exit loopBoundaryCheckUniform
-            end do loopBoundaryCheckUniform
-
-        end if
+                cycle loopBoundaryCheckNormal
+            end if
+            exit loopBoundaryCheckNormal
+        end do loopBoundaryCheckNormal
 
     end function getNew
 
@@ -416,7 +370,7 @@ contains
         use Err_mod, only: abort
         implicit none
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAutoTune()"
-       !class(ProposalSymmetric_type), intent(inout)    :: Proposal
+
         real(RK)   , intent(in)                         :: AutoTuneScaleSq(1)
         real(RK)   , intent(inout)                      :: adaptationMeasure
         real(RK)                                        :: logSqrtDetNew, logSqrtDetSum, mv_logSqrtDetOld_save
@@ -481,7 +435,6 @@ contains
 
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAdaptation()"
 
-       !class(ProposalSymmetric_type), intent(inout)    :: Proposal
         integer(IK), intent(in)                         :: nd
         integer(IK), intent(in)                         :: chainSize
         real(RK)   , intent(in)                         :: Chain(nd,chainSize)
@@ -878,4 +831,4 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-end module ParaDRAMProposalSymmetric_mod
+!end module ParaDRAMProposal_mod

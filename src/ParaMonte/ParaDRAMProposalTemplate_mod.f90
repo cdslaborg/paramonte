@@ -34,7 +34,7 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-module ParaDRAMProposal_mod
+module ParaDRAMProposalTemplate_mod
 
     use Constants_mod, only: IK, RK
     use Err_mod, only: Err_type
@@ -48,16 +48,17 @@ module ParaDRAMProposal_mod
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    type, abstract :: Proposal_type
+    type, abstract :: ProposalTemplate_type
     contains
         procedure(getNew_proc)          , nopass    , deferred  :: getNew
+        !procedure(getLogProb_proc)      , nopass    , deferred  :: getLogProb
         procedure(doAdaptation_proc)    , nopass    , deferred  :: doAdaptation
         procedure(readRestartFile_proc) , nopass    , deferred  :: readRestartFile
         procedure(writeRestartFile_proc), nopass    , deferred  :: writeRestartFile
 #if defined CAF_ENABLED || defined MPI_ENABLED
         procedure(getAdaptation_proc)   , nopass    , deferred  :: getAdaptation
 #endif
-    end type Proposal_type
+    end type ProposalTemplate_type
 
     !*******************************************************************************************************************************
 
@@ -74,12 +75,12 @@ module ParaDRAMProposal_mod
                             , StateOld      &
                             ) result (StateNew)
             use Constants_mod, only: IK, RK
-            import :: Proposal_type
-           !class(Proposal_type), intent(inout) :: Proposal
-            integer(IK), intent(in)             :: nd
-            integer(IK), intent(in)             :: counterDRS
-            real(RK)   , intent(in)             :: StateOld(nd)
-            real(RK)                            :: StateNew(nd)
+            import :: ProposalTemplate_type
+           !class(ProposalTemplate_type), intent(inout) :: Proposal
+            integer(IK), intent(in) :: nd
+            integer(IK), intent(in) :: counterDRS
+            real(RK)   , intent(in) :: StateOld(nd)
+            real(RK)                :: StateNew(nd)
         end function getNew_proc
     end interface
 
@@ -94,8 +95,8 @@ module ParaDRAMProposal_mod
                                     , adaptationMeasure         &
                                     )
             use Constants_mod, only: IK, RK
-            import :: Proposal_type
-           !class(Proposal_type), intent(inout) :: Proposal
+            import :: ProposalTemplate_type
+           !class(ProposalTemplate_type), intent(inout) :: Proposal
             integer(IK), intent(in)             :: nd
             integer(IK), intent(in)             :: chainSize
             real(RK)   , intent(in)             :: Chain(nd,chainSize)
@@ -120,4 +121,4 @@ module ParaDRAMProposal_mod
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-end module ParaDRAMProposal_mod
+end module ParaDRAMProposalTemplate_mod

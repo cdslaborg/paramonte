@@ -70,9 +70,9 @@ module Statistics_mod
     interface GetLogProbNormSP
         module procedure :: getLogProbNormSP_RK, getLogProbNormSP_CK
     end interface GetLogProbNormSP
-  
+
     !*******************************************************************************************************************************
-    
+
     interface GetLogProbNormMP
         module procedure :: GetLogProbNormMP_RK, GetLogProbNormMP_CK
     end interface GetLogProbNormMP
@@ -107,7 +107,7 @@ module Statistics_mod
         module procedure :: getLogProbNormSP_RK, GetLogProbNormMP_RK
         module procedure :: getLogProbNormSP_CK, GetLogProbNormMP_CK
     end interface getLogProbNorm
-  
+
     interface getProbMVN
         module procedure :: getProbMVNSP_RK, getProbMVNMP_RK
         module procedure :: getProbMVNSP_CK, getProbMVNMP_CK
@@ -128,7 +128,7 @@ module Statistics_mod
     interface getLogProbGausMixSDMP
         module procedure :: getLogProbGausMixSDMP_RK, getLogProbGausMixSDMP_CK
     end interface getLogProbGausMixSDMP
-    
+
     interface getLogProbGausMixMDSP
         module procedure :: getLogProbGausMixMDSP_RK, getLogProbGausMixMDSP_CK
     end interface getLogProbGausMixMDSP
@@ -180,7 +180,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    
+
     ! returns square of Mahalanobis distance for a single point. output is a scalar variable.
     ! NOTE: if computation fails, the first element of output will be returned negative.
     pure function getMahalSqSP_RK(nd,MeanVec,InvCovMat,Point)
@@ -213,7 +213,7 @@ contains
         real(RK), intent(in)    :: InvCovMat(nd,nd)         ! Inverse of the covariance matrix
         real(RK), intent(in)    :: Point(nd,np)             ! input data points
         real(RK)                :: getMahalSqMP_RK(np)      ! function return
-        integer(IK)             :: ip    
+        integer(IK)             :: ip
         do ip = 1,np
             getMahalSqMP_RK(ip) = dot_product( Point(1:nd,ip)-MeanVec , matmul(InvCovMat,Point(1:nd,ip)-MeanVec) )
             if (getMahalSqMP_RK(ip)<0._RK) then
@@ -225,7 +225,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-    
+
     ! returns square of Mahalanobis distance for a single Point_CK. output is a scalar variable.
     ! NOTE: if computation fails, the first element of output will be returned negative.
     pure function getMahalSqSP_CK(nd,MeanVec_CK,InvCovMat_CK,Point_CK)
@@ -244,7 +244,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-    
+
     ! returns square of the Mahalanobis distance
     ! NOTE: if computation fails, the first element of output will be returned negative.
     pure function getMahalSqMP_CK(nd,np,MeanVec_CK,InvCovMat_CK,Point_CK)
@@ -258,7 +258,7 @@ contains
         complex(CK), intent(in)  :: InvCovMat_CK(nd,nd)       ! Inverse of the covariance matrix
         complex(CK), intent(in)  :: Point_CK(nd,np)           ! input data points
         complex(CK)              :: getMahalSqMP_CK(np)       ! function return
-        integer(IK)              :: ip    
+        integer(IK)              :: ip
         do ip = 1,np
             getMahalSqMP_CK(ip) = sum( (Point_CK(1:nd,ip)-MeanVec_CK) * &
             matmul(InvCovMat_CK,Point_CK(1:nd,ip)-MeanVec_CK) )
@@ -805,7 +805,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     pure function getMean_2D(nd,np,Point,Weight) result(Mean)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMean_2D
@@ -957,7 +957,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This subroutine finds the elements of the symmetric nd*nd sample covariance matrix of a given set of
     ! np observations, each one with nd parameters in the format of a "" np*nd "" matrix.
     ! For a review, refer to Geisser & Cornfield (1963) "Posterior distributions for multivariate normal parameters".
@@ -1009,7 +1009,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This subroutine is exact same thing as getSamCovMean, with the only difference that input data is transposed here on input.
     ! Based on my preliminary benchmarks with Intel 2017 ifort, getSamCovMean() is slightly faster than getSamCovMeanTrans()
     subroutine getSamCovMeanTrans(np,nd,Point,CovMat,Mean,MahalSq,InvCovMat,sqrtDetInvCovMat)
@@ -1029,7 +1029,7 @@ contains
         real(RK)   , dimension(nd)         :: DummyVec
         real(RK)   , dimension(nd,np)      :: NormedData
         integer(IK)                        :: i,j
-    
+
         Mean = 0._RK
         do i = 1,np
             do j = 1,nd
@@ -1037,11 +1037,11 @@ contains
             end do
         end do
         Mean = Mean / real(np,kind=RK)
-    
+
         do i = 1,np
             NormedData(1:nd,i) = Point(1:nd,i) - Mean
         end do
-    
+
         do i = 1,nd
             do j = 1,nd
                 CovMat(i,j) = dot_product(NormedData(i,1:np),NormedData(j,1:np)) / real(np-1,kind=RK)
@@ -1070,7 +1070,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This subroutine is exact same thing as getSamCovMeanTrans, with the only differences that only the upper triangle of the covariance matrix is returned.
     ! Also, optional arguments are not available. This subroutine is specifically optimized for use in ParaMCMC.
     subroutine getSamCovUpperMeanTrans(np,nd,Point,CovMatUpper,Mean)
@@ -1093,11 +1093,11 @@ contains
             end do
         end do
         Mean = Mean / real(np,kind=RK)
-    
+
         do i = 1,np
             NormedData(1:nd,i) = Point(1:nd,i) - Mean
         end do
-    
+
         npMinusOneInvReal = 1._RK / real(np-1,kind=RK)
         do j = 1,nd
             do i = 1,j
@@ -1109,7 +1109,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This subroutine is exact same thing as getSamCovUpperMeanTrans,
     ! with the only difference that here points can have different weights. This subroutine is specifically optimized for use in ParaMCMC.
     subroutine getWeiSamCovUppMeanTrans(np,sumWeight,nd,Point,Weight,CovMatUpper,Mean)
@@ -1127,7 +1127,7 @@ contains
         real(RK)                            :: sumWeightMinusOneInvReal
         real(RK)                            :: NormedData(nd,np)
         integer(IK)                         :: i,j,ip
-    
+
         Mean = 0._RK
         do i = 1,np
             do j = 1,nd
@@ -1155,7 +1155,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This subroutine combines the mean and covariance of two samples given as input.
     ! It uses the recursion equation similar to http://stats.stackexchange.com/questions/97642/how-to-combine-sample-means-and-sample-variances
     ! See also https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Covariance to update the covariance:
@@ -1191,7 +1191,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This subroutine is the same as combineCovMean, with the IMPORTANT difference that
     ! only the upper triangles and diagonals of the input covariance matrices need to be given by the user: CovMatUpper, CovMatUpperB
     subroutine combineMeanCovUpper(nd,npA,MeanVecA,CovMatUpperA,npB,MeanVecB,CovMatUpperB,MeanVec,CovMatUpper)
@@ -1228,7 +1228,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This subroutine is the same as combineMeanCovUpper, with the IMPORTANT difference that the resulting Mean and CovMat
     ! are now returned as CovMatB and MeanB.
     subroutine mergeMeanCovUpper(nd,npA,MeanVecA,CovMatUpperA,npB,MeanVecB,CovMatUpperB)
@@ -1244,7 +1244,7 @@ contains
         real(RK)                    :: MeanVec(nd)
         real(RK)                    :: npABinverse, npAnpABinverseProd, npBnpABinverseProd
         integer(IK)                 :: i,j
-    
+
         npABinverse = 1._RK / real(npA + npB,kind=RK)
         npAnpABinverseProd = real(npA,kind=RK) * npABinverse
         npBnpABinverseProd = real(npB,kind=RK) * npABinverse
@@ -1263,7 +1263,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This code returns a normally distributed deviate with zero mean and unit variance.
     function getRandGaus()
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -1273,9 +1273,9 @@ contains
         implicit none
         integer(IK), save :: iset=0
         real(RK)   , save :: gset
-        real(RK)          :: fac,rsq,vec(2)  
+        real(RK)          :: fac,rsq,vec(2)
         real(RK)          :: getRandGaus
-  
+
         if (iset == 0) then
             do
                 call random_number(vec)
@@ -1296,7 +1296,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This code returns a normally distributed deviate with the given mean and standard deviation.
     function getRandNorm(mean,std)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -1307,10 +1307,10 @@ contains
         real(RK)       :: getRandNorm
         getRandNorm = mean + std*getRandGaus()
     end function getRandNorm
-  
+
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This code returns a log-normally distributed deviate with the given mean and standard deviation.
     function getRandLogn(mean,std)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -1321,10 +1321,10 @@ contains
         real(RK)       :: getRandLogn
         getRandLogn = exp( mean + std*getRandGaus() )
     end function getRandLogn
-  
+
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! This subroutine is legacy and slow. use getRandMVN() in this same module.
     ! Given the mean vector MeanVec and the covariance matrix CovMat, this subroutine generates a random vector x (of length nd>=2)
     ! from an nd-dimensional multivariate normal distribution.
@@ -1342,7 +1342,7 @@ contains
 #endif
 
         use Matrix_mod, only: getCholeskyFactor
-    
+
         implicit none
         integer(IK), intent(in)  :: nd
         real(RK)   , intent(in)  :: MeanVec(nd), CovMatIn(nd,nd)
@@ -1384,7 +1384,7 @@ contains
 #endif
 
         use Matrix_mod, only: getCholeskyFactor
-    
+
         implicit none
         integer(IK), intent(in)  :: nd
         real(RK)   , intent(in)  :: MeanVec(nd)
@@ -1392,7 +1392,7 @@ contains
         real(RK)   , intent(out) :: X(nd)
         real(RK)                 :: Diagonal(nd), DummyVec(nd), CovMat(nd,nd), dummy
         integer(IK)              :: i
-    
+
         CovMat = CovMatIn
         call getCholeskyFactor(nd,CovMat,Diagonal)
         if (Diagonal(1)<0._RK) then
@@ -1405,23 +1405,23 @@ contains
         call random_number(dummy)
         dummy = (dummy**(1._RK/real(nd,kind=RK)))/norm2(DummyVec)  ! Now DummyVec is a uniformly drawn point from inside of nd-D sphere.
         DummyVec = dummy*DummyVec
-    
+
         ! Now transform this point to a point inside the ellipsoid.
         do i=1,nd
             X(i) = DummyVec(i)*Diagonal(i)
         end do
-    
+
         do i=2,nd
             X(i) = X(i) + dot_product(CovMat(i,1:i-1),DummyVec(1:i-1))
         end do
-    
+
         X = X + MeanVec
-  
+
     end subroutine getMVUDev
-  
+
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     function getRandMVN(nd,MeanVec,CholeskyLower,Diagonal) result(RandMVN)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandMVN
@@ -1449,7 +1449,7 @@ contains
 !***********************************************************************************************************************************
 
 !    ! Given an input Mean vector of length nd, Covariance Matrix of dimension (nd,nd), as well as a vector of integers representing
-!    ! the variables (corresponding to CovMat columns) that are given 
+!    ! the variables (corresponding to CovMat columns) that are given
 !    ! This subroutine gives out a conditional Multivariate Normal Random deviate.
 !    ! random p-tivariate normal deviate, given that the first pg variables x1 are given (i.e. fixed).
 !    ! For a review of Multivariate Normal distribution: Applied Multivariate Statistical Analysis, Johnson, Wichern, 1998, 4th ed.
@@ -1459,7 +1459,7 @@ contains
 !        implicit none
 !        integer(IK), intent(in) :: nd, nIndIndx, IndIndx(nIndIndx)
 !        real(RK)   , intent(in) :: MeanVec(nd), CovMat(nd,nd)
-!        real(RK)                :: CondRandMVN(nd), 
+!        real(RK)                :: CondRandMVN(nd),
 !        integer(IK)             :: j, i
 !    end function getCondRandMVN
 
@@ -1501,7 +1501,68 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
+    function getLogProbRandMVN(nd,MeanVec,CholeskyLower,Diagonal) result(LogProbRandMVN)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbRandMVN
+#endif
+        ! Amir Shahmoradi, April 23, 2017, 12:36 AM, ICES, UTEXAS
+        ! returns a multivariate Normal random vector.
+        implicit none
+        integer(IK), intent(in) :: nd
+        real(RK)   , intent(in) :: MeanVec(nd)
+        real(RK)   , intent(in) :: CholeskyLower(nd,nd), Diagonal(nd)   ! Cholesky lower triangle and its diagonal terms, calculated from the input CovMat.
+        real(RK)                :: LogProbRandMVN(0:nd), dummy
+        integer(IK)             :: j,i
+        LogProbRandMVN = 0._RK
+        do j = 1,nd
+            dummy = getRandGaus()
+            LogProbRandMVN(0) = LogProbRandMVN(0) + getLogProbNorm(mean=0._RK,inverseVariance=1._RK,logSqrtInverseVariance=0._RK,point=dummy)
+            LogProbRandMVN(j) = LogProbRandMVN(j) + Diagonal(j) * dummy
+            do i = j+1,nd
+                LogProbRandMVN(i) = LogProbRandMVN(i) + CholeskyLower(i,j) * dummy
+            end do
+        end do
+        LogProbRandMVN = LogProbRandMVN + MeanVec
+    end function getLogProbRandMVN
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    function getLogProbRandMVU(nd,MeanVec,CholeskyLower,Diagonal) result(LogProbRandMVU)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbRandMVU
+#endif
+        use Math_mod, only: getEllVolCoef
+        implicit none
+        integer(IK), intent(in) :: nd
+        real(RK)   , intent(in) :: MeanVec(nd)
+        real(RK)   , intent(in) :: CholeskyLower(nd,nd) ! Cholesky lower triangle, calculated from the input CovMat.
+        real(RK)   , intent(in) :: Diagonal(nd)         ! Cholesky diagonal terms, calculated from the input CovMat.
+        real(RK)                :: LogProbRandMVU(0:nd), dummy, DummyVec(nd), sumSqDummyVec
+        integer(IK)             :: i,j
+        LogProbRandMVU = 0._RK
+        sumSqDummyVec = 0._RK
+        do j=1,nd
+            DummyVec(j) = getRandGaus()
+            sumSqDummyVec = sumSqDummyVec + DummyVec(j)**2
+        end do
+        LogProbRandMVU(0) = 1._RK / getEllVolCoef(nd)
+        call random_number(dummy)
+        dummy = (dummy**(1._RK/dble(nd)))/sqrt(sumSqDummyVec)
+        DummyVec = DummyVec * dummy  ! DummyVec(j) * dummy is a uniform random point from inside of nd-sphere
+        do j = 1,nd
+            LogProbRandMVU(j) = LogProbRandMVU(j) + Diagonal(j) * DummyVec(j)
+            do i = j+1,nd
+                LogProbRandMVU(i) = LogProbRandMVU(i) + CholeskyLower(i,j) * DummyVec(j)
+            end do
+        end do
+        LogProbRandMVU = LogProbRandMVU + MeanVec
+    end function getLogProbRandMVU
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
     ! Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
     ! This is algorithm is similar to getRandMVU, with the only difference that points are drawn randomly from the surface of the ellipsoid instead of inside of its interior.
     ! Note that the distribution of points on the surface of the ellipsoid is NOT uniform.
@@ -1557,7 +1618,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-    
+
     pure function getLogProbLogNormS(logMean,inverseVariance,logSqrtInverseVariance,logPoint)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbLogNormS
@@ -1571,7 +1632,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-    
+
     pure function GetLogProbLogNormMP(np,logMean,inverseVariance,logSqrtInverseVariance,LogPoint)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: GetLogProbLogNormMP
@@ -1702,7 +1763,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! ATTN: alpha must be > 1, else a negative random Gamma value (-1) will be output, to indicate error occurrence.
     ! returns a Gamma-distributed random number whose shape parameter is integer
     function getRandGammaIntShape(alpha)
@@ -1808,7 +1869,7 @@ contains
             getRandCorMat(1,1) = -1._RK
             return
         end if
-    
+
         do m = 1,nd
             getRandCorMat(m,m) = 1._RK
         end do
@@ -1821,7 +1882,7 @@ contains
         getRandCorMat(1,2) = 2._RK * dummy - 1._RK    ! for the moment, only the upper half of getRandCorMat is needed, the lower half will contain cholesky lower triangle.
 
         do m = 2,nd-1
-            beta = beta - 0.5_RK    
+            beta = beta - 0.5_RK
             sumSqDummyVec = 0._RK
             do j=1,m
                 DummyVec(j) = getRandGaus()
@@ -1861,17 +1922,17 @@ contains
 !    integer :: m,mNew,j,i
 !    real(RK) :: getRandCorMat(nd,nd), dummy, failureCounter
 !    real(RK) :: beta,sumSqDummyVec,DummyVec(nd-1),W(nd-1),Diagonal(nd-1)
-!    
+!
 !    if (nd<2 .or. eta<=0._RK) then  ! illegal value for eta. set getRandCorMat=0, return
 !      getRandCorMat = -1._RK
 !      return
 !    end if
-!    
+!
 !    do m = 1,nd
 !      getRandCorMat(m,m) = 1._RK
 !    end do
 !    beta = eta + 0.5_RK*(nd-2._RK)
-!    
+!
 !    do
 !      dummy = getRandBeta(beta,beta)
 !      if (dummy>0._RK .and. dummy<1._RK) exit
@@ -1880,25 +1941,25 @@ contains
 !      cycle
 !    end do
 !    getRandCorMat(1,2) = 2._RK * dummy - 1._RK    ! for the moment, only the upper half of getRandCorMat is needed, the lower half will contain cholesky lower triangle.
-!    
+!
 !    m = 2
 !    call getCholeskyFactor(m,getRandCorMat(1:m,1:m),Diagonal(1:m))
-!    
+!
 !    failureCounter = 0
 !    onionLayer: do
-!      
+!
 !      beta = beta - 0.5_RK
-!      
+!
 !      sumSqDummyVec = 0._RK
 !      do j=1,m
 !        DummyVec(j) = getRandGaus()
 !        sumSqDummyVec = sumSqDummyVec + DummyVec(j)**2
 !      end do
 !      DummyVec(1:m) = DummyVec(1:m) / sqrt(sumSqDummyVec)   ! DummyVec is now a uniform random point from inside of m-sphere
-!      
+!
 !      mNew = m + 1
 !      posDefCheck: do
-!      
+!
 !        do
 !          dummy = getRandBeta(0.5_RK*m,beta)
 !          if (dummy>0._RK .and. dummy<1._RK) exit
@@ -1908,7 +1969,7 @@ contains
 !          cycle
 !        end do
 !        W(1:m) = sqrt(dummy) * DummyVec(1:m)
-!        
+!
 !        getRandCorMat(1:m,mNew) = 0._RK
 !        do j = 1,m
 !          getRandCorMat(j,mNew) = getRandCorMat(j,mNew) + Diagonal(j) * W(j)
@@ -1916,8 +1977,8 @@ contains
 !            getRandCorMat(i,mNew) = getRandCorMat(i,mNew) + getRandCorMat(i,j) * getRandCorMat(j,mNew)
 !          end do
 !        end do
-!        
-!        
+!
+!
 !        call getCholeskyFactor(mNew,getRandCorMat(1:mNew,1:mNew),Diagonal(1:mNew))  ! Now check if the new matrix is positive-definite, then proceed with the next layer
 !        if (Diagonal(1)<0._RK) then
 !          failureCounter = failureCounter + 1
@@ -1933,19 +1994,19 @@ contains
 !
 !      if (mNew==nd) exit onionLayer
 !      m = mNew
-!        
+!
 !    end do onionLayer
-!    
+!
 !    if (failureCounter>0) write(*,*) 'failureRatio: ', dble(failureCounter)/dble(nd-2)
 !    do i=1,nd-1
 !      getRandCorMat(i+1:nd,i) = getRandCorMat(i,i+1:nd)
 !    end do
-!    
+!
 !  end function getRandCorMat
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     ! Returns a random correlation matrix using Monte Carlo rejection method.
     ! Only the upper half of getRandCorMatRejection is the correlatrion matrix, lower half is giberish.
     ! Therefore this subroutine is very slow for high matrix dimensions ( nd>10 ).
@@ -1988,7 +2049,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     function getUpperCorMatFromUpperCovMat(nd,CovMatUpper) result(CorMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCorMatFromUpperCovMat
@@ -2009,7 +2070,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     function getUpperCovMatFromUpperCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCovMatFromUpperCorMat
@@ -2029,7 +2090,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     function getUpperCovMatFromLowerCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCovMatFromLowerCorMat
@@ -2046,10 +2107,10 @@ contains
             end do
         end do
     end function getUpperCovMatFromLowerCorMat
-  
+
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     function getLowerCovMatFromUpperCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCovMatFromUpperCorMat
@@ -2066,10 +2127,10 @@ contains
             end do
         end do
     end function getLowerCovMatFromUpperCorMat
-  
+
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     function getLowerCovMatFromLowerCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCovMatFromLowerCorMat
@@ -2089,7 +2150,7 @@ contains
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
-  
+
     function getCovMatFromCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMatFromCorMat
@@ -2111,9 +2172,9 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! returns Geometric distribution PDF values, starting at index 1. 
-    ! If the probability of success on each trial is successProb, 
-    ! then the probability that the kth trial (out of k trials) is 
+    ! returns Geometric distribution PDF values, starting at index 1.
+    ! If the probability of success on each trial is successProb,
+    ! then the probability that the kth trial (out of k trials) is
     ! the first success is GeoPDF(k).
     function getGeoPDF(successProb,logPdfPrecision,minSeqLen) result(GeoPDF)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -2332,7 +2393,7 @@ contains
         real(RK)   , intent(inout) :: Point(np)
         real(RK)                   :: npSqrt
         real(RK)                   :: cdf,cdfObserved,dt,frac
-        integer(IK)                :: j    
+        integer(IK)                :: j
         call sortAscending(np,Point)
         statKS = 0._RK
         cdfObserved = 0._RK
@@ -2435,7 +2496,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! Returns the 1-D histogram (Density plot) of a vector X. 
+    ! Returns the 1-D histogram (Density plot) of a vector X.
     ! The number of bins in the X range (nxbin) is determined by the user
     ! The range of X (xmin,xmax) should also be given by the user
     ! The program returns 2 arrays of Xbin & Density(x) as output.
@@ -2478,7 +2539,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! Returns the 2-D histogram (Density plot) of a set of data points with (X,Y) coordinates. 
+    ! Returns the 2-D histogram (Density plot) of a set of data points with (X,Y) coordinates.
     ! The number of bins in the X and Y directions (nxbin, nybin) are determined by the user
     ! The range of X & Y (xmin,xmax,ymin,ymax) should also be given by the user
     ! The program returns 3 arrays of Xbin, Ybin & Density(y,x) as the output.
@@ -2558,7 +2619,7 @@ contains
             getBin = -1_IK
             return
         end if
-    
+
         minbin = 1
         maxbin = nbin
         xmin = lowerBound

@@ -389,20 +389,20 @@ contains
         integer(IK), intent(in) :: nd
         integer(IK)             :: i,k
         real(RK)                :: getEllVolCoef
-        if (mod(nd,2)==0) then  ! nd is even
+        if (mod(nd,2_IK)==0_IK) then  ! nd is even
             getEllVolCoef = PI
-            do i = 2, nd/2
+            do i = 2_IK, nd / 2_IK
                 getEllVolCoef = getEllVolCoef * PI / i    ! nd = 2k ; getEllVolCoef = PI^(k) / Factorial(k)
             end do
         else    ! nd is an odd integer
 
             ! nd = 2k-1 ; gamma(nd/2 + 1) = gamma(k + 1/2) ; gamma(k+1/2) = sqrt(PI) * (2k)! / (4^k * k!)
-            k = (nd+1)/2
+            k = (nd + 1_IK) / 2_IK
 
             ! This is to avoid an extra unnecessary division of getEllVolCoef by PI
-            getEllVolCoef = 4._RK / (k+1)
+            getEllVolCoef = 4._RK / (k + 1_IK)
 
-            do i = k+2, 2*k
+            do i = k+2_IK, 2_IK*k
                 ! getEllVolCoef = PI^(k-1/2) / gamma(k+1/2) = PI^(k+1) * 4^k * k! / (2k)!
                 getEllVolCoef = getEllVolCoef * PI * 4._RK / i
             end do

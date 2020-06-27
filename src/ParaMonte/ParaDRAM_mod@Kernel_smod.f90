@@ -38,7 +38,7 @@ submodule (ParaDRAM_mod) Kernel_smod
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
-    use ParaDRAMProposal_mod, only: ProposalErr
+    use ParaDRAMProposalTemplate_mod, only: ProposalErr
     use Err_mod, only: Err_type
 #if defined MPI_ENABLED
     use mpi
@@ -163,17 +163,17 @@ contains
         delayedRejectionRequested                       = self%SpecDRAM%DelayedRejectionCount%val > 0_IK
         noDelayedRejectionRequested                     = .not. delayedRejectionRequested
         if (delayedRejectionRequested) then
-        self%Stats%NumFunCall%acceptedRejectedDelayed     = 0_IK                                      ! Markov Chain counter
+        self%Stats%NumFunCall%acceptedRejectedDelayed   = 0_IK                                      ! Markov Chain counter
         SumAccRateSinceStart%acceptedRejectedDelayed    = 0._RK                                     ! sum of acceptance rate
         end if
 
        !adaptationMeasure                               = 0._RK                                     ! needed for the first output
         SumAccRateSinceStart%acceptedRejected           = 0._RK                                     ! sum of acceptance rate
-        self%Stats%NumFunCall%acceptedRejected            = 0_IK                                    ! Markov Chain counter
+        self%Stats%NumFunCall%acceptedRejected          = 0_IK                                      ! Markov Chain counter
         counterAUC                                      = 0_IK                                      ! counter for padaptiveUpdateCount.
         counterPRP                                      = 0_IK                                      ! counter for progressReportPeriod.
         counterAUP                                      = 0_IK                                      ! counter for adaptiveUpdatePeriod. 
-        self%Stats%NumFunCall%accepted                    = 0_IK                                    ! Markov Chain acceptance counter.
+        self%Stats%NumFunCall%accepted                  = 0_IK                                      ! Markov Chain acceptance counter.
         samplerUpdateSucceeded                          = .true.                                    ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
         numFunCallAcceptedLastAdaptation                = 0_IK
         lastStateWeight                                 = -huge(lastStateWeight)
@@ -747,7 +747,7 @@ contains
                     ! self%Stats%NumFunCall%acceptedRejectedDelayedUnused is relevant only on the first image, despite being updated by all images
                     self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayedUnused + self%Image%count
 
-                    co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew   ( nd            = nd                                    &
+                    co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew ( nd            = nd                                    &
                                                                             , counterDRS    = counterDRS                            &
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1)    &
                                                                             )

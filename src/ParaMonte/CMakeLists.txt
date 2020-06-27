@@ -36,7 +36,7 @@
 
 # ParaMonte library
 SET(ParaMonte_SOURCE_FILES
-    #${ParaMonte_SRC_DIR}/ifport.f90
+   #"${ParaMonte_SRC_DIR}/ifport.f90
     ${ParaMonte_SRC_DIR}/Constants_mod.f90
     ${ParaMonte_SRC_DIR}/Misc_mod.f90
     ${ParaMonte_SRC_DIR}/JaggedArray_mod.f90
@@ -106,10 +106,11 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/SpecDRAM_DelayedRejectionScaleFactorVec_mod.f90
     ${ParaMonte_SRC_DIR}/SpecDRAM_mod.f90
     ${ParaMonte_SRC_DIR}/ParaMonteLogFunc_mod.f90
-    ${ParaMonte_SRC_DIR}/ParaDRAMChainFileContents_mod.f90
-    ${ParaMonte_SRC_DIR}/ParaDRAMRefinedChain_mod.f90
-    ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.f90
-    ${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetric_mod.f90
+    ${ParaMonte_SRC_DIR}/ParaMonteChainFileContents_mod.f90
+    ${ParaMonte_SRC_DIR}/ParaMCMCRefinedChain_mod.f90
+    ${ParaMonte_SRC_DIR}/ParaDRAMProposalTemplate_mod.f90
+    ${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90
+    ${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90
     ${ParaMonte_SRC_DIR}/ParaMonte_mod.f90
     ${ParaMonte_SRC_DIR}/ParaMCMC_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90
@@ -120,6 +121,15 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/BandSpectrum_mod.f90
     ${ParaMonte_SRC_DIR}/Batse_mod.f90
 )
+   #${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricUniform_mod.f90
+
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_ParaDISE_mod.inc.f90 )
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90 )
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90 )
+#set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricNormal_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetric_mod.inc.f90 )
+#set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricNormal_mod.f90 )
+#set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetric_mod.inc.f90 )
+#set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricUniform_mod.f90 PROPERTIES OBJECT_DEPENDS "${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetric_mod.inc.f90")
 
 #set_source_files_properties(${ParaMonte_SRC_DIR}/SpecBase_SampleSize_mod.f90                          PROPERTIES OBJECT_DEPENDS "${ParaMonte_SRC_DIR}/SpecBase_SampleSize_desc.f90                          ")
 #set_source_files_properties(${ParaMonte_SRC_DIR}/SpecBase_RandomSeed_mod.f90                          PROPERTIES OBJECT_DEPENDS "${ParaMonte_SRC_DIR}/SpecBase_RandomSeed_desc.f90                          ")
@@ -267,6 +277,11 @@ endif()
 #        target_link_libraries(${PMLIB} PUBLIC mx PUBLIC mex PUBLIC mat PUBLIC m PUBLIC stdc++)
 #    endif()
 #endif()
+
+# ensure preprocessor flags and module dependencies containing preprocessor flags are respected
+
+#set_target_properties (${PMLIB} PROPERTIES COMPILE_DEFINITIONS "AMH_PROPOSAL_NORMAL")
+#set_target_properties (${PMLIB} PROPERTIES COMPILE_DEFINITIONS "AMH_PROPOSAL_UNIFORM")
 
 # define the output modules directory
 

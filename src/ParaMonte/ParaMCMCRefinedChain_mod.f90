@@ -34,17 +34,17 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-module ParaDRAMRefinedChain_mod
+module ParaMCMCRefinedChain_mod
 
     use SpecMCMC_SampleRefinementMethod_mod, only: BATCH_MEANS_METHOD_NAME, MAX_CUMSUM_AUTOCORR_METHOD_NAME
-    use ParaDRAMChainFileContents_mod, only: Count_type
+    use ParaMonteChainFileContents_mod, only: Count_type
     use JaggedArray_mod, only: CharVec_type
     use Constants_mod, only: IK, RK
     use Err_mod, only: Err_type
 
     implicit none
 
-    character(*), parameter :: MODULE_NAME = "@ParaDRAMRefinedChain_mod"
+    character(*), parameter :: MODULE_NAME = "@ParaMCMCRefinedChain_mod"
 
     type                                    :: RefinedChain_type
         integer(IK)                         :: ndim  = 0_IK         ! number of sampling variables
@@ -88,7 +88,7 @@ contains
 #endif
 
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use ParaDRAMChainFileContents_mod, only: ChainFileContents_type, NUM_DEF_COL
+        use ParaMonteChainFileContents_mod, only: ChainFileContents_type, NUM_DEF_COL
         use CrossCorr_mod, only: getMaxCumSumIAC, getBatchMeansIAC
         use String_mod, only: getLowerCase
 
@@ -519,4 +519,4 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-end module ParaDRAMRefinedChain_mod
+end module ParaMCMCRefinedChain_mod

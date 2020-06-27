@@ -99,7 +99,8 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit, stat_stopped_image
-        use ParaDRAMProposalSymmetric_mod, only: ProposalSymmetric_type
+        use ParaDRAMProposalUniform_mod, only: ProposalUniform_type => Proposal_type
+        use ParaDRAMProposalNormal_mod, only: ProposalNormal_type => Proposal_type
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
         use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
         use Decoration_mod, only: GENERIC_TABBED_FORMAT
@@ -340,7 +341,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         block
-            use ParaDRAMChainFileContents_mod, only: ChainFileContents_type
+            use ParaMonteChainFileContents_mod, only: ChainFileContents_type
             self%Chain = ChainFileContents_type( ndim = ndim, variableNameList = self%SpecBase%VariableNameList%Val )
         end block
         if (self%isFreshRun) then
@@ -388,10 +389,8 @@ contains
         ! setup the proposal distribution
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (self%SpecMCMC%ProposalModel%isNormal .or. self%SpecMCMC%ProposalModel%isUniform) then
-            !ProposalSymmetric = ProposalSymmetric_type(ndim = ndim, PD = self)
-            !self%Proposal => ProposalSymmetric
-            allocate( self%Proposal, source = ProposalSymmetric_type( ndim          = ndim &
+        if (self%SpecMCMC%ProposalModel%isNormal) then
+            allocate( self%Proposal, source = ProposalNormal_type   ( ndim          = ndim &
                                                                     , SpecBase      = self%SpecBase &
                                                                     , SpecMCMC      = self%SpecMCMC &
                                                                     , SpecDRAM      = self%SpecDRAM &
@@ -401,19 +400,29 @@ contains
                                                                     , LogFile       = self%LogFile &
                                                                     , RestartFile   = self%RestartFile &
                                                                     ) )
-#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
-            block
-                use ParaDRAMProposal_mod, only: ProposalErr
-                if(ProposalErr%occurred) return
-            end block
-#endif
-        !elseif (self%SpecMCMC%ProposalModel%isUniform) then
-        !    allocate( self%Proposal, source = ProposalUniform_type(ndim = ndim, PD = self) )
+        elseif (self%SpecMCMC%ProposalModel%isUniform) then
+            allocate( self%Proposal, source = ProposalUniform_type  ( ndim          = ndim &
+                                                                    , SpecBase      = self%SpecBase &
+                                                                    , SpecMCMC      = self%SpecMCMC &
+                                                                    , SpecDRAM      = self%SpecDRAM &
+                                                                    , Image         = self%Image &
+                                                                    , name          = self%name &
+                                                                    , brand         = self%brand &
+                                                                    , LogFile       = self%LogFile &
+                                                                    , RestartFile   = self%RestartFile &
+                                                                    ) )
         else
             self%Err%msg = PROCEDURE_NAME // ": Internal error occurred. Unsupported proposal distribution for " // self%name // "."
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
             return
         end if
+
+#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+            block
+                use ParaDRAMProposalTemplate_mod, only: ProposalErr
+                if(ProposalErr%occurred) return
+            end block
+#endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! run ParaDRAM kernel
@@ -1497,7 +1506,7 @@ contains
                         use Sort_mod, only: sortAscending
                         use String_mod, only: replaceStr
                         use Statistics_mod, only: doSortedKS2
-                        use ParaDRAMRefinedChain_mod, only: readRefinedChain
+                        use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type
                         type(RefinedChain_type)     :: RefinedChainThisImage, RefinedChainThatImage
                         integer(IK)                 :: imageID,indexMinProbKS,imageMinProbKS
                         real(RK)                    :: statKS, minProbKS

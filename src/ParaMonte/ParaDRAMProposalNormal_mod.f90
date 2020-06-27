@@ -34,5 +34,8 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-#define PARAMETH ParaDRAM
-#include "ParaDRAM_ParaDISE_mod.inc.f90"
+#define NORMAL
+module ParaDRAMProposalNormal_mod
+#include "ParaDRAMProposal_mod.inc.f90"
+end module ParaDRAMProposalNormal_mod
+#undef NORMAL
