@@ -51,12 +51,11 @@ module ParaDRAMProposalTemplate_mod
     type, abstract :: ProposalTemplate_type
     contains
         procedure(getNew_proc)          , nopass    , deferred  :: getNew
-        !procedure(getLogProb_proc)      , nopass    , deferred  :: getLogProb
         procedure(doAdaptation_proc)    , nopass    , deferred  :: doAdaptation
         procedure(readRestartFile_proc) , nopass    , deferred  :: readRestartFile
         procedure(writeRestartFile_proc), nopass    , deferred  :: writeRestartFile
 #if defined CAF_ENABLED || defined MPI_ENABLED
-        procedure(getAdaptation_proc)   , nopass    , deferred  :: getAdaptation
+        procedure(bcastAdaptation_proc) , nopass    , deferred  :: bcastAdaptation
 #endif
     end type ProposalTemplate_type
 
@@ -64,8 +63,8 @@ module ParaDRAMProposalTemplate_mod
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
     abstract interface
-        subroutine getAdaptation_proc()
-        end subroutine getAdaptation_proc
+        subroutine bcastAdaptation_proc()
+        end subroutine bcastAdaptation_proc
     end interface
 #endif
 
@@ -73,14 +72,14 @@ module ParaDRAMProposalTemplate_mod
         function getNew_proc( nd            &
                             , counterDRS    &
                             , StateOld      &
-                            ) result (StateNew)
+                            ) result (StateNewLogProb)
             use Constants_mod, only: IK, RK
             import :: ProposalTemplate_type
            !class(ProposalTemplate_type), intent(inout) :: Proposal
             integer(IK), intent(in) :: nd
             integer(IK), intent(in) :: counterDRS
             real(RK)   , intent(in) :: StateOld(nd)
-            real(RK)                :: StateNew(nd)
+            real(RK)                :: StateNewLogProb(nd+2)
         end function getNew_proc
     end interface
 

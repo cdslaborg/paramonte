@@ -336,7 +336,27 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! calculates the Gamma function for a whole integer input. This is basically factorial(intNum-1)
+    ! calculates the log Gamma function for a whole integer input. This is basically logGamma(positiveInteger+1)
+    ! This function is mostly useful for large input integers
+    pure function getLogFactorial(positiveInteger) result(logFactorial)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogFactorial
+#endif
+        use Constants_mod, only: IK, RK
+        implicit none
+        integer(IK), intent(in) :: positiveInteger
+        integer(IK)             :: i
+        real(RK)                :: logFactorial
+        logFactorial = 0._RK
+        do i = 2, positiveInteger
+            logFactorial = logFactorial + log(real(i,kind=RK))
+        end do
+    end function getLogFactorial
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! calculates the Gamma function for a whole integer input. This is basically logGamma(intNum+1)
     pure function getFactorial(intNum)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getFactorial
@@ -409,6 +429,51 @@ contains
 
         end if
     end function getEllVolCoef
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! returns the log of an nd-dimensional unit ball.
+    ! see for example: http://math.stackexchange.com/questions/606184/volume-of-n-dimensional-ellipsoid
+    ! see for example: https://en.wikipedia.org/wiki/Volume_of_an_n-ball
+    ! see for example: https://en.wikipedia.org/wiki/Particular_values_of_the_Gamma_function
+    ! getEllVolCoef = PI^(nd/2) / gamma(nd/2+1) where n is just a positive integer
+    pure function getLogVolUnitBall(nd) result(logVolUnitBall)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolUnitBall
+#endif
+        use Constants_mod, only: IK, RK, PI
+        implicit none
+        integer(IK) , intent(in)    :: nd
+        real(RK)    , parameter     :: LOG_PI = log(PI)
+        integer(IK)                 :: i, k, ndHalfInteger
+        real(RK)                    :: logVolUnitBall
+        real(RK)                    :: ndHalfReal
+        if (mod(nd,2_IK)==0_IK) then ! nd is even
+            ndHalfInteger = nd / 2_IK
+            logVolUnitBall = ndHalfInteger*LOG_PI - getLogFactorial(ndHalfInteger) ! nd = 2k ; logVolUnitBall = PI^(k) / Factorial(k)
+        else ! nd is an odd integer
+            ndHalfReal = 0.5_RK * real(nd,kind=RK)
+            logVolUnitBall = ndHalfReal * LOG_PI - log_gamma(ndHalfReal+1._RK)
+        end if
+    end function getLogVolUnitBall
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! computes the volume of an nd-dimensional hyperellipsoid
+    ! see for example: https://math.stackexchange.com/questions/2854930/volume-of-an-n-dimensional-ellipsoid
+    pure function getLogVolEllipsoid(nd,logSqrtDetInvCovMat) result(logVolEllipsoid)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEllipsoid
+#endif
+        use Constants_mod, only: IK, RK
+        implicit none
+        integer(IK) , intent(in)    :: nd
+        real(RK)    , intent(in)    :: logSqrtDetInvCovMat
+        real(RK)                    :: logVolEllipsoid
+        logVolEllipsoid = getLogVolUnitBall(nd) + logSqrtDetInvCovMat
+    end function getLogVolEllipsoid
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

@@ -280,9 +280,6 @@ endif()
 
 # ensure preprocessor flags and module dependencies containing preprocessor flags are respected
 
-#set_target_properties (${PMLIB} PROPERTIES COMPILE_DEFINITIONS "AMH_PROPOSAL_NORMAL")
-#set_target_properties (${PMLIB} PROPERTIES COMPILE_DEFINITIONS "AMH_PROPOSAL_UNIFORM")
-
 # define the output modules directory
 
 set_target_properties( ${PMLIB} PROPERTIES Fortran_MODULE_DIRECTORY "${ParaMonte_MOD_DIR}" )

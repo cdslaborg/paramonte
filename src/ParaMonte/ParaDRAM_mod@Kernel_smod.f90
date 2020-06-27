@@ -115,6 +115,7 @@ contains
         integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
         integer(IK)                         :: imageID, dummy
         integer(IK)                         :: nd
+        integer(IK)                         :: ndPlusTwo
         character(4*25+2*3+1)               :: txt
 #if defined CAF_ENABLED || defined MPI_ENABLED
         integer(IK)                         :: imageStartID, imageEndID
@@ -137,14 +138,15 @@ contains
         inverseProgressReportPeriod = 1._RK/real(self%SpecBase%ProgressReportPeriod%val,kind=RK)    ! this remains a constant except for the last the last report of the simulation
         sumAccRateLastReport = 0._RK
         nd = self%nd%val
+        ndPlusTwo = nd + 2_IK
         
         if (allocated(co_AccRate)) deallocate(co_AccRate)
         if (allocated(co_LogFuncState)) deallocate(co_LogFuncState)
 #if defined CAF_ENABLED
-        allocate(co_LogFuncState(0:nd,-1:self%SpecDRAM%DelayedRejectionCount%val)[*])
+        allocate(co_LogFuncState(0:ndPlusTwo,-1:self%SpecDRAM%DelayedRejectionCount%val)[*])
         allocate(co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val)[*])                         ! the negative element will contain counterDRS
 #else
-        allocate(co_LogFuncState(0:nd,-1:self%SpecDRAM%DelayedRejectionCount%val))
+        allocate(co_LogFuncState(0:ndPlusTwo,-1:self%SpecDRAM%DelayedRejectionCount%val))
         allocate(co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val))
 #endif
         co_AccRate(-1)  = 0._RK                                                                     ! the real-value counterDRS, indicating the initial delayed rejection stage at which the first point is sampled
@@ -636,7 +638,7 @@ contains
                 call self%Timer%toc()
                 co_proposalFound_samplerUpdateOccurred(1:2) = co_proposalFound_samplerUpdateOccurred(1:2)[1]
                 if (co_proposalFound_samplerUpdateOccurred(1)==1_IK) co_LogFuncState(0:nd,-1) = co_LogFuncState(0:nd,-1)[1]
-                if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call self%Proposal%getAdaptation()
+                if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call self%Proposal%bcastAdaptation()
                 call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
 
                 if (self%isDryRun) then
@@ -725,7 +727,7 @@ contains
                                 , mpi_comm_world        &   ! comm
                                 , ierrMPI               &   ! ierr
                                 )
-                if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call self%Proposal%getAdaptation()
+                if (co_proposalFound_samplerUpdateOccurred(2)==1_IK) call self%Proposal%bcastAdaptation()
                 call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
             end if
 
@@ -747,10 +749,10 @@ contains
                     ! self%Stats%NumFunCall%acceptedRejectedDelayedUnused is relevant only on the first image, despite being updated by all images
                     self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayedUnused + self%Image%count
 
-                    co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew ( nd            = nd                                    &
-                                                                            , counterDRS    = counterDRS                            &
-                                                                            , StateOld      = co_LogFuncState(1:nd,counterDRS-1)    &
-                                                                            )
+                    co_LogFuncState(1:ndPlusTwo,counterDRS) = self%Proposal%getNew  ( nd            = nd                                    &
+                                                                                    , counterDRS    = counterDRS                            &
+                                                                                    , StateOld      = co_LogFuncState(1:nd,counterDRS-1)    &
+                                                                                    )
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif

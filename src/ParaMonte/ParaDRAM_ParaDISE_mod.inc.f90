@@ -34,17 +34,14 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-#define CAT(a,b) a##b
-#define XCAT(a,b) CAT(a,b)
+!#define CAT(a,b) a##b
+!#define XCAT(a,b) CAT(a,b)
 
-! module &
-! #if defined ParaDISE
-! ParaDISE_mod
-! #else
-! ParaDRAM_mod
-! #endif
-
+#if defined ParaDISE
+module ParaDISE_mod
+#elif defined ParaDRAM
 module ParaDRAM_mod
+#endif
 
     use Constants_mod, only: IK, RK, CK
     use ParaMonte_mod, only: ParaMonteNumFunCall_type
@@ -319,16 +316,11 @@ module ParaDRAM_mod
 !!***********************************************************************************************************************************
 !!***********************************************************************************************************************************
 
-!end module &
-!#if defined PARAMETH
-!end module ParaDISE_mod
-!#else
-!end module ParaDRAM_mod
-!#endif
-
-!end module PARAMETH_MOD
-
+#if defined ParaDISE
+end module ParaDISE_mod
+#elif defined ParaDRAM
 end module ParaDRAM_mod
+#endif
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

@@ -1502,63 +1502,18 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    function getLogProbRandMVN(nd,MeanVec,CholeskyLower,Diagonal) result(LogProbRandMVN)
+    ! NOTE: if MahalSq computation fails, output probability will be returned as NullVal%RK from module Constant_mod.
+    pure function getLogProbMVU(nd,logSqrtDetInvCovMat) result(logProbMVU)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbRandMVN
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVU
 #endif
-        ! Amir Shahmoradi, April 23, 2017, 12:36 AM, ICES, UTEXAS
-        ! returns a multivariate Normal random vector.
+        use Math_mod, only: getLogVolEllipsoid
         implicit none
         integer(IK), intent(in) :: nd
-        real(RK)   , intent(in) :: MeanVec(nd)
-        real(RK)   , intent(in) :: CholeskyLower(nd,nd), Diagonal(nd)   ! Cholesky lower triangle and its diagonal terms, calculated from the input CovMat.
-        real(RK)                :: LogProbRandMVN(0:nd), dummy
-        integer(IK)             :: j,i
-        LogProbRandMVN = 0._RK
-        do j = 1,nd
-            dummy = getRandGaus()
-            LogProbRandMVN(0) = LogProbRandMVN(0) + getLogProbNorm(mean=0._RK,inverseVariance=1._RK,logSqrtInverseVariance=0._RK,point=dummy)
-            LogProbRandMVN(j) = LogProbRandMVN(j) + Diagonal(j) * dummy
-            do i = j+1,nd
-                LogProbRandMVN(i) = LogProbRandMVN(i) + CholeskyLower(i,j) * dummy
-            end do
-        end do
-        LogProbRandMVN = LogProbRandMVN + MeanVec
-    end function getLogProbRandMVN
-
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
-
-    function getLogProbRandMVU(nd,MeanVec,CholeskyLower,Diagonal) result(LogProbRandMVU)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbRandMVU
-#endif
-        use Math_mod, only: getEllVolCoef
-        implicit none
-        integer(IK), intent(in) :: nd
-        real(RK)   , intent(in) :: MeanVec(nd)
-        real(RK)   , intent(in) :: CholeskyLower(nd,nd) ! Cholesky lower triangle, calculated from the input CovMat.
-        real(RK)   , intent(in) :: Diagonal(nd)         ! Cholesky diagonal terms, calculated from the input CovMat.
-        real(RK)                :: LogProbRandMVU(0:nd), dummy, DummyVec(nd), sumSqDummyVec
-        integer(IK)             :: i,j
-        LogProbRandMVU = 0._RK
-        sumSqDummyVec = 0._RK
-        do j=1,nd
-            DummyVec(j) = getRandGaus()
-            sumSqDummyVec = sumSqDummyVec + DummyVec(j)**2
-        end do
-        LogProbRandMVU(0) = 1._RK / getEllVolCoef(nd)
-        call random_number(dummy)
-        dummy = (dummy**(1._RK/dble(nd)))/sqrt(sumSqDummyVec)
-        DummyVec = DummyVec * dummy  ! DummyVec(j) * dummy is a uniform random point from inside of nd-sphere
-        do j = 1,nd
-            LogProbRandMVU(j) = LogProbRandMVU(j) + Diagonal(j) * DummyVec(j)
-            do i = j+1,nd
-                LogProbRandMVU(i) = LogProbRandMVU(i) + CholeskyLower(i,j) * DummyVec(j)
-            end do
-        end do
-        LogProbRandMVU = LogProbRandMVU + MeanVec
-    end function getLogProbRandMVU
+        real(RK)   , intent(in) :: logSqrtDetInvCovMat
+        real(RK)                :: logProbMVU
+        logProbMVU = -getLogVolEllipsoid(nd,logSqrtDetInvCovMat)
+    end function getLogProbMVU
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
