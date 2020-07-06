@@ -595,7 +595,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-  function getLogProbGausMixMDSP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point)
+    function getLogProbGausMixMDSP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGausMixMDSP_RK
 #endif
@@ -1655,7 +1655,7 @@ contains
         integer(IK), intent(in)    :: lowerBound,upperBound
         integer(IK), intent(inout) :: idum
         integer(IK)                :: getRandIntLecuyer
-        getRandIntLecuyer = lowerBound + nint( getRandRealLecuyer(idum)*dble(upperBound-lowerBound) )
+        getRandIntLecuyer = lowerBound + nint( getRandRealLecuyer(idum)*real(upperBound-lowerBound,kind=RK) )
     end function getRandIntLecuyer
 
 !***********************************************************************************************************************************
@@ -1671,8 +1671,23 @@ contains
         real(RK)                :: dummy
         integer(IK)             :: getRandInt
         call random_number(dummy)
-        getRandInt = lowerBound + nint( dummy*dble(upperBound-lowerBound) )
+        getRandInt = lowerBound + nint( dummy*real(upperBound-lowerBound,kind=RK) )
     end function getRandInt
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! returns real random number in the range [lowerBound,upperBound], using built-in random number generator of Fortran.
+    function getRandUniform(lowerBound,upperBound) result(unifrnd)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getRandUniform
+#endif
+        implicit none
+        real(RK), intent(in)    :: lowerBound,upperBound
+        real(RK)                :: unifrnd
+        call random_number(unifrnd)
+        unifrnd = lowerBound + unifrnd * real(upperBound-lowerBound,kind=RK)
+    end function getRandUniform
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

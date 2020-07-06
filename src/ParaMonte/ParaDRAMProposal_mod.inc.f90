@@ -66,6 +66,7 @@
        !type(AccRate_type)          :: AccRate
     contains
         procedure   , nopass        :: getNew
+        procedure   , nopass        :: getLogProb
         procedure   , nopass        :: doAdaptation
         procedure   , nopass        :: readRestartFile
         procedure   , nopass        :: writeRestartFile
@@ -317,18 +318,11 @@ contains
     function getNew ( nd            &
                     , counterDRS    &
                     , StateOld      &
-                    ) result (StateNewLogFunc)
+                    ) result (StateNew)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNew
 #endif
-
-#if defined UNIFORM
-        use Math_mod, only: getLogVolEllipsoid
-#elif defined NORMAL
-        use Statistics_mod, only: getLogProbMVN
-#endif
         use Statistics_mod, only: SAMPLER_NAME
-
         use Constants_mod, only: IK, RK
         use Err_mod, only: warn, abort
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -340,7 +334,7 @@ contains
         integer(IK), intent(in)                         :: nd
         integer(IK), intent(in)                         :: counterDRS
         real(RK)   , intent(in)                         :: StateOld(nd)
-        real(RK)                                        :: StateNewLogFunc(nd+2)
+        real(RK)                                        :: StateNew(nd)
         integer(IK)                                     :: domainCheckCounter
         real(RK)                                        :: CholeskyLower(nd,nd) ! dummy variable to avoid copy in / copy out
 
@@ -348,15 +342,15 @@ contains
         CholeskyLower = comv_CholDiagLower(1:nd,1:nd,counterDRS)
         loopBoundaryCheckNormal: do ! Check for the support Region consistency:
 #if defined UNIFORM || defined NORMAL
-            StateNewLogFunc(1:nd) =  SAMPLER_NAME   ( nd                                    &
-                                                    , StateOld                              &
-                                                    , CholeskyLower                         &
-                                                    , comv_CholDiagLower(1:nd,0,counterDRS) &
-                                                    )
+            StateNew(1:nd) = SAMPLER_NAME   ( nd                                    &
+                                            , StateOld                              &
+                                            , CholeskyLower                         &
+                                            , comv_CholDiagLower(1:nd,0,counterDRS) &
+                                            )
 #else
 #error "Unknown Proposal model in ParaDRAMProposal_mod.inc.f90"
 #endif
-            if ( any(StateNewLogFunc(1:nd)<=mc_DomainLowerLimitVec) .or. any(StateNewLogFunc(1:nd)>=mc_DomainUpperLimitVec) ) then
+            if ( any(StateNew(1:nd)<=mc_DomainLowerLimitVec) .or. any(StateNew(1:nd)>=mc_DomainUpperLimitVec) ) then
                 domainCheckCounter = domainCheckCounter + 1
                 if (domainCheckCounter==mc_MaxNumDomainCheckToWarn) then
                     call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
@@ -372,20 +366,33 @@ contains
             exit loopBoundaryCheckNormal
         end do loopBoundaryCheckNormal
 
-#if defined UNIFORM
-StateNewLogFunc(nd+1) = mc_negLogVolUnitBall - mv_logSqrtDetInvCovMat(counterDRS)
-StateNewLogFunc(nd+2) = StateNewLogFunc(nd+1)
-#elif defined NORMAL
-StateNewLogFunc(nd+1) = getLogProbMVN   ( nd = nd &
-                                        , MeanVec = StateOld &
-                                        , InvCovMat = mv_InvCovMat(1:nd,1:nd,counterDRS) &
-                                        , logSqrtDetInvCovMat = mv_logSqrtDetInvCovMat(counterDRS) &
-                                        , Point = StateNewLogFunc(1:nd) &
-                                        )
-StateNewLogFunc(nd+2) = StateNewLogFunc(nd+1)
-#endif
-
     end function getNew
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    pure function getLogProb(nd, counterDRS, StateOld, StateNew) result(logProb)
+#if defined NORMAL
+        use Statistics_mod, only: getLogProbMVN
+#endif
+        use Constants_mod, only: IK, RK
+        implicit none
+        integer(IK), intent(in)                         :: nd
+        integer(IK), intent(in)                         :: counterDRS
+        real(RK)   , intent(in)                         :: StateOld(nd)
+        real(RK)   , intent(in)                         :: StateNew(nd)
+        real(RK)                                        :: logProb
+#if defined UNIFORM
+        logProb = mc_negLogVolUnitBall - mv_logSqrtDetInvCovMat(counterDRS)
+#elif defined NORMAL
+        logProb = getLogProbMVN ( nd = nd &
+                                , MeanVec = StateOld &
+                                , InvCovMat = mv_InvCovMat(1:nd,1:nd,counterDRS) &
+                                , logSqrtDetInvCovMat = mv_logSqrtDetInvCovMat(counterDRS) &
+                                , Point = StateNew &
+                                )
+#endif
+    end function getLogProb
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -682,9 +689,17 @@ StateNewLogFunc(nd+2) = StateNewLogFunc(nd+1)
 
         ! adjust the scale of the covariance matrix and the Cholesky factor, if needed
 
+!scalingNeeded = .true.
+
         if (scalingNeeded) then
             if ( meanAccRateSinceStart < mc_TargetAcceptanceRateLimit(1) .or. meanAccRateSinceStart > mc_TargetAcceptanceRateLimit(2) ) then
                 mv_adaptiveScaleFactorSq_save = (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
+!block
+!    !use Statistics_mod, only: getRandUniform
+!    !mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(getRandUniform(-1.e-1_RK,1.e-1_RK))
+!    use Statistics_mod, only: getRandInt
+!    mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(real(getRandInt(-1_IK,1_IK),kind=RK))
+!end block
                 adaptiveScaleFactor = sqrt(mv_adaptiveScaleFactorSq_save)
                 do j = 1, nd
                     ! update the Cholesky diagonal elements

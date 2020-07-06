@@ -35,5 +35,5 @@
 !***********************************************************************************************************************************
 
 #define ParaDRAM
-#include "ParaDRAM_ParaDISE_mod.inc.f90"
+#include "ParaDRAM_mod_ParaDISE_mod.inc.f90"
 #undef ParaDRAM

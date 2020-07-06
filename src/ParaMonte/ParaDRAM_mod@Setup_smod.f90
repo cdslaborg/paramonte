@@ -340,28 +340,42 @@ contains
         ! setup output files
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        ! setup chain file
+
         block
             use ParaMonteChainFileContents_mod, only: ChainFileContents_type
             self%Chain = ChainFileContents_type( ndim = ndim, variableNameList = self%SpecBase%VariableNameList%Val )
         end block
+
         if (self%isFreshRun) then
             if (self%Image%isMaster) then
-                write( self%TimeFile%unit, self%TimeFile%format ) "NumFuncCallTotal" &
-                                                                , "NumFuncCallAccepted" &
-                                                                , "MeanAcceptanceRateSinceStart" &
-                                                                , "MeanAcceptanceRateSinceLastReport" &
-                                                                , "TimeElapsedSinceLastReportInSeconds" &
-                                                                , "TimeElapsedSinceStartInSeconds" &
-                                                                , "TimeRemainedToFinishInSeconds"
                 call self%Chain%writeHeader ( ndim              = ndim &
                                             , chainFileUnit     = self%ChainFile%unit &
                                             , isBinary          = self%SpecBase%ChainFileFormat%isBinary &
                                             , chainFileFormat   = self%ChainFile%format &
                                             )
+                flush(self%ChainFile%unit)
             end if
         else
-            if (self%Image%isMaster) read(self%TimeFile%unit,*) ! read the header line of the time file, only by master images
             call self%Chain%getLenHeader(ndim=ndim,isBinary=self%SpecBase%ChainFileFormat%isBinary,chainFileFormat=self%ChainFile%format)
+        end if
+
+        ! setup progress file
+
+        if (self%Image%isMaster) then
+            if (.not.self%isFreshRun) then
+                read(self%TimeFile%unit, *, iostat = self%Err%stat) ! read the header line of the time file, only by master images
+            end if
+            if (self%isFreshRun .or. is_iostat_end(self%Err%stat)) then
+                    write( self%TimeFile%unit, self%TimeFile%format ) "NumFuncCallTotal" &
+                                                                    , "NumFuncCallAccepted" &
+                                                                    , "MeanAcceptanceRateSinceStart" &
+                                                                    , "MeanAcceptanceRateSinceLastReport" &
+                                                                    , "TimeElapsedSinceLastReportInSeconds" &
+                                                                    , "TimeElapsedSinceStartInSeconds" &
+                                                                    , "TimeRemainedToFinishInSeconds"
+                    flush(self%TimeFile%unit)
+            end if
         end if
 
         ! The format setup of setupOutputFiles() uses the generic g0 edit descriptor. Here the format is revised to be more specific.
@@ -370,17 +384,17 @@ contains
         if (self%SpecBase%OutputColumnWidth%val>0) then
             self%TimeFile%format  = "("     // &
                                     "2I"    // self%SpecBase%OutputColumnWidth%str // ",'" // self%SpecBase%OutputDelimiter%val // &
-                                    "',5(E" // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // &
+                                    "',5(E" // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3" // &
                                     ",:,'"  // self%SpecBase%OutputDelimiter%val // "'))"
             self%ChainFile%format = "("     // &
                                     "2(I"   // self%SpecBase%OutputColumnWidth%str // &
                                     ",'"    // self%SpecBase%OutputDelimiter%val // "')," // &
-                                    "2(E"   // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // &
+                                    "2(E"   // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3" // &
                                     ",'"    // self%SpecBase%OutputDelimiter%val // "')," // &
                                     "2(I"   // self%SpecBase%OutputColumnWidth%str // &
                                     ",'"    // self%SpecBase%OutputDelimiter%val // "')" // &
                                     ","     // num2str(3_IK+self%nd%val) // &
-                                    "(E"    // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // &
+                                    "(E"    // self%SpecBase%OutputColumnWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3" // &
                                     ",:,'"  // self%SpecBase%OutputDelimiter%val // "')" // &
                                     ")"
         end if
@@ -454,7 +468,7 @@ contains
         blockMasterPostProcessing: if (self%Image%isMaster) then
 
             formatStrInt  = "('" // INDENT // "',1A" // self%LogFile%maxColWidth%str // ",*(I" // self%LogFile%maxColWidth%str // "))"
-            formatStrReal = "('" // INDENT // "',1A" // self%LogFile%maxColWidth%str // ",*(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "))"
+            formatStrReal = "('" // INDENT // "',1A" // self%LogFile%maxColWidth%str // ",*(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))"
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -712,7 +726,7 @@ contains
                     real(RK)    , allocatable :: geoPDF(:), speedupVec(:), tempVec(:)
                     character(:), allocatable :: formatIn, formatScaling
 
-                    formatScaling = "('" // INDENT // "',10(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "))" ! ,:,','
+                    formatScaling = "('" // INDENT // "',10(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))" ! ,:,','
 
                     geoPDF = getgeoPDF(successProb=mcmcSamplingEfficiency,minSeqLen=10*self%Image%count)
                     lengeoPDF = size(geoPDF)
@@ -959,7 +973,7 @@ contains
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            formatAllReal = "('" // INDENT // "',*(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "))"
+            formatAllReal = "('" // INDENT // "',*(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))"
 
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.verbose.logFunc.max.state"
@@ -1115,7 +1129,7 @@ contains
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            formatStr = "('" // INDENT // "',2I" // self%LogFile%maxColWidth%str // ",*(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "))"
+            formatStr = "('" // INDENT // "',2I" // self%LogFile%maxColWidth%str // ",*(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))"
 
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.iac"
@@ -1202,9 +1216,9 @@ contains
 
             else blockSampleFileGeneration
 
-                !*******************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 ! sample file generation report
-                !*******************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 ! report to the report-file(s)
 
@@ -1253,9 +1267,9 @@ contains
 
                 end if
 
-                !*******************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 ! begin sample file generation
-                !*******************************************************************************************************************
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 if (self%SpecBase%SampleSize%val/=-1_IK) then
 
@@ -1338,7 +1352,7 @@ contains
                 ! determine the sample file's contents' format
 
                 if (self%SpecBase%OutputColumnWidth%val>0) then
-                    formatStr = "(*(E"//self%SpecBase%OutputColumnWidth%str//"."//self%SpecBase%OutputRealPrecision%str//",:,'"//self%SpecBase%OutputDelimiter%val//"'))"
+                    formatStr = "(*(E"//self%SpecBase%OutputColumnWidth%str//"."//self%SpecBase%OutputRealPrecision%str//"E3,:,'"//self%SpecBase%OutputDelimiter%val//"'))"
                 else
                     formatStr = self%SampleFile%format
                 end if
@@ -1535,7 +1549,7 @@ contains
 
                         ! compute and report the KS convergence probabilities for all images
 
-                        formatStr = "(1I" // self%LogFile%maxColWidth%str // ",*(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "))"
+                        formatStr = "(1I" // self%LogFile%maxColWidth%str // ",*(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))"
 
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1632,6 +1646,9 @@ contains
                                                                " on the chains generated by processes "//num2str(self%Image%id)//&
                                                                " and "//num2str(imageMinProbKS)//"." )
                             end if
+#if defined CAF_ENABLED || MPI_ENABLED
+                            call execute_command_line(" ")
+                            flush(output_unit)
 #if defined CAF_ENABLED
                             sync all
 #elif defined MPI_ENABLED
@@ -1640,6 +1657,7 @@ contains
                                 integer :: ierrMPI
                                 call mpi_barrier(mpi_comm_world,ierrMPI)
                             end block
+#endif
 #endif
                         end do
 

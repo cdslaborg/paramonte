@@ -124,9 +124,10 @@ SET(ParaMonte_SOURCE_FILES
 )
    #${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricUniform_mod.f90
 
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_ParaDISE_mod.inc.f90 )
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90 )
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90 )
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod_ParaDISE_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod@nextMove.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricNormal_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetric_mod.inc.f90 )
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricNormal_mod.f90 )
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetric_mod.inc.f90 )

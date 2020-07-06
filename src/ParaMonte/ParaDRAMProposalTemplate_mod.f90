@@ -51,6 +51,7 @@ module ParaDRAMProposalTemplate_mod
     type, abstract :: ProposalTemplate_type
     contains
         procedure(getNew_proc)          , nopass    , deferred  :: getNew
+        procedure(getLogProb_proc)      , nopass    , deferred  :: getLogProb
         procedure(doAdaptation_proc)    , nopass    , deferred  :: doAdaptation
         procedure(readRestartFile_proc) , nopass    , deferred  :: readRestartFile
         procedure(writeRestartFile_proc), nopass    , deferred  :: writeRestartFile
@@ -72,15 +73,31 @@ module ParaDRAMProposalTemplate_mod
         function getNew_proc( nd            &
                             , counterDRS    &
                             , StateOld      &
-                            ) result (StateNewLogProb)
+                            ) result (StateNew)
             use Constants_mod, only: IK, RK
             import :: ProposalTemplate_type
            !class(ProposalTemplate_type), intent(inout) :: Proposal
             integer(IK), intent(in) :: nd
             integer(IK), intent(in) :: counterDRS
             real(RK)   , intent(in) :: StateOld(nd)
-            real(RK)                :: StateNewLogProb(nd+2)
+            real(RK)                :: StateNew(nd)
         end function getNew_proc
+    end interface
+
+    abstract interface
+        function getLogProb_proc( nd            &
+                                , counterDRS    &
+                                , StateOld      &
+                                , StateNew      &
+                                ) result (logProb)
+            use Constants_mod, only: IK, RK
+            import :: ProposalTemplate_type
+            integer(IK), intent(in) :: nd
+            integer(IK), intent(in) :: counterDRS
+            real(RK)   , intent(in) :: StateOld(nd)
+            real(RK)   , intent(in) :: StateNew(nd)
+            real(RK)                :: logProb
+        end function getLogProb_proc
     end interface
 
     abstract interface
