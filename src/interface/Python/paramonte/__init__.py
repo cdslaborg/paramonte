@@ -61,6 +61,10 @@ For more information on the installation, usage, and examples, visit:
 
     https://www.cdslab.org/paramonte
 
+For the API documentation, visit:
+
+    https://www.cdslab.org/paramonte/notes/api/python
+
 ParaMonte samplers
 ================== 
 

@@ -36,12 +36,9 @@
 
 import setuptools
 
-with open("README.md", "r") as fh:
-    readmeFileContents = fh.read()
+with open("README.md", "r") as fh: readmeFileContents = fh.read()
 
-with open("paramonte/.VERSION") as versionFile:
-    version = versionFile.readline()
-versionFile.close()
+with open("paramonte/auxil/.VERSION_INTERFACE") as versionFile: version = versionFile.readline()
 
 setuptools.setup( name                          = "paramonte"
                 , version                       = version
@@ -59,6 +56,7 @@ setuptools.setup( name                          = "paramonte"
                                                     , "scipy"
                                                     , "pandas"
                                                     , "seaborn"
+                                                    , "packaging"
                                                     , "matplotlib"
                                                     #, OTHERS:
                                                     #, "platform"

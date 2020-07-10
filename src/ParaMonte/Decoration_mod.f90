@@ -48,6 +48,10 @@ module Decoration_mod
     integer(IK) , parameter :: DECORATION_THICKNESS_VERT = 1
     character(*), parameter :: STAR = "*"
     character(*), parameter :: TAB = "    "
+    character(*), parameter :: INDENT = TAB // TAB
+
+    character(*), parameter :: GENERIC_OUTPUT_FORMAT = "(*(g0,:,' '))"
+    character(*), parameter :: GENERIC_TABBED_FORMAT = "('" // TAB // TAB // "',*(g0,:,' '))"
 
     type :: decoration_type
         character(:), allocatable       :: tab
@@ -212,6 +216,44 @@ module Decoration_mod
         type(CharVec_type), allocatable     :: ListOfLines(:)
     end function wrapText
     end interface
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+contains
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    pure function getGenericFormat(width,precision,delim,prefix) result(formatStr)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat
+#endif
+        ! generates IO format strings, primarily for use in the output report files of ParaMonte
+        use Constants_mod, only: IK
+        use String_mod, only: num2str
+        implicit none
+        integer(IK) , intent(in), optional  :: width
+        integer(IK) , intent(in), optional  :: precision
+        character(*), intent(in), optional  :: delim
+        character(*), intent(in), optional  :: prefix
+        character(:), allocatable           :: widthStr
+        character(:), allocatable           :: formatStr
+        character(:), allocatable           :: precisionStr
+        character(:), allocatable           :: delimDefault
+        logical                             :: isTabbedDefault
+
+        widthStr = "0"; if (present(width)) widthStr = num2str(width)
+        precisionStr = ".0"; if (present(precision)) precisionStr = "."//num2str(precision)
+        delimDefault = ""; if (present(delim)) delimDefault = ",:,'"//delim//"'"
+        formatStr = "*(g"//widthStr//precisionStr//delimDefault//"))"
+        if (present(prefix)) then
+            formatStr = "('" // prefix // "'," // formatStr
+        else
+            formatStr = "(" // formatStr
+        end if
+
+    end function getGenericFormat
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

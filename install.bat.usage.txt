@@ -16,6 +16,7 @@
         --mem           : the ParaMonte library memory type for array allocations. Possible values: stack heap
         --test_enabled  : the ParaMonte library testing enabled? Possible values: true, false. If true, tests will be performed where possible.
         --exam_enabled  : the ParaMonte library example runs enabled? Possible values: true, false. If true, exmaples will be run where possible.
+        --matdram       : enables the ParaMonte MatDRAM MATLAB library build. If specified, it will disable all other specified flags.
         --nproc         : the default number of processes on which the ParaMonte examples/tests (if any) will be run. Possible values: positive integers
         --clean         : clean the environmental variables upon exit. Possible values: true, false. Only one can be specified. The default is true.
         --help          : help with the script usage

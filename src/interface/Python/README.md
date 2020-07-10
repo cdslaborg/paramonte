@@ -22,7 +22,10 @@ ParaMonte is a serial/parallel library of Monte Carlo routines for sampling math
 
 For more information on the installation, usage, and examples, visit: https://www.cdslab.org/paramonte  
 
-For a quick start with some Jupyter Notebook examples, visit [this page](https://github.com/cdslaborg/paramonte/tree/master/example/jupyter/Python).  
+Quick start  
+===========
+
+For a quick start with some Jupyter Notebook examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/python/jupyter/). The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/master/Python/Jupyter), a repository dedicated to the ParaMonte library examples.  
 
 ParaMonte design goals  
 ======================  
@@ -42,11 +45,11 @@ Installation
 
 The latest release of ParaMonte can be installed from PyPI using `pip`:  
 
-    pip3 install --user paramonte  
+    pip3 install --user --upgrade paramonte  
 
 or,  
 
-    pip install --user paramonte  
+    pip install --user --upgrade paramonte  
 
 Alternatively, you can build the library from the source in the GitHub repository of the project ([https://github.com/cdslaborg/paramonte](https://github.com/cdslaborg/paramonte)). For instructions, please visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
 
@@ -98,21 +101,22 @@ Example usage instructions
 
 +   **Install a Python 3 distribution**, preferably, the Anaconda distribution of Python. The Anaconda distribution of Python automatically ships with all of the ParaMonte Python package dependencies when installed on your system.  
 
-+   **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is available for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
++   **Optionally install a compatible MPI library** (or let the ParaMonte library take care of the installation when you import the package into your Python session for the first time). For parallel simulations (via MPI), you will need an MPI library already installed on your system. If you choose to install the library by yourself, we recommend the Intel MPI library which is available for free from the Intel website. On macOS, the OpenMPI library can be used in place of the Intel MPI library which currently does not support macOS.  
 
 +   **Running the ParaMonte simulations**  
     +   Open an Anaconda command-line interface or `jupyter` notebook.  
     +   Suppose your mathematical objective function is a multivariate Normal distribution as implemented in this [logfunc.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/mvn/Python/logfunc.py) file.  
     +   For **serial** simulations, download this example generic serial [main.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply type the name of the Python main script, `python main.py` on the Bash terminal or the Anaconda command line.  
-    +   For **parallel** simulations, download this example generic serial [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
+    +   For **parallel** simulations, download this example generic parallel [main_mpi.py](https://raw.githubusercontent.com/cdslaborg/paramonte/master/example/main_mpi.py) Python main file and save it in the same folder containing the `logfunc.py` file that you downloaded in the above. Then, simply invoke the MPI launcher followed by the name of the Python main script on the Bash terminal, similar to the following,  
         +   on Windows (within the Anaconda command line or a terminal that recognizes both `mpiexec` and `python` software),  
             ```  
             mpiexec -localonly -n 3 python main_mpi.py
             ```  
+            where the `-localonly` flag is needed only if you are using the Intel MPI runtime libraries (which is the default MPI library used to build the ParaMonte libraries on Windows).  
         +   on macOS or Linux (within a Bash terminal),  
             ```  
             mpiexec -n 3 python main_mpi.py
             ```  
         Here, the parallel simulations are performed on 3 processes. Change the number 3 to any number of processes you wish to use, but do not go beyond the maximum number of physical processes available on your system, otherwise, it will only degrade the performance of your parallel simulations. For example, if you are running the parallel simulation on a personal quad-cores laptop, set the number of processes to either 3 or 4 at most.  
     +   Enjoy the unification of simplicity, efficiency, and parallelism in Monte Carlo simulations!  
-    +   The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte  
+    +   The ParaMonte library samplers are extremely versatile with many adjustable input parameters. To learn about the many advanced features of the ParaMonte routines, visit: https://www.cdslab.org/paramonte  

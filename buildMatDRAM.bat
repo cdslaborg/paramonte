@@ -74,7 +74,7 @@ set LANG_NAME=MATLAB
 
 if not defined LANG_NAME (
     echo. 
-    echo. -- ParaMonteExample - Fatal Error: unrecognized or no language specified. exiting...
+    echo. -- MatDRAMExample - Fatal Error: unrecognized or no language specified. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -210,18 +210,18 @@ if %ERRORLEVEL%==0 (
 
 set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_BLD_DIR!\mvn
 
-set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\MatDRAM
+set MatDRAMExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\MatDRAM
 
-echo. -- MatDRAM - The MatDRAM !LANG_NAME! library binary directory: !ParaMonteExample_BIN_DIR_CURRENT!
+echo. -- MatDRAM - The MatDRAM !LANG_NAME! library binary directory: !MatDRAMExample_BIN_DIR_CURRENT!
 
-if not exist !ParaMonteExample_BIN_DIR_CURRENT! (
-    mkdir "!ParaMonteExample_BIN_DIR_CURRENT!\"
+if not exist !MatDRAMExample_BIN_DIR_CURRENT! (
+    mkdir "!MatDRAMExample_BIN_DIR_CURRENT!\"
 )
 
 echo. -- MatDRAM - copying the MatDRAM library files to the bin folder...
 echo. -- MatDRAM - from: !MatDRAM_BLD_DIR_CURRENT! %= no need for final slash here =%
-echo. -- MatDRAM -   to: !ParaMonteExample_BIN_DIR_CURRENT! %= final slash tells this is folder =%
-xcopy /s /Y /e /v /i "!MatDRAM_BLD_DIR_CURRENT!" "!ParaMonteExample_BIN_DIR_CURRENT!" || goto LABEL_copyErrorOccured
+echo. -- MatDRAM -   to: !MatDRAMExample_BIN_DIR_CURRENT! %= final slash tells this is folder =%
+xcopy /s /Y /e /v /i "!MatDRAM_BLD_DIR_CURRENT!" "!MatDRAMExample_BIN_DIR_CURRENT!" || goto LABEL_copyErrorOccured
 
 if %ERRORLEVEL%==1 (
     echo. 
@@ -242,34 +242,36 @@ if %ERRORLEVEL%==0 (
 :: copy the first example to the bin directory
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-for %%e in (!EXAM_LIST!) do ( 
+if !ParaMonteExample_RUN_ENABLED!==true (
 
-    set EXAM_NAME=%%e
-    echo. -- MatDRAM - Building and running the MatDRAM library's !EXAM_NAME! example.
+    for %%e in (!EXAM_LIST!) do ( 
 
-    REM The MatDRAM library example build and run if requested
+        set EXAM_NAME=%%e
+        echo. -- MatDRAM - Running the MatDRAM library's !EXAM_NAME! example.
 
-    if !ParaMonteExample_RUN_ENABLED!==true (
+        REM The MatDRAM library example build and run if requested
+
         set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_BLD_DIR!\!EXAM_NAME!
         cd !MatDRAM_BLD_DIR_CURRENT!
+
+        matlab -batch "main" && (
+            echo.
+            echo.
+            echo. -- MatDRAM - The MatDRAM library example build/run appears to have succeeded.
+            echo.
+        ) || (
+            echo. 
+            echo. -- MatDRAM - Fatal Error: The MatDRAM library example build/run failed. exiting...
+            echo. 
+            cd %~dp0
+            set ERRORLEVEL=1
+            exit /B 1
+        )
+
         cd %~dp0
+
     )
 
-)
-
-if %ERRORLEVEL%==1 (
-    echo. 
-    echo. -- MatDRAM - Fatal Error: The MatDRAM library example build/run failed. exiting...
-    echo. 
-    cd %~dp0
-    set ERRORLEVEL=1
-    exit /B 1
-)
-if %ERRORLEVEL%==0 (
-    echo.
-    echo.
-    echo. -- MatDRAM - The MatDRAM library example build/run appears to have succeeded.
-    echo.
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

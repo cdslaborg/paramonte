@@ -337,147 +337,156 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: reportValues
 #endif
+        use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
+        use Decoration_mod, only: GENERIC_TABBED_FORMAT
         use Decoration_mod, only: TAB
-        use Constants_mod, only: IK
+        use Constants_mod, only: IK, UNDEFINED
         use Err_mod, only: note, informUser
         implicit none
         class(SpecBase_type), intent(in)    :: SpecBase
         character(*), intent(in)            :: prefix
         integer(IK) , intent(in)            :: outputUnit
         logical     , intent(in)            :: isMasterImage
-        integer(IK)                         :: i
-        character(:), allocatable           :: formatStr, formatVal
-
-        formatStr = "(*(g0,:,' '))"
-        formatVal = "('" // TAB // TAB // "',*(g0,:,' '))"
-
+        integer(IK)                         :: i, ndim
+        character(:), allocatable           :: msg
 
         if (isMasterImage) then
 
+            ndim = size(SpecBase%DomainLowerLimitVec%Val(:))
+            msg =   "ndim is a 32-bit positive integer, representing the number of dimensions of the domain of the objective function. &
+                    &It is the only simulation specification variable that the user must always provide along with the objective function, &
+                    &separately from the rest of the simulation specifications. The variable ndim must be always provided directly to the ParaMonte &
+                    &routines, along with the objective function. If specified within an input file, its value will be ignored and not used. &
+                    &The variable ndim has no default value as it is the only mandatory piece of information that must be provided by the user."
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "ndim"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) ndim
+            if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = msg )
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "description"
-            write(outputUnit,formatStr)
+
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "description"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
             call informUser( outputUnit = outputUnit, newline = "\n", wrapWidth = 125_IK, prefix = TAB//TAB, marginTop = 0_IK, marginBot = 0_IK, msg = SpecBase%Description%val )
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%Description%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "inputFileHasPriority"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%InputFileHasPriority%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "inputFileHasPriority"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%InputFileHasPriority%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%InputFileHasPriority%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "silentModeRequested"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%SilentModeRequested%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "silentModeRequested"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%SilentModeRequested%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%SilentModeRequested%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "domainLowerLimitVec"
-            write(outputUnit,formatStr)
-            do i = 1,size(SpecBase%DomainLowerLimitVec%Val(:))
-                write(outputUnit,formatVal) SpecBase%DomainLowerLimitVec%Val(i)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "domainLowerLimitVec"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            do i = 1, ndim
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%DomainLowerLimitVec%Val(i)
             end do
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%DomainLowerLimitVec%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "domainUpperLimitVec"
-            write(outputUnit,formatStr)
-            do i = 1,size(SpecBase%DomainUpperLimitVec%Val(:))
-                write(outputUnit,formatVal) SpecBase%DomainUpperLimitVec%Val(i)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "domainUpperLimitVec"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            do i = 1, ndim
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%DomainUpperLimitVec%Val(i)
             end do
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%DomainUpperLimitVec%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "variableNameList"
-            write(outputUnit,formatStr)
-            do i = 1,size(SpecBase%VariableNameList%Val(:))
-                write(outputUnit,formatVal) SpecBase%VariableNameList%Val(i)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "variableNameList"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            do i = 1, ndim
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%VariableNameList%Val(i)
             end do
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%VariableNameList%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "parallelizationModel"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%ParallelizationModel%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "parallelizationModel"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%ParallelizationModel%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%ParallelizationModel%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "mpiFinalizeRequested"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%MpiFinalizeRequested%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "mpiFinalizeRequested"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%MpiFinalizeRequested%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%MpiFinalizeRequested%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "outputFileName"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%OutputFileName%modified
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "outputFileName"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%OutputFileName%modified
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%OutputFileName%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "targetAcceptanceRate"
-            write(outputUnit,formatStr)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "targetAcceptanceRate"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
             if ( SpecBase%TargetAcceptanceRate%scalingRequested ) then
                 if ( SpecBase%TargetAcceptanceRate%Val(1)==SpecBase%TargetAcceptanceRate%Val(2) ) then
-                    write(outputUnit,formatVal) SpecBase%TargetAcceptanceRate%Val(1)
+                    write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%TargetAcceptanceRate%Val(1)
                 else
-                    write(outputUnit,formatVal) "[", SpecBase%TargetAcceptanceRate%Val(1), ",", SpecBase%TargetAcceptanceRate%Val(2), "]"
+                    write(outputUnit,GENERIC_TABBED_FORMAT) "[", SpecBase%TargetAcceptanceRate%Val(1), ",", SpecBase%TargetAcceptanceRate%Val(2), "]"
                 end if
             else
-                write(outputUnit,formatVal) "UNDEFINED"
+                write(outputUnit,GENERIC_TABBED_FORMAT) UNDEFINED
             end if
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%TargetAcceptanceRate%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "sampleSize"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%SampleSize%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "sampleSize"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%SampleSize%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%SampleSize%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "randomSeed"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) "User-Requested Value"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "randomSeed"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
             if ( SpecBase%RandomSeed%userSeed == SpecBase%RandomSeed%nullSeed ) then
-                write(outputUnit,formatVal) "Not provided by the user. The seed for each processor will be appropriately assigned."
+                write(outputUnit,GENERIC_TABBED_FORMAT) UNDEFINED
             else
-                write(outputUnit,formatVal) SpecBase%RandomSeed%userSeed
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%RandomSeed%userSeed
             end if
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) "ThisProcessID", "RandomSeedVectorSize", "RandomSeedVectorValues"
-            write(outputUnit,formatVal) SpecBase%RandomSeed%imageID, SpecBase%RandomSeed%sizeSeed, SpecBase%RandomSeed%Seed(:,SpecBase%RandomSeed%imageID)
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) "OtherProcessID", "RandomSeedVectorSize", "RandomSeedVectorValues"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) "ThisProcessID", "RandomSeedVectorSize", "RandomSeedVectorValues"
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%RandomSeed%imageID, SpecBase%RandomSeed%sizeSeed, SpecBase%RandomSeed%Seed(:,SpecBase%RandomSeed%imageID)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) "OtherProcessID", "RandomSeedVectorSize", "RandomSeedVectorValues"
             if (SpecBase%RandomSeed%imageCount==1) then
-                write(outputUnit,formatVal) "No other processor exists."
+                write(outputUnit,GENERIC_TABBED_FORMAT) "No other processor exists."
 #if defined CAF_ENABLED || defined MPI_ENABLED
             else
                 do i = 1, SpecBase%RandomSeed%imageCount
-                    if (i/=SpecBase%RandomSeed%imageID) write(outputUnit,formatVal) i, SpecBase%RandomSeed%sizeSeed, SpecBase%RandomSeed%Seed(:,i)
+                    if (i/=SpecBase%RandomSeed%imageID) write(outputUnit,GENERIC_TABBED_FORMAT) i, SpecBase%RandomSeed%sizeSeed, SpecBase%RandomSeed%Seed(:,i)
                 end do
 #endif
             end if
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%RandomSeed%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "outputColumnWidth"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%OutputColumnWidth%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "outputColumnWidth"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%OutputColumnWidth%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%OutputColumnWidth%desc )
 
 
@@ -487,52 +496,52 @@ contains
             !delimiter = SpecBase%OutputDelimiter%val
             !if (SpecBase%OutputDelimiter%val==TAB) delimiter = "\t"
             !if (SpecBase%OutputDelimiter%val=="\t") delimiter = "\\t"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "outputDelimiter"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%OutputDelimiter%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "outputDelimiter"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%OutputDelimiter%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%OutputDelimiter%desc )
             !end block
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "outputRealPrecision"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%OutputRealPrecision%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "outputRealPrecision"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%OutputRealPrecision%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%OutputRealPrecision%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "chainFileFormat"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%ChainFileFormat%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "chainFileFormat"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%ChainFileFormat%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%ChainFileFormat%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "restartFileFormat"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%RestartFileFormat%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "restartFileFormat"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%RestartFileFormat%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%RestartFileFormat%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "progressReportPeriod"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%ProgressReportPeriod%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "progressReportPeriod"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%ProgressReportPeriod%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%ProgressReportPeriod%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "maxNumDomainCheckToWarn"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%MaxNumDomainCheckToWarn%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "maxNumDomainCheckToWarn"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%MaxNumDomainCheckToWarn%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%MaxNumDomainCheckToWarn%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "maxNumDomainCheckToStop"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecBase%MaxNumDomainCheckToStop%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "maxNumDomainCheckToStop"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%MaxNumDomainCheckToStop%val
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%MaxNumDomainCheckToStop%desc )
 
 

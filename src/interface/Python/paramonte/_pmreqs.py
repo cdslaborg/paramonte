@@ -47,7 +47,7 @@ class _Struct: pass
 
 buildInstructionNote    = "If your platform is non-Windows and is compatible with GNU Compiler Collection (GCC),\n" \
                         + "you can also build the required ParaMonte kernel's shared object files on your system\n" \
-                        + "by calling ParaMonte module's build() function from within your Python enviroment, like:\n\n" \
+                        + "by calling ParaMonte module's build() function from within your Python environment, like:\n\n" \
                         + "    import paramonte as pm\n" \
                         + "    pm.build()"
 
@@ -258,8 +258,6 @@ def getBashProfileContents():
 
 ####################################################################################################################################
 
-####################################################################################################################################
-
 def setupUnixPath():
 
     bashrcContents = getBashrcContents()
@@ -417,7 +415,7 @@ def findMPI():
                     _pm.note( msg   = "Intel MPI library for 64-bit architecture detected at: \n\n"
                                     + "    " + path + "\n\n"
                                     + "To perform ParaMonte simulations in parallel on a single node, run the \n"
-                                    + "following two commands, in the form and order specified, on a Python-aware, \n"
+                                    + "following two commands, in the form and order specified, on a Python-aware \n"
                                     + "mpiexec-aware command-line interface such as Anaconda 3 command-prompt:\n\n"
                                     + "    " + mpivarsCommand + "\n\n"
                                     + "    mpiexec -localonly -n NUM_PROCESSES python main.py\n\n"
@@ -792,7 +790,7 @@ def installMPI():
                         setupFile.write("source " + mpivarsFilePath)
 
                     _pm.note( msg = "To ensure all MPI routine environmental variables \n"
-                                  + "are properly load, source the following Bash script \n"
+                                  + "are properly loaded, source the following Bash script \n"
                                   + "in your Bash environment before calling mpiexec, like:\n\n"
                                   + "    source " + mpivarsFilePath + "\n\n"
                                   + "Alternatively, ParaMonte can also automatically add \n"
@@ -1305,5 +1303,54 @@ def build(flags=""):
                     )
 
     return None
+
+####################################################################################################################################
+
+#def verifyDependencyVersion():
+#
+#    import importlib
+#
+#    moduleVersion = { "scipy": "1.4.0" \
+#                    , "numpy": "1.18.0" \
+#                    , "pandas": "1.0.0" \
+#                    , "seaborn": "0.10.0" \
+#                    , "matplotlib": "3.2.0" \
+#                    }
+#
+#    def reportFailedVersionCheck(moduleNameList):
+#        _pm.warn( msg   = "Failed to verify the versions of the following Python packages \n"
+#                        + "currently installed on your system: \n\n"
+#                        + "Ensure you have the latest version of these Python libraries \n"
+#                        + "installed on your system by typing the following command on \n"
+#                        + "a Python-aware command prompt: \n\n"
+#                        + "    pip install --upgrade --user " + moduleName
+#                , methodName = _pm.names.paramonte
+#                , marginTop = 1
+#                , marginBot = 1
+#                )
+#
+#    def reportFailedVersionCheck(moduleName):
+#        _pm.warn( msg   = "The current installation of Python " + moduleName + " package on your system.\n"
+#                        + "Ensure you have the latest version of this Python library installed on your \n"
+#                        + "system by typing the following command on a Python-aware command prompt: \n\n"
+#                        + "    pip install --upgrade --user " + moduleName
+#                , methodName = _pm.names.paramonte
+#                , marginTop = 1
+#                , marginBot = 1
+#                )
+#
+#    from packaging import version
+#    try:
+#        import numpy as np
+#        if version.parse(np.__version__) < version.parse(1.18.0):
+#            _pm.warn( msg   = "Aborting the ParaMonte-for-Python local build on your system."
+#                    , methodName = _pm.names.paramonte
+#                    , marginTop = 1
+#                    , marginBot = 1
+#                    )
+#    except:
+#        reportFailedVersionCheck("numpy")
+#
+#    return None
 
 ####################################################################################################################################

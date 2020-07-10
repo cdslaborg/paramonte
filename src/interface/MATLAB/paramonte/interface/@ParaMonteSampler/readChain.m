@@ -151,11 +151,11 @@ function [varargout] = readChain(self,varargin)
 
     if nargout==0
         %if ~any(strcmp(properties(self),output)); self.addprop(output); end
-        %self.(output) = self.readOutput(callerName,varargin{:});
-        self.readOutput(callerName,varargin{:});
+        %self.(output) = self.readTabular(callerName,varargin{:});
+        self.readTabular(callerName,varargin{:});
     elseif nargout==1
-        %eval(output+" = self.readOutput(callerName,varargin{:})");
-        varargout{1} = self.readOutput(callerName,varargin{:});
+        %eval(output+" = self.readTabular(callerName,varargin{:})");
+        varargout{1} = self.readTabular(callerName,varargin{:});
     else
         self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file,delimiter)" ...
                         + "optionally outputs one variable (" + output + ") or nothing. If the latter is chosen by the user " ...

@@ -194,66 +194,62 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: reportValues
 #endif
-        use Decoration_mod, only: TAB
-        use Constants_mod, only: IK, RK
+        use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
+        use Decoration_mod, only: GENERIC_TABBED_FORMAT
+        use Constants_mod, only: IK, RK, UNDEFINED
         use Err_mod, only: note
         implicit none
         class(SpecDRAM_type), intent(in)    :: SpecDRAM
         character(*), intent(in)            :: prefix
         integer(IK), intent(in)             :: outputUnit
         logical, intent(in)                 :: isMasterImage, splashModeRequested
-        character(:), allocatable           :: formatStr, formatVal
         integer(IK)                         :: i
-
-        formatStr = "(*(g0,' '))"
-        formatVal = "('" // TAB // TAB // "',*(g0,' '))"
-
 
         if (isMasterImage) then
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "adaptiveUpdatePeriod"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecDRAM%AdaptiveUpdatePeriod%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "adaptiveUpdatePeriod"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecDRAM%AdaptiveUpdatePeriod%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%AdaptiveUpdatePeriod%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "adaptiveUpdateCount"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecDRAM%AdaptiveUpdateCount%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "adaptiveUpdateCount"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecDRAM%AdaptiveUpdateCount%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%AdaptiveUpdateCount%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "greedyAdaptationCount"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecDRAM%GreedyAdaptationCount%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "greedyAdaptationCount"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecDRAM%GreedyAdaptationCount%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%GreedyAdaptationCount%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "burninAdaptationMeasure"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecDRAM%BurninAdaptationMeasure%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "burninAdaptationMeasure"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecDRAM%BurninAdaptationMeasure%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%BurninAdaptationMeasure%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "delayedRejectionCount"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecDRAM%DelayedRejectionCount%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "delayedRejectionCount"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecDRAM%DelayedRejectionCount%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%DelayedRejectionCount%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "delayedRejectionScaleFactorVec"
-            write(outputUnit,formatStr)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "delayedRejectionScaleFactorVec"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
             if ( size(SpecDRAM%DelayedRejectionScaleFactorVec%Val) == 0 ) then
-                write(outputUnit,formatVal) "UNDEFINED"
+                write(outputUnit,GENERIC_TABBED_FORMAT) UNDEFINED
             else
                 do i = 1, size(SpecDRAM%DelayedRejectionScaleFactorVec%Val)
-                    write(outputUnit,formatVal) SpecDRAM%DelayedRejectionScaleFactorVec%Val(i)
+                    write(outputUnit,GENERIC_TABBED_FORMAT) SpecDRAM%DelayedRejectionScaleFactorVec%Val(i)
                 end do
             end if
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecDRAM%DelayedRejectionScaleFactorVec%desc )

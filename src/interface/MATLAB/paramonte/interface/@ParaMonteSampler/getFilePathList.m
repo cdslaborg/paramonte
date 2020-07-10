@@ -32,14 +32,33 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function fileList = getFileList(self,file,fileType)
+function filePathList = getFilePathList(self,file,fileType)
 
     suffix = "_" + fileType + ".txt";
     propertyName = self.objectName + ".spec.outputFileName";
 
+    if isempty(file)
+        if isempty(self.spec.outputFileName)
+            self.Err.msg    = "The " + self.methodName + " input simulation specification " + self.objectName + ".spec.outputFileName is not set. " ...
+                            + "This information is essential, otherwise how could the output files be found? " ...
+                            + "All that is needed is the common section of the paths to the output simulation files (including the simulation name) " ...
+                            + "or simply, the path to the " + fileType + " file.";
+            if ~isempty(self.inputFile)
+                self.Err.msg    = self.Err.msg + newline ...
+                                + "Apparently, you have specified an input file for the simulation via the attribute """ + self.objectName + ".inputFile""." + newline ...
+                                + "Extract the value of outputFileName from this file, and assign it to the simulation specification """ + self.objectName + ".spec.outputFileName"".";
+            end
+            self.Err.abort();
+        else
+            file = self.spec.outputFileName;
+        end
+    end
+
+    file = string(getFullPath(convertStringsToChars(file),'lean'));
+
     if isfile(file) % check if the input path is a full path to a file
 
-        fileList = [file];
+        filePathList = [file];
         pattern = file;
         if ~endsWith(file,suffix)
             self.Err.msg    = "The name of the input file:" + newline + newline ...
@@ -70,17 +89,19 @@ function fileList = getFileList(self,file,fileType)
         end
 
         counter = 0;
-        fileList = [];
+        filePathList = [];
         for ifile = 1:length(dirList)
             if contains(dirList(ifile).name,suffix)
                 counter = counter + 1;
-                fileList = [ fileList , fullfile( string(dirList(ifile).folder) , string(dirList(ifile).name) ) ];
+                filePathModified = fullfile( string(dirList(ifile).folder) , string(dirList(ifile).name) );
+                filePathModified = string( strrep(filePathModified,'\','\\') );
+                filePathList = [ filePathList , filePathModified ];
             end
         end
 
-        if isempty(fileList)
+        if isempty(filePathList)
             self.Err.msg    = "Failed to detect any " + fileType + " files with the requested pattern:" + newline + newline ...
-                            + "    " + pattern + newline + newline ...
+                            + "    " + strrep(pattern,'\','\\') + newline + newline ...
                             + "Provide a string as the value of the simulation specification, " + propertyName + ", that either" + newline + newline ...
                             + "    - points to one or more " + fileType + " files, or," + newline ...
                             + "    - represents the unique name of a " + self.methodName + " simulation." + newline ...
@@ -94,6 +115,6 @@ function fileList = getFileList(self,file,fileType)
     end
 
     if ~self.mpiEnabled
-        self.Err.msg = string(length(fileList)) + " files detected matching the pattern: """ +  strrep(pattern,"\","\\") + """";
+        self.Err.msg = string(length(filePathList)) + " files detected matching the pattern: """ +  strrep(pattern,'\','\\') + """";
         self.Err.note();
     end

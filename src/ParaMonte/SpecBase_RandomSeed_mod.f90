@@ -112,7 +112,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
-        class(RandomSeed_type), intent(in)  :: RandomSeedObj
+        class(RandomSeed_type), intent(in) :: RandomSeedObj
         randomSeed = RandomSeedObj%nullSeed
     end subroutine nullifyNameListVar
 

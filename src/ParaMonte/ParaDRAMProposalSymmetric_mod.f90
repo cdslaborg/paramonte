@@ -235,17 +235,7 @@ contains
         allocate( comv_CholDiagLower(ndim,0:ndim,0:mc_DelayedRejectionCount) )
 #endif
 
-        if ( SpecMCMC%ProposalStartCovMat%isPresent ) then
-            comv_CholDiagLower(1:ndim,1:ndim,0) = SpecMCMC%ProposalStartCovMat%Val
-        else
-            block
-                use Statistics_mod, only: getCovMatFromCorMat
-                comv_CholDiagLower(1:ndim,1:ndim,0) = getCovMatFromCorMat   ( nd = ndim &
-                                                                            , StdVec = SpecMCMC%ProposalStartStdVec%Val &
-                                                                            , CorMat = SpecMCMC%ProposalStartCorMat%Val &
-                                                                            )
-            end block
-        end if
+        comv_CholDiagLower(1:ndim,1:ndim,0) = SpecMCMC%ProposalStartCovMat%Val
 
         ! Now scale the covariance matrix
 

@@ -41,9 +41,9 @@ module SpecMCMC_mod
     use SpecMCMC_ScaleFactor_mod                        , only: ScaleFactor_type
     use SpecMCMC_StartPointVec_mod                      , only: StartPointVec_type
     use SpecMCMC_ProposalModel_mod                      , only: ProposalModel_type
-    use SpecMCMC_ProposalStartCovMat_mod                , only: ProposalStartCovMat_type
-    use SpecMCMC_ProposalStartCorMat_mod                , only: ProposalStartCorMat_type
     use SpecMCMC_ProposalStartStdVec_mod                , only: ProposalStartStdVec_type
+    use SpecMCMC_ProposalStartCorMat_mod                , only: ProposalStartCorMat_type
+    use SpecMCMC_ProposalStartCovMat_mod                , only: ProposalStartCovMat_type
     use SpecMCMC_SampleRefinementCount_mod              , only: SampleRefinementCount_type
     use SpecMCMC_SampleRefinementMethod_mod             , only: SampleRefinementMethod_type
     use SpecMCMC_RandomStartPointRequested_mod          , only: RandomStartPointRequested_type
@@ -55,9 +55,9 @@ module SpecMCMC_mod
     use SpecMCMC_ScaleFactor_mod                        , only: scaleFactor
     use SpecMCMC_StartPointVec_mod                      , only: startPointVec
     use SpecMCMC_ProposalModel_mod                      , only: proposalModel
-    use SpecMCMC_ProposalStartCovMat_mod                , only: ProposalStartCovMat
-    use SpecMCMC_ProposalStartCorMat_mod                , only: ProposalStartCorMat
-    use SpecMCMC_ProposalStartStdVec_mod                , only: ProposalStartStdVec
+    use SpecMCMC_ProposalStartStdVec_mod                , only: proposalStartStdVec
+    use SpecMCMC_ProposalStartCorMat_mod                , only: proposalStartCorMat
+    use SpecMCMC_ProposalStartCovMat_mod                , only: proposalStartCovMat
     use SpecMCMC_SampleRefinementCount_mod              , only: SampleRefinementCount
     use SpecMCMC_SampleRefinementMethod_mod             , only: sampleRefinementMethod
     use SpecMCMC_RandomStartPointRequested_mod          , only: randomStartPointRequested
@@ -69,11 +69,11 @@ module SpecMCMC_mod
     type                                                :: SpecMCMC_type
         type(ChainSize_type)                            :: ChainSize
         type(ScaleFactor_type)                          :: ScaleFactor
-        type(StartPointVec_type)                        :: StartPointVec
+        type(StartPointVec_type)                        :: startPointVec
         type(ProposalModel_type)                        :: ProposalModel
-        type(ProposalStartCovMat_type)                  :: ProposalStartCovMat
-        type(ProposalStartCorMat_type)                  :: ProposalStartCorMat
-        type(ProposalStartStdVec_type)                  :: ProposalStartStdVec
+        type(ProposalStartStdVec_type)                  :: proposalStartStdVec
+        type(ProposalStartCorMat_type)                  :: proposalStartCorMat
+        type(ProposalStartCovMat_type)                  :: proposalStartCovMat
         type(SampleRefinementCount_type)                :: SampleRefinementCount
         type(SampleRefinementMethod_type)               :: SampleRefinementMethod
         type(RandomStartPointRequested_type)            :: randomStartPointRequested
@@ -112,11 +112,11 @@ contains
         type(SpecMCMC_type)         :: SpecMCMC
         SpecMCMC%ChainSize                              = ChainSize_type                            (methodName)
         SpecMCMC%ScaleFactor                            = ScaleFactor_type                          (nd,methodName)
-        SpecMCMC%StartPointVec                          = StartPointVec_type                        ()
+        SpecMCMC%startPointVec                          = StartPointVec_type                        ()
         SpecMCMC%ProposalModel                          = ProposalModel_type                        ()
-        SpecMCMC%ProposalStartCovMat                    = ProposalStartCovMat_type                  (nd,methodName)
-        SpecMCMC%ProposalStartCorMat                    = ProposalStartCorMat_type                  (nd,methodName)
-        SpecMCMC%ProposalStartStdVec                    = ProposalStartStdVec_type                  (nd,methodName)
+        SpecMCMC%proposalStartStdVec                    = ProposalStartStdVec_type                  (nd,methodName)
+        SpecMCMC%proposalStartCorMat                    = ProposalStartCorMat_type                  (nd,methodName)
+        SpecMCMC%proposalStartCovMat                    = ProposalStartCovMat_type                  (nd,methodName)
         SpecMCMC%SampleRefinementCount                  = SampleRefinementCount_type                (methodName)
         SpecMCMC%SampleRefinementMethod                 = SampleRefinementMethod_type               (methodName)
         SpecMCMC%RandomStartPointRequested              = RandomStartPointRequested_type            (methodName)
@@ -137,11 +137,11 @@ contains
         integer(IK), intent(in)             :: nd
         call SpecMCMC%ChainSize                             %nullifyNameListVar()
         call SpecMCMC%ScaleFactor                           %nullifyNameListVar()
-        call SpecMCMC%StartPointVec                         %nullifyNameListVar(nd)
+        call SpecMCMC%startPointVec                         %nullifyNameListVar(nd)
         call SpecMCMC%ProposalModel                         %nullifyNameListVar()
-        call SpecMCMC%ProposalStartCovMat                   %nullifyNameListVar(nd)
-        call SpecMCMC%ProposalStartCorMat                   %nullifyNameListVar(nd)
-        call SpecMCMC%ProposalStartStdVec                   %nullifyNameListVar(nd)
+        call SpecMCMC%proposalStartStdVec                   %nullifyNameListVar(nd)
+        call SpecMCMC%proposalStartCorMat                   %nullifyNameListVar(nd)
+        call SpecMCMC%proposalStartCovMat                   %nullifyNameListVar(nd)
         call SpecMCMC%SampleRefinementCount                 %nullifyNameListVar()
         call SpecMCMC%SampleRefinementMethod                %nullifyNameListVar()
         call SpecMCMC%RandomStartPointRequested             %nullifyNameListVar()
@@ -172,17 +172,17 @@ contains
         call SpecMCMC%ChainSize                             %set(chainSize)
         call SpecMCMC%ScaleFactor                           %set(scaleFactor)
         call SpecMCMC%ProposalModel                         %set(trim(adjustl(proposalModel)))
-        call SpecMCMC%ProposalStartCovMat                   %set(ProposalStartCovMat)
-        call SpecMCMC%ProposalStartCorMat                   %set(ProposalStartCorMat)
-        call SpecMCMC%ProposalStartStdVec                   %set(ProposalStartStdVec)
+        call SpecMCMC%proposalStartStdVec                   %set(proposalStartStdVec)
+        call SpecMCMC%proposalStartCorMat                   %set(proposalStartCorMat)
+        call SpecMCMC%proposalStartCovMat                   %set(SpecMCMC%proposalStartStdVec%val, SpecMCMC%proposalStartCorMat%val, proposalStartCovMat)
         call SpecMCMC%SampleRefinementCount                 %set(sampleRefinementCount)
         call SpecMCMC%SampleRefinementMethod                %set(sampleRefinementMethod)
         call SpecMCMC%RandomStartPointRequested             %set(randomStartPointRequested)
         call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(randomStartPointDomainLowerLimitVec, domainLowerLimitVec)
         call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(randomStartPointDomainUpperLimitVec, domainUpperLimitVec)
-        call SpecMCMC%StartPointVec                         %set(startPointVec &
-                                                                ,randomStartPointDomainLowerLimitVec    = SpecMCMC%RandomStartPointDomainLowerLimitVec%Val  &
-                                                                ,randomStartPointDomainUpperLimitVec    = SpecMCMC%RandomStartPointDomainUpperLimitVec%Val  &
+        call SpecMCMC%startPointVec                         %set(startPointVec &
+                                                                ,randomStartPointDomainLowerLimitVec    = SpecMCMC%RandomStartPointDomainLowerLimitVec%val  &
+                                                                ,randomStartPointDomainUpperLimitVec    = SpecMCMC%RandomStartPointDomainUpperLimitVec%val  &
                                                                 ,randomStartPointRequested              = SpecMCMC%RandomStartPointRequested%val            )
 
         deallocate(randomStartPointDomainLowerLimitVec)
@@ -200,9 +200,9 @@ contains
                                 , scaleFactor                           &
                                 , startPointVec                         &
                                 , proposalModel                         &
-                                , proposalStartCovMat                   &
-                                , proposalStartCorMat                   &
                                 , proposalStartStdVec                   &
+                                , proposalStartCorMat                   &
+                                , proposalStartCovMat                   &
                                 , sampleRefinementCount                 &
                                 , sampleRefinementMethod                &
                                 , randomStartPointRequested             &
@@ -223,29 +223,37 @@ contains
         character(*), intent(in), optional  :: scaleFactor
         real(RK)    , intent(in), optional  :: startPointVec(:)
         character(*), intent(in), optional  :: proposalModel
-        real(RK)    , intent(in), optional  :: proposalStartCovMat(:,:)
-        real(RK)    , intent(in), optional  :: proposalStartCorMat(:,:)
         real(RK)    , intent(in), optional  :: proposalStartStdVec(:)
+        real(RK)    , intent(in), optional  :: proposalStartCorMat(:,:)
+        real(RK)    , intent(in), optional  :: proposalStartCovMat(:,:)
         integer(IK) , intent(in), optional  :: sampleRefinementCount
         character(*), intent(in), optional  :: sampleRefinementMethod
         logical     , intent(in), optional  :: randomStartPointRequested
         real(RK)    , intent(in), optional  :: randomStartPointDomainLowerLimitVec(:)
         real(RK)    , intent(in), optional  :: randomStartPointDomainUpperLimitVec(:)
 
+        logical                             :: proposalStartStdVecIsPresent
+        logical                             :: proposalStartCorMatIsPresent
+        logical                             :: proposalStartCovMatIsPresent
+
+        proposalStartStdVecIsPresent = present(proposalStartStdVec)
+        proposalStartCorMatIsPresent = present(proposalStartCorMat)
+        proposalStartCovMatIsPresent = present(proposalStartCovMat) .or. proposalStartCorMatIsPresent .or. proposalStartStdVecIsPresent
+
         if (present(chainSize))                             call SpecMCMC%ChainSize                             %set(chainSize)
         if (present(scaleFactor))                           call SpecMCMC%ScaleFactor                           %set(scaleFactor)
         if (present(proposalModel))                         call SpecMCMC%ProposalModel                         %set(trim(adjustl(proposalModel)))
-        if (present(proposalStartCovMat))                   call SpecMCMC%ProposalStartCovMat                   %set(proposalStartCovMat)
-        if (present(proposalStartCorMat))                   call SpecMCMC%ProposalStartCorMat                   %set(proposalStartCorMat)
-        if (present(proposalStartStdVec))                   call SpecMCMC%ProposalStartStdVec                   %set(proposalStartStdVec)
+        if (proposalStartStdVecIsPresent)                   call SpecMCMC%proposalStartStdVec                   %set(proposalStartStdVec)
+        if (proposalStartCorMatIsPresent)                   call SpecMCMC%proposalStartCorMat                   %set(proposalStartCorMat)
+        if (proposalStartCovMatIsPresent)                   call SpecMCMC%proposalStartCovMat                   %set(SpecMCMC%proposalStartStdVec%val, SpecMCMC%proposalStartCorMat%val, proposalStartCovMat)
         if (present(sampleRefinementCount))                 call SpecMCMC%SampleRefinementCount                 %set(sampleRefinementCount)
         if (present(sampleRefinementMethod))                call SpecMCMC%SampleRefinementMethod                %set(sampleRefinementMethod)
         if (present(randomStartPointRequested))             call SpecMCMC%RandomStartPointRequested             %set(randomStartPointRequested)
         if (present(randomStartPointDomainLowerLimitVec))   call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(randomStartPointDomainLowerLimitVec, domainLowerLimitVec)
         if (present(randomStartPointDomainUpperLimitVec))   call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(randomStartPointDomainUpperLimitVec, domainUpperLimitVec)
-        if (present(startPointVec))                         call SpecMCMC%StartPointVec                         %set(startPointVec &
-                                                                                                                ,randomStartPointDomainLowerLimitVec    = SpecMCMC%RandomStartPointDomainLowerLimitVec%Val  &
-                                                                                                                ,randomStartPointDomainUpperLimitVec    = SpecMCMC%RandomStartPointDomainUpperLimitVec%Val  &
+        if (present(startPointVec))                         call SpecMCMC%startPointVec                         %set(startPointVec &
+                                                                                                                ,randomStartPointDomainLowerLimitVec    = SpecMCMC%RandomStartPointDomainLowerLimitVec%val  &
+                                                                                                                ,randomStartPointDomainUpperLimitVec    = SpecMCMC%RandomStartPointDomainUpperLimitVec%val  &
                                                                                                                 ,randomStartPointRequested              = SpecMCMC%RandomStartPointRequested%val            )
 
     end subroutine setFromInputArgs
@@ -263,84 +271,81 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: reportValues
 #endif
+        use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
+        use Decoration_mod, only: GENERIC_TABBED_FORMAT
         use Decoration_mod, only: TAB
         use Constants_mod, only: IK, RK
-        use Err_mod, only: note, informUser
+        use Err_mod, only: note
         implicit none
         class(SpecMCMC_type), intent(in)    :: SpecMCMC
         character(*), intent(in)            :: prefix, methodName
         integer(IK), intent(in)             :: outputUnit
         logical, intent(in)                 :: isMasterImage, splashModeRequested
-        character(:), allocatable           :: formatStr, formatVal
         integer(IK)                         :: ndim, i
-        real(RK), allocatable               :: Row(:)
-
-        formatStr = "(*(g0,' '))"
-        formatVal = "('" // TAB // TAB // "',*(g0,' '))"
-
 
         if (isMasterImage) then
 
+            ndim = size(SpecMCMC%proposalStartCovMat%val(:,1))
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "chainSize"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecMCMC%ChainSize%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "chainSize"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%ChainSize%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%ChainSize%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "randomStartPointDomainLowerLimitVec"
-            write(outputUnit,formatStr)
-            do i = 1, size(SpecMCMC%RandomStartPointDomainLowerLimitVec%Val(:))
-                write(outputUnit,formatVal) SpecMCMC%RandomStartPointDomainLowerLimitVec%Val(i)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "randomStartPointDomainLowerLimitVec"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            do i = 1, size(SpecMCMC%RandomStartPointDomainLowerLimitVec%val(:))
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%RandomStartPointDomainLowerLimitVec%val(i)
             end do
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%RandomStartPointDomainLowerLimitVec%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "randomStartPointDomainUpperLimitVec"
-            write(outputUnit,formatStr)
-            do i = 1, size(SpecMCMC%RandomStartPointDomainUpperLimitVec%Val(:))
-                write(outputUnit,formatVal) SpecMCMC%RandomStartPointDomainUpperLimitVec%Val(i)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "randomStartPointDomainUpperLimitVec"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            do i = 1, size(SpecMCMC%RandomStartPointDomainUpperLimitVec%val(:))
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%RandomStartPointDomainUpperLimitVec%val(i)
             end do
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%RandomStartPointDomainUpperLimitVec%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "startPointVec"
-            write(outputUnit,formatStr)
-            do i = 1, size(SpecMCMC%StartPointVec%Val(:))
-                write(outputUnit,formatVal) SpecMCMC%StartPointVec%Val(i)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "startPointVec"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            do i = 1, size(SpecMCMC%startPointVec%val(:))
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%startPointVec%val(i)
             end do
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%StartPointVec%desc )
+            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%startPointVec%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "randomStartPointRequested"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecMCMC%RandomStartPointRequested%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "randomStartPointRequested"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%RandomStartPointRequested%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%RandomStartPointRequested%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "sampleRefinementCount"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecMCMC%SampleRefinementCount%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "sampleRefinementCount"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%SampleRefinementCount%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%SampleRefinementCount%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "sampleRefinementMethod"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecMCMC%SampleRefinementMethod%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "sampleRefinementMethod"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%SampleRefinementMethod%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%SampleRefinementMethod%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "scaleFactor"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecMCMC%ScaleFactor%str
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "scaleFactor"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%ScaleFactor%str
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%ScaleFactor%desc )
 
 
@@ -348,67 +353,48 @@ contains
             ! proposal distribution
             !***********************************************************************************************************************
 
-            block
-                use Decoration_mod, only: writeDecoratedText
-                call writeDecoratedText ( text = "\n" // methodName // " proposal specifications\n" &
-                                        , marginTop = 1     &
-                                        , marginBot = 1     &
-                                        , newline = "\n"    &
-                                        , outputUnit = outputUnit )
-            end block
+            !block
+            !    use Decoration_mod, only: writeDecoratedText
+            !    call writeDecoratedText ( text = "\n" // methodName // " proposal specifications\n" &
+            !                            , marginTop = 1     &
+            !                            , marginBot = 1     &
+            !                            , newline = "\n"    &
+            !                            , outputUnit = outputUnit )
+            !end block
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "proposalModel"
-            write(outputUnit,formatStr)
-            write(outputUnit,formatVal) SpecMCMC%ProposalModel%val
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "proposalModel"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%ProposalModel%val
             if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%ProposalModel%desc )
 
 
-            ndim = size(SpecMCMC%ProposalStartCovMat%Val(:,1))
-            allocate( Row(ndim) )
-
-
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "proposalStartCovMat"
-            write(outputUnit,formatStr)
-            if ( SpecMCMC%ProposalStartCovMat%isPresent ) then
-                ! User has provided the Start Covariance Matrix
-                do i = 1,ndim
-                    Row = SpecMCMC%ProposalStartCovMat%Val(i,:)
-                    write(outputUnit,formatVal) Row
-                end do
-            else
-                ! User has not provided the Start Covariance Matrix
-                call informUser ( prefix = TAB // TAB       &
-                                , outputUnit = outputUnit   &
-                                , newline = "\n"            &
-                                , marginTop = 0_IK          &
-                                , marginBot = 0_IK          &
-                                , msg = "UNDEFINED. It will be constructed from the Correlation Matrix (ProposalStartCorMat) &
-                                        &and the Standard Deviation vector (ProposalStartStdVec)." &
-                                )
-            end if
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%ProposalStartCovMat%desc )
-
-
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "proposalStartCorMat"
-            write(outputUnit,formatStr)
-            do i = 1,ndim
-                Row = SpecMCMC%ProposalStartCorMat%Val(i,:)
-                write(outputUnit,formatVal) Row
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "proposalStartStdVec"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            do i = 1, ndim
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%proposalStartStdVec%val(i)
             end do
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%ProposalStartCorMat%desc )
+            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%proposalStartStdVec%desc )
 
 
-            write(outputUnit,formatStr)
-            write(outputUnit,formatStr) "proposalStartStdVec"
-            write(outputUnit,formatStr)
-            do i = 1,ndim
-                write(outputUnit,formatVal) SpecMCMC%ProposalStartStdVec%Val(i)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "proposalStartCorMat"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            do i = 1, ndim
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%proposalStartCorMat%val(:,i)
             end do
-            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%ProposalStartStdVec%desc )
+            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%proposalStartCorMat%desc )
+
+
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "proposalStartCovMat"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            do i = 1, ndim
+                write(outputUnit,GENERIC_TABBED_FORMAT) SpecMCMC%proposalStartCovMat%val(:,i)
+            end do
+            if (splashModeRequested) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecMCMC%proposalStartCovMat%desc )
 
         end if
 
@@ -433,14 +419,14 @@ contains
         call SpecMCMC%ChainSize                             %checkForSanity(Err,methodName,nd)
         call SpecMCMC%ScaleFactor                           %checkForSanity(Err,methodName)
         call SpecMCMC%ProposalModel                         %checkForSanity(Err,methodName)
-        call SpecMCMC%ProposalStartCovMat                   %checkForSanity(Err,methodName,nd)
-        call SpecMCMC%ProposalStartCorMat                   %checkForSanity(Err,methodName,nd)
-        call SpecMCMC%ProposalStartStdVec                   %checkForSanity(Err,methodName,nd)
+        call SpecMCMC%proposalStartCovMat                   %checkForSanity(Err,methodName,nd)
+        call SpecMCMC%proposalStartCorMat                   %checkForSanity(Err,methodName,nd)
+        call SpecMCMC%proposalStartStdVec                   %checkForSanity(Err,methodName,nd)
         call SpecMCMC%SampleRefinementCount                 %checkForSanity(Err,methodName)
         call SpecMCMC%SampleRefinementMethod                %checkForSanity(Err,methodName)
         call SpecMCMC%RandomStartPointDomainLowerLimitVec   %checkForSanity(Err,methodName,domainLowerLimitVec)
-        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %checkForSanity(Err,methodName,randomStartPointDomainLowerLimitVec=SpecMCMC%RandomStartPointDomainLowerLimitVec%Val,domainUpperLimitVec=domainUpperLimitVec)
-        call SpecMCMC%StartPointVec                         %checkForSanity(Err,methodName,randomStartPointDomainLowerLimitVec=SpecMCMC%RandomStartPointDomainLowerLimitVec%Val,randomStartPointDomainUpperLimitVec=SpecMCMC%RandomStartPointDomainUpperLimitVec%Val)
+        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %checkForSanity(Err,methodName,randomStartPointDomainLowerLimitVec=SpecMCMC%RandomStartPointDomainLowerLimitVec%val,domainUpperLimitVec=domainUpperLimitVec)
+        call SpecMCMC%startPointVec                         %checkForSanity(Err,methodName,randomStartPointDomainLowerLimitVec=SpecMCMC%RandomStartPointDomainLowerLimitVec%val,randomStartPointDomainUpperLimitVec=SpecMCMC%RandomStartPointDomainUpperLimitVec%val)
     end subroutine checkForSanity
 
 !***********************************************************************************************************************************

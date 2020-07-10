@@ -5,6 +5,24 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
+### Version  1.1.2 -- June 16, 2020  
+
++   Minor enhancement: The minimum required dependency versions are now raised to the following,  
+
+```python  
+python_requires = ">=3.5"
+install_requires = [ "numpy>=1.18.0"
+                   , "scipy>=1.4.0"
+                   , "pandas>=1.0.0"
+                   , "seaborn>=0.10.0"
+                   , "matplotlib>=3.2.0"
+                   ]
+```  
+
+### Version  1.1.1 -- June 7, 2020  
+
++   Minor bug fix: The `_ScatterLinePlot` dangling class is removed from the package.  
+
 ### Version  1.1.0 -- June 1, 2020  
 
 +   Major enhancements to the ParaMonte kernel library.  

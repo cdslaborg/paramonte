@@ -182,6 +182,7 @@ classdef ParaMonteSampler < dynamicprops
     
         [chainList] = readChain(self,varargin)
         [sampleList] = readSample(self,varargin)
+        [reportList] = readReport(self,varargin)
         runSampler(self,ndim,getLogFunc,varargin)
     end
 
@@ -199,7 +200,7 @@ classdef ParaMonteSampler < dynamicprops
         function listener       (); end
         function notify         (); end
         function name = getMyName(self); name = inputname(1); end
-        fileList = getFileList(self,file,fileType)
+        filePathList = getFilePathList(self,file,fileType)
         result = genOutputFileName(self)
         namelist = getInputFile(self)
         outputList = readOutput(self,file,delimiter,fileType)

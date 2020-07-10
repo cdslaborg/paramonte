@@ -501,53 +501,313 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! compute the binary merger rate as a function of z, according to Shahmoradi and Nemiroff (2015)
-    ! equivalent to delayed_rate_Belz_Li(z) in S15
-    ! returns 0, if z>6.501_RK or z<0.09_RK
-    pure function getLogBinaryMergerRateLognormB10(z) result(logBinaryMergerRate)
+    ! computes the natural log of the binary merger rate as a function of logzplus1.
+    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK.
+    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
+    pure function getLogBinaryMergerRateLognormB10(logzplus1) result(logBinaryMergerRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormB10
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
         use Constants_mod, only: RK, PI
         implicit none
-        real(RK)    , intent(in)    :: z
+        real(RK)    , intent(in)    :: logzplus1
         real(RK)                    :: logBinaryMergerRate
-        if (z>2.5_RK .and. z<=6.501_RK) then
+        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.20701416938432557_RK) then
+            logBinaryMergerRate = & 
+                                - 15.27802857671202000_RK &
+                                + 94.54179164991284000_RK * logzplus1 &
+                                - 687.3676159275769000_RK * logzplus1**2 &
+                                + 2695.420977251770600_RK * logzplus1**3 &
+                                - 4077.601406650646000_RK * logzplus1**4
+        elseif (logzplus1>0.20701416938432557_RK .and. logzplus1<=0.8241754429663476_RK) then
             logBinaryMergerRate = &
-                                - 2.09118024744342000_RK &
-                                + 5.15382361299299000_RK * z &
-                                - 5.46442271664195000_RK * z**2 &
-                                + 3.29445310883082000_RK * z**3 &
-                                - 1.24547016168265000_RK * z**4 &
-                                + 0.30628893690508400_RK * z**5 &
-                                - 0.04904403249641820_RK * z**6 &
-                                + 0.00493757380504717_RK * z**7 &
-                                - 2.84061971928750e-4_RK * z**8 &
-                                + 7.12674138757750e-6_RK * z**9
-        elseif (z>1.0_RK .and. z<=2.5_RK) then
+                                - 13.5066182170954650_RK &
+                                + 40.1985219822299200_RK * logzplus1 & 
+                                - 121.506350703598660_RK * logzplus1**2 & 
+                                + 224.621285123736100_RK * logzplus1**3 &
+                                - 210.878836655472500_RK * logzplus1**4 &
+                                + 76.3335749498628400_RK * logzplus1**5
+        elseif (logzplus1>0.8241754429663476_RK .and. logzplus1<=1.4243124283074096_RK) then
             logBinaryMergerRate = &
-                                - 0.86022576265904100_RK &
-                                + 4.22669545558817000_RK * z &
-                                - 8.86086728534670000_RK * z**2 &
-                                + 10.4863792284648000_RK * z**3 &
-                                - 7.64722909221129000_RK * z**4 &
-                                + 3.51616699500767000_RK * z**5 &
-                                - 0.99555474471022000_RK * z**6 &
-                                + 0.15876893754371900_RK * z**7 &
-                                - 0.01092541997736420_RK * z**8
-        elseif (z<=1._RK .and. z>=0.09_RK) then
+                                - 10.0515447816113700_RK &
+                                + 12.6659826494097970_RK * logzplus1 & 
+                                - 13.2268991886238200_RK * logzplus1**2 & 
+                                + 6.84523627043807100_RK * logzplus1**3 &
+                                - 1.44645280124922220_RK * logzplus1**4
+        elseif (logzplus1>1.4243124283074096_RK .and. logzplus1<=1.6104374127671848_RK) then
             logBinaryMergerRate = &
-                                + 1.92595299989370e-4_RK &
-                                - 0.00345273599582578_RK * z &
-                                + 0.03157500615320920_RK * z**2 &
-                                - 0.04470545521198460_RK * z**3 &
-                                + 0.06812481521281660_RK * z**4 &
-                                - 0.03846033416253570_RK * z**5
-        else
+                                - 1187.90539057029950_RK &
+                                + 3240.19327021926350_RK * logzplus1 & 
+                                - 3330.70645904271000_RK * logzplus1**2 & 
+                                + 1522.87499612399850_RK * logzplus1**3 &
+                                - 261.341408956542300_RK * logzplus1**4
+        elseif (logzplus1>1.6104374127671848_RK .and. logzplus1<=3.0411835364579027_RK) then
+            logBinaryMergerRate = &
+                                - 1.43934839576471260_RK &
+                                + 1.72951867017028120_RK * logzplus1 & 
+                                - 4.06729555225025000_RK * logzplus1**2 & 
+                                + 1.18253386764330200_RK * logzplus1**3 &
+                                - 0.15201156018584210_RK * logzplus1**4
+        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
             logBinaryMergerRate = 0._RK
         end if
     end function getLogBinaryMergerRateLognormB10
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! computes the natural log of the binary merger rate as a function of logzplus1.
+    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
+    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
+    pure function getLogBinaryMergerRateLognormF18(logzplus1) result(logBinaryMergerRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormF18
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK)    , intent(in)    :: logzplus1
+        real(RK)                    :: logBinaryMergerRate
+        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.16551443847757297_RK) then
+            logBinaryMergerRate = & 
+                                - 13.80128475140318000_RK &
+                                + 79.17963739241087000_RK * logzplus1 &
+                                - 420.9808813943490700_RK * logzplus1**2 &
+                                + 902.4149755380632000_RK * logzplus1**3 
+        elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
+            logBinaryMergerRate = &
+                                - 10.89131941401880800_RK &
+                                + 21.59483273763076400_RK * logzplus1 & 
+                                - 33.07662054750123000_RK * logzplus1**2 & 
+                                + 29.23608723915102600_RK * logzplus1**3 &
+                                - 11.33984422193848700_RK * logzplus1**4 
+        elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
+            logBinaryMergerRate = &
+                                - 14.02518830695731000_RK &
+                                + 24.92009885816913300_RK * logzplus1 & 
+                                - 20.04762612951797000_RK * logzplus1**2 & 
+                                + 4.885281389900379500_RK * logzplus1**3 &
+                                - 0.168402813838908260_RK * logzplus1**4
+        elseif (logzplus1>1.3937663759585892_RK .and. logzplus1<=3.0411835364579027_RK) then
+            logBinaryMergerRate = &
+                                - 4.348081430972656000_RK &
+                                + 4.815143234949144000_RK * logzplus1 & 
+                                - 6.143880845780776000_RK * logzplus1**2 & 
+                                + 1.738835623950871300_RK * logzplus1**3 &
+                                - 0.206972882929076480_RK * logzplus1**4
+        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
+            logBinaryMergerRate = 0._RK
+        end if
+    end function getLogBinaryMergerRateLognormF18
+    
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! computes the natural log of the binary merger rate as a function of logzplus1.
+    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
+    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
+    pure function getLogBinaryMergerRateLognormH06(logzplus1) result(logBinaryMergerRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormH06
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK)    , intent(in)    :: logzplus1
+        real(RK)                    :: logBinaryMergerRate
+        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.1441003439737565_RK) then
+            logBinaryMergerRate = & 
+                                - 14.26464149493092000_RK &
+                                + 84.73477757043948000_RK * logzplus1 &
+                                - 488.5893985602366500_RK * logzplus1**2 &
+                                + 1154.414655194473900_RK * logzplus1**3 
+        elseif (logzplus1>0.1441003439737565_RK .and. logzplus1<=0.6575200029167926_RK) then
+            logBinaryMergerRate = &
+                                - 11.19700066921606300_RK &
+                                + 20.46712963401572300_RK * logzplus1 & 
+                                - 24.31794334813894300_RK * logzplus1**2 & 
+                                + 12.21213317590724400_RK * logzplus1**3 
+        elseif (logzplus1>0.6575200029167926_RK .and. logzplus1<=1.5591966959973538_RK) then
+            logBinaryMergerRate = &
+                                - 9.094912666461765000_RK &
+                                + 15.23119806754538900_RK * logzplus1 & 
+                                - 18.77526325204311800_RK * logzplus1**2 & 
+                                + 9.941360355936961000_RK * logzplus1**3 &
+                                - 2.077370913197473000_RK * logzplus1**4
+        elseif (logzplus1>1.5591966959973538_RK .and. logzplus1<=1.7056567701746455_RK) then
+            logBinaryMergerRate = &
+                                - 2392.907733171019000_RK &
+                                + 6210.872744126407000_RK * logzplus1 & 
+                                - 6054.866136454215000_RK * logzplus1**2 & 
+                                + 2622.628785434413700_RK * logzplus1**3 &
+                                - 426.0273477222719000_RK * logzplus1**4
+        elseif (logzplus1>1.7056567701746455_RK .and. logzplus1<=3.0411835364579027_RK) then
+            logBinaryMergerRate = &
+                                + 9.538876239886940000_RK &
+                                - 8.753418172517534000_RK * logzplus1 & 
+                                - 0.159980818030374640_RK * logzplus1**2 & 
+                                - 0.088551503657680930_RK * logzplus1**3 
+        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
+            logBinaryMergerRate = 0._RK
+        end if
+    end function getLogBinaryMergerRateLognormH06
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! computes the natural log of the binary merger rate as a function of logzplus1.
+    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
+    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
+    pure function getLogBinaryMergerRateLognormL08(logzplus1) result(logBinaryMergerRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormL08
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK)    , intent(in)    :: logzplus1
+        real(RK)                    :: logBinaryMergerRate
+        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.20701416938432557_RK) then
+            logBinaryMergerRate = & 
+                                - 14.53696144309043900_RK &
+                                + 94.70274747509626000_RK * logzplus1 &
+                                - 687.3663996060040000_RK * logzplus1**2 &
+                                + 2695.421036673770700_RK * logzplus1**3 &
+                                - 4077.601561165490000_RK * logzplus1**4
+        elseif (logzplus1>0.20701416938432557_RK .and. logzplus1<=0.8241754429663476_RK) then
+            logBinaryMergerRate = &
+                                - 13.5104005566057670_RK &
+                                + 49.6443928683743600_RK * logzplus1 & 
+                                - 164.286063097338630_RK * logzplus1**2 & 
+                                + 315.721394966368100_RK * logzplus1**3 &
+                                - 300.345052726248640_RK * logzplus1**4 &
+                                + 108.470535327547080_RK * logzplus1**5
+        elseif (logzplus1>0.8241754429663476_RK .and. logzplus1<=1.4243124283074096_RK) then
+            logBinaryMergerRate = &
+                                - 8.77634469738400500_RK &
+                                + 13.1999684738558810_RK * logzplus1 & 
+                                - 15.8698236818922140_RK * logzplus1**2 & 
+                                + 8.48676936452957000_RK * logzplus1**3 &
+                                - 1.83190451512279620_RK * logzplus1**4
+        elseif (logzplus1>1.4243124283074096_RK .and. logzplus1<=1.6154199841116488_RK) then
+            logBinaryMergerRate = &
+                                + 4158.29353781047900_RK &
+                                - 10954.1105856433040_RK * logzplus1 & 
+                                + 10789.3451136201870_RK * logzplus1**2 & 
+                                - 4713.80244702217800_RK * logzplus1**3 &
+                                + 770.488645040204600_RK * logzplus1**4
+        elseif (logzplus1>1.6154199841116488_RK .and. logzplus1<=3.0411835364579027_RK) then
+            logBinaryMergerRate = &
+                                + 0.37742655174185624_RK &
+                                + 0.30883738015163340_RK * logzplus1 & 
+                                - 4.04937550957291800_RK * logzplus1**2 & 
+                                + 1.11680537027038170_RK * logzplus1**3 &
+                                - 0.13770838345089523_RK * logzplus1**4
+        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
+            logBinaryMergerRate = 0._RK
+        end if
+    end function getLogBinaryMergerRateLognormL08
+    
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! computes the natural log of the binary merger rate as a function of logzplus1.
+    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
+    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
+    pure function getLogBinaryMergerRateLognormM14(logzplus1) result(logBinaryMergerRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormM14
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK)    , intent(in)    :: logzplus1
+        real(RK)                    :: logBinaryMergerRate
+        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.16551443847757297_RK) then
+            logBinaryMergerRate = & 
+                                - 13.91129314580349600_RK &
+                                + 78.88963489621422000_RK * logzplus1 &
+                                - 420.9801740859396700_RK * logzplus1**2 &
+                                + 902.4783078800951000_RK * logzplus1**3 
+        elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
+            logBinaryMergerRate = &
+                                - 11.00951046136480500_RK &
+                                + 21.38817515748999000_RK * logzplus1 & 
+                                - 33.29451048508970000_RK * logzplus1**2 & 
+                                + 29.32158835244860400_RK * logzplus1**3 &
+                                - 10.97377449040440000_RK * logzplus1**4 
+        elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
+            logBinaryMergerRate = &
+                                - 8.254476015464371000_RK &
+                                + 3.620963332444886000_RK * logzplus1 & 
+                                + 6.734585433384001000_RK * logzplus1**2 & 
+                                - 9.151412394211048000_RK * logzplus1**3 &
+                                + 2.516171777428496000_RK * logzplus1**4
+        elseif (logzplus1>1.3937663759585892_RK .and. logzplus1<=3.0411835364579027_RK) then
+            logBinaryMergerRate = &
+                                - 6.539697727782377000_RK &
+                                + 8.522331572601950000_RK * logzplus1 & 
+                                - 8.242990979412244000_RK * logzplus1**2 & 
+                                + 2.316632169715435300_RK * logzplus1**3 &
+                                - 0.266462340853027450_RK * logzplus1**4
+        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
+            logBinaryMergerRate = 0._RK
+        end if
+    end function getLogBinaryMergerRateLognormM14
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! computes the natural log of the binary merger rate as a function of logzplus1.
+    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
+    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
+    pure function getLogBinaryMergerRateLognormM17(logzplus1) result(logBinaryMergerRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormM17
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK)    , intent(in)    :: logzplus1
+        real(RK)                    :: logBinaryMergerRate
+        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.16551443847757297_RK) then
+            logBinaryMergerRate = & 
+                                - 14.01939141013502300_RK &
+                                + 78.80010843737509000_RK * logzplus1 &
+                                - 420.9593253775164000_RK * logzplus1**2 &
+                                + 902.5668042795056000_RK * logzplus1**3 
+        elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
+            logBinaryMergerRate = &
+                                - 11.12915953695671500_RK &
+                                + 21.43217730985805500_RK * logzplus1 & 
+                                - 33.75904206577289000_RK * logzplus1**2 & 
+                                + 30.03916282499634200_RK * logzplus1**3 &
+                                - 11.12086545981264500_RK * logzplus1**4 
+        elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
+            logBinaryMergerRate = &
+                                - 1.802362223155230800_RK &
+                                - 20.58526172567768200_RK * logzplus1 & 
+                                + 38.93828966743146000_RK * logzplus1**2 & 
+                                - 27.19863916580484500_RK * logzplus1**3 &
+                                + 6.138928143113263000_RK * logzplus1**4
+        elseif (logzplus1>1.3937663759585892_RK .and. logzplus1<=3.0411835364579027_RK) then
+            logBinaryMergerRate = &
+                                - 7.711815956299844000_RK &
+                                + 11.68891993486079700_RK * logzplus1 & 
+                                - 10.62908897824095300_RK * logzplus1**2 & 
+                                + 2.945685425778300700_RK * logzplus1**3 &
+                                - 0.327069839977957850_RK * logzplus1**4
+        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
+            logBinaryMergerRate = 0._RK
+        end if
+    end function getLogBinaryMergerRateLognormM17
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

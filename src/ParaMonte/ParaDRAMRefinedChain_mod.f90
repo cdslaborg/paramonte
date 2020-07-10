@@ -36,7 +36,7 @@
 
 module ParaDRAMRefinedChain_mod
 
-    use SpecMCMC_SampleRefinementMethod_mod, only: BATCH_MEANS, MAX_CUMSUM_AUTOCORR
+    use SpecMCMC_SampleRefinementMethod_mod, only: BATCH_MEANS_METHOD_NAME, MAX_CUMSUM_AUTOCORR_METHOD_NAME
     use ParaDRAMChainFileContents_mod, only: Count_type
     use JaggedArray_mod, only: CharVec_type
     use Constants_mod, only: IK, RK
@@ -157,9 +157,9 @@ contains
 
         if (present(sampleRefinementMethod)) then
             sampleRefinementMethodLowerCase = getLowerCase(sampleRefinementMethod)
-            if (index(sampleRefinementMethodLowerCase,getLowerCase(BATCH_MEANS))>0) then
+            if (index(sampleRefinementMethodLowerCase,getLowerCase(BATCH_MEANS_METHOD_NAME))>0) then
                 Method%isBatchMeans = .true.
-            elseif (index(sampleRefinementMethodLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR))>0) then
+            elseif (index(sampleRefinementMethodLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR_METHOD_NAME))>0) then
                 Method%isMaxCumSumAutoCorr = .true.
             else
                 Err%occurred = .true.
@@ -268,7 +268,8 @@ contains
             maxRefinementCountIsReached = RefinedChain%numRefinement==maxRefinementCount
             if (integratedAutoCorrTime<2._RK .or. maxRefinementCountIsReached) then
                 if (Method%isViaCompactChain .and. Method%isViaVerboseChain) then
-                    if (maxRefinementCountIsReached) maxRefinementCount = maxRefinementCount * 2
+                    !if (maxRefinementCountIsReached) maxRefinementCount = maxRefinementCount * 2_IK
+                    maxRefinementCount = maxRefinementCount * 2_IK
                     Method%isViaCompactChain = .false.
                     cycle loopRefinement
                 end if

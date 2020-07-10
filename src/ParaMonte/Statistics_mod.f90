@@ -2111,7 +2111,10 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! returns Geometric distribution PDF values, starting at index 1.
+    ! returns Geometric distribution PDF values, starting at index 1. 
+    ! If the probability of success on each trial is successProb, 
+    ! then the probability that the kth trial (out of k trials) is 
+    ! the first success is GeoPDF(k).
     function getGeoPDF(successProb,logPdfPrecision,minSeqLen) result(GeoPDF)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeoPDF

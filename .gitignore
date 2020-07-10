@@ -134,6 +134,7 @@ Thumbs.db
 *.rfn
 *.bin
 ___*___.*
+
 copyFiles.sh
 
 #########################
