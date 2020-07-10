@@ -274,7 +274,7 @@ classdef ParaDRAM_class < ParaMCMC_class
         writeOutput(self)
         writeOutput2(self)
         writeRestartFile(self)
-        outputList = readOutput(self,file,delimiter,fileType)
+        %outputList = readOutput(self,file,delimiter,fileType)
         fileList = getFileList(self,file,fileType)
 
         %***************************************************************************************************************************

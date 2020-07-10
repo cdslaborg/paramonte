@@ -133,15 +133,53 @@ for %%e in (!EXAM_LIST!) do (
     REM The MatDRAM library license file
 
     echo. -- MatDRAM - copying the MatDRAM library license file...
-    echo. -- MatDRAM - from: !ParaMonte_ROOT_DIR!\LICENSE
+    echo. -- MatDRAM - from: !ParaMonte_ROOT_DIR!LICENSE
     echo. -- MatDRAM -   to: !MatDRAM_BLD_DIR_CURRENT!\LICENSE
-    copy "!ParaMonte_ROOT_DIR!\LICENSE" "!MatDRAM_BLD_DIR_CURRENT!\LICENSE" || goto LABEL_copyErrorOccured
+    copy "!ParaMonte_ROOT_DIR!LICENSE" "!MatDRAM_BLD_DIR_CURRENT!\LICENSE" || goto LABEL_copyErrorOccured
 
     REM The MatDRAM library interface files
 
     echo. -- MatDRAM - from: !ParaMonteInterface_SRC_DIR_CURRENT!\MatDRAM %= no need for final slash here =%
     echo. -- MatDRAM -   to: !MatDRAM_BLD_DIR_CURRENT!\paramonte\  %= final slash tells this is folder =%
     xcopy /s /Y "!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte" "!MatDRAM_BLD_DIR_CURRENT!\paramonte\" || goto LABEL_copyErrorOccured
+
+    REM The MatDRAM library ParaDRAM class method files, required for postprocess reading of output of data
+
+    set COPY_PATH_SOURCE=!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte\interface\@ParaDRAM\readMarkovChain.m
+    set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
+    echo. -- MatDRAM - from: !COPY_PATH_SOURCE!
+    echo. -- MatDRAM -   to: !COPY_PATH_DESTIN!
+    xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOccured
+
+    set COPY_PATH_SOURCE=!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte\interface\@ParaMonteSampler\readChain.m
+    set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
+    echo. -- MatDRAM - from: !COPY_PATH_SOURCE!
+    echo. -- MatDRAM -   to: !COPY_PATH_DESTIN!
+    xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOc
+
+    set COPY_PATH_SOURCE=!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte\interface\@ParaMonteSampler\readSample.m
+    set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
+    echo. -- MatDRAM - from: !COPY_PATH_SOURCE!
+    echo. -- MatDRAM -   to: !COPY_PATH_DESTIN!
+    xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOccured
+
+    set COPY_PATH_SOURCE=!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte\interface\@ParaMonteSampler\readTabular.m
+    set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
+    echo. -- MatDRAM - from: !COPY_PATH_SOURCE!
+    echo. -- MatDRAM -   to: !COPY_PATH_DESTIN!
+    xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOccured
+
+    REM set COPY_PATH_SOURCE=!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte\interface\@ParaMonteSampler\readReport.m
+    REM set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
+    REM echo. -- MatDRAM - from: !COPY_PATH_SOURCE!
+    REM echo. -- MatDRAM -   to: !COPY_PATH_DESTIN!
+    REM xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOccured
+
+    set COPY_PATH_SOURCE=!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte\interface\@ParaMonteSampler\getFilePathList.m
+    set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
+    echo. -- MatDRAM - from: !COPY_PATH_SOURCE!
+    echo. -- MatDRAM -   to: !COPY_PATH_DESTIN!
+    xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOccured
 
     REM The MatDRAM library banner file
 
@@ -154,9 +192,9 @@ for %%e in (!EXAM_LIST!) do (
     REM The MatDRAM library kernel version file (must appear only after the above)
 
     echo. -- MatDRAM - copying the MatDRAM library kernel version file...
-    echo. -- MatDRAM - from: !ParaMonte_ROOT_DIR!\.VERSION %= no need for final slash here =%
+    echo. -- MatDRAM - from: !ParaMonte_ROOT_DIR!.VERSION %= no need for final slash here =%
     echo. -- MatDRAM -   to: !MatDRAM_BLD_DIR_CURRENT!\paramonte\auxil\.VERSION_KERNEL
-    copy /y "!ParaMonte_ROOT_DIR!\.VERSION" "!MatDRAM_BLD_DIR_CURRENT!\paramonte\auxil\.VERSION_KERNEL" || goto LABEL_copyErrorOccured
+    copy /y "!ParaMonte_ROOT_DIR!.VERSION" "!MatDRAM_BLD_DIR_CURRENT!\paramonte\auxil\.VERSION_KERNEL" || goto LABEL_copyErrorOccured
 
     REM The MatDRAM library interface version file (must appear only after the above)
 
@@ -210,7 +248,7 @@ if %ERRORLEVEL%==0 (
 
 set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_BLD_DIR!\mvn
 
-set MatDRAMExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\MatDRAM
+set MatDRAMExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\libparamonte_MatDRAM
 
 echo. -- MatDRAM - The MatDRAM !LANG_NAME! library binary directory: !MatDRAMExample_BIN_DIR_CURRENT!
 
@@ -273,6 +311,24 @@ if !ParaMonteExample_RUN_ENABLED!==true (
     )
 
 )
+
+echo. -- MatDRAM -      the MatDRAM build files are located at: !MatDRAM_BLD_DIR_CURRENT! %= no need for final slash here =%
+echo. -- MatDRAM -    the MatDRAM library files are located at: !MatDRAMExample_BIN_DIR_CURRENT! %= final slash tells this is folder =%
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: build test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+set MatDRAMTest_BLD_DIR=!MatDRAM_BLD_DIR!\test
+set MatDRAMTest_SRC_DIR=!ParaMonteInterface_SRC_DIR_CURRENT!\test
+
+echo. -- MatDRAM - copying the MatDRAM library files to the test folder...
+echo. -- MatDRAM - from: !MatDRAM_BLD_DIR_CURRENT! %= no need for final slash here =%
+echo. -- MatDRAM -   to: !MatDRAMTest_BLD_DIR! %= final slash tells this is folder =%
+xcopy /s /Y /e /v /i "!MatDRAM_BLD_DIR_CURRENT!" "!MatDRAMTest_BLD_DIR!" || goto LABEL_copyErrorOccured
+del main.m logfunc.m LICENSE
+copy /y "!MatDRAMTest_SRC_DIR!\testParaMonte.m" "!MatDRAMTest_BLD_DIR!\testParaMonte.m" || goto LABEL_copyErrorOccured
+copy /y "!MatDRAMTest_SRC_DIR!\getLogFunc.m" "!MatDRAMTest_BLD_DIR!\getLogFunc.m" || goto LABEL_copyErrorOccured
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: quit

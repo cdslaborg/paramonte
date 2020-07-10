@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.1.1** -- June 22, 2020  
+### **Version 1.1.1** -- Work in progress
 
 **Enhancements**  
 
@@ -36,7 +36,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 **New features**  
 
-+   ParaMonte Interface to MATLAB in addition to the currently-available C/C++/Fortran/Python Programming languages.  
++   The MATLAB interface to the ParaMonte library is now ready to use, in addition to the existing C/C++/Fortran/Python Programming language interfaces to ParaMonte.  
 
 **Enhancements**  
 

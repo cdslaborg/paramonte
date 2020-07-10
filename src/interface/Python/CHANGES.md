@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### Version  1.1.2 -- June 16, 2020  
+### Version  1.1.2 -- Work in progress
 
 +   Minor enhancement: The minimum required dependency versions are now raised to the following,  
 

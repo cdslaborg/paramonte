@@ -144,7 +144,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function [markovChainList] = readMarkovChain(self,varargin)
+function [varargout] = readMarkovChain(self,varargin)
 
     if isempty(self.objectName); self.objectName = inputname(1); end
     callerName = string(mfilename());

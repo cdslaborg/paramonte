@@ -366,12 +366,6 @@ classdef paramonte %< dynamicprops
             %       pm.verify(true)             % resets and performs all checks
             %       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %
-            if self.matdramKernelEnabled
-                self.displayParaMonteBanner();
-                self.Err.msg    = "The ParaMonte MatDRAM library is ready to use!";
-                self.Err.note();
-                return;
-            end
 
             self.objectName = inputname(1);
 
@@ -450,9 +444,18 @@ classdef paramonte %< dynamicprops
 
             if verificationEnabled
 
-                % ensure 64-bit architecture
-
                 self.displayParaMonteBanner();
+
+                % if MatDRAM, return
+
+                if self.matdramKernelEnabled
+                    self.Err.msg    = "The ParaMonte MatDRAM library is ready to use!";
+                    self.Err.note();
+                    self.writeVerificationStatusFile("False");
+                    return;
+                end
+
+                % ensure 64-bit architecture
 
                 if strcmpi(getArch(),"x64") && (self.platform.isWin32 || self.platform.isLinux || self.platform.isMacOS)
 

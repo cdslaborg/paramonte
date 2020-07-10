@@ -5,6 +5,14 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
+### Version  1.1.1 -- xxx xx, 2020  
+
+**bug fixes**  
++   ParaDRAM readMarkovChain() no-output-option bug is now fixed. User can now either provide the output variable or not.  
+
+**New features**  
++   new readReport() method now added to the ParaDRAM sampler class. User can now parse the contents of the output report file.  
+
 ### Version  1.1.0 -- June 5, 2020  
 
 +   Enhancements and bug fixes to the kernel routines.  
