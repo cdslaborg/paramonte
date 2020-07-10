@@ -307,7 +307,11 @@ contains
                                         & simulation specification variable 'maxNumDomainCheckToStop', "//mc_methodName//" will abort now."
 
 #if defined UNIFORM
-        mc_negLogVolUnitBall = -getLogVolUnitBall(ndim)
+        if (ndim>1_IK) then
+            mc_negLogVolUnitBall = -getLogVolUnitBall(ndim)
+        else
+            mc_negLogVolUnitBall = 0._RK
+        end if
 #endif
 
     end function constructProposalSymmetric
@@ -374,8 +378,10 @@ contains
     pure function getLogProb(nd, counterDRS, StateOld, StateNew) result(logProb)
 #if defined NORMAL
         use Statistics_mod, only: getLogProbMVN
+#elif defined UNIFORM
+        use Statistics_mod, only: isInsideEllipsoid
 #endif
-        use Constants_mod, only: IK, RK
+        use Constants_mod, only: IK, RK, NEGINF_RK
         implicit none
         integer(IK), intent(in)                         :: nd
         integer(IK), intent(in)                         :: counterDRS
@@ -383,7 +389,11 @@ contains
         real(RK)   , intent(in)                         :: StateNew(nd)
         real(RK)                                        :: logProb
 #if defined UNIFORM
-        logProb = mc_negLogVolUnitBall - mv_logSqrtDetInvCovMat(counterDRS)
+        if (isInsideEllipsoid(nd,StateNew-StateOld,mv_InvCovMat(1:mc_ndim,1:mc_ndim,counterDRS))) then
+            logProb = mc_negLogVolUnitBall + mv_logSqrtDetInvCovMat(counterDRS)
+        else
+            logProb = NEGINF_RK
+        end if
 #elif defined NORMAL
         logProb = getLogProbMVN ( nd = nd &
                                 , MeanVec = StateOld &
@@ -397,7 +407,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! ATTN: This routine may need further correction for the delayed rejection method
+    ! ATTN: This routine needs further correction for the delayed rejection method
     subroutine doAutoTune   ( adaptationMeasure &
                             , AutoTuneScaleSq   &
                             )
@@ -695,10 +705,13 @@ contains
             if ( meanAccRateSinceStart < mc_TargetAcceptanceRateLimit(1) .or. meanAccRateSinceStart > mc_TargetAcceptanceRateLimit(2) ) then
                 mv_adaptiveScaleFactorSq_save = (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
 !block
-!    !use Statistics_mod, only: getRandUniform
-!    !mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(getRandUniform(-1.e-1_RK,1.e-1_RK))
-!    use Statistics_mod, only: getRandInt
-!    mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(real(getRandInt(-1_IK,1_IK),kind=RK))
+!    use Statistics_mod, only: getRandUniform
+!    integer, save :: counter = 0_IK
+!    counter = counter - 1
+!    mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(-counter*getRandUniform(-1.e0_RK,1.e0_RK)/1.e4_RK)
+!    !use Statistics_mod, only: getRandInt
+!    !mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(real(getRandInt(-1_IK,1_IK),kind=RK))
+!    !write(*,*) counter, mv_adaptiveScaleFactorSq_save
 !end block
                 adaptiveScaleFactor = sqrt(mv_adaptiveScaleFactorSq_save)
                 do j = 1, nd
@@ -752,6 +765,20 @@ contains
             end if
             !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
             adaptationMeasure = sqrt( 1._RK - exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum ) ) ! totalVariationUpperBound
+!block
+!integer, save :: counter = 0
+!counter = counter + 1
+!!if (counter==1) then
+!if (adaptationMeasure>1._RK) then
+!write(*,*) 
+!write(*,*) mv_logSqrtDetOld_save
+!write(*,*) logSqrtDetNew
+!write(*,*) logSqrtDetSum
+!write(*,*) mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum
+!write(*,*) exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum )
+!write(*,*) 
+!end if
+!end block
 
             if (adaptationMeasure<0._RK) then
                 call warn   ( prefix = mc_methodBrand &
@@ -831,6 +858,12 @@ contains
                                                                             )
             mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))
         end do
+if (mc_ndim==1 .and. abs(log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))>1.e-13_RK) then
+write(*,"(*(g0,:,' '))") "log(sqrt(mv_InvCovMat(1,1,0))) /= mv_logSqrtDetInvCovMat(0)"
+write(*,"(*(g0,:,' '))") log(sqrt(mv_InvCovMat(1,1,0))), mv_logSqrtDetInvCovMat(0)
+write(*,"(*(g0,:,' '))") abs(-log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))
+error stop
+endif
     end subroutine getInvCovMat
 
 !***********************************************************************************************************************************

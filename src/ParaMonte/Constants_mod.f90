@@ -80,7 +80,7 @@ module Constants_mod
     real(RK)    , parameter :: HUGE_RK = huge(1._RK)                                    ! largest number of kind RK
     real(RK)    , parameter :: TINY_RK = tiny(1._RK)                                    ! tiniest number of kind RK
     real(RK)    , parameter :: LOGHUGE_RK = log(HUGE_RK)                                ! log of the largest number of kind RK
-    real(RK)    , parameter :: LOGTINY_RK = log(TINY_RK)                                ! log of the largest number of kind RK
+    real(RK)    , parameter :: LOGTINY_RK = log(TINY_RK)                                ! log of the smallest number of kind RK
     real(RK)    , parameter :: POSINF_RK =  HUGE_RK / 1.e1_RK                           ! the division is done to avoid overflow in output
     real(RK)    , parameter :: POSINF_IK =  HUGE_IK / 2_IK                              ! the division is done to avoid overflow in output
     real(RK)    , parameter :: NEGINF_RK = -POSINF_RK

@@ -114,7 +114,7 @@ contains
         logical                             :: samplerUpdateSucceeded
         logical                             :: delayedRejectionRequested
         logical                             :: noDelayedRejectionRequested
-        real(RK)    , allocatable           :: adaptationMeasure(:), adaptationMeasurePlaceHolder(:)
+        real(RK)    , allocatable           :: AdaptationMeasure(:), adaptationMeasurePlaceHolder(:)
         integer(IK)                         :: adaptationMeasureLen
         integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
         integer(IK)                         :: imageID, dummy
@@ -187,7 +187,7 @@ contains
         end if
 
         adaptationMeasureLen = 100_IK
-        if (allocated(adaptationMeasure)) deallocate(adaptationMeasure); allocate(adaptationMeasure(adaptationMeasureLen))
+        if (allocated(AdaptationMeasure)) deallocate(AdaptationMeasure); allocate(AdaptationMeasure(adaptationMeasureLen))
 
        !adaptationMeasure                               = 0._RK                                     ! needed for the first output
         SumAccRateSinceStart%acceptedRejected           = 0._RK                                     ! sum of acceptance rate
@@ -513,8 +513,8 @@ contains
                         self%Chain%Weight(self%Stats%NumFunCall%accepted)       = self%Chain%Weight(self%Stats%NumFunCall%accepted) + 1_IK
                         if (adaptationMeasureLen<self%Chain%Weight(self%Stats%NumFunCall%accepted)) then
                             allocate(adaptationMeasurePlaceHolder(2*adaptationMeasureLen))
-                            adaptationMeasurePlaceHolder(1:adaptationMeasureLen) = adaptationMeasure
-                            call move_alloc(from=adaptationMeasurePlaceHolder,to=adaptationMeasure)
+                            adaptationMeasurePlaceHolder(1:adaptationMeasureLen) = AdaptationMeasure
+                            call move_alloc(from=adaptationMeasurePlaceHolder,to=AdaptationMeasure)
                             adaptationMeasureLen = 2_IK * adaptationMeasureLen
                         end if
 #if defined ParaDISE
@@ -560,6 +560,7 @@ contains
                     !********************************************* last output write ***********************************************
                     !***************************************************************************************************************
 
+                    ! in paradise mode, it is imperative to finish the simulation before any further redundant sampler updates.
                     blockLastSample: if (self%Stats%NumFunCall%accepted==self%SpecMCMC%ChainSize%val) then !co_missionAccomplished = .true.
 
                         ! on 3 images Windows, substituting co_missionAccomplished with the following leads to 10% less communication overhead for 1D Gaussian example
@@ -643,7 +644,7 @@ contains
                                                         , samplerUpdateIsGreedy     = samplerUpdateIsGreedy                                                                     &
                                                         , meanAccRateSinceStart     = meanAccRateSinceStart                                                                     &
                                                         , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                    &
-                                                        , adaptationMeasure         = adaptationMeasure(dummy)                                                                  &
+                                                        , adaptationMeasure         = AdaptationMeasure(dummy)                                                                  &
                                                         )
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
                         if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
@@ -652,10 +653,10 @@ contains
                         self%Chain%Weight(self%Stats%NumFunCall%accepted) = dummy   ! needed for the restart mode, not needed in the fresh run
                         if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then
                             !adaptationMeasure = adaptationMeasure + adaptationMeasureDummy ! this is the worst-case upper-bound
-                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = self%Chain%Adaptation(self%Stats%NumFunCall%accepted) + adaptationMeasure(dummy) ! this is the worst-case upper-bound
+                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = min(1._RK, self%Chain%Adaptation(self%Stats%NumFunCall%accepted) + AdaptationMeasure(dummy)) ! this is the worst-case upper-bound
                         else
                             !adaptationMeasure = adaptationMeasureDummy
-                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = adaptationMeasure(dummy)
+                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = AdaptationMeasure(dummy)
                             self%Chain%Weight(numFunCallAcceptedLastAdaptation) = self%Chain%Weight(numFunCallAcceptedLastAdaptation) + lastStateWeight
                         end if
                         if (samplerUpdateSucceeded) then
@@ -669,7 +670,7 @@ contains
 
                     else blockSamplerAdaptation
 
-                        adaptationMeasure(self%Chain%Weight(self%Stats%NumFunCall%accepted)) = 0._RK
+                        AdaptationMeasure(self%Chain%Weight(self%Stats%NumFunCall%accepted)) = 0._RK
 
                     end if blockSamplerAdaptation
 
@@ -843,15 +844,15 @@ contains
            !integer(IK)                 :: i, counterOld, counterNew, logProbTransFileUnit, logProbTransMarkovFileUnit, logMarkovWeightFileUnit
             !integer(IK)                 :: effectiveSampleSize
             integer(IK)                 :: i, j, weightedSampleFileUnit, refinedWeightedSampleFileUnit, from, to
-            real(RK)                    :: logProbTransMarkov, logImportanceWeight, logImportanceWeightOld
-            real(RK)                    :: sumImportanceWeightCurrent, unifrnd
+            real(RK)                    :: logProbTransMarkov, logImportanceWeightCurrent, logImportanceWeightOld
+            real(RK)                    :: importanceWeightCurrent, sumImportanceWeightCurrent, unifrnd
             !real(RK)    , allocatable   :: CumSumImportanceWeight(:)
             character(:), allocatable   :: weightedSampleFormat, refinedWeightedSampleFormat
            !weightedSampleFormat = "(*(g0,:,','))"
-           !real(RK), allocatable   :: logProbTransMarkov(:), logImportanceWeight(:) !, logMarkovWeight(:)
+           !real(RK), allocatable   :: logProbTransMarkov(:), logImportanceWeightCurrent(:) !, logMarkovWeight(:)
            !real(RK)                :: newStateLogAccr
            !if (allocated(logProbTransMarkov)) deallocate(logProbTransMarkov); allocate(logProbTransMarkov(self%Stats%NumFunCall%acceptedRejected))
-           !if (allocated(logImportanceWeight)) deallocate(logImportanceWeight); allocate(logImportanceWeight(self%Stats%NumFunCall%acceptedRejected))
+           !if (allocated(logImportanceWeightCurrent)) deallocate(logImportanceWeightCurrent); allocate(logImportanceWeightCurrent(self%Stats%NumFunCall%acceptedRejected))
            !logProbTransMarkov(1) = 0._RK ! this is a dummy value
            !open(newunit = logProbTransMarkovFileUnit, file = self%SpecBase%OutputFileName%pathPrefix//"logProbTransMarkov.txt", status = "replace")
            !open(newunit = logProbTransFileUnit, file = self%SpecBase%OutputFileName%pathPrefix//"LogProbTrans.txt", status = "replace")
@@ -859,7 +860,7 @@ contains
             open(newunit = weightedSampleFileUnit, file = self%SpecBase%OutputFileName%pathPrefix//"weightedSample.txt", status = "replace")
             open(newunit = refinedWeightedSampleFileUnit, file = self%SpecBase%OutputFileName%pathPrefix//"refinedWeightedSample.txt", status = "replace")
             weightedSampleFormat = "(A12,*(A25))"
-            write(weightedSampleFileUnit, weightedSampleFormat) "SampleWeight", "logImportanceWeight", "logProbTransMarkov", "logProbTrans", "SampleLogFunc", (trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,nd)
+            write(weightedSampleFileUnit, weightedSampleFormat) "SampleWeight", "ImportanceWeight", "LogProbTransMarkov", "LogProbTrans", "SampleLogFunc", (trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,nd)
             weightedSampleFormat = "(1I12,*(E25.15E3))"
             refinedWeightedSampleFormat = "(*(g0,:,','))"
             write(refinedWeightedSampleFileUnit, refinedWeightedSampleFormat) "SampleLogFunc", (trim(adjustl(self%SpecBase%VariableNameList%Val(i))),i=1,nd)
@@ -898,25 +899,26 @@ contains
                         end if
 
                         logProbTransMarkov = logProbTransMarkov + logProbAction
-                        logImportanceWeight = logImportanceWeightOld + logProbTransMarkov - LogProbTrans(lastAcceptedStateIndex)
-                        !write(weightedSampleFileUnit, weightedSampleFormat  ) SampleWeightDISE(lastAcceptedStateIndex) &
-                        !                                                    , logImportanceWeight &
-                        !                                                    , logProbTransMarkov &
-                        !                                                    , LogProbTrans(lastAcceptedStateIndex) &
-                        !                                                    , LogFuncStateDISE(0:nd,lastAcceptedStateIndex)
-                        logImportanceWeightOld = logImportanceWeight
-                        sumImportanceWeightCurrent = sumImportanceWeightCurrent + exp(logImportanceWeight)
+                        logImportanceWeightCurrent = logImportanceWeightOld + logProbTransMarkov - LogProbTrans(lastAcceptedStateIndex)
+                        importanceWeightCurrent = exp(logImportanceWeightCurrent)
+                        write(weightedSampleFileUnit, weightedSampleFormat  ) 1_IK & ! SampleWeightDISE(lastAcceptedStateIndex) &
+                                                                            , importanceWeightCurrent &
+                                                                            , logProbTransMarkov &
+                                                                            , LogProbTrans(lastAcceptedStateIndex) &
+                                                                            , LogFuncStateDISE(0:nd,lastAcceptedStateIndex)
+                        logImportanceWeightOld = logImportanceWeightCurrent
+                        sumImportanceWeightCurrent = sumImportanceWeightCurrent + importanceWeightCurrent
                     end do
                     !if (sumImportanceWeightCurrent==0._RK) then
                     !    sumImportanceWeightCurrent = 1.e-99_RK
                     !else
                     !    sumImportanceWeightCurrent = log(sumImportanceWeightCurrent)
                     !end if
-                    write(weightedSampleFileUnit, weightedSampleFormat  ) SampleWeightDISE(lastAcceptedStateIndex) &
-                                                                        , sumImportanceWeightCurrent &
-                                                                        , logProbTransMarkov &
-                                                                        , LogProbTrans(lastAcceptedStateIndex) &
-                                                                        , LogFuncStateDISE(0:nd,lastAcceptedStateIndex)
+                    !write(weightedSampleFileUnit, weightedSampleFormat  ) SampleWeightDISE(lastAcceptedStateIndex) &
+                    !                                                    , sumImportanceWeightCurrent &
+                    !                                                    , logProbTransMarkov &
+                    !                                                    , LogProbTrans(lastAcceptedStateIndex) &
+                    !                                                    , LogFuncStateDISE(0:nd,lastAcceptedStateIndex)
                     do j = 1, int(sumImportanceWeightCurrent)
                         write(refinedWeightedSampleFileUnit, refinedWeightedSampleFormat) LogFuncStateDISE(0:nd,lastAcceptedStateIndex)
                     end do
@@ -1085,7 +1087,7 @@ contains
                     write(self%ChainFile%unit,self%ChainFile%format ) self%Chain%ProcessID(self%Stats%NumFunCall%accepted)      &
                                                                     , self%Chain%DelRejStage(self%Stats%NumFunCall%accepted)    &
                                                                     , self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted)    &
-                                                                    , adaptationMeasure(j)                                      &
+                                                                    , AdaptationMeasure(j)                                      &
                                                                    !, self%Chain%Adaptation(self%Stats%NumFunCall%accepted)     &
                                                                     , self%Chain%BurninLoc(self%Stats%NumFunCall%accepted)      &
                                                                     , 1_IK                                                      &

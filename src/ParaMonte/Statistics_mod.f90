@@ -194,7 +194,9 @@ contains
         real(RK)   , intent(in) :: InvCovMat(nd,nd)        ! Inverse of the covariance matrix
         real(RK)   , intent(in) :: Point(nd)               ! input data points
         real(RK)                :: getMahalSqSP_RK
-        getMahalSqSP_RK = dot_product( Point-MeanVec , matmul(InvCovMat,Point-MeanVec) )
+        real(RK)                :: NormedPoint(nd)
+        NormedPoint = Point - MeanVec
+        getMahalSqSP_RK = dot_product( NormedPoint , matmul(InvCovMat,NormedPoint) )
     end function getMahalSqSP_RK
 
 !***********************************************************************************************************************************
@@ -213,9 +215,11 @@ contains
         real(RK), intent(in)    :: InvCovMat(nd,nd)         ! Inverse of the covariance matrix
         real(RK), intent(in)    :: Point(nd,np)             ! input data points
         real(RK)                :: getMahalSqMP_RK(np)      ! function return
+        real(RK)                :: NormedPoint(nd)
         integer(IK)             :: ip
         do ip = 1,np
-            getMahalSqMP_RK(ip) = dot_product( Point(1:nd,ip)-MeanVec , matmul(InvCovMat,Point(1:nd,ip)-MeanVec) )
+            NormedPoint = Point(1:nd,ip) - MeanVec
+            getMahalSqMP_RK(ip) = dot_product( NormedPoint , matmul(InvCovMat,NormedPoint) )
             if (getMahalSqMP_RK(ip)<0._RK) then
                 getMahalSqMP_RK(1) = -1._RK
                 return
@@ -1498,6 +1502,25 @@ contains
         end do
         getRandMVU = getRandMVU + MeanVec
     end function getRandMVU
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! determines if the input NormedPoint (normalized with respect to the mean of the target ellipsoid) is within or on the boundary 
+    ! of the ellipsoid that is centered at origin and its boundary is described by the representative matrix Sigma (RepMat), 
+    ! such that x^T Sigma^(-1) x = 1 for all x on the boundary. Note that the input matrix is the inverse of RepMat: InvRepMat
+    pure function isInsideEllipsoid(nd,NormedPoint,InvRepMat)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: isInsideEllipsoid
+#endif
+        use Math_mod, only: getLogVolEllipsoid
+        implicit none
+        integer(IK), intent(in) :: nd
+        real(RK)   , intent(in) :: NormedPoint(nd)
+        real(RK)   , intent(in) :: InvRepMat(nd,nd)
+        logical                 :: isInsideEllipsoid
+        isInsideEllipsoid = dot_product(NormedPoint,matmul(InvRepMat,NormedPoint)) <= 1._RK
+    end function isInsideEllipsoid
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
