@@ -147,7 +147,7 @@
 %               1.  colormap = "autumn"
 %               1.  colormap = "winter"
 %
-%           If colormap is not provided or is empty, the default will be "autumn".
+%           If colormap is not provided or is empty, the default will be "winter".
 %
 %       colorbar_kws
 %
@@ -486,11 +486,12 @@ classdef LineScatterPlot < BasePlot
             end
 
             if cEnabled && ~getVecLen(self.colormap)
-                if self.is3d
-                    self.colormap = "winter";
-                else
-                    self.colormap = "autumn";
-                end
+                self.colormap = "winter";
+                %if self.is3d
+                %    self.colormap = "winter";
+                %else
+                %    self.colormap = "autumn";
+                %end
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
