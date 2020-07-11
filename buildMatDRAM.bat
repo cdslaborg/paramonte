@@ -91,19 +91,20 @@ set EXAM_LIST=mvn
 
 :: set and make example directories
 
-set MatDRAM_BLD_DIR=!ParaMonte_ROOT_DIR!build\MatDRAM\example
+set MatDRAM_BLD_DIR=!ParaMonte_ROOT_DIR!build\MatDRAM
+set MatDRAM_EXP_DIR=!MatDRAM_BLD_DIR!\example
 
 set ParaMonteInterface_SRC_DIR_CURRENT=!ParaMonteInterface_SRC_DIR!\!LANG_NAME!
 
 echo. 
 echo. -- MatDRAM - generating the MatDRAM library examples in !LANG_NAME! language...
-echo. -- MatDRAM - The MatDRAM !LANG_NAME! examples directory: !MatDRAM_BLD_DIR!
+echo. -- MatDRAM - The MatDRAM !LANG_NAME! examples directory: !MatDRAM_EXP_DIR!
 
 for %%e in (!EXAM_LIST!) do ( 
 
     set EXAM_NAME=%%e
 
-    set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_BLD_DIR!\!EXAM_NAME!
+    set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_EXP_DIR!\!EXAM_NAME!
     echo. -- MatDRAM - The MatDRAM library !EXAM_NAME! example directory: !MatDRAM_BLD_DIR_CURRENT!
     if exist !MatDRAM_BLD_DIR_CURRENT! (
         echo. -- MatDRAM - previous example build detected. deleting the old contents...
@@ -246,7 +247,7 @@ if %ERRORLEVEL%==0 (
 :: copy the first example to the bin directory
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_BLD_DIR!\mvn
+set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_EXP_DIR!\mvn
 
 set MatDRAMExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\libparamonte_MatDRAM
 
@@ -289,7 +290,7 @@ if !ParaMonteExample_RUN_ENABLED!==true (
 
         REM The MatDRAM library example build and run if requested
 
-        set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_BLD_DIR!\!EXAM_NAME!
+        set MatDRAM_BLD_DIR_CURRENT=!MatDRAM_EXP_DIR!\!EXAM_NAME!
         cd !MatDRAM_BLD_DIR_CURRENT!
 
         matlab -batch "main" && (
