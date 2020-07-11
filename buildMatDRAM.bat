@@ -326,7 +326,7 @@ echo. -- MatDRAM - copying the MatDRAM library files to the test folder...
 echo. -- MatDRAM - from: !MatDRAM_BLD_DIR_CURRENT! %= no need for final slash here =%
 echo. -- MatDRAM -   to: !MatDRAMTest_BLD_DIR! %= final slash tells this is folder =%
 xcopy /s /Y /e /v /i "!MatDRAM_BLD_DIR_CURRENT!" "!MatDRAMTest_BLD_DIR!" || goto LABEL_copyErrorOccured
-del main.m logfunc.m LICENSE
+cd !MatDRAMTest_BLD_DIR! && del main.m logfunc.m LICENSE
 copy /y "!MatDRAMTest_SRC_DIR!\testParaMonte.m" "!MatDRAMTest_BLD_DIR!\testParaMonte.m" || goto LABEL_copyErrorOccured
 copy /y "!MatDRAMTest_SRC_DIR!\getLogFunc.m" "!MatDRAMTest_BLD_DIR!\getLogFunc.m" || goto LABEL_copyErrorOccured
 
