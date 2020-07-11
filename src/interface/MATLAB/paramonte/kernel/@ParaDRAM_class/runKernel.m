@@ -362,7 +362,6 @@ if flag2, self.writeOutput2(); end
                     % self.RestartFile.format
                     fprintf(self.RestartFile.unit, "meanAccRateSinceStart" + "\n" + "%.16f", meanAccRateSinceStart);
                     self.Proposal.writeRestartFile(); % xxx
-
                 end
 
             else

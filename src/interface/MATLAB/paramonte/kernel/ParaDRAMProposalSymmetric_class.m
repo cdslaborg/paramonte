@@ -485,13 +485,13 @@ classdef ParaDRAMProposalSymmetric_class < handle
 
                 self.Global.mv_adaptiveScaleFactorSq_save   = (meanAccRateSinceStart / self.Global.mc_targetAcceptanceRate)^self.Global.mc_ndimInverse;
                 adaptiveScaleFactor             = sqrt(self.Global.mv_adaptiveScaleFactorSq_save);
-              
+
                 % update the Cholesky diagonal elements
                 self.Global.comv_chol(:,:,1)    = self.Global.comv_chol(:,:,1) * adaptiveScaleFactor;
-                
+
                 % update covariance matrix
                 self.Global.comv_covMat         = self.Global.comv_covMat * self.Global.mv_adaptiveScaleFactorSq_save;
-              
+
             end
 
             % compute the adaptivity only if any updates has occurred
@@ -503,7 +503,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
                 try
                     logSqrtDetSum   = 0.5 * log(det(CovMatUpperCurrent(:,:,1)));
                 catch exception
-                    self.Global.mv_Err.msg  = FUNCTION_NAME                                                                                                     ...
+                    self.Global.mv_Err.msg  = FUNCTION_NAME                                                                                         ...
                                 + ": Error occurred while computing the Cholesky factorization of "                                                 ...
                                 + "a matrix needed for the computation of the Adaptation measure. "                                                 ...
                                 + "Such error is highly unusual, and requires an in depth investigation of the case. "                              ...
@@ -549,11 +549,10 @@ classdef ParaDRAMProposalSymmetric_class < handle
 
             % update the Cholesky factor of the delayed-rejection-stage proposal distributions
             for istage = 2 : self.Global.mc_DelayedRejectionCount + 1
-
                 self.Global.comv_chol(:,:,istage) = self.Global.comv_chol(:,:,istage-1) * self.Global.mc_DelayedRejectionScaleFactorVec(istage-1);
-
             end
             % There is no need to check for positive-definiteness of the comv_CholDiagLower, it's already checked on the first image.
+
         end
 
     %*******************************************************************************************************************************

@@ -42,17 +42,17 @@ close all;
 fclose('all');
 clear classes;
 format compact; format long;
-pmlibRootDir = '../'; % set this path to the paramonte library root dir
-addpath( genpath(pmlibRootDir) ) 
-filePath = mfilename('fullpath');
-[scriptPath,fileName,fileExt] = fileparts(filePath); cd(scriptPath); % Change working directory to source code directory.
-cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
+%pmlibRootDir = '../'; % set this path to the paramonte library root dir
+%addpath( genpath(pmlibRootDir) ) 
+%filePath = mfilename('fullpath');
+%[scriptPath,fileName,fileExt] = fileparts(filePath); cd(scriptPath); % Change working directory to source code directory.
+%cd(fileparts(mfilename('fullpath'))); % Change working directory to source code directory.
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 %pm = paramonte("matlab");
-%pm = paramonte(); % "matlab"
-%pmpd = pm.ParaDRAM();
-pmpd = ParaDRAM_class();
+pm = paramonte(); % "matlab"
+pmpd = pm.ParaDRAM();
+%pmpd = ParaDRAM_class();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 % return
 % %pmpd.inputFile = './paramonte.in';
@@ -73,11 +73,11 @@ pmpd = ParaDRAM_class();
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMonte variables...
 %pmpd.spec.sampleSize                            = 100;                         % Works
-pmpd.spec.randomSeed                            = 7;                            % Works
+%pmpd.spec.randomSeed                            = 7;                            % Works
 pmpd.spec.description                           = "Hi there";                   % Works
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 flag = 0;
-flag = 1;
+%flag = 1;
 if flag
     file    = "./out/temp/A_A_A_A";
     if exist(file + "_process_1_chain.txt"),     delete(file + "_process_1_chain.txt");     end
@@ -87,25 +87,25 @@ if flag
     if exist(file + "_process_1_sample.txt"),    delete(file + "_process_1_sample.txt");    end
     pmpd.spec.outputFileName                    = file;
 else
-    pmpd.spec.outputFileName                    = "./out/temp/restart";
+    pmpd.spec.outputFileName                    = "./out/temp/chain1000";
 end
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 %pmpd.spec.outputDelimiter                       = "|";                          % Works
-pmpd.spec.chainFileFormat                       = "compact";                    % Works
+%pmpd.spec.chainFileFormat                       = "compact";                    % Works
 %pmpd.spec.variableNameList                      = ["Variable-X", "Variable-Y"]; % Works
 pmpd.spec.restartFileFormat                     = "ASCII";                      % Works
 %pmpd.spec.outputColumnWidth                     = 25;                           % Works
 %pmpd.spec.outputRealPrecision                   = 17;                           % Works
 %pmpd.spec.silentModeRequested                   = 0;                            % Works
-%pmpd.spec.domainLowerLimitVec                   = [-4,-4];                      % Works
-%pmpd.spec.domainUpperLimitVec                   = [+4,+4];                      % Works
+%pmpd.spec.domainLowerLimitVec                   = -1.e300 * ones(5,1);%[-4,-4];                      % Works
+%pmpd.spec.domainUpperLimitVec                   = +1.e300 * ones(5,1);%[+4,+4];                      % Works
 %pmpd.spec.progressReportPeriod                  = 100;                          % Works
 %pmpd.spec.targetAcceptanceRate                  = 0.5;                          % Works
 % pmpd.spec.maxNumDomainCheckToWarn               = [];
 % pmpd.spec.maxNumDomainCheckToStop               = [];
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMCMC variables...
-pmpd.spec.chainSize                             = 40000;                         % Works
+pmpd.spec.chainSize                             = 2000;                         % Works
 %pmpd.spec.startPointVec                         = [0.6,1.2];                    % Works
 %pmpd.spec.sampleRefinementCount                 = 1;                            % Works
 %pmpd.spec.sampleRefinementMethod                = "someRandomName";             % Works
@@ -130,11 +130,14 @@ pmpd.spec.chainSize                             = 40000;                        
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            ndim = 5;
+            ndim = 2;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %return
 pmpd.runSampler(ndim, @getLogFunc);
 fclose('all');
+
+% scatter(pmpd.Chain.State(1,:),pmpd.Chain.State(2,:));
+% plot3(pmpd.Chain.State(1,:),pmpd.Chain.State(2,:),pmpd.Chain.LogFunc);
 
 % for i = 1 : ndim
 % 
