@@ -64,13 +64,13 @@ classdef Constants < handle
         NULL_RK         = -Constants.HUGE_RK
         NULL_IK         = -Constants.HUGE_IK
         NULL_SK         = char(30)                                      % This must remain a single character as it is assumed in multiple routines: Record separator
-        NLC             = convertCharsToStrings(newline)                                       % new line character
+        NLC             = convertCharsToStrings(newline)                % new line character
         CARRIAGE_RETURN = char(13)
         ESCAPE          = char(27)
         CLOCK_TICK      = '|/-\';
         FILE_TYPE       = struct('binary', "binary", 'matlab', 'MATLAB', 'python', "Python", 'julia', "Julia", 'ascii', "ASCII", 'rlang', "R");
         FILE_EXT        = struct('binary', ".bin", 'matlab', ".m", 'python', ".py", 'julia', ".jl", 'ascii', ".txt", 'r', ".R" );
-        PMSM            = struct('count', "4", 'ParaDRAM', "ParaDRAM", 'ParaHDMC', "ParaHDMC", 'ParaTemp', "ParaTemp", 'ParaNest', "ParaNest");
+        PMSM            = struct('count', "5", 'MatDRAM', "MatDRAM", 'ParaDRAM', "ParaDRAM", 'ParaHDMC', "ParaHDMC", 'ParaTemp', "ParaTemp", 'ParaNest', "ParaNest");
 
     end
 
