@@ -105,7 +105,7 @@ pmpd.spec.restartFileFormat                     = "ASCII";                      
 % pmpd.spec.maxNumDomainCheckToStop               = [];
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
     ...ParaMCMC variables...
-pmpd.spec.chainSize                             = 2000;                         % Works
+pmpd.spec.chainSize                             = 1000;                         % Works
 %pmpd.spec.startPointVec                         = [0.6,1.2];                    % Works
 %pmpd.spec.sampleRefinementCount                 = 1;                            % Works
 %pmpd.spec.sampleRefinementMethod                = "someRandomName";             % Works
@@ -152,7 +152,7 @@ fclose('all');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%system(pmpd.LogFile.Path.modified);
+system(pmpd.LogFile.Path.modified);
 %system(pmpd.TimeFile.Path.modified);
 %system(pmpd.ChainFile.Path.modified);
 %system(pmpd.SampleFile.Path.modified);
