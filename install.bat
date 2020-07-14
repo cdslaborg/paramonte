@@ -300,7 +300,6 @@ if !MatDRAM_ENABLED!==true (
         exit /B 1
     )
     goto LABEL_EOF
-    echo. "HEEEEEEEEEEEEEEEEEEEEEEEEELLLL"
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -596,32 +595,32 @@ for %%G in ("!LANG_LIST:/=" "!") do (
     REM :: if MATLAB, generate MatDRAM
     REM ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    if %%~G==matlab (
-
-        echo.
-        echo.-- !INSTALL_SCRIPT_NAME! - Generating MATLAB MatDRAM library...
-        echo.
-
-        set MatDRAM_ORIGIN_PATH=.\bin\MATLAB
-        set MatDRAM_DESTINATION_PATH=.\bin\MatDRAM
-        echo.-- !INSTALL_SCRIPT_NAME! - copying the MatDRAM library files...
-        echo.-- !INSTALL_SCRIPT_NAME! - from: !MatDRAM_ORIGIN_PATH!         %= no need for final slash here =%
-        echo.-- !INSTALL_SCRIPT_NAME! -   to: !MatDRAM_DESTINATION_PATH!\   %= final slash tells this is folder =%
-        xcopy /s /Y "!MatDRAM_ORIGIN_PATH!" "!MatDRAM_DESTINATION_PATH!\" || goto LABEL_copyErrorOccured
-
-        REM add the MatDRAM indicator file
-
-        REM xcopy /s /Y "!MatDRAM_DESTINATION_PATH!\paramonte\kernel\.MatDRAM" "!MatDRAM_DESTINATION_PATH!\auxil\" || goto LABEL_copyErrorOccured
-
-        REM delete the binary files
-
-        rd /s /q "!MatDRAM_DESTINATION_PATH!\paramonte\lib" >nul 2>&1 || goto LABEL_delErrorOccured
-
-        REM delete the mpi example file
-
-        del /s /q "!MatDRAM_DESTINATION_PATH!\main_mpi.m" >nul 2>&1 || goto LABEL_delErrorOccured
-
-    )
+REM    if %%~G==matlab (
+REM
+REM        echo.
+REM        echo.-- !INSTALL_SCRIPT_NAME! - Generating MATLAB MatDRAM library...
+REM        echo.
+REM
+REM        set MatDRAM_ORIGIN_PATH=.\bin\MATLAB
+REM        set MatDRAM_DESTINATION_PATH=.\bin\MatDRAM
+REM        echo.-- !INSTALL_SCRIPT_NAME! - copying the MatDRAM library files...
+REM        echo.-- !INSTALL_SCRIPT_NAME! - from: !MatDRAM_ORIGIN_PATH!         %= no need for final slash here =%
+REM        echo.-- !INSTALL_SCRIPT_NAME! -   to: !MatDRAM_DESTINATION_PATH!\   %= final slash tells this is folder =%
+REM        xcopy /s /Y "!MatDRAM_ORIGIN_PATH!" "!MatDRAM_DESTINATION_PATH!\" || goto LABEL_copyErrorOccured
+REM
+REM        REM add the MatDRAM indicator file
+REM
+REM        REM xcopy /s /Y "!MatDRAM_DESTINATION_PATH!\paramonte\kernel\.MatDRAM" "!MatDRAM_DESTINATION_PATH!\auxil\" || goto LABEL_copyErrorOccured
+REM
+REM        REM delete the binary files
+REM
+REM        rd /s /q "!MatDRAM_DESTINATION_PATH!\paramonte\lib" >nul 2>&1 || goto LABEL_delErrorOccured
+REM
+REM        REM delete the mpi example file
+REM
+REM        del /s /q "!MatDRAM_DESTINATION_PATH!\main_mpi.m" >nul 2>&1 || goto LABEL_delErrorOccured
+REM
+REM    )
 
 )
 

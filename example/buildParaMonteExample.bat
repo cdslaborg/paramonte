@@ -354,7 +354,7 @@ if %ERRORLEVEL%==0 (
 for %%e in (!EXAM_LIST!) do ( 
 
     set EXAM_NAME=%%e
-    echo. -- ParaMonteExample!LANG_NAME! - Building and running the ParaMonte library's !EXAM_NAME! example.
+    echo. -- ParaMonteExample!LANG_NAME! - Building/running the ParaMonte library's !EXAM_NAME! example.
 
     REM The ParaMonte library example build and run if requested
 

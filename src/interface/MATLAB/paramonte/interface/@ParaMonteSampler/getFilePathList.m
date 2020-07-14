@@ -62,7 +62,7 @@ function filePathList = getFilePathList(self,file,fileType)
         pattern = file;
         if ~endsWith(file,suffix)
             self.Err.msg    = "The name of the input file:" + newline + newline ...
-                            + "    " + file + newline + newline ...
+                            + "    """ + file + """" + newline + newline ...
                             + "does not end with the expected suffix '" + suffix + "' for a " + fileType + " file type.";
             self.Err.warn();
         end
@@ -94,14 +94,15 @@ function filePathList = getFilePathList(self,file,fileType)
             if contains(dirList(ifile).name,suffix)
                 counter = counter + 1;
                 filePathModified = fullfile( string(dirList(ifile).folder) , string(dirList(ifile).name) );
-                filePathModified = string( strrep(filePathModified,'\','\\') );
+                %filePathModified = string( strrep(filePathModified,'\','\\') );
                 filePathList = [ filePathList , filePathModified ];
             end
         end
 
         if isempty(filePathList)
             self.Err.msg    = "Failed to detect any " + fileType + " files with the requested pattern:" + newline + newline ...
-                            + "    " + strrep(pattern,'\','\\') + newline + newline ...
+                            ... + "    " + strrep(pattern,'\','\\') + newline + newline ...
+                            + "    " + pattern + newline + newline ...
                             + "Provide a string as the value of the simulation specification, " + propertyName + ", that either" + newline + newline ...
                             + "    - points to one or more " + fileType + " files, or," + newline ...
                             + "    - represents the unique name of a " + self.methodName + " simulation." + newline ...
@@ -115,6 +116,7 @@ function filePathList = getFilePathList(self,file,fileType)
     end
 
     if ~self.mpiEnabled
-        self.Err.msg = string(length(filePathList)) + " files detected matching the pattern: """ +  strrep(pattern,'\','\\') + """";
+        %self.Err.msg = string(length(filePathList)) + " files detected matching the pattern: """ +  strrep(pattern,'\','\\') + """";
+        self.Err.msg = string(length(filePathList)) + " files detected matching the pattern: """ +  pattern + """";
         self.Err.note();
     end

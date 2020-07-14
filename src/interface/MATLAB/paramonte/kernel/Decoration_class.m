@@ -220,7 +220,7 @@ classdef Decoration_class < handle
             %-----------------------------------------------------------------------------------------------------------------------
             if ~isempty(string)
                 for i = 1 : thisManyTimes
-                    fprintf(logFileUnit, string + "\n");
+                    fprintf(logFileUnit, "%s\n", string);
                 end
             elseif ~(~isempty(marginBot) && ~isempty(marginTop))
                 for i = 1 : thisManyTimes

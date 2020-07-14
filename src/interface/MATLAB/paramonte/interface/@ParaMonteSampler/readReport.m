@@ -35,11 +35,11 @@
 %   readReport(file,delimiter)
 %
 %   Return a list of the contents of a set of ParaMonte simulation(s) output
-%   sample files whose names begin the user-provided prefix, specified,
+%   report files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName.
 %
 %   WARNING: This method is to be only used for post-processing of the output
-%   sample file(s) of an already finished simulation. It is NOT meant to be
+%   report file(s) of an already finished simulation. It is NOT meant to be
 %   called by all processes in parallel mode, although it is possible.
 %
 %   Parameters
@@ -47,12 +47,12 @@
 %
 %       file (optional)
 %
-%           A string representing the path to the sample file with the
+%           A string representing the path to the report file with the
 %           default value of []. The path only needs to uniquely identify
-%           the name of the simulation to which the sample file belongs.
+%           the name of the simulation to which the report file belongs.
 %           For example, specifying "./mydir/mysim" as input will lead to
 %           a search for a file that begins with "mysim" and ends with
-%           "_sample.txt" inside the directory "./mydir/".
+%           "_report.txt" inside the directory "./mydir/".
 %           If there are multiple files with such name, then all of them
 %           will be read and returned as a list.
 %           If this input argument is not provided by the user, the
@@ -60,7 +60,7 @@
 %           will be used instead.
 %           ======================================================
 %           WARNING: At least one of the two mentioned routes must
-%           provide the path to the sample file. Otherwise,
+%           provide the path to the report file. Otherwise,
 %           this method will break by calling sys.exit().
 %           ======================================================
 %
@@ -71,32 +71,6 @@
 %           or,
 %
 %               pmpd.spec.outputFileName = "./out/test_run_";
-%               pmpd.readReport();
-%
-%           Both of the above examples are equivalent.
-%           The latter is recommended as it is less confusing.
-%
-%       delimiter (optional)
-%
-%           Optional input string representing the delimiter used in the output
-%           sample file. If it is not provided as input argument, the value of
-%           the corresponding object's `spec` attribute `outputDelimiter`
-%           will be used instead. If none of the two are available,
-%           the default comma delimiter "," will be assumed and used.
-%
-%           Example usage:
-%
-%               pmpd.readReport("./out/test_run_", " ");
-%
-%           or,
-%
-%               pmpd.spec.outputDelimiter = " ";
-%               pmpd.readReport("./out/test_run_");
-%
-%           or,
-%
-%               pmpd.spec.outputFileName = "./out/test_run_";
-%               pmpd.spec.outputDelimiter = " ";
 %               pmpd.readReport();
 %
 %           Both of the above examples are equivalent.
@@ -117,9 +91,50 @@
 %                   number of dimensions of the domain of the objective function
 %                   for which the report was generated.
 %
-%           If no output argument is provided, a sampleList property will be added
-%           to the parent sampler-object to which the method readMarkovChain() belongs.
+%               contents
+%                   a char vector containing the entire contents of the report file.
+%
+%               lineList
+%                   a one-dimensional cell array whose length is the number of 
+%                   the report file. Each element of the array contains one line of 
+%                   the report file. 
+%
+%               setup
+%                   a structure containing information about the simulation setup as
+%                   it appears in the report file, as separate components:
+%
+%                       io
+%                           contains information about the input/output of the 
+%                           simulation. 
+%
+%                       library
+%                           contains information about the ParaMonte library that 
+%                           was used to generate the report file, including the 
+%                           ParaMonte Banner, the simulation environment, the 
+%                           computing platform, ... .
+%
+%               spec
+%                   a string containing the entire simulation specifications that 
+%                   appear in the report file. 
+%
+%               stats
+%                   a structure containing a variety of post-processing information
+%                   about the simulation that has been performed, including 
+%                   but not limited to, 
+%
+%                       -   timing of the simulation. 
+%                       -   the number of function calls of the simulation. 
+%                       -   extensive information about the parallelization 
+%                           of the simulation, if run in parallel. 
+%                       -   summary statistical information about the results 
+%                           of the simulation.
+%
+%           If no output argument is provided, a reportList property will be added
+%           to the parent sampler-object to which the method readReport() belongs.
 %           return value of the method. Otherwise, the list will be stored in a
+%
+%           WARNING: If the contents of the report is manipulated, there is no 
+%           WARNING: guarantee of the correct functionality of readReport() method.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -164,19 +179,42 @@ function [varargout] = readReport(self,varargin)
     % output the reportList
 
     if nargout==0
-        outputFullName = self.objectName + "." + outputName;
+        outputListFullName = self.objectName + "." + outputName;
         prop=outputName; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
         self.(outputName) = reportList;
-        self.Err.msg    = "The processed " + fileType + " file(s) are now stored in the newly-created component """ + outputFullName + """ of the " + self.methodName + " object as a cell array. " ...
+        self.Err.msg    = "The processed " + fileType + " file(s) are now stored in the newly-created component """ + outputListFullName + """ of the " + self.methodName + " object as a cell array. " ...
                         + "For example, to access the contents of the first (or the only) " + fileType + " file, try:";
     elseif nargout==1
-        varargout{1} = self.readOutput(callerName,varargin{:});
+        varargout{1} = reportList;
+        outputListFullName = "OUTPUT_CELL_ARRAY";
     else
         self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file)" ...
                         + "optionally outputs one variable (" + outputName + ") or nothing. If the latter is chosen by the user " ...
                         + "(that is, no output is provivded to the method, " + self.objectName + "." + callerName + "), then the output " + outputName + ...
                         + " will be instead added as a component of the " + self.object + " object.";
         self.Err.abort();
+    end
+
+    if ~self.mpiEnabled
+        self.Err.marginTop = 1;
+        self.Err.marginBot = 1;
+        self.Err.msg    = self.Err.msg ...
+                        + newline + newline ...
+                        + "    " + outputListFullName + "{1}.contents" + newline ...
+                        + newline ...
+                        + "To access the simulation statistics and information, try for example," + newline ...
+                        + newline ...
+                        + "    " + outputListFullName + "{1}.setup              %% to get information about the simulation setup." + newline ...
+                        + "    " + outputListFullName + "{1}.lineList           %% to get the list of lines of the report file." + newline ...
+                        + "    " + outputListFullName + "{1}.stats.time         %% to get the timing information of the simulation." + newline ...
+                        + "    " + outputListFullName + "{1}.stats.chain        %% to get the statistics of the simulation output sample." + newline ...
+                        + "    " + outputListFullName + "{1}.stats.numFuncCall  %% to get information about the number of function calls." + newline ...
+                        + "    " + outputListFullName + "{1}.stats.parallelism  %% to get information about the simulation parallelism." + newline ...
+                        + "    " + outputListFullName + "{1}.spec               %% to get the simulation specification in the report file." + newline ...
+                        + newline ...
+                        + "For more information and examples on the usage, visit:" + newline + newline ...
+                        + "    " + href(self.website.home.url);
+        self.Err.note();
     end
 
 end

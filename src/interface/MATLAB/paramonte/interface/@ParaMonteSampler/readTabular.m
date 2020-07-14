@@ -85,7 +85,7 @@ function varargout = readTabular(self, varargin) % callerName, file, delimiter
     outputList = cell(filePathListLen,1);
     for ifile = filePathListLen:-1:1
         if ~self.mpiEnabled
-            self.Err.msg = "processing file: " + filePathList(ifile);
+            self.Err.msg = "processing file: """ + filePathList(ifile) + """";
             self.Err.marginTop = 1;
             self.Err.marginBot = 0;
             self.Err.note();
