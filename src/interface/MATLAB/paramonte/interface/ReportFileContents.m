@@ -77,9 +77,9 @@ classdef ReportFileContents < OutputFileContents
             self.prefix = convertStringsToChars(self.methodName + " - NOTE:");
 
             if ispc
-                self.contents = fileread(file);
-            else
                 self.contents = strrep(fileread(file),char(13),'');
+            else
+                self.contents = fileread(file);
             end
             self.contents = strrep(self.contents,self.newline,[' ',self.newline]);
             self.lineList = strsplit(self.contents,self.newline); % strtrim()
@@ -274,6 +274,7 @@ classdef ReportFileContents < OutputFileContents
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function section = parseSection(self,topic)
+            lineCounterLastSuccess = self.lineCounter;
             section = [];
             topicFound = false;
             while true
@@ -294,6 +295,7 @@ classdef ReportFileContents < OutputFileContents
                 section = self.concat(lineStart,self.lineCounter);
             else
                 self.reportParseFailure(topic);
+                self.lineCounter = lineCounterLastSuccess;
             end
         end
 
@@ -310,7 +312,7 @@ classdef ReportFileContents < OutputFileContents
         function parseStats(self)
 
             self.stats = struct();
-            if strcmp(self.methodName,"ParaDRAM")
+            if strcmp(self.methodName,"ParaDRAM") || strcmp(self.methodName,"MatDRAM")
 
                 while true
 
