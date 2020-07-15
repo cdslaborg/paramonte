@@ -246,102 +246,102 @@ function runSampler ( self          ...
         precision2  = "%0." +                   15                  + "f";
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Total number of accepted function calls (unique samples):" );
-        self.Decor.write( self.LogFile.unit, 0, 1, 1, "Stats.NumFunCall.accepted" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.numFuncCall.accepted" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.NumFunCall.accepted ) );
         self.Err.msg    = "This is the total number of accepted function calls (unique samples).";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Total number of accepted or rejected function calls:");
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.NumFunCall.acceptedRejected" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.numFuncCall.acceptedRejected" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.NumFunCall.acceptedRejected ) );
         self.Err.msg    = "This is the total number of accepted or rejected function calls.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Total number of accepted or rejected or delayed-rejection (if any requested) function calls:");
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.NumFunCall.acceptedRejectedDelayed" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.numFuncCall.acceptedRejectedDelayed" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.NumFunCall.acceptedRejectedDelayed ) );
         self.Err.msg    = "This is the total number of accepted or rejected or delayed-rejection (if any requested) function calls.";
         self.Err.note();
 
-        %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Average MCMC acceptance rate:");
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Chain.MeanAccRate(self.Stats.NumFunCall.accepted)" );
+        %self.Decor.write( self.LogFile.unit, 1, 0, 1, "stats.chain.verbose.efficiency.meanAcceptanceRate");
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.efficiency.meanAcceptanceRate" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted), precision2 ) );
         self.Err.msg    = "This is the average MCMC acceptance rate.";
         self.Err.note();
 
         mcmcSamplingEfficiency = self.Stats.NumFunCall.accepted / self.Stats.NumFunCall.acceptedRejected;
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "MCMC sampling efficiency [ = acceptedFunctionCalls / acceptedPlusRejectedFunctionCalls ]:");
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.NumFunCall.accepted / Stats.NumFunCall.acceptedRejected" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.efficiency.acceptedOverAcceptedRejected" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( mcmcSamplingEfficiency, precision2 ) );
         self.Err.msg    = "This is the MCMC sampling efficiency given the accepted and rejected function calls, that is," ...
                         + "the number of accepted function calls divided by the number of (accepted + rejected) function calls.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "MCMC sampling efficiency (including delayed rejections, if any requested) [ = acceptedFunctionCalls / acceptedPlusRejectedPlusDelayedRejectionFunctionCalls ]:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.NumFunCall.accepted / Stats.NumFunCall.acceptedRejectedDelayed" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.efficiency.acceptedOverAcceptedRejectedDelayed" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( (self.Stats.NumFunCall.accepted / self.Stats.NumFunCall.acceptedRejectedDelayed), precision2 ) );
         self.Err.msg    = "This is the MCMC sampling efficiency given the accepted, rejected, and delayed-rejection (if any requested) function calls, that is, " ...
                         + "the number of accepted function calls divided by the number of (accepted + rejected + delayed-rejection) function calls.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Total runtime in seconds:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Timer.total" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.time.total" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Timer.total, precision2 ) );
         self.Err.msg    = "This is the total runtime in seconds.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Average effective time cost of each accepted function call, in seconds:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Timer.total / Stats.NumFunCall.accepted" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.time.perFuncCallAccepted" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Timer.total / self.Stats.NumFunCall.accepted, precision2 ) );
         self.Err.msg    = "This is the average effective time cost of each accepted function call, in seconds.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Average effective time cost of each accepted or rejected function call, in seconds:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Timer.total / Stats.NumFunCall.acceptedRejected, precision2" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.time.perFuncCallAcceptedRejected" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Timer.total / self.Stats.NumFunCall.acceptedRejected, precision2 ) );
         self.Err.msg    = "This is the average effective time cost of each accepted or rejected function call, in seconds.";
         self.Err.note();
 
-        if self.SpecDRAM.delayedRejectionCount.val > 0
-            %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Average effective time cost of each accepted or rejected or delayed-rejection function call, in seconds:" );
-            self.Decor.write( self.LogFile.unit, 1, 1, 1, "Timer.total / Stats.NumFunCall.acceptedRejectedDelayed" );
-            self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Timer.total / self.Stats.NumFunCall.acceptedRejectedDelayed ) );
-            self.Err.msg    = "This is the average effective time cost of each accepted or rejected function call (including delayed-rejections, if any requested), in seconds.";
-            self.Err.note();
-        end
+        
+        %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Average effective time cost of each accepted or rejected or delayed-rejection function call, in seconds:" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.time.perFuncCallAcceptedRejectedDelayed" );
+        self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Timer.total / self.Stats.NumFunCall.acceptedRejectedDelayed ) );
+        self.Err.msg    = "This is the average effective time cost of each accepted or rejected function call (including delayed-rejections, if any requested), in seconds.";
+        self.Err.note();
+        
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Average pure time cost of each function call, in seconds:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.avgTimePerFunCalInSec" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.time.perFuncCall" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.avgTimePerFunCalInSec ) );
         self.Err.msg    = "This is the average pure time cost of each function call, in seconds.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Number of processes (images):" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Image.count" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.parallelism.current.numProcess" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Image.count ) );
         self.Err.msg    = "This is the number of processes (images) used in this simulation.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Burnin location in the compact chain, based on the occurrence likelihood:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.BurninLoc.compact" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.compact.burnin.location.likelihoodBased" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.BurninLoc.compact ) );
         self.Err.msg    = "This is the burnin location in the compact chain, based on the occurrence likelihood.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Burnin location in the compact chain, based on the value of burninAdaptationMeasure:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.AdaptationBurninLoc.compact" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.compact.burnin.location.adaptationBased" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.AdaptationBurninLoc.compact ) );
         self.Err.msg    = "This is the burnin location in the compact chain, based on the value of burninAdaptationMeasure simulation specification.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Burnin location in the verbose (Markov) chain, based on the occurrence likelihood:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.BurninLoc.verbose" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.burnin.location.likelihoodBased" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.BurninLoc.verbose ) );
         self.Err.msg    = "This is the burnin location in the verbose (Markov) chain, based on the occurrence likelihood.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Burnin location in the verbose (Markov) chain, based on the value of burninAdaptationMeasure:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.AdaptationBurninLoc.verbose" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.burnin.location.adaptationBased" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.AdaptationBurninLoc.verbose ) );
         self.Err.msg    = "This is the burnin location in the verbose (Markov) chain, based on the value of burninAdaptationMeasure simulation specification.";
         self.Err.note();
@@ -354,35 +354,37 @@ function runSampler ( self          ...
         end
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Maximum-logFunc value (maximum of the user-specified objective function):" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.LogFuncMode.val" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.logFunc.max" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.LogFuncMode.val, precision2 ) );
         self.Err.msg    = "This is the maximum logFunc value (the maximum of the user-specified objective function).";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Location of the first occurrence of maximum-logFunc in the compact chain:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.LogFuncMode.Loc.compact" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.compact.logFunc.max.location" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.LogFuncMode.Loc.compact ) );
         self.Err.msg    = "This is the location of the first occurrence of the maximum logFunc in the compact chain.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Location of the first occurrence of maximum-logFunc in the verbose chain:" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.LogFuncMode.Loc.verbose" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.logFunc.max.location" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str( self.Stats.LogFuncMode.Loc.verbose ) );
         self.Err.msg    = "This is the location of the first occurrence of the maximum logFunc in the verbose (Markov) chain.";
         self.Err.note();
 
         %self.Decor.write( self.LogFile.unit, 1, 0, 1, "Maximum-logFunc coordinates (mode of the user-specified objective function):" );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.LogFuncMode.Crd" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.logFunc.max.state" );
         self.SpecBase.variableNameList.MaxLen.val = max( self.SpecBase.variableNameList.MaxLen.val, self.SpecBase.outputColumnWidth.val );
         self.SpecBase.variableNameList.MaxLen.val = max( self.SpecBase.variableNameList.MaxLen.val, self.SpecBase.outputRealPrecision.val + 7 );
         self.SpecBase.variableNameList.MaxLen.str = num2str( self.SpecBase.variableNameList.MaxLen.val + 1 );
 
+        fprintf( self.LogFile.unit, spaces8);
         fprintf( self.LogFile.unit, formatStr, self.SpecBase.variableNameList.Val{1:ndim} );
         fprintf( self.LogFile.unit, "\n");
+        fprintf( self.LogFile.unit, spaces8);
         for i = 1 : ndim
             fprintf( self.LogFile.unit, formatStr, num2str(self.Stats.LogFuncMode.Crd(i), precision) );
         end
-        self.Decor.write(self.LogFile.unit, 0, 1, [], " ");
+        self.Decor.write(self.LogFile.unit, 0, 0, [], " ");
         self.Err.msg    = "This is the coordinates, within the domain of the user-specified objective function, where the maximum NOTE: logFunc occurs.";
         self.Err.note();
 
@@ -451,12 +453,12 @@ function runSampler ( self          ...
         self.Err.marginTop          = 1;
         self.Err.outputUnit         = self.LogFile.unit;
 
-        self.Decor.write( self.LogFile.unit, 0, 1, 1, "Stats.Chain.count" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.length.burninExcluded" );
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str(self.Stats.Chain.count) );
         self.Err.msg    = "This is the length of the verbose (Markov) Chain excluding burnin.";
         self.Err.note();
 
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.Chain.Mean, Stats.Chain.CovMat(i,i)" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.avgStd" );
         fprintf(self.LogFile.unit, spaces8);
         fprintf( self.LogFile.unit, formatStr, "variableName", "Mean", "Standard Deviation", newline );
         for i = 1 : ndim
@@ -466,7 +468,7 @@ function runSampler ( self          ...
         self.Err.msg    = "This is the mean and standard deviation of the verbose (Markov) chain variables.";
         self.Err.note();
 
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.Chain.CovMat" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.covmat" );
         fprintf(self.LogFile.unit, spaces8);
         fprintf( self.LogFile.unit, formatStr, " ", self.SpecBase.variableNameList.Val{1:ndim}, newline );
         for i = 1 : ndim
@@ -480,7 +482,7 @@ function runSampler ( self          ...
         self.Err.msg    = "This is the covariance matrix of the verbose (Markov) chain.";
         self.Err.note();
 
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.Chain.CorMat" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.cormat" );
         fprintf(self.LogFile.unit, spaces8);
         fprintf( self.LogFile.unit, formatStr, " ", self.SpecBase.variableNameList.Val{1:ndim}, newline );
         for i = 1 : ndim
@@ -494,7 +496,7 @@ function runSampler ( self          ...
         self.Err.msg    = "This is the correlation matrix of the verbose (Markov) chain.";
         self.Err.note();
 
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.Chain.Quantile" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.verbose.quantile" );
         fprintf(self.LogFile.unit, spaces8);
         fprintf( self.LogFile.unit, formatStr, "Quantile", self.SpecBase.variableNameList.Val{1:ndim}, newline );
         for iq = 1 : QPROB.count
@@ -536,7 +538,7 @@ function runSampler ( self          ...
 
         % compute the maximum integrated autocorrelation times for each variable
 
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "RefinedChain.IAC" );
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.iac" );
         fprintf(self.LogFile.unit, spaces8);
         fprintf(self.LogFile.unit, formatStr, "RefinementStage", "SampleSize", "IAC(SampleLogFunc)" );
         for i = 1 : ndim
@@ -557,20 +559,32 @@ function runSampler ( self          ...
         % report the final Effective Sample Size (ESS) based on IAC
 
         effectiveSampleSize = sum( self.RefinedChain.Weight(1:self.RefinedChain.Count(self.RefinedChain.numRefinement+1).compact) );
-        self.Decor.write( self.LogFile.unit, 1, 1, 1, "effectiveSampleSize = sum( self.RefinedChain.Weight(1:self.RefinedChain.Count(self.RefinedChain.numRefinement+1).compact) )");
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.ess");
         self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str(effectiveSampleSize) );
         self.Err.msg    = "This is the estimated Effective (decorrelated) Sample Size (ESS) of the final refined chain.";
         self.Err.note();
-
-        if self.SpecDRAM.delayedRejectionCount.val == 0
-            self.Decor.write( self.LogFile.unit, 1, 1, 1, "effectiveSampleSize / self.Stats.NumFunCall.acceptedRejected" );
-            self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str(effectiveSampleSize / self.Stats.NumFunCall.acceptedRejected,precision2) );
-        else
-            self.Decor.write( self.LogFile.unit, 1, 1, 1, "effectiveSampleSize / self.Stats.NumFunCall.acceptedRejectedDelayed" );
-            self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str(effectiveSampleSize / self.Stats.NumFunCall.acceptedRejectedDelayed,precision2) );
-        end
-        self.Err.msg    = "This is the estimated Effective (decorrelated) Sample Size (ESS) of the final refined chain.";
+        
+        self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.efficiency.essOverAccepted" );
+        self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str(effectiveSampleSize / self.Stats.NumFunCall.accepted,precision2) );
+        self.Err.msg    = "This is the effective MCMC sampling efficiency given the accepted function calls, that is, the final " ...
+                        + "refined effective sample size (ESS) divided by the number of accepted function calls.";
         self.Err.note();
+
+        % if self.SpecDRAM.delayedRejectionCount.val == 0
+            self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.efficiency.essOverAcceptedRejected" );
+            self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str(effectiveSampleSize / self.Stats.NumFunCall.acceptedRejected,precision2) );
+            self.Err.msg    = "This is the effective MCMC sampling efficiency given the accepted and rejected function calls, that " ...
+                            + " is, the final refined effective sample size (ESS) divided by the number of (accepted + rejected) " ...
+                            + "function calls.";
+            self.Err.note();
+        % else
+            self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.efficiency.essOverAcceptedRejectedDelayed" );
+            self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str(effectiveSampleSize / self.Stats.NumFunCall.acceptedRejectedDelayed,precision2) );
+            self.Err.msg    = "This is the effective MCMC sampling efficiency given the accepted, rejected, and delayed-rejection " ...
+                            + "(if any requested) function calls, that is, the final refined effective sample size (ESS) divided by " ...
+                            + "the number of (accepted + rejected + delayed-rejection) function calls.";
+            self.Err.note();
+        % end
 
         % generate output refined sample if requested
 
@@ -732,12 +746,12 @@ function runSampler ( self          ...
             self.Err.marginTop      = 1;
             self.Err.marginBot      = 1;
 
-            self.Decor.write( self.LogFile.unit, 0, 1, 1, "self.Stats.Sample.count" );
+            self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.length" );
             self.Decor.write( self.LogFile.unit, 0, 0, 1, spaces8 + num2str(self.Stats.Sample.count) );
             self.Err.msg    = "This is the final output refined sample size.";
             self.Err.note();
 
-            self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.Sample.Mean, Stats.Sample.CovMat(i,i)" );
+            self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.avgStd" );
             fprintf( self.LogFile.unit, spaces8);
             fprintf( self.LogFile.unit, formatStr, "variablename", "Mean", "Standard Deviation", newline );
             for i = 1 : ndim
@@ -747,7 +761,7 @@ function runSampler ( self          ...
             self.Err.msg    = "This is the Mean and standard deviation table of the final output refined sample.";
             self.Err.note();
 
-            self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.Sample.CovMat" );
+            self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.covmat" );
             fprintf( self.LogFile.unit, spaces8);
             fprintf( self.LogFile.unit, formatStr, "", self.SpecBase.variableNameList.Val{1:ndim}, newline );
             for i = 1 : ndim
@@ -761,7 +775,7 @@ function runSampler ( self          ...
             self.Err.msg    = "This is the covariance matrix of the final output refined sample.";
             self.Err.note();
 
-            self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.Sample.CorMat" );
+            self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.cormat" );
             fprintf( self.LogFile.unit, spaces8);
             fprintf( self.LogFile.unit, formatStr, "", self.SpecBase.variableNameList.Val{1:ndim}, newline );
             for i = 1 : ndim
@@ -775,7 +789,7 @@ function runSampler ( self          ...
             self.Err.msg    = "This is the correlation matrix of the final output refined sample.";
             self.Err.note();
 
-            self.Decor.write( self.LogFile.unit, 1, 1, 1, "Stats.Sample.Quantile" );
+            self.Decor.write( self.LogFile.unit, 1, 1, 1, "stats.chain.refined.quantile" );
             fprintf( self.LogFile.unit, spaces8);
             fprintf( self.LogFile.unit, formatStr, "Quantile", self.SpecBase.variableNameList.Val{1:ndim}, newline );
             for iq = 1 : QPROB.count
@@ -801,9 +815,10 @@ function runSampler ( self          ...
         % Mission accomplished.
         
         self.Err.msg            = "Mission Accomplished.";
+
         self.Err.outputUnit     = self.LogFile.unit;
         self.Err.note();
-        
+
         if 1 ~= self.LogFile.unit && self.Image.isFirst
             self.Err.msg        = "Mission Accomplished.";
             self.Err.outputUnit = 1;
@@ -817,7 +832,6 @@ function runSampler ( self          ...
     end % blockMasterPostProcessing
 
     self.Err.msg    = "To read the generated output files, try the following:" + newline + newline ...
-                    + "    " + self.objectName + ".readReport()      %% to read the summary report from the output report file." + newline ...
                     + "    " + self.objectName + ".readSample()      %% to read the final i.i.d. sample from the output sample file." + newline ...
                     + "    " + self.objectName + ".readMarkovChain() %% to read the Markov Chain. NOT recommended for extremely-large chains." + newline ...
                     + "    " + self.objectName + ".readChain()       %% to read the uniquely-accepted points from the output chain file." + newline + newline ...
