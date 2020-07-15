@@ -62,7 +62,7 @@ classdef SpecBase_RestartFileFormat_class < handle
             self.isAscii    = false;
             self.binary     = Constants.FILE_TYPE.binary;
             self.ascii      = Constants.FILE_TYPE.ascii;
-            self.def        = self.binary;
+            self.def        = self.ascii;
 
             self.desc       = "restartFileFormat is a string variable that represents the format of the output restart file(s) which are used to restart "  ...
                             + "an interrupted " + methodName + " simulation. The string value must be enclosed by either single or double quotation "       ...
