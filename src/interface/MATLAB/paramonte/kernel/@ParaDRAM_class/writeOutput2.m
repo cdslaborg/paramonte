@@ -68,6 +68,6 @@ function writeOutput2(self)
 
     end
 
-    fprintf(self.ChainFile.unit, "\n\t\twriteOutput2");
+    % fprintf(self.ChainFile.unit, "\n\t\twriteOutput2");
 
 end
