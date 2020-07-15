@@ -307,9 +307,9 @@ classdef AutoCorr_class < dynamicprops
                 colnames = "ACF_" + colnames;
                 self.df.Properties.VariableNames = ["Lag", colnames];
                 self.df.Properties.RowNames = string(lags);
-                self.bounds = array2table(bounds_array);
+                self.bounds = array2table(flipud(bounds_array));
                 self.bounds.Properties.VariableNames = colnames;
-                self.bounds.Properties.RowNames = ["upperLimit","lowerLimit"];
+                self.bounds.Properties.RowNames = ["lowerLimit","upperLimit"];
             else
                 warning("The sample size is less than 2. No autocorrelations will be computed.");
                 self.df = array2table(NaN(1,nvar));
