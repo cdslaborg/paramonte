@@ -312,7 +312,7 @@ contains
         else
             logPF53 = logPbol   + 11.32871865753070600_RK
         end if
-if (logPF53<0._RK) write(*,"(*(g0.13,:,', '))") "logEpk, logPbol, logPF53<0.0: ", logEpk, logPbol, logPF53
+write(*,"(*(g0.13,:,', '))") "logEpk, logPbol, logPF53<0.0: ", logEpk, logPbol, logPF53
     end function getLogPF53
 
 !***********************************************************************************************************************************
