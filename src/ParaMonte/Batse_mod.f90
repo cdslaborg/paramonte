@@ -178,7 +178,7 @@ contains
                 end if
 
                 ! write the converted data to output file
-                write(outFileUnit,"(i30,7e30.6)") Trigger(igrb)                                     &
+                write(outFileUnit,"(i30,8E30.6)") Trigger(igrb)                                     &
                                                 , GRB%Event(igrb)%logPbol                           &
                                                 , GRB%Event(igrb)%logSbol                           &
                                                 , GRB%Event(igrb)%logEpk                            &
