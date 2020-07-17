@@ -88,6 +88,14 @@ website = _Struct()
 
 website.home = _Struct()
 website.home.url = "https://www.cdslab.org/paramonte/"
+website.home.install = _Struct()
+website.home.install.url = website.home.url + "notes/installation/"
+website.home.install.macos = _Struct()
+website.home.install.macos.url = website.home.install.url + "macos/"
+website.home.install.macos.prereqs = _Struct()
+website.home.install.macos.prereqs.url = website.home.install.macos.url + "#the-compile-time-and-runtime-prerequisites"
+website.home.install.macos.prereqs.cmd = _Struct()
+website.home.install.macos.prereqs.cmd.url = website.home.install.macos.url + "#prereqs-install"
 
 website.github = _Struct()
 website.github.issues = _Struct()

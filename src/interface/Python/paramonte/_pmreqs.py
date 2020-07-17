@@ -916,14 +916,11 @@ def buildParaMontePrereqsForMac():
         err2 = _os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
         err3 = _os.system('brew --version')
         if err1 != 0 or err2 != 0 or err3 != 0:
-            _pm.abort( msg  = "Failed to install Homebrew on your system.\n"
-                            + "Homebrew is required to install and build ParaMonte components and prerequisites.\n"
-                            + "Please install Homebrew manually on your system and retry the ParaMonte installation process.\n"
-                            + "skipping..."
-                    , methodName = _pm.names.paramonte
-                    , marginTop = 1
-                    , marginBot = 1
-                    )
+            _pm.abort   ( msg = getMacosInstallHelpMsg("Homebrew")
+                        , methodName = _pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
 
     # cmake
 
@@ -997,12 +994,7 @@ def buildParaMontePrereqsForMac():
                     , marginBot     = 1
                     )
         else:
-            _pm.warn( msg   = "Failed to install and link cmake on your system.\n"
-                            + "cmake is required to install and build\n"
-                            + "ParaMonte components and prerequisites.\n"
-                            + "Please install the cmake manually on your system and\n"
-                            + "retry the ParaMonte installation process if it fails.\n"
-                            + "skipping..."
+            _pm.warn( msg = getMacosInstallHelpMsg("cmake")
                     , methodName = _pm.names.paramonte
                     , marginTop = 1
                     , marginBot = 1
@@ -1020,12 +1012,7 @@ def buildParaMontePrereqsForMac():
     err2 = _os.system("brew link gcc@9")
 
     if err1 != 0 or err2 != 0:
-        _pm.warn( msg   = "Failed to install and link GNU Compiler Collection on your system.\n"
-                        + "The GNU Compiler Collection is required to install\n"
-                        + "and build ParaMonte components and prerequisites.\n"
-                        + "Please install the GNU Compiler Collection manually on your\n"
-                        + "system and retry the ParaMonte installation process if it fails.\n"
-                        + "skipping..."
+        _pm.warn( msg = getMacosInstallHelpMsg("GNU Compiler Collection")
                 , methodName = _pm.names.paramonte
                 , marginTop = 1
                 , marginBot = 1
@@ -1043,17 +1030,26 @@ def buildParaMontePrereqsForMac():
     err2 = _os.system("brew link open-mpi")
 
     if err1 != 0 or err2 != 0:
-        _pm.warn( msg   = "Failed to install and link Open-MPI on your system.\n"
-                        + "Open-MPI is required to install and build\n"
-                        + "ParaMonte components and prerequisites.\n"
-                        + "Please install the Open-MPI manually on your\n"
-                        + "system and retry the ParaMonte installation process if it fails.\n"
-                        + "skipping..."
+        _pm.warn( msg = getMacosInstallHelpMsg("Open-MPI")
                 , methodName = _pm.names.paramonte
                 , marginTop = 1
                 , marginBot = 1
                 )
 
+####################################################################################################################################
+
+def getMacosInstallHelpMsg(app = ""):
+    msg = "Failed to install and link the " + app + " on your system.\n" \
+        + "The " + app + " application is required to install and \n" \
+        + "build the ParaMonte components and prerequisites.\n" \
+        + "Please install the " + app + " manually on your\n" \
+        + "system and retry the installation process.\n" \
+        + "The " + app + " installation is only a single \n" \
+        + "command and takes only a few seconds to install.\n" \
+        + "You can get the installation command from this page:\n\n" \
+        + "    " + _pm.website.home.install.macos.prereqs.cmd.url + "\n\n" \
+        + "skipping the installation for now..."
+    return msg                        
 
 ####################################################################################################################################
 
