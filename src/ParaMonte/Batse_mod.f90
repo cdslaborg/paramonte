@@ -318,7 +318,8 @@ if (logPF53<0._RK) write(*,"(*(g0.13,:,', '))") "logEpk, logPbol, logPF53<0.0: "
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    pure function getLogPbol(logEpk,logPF53) result(logPbol)
+    !pure 
+    function getLogPbol(logEpk,logPF53) result(logPbol)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol
 #endif
