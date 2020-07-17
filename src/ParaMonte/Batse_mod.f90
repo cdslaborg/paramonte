@@ -265,7 +265,8 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    pure function getLogPF53(logEpk,logPbol) result(logPF53)
+    !pure 
+    function getLogPF53(logEpk,logPbol) result(logPF53)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53
 #endif
