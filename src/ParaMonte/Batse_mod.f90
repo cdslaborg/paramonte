@@ -265,8 +265,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    !pure 
-    function getLogPF53(logEpk,logPbol) result(logPF53)
+    pure function getLogPF53(logEpk,logPbol) result(logPF53)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53
 #endif
@@ -312,14 +311,13 @@ contains
         else
             logPF53 = logPbol   + 11.32871865753070600_RK
         end if
-write(*,"(*(g0.13,:,', '))") "logEpk, logPbol, logPF53<0.0: ", logEpk, logPbol, logPF53
+        !write(*,"(*(g0.13,:,', '))") "logEpk, logPbol, logPF53<0.0: ", logEpk, logPbol, logPF53
     end function getLogPF53
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    !pure 
-    function getLogPbol(logEpk,logPF53) result(logPbol)
+    pure function getLogPbol(logEpk,logPF53) result(logPbol)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol
 #endif
