@@ -284,6 +284,21 @@ if %ERRORLEVEL%==0 (
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: build test
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+set MatDRAMTest_BLD_DIR=!MatDRAM_BLD_DIR!\test
+set MatDRAMTest_SRC_DIR=!ParaMonteInterface_SRC_DIR_CURRENT!\test
+
+echo. -- MatDRAM - copying the MatDRAM library files to the test folder...
+echo. -- MatDRAM - from: !MatDRAM_BLD_DIR_CURRENT! %= no need for final slash here =%
+echo. -- MatDRAM -   to: !MatDRAMTest_BLD_DIR! %= final slash tells this is folder =%
+xcopy /s /Y /e /v /i "!MatDRAM_BLD_DIR_CURRENT!" "!MatDRAMTest_BLD_DIR!" || goto LABEL_copyErrorOccured
+cd !MatDRAMTest_BLD_DIR! && del main.m logfunc.m LICENSE
+copy /y "!MatDRAMTest_SRC_DIR!\testParaMonte.m" "!MatDRAMTest_BLD_DIR!\testParaMonte.m" || goto LABEL_copyErrorOccured
+copy /y "!MatDRAMTest_SRC_DIR!\getLogFunc.m" "!MatDRAMTest_BLD_DIR!\getLogFunc.m" || goto LABEL_copyErrorOccured
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: copy the first example to the bin directory
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -319,23 +334,10 @@ if !ParaMonteExample_RUN_ENABLED!==true (
 
 )
 
-echo. -- MatDRAM -      the MatDRAM build files are located at: !MatDRAM_BLD_DIR_CURRENT! %= no need for final slash here =%
-echo. -- MatDRAM -    the MatDRAM library files are located at: !MatDRAMExample_BIN_DIR_CURRENT! %= final slash tells this is folder =%
+echo. 
+echo.-- MatDRAM -      the MatDRAM build files are located at: !MatDRAM_BLD_DIR_CURRENT! %= no need for final slash here =%
+echo.-- MatDRAM -    the MatDRAM library files are located at: !MatDRAMExample_BIN_DIR_CURRENT! %= final slash tells this is folder =%
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: build test
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-set MatDRAMTest_BLD_DIR=!MatDRAM_BLD_DIR!\test
-set MatDRAMTest_SRC_DIR=!ParaMonteInterface_SRC_DIR_CURRENT!\test
-
-echo. -- MatDRAM - copying the MatDRAM library files to the test folder...
-echo. -- MatDRAM - from: !MatDRAM_BLD_DIR_CURRENT! %= no need for final slash here =%
-echo. -- MatDRAM -   to: !MatDRAMTest_BLD_DIR! %= final slash tells this is folder =%
-xcopy /s /Y /e /v /i "!MatDRAM_BLD_DIR_CURRENT!" "!MatDRAMTest_BLD_DIR!" || goto LABEL_copyErrorOccured
-cd !MatDRAMTest_BLD_DIR! && del main.m logfunc.m LICENSE
-copy /y "!MatDRAMTest_SRC_DIR!\testParaMonte.m" "!MatDRAMTest_BLD_DIR!\testParaMonte.m" || goto LABEL_copyErrorOccured
-copy /y "!MatDRAMTest_SRC_DIR!\getLogFunc.m" "!MatDRAMTest_BLD_DIR!\getLogFunc.m" || goto LABEL_copyErrorOccured
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: quit

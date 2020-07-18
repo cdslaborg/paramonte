@@ -104,6 +104,8 @@ classdef SystemInfo_class < handle
 
             if isWindows    % it's Windows cmd
                 command = "systeminfo > " + filename;
+            elseif ismac
+                command = "uname -a >> " + filename + "; sysctl -a | grep machdep.cpu >> " + filename;
             else
                 command = "uname -a >> " + filename + "; lscpu >> " + filename;
             end
