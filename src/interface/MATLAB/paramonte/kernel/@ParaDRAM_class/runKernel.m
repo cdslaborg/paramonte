@@ -36,7 +36,7 @@ function runKernel  ( self          ...
                     , getLogFunc    ...
                     )
 flag2 = false;
-flag2 = true;
+%flag2 = true;
     FUNCTION_NAME           = self.SUB_CLASS2_NAME + "@runKernel()";
     CHAIN_RESTART_OFFSET    = 2;
 

@@ -171,7 +171,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
 
             % Scale the higher-stage delayed-rejection Cholesky Lower matrices
 
-            if self.Global.mc_delayedRejectionRequested, ParaDRAMProposalSymmetric_class.updateDelRejCholDiagLower(); end
+            if self.Global.mc_delayedRejectionRequested, self.updateDelRejCholDiagLower(); end
 
             % This will be used for Domain boundary checking during the simulation
 
@@ -533,7 +533,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
                     hellingerDistSq = 0.0;
                 end
                 % update the higher-stage delayed-rejection Cholesky Lower matrices
-                if self.Global.mc_delayedRejectionRequested, ParaDRAMProposalSymmetric_class.updateDelRejCholDiagLower(); end
+                if self.Global.mc_delayedRejectionRequested, self.updateDelRejCholDiagLower(); end
             end
 
         end % doAdaptation
