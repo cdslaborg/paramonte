@@ -77,6 +77,30 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+    ! GRBFR based on Petrosian et al (2015)
+    pure function getLogRateDensityP15(logzplus1) result(logDensitySFR)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityP15
+#endif
+        use Constants_mod, only: RK
+        implicit none
+        real(RK), intent(in)    :: logzplus1
+        real(RK), parameter     :: logz1plus1 = log(1._RK+4.50_RK)
+        real(RK), parameter     :: exponentHighZ = -7.8_RK
+        real(RK), parameter     :: logNormFac2 = -exponentHighZ * logz1plus1
+        real(RK)                :: logDensitySFR
+        if (logzplus1<0._RK) then
+            logDensitySFR = NEGINF_RK
+        elseif (logzplus1<logz1plus1) then
+            logDensitySFR = 0._RK
+        else
+            logDensitySFR = logzplus1*exponentHighZ + logNormFac2
+        end if
+    end function getLogRateDensityP15
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
     pure function getLogRateDensityH06(logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06
@@ -224,6 +248,23 @@ contains
         real(RK), parameter     :: zplus1Coeff = 1._RK / (zplus1Break**upperExp)
         logDensitySFR = logAmplitude + lowerExp*logzplus1 - log( 1._RK + zplus1Coeff * zplus1**upperExp )
     end function getLogRateDensityF18
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    pure function getLogRateP15(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateP15
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
+        real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
+        real(RK)                :: logRate
+        logRate = LOG_COEF + twiceLogLumDisMpc - ( 3._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) &
+                + getLogRateDensityP15(logzplus1)
+    end function getLogRateP15
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
