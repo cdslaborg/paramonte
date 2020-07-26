@@ -76,11 +76,12 @@ classdef ReportFileContents < OutputFileContents
             self.dsymLen = length(self.dsym); % decoration symbol
             self.prefix = convertStringsToChars(self.methodName + " - NOTE:");
 
-            if ispc
-                self.contents = strrep(fileread(file),char(13),'');
-            else
-                self.contents = fileread(file);
-            end
+            self.contents = strrep(fileread(file),char(13),'');
+            %if ispc
+            %    self.contents = strrep(fileread(file),char(13),'');
+            %else
+            %    self.contents = fileread(file);
+            %end
             self.contents = strrep(self.contents,self.newline,[' ',self.newline]);
             self.lineList = strsplit(self.contents,self.newline); % strtrim()
             self.lineListLen = length(self.lineList);

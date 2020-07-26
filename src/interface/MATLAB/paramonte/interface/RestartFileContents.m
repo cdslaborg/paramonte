@@ -32,24 +32,35 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   This is the TabularFileContents class for generating instances 
+%   This is the RestartFileContents class for generating instances 
 %   of ParaMonte output file contents. The ParaMonte read* methods
-%   return an object or a list of objects of class TabularFileContents.
+%   return an object or a list of objects of class RestartFileContents.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-classdef TabularFileContents < OutputFileContents
+classdef RestartFileContents < OutputFileContents
 
     properties(Access = public)
-        delimiter = [];
+        proposalUpdates = struct();
         %count = [];
         %stats = [];
-        %ndim = [];
+        ndim = [];
         %df = [];
     end
 
     properties(Hidden)
-        offset = [];
+        self.fieldNamesParaDRAM =   [ "meanAccRateSinceStart" ...
+                                    , "sampleSizeOld" ...
+                                    , "logSqrtDetOld" ...
+                                    , "adaptiveScaleFactorSq" ...
+                                    , "MeanOld" ...
+                                    , "CholDiagLower" ...
+                                    ];
+        fileType = "restart";
+        contents = [];
+        lineList = [];
+        lineListLen = [];
+        newline = char(10);
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,9 +69,7 @@ classdef TabularFileContents < OutputFileContents
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = TabularFileContents ( file ...
-                                            , fileType ...
-                                            , delimiter ...
+        function self = RestartFileContents ( file ...
                                             , methodName ...
                                             , mpiEnabled ...
                                             , markovChainRequested ...
@@ -71,10 +80,108 @@ classdef TabularFileContents < OutputFileContents
             self.delimiter = delimiter;
             self.timer.tic();
 
+            if strcmpi(self.methodName,"paradram")
+                self.readRestartParaDRAM()
+            end
+
+        end % constructor
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function helpme(self,varargin)
+            %
+            %   Open the documentation for the input object's name in string format, otherwise, 
+            %   open the documentation page for the class of the object owning the helpme() method.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       This function takes at most one string argument, 
+            %       which is the name of the object for which help is needed.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. 
+            %
+            %   Example
+            %   -------
+            %
+            %       helpme("plot")
+            %
+            methodNotFound = true;
+            if nargin==2
+                if strcmpi(varargin{1},"reset")
+                    cmd = "doc self.resetPlot";
+                    methodNotFound = false;
+                else
+                    methodList = ["plot","helpme"];
+                    for method = methodList
+                        if strcmpi(varargin{1},method)
+                            methodNotFound = false;
+                            cmd = "doc self." + method;
+                        end
+                    end
+                end
+            elseif nargin~=1
+                error("The helpme() method takes at most one argument that must be string.");
+            end
+            if methodNotFound
+                cmd = "doc self";
+            end
+            eval(cmd);
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end % methods (Access = public)
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods (Access = public, Hidden)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function readRestartParaDRAM(self)
+
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% data
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+            self.contents = strrep(fileread(self.file),char(13),'');
+            self.lineList = strsplit(self.contents,self.newline);
+            self.lineListLen = length(self.lineList);
+            self.proposalUpdates.count = count(self.contents,"meanAccRateSinceStart");
+
+            % find ndim
+
+            offset = 1;
+            while ~contains(self.lineList(offset),"MeanOld")
+                offset = offset + 1;
+                if offset>self.lineListLen; self.reportCorruptFile(); end
+            end
+            offset = offset + 1; % the first numeric value
+
+            self.ndim = 0;
+            while isNumericString(self.lineList(offset+self.ndim))
+                self.ndim = self.ndim + 1;
+            end
+            if self.ndim==0; self.reportCorruptFile(); end
+
+            % parse the restart file contents
+
+            self.proposalUpdates.meanAcceptanceRateSinceStart = zeros(self.proposalUpdates.count,1);
+            self.proposalUpdates.sampleSize = zeros(self.proposalUpdates.count,1);
+            self.proposalUpdates.logSqrtDeterminant = zeros(self.proposalUpdates.count,1);
+            self.proposalUpdates.meanvec = zeros(self.ndim,self.proposalUpdates.count);
+            self.proposalUpdates.covmat = zeros(self.ndim,self.ndim,self.proposalUpdates.count);
+            for i = 1:self.proposalUpdates.count
+                offset = 1; self.proposalUpdates.meanAcceptanceRateSinceStart = str2double( self.lineList(i+offset) );
+                offset = 3; self.proposalUpdates.sampleSize = str2double( self.lineList(i+offset) );
+                offset = 5; self.proposalUpdates.logSqrtDeterminant = str2double( self.lineList(i+offset) );
+            end
+
+            meanAccRateSinceStart
             d = importdata  ( self.file ...
                             ..., "delimiter", self.delimiter ...
                             );
@@ -83,7 +190,7 @@ classdef TabularFileContents < OutputFileContents
             else
                 self.Err.marginTop = 1;
                 self.Err.marginBot = 1;
-                self.Err.msg    = "The structure of the file """ + self.file + """ does not match a " + methodName + " " + fileType + " file. " ...
+                self.Err.msg    = "The structure of the file """ + self.file + """ does not match a " + self.methodName + " " + self.fileType + " file. " ...
                                 + "Verify the contents of this file before attempting to read this file.";
                 self.Err.abort();
             end
@@ -115,7 +222,7 @@ classdef TabularFileContents < OutputFileContents
                 elseif cumSumWeight(end) < self.count % there is something wrong about this chain output file
                     self.Err.marginTop = 1;
                     self.Err.marginBot = 1;
-                    self.Err.msg    = "The internal contents of the file """ + self.file + """ does not match a " + methodName + " " + fileType + "file. " ...
+                    self.Err.msg    = "The internal contents of the file """ + self.file + """ does not match a " + self.methodName + " " + self.fileType + "file. " ...
                                     + "In particular, the SampleWeight data column in this file appears to contain values that are either non-positive or non-integer.";
                     self.Err.abort();
                 end
@@ -190,61 +297,17 @@ classdef TabularFileContents < OutputFileContents
             self.plot.reset = @self.resetPlot;
             self.plot.helpme = @self.helpme;
 
-        end % constructor
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        function helpme(self,varargin)
-            %
-            %   Open the documentation for the input object's name in string format, otherwise, 
-            %   open the documentation page for the class of the object owning the helpme() method.
-            %
-            %   Parameters
-            %   ----------
-            %
-            %       This function takes at most one string argument, 
-            %       which is the name of the object for which help is needed.
-            %
-            %   Returns
-            %   -------
-            %
-            %       None. 
-            %
-            %   Example
-            %   -------
-            %
-            %       helpme("plot")
-            %
-            methodNotFound = true;
-            if nargin==2
-                if strcmpi(varargin{1},"reset")
-                    cmd = "doc self.resetPlot";
-                    methodNotFound = false;
-                else
-                    methodList = ["plot","helpme"];
-                    for method = methodList
-                        if strcmpi(varargin{1},method)
-                            methodNotFound = false;
-                            cmd = "doc self." + method;
-                        end
-                    end
-                end
-            elseif nargin~=1
-                error("The helpme() method takes at most one argument that must be string.");
-            end
-            if methodNotFound
-                cmd = "doc self";
-            end
-            eval(cmd);
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    end % methods (Access = public)
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    methods (Access = public, Hidden)
+        function reportCorruptFile(self)
+            self.Err.marginTop = 1;
+            self.Err.marginBot = 1;
+            self.Err.msg    = "The structure of the file """ + self.file + """ does not match a " + self.methodName + " " + self.fileType + " file. " ...
+                            + "The contents of the file may have been compromised. Verify the contents of this file before attempting to read this file.";
+            self.Err.abort();
+        end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -480,4 +543,4 @@ classdef TabularFileContents < OutputFileContents
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end % classdef TabularFileContents < handle
+end % classdef RestartFileContents < handle
