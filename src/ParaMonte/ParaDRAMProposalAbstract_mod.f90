@@ -34,9 +34,6 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-#define PARADISE ParaDISE
-#undef PARADISE
-
 module ParaDRAMProposalAbstract_mod
 
     use Constants_mod, only: IK, RK
@@ -96,19 +93,13 @@ module ParaDRAMProposalAbstract_mod
                             , counterDRS        &
                             , StateOld          &
                             , StateNew          &
-#if defined PARADISE
-                            , invScaleFactor    &
-#endif
                             ) result (logProb)
         use Constants_mod, only: IK, RK
         import :: ProposalAbstract_type
-        integer(IK), intent(in)             :: nd
-        integer(IK), intent(in)             :: counterDRS
-        real(RK)   , intent(in)             :: StateOld(nd)
-        real(RK)   , intent(in)             :: StateNew(nd)
-#if defined PARADISE
-        real(RK)   , intent(in), optional   :: invScaleFactor
-#endif
+        integer(IK), intent(in) :: nd
+        integer(IK), intent(in) :: counterDRS
+        real(RK)   , intent(in) :: StateOld(nd)
+        real(RK)   , intent(in) :: StateNew(nd)
         real(RK)                :: logProb
     end function getLogProb_proc
     end interface
@@ -128,14 +119,14 @@ module ParaDRAMProposalAbstract_mod
         use Constants_mod, only: IK, RK
         import :: ProposalAbstract_type
        !class(ProposalAbstract_type), intent(inout) :: Proposal
-        integer(IK), intent(in)             :: nd
-        integer(IK), intent(in)             :: chainSize
-        real(RK)   , intent(in)             :: Chain(nd,chainSize)
-        integer(IK), intent(in)             :: ChainWeight(chainSize)
-        logical    , intent(in)             :: samplerUpdateIsGreedy
-        real(RK)   , intent(in)             :: meanAccRateSinceStart
-        logical    , intent(out)            :: samplerUpdateSucceeded
-        real(RK)   , intent(out)            :: adaptationMeasure
+        integer(IK), intent(in)     :: nd
+        integer(IK), intent(in)     :: chainSize
+        real(RK)   , intent(in)     :: Chain(nd,chainSize)
+        integer(IK), intent(in)     :: ChainWeight(chainSize)
+        logical    , intent(in)     :: samplerUpdateIsGreedy
+        real(RK)   , intent(in)     :: meanAccRateSinceStart
+        logical    , intent(out)    :: samplerUpdateSucceeded
+        real(RK)   , intent(out)    :: adaptationMeasure
     end subroutine doAdaptation_proc
     end interface
 
@@ -158,4 +149,3 @@ module ParaDRAMProposalAbstract_mod
 
 end module ParaDRAMProposalAbstract_mod
 
-#undef PARADISE
