@@ -52,6 +52,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBatchMeansIAC
 #endif
+        ! return the integrated autocorrelation (iac) computed via the BatchMeans method
         ! note that np must be large enough to get a meaningful answer
         use Constants_mod, only: IK, RK
         use Statistics_mod, only: getVariance
@@ -179,6 +180,55 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+    function getCumSumIAC(np,Point,Weight,significance) result(iac)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getCumSumIAC
+#endif
+        use Constants_mod, only: IK, RK
+        use Math_mod, only: getCumSum
+        implicit none
+        integer(IK) , intent(in)            :: np
+        real(RK)    , intent(in)            :: Point(np)
+        integer(IK) , intent(in), optional  :: Weight(np), significance ! in units of sigma
+        real(RK)                            :: iac, meanPoint, normFac, NormedData(np), cutoff
+        real(RK)    , allocatable           :: AutoCorr(:)
+        integer(IK)                         :: i, paddedLen, sumWeight, significanceDefault, cutoffIndex
+        significanceDefault = 2_IK
+        if (present(significance)) significanceDefault = significance
+        if (present(Weight)) then
+            sumWeight = sum(Weight)
+            meanPoint = sum(Point*Weight) / real(sumWeight,kind=RK)
+        else
+            sumWeight = np
+            meanPoint = sum(Point) / real(np,kind=RK)
+        end if
+        NormedData = Point - meanPoint
+        paddedLen = getPaddedLen(sumWeight)
+        AutoCorr = getCrossCorrFFTweighted  ( nData1    = np            &
+                                            , nData2    = np            &
+                                            , paddedLen = paddedLen     &
+                                            , Data1     = NormedData    &
+                                            , Data2     = NormedData    &
+                                            , Weight1   = Weight        &
+                                            , Weight2   = Weight        &
+                                            )
+        normFac = 1._RK / AutoCorr(1)
+        AutoCorr = AutoCorr * normFac
+        ! For autocorrelation, under the assumption of a completely random series, the ACF standard error reduces to sqrt(1/ndata)
+        cutoff = significanceDefault * sqrt(1._RK/sumWeight) ! standardErrorAutoCorr
+        cutoffIndex = 1_IK
+        do i = 1, paddedLen
+            if (AutoCorr(i)<cutoff) then
+                cutoffIndex = i
+                exit
+            end if
+        end do
+        iac = 2_IK * sum(AutoCorr(1:cutoffIndex)) - 1_IK
+    end function getCumSumIAC
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
     function getMaxCumSumIAC(np,Point,Weight) result(maxIAC)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxCumSumIAC
@@ -196,6 +246,7 @@ contains
             sumWeight = sum(Weight)
             meanPoint = sum(Point*Weight) / real(sumWeight,kind=RK)
         else
+            sumWeight = np
             meanPoint = sum(Point) / real(np,kind=RK)
         end if
         NormedData = Point - meanPoint
@@ -277,14 +328,15 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! Computes the getCrossCorrFFTation of two real data sets Data1(1:n) and Data2(1:n) (including
+    ! Computes the CrossCorrelation of two real data sets Data1(1:n) and Data2(1:n) (including
     ! any user-supplied zero padding). n MUST be an integer power of two. The answer
-    ! is returned as the first n points in ans stored in wrap-around order, i.e., getCrossCorrFFTations at
-    ! increasingly negative lags are in ans(n) on down to ans(n/2+1), while getCrossCorrFFTations at
+    ! is returned as the first n points in ans stored in wrap-around order, i.e., CrossCorrelation at
+    ! increasingly negative lags are in ans(n) on down to ans(n/2+1), while CrossCorrelation at
     ! increasingly positive lags are in ans(1) (zero lag) on up to ans(n/2). Note that ans
     ! must be supplied in the calling program with length at least 2*n, since it is also used as
     ! working space. Sign convention of this routine: if Data1 lags Data2, i.e., is shifted to the
     ! right of it, then ans will show a peak at positive lags.
+    ! For autocorrelation, under the assumption of a completely random series, the ACF standard error reduces to sqrt(1/ndata)
 
     function getCrossCorrFFT(ndata,Data1,Data2) result(CrossCorrFFT)
 #if defined DLL_ENABLED && !defined CFI_ENABLED

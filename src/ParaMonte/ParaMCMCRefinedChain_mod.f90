@@ -34,17 +34,19 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-module ParaDRAMRefinedChain_mod
+module ParaMCMCRefinedChain_mod
 
-    use SpecMCMC_SampleRefinementMethod_mod, only: BATCH_MEANS_METHOD_NAME, MAX_CUMSUM_AUTOCORR_METHOD_NAME
-    use ParaDRAMChainFileContents_mod, only: Count_type
+    use SpecMCMC_SampleRefinementMethod_mod, only: BATCH_MEANS_METHOD_NAME
+    use SpecMCMC_SampleRefinementMethod_mod, only: CUTOFF_AUTOCORR_METHOD_NAME
+    use SpecMCMC_SampleRefinementMethod_mod, only: MAX_CUMSUM_AUTOCORR_METHOD_NAME
+    use ParaMonteChainFileContents_mod, only: Count_type
     use JaggedArray_mod, only: CharVec_type
     use Constants_mod, only: IK, RK
     use Err_mod, only: Err_type
 
     implicit none
 
-    character(*), parameter :: MODULE_NAME = "@ParaDRAMRefinedChain_mod"
+    character(*), parameter :: MODULE_NAME = "@ParaMCMCRefinedChain_mod"
 
     type                                    :: RefinedChain_type
         integer(IK)                         :: ndim  = 0_IK         ! number of sampling variables
@@ -62,6 +64,7 @@ module ParaDRAMRefinedChain_mod
 
    type Method_type
        logical :: isBatchMeans = .false.
+       logical :: isCutoffAutoCorr = .false.
        logical :: isViaCompactChain = .true.
        logical :: isViaVerboseChain = .true.
        logical :: isMaxCumSumAutoCorr = .false.
@@ -88,8 +91,8 @@ contains
 #endif
 
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use ParaDRAMChainFileContents_mod, only: ChainFileContents_type, NUM_DEF_COL
-        use CrossCorr_mod, only: getMaxCumSumIAC, getBatchMeansIAC
+        use ParaMonteChainFileContents_mod, only: ChainFileContents_type, NUM_DEF_COL
+        use CrossCorr_mod, only: getBatchMeansIAC, getCumSumIAC, getMaxCumSumIAC
         use String_mod, only: getLowerCase
 
         implicit none
@@ -159,7 +162,9 @@ contains
             sampleRefinementMethodLowerCase = getLowerCase(sampleRefinementMethod)
             if (index(sampleRefinementMethodLowerCase,getLowerCase(BATCH_MEANS_METHOD_NAME))>0) then
                 Method%isBatchMeans = .true.
-            elseif (index(sampleRefinementMethodLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR_METHOD_NAME))>0) then
+            elseif (index(sampleRefinementMethodLowerCase,getLowerCase(CUTOFF_AUTOCORR_METHOD_NAME))>0 .or. index(sampleRefinementMethodLowerCase,"cutoff")>0) then
+                Method%isCutoffAutoCorr = .true.
+            elseif (index(sampleRefinementMethodLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR_METHOD_NAME))>0 .or. index(sampleRefinementMethodLowerCase,"cumsum")>0) then
                 Method%isMaxCumSumAutoCorr = .true.
             else
                 Err%occurred = .true.
@@ -245,15 +250,20 @@ contains
             do i = 0, RefinedChain%ndim
                 DumVec = RefinedChain%LogFuncState(i,1:RefinedChain%Count(RefinedChain%numRefinement)%compact)
                 if (Method%isBatchMeans) then
-                    RefinedChain%IAC(i,RefinedChain%numRefinement) = getBatchMeansIAC   ( np        = countCompact          &
-                                                                                        , Point     = DumVec                &
-                                                                                        , Weight    = SampleWeight          &
+                    RefinedChain%IAC(i,RefinedChain%numRefinement) = getBatchMeansIAC   ( np        = countCompact  &
+                                                                                        , Point     = DumVec        &
+                                                                                        , Weight    = SampleWeight  &
                                                                                         )
+                elseif (Method%isCutoffAutoCorr) then
+                    RefinedChain%IAC(i,RefinedChain%numRefinement) = getCumSumIAC   ( np        = countCompact  &
+                                                                                    , Point     = DumVec        &
+                                                                                    , Weight    = SampleWeight  &
+                                                                                    )
                 elseif (Method%isMaxCumSumAutoCorr) then
-                    RefinedChain%IAC(i,RefinedChain%numRefinement) = getMaxCumSumIAC    ( np        = countCompact          &
-                                                                                        , Point     = DumVec                &
-                                                                                        , Weight    = SampleWeight          &
-                                                                                        )
+                    RefinedChain%IAC(i,RefinedChain%numRefinement) = getMaxCumSumIAC( np        = countCompact  &
+                                                                                    , Point     = DumVec        &
+                                                                                    , Weight    = SampleWeight  &
+                                                                                    )
                 end if
             end do
 
@@ -519,4 +529,4 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-end module ParaDRAMRefinedChain_mod
+end module ParaMCMCRefinedChain_mod

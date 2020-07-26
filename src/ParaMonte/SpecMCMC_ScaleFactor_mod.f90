@@ -81,15 +81,15 @@ contains
         ScaleFactorObj%defVal = 2.38_RK/sqrt(real(nd,kind=RK))  ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules
         ScaleFactorObj%null = repeat(NULL_SK, MAX_LEN_STRING_SCALE_FACTOR)
         ScaleFactorObj%desc = &
-        "scaleFactor is a real-valued positive number (which must be given as string), by which the &
-        &covariance matrix of the proposal distribution of " // methodName // " sampler is scaled. Specifically, &
+        "scaleFactor is a real-valued positive number (which must be given as string), by the square of which the &
+        &covariance matrix of the proposal distribution of the MCMC sampler is scaled. In other words, &
         &the proposal distribution will be scaled in every direction by the value of scaleFactor. &
         &It can also be given in units of the string keyword 'gelman' (which is case-INsensitive) after the paper:\n\n" &
         // TAB // "Gelman, Roberts, and Gilks (1996): 'Efficient Metropolis Jumping Rules'.\n\n&
-        &The paper finds that the optimal scaling factor for the covariance matrix of a Multivariate Gaussian proposal &
-        &distribution for the Metropolis-Hastings Markov Chain Monte Carlo sampling of a target Multivariate Normal Distribution &
+        &The paper finds that the optimal scaling factor for a Multivariate Gaussian proposal distribution for the &
+        &Metropolis-Hastings Markov Chain Monte Carlo sampling of a target Multivariate Normal Distribution &
         &of dimension ndim is given by:\n\n&
-        &    scaleFactor = 2.38/sqrt(ndim)  ,  in the limit of ndim->Infinity.\n\n&
+        &    scaleFactor = 2.38/sqrt(ndim)  ,  in the limit of ndim -> Infinity.\n\n&
         &Multiples of the gelman scale factors are also acceptable as input and can be specified like the following examples:\n\n&
         &    scaleFactor = '1'\n\n&
         &            multiplies the ndim-dimensional proposal covariance matrix by 1, essentially no change occurs to &
@@ -106,10 +106,10 @@ contains
         "            equivalent to gelmanFactor-squared multiplied by 5.\n\n&
         &Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions, in &
         &the limit of infinite dimensions. Therefore, care must be taken when using Gelman's scaling factor with non-Gaussian &
-        &proposals and target objective functions. Currently, only one appearance of the product symbol (*) can be parsed &
+        &proposals and target objective functions. Note that only the product symbol (*) can be parsed &
         &in the string value of scaleFactor. The presence of other mathematical symbols or multiple appearances of the product &
         &symbol will lead to a simulation crash. Also, note that the prescription of an acceptance range specified by the input &
-        &variable 'AccRange' will lead to dynamic modification of the initial input value of scaleFactor throughout sampling, &
+        &variable 'targetAcceptanceRate' will lead to dynamic modification of the initial input value of scaleFactor throughout sampling &
         &for adaptiveUpdateCount times. &
         &The default scaleFactor string-value is 'gelman' (for all proposals), which is subsequently converted to 2.38/sqrt(ndim)."
     end function constructScaleFactor

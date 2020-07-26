@@ -76,9 +76,11 @@
   SpecDRAM_mod.f90
   !
   ParaMonteLogFunc_mod.f90
-  ParaDRAMChainFileContents_mod.f90
-  ParaDRAMRefinedChain_mod.f90
-  ParaDRAMProposal_mod.f90
+  ParaMonteChainFileContents_mod.f90
+  ParaMCMCRefinedChain_mod.f90
+  ParaDRAMProposalAbstract_mod.f90
+  ParaDRAMProposalUniform_mod.f90
+  ParaDRAMProposalNormal_mod.f90
   ParaMonte_mod.f90
   ParaMCMC_mod.f90
   ParaDRAM_mod.f90

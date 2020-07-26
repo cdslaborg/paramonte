@@ -46,6 +46,7 @@ module ParaMonte_mod
     use Path_mod, only: MAX_FILE_PATH_LEN
     use Err_mod, only: Err_type, informUser, note, warn, abort
     use SpecBase_mod, only: SpecBase_type
+    use ParaMonteChainFileContents_mod, only: ChainFileContents_type
 
     implicit none
 
@@ -120,42 +121,43 @@ module ParaMonte_mod
     ! ParaMonte type
     !*******************************************************************************************************************************
 
-    type                                        :: ParaMonte_type
-        type(IntStr_type)                       :: nd
-        character(8)                            :: name
-        character(16)                           :: brand
-        character(:), allocatable               :: date
-        character(:), allocatable               :: version
-        logical                                 :: isDryRun
-        logical                                 :: isFreshRun
-        logical                                 :: procArgNeeded
-        logical                                 :: procArgHasPriority
-        logical                                 :: inputFileArgIsPresent
-        type(OS_type)                           :: OS
-        type(Err_type)                          :: Err
-        type(Image_type)                        :: Image
-        type(SpecBase_type)                     :: SpecBase
-        !type(ParaMonteStatistics_type)         :: Stats
-        type(SystemInfo_type)                   :: SystemInfo
-        type(Timer_type)                        :: Timer
-        type(File_type)                         :: InputFile
-        type(LogFile_type)                      :: LogFile
-        type(TimeFile_type)                     :: TimeFile
-        type(ChainFile_type)                    :: ChainFile
-        type(SampleFile_type)                   :: SampleFile
-        type(RestartFile_type)                  :: RestartFile
-        type(Decoration_type)                   :: Decor
-    contains
-        procedure, pass                         :: reportDesc
-        procedure, pass                         :: setupParaMonte
-        procedure, pass                         :: addSplashScreen
-        procedure, pass                         :: setupOutputFiles
-        procedure, pass                         :: noteUserAboutEnvSetup
-        procedure, pass                         :: addCompilerPlatformInfo
-        procedure, pass                         :: warnUserAboutInputFilePresence
-        procedure, pass                         :: setWarnAboutProcArgHasPriority
-        procedure, nopass                       :: informUser, note, warn, abort
-        procedure, nopass                       :: warnUserAboutMissingNamelist
+    type                                :: ParaMonte_type
+        type(IntStr_type)               :: nd
+        character(8)                    :: name
+        character(16)                   :: brand
+        character(:), allocatable       :: date
+        character(:), allocatable       :: version
+        logical                         :: isDryRun
+        logical                         :: isFreshRun
+        logical                         :: procArgNeeded
+        logical                         :: procArgHasPriority
+        logical                         :: inputFileArgIsPresent
+        type(OS_type)                   :: OS
+        type(Err_type)                  :: Err
+        type(Image_type)                :: Image
+        type(SpecBase_type)             :: SpecBase
+        !type(ParaMonteStatistics_type) :: Stats
+        type(SystemInfo_type)           :: SystemInfo
+        type(Timer_type)                :: Timer
+        type(File_type)                 :: InputFile
+        type(LogFile_type)              :: LogFile
+        type(TimeFile_type)             :: TimeFile
+        type(ChainFile_type)            :: ChainFile
+        type(SampleFile_type)           :: SampleFile
+        type(RestartFile_type)          :: RestartFile
+        type(ChainFileContents_type)    :: Chain
+        type(Decoration_type)           :: Decor
+    contains    
+        procedure, pass                 :: reportDesc
+        procedure, pass                 :: setupParaMonte
+        procedure, pass                 :: addSplashScreen
+        procedure, pass                 :: setupOutputFiles
+        procedure, pass                 :: noteUserAboutEnvSetup
+        procedure, pass                 :: addCompilerPlatformInfo
+        procedure, pass                 :: warnUserAboutInputFilePresence
+        procedure, pass                 :: setWarnAboutProcArgHasPriority
+        procedure, nopass               :: informUser, note, warn, abort
+        procedure, nopass               :: warnUserAboutMissingNamelist
     end type ParaMonte_type
 
 !***********************************************************************************************************************************
@@ -636,7 +638,7 @@ contains
             self%SpecBase%OutputFileName%dir = trim(adjustl(currentWorkingDir)) // self%SpecBase%OutputFileName%slashOS
             msg = msg //NLC//NLC// "All output files will be written to the current working directory:"//NLC//self%SpecBase%OutputFileName%dir
         else
-            msg = msg //NLC//NLC// "Generating the requested directory for ParaDRAM output files:"//NLC//self%SpecBase%OutputFileName%dir
+            msg = msg //NLC//NLC// "Generating the requested directory for the "//self%name//" output files:"//NLC//self%SpecBase%OutputFileName%dir
         end if
 
         ! Generate the output files directory:
@@ -702,10 +704,7 @@ contains
 
         block
             use Path_mod, only: Path_type
-            !use String_mod, only: num2str
-            character(:), allocatable :: fullOutputFileName
             integer(IK) :: imageID
-
 #if defined CAF_ENABLED || defined MPI_ENABLED
             if (self%SpecBase%ParallelizationModel%isMultiChain) then
                 imageID = self%Image%id
@@ -715,12 +714,12 @@ contains
 #if defined CAF_ENABLED || defined MPI_ENABLED
             end if
 #endif
-            fullOutputFileName  = self%SpecBase%OutputFileName%pathPrefix // "_process_" // num2str(imageID) // "_"
-            self%LogFile%Path     = Path_type( inputPath = fullOutputFileName // self%LogFile%suffix        // self%LogFile%Path%Ext      , OS = self%OS )
-            self%TimeFile%Path    = Path_type( inputPath = fullOutputFileName // self%TimeFile%suffix       // self%TimeFile%Path%Ext     , OS = self%OS )
-            self%ChainFile%Path   = Path_type( inputPath = fullOutputFileName // self%ChainFile%suffix      // self%ChainFile%Path%Ext    , OS = self%OS )
-            self%SampleFile%Path  = Path_type( inputPath = fullOutputFileName // self%SampleFile%suffix     // self%SampleFile%Path%Ext   , OS = self%OS )
-            self%RestartFile%Path = Path_type( inputPath = fullOutputFileName // self%RestartFile%suffix    // self%RestartFile%Path%Ext  , OS = self%OS )
+            self%SpecBase%OutputFileName%pathPrefix = self%SpecBase%OutputFileName%pathPrefix // "_process_" // num2str(imageID) // "_"
+            self%LogFile%Path       = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%LogFile%suffix        // self%LogFile%Path%Ext      , OS = self%OS )
+            self%TimeFile%Path      = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%TimeFile%suffix       // self%TimeFile%Path%Ext     , OS = self%OS )
+            self%ChainFile%Path     = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%ChainFile%suffix      // self%ChainFile%Path%Ext    , OS = self%OS )
+            self%SampleFile%Path    = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%SampleFile%suffix     // self%SampleFile%Path%Ext   , OS = self%OS )
+            self%RestartFile%Path   = Path_type( inputPath = self%SpecBase%OutputFileName%pathPrefix // self%RestartFile%suffix    // self%RestartFile%Path%Ext  , OS = self%OS )
         end block
 
         inquire( file = self%LogFile%Path%original, exist = self%LogFile%exists, iostat = self%LogFile%Err%stat )
@@ -767,7 +766,7 @@ contains
         self%isFreshRun = .not. self%isDryRun
 
         if (self%isFreshRun) then
-            if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "No pre-existing "//self%name//" run detected."//NLC//"Starting a fresh ParaDRAM run..." )
+            if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "No pre-existing "//self%name//" run detected."//NLC//"Starting a fresh "//self%name//" run..." )
         else
             if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "Previous run of "//self%name//" detected."//NLC//"Searching for restart files..." )
             if (self%SampleFile%exists) then ! sampling is already complete

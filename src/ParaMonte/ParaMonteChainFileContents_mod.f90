@@ -34,7 +34,7 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-module ParaDRAMChainFileContents_mod
+module ParaMonteChainFileContents_mod
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     use Constants_mod, only: IK, RK
@@ -42,7 +42,7 @@ module ParaDRAMChainFileContents_mod
     use JaggedArray_mod, only: CharVec_type
     implicit none
 
-    character(*), parameter :: MODULE_NAME = "@ParaDRAMChainFileContents_mod"
+    character(*), parameter :: MODULE_NAME = "@ParaMonteChainFileContents_mod"
 
     integer(IK) , parameter :: NUM_DEF_COL = 7_IK   ! number of columns in the chain file other than the State columns
 
@@ -152,7 +152,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getChainFileContents
 #endif
-        ! returns the contents of a ParaDRAM simulation output chain file, always in compact format, regardless of chainFileFormat.
+        ! returns the contents of a ParaMonte simulation output chain file, always in compact format, regardless of chainFileFormat.
         ! targetChainSize: must be >= chainSize. Used for the allocation of the chain components
         !       chainSize: must be <= targetChainSize. The first chainSize elements of the Chain components will contain the Chain 
         !                  information read from the chain file. The Chain component elements beyond chainSize will be set to zero.
@@ -796,4 +796,4 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-end module ParaDRAMChainFileContents_mod
+end module ParaMonteChainFileContents_mod

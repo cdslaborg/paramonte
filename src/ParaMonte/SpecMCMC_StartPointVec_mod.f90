@@ -77,11 +77,10 @@ contains
         StartPointVecObj%desc   = &
         "startPointVec is a 64bit real-valued vector of length ndim (the dimension of the domain of the input objective function). &
         &For every element of startPointVec that is not provided as input, the default value will be the center of the domain of &
-        &startPointVec as specified by randomStartPointDomainLowerLimitVec and randomStartPointDomainUpperLimitVec input variables. &
-        &If the input variable RandomStartPointRequested=TRUE (or true or t, all case-insensitive), then the missing &
+        &startPointVec as specified by domainLowerLimitVec and domainUpperLimitVec input variables. &
+        &If the input variable randomStartPointRequested=TRUE (or true or t, all case-insensitive), then the missing &
         &elements of startPointVec will be initialized to values drawn randomly from within the corresponding &
-        &ranges specified by the input variables randomStartPointDomainLowerLimitVec and &
-        &randomStartPointDomainUpperLimitVec."
+        &ranges specified by the input variables randomStartPointDomainLowerLimitVec and randomStartPointDomainUpperLimitVec."
     end function constructStartPointVec
 
 !***********************************************************************************************************************************
@@ -102,7 +101,9 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine setStartPointVec(StartPointVecObj,startPointVec,randomStartPointDomainLowerLimitVec,randomStartPointDomainUpperLimitVec,randomStartPointRequested)
+    subroutine setStartPointVec (StartPointVecObj,startPointVec &
+                                ,randomStartPointDomainLowerLimitVec,randomStartPointDomainUpperLimitVec,randomStartPointRequested &
+                                ,domainLowerLimitVec,domainUpperLimitVec)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setStartPointVec
 #endif
@@ -111,6 +112,7 @@ contains
         class(StartPointVec_type), intent(inout)    :: StartPointVecObj
         real(RK), intent(in)                        :: startPointVec(:)
         real(RK), intent(in)                        :: randomStartPointDomainLowerLimitVec(:), randomStartPointDomainUpperLimitVec(:)
+        real(RK), intent(in)                        :: domainLowerLimitVec(:), domainUpperLimitVec(:)
         logical, intent(in)                         :: randomStartPointRequested
         real(RK)                                    :: unifrnd
         integer(IK)                                 :: i
@@ -121,7 +123,7 @@ contains
                     call random_number(unifrnd)
                     StartPointVecObj%Val(i) = randomStartPointDomainLowerLimitVec(i) + unifrnd * (randomStartPointDomainUpperLimitVec(i)-randomStartPointDomainLowerLimitVec(i))
                 else
-                    StartPointVecObj%Val(i) = 0.5_RK * ( randomStartPointDomainLowerLimitVec(i) + randomStartPointDomainUpperLimitVec(i) )
+                    StartPointVecObj%Val(i) = 0.5_RK * ( domainLowerLimitVec(i) + domainUpperLimitVec(i) )
                 end if
             end if
         end do
@@ -130,7 +132,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine checkForSanity(StartPointVecObj,Err,methodName,randomStartPointDomainLowerLimitVec,randomStartPointDomainUpperLimitVec)
+    subroutine checkForSanity(StartPointVecObj,Err,methodName,DomainLowerLimitVec,DomainUpperLimitVec)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
@@ -139,21 +141,21 @@ contains
         use Err_mod, only: Err_type
         implicit none
         class(StartPointVec_type), intent(in)   :: StartPointVecObj
-        real(RK), intent(in)                    :: randomStartPointDomainLowerLimitVec(:), randomStartPointDomainUpperLimitVec(:)
+        real(RK), intent(in)                    :: DomainLowerLimitVec(:), DomainUpperLimitVec(:)
         character(*), intent(in)                :: methodName
         type(Err_type), intent(inout)           :: Err
         character(*), parameter                 :: PROCEDURE_NAME = "@checkForSanity()"
         integer(IK)                             :: i
         do i = 1, size(StartPointVecObj%Val)
-            if ( StartPointVecObj%Val(i)<randomStartPointDomainLowerLimitVec(i) .or. StartPointVecObj%Val(i)>randomStartPointDomainUpperLimitVec(i) ) then
+            if ( StartPointVecObj%Val(i)<DomainLowerLimitVec(i) .or. StartPointVecObj%Val(i)>DomainUpperLimitVec(i) ) then
                 Err%occurred = .true.
                 Err%msg =   Err%msg // &
                             MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
                             &The input requested value for the component " // num2str(i) // " of the vector startPointVec (" // &
                             num2str(StartPointVecObj%Val(i)) // ") must be within the range of the sampling Domain defined &
                             &in the program: (" &
-                            // num2str(randomStartPointDomainLowerLimitVec(i)) // "," &
-                            // num2str(randomStartPointDomainUpperLimitVec(i)) // "). If you don't &
+                            // num2str(DomainLowerLimitVec(i)) // "," &
+                            // num2str(DomainUpperLimitVec(i)) // "). If you don't &
                             &know an appropriate value for startPointVec, drop it from the input list. " // &
                             methodName // " will automatically assign an appropriate value to it.\n\n"
             end if
