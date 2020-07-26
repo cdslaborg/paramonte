@@ -35,117 +35,15 @@
 !***********************************************************************************************************************************
 
 module ParaDRAMProposalAbstract_mod
-
-    use Constants_mod, only: IK, RK
-    use Err_mod, only: Err_type
-
-    implicit none
-
-    character(*), parameter :: MODULE_NAME = "@ParaDRAMProposal_mod"
-
-    type(Err_type), save :: ProposalErr
-
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
-
-    type, abstract :: ProposalAbstract_type
-    contains
-        procedure(getNew_proc)                  , nopass    , deferred  :: getNew
-        procedure(getLogProb_proc)              , nopass    , deferred  :: getLogProb
-        procedure(doAdaptation_proc)            , nopass    , deferred  :: doAdaptation
-        procedure(readRestartFileAscii_proc)    , nopass    , deferred  :: readRestartFileAscii
-        procedure(writeRestartFileAscii_proc)   , nopass    , deferred  :: writeRestartFileAscii
-#if defined CAF_ENABLED || defined MPI_ENABLED
-        procedure(bcastAdaptation_proc)         , nopass    , deferred  :: bcastAdaptation
-#endif
-    end type ProposalAbstract_type
-
-    !*******************************************************************************************************************************
-
-#if defined CAF_ENABLED || defined MPI_ENABLED
-    abstract interface
-        subroutine bcastAdaptation_proc()
-        end subroutine bcastAdaptation_proc
-    end interface
-#endif
-
-    !*******************************************************************************************************************************
-
-    abstract interface
-    function getNew_proc( nd            &
-                        , counterDRS    &
-                        , StateOld      &
-                        ) result (StateNew)
-        use Constants_mod, only: IK, RK
-        import :: ProposalAbstract_type
-       !class(ProposalAbstract_type), intent(inout) :: Proposal
-        integer(IK), intent(in) :: nd
-        integer(IK), intent(in) :: counterDRS
-        real(RK)   , intent(in) :: StateOld(nd)
-        real(RK)                :: StateNew(nd)
-    end function getNew_proc
-    end interface
-
-    !*******************************************************************************************************************************
-
-    abstract interface
-    function getLogProb_proc( nd                &
-                            , counterDRS        &
-                            , StateOld          &
-                            , StateNew          &
-                            ) result (logProb)
-        use Constants_mod, only: IK, RK
-        import :: ProposalAbstract_type
-        integer(IK), intent(in) :: nd
-        integer(IK), intent(in) :: counterDRS
-        real(RK)   , intent(in) :: StateOld(nd)
-        real(RK)   , intent(in) :: StateNew(nd)
-        real(RK)                :: logProb
-    end function getLogProb_proc
-    end interface
-
-    !*******************************************************************************************************************************
-
-    abstract interface
-    subroutine doAdaptation_proc( nd                        &
-                                , chainSize                 &
-                                , Chain                     &
-                                , ChainWeight               &
-                                , samplerUpdateIsGreedy     &
-                                , meanAccRateSinceStart     &
-                                , samplerUpdateSucceeded    &
-                                , adaptationMeasure         &
-                                )
-        use Constants_mod, only: IK, RK
-        import :: ProposalAbstract_type
-       !class(ProposalAbstract_type), intent(inout) :: Proposal
-        integer(IK), intent(in)     :: nd
-        integer(IK), intent(in)     :: chainSize
-        real(RK)   , intent(in)     :: Chain(nd,chainSize)
-        integer(IK), intent(in)     :: ChainWeight(chainSize)
-        logical    , intent(in)     :: samplerUpdateIsGreedy
-        real(RK)   , intent(in)     :: meanAccRateSinceStart
-        logical    , intent(out)    :: samplerUpdateSucceeded
-        real(RK)   , intent(out)    :: adaptationMeasure
-    end subroutine doAdaptation_proc
-    end interface
-
-    !*******************************************************************************************************************************
-
-    abstract interface
-    subroutine readRestartFileAscii_proc()
-    end subroutine readRestartFileAscii_proc
-    end interface
-
-    !*******************************************************************************************************************************
-
-    abstract interface
-    subroutine writeRestartFileAscii_proc()
-    end subroutine writeRestartFileAscii_proc
-    end interface
-
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
-
+#define PARADRAM ParaDRAM
+#include "ParaDRAMProposalAbstract_mod.inc.f90"
+#undef PARADRAM
 end module ParaDRAMProposalAbstract_mod
+
+module ParaDISEProposalAbstract_mod
+#define PARADISE ParaDISE 
+#include "ParaDRAMProposalAbstract_mod.inc.f90"
+#undef ParaDISE
+end module ParaDISEProposalAbstract_mod
+
 

@@ -34,20 +34,44 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-!#define PARADISE ParaDISE
-!#undef PARADISE
-!module ParaDRAMProposal_mod
+
+
+#define STR1(x) #x
+#define STR(x) STR1(x)
+
+
 
 #if defined UNIFORM
-#define SAMPLER_NAME getRandMVU
+
+#define PROPOSAL_NAME UNIFORM
+#define PROPOSAL_SAMPLER_NAME getRandMVU
+
 #elif defined NORMAL
-#define SAMPLER_NAME getRandMVN
+
+#define PROPOSAL_NAME NORMAL
+#define PROPOSAL_SAMPLER_NAME getRandMVN
+
+#else
+
+#error "Unknown Proposal model in ParaDRAMProposal_mod.inc.f90"
+
 #endif
 
 
-    use ParaDRAMProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
+
+#if defined PARADRAM
+#define SAMPLER ParaDRAM
+#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDRAMProposalAbstract_mod
+#elif defined PARADISE
+#define SAMPLER ParaDISE
+#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDISEProposalAbstract_mod
+#endif
+
+
+
+    use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalAbstract_type, ProposalErr
     use ParaMonte_mod, only: Image_type
-    use Constants_mod, only: IK, RK
+    use Constants_mod, only: IK, RK, PMSM
     use String_mod, only: IntStr_type
 
     implicit none
@@ -55,7 +79,7 @@
     !private
     !public :: Proposal_type
 
-    character(*), parameter         :: MODULE_NAME = "@ParaDRAMProposalSymmetric_mod"
+    character(*), parameter         :: MODULE_NAME = "@"//PMSM%SAMPLER//"Proposal"//STR(PROPOSAL_NAME)//"_mod"
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -163,7 +187,6 @@ contains
         use SpecBase_mod, only: SpecBase_type
         use SpecMCMC_mod, only: SpecMCMC_type
         use SpecDRAM_mod, only: SpecDRAM_type
-        use ParaDRAM_mod, only: ParaDRAM_type
         use String_mod, only: num2str
         use Err_mod, only: abort
 #if defined UNIFORM
@@ -328,7 +351,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNew
 #endif
-        use Statistics_mod, only: SAMPLER_NAME
+        use Statistics_mod, only: PROPOSAL_SAMPLER_NAME
         use Constants_mod, only: IK, RK
         use Err_mod, only: warn, abort
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -348,13 +371,11 @@ contains
         CholeskyLower = comv_CholDiagLower(1:nd,1:nd,counterDRS)
         loopBoundaryCheckNormal: do ! Check for the support Region consistency:
 #if defined UNIFORM || defined NORMAL
-            StateNew(1:nd) = SAMPLER_NAME   ( nd                                    &
-                                            , StateOld                              &
-                                            , CholeskyLower                         &
-                                            , comv_CholDiagLower(1:nd,0,counterDRS) &
-                                            )
-#else
-#error "Unknown Proposal model in ParaDRAMProposal_mod.inc.f90"
+            StateNew(1:nd) = PROPOSAL_SAMPLER_NAME  ( nd                                    &
+                                                    , StateOld                              &
+                                                    , CholeskyLower                         &
+                                                    , comv_CholDiagLower(1:nd,0,counterDRS) &
+                                                    )
 #endif
             if ( any(StateNew(1:nd)<=mc_DomainLowerLimitVec) .or. any(StateNew(1:nd)>=mc_DomainUpperLimitVec) ) then
                 domainCheckCounter = domainCheckCounter + 1
@@ -932,5 +953,9 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-!end module ParaDRAMProposal_mod
-!#undef PARADISE
+
+#undef PROPOSAL_NAME
+#undef PROPOSAL_SAMPLER_NAME
+#undef SAMPLER
+#undef SAMPLER_PROPOSAL_ABSTRACT_MOD
+

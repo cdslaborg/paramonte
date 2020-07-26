@@ -101,7 +101,7 @@ contains
 
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFunc &
-                            !, inputFile = Test%inDir//"paramonte.nml" &
+                            , inputFile = Test%inDir//"paramonte.nml" &
                             !, inputFile = internalFile &
                             !, inputFile = " " &
                             )

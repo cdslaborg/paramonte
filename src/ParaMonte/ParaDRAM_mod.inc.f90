@@ -37,9 +37,17 @@
 !#define CAT(a,b) a##b
 !#define XCAT(a,b) CAT(a,b)
 #if defined PARADRAM
+
+#define SAMPLER_MOD ParaDRAM_mod
 #define SAMPLER_TYPE ParaDRAM_type
+#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDRAMProposalAbstract_mod
+
 #elif defined PARADISE
+
+#define SAMPLER_MOD ParaDISE_mod
 #define SAMPLER_TYPE ParaDISE_type
+#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDISEProposalAbstract_mod
+
 #else
 #error "Unrecognized sampler in ParaDRAM_mod.inc.f90"
 #endif
@@ -49,7 +57,7 @@
     use ParaMCMC_mod, only: ParaMCMC_type, ParaMCMC_Statistics_type, ParaMCMC_Chain_type
     use SpecDRAM_mod, only: SpecDRAM_type
     use ParaMonteLogFunc_mod, only: getLogFunc_proc
-    use ParaDRAMProposalAbstract_mod, only: ProposalAbstract_type
+    use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalAbstract_type
 
     implicit none
 
@@ -230,5 +238,7 @@
 #elif defined PARADRAM
 #endif
 
+#undef SAMPLER_MOD
 #undef SAMPLER_TYPE
+#undef SAMPLER_PROPOSAL_ABSTRACT_MOD
 
