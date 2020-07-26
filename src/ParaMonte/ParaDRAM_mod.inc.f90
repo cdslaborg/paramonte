@@ -36,11 +36,12 @@
 
 !#define CAT(a,b) a##b
 !#define XCAT(a,b) CAT(a,b)
-
-#if defined ParaDISE
-!module ParaDISE_mod
-#elif defined ParaDRAM
-module ParaDRAM_mod
+#if defined PARADRAM
+#define SAMPLER_TYPE ParaDRAM_type
+#elif defined PARADISE
+#define SAMPLER_TYPE ParaDISE_type
+#else
+#error "Unrecognized sampler in ParaDRAM_mod.inc.f90"
 #endif
 
     use Constants_mod, only: IK, RK, CK
@@ -48,39 +49,43 @@ module ParaDRAM_mod
     use ParaMCMC_mod, only: ParaMCMC_type, ParaMCMC_Statistics_type, ParaMCMC_Chain_type
     use SpecDRAM_mod, only: SpecDRAM_type
     use ParaMonteLogFunc_mod, only: getLogFunc_proc
-    use ParaDRAMProposalTemplate_mod, only: ProposalTemplate_type
+    use ParaDRAMProposalAbstract_mod, only: ProposalAbstract_type
 
     implicit none
 
+#if defined PARADRAM
     character(*), parameter :: MODULE_NAME = "@ParaDRAM_mod"
+#elif defined PARADISE
+    character(*), parameter :: MODULE_NAME = "@ParaDISE_mod"
+#endif
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    type, extends(ParaMonteNumFunCall_type) :: ParaDRAM_NumFunCall_type
+    type, extends(ParaMonteNumFunCall_type) :: NumFunCall_type
         integer(IK)                         :: acceptedRejectedDelayed          ! accepted + rejected function calls, including the delayed rejections
         integer(IK)                         :: acceptedRejectedDelayedUnused    ! by all processes, used or unused
-    end type ParaDRAM_NumFunCall_type
+    end type NumFunCall_type
 
-    type, extends(ParaMCMC_Statistics_type) :: ParaDRAM_Statistics_type
+    type, extends(ParaMCMC_Statistics_type) :: Statistics_type
         type(ParaMCMC_Chain_type)           :: AdaptationBurninLoc              ! burning loc based on the minimum adaptation measure requested
-        type(ParaDRAM_NumFunCall_type)      :: NumFunCall
-    end type ParaDRAM_Statistics_type
+        type(NumFunCall_type)               :: NumFunCall
+    end type Statistics_type
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    type, extends(ParaMCMC_type)                    :: ParaDRAM_type
+    type, extends(ParaMCMC_type)                    :: SAMPLER_TYPE
         type(SpecDRAM_type)                         :: SpecDRAM
-        type(ParaDRAM_Statistics_type)              :: Stats
+        type(Statistics_type)                       :: Stats
        !type(RefinedChain_type)                     :: RefinedChain
-       !class(ProposalTemplate_type), pointer       :: Proposal => null()
-        class(ProposalTemplate_type), allocatable   :: Proposal
+       !class(ProposalAbstract_type), pointer       :: Proposal => null()
+        class(ProposalAbstract_type), allocatable   :: Proposal
     contains
         procedure, pass, private                    :: getSpecFromInputFile
         procedure, pass, public                     :: runSampler
         procedure, pass, private                    :: runKernel
-    end type ParaDRAM_type
+    end type SAMPLER_TYPE ! ParaDRAM_type or ParaDISE_type
 
     !interface ParaDRAM_type
     !    module procedure :: runParaDRAM
@@ -92,7 +97,7 @@ module ParaDRAM_mod
         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile
 #endif
         use Constants_mod, only: IK
-        class(ParaDRAM_type), intent(inout) :: self
+        class(SAMPLER_TYPE), intent(inout)  :: self
         integer(IK), intent(in)             :: nd
     end subroutine getSpecFromInputFile
     end interface
@@ -103,7 +108,7 @@ module ParaDRAM_mod
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
-        class(ParaDRAM_type), intent(inout) :: self
+        class(SAMPLER_TYPE), intent(inout)  :: self
         procedure(getLogFunc_proc)          :: getLogFunc
     end subroutine runKernel
     end interface
@@ -155,7 +160,7 @@ module ParaDRAM_mod
                                 , delayedRejectionScaleFactorVec        &
                                 ) ! result(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDRAM_type
+        !!DEC$ ATTRIBUTES DLLEXPORT :: SAMPLER_TYPE
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -164,7 +169,7 @@ module ParaDRAM_mod
         implicit none
 
         ! self
-        class(ParaDRAM_type), intent(inout) :: self
+        class(SAMPLER_TYPE), intent(inout)  :: self
 
         ! mandatory variables
         integer(IK) , intent(in)            :: ndim
@@ -221,8 +226,9 @@ module ParaDRAM_mod
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-#if defined ParaDISE
-!end module ParaDISE_mod
-#elif defined ParaDRAM
-end module ParaDRAM_mod
+#if defined PARADISE
+#elif defined PARADRAM
 #endif
+
+#undef SAMPLER_TYPE
+

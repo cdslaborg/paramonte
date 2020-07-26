@@ -35,7 +35,17 @@
 !***********************************************************************************************************************************
 
 #define NORMAL
+
 module ParaDRAMProposalNormal_mod
+#define PARADRAM ParaDRAM
 #include "ParaDRAMProposal_mod.inc.f90"
+#undef PARADRAM
 end module ParaDRAMProposalNormal_mod
+
+module ParaDISEProposalNormal_mod
+#define PARADISE ParaDISE
+#include "ParaDRAMProposal_mod.inc.f90"
+#undef PARADISE
+end module ParaDISEProposalNormal_mod
+
 #undef NORMAL

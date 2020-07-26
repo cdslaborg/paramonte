@@ -108,7 +108,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/ParaMonteLogFunc_mod.f90
     ${ParaMonte_SRC_DIR}/ParaMonteChainFileContents_mod.f90
     ${ParaMonte_SRC_DIR}/ParaMCMCRefinedChain_mod.f90
-    ${ParaMonte_SRC_DIR}/ParaDRAMProposalTemplate_mod.f90
+    ${ParaMonte_SRC_DIR}/ParaDRAMProposalAbstract_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90
     ${ParaMonte_SRC_DIR}/ParaMonte_mod.f90
@@ -124,8 +124,11 @@ SET(ParaMonte_SOURCE_FILES
 )
    #${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricUniform_mod.f90
 
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod_ParaDISE_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.inc.f90)
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod@nextMove.inc.f90)
+#set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod@markovGen.inc.f90)
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90)
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricNormal_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetric_mod.inc.f90 )

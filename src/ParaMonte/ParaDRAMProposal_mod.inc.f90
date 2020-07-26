@@ -34,15 +34,18 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+!#define PARADISE ParaDISE
+!#undef PARADISE
+!module ParaDRAMProposal_mod
+
 #if defined UNIFORM
 #define SAMPLER_NAME getRandMVU
 #elif defined NORMAL
 #define SAMPLER_NAME getRandMVN
 #endif
 
-!module ParaDRAMProposal_mod
 
-    use ParaDRAMProposalTemplate_mod, only: ProposalTemplate_type, ProposalErr
+    use ParaDRAMProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
     use ParaMonte_mod, only: Image_type
     use Constants_mod, only: IK, RK
     use String_mod, only: IntStr_type
@@ -62,14 +65,14 @@
         real(RK)                    :: target
     end type AccRate_type
 
-    type, extends(ProposalTemplate_type) :: Proposal_type
+    type, extends(ProposalAbstract_type) :: Proposal_type
        !type(AccRate_type)          :: AccRate
     contains
         procedure   , nopass        :: getNew
         procedure   , nopass        :: getLogProb
         procedure   , nopass        :: doAdaptation
-        procedure   , nopass        :: readRestartFile
-        procedure   , nopass        :: writeRestartFile
+        procedure   , nopass        :: readRestartFileAscii
+        procedure   , nopass        :: writeRestartFileAscii
 #if defined CAF_ENABLED || defined MPI_ENABLED
         procedure   , nopass        :: bcastAdaptation
 #endif
@@ -153,7 +156,6 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalSymmetric
 #endif
-
         use Constants_mod, only: IK, RK, NULL_RK
         use ParaMonte_mod, only: Image_type
         use ParaMonte_mod, only: LogFile_type
@@ -375,7 +377,11 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    pure function getLogProb(nd, counterDRS, StateOld, StateNew) result(logProb)
+    pure function getLogProb( nd                &
+                            , counterDRS        &
+                            , StateOld          &
+                            , StateNew          &
+                            ) result(logProb)
 #if defined NORMAL
         use Statistics_mod, only: getLogProbMVN
 #elif defined UNIFORM
@@ -383,81 +389,26 @@ contains
 #endif
         use Constants_mod, only: IK, RK, NEGINF_RK
         implicit none
-        integer(IK), intent(in)                         :: nd
-        integer(IK), intent(in)                         :: counterDRS
-        real(RK)   , intent(in)                         :: StateOld(nd)
-        real(RK)   , intent(in)                         :: StateNew(nd)
-        real(RK)                                        :: logProb
+        integer(IK), intent(in)             :: nd
+        integer(IK), intent(in)             :: counterDRS
+        real(RK)   , intent(in)             :: StateOld(nd)
+        real(RK)   , intent(in)             :: StateNew(nd)
+        real(RK)                            :: logProb
 #if defined UNIFORM
-        if (isInsideEllipsoid(nd,StateNew-StateOld,mv_InvCovMat(1:mc_ndim,1:mc_ndim,counterDRS))) then
-            logProb = mc_negLogVolUnitBall + mv_logSqrtDetInvCovMat(counterDRS)
-        else
-            logProb = NEGINF_RK
-        end if
+            if (isInsideEllipsoid(nd,StateNew-StateOld,mv_InvCovMat(1:mc_ndim,1:mc_ndim,counterDRS))) then
+                logProb = mc_negLogVolUnitBall + mv_logSqrtDetInvCovMat(counterDRS)
+            else
+                logProb = NEGINF_RK
+            end if
 #elif defined NORMAL
-        logProb = getLogProbMVN ( nd = nd &
-                                , MeanVec = StateOld &
-                                , InvCovMat = mv_InvCovMat(1:nd,1:nd,counterDRS) &
-                                , logSqrtDetInvCovMat = mv_logSqrtDetInvCovMat(counterDRS) &
-                                , Point = StateNew &
-                                )
+            logProb = getLogProbMVN ( nd = nd &
+                                    , MeanVec = StateOld &
+                                    , InvCovMat = mv_InvCovMat(1:nd,1:nd,counterDRS) &
+                                    , logSqrtDetInvCovMat = mv_logSqrtDetInvCovMat(counterDRS) &
+                                    , Point = StateNew &
+                                    )
 #endif
     end function getLogProb
-
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
-
-    ! ATTN: This routine needs further correction for the delayed rejection method
-    subroutine doAutoTune   ( adaptationMeasure &
-                            , AutoTuneScaleSq   &
-                            )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: doAutoTune
-#endif
-        use Matrix_mod, only: getLogSqrtDetPosDefMat
-        use Constants_mod, only: RK, IK
-        use Err_mod, only: abort
-        implicit none
-        character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAutoTune()"
-
-        real(RK)   , intent(in)                         :: AutoTuneScaleSq(1)
-        real(RK)   , intent(inout)                      :: adaptationMeasure
-        real(RK)                                        :: logSqrtDetNew, logSqrtDetSum, mv_logSqrtDetOld_save
-        real(RK)                                        :: CovMatUpperOld(1,1), CovMatUpperCurrent(1,1)
-        logical                                         :: singularityOccurred
-
-        CovMatUpperOld = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0)
-        mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
-
-        if (AutoTuneScaleSq(1)==0._RK) then
-            comv_CholDiagLower(1,1,0) = 0.25_RK*comv_CholDiagLower(1,1,0)
-            comv_CholDiagLower(1,0,0) = sqrt(comv_CholDiagLower(1,1,0))
-        else
-            comv_CholDiagLower(1,1,0) = AutoTuneScaleSq(1)
-            comv_CholDiagLower(1,0,0) = sqrt(AutoTuneScaleSq(1))
-        end if
-
-        ! compute the adaptivity
-
-        logSqrtDetNew = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
-        CovMatUpperCurrent = 0.5_RK * ( comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0) + CovMatUpperOld )
-        call getLogSqrtDetPosDefMat(1_IK,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
-        if (singularityOccurred) then
-            ProposalErr%occurred = .true.
-            ProposalErr%msg = PROCEDURE_NAME // &
-                            ": Error occurred while computing the Cholesky factorization of &
-                            &a matrix needed for the computation of the proposal distribution's adaptation measure. &
-                            &Such error is highly unusual, and requires an in depth investigation of the case. &
-                            &It may also be that your input objective function has been incorrectly implemented.\n&
-                            &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
-                            &the same value that is expected as input to your objective function's implementation.\n&
-                            &Otherwise, restarting the simulation might resolve the error."
-            call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
-            return
-        end if
-        adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
-
-    end subroutine doAutoTune
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -799,6 +750,61 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+    ! ATTN: This routine needs further correction for the delayed rejection method
+    subroutine doAutoTune   ( adaptationMeasure &
+                            , AutoTuneScaleSq   &
+                            )
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: doAutoTune
+#endif
+        use Matrix_mod, only: getLogSqrtDetPosDefMat
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: abort
+        implicit none
+        character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAutoTune()"
+
+        real(RK)   , intent(in)                         :: AutoTuneScaleSq(1)
+        real(RK)   , intent(inout)                      :: adaptationMeasure
+        real(RK)                                        :: logSqrtDetNew, logSqrtDetSum, mv_logSqrtDetOld_save
+        real(RK)                                        :: CovMatUpperOld(1,1), CovMatUpperCurrent(1,1)
+        logical                                         :: singularityOccurred
+
+        CovMatUpperOld = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0)
+        mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
+
+        if (AutoTuneScaleSq(1)==0._RK) then
+            comv_CholDiagLower(1,1,0) = 0.25_RK*comv_CholDiagLower(1,1,0)
+            comv_CholDiagLower(1,0,0) = sqrt(comv_CholDiagLower(1,1,0))
+        else
+            comv_CholDiagLower(1,1,0) = AutoTuneScaleSq(1)
+            comv_CholDiagLower(1,0,0) = sqrt(AutoTuneScaleSq(1))
+        end if
+
+        ! compute the adaptivity
+
+        logSqrtDetNew = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
+        CovMatUpperCurrent = 0.5_RK * ( comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0) + CovMatUpperOld )
+        call getLogSqrtDetPosDefMat(1_IK,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
+        if (singularityOccurred) then
+            ProposalErr%occurred = .true.
+            ProposalErr%msg = PROCEDURE_NAME // &
+                            ": Error occurred while computing the Cholesky factorization of &
+                            &a matrix needed for the computation of the proposal distribution's adaptation measure. &
+                            &Such error is highly unusual, and requires an in depth investigation of the case. &
+                            &It may also be that your input objective function has been incorrectly implemented.\n&
+                            &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
+                            &the same value that is expected as input to your objective function's implementation.\n&
+                            &Otherwise, restarting the simulation might resolve the error."
+            call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+            return
+        end if
+        adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
+
+    end subroutine doAutoTune
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
     ! Note: based on some benchmarks with ndim = 1, the new design with merging cholesky diag and lower is faster than the original
     ! Note: double communication. Here are some timings on 4 images:
     ! Note: new single communication:
@@ -858,12 +864,12 @@ contains
                                                                             )
             mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))
         end do
-if (mc_ndim==1 .and. abs(log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))>1.e-13_RK) then
-write(*,"(*(g0,:,' '))") "log(sqrt(mv_InvCovMat(1,1,0))) /= mv_logSqrtDetInvCovMat(0)"
-write(*,"(*(g0,:,' '))") log(sqrt(mv_InvCovMat(1,1,0))), mv_logSqrtDetInvCovMat(0)
-write(*,"(*(g0,:,' '))") abs(-log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))
-error stop
-endif
+!if (mc_ndim==1 .and. abs(log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))>1.e-13_RK) then
+!write(*,"(*(g0,:,' '))") "log(sqrt(mv_InvCovMat(1,1,0))) /= mv_logSqrtDetInvCovMat(0)"
+!write(*,"(*(g0,:,' '))") log(sqrt(mv_InvCovMat(1,1,0))), mv_logSqrtDetInvCovMat(0)
+!write(*,"(*(g0,:,' '))") abs(-log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))
+!error stop
+!endif
     end subroutine getInvCovMat
 
 !***********************************************************************************************************************************
@@ -890,9 +896,9 @@ endif
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine writeRestartFile()
+    subroutine writeRestartFileAscii()
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFile
+        !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFileAscii
 #endif
         implicit none
         write( mc_restartFileUnit, mc_restartFileFormat ) "sampleSizeOld" &
@@ -906,14 +912,14 @@ endif
                                                         , "CholDiagLower(1:ndim,0:ndim,0)" &
                                                         , comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
         flush(mc_restartFileUnit)
-    end subroutine writeRestartFile
+    end subroutine writeRestartFileAscii
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine readRestartFile()
+    subroutine readRestartFileAscii()
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFile
+        !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFileAscii
 #endif
         implicit none
         integer(IK) :: i
@@ -921,9 +927,10 @@ endif
             !read( mc_restartFileUnit, mc_restartFileFormat )
             read( mc_restartFileUnit, * )
         end do
-    end subroutine readRestartFile
+    end subroutine readRestartFileAscii
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
 !end module ParaDRAMProposal_mod
+!#undef PARADISE

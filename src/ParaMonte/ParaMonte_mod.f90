@@ -638,7 +638,7 @@ contains
             self%SpecBase%OutputFileName%dir = trim(adjustl(currentWorkingDir)) // self%SpecBase%OutputFileName%slashOS
             msg = msg //NLC//NLC// "All output files will be written to the current working directory:"//NLC//self%SpecBase%OutputFileName%dir
         else
-            msg = msg //NLC//NLC// "Generating the requested directory for ParaDRAM output files:"//NLC//self%SpecBase%OutputFileName%dir
+            msg = msg //NLC//NLC// "Generating the requested directory for the "//self%name//" output files:"//NLC//self%SpecBase%OutputFileName%dir
         end if
 
         ! Generate the output files directory:
@@ -766,7 +766,7 @@ contains
         self%isFreshRun = .not. self%isDryRun
 
         if (self%isFreshRun) then
-            if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "No pre-existing "//self%name//" run detected."//NLC//"Starting a fresh ParaDRAM run..." )
+            if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "No pre-existing "//self%name//" run detected."//NLC//"Starting a fresh "//self%name//" run..." )
         else
             if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "Previous run of "//self%name//" detected."//NLC//"Searching for restart files..." )
             if (self%SampleFile%exists) then ! sampling is already complete

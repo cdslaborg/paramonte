@@ -83,6 +83,9 @@ module Constants_mod
     real(RK)    , parameter :: LOGTINY_RK = log(TINY_RK)                                ! log of the smallest number of kind RK
     real(RK)    , parameter :: POSINF_RK =  HUGE_RK / 1.e1_RK                           ! the division is done to avoid overflow in output
     real(RK)    , parameter :: POSINF_IK =  HUGE_IK / 2_IK                              ! the division is done to avoid overflow in output
+    real(RK)    , parameter :: LOGINF_RK =  log(POSINF_RK)
+    real(RK)    , parameter :: NEGLOGINF_RK = -LOGINF_RK
+    real(RK)    , parameter :: LOGINF_IK =  log(POSINF_IK)
     real(RK)    , parameter :: NEGINF_RK = -POSINF_RK
     real(RK)    , parameter :: NEGINF_IK = -POSINF_IK
     real(RK)    , parameter :: NULL_RK = -HUGE_RK
@@ -162,6 +165,7 @@ module Constants_mod
     type, private       :: ParaMonteSamplingMethod_type
         integer(IK)     :: count = 4_IK
         character(8)    :: ParaDRAM = "ParaDRAM"
+        character(8)    :: ParaDISE = "ParaDISE"
         character(8)    :: ParaHDMC = "ParaHDMC"
         character(8)    :: ParaTemp = "ParaTemp"
         character(8)    :: ParaNest = "ParaNest"
