@@ -183,7 +183,10 @@ contains
         call SpecMCMC%startPointVec                         %set(startPointVec &
                                                                 ,randomStartPointDomainLowerLimitVec    = SpecMCMC%RandomStartPointDomainLowerLimitVec%val  &
                                                                 ,randomStartPointDomainUpperLimitVec    = SpecMCMC%RandomStartPointDomainUpperLimitVec%val  &
-                                                                ,randomStartPointRequested              = SpecMCMC%RandomStartPointRequested%val            )
+                                                                ,randomStartPointRequested              = SpecMCMC%RandomStartPointRequested%val            &
+                                                                ,domainLowerLimitVec                    = domainLowerLimitVec                               &
+                                                                ,domainUpperLimitVec                    = domainUpperLimitVec                               )
+
 
         deallocate(randomStartPointDomainLowerLimitVec)
         deallocate(randomStartPointDomainUpperLimitVec)
@@ -254,7 +257,9 @@ contains
         if (present(startPointVec))                         call SpecMCMC%startPointVec                         %set(startPointVec &
                                                                                                                 ,randomStartPointDomainLowerLimitVec    = SpecMCMC%RandomStartPointDomainLowerLimitVec%val  &
                                                                                                                 ,randomStartPointDomainUpperLimitVec    = SpecMCMC%RandomStartPointDomainUpperLimitVec%val  &
-                                                                                                                ,randomStartPointRequested              = SpecMCMC%RandomStartPointRequested%val            )
+                                                                                                                ,randomStartPointRequested              = SpecMCMC%RandomStartPointRequested%val            &
+                                                                                                                ,domainLowerLimitVec                    = domainLowerLimitVec                               &
+                                                                                                                ,domainUpperLimitVec                    = domainUpperLimitVec                               )
 
     end subroutine setFromInputArgs
 
@@ -426,7 +431,10 @@ contains
         call SpecMCMC%SampleRefinementMethod                %checkForSanity(Err,methodName)
         call SpecMCMC%RandomStartPointDomainLowerLimitVec   %checkForSanity(Err,methodName,domainLowerLimitVec)
         call SpecMCMC%RandomStartPointDomainUpperLimitVec   %checkForSanity(Err,methodName,randomStartPointDomainLowerLimitVec=SpecMCMC%RandomStartPointDomainLowerLimitVec%val,domainUpperLimitVec=domainUpperLimitVec)
-        call SpecMCMC%startPointVec                         %checkForSanity(Err,methodName,randomStartPointDomainLowerLimitVec=SpecMCMC%RandomStartPointDomainLowerLimitVec%val,randomStartPointDomainUpperLimitVec=SpecMCMC%RandomStartPointDomainUpperLimitVec%val)
+        call SpecMCMC%startPointVec                         %checkForSanity(Err,methodName &
+                                                                           ,domainLowerLimitVec = domainLowerLimitVec &
+                                                                           ,domainUpperLimitVec = domainUpperLimitVec )
+
     end subroutine checkForSanity
 
 !***********************************************************************************************************************************

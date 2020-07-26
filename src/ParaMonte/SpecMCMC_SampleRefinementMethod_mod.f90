@@ -42,9 +42,11 @@ module SpecMCMC_SampleRefinementMethod_mod
     character(*), parameter         :: MODULE_NAME = "@SpecMCMC_SampleRefinementMethod_mod"
 
     character(*), parameter         :: BATCH_MEANS_METHOD_NAME = "BatchMeans"
+    character(*), parameter         :: CUTOFF_AUTOCORR_METHOD_NAME = "CutOffAutoCorr"
     character(*), parameter         :: MAX_CUMSUM_AUTOCORR_METHOD_NAME = "MaxCumSumAutoCorr"
-    integer(IK) , parameter         :: LEN_MAX_CUMSUM_AUTOCORR_METHOD_NAME = len(MAX_CUMSUM_AUTOCORR_METHOD_NAME)
     integer(IK) , parameter         :: LEN_BATCH_MEANS_METHOD_NAME = len(BATCH_MEANS_METHOD_NAME)
+    integer(IK) , parameter         :: LEN_CUTOFF_AUTOCORR_METHOD_NAME = len(CUTOFF_AUTOCORR_METHOD_NAME)
+    integer(IK) , parameter         :: LEN_MAX_CUMSUM_AUTOCORR_METHOD_NAME = len(MAX_CUMSUM_AUTOCORR_METHOD_NAME)
     integer(IK) , parameter         :: MAX_LEN_SAMPLE_REFINEMENT_METHOD = 63
 
     character(MAX_LEN_SAMPLE_REFINEMENT_METHOD) :: sampleRefinementMethod ! namelist input
@@ -164,7 +166,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
-        use String_mod, only: getLowerCase
+        use String_mod, only: getLowerCase, replaceStr
         use String_mod, only: num2str
         use Err_mod, only: Err_type
         implicit none
@@ -174,8 +176,12 @@ contains
         character(*), parameter                         :: PROCEDURE_NAME = "@checkForSanity()"
         character(:), allocatable                       :: sampleRefinementMethodLowerCase
         sampleRefinementMethodLowerCase = getLowerCase(SampleRefinementMethodObj%val)
-        if (index(sampleRefinementMethodLowerCase,getLowerCase(BATCH_MEANS_METHOD_NAME))==0 .and. &
-            index(sampleRefinementMethodLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR_METHOD_NAME))==0) then
+        if  (index(sampleRefinementMethodLowerCase,getLowerCase(replaceStr(BATCH_MEANS_METHOD_NAME," ","")))==0 &
+            .and. &
+            (index(sampleRefinementMethodLowerCase,getLowerCase(CUTOFF_AUTOCORR_METHOD_NAME))==0 .and. index(sampleRefinementMethodLowerCase,"cutoff")==0) &
+            .and. &
+            (index(sampleRefinementMethodLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR_METHOD_NAME))==0 .and. index(sampleRefinementMethodLowerCase,"cumsum")==0) &
+            ) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &

@@ -34,9 +34,18 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-module ParaDRAMProposalSymmetric_mod
-  
-    use ParaDRAMProposal_mod, only: Proposal_type, ProposalErr
+!#define PARADISE ParaDISE
+!#undef PARADISE
+!module ParaDRAMProposal_mod
+
+#if defined UNIFORM
+#define SAMPLER_NAME getRandMVU
+#elif defined NORMAL
+#define SAMPLER_NAME getRandMVN
+#endif
+
+
+    use ParaDRAMProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
     use ParaMonte_mod, only: Image_type
     use Constants_mod, only: IK, RK
     use String_mod, only: IntStr_type
@@ -44,7 +53,7 @@ module ParaDRAMProposalSymmetric_mod
     implicit none
 
     !private
-    !public :: ProposalSymmetric_type
+    !public :: Proposal_type
 
     character(*), parameter         :: MODULE_NAME = "@ParaDRAMProposalSymmetric_mod"
 
@@ -56,21 +65,22 @@ module ParaDRAMProposalSymmetric_mod
         real(RK)                    :: target
     end type AccRate_type
 
-    type, extends(Proposal_type)    :: ProposalSymmetric_type
-        !type(AccRate_type)          :: AccRate
+    type, extends(ProposalAbstract_type) :: Proposal_type
+       !type(AccRate_type)          :: AccRate
     contains
         procedure   , nopass        :: getNew
+        procedure   , nopass        :: getLogProb
         procedure   , nopass        :: doAdaptation
-        procedure   , nopass        :: readRestartFile
-        procedure   , nopass        :: writeRestartFile
+        procedure   , nopass        :: readRestartFileAscii
+        procedure   , nopass        :: writeRestartFileAscii
 #if defined CAF_ENABLED || defined MPI_ENABLED
-        procedure   , nopass        :: getAdaptation
+        procedure   , nopass        :: bcastAdaptation
 #endif
-    end type ProposalSymmetric_type
+    end type Proposal_type
 
-    interface ProposalSymmetric_type
+    interface Proposal_type
         module procedure :: constructProposalSymmetric
-    end interface ProposalSymmetric_type
+    end interface Proposal_type
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -78,10 +88,12 @@ module ParaDRAMProposalSymmetric_mod
     ! Covariance Matrix of the proposal distribution. Last index belongs to delayed rejection
 
 #if defined CAF_ENABLED
-    real(RK)    , allocatable, save :: comv_CholDiagLower(:,:,:)[:]
+    real(RK)        , save  , allocatable   :: comv_CholDiagLower(:,:,:)[:]
 #else
-    real(RK)    , allocatable, save :: comv_CholDiagLower(:,:,:)
+    real(RK)        , save  , allocatable   :: comv_CholDiagLower(:,:,:)
 #endif
+    real(RK)        , save  , allocatable   :: mv_logSqrtDetInvCovMat(:)
+    real(RK)        , save  , allocatable   :: mv_InvCovMat(:,:,:)
 
 #if defined MPI_ENABLED
     integer(IK)     , save                  :: mc_ndimSqPlusNdim
@@ -104,13 +116,14 @@ module ParaDRAMProposalSymmetric_mod
     real(RK)        , save  , allocatable   :: mc_DelayedRejectionScaleFactorVec(:)
     real(RK)        , save  , allocatable   :: mc_DomainLowerLimitVec(:)
     real(RK)        , save  , allocatable   :: mc_DomainUpperLimitVec(:)
+    real(RK)        , save  , allocatable   :: mc_negLogVolUnitBall
     character(:)    , save  , allocatable   :: mc_MaxNumDomainCheckToWarnMsg
     character(:)    , save  , allocatable   :: mc_MaxNumDomainCheckToStopMsg
     character(:)    , save  , allocatable   :: mc_negativeTotalVariationMsg
     character(:)    , save  , allocatable   :: mc_restartFileFormat
     character(:)    , save  , allocatable   :: mc_methodBrand
     character(:)    , save  , allocatable   :: mc_methodName
-    logical         , save                  :: mc_isNormal
+   !logical         , save                  :: mc_isNormal
 
     ! the following had to be defined globally for the sake of restart file generation
 
@@ -143,7 +156,6 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalSymmetric
 #endif
-
         use Constants_mod, only: IK, RK, NULL_RK
         use ParaMonte_mod, only: Image_type
         use ParaMonte_mod, only: LogFile_type
@@ -154,7 +166,9 @@ contains
         use ParaDRAM_mod, only: ParaDRAM_type
         use String_mod, only: num2str
         use Err_mod, only: abort
-
+#if defined UNIFORM
+        use Math_mod, only: getLogVolUnitBall
+#endif
         implicit none
 
         integer(IK)             , intent(in)    :: ndim
@@ -167,7 +181,7 @@ contains
         type(LogFile_type)      , intent(in)    :: LogFile
         type(RestartFile_type)  , intent(in)    :: RestartFile
 
-        type(ProposalSymmetric_type)            :: Proposal
+        type(Proposal_type)                     :: Proposal
 
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@constructProposalSymmetric()"
         integer                                 :: i, j
@@ -195,7 +209,7 @@ contains
         mc_DomainLowerLimitVec              = SpecBase%DomainLowerLimitVec%Val
         mc_DomainUpperLimitVec              = SpecBase%DomainUpperLimitVec%Val
         mc_DelayedRejectionScaleFactorVec   = SpecDRAM%delayedRejectionScaleFactorVec%Val
-        mc_isNormal                         = SpecMCMC%ProposalModel%isNormal
+       !mc_isNormal                         = SpecMCMC%ProposalModel%isNormal
         mc_Image                            = Image
         mc_methodName                       = name
         mc_methodBrand                      = brand
@@ -226,6 +240,11 @@ contains
 
         ! setup covariance matrix
 
+        if (allocated(mv_InvCovMat)) deallocate(mv_InvCovMat)
+        allocate( mv_InvCovMat(ndim,0:ndim,0:mc_DelayedRejectionCount) )
+        if (allocated(mv_logSqrtDetInvCovMat)) deallocate(mv_logSqrtDetInvCovMat)
+        allocate( mv_logSqrtDetInvCovMat(0:mc_DelayedRejectionCount) )
+
         if (allocated(comv_CholDiagLower)) deallocate(comv_CholDiagLower)
 #if defined CAF_ENABLED
         ! on the second dimension, the zeroth index refers to the Diagonal elements of the Cholesky lower triangular matrix
@@ -249,14 +268,11 @@ contains
 
         block
             use Matrix_mod, only: getCholeskyFactor
-#if defined DBG_ENABLED
-            real(RK), allocatable :: Dummy(:,:)
-            Dummy = comv_CholDiagLower(1:ndim,1:ndim,0)
-            call getCholeskyFactor( ndim, Dummy, comv_CholDiagLower(1:ndim,0,0) )
-            comv_CholDiagLower(1:ndim,1:ndim,0) = Dummy 
-#else
-            call getCholeskyFactor( ndim, comv_CholDiagLower(1:ndim,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) )
-#endif
+            real(RK), allocatable :: CholeskyLower(:,:) ! dummy variable to avoid copy in / copy out
+            CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
+            call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
+            comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower
+            call getInvCovMat()
         end block
         if (comv_CholDiagLower(1,0,0)<0._RK) then
             ProposalErr%msg = mc_Image%name // PROCEDURE_NAME // ": Singular input covariance matrix by user was detected. This is strange.\nCovariance matrix lower triangle:"
@@ -292,6 +308,14 @@ contains
                                         " proposals were drawn out of the objective function's Domain. As per the value set for the&
                                         & simulation specification variable 'maxNumDomainCheckToStop', "//mc_methodName//" will abort now."
 
+#if defined UNIFORM
+        if (ndim>1_IK) then
+            mc_negLogVolUnitBall = -getLogVolUnitBall(ndim)
+        else
+            mc_negLogVolUnitBall = 0._RK
+        end if
+#endif
+
     end function constructProposalSymmetric
 
 !***********************************************************************************************************************************
@@ -304,8 +328,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNew
 #endif
-
-        use Statistics_mod, only: getRandMVN, getRandMVU
+        use Statistics_mod, only: SAMPLER_NAME
         use Constants_mod, only: IK, RK
         use Err_mod, only: warn, abort
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -314,147 +337,78 @@ contains
         
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@getNew()"
         
-       !class(ProposalSymmetric_type), intent(inout)    :: Proposal
         integer(IK), intent(in)                         :: nd
         integer(IK), intent(in)                         :: counterDRS
         real(RK)   , intent(in)                         :: StateOld(nd)
         real(RK)                                        :: StateNew(nd)
         integer(IK)                                     :: domainCheckCounter
+        real(RK)                                        :: CholeskyLower(nd,nd) ! dummy variable to avoid copy in / copy out
 
-        domainCheckCounter = 0
-
-        if (mc_isNormal) then
-
-            loopBoundaryCheckNormal: do ! Check for the support Region consistency:
-#if defined DBG_ENABLED
-                block
-                real(RK), allocatable :: Dummy(:,:)
-                Dummy = comv_CholDiagLower(1:nd,1:nd,counterDRS)
-                StateNew = getRandMVN   ( nd                                        &
-                                        , StateOld                                  &
-                                        , Dummy                                     &
-                                        , comv_CholDiagLower(1:nd,   0,counterDRS)  &
-                                        )
-                comv_CholDiagLower(1:nd,1:nd,counterDRS) = Dummy
-                end block
+        domainCheckCounter = 0_IK
+        CholeskyLower = comv_CholDiagLower(1:nd,1:nd,counterDRS)
+        loopBoundaryCheckNormal: do ! Check for the support Region consistency:
+#if defined UNIFORM || defined NORMAL
+            StateNew(1:nd) = SAMPLER_NAME   ( nd                                    &
+                                            , StateOld                              &
+                                            , CholeskyLower                         &
+                                            , comv_CholDiagLower(1:nd,0,counterDRS) &
+                                            )
 #else
-                StateNew = getRandMVN   ( nd                                        &
-                                        , StateOld                                  &
-                                        , comv_CholDiagLower(1:nd,1:nd,counterDRS)  &
-                                        , comv_CholDiagLower(1:nd,   0,counterDRS)  &
-                                        )
+#error "Unknown Proposal model in ParaDRAMProposal_mod.inc.f90"
 #endif
-                if ( any(StateNew<=mc_DomainLowerLimitVec) .or. any(StateNew>=mc_DomainUpperLimitVec) ) then
-                    domainCheckCounter = domainCheckCounter + 1
-                    if (domainCheckCounter==mc_MaxNumDomainCheckToWarn) then
-                        call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
-                    end if
-                    if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
-                        ProposalErr%occurred = .true.
-                        ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
-                        call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
-                        return
-                    end if
-                    cycle loopBoundaryCheckNormal
+            if ( any(StateNew(1:nd)<=mc_DomainLowerLimitVec) .or. any(StateNew(1:nd)>=mc_DomainUpperLimitVec) ) then
+                domainCheckCounter = domainCheckCounter + 1
+                if (domainCheckCounter==mc_MaxNumDomainCheckToWarn) then
+                    call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
                 end if
-                exit loopBoundaryCheckNormal
-            end do loopBoundaryCheckNormal
-
-        else ! if (mc_isUniform) then
-
-            loopBoundaryCheckUniform: do ! Check for the support Region consistency:
-#if defined DBG_ENABLED
-                block
-                real(RK), allocatable :: Dummy(:,:)
-                Dummy = comv_CholDiagLower(1:nd,1:nd,counterDRS)
-                StateNew = getRandMVU   ( nd                                        &
-                                        , StateOld                                  &
-                                        , Dummy                                     &
-                                        , comv_CholDiagLower(1:nd,   0,counterDRS)  &
-                                        )
-                comv_CholDiagLower(1:nd,1:nd,counterDRS) = Dummy
-                end block
-#else
-                StateNew = getRandMVU   ( nd                                        &
-                                        , StateOld                                  &
-                                        , comv_CholDiagLower(1:nd,1:nd,counterDRS)  &
-                                        , comv_CholDiagLower(1:nd,   0,counterDRS)  &
-                                        )
-#endif
-                if ( any(StateNew<=mc_DomainLowerLimitVec) .or. any(StateNew>=mc_DomainUpperLimitVec) ) then
-                    domainCheckCounter = domainCheckCounter + 1
-                    if (domainCheckCounter==mc_MaxNumDomainCheckToWarn) then
-                        call warn( prefix = mc_methodBrand, outputUnit = mc_logFileUnit, msg = mc_MaxNumDomainCheckToWarnMsg )
-                    end if
-                    if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
-                        ProposalErr%occurred = .true.
-                        ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
-                        call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
-                        return
-                    end if
-                    cycle loopBoundaryCheckUniform
+                if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
+                    ProposalErr%occurred = .true.
+                    ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
+                    call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+                    return
                 end if
-                exit loopBoundaryCheckUniform
-            end do loopBoundaryCheckUniform
-
-        end if
+                cycle loopBoundaryCheckNormal
+            end if
+            exit loopBoundaryCheckNormal
+        end do loopBoundaryCheckNormal
 
     end function getNew
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! ATTN: This routine may need further correction for the delayed rejection method
-    subroutine doAutoTune   ( adaptationMeasure &
-                            , AutoTuneScaleSq   &
-                            )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: doAutoTune
+    pure function getLogProb( nd                &
+                            , counterDRS        &
+                            , StateOld          &
+                            , StateNew          &
+                            ) result(logProb)
+#if defined NORMAL
+        use Statistics_mod, only: getLogProbMVN
+#elif defined UNIFORM
+        use Statistics_mod, only: isInsideEllipsoid
 #endif
-        use Matrix_mod, only: getLogSqrtDetPosDefMat
-        use Constants_mod, only: RK, IK
-        use Err_mod, only: abort
+        use Constants_mod, only: IK, RK, NEGINF_RK
         implicit none
-        character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAutoTune()"
-       !class(ProposalSymmetric_type), intent(inout)    :: Proposal
-        real(RK)   , intent(in)                         :: AutoTuneScaleSq(1)
-        real(RK)   , intent(inout)                      :: adaptationMeasure
-        real(RK)                                        :: logSqrtDetNew, logSqrtDetSum, mv_logSqrtDetOld_save
-        real(RK)                                        :: CovMatUpperOld(1,1), CovMatUpperCurrent(1,1)
-        logical                                         :: singularityOccurred
-
-        CovMatUpperOld = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0)
-        mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
-
-        if (AutoTuneScaleSq(1)==0._RK) then
-            comv_CholDiagLower(1,1,0) = 0.25_RK*comv_CholDiagLower(1,1,0)
-            comv_CholDiagLower(1,0,0) = sqrt(comv_CholDiagLower(1,1,0))
-        else
-            comv_CholDiagLower(1,1,0) = AutoTuneScaleSq(1)
-            comv_CholDiagLower(1,0,0) = sqrt(AutoTuneScaleSq(1))
-        end if
-
-        ! compute the adaptivity
-
-        logSqrtDetNew = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
-        CovMatUpperCurrent = 0.5_RK * ( comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0) + CovMatUpperOld )
-        call getLogSqrtDetPosDefMat(1_IK,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
-        if (singularityOccurred) then
-            ProposalErr%occurred = .true.
-            ProposalErr%msg = PROCEDURE_NAME // &
-                            ": Error occurred while computing the Cholesky factorization of &
-                            &a matrix needed for the computation of the proposal distribution's adaptation measure. &
-                            &Such error is highly unusual, and requires an in depth investigation of the case. &
-                            &It may also be that your input objective function has been incorrectly implemented.\n&
-                            &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
-                            &the same value that is expected as input to your objective function's implementation.\n&
-                            &Otherwise, restarting the simulation might resolve the error."
-            call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
-            return
-        end if
-        adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
-
-    end subroutine doAutoTune
+        integer(IK), intent(in)             :: nd
+        integer(IK), intent(in)             :: counterDRS
+        real(RK)   , intent(in)             :: StateOld(nd)
+        real(RK)   , intent(in)             :: StateNew(nd)
+        real(RK)                            :: logProb
+#if defined UNIFORM
+            if (isInsideEllipsoid(nd,StateNew-StateOld,mv_InvCovMat(1:mc_ndim,1:mc_ndim,counterDRS))) then
+                logProb = mc_negLogVolUnitBall + mv_logSqrtDetInvCovMat(counterDRS)
+            else
+                logProb = NEGINF_RK
+            end if
+#elif defined NORMAL
+            logProb = getLogProbMVN ( nd = nd &
+                                    , MeanVec = StateOld &
+                                    , InvCovMat = mv_InvCovMat(1:nd,1:nd,counterDRS) &
+                                    , logSqrtDetInvCovMat = mv_logSqrtDetInvCovMat(counterDRS) &
+                                    , Point = StateNew &
+                                    )
+#endif
+    end function getLogProb
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -481,7 +435,6 @@ contains
 
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAdaptation()"
 
-       !class(ProposalSymmetric_type), intent(inout)    :: Proposal
         integer(IK), intent(in)                         :: nd
         integer(IK), intent(in)                         :: chainSize
         real(RK)   , intent(in)                         :: Chain(nd,chainSize)
@@ -697,9 +650,20 @@ contains
 
         ! adjust the scale of the covariance matrix and the Cholesky factor, if needed
 
+!scalingNeeded = .true.
+
         if (scalingNeeded) then
             if ( meanAccRateSinceStart < mc_TargetAcceptanceRateLimit(1) .or. meanAccRateSinceStart > mc_TargetAcceptanceRateLimit(2) ) then
                 mv_adaptiveScaleFactorSq_save = (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
+!block
+!    use Statistics_mod, only: getRandUniform
+!    integer, save :: counter = 0_IK
+!    counter = counter - 1
+!    mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(-counter*getRandUniform(-1.e0_RK,1.e0_RK)/1.e4_RK)
+!    !use Statistics_mod, only: getRandInt
+!    !mv_adaptiveScaleFactorSq_save = mv_adaptiveScaleFactorSq_save * exp(real(getRandInt(-1_IK,1_IK),kind=RK))
+!    !write(*,*) counter, mv_adaptiveScaleFactorSq_save
+!end block
                 adaptiveScaleFactor = sqrt(mv_adaptiveScaleFactorSq_save)
                 do j = 1, nd
                     ! update the Cholesky diagonal elements
@@ -752,6 +716,20 @@ contains
             end if
             !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
             adaptationMeasure = sqrt( 1._RK - exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum ) ) ! totalVariationUpperBound
+!block
+!integer, save :: counter = 0
+!counter = counter + 1
+!!if (counter==1) then
+!if (adaptationMeasure>1._RK) then
+!write(*,*) 
+!write(*,*) mv_logSqrtDetOld_save
+!write(*,*) logSqrtDetNew
+!write(*,*) logSqrtDetSum
+!write(*,*) mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum
+!write(*,*) exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum )
+!write(*,*) 
+!end if
+!end block
 
             if (adaptationMeasure<0._RK) then
                 call warn   ( prefix = mc_methodBrand &
@@ -763,6 +741,7 @@ contains
             ! update the higher-stage delayed-rejection Cholesky Lower matrices
 
             if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
+            call getInvCovMat()
 
         end if blockAdaptationMeasureComputation
 
@@ -771,7 +750,60 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-#if defined CAF_ENABLED
+    ! ATTN: This routine needs further correction for the delayed rejection method
+    subroutine doAutoTune   ( adaptationMeasure &
+                            , AutoTuneScaleSq   &
+                            )
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: doAutoTune
+#endif
+        use Matrix_mod, only: getLogSqrtDetPosDefMat
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: abort
+        implicit none
+        character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@doAutoTune()"
+
+        real(RK)   , intent(in)                         :: AutoTuneScaleSq(1)
+        real(RK)   , intent(inout)                      :: adaptationMeasure
+        real(RK)                                        :: logSqrtDetNew, logSqrtDetSum, mv_logSqrtDetOld_save
+        real(RK)                                        :: CovMatUpperOld(1,1), CovMatUpperCurrent(1,1)
+        logical                                         :: singularityOccurred
+
+        CovMatUpperOld = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0)
+        mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
+
+        if (AutoTuneScaleSq(1)==0._RK) then
+            comv_CholDiagLower(1,1,0) = 0.25_RK*comv_CholDiagLower(1,1,0)
+            comv_CholDiagLower(1,0,0) = sqrt(comv_CholDiagLower(1,1,0))
+        else
+            comv_CholDiagLower(1,1,0) = AutoTuneScaleSq(1)
+            comv_CholDiagLower(1,0,0) = sqrt(AutoTuneScaleSq(1))
+        end if
+
+        ! compute the adaptivity
+
+        logSqrtDetNew = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
+        CovMatUpperCurrent = 0.5_RK * ( comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0) + CovMatUpperOld )
+        call getLogSqrtDetPosDefMat(1_IK,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
+        if (singularityOccurred) then
+            ProposalErr%occurred = .true.
+            ProposalErr%msg = PROCEDURE_NAME // &
+                            ": Error occurred while computing the Cholesky factorization of &
+                            &a matrix needed for the computation of the proposal distribution's adaptation measure. &
+                            &Such error is highly unusual, and requires an in depth investigation of the case. &
+                            &It may also be that your input objective function has been incorrectly implemented.\n&
+                            &For example, ensure that you are passing a correct value of ndim to the ParaMonte sampler routine,\n&
+                            &the same value that is expected as input to your objective function's implementation.\n&
+                            &Otherwise, restarting the simulation might resolve the error."
+            call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+            return
+        end if
+        adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
+
+    end subroutine doAutoTune
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
 
     ! Note: based on some benchmarks with ndim = 1, the new design with merging cholesky diag and lower is faster than the original
     ! Note: double communication. Here are some timings on 4 images:
@@ -788,21 +820,16 @@ contains
     ! Note: avg(speedup): 1.924798889020109
     ! Note: One would expect this speed up to diminish as ndim goes to infinity, 
     ! Note: since data transfer will dominate communication overhead.
-    subroutine getAdaptation()
+    ! broadcast adaptation to all images
+    subroutine bcastAdaptation()
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getAdaptation
+        !DEC$ ATTRIBUTES DLLEXPORT :: bcastAdaptation
 #endif
+#if defined CAF_ENABLED
         implicit none
         comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0) = comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)[1]
         if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower()  ! update the higher-stage delayed-rejection Cholesky Lower matrices
-    end subroutine getAdaptation
-
 #elif defined MPI_ENABLED
-
-    subroutine getAdaptation()
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getAdaptation
-#endif
         use mpi
         implicit none
         integer :: ierrMPI
@@ -814,9 +841,36 @@ contains
                         , ierrMPI               &   ! ierr
                         )
         if (mc_Image%isNotMaster .and. mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
-    end subroutine getAdaptation
-
 #endif
+        call getInvCovMat()
+    end subroutine bcastAdaptation
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    ! required for the proposal probabilities
+    subroutine getInvCovMat()
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getInvCovMat
+#endif
+        use Matrix_mod, only: getInvMatFromCholFac
+        implicit none
+        integer(IK) :: j, istage
+        ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
+        do concurrent(istage=0:mc_DelayedRejectionCount)
+            mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim &
+                                                                            , CholeskyLower = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,istage) &
+                                                                            , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) &
+                                                                            )
+            mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))
+        end do
+!if (mc_ndim==1 .and. abs(log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))>1.e-13_RK) then
+!write(*,"(*(g0,:,' '))") "log(sqrt(mv_InvCovMat(1,1,0))) /= mv_logSqrtDetInvCovMat(0)"
+!write(*,"(*(g0,:,' '))") log(sqrt(mv_InvCovMat(1,1,0))), mv_logSqrtDetInvCovMat(0)
+!write(*,"(*(g0,:,' '))") abs(-log(sqrt(mv_InvCovMat(1,1,0)))-mv_logSqrtDetInvCovMat(0))
+!error stop
+!endif
+    end subroutine getInvCovMat
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -842,9 +896,9 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine writeRestartFile()
+    subroutine writeRestartFileAscii()
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFile
+        !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFileAscii
 #endif
         implicit none
         write( mc_restartFileUnit, mc_restartFileFormat ) "sampleSizeOld" &
@@ -858,14 +912,14 @@ contains
                                                         , "CholDiagLower(1:ndim,0:ndim,0)" &
                                                         , comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
         flush(mc_restartFileUnit)
-    end subroutine writeRestartFile
+    end subroutine writeRestartFileAscii
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine readRestartFile()
+    subroutine readRestartFileAscii()
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFile
+        !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFileAscii
 #endif
         implicit none
         integer(IK) :: i
@@ -873,9 +927,10 @@ contains
             !read( mc_restartFileUnit, mc_restartFileFormat )
             read( mc_restartFileUnit, * )
         end do
-    end subroutine readRestartFile
+    end subroutine readRestartFileAscii
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-end module ParaDRAMProposalSymmetric_mod
+!end module ParaDRAMProposal_mod
+!#undef PARADISE

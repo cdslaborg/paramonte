@@ -34,14 +34,18 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-module ParaDRAM_mod
-#define PARADRAM ParaDRAM
-#include "ParaDRAM_mod.inc.f90"
-#undef PARADRAM
-end module ParaDRAM_mod
+#define NORMAL
 
-module ParaDISE_mod
+module ParaDRAMProposalNormal_mod
+#define PARADRAM ParaDRAM
+#include "ParaDRAMProposal_mod.inc.f90"
+#undef PARADRAM
+end module ParaDRAMProposalNormal_mod
+
+module ParaDISEProposalNormal_mod
 #define PARADISE ParaDISE
-#include "ParaDRAM_mod.inc.f90"
+#include "ParaDRAMProposal_mod.inc.f90"
 #undef PARADISE
-end module ParaDISE_mod
+end module ParaDISEProposalNormal_mod
+
+#undef NORMAL

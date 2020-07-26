@@ -156,8 +156,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! ATTN: Do not call this routine when nd = 1. There is no need to call this routine when nd = 1.
-    ! for nd==1: InvMatFromCholFac = 1._RK / Diagonal(1)**2
+    ! ATTN: There is no need to call this routine when nd = 1. For nd==1: InvMatFromCholFac = 1._RK / Diagonal(1)**2
     ! Returns the inverse of a matrix whose Cholesky Lower triangle is given in the lower part of CholeskyLower,
     ! and its diagonal elements in Diagonal.
     pure function getInvMatFromCholFac(nd,CholeskyLower,Diagonal) result(InvMatFromCholFac)
@@ -171,10 +170,10 @@ contains
         real(RK)                :: InvMatFromCholFac(nd,nd)
         real(RK)                :: summ
         integer(IK)             :: i,j,k
-        !if (nd==1) then
-        !    InvMatFromCholFac(1) = 1._RK / Diagonal(1)**2
-        !    return
-        !end if
+        if (nd==1_IK) then
+            InvMatFromCholFac(1,1) = 1._RK / Diagonal(1)**2
+            return
+        end if
         InvMatFromCholFac = 0._RK
         do j=1,nd-1
             do i=j+1,nd
