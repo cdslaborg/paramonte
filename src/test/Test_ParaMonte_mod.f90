@@ -46,7 +46,7 @@ module Test_ParaMonte_mod
     real(RK)    , parameter :: LOG_SMVN_COEF = NDIM*log(1._RK/sqrt(2._RK*acos(-1._RK))) ! log(1/sqrt(2*Pi)^ndim)
 
     private
-    public :: test_ParaDRAM
+    public :: test_ParaDRAM, test_ParaDISE
 
     type(Test_type) :: Test
 
@@ -73,6 +73,21 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
+    subroutine test_ParaDISE()
+
+        use ParaDISE_mod, only: MODULE_NAME
+        implicit none
+
+        Test = Test_type(moduleName=MODULE_NAME)
+
+        call test_runParaDISE()
+        call Test%finalize()
+
+    end subroutine test_ParaDISE
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
     subroutine test_runParaDRAM()
 
         use ParaDRAM_mod, only: ParaDRAM_type
@@ -86,7 +101,7 @@ contains
 
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFunc &
-                            , inputFile = Test%inDir//"paramonte.nml" &
+                            !, inputFile = Test%inDir//"paramonte.nml" &
                             !, inputFile = internalFile &
                             !, inputFile = " " &
                             )
@@ -96,6 +111,33 @@ contains
         call Test%skipping()
 
     end subroutine test_runParaDRAM
+
+!***********************************************************************************************************************************
+!***********************************************************************************************************************************
+
+    subroutine test_runParaDISE()
+
+        use ParaDISE_mod, only: ParaDISE_type
+        implicit none
+        character(:), allocatable   :: internalFile
+        type(ParaDISE_type)         :: PS
+
+        internalFile = "&ParaDISE randomSeed = 1111 chainSize = 30000 /"
+
+        call Test%testing("ParaDISE class")
+
+        call PS%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFunc &
+                            , inputFile = Test%inDir//"paramonte.nml" &
+                            !, inputFile = internalFile &
+                            !, inputFile = " " &
+                            )
+
+        !Test%assertion = .true.
+        !call Test%verify()
+        call Test%skipping()
+
+    end subroutine test_runParaDISE
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

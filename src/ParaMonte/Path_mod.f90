@@ -527,9 +527,9 @@ contains
         Err%occurred= .false.
         if (present(isWindows)) then
             if (isWindows) then
-                SysCmd = SysCmd_type('mkdir "'//dirPath//'"',wait)  ! path has to be enclosed with "" to allow nested mkdir
+                SysCmd = SysCmd_type('mkdir "'//dirPath//'" >nul 2>&1',wait) ! path has to be enclosed with "" to allow nested mkdir
             else
-                SysCmd = SysCmd_type("mkdir -p "//dirPath,wait)     ! -p enables nested mkdir
+                SysCmd = SysCmd_type("mkdir -p "//dirPath//" > /dev/null 2>&1",wait) ! -p enables nested mkdir
             end if
         else
             SysCmd = SysCmd_type("mkdir "//dirPath,wait)

@@ -94,7 +94,7 @@ contains
         ParallelizationModelObj%desc = &
         "parallelizationModel is a string variable that represents the parallelization method to be used in "// methodName //". &
         &The string value must be enclosed by either single or double quotation marks when provided as input. "
-        if (methodName==PMSM%ParaDRAM) then
+        if (methodName==PMSM%ParaDRAM .or. methodName==PMSM%ParaDISE) then
             ParallelizationModelObj%desc = ParallelizationModelObj%desc // &
             "Two options are currently supported:\n\n&
             &    parallelizationModel = '" // ParallelizationModelObj%multiChain // "'\n\n&

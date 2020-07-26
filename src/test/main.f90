@@ -107,8 +107,9 @@ use iso_fortran_env, only: compiler_options
 !call test_BandSpectrum()
 !call test_Statistics()
 
-write(*,"(A)") compiler_options()
+!write(*,"(A)") compiler_options()
 
 call test_ParaDRAM()
+call test_ParaDISE()
 
 end program main
