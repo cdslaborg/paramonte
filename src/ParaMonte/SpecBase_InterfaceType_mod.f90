@@ -86,7 +86,7 @@ contains
         InterfaceTypeObj%def = "The Fortran Programming Language."
 #elif defined MATLAB_ENABLED
         InterfaceTypeObj%def = "The MATLAB Programming Language."
-#elif defined Python_ENABLED
+#elif defined PYTHON_ENABLED
         InterfaceTypeObj%def = "The Python Programming Language."
 #else
         InterfaceTypeObj%def = "UNDEFINED"
