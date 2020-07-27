@@ -103,7 +103,7 @@ contains
             if (.not. isInitialized) call mpi_init(ierrMPI)
             call mpi_comm_rank(mpi_comm_world, Test%Image%id, ierrMPI)
             call mpi_comm_size(mpi_comm_world, Test%Image%count, ierrMPI)
-            Test%Image%id = Test%Image%id + 1_IK    ! make the ranks consistent with Fortran coarray indexing conventions
+            Test%Image%id = Test%Image%id + 1_IK ! make the ranks consistent with Fortran coarray indexing conventions
         end block
 #else
         Test%Image%id        = 1_IK
@@ -238,6 +238,7 @@ contains
             integer(IK) :: ierrMPI
             logical     :: isFinalized
             call mpi_finalized( isFinalized, ierrMPI )
+            write(*,*) "Test%Image%id: ", Test%Image%id
             if (.not. isFinalized) then
                 call mpi_barrier(mpi_comm_world,ierrMPI)
                 !call mpi_finalize(ierrMPI)

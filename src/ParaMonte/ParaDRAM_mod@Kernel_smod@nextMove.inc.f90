@@ -187,6 +187,3 @@
 
 #undef LOOP_NEXT_MOVE
 
-#if defined AMIR
-write(*,*) "AMIR"
-#endif

@@ -35,17 +35,25 @@
 !***********************************************************************************************************************************
 
 #if defined PARADRAM
+
 #define SAMPLER_TYPE ParaDRAM_type
+#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDRAMProposalAbstract_mod
+
 #elif defined PARADISE
+
 #define SAMPLER_TYPE ParaDISE_type
+#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDISEProposalAbstract_mod
+
 #else
+
 #error "Unrecognized sampler in ParaDRAM_mod.inc.f90"
+
 #endif
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
-    use ParaDRAMProposalAbstract_mod, only: ProposalErr
+    use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr
 #endif
 #if defined MPI_ENABLED
     use mpi
@@ -1008,3 +1016,4 @@ contains
 !***********************************************************************************************************************************
 
 #undef SAMPLER_TYPE
+#undef SAMPLER_PROPOSAL_ABSTRACT_MOD

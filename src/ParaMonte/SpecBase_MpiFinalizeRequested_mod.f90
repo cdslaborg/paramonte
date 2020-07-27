@@ -106,6 +106,7 @@ contains
         class(MpiFinalizeRequested_type), intent(inout) :: MpiFinalizeRequestedObj
         logical, intent(in)                             :: mpiFinalizeRequested
         MpiFinalizeRequestedObj%val = mpiFinalizeRequested
+
     end subroutine setMpiFinalizeRequested
 
 !***********************************************************************************************************************************

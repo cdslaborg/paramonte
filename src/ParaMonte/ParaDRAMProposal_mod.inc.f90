@@ -35,28 +35,19 @@
 !***********************************************************************************************************************************
 
 
-
-#define STR1(x) #x
-#define STR(x) STR1(x)
-
-
-
 #if defined UNIFORM
 
-#define PROPOSAL_NAME UNIFORM
-#define PROPOSAL_SAMPLER_NAME getRandMVU
+#define GET_RANDOM_PROPOSAL getRandMVU
 
 #elif defined NORMAL
 
-#define PROPOSAL_NAME NORMAL
-#define PROPOSAL_SAMPLER_NAME getRandMVN
+#define GET_RANDOM_PROPOSAL getRandMVN
 
 #else
 
 #error "Unknown Proposal model in ParaDRAMProposal_mod.inc.f90"
 
 #endif
-
 
 
 #if defined PARADRAM
@@ -66,7 +57,6 @@
 #define SAMPLER ParaDISE
 #define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDISEProposalAbstract_mod
 #endif
-
 
 
     use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalAbstract_type, ProposalErr
@@ -79,7 +69,11 @@
     !private
     !public :: Proposal_type
 
-    character(*), parameter         :: MODULE_NAME = "@"//PMSM%SAMPLER//"Proposal"//STR(PROPOSAL_NAME)//"_mod"
+#if defined NORMAL
+    character(*), parameter         :: MODULE_NAME = "@"//PMSM%SAMPLER//"ProposalNormal_mod"
+#elif defined UNIFORM
+    character(*), parameter         :: MODULE_NAME = "@"//PMSM%SAMPLER//"ProposalUniform_mod"
+#endif
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
@@ -164,8 +158,8 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! This interface madness is a result of the internal compiler bug in GFortran as of Jan 2020, which diagnoses a ParaDRAM_type 
-    ! argument as circular dependency due to this constructor appearing the type-bound setup procedure of ParaDRAM_type.
+    ! This interface madness is a result of the internal compiler bug in GFortran as of Jan 2020, which diagnoses a SAMPLER_TYPE 
+    ! argument as circular dependency due to this constructor appearing the type-bound setup procedure of SAMPLER_TYPE.
     ! Intel does not complain. Until GFortran comes up with a fix, we have to live with this interface.
     function constructProposalSymmetric ( ndim &
                                         , SpecBase &
@@ -222,7 +216,7 @@ contains
         mv_adaptiveScaleFactorSq_save = 1._RK
 
         !***************************************************************************************************************************
-        ! setup general ParaDRAMProposalSymmetric specifications
+        ! setup general proposal specifications
         !***************************************************************************************************************************
 
 #if defined MPI_ENABLED
@@ -351,7 +345,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNew
 #endif
-        use Statistics_mod, only: PROPOSAL_SAMPLER_NAME
+        use Statistics_mod, only: GET_RANDOM_PROPOSAL
         use Constants_mod, only: IK, RK
         use Err_mod, only: warn, abort
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -369,13 +363,34 @@ contains
 
         domainCheckCounter = 0_IK
         CholeskyLower = comv_CholDiagLower(1:nd,1:nd,counterDRS)
-        loopBoundaryCheckNormal: do ! Check for the support Region consistency:
+!block
+!integer :: i
+!integer, save :: counter = 0, n
+!real(RK) :: unifrnd
+!!integer, dimension(:), allocatable :: seed
+!if (counter==0) then
+!    do i = 1, 10 
+!    call random_number(unifrnd)
+!    write(*,"(*(g0,:,' '))") unifrnd
+!    end do
+!    !call random_seed(size = n); allocate(seed(n))
+!    !call random_seed(get = seed)
+!    !write(*,"(*(g0,:,' '))") seed
+!    !write(*,"(*(g0,:,' '))") StateOld
+!    !write(*,"(*(g0,:,' '))") StateNew
+!    !write(*,"(*(g0,:,' '))") CholeskyLower
+!    !write(*,"(*(g0,:,' '))") domainCheckCounter
+!end if
+!counter = counter + 1
+!end block
+
+        loopBoundaryCheck: do ! Check for the support Region consistency:
 #if defined UNIFORM || defined NORMAL
-            StateNew(1:nd) = PROPOSAL_SAMPLER_NAME  ( nd                                    &
-                                                    , StateOld                              &
-                                                    , CholeskyLower                         &
-                                                    , comv_CholDiagLower(1:nd,0,counterDRS) &
-                                                    )
+            StateNew(1:nd) = GET_RANDOM_PROPOSAL( nd                                    &
+                                                , StateOld                              &
+                                                , CholeskyLower                         &
+                                                , comv_CholDiagLower(1:nd,0,counterDRS) &
+                                                )
 #endif
             if ( any(StateNew(1:nd)<=mc_DomainLowerLimitVec) .or. any(StateNew(1:nd)>=mc_DomainUpperLimitVec) ) then
                 domainCheckCounter = domainCheckCounter + 1
@@ -388,10 +403,10 @@ contains
                     call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                     return
                 end if
-                cycle loopBoundaryCheckNormal
+                cycle loopBoundaryCheck
             end if
-            exit loopBoundaryCheckNormal
-        end do loopBoundaryCheckNormal
+            exit loopBoundaryCheck
+        end do loopBoundaryCheck
 
     end function getNew
 
@@ -954,8 +969,7 @@ contains
 !***********************************************************************************************************************************
 
 
-#undef PROPOSAL_NAME
-#undef PROPOSAL_SAMPLER_NAME
 #undef SAMPLER
 #undef SAMPLER_PROPOSAL_ABSTRACT_MOD
+#undef GET_RANDOM_PROPOSAL
 

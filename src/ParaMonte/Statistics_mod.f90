@@ -40,6 +40,9 @@ module Statistics_mod
 
     implicit none
 
+!logical, save :: paradramPrintEnabled = .false.
+!logical, save :: paradisePrintEnabled = .false.
+
     character(len=*), parameter :: MODULE_NAME = "@Statistics_mod"
 
 !***********************************************************************************************************************************
@@ -1282,6 +1285,28 @@ contains
 
         if (iset == 0) then
             do
+
+!block
+!integer :: i, n
+!real(RK) :: unifrnd(30)
+!!integer, dimension(:), allocatable :: seed
+!if (paradramPrintEnabled .or. paradisePrintEnabled) then
+!    !do i = 1, 22
+!    call random_number(unifrnd)
+!    write(*,"(*(g0,:,'"//new_line("a")//"'))") unifrnd
+!    !end do
+!    !call random_seed(size = n); allocate(seed(n))
+!    !call random_seed(get = seed)
+!    !write(*,"(*(g0,:,' '))") seed
+!    !write(*,"(*(g0,:,' '))") StateOld
+!    !write(*,"(*(g0,:,' '))") StateNew
+!    !write(*,"(*(g0,:,' '))") CholeskyLower
+!    !write(*,"(*(g0,:,' '))") domainCheckCounter
+!    paradisePrintEnabled = .false.
+!    paradramPrintEnabled = .false.
+!end if
+!end block
+
                 call random_number(vec)
                 vec = 2._RK*vec - 1._RK
                 rsq = vec(1)**2 + vec(2)**2

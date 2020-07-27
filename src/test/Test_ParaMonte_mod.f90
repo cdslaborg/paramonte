@@ -90,6 +90,7 @@ contains
 
     subroutine test_runParaDRAM()
 
+!use Statistics_mod, only: paradramPrintEnabled
         use ParaDRAM_mod, only: ParaDRAM_type
         implicit none
         character(:), allocatable   :: internalFile
@@ -99,9 +100,11 @@ contains
 
         call Test%testing("ParaDRAM class")
 
+!paradramPrintEnabled = .true.
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFunc &
                             , inputFile = Test%inDir//"paramonte.nml" &
+                            , mpiFinalizeRequested = .false. &
                             !, inputFile = internalFile &
                             !, inputFile = " " &
                             )
@@ -117,6 +120,7 @@ contains
 
     subroutine test_runParaDISE()
 
+!use Statistics_mod, only: paradisePrintEnabled
         use ParaDISE_mod, only: ParaDISE_type
         implicit none
         character(:), allocatable   :: internalFile
@@ -126,9 +130,11 @@ contains
 
         call Test%testing("ParaDISE class")
 
+!paradisePrintEnabled = .true.
         call PS%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFunc &
                             , inputFile = Test%inDir//"paramonte.nml" &
+                            , mpiFinalizeRequested = .false. &
                             !, inputFile = internalFile &
                             !, inputFile = " " &
                             )

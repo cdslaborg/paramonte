@@ -35,13 +35,19 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined PARADRAM
+
 #define SAMPLER ParaDRAM
 #define SAMPLER_TYPE ParaDRAM_type
+#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDRAMProposalAbstract_mod
+
 #elif defined PARADISE
+
 #define SAMPLER ParaDISE
 #define SAMPLER_TYPE ParaDISE_type
+#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDISEProposalAbstract_mod
+
 #else
-#error "Unrecognized sampler in ParaDRAM_mod.inc.f90"
+#error "Unrecognized sampler in ParaDRAM_mod@Setup_mod.inc.f90"
 #endif
 
 !submodule (ParaDRAM_mod) Setup_smod
@@ -227,7 +233,7 @@ contains
         ! read variables from argument list if needed
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (self%Image%isFirst) call self%setWarnAboutProcArgHasPriority()
+        call self%setWarnAboutProcArgHasPriority()
         if (self%procArgNeeded) then
             call self%SpecBase%setFromInputArgs ( Err                                   = self%Err                              &
                                                 , sampleSize                            = sampleSize                            &
@@ -447,9 +453,9 @@ contains
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
             block
 #if defined PARADRAM
-                use ParaDRAMProposalAbstract_mod, only: ProposalErr
+                use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr
 #elif defined PARADISE
-                use ParaDISEProposalAbstract_mod, only: ProposalErr
+                use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr
 #endif
                 if(ProposalErr%occurred) return
             end block
@@ -1710,7 +1716,6 @@ contains
         end if blockMasterPostProcessing
 
         !nullify(self%Proposal)
-
 #if defined CAF_ENABLED
         sync all
 #elif defined MPI_ENABLED
@@ -1937,10 +1942,10 @@ contains
 
         ! setup SpecMCMC variables that have been read form the input file
 
-        call self%SpecMCMC%setFromInputFile( Err = self%Err                                                 &
-                                         , nd = nd                                                      &
-                                         , domainLowerLimitVec = self%SpecBase%DomainLowerLimitVec%Val    &
-                                         , domainUpperLimitVec = self%SpecBase%DomainUpperLimitVec%Val    )
+        call self%SpecMCMC%setFromInputFile ( Err = self%Err &
+                                            , nd = nd &
+                                            , domainLowerLimitVec = self%SpecBase%DomainLowerLimitVec%Val &
+                                            , domainUpperLimitVec = self%SpecBase%DomainUpperLimitVec%Val )
         if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             return
@@ -1961,5 +1966,7 @@ contains
 
 !end submodule Setup_smod
 
+#undef SAMPLER_PROPOSAL_ABSTRACT_MOD
 #undef SAMPLER_TYPE
 #undef SAMPLER
+

@@ -37,6 +37,7 @@
 #define NORMAL
 
 module ParaDRAMProposalNormal_mod
+!use Statistics_mod
 #define PARADRAM ParaDRAM
 #include "ParaDRAMProposal_mod.inc.f90"
 #undef PARADRAM

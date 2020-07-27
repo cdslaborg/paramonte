@@ -562,16 +562,19 @@ contains
 #endif
         self%procArgHasPriority = .not. self%SpecBase%InputFileHasPriority%val
         self%procArgNeeded = self%procArgHasPriority .or. (.not.self%inputFileArgIsPresent)
-#if !defined CFI_ENABLED
-        if (self%procArgHasPriority) then
-            msg =   "Variable inputFileHasPriority = .false.\n&
-                    &All variable values will be overwritten by the corresponding procedure argument values,\n&
-                    &only if provided as procedure arguments."
-        else
-            msg =   "Variable inputFileHasPriority = .true.\n&
-                    &All variable values will be read from the user-provided input file"
+
+#if defined FORTRAN_ENABLED
+        if (self%Image%isFirst) then 
+            if (self%procArgHasPriority) then 
+                msg =   "Variable inputFileHasPriority = .false.\n&
+                        &All variable values will be overwritten by the corresponding procedure argument values,\n&
+                        &only if provided as procedure arguments."
+            else
+                msg =   "Variable inputFileHasPriority = .true.\n&
+                        &All variable values will be read from the user-provided input file"
+            end if
+            call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg )
         end if
-        call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg )
 #endif
     end subroutine setWarnAboutProcArgHasPriority
 
