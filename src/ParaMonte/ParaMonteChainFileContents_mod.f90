@@ -37,8 +37,9 @@
 module ParaMonteChainFileContents_mod
 
     use, intrinsic :: iso_fortran_env, only: output_unit
+    use Decoration_mod, only: INDENT
     use Constants_mod, only: IK, RK
-    use Err_mod, only: Err_type
+    use Err_mod, only: Err_type, warn
     use JaggedArray_mod, only: CharVec_type
     implicit none
 
@@ -158,7 +159,7 @@ contains
         !                  information read from the chain file. The Chain component elements beyond chainSize will be set to zero.
 
         use FileContents_mod, only: getNumRecordInFile
-        use Constants_mod, only: IK, RK, NLC
+        use Constants_mod, only: IK, RK, NLC, NEGINF_IK, NEGINF_RK
         use String_mod, only: String_type, getLowerCase, num2str
 
         implicit none
@@ -175,6 +176,8 @@ contains
         integer(IK)                                     :: chainFileUnit, i, iState, delimiterLen, chainSizeDefault
         type(String_type)                               :: Record
         character(:), allocatable                       :: chainFilePathTrimmed, thisForm
+        integer(IK)                                     :: irowLastUniqueSample
+        integer(IK)                                     :: numColTot
 
         Err%occurred = .false.
         chainFilePathTrimmed = trim(adjustl(chainFilePath))
@@ -284,7 +287,7 @@ contains
 
             ! set the number of elements in the Chain components
 
-            if (present(targetChainSize)) then ! in restart mode, this must be always the case
+            if (present(targetChainSize)) then ! in restart mode, this must always be the case
                 CFC%Count%target = targetChainSize
             else
                 CFC%Count%target = chainSizeDefault
@@ -308,13 +311,13 @@ contains
             if (allocated(CFC%Weight))        deallocate(CFC%Weight)
             if (allocated(CFC%LogFunc))       deallocate(CFC%LogFunc)
             if (allocated(CFC%State))         deallocate(CFC%State)
-            allocate(CFC%ProcessID  (CFC%Count%target))
-            allocate(CFC%DelRejStage(CFC%Count%target))
-            allocate(CFC%MeanAccRate(CFC%Count%target))
-            allocate(CFC%Adaptation (CFC%Count%target))
-            allocate(CFC%BurninLoc  (CFC%Count%target))
-            allocate(CFC%Weight     (CFC%Count%target))
-            allocate(CFC%LogFunc    (CFC%Count%target))
+            allocate(CFC%ProcessID  (CFC%Count%target)); CFC%ProcessID   = NEGINF_IK
+            allocate(CFC%DelRejStage(CFC%Count%target)); CFC%DelRejStage = NEGINF_IK
+            allocate(CFC%MeanAccRate(CFC%Count%target)); CFC%MeanAccRate = NEGINF_RK
+            allocate(CFC%Adaptation (CFC%Count%target)); CFC%Adaptation  = NEGINF_RK ! this initialization is critical and relied upon later below
+            allocate(CFC%BurninLoc  (CFC%Count%target)); CFC%BurninLoc   = NEGINF_IK
+            allocate(CFC%Weight     (CFC%Count%target)); CFC%Weight      = NEGINF_IK
+            allocate(CFC%LogFunc    (CFC%Count%target)); CFC%LogFunc     = NEGINF_RK
 
             ! find the delimiter
 
@@ -448,40 +451,53 @@ contains
 
             ! read the chain
 
+            if (.not. isBinary) then
+                numColTot = CFC%numDefCol + CFC%ndim
+            end if
+
             allocate(CFC%State(CFC%ndim,CFC%Count%target))
             CFC%Count%verbose = 0_IK
 
             if (isBinary) then
 
-                do iState = 1, chainSizeDefault
-                    read(chainFileUnit  ) CFC%ProcessID                (iState)    &
-                                        , CFC%DelRejStage              (iState)    &
-                                        , CFC%MeanAccRate              (iState)    &
-                                        , CFC%Adaptation               (iState)    &
-                                        , CFC%BurninLoc                (iState)    &
-                                        , CFC%Weight                   (iState)    &
-                                        , CFC%LogFunc                  (iState)    &
-                                        , CFC%State         (1:CFC%ndim,iState)
+                loopReadBinary: do iState = 1, chainSizeDefault
+                    read(chainFileUnit, iostat=Err%stat ) CFC%ProcessID                (iState)    &
+                                                        , CFC%DelRejStage              (iState)    &
+                                                        , CFC%MeanAccRate              (iState)    &
+                                                        , CFC%Adaptation               (iState)    &
+                                                        , CFC%BurninLoc                (iState)    &
+                                                        , CFC%Weight                   (iState)    &
+                                                        , CFC%LogFunc                  (iState)    &
+                                                        , CFC%State         (1:CFC%ndim,iState)
+                    if (is_iostat_eor(Err%stat) .or. is_iostat_end(Err%stat)) then
+                        call warnUserAboutCorruptChainFile(iState)
+                        exit loopReadBinary
+                    end if
                     CFC%Count%verbose = CFC%Count%verbose + CFC%Weight(iState)
-                end do
+                end do loopReadBinary
 
             elseif (isCompact) then
 
-                do iState = 1, chainSizeDefault
+                loopReadCompact: do iState = 1, chainSizeDefault
                     read(chainFileUnit, "(A)" ) Record%value
                     Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
-                    read(Record%Parts(1)%record,*) CFC%ProcessID    (iState)
-                    read(Record%Parts(2)%record,*) CFC%DelRejStage  (iState)
-                    read(Record%Parts(3)%record,*) CFC%MeanAccRate  (iState)
-                    read(Record%Parts(4)%record,*) CFC%Adaptation   (iState)
-                    read(Record%Parts(5)%record,*) CFC%BurninLoc    (iState)
-                    read(Record%Parts(6)%record,*) CFC%Weight       (iState)
-                    read(Record%Parts(7)%record,*) CFC%LogFunc      (iState)
-                    do i = 1, CFC%ndim
-                        read(Record%Parts(7+i)%record,*) CFC%State  (i,iState)
-                    end do
-                    CFC%Count%verbose = CFC%Count%verbose + CFC%Weight(iState)
-                end do
+                    if (Record%nPart<numColTot) then
+                        call warnUserAboutCorruptChainFile(iState)
+                        exit loopReadCompact
+                    else
+                        read(Record%Parts(1)%record,*) CFC%ProcessID    (iState)
+                        read(Record%Parts(2)%record,*) CFC%DelRejStage  (iState)
+                        read(Record%Parts(3)%record,*) CFC%MeanAccRate  (iState)
+                        read(Record%Parts(4)%record,*) CFC%Adaptation   (iState)
+                        read(Record%Parts(5)%record,*) CFC%BurninLoc    (iState)
+                        read(Record%Parts(6)%record,*) CFC%Weight       (iState)
+                        read(Record%Parts(7)%record,*) CFC%LogFunc      (iState)
+                        do i = 1, CFC%ndim
+                            read(Record%Parts(CFC%numDefCol+i)%record,*) CFC%State  (i,iState)
+                        end do
+                        CFC%Count%verbose = CFC%Count%verbose + CFC%Weight(iState)
+                    end if
+                end do loopReadCompact
 
             else ! is verbose form
 
@@ -501,20 +517,27 @@ contains
                         real(RK), allocatable   :: State(:)
                         allocate(State(ndim))
 
+                        irowLastUniqueSample = 0_IK
+
                         ! read the first sample
 
                         read(chainFileUnit, "(A)" ) Record%value
-                        Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter)
-                        read(Record%Parts(1)%record,*) CFC%ProcessID(CFC%Count%compact)
-                        read(Record%Parts(2)%record,*) CFC%DelRejStage(CFC%Count%compact)
-                        read(Record%Parts(3)%record,*) CFC%MeanAccRate(CFC%Count%compact)
-                        read(Record%Parts(4)%record,*) CFC%Adaptation(CFC%Count%compact)
-                        read(Record%Parts(5)%record,*) CFC%BurninLoc(CFC%Count%compact)
-                        read(Record%Parts(6)%record,*) CFC%Weight(CFC%Count%compact)
-                        read(Record%Parts(7)%record,*) CFC%LogFunc(CFC%Count%compact)
-                        do i = 1, CFC%ndim
-                            read(Record%Parts(7+i)%record,*) CFC%State(i,CFC%Count%compact)
-                        end do
+                        Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
+                        if (Record%nPart<numColTot) then
+                            call warnUserAboutCorruptChainFile(iState)
+                            exit blockChainSizeDefault
+                        else
+                            read(Record%Parts(1)%record,*) CFC%ProcessID(CFC%Count%compact)
+                            read(Record%Parts(2)%record,*) CFC%DelRejStage(CFC%Count%compact)
+                            read(Record%Parts(3)%record,*) CFC%MeanAccRate(CFC%Count%compact)
+                            read(Record%Parts(4)%record,*) CFC%Adaptation(CFC%Count%compact)
+                            read(Record%Parts(5)%record,*) CFC%BurninLoc(CFC%Count%compact)
+                            read(Record%Parts(6)%record,*) CFC%Weight(CFC%Count%compact)
+                            read(Record%Parts(7)%record,*) CFC%LogFunc(CFC%Count%compact)
+                            do i = 1, CFC%ndim
+                                read(Record%Parts(CFC%numDefCol+i)%record,*) CFC%State(i,CFC%Count%compact)
+                            end do
+                        end if
 
                         ! read the rest of samples beyond the first, if any exist
 
@@ -523,50 +546,58 @@ contains
 
                             read(chainFileUnit, "(A)" ) Record%value
                             Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter)
-                            read(Record%Parts(1)%record,*) ProcessID
-                            read(Record%Parts(2)%record,*) DelRejStage
-                            read(Record%Parts(3)%record,*) MeanAccRate
-                            read(Record%Parts(4)%record,*) Adaptation
-                            read(Record%Parts(5)%record,*) BurninLoc
-                            read(Record%Parts(6)%record,*) Weight
-                            read(Record%Parts(7)%record,*) LogFunc
-                            do i = 1, CFC%ndim
-                                read(Record%Parts(7+i)%record,*) State(i)
-                            end do
-
-                            ! increment CFC%Count%compact if new sample detected
-
-                            newUniqueSampleDetected =    LogFunc        /= CFC%LogFunc    (CFC%Count%compact) &
-                                                   !.or. MeanAccRate    /= CFC%MeanAccRate(CFC%Count%compact) &
-                                                   !.or. Adaptation     /= CFC%Adaptation (CFC%Count%compact) &
-                                                   !.or. BurninLoc      /= CFC%BurninLoc  (CFC%Count%compact) &
-                                                   !.or. Weight         /= CFC%Weight     (CFC%Count%compact) &
-                                                   !.or. DelRejStage    /= CFC%DelRejStage(CFC%Count%compact) &
-                                                   !.or. ProcessID      /= CFC%ProcessID  (CFC%Count%compact) &
-                                                    .or. any(CFC%State(1:CFC%ndim,CFC%Count%compact) /= CFC%State(1:CFC%ndim,CFC%Count%compact))
-                            if (newUniqueSampleDetected) then
-                                CFC%Count%compact = CFC%Count%compact + 1_IK
-                                if (CFC%Count%target<CFC%Count%compact) then
-                                    Err%occurred = .true.
-                                    Err%msg =   PROCEDURE_NAME//": Fatal error occurred. CFC%Count%target<CFC%Count%compact: "// &
-                                                num2str(CFC%Count%target) // " /= " // num2str(CFC%Count%compact) // &
-                                                "The contents of the input chain file is longer than the user-requested allocation size."
-                                    return
-                                end if
+                            if (Record%nPart<numColTot) then
+                                call warnUserAboutCorruptChainFile(iState)
+                                exit loopOverChainfFileContents
                             else
-                                weight = CFC%Weight(CFC%Count%compact) + 1_IK
+                                read(Record%Parts(1)%record,*) ProcessID
+                                read(Record%Parts(2)%record,*) DelRejStage
+                                read(Record%Parts(3)%record,*) MeanAccRate
+                                read(Record%Parts(4)%record,*) Adaptation
+                                read(Record%Parts(5)%record,*) BurninLoc
+                                read(Record%Parts(6)%record,*) Weight
+                                read(Record%Parts(7)%record,*) LogFunc
+                                do i = 1, CFC%ndim
+                                    read(Record%Parts(CFC%numDefCol+i)%record,*) State(i)
+                                end do
+
+                                ! increment CFC%Count%compact if new sample detected
+
+                                newUniqueSampleDetected =    LogFunc        /= CFC%LogFunc    (CFC%Count%compact) &
+                                                       !.or. MeanAccRate    /= CFC%MeanAccRate(CFC%Count%compact) &
+                                                       !.or. Adaptation     /= CFC%Adaptation (CFC%Count%compact) &
+                                                       !.or. BurninLoc      /= CFC%BurninLoc  (CFC%Count%compact) &
+                                                       !.or. Weight         /= CFC%Weight     (CFC%Count%compact) &
+                                                       !.or. DelRejStage    /= CFC%DelRejStage(CFC%Count%compact) &
+                                                       !.or. ProcessID      /= CFC%ProcessID  (CFC%Count%compact) &
+                                                        .or. any(CFC%State(1:CFC%ndim,CFC%Count%compact) /= CFC%State(1:CFC%ndim,CFC%Count%compact))
+                                if (newUniqueSampleDetected) then
+                                    irowLastUniqueSample = irowLastUniqueSample + CFC%Weight(CFC%Count%compact)
+                                    ! increment the compact sample
+                                    CFC%Count%compact = CFC%Count%compact + 1_IK
+                                    if (CFC%Count%target<CFC%Count%compact) then
+                                        Err%occurred = .true.
+                                        Err%msg =   PROCEDURE_NAME//": Fatal error occurred. CFC%Count%target<CFC%Count%compact: "// &
+                                                    num2str(CFC%Count%target) // " /= " // num2str(CFC%Count%compact) // &
+                                                    "The contents of the input chain file is longer than the user-requested allocation size."
+                                        return
+                                    end if
+                                else
+                                    weight = CFC%Weight(CFC%Count%compact) + 1_IK
+                                end if
+
+                                ! write the latest sample
+!write(*,*) CFC%Count%compact
+                                CFC%LogFunc         (CFC%Count%compact) = LogFunc
+                                CFC%MeanAccRate     (CFC%Count%compact) = MeanAccRate
+                                CFC%Adaptation      (CFC%Count%compact) = max(CFC%Adaptation(CFC%Count%compact),Adaptation)
+                                CFC%BurninLoc       (CFC%Count%compact) = BurninLoc
+                                CFC%Weight          (CFC%Count%compact) = Weight
+                                CFC%DelRejStage     (CFC%Count%compact) = DelRejStage
+                                CFC%ProcessID       (CFC%Count%compact) = ProcessID
+                                CFC%State(1:CFC%ndim,CFC%Count%compact) = State(1:CFC%ndim)
+
                             end if
-
-                            ! write the latest sample
-
-                            CFC%LogFunc         (CFC%Count%compact) = LogFunc
-                            CFC%MeanAccRate     (CFC%Count%compact) = MeanAccRate
-                            CFC%Adaptation      (CFC%Count%compact) = Adaptation
-                            CFC%BurninLoc       (CFC%Count%compact) = BurninLoc
-                            CFC%Weight          (CFC%Count%compact) = Weight
-                            CFC%DelRejStage     (CFC%Count%compact) = DelRejStage
-                            CFC%ProcessID       (CFC%Count%compact) = ProcessID
-                            CFC%State(1:CFC%ndim,CFC%Count%compact) = State(1:CFC%ndim)
 
                         end do loopOverChainfFileContents
 
@@ -588,7 +619,8 @@ contains
                 if (CFC%Count%verbose/=sum(CFC%Weight(1:CFC%Count%compact))) then
                     Err%occurred = .true.
                     Err%msg =   PROCEDURE_NAME//": Internal error occurred. CountVerbose/=sum(Weight): "// &
-                                num2str(CFC%Count%verbose) // " /= " // num2str(sum(CFC%Weight(1:CFC%Count%compact)))
+                                num2str(CFC%Count%verbose)//" /= "//num2str(sum(CFC%Weight(1:CFC%Count%compact)))// &
+                                ", CFC%Count%compact = "//num2str(CFC%Count%compact)
                     return
                 elseif (.not. present(targetChainSize)) then
                     CFC%ProcessID     = CFC%ProcessID   (1:CFC%Count%compact)
@@ -615,6 +647,26 @@ contains
             return
 
         end if blockFileExistence
+
+    contains
+
+        subroutine warnUserAboutCorruptChainFile(lineNumber)
+            implicit none
+            integer(IK) :: lineNumber
+            if (isVerbose) then
+                chainSizeDefault = irowLastUniqueSample
+                CFC%Count%compact = CFC%Count%compact - 1
+            else
+                chainSizeDefault = chainSizeDefault - 1
+            end if
+            call warn   ( prefix = INDENT//"ParaMonte" &
+                        , marginTop = 0_IK &
+                        , marginBot = 2_IK &
+                        , outputUnit = output_unit &
+                        , msg = "An end-of-file or end-of-record condition occurred while parsing the contents of the chain file at line = "//num2str(lineNumber)//" with iostat = "//num2str(Err%stat)// &
+                                ". Assuming the previous line as the last line of the chain file..." &
+                        )
+        end subroutine warnUserAboutCorruptChainFile
 
     end subroutine getChainFileContents
 
@@ -709,20 +761,22 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine writeChainFile(CFC,ndim,compactStartIndex,compactEndIndex,chainFileUnit,chainFileForm,chainFileFormat)
+    subroutine writeChainFile(CFC,ndim,compactStartIndex,compactEndIndex,chainFileUnit,chainFileForm,chainFileFormat,adaptiveUpdatePeriod)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeChainFile
 #endif
-        use Constants_mod, only: IK
+        use Constants_mod, only: IK, RK
         use Err_mod, only: abort
         implicit none
         class(ChainFileContents_type), intent(inout)    :: CFC
         integer(IK) , intent(in)                        :: ndim, compactStartIndex, compactEndIndex, chainFileUnit
         character(*), intent(in)                        :: chainFileForm
         character(*), intent(in), optional              :: chainFileFormat
+        integer(IK) , intent(in), optional              :: adaptiveUpdatePeriod
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME//"@writeChainFile()"
         logical                                         :: isBinary, isCompact, isVerbose
-        integer(IK)                                     :: i,j
+        real(RK)                                        :: adaptation
+        integer(IK)                                     :: i,j, counter
 
         CFC%Err%occurred = .false.
 
@@ -745,6 +799,11 @@ contains
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
         end if
 
+        if ( isVerbose .and. .not. present(adaptiveUpdatePeriod) ) then
+                CFC%Err%occurred = .true.
+                CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For verbose chain files, adaptiveUpdatePeriod must be given."
+        end if
+
         if (CFC%Err%occurred) then
             call abort(CFC%Err)
             return
@@ -755,37 +814,44 @@ contains
         if (compactStartIndex<=compactEndIndex) then
             if (isCompact) then
                 do i = compactStartIndex, compactEndIndex
-                    write(chainFileUnit,chainFileFormat     ) CFC%ProcessID(i)     &
-                                                            , CFC%DelRejStage(i)   &
-                                                            , CFC%MeanAccRate(i)   &
-                                                            , CFC%Adaptation(i)    &
-                                                            , CFC%BurninLoc(i)     &
-                                                            , CFC%Weight(i)        &
-                                                            , CFC%LogFunc(i)       &
+                    write(chainFileUnit,chainFileFormat     ) CFC%ProcessID(i)      &
+                                                            , CFC%DelRejStage(i)    &
+                                                            , CFC%MeanAccRate(i)    &
+                                                            , CFC%Adaptation(i)     &
+                                                            , CFC%BurninLoc(i)      &
+                                                            , CFC%Weight(i)         &
+                                                            , CFC%LogFunc(i)        &
                                                             , CFC%State(1:ndim,i)
                 end do
             elseif (isBinary) then
                 do i = compactStartIndex, compactEndIndex
-                    write(chainFileUnit                     ) CFC%ProcessID(i)     &
-                                                            , CFC%DelRejStage(i)   &
-                                                            , CFC%MeanAccRate(i)   &
-                                                            , CFC%Adaptation(i)    &
-                                                            , CFC%BurninLoc(i)     &
-                                                            , CFC%Weight(i)        &
-                                                            , CFC%LogFunc(i)       &
+                    write(chainFileUnit                     ) CFC%ProcessID(i)      &
+                                                            , CFC%DelRejStage(i)    &
+                                                            , CFC%MeanAccRate(i)    &
+                                                            , CFC%Adaptation(i)     &
+                                                            , CFC%BurninLoc(i)      &
+                                                            , CFC%Weight(i)         &
+                                                            , CFC%LogFunc(i)        &
                                                             , CFC%State(1:ndim,i)
                 end do
             elseif (isVerbose) then
+                counter = compactStartIndex
                 do i = compactStartIndex, compactEndIndex
                     do j = 1, CFC%Weight(i)
-                        write(chainFileUnit,chainFileFormat ) CFC%ProcessID(i)     &
-                                                            , CFC%DelRejStage(i)   &
-                                                            , CFC%MeanAccRate(i)   &
-                                                            , CFC%Adaptation(i)    &
-                                                            , CFC%BurninLoc(i)     &
-                                                            , 1_IK                 &
-                                                            , CFC%LogFunc(i)       &
+                        if (mod(counter,adaptiveUpdatePeriod)==0_IK) then
+                            adaptation = CFC%Adaptation(i)
+                        else
+                            adaptation = 0._RK
+                        end if
+                        write(chainFileUnit,chainFileFormat ) CFC%ProcessID(i)      &
+                                                            , CFC%DelRejStage(i)    &
+                                                            , CFC%MeanAccRate(i)    &
+                                                            , adaptation            &
+                                                            , CFC%BurninLoc(i)      &
+                                                            , 1_IK                  &
+                                                            , CFC%LogFunc(i)        &
                                                             , CFC%State(1:ndim,i)
+                        counter = counter + 1
                     end do
                 end do
             end if

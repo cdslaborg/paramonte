@@ -284,6 +284,7 @@ contains
                                                     , chainFileUnit = self%ChainFile%unit &
                                                     , chainFileForm = self%SpecBase%ChainFileFormat%val &
                                                     , chainFileFormat = self%ChainFile%format &
+                                                    , adaptiveUpdatePeriod = self%SpecDRAM%AdaptiveUpdatePeriod%val &
                                                     )
 
                     ! remove the temporary copy of the chain file

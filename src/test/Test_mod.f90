@@ -238,7 +238,6 @@ contains
             integer(IK) :: ierrMPI
             logical     :: isFinalized
             call mpi_finalized( isFinalized, ierrMPI )
-            write(*,*) "Test%Image%id: ", Test%Image%id
             if (.not. isFinalized) then
                 call mpi_barrier(mpi_comm_world,ierrMPI)
                 !call mpi_finalize(ierrMPI)

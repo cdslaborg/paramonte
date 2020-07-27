@@ -587,7 +587,15 @@ if (NOT DEFINED PMLIB)
         set(MEMORY_ALLOCATION stack)
     endif()
 
-    set(PMLIB paramonte_${LTYPE}_${MEMORY_ALLOCATION}_${BTYPE}_${PMCS}_${INTERFACE_LANGUAGE} )
+    if (WIN32)
+        set(ARCHITECTURE ${PLATFORM})
+    else()
+        EXECUTE_PROCESS( COMMAND uname -m COMMAND tr -d "\n" OUTPUT_VARIABLE ARCHITECTURE )
+        string(REPLACE "x86_64" "x64" ARCHITECTURE ${ARCHITECTURE})
+    endif()
+    string(TOLOWER "${CMAKE_SYSTEM_NAME}" PLATFORM)
+
+    set(PMLIB paramonte_${INTERFACE_LANGUAGE}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION} )
 
     if (CAF_ENABLED)
         set(PMLIB ${PMLIB}_caf${CAFTYPE})
@@ -601,18 +609,9 @@ if (NOT DEFINED PMLIB)
         set(PMLIB ${PMLIB}_omp)
     endif()
 
-    if (WIN32)
-        set(ARCHITECTURE ${PLATFORM})
-    else()
-        EXECUTE_PROCESS( COMMAND uname -m COMMAND tr -d "\n" OUTPUT_VARIABLE ARCHITECTURE )
-        string(REPLACE "x86_64" "x64" ARCHITECTURE ${ARCHITECTURE})
-    endif()
-
-    string(TOLOWER "${CMAKE_SYSTEM_NAME}" PLATFORM)
-    set(PMLIB ${PMLIB}_${PLATFORM}_${ARCHITECTURE})
-    if (MT_ENABLED)
-        set(PMLIB ${PMLIB}_mt)
-    endif()
+    #if (MT_ENABLED)
+    #    set(PMLIB ${PMLIB}_mt)
+    #endif()
 
 endif()
 

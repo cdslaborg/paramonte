@@ -51,14 +51,17 @@
 
 
 #if defined PARADRAM
+
 #define SAMPLER ParaDRAM
-#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDRAMProposalAbstract_mod
+    use ParaDRAMProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
+
 #elif defined PARADISE
+
 #define SAMPLER ParaDISE
-#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDISEProposalAbstract_mod
+    use ParaDISEProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
+
 #endif
 
-    use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalAbstract_type, ProposalErr
     use ParaMonte_mod, only: Image_type
     use Constants_mod, only: IK, RK, PMSM
     use String_mod, only: IntStr_type
@@ -940,7 +943,7 @@ contains
 #endif
         implicit none
         integer(IK) :: i
-        do i = 1, 10 + mc_ndim * (mc_ndim+3) / 2
+        do i = 1, 8 + mc_ndim * (mc_ndim+3) / 2
             !read( mc_restartFileUnit, mc_restartFileFormat )
             read( mc_restartFileUnit, * )
         end do
@@ -951,6 +954,5 @@ contains
 
 
 #undef SAMPLER
-#undef SAMPLER_PROPOSAL_ABSTRACT_MOD
 #undef GET_RANDOM_PROPOSAL
 

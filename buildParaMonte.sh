@@ -1767,7 +1767,7 @@ else
     if [ "${PLATFORM}" = "darwin" ]; then PMLIB_EXT=".dylib"; fi
     if [ "${PLATFORM}" = "mingw" ] || [ "${PLATFORM}" = "cygwin" ]; then PMLIB_EXT=".dll"; fi
 fi
-PMLIB_FULL_PATH="$(ls ${ParaMonte_LIB_DIR}/libparamonte_${LTYPE}_${MEMORY_ALLOCATION}_${BTYPE}_*${PMLIB_EXT} | sort -V | tail -n1)"
+PMLIB_FULL_PATH="$(ls ${ParaMonte_LIB_DIR}/libparamonte_*_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION}*${PMLIB_EXT} | sort -V | tail -n1)"
 PMLIB_FULL_NAME=${PMLIB_FULL_PATH##*/}
 PMLIB_BASE_NAME=${PMLIB_FULL_NAME%.*}
 export PMLIB_FULL_PATH
