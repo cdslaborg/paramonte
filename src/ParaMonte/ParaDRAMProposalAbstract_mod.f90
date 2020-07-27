@@ -40,10 +40,3 @@ module ParaDRAMProposalAbstract_mod
 #undef PARADRAM
 end module ParaDRAMProposalAbstract_mod
 
-module ParaDISEProposalAbstract_mod
-#define PARADISE ParaDISE 
-#include "ParaDRAMProposalAbstract_mod.inc.f90"
-#undef ParaDISE
-end module ParaDISEProposalAbstract_mod
-
-

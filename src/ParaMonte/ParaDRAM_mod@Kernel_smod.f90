@@ -40,9 +40,3 @@ submodule (ParaDRAM_mod) Kernel_smod
 #undef PARADRAM
 end submodule Kernel_smod
 
-submodule (ParaDISE_mod) Kernel_smod
-#define PARADISE ParaDISE
-#include "ParaDRAM_mod@Kernel_smod.inc.f90"
-#undef PARADISE
-end submodule Kernel_smod
-

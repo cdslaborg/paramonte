@@ -34,9 +34,9 @@
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-module ParaDRAM_mod
-#define PARADRAM ParaDRAM
-#include "ParaDRAM_mod.inc.f90"
-#undef PARADRAM
-end module ParaDRAM_mod
+submodule (ParaDISE_mod) Kernel_smod
+#define PARADISE ParaDISE
+#include "ParaDRAM_mod@Kernel_smod.inc.f90"
+#undef PARADISE
+end submodule Kernel_smod
 

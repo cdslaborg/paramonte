@@ -40,9 +40,3 @@ submodule (ParaDRAM_mod) Setup_smod
 #undef PARADRAM
 end submodule Setup_smod
 
-submodule (ParaDISE_mod) Setup_smod
-#define PARADISE ParaDISE
-#include "ParaDRAM_mod@Setup_smod.inc.f90"
-#undef PARADISE
-end submodule Setup_smod
-

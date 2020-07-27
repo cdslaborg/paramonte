@@ -58,7 +58,6 @@
 #define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDISEProposalAbstract_mod
 #endif
 
-
     use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalAbstract_type, ProposalErr
     use ParaMonte_mod, only: Image_type
     use Constants_mod, only: IK, RK, PMSM
@@ -363,26 +362,6 @@ contains
 
         domainCheckCounter = 0_IK
         CholeskyLower = comv_CholDiagLower(1:nd,1:nd,counterDRS)
-!block
-!integer :: i
-!integer, save :: counter = 0, n
-!real(RK) :: unifrnd
-!!integer, dimension(:), allocatable :: seed
-!if (counter==0) then
-!    do i = 1, 10 
-!    call random_number(unifrnd)
-!    write(*,"(*(g0,:,' '))") unifrnd
-!    end do
-!    !call random_seed(size = n); allocate(seed(n))
-!    !call random_seed(get = seed)
-!    !write(*,"(*(g0,:,' '))") seed
-!    !write(*,"(*(g0,:,' '))") StateOld
-!    !write(*,"(*(g0,:,' '))") StateNew
-!    !write(*,"(*(g0,:,' '))") CholeskyLower
-!    !write(*,"(*(g0,:,' '))") domainCheckCounter
-!end if
-!counter = counter + 1
-!end block
 
         loopBoundaryCheck: do ! Check for the support Region consistency:
 #if defined UNIFORM || defined NORMAL
@@ -937,16 +916,18 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFileAscii
 #endif
         implicit none
-        write( mc_restartFileUnit, mc_restartFileFormat ) "sampleSizeOld" &
+        integer(IK) :: i, j
+        write( mc_restartFileUnit, mc_restartFileFormat ) "sampleSize" & ! sampleSizeOld
                                                         , mv_sampleSizeOld_save &
-                                                        , "logSqrtDetOld" &
+                                                        , "logSqrtDeterminant" & ! logSqrtDetOld
                                                         , mv_logSqrtDetOld_save &
-                                                        , "adaptiveScaleFactorSq" &
+                                                        , "adaptiveScaleFactorSquared" & ! adaptiveScaleFactorSq
                                                         , mv_adaptiveScaleFactorSq_save &
-                                                        , "MeanOld(1:ndim)" &
+                                                        , "meanVec" & ! MeanOld(1:ndim)
                                                         , mv_MeanOld_save(1:mc_ndim) &
-                                                        , "CholDiagLower(1:ndim,0:ndim,0)" &
-                                                        , comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
+                                                        , "covMat" & ! CholDiagLower(1:ndim,0:ndim,0)
+                                                        , ((comv_CholDiagLower(i,j,0),i=1,j),j=1,mc_ndim)
+                                                       !, (comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
         flush(mc_restartFileUnit)
     end subroutine writeRestartFileAscii
 
