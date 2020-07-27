@@ -504,7 +504,7 @@ contains
                 blockChainSizeDefault: if (chainSizeDefault>0_IK) then
 
                     CFC%Count%compact = 1_IK
-                    block
+                    blockReadVerbose: block
 
                         logical                 :: newUniqueSampleDetected
                         integer(IK)             :: processID
@@ -525,7 +525,10 @@ contains
                         Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
                         if (Record%nPart<numColTot) then
                             call warnUserAboutCorruptChainFile(iState)
-                            exit blockChainSizeDefault
+                            !exit blockChainSizeDefault 
+                            ! intel 2018 to 2019.05 yields internal compiler error with the above exit. Intel 19.1 and gnu 9.1 are fine. 
+                            ! The following is a workaround for now.
+                            exit blockReadVerbose 
                         else
                             read(Record%Parts(1)%record,*) CFC%ProcessID(CFC%Count%compact)
                             read(Record%Parts(2)%record,*) CFC%DelRejStage(CFC%Count%compact)
@@ -587,7 +590,7 @@ contains
                                 end if
 
                                 ! write the latest sample
-!write(*,*) CFC%Count%compact
+
                                 CFC%LogFunc         (CFC%Count%compact) = LogFunc
                                 CFC%MeanAccRate     (CFC%Count%compact) = MeanAccRate
                                 CFC%Adaptation      (CFC%Count%compact) = max(CFC%Adaptation(CFC%Count%compact),Adaptation)
@@ -601,7 +604,7 @@ contains
 
                         end do loopOverChainfFileContents
 
-                    end block
+                    end block blockReadVerbose
 
                 else blockChainSizeDefault
 
