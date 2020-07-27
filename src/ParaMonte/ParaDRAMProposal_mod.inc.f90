@@ -940,7 +940,7 @@ contains
 #endif
         implicit none
         integer(IK) :: i
-        do i = 1, 8 + mc_ndim * (mc_ndim+2)
+        do i = 1, 10 + mc_ndim * (mc_ndim+3) / 2
             !read( mc_restartFileUnit, mc_restartFileFormat )
             read( mc_restartFileUnit, * )
         end do

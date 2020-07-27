@@ -180,12 +180,10 @@ function runSampler(self,ndim,getLogFunc,varargin)
     end
 
     libFound = false;
-    if self.platform.isWin32; libNameSuffix = "_windows_" + getArch() + "_mt"; end
-    if self.platform.isMacOS; libNameSuffix = "_darwin_" + getArch() + "_mt"; end
-    if self.platform.isLinux; libNameSuffix = "_linux_" + getArch() + "_mt"; end
+    libNamePrefix = "libparamonte_" + lower(self.platform.osname) + "_" + getArch() + "_";
     for buildMode = buildModeList
         for pmcs = pmcsList
-            libName = "libparamonte_dynamic_heap_" + buildMode + "_" + pmcs + parallelism + libNameSuffix;
+            libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism;
             if exist(libName,'file')==3; libFound = true; break; end
         end
         if libFound; break; end

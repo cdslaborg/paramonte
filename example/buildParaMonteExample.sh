@@ -328,7 +328,7 @@ ParaMonteExample_BLD_DIR_CURRENT="${ParaMonteExample_BLD_DIR}/mvn"
 if ! [ -d "${ParaMonte_BIN_DIR}" ]; then mkdir "${ParaMonte_BIN_DIR}/"; fi
 
 ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/${PMLIB_BASE_NAME}"
-if [ "${LANG_IS_DYNAMIC}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/${LANG_NAME}"; fi
+if [ "${LANG_IS_DYNAMIC}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_${LANG_NAME}"; fi
 if ! [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then mkdir "${ParaMonteExample_BIN_DIR_CURRENT}/"; fi
 
 echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte ${LANG_NAME} library binary directory: ${ParaMonteExample_BIN_DIR_CURRENT}"

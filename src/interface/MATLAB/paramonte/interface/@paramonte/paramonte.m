@@ -265,6 +265,9 @@ classdef paramonte %< dynamicprops
             self.platform.isWin32 = ispc;
             self.platform.isMacOS = ismac;
             self.platform.isLinux = isunix && ~ismac;
+            if self.platform.isWin32; self.platform.osname = "Windows"; end
+            if self.platform.isMacOS; self.platform.osname = "macOS"; end
+            if self.platform.isLinux; self.platform.osname = "Linux"; end
 
             self.authors = "The Computational Data Science Lab @ The University of Texas";
             self.credits = "Peter O'Donnell Fellowship / Texas Advanced Computing Center";

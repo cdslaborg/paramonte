@@ -77,11 +77,11 @@ if !INTERFACE_LANGUAGE!==matlab (
     set LANG_IS_MATLAB=true
     set LANG_FILE_EXT=m
     set LANG_NAME=MATLAB
-    set ParaMonteMATLAB_BIN_ROOT_DIR=!ParaMonte_BIN_DIR!\MATLAB
-    echo.-- ParaMonte - The ParaMonte MATLAB binaries root directory: !ParaMonteMATLAB_BIN_ROOT_DIR!
-    if not exist !ParaMonteMATLAB_BIN_ROOT_DIR! (
-        mkdir "!ParaMonteMATLAB_BIN_ROOT_DIR!\"
-    )
+    REM set ParaMonteMATLAB_BIN_ROOT_DIR=!ParaMonte_BIN_DIR!\libparamonte_MATLAB
+    REM echo.-- ParaMonte - The ParaMonte MATLAB binaries root directory: !ParaMonteMATLAB_BIN_ROOT_DIR!
+    REM if not exist !ParaMonteMATLAB_BIN_ROOT_DIR! (
+    REM     mkdir "!ParaMonteMATLAB_BIN_ROOT_DIR!\"
+    REM )
 )
 
 if !INTERFACE_LANGUAGE!==python (
@@ -89,11 +89,11 @@ if !INTERFACE_LANGUAGE!==python (
     set LANG_IS_Python=true
     set LANG_FILE_EXT=py
     set LANG_NAME=Python
-    set ParaMontePython_BIN_ROOT_DIR=!ParaMonte_BIN_DIR!\Python
-    echo.-- ParaMonte - The ParaMonte Python binaries root directory: !ParaMontePython_BIN_ROOT_DIR!
-    if not exist !ParaMontePython_BIN_ROOT_DIR! (
-        mkdir "!ParaMontePython_BIN_ROOT_DIR!\"
-    )
+    REM set ParaMontePython_BIN_ROOT_DIR=!ParaMonte_BIN_DIR!\libparamonte_Python
+    REM echo.-- ParaMonte - The ParaMonte Python binaries root directory: !ParaMontePython_BIN_ROOT_DIR!
+    REM if not exist !ParaMontePython_BIN_ROOT_DIR! (
+    REM     mkdir "!ParaMontePython_BIN_ROOT_DIR!\"
+    REM )
 )
 
 if !INTERFACE_LANGUAGE!==fortran (
@@ -253,8 +253,8 @@ for %%e in (!EXAM_LIST!) do (
             REM The ParaMonte Python library setup files
 
             echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library Python setup files...
-            echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonteInterface_SRC_DIR_CURRENT!\setup   %= no need for final slash here =%
-            echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMontePython_BIN_ROOT_DIR!\            %= final slash tells this is folder =%
+            echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonteInterface_SRC_DIR_CURRENT!\setup  %= no need for final slash here =%
+            echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\         %= final slash tells this is folder =%
             xcopy /s /Y "!ParaMonteInterface_SRC_DIR_CURRENT!\setup" "!ParaMonteExample_BLD_DIR_CURRENT!\" || goto LABEL_copyErrorOccured
 
         )
@@ -309,8 +309,14 @@ if %ERRORLEVEL%==0 (
 
 set ParaMonteExample_BLD_DIR_CURRENT=!ParaMonteExample_BLD_DIR!\mvn
 
-set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\!PMLIB_NAME!
-if !LANG_IS_DYNAMIC!==true set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\!LANG_NAME!
+if !LANG_IS_DYNAMIC!==true (
+    set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\libparamonte_!LANG_NAME!
+) else (
+    set ParaMonteExample_BIN_DIR_CURRENT=!ParaMonte_BIN_DIR!\!PMLIB_NAME!
+)
+if not exist !ParaMonteExample_BIN_DIR_CURRENT! (
+    mkdir "!ParaMonteExample_BIN_DIR_CURRENT!\"
+)
 
 echo.-- ParaMonteExample!LANG_NAME! - The ParaMonte !LANG_NAME! library binary directory: !ParaMonteExample_BIN_DIR_CURRENT!
 
