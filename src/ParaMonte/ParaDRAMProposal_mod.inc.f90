@@ -149,6 +149,7 @@
 
     real(RK)        , save  , allocatable   :: mv_MeanOld_save(:)
     real(RK)        , save                  :: mv_logSqrtDetOld_save
+    real(RK)        , save                  :: mv_logSqrtDetNew_save ! defined globally, solely for the purpose of restart outputting
     real(RK)        , save                  :: mv_adaptiveScaleFactorSq_save    ! = 1._RK
     integer(IK)     , save                  :: mv_sampleSizeOld_save            ! = 0_IK
 
@@ -313,6 +314,7 @@ contains
             call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
         end if
+        mv_logSqrtDetNew_save = sum(log( comv_CholDiagLower(1:ndim,0,0) ))
 
         ! Scale the higher-stage delayed-rejection Cholesky Lower matrices
 
@@ -467,7 +469,6 @@ contains
         real(RK)                                        :: MeanCurrent(nd)
         real(RK)                                        :: CovMatUpperOld(nd,nd)
         real(RK)                                        :: CovMatUpperCurrent(nd,nd)
-        real(RK)                                        :: logSqrtDetNew
         real(RK)                                        :: logSqrtDetSum
         real(RK)                                        :: adaptiveScaleFactor
         logical                                         :: adaptationMeasureComputationNeeded ! only used to avoid redundant affinity computation, if no update occurs
@@ -476,7 +477,7 @@ contains
 
         scalingNeeded = .false.
         sampleSizeOld = mv_sampleSizeOld_save ! this is kept only for restoration of mv_sampleSizeOld_save, if needed.
-        mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:nd,0,0) ))
+        mv_logSqrtDetOld_save = mv_logSqrtDetNew_save
 
         ! First if there are less than nd+1 points for new covariance computation, then just scale the covariance and return
 
@@ -700,11 +701,12 @@ contains
 
         ! compute the adaptivity only if any updates has occurred
 
+        mv_logSqrtDetNew_save = sum(log( comv_CholDiagLower(1:nd,0,0) ))
+
         blockAdaptationMeasureComputation: if (adaptationMeasureComputationNeeded) then
 
             ! use the universal upper bound
 
-            logSqrtDetNew = sum(log( comv_CholDiagLower(1:nd,0,0) ))
             do j = 1, nd
                 do i = 1,j
                     CovMatUpperCurrent(i,j) = 0.5_RK * ( comv_CholDiagLower(i,j,0) + CovMatUpperOld(i,j) ) ! dummy
@@ -732,8 +734,8 @@ contains
                 call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                 return
             end if
-            !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
-            adaptationMeasure = sqrt( 1._RK - exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum ) ) ! totalVariationUpperBound
+            !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+mv_logSqrtDetNew_save) - logSqrtDetSum )
+            adaptationMeasure = sqrt( 1._RK - exp( mv_logSqrtDetOld_save + mv_logSqrtDetNew_save - 2_IK * logSqrtDetSum ) ) ! totalVariationUpperBound
 !block
 !integer, save :: counter = 0
 !counter = counter + 1
@@ -741,10 +743,10 @@ contains
 !if (adaptationMeasure>1._RK) then
 !write(*,*) 
 !write(*,*) mv_logSqrtDetOld_save
-!write(*,*) logSqrtDetNew
+!write(*,*) mv_logSqrtDetNew_save
 !write(*,*) logSqrtDetSum
-!write(*,*) mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum
-!write(*,*) exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum )
+!write(*,*) mv_logSqrtDetOld_save + mv_logSqrtDetNew_save - 2_IK * logSqrtDetSum
+!write(*,*) exp( mv_logSqrtDetOld_save + mv_logSqrtDetNew_save - 2_IK * logSqrtDetSum )
 !write(*,*) 
 !end if
 !end block
@@ -783,7 +785,7 @@ contains
 
         real(RK)   , intent(in)                         :: AutoTuneScaleSq(1)
         real(RK)   , intent(inout)                      :: adaptationMeasure
-        real(RK)                                        :: logSqrtDetNew, logSqrtDetSum, mv_logSqrtDetOld_save
+        real(RK)                                        :: logSqrtDetSum, mv_logSqrtDetOld_save
         real(RK)                                        :: CovMatUpperOld(1,1), CovMatUpperCurrent(1,1)
         logical                                         :: singularityOccurred
 
@@ -800,7 +802,7 @@ contains
 
         ! compute the adaptivity
 
-        logSqrtDetNew = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
+        mv_logSqrtDetNew_save = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
         CovMatUpperCurrent = 0.5_RK * ( comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0) + CovMatUpperOld )
         call getLogSqrtDetPosDefMat(1_IK,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
         if (singularityOccurred) then
@@ -816,7 +818,7 @@ contains
             call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
         end if
-        adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
+        adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+mv_logSqrtDetNew_save) - logSqrtDetSum )
 
     end subroutine doAutoTune
 

@@ -210,7 +210,11 @@ contains
             allocate(self%Chain%State       (nd,self%SpecMCMC%ChainSize%val))
             allocate(self%Chain%LogFunc     (   self%SpecMCMC%ChainSize%val))
 
+            call writeRestartFile(meanAccRateSinceStart=1._RK) ! not essential. solely for the purpose of outputting the zeroth sample proposal specs.
+
         else blockDryRunSetup
+
+            call readRestartFile(meanAccRateSinceStart) ! read the zeroth step proposal specs
 
             ! load the existing Chain file into self%Chain components
 
@@ -567,23 +571,9 @@ contains
 
                         if (self%isFreshRun) then
                             meanAccRateSinceStart = self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted)
-                            if (self%SpecBase%RestartFileFormat%isBinary) then
-                                write(self%RestartFile%unit) meanAccRateSinceStart
-                            else
-                                write(self%RestartFile%unit,self%RestartFile%format) "meanAccRateSinceStart", meanAccRateSinceStart
-                                call self%Proposal%writeRestartFileAscii()
-                            end if
-                            flush(self%RestartFile%unit)
+                            call writeRestartFile(meanAccRateSinceStart)
                         else
-                            if (self%SpecBase%RestartFileFormat%isBinary) then
-                                read(self%RestartFile%unit) meanAccRateSinceStart
-                            else
-                                !read(self%RestartFile%unit,self%RestartFile%format)
-                                !read(self%RestartFile%unit,self%RestartFile%format) meanAccRateSinceStart
-                                read(self%RestartFile%unit,*)
-                                read(self%RestartFile%unit,*) meanAccRateSinceStart
-                                call self%Proposal%readRestartFileAscii()
-                            end if
+                            call readRestartFile(meanAccRateSinceStart)
                             SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
                         end if
 
@@ -845,6 +835,38 @@ contains
         !***************************************************************************************************************************
 
     contains
+
+        !***************************************************************************************************************************
+        !***************************************************************************************************************************
+
+        subroutine writeRestartFile(meanAccRateSinceStart)
+            implicit none
+            real(RK), intent(in) :: meanAccRateSinceStart
+            if (self%SpecBase%RestartFileFormat%isBinary) then
+                write(self%RestartFile%unit) meanAccRateSinceStart
+            else
+                write(self%RestartFile%unit,self%RestartFile%format) "meanAcceptanceRateSinceStart", meanAccRateSinceStart
+                call self%Proposal%writeRestartFileAscii()
+            end if
+            flush(self%RestartFile%unit)
+        end subroutine writeRestartFile
+
+        !***************************************************************************************************************************
+        !***************************************************************************************************************************
+
+        subroutine readRestartFile(meanAccRateSinceStart)
+            implicit none
+            real(RK), intent(out) :: meanAccRateSinceStart
+            if (self%SpecBase%RestartFileFormat%isBinary) then
+                read(self%RestartFile%unit) meanAccRateSinceStart
+            else
+                !read(self%RestartFile%unit,self%RestartFile%format)
+                !read(self%RestartFile%unit,self%RestartFile%format) meanAccRateSinceStart
+                read(self%RestartFile%unit,*)
+                read(self%RestartFile%unit,*) meanAccRateSinceStart
+                call self%Proposal%readRestartFileAscii()
+            end if
+        end subroutine readRestartFile
 
         !***************************************************************************************************************************
         !***************************************************************************************************************************

@@ -80,8 +80,10 @@ classdef RestartFileContents < OutputFileContents
             self.delimiter = delimiter;
             self.timer.tic();
 
-            if strcmpi(self.methodName,"paradram")
+            if strcmpi(self.methodName,"ParaDRAM")
                 self.readRestartParaDRAM()
+            else
+                error("Intel error occurred. unrecognized methodName in RestartFileContentsConstructor: " + self.methodName)
             end
 
         end % constructor
