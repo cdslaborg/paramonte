@@ -89,7 +89,7 @@ contains
 #elif defined PYTHON_ENABLED
         InterfaceTypeObj%def = "The Python Programming Language."
 #else
-        InterfaceTypeObj%def = "UNDEFINED"
+#error "Undefined ParaMonte interface type in SpecBase_InterfaceType_mod.f90"
 #endif
         if ( allocated(InterfaceTypeObj%null) ) deallocate(InterfaceTypeObj%null)
         allocate( character(len=MAX_INTERFACETYPE_LEN) :: InterfaceTypeObj%null )
