@@ -49,8 +49,7 @@ import _pmutils as pmutils
 
 ####################################################################################################################################
 
-class _Struct:
-    pass
+class _Struct: pass
 
 ####################################################################################################################################
 
@@ -72,6 +71,7 @@ platform.name = _sys.platform.lower()
 platform.isWin32 = True if platform.name=="win32" else False
 platform.isLinux = True if platform.name=="linux" else False
 platform.isMacOS = True if platform.name=="darwin" else False
+platform.osname = "windows" if platform.isWin32 else platform.name
 
 ####################################################################################################################################
 

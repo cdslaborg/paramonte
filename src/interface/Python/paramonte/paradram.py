@@ -817,10 +817,10 @@ class ParaDRAM:
 
         inputFileVec_pntr, inputFileLen = self._getInputFile(inputFile) #,mpiEnabled)
 
-        platform = _sys.platform.lower()
-        isWin32 = True if platform=="win32" else False
-        isLinux = True if platform=="linux" else False
-        isMacOS = True if platform=="darwin" else False
+        #platform = _sys.platform.lower()
+        #isWin32 = True if platform=="win32" else False
+        #isLinux = True if platform=="linux" else False
+        #isMacOS = True if platform=="darwin" else False
 
         if self.mpiEnabled:
             parallelism = "_mpi"
@@ -841,13 +841,13 @@ class ParaDRAM:
         #                , methodName = _pm.names.paradram
         #                )
         #        print("\nRunning sampler in parallel mode...\n")
-        #        libname += "_mpi"
+        #        libName += "_mpi"
         #else:
         #    print("\nRunning ParaMonte sampler in serial mode...\n")
         #try:
         #    from mpi4py import MPI
         #    comm = MPI.COMM_WORLD
-        #    libname += "_mpi"
+        #    libName += "_mpi"
         #    if comm.size==1:
         #        print("\nRunning ParaMonte sampler in serial mode...\n")
         #        if MPI.Is_initialized():
@@ -864,7 +864,7 @@ class ParaDRAM:
 
         # setup env
 
-        if isWin32:
+        if _pm.platform.isWin32:
 
             if "PATH" in _os.environ:
                 _os.environ["PATH"] = fileAbsDir + _os.pathsep + _os.environ["PATH"]
@@ -941,27 +941,24 @@ class ParaDRAM:
             pmcsList.pop(pmcsList.index(stype))
             pmcsList.insert(0,stype)
 
-        libnameSuffix = "_python" + parallelism
-        if isWin32: libnameSuffix = libnameSuffix + "_windows_" + _pm.platform.arch + "_mt.dll"
-        if isMacOS: libnameSuffix = libnameSuffix + "_darwin_" + _pm.platform.arch + "_mt.dylib"
-        if isLinux: libnameSuffix = libnameSuffix + "_linux_" + _pm.platform.arch + "_mt.so"
+        libNameSuffix = parallelism +   { "windows" : ".dll"
+                                        , "cygwin"  : ".dll"
+                                        , "darwin"  : ".dylib"
+                                        , "linux"   : ".so"
+                                        }.get(_pm.platform.osname, ".so")
 
-        libpath = None
+        libPath = None
         libFound = False
+        libNamePrefix = "libparamonte_python_" + _pm.platform.osname.lower() + "_" + _pm.platform.arch + "_";
         for buildMode in buildModeList:
 
             for pmcs in pmcsList:
 
-                libname = "libparamonte_dynamic_heap_" + buildMode + "_" + pmcs + libnameSuffix
-                #libname +=  { 'darwin' : ".dylib"
-                #            , 'win32'  : ".dll"
-                #            , 'cygwin' : ".dll"
-                #            }.get(platform, ".so")
+                libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + libNameSuffix;
+                libPath = find_library(libName)
+                if libPath==None: libPath = _os.path.join( fileAbsDir, libName )
 
-                libpath = find_library(libname)
-                if libpath==None: libpath = _os.path.join( fileAbsDir, libname )
-
-                libFound = _os.path.isfile(libpath)
+                libFound = _os.path.isfile(libPath)
                 if libFound: break
 
             if libFound: # check if lib file exists
@@ -974,7 +971,7 @@ class ParaDRAM:
             #                , marginTop = 1
             #                , marginBot = 1
             #                )
-            #    #libname = libname.replace(buildMode,mode)
+            #    #libName = libName.replace(buildMode,mode)
             #    #buildMode = mode
 
         if not libFound:
@@ -982,7 +979,7 @@ class ParaDRAM:
             _pm.abort( msg  = "Exhausted all possible ParaMonte dynamic library search \n"
                             + "names but could not find any compatible library. \n"
                             #+ "Last search:\n\n"
-                            #+ "    " + libpath + "\n\n"
+                            #+ "    " + libPath + "\n\n"
                             + "It appears your ParaMonte Python interface is missing \n"
                             + "the dynamic libraries. Please report this issue at: \n\n"
                             + "    https://github.com/cdslaborg/paramonte/issues\n\n"
@@ -1004,7 +1001,7 @@ class ParaDRAM:
 
         try:
 
-            pmdll = _ct.CDLL(libpath)
+            pmdll = _ct.CDLL(libPath)
 
         except Exception as e:
 
@@ -1055,17 +1052,17 @@ class ParaDRAM:
                            #, inputFileLen_pntr
                             )
 
-       #def isLoaded(libpath):
-       #    abslibpath =
-       #    return _os.system("lsof -p {} | grep {} > /dev/null".format( _os.getpid(), _os.path.abspath(libpath) )) == 0
+       #def isLoaded(libPath):
+       #    abslibPath =
+       #    return _os.system("lsof -p {} | grep {} > /dev/null".format( _os.getpid(), _os.path.abspath(libPath) )) == 0
 
         def dlclose(libdll): libdll.dlclose(libdll._handle)
 
-        if isWin32:
-            handle = _ct.windll.kernel32.LoadLibraryA(libpath)
+        if _pm.platform.isWin32:
+            handle = _ct.windll.kernel32.LoadLibraryA(libPath)
             _ct.windll.kernel32.FreeLibrary(handle)
         else:
-           #while isLoaded(libpath):
+           #while isLoaded(libPath):
            #    dlclose(pmdll._handle)
             try:
                 import _ctypes
