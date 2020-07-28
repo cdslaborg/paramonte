@@ -135,6 +135,8 @@ set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PR
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod@markovGen.inc.f90)
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90)
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalAbstract_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISEProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalAbstract_mod.inc.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDISEProposalAbstract_mod.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaMonteLogFunc_mod.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/Statistics_mod.f90)

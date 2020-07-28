@@ -55,8 +55,8 @@
         procedure(getNew_proc)                  , nopass    , deferred  :: getNew
         procedure(getLogProb_proc)              , nopass    , deferred  :: getLogProb
         procedure(doAdaptation_proc)            , nopass    , deferred  :: doAdaptation
-        procedure(readRestartFileAscii_proc)    , nopass    , deferred  :: readRestartFileAscii
-        procedure(writeRestartFileAscii_proc)   , nopass    , deferred  :: writeRestartFileAscii
+       !procedure(readRestartFileAscii_proc)    , nopass    , deferred  :: readRestartFileAscii
+       !procedure(writeRestartFileAscii_proc)   , nopass    , deferred  :: writeRestartFileAscii
 #if defined CAF_ENABLED || defined MPI_ENABLED
         procedure(bcastAdaptation_proc)         , nopass    , deferred  :: bcastAdaptation
 #endif
@@ -113,6 +113,7 @@
                                 , chainSize                 &
                                 , Chain                     &
                                 , ChainWeight               &
+                                , isFreshRun                &
                                 , samplerUpdateIsGreedy     &
                                 , meanAccRateSinceStart     &
                                 , samplerUpdateSucceeded    &
@@ -125,8 +126,9 @@
         integer(IK), intent(in)     :: chainSize
         real(RK)   , intent(in)     :: Chain(nd,chainSize)
         integer(IK), intent(in)     :: ChainWeight(chainSize)
+        logical    , intent(in)     :: isFreshRun
         logical    , intent(in)     :: samplerUpdateIsGreedy
-        real(RK)   , intent(in)     :: meanAccRateSinceStart
+        real(RK)   , intent(inout)  :: meanAccRateSinceStart
         logical    , intent(out)    :: samplerUpdateSucceeded
         real(RK)   , intent(out)    :: adaptationMeasure
     end subroutine doAdaptation_proc
@@ -134,17 +136,17 @@
 
     !*******************************************************************************************************************************
 
-    abstract interface
-    subroutine readRestartFileAscii_proc()
-    end subroutine readRestartFileAscii_proc
-    end interface
+    !abstract interface
+    !subroutine readRestartFileAscii_proc()
+    !end subroutine readRestartFileAscii_proc
+    !end interface
 
     !*******************************************************************************************************************************
 
-    abstract interface
-    subroutine writeRestartFileAscii_proc()
-    end subroutine writeRestartFileAscii_proc
-    end interface
+    !abstract interface
+    !subroutine writeRestartFileAscii_proc()
+    !end subroutine writeRestartFileAscii_proc
+    !end interface
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

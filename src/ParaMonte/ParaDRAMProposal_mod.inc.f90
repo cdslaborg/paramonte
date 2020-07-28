@@ -91,8 +91,8 @@
         procedure   , nopass        :: getNew
         procedure   , nopass        :: getLogProb
         procedure   , nopass        :: doAdaptation
-        procedure   , nopass        :: readRestartFileAscii
-        procedure   , nopass        :: writeRestartFileAscii
+       !procedure   , nopass        :: readRestartFile
+       !procedure   , nopass        :: writeRestartFile
 #if defined CAF_ENABLED || defined MPI_ENABLED
         procedure   , nopass        :: bcastAdaptation
 #endif
@@ -137,19 +137,19 @@
     real(RK)        , save  , allocatable   :: mc_DomainLowerLimitVec(:)
     real(RK)        , save  , allocatable   :: mc_DomainUpperLimitVec(:)
     real(RK)        , save  , allocatable   :: mc_negLogVolUnitBall
+    logical         , save  , allocatable   :: mc_isAsciiRestartFileFormat
+    logical         , save  , allocatable   :: mc_isBinaryRestartFileFormat
     character(:)    , save  , allocatable   :: mc_MaxNumDomainCheckToWarnMsg
     character(:)    , save  , allocatable   :: mc_MaxNumDomainCheckToStopMsg
     character(:)    , save  , allocatable   :: mc_negativeTotalVariationMsg
     character(:)    , save  , allocatable   :: mc_restartFileFormat
     character(:)    , save  , allocatable   :: mc_methodBrand
     character(:)    , save  , allocatable   :: mc_methodName
-   !logical         , save                  :: mc_isNormal
 
     ! the following had to be defined globally for the sake of restart file generation
 
     real(RK)        , save  , allocatable   :: mv_MeanOld_save(:)
     real(RK)        , save                  :: mv_logSqrtDetOld_save
-    real(RK)        , save                  :: mv_logSqrtDetNew_save ! defined globally, solely for the purpose of restart outputting
     real(RK)        , save                  :: mv_adaptiveScaleFactorSq_save    ! = 1._RK
     integer(IK)     , save                  :: mv_sampleSizeOld_save            ! = 0_IK
 
@@ -173,6 +173,7 @@ contains
                                         , brand &
                                         , LogFile &
                                         , RestartFile &
+                                        , isFreshRun &
                                         ) result(Proposal)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalSymmetric
@@ -200,6 +201,7 @@ contains
         character(*)            , intent(in)    :: brand
         type(LogFile_type)      , intent(in)    :: LogFile
         type(RestartFile_type)  , intent(in)    :: RestartFile
+        logical                                 :: isFreshRun
 
         type(Proposal_type)                     :: Proposal
 
@@ -213,9 +215,9 @@ contains
         !***************************************************************************************************************************
 
         if (allocated(mv_MeanOld_save)) deallocate(mv_MeanOld_save); allocate(mv_MeanOld_save(ndim))
-        mv_MeanOld_save(1:ndim) = NULL_RK
+        mv_MeanOld_save(1:ndim) = SpecMCMC%StartPointVec%Val
         mv_logSqrtDetOld_save   = NULL_RK
-        mv_sampleSizeOld_save   = 0_IK
+        mv_sampleSizeOld_save   = 1_IK
         mv_adaptiveScaleFactorSq_save = 1._RK
 
         !***************************************************************************************************************************
@@ -236,6 +238,8 @@ contains
         mc_logFileUnit                      = LogFile%unit
         mc_restartFileUnit                  = RestartFile%unit
         mc_restartFileFormat                = RestartFile%format
+        mc_isBinaryRestartFileFormat        = SpecBase%RestartFileFormat%isBinary
+        mc_isAsciiRestartFileFormat         = SpecBase%RestartFileFormat%isAscii
         mc_defaultScaleFactorSq             = SpecMCMC%ScaleFactor%val**2
        !Proposal%AccRate%sumUpToLastUpdate  = 0._RK
         mc_maxNumDomainCheckToWarn          = SpecBase%MaxNumDomainCheckToWarn%val
@@ -314,7 +318,7 @@ contains
             call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
         end if
-        mv_logSqrtDetNew_save = sum(log( comv_CholDiagLower(1:ndim,0,0) ))
+        mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:ndim,0,0) ))
 
         ! Scale the higher-stage delayed-rejection Cholesky Lower matrices
 
@@ -336,6 +340,19 @@ contains
             mc_negLogVolUnitBall = 0._RK
         end if
 #endif
+
+        ! read/write the first entry of the restart file
+
+        block
+            real(RK) :: meanAccRateSinceStart
+            if (isFreshRun) then
+                call writeRestartFile(meanAccRateSinceStart=1._RK)
+                call writeRestartFile()
+            else
+                call readRestartFile(meanAccRateSinceStart)
+                call readRestartFile()
+            end if
+        end block
 
     end function constructProposalSymmetric
 
@@ -437,6 +454,7 @@ contains
                             , chainSize                 &
                             , Chain                     &
                             , ChainWeight               &
+                            , isFreshRun                &
                             , samplerUpdateIsGreedy     &
                             , meanAccRateSinceStart     &
                             , samplerUpdateSucceeded    &
@@ -459,8 +477,9 @@ contains
         integer(IK), intent(in)                         :: chainSize
         real(RK)   , intent(in)                         :: Chain(nd,chainSize)
         integer(IK), intent(in)                         :: ChainWeight(chainSize)
+        logical    , intent(in)                         :: isFreshRun
         logical    , intent(in)                         :: samplerUpdateIsGreedy
-        real(RK)   , intent(in)                         :: meanAccRateSinceStart
+        real(RK)   , intent(inout)                      :: meanAccRateSinceStart ! is intent(out) in restart mode, intent(in) in fresh mode.
         logical    , intent(out)                        :: samplerUpdateSucceeded
         real(RK)   , intent(out)                        :: adaptationMeasure
 
@@ -469,6 +488,7 @@ contains
         real(RK)                                        :: MeanCurrent(nd)
         real(RK)                                        :: CovMatUpperOld(nd,nd)
         real(RK)                                        :: CovMatUpperCurrent(nd,nd)
+        real(RK)                                        :: logSqrtDetNew
         real(RK)                                        :: logSqrtDetSum
         real(RK)                                        :: adaptiveScaleFactor
         logical                                         :: adaptationMeasureComputationNeeded ! only used to avoid redundant affinity computation, if no update occurs
@@ -477,7 +497,14 @@ contains
 
         scalingNeeded = .false.
         sampleSizeOld = mv_sampleSizeOld_save ! this is kept only for restoration of mv_sampleSizeOld_save, if needed.
-        mv_logSqrtDetOld_save = mv_logSqrtDetNew_save
+
+        ! read/write meanAccRateSinceStart from/to restart file
+
+        if (isFreshRun) then
+            call writeRestartFile(meanAccRateSinceStart)
+        else
+            call readRestartFile(meanAccRateSinceStart)
+        end if
 
         ! First if there are less than nd+1 points for new covariance computation, then just scale the covariance and return
 
@@ -497,7 +524,7 @@ contains
 
             ! combine old and new covariance matrices if both exist
 
-            blockMergeCovMat: if (mv_sampleSizeOld_save==0_IK) then
+            blockMergeCovMat: if (mv_sampleSizeOld_save==1_IK) then
 
                 ! There is no prior old Covariance matrix to combine with the new one from the new chain
 
@@ -650,7 +677,7 @@ contains
             ! singularity has occurred. If the first covariance merging has not occurred yet, set the scaling factor appropriately to shrink the covariance matrix.
 
             samplerUpdateSucceeded = .false.
-            if (mv_sampleSizeOld_save==0 .or. mc_scalingRequested) then
+            if (mv_sampleSizeOld_save==1_IK .or. mc_scalingRequested) then
                 scalingNeeded = .true.
                 adaptationMeasureComputationNeeded = .true.
                 ! save the old covariance matrix for the computation of the adaptation measure
@@ -670,7 +697,6 @@ contains
         ! adjust the scale of the covariance matrix and the Cholesky factor, if needed
 
 !scalingNeeded = .true.
-
         if (scalingNeeded) then
             if ( meanAccRateSinceStart < mc_TargetAcceptanceRateLimit(1) .or. meanAccRateSinceStart > mc_TargetAcceptanceRateLimit(2) ) then
                 mv_adaptiveScaleFactorSq_save = (meanAccRateSinceStart/mc_targetAcceptanceRate)**mc_ndimInverse
@@ -701,9 +727,10 @@ contains
 
         ! compute the adaptivity only if any updates has occurred
 
-        mv_logSqrtDetNew_save = sum(log( comv_CholDiagLower(1:nd,0,0) ))
 
         blockAdaptationMeasureComputation: if (adaptationMeasureComputationNeeded) then
+
+            logSqrtDetNew = sum(log( comv_CholDiagLower(1:nd,0,0) ))
 
             ! use the universal upper bound
 
@@ -734,8 +761,9 @@ contains
                 call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                 return
             end if
-            !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+mv_logSqrtDetNew_save) - logSqrtDetSum )
-            adaptationMeasure = sqrt( 1._RK - exp( mv_logSqrtDetOld_save + mv_logSqrtDetNew_save - 2_IK * logSqrtDetSum ) ) ! totalVariationUpperBound
+            !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
+            adaptationMeasure = sqrt( 1._RK - exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum ) ) ! totalVariationUpperBound
+            mv_logSqrtDetOld_save = logSqrtDetNew
 !block
 !integer, save :: counter = 0
 !counter = counter + 1
@@ -743,10 +771,10 @@ contains
 !if (adaptationMeasure>1._RK) then
 !write(*,*) 
 !write(*,*) mv_logSqrtDetOld_save
-!write(*,*) mv_logSqrtDetNew_save
+!write(*,*) logSqrtDetNew
 !write(*,*) logSqrtDetSum
-!write(*,*) mv_logSqrtDetOld_save + mv_logSqrtDetNew_save - 2_IK * logSqrtDetSum
-!write(*,*) exp( mv_logSqrtDetOld_save + mv_logSqrtDetNew_save - 2_IK * logSqrtDetSum )
+!write(*,*) mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum
+!write(*,*) exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum )
 !write(*,*) 
 !end if
 !end block
@@ -764,6 +792,14 @@ contains
             call getInvCovMat()
 
         end if blockAdaptationMeasureComputation
+
+        ! read/write restart file
+
+        if (isFreshRun) then
+            call writeRestartFile()
+        else
+            call readRestartFile()
+        end if
 
     end subroutine doAdaptation
 
@@ -785,12 +821,12 @@ contains
 
         real(RK)   , intent(in)                         :: AutoTuneScaleSq(1)
         real(RK)   , intent(inout)                      :: adaptationMeasure
-        real(RK)                                        :: logSqrtDetSum, mv_logSqrtDetOld_save
+        real(RK)                                        :: logSqrtDetSum, logSqrtDetOld, logSqrtDetNew
         real(RK)                                        :: CovMatUpperOld(1,1), CovMatUpperCurrent(1,1)
         logical                                         :: singularityOccurred
 
         CovMatUpperOld = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0)
-        mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
+        logSqrtDetOld = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
 
         if (AutoTuneScaleSq(1)==0._RK) then
             comv_CholDiagLower(1,1,0) = 0.25_RK*comv_CholDiagLower(1,1,0)
@@ -802,7 +838,7 @@ contains
 
         ! compute the adaptivity
 
-        mv_logSqrtDetNew_save = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
+        logSqrtDetNew = sum(log( comv_CholDiagLower(1:mc_ndim,0,0) ))
         CovMatUpperCurrent = 0.5_RK * ( comv_CholDiagLower(1:mc_ndim,1:mc_ndim,0) + CovMatUpperOld )
         call getLogSqrtDetPosDefMat(1_IK,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
         if (singularityOccurred) then
@@ -818,7 +854,7 @@ contains
             call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
         end if
-        adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+mv_logSqrtDetNew_save) - logSqrtDetSum )
+        adaptationMeasure = 1._RK - exp( 0.5_RK*(logSqrtDetOld+logSqrtDetNew) - logSqrtDetSum )
 
     end subroutine doAutoTune
 
@@ -875,7 +911,7 @@ contains
 #endif
         use Matrix_mod, only: getInvMatFromCholFac
         implicit none
-        integer(IK) :: j, istage
+        integer(IK) :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
             mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim &
@@ -916,40 +952,59 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine writeRestartFileAscii()
+    subroutine writeRestartFile(meanAccRateSinceStart)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFileAscii
+        !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFile
 #endif
         implicit none
-        integer(IK) :: i, j
-        write( mc_restartFileUnit, mc_restartFileFormat ) "sampleSize" & ! sampleSizeOld
-                                                        , mv_sampleSizeOld_save &
-                                                        , "logSqrtDeterminant" & ! logSqrtDetOld
-                                                        , mv_logSqrtDetOld_save &
-                                                        , "adaptiveScaleFactorSquared" & ! adaptiveScaleFactorSq
-                                                        , mv_adaptiveScaleFactorSq_save &
-                                                        , "meanVec" & ! MeanOld(1:ndim)
-                                                        , mv_MeanOld_save(1:mc_ndim) &
-                                                        , "covMat" & ! CholDiagLower(1:ndim,0:ndim,0)
-                                                        , ((comv_CholDiagLower(i,j,0),i=1,j),j=1,mc_ndim)
-                                                       !, (comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
+        real(RK), intent(in), optional  :: meanAccRateSinceStart
+        integer(IK)                     :: i, j
+        if (present(meanAccRateSinceStart)) then
+            if (mc_isBinaryRestartFileFormat) then
+                write(mc_restartFileUnit) meanAccRateSinceStart
+            else
+                write(mc_restartFileUnit,mc_restartFileFormat) "meanAcceptanceRateSinceStart", meanAccRateSinceStart
+            end if
+        elseif (mc_isAsciiRestartFileFormat) then
+            write( mc_restartFileUnit, mc_restartFileFormat ) "sampleSize" & ! sampleSizeOld
+                                                            , mv_sampleSizeOld_save &
+                                                            , "logSqrtDeterminant" & ! logSqrtDetOld
+                                                            , mv_logSqrtDetOld_save &
+                                                            , "adaptiveScaleFactorSquared" & ! adaptiveScaleFactorSq
+                                                            , mv_adaptiveScaleFactorSq_save &
+                                                            , "meanVec" & ! MeanOld(1:ndim)
+                                                            , mv_MeanOld_save(1:mc_ndim) &
+                                                            , "covMat" & ! CholDiagLower(1:ndim,0:ndim,0)
+                                                            , ((comv_CholDiagLower(i,j,0),i=1,j),j=1,mc_ndim)
+                                                           !, (comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
+        end if
         flush(mc_restartFileUnit)
-    end subroutine writeRestartFileAscii
+    end subroutine writeRestartFile
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    subroutine readRestartFileAscii()
+    subroutine readRestartFile(meanAccRateSinceStart)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFileAscii
+        !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFile
 #endif
         implicit none
-        integer(IK) :: i
-        do i = 1, 8 + mc_ndim * (mc_ndim+3) / 2
-            !read( mc_restartFileUnit, mc_restartFileFormat )
-            read( mc_restartFileUnit, * )
-        end do
-    end subroutine readRestartFileAscii
+        real(RK), intent(out), optional :: meanAccRateSinceStart
+        integer(IK)                     :: i
+        if (present(meanAccRateSinceStart)) then
+            if (mc_isBinaryRestartFileFormat) then
+                read(mc_restartFileUnit) meanAccRateSinceStart
+            else
+                read(mc_restartFileUnit,*)
+                read(mc_restartFileUnit,*) meanAccRateSinceStart
+            end if
+        elseif (mc_isAsciiRestartFileFormat) then
+            do i = 1, 8 + mc_ndim * (mc_ndim+3) / 2
+                !read( mc_restartFileUnit, mc_restartFileFormat )
+                read( mc_restartFileUnit, * )
+            end do
+        end if
+    end subroutine readRestartFile
 
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************

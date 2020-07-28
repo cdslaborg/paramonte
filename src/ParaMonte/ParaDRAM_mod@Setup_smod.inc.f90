@@ -432,6 +432,7 @@ contains
                                                                     , brand         = self%brand &
                                                                     , LogFile       = self%LogFile &
                                                                     , RestartFile   = self%RestartFile &
+                                                                    , isFreshRun    = self%isFreshRun &
                                                                     ) )
         elseif (self%SpecMCMC%ProposalModel%isUniform) then
             allocate( self%Proposal, source = ProposalUniform_type  ( ndim          = ndim &
@@ -443,6 +444,7 @@ contains
                                                                     , brand         = self%brand &
                                                                     , LogFile       = self%LogFile &
                                                                     , RestartFile   = self%RestartFile &
+                                                                    , isFreshRun    = self%isFreshRun &
                                                                     ) )
         else
             self%Err%msg = PROCEDURE_NAME // ": Internal error occurred. Unsupported proposal distribution for " // self%name // "."

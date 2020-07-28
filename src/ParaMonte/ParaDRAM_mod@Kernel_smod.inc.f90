@@ -183,9 +183,6 @@ contains
         SumAccRateSinceStart%acceptedRejectedDelayed    = 0._RK                                     ! sum of acceptance rate
         end if
 
-        adaptationMeasureLen = 100_IK
-        if (allocated(AdaptationMeasure)) deallocate(AdaptationMeasure); allocate(AdaptationMeasure(adaptationMeasureLen))
-
        !adaptationMeasure                               = 0._RK                                     ! needed for the first output
         SumAccRateSinceStart%acceptedRejected           = 0._RK                                     ! sum of acceptance rate
         self%Stats%NumFunCall%acceptedRejected          = 0_IK                                      ! Markov Chain counter
@@ -196,10 +193,13 @@ contains
         samplerUpdateSucceeded                          = .true.                                    ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
         numFunCallAcceptedLastAdaptation                = 0_IK
         lastStateWeight                                 = -huge(lastStateWeight)
+        meanAccRateSinceStart                           = 1._RK ! needed for the first restart output in fresh run.
 
         call self%Timer%tic()
 
         blockDryRunSetup: if (self%isFreshRun) then
+
+            adaptationMeasureLen = 100_IK
 
             allocate(self%Chain%ProcessID   (   self%SpecMCMC%ChainSize%val))
             allocate(self%Chain%DelRejStage (   self%SpecMCMC%ChainSize%val))
@@ -210,11 +210,7 @@ contains
             allocate(self%Chain%State       (nd,self%SpecMCMC%ChainSize%val))
             allocate(self%Chain%LogFunc     (   self%SpecMCMC%ChainSize%val))
 
-            call writeRestartFile(meanAccRateSinceStart=1._RK) ! not essential. solely for the purpose of outputting the zeroth sample proposal specs.
-
         else blockDryRunSetup
-
-            call readRestartFile(meanAccRateSinceStart) ! read the zeroth step proposal specs
 
             ! load the existing Chain file into self%Chain components
 
@@ -243,7 +239,7 @@ contains
             call mpi_barrier(mpi_comm_world,ierrMPI)
 #endif
 
-            if (self%Image%isMaster) then
+            blockMasterSetup: if (self%Image%isMaster) then
 
                 ! set up the chain file
 
@@ -284,7 +280,7 @@ contains
 
                     call self%Chain%writeChainFile  ( ndim = nd &
                                                     , compactStartIndex = 1_IK &
-                                                    , compactEndIndex = self%Chain%Count%compact - CHAIN_RESTART_OFFSET &
+                                                    , compactEndIndex = self%Chain%Count%compact-CHAIN_RESTART_OFFSET &
                                                     , chainFileUnit = self%ChainFile%unit &
                                                     , chainFileForm = self%SpecBase%ChainFileFormat%val &
                                                     , chainFileFormat = self%ChainFile%format &
@@ -302,12 +298,18 @@ contains
 
                 end block
 
-            end if
+                adaptationMeasureLen = maxval(self%Chain%Weight(1:self%Chain%Count%compact-CHAIN_RESTART_OFFSET))
+
+            end if blockMasterSetup
 
         end if blockDryRunSetup
 
+        if (self%Image%isMaster) then
+            if (allocated(AdaptationMeasure)) deallocate(AdaptationMeasure); allocate(AdaptationMeasure(adaptationMeasureLen))
+        end if
+
         if (self%isFreshRun) then ! this must be done separately from the above blockDryRunSetup
-            
+
             self%Chain%BurninLoc(1)  = 1_IK
 
             co_LogFuncState(1:nd,0) = self%SpecMCMC%StartPointVec%Val   ! proposal state
@@ -569,18 +571,12 @@ contains
                             self%Chain%Weight(self%Stats%NumFunCall%accepted) = currentStateWeight ! needed for the restart mode, not needed in the fresh run
                         end if
 
-                        if (self%isFreshRun) then
-                            meanAccRateSinceStart = self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted)
-                            call writeRestartFile(meanAccRateSinceStart)
-                        else
-                            call readRestartFile(meanAccRateSinceStart)
-                            SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
-                        end if
-
+                        meanAccRateSinceStart = self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted) ! used only in fresh run, but not worth putting it in a conditional block.
                         call self%Proposal%doAdaptation ( nd                        = nd                                                                                        &
                                                         , chainSize                 = self%Stats%NumFunCall%accepted - numFunCallAcceptedLastAdaptation + 1_IK                  &
                                                         , Chain                     = self%Chain%State(1:nd,numFunCallAcceptedLastAdaptation:self%Stats%NumFunCall%accepted)    &
                                                         , ChainWeight               = self%Chain%Weight(numFunCallAcceptedLastAdaptation:self%Stats%NumFunCall%accepted)        &
+                                                        , isFreshRun                = self%isFreshRun                                                                           &
                                                         , samplerUpdateIsGreedy     = samplerUpdateIsGreedy                                                                     &
                                                         , meanAccRateSinceStart     = meanAccRateSinceStart                                                                     &
                                                         , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                    &
@@ -589,6 +585,7 @@ contains
 #if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
                         if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif
+                        if (self%isDryRun) SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
 
                         self%Chain%Weight(self%Stats%NumFunCall%accepted) = dummy   ! needed for the restart mode, not needed in the fresh run
                         if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then
@@ -835,38 +832,6 @@ contains
         !***************************************************************************************************************************
 
     contains
-
-        !***************************************************************************************************************************
-        !***************************************************************************************************************************
-
-        subroutine writeRestartFile(meanAccRateSinceStart)
-            implicit none
-            real(RK), intent(in) :: meanAccRateSinceStart
-            if (self%SpecBase%RestartFileFormat%isBinary) then
-                write(self%RestartFile%unit) meanAccRateSinceStart
-            else
-                write(self%RestartFile%unit,self%RestartFile%format) "meanAcceptanceRateSinceStart", meanAccRateSinceStart
-                call self%Proposal%writeRestartFileAscii()
-            end if
-            flush(self%RestartFile%unit)
-        end subroutine writeRestartFile
-
-        !***************************************************************************************************************************
-        !***************************************************************************************************************************
-
-        subroutine readRestartFile(meanAccRateSinceStart)
-            implicit none
-            real(RK), intent(out) :: meanAccRateSinceStart
-            if (self%SpecBase%RestartFileFormat%isBinary) then
-                read(self%RestartFile%unit) meanAccRateSinceStart
-            else
-                !read(self%RestartFile%unit,self%RestartFile%format)
-                !read(self%RestartFile%unit,self%RestartFile%format) meanAccRateSinceStart
-                read(self%RestartFile%unit,*)
-                read(self%RestartFile%unit,*) meanAccRateSinceStart
-                call self%Proposal%readRestartFileAscii()
-            end if
-        end subroutine readRestartFile
 
         !***************************************************************************************************************************
         !***************************************************************************************************************************
