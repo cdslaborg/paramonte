@@ -14,6 +14,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
         parallel ParaDRAM simulations in "single chain" parallelism mode. This can help make wiser decisions 
         regarding the the number of processors for similar parallel simulations in the future.  
 
++   The ParaDRAM restart output file in ASCII mode now contains all proposal updates, including the first user-specified proposal specs.
 
 **Bug fixes**  
 

@@ -131,7 +131,8 @@ contains
         integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
         integer(IK)                         :: imageID, dummy
         integer(IK)                         :: nd
-        character(4*25+2*3+1)               :: txt
+        integer(IK), parameter              :: STDOUT_SEGLEN = 25
+        character(4*STDOUT_SEGLEN+2*3+1)    :: txt
 #if defined CAF_ENABLED || defined MPI_ENABLED
         integer(IK)                         :: imageStartID, imageEndID
 #if defined CAF_ENABLED
@@ -329,15 +330,15 @@ contains
         self%Stats%LogFuncMode%Loc%compact = 0_IK
 
         if (self%Image%isFirst) then
-            txt =   repeat(" ",25) &
+            txt =   repeat(" ",STDOUT_SEGLEN) &
                 //  "Accepted/Total Func. Call   " &
                 //  "Dynamic/Overall Acc. Rate   " &
                 //  "Elapsed/Remained Time [s] "
             call write(string=txt)
-            txt =   repeat(" ",25) &
-                //  "=========================   " &
-                //  "=========================   " &
-                //  "========================= "
+            txt =   repeat(" ",STDOUT_SEGLEN) &
+                //  repeat("=",STDOUT_SEGLEN) // "   " &
+                //  repeat("=",STDOUT_SEGLEN) // "   " &
+                //  repeat("=",STDOUT_SEGLEN) // " "
             call write(string=txt)
             !call execute_command_line(" ")
             flush(output_unit)
@@ -950,8 +951,8 @@ contains
                 fmt = "(A,25X,*(A25,3X))" ) &
                 CARRIAGE_RETURN, &
                 num2str(self%Stats%NumFunCall%accepted)//" / "//num2str(self%Stats%NumFunCall%acceptedRejected,formatIn="(1I10)"), &
-                num2str(meanAccRateSinceLastReport,"(1F11.3)")//" / "//num2str(SumAccRateSinceStart%acceptedRejected / real(self%Stats%NumFunCall%acceptedRejected,kind=RK),"(1F10.4)"), &
-                num2str(timeElapsedUntilLastReportInSeconds,"(1F10.4)")//" / "//num2str(estimatedTimeToFinishInSeconds,"(1F11.3)")
+                num2str(meanAccRateSinceLastReport,"(1F11.4)")//" / "//num2str(SumAccRateSinceStart%acceptedRejected / real(self%Stats%NumFunCall%acceptedRejected,kind=RK),"(1F11.4)"), &
+                num2str(timeElapsedUntilLastReportInSeconds,"(1F11.4)")//" / "//num2str(estimatedTimeToFinishInSeconds,"(1F11.4)")
 #if defined MEXPRINT_ENABLED
                 call write(string=txt,advance=.false.)
 #else
