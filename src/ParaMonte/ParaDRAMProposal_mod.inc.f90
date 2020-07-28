@@ -247,14 +247,10 @@ contains
         mc_delayedRejectionCount            = SpecDRAM%DelayedRejectionCount%val
         mc_delayedRejectionRequested        = mc_DelayedRejectionCount > 0_IK
         mc_scalingRequested                 = SpecBase%TargetAcceptanceRate%scalingRequested
-
-        if (mc_scalingRequested) then
-            mc_TargetAcceptanceRateLimit    = SpecBase%TargetAcceptanceRate%Val
-            mc_targetAcceptanceRate         = sum(mc_TargetAcceptanceRateLimit) / 2._RK
-        else
-            mc_targetAcceptanceRate         = 1._RK !0.234_RK
-        end if
         mc_ndimInverse                      = 1._RK/real(ndim,kind=RK)
+        mc_TargetAcceptanceRateLimit        = SpecBase%TargetAcceptanceRate%Val
+        mc_targetAcceptanceRate             = 0.234_RK
+        if (mc_scalingRequested) mc_targetAcceptanceRate = sum(mc_TargetAcceptanceRateLimit) / 2._RK
        !mc_maxScaleFactorSq                 = 4._RK**mc_ndimInverse
        !mc_maxScaleFactor                   = sqrt(mc_maxScaleFactorSq)
 
