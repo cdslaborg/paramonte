@@ -967,7 +967,7 @@ contains
                                                             , "logSqrtDeterminant" & ! logSqrtDetOld
                                                             , mv_logSqrtDetOld_save &
                                                             , "adaptiveScaleFactorSquared" & ! adaptiveScaleFactorSq
-                                                            , mv_adaptiveScaleFactorSq_save &
+                                                            , mv_adaptiveScaleFactorSq_save * mc_defaultScaleFactorSq &
                                                             , "meanVec" & ! MeanOld(1:ndim)
                                                             , mv_MeanOld_save(1:mc_ndim) &
                                                             , "covMat" & ! CholDiagLower(1:ndim,0:ndim,0)

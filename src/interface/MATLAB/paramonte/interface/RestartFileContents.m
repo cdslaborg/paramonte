@@ -49,13 +49,13 @@ classdef RestartFileContents < OutputFileContents
     end
 
     properties(Hidden)
-        self.fieldNamesParaDRAM =   [ "meanAccRateSinceStart" ...
-                                    , "sampleSizeOld" ...
-                                    , "logSqrtDetOld" ...
-                                    , "adaptiveScaleFactorSq" ...
-                                    , "MeanOld" ...
-                                    , "CholDiagLower" ...
-                                    ];
+        %fieldNamesParaDRAM =   [ "meanAcceptanceRateSinceStart" ...
+        %                       , "sampleSize" ...
+        %                       , "logSqrtDeterminant" ...
+        %                       , "adaptiveScaleFactorSquared" ...
+        %                       , "meanVec" ...
+        %                       , "covMat" ...
+        %                       ];
         fileType = "restart";
         contents = [];
         lineList = [];
@@ -69,15 +69,13 @@ classdef RestartFileContents < OutputFileContents
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = RestartFileContents ( file ...
+        function self = RestartFileContents ( file ... % this must be a full file path
                                             , methodName ...
                                             , mpiEnabled ...
-                                            , markovChainRequested ...
                                             , Err ...
                                             )
 
             self = self@OutputFileContents(file,methodName,mpiEnabled,Err);
-            self.delimiter = delimiter;
             self.timer.tic();
 
             if strcmpi(self.methodName,"ParaDRAM")
@@ -153,12 +151,14 @@ classdef RestartFileContents < OutputFileContents
             self.contents = strrep(fileread(self.file),char(13),'');
             self.lineList = strsplit(self.contents,self.newline);
             self.lineListLen = length(self.lineList);
-            self.proposalUpdates.count = count(self.contents,"meanAccRateSinceStart");
+            self.proposalUpdates.count = count(self.contents,"meanAcceptanceRateSinceStart");
 
             % find ndim
 
+            prop="ndim"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+
             offset = 1;
-            while ~contains(self.lineList(offset),"MeanOld")
+            while ~contains(lower(self.lineList(offset)),"meanvec")
                 offset = offset + 1;
                 if offset>self.lineListLen; self.reportCorruptFile(); end
             end
@@ -175,129 +175,25 @@ classdef RestartFileContents < OutputFileContents
             self.proposalUpdates.meanAcceptanceRateSinceStart = zeros(self.proposalUpdates.count,1);
             self.proposalUpdates.sampleSize = zeros(self.proposalUpdates.count,1);
             self.proposalUpdates.logSqrtDeterminant = zeros(self.proposalUpdates.count,1);
-            self.proposalUpdates.meanvec = zeros(self.ndim,self.proposalUpdates.count);
-            self.proposalUpdates.covmat = zeros(self.ndim,self.ndim,self.proposalUpdates.count);
-            for i = 1:self.proposalUpdates.count
-                offset = 1; self.proposalUpdates.meanAcceptanceRateSinceStart = str2double( self.lineList(i+offset) );
-                offset = 3; self.proposalUpdates.sampleSize = str2double( self.lineList(i+offset) );
-                offset = 5; self.proposalUpdates.logSqrtDeterminant = str2double( self.lineList(i+offset) );
-            end
-
-            meanAccRateSinceStart
-            d = importdata  ( self.file ...
-                            ..., "delimiter", self.delimiter ...
-                            );
-            if isfield(d,"colheaders")
-                colheadersLen = length(d.colheaders);
-            else
-                self.Err.marginTop = 1;
-                self.Err.marginBot = 1;
-                self.Err.msg    = "The structure of the file """ + self.file + """ does not match a " + self.methodName + " " + self.fileType + " file. " ...
-                                + "Verify the contents of this file before attempting to read this file.";
-                self.Err.abort();
-            end
-            for icol = 1:colheadersLen
-                if strcmp(d.colheaders{icol},"SampleLogFunc")
-                    break
+            self.proposalUpdates.meanVec = zeros(self.ndim,self.proposalUpdates.count);
+            self.proposalUpdates.covMat = zeros(self.ndim,self.ndim,self.proposalUpdates.count);
+            skip = 10 + self.ndim * (self.ndim + 3) / 2;
+            for icount = 1:self.proposalUpdates.count
+                istart = (icount-1) * skip + 1;
+                offset = 1; self.proposalUpdates.meanAcceptanceRateSinceStart(icount) = str2double( self.lineList(istart+offset) );
+                offset = 3; self.proposalUpdates.sampleSize(icount) = str2double( self.lineList(istart+offset) );
+                offset = 5; self.proposalUpdates.logSqrtDeterminant(icount) = str2double( self.lineList(istart+offset) );
+                offset = 7; self.proposalUpdates.adaptiveScaleFactorSquared(icount) = str2double( self.lineList(istart+offset) );
+                offset = 9; self.proposalUpdates.meanVec(1:self.ndim,icount) = str2double( self.lineList(istart+offset:istart+offset+self.ndim-1) );
+                iend = istart + offset + self.ndim;
+                for i = 1:self.ndim
+                    istart = iend + 1;
+                    iend = iend + i;
+                    self.proposalUpdates.covMat(1:i,i,icount) = str2double( self.lineList(istart:iend) );
+                    self.proposalUpdates.covMat(i,1:i-1,icount) = self.proposalUpdates.covMat(1:i-1,i,icount);
                 end
             end
-            self.offset = icol + 1; % index of the first variable
-            prop="ndim"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            self.ndim   = colheadersLen - self.offset + 1;
-            prop="count"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            self.count  = length(d.data(:,1));
-
-            if markovChainRequested
-                cumSumWeight = cumsum(d.data(:,self.offset-2));
-                if cumSumWeight(end) > self.count % it is indeed a compact chain
-                    dMarkov = zeros( cumSumWeight(end) , self.ndim + self.offset - 1 );
-                    istart = 1;
-                    for irow = 1:self.count
-                        iend = cumSumWeight(irow);
-                        for i = istart:iend
-                            dMarkov(i,:) = d.data(irow,:);
-                        end
-                        istart = iend + 1;
-                    end
-                    d.data = dMarkov;
-                    self.count = cumSumWeight(end);
-                elseif cumSumWeight(end) < self.count % there is something wrong about this chain output file
-                    self.Err.marginTop = 1;
-                    self.Err.marginBot = 1;
-                    self.Err.msg    = "The internal contents of the file """ + self.file + """ does not match a " + self.methodName + " " + self.fileType + "file. " ...
-                                    + "In particular, the SampleWeight data column in this file appears to contain values that are either non-positive or non-integer.";
-                    self.Err.abort();
-                end
-            end
-
-            prop="df"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            self.df = array2table(d.data,'VariableNames',d.colheaders);
-
             self.updateUser([]);
-
-            if ~self.mpiEnabled
-                self.Err.marginTop = 0;
-                self.Err.marginBot = 1;
-                self.Err.msg = "ndim = " + string(self.ndim) + ", count = " + string(self.count);
-                self.Err.note();
-            end
-
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            %%%% statistics
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-            prop="stats"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-
-            self.stats = struct();
-
-            % add chain cormat
-
-            self.updateUser("computing the sample correlation matrix...");
-            self.stats.cormat = CorCovMat   ( self.df ...
-                                            , self.offset:self.offset+self.ndim-1 ...
-                                            , "pearson" ... method
-                                            , [] ... rows
-                                            , self.Err ...
-                                            );
-            self.updateUser([]);
-
-            % add chain covmat
-
-            self.updateUser("computing the sample covariance matrix...");
-            self.stats.covmat = CorCovMat   ( self.df ...
-                                            , self.offset:self.offset+self.ndim-1 ...
-                                            , [] ... method
-                                            , [] ... rows
-                                            , self.Err ...
-                                            );
-            self.updateUser([]);
-
-            % add chain autocorr
-
-            self.updateUser("computing the sample autocorrelation...");
-            self.stats.autocorr = AutoCorr_class( self.df ...
-                                                , self.offset-1:self.offset+self.ndim-1 ...
-                                                , [] ... rows
-                                                , self.Err ...
-                                                );
-            self.updateUser([]);
-
-            %self.stats.maxLogFunc = getMax(self.df,"SampleLogFunc");
-
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            %%%% graphics
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-            prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            self.plot = struct();
-
-            for plotType = ["line","line3","scatter","scatter3","lineScatter","lineScatter3","histogram","histogram2","histfit","contour","contourf","contour3","grid"]
-                %self.updateUser("generating " + plotType + " plot...");
-                self.resetPlot(plotType,"hard");
-                self.updateUser([]);
-            end
-            self.plot.reset = @self.resetPlot;
-            self.plot.helpme = @self.helpme;
 
         end
 
@@ -307,7 +203,7 @@ classdef RestartFileContents < OutputFileContents
             self.Err.marginTop = 1;
             self.Err.marginBot = 1;
             self.Err.msg    = "The structure of the file """ + self.file + """ does not match a " + self.methodName + " " + self.fileType + " file. " ...
-                            + "The contents of the file may have been compromised. Verify the contents of this file before attempting to read this file.";
+                            + "The contents of the file may have been compromised. Verify the integrity of the contents of this file before attempting to reread it.";
             self.Err.abort();
         end
 
@@ -546,3 +442,4 @@ classdef RestartFileContents < OutputFileContents
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end % classdef RestartFileContents < handle
+

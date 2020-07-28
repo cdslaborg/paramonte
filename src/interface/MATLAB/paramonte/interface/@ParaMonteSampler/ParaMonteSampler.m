@@ -183,6 +183,7 @@ classdef ParaMonteSampler < dynamicprops
         [chainList] = readChain(self,varargin)
         [sampleList] = readSample(self,varargin)
         [reportList] = readReport(self,varargin)
+        [restartList] = readRestart(self,varargin)
         runSampler(self,ndim,getLogFunc,varargin)
     end
 
