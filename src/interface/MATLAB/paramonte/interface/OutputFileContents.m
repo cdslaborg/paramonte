@@ -114,8 +114,14 @@ classdef OutputFileContents < dynamicprops
                     format = [repmat('\b',1,4), '\b%s'];
                     %format = [repmat('\b',1,msglen), '\b%s'];
                 end
-                if fraction>=1; clockCounter = 1; format = [format,'\n']; end
-                msg = [ chars(clockCounter), sprintf('%3.0f',100*fraction), '%' ];
+                if fraction<1
+                    clockTick = chars(clockCounter); 
+                else
+                    clockCounter = [];
+                    clockTick = chars(1);
+                    format = [format,'\n'];
+                end
+                msg = [ clockTick, sprintf('%3.0f',100*fraction), '%' ];
                 %msglen = length(msg);
                 fprintf(1,format, msg);
                 %if isempty(msg)

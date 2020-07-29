@@ -32,11 +32,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   LineScatterPlot(dataFrame, plotType)
+%   EllipsoidPlot(dataFrame)
 %
-%   This is the LineScatterPlot class for generating instances of
-%   line/scatter/lineScatter/line3/scatter3/lineScatter3/
-%   based on a wide variety of MATLAB's builtin functions.
+%   This is the EllipsoidPlot class for generating instances of
+%   ellipsoid-evolution plots via MATLAB's builtin function `plot()`.
+%   It generates a plot of 2D ellipsoids corresponding to the input 
+%   list of covariance (or correlation) matrices.
 %
 %   NOTE: This is a low-level ParaMonte class and is not meant
 %   NOTE: to be directly instantiated by the user.
@@ -46,47 +47,44 @@
 %
 %       dataFrame
 %
-%           a MATLAB data Table from which the selected data will be plotted.
-%           This is a low-level internal argument and is not meant
-%           to be accessed or be provided by the user.
+%           A MATLAB Table containing the covariance (or the correlation) 
+%           matrices that represent the characteristic covariance of ellipsoids.
+%           The covariance-matrix column of the input dataFrame must be a 3D matrix 
+%           of the size (nrows,ndim,ndim) where count is the number of dataFrame nrows.
 %
-%       plotType
-%
-%           a string representing the type of the plot to be made.
-%           This is a low-level internal argument and is not meant
-%           to be accessed or be provided by the user.
+%           NOTE: This is a low-level internal argument and is not meant
+%           NOTE: to be accessed or be provided by the user.
 %
 %   Attributes
 %   ----------
 %
-%       ycolumns
+%       dimensionPair
 %
-%           optional property that determines the columns of dataFrame to serve as
-%           the y-values. It can have multiple forms:
-%
-%               1.  a numeric or cell array of column indices in the input dataFrame.
-%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%               3.  a cell array of a mix of the above two.
-%               4.  a numeric range.
+%           A pair of indices (vector of length 2) whose value determine 
+%           the rows and columns from the covariance matrix which will be plotted.
 %
 %           Example usage:
 %
-%               1.  ycolumns = [7,8,9]
-%               2.  ycolumns = ["SampleLogFunc","SampleVariable1"]
-%               3.  ycolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%               4.  ycolumns = 7:9      # every column in the data frame starting from column #7 to #9
-%               5.  ycolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%               1.  dimensionPair = [1,2]
+%               2.  dimensionPair = [3,1]
 %
-%           WARNING: In all cases, ycolumns must have a length that is either 0, or 1, or equal
-%           WARNING: to the length of xcolumns. If the length is 1, then ycolumns will be
-%           WARNING: plotted against data corresponding to each element of ycolumns.
-%           WARNING: If it is an empty object having length 0, then the default value will be used.
+%           WARNING: In all cases, the indices must distinct from each other and 
+%           WARNING: <ndim where ndim is the rank of the covariance matrix.
+%           The default value is dimensionPair = [1,2].
 %
-%           The default value is the names of all columns of the input dataFrame.
+%       covMatColumn
 %
-%       zcolumns (available only in line3/scatter3/lineScatter3 objects)
+%           The name of the column of the input dataFrame that represents the 
+%           of the covariance matrices.
 %
-%           optional property that determines the columns of dataFrame to serve as
+%       centerColumn
+%
+%           The name of the column of the input dataFrame that represents the 
+%           corresponding center mean-vectors of the covariance matrices.
+%
+%       zcolumn (available only in 3D plotting objects)
+%
+%           Optional property that determines the column of dataFrame to serve as
 %           the z-values. It can have multiple forms:
 %
 %               1.  a numeric or cell array of column indices in the input dataFrame.
@@ -96,19 +94,22 @@
 %
 %           Example usage:
 %
-%               1.  zcolumns = [7,8,9]
-%               2.  zcolumns = ["SampleLogFunc","SampleVariable1"]
-%               3.  zcolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%               4.  zcolumns = 7:9      # every column in the data frame starting from column #7 to #9
-%               5.  zcolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%               1.  zcolumn = 2
+%               2.  zcolumn = "sampleSize"
 %
-%           WARNING: In all cases, zcolumns must have a length that is either 0, or 1, or equal
-%           WARNING: to the length of xcolumns. 
+%           WARNING: In all cases, zcolumn must have a length that is either 0, or 1
 %           WARNING: If it is an empty object having length 0, then the default value will be used.
 %
-%           The default value is the names of all columns of the input dataFrame.
+%           The default value is the index of the covariance matrices in the input data frame.
 %
-%       ccolumns (standing for color-columns)
+%       npoint
+%
+%           The number of points used to represent the ellipsoids. The higher the 
+%           value of npoint is, the higher-resolution the ellipsoids would look like.
+%
+%           The default value is 100.
+%
+%       ccolumn (standing for color-columns)
 %
 %           optional property that determines the columns of dataFrame to serve
 %           as the color-mapping-values for each line/point element in the plot.
@@ -121,16 +122,16 @@
 %
 %           Example usage:
 %
-%               1.  ccolumns = [7,8,9]
-%               2.  ccolumns = ["SampleLogFunc","SampleVariable1"]
-%               3.  ccolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%               4.  ccolumns = 7:9      # every column in the data frame starting from column #7 to #9
-%               5.  ccolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%               1.  ccolumn = [7,8,9]
+%               2.  ccolumn = ["SampleLogFunc","SampleVariable1"]
+%               3.  ccolumn = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  ccolumn = 7:9      # every column in the data frame starting from column #7 to #9
+%               5.  ccolumn = 7:2:20   # every other column in the data frame starting from column #7 to #20
 %
-%           WARNING: In all cases, ccolumns must have a length that is either 0, or 1, or equal
-%           WARNING: to the maximum lengths of (xcolumns,ycolumns,zcolumns). If the length is 1, then all data
+%           WARNING: In all cases, ccolumn must have a length that is either 0, or 1, or equal
+%           WARNING: to the maximum lengths of (covMatColumns,zcolumn). If the length is 1, then all data
 %           WARNING: will be plotted with the same color mapping determined by values specified by the elements
-%           WARNING: of ccolumns. If it is an empty object having length 0, then the default value will be used.
+%           WARNING: of ccolumn. If it is an empty object having length 0, then the default value will be used.
 %
 %           The default value is the indices of the rows of the input dataFrame.
 %
@@ -167,11 +168,11 @@
 %           WARNING: For example, colorbar_kws.color and colorbar_kws.Color are the same,
 %           WARNING: and only one of the two will be processed.
 %
-%       plot_kws (available only in line/lineScatter/line3/lineScatter3 objects)
+%       plot_kws (available only in line/line3 objects)
 %
 %           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
 %           are directly passed to the `plot()` function of MATLAB (or plot3() if plot is 3d).
-%           This property exists only if the object is instantiated as a line/lineScatter/line3/lineScatter3 object.
+%           This property exists only if the object is instantiated as a line/line3 object.
 %
 %           Example usage:
 %
@@ -184,46 +185,6 @@
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
 %           WARNING: For example, plot_kws.color and plot_kws.Color are the same,
-%           WARNING: and only one of the two will be processed.
-%
-%       surface_kws (available only in line/lineScatter/line3/lineScatter3 objects)
-%
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `surface()` function of MATLAB.
-%           This property exists only if the object is instantiated as a line/lineScatter/line3/lineScatter3 object.
-%           This property is used only if the line plot is colored via colormap.
-%
-%           Example usage:
-%
-%               surface_kws.enabled = true; % add surface()
-%               surface_kws.linewidth = 2;
-%
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to surface_kws.
-%
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, surface_kws.linewidth and surface_kws.Linewidth are the same,
-%           WARNING: and only one of the two will be processed.
-%
-%       scatter_kws (available only in scatter/lineScatter/scatter3/lineScatter3 objects)
-%
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `scatter()` function of MATLAB.
-%           This property exists only if the object is instantiated as a scatter/lineScatter/scatter3/lineScatter3 object.
-%
-%           Example usage:
-%
-%               scatter_kws.enabled = true; % add scatter()
-%               scatter_kws.marker = ".";
-%               scatter_kws.size = 10;
-%
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to scatter_kws.
-%
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, scatter_kws.marker and scatter_kws.Marker are the same,
 %           WARNING: and only one of the two will be processed.
 %
 %       target
@@ -239,20 +200,24 @@
 %   Returns
 %   -------
 %
-%       an object of LineScatterPlot class
+%       an object of EllipsoidPlot class
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-classdef LineScatterPlot < BasePlot
+classdef EllipsoidPlot < BasePlot
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties (Access = public)
 
-        ccolumns
+        dimensionPair
+        covMatColumn
+        centerColumn
+        ccolumn
         colorbar_kws
         colormap
         target
+        npoint
 
     end
 
@@ -263,6 +228,7 @@ classdef LineScatterPlot < BasePlot
         plotType
         isLinePlot = false;
         isScatterPlot = false;
+        surface_kws = []; % dummy variable
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -274,18 +240,16 @@ classdef LineScatterPlot < BasePlot
         function reset(self)
 
             reset@BasePlot(self);
-            prop="xcolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            prop="ycolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            self.xcolumns = {};
-            self.ycolumns = {};
-            self.ccolumns = {};
+            self.dimensionPair = {};
+            self.ccolumn = {};
             self.colormap = [];
+            self.npoint = [];
 
             self.isLinePlot = false;
             if contains(self.plotType,"line")
                 self.isLinePlot = true;
                 prop="plot_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                prop="surface_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                %prop="surface_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             end
             self.isScatterPlot = false;
             if contains(self.plotType,"scatter")
@@ -293,7 +257,7 @@ classdef LineScatterPlot < BasePlot
                 prop="scatter_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             end
             if contains(self.plotType,"3")
-                prop="zcolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="zcolumn"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
                 self.is3d = true;
             else
                 self.is3d = false;
@@ -353,7 +317,7 @@ classdef LineScatterPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = LineScatterPlot(varargin) % expected input arguments: dataFrame, plotType
+        function self = EllipsoidPlot(varargin) % expected input arguments: dataFrame, plotType
 
             self = self@BasePlot(varargin{1});
             self.plotType = lower(string(varargin{2}));
@@ -430,8 +394,6 @@ classdef LineScatterPlot < BasePlot
             %   Example
             %   -------
             %
-            %       plot("ycolumns",[8])
-            %       plot("ycolumns",7:10)
             %       plot( "gcf_kws", {"enabled",true,"color","none"} )
             %
 
@@ -449,22 +411,24 @@ classdef LineScatterPlot < BasePlot
                 % activate at least one plot in the figure
                 if ~(self.plot_kws.enabled || self.surface_kws.enabled)
                     warning ( newline ...
-                            + "Both line surface() and plot() plot types have been disabled by the user. There is nothing to display. " ...
+                            ...+ "Both line surface() and plot() plot types have been disabled by the user. There is nothing to display. " ...
+                            + "The line plot() type has been disabled by the user. There is nothing to display. " ...
                             + "To add at least one plot, set at least one the following components of the line-plot, " + newline  + newline  ...
                             + "To add at least one plot, set at least one the following components of the line-plot, " + newline  + newline  ...
                             + "    self.plot_kws.enabled = true; % to generate single color monochromatic line plots" + newline ...
-                            + "    self.surface_kws.enabled = true; % to generate colorful, color-mapped line plots" + newline  + newline  ...
+                            ...+ "    self.surface_kws.enabled = true; % to generate colorful, color-mapped line plots" + newline  + newline  ...
                             + "You can also pass these arguments at the time of calling the plot() method:" + newline  + newline  ...
                             + "    self.plot(""plot_kws"",{""enabled"",true}); % to generate single color monochromatic line plots" + newline ...
-                            + "    self.plot(""surface_kws"",{""enabled"",true}); % to generate single color monochromatic line plots"+ newline ...
+                            ...+ "    self.plot(""surface_kws"",{""enabled"",true}); % to generate single color monochromatic line plots"+ newline ...
                             + newline ...
                             );
                 end
             end
 
             cEnabledScatterPlot = self.isScatterPlot && self.scatter_kws.enabled && ~isfield(self.scatter_kws,"cdata");
-            cEnabled = ( self.isLinePlot && self.surface_kws.enabled ) || cEnabledScatterPlot;
-            lgEnabled = self.legend_kws.enabled && ~cEnabled;
+            %cEnabled = ( self.isLinePlot && self.surface_kws.enabled ) || cEnabledScatterPlot;
+            cEnabled = ( self.isLinePlot || self.surface_kws.enabled ) || cEnabledScatterPlot;
+            lgEnabled = self.legend_kws.enabled %&& ~cEnabled;
 
             if self.isScatterPlot && self.scatter_kws.enabled
                 key = "marker"; val = ".";
@@ -493,6 +457,10 @@ classdef LineScatterPlot < BasePlot
                 %end
             end
 
+            if isempty(self.npoint)
+                self.npoint = 100;
+            end
+
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -516,37 +484,36 @@ classdef LineScatterPlot < BasePlot
             else
                 rowindex = 1:1:length(self.dfref{:,1});
             end
-            %ndata = length(rowindex);
+            ncov = length(rowindex);
 
             % check columns presence
 
-            if getVecLen(self.xcolumns)
-                [xcolnames, xcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.xcolumns);
+            if getVecLen(self.covMatColumn)
+                [mcolnames, mcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.covMatColumn); % m stands for (covariance) matrix.
             else
-                xcolindex = [];
-                xcolnames = "Count";
-                xdata = rowindex;
+                error   ( newline ...
+                        + "The column of the covariance matrices in the input dataFrame must be specified. " ...
+                        + "No plots were made." ...
+                        + newline ...
+                        );
             end
 
-            [ycolnames, ycolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ycolumns);
-
-            if self.is3d && getVecLen(self.zcolumns)
-                [zcolnames, zcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.zcolumns);
+            if getVecLen(self.centerColumn)
+                [vcolnames, vcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.centerColumn); % v stands for (the mean) vector.
             else
-                zcolindex = [];
-                zcolnames = "Count";
-                zdata = rowindex;
+                vcolnames = [];
+                vcolindex = [];
             end
 
             % set color data
 
             if cEnabled
-                if getVecLen(self.ccolumns)
-                    [ccolnames, ccolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ccolumns);
+                if getVecLen(self.ccolumn)
+                    [ccolnames, ccolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ccolumn);
                 else
                     ccolindex = [];
                     ccolnames = "Count";
-                    cdata = 1:1:length(self.dfref{rowindex,1});
+                    cdata = 1:1:ncov;
                 end
             else
                 ccolindex = [];
@@ -554,38 +521,46 @@ classdef LineScatterPlot < BasePlot
                 cdata = [];
             end
 
+            if self.is3d && getVecLen(self.zcolumn)
+                [zcolnames, zcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.zcolumn);
+            else
+                zcolindex = [];
+                zcolnames = "Count";
+                zdata = rowindex;
+            end
+
             % check the lengths are consistent
 
-            xcolindexlen = length(xcolindex);
-            ycolindexlen = length(ycolindex);
+            mcolindexlen = length(mcolindex);
+            vcolindexlen = length(vcolindex);
             zcolindexlen = length(zcolindex);
             ccolindexlen = length(ccolindex);
-            maxLenColumns = max (   [ xcolindexlen ...
-                                    , ycolindexlen ...
+            maxLenColumns = max (   [ mcolindexlen ...
+                                    , vcolindexlen ...
                                     , zcolindexlen ...
                                     , ccolindexlen ...
                                     ] ...
                                 );
 
-            if xcolindexlen~=maxLenColumns && xcolindexlen>1; error("length of xcolumns must be either 1 or equal to the maximum of the lengths of ycolumns, zcolumns, ccolumns."); end
-            if ycolindexlen~=maxLenColumns && ycolindexlen>1; error("length of ycolumns must be either 1 or equal to the maximum of the lengths of xcolumns, zcolumns, ccolumns."); end
-            if zcolindexlen~=maxLenColumns && zcolindexlen>1; error("length of zcolumns must be either 1 or equal to the maximum of the lengths of xcolumns, ycolumns, ccolumns."); end
-            if ccolindexlen~=maxLenColumns && ccolindexlen>1; error("length of ccolumns must be either 1 or equal to the maximum of the lengths of xcolumns, ycolumns, zcolumns."); end
+            if mcolindexlen~=maxLenColumns && mcolindexlen>1; error("length of mcolumns must be either 1 or equal to the maximum of the lengths of vcolumns, zcolumn, ccolumn."); end
+            if vcolindexlen~=maxLenColumns && vcolindexlen>1; error("length of vcolumns must be either 1 or equal to the maximum of the lengths of mcolumns, zcolumn, ccolumn."); end
+            if zcolindexlen~=maxLenColumns && zcolindexlen>1; error("length of zcolumn must be either 1 or equal to the maximum of the lengths of mcolumns, vcolumns, ccolumn."); end
+            if ccolindexlen~=maxLenColumns && ccolindexlen>1; error("length of ccolumn must be either 1 or equal to the maximum of the lengths of mcolumns, vcolumns, zcolumn."); end
 
             % assign data in case of single column assignments
 
-            if xcolindexlen==1
-                xdata = self.dfref{rowindex,xcolindex};
-            end
-            if ycolindexlen==1
-                ydata = self.dfref{rowindex,ycolindex};
-            end
-            if zcolindexlen==1
-                zdata = self.dfref{rowindex,zcolindex};
-            end
-            if ccolindexlen==1
-                cdata = self.dfref{rowindex,ccolindex};
-            end
+            %if mcolindexlen==1
+            %    xdata = self.dfref{rowindex,mcolindex};
+            %end
+            %if vcolindexlen==1
+            %    ydata = self.dfref{rowindex,vcolindex};
+            %end
+            %if zcolindexlen==1
+            %    zdata = self.dfref{rowindex,zcolindex};
+            %end
+            %if ccolindexlen==1
+            %    cdata = self.dfref{rowindex,ccolindex};
+            %end
 
             %%%%%%%%%%%%%%%%%%%%%%%
             % get keyword arguments
@@ -594,12 +569,12 @@ classdef LineScatterPlot < BasePlot
             if self.isLinePlot
                 plot_kws_cell = convertStruct2Cell(self.plot_kws,{"enabled","singleOptions"});
             end
-            if self.isScatterPlot
-                scatter_kws_cell = convertStruct2Cell(self.scatter_kws,{"enabled","singleOptions","cdata","size"});
-            end
-            if self.isLinePlot
-                surface_kws_cell = convertStruct2Cell(self.surface_kws,{"enabled","singleOptions","color","size"});
-            end
+            %if self.isScatterPlot
+            %    scatter_kws_cell = convertStruct2Cell(self.scatter_kws,{"enabled","singleOptions","cdata","size"});
+            %end
+            %if self.isLinePlot
+            %    surface_kws_cell = convertStruct2Cell(self.surface_kws,{"enabled","singleOptions","color","size"});
+            %end
 
             %%%%%%%%%%%%%%%%%%%%%%%
             % add line/scatter plot
@@ -631,48 +606,55 @@ classdef LineScatterPlot < BasePlot
                 end
 
                 if ~self.is3d
-                    zdata = zeros(length(rowindex(:)),1);
+                    zdata = zeros(ncov,1);
                 end
 
-                for icol = 1:maxLenColumns
+                for icov = 1:ncov
 
-                    if xcolindexlen>1
-                        xdata = self.dfref{rowindex,xcolindex(icol)};
-                    end
-                    if ycolindexlen>1
-                        ydata = self.dfref{rowindex,ycolindex(icol)};
-                    end
-                    if zcolindexlen>1
-                        zdata = self.dfref{rowindex,zcolindex(icol)};
-                    end
-                    if ccolindexlen>1
-                        cdata = self.dfref{rowindex,ccolindex(icol)};
-                    end
-                    if lgEnabled && ~self.is3d
-                        if xcolindexlen<2 && ycolindexlen>=1
-                            lglabels = [ lglabels , ycolnames(icol) ];
-                        elseif xcolindexlen>1 && ycolindexlen<2
-                            lglabels = [ lglabels , xcolnames(icol) ];
-                        else
-                            lglabels = [ lglabels , xcolnames(icol)+"-"+ycolnames(icol) ];
-                        end
-                    end
+                    %if mcolindexlen>1
+                    %    xdata = self.dfref{rowindex,mcolindex(icov)};
+                    %end
+                    %if vcolindexlen>1
+                    %    ydata = self.dfref{rowindex,vcolindex(icov)};
+                    %end
+                    %if zcolindexlen>1
+                    %    zdata = self.dfref{rowindex,zcolindex(icov)};
+                    %end
+                    %if ccolindexlen>1
+                    %    cdata = self.dfref{rowindex,ccolindex(icov)};
+                    %end
+                    %if lgEnabled && ~self.is3d
+                    %    if mcolindexlen<2 && vcolindexlen>=1
+                    %        lglabels = [ lglabels , vcolnames(icov) ];
+                    %    elseif mcolindexlen>1 && vcolindexlen<2
+                    %        lglabels = [ lglabels , mcolnames(icov) ];
+                    %    else
+                    %        lglabels = [ lglabels , mcolnames(icov)+"-"+vcolnames(icov) ];
+                    %    end
+                    %end
 
-                    if isMultiColorScatterPlot
-                        currentScatterMarkerColor = scatterMultiColorList(icol,:);
-                    end
+                    %if isMultiColorScatterPlot
+                    %    currentScatterMarkerColor = scatterMultiColorList(icov,:);
+                    %end
 
                     % add plot
+
+                    bcrd = makeEllipsoid( meanVec ...
+                                        , covMat ...
+                                        , npoint ...
+                                        );
 
                     if self.isLinePlot
                         if self.plot_kws.enabled
                             if self.is3d
-                                self.currentFig.plot3 = plot3   ( xdata ...
-                                                                , ydata ...
-                                                                , zdata ...
-                                                                , plot_kws_cell{:} ...
-                                                                );
+                                error("plot3 not implemented")
+                                %self.currentFig.plot3 = plot3   ( xdata ...
+                                %                                , ydata ...
+                                %                                , zdata ...
+                                %                                , plot_kws_cell{:} ...
+                                %                                );
                             else
+                                
                                 self.currentFig.plot = plot ( xdata ...
                                                             , ydata ...
                                                             , plot_kws_cell{:} ...
@@ -680,69 +662,69 @@ classdef LineScatterPlot < BasePlot
                             end
                             hold on;
                         end
-                        if self.surface_kws.enabled && getVecLen(self.colormap)
-                            self.currentFig.surface = surface   ( "XData",[xdata(:) xdata(:)] ...
-                                                                , "YData",[ydata(:) ydata(:)] ...
-                                                                , "ZData",[zdata(:) zdata(:)] ...
-                                                                , "CData",[cdata(:) cdata(:)] ...
-                                                                , surface_kws_cell{:} ...
-                                                                );
-                            if self.is3d; view(3); end
-                            hold on;
-                        end
+                        %if self.surface_kws.enabled && getVecLen(self.colormap)
+                        %    self.currentFig.surface = surface   ( "XData",[xdata(:) xdata(:)] ...
+                        %                                        , "YData",[ydata(:) ydata(:)] ...
+                        %                                        , "ZData",[zdata(:) zdata(:)] ...
+                        %                                        , "CData",[cdata(:) cdata(:)] ...
+                        %                                        , surface_kws_cell{:} ...
+                        %                                        );
+                        %    if self.is3d; view(3); end
+                        %    hold on;
+                        %end
                     end
 
-                    if self.isScatterPlot && self.scatter_kws.enabled
-                        if cEnabled
-                            if self.is3d
-                                self.currentFig.scatter3 = scatter3 ( xdata ...
-                                                                    , ydata ...
-                                                                    , zdata ...
-                                                                    , self.scatter_kws.size ...
-                                                                    , cdata ...
-                                                                    , scatter_kws_cell{:} ...
-                                                                    );
-                            else
-                                self.currentFig.scatter = scatter   ( xdata ...
-                                                                    , ydata ...
-                                                                    , self.scatter_kws.size ...
-                                                                    , cdata ...
-                                                                    , scatter_kws_cell{:} ...
-                                                                    );
-                            end
-                        else
-                            if self.is3d
-                                %plot_kws = {};
-                                %if ~isa(self.plot_kws,"cell"); plot_kws = self.plot_kws;
-                                self.currentFig.scatter3 = scatter3 ( xdata ...
-                                                                    , ydata ...
-                                                                    , zdata ...
-                                                                    , self.scatter_kws.size ...
-                                                                    , currentScatterMarkerColor ...
-                                                                    , scatter_kws_cell{:} ...
-                                                                    );
-                               %self.currentFig.plot = plot3( xdata ...
-                               %                            , ydata ...
-                               %                            , zdata ...
-                               %                            , scatter_kws_cell{:} ...
-                               %                            );
-                            else
-                                %plot_kws = {};
-                                %if ~isa(self.plot_kws,"cell"); plot_kws = self.plot_kws;
-                                self.currentFig.scatter = scatter   ( xdata ...
-                                                                    , ydata ...
-                                                                    , self.scatter_kws.size ...
-                                                                    , currentScatterMarkerColor ...
-                                                                    , scatter_kws_cell{:} ...
-                                                                    );
-                               %self.currentFig.plot = plot ( xdata ...
-                               %                            , ydata ...
-                               %                            , scatter_kws_cell{:} ...
-                               %                            );
-                            end
-                        end
-                        hold on;
-                    end
+                    %if self.isScatterPlot && self.scatter_kws.enabled
+                    %    if cEnabled
+                    %        if self.is3d
+                    %            self.currentFig.scatter3 = scatter3 ( xdata ...
+                    %                                                , ydata ...
+                    %                                                , zdata ...
+                    %                                                , self.scatter_kws.size ...
+                    %                                                , cdata ...
+                    %                                                , scatter_kws_cell{:} ...
+                    %                                                );
+                    %        else
+                    %            self.currentFig.scatter = scatter   ( xdata ...
+                    %                                                , ydata ...
+                    %                                                , self.scatter_kws.size ...
+                    %                                                , cdata ...
+                    %                                                , scatter_kws_cell{:} ...
+                    %                                                );
+                    %        end
+                    %    else
+                    %        if self.is3d
+                    %            %plot_kws = {};
+                    %            %if ~isa(self.plot_kws,"cell"); plot_kws = self.plot_kws;
+                    %            self.currentFig.scatter3 = scatter3 ( xdata ...
+                    %                                                , ydata ...
+                    %                                                , zdata ...
+                    %                                                , self.scatter_kws.size ...
+                    %                                                , currentScatterMarkerColor ...
+                    %                                                , scatter_kws_cell{:} ...
+                    %                                                );
+                    %           %self.currentFig.plot = plot3( xdata ...
+                    %           %                            , ydata ...
+                    %           %                            , zdata ...
+                    %           %                            , scatter_kws_cell{:} ...
+                    %           %                            );
+                    %        else
+                    %            %plot_kws = {};
+                    %            %if ~isa(self.plot_kws,"cell"); plot_kws = self.plot_kws;
+                    %            self.currentFig.scatter = scatter   ( xdata ...
+                    %                                                , ydata ...
+                    %                                                , self.scatter_kws.size ...
+                    %                                                , currentScatterMarkerColor ...
+                    %                                                , scatter_kws_cell{:} ...
+                    %                                                );
+                    %           %self.currentFig.plot = plot ( xdata ...
+                    %           %                            , ydata ...
+                    %           %                            , scatter_kws_cell{:} ...
+                    %           %                            );
+                    %        end
+                    %    end
+                    %    hold on;
+                    %end
 
                 end % loop plot
 
@@ -755,16 +737,16 @@ classdef LineScatterPlot < BasePlot
 
             % add axis labels
 
-            if xcolindexlen>1
+            if mcolindexlen>1
                 self.currentFig.xlabel = xlabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.xlabel = xlabel(xcolnames(1), "Interpreter", "none");
+                self.currentFig.xlabel = xlabel(mcolnames(1), "Interpreter", "none");
             end
 
-            if ycolindexlen>1
+            if vcolindexlen>1
                 self.currentFig.ylabel = ylabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.ylabel = ylabel(ycolnames(1), "Interpreter", "none");
+                self.currentFig.ylabel = ylabel(vcolnames(1), "Interpreter", "none");
             end
 
             if self.is3d
@@ -799,8 +781,22 @@ classdef LineScatterPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        function bcrd = makeEllipsoid(meanVec, covMat, npoint) % returns the coordinates of the boundary of the ellipsoid
+            if isempty(npoint); npoint = 50; end
+            independentVariable = linspace(0, 2*pi, npoint)';
+            xval = cos(independentVariable);
+            yval = sin(independentVariable);
+            ap = [xval(:) yval(:)]';
+            [eigenVectors,eigenValues] = eig(covMat);
+            eigenValues = sqrt(eigenValues); % convert variance to std
+            bcrd = transpose(eigenVectors * eigenValues * ap + repmat(meanVec(:), 1, size(ap,2)));
+            %h = plot(bcrd(:,1), bcrd(:,2), '-');
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     end % methods
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end % classdef LineScatterPlot
+end % classdef EllipsoidPlot

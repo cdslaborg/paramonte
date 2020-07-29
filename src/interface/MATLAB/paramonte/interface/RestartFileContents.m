@@ -53,10 +53,12 @@ classdef RestartFileContents < OutputFileContents
                         , "adaptiveScaleFactorSquared" ...
                         , "meanVec" ...
                         , "covMat" ...
+                        , "corMat" ...
                         ];
         plotTypeList =  [ "line" ...
                         , "scatter" ...
                         , "lineScatter" ...
+                        , "ellipsoid" ...
                         ..., "line3" ...
                         ..., "scatter3" ...
                         ..., "lineScatter3" ...
@@ -195,6 +197,7 @@ classdef RestartFileContents < OutputFileContents
             proposalUpdates.(self.pdFieldNames(4)) = zeros(self.count,1);
             proposalUpdates.(self.pdFieldNames(5)) = zeros(self.count,self.ndim);
             proposalUpdates.(self.pdFieldNames(6)) = zeros(self.count,self.ndim,self.ndim);
+            proposalUpdates.(self.pdFieldNames(7)) = zeros(self.count,self.ndim,self.ndim);
             skip = 10 + self.ndim * (self.ndim + 3) / 2;
             for icount = 1:self.count
                 if mod(icount,10)==0; self.updateProgess(icount/self.count); end
@@ -205,12 +208,13 @@ classdef RestartFileContents < OutputFileContents
                 rowOffset = 7; proposalUpdates.(self.pdFieldNames(4))(icount) = str2double( self.lineList(istart+rowOffset) );
                 rowOffset = 9; proposalUpdates.(self.pdFieldNames(5))(icount,1:self.ndim) = str2double( self.lineList(istart+rowOffset:istart+rowOffset+self.ndim-1) );
                 iend = istart + rowOffset + self.ndim;
-                for i = 1:self.ndim
+                for i = 1:self.ndim % covmat
                     istart = iend + 1;
                     iend = iend + i;
                     proposalUpdates.(self.pdFieldNames(6))(icount,1:i,i) = str2double( self.lineList(istart:iend) );
                     proposalUpdates.(self.pdFieldNames(6))(icount,i,1:i-1) = proposalUpdates.(self.pdFieldNames(6))(icount,1:i-1,i);
                 end
+                proposalUpdates.(self.pdFieldNames(7))(icount,:,:) = corrcov(squeeze(proposalUpdates.(self.pdFieldNames(6))(icount,:,:)));
             end
             self.updateProgess(1);
             self.df = table ( proposalUpdates.(self.pdFieldNames(1)) ...
@@ -219,6 +223,7 @@ classdef RestartFileContents < OutputFileContents
                             , proposalUpdates.(self.pdFieldNames(4)) ...
                             , proposalUpdates.(self.pdFieldNames(5)) ...
                             , proposalUpdates.(self.pdFieldNames(6)) ...
+                            , proposalUpdates.(self.pdFieldNames(7)) ...
                             );
             self.df.Properties.VariableNames = self.pdFieldNames;
 
@@ -477,12 +482,36 @@ classdef RestartFileContents < OutputFileContents
                 if isGrid
                     %self.plot.(requestedPlotTypeLower).columns = string(self.df.Properties.VariableNames(self.offset:end));
                     if resetTypeIsHard
-                        endIndx = min(lenVariableNames,self.offset+4);
-                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset-1:endIndx));
+                        endIndex = min(lenVariableNames,self.offset+4);
+                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset-1:endIndex));
                     else
                         self.plot.(requestedPlotTypeLower).reset();
                     end
                     self.plot.(requestedPlotTypeLower).ccolumn = string(self.df.Properties.VariableNames(self.offset-1));
+                end
+
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                % ellipsoid
+
+                if strcmp(requestedPlotTypeLower,"ellipsoid") || strcmp(requestedPlotTypeLower,"ellipsoid3")
+                    plotName = "line"; if is3d; plotName = plotName + "3"; end
+                    plotType = strrep(plotName,"line","ellipsoid");
+                    if resetTypeIsHard
+                        self.plot.(plotType) = EllipsoidPlot( self.df, plotName );
+                    else
+                        self.plot.(plotType).reset();
+                    end
+                    self.plot.(plotType).covMatColumn = self.df.Properties.VariableNames(end);
+                    self.plot.(plotType).centerColumn = self.df.Properties.VariableNames(end-1);
+                    self.plot.(plotType).ccolumn = "sampleSize";
+                    self.plot.(plotType).gca_kws.xscale = "linear";
+                    self.plot.(plotType).gca_kws.yscale = "linear";
+                    %self.plot.(plotType).gca_kws.zscale = "log";
+                    self.plot.(plotType).plot_kws.enabled = false;
+                    self.plot.(plotType).plot_kws.linewidth = 1;
+                    %self.plot.(plotType).surface_kws.enabled = true;
+                    %self.plot.(plotType).surface_kws.linewidth = 1;
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

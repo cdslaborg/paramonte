@@ -32,7 +32,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   HeatmapPlot(dataFrame, plotType)
+%   HeatmapPlot(dataFrame)
 %
 %   This is the HeatmapPlot class for generating instances of
 %   heatmap plots, built upon MATLAB's builtin function `heatmap()`.
