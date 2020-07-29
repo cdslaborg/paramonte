@@ -42,6 +42,7 @@ classdef Err_class < handle
     properties
         msg
         prefix
+        advance
         wrapSplit
         wrapWidth
         marginTop
@@ -68,6 +69,7 @@ classdef Err_class < handle
 
         function self = Err_class()
             self.resetEnabled = true;
+            self.advance = true;
             self.reset();
         end
 
@@ -131,6 +133,7 @@ classdef Err_class < handle
         function informUser(self)
 
             Decoration  = Decoration_class([],[],[],[]);
+            Decoration.advance = self.advance;
 
             List = Decoration.getListOfLines(self.msg, self.newLine);
 

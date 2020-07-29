@@ -41,26 +41,39 @@
 classdef RestartFileContents < OutputFileContents
 
     properties(Access = public)
-        proposalUpdates = struct();
-        %count = [];
-        %stats = [];
+        count = [];
         ndim = [];
-        %df = [];
+        df = [];
     end
 
     properties(Hidden)
-        %fieldNamesParaDRAM =   [ "meanAcceptanceRateSinceStart" ...
-        %                       , "sampleSize" ...
-        %                       , "logSqrtDeterminant" ...
-        %                       , "adaptiveScaleFactorSquared" ...
-        %                       , "meanVec" ...
-        %                       , "covMat" ...
-        %                       ];
+        pdFieldNames =  [ "meanAcceptanceRateSinceStart" ...
+                        , "sampleSize" ...
+                        , "logSqrtDeterminant" ...
+                        , "adaptiveScaleFactorSquared" ...
+                        , "meanVec" ...
+                        , "covMat" ...
+                        ];
+        plotTypeList =  [ "line" ...
+                        , "scatter" ...
+                        , "lineScatter" ...
+                        ..., "line3" ...
+                        ..., "scatter3" ...
+                        ..., "lineScatter3" ...
+                        ..., "histogram" ...
+                        ..., "histogram2" ...
+                        ..., "histfit" ...
+                        ..., "contour" ...
+                        ..., "contourf" ...
+                        ..., "contour3" ...
+                        ..., "grid" ...
+                        ];
         fileType = "restart";
         contents = [];
         lineList = [];
         lineListLen = [];
         newline = char(10);
+        offset = 1;
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,49 +164,79 @@ classdef RestartFileContents < OutputFileContents
             self.contents = strrep(fileread(self.file),char(13),'');
             self.lineList = strsplit(self.contents,self.newline);
             self.lineListLen = length(self.lineList);
-            self.proposalUpdates.count = count(self.contents,"meanAcceptanceRateSinceStart");
+
+            % find count of updates
+
+            prop="count"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            self.count = count(self.contents,self.pdFieldNames(1));
 
             % find ndim
 
             prop="ndim"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
 
-            offset = 1;
-            while ~contains(lower(self.lineList(offset)),"meanvec")
-                offset = offset + 1;
-                if offset>self.lineListLen; self.reportCorruptFile(); end
+            rowOffset = 1;
+            while ~contains(lower(self.lineList(rowOffset)),"meanvec")
+                rowOffset = rowOffset + 1;
+                if rowOffset>self.lineListLen; self.reportCorruptFile(); end
             end
-            offset = offset + 1; % the first numeric value
+            rowOffset = rowOffset + 1; % the first numeric value
 
             self.ndim = 0;
-            while isNumericString(self.lineList(offset+self.ndim))
+            while isNumericString(self.lineList(rowOffset+self.ndim))
                 self.ndim = self.ndim + 1;
             end
             if self.ndim==0; self.reportCorruptFile(); end
 
             % parse the restart file contents
 
-            self.proposalUpdates.meanAcceptanceRateSinceStart = zeros(self.proposalUpdates.count,1);
-            self.proposalUpdates.sampleSize = zeros(self.proposalUpdates.count,1);
-            self.proposalUpdates.logSqrtDeterminant = zeros(self.proposalUpdates.count,1);
-            self.proposalUpdates.meanVec = zeros(self.ndim,self.proposalUpdates.count);
-            self.proposalUpdates.covMat = zeros(self.ndim,self.ndim,self.proposalUpdates.count);
+            proposalUpdates.(self.pdFieldNames(1)) = zeros(self.count,1);
+            proposalUpdates.(self.pdFieldNames(2)) = zeros(self.count,1);
+            proposalUpdates.(self.pdFieldNames(3)) = zeros(self.count,1);
+            proposalUpdates.(self.pdFieldNames(4)) = zeros(self.count,1);
+            proposalUpdates.(self.pdFieldNames(5)) = zeros(self.count,self.ndim);
+            proposalUpdates.(self.pdFieldNames(6)) = zeros(self.count,self.ndim,self.ndim);
             skip = 10 + self.ndim * (self.ndim + 3) / 2;
-            for icount = 1:self.proposalUpdates.count
+            for icount = 1:self.count
+                if mod(icount,10)==0; self.updateProgess(icount/self.count); end
                 istart = (icount-1) * skip + 1;
-                offset = 1; self.proposalUpdates.meanAcceptanceRateSinceStart(icount) = str2double( self.lineList(istart+offset) );
-                offset = 3; self.proposalUpdates.sampleSize(icount) = str2double( self.lineList(istart+offset) );
-                offset = 5; self.proposalUpdates.logSqrtDeterminant(icount) = str2double( self.lineList(istart+offset) );
-                offset = 7; self.proposalUpdates.adaptiveScaleFactorSquared(icount) = str2double( self.lineList(istart+offset) );
-                offset = 9; self.proposalUpdates.meanVec(1:self.ndim,icount) = str2double( self.lineList(istart+offset:istart+offset+self.ndim-1) );
-                iend = istart + offset + self.ndim;
+                rowOffset = 1; proposalUpdates.(self.pdFieldNames(1))(icount) = str2double( self.lineList(istart+rowOffset) );
+                rowOffset = 3; proposalUpdates.(self.pdFieldNames(2))(icount) = str2double( self.lineList(istart+rowOffset) );
+                rowOffset = 5; proposalUpdates.(self.pdFieldNames(3))(icount) = str2double( self.lineList(istart+rowOffset) );
+                rowOffset = 7; proposalUpdates.(self.pdFieldNames(4))(icount) = str2double( self.lineList(istart+rowOffset) );
+                rowOffset = 9; proposalUpdates.(self.pdFieldNames(5))(icount,1:self.ndim) = str2double( self.lineList(istart+rowOffset:istart+rowOffset+self.ndim-1) );
+                iend = istart + rowOffset + self.ndim;
                 for i = 1:self.ndim
                     istart = iend + 1;
                     iend = iend + i;
-                    self.proposalUpdates.covMat(1:i,i,icount) = str2double( self.lineList(istart:iend) );
-                    self.proposalUpdates.covMat(i,1:i-1,icount) = self.proposalUpdates.covMat(1:i-1,i,icount);
+                    proposalUpdates.(self.pdFieldNames(6))(icount,1:i,i) = str2double( self.lineList(istart:iend) );
+                    proposalUpdates.(self.pdFieldNames(6))(icount,i,1:i-1) = proposalUpdates.(self.pdFieldNames(6))(icount,1:i-1,i);
                 end
             end
+            self.updateProgess(1);
+            self.df = table ( proposalUpdates.(self.pdFieldNames(1)) ...
+                            , proposalUpdates.(self.pdFieldNames(2)) ...
+                            , proposalUpdates.(self.pdFieldNames(3)) ...
+                            , proposalUpdates.(self.pdFieldNames(4)) ...
+                            , proposalUpdates.(self.pdFieldNames(5)) ...
+                            , proposalUpdates.(self.pdFieldNames(6)) ...
+                            );
+            self.df.Properties.VariableNames = self.pdFieldNames;
+
             self.updateUser([]);
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% graphics
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            self.plot = struct();
+
+            for plotType =  self.plotTypeList
+                self.resetPlot(plotType,"hard");
+                self.updateUser([]);
+            end
+            self.plot.reset = @self.resetPlot;
+            self.plot.helpme = @self.helpme;
 
         end
 
@@ -244,15 +287,28 @@ classdef RestartFileContents < OutputFileContents
             %
             resetTypeIsHard = false;
             requestedPlotTypeList = [];
-            plotTypeList = ["line","scatter","lineScatter","line3","scatter3","lineScatter3","histogram","histogram2","histfit","contour","contourf","contour3","grid"];
+            %plotTypeList =  [ "line" ...
+            %                , "scatter" ...
+            %                , "lineScatter" ...
+            %                , "line3" ...
+            %                , "scatter3" ...
+            %                , "lineScatter3" ...
+            %                , "histogram" ...
+            %                , "histogram2" ...
+            %                , "histfit" ...
+            %                , "contour" ...
+            %                , "contourf" ...
+            %                , "contour3" ...
+            %                , "grid" ...
+            %                ];
             lenVariableNames = length(self.df.Properties.VariableNames);
 
             if nargin==1
-                requestedPlotTypeList = plotTypeList;
+                requestedPlotTypeList = self.plotTypeList;
             else
                 argOne = string(varargin{1});
                 if length(argOne)==1 && strcmpi(argOne,"hard")
-                    requestedPlotTypeList = plotTypeList;
+                    requestedPlotTypeList = self.plotTypeList;
                     resetTypeIsHard = true;
                 else
                     for requestedPlotTypeCell = varargin{1}
@@ -262,7 +318,7 @@ classdef RestartFileContents < OutputFileContents
                             requestedPlotType = string(requestedPlotTypeCell);
                         end
                         plotTypeNotFound = true;
-                        for plotTypeCell = plotTypeList
+                        for plotTypeCell = self.plotTypeList
                             plotType = string(plotTypeCell{1});
                             if strcmp(plotType,requestedPlotType)
                                 requestedPlotTypeList = [ requestedPlotTypeList , plotType ];
@@ -322,7 +378,7 @@ classdef RestartFileContents < OutputFileContents
                         self.plot.(plotName).reset();
                     end
                     self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
-                    self.plot.(plotName).ccolumns = "SampleLogFunc";
+                    self.plot.(plotName).ccolumns = "sampleSize";
                     self.plot.(plotName).gca_kws.xscale = "linear";
                     self.plot.(plotName).plot_kws.enabled = false;
                     self.plot.(plotName).plot_kws.linewidth = 1;
@@ -339,7 +395,7 @@ classdef RestartFileContents < OutputFileContents
                     else
                         self.plot.(plotName).reset();
                     end
-                    self.plot.(plotName).ccolumns = "SampleLogFunc";
+                    self.plot.(plotName).ccolumns = "sampleSize";
                     self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
                     self.plot.(plotName).gca_kws.xscale = "linear";
                     self.plot.(plotName).scatter_kws.size = 10;
@@ -355,7 +411,7 @@ classdef RestartFileContents < OutputFileContents
                         self.plot.(plotName).reset();
                     end
                     self.plot.(plotName).surface_kws.enabled = false;
-                    self.plot.(plotName).ccolumns = "SampleLogFunc";
+                    self.plot.(plotName).ccolumns = "sampleSize";
                     self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
                     self.plot.(plotName).gca_kws.xscale = "linear";
                     if is3d
@@ -377,7 +433,7 @@ classdef RestartFileContents < OutputFileContents
                         self.plot.(plotName).xcolumns = self.df.Properties.VariableNames(self.offset);
                         self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset+1);
                     end
-                    self.plot.(plotName).zcolumns = "SampleLogFunc";
+                    self.plot.(plotName).zcolumns = "sampleSize";
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

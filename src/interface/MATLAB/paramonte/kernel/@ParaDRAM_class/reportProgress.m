@@ -58,7 +58,7 @@ function reportProgress(self)
 
     else
 
-        Record.value    = fgets(self.TimeFile.unit);
+        Record.value = fgets(self.TimeFile.unit);
         if Record.value ~= -1
             Record.Parts    = split(strtrim(Record.value), self.SpecBase.outputDelimiter.val);
             self.Proposal.Global.numFunCallAcceptedRejectedLastReport   = str2num(Record.Parts{1});

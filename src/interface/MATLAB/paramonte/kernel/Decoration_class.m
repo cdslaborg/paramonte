@@ -47,6 +47,7 @@ classdef Decoration_class < handle
         tab                         = []
         text                        = []
         symbol                      = []
+        advance                     = []
         ListOfLines                 = {}
     end
 
@@ -61,6 +62,7 @@ classdef Decoration_class < handle
         function self = Decoration_class(tabStr, symbol, text, ListOfLines)
             if isempty(tabStr), self.tab = self.TAB;        else, self.tab = tabStr;    end
             if isempty(symbol), self.symbol = self.STAR;    else, self.symbol = symbol; end
+            self.advance = true;
             self.text = text;
             self.ListOfLines = ListOfLines;
         end
@@ -203,7 +205,7 @@ classdef Decoration_class < handle
     %*******************************************************************************************************************************
 
         function write(self, outputUnit, marginTop, marginBot, count, string)
-
+            if self.advance; stringFormat = "%s\n"; else stringFormat = "%s"; end
             if ~isempty(outputUnit), logFileUnit = outputUnit; else, logFileUnit = 1; end
             %-----------------------------------------------------------------------------------------------------------------------
             if ~isempty(marginTop)
@@ -220,7 +222,7 @@ classdef Decoration_class < handle
             %-----------------------------------------------------------------------------------------------------------------------
             if ~isempty(string)
                 for i = 1 : thisManyTimes
-                    fprintf(logFileUnit, "%s\n", string);
+                    fprintf(logFileUnit, stringFormat, string);
                 end
             elseif ~(~isempty(marginBot) && ~isempty(marginTop))
                 for i = 1 : thisManyTimes
