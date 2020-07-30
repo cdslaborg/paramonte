@@ -58,7 +58,10 @@ classdef RestartFileContents < OutputFileContents
         plotTypeList =  [ "line" ...
                         , "scatter" ...
                         , "lineScatter" ...
-                        , "ellipsoid" ...
+                        , "covmat2" ...
+                        , "covmat3" ...
+                        , "cormat2" ...
+                        , "cormat3" ...
                         ..., "line3" ...
                         ..., "scatter3" ...
                         ..., "lineScatter3" ...
@@ -494,24 +497,39 @@ classdef RestartFileContents < OutputFileContents
 
                 % ellipsoid
 
-                if strcmp(requestedPlotTypeLower,"ellipsoid") || strcmp(requestedPlotTypeLower,"ellipsoid3")
+                if strcmp(requestedPlotTypeLower,"covmat2") || strcmp(requestedPlotTypeLower,"covmat3")
                     plotName = "line"; if is3d; plotName = plotName + "3"; end
-                    plotType = strrep(plotName,"line","ellipsoid");
+                    plotType = requestedPlotTypeLower; % strrep(plotName,"line","covmat");
                     if resetTypeIsHard
                         self.plot.(plotType) = EllipsoidPlot( self.df, plotName );
                     else
                         self.plot.(plotType).reset();
                     end
+                    self.plot.(plotType).rows = getLogIntSpace  ( 1.01 ... base
+                                                                , 1 ... lowerLim
+                                                                , self.count ... upperLim
+                                                                , 1 ... skip
+                                                                );
                     self.plot.(plotType).covMatColumn = self.df.Properties.VariableNames(end);
-                    self.plot.(plotType).centerColumn = self.df.Properties.VariableNames(end-1);
+                    self.plot.(plotType).centerColumn = self.df.Properties.VariableNames(end-2);
                     self.plot.(plotType).ccolumn = "sampleSize";
                     self.plot.(plotType).gca_kws.xscale = "linear";
                     self.plot.(plotType).gca_kws.yscale = "linear";
                     %self.plot.(plotType).gca_kws.zscale = "log";
-                    self.plot.(plotType).plot_kws.enabled = false;
                     self.plot.(plotType).plot_kws.linewidth = 1;
-                    %self.plot.(plotType).surface_kws.enabled = true;
-                    %self.plot.(plotType).surface_kws.linewidth = 1;
+                end
+
+                % 3d
+
+                if is3d
+                    %if self.ndim==1
+                    %    self.plot.(plotName).covMatColumn = {};
+                    %    self.plot.(plotName).centerColumn = self.df.Properties.VariableNames(self.offset);
+                    %else
+                    %    self.plot.(plotName).covMatColumn = self.df.Properties.VariableNames(self.offset);
+                    %    self.plot.(plotName).centerColumn = self.df.Properties.VariableNames(self.offset+1);
+                    %end
+                    self.plot.(plotName).zcolumns = "sampleSize";
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
