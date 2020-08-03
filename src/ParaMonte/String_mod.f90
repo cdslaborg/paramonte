@@ -127,7 +127,7 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    function splitStr(string,delimiter,nPart)
+    function splitStr(string,delimiter,nPart) result(Parts)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: splitStr
 #endif
@@ -136,7 +136,7 @@ contains
         character(len=*)    , intent(in)            :: string, delimiter
         integer(IK)         , intent(out), optional :: nPart
         character(len=:)    , allocatable           :: dummyStr
-        type(CharVec_type)  , allocatable           :: splitStr(:)
+        type(CharVec_type)  , allocatable           :: Parts(:)
         integer(IK)                                 :: maxNumSplit
         integer(IK)                                 :: stringLen, delimLen, splitCounter, currentPos
 
@@ -145,25 +145,25 @@ contains
         stringLen = len(dummyStr)
 
         if (delimLen==0) then
-            allocate(splitStr(1))
-            splitStr(1)%record = string
+            allocate(Parts(1))
+            Parts(1)%record = string
             return
         end if
 
         maxNumSplit = 1 + stringLen / delimLen
-        allocate(splitStr(maxNumSplit))
+        allocate(Parts(maxNumSplit))
         splitCounter = 1
         loopParseString: do
             if (stringLen<delimLen) then
-                splitStr(splitCounter)%record = dummyStr
+                Parts(splitCounter)%record = dummyStr
                 exit loopParseString
             elseif (stringLen==delimLen) then
                 ! Note that in Fortran: 'amir '=='amir' = .true.
                 ! https://software.intel.com/en-us/forums/intel-visual-fortran-compiler-for-windows/topic/275823)
                 if (dummyStr==delimiter) then
-                    splitStr(splitCounter)%record = ""
+                    Parts(splitCounter)%record = ""
                 else
-                    splitStr(splitCounter)%record = dummyStr
+                    Parts(splitCounter)%record = dummyStr
                 end if
                 exit loopParseString
             elseif (dummyStr(1:delimLen)==delimiter) then
@@ -174,7 +174,7 @@ contains
                 currentPos = 2
                 loopSearchString: do
                     if (dummyStr(currentPos:currentPos+delimLen-1)==delimiter) then
-                        splitStr(splitCounter)%record = dummyStr(1:currentPos-1)
+                        Parts(splitCounter)%record = dummyStr(1:currentPos-1)
                         if (currentPos+delimLen>stringLen) then
                             exit loopParseString
                         else
@@ -186,7 +186,7 @@ contains
                     else
                         currentPos = currentPos + 1
                         if (stringLen<currentPos+delimLen-1) then
-                            splitStr(splitCounter)%record = dummyStr
+                            Parts(splitCounter)%record = dummyStr
                             exit loopParseString
                         end if
                         cycle loopSearchString
@@ -194,7 +194,7 @@ contains
                 end do loopSearchString
             end if
         end do loopParseString
-        splitStr = splitStr(1:splitCounter)
+        Parts = Parts(1:splitCounter)
         if (present(nPart)) nPart = splitCounter
 
     end function splitStr

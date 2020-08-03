@@ -241,7 +241,7 @@ classdef EllipsoidPlot < BasePlot
         function reset(self)
 
             reset@BasePlot(self);
-            self.dimensionPair = {};
+            self.dimensionPair = [];
             self.ccolumn = {};
             self.colormap = struct();
             self.colormap.enabled = true;
@@ -384,6 +384,18 @@ classdef EllipsoidPlot < BasePlot
             %%%% set what to plot
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+            dimPairLen = length(self.dimensionPair);
+            if ~isnumeric(self.dimensionPair) || (dimPairLen~=0 && dimPairLen~=2)
+                error   ( newline ...
+                        + "dimensionPair must be a vector of length 2, representing the indices of the rows and the columns " ...
+                        + "of the covariance/correlation matrix that will be used to form a 2-dimensional " ...
+                        + "sub-covariance/correlation matrix. Example: dimensionPair = [1,2]" ...
+                        + newline ...
+                        );
+            elseif dimPairLen==0
+                self.dimensionPair = [1,2];
+            end
+
             if self.isLinePlot
                 % activate at least one plot in the figure
                 if ~self.plot_kws.enabled
@@ -447,8 +459,8 @@ classdef EllipsoidPlot < BasePlot
             % check columns presence
 
             if getVecLen(self.covMatColumn)
-                [mcolnames, mcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.covMatColumn); % m stands for (covariance) matrix.
-                self.ndim = length(squeeze(self.dfref{1,mcolindex}));
+                [covcolname, covcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.covMatColumn); % m stands for (covariance) matrix.
+                self.ndim = length(squeeze(self.dfref{1,covcolindex}));
             else
                 error   ( newline ...
                         + "The column of the covariance matrices in the input dataFrame must be specified. " ...
@@ -458,10 +470,10 @@ classdef EllipsoidPlot < BasePlot
             end
 
             if getVecLen(self.centerColumn)
-                [vcolnames, vcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.centerColumn); % v stands for (the mean) vector.
+                [avgcolnames, avgcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.centerColumn); % v stands for (the mean) vector.
             else
-                vcolnames = [];
-                vcolindex = [];
+                avgcolnames = [];
+                avgcolindex = [];
             end
 
             % set color data
@@ -490,30 +502,30 @@ classdef EllipsoidPlot < BasePlot
 
             % check the lengths are consistent
 
-            mcolindexlen = length(mcolindex);
-            vcolindexlen = length(vcolindex);
             zcolindexlen = length(zcolindex);
             ccolindexlen = length(ccolindex);
-            maxLenColumns = max (   [ mcolindexlen ...
-                                    , vcolindexlen ...
+            covcolindexlen = length(covcolindex);
+            avgcolindexlen = length(avgcolindex);
+            maxcolindexlen = max (  [ covcolindexlen ...
+                                    , avgcolindexlen ...
                                     , zcolindexlen ...
                                     , ccolindexlen ...
                                     ] ...
                                 );
 
-            if mcolindexlen~=maxLenColumns && mcolindexlen>1; error("length of mcolumns must be either 1 or equal to the maximum of the lengths of vcolumns, zcolumn, ccolumn."); end
-            if vcolindexlen~=maxLenColumns && vcolindexlen>1; error("length of vcolumns must be either 1 or equal to the maximum of the lengths of mcolumns, zcolumn, ccolumn."); end
-            if zcolindexlen~=maxLenColumns && zcolindexlen>1; error("length of zcolumn must be either 1 or equal to the maximum of the lengths of mcolumns, vcolumns, ccolumn."); end
-            if ccolindexlen~=maxLenColumns && ccolindexlen>1; error("length of ccolumn must be either 1 or equal to the maximum of the lengths of mcolumns, vcolumns, zcolumn."); end
+            if covcolindexlen~=maxcolindexlen && covcolindexlen>1; error("length of mcolumns must be either 1 or equal to the maximum of the lengths of vcolumns, zcolumn, ccolumn."); end
+            if avgcolindexlen~=maxcolindexlen && avgcolindexlen>1; error("length of vcolumns must be either 1 or equal to the maximum of the lengths of mcolumns, zcolumn, ccolumn."); end
+            if zcolindexlen~=maxcolindexlen && zcolindexlen>1; error("length of zcolumn must be either 1 or equal to the maximum of the lengths of mcolumns, vcolumns, ccolumn."); end
+            if ccolindexlen~=maxcolindexlen && ccolindexlen>1; error("length of ccolumn must be either 1 or equal to the maximum of the lengths of mcolumns, vcolumns, zcolumn."); end
 
             % assign data in case of single column assignments
 
             %mdata = [];
-            %if mcolindexlen==1
-            %    mdata = self.dfref{rowindex,mcolindex}(:,:);
+            %if covcolindexlen==1
+            %    mdata = self.dfref{rowindex,covcolindex}(:,:);
             %end
-            %if vcolindexlen==1
-            %    vdata = self.dfref{rowindex,vcolindex};
+            %if avgcolindexlen==1
+            %    vdata = self.dfref{rowindex,avgcolindex};
             %end
             %if zcolindexlen==1
             %    zdata = self.dfref{rowindex,zcolindex};
@@ -574,14 +586,14 @@ classdef EllipsoidPlot < BasePlot
                     colorKeyVal = {"color",self.plot_kws.color};
                 end
 
-                meanVec = zeros(self.ndim,1);
+                meanVec = zeros(dimPairLen,1);
                 for irow = 1:rowindexLen
 
-                    %if mcolindexlen>1
-                    %    mdata = self.dfref{rowindex,mcolindex(irow)};
+                    %if covcolindexlen>1
+                    %    mdata = self.dfref{rowindex,covcolindex(irow)};
                     %end
-                    %if vcolindexlen>1
-                    %    vdata = self.dfref{rowindex,vcolindex(irow)};
+                    %if avgcolindexlen>1
+                    %    vdata = self.dfref{rowindex,avgcolindex(irow)};
                     %end
                     %if zcolindexlen>1
                     %    zdata = self.dfref{rowindex,zcolindex(irow)};
@@ -590,12 +602,12 @@ classdef EllipsoidPlot < BasePlot
                     %    cdata = self.dfref{rowindex,ccolindex(irow)};
                     %end
                     %if self.legend_kws.enabled && ~self.is3d
-                    %    if mcolindexlen<2 && vcolindexlen>=1
-                    %        lglabels = [ lglabels , vcolnames(irow) ];
-                    %    elseif mcolindexlen>1 && vcolindexlen<2
-                    %        lglabels = [ lglabels , mcolnames(irow) ];
+                    %    if covcolindexlen<2 && avgcolindexlen>=1
+                    %        lglabels = [ lglabels , avgcolnames(irow) ];
+                    %    elseif covcolindexlen>1 && avgcolindexlen<2
+                    %        lglabels = [ lglabels , covcolname(irow) ];
                     %    else
-                    %        lglabels = [ lglabels , mcolnames(irow)+"-"+vcolnames(irow) ];
+                    %        lglabels = [ lglabels , covcolname(irow)+"-"+avgcolnames(irow) ];
                     %    end
                     %end
 
@@ -608,8 +620,13 @@ classdef EllipsoidPlot < BasePlot
                     if self.colormap.enabled
                         colorKeyVal = {"color",cmap(irow,:)};
                     end
-                    covMat = squeeze(self.dfref{rowindex(irow),mcolindex});
-                    if vcolindexlen>0; meanVec = squeeze(self.dfref{rowindex(irow),vcolindex}); end
+                    covMat = squeeze(self.dfref{rowindex(irow),covcolindex});
+                    covMat = covMat(self.dimensionPair,self.dimensionPair);
+                    if avgcolindexlen>0
+                        meanVec = squeeze(self.dfref{rowindex(irow),avgcolindex});
+                        meanVec = meanVec(self.dimensionPair);
+                    end
+
                     bcrd = self.makeEllipsoid   ( covMat ...
                                                 , meanVec ...
                                                 , self.npoint ...
@@ -708,16 +725,16 @@ classdef EllipsoidPlot < BasePlot
 
             % add axis labels
 
-            if mcolindexlen>1
+            if covcolindexlen>1
                 self.currentFig.xlabel = xlabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.xlabel = xlabel(mcolnames(1), "Interpreter", "none");
+                self.currentFig.xlabel = xlabel(covcolname(1), "Interpreter", "none");
             end
 
-            if vcolindexlen>1
+            if avgcolindexlen>1
                 self.currentFig.ylabel = ylabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.ylabel = ylabel(vcolnames(1), "Interpreter", "none");
+                self.currentFig.ylabel = ylabel(avgcolnames(1), "Interpreter", "none");
             end
 
             if self.is3d
@@ -771,7 +788,7 @@ classdef EllipsoidPlot < BasePlot
             ap = [xval(:) yval(:)]';
             [eigenVectors,eigenValues] = eig(covMat);
             eigenValues = sqrt(eigenValues); % convert variance to std
-            bcrd = transpose(eigenVectors * eigenValues * ap + repmat(meanVec(:), 1, size(ap,2)));
+            bcrd = transpose( eigenVectors * eigenValues * ap + repmat(meanVec(:), 1, size(ap,2)) );
             %h = plot(bcrd(:,1), bcrd(:,2), '-');
         end
 
