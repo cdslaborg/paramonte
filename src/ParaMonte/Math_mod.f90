@@ -446,7 +446,7 @@ contains
         implicit none
         integer(IK) , intent(in)    :: nd
         real(RK)    , parameter     :: LOG_PI = log(PI)
-        integer(IK)                 :: i, k, ndHalfInteger
+        integer(IK)                 :: ndHalfInteger
         real(RK)                    :: logVolUnitBall
         real(RK)                    :: ndHalfReal
         if (mod(nd,2_IK)==0_IK) then ! nd is even
