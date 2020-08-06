@@ -911,7 +911,8 @@ contains
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
             mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim &
-                                                                            , CholeskyLower = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,istage) &
+                                                                            !, CholeskyLower = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,istage) & ! this causes an array temporary to be created.
+                                                                            , CholeskyLower = comv_CholDiagLower(:,:,istage) &
                                                                             , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) &
                                                                             )
             mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))

@@ -618,7 +618,7 @@ contains
 
     ! returns an ordered matrix of the input matrix, by rearranging the columns corresponding to ColIndx to into the corresponding
     ! columns in ColIndxMap, while keeping the rest of the matrix structure intact.
-    ! such that it remains positive-definite.
+    ! such that if it is positive-definite, it remains positive-definite.
     ! Since input matrix is symmetric, only the upper triangle of the input matrix will be used,
     ! and only the upper triangle of the output matrix will be computed.
     ! example:
@@ -695,8 +695,8 @@ contains
     ! then, the Regression Coefficient Matrix given S22 is: S12 * S22^(-1), whose rank is rankS11 by rankS22.
     ! The Schur complement of S22 is: SchurComplement = S11 - S12 * S22^(-1) * S21, whose rank is rankS11 by rankS11.
     ! For clarity, note that the rank of rankS11 + rankS22 = rankPDM.
-    !pure subroutine getRegresCoef(rankPDM,rankS11,rankS22,PosDefMat,RegresCoefMat,SchurComplement)
-    subroutine getRegresCoef(rankPDM,rankS11,rankS22,PosDefMat,RegresCoefMat,SchurComplement)
+    pure subroutine getRegresCoef(rankPDM,rankS11,rankS22,PosDefMat,RegresCoefMat,SchurComplement)
+    !subroutine getRegresCoef(rankPDM,rankS11,rankS22,PosDefMat,RegresCoefMat,SchurComplement)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRegresCoef
 #endif
@@ -719,9 +719,7 @@ contains
             RegresCoefMat(1,1) = -1._RK
             return
         end if
-
         RegresCoefMat = matmul( PosDefMat(1:rankS11,startS22:rankPDM) , InvS22 )
-
         if (present(SchurComplement)) then
             SchurComplement = PosDefMat(1:rankS11,1:rankS11) - matmul( RegresCoefMat , PosDefMat(startS22:rankPDM,1:rankS11) )
         end if
