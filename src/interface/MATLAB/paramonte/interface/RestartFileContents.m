@@ -371,10 +371,9 @@ classdef RestartFileContents < OutputFileContents
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                is3d = false;
-                if contains(requestedPlotTypeLower,"3") && ( contains(requestedPlotTypeLower,"scatter") || contains(requestedPlotTypeLower,"line"))
-                    is3d = true;
-                end
+                isLineOrScatterPlot = contains(requestedPlotTypeLower,"scatter") || contains(requestedPlotTypeLower,"line");
+                isEllipsoidPlot = contains(requestedPlotTypeLower,"covmat") || contains(requestedPlotTypeLower,"cormat");
+                is3d = contains(requestedPlotTypeLower,"3") && ( isLineOrScatterPlot || isEllipsoidPlot );
 
                 % line
 
@@ -433,7 +432,7 @@ classdef RestartFileContents < OutputFileContents
 
                 % 3d
 
-                if is3d
+                if isLineOrScatterPlot && is3d
                     if self.ndim==1
                         self.plot.(plotName).xcolumns = {};
                         self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);
@@ -497,39 +496,50 @@ classdef RestartFileContents < OutputFileContents
 
                 % ellipsoid
 
-                if strcmp(requestedPlotTypeLower,"covmat2") || strcmp(requestedPlotTypeLower,"covmat3")
-                    plotName = "line"; if is3d; plotName = plotName + "3"; end
-                    plotType = requestedPlotTypeLower; % strrep(plotName,"line","covmat");
+                isCorMatPlot = strcmp(requestedPlotTypeLower,"cormat2") || strcmp(requestedPlotTypeLower,"cormat3");
+                isCovMatPlot = strcmp(requestedPlotTypeLower,"covmat2") || strcmp(requestedPlotTypeLower,"covmat3");
+                if isCorMatPlot || isCovMatPlot
+                    plotType = "line"; if is3d; plotType = plotType + "3"; end
+                    plotName = requestedPlotTypeLower;
                     if resetTypeIsHard
-                        self.plot.(plotType) = EllipsoidPlot( self.df, plotName );
+                        self.plot.(plotName) = EllipsoidPlot( self.df, plotType );
                     else
-                        self.plot.(plotType).reset();
+                        self.plot.(plotName).reset();
                     end
-                    self.plot.(plotType).rows = getLogIntSpace  ( 1.01 ... base
+                    self.plot.(plotName).rows = getLogIntSpace  ( 1.01 ... base
                                                                 , 1 ... lowerLim
                                                                 , self.count ... upperLim
                                                                 , 1 ... skip
                                                                 );
-                    self.plot.(plotType).covMatColumn = self.df.Properties.VariableNames(end);
-                    self.plot.(plotType).centerColumn = self.df.Properties.VariableNames(end-2);
-                    self.plot.(plotType).ccolumn = "sampleSize";
-                    self.plot.(plotType).gca_kws.xscale = "linear";
-                    self.plot.(plotType).gca_kws.yscale = "linear";
-                    %self.plot.(plotType).gca_kws.zscale = "log";
-                    self.plot.(plotType).plot_kws.linewidth = 1;
+                    if isCorMatPlot
+                        self.plot.(plotName).matrixColumn = self.df.Properties.VariableNames(end);
+                    elseif isCovMatPlot
+                        self.plot.(plotName).matrixColumn = self.df.Properties.VariableNames(end-1);
+                    end
+                    self.plot.(plotName).centerColumn = self.df.Properties.VariableNames(end-2);
+                    self.plot.(plotName).ccolumn = "sampleSize";
+                    self.plot.(plotName).gca_kws.xscale = "linear";
+                    self.plot.(plotName).gca_kws.yscale = "linear";
+                    self.plot.(plotName).plot_kws.linewidth = 1;
+                    matrixType = "covariance"; if isCorMatPlot; matrixType = "correlation"; end
+                    self.plot.(plotName).title.enabled = true;
+                    self.plot.(plotName).title.content = "Evolution of the " + matrixType + " matrices of the proposal distribution"
+                    self.plot.(plotName).title.fontsize = 11;
+                    self.plot.(plotName).title.interpreter = "tex";
                 end
 
                 % 3d
 
-                if is3d
+                if isEllipsoidPlot && is3d
                     %if self.ndim==1
-                    %    self.plot.(plotName).covMatColumn = {};
+                    %    self.plot.(plotName).matrixColumn = {};
                     %    self.plot.(plotName).centerColumn = self.df.Properties.VariableNames(self.offset);
                     %else
-                    %    self.plot.(plotName).covMatColumn = self.df.Properties.VariableNames(self.offset);
+                    %    self.plot.(plotName).matrixColumn = self.df.Properties.VariableNames(self.offset);
                     %    self.plot.(plotName).centerColumn = self.df.Properties.VariableNames(self.offset+1);
                     %end
-                    self.plot.(plotName).zcolumns = "sampleSize";
+                    %self.plot.(plotName).zcolumn = "sampleSize";
+                    self.plot.(plotName).gca_kws.zscale = "log";
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

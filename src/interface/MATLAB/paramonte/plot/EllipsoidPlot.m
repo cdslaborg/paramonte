@@ -37,7 +37,7 @@
 %   This is the EllipsoidPlot class for generating instances of
 %   ellipsoid-evolution plots via MATLAB's builtin function `plot()`.
 %   It generates a plot of 2D ellipsoids corresponding to the input 
-%   list of covariance (or correlation) matrices.
+%   list of covariance/correlation matrices.
 %
 %   NOTE: This is a low-level ParaMonte class and is not meant
 %   NOTE: to be directly instantiated by the user.
@@ -47,10 +47,10 @@
 %
 %       dataFrame
 %
-%           A MATLAB Table containing the covariance (or the correlation) 
-%           matrices that represent the characteristic covariance of ellipsoids.
-%           The covariance-matrix column of the input dataFrame must be a 3D matrix 
-%           of the size (nrows,ndim,ndim) where count is the number of dataFrame nrows.
+%           A MATLAB Table containing the covariance/correlation matrices 
+%           that represent the characteristic covariance/correlation of ellipsoids. 
+%           The covariance/correlation-matrix column of the input dataFrame must be a 3D 
+%           matrix of the size (nrows,ndim,ndim) where count is the number of dataFrame nrows.
 %
 %           NOTE: This is a low-level internal argument and is not meant
 %           NOTE: to be accessed or be provided by the user.
@@ -60,8 +60,8 @@
 %
 %       dimensionPair
 %
-%           A pair of indices (vector of length 2) whose value determine 
-%           the rows and columns from the covariance matrix which will be plotted.
+%           A pair of indices (vector of length 2) whose value determine the rows 
+%           and columns from the covariance/correlation matrix which will be plotted.
 %
 %           Example usage:
 %
@@ -69,18 +69,18 @@
 %               2.  dimensionPair = [3,1]
 %
 %           WARNING: In all cases, the indices must distinct from each other and 
-%           WARNING: <ndim where ndim is the rank of the covariance matrix.
+%           WARNING: <ndim where ndim is the rank of the covariance/correlation matrix.
 %           The default value is dimensionPair = [1,2].
 %
-%       covMatColumn
+%       matrixColumn
 %
 %           The name of the column of the input dataFrame that represents the 
-%           of the covariance matrices.
+%           of the covariance/correlation or correlation matrices of the ellipsoids.
 %
 %       centerColumn
 %
 %           The name of the column of the input dataFrame that represents the 
-%           corresponding center mean-vectors of the covariance matrices.
+%           corresponding center mean-vectors of the covariance/correlation matrices.
 %
 %       zcolumn (available only in 3D plotting objects)
 %
@@ -100,7 +100,7 @@
 %           WARNING: In all cases, zcolumn must have a length that is either 0, or 1
 %           WARNING: If it is an empty object having length 0, then the default value will be used.
 %
-%           The default value is the index of the covariance matrices in the input data frame.
+%           The default value is the index of the covariance/correlation matrices in the input data frame.
 %
 %       npoint
 %
@@ -129,7 +129,7 @@
 %               5.  ccolumn = 7:2:20   # every other column in the data frame starting from column #7 to #20
 %
 %           WARNING: In all cases, ccolumn must have a length that is either 0, or 1, or equal
-%           WARNING: to the maximum lengths of (covMatColumns,zcolumn). If the length is 1, then all data
+%           WARNING: to the maximum lengths of (matrixColumns,zcolumn). If the length is 1, then all data
 %           WARNING: will be plotted with the same color mapping determined by values specified by the elements
 %           WARNING: of ccolumn. If it is an empty object having length 0, then the default value will be used.
 %
@@ -211,21 +211,22 @@ classdef EllipsoidPlot < BasePlot
     properties (Access = public)
 
         dimensionPair
-        covMatColumn
+        matrixColumn
         centerColumn
-        ccolumn
         colorbar_kws
         colormap
+        ccolumn
         target
         npoint
-
+        title
     end
 
-    properties (Access = protected, Hidden)
+    properties (Hidden) % , Access = protected
         %dfref = [];
         %isdryrun = [];
         ndim
         is3d
+        zdata
         plotType
         isLinePlot = false;
         isScatterPlot = false;
@@ -238,6 +239,12 @@ classdef EllipsoidPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        %function resetHard(self)
+        %    
+        %end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         function reset(self)
 
             reset@BasePlot(self);
@@ -247,6 +254,12 @@ classdef EllipsoidPlot < BasePlot
             self.colormap.enabled = true;
             self.colormap.values = [];
             self.npoint = [];
+
+            self.title = struct();
+            self.title.enabled = false;
+            self.title.content = [];
+            self.title.fontsize = 11;
+            self.title.interpreter = "tex";
 
             self.isLinePlot = false;
             if contains(self.plotType,"line")
@@ -294,10 +307,9 @@ classdef EllipsoidPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = EllipsoidPlot(varargin) % expected input arguments: dataFrame, plotType
-
-            self = self@BasePlot(varargin{1});
-            self.plotType = lower(string(varargin{2}));
+        function self = EllipsoidPlot(dataFrame, plotType) % expected input arguments: dataFrame, plotType
+            self = self@BasePlot(dataFrame);
+            self.plotType = lower(string(plotType));
             self.reset()
         end
 
@@ -431,6 +443,17 @@ classdef EllipsoidPlot < BasePlot
                 self.npoint = 100;
             end
 
+            % set title properties
+
+            if self.title.enabled
+                if ~(isstring(self.title.content) || ischar(self.title.content))
+                    error   ( "The title component of an EllipsoidPlot object must be a string or character vector. " ...
+                            + "You have entered " ...
+                            + string(self.title) ...
+                            );
+                end
+            end
+
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -447,6 +470,10 @@ classdef EllipsoidPlot < BasePlot
                 hold on;
             end
 
+            % make 3d plot view, if requested
+
+            if self.is3d; view(3); end
+
             % check rows presence
 
             if getVecLen(self.rows)
@@ -458,12 +485,12 @@ classdef EllipsoidPlot < BasePlot
 
             % check columns presence
 
-            if getVecLen(self.covMatColumn)
-                [covcolname, covcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.covMatColumn); % m stands for (covariance) matrix.
+            if getVecLen(self.matrixColumn)
+                [covcolname, covcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.matrixColumn); % m stands for (covariance/correlation) matrix.
                 self.ndim = length(squeeze(self.dfref{1,covcolindex}));
             else
                 error   ( newline ...
-                        + "The column of the covariance matrices in the input dataFrame must be specified. " ...
+                        + "The column of the covariance/correlation matrices in the input dataFrame must be specified. " ...
                         + "No plots were made." ...
                         + newline ...
                         );
@@ -492,12 +519,15 @@ classdef EllipsoidPlot < BasePlot
                 cdata = [];
             end
 
-            if self.is3d && getVecLen(self.zcolumn)
-                [zcolnames, zcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.zcolumn);
-            else
-                zcolindex = [];
-                zcolnames = "Count";
-                zdata = rowindex;
+            if self.is3d 
+                if getVecLen(self.zcolumn)
+                    [zcolnames, zcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.zcolumn);
+                    self.zdata = self.dfref.(zcolnames)(rowindex);
+                else
+                    zcolindex = [];
+                    zcolnames = "Count";
+                    self.zdata = rowindex;
+                end
             end
 
             % check the lengths are consistent
@@ -528,7 +558,7 @@ classdef EllipsoidPlot < BasePlot
             %    vdata = self.dfref{rowindex,avgcolindex};
             %end
             %if zcolindexlen==1
-            %    zdata = self.dfref{rowindex,zcolindex};
+            %    self.zdata = self.dfref{rowindex,zcolindex};
             %end
             %if ccolindexlen==1
             %    cdata = self.dfref{rowindex,ccolindex};
@@ -578,8 +608,8 @@ classdef EllipsoidPlot < BasePlot
 
             if self.isLinePlot && self.plot_kws.enabled
 
-                if ~self.is3d
-                    zdata = zeros(rowindexLen,1);
+                if self.is3d
+                    zdataOnes = ones(self.npoint,1);
                 end
 
                 if ~getVecLen(self.plot_kws.color)
@@ -635,25 +665,25 @@ classdef EllipsoidPlot < BasePlot
                     if self.isLinePlot
                         if self.plot_kws.enabled
                             if self.is3d
-                                error("plot3 not implemented")
-                                %self.currentFig.plot3 = plot3   ( mdata ...
-                                %                                , vdata ...
-                                %                                , zdata ...
-                                %                                , plot_kws_cell{:} ...
-                                %                                );
+                                self.currentFig.plot3   = plot3 ( bcrd(:,1) ...
+                                                                , bcrd(:,2) ...
+                                                                , self.zdata(irow)*zdataOnes ...
+                                                                , plot_kws_cell{:} ...
+                                                                , colorKeyVal{:} ...
+                                                                );
                             else
-                                self.currentFig.plot = plot ( bcrd(:,1) ...
-                                                            , bcrd(:,2) ...
-                                                            , plot_kws_cell{:} ...
-                                                            , colorKeyVal{:} ...
-                                                            );
+                                self.currentFig.plot    = plot  ( bcrd(:,1) ...
+                                                                , bcrd(:,2) ...
+                                                                , plot_kws_cell{:} ...
+                                                                , colorKeyVal{:} ...
+                                                                );
                             end
                             hold on;
                         end
                         %if self.surface_kws.enabled && getVecLen(self.colormap.values)
                         %    self.currentFig.surface = surface   ( "XData",[mdata(:) mdata(:)] ...
                         %                                        , "YData",[vdata(:) vdata(:)] ...
-                        %                                        , "ZData",[zdata(:) zdata(:)] ...
+                        %                                        , "ZData",[self.zdata(:) self.zdata(:)] ...
                         %                                        , "CData",[cdata(:) cdata(:)] ...
                         %                                        , surface_kws_cell{:} ...
                         %                                        );
@@ -667,7 +697,7 @@ classdef EllipsoidPlot < BasePlot
                     %        if self.is3d
                     %            self.currentFig.scatter3 = scatter3 ( mdata ...
                     %                                                , vdata ...
-                    %                                                , zdata ...
+                    %                                                , self.zdata ...
                     %                                                , self.scatter_kws.size ...
                     %                                                , cdata ...
                     %                                                , scatter_kws_cell{:} ...
@@ -686,14 +716,14 @@ classdef EllipsoidPlot < BasePlot
                     %            %if ~isa(self.plot_kws,"cell"); plot_kws = self.plot_kws;
                     %            self.currentFig.scatter3 = scatter3 ( mdata ...
                     %                                                , vdata ...
-                    %                                                , zdata ...
+                    %                                                , self.zdata ...
                     %                                                , self.scatter_kws.size ...
                     %                                                , currentScatterMarkerColor ...
                     %                                                , scatter_kws_cell{:} ...
                     %                                                );
                     %           %self.currentFig.plot = plot3( mdata ...
                     %           %                            , vdata ...
-                    %           %                            , zdata ...
+                    %           %                            , self.zdata ...
                     %           %                            , scatter_kws_cell{:} ...
                     %           %                            );
                     %        else
@@ -717,6 +747,13 @@ classdef EllipsoidPlot < BasePlot
                 end % loop plot
 
                 self.currentFig.gca = gca;
+
+                % set gca properties
+
+                gca_kws_cell = convertStruct2Cell(self.gca_kws,{"enabled","singleOptions"});
+                if isfield(self.gca_kws,"singleOptions"); gca_kws_cell = { gca_kws_cell{:} , self.gca_kws.singleOptions{:} }; end
+                self.currentFig.gcf = set( self.currentFig.gca, gca_kws_cell{:} );
+
                 if self.colormap.enabled
                     colormap(self.currentFig.gca,self.colormap.values);
                 end
@@ -725,24 +762,15 @@ classdef EllipsoidPlot < BasePlot
 
             % add axis labels
 
-            if covcolindexlen>1
-                self.currentFig.xlabel = xlabel("Variable Values", "Interpreter", "none");
-            else
-                self.currentFig.xlabel = xlabel(covcolname(1), "Interpreter", "none");
-            end
-
-            if avgcolindexlen>1
-                self.currentFig.ylabel = ylabel("Variable Values", "Interpreter", "none");
-            else
-                self.currentFig.ylabel = ylabel(avgcolnames(1), "Interpreter", "none");
-            end
+            self.currentFig.xlabel = xlabel("Dimension " + string(self.dimensionPair(1)), "Interpreter", "none");
+            self.currentFig.ylabel = ylabel("Dimension " + string(self.dimensionPair(2)), "Interpreter", "none");
 
             if self.is3d
-            if zcolindexlen>1
-                self.currentFig.zlabel = zlabel("Variable Values", "Interpreter", "none");
-            else
                 self.currentFig.zlabel = zlabel(zcolnames(1), "Interpreter", "none");
             end
+
+            if self.title.enabled
+                title(self.title,"interpreter","tex","fontsize",12);
             end
 
             % add line colorbar
