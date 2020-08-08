@@ -266,6 +266,53 @@ classdef BasePlot < dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        function LogLinSpace = getLogLinSpace(self,base,logskip,lowerLim,upperLim)
+            %
+            %   Generate logarithmically-uniformly-spaced unique integer numbers 
+            %   between the input lowerLim and upperLim. These numbers are to 
+            %   be used as the row indices in the plots.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       base
+            %
+            %           The base of the logarithm.
+            %
+            %       logskip
+            %
+            %           The minimum logarithmic space jump between 
+            %           the generated log-linearly-spaced integer numbers.
+            %
+            %       lowerLim (optional along with upperLim)
+            %
+            %           The natural (non-logarithmic) lower limit of the 
+            %           generated log-linearly-spaced integer numbers.
+            %           If not provided, the default value is 1.
+            %
+            %       upperLim (optional)
+            %
+            %           The natural (non-logarithmic) upper limit of the 
+            %           generated log-linearly-spaced integer numbers.
+            %           If not provided, the default value is the maximum 
+            %           of the number of the rows of the input dataframe 
+            %           to the BasePlot constructor.
+            %
+            %   Returns
+            %   -------
+            %
+            %       A set of unique log-linearly-spaced integer numbers. 
+            %
+            %   Example
+            %   -------
+            %
+            %       getLogLinSpace(1.01, 1, 1, 10000)
+            %
+            LogLinSpace = getLogIntSpace(base,logskip,lowerLim,upperLim);
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         function helpme(self,varargin)
             if nargin==1
                 doc BasePlot;

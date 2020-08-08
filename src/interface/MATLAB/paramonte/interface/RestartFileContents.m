@@ -506,18 +506,18 @@ classdef RestartFileContents < OutputFileContents
                     else
                         self.plot.(plotName).reset();
                     end
-                    self.plot.(plotName).rows = getLogIntSpace  ( 1.01 ... base
-                                                                , 1 ... lowerLim
-                                                                , self.count ... upperLim
-                                                                , 1 ... skip
-                                                                );
+                    self.plot.(plotName).rows = self.plot.(plotName).getLogLinSpace ( 1.01 ... base
+                                                                                    , 1 ... logskip
+                                                                                    , 1 ... lowerLim
+                                                                                    , self.count ... upperLim
+                                                                                    );
                     if isCorMatPlot
                         self.plot.(plotName).matrixColumn = self.df.Properties.VariableNames(end);
                     elseif isCovMatPlot
                         self.plot.(plotName).matrixColumn = self.df.Properties.VariableNames(end-1);
                     end
                     self.plot.(plotName).centerColumn = self.df.Properties.VariableNames(end-2);
-                    self.plot.(plotName).ccolumn = "sampleSize";
+                    %self.plot.(plotName).ccolumn = "sampleSize";
                     self.plot.(plotName).gca_kws.xscale = "linear";
                     self.plot.(plotName).gca_kws.yscale = "linear";
                     self.plot.(plotName).plot_kws.linewidth = 1;

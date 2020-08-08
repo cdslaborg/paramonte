@@ -32,7 +32,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function logRealSpace = getLogRealSpace(base,lowerLim,upperLim,skip)
+function logRealSpace = getLogRealSpace(base,logskip,lowerLim,upperLim)
     % return a set of unique real spacings linearly-spaced in the logarithmic scale in the input given base, between the input limits.
-    logRealSpace = base.^( log(lowerLim):skip:log(upperLim) / log(base) );
+    logRealSpace = base.^( log(lowerLim):logskip:log(upperLim) / log(base) );
 end

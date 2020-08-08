@@ -122,16 +122,13 @@
 %
 %           Example usage:
 %
-%               1.  ccolumn = [7,8,9]
-%               2.  ccolumn = ["SampleLogFunc","SampleVariable1"]
-%               3.  ccolumn = {"SampleLogFunc",9,"SampleVariable1"}
-%               4.  ccolumn = 7:9      # every column in the data frame starting from column #7 to #9
-%               5.  ccolumn = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%               1.  ccolumn = 7
+%               2.  ccolumn = "sampleSize"
 %
-%           WARNING: In all cases, ccolumn must have a length that is either 0, or 1, or equal
-%           WARNING: to the maximum lengths of (matrixColumns,zcolumn). If the length is 1, then all data
-%           WARNING: will be plotted with the same color mapping determined by values specified by the elements
-%           WARNING: of ccolumn. If it is an empty object having length 0, then the default value will be used.
+%           WARNING: In all cases, ccolumn must have a length that is either 0, or 1.
+%           WARNING: If the length is 1, then all data will be plotted with the same color 
+%           WARNING: mapping determined by values specified by the elements of ccolumn. 
+%           WARNING: If it is an empty object having length 0, then the default value will be used.
 %
 %           The default value is the indices of the rows of the input dataFrame.
 %
@@ -249,7 +246,7 @@ classdef EllipsoidPlot < BasePlot
 
             reset@BasePlot(self);
             self.dimensionPair = [];
-            self.ccolumn = {};
+            self.ccolumn = [];
             self.colormap = struct();
             self.colormap.enabled = true;
             self.colormap.values = [];
@@ -492,11 +489,25 @@ classdef EllipsoidPlot < BasePlot
                 avgcolindex = [];
             end
 
+            if self.is3d && getVecLen(self.zcolumn)
+                [zcolnames, zcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.zcolumn);
+                self.zdata = self.dfref.(zcolnames)(rowindex);
+            else
+                zcolindex = [];
+                zcolnames = "Count";
+                self.zdata = 1:1:rowindexLen;
+            end
+
             % set color data
 
             if self.colormap.enabled
                 if getVecLen(self.ccolumn)
                     [ccolnames, ccolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ccolumn);
+                    cdata = self.dfref{rowindex,ccolindex};
+                elseif self.is3d
+                    ccolindex = zcolindex;
+                    ccolnames = zcolnames;
+                    cdata = self.zdata;
                 else
                     ccolindex = [];
                     ccolnames = "Count";
@@ -506,15 +517,6 @@ classdef EllipsoidPlot < BasePlot
                 ccolindex = [];
                 ccolnames = [];
                 cdata = [];
-            end
-
-            if self.is3d && getVecLen(self.zcolumn)
-                [zcolnames, zcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.zcolumn);
-                self.zdata = self.dfref.(zcolnames)(rowindex);
-            else
-                zcolindex = [];
-                zcolnames = "Count";
-                self.zdata = 1:1:rowindexLen;
             end
 
             % check the lengths are consistent
@@ -775,6 +777,7 @@ classdef EllipsoidPlot < BasePlot
                 if isempty(self.colorbar_kws.fontsize) || ~isa(self.colorbar_kws.fontsize,"numeric")
                     self.colorbar_kws.fontsize = self.currentFig.ylabel.FontSize;
                 end
+                caxis(self.currentFig.gca, [min(cdata), max(cdata)] );
                 colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","singleOptions"});
                 self.currentFig.colorbar = colorbar(colorbar_kws_cell{:});
                 ylabel(self.currentFig.colorbar,ccolnames(1),"fontsize",self.colorbar_kws.fontsize, "Interpreter", "none");
