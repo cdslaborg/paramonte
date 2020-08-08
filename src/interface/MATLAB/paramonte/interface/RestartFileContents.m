@@ -522,10 +522,10 @@ classdef RestartFileContents < OutputFileContents
                     self.plot.(plotName).gca_kws.yscale = "linear";
                     self.plot.(plotName).plot_kws.linewidth = 1;
                     matrixType = "covariance"; if isCorMatPlot; matrixType = "correlation"; end
-                    self.plot.(plotName).title.enabled = true;
-                    self.plot.(plotName).title.content = "Evolution of the " + matrixType + " matrices of the proposal distribution"
-                    self.plot.(plotName).title.fontsize = 11;
-                    self.plot.(plotName).title.interpreter = "tex";
+                    self.plot.(plotName).title_kws.enabled = true;
+                    self.plot.(plotName).title_kws.content = "Evolution of the " + matrixType + " matrices of the proposal distribution";
+                    self.plot.(plotName).title_kws.fontsize = 11;
+                    self.plot.(plotName).title_kws.interpreter = "tex";
                 end
 
                 % 3d

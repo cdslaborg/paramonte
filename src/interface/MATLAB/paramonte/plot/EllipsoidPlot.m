@@ -214,11 +214,11 @@ classdef EllipsoidPlot < BasePlot
         matrixColumn
         centerColumn
         colorbar_kws
+        title_kws
         colormap
         ccolumn
         target
         npoint
-        title
     end
 
     properties (Hidden) % , Access = protected
@@ -255,11 +255,11 @@ classdef EllipsoidPlot < BasePlot
             self.colormap.values = [];
             self.npoint = [];
 
-            self.title = struct();
-            self.title.enabled = false;
-            self.title.content = [];
-            self.title.fontsize = 11;
-            self.title.interpreter = "tex";
+            self.title_kws = struct();
+            self.title_kws.enabled = false;
+            self.title_kws.content = [];
+            self.title_kws.fontsize = 11;
+            self.title_kws.interpreter = "tex";
 
             self.isLinePlot = false;
             if contains(self.plotType,"line")
@@ -443,17 +443,6 @@ classdef EllipsoidPlot < BasePlot
                 self.npoint = 100;
             end
 
-            % set title properties
-
-            if self.title.enabled
-                if ~(isstring(self.title.content) || ischar(self.title.content))
-                    error   ( "The title component of an EllipsoidPlot object must be a string or character vector. " ...
-                            + "You have entered " ...
-                            + string(self.title) ...
-                            );
-                end
-            end
-
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -519,15 +508,13 @@ classdef EllipsoidPlot < BasePlot
                 cdata = [];
             end
 
-            if self.is3d 
-                if getVecLen(self.zcolumn)
-                    [zcolnames, zcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.zcolumn);
-                    self.zdata = self.dfref.(zcolnames)(rowindex);
-                else
-                    zcolindex = [];
-                    zcolnames = "Count";
-                    self.zdata = rowindex;
-                end
+            if self.is3d && getVecLen(self.zcolumn)
+                [zcolnames, zcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.zcolumn);
+                self.zdata = self.dfref.(zcolnames)(rowindex);
+            else
+                zcolindex = [];
+                zcolnames = "Count";
+                self.zdata = 1:1:rowindexLen;
             end
 
             % check the lengths are consistent
@@ -543,10 +530,10 @@ classdef EllipsoidPlot < BasePlot
                                     ] ...
                                 );
 
-            if covcolindexlen~=maxcolindexlen && covcolindexlen>1; error("length of mcolumns must be either 1 or equal to the maximum of the lengths of vcolumns, zcolumn, ccolumn."); end
-            if avgcolindexlen~=maxcolindexlen && avgcolindexlen>1; error("length of vcolumns must be either 1 or equal to the maximum of the lengths of mcolumns, zcolumn, ccolumn."); end
-            if zcolindexlen~=maxcolindexlen && zcolindexlen>1; error("length of zcolumn must be either 1 or equal to the maximum of the lengths of mcolumns, vcolumns, ccolumn."); end
-            if ccolindexlen~=maxcolindexlen && ccolindexlen>1; error("length of ccolumn must be either 1 or equal to the maximum of the lengths of mcolumns, vcolumns, zcolumn."); end
+            if covcolindexlen~=maxcolindexlen && covcolindexlen>1; error("matrixColumn must be a unique name pointing to the column of the dataframe containing covariance/correlation matrix data."); end
+            if avgcolindexlen~=maxcolindexlen && avgcolindexlen>1; error("centerColumn must be a unique name pointing to the column of the dataframe containing the centers of the covariance/correlation matrix data."); end
+            if zcolindexlen~=maxcolindexlen && zcolindexlen>1; error("zcolumn must be a unique name pointing to the column of the dataframe that will be plotted on the z-axis."); end
+            if ccolindexlen~=maxcolindexlen && ccolindexlen>1; error("ccolumn must be a unique name pointing to the column of the dataframe that will be used as the color map."); end
 
             % assign data in case of single column assignments
 
@@ -769,8 +756,17 @@ classdef EllipsoidPlot < BasePlot
                 self.currentFig.zlabel = zlabel(zcolnames(1), "Interpreter", "none");
             end
 
-            if self.title.enabled
-                title(self.title,"interpreter","tex","fontsize",12);
+            % set title properties
+
+            if self.title_kws.enabled
+                if ~(isstring(self.title_kws.content) || ischar(self.title_kws.content))
+                    error   ( "The title component of an EllipsoidPlot object must be a string or character vector. " ...
+                            + "You have entered " ...
+                            + string(self.title_kws) ...
+                            );
+                end
+                title_kws_cell = convertStruct2Cell(self.title_kws,{"enabled","content"});
+                title(self.title_kws.content,title_kws_cell{:});
             end
 
             % add line colorbar
