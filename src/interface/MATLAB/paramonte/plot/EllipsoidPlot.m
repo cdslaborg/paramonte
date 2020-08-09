@@ -206,7 +206,6 @@ classdef EllipsoidPlot < BasePlot
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties (Access = public)
-
         dimensionPair
         matrixColumn
         centerColumn
@@ -227,18 +226,12 @@ classdef EllipsoidPlot < BasePlot
         plotType
         isLinePlot = false;
         isScatterPlot = false;
-        surface_kws = []; % dummy variable
+        %surface_kws = []; % dummy variable
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Hidden)
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        %function resetHard(self)
-        %    
-        %end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -494,8 +487,8 @@ classdef EllipsoidPlot < BasePlot
                 self.zdata = self.dfref.(zcolnames)(rowindex);
             else
                 zcolindex = [];
-                zcolnames = "Count";
-                self.zdata = 1:1:rowindexLen;
+                zcolnames = "Adaptive Update Count"; % "Count";
+                self.zdata = rowindex; % 1:1:rowindexLen;
             end
 
             % set color data
@@ -510,8 +503,8 @@ classdef EllipsoidPlot < BasePlot
                     cdata = self.zdata;
                 else
                     ccolindex = [];
-                    ccolnames = "Count";
-                    cdata = 1:1:rowindexLen;
+                    ccolnames = "Adaptive Update Count"; % "Count";
+                    cdata = rowindex; % 1:1:rowindexLen;
                 end
             else
                 ccolindex = [];

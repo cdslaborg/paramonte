@@ -179,7 +179,7 @@ classdef BasePlot < dynamicprops
 
     properties (Access = public)
 
-        dfref = [];
+        dfref
         gcf_kws
         currentFig
         outputFile
@@ -272,6 +272,8 @@ classdef BasePlot < dynamicprops
             %   between the input lowerLim and upperLim. These numbers are to 
             %   be used as the row indices in the plots.
             %
+            %   % NOTE: This function does not exist for HeatmapPlot objects.
+            %
             %   Parameters
             %   ----------
             %
@@ -290,6 +292,12 @@ classdef BasePlot < dynamicprops
             %           generated log-linearly-spaced integer numbers.
             %           If not provided, the default value is 1.
             %
+            %           WARNING: if lowerLim is not provided as input, 
+            %           WARNING: then upperLim cannot be provided either, 
+            %           WARNING: otherwise, the value of upperLim will be  
+            %           WARNING: used as the value of lowerLim and upperLim
+            %           WARNING: will be assumed to not have been provided.
+            %
             %       upperLim (optional)
             %
             %           The natural (non-logarithmic) upper limit of the 
@@ -306,8 +314,23 @@ classdef BasePlot < dynamicprops
             %   Example
             %   -------
             %
-            %       getLogLinSpace(1.01, 1, 1, 10000)
+            %       rows = getLogLinSpace(1.01, 1, 1, 10000)
             %
+            wrongSyntaxDetected = false;
+            if nargin<5
+                upperLim = length(self.dfref{:,1});
+                if nargin<4
+                    lowerLim = 1;
+                    if nargin<3
+                        wrongSyntaxDetected = true;
+                    end
+                end
+            elseif nargin>5
+                wrongSyntaxDetected = true;
+            end
+            if wrongSyntaxDetected
+                error("Incorrect number of input arguments. Usage: getLogIntSpace(base,logskip,lowerLim,upperLim)")
+            end
             LogLinSpace = getLogIntSpace(base,logskip,lowerLim,upperLim);
         end
 
