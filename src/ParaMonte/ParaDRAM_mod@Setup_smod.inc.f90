@@ -742,7 +742,7 @@ contains
 
                 block
 
-                    use Statistics_mod, only: getgeoPDF
+                    use Statistics_mod, only: getGeoPDF
                     logical     :: maxSpeedupFound
                     integer(IK) :: imageCount, maxSpeedupImageCount, lengeoPDF
                     real(RK)    :: seqSecTime, parSecTime, comSecTime, serialTime, avgCommTimePerFunCallPerNode
@@ -753,7 +753,7 @@ contains
 
                     formatScaling = "('" // INDENT // "',10(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))" ! ,:,','
 
-                    geoPDF = getgeoPDF(successProb=mcmcSamplingEfficiency,minSeqLen=10*self%Image%count)
+                    geoPDF = getGeoPDF(successProb=mcmcSamplingEfficiency,minSeqLen=10*self%Image%count)
                     lengeoPDF = size(geoPDF)
 
                     ! compute the serial and sequential runtime of the code per function call
