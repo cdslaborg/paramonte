@@ -744,7 +744,7 @@ contains
 
                     use Statistics_mod, only: getGeoPDF
                     logical     :: maxSpeedupFound
-                    integer(IK) :: imageCount, maxSpeedupImageCount, lengeoPDF
+                    integer(IK) :: imageCount, maxSpeedupImageCount, lenGeoPDF
                     real(RK)    :: seqSecTime, parSecTime, comSecTime, serialTime, avgCommTimePerFunCallPerNode
                     real(RK)    :: currentSpeedup, maxSpeedup
                     real(RK)    :: speedup, firstImageWeight
@@ -754,7 +754,7 @@ contains
                     formatScaling = "('" // INDENT // "',10(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))" ! ,:,','
 
                     geoPDF = getGeoPDF(successProb=mcmcSamplingEfficiency,minSeqLen=10*self%Image%count)
-                    lengeoPDF = size(geoPDF)
+                    lenGeoPDF = size(geoPDF)
 
                     ! compute the serial and sequential runtime of the code per function call
 
@@ -773,12 +773,12 @@ contains
 
                     maxSpeedup = 1._RK
                     maxSpeedupImageCount = 1_IK
-                    if (allocated(speedupVec)) deallocate(speedupVec); allocate(speedupVec(lengeoPDF))
+                    if (allocated(speedupVec)) deallocate(speedupVec); allocate(speedupVec(lenGeoPDF))
                     speedupVec(1) = 1._RK
-                    loopOptimalImageCount: do imageCount = 2, lengeoPDF
-                        firstImageWeight = sum(geoPDF(1:lengeoPDF:imageCount))
-                        parSecTime = self%Stats%avgTimePerFunCalInSec * firstImageWeight ! parallel-section runtime of the code per function call
-                        comSecTime = (imageCount-1_IK) * avgCommTimePerFunCallPerNode  ! assumption: communication time grows linearly with the number of nodes
+                    loopOptimalImageCount: do imageCount = 2, lenGeoPDF
+                        firstImageWeight = sum(geoPDF(1:lenGeoPDF:imageCount))
+                        parSecTime = self%Stats%avgTimePerFunCalInSec * firstImageWeight    ! parallel-section runtime of the code per function call
+                        comSecTime = (imageCount-1_IK) * avgCommTimePerFunCallPerNode       ! assumption: communication time grows linearly with the number of nodes
                         speedupVec(imageCount) = serialTime / (seqSecTime+parSecTime+comSecTime)
                         maxSpeedup = max( maxSpeedup , speedupVec(imageCount) )
                         if (maxSpeedup==speedupVec(imageCount)) maxSpeedupImageCount = imageCount
@@ -843,10 +843,10 @@ contains
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.scaling.strong.speedup"
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    !write(self%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lengeoPDF)
-                    !write(self%LogFile%unit,formatStrReal) "speedup" , (speedupVec(imageCount), imageCount = 1, lengeoPDF)
-                    do imageCount = 1, lengeoPDF, 10
-                        write(self%LogFile%unit,formatScaling) speedupVec(imageCount:min(imageCount+9_IK,lengeoPDF))
+                    !write(self%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lenGeoPDF)
+                    !write(self%LogFile%unit,formatStrReal) "speedup" , (speedupVec(imageCount), imageCount = 1, lenGeoPDF)
+                    do imageCount = 1, lenGeoPDF, 10
+                        write(self%LogFile%unit,formatScaling) speedupVec(imageCount:min(imageCount+9_IK,lenGeoPDF))
                     end do
                     msg =   "This is the predicted strong-scaling speedup behavior of the "//self%SpecBase%ParallelizationModel%val//" parallelization model, &
                             &given the current MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."
@@ -909,10 +909,10 @@ contains
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.scaling.strong.speedup"
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    !write(self%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lengeoPDF)
-                    !write(self%LogFile%unit,formatStrReal)"speedup"   , (speedupVec(imageCount), imageCount = 1, lengeoPDF)
-                    do imageCount = 1, lengeoPDF, 10
-                        write(self%LogFile%unit,formatScaling) speedupVec(imageCount:min(imageCount+9_IK,lengeoPDF))
+                    !write(self%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lenGeoPDF)
+                    !write(self%LogFile%unit,formatStrReal)"speedup"   , (speedupVec(imageCount), imageCount = 1, lenGeoPDF)
+                    do imageCount = 1, lenGeoPDF, 10
+                        write(self%LogFile%unit,formatScaling) speedupVec(imageCount:min(imageCount+9_IK,lenGeoPDF))
                     end do
                     msg =   "This is the predicted absolute strong-scaling speedup behavior of the "//self%SpecBase%ParallelizationModel%val//" parallelization model, &
                             &under any MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."

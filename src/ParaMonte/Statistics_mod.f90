@@ -2190,14 +2190,36 @@ contains
 !***********************************************************************************************************************************
 !***********************************************************************************************************************************
 
-    ! returns Geometric distribution PDF values, starting at index 1.
-    ! If the probability of success on each trial is successProb,
-    ! then the probability that the kth trial (out of k trials) is
-    ! the first success is GeoPDF(k).
     function getGeoPDF(successProb,logPdfPrecision,minSeqLen) result(GeoPDF)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeoPDF
 #endif
+        !   return the Geometric distribution PDF values for a range of trials, starting at index 1.
+        !   If the probability of success on each trial is successProb,
+        !   then the probability that the kth trial (out of k trials) is
+        !   the first success is GeoPDF(k).
+        !
+        !   Input
+        !
+        !       successProb
+        !
+        !           The probability of success.
+        !
+        !       logPdfPrecision
+        !
+        !           The precision value below which the PDF is practically considered to be zero.
+        !
+        !       minSeqLen
+        !
+        !           The minimum length of the range of k values for which the PDF will be computed.
+        !
+        !   Output
+        !
+        !       GeoPDF
+        !
+        !           An allocatable representing the geometric PDF over a range of k values, whose length 
+        !           is determined from the values of logPdfPrecision and minSeqLen.
+        ! 
         use Constants_mod, only: IK, RK
         implicit none
         real(RK)    , intent(in)            :: successProb
