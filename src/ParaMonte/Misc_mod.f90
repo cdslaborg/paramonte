@@ -1,5 +1,4 @@
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !   ParaMonte: plain powerful parallel Monte Carlo library.
 !
@@ -31,13 +30,14 @@
 !
 !       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 module Misc_mod
 
     use, intrinsic :: iso_fortran_env, only: int32
     implicit none
+
+    character(*), parameter :: MODULE_NAME = "@Misc_mod"
 
     integer(int32), PARAMETER :: NPAR_ARTH = 16, NPAR2_ARTH = 8
 
@@ -51,17 +51,19 @@ module Misc_mod
 
     interface swap
         !module procedure :: swap_CK, swap_RK, swap_IK    !, swap_vec_RK
-        module procedure :: swap_SPI, swap_DPI, swap_SPR, swap_DPR, swap_SPC, swap_DPC    ! , swap_cm, swap_z, swap_rv, swap_cv
-        module procedure :: masked_swap_SPR, masked_swap_SPRV, masked_swap_SPRM ! swap_zv, swap_zm
+        module procedure :: swap_SPI, swap_DPI, swap_SPR, swap_DPR, swap_SPC, swap_DPC  ! , swap_cm, swap_z, swap_rv, swap_cv
+        module procedure :: masked_swap_SPR, masked_swap_SPRV, masked_swap_SPRM         ! swap_zv, swap_zm
     end interface swap
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+    interface findUnique
+        module procedure :: findUnique_IK
+    end interface findUnique
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure elemental subroutine swap_CK(a,b)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -102,8 +104,7 @@ contains
         b = dummy
     end subroutine swap_IK
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure elemental subroutine swap_SPI(a,b)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -291,8 +292,7 @@ contains
         end where
     end subroutine masked_swap_SPRM
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function arth_RK(first,increment,n) result(arth)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -326,8 +326,7 @@ contains
         end if
     end function arth_RK
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function arth_IK(first,increment,n) result(arth)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -359,8 +358,7 @@ contains
         end if
     end function arth_IK
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function zroots_unity(n,nn)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -383,8 +381,7 @@ contains
         end do
     end function zroots_unity
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine copyArray_RK(Source,Destination,numCopied,numNotCopied)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -400,8 +397,7 @@ contains
         Destination(1:numCopied) = Source(1:numCopied)
     end subroutine copyArray_RK
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine copyArray_IK(Source,Destination,numCopied,numNotCopied)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -417,7 +413,44 @@ contains
         Destination(1:numCopied) = Source(1:numCopied)
     end subroutine copyArray_IK
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    subroutine findUnique_IK(lenVector, Vector, UniqueValue, UniqueCount, lenUnique)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: findUnique_IK
+#endif
+        use Constants_mod, only: IK
+        implicit none
+        integer(IK)     , intent(in)                :: lenVector
+        integer(IK)     , intent(in)                :: Vector(lenVector)
+        integer(IK)     , intent(out), allocatable  :: UniqueValue(:)
+        integer(IK)     , intent(out), allocatable  :: UniqueCount(:)
+        integer(IK)     , intent(out), optional     :: lenUnique
+        integer(IK)                                 :: lenUniq, i, j
+        logical                                     :: isUnique
+        allocate(UniqueValue(lenVector))
+        allocate(UniqueCount(lenVector), source = 0_IK)
+        lenUniq = 0
+        do i = 1, lenVector
+            isUnique = .true.
+            loopSearchUnique: do j = 1, lenUniq 
+                if (UniqueValue(j)==Vector(i)) then
+                    UniqueCount(j) = UniqueCount(j) + 1
+                    isUnique = .false.
+                    exit loopSearchUnique
+                end if
+            end do loopSearchUnique
+            if (isUnique) then
+                lenUniq = lenUniq + 1
+                UniqueValue(lenUniq) = Vector(i)
+                UniqueCount(lenUniq) = UniqueCount(lenUniq) + 1
+            end if
+        end do
+        UniqueValue = UniqueValue(1:lenUniq)
+        UniqueCount = UniqueCount(1:lenUniq)
+        if (present(lenUnique)) lenUnique = lenUniq
+    end subroutine findUnique_IK
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module Misc_mod

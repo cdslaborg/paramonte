@@ -1,5 +1,4 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !   ParaMonte: plain powerful parallel Monte Carlo library.
 !
@@ -32,7 +31,6 @@
 !       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined CFI_ENABLED
 
@@ -40,7 +38,7 @@
 ! The C-style interface to ParaDRAM
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if defined MATLAB_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED)
 function &
 #else
 subroutine &
@@ -68,7 +66,7 @@ subroutine &
     character(:), allocatable                               :: inputFileStr
     type(ParaDRAM_type)                                     :: self
     integer                                                 :: i
-#if defined MATLAB_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED)
     integer(IK)                                             :: runParaDRAM
     runParaDRAM = 0_IK
 #endif
@@ -104,7 +102,7 @@ subroutine &
     end if
     nullify(getLogFunc)
 
-#if defined MATLAB_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED)
     if (self%Err%occurred) runParaDRAM = -1_IK
 end function runParaDRAM
 #else
@@ -147,5 +145,4 @@ end subroutine runParaDRAM
 
 #endif
 
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

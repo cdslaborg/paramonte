@@ -7,21 +7,28 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ### Version  1.1.2 -- Work in Progress
 
-+   Minor enhancement: The minimum required dependency versions are now raised to the following,  
+**Minor enhancements**  
 
-```python  
-python_requires = ">=3.5"
-install_requires = [ "numpy>=1.18.0"
-                   , "scipy>=1.4.0"
-                   , "pandas>=1.0.0"
-                   , "seaborn>=0.10.0"
-                   , "matplotlib>=3.2.0"
-                   ]
-```  
++   The error-signaling behavior of the library now is very much controlled, that is, 
+    upon code failure, it does not automatically shutdown the Python kernel in Jupyter Notebooks. 
+    The library now simply throws an error message upon failing instead of restarting the environment.  
+
++   The minimum required dependency versions are now raised to the following,  
+    ```python  
+    python_requires = ">=3.5"
+    install_requires = [ "numpy>=1.18.0"
+                       , "scipy>=1.4.0"
+                       , "pandas>=1.0.0"
+                       , "seaborn>=0.10.0"
+                       , "matplotlib>=3.2.0"
+                       ]
+    ```  
 
 ### Version  1.1.1 -- June 7, 2020  
 
-+   Minor bug fix: The `_ScatterLinePlot` dangling class is removed from the package.  
+**Minor enhancements**  
+
++   The `_ScatterLinePlot` dangling class is removed from the package.  
 
 ### Version  1.1.0 -- June 1, 2020  
 

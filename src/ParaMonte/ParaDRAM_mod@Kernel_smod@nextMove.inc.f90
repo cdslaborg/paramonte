@@ -1,5 +1,4 @@
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !   ParaMonte: plain powerful parallel Monte Carlo library.
 !
@@ -31,8 +30,7 @@
 !
 !       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined SINGLCHAIN_PARALLELISM
 #define LOOP_NEXT_MOVE loopNextMoveSinglChain
@@ -51,7 +49,7 @@
                                                                             , counterDRS    = counterDRS &
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1) &
                                                                             )
-#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif
 

@@ -1,5 +1,4 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !   ParaMonte: plain powerful parallel Monte Carlo library.
 !
@@ -31,7 +30,6 @@
 !
 !       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if defined PARADRAM
@@ -452,7 +450,7 @@ contains
             return
         end if
 
-#if MATLAB_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
             block
 #if defined PARADRAM
                 use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr
@@ -724,12 +722,12 @@ contains
                 if (self%Image%count==1_IK) then
                     msg = self%name// " is being used in parallel mode but with only one processor. This is computationally inefficient. &
                                     &Consider using the serial version of the code or provide more processes at runtime."
-                    call self%note( prefix     = self%brand         &
-                                , outputUnit = output_unit      &
-                                , newline    = NLC              &
-                                , marginTop  = 3_IK             &
-                                , marginBot  = 0_IK             &
-                                , msg        = msg              )
+                    call self%note  ( prefix     = self%brand   &
+                                    , outputUnit = output_unit  &
+                                    , newline    = NLC          &
+                                    , marginTop  = 3_IK         &
+                                    , marginBot  = 0_IK         &
+                                    , msg        = msg          )
                 end if
 #endif
                 msg = "This is the predicted absolute optimal maximum speedup gained via "//self%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency."//NLC//msg
@@ -742,19 +740,64 @@ contains
 
                 block
 
-                    use Statistics_mod, only: getGeoPDF
-                    logical     :: maxSpeedupFound
-                    integer(IK) :: imageCount, maxSpeedupImageCount, lenGeoPDF
-                    real(RK)    :: seqSecTime, parSecTime, comSecTime, serialTime, avgCommTimePerFunCallPerNode
-                    real(RK)    :: currentSpeedup, maxSpeedup
-                    real(RK)    :: speedup, firstImageWeight
-                    real(RK)    , allocatable :: geoPDF(:), speedupVec(:), tempVec(:)
-                    character(:), allocatable :: formatIn, formatScaling
+                    use Statistics_mod, only: getGeoLogPDF
+
+                    ! required for GeoPDF fitting
+
+                    use Misc_mod, only: findUnique
+                    use Sort_mod, only: indexArray
+                    use Statistics_mod, only: fitGeoLogPDF
+                    use Optimization_mod, only: PowellMinimum_type
+                    type(PowellMinimum_type)    :: PowellMinimum
+                    integer(IK) , allocatable   :: UniqueProcessorID(:), UniqueProcessorCount(:), Indx(:)
+                    integer(IK)                 :: lenUniqueProcessorID
+
+                    ! required for parallel speedup computation
+
+                    logical                     :: maxSpeedupFound
+                    integer(IK)                 :: imageCount, maxSpeedupImageCount, lenGeoPDF
+                    real(RK)                    :: seqSecTime, parSecTime, comSecTime, serialTime, avgCommTimePerFunCallPerNode
+                    real(RK)                    :: currentSpeedup, maxSpeedup
+                    real(RK)                    :: speedup, firstImageWeight
+                    real(RK)    , allocatable   :: GeoPDF(:), SpeedupVec(:), TempVec(:)
+                    character(:), allocatable   :: formatIn, formatScaling
 
                     formatScaling = "('" // INDENT // "',10(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))" ! ,:,','
 
-                    geoPDF = getGeoPDF(successProb=mcmcSamplingEfficiency,minSeqLen=10*self%Image%count)
-                    lenGeoPDF = size(geoPDF)
+                    ! fit the Geometric PDF
+
+                    call findUnique ( lenVector = self%Stats%NumFunCall%accepted &
+                                    , Vector = self%Chain%ProcessID &
+                                    , UniqueValue = UniqueProcessorID &
+                                    , UniqueCount = UniqueProcessorCount &
+                                    , lenUnique = lenUniqueProcessorID &
+                                    )
+                    allocate(Indx(lenUniqueProcessorID))
+                    call indexArray( n = lenUniqueProcessorID, Array = UniqueProcessorID, Indx = Indx )
+                    PowellMinimum = fitGeoLogPDF(lenLogCount = lenUniqueProcessorID, LogCount = log(real(UniqueProcessorCount(Indx),kind=RK)) )
+
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.processorContribution.geometricFit.successProbNormFac"
+                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) PowellMinimum%xmin(1), exp(PowellMinimum%xmin(2))
+                    msg =   "These are the parameters of the Geometric fit to the distribution of the processor contributions &
+                            &to the construction of the MCMC chain (the processor contributions are reported in the first column &
+                            &of the output chain file. The fit has the following form: "//NLC//NLC// &
+                            "    ProcessorConstribution(i) = successProbNormFac(1) * successProbNormFac(2) * (1-successProbNormFac(1))^(i-1) , "//NLC//NLC// &
+                            "where i is the ID of the processor (starting from index 1) and, successProbNormFac(1) is equivalent to an effective &
+                            &MCMC sampling efficiency computed from contributions of individual processors to the MCMC chain and &
+                            &successProbNormFac(2) is a normalization constant."
+                    call self%reportDesc(msg)
+
+                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                    ! predict the speedup
+
+                    !GeoPDF = exp(getGeoLogPDF(successProb=mcmcSamplingEfficiency,minSeqLen=10*self%Image%count))
+                    GeoPDF = exp(getGeoLogPDF(successProb=PowellMinimum%xmin(1),minSeqLen=10*self%Image%count))
+                    lenGeoPDF = size(GeoPDF)
 
                     ! compute the serial and sequential runtime of the code per function call
 
@@ -773,18 +816,18 @@ contains
 
                     maxSpeedup = 1._RK
                     maxSpeedupImageCount = 1_IK
-                    if (allocated(speedupVec)) deallocate(speedupVec); allocate(speedupVec(lenGeoPDF))
-                    speedupVec(1) = 1._RK
+                    if (allocated(SpeedupVec)) deallocate(SpeedupVec); allocate(SpeedupVec(lenGeoPDF))
+                    SpeedupVec(1) = 1._RK
                     loopOptimalImageCount: do imageCount = 2, lenGeoPDF
-                        firstImageWeight = sum(geoPDF(1:lenGeoPDF:imageCount))
+                        firstImageWeight = sum(GeoPDF(1:lenGeoPDF:imageCount))
                         parSecTime = self%Stats%avgTimePerFunCalInSec * firstImageWeight    ! parallel-section runtime of the code per function call
                         comSecTime = (imageCount-1_IK) * avgCommTimePerFunCallPerNode       ! assumption: communication time grows linearly with the number of nodes
-                        speedupVec(imageCount) = serialTime / (seqSecTime+parSecTime+comSecTime)
-                        maxSpeedup = max( maxSpeedup , speedupVec(imageCount) )
-                        if (maxSpeedup==speedupVec(imageCount)) maxSpeedupImageCount = imageCount
+                        SpeedupVec(imageCount) = serialTime / (seqSecTime+parSecTime+comSecTime)
+                        maxSpeedup = max( maxSpeedup , SpeedupVec(imageCount) )
+                        if (maxSpeedup==SpeedupVec(imageCount)) maxSpeedupImageCount = imageCount
                         if (imageCount==self%Image%count) then
-                            currentSpeedup = speedupVec(imageCount)
-                            !if (maxSpeedup/=speedupVec(imageCount)) exit loopOptimalImageCount
+                            currentSpeedup = SpeedupVec(imageCount)
+                            !if (maxSpeedup/=SpeedupVec(imageCount)) exit loopOptimalImageCount
                         end if
                     end do loopOptimalImageCount
 
@@ -844,9 +887,9 @@ contains
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.scaling.strong.speedup"
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                     !write(self%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lenGeoPDF)
-                    !write(self%LogFile%unit,formatStrReal) "speedup" , (speedupVec(imageCount), imageCount = 1, lenGeoPDF)
+                    !write(self%LogFile%unit,formatStrReal) "speedup" , (SpeedupVec(imageCount), imageCount = 1, lenGeoPDF)
                     do imageCount = 1, lenGeoPDF, 10
-                        write(self%LogFile%unit,formatScaling) speedupVec(imageCount:min(imageCount+9_IK,lenGeoPDF))
+                        write(self%LogFile%unit,formatScaling) SpeedupVec(imageCount:min(imageCount+9_IK,lenGeoPDF))
                     end do
                     msg =   "This is the predicted strong-scaling speedup behavior of the "//self%SpecBase%ParallelizationModel%val//" parallelization model, &
                             &given the current MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."
@@ -859,27 +902,27 @@ contains
                     imageCount = 1_IK
                     maxSpeedup = 1._RK
                     maxSpeedupImageCount = 1_IK
-                    speedupVec(1) = 1._RK
+                    SpeedupVec(1) = 1._RK
                     maxSpeedupFound = .false.
-                    lenGeoPDF = size(speedupVec)
+                    lenGeoPDF = size(SpeedupVec)
                     loopAbsoluteOptimalImageCount: do 
                         imageCount = imageCount + 1_IK
                         if (imageCount>lenGeoPDF) then
                             if (maxSpeedupFound) exit loopAbsoluteOptimalImageCount
                             lenGeoPDF = 2_IK * lenGeoPDF
-                            if (allocated(tempVec)) deallocate(tempVec); allocate(tempVec(lenGeoPDF))
-                            tempVec(1:lenGeoPDF/2_IK) = speedupVec
-                            call move_alloc(tempVec,speedupVec)
+                            if (allocated(TempVec)) deallocate(TempVec); allocate(TempVec(lenGeoPDF))
+                            TempVec(1:lenGeoPDF/2_IK) = SpeedupVec
+                            call move_alloc(TempVec,SpeedupVec)
                         end if
                         parSecTime = self%Stats%avgTimePerFunCalInSec / imageCount
                         comSecTime = (imageCount-1_IK) * avgCommTimePerFunCallPerNode  ! assumption: communication time grows linearly with the number of nodes
-                        speedupVec(imageCount) = serialTime / (seqSecTime+parSecTime+comSecTime)
-                        if (.not.maxSpeedupFound .and. maxSpeedup>speedupVec(imageCount)) then
+                        SpeedupVec(imageCount) = serialTime / (seqSecTime+parSecTime+comSecTime)
+                        if (.not.maxSpeedupFound .and. maxSpeedup>SpeedupVec(imageCount)) then
                             maxSpeedupImageCount = imageCount - 1_IK
                             maxSpeedupFound = .true.
                             !exit loopAbsoluteOptimalImageCount
                         end if
-                        maxSpeedup = max( maxSpeedup , speedupVec(imageCount) )
+                        maxSpeedup = max( maxSpeedup , SpeedupVec(imageCount) )
                     end do loopAbsoluteOptimalImageCount
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -910,9 +953,9 @@ contains
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.scaling.strong.speedup"
                     write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                     !write(self%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lenGeoPDF)
-                    !write(self%LogFile%unit,formatStrReal)"speedup"   , (speedupVec(imageCount), imageCount = 1, lenGeoPDF)
+                    !write(self%LogFile%unit,formatStrReal)"speedup"   , (SpeedupVec(imageCount), imageCount = 1, lenGeoPDF)
                     do imageCount = 1, lenGeoPDF, 10
-                        write(self%LogFile%unit,formatScaling) speedupVec(imageCount:min(imageCount+9_IK,lenGeoPDF))
+                        write(self%LogFile%unit,formatScaling) SpeedupVec(imageCount:min(imageCount+9_IK,lenGeoPDF))
                     end do
                     msg =   "This is the predicted absolute strong-scaling speedup behavior of the "//self%SpecBase%ParallelizationModel%val//" parallelization model, &
                             &under any MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."
