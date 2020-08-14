@@ -772,6 +772,7 @@ contains
                                     , UniqueCount = UniqueProcessorCount &
                                     , lenUnique = lenUniqueProcessorID &
                                     )
+                    !maxContributorProcessorID = UniqueProcessorID(maxloc(UniqueProcessorCount))
                     allocate(Indx(lenUniqueProcessorID))
                     call indexArray( n = lenUniqueProcessorID, Array = UniqueProcessorID, Indx = Indx )
                     PowellMinimum = fitGeoLogPDF(lenLogCount = lenUniqueProcessorID, LogCount = log(real(UniqueProcessorCount(Indx),kind=RK)) )
@@ -785,7 +786,7 @@ contains
                     msg =   "These are the parameters of the Geometric fit to the distribution of the processor contributions &
                             &to the construction of the MCMC chain (the processor contributions are reported in the first column &
                             &of the output chain file. The fit has the following form: "//NLC//NLC// &
-                            "    ProcessorConstribution(i) = successProbNormFac(1) * successProbNormFac(2) * (1-successProbNormFac(1))^(i-1) , "//NLC//NLC// &
+                            "    ProcessorConstribution(i) = successProbNormFac(1) * successProbNormFac(2) * (1-successProbNormFac(1))^(i-1)"//NLC//NLC// &
                             "where i is the ID of the processor (starting from index 1) and, successProbNormFac(1) is equivalent to an effective &
                             &MCMC sampling efficiency computed from contributions of individual processors to the MCMC chain and &
                             &successProbNormFac(2) is a normalization constant."
@@ -796,7 +797,10 @@ contains
                     ! predict the speedup
 
                     !GeoPDF = exp(getGeoLogPDF(successProb=mcmcSamplingEfficiency,minSeqLen=10*self%Image%count))
-                    GeoPDF = exp(getGeoLogPDF(successProb=PowellMinimum%xmin(1),minSeqLen=10*self%Image%count))
+                    GeoPDF = exp( getGeoLogPDF  ( successProb = max(mcmcSamplingEfficiency, PowellMinimum%xmin(1)) & ! avoids unstable estimates of effective efficiency.
+                                                , minSeqLen = 10*self%Image%count) &
+                                                !, seqLen = 10*self%Image%count) &
+                                                )
                     lenGeoPDF = size(GeoPDF)
 
                     ! compute the serial and sequential runtime of the code per function call

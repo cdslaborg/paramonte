@@ -279,11 +279,11 @@ fi
 if [ -z ${USER_SELECTED_COMPILER+x} ] && [ -z ${USER_SELECTED_COMPILER_FLAGS+x} ]; then
     if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
         if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then COMPILER_FLAGS=${INTEL_C_COMPILER_FLAGS}; fi
-        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -fpp -DIS_COMPATIBLE_COMPILER"; fi
+        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -fpp"; fi # -DIS_COMPATIBLE_COMPILER
     fi
     if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
         if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then COMPILER_FLAGS=${GNU_C_COMPILER_FLAGS}; fi
-        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -cpp -DIS_COMPATIBLE_COMPILER"; fi
+        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -cpp"; fi # -DIS_COMPATIBLE_COMPILER
     fi
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - inferred compiler/linker flags(s): ${COMPILER_FLAGS}"
 else

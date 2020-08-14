@@ -78,6 +78,7 @@ module paramonte
                                 , getLogFunc    &
                                 , inputFile     &
                                 )
+            import :: IK
             implicit none
             integer(IK) , intent(in)            :: ndim
             procedure(getLogFunc_proc)          :: getLogFunc
