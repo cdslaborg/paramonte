@@ -40,7 +40,7 @@ import pandas as _pd
 
 import _paramonte as _pm
 
-_timer = _pm.pmutils.Timer(_methodName=_pm.names.paradram)
+_timer = _pm.utils.Timer(_methodName=_pm.names.paradram)
 
 ####################################################################################################################################
 #### _ParaDRAMChain class

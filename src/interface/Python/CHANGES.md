@@ -13,6 +13,15 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     upon code failure, it does not automatically shutdown the Python kernel in Jupyter Notebooks. 
     The library now simply throws an error message upon failing instead of restarting the environment.  
 
++   The single value assignment to `spec.targetAcceptanceRate` component of a ParaDRAM object is now properly handles. 
+    For example, the following code is valid as expected,  
+    ```python  
+    import paramonte as pm
+    pmpd = pm.ParaDRAM()
+    pmpd.spec.targetAcceptanceRate = 0.23 # this is now valid
+    pmpd.spec.targetAcceptanceRate = [0.2, 0.3] # this is also valid, which limits the acceptance rate to the specified range
+    ```  
+
 +   The minimum required dependency versions are now raised to the following,  
     ```python  
     python_requires = ">=3.5"

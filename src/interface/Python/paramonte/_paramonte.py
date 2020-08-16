@@ -45,7 +45,7 @@ from _message import note, warn, abort
 import _visualization as vis
 import _statistics as stats
 import _dfutils as dfutils
-import _pmutils as pmutils
+import _pmutils as utils
 
 ####################################################################################################################################
 

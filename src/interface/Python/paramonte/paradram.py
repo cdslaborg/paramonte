@@ -1225,7 +1225,7 @@ class ParaDRAM:
             else:
                 delimiter = self.spec.outputDelimiter
 
-        FileList = _pm.pmutils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
+        FileList = _pm.utils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
 
         chainList = []
         for file in FileList:
@@ -1384,7 +1384,7 @@ class ParaDRAM:
             else:
                 delimiter = self.spec.outputDelimiter
 
-        FileList = _pm.pmutils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
+        FileList = _pm.utils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
 
         markovChainList = []
         for file in FileList:
@@ -1539,7 +1539,7 @@ class ParaDRAM:
             else:
                 delimiter = self.spec.outputDelimiter
 
-        FileList = _pm.pmutils.getFileList(file,"sample",_pm.names.paradram,self._mpiDisabled)
+        FileList = _pm.utils.getFileList(file,"sample",_pm.names.paradram,self._mpiDisabled)
 
         sampleList = []
         for file in FileList:

@@ -71,7 +71,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: query
 #endif
         implicit none
-        class(DateTime_type), intent(inout)    :: DateTime
+        class(DateTime_type), intent(inout) :: DateTime
         call date_and_time( date    = DateTime%date   &
                           , time    = DateTime%time   &
                           , zone    = DateTime%zone   &

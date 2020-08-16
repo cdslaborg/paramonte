@@ -37,6 +37,7 @@
 import os as _os
 import numpy as _np
 import sys as _sys
+from _pmutils import getList
 
 _sys.path.append(_os.path.dirname(__file__))
 
@@ -70,7 +71,7 @@ class _SpecBase():
 
     def variableNameList(self,variableNameList):
         if isinstance(variableNameList,(list,tuple)):
-            return "variableNameList=" + _delim.join("{0}".format(verifyEncloseString(_,"variableNameList["+str(i)+"]")) for i,_ in enumerate(list(variableNameList))) + _delim
+            return "variableNameList=" + _delim.join("{0}".format(verifyEncloseString(_,"variableNameList["+str(i)+"]")) for i,_ in enumerate(getList(variableNameList))) + _delim
         else:
             raise TypeError("The input specification, variableNameList, must be either a list or tuple of ndim or less elements, each element of which must be of type str.")
 
@@ -96,13 +97,13 @@ class _SpecBase():
 
     def domainLowerLimitVec(self,domainLowerLimitVec):
         if isinstance(domainLowerLimitVec,(list,tuple,_np.ndarray)):
-            return "domainLowerLimitVec=" + str(_np.array(list(domainLowerLimitVec)).flatten()).strip('[]') + _delim
+            return "domainLowerLimitVec=" + str(_np.array(getList(domainLowerLimitVec)).flatten()).strip('[]') + _delim
         else:
             raise TypeError("The input specification, domainLowerLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
 
     def domainUpperLimitVec(self,domainUpperLimitVec):
         if isinstance(domainUpperLimitVec,(list,tuple,_np.ndarray)):
-            return "domainUpperLimitVec=" + str(_np.array(list(domainUpperLimitVec)).flatten()).strip('[]') + _delim
+            return "domainUpperLimitVec=" + str(_np.array(getList(domainUpperLimitVec)).flatten()).strip('[]') + _delim
         else:
             raise TypeError("The input specification, domainUpperLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
 
@@ -120,7 +121,7 @@ class _SpecBase():
 
     def targetAcceptanceRate(self,targetAcceptanceRate):
         if isinstance(targetAcceptanceRate,(float,list,tuple,_np.ndarray)):
-            return "targetAcceptanceRate=" + str(_np.array(list(targetAcceptanceRate)).flatten()).strip('[]') + _delim
+            return "targetAcceptanceRate=" + str(_np.array(getList(targetAcceptanceRate)).flatten()).strip('[]') + _delim
         else:
             raise TypeError("The input specification, targetAcceptanceRate, must be of type float.")
 
