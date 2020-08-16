@@ -16,6 +16,9 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 +   The ParaDRAM restart output file in ASCII mode now contains all proposal updates, including the first user-specified proposal specs.
 
++   All parallel simulations now avoid the unnecessary creation of temporary files by all processors for System and OS operations. 
+    As a side effect, this will also potentially improve the runtime performances of the simulation.
+
 **Bug fixes**  
 
 +   minor typo fixes
