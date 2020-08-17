@@ -30,8 +30,9 @@
   TranGaus_mod.f90
   CrossCorr_mod.f90
   Integration_mod.f90
-  QuadPackSPR_mod.f90
-  QuadPackDPR_mod.f
+  !QuadPackSPR_mod.f90
+  !EconomicsToolbox_mod.f90
+  !QuadPackDPR_mod.f
   Cosmology_mod.f90
   StarFormation_mod.f90
   BandSpectrum_mod.f90
