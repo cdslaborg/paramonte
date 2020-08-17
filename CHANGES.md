@@ -19,6 +19,8 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 +   All parallel simulations now avoid the unnecessary creation of temporary files by all processors for System and OS operations. 
     As a side effect, this will also potentially improve the runtime performances of the simulation.
 
++   Major enhancements has been made to the parallel simulation performance analysis reported in the post-processing section of the ParaDRAM simulation output `_report.txt` files.
+
 **Bug fixes**  
 
 +   minor typo fixes

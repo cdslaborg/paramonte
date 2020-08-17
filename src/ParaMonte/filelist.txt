@@ -2,7 +2,7 @@
 ! used for building ParaMonte library.
 ! any line preceded by the exclamation mark (!) is comment and will be ignored.
 !
-  ifport.f90
+  !ifport.f90
   Constants_mod.f90
   Misc_mod.f90
   !EconomicsToolbox_mod.f90
