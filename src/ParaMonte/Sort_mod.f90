@@ -36,6 +36,8 @@ module Sort_mod
 
     implicit none
 
+    character(*), parameter :: MODULE_NAME = "@Sort_mod"
+
     interface sortAscending
         module procedure :: sortAscending_RK, sortAscending2_RK
     end interface sortAscending
@@ -48,7 +50,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    recursive subroutine sortArray(array)
+    pure recursive subroutine sortArray(array)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortArray
 #endif
@@ -107,18 +109,27 @@ contains
   
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine sortAscending_RK(np,Point)
+    pure subroutine sortAscending_RK(np,Point,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscending_RK
 #endif
         use Constants_mod, only: IK, RK
         use Misc_mod, only: swap
+        use Err_mod, only: Err_type
+
         implicit none
-        integer(IK), parameter     :: nn = 15, nstack = 100
-        integer(IK), intent(in)    :: np
-        real(RK)   , intent(inout) :: Point(np)
-        real(RK)                   :: dummy
-        integer(IK)                :: k,i,j,jstack,m,r,istack(nstack)
+
+        integer(IK)     , parameter     :: nn = 15, NSTACK = 100
+        integer(IK)     , intent(in)    :: np
+        real(RK)        , intent(inout) :: Point(np)
+        type(Err_type)  , intent(out)   :: Err
+
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@sortAscending_RK"
+        real(RK)                        :: dummy
+        integer(IK)                     :: k,i,j,jstack,m,r,istack(NSTACK)
+
+        Err%occurred = .false.
+
         jstack=0
         m = 1
         r = np
@@ -160,9 +171,10 @@ contains
                 Point(m+1) = Point(j)
                 Point(j) = dummy
                 jstack = jstack+2
-                if (jstack > nstack) then
-                    write(*,*) "sortAscending_RK() failed: nstack too small" ! xxx: needs improvement
-                    error stop
+                if (jstack > NSTACK) then
+                    Err%occurred = .true.
+                    Err%msg = PROCEDURE_NAME//": NSTACK is too small."
+                    return
                 end if
                 if (r-i+1 >= j-m) then
                     istack(jstack) = r
@@ -180,20 +192,29 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! Given Array(1:n) returns the array Indx(1:n) such that Array(Indx(j)), j=1:n is in ascending order.
-    subroutine indexArray_RK(n,Array,Indx)
+    pure subroutine indexArray_RK(n,Array,Indx,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: indexArray_RK
 #endif
         use Constants_mod, only: IK, RK
         use Misc_mod, only: swap
+        use Err_mod, only: Err_type
+
         implicit none
-        integer(IK), intent(in)  :: n
-        real(RK)   , intent(in)  :: Array(n)
-        integer(IK), intent(out) :: Indx(n)
-        integer(IK), parameter   :: nn=15, nstack=50
-        integer(IK)              :: k,i,j,indext,jstack,l,r
-        integer(IK)              :: istack(nstack)
-        real(RK)                 :: a
+
+        integer(IK)     , intent(in)    :: n
+        real(RK)        , intent(in)    :: Array(n)
+        integer(IK)     , intent(out)   :: Indx(n)
+        type(Err_type)  , intent(out)   :: Err
+
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_RK"
+        integer(IK)     , parameter     :: nn=15, NSTACK=50
+        integer(IK)                     :: k,i,j,indext,jstack,l,r
+        integer(IK)                     :: istack(NSTACK)
+        real(RK)                        :: a
+
+        Err%occurred = .false.
+
         do j = 1,n
             Indx(j) = j
         end do
@@ -240,9 +261,10 @@ contains
                 Indx(l+1)=Indx(j)
                 Indx(j)=indext
                 jstack=jstack+2
-                if (jstack > nstack) then
-                    write(*,*) "NSTACK too small in indexArray_RK()" ! xxx: needs improvement
-                    error stop
+                if (jstack > NSTACK) then
+                    Err%occurred = .true.
+                    Err%msg = PROCEDURE_NAME//": NSTACK is too small."
+                    return
                 end if
                 if (r-i+1 >= j-l) then
                     istack(jstack)=r
@@ -256,7 +278,7 @@ contains
             end if
         end do
     contains
-        subroutine exchangeIndex(i,j)
+        pure subroutine exchangeIndex(i,j)
             integer(IK), intent(inout) :: i,j
             integer(IK)                :: swp
             if (Array(j) < Array(i)) then
@@ -270,20 +292,29 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! Given Array(1:n) returns the array Indx(1:n) such that Array(Indx(j)), j=1:n is in ascending order.
-    subroutine indexArray_IK(n,Array,Indx)
+    pure subroutine indexArray_IK(n,Array,Indx,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: indexArray_IK
 #endif
         use Constants_mod, only: IK, RK
         use Misc_mod, only: swap
+        use Err_mod, only: Err_type
+
         implicit none
-        integer(IK), intent(in)  :: n
-        integer(IK), intent(in)  :: Array(n)
-        integer(IK), intent(out) :: Indx(n)
-        integer(IK), parameter   :: nn=15_IK, nstack=50_IK
-        integer(IK)              :: k,i,j,indext,jstack,l,r
-        integer(IK)              :: istack(nstack)
-        integer(IK)              :: a
+
+        integer(IK)     , intent(in)    :: n
+        integer(IK)     , intent(in)    :: Array(n)
+        integer(IK)     , intent(out)   :: Indx(n)
+        type(Err_type)  , intent(out)   :: Err
+
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_IK"
+        integer(IK)     , parameter     :: nn=15_IK, NSTACK=50_IK
+        integer(IK)                     :: k,i,j,indext,jstack,l,r
+        integer(IK)                     :: istack(NSTACK)
+        integer(IK)                     :: a
+
+        Err%occurred = .false.
+
         do j = 1,n
             Indx(j) = j
         end do
@@ -330,9 +361,10 @@ contains
                 Indx(l+1)=Indx(j)
                 Indx(j)=indext
                 jstack=jstack+2
-                if (jstack > nstack) then
-                    write(*,*) "NSTACK too small in indexArray_IK" ! xxx: needs improvement
-                    stop
+                if (jstack > NSTACK) then
+                    Err%occurred = .true.
+                    Err%msg = PROCEDURE_NAME//": NSTACK is too small."
+                    return
                 end if
                 if (r-i+1 >= j-l) then
                     istack(jstack)=r
@@ -346,7 +378,7 @@ contains
             end if
         end do
     contains
-        subroutine exchangeIndex(i,j)
+        pure subroutine exchangeIndex(i,j)
             integer(IK), intent(inout) :: i,j
             integer(IK)                :: swp
             if (Array(j) < Array(i)) then
@@ -360,16 +392,27 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! Sorts Array(1:lenArray) in ascending order using Quicksort while making the corresponding rearrangement of Slave(1:lenArray).
-    subroutine sortAscending2_RK(lenArray,Array,Slave)
+    pure subroutine sortAscending2_RK(lenArray,Array,Slave,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscending2_RK
 #endif
         use Constants_mod, only: IK, RK
+        use Err_mod, only: Err_type
+
         implicit none
-        integer(IK), intent(in) :: lenArray
-        real(RK), intent(inout) :: Array(lenArray), Slave(lenArray)
-        integer(IK) :: Indx(lenArray)
-        call indexArray_RK(lenArray,Array,Indx)
+
+        integer(IK)     , intent(in)    :: lenArray
+        real(RK)        , intent(inout) :: Array(lenArray), Slave(lenArray)
+        type(Err_type)  , intent(out)   :: Err
+
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_IK"
+        integer(IK)                     :: Indx(lenArray)
+
+        call indexArray_RK(lenArray,Array,Indx,Err)
+        if (Err%occurred) then
+            Err%msg = PROCEDURE_NAME//": NSTACK is too small."
+            return
+        end if
         Array = Array(Indx)
         Slave = Slave(Indx)
     end subroutine sortAscending2_RK

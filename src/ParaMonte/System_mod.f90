@@ -142,6 +142,26 @@ contains
         OS%Err%occurred = .false.
         OS%Err%msg = ""
 
+#if defined OS_IS_WINDOWS
+
+        OS%isWindows = .true.
+        OS%name = "Windows"
+        OS%slash = "\"
+
+#elif defined OS_IS_DARWIN
+
+        OS%isDarwin = .true.
+        OS%name = "Darwin"
+        OS%slash = "/"
+
+#elif defined OS_IS_LINUX
+
+        OS%isLinux = .true.
+        OS%name = "Linux"
+        OS%slash = "/"
+
+#else
+
         if (allocated(OS%name)) deallocate(OS%name); allocate( character(MAX_OS_NAME_LEN) :: OS%name )
         call getEnvVar( name="OS", value=OS%name, Err=OS%Err )
         if (OS%Err%occurred) then
@@ -286,6 +306,8 @@ contains
             end if blockNonWindowsOS
 
         end if blockOS
+
+#endif
 
     end subroutine queryOS
 

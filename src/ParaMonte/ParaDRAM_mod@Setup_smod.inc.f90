@@ -143,7 +143,7 @@ contains
         procedure(getLogFunc_proc)          :: getLogFunc
 
         character(*), intent(in), optional  :: inputFile
-        
+
         ! ParaMonte variables
         integer(IK) , intent(in), optional  :: sampleSize
         integer(IK) , intent(in), optional  :: randomSeed
@@ -189,7 +189,7 @@ contains
 
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME // "@runSampler()"
 
-       !type(ProposalSymmetric_type), target   :: ProposalSymmetric
+       !type(ProposalSymmetric_type), target:: ProposalSymmetric
         integer(IK)                         :: i, iq
         character(:), allocatable           :: msg, formatStr, formatStrInt, formatStrReal, formatAllReal
         real(RK)                            :: mcmcSamplingEfficiency
@@ -202,7 +202,12 @@ contains
                                 , name = PMSM%SAMPLER   &
                                 , inputFile = inputFile &
                                 )
-        if (self%Err%occurred) return
+        if (self%Err%occurred) then
+            self%Err%msg = PROCEDURE_NAME // self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+            return
+        end if
+
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Initialize ParaMCMC variables
@@ -293,6 +298,7 @@ contains
         elseif (self%SpecBase%ParallelizationModel%isMultiChain) then
             self%Image%isMaster = .true.
         else
+            self%Err%occurred = .true.
             self%Err%msg = PROCEDURE_NAME//": Error occurred. Unknown parallelism requested via the input variable parallelizationModel='"//self%SpecBase%ParallelizationModel%val//"'."
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
             return
@@ -343,15 +349,13 @@ contains
                                             , nd = ndim                 &
                                             )
 
-        if (self%Image%isMaster) then
-
-            if (self%Err%occurred) then
-                self%Err%msg = PROCEDURE_NAME // self%Err%msg
-                call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
-                return
-            end if
-
+        !if (self%Image%isMaster) then
+        if (self%Err%occurred) then
+            self%Err%msg = PROCEDURE_NAME // self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
+            return
         end if
+        !end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! setup output files
@@ -445,6 +449,7 @@ contains
                                                                     , isFreshRun    = self%isFreshRun &
                                                                     ) )
         else
+            self%Err%occurred = .true.
             self%Err%msg = PROCEDURE_NAME // ": Internal error occurred. Unsupported proposal distribution for " // self%name // "."
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
             return
@@ -457,7 +462,12 @@ contains
 #elif defined PARADISE
                 use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr
 #endif
-                if(ProposalErr%occurred) return
+                if (ProposalErr%occurred) then
+                    self%Err%occurred = .true.
+                    self%Err%msg = PROCEDURE_NAME // ProposalErr%msg
+                    call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
+                    return
+                end if
             end block
 #endif
 
@@ -474,7 +484,12 @@ contains
         end if
 
         call self%runKernel( getLogFunc = getLogFunc )
-        if(self%Err%occurred) return ! relevant only for MATLAB
+        ! relevant only for MATLAB / Python
+        if (self%Err%occurred) then
+            self%Err%msg = PROCEDURE_NAME // self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+            return
+        end if
 
         if (self%isFreshRun .and. self%Image%isMaster) then
             call self%Decor%writeDecoratedText  ( text = "\nExiting the " // self%name // " sampling - " // getNiceDateTime() // "\n" &
@@ -628,7 +643,7 @@ contains
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
             write(self%LogFile%unit,GENERIC_TABBED_FORMAT) msg
             msg = "This is the average time cost of inter-process communications per used (accepted or rejected or delayed-rejection) function call, in seconds."
-            
+            call self%reportDesc(msg)
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -645,333 +660,256 @@ contains
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.current.numProcess"
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
             write(self%LogFile%unit,GENERIC_TABBED_FORMAT) self%Image%count
+#if defined CAF_ENABLED || defined MPI_ENABLED
+            if (self%Image%count==1_IK) then
+                msg =   self%name // " " // &
+                        "is being used in parallel mode but with only one processor. This is computationally inefficient. &
+                        &Consider using the serial version of the code or provide more processes at runtime if it is beneficial."
+                call self%note  ( prefix     = self%brand   &
+                                , outputUnit = output_unit  &
+                                , newline    = NLC          &
+                                , marginTop  = 3_IK         &
+                                , marginBot  = 0_IK         &
+                                , msg        = msg          )
+            end if
+#endif
             msg = "This is the number of processes (images) used in this simulation."
             call self%reportDesc(msg)
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% begin speedup compute %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if (self%Image%count==1_IK .or. self%SpecBase%ParallelizationModel%isMultiChain) then
+            blockSpeedup: block
+
+                use Parallelism_mod, only: ForkJoin_type
+                integer(IK)                 :: imageCount
+                character(:), allocatable   :: formatIn, formatScaling
+                logical                     :: isForkJoinParallelism
+                type(ForkJoin_type)         :: ForkJoin
+                character(:), allocatable   :: undefinedInfinity
+                
+                if (self%SpecBase%ParallelizationModel%isMultiChain) then
+                    undefinedInfinity = "+INFINITY"
+                else
+                    undefinedInfinity = UNDEFINED
+                end if
+
+                isForkJoinParallelism = self%Image%count > 1_IK .and. self%SpecBase%ParallelizationModel%isSinglChain
+
+                formatScaling = "('" // INDENT // "',10(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))" ! ,:,','
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                ! compute the effective MCMC efficiency from the processor contributions and the current strong scaling
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                imageCount = 1_IK
+                if (isForkJoinParallelism) imageCount = self%Image%count
+                ForkJoin = ForkJoin_type( processCount = imageCount &
+                                        , lenProcessID = self%Stats%NumFunCall%accepted &
+                                        , ProcessID = self%Chain%ProcessID &
+                                        , successProb = mcmcSamplingEfficiency &
+                                        , seqSecTime = epsilon(1._RK) & ! time cost of the sequential section of the code, which is negligible here &
+                                        , parSecTime = self%Stats%avgTimePerFunCalInSec &
+                                        , comSecTime = self%Stats%avgCommTimePerFunCall &
+                                        )
+                if (ForkJoin%Err%occurred) then
+                    self%Err = ForkJoin%Err
+                    self%Err%msg = PROCEDURE_NAME // self%Err%msg
+                    call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                    return
+                end if
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.processContribution"
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                block
+                    integer, parameter :: NCOL = 40
+                    character(:), allocatable :: formatInteger
+                    formatInteger = "('"//INDENT//"',"//num2str(NCOL)//"(I0,:,' '))"
+                    do imageCount = 1, ForkJoin%Contribution%count, NCOL
+                        write(self%LogFile%unit,formatInteger) ForkJoin%Contribution%Frequency(imageCount:min(imageCount+NCOL-1,ForkJoin%Contribution%count))
+                    end do
+                end block
+                msg =   "These are contributions of individual processors to the construction of the MCMC chain. &
+                        &Essentially, they represent the total number of accepted states by the corresponding processor, &
+                        &starting from the first processor to the last. This information is mostly informative in parallel &
+                        &Fork-Join (singlChain) simulations."
+                call self%reportDesc(msg)
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.processContribution.geometricFit.successProbNormFac"
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                if (isForkJoinParallelism) then
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) ForkJoin%SuccessProb%PowellMinimum%xmin(1), exp(ForkJoin%SuccessProb%PowellMinimum%xmin(2))
+                else
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) UNDEFINED
+                end if
+                msg =   "These are the parameters of the Geometric fit to the distribution of the processor contributions &
+                        &to the construction of the MCMC chain (the processor contributions are reported in the first column &
+                        &of the output chain file. The fit has the following form: "//NLC//NLC// &
+                        "    ProcessConstribution(i) = successProbNormFac(1) * successProbNormFac(2) * (1-successProbNormFac(1))^(i-1)"//NLC// &
+                        "                            / (1 - (1 - successProbNormFac(1))^numProcess)"//NLC//NLC// &
+                        "where i is the ID of the processor (starting from index 1), numProcess is the total number of processors &
+                        &used in the simulation, and successProbNormFac(1) is equivalent to an effective MCMC sampling efficiency &
+                        &computed from contributions of individual processors to the MCMC chain and successProbNormFac(2) is a &
+                        &normalization constant."
+                call self%reportDesc(msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.current.speedup"
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) self%Image%count
+                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) ForkJoin%Speedup%current
                 msg = "This is the estimated maximum speedup gained via "//self%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode."
                 call self%reportDesc(msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                if (self%SpecBase%ParallelizationModel%isMultiChain) then
-                    msg = "+INFINITY"
-                else
-                    msg = UNDEFINED
-                end if
-
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.numProcess"
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) msg
+                if (isForkJoinParallelism) then
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) ForkJoin%Speedup%Maximum%nproc
+                else
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) undefinedInfinity
+                end if
                 msg = "This is the predicted optimal number of physical computing processes for "//self%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency."
                 call self%reportDesc(msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                if (self%SpecBase%ParallelizationModel%isMultiChain) then
-                    msg = "+INFINITY"
-                else
-                    msg = UNDEFINED
-                end if
-
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.speedup"
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) msg
-                msg = "This is the predicted optimal maximum speedup gained via "//self%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency."
+                if (isForkJoinParallelism) then
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) ForkJoin%Speedup%Maximum%value
+                    msg = ""
+                    if (ForkJoin%Speedup%current<1._RK) then
+                        formatIn = "(g0.6)"
+                        msg =   "The time cost of calling the user-provided objective function must be at least " // &
+                                num2str(1._RK/ForkJoin%Speedup%current,formatIn) // " times more (that is, ~" // &
+                                num2str(10**6*self%Stats%avgTimePerFunCalInSec/ForkJoin%Speedup%current,formatIn) // &
+                                " microseconds) to see any performance benefits from " // &
+                                self%SpecBase%ParallelizationModel%val // " parallelization model for this simulation. "
+                        if (ForkJoin%Speedup%Maximum%nproc==1_IK) then
+                            msg = msg// "Consider simulating in the serial mode in the future (if used within &
+                                        &the same computing environment and with the same configuration as used here)."
+                        else
+                            msg = msg// "Consider simulating on " // num2str(ForkJoin%Speedup%Maximum%nproc) // " processors in the future &
+                                        &(if used within the same computing environment and with the same configuration as used here)."
+                        end if
+                        call self%note  ( prefix   = self%brand     &
+                                        , outputUnit = output_unit  &
+                                        , newline    = NLC          &
+                                        , marginTop  = 3_IK         &
+                                        , marginBot  = 0_IK         &
+                                        , msg        = msg          )
+                        msg = NLC // msg
+                    end if
+                else
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) undefinedInfinity
+                end if
+                msg = "This is the predicted optimal maximum speedup gained via "//self%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency." // msg
                 call self%reportDesc(msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                if (self%SpecBase%ParallelizationModel%isMultiChain) then
-                    msg = "+INFINITY"
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.scaling.strong.speedup"
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                if (isForkJoinParallelism) then
+                    do imageCount = 1, ForkJoin%Speedup%count, 10
+                        write(self%LogFile%unit,formatScaling) ForkJoin%Speedup%Scaling(imageCount:min(imageCount+9_IK,ForkJoin%Speedup%count))
+                    end do
                 else
-                    msg = UNDEFINED
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) UNDEFINED
                 end if
+                msg =   "This is the predicted strong-scaling speedup behavior of the "//self%SpecBase%ParallelizationModel%val//" parallelization model, &
+                        &given the current MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."
+                call self%reportDesc(msg)
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                ! compute the absolute optimal parallelism efficiency under any MCMC sampling efficiency
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                if (isForkJoinParallelism) then
+                    ForkJoin = ForkJoin_type( processCount = self%Image%count &
+                                            , lenProcessID = self%Stats%NumFunCall%accepted &
+                                            , ProcessID = self%Chain%ProcessID &
+                                            , successProb = 0._RK &
+                                            , seqSecTime = epsilon(1._RK) & ! time cost of the sequential section of the code, which is negligible here &
+                                            , parSecTime = self%Stats%avgTimePerFunCalInSec &
+                                            , comSecTime = self%Stats%avgCommTimePerFunCall &
+                                            )
+                    if (ForkJoin%Err%occurred) then
+                        self%Err = ForkJoin%Err
+                        self%Err%msg = PROCEDURE_NAME // self%Err%msg
+                        call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                        return
+                    end if
+                end if ! otherwise, use the previously-generated ForkJoin
+
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.numProcess"
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) msg
+                if (isForkJoinParallelism) then
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) ForkJoin%Speedup%Maximum%nproc
+                else
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) undefinedInfinity
+                end if
                 msg = "This is the predicted absolute optimal number of physical computing processes for "//self%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency."
                 call self%reportDesc(msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                if (self%SpecBase%ParallelizationModel%isMultiChain) then
-                    msg = "+INFINITY"
-                else
-                    msg = UNDEFINED
-                end if
-
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.speedup"
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) msg
-#if defined CAF_ENABLED || defined MPI_ENABLED
-                if (self%Image%count==1_IK) then
-                    msg = self%name// " is being used in parallel mode but with only one processor. This is computationally inefficient. &
-                                    &Consider using the serial version of the code or provide more processes at runtime."
-                    call self%note  ( prefix     = self%brand   &
-                                    , outputUnit = output_unit  &
-                                    , newline    = NLC          &
-                                    , marginTop  = 3_IK         &
-                                    , marginBot  = 0_IK         &
-                                    , msg        = msg          )
+                if (isForkJoinParallelism) then
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) ForkJoin%Speedup%Maximum%value
+                else
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) undefinedInfinity
                 end if
-#endif
-                msg = "This is the predicted absolute optimal maximum speedup gained via "//self%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency."//NLC//msg
+                msg =   "This is the predicted absolute optimal maximum speedup gained via "//self%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency. &
+                        &This simulation will likely NOT benefit from any additional computing processors beyond the predicted absolute optimal number, " // num2str(ForkJoin%Speedup%Maximum%nproc) // ", &
+                        &in the above. This is true for any value of MCMC sampling efficiency. Keep in mind that the predicted absolute optimal number of processors is just an estimate &
+                        &whose accuracy depends on many runtime factors, including the topology of the communication network being used, the number of processors per node, &
+                        &and the number of tasks to each processor or node."
                 call self%reportDesc(msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if defined CAF_ENABLED || defined MPI_ENABLED
-            else
-
-                block
-
-                    use Statistics_mod, only: getGeoLogPDF
-
-                    ! required for GeoPDF fitting
-
-                    use Misc_mod, only: findUnique
-                    use Sort_mod, only: indexArray
-                    use Statistics_mod, only: fitGeoLogPDF
-                    use Optimization_mod, only: PowellMinimum_type
-                    type(PowellMinimum_type)    :: PowellMinimum
-                    integer(IK) , allocatable   :: UniqueProcessorID(:), UniqueProcessorCount(:), Indx(:)
-                    integer(IK)                 :: lenUniqueProcessorID
-
-                    ! required for parallel speedup computation
-
-                    logical                     :: maxSpeedupFound
-                    integer(IK)                 :: imageCount, maxSpeedupImageCount, lenGeoPDF
-                    real(RK)                    :: seqSecTime, parSecTime, comSecTime, serialTime, avgCommTimePerFunCallPerNode
-                    real(RK)                    :: currentSpeedup, maxSpeedup
-                    real(RK)                    :: speedup, firstImageWeight
-                    real(RK)    , allocatable   :: GeoPDF(:), SpeedupVec(:), TempVec(:)
-                    character(:), allocatable   :: formatIn, formatScaling
-
-                    formatScaling = "('" // INDENT // "',10(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))" ! ,:,','
-
-                    ! fit the Geometric PDF
-
-                    call findUnique ( lenVector = self%Stats%NumFunCall%accepted &
-                                    , Vector = self%Chain%ProcessID &
-                                    , UniqueValue = UniqueProcessorID &
-                                    , UniqueCount = UniqueProcessorCount &
-                                    , lenUnique = lenUniqueProcessorID &
-                                    )
-                    !maxContributorProcessorID = UniqueProcessorID(maxloc(UniqueProcessorCount))
-                    allocate(Indx(lenUniqueProcessorID))
-                    call indexArray( n = lenUniqueProcessorID, Array = UniqueProcessorID, Indx = Indx )
-                    PowellMinimum = fitGeoLogPDF(lenLogCount = lenUniqueProcessorID, LogCount = log(real(UniqueProcessorCount(Indx),kind=RK)) )
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.processorContribution.geometricFit.successProbNormFac"
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) PowellMinimum%xmin(1), exp(PowellMinimum%xmin(2))
-                    msg =   "These are the parameters of the Geometric fit to the distribution of the processor contributions &
-                            &to the construction of the MCMC chain (the processor contributions are reported in the first column &
-                            &of the output chain file. The fit has the following form: "//NLC//NLC// &
-                            "    ProcessorConstribution(i) = successProbNormFac(1) * successProbNormFac(2) * (1-successProbNormFac(1))^(i-1)"//NLC//NLC// &
-                            "where i is the ID of the processor (starting from index 1) and, successProbNormFac(1) is equivalent to an effective &
-                            &MCMC sampling efficiency computed from contributions of individual processors to the MCMC chain and &
-                            &successProbNormFac(2) is a normalization constant."
-                    call self%reportDesc(msg)
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    ! predict the speedup
-
-                    !GeoPDF = exp(getGeoLogPDF(successProb=mcmcSamplingEfficiency,minSeqLen=10*self%Image%count))
-                    GeoPDF = exp( getGeoLogPDF  ( successProb = max(mcmcSamplingEfficiency, PowellMinimum%xmin(1)) & ! avoids unstable estimates of effective efficiency.
-                                                , minSeqLen = 10*self%Image%count) &
-                                                !, seqLen = 10*self%Image%count) &
-                                                )
-                    lenGeoPDF = size(GeoPDF)
-
-                    ! compute the serial and sequential runtime of the code per function call
-
-                    seqSecTime = epsilon(seqSecTime) ! time cost of the sequential section of the code, which is negligible here
-                    serialTime = self%Stats%avgTimePerFunCalInSec + seqSecTime ! serial runtime of the code per function call
-
-                    ! compute the communication overhead for each additional image beyond master
-
-                    avgCommTimePerFunCallPerNode = self%Stats%avgCommTimePerFunCall / real(self%Image%count-1_IK,kind=RK)
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                    ! compute the optimal parallelism efficiency with the current MCMC sampling efficiency
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    ! compute fraction of points sampled by the first image
-
-                    maxSpeedup = 1._RK
-                    maxSpeedupImageCount = 1_IK
-                    if (allocated(SpeedupVec)) deallocate(SpeedupVec); allocate(SpeedupVec(lenGeoPDF))
-                    SpeedupVec(1) = 1._RK
-                    loopOptimalImageCount: do imageCount = 2, lenGeoPDF
-                        firstImageWeight = sum(GeoPDF(1:lenGeoPDF:imageCount))
-                        parSecTime = self%Stats%avgTimePerFunCalInSec * firstImageWeight    ! parallel-section runtime of the code per function call
-                        comSecTime = (imageCount-1_IK) * avgCommTimePerFunCallPerNode       ! assumption: communication time grows linearly with the number of nodes
-                        SpeedupVec(imageCount) = serialTime / (seqSecTime+parSecTime+comSecTime)
-                        maxSpeedup = max( maxSpeedup , SpeedupVec(imageCount) )
-                        if (maxSpeedup==SpeedupVec(imageCount)) maxSpeedupImageCount = imageCount
-                        if (imageCount==self%Image%count) then
-                            currentSpeedup = SpeedupVec(imageCount)
-                            !if (maxSpeedup/=SpeedupVec(imageCount)) exit loopOptimalImageCount
-                        end if
-                    end do loopOptimalImageCount
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.current.speedup"
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) currentSpeedup
-                    msg = "This is the estimated maximum speedup gained via "//self%SpecBase%ParallelizationModel%val//" parallelization model compared to serial mode."
-                    call self%reportDesc(msg)
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.numProcess"
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) maxSpeedupImageCount
-                    msg = "This is the predicted optimal number of physical computing processes for "//self%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency."
-                    call self%reportDesc(msg)
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.speedup"
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) maxSpeedup
-                    msg = ""
-                    if (currentSpeedup<1._RK) then
-                        formatIn = "(g0.6)"
-                        msg =   "The time cost of calling the user-provided objective function must be at least " // &
-                                num2str(1._RK/currentSpeedup,formatIn) // " times more (that is, ~" // &
-                                num2str(10**6*self%Stats%avgTimePerFunCalInSec/currentSpeedup,formatIn) // &
-                                " microseconds) to see any performance benefits from " // &
-                                self%SpecBase%ParallelizationModel%val // " parallelization model for this simulation. "
-                        if (maxSpeedupImageCount==1_IK) then
-                            msg = msg// "Consider simulating in the serial mode in the future (if used within &
-                                        &the same computing environment and with the same configuration as used here)."
-                        else
-                            msg = msg// "Consider simulating on " // num2str(maxSpeedupImageCount) // " processors in the future &
-                                        &(if used within the same computing environment and with the same configuration as used here)."
-                        end if
-                        call self%note( prefix     = self%brand         &
-                                    , outputUnit = output_unit      &
-                                    , newline    = NLC              &
-                                    , marginTop  = 3_IK             &
-                                    , marginBot  = 0_IK             &
-                                    , msg        = msg              )
-                        msg = NLC // msg
-                    end if
-                    msg = "This is the predicted optimal maximum speedup gained via "//self%SpecBase%ParallelizationModel%val//" parallelization model, given the current MCMC sampling efficiency." // msg
-                    call self%reportDesc(msg)
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.current.scaling.strong.speedup"
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    !write(self%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lenGeoPDF)
-                    !write(self%LogFile%unit,formatStrReal) "speedup" , (SpeedupVec(imageCount), imageCount = 1, lenGeoPDF)
-                    do imageCount = 1, lenGeoPDF, 10
-                        write(self%LogFile%unit,formatScaling) SpeedupVec(imageCount:min(imageCount+9_IK,lenGeoPDF))
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.scaling.strong.speedup"
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                if (isForkJoinParallelism) then
+                    do imageCount = 1, ForkJoin%Speedup%count, 10
+                        write(self%LogFile%unit,formatScaling) ForkJoin%Speedup%Scaling(imageCount:min(imageCount+9_IK,ForkJoin%Speedup%count))
                     end do
-                    msg =   "This is the predicted strong-scaling speedup behavior of the "//self%SpecBase%ParallelizationModel%val//" parallelization model, &
-                            &given the current MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."
-                    call self%reportDesc(msg)
+                else
+                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) UNDEFINED
+                end if
+                msg =   "This is the predicted absolute strong-scaling speedup behavior of the "//self%SpecBase%ParallelizationModel%val//" parallelization model, &
+                        &under any MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."
+                call self%reportDesc(msg)
 
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                    ! compute the absolute optimal parallelism efficiency under any MCMC sampling efficiency
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    imageCount = 1_IK
-                    maxSpeedup = 1._RK
-                    maxSpeedupImageCount = 1_IK
-                    SpeedupVec(1) = 1._RK
-                    maxSpeedupFound = .false.
-                    lenGeoPDF = size(SpeedupVec)
-                    loopAbsoluteOptimalImageCount: do 
-                        imageCount = imageCount + 1_IK
-                        if (imageCount>lenGeoPDF) then
-                            if (maxSpeedupFound) exit loopAbsoluteOptimalImageCount
-                            lenGeoPDF = 2_IK * lenGeoPDF
-                            if (allocated(TempVec)) deallocate(TempVec); allocate(TempVec(lenGeoPDF))
-                            TempVec(1:lenGeoPDF/2_IK) = SpeedupVec
-                            call move_alloc(TempVec,SpeedupVec)
-                        end if
-                        parSecTime = self%Stats%avgTimePerFunCalInSec / imageCount
-                        comSecTime = (imageCount-1_IK) * avgCommTimePerFunCallPerNode  ! assumption: communication time grows linearly with the number of nodes
-                        SpeedupVec(imageCount) = serialTime / (seqSecTime+parSecTime+comSecTime)
-                        if (.not.maxSpeedupFound .and. maxSpeedup>SpeedupVec(imageCount)) then
-                            maxSpeedupImageCount = imageCount - 1_IK
-                            maxSpeedupFound = .true.
-                            !exit loopAbsoluteOptimalImageCount
-                        end if
-                        maxSpeedup = max( maxSpeedup , SpeedupVec(imageCount) )
-                    end do loopAbsoluteOptimalImageCount
+            end block blockSpeedup
 
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.numProcess"
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) maxSpeedupImageCount
-                    msg = "This is the predicted absolute optimal number of physical computing processes for "//self%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency."
-                    call self%reportDesc(msg)
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.speedup"
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_TABBED_FORMAT) maxSpeedup
-                    msg =   "This is the predicted absolute optimal maximum speedup gained via "//self%SpecBase%ParallelizationModel%val//" parallelization model, under any MCMC sampling efficiency. &
-                            &This simulation will likely NOT benefit from any additional computing processors beyond the predicted absolute optimal number, " // num2str(maxSpeedupImageCount) // ", &
-                            &in the above. This is true for any value of MCMC sampling efficiency. Keep in mind that the predicted absolute optimal number of processors is just an estimate &
-                            &whose accuracy depends on many runtime factors, including the topology of the communication network being used, the number of processors per node, &
-                            &and the number of tasks to each processor or node."
-                    call self%reportDesc(msg)
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.scaling.strong.speedup"
-                    write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                    !write(self%LogFile%unit,formatStrInt) "numProcess", (imageCount, imageCount = 1, lenGeoPDF)
-                    !write(self%LogFile%unit,formatStrReal)"speedup"   , (SpeedupVec(imageCount), imageCount = 1, lenGeoPDF)
-                    do imageCount = 1, lenGeoPDF, 10
-                        write(self%LogFile%unit,formatScaling) SpeedupVec(imageCount:min(imageCount+9_IK,lenGeoPDF))
-                    end do
-                    msg =   "This is the predicted absolute strong-scaling speedup behavior of the "//self%SpecBase%ParallelizationModel%val//" parallelization model, &
-                            &under any MCMC sampling efficiency, for increasing numbers of processes, starting from a single process."
-                    call self%reportDesc(msg)
-
-                    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                end block
-#endif
-            end if
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% end speedup compute %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.compact.burnin.location.likelihoodBased"
@@ -1060,18 +998,18 @@ contains
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if (self%Image%isFirst) then
-                call self%note( prefix        = self%brand          &
-                            , outputUnit    = output_unit       &
-                            , newline       = NLC               &
-                            , marginTop     = 3_IK              &
-                            , msg           = "Computing the statistical properties of the Markov chain..." )
+                call self%note  ( prefix        = self%brand    &
+                                , outputUnit    = output_unit   &
+                                , newline       = NLC           &
+                                , marginTop     = 3_IK          &
+                                , msg           = "Computing the statistical properties of the Markov chain..." )
             end if
 
-            call self%Decor%writeDecoratedText( text = "\nThe statistical properties of the Markov chain\n" &
-                                            , marginTop = 1_IK  &
-                                            , marginBot = 1_IK  &
-                                            , newline = "\n"    &
-                                            , outputUnit = self%LogFile%unit )
+            call self%Decor%writeDecoratedText  ( text = "\nThe statistical properties of the Markov chain\n" &
+                                                , marginTop = 1_IK  &
+                                                , marginBot = 1_IK  &
+                                                , newline = "\n"    &
+                                                , outputUnit = self%LogFile%unit )
 
             self%Stats%Chain%count = sum(self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact))
 
@@ -1103,7 +1041,7 @@ contains
             if (allocated(self%Stats%Chain%Quantile)) deallocate(self%Stats%Chain%Quantile)
             allocate(self%Stats%Chain%Quantile(QPROB%count,ndim))
             do i = 1, ndim
-                self%Stats%Chain%Quantile(1:QPROB%count,i) = getQuantile  ( np = self%Chain%count%compact - self%Stats%BurninLoc%compact + 1_IK &
+                self%Stats%Chain%Quantile(1:QPROB%count,i) = getQuantile( np = self%Chain%count%compact - self%Stats%BurninLoc%compact + 1_IK &
                                                                         , nq = QPROB%count &
                                                                         , SortedQuantileProbability = QPROB%Value &
                                                                         , Point = self%Chain%State(i,self%Stats%BurninLoc%compact:self%Chain%count%compact) &
@@ -1300,7 +1238,7 @@ contains
                                 , msg           = "Generating the output " // self%SampleFile%suffix // " file:"//NLC // self%SampleFile%Path%original )
 
 
-                if (self%Image%isFirst) then 
+                if (self%Image%isFirst) then
 
                     ! print the message for the generating the output sample file on the first image
 
@@ -1606,6 +1544,7 @@ contains
 
                         RefinedChainThisImage = readRefinedChain( sampleFilePath=self%SampleFile%Path%original, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim )
                         if (RefinedChainThisImage%Err%occurred) then
+                            self%Err%occurred = .true.
                             self%Err%msg = PROCEDURE_NAME//RefinedChainThisImage%Err%msg
                             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                             return
@@ -1616,7 +1555,13 @@ contains
                         do i = 0, ndim
                             call sortAscending  ( np = RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose &
                                                 , Point = RefinedChainThisImage%LogFuncState(1:RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose,i) &
+                                                , Err = self%Err &
                                                 )
+                            if (self%Err%occurred) then
+                                self%Err%msg = PROCEDURE_NAME//self%Err%msg
+                                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                                return
+                            end if
                         end do
 
                         ! compute and report the KS convergence probabilities for all images
@@ -1642,6 +1587,7 @@ contains
 
                                 RefinedChainThatImage = readRefinedChain( sampleFilePath=inputSamplePath, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim )
                                 if (RefinedChainThatImage%Err%occurred) then
+                                    self%Err%occurred = .true.
                                     self%Err%msg = PROCEDURE_NAME//RefinedChainThatImage%Err%msg
                                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                                     return
@@ -1653,7 +1599,13 @@ contains
 
                                     call sortAscending  ( np = RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose &
                                                         , Point = RefinedChainThatImage%LogFuncState(1:RefinedChainThatImage%Count(RefinedChainThatImage%numRefinement)%verbose,i) &
+                                                        , Err = self%Err &
                                                         )
+                                    if (self%Err%occurred) then
+                                        self%Err%msg = PROCEDURE_NAME//self%Err%msg
+                                        call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                                        return
+                                    end if
 
                                     ! compute the inter-chain KS probability table
 
@@ -1925,7 +1877,7 @@ contains
                     close(unit=self%InputFile%unit,iostat=self%InputFile%Err%stat)
                     self%Err = self%InputFile%getCloseErr(self%InputFile%Err%stat)
                     if (self%Err%occurred) then
-                        self%Err%msg =    PROCEDURE_NAME // ": Error occurred while attempting to close the user-provided input file='" // &
+                        self%Err%msg =  PROCEDURE_NAME // ": Error occurred while attempting to close the user-provided input file='" // &
                                         self%InputFile%Path%modified // "', unit=" // num2str(self%InputFile%unit) // ".\n" // &
                                         self%Err%msg
                         return
@@ -1944,7 +1896,7 @@ contains
                     )
                 self%Err = self%InputFile%getOpenErr(self%InputFile%Err%stat)
                 if (self%Err%occurred) then
-                    self%Err%msg =    PROCEDURE_NAME // ": Error occurred while attempting to open the user-provided input file='" // &
+                    self%Err%msg =  PROCEDURE_NAME // ": Error occurred while attempting to open the user-provided input file='" // &
                                     self%InputFile%Path%modified // "', unit=" // num2str(self%InputFile%unit) // ".\n" // &
                                     self%Err%msg
                     return
@@ -1971,7 +1923,7 @@ contains
                 close(unit=self%InputFile%unit,iostat=self%InputFile%Err%stat)
                 self%Err = self%InputFile%getCloseErr(self%InputFile%Err%stat)
                 if (self%Err%occurred) then
-                    self%Err%msg =    PROCEDURE_NAME // ": Error occurred while attempting to close the user-provided input file='" // &
+                    self%Err%msg =  PROCEDURE_NAME // ": Error occurred while attempting to close the user-provided input file='" // &
                                     self%InputFile%Path%modified // "', unit=" // num2str(self%InputFile%unit) // ".\n" // &
                                     self%Err%msg
                     return

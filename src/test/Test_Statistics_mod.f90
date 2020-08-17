@@ -176,11 +176,16 @@ contains
         real(RK), parameter     :: REFERENCE_PROB_KS = 0.056045859714425_RK
         real(RK), parameter     :: REFERENCE_STAT_KS = 0.260000000000000_RK
         real(RK)                :: difference, statKS, probKS
+        type(Err_type)          :: Err
 
         if (Test%Image%isFirst) call Test%testing("doSortedKS2()")
 
-        call sortAscending( np = NDATA, Point = StdNormRnd1 )
-        call sortAscending( np = NDATA, Point = StdNormRnd2 )
+        call sortAscending( np = NDATA, Point = StdNormRnd1, Err = Err )
+        if (Err%occurred) then; Test%assertion = .false.; call Test%verify(); end if
+
+        call sortAscending( np = NDATA, Point = StdNormRnd2, Err = Err )
+        if (Err%occurred) then; Test%assertion = .false.; call Test%verify(); end if
+        
 
         call doSortedKS2( np1 = NDATA &
                         , np2 = NDATA &
