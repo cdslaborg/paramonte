@@ -2311,10 +2311,10 @@ contains
             end if
             LogProbGeoCyclic = logProbSuccess + (SuccessStep-1) * logProbFailure - logDenominator
         elseif (successProb==0._RK) then
-            LogProbGeoCyclic = 1._RK / maxNumTrial
+            LogProbGeoCyclic = -log(real(maxNumTrial,kind=RK))
         elseif (successProb==1._RK) then
-            LogProbGeoCyclic(1) = 1._RK
-            LogProbGeoCyclic(2:numTrial) = 0._RK
+            LogProbGeoCyclic(1) = 0._RK
+            LogProbGeoCyclic(2:numTrial) = NEGLOGINF_RK
         else
             LogProbGeoCyclic = NEGLOGINF_RK
         end if

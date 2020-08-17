@@ -302,13 +302,12 @@ contains
             if (successProb==0._RK) then
                 FirstImageContribution(1) = 1._RK / numProc
             else
-            end if
                 FirstImageContribution = exp(getLogProbGeoCyclic( successProb = successProb &
                                                                 , maxNumTrial = numProc &
                                                                 , numTrial = 1_IK &
                                                                 , SuccessStep = [1_IK] &
                                                                 ) )
-write(*,*) 1._RK / numProc, FirstImageContribution(1)
+            end if
 
             ! effective runtime of the parallel-section of the code, when executed in parallel on numProc processes
 
