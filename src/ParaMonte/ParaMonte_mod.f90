@@ -243,7 +243,7 @@ contains
 
         self%nd%str = num2str(self%nd%val)
 
-        ! determine OS
+        ! determine OS. Should be only needed by the Master processes. But apparently not.
 
         call self%OS%query()
         if (self%OS%Err%occurred) then
@@ -253,20 +253,7 @@ contains
             return
         end if
 
-        ! get system info by all images
-
-        block
-            use Constants_mod, only: IK
-            use System_mod, only: SystemInfo_type
-            integer(IK) :: irecord
-            self%SystemInfo = SystemInfo_type(OS=self%OS)
-            if (self%SystemInfo%Err%occurred) then
-                self%Err = self%SystemInfo%Err
-                self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
-                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
-                return
-            end if
-        end block
+        ! This is where SystemInfo used to live, but not anymore.
 
         blockSplashByFirstImage: if (self%Image%isFirst) then
             call self%addSplashScreen()
@@ -381,13 +368,15 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: addCompilerPlatformInfo
 #endif
         use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
+        use Constants_mod, only: NLC
         implicit none
         class(ParaMonte_type), intent(inout)    :: self
         integer(IK)                             :: i, j
 
+        character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@addCompilerPlatformInfo()"
+
         ! report the interface type to ParaMonte
 
-!#if defined CFI_ENABLED
         call self%Decor%writeDecoratedText  ( text="\nParaMonte library interface specifications\n" &
                                             , symbol="*" &
                                             , width=132 &
@@ -399,10 +388,9 @@ contains
                                             , newLine="\n" &
                                             )
         self%Decor%List = self%Decor%wrapText( self%SpecBase%InterfaceType%val , 132 )
-        do i = 1,size(self%Decor%List)
+        do i = 1, size(self%Decor%List)
             write(self%LogFile%unit,"(*(g0))") self%Decor%List(i)%record
         end do
-!#endif
 
         ! report the ParaMonte compiler version and options
 
@@ -446,6 +434,20 @@ contains
                                             , outputUnit=self%LogFile%unit &
                                             , newLine="\n" &
                                             )
+
+        ! Get system info by all images. why? Not anymore.
+        ! On many parallel processors via singlChain this leads to 
+        ! the creation of thousands of files on the system, simultaneously.
+        ! this is not needed by any process other than the masters.
+
+        self%SystemInfo = SystemInfo_type(OS=self%OS)
+        if (self%SystemInfo%Err%occurred) then
+            self%Err = self%SystemInfo%Err
+            self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+            return
+        end if
+
         do j = 1, self%SystemInfo%nRecord
             self%Decor%List = self%Decor%wrapText( self%SystemInfo%List(j)%record , 132 )
             do i = 1,size(self%Decor%List)

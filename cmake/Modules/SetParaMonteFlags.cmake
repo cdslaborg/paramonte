@@ -430,6 +430,19 @@ endif()
 set( Python_PATH "" CACHE STRING "Path to the Python interpreter" )
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# ParaMonte OS Preprocessor Flag
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if(WIN32)
+    set( FPP_OS_FLAG -DOS_IS_WINDOWS )
+#elseif(if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+elseif(APPLE)
+    set( FPP_OS_FLAG -DOS_IS_DARWIN )
+elseif(UNIX AND NOT APPLE)
+    set( FPP_OS_FLAG -DOS_IS_LINUX )
+endif()
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # ParaMonte Version Preprocessor Flag
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -442,10 +455,10 @@ endif()
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if (CFI_ENABLED)
-    set( FPP_CFI_FLAG -DCFI_ENABLED  CACHE STRING "Path to the Python interpreter" )
+    set( FPP_CFI_FLAG -DCFI_ENABLED CACHE STRING "C-Fortran interoperability flag" )
     #add_definitions(${FPP_CFI_FLAG})
 else()
-    set( FPP_CFI_FLAG  CACHE STRING "Path to the Python interpreter" )
+    set( FPP_CFI_FLAG  CACHE STRING "C-Fortran interoperability flag" )
 endif()
 
 if (${INTERFACE_LANGUAGE} MATCHES "[cC]")
@@ -569,7 +582,7 @@ elseif (gnu_compiler)
     set( FPP_FLAGS -cpp )
 endif()
 set(FPP_FLAGS 
-    "${FPP_PARAMONTE_VERSION_FLAG}" "${FPP_FLAGS}" "${FPP_CFI_FLAG}" "${FPP_LANG_FLAG}" "${FPP_BUILD_FLAGS}" "${FPP_FCL_FLAGS}" "${FPP_DLL_FLAGS}" "${USER_PREPROCESSOR_MACROS}"
+    "${FPP_PARAMONTE_VERSION_FLAG}" "${FPP_FLAGS}" "${FPP_OS_FLAG}" "${FPP_CFI_FLAG}" "${FPP_LANG_FLAG}" "${FPP_BUILD_FLAGS}" "${FPP_FCL_FLAGS}" "${FPP_DLL_FLAGS}" "${USER_PREPROCESSOR_MACROS}"
     CACHE STRING "Fortran compiler preprocessor flags" FORCE )
 #add_definitions(${FPP_FLAGS})
 

@@ -1984,7 +1984,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getUpperCorMatFromUpperCovMat(nd,CovMatUpper) result(CorMat)
+    pure function getUpperCorMatFromUpperCovMat(nd,CovMatUpper) result(CorMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCorMatFromUpperCovMat
 #endif
@@ -2004,7 +2004,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getUpperCovMatFromUpperCorMat(nd,StdVec,CorMat) result(CovMat)
+    pure function getUpperCovMatFromUpperCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCovMatFromUpperCorMat
 #endif
@@ -2023,7 +2023,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getUpperCovMatFromLowerCorMat(nd,StdVec,CorMat) result(CovMat)
+    pure function getUpperCovMatFromLowerCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCovMatFromLowerCorMat
 #endif
@@ -2042,7 +2042,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getLowerCovMatFromUpperCorMat(nd,StdVec,CorMat) result(CovMat)
+    pure function getLowerCovMatFromUpperCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCovMatFromUpperCorMat
 #endif
@@ -2061,7 +2061,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getLowerCovMatFromLowerCorMat(nd,StdVec,CorMat) result(CovMat)
+    pure function getLowerCovMatFromLowerCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCovMatFromLowerCorMat
 #endif
@@ -2080,7 +2080,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getCovMatFromCorMat(nd,StdVec,CorMat) result(CovMat)
+    pure function getCovMatFromCorMat(nd,StdVec,CorMat) result(CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMatFromCorMat
 #endif
@@ -2100,9 +2100,9 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getGeoLogPDF(successProb,logPdfPrecision,minSeqLen,seqLen) result(GeoLogPDF)
+    function getGeoLogPDF_old(successProb,logPdfPrecision,minSeqLen,seqLen) result(GeoLogPDF)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getGeoLogPDF
+        !DEC$ ATTRIBUTES DLLEXPORT :: getGeoLogPDF_old
 #endif
         !   return the Geometric distribution PDF values for a range of trials, starting at index 1.
         !   If the probability of success on each trial is successProb,
@@ -2144,48 +2144,63 @@ contains
         integer(IK) , intent(in), optional  :: seqLen
         real(RK)    , allocatable           :: GeoLogPDF(:)
         real(RK)    , parameter             :: LOG_PDF_PRECISION = log(0.001_RK)
-        real(RK)                            :: logFailureProb
+        real(RK)                            :: logProbFailure
         integer(IK)                         :: lenGeoLogPDF, i
-        logFailureProb = log(1._RK - successProb)
+        logProbFailure = log(1._RK - successProb)
         if (present(seqLen)) then
             lenGeoLogPDF = seqLen
         else
             if (present(logPdfPrecision)) then
-                lenGeoLogPDF = ceiling(  logPdfPrecision / logFailureProb)
+                lenGeoLogPDF = ceiling(  logPdfPrecision / logProbFailure)
             else
-                lenGeoLogPDF = ceiling(LOG_PDF_PRECISION / logFailureProb)
+                lenGeoLogPDF = ceiling(LOG_PDF_PRECISION / logProbFailure)
             end if
             if (present(minSeqLen)) lenGeoLogPDF = max(minSeqLen,lenGeoLogPDF)
         end if
         allocate(GeoLogPDF(lenGeoLogPDF))
         GeoLogPDF(1) = log(successProb)
         do i = 2, lenGeoLogPDF
-            GeoLogPDF(i) = GeoLogPDF(i-1) + logFailureProb
+            GeoLogPDF(i) = GeoLogPDF(i-1) + logProbFailure
         end do
-    end function getGeoLogPDF
+    end function getGeoLogPDF_old
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function fitGeoLogPDF(lenLogCount,LogCount) result(PowellMinimum)
+    pure function getLogProbGeo(numTrial, SuccessStep, successProb) result(LogProbGeo)
+        use Constants_mod, only: IK, RK
+        implicit none
+        integer(IK) , intent(in)    :: numTrial
+        integer(IK) , intent(in)    :: SuccessStep(numTrial)
+        real(RK)    , intent(in)    :: successProb
+        real(RK)                    :: LogProbGeo(numTrial)
+        real(RK)                    :: logProbSuccess, logProbFailure
+        logProbSuccess = log(successProb)
+        logProbFailure = log(1._RK - successProb)
+        LogProbGeo = logProbSuccess + (SuccessStep-1_IK) * logProbFailure
+    end function getLogProbGeo
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function fitGeoLogPDF_old(numTrial, SuccessStep, LogCount) result(PowellMinimum)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF
+        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF_old
 #endif
         !
         !   return a fit of the Geometric distribution PDF to the input natural logarithm of a sequence of Counts, 
-        !   the ith element of which represents the number of successes after i tries in a Bernoulli trail.
+        !   the ith element of which represents the number of successes after SuccessStep(i) tries in a Bernoulli trail.
         !   It is assumed that the input LogCount represents a sequence of counts at
         !   the first success is GeoLogPDF(k).
         !
         !   Input
         !
-        !       lenLogCount
+        !       numTrial
         !
         !           The length of the input vector LogCount
         !
         !       LogCount
         !
         !           A vector of real values representing the natural logarithms of the counts of success at each Bernoulli trial, 
-        !           sequentially, from 1 to lenLogCount.
+        !           sequentially, from 1 to numTrial.
         !
         !   Output
         !
@@ -2197,8 +2212,9 @@ contains
         use Optimization_mod, only: PowellMinimum_type
         use Constants_mod, only: IK, RK, POSINF_RK, NEGINF_RK
         implicit none
-        integer(IK) , intent(in)    :: lenLogCount
-        real(RK)    , intent(in)    :: LogCount(lenLogCount)
+        integer(IK) , intent(in)    :: numTrial
+        integer(IK) , intent(in)    :: SuccessStep(numTrial)
+        real(RK)    , intent(in)    :: LogCount(numTrial)
         type(PowellMinimum_type)    :: PowellMinimum
 
         real(RK)                    :: BestFitSuccessProbNormFac(2) ! vector of the two parameters
@@ -2224,10 +2240,167 @@ contains
             real(RK)    , intent(in)    :: successProbFisherTransNormFac(ndim)
             real(RK)                    :: sumDistSq, successProb
             successProb = 0.5_RK*tanh(successProbFisherTransNormFac(1)) + 0.5_RK ! reverse Fisher-transform
-            sumDistSq = sum( (LogCount - getGeoLogPDF(successProb=successProb,seqLen=lenLogCount) - successProbFisherTransNormFac(2) )**2 )
+            !sumDistSq = sum( (LogCount - getGeoLogPDF(successProb=successProb,seqLen=numTrial) - successProbFisherTransNormFac(2) )**2 )
+            sumDistSq = sum(    ( LogCount &
+                                - numTrial * successProbFisherTransNormFac(2) &
+                                - getLogProbGeo(numTrial = numTrial, SuccessStep = SuccessStep, successProb = successProb) &
+                                )**2 &
+                            )
         end function getSumDistSq
 
-    end function fitGeoLogPDF
+    end function fitGeoLogPDF_old
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    pure function getLogProbGeoCyclic(successProb,maxNumTrial,numTrial,SuccessStep) result(LogProbGeoCyclic)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGeoCyclic
+#endif
+        !   Compute the natural logarithm of the Geometric distribution PDF of a limited range of Bernoulli trials, 
+        !   starting at index 1 up to maxNumTrial. In other words, upon reaching the trial maxNumTrial, 
+        !   the Bernoulli trials count restart from index 1. This Cyclic Geometric distribution is 
+        !   particularly useful in the parallelization studies of Monte Carlo simulation.
+        !
+        !   Input
+        !
+        !       successProb
+        !
+        !           The probability of success.
+        !
+        !       maxNumTrial
+        !
+        !           The maximum number of trails possible. After maxNumTrial tries, 
+        !           the Geometric distribution restarts from index 1.
+        !
+        !       numTrial < maxNumTrial
+        !
+        !           The length of the array SuccessStep. 
+        !
+        !       SuccessStep(1:numTrial)
+        !
+        !           An array of integers that represent the steps at which the Bernoulli successes occur. 
+        !
+        !           WARNING: Any value of SuccessStep must be an integer numbers between 1 and maxNumTrial.
+        !           WARNING: The onus is on the user to ensure this condition holds.
+        !
+        !   Output
+        !
+        !       LogProbGeoCyclic(1:numTrial)
+        !
+        !           A real-valued array of length numTrial whose values represent the probabilities of having 
+        !           Bernoulli successes at the corresponding SuccessStep values.
+        !
+        use Constants_mod, only: IK, RK, NEGLOGINF_RK
+        implicit none
+        real(RK)    , intent(in)    :: successProb
+        integer(IK) , intent(in)    :: maxNumTrial
+        integer(IK) , intent(in)    :: numTrial
+        integer(IK) , intent(in)    :: SuccessStep(numTrial)
+        real(RK)                    :: LogProbGeoCyclic(numTrial)
+        real(RK)                    :: failureProb, logProbSuccess, logProbFailure, logDenominator, exponentiation
+        integer(IK)                 :: i
+        if (successProb>0._RK .and. successProb<1._RK) then
+            failureProb = 1._RK - successProb
+            logProbSuccess = log(successProb)
+            logProbFailure = log(failureProb)
+            exponentiation = maxNumTrial * logProbFailure
+            if (exponentiation<NEGLOGINF_RK) then
+                logDenominator = 0._RK
+            else
+                logDenominator = log(1._RK-exp(exponentiation))
+            end if
+            LogProbGeoCyclic = logProbSuccess + (SuccessStep-1) * logProbFailure - logDenominator
+        elseif (successProb==0._RK) then
+            LogProbGeoCyclic = 1._RK / maxNumTrial
+        elseif (successProb==1._RK) then
+            LogProbGeoCyclic(1) = 1._RK
+            LogProbGeoCyclic(2:numTrial) = 0._RK
+        else
+            LogProbGeoCyclic = NEGLOGINF_RK
+        end if
+    end function getLogProbGeoCyclic
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function fitGeoCyclicLogPDF(maxNumTrial, numTrial, SuccessStep, LogCount) result(PowellMinimum)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF
+#endif
+        !
+        !   Return a fit of the Cyclic Geometric distribution PDF to the input natural logarithm of a sequence of Counts, 
+        !   the ith element of which represents the number of successes after SuccessStep(i) tries in a Bernoulli trail.
+        !
+        !   Input
+        !
+        !       maxNumTrial
+        !
+        !           The maximum number of trails possible. After maxNumTrial tries, 
+        !           the Geometric distribution restarts from index 1.
+        !
+        !       numTrial
+        !
+        !           The length of the input vector SuccessStep and LogCount.
+        !
+        !       SuccessStep(1:numTrial)
+        !
+        !           An array of integers that represent the steps at which the Bernoulli successes occur. 
+        !
+        !           WARNING: THESE VALUES MUST BE INTEGER NUMBERS BETWEEN 1 AND MAXNUMTRIAL.
+        !           WARNING: THE ONUS IS ON THE USER TO ENSURE THIS CONDITION HOLDS.
+        !
+        !       LogCount(1:numTrial)
+        !
+        !           A vector of real values representing the natural logarithms of the counts of success at the corresponding 
+        !           Bernoulli trials specified by elements of SuccessStep. 
+        !
+        !   Output
+        !
+        !       PowellMinimum
+        !
+        !           An object of type PowellMinimum_type from Optimiziation_mod, containing the best-fit successProb and the 
+        !           normalization constant of the fit in the vector component xmin.
+        !
+        use Optimization_mod, only: PowellMinimum_type
+        use Constants_mod, only: IK, RK, POSINF_RK, NEGINF_RK
+        implicit none
+        integer(IK) , intent(in)    :: maxNumTrial
+        integer(IK) , intent(in)    :: numTrial
+        integer(IK) , intent(in)    :: SuccessStep(numTrial)
+        real(RK)    , intent(in)    :: LogCount(numTrial)
+        type(PowellMinimum_type)    :: PowellMinimum
+
+        real(RK)                    :: BestFitSuccessProbNormFac(2) ! vector of the two parameters
+        real(RK)    , parameter     :: SUCCESS_PROB_INIT_GUESS = 0.23_RK
+        real(RK)    , parameter     :: FISHER_TRANS_SUCCESS_PROB_INIT_GUESS = atanh(2*(SUCCESS_PROB_INIT_GUESS - 0.5_RK))
+
+        ! do Fisher transformation to make the limits infinity
+        BestFitSuccessProbNormFac = [FISHER_TRANS_SUCCESS_PROB_INIT_GUESS, 0._RK] ! LogCount(1)]
+
+        PowellMinimum = PowellMinimum_type  ( ndim = 2_IK &
+                                            , getFuncMD = getSumDistSq &
+                                            , StartVec = BestFitSuccessProbNormFac &
+                                            )
+        if (PowellMinimum%Err%occurred) return
+        PowellMinimum%xmin(1) = 0.5_RK * tanh(PowellMinimum%xmin(1)) + 0.5_RK ! reverse Fisher-transform
+
+    contains
+
+        pure function getSumDistSq(ndim,successProbFisherTransNormFac) result(sumDistSq)
+            !use Constants_mod, only: IK, RK
+            implicit none
+            integer(IK) , intent(in)    :: ndim
+            real(RK)    , intent(in)    :: successProbFisherTransNormFac(ndim)
+            real(RK)                    :: sumDistSq, successProb
+            successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK ! reverse Fisher-transform
+            !sumDistSq = sum( (LogCount - getGeoLogPDF(successProb=successProb,seqLen=numTrial) - successProbFisherTransNormFac(2) )**2 )
+            sumDistSq = sum(    ( LogCount &
+                                - getLogProbGeoCyclic(successProb=successProb, maxNumTrial=maxNumTrial, numTrial=numTrial, SuccessStep=SuccessStep) &
+                                - successProbFisherTransNormFac(2) &
+                                )**2 &
+                            )
+        end function getSumDistSq
+
+    end function fitGeoCyclicLogPDF
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2362,18 +2535,25 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine doKS1(np,Point,getCDF,statKS,probKS)
+    subroutine doKS1(np,Point,getCDF,statKS,probKS,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doKS1
 #endif
         use Sort_mod, only : sortAscending
+        use Err_mod, only: Err_type
+
         implicit none
-        integer(IK), intent(in)    :: np
-        real(RK)   , intent(out)   :: statKS,probKS
-        real(RK)   , intent(inout) :: Point(np)
-        real(RK)                   :: npSqrt
-        real(RK)                   :: cdf,cdfObserved,dt,frac
-        integer(IK)                :: j
+
+        integer(IK)     , intent(in)    :: np
+        real(RK)        , intent(out)   :: statKS,probKS
+        real(RK)        , intent(inout) :: Point(np)
+        type(Err_type)  , intent(out)   :: Err
+
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@doKS1"
+        real(RK)                        :: npSqrt
+        real(RK)                        :: cdf,cdfObserved,dt,frac
+        integer(IK)                     :: j
+
         interface
             function getCDF(x)
                 use Constants_mod, only: RK
@@ -2382,7 +2562,12 @@ contains
             end function getCDF
         end interface
 
-        call sortAscending(np,Point)
+        call sortAscending(np,Point,Err)
+        if (Err%occurred) then
+            Err%msg = PROCEDURE_NAME//Err%msg
+            return
+        end if
+
         statKS = 0._RK
         cdfObserved = 0._RK
         npSqrt = np
@@ -2395,24 +2580,37 @@ contains
         end do
         npSqrt = sqrt(npSqrt)
         probKS = getProbKS( (npSqrt+0.12_RK+0.11_RK/npSqrt)*statKS )
+
     end subroutine doKS1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! This assumes that points are coming from a uniform distribution in [0,1]. So, all Point must be in [0,1] on input.
-    subroutine doUniformKS1(np,Point,statKS,probKS)
+    pure subroutine doUniformKS1(np,Point,statKS,probKS,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doUniformKS1
 #endif
         use Sort_mod, only : sortAscending
+        use Err_mod, only: Err_type
+
         implicit none
-        integer(IK), intent(in)    :: np
-        real(RK)   , intent(out)   :: statKS,probKS
-        real(RK)   , intent(inout) :: Point(np)
-        real(RK)                   :: npSqrt
-        real(RK)                   :: cdf,cdfObserved,dt,frac
-        integer(IK)                :: j
-        call sortAscending(np,Point)
+
+        integer(IK)     , intent(in)    :: np
+        real(RK)        , intent(out)   :: statKS,probKS
+        real(RK)        , intent(inout) :: Point(np)
+        type(Err_type)  , intent(out)   :: Err
+
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@doUniformKS1"
+        real(RK)                        :: npSqrt
+        real(RK)                        :: cdf,cdfObserved,dt,frac
+        integer(IK)                     :: j
+
+        call sortAscending(np,Point,Err)
+        if (Err%occurred) then
+            Err%msg = PROCEDURE_NAME//Err%msg
+            return
+        end if
+
         statKS = 0._RK
         cdfObserved = 0._RK
         npSqrt = np
@@ -2470,7 +2668,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getProbKS(lambda)
+    pure function getProbKS(lambda) result(probKS)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS
 #endif
@@ -2480,25 +2678,25 @@ contains
         integer(IK), parameter  :: NITER=100
         integer(IK)             :: j
         real(RK)                :: a2,fac,term,termbf
-        real(RK)                :: getProbKS
+        real(RK)                :: probKS
         a2 = -2._RK*lambda**2
         fac = 2._RK
-        getProbKS = 0._RK
+        probKS = 0._RK
         termbf = 0._RK
         do j = 1, NITER
             term = fac*exp(a2*j**2)
-            getProbKS = getProbKS+term
-            if (abs(term) <= EPS1*termbf .or. abs(term) <= EPS2*getProbKS) return
+            probKS = probKS+term
+            if (abs(term) <= EPS1*termbf .or. abs(term) <= EPS2*probKS) return
             fac = -fac
             termbf = abs(term)
         end do
-        getProbKS = 1._RK
+        probKS = 1._RK
     end function getProbKS
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! returns the uniform CDF on support [0,1). rather redundant, aint it? but sometimes, needed
-    function getUniformCDF(x)
+    pure function getUniformCDF(x)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUniformCDF
 #endif
@@ -2659,11 +2857,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getQuantile(np,nq,SortedQuantileProbability,Point,Weight,sumWeight) result(Quantile)
+    pure function getQuantile(np,nq,SortedQuantileProbability,Point,Weight,sumWeight) result(Quantile)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuantile
 #endif
+        use Constants_mod, only: IK, RK, NEGINF_RK
         use Sort_mod, only: indexArray
+        use Err_mod, only: Err_type
         implicit none
         integer(IK) , intent(in)            :: np, nq
         real(RK)    , intent(in)            :: SortedQuantileProbability(nq), Point(np)
@@ -2671,11 +2871,16 @@ contains
         real(RK)                            :: Quantile(nq)
         real(RK)                            :: probability
         integer(IK)                         :: ip, iq, iw, weightCounter, Indx(np), SortedQuantileDensity(nq)
+        type(Err_type)                      :: Err
         iq = 1_IK
         Quantile = 0._RK
         probability = 0._RK
         weightCounter = 0_IK
-        call indexArray(np,Point,Indx)
+        call indexArray(np,Point,Indx,Err)
+        if (Err%occurred) then
+            Quantile = NEGINF_RK
+            return
+        end if
         if (present(sumWeight)) then
             SortedQuantileDensity = nint( SortedQuantileProbability * sumWeight )
             loopWeighted: do ip = 1, np

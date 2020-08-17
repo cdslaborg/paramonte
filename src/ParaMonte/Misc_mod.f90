@@ -59,6 +59,14 @@ module Misc_mod
         module procedure :: findUnique_IK
     end interface findUnique
 
+    interface resize
+        module procedure :: resizeVector_RK
+    end interface resize
+
+    interface resizeVector
+        module procedure :: resizeVector_RK
+    end interface resizeVector
+
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
@@ -383,7 +391,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine copyArray_RK(Source,Destination,numCopied,numNotCopied)
+    pure subroutine copyArray_RK(Source,Destination,numCopied,numNotCopied)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: copyArray_RK
 #endif
@@ -399,7 +407,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine copyArray_IK(Source,Destination,numCopied,numNotCopied)
+    pure subroutine copyArray_IK(Source,Destination,numCopied,numNotCopied)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: copyArray_IK
 #endif
@@ -415,7 +423,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine findUnique_IK(lenVector, Vector, UniqueValue, UniqueCount, lenUnique)
+    pure subroutine findUnique_IK(lenVector, Vector, UniqueValue, UniqueCount, lenUnique)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: findUnique_IK
 #endif
@@ -450,6 +458,19 @@ contains
         UniqueCount = UniqueCount(1:lenUniq)
         if (present(lenUnique)) lenUnique = lenUniq
     end subroutine findUnique_IK
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    pure subroutine resizeVector_RK(Vector, from, to)
+        use Constants_mod, only: IK, RK
+        implicit none
+        integer(IK)                 , intent(in)    :: from, to
+        real(RK)    , allocatable   , intent(inout) :: Vector(:)
+        real(RK)    , allocatable                   :: Temp(:)
+        allocate(Temp(to))
+        Temp(1:from) = Vector
+        call move_alloc(Temp, Vector)
+    end subroutine resizeVector_RK
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -58,6 +58,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/Math_mod.f90
     ${ParaMonte_SRC_DIR}/Matrix_mod.f90
     ${ParaMonte_SRC_DIR}/Statistics_mod.f90
+    ${ParaMonte_SRC_DIR}/Parallelism_mod.f90
     ${ParaMonte_SRC_DIR}/CorrCoef_mod.f90
     ${ParaMonte_SRC_DIR}/TranGaus_mod.f90
     ${ParaMonte_SRC_DIR}/CrossCorr_mod.f90

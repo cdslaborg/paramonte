@@ -146,7 +146,7 @@ contains
         real(RK)    , intent(in), optional  :: xtol
         type(BrentMinimum_type)             :: BrentMinimum
 
-        character(*), parameter             :: PROCEDURE_NAME = "@minimizeBrent"
+        character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME//"@minimizeBrent"
         integer(IK) , parameter             :: ITMAX = 1000_IK                  ! the maximum number of iterations
         real(RK)    , parameter             :: CGOLD = 0.3819660_RK             ! Golden Section switch criterion
         real(RK)    , parameter             :: ZEPS = sqrt(epsilon(1._RK))**3   ! tiny nonzero value
@@ -256,7 +256,7 @@ contains
         end do
 
         BrentMinimum%Err%occurred = .true.
-        BrentMinimum%Err%msg = MODULE_NAME//PROCEDURE_NAME//": maximum number of iterations exceeded."
+        BrentMinimum%Err%msg = PROCEDURE_NAME//": maximum number of iterations exceeded."
         return
 
     contains
@@ -366,7 +366,7 @@ contains
         real(RK)    , intent(in)    , optional  :: ftol
         type(PowellMinimum_type)                :: PowellMinimum
 
-        character(*), parameter                 :: PROCEDURE_NAME = "@minimizeBrent"
+        character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@minimizeBrent"
         integer(IK), parameter                  :: ITMAX = 1000
 
         integer(IK)                             :: i, ibig
@@ -402,7 +402,7 @@ contains
                 fptt = PowellMinimum%fmin
                 call linmin(getFuncMD, ndim, PowellMinimum%xmin, xit, PowellMinimum%fmin, PowellMinimum%Err)
                 if (PowellMinimum%Err%occurred) then
-                    PowellMinimum%Err%msg = MODULE_NAME//PROCEDURE_NAME//PowellMinimum%Err%msg
+                    PowellMinimum%Err%msg = PROCEDURE_NAME//PowellMinimum%Err%msg
                     return
                 end if
                 if (fptt - PowellMinimum%fmin > del) then
@@ -415,7 +415,7 @@ contains
 
             if (PowellMinimum%niter == ITMAX) then
                 PowellMinimum%Err%occurred = .true.
-                PowellMinimum%Err%msg = MODULE_NAME//PROCEDURE_NAME//": maximum number of iterations exceeded."
+                PowellMinimum%Err%msg = PROCEDURE_NAME//": maximum number of iterations exceeded."
                 return
             end if
 
@@ -428,7 +428,7 @@ contains
             if (t >= 0.0) cycle
             call linmin(getFuncMD, ndim, PowellMinimum%xmin, xit, PowellMinimum%fmin, PowellMinimum%Err)
             if (PowellMinimum%Err%occurred) then
-                PowellMinimum%Err%msg = MODULE_NAME//PROCEDURE_NAME//PowellMinimum%Err%msg
+                PowellMinimum%Err%msg = PROCEDURE_NAME//PowellMinimum%Err%msg
                 return
             end if
             PowellMinimum%DirMat(1:ndim,ibig) = PowellMinimum%DirMat(1:ndim,ndim)

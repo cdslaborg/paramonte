@@ -35,6 +35,7 @@
 module CorrCoef_mod
 
     use Constants_mod, only: RK, IK
+    use Err_mod, only: Err_type
     implicit none
 
     character(*), parameter :: MODULE_NAME = "@CorrCoef_mod"
@@ -43,6 +44,7 @@ module CorrCoef_mod
         integer(IK)             :: ndata
         real(RK), allocatable   :: Data1(:), Data2(:)
         real(RK)                :: rho, rhoProb, dStarStar, dStarStarSignif, dStarStarProb
+        type(Err_type)          :: Err
     contains
         procedure, nopass :: get => getCorrCoefSpearman
     end type CorrCoefSpearman_type
@@ -61,26 +63,42 @@ contains
     ! the two-sided significance level of its deviation from zero as rhoProb.
     ! The external routines crank and sortAscending are used.
     ! A small value of either dStarStarProb or rhoProb indicates a significant correlation.
-    subroutine getCorrCoefSpearman(ndata,Data1,Data2,rho,rhoProb,dStarStar,dStarStarSignif,dStarStarProb)
+    subroutine getCorrCoefSpearman(ndata,Data1,Data2,rho,rhoProb,dStarStar,dStarStarSignif,dStarStarProb,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorrCoefSpearman
 #endif
         use Constants_mod, only: IK, RK, SQRT2, SPR
         use Statistics_mod, only: getBetaCDF
         use Sort_mod, only: sortAscending
+
         implicit none
-        integer(IK), intent(in) :: ndata
-        real(RK), intent(in)    :: Data1(ndata), Data2(ndata)
-        real(RK), intent(out)   :: rho, rhoProb
-        real(RK), intent(out)   :: dStarStar, dStarStarSignif, dStarStarProb
-        real(RK)                :: aved,df,en,en3n,fac,sf,sg,t,vard
-        real(RK)                :: WorkSpace1(ndata), WorkSpace2(ndata)
+
+        integer(IK)     , intent(in)    :: ndata
+        real(RK)        , intent(in)    :: Data1(ndata), Data2(ndata)
+        real(RK)        , intent(out)   :: rho, rhoProb
+        real(RK)        , intent(out)   :: dStarStar, dStarStarSignif, dStarStarProb
+        type(Err_type)  , intent(out)   :: Err
+
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@getCorrCoefSpearman"
+        real(RK)                        :: aved,df,en,en3n,fac,sf,sg,t,vard
+        real(RK)                        :: WorkSpace1(ndata), WorkSpace2(ndata)
+
         WorkSpace1 = Data1
         WorkSpace2 = Data2
-        call sortAscending(ndata,WorkSpace1,WorkSpace2)
+        call sortAscending(ndata,WorkSpace1,WorkSpace2,Err)
+        if (Err%occurred) then
+            Err%msg = PROCEDURE_NAME//Err%msg
+            return
+        end if
         call crank(ndata,WorkSpace1,sf)
-        call sortAscending(ndata,WorkSpace2,WorkSpace1)
+
+        call sortAscending(ndata,WorkSpace2,WorkSpace1,Err)
+        if (Err%occurred) then
+            Err%msg = PROCEDURE_NAME//Err%msg
+            return
+        end if
         call crank(ndata,WorkSpace2,sg)
+
         WorkSpace1 = WorkSpace1 - WorkSpace2
         dStarStar = dot_product(WorkSpace1,WorkSpace1)
         en = ndata
@@ -99,7 +117,9 @@ contains
         else
             rhoProb = 0.0
         end if
+
     contains
+
         subroutine crank(ndata,Array,s)
             use Constants_mod, only: IK, RK
             use Misc_mod, only : arth, copyArray
@@ -125,6 +145,7 @@ contains
             Tend(1:nties) = Tend(1:nties)-Tstart(1:nties)+1
             s = sum(Tend(1:nties)**3-Tend(1:nties))
         end subroutine crank
+
     end subroutine getCorrCoefSpearman
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
