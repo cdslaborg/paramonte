@@ -222,7 +222,7 @@ contains
                 !                        , xmax          = thisUpperLim         &
                 !                        , tolerance     = 1.e-7_RK             &
                 !                        , nRefinement   = 10_IK                &
-                !                        , photonFluence      = photonFluence   &
+                !                        , photonFluence = photonFluence        &
                 !                        , ierr          = ierr                 &
                 !                        )
                 if (ierr/=0_IK) then

@@ -36,9 +36,10 @@
 
 # ParaMonte library
 SET(ParaMonte_SOURCE_FILES
-   #"${ParaMonte_SRC_DIR}/ifport.f90
+    ${ParaMonte_SRC_DIR}/ifport.f90
     ${ParaMonte_SRC_DIR}/Constants_mod.f90
     ${ParaMonte_SRC_DIR}/Misc_mod.f90
+   #${ParaMonte_SRC_DIR}/EconomicsToolbox_mod.f90
     ${ParaMonte_SRC_DIR}/JaggedArray_mod.f90
     ${ParaMonte_SRC_DIR}/Decoration_mod.f90
     ${ParaMonte_SRC_DIR}/Decoration_mod@Routines_smod.f90
@@ -63,9 +64,8 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/TranGaus_mod.f90
     ${ParaMonte_SRC_DIR}/CrossCorr_mod.f90
     ${ParaMonte_SRC_DIR}/Integration_mod.f90
-    #${ParaMonte_SRC_DIR}/QuadPackSPR_mod.f90
-    #${ParaMonte_SRC_DIR}/EconomicsToolbox_mod.f90
-    #${ParaMonte_SRC_DIR}/QuadPackDPR_mod.f
+    ${ParaMonte_SRC_DIR}/QuadPackSPR_mod.f90
+    ${ParaMonte_SRC_DIR}/QuadPackDPR_mod.f
     ${ParaMonte_SRC_DIR}/Cosmology_mod.f90
     ${ParaMonte_SRC_DIR}/StarFormation_mod.f90
     ${ParaMonte_SRC_DIR}/BandSpectrum_mod.f90
