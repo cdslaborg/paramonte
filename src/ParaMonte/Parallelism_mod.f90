@@ -299,11 +299,15 @@ contains
 
             ! compute the fraction of work done by the first image
 
-            FirstImageContribution = exp(getLogProbGeoCyclic( successProb = successProb &
-                                                            , maxNumTrial = numProc &
-                                                            , numTrial = 1_IK &
-                                                            , SuccessStep = [1_IK] &
-                                                            ) )
+            if (successProb==0._RK) then
+                FirstImageContribution(1) = 1._RK / numProc
+            else
+                FirstImageContribution = exp(getLogProbGeoCyclic( successProb = successProb &
+                                                                , maxNumTrial = numProc &
+                                                                , numTrial = 1_IK &
+                                                                , SuccessStep = [1_IK] &
+                                                                ) )
+            end if
 
             ! effective runtime of the parallel-section of the code, when executed in parallel on numProc processes
 
