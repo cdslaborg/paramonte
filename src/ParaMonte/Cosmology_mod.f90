@@ -94,12 +94,12 @@ contains
         real(RK), parameter     :: PSI_COEF1 = 2._RK**(2._RK/3._RK)
         real(RK), parameter     :: PSI_COEF2 = -PSI_COEF1 / 252._RK
         real(RK), parameter     :: PSI_COEF3 = +PSI_COEF1 / 21060._RK
-        real(RK), parameter     :: PSIX0 = X0**0.33333333 * ( PSI_COEF1 + X0Sq * (PSI_COEF2 + X0Sq*PSI_COEF3) )
+        real(RK), parameter     :: PSIX0 = X0**0.333333333333333_RK * ( PSI_COEF1 + X0Sq * (PSI_COEF2 + X0Sq*PSI_COEF3) )
         real(RK), parameter     :: LOG_COEF = log(LS2HC / (OMEGA_DE**0.1666666666666667_RK*OMEGA_DM**0.3333333333333333_RK))
         alpha1          = 1._RK + TWICE_OMEGA_DE_OVER_OMEGA_DM / zplus1**3
         x1              = log( alpha1 + sqrt( alpha1**2 - 1._RK ) )
         x1Sq            = x1**2
-        psix1           = x1**0.33333333 * ( PSI_COEF1 + x1Sq * (PSI_COEF2 + x1Sq*PSI_COEF3) )
+        psix1           = x1**0.333333333333333_RK * ( PSI_COEF1 + x1Sq * (PSI_COEF2 + x1Sq*PSI_COEF3) )
         logLumDisWicMpc = LOG_COEF +  log(zplus1*(PSIX0-psix1))
     end function getLogLumDisWicMpc
 

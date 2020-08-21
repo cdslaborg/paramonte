@@ -38,11 +38,11 @@
 #include <math.h>
 #include <stdint.h>
 
-#define NDIM 4  // The number of dimensions of the domain of the objective function.
+#define NDIM 2  // The number of dimensions of the domain of the objective function.
 
 double getLogFunc   (
-                    int32_t ,   // ndim
-                    double []   // Point
+                    int32_t ,         // ndim
+                    double []         // Point
                     );
 
 #endif

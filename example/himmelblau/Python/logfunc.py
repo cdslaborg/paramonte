@@ -36,35 +36,11 @@
 
 import numpy as np
 
-# The number of dimensions of the domain of the objective function.
-
-NDIM = 4
-
-# This is the mean of the MVN distribution.
-
-MEAN =  [0.0,0.0,0.0,0.0]
-
-# This is the covariance matrix of the MVN distribution.
-
-COVMAT =    [ [1.0,0.5,0.5,0.5]
-            , [0.5,1.0,0.5,0.5]
-            , [0.5,0.5,1.0,0.5]
-            , [0.5,0.5,0.5,1.0]
-            ]
-
-# This is the inverse of the covariance matrix of the MVN distribution.
-
-INVCOV = np.linalg.inv(COVMAT)
-
-# This is the log of the coefficient used in the definition of the MVN.
-
-MVN_COEF = NDIM * np.log( 1. / np.sqrt(2.*np.pi) ) + np.log( np.sqrt(np.linalg.det(INVCOV)) )
+NDIM = 2 # The number of dimensions of the domain of the objective function.
 
 def getLogFunc(point):
     """
-    Return the natural logarithm of an NDIM-dimensional Multivariate Normal distribution
-    with the mean and covariance matrix as given in the above.
-    Reference: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+    Return the negative natural logarithm of Himmelblau's function.
+    Reference: https://en.wikipedia.org/wiki/Himmelblau%27s_function
     """
-    normedPoint = MEAN - point
-    return MVN_COEF - 0.5 * ( np.dot(normedPoint,np.matmul(INVCOV,normedPoint)) )
+    return -np.log( (point[0]**2 + point[1] - 11)**2 + (point[0] + point[1]**2 - 7)**2 )

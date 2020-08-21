@@ -34,7 +34,7 @@
 %
 %   GridPlot(dataFrame, plotType)
 %
-%   This is the GridPlot class for generating instances of square grid plots 
+%   This is the GridPlot class for generating instances of square grid plots
 %   comprised of histogram/histfit/line/scatter/lineScatter subplots
 %   based on a wide variety of ParaMonte's plotting functions.
 %
@@ -52,7 +52,7 @@
 %
 %       columns
 %
-%           a string or array of strings or cell array of chars representing the 
+%           a string or array of strings or cell array of chars representing the
 %           names of the columns from the dataFrame to add to the plot.
 %
 %   Attributes
@@ -61,8 +61,8 @@
 %       ccolumn (standing for color-columns)
 %
 %           optional property that determines the column of dataFrame to serve
-%           as the color-mapping-values for each line/point element in the line/scatter 
-%           plot. It can be either a char vector or a string, or the index of the column 
+%           as the color-mapping-values for each line/point element in the line/scatter
+%           plot. It can be either a char vector or a string, or the index of the column
 %           of interest from the input dataFrame.
 %
 %           Example usage:
@@ -102,14 +102,14 @@
 %
 %       layout
 %
-%           A MATLAB struct() containing an extensive amount of information about the layout 
+%           A MATLAB struct() containing an extensive amount of information about the layout
 %           and the overall design of the grid plot, with the following components:
 %
 %               - layout.colorbar   :   the layout and design of the colorbar of the plot
 %               - layout.subplot    :   the layout and design of the subplots of the plot
 %               - layout.axes       :   the layout and design of the gridplot's axes and the subplots' axes
 %               - layout.update()   :   a method that reflects the new layout changes into the grid-plot, when called.
-%               - layout.plotType   :   a struct() with components: diag, lower, upper, each of which contains 
+%               - layout.plotType   :   a struct() with components: diag, lower, upper, each of which contains
 %                                       the type of plot to be added to the corresponding section of the grid plot.
 %                                       possible values for each section includes:
 %
@@ -120,9 +120,9 @@
 %                                       WARNING: Although it is possible to add 3d subplots to the gridplot
 %                                       WARNING: (line3, scatter3, linescatter3), there is no practical use
 %                                       WARNING: for them. Therefore, you should use them at your own risk.
-%                                       WARNING: Perhaps the most meaningful scenario would be when the third 
-%                                       WARNING: Z-axis variable is the same column as the ccolumn of the grid-plot. 
-%                                       WARNING: If you find the 3D plots useful, or find bugs with the 3d subplots, 
+%                                       WARNING: Perhaps the most meaningful scenario would be when the third
+%                                       WARNING: Z-axis variable is the same column as the ccolumn of the grid-plot.
+%                                       WARNING: If you find the 3D plots useful, or find bugs with the 3d subplots,
 %                                       WARNING: please report it at: https://github.com/cdslaborg/paramonte/issues
 %
 %   Superclass Attributes
@@ -197,7 +197,7 @@ classdef GridPlot < BasePlot
                 self.layout.subplot.(self.plotTypeList{i}) = struct();
             end
             self.colormap = {};
-            
+
             self.colorbar_kws = struct();
             self.colorbar_kws.enabled = true;
             self.colorbar_kws.fontsize = [];
@@ -207,7 +207,7 @@ classdef GridPlot < BasePlot
             self.layout.plotType.diag = "histogram";
             self.layout.update = @self.updateLayout;
 
-            self.layout.axis.main.margin.bottom = 0.07; % 0.14; 
+            self.layout.axis.main.margin.bottom = 0.07; % 0.14;
             self.layout.axis.main.margin.right = 0.10;
             self.layout.axis.main.margin.left = 0.07; %0.1;
             self.layout.axis.main.margin.top = 0.0;
@@ -285,19 +285,19 @@ classdef GridPlot < BasePlot
 
         function helpme(self,varargin)
             %
-            %   Open the documentation for the input object's name in string format, otherwise, 
+            %   Open the documentation for the input object's name in string format, otherwise,
             %   open the documentation page for the class of the object owning the helpme() method.
             %
             %   Parameters
             %   ----------
             %
-            %       This function takes at most one string argument, 
+            %       This function takes at most one string argument,
             %       which is the name of the object for which help is needed.
             %
             %   Returns
             %   -------
             %
-            %       None. 
+            %       None.
             %
             %   Example
             %   -------
@@ -310,7 +310,7 @@ classdef GridPlot < BasePlot
                     cmd = "doc self.updateLayout";
                     methodNotFound = false;
                 else
-                    methodList = ["plot","helpme","addTarget","show","hide","rotateAxisLabels","exportFig"];
+                    methodList = ["plot","helpme","addTarget","show","hide","rotateAxesLabels","exportFig"];
                     for method = methodList
                         if strcmpi(varargin{1},method)
                             methodNotFound = false;
@@ -339,7 +339,7 @@ classdef GridPlot < BasePlot
             %       Any property,value pair of the object.
             %       If the property is a struct(), then its value must be given as a cell array,
             %       with consecutive elements representing the struct's property-name,property-value pairs.
-            %       Note that all of these property-value pairs can be also directly set directly via the 
+            %       Note that all of these property-value pairs can be also directly set directly via the
             %       object's attributes, before calling the plot() method.
             %
             %   Returns
@@ -423,7 +423,7 @@ classdef GridPlot < BasePlot
                         if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"histogram2_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).histogram2_kws)
                             self.layout.subplot.(self.plotTypeList(i)).histogram2_kws = struct();
                         end
-                        keyList = ["numbins", "showemptybins"]; 
+                        keyList = ["numbins", "showemptybins"];
                         valueList = {[100 100], "off"};
                         for j = 1:length(keyList)
                             prop = keyList(j);
@@ -462,7 +462,7 @@ classdef GridPlot < BasePlot
                             if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"plot_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).plot_kws)
                                 self.layout.subplot.(self.plotTypeList(i)).plot_kws = struct();
                             end
-                            keyList = ["linewidth", "color", "enabled"]; 
+                            keyList = ["linewidth", "color", "enabled"];
                             valueList = {0.75, uint8([200 200 200 100]), true};
                             for j = 1:length(keyList)
                                 prop = keyList(j);
@@ -766,7 +766,7 @@ classdef GridPlot < BasePlot
             %
             %       varargin (optional)
             %
-            %           A comma-separated sequence of strings to char-vectors each of which can be one of the following: 
+            %           A comma-separated sequence of strings to char-vectors each of which can be one of the following:
             %
             %               "diag"      : corresponding to the diagonal subplots in the grid plot
             %               "upper"     : corresponding to the upper traingle of the grid plot
@@ -778,7 +778,7 @@ classdef GridPlot < BasePlot
             %   Returns
             %   -------
             %
-            %       None. 
+            %       None.
             %
             %   Example
             %   -------
@@ -801,7 +801,7 @@ classdef GridPlot < BasePlot
             %
             %       varargin (optional)
             %
-            %           A comma-separated sequence of strings to char-vectors each of which can be one of the following: 
+            %           A comma-separated sequence of strings to char-vectors each of which can be one of the following:
             %
             %               "diag"      : corresponding to the diagonal subplots in the grid plot
             %               "upper"     : corresponding to the upper traingle of the grid plot
@@ -813,7 +813,7 @@ classdef GridPlot < BasePlot
             %   Returns
             %   -------
             %
-            %       None. 
+            %       None.
             %
             %   Example
             %   -------
@@ -827,7 +827,7 @@ classdef GridPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function rotateAxisLabels(self,varargin)
+        function rotateAxesLabels(self,varargin)
             %
             %   Rotate the axes labels of the subplots of the grid plot
             %
@@ -852,14 +852,14 @@ classdef GridPlot < BasePlot
             %   Returns
             %   -------
             %
-            %       None. 
+            %       None.
             %
             %   Example
             %   -------
             %
-            %       rotateAxisLabels(20) % rotate all axes labels by 20 degrees with respect to the horizontal line.
-            %       rotateAxisLabels(20,70) % rotate all X-axes/Y-axes labels by 20/70 degrees with respect to the horizontal line.
-            %       rotateAxisLabels() % rotate all axes by 45 degrees with respect to the horizontal line.
+            %       rotateAxesLabels(20)    % rotate all axes labels by 20 degrees with respect to the horizontal line.
+            %       rotateAxesLabels(20,70) % rotate all X-axes/Y-axes labels by 20/70 degrees with respect to the horizontal line.
+            %       rotateAxesLabels()      % rotate all axes by 45 degrees with respect to the horizontal line.
             %
             if nargin==1
                 degreeX = 45;
@@ -872,7 +872,7 @@ classdef GridPlot < BasePlot
                 degreeY = varargin{2};
             else
                 error   ( newline ...
-                        + "The rotateAxisLabels() method gets at most two input numeric values representing the X-axis and Y-axis label orientations from the horizontal axis, in degrees. " ...
+                        + "The rotateAxesLabels() method gets at most two input numeric values representing the X-axis and Y-axis label orientations from the horizontal axis, in degrees. " ...
                         + "If only one argument is provided, the input degree value will be used for both X and Y axis label orientations. " + newline ...
                         + "Alternatively, if no argument is passed, then all subplot axis labels will be rotated by the default 45 degrees." ...
                         + newline ...
@@ -886,51 +886,46 @@ classdef GridPlot < BasePlot
                 end
             end
 
-        end % function rotateAxisLabels
+        end % function rotateAxesLabels
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function addTarget(self,varargin)
+        function addTarget(self,statistic,varargin)
             %
             %   Add target objects to the subplots of the grid plot.
             %
             %   Parameters
             %   ----------
             %
+            %       statistic
+            %
+            %           A string or char vector with the following possible values:
+            %
+            %               "mode"      : use the location of the mode of the "SampleLogFunc" column of the dataFrame as the target value
+            %               "mean"      : use the mean values of each pair of variables as the target value on each subplot.
+            %               "median"    : use the median values of each pair of variables as the target value on each subplot.
+            %
+            %           If no or an empty input argument is provided, then by default, the target values to be
+            %           added to the subplots will be the location of the mode of the data in the "SampleLogFunc"
+            %           column of the input dataFrame (dfref).
+            %
             %       varargin
             %
-            %           No/empty input argument:
+            %           pairs of key,value sequences are also possible as input. The possible keys include:
             %
-            %               If no or an empty input argument is provided, then by default, the target values to be 
-            %               added to the subplots will be the location of the mode of the data in the "SampleLogFunc" 
-            %               column of the input dataFrame (dfref).
-            %               object's attributes, before calling the plot() method.
-            %
-            %           One input argument:
-            %
-            %               The single input argument must be a string or char vector with the following possible values:
-            %
-            %                   "mode"      : use the location of the mode of the "SampleLogFunc" column of the dataFrame as the target value
-            %                   "mean"      : use the mean values of each pair of variables as the target value on each subplot.
-            %                   "median"    : use the median values of each pair of variables as the target value on each subplot.
-            %
-            %           More than one input arguments:
-            %
-            %               pairs of key,value sequences are also possible as input. The possible keys include:
-            %
-            %                   "hline_kws", {}     : the values specified in the cell array, are directly passed to `hline_kws` 
-            %                                       : component of Target_class object of each subplot.
-            %                   "vline_kws", {}     : the values specified in the cell array, are directly passed to `vline_kws` 
-            %                                       : component of Target_class object of each subplot.
-            %                   "scatter_kws", {}   : the values specified in the cell array, are directly passed to `scatter_kws` 
-            %                                       : component of Target_class object of each subplot.
-            %                   "values", values    : A numeric vector of same length as the number of variables used in the gridplot
-            %                                       : (that is, the number of row or columns in the grid plot)
+            %               "hline_kws", {}     : the values specified in the cell array, are directly passed to `hline_kws`
+            %                                   : component of Target_class object of each subplot.
+            %               "vline_kws", {}     : the values specified in the cell array, are directly passed to `vline_kws`
+            %                                   : component of Target_class object of each subplot.
+            %               "scatter_kws", {}   : the values specified in the cell array, are directly passed to `scatter_kws`
+            %                                   : component of Target_class object of each subplot.
+            %               "values", values    : A numeric vector of same length as the number of variables used in the gridplot
+            %                                   : (that is, the number of row or columns in the grid plot)
             %
             %   Returns
             %   -------
             %
-            %       None. However, this method causes side-effects by manipulating the existing attributes 
+            %       None. However, this method causes side-effects by manipulating the existing attributes
             %       of the `target` components of the `subplot` components of the `axes` component of `layout`.
             %
             %   Example
@@ -939,23 +934,38 @@ classdef GridPlot < BasePlot
             %       addTarget() % use the location of the mode of `SampleLogFunc` data-column as the target values on subplots
             %       addTarget("mode") % same as above
             %       addTarget("mean") % use the mean of the vaiables on each axis of each subplot as the target values
-            %       addTarget("values",[1.3, 0.2, -0.5, 10]) % set the target values corresponding to each of the four variables in 
+            %       addTarget("values",[1.3, 0.2, -0.5, 10]) % set the target values corresponding to each of the four variables in
             %                                                % the grid plot (assuming that there are 4 columns/rows of subplots)
             %
             if nargin==1
                 statistic = "mode";
             else
-                statistic = [];
-                for statistic = ["mode","mean","median"]
-                    if strcmpi(varargin{1},statistic)
-                        break;
-                    end
-                end
-                if isempty(statistic)
-                    [statistic, keyFound] = getKeyVal(key,varargin{:})
+                errorOccurred = false;
+                if ~getVecLen(statistic) % isempty
+                    key = "statistic";
+                    [statistic, keyFound] = getKeyVal(key,varargin{:});
                     if ~keyFound
                         statistic = "mode";
                     end
+                elseif isstring(statistic) || ischar(statistic)
+                    errorOccurred = true;
+                    statistic = string(statistic);
+                    for possibleStatistic = ["mode","mean","median"]
+                        if strcmpi(possibleStatistic,statistic)
+                            errorOccurred = false;
+                            break;
+                        end
+                    end
+                else
+                    errorOccurred = true;
+                end
+                if errorOccurred
+                    error   ( newline ...
+                            + "Invalid value specified for the input argument statistic, which must be either a string or char-vector. The input value is: "  ...
+                            + string(statistic) ...
+                            + newline ...
+                            + "The possible values for the input statistic are: ""mode"", ""mean"", ""median""" ...
+                            );
                 end
             end
 
@@ -1025,6 +1035,155 @@ classdef GridPlot < BasePlot
                 end
             end
 
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function setAxesLabels(self, labels, varargin)
+            %
+            %   Set the axes labels of the subplots that are currently present in the GridPlot to the input user-provided values.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       labels
+            %
+            %           A cell-array of strings or char-vectors, each of which represents the labels of
+            %           the GridPlot's subplot axes, from the left of the GridPlot to the right.
+            %           By default, if any element of the labels list is empty, the corresponding column name
+            %           from the input dataFrame will be used as the corresponding axis label.
+            %
+            %           Example usage:
+            %
+            %               axesLabels = {"Sample Variable 1", [], "This Variable"};
+            %
+            %       varargin
+            %
+            %           A sequence of key, value pairs that are directly passed to MATLAB's xlabel() and ylabel() functions.
+            %
+            %           Example usage:
+            %
+            %               setAxesLabels( {"Variable_1", [], "Variable_3"} ... the axes labels (the second will be set to default).
+            %                            , "fonrtSize", 13 ...
+            %                            , "interpreter", "tex" ...
+            %                            )
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. However, this method causes side-effects by manipulating the existing attributes
+            %       of the `target` components of the `subplot` components of the `axes` component of `layout`.
+            %
+            %   Example
+            %   -------
+            %
+            %       setAxesLabels( ["Variable_1", [], "Variable_3"] )% set the axes labels with the default properties.
+            %
+            %
+            %       setAxesLabels( ["Variable_1", [], "Variable_3"] ... the axes labels (the second will be set to default).
+            %                    , "fonrtSize", 13 ...
+            %                    , "interpreter", "tex" ...
+            %                    )
+            %
+            %       setAxesLabels([], "fonrtSize", 13, "interpreter", "tex") % use default axes labels, but set the properties.
+            %
+            labelsLen = length(labels);
+            if labelsLen==0
+                return; % nothing to do, return.
+            else
+                if ~iscell(labels) || labelsLen>self.layout.axis.main.nrow
+                    error   ( "The input labels must be a cell array of length " + string(self.layout.axis.main.nrow) + " comprised of strings or char-vectors." ...
+                            + "The input value is " + strjoin(string(labels),", ") ...
+                            );
+                end
+            end
+            for icol = 1:labelsLen % self.layout.axis.main.ncol
+                for irow = 1:labelsLen % self.layout.axis.main.nrow
+                    if strcmp(self.currentFig.subplotList{irow,icol}.currentFig.gca.Visible,"on")
+                        if ~isnumeric(labels{icol})
+                            if irow==labelsLen || (irow<labelsLen && strcmp(self.currentFig.subplotList{irow+1,icol}.currentFig.gca.Visible,"off"))
+                                xlabel(self.currentFig.subplotList{irow,icol}.currentFig.gca, labels{icol}, varargin{:});
+                            end
+                        end
+                        if ~isnumeric(labels{irow})
+                            if icol==1 || (icol>1 && strcmp(self.currentFig.subplotList{irow,icol-1}.currentFig.gca.Visible,"off"))
+                                ylabel(self.currentFig.subplotList{irow,icol}.currentFig.gca, labels{irow}, varargin{:});
+                            end
+                        end
+                    end
+                end
+            end
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function setAxesLimits(self, limits)
+            %
+            %   Set the axes x-y limits of the subplots that are currently present in the GridPlot to the input user-provided values.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       limits
+            %
+            %           A cell-array each element of which corresponds to one row of the GridPlot (from the top-left).
+            %           Each element of the cell array is a real vector of length two whose values determine the lower
+            %           and upper limits of the corresponding variable in the subplots of the GridPlot.
+            %           If you wish to leave the limits for some of variables to their default values, set the 
+            %           corresponding elements of the input cell array to []. By default, if any element of the 
+            %           input cell is empty, the corresponding limit on the axis will remain unchanged.
+            %
+            %           Example usage:
+            %
+            %               limits = 
+            %               limits = {-10, [], 0};     % leave the limit on the second variable unchanged.
+            %               limits = {};               % leave all limits unchanged.
+            %
+            %   Returns
+            %   -------
+            %
+            %       None. However, this method causes side-effects by manipulating the existing attributes
+            %       of the `target` components of the `subplot` components of the `axes` component of `layout`.
+            %
+            %   Example
+            %   -------
+            %
+            %       setAxesLimits( {[-10,10], [-20, 0]} )
+            %       setAxesLimits( {[-10,10], [], [-20, 0]} ) % the limits for the second variable will remain unchanged.
+            %
+            limitsLen = getVecLen(limits);
+            if limitsLen==0
+                return; % nothing to do, return.
+            else
+                if limitsLen>self.layout.axis.main.nrow
+                    error   ( "The input limits must be a string vector or a cell array of length " + string(self.layout.axis.main.nrow) + "." ...
+                            + "The input value is " + strjoin(string(limits),", ") ...
+                            );
+                end
+            end
+            limitsElementLen = zeros(limitsLen,1);
+            for icol = 1:limitsLen % self.layout.axis.main.ncol
+                limitsElementLen(icol) = getVecLen(limits{icol});
+                if limitsElementLen(icol)~=0 && limitsElementLen(icol)~=2
+                    error   ( "The element " + string(icol) + " of the input cell array is invalid. " ...
+                            + "The limits specified by the input cell must be either vectors of length two, or empty vectors. " ...
+                            + "You have entered for the element " + string(icol) + ": " ...
+                            + strjoin(string(limits{icol})) ...
+                            );
+                end
+            end
+            for icol = 1:limitsLen % self.layout.axis.main.ncol
+                for irow = 1:limitsLen % self.layout.axis.main.nrow
+                    if strcmp(self.currentFig.subplotList{irow,icol}.currentFig.gca.Visible,"on")
+                        if limitsElementLen(icol)==2
+                            xlim(self.currentFig.subplotList{irow,icol}.currentFig.gca, limits{icol}(:));
+                        end
+                        if limitsElementLen(irow)==2 && icol~=irow
+                            ylim(self.currentFig.subplotList{irow,icol}.currentFig.gca, limits{irow}(:));
+                        end
+                    end
+                end
+            end
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1133,15 +1292,15 @@ classdef GridPlot < BasePlot
             end
 
             if lowerRequested || upperRequested || diagRequested
-                self.setAxisLabels();
+                self.hideShowAxesLabels();
             end
 
         end % function hideShow
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function setAxisLabels(self)
-        % show or hide axis labels and ticks depending on the presence of the neighbor subplots
+        function hideShowAxesLabels(self)
+            % show or hide axis labels and ticks depending on the presence of the neighbor subplots
             for icol = 1:self.layout.axis.main.ncol
                 for irow = 1:self.layout.axis.main.nrow
                     if irow < self.layout.axis.main.nrow

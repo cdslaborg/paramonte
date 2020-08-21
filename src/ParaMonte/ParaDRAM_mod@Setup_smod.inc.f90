@@ -1283,7 +1283,9 @@ contains
 
                 if (self%SpecBase%SampleSize%val/=-1_IK) then
 
-                    if (self%SpecBase%SampleSize%val<0_IK) self%SpecBase%SampleSize%val = abs(self%SpecBase%SampleSize%val) * self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose
+                    if (self%SpecBase%SampleSize%val<0_IK) then
+                        self%SpecBase%SampleSize%val = abs(self%SpecBase%SampleSize%val) * self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose
+                    end if
 
                     if (self%SpecBase%SampleSize%val/=0_IK) then
                         if (self%SpecBase%SampleSize%val<self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose) then
@@ -1300,7 +1302,7 @@ contains
                                                     &it from the input list." &
                                             )
                         elseif (self%SpecBase%SampleSize%val>self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose) then
-                            call self%warn    ( prefix = self%brand &
+                            call self%warn  ( prefix = self%brand &
                                             , newline = "\n" &
                                             , marginTop = 0_IK &
                                             , outputUnit = self%LogFile%unit &
@@ -1313,7 +1315,7 @@ contains
                                                     &it from the input list." &
                                             )
                         else
-                            call self%warn    ( prefix = self%brand &
+                            call self%warn  ( prefix = self%brand &
                                             , newline = "\n" &
                                             , marginTop = 0_IK &
                                             , outputUnit = self%LogFile%unit &
@@ -1326,13 +1328,13 @@ contains
 
                     ! regenerate the refined sample, this time with the user-specified sample size.
 
-                    call self%RefinedChain%get( CFC                       = self%Chain &
-                                            , Err                       = self%Err &
-                                            , burninLoc                 = self%Stats%BurninLoc%compact &
-                                            , refinedChainSize          = self%SpecBase%SampleSize%val &
-                                            , sampleRefinementCount     = self%SpecMCMC%SampleRefinementCount%val     &
-                                            , sampleRefinementMethod    = self%SpecMCMC%SampleRefinementMethod%val    &
-                                            )
+                    call self%RefinedChain%get  ( CFC                       = self%Chain &
+                                                , Err                       = self%Err &
+                                                , burninLoc                 = self%Stats%BurninLoc%compact &
+                                                , refinedChainSize          = self%SpecBase%SampleSize%val &
+                                                , sampleRefinementCount     = self%SpecMCMC%SampleRefinementCount%val     &
+                                                , sampleRefinementMethod    = self%SpecMCMC%SampleRefinementMethod%val    &
+                                                )
                     if (self%Err%occurred) then
                         self%Err%msg = PROCEDURE_NAME // self%Err%msg
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
@@ -1349,7 +1351,7 @@ contains
                     , status    = self%SampleFile%status          &
                     , iostat    = self%SampleFile%Err%stat        &
 #if defined IFORT_ENABLED && defined OS_IS_WINDOWS
-                    , SHARED                                    &
+                    , SHARED &
 #endif
                     , position  = self%SampleFile%Position%value  )
                 self%Err = self%SampleFile%getOpenErr(self%SampleFile%Err%stat)
