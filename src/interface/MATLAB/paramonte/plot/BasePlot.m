@@ -220,7 +220,65 @@ classdef BasePlot < dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function exportFig(self,varargin)
+        function exportFig(self, file, varargin)
+            %
+            %   Export the current figure to external file via the export_fig library.
+            %
+            %   Parameters
+            %   ----------
+            %
+            %       file (optional if varargin is also missing from input)
+            %
+            %           A string or char vector containing the path for the output generated figure file. 
+            %           The type of output file is determined by its extension (e.g., pdf, png, ...).
+            %           If provided, the value of the component `outputFile` will be overwritten by 
+            %           the value of the input argument `file`.
+            %
+            %           NOTE:   If this input argument is missing from the input, then corresponding 
+            %           NOTE:   output figure file path from the `outputFile` component of the plot 
+            %           NOTE:   object will be used as the path and name of the exported output figure.
+            %
+            %           Example:
+            %
+            %               exportFig("gridplot.png")
+            %
+            %       varargin (optional)
+            %
+            %           The set of input arguments to the `export_fig()` function of the export_fig 
+            %           MATLAB library (except the path to the output exported figure which is given by `file`).
+            %
+            %           NOTE:   If this input argument is missing from the input, then a default set of 
+            %           NOTE:   options, determined by the export_fig library, will be used.
+            %           NOTE:   *.png : "-m4 -transparent"
+            %           NOTE:   other : []
+            %
+            %   Returns
+            %   -------
+            %
+            %       None.
+            %
+            %   Example
+            %   -------
+            %
+            %       expoortFig(); % export the figure with its name taken from the `outputFile` component of the object.
+            %       expoortFig("gridplot.pdf") % export figure to a PDF file.
+            %       expoortFig("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.
+            %
+            if nargin==1
+                file = self.outputFile;
+            else
+                self.outputFile = file;
+            end
+            if ~( (isstring(file) || ischar(file)) && getVecLen(file) )
+                error   ( "The first input argument (file) must be either a " ...
+                        + "string or char-vector representing the path to the output figure file, for example, " + newline ...
+                        + newline ...
+                        + "    expoortFig('gridplot.png')" + newline ...
+                        + "    expoortFig('gridplot.png', '-m4')" + newline ...
+                        + "    expoortFig('gridplot.png', '-m4 -transparent')" + newline ...
+                        + newline ...
+                        );
+            end
 
             set(0, "CurrentFigure", self.currentFig.gcf);
             if any(contains(string(varargin),"-transparent"))
@@ -248,7 +306,9 @@ classdef BasePlot < dynamicprops
             %        varargin{i} = convertStringsToChars(varargin{i});
             %    end
             %end
-            export_fig(varargin{:});
+
+            export_fig(file, varargin{:});
+
             if transparencyRequested
                 try
                     set(self.currentFig.gcf,"color","default");
@@ -329,7 +389,7 @@ classdef BasePlot < dynamicprops
                 wrongSyntaxDetected = true;
             end
             if wrongSyntaxDetected
-                error("Incorrect number of input arguments. Usage: getLogIntSpace(base,logskip,lowerLim,upperLim)")
+                error("Incorrect number of input arguments. Usage: getLogLinSpace(base,logskip,lowerLim,upperLim)")
             end
             LogLinSpace = getLogIntSpace(base,logskip,lowerLim,upperLim);
         end
@@ -338,9 +398,18 @@ classdef BasePlot < dynamicprops
 
         function helpme(self,varargin)
             if nargin==1
-                doc BasePlot;
+                object = "BasePlot";
             else
-                error("The helpme() method takes no input arguments.")
+                for i = 1:nargin-1
+                    if strcmpi(varargin{i},"BasePlot")
+                        object = "BasePlot";
+                    elseif strcmpi(varargin{i},"getLogLinSpace")
+                        object = "getLogLinSpace";
+                    else
+                        error("The helpme() method takes only arguments with these possible values: ""BasePlot"", ""getLogLinSpace""")
+                    end
+                    cmd = "doc " + object;
+                end
             end
         end
 
@@ -352,6 +421,8 @@ classdef BasePlot < dynamicprops
 
     methods (Access=public,Hidden)
 
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         function reset(self)
 
             if ~self.isHeatmap
@@ -360,6 +431,7 @@ classdef BasePlot < dynamicprops
 
                 self.legend_kws = struct();
                 self.legend_kws.box = "off";
+                self.legend_kws.color = "white";
                 self.legend_kws.labels = {};
                 self.legend_kws.enabled = true;
                 self.legend_kws.fontsize = [];
@@ -368,18 +440,23 @@ classdef BasePlot < dynamicprops
                 self.legend_kws.singleOptions = {};
 
                 self.gca_kws = struct();
+                self.gca_kws.color = "white";
                 self.gca_kws.xscale = "linear";
                 self.gca_kws.yscale = "linear";
 
             end
 
             self.gcf_kws = struct();
+            self.gcf_kws.color = "white";
+            self.gcf_kws.enabled = true;
+
             self.currentFig = struct();
             self.outputFile = [];
 
-            self.gcf_kws.enabled = true;
 
         end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end
 

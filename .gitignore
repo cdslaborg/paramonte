@@ -111,6 +111,7 @@ Thumbs.db
 #########################
 
 **/.ipynb_checkpoints/*
+**/benchmark/*
 **/build/*
 **/trash/*
 **/temp/*

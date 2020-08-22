@@ -191,7 +191,12 @@ contains
                             , dStarStar         = Spearman%dStarStar        &
                             , dStarStarSignif   = Spearman%dStarStarSignif  &
                             , dStarStarProb     = Spearman%dStarStarProb    &
+                            , Err               = Spearman%Err              &
                             )
+        if (Spearman%Err%occurred) then
+            Test%assertion = .false.
+            call Test%verify()
+        end if
 
         if (Test%isDebugMode .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0))")

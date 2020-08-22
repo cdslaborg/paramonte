@@ -32,20 +32,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  
-//  Description:
-//        - returns the log(PDF) (in Neper base) of an ndim-dimensional Multivariate Normal (MVN) probability density function (PDF)
-//  Input:
-//        - ndim: number of dimensions of the domain of the MVN function (length of the vector X)
-//        - Point: the input real-valued vector of length ndim, at which log(PDF) is computed.
-//  Output:
-//        - logFunc: real scalar number representing the log MVN PDF
-//  Author:
-//        - Computational Data Science Lab, Monday 9:03 AM, May 16 2016, ICES, UT Austin
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "logfunc.h"
 
 double getLogFunc   (
@@ -53,8 +39,24 @@ double getLogFunc   (
                     double Point[]
                     )
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //  
+    //  Description:
+    //      -   Return the natural logarithm of an ndim-dimensional Multivariate Normal (MVN) 
+    //          probability density function (PDF) with the Mean and Covariance Matrix as defined below.
+    //          Reference: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+    //  Input:
+    //      -   ndim:   The number of dimensions of the domain of the objective function.
+    //      -   point:  The input 64-bit real-valued vector of length ndim, 
+    //                  at which the natural logarithm of objective function is computed.
+    //  Output:
+    //      - logFunc:  A 64-bit real scalar number representing the natural logarithm of the objective function.
+    //  Author:
+    //      - Computational Data Science Lab, Monday 9:03 AM, May 16 2016, ICES, UT Austin
+    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // multivariate normal (MVN) distribution specifications: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+    // multivariate normal (MVN) distribution specifications: 
 
     const double LOG_INVERSE_SQRT_TWO_PI = log(0.398942280401432);  // log(1/sqrt(2*Pi))
     const double MEAN[NDIM] = {0., 0., 0., 0.};                     // mean vector of the MVN
@@ -102,5 +104,4 @@ double getLogFunc   (
 
 }
 
-//**********************************************************************************************************************************
-//**********************************************************************************************************************************
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,5 +1,4 @@
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !   ParaMonte: plain powerful parallel Monte Carlo library.
 !
@@ -31,8 +30,7 @@
 !
 !       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 module SpecBase_ParallelizationModel_mod
 
@@ -48,6 +46,7 @@ module SpecBase_ParallelizationModel_mod
     type                            :: ParallelizationModel_type
         logical                     :: isSinglChain
         logical                     :: isMultiChain
+        logical                     :: isForkJoin
         character(10)               :: multiChain
         character(11)               :: singlChain
         character(:), allocatable   :: def
@@ -64,13 +63,11 @@ module SpecBase_ParallelizationModel_mod
 
     private :: constructParallelizationModel, setParallelizationModel, checkForSanity, nullifyNameListVar
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructParallelizationModel(methodName) result(ParallelizationModelObj)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -98,7 +95,7 @@ contains
             ParallelizationModelObj%desc = ParallelizationModelObj%desc // &
             "Two options are currently supported:\n\n&
             &    parallelizationModel = '" // ParallelizationModelObj%multiChain // "'\n\n&
-            &            This method uses the Embarrassingly Parallel scheme, in which, multiple MCMC chains are generated &
+            &            This method uses the Prefect Parallelism scheme in which multiple MCMC chains are generated &
                         &independently of each other. In this case, multiple output MCMC chain files will also be generated.\n\n&
             &    parallelizationModel = '" // ParallelizationModelObj%singlChain // "'\n\n&
             &            This method uses the fork-style parallelization scheme. &
@@ -120,8 +117,7 @@ contains
         end if
     end function constructParallelizationModel
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar(ParallelizationModelObj)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -132,8 +128,7 @@ contains
         parallelizationModel = ParallelizationModelObj%null
     end subroutine nullifyNameListVar
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setParallelizationModel(ParallelizationModelObj,parallelizationModel)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -144,15 +139,12 @@ contains
         class(ParallelizationModel_type), intent(inout) :: ParallelizationModelObj
         character(*), intent(in)                        :: parallelizationModel
         ParallelizationModelObj%val = trim(adjustl(replaceStr(parallelizationModel," ", "")))
-        if ( ParallelizationModelObj%val==trim(adjustl(ParallelizationModelObj%null)) ) then
-            ParallelizationModelObj%val = trim(adjustl(ParallelizationModelObj%def))
-        end if
+        if (ParallelizationModelObj%val==trim(adjustl(ParallelizationModelObj%null))) ParallelizationModelObj%val = trim(adjustl(ParallelizationModelObj%def))
         if (getLowerCase(ParallelizationModelObj%val)==getLowerCase(ParallelizationModelObj%singlChain)) ParallelizationModelObj%isSinglChain = .true.
         if (getLowerCase(ParallelizationModelObj%val)==getLowerCase(ParallelizationModelObj%multiChain)) ParallelizationModelObj%isMultiChain = .true.
     end subroutine setParallelizationModel
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine checkForSanity(ParallelizationModel,Err,methodName)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -161,10 +153,10 @@ contains
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(ParallelizationModel_type), intent(in)   :: ParallelizationModel
-        character(*), intent(in)                :: methodName
-        type(Err_type), intent(inout)           :: Err
-        character(*), parameter                 :: PROCEDURE_NAME = "@checkForSanity()"
+        class(ParallelizationModel_type), intent(in)    :: ParallelizationModel
+        character(*), intent(in)                        :: methodName
+        type(Err_type), intent(inout)                   :: Err
+        character(*), parameter                         :: PROCEDURE_NAME = "@checkForSanity()"
         if ( .not.(ParallelizationModel%isSinglChain .or. ParallelizationModel%isMultiChain) ) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
@@ -177,7 +169,6 @@ contains
         end if
     end subroutine checkForSanity
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module SpecBase_ParallelizationModel_mod

@@ -1,5 +1,4 @@
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !   ParaMonte: plain powerful parallel Monte Carlo library.
 !
@@ -31,8 +30,7 @@
 !
 !       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 module BandSpectrum_mod
 ! This module contains methods for computing the Band Spectrum properties of GRBs.
@@ -50,13 +48,11 @@ module BandSpectrum_mod
     real(RK), parameter     :: ALPHA_DEFAULT = -1.1_RK      ! default low-energy index of the Band function
     real(RK), parameter     :: BETA_DEFAULT = -2.3_RK       ! default high-energy index of the Band function
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! returns epk*(alpha-beta)/(alpha+2), which is the normalization factor in the exponent of the first component of the Band model
     pure function getEbreak(epk,alpha,beta) result(ebrk)
@@ -71,8 +67,7 @@ contains
         ebrk = epk * (alpha-beta) / (alpha+2._RK)
     end function getEbreak
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! computes the break energy ebrk o fthe Band model, as well as the coefficient by which the high energy component of the
     ! Band model must be multiplied in order to get a smooth function (assuming the coefficient of the lower energy component
@@ -92,8 +87,7 @@ contains
         coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta)
     end subroutine getBandParam
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! returns the value the Band differential spectrum for the given energy and input parameters.
     ! It is expected that the input energy is in units of KeV, although it does not affect the computations here.
@@ -119,8 +113,7 @@ contains
         end if
     end function getPhotonFlux
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! computes the differential photon count as a function of energy in keV, given the lower component of the Band model.
     ! NOTE: energy values beyond ebrk should not be passed to this function.
@@ -135,8 +128,7 @@ contains
         photonFluxLower = energy**alpha * exp(-energy*alphaPlusTwoOverEpk)  ! the lower-energy spectrum
     end function getPhotonFluxLower
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! returns the integral of the Band differential spectrum over the input energy range.
     ! It is expected that the input energy is in units of KeV, although it does not affect the computations here.
@@ -230,7 +222,7 @@ contains
                 !                        , xmax          = thisUpperLim         &
                 !                        , tolerance     = 1.e-7_RK             &
                 !                        , nRefinement   = 10_IK                &
-                !                        , photonFluence      = photonFluence   &
+                !                        , photonFluence = photonFluence        &
                 !                        , ierr          = ierr                 &
                 !                        )
                 if (ierr/=0_IK) then
@@ -264,8 +256,7 @@ contains
 
     end subroutine getPhotonFluence
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! returns the integral of the Band differential spectrum over the input energy range, in units of the input energy.
     ! It is expected that the input energy is in units of KeV, although it does not affect the computations here.
@@ -365,8 +356,7 @@ contains
 
     end subroutine getEnergyFluence
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! converts an input energy fluence in [lowerLim, upperLim] energy window, all in units of keV (or ALL in some other units),
     ! to photon fluence, within the same energy range, or if [lowerLimNew, upperLimNew] is provided, then in that range.
@@ -421,7 +411,6 @@ contains
 
     end subroutine getPhotonFluenceFromEnergyFluence
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module BandSpectrum_mod

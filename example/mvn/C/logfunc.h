@@ -32,32 +32,17 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//  
-//  Description:
-//        - returns the log(probability) (in Neper base) of an ndim-dimensional standard Gaussian probability density (pdf),
-//        - that is, with mean zero, and an identity covariance matrix.
-//  Input:
-//        - ndim: number of dimensions of the domain of the Gaussian function (length of the vector X)
-//        - Point: the input real-valued vector of length ndim, at which log(pdf) is computed.
-//  Output:
-//        - logProb: real scalar number representing the log Gaussian pdf
-//  Author:
-//        - Computational Data Science Lab, Monday 9:03 AM, May 16 2016, ICES, UT Austin
-//
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 #ifndef PM_LOG_FUNC
 #define PM_LOG_FUNC
 
 #include <math.h>
 #include <stdint.h>
 
-#define NDIM 4  // dimension of the domain of the Gaussian distribution function (bivariate Gaussian)
+#define NDIM 4  // The number of dimensions of the domain of the objective function.
 
 double getLogFunc   (
-                    int32_t ,         // ndim
-                    double []         // Point
+                    int32_t ,   // ndim
+                    double []   // Point
                     );
 
 #endif

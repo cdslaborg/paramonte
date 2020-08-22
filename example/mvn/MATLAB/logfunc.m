@@ -53,15 +53,18 @@ classdef logfunc
     % define the objective function: getLogFunc
 
     methods (Static)
-        function logFunc = get(point)
-
+        function logFuncVal = get(point)
+            % Return the natural logarithm of an NDIM-dimensional Multivariate Normal distribution
+            % with the mean and covariance matrix as given in the above.
+            % Reference: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+            %
             % note that the input point is an array of NDIM rows and 1 column.
             % Therefore, the MEAN array must have the same dimensions.
 
-            % the logarithm of objective function: log(MVN)
+            % the logarithm of objective function: log(ObjectiveFunction)
 
             normedPoint = logfunc.MEAN - point;
-            logFunc = logfunc.MVN_COEF - 0.5 * ( dot(normedPoint', logfunc.INVCOV * normedPoint) );
+            logFuncVal = logfunc.MVN_COEF - 0.5 * ( dot(normedPoint', logfunc.INVCOV * normedPoint) );
 
         end
     end

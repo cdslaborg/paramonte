@@ -34,18 +34,37 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-import os
 import numpy as np
-from scipy.stats import multivariate_normal
 
-NDIM = 4 # number of dimensions of the distribution
+# The number of dimensions of the domain of the objective function.
 
-mvn = multivariate_normal   ( mean =  [0.0,0.0,0.0,0.0]
-                            , cov = [ [1.0,0.5,0.5,0.5]
-                                    , [0.5,1.0,0.5,0.5]
-                                    , [0.5,0.5,1.0,0.5]
-                                    , [0.5,0.5,0.5,1.0]
-                                    ]
-                            )
+NDIM = 4
 
-def getLogFunc(point): return np.log(mvn.pdf(point))
+# This is the mean of the MVN distribution.
+
+MEAN =  [0.0,0.0,0.0,0.0]
+
+# This is the covariance matrix of the MVN distribution.
+
+COVMAT =    [ [1.0,0.5,0.5,0.5]
+            , [0.5,1.0,0.5,0.5]
+            , [0.5,0.5,1.0,0.5]
+            , [0.5,0.5,0.5,1.0]
+            ]
+
+# This is the inverse of the covariance matrix of the MVN distribution.
+
+INVCOV = np.linalg.inv(COVMAT)
+
+# This is the log of the coefficient used in the definition of the MVN.
+
+MVN_COEF = NDIM * np.log( 1. / np.sqrt(2.*np.pi) ) + np.log( np.sqrt(np.linalg.det(INVCOV)) )
+
+def getLogFunc(point):
+    """
+    Return the natural logarithm of an NDIM-dimensional Multivariate Normal distribution
+    with the mean and covariance matrix as given in the above.
+    Reference: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+    """
+    normedPoint = MEAN - point
+    return MVN_COEF - 0.5 * ( np.dot(normedPoint,np.matmul(INVCOV,normedPoint)) )

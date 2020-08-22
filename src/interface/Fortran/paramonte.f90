@@ -73,18 +73,6 @@ module paramonte
     use, intrinsic :: iso_fortran_env, only: IK => int32, RK => real64
     implicit none
 
-    interface
-        subroutine runParaDRAM  ( ndim          &
-                                , getLogFunc    &
-                                , inputFile     &
-                                )
-            implicit none
-            integer(IK) , intent(in)            :: ndim
-            procedure(getLogFunc_proc)          :: getLogFunc
-            character(*), intent(in), optional  :: inputFile
-        end subroutine runParaDRAM
-    end interface
-
     ! The Fortran objective function interface (getLogFunc). Here, `proc` stands for the procedure interface.
 
     abstract interface
@@ -94,6 +82,19 @@ module paramonte
             real(RK)    , intent(in)    :: Point(ndim)
             real(RK)                    :: logFunc
         end function getLogFunc_proc
+    end interface
+
+    interface
+        subroutine runParaDRAM  ( ndim          &
+                                , getLogFunc    &
+                                , inputFile     &
+                                )
+            import :: IK, getLogFunc_proc
+            implicit none
+            integer(IK) , intent(in)            :: ndim
+            procedure(getLogFunc_proc)          :: getLogFunc
+            character(*), intent(in), optional  :: inputFile
+        end subroutine runParaDRAM
     end interface
 
 #endif

@@ -2,14 +2,16 @@
 ! used for building ParaMonte library.
 ! any line preceded by the exclamation mark (!) is comment and will be ignored.
 !
-  ifport.f90
+  !ifport.f90
   Constants_mod.f90
   Misc_mod.f90
+  !EconomicsToolbox_mod.f90
   JaggedArray_mod.f90
   String_mod.f90
   Decoration_mod.f90
   Decoration_mod@Routines_smod.f90
   Err_mod.f90
+  Optimization_mod.f90
   DateTime_mod.f90
   System_mod.f90
   Path_mod.f90
@@ -23,12 +25,17 @@
   Math_mod.f90
   Matrix_mod.f90
   Statistics_mod.f90
+  Parallelism_mod.f90
   CorrCoef_mod.f90
   TranGaus_mod.f90
   CrossCorr_mod.f90
   Integration_mod.f90
   QuadPackSPR_mod.f90
   QuadPackDPR_mod.f
+  Cosmology_mod.f90
+  StarFormation_mod.f90
+  BandSpectrum_mod.f90
+  Batse_mod.f90
   !
   SpecBase_SampleSize_mod.f90
   SpecBase_RandomSeed_mod.f90
@@ -91,8 +98,3 @@
   ParaDRAM_mod@Setup_smod.f90
   ParaDISE_mod@Setup_smod.f90
   ParaMonte@runParaDRAM.f90
-  !
-  Cosmology_mod.f90
-  StarFormation_mod.f90
-  BandSpectrum_mod.f90
-  Batse_mod.f90

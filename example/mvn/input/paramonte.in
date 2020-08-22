@@ -1,5 +1,4 @@
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !   ParaMonte: plain powerful parallel Monte Carlo library.
 !
@@ -31,32 +30,34 @@
 !
 !       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
-
-! ParaMonte input file for sampling a multivariate 4-dimensional Gaussian distribution as implemented in the accompanying source files.
-! USAGE:
-! Comments must begin with an exclamation mark (!).
-! Comments can appear anywhere on an empty line or, after a value assignment.
-! all variable assignments are optional and can be commented out. In such cases, appropriate default values will be assigned.
-! Use ParaDRAM namelist (group) name to group a set of ParaDRAM simulation specification variables.
-! The order of the input variables in the namelist groups is irrelevant and unimportant.
-! Variables can be defined multiple times, but only the last definition will be considered as input.
-! All variable names are case insensitive. However, for clarity, this software follows the camelCase code-writing practice.
-! String values must be enclosed with either single or double quotation marks.
-! Logical values are case-insensitive and can be either .true., true, or t for a TRUE value, and .false., false, or f for a FALSE value.
-! All vectors and arrays in the input file begin with index 1. This is following the convention of 
-! the majority of science-oriented programming languages: Fortran, Julia, Mathematica, MATLAB, and R.
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
-! For comprehensive guidelines on the input file organization and rules, visit: 
+!   USAGE:
 !
-!   https://www.cdslab.org/paramonte/notes/usage/interface/
-
-! The following &ParaDRAM namelist group assigns the simulation specifications of 
-! an example ParaDRAM sampling of a 4-dimensional Multivariate Normal Distribution.
-! To see detailed descriptions of each of variables, visit:
+!       --  Comments must begin with an exclamation mark (!).
+!       --  Comments can appear anywhere on an empty line or, after a value assignment.
+!       --  All variable assignments are optional and can be commented out. In such cases, appropriate default values will be assigned.
+!       --  Use ParaDRAM namelist (group) name to group a set of ParaDRAM simulation specification variables.
+!       --  The order of the input variables in the namelist groups is irrelevant and unimportant.
+!       --  Variables can be defined multiple times, but only the last definition will be considered as input.
+!       --  All variable names are case insensitive. However, for clarity, this software follows the camelCase code-writing practice.
+!       --  String values must be enclosed with either single or double quotation marks.
+!       --  Logical values are case-insensitive and can be either .true., true, or t for a TRUE value, and .false., false, or f for a FALSE value.
+!       --  All vectors and arrays in the input file begin with index 1. This is following the convention of 
+!           the majority of science-oriented programming languages: Fortran, Julia, Mathematica, MATLAB, and R.
 !
-!   https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+!      For comprehensive guidelines on the input file organization and rules, visit: 
+!   
+!           https://www.cdslab.org/paramonte/notes/usage/paradram/input/
+!   
+!      To see detailed descriptions of each of variables, visit:
+!   
+!           https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+!
+!   DESCRIPTION:
+!
+!       ParaMonte input file for sampling a 4-dimensional multivariate Normal distribution 
+!       as implemented in the accompanying source files.
 
 &ParaDRAM
 

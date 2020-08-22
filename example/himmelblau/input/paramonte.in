@@ -1,0 +1,130 @@
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!   ParaMonte: plain powerful parallel Monte Carlo library.
+!
+!   Copyright (C) 2012-present, The Computational Data Science Lab
+!
+!   This file is part of the ParaMonte library.
+!
+!   ParaMonte is free software: you can redistribute it and/or modify it
+!   under the terms of the GNU Lesser General Public License as published
+!   by the Free Software Foundation, version 3 of the License.
+!
+!   ParaMonte is distributed in the hope that it will be useful,
+!   but WITHOUT ANY WARRANTY; without even the implied warranty of
+!   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+!   GNU Lesser General Public License for more details.
+!
+!   You should have received a copy of the GNU Lesser General Public License
+!   along with the ParaMonte library. If not, see,
+!
+!       https://github.com/cdslaborg/paramonte/blob/master/LICENSE
+!
+!   ACKNOWLEDGMENT
+!
+!   As per the ParaMonte library license agreement terms,
+!   if you use any parts of this library for any purposes,
+!   we ask you to acknowledge the use of the ParaMonte library
+!   in your work (education/research/industry/development/...)
+!   by citing the ParaMonte library as described on this page:
+!
+!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
+!
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!   ParaMonte input file for sampling the 2-dimensional Himmelblau's function as implemented in the accompanying source files.
+!
+!   USAGE:
+!
+!       --  Comments must begin with an exclamation mark (!).
+!       --  Comments can appear anywhere on an empty line or, after a value assignment.
+!       --  All variable assignments are optional and can be commented out. In such cases, appropriate default values will be assigned.
+!       --  Use ParaDRAM namelist (group) name to group a set of ParaDRAM simulation specification variables.
+!       --  The order of the input variables in the namelist groups is irrelevant and unimportant.
+!       --  Variables can be defined multiple times, but only the last definition will be considered as input.
+!       --  All variable names are case insensitive. However, for clarity, this software follows the camelCase code-writing practice.
+!       --  String values must be enclosed with either single or double quotation marks.
+!       --  Logical values are case-insensitive and can be either .true., true, or t for a TRUE value, and .false., false, or f for a FALSE value.
+!       --  All vectors and arrays in the input file begin with index 1. This is following the convention of
+!           the majority of science-oriented programming languages: Fortran, Julia, Mathematica, MATLAB, and R.
+!
+!      For comprehensive guidelines on the input file organization and rules, visit:
+!
+!           https://www.cdslab.org/paramonte/notes/usage/paradram/input/
+!
+!      To see detailed descriptions of each of variables, visit:
+!
+!           https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+!
+!   DESCRIPTION:
+!
+!       ParaMonte input file for sampling a 2-dimensional Himmelblau's function 
+!       as implemented in the accompanying source files.
+
+&ParaDRAM
+
+    ! Base specifications
+
+    description                         = "
+This\n
+    is a\n
+        multi-line\n
+            description."                                   ! strings must be enclosed with "" or '' and can be continued on multiple lines.
+                                                            ! No comments within strings are allowed.
+   !outputColumnWidth                   = 25                ! this is an example of a variable that is commented out and
+                                                            ! therefore, its value won't be read by the sampler routine.
+                                                            ! To pass it to the routine, simply remove the ! mark at
+                                                            ! the beginning of the line.
+    outputRealPrecision                 = 17
+   !outputDelimiter                     = ","
+    outputFileName                      = "./out/"          ! the last forward-slash character indicates that this
+                                                            ! is the folder where the output files will have to stored.
+                                                            ! However, since no output filename prefix has been specified,
+                                                            ! the output filenames will be assigned a randomly-generated prefix.
+   !sampleSize                          = 111
+    randomSeed                          = 2136275,
+    chainFileFormat                     = "compact"
+    variableNameList                    = "variable1"       ! Any missing variable name will be automatically assigned an appropriate name.
+                                        , "variable2"
+    domainLowerLimitVec                 = 2*-1.e300         ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
+    domainUpperLimitVec                 = 2*1.e300          ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
+    parallelizationModel                = "single chain"    ! "singleChain" would also work. Similarly, "multichain", "multi chain", or "multiChain".
+   !targetAcceptanceRate                = 0.23e0
+    progressReportPeriod                = 1000
+    maxNumDomainCheckToWarn             = 100
+    maxNumDomainCheckToStop             = 1000
+    restartFileFormat                   = "binary"
+    silentModeRequested                 = false             ! FALSE, false, .false., .f., and f would be also all valid logical values representing False
+   !mpiFinalizeRequested                = true              ! TRUE, true, .true., .t., and t would be also all valid logical values representing True
+
+    ! MCMC specifications
+
+    chainSize                           = 30000
+    startPointVec                       = 2*1.e0            ! four values of 1.e0 are specified here by the repetition pattern symbol *
+   !sampleRefinementCount               = 10
+    sampleRefinementMethod              = "BatchMeans"
+    randomStartPointDomainLowerLimitVec = 2*-100.e0         ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
+    randomStartPointDomainUpperLimitVec = 2*100.0           ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
+    randomStartPointRequested           = false
+
+    ! DRAM specifications
+
+    scaleFactor                         = "2*0.5*Gelman"    ! The asterisk here means multiplication since it is enclosed within quotation marks.
+    proposalModel                       = "normal"          ! or "uniform" as you wish.
+    adaptiveUpdateCount                 = 10000000
+    adaptiveUpdatePeriod                = 35
+    greedyAdaptationCount               = 0
+   !delayedRejectionCount               = 5
+   !delayedRejectionScaleFactorVec      = 5*1.
+   !burninAdaptationMeasure             = 1.
+   !proposalStartStdVec                 = 2*1.0             ! repetition pattern rules apply again here. 2 dimensions => 2-element vector of values.
+   !proposalStartCorMat                 =   1,0,0,0,        ! 2-dimensional correlation-matrix definition, although it is commented out and won't be read.
+   !                                        0,1,0,0,
+   !                                        0,0,1,0,
+   !                                        0,0,0,1,
+   !proposalStartCovMat                 =   100,0,0,0,
+   !                                        0,100,0,0,
+   !                                        0,0,100,0,
+   !                                        0,0,0,100,
+
+/

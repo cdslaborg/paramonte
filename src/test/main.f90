@@ -53,9 +53,12 @@ program main
 !use Test_CorrCoef_mod
 !use Test_TranGaus_mod
 !use Test_Math_mod
+!use Test_Misc_mod
 !use Test_Batse_mod
-!use Test_BandSpectrum_mod
 !use Test_Statistics_mod
+use Test_Optimization_mod
+!!use Test_EconomicsToolbox_mod
+!use Test_BandSpectrum_mod
 use Test_ParaMonte_mod
 
 use iso_fortran_env, only: compiler_options
@@ -103,13 +106,21 @@ use iso_fortran_env, only: compiler_options
 !call test_CorrCoef()
 !call test_TranGaus()
 !call test_Math()
+!call test_Misc()
+!!call test_EconomicsToolbox()
 !call test_Batse()
 !call test_BandSpectrum()
 !call test_Statistics()
+call test_Optimization()
+call test_ParaMonte()
 
 !write(*,"(A)") compiler_options()
 
-call test_ParaDRAM()
-call test_ParaDISE()
+#if defined MPI_ENABLED
+block
+    use Test_mod, only: finalizeMPI
+    call finalizeMPI()
+end block
+#endif
 
 end program main

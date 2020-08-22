@@ -1719,9 +1719,28 @@ LD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH
 if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
     if [ "${MPI_ENABLED}" = "true" ]; then
-        (cd ${ParaMonte_BLD_DIR}/test/bin && \
-        "${MPIEXEC_PATH}" -n ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte \
-        )
+        # first attempt to find an installation of the mpiexec on the system
+        if [ -z ${MPIEXEC_PATH+x} ]; then
+            MPIEXEC_PATH_RESET_ENABLED="true"
+            MPIEXEC_PATH=$(command -v mpiexec)
+        else
+            MPIEXEC_PATH_RESET_ENABLED="false"
+        fi
+        if [ -f "${MPIEXEC_PATH}" ]; then
+            echo >&2 "-- ${BUILD_NAME} - running command: ${MPIEXEC_PATH} -n ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte"
+            (cd ${ParaMonte_BLD_DIR}/test/bin && \
+            "${MPIEXEC_PATH}" -n ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte \
+            )
+            if [ "${MPIEXEC_PATH_RESET_ENABLED}" = "true" ]; then unset MPIEXEC_PATH; fi
+        else
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - WARNING: No tests of the ParaMonte library will be performed."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install one for you. To do so, drop the"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: input argument -s or --compiler_suite when calling the script."
+            echo >&2
+        fi
     else
         if [ "${PMCS}" = "gnu" ]; then
             if [[ -f "${SETUP_FILE_PATH}" ]]; then
@@ -2143,7 +2162,7 @@ mkdir -p ${ParaMonte_BIN_DIR}
 ####################################################################################################################################
 
 echo >&2
-echo >&2 "-- ${BUILD_NAME} - ParaMonte binary/library directory: ${ParaMonte_BIN_DIR}"
+echo >&2 "-- ${BUILD_NAME} - ParaMonte binary/library directory: ${ParaMonte_BIN_DIR}/${PMLIB_BASE_NAME}"
 echo >&2 "-- ${BUILD_NAME} - ParaMonte build directory: ${ParaMonte_BLD_DIR}"
 echo >&2
 echo >&2 "-- ${BUILD_NAME} - mission accomplished"

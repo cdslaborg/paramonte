@@ -36,13 +36,15 @@
 
 # ParaMonte library
 SET(ParaMonte_SOURCE_FILES
-   #"${ParaMonte_SRC_DIR}/ifport.f90
+   #${ParaMonte_SRC_DIR}/ifport.f90
     ${ParaMonte_SRC_DIR}/Constants_mod.f90
     ${ParaMonte_SRC_DIR}/Misc_mod.f90
+   #${ParaMonte_SRC_DIR}/EconomicsToolbox_mod.f90
     ${ParaMonte_SRC_DIR}/JaggedArray_mod.f90
     ${ParaMonte_SRC_DIR}/Decoration_mod.f90
     ${ParaMonte_SRC_DIR}/Decoration_mod@Routines_smod.f90
     ${ParaMonte_SRC_DIR}/Err_mod.f90
+    ${ParaMonte_SRC_DIR}/Optimization_mod.f90
     ${ParaMonte_SRC_DIR}/DateTime_mod.f90
     ${ParaMonte_SRC_DIR}/String_mod.f90
     ${ParaMonte_SRC_DIR}/System_mod.f90
@@ -57,12 +59,17 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/Math_mod.f90
     ${ParaMonte_SRC_DIR}/Matrix_mod.f90
     ${ParaMonte_SRC_DIR}/Statistics_mod.f90
+    ${ParaMonte_SRC_DIR}/Parallelism_mod.f90
     ${ParaMonte_SRC_DIR}/CorrCoef_mod.f90
     ${ParaMonte_SRC_DIR}/TranGaus_mod.f90
     ${ParaMonte_SRC_DIR}/CrossCorr_mod.f90
     ${ParaMonte_SRC_DIR}/Integration_mod.f90
     ${ParaMonte_SRC_DIR}/QuadPackSPR_mod.f90
     ${ParaMonte_SRC_DIR}/QuadPackDPR_mod.f
+    ${ParaMonte_SRC_DIR}/Cosmology_mod.f90
+    ${ParaMonte_SRC_DIR}/StarFormation_mod.f90
+    ${ParaMonte_SRC_DIR}/BandSpectrum_mod.f90
+    ${ParaMonte_SRC_DIR}/Batse_mod.f90
     ${ParaMonte_SRC_DIR}/SpecBase_SampleSize_mod.f90
     ${ParaMonte_SRC_DIR}/SpecBase_RandomSeed_mod.f90
     ${ParaMonte_SRC_DIR}/SpecBase_Description_mod.f90
@@ -121,15 +128,12 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90
     ${ParaMonte_SRC_DIR}/ParaDISE_mod@Setup_smod.f90
     ${ParaMonte_SRC_DIR}/ParaMonte@runParaDRAM.f90
-    ${ParaMonte_SRC_DIR}/Cosmology_mod.f90
-    ${ParaMonte_SRC_DIR}/StarFormation_mod.f90
-    ${ParaMonte_SRC_DIR}/BandSpectrum_mod.f90
-    ${ParaMonte_SRC_DIR}/Batse_mod.f90
 )
    #${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricUniform_mod.f90
 
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod.inc.f90)
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISE_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.inc.f90)
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.inc.f90)
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod@nextMove.inc.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod@markovGen.inc.f90)

@@ -7,7 +7,7 @@ C*********************************************************************
 
       function d1mach ( i )
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc D1MACH returns double precision machine-dependent constants.
 c
@@ -487,7 +487,7 @@ C*********************************************************************
 
       subroutine dgtsl(n,c,d,e,b,info)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DGTSL solves a general tridiagonal linear system.
 c
@@ -608,7 +608,7 @@ C*********************************************************************
       subroutine dqage(f,a,b,epsabs,epsrel,key,limit,result,abserr,
      *   neval,ier,alist,blist,rlist,elist,iord,last)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAGE estimates a definite integral.
 c
@@ -957,7 +957,7 @@ C*********************************************************************
       subroutine dqag(f,a,b,epsabs,epsrel,key,result,abserr,neval,ier,
      *    limit,lenw,last,iwork,work)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAG approximates an integral over a finite interval.
 c
@@ -1148,7 +1148,7 @@ C*********************************************************************
       subroutine dqagie(f,bound,inf,epsabs,epsrel,limit,result,abserr,
      *   neval,ier,alist,blist,rlist,elist,iord,last)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAGIE estimates an integral over a semi-infinite or infinite interval.
 c
@@ -1609,7 +1609,7 @@ C*********************************************************************
       subroutine dqagi(f,bound,inf,epsabs,epsrel,result,abserr,neval,
      *   ier,limit,lenw,last,iwork,work)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAGI estimates an integral over a semi-infinite or infinite interval.
 c
@@ -1810,7 +1810,7 @@ C*********************************************************************
      *   abserr,neval,ier,alist,blist,rlist,elist,pts,iord,level,ndin,
      *   last)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAGPE computes a definite integral.
 c
@@ -2368,7 +2368,7 @@ C*********************************************************************
       subroutine dqagp(f,a,b,npts2,points,epsabs,epsrel,result,abserr,
      *   neval,ier,leniw,lenw,last,iwork,work)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAGP computes a definite integral.
 c
@@ -2602,7 +2602,7 @@ C*********************************************************************
       subroutine dqagse(f,a,b,epsabs,epsrel,limit,result,abserr,neval,
      *   ier,alist,blist,rlist,elist,iord,last)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAGSE estimates the integral of a function.
 c
@@ -3055,7 +3055,7 @@ C*********************************************************************
       subroutine dqags(f,a,b,epsabs,epsrel,result,abserr,neval,ier,
      *   limit,lenw,last,iwork,work)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAGS estimates the integral of a function.
 c
@@ -3252,7 +3252,7 @@ C*********************************************************************
       subroutine dqawce(f,a,b,c,epsabs,epsrel,limit,result,abserr,neval,
      *   ier,alist,blist,rlist,elist,iord,last)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAWCE computes a Cauchy principal value.
 c
@@ -3587,7 +3587,7 @@ C*********************************************************************
       subroutine dqawc(f,a,b,c,epsabs,epsrel,result,abserr,neval,ier,
      *   limit,lenw,last,iwork,work)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAWC computes a Cauchy principal value.
 c
@@ -3775,7 +3775,7 @@ C*********************************************************************
      *   result,abserr,neval,ier,rslst,erlst,ierlst,lst,alist,blist,
      *   rlist,elist,iord,nnlog,chebmo)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAWFE computes Fourier integrals.
 c
@@ -4146,7 +4146,7 @@ C*********************************************************************
       subroutine dqawf(f,a,omega,integr,epsabs,result,abserr,neval,ier,
      *   limlst,lst,leniw,maxp1,lenw,iwork,work)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAWF computes Fourier integrals over the interval [ A, +Infinity ).
 c
@@ -4387,7 +4387,7 @@ C*********************************************************************
      *  maxp1,result,abserr,neval,ier,last,alist,blist,rlist,elist,iord,
      *   nnlog,momcom,chebmo)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAWOE computes the integrals of oscillatory integrands.
 c
@@ -4926,7 +4926,7 @@ C*********************************************************************
       subroutine dqawo(f,a,b,omega,integr,epsabs,epsrel,result,abserr,
      *   neval,ier,leniw,maxp1,lenw,last,iwork,work)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAWO computes the integrals of oscillatory integrands.
 c
@@ -5160,7 +5160,7 @@ C*********************************************************************
       subroutine dqawse(f,a,b,alfa,beta,integr,epsabs,epsrel,limit,
      *   result,abserr,neval,ier,alist,blist,rlist,elist,iord,last)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAWSE estimates integrals with algebraico-logarithmic endpoint singularities.
 c
@@ -5538,7 +5538,7 @@ C*********************************************************************
       subroutine dqaws(f,a,b,alfa,beta,integr,epsabs,epsrel,result,
      *   abserr,neval,ier,limit,lenw,last,iwork,work)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQAWS estimates integrals with algebraico-logarithmic endpoint singularities.
 c
@@ -5746,7 +5746,7 @@ C*********************************************************************
 
       subroutine dqc25c(f,a,b,c,result,abserr,krul,neval)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQC25C returns integration rules for Cauchy Principal Value integrals.
 c
@@ -5913,7 +5913,7 @@ c
       subroutine dqc25f(f,a,b,omega,integr,nrmom,maxp1,ksave,result,
      *   abserr,neval,resabs,resasc,momcom,chebmo)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQC25F returns integration rules for functions with a COS or SIN factor.
 c
@@ -6275,7 +6275,7 @@ C*********************************************************************
       subroutine dqc25s(f,a,b,bl,br,alfa,beta,ri,rj,rg,rh,result,
      *   abserr,resasc,integr,nev)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQC25S returns rules for algebraico-logarithmic end point singularities.
 c
@@ -6620,7 +6620,7 @@ C*********************************************************************
 
       subroutine dqcheb(x,fval,cheb12,cheb24)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQCHEB computes the Chebyshev series expansion.
 c
@@ -6773,7 +6773,7 @@ c***first executable statement  dqcheb
       end
       subroutine dqelg(n,epstab,result,abserr,res3la,nres)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQELG carries out the Epsilon extrapolation algorithm.
 c
@@ -6966,7 +6966,7 @@ C*********************************************************************
 
       subroutine dqk15(f,a,b,result,abserr,resabs,resasc)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQK15 carries out a 15 point Gauss-Kronrod quadrature rule.
 c
@@ -7149,7 +7149,7 @@ C*********************************************************************
 
       subroutine dqk15i(f,boun,inf,a,b,result,abserr,resabs,resasc)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQK15I applies a 15 point Gauss-Kronrod quadrature on an infinite interval.
 c
@@ -7350,7 +7350,7 @@ c
       subroutine dqk15w(f,w,p1,p2,p3,p4,kp,a,b,result,abserr,
      *   resabs,resasc)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQK15W applies a 15 point Gauss-Kronrod rule for a weighted integrand.
 c
@@ -7534,7 +7534,7 @@ c
       end
       subroutine dqk21(f,a,b,result,abserr,resabs,resasc)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQK21 carries out a 21 point Gauss-Kronrod quadrature rule.
 c
@@ -7725,7 +7725,7 @@ C*********************************************************************
 
       subroutine dqk31(f,a,b,result,abserr,resabs,resasc)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQK31 carries out a 31 point Gauss-Kronrod quadrature rule.
 c
@@ -7925,7 +7925,7 @@ C*********************************************************************
 
       subroutine dqk41(f,a,b,result,abserr,resabs,resasc)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQK41 carries out a 41 point Gauss-Kronrod quadrature rule.
 c
@@ -8141,7 +8141,7 @@ C*********************************************************************
 
       subroutine dqk51(f,a,b,result,abserr,resabs,resasc)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQK51 carries out a 51 point Gauss-Kronrod quadrature rule.
 c
@@ -8366,7 +8366,7 @@ c
       end
       subroutine dqk61(f,a,b,result,abserr,resabs,resasc)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQK61 carries out a 61 point Gauss-Kronrod quadrature rule.
 c
@@ -8606,7 +8606,7 @@ C*********************************************************************
 
       subroutine dqmomo(alfa,beta,ri,rj,rg,rh,integr)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQMOMO computes modified Chebyshev moments.
 c
@@ -8742,7 +8742,7 @@ C*********************************************************************
 
       subroutine dqng(f,a,b,epsabs,epsrel,result,abserr,neval,ier)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQNG estimates an integral, using non-adaptive integration.
 c
@@ -9125,7 +9125,7 @@ C*********************************************************************
 
       subroutine dqpsrt(limit,last,maxerr,ermax,elist,iord,nrmax)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQPSRT maintains the order of a list of local error estimates.
 c
@@ -9258,12 +9258,12 @@ c
       return
       end
 
-c*********************************************************************
-c*********************************************************************
+C*********************************************************************
+C*********************************************************************
 
       double precision function dqwgtc(x,c,p2,p3,p4,kp)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQWGTC defines the weight function used by DQC25C.
 c
@@ -9290,7 +9290,7 @@ C*********************************************************************
 
       double precision function dqwgtf(x,omega,p2,p3,p4,integr)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQWGTF defines the weight functions used by DQC25F.
 c
@@ -9314,12 +9314,12 @@ c***first executable statement  dqwgtf
    30 return
       end
 
-c*********************************************************************
-c*********************************************************************
+C*********************************************************************
+C*********************************************************************
 
       double precision function dqwgts(x,a,b,alfa,beta,integr)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc DQWGTS defines the weight functions used by DQC25S.
 c
@@ -9355,7 +9355,7 @@ C*********************************************************************
 
       integer function i1mach ( i )
 
-c*********************************************************************72
+C*********************************************************************72
 c
 C***BEGIN PROLOGUE  I1MACH
 C***DATE WRITTEN   750101   (YYMMDD)
@@ -10093,7 +10093,7 @@ C*********************************************************************
 
       SUBROUTINE XERROR (XMESS, NMESS, NERR, LEVEL)
 
-c*********************************************************************72
+C*********************************************************************72
 c
 cc XERROR replaces the SLATEC XERROR routine.
 c

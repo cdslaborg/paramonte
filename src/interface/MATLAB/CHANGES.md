@@ -7,11 +7,28 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ### Version  1.1.1 -- Work in Progress  
 
-**bug fixes**  
-+   ParaDRAM `readMarkovChain()` no-output-option bug is now fixed. User can now either provide the output variable or not when calling `readMarkovChain()`.  
-
 **New features**  
-+   new `readReport()` method now added to the ParaDRAM sampler class. User can now parse the contents of the output report file.  
+
++   The `GridPlot()` class now has to additional methods `setAxesLabels()` and `setAxesLimits()` 
+    which can directly set the labels and limits of axes, hassle-free.
+
++   new `readReport()` method is now added to the ParaDRAM sampler class. 
+    User can now parse the contents of the output report files.  
+
++   new `readRestart()` method is now added to the ParaDRAM sampler class. 
+    User can now parse the contents of the output ASCII-format restart files. 
+    This is particularly useful to visualize the dynamics of the ParaDRAM sampler class, 
+    such as the evolution of the proposal distribution's location, shape, and covariance matrix.  
+
+**Enhancements**  
+
++   The default background color in all plots is now `"white"`.  
++   The `rotateAxisLabels()` of the `GridPlot()` class is now renamed to `rotateAxesLabels()`.  
+
+**Bug fixes**  
+
++   ParaDRAM `readMarkovChain()` no-output-option bug is now fixed. 
+    When calling `readMarkovChain()`, user can now either provide the output variable or not.  
 
 ### Version  1.1.0 -- June 5, 2020  
 
@@ -24,6 +41,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 +   This is the first public release of the ParaMonte MATLAB library.  
 
 **New features**  
+
 +   ParaDRAM sampler: **Para**llel **D**elayed-**R**ejection **A**daptive Metropolis-Hastings **M**arkov Chain Monte Carlo Sampler.  
 +   ParaMonte Interface to the MATLAB Programming language.  
 +   ParaMonte simulation-output visualization via the ParaMonte MATLAB interface.  

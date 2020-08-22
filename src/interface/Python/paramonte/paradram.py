@@ -497,7 +497,7 @@ class ParaDRAM:
                         , marginBot = 1
                         )
 
-            inputFileVec_pntr = inputFile.encode("utf-8")                   # create byte-object from the external input file
+            inputFileVec_pntr = inputFile.encode("utf-8")                       # create byte-object from the external input file
 
         inputFileLen = len(inputFileVec_pntr) # byte-object length
        #inputFileLen_pntr = _ct.byref( _ct.c_size_t( len(inputFileVec_pntr) ) ) # pointer to byte-object length
@@ -1025,7 +1025,8 @@ class ParaDRAM:
                     , marginBot = 1
                     )
 
-        pmdll.runParaDRAM.restype = None
+        pmdll.runParaDRAM.restype = _ct.c_int32
+        #pmdll.runParaDRAM.restype = None
         #pmdll.runParaDRAM.argtypes =    [ _ct.POINTER(_ct.c_int32)     # ndim
         pmdll.runParaDRAM.argtypes =    [ _ct.c_int32                   # ndim
                                         , _getLogFuncRaw_proc           # procedure
@@ -1045,13 +1046,24 @@ class ParaDRAM:
 
         # call ParaMonte
         #pmdll.runParaDRAM   ( ndim_pntr
-        pmdll.runParaDRAM   ( _ct.c_int32(ndim)
-                            , getLogFuncRaw_pntr
-                            , inputFileVec_pntr
-                            , _ct.c_int32(inputFileLen)
-                           #, inputFileLen_pntr
-                            )
-
+        #pmdll.runParaDRAM   ( _ct.c_int32(ndim)
+        errFlag = pmdll.runParaDRAM ( _ct.c_int32(ndim)
+                                    , getLogFuncRaw_pntr
+                                    , inputFileVec_pntr
+                                    , _ct.c_int32(inputFileLen)
+                                   #, inputFileLen_pntr
+                                    )
+        if errFlag!=0:
+            msg = "."
+            if isinstance(self.spec.outputFileName, str): 
+                msg = ":\n\n" + "    " + self.spec.outputFileName + "_report.txt"
+            _pm.abort   ( msg   = "The simulation failed. For more information, checkout the \n"
+                                + "contents of the output report file (if any has been generated)"
+                                + msg
+                        , methodName = _pm.names.paradram
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
        #def isLoaded(libPath):
        #    abslibPath =
        #    return _os.system("lsof -p {} | grep {} > /dev/null".format( _os.getpid(), _os.path.abspath(libPath) )) == 0
@@ -1213,7 +1225,7 @@ class ParaDRAM:
             else:
                 delimiter = self.spec.outputDelimiter
 
-        FileList = _pm.pmutils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
+        FileList = _pm.utils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
 
         chainList = []
         for file in FileList:
@@ -1372,7 +1384,7 @@ class ParaDRAM:
             else:
                 delimiter = self.spec.outputDelimiter
 
-        FileList = _pm.pmutils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
+        FileList = _pm.utils.getFileList(file,"chain",_pm.names.paradram,self._mpiDisabled)
 
         markovChainList = []
         for file in FileList:
@@ -1527,7 +1539,7 @@ class ParaDRAM:
             else:
                 delimiter = self.spec.outputDelimiter
 
-        FileList = _pm.pmutils.getFileList(file,"sample",_pm.names.paradram,self._mpiDisabled)
+        FileList = _pm.utils.getFileList(file,"sample",_pm.names.paradram,self._mpiDisabled)
 
         sampleList = []
         for file in FileList:
