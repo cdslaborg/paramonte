@@ -564,8 +564,8 @@ classdef ParaDRAMProposalSymmetric_class < handle
         function writeRestartFile(self)
             
             k = 1;
-            for i = 1 : self.Global.mc_ndim
-                for j = 1 : i
+            for j = 1 : self.Global.mc_ndim
+                for i = 1 : j
                     self.Global.lower_comv_covMat(k) = self.Global.comv_covMat(i,j);
                     k = k + 1;
                 end
