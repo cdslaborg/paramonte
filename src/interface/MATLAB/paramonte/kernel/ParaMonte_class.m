@@ -553,7 +553,7 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
             if self.Image.isMaster
                 
                 % open LogFile
-                if self.LogFile.exists,     opentype = "A+";    else, opentype = "W"; end
+                if self.LogFile.exists,     opentype = "a+";    else, opentype = "w"; end
                 [self.LogFile.unit, self.Err.msg] = fopen(self.LogFile.Path.original, opentype);
                 self.Err.outputUnit = self.LogFile.unit;
                 if self.Err.msg
@@ -575,7 +575,7 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
                     self.Err.note();
                 end
                 % open TimeFile
-                if self.TimeFile.exists,    opentype = "r+";    else, opentype = "W"; end
+                if self.TimeFile.exists,    opentype = "r+";    else, opentype = "w"; end
                 [self.TimeFile.unit, self.Err.msg] = fopen(self.TimeFile.Path.original, opentype);
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.TimeFile.suffix + " file='" + strrep(self.TimeFile.Path.original, '\', '\\') + "'.";
@@ -588,7 +588,7 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
                     self.Err.note();
                 end
                 % open ChainFile
-                if self.ChainFile.exists,   opentype = "r+";    else, opentype = "W"; end
+                if self.ChainFile.exists,   opentype = "r+";    else, opentype = "w"; end
                 [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, opentype);
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + strrep(self.ChainFile.Path.original, '\', '\\') + "'.";
@@ -596,7 +596,7 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
                 end
 
                 % open RestartFile
-                if self.RestartFile.exists, opentype = "r+";    else, opentype = "W"; end
+                if self.RestartFile.exists, opentype = "r+";    else, opentype = "w"; end
                 [self.RestartFile.unit, self.Err.msg] = fopen(self.RestartFile.Path.original, opentype);
                 if self.Err.msg
                     self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.RestartFile.suffix + " file='" + strrep(self.RestartFile.Path.original, '\', '\\') + "'.";
