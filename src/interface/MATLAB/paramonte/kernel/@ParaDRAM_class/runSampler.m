@@ -196,7 +196,7 @@ function runSampler ( self          ...
         self.Chain.writeHeader ( ndim, self.ChainFile.unit, self.SpecBase.chainFileFormat.isBinary, self.ChainFile.headerFormat);
     else
         if self.Image.isMaster, fgets(self.TimeFile.unit); end   % read the header line of the time file, only by master images
-%        self.Chain.getLenHeader(ndim, self.SpecBase.chainFileFormat.isBinary, self.ChainFile.headerFormat);
+        %self.Chain.getLenHeader(ndim, self.SpecBase.chainFileFormat.isBinary, self.ChainFile.headerFormat);
     end
 
 
