@@ -5,7 +5,7 @@ As per the ParaMonte library license agreement terms, if you use any parts of th
 **BibTeX citation entries:**  
   
     @article{2020arXiv200809589S,
-               author = {{Shahmoradi}, Amir and {Bagheri}, Fatemeh},
+               author = {Shahmoradi, Amir and Bagheri, Fatemeh},
                 title = "{ParaDRAM: A Cross-Language Toolbox for Parallel High-Performance Delayed-Rejection Adaptive Metropolis Markov Chain Monte Carlo Simulations}",
               journal = {arXiv e-prints},
              keywords = {Computer Science - Computational Engineering, Finance, and Science, Astrophysics - Instrumentation and Methods for Astrophysics, Physics - Data Analysis, Statistics and Probability, Statistics - Computation, Statistics - Machine Learning},
