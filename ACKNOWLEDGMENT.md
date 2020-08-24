@@ -4,15 +4,20 @@ As per the ParaMonte library license agreement terms, if you use any parts of th
   
 **BibTeX citation entries:**  
   
-    @article{shahmoradi2013multivariate,  
-      title={A multivariate fit luminosity function and world model for long gamma-ray bursts},  
-      author={Shahmoradi, Amir},  
-      journal={The Astrophysical Journal},  
-      volume={766},  
-      number={2},  
-      pages={111},  
-      year={2013},  
-      publisher={IOP Publishing}  
-    }  
+    @article{2020arXiv200809589S,
+               author = {{Shahmoradi}, Amir and {Bagheri}, Fatemeh},
+                title = "{ParaDRAM: A Cross-Language Toolbox for Parallel High-Performance Delayed-Rejection Adaptive Metropolis Markov Chain Monte Carlo Simulations}",
+              journal = {arXiv e-prints},
+             keywords = {Computer Science - Computational Engineering, Finance, and Science, Astrophysics - Instrumentation and Methods for Astrophysics, Physics - Data Analysis, Statistics and Probability, Statistics - Computation, Statistics - Machine Learning},
+                 year = 2020,
+                month = aug,
+                  eid = {arXiv:2008.09589},
+                pages = {arXiv:2008.09589},
+        archivePrefix = {arXiv},
+               eprint = {2008.09589},
+         primaryClass = {cs.CE},
+               adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv200809589S},
+              adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+    }
   
 Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) to access the PDF version of these files free of charge.  
