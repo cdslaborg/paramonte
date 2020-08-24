@@ -4,6 +4,8 @@ As per the ParaMonte library license agreement terms, if you use any parts of th
   
 **BibTeX citation entries:**  
   
+```text  
+
     @article{2020arXiv200809589S,
                author = {Shahmoradi, Amir and Bagheri, Fatemeh},
                 title = "{ParaDRAM: A Cross-Language Toolbox for Parallel High-Performance Delayed-Rejection Adaptive Metropolis Markov Chain Monte Carlo Simulations}",
@@ -19,5 +21,7 @@ As per the ParaMonte library license agreement terms, if you use any parts of th
                adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv200809589S},
               adsnote = {Provided by the SAO/NASA Astrophysics Data System}
     }
+
+```    
   
 Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) to access the PDF version of these files free of charge.  
