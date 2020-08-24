@@ -190,7 +190,7 @@ contains
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME // "@runSampler()"
 
        !type(ProposalSymmetric_type), target:: ProposalSymmetric
-        integer(IK)                         :: i, iq
+        integer(IK)                         :: i, iq, effectiveSampleSize
         character(:), allocatable           :: msg, formatStr, formatStrInt, formatStrReal, formatAllReal
         real(RK)                            :: mcmcSamplingEfficiency
 
@@ -733,7 +733,7 @@ contains
                         write(self%LogFile%unit,formatInteger) ForkJoin%Contribution%Frequency(imageCount:min(imageCount+NCOL-1,ForkJoin%Contribution%count))
                     end do
                 end block
-                msg =   "These are contributions of individual processors to the construction of the MCMC chain. &
+                msg =   "These are contributions of individual processes to the construction of the MCMC chain. &
                         &Essentially, they represent the total number of accepted states by the corresponding processor, &
                         &starting from the first processor to the last. This information is mostly informative in parallel &
                         &Fork-Join (singlChain) simulations."
@@ -754,9 +754,9 @@ contains
                         &of the output chain file. The fit has the following form: "//NLC//NLC// &
                         "    ProcessConstribution(i) = successProbNormFac(1) * successProbNormFac(2) * (1-successProbNormFac(1))^(i-1)"//NLC// &
                         "                            / (1 - (1 - successProbNormFac(1))^numProcess)"//NLC//NLC// &
-                        "where i is the ID of the processor (starting from index 1), numProcess is the total number of processors &
+                        "where i is the ID of the processor (starting from index 1), numProcess is the total number of processes &
                         &used in the simulation, and successProbNormFac(1) is equivalent to an effective MCMC sampling efficiency &
-                        &computed from contributions of individual processors to the MCMC chain and successProbNormFac(2) is a &
+                        &computed from contributions of individual processes to the MCMC chain and successProbNormFac(2) is a &
                         &normalization constant."
                 call self%reportDesc(msg)
 
@@ -1160,60 +1160,61 @@ contains
 
             ! report the final Effective Sample Size (ESS) based on IAC
 
-            blockEffectiveSampleSize: associate( effectiveSampleSize => sum(self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) )
+            !blockEffectiveSampleSize: associate( effectiveSampleSize => sum(self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) )
+            effectiveSampleSize = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose
 
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.ess"
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) effectiveSampleSize
-                msg = "This is the estimated Effective (decorrelated) Sample Size (ESS) of the final refined chain."
-                call self%reportDesc(msg)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.ess"
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_TABBED_FORMAT) effectiveSampleSize
+            msg = "This is the estimated Effective (decorrelated) Sample Size (ESS) of the final refined chain."
+            call self%reportDesc(msg)
 
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAccepted"
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(self%Stats%NumFunCall%accepted,kind=RK)
-                msg =   "This is the effective MCMC sampling efficiency given the accepted function calls, that is, &
-                        &the final refined effective sample size (ESS) divided by the number of accepted function calls."
-                call self%reportDesc(msg)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAccepted"
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(self%Stats%NumFunCall%accepted,kind=RK)
+            msg =   "This is the effective MCMC sampling efficiency given the accepted function calls, that is, &
+                    &the final refined effective sample size (ESS) divided by the number of accepted function calls."
+            call self%reportDesc(msg)
 
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAcceptedRejected"
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
-                msg =   "This is the effective MCMC sampling efficiency given the accepted and rejected function calls, that is, &
-                        &the final refined effective sample size (ESS) divided by the number of (accepted + rejected) function calls."
-                call self%reportDesc(msg)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAcceptedRejected"
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
+            msg =   "This is the effective MCMC sampling efficiency given the accepted and rejected function calls, that is, &
+                    &the final refined effective sample size (ESS) divided by the number of (accepted + rejected) function calls."
+            call self%reportDesc(msg)
 
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAcceptedRejectedDelayed"
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(self%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK)
-                msg =   "This is the effective MCMC sampling efficiency given the accepted, rejected, and delayed-rejection (if any requested) function calls, that is, &
-                        &the final refined effective sample size (ESS) divided by the number of (accepted + rejected + delayed-rejection) function calls."
-                call self%reportDesc(msg)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAcceptedRejectedDelayed"
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(self%Stats%NumFunCall%acceptedRejectedDelayed,kind=RK)
+            msg =   "This is the effective MCMC sampling efficiency given the accepted, rejected, and delayed-rejection (if any requested) function calls, that is, &
+                    &the final refined effective sample size (ESS) divided by the number of (accepted + rejected + delayed-rejection) function calls."
+            call self%reportDesc(msg)
 
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAcceptedRejectedDelayedUnused"
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
-                write(self%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(self%Stats%NumFunCall%acceptedRejectedDelayedUnused,kind=RK)
-                msg =   "This is the effective MCMC sampling efficiency given the accepted, rejected, delayed-rejection (if any requested), and unused function calls, that is, &
-                        &the final refined effective sample size (ESS) divided by the number of (accepted + rejected + delayed-rejection + unused) function calls."
-                call self%reportDesc(msg)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.efficiency.essOverAcceptedRejectedDelayedUnused"
+            write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+            write(self%LogFile%unit,GENERIC_TABBED_FORMAT) real(effectiveSampleSize,kind=RK) / real(self%Stats%NumFunCall%acceptedRejectedDelayedUnused,kind=RK)
+            msg =   "This is the effective MCMC sampling efficiency given the accepted, rejected, delayed-rejection (if any requested), and unused function calls, that is, &
+                    &the final refined effective sample size (ESS) divided by the number of (accepted + rejected + delayed-rejection + unused) function calls."
+            call self%reportDesc(msg)
 
-                !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            end associate blockEffectiveSampleSize
+            !end associate blockEffectiveSampleSize
 
             ! generate output refined sample if requested
 
@@ -1284,46 +1285,7 @@ contains
                 if (self%SpecBase%SampleSize%val/=-1_IK) then
 
                     if (self%SpecBase%SampleSize%val<0_IK) then
-                        self%SpecBase%SampleSize%val = abs(self%SpecBase%SampleSize%val) * self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose
-                    end if
-
-                    if (self%SpecBase%SampleSize%val/=0_IK) then
-                        if (self%SpecBase%SampleSize%val<self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose) then
-                            call self%warn    ( prefix = self%brand &
-                                            , newline = "\n" &
-                                            , marginTop = 0_IK &
-                                            , outputUnit = self%LogFile%unit &
-                                            , msg = "The user-specified sample size ("// num2str(self%SpecBase%SampleSize%val) // ") &
-                                                    &is smaller than the potentially-optimal i.i.d. sample size &
-                                                    &(" // num2str(self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose) // "). &
-                                                    &The output sample contains i.i.d. samples, however, the sample-size &
-                                                    &could have been larger if it had been set to the optimal size. &
-                                                    &To get the optimal size in the future runs, set sampleSize = -1, or drop&
-                                                    &it from the input list." &
-                                            )
-                        elseif (self%SpecBase%SampleSize%val>self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose) then
-                            call self%warn  ( prefix = self%brand &
-                                            , newline = "\n" &
-                                            , marginTop = 0_IK &
-                                            , outputUnit = self%LogFile%unit &
-                                            , msg = "The user-specified sample size ("// num2str(self%SpecBase%SampleSize%val) // ") &
-                                                    &is larger than the potentially-optimal i.i.d. sample size &
-                                                    &(" // num2str(self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose) // "). &
-                                                    &The resulting sample likely contains duplicates and is not independently &
-                                                    &and identically distributed (i.i.d.).\nTo get the optimal &
-                                                    &size in the future runs, set sampleSize = -1, or drop &
-                                                    &it from the input list." &
-                                            )
-                        else
-                            call self%warn  ( prefix = self%brand &
-                                            , newline = "\n" &
-                                            , marginTop = 0_IK &
-                                            , outputUnit = self%LogFile%unit &
-                                            , msg = "How lucky that could be! &
-                                                    &The user-specified sample size (" // num2str(self%SpecBase%SampleSize%val) // ") &
-                                                    &is equal to the potentially-optimal i.i.d. sample size determined by "//self%name//"." &
-                                            )
-                        end if
+                        self%SpecBase%SampleSize%abs = abs(self%SpecBase%SampleSize%abs) * self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose
                     end if
 
                     ! regenerate the refined sample, this time with the user-specified sample size.
@@ -1331,7 +1293,7 @@ contains
                     call self%RefinedChain%get  ( CFC                       = self%Chain &
                                                 , Err                       = self%Err &
                                                 , burninLoc                 = self%Stats%BurninLoc%compact &
-                                                , refinedChainSize          = self%SpecBase%SampleSize%val &
+                                                , refinedChainSize          = self%SpecBase%SampleSize%abs &
                                                 , sampleRefinementCount     = self%SpecMCMC%SampleRefinementCount%val     &
                                                 , sampleRefinementMethod    = self%SpecMCMC%SampleRefinementMethod%val    &
                                                 )
@@ -1441,7 +1403,32 @@ contains
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.chain.refined.length"
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(self%LogFile%unit,GENERIC_TABBED_FORMAT) self%Stats%Sample%count
-                msg = "This is the final output refined sample size."
+                msg = "This is the final output refined sample size. "
+                if (self%SpecBase%SampleSize%val/=-1_IK) then
+                    if (abs(self%SpecBase%SampleSize%abs)<effectiveSampleSize) then
+                        msg = msg // &
+                            "The user-requested sample size ("// num2str(self%SpecBase%SampleSize%abs) // ") &
+                            &is smaller than the potentially-optimal i.i.d. sample size &
+                            &(" // num2str(effectiveSampleSize) // "). &
+                            &The output sample contains i.i.d. samples, however, the sample-size &
+                            &could have been larger if it had been set to the optimal size. &
+                            &To get the optimal size in the future runs, set sampleSize = -1, or drop&
+                            &it from the input list."
+                    elseif (abs(self%SpecBase%SampleSize%abs)>effectiveSampleSize) then
+                        msg = msg // &
+                            "The user-requested sample size ("// num2str(self%SpecBase%SampleSize%abs) // ") &
+                            &is larger than the potentially-optimal i.i.d. sample size &
+                            &(" // num2str(effectiveSampleSize) // "). &
+                            &The resulting sample likely contains duplicates and is not independently &
+                            &and identically distributed (i.i.d.).\nTo get the optimal &
+                            &size in the future runs, set sampleSize = -1, or drop &
+                            &it from the input list."
+                    else
+                        msg = msg // &
+                            "How lucky that could be! The user-requested sample size (" // num2str(self%SpecBase%SampleSize%abs) // ") &
+                            &is equal to the potentially-optimal i.i.d. sample size determined by the "//self%name//" sampler."
+                    end if
+                end if
                 call self%reportDesc(msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1765,6 +1752,7 @@ contains
         use SpecBase_MpiFinalizeRequested_mod               , only: mpiFinalizeRequested
         use SpecBase_MaxNumDomainCheckToWarn_mod            , only: maxNumDomainCheckToWarn
         use SpecBase_MaxNumDomainCheckToStop_mod            , only: maxNumDomainCheckToStop
+        use SpecBase_SystemInfoFilePath_mod                 , only: systemInfoFilePath
 #if defined CFI_ENABLED
         use SpecBase_InterfaceType_mod                      , only: interfaceType
 #endif
@@ -1817,6 +1805,7 @@ contains
         namelist /SAMPLER/ mpiFinalizeRequested
         namelist /SAMPLER/ maxNumDomainCheckToWarn
         namelist /SAMPLER/ maxNumDomainCheckToStop
+        namelist /SAMPLER/ systemInfoFilePath
 #if defined CFI_ENABLED
         namelist /SAMPLER/ interfaceType
 #endif

@@ -65,7 +65,7 @@ contains
 #endif
         implicit none
         character(*), intent(in)    :: filePath
-        type(FileContents_type)      :: FileContents
+        type(FileContents_type)     :: FileContents
         call getFileContents(filePath,FileContents%Line,FileContents%numRecord,FileContents%Err)
         if (FileContents%Err%occurred) FileContents%Err%msg = "@constructFileContents()" // FileContents%Err%msg
     end function constructFileContents

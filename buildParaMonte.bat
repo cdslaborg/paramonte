@@ -91,6 +91,8 @@ set ParaMonteRelease=!dayName!.!monthName!.!day!.!year!
 set "FPP_PARAMONTE_RELEASE_FLAG="
 set FPP_PARAMONTE_RELEASE_FLAG=/define:PARAMONTE_RELEASE='!ParaMonteRelease!'
 
+set SERIAL_ENABLED=true
+
 REM echo. 
 REM type .\auxil\.ParaMonteBanner
 REM echo. 
@@ -337,6 +339,7 @@ if !CAFTYPE!==shared set CAF_ENABLED=true
 if !CAFTYPE!==distributed set CAF_ENABLED=true
 
 if !CAF_ENABLED!==true (
+    set SERIAL_ENABLED=false
     echo. -- !BUILD_SCRIPT_NAME! - enabling Coarray Fortran syntax via preprocesor flag /define:CAF_ENABLED
     set FPP_FLAGS=!FPP_FLAGS! /define:CAF_ENABLED
     set CAF_FLAGS=/Qcoarray=!CAFTYPE!
@@ -357,6 +360,7 @@ echo.
 
 set MPI_FLAGS=
 if !MPI_ENABLED!==true (
+    set SERIAL_ENABLED=false
     if not defined CAFTYPE (
         set FPP_FLAGS=!FPP_FLAGS! /define:MPI_ENABLED
         REM set MPI_FLAGS=-fast
@@ -376,8 +380,16 @@ if !MPI_ENABLED!==true (
 )
 
 set OMP_FLAGS=
-if !OMP_ENABLED!==true set OMP_FLAGS=/Qopenmp
+if !OMP_ENABLED!==true (
+    set OMP_FLAGS=/Qopenmp
+    set SERIAL_ENABLED=false
+)
+
 set FCL_PARALLELIZATION_FLAGS=!CAF_FLAGS! !MPI_FLAGS! !OMP_FLAGS!
+if !SERIAL_ENABLED!==true (
+    REM if !BTYPE!==testing set FCL_PARALLELIZATION_FLAGS=!FCL_PARALLELIZATION_FLAGS! /Qparallel
+    REM if !BTYPE!==release set FCL_PARALLELIZATION_FLAGS=!FCL_PARALLELIZATION_FLAGS! /Qparallel
+)
 echo. -- !BUILD_SCRIPT_NAME! - all compiler/linker parallelization flags: !FCL_PARALLELIZATION_FLAGS!
 echo.
 

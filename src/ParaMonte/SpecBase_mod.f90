@@ -56,6 +56,7 @@ module SpecBase_mod
     use SpecBase_MaxNumDomainCheckToWarn_mod        , only: MaxNumDomainCheckToWarn_type
     use SpecBase_MaxNumDomainCheckToStop_mod        , only: MaxNumDomainCheckToStop_type
     use SpecBase_InterfaceType_mod                  , only: InterfaceType_type
+    use SpecBase_SystemInfoFilePath_mod             , only: SystemInfoFilePath_type
 
     ! ParaMonte namelist variables
 
@@ -80,6 +81,7 @@ module SpecBase_mod
     use SpecBase_MaxNumDomainCheckToWarn_mod        , only: maxNumDomainCheckToWarn
     use SpecBase_MaxNumDomainCheckToStop_mod        , only: maxNumDomainCheckToStop
     use SpecBase_InterfaceType_mod                  , only: interfaceType
+    use SpecBase_SystemInfoFilePath_mod             , only: systemInfoFilePath
 
     implicit none
 
@@ -107,6 +109,7 @@ module SpecBase_mod
         type(MaxNumDomainCheckToWarn_type)      :: MaxNumDomainCheckToWarn
         type(MaxNumDomainCheckToStop_type)      :: MaxNumDomainCheckToStop
         type(InterfaceType_type)                :: InterfaceType
+        type(SystemInfoFilePath_type)           :: SystemInfoFilePath
     contains
         procedure, pass                         :: nullifyNameListVar
         procedure, pass                         :: setFromInputFile
@@ -135,27 +138,28 @@ contains
         integer(IK), intent(in)     :: nd
         integer(IK), intent(in)     :: imageID, imageCount
         type(SpecBase_type)         :: SpecBase
-        SpecBase%SampleSize                     = SampleSize_type(methodName)
-        SpecBase%RandomSeed                     = RandomSeed_type(methodName,imageID,imageCount)
-        SpecBase%Description                    = Description_type(methodName)
-        SpecBase%OutputFileName                 = OutputFileName_type(methodName)
-        SpecBase%OutputDelimiter                = OutputDelimiter_type(methodName)
-        SpecBase%ChainFileFormat                = ChainFileFormat_type(methodName)
-        SpecBase%VariableNameList               = VariableNameList_type(nd,methodName)
-        SpecBase%RestartFileFormat              = RestartFileFormat_type(methodName)
-        SpecBase%OutputColumnWidth              = OutputColumnWidth_type(methodName)
-        SpecBase%OutputRealPrecision            = OutputRealPrecision_type(methodName)
-        SpecBase%SilentModeRequested            = SilentModeRequested_type(methodName)
-        SpecBase%DomainLowerLimitVec            = DomainLowerLimitVec_type(methodName)
-        SpecBase%DomainUpperLimitVec            = DomainUpperLimitVec_type(methodName)
-        SpecBase%ParallelizationModel           = ParallelizationModel_type(methodName)
-        SpecBase%InputFileHasPriority           = InputFileHasPriority_type(methodName)
-        SpecBase%ProgressReportPeriod           = ProgressReportPeriod_type()
-        SpecBase%TargetAcceptanceRate           = TargetAcceptanceRate_type(methodName)
-        SpecBase%MpiFinalizeRequested           = MpiFinalizeRequested_type(methodName)
-        SpecBase%MaxNumDomainCheckToWarn        = MaxNumDomainCheckToWarn_type()
-        SpecBase%MaxNumDomainCheckToStop        = MaxNumDomainCheckToStop_type()
-        SpecBase%InterfaceType                  = InterfaceType_type()
+        SpecBase%SampleSize                         = SampleSize_type(methodName)
+        SpecBase%RandomSeed                         = RandomSeed_type(methodName,imageID,imageCount)
+        SpecBase%Description                        = Description_type(methodName)
+        SpecBase%OutputFileName                     = OutputFileName_type(methodName)
+        SpecBase%OutputDelimiter                    = OutputDelimiter_type(methodName)
+        SpecBase%ChainFileFormat                    = ChainFileFormat_type(methodName)
+        SpecBase%VariableNameList                   = VariableNameList_type(nd,methodName)
+        SpecBase%RestartFileFormat                  = RestartFileFormat_type(methodName)
+        SpecBase%OutputColumnWidth                  = OutputColumnWidth_type(methodName)
+        SpecBase%OutputRealPrecision                = OutputRealPrecision_type(methodName)
+        SpecBase%SilentModeRequested                = SilentModeRequested_type(methodName)
+        SpecBase%DomainLowerLimitVec                = DomainLowerLimitVec_type(methodName)
+        SpecBase%DomainUpperLimitVec                = DomainUpperLimitVec_type(methodName)
+        SpecBase%ParallelizationModel               = ParallelizationModel_type(methodName)
+        SpecBase%InputFileHasPriority               = InputFileHasPriority_type(methodName)
+        SpecBase%ProgressReportPeriod               = ProgressReportPeriod_type()
+        SpecBase%TargetAcceptanceRate               = TargetAcceptanceRate_type(methodName)
+        SpecBase%MpiFinalizeRequested               = MpiFinalizeRequested_type(methodName)
+        SpecBase%MaxNumDomainCheckToWarn            = MaxNumDomainCheckToWarn_type()
+        SpecBase%MaxNumDomainCheckToStop            = MaxNumDomainCheckToStop_type()
+        SpecBase%InterfaceType                      = InterfaceType_type()
+        SpecBase%SystemInfoFilePath                 = SystemInfoFilePath_type()
     end function constructSpecBase
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,6 +194,7 @@ contains
         call SpecBase%MaxNumDomainCheckToWarn       %nullifyNameListVar()
         call SpecBase%MaxNumDomainCheckToStop       %nullifyNameListVar()
         call SpecBase%InterfaceType                 %nullifyNameListVar()
+        call SpecBase%SystemInfoFilePath            %nullifyNameListVar()
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -233,6 +238,7 @@ contains
         call SpecBase%MaxNumDomainCheckToWarn       %set(maxNumDomainCheckToWarn)
         call SpecBase%MaxNumDomainCheckToStop       %set(maxNumDomainCheckToStop)
         call SpecBase%InterfaceType                 %set(interfaceType)
+        call SpecBase%SystemInfoFilePath            %set(systemInfoFilePath)
 
         if (Err%occurred) Err%msg = PROCEDURE_NAME // Err%msg
 

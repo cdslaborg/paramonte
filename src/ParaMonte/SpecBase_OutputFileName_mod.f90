@@ -118,7 +118,7 @@ contains
         class(OutputFileName_type), intent(inout)   :: OutputFileNameObj
         character(*)                                :: outputFileName
         OutputFileNameObj%original = trim(adjustl(outputFileName))
-        if ( trim(adjustl(OutputFileNameObj%original))==trim(adjustl(OutputFileNameObj%null)) ) then
+        if ( OutputFileNameObj%original==trim(adjustl(OutputFileNameObj%null)) ) then
             OutputFileNameObj%original = OutputFileNameObj%def
         end if
 

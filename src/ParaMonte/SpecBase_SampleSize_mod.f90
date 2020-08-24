@@ -43,12 +43,13 @@ module SpecBase_SampleSize_mod
 
     type                            :: SampleSize_type
         integer(IK)                 :: val
+        integer(IK)                 :: abs
         integer(IK)                 :: def
         integer(IK)                 :: null
         character(:), allocatable   :: str
         character(:), allocatable   :: desc
     contains
-        procedure, pass             :: set => setSampleSize, checkForSanity, nullifyNameListVar
+        procedure, pass             :: set => setSampleSize, nullifyNameListVar ! , checkForSanity
     end type SampleSize_type
 
     interface SampleSize_type
@@ -124,30 +125,31 @@ contains
             SampleSizeObj%val = SampleSizeObj%def
         end if
         SampleSizeObj%str = num2str(SampleSizeObj%val)
+        SampleSizeObj%abs = abs(SampleSizeObj%val)
     end subroutine setSampleSize
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(SampleSizeObj,Err,methodName)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
-#endif
-        use Err_mod, only: Err_type
-        use String_mod, only: num2str
-        implicit none
-        class(SampleSize_type), intent(in) :: SampleSizeObj
-        character(*), intent(in)           :: methodName
-        type(Err_type), intent(inout)      :: Err
-        character(*), parameter            :: PROCEDURE_NAME = "@checkForSanity()"
-        if ( SampleSizeObj%val<1 ) then
-            Err%occurred = .true.
-            Err%msg =   Err%msg // &
-                        MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &The input value for variable sampleSize must be a positive integer. If you are not sure about the &
-                        &appropriate value for this variable, simply drop it from the input. " // methodName // &
-                        " will automatically assign an appropriate value to it.\n\n"
-        end if
-    end subroutine checkForSanity
+!    subroutine checkForSanity(SampleSizeObj,Err,methodName)
+!#if defined DLL_ENABLED && !defined CFI_ENABLED
+!        !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
+!#endif
+!        use Err_mod, only: Err_type
+!        use String_mod, only: num2str
+!        implicit none
+!        class(SampleSize_type), intent(in) :: SampleSizeObj
+!        character(*), intent(in)           :: methodName
+!        type(Err_type), intent(inout)      :: Err
+!        character(*), parameter            :: PROCEDURE_NAME = "@checkForSanity()"
+!        if ( SampleSizeObj%val<1 ) then
+!            Err%occurred = .true.
+!            Err%msg =   Err%msg // &
+!                        MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
+!                        &The input value for variable sampleSize must be a positive integer. If you are not sure about the &
+!                        &appropriate value for this variable, simply drop it from the input. " // methodName // &
+!                        " will automatically assign an appropriate value to it.\n\n"
+!        end if
+!    end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

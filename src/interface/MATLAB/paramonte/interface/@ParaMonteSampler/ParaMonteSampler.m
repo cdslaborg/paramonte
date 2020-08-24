@@ -32,7 +32,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   ParaDRAM - This is Base class for the ParaMonte sampler routines.
+%   ParaMonteSampler - This is base class for the ParaMonte sampler routines.
 %   
 %   Parameters
 %   ----------
@@ -56,7 +56,7 @@
 %   Returns
 %   -------
 %
-%       Object of class ParaDRAM
+%       Object of class ParaMonteSampler
 %
 %   Naming conventions
 %   ------------------
@@ -92,19 +92,19 @@
 %   crash before successful completion of the simulation.
 %   These situations should however happen only scarcely.
 %
-%   on Windows systems, when restarting an old interrupted ParaDRAM simulation,
-%   ensure your Python session is also restarted before the simulation
+%   on Windows systems, when restarting an old interrupted ParaMonteSampler simulation,
+%   ensure your MATLAB session is also restarted before the simulation
 %   restart. This is needed as Windows sometimes locks the access to
 %   all or some of the simulation output files.
 %
 %   To unset an already-set input simulation specification, simply set the
-%   simulation attribute to None or re-instantiate the object.
+%   simulation attribute to None or re-instantiate the sampler object.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 classdef ParaMonteSampler < dynamicprops
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties (Access = public)
         %
@@ -159,13 +159,11 @@ classdef ParaMonteSampler < dynamicprops
         ndim = [];
     end
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Access = public)
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function self = ParaMonteSampler(platform,website)
             %filePath = mfilename("fullpath"); addpath(genpath(filePath),"-begin");
@@ -177,8 +175,7 @@ classdef ParaMonteSampler < dynamicprops
             self.platform = platform;
         end
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
         [chainList] = readChain(self,varargin)
         [sampleList] = readSample(self,varargin)
@@ -187,8 +184,7 @@ classdef ParaMonteSampler < dynamicprops
         runSampler(self,ndim,getLogFunc,varargin)
     end
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Hidden)
         % These methods have been implemented to override the default 'handle' class methods, 
@@ -207,7 +203,6 @@ classdef ParaMonteSampler < dynamicprops
         outputList = readOutput(self,file,delimiter,fileType)
     end
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end % classdef ParaMonteSampler

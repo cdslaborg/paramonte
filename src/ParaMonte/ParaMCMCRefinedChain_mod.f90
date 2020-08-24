@@ -105,10 +105,10 @@ contains
         real(RK)                                                :: integratedAutoCorrTime
         logical                                                 :: refinedChainSizeIsPresent
         logical                                                 :: maxRefinementCountIsReached
-        character(:), allocatable                               :: sampleRefinementMethodLowerCase
+        character(:)    , allocatable                           :: sampleRefinementMethodLowerCase
         type(Count_type), allocatable                           :: DumCount(:)
-        real(RK), allocatable                                   :: DumIAC(:,:), DumVec(:)
-        integer(IK), allocatable                                :: SampleWeight(:)
+        real(RK)        , allocatable                           :: DumIAC(:,:), DumVec(:)
+        integer(IK)     , allocatable                           :: SampleWeight(:)
         type(Method_type)                                       :: Method
         type(ChainFileContents_type)                            :: DumCFC
 
@@ -206,11 +206,11 @@ contains
 
         ! check if there are more than 1 sample points in the burnin-subtracted CFC
 
-        if (RefinedChain%Count(RefinedChain%numRefinement)%compact==0) then
+        if (RefinedChain%Count(RefinedChain%numRefinement)%compact==0_IK) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": The size of the refined sample is zero."
             return
-        elseif (RefinedChain%Count(RefinedChain%numRefinement)%compact==1) then
+        elseif (RefinedChain%Count(RefinedChain%numRefinement)%compact==1_IK) then
             if (allocated(RefinedChain%Weight)) deallocate(RefinedChain%Weight)
             allocate(RefinedChain%Weight(RefinedChain%Count(RefinedChain%numRefinement)%compact))
             if (refinedChainSizeIsPresent) then
@@ -228,6 +228,8 @@ contains
         end if
 
         RefinedChain%Weight = CFC%Weight(burninLocDefault:CFC%Count%compact) ! Weight is intentionally separately assigned from State here
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         loopRefinement: do
 
@@ -251,15 +253,15 @@ contains
                                                                                         , Weight    = SampleWeight  &
                                                                                         )
                 elseif (Method%isCutoffAutoCorr) then
-                    RefinedChain%IAC(i,RefinedChain%numRefinement) = getCumSumIAC   ( np        = countCompact  &
-                                                                                    , Point     = DumVec        &
-                                                                                    , Weight    = SampleWeight  &
-                                                                                    )
+                    RefinedChain%IAC(i,RefinedChain%numRefinement) = getCumSumIAC       ( np        = countCompact  &
+                                                                                        , Point     = DumVec        &
+                                                                                        , Weight    = SampleWeight  &
+                                                                                        )
                 elseif (Method%isMaxCumSumAutoCorr) then
-                    RefinedChain%IAC(i,RefinedChain%numRefinement) = getMaxCumSumIAC( np        = countCompact  &
-                                                                                    , Point     = DumVec        &
-                                                                                    , Weight    = SampleWeight  &
-                                                                                    )
+                    RefinedChain%IAC(i,RefinedChain%numRefinement) = getMaxCumSumIAC    ( np        = countCompact  &
+                                                                                        , Point     = DumVec        &
+                                                                                        , Weight    = SampleWeight  &
+                                                                                        )
                 end if
             end do
 
@@ -314,6 +316,8 @@ contains
             RefinedChain%LogFuncState  = DumCFC%State
 
         end do loopRefinement
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end subroutine getRefinedChain
 

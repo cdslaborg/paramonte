@@ -440,20 +440,41 @@ contains
         ! the creation of thousands of files on the system, simultaneously.
         ! this is not needed by any process other than the masters.
 
-        self%SystemInfo = SystemInfo_type(OS=self%OS)
-        if (self%SystemInfo%Err%occurred) then
-            self%Err = self%SystemInfo%Err
-            self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
-            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
-            return
-        end if
-
-        do j = 1, self%SystemInfo%nRecord
-            self%Decor%List = self%Decor%wrapText( self%SystemInfo%List(j)%record , 132 )
-            do i = 1,size(self%Decor%List)
-                write(self%LogFile%unit,"(*(g0))") self%Decor%List(i)%record
+        if (allocated(self%SpecBase%SystemInfoFilePath%val)) then
+            block
+                use FileContents_mod, only: FileContents_type
+                type(FileContents_type) :: FileContents
+                FileContents = FileContents_type(filePath = self%SpecBase%SystemInfoFilePath%val)
+                if (FileContents%Err%occurred) then
+                    self%Err = FileContents%Err
+                    self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
+                    call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                    return
+                else
+                    do j = 1, FileContents%numRecord
+                        self%Decor%List = self%Decor%wrapText( FileContents%Line(j)%record , 132 )
+                        do i = 1,size(self%Decor%List)
+                            write(self%LogFile%unit,"(A)") self%Decor%List(i)%record
+                        end do
+                    end do
+                    deallocate(self%SpecBase%SystemInfoFilePath%val)
+                end if
+            end block
+        else
+            self%SystemInfo = SystemInfo_type(OS=self%OS)
+            if (self%SystemInfo%Err%occurred) then
+                self%Err = self%SystemInfo%Err
+                self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
+                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                return
+            end if
+            do j = 1, self%SystemInfo%nRecord
+                self%Decor%List = self%Decor%wrapText( self%SystemInfo%List(j)%record , 132 )
+                do i = 1,size(self%Decor%List)
+                    write(self%LogFile%unit,"(A)") self%Decor%List(i)%record
+                end do
             end do
-        end do
+        end if
         call self%Decor%write(self%LogFile%unit)
 
     end subroutine addCompilerPlatformInfo

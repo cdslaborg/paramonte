@@ -111,7 +111,7 @@ function namelist = getInputFile(self)
         if  ~isempty(self.spec.delayedRejectionScaleFactorVec      );  namelist = namelist + SpecDRAM.delayedRejectionScaleFactorVec       (self.spec.delayedRejectionScaleFactorVec     ); end
         end
 
-        namelist = "&" + self.methodName + " " + namelist + SpecBase.interfaceType() + "/";
+        namelist = "&" + self.methodName + " " + namelist + SpecBase.interfaceType() + SpecBase.systemInfoFilePath(self.platform.systemInfoFilePath) + "/" + newline;
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %%%% end namelist generation from arguments

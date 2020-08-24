@@ -624,10 +624,10 @@ contains
         use DateTime_mod, only: DateTime_type
         use JaggedArray_mod, only: CharVec_type
         implicit none
-        type(CharVec_type), allocatable, intent(out)    :: List(:)
-        type(Err_type), intent(out)                     :: Err
-        type(OS_type), intent(in), optional             :: OS
-        integer(IK), intent(out), optional              :: count
+        type(CharVec_type)  , intent(out), allocatable  :: List(:)
+        type(Err_type)      , intent(out)               :: Err
+        type(OS_type)       , intent(in) , optional     :: OS
+        integer(IK)         , intent(out), optional     :: count
 
         type(OS_type)                                   :: OpSy
         character(len=:), allocatable                   :: command,filename,stdErr

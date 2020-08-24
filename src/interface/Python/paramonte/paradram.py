@@ -34,14 +34,13 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-import os as _os
-import pandas as _pd
-import typing as _tp
-import numpy as _np
-import sys as _sys
-#fileAbsDir = _os.path.dirname(__file__)
-fileAbsDir = _os.path.dirname(_os.path.abspath(__file__))
-_sys.path.append(fileAbsDir)
+import os
+import sys
+import numpy as np
+import typing as tp
+
+fileAbsDir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(fileAbsDir)
 
 from _SpecBase import _SpecBase, _genOutputFileName
 from _SpecMCMC import _SpecMCMC
@@ -58,9 +57,7 @@ import ctypes as _ct
 
 class ParaDRAM:
     """
-
-    .. py:class:: ParaDRAM
-
+    |
     This is the **ParaDRAM** class for generating instances of the **serial** and **parallel**
     **Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo**
     sampler of the ParaMonte library.
@@ -71,6 +68,8 @@ class ParaDRAM:
 
         Once you set the optional attributes to your desired values,
         call the ParaDRAM sampler via the object's method ``runSampler()``.
+
+        .. _example-serial-usage:
 
         **Example serial usage**
 
@@ -106,6 +105,8 @@ class ParaDRAM:
                 numpy-float64 array of length ``ndim`` and must return the
                 natural logarithm of the objective function.
 
+        .. _example-parallel-usage:
+
         **Example parallel usage**
 
         Copy and paste the following code enclosed between the
@@ -136,7 +137,7 @@ class ParaDRAM:
 
             ndim
                 represents the number of dimensions of the domain of
-                the user's objective function getLogFunc(point) and,
+                the user's objective function ``getLogFunc(point)`` and,
 
             getLogFunc(point)
                 represents the user's objective function that is to be sampled.
@@ -145,7 +146,7 @@ class ParaDRAM:
                 logarithm of the objective function.
 
             mpiEnabled
-                is a logical (boolean) indicator that, if True, will
+                is a logical (boolean) indicator that, if ``True``, will
                 cause the ParaDRAM simulation to run in parallel
                 on the requested number of processors.
                 The default value is ``False``.
@@ -158,7 +159,7 @@ class ParaDRAM:
         Assuming that you already have an MPI runtime library installed on your system (see below),
         you can now execute this Python script file ``main.py`` in parallel in two ways:
 
-        1.  from inside ipython or jupyter: type the following,
+        1.  from inside ipython or jupyter, type the following,
 
             .. code-block:: bash
 
@@ -306,45 +307,45 @@ class ParaDRAM:
 
     def __init__( self
                 # ParaMonte variables
-                , sampleSize                            : _tp.Optional[int]                                             = None
-                , randomSeed                            : _tp.Optional[int]                                             = None
-                , description                           : _tp.Optional[str]                                             = None
-                , outputFileName                        : _tp.Optional[str]                                             = None
-                , outputDelimiter                       : _tp.Optional[str]                                             = None
-                , chainFileFormat                       : _tp.Optional[str]                                             = None
-                , variableNameList                      : _tp.Optional[_tp.List[str]]                                   = None
-                , restartFileFormat                     : _tp.Optional[str]                                             = None
-                , outputColumnWidth                     : _tp.Optional[int]                                             = None
-                , outputRealPrecision                   : _tp.Optional[int]                                             = None
-                , silentModeRequested                   : _tp.Optional[bool]                                            = None
-                , domainLowerLimitVec                   : _tp.Optional[_tp.List[float]]                                 = None
-                , domainUpperLimitVec                   : _tp.Optional[_tp.List[float]]                                 = None
-                , parallelizationModel                  : _tp.Optional[str]                                             = None
-                , progressReportPeriod                  : _tp.Optional[int]                                             = None
-                , targetAcceptanceRate                  : _tp.Optional[float]                                           = None
-                , mpiFinalizeRequested                  : _tp.Optional[bool]                                            = None
-                , maxNumDomainCheckToWarn               : _tp.Optional[int]                                             = None
-                , maxNumDomainCheckToStop               : _tp.Optional[int]                                             = None
+                , sampleSize                            : tp.Optional[int]                                      = None
+                , randomSeed                            : tp.Optional[int]                                      = None
+                , description                           : tp.Optional[str]                                      = None
+                , outputFileName                        : tp.Optional[str]                                      = None
+                , outputDelimiter                       : tp.Optional[str]                                      = None
+                , chainFileFormat                       : tp.Optional[str]                                      = None
+                , variableNameList                      : tp.Optional[tp.List[str]]                             = None
+                , restartFileFormat                     : tp.Optional[str]                                      = None
+                , outputColumnWidth                     : tp.Optional[int]                                      = None
+                , outputRealPrecision                   : tp.Optional[int]                                      = None
+                , silentModeRequested                   : tp.Optional[bool]                                     = None
+                , domainLowerLimitVec                   : tp.Optional[tp.List[float]]                           = None
+                , domainUpperLimitVec                   : tp.Optional[tp.List[float]]                           = None
+                , parallelizationModel                  : tp.Optional[str]                                      = None
+                , progressReportPeriod                  : tp.Optional[int]                                      = None
+                , targetAcceptanceRate                  : tp.Optional[float]                                    = None
+                , mpiFinalizeRequested                  : tp.Optional[bool]                                     = None
+                , maxNumDomainCheckToWarn               : tp.Optional[int]                                      = None
+                , maxNumDomainCheckToStop               : tp.Optional[int]                                      = None
                 # ParaMCMC variables
-                , chainSize                             : _tp.Optional[int]                                             = None
-                , scaleFactor                           : _tp.Optional[float]                                           = None
-                , startPointVec                         : _tp.Optional[_tp.List[float]]                                 = None
-                , proposalModel                         : _tp.Optional[str]                                             = None
-                , proposalStartCovMat                   : _tp.Optional[_tp.Union[_np.mat,_tp.List[_tp.List[float]]]]    = None
-                , proposalStartCorMat                   : _tp.Optional[_tp.Union[_np.mat,_tp.List[_tp.List[float]]]]    = None
-                , proposalStartStdVec                   : _tp.Optional[_tp.Union[_np.mat,_tp.List[float]]]              = None
-                , sampleRefinementCount                 : _tp.Optional[int]                                             = None
-                , sampleRefinementMethod                : _tp.Optional[str]                                             = None
-                , randomStartPointRequested             : _tp.Optional[bool]                                            = None
-                , randomStartPointDomainLowerLimitVec   : _tp.Optional[_tp.List[float]]                                 = None
-                , randomStartPointDomainUpperLimitVec   : _tp.Optional[_tp.List[float]]                                 = None
+                , chainSize                             : tp.Optional[int]                                      = None
+                , scaleFactor                           : tp.Optional[float]                                    = None
+                , startPointVec                         : tp.Optional[tp.List[float]]                           = None
+                , proposalModel                         : tp.Optional[str]                                      = None
+                , proposalStartCovMat                   : tp.Optional[tp.Union[np.mat,tp.List[tp.List[float]]]] = None
+                , proposalStartCorMat                   : tp.Optional[tp.Union[np.mat,tp.List[tp.List[float]]]] = None
+                , proposalStartStdVec                   : tp.Optional[tp.Union[np.mat,tp.List[float]]]          = None
+                , sampleRefinementCount                 : tp.Optional[int]                                      = None
+                , sampleRefinementMethod                : tp.Optional[str]                                      = None
+                , randomStartPointRequested             : tp.Optional[bool]                                     = None
+                , randomStartPointDomainLowerLimitVec   : tp.Optional[tp.List[float]]                           = None
+                , randomStartPointDomainUpperLimitVec   : tp.Optional[tp.List[float]]                           = None
                 # ParaDRAM variables
-                , adaptiveUpdateCount                   : _tp.Optional[int]                                             = None
-                , adaptiveUpdatePeriod                  : _tp.Optional[int]                                             = None
-                , greedyAdaptationCount                 : _tp.Optional[int]                                             = None
-                , delayedRejectionCount                 : _tp.Optional[int]                                             = None
-                , burninAdaptationMeasure               : _tp.Optional[float]                                           = None
-                , delayedRejectionScaleFactorVec        : _tp.Optional[_tp.Union[_np.mat,_tp.List[float]]]              = None
+                , adaptiveUpdateCount                   : tp.Optional[int]                                      = None
+                , adaptiveUpdatePeriod                  : tp.Optional[int]                                      = None
+                , greedyAdaptationCount                 : tp.Optional[int]                                      = None
+                , delayedRejectionCount                 : tp.Optional[int]                                      = None
+                , burninAdaptationMeasure               : tp.Optional[float]                                    = None
+                , delayedRejectionScaleFactorVec        : tp.Optional[tp.Union[np.mat,tp.List[float]]]          = None
                 ):
         """
         The constructor for ParaDRAM class.
@@ -428,14 +429,14 @@ class ParaDRAM:
 
             from _SpecBase import _genOutputFileName
             if self.spec.outputFileName is None:
-                self.spec.outputFileName = _os.path.join( _os.getcwd() , _genOutputFileName(_pm.names.paradram) )
+                self.spec.outputFileName = os.path.join( os.getcwd() , _genOutputFileName(_pm.names.paradram) )
             else:
-                #if not _os.path.isabs(self.spec.outputFileName):
-                    #headTailList = _os.path.split(self.spec.outputFileName)
+                #if not os.path.isabs(self.spec.outputFileName):
+                    #headTailList = os.path.split(self.spec.outputFileName)
                     #if headTailList[1]=="":
                     #self.spec.outputFileName = SpecBase.outputFileName(self.spec.outputFileName)
                     if self.spec.outputFileName[-1] == "\\" or self.spec.outputFileName[-1] == "/":
-                        self.spec.outputFileName = _os.path.join( _os.path.abspath( self.spec.outputFileName ) , _genOutputFileName(_pm.names.paradram) )
+                        self.spec.outputFileName = os.path.join( os.path.abspath( self.spec.outputFileName ) , _genOutputFileName(_pm.names.paradram) )
 
             # ParaMonte variables
 
@@ -509,14 +510,12 @@ class ParaDRAM:
 
     def runSampler  ( self
                     , ndim          : int
-                    , getLogFunc    : _tp.Callable[[_tp.List[float]], float]
-                    , buildMode     : _tp.Optional[str]     = "release"
-                    , mpiEnabled    : _tp.Optional[bool]    = None
-                    , inputFile     : _tp.Optional[str]     = None
+                    , getLogFunc    : tp.Callable[[tp.List[float]], float]
+                    , buildMode     : tp.Optional[str]     = "release"
+                    , mpiEnabled    : tp.Optional[bool]    = None
+                    , inputFile     : tp.Optional[str]     = None
                     ) -> None:
         """
-
-        .. py:method:: runSampler(self, ndim, getLogFunc, buildMode = "release", mpiEnabled = None, inputFile = None)
 
         Run ParaDRAM sampler and return nothing.
 
@@ -643,7 +642,7 @@ class ParaDRAM:
                         )
 
         def getLogFunc2arg(ndim,point):
-            PointVec = _np.array(point[0:ndim])
+            PointVec = np.array(point[0:ndim])
             return getLogFunc(PointVec)
 
         self._runSampler( ndim
@@ -657,14 +656,12 @@ class ParaDRAM:
 
     def _runSampler ( self
                     , ndim          : int
-                    , getLogFuncRaw : _tp.Callable[[int,_tp.List[float]], float]
-                    , buildMode     : _tp.Optional[str]     = "release"
-                    , mpiEnabled    : _tp.Optional[bool]    = False
-                    , inputFile     : _tp.Optional[str]     = None
+                    , getLogFuncRaw : tp.Callable[[int,tp.List[float]], float]
+                    , buildMode     : tp.Optional[str]     = "release"
+                    , mpiEnabled    : tp.Optional[bool]    = False
+                    , inputFile     : tp.Optional[str]     = None
                     ) -> None:
         """
-
-        .. py:method:: _runSampler( self, ndim, getLogFuncRaw, buildMode = "release", mpiEnabled = False, inputFile = None)
 
         Run ParaDRAM sampler and return nothing. This method is identical to
         the ``runSampler()`` method, except that the input ``point`` parameter to
@@ -817,7 +814,7 @@ class ParaDRAM:
 
         inputFileVec_pntr, inputFileLen = self._getInputFile(inputFile) #,mpiEnabled)
 
-        #platform = _sys.platform.lower()
+        #platform = sys.platform.lower()
         #isWin32 = True if platform=="win32" else False
         #isLinux = True if platform=="linux" else False
         #isMacOS = True if platform=="darwin" else False
@@ -835,8 +832,8 @@ class ParaDRAM:
                     , marginBot = 1
                     )
 
-        #if len(_sys.argv)>1:
-        #    if _sys.argv[1]=="p":
+        #if len(sys.argv)>1:
+        #    if sys.argv[1]=="p":
         #        _pm.note( msg = Running sampler in parallel mode...
         #                , methodName = _pm.names.paradram
         #                )
@@ -860,35 +857,35 @@ class ParaDRAM:
         #    print("\nImportError occurred...\n")
         #    print("\nRunning ParaMonte sampler in serial mode...\n")
 
-        _sys.stdout.flush()
+        sys.stdout.flush()
 
         # setup env
 
         if _pm.platform.isWin32:
 
-            if "PATH" in _os.environ:
-                _os.environ["PATH"] = fileAbsDir + _os.pathsep + _os.environ["PATH"]
+            if "PATH" in os.environ:
+                os.environ["PATH"] = fileAbsDir + os.pathsep + os.environ["PATH"]
             else:
-                _os.environ["PATH"] = fileAbsDir
+                os.environ["PATH"] = fileAbsDir
 
             mpiFound = False
-            pathList = _os.environ["PATH"].split(";")
+            pathList = os.environ["PATH"].split(";")
             for path in pathList:
                 pathLower = path.lower().replace("\\","")
                 if ("mpiintel64bin" in pathLower):
                     #mpiFound = True
                     #bldMode = buildMode
                     #if bldMode=="testing": bldMode = "release"
-                    mpiPath = _os.path.join(path,"release")
-                    _os.environ["PATH"] = mpiPath + _os.pathsep + _os.environ["PATH"]
-                    libfabricPath = _os.path.join(_os.path.dirname(path),"libfabric","bin")
-                    _os.environ["PATH"] = libfabricPath + _os.pathsep + _os.environ["PATH"]
+                    mpiPath = os.path.join(path,"release")
+                    os.environ["PATH"] = mpiPath + os.pathsep + os.environ["PATH"]
+                    libfabricPath = os.path.join(os.path.dirname(path),"libfabric","bin")
+                    os.environ["PATH"] = libfabricPath + os.pathsep + os.environ["PATH"]
                     break
 
         else:
 
-            if "LD_LIBRARY_PATH" not in _os.environ:
-                _os.environ["LD_LIBRARY_PATH"] = "."
+            if "LD_LIBRARY_PATH" not in os.environ:
+                os.environ["LD_LIBRARY_PATH"] = "."
                 if self._mpiDisabled:
                     _pm.warn( msg   = "LD_LIBRARY_PATH environmental variable is not defined in your Python session.\n"
                                     + "Consider running the following command in your Bash shell before running Python.\n"
@@ -899,39 +896,39 @@ class ParaDRAM:
                             , marginBot = 1
                             )
             libdir = "/usr/lib"
-            if _os.path.isdir(libdir):
-                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            if os.path.isdir(libdir):
+                os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
             libdir = "/usr/local/lib"
-            if _os.path.isdir(libdir):
-                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            if os.path.isdir(libdir):
+                os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
             libdir = "/usr/lib64"
-            if _os.path.isdir(libdir):
-                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            if os.path.isdir(libdir):
+                os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
             libdir = "/usr/local/lib64"
-            if _os.path.isdir(libdir):
-                _os.environ["LD_LIBRARY_PATH"]  = libdir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-            _os.environ["LD_LIBRARY_PATH"]  = fileAbsDir + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+            if os.path.isdir(libdir):
+                os.environ["LD_LIBRARY_PATH"]  = libdir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+            os.environ["LD_LIBRARY_PATH"]  = fileAbsDir + os.pathsep + os.environ["LD_LIBRARY_PATH"]
 
             from _pmreqs import getLocalInstallDir
             localInstallDir = getLocalInstallDir()
 
             if localInstallDir.gnu.root is not None:
-                for object in _os.scandir(localInstallDir.gnu.root):
+                for object in os.scandir(localInstallDir.gnu.root):
                     if object.is_dir() and ("lib" in object.name):
-                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+                        os.environ["LD_LIBRARY_PATH"] = object.path + os.pathsep + os.environ["LD_LIBRARY_PATH"]
 
             if localInstallDir.mpi.root is not None:
-                if localInstallDir.mpi.bin is not None: _os.environ["PATH"] = localInstallDir.mpi.bin + _os.pathsep + _os.environ["PATH"]
-                for object in _os.scandir(localInstallDir.mpi.root):
+                if localInstallDir.mpi.bin is not None: os.environ["PATH"] = localInstallDir.mpi.bin + os.pathsep + os.environ["PATH"]
+                for object in os.scandir(localInstallDir.mpi.root):
                     if object.is_dir() and ("lib" in object.name):
-                        _os.environ["LD_LIBRARY_PATH"] = object.path + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
-                if localInstallDir.mpi.lib is not None: _os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + _os.pathsep + _os.environ["LD_LIBRARY_PATH"]
+                        os.environ["LD_LIBRARY_PATH"] = object.path + os.pathsep + os.environ["LD_LIBRARY_PATH"]
+                if localInstallDir.mpi.lib is not None: os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + os.pathsep + os.environ["LD_LIBRARY_PATH"]
 
         # import ParaMonte dll define result (None) AND argument (pointer to a c function) type
 
         from ctypes.util import find_library
 
-        #fileAbsDir = _os.path.dirname(_os.path.abspath(__file__))
+        #fileAbsDir = os.path.dirname(os.path.abspath(__file__))
 
         buildModeList = ["release","testing","debug"]
         buildModeList.pop(buildModeList.index(buildMode))
@@ -956,9 +953,9 @@ class ParaDRAM:
 
                 libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + libNameSuffix;
                 libPath = find_library(libName)
-                if libPath==None: libPath = _os.path.join( fileAbsDir, libName )
+                if libPath==None: libPath = os.path.join( fileAbsDir, libName )
 
-                libFound = _os.path.isfile(libPath)
+                libFound = os.path.isfile(libPath)
                 if libFound: break
 
             if libFound: # check if lib file exists
@@ -1038,7 +1035,7 @@ class ParaDRAM:
         #def getLogFuncRawWrapper(ndim_pntr,point): return getLogFuncRaw(ndim[0],point)
 
         # construct procedure pointer
-        #def getLogFuncRawWrapper(ndim,point): return getLogFuncRaw(_np.array(point[0:ndim]))
+        #def getLogFuncRawWrapper(ndim,point): return getLogFuncRaw(np.array(point[0:ndim]))
         #getLogFuncRaw_pntr = _getLogFuncRaw_proc(getLogFuncRawWrapper)
 
         # construct ndim pointer
@@ -1066,7 +1063,7 @@ class ParaDRAM:
                         )
        #def isLoaded(libPath):
        #    abslibPath =
-       #    return _os.system("lsof -p {} | grep {} > /dev/null".format( _os.getpid(), _os.path.abspath(libPath) )) == 0
+       #    return os.system("lsof -p {} | grep {} > /dev/null".format( os.getpid(), os.path.abspath(libPath) )) == 0
 
         def dlclose(libdll): libdll.dlclose(libdll._handle)
 
@@ -1110,14 +1107,12 @@ class ParaDRAM:
     ################################################################################################################################
 
     def readChain   ( self
-                    , file          : _tp.Optional[str] = None
-                    , delimiter     : _tp.Optional[str] = None
-                    , parseContents : _tp.Optional[bool] = True
-                    , renabled      : _tp.Optional[bool] = False
-                    ) -> _tp.List[_ParaDRAMChain] :
+                    , file          : tp.Optional[str] = None
+                    , delimiter     : tp.Optional[str] = None
+                    , parseContents : tp.Optional[bool] = True
+                    , renabled      : tp.Optional[bool] = False
+                    ) -> tp.List[_ParaDRAMChain] :
         """
-
-        .. py:method:: readChain(self, file = None, delimiter = None, parseContents = True, renabled = False)
 
         Return a list of the contents of a set of ParaDRAM output
         chain files whose names begin the user-provided input file.
@@ -1230,7 +1225,7 @@ class ParaDRAM:
         chainList = []
         for file in FileList:
 
-            file = _os.path.abspath(file)
+            file = os.path.abspath(file)
             if self._mpiDisabled:
                 _pm.note( msg = "processing file: " + file
                         , methodName = _pm.names.paradram
@@ -1269,11 +1264,11 @@ class ParaDRAM:
     ################################################################################################################################
 
     def readMarkovChain ( self
-                        , file          : _tp.Optional[str] = None
-                        , delimiter     : _tp.Optional[str] = None
-                        , parseContents : _tp.Optional[bool] = True
-                        , renabled      : _tp.Optional[bool] = False
-                        ) -> _tp.List[_ParaDRAMChain] :
+                        , file          : tp.Optional[str] = None
+                        , delimiter     : tp.Optional[str] = None
+                        , parseContents : tp.Optional[bool] = True
+                        , renabled      : tp.Optional[bool] = False
+                        ) -> tp.List[_ParaDRAMChain] :
         """
 
         .. py:method:: readMarkovChain(self, file = None, delimiter = None, parseContents = True, renabled = False)
@@ -1389,7 +1384,7 @@ class ParaDRAM:
         markovChainList = []
         for file in FileList:
 
-            file = _os.path.abspath(file)
+            file = os.path.abspath(file)
             if self._mpiDisabled:
                 _pm.note( msg = "processing file: " + file
                         , methodName = _pm.names.paradram
@@ -1428,14 +1423,13 @@ class ParaDRAM:
     ################################################################################################################################
 
     def readSample  ( self
-                    , file          : _tp.Optional[str] = None
-                    , delimiter     : _tp.Optional[str] = None
-                    , parseContents : _tp.Optional[bool] = True
-                    , renabled      : _tp.Optional[bool] = False
-                    ) -> _tp.List[_ParaDRAMChain] :
+                    , file          : tp.Optional[str]  = None
+                    , delimiter     : tp.Optional[str]  = None
+                    , parseContents : tp.Optional[bool] = True
+                    , renabled      : tp.Optional[bool] = False
+                    ) -> tp.List[_ParaDRAMChain] :
         """
 
-        .. py:method:: readSample(self, file = None, delimiter = None, parseContents = True, renabled = False)
 
         Return a list of the contents of a set of ParaDRAM output
         sample files whose names contain the user-provided input file.
@@ -1544,7 +1538,7 @@ class ParaDRAM:
         sampleList = []
         for file in FileList:
 
-            file = _os.path.abspath(file)
+            file = os.path.abspath(file)
             if self._mpiDisabled:
                 _pm.note( msg = "processing file: " + file
                         , methodName = _pm.names.paradram
@@ -1580,3 +1574,5 @@ class ParaDRAM:
                         )
 
     ################################################################################################################################
+
+__all__ = [ "ParaDRAM" ]

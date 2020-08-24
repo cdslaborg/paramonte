@@ -80,6 +80,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/SpecBase_VariableNameList_mod.f90
     ${ParaMonte_SRC_DIR}/SpecBase_RestartFileFormat_mod.f90
     ${ParaMonte_SRC_DIR}/SpecBase_OutputColumnWidth_mod.f90
+    ${ParaMonte_SRC_DIR}/SpecBase_SystemInfoFilePath_mod.f90
     ${ParaMonte_SRC_DIR}/SpecBase_OutputRealPrecision_mod.f90
     ${ParaMonte_SRC_DIR}/SpecBase_SilentModeRequested_mod.f90
     ${ParaMonte_SRC_DIR}/SpecBase_DomainLowerLimitVec_mod.f90

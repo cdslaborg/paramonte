@@ -128,9 +128,17 @@ classdef SpecBaseVerify < SpecVerification
             result = "interfaceType=" + "'MATLAB " + version + "'" + self.delim;
         end
 
+        function result = systemInfoFilePath(self,systemInfoFilePath)
+            if isempty(systemInfoFilePath)
+                result = "";
+            else
+                result = "systemInfoFilePath='" + systemInfoFilePath + "'" + self.delim;
+            end
+        end
+
     end % methods (dynamic)
 
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-end % classdef SpecBase
+end

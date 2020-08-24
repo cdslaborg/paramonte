@@ -74,7 +74,7 @@ The routines currently supported by the ParaMonte Python library include:
 
         Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
         For a quick start, example scripts, and instructions on how to use he ParaDRAM sampler,
-        type the following commands in your Python session,
+        type the following commands enclosed between the comment lines in your Python session,
 
         .. code-block:: python
             :linenos:
@@ -156,8 +156,9 @@ from _paramonte import version
 
 
 __authors__ = "The Computational Data Science Lab @ The University of Texas"
-__credits__ = "Peter O'Donnell Fellowship"
+__credits__ = "The Peter O'Donnell Fellowship"
 __version__ = version.interface.get()
+"""ParaMonte Python interface version, defined at runtime."""
 
 verify(reset=False)
 
@@ -173,8 +174,6 @@ verify(reset=False)
 
 def helpme( topic : _tp.Optional[str] = None ):
     """
-
-    .. py:function:: helpme(topic = None)
 
     Prints help on the input object.
 
@@ -223,3 +222,15 @@ def helpme( topic : _tp.Optional[str] = None ):
                 )
 
     return None
+
+####################################################################################################################################
+
+__all__ =   [ "__authors__"
+            , "__credits__"
+            , "__version__"
+            , "ParaDRAM"
+            , "version"
+            , "verify"
+            , "helpme"
+            , "build"
+            ]

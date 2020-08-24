@@ -233,7 +233,12 @@ function runSampler(self,ndim,getLogFunc,varargin)
     end
     munlock(self.libName)
     eval("clear "+self.libName);
-    eval(expression);
+    simFailed = false;
+    try
+        eval(expression);
+    catch
+        simFailed = true;
+    end
     munlock(self.libName)
     eval("clear "+self.libName);
     if isGNU
@@ -242,6 +247,17 @@ function runSampler(self,ndim,getLogFunc,varargin)
         setenv('GFORTRAN_STDERR_UNIT', '-1')
     end
 
+    if simFailed
+        if self.mpiEnabled
+            reportFileSuffix = "_process_*_report.txt";
+        else
+            reportFileSuffix = "_process_1_report.txt";
+        end
+        self.Err.msg    = "The " + self.methodName + " simulation failed. Please see the contents of the simulation's output report file(s) for potential diagnostic messages:" + newline + newline ...
+                        + "    " + strrep(self.spec.outputFileName+reportFileSuffix,'\','\\') ...
+                        ;
+        self.Err.abort();
+    end
     %try
     %    eval(expression);
     %catch

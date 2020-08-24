@@ -200,7 +200,7 @@ classdef ParaDRAM < ParaMonteSampler
 
         function self = ParaDRAM(platform,website)
             self = self@ParaMonteSampler(platform,website);
-            self.spec = SpecDRAM();
+            self.spec = SpecDRAM(self.website.home.url);
             self.methodName = "ParaDRAM";
             self.method.isParaDRAM = true;
             self.Err.prefix = self.methodName;

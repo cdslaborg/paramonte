@@ -173,14 +173,6 @@ classdef paramonte %< dynamicprops
         %                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         version         = [];
         %
-        %           A MATLAB struct with three logical components:
-        %
-        %               isWin32 : true if the operating system is Windows
-        %               isLinux : true if the operating system is Linux
-        %               isMacOS : true if the operating system is macOS (Darwin)
-        %
-        platform = struct();
-        %
         %           Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
         %
         %           To see the description and an example usage of the ParaDRAM routine,
@@ -198,6 +190,14 @@ classdef paramonte %< dynamicprops
     end
 
     properties (Access = protected, Hidden)
+        %
+        %           A MATLAB struct with three logical components:
+        %
+        %               isWin32 : true if the operating system is Windows
+        %               isLinux : true if the operating system is Linux
+        %               isMacOS : true if the operating system is macOS (Darwin)
+        %
+        platform = struct();
         Err = Err_class();
         bashrcContentsBeforeParaMonteInstall;
         verificationStatusFilePath;
@@ -268,6 +268,31 @@ classdef paramonte %< dynamicprops
             if self.platform.isWin32; self.platform.osname = "Windows"; end
             if self.platform.isMacOS; self.platform.osname = "macOS"; end
             if self.platform.isLinux; self.platform.osname = "Linux"; end
+
+            self.platform.systemInfoFilePrefix = fullfile(self.path.auxil, ".systemInfo_");
+            self.platform.systemInfoFilePath = self.platform.systemInfoFilePrefix + string(strrep(date,"-","_"));
+            if ~isfile(self.platform.systemInfoFilePath)
+                delete(self.platform.systemInfoFilePrefix + "*");
+                if self.platform.isWin32
+                    cmd = "systeminfo";
+                end
+                if self.platform.isMacOS
+                    cmd = "uname -a; sysctl -a | grep machdep.cpu";
+                end
+                if self.platform.isLinux
+                    cmd = "uname -a; lscpu";
+                end
+                [errorOccurred, self.platform.sysinfo] = system(cmd);
+                if errorOccurred
+                    warning ( newline ...
+                            + "The ParaMonte library failed to fetch the system information on your system. skipping..." ...
+                            + newline ...
+                            );
+                end
+                fid = fopen(self.platform.systemInfoFilePath,'wt');
+                fprintf(fid, "%s", self.platform.sysinfo);
+                fclose(fid);
+            end
 
             self.authors = "The Computational Data Science Lab @ The University of Texas";
             self.credits = "Peter O'Donnell Fellowship / Texas Advanced Computing Center";
@@ -344,10 +369,12 @@ classdef paramonte %< dynamicprops
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function verify(self,varargin)
+            %
             %   checks (or rechecks) the requirements of the installed ParaMonte library
             %
             %   Parameters
             %   ----------
+            %
             %       reset
             %           boolean whose default value is true. If true,
             %           a thorough verification of the existence of the required
@@ -356,6 +383,7 @@ classdef paramonte %< dynamicprops
             %
             %   Returns
             %   -------
+            %
             %       None
             %
             %   Example usage
@@ -370,7 +398,6 @@ classdef paramonte %< dynamicprops
             %       pm.verify(true)             % resets and performs all checks
             %       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %
-
             self.objectName = inputname(1);
 
             setenv('PATH', ['/usr/local/bin:',getenv('PATH')]);
@@ -465,7 +492,7 @@ classdef paramonte %< dynamicprops
 
                     % set up library path
 
-                    if ~self.platform.isWin32;
+                    if ~self.platform.isWin32
                         self.bashrcContentsBeforeParaMonteInstall = getBashrcContents(); % save a copy of the original bashrc contents. wil be used in installParaMonte().
                         self.setupUnixPath();
                     end
@@ -497,16 +524,40 @@ classdef paramonte %< dynamicprops
 
                     % search for the MPI library
 
-                    mpiBinPath = self.findMPI();
-                    if isempty(mpiBinPath)
-                        self.Err.msg    = "The MPI runtime libraries for 64-bit architecture could not be detected on your system. " ...
-                                        + "The MPI runtime libraries are required for the parallel ParaMonte simulations. " ...
+                    mpi = self.findMPI();
+
+                    if mpi.install.found && ~mpi.path.broken
+
+                        self.writeVerificationStatusFile("False");
+
+                    else
+
+                        if mpi.install.found && mpi.path.broken
+                            msg = "An MPI library installation appears to exist on your system, however, " ...
+                                + "some components of the library appear to be missing, or the environmental path " ...
+                                + "to the MPI library installation is corrupted. You can inspect the contents of the " ...
+                                + "environmental path variable for potential path corruptions by typing," ...
+                                + newline + newline ...
+                                + "    " + "getenv(""PATH"")" ...
+                                + newline + newline ...
+                                + "on your MATLAB command line. If you or the ParaMonte library (on your behalf) " ...
+                                + "have already successfully installed an MPI library on your system, " ...
+                                + "you can safely ignore this warning and avoid further reinstallation of the MPI library. " ...
+                                + "Otherwise, follow the instructions below to reinstall the MPI library. " ...
+                                ;
+                        else
+                            msg = "The MPI runtime libraries for 64-bit architecture could not be detected on your system. " ...
+                                + "The MPI runtime libraries are required for the parallel ParaMonte simulations. " ...
+                                ;
+                        end
+
+                        self.Err.msg    = msg ...
                                         + "For Windows and Linux operating systems, you can download and install the Intel MPI runtime " ...
                                         + "libraries, free of charge, from Intel website, " ...
                                         + newline + newline ...
                                         + "    " + href(self.website.intel.mpi.home.url) ...
                                         + newline + newline ...
-                                        + "For macOS (Darwin operating system), you will have to download and install the Open-MPI library. " ...
+                                        + "For macOS (Darwin operating system), you can download and install the Open-MPI library. " ...
                                         + newline + newline ...
                                         + "    " + href(self.website.openmpi.home.url) ...
                                         + newline + newline ...
@@ -521,15 +572,15 @@ classdef paramonte %< dynamicprops
 
                         isYes = getUserResponse ( newline ...
                                                 + "    Do you wish to download and install the MPI runtime library" + newline ...
-                                                + "    for parallel simulations on your system now (y/n)? " ...
+                                                + "    (only needed for parallel simulations) on your system now (y/n)? " ...
                                                 );
                         if isYes
                             self.installMPI();
                             self.writeVerificationStatusFile("True");
                         else
                             self.Err.msg    = "Skipping the MPI library installation... " + newline ...
-                                            + "It is now the user's responsibility to install the " ...
-                                            + "required libraries for parallel simulations. " ...
+                                            + "It is now the user's responsibility to ensure an MPI runtime library" ...
+                                            + "exists on the system for parallel simulations. " ...
                                             + "If you ever wish to install MPI libraries via ParaMonte again, " ...
                                             + "please try:" + newline + newline ...
                                             + "    pm = paramonte();" + newline ...
@@ -539,10 +590,6 @@ classdef paramonte %< dynamicprops
                             self.Err.note();
                             self.writeVerificationStatusFile("False");
                         end
-
-                    else
-
-                        self.writeVerificationStatusFile("False");
 
                     end
 
@@ -647,15 +694,15 @@ classdef paramonte %< dynamicprops
                             %    end
                             %end
                         %end
-                        %if errorOccurred && contains(installRootDir,"local")
-                        %    self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
-                        %                    + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
-                        %                    + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
-                        %    self.Err.warn();
-                        %%else
-                        %    self.pmInstallFailed = false;
-                        %%    break;
-                        %end
+                        % if errorOccurred && contains(installRootDir,"local")
+                        %     self.Err.msg    = "An attempt to locally install the ParaMonte library on your system failed with the following message: " + newline  + newline ...
+                        %                     + string(errMsg) + " Error flag: " + string(msgID) + newline  + newline ...
+                        %                     + "Continuing at the risk of not being able to use the ParaMonte kernel samplers.";
+                        %     self.Err.warn();
+                        % %else
+                        %     self.pmInstallFailed = false;
+                        % %    break;
+                        % end
                     end
                     if ~self.pmInstallFailed; break; end
                 end
@@ -1081,26 +1128,49 @@ classdef paramonte %< dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function mpiBinPath = findMPI(self)
-            % Returns the MPI bin directory if it exists, otherwise empty.
-
-            mpiBinPath = [];
+        function mpi = findMPI(self)
+            %
+            % Return an struct containing the paths to different components of the MPI library.
+            %
+            mpi.path.broken = false;
+            mpi.install.found = false;
+            mpi.install.bin.found = false;
+            mpi.install.bin.path = [];
+            mpi.install.bin.mpiexec.found = false;
+            mpi.install.bin.mpiexec.path = [];
+            mpi.install.bin.mpivars.found = false;
+            mpi.install.bin.mpivars.path = [];
 
             if self.platform.isWin32
 
                 pathList = getenv("PATH");
                 pathList = string(strsplit(pathList,';'));
                 for thisPath = pathList
+
                     pathLower = lower(thisPath);
                     pathLower = string(strrep(pathLower,'\',''));
                     if contains(pathLower,"mpiintel64bin")
-                        mpivarsFilePath = string(fullfile( thisPath, "mpivars.bat" ));
+
+                        mpi.install.bin.found = true;
+                        mpi.install.bin.path = thisPath;
+
+                        mpiexecFilePath = string( fullfile(mpi.install.bin.path,"mpiexec.exe") );
+                        if isfile(mpiexecFilePath)
+                            mpi.install.bin.mpiexec.found = true;
+                            mpi.install.bin.mpiexec.path = mpiexecFilePath;
+                        end
+
+                        mpivarsFilePath = string( fullfile(mpi.install.bin.path,"mpivars.bat") );
                         if isfile(mpivarsFilePath)
+
+                            mpi.install.bin.mpivars.found = true;
+                            mpi.install.bin.mpivars.path = mpivarsFilePath;
+
                             mpivarsCommand = """" + mpivarsFilePath + """";
                             self.Err.msg    = "Intel MPI library for 64-bit architecture detected at: " + newline ...
                                             + newline ...
-                                            ... + "    " + string(strrep(thisPath,'\','\\')) + newline ...
-                                            + "    """ + thisPath + """" + newline ...
+                                            ... + "    " + string(strrep(mpi.install.bin.path,'\','\\')) + newline ...
+                                            + "    """ + mpi.install.bin.path + """" + newline ...
                                             + newline ...
                                             + "To perform ParaMonte simulations in parallel on a single node, run the " + newline ...
                                             + "following two commands, in the form and order specified, on a MATLAB-aware " + newline ...
@@ -1141,17 +1211,20 @@ classdef paramonte %< dynamicprops
                             setupFilePath = fullfile(self.path.lib, "setup.bat");
                             fid = fopen(setupFilePath,"w");
                             fprintf(fid,"@echo off\n");
-                            %fprintf(fid,"cd " + string(strrep(thisPath, '\', '\\')) + " && mpivars.bat quiet\n");
+                            %fprintf(fid,"cd " + string(strrep(mpi.install.bin.path, '\', '\\')) + " && mpivars.bat quiet\n");
                             %fprintf(fid,"cd " + string(strrep(self.path.lib, '\', '\\')) + "\n");
-                            fprintf(fid, "%s\n", "cd " + thisPath + " && mpivars.bat quiet");
+                            fprintf(fid, "%s\n", "cd " + mpi.install.bin.path + " && mpivars.bat quiet");
                             fprintf(fid, "%s\n", "cd " + self.path.lib);
                             fprintf(fid,"@echo on\n");
                             fclose(fid);
 
-                            mpiBinPath = thisPath;
-                            return
                         end
+
                     end
+
+                    mpi.install.found = mpi.install.bin.found && mpi.install.bin.mpiexec.found && mpi.install.bin.mpivars.found;
+                    if mpi.install.found; break; end
+
                 end
 
             elseif self.platform.isLinux
@@ -1159,15 +1232,31 @@ classdef paramonte %< dynamicprops
                 pathList = getenv("PATH");
                 pathList = string(strsplit(pathList,":"));
                 for thisPath = pathList
+
                     pathLower = lower(thisPath);
                     pathLower = strrep(pathLower,"/","");
                     if contains(pathLower, "linuxmpiintel64")
-                        mpivarsFilePath = string(fullfile(thisPath, "mpivars.sh"));
+
+                        mpi.install.bin.found = true;
+                        mpi.install.bin.path = thisPath;
+
+                        mpiexecFilePath = string( fullfile(mpi.install.bin.path,"mpiexec") );
+                        if isfile(mpiexecFilePath)
+                            mpi.install.bin.mpiexec.found = true;
+                            mpi.install.bin.mpiexec.path = mpiexecFilePath;
+                        end
+
+                        mpivarsFilePath = string(fullfile(mpi.install.bin.path, "mpivars.sh"));
+
                         if isfile(mpivarsFilePath)
-                            mpivarsCommand = """" + mpivarsFilePath + """";
+
+                            mpi.install.bin.mpivars.found = true;
+                            mpi.install.bin.mpivars.path = mpivarsFilePath;
+
+                            mpivarsCommand = """" + mpi.install.bin.mpivars.path + """";
                             self.Err.msg    = "Intel MPI library for 64-bit architecture detected at: " + newline + newline ...
-                                            ... + "    " + string(strrep(thisPath,'\','\\')) + newline + newline ...
-                                            + "    """ + thisPath + """" + newline + newline ...
+                                            ... + "    " + string(strrep(mpi.install.bin.path,'\','\\')) + newline + newline ...
+                                            + "    """ + mpi.install.bin.path + """" + newline + newline ...
                                             + "To perform ParaMonte simulations in parallel on a single node, run the " + newline ...
                                             + "following two commands, in the form and order specified, in a Bash shell, " + newline + newline ...
                                             ... + "    source " + string(strrep(mpivarsCommand,'\','\\')) + newline + newline ...
@@ -1203,29 +1292,13 @@ classdef paramonte %< dynamicprops
                                 self.Err.warn();
                             end
 
-                            mpiBinPath = thisPath;
-                            return
                         end
-                    end
-                end
 
-                if isempty(mpiBinPath)
-                    defaultIntelLinuxMpiPath = self.getDefaultIntelLinuxMpiPath();
-                    if defaultIntelLinuxMpiPath.mpiRootDirNotFound
-                        return
-                    else
-                        self.Err.msg    = "The PATH enviromental variable of your Bash terminal does not point to " + newline ...
-                                        + "any current installation of the Intel MPI runtime libraries on your system, " + newline ...
-                                        + "however, ParaMonte was able to detect a hidden installation of Intel MPI runtime " + newline ...
-                                        + "libraries on your system at, " + newline ...
-                                        + newline ...
-                                        + "    " + string(defaultIntelLinuxMpiPath.mpiRootDir(end)) + newline ...
-                                        + newline ...
-                                        + "Follow the instructions below to ensure that your system's " + newline ... '
-                                        + "MPI runtime libraries will be properly detected in the future.";
-                        self.Err.note();
-                        mpiBinPath = self.setupIntelLinuxMpiPath(defaultIntelLinuxMpiPath);
                     end
+
+                    mpi.install.found = mpi.install.bin.found && mpi.install.bin.mpiexec.found && mpi.install.bin.mpivars.found;
+                    if mpi.install.found; break; end
+
                 end
 
             elseif self.platform.isMacOS
@@ -1237,24 +1310,27 @@ classdef paramonte %< dynamicprops
                         [~,gfortranPath] = system("command -v gfortran", "-echo");
                     end
                 catch
-                    warning("failed to capture gfortran version");
+                    warning("Failed to capture the gfortran version...");
                 end
 
-                mpiexecPath = [];
+                %mpiexecPath = [];
                 try
                     [~,mpiexecVersion] = system("mpiexec --version", "-echo");
                     if contains(string(mpiexecVersion), "open-mpi")
-                        [~,mpiexecPath] = system("command -v mpiexec", "-echo");
+                        [~,mpi.install.bin.mpiexec.path] = system("command -v mpiexec", "-echo");
                     end
                 catch
-                    warning("failed to capture mpiexec version");
+                    warning("Failed to capture the mpiexec version...");
                 end
 
-                if ~isempty(mpiexecPath) && ~isempty(gfortranPath)
-                    [thisPath,~,~] = fileparts(mpiexecPath); thisPath = string(thisPath);
+                if ~isempty(mpi.install.bin.mpiexec.path) && ~isempty(gfortranPath)
+                    mpi.install.bin.found = true;
+                    mpi.install.bin.mpiexec.found = true;
+                    mpi.install.bin.mpivars.found = true; % dummy
+                    [mpi.install.bin.path,~,~] = fileparts(mpi.install.bin.mpiexec.path); mpi.install.bin.path = string(mpi.install.bin.path);
                     self.Err.msg    = "MPI runtime libraries detected at: " + newline + newline ...
-                                    ... + "    " + string(strrep(thisPath,'\','\\')) + newline + newline ...
-                                    + "    " + thisPath + newline + newline ...
+                                    ... + "    " + string(strrep(mpi.install.bin.path,'\','\\')) + newline + newline ...
+                                    + "    " + mpi.install.bin.path + newline + newline ...
                                     + "To perform ParaMonte simulations in parallel on a single node, run the " + newline ...
                                     + "following command, in the form and order specified, in a Bash shell, " + newline + newline ...
                                     + "    mpiexec -n 3 matlab -batch ""main_mpi""" + newline + newline ...
@@ -1274,16 +1350,91 @@ classdef paramonte %< dynamicprops
                     self.Err.marginBot = 1;
                     self.Err.prefix = self.names.paramonte;
                     self.Err.note();
-                    mpiBinPath = thisPath;
-                    return
                 end
+
+                mpi.install.found = mpi.install.bin.found && mpi.install.bin.mpiexec.found && mpi.install.bin.mpivars.found;
 
             else
 
                 LocalInstallDir = getLocalInstallDir();
                 if ~isempty(LocalInstallDir.mpi.bin) && ~isempty(LocalInstallDir.mpi.lib)
-                    mpiBinPath = LocalInstallDir.mpi.bin;
-                    return
+
+                    mpi.install.bin.found = true;
+                    mpi.install.bin.path = LocalInstallDir.mpi.bin;
+
+                    mpiexecFilePath = string( fullfile(mpi.install.bin.path,"mpiexec") );
+                    if isfile(mpiexecFilePath)
+                        mpi.install.bin.mpiexec.found = true;
+                        mpi.install.bin.mpiexec.path = mpiexecFilePath;
+                    end
+
+                end
+
+                mpi.install.bin.mpivars.found = mpi.install.bin.found && mpi.install.bin.mpiexec.found; % dummy
+                mpi.install.found = mpi.install.bin.found && mpi.install.bin.mpiexec.found && mpi.install.bin.mpivars.found;
+
+            end
+
+            % one last try to find MPI library if not found
+
+            if ~mpi.install.found
+
+                mpi.path.broken = true;
+
+                if self.platform.isLinux
+
+                    defaultIntelLinuxMpiPath = self.getDefaultIntelLinuxMpiPath();
+                    if defaultIntelLinuxMpiPath.mpiRootDirNotFound
+                        return
+                    else
+                        mpi.install.found = true;
+                        self.Err.msg    = "The PATH enviromental variable of your Bash terminal does not point to " + newline ...
+                                        + "any current installation of the Intel MPI runtime libraries on your system, " + newline ...
+                                        + "however, ParaMonte was able to detect a hidden installation of Intel MPI runtime " + newline ...
+                                        + "libraries on your system at, " + newline ...
+                                        + newline ...
+                                        + "    " + string(defaultIntelLinuxMpiPath.mpiRootDir(end)) + newline ...
+                                        + newline ...
+                                        + "Follow the instructions below to ensure that your system's " + newline ... '
+                                        + "MPI runtime libraries will be properly detected in the future.";
+                        self.Err.warn();
+                        mpi.install.bin.path = self.setupIntelLinuxMpiPath(defaultIntelLinuxMpiPath);
+                    end
+
+                elseif self.platform.isWin32
+
+                    self.Err.msg    = "Failed to detect the Intel MPI library for 64-bit architecture." + newline ...
+                                    + "Now searching through the installed applications..." + newline ...
+                                    + "This may take some time.";
+                    self.Err.marginTop = 1;
+                    self.Err.marginBot = 1;
+                    self.Err.prefix = self.names.paramonte;
+                    self.Err.warn();
+                    [errorOccurred, installedApp] = system("wmic product get Name, Version");
+                    if errorOccurred
+                        return
+                    elseif contains(installedApp,"Intel MPI")
+                        mpi.install.found = true;
+                        self.Err.msg = "Possible Intel MPI installation detected:";
+                        self.Err.marginTop = 0;
+                        self.Err.marginBot = 1;
+                        self.Err.prefix = self.names.paramonte;
+                        self.Err.note();
+                        self.Err.marginBot = 0;
+                        installedAppList = strsplit(installedApp,newline);
+                        for i = 1:length(installedAppList)
+                            app = installedAppList{i};
+                            app = strrep(app,char(13),''); % remove cr
+                            app = strrep(app,char(10),''); % remove newline
+                            if contains(app,"Intel MPI")
+                                self.Err.msg = "    " + app;
+                                self.Err.note();
+                            end
+                        end
+                        self.Err.marginTop = 1;
+                        self.Err.marginBot = 1;
+                    end
+
                 end
 
             end
@@ -1475,7 +1626,7 @@ classdef paramonte %< dynamicprops
 
                     cd(originalDir);
 
-                    setupFilePath = fullfile( self.path.lib, "setup.sh" );
+                    % setupFilePath = fullfile( self.path.lib, "setup.sh" );
 
                     while true
                         defaultIntelLinuxMpiPath = self.getDefaultIntelLinuxMpiPath();
@@ -1535,7 +1686,7 @@ classdef paramonte %< dynamicprops
 
                     else
 
-                        mpiBinDir = self.setupIntelLinuxMpiPath(defaultIntelLinuxMpiPath); % returns mpiBinDir
+                        mpiBinDir = self.setupIntelLinuxMpiPath(defaultIntelLinuxMpiPath); % returns mpiBinDir which is not used
 
                     end
 
@@ -1568,7 +1719,7 @@ classdef paramonte %< dynamicprops
             mpiLibDir = string(fullfile(defaultIntelLinuxMpiPath.mpiRootDir(end), "lib"));
             mpivarsFilePath = string(fullfile(mpiBinDir, "mpivars.sh"));
             if isfile(mpivarsFilePath)
-
+                setupFilePath = fullfile( self.path.lib, "setup.sh" );
                 try
                     fid = fopen(setupFilePath,"w");
                     %fprintf(fid,string(strrep(mpiBinDir,'\','\\'))+"\n");
@@ -1687,7 +1838,7 @@ classdef paramonte %< dynamicprops
             % cmake
 
             cmakeInstallationNeeded = false;
-            [~,cmakePath] = system("command -v cmake", "-echo"); cmakePath = string(cmakePath)
+            [~,cmakePath] = system("command -v cmake", "-echo"); cmakePath = string(cmakePath);
             if ~isfile(cmakePath)
 
                 cmakeInstallationNeeded = true;
@@ -1876,6 +2027,14 @@ classdef paramonte %< dynamicprops
         %       None
             result = help(paramonte);
         end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end % methods (Static)
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods (Static, Hidden)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

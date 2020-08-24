@@ -119,20 +119,19 @@ contains
         if (present(outputUnit)) then
             if (outputUnit/=output_unit) then
                 call write(outputUnit,1,0,1, pfx // " - Please Correct the error(s) and rerun the simulation." )
-                call write(outputUnit,1,0,1, pfx // " - For further help, contact Amir Shahmoradi via:" )
-                call write(outputUnit,0,0,1, pfx // " - a.shahmoradi@gmail.com" )
-                call write(outputUnit,0,0,1, pfx // " - shahmoradi@utexas.edu" )
-                call write(outputUnit,0,0,1, pfx // " - cdslab.org/ParaMonte/" )
-                call write(outputUnit,1,2,1, pfx // " - Gracefully Exiting on image " // trim(adjustl(imageChar)) // "." )
+                call write(outputUnit,0,0,1, pfx // " - If the cause of the error cannot be diagnosed, please report it at:" )
+                call write(outputUnit,0,0,1, pfx // " -" )
+                call write(outputUnit,0,0,1, pfx // " -     https://github.com/cdslaborg/paramonte/issues" )
+                call write(outputUnit,0,0,1, pfx // " -" )
+                call write(outputUnit,0,2,1, pfx // " - Gracefully Exiting on image " // trim(adjustl(imageChar)) // "." )
             end if
         end if
 
-        if (outputUnit/=output_unit) then
-            ! notify the user on screen too
-            call write(output_unit,1,0,1, pfx // " - FATAL: Runtime error occurred." )
-            call write(output_unit,0,0,1, pfx // " - FATAL: For more information, please see the output report file." )
-            call write(output_unit,0,2,1, pfx // " - FATAL: Gracefully Exiting on image " // trim(adjustl(imageChar)) // "." )
-        end if
+        ! notify the user on screen too
+
+        call write(output_unit,1,0,1, pfx // " - FATAL: Runtime error occurred." )
+        call write(output_unit,0,0,1, pfx // " - FATAL: For more information, see the output '*_report.txt' file (if generated)." )
+        call write(output_unit,0,2,1, pfx // " - FATAL: Gracefully Exiting on image " // trim(adjustl(imageChar)) // "." )
 
         flush(output_unit) ! call execute_command_line(" ")
         flush(outputUnit)
