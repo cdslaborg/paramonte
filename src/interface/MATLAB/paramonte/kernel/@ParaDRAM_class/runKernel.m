@@ -158,10 +158,7 @@ flag2 = false;
                                         ) ;
 
             %***************************************************************************************************************
-            %***************************************************************************************************************
-            %                               Restart mode old chain ends here
-            %   fprintf(self.ChainFile.unit, "---------------  Old chain with less two points till here  --------------\n");
-            %***************************************************************************************************************
+            %********************               Restart mode old chain ends here                        ********************
             %***************************************************************************************************************
 
             % remove the temporary copy of the chain file
@@ -187,6 +184,8 @@ flag2 = false;
     else
         co_LogFuncState(2:nd+1,2)   = self.Chain.State(1:nd,1); % proposal logFunc
         co_LogFuncState(1,2)        = self.Chain.LogFunc(1);    % proposal logFunc
+        % Reading mean-acceptance-rate from interrupted run binary file
+        bin_MeanAccRate                     = fread(self.RestartFile.unit, Inf,'float64');
     end
 
     co_LogFuncState(1:nd+1,1)           = co_LogFuncState(1:nd+1,2);  % set current logFunc and State equal to the first proposal
@@ -357,16 +356,16 @@ if flag2, self.writeOutput2(); end
             if self.isFreshRun
                 meanAccRateSinceStart = self.Chain.MeanAccRate(self.Stats.NumFunCall.accepted);
                 if self.SpecBase.restartFileFormat.isBinary
-                    fprintf(self.RestartFile.unit, "%d" , meanAccRateSinceStart);
+                    fwrite( self.RestartFile.unit, meanAccRateSinceStart, "float64");
                 else
-                    % self.RestartFile.format
-                    fprintf(self.RestartFile.unit, "meanAccRateSinceStart" + "\n" + "%.16f", meanAccRateSinceStart);
+                    precisionRestart = "\n" + "%" + "." + self.SpecBase.outputRealPrecision.str + "f";
+                    fprintf(self.RestartFile.unit, "meanAccRateSinceStart" + precisionRestart, meanAccRateSinceStart);
                     self.Proposal.writeRestartFile(); % xxx
                 end
-
             else
                 if self.SpecBase.restartFileFormat.isBinary
-                % meanAccRateSinceStart = read(self.RestartFile.unit)
+                    if ~exist('counterBin', 'var'),  counterBin = 1; else, counterBin = counterBin+1; end
+                    meanAccRateSinceStart   = bin_MeanAccRate(counterBin);
                 else
                     fgets(self.RestartFile.unit);
                     meanAccRateSinceStart = fgets(self.RestartFile.unit);

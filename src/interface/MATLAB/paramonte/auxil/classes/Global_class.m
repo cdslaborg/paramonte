@@ -44,6 +44,7 @@ classdef Global_class < handle
         co_proposalFound_samplerUpdateOccurred  = []
         comv_chol                               = []
         comv_covMat                             = []
+        lower_comv_covMat                       = []
         mc_restartFileUnit                      = []
         mv_sampleSizeOld_save                   = []
         mv_logSqrtDetOld_save                   = []

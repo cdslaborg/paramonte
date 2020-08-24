@@ -116,6 +116,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
             self.Global.mc_logFileUnit                      = PD.LogFile.unit;
             self.Global.mc_restartFileUnit                  = PD.RestartFile.unit;
             self.Global.mc_restartFileFormat                = PD.RestartFile.format;
+            % self.Global.mc_restartFileFormat                = PD.SpecBase.restartFileFormat.val;
             self.Global.mc_defaultScaleFactorSq             = PD.SpecDRAM.scaleFactor.val^2;
            %self.AccRate.sumUpToLastUpdate      = 0;
             self.Global.mc_MaxNumDomainCheckToWarn          = PD.SpecBase.maxNumDomainCheckToWarn.val;
@@ -139,6 +140,7 @@ classdef ParaDRAMProposalSymmetric_class < handle
             % setup covariance matrix
 
             self.Global.comv_covMat = zeros(ndim, ndim, self.Global.mc_DelayedRejectionCount + 1); % xxx: define new variable 
+            self.Global.lower_comv_covMat   = zeros(1, ndim*(ndim-1)/2 + ndim);
             self.Global.comv_chol   = zeros(ndim, ndim, self.Global.mc_DelayedRejectionCount + 1);
 
             if PD.SpecDRAM.proposalStartCovMat.isPresent
@@ -529,8 +531,9 @@ classdef ParaDRAMProposalSymmetric_class < handle
               % end
                 hellingerDistSq = 1.0 - exp(0.5 * (self.Global.mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum);
                 if hellingerDistSq < 0.0
-                    self.Global.mv_Err.warn(self.Global.mc_negativeHellingerDistSqMsg + num2str(hellingerDistSq), self.Global.mc_methodBrand, [], self.Global.mc_logFileUnit);
-                    hellingerDistSq = 0.0;
+                    self.Global.mv_Err.msg  = self.Global.mc_negativeHellingerDistSqMsg + num2str(hellingerDistSq);
+                    self.Global.mv_Err.warn();
+                    hellingerDistSq         = 0.0;
                 end
                 % update the higher-stage delayed-rejection Cholesky Lower matrices
                 if self.Global.mc_delayedRejectionRequested, self.updateDelRejCholDiagLower(); end
@@ -560,15 +563,23 @@ classdef ParaDRAMProposalSymmetric_class < handle
 
         function writeRestartFile(self)
             
+            k = 1;
+            for j = 1 : self.Global.mc_ndim
+                for i = 1 : j
+                    self.Global.lower_comv_covMat(k) = self.Global.comv_covMat(i,j);
+                    k = k + 1;
+                end
+            end
+
             fprintf(self.Global.mc_restartFileUnit  , self.Global.mc_restartFileFormat          ...
                                                     , self.Global.mv_sampleSizeOld_save         ...
                                                     , self.Global.mv_logSqrtDetOld_save         ...
                                                     , self.Global.mv_adaptiveScaleFactorSq_save ...
                                                     , self.Global.mv_MeanOld_save.'             ...
-                                                    , self.Global.comv_chol(:,:,1).'            ...
-                                                    , self.Global.comv_covMat(:,:,1).'          ...
+                                                    ..., self.Global.comv_chol(:,:,1).'         ... do not need anymore since comv_covMat is sufficient
+                                                    ..., self.Global.comv_covMat(:,:,1).'       ...
+                                                    , self.Global.lower_comv_covMat(1,:)          ...
                                                     ) ;
-
 
         end
 
