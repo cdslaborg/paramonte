@@ -9,6 +9,13 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 **Minor enhancements**  
 
++   The simulation output files reading is now completely overhauled. In particular, 
+    The output file reader methods are now capable of handling input file paths that 
+    point to a directory. In such cases, it will search the input directory for files 
+    matching the requested file name pattern. If no input file is provided to the file 
+    reader methods, the current working directory will be search for the the potential 
+    simulation files that match the requested pattern. 
+
 +   The error-signaling behavior of the library now is very much controlled, that is, 
     upon code failure, it does not automatically shutdown the Python kernel in Jupyter Notebooks. 
     The library now simply throws an error message upon failing instead of restarting the environment.  

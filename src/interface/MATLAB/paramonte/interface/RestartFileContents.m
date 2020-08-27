@@ -209,8 +209,9 @@ classdef RestartFileContents < OutputFileContents
                 rowOffset = 3; proposalUpdates.(self.pdFieldNames(2))(icount) = str2double( self.lineList(istart+rowOffset) );
                 rowOffset = 5; proposalUpdates.(self.pdFieldNames(3))(icount) = str2double( self.lineList(istart+rowOffset) );
                 rowOffset = 7; proposalUpdates.(self.pdFieldNames(4))(icount) = str2double( self.lineList(istart+rowOffset) );
-                rowOffset = 9; proposalUpdates.(self.pdFieldNames(5))(icount,1:self.ndim) = str2double( self.lineList(istart+rowOffset:istart+rowOffset+self.ndim-1) );
+                rowOffset = 9;
                 iend = istart + rowOffset + self.ndim;
+                proposalUpdates.(self.pdFieldNames(5))(icount,1:self.ndim) = str2double( self.lineList(istart+rowOffset:iend-1) );
                 for i = 1:self.ndim % covmat
                     istart = iend + 1;
                     iend = iend + i;
@@ -264,7 +265,7 @@ classdef RestartFileContents < OutputFileContents
             %
             %   Reset the properties of the plot to the original default settings.
             %   Use this method when you change many attributes of the plot
-            %   and you want to clean up
+            %   and you want to clean up.
             %
             %   Parameters
             %   ----------
