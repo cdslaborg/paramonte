@@ -40,5 +40,5 @@ function logIntSpace = getLogIntSpace(base,logskip,lowerLim,upperLim)
     if logskip<=0
         error("The input argument ""logskip"" must be a positive real number. You have entered: " + string(logskip));
     end
-    logIntSpace = unique( round( base.^( log(lowerLim):logskip:log(upperLim) / log(base) ) ) );
+    logIntSpace = unique( round( base.^( log(lowerLim)/log(base):logskip:log(upperLim)/log(base) ) ) );
 end

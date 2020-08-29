@@ -182,7 +182,7 @@ function [varargout] = readReport(self,varargin)
         outputListFullName = self.objectName + "." + outputName;
         prop=outputName; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
         self.(outputName) = reportList;
-        self.Err.msg    = "The processed " + fileType + " file(s) are now stored in the newly-created component """ + outputListFullName + """ of the " + self.methodName + " object as a cell array. " ...
+        self.Err.msg    = "The processed " + fileType + " files are now stored in the newly-created component """ + outputListFullName + """ of the " + self.methodName + " object as a cell array. " ...
                         + "For example, to access the contents of the first (or the only) " + fileType + " file, try:";
     elseif nargout==1
         varargout{1} = reportList;

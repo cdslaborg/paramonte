@@ -251,8 +251,8 @@ classdef TabularFileContents < OutputFileContents
         function resetPlot(self,varargin)
             %
             %   Reset the properties of the plot to the original default settings.
-            %   Use this method when you change many attributes of the plot
-            %   and you want to clean up
+            %   Use this method when you change many attributes of the plot and 
+            %   you want to clean up and go back to the default settings.
             %
             %   Parameters
             %   ----------
@@ -276,10 +276,10 @@ classdef TabularFileContents < OutputFileContents
             %   Example
             %   -------
             %
-            %       reset("line3") % reset line3 plot to the default dettings
+            %       reset("line3") % reset line3 plot to the default settings
             %       reset("line3","hard") % regenerate line3 plot from scratch
             %       reset(["line","line3"],"hard") % regenerate line and line3 plots from scratch
-            %       reset("hard") % regenrate all plots from scratch
+            %       reset("hard") % regenerate all plots from scratch
             %
             resetTypeIsHard = false;
             requestedPlotTypeList = [];

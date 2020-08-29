@@ -62,15 +62,15 @@
 %
 %           A pair of indices (vector of length 2) whose value determine the rows 
 %           and columns from the covariance/correlation matrix which will be plotted.
+%           The default value is dimensionPair = [1,2].
 %
 %           Example usage:
 %
 %               1.  dimensionPair = [1,2]
 %               2.  dimensionPair = [3,1]
 %
-%           WARNING: In all cases, the indices must distinct from each other and 
-%           WARNING: <ndim where ndim is the rank of the covariance/correlation matrix.
-%           The default value is dimensionPair = [1,2].
+%           WARNING: In all cases, the indices must be distinct from each other and less 
+%           WARNING: than ndim where ndim is the rank of the covariance/correlation matrix.
 %
 %       matrixColumn
 %
@@ -247,7 +247,7 @@ classdef EllipsoidPlot < BasePlot
 
             self.title_kws = struct();
             self.title_kws.enabled = false;
-            self.title_kws.content = [];
+            self.title_kws.label = [];
             self.title_kws.fontsize = 11;
             self.title_kws.interpreter = "tex";
 
@@ -518,7 +518,7 @@ classdef EllipsoidPlot < BasePlot
             ccolindexlen = length(ccolindex);
             covcolindexlen = length(covcolindex);
             avgcolindexlen = length(avgcolindex);
-            maxcolindexlen = max (  [ covcolindexlen ...
+            maxcolindexlen = max(   [ covcolindexlen ...
                                     , avgcolindexlen ...
                                     , zcolindexlen ...
                                     , ccolindexlen ...
@@ -632,14 +632,16 @@ classdef EllipsoidPlot < BasePlot
                     if self.colormap.enabled
                         colorKeyVal = {"color",cmap(irow,:)};
                     end
-                    covMat = squeeze(self.dfref{rowindex(irow),covcolindex});
-                    covMat = covMat(self.dimensionPair,self.dimensionPair);
+                    submatrix = squeeze(self.dfref{rowindex(irow),covcolindex});
+                    submatrix = submatrix(self.dimensionPair,self.dimensionPair);
                     if avgcolindexlen>0
                         meanVec = squeeze(self.dfref{rowindex(irow),avgcolindex});
                         meanVec = meanVec(self.dimensionPair);
                     end
 
-                    bcrd = self.makeEllipsoid   ( covMat ...
+                    % get ellipsoid boundary
+
+                    bcrd = self.makeEllipsoid   ( submatrix ...
                                                 , meanVec ...
                                                 , self.npoint ...
                                                 );
@@ -754,14 +756,14 @@ classdef EllipsoidPlot < BasePlot
             % set title properties
 
             if self.title_kws.enabled
-                if ~(isstring(self.title_kws.content) || ischar(self.title_kws.content))
+                if ~(isstring(self.title_kws.label) || ischar(self.title_kws.label))
                     error   ( "The title component of an EllipsoidPlot object must be a string or character vector. " ...
                             + "You have entered " ...
                             + string(self.title_kws) ...
                             );
                 end
-                title_kws_cell = convertStruct2Cell(self.title_kws,{"enabled","content"});
-                title(self.title_kws.content,title_kws_cell{:});
+                title_kws_cell = convertStruct2Cell(self.title_kws,{"enabled","label"});
+                title(self.title_kws.label,title_kws_cell{:});
             end
 
             % add line colorbar
@@ -808,7 +810,7 @@ classdef EllipsoidPlot < BasePlot
             ap = [xval(:) yval(:)]';
             [eigenVectors,eigenValues] = eig(covMat);
             eigenValues = sqrt(eigenValues); % convert variance to std
-            bcrd = transpose( eigenVectors * eigenValues * ap + repmat(meanVec(:), 1, size(ap,2)) );
+            bcrd = transpose( eigenVectors * eigenValues * ap + repmat(meanVec(:), 1, npoint) );
             %h = plot(bcrd(:,1), bcrd(:,2), '-');
         end
 
