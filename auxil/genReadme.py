@@ -1,3 +1,5 @@
+# ATTN: This code must be executed from the base directory where it exists. Navigate the the directory containing this file, then: python getReadme.py
+
 class Struct: pass
 
 sectionList =   [ "quickstart"
@@ -34,16 +36,16 @@ banner = """
 <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><img src="https://img.shields.io/badge/reference-%20%09arXiv%3A1209.4647-blueviolet?style=flat-square" alt="citations and references" /></a>
 <br><br>
 <a href="https://twitter.com/intent/tweet?text=ParaMonte%20-%20Plain%20Powerfull%20Parallel%20Monte%20Carlo%20Library:&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" target="_blank"><img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" alt="Twitter" /></a> 
-
-
+  
+  
 ParaMonte: Plain Powerful Parallel Monte Carlo Library
 ======================================================
   
 ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical objective functions of arbitrary-dimensions, in particular, the posterior distributions of Bayesian models in data science, Machine Learning, and scientific inference, with the design goal of unifying the **automation** (of Monte Carlo simulations), **user-friendliness** (of the library), **accessibility** (from multiple programming environments), **high-performance** (at runtime), and **scalability** (across many parallel processors).  
 
 For more information on the installation, usage, and examples, visit: https://www.cdslab.org/paramonte  
-
-
+  
+  
 ParaMonte design goals  
 ======================  
 
@@ -62,12 +64,12 @@ ParaMonte has been developed while bearing the following design goals in mind:
 -   **Fully-deterministic reproducibility** and automatically-enabled restart functionality for all simulations up to 16 digits of precision as requested by the user.  
 
 -   **Comprehensive-reporting and post-processing** of each simulation and its results, as well as their automatic storage in external files to ensure the simulation results will be comprehensible and reproducible at any time in the distant future.  
-  
 """
 
 ####################################################################################################################################
 
 readme["quickstart"]["title"] = """
+  
 Quick start  
 ===========  
 """
@@ -89,6 +91,7 @@ For a quick start with some Jupyter Notebook examples, visit [this ParaMonte doc
 ####################################################################################################################################
 
 readme["installation"]["title"] = """
+  
 Installation  
 ============  
 """
@@ -127,6 +130,7 @@ Alternatively, you can build the library from the source in the GitHub repositor
 ####################################################################################################################################
 
 readme["dependencies"]["title"] = """
+  
 Dependencies  
 ============  
 """
@@ -150,6 +154,7 @@ The Python interface of ParaMonte depends on a very few third-party libraries. T
 ####################################################################################################################################
 
 readme["parallelism"]["title"] = """
+  
 Parallelism  
 ===========  
 """
@@ -172,6 +177,7 @@ readme["parallelism"]["python"] = readme["parallelism"]["main"]
 ####################################################################################################################################
 
 readme["citation"]["title"] = """
+  
 Citing ParaMonte  
 ================  
 """
@@ -195,6 +201,7 @@ readme["citation"]["python"] = readme["citation"]["main"]
 ####################################################################################################################################
 
 readme["license"]["title"] = """
+  
 License  
 =======  
 """
@@ -208,7 +215,8 @@ Essentially, all we are asking from the users or developers is to
 
 >   acknowledge the use of this library in other work or (commercial / free) software that are built upon this work.  
 
-This is a free software, so help us keep it freely available to the public by redistributing the library and contributing to it.  
+This is a free software, so help us keep it freely available to the public by redistributing the library and contributing to it. 
+If you have any questions or concerns about the license, do not hesitate to the contact us (shahmoradi@utexas.edu).  
 """
 
 readme["license"]["c"] = readme["license"]["main"]
@@ -222,6 +230,7 @@ readme["license"]["python"] = readme["license"]["main"]
 #################################################################################################################################################################
 
 readme["authors"]["title"] = """
+  
 Authors and contributors  
 ========================  
 """
@@ -270,6 +279,7 @@ readme["authors"]["python"] = readme["authors"]["title"] + amir + josh + fatima
 ####################################################################################################################################
 
 readme["examples"]["title"] = """
+  
 Example usage instructions  
 ==========================  
 """

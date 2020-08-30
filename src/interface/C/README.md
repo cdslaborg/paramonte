@@ -19,16 +19,16 @@
 <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><img src="https://img.shields.io/badge/reference-%20%09arXiv%3A1209.4647-blueviolet?style=flat-square" alt="citations and references" /></a>
 <br><br>
 <a href="https://twitter.com/intent/tweet?text=ParaMonte%20-%20Plain%20Powerfull%20Parallel%20Monte%20Carlo%20Library:&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" target="_blank"><img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" alt="Twitter" /></a> 
-
-
+  
+  
 ParaMonte: Plain Powerful Parallel Monte Carlo Library
 ======================================================
   
 ParaMonte is a serial/parallel library of Monte Carlo routines for sampling mathematical objective functions of arbitrary-dimensions, in particular, the posterior distributions of Bayesian models in data science, Machine Learning, and scientific inference, with the design goal of unifying the **automation** (of Monte Carlo simulations), **user-friendliness** (of the library), **accessibility** (from multiple programming environments), **high-performance** (at runtime), and **scalability** (across many parallel processors).  
 
 For more information on the installation, usage, and examples, visit: https://www.cdslab.org/paramonte  
-
-
+  
+  
 ParaMonte design goals  
 ======================  
 
@@ -47,8 +47,8 @@ ParaMonte has been developed while bearing the following design goals in mind:
 -   **Fully-deterministic reproducibility** and automatically-enabled restart functionality for all simulations up to 16 digits of precision as requested by the user.  
 
 -   **Comprehensive-reporting and post-processing** of each simulation and its results, as well as their automatic storage in external files to ensure the simulation results will be comprehensible and reproducible at any time in the distant future.  
-  
 
+  
 Installation  
 ============  
 
@@ -56,11 +56,13 @@ The ParaMonte library installation/build process is fully automated for all of t
 
 For more information and quick-start in the programming language of your choice, visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).  
 
+  
 Dependencies  
 ============  
 
 Beyond an optional MPI runtime library for parallel simulations, the ParaMonte kernel has **zero dependency** on external third-party libraries or packages.  
 
+  
 Parallelism  
 ===========  
 
@@ -69,6 +71,7 @@ The ParaMonte library relies on the Message Passing Interface (MPI) standard for
 +   On **Windows** and **Linux** operating systems, we highly recommend downloading and installing the [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), which is available to the public free of charge.  
 +   On **macOS**, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
 
+  
 Citing ParaMonte  
 ================  
 
@@ -78,6 +81,7 @@ As per the ParaMonte library license agreement terms, if you use any parts of th
 
 Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) to access the PDF version of these files free of charge.  
 
+  
 License  
 =======  
 
@@ -89,8 +93,10 @@ Essentially, all we are asking from the users or developers is to
 
 >   acknowledge the use of this library in other work or (commercial / free) software that are built upon this work.  
 
-This is a free software, so help us keep it freely available to the public by redistributing the library and contributing to it.  
+This is a free software, so help us keep it freely available to the public by redistributing the library and contributing to it. 
+If you have any questions or concerns about the license, do not hesitate to the contact us (shahmoradi@utexas.edu).  
 
+  
 Authors and contributors  
 ========================  
 
@@ -101,6 +107,7 @@ Authors and contributors
     +   with teaching/research experience/background in computational and data sciences, statistics, data analysis, and modeling, stochastic processes, Monte Carlo Methods, Bayesian probability theory, high energy physics, astronomy and astrophysics, computational physics, Molecular Dynamics simulations, biomedical science and MRI data analysis, bioinformatics and evolutionary biology (viral evolution, protein dynamics, and interactions),  
     +   contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
 
+  
 Example usage instructions  
 ==========================  
 
