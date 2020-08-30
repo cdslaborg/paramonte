@@ -274,7 +274,7 @@ readme["authors"]["fortran"] = readme["authors"]["title"] + amir + fatima
 
 readme["authors"]["matlab"] = readme["authors"]["title"] + amir + shashank
 
-readme["authors"]["python"] = readme["authors"]["title"] + amir + josh + fatima
+readme["authors"]["python"] = readme["authors"]["title"] + amir + fatima + josh
 
 ####################################################################################################################################
 

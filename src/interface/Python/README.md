@@ -119,16 +119,16 @@ Authors and contributors
     +   with teaching/research experience/background in computational and data sciences, statistics, data analysis, and modeling, stochastic processes, Monte Carlo Methods, Bayesian probability theory, high energy physics, astronomy and astrophysics, computational physics, Molecular Dynamics simulations, biomedical science and MRI data analysis, bioinformatics and evolutionary biology (viral evolution, protein dynamics, and interactions),  
     +   contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
 
-+   [Joshua Osborne](https://www.cdslab.org/people/#joshua-alexander-osborne)  
-    +   physicist / Computational Data Scientist by training,  
-    +   currently a UTA Physics member,  
-    +   contact: [joshuaalexanderosborne@gmail.com](mailto:"joshuaalexanderosborne@gmail.com")  
-
 +   [Fatemeh Bagheri](https://www.linkedin.com/in/fbagheri)  
     +   physicist / cosmologist by training,  
     +   currently a UTA Physics member,  
     +   deep philosophical thinker,  
     +   contact: [Fatemeh.Bagheri@uta.edu](mailto:"Fatemeh.Bagheri@uta.edu")  
+
++   [Joshua Osborne](https://www.cdslab.org/people/#joshua-alexander-osborne)  
+    +   physicist / Computational Data Scientist by training,  
+    +   currently a UTA Physics member,  
+    +   contact: [joshuaalexanderosborne@gmail.com](mailto:"joshuaalexanderosborne@gmail.com")  
 
   
 Example usage instructions  

@@ -431,7 +431,7 @@ classdef TabularFileContents < OutputFileContents
                 isContour3 = strcmp(requestedPlotTypeLower,"contour3");
                 if isHist || isHist2 || isHistfit || isContour || isContourf || isContour3
                     if resetTypeIsHard
-                        self.plot.(requestedPlotTypeLower) = HistPlot( self.df, requestedPlotTypeLower );
+                        self.plot.(requestedPlotTypeLower) = DensityPlot( self.df, requestedPlotTypeLower );
                     else
                         self.plot.(requestedPlotTypeLower).reset();
                     end

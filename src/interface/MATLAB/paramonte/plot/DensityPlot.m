@@ -32,9 +32,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   HistPlot(dataFrame, plotType)
+%   DensityPlot(dataFrame, plotType)
 %
-%   This is the HistPlot class for generating instances of
+%   This is the DensityPlot class for generating instances of
 %   histfit/histogram/histogram2/contourf/contour3/contour plots, built upon MATLAB's 
 %   builtin functions: histogram, histogram2, histfit, contourf, contour3, contour.
 %
@@ -250,11 +250,11 @@
 %   Returns
 %   -------
 %
-%       An object of HistPlot class
+%       An object of DensityPlot class
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-classdef HistPlot < BasePlot
+classdef DensityPlot < BasePlot
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -364,7 +364,7 @@ classdef HistPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = HistPlot(varargin) % expected input arguments: dataFrame, plotType
+        function self = DensityPlot(varargin) % expected input arguments: dataFrame, plotType
             self = self@BasePlot(varargin{1});
             self.plotType = lower(string(varargin{2}));
             if strcmpi(self.plotType,"histogram")
@@ -756,4 +756,4 @@ classdef HistPlot < BasePlot
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end % classdef HistPlot
+end % classdef DensityPlot

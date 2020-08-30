@@ -579,18 +579,18 @@ classdef GridPlot < BasePlot
                 if contains(self.layout.plotType.lower,"line") || contains(self.layout.plotType.lower,"scatter")
                     lowerPlotClass = "LineScatterPlot";
                 else
-                    lowerPlotClass = "HistPlot";
+                    lowerPlotClass = "DensityPlot";
                 end
             end
             if self.upperEnabled
                 if contains(self.layout.plotType.upper,"line") || contains(self.layout.plotType.upper,"scatter")
                     upperPlotClass = "LineScatterPlot";
                 else
-                    upperPlotClass = "HistPlot";
+                    upperPlotClass = "DensityPlot";
                 end
             end
             if self.diagEnabled
-                diagPlotClass = "HistPlot";
+                diagPlotClass = "DensityPlot";
             end
 
             % adjust limits
