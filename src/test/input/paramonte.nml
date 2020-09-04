@@ -42,7 +42,8 @@
 ! All variable names are case insensitive. However, for clarity, this software follows the Camel-Case code-writing practice.
 ! String values must be enclosed with either single or double quotation marks.
 ! Logical values are case-insensitive and can be either .true., true, or t for TRUE value, and .false., false, or f for FALSE value.
-! All vectors and arrays in the input file begin with index 1, following the convention of the majority of science-oriented programming languages: Fortran, MATLAB, Julia, R, Mathematica
+! All vectors and arrays in the input file begin with index 1, following the convention of the majority 
+! of science-oriented programming languages: Fortran, MATLAB, Julia, R, Mathematica
 
 &ParaDRAM
 
