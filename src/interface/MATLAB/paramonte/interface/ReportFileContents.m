@@ -97,14 +97,13 @@ classdef ReportFileContents < OutputFileContents
             lineStartFound = false;
             while true
                 self.lineCounter = self.lineCounter + 1; if self.lineCounter>=self.lineListLen; break; end
-                record = self.lineList{self.lineCounter};
                 if lineStartFound
-                    if ~contains(record,self.dsym)
+                    if ~contains(self.lineList{self.lineCounter},self.dsym)
                         self.lineCounter = self.lineCounter - 1;
                         break
                     end
                 else
-                    if contains(record,self.dsym)
+                    if contains(self.lineList{self.lineCounter},self.dsym)
                         lineStartFound = true;
                         lineStart = self.lineCounter;
                     end
@@ -135,7 +134,7 @@ classdef ReportFileContents < OutputFileContents
             self.setup.io = self.parseSection("simulation environment");
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            %%%% read the simulation environment
+            %%%% read the simulation specifications
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             self.spec = self.parseSection("simulation specifications");
@@ -211,7 +210,7 @@ classdef ReportFileContents < OutputFileContents
         function reportParseFailure(self,topic)
             topic = string(strtrim(strrep(strrep(topic,self.newline,' '),char(13),' ')));
             self.Err.msg    = "Failed to parse the record """ + topic + """. " ...
-                            + "The structure of the report file appears to have been compromised. Skipping... "; 
+                            + "The structure of the report file appears to have been compromised. skipping... "; 
             self.Err.warn();
         end
 
@@ -220,7 +219,7 @@ classdef ReportFileContents < OutputFileContents
         function reportMissingValue(self,topic)
             topic = string(strtrim(strrep(strrep(topic,self.newline,' '),char(13),' ')));
             self.Err.msg    = "Failed to parse the value corresponding to the record """ + topic + """. " ...
-                            + "The structure of the report file appears to have been compromised. Skipping... "; 
+                            + "The structure of the report file appears to have been compromised. skipping... "; 
             self.Err.warn();
         end
 
@@ -247,9 +246,10 @@ classdef ReportFileContents < OutputFileContents
                     if isCurrentSectionHeader
                         self.lineCounter = self.lineCounter + 1;
                         continue;
+                    else
+                        self.lineCounter = self.lineCounter - 1;
+                        break;
                     end
-                    self.lineCounter = self.lineCounter - 1;
-                    break;
                 else
                     isCurrentSectionHeader = false;
                     self.lineCounter = self.lineCounter + 1;

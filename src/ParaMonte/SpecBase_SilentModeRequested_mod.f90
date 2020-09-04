@@ -73,8 +73,8 @@ contains
         SilentModeRequestedObj%desc = &
         "If silentModeRequested = true (or T, both case-insensitive), then the following contents will not be printed in the &
         &output report file of " // methodName // ":\n\n&
-        &    - " // methodName // " interface, compiler, and platform specifications.\n&
-        &    - " // methodName // " simulation specification-descriptions.\n\n&
+        &    + " // methodName // " interface, compiler, and platform specifications.\n&
+        &    + " // methodName // " simulation specification-descriptions.\n\n&
         &The default value is " // log2str(SilentModeRequestedObj%def) // "."
     end function constructSilentModeRequested
 
