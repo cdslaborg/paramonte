@@ -342,6 +342,7 @@ class TabularFileContents(OutputFileContents):
 
         """
 
+        requestedPlotTypeList = []
         if isinstance(plotNames, str):
             plotTypeLower = plotNames.lower()
             if plotTypeLower=="all":
@@ -359,6 +360,7 @@ class TabularFileContents(OutputFileContents):
         if isinstance(resetType, str):
             resetTypeIsHard = resetType.lower()=="hard"
         else:
+            resetTypeIsHard = None
             pm.abort( msg   = "The input argument resetType must be a string representing" + newline
                             + "the type of the reset to be performed on the plots." + newline
                             + "A list of possible plots includes: \"hard\", \"soft\"" + newline
@@ -485,10 +487,10 @@ class TabularFileContents(OutputFileContents):
 
             if (isLineScatterPlot or isDensityPlot) and not (plotObject._type.is3d or self._isProgressFile):
 
-                if isLineScatterPlot: xtarget = 0
-                if isDensityPlot    : xtarget = self.df[plotObject.xcolumns].values.flatten()[self.stats.maxLogFunc.idrow]
+                xtarget = 0 # dummy
+                if isDensityPlot: xtarget = self.df[plotObject.xcolumns].values.flatten()[self.stats.maxLogFunc.idrow]
 
-                if plotObject._type.is1d: plotObject.target.value = [ 0, ytarget ]
+                if plotObject._type.is1d: plotObject.target.value = [ xtarget, 0 ]
 
                 if plotObject._type.is2d:
                     ytarget = self.df[plotObject.ycolumns].values.flatten()[self.stats.maxLogFunc.idrow]

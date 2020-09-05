@@ -143,6 +143,7 @@ class ReportFileContents(OutputFileContents):
         ############################################################################################################################
 
         lineStartFound = False
+        lineStart = 0
         while True:
             self._lineCounter += 1
             if self._lineCounter>=self._lineListLen: break

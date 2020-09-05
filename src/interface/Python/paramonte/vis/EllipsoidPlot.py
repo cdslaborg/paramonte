@@ -614,11 +614,9 @@ class EllipsoidPlot(BasePlot):
 
         for i, row in enumerate(self.rows):
 
-            if self._type.is3d:
-                zdata = np.ones(self.npoint) * self.zdata[row]
+            if self._type.is3d: zdata = np.ones(self.npoint) * self.zdata[row]
 
-            if self.colormap.enabled:
-                self.plot.kws.color = self.colormap._rgba[i]
+            if self.colormap.enabled: self.plot.kws.color = self.colormap._rgba[i]
 
             fulMatrix = self.matrix[row,:,:]
             subMatrix = fulMatrix[:,self.dimensionPair][self.dimensionPair]

@@ -946,10 +946,10 @@ class DensityPlot(BasePlot):
             if xcolindexlen>1:
                 self._xvalues = self._dfref().iloc[self.rows,xcolindex[i]].values.flatten()
 
-            if not self._type.is1d and ycolindexlen>1:
+            if ycolindexlen>1 and not self._type.is1d:
                 self._yvalues = self._dfref().iloc[self.rows,ycolindex[i]].values.flatten()
 
-            if not self._type.isDiffusionPlot and self.legend.enabled: 
+            if self.legend.enabled and not self._type.isDiffusionPlot:
 
                 if xcolindexlen>1: lgxicol = i
                 self.legend._labels.append(xcolnames[lgxicol])

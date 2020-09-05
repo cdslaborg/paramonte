@@ -654,7 +654,7 @@ def findMPI():
             mpi.install.bin.path = os.path.dirname(mpi.install.bin.mpiexec.path)
             pm.note ( msg   = "MPI runtime libraries detected at: " + newline
                             + newline
-                            + "    " + mpiBinPath + newline
+                            + "    " + mpi.install.bin.path + newline
                             + newline
                             + "To perform ParaMonte simulations in parallel on a single node, " + newline
                             + "run the following command, in the form and order specified, " + newline
@@ -769,8 +769,12 @@ def getPrereqs(DependencyList = None):
 
     prereqs.list = getDependencyList() if DependencyList is None else DependencyList
 
-    if pm.platform.isLinux: intelMpiFilePrefix, intelMpiFileSuffix = "l_mpi-rt_" , ".tgz"
-    if pm.platform.isWin32: intelMpiFilePrefix, intelMpiFileSuffix = "w_mpi-rt_p_" , ".exe"
+    if pm.platform.isLinux:
+        intelMpiFilePrefix, intelMpiFileSuffix = "l_mpi-rt_" , ".tgz"
+    elif pm.platform.isWin32:
+        intelMpiFilePrefix, intelMpiFileSuffix = "w_mpi-rt_p_" , ".exe"
+    else:
+        return prereqs
 
     for dependency in prereqs.list:
             fullFilePath = os.path.join( pm.path.lib, dependency )
@@ -795,7 +799,7 @@ def getDefaultIntelLinuxMpiPath(prereqs = None):
     mpiPath.installationRootDirList = [ "/opt", pm.path.home ]
     mpiPath.mpiTrunkDir = os.path.join("intel", "compilers_and_libraries_" + prereqs.mpi.intel.version, "linux", "mpi", "intel64")
     for installationRootDir in mpiPath.installationRootDirList:
-        mpiPath.mpiDefaultRootDirList.append( os.path,join(installationRootDir, mpiPath.mpiTrunkDir) )
+        mpiPath.mpiDefaultRootDirList.append( os.path.join(installationRootDir, mpiPath.mpiTrunkDir) )
         mpiPath.mpivarsDefaultFilePathList.append( os.path.join(mpiPath.mpiDefaultRootDirList[-1],"bin","mpivars.sh") )
         if os.path.isdir(mpiPath.mpiDefaultRootDirList[-1]):
             mpiPath.mpiRootDirNotFound = False
@@ -847,24 +851,24 @@ def installMPI():
                 except:
                     thisVersion = getPreviousVersion(thisVersion)
 
-        if thisVersion is None:
-            pm.warn ( msg   = "Exhausted all releases of the ParaMonte library in search " + newline
-                            + "of the prerequisites, but could not find the MPI libraries. " + newline
-                            + "Please report this issue at " + newline
-                            + newline
-                            + "    " + pm.website.github.issues.url + newline
-                            + newline
-                            + "In the meantime, visit, " + newline
-                            + newline
-                            + "    " + pm.website.home.url + newline
-                            + newline
-                            + "for instructions to manually install the MPI library on your " + newline
-                            + "system. Aborting the automatic MPI installation by ParaMonte..."
-                    , methodName = pm.names.paramonte
-                    , marginTop = 1
-                    , marginBot = 1
-                    )
-            return
+            if thisVersion is None:
+                pm.warn ( msg   = "Exhausted all releases of the ParaMonte library in search " + newline
+                                + "of the prerequisites, but could not find: " + dependency + newline
+                                + "Please report this issue at " + newline
+                                + newline
+                                + "    " + pm.website.github.issues.url + newline
+                                + newline
+                                + "In the meantime, visit, " + newline
+                                + newline
+                                + "    " + pm.website.home.url + newline
+                                + newline
+                                + "for instructions to manually install the MPI library on your " + newline
+                                + "system. Aborting the automatic MPI installation by ParaMonte..."
+                        , methodName = pm.names.paramonte
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
+                return
 
         pm.note ( msg = "Installing the Intel MPI library for 64-bit architecture... " + newline
                       + "file location: " + prereqs.mpi.intel.fullFilePath

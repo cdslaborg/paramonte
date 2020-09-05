@@ -698,17 +698,14 @@ class BasePlot:
 
         """
 
-        noDataPassed = False
+        fatalmsg = None
         if self._dfref is None:
-            noDataPassed = True
             fatalmsg = "It appears that no data has been passed for plotting." + newline
         elif not isinstance(self._dfref,wref.ref):
-            noDataPassed = True
             fatalmsg = "It appears that you have messed with the " + newline + " internal representation of data in the object." + newline
         elif not isinstance(self._dfref(), pd.DataFrame):
-            noDataPassed = True
             fatalmsg = ""
-        if noDataPassed:
+        if fatalmsg is not None:
             raise Exception ( fatalmsg
                             + "The input data must be a pandas' dataframe." + newline
                             + "Please pass a dataFrame to the constructor or at" + newline

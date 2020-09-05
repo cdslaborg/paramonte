@@ -578,11 +578,11 @@ class ParaMonteSampler:
                             + "It appears your ParaMonte Python interface is missing" + newline
                             + "the dynamic libraries. Please report this issue at:" + newline
                             + newline
-                            + "    " + website.github.issues.url + newline
+                            + "    " + pm.website.github.issues.url + newline
                             + newline
                             + "Visit," + newline
                             + newline
-                            + "    " + website.home.url + newline
+                            + "    " + pm.website.home.url + newline
                             + newline
                             + "for instructions on how to build the ParaMonte library" + newline
                             + "object files on your system." + newline
@@ -620,13 +620,13 @@ class ParaMonteSampler:
                             + newline
                             + "Visit," + newline
                             + newline
-                            + "    " + website.home.url + newline
+                            + "    " + pm.website.home.url + newline
                             + newline
                             + "for instructions to build the ParaMonte library on your system." + newline
                             + newline
                             + "Please report this issue at:" + newline
                             + newline
-                            + "    " + website.github.issues.url + newline
+                            + "    " + pm.website.github.issues.url + newline
                             + newline
                             + buildInstructionNote
                     , methodName = self._methodName
@@ -977,10 +977,11 @@ class ParaMonteSampler:
         elif fileType=="progress":
             fileSuffix = "progress"
         else:
+            fileSuffix = None
             pm.abort( msg   = "Internal error occurred. The input fileType is not recognized." + newline
                             + "Please report this error at:" + newline
                             + newline
-                            + "    " + website.github.issues.url
+                            + "    " + pm.website.github.issues.url
                     , methodName = self._methodName
                     , marginTop = 1
                     , marginBot = 1

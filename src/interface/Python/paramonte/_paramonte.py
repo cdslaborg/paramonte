@@ -89,14 +89,16 @@ if not os.path.isfile(platform.systemInfoFilePath):
         except:
             pass
 
+    cmd = None
     if platform.isWin32: cmd = "systeminfo > " + platform.systemInfoFilePath
     if platform.isLinux: cmd = "uname -a >>  " + platform.systemInfoFilePath + "; lscpu >> " + platform.systemInfoFilePath
     if platform.isMacOS: cmd = "uname -a >>  " + platform.systemInfoFilePath + "; sysctl -a | grep machdep.cpu >> " + platform.systemInfoFilePath
 
-    err = os.system(cmd)
-    if err != 0:
-        platform.systemInfoFilePath = None
-        pm.warn ( msg   = "Failed to get the system information. skipping..."
+    if cmd is not None:
+        err = os.system(cmd)
+        if err != 0:
+            platform.systemInfoFilePath = None
+            warn( msg   = "Failed to get the system information. skipping..."
                 , methodName = names.paramonte
                 , marginTop = 1
                 , marginBot = 1

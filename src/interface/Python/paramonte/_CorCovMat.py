@@ -39,6 +39,7 @@ import typing as tp
 import pandas as pd
 import weakref as wref
 
+import _message as err
 import _dfutils as dfutils
 import _pmutils as pmutils
 from paramonte.vis.HeatMapPlot import HeatMapPlot
@@ -153,7 +154,7 @@ class CorCovMat:
             if hasattr(self,key):
                 setattr(self, key, kwargs[key])
             elif key=="dataFrame":
-                setattr( self, "_dfref", _wref.ref(kwargs[key]) )
+                setattr( self, "_dfref", wref.ref(kwargs[key]) )
             else:
                 raise Exception ( "Unrecognized input '"+key+"' class attribute detected." + newline
                                 + self._getDocString()

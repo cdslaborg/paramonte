@@ -164,9 +164,9 @@ class RestartFileContents(OutputFileContents):
 
         rowOffset = 0;
         while self.propNameList[4] not in self._lineList[rowOffset]:
-            rowOffset = rowOffset + 1;
-            if rowOffset > self._lineListLen: self._reportCorruptFile(); end
-        rowOffset = rowOffset + 1; # the first numeric value of the meanVec
+            rowOffset = rowOffset + 1
+            if rowOffset > self._lineListLen: self._reportCorruptFile()
+        rowOffset = rowOffset + 1 # the first numeric value of the meanVec
 
         self.ndim = 0
         while pm.utils.isNumericString( self._lineList[rowOffset+self.ndim] ): self.ndim += 1
@@ -230,7 +230,7 @@ class RestartFileContents(OutputFileContents):
             #print(ccm.getCorFromCov( fieldNamesDict[self.propNameList[6]][icount,:,:] )) # xxx
             #break # xxx
 
-        self._progress.updateBar(1);
+        self._progress.updateBar(1)
 
         self.contents = Struct()
         for fieldName in self.propNameList: setattr(self.contents, fieldName, fieldNamesDict[fieldName])
@@ -322,6 +322,7 @@ class RestartFileContents(OutputFileContents):
 
         """
 
+        requestedPlotTypeList = []
         if isinstance(plotNames, str):
             plotTypeLower = plotNames.lower()
             if plotTypeLower=="all":
@@ -404,9 +405,10 @@ class RestartFileContents(OutputFileContents):
 
                 if self._methodName == pm.names.paradram:
 
-                    if isCovMat: _ = self.contents.covMat
-                    if isCorMat: _ = self.contents.corMat
-                    ellipsoidPlot = EllipsoidPlot   ( matrix = _
+                    matrix = None
+                    if isCovMat: matrix = self.contents.covMat
+                    if isCorMat: matrix = self.contents.corMat
+                    ellipsoidPlot = EllipsoidPlot   ( matrix = matrix
                                                     , plotType = requestedPlotType
                                                     , methodName = self._methodName
                                                     , reportEnabled = self._reportEnabled
@@ -423,6 +425,6 @@ class RestartFileContents(OutputFileContents):
                     ellipsoidPlot.colorbar.kws.orientation = "vertical"
                     ellipsoidPlot.colorbar.kws.spacing = "uniform"
 
-                setattr(self.plot, requestedPlotType, ellipsoidPlot)
+                    setattr(self.plot, requestedPlotType, ellipsoidPlot)
 
     ################################################################################################################################
