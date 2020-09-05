@@ -34,19 +34,18 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-import numpy as _np
-import typing as _tp
-import pandas as _pd
-import weakref as _wref
-#from scipy.signal import correlate as _ccor
+import numpy as np
+import typing as tp
+import pandas as pd
+import weakref as wref
 
-import _message as msg
+import _message as err
 import _dfutils as dfutils
 import _pmutils as pmutils
-#from _LinePlot import LinePlot
-#from _ScatterPlot import ScatterPlot
+from paramonte.vis.LineScatterPlot import LineScatterPlot
 
-class _Struct: pass
+Struct = pmutils.Struct
+newline = pmutils.newline
 
 ####################################################################################################################################
 #### AutoCorr class
@@ -55,107 +54,157 @@ class _Struct: pass
 class AutoCorr:
     """
 
-    .. py:class:: AutoCorr
-
     This is the base class for generating object of type ``AutoCorr``.  
-    Upon construction, will provide methods to compute and plot the 
+    Upon construction, it will provide methods to compute and plot the 
     autocorrelations of the selected columns of the input dataFrame.
 
         **Parameters**
 
             dataFrame
-                a Pandas dataframe based upon the selected comlumns of which 
-                the autocorrelations will be computed.
 
-            columns
-                optional argument that determines the columns of the input dataFrame to be 
-                used in the computation of the autocorrelations. It can have three forms:
+                A Pandas dataframe based upon the selected columns 
+                of which the autocorrelations will be computed.
 
-                    1. a list of column indices from the input dataFrame.
-                    2. a list of column names from dataFrame.columns.
-                    3. a ``range(start,stop,step)``, representing the column indices in dataFrame.
+            columns (optional)
 
-                Examples:
+                A list that determines the columns of the input dataFrame 
+                to be used in the computation of the autocorrelations. 
+                It can have three forms:
 
-                    1. ``columns = [0,1,4,3]``
-                    2. ``columns = ["SampleLogFunc","SampleVariable1"]``
-                    3. ``columns = range(17,7,-2)``
-
-                If not provided, the default behavior includes all columns of the dataFrame.
-
-            rows
-                optional argument that determines the rows of the input dataFrame to be 
-                used in the computation of the autocorrelations. It can be either:
-
-                    1. a ``range(start,stop,step)``, or, 
-                    2. a list of row indices from dataFrame.index.
+                    1.  A list of column indices from the input dataFrame.
+                    2.  A list of column names from dataFrame.columns.
+                    3.  A ``range(start,stop,step)`` of column indices.
 
                 Examples:
 
-                    1. ``rows = range(17,7,-2)``
-                    2. ``rows = [i for i in range(7,17)]``
+                    1.  ``columns = [0,1,4,3]``
+                    2.  ``columns = ["SampleLogFunc","SampleVariable1"]``
+                    3.  ``columns = range(17,7,-2)``
 
-                If not provided, the default behavior includes all rows of the dataFrame.
+                The default behavior includes all columns of the dataFrame.
 
         **Attributes**
 
             All of the parameters described above, except dataFrame.
-                a reference to the dataFrame will be implicitly stored in the object.
+
+                A weak reference to the dataFrame will be implicitly 
+                stored in the object. 
 
             df
-                a pandas dataframe containing the computed autocorrelations.
+
+                A pandas dataframe containing the computed autocorrelations.
+
+            rows
+
+                A list of the dataFrame indices that determines the rows of 
+                the input dataFrame to be used in the computation of the 
+                autocorrelations. It can be either:
+
+                    1.  A ``range(start,stop,step)``, or, 
+                    2.  A list of row indices from ``dataFrame.index``.
+
+                Examples:
+
+                    1.  ``rows = range(17,7,-2)``
+                    2.  ``rows = [i for i in range(7,17)]``
+
+                The default behavior includes all rows of the dataFrame.
 
             plot
-                a structure containing the following plotting tools:
+
+                A structure containing the following plotting tools:
 
                     heatmap
-                        a callable object of class HeatMap which will enable 
-                        plotting of the correlation matrix.
+
+                        A callable object of class HeatMap which will 
+                        enable plotting of the correlation matrix.
 
         **Returns**
 
             self
+
                 an object of type class CorMat.
 
     ---------------------------------------------------------------------------
     """
 
+    ################################################################################################################################
+    #### __init__
+    ################################################################################################################################
+
     def __init__( self
-                , dataFrame     : _tp.Optional[ _pd.DataFrame ] = None
-                , columns       : _tp.Optional[ _tp.Union[ range , _tp.List[int] , _tp.List[str] ] ] = None
-                , rows          : _tp.Optional[ _tp.Union[ range , _tp.List[int] ] ] = None
+                , dataFrame     : tp.Optional[ pd.DataFrame ]
+                , columns       : tp.Optional[ tp.Union[ range , tp.List[int] , tp.List[str] ] ] = None
+                , methodName    : tp.Optional[ str ] = "ParaMonte"
+                , reportEnabled : tp.Optional[ bool ] = True
                 ):
 
-        self._dfref = None if dataFrame is None else _wref.ref(dataFrame)
-        self.columns = columns
-        self.rows = rows
         self.df = None
+        self.rows = None
+        self.columns = columns
 
+        self._dfref = None if dataFrame is None else wref.ref(dataFrame)
+
+        self._methodName = methodName
+        self._reportEnabled = reportEnabled
+        self._progress = pmutils.Progress   ( msg = None
+                                            , methodName = methodName
+                                            , reportEnabled = reportEnabled
+                                            , end = "\n"
+                                            )
+
+    ################################################################################################################################
+    #### __call__
     ################################################################################################################################
 
     def __call__( self
-                , reself    : _tp.Optional[ bool ] = False
+                , reself : tp.Optional[ bool ] = False
                 , **kwargs
                 ):
         """
 
-        .. py:method:: __call__(self, reself = False, **kwargs)
+        Call the ``get()`` method of the current instance of the class.
 
-        Calls the ``get()`` method of the current instance of the class.
+            **Parameters**
+
+                Any arguments that can be passed to the ``get()`` 
+                method of the object.
+
+            **Returns**
+
+                Any return value from the ``get()`` method of the object.
+
+        """
+
+        return self.get(reself, **kwargs)
+
+    ################################################################################################################################
+    #### get
+    ################################################################################################################################
+
+    def get ( self
+            , reself : tp.Optional[ bool ] = False
+            , **kwargs
+            ):
+        """
+
+        Compute the autocorrelations of the selected columns 
+        of the input dataframe to the object's constructor.
 
             **Parameters**
 
                 reself
-                    logical variable. If True, an instance of the object 
-                    will be returned upon exit to the calling routine.
-                    The default value is False.
-                also, any attributes of the current instance of the class.
+
+                    A logical variable. When ``True``, an instance of 
+                    the object will be returned to the calling routine 
+                    upon exit. The default value is ``False``.
 
             **Returns**
 
-                the object ``self`` if ``reself = True`` otherwise, ``None``.
-                However, this method causes side-effects by manipulating 
-                the existing attributes of the object.
+                The object if ``reself = True`` otherwise, ``None``.
+
+                **NOTE**: This method causes side-effects by manipulating
+                **NOTE**: the existing attributes of the object.
 
         """
 
@@ -163,86 +212,70 @@ class AutoCorr:
             if hasattr(self,key):
                 setattr(self, key, kwargs[key])
             elif key=="dataFrame":
-                setattr( self, "_dfref", _wref.ref(kwargs[key]) )
+                setattr( self, "_dfref", wref.ref(kwargs[key]) )
             else:
-                raise Exception ( "Unrecognized input '"+key+"' class attribute detected.\n"
-                                + "For allowed attributes, use help(objectname) on Python command line,\n"
-                                + "where objectname should be replaced with the name of the object being called."
+                raise Exception ( "Unrecognized input '"+key+"' class attribute detected." + newline
+                                + self._getDocString()
                                 )
-        self.get()
-        if reself: return self
 
-    ################################################################################################################################
+        ############################################################################################################################
+        #### check columns presence
+        ############################################################################################################################
 
-    def get(self):
-        """
+        colnames, colindex = dfutils.getColNamesIndex(self._dfref().columns,self.columns)
 
-        .. py:method:: get(self)
+        ############################################################################################################################
+        #### check rows presence. This must be checked here, because it depends on the integrity of the in input dataFrame.
+        ############################################################################################################################
 
-        Computes the autocorrelations of the selected columns 
-        of the input dataframe to the object's constructor.
+        if self.rows is None: self.rows = range(len(self._dfref().index))
+        rownames = self._dfref().index[self.rows]
 
-            **Parameters**
+        ############################################################################################################################
+        #### compute the autocorrelations
+        ############################################################################################################################
 
-                None
+        self._nvar = len(colnames)
+        self._nlag = len(self.rows)
+        acf = np.zeros((self._nvar,self._nlag))
 
-            **Returns**
+        try:
 
-                None. However, this method causes side-effects by manipulating 
-                the existing attributes of the object.
+            from scipy.signal import correlate
+            for cnt, ivar in enumerate(colindex):
+                xdata = self._dfref().iloc[self.rows,ivar].values.flatten() - np.mean(self._dfref().iloc[self.rows,ivar].values.flatten())
+                acf[cnt] = correlate( xdata
+                                    , xdata
+                                    , mode = "full"
+                                    )[self._nlag-1:2*self._nlag]
+                acf[cnt] = acf[cnt] / acf[cnt,0]
 
-        """
+        except:
 
-        # check columns presence
+            if self._reportEnabled:
+                err.warn( msg   = "Failed to compute the Autocorrelation function of the input dataFrame." + newline
+                                + "This could likely be due to an error in importing the scipy Python library." + newline
+                                + "Please make sure you have the scipy library properly installed on your system." + newline
+                                + "You can do so by typing the following command on your Anaconda3 or Bash command prompt:" + newline
+                                + newline
+                                + "    pip install --user --upgrade scipy"
+                        , methodName = self._methodName
+                        , marginTop = 1
+                        , marginBot = 1
+                        )
 
-        if self.columns is None:
-            colnames = self._dfref().columns
-            colindex = range(len(colnames))
-        elif all(isinstance(element, str) for element in self.columns):
-            colnames = self.columns
-            colindex = dfutils.nam2num( self._dfref().columns , self.columns )
-        elif all(isinstance(element,int) for element in self.columns):
-            colindex = self.columns
-            colnames = self._dfref().columns[colindex]
-        else:
-            raise Exception ( "The input argument 'columns' must be a list whose elements are all\n"
-                            + "    1.   string-valued, each representing the name of the column from\n"
-                            + "         the input dataframe to the object's constructor, to be included\n"
-                            + "         in the computation of autocorrelations, or,\n"
-                            + "    2.   integer-valued, each representing the index of the column from\n"
-                            + "         the input dataframe to the object's constructor, to be included\n"
-                            + "         in the computation of autocorrelations."
-                            )
+        self.df = pd.DataFrame(np.transpose(acf))
 
-        # check rows presence
-
-        if self.rows is None:
-            rowindex = range(len(self._dfref().index))
-        else:
-            rowindex = self.rows
-
-        # compute the autocorrelations
-
-        nvar = len(colnames)
-        nlag = len(rowindex)
-        acf = _np.zeros((nvar,nlag))
-
-        from scipy.signal import correlate as _ccor
-        for icnt, ivar in enumerate(colindex):
-            xdata = self._dfref().iloc[rowindex,ivar].values.flatten() - _np.mean(self._dfref().iloc[rowindex,ivar].values.flatten())
-            acf[icnt] = _ccor   ( xdata
-                                , xdata
-                                , mode = "full"
-                                )[nlag-1:2*nlag]
-            acf[icnt] = acf[icnt] / acf[icnt,0]
-        self.df = _pd.DataFrame(_np.transpose(acf))
-
-        # specify columns/index names
+        ############################################################################################################################
+        #### specify columns/index names
+        ############################################################################################################################
 
         colnames = [ "ACF_"+colnames[i] for i in range(len(colnames)) ]
         self.df.columns = colnames
 
-        # add SampleLogFunc to df for plot coloring, if exists
+        ############################################################################################################################
+        #### add SampleLogFunc to df for plot coloring, if exists
+        ############################################################################################################################
 
         ccolumns = ()
         if "SampleLogFunc" in self._dfref().columns:
@@ -253,60 +286,187 @@ class AutoCorr:
                             , allow_duplicates = True
                             )
 
-        # add lags to df
+        ############################################################################################################################
+        #### add lags to df
+        ############################################################################################################################
 
         self.df.insert  ( loc = 0
                         , column = "Lag"
                         , value = [ i for i in self.df.index ]
                         )
 
-#!DEC$ ifdef PMVIS_ENABLED
+        ############################################################################################################################
+        #### graphics
+        ############################################################################################################################
 
-        #####################
-        #### add plots
-        #####################
+        self._plotTypeList =    [ "line"
+                                , "scatter"
+                                , "lineScatter"
+                                ]
 
-        self.plot = _Struct()
+        self._progress.note( msg = "adding the autocrrelation graphics tools... ", end = newline, pre = True )
+        self.plot = Struct()
+        self._resetPlot(resetType="hard")
 
-        # add LinePlot
+        self.plot.reset = self._resetPlot
 
-        from _LinePlot import LinePlot
+        ############################################################################################################################
 
-        self.plot.line = LinePlot   ( dataFrame = self.df
-                                    , xcolumns = "Lag"
-                                    , ycolumns = colnames
-                                    , ccolumns = None #ccolumns
-                                    , lc_kws =  {
-                                                #"linewidth":0.75,
-                                                #"cmap":"viridis",
-                                                "cmap":"autumn",
-                                                #"alpha":0.5,
-                                                }
-                                    , colorbar_kws =    {
-                                                        "extend":"neither",
-                                                        "orientation":"vertical",
-                                                        #"spacing":"uniform",
-                                                        }
-                                    #, legend_kws = None
-                                    )
+        if reself: return self
 
-        # add ScatterPlot
+    ################################################################################################################################
+    #### _resetPlot
+    ################################################################################################################################
 
-        from _ScatterPlot import ScatterPlot
+    def _resetPlot  ( self
+                    , resetType = "soft"
+                    , plotNames = "all"
+                    ):
+        """
 
-        self.plot.scatter = ScatterPlot ( dataFrame = self.df
-                                        , xcolumns = "Lag"
-                                        , ycolumns = colnames
-                                        , ccolumns = None #ccolumns
-                                        #, scatter_kws = {}
-                                        , colorbar_kws =    {
-                                                            "extend":"neither",
-                                                            "orientation":"vertical",
-                                                            #"spacing":"uniform",
-                                                            }
-                                        #, legend_kws = None
-                                        )
+        Reset the properties of the plot to the original default settings.
+        Use this method when you change many attributes of the plot and
+        you want to clean up and go back to the default settings.
+
+            **Parameters**
+
+                resetType (optional)
+
+                    An optional string with possible value of "hard".
+                    If provided, the plot object will be regenerated from scratch.
+                    This includes reading the original data frame again and resetting
+                    everything. If not provided, then only the plot settings will be
+                    reset without reseting the dataFrame.
+
+                plotNames (optional)
+
+                    An optional string value or list of string values representing 
+                    the names of plots to reset. If no value is provided, 
+                    then all plots will be reset.
+
+            **Returns**
+
+                None
+
+            **Example**
+
+                reset("hard")                    # regenerate all plots from scratch
+                reset("hard","line")             # regenerate line plot from scratch
+                reset("hard",["line","scatter"]) # regenerate line and scatter plots
+
+        """
+
+        if isinstance(plotNames, str):
+            plotTypeLower = plotNames.lower()
+            if plotTypeLower=="all":
+                requestedPlotTypeList = self._plotTypeList
+            elif plotNames in self._plotTypeList:
+                requestedPlotTypeList = [plotNames]
+            else:
+                self._reportWrongPlotName(plotNames)
+        elif isinstance(plotNames, list):
+            for plotName in plotNames:
+                if plotName not in self._plotTypeList: self._reportWrongPlotName(plotName)
+        else:
+            self._reportWrongPlotName("a none-string none-list object.")
+
+        if isinstance(resetType, str):
+            resetTypeIsHard = resetType.lower()=="hard"
+        else:
+            err.abort   ( msg   = "The input argument resetType must be a string representing" + newline
+                                + "the type of the reset to be performed on the plots." + newline
+                                + "A list of possible plots includes: \"hard\", \"soft\"" + newline
+                                + "Here is the help for the ``reset()`` method: " + newline
+                                + newline
+                                + self._resetPlot.__doc__
+                        , marginTop = 1
+                        , marginBot = 1
+                        , methodName = self._methodName
+                        )
+
+        ############################################################################################################################
+        #### reset plots
+        ############################################################################################################################
+
+        for requestedPlotType in requestedPlotTypeList:
+
+            plotObject = None
+            requestedPlotTypeLower = requestedPlotType.lower()
+
+            isLine      = "line"        in requestedPlotTypeLower
+            isScatter   = "scatter"     in requestedPlotTypeLower
+
+            isLineScatterPlot = isLine or isScatter
+
+            ########################################################################################################################
+            #### reset line / scatter
+            ########################################################################################################################
+
+            if isLineScatterPlot:
+
+                plotObject = LineScatterPlot( plotType = requestedPlotType
+                                            , dataFrame = self.df
+                                            , methodName = self._methodName
+                                            , reportEnabled = self._reportEnabled
+                                            , resetPlot = self._resetPlot
+                                            )
+
+                plotObject.xcolumns = "Lag"
+                plotObject.ycolumns = self.df.columns[2:]
+
+                plotObject._xlabel = "AutoCorrelation Lag"
+                plotObject._ylabel = "AutoCorrelation Function (ACF) Value"
+
+                plotObject.ccolumns = None
+
+                plotObject.colorbar.kws.extend = "neither"
+                plotObject.colorbar.kws.orientation = "vertical"
+                plotObject.colorbar.kws.spacing = "uniform"
+
+                plotObject._xlimit = [1, None]
+                plotObject._ylimit = [None, 1]
+                plotObject._xscale = "log"
+
+                plotObject.legend.enabled = True
+
+                if isLine:
+                    if isScatter:
+                        plotObject.lineCollection.enabled = False
+                        plotObject.plot.enabled = True
+                        plotObject.plot.kws.alpha = 0.2
+                        plotObject.plot.kws.color = "grey"
+                        plotObject.plot.kws.linewidth = 0.75
+                    else:
+                        plotObject.plot.enabled = True
+                        plotObject.plot.kws.linewidth = 1
+                        plotObject.lineCollection.enabled = False
+
+            ########################################################################################################################
+
+            if plotObject is not None: setattr(self.plot, requestedPlotType, plotObject)
+
+    ################################################################################################################################
+    #### _reportWrongPlotName
+    ################################################################################################################################
+
+    def _reportWrongPlotName( self
+                            , plotNames
+                            ):
+
+        err.abort   ( msg   = "The input argument plotNames must be a string representing" + newline
+                            + "the name of a plot belonging to the AutoCorr class or," + newline
+                            + "a list of such plot names. You have entered: " + plotNames + newline
+                            + "Possible plots are: " + newline
+                            + newline
+                            + newline.join(self._plotTypeList) + newline
+                            + newline
+                            + "Here is the help for the ``reset()`` method: " + newline
+                            + newline
+                            + self._resetPlot.__doc__
+                    , marginTop = 1
+                    , marginBot = 1
+                    , methodName = self._methodName
+                    )
 
     ################################################################################################################################
 
-#!DEC$ endif

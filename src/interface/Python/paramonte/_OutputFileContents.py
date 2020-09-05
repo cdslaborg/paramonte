@@ -35,19 +35,57 @@
 ####################################################################################################################################
 
 import numpy as np
+import _paramonte as pm
 
-# number of dimensions of the distribution
+class OutputFileContents:
+    """
 
-NDIM = 1
+    This is the **OutputFileContents** base class for the ParaMonte 
+    sampler output file contents classes. **This class is NOT meant to be 
+    directly accessed or called by the user of the ParaMonte library.**
+    However, its children, such the ParaDRAM sampler class will be 
+    indirectly accessible to the public. 
 
-# the coefficient of the Standard Multivariate Normal Distribution: log(1/sqrt(2*Pi)^ndim)
+        **Parameters**
 
-LOG_SMVN_COEF = NDIM * np.log( 1.0 / np.sqrt(2.0*np.pi) )
+            file
 
-# define Python function
+                The full path to the file.
 
-#def getLogFunc_pntr(ndim,Point): return LOG_SMVN_COEF - 0.5 * np.sum( np.double( Point[0:ndim[0]] )**2 )
+            methodName
 
-def getLogFuncRaw(ndim,Point): return LOG_SMVN_COEF - 0.5 * np.sum( np.double( Point[0:ndim] )**2 )
+                A string representing the name of the ParaMonte sampler used
+                to call the constructor of the ``OutputFileContents`` class.
 
-def getLogFunc(Point): return LOG_SMVN_COEF - 0.5 * np.sum( np.double( Point )**2 )
+            reportEnabled
+
+                A logical input parameter indicating whether the ParaMonte
+                automatic guidelines to the standard output should be provided 
+                or not. The default value is ``True``.
+
+        **Methods**
+
+            See below for information on the methods.  
+
+        **Returns**
+
+            Object of class OutputFileContents
+
+    """
+
+    def __init__( self
+                , file          : str
+                , methodName    : str
+                , reportEnabled : bool
+                ):
+
+        self.file = file
+        self._methodName = methodName
+        self._reportEnabled = reportEnabled
+        self._progress = pm.utils.Progress  ( msg = "reading the file contents... "
+                                            , methodName = methodName
+                                            , reportEnabled = reportEnabled
+                                            , end = ""
+                                            )
+
+    ################################################################################################################################

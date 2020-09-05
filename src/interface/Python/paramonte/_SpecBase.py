@@ -34,129 +34,166 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-import os as _os
-import numpy as _np
-import sys as _sys
-from _pmutils import getList
-
-_sys.path.append(_os.path.dirname(__file__))
-
-_delim = ","
+import sys
+import numpy as np
+from _pmutils import getList, getRandomFilePrefix
 
 ####################################################################################################################################
 #### SpecBase specification type-checking class
 ####################################################################################################################################
 
-class _SpecBase():
+inputFileDelim = ","
 
-    def sampleSize(self,sampleSize):
-        if isinstance(sampleSize,(float,int)):
-            return "sampleSize=" + str(sampleSize) + _delim
-        else:
-            raise TypeError("The input specification, sampleSize, must be of type float or int.")
+####################################################################################################################################
 
-    def randomSeed(self,randomSeed):
-        if isinstance(randomSeed,int):
-            return "randomSeed=" + str(randomSeed) + _delim
-        else:
-            raise TypeError("The input specification, randomSeed, must be of type int.")
+def sampleSize(sampleSize):
+    if isinstance(sampleSize,(float,int)):
+        return "sampleSize=" + str(sampleSize) + inputFileDelim
+    else:
+        raise TypeError("The input specification, sampleSize, must be of type float or int.")
 
-    def description(self,description): return "description=" + verifyEncloseString(description,"description") + _delim
+####################################################################################################################################
 
-    def outputFileName(self,outputFileName): return "outputFileName=" + verifyEncloseString(outputFileName,"outputFileName") + _delim
+def randomSeed(randomSeed):
+    if isinstance(randomSeed,int):
+        return "randomSeed=" + str(randomSeed) + inputFileDelim
+    else:
+        raise TypeError("The input specification, randomSeed, must be of type int.")
 
-    def outputDelimiter(self,outputDelimiter): return "outputDelimiter=" + verifyEncloseString(outputDelimiter,"outputDelimiter") + _delim
+####################################################################################################################################
 
-    def chainFileFormat(self,chainFileFormat):  return "chainFileFormat=" + verifyEncloseString(chainFileFormat,"chainFileFormat") + _delim
+def description(description): return "description=" + verifyEncloseString(description,"description") + inputFileDelim
 
-    def variableNameList(self,variableNameList):
-        if isinstance(variableNameList,(list,tuple)):
-            return "variableNameList=" + _delim.join("{0}".format(verifyEncloseString(_,"variableNameList["+str(i)+"]")) for i,_ in enumerate(getList(variableNameList))) + _delim
-        else:
-            raise TypeError("The input specification, variableNameList, must be either a list or tuple of ndim or less elements, each element of which must be of type str.")
+####################################################################################################################################
 
-    def restartFileFormat(self,restartFileFormat): return "restartFileFormat=" + verifyEncloseString(restartFileFormat,"restartFileFormat") + _delim
+def outputFileName(outputFileName): return "outputFileName=" + verifyEncloseString(outputFileName,"outputFileName") + inputFileDelim
 
-    def outputColumnWidth(self,outputColumnWidth):
-        if isinstance(outputColumnWidth,int):
-            return "outputColumnWidth=" + str(outputColumnWidth) + _delim
-        else:
-            raise TypeError("The input specification, outputColumnWidth, must be of type int.")
+####################################################################################################################################
 
-    def outputRealPrecision(self,outputRealPrecision):
-        if isinstance(outputRealPrecision,int):
-            return "outputRealPrecision=" + str(outputRealPrecision) + _delim
-        else:
-            raise TypeError("The input specification, outputRealPrecision, must be of type int.")
+def outputDelimiter(outputDelimiter): return "outputDelimiter=" + verifyEncloseString(outputDelimiter,"outputDelimiter") + inputFileDelim
 
-    def silentModeRequested(self,silentModeRequested):
-        if isinstance(silentModeRequested,bool):
-            return "silentModeRequested=" + str(silentModeRequested) + _delim
-        else:
-            raise TypeError("The input specification, silentModeRequested, must be of type bool (True or False).")
+####################################################################################################################################
 
-    def domainLowerLimitVec(self,domainLowerLimitVec):
-        if isinstance(domainLowerLimitVec,(list,tuple,_np.ndarray)):
-            return "domainLowerLimitVec=" + str(_np.array(getList(domainLowerLimitVec)).flatten()).strip('[]') + _delim
-        else:
-            raise TypeError("The input specification, domainLowerLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+def chainFileFormat(chainFileFormat):  return "chainFileFormat=" + verifyEncloseString(chainFileFormat,"chainFileFormat") + inputFileDelim
 
-    def domainUpperLimitVec(self,domainUpperLimitVec):
-        if isinstance(domainUpperLimitVec,(list,tuple,_np.ndarray)):
-            return "domainUpperLimitVec=" + str(_np.array(getList(domainUpperLimitVec)).flatten()).strip('[]') + _delim
-        else:
-            raise TypeError("The input specification, domainUpperLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+####################################################################################################################################
 
-    def parallelizationModel(self,parallelizationModel):
-        if isinstance(parallelizationModel,str):
-            return "parallelizationModel=" + "'" + str(parallelizationModel) + "'" + _delim
-        else:
-            raise TypeError("The input specification, parallelizationModel, must be of type str.")
+def variableNameList(variableNameList):
+    if isinstance(variableNameList,(list,tuple)):
+        return "variableNameList=" + inputFileDelim.join("{0}".format(verifyEncloseString(_,"variableNameList["+str(i)+"]")) for i,_ in enumerate(getList(variableNameList))) + inputFileDelim
+    else:
+        raise TypeError("The input specification, variableNameList, must be either a list or tuple of ndim or less elements, each element of which must be of type str.")
 
-    def progressReportPeriod(self,progressReportPeriod):
-        if isinstance(progressReportPeriod,int):
-            return "progressReportPeriod=" + str(progressReportPeriod) + _delim
-        else:
-            raise TypeError("The input specification, progressReportPeriod, must be of type int.")
+####################################################################################################################################
 
-    def targetAcceptanceRate(self,targetAcceptanceRate):
-        if isinstance(targetAcceptanceRate,(float,list,tuple,_np.ndarray)):
-            return "targetAcceptanceRate=" + str(_np.array(getList(targetAcceptanceRate)).flatten()).strip('[]') + _delim
-        else:
-            raise TypeError("The input specification, targetAcceptanceRate, must be of type float.")
+def restartFileFormat(restartFileFormat): return "restartFileFormat=" + verifyEncloseString(restartFileFormat,"restartFileFormat") + inputFileDelim
 
-    def mpiFinalizeRequested(self,mpiFinalizeRequested):
-        if isinstance(mpiFinalizeRequested,bool):
-            return "mpiFinalizeRequested=" + str(mpiFinalizeRequested) + _delim
-        else:
-            raise TypeError("The input specification, mpiFinalizeRequested, must be of type bool (True or False).")
+####################################################################################################################################
 
-    def maxNumDomainCheckToWarn(self,maxNumDomainCheckToWarn):
-        if isinstance(maxNumDomainCheckToWarn,int):
-            return "maxNumDomainCheckToWarn=" + str(maxNumDomainCheckToWarn) + _delim
-        else:
-            raise TypeError("The input specification, maxNumDomainCheckToWarn, must be of type int.")
+def outputColumnWidth(outputColumnWidth):
+    if isinstance(outputColumnWidth,int):
+        return "outputColumnWidth=" + str(outputColumnWidth) + inputFileDelim
+    else:
+        raise TypeError("The input specification, outputColumnWidth, must be of type int.")
 
-    def maxNumDomainCheckToStop(self,maxNumDomainCheckToStop):
-        if isinstance(maxNumDomainCheckToStop,int):
-            return "maxNumDomainCheckToStop=" + str(maxNumDomainCheckToStop) + _delim
-        else:
-            raise TypeError("The input specification, maxNumDomainCheckToStop, must be of type int.")
+####################################################################################################################################
 
-    def interfaceType(self):
-        return "interfaceType=" + "'Python " + _sys.version + "'" + _delim
+def outputRealPrecision(outputRealPrecision):
+    if isinstance(outputRealPrecision,int):
+        return "outputRealPrecision=" + str(outputRealPrecision) + inputFileDelim
+    else:
+        raise TypeError("The input specification, outputRealPrecision, must be of type int.")
+
+####################################################################################################################################
+
+def silentModeRequested(silentModeRequested):
+    if isinstance(silentModeRequested,bool):
+        return "silentModeRequested=" + str(silentModeRequested) + inputFileDelim
+    else:
+        raise TypeError("The input specification, silentModeRequested, must be of type bool (True or False).")
+
+####################################################################################################################################
+
+def domainLowerLimitVec(domainLowerLimitVec):
+    if isinstance(domainLowerLimitVec,(list,tuple,np.ndarray)):
+        return "domainLowerLimitVec=" + str(np.array(getList(domainLowerLimitVec)).flatten()).strip('[]') + inputFileDelim
+    else:
+        raise TypeError("The input specification, domainLowerLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+
+####################################################################################################################################
+
+def domainUpperLimitVec(domainUpperLimitVec):
+    if isinstance(domainUpperLimitVec,(list,tuple,np.ndarray)):
+        return "domainUpperLimitVec=" + str(np.array(getList(domainUpperLimitVec)).flatten()).strip('[]') + inputFileDelim
+    else:
+        raise TypeError("The input specification, domainUpperLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+
+####################################################################################################################################
+
+def parallelizationModel(parallelizationModel):
+    if isinstance(parallelizationModel,str):
+        return "parallelizationModel=" + "'" + str(parallelizationModel) + "'" + inputFileDelim
+    else:
+        raise TypeError("The input specification, parallelizationModel, must be of type str.")
+
+####################################################################################################################################
+
+def progressReportPeriod(progressReportPeriod):
+    if isinstance(progressReportPeriod,int):
+        return "progressReportPeriod=" + str(progressReportPeriod) + inputFileDelim
+    else:
+        raise TypeError("The input specification, progressReportPeriod, must be of type int.")
+
+####################################################################################################################################
+
+def targetAcceptanceRate(targetAcceptanceRate):
+    if isinstance(targetAcceptanceRate,(float,list,tuple,np.ndarray)):
+        return "targetAcceptanceRate=" + str(np.array(getList(targetAcceptanceRate)).flatten()).strip('[]') + inputFileDelim
+    else:
+        raise TypeError("The input specification, targetAcceptanceRate, must be of type float.")
+
+####################################################################################################################################
+
+def mpiFinalizeRequested(mpiFinalizeRequested):
+    if isinstance(mpiFinalizeRequested,bool):
+        return "mpiFinalizeRequested=" + str(mpiFinalizeRequested) + inputFileDelim
+    else:
+        raise TypeError("The input specification, mpiFinalizeRequested, must be of type bool (True or False).")
+
+####################################################################################################################################
+
+def maxNumDomainCheckToWarn(maxNumDomainCheckToWarn):
+    if isinstance(maxNumDomainCheckToWarn,int):
+        return "maxNumDomainCheckToWarn=" + str(maxNumDomainCheckToWarn) + inputFileDelim
+    else:
+        raise TypeError("The input specification, maxNumDomainCheckToWarn, must be of type int.")
+
+####################################################################################################################################
+
+def maxNumDomainCheckToStop(maxNumDomainCheckToStop):
+    if isinstance(maxNumDomainCheckToStop,int):
+        return "maxNumDomainCheckToStop=" + str(maxNumDomainCheckToStop) + inputFileDelim
+    else:
+        raise TypeError("The input specification, maxNumDomainCheckToStop, must be of type int.")
+
+####################################################################################################################################
+
+def interfaceType():
+    return "interfaceType=" + "'Python " + sys.version + "'" + inputFileDelim
+
+####################################################################################################################################
+
+def systemInfoFilePath(systemInfoFilePath):
+    if systemInfoFilePath is None:
+        return ""
+    else:
+        return "systemInfoFilePath='" + systemInfoFilePath + "'" + inputFileDelim
 
 ####################################################################################################################################
 #### generate output filename
 ####################################################################################################################################
 
-def _genOutputFileName(methodName):
-    from datetime import datetime as _dt
-    dt = _dt.now()
-    return  methodName + "_run_" \
-            + "{:04d}".format(dt.year) + "{:02d}".format(dt.month) + "{:02d}".format(dt.day) + "_"  \
-            + "{:02d}".format(dt.hour) + "{:02d}".format(dt.minute) + "{:02d}".format(dt.second) + "_" \
-            + "{:03d}".format(round(dt.microsecond/1000))
+def genOutputFileName(methodName): return getRandomFilePrefix(prefix = methodName + "_run_")
 
 ####################################################################################################################################
 #### enclose string with either single or double quotation . Return None if string contains both quotation symbols

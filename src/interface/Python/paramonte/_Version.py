@@ -43,8 +43,6 @@ import os as _os
 class Version:
     """
 
-    .. py:class:: Version
-
     This is the Version class for generating objects
     that contain the methods for getting and dumping
     the python-interface or kernel versions of the
@@ -53,18 +51,22 @@ class Version:
         **Parameters**
 
             versionPath
+
                 A string containing the path to either the
                 ParaMonte kernel or interface version file.
 
             versionType
+
                 A string containing the type of the version
                 file. It can be one of the following values:
 
                     "interface"
+
                         implying the Python-interface version
                         number of the ParaMonte library.
 
                     "kernel"
+
                         implying the kernel-routines version
                         number of the ParaMonte library.
 
@@ -79,8 +81,6 @@ class Version:
 
     def get(self):
         """
-
-        .. py:method:: get(self)
 
         Get the Python-interface or kernel version of the
         ParaMonte library, in verbose format.
@@ -98,8 +98,6 @@ class Version:
 
     def dump(self):
         """
-
-        .. py:method:: dump(self)
 
         Dump **only the version number** of either
         the Python-interface or kernel of the

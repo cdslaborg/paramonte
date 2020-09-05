@@ -34,13 +34,41 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-from _visutils import ParaMonteFigure
-from _visutils import Target
-from _HistPlot import HistPlot
-from _GridPlot import GridPlot
-from _LinePlot import LinePlot
-from _ScatterPlot import ScatterPlot
-from _HeatMapPlot import HeatMapPlot
-from _DensityMapPlot import DensityMapPlot
-#from _ScatterLinePlot import ScatterLinePlot
+import numpy as np
 
+####################################################################################################################################
+#### colorbar
+####################################################################################################################################
+
+def isColorBar(ax):
+    """
+
+    Attempt to guess whether an input matplotlib 
+    ``Axes`` is home to a ``colorbar`` object.
+
+        **Parameters**
+
+            ax
+
+                An Axes instance.
+
+        **Returns**
+
+            A boolean value of ``True`` if the x xor y axis
+            satisfies all of the following and thus looks
+            like a ``colorbar`` object:
+                No ticks, no tick labels, no axis label
+
+    """
+
+    xcb = (len(ax.get_xticks()) == 0) and (len(ax.get_xticklabels()) == 0) and (len(ax.get_xlabel()) == 0) #and (ax.get_xlim() == (0, 1))
+    ycb = (len(ax.get_yticks()) == 0) and (len(ax.get_yticklabels()) == 0) and (len(ax.get_ylabel()) == 0) #and (ax.get_ylim() == (0, 1))
+    return xcb != ycb
+
+####################################################################################################################################
+#### isPresentColorBar
+####################################################################################################################################
+
+def isPresentColorBar():
+    from matplotlib import pyplot as plt
+    return any([isColorBar(ax) for ax in np.atleast_1d(plt.gcf().axes).flatten()])

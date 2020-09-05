@@ -34,91 +34,108 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-import os as _os
-import numpy as _np
-import sys as _sys
-_sys.path.append(_os.path.dirname(__file__))
-
-from _SpecBase import _delim
+import numpy as np
+from _SpecBase import inputFileDelim
 
 ####################################################################################################################################
 #### SpecMCMC specification type-checking class
 ####################################################################################################################################
 
-class _SpecMCMC():
-
-    def chainSize(self,chainSize):
-        if isinstance(chainSize,int):
-            return "chainSize=" + str(chainSize) + _delim
-        else:
-            raise TypeError("The input specification, chainSize, must be of type int.")
-
-    def scaleFactor(self,scaleFactor):
-        if isinstance(scaleFactor,str):
-            return "scaleFactor=" + "'" + str(scaleFactor) + "'" + _delim
-        else:
-            raise TypeError("The input specification, scaleFactor, must be of type str.")
-
-    def startPointVec(self,startPointVec):
-        if isinstance(startPointVec,(list,tuple,_np.ndarray)):
-            return "startPointVec=" + str(_np.array(list(startPointVec)).flatten()).strip('[]') + _delim
-        else:
-            raise TypeError("The input specification, startPointVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
-
-    def proposalModel(self,proposalModel):
-        if isinstance(proposalModel,str):
-            return "proposalModel=" + "'" + str(proposalModel) + "'" + _delim
-        else:
-            raise TypeError("The input specification, proposalModel, must be of type str.")
-
-    def proposalStartCovMat(self,proposalStartCovMat):
-        if isinstance(proposalStartCovMat,(list,tuple,_np.ndarray)):
-            return "proposalStartCovMat=" + str(_np.array(list(proposalStartCovMat)).flatten()).strip('[]') + _delim
-        else:
-            raise TypeError("The input specification, proposalStartCovMat, must be a symmetric 2-dimensional list, tuple, or numpy matrix of ndim-by-ndim or, "
-                            "a list, tuple, or numpy vector of ndim**2 or less elements of type float.")
-
-    def proposalStartCorMat(self,proposalStartCorMat):
-        if isinstance(proposalStartCorMat,(list,tuple,_np.ndarray)):
-            return "proposalStartCorMat=" + str(_np.array(list(proposalStartCorMat)).flatten()).strip('[]') + _delim
-        else:
-            raise TypeError("The input specification, proposalStartCorMat, must be a symmetric 2-dimensional list, tuple, or numpy matrix of ndim-by-ndim or, "
-                            "a list, tuple, or numpy vector of ndim**2 or less elements of type float.")
-
-    def proposalStartStdVec(self,proposalStartStdVec):
-        if isinstance(proposalStartStdVec,(list,tuple,_np.ndarray)):
-            return "proposalStartStdVec=" + str(_np.array(list(proposalStartStdVec)).flatten()).strip('[]') + _delim
-        else:
-            raise TypeError("The input specification, proposalStartStdVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
-
-    def sampleRefinementCount(self,sampleRefinementCount):
-        if isinstance(sampleRefinementCount,int):
-            return "sampleRefinementCount=" + str(sampleRefinementCount) + _delim
-        else:
-            raise TypeError("The input specification, sampleRefinementCount, must be of type int.")
-
-    def sampleRefinementMethod(self,sampleRefinementMethod):
-        if isinstance(sampleRefinementMethod,str):
-            return "sampleRefinementMethod=" + "'" + str(sampleRefinementMethod) + "'" + _delim
-        else:
-            raise TypeError("The input specification, sampleRefinementMethod, must be of type str.")
-
-    def randomStartPointRequested(self,randomStartPointRequested):
-        if isinstance(randomStartPointRequested,bool):
-            return "randomStartPointRequested=" + str(randomStartPointRequested) + _delim
-        else:
-            raise TypeError("The input specification, randomStartPointRequested, must be of type bool (True or False).")
-
-    def randomStartPointDomainLowerLimitVec(self,randomStartPointDomainLowerLimitVec):
-        if isinstance(randomStartPointDomainLowerLimitVec,(list,tuple,_np.ndarray)):
-            return "randomStartPointDomainLowerLimitVec=" + str(_np.array(list(randomStartPointDomainLowerLimitVec)).flatten()).strip('[]') + _delim
-        else:
-            raise TypeError("The input specification, randomStartPointDomainLowerLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
-
-    def randomStartPointDomainUpperLimitVec(self,randomStartPointDomainUpperLimitVec):
-        if isinstance(randomStartPointDomainUpperLimitVec,(list,tuple,_np.ndarray)):
-            return "randomStartPointDomainUpperLimitVec=" + str(_np.array(list(randomStartPointDomainUpperLimitVec)).flatten()).strip('[]') + _delim
-        else:
-            raise TypeError("The input specification, randomStartPointDomainUpperLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+def chainSize(chainSize):
+    if isinstance(chainSize,int):
+        return "chainSize=" + str(chainSize) + inputFileDelim
+    else:
+        raise TypeError("The input specification, chainSize, must be of type int.")
 
 ####################################################################################################################################
+
+def scaleFactor(scaleFactor):
+    if isinstance(scaleFactor,str):
+        return "scaleFactor=" + "'" + str(scaleFactor) + "'" + inputFileDelim
+    else:
+        raise TypeError("The input specification, scaleFactor, must be of type str.")
+
+####################################################################################################################################
+
+def startPointVec(startPointVec):
+    if isinstance(startPointVec,(list,tuple,np.ndarray)):
+        return "startPointVec=" + str(np.array(list(startPointVec)).flatten()).strip('[]') + inputFileDelim
+    else:
+        raise TypeError("The input specification, startPointVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+
+####################################################################################################################################
+
+def proposalModel(proposalModel):
+    if isinstance(proposalModel,str):
+        return "proposalModel=" + "'" + str(proposalModel) + "'" + inputFileDelim
+    else:
+        raise TypeError("The input specification, proposalModel, must be of type str.")
+
+####################################################################################################################################
+
+def proposalStartCovMat(proposalStartCovMat):
+    if isinstance(proposalStartCovMat,(list,tuple,np.ndarray)):
+        return "proposalStartCovMat=" + str(np.array(list(proposalStartCovMat)).flatten()).strip('[]') + inputFileDelim
+    else:
+        raise TypeError("The input specification, proposalStartCovMat, must be a symmetric 2-dimensional list, tuple, or numpy matrix of ndim-by-ndim or, "
+                        "a list, tuple, or numpy vector of ndim**2 or less elements of type float.")
+
+####################################################################################################################################
+
+def proposalStartCorMat(proposalStartCorMat):
+    if isinstance(proposalStartCorMat,(list,tuple,np.ndarray)):
+        return "proposalStartCorMat=" + str(np.array(list(proposalStartCorMat)).flatten()).strip('[]') + inputFileDelim
+    else:
+        raise TypeError("The input specification, proposalStartCorMat, must be a symmetric 2-dimensional list, tuple, or numpy matrix of ndim-by-ndim or, "
+                        "a list, tuple, or numpy vector of ndim**2 or less elements of type float.")
+
+####################################################################################################################################
+
+def proposalStartStdVec(proposalStartStdVec):
+    if isinstance(proposalStartStdVec,(list,tuple,np.ndarray)):
+        return "proposalStartStdVec=" + str(np.array(list(proposalStartStdVec)).flatten()).strip('[]') + inputFileDelim
+    else:
+        raise TypeError("The input specification, proposalStartStdVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+
+####################################################################################################################################
+
+def sampleRefinementCount(sampleRefinementCount):
+    if isinstance(sampleRefinementCount,int):
+        return "sampleRefinementCount=" + str(sampleRefinementCount) + inputFileDelim
+    else:
+        raise TypeError("The input specification, sampleRefinementCount, must be of type int.")
+
+####################################################################################################################################
+
+def sampleRefinementMethod(sampleRefinementMethod):
+    if isinstance(sampleRefinementMethod,str):
+        return "sampleRefinementMethod=" + "'" + str(sampleRefinementMethod) + "'" + inputFileDelim
+    else:
+        raise TypeError("The input specification, sampleRefinementMethod, must be of type str.")
+
+####################################################################################################################################
+
+def randomStartPointRequested(randomStartPointRequested):
+    if isinstance(randomStartPointRequested,bool):
+        return "randomStartPointRequested=" + str(randomStartPointRequested) + inputFileDelim
+    else:
+        raise TypeError("The input specification, randomStartPointRequested, must be of type bool (True or False).")
+
+####################################################################################################################################
+
+def randomStartPointDomainLowerLimitVec(randomStartPointDomainLowerLimitVec):
+    if isinstance(randomStartPointDomainLowerLimitVec,(list,tuple,np.ndarray)):
+        return "randomStartPointDomainLowerLimitVec=" + str(np.array(list(randomStartPointDomainLowerLimitVec)).flatten()).strip('[]') + inputFileDelim
+    else:
+        raise TypeError("The input specification, randomStartPointDomainLowerLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+
+####################################################################################################################################
+
+def randomStartPointDomainUpperLimitVec(randomStartPointDomainUpperLimitVec):
+    if isinstance(randomStartPointDomainUpperLimitVec,(list,tuple,np.ndarray)):
+        return "randomStartPointDomainUpperLimitVec=" + str(np.array(list(randomStartPointDomainUpperLimitVec)).flatten()).strip('[]') + inputFileDelim
+    else:
+        raise TypeError("The input specification, randomStartPointDomainUpperLimitVec, must be a list, tuple, or numpy vector of ndim or less elements of type float.")
+
+####################################################################################################################################
+

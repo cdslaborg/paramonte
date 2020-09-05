@@ -34,19 +34,22 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-import _message as _msg
-import numpy as _np
-import sys as _sys
-import os as _os
+import _message as err
+import numpy as np
+import time
+import sys
+import os
 
-class _struct:
-    pass
+class Struct: pass
+
+newline = chr(10)
+creturn = chr(13)
 
 ####################################################################################################################################
 #### Frozen Struct
 ####################################################################################################################################
 
-class _FrozenClass(object):
+class FrozenClass(object):
     __isfrozen = False
     def __setattr__(self, key, value):
         if self.__isfrozen and not hasattr(self, key):
@@ -59,6 +62,16 @@ class _FrozenClass(object):
     def _freeze(self):
         self.__isfrozen = True
 
+####################################################################################################################################
+#### isNumericString
+####################################################################################################################################
+
+def isNumericString(string):
+    try:
+        np.double(string)
+        return True
+    except ValueError:
+        return False
 
 ####################################################################################################################################
 #### object size estimation
@@ -66,7 +79,7 @@ class _FrozenClass(object):
 
 def getSize(obj, seen=None):
     """Recursively finds size of objects"""
-    size = _sys.getsizeof(obj)
+    size = sys.getsizeof(obj)
     if seen is None:
         seen = set()
     obj_id = id(obj)
@@ -83,31 +96,6 @@ def getSize(obj, seen=None):
     elif hasattr(obj, '__iter__') and not isinstance(obj, (str, bytes, bytearray)):
         size += sum([getSize(i, seen) for i in obj])
     return size
-
-####################################################################################################################################
-#### _Timer class
-####################################################################################################################################
-
-import numpy as _np
-import time as _time
-class Timer:
-
-    def __init__(self,_methodName):
-        self._methodName = _methodName
-        self.start = 0
-        self.end = 0
-
-    def tic(self,msg=None,**noteArgs):
-        if msg is not None: 
-            if "methodName" not in noteArgs.keys(): noteArgs["methodName"] = self._methodName
-            if "end" not in noteArgs.keys(): noteArgs["end"] = ""
-            _msg.note( msg = msg, **noteArgs )
-        self.start = _time.time()
-
-    def toc(self,msg=""):
-        self.end = _time.time()
-        if msg=="": msg = "done in " + str(_np.round(self.end-self.start,decimals=6)) + " seconds." 
-        if msg is not None: print( msg )
 
 ####################################################################################################################################
 #### check application installation status
@@ -149,61 +137,220 @@ def getList(x):
 #### get file list
 ####################################################################################################################################
 
-def getFileList(file,fileType,methodName,_mpiDisabled):
+def getFileList(file, fileSuffix, methodName, reportEnabled):
 
-    suffix = "_" + fileType + ".txt"
-    if _os.path.isfile(file): # check if the input path is a full path to a file
+    fullSuffix = "_" + fileSuffix + ".txt"
+
+    if os.path.isfile(file):
+
+        # check if the input path is a full path to a file
+
         FileList = [file]
         pattern = file
-        if suffix != file[-len(suffix):]:
-            _msg.warn   ( msg   = "The name of the input file: \n\n"
-                                + "    " + file + "\n\n"
-                                + "does not end with the expected suffix '" + suffix + "' for a " + fileType + " file type.\n"
-                        , methodName = methodName
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
-    elif _os.path.isdir(file): # ensure the input path is not a directory
-        _msg.abort  ( msg   = "file='" + file + "' cannot point to a directory.\n"
-                            + "Provide a string as the value of file that points to a unique " + fileType + " file or\n"
-                            + "to the unique name (including path) of the simulation name shared among its output files.\n"
+        if fullSuffix != file[-len(fullSuffix):]:
+            err.warn( msg   = "The name of the input file: \n\n"
+                            + "    " + file + "\n\n"
+                            + "does not end with the expected suffix '" + fullSuffix + "' for a " + fileSuffix + " file type.\n"
                     , methodName = methodName
                     , marginTop = 1
                     , marginBot = 1
                     )
+
     else:
 
-        # search for files matching the input pattern
+        if os.path.isdir(file):
+
+            # ensure the input path is not a directory
+
+            err.warn( msg   = "file='" + file + "' points to a directory.\n"
+                            + "Now searching inside the folder for a " + fileSuffix + " file..."
+                    , methodName = methodName
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
+            pattern = os.path.join(file, "*" + fullSuffix)
+
+        else:
+
+            # search for files matching the input pattern
+
+            if "*" in file: # file[-1:]=="*":
+                pattern = file
+            else:
+                pattern = file + "*" # + fullSuffix
 
         import glob
-        if file[-1:]=="*":
-            pattern = file
-        else:
-            pattern = file + "*" # + suffix
-
         _ = glob.glob(pattern)
+
         FileList = []
-        for filename in _:
-            if suffix in filename: FileList.append(filename)
+        for filePath in _:
+            if filePath.endswith(fullSuffix):
+                FileList.append(filePath)
+
+        if not pattern.endswith(fullSuffix): pattern += fullSuffix
+
         if len(FileList)==0:
-            _msg.abort  ( msg   = "Failed to detect any " + fileType + " files with the requested pattern: \n\n"
+            err.abort   ( msg   = "Failed to detect any " + fileSuffix + " files with the requested pattern: \n\n"
                                 + "    " + pattern + "\n\n"
-                                + "Provide a string, as the value of the input argument 'file', that either \n\n"
-                                + "    - points to one or more " + fileType + " files, or, \n"
+                                + "Provide a string, as the value of the input argument ``file``, that either \n\n"
+                                + "    - points to one or more " + fileSuffix + " files, or, \n"
                                 + "    - represents the unique name of a ParaMonte simulation. \n"
                                 + "      This unique-name is the common prefix in the names of \n"
-                                + "      the output files of a ParaMonte simulation."
+                                + "      the output files of a ParaMonte simulation.\n\n"
+                                + "Most importantly, ensure the requested file is in ASCII format.\n"
+                                + "The binary-format chain or restart output files cannot be parsed.\n"
+                                + "You can request ASCII-format output files by setting the\n"
+                                + "appropriate simulation specifications of the " + methodName + " sampler,\n\n"
+                                + "    spec.restartFileFormat = \"ascii\"\n"
+                                + "    spec.chainFileFormat = \"ascii\""
                         , methodName = methodName
                         , marginTop = 1
                         , marginBot = 1
                         )
-        else:
-            pattern += suffix
-
-    if _mpiDisabled:
-        _msg.note   ( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
+        elif reportEnabled:
+            err.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
                     , methodName = methodName
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
+
+    return FileList
+
+####################################################################################################################################
+#### Timer class
+####################################################################################################################################
+
+class Timer:
+
+    def __init__(self):
+        self.start = 0
+        self.total = 0
+        self.delta = 0
+        self.last = 0
+        self.tic()
+
+    def tic(self):
+        self.start = time.time()
+        self.total = self.start
+        self.last = self.total
+        self.delta = self.total - self.last
+
+    def toc(self):
+        self.last = self.total
+        self.total = time.time()
+        self.delta = self.total - self.last
+
+####################################################################################################################################
+#### Progress report
+####################################################################################################################################
+
+class Progress:
+
+    def __init__( self
+                , msg = None
+                , methodName = ""
+                , reportEnabled = True
+                , end = "\n"
+                ):
+        self._methodName = methodName
+        self._reportEnabled = reportEnabled
+        self._oldFraction = 0.0
+        self._clockCounter = None
+        if self._reportEnabled and msg is not None:
+            err.note( msg = msg
+                    , methodName = self._methodName
                     , marginTop = 0
                     , marginBot = 0
+                    , end = end
                     )
-    return FileList
+        self.timer = Timer()
+
+    ################################################################################################################################
+
+    def note( self
+            , msg = None
+            , end = "\n"
+            , pre = False
+            ):
+        self.timer.toc()
+        if self._reportEnabled:
+            if msg is None: msg = "done in " + str(np.round(self.timer.delta,decimals=6)) + " seconds."
+            if pre:
+                err.note( msg = msg
+                        , methodName = self._methodName
+                        , marginTop = 0
+                        , marginBot = 0
+                        , end = end
+                        )
+            else:
+                print( msg, end = end )
+        self.timer.toc()
+
+    ################################################################################################################################
+
+    # dynamic progress bar
+    def updateBar   ( self
+                    , fraction
+                    , progressFraction = 0.05
+                    ):
+        if self._reportEnabled:
+            if fraction<1:
+                end = ""
+            else:
+                end = "\n"
+            if fraction > self._oldFraction + progressFraction:
+                self._oldFraction = fraction
+                print( ".", end=end);
+
+    ################################################################################################################################
+
+    # dynamic clock tic
+    def updateClock ( self
+                    , fraction
+                    ):
+        if self._reportEnabled:
+            chars = "|/-\\"
+            if self._clockCounter is None:
+                self._clockCounter = 0
+                backspace = "\r"
+            else:
+                self._clockCounter = self._clockCounter%3 + 1
+                backspace = 5*"\r"
+            if fraction<1:
+                clockTick = chars[self._clockCounter]; 
+                end = ""
+            else:
+                self._clockCounter = None;
+                clockTick = chars[0];
+                end = "\n"
+            print( backspace + clockTick + "{:3.0f}%".format(100*fraction), end=end);
+
+####################################################################################################################################
+#### getRandomFilePrefix
+####################################################################################################################################
+
+def getRandomFilePrefix(prefix = ""):
+    from datetime import datetime as dt
+    now = dt.now()
+    return  prefix \
+            + "{:04d}".format(now.year) + "{:02d}".format(now.month) + "{:02d}".format(now.day) + "_"  \
+            + "{:02d}".format(now.hour) + "{:02d}".format(now.minute) + "{:02d}".format(now.second) + "_" \
+            + "{:03d}".format(round(now.microsecond/1000))
+
+####################################################################################################################################
+#### getLogIntSpace
+####################################################################################################################################
+
+def getLogIntSpace(base, logskip, lowerLim, upperLim):
+    """
+    return a set of unique integer spacings linearly-spaced in the 
+    logarithmic scale in the input given base, between the input limits.
+    """
+    if base<=1: raise ValueError("The input argument \"base\" must be a positive real number. You have entered: " + str(base))
+    if logskip<=0: raise ValueError("The input argument \"logskip\" must be a positive real number. You have entered: " + str(logskip))
+    if lowerLim<=0: raise ValueError("The input argument \"lowerLim\" must be a positive real number. You have entered: " + str(lowerLim))
+    if upperLim<=lowerLim: raise ValueError ( "The input argument \"upperLim\" must be a positive real number larger than "
+                                            + "the input argument \"lowerLim\". You have entered: " + str(upperLim))
+    return np.unique( np.int32( base**( np.arange( np.log(lowerLim)/np.log(base), np.log(upperLim)/np.log(base), logskip) ) ) );
+
+####################################################################################################################################

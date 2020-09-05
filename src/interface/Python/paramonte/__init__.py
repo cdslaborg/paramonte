@@ -37,15 +37,17 @@
 ####################################################################################################################################
 ####################################################################################################################################
 """
+
 This is the Python interface to ParaMonte: Plain Powerful Parallel Monte Carlo library.
 
 What is ParaMonte?
 ==================
 
-ParaMonte is a serial / parallel library of Monte Carlo routines for sampling mathematical
-objective functions of arbitrary-dimensions, in particular, the posterior distributions
-of Bayesian models in data science, Machine Learning, and scientific inference, with the
-design goal of unifying the
+ParaMonte is a serial / parallel library of Monte Carlo routines for sampling 
+mathematical objective functions of arbitrary-dimensions, in particular, 
+the posterior distributions of Bayesian models in data science, 
+Machine Learning, and scientific inference, with the design 
+goal of unifying the
 
     **automation** of Monte Carlo simulations,  
 
@@ -72,9 +74,11 @@ The routines currently supported by the ParaMonte Python library include:
 
     **ParaDRAM**
 
-        Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler.
-        For a quick start, example scripts, and instructions on how to use he ParaDRAM sampler,
-        type the following commands enclosed between the comment lines in your Python session,
+        Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov 
+        Chain Monte Carlo Sampler. For a quick start, example scripts, 
+        and instructions on how to use he ParaDRAM sampler, type the 
+        following commands enclosed between the comment lines 
+        in your Python session,
 
         .. code-block:: python
             :linenos:
@@ -97,46 +101,48 @@ The routines currently supported by the ParaMonte Python library include:
 Naming conventions
 ==================
 
-+   The camelCase naming style is used throughout the entire ParaMonte library, across
-    all programming languages. The ParaMonte library is a multi-language cross-platform
-    library. To increase the consistently and similarities of all implementations,
-    a single naming convension had to be used for all different languages.
++   The camelCase naming style is used throughout the entire ParaMonte 
+    library, across all programming languages. The ParaMonte library is 
+    a multi-language cross-platform library. To increase the consistently 
+    and similarities of all implementations, a single naming convention 
+    had to be used for all different languages.
 
-+   All simulation specifications start with a lowercase letter, including
++   All simulation specifications start with a lowercase letter, including 
     scalar/vector/matrix int, float, string, or boolean variables.
 
-+   The name of any variable that represents a vector of values is normally suffixed with ``Vec``,
-    for example: ``startPointVec``, ``domainLowerLimitVec``, ...
++   The name of any variable that represents a vector of values is normally 
+    suffixed with ``Vec``, for example: ``startPointVec``, ...
 
-+   The name of any variable that represents a matrix of values is normally suffixed with ``Mat``,
-    for example: ``proposalStartCorMat``, ...
++   The name of any variable that represents a matrix of values is normally 
+    suffixed with ``Mat``, for example: ``proposalStartCorMat``, ...
 
-+   The name of any variable that represents a list of varying-size values is normally suffixed
-    with ``List``, for example: ``variableNameList``, ...
++   The name of any variable that represents a list of varying-size values 
+    is normally suffixed with ``List``, like: ``variableNameList``, ...
 
 +   All static functions or methods of classes begin with a lowercase verb.
 
-+   Significant attempt has been made to end all boolean variables with a passive verb, such
-    that the full variable name virtually forms  a proposition, that is, an English-language
-    statement that should be either ``True`` or ``False``, set by the user.
++   Significant attempt has been made to end all boolean variables with a 
+    passive verb, such that the full variable name virtually forms a 
+    proposition, that is, an English-language statement that should 
+    be either ``True`` or ``False``, set by the user. 
 
 Tips
 ====
 
-+   When running the ParaMonte samplers, in particular on multiple cores in parallel,
-    it would be best to close any such aggressive software/applications as
-    **Dropbox**, **ZoneAlarm**, ... that can **interfere with the ParaMonte
-    simulation output files**, potentially **causing the sampler to
-    crash** before successful completion of the simulation.
-    These situations should however happen only scarcely.
++   When running the ParaMonte samplers, in particular on multiple cores 
+    in parallel, it would be best to close any such aggressive software or
+    applications as **Dropbox**, **ZoneAlarm**, ... that can interfere with 
+    the ParaMonte simulation output files, potentially causing the sampler to
+    crash before the successful completion of the simulation. 
+    These situations should however happen only scarcely. 
 
-+   On Windows systems, when restarting an old interrupted ParaMonte simulation,
-    ensure your Python session is also restarted before the simulation restart.
-    This may be needed as Windows sometimes locks access to some or all of the
++   On Windows systems, when restarting an old interrupted ParaMonte simulation, 
+    ensure your Python session is also restarted before the simulation restart. 
+    This may be needed as Windows sometimes locks access to some or all of the 
     simulation output files.
 
-+   To unset an already-set input simulation specification, simply set the
-    simulation attribute to None or re-instantiate the object.
++   To unset an already-set input simulation specification, simply set the 
+    simulation attribute to None or re-instantiate the sampler object. 
 
 -------------------------------------------------------------------------------
 """
@@ -144,15 +150,16 @@ Tips
 import os as _os
 import sys as _sys
 import typing as _tp
+
 _sys.path.append(_os.path.dirname(__file__))
 
 import _paramonte as _pm
 
-# objects exposed to the user
+#### objects exposed to the user
 
 from _pmreqs import verify, build
-from paradram import ParaDRAM
-from _paramonte import version
+from _paradram import ParaDRAM
+from _paramonte import version, website, citation
 
 
 __authors__ = "The Computational Data Science Lab @ The University of Texas"
