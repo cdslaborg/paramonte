@@ -34,11 +34,11 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-import os as _os
+import os
 
 ####################################################################################################################################
-
-# get version
+#### Version
+####################################################################################################################################
 
 class Version:
     """
@@ -72,12 +72,20 @@ class Version:
 
     """
 
+    ################################################################################################################################
+    #### __init__
+    ################################################################################################################################
+
     def __init__(self,versionPath,versionType):
         self._versionList = ["interface","kernel"]
         self._versionPath = versionPath
         self._versionType = versionType
         self._versionSave = None
         self._checkVersionType()
+
+    ################################################################################################################################
+    #### get
+    ################################################################################################################################
 
     def get(self):
         """
@@ -95,6 +103,10 @@ class Version:
 
         """
         return "ParaMonte Python " + self._versionType.capitalize() + " Version " + self.dump()
+
+    ################################################################################################################################
+    #### dump
+    ################################################################################################################################
 
     def dump(self):
         """
@@ -116,7 +128,7 @@ class Version:
             if versionType==self._versionType:
                 if self._versionSave is None:
                     versionFileName = ".VERSION_" + versionType.upper()
-                    versionFilePath = _os.path.join(self._versionPath, versionFileName)
+                    versionFilePath = os.path.join(self._versionPath, versionFileName)
                     try:
                         with open(versionFilePath,"r") as versionFile:
                             self._versionSave = versionFile.readline().strip("\n")
@@ -126,6 +138,10 @@ class Version:
                 else:
                     return self._versionSave
 
+    ################################################################################################################################
+    #### _checkVersionType
+    ################################################################################################################################
+
     def _checkVersionType(self):
         versionTypeNotFound = True
         for versionType in self._versionList:
@@ -133,4 +149,6 @@ class Version:
                 versionTypeNotFound = False
                 break
         if versionTypeNotFound:
-            _sys.exit("The input versionType is not a valid recognized version type. Possible values: " + " ".join(versionList))
+            raise Exception ( "The input versionType is not a valid recognized version type. Possible values:\n"
+                            + "\n".join(self._versionList)
+                            )
