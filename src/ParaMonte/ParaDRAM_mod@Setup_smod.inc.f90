@@ -736,7 +736,7 @@ contains
                 msg =   "These are contributions of individual processes to the construction of the MCMC chain. &
                         &Essentially, they represent the total number of accepted states by the corresponding processor, &
                         &starting from the first processor to the last. This information is mostly informative in parallel &
-                        &Fork-Join (singlChain) simulations."
+                        &Fork-Join (singleChain) simulations."
                 call self%reportDesc(msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

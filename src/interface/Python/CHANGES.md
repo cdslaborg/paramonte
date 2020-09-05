@@ -3,9 +3,29 @@
 This project follows [Semantic Versioning](https://semver.org/). 
 To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases) or [the ParaMonte page on the Python Package Index](https://pypi.org/project/paramonte/).  
 
-## **Version 1.x.x**  
+## **Version 2.x.x**  
 
-### Version  1.1.2 -- Work in Progress
+### Version  2.0.0 -- September 5, 2020  
+
+**Major enhancements to the ParaMonte / ParaDRAM sampler interfaces**  
+
++   The entire ParaMonte Python interface library has been revamped.
+    The new naming conventions, visualization, and computing tools 
+    are significantly nicer to deal with and in some cases, orders 
+    of magnitude faster than the previous major release.
+
++   The kernel density estimates and visualization tools are now on average 
+    **100 times or more faster than the previous release of the library**.
+
++   Several new post-processing functionalities have now been added, such as
+    the ability to seamlessly parse the contents of the output `*_report.txt`, 
+    `*_restart.txt`, and `*_progress.txt` simulation files, in addition to the
+    other output files (`*_sample.txt` and `*_chain.txt`) that could be parsed
+    in the previous versions.
+
++   The new major release also includes 3D visualization tools, such as 3D 
+    line, scatter, or line+scatter plots as well as fast 2D and 3D kernel 
+    density estimate contour plotting tools.
 
 **Minor enhancements**  
 
@@ -39,6 +59,9 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
                        , "matplotlib>=3.2.0"
                        ]
     ```  
+
+
+## **Version 1.x.x**  
 
 ### Version  1.1.1 -- June 7, 2020  
 
