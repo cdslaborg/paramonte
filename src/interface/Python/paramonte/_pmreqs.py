@@ -174,13 +174,13 @@ def verify(reset = True):
                 pm.note ( msg   = msg + newline
                                 + "For Windows and Linux operating systems, you can download and install the " + newline
                                 + "Intel MPI runtime libraries, free of charge, from the Intel website, " + newline
-                                + newline + newline + newline
+                                + newline
                                 + "    " + pm.website.intel.mpi.home.url + newline
-                                + newline + newline + newline
+                                + newline
                                 + "For macOS (Darwin), you can download and install the Open-MPI library. " + newline
-                                + newline + newline + newline
+                                + newline
                                 + "    " + pm.website.openmpi.home.url + newline
-                                + newline + newline + newline
+                                + newline
                                 + "Alternatively, the ParaMonte library can automatically install these " + newline
                                 + "libraries for you now. If you don't know how to download and install the " + newline
                                 + "correct MPI runtime library version, we strongly recommend that you let the " + newline
