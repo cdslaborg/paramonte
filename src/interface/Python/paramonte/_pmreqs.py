@@ -639,7 +639,7 @@ def findMPI():
         try:
             import subprocess
             gfortranVersion = subprocess.run(args=["gfortran", "--version"],capture_output=True)
-            if "GCC 9." in str(gfortranVersion.stdout): gfortranPath = shutil.which("gfortran")
+            if "GCC 10." in str(gfortranVersion.stdout): gfortranPath = shutil.which("gfortran")
         except:
             warnings.warn("Failed to capture the gfortran version...")
 
@@ -1325,8 +1325,8 @@ def buildParaMontePrereqsForMac():
             , marginBot = 1
             )
 
-    err1 = os.system("brew install gcc@9")
-    err2 = os.system("brew link gcc@9")
+    err1 = os.system("brew install gcc@10")
+    err2 = os.system("brew link gcc@10")
 
     if err1 != 0 or err2 != 0:
         pm.warn ( msg = getMacosInstallHelpMsg("GNU Compiler Collection")
