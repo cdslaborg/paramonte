@@ -231,8 +231,7 @@ website.openmpi.home.url = "https://www.open-mpi.org/"
 
 ####################################################################################################################################
 
-citation = Struct()
-citation.url = website.home.overview.preface.url + "/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work"
+def cite(): print(website.home.overview.preface.url + "/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work")
 #citation.kernel = Struct()
 #citation.kernel.paradram = Struct()
 #citation.kernel.paradram.bib = """

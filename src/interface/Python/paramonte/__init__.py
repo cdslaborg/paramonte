@@ -157,9 +157,9 @@ import _paramonte as _pm
 
 #### objects exposed to the user
 
-from _pmreqs import verify, build
+from _pmreqs import verify, build, checkForUpdate
 from _paradram import ParaDRAM
-from _paramonte import version, website, citation
+from _paramonte import version, website, cite
 
 
 __authors__ = "The Computational Data Science Lab @ The University of Texas"
