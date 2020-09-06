@@ -2161,8 +2161,19 @@ mkdir -p ${ParaMonte_BIN_DIR}
 # mission accomplished
 ####################################################################################################################################
 
+ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}"
+if [ "${INTERFACE_LANGUAGE}" = "python" ]; then
+    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_Python"
+elif [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_MATLAB"
+elif [ "${INTERFACE_LANGUAGE}" = "matdram" ]; then
+    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/libparamonte_MatDRAM"
+else
+    ParaMonte_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR_CURRENT}/${PMLIB_BASE_NAME}"
+fi
+
 echo >&2
-echo >&2 "-- ${BUILD_NAME} - ParaMonte binary/library directory: ${ParaMonte_BIN_DIR}/${PMLIB_BASE_NAME}"
+echo >&2 "-- ${BUILD_NAME} - ParaMonte binary/library directory: ${ParaMonte_BIN_DIR_CURRENT}"
 echo >&2 "-- ${BUILD_NAME} - ParaMonte build directory: ${ParaMonte_BLD_DIR}"
 echo >&2
 echo >&2 "-- ${BUILD_NAME} - mission accomplished"

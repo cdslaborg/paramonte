@@ -130,7 +130,11 @@ def verify(reset = True):
 
             # verify module dependencies
 
-            verifyDependencyVersion()
+            # On some systems like TACC, the matplotlib causes segmentation fault that is not controllable in any way.
+            # This is apparently a bug in the older versions of matplotlib. Until it is fully resolved, the following 
+            # dependency version check is commented out.
+
+            # verifyDependencyVersion()
 
             # library path
 
