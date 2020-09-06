@@ -28,6 +28,7 @@ program getCompilerVersion
     implicit none
     integer(IK) , parameter     :: INTEL_VERSION(3) = [18_IK,0_IK,0_IK]
     integer(IK) , parameter     :: GNU_VERSION(3) = [7_IK,3_IK,0_IK]
+    integer(IK) , allocatable   :: MinVersion(:)
     integer(IK)                 :: fileunit, startindex, endindex
     logical                     :: isIntel = .false.
     logical                     :: isGNU = .false.
@@ -59,17 +60,18 @@ program getCompilerVersion
 
     ! check for ParaMonteCompatibleCompiler
 
+    !if ( lge(string(1:3),"7.3") ) isParaMonteCompatibleCompiler = "true"
+    !if ( lge(string(1:6),"18.0.0") ) isParaMonteCompatibleCompiler = "true"
+
     VersionParts = splitStr(string, ".")
     if (isIntel) then
-        if ( str2int(VersionParts(1)%record) >= INTEL_VERSION(1) .and. str2int(VersionParts(2)%record) >= INTEL_VERSION(2) ) then
-            isParaMonteCompatibleCompiler = "true"
-        end if
-        !if ( lge(string(1:6),"18.0.0") ) isParaMonteCompatibleCompiler = "true"
+        MinVersion = INTEL_VERSION
     elseif (isGNU) then
-        if ( str2int(VersionParts(1)%record) >= GNU_VERSION(1) .and. str2int(VersionParts(2)%record) >= GNU_VERSION(2) ) then
-            isParaMonteCompatibleCompiler = "true"
-        end if
-        !if ( lge(string(1:3),"7.3") ) isParaMonteCompatibleCompiler = "true"
+        MinVersion = GNU_VERSION
+    end if
+    if  ( str2int(VersionParts(1)%record) > MinVersion(1) .or. &
+        ( str2int(VersionParts(1)%record)== MinVersion(1) .and. str2int(VersionParts(2)%record) >= MinVersion(2) ) ) &
+        isParaMonteCompatibleCompiler = "true"
     end if
 
     open(newunit=fileunit,file="isParaMonteCompatibleCompiler.tmp")
