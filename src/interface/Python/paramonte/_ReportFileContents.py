@@ -119,7 +119,7 @@ class ReportFileContents(OutputFileContents):
         self.contents = StructWithPrint()
 
         with open(self.file,"r") as fid: self.contents.value = fid.read().replace(creturn,"").replace(newline, " " + newline)
-        self._lineList = self.contents.value.split(newline)
+        self._lineList = self.contents.value.splitlines()
         self._lineListLen = len(self._lineList)
 
         self._progress.note( msg = "parsing the report file contents...", end = newline, pre = True )

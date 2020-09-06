@@ -297,7 +297,7 @@ class ParaDRAM(ParaMonteSampler):
         ##################################
         from paramonte import ParaDRAM
         pmpd = ParaDRAM()
-        pmpd.outputFileName = "./test"
+        pmpd.spec.outputFileName = "./test"
         def getLogFunc(point): return -sum(point**2)
         pmpd.runSampler( ndim = 1, getLogFunc = getLogFunc )
         ##################################

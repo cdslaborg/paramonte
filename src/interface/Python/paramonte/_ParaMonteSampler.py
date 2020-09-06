@@ -1767,8 +1767,8 @@ class ParaMonteSampler:
                             + "To access the simulation statistics and information, examine the contents of the" + newline
                             + "components of the following structures:" + newline
                             + newline
+                            + "    " + outputListFullName + "[0].contents.print()  # to print the contents of the report file." + newline
                             + "    " + outputListFullName + "[0].setup             # to get information about the simulation setup." + newline
-                            + "    " + outputListFullName + "[0].lineList          # to get the list of lines of the report file." + newline
                             + "    " + outputListFullName + "[0].stats.time        # to get the timing information of the simulation." + newline
                             + "    " + outputListFullName + "[0].stats.chain       # to get the statistics of the simulation output sample." + newline
                             + "    " + outputListFullName + "[0].stats.numFuncCall # to get information about the number of function calls." + newline

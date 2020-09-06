@@ -98,6 +98,6 @@ def abort   ( msg
                 , marginBot = marginBot
                 , end = end
                 )
-    raise Exception
+    raise Exception( "Fatal error occurred. Gracefully exiting." )
 
 ####################################################################################################################################
