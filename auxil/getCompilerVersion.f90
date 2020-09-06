@@ -61,10 +61,14 @@ program getCompilerVersion
 
     VersionParts = splitStr(string, ".")
     if (isIntel) then
-        if ( str2int(VersionParts(1)%record) >= INTEL_VERSION(1) .and. str2int(VersionParts(2)%record) >= INTEL_VERSION(2) ) isParaMonteCompatibleCompiler = "true"
+        if ( str2int(VersionParts(1)%record) >= INTEL_VERSION(1) .and. str2int(VersionParts(2)%record) >= INTEL_VERSION(2) ) then
+            isParaMonteCompatibleCompiler = "true"
+        end if
         !if ( lge(string(1:6),"18.0.0") ) isParaMonteCompatibleCompiler = "true"
     elseif (isGNU) then
-        if ( str2int(VersionParts(1)%record) >= GNU_VERSION(1) .and. str2int(VersionParts(2)%record) >= GNU_VERSION(2) ) isParaMonteCompatibleCompiler = "true"
+        if ( str2int(VersionParts(1)%record) >= GNU_VERSION(1) .and. str2int(VersionParts(2)%record) >= GNU_VERSION(2) ) then
+            isParaMonteCompatibleCompiler = "true"
+        end if
         !if ( lge(string(1:3),"7.3") ) isParaMonteCompatibleCompiler = "true"
     end if
 
