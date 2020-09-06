@@ -1706,25 +1706,38 @@ def verifyDependencyVersion():
                     pm.warn ( msg   = "The current installation version of the " + module + " library on" + newline
                                     + "your system (" + installedVersion + ") is significantly different from " + newline
                                     + "the version (" + version + ") with which the ParaMonte library " + newline
-                                    + "has been tested. This will most likely create runtime issues. " + newline
+                                    + "has been tested. This could potentially create runtime issues. " + newline
                                     + "Please consider upgrading this library to the most recent " + newline
                                     + "version by typing the following on your command prompt, " + newline
                                     + newline
+                                    + "    pip install --user --upgrade " + module + newline
+                                    + newline
+                                    + "before you begin to use the ParaMonte library. Should "
+                                    + "the simulations or the post-processing of the " + newline
+                                    + "output files fail, please report it at, " + newline
+                                    + newline
                                     + "    " + pm.website.github.issues.url + newline
-                                    + "before you begin to use the ParaMonte library."
+                                    + newline
+                                    + "for a possible solution. skipping for now..."
                             , methodName = pm.names.paramonte
                             , marginTop = 0
                             , marginBot = 1
                             )
+
                 if installedVersion.split(".")[1] < version.split(".")[1]:
                     pm.warn ( msg   = "The current installation version of the " + module + " library on" + newline
                                     + "your system (" + installedVersion + ") is not the same as the " + newline
                                     + "version (" + version + ") with which the ParaMonte library " + newline
                                     + "has been tested. This may not create any issues, however, " + newline
                                     + "should the simulations or the post-processing of the " + newline
-                                    + "output files fail, please report it at, " + newline
+                                    + "output files fail, please upgrade the library via, " + newline
+                                    + newline
+                                    + "    pip install --user --upgrade " + module + newline
+                                    + newline
+                                    + "If the error persists, please report it at, " + newline
                                     + newline
                                     + "    " + pm.website.github.issues.url + newline
+                                    + newline
                                     + "for a possible solution. skipping for now..."
                             , methodName = pm.names.paramonte
                             , marginTop = 0
@@ -1741,7 +1754,13 @@ def verifyDependencyVersion():
                                 + "simulations. Please install the latest version of this " + newline
                                 + "library by typing the following on your command prompt: " + newline
                                 + newline
-                                + "    import --user --upgrade " + module
+                                + "    pip install --user --upgrade " + module + newline
+                                + newline
+                                + "If the error persists, please report it at, " + newline
+                                + newline
+                                + "    " + pm.website.github.issues.url + newline
+                                + newline
+                                + "for a possible solution. skipping for now..."
                         , methodName = pm.names.paramonte
                         , marginTop = 0
                         , marginBot = 1
@@ -1752,7 +1771,13 @@ def verifyDependencyVersion():
                                 + "simulation output files. Please install the latest version of this " + newline
                                 + "library by typing the following on your command prompt: " + newline
                                 + newline
-                                + "    import --user --upgrade " + module
+                                + "    pip install --user --upgrade " + module + newline
+                                + newline
+                                + "If the error persists, please report it at, " + newline
+                                + newline
+                                + "    " + pm.website.github.issues.url + newline
+                                + newline
+                                + "for a possible solution. skipping for now..."
                         , methodName = pm.names.paramonte
                         , marginTop = 0
                         , marginBot = 1
