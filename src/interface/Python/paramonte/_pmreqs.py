@@ -1809,7 +1809,7 @@ def checkForUpdate(name):
         pm.note ( msg   = "The latest version of the ParaMonte library is already installed on your system. " + newline
                         + "To see the latest changes to the ParaMonte Python library, visit, " + newline
                         + newline
-                        + "    " + website.home.overview.changes.python.url
+                        + "    " + pm.website.home.overview.changes.python.url
         , methodName = pm.names.paramonte
         , marginTop = 1
         , marginBot = 1
@@ -1828,7 +1828,7 @@ def checkForUpdate(name):
                         + newline
                         + "To see the latest changes to the ParaMonte Python library, visit, " + newline
                         + newline
-                        + "    " + website.home.overview.changes.python.url
+                        + "    " + pm.website.home.overview.changes.python.url
         , methodName = pm.names.paramonte
         , marginTop = 1
         , marginBot = 1
