@@ -325,7 +325,7 @@ class BasePlot:
 
                 resetType (optional)
 
-                    An optional string with possible value of "hard".
+                    An optional string with possible value of ``"hard"``.
                     If provided, the plot object will be regenerated from scratch.
                     This includes reading the original data frame again and resetting
                     everything. If not provided, then only the plot settings will be
@@ -337,9 +337,12 @@ class BasePlot:
 
             **Example**
 
-                reset()         # reset the plot to the default settings
-                reset("soft")   # reset the plot to the default settings
-                reset("hard")   # regenerate the plot from scratch
+                .. code-block:: python
+                    :linenos:
+
+                    reset()         # reset the plot to the default settings
+                    reset("soft")   # reset the plot to the default settings
+                    reset("hard")   # regenerate the plot from scratch
 
         """
 
@@ -431,9 +434,11 @@ class BasePlot:
 
         **Example**
 
-            ``savefig() # use a unique random filename to output the plot.``
-            ``savefig(fname = "thisPlot.png")``
-            ``savefig(pad_inches = 0.0, bbox_inches = "tight")``
+            .. code-block:: python
+
+                savefig() # use a unique random filename to output the plot.
+                savefig(fname = "thisPlot.png")
+                savefig(pad_inches = 0.0, bbox_inches = "tight")
 
         """
 
@@ -490,9 +495,9 @@ class BasePlot:
 
         **Example**
 
-        .. code-block:: python
+            .. code-block:: python
 
-            rows = getLinSpace(3, 1, 10000)
+                rows = getLinSpace(3, 1, 10000)
 
         """
 
@@ -567,9 +572,9 @@ class BasePlot:
 
         **Example**
 
-        .. code-block:: python
+            .. code-block:: python
 
-            rows = getLogLinSpace(1.01, 1, 1, 10000)
+                rows = getLogLinSpace(1.01, 1, 1, 10000)
 
         """
 

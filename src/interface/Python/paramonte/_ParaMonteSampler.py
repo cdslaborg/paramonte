@@ -72,63 +72,64 @@ class ParaMonteSampler:
 
         **Attributes**
 
-        buildMode
+            buildMode
 
-            optional string argument with the default value "release".
-            possible choices are:
+                optional string argument with the default value "release".
+                possible choices are:
 
-                "debug"
+                    "debug"
 
-                    to be used for identifying sources of bug
-                    and causes of code crash.
+                        to be used for identifying sources of bug
+                        and causes of code crash.
 
-                "release"
+                    "release"
 
-                    to be used in all other normal scenarios
-                    for maximum runtime efficiency.
+                        to be used in all other normal scenarios
+                        for maximum runtime efficiency.
 
-        mpiEnabled
+            mpiEnabled
 
-            optional logical (boolean) indicator which is ``False`` by default.
-            If it is set to ``True``, it will cause the ParaMonte simulation
-            to run in parallel on the requested number of processors.
-            See the class documentation guidelines in the above for
-            information on how to run a simulation in parallel.
+                optional logical (boolean) indicator which is ``False`` by default.
+                If it is set to ``True``, it will cause the ParaMonte simulation
+                to run in parallel on the requested number of processors.
+                See the class documentation guidelines in the above for
+                information on how to run a simulation in parallel.
 
-        reportEnabled
+            reportEnabled
 
-            optional logical (boolean) indicator which is ``True`` by default.
-            If it is set to ``True``, it will cause extensive guidelines to be
-            printed on the standard output as the simulation or post-processing
-            continues with hints on the next possible steps that could be taken
-            in the process. If you do not need such help and information set
-            this variable to ``False`` to silence all output messages.
+                optional logical (boolean) indicator which is ``True`` by default.
+                If it is set to ``True``, it will cause extensive guidelines to be
+                printed on the standard output as the simulation or post-processing
+                continues with hints on the next possible steps that could be taken
+                in the process. If you do not need such help and information set
+                this variable to ``False`` to silence all output messages.
 
-        inputFile
+            inputFile
 
-            optional string input representing the path to
-            an external input namelist of simulation specifications.
-            USE THIS OPTIONAL ARGUMENT WITH CAUTION AND
-            ONLY IF YOU KNOW WHAT YOU ARE DOING.
-            =====================================================================
-            **WARNING**: Specifying an input file will cause the sampler
-            to ignore all other simulation specifications set by the user via
-            sampler instance's `spec`-component attributes.
-            =====================================================================
+                optional string input representing the path to
+                an external input namelist of simulation specifications.
+                USE THIS OPTIONAL ARGUMENT WITH CAUTION AND
+                ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
-            spec
+                **WARNING**
 
-                A Python structure containing all simulation specifications.
-                All simulation attributes are by default set to appropriate
-                values at runtime. To override the default simulation
-                specifications, set the ``spec`` attributes to some
-                desired values of your choice.
+                Specifying an input file will cause the sampler to ignore 
+                all other simulation specifications set by the user via 
+                sampler instance's `spec`-component attributes.
 
-                If you need help on any of the simulation specifications, try
-                the supplied ``helpme()`` function in this component.
+                spec
 
-                If you wish to reset some specifications to the default values, 
-                simply set them to ``None``.
+                    A Python structure containing all simulation specifications.
+                    All simulation attributes are by default set to appropriate
+                    values at runtime. To override the default simulation
+                    specifications, set the ``spec`` attributes to some
+                    desired values of your choice.
+
+                    If you need help on any of the simulation specifications, try
+                    the supplied ``helpme()`` function in this component.
+
+                    If you wish to reset some specifications to the default values, 
+                    simply set them to ``None``.
 
         **Methods**
 
@@ -919,10 +920,10 @@ class ParaMonteSampler:
 
                     The path only needs to uniquely identify the simulation
                     to which the tabular file belongs. For example, specifying
-                    "./mydir/mysim" as input will lead to a search for a file
-                    that begins with "mysim" and ends with the tabular file 
-                    name's prefix, such as, "_sample.txt", inside the directory 
-                    "./mydir/". If there are multiple files with such name, 
+                    ``"./mydir/mysim"`` as input will lead to a search for a 
+                    file that begins with ``"mysim"`` and ends with the tabular file 
+                    name's prefix, such as, ``"_sample.txt"``, inside the directory 
+                    ``"./mydir/"``. If there are multiple files with such name, 
                     then all of them will be read and returned as a list.
 
                     If this input argument is not provided by the user, the
@@ -1103,9 +1104,9 @@ class ParaMonteSampler:
                     the default value of None.
                     The path only needs to uniquely identify the simulation
                     to which the output file belongs. For example, specifying
-                    "./mydir/mysim" as input will lead to a search for a file
-                    that begins with "mysim" and ends with "_sample.txt"
-                    inside the directory "./mydir/". If there are multiple
+                    ``"./mydir/mysim"`` as input will lead to a search for a 
+                    file that begins with ``"mysim"`` and ends with ``"_sample.txt"``
+                    inside the directory ``"./mydir/"``. If there are multiple
                     files with such name, then all of them will be read
                     and returned as a list.
                     If this input argument is not provided by the user, the
@@ -1220,9 +1221,9 @@ class ParaMonteSampler:
                     the default value of None.
                     The path only needs to uniquely identify the simulation
                     to which the output file belongs. For example, specifying
-                    "./mydir/mysim" as input will lead to a search for a file
-                    that begins with "mysim" and ends with "_chain.txt"
-                    inside the directory "./mydir/". If there are multiple
+                    ``"./mydir/mysim"`` as input will lead to a search for a file
+                    that begins with ``"mysim"`` and ends with ``"_chain.txt"``
+                    inside the directory ``"./mydir/"``. If there are multiple
                     files with such name, then all of them will be read
                     and returned as a list.
                     If this input argument is not provided by the user, the
@@ -1334,13 +1335,13 @@ class ParaMonteSampler:
                 file (optional)
 
                     A string representing the path to the output file with
-                    the default value of None.
+                    the default value of ``None``.
 
                     The path only needs to uniquely identify the simulation
                     to which the output file belongs. For example, specifying
-                    "./mydir/mysim" as input will lead to a search for a file
-                    that begins with "mysim" and ends with "_progress.txt"
-                    inside the directory "./mydir/". If there are multiple
+                    ``"./mydir/mysim"`` as input will lead to a search for a file
+                    that begins with ``"mysim"`` and ends with ``"_progress.txt"``
+                    inside the directory ``"./mydir/"``. If there are multiple
                     files with such name, then all of them will be read
                     and returned as a list.
 
@@ -1437,32 +1438,31 @@ class ParaMonteSampler:
 
             **NOTE**
 
-            **Only restart output files in **ASCII format** can be read 
+            Only restart output files in **ASCII format** can be read 
             via this method. The binary restart files are NOT meant to 
             be parsed via this method. To request for ASCII restart 
             output files in simulations, set the input simulation 
-            specification**
+            specification
 
             .. code-block:: python
-                :linenos:
 
-                    SAMPLER.spec.restartFileFormat = "ascii",
+                SAMPLER.spec.restartFileFormat = "ascii",
 
             where ``SAMPLER`` can be an instance of any one of the 
             ParaMonte's sampler classes, such as ``ParaDRAM()``.
 
             **WARNING**
             
-            **Avoid using this routine for very large long simulations.
+            Avoid using this routine for very large long simulations.
             Reading the full restart file of a large-scale simulation 
-            problem can be extremely memory-intensive.**
+            problem can be extremely memory-intensive.
 
             **WARNING**
 
-            **This method is to be only used for post-processing of the 
+            This method is to be only used for post-processing of the 
             output restart file(s) of an already finished simulation. 
             It is NOT meant to be called by all processes in parallel 
-            mode, although it is possible.**
+            mode, although it is possible.
 
             **Parameters**
 
@@ -1471,34 +1471,33 @@ class ParaMonteSampler:
                     A string representing the path to the restart file with the
                     default value of []. The path only needs to uniquely identify
                     the name of the simulation to which the restart file belongs.
-                    For example, specifying "./mydir/mysim" as input will lead to
-                    a search for a file that begins with "mysim" and ends with
-                    "_restart.txt" inside the directory "./mydir/".
+                    For example, specifying ``"./mydir/mysim"`` as input will lead 
+                    to a search for a file that begins with ``"mysim"`` and ends with
+                    ``"_restart.txt"`` inside the directory ``"./mydir/"``.
                     If there are multiple files with such name, then all of them
                     will be read and returned as a list.
                     If this input argument is not provided by the user, the
                     value of the object's ``spec`` attribute ``outputFileName``
                     will be used instead.
-                    ==========================================================
-                    **WARNING**: At least one of the two mentioned routes must
+
+                    **WARNING**
+
+                    At least one of the two mentioned routes must
                     provide the path to the restart file. Otherwise,
                     this method will abort the program.
-                    ==========================================================
 
                     Example usage:
 
-                    .. code-block:: python
-                        :linenos:
+                        .. code-block:: python
 
-                        pmpd.readRestart("./out/test_run_")
+                            pmpd.readRestart("./out/test_run_")
 
-                    or,
+                        or,
 
-                    .. code-block:: python
-                        :linenos:
+                        .. code-block:: python
 
-                        pmpd.spec.outputFileName = "./out/test_run_"
-                        pmpd.readRestart()
+                            pmpd.spec.outputFileName = "./out/test_run_"
+                            pmpd.readRestart()
 
                    Both of the above examples are equivalent.
                    The latter is recommended as it is less confusing.
@@ -1645,10 +1644,10 @@ class ParaMonteSampler:
 
         **NOTE**
 
-        **This method is to be only used for post-processing of the output
+        This method is to be only used for post-processing of the output
         report file(s) of an already finished simulation. It is NOT meant
         to be called by all processes in parallel mode, although it is
-        possible.**
+        possible.
 
             **Parameters**
 
@@ -1657,34 +1656,33 @@ class ParaMonteSampler:
                     A string representing the path to the report file with the
                     default value of []. The path only needs to uniquely identify
                     the name of the simulation to which the report file belongs.
-                    For example, specifying "./mydir/mysim" as input will lead to
-                    a search for a file that begins with "mysim" and ends with
-                    "_report.txt" inside the directory "./mydir/".
+                    For example, specifying ``"./mydir/mysim"`` as input will lead to
+                    a search for a file that begins with ``"mysim"`` and ends with
+                    ``"_report.txt"`` inside the directory ``"./mydir/"``.
                     If there are multiple files with such name, then all of them
                     will be read and returned as a list.
                     If this input argument is not provided by the user, the
                     value of the object's ``spec`` attribute ``outputFileName``
                     will be used instead.
-                    ==========================================================
-                    **WARNING**: At least one of the two mentioned routes must
+
+                    **WARNING**
+
+                    At least one of the two mentioned routes must
                     provide the path to the report file. Otherwise,
                     this method will abort the program.
-                    ==========================================================
 
                     Example usage:
 
-                    .. code-block:: python
-                        :linenos:
+                        .. code-block:: python
 
-                        pmpd.readReport("./out/test_run_")
+                            pmpd.readReport("./out/test_run_")
 
-                    or,
+                        or,
 
-                    .. code-block:: python
-                        :linenos:
+                        .. code-block:: python
 
-                        pmpd.spec.outputFileName = "./out/test_run_"
-                        pmpd.readReport()
+                            pmpd.spec.outputFileName = "./out/test_run_"
+                            pmpd.readReport()
 
                    Both of the above examples are equivalent.
                    The latter is recommended as it is less confusing.

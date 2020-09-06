@@ -349,7 +349,8 @@ class GridPlot(BasePlot):
         **Returns**
 
             self
-                an object of class ``GridPlot``.
+
+                An object of class ``GridPlot``.
 
     ---------------------------------------------------------------------------
     """

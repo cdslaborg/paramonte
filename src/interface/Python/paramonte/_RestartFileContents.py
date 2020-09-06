@@ -298,7 +298,7 @@ class RestartFileContents(OutputFileContents):
 
                 resetType (optional)
 
-                    An optional string with possible value of "hard".
+                    An optional string with possible value of ``"hard"``.
                     If provided, the plot object will be regenerated from scratch.
                     This includes reading the original data frame again and resetting
                     everything. If not provided, then only the plot settings will be
@@ -316,9 +316,11 @@ class RestartFileContents(OutputFileContents):
 
             **Example**
 
-                reset("hard")                       # regenerate all plots from scratch
-                reset("hard","covmat2")             # regenerate covmat2 plot from scratch
-                reset("hard",["covmat2","covmat3"]) # regenerate covmat2 & covmat3 plots
+                .. code-block:: python
+
+                    reset("hard")                       # regenerate all plots from scratch
+                    reset("hard","covmat2")             # regenerate covmat2 plot from scratch
+                    reset("hard",["covmat2","covmat3"]) # regenerate covmat2 & covmat3 plots
 
         """
 

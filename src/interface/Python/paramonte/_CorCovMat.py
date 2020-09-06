@@ -145,8 +145,10 @@ class CorCovMat:
 
                 The object self if ``reself = True`` otherwise, ``None``.
 
-                **NOTE**: This method causes side-effects by manipulating
-                **NOTE**: the existing attributes of the object.
+                **NOTE**
+
+                This method causes side-effects by manipulating
+                the existing attributes of the object.
 
         """
 
@@ -255,7 +257,7 @@ class CorCovMat:
 
                 resetType (optional)
 
-                    An optional string with possible value of "hard".
+                    An optional string with possible value of ``"hard"``.
                     If provided, the plot object will be regenerated from scratch.
                     This includes reading the original data frame again and resetting
                     everything. If not provided, then only the plot settings will be
@@ -273,8 +275,10 @@ class CorCovMat:
 
             **Example**
 
-                reset("hard")                    # regenerate all plots from scratch
-                reset("hard","heatmap")          # regenerate heatmap plot from scratch
+                .. code-block:: python
+
+                    reset("hard")                    # regenerate all plots from scratch
+                    reset("hard","heatmap")          # regenerate heatmap plot from scratch
 
         """
 

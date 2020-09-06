@@ -103,9 +103,11 @@ class Target:
                             axvline.kws.ymin = 0.1
                             axvline.kws.ymax = 1.9
 
-                        NOTE: If a desired property is missing in the 
-                        NOTE: structure, simply add the property and 
-                        NOTE: its value to the structure.
+                        **NOTE**
+
+                        If a desired property is missing in the 
+                        structure, simply add the property and 
+                        its value to the structure.
 
             axhline (optional)
 
@@ -131,9 +133,11 @@ class Target:
                             axhline.kws.xmin = 0.1
                             axhline.kws.xmax = 1.9
 
-                        NOTE: If a desired property is missing in the 
-                        NOTE: structure, simply add the property and 
-                        NOTE: its value to the structure.
+                        **NOTE**
+
+                        If a desired property is missing in the 
+                        structure, simply add the property and 
+                        its value to the structure.
 
             scatter (optional)
 
@@ -151,7 +155,6 @@ class Target:
                         matplotlib's ``scatter()`` function. For example:
 
                         .. code-block:: python
-                            :linenos:
 
                             scatter.kws.s = 20
                             scatter.kws.color = "orangered"

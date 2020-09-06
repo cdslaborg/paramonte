@@ -99,8 +99,9 @@ def helpme(specification = ""):
         **Parameters**
 
             specification
-                A string that can take be any of the simulation specifications 
-                of a ParaDRAM object, such as, "chainSize", ...
+                A string that can take be any of the simulation 
+                specifications of a ParaDRAM object, such as, 
+                ``"chainSize"``, ``"sampleSize"``, ...
 
         **Returns**
 

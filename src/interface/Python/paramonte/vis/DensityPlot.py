@@ -264,7 +264,6 @@ class DensityPlot(BasePlot):
                 Example usage:
 
                     .. code-block:: python
-                        :linenos:
 
                         gridSize = 512
 
@@ -281,9 +280,8 @@ class DensityPlot(BasePlot):
                 Example usage:
 
                     .. code-block:: python
-                        :linenos:
 
-                        gridSize = 512
+                        limits = ( (-10, 10),(-5,5) )
 
             noiseDensity (available in ``contour``, ``contourf``, ``contour3``)
 
@@ -294,7 +292,6 @@ class DensityPlot(BasePlot):
                 Example usage:
 
                     .. code-block:: python
-                        :linenos:
 
                         noiseDensity = 1.e-5
 

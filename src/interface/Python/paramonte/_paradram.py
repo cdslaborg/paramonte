@@ -362,11 +362,12 @@ class ParaDRAM(ParaMonteSampler):
             an external input namelist of simulation specifications.
             USE THIS OPTIONAL ARGUMENT WITH CAUTION AND
             ONLY IF YOU KNOW WHAT YOU ARE DOING.
-            =====================================================================
-            **WARNING**: Specifying an input file will cause the ParaDRAM sampler
-            to ignore all other simulation specifications set by the user via
-            sampler instance's `spec`-component attributes.
-            =====================================================================
+
+            **WARNING**
+
+            Specifying an input file will cause the ParaDRAM sampler
+            to ignore all other simulation specifications set by the 
+            user via sampler instance's `spec`-component attributes.
 
         spec
 
@@ -500,11 +501,11 @@ class ParaDRAM(ParaMonteSampler):
 
                         **WARNING**
 
-                        **Use this optional argument with caution and only
+                        Use this optional argument with caution and only
                         if you know what you are doing. Specifying this option
                         will cause the sampler to ignore all other simulation
                         specifications set by the user via the ``spec``
-                        component of the sampler instance.**
+                        component of the sampler instance.
 
             **Returns**
 
@@ -584,9 +585,9 @@ class ParaDRAM(ParaMonteSampler):
                     the default value of ``None``.
                     The path only needs to uniquely identify the simulation
                     to which the chain file belongs. For example, specifying
-                    "./mydir/mysim" as input will lead to a search for a file
-                    that begins with "mysim" and ends with ``"_chain.txt"``
-                    inside the directory "./mydir/". If there are multiple
+                    ``"./mydir/mysim"`` as input will lead to a search for a file
+                    that begins with ``"mysim"`` and ends with ``"_chain.txt"``
+                    inside the directory ``"./mydir/"``. If there are multiple
                     files with such name, then all of them will be read
                     and returned as a list.
                     If this input argument is not provided by the user, the

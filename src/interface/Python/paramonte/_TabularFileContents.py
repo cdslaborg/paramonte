@@ -318,7 +318,7 @@ class TabularFileContents(OutputFileContents):
 
                 resetType (optional)
 
-                    An optional string with possible value of "hard".
+                    An optional string with possible value of ``"hard"``.
                     If provided, the plot object will be regenerated from scratch.
                     This includes reading the original data frame again and resetting
                     everything. If not provided, then only the plot settings will be
@@ -336,9 +336,11 @@ class TabularFileContents(OutputFileContents):
 
             **Example**
 
-                reset("hard")                   # regenerate all plots from scratch
-                reset("hard","line3")           # regenerate line3 plot from scratch
-                reset("hard",["line","line3"])  # regenerate line and line3 plots
+                .. code-block:: python
+
+                    reset("hard")                   # regenerate all plots from scratch
+                    reset("hard","line3")           # regenerate line3 plot from scratch
+                    reset("hard",["line","line3"])  # regenerate line and line3 plots
 
         """
 
