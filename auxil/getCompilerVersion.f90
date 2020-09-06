@@ -26,8 +26,8 @@ program getCompilerVersion
 
     use iso_fortran_env, only: compiler_version, IK => int32
     implicit none
-    integer(IK) , parameter     :: INTEL_VERSION = [18_IK,0_IK,0_IK]
-    integer(IK) , parameter     :: GNU_VERSION = [7_IK,3_IK,0_IK]
+    integer(IK) , parameter     :: INTEL_VERSION(3) = [18_IK,0_IK,0_IK]
+    integer(IK) , parameter     :: GNU_VERSION(3) = [7_IK,3_IK,0_IK]
     integer(IK)                 :: fileunit, startindex, endindex
     logical                     :: isIntel = .false.
     logical                     :: isGNU = .false.
@@ -37,7 +37,7 @@ program getCompilerVersion
         character(:)    , allocatable   :: record
     end type CharVec_type
 
-    type(CharVec_type)  , allocatable   :: VersionParts
+    type(CharVec_type)  , allocatable   :: VersionParts(:)
 
     isParaMonteCompatibleCompiler = "false"
     string = trim(adjustl(compiler_version()))
