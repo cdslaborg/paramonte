@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
-### Version  2.0.0 -- September 5, 2020  
+### Version  2.0.0 -- September 6, 2020  
 
 **Major enhancements to the ParaMonte / ParaDRAM sampler interfaces**  
 

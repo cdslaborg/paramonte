@@ -1790,3 +1790,49 @@ def verifyDependencyVersion():
     return None
 
 ####################################################################################################################################
+#### verifyDependencyVersion
+####################################################################################################################################
+
+def checkForUpdate(name):
+    import subprocess
+    import sys
+    latestVersion = str(subprocess.run([sys.executable, '-m', 'pip', 'install', '{}==random'.format(name)], capture_output=True, text=True))
+    latestVersion = latestVersion[latestVersion.find('(from versions:')+15:]
+    latestVersion = latestVersion[:latestVersion.find(')')]
+    latestVersion = latestVersion.replace(' ','').split(',')[-1]
+
+    currentVersion = str(subprocess.run([sys.executable, '-m', 'pip', 'show', '{}'.format(name)], capture_output=True, text=True))
+    currentVersion = currentVersion[currentVersion.find('Version:')+8:]
+    currentVersion = currentVersion[:currentVersion.find('\\n')].replace(' ','') 
+
+    if latestVersion == currentVersion:
+        pm.note ( msg   = "The latest version of the ParaMonte library is already installed on your system. " + newline
+                        + "To see the latest changes to the ParaMonte Python library, visit, " + newline
+                        + newline
+                        + "    " + website.home.overview.changes.python.url
+        , methodName = pm.names.paramonte
+        , marginTop = 1
+        , marginBot = 1
+        )
+    else:
+        pm.note ( msg   = "A newer version (" + latestVersion + ") of the ParaMonte library appears " + newline
+                        + "to exists on the PyPI repository. The currently installed version is: " + currentVersion + newline
+                        + "You can upgrade to the latest version by typing the following on " + newline
+                        + "your Bash terminal or Anaconda command prompt: " + newline
+                        + newline
+                        + "    pip install --user --upgrade " + module + newline
+                        + newline
+                        + "To upgrade from within your Jupyter or IPython session, try, " + newline
+                        + newline
+                        + "    !pip install --user --upgrade " + module + newline
+                        + newline
+                        + "To see the latest changes to the ParaMonte Python library, visit, " + newline
+                        + newline
+                        + "    " + website.home.overview.changes.python.url
+        , methodName = pm.names.paramonte
+        , marginTop = 1
+        , marginBot = 1
+        )
+    return None
+
+####################################################################################################################################
