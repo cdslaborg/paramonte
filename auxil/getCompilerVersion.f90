@@ -72,7 +72,6 @@ program getCompilerVersion
     if  ( str2int(VersionParts(1)%record) > MinVersion(1) .or. &
         ( str2int(VersionParts(1)%record)== MinVersion(1) .and. str2int(VersionParts(2)%record) >= MinVersion(2) ) ) &
         isParaMonteCompatibleCompiler = "true"
-    end if
 
     open(newunit=fileunit,file="isParaMonteCompatibleCompiler.tmp")
     write(fileunit,"(A)") isParaMonteCompatibleCompiler
