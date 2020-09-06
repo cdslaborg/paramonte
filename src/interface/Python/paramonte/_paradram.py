@@ -386,9 +386,9 @@ class ParaDRAM(ParaMonteSampler):
 
                 ##################################
                 import paramonte as pm
-                pmpd = pm.ParaDRAM()     # instantiate a ParaDRAM sampler class
-                pmpd.helpme()            # get help on all simulation specification
-                pmpd.helpme("chainSize") # get help on "chainSize" specifically
+                pmpd = pm.ParaDRAM()          # instantiate a ParaDRAM sampler class
+                pmpd.spec.helpme()            # get help on all simulation specification
+                pmpd.spec.helpme("chainSize") # get help on "chainSize" specifically
                 ##################################
 
     **Methods**
