@@ -56,11 +56,10 @@ newline = pm.newline
 class ParaDRAM(ParaMonteSampler):
     """
 
-    This is the **ParaDRAM** class for generating instances of **serial** and **parallel**
-    **Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo** sampler
-    class of the ParaMonte library.
-
-    **The ``ParaDRAM`` class is a child of the ``ParaMonteSampler`` class.**
+    This is the **ParaDRAM** class to generate instances of **serial** and **parallel**
+    **Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo** 
+    sampler class of the ParaMonte library. The ``ParaDRAM`` class is a 
+    child of the ``ParaMonteSampler`` class.
 
     All ParaDRAM class attributes (input arguments to the ParaDRAM constructor)
     are optional and all attributes can be also set after a ParaDRAM instance

@@ -117,19 +117,19 @@ class ParaMonteSampler:
                 all other simulation specifications set by the user via 
                 sampler instance's `spec`-component attributes.
 
-                spec
+            spec
 
-                    A Python structure containing all simulation specifications.
-                    All simulation attributes are by default set to appropriate
-                    values at runtime. To override the default simulation
-                    specifications, set the ``spec`` attributes to some
-                    desired values of your choice.
+                A Python structure containing all simulation specifications.
+                All simulation attributes are by default set to appropriate
+                values at runtime. To override the default simulation
+                specifications, set the ``spec`` attributes to some
+                desired values of your choice.
 
-                    If you need help on any of the simulation specifications, try
-                    the supplied ``helpme()`` function in this component.
+                If you need help on any of the simulation specifications, try
+                the supplied ``helpme()`` function in this component.
 
-                    If you wish to reset some specifications to the default values, 
-                    simply set them to ``None``.
+                If you wish to reset some specifications to the default values, 
+                simply set them to ``None``.
 
         **Methods**
 
