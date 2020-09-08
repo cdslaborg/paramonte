@@ -962,7 +962,7 @@ class ParaMonteSampler:
 
             **Returns**
 
-                ???List
+                List
 
                     A Python list of ``TabularFileContents`` objects, each 
                     of which corresponds to the contents of a unique restart 
