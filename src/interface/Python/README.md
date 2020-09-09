@@ -17,7 +17,7 @@
 <a href="https://github.com/cdslaborg/paramonte/commits/master" target="_blank"><img src="https://img.shields.io/github/last-commit/cdslaborg/paramonte?color=blue&style=flat-square" alt="GitHub last commit" /></a>
 [![View ParaMonte on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/78946-paramonte)
 <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><img src="https://img.shields.io/badge/reference-%20%09arXiv%3A1209.4647-blueviolet?style=flat-square" alt="citations and references" /></a>
-<a href="http://ascl.net/2008.016" target="_blank"><img src="https://img.shields.io/badge/ascl-2008.016-blue.svg?colorB=262255" alt="ascl:2008.016" /></a>
+<a href="https://ascl.net/2008.016" target="_blank"><img src="https://img.shields.io/badge/ascl-2008.016-blue.svg?colorB=262255" alt="ascl:2008.016" /></a>
 <br><br>
 <a href="https://twitter.com/intent/tweet?text=ParaMonte%20-%20Plain%20Powerfull%20Parallel%20Monte%20Carlo%20Library:&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" target="_blank"><img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" alt="Twitter" /></a> 
   
@@ -98,7 +98,7 @@ Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/ov
 License  
 =======  
 
-[GNU Lesser General Public License](https://github.com/cdslaborg/paramonte/blob/master/LICENSE)  
+[MIT License](https://github.com/cdslaborg/paramonte/blob/master/LICENSE.md)  
 
 **What does this license mean?**  
 
@@ -107,7 +107,7 @@ Essentially, all we are asking from the users or developers is to
 >   acknowledge the use of this library in other work or (commercial / free) software that are built upon this work.  
 
 This is a free software, so help us keep it freely available to the public by redistributing the library and contributing to it. 
-If you have any questions or concerns about the license, do not hesitate to the contact us (shahmoradi@utexas.edu).  
+If you have questions or concerns about the license, do feel free the contact us (shahmoradi@utexas.edu).  
 
   
 Authors and contributors  
