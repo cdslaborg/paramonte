@@ -129,7 +129,7 @@ Essentially, all we are asking from the users or developers is to
 >   acknowledge the use of this library in other work or (commercial / free) software that are built upon this work.  
 
 This is a free software, so help us keep it freely available to the public by redistributing the library and contributing to it. 
-If you have questions or concerns about the license, do feel free the contact us (shahmoradi@utexas.edu).  
+If you have questions or concerns about the license, do not hesitate to contact us (shahmoradi@utexas.edu).  
 
   
 Authors and contributors  
