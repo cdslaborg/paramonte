@@ -154,7 +154,7 @@ Installation
 
 readme["installation"]["main"] = readme["installation"]["title"] + """
 The ParaMonte library installation/build process is fully automated for all of the supported programming languages. 
-The pre-built libraries are also available on [the release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases). 
+The pre-built ready-to-use libraries are also available on [the release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases). 
 Each prebuilt ParaMonte library automatically ships with a full-fledged set of example codes and build scripts.  
 
 For more information and quick-start in the programming language of your choice, visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).  
