@@ -367,7 +367,7 @@ if flag2, self.writeOutput2(); end
                     fwrite( self.RestartFile.unit, meanAccRateSinceStart, "float64");
                 else
                     precisionRestart = "\n" + "%" + "." + self.SpecBase.outputRealPrecision.str + "f";
-                    fprintf(self.RestartFile.unit, "meanAccRateSinceStart" + precisionRestart, meanAccRateSinceStart);
+                    fprintf(self.RestartFile.unit, "meanAcceptanceRateSinceStart" + precisionRestart, meanAccRateSinceStart);
                     self.Proposal.writeRestartFile(); % xxx
                 end
             else

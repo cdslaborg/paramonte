@@ -190,7 +190,7 @@ classdef RestartFileContents < OutputFileContents
             rowOffset = 1;
             while ~contains(lower(self.lineList(rowOffset)),"meanvec")
                 rowOffset = rowOffset + 1;
-                if rowOffset>self.lineListLen; disp("11111111111"); self.reportCorruptFile(); end
+                if rowOffset>self.lineListLen; self.reportCorruptFile(); end
             end
             rowOffset = rowOffset + 1; % the first numeric value
 
@@ -198,7 +198,7 @@ classdef RestartFileContents < OutputFileContents
             while isNumericString(self.lineList(rowOffset+self.ndim))
                 self.ndim = self.ndim + 1;
             end
-            if self.ndim==0; disp("22222222222"); self.reportCorruptFile(); end
+            if self.ndim==0; self.reportCorruptFile(); end
 
             % parse the restart file contents
 
@@ -532,7 +532,7 @@ classdef RestartFileContents < OutputFileContents
                     self.plot.(plotName).plot_kws.linewidth = 1;
                     matrixType = "covariance"; if isCorMatPlot; matrixType = "correlation"; end
                     self.plot.(plotName).title_kws.enabled = true;
-                    self.plot.(plotName).title_kws.content = "Evolution of the " + matrixType + " matrices of the proposal distribution";
+                    self.plot.(plotName).title_kws.label = "Evolution of the " + matrixType + " matrices of the proposal distribution";
                     self.plot.(plotName).title_kws.fontsize = 11;
                     self.plot.(plotName).title_kws.interpreter = "tex";
                 end

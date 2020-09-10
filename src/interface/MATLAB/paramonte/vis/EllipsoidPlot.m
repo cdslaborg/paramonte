@@ -763,12 +763,9 @@ classdef EllipsoidPlot < BasePlot
 
             % set title properties
 
-            if self.title_kws.enabled
+            if self.title_kws.enabled && getVecLen(self.title_kws.label)
                 if ~(isstring(self.title_kws.label) || ischar(self.title_kws.label))
-                    error   ( "The title component of an EllipsoidPlot object must be a string or character vector. " ...
-                            + "You have entered " ...
-                            + string(self.title_kws) ...
-                            );
+                    error("The title component of an EllipsoidPlot object must be a string or character vector.");
                 end
                 title_kws_cell = convertStruct2Cell(self.title_kws,{"enabled","label"});
                 title(self.title_kws.label,title_kws_cell{:});

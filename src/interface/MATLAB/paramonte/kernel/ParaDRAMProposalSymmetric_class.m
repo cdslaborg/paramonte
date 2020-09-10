@@ -103,8 +103,8 @@ classdef ParaDRAMProposalSymmetric_class < handle
             % setup sampler update global save variables
             %***********************************************************************************************************************
 
-            self.Global.mv_MeanOld_save(1:ndim)         = Constants.NULL_RK;
-            self.Global.mv_logSqrtDetOld_save           = Constants.NULL_RK;
+            self.Global.mv_MeanOld_save(1:ndim)         = 0; % Constants.NULL_RK;
+            self.Global.mv_logSqrtDetOld_save           = 0; % Constants.NULL_RK;
             self.Global.mv_sampleSizeOld_save           = 0;
             self.Global.mv_adaptiveScaleFactorSq_save   = 1;
             self.Global.mv_Err                          = Err_class();
@@ -584,10 +584,10 @@ classdef ParaDRAMProposalSymmetric_class < handle
                                                     , self.Global.mv_logSqrtDetOld_save         ...
                                                     , self.Global.mv_adaptiveScaleFactorSq_save ...
                                                     , self.Global.mv_MeanOld_save.'             ...
-                                                    ..., self.Global.comv_chol(:,:,1).'         ... do not need anymore since comv_covMat is sufficient
+                                                    ..., self.Global.comv_chol(:,:,1).'         ... not needed anymore since lower comv_covMat is sufficient
                                                     ..., self.Global.comv_covMat(:,:,1).'       ...
-                                                    , self.Global.lower_comv_covMat(1,:)          ...
-                                                    ) ;
+                                                    , self.Global.lower_comv_covMat(1,:)        ...
+                                                    );
 
         end
 
