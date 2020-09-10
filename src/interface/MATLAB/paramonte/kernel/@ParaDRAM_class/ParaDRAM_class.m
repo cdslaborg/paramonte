@@ -164,13 +164,13 @@ classdef ParaDRAM_class < ParaMCMC_class
         objectName          = [];           % dynamic name of the user-defined objects
         SpecDRAM            = [];
         Proposal            = [];
+        Stats               = ParaDRAM_Statistics_class()
+        Chain               = []
+        RefinedChain        = []
     end
 
     properties (Access = public)
         spec                = []
-        Stats               = ParaDRAM_Statistics_class()
-        Chain               = []
-        RefinedChain        = []
     end
 
 %***********************************************************************************************************************************
@@ -238,6 +238,8 @@ classdef ParaDRAM_class < ParaMCMC_class
 
         runSampler(self, ndim, getLogFunc)
         [markovChainList] = readMarkovChain(self,varargin)
+        [restartList] = readRestart(self,varargin)
+        [reportList] = readReport(self,varargin)
         [sampleList] = readSample(self,varargin)
         [chainList] = readChain(self,varargin)
 
@@ -278,12 +280,12 @@ classdef ParaDRAM_class < ParaMCMC_class
     %*******************************************************************************************************************************
 
         runKernel(self, getLogFunc)
+        readTabular(self, callerName, varargin)
         reportProgress(self)
         writeOutput(self)
         writeOutput2(self)
         writeRestartFile(self)
-        %outputList = readOutput(self,file,delimiter,fileType)
-        fileList = getFileList(self,file,fileType)
+        fileList = getFilePathList(self,file,fileType)
 
         %***************************************************************************************************************************
         %***************************************************************************************************************************
