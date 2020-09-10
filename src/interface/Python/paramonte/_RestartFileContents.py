@@ -348,6 +348,7 @@ class RestartFileContents(OutputFileContents):
         if isinstance(resetType, str):
             resetTypeIsHard = resetType.lower()=="hard"
         else:
+            resetTypeIsHard = None
             pm.abort( msg   = "The input argument resetType must be a string representing" + newline
                             + "the type of the reset to be performed on the plots." + newline
                             + "A list of possible plots includes: \"hard\", \"soft\"" + newline
@@ -365,13 +366,19 @@ class RestartFileContents(OutputFileContents):
 
         for requestedPlotType in requestedPlotTypeList:
 
+            plotObject = None
             requestedPlotTypeLower = requestedPlotType.lower()
 
-            is3d        = "3"           in requestedPlotTypeLower
+           #is3d        = "3"           in requestedPlotTypeLower
             isLine      = "line"        in requestedPlotTypeLower
             isScatter   = "scatter"     in requestedPlotTypeLower
             isCovMat    = "covmat"      in requestedPlotTypeLower
             isCorMat    = "cormat"      in requestedPlotTypeLower
+
+            if not resetTypeIsHard:
+                plotComponent = getattr(self, "plot")
+                plotObject = getattr(plotComponent, requestedPlotType)
+                plotObject._reset()
 
             ########################################################################################################################
             #### reset line / scatter
@@ -379,31 +386,32 @@ class RestartFileContents(OutputFileContents):
 
             if isLine or isScatter:
 
-                lineScatterPlot = LineScatterPlot   ( plotType = requestedPlotType
-                                                    , dataFrame = self.df
-                                                    , methodName = self._methodName
-                                                    , reportEnabled = self._reportEnabled
-                                                    , resetPlot = self._resetPlot
-                                                    )
+                if resetTypeIsHard:
+                    plotObject = LineScatterPlot( plotType = requestedPlotType
+                                                , dataFrame = self.df
+                                                , methodName = self._methodName
+                                                , reportEnabled = self._reportEnabled
+                                                , resetPlot = self._resetPlot
+                                                )
 
-                if self._methodName == pm.names.paradram: lineScatterPlot.ycolumns = self.propNameList[0]
-                lineScatterPlot.ccolumns = []
-                lineScatterPlot.colorbar.kws.extend = "neither"
-                lineScatterPlot.colorbar.kws.orientation = "vertical"
-                lineScatterPlot.colorbar.kws.spacing = "uniform"
+                if self._methodName == pm.names.paradram: plotObject.ycolumns = self.propNameList[0]
+                plotObject.ccolumns = []
+                plotObject.colorbar.kws.extend = "neither"
+                plotObject.colorbar.kws.orientation = "vertical"
+                plotObject.colorbar.kws.spacing = "uniform"
 
                 if isLine:
                     if isScatter:
-                        lineScatterPlot.lineCollection.enabled = False
-                        lineScatterPlot.plot.enabled = True
-                        lineScatterPlot.plot.kws.alpha = 0.2
-                        lineScatterPlot.plot.kws.color = "grey"
-                        lineScatterPlot.plot.kws.linewidth = 0.75
+                        plotObject.lineCollection.enabled = False
+                        plotObject.plot.enabled = True
+                        plotObject.plot.kws.alpha = 0.2
+                        plotObject.plot.kws.color = "grey"
+                        plotObject.plot.kws.linewidth = 0.75
                     else:
-                        lineScatterPlot.lineCollection.enabled = True
-                        lineScatterPlot.plot.enabled = False
+                        plotObject.lineCollection.enabled = True
+                        plotObject.plot.enabled = False
 
-                setattr(self.plot, requestedPlotType, lineScatterPlot)
+                setattr(self.plot, requestedPlotType, plotObject)
 
             ########################################################################################################################
             #### reset covmat / cormat
@@ -416,23 +424,25 @@ class RestartFileContents(OutputFileContents):
                     matrix = None
                     if isCovMat: matrix = self.contents.covMat
                     if isCorMat: matrix = self.contents.corMat
-                    ellipsoidPlot = EllipsoidPlot   ( matrix = matrix
+
+                    if resetTypeIsHard:
+                        plotObject = EllipsoidPlot  ( matrix = matrix
                                                     , plotType = requestedPlotType
                                                     , methodName = self._methodName
                                                     , reportEnabled = self._reportEnabled
                                                     , resetPlot = self._resetPlot
                                                     )
 
-                    ellipsoidPlot.rows = ellipsoidPlot.getLogLinSpace()
-                    ellipsoidPlot.center = self.contents.meanVec
-                    ellipsoidPlot.title.enabled = True
+                    plotObject.rows = plotObject.getLogLinSpace()
+                    plotObject.center = self.contents.meanVec
+                    plotObject.title.enabled = True
                     matrixType = "covariance" if isCovMat else "correlation"
-                    ellipsoidPlot.title.label = "Evolution of the " + matrixType + " matrices of the proposal distribution"
+                    plotObject.title.label = "Evolution of the " + matrixType + " matrices of the proposal distribution"
 
-                    ellipsoidPlot.colorbar.kws.extend = "neither"
-                    ellipsoidPlot.colorbar.kws.orientation = "vertical"
-                    ellipsoidPlot.colorbar.kws.spacing = "uniform"
+                    plotObject.colorbar.kws.extend = "neither"
+                    plotObject.colorbar.kws.orientation = "vertical"
+                    plotObject.colorbar.kws.spacing = "uniform"
 
-                    setattr(self.plot, requestedPlotType, ellipsoidPlot)
+                    setattr(self.plot, requestedPlotType, plotObject)
 
     ################################################################################################################################

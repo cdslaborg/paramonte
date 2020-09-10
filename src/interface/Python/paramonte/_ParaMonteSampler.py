@@ -42,7 +42,6 @@
 
 import os
 import sys
-import numpy as np
 import typing as tp
 import ctypes as ct
 
@@ -473,7 +472,7 @@ class ParaMonteSampler:
             else:
                 os.environ["PATH"] = pm.path.root
 
-            mpiFound = False
+            #mpiFound = False
             pathList = os.environ["PATH"].split(";")
             for path in pathList:
                 pathLower = path.lower().replace("\\","")
@@ -556,7 +555,7 @@ class ParaMonteSampler:
 
                 libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + libNameSuffix
                 libPath = find_library(libName)
-                if libPath==None: libPath = os.path.join( pm.path.root, libName )
+                if libPath is None: libPath = os.path.join( pm.path.root, libName )
 
                 libFound = os.path.isfile(libPath)
                 if libFound: break
@@ -713,11 +712,10 @@ class ParaMonteSampler:
                         , marginBot = 1
                         )
 
-       #def isLoaded(libPath):
-       #    abslibPath =
-       #    return os.system("lsof -p {} | grep {} > /dev/null".format( os.getpid(), os.path.abspath(libPath) )) == 0
-
-        def dlclose(libdll): libdll.dlclose(libdll._handle)
+        #def isLoaded(libPath):
+        #    abslibPath =
+        #    return os.system("lsof -p {} | grep {} > /dev/null".format( os.getpid(), os.path.abspath(libPath) )) == 0
+        #def dlclose(libdll): libdll.dlclose(libdll._handle)
 
         if pm.platform.isWin32:
             handle = ct.windll.kernel32.LoadLibraryA(libPath)

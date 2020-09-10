@@ -185,7 +185,8 @@ verify(reset=False)
 
 ####################################################################################################################################
 
-def helpme( topic : _tp.Optional[str] = None ):
+def helpme  ( topic : _tp.Optional[ str ] = None
+            ):
     """
 
     Prints help on the input object.

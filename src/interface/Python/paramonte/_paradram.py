@@ -40,15 +40,9 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-import os
-import sys
 import numpy as np
 import typing as tp
-import ctypes as ct
 
-import _SpecBase as SpecBase
-import _SpecMCMC as SpecMCMC
-import _SpecDRAM as SpecDRAM
 from _ParaMonteSampler import ParaMonteSampler
 from _TabularFileContents import TabularFileContents
 import _paramonte as pm

@@ -41,11 +41,8 @@
 ####################################################################################################################################
 
 import numpy as np
-import pandas as pd
 import _paramonte as pm
 from _OutputFileContents import OutputFileContents
-from paramonte.vis.LineScatterPlot import LineScatterPlot
-from paramonte.vis.EllipsoidPlot import EllipsoidPlot
 
 Struct = pm.Struct
 newline = pm.newline
@@ -366,7 +363,7 @@ class ReportFileContents(OutputFileContents):
                                 valueFound = True
                                 value += record
                                 try:
-                                    numericValue = [ np.double(element) for element in record.split() ]
+                                    _ = [ np.double(element) for element in record.split() ] # numericValue
                                 except:
                                     valueIsNumeric = False
 

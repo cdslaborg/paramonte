@@ -42,7 +42,6 @@
 
 import numpy as np
 import typing as tp
-import pandas as pd
 import weakref as wref
 import _paramonte as pm
 from paramonte.vis.Target import Target

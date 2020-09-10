@@ -41,12 +41,6 @@
 ####################################################################################################################################
 
 import numpy as np
-from numpy import array, arange
-from numpy import exp, sqrt, pi
-from numpy import ceil, log2
-from numpy import ones
-from numpy import product, outer
-from numpy import histogram2d
 from scipy.fft import dctn, idctn
 from scipy.optimize import brentq
 
@@ -137,8 +131,8 @@ def kde2d(x, y, n=256, limits=None):
 
     # Convert to arrays in case lists are passed in.
 
-    x = array(x)
-    y = array(y)
+    x = np.array(x)
+    y = np.array(y)
 
     # Make sure numbers of data points are consistent.
 
@@ -148,7 +142,7 @@ def kde2d(x, y, n=256, limits=None):
 
     # Round up number of bins to next power of two.
 
-    n = int(2**ceil(log2(n)))
+    n = int(2**np.ceil(np.log2(n)))
 
     # Determine missing data limits.
 
@@ -199,7 +193,7 @@ def kde2d(x, y, n=256, limits=None):
 
     # Bin samples on regular grid.
 
-    (binned, xedges, yedges) = histogram2d(x, y, bins=n, range=((xmin, xmax), (ymin, ymax)))
+    (binned, xedges, yedges) = np.histogram2d(x, y, bins=n, range=((xmin, xmax), (ymin, ymax)))
     grid = (xedges[:-1], yedges[:-1])
 
     # Compute discrete cosine transform. Adjust first component.
@@ -210,7 +204,7 @@ def kde2d(x, y, n=256, limits=None):
 
     # Pre-compute squared indices and transform components before solver loop.
 
-    k  = arange(n, dtype="float") # float avoids integer overflow.
+    k  = np.arange(n, dtype="float") # float avoids integer overflow.
     k2 = k**2
     a2 = transformed**2
 
@@ -225,12 +219,12 @@ def kde2d(x, y, n=256, limits=None):
         if i + j <= 4:
             sigma  = abs(psi(i+1, j, t) + psi(i, j+1, t))
             C  = (1 + 1/2**(i+j+1)) / 3
-            pii = product(arange(1, 2*i, 2))
-            pij = product(arange(1, 2*j, 2))
+            pii = np.product(np.arange(1, 2*i, 2))
+            pij = np.product(np.arange(1, 2*j, 2))
             t  = (C*pii*pij / (np.pi*N*sigma)) ** (1/(2+i+j))
-        w = 0.5 * ones(n)
+        w = 0.5 * np.ones(n)
         w[0] = 1
-        w = w * exp(-np.pi**2 * k2*t)
+        w = w * np.exp(-np.pi**2 * k2*t)
         wx = w * k2**i
         wy = w * k2**j
         return (-1)**(i+j) * np.pi**(2*(i+j)) * wy @ a2 @ wx
@@ -247,8 +241,8 @@ def kde2d(x, y, n=256, limits=None):
     psi02 = psi(0, 2, ts)
     psi20 = psi(2, 0, ts)
     psi11 = psi(1, 1, ts)
-    tx1 = (psi02**(3/4) / (4*np.pi*N*psi20**(3/4) * (psi11 + sqrt(psi02*psi20))) )**(1/3)
-    tx2 = (psi20**(3/4) / (4*np.pi*N*psi02**(3/4) * (psi11 + sqrt(psi02*psi20))) )**(1/3)
+    tx1 = (psi02**(3/4) / (4*np.pi*N*psi20**(3/4) * (psi11 + np.sqrt(psi02*psi20))) )**(1/3)
+    tx2 = (psi20**(3/4) / (4*np.pi*N*psi02**(3/4) * (psi11 + np.sqrt(psi02*psi20))) )**(1/3)
 
     # Note:
     # The above uses the nomenclature from the paper. In the Matlab
@@ -265,7 +259,7 @@ def kde2d(x, y, n=256, limits=None):
 
     # Apply Gaussian filter with optimized kernel.
 
-    smoothed = transformed * outer(exp(-np.pi**2 * k2 * tx2/2), exp(-np.pi**2 * k2 * tx1/2))
+    smoothed = transformed * np.outer(np.exp(-np.pi**2 * k2 * tx2/2), np.exp(-np.pi**2 * k2 * tx1/2))
 
     # Reverse transformation.
 
@@ -279,7 +273,7 @@ def kde2d(x, y, n=256, limits=None):
 
     # Determine bandwidth from diffusion times.
 
-    bandwidth = array([sqrt(tx2)*deltax, sqrt(tx1)*deltay])
+    bandwidth = np.array([np.sqrt(tx2)*deltax, np.sqrt(tx1)*deltay])
 
     # Return results.
 

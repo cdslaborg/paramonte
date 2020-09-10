@@ -172,13 +172,22 @@ class TabularFileContents(OutputFileContents):
 
         self._sampleLogFuncColName = "" if self._isProgressFile else "SampleLogFunc"
 
-        if "sample"==fileType:
-            fileSuffix = "sample"
-        elif fileType=="chain" or markovChainRequested:
-            fileSuffix = "chain"
-        elif self._isProgressFile:
-            fileSuffix = "progress"
-        else:
+        #if "sample"==fileType:
+        #    fileSuffix = "sample"
+        #elif fileType=="chain" or markovChainRequested:
+        #    fileSuffix = "chain"
+        #elif self._isProgressFile:
+        #    fileSuffix = "progress"
+        #else:
+        #    pm.abort( msg   = "Internal error occurred. The input fileType is not recognized.\n"
+        #                    + "Please report this error at:\n\n"
+        #                    + "    " + pm.website.github.issues.url
+        #            , methodName = self._methodName
+        #            , marginTop = 1
+        #            , marginBot = 1
+        #            )
+
+        if fileType!="sample" and fileType!="chain" and not (self._isProgressFile or markovChainRequested):
             pm.abort( msg   = "Internal error occurred. The input fileType is not recognized.\n"
                             + "Please report this error at:\n\n"
                             + "    " + pm.website.github.issues.url

@@ -237,7 +237,7 @@ class AutoCorr:
         ############################################################################################################################
 
         if self.rows is None: self.rows = range(len(self._dfref().index))
-        rownames = self._dfref().index[self.rows]
+        #rownames = self._dfref().index[self.rows]
 
         ############################################################################################################################
         #### compute the autocorrelations
@@ -408,18 +408,24 @@ class AutoCorr:
 
             isLineScatterPlot = isLine or isScatter
 
+            if not resetTypeIsHard:
+                plotComponent = getattr(self, "plot")
+                plotObject = getattr(plotComponent, requestedPlotType)
+                plotObject._reset()
+
             ########################################################################################################################
             #### reset line / scatter
             ########################################################################################################################
 
             if isLineScatterPlot:
 
-                plotObject = LineScatterPlot( plotType = requestedPlotType
-                                            , dataFrame = self.df
-                                            , methodName = self._methodName
-                                            , reportEnabled = self._reportEnabled
-                                            , resetPlot = self._resetPlot
-                                            )
+                if resetTypeIsHard:
+                    plotObject = LineScatterPlot( plotType = requestedPlotType
+                                                , dataFrame = self.df
+                                                , methodName = self._methodName
+                                                , reportEnabled = self._reportEnabled
+                                                , resetPlot = self._resetPlot
+                                                )
 
                 plotObject.xcolumns = "Lag"
                 plotObject.ycolumns = self.df.columns[2:]

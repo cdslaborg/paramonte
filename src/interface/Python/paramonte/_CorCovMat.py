@@ -327,18 +327,24 @@ class CorCovMat:
 
             isHeatmap  = "heatmap" in requestedPlotTypeLower
 
+            if not resetTypeIsHard:
+                plotComponent = getattr(self, "plot")
+                plotObject = getattr(plotComponent, requestedPlotType)
+                plotObject._reset()
+
             ########################################################################################################################
             #### reset heatmap
             ########################################################################################################################
 
             if isHeatmap:
 
-                plotObject = HeatMapPlot( plotType = requestedPlotType
-                                        , dataFrame = self.df
-                                        , methodName = self._methodName
-                                        , reportEnabled = self._reportEnabled
-                                        , resetPlot = self._resetPlot
-                                        )
+                if resetTypeIsHard:
+                    plotObject = HeatMapPlot( plotType = requestedPlotType
+                                            , dataFrame = self.df
+                                            , methodName = self._methodName
+                                            , reportEnabled = self._reportEnabled
+                                            , resetPlot = self._resetPlot
+                                            )
 
                 if self._isCorMat:
 
