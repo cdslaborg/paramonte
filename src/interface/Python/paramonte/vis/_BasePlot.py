@@ -47,7 +47,6 @@ import pandas as pd
 import weakref as wref
 import _paramonte as pm
 import _pmutils as pmutils
-#from paramonte.vis._SaveFig import SaveFig
 
 Struct = pmutils.Struct
 newline = pmutils.newline
