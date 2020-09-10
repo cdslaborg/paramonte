@@ -85,7 +85,7 @@ pmpd = pm.ParaDRAM();
 pmpd.spec.description                           = "Hi there";                   % Works
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 flag = 0;
-%flag = 1;
+flag = 1;
 if flag
     file    = "./out/temp/A_A_A_A";
     if exist(file + "_process_1_chain.txt"),     delete(file + "_process_1_chain.txt");     end
@@ -95,13 +95,13 @@ if flag
     if exist(file + "_process_1_sample.txt"),    delete(file + "_process_1_sample.txt");    end
     pmpd.spec.outputFileName                    = file;
 else
-    pmpd.spec.outputFileName                    = "./out/temp/chain1000";
+    pmpd.spec.outputFileName                    = "./out/temp/";
 end
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------
 %pmpd.spec.outputDelimiter                       = "|";                          % Works
 %pmpd.spec.chainFileFormat                       = "compact";                    % Works
 %pmpd.spec.variableNameList                      = ["Variable-X", "Variable-Y"]; % Works
-pmpd.spec.restartFileFormat                     = "ASCII";                      % Works
+%pmpd.spec.restartFileFormat                     = "ASCII";                      % Works
 %pmpd.spec.outputColumnWidth                     = 25;                           % Works
 %pmpd.spec.outputRealPrecision                   = 17;                           % Works
 %pmpd.spec.silentModeRequested                   = 0;                            % Works
@@ -160,7 +160,7 @@ fclose('all');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-system(pmpd.LogFile.Path.modified);
+%system(pmpd.LogFile.Path.modified);
 %system(pmpd.TimeFile.Path.modified);
 %system(pmpd.ChainFile.Path.modified);
 %system(pmpd.SampleFile.Path.modified);
