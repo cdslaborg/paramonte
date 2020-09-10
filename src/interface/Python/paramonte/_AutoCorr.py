@@ -380,6 +380,7 @@ class AutoCorr:
         else:
             self._reportWrongPlotName("a none-string none-list object.")
 
+        resetTypeIsHard = None
         if isinstance(resetType, str):
             resetTypeIsHard = resetType.lower()=="hard"
         else:
