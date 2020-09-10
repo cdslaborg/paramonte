@@ -62,8 +62,29 @@ classdef SystemInfo_class < handle
     %*******************************************************************************************************************************
     %*******************************************************************************************************************************
 
-        function self = SystemInfo_class(isWindowsOS)
-            [self.info, self.Err, self.nRecord] = self.getSystemInfo(isWindowsOS);
+        function self = SystemInfo_class(isWindowsOS, systemInfoFilePath)
+            
+            if nargin==2
+
+                % first check and see if any cache file containing the system info exists or not
+
+                self.Err     = Err_class();
+                self.Err.msg = "";
+                self.Err.occurred = false;
+                if isfile(systemInfoFilePath)
+                    self.info = fileread(systemInfoFilePath);
+                    self.info = strrep(self.info, '\', '\\');
+                    return
+                else
+                    self.Err.occurred = true;
+                end
+
+            else
+
+                [self.info, self.Err, self.nRecord] = self.getSystemInfo(isWindowsOS);
+
+            end
+
         end
 
     %*******************************************************************************************************************************

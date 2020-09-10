@@ -197,7 +197,7 @@ classdef paramonte %< dynamicprops
         ParaDRAM        = [];
     end
 
-    properties (Access = protected, Hidden)
+    properties(Hidden)
         %
         %           A MATLAB struct with three logical components:
         %
@@ -206,6 +206,9 @@ classdef paramonte %< dynamicprops
         %               isMacOS : true if the operating system is macOS (Darwin)
         %
         platform = struct();
+    end
+
+    properties(Access = protected, Hidden)
         Err = Err_class();
         bashrcContentsBeforeParaMonteInstall;
         verificationStatusFilePath;

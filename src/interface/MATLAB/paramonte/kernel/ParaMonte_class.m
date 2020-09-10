@@ -155,7 +155,7 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
 
             % get system info by all images
 
-            self.SystemInfo = SystemInfo_class(self.OS.isWindows);
+            self.SystemInfo = SystemInfo_class(self.OS.isWindows, self.platform.systemInfoFilePath);
 
             if self.SystemInfo.Err.occurred
                 self.Err            = self.SystemInfo.Err;

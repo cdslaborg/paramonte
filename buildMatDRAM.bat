@@ -65,7 +65,7 @@ echo.
 :: make bin directory
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-set ParaMonte_BIN_DIR=!ParaMonte_ROOT_DIR!\bin
+set ParaMonte_BIN_DIR=!ParaMonte_ROOT_DIR!bin
 echo. -- MatDRAM - The MatDRAM binaries directory: !ParaMonte_BIN_DIR!
 if not exist !ParaMonte_BIN_DIR! (
     mkdir "!ParaMonte_BIN_DIR!\"
@@ -140,9 +140,9 @@ for %%e in (!EXAM_LIST!) do (
     REM The MatDRAM library license file
 
     echo. -- MatDRAM - copying the MatDRAM library license file...
-    echo. -- MatDRAM - from: !ParaMonte_ROOT_DIR!LICENSE
-    echo. -- MatDRAM -   to: !MatDRAM_BLD_DIR_CURRENT!\LICENSE
-    copy "!ParaMonte_ROOT_DIR!LICENSE" "!MatDRAM_BLD_DIR_CURRENT!\LICENSE" || goto LABEL_copyErrorOccured
+    echo. -- MatDRAM - from: !ParaMonte_ROOT_DIR!LICENSE.md
+    echo. -- MatDRAM -   to: !MatDRAM_BLD_DIR_CURRENT!\LICENSE.md
+    copy "!ParaMonte_ROOT_DIR!LICENSE.md" "!MatDRAM_BLD_DIR_CURRENT!\LICENSE.md" || goto LABEL_copyErrorOccured
 
     REM The MatDRAM library interface files
 
@@ -165,6 +165,12 @@ for %%e in (!EXAM_LIST!) do (
     xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOc
 
     set COPY_PATH_SOURCE=!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte\interface\@ParaMonteSampler\readSample.m
+    set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
+    echo. -- MatDRAM - from: !COPY_PATH_SOURCE!
+    echo. -- MatDRAM -   to: !COPY_PATH_DESTIN!
+    xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOccured
+
+    set COPY_PATH_SOURCE=!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte\interface\@ParaMonteSampler\readRestart.m
     set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
     echo. -- MatDRAM - from: !COPY_PATH_SOURCE!
     echo. -- MatDRAM -   to: !COPY_PATH_DESTIN!
@@ -300,7 +306,7 @@ echo. -- MatDRAM - copying the MatDRAM library files to the test folder...
 echo. -- MatDRAM - from: !MatDRAM_BLD_DIR_CURRENT! %= no need for final slash here =%
 echo. -- MatDRAM -   to: !MatDRAMTest_BLD_DIR! %= final slash tells this is folder =%
 xcopy /s /Y /e /v /i "!MatDRAM_BLD_DIR_CURRENT!" "!MatDRAMTest_BLD_DIR!" || goto LABEL_copyErrorOccured
-cd !MatDRAMTest_BLD_DIR! && del main.m logfunc.m LICENSE
+cd !MatDRAMTest_BLD_DIR! && del main.m logfunc.m LICENSE.md
 copy /y "!MatDRAMTest_SRC_DIR!\testParaMonte.m" "!MatDRAMTest_BLD_DIR!\testParaMonte.m" || goto LABEL_copyErrorOccured
 copy /y "!MatDRAMTest_SRC_DIR!\getLogFunc.m" "!MatDRAMTest_BLD_DIR!\getLogFunc.m" || goto LABEL_copyErrorOccured
 

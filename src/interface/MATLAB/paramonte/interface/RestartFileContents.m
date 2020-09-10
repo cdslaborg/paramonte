@@ -104,10 +104,10 @@ classdef RestartFileContents < OutputFileContents
             self = self@OutputFileContents(file,methodName,mpiEnabled,Err);
             self.timer.tic();
 
-            if strcmpi(self.methodName,"ParaDRAM")
+            if strcmpi(self.methodName,"ParaDRAM") || strcmpi(self.methodName,"MatDRAM")
                 self.readRestartParaDRAM()
             else
-                error("Intel error occurred. unrecognized methodName in RestartFileContentsConstructor: " + self.methodName)
+                error("Internal error occurred. Unrecognized methodName in the constructor of RestartFileContents: " + self.methodName)
             end
 
         end % constructor
@@ -190,7 +190,7 @@ classdef RestartFileContents < OutputFileContents
             rowOffset = 1;
             while ~contains(lower(self.lineList(rowOffset)),"meanvec")
                 rowOffset = rowOffset + 1;
-                if rowOffset>self.lineListLen; self.reportCorruptFile(); end
+                if rowOffset>self.lineListLen; disp("11111111111"); self.reportCorruptFile(); end
             end
             rowOffset = rowOffset + 1; % the first numeric value
 
@@ -198,7 +198,7 @@ classdef RestartFileContents < OutputFileContents
             while isNumericString(self.lineList(rowOffset+self.ndim))
                 self.ndim = self.ndim + 1;
             end
-            if self.ndim==0; self.reportCorruptFile(); end
+            if self.ndim==0; disp("22222222222"); self.reportCorruptFile(); end
 
             % parse the restart file contents
 

@@ -222,9 +222,9 @@ for %%e in (!EXAM_LIST!) do (
         REM The ParaMonte library license file
 
         echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library license file...
-        echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonte_ROOT_DIR!\LICENSE
-        echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\LICENSE
-        copy "!ParaMonte_ROOT_DIR!\LICENSE" "!ParaMonteExample_BLD_DIR_CURRENT!\LICENSE" || goto LABEL_copyErrorOccured
+        echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonte_ROOT_DIR!\LICENSE.md
+        echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\LICENSE.md
+        copy "!ParaMonte_ROOT_DIR!\LICENSE.md" "!ParaMonteExample_BLD_DIR_CURRENT!\LICENSE.md" || goto LABEL_copyErrorOccured
 
         REM The ParaMonte library interface files
 
