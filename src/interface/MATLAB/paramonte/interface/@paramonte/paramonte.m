@@ -248,30 +248,147 @@ classdef paramonte %< dynamicprops
 
             self.prereqs = struct();
 
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% set up website
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
             self.website = struct();
-            self.website.home.url                               = "https://www.cdslab.org/paramonte/";
-            self.website.github.url                             = "https://github.com/cdslaborg/paramonte/";
-            self.website.github.issues.url                      = self.website.github.url + "issues/";
-            self.website.github.releases.url                    = self.website.github.url + "releases/";
-            self.website.github.releases.download.url           = self.website.github.releases.url + "download/";
-            self.website.github.releases.download.current.url   = self.website.github.releases.download.url + self.version.kernel.dump() + "/";
-            self.website.intel.mpi.home.url                     = "https://software.intel.com/en-us/mpi-library/";
-            self.website.intel.mpi.windows.url                  = "https://software.intel.com/en-us/get-started-with-mpi-for-windows/";
-            self.website.openmpi.home.url                       = "https://www.open-mpi.org/";
+            self.website.home = struct();
+            self.website.home.url = "https://www.cdslab.org/paramonte";
+            self.website.home.install = struct();
+            self_website_home_install_url = self.website.home.url + "/notes/installation";
+
+            %%%% installation Linux
+
+            self.website.home.overview = struct();
+            self_website_home_overview_url = self.website.home.url + "/notes/overview";
+            self.website.home.overview.preface = struct();
+            self.website.home.overview.changes = struct();
+            self.website.home.overview.preface.url = self_website_home_overview_url + "/preface";
+            self.website.home.overview.changes.kernel = struct();
+            self.website.home.overview.changes.python = struct();
+            self.website.home.overview.changes.matlab = struct();
+            self.website.home.overview.changes.kernel.url = self_website_home_overview_url + "/paramonte-kernel-release-notes";
+            self.website.home.overview.changes.python.url = self_website_home_overview_url + "/paramonte-python-release-notes";
+            self.website.home.overview.changes.matlab.url = self_website_home_overview_url + "/paramonte-matlab-release-notes";
+
+            %%%% installation Linux
+
+            self.website.home.install.linux = struct();
+            self.website.home.install.linux.url = self_website_home_install_url + "/linux";
+
+            %%%% installation Windows
+
+            self.website.home.install.windows = struct();
+            self.website.home.install.windows.url = self_website_home_install_url + "/windows";
+
+            %%%% installation MATLAB
+
+            self.website.home.install.matlab = struct();
+            self.website.home.install.matlab.url = self_website_home_install_url + "/matlab";
+
+            %%%% installation Python
+
+            self.website.home.install.python = struct();
+            self.website.home.install.python.url = self_website_home_install_url + "/python";
+
+            %%%% installation macOS
+
+            self.website.home.install.macos = struct();
+            self.website.home.install.macos.url = self_website_home_install_url + "/macos";
+            self.website.home.install.macos.prereqs = struct();
+            self.website.home.install.macos.prereqs.url = self.website.home.install.macos.url + "/#the-compile-time-and-runtime-prerequisites";
+            self.website.home.install.macos.prereqs.cmd = struct();
+            self.website.home.install.macos.prereqs.cmd.url = self.website.home.install.macos.url + "/#prereqs-install";
+
+            %%%% MATLAB examples
+
+            self.website.home.examples = struct();
+            self_website_home_examples_url = self.website.home.url + "/notes/examples";
+            self.website.home.examples.matlab = struct();
+            self.website.home.examples.matlab.jupyter = struct();
+            self.website.home.examples.matlab.postprocess = struct();
+            self.website.home.examples.matlab.jupyter.url = self_website_home_examples_url + "/matlab/jupyter";
+            self.website.home.examples.matlab.postprocess.url = self_website_home_examples_url + "/matlab/postprocess";
+
+            %%%% Python examples
+
+            self.website.home.examples = struct();
+            self_website_home_examples_url = self.website.home.url + "/notes/examples";
+            self.website.home.examples.python = struct();
+            self.website.home.examples.python.jupyter = struct();
+            self.website.home.examples.python.postprocess = struct();
+            self.website.home.examples.python.jupyter.url = self_website_home_examples_url + "/python/jupyter";
+            self.website.home.examples.python.postprocess.url = self_website_home_examples_url + "/python/postprocess";
+
+            %%%% Python API
+
+            self.website.home.api = struct();
+            self_website_home_api_url = self.website.home.url + "/notes/api";
+            self.website.home.api.python = struct();
+            self.website.home.api.python.url = self_website_home_api_url + "/python/autoapi/paramonte";
+
+            %%%% ParaDRAM
+
+            self.website.home.usage = struct();
+            self_website_home_usage_url = self.website.home.url + "/notes/usage";
+            self.website.home.usage.paradram = struct();
+            self_website_home_usage_paradram_url = self_website_home_usage_url + "/paradram";
+            self.website.home.usage.paradram.quickstart = struct();
+            self.website.home.usage.paradram.quickstart.url = self_website_home_usage_paradram_url + "/interface";
+            self.website.home.usage.paradram.input = struct();
+            self.website.home.usage.paradram.input.url = self_website_home_usage_paradram_url + "/input";
+            self.website.home.usage.paradram.specifications = struct();
+            self.website.home.usage.paradram.specifications.url = self_website_home_usage_paradram_url + "/specifications";
+            self.website.home.usage.paradram.restart = struct();
+            self.website.home.usage.paradram.restart.url = self_website_home_usage_paradram_url + "/restart";
+            self.website.home.usage.paradram.output = struct();
+            self.website.home.usage.paradram.output.url = self_website_home_usage_paradram_url + "/output";
+
+            %%%% GitHub issues
+
+            self.website.github = struct();
+            self.website.github.url = "https://github.com/cdslaborg/paramonte";
+            self.website.github.issues = struct();
+            self.website.github.issues.url = "https://github.com/cdslaborg/paramonte/issues";
+            self.website.github.release = struct();
+            self.website.github.release.url = self.website.github.url + "/releases";
+            self.website.github.release.latest = struct();
+            self.website.github.release.latest.url = self.website.github.release.url + "/latest";
+            self.website.github.archive = struct();
+            self_website_github_archive_url = self.website.github.url + "/archive";
+            self.website.github.archive.master = struct();
+            self.website.github.archive.master.zip = struct();
+            self.website.github.archive.master.tar = struct();
+            self.website.github.archive.master.zip.url = self_website_github_archive_url + "/master.zip";
+            self.website.github.archive.master.tar.url = self_website_github_archive_url + "/master.tar.gz";
+
+            %%%% GitHub examples
+
+            self.website.github.examples = struct();
+            self.website.github.examples.url = "https://github.com/cdslaborg/paramontex";
+
+            %%%% Intel MPI
+
+            self.website.intel = struct();
+            self.website.intel.mpi = struct();
+            self.website.intel.mpi.home = struct();
+            self.website.intel.mpi.home.url = "https://software.intel.com/en-us/mpi-library";
+
+            %%%% Intel MPI Windows
+
+            self.website.intel.mpi.windows = struct();
+            self.website.intel.mpi.windows.url = "https://software.intel.com/en-us/get-started-with-mpi-for-windows";
+
+            %%%% OpenMPI
+
+            self.website.openmpi = struct();
+            self.website.openmpi.home = struct();
+            self.website.openmpi.home.url = "https://www.open-mpi.org/";
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             self.isGUI = isGUI(); 
-
-            %if  self.isGUI
-            %    self.website.home.url                               = href(self.website.home.url                               );
-            %    self.website.github.url                             = href(self.website.github.url                             );
-            %    self.website.github.issues.url                      = href(self.website.github.issues.url                      );
-            %    self.website.github.releases.url                    = href(self.website.github.releases.url                    );
-            %    self.website.github.releases.download.url           = href(self.website.github.releases.download.url           );
-            %    self.website.github.releases.download.current.url   = href(self.website.github.releases.download.current.url   );
-            %    self.website.intel.mpi.home.url                     = href(self.website.intel.mpi.home.url                     );
-            %    self.website.intel.mpi.windows.url                  = href(self.website.intel.mpi.windows.url                  );
-            %    self.website.openmpi.home.url                       = href(self.website.openmpi.home.url                       );
-            %end
 
             self.platform.isWin32 = ispc;
             self.platform.isMacOS = ismac;
@@ -464,7 +581,7 @@ classdef paramonte %< dynamicprops
                                 + "The following file is missing or not readable in the ParaMonte library: " + newline + newline ...
                                 + "    " + self.verificationStatusFilePath + newline + newline ...
                                 + "To fix this issue, download a fresh clone of the ParaMonte MATLAB library from, " + newline + newline ...
-                                + "    " + href(self.website.github.releases.url) ...
+                                + "    " + href(self.website.github.release.url) ...
                                 ;
                 self.Err.abort();
             end
@@ -515,24 +632,7 @@ classdef paramonte %< dynamicprops
 
                     % get the dependency list
 
-                    self.prereqs.list = self.getDependencyList();
-                    if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
-                    if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
-                    for dependency = self.prereqs.list
-                        %if ~contains(dependency,"!") % avoid comments
-                            fullFilePath = fullfile( self.path.lib, dependency );
-                            if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
-                                self.prereqs.mpi.intel.fullFileName = string( dependency );
-                                self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
-                                self.prereqs.mpi.intel.fileName = strsplit(self.prereqs.mpi.intel.fullFileName,intelMpiFileSuffix); self.prereqs.mpi.intel.fileName = self.prereqs.mpi.intel.fileName(1);
-                                self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.fileName,intelMpiFilePrefix); self.prereqs.mpi.intel.version = self.prereqs.mpi.intel.version(2);
-                                %self.prereqs.mpi.intel.version = string( dependency{1}(1:end-4) );
-                                %mpiFileName = self.prereqs.mpi.intel.version;
-                                %self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
-                                %self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
-                            end
-                        %end
-                    end
+                    self.getPrereqs(false); % sets the self.prereqs component.
 
                     % search for the MPI library
 
@@ -634,6 +734,66 @@ classdef paramonte %< dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        function checkForUpdate(self)
+
+            currentVersionString = self.version.interface.dump();
+            versionFileLineList = strsplit(webread("https://raw.githubusercontent.com/cdslaborg/paramonte/master/src/interface/MATLAB/.VERSION"), newline);
+            latestVersionString = string(versionFileLineList{1});
+
+            self.Err.prefix = self.names.paramonte;
+            self.Err.marginTop = 1;
+            self.Err.marginBot = 1;
+
+            while getVecLen(latestVersionString)
+                try
+                    latestVersionURL = "https://github.com/cdslaborg/paramonte/releases/tag/" + latestVersionString;
+                    webread(latestVersionURL);
+                    break;
+                catch
+                    latestVersionString = getPreviousVersion(latestVersionString);
+                end
+            end
+
+            if getVecLen(latestVersionString)
+                currentVersionTriplet = getVersionTriplet(currentVersionString);
+                latestVersionTriplet = getVersionTriplet(latestVersionString);
+                updateAvailable =   (latestVersionTriplet(1)  > currentVersionTriplet(1)) ...
+                                ||  (latestVersionTriplet(1) == currentVersionTriplet(1) && latestVersionTriplet(2)  > currentVersionTriplet(2)) ...
+                                ||  (latestVersionTriplet(1) == currentVersionTriplet(1) && latestVersionTriplet(2) == currentVersionTriplet(2) && latestVersionTriplet(3) > currentVersionTriplet(3));
+            else
+                updateAvailable = false;
+            end
+
+            if updateAvailable
+                latestVersionFile = latestVersionURL + "/libparamonte_MATLAB";
+                if self.platform.isWin32
+                    latestVersionFile = latestVersionFile + ".zip";
+                else
+                    latestVersionFile = latestVersionFile + ".tar.gz";
+                end
+                self.Err.msg    = "A newer version (" + latestVersionString + ") of the ParaMonte library appears " + newline ...
+                                + "to be available on the GitHub repository. The currently-installed version is: " + currentVersionString + newline ...
+                                + "You can download the latest version of the ParaMonte MATLAB library from " + newline ...
+                                + newline ...
+                                + "    " + href(latestVersionFile) + newline ...
+                                + newline ...
+                                ;
+            else
+                self.Err.msg    = "It appears that you have the latest version of the ParaMonte library. " + newline;
+                self.Err.note();
+            end
+
+            self.Err.msg    = self.Err.msg ...
+                            + "To see the latest changes to the ParaMonte MATLAB library, visit, " + newline ...
+                            + newline ...
+                            + "    " + href(self.website.home.overview.changes.matlab.url) ...
+                            ;
+            self.Err.note();
+
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     end % methods (dynamic)
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -655,7 +815,7 @@ classdef paramonte %< dynamicprops
                     self.Err.msg    = "Failed to locally detect the ParaMonte library files on your system. " ...
                                     + "The ParaMonte library folder appears to be empty. Please build a " ...
                                     + "fresh copy of the library or download it from, "  + newline + newline ...
-                                    + "    " + href(self.website.github.releases.url) ...
+                                    + "    " + href(self.website.github.release.url) ...
                                     ;
                     self.Err.abort();
                 end
@@ -1462,8 +1622,8 @@ classdef paramonte %< dynamicprops
         function dependencyList = getDependencyList(self)
             fileName = ".dependencies_";
             if self.platform.isWin32; fileName = fileName + "windows"; end
-            if self.platform.isMacOS; fileName = fileName + "macos"; end
             if self.platform.isLinux; fileName = fileName + "linux"; end
+            if self.platform.isMacOS; fileName = fileName + "macos"; end
             fullFilePath = string(fullfile(self.path.auxil,fileName));
             if isfile(fullFilePath)
                 contents = fileread(fullFilePath);
@@ -1471,16 +1631,97 @@ classdef paramonte %< dynamicprops
                 dependencyList = [dependencyList(~contains(dependencyList,"!"))]; % remove comment lines
             else
                 dependencyList = [];
-                if ~self.platform.isMacOS
+                if self.platform.isWin32 || self.platform.isLinux
                     self.Err.msg    = "The Integrity of the ParaMonte library appears to have been compromised. " + newline ...
                                     + "The following file is missing in the ParaMonte library: " + newline + newline ...
                                     + "    " + fullFilePath + newline + newline ...
                                     + "To fix this issue, download a fresh clone of the ParaMonte MATLAB library from, " + newline + newline ...
-                                    + "    " + href(self.website.github.releases.url) ...
+                                    + "    " + href(self.website.github.release.url) ...
                                     ;
                     self.Err.abort();
                 end
             end
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function getPrereqs(self, downloadEnabled)
+            %
+            % optional DependencyList must be a string array (not a cell array).
+            %
+            self.prereqs = struct();
+            self.prereqs.mpi = struct();
+            self.prereqs.mpi.intel = struct();
+            self.prereqs.list = self.getDependencyList();
+
+            if nargin==1
+                downloadEnabled = true;
+            end
+
+            if self.platform.isLinux
+                intelMpiFilePrefix = "l_mpi-rt_";
+                intelMpiFileSuffix = ".tgz";
+            elseif self.platform.isWin32
+                intelMpiFilePrefix = "w_mpi-rt_p_";
+                intelMpiFileSuffix = ".exe";
+            else
+                return
+            end
+
+            self.Err.prefix = self.names.paramonte;
+            self.Err.marginTop = 1;
+            self.Err.marginBot = 1;
+
+            for dependency = self.prereqs.list
+
+                fullFilePath = fullfile( self.path.lib, dependency );
+
+                if downloadEnabled
+
+                    % search all releases for the dependency
+
+                    thisVersion = self.version.kernel.dump();
+                    while getVecLen(thisVersion)
+                        try
+                            fullFilePath = websave(fullFilePath, self.website.github.release.url + "/download/" + thisVersion + "/" + dependency);
+                            break
+                        catch
+                            thisVersion = getPreviousVersion(thisVersion);
+                        end
+                    end
+
+                    if ~getVecLen(thisVersion)
+                        self.Err.msg    = "Exhausted all releases of the ParaMonte library in search " + newline ...
+                                        + "of the prerequisites, but could not find: " + dependency + newline ...
+                                        + "Please report this issue at " + newline ...
+                                        + newline ...
+                                        + "    " + href(self.website.github.issues.url) + newline ...
+                                        + newline ...
+                                        + "In the meantime, visit, " + newline ...
+                                        + newline ...
+                                        + "    " + href(self.website.home.url) + newline ...
+                                        + newline ...
+                                        + "for instructions to manually install the MPI library on your " + newline ...
+                                        + "system. Aborting the automatic MPI installation by ParaMonte...";
+                        self.Err.warn();
+                        return
+                    end
+
+                end
+
+                if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
+                    self.prereqs.mpi.intel.fullFileName = string( dependency );
+                    self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
+                    self.prereqs.mpi.intel.fileName = strsplit(self.prereqs.mpi.intel.fullFileName,intelMpiFileSuffix); self.prereqs.mpi.intel.fileName = self.prereqs.mpi.intel.fileName(1);
+                    self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.fileName,intelMpiFilePrefix); self.prereqs.mpi.intel.version = self.prereqs.mpi.intel.version(2);
+                    %self.prereqs.mpi.intel.version = string( dependency{1}(1:end-4) );
+                    %mpiFileName = self.prereqs.mpi.intel.version;
+                    %self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
+                    %self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
+                end
+
+            end
+
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1493,29 +1734,11 @@ classdef paramonte %< dynamicprops
 
             if self.platform.isWin32 || self.platform.isLinux
 
-                self.Err.msg    = "Downloading the Intel MPI runtime libraries for 64-bit architecture..." + newline ...
+                self.Err.msg    = "Downloading the ParaMonte parallel library prerequisites..." + newline ...
                                 + "Please make sure your firewall allows access to the Internet.";
                 self.Err.note();
 
-                %self.prereqs.list = self.getDependencyList();
-                if self.platform.isLinux; intelMpiFilePrefix = "l_mpi-rt_"; intelMpiFileSuffix = ".tgz"; end
-                if self.platform.isWin32; intelMpiFilePrefix = "w_mpi-rt_p_"; intelMpiFileSuffix = ".exe"; end
-                for dependency = self.prereqs.list
-                    %if ~contains(dependency,"!") % avoid comments
-                        fullFilePath = fullfile( self.path.lib, dependency );
-                        fullFilePath = websave(fullFilePath, self.website.github.releases.download.current.url + dependency);
-                        if contains(dependency,intelMpiFilePrefix) && contains(dependency,intelMpiFileSuffix)
-                            self.prereqs.mpi.intel.fullFileName = string( dependency );
-                            self.prereqs.mpi.intel.fullFilePath = string( fullFilePath );
-                            self.prereqs.mpi.intel.fileName = strsplit(self.prereqs.mpi.intel.fullFileName,intelMpiFileSuffix); self.prereqs.mpi.intel.fileName = self.prereqs.mpi.intel.fileName(1);
-                            self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.fileName,intelMpiFilePrefix); self.prereqs.mpi.intel.version = self.prereqs.mpi.intel.version(2);
-                            %self.prereqs.mpi.intel.version = string( dependency{1}(1:end-4) );
-                            %mpiFileName = self.prereqs.mpi.intel.version;
-                            %self.prereqs.mpi.intel.version = strsplit(self.prereqs.mpi.intel.version,"_");
-                            %self.prereqs.mpi.intel.version = string(self.prereqs.mpi.intel.version(end));
-                        end
-                    %end
-                end
+                self.getPrereqs(); % download the prerequisites
 
                 self.Err.msg    = "Installing the Intel MPI library for 64-bit architecture..." + newline ...
                                 ...+ "file location: " + string(strrep(self.prereqs.mpi.intel.fullFilePath,'\','\\'));

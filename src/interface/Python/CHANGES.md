@@ -5,6 +5,29 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.0.3 -- September 11, 2020  
+
+**Minor enhancements**  
+
++   Minor enhancement to `checkForUpdate()` method of 
+    the `paramonte` module.  
+
+### Version  2.0.2 -- September 11, 2020  
+
+**Minor enhancements**  
+
++   Minor enhancement to `checkForUpdate()` method of 
+    the `paramonte` module.  
+
+### Version  2.0.1 -- September 10, 2020  
+
+**Minor enhancements**  
+
++   LGPL3 LICENSE is now switched to MIT LICENSE.md file.  
+
++   A fix to the `brew` software installation now avoids 
+    the seemingly-unavoidable crash.  
+
 ### Version  2.0.0 -- September 6, 2020  
 
 **Major enhancements to the ParaMonte / ParaDRAM sampler interfaces**  

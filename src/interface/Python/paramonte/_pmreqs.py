@@ -9,30 +9,30 @@
 ####
 ####   This file is part of the ParaMonte library.
 ####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
+####   Permission is hereby granted, free of charge, to any person obtaining a
+####   copy of this software and associated documentation files (the "Software"),
+####   to deal in the Software without restriction, including without limitation
+####   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+####   and/or sell copies of the Software, and to permit persons to whom the
 ####   Software is furnished to do so, subject to the following conditions:
 ####
-####   The above copyright notice and this permission notice shall be 
+####   The above copyright notice and this permission notice shall be
 ####   included in all copies or substantial portions of the Software.
 ####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ####
 ####   ACKNOWLEDGMENT
 ####
 ####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
+####   As per the ParaMonte library license agreement terms, if you use any parts of
+####   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
 ####       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -81,9 +81,9 @@ def verify(reset = True):
 
             reset
 
-                A boolean whose default value is ``True``. If ``True``, 
-                a thorough verification of the existence of the required 
-                libraries will performed, as if it is the first ParaMonte 
+                A boolean whose default value is ``True``. If ``True``,
+                a thorough verification of the existence of the required
+                libraries will performed, as if it is the first ParaMonte
                 module import.
 
         **Returns**
@@ -137,7 +137,7 @@ def verify(reset = True):
             # verify module dependencies
 
             # On some systems like TACC, the matplotlib causes segmentation fault that is not controllable in any way.
-            # This is apparently a bug in the older versions of matplotlib. Until it is fully resolved, the following 
+            # This is apparently a bug in the older versions of matplotlib. Until it is fully resolved, the following
             # dependency version check is commented out.
 
             # verifyDependencyVersion()
@@ -207,7 +207,7 @@ def verify(reset = True):
                 else:
 
                     isYes = getUserResponse( msg =  "\n    Do you wish to download and install the MPI runtime library"
-                                                    "\n    (only needed for parallel simulations) on your system now (y/n)? " 
+                                                    "\n    (only needed for parallel simulations) on your system now (y/n)? "
                                             )
 
                     if isYes:
@@ -476,7 +476,7 @@ def getLocalInstallDir():
 def findMPI():
     """
 
-    Return a structure containing the paths to 
+    Return a structure containing the paths to
     different components of the MPI library.
 
     """
@@ -787,12 +787,12 @@ def getPrereqs(DependencyList = None):
         return prereqs
 
     for dependency in prereqs.list:
-            fullFilePath = os.path.join( pm.path.lib, dependency )
-            if intelMpiFilePrefix in dependency and intelMpiFileSuffix in dependency:
-                prereqs.mpi.intel.fullFileName = dependency
-                prereqs.mpi.intel.fullFilePath = fullFilePath
-                prereqs.mpi.intel.fileName = prereqs.mpi.intel.fullFileName.split(intelMpiFileSuffix)[0]
-                prereqs.mpi.intel.version = prereqs.mpi.intel.fileName.split(intelMpiFilePrefix)[1]
+        fullFilePath = os.path.join( pm.path.lib, dependency )
+        if intelMpiFilePrefix in dependency and intelMpiFileSuffix in dependency:
+            prereqs.mpi.intel.fullFileName = dependency
+            prereqs.mpi.intel.fullFilePath = fullFilePath
+            prereqs.mpi.intel.fileName = prereqs.mpi.intel.fullFileName.split(intelMpiFileSuffix)[0]
+            prereqs.mpi.intel.version = prereqs.mpi.intel.fileName.split(intelMpiFilePrefix)[1]
 
     return prereqs
 
@@ -839,7 +839,7 @@ def installMPI():
 
     if pm.platform.isWin32 or pm.platform.isLinux:
 
-        pm.note ( msg = "Downloading the Intel MPI runtime libraries for 64-bit architecture... " + newline
+        pm.note ( msg = "Downloading the ParaMonte parallel library prerequisites... " + newline
                       + "Please make sure your firewall allows access to the Internet. "
                 , methodName = pm.names.paramonte
                 , marginTop = 1
@@ -1126,7 +1126,7 @@ def installMPI():
 
                     #isYes = getUserResponse ( msg = "\n    MPI runtime variables are essential for parallel ParaMonte"
                     #                                "\n    simulation. Would you like ParaMonte to add the MPI runtime"
-                    #                                "\n    environmental variables to your Bash environment (y/n)? " 
+                    #                                "\n    environmental variables to your Bash environment (y/n)? "
                     #                                )
                     #
                     #if isYes:
@@ -1201,7 +1201,7 @@ def installMPI():
                 , marginBot = 1
                 , methodName = pm.names.paramonte
                 )
-        buildParaMontePrereqsForMac()
+        _ = buildParaMontePrereqsForMac()
 
     else:
 
@@ -1235,15 +1235,26 @@ def buildParaMontePrereqsForMac():
                 , marginTop = 1
                 , marginBot = 1
                 )
+
         err1 = os.system('xcode-select --install')
+        if err1 != 0 and not os.path.isdir( subprocess.check_output(['xcode-select','-p']).decode('utf-8').replace("\n","").replace(chr(13),"") ):
+            pm.warn ( msg = getMacosInstallHelpMsg("xcode-select")
+                    , methodName = pm.names.paramonte
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
+            return False
+
+        #err2 = os.system('ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
         err2 = os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"')
         err3 = os.system('brew --version')
-        if err1 != 0 or err2 != 0 or err3 != 0:
-            pm.abort   ( msg = getMacosInstallHelpMsg("Homebrew")
-                        , methodName = pm.names.paramonte
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
+        if err2 != 0 or err3 != 0:
+            pm.warn ( msg = getMacosInstallHelpMsg("Homebrew")
+                    , methodName = pm.names.paramonte
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
+            return False
 
     # cmake
 
@@ -1303,11 +1314,12 @@ def buildParaMontePrereqsForMac():
         err2 = os.system("brew link --overwrite cmake")
 
         if err1 != 0 or err2 != 0:
-            pm.abort   ( msg = "cmake installation or linking failed."
-                        , methodName = pm.names.paramonte
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
+            pm.warn ( msg = "cmake installation or linking failed."
+                    , methodName = pm.names.paramonte
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
+            return False
 
         cmakeVersionList = str(subprocess.run(args=["cmake","--version"],capture_output=True).stdout).split(" ")[2].split("-")[0].split(".")
         if int(cmakeVersionList[0])>=3 and int(cmakeVersionList[1])>=14:
@@ -1322,6 +1334,7 @@ def buildParaMontePrereqsForMac():
                     , marginTop = 1
                     , marginBot = 1
                     )
+            return False
 
     # gnu
 
@@ -1340,6 +1353,7 @@ def buildParaMontePrereqsForMac():
                 , marginTop = 1
                 , marginBot = 1
                 )
+        return False
 
     # open-mpi
 
@@ -1358,23 +1372,34 @@ def buildParaMontePrereqsForMac():
                 , marginTop = 1
                 , marginBot = 1
                 )
+        return False
+
+    return True
 
 ####################################################################################################################################
 #### getMacosInstallHelpMsg
 ####################################################################################################################################
 
 def getMacosInstallHelpMsg(app = ""):
-    msg = "Failed to install and link the " + app + " on your system.\n" \
-        + "The " + app + " application is required to install and \n" \
-        + "build the ParaMonte components and prerequisites.\n" \
-        + "Please install the " + app + " manually on your\n" \
-        + "system and retry the installation process.\n" \
-        + "The " + app + " installation is only a single \n" \
-        + "command and takes only a few seconds to install.\n" \
-        + "You can get the installation command from this page:\n\n" \
-        + "    " + pm.website.home.install.macos.prereqs.cmd.url + "\n\n" \
+    msg = ("Failed to install and link the " + app + " on your system. " + newline
+        + "The " + app + " application is required to install and " + newline
+        + "build the ParaMonte components and prerequisites. " + newline
+        + "Please install the " + app + " manually on your " + newline
+        + "system and retry the installation process. " + newline
+        + "The " + app + " installation is only a single " + newline
+        + "command and takes only a few seconds to install. " + newline
+        + "You can get the installation command from this page: " + newline
+        + newline
+        + "    " + pm.website.home.install.macos.prereqs.cmd.url + newline
+        + newline
+        + "Once you have manually installed the missing component, retry, " + newline
+        + newline
+        + "    import paramonte as pm" + newline
+        + "    pm.verify()" + newline
+        + newline
         + "skipping the installation for now..."
-    return msg                        
+        )
+    return msg
 
 ####################################################################################################################################
 #### writeVerificationStatusFile
@@ -1436,12 +1461,12 @@ def build(flags=""):
             flags
 
                 A string containing any of the ParaMonte install script flags.
-                If the operating system is Unix-based (e.g., Linux or macOS) then 
-                the value of ``flags`` must conform to the rules and syntax of 
-                the flags of the Bash install script of the ParaMonte library 
-                on GitHub. If the operating system is Windows, then the value 
-                of ``flags`` must conform to the rules and syntax of the flags 
-                of the Batch install script of the ParaMonte library on GitHub. 
+                If the operating system is Unix-based (e.g., Linux or macOS) then
+                the value of ``flags`` must conform to the rules and syntax of
+                the flags of the Bash install script of the ParaMonte library
+                on GitHub. If the operating system is Windows, then the value
+                of ``flags`` must conform to the rules and syntax of the flags
+                of the Batch install script of the ParaMonte library on GitHub.
                 The default value is an empty string ``""``.
 
     """
@@ -1491,13 +1516,31 @@ def build(flags=""):
                 )
 
         buildEnabled = getUserResponse  ( msg   = "\n    Do you wish to download and install the ParaMonte library"
-                                                + "\n    and its prerequisites on your system now (y/n)? " 
+                                                + "\n    and its prerequisites on your system now (y/n)? "
                                         )
-
 
         if buildEnabled:
 
-            if pm.platform.isMacOS: buildParaMontePrereqsForMac()
+            if pm.platform.isMacOS:
+                succeeded = buildParaMontePrereqsForMac()
+                if not succeeded:
+                    pm.warn ( msg   = "The ParaMonte build failed. To get further instructions " + newline
+                                    + "to build the ParaMonte library on your macOS, visit, " + newline
+                                    + newline
+                                    + "    " + pm.website.home.install.macos.url + newline
+                                    + newline
+                                    + "You can also report this issue at, " + newline
+                                    + newline
+                                    + "    " + pm.website.github.issues.url + newline
+                                    + newline
+                                    + "to get direct help. For more information, visit, " + newline
+                                    + newline
+                                    + "    " + pm.website.home.url
+                            , methodName = pm.names.paramonte
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+                    return None
 
             currentDir = os.getcwd()
 
@@ -1516,20 +1559,20 @@ def build(flags=""):
 
                 pmGitInstallScriptPath = os.path.join( pmGitRootDir, "install.sh" )
                 if not os.path.exists(pmGitInstallScriptPath):
-                    pm.abort   ( msg   = "Internal error occurred." + newline
-                                        + "Failed to detect the ParaMonte installation Bash script. " + newline
-                                        + "Please report this issue at " + newline
-                                        + newline
-                                        + "    " + pm.website.github.issues.url + newline
-                                        + newline
-                                        + "Visit, " + " for instructions " + newline
-                                        + newline
-                                        + "    " + pm.website.home.url
-                                        + "to build ParaMonte object files on your system."
-                                , methodName = pm.names.paramonte
-                                , marginTop = 1
-                                , marginBot = 1
-                                )
+                    pm.abort( msg   = "Internal error occurred." + newline
+                                    + "Failed to detect the ParaMonte installation Bash script. " + newline
+                                    + "Please report this issue at " + newline
+                                    + newline
+                                    + "    " + pm.website.github.issues.url + newline
+                                    + newline
+                                    + "Visit, " + " for instructions " + newline
+                                    + newline
+                                    + "    " + pm.website.home.url
+                                    + "to build ParaMonte object files on your system."
+                            , methodName = pm.names.paramonte
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
 
             except Exception as e:
 
@@ -1670,7 +1713,7 @@ def getVersionTriplet(versionDumpString):
 
 def getPreviousVersion(currentVerionString):
     """
-    Take an input version string like, "1.1.1" and return an integer triplet list.
+    Take an input version string like, "1.1.1" and return another string representing the version before the input version, like, 1.1.0.
     """
     currentVerionTriplet = getVersionTriplet(currentVerionString)
     previousVerionString = None
@@ -1807,9 +1850,10 @@ def checkForUpdate(package = "paramonte"):
     latestVersion = latestVersion[:latestVersion.find(')')]
     latestVersion = latestVersion.replace(' ','').split(',')[-1]
 
-    currentVersion = str(subprocess.run([sys.executable, '-m', 'pip', 'show', '{}'.format(package)], capture_output=True, text=True))
-    currentVersion = currentVersion[currentVersion.find('Version:')+8:]
-    currentVersion = currentVersion[:currentVersion.find('\\n')].replace(' ','') 
+    #currentVersion = str(subprocess.run([sys.executable, '-m', 'pip', 'show', '{}'.format(package)], capture_output=True, text=True))
+    #currentVersion = currentVersion[currentVersion.find('Version:')+8:]
+    #currentVersion = currentVersion[:currentVersion.find('\\n')].replace(' ','')
+    currentVersion = pm.version.interface.dump()
 
     if latestVersion == currentVersion:
         pm.note ( msg   = "You have the latest version of the ParaMonte library. " + newline
@@ -1822,7 +1866,7 @@ def checkForUpdate(package = "paramonte"):
         )
     else:
         pm.note ( msg   = "A newer version (" + latestVersion + ") of the ParaMonte library appears " + newline
-                        + "to exists on the PyPI repository. The currently installed version is: " + currentVersion + newline
+                        + "to be available on the PyPI repository. The currently-installed version is: " + currentVersion + newline
                         + "You can upgrade to the latest version by typing the following on " + newline
                         + "your Bash terminal or Anaconda command prompt: " + newline
                         + newline

@@ -47,7 +47,6 @@ import weakref as wref
 from copy import deepcopy as dcopy
 
 import _paramonte as pm
-from paramonte.vis.Target import Target
 from paramonte.vis._BasePlot import BasePlot
 from paramonte.vis.LineScatterPlot import LineScatterPlot
 from paramonte.vis.DensityPlot import DensityPlot

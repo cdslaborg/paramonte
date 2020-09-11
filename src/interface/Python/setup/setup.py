@@ -48,15 +48,15 @@ with open("paramonte/auxil/.VERSION_INTERFACE") as versionFile: version = versio
 
 setuptools.setup( name                          = "paramonte"
                 , version                       = version
-                , author                        = "Amir Shahmoradi, Fatemeh Bagheri"
-                , author_email                  = "shahmoradi@utexas.edu, Fatemeh.Bagheri@uta.edu"
+                , author                        = "Amir Shahmoradi, Fatemeh Bagheri, Joshua Alexander Osborne"
+                , author_email                  = "shahmoradi@utexas.edu"
                 , description                   = "Plain Powerful Parallel Monte Carlo and adaptive MCMC Library"
                 , long_description              = readmeFileContents
                 , long_description_content_type = "text/markdown"
                 , url                           = "https://github.com/cdslaborg/paramonte"
                 , packages                      = setuptools.find_packages()
                 , python_requires               = '>=3.0'
-                , license                       = "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)"
+                , license                       = "License :: OSI Approved :: MIT License"
                 , include_package_data          = True
                 , install_requires              =   [ "numpy"
                                                     , "scipy"
@@ -77,12 +77,15 @@ setuptools.setup( name                          = "paramonte"
                                                     , "Programming Language :: Python :: 3"
                                                     , "Programming Language :: Fortran"
                                                     , "Programming Language :: C"
-                                                    , "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)"
+                                                    , "License :: OSI Approved :: MIT License"
                                                     , "Operating System :: OS Independent"
                                                     , "Topic :: Scientific/Engineering"
                                                     , "Topic :: Scientific/Engineering :: Physics"
+                                                    , "Topic :: Scientific/Engineering :: Astronomy"
                                                     , "Topic :: Scientific/Engineering :: Mathematics"
                                                     , "Topic :: Scientific/Engineering :: Visualization"
+                                                    , "Topic :: Scientific/Engineering :: Bio-Informatics"
+                                                    , "Topic :: Scientific/Engineering :: Atmospheric Science"
                                                     , "Operating System :: OS Independent"
                                                     , "Operating System :: Microsoft :: Windows"
                                                     , "Operating System :: POSIX :: Linux"

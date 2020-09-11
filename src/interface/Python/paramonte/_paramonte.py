@@ -127,8 +127,10 @@ website.home.overview.preface = Struct()
 website.home.overview.changes = Struct()
 website.home.overview.preface.url = website.home.overview._url + "/preface"
 website.home.overview.changes.kernel = Struct()
+website.home.overview.changes.matlab = Struct()
 website.home.overview.changes.python = Struct()
 website.home.overview.changes.kernel.url = website.home.overview._url + "/paramonte-kernel-release-notes"
+website.home.overview.changes.matlab.url = website.home.overview._url + "/paramonte-matlab-release-notes"
 website.home.overview.changes.python.url = website.home.overview._url + "/paramonte-python-release-notes"
 
 # installation Linux
