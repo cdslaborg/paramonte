@@ -1,8 +1,5 @@
 
-<<<<<<< HEAD
   
-=======
->>>>>>> f3782552f9cf6d873342abf6e242832b4e3227a3
 <div align="center">
 <a href="https://www.cdslab.org/paramonte" target="_blank"><img src="https://raw.githubusercontent.com/shahmoradi/paramonte/gh-pages/images/paramonte.png" alt="ParaMonte: Plain Powerful Parallel Monte Carlo Library" /></a>
 <br><br>
