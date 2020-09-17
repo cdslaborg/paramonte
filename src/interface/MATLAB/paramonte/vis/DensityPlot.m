@@ -481,8 +481,14 @@ classdef DensityPlot < BasePlot
 
             if self.type.isHistogram2 % && self.histogram2.enabled
                 fname = "histogram2";
-                key = "displayStyle"; val = "bar3"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
-                key = "edgeColor"; val = "none"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                keyList = ["showemptybins", "edgeColor", "displayStyle"]; % "numbins"
+                valueList = {"off", "none", "bar3"}; % [100 100]
+                for j = 1:length(keyList)
+                    key = keyList(j);
+                    if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key))
+                        self.(fname).kws.(key) = valueList{j};
+                    end
+                end
                 if self.colormap.enabled
                     key = "faceColor"; val = "flat"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
                 else
@@ -608,10 +614,10 @@ classdef DensityPlot < BasePlot
 
             lglabels = [];
 
-            if (xcolindexlen==1 && ycolindexlen==1) ...
-            && ((self.type.isContourf && self.contourf.enabled) ...
+            if ((self.type.isContourf && self.contourf.enabled) ...
             ||  (self.type.isContour3 && self.contour3.enabled) ...
-            ||  (self.type.isContour && self.contour.enabled) )
+            ||  (self.type.isContour && self.contour.enabled) ) ...
+            &&  (xcolindexlen==1 && ycolindexlen==1) ...
                 self.currentFig.kde2d = struct();
                 [ self.currentFig.kde2d.bandwidth ...
                 , self.currentFig.kde2d.density ...
@@ -629,7 +635,7 @@ classdef DensityPlot < BasePlot
             || (self.type.isContour && self.contour.enabled)
 
                 isMultiColorContourPlot = false;
-                if ~self.colormap.enabled && (self.type.isContour || self.type.isContourf || self.type.isContour3)
+                if (self.type.isContour || self.type.isContourf || self.type.isContour3) && ~self.colormap.enabled
                     if getVecLen(self.(self.type.name).kws.color)
                             if all(size(self.(self.type.name).kws.color)==[maxLenColumns,3])
                                 isMultiColorContourPlot = true;

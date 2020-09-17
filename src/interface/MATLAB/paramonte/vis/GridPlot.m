@@ -157,6 +157,8 @@ classdef GridPlot < BasePlot
         lowerEnabled
         upperEnabled
         diagEnabled
+        ccolnames
+        ccolindex
         colnames
         colindex
     end
@@ -614,192 +616,202 @@ classdef GridPlot < BasePlot
 
                 %%%% set figure properties
 
-                component = "figure";
-                self.template.(self.plotTypeList(i)).(component).enabled = false;
-                if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                    self.template.(self.plotTypeList(i)).(component).kws = struct();
+                fname = "figure";
+                self.template.(self.plotTypeList(i)).(fname).enabled = false;
+                if ~isfield(self.template.(self.plotTypeList(i)).(fname).kws,"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                    self.template.(self.plotTypeList(i)).(fname).kws = struct();
                 end
 
                 %%%% set axes properties
 
-                component = "axes";
-                if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                    self.template.(self.plotTypeList(i)).(component).kws = struct();
+                fname = "axes";
+                if ~isfield(self.template.(self.plotTypeList(i)).(fname).kws,"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                    self.template.(self.plotTypeList(i)).(fname).kws = struct();
                 end
                 propList = ["box", "xgrid", "ygrid", "fontSize"];
                 valueList = {"on", "on", "on", 11};
                 for j = 1:length(propList)
                     prop = propList(j);
-                    if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
-                        self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                    if ~isfield(self.template.(self.plotTypeList(i)).(fname).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(fname).kws.(prop))
+                        self.template.(self.plotTypeList(i)).(fname).kws.(prop) = valueList{j};
                     end
                 end
                 if contains(self.plotTypeList(i),"3")
-                    self.template.(self.plotTypeList(i)).(component).kws.zgrid = "on";
+                    self.template.(self.plotTypeList(i)).(fname).kws.zgrid = "on";
                 end
 
-                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 %%%% set template plot properties
-                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 if strcmpi(self.plotTypeList(i),"histogram")
 
-                    % set template properties histogram
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%% histogram
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    component = "histogram";
-                    %if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled) % condition creates vicious memory effect
-                        self.template.(self.plotTypeList(i)).(component).enabled = strcmp(self.plotType.diag.value, component);
+                    fname = "histogram";
+                    %if ~isfield(self.template.(self.plotTypeList(i)).(fname),"enabled") || isempty(self.template.(self.plotTypeList(i)).(fname).enabled) % condition creates vicious sticky memory effect
+                        self.template.(self.plotTypeList(i)).(fname).enabled = strcmp(self.plotType.diag.value, fname);
                     %end
-                    if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                        self.template.(self.plotTypeList(i)).(component).kws = struct();
+                    if ~isfield(self.template.(self.plotTypeList(i)).(fname),"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                        self.template.(self.plotTypeList(i)).(fname).kws = struct();
                     end
                     propList = ["edgeColor", "facealpha", "faceColor", "edgeColor"];
                     valueList = {"none", 0.6, "auto" "none"};
                     for j = 1:length(propList)
                         prop = propList(j);
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
-                            self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(fname).kws.(prop))
+                            self.template.(self.plotTypeList(i)).(fname).kws.(prop) = valueList{j};
                         end
                     end
 
                 elseif strcmpi(self.plotTypeList(i),"histfit")
 
-                    component = "histfit";
-                    %if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled) % condition creates vicious memory effect
-                        self.template.(self.plotTypeList(i)).(component).enabled = strcmp(self.plotType.diag.value, component);
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%% histfit
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                    fname = "histfit";
+                    %if ~isfield(self.template.(self.plotTypeList(i)).(fname),"enabled") || isempty(self.template.(self.plotTypeList(i)).(fname).enabled) % condition creates vicious sticky memory effect
+                        self.template.(self.plotTypeList(i)).(fname).enabled = strcmp(self.plotType.diag.value, fname);
                     %end
-                    if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                        self.template.(self.plotTypeList(i)).(component).kws = struct();
+                    if ~isfield(self.template.(self.plotTypeList(i)).(fname),"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                        self.template.(self.plotTypeList(i)).(fname).kws = struct();
+                    end
+                    propList = ["dist", "nbins"];
+                    valueList = {"Normal", []};
+                    for j = 1:length(propList)
+                        prop = propList(j);
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),prop) || isempty(self.template.(self.plotTypeList(i)).(fname).(prop))
+                            self.template.(self.plotTypeList(i)).(fname).(prop) = valueList{j};
+                        end
                     end
 
                 else
 
-                    % set template properties colorbar
-
-                    component = "colorbar";
-                    if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
-                        self.template.(self.plotTypeList(i)).(component).enabled = false;
-                    end
-                    if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                        self.template.(self.plotTypeList(i)).(component).kws = struct();
-                    end
-
-                    %%%% set template properties histogram2
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%% histogram2
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     if strcmpi(self.plotTypeList(i),"histogram2")
 
-                        component = "histogram2";
-                        %if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled) % condition creates vicious memory effect
-                            self.template.(self.plotTypeList(i)).(component).enabled = strcmp(self.plotType.upper.value,component) || strcmp(self.plotType.lower.value,component);
+                        fname = "histogram2";
+                        %if ~isfield(self.template.(self.plotTypeList(i)).(fname),"enabled") || isempty(self.template.(self.plotTypeList(i)).(fname).enabled) % condition creates vicious sticky memory effect
+                            self.template.(self.plotTypeList(i)).(fname).enabled = strcmp(self.plotType.upper.value,fname) || strcmp(self.plotType.lower.value,fname);
                         %end
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                            self.template.(self.plotTypeList(i)).(component).kws = struct();
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                            self.template.(self.plotTypeList(i)).(fname).kws = struct();
                         end
                         propList = ["numbins", "showemptybins", "edgeColor", "faceColor", "displayStyle"];
                         valueList = {[100 100], "off", "none", "flat", "bar3"};
                         for j = 1:length(propList)
                             prop = propList(j);
-                            if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
-                                self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                            if ~isfield(self.template.(self.plotTypeList(i)).(fname).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(fname).kws.(prop))
+                                self.template.(self.plotTypeList(i)).(fname).kws.(prop) = valueList{j};
                             end
                         end
 
                     end
 
-                    %%%% set template properties contour / contourf
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%% contour / contourf
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     if contains(lower(self.plotTypeList(i)),"contour")
-                        component = self.plotTypeList(i);
-                        %if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled) % condition creates vicious memory effect
-                            self.template.(self.plotTypeList(i)).(component).enabled = strcmp(self.plotType.upper.value,component) || strcmp(self.plotType.lower.value,component);
+                        fname = self.plotTypeList(i);
+                        %if ~isfield(self.template.(self.plotTypeList(i)).(fname),"enabled") || isempty(self.template.(self.plotTypeList(i)).(fname).enabled) % condition creates vicious sticky memory effect
+                            self.template.(self.plotTypeList(i)).(fname).enabled = strcmp(self.plotType.upper.value,fname) || strcmp(self.plotType.lower.value,fname);
                         %end
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                            self.template.(self.plotTypeList(i)).(component).kws = struct();
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                            self.template.(self.plotTypeList(i)).(fname).kws = struct();
                         end
                         propList = ["levels"];
                         valueList = {8};
                         for j = 1:length(propList)
                             prop = propList(j);
-                            if ~isfield(self.template.(self.plotTypeList(i)).(component),prop) || isempty(self.template.(self.plotTypeList(i)).(component).(prop))
-                                self.template.(self.plotTypeList(i)).(component).(prop) = valueList{j};
-                            end
-                        end
-                        propList = ["levels"];
-                        valueList = {8};
-                        for j = 1:length(propList)
-                            prop = propList(j);
-                            if ~isfield(self.template.(self.plotTypeList(i)).(component),prop) || isempty(self.template.(self.plotTypeList(i)).(component).(prop))
-                                self.template.(self.plotTypeList(i)).(component).(prop) = valueList{j};
+                            if ~isfield(self.template.(self.plotTypeList(i)).(fname),prop) || isempty(self.template.(self.plotTypeList(i)).(fname).(prop))
+                                self.template.(self.plotTypeList(i)).(fname).(prop) = valueList{j};
                             end
                         end
                     end
 
-                    %%%% set template properties line
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%% line / surface
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     if contains(lower(self.plotTypeList(i)),"line")
 
-                        component = "plot";
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
-                            self.template.(self.plotTypeList(i)).(component).enabled = true;
+                        fname = "plot";
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"enabled") || isempty(self.template.(self.plotTypeList(i)).(fname).enabled)
+                            self.template.(self.plotTypeList(i)).(fname).enabled = true;
                         end
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                            self.template.(self.plotTypeList(i)).(component).kws = struct();
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                            self.template.(self.plotTypeList(i)).(fname).kws = struct();
                         end
                         propList = ["linewidth", "color"];
                         valueList = {0.75, uint8([200 200 200 100])};
                         for j = 1:length(propList)
                             prop = propList(j);
-                            if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
-                                self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                            if ~isfield(self.template.(self.plotTypeList(i)).(fname).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(fname).kws.(prop))
+                                self.template.(self.plotTypeList(i)).(fname).kws.(prop) = valueList{j};
                             end
                         end
 
-                        component = "surface";
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
-                            self.template.(self.plotTypeList(i)).(component).enabled = false;
+                        fname = "surface";
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"enabled") || isempty(self.template.(self.plotTypeList(i)).(fname).enabled)
+                            self.template.(self.plotTypeList(i)).(fname).enabled = false;
                         end
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                            self.template.(self.plotTypeList(i)).(component).kws = struct();
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                            self.template.(self.plotTypeList(i)).(fname).kws = struct();
+                        end
+                        keyList = ["faceColor","edgeColor","edgeAlpha","lineStyle","marker"];
+                        valueList = {"none","flat",0.5,"-","none"};
+                        for j = 1:length(keyList)
+                            key = keyList(j); val = valueList{j};
+                            if ~isfield(self.template.(self.plotTypeList(i)).(fname),key) || isempty(self.template.(self.plotTypeList(i)).(fname).(key))
+                                self.template.(self.plotTypeList(i)).(fname).(key) = val;
+                            end
                         end
 
                     end
 
-                    %%%% set template properties scatter
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%% scatter
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     if contains(lower(self.plotTypeList(i)),"scatter")
-                        component = "scatter";
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
-                            self.template.(self.plotTypeList(i)).(component).enabled = true;
+                        fname = "scatter";
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"enabled") || isempty(self.template.(self.plotTypeList(i)).(fname).enabled)
+                            self.template.(self.plotTypeList(i)).(fname).enabled = true;
                         end
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
-                            self.template.(self.plotTypeList(i)).(component).kws = struct();
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                            self.template.(self.plotTypeList(i)).(fname).kws = struct();
                         end
-                        prop = "marker"; value = ".";
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
-                            self.template.(self.plotTypeList(i)).(component).kws.(prop) = value;
-                        end
-                        propList = ["size", "color"];
-                        valueList = {12, []};
+                        propList = ["marker", "size", "color", "filled"];
+                        valueList = {"o", 6, [], true};
                         for j = 1:length(propList)
                             prop = propList(j);
-                            if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
-                                self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                            if ~isfield(self.template.(self.plotTypeList(i)).(fname),prop) || isempty(self.template.(self.plotTypeList(i)).(fname).(prop))
+                                self.template.(self.plotTypeList(i)).(fname).(prop) = valueList{j};
                             end
                         end
                     end
 
-                    %%%% set template properties colormap / colorbar
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%% colormap / colorbar
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     if ~( strcmpi(self.plotTypeList(i),"histogram") || strcmpi(self.plotTypeList(i),"histfit") )
 
                         %%%% set template properties colormap
 
-                        component = "colormap";
-                        if ~isfield(self.template.(self.plotTypeList(i)),component) || isempty(self.template.(self.plotTypeList(i)).(component))
-                            self.template.(self.plotTypeList(i)).(component) = struct();
+                        fname = "colormap";
+                        if ~isfield(self.template.(self.plotTypeList(i)),fname) || isempty(self.template.(self.plotTypeList(i)).(fname))
+                            self.template.(self.plotTypeList(i)).(fname) = struct();
                         end
-                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
-                            self.template.(self.plotTypeList(i)).(component).enabled = self.colormap.enabled;
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"enabled") || isempty(self.template.(self.plotTypeList(i)).(fname).enabled)
+                            self.template.(self.plotTypeList(i)).(fname).enabled = self.colormap.enabled;
                         end
 
                         % NOTE: The colormap of the subplots is set to the main colormap values only if it is non-empty.
@@ -832,6 +844,14 @@ classdef GridPlot < BasePlot
                         if ~isfield(self.template.(self.plotTypeList(i)),prop) || isempty(self.template.(self.plotTypeList(i)).(prop))
                             self.template.(self.plotTypeList(i)).(prop) = struct();
                             self.template.(self.plotTypeList(i)).colorbar.enabled = false;
+                        end
+
+                        fname = "colorbar";
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"enabled") || isempty(self.template.(self.plotTypeList(i)).(fname).enabled)
+                            self.template.(self.plotTypeList(i)).(fname).enabled = false;
+                        end
+                        if ~isfield(self.template.(self.plotTypeList(i)).(fname),"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
+                            self.template.(self.plotTypeList(i)).(fname).kws = struct();
                         end
 
                     end
