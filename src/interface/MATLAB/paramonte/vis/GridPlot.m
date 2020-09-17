@@ -9,30 +9,30 @@
 %%%%
 %%%%   This file is part of the ParaMonte library.
 %%%%
-%%%%   Permission is hereby granted, free of charge, to any person obtaining a 
-%%%%   copy of this software and associated documentation files (the "Software"), 
-%%%%   to deal in the Software without restriction, including without limitation 
-%%%%   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-%%%%   and/or sell copies of the Software, and to permit persons to whom the 
+%%%%   Permission is hereby granted, free of charge, to any person obtaining a
+%%%%   copy of this software and associated documentation files (the "Software"),
+%%%%   to deal in the Software without restriction, including without limitation
+%%%%   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+%%%%   and/or sell copies of the Software, and to permit persons to whom the
 %%%%   Software is furnished to do so, subject to the following conditions:
 %%%%
-%%%%   The above copyright notice and this permission notice shall be 
+%%%%   The above copyright notice and this permission notice shall be
 %%%%   included in all copies or substantial portions of the Software.
 %%%%
-%%%%   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-%%%%   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-%%%%   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-%%%%   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-%%%%   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-%%%%   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+%%%%   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+%%%%   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+%%%%   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+%%%%   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+%%%%   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+%%%%   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 %%%%   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %%%%
 %%%%   ACKNOWLEDGMENT
 %%%%
 %%%%   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-%%%%   As per the ParaMonte library license agreement terms, if you use any parts of 
-%%%%   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-%%%%   work (education/research/industry/development/...) by citing the ParaMonte 
+%%%%   As per the ParaMonte library license agreement terms, if you use any parts of
+%%%%   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+%%%%   work (education/research/industry/development/...) by citing the ParaMonte
 %%%%   library as described on this page:
 %%%%
 %%%%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -84,40 +84,40 @@
 %
 %           Example usage:
 %
-%               1.  colormap = "autumn"
-%               1.  colormap = "winter"
+%               1.  colormap.values = "autumn"
+%               1.  colormap.values = "winter"
 %
 %           If colormap is not provided or is empty, the default will be "autumn".
 %
-%       colorbar_kws
+%       colorbar
 %
-%           A MATLAB struct() whose components' values are passed to MATLAB's colorbar function.
-%           If your desired attribute is missing from the fieldnames of colorbar_kws, simply add
+%           A MATLAB struct(); whose components' values are passed to MATLAB's colorbar function.
+%           If your desired attribute is missing from the fieldnames of colorbar.kws, simply add
 %           a new field named as the attribute and assign the desired value to it.
 %
 %           Example usage:
 %
-%               colorbar_kws.enabled = true % add colorbar
-%               colorbar_kws.location = "west"
+%               colorbar.enabled = true % add colorbar
+%               colorbar.kws.location = "west"
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to colorbar_kws.
+%           and its value to colorbar.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, colorbar_kws.color and colorbar_kws.Color are the same,
+%           WARNING: For example, colorbar.kws.color and colorbar.kws.Color are the same,
 %           WARNING: and only one of the two will be processed.
 %
 %       layout
 %
-%           A MATLAB struct() containing an extensive amount of information about the layout
+%           A MATLAB struct(); containing an extensive amount of information about the layout
 %           and the overall design of the grid plot, with the following components:
 %
 %               - layout.colorbar   :   the layout and design of the colorbar of the plot
 %               - layout.subplot    :   the layout and design of the subplots of the plot
 %               - layout.axes       :   the layout and design of the gridplot's axes and the subplots' axes
 %               - layout.update()   :   a method that reflects the new layout changes into the grid-plot, when called.
-%               - layout.plotType   :   a struct() with components: diag, lower, upper, each of which contains
+%               - layout.plotType   :   a struct(); with components: diag, lower, upper, each of which contains
 %                                       the type of plot to be added to the corresponding section of the grid plot.
 %                                       possible values for each section includes:
 %
@@ -134,7 +134,7 @@
 %                                       WARNING: please report it at: https://github.com/cdslaborg/paramonte/issues
 %
 %   Superclass Attributes
-%   ----------------------
+%   ---------------------
 %
 %       See the documentation for the BasePlot class
 %
@@ -152,39 +152,32 @@ classdef GridPlot < BasePlot
     properties (Access = protected, Hidden)
         %dfref = [];
         %isdryrun = [];
-        plotTypeList =  [ "line" ...
-                        , "histfit" ...
-                        , "histogram" ...
-                        , "histogram2" ...
-                        , "contourf" ...
-                        , "contour" ...
-                        , "scatter" ...
-                        , "scatter3" ...
-                        , "lineScatter" ...
-                        , "lineScatter3" ...
-                        ];
+        plotTypeList
         plotTypeListLen
         lowerEnabled
         upperEnabled
         diagEnabled
         colnames
+        colindex
     end
 
     properties (Access = public)
 
+        title
         columns
         ccolumn
+        plotType
         %line_kws
         %hist_kws
-        %histogram2_kws
+        %histogram2
         %histfit_kws
         %scatter_kws
         %scatter3_kws
         %lineScatter_kws
         %lineScatter3_kws
-        colorbar_kws
+        colorbar
         colormap
-        layout
+        template
 
     end
 
@@ -194,70 +187,240 @@ classdef GridPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function reset(self)
+        function resetInternal(self)
 
-            reset@BasePlot(self);
+            resetInternal@BasePlot(self);
+
+            trianglePlotList = ["contour", "contourf", "lineScatter"]; %, "line", "scatter", "contour3", "line3", "scatter3", "linescatter3"];
+            diagonalPlotList = ["histogram", "histfit"];
+
+            self.plotTypeList = [trianglePlotList, diagonalPlotList];
             self.plotTypeListLen = length(self.plotTypeList);
+
+            self.plotType.upper.enabled = true;
+            self.plotType.upper.value = [];
+            self.plotType.upper.names = trianglePlotList;
+
+            self.plotType.lower.enabled = true;
+            self.plotType.lower.value = [];
+            self.plotType.lower.names = trianglePlotList;
+
+            self.plotType.diag.enabled = true;
+            self.plotType.diag.value = [];
+            self.plotType.diag.names = diagonalPlotList;
+
+            self.axes.main.margin.bottom = 0.07; % 0.14;
+            self.axes.main.margin.right = 0.10;
+            self.axes.main.margin.left = 0.07; %0.1;
+            self.axes.main.margin.top = 0.0;
+            self.axes.main.origin.x = 0.02;
+            self.axes.main.origin.y = 0.00;
+            %self.axes.main.height = 1 - self.axes.main.margin.top;
+            %self.axes.main.width = 1 - self.axes.main.margin.right;
+            self.axes.main.nrow = length(self.columns);
+            self.axes.main.ncol = self.axes.main.nrow;
+
+            self.axes.subplot.interspace = 0.015; % space between subplots
+            %self.axes.subplot.height = (1-self.axes.main.margin.top-self.axes.main.margin.bottom)/self.axes.main.ncol - self.axes.subplot.interspace;
+            %self.axes.subplot.width  = (1-self.axes.main.margin.left-self.axes.main.margin.right)/self.axes.main.nrow - self.axes.subplot.interspace;
+            self.axes.subplot.box = "on";
+            self.axes.subplot.grid = "on";
+            self.axes.subplot.fontSize = 11;
+
+            self.title = struct();
+            self.title.txt = [];
+            self.title.enabled = false;
+            self.title.kws = struct();
+            self.title.kws.fontSize = 13;
+
+            self.colormap = struct();
+            self.colormap.enabled = true;
+            self.colormap.values = [];
+
+            self.colorbar = struct();
+            self.colorbar.enabled = true;
+            self.colorbar.kws = struct();
+            self.colorbar.kws.fontSize = 12;
+            %self.colorbar.origin.x = 1 - self.axes.main.margin.right;
+            %self.colorbar.origin.y = self.axes.main.margin.bottom;
+            %self.colorbar.height = self.axes.main.nrow * ( self.axes.subplot.height + self.axes.subplot.interspace ) - self.axes.subplot.interspace;
+            self.colorbar.width = 0.03;
+
+            self.figure.height = 900;
+            %self.figure.width = self.figure.height * ( 1 ...
+            %                                         - self.axes.main.margin.bottom ...
+            %                                         + self.axes.main.margin.right ...
+            %                                         + self.axes.main.margin.left ...
+            %                                         - self.axes.main.margin.top ...
+            %                                         + self.colorbar.width ...
+            %                                         );
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% setup subplot templates
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            template = struct();
+
+            orangered = getRGB("deep carrot orange");
+
+            % target
+
+            template.target = struct();
+            template.target.vline = struct();
+            template.target.vline.kws = struct();
+            template.target.hline = struct();
+            template.target.hline.kws = struct();
+            template.target.scatter = struct();
+            template.target.scatter.kws = struct();
+
+            template.target.vline.kws.linewidth = 1;
+            template.target.vline.kws.linestyle = "-";
+            template.target.vline.kws.color = orangered;
+
+            template.target.hline.kws.linewidth = 1;
+            template.target.hline.kws.linestyle = "-";
+            template.target.hline.kws.color = orangered;
+
+            template.target.scatter.size = 40;
+            template.target.scatter.color = orangered;
+
+            % contour
+
+            template.contour = struct();
+            template.contour.enabled = [];
+            template.contour.kws = struct();
+
+            % contourf
+
+            template.contourf = struct();
+            template.contourf.enabled = [];
+            template.contourf.kws = struct();
+
+            % histogram
+
+            template.histogram = struct();
+            template.histogram.enabled = [];
+            template.histogram.kws = struct();
+
+            % histfit
+
+            template.histfit = struct();
+            template.histfit.enabled = [];
+            template.histfit.kws = struct();
+
+            % line / scatter / lineScatter
+
+            template.scatter = struct();
+            template.scatter.enabled = [];
+            template.scatter.kws = struct();
+
+            template.plot = struct();
+            template.plot.enabled = [];
+            template.plot.kws = struct();
+
+            template.surface = struct();
+            template.surface.enabled = [];
+            template.surface.kws = struct();
+
+            % figure
+
+            template.figure = struct();
+            template.figure.kws = struct();
+            template.figure.enabled = false;
+
+            % axes template
+
+            template.axes = struct();
+            template.axes.kws = struct();
+
+            % legend template
+
+            template.legend = struct();
+            template.legend.enabled = false;
+            template.legend.kws = struct();
+
+            % colorbar template
+
+            template.colorbar = struct();
+            template.colorbar.enabled = false;
+            template.colorbar.kws = struct();
+
+            % colormap template
+
+            template.colormap = struct();
+            template.colormap.enabled = false;
+            template.colormap.values = [];
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% setup subplots template
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            self.template = struct();
+
+            self.template.histfit = struct();
+            self.template.histfit.axes = template.axes;
+            self.template.histfit.figure = template.figure;
+            self.template.histfit.histfit = template.histfit;
+            self.template.histfit.legend = template.legend;
+
+            self.template.histogram = struct();
+            self.template.histogram.axes = template.axes;
+            self.template.histogram.figure = template.figure;
+            self.template.histogram.histogram = template.histogram;
+            self.template.histogram.legend = template.legend;
+
+            self.template.contour = struct();
+            self.template.contour.gridSize = 2^9;
+            self.template.contour.noiseLevel = 0.001;
+            self.template.contour.axes = template.axes;
+            self.template.contour.figure = template.figure;
+            self.template.contour.contour = template.contour;
+            self.template.contour.colorbar = template.colorbar;
+            self.template.contour.colormap = template.colormap;
+            self.template.contour.legend = template.legend;
+
+            self.template.contourf = struct();
+            self.template.contourf.gridSize = 2^9;
+            self.template.contourf.noiseLevel = 0.001;
+            self.template.contourf.axes = template.axes;
+            self.template.contourf.figure = template.figure;
+            self.template.contourf.contourf = template.contourf;
+            self.template.contourf.colorbar = template.colorbar;
+            self.template.contourf.colormap = template.colormap;
+            self.template.contourf.legend = template.legend;
+
+            %self.template.line = struct();
+            %self.template.line.figure = template.figure;
+            %self.template.line.plot = template.plot;
+            %self.template.line.colorbar = template.colorbar;
+            %self.template.scatter = struct();
+            %self.template.scatter.figure = template.figure;
+            %self.template.scatter.scatter = template.scatter;
+            %self.template.scatter.colorbar = template.colorbar;
+
+            self.template.lineScatter = struct();
+            self.template.lineScatter.axes = template.axes;
+            self.template.lineScatter.figure = template.figure;
+            self.template.lineScatter.plot = template.plot;
+            self.template.lineScatter.surface = template.surface;
+            self.template.lineScatter.scatter = template.scatter;
+            self.template.lineScatter.colorbar = template.colorbar;
+            self.template.lineScatter.colormap = template.colormap;
+            self.template.lineScatter.legend = template.legend;
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             %self.columns = {};
             self.ccolumn = {};
-            for i = 1:length(self.plotTypeList)
-                self.layout.subplot.(self.plotTypeList{i}) = struct();
-            end
-            self.colormap = {};
-
-            self.colorbar_kws = struct();
-            self.colorbar_kws.enabled = true;
-            self.colorbar_kws.fontsize = [];
-
-            self.layout.plotType.upper = "lineScatter";
-            self.layout.plotType.lower = "contour"; % "contourf"; % "histogram2";
-            self.layout.plotType.diag = "histogram";
-            self.layout.update = @self.updateLayout;
-
-            self.layout.axis.main.margin.bottom = 0.07; % 0.14;
-            self.layout.axis.main.margin.right = 0.10;
-            self.layout.axis.main.margin.left = 0.07; %0.1;
-            self.layout.axis.main.margin.top = 0.0;
-            self.layout.axis.main.origin.x = 0.02;
-            self.layout.axis.main.origin.y = 0.00;
-            %self.layout.axis.main.height = 1 - self.layout.axis.main.margin.top;
-            %self.layout.axis.main.width = 1 - self.layout.axis.main.margin.right;
-            self.layout.axis.main.title.content = [];
-            self.layout.axis.main.title.fontsize = 13;
-            self.layout.axis.main.nrow = length(self.columns);
-            self.layout.axis.main.ncol = self.layout.axis.main.nrow;
-
-            self.layout.axis.subplot.interspace = 0.015; % space between subplots
-            %self.layout.axis.subplot.height = (1-self.layout.axis.main.margin.top-self.layout.axis.main.margin.bottom)/self.layout.axis.main.ncol - self.layout.axis.subplot.interspace;
-            %self.layout.axis.subplot.width  = (1-self.layout.axis.main.margin.left-self.layout.axis.main.margin.right)/self.layout.axis.main.nrow - self.layout.axis.subplot.interspace;
-            self.layout.axis.subplot.box = "on";
-            self.layout.axis.subplot.grid = "on";
-            self.layout.axis.subplot.fontsize = 11;
-
-            %self.layout.colorbar.origin.x = 1 - self.layout.axis.main.margin.right;
-            %self.layout.colorbar.origin.y = self.layout.axis.main.margin.bottom;
-            %self.layout.colorbar.height = self.layout.axis.main.nrow * ( self.layout.axis.subplot.height + self.layout.axis.subplot.interspace ) - self.layout.axis.subplot.interspace;
-            self.layout.colorbar.width = 0.03;
-            self.layout.colorbar.fontsize = 12;
-
-            self.layout.figHeight   = 900;
-            %self.layout.figWidth    = self.layout.figHeight *   ( 1 ...
-            %                                                    - self.layout.axis.main.margin.bottom ...
-            %                                                    + self.layout.axis.main.margin.right ...
-            %                                                    + self.layout.axis.main.margin.left ...
-            %                                                    - self.layout.axis.main.margin.top ...
-            %                                                    + self.layout.colorbar.width ...
-            %                                                    );
 
             for i = 1:self.plotTypeListLen
-                self.layout.axis.subplot.(self.plotTypeList{i}) = struct();
+                self.axes.subplot.(self.plotTypeList{i}) = struct();
             end
 
             self.updateLayout();
 
             self.isdryrun = true;
-            self.plot();
+            self.make();
             self.isdryrun = false;
 
             % self.target = GridTarget(self.dfref, self.columns, self.currentFig);
@@ -274,19 +437,20 @@ classdef GridPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = GridPlot(varargin) % expected input arguments: dataFrame, dataFrame column names to plot
-
-            self = self@BasePlot(varargin{1});
-            try
-                self.columns = varargin{2};
-            catch
+        function self = GridPlot(dataFrame, column, resetExternal)
+            if nargin<3; resetExternal = []; end
+            self = self@BasePlot("grid", dataFrame, resetExternal);
+            if nargin<3; self.resetExternal = @self.resetInternal; end
+            if nargin<2
                 error   ( "GridPlot requires two input arguments: " + newline + newline ...
                         + "    the data Table " + newline ...
                         + "    and a cell array of column names to plot " + newline + newline ...
                         + "The column names is required in order to set the layout of the Grid plot." ...
                         );
+            else
+                self.columns = column;
             end
-            self.reset()
+            self.resetInternal()
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -337,7 +501,7 @@ classdef GridPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function plot(self,varargin)
+        function make(self,varargin)
             %
             %   Generate a plot from the selected columns of the object's dataFrame.
             %
@@ -345,10 +509,10 @@ classdef GridPlot < BasePlot
             %   ----------
             %
             %       Any property,value pair of the object.
-            %       If the property is a struct(), then its value must be given as a cell array,
+            %       If the property is a struct();, then its value must be given as a cell array,
             %       with consecutive elements representing the struct's property-name,property-value pairs.
             %       Note that all of these property-value pairs can be also directly set directly via the
-            %       object's attributes, before calling the plot() method.
+            %       object's attributes, before calling the make() method.
             %
             %   Returns
             %   -------
@@ -359,34 +523,60 @@ classdef GridPlot < BasePlot
             %   Example
             %   -------
             %
-            %       plot("ccolumn",8)
-            %       plot("colormap","autumn")
-            %       plot( "gcf_kws", {"enabled",true,"color","none"} )
+            %       make("ccolumn",8)
+            %       make("colormap","autumn")
             %
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% parse arguments
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            %parseArgs(self,varargin{:});
             self.parseArgs(varargin{:});
 
             % ensure the number of subplots is consistent with the existing layout
 
-            if length(self.columns)~=self.layout.axis.main.nrow || length(self.columns)~=self.layout.axis.main.ncol
+            if length(self.columns)~=self.axes.main.nrow || length(self.columns)~=self.axes.main.ncol
                 self.currentFig.subplotList = [];
                 self.updateLayout();
+            end
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% set plot types to make
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            if self.plotType.lower.enabled
+                if isempty(self.plotType.lower.value)
+                    self.plotType.lower.value = "contour"; %"histogram2";
+                else
+                    self.plotType.lower.value = string(self.plotType.lower.value);
+                end
+            end
+
+            if self.plotType.upper.enabled
+                if isempty(self.plotType.upper.value)
+                    self.plotType.upper.value = "lineScatter";
+                else
+                    self.plotType.upper.value = string(self.plotType.upper.value);
+                end
+            end
+
+            if self.plotType.diag.enabled
+                if isempty(self.plotType.diag.value)
+                    self.plotType.diag.value = "histogram";
+                else
+                    self.plotType.diag.value = string(self.plotType.diag.value);
+                end
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% adjust figure position
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            self.gcf_kws.position = [ 50                    ... origin x
-                                    , 100                   ... origin y
-                                    , self.layout.figWidth  ... width
-                                    , self.layout.figHeight ... height
-                                    ];
+            self.figure.kws.position =  [ 50  ... origin x
+                                        , 100 ... origin y
+                                        , self.figure.width  ... width
+                                        , self.figure.height ... height
+                                        ];
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% set what to plot
@@ -396,216 +586,380 @@ classdef GridPlot < BasePlot
                 error( "the ccolumn attribute should be set to a single column name from the input data Table.");
             end
 
-            cEnabled = getVecLen(self.ccolumn) || isa(self.ccolumn,"cell");
+            %if self.colormap.enabled && ~getVecLen(self.colormap.values)
+            %    self.colormap.values = "winter";
+            %end
 
-            if cEnabled && ~getVecLen(self.colormap)
-                self.colormap = "winter";
-            end
-
-            % check subplot data columns to plot
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% check subplot layout
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             rowsIsPresent = getVecLen(self.rows);
             columnsIsPresent = getVecLen(self.columns);
-            ccolumnIsPresent = getVecLen(self.ccolumn);
             for i = 1:self.plotTypeListLen
 
-                plotType_kws = self.plotTypeList(i) + "_kws";
+                % set template legend properties
 
-                % check rows presence
+                if ~isfield(self.template.(self.plotTypeList(i)).legend,"enabled") || isempty(self.template.(self.plotTypeList(i)).legend.enabled)
+                    self.template.(self.plotTypeList(i)).legend.enabled = false;
+                end
+
+                % set template rows to plot
 
                 if rowsIsPresent
-                    self.layout.subplot.(self.plotTypeList(i)).rows = self.rows;
+                    self.template.(self.plotTypeList(i)).rows = self.rows;
                 else
-                    self.layout.subplot.(self.plotTypeList(i)).rows = {};
+                    self.template.(self.plotTypeList(i)).rows = {};
                 end
 
-                %self.layout.subplot.(self.plotTypeList(i)).xcolumns = {};
+                %%%% set figure properties
 
-                % set color properties
+                component = "figure";
+                self.template.(self.plotTypeList(i)).(component).enabled = false;
+                if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                    self.template.(self.plotTypeList(i)).(component).kws = struct();
+                end
 
-                if ~( strcmpi(self.plotTypeList(i),"histogram") || strcmpi(self.plotTypeList(i),"histfit") )
+                %%%% set axes properties
 
-                    %self.layout.subplot.(self.plotTypeList(i)).ycolumns = {};
+                component = "axes";
+                if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                    self.template.(self.plotTypeList(i)).(component).kws = struct();
+                end
+                propList = ["box", "xgrid", "ygrid", "fontSize"];
+                valueList = {"on", "on", "on", 11};
+                for j = 1:length(propList)
+                    prop = propList(j);
+                    if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
+                        self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                    end
+                end
+                if contains(self.plotTypeList(i),"3")
+                    self.template.(self.plotTypeList(i)).(component).kws.zgrid = "on";
+                end
+
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                %%%% set template plot properties
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                if strcmpi(self.plotTypeList(i),"histogram")
+
+                    % set template properties histogram
+
+                    component = "histogram";
+                    %if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled) % condition creates vicious memory effect
+                        self.template.(self.plotTypeList(i)).(component).enabled = strcmp(self.plotType.diag.value, component);
+                    %end
+                    if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                        self.template.(self.plotTypeList(i)).(component).kws = struct();
+                    end
+                    propList = ["edgeColor", "facealpha", "faceColor", "edgeColor"];
+                    valueList = {"none", 0.6, "auto" "none"};
+                    for j = 1:length(propList)
+                        prop = propList(j);
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
+                            self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                        end
+                    end
+
+                elseif strcmpi(self.plotTypeList(i),"histfit")
+
+                    component = "histfit";
+                    %if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled) % condition creates vicious memory effect
+                        self.template.(self.plotTypeList(i)).(component).enabled = strcmp(self.plotType.diag.value, component);
+                    %end
+                    if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                        self.template.(self.plotTypeList(i)).(component).kws = struct();
+                    end
+
+                else
+
+                    % set template properties colorbar
+
+                    component = "colorbar";
+                    if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
+                        self.template.(self.plotTypeList(i)).(component).enabled = false;
+                    end
+                    if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                        self.template.(self.plotTypeList(i)).(component).kws = struct();
+                    end
+
+                    %%%% set template properties histogram2
 
                     if strcmpi(self.plotTypeList(i),"histogram2")
-                        if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"histogram2_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).histogram2_kws)
-                            self.layout.subplot.(self.plotTypeList(i)).histogram2_kws = struct();
+
+                        component = "histogram2";
+                        %if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled) % condition creates vicious memory effect
+                            self.template.(self.plotTypeList(i)).(component).enabled = strcmp(self.plotType.upper.value,component) || strcmp(self.plotType.lower.value,component);
+                        %end
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                            self.template.(self.plotTypeList(i)).(component).kws = struct();
                         end
-                        keyList = ["numbins", "showemptybins"];
-                        valueList = {[100 100], "off"};
-                        for j = 1:length(keyList)
-                            prop = keyList(j);
-                            defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)).histogram2_kws,prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).histogram2_kws.(prop));
-                            if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).histogram2_kws.(prop) = valueList{j}; end
+                        propList = ["numbins", "showemptybins", "edgeColor", "faceColor", "displayStyle"];
+                        valueList = {[100 100], "off", "none", "flat", "bar3"};
+                        for j = 1:length(propList)
+                            prop = propList(j);
+                            if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
+                                self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                            end
                         end
-                        prop = "colormap";
-                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
-                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = {}; end
+
                     end
 
-                    if strcmpi(self.plotTypeList(i),"contourf")
-                        if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"contourf_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).contourf_kws)
-                            self.layout.subplot.(self.plotTypeList(i)).contourf_kws = struct();
+                    %%%% set template properties contour / contourf
+
+                    if contains(lower(self.plotTypeList(i)),"contour")
+                        component = self.plotTypeList(i);
+                        %if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled) % condition creates vicious memory effect
+                            self.template.(self.plotTypeList(i)).(component).enabled = strcmp(self.plotType.upper.value,component) || strcmp(self.plotType.lower.value,component);
+                        %end
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                            self.template.(self.plotTypeList(i)).(component).kws = struct();
                         end
-                        prop = "colormap";
-                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
-                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = gray; end
+                        propList = ["levels"];
+                        valueList = {8};
+                        for j = 1:length(propList)
+                            prop = propList(j);
+                            if ~isfield(self.template.(self.plotTypeList(i)).(component),prop) || isempty(self.template.(self.plotTypeList(i)).(component).(prop))
+                                self.template.(self.plotTypeList(i)).(component).(prop) = valueList{j};
+                            end
+                        end
+                        propList = ["levels"];
+                        valueList = {8};
+                        for j = 1:length(propList)
+                            prop = propList(j);
+                            if ~isfield(self.template.(self.plotTypeList(i)).(component),prop) || isempty(self.template.(self.plotTypeList(i)).(component).(prop))
+                                self.template.(self.plotTypeList(i)).(component).(prop) = valueList{j};
+                            end
+                        end
                     end
 
-                    if strcmpi(self.plotTypeList(i),"contour")
-                        if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"contour_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).contourf_kws)
-                            self.layout.subplot.(self.plotTypeList(i)).contourf_kws = struct();
+                    %%%% set template properties line
+
+                    if contains(lower(self.plotTypeList(i)),"line")
+
+                        component = "plot";
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
+                            self.template.(self.plotTypeList(i)).(component).enabled = true;
                         end
-                        prop = "colormap";
-                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
-                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = {}; end
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                            self.template.(self.plotTypeList(i)).(component).kws = struct();
+                        end
+                        propList = ["linewidth", "color"];
+                        valueList = {0.75, uint8([200 200 200 100])};
+                        for j = 1:length(propList)
+                            prop = propList(j);
+                            if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
+                                self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                            end
+                        end
+
+                        component = "surface";
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
+                            self.template.(self.plotTypeList(i)).(component).enabled = false;
+                        end
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                            self.template.(self.plotTypeList(i)).(component).kws = struct();
+                        end
+
                     end
 
-                    if ccolumnIsPresent
-                        if contains(self.plotTypeList(i),"3")
-                            self.layout.subplot.(self.plotTypeList(i)).zcolumns = self.ccolumn;
+                    %%%% set template properties scatter
+
+                    if contains(lower(self.plotTypeList(i)),"scatter")
+                        component = "scatter";
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
+                            self.template.(self.plotTypeList(i)).(component).enabled = true;
                         end
-                        if ~(strcmpi(self.plotTypeList(i),"histogram2") || strcmpi(self.plotTypeList(i),"contourf") || strcmpi(self.plotTypeList(i),"contour"))
-                            self.layout.subplot.(self.plotTypeList(i)).ccolumns = self.ccolumn;
-                            if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"plot_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).plot_kws)
-                                self.layout.subplot.(self.plotTypeList(i)).plot_kws = struct();
-                            end
-                            keyList = ["linewidth", "color", "enabled"];
-                            valueList = {0.75, uint8([200 200 200 100]), true};
-                            for j = 1:length(keyList)
-                                prop = keyList(j);
-                                defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)).plot_kws,prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).plot_kws.(prop));
-                                if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).plot_kws.(prop) = valueList{j}; end
-                            end
-                            if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"surface_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).surface_kws)
-                                self.layout.subplot.(self.plotTypeList(i)).surface_kws = struct();
-                            end
-                            if ~isfield(self.layout.subplot.(self.plotTypeList(i)).surface_kws,"enabled") || isempty(self.layout.subplot.(self.plotTypeList(i)).surface_kws.enabled)
-                                self.layout.subplot.(self.plotTypeList(i)).surface_kws.enabled = false;
-                            end
-                            prop = "colormap";
-                            defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
-                            if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = self.colormap; end
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"kws") || isempty(self.template.(self.plotTypeList(i)).(component).kws)
+                            self.template.(self.plotTypeList(i)).(component).kws = struct();
                         end
-                        prop = "colorbar_kws";
-                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)),prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).(prop));
-                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).(prop) = struct(); end
-                        prop = "enabled";
-                        defaultEnabled = ~isfield(self.layout.subplot.(self.plotTypeList(i)).colorbar_kws,prop) || isempty(self.layout.subplot.(self.plotTypeList(i)).colorbar_kws.(prop));
-                        if defaultEnabled; self.layout.subplot.(self.plotTypeList(i)).colorbar_kws.(prop) = false; end
+                        prop = "marker"; value = ".";
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
+                            self.template.(self.plotTypeList(i)).(component).kws.(prop) = value;
+                        end
+                        propList = ["size", "color"];
+                        valueList = {12, []};
+                        for j = 1:length(propList)
+                            prop = propList(j);
+                            if ~isfield(self.template.(self.plotTypeList(i)).(component).kws,prop) || isempty(self.template.(self.plotTypeList(i)).(component).kws.(prop))
+                                self.template.(self.plotTypeList(i)).(component).kws.(prop) = valueList{j};
+                            end
+                        end
                     end
 
-                end
+                    %%%% set template properties colormap / colorbar
 
-                % check gcf_kws/box/grid presence
+                    if ~( strcmpi(self.plotTypeList(i),"histogram") || strcmpi(self.plotTypeList(i),"histfit") )
 
-                self.layout.subplot.(self.plotTypeList(i)).legend_kws.enabled = false;
-                self.layout.subplot.(self.plotTypeList(i)).gcf_kws.enabled = false;
-                self.layout.subplot.(self.plotTypeList(i)).gca_kws.box = self.layout.axis.subplot.box;
-                self.layout.subplot.(self.plotTypeList(i)).gca_kws.fontsize = self.layout.axis.subplot.fontsize;
+                        %%%% set template properties colormap
 
-            end
+                        component = "colormap";
+                        if ~isfield(self.template.(self.plotTypeList(i)),component) || isempty(self.template.(self.plotTypeList(i)).(component))
+                            self.template.(self.plotTypeList(i)).(component) = struct();
+                        end
+                        if ~isfield(self.template.(self.plotTypeList(i)).(component),"enabled") || isempty(self.template.(self.plotTypeList(i)).(component).enabled)
+                            self.template.(self.plotTypeList(i)).(component).enabled = self.colormap.enabled;
+                        end
 
-            % check columns presence
+                        % NOTE: The colormap of the subplots is set to the main colormap values only if it is non-empty.
+
+                        if ~isfield(self.colormap,"values") || ~getVecLen(self.colormap.values)
+                            prop = "values";
+                            if ~isfield(self.template.(self.plotTypeList(i)).colormap,prop) || isempty(self.template.(self.plotTypeList(i)).colormap.(prop))
+                                if strcmpi(self.plotTypeList(i),"contour")
+                                    self.template.(self.plotTypeList(i)).colormap.(prop) = [];
+                                elseif strcmpi(self.plotTypeList(i),"contourf")
+                                    self.template.(self.plotTypeList(i)).colormap.(prop) = flipud(gray);
+                                elseif contains(lower(self.plotTypeList(i)),"line") || contains(lower(self.plotTypeList(i)),"scatter")
+                                    self.template.(self.plotTypeList(i)).colormap.(prop) = "winter";
+                                end
+                            end
+                        else
+                            self.template.(self.plotTypeList(i)).colormap.values = self.colormap.values;
+                        end
+                        self.template.(self.plotTypeList(i)).colormap.enabled = self.colormap.enabled;
+
+                        if contains(self.plotTypeList(i),"3") % && ~strcmpi(self.plotTypeList(i),"histogram2")
+                            self.template.(self.plotTypeList(i)).zcolumns = self.ccolumn;
+                        end
+
+                        self.template.(self.plotTypeList(i)).ccolumns = self.ccolumn;
+
+                        %%%% set template properties colorbar: by default, no colorbar allowed for the subplots
+
+                        prop = "colorbar";
+                        if ~isfield(self.template.(self.plotTypeList(i)),prop) || isempty(self.template.(self.plotTypeList(i)).(prop))
+                            self.template.(self.plotTypeList(i)).(prop) = struct();
+                            self.template.(self.plotTypeList(i)).colorbar.enabled = false;
+                        end
+
+                    end
+                    %prop = "kws";
+                    %defaultEnabled = ~isfield(self.template.(self.plotTypeList(i)).colorbar,prop) || isempty(self.template.(self.plotTypeList(i)).colorbar.(prop));
+                    %if defaultEnabled; self.template.(self.plotTypeList(i)).(prop) = struct(); end
+                    %prop = "enabled";
+                    %defaultEnabled = ~isfield(self.template.(self.plotTypeList(i)).colorbar.kws,prop) || isempty(self.template.(self.plotTypeList(i)).colorbar.kws.(prop));
+                    %if defaultEnabled; self.template.(self.plotTypeList(i)).colorbar.kws.(prop) = false; end
+
+                end % set plot properties
+
+            end % loop
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% check columns presence
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if ~columnsIsPresent
                 try
                     self.columns = self.dfref.Properties.VariableNames;
-                catch
+                catch % this happens when the dataFrame is empty, for example, when there is no sample in the output files.
                     self.columns = [];
                 end
             end
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% set main axes properties
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            key = "position"; val = self.getMainAxisPosition(); if isfield(self.axes.kws,key) && isempty(self.axes.kws.(key)); self.axes.kws.(key) = val; end
+            key = "Color"; val = "none"; if isfield(self.axes.kws,key) && isempty(self.axes.kws.(key)); self.axes.kws.(key) = val; end
+            key = "Xlim"; val = [0 1]; if isfield(self.axes.kws,key) && isempty(self.axes.kws.(key)); self.axes.kws.(key) = val; end
+            key = "Ylim"; val = [0 1]; if isfield(self.axes.kws,key) && isempty(self.axes.kws.(key)); self.axes.kws.(key) = val; end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            % generate figure and axes if needed
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% generate figure and axes if needed
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if self.gcf_kws.enabled
-                gcf_kws_cell = convertStruct2Cell(self.gcf_kws,{"enabled","singleOptions"});
-                if isfield(self.gcf_kws,"singleOptions"); gcf_kws_cell = { gcf_kws_cell{:} , self.gcf_kws.singleOptions{:} }; end
-                self.currentFig.gcf = figure( gcf_kws_cell{:} );
+            if self.figure.enabled
+                figure_kws_cell = convertStruct2Cell(self.figure.kws,{"enabled","singleOptions"});
+                %if isfield(self.figure.kws,"singleOptions"); figure_kws_cell = { figure_kws_cell{:} }; end
+                self.currentFig.figure = figure( figure_kws_cell{:} );
             else
-                self.currentFig.gcf = gcf;
+                self.currentFig.figure = gcf;
             end
-            set(0, "CurrentFigure", self.currentFig.gcf);
+            set(0, "CurrentFigure", self.currentFig.figure);
 
-            % set columns to plot
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% set columns to plot
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if getVecLen(self.columns)
-                [self.colnames, colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
+                [self.colnames, self.colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
             else
                 error("the component ""columns"" of the GridPlot object appears to be empty.");
             end
 
-            % construct plot handles
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% construct plot handles
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            self.lowerEnabled = any(strcmp(self.plotTypeList,self.layout.plotType.lower));
-            self.upperEnabled = any(strcmp(self.plotTypeList,self.layout.plotType.upper));
-            self.diagEnabled = any(strcmp(self.plotTypeList,self.layout.plotType.diag));
+            cornerList = fieldnames(self.plotType);
+            cornerListLen = length(cornerList);
 
-            if self.lowerEnabled
-                if isempty(self.layout.plotType.lower)
-                    self.layout.plotType.lower = "contourf"; %"histogram2";
-                else
-                    self.layout.plotType.lower = string(self.layout.plotType.lower);
+            for i = 1:cornerListLen
+                corner = string(cornerList{i});
+                if ~any( contains(self.plotType.(corner).names, self.plotType.(corner).value) )
+                    error   ( newline ...
+                            + "Unrecognized plot type requested for the " + corner + " component of ``plotType`` " + newline ...
+                            + "component of the GridPlot object. Possible values include: " + newline ...
+                            + join(self.plotType.(corner).names,", ") + newline ...
+                            );
                 end
             end
 
-            if self.upperEnabled
-                if isempty(self.layout.plotType.upper)
-                    self.layout.plotType.upper = "lineScatter";
-                else
-                    self.layout.plotType.upper = string(self.layout.plotType.upper);
-                end
-            end
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% generate axes and subplots
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if self.diagEnabled
-                if isempty(self.layout.plotType.diag)
-                    self.layout.plotType.diag = "histogram";
-                else
-                    self.layout.plotType.diag = string(self.layout.plotType.diag);
-                end
-            end
-
-            % generate axes and subplots
-
-            self.currentFig.gca = axes  ( "position" ...
-                                        , self.getMainAxisPosition()  ...
-                                        ..., "Position", mainPosition ...
-                                        , "Xlim", [0 1], "Ylim", [0 1] ...
-                                        , "Color", "none" ...
-                                        , "Parent", self.currentFig.gcf ...
+            axes_kws_cell = convertStruct2Cell(self.axes.kws,{"Parent","parent"});
+            self.currentFig.axes = axes ( "Parent", self.currentFig.figure ...
+                                        , axes_kws_cell{:} ...
                                         );
-            axis(self.currentFig.gca,"off");
+            axis(self.currentFig.axes,"off");
 
-            axisCount = self.layout.axis.main.nrow * self.layout.axis.main.ncol;
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% set up subplot types and classes
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            axisCount = self.axes.main.nrow * self.axes.main.ncol;
             msgSuffix = " out of " + string(axisCount);
 
-            if self.lowerEnabled
-                if contains(self.layout.plotType.lower,"line") || contains(self.layout.plotType.lower,"scatter")
-                    lowerPlotClass = "LineScatterPlot";
-                else
-                    lowerPlotClass = "DensityPlot";
+            for i = 1:cornerListLen
+                corner = string(cornerList{i});
+                if self.plotType.(corner).enabled
+                    % setup lowerPlotClass, upperPlotClass, diagPlotClass
+                    if strcmpi(self.plotType.(corner).value,"line") ||  strcmpi(self.plotType.(corner).value,"scatter") || strcmpi(self.plotType.(corner).value,"lineScatter")
+                        thisPlotClass = "LineScatterPlot";
+                    else
+                        thisPlotClass = "DensityPlot";
+                    end
+                    if strcmp(corner,"upper")
+                        upperPlotClass = thisPlotClass;
+                    elseif strcmp(corner,"lower")
+                        lowerPlotClass = thisPlotClass;
+                    elseif strcmp(corner,"diag")
+                        diagPlotClass = thisPlotClass;
+                    else
+                        error   ( newline ...
+                                + "Unrecognized field name for the ``plotType`` component of the GridPlot object." ...
+                                + newline ...
+                                );
+                    end
                 end
             end
-            if self.upperEnabled
-                if contains(self.layout.plotType.upper,"line") || contains(self.layout.plotType.upper,"scatter")
-                    upperPlotClass = "LineScatterPlot";
-                else
-                    upperPlotClass = "DensityPlot";
-                end
-            end
-            if self.diagEnabled
-                diagPlotClass = "DensityPlot";
-            end
 
-            % adjust limits
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% adjust axes limits
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            columns.min = zeros(self.layout.axis.main.nrow,1);
-            columns.max = zeros(self.layout.axis.main.nrow,1);
-            for i = 1:self.layout.axis.main.nrow
+            columns.min = zeros(self.axes.main.nrow,1);
+            columns.max = zeros(self.axes.main.nrow,1);
+            for i = 1:self.axes.main.nrow
                 minvalue = min(self.dfref.(self.colnames(i)));
                 maxvalue = max(self.dfref.(self.colnames(i)));
                 margin = 0.1 * (maxvalue - minvalue);
@@ -616,15 +970,15 @@ classdef GridPlot < BasePlot
             targetRGB = getRGB("deep carrot orange");
 
             iaxis = 0;
-            self.currentFig.subplotList = cell(self.layout.axis.main.ncol,self.layout.axis.main.nrow);
-            for irow = 1:self.layout.axis.main.nrow
-                for icol = 1:self.layout.axis.main.ncol
+            self.currentFig.subplotList = cell(self.axes.main.ncol,self.axes.main.nrow);
+            for irow = 1:self.axes.main.nrow
+                for icol = 1:self.axes.main.ncol
 
-                    jrow = self.layout.axis.main.nrow-irow+1;
-                    jcol = self.layout.axis.main.ncol-icol+1;
-                    isLower = irow>icol && self.lowerEnabled;
-                    isUpper = irow<icol && self.upperEnabled;
-                    isDiag = irow==icol && self.diagEnabled;
+                    jrow = self.axes.main.nrow-irow+1;
+                    jcol = self.axes.main.ncol-icol+1;
+                    isDiag = irow==icol && self.plotType.diag.enabled;
+                    isLower = irow>icol && self.plotType.lower.enabled;
+                    isUpper = irow<icol && self.plotType.upper.enabled;
 
                     iaxis = iaxis + 1;
 
@@ -638,65 +992,72 @@ classdef GridPlot < BasePlot
 
                         hold on;
 
-                        xcolumns = self.colnames(icol);
-                        ycolumns = self.colnames(irow);
+                        %%%% generate plot object
 
                         if isLower
-                            currentPlotType = self.layout.plotType.lower;
+                            currentPlotType = self.plotType.lower.value;
                             currentPlotTypeClass = lowerPlotClass;
-                            self.currentFig.subplotList{irow,icol} = eval(currentPlotTypeClass+"(self.dfref,currentPlotType)");
-                            self.currentFig.subplotList{irow,icol}.xcolumns = xcolumns;
-                            self.currentFig.subplotList{irow,icol}.ycolumns = ycolumns;
                         elseif isUpper
-                            currentPlotType = self.layout.plotType.upper;
+                            currentPlotType = self.plotType.upper.value;
                             currentPlotTypeClass = upperPlotClass;
-                            self.currentFig.subplotList{irow,icol} = eval(currentPlotTypeClass+"(self.dfref,currentPlotType)");
-                            self.currentFig.subplotList{irow,icol}.xcolumns = xcolumns;
-                            self.currentFig.subplotList{irow,icol}.ycolumns = ycolumns;
                         else
-                            currentPlotType = self.layout.plotType.diag;
+                            currentPlotType = self.plotType.diag.value;
                             currentPlotTypeClass = diagPlotClass;
-                            self.currentFig.subplotList{irow,icol} = eval(currentPlotTypeClass+"(self.dfref,currentPlotType)");
-                            self.currentFig.subplotList{irow,icol}.xcolumns = xcolumns;
+                        end
+                        self.currentFig.subplotList{irow,icol} = eval(currentPlotTypeClass+"(currentPlotType,self.dfref)");
+                        self.currentFig.subplotList{irow,icol}.xcolumns = self.colnames(icol);
+                        if ~self.currentFig.subplotList{irow,icol}.type.is1d
+                            self.currentFig.subplotList{irow,icol}.ycolumns = self.colnames(irow);
                         end
 
-                        plotType_kws = currentPlotType + "_kws";
-                        fieldList = fieldnames(self.layout.subplot.(currentPlotType));
-                        %valueList = struct2cell(self.layout.subplot.(currentPlotType));
-                        for i = 1:length(fieldList)
-                            if isa(self.layout.subplot.(currentPlotType).(fieldList{i}),"struct")
-                                fieldSubList = fieldnames(self.layout.subplot.(currentPlotType).(fieldList{i}));
-                                for j = 1:length(fieldSubList)
-                                    self.currentFig.subplotList{irow,icol}.(fieldList{i}).(fieldSubList{j}) = self.layout.subplot.(currentPlotType).(fieldList{i}).(fieldSubList{j});
-                                end
-                            else
-                                self.currentFig.subplotList{irow,icol}.(fieldList{i}) = self.layout.subplot.(currentPlotType).(fieldList{i});
-                            end
-                        end
+                        %%%% set subplot properties
 
-                        if strcmp(currentPlotType,"histogram2")
-                            %colormap();
-                            %self.layout.subplot.(currentPlotType).colormap = flipud(cold());
-                            %self.layout.subplot.(currentPlotType).colormap = "autumn";
-                            %colormap(self.layout.subplot.(currentPlotType).colormap);
-                        end
+                        self.currentFig.subplotList{irow,icol} = copyComponents ( self.template.(currentPlotType) ...
+                                                                                , self.currentFig.subplotList{irow,icol} ...
+                                                                                );
 
-                        self.currentFig.subplotList{irow,icol}.plot()
-                        self.currentFig.subplotList{irow,icol}.currentFig.gca = currentSubplotAxis;
+                        %fieldList = fieldnames(self.template.(currentPlotType));
+                        %%valueList = struct2cell(self.template.(currentPlotType));
+                        %for i = 1:length(fieldList)
+                        %    if isa(self.template.(currentPlotType).(fieldList{i}),"struct")
+                        %        subFieldList = fieldnames( self.template.(currentPlotType).(fieldList{i}) );
+                        %        for j = 1:length(subFieldList)
+                        %            if isa(self.template.(currentPlotType).(fieldList{i}).(subFieldList{j}),"struct")
+                        %                subSubFieldList = fieldnames( self.template.(currentPlotType).(fieldList{i}).(subFieldList{j}) );
+                        %                for k = 1:length(subSubFieldList)
+                        %                    self.currentFig.subplotList{irow,icol}.(fieldList{i}).(subFieldList{j}).(subSubFieldList{k}) = self.template.(currentPlotType).(fieldList{i}).(subFieldList{j}).(subSubFieldList{k});
+                        %                end
+                        %            else
+                        %                self.currentFig.subplotList{irow,icol}.(fieldList{i}).(subFieldList{j}) = self.template.(currentPlotType).(fieldList{i}).(subFieldList{j});
+                        %            end
+                        %        end
+                        %    else
+                        %        self.currentFig.subplotList{irow,icol}.(fieldList{i}) = self.template.(currentPlotType).(fieldList{i});
+                        %    end
+                        %end
+                        %if strcmp(currentPlotType,"histogram2")
+                        %    %colormap();
+                        %    %self.template.(currentPlotType).colormap.values = flipud(cold());
+                        %    %self.template.(currentPlotType).colormap.values = "autumn";
+                        %    %colormap(self.template.(currentPlotType).colormap);
+                        %end
 
-                        for fname = ["hline_kws","vline_kws","scatter_kws"]
-                            self.currentFig.subplotList{irow,icol}.target.(fname).color = targetRGB;
+                        self.currentFig.subplotList{irow,icol}.make();
+                        self.currentFig.subplotList{irow,icol}.currentFig.axes = currentSubplotAxis;
+
+                        for fname = ["hline","vline","scatter"]
+                            self.currentFig.subplotList{irow,icol}.target.(fname).kws.color = targetRGB;
                         end
                         if strcmp(currentPlotType,"histogram") || strcmp(currentPlotType,"histfit")
-                            self.currentFig.subplotList{irow,icol}.target.hline_kws.enabled = false;
-                            self.currentFig.subplotList{irow,icol}.target.scatter_kws.enabled = false;
+                            self.currentFig.subplotList{irow,icol}.target.hline.enabled = false;
+                            self.currentFig.subplotList{irow,icol}.target.scatter.enabled = false;
                         elseif strcmp(currentPlotType,"histogram2") || strcmp(currentPlotType,"contourf")
-                            self.currentFig.subplotList{irow,icol}.target.hline_kws.enabled = false;
-                            self.currentFig.subplotList{irow,icol}.target.vline_kws.enabled = false;
-                            self.currentFig.subplotList{irow,icol}.target.scatter_kws.enabled = false;
+                            self.currentFig.subplotList{irow,icol}.target.hline.enabled = false;
+                            self.currentFig.subplotList{irow,icol}.target.vline.enabled = false;
+                            self.currentFig.subplotList{irow,icol}.target.scatter.enabled = false;
                         end
 
-                        if irow==self.layout.axis.main.nrow
+                        if irow==self.axes.main.nrow
                             %axisLabelX = get(gca,'XLabel');
                             %set(axisLabelX,'rotation',45,'VerticalAlignment','top','HorizontalAlignment','right');
                         else
@@ -706,38 +1067,40 @@ classdef GridPlot < BasePlot
                             %axisLabelY = get(gca,'YLabel');
                             %set(axisLabelY,'rotation',45,'VerticalAlignment','middle','HorizontalAlignment','right');
                             if irow==1
-                                xlower = self.currentFig.subplotList{1,1}.currentFig.gca.XLim(1);
-                                xupper = self.currentFig.subplotList{1,1}.currentFig.gca.XLim(2);
+                                xlower = self.currentFig.subplotList{1,1}.currentFig.axes.XLim(1);
+                                xupper = self.currentFig.subplotList{1,1}.currentFig.axes.XLim(2);
                                 xrange = xupper - xlower;
-                                ylower = self.currentFig.subplotList{1,1}.currentFig.gca.YLim(1);
-                                yupper = self.currentFig.subplotList{1,1}.currentFig.gca.YLim(2);
+                                ylower = self.currentFig.subplotList{1,1}.currentFig.axes.YLim(1);
+                                yupper = self.currentFig.subplotList{1,1}.currentFig.axes.YLim(2);
                                 yrange = yupper - ylower;
-                                newYTicks = (self.currentFig.subplotList{1,1}.currentFig.gca.XTick - xlower) * yrange / xrange + ylower;
+                                newYTicks = (self.currentFig.subplotList{1,1}.currentFig.axes.XTick - xlower) * yrange / xrange + ylower;
                                 yticks(newYTicks);
-                                yticklabels(self.currentFig.subplotList{1,1}.currentFig.gca.XTickLabel);
+                                yticklabels(self.currentFig.subplotList{1,1}.currentFig.axes.XTickLabel);
                                 ylabel(string(self.currentFig.subplotList{1,1}.xcolumns));
-                                %self.currentFig.subplotList{1,1}.currentFig.gca.YTick = self.currentFig.subplotList{1,1}.currentFig.gca.XTick;
-                                %self.currentFig.subplotList{1,1}.currentFig.gca.YTickLabel = self.currentFig.subplotList{1,1}.currentFig.gca.XTickLabel;
+                                %self.currentFig.subplotList{1,1}.currentFig.axes.YTick = self.currentFig.subplotList{1,1}.currentFig.axes.XTick;
+                                %self.currentFig.subplotList{1,1}.currentFig.axes.YTickLabel = self.currentFig.subplotList{1,1}.currentFig.axes.XTickLabel;
                             end
                         else
                             set(gca,'YLabel',[]);
                         end
                         set(gca,'ZLabel',[]);
 
-                        set(self.currentFig.subplotList{irow,icol}.currentFig.gca,"FontSize",self.layout.axis.subplot.fontsize);
+                        set(self.currentFig.subplotList{irow,icol}.currentFig.axes,"fontSize",self.axes.subplot.fontSize);
                         if icol ~= 1
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.gca,"YTickLabels",[]);
+                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes,"YTickLabels",[]);
                         end
-                        if irow ~= self.layout.axis.main.nrow
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.gca,"XTickLabels",[]);
+                        if irow ~= self.axes.main.nrow
+                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes,"XTickLabels",[]);
                         end
 
-                        self.currentFig.subplotList{irow,icol}.currentFig.gca.XLim = [ columns.min(icol) columns.max(icol) ];
+                        self.currentFig.subplotList{irow,icol}.currentFig.axes.XLim = [ columns.min(icol) columns.max(icol) ];
                         if ~( strcmpi(currentPlotType,"histogram") || strcmpi(currentPlotType,"histfit") )
-                            self.currentFig.subplotList{irow,icol}.currentFig.gca.YLim = [ columns.min(irow) columns.max(irow) ];
+                            self.currentFig.subplotList{irow,icol}.currentFig.axes.YLim = [ columns.min(irow) columns.max(irow) ];
                         end
 
-                        %set(self.currentFig.axisList(iaxis)(iaxis),'box',self.layout.axis.subplot.box);
+                        %set(self.currentFig.axisList(iaxis)(iaxis),'box',self.axes.subplot.box);
+                        grid(self.currentFig.subplotList{irow,icol}.currentFig.axes,self.axes.subplot.grid);
+
                         hold off;
 
                     else
@@ -747,14 +1110,14 @@ classdef GridPlot < BasePlot
 
                     end
 
-                    grid(self.currentFig.subplotList{irow,icol}.currentFig.gca,self.layout.axis.subplot.grid);
-
                 end
             end
 
-            % set up colorbar
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% set up colorbar
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if self.colorbar_kws.enabled && cEnabled
+            if self.colorbar.enabled && self.colormap.enabled
                 self.show("colorbar");
             else
                 colorbar('off');
@@ -887,10 +1250,10 @@ classdef GridPlot < BasePlot
                         );
             end
 
-            for icol = 1:self.layout.axis.main.ncol
-                for irow = 1:self.layout.axis.main.nrow
-                    axisLabelX = get(self.currentFig.subplotList{irow,icol}.currentFig.gca,"XLabel"); set(axisLabelX,"rotation",degreeX,"VerticalAlignment","top","HorizontalAlignment","right");
-                    axisLabelY = get(self.currentFig.subplotList{irow,icol}.currentFig.gca,"YLabel"); set(axisLabelY,"rotation",degreeY,"VerticalAlignment","middle","HorizontalAlignment","right");
+            for icol = 1:self.axes.main.ncol
+                for irow = 1:self.axes.main.nrow
+                    axisLabelX = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"XLabel"); set(axisLabelX,"rotation",degreeX,"VerticalAlignment","top","HorizontalAlignment","right");
+                    axisLabelY = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"YLabel"); set(axisLabelY,"rotation",degreeY,"VerticalAlignment","middle","HorizontalAlignment","right");
                 end
             end
 
@@ -981,7 +1344,7 @@ classdef GridPlot < BasePlot
 
             props = struct();
             for i = 1:length(varargin)
-                for kws = ["hline_kws","vline_kws","scatter_kws","values"]
+                for kws = ["hline","vline","scatter","values"]
                     [val, keyFound] = getKeyVal(kws,varargin{:});
                     if keyFound
                         props.(kws) = val;
@@ -992,7 +1355,7 @@ classdef GridPlot < BasePlot
             % compute the statistics
 
             if getVecLen(self.columns)
-                [self.colnames, colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
+                [self.colnames, self.colindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.columns);
             else
                 error("the component ""columns"" of the GridPlot object appears to be empty.");
             end
@@ -1022,12 +1385,12 @@ classdef GridPlot < BasePlot
             for icol = 1:columnsLen
                 for irow = 1:columnsLen
 
-                    set(self.currentFig.gcf, "CurrentAxes", self.currentFig.subplotList{irow,icol}.currentFig.gca);
+                    set(self.currentFig.figure, "CurrentAxes", self.currentFig.subplotList{irow,icol}.currentFig.axes);
 
                     hold on;
 
-                    self.currentFig.subplotList{irow,icol}.target.value = [ values(icol) values(irow) ];
-                    for kws = ["hline_kws","vline_kws","scatter_kws"]
+                    self.currentFig.subplotList{irow,icol}.target.values = [ values(icol) values(irow) ];
+                    for kws = ["hline","vline","scatter"]
                         if isfield(props,kws)
                             for i = 1:2:length(props.(kws))
                                 key = props.(kws){i};
@@ -1036,7 +1399,7 @@ classdef GridPlot < BasePlot
                             end
                         end
                     end
-                    self.currentFig.subplotList{irow,icol}.target.plot();
+                    self.currentFig.subplotList{irow,icol}.target.make();
 
                     hold off;
 
@@ -1099,23 +1462,23 @@ classdef GridPlot < BasePlot
             if labelsLen==0
                 return; % nothing to do, return.
             else
-                if ~iscell(labels) || labelsLen>self.layout.axis.main.nrow
-                    error   ( "The input labels must be a cell array of length " + string(self.layout.axis.main.nrow) + " comprised of strings or char-vectors." ...
+                if ~iscell(labels) || labelsLen>self.axes.main.nrow
+                    error   ( "The input labels must be a cell array of length " + string(self.axes.main.nrow) + " comprised of strings or char-vectors." ...
                             + "The input value is " + strjoin(string(labels),", ") ...
                             );
                 end
             end
-            for icol = 1:labelsLen % self.layout.axis.main.ncol
-                for irow = 1:labelsLen % self.layout.axis.main.nrow
-                    if strcmp(self.currentFig.subplotList{irow,icol}.currentFig.gca.Visible,"on")
+            for icol = 1:labelsLen % self.axes.main.ncol
+                for irow = 1:labelsLen % self.axes.main.nrow
+                    if strcmp(self.currentFig.subplotList{irow,icol}.currentFig.axes.Visible,"on")
                         if ~isnumeric(labels{icol})
-                            if irow==labelsLen || (irow<labelsLen && strcmp(self.currentFig.subplotList{irow+1,icol}.currentFig.gca.Visible,"off"))
-                                xlabel(self.currentFig.subplotList{irow,icol}.currentFig.gca, labels{icol}, varargin{:});
+                            if irow==labelsLen || (irow<labelsLen && strcmp(self.currentFig.subplotList{irow+1,icol}.currentFig.axes.Visible,"off"))
+                                xlabel(self.currentFig.subplotList{irow,icol}.currentFig.axes, labels{icol}, varargin{:});
                             end
                         end
                         if ~isnumeric(labels{irow})
-                            if icol==1 || (icol>1 && strcmp(self.currentFig.subplotList{irow,icol-1}.currentFig.gca.Visible,"off"))
-                                ylabel(self.currentFig.subplotList{irow,icol}.currentFig.gca, labels{irow}, varargin{:});
+                            if icol==1 || (icol>1 && strcmp(self.currentFig.subplotList{irow,icol-1}.currentFig.axes.Visible,"off"))
+                                ylabel(self.currentFig.subplotList{irow,icol}.currentFig.axes, labels{irow}, varargin{:});
                             end
                         end
                     end
@@ -1137,13 +1500,13 @@ classdef GridPlot < BasePlot
             %           A cell-array each element of which corresponds to one row of the GridPlot (from the top-left).
             %           Each element of the cell array is a real vector of length two whose values determine the lower
             %           and upper limits of the corresponding variable in the subplots of the GridPlot.
-            %           If you wish to leave the limits for some of variables to their default values, set the 
-            %           corresponding elements of the input cell array to []. By default, if any element of the 
+            %           If you wish to leave the limits for some of variables to their default values, set the
+            %           corresponding elements of the input cell array to []. By default, if any element of the
             %           input cell is empty, the corresponding limit on the axis will remain unchanged.
             %
             %           Example usage:
             %
-            %               limits = 
+            %               limits =
             %               limits = {-10, [], 0};     % leave the limit on the second variable unchanged.
             %               limits = {};               % leave all limits unchanged.
             %
@@ -1163,14 +1526,14 @@ classdef GridPlot < BasePlot
             if limitsLen==0
                 return; % nothing to do, return.
             else
-                if limitsLen>self.layout.axis.main.nrow
-                    error   ( "The input limits must be a string vector or a cell array of length " + string(self.layout.axis.main.nrow) + "." ...
+                if limitsLen>self.axes.main.nrow
+                    error   ( "The input limits must be a string vector or a cell array of length " + string(self.axes.main.nrow) + "." ...
                             + "The input value is " + strjoin(string(limits),", ") ...
                             );
                 end
             end
             limitsElementLen = zeros(limitsLen,1);
-            for icol = 1:limitsLen % self.layout.axis.main.ncol
+            for icol = 1:limitsLen % self.axes.main.ncol
                 limitsElementLen(icol) = getVecLen(limits{icol});
                 if limitsElementLen(icol)~=0 && limitsElementLen(icol)~=2
                     error   ( "The element " + string(icol) + " of the input cell array is invalid. " ...
@@ -1180,193 +1543,18 @@ classdef GridPlot < BasePlot
                             );
                 end
             end
-            for icol = 1:limitsLen % self.layout.axis.main.ncol
-                for irow = 1:limitsLen % self.layout.axis.main.nrow
-                    if strcmp(self.currentFig.subplotList{irow,icol}.currentFig.gca.Visible,"on")
+            for icol = 1:limitsLen % self.axes.main.ncol
+                for irow = 1:limitsLen % self.axes.main.nrow
+                    if strcmp(self.currentFig.subplotList{irow,icol}.currentFig.axes.Visible,"on")
                         if limitsElementLen(icol)==2
-                            xlim(self.currentFig.subplotList{irow,icol}.currentFig.gca, limits{icol}(:));
+                            xlim(self.currentFig.subplotList{irow,icol}.currentFig.axes, limits{icol}(:));
                         end
                         if limitsElementLen(irow)==2 && icol~=irow
-                            ylim(self.currentFig.subplotList{irow,icol}.currentFig.gca, limits{irow}(:));
+                            ylim(self.currentFig.subplotList{irow,icol}.currentFig.axes, limits{irow}(:));
                         end
                     end
                 end
             end
-        end
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    end % methods
-
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    methods(Access=public, Hidden)
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        function hideShow(self,varargin)
-
-            diagRequested = false;
-            lowerRequested = false;
-            upperRequested = false;
-            colorbarRequested = false;
-            methodName = varargin{1};
-            methodNameIsShow = strcmp(methodName,"show");
-            methodNameIsHide = strcmp(methodName,"hide");
-            if methodNameIsShow
-                switchValue = "on";
-            elseif methodNameIsHide
-                switchValue = "off";
-            end
-            if nargin==2 % act on all parts of the figure
-                diagRequested = true;
-                lowerRequested = true;
-                upperRequested = true;
-                colorbarRequested = true;
-            elseif nargin>2
-                for i = 2:length(varargin)
-                    part = string(varargin{i});
-                    if strcmpi(part,"diag")
-                        diagRequested  = true;
-                    elseif strcmpi(part,"upper")
-                        upperRequested = true;
-                    elseif strcmpi(part,"lower")
-                        lowerRequested = true;
-                    elseif strcmpi(part,"colorbar") || strcmpi(part,"cbar")
-                        colorbarRequested = true;
-                    else
-                        error   ( newline ...
-                                + "Unrecognized input argument pass to the " + methodName + "() method: " + newline + newline ...
-                                + join(part," ") + newline + newline ...
-                                + "The " + methodName + "() method accepts only a list of comma-separated string values representing the ""part"" of the grid plot to " + methodName + ". " ...
-                                + "Alternatively, if no argument is passed to " + methodName + "(), then all subplots will be affected." + newline ...
-                                );
-                    end
-                end
-            else
-                error   ( newline ...
-                        + "Internal error occurred. Not enough input arguments to hideShow()" ...
-                        + newline ...
-                        );
-            end
-
-            if colorbarRequested
-
-                if methodNameIsShow
-
-                    colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","singleOptions"});
-
-                    colormap(self.currentFig.gca,self.colormap);
-
-                    % get column names
-
-                    if getVecLen(self.ccolumn)
-                        [ccolname, ccolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ccolumn);
-                    else
-                        error("the component ""ccolumn"" of the GridPlot object appears to be empty.");
-                    end
-
-                    ccolumnValues = self.dfref.(ccolname);
-                    colorbarLimit = [ min(ccolumnValues) max(ccolumnValues) ]; % Colorbar range
-                    caxis(self.currentFig.gca,colorbarLimit);
-                    set(self.currentFig.gca,"CLim",colorbarLimit);
-                    self.currentFig.colorbar = colorbar(self.currentFig.gca,colorbar_kws_cell{:});
-
-                    colorbarLabel = ccolname;
-                    ylabel(self.currentFig.colorbar,colorbarLabel,"fontsize",self.layout.colorbar.fontsize);
-
-                    set ( self.currentFig.colorbar ...
-                        , "position" ...
-                        , self.getColorbarAxisPosition() ...
-                        , "FontSize", self.layout.colorbar.fontsize ...
-                        ) ;
-
-                elseif methodNameIsHide
-
-                    %colorbar("off");
-                    set(self.currentFig.colorbar,'visible','off');
-
-                end
-
-            end
-
-            for icol = 1:self.layout.axis.main.ncol
-                for irow = 1:self.layout.axis.main.nrow
-                    if (icol<irow && lowerRequested) || (icol>irow && upperRequested) || (icol==irow && diagRequested)
-                        set(self.currentFig.subplotList{irow,icol}.currentFig.gca,"visible",switchValue);
-                        set(get(self.currentFig.subplotList{irow,icol}.currentFig.gca,"children"),"visible",switchValue);
-                    end
-                end
-            end
-
-            if lowerRequested || upperRequested || diagRequested
-                self.hideShowAxesLabels();
-            end
-
-        end % function hideShow
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        function hideShowAxesLabels(self)
-            % show or hide axis labels and ticks depending on the presence of the neighbor subplots
-            for icol = 1:self.layout.axis.main.ncol
-                for irow = 1:self.layout.axis.main.nrow
-                    if irow < self.layout.axis.main.nrow
-                        if strcmp(self.currentFig.subplotList{irow+1,icol}.currentFig.gca.Visible,"on")
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.gca, "XTickLabel", []);
-                            self.currentFig.subplotList{irow,icol}.currentFig.gca.XLabel.String = "";
-                        else
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.gca, "XTickLabelMode", "auto");
-                            self.currentFig.subplotList{irow,icol}.currentFig.gca.XLabel.String = self.colnames(icol);
-                        end
-                    end
-                    if icol > 1
-                        if strcmp(self.currentFig.subplotList{irow,icol-1}.currentFig.gca.Visible,"on")
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.gca, "YTickLabel", [])
-                            self.currentFig.subplotList{irow,icol}.currentFig.gca.YLabel.String = "";
-                        else
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.gca, "YTickLabelMode", "auto")
-                            self.currentFig.subplotList{irow,icol}.currentFig.gca.YLabel.String = self.colnames(irow);
-                        end
-                    end
-                    if ~(icol==1)
-                        axisLabelY = get(self.currentFig.subplotList{irow,icol}.currentFig.gca,"YLabel"); set(axisLabelY,"rotation",45,"VerticalAlignment","middle","HorizontalAlignment","right");
-                    end
-                    if ~(irow==self.layout.axis.main.nrow)
-                        axisLabelX = get(self.currentFig.subplotList{irow,icol}.currentFig.gca,"XLabel"); set(axisLabelX,"rotation",45,"VerticalAlignment","top","HorizontalAlignment","right");
-                    end
-                end
-            end
-        end
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        function position = getColorbarAxisPosition(self)
-            position =  [ self.layout.colorbar.origin.x ...
-                        , self.layout.colorbar.origin.y ...
-                        , self.layout.colorbar.width ...
-                        , self.layout.colorbar.height ...
-                        ];
-        end
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        function position = getMainAxisPosition(self)
-            position =  [ self.layout.axis.main.origin.x ...
-                        , self.layout.axis.main.origin.y ...
-                        , self.layout.axis.main.width ...
-                        , self.layout.axis.main.height ...
-                        ];
-        end
-
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        function position = getSubplotAxisPosition(self,irow,icol)
-            position =  [ (icol-1)*(self.layout.axis.subplot.interspace + self.layout.axis.subplot.width)   + self.layout.axis.main.margin.left ...
-                        , (irow-1)*(self.layout.axis.subplot.interspace + self.layout.axis.subplot.height)  + self.layout.axis.main.margin.bottom ...
-                        , self.layout.axis.subplot.width ...
-                        , self.layout.axis.subplot.height ...
-                        ];
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1394,38 +1582,233 @@ classdef GridPlot < BasePlot
             %
             %           update()
             %
-            self.layout.axis.main.height = 1 - self.layout.axis.main.margin.top;
-            self.layout.axis.main.width = 1 - self.layout.axis.main.margin.right;
-            self.layout.axis.main.nrow = length(self.columns);
-            self.layout.axis.main.ncol = self.layout.axis.main.nrow;
-            self.layout.axis.subplot.height = (1-self.layout.axis.main.margin.top-self.layout.axis.main.margin.bottom)/self.layout.axis.main.ncol - self.layout.axis.subplot.interspace;
-            self.layout.axis.subplot.width  = (1-self.layout.axis.main.margin.left-self.layout.axis.main.margin.right)/self.layout.axis.main.nrow - self.layout.axis.subplot.interspace;
-            self.layout.colorbar.origin.x = 1 - self.layout.axis.main.margin.right;
-            self.layout.colorbar.origin.y = self.layout.axis.main.margin.bottom;
-            self.layout.colorbar.height = self.layout.axis.main.nrow * ( self.layout.axis.subplot.height + self.layout.axis.subplot.interspace ) - self.layout.axis.subplot.interspace;
-            self.layout.figWidth    = self.layout.figHeight *   ( 1 ...
-                                                                - self.layout.axis.main.margin.bottom ...
-                                                                + self.layout.axis.main.margin.right ...
-                                                                + self.layout.axis.main.margin.left ...
-                                                                - self.layout.axis.main.margin.top ...
-                                                                + self.layout.colorbar.width ...
+            self.axes.main.height = 1 - self.axes.main.margin.top;
+            self.axes.main.width = 1 - self.axes.main.margin.right;
+            self.axes.main.nrow = length(self.columns);
+            self.axes.main.ncol = self.axes.main.nrow;
+            self.axes.subplot.height = (1-self.axes.main.margin.top-self.axes.main.margin.bottom)/self.axes.main.ncol - self.axes.subplot.interspace;
+            self.axes.subplot.width  = (1-self.axes.main.margin.left-self.axes.main.margin.right)/self.axes.main.nrow - self.axes.subplot.interspace;
+            self.colorbar.origin.x = 1 - self.axes.main.margin.right;
+            self.colorbar.origin.y = self.axes.main.margin.bottom;
+            self.colorbar.height = self.axes.main.nrow * ( self.axes.subplot.height + self.axes.subplot.interspace ) - self.axes.subplot.interspace;
+            self.figure.width    = self.figure.height *   ( 1 ...
+                                                                - self.axes.main.margin.bottom ...
+                                                                + self.axes.main.margin.right ...
+                                                                + self.axes.main.margin.left ...
+                                                                - self.axes.main.margin.top ...
+                                                                + self.colorbar.width ...
                                                                 );
-            if isfield(self,"currentFig") && isfield(self.currentFig,"gca") && isgraphics(self.currentFig.gca)
-                set(self.currentFig.gca,"position",self.getMainAxisPosition());
+            if isfield(self,"currentFig") && isfield(self.currentFig,"gca") && isgraphics(self.currentFig.axes)
+                set(self.currentFig.axes,"position",self.getMainAxisPosition());
             end
             if any(strcmp(fieldnames(self.currentFig),"colorbar")) && isgraphics(self.currentFig.colorbar)
                 set(self.currentFig.colorbar,"position",self.getColorbarAxisPosition());
             end
             if isfield(self.currentFig,"subplotList") && ~isempty(self.currentFig.subplotList)
-                for irow = 1:self.layout.axis.main.nrow
-                    for icol = 1:self.layout.axis.main.ncol
-                        jrow = self.layout.axis.main.nrow-irow+1;
-                        if isgraphics(self.currentFig.subplotList{irow,icol}.currentFig.gca)
-                            set ( self.currentFig.subplotList{irow,icol}.currentFig.gca, "position", self.getSubplotAxisPosition(jrow,icol) );
+                for irow = 1:self.axes.main.nrow
+                    for icol = 1:self.axes.main.ncol
+                        jrow = self.axes.main.nrow-irow+1;
+                        if isgraphics(self.currentFig.subplotList{irow,icol}.currentFig.axes)
+                            set ( self.currentFig.subplotList{irow,icol}.currentFig.axes, "position", self.getSubplotAxisPosition(jrow,icol) );
                         end
                     end
                 end
             end
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    end % methods
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    methods(Access=public, Hidden)
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function hideShow(self,varargin)
+
+            diagRequested = false;
+            lowerRequested = false;
+            upperRequested = false;
+            colorbarRequested = false;
+            action = varargin{1};
+            actionIsShow = strcmp(action,"show");
+            actionIsHide = strcmp(action,"hide");
+            if actionIsShow
+                switchValue = "on";
+            elseif actionIsHide
+                switchValue = "off";
+            end
+            if nargin==2 % act on all parts of the figure
+                diagRequested = true;
+                lowerRequested = true;
+                upperRequested = true;
+                colorbarRequested = true;
+            elseif nargin>2
+                for i = 2:length(varargin)
+                    part = string(varargin{i});
+                    if strcmpi(part,"diag")
+                        diagRequested  = true;
+                    elseif strcmpi(part,"upper")
+                        upperRequested = true;
+                    elseif strcmpi(part,"lower")
+                        lowerRequested = true;
+                    elseif strcmpi(part,"colorbar") || strcmpi(part,"cbar")
+                        colorbarRequested = true;
+                    else
+                        error   ( newline ...
+                                + "Unrecognized input argument pass to the " + action + "() method: " + newline + newline ...
+                                + join(part," ") + newline + newline ...
+                                + "The " + action + "() method accepts only a list of comma-separated string values representing the ""part"" of the grid plot to " + action + ". " ...
+                                + "Alternatively, if no argument is passed to " + action + "(), then all subplots will be affected." + newline ...
+                                );
+                    end
+                end
+            else
+                error   ( newline ...
+                        + "Internal error occurred. Not enough input arguments to hideShow()" ...
+                        + newline ...
+                        );
+            end
+
+            if colorbarRequested
+
+                if actionIsShow
+
+                    colorbar_kws_cell = convertStruct2Cell(self.colorbar.kws,{"enabled","singleOptions"});
+
+                    if getVecLen(self.colormap.values)
+                        colormap(self.currentFig.axes, self.colormap.values);
+                    elseif strcmp(self.plotType.upper.value,"lineScatter") || strcmp(self.plotType.lower.value,"lineScatter")
+                        if self.template.lineScatter.colormap.enabled && getVecLen(self.template.lineScatter.colormap.values)
+                            colormap(self.currentFig.axes, self.template.lineScatter.colormap.values);
+                        end
+                        %if self.plotType.upper.enabled && strcmp(self.plotType.upper.value,"lineScatter"); indx = [1,2]; end
+                        %if self.plotType.lower.enabled && strcmp(self.plotType.lower.value,"lineScatter"); indx = [2,1]; end
+                        %colormap(self.currentFig.subplotList{indx(1),indx(2)}, self.colormap.values);
+                    else
+                        cornerList = ["upper","lower"];
+                        for i = 1:length(cornerList)
+                            cornerValue = self.plotType.(cornerList(i)).value;
+                            if contains(cornerValue,"contour")
+                                if self.template.(cornerValue).colormap.enabled && getVecLen(self.template.(cornerValue).colormap.values)
+                                    colormap(self.currentFig.axes, self.template.(cornerValue).colormap.values);
+                                    break;
+                                end
+                            end
+                        end
+                    end
+
+                    % get column names
+
+                    if getVecLen(self.ccolumn)
+                        [self.ccolnames, self.ccolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ccolumn);
+                    else
+                        error("the component ""ccolumn"" of the GridPlot object appears to be empty.");
+                    end
+
+                    ccolumnValues = self.dfref.(self.ccolnames);
+                    colorbarLimit = [ min(ccolumnValues) max(ccolumnValues) ]; % Colorbar range
+                    caxis(self.currentFig.axes,colorbarLimit);
+                    set(self.currentFig.axes,"CLim",colorbarLimit);
+                    self.currentFig.colorbar = colorbar(self.currentFig.axes,colorbar_kws_cell{:});
+
+                    colorbarLabel = self.ccolnames;
+                    ylabel(self.currentFig.colorbar,colorbarLabel,"fontSize",self.colorbar.kws.fontSize);
+
+                    set ( self.currentFig.colorbar ...
+                        , "position" ...
+                        , self.getColorbarAxisPosition() ...
+                        , "fontSize", self.colorbar.kws.fontSize ...
+                        ) ;
+
+                elseif actionIsHide
+
+                    %colorbar("off");
+                    set(self.currentFig.colorbar,'visible','off');
+
+                end
+
+            end
+
+            for icol = 1:self.axes.main.ncol
+                for irow = 1:self.axes.main.nrow
+                    if (icol<irow && lowerRequested) || (icol>irow && upperRequested) || (icol==irow && diagRequested)
+                        set(self.currentFig.subplotList{irow,icol}.currentFig.axes,"visible",switchValue);
+                        set(get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"children"),"visible",switchValue);
+                    end
+                end
+            end
+
+            if lowerRequested || upperRequested || diagRequested
+                self.hideShowAxesLabels();
+            end
+
+        end % function hideShow
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function hideShowAxesLabels(self)
+            % show or hide axis labels and ticks depending on the presence of the neighbor subplots
+            for icol = 1:self.axes.main.ncol
+                for irow = 1:self.axes.main.nrow
+                    if irow < self.axes.main.nrow
+                        if strcmp(self.currentFig.subplotList{irow+1,icol}.currentFig.axes.Visible,"on")
+                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "XTickLabel", []);
+                            self.currentFig.subplotList{irow,icol}.currentFig.axes.XLabel.String = "";
+                        else
+                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "XTickLabelMode", "auto");
+                            self.currentFig.subplotList{irow,icol}.currentFig.axes.XLabel.String = self.colnames(icol);
+                        end
+                    end
+                    if icol > 1
+                        if strcmp(self.currentFig.subplotList{irow,icol-1}.currentFig.axes.Visible,"on")
+                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "YTickLabel", [])
+                            self.currentFig.subplotList{irow,icol}.currentFig.axes.YLabel.String = "";
+                        else
+                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "YTickLabelMode", "auto")
+                            self.currentFig.subplotList{irow,icol}.currentFig.axes.YLabel.String = self.colnames(irow);
+                        end
+                    end
+                    if ~(icol==1)
+                        axisLabelY = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"YLabel"); set(axisLabelY,"rotation",45,"VerticalAlignment","middle","HorizontalAlignment","right");
+                    end
+                    if ~(irow==self.axes.main.nrow)
+                        axisLabelX = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"XLabel"); set(axisLabelX,"rotation",45,"VerticalAlignment","top","HorizontalAlignment","right");
+                    end
+                end
+            end
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function position = getColorbarAxisPosition(self)
+            position =  [ self.colorbar.origin.x ...
+                        , self.colorbar.origin.y ...
+                        , self.colorbar.width ...
+                        , self.colorbar.height ...
+                        ];
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function position = getMainAxisPosition(self)
+            position =  [ self.axes.main.origin.x ...
+                        , self.axes.main.origin.y ...
+                        , self.axes.main.width ...
+                        , self.axes.main.height ...
+                        ];
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function position = getSubplotAxisPosition(self,irow,icol)
+            position =  [ (icol-1)*(self.axes.subplot.interspace + self.axes.subplot.width)   + self.axes.main.margin.left ...
+                        , (irow-1)*(self.axes.subplot.interspace + self.axes.subplot.height)  + self.axes.main.margin.bottom ...
+                        , self.axes.subplot.width ...
+                        , self.axes.subplot.height ...
+                        ];
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

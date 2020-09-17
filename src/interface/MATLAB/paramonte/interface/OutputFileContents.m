@@ -53,8 +53,8 @@ classdef OutputFileContents < dynamicprops
     end
 
     properties(Hidden)
+        reportEnabled = [];
         methodName = [];
-        mpiEnabled = [];
         timer = [];
         Err
     end
@@ -67,19 +67,19 @@ classdef OutputFileContents < dynamicprops
 
         function self = OutputFileContents  ( file ...
                                             , methodName ...
-                                            , mpiEnabled ...
+                                            , reportEnabled ...
                                             , Err ...
                                             )
 
             self.Err = Err;
             self.file = file;
             self.methodName = methodName;
-            self.mpiEnabled = mpiEnabled;
+            self.reportEnabled = reportEnabled;
             self.timer = Timer_class();
 
             self.Err.marginTop = 0;
             self.Err.marginBot = 0;
-            if ~self.mpiEnabled; self.Err.msg = "reading the file contents... "; self.Err.note(); end
+            if self.reportEnabled; self.Err.msg = "reading the file contents... "; self.Err.note(); end
 
         end % constructor
 
@@ -95,7 +95,7 @@ classdef OutputFileContents < dynamicprops
 
         function updateUser(self,msg,varargin)
             self.Err.advance = true; if ~isempty(varargin); self.Err.advance = varargin{1}; end
-            if ~self.mpiEnabled
+            if self.reportEnabled
                 if isempty(msg)
                     self.timer.toc();
                     self.Err.msg = "done in " + sprintf("%.6f",string(self.timer.delta)) + " seconds."; self.Err.note();
@@ -110,7 +110,7 @@ classdef OutputFileContents < dynamicprops
 
         function updateProgess(self,fraction,varargin)
             %msg = true; if ~isempty(varargin); msg = varargin{1}; end
-            if ~self.mpiEnabled
+            if self.reportEnabled
                 chars = '|/-\';
                 persistent clockCounter
                 %persistent msglen

@@ -59,63 +59,64 @@
 %   Attributes
 %   ----------
 %
-%       value
+%       values
 %
 %           A row-vector length 2 of numeric scalars representing the X and Y coordinates of the target.
 %           It can also be a matrix of shape (numTarget,2), each row of numTarget-tows of which represents 
 %           a pair of (x,y) coordinates to be added to the plot as targets.
 %
-%       hline_kws
+%       hline
 %
 %           A MATLAB struct() whose components' values are passed to MATLAB's `yline()` 
 %           function if order to draw a horizontal line on the current active plot.
-%           If your desired attribute is missing from the fieldnames of hline_kws, simply add
+%           If your desired attribute is missing from the fieldnames of hline.kws, simply add
 %           a new field named the same as the attribute and assign the desired value to it.
 %
 %           Example usage:
 %
-%               hline_kws.enabled = true % add horizontal line to the current plot at the specified target value
-%               hline_kws.color = [0, 0.200000000000000, 0.400000000000000]; % line color: RGB orange
+%               hline.enabled = true % add horizontal line to the current plot at the specified target value
+%               hline.kws.color = [0, 0.200000000000000, 0.400000000000000]; % line color: RGB orange
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, hline_kws.color and hline_kws.Color are the same, 
+%           WARNING: For example, hline.kws.color and hline.kws.Color are the same, 
 %           WARNING: and only one of the two will be processed.
 %
-%       vline_kws
+%       vline.kws
 %
 %           A MATLAB struct() whose components' values are passed to MATLAB's `xline()` 
 %           function if order to draw a vertical line on the current active plot.
-%           If your desired attribute is missing from the fieldnames of vline_kws, simply add
+%           If your desired attribute is missing from the fieldnames of vline.kws, simply add
 %           a new field named the same as the attribute and assign the desired value to it.
 %
 %           Example usage:
 %
-%               vline_kws.enabled = true % add vertical line to the current plot at the specified target value
-%               vline_kws.color = [0, 0.200000000000000, 0.400000000000000]; % line color: RGB orange
+%               vline.enabled = true % add vertical line to the current plot at the specified target value
+%               vline.kws.color = [0, 0.200000000000000, 0.400000000000000]; % line color: RGB orange
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, vline_kws.color and vline_kws.Color are the same, 
+%           WARNING: For example, vline.kws.color and vline.kws.Color are the same, 
 %           WARNING: and only one of the two will be processed.
 %
-%       scatter_kws (available only in scatter/lineScatter/scatter3/lineScatter3 objects)
+%       scatter.kws (available only in scatter/lineScatter/scatter3/lineScatter3 objects)
 %
 %           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
 %           are directly passed to the `scatter()` function of MATLAB.
 %
 %           Example usage:
 %
-%               scatter_kws.enabled = true; % add scatter()
-%               scatter_kws.marker = ".";
-%               scatter_kws.size = 10;
+%               scatter.enabled = true; % add scatter()
+%               scatter.kws.marker = ".";
+%               scatter.size = 10;
+%               scatter.color = "red";
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to scatter_kws.
+%           and its value to scatter.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, scatter_kws.marker and scatter_kws.Marker are the same,
+%           WARNING: For example, scatter.kws.marker and scatter.kws.Marker are the same,
 %           WARNING: and only one of the two will be processed.
 %
 %       xlimits
@@ -151,17 +152,19 @@
 classdef Target_class < dynamicprops
 
     properties (Access = public)
-        value
-        hline_kws
-        vline_kws
-        scatter_kws
+        hline
+        vline
+        values
+        scatter
         currentFig
         xlimits
         ylimits
+        label
     end
 
     properties (Hidden)
         isdryrun
+        counter
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -170,17 +173,34 @@ classdef Target_class < dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function reset(self)
+        function resetInternal(self)
 
-            xlimits = [];
-            ylimits = [];
-            self.value = [];
-            self.hline_kws = struct();
-            self.vline_kws = struct();
-            self.scatter_kws = struct();
+            self.xlimits = [];
+            self.ylimits = [];
+            self.values = [];
+
+            self.vline = struct();
+            self.hline = struct();
+            self.scatter = struct();
+
+            self.counter = struct();
+            self.counter.xline = 0;
+            self.counter.yline = 0;
+            self.counter.scatter = 0;
+            self.currentFig = struct();
+
+            self.vline.enabled = true;
+            self.hline.enabled = true;
+            self.scatter.enabled = true;
+
+            self.vline.kws = struct();
+            self.hline.kws = struct();
+            self.scatter.kws = struct();
+            self.scatter.color = [];
+            self.scatter.filled = true;
 
             self.isdryrun = true;
-            self.plot();
+            self.make();
             self.isdryrun = false;
 
         end
@@ -196,7 +216,7 @@ classdef Target_class < dynamicprops
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function self = Target_class(varargin)
-            self.reset()
+            self.resetInternal()
             self.parseArgs(varargin{:});
         end
 
@@ -248,10 +268,10 @@ classdef Target_class < dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function plot(self,varargin)
+        function make(self,varargin)
             %
             %   Add a target on an existing plot (the current active axes object)
-            %   based on the 'value' attribute of the target object.
+            %   based on the 'values' attribute of the target object.
             %
             %   Parameters
             %   ----------
@@ -260,7 +280,7 @@ classdef Target_class < dynamicprops
             %       If the property is a struct(), then its value must be given as a cell array,
             %       with consecutive elements representing the struct's property-name,property-value pairs.
             %       Note that all of these property-value pairs can be also directly set directly via the 
-            %       object's attributes, before calling the plot() method.
+            %       object's attributes, before calling the make() method.
             %
             %   Returns
             %   -------
@@ -271,56 +291,66 @@ classdef Target_class < dynamicprops
             %   Example
             %   -------
             %
-            %       plot("value",[1500,2]) % single target
-            %       plot("value",[1500,2;200,2.5;3500,0.4]) % multiple targets corresponding to each row of `value`
-            %       plot("hline_kws",{"linewidth",2})
+            %       make("values",[1500,2]) % single target
+            %       make("values",[1500,2;200,2.5;3500,0.4]) % multiple targets corresponding to each row of `values`
+            %       make("hline.kws",{"linewidth",2})
             %
+
             self.parseArgs(varargin{:});
+            rgbColor = getRGB("deep carrot orange");
+            %rgbColor = getRGB("dark midnight blue");
 
-            % setup the horizontal line
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% setup the horizontal line
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            %rgbColor = getRGB("deep carrot orange");
-            rgbColor = getRGB("dark midnight blue");
-            for fname = ["hline_kws","vline_kws","scatter_kws"]
+            for fname = ["hline","vline","scatter"]
+
                 if contains(fname,"line")
-                    if ~isfield(self.(fname),"linewidth") || isempty(self.(fname).linewidth)
-                        self.(fname).linewidth = 1;
-                    end
-                    if ~isfield(self.(fname),"linestyle") || isempty(self.(fname).linestyle)
-                        self.(fname).linestyle = "-";
-                    end
+
                     plotName = "line()";
-                else
-                    if ~isfield(self.(fname),"size") || isempty(self.(fname).size)
-                        self.(fname).size = 30;
-                    end
+
+                    key = "linewidth"; val = 1.25; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                    key = "linestyle"; val = "-"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                    key = "color"; val = rgbColor; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+
+                elseif contains(fname,"scatter")
+
                     plotName = "scatter()";
-                end
-                if ~isfield(self.(fname),"color") || isempty(self.(fname).color)
-                    self.(fname).color = rgbColor;
-                end
-                if ~isfield(self.(fname),"singleOptions") || isempty(self.(fname).singleOptions)
-                    self.(fname).singleOptions = {};
-                elseif ~isa(self.(fname).singleOptions,"cell")
-                    error   ( newline ...
-                            + "The singleOptions component of " + fname + " must be a cell array of input options to the " + plotName + " function of MATLAB." ...
-                            + newline ...
-                            );
-                end
-            end
-            if ~any(strcmp(self.scatter_kws.singleOptions,"filled"))
-                self.scatter_kws.singleOptions = {'filled'};
-            end
 
-            % generate figure and axes if needed
+                    key = "marker"; val = "o"; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
+                    key = "filled"; val = true; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
+                    key = "color"; val = rgbColor; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
+                    key = "size"; val = 30; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
 
-            if ~isfield(self.currentFig,"gcf") || ~all(isgraphics(self.currentFig.gcf)) || isempty(isgraphics(self.currentFig.gcf))
-                self.currentFig.gcf = get(groot,'CurrentFigure');
+                end
+
+                %if ~isfield(self.(fname),"singleOptions") || isempty(self.(fname).singleOptions)
+                %    self.(fname).singleOptions = {};
+                %elseif ~isa(self.(fname).singleOptions,"cell")
+                %    error   ( newline ...
+                %            + "The singleOptions component of " + fname + " must be a cell array of input options to the " + plotName + " function of MATLAB." ...
+                %            + newline ...
+                %            );
+                %end
+
             end
 
-            self.currentFig.gca = [];
-            if (~isfield(self.currentFig,"gca") || isempty(isgraphics(self.currentFig.gca))) && ~isempty(self.currentFig.gcf)
-                self.currentFig.gca = self.currentFig.gcf.CurrentAxes;
+            %if ~any(strcmp(self.scatter.singleOptions,"filled"))
+            %    self.scatter.singleOptions = {'filled'};
+            %end
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% generate figure and axes if needed
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            if ~isfield(self.currentFig,"gcf") || ~all(isgraphics(self.currentFig.figure)) || isempty(isgraphics(self.currentFig.figure))
+                self.currentFig.figure = get(groot,'CurrentFigure');
+            end
+
+            self.currentFig.axes = [];
+            if (~isfield(self.currentFig,"gca") || isempty(isgraphics(self.currentFig.axes))) && ~isempty(self.currentFig.figure)
+                self.currentFig.axes = self.currentFig.figure.CurrentAxes;
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -329,35 +359,41 @@ classdef Target_class < dynamicprops
 
             noFigureDetected = false;
             try 
-                set(0, "CurrentFigure", self.currentFig.gcf);
+                set(0, "CurrentFigure", self.currentFig.figure);
             catch
                 noFigureDetected = true;
             end
 
-            % if there is really no figure, report error
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% if there is really no figure, report error
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if noFigureDetected || ~all(isgraphics(self.currentFig.gcf))
+            if noFigureDetected || ~all(isgraphics(self.currentFig.figure))
                 error(newline + "There is no figure to which the target could be added. Please make a plot first." + newline);
             end
 
-            set(self.currentFig.gcf, "CurrentAxes", self.currentFig.gca);
+            set(self.currentFig.figure, "CurrentAxes", self.currentFig.axes);
             hold on;
 
-            % set what to plot
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% set what to plot
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            targetExists = isa(self.value,"numeric") && length(self.value(1,:))==2;
+            targetExists = isa(self.values,"numeric") && length(self.values(1,:))==2;
             if ~targetExists
                 error   ( newline ...
-                        + "The input target value must be a pair of numeric scalars representing the X and Y coordinates of the target, " ...
+                        + "The input target values must be a pair of numeric scalars representing the X and Y coordinates of the target, " ...
                         + "or a matrix of shape (numTarget,2), each row of numTarget-tows of which is a pair of (x,y) coordinates " ...
                         + "to be added as targets to the plot." ...
                         + newline ...
                         )
             end
 
-            % check what to plot
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% check what to plot
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            for fname = ["hline_kws","vline_kws","scatter_kws"]
+            for fname = ["hline","vline","scatter"]
                 if ~isfield(self.(fname),"enabled")
                     self.(fname).enabled = true;
                 end
@@ -369,73 +405,93 @@ classdef Target_class < dynamicprops
                 end
             end
 
-            % generate keyword options
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% generate hline keyword options
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             hline_kws_cell = {};
-            fnameList = fieldnames(self.hline_kws);
+            fnameList = fieldnames(self.hline.kws);
             for i = 1:length(fnameList)
                 if ~( strcmp(fnameList{i},"singleOptions") || strcmp(fnameList{i},"enabled") )
-                    hline_kws_cell = { hline_kws_cell{:}, fnameList{i}, self.hline_kws.(fnameList{i}) };
+                    hline_kws_cell = { hline_kws_cell{:}, fnameList{i}, self.hline.kws.(fnameList{i}) };
                 end
             end
-            hline_kws_cell = { hline_kws_cell{:}, self.hline_kws.singleOptions{:} };
+            %hline_kws_cell = { hline_kws_cell{:}, self.hline.singleOptions{:} };
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% generate vline keyword options
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             vline_kws_cell = {};
-            fnameList = fieldnames(self.vline_kws);
+            fnameList = fieldnames(self.vline.kws);
             for i = 1:length(fnameList)
                 if ~( strcmp(fnameList{i},"singleOptions") || strcmp(fnameList{i},"enabled") )
-                    vline_kws_cell = { vline_kws_cell{:}, fnameList{i}, self.vline_kws.(fnameList{i}) };
+                    vline_kws_cell = { vline_kws_cell{:}, fnameList{i}, self.vline.kws.(fnameList{i}) };
                 end
             end
-            vline_kws_cell = { vline_kws_cell{:}, self.vline_kws.singleOptions{:} };
+            %vline_kws_cell = { vline_kws_cell{:}, self.vline.singleOptions{:} };
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% generate scatter keyword options
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             scatter_kws_cell = {};
-            fnameList = fieldnames(self.scatter_kws);
+            if self.scatter.filled; scatter_kws_cell = {"filled"}; end
+            fnameList = fieldnames(self.scatter.kws);
             for i = 1:length(fnameList)
-                if ~( strcmp(fnameList{i},"size") || strcmp(fnameList{i},"color") || strcmp(fnameList{i},"singleOptions") || strcmp(fnameList{i},"enabled") )
-                    scatter_kws_cell = { scatter_kws_cell{:}, fnameList{i}, self.scatter_kws.(fnameList{i}) };
-                end
+                %if ~( strcmp(fnameList{i},"size") || strcmp(fnameList{i},"color") || strcmp(fnameList{i},"singleOptions") || strcmp(fnameList{i},"enabled") )
+                    scatter_kws_cell = { scatter_kws_cell{:}, fnameList{i}, self.scatter.kws.(fnameList{i}) };
+                %end
             end
-            scatter_kws_cell = { scatter_kws_cell{:}, self.scatter_kws.singleOptions{:} };
+            %scatter_kws_cell = { scatter_kws_cell{:}, self.scatter.singleOptions{:} };
 
-            % add target
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% add target
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            xlimCurrent = self.currentFig.gca.XLim;
-            ylimCurrent = self.currentFig.gca.YLim;
+            xlimCurrent = self.currentFig.axes.XLim;
+            ylimCurrent = self.currentFig.axes.YLim;
 
             if isempty(self.xlimits); xlimits = xlimCurrent; end
             if isempty(self.ylimits); ylimits = ylimCurrent; end
 
-            for irow = 1:length(self.value(:,1))
+            for irow = 1:length(self.values(:,1))
 
-                if self.hline_kws.enabled
-                    yline   ( ...
-                            self.value(irow,2), ...
-                            ... self.xlimits, [self.value(irow,2),self.value(irow,2)] ...
-                            hline_kws_cell{:} ...
-                            );
+                isnanx = isnan(self.values(irow,1));
+                isnany = isnan(self.values(irow,2));
+
+                if self.hline.enabled && ~isnany
+                    self.counter.yline = self.counter.yline + 1;
+                    self.currentFig.yline{self.counter.yline} = yline   ( ...
+                                                                        self.values(irow,2), ...
+                                                                        ... self.xlimits, [self.values(irow,2),self.values(irow,2)] ...
+                                                                        hline_kws_cell{:} ...
+                                                                        );
                 end
 
-                if self.vline_kws.enabled
-                    xline   ( ...
-                            self.value(irow,1), ...
-                            ... [self.value(irow,1),self.value(irow,1)], self.ylimits, ...
-                            vline_kws_cell{:} ...
-                            );
+                if self.vline.enabled && ~isnanx
+                    self.counter.xline = self.counter.xline + 1;
+                    self.currentFig.xline{self.counter.xline} = xline   ( ...
+                                                                        self.values(irow,1), ...
+                                                                        ... [self.values(irow,1),self.values(irow,1)], self.ylimits, ...
+                                                                        vline_kws_cell{:} ...
+                                                                        );
                 end
 
-                if self.scatter_kws.enabled
-                    scatter ( self.value(irow,1), self.value(irow,2) ...
-                            , self.scatter_kws.size ...
-                            , self.scatter_kws.color ...
-                            , scatter_kws_cell{:} ...
-                            );
+                if self.scatter.enabled && ~(isnanx || isnany)
+                    self.counter.scatter = self.counter.scatter + 1;
+                    self.currentFig.scatter{self.counter.scatter} = scatter ( self.values(irow,1), self.values(irow,2) ...
+                                                                            , self.scatter.size ...
+                                                                            , self.scatter.color ...
+                                                                            , self.scatter.marker ...
+                                                                            , scatter_kws_cell{:} ...
+                                                                            );
                 end
 
             end
 
-            self.currentFig.gca.XLim = xlimCurrent;
-            self.currentFig.gca.YLim = ylimCurrent;
+            self.currentFig.axes.XLim = xlimCurrent;
+            self.currentFig.axes.YLim = ylimCurrent;
 
             % add legend if requested
 

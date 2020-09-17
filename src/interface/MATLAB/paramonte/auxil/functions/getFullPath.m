@@ -169,11 +169,13 @@ if nargin < 2
    Style = 'auto';
 end
 
+Style = convertStringsToChars(Style);
+
 % Handle cell strings:
 % NOTE: It is faster to create a function @cell\getFullPath.m under Linux, but
 % under Windows this would shadow the fast C-Mex.
 
-if isa(File, 'string')
+if isstring(File)
     File = convertStringsToChars(File);
 end
 

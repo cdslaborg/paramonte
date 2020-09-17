@@ -97,11 +97,11 @@ classdef RestartFileContents < OutputFileContents
 
         function self = RestartFileContents ( file ... % this must be a full file path
                                             , methodName ...
-                                            , mpiEnabled ...
+                                            , reportEnabled ...
                                             , Err ...
                                             )
 
-            self = self@OutputFileContents(file,methodName,mpiEnabled,Err);
+            self = self@OutputFileContents(file,methodName,reportEnabled,Err);
             self.timer.tic();
 
             if strcmpi(self.methodName,"ParaDRAM") || strcmpi(self.methodName,"MatDRAM")
@@ -373,10 +373,10 @@ classdef RestartFileContents < OutputFileContents
                 requestedPlotType = string(requestedPlotTypeCell);
                 requestedPlotTypeLower = lower(requestedPlotType);
 
-                self.Err.msg = msgPrefix + requestedPlotType + msgSuffix;
-                self.Err.note();
-
-                plotName = "";
+                if self.reportEnabled
+                    self.Err.msg = msgPrefix + requestedPlotType + msgSuffix;
+                    self.Err.note();
+                end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -387,55 +387,52 @@ classdef RestartFileContents < OutputFileContents
                 % line
 
                 if strcmp(requestedPlotTypeLower,"line") || strcmp(requestedPlotTypeLower,"line3")
-                    plotName = "line"; if is3d; plotName = plotName + "3"; end
                     if resetTypeIsHard
-                        self.plot.(plotName) = LineScatterPlot( self.df, plotName );
+                        self.plot.(requestedPlotType) = LineScatterPlot( requestedPlotType, self.df, @self.resetPlot );
                     else
-                        self.plot.(plotName).reset();
+                        self.plot.(requestedPlotType).resetInternal();
                     end
-                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
-                    self.plot.(plotName).ccolumns = "sampleSize";
-                    self.plot.(plotName).gca_kws.xscale = "linear";
-                    self.plot.(plotName).plot_kws.enabled = false;
-                    self.plot.(plotName).plot_kws.linewidth = 1;
-                    self.plot.(plotName).surface_kws.enabled = true;
-                    self.plot.(plotName).surface_kws.linewidth = 1;
+                    self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
+                    self.plot.(requestedPlotType).ccolumns = "sampleSize";
+                    self.plot.(requestedPlotType).axes.kws.xscale = "linear";
+                    self.plot.(requestedPlotType).plot.enabled = false;
+                    self.plot.(requestedPlotType).plot.kws.linewidth = 1;
+                    self.plot.(requestedPlotType).surface.enabled = true;
+                    self.plot.(requestedPlotType).surface.kws.linewidth = 1;
                 end
 
                 % scatter / scatter3
 
                 if strcmp(requestedPlotTypeLower,"scatter") || strcmp(requestedPlotTypeLower,"scatter3")
-                    plotName = "scatter"; if is3d; plotName = plotName + "3"; end
                     if resetTypeIsHard
-                        self.plot.(plotName) = LineScatterPlot( self.df, plotName );
+                        self.plot.(requestedPlotType) = LineScatterPlot( requestedPlotType, self.df, @self.resetPlot );
                     else
-                        self.plot.(plotName).reset();
+                        self.plot.(requestedPlotType).resetInternal();
                     end
-                    self.plot.(plotName).ccolumns = "sampleSize";
-                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
-                    self.plot.(plotName).gca_kws.xscale = "linear";
-                    self.plot.(plotName).scatter_kws.size = 10;
+                    self.plot.(requestedPlotType).ccolumns = "sampleSize";
+                    self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
+                    self.plot.(requestedPlotType).axes.kws.xscale = "linear";
+                    self.plot.(requestedPlotType).scatter.size = 10;
                 end
 
                 % lineScatter / lineScatter3
 
                 if strcmp(requestedPlotTypeLower,"linescatter") || strcmp(requestedPlotTypeLower,"linescatter3")
-                    plotName = "lineScatter"; if is3d; plotName = plotName + "3"; end
                     if resetTypeIsHard
-                        self.plot.(plotName) = LineScatterPlot( self.df, plotName );
+                        self.plot.(requestedPlotType) = LineScatterPlot( requestedPlotType, self.df, @self.resetPlot );
                     else
-                        self.plot.(plotName).reset();
+                        self.plot.(requestedPlotType).resetInternal();
                     end
-                    self.plot.(plotName).surface_kws.enabled = false;
-                    self.plot.(plotName).ccolumns = "sampleSize";
-                    self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
-                    self.plot.(plotName).gca_kws.xscale = "linear";
+                    self.plot.(requestedPlotType).surface.enabled = false;
+                    self.plot.(requestedPlotType).ccolumns = "sampleSize";
+                    self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
+                    self.plot.(requestedPlotType).axes.kws.xscale = "linear";
                     if is3d
-                        self.plot.(plotName).plot_kws.color = [200 200 200 75] / 255;
+                        self.plot.(requestedPlotType).plot.kws.color = [200 200 200 75] / 255;
                     else
-                        self.plot.(plotName).plot_kws.linewidth = 1;
-                        self.plot.(plotName).plot_kws.color = uint8([200 200 200 200]);
-                        self.plot.(plotName).scatter_kws.size = 20;
+                        self.plot.(requestedPlotType).plot.kws.linewidth = 1;
+                        self.plot.(requestedPlotType).plot.kws.color = uint8([200 200 200 200]);
+                        self.plot.(requestedPlotType).scatter.size = 20;
                     end
                 end
 
@@ -443,13 +440,13 @@ classdef RestartFileContents < OutputFileContents
 
                 if isLineOrScatterPlot && is3d
                     if self.ndim==1
-                        self.plot.(plotName).xcolumns = {};
-                        self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset);
+                        self.plot.(requestedPlotType).xcolumns = {};
+                        self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset);
                     else
-                        self.plot.(plotName).xcolumns = self.df.Properties.VariableNames(self.offset);
-                        self.plot.(plotName).ycolumns = self.df.Properties.VariableNames(self.offset+1);
+                        self.plot.(requestedPlotType).xcolumns = self.df.Properties.VariableNames(self.offset);
+                        self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset+1);
                     end
-                    self.plot.(plotName).zcolumns = "sampleSize";
+                    self.plot.(requestedPlotType).zcolumns = "sampleSize";
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -466,13 +463,13 @@ classdef RestartFileContents < OutputFileContents
                     if resetTypeIsHard
                         self.plot.(requestedPlotTypeLower) = HistPlot( self.df, requestedPlotTypeLower );
                     else
-                        self.plot.(requestedPlotTypeLower).reset();
+                        self.plot.(requestedPlotTypeLower).resetInternal();
                     end
                     if isHist
                         self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset); %:self.offset+2);
-                        self.plot.(requestedPlotTypeLower).histogram_kws.facealpha = 0.6;
-                        self.plot.(requestedPlotTypeLower).histogram_kws.facecolor = "auto";
-                        self.plot.(requestedPlotTypeLower).histogram_kws.edgecolor = "none";
+                        self.plot.(requestedPlotTypeLower).histogram.kws.faceAlpha = 0.6;
+                        self.plot.(requestedPlotTypeLower).histogram.kws.faceColor = "auto";
+                        self.plot.(requestedPlotTypeLower).histogram.kws.edgeColor = "none";
                     else
                         self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset);
                         if isHist2 || isContour || isContourf || isContour3
@@ -496,7 +493,7 @@ classdef RestartFileContents < OutputFileContents
                         endIndex = min(lenVariableNames,self.offset+4);
                         self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset-1:endIndex));
                     else
-                        self.plot.(requestedPlotTypeLower).reset();
+                        self.plot.(requestedPlotTypeLower).resetInternal();
                     end
                     self.plot.(requestedPlotTypeLower).ccolumn = string(self.df.Properties.VariableNames(self.offset-1));
                 end
@@ -509,46 +506,46 @@ classdef RestartFileContents < OutputFileContents
                 isCovMatPlot = strcmp(requestedPlotTypeLower,"covmat2") || strcmp(requestedPlotTypeLower,"covmat3");
                 if isCorMatPlot || isCovMatPlot
                     plotType = "line"; if is3d; plotType = plotType + "3"; end
-                    plotName = requestedPlotTypeLower;
+                    requestedPlotType = requestedPlotTypeLower;
                     if resetTypeIsHard
-                        self.plot.(plotName) = EllipsoidPlot( self.df, plotType );
+                        self.plot.(requestedPlotType) = EllipsoidPlot( self.df, plotType, @self.resetPlot );
                     else
-                        self.plot.(plotName).reset();
+                        self.plot.(requestedPlotType).resetInternal();
                     end
-                    self.plot.(plotName).rows = self.plot.(plotName).getLogLinSpace ( 1.01 ... base
+                    self.plot.(requestedPlotType).rows = self.plot.(requestedPlotType).getLogLinSpace ( 1.01 ... base
                                                                                     , 1 ... logskip
                                                                                     , 1 ... lowerLim
                                                                                     , self.count ... upperLim
                                                                                     );
                     if isCorMatPlot
-                        self.plot.(plotName).matrixColumn = self.df.Properties.VariableNames(end);
+                        self.plot.(requestedPlotType).matrixColumn = self.df.Properties.VariableNames(end);
                     elseif isCovMatPlot
-                        self.plot.(plotName).matrixColumn = self.df.Properties.VariableNames(end-1);
+                        self.plot.(requestedPlotType).matrixColumn = self.df.Properties.VariableNames(end-1);
                     end
-                    self.plot.(plotName).centerColumn = self.df.Properties.VariableNames(end-2);
-                    %self.plot.(plotName).ccolumn = "sampleSize";
-                    self.plot.(plotName).gca_kws.xscale = "linear";
-                    self.plot.(plotName).gca_kws.yscale = "linear";
-                    self.plot.(plotName).plot_kws.linewidth = 1;
+                    self.plot.(requestedPlotType).centerColumn = self.df.Properties.VariableNames(end-2);
+                    %self.plot.(requestedPlotType).ccolumn = "sampleSize";
+                    self.plot.(requestedPlotType).axes.kws.xscale = "linear";
+                    self.plot.(requestedPlotType).axes.kws.yscale = "linear";
+                    self.plot.(requestedPlotType).plot.kws.linewidth = 1;
                     matrixType = "covariance"; if isCorMatPlot; matrixType = "correlation"; end
-                    self.plot.(plotName).title_kws.enabled = true;
-                    self.plot.(plotName).title_kws.label = "Evolution of the " + matrixType + " matrices of the proposal distribution";
-                    self.plot.(plotName).title_kws.fontsize = 11;
-                    self.plot.(plotName).title_kws.interpreter = "tex";
+                    self.plot.(requestedPlotType).title.enabled = true;
+                    self.plot.(requestedPlotType).title.label = "Evolution of the " + matrixType + " matrices of the proposal distribution";
+                    self.plot.(requestedPlotType).title.kws.fontsize = 11;
+                    self.plot.(requestedPlotType).title.kws.interpreter = "tex";
                 end
 
                 % 3d
 
                 if isEllipsoidPlot && is3d
                     %if self.ndim==1
-                    %    self.plot.(plotName).matrixColumn = {};
-                    %    self.plot.(plotName).centerColumn = self.df.Properties.VariableNames(self.offset);
+                    %    self.plot.(requestedPlotType).matrixColumn = {};
+                    %    self.plot.(requestedPlotType).centerColumn = self.df.Properties.VariableNames(self.offset);
                     %else
-                    %    self.plot.(plotName).matrixColumn = self.df.Properties.VariableNames(self.offset);
-                    %    self.plot.(plotName).centerColumn = self.df.Properties.VariableNames(self.offset+1);
+                    %    self.plot.(requestedPlotType).matrixColumn = self.df.Properties.VariableNames(self.offset);
+                    %    self.plot.(requestedPlotType).centerColumn = self.df.Properties.VariableNames(self.offset+1);
                     %end
-                    %self.plot.(plotName).zcolumn = "sampleSize";
-                    self.plot.(plotName).gca_kws.zscale = "log";
+                    %self.plot.(requestedPlotType).zcolumn = "sampleSize";
+                    self.plot.(requestedPlotType).axes.kws.zscale = "log";
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

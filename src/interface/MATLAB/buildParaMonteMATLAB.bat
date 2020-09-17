@@ -129,50 +129,54 @@ if defined MATLAB_BIN_DIR (
     echo. -- ParaMonteMATLAB - compiler options: !MATLAB_BUILD_FLAGS!
     echo. -- ParaMonteMATLAB - compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
     cd !ParaMonteMATLAB_BLD_LIB_DIR!
-    REM CC=icl COMPFLAGS="!MATLAB_BUILD_FLAGS!"
-    call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME! && (
-    REM if !ERRORLEVEL!==0 (
-        echo.
-        echo. -- ParaMonteMATLAB - the ParaMonte MATLAB dynamic library build appears to have succeeded.
-        echo.
-    ) || (
-    REM ) else (
-        echo. 
-        echo. -- ParaMonteMATLAB - Fatal Error: The ParaMonte MATLAB library build failed.
-        echo. -- ParaMonteMATLAB - Please make sure you have the following components installed
-        echo. -- ParaMonteMATLAB - on your system before rerunning the installation script:
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB -     -- MATLAB, including MATLAB compilers.
-        echo. -- ParaMonteMATLAB -     -- Intel Parallel Studio icl/ifort compilers 2018 or newer.
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB - Once you are sure of the existence of these components in your 
-        echo. -- ParaMonteMATLAB - Windows command line environment, run the following command:
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB -     "!MATLAB_BIN_DIR!\mex.bat" -setup C
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB - Among the options displayed, you should see the command to setup
-        echo. -- ParaMonteMATLAB - the Intel Parallel Studio icl compiler on your system.
-        echo. -- ParaMonteMATLAB - This command should look similar to the following,
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB -     "!MATLAB_BIN_DIR_TEMP!\mex.bat" -setup:"C:\Program Files\MATLAB\R2019a\bin\win64\mexopts\intel_c_19_vs2017.xml" C
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB - with minor differences depending on your specific installations of 
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB -     -- the Intel Parallel Studio version
-        echo. -- ParaMonteMATLAB -     -- the Microsoft Visual Studio version
-        echo. -- ParaMonteMATLAB -     -- the MATLAB version
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB - Copy and paste this command in your terminal, run it, and then rerun the ParaMonte MATLAB installation script.
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB - Please report this error at: 
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB -     https://github.com/cdslaborg/paramonte/issues
-        echo. -- ParaMonteMATLAB - 
-        echo. -- ParaMonteMATLAB - gracefully exiting The ParaMonte build script.
-        echo. 
-        cd %~dp0
-        set ERRORLEVEL=1
-        exit /B 1
+    if !FRESH_RUN!==true (
+        REM CC=icl COMPFLAGS="!MATLAB_BUILD_FLAGS!"
+        call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME! && (
+        REM if !ERRORLEVEL!==0 (
+            echo.
+            echo. -- ParaMonteMATLAB - the ParaMonte MATLAB dynamic library build appears to have succeeded.
+            echo.
+        ) || (
+        REM ) else (
+            echo. 
+            echo. -- ParaMonteMATLAB - Fatal Error: The ParaMonte MATLAB library build failed.
+            echo. -- ParaMonteMATLAB - Please make sure you have the following components installed
+            echo. -- ParaMonteMATLAB - on your system before rerunning the installation script:
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB -     -- MATLAB, including MATLAB compilers.
+            echo. -- ParaMonteMATLAB -     -- Intel Parallel Studio icl/ifort compilers 2018 or newer.
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB - Once you are sure of the existence of these components in your 
+            echo. -- ParaMonteMATLAB - Windows command line environment, run the following command:
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB -     "!MATLAB_BIN_DIR!\mex.bat" -setup C
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB - Among the options displayed, you should see the command to setup
+            echo. -- ParaMonteMATLAB - the Intel Parallel Studio icl compiler on your system.
+            echo. -- ParaMonteMATLAB - This command should look similar to the following,
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB -     "!MATLAB_BIN_DIR_TEMP!\mex.bat" -setup:"C:\Program Files\MATLAB\R2019a\bin\win64\mexopts\intel_c_19_vs2017.xml" C
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB - with minor differences depending on your specific installations of 
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB -     -- the Intel Parallel Studio version
+            echo. -- ParaMonteMATLAB -     -- the Microsoft Visual Studio version
+            echo. -- ParaMonteMATLAB -     -- the MATLAB version
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB - Copy and paste this command in your terminal, run it, and then rerun the ParaMonte MATLAB installation script.
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB - Please report this error at: 
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB -     https://github.com/cdslaborg/paramonte/issues
+            echo. -- ParaMonteMATLAB - 
+            echo. -- ParaMonteMATLAB - gracefully exiting The ParaMonte build script.
+            echo. 
+            cd %~dp0
+            set ERRORLEVEL=1
+            exit /B 1
+        )
+    ) else (
+        echo. -- ParaMonteMATLAB - dryrun mode enabled. skippting the MATLAB dynamic library build...
     )
     cd %~dp0
 )

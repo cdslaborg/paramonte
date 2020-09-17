@@ -40,14 +40,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function newKeyValSet = addKeyVal(key,val,varargin)
-    newKeyValSet = varargin;
-    if nargin>2 && getVecLen(newKeyValSet{1})
-        [currentVal, keyFound] = getKeyVal(key,varargin{:});
-        if ~keyFound
-            newKeyValSet = { newKeyValSet{:} , key, val };
-        end
-    else
-        newKeyValSet = { key, val }; % XXX is this correct behavior?
-    end
+function randFileName = genRandFileName(prefix)
+    % generate output filename
+    if nargin<1; prefix = "temp"; end
+    randFileName = prefix + "_" + datestr(now, "yyyymmdd") + "_" + datestr(now, "HHMMSS_FFF");
 end

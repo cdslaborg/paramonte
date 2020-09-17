@@ -1037,9 +1037,9 @@ class ParaMonteSampler:
             if fileSuffix=="progress":
                 specials = ""
             else:
-                specials =  ( "    " + outputListFullName + "[0].plot.line3()        # to make trivariate line plots." + newline
-                            + "    " + outputListFullName + "[0].plot.scatter3()     # to make trivariate scatter plots." + newline
-                            + "    " + outputListFullName + "[0].plot.lineScatter3() # to make trivariate line-scatter plots." + newline
+                specials =  ( "    " + outputListFullName + "[0].plot.line3()        # to make 3D line plots." + newline
+                            + "    " + outputListFullName + "[0].plot.scatter3()     # to make 3D scatter plots." + newline
+                            + "    " + outputListFullName + "[0].plot.lineScatter3() # to make 3D line-scatter plots." + newline
                             + "    " + outputListFullName + "[0].plot.contour()      # to make fast 2D kernel density plots." + newline
                             + "    " + outputListFullName + "[0].plot.contourf()     # to make fast 2D kernel density filled contour plots." + newline
                             + "    " + outputListFullName + "[0].plot.contour3()     # to make fast 3D kernel density contour plots." + newline
@@ -1060,9 +1060,9 @@ class ParaMonteSampler:
                             + newline
                             + "For example," + newline
                             + newline
-                            + "    " + outputListFullName + "[0].plot.line()         # to make bivariate line plots." + newline
-                            + "    " + outputListFullName + "[0].plot.scatter()      # to make bivariate scatter plots." + newline
-                            + "    " + outputListFullName + "[0].plot.lineScatter()  # to make bivariate line-scatter plots." + newline
+                            + "    " + outputListFullName + "[0].plot.line()         # to make 2D line plots." + newline
+                            + "    " + outputListFullName + "[0].plot.scatter()      # to make 2D scatter plots." + newline
+                            + "    " + outputListFullName + "[0].plot.lineScatter()  # to make 2D line-scatter plots." + newline
                             + specials
                             + newline
                             + "To plot or inspect the variable autocorrelations or the correlation/covariance matrices, try:" + newline

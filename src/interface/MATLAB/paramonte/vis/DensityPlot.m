@@ -40,7 +40,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   DensityPlot(dataFrame, plotType)
+%   DensityPlot(dataFrame, plotType, resetExternal)
 %
 %   This is the DensityPlot class for generating instances of
 %   histfit/histogram/histogram2/contourf/contour3/contour plots, built upon MATLAB's 
@@ -108,31 +108,31 @@
 %
 %           Example usage:
 %
-%               1.  colormap = "autumn"
-%               1.  colormap = "winter"
+%               1.  colormap.values = "autumn"
+%               1.  colormap.values = "winter"
 %
 %           If colormap is not provided or is empty, the default will be "winter".
 %
-%       colorbar_kws (available only in histogram2/contourf/contour3/contour objects) 
+%       colorbar.kws (available only in histogram2/contourf/contour3/contour objects) 
 %
 %           A MATLAB struct() whose components' values are passed to MATLAB's colorbar function.
-%           If your desired attribute is missing from the fieldnames of colorbar_kws, simply add
+%           If your desired attribute is missing from the fieldnames of colorbar.kws, simply add
 %           a new field named as the attribute and assign the desired value to it.
 %
 %           Example usage:
 %
-%               colorbar_kws.enabled = true % add colorbar
-%               colorbar_kws.location = "west"
+%               colorbar.enabled = true % add colorbar
+%               colorbar.kws.location = "west"
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to colorbar_kws.
+%           and its value to colorbar.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, colorbar_kws.color and colorbar_kws.Color are the same,
+%           WARNING: For example, colorbar.kws.color and colorbar.kws.Color are the same,
 %           WARNING: and only one of the two will be processed.
 %
-%       histfit_kws (available only in histfit objects)
+%       histfit.kws (available only in histfit objects)
 %
 %           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
 %           are directly passed to the `histfit()` function of MATLAB.
@@ -140,17 +140,17 @@
 %
 %           Example usage:
 %
-%               histfit_kws.enabled = true; % add histfit()
+%               histfit.enabled = true; % add histfit()
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to histfit_kws.
+%           and its value to histfit.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, histfit_kws.Enabled and histfit_kws.enabled are the same,
+%           WARNING: For example, histfit.enabled and histfit.enabled are the same,
 %           WARNING: and only one of the two will be processed.
 %
-%       histogram_kws (available only in histogram objects)
+%       histogram.kws (available only in histogram objects)
 %
 %           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
 %           are directly passed to the `histogram()` function of MATLAB.
@@ -158,18 +158,18 @@
 %
 %           Example usage:
 %
-%               histogram_kws.enabled = true; % add histogram()
-%               histogram_kws.edgecolor = "none";
+%               histogram.enabled = true; % add histogram()
+%               histogram.kws.edgeColor = "none";
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to histogram_kws.
+%           and its value to histogram.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: histogram_kws.edgecolor and histogram_kws.Edgecolor are the same,
+%           WARNING: histogram.kws.edgeColor and histogram.kws.edgeColor are the same,
 %           WARNING: and only one of the two will be processed.
 %
-%       histogram2_kws (available only in histogram2 objects)
+%       histogram2.kws (available only in histogram2 objects)
 %
 %           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
 %           are directly passed to the `histogram2()` function of MATLAB.
@@ -177,18 +177,18 @@
 %
 %           Example usage:
 %
-%               histogram2_kws.enabled = true; % add histogram2()
-%               histogram2_kws.edgecolor = "none";
+%               histogram2.enabled = true; % add histogram2()
+%               histogram2.kws.edgeColor = "none";
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to histogram2_kws.
+%           and its value to histogram2.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: histogram2_kws.edgecolor and histogram2_kws.Edgecolor are the same,
+%           WARNING: histogram2.kws.edgeColor and histogram2.kws.edgeColor are the same,
 %           WARNING: and only one of the two will be processed.
 %
-%       contourf_kws (available only in contourf objects)
+%       contourf.kws (available only in contourf objects)
 %
 %           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
 %           are directly passed to the `contourf()` function of MATLAB.
@@ -196,18 +196,18 @@
 %
 %           Example usage:
 %
-%               contourf_kws.enabled = true; % add contourf()
-%               contourf_kws.linecolor = "none";
+%               contourf.enabled = true; % add contourf()
+%               contourf.kws.color = "none";
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to contourf_kws.
+%           and its value to contourf.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: contourf_kws.linecolor and contourf_kws.LineColor are the same,
+%           WARNING: contourf.kws.color and contourf.kws.Color are the same,
 %           WARNING: and only one of the two will be processed.
 %
-%       contour3_kws (available only in contour3 objects)
+%       contour3.kws (available only in contour3 objects)
 %
 %           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
 %           are directly passed to the `contour3()` function of MATLAB.
@@ -215,18 +215,18 @@
 %
 %           Example usage:
 %
-%               contour3_kws.enabled = true; % add contour3()
-%               contour3_kws.linewidth = 1;
+%               contour3.enabled = true; % add contour3()
+%               contour3.kws.linewidth = 1;
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to contour3_kws.
+%           and its value to contour3.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: contour3_kws.linewidth and contour3_kws.LineWidth are the same,
+%           WARNING: contour3.kws.linewidth and contour3.kws.LineWidth are the same,
 %           WARNING: and only one of the two will be processed.
 %
-%       contour_kws (available only in contour objects)
+%       contour.kws (available only in contour objects)
 %
 %           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
 %           are directly passed to the `contour()` function of MATLAB.
@@ -234,15 +234,15 @@
 %
 %           Example usage:
 %
-%               contour_kws.enabled = true; % add contour()
-%               contour_kws.linewidth = 1;
+%               contour.enabled = true; % add contour()
+%               contour.kws.linewidth = 1;
 %
 %           If a desired property is missing among the struct fields, simply add the field
-%           and its value to contour_kws.
+%           and its value to contour.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: contour_kws.linewidth and contour_kws.LineWidth are the same,
+%           WARNING: contour.kws.linewidth and contour.kws.LineWidth are the same,
 %           WARNING: and only one of the two will be processed.
 %
 %       target
@@ -251,7 +251,7 @@
 %           For more information, see the documentation for Target.
 %
 %   Superclass Attributes
-%   ----------------------
+%   ---------------------
 %
 %       See the documentation for the BasePlot class
 %
@@ -268,11 +268,10 @@ classdef DensityPlot < BasePlot
 
     properties (Access = public)
         xcolumns
-        target
     end
 
     properties (Access = protected, Hidden)
-        plotType
+        noiseLevelDefault = 0.001;
         gridSizeDefault = 2^9;
         isHistogram = false;
         isHistogram2 = false;
@@ -280,6 +279,12 @@ classdef DensityPlot < BasePlot
         isContour3 = false;
         isContour = false;
         isHistfit = false;
+        xcolnames
+        xcolindex
+        ycolnames
+        ycolindex
+        ccolnames
+        ccolindex
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -288,77 +293,59 @@ classdef DensityPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function reset(self)
+        function resetInternal(self)
 
-            reset@BasePlot(self);
+            resetInternal@BasePlot(self);
             self.xcolumns = {};
 
-            if self.isHistogram
+            if self.type.isHistogram
 
-                self.histogram_kws = struct();
-                self.histogram_kws.enabled = true;
-                self.histogram_kws.edgecolor = {};
-                self.histogram_kws.singleOptions = {};
+                self.histogram.kws = struct();
+                self.histogram.enabled = true;
+                self.histogram.kws.edgeColor = {};
 
-            elseif self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
+            elseif self.type.isHistogram2 || self.type.isContourf || self.type.isContour3 || self.type.isContour
 
                 self.ycolumns = {};
-                self.colormap = {};
 
-                if self.isHistogram2
-                    self.histogram2_kws = struct();
-                    self.histogram2_kws.enabled = true;
-                    self.histogram2_kws.edgecolor = {};
-                    self.histogram2_kws.facecolor = {};
-                    self.histogram2_kws.displaystyle = {};
-                    self.histogram2_kws.singleOptions = {};
+                self.colormap = struct();
+                self.colormap.enabled = true;
+                self.colormap.values = [];
+
+                if self.type.isHistogram2
+                    self.histogram2.kws = struct();
+                    self.histogram2.enabled = true;
+                    self.histogram2.kws.edgeColor = {};
+                    self.histogram2.kws.faceColor = {};
+                    self.histogram2.kws.displayStyle = {};
                 end
 
-                if self.isContourf || self.isContour3 || self.isContour
-                    self.gridSize = self.gridSizeDefault;
+                %if self.type.isContourf || self.type.isContour3 || self.type.isContour
+                %    self.gridSize = self.gridSizeDefault;
+                %    self.gridSize = self.gridSizeDefault;
+                %end
+
+                if self.type.isContourf || self.type.isContour3 || self.type.isContour
+                    self.(self.type.name).kws = struct();
+                    self.(self.type.name).enabled = true;
                 end
 
-                if self.isContourf
-                    self.contourf_kws = struct();
-                    self.contourf_kws.enabled = true;
-                    self.contourf_kws.levels = 8;
-                    self.contourf_kws.linecolor = "none";
-                    self.contourf_kws.singleOptions = {};
-                end
+                self.colorbar.kws = struct();
+                self.colorbar.enabled = true;
+                self.colorbar.kws.fontSize = [];
 
-                if self.isContour3
-                    self.contour3_kws = struct();
-                    self.contour3_kws.enabled = true;
-                    self.contour3_kws.levels = 50;
-                    self.contour3_kws.singleOptions = {};
-                end
+                self.legend.enabled = false;
 
-                if self.isContour
-                    self.contour_kws = struct();
-                    self.contour_kws.enabled = true;
-                    self.contour_kws.levels = 8;
-                    self.contour_kws.singleOptions = {};
-                end
+            elseif self.type.isHistfit
 
-                self.colorbar_kws = struct();
-                self.colorbar_kws.enabled = true;
-                self.colorbar_kws.fontsize = [];
-                self.colorbar_kws.singleOptions = {};
-
-                self.legend_kws.enabled = false;
-
-            elseif self.isHistfit
-
-                self.histfit_kws = struct();
-                self.histfit_kws.enabled = true;
-                self.histfit_kws.singleOptions = {};
+                %self.histfit.kws = struct();
+                self.histfit.enabled = true;
 
             end
 
             self.isdryrun = true;
-            self.plot();
+            self.make();
             self.isdryrun = false;
-            self.target = Target_class();
 
         end
 
@@ -372,33 +359,27 @@ classdef DensityPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = DensityPlot(varargin) % expected input arguments: dataFrame, plotType
-            self = self@BasePlot(varargin{1});
-            self.plotType = lower(string(varargin{2}));
-            if strcmpi(self.plotType,"histogram")
-                self.isHistogram = true;
-                prop="histogram_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            elseif strcmpi(self.plotType,"histfit")
-                self.isHistfit = true;
-                prop="histfit_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            else
-                if strcmpi(self.plotType,"histogram2"); self.isHistogram2 = true; dummy_kws="histogram2_kws"; end
-                if strcmpi(self.plotType,"contourf"); self.isContourf = true; dummy_kws="contourf_kws"; end
-                if strcmpi(self.plotType,"contour3"); self.isContour3 = true; dummy_kws="contour3_kws"; end
-                if strcmpi(self.plotType,"contour"); self.isContour = true; dummy_kws="contour_kws"; end
-                if self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
-                    prop=dummy_kws; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                    prop="colorbar_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                    prop="ycolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                    prop="colormap"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                    if ~self.isHistogram2
-                        prop="gridSize"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                    end
-                else
-                    error("The requested plot type " + string(self.plotType) + " is not reqcognized.");
+        function self = DensityPlot(plotType, dataFrame, resetExternal)
+            if nargin<3; resetExternal = []; end
+            self = self@BasePlot(plotType, dataFrame, resetExternal);
+            if nargin<3; self.resetExternal = @self.resetInternal; end
+            if self.type.isHistogram
+                prop="histogram"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            elseif self.type.isHistfit
+                prop="histfit"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            elseif self.type.isHistogram2 || self.type.isContourf || self.type.isContour3 || self.type.isContour
+                prop=self.type.name; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="colorbar"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="ycolumns"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="colormap"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                if ~self.type.isHistogram2
+                    prop="gridSize"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end; self.(prop) = [];
+                    prop="noiseLevel"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end; self.(prop) = [];
                 end
+            else
+                error("The requested plot type " + string(self.type.name) + " is not reqcognized.");
             end
-            self.reset();
+            self.resetInternal();
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -449,7 +430,7 @@ classdef DensityPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function plot(self,varargin)
+        function make(self,varargin)
             %
             %   Generate a plot from the selected columns of the object's dataFrame.
             %
@@ -460,7 +441,7 @@ classdef DensityPlot < BasePlot
             %       If the property is a struct(), then its value must be given as a cell array,
             %       with consecutive elements representing the struct's property-name,property-value pairs.
             %       Note that all of these property-value pairs can be also directly set directly via the 
-            %       object's attributes, before calling the plot() method.
+            %       object's attributes, before calling the make() method.
             %
             %   Returns
             %   -------
@@ -471,9 +452,9 @@ classdef DensityPlot < BasePlot
             %   Example
             %   -------
             %
-            %       plot("xcolumns",[8])
-            %       plot("xcolumns",7:10)
-            %       plot( "gcf_kws", {"enabled",true,"color","none"} )
+            %       make("xcolumns",[8])
+            %       make("xcolumns",7:10)
+            %       make( "gcf_kws", {"enabled",true,"color","none"} )
             %
             %
 
@@ -487,272 +468,393 @@ classdef DensityPlot < BasePlot
             %%%% set what to plot
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if self.isHistogram && self.histogram_kws.enabled
-                fname = "histogram_kws";
-                key = "edgecolor"; val = "none"; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
+            if self.type.isHistogram % && self.histogram.enabled
+                fname = "histogram";
+                key = "edgeColor"; val = "none"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
             end
 
-            if self.isHistogram2 && self.histogram2_kws.enabled
-                fname = "histogram2_kws";
-                key = "edgecolor"; val = "none"; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
-                key = "facecolor"; val = "flat"; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
-                key = "displaystyle"; val = "bar3"; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
+            if self.type.isHistfit % && self.histogram.enabled
+                fname = "histfit";
+                key = "dist"; val = "Normal"; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
+                key = "nbins"; val = []; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
             end
 
-            if self.isContourf && self.contourf_kws.enabled
-                fname = "contourf_kws";
+            if self.type.isHistogram2 % && self.histogram2.enabled
+                fname = "histogram2";
+                key = "displayStyle"; val = "bar3"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                key = "edgeColor"; val = "none"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                if self.colormap.enabled
+                    key = "faceColor"; val = "flat"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                else
+                    key = "faceColor"; val = "auto"; self.(fname).kws.(key) = val;
+                end
             end
 
-            if self.isContour3 && self.contour3_kws.enabled
-                fname = "contour3_kws";
-            end
-            if self.isContour && self.contour_kws.enabled
-                fname = "contour_kws";
+            if self.type.isContour || self.type.isContourf || self.type.isContour3
+                fname = self.type.name;
+                if self.type.isContour3
+                    self.(self.type.name).levels = 50;
+                    key = "color"; val = []; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                else
+                    self.(self.type.name).levels = 8;
+                    if self.type.isContourf
+                        key = "color"; val = "none"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                        if ~self.colormap.enabled && self.contourf.enabled
+                            self.colormap.values = flipud(gray);
+                        end
+                    else
+                        key = "color"; val = []; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                    end
+                end
+                key = "gridSize"; val = self.gridSizeDefault; if isempty(self.(key)); self.(key) = val; end
+                key = "noiseLevel"; val = self.noiseLevelDefault; if isempty(self.(key)); self.(key) = val; end
+                key = "lineStyle"; val = "-"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                key = "lineWidth"; val = 0.5; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                key = "showText"; val = "off"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                key = "labelSpacing"; val = 144; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            % generate figure and axes if needed
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% generate figure and axes if needed
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if self.gcf_kws.enabled
-                gcf_kws_cell = convertStruct2Cell(self.gcf_kws,{"enabled","singleOptions"});
-                if isfield(self.gcf_kws,"singleOptions"); gcf_kws_cell = { gcf_kws_cell{:} , self.gcf_kws.singleOptions{:} }; end
-                self.currentFig.gcf = figure( gcf_kws_cell{:} );
+            if self.figure.enabled
+                figure_kws_cell = convertStruct2Cell(self.figure.kws,{"enabled","singleOptions"});
+                %if isfield(self.figure.kws,"singleOptions"); figure_kws_cell = { figure_kws_cell{:} , self.figure.kws.singleOptions{:} }; end
+                self.currentFig.figure = figure( figure_kws_cell{:} );
             else
                 set(0, "CurrentFigure", gcf);
-                self.currentFig.gcf = gcf;
+                self.currentFig.figure = gcf;
                 hold on;
             end
 
-            % check rows presence
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% check rows presence
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if getVecLen(self.rows)
-                rowindex = self.rows;
+                self.rowsindex = self.rows;
             else
-                rowindex = 1:1:length(self.dfref{:,1});
+                self.rowsindex = 1:1:length(self.dfref{:,1});
             end
 
-            % check columns presence
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% check columns presence
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if getVecLen(self.xcolumns)
-                [xcolnames, xcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.xcolumns);
+                [self.xcolnames, self.xcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.xcolumns);
             else
-                xcolindex = [];
-                xcolnames = "Count";
-                xdata = rowindex;
+                self.self.xcolindex = [];
+                self.xcolnames = "Count";
+                xdata = self.rowsindex;
             end
-            xcolindexlen = length(xcolindex);
+            xcolindexlen = length(self.xcolindex);
             maxLenColumns = xcolindexlen;
             if xcolindexlen==1
-                xdata = self.dfref{rowindex,xcolindex};
+                xdata = self.dfref{self.rowsindex,self.xcolindex};
             end
 
-            if self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
-                [ycolnames, ycolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ycolumns);
-                ycolindexlen = length(ycolindex);
+            if self.type.isHistogram2 || self.type.isContourf || self.type.isContour3 || self.type.isContour
+                [self.ycolnames, self.ycolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ycolumns);
+                ycolindexlen = length(self.ycolindex);
                 maxLenColumns = max(maxLenColumns,ycolindexlen);
-                if ycolindexlen~=maxLenColumns && ycolindexlen>1; error("length of ycolumns must be either 1 or equal to the maximum of the lengths of xcolumns."); end
+                if ycolindexlen~=maxLenColumns && ycolindexlen>1
+                    error("length of ycolumns must be either 1 or equal to the maximum of the lengths of xcolumns.");
+                end
                 if ycolindexlen==1
-                    ydata = self.dfref{rowindex,ycolindex};
+                    ydata = self.dfref{self.rowsindex,self.ycolindex};
                 end
             end
 
-            if xcolindexlen~=maxLenColumns && xcolindexlen>1; error("length of xcolumns must be either 1 or equal to the maximum of the lengths of ycolumns."); end
-
-            %%%%%%%%%%%%%%%%%%%%%%%
-            % get keyword arguments
-            %%%%%%%%%%%%%%%%%%%%%%%
-
-            if self.isHistogram
-                histogram_kws_cell = convertStruct2Cell(self.histogram_kws,{"enabled","singleOptions"});
-            end
-            if self.isHistogram2
-                histogram2_kws_cell = convertStruct2Cell(self.histogram2_kws,{"enabled","singleOptions"});
-            end
-            if self.isContourf
-                contourf_kws_cell = convertStruct2Cell(self.contourf_kws,{"enabled","levels","singleOptions"});
-            end
-            if self.isContour3
-                contour3_kws_cell = convertStruct2Cell(self.contour3_kws,{"enabled","levels","singleOptions"});
-            end
-            if self.isContour
-                contour_kws_cell = convertStruct2Cell(self.contour_kws,{"enabled","levels","singleOptions"});
-            end
-            if self.isHistfit
-                histfit_kws_cell = convertStruct2Cell(self.histfit_kws,{"enabled","singleOptions"});
+            if xcolindexlen~=maxLenColumns && xcolindexlen>1
+                error("length of xcolumns must be either 1 or equal to the maximum of the lengths of ycolumns.");
             end
 
-            %%%%%%%%%%%%%%%
-            % add line plot
-            %%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% get keyword arguments
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            box on; grid on;
+            if self.type.isHistogram && isfield(self.histogram,"kws")
+                histogram_kws_cell = convertStruct2Cell(self.histogram.kws,{"enabled","singleOptions"});
+            else
+                histogram_kws_cell = {};
+            end
+            if self.type.isHistogram2 && isfield(self.histogram2,"kws")
+                histogram2_kws_cell = convertStruct2Cell(self.histogram2.kws,{"enabled","singleOptions"});
+            else
+                histogram2_kws_cell = {};
+            end
+            if self.type.isHistfit && isfield(self.histfit,"kws")
+                histfit_kws_cell = convertStruct2Cell(self.histfit.kws,{"enabled","singleOptions"});
+            else
+                histfit_kws_cell = {};
+            end
+            if (self.type.isContour3 || self.type.isContourf || self.type.isContour) && isfield(self.(self.type.name),"kws")
+                kws_cell.(self.type.name) = convertStruct2Cell(self.(self.type.name).kws,{"enabled","levels","singleOptions"});
+            else
+                kws_cell.(self.type.name) = {};
+            end
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% add plots
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            %box on; grid on;
 
             lglabels = [];
 
-            if (self.isContourf && self.contourf_kws.enabled) || (self.isContour3 && self.contour3_kws.enabled) || (self.isContour && self.contour_kws.enabled)
-                key = "gridSize"; val = self.gridSizeDefault; if isfield(self.(fname),key) && isempty(self.(fname).(key)); self.(fname).(key) = val; end
-                [bandwidth,density,crdx,crdy] = kde2d([xdata(:),ydata(:)],self.gridSize);
+            if (xcolindexlen==1 && ycolindexlen==1) ...
+            && ((self.type.isContourf && self.contourf.enabled) ...
+            ||  (self.type.isContour3 && self.contour3.enabled) ...
+            ||  (self.type.isContour && self.contour.enabled) )
+                self.currentFig.kde2d = struct();
+                [ self.currentFig.kde2d.bandwidth ...
+                , self.currentFig.kde2d.density ...
+                , self.currentFig.kde2d.crdx ...
+                , self.currentFig.kde2d.crdy ...
+                ] = kde2d([xdata(:),ydata(:)],self.gridSize);
+                self.currentFig.kde2d.density(self.currentFig.kde2d.density<self.noiseLevel) = NaN;
             end
 
-            if (self.isHistogram && self.histogram_kws.enabled) ...
-            || (self.isHistogram2 && self.histogram2_kws.enabled) ...
-            || (self.isHistfit && self.histfit_kws.enabled) ...
-            || (self.isContourf && self.contourf_kws.enabled) ...
-            || (self.isContour3 && self.contour3_kws.enabled) ...
-            || (self.isContour && self.contour_kws.enabled)
+            if (self.type.isHistogram && self.histogram.enabled) ...
+            || (self.type.isHistogram2 && self.histogram2.enabled) ...
+            || (self.type.isHistfit && self.histfit.enabled) ...
+            || (self.type.isContourf && self.contourf.enabled) ...
+            || (self.type.isContour3 && self.contour3.enabled) ...
+            || (self.type.isContour && self.contour.enabled)
 
-                for i = 1:maxLenColumns
+                isMultiColorContourPlot = false;
+                if ~self.colormap.enabled && (self.type.isContour || self.type.isContourf || self.type.isContour3)
+                    if getVecLen(self.(self.type.name).kws.color)
+                            if all(size(self.(self.type.name).kws.color)==[maxLenColumns,3])
+                                isMultiColorContourPlot = true;
+                                contourMultiColorList = self.(self.type.name).kws.color;
+                            elseif ~( all(size(self.(self.type.name).kws.color)==[1,3]) || self.type.isContourf )
+                                error   ( "The value specified for the '" + self.type.name + ".kws.color' property of the plot object must be either " ...
+                                        + "an RGB triplet vector of size [1,3], or a matrix of size [" + string(maxLenColumns) + ",3] for the " ...
+                                        + "current set of variables that are selected to plot. It can also be an empty object, in which case, " ...
+                                        + "the colors of the objects in the plot will be chosen automatically." ...
+                                        );
+                            end
+                    else
+                        contourMultiColorList = lines(maxLenColumns);
+                        isMultiColorContourPlot = true;
+                    end
+                end
+
+                counter.histfit = 0;
+                counter.histogram = 0;
+                counter.histogram2 = 0;
+                counter.contour3 = 0;
+                counter.contourf = 0;
+                counter.contour = 0;
+
+                for icol = 1:maxLenColumns
+
+                    if isMultiColorContourPlot % true only for contour plots
+                        self.(self.type.name).kws.color = contourMultiColorList(icol,:);
+                        if isfield(self.(self.type.name),"kws")
+                            kws_cell.(self.type.name) = convertStruct2Cell(self.(self.type.name).kws,{"enabled","levels","singleOptions"});
+                        end
+                    end
 
                     kde2dComputationNeeded = false;
                     if xcolindexlen>1
-                        xdata = self.dfref{rowindex,xcolindex(i)};
-                        if self.isContourf && self.contourf_kws.enabled; kde2dComputationNeeded = true; end
-                        if self.isContour3 && self.contour3_kws.enabled; kde2dComputationNeeded = true; end
-                        if self.isContour && self.contour_kws.enabled; kde2dComputationNeeded = true; end
+                        xdata = self.dfref{self.rowsindex,self.xcolindex(icol)};
+                        if self.type.isContourf && self.contourf.enabled; kde2dComputationNeeded = true; end
+                        if self.type.isContour3 && self.contour3.enabled; kde2dComputationNeeded = true; end
+                        if self.type.isContour && self.contour.enabled; kde2dComputationNeeded = true; end
                     end
-                    if (self.isHistogram2 && self.histogram2_kws.enabled) ...
-                    || (self.isContourf && self.contourf_kws.enabled) ...
-                    || (self.isContour3 && self.contour3_kws.enabled) ...
-                    || (self.isContour && self.contour_kws.enabled)
+                    if (self.type.isHistogram2 && self.histogram2.enabled) ...
+                    || (self.type.isContourf && self.contourf.enabled) ...
+                    || (self.type.isContour3 && self.contour3.enabled) ...
+                    || (self.type.isContour && self.contour.enabled)
                         if ycolindexlen>1
-                            ydata = self.dfref{rowindex,ycolindex(i)};
-                            if self.isContourf && self.contourf_kws.enabled; kde2dComputationNeeded = true; end
-                            if self.isContour3 && self.contour3_kws.enabled; kde2dComputationNeeded = true; end
-                            if self.isContour && self.contour_kws.enabled; kde2dComputationNeeded = true; end
+                            ydata = self.dfref{self.rowsindex,self.ycolindex(icol)};
+                            if self.type.isContourf && self.contourf.enabled; kde2dComputationNeeded = true; end
+                            if self.type.isContour3 && self.contour3.enabled; kde2dComputationNeeded = true; end
+                            if self.type.isContour && self.contour.enabled; kde2dComputationNeeded = true; end
                         end
                     end
                     if kde2dComputationNeeded
-                        [bandwidth,density,crdx,crdy] = kde2d([xdata(:),ydata(:)],self.gridSize);
+                        [ self.currentFig.kde2d.bandwidth ...
+                        , self.currentFig.kde2d.density ...
+                        , self.currentFig.kde2d.crdx ...
+                        , self.currentFig.kde2d.crdy ...
+                        ] = kde2d( [xdata(:),ydata(:)], self.gridSize );
+                        self.currentFig.kde2d.density(self.currentFig.kde2d.density<self.noiseLevel) = NaN;
                     end
 
-                    if self.legend_kws.enabled
-                        if (self.isHistogram2 && self.histogram2_kws.enabled) ...
-                        ||  (self.isContourf && self.contourf_kws.enabled) ...
-                        ||  (self.isContour3 && self.contour3_kws.enabled) ...
-                        ||  (self.isContour && self.contour_kws.enabled)
+                    if self.legend.enabled
+                        if (self.type.isHistogram2 && self.histogram2.enabled) ...
+                        ||  (self.type.isContourf && self.contourf.enabled) ...
+                        ||  (self.type.isContour3 && self.contour3.enabled) ...
+                        ||  (self.type.isContour && self.contour.enabled)
                             if xcolindexlen<2 && ycolindexlen>=1
-                                lglabels = [ lglabels , ycolnames(i) ];
+                                lglabels = [ lglabels , self.ycolnames(icol) ];
                             elseif xcolindexlen>1 && ycolindexlen<2
-                                lglabels = [ lglabels , xcolnames(i) ];
+                                lglabels = [ lglabels , self.xcolnames(icol) ];
                             else
-                                lglabels = [ lglabels , xcolnames(i)+"-"+ycolnames(i) ];
+                                lglabels = [ lglabels , self.xcolnames(icol)+"-"+self.ycolnames(icol) ];
                             end
                         else
-                            lglabels = [ lglabels , xcolnames(i) ];
+                            lglabels = [ lglabels , self.xcolnames(icol) ];
                         end
                     end
 
                     % add plot
 
-                    if self.isHistogram && self.histogram_kws.enabled
-                        self.currentFig.histogram = histogram   ( xdata ...
-                                                                , histogram_kws_cell{:} ...
-                                                                );
+                    if self.type.isHistogram && self.histogram.enabled
+
+                        counter.histogram = counter.histogram + 1;
+
+                        self.currentFig.histogram{counter.histogram} = histogram( xdata ...
+                                                                                , histogram_kws_cell{:} ...
+                                                                                );
                         hold on;
-                    elseif self.isHistogram2 && self.histogram2_kws.enabled
-                        self.currentFig.histogram2 = histogram2 ( xdata ...
-                                                                , ydata ...
-                                                                , histogram2_kws_cell{:} ...
-                                                                );
+
+                    elseif self.type.isHistogram2 && self.histogram2.enabled
+
+                        counter.histogram2 = counter.histogram2 + 1;
+
+                        self.currentFig.histogram2{counter.histogram2} = histogram2 ( xdata ...
+                                                                                    , ydata ...
+                                                                                    , histogram2_kws_cell{:} ...
+                                                                                    );
                         hold on;
-                    elseif self.isContourf && self.contourf_kws.enabled
-                        self.currentFig.contourf = struct();
-                        self.currentFig.contourf.matrix = [];
-                        self.currentFig.contourf.object = [];
-                        [ self.currentFig.contourf.matrix ...
-                        , self.currentFig.contourf.object ] = contourf  ( crdx ...
-                                                                        , crdy ...
-                                                                        , density ...
-                                                                        , self.contourf_kws.levels ...
-                                                                        , contourf_kws_cell{:} ...
-                                                                        );
+
+                    elseif self.type.isContourf && self.contourf.enabled
+
+                        counter.contourf = counter.contourf + 1;
+
+                        self.currentFig.contourf{counter.contourf} = struct();
+                        self.currentFig.contourf{counter.contourf}.matrix = [];
+                        self.currentFig.contourf{counter.contourf}.object = [];
+                        [ self.currentFig.contourf{counter.contourf}.matrix ...
+                        , self.currentFig.contourf{counter.contourf}.object ] = contourf( self.currentFig.kde2d.crdx ...
+                                                                                        , self.currentFig.kde2d.crdy ...
+                                                                                        , self.currentFig.kde2d.density ...
+                                                                                        , self.contourf.levels ...
+                                                                                        , kws_cell.(self.type.name){:} ...
+                                                                                        );
                         hold on;
-                    elseif self.isContour3 && self.contour3_kws.enabled
-                        self.currentFig.contour3 = struct();
-                        self.currentFig.contour3.matrix = [];
-                        self.currentFig.contour3.object = [];
-                        [ self.currentFig.contour3.matrix ...
-                        , self.currentFig.contour3.object ] = contour3  ( crdx ...
-                                                                        , crdy ...
-                                                                        , density ...
-                                                                        , self.contour3_kws.levels ...
-                                                                        , contour3_kws_cell{:} ...
-                                                                        );
+
+                    elseif self.type.isContour3 && self.contour3.enabled
+
+                        counter.contour3 = counter.contour3 + 1;
+
+                        self.currentFig.contour3{counter.contour3} = struct();
+                        self.currentFig.contour3{counter.contour3}.matrix = [];
+                        self.currentFig.contour3{counter.contour3}.object = [];
+                        [ self.currentFig.contour3{counter.contour3}.matrix ...
+                        , self.currentFig.contour3{counter.contour3}.object ] = contour3( self.currentFig.kde2d.crdx ...
+                                                                                        , self.currentFig.kde2d.crdy ...
+                                                                                        , self.currentFig.kde2d.density ...
+                                                                                        , self.contour3.levels ...
+                                                                                        , kws_cell.(self.type.name){:} ...
+                                                                                        );
                         hold on;
-                    elseif self.isContour && self.contour_kws.enabled
-                        self.currentFig.contour = struct();
-                        self.currentFig.contour.matrix = [];
-                        self.currentFig.contour.object = [];
-                        [ self.currentFig.contour.matrix ...
-                        , self.currentFig.contour.object ] = contour( crdx ...
-                                                                    , crdy ...
-                                                                    , density ...
-                                                                    , self.contour_kws.levels ...
-                                                                    , contour_kws_cell{:} ...
-                                                                    );
+
+                    elseif self.type.isContour && self.contour.enabled
+
+                        counter.contour = counter.contour + 1;
+
+                        self.currentFig.contour{counter.contour} = struct();
+                        self.currentFig.contour{counter.contour}.matrix = [];
+                        self.currentFig.contour{counter.contour}.object = [];
+                        [ self.currentFig.contour{counter.contour}.matrix ...
+                        , self.currentFig.contour{counter.contour}.object ] = contour   ( self.currentFig.kde2d.crdx ...
+                                                                                        , self.currentFig.kde2d.crdy ...
+                                                                                        , self.currentFig.kde2d.density ...
+                                                                                        , self.contour.levels ...
+                                                                                        , kws_cell.(self.type.name){:} ...
+                                                                                        );
                         hold on;
-                    elseif self.isHistfit && self.histfit_kws.enabled
-                        self.currentFig.histogram = histfit ( xdata ...
-                                                            , histfit_kws_cell{:} ...
-                                                            );
+
+                    elseif self.type.isHistfit && self.histfit.enabled
+
+                        counter.histfit = counter.histfit + 1;
+
+                        self.currentFig.histfit{counter.histfit} = histfit  ( xdata ...
+                                                                            , self.histfit.nbins ...
+                                                                            , self.histfit.dist ...
+                                                                            , histfit_kws_cell{:} ...
+                                                                            );
+                        self.currentFig.histfit{counter.histfit}(1).EdgeAlpha = 0; % make histogram lines invisible
+                        self.currentFig.histfit{counter.histfit}(1).FaceAlpha = 0.6; % make histogram face transparent 60%
+                        self.currentFig.histfit{counter.histfit}(2).Color = "black"; % make the fitted line's color black
                         hold on;
                     end
 
                 end % loop plot
 
-                self.currentFig.gca = gca;
-
             end
 
-            if self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
-                if ~getVecLen(self.colormap)
-                    if self.isContour3 || self.isContour
-                        self.colormap = "parula";
+            %box on; grid on;
+
+            self.currentFig.axes = gca;
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% add colormap
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            if self.type.isHistogram2 || self.type.isContourf || self.type.isContour3 || self.type.isContour
+                if self.colormap.enabled && ~getVecLen(self.colormap.values)
+                    if self.type.isContour3 || self.type.isContour
+                        self.colormap.values = "parula";
                     else
-                        self.colormap = flipud(cold());
+                        self.colormap.values = "parula"; % flipud(cold());
                     end
                 end
-                colormap(self.currentFig.gca,self.colormap);
+                colormap(self.currentFig.axes,self.colormap.values);
             end
 
-            % add axis labels
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% add axes labels
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if xcolindexlen>1
                 self.currentFig.xlabel = xlabel("Variable Values", "Interpreter", "none");
             else
-                self.currentFig.xlabel = xlabel(xcolnames(1), "Interpreter", "none");
+                self.currentFig.xlabel = xlabel(self.xcolnames(1), "Interpreter", "none");
             end
 
-            if self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour
+            if self.type.isHistogram2 || self.type.isContourf || self.type.isContour3 || self.type.isContour
                 if ycolindexlen>1
                     self.currentFig.ylabel = ylabel("Variable Values", "Interpreter", "none");
                 else
-                    self.currentFig.ylabel = ylabel(ycolnames(1), "Interpreter", "none");
+                    self.currentFig.ylabel = ylabel(self.ycolnames(1), "Interpreter", "none");
                 end
                 self.currentFig.zlabel = zlabel("Density of Points", "Interpreter", "none");
             else
                 self.currentFig.ylabel = ylabel("Density of Points", "Interpreter", "none");
             end
 
-            % add line colorbar
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% add colorbar
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            colorbarEnabled = (self.isHistogram2 || self.isContourf || self.isContour3 || self.isContour) && self.colorbar_kws.enabled;
+            colorbarEnabled = (self.type.isHistogram2 || self.type.isContourf || self.type.isContour3 || self.type.isContour) ...
+                            && self.colorbar.enabled && self.colormap.enabled;
             if colorbarEnabled
-                if isempty(self.colorbar_kws.fontsize) || ~isa(self.colorbar_kws.fontsize,"numeric")
-                    self.colorbar_kws.fontsize = self.currentFig.ylabel.FontSize;
+                if isempty(self.colorbar.kws.fontSize) || ~isa(self.colorbar.kws.fontSize,"numeric")
+                    self.colorbar.kws.fontSize = self.currentFig.ylabel.FontSize;
                 end
-                colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","singleOptions"});
+                colorbar_kws_cell = convertStruct2Cell(self.colorbar.kws,{"enabled","singleOptions"});
                 self.currentFig.colorbar = colorbar(colorbar_kws_cell{:});
-                ylabel(self.currentFig.colorbar,"Density of Points","fontsize",self.colorbar_kws.fontsize, "Interpreter", "none");
+                ylabel(self.currentFig.colorbar,"Density of Points","fontsize",self.colorbar.kws.fontSize, "Interpreter", "none");
             else
                 colorbar('off');
                 self.currentFig.colorbar = [];
             end
 
-            self.doBasePlotStuff(self.legend_kws.enabled,lglabels);
+            if self.legend.enabled && (~isfield(self.legend,"labels") || isempty(self.legend.labels)); self.legend.labels = lglabels; end
+            self.doBasePlotStuff();
 
             hold off;
 

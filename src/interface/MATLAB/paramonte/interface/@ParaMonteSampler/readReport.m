@@ -66,11 +66,6 @@
 %           If this input argument is not provided by the user, the
 %           value of the object's `spec` attribute `outputFileName`
 %           will be used instead.
-%           ======================================================
-%           WARNING: At least one of the two mentioned routes must
-%           provide the path to the report file. Otherwise,
-%           this method will break by calling sys.exit().
-%           ======================================================
 %
 %           Example usage:
 %
@@ -146,7 +141,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function [varargout] = readReport(self,varargin)
+function reportList = readReport(self, file)
 
     if isempty(self.objectName); self.objectName = inputname(1); end
     callerName = string(mfilename());
@@ -157,31 +152,35 @@ function [varargout] = readReport(self,varargin)
 
     % read the report file
 
-    file = [];
-    if nargin>1; file = convertStringsToChars(varargin{1}); end
-    if nargin>2
-        self.Err.msg    = callerName + " takes only one input argument (file). Correct usage:" + newline + newline ...
-                        + "    " + callerName + "(file)" + newline + newline ...
-                        + "where ""file"" is the name of the file to be read.";
-        self.Err.abort();
+    if nargin<2
+        file = [];
+    else
+        if ischar(file) || isstring(file)
+            file = convertStringsToChars(file);
+        else
+            self.Err.msg    = callerName + " takes only one input string or char argument (`file`). Correct usage:" + newline + newline ...
+                            + "    " + callerName + "(file)" + newline + newline ...
+                            + "where `file` is the path, name, or prefix of the file to be read.";
+            self.Err.abort();
+        end
     end
 
-    filePathList = self.getFilePathList(file,outputType);
+    [filePathList, iswebfile] = self.getFilePathList(file,outputType);
     filePathListLen = length(filePathList);
 
-    reportList = cell(filePathListLen,1);
+    reportListLocal = cell(filePathListLen,1);
     for ifile = filePathListLen:-1:1
-        if ~self.mpiEnabled
+        if self.reportEnabled
             self.Err.msg = "processing file: " + filePathList(ifile);
             self.Err.marginTop = 1;
             self.Err.marginBot = 0;
             self.Err.note();
         end
-        reportList{ifile} = ReportFileContents  ( filePathList(ifile) ...
-                                                , self.methodName ...
-                                                , self.mpiEnabled ...
-                                                , self.Err ...
-                                                );
+        reportListLocal{ifile} = ReportFileContents ( filePathList(ifile) ...
+                                                    , self.methodName ...
+                                                    , self.reportEnabled ...
+                                                    , self.Err ...
+                                                    );
     end
 
     % output the reportList
@@ -189,11 +188,11 @@ function [varargout] = readReport(self,varargin)
     if nargout==0
         outputListFullName = self.objectName + "." + outputName;
         prop=outputName; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-        self.(outputName) = reportList;
+        self.(outputName) = reportListLocal;
         self.Err.msg    = "The processed " + fileType + " files are now stored in the newly-created component """ + outputListFullName + """ of the " + self.methodName + " object as a cell array. " ...
                         + "For example, to access the contents of the first (or the only) " + fileType + " file, try:";
     elseif nargout==1
-        varargout{1} = reportList;
+        reportList = reportListLocal;
         outputListFullName = "OUTPUT_CELL_ARRAY";
     else
         self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file)" ...
@@ -203,7 +202,7 @@ function [varargout] = readReport(self,varargin)
         self.Err.abort();
     end
 
-    if ~self.mpiEnabled
+    if self.reportEnabled
         self.Err.marginTop = 1;
         self.Err.marginBot = 1;
         self.Err.msg    = self.Err.msg ...
@@ -224,6 +223,12 @@ function [varargout] = readReport(self,varargin)
                         + "For more information and examples on the usage, visit:" + newline + newline ...
                         + "    " + href(self.website.home.url);
         self.Err.note();
+    end
+
+    if iswebfile
+        self.delFile( filePathList(1) ... file path
+                    , "the temporarily-downloaded " + fileType + " file" ... desc
+                    );
     end
 
 end

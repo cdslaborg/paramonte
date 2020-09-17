@@ -9,30 +9,30 @@
 %%%%
 %%%%   This file is part of the ParaMonte library.
 %%%%
-%%%%   Permission is hereby granted, free of charge, to any person obtaining a 
-%%%%   copy of this software and associated documentation files (the "Software"), 
-%%%%   to deal in the Software without restriction, including without limitation 
-%%%%   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-%%%%   and/or sell copies of the Software, and to permit persons to whom the 
+%%%%   Permission is hereby granted, free of charge, to any person obtaining a
+%%%%   copy of this software and associated documentation files (the "Software"),
+%%%%   to deal in the Software without restriction, including without limitation
+%%%%   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+%%%%   and/or sell copies of the Software, and to permit persons to whom the
 %%%%   Software is furnished to do so, subject to the following conditions:
 %%%%
-%%%%   The above copyright notice and this permission notice shall be 
+%%%%   The above copyright notice and this permission notice shall be
 %%%%   included in all copies or substantial portions of the Software.
 %%%%
-%%%%   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-%%%%   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-%%%%   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-%%%%   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-%%%%   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-%%%%   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+%%%%   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+%%%%   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+%%%%   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+%%%%   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+%%%%   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+%%%%   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 %%%%   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %%%%
 %%%%   ACKNOWLEDGMENT
 %%%%
 %%%%   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-%%%%   As per the ParaMonte library license agreement terms, if you use any parts of 
-%%%%   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-%%%%   work (education/research/industry/development/...) by citing the ParaMonte 
+%%%%   As per the ParaMonte library license agreement terms, if you use any parts of
+%%%%   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+%%%%   work (education/research/industry/development/...) by citing the ParaMonte
 %%%%   library as described on this page:
 %%%%
 %%%%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -40,129 +40,159 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   HeatmapPlot(dataFrame)
+%   HeatmapPlot(plotType, dataFrame, resetExternal)
 %
 %   This is the HeatmapPlot class for generating instances of
 %   heatmap plots, built upon MATLAB's builtin function `heatmap()`.
 %
-%   NOTE: This is a low-level ParaMonte class and is not meant
-%   NOTE: to be directly instantiated by the user.
+%       NOTE
 %
-%   Parameters
-%   ----------
+%           This is a low-level ParaMonte class and is not meant
+%           to be directly instantiated by the user.
 %
-%       dataFrame
+%       Parameters
+%       ----------
 %
-%           a MATLAB data Table from which the selected data will be plotted.
-%           This is a low-level internal argument and is not meant
-%           to be accessed or be provided by the user.
+%           dataFrame
 %
-%   Attributes
-%   ----------
+%               A MATLAB data Table from which the selected data will be plotted.
+%               This is a low-level internal argument and is not meant
+%               to be accessed or be provided by the user.
 %
-%       ycolumns
+%       Attributes
+%       ----------
 %
-%           optional property that determines the columns of dataFrame to serve as
-%           the y-values. It can have multiple forms:
+%           xcolumns
 %
-%               1.  a numeric or cell array of column indices in the input dataFrame.
-%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%               3.  a cell array of a mix of the above two.
-%               4.  a numeric range.
+%               Optional property that determines the columns of dataFrame to serve as
+%               the x-values. It can have multiple forms:
 %
-%           Example usage:
+%                   1.  a numeric or cell array of column indices in the input dataFrame.
+%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%                   3.  a cell array of a mix of the above two.
+%                   4.  a numeric range.
 %
-%               1.  ycolumns = [7,8,9]
-%               2.  ycolumns = ["SampleLogFunc","SampleVariable1"]
-%               3.  ycolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%               4.  ycolumns = 7:9      # every column in the data frame starting from column #7
-%               5.  ycolumns = 7:2:20   # every other column in the data frame starting from column #7
+%               Example usage:
 %
-%           WARNING: In all cases, ycolumns must have a length that is either 0, or 1, or equal
-%           WARNING: to the length of xcolumns. If the length is 1, then ycolumns will be
-%           WARNING: plotted against data corresponding to each element of ycolumns.
-%           WARNING: If it is an empty object having length 0, then the default value will be used.
+%                   1.  xcolumns = [7,8,9]
+%                   2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
+%                   3.  xcolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%                   4.  xcolumns = 7:9      # every column in the data frame starting from column #7
+%                   5.  xcolumns = 7:2:20   # every other column in the data frame starting from column #7
 %
-%           The default value is the names of all columns of the input dataFrame.
+%               WARNING 
 %
-%       colormap
+%                   In all cases, xcolumns must have a length that is either 0, or 1, or equal
+%                   to the length of xcolumns. If the length is 1, then xcolumns will be
+%                   plotted against data corresponding to each element of xcolumns.
+%                   If it is an empty object having length 0, then the default value will be used.
 %
-%           A MATLAB struct() property with two components:
+%               The default value is the names of all columns of the input dataFrame.
 %
-%               1. enabled: logical value. If `true`, the colormap will be applied to the plot
-%               1. values: a string or any other value that the colormap function of MATLAB accepts as input.
+%           ycolumns
 %
-%           Example usage:
+%               Optional property that determines the columns of dataFrame to serve as
+%               the y-values. It can have multiple forms:
 %
-%               1.  colormap = "autumn"
-%               1.  colormap = "winter"
+%                   1.  a numeric or cell array of column indices in the input dataFrame.
+%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%                   3.  a cell array of a mix of the above two.
+%                   4.  a numeric range.
 %
-%           If colormap is not provided or is empty, the default will be "autumn".
+%               Example usage:
 %
-%       colorbar_kws
+%                   1.  ycolumns = [7,8,9]
+%                   2.  ycolumns = ["SampleLogFunc","SampleVariable1"]
+%                   3.  ycolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%                   4.  ycolumns = 7:9      # every column in the data frame starting from column #7
+%                   5.  ycolumns = 7:2:20   # every other column in the data frame starting from column #7
 %
-%           A MATLAB struct() whose components' values are passed to MATLAB's colorbar function.
-%           If your desired attribute is missing from the fieldnames of colorbar_kws, simply add
-%           a new field named as the attribute and assign the desired value to it.
+%               WARNING 
 %
-%           Example usage:
+%                   In all cases, ycolumns must have a length that is either 0, or 1, or equal
+%                   to the length of xcolumns. If the length is 1, then ycolumns will be
+%                   plotted against data corresponding to each element of ycolumns.
+%                   If it is an empty object having length 0, then the default value will be used.
 %
-%               colorbar_kws.enabled = true % add colorbar
-%               colorbar_kws.location = "west"
+%               The default value is the names of all columns of the input dataFrame.
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to colorbar_kws.
+%           colormap
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, colorbar_kws.color and colorbar_kws.Color are the same,
-%           WARNING: and only one of the two will be processed.
+%               A MATLAB struct() property with two components:
 %
-%       heatmap_kws
+%                   1. enabled: logical value. If `true`, the colormap will be applied to the plot
+%                   1. values: a string or any other value that the colormap function of MATLAB accepts as input.
 %
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `heatmap()` function of MATLAB.
+%               Example usage:
 %
-%           Example usage:
+%                   1.  colormap.values = "autumn"
+%                   1.  colormap.values = "winter"
 %
-%               heatmap_kws.enabled = true; % add heatmap()
-%               heatmap_kws.ColorLimits = [-1 1];
+%               If colormap is not provided or is empty, the default will be "autumn".
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to heatmap_kws.
+%           colorbar.kws
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: heatmap_kws.colorLimits and heatmap_kws.ColorLimits are the same,
-%           WARNING: and only one of the two will be processed.
+%               A MATLAB struct() whose components' values are passed to MATLAB's colorbar function.
+%               If your desired attribute is missing from the fieldnames of colorbar.kws, simply add
+%               a new field named as the attribute and assign the desired value to it.
 %
-%       title
+%               Example usage:
 %
-%           A string that is passed to the title() function of MATLAB to add title to the plot.
-%           If the property is empty, not title will be added.
+%                   colorbar.enabled = true % add colorbar
+%                   colorbar.kws.location = "west"
 %
-%       precision
+%               If a desired property is missing among the struct fields, simply add the field
+%               and its value to colorbar.kws.
 %
-%           A numeric scalar value, representing the number of digits after the decimal point 
-%           for the values that appear in each cell of the heatmap.
-%           The default value is not set to anything.
+%               WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               WARNING: therefore make sure you do not add the keyword as multiple different fields.
+%               WARNING: For example, colorbar.kws.color and colorbar.kws.Color are the same,
+%               WARNING: and only one of the two will be processed.
 %
-%   Superclass Attributes
-%   ----------------------
+%           heatmap_kws
 %
-%       See the documentation for the BasePlot class
+%               A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
+%               are directly passed to the `heatmap()` function of MATLAB.
 %
-%   Returns
-%   -------
+%               Example usage:
 %
-%       An object of HeatmapPlot class
+%                   heatmap.enabled = true; % add heatmap()
+%                   heatmap.ColorLimits = [-1 1];
+%
+%               If a desired property is missing among the struct fields, simply add the field
+%               and its value to heatmap.kws.
+%
+%               WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               WARNING: therefore make sure you do not add the keyword as multiple different fields.
+%               WARNING: heatmap.ColorLimits and heatmap.ColorLimits are the same,
+%               WARNING: and only one of the two will be processed.
+%
+%           title
+%
+%               A string that is passed to the title() function of MATLAB to add title to the plot.
+%               If the property is empty, not title will be added.
+%
+%           precision
+%
+%               A numeric scalar value, representing the number of digits after the decimal point
+%               for the values that appear in each cell of the heatmap.
+%               The default value is not set to anything.
+%
+%       Superclass Attributes
+%       ---------------------
+%
+%           See the documentation for the BasePlot class
+%
+%       Returns
+%       -------
+%
+%           An object of HeatmapPlot class
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 classdef HeatmapPlot < BasePlot
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties (Access = public)
         title
@@ -170,73 +200,82 @@ classdef HeatmapPlot < BasePlot
         ycolumns
         colormap
         precision
-        heatmap_kws
-        colorbar_kws
+        colorbar
+        heatmap
     end
 
     properties (Access = protected, Hidden)
+        xcolnames
+        xcolindex
+        ycolnames
+        ycolindex
     end
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Hidden)
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function reset(self)
+        function resetInternal(self)
 
-            reset@BasePlot(self);
+            resetInternal@BasePlot(self);
             self.xcolumns = {};
             self.ycolumns = {};
 
             self.precision = [];
 
-            title = [];
-            self.heatmap_kws = struct();
-            self.heatmap_kws.enabled = true;
-            self.heatmap_kws.ColorLimits = [];
-            self.heatmap_kws.singleOptions = {};
+            title = struct();
+            title.txt = "";
+            title.enabled = true;
+            title.kws = struct();
+            title.kws.fontSize = 11;
+            title.kws.fontWeight = "bold";
 
-            self.colorbar_kws = struct();
-            %self.colorbar_kws.label = [];
-            self.colorbar_kws.enabled = true;
-            %self.colorbar_kws.fontsize = [];
-            %self.colorbar_kws.singleOptions = {};
+            self.heatmap = struct();
+            self.heatmap.enabled = true;
+            self.heatmap.kws = struct();
+            self.heatmap.ColorLimits = [];
 
-            self.colormap = [];
+            self.colorbar = struct();
+            self.colorbar.enabled = true;
+            self.colorbar.kws = struct();
+            %self.colorbar.label = [];
+            %self.colorbar.kws.fontSize = [];
+            %self.colorbar.kws.singleOptions = {};
+
+            self.colormap = struct();
+            self.colormap.enabled = true;
+            self.colormap.values = [];
 
             self.isdryrun = true;
-            self.plot();
+            self.make();
             self.isdryrun = false;
 
         end
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end
 
-    %*******************************************************************************************************************************
-    %*******************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     methods (Access = public)
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = HeatmapPlot(dataFrame) % expected input arguments: dataFrame
-            self = self@BasePlot(dataFrame,"heatmap");
-            self.reset();
+        function self = HeatmapPlot(plotType, dataFrame, resetExternal)
+            if nargin<3; resetExternal = []; end
+            self = self@BasePlot(plotType, dataFrame, resetExternal);
+            if nargin<3; self.resetExternal = @self.resetInternal; end
+            self.resetInternal();
         end
 
-        %***************************************************************************************************************************
-        %***************************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function adjustColorLimits(self,newLimits)
             %
-            %   Adjust the limits of the colormap of the heatmap, according to 
+            %   Adjust the limits of the colormap of the heatmap, according to
             %   the user-input value or the default symmetric value.
             %
             %   Parameters
@@ -244,18 +283,18 @@ classdef HeatmapPlot < BasePlot
             %
             %       newLimits (optional)
             %
-            %           A vector of two scalar numeric values representing 
-            %           the new limits of the colorbar. 
+            %           A vector of two scalar numeric values representing
+            %           the new limits of the colorbar.
             %
             %           If newLimits is not given as input, the new limits will be adjusted
-            %           so that the colorbar limits extend symmetrically from the  
-            %           negative absolute maximum value of the current limits to the 
+            %           so that the colorbar limits extend symmetrically from the
+            %           negative absolute maximum value of the current limits to the
             %           positive absolute maximum value of the current limits.
             %
             %   Returns
             %   -------
             %
-            %       None. 
+            %       None
             %
             %   Example
             %   -------
@@ -268,21 +307,21 @@ classdef HeatmapPlot < BasePlot
                     newLimits = [-dum dum];
                 elseif nargin~=2
                     error   ( newline ...
-                            + "colorLimits() method takes only one optional argument newLimits. If newLimits is provided as input argument, "  ...
-                            + "the ColorLimits property of the heatmap plot will be set to newLimits." ...
+                            + "The method ``colorLimits()`` takes only one optional argument newLimits. "  ...
+                            + "If newLimits is provided as input argument, the ColorLimits property of " ...
+                            + "the heatmap plot will be set to newLimits." ...
                             + newline ...
                             );
                 end
                 self.currentFig.heatmap.ColorLimits = newLimits;
             else
-                error(newline + "There is no component ""currentFig.heatmap.ColorLimits"" for this object to adjust the limits." + newline);
+                error(newline + "There is no component ``currentFig.heatmap.ColorLimits`` for this object to adjust the limits." + newline);
             end
         end
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function plot(self,varargin)
+        function make(self,varargin)
             %
             %   Generate a plot from the selected columns of the object's dataFrame.
             %
@@ -292,8 +331,8 @@ classdef HeatmapPlot < BasePlot
             %       Any property,value pair of the object.
             %       If the property is a struct(), then its value must be given as a cell array,
             %       with consecutive elements representing the struct's property-name,property-value pairs.
-            %       Note that all of these property-value pairs can be also directly set directly via the 
-            %       object's attributes, before calling the plot() method.
+            %       Note that all of these property-value pairs can be also directly set directly via the
+            %       object's attributes, before calling the make() method.
             %
             %   Returns
             %   -------
@@ -304,8 +343,8 @@ classdef HeatmapPlot < BasePlot
             %   Example
             %   -------
             %
-            %       plot("ycolumns",[8])
-            %       plot("ycolumns",7:10)
+            %       make("ycolumns",[8])
+            %       make("ycolumns",7:10)
             %
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -313,7 +352,6 @@ classdef HeatmapPlot < BasePlot
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             parseArgs(self,varargin{:})
-
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
@@ -324,26 +362,26 @@ classdef HeatmapPlot < BasePlot
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if getVecLen(self.xcolumns)
-                [xcolnames, ~] = getColNamesIndex(self.dfref.Properties.VariableNames,self.xcolumns);
+                [self.xcolnames, self.xcolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.xcolumns);
             else
                 self.dfref
                 self.xcolumns = self.dfref.Properties.VariableNames;
             end
             if getVecLen(self.ycolumns)
-                [ycolnames, ~] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ycolumns);
+                [self.ycolnames, self.ycolindex] = getColNamesIndex(self.dfref.Properties.VariableNames,self.ycolumns);
             else
                 self.ycolumns = self.dfref.Properties.RowNames;
             end
 
             % generate figure and axes if needed
 
-            if self.gcf_kws.enabled
-                gcf_kws_cell = convertStruct2Cell(self.gcf_kws,{"enabled","singleOptions"});
-                if isfield(self.gcf_kws,"singleOptions"); gcf_kws_cell = { gcf_kws_cell{:} , self.gcf_kws.singleOptions{:} }; end
-                self.currentFig.gcf = figure( gcf_kws_cell{:} );
+            if self.figure.enabled
+                figure_kws_cell = convertStruct2Cell(self.figure.kws,{"enabled","singleOptions"});
+                if isfield(self.figure.kws,"singleOptions"); figure_kws_cell = { figure_kws_cell{:} }; end
+                self.currentFig.figure = figure( figure_kws_cell{:} );
             else
                 set(0, "CurrentFigure", gcf);
-                self.currentFig.gcf = gcf;
+                self.currentFig.figure = gcf;
                 hold on;
             end
 
@@ -351,61 +389,60 @@ classdef HeatmapPlot < BasePlot
             % get keyword arguments
             %%%%%%%%%%%%%%%%%%%%%%%
 
-            heatmap_kws_cell = convertStruct2Cell(self.heatmap_kws,{"enabled","ColorLimits","singleOptions"});
+            heatmap_kws_cell = convertStruct2Cell(self.heatmap.kws,{"enabled","ColorLimits","singleOptions"});
 
             %%%%%%%%%%%%%
             % add heatmap
             %%%%%%%%%%%%%
 
-            if self.heatmap_kws.enabled
+            if self.heatmap.enabled
                 if isempty(self.precision)
-                    self.currentFig.heatmap = heatmap( xcolnames, ycolnames, self.dfref{xcolnames,ycolnames} );
+                    self.currentFig.heatmap = heatmap( self.xcolnames, self.ycolnames, self.dfref{self.xcolnames,self.ycolnames} );
                 elseif isa(self.precision,"numeric")
-                    self.currentFig.heatmap = heatmap( xcolnames, ycolnames, round(self.dfref{xcolnames,ycolnames},self.precision) );
+                    self.currentFig.heatmap = heatmap( self.xcolnames, self.ycolnames, round(self.dfref{self.xcolnames,self.ycolnames},self.precision) );
                 end
             end
 
-            self.currentFig.gca = gca;
+            self.currentFig.axes = gca;
 
-            if ~isempty(self.heatmap_kws.ColorLimits)
-                self.currentFig.heatmap.ColorLimits = self.heatmap_kws.ColorLimits;
+            if ~isempty(self.heatmap.ColorLimits)
+                self.currentFig.heatmap.ColorLimits = self.heatmap.ColorLimits;
             end
 
             % add line colorbar
 
-            if ~isempty(self.colormap)
-                colormap(self.colormap);
-            else
-                colormap(redblue());
+            if self.colormap.enabled
+                if isempty(self.colormap.values)
+                    self.colormap.values = redblue(); % do not put this anywhere before "if self.isdryrun; return; end". This command reuires an existing figure.
+                end
+                colormap(self.colormap.values);
             end
 
-            if ~self.colorbar_kws.enabled
-                %if isempty(self.colorbar_kws.fontsize) || ~isa(self.colorbar_kws.fontsize,"numeric")
-                %    self.colorbar_kws.fontsize = self.currentFig.gca.FontSize;
+            if ~self.colorbar.enabled
+                %if isempty(self.colorbar.kws.fontSize) || ~isa(self.colorbar.kws.fontSize,"numeric")
+                %    self.colorbar.kws.fontSize = self.currentFig.axes.FontSize;
                 %end
-                %colorbar_kws_cell = convertStruct2Cell(self.colorbar_kws,{"enabled","label","singleOptions"});
+                %colorbar_kws_cell = convertStruct2Cell(self.colorbar.kws,{"enabled","label","singleOptions"});
                 %colorbar(colorbar_kws_cell{:});
-                %ylabel(self.currentFig.colorbar,self.colorbar_kws.label,self.colorbar_kws.fontsize, "Interpreter", "none");
+                %ylabel(self.currentFig.colorbar,self.colorbar.label,self.colorbar.kws.fontSize, "Interpreter", "none");
             %else
                 colorbar("off");
             end
 
             % add title if needed
 
-            if ~isempty(self.title)
-                title(self.title);
+            if ~isempty(self.title.enabled)
+                title(self.title.txt, convertStruct2Cell(self.title.kws) );
             end
 
-            self.doBasePlotStuff([],[]);
+            self.doBasePlotStuff();
 
         end % function plot
 
-        %***********************************************************************************************************************
-        %***********************************************************************************************************************
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     end % methods
 
-    %***************************************************************************************************************************
-    %***************************************************************************************************************************
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end % classdef

@@ -734,6 +734,12 @@ classdef paramonte %< dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        function cite()
+            disp(self.website.home.overview.preface.url + "/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work");
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         function checkForUpdate(self)
 
             currentVersionString = self.version.interface.dump();
@@ -780,7 +786,6 @@ classdef paramonte %< dynamicprops
                                 ;
             else
                 self.Err.msg    = "It appears that you have the latest version of the ParaMonte library. " + newline;
-                self.Err.note();
             end
 
             self.Err.msg    = self.Err.msg ...

@@ -309,7 +309,7 @@ class LineScatterPlot(BasePlot):
 
                             .. code-block:: python
 
-                                axes.kws.facecolor = "w"
+                                axes.kws.faceColor = "w"
 
                         **NOTE**
 
@@ -331,7 +331,7 @@ class LineScatterPlot(BasePlot):
 
                             .. code-block:: python
 
-                                axes3d.kws.facecolor = "w"
+                                axes3d.kws.faceColor = "w"
 
                         **NOTE**
 
@@ -359,7 +359,7 @@ class LineScatterPlot(BasePlot):
 
                             .. code-block:: python
 
-                                figure.kws.facecolor = "w"
+                                figure.kws.faceColor = "w"
 
                         **NOTE**
 
@@ -609,7 +609,7 @@ class LineScatterPlot(BasePlot):
                 if "c" not in vars(self.scatter.kws).keys(): self.scatter.kws.c = None
                 if "cmap" not in vars(self.scatter.kws).keys() or self.scatter.kws.cmap is None: self.scatter.kws.cmap = "autumn"
                 if "alpha" not in vars(self.scatter.kws).keys(): self.scatter.kws.alpha = 1
-                if "edgecolor" not in vars(self.scatter.kws).keys(): self.scatter.kws.edgecolor = None
+                if "edgeColor" not in vars(self.scatter.kws).keys(): self.scatter.kws.edgeColor = None
                 if "zorder" not in vars(self.scatter.kws).keys(): self.scatter.kws.zorder = 2
 
                 if not cEnabled: self.scatter.kws.cmap = None
@@ -684,8 +684,8 @@ class LineScatterPlot(BasePlot):
         if self.figure.enabled:
             if isinstance(self.figure.kws, Struct):
                 if "dpi" not in vars(self.figure.kws).keys(): self.figure.kws.dpi = 150
-                if "facecolor" not in vars(self.figure.kws).keys(): self.figure.kws.facecolor = "w"
-                if "edgecolor" not in vars(self.figure.kws).keys(): self.figure.kws.edgecolor = "w"
+                if "faceColor" not in vars(self.figure.kws).keys(): self.figure.kws.faceColor = "w"
+                if "edgeColor" not in vars(self.figure.kws).keys(): self.figure.kws.edgeColor = "w"
             else:
                 raise Exception ( "The figure.kws component of the current LineScatterPlot object must" + newline
                                 + "be an object of class Struct(), essentially a structure with components" + newline

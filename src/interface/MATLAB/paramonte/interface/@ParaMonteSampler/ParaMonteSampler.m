@@ -128,12 +128,18 @@ classdef ParaMonteSampler < dynamicprops
         buildMode = "release";
         %
         %       mpiEnabled
-        %           optional logical (boolean) indicator which is false by default.
-        %           If it is set to true, it will cause the ParaMonte simulation
+        %           optional logical (boolean) indicator which is ``false`` by default.
+        %           If it is set to ``true``, it will cause the ParaMonte simulation
         %           to run in parallel on the requested number of processors.
         %           See the class documentation guidelines in the above for 
         %           information on how to run a simulation in parallel.
         mpiEnabled = false;
+        %
+        %       reportEnabled
+        %           optional logical (boolean) indicator which is ``true`` by default.
+        %           If it is set to ``false``, it will silence all output postprocessing
+        %           messages. If ``mpiEnabled=true``, ``reportEnabled=false`` automatically.
+        reportEnabled = true;
         %
         %       inputFile
         %           optional string input representing the path to
@@ -185,10 +191,11 @@ classdef ParaMonteSampler < dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-        [chainList] = readChain(self,varargin)
-        [sampleList] = readSample(self,varargin)
-        [reportList] = readReport(self,varargin)
-        [restartList] = readRestart(self,varargin)
+        chainList = readChain(self,varargin)
+        sampleList = readSample(self,varargin)
+        reportList = readReport(self,varargin)
+        progressList = readProgress(self,varargin)
+        restartList = readRestart(self,varargin)
         runSampler(self,ndim,getLogFunc,varargin)
     end
 
@@ -205,7 +212,8 @@ classdef ParaMonteSampler < dynamicprops
         function listener       (); end
         function notify         (); end
         function name = getMyName(self); name = inputname(1); end
-        filePathList = getFilePathList(self,file,fileType)
+        delFile(self, file, desc)
+        [filePathList, iswebfile] = getFilePathList(self,file,fileType)
         result = genOutputFileName(self)
         namelist = getInputFile(self)
         outputList = readOutput(self,file,delimiter,fileType)

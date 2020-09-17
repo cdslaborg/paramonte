@@ -75,11 +75,6 @@
 %           If this input argument is not provided by the user, the
 %           value of the object's `spec` attribute `outputFileName`
 %           will be used instead.
-%           ======================================================
-%           WARNING: At least one of the two mentioned routes must
-%           provide the path to the chain file. Otherwise,
-%           this method will break by calling sys.exit().
-%           ======================================================
 %
 %           Example usage:
 %
@@ -152,7 +147,10 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function [varargout] = readMarkovChain(self,varargin)
+function markovChainList = readMarkovChain(self,file,delimiter)
+
+    if nargin<3; delimiter = []; end
+    if nargin<2; file = []; end
 
     if isempty(self.objectName); self.objectName = inputname(1); end
     callerName = string(mfilename());
@@ -161,12 +159,9 @@ function [varargout] = readMarkovChain(self,varargin)
     output = chainType + "List";
 
     if nargout==0
-        %if ~any(strcmp(properties(self),output)); self.addprop(output); end
-        %self.(output) = self.readTabular(callerName,varargin{:});
-        self.readTabular(callerName,varargin{:});
+        self.readTabular(callerName,file,delimiter);
     elseif nargout==1
-        %eval(output+" = self.readTabular(callerName,varargin{:})");
-        varargout{1} = self.readTabular(callerName,varargin{:});
+        markovChainList = self.readTabular(callerName,file,delimiter);
     else
         self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file,delimiter)" ...
                         + "optionally outputs one variable (" + output + ") or nothing. If the latter is chosen by the user " ...

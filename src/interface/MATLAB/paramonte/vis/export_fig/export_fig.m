@@ -337,7 +337,7 @@ function [imageData, alpha] = export_fig(varargin) %#ok<*STRCL1>
         msg = regexprep(msg,website,[link '">$0</a>']);
         msg = regexprep(msg,{'consulting','training'},[link '/$0">$0</a>']);
         %warning('export_fig:promo',msg);
-        disp(['[' 8 msg ']' 8]);
+        %disp(['[' 8 msg ']' 8]);
         promo = true;
     end
 
@@ -1889,7 +1889,7 @@ function isNewerVersionAvailable = checkForNewerVersion(currentVersion)
                 msg = hyperlink('https://github.com/altmany/export_fig', 'GitHub', msg);
                 msg = hyperlink('https://www.mathworks.com/matlabcentral/fileexchange/23629-export_fig', 'Matlab File Exchange', msg);
                 msg = hyperlink('matlab:export_fig(''-update'')', 'export_fig(''-update'')', msg);
-                warning('export_fig:version',msg);
+                %warning('export_fig:version',msg);
             end
         catch
             % ignore

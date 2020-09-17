@@ -40,14 +40,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   readChain(file,delimiter)
+%   readProgress(file,delimiter)
 %
 %   Return a list of the contents of a set of ParaMonte simulation(s) output
-%   chain files whose names begin the user-provided prefix, specified,
+%   progress files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName.
 %
 %   WARNING: This method is to be only used for post-processing of the output
-%   chain file(s) of an already finished simulation. It is NOT meant to be
+%   progress file(s) of an already finished simulation. It is NOT meant to be
 %   called by all processes in parallel mode, although it is possible.
 %
 %   Parameters
@@ -55,12 +55,12 @@
 %
 %       file (optional)
 %
-%           A string representing the path to the chain file with the
+%           A string representing the path to the progress file with the
 %           default value of []. The path only needs to uniquely identify
-%           the name of the simulation to which the chain file belongs.
+%           the name of the simulation to which the progress file belongs.
 %           For example, specifying "./mydir/mysim" as input will lead to
 %           a search for a file that begins with "mysim" and ends with
-%           "_chain.txt" inside the directory "./mydir/".
+%           "_progress.txt" inside the directory "./mydir/".
 %           If there are multiple files with such name, then all of them
 %           will be read and returned as a list.
 %           If this input argument is not provided by the user, the
@@ -69,12 +69,12 @@
 %
 %           Example usage:
 %
-%               pmpd.readChain("./out/test_run_");
+%               pmpd.readProgress("./out/test_run_");
 %
 %           or,
 %
 %               pmpd.spec.outputFileName = "./out/test_run_";
-%               pmpd.readChain();
+%               pmpd.readProgress();
 %
 %           Both of the above examples are equivalent.
 %           The latter is recommended as it is less confusing.
@@ -82,25 +82,25 @@
 %       delimiter (optional)
 %
 %           Optional input string representing the delimiter used in the output
-%           chain file. If it is not provided as input argument, the value of
+%           progress file. If it is not provided as input argument, the value of
 %           the corresponding object's `spec` attribute `outputDelimiter`
 %           will be used instead. If none of the two are available,
 %           the default comma delimiter "," will be assumed and used.
 %
 %           Example usage:
 %
-%               pmpd.readChain("./out/test_run_", " ");
+%               pmpd.readProgress("./out/test_run_", " ");
 %
 %           or,
 %
 %               pmpd.spec.outputDelimiter = " ";
-%               pmpd.readChain("./out/test_run_");
+%               pmpd.readProgress("./out/test_run_");
 %
 %           or,
 %
 %               pmpd.spec.outputFileName = "./out/test_run_";
 %               pmpd.spec.outputDelimiter = " ";
-%               pmpd.readChain();
+%               pmpd.readProgress();
 %
 %           Both of the above examples are equivalent.
 %           The latter is recommended as it is less confusing.
@@ -108,57 +108,57 @@
 %   Returns
 %   -------
 %
-%       chainList (optional)
+%       progressList (optional)
 %
 %           a cell array of objects, each of which corresponds to the contents
-%           of a unique chain file. Each object has the following components:
+%           of a unique progress file. Each object has the following components:
 %
 %               file
-%                   full absolute path to the chain file.
+%                   full absolute path to the progress file.
 %
 %               delimiter
-%                   the delimiter used in the chain file.
+%                   the delimiter used in the progress file.
 %
 %               ndim
 %                   number of dimensions of the domain of the objective function
-%                   for which the chain was generated.
+%                   for which the progress was generated.
 %
 %               count
-%                   the number of unique (weighted) points in the chain file.
-%                   This is essentially the number of rows in the chain file
+%                   the number of unique (weighted) points in the progress file.
+%                   This is essentially the number of rows in the progress file
 %                   minus one (representing the header line).
 %
 %               df
-%                   the contents of the chain file in the form of
+%                   the contents of the progress file in the form of
 %                   a MATLAB table (df stands for DataFrame).
 %
 %               dynamic attributes:
-%                   corresponding to each column in the chain file, a property
+%                   corresponding to each column in the progress file, a property
 %                   with the same name as the column header is also created
 %                   for the object which contains the data stored in that column
-%                   of the chain file.
+%                   of the progress file.
 %
-%           If no output argument is provided, a chainList property will be added
-%           to the parent sampler-object to which the method readMarkovChain() belongs.
+%           If no output argument is provided, a progressList property will be added
+%           to the parent sampler-object to which the method readProgress() belongs.
 %           return value of the method. Otherwise, the list will be stored in a
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-function chainList = readChain(self,file,delimiter)
+function progressList = readProgress(self,file,delimiter)
 
     if nargin<3; delimiter = []; end
     if nargin<2; file = []; end
 
     if isempty(self.objectName); self.objectName = inputname(1); end
     callerName = string(mfilename());
-    chainType = string(callerName{1}(5:end));
-    chainType = string( [ lower(chainType{1}(1)) , chainType{1}(2:end) ] );
-    output = chainType + "List";
+    fileType = string(callerName{1}(5:end));
+    fileType = string( [ lower(fileType{1}(1)) , fileType{1}(2:end) ] );
+    output = fileType + "List";
 
     if nargout==0
         self.readTabular(callerName,file,delimiter);
     elseif nargout==1
-        chainList = self.readTabular(callerName,file,delimiter);
+        progressList = self.readTabular(callerName,file,delimiter);
     else
         self.Err.msg    = "The method, " + self.objectName + "." + callerName + "(file,delimiter)" ...
                         + "optionally outputs one variable (" + output + ") or nothing. If the latter is chosen by the user " ...

@@ -9,30 +9,30 @@
 %%%%
 %%%%   This file is part of the ParaMonte library.
 %%%%
-%%%%   Permission is hereby granted, free of charge, to any person obtaining a 
-%%%%   copy of this software and associated documentation files (the "Software"), 
-%%%%   to deal in the Software without restriction, including without limitation 
-%%%%   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-%%%%   and/or sell copies of the Software, and to permit persons to whom the 
+%%%%   Permission is hereby granted, free of charge, to any person obtaining a
+%%%%   copy of this software and associated documentation files (the "Software"),
+%%%%   to deal in the Software without restriction, including without limitation
+%%%%   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+%%%%   and/or sell copies of the Software, and to permit persons to whom the
 %%%%   Software is furnished to do so, subject to the following conditions:
 %%%%
-%%%%   The above copyright notice and this permission notice shall be 
+%%%%   The above copyright notice and this permission notice shall be
 %%%%   included in all copies or substantial portions of the Software.
 %%%%
-%%%%   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-%%%%   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-%%%%   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-%%%%   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-%%%%   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-%%%%   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+%%%%   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+%%%%   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+%%%%   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+%%%%   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+%%%%   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+%%%%   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 %%%%   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %%%%
 %%%%   ACKNOWLEDGMENT
 %%%%
 %%%%   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-%%%%   As per the ParaMonte library license agreement terms, if you use any parts of 
-%%%%   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-%%%%   work (education/research/industry/development/...) by citing the ParaMonte 
+%%%%   As per the ParaMonte library license agreement terms, if you use any parts of
+%%%%   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+%%%%   work (education/research/industry/development/...) by citing the ParaMonte
 %%%%   library as described on this page:
 %%%%
 %%%%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -40,144 +40,212 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   BasePlot(varargin)
+%   BasePlot(plotType,dataFrame)
 %
-%   This is the class for generating instances of 
-%   basic plots with minimally one (X)-axis. It serves as the 
+%   This is the class for generating instances of
+%   basic plots with minimally one (X)-axis. It serves as the
 %   superclass for a wide variety of other multi-axes ParaMonte plots.
 %
-%   Parameters
-%   ----------
+%       Parameters
+%       ----------
 %
-%       The number of input parameters is variable. This is a low-level ParaMonte class
-%       and the user is not supposed to directly instantiate objects of this type.
+%           plotType
 %
-%   Attributes
-%   ----------
+%               A string indicating the name of the plot that is to be constructed.
 %
-%       dfref
+%           dataFrame (optional)
 %
-%           A reference to the input dataFrame whose data is used to generate plots.
-%           Despite its name (dfref: reference to dataFrame), this attribute is not
-%           a reference to the original input dataFrame but a deep copy of it.
-%           Therefore, changing its values will change the corresponding values 
-%           in the original dataFrame. 
+%               A pandas dataFrame whose data will be plotted.
 %
-%       xcolumns
+%           methodName (optional)
 %
-%           optional property that determines the columns of dataFrame to serve as 
-%           the x-values. It can have multiple forms:
+%               The name of the ParaMonte sample requesting the BasePlot.
 %
-%               1.  a numeric or cell array of column indices in the input dataFrame.
-%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%               3.  a cell array of a mix of the above two.
-%               4.  a numeric range.
+%           reportEnabled (optional)
 %
-%           Example usage:
+%               A boolean whose value indicates whether guidelines should be
+%               printed in the standard output.
 %
-%               1.  xcolumns = [7,8,9]
-%               2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
-%               3.  xcolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%               4.  xcolumns = 7:9      # every column in the data frame starting from column #7 to #9
-%               5.  xcolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%           resetExternal (optional)
 %
-%           WARNING: In all cases, xcolumns must have a length that is either 0, or 1, or equal 
-%           WARNING: to the length of ycolumns. If the length is 1, then xcolumns will be 
-%           WARNING: plotted against data corresponding to each element of ycolumns.
-%           WARNING: If it is an empty object having length 0, then the default value will be used.
+%               A function that resets the properties of the plot as desired
+%               from outside. If provided, a pointer to this function will be
+%               saved for future internal usage.
 %
-%           The default value is the indices of the rows of the input dataFrame.
+%       Attributes
+%       ----------
 %
-%       rows
+%           dfref
 %
-%           a numeric vector that determines the rows of dataFrame 
-%           to be visualized. It can be either:
+%               A reference to the input dataFrame whose data is used to generate plots.
+%               Despite its name (dfref: reference to dataFrame), this attribute is not
+%               a reference to the original input dataFrame but a deep copy of it.
+%               Therefore, changing its values will change the corresponding values
+%               in the original dataFrame.
 %
-%               1.  a numeric range, or, 
-%               2.  a list of row indices of the dataFrame.
+%           xcolumns
 %
-%           Example usage:
+%               optional property that determines the columns of dataFrame to serve as
+%               the x-values. It can have multiple forms:
 %
-%               1.  rows = 15:-2:8
-%               2.  rows = [12,46,7,8,9,4,7,163]
+%                   1.  a numeric or cell array of column indices in the input dataFrame.
+%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%                   3.  a cell array of a mix of the above two.
+%                   4.  a numeric range.
 %
-%           If not provided, the default includes all rows of the dataFrame.
+%               Example usage:
 %
-%       gca_kws
+%                   1.  xcolumns = [7,8,9]
+%                   2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
+%                   3.  xcolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%                   4.  xcolumns = 7:9      # every column in the data frame starting from column #7 to #9
+%                   5.  xcolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
 %
-%           A MATLAB struct() whose fields are directly passed to the current axis in the figure. 
-%           This is done by calling set(gca,gca_kws{:}). For example: 
+%               WARNING: In all cases, xcolumns must have a length that is either 0, or 1, or equal
+%               WARNING: to the length of ycolumns. If the length is 1, then xcolumns will be
+%               WARNING: plotted against data corresponding to each element of ycolumns.
+%               WARNING: If it is an empty object having length 0, then the default value will be used.
 %
-%           Example usage:
+%               The default value is the indices of the rows of the input dataFrame.
 %
-%               gca_kws.xscale = "log";
+%           rows
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to gca_kws.
+%               a numeric vector that determines the rows of dataFrame
+%               to be visualized. It can be either:
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: gca_kws.xscale and gca_kws.Xscale are the same, 
-%           WARNING: and only one of the two will be processed.
+%                   1.  a numeric range, or,
+%                   2.  a list of row indices of the dataFrame.
 %
-%       gcf_kws
+%               Example usage:
 %
-%           A MATLAB struct() whose fields 
-%           (with the exception of few, e.g., enabled, singleOptions, ...) 
-%           are directly passed to the figure function of MATLAB. 
+%                   1.  rows = 15:-2:8
+%                   2.  rows = [12,46,7,8,9,4,7,163]
 %
-%           Example usage:
+%               If not provided, the default includes all rows of the dataFrame.
 %
-%               gcf_kws.enabled = false; % do not make new plot
-%               gcf_kws.color = "none"; % set the background color to none (transparent)
+%           axes
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to gcf_kws.
+%               A MATLAB struct() with the following components:
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: gcf_kws.color and gcf_kws.Color are the same, 
-%           WARNING: and only one of the two will be processed.
+%                   kws
 %
-%       legend_kws
+%                       A MATLAB struct() whose components will be directly passed
+%                       ``set(gca,axes.kws{:})`` to set the propoerties of the
+%                       current axes of the current figure. For example:
 %
-%           A MATLAB struct() whose components' values are passed to MATLAB's legend() function.
-%           If your desired attribute is missing from the fieldnames of legend_kws, simply add
-%           a new field named as the attribute and assign the desired value to it.
+%               Example usage:
 %
-%           Example usage:
+%                   axes.kws.xscale = "log";
 %
-%               legend_kws.enabled = true; % add legend
-%               legend_kws.labels = ["this object","that object"]; % legend labels
+%               If a desired property is missing among the struct fields,
+%               simply add the field and its value to axes.kws.
 %
-%           NOTE: A legend will be added to plot only if simple plots with no 
-%           NOTE: colormap are requested.
+%               WARNING
 %
-%           NOTE: If no legend labels is provided and legend is enabled, the names 
-%           NOTE: of the columns of the dataFrame will be used.
+%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%                   therefore make sure you do not add the keyword as multiple different fields.
+%                   For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
+%                   and only one of the two will be processed.
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: legend_kws.color and legend_kws.Color are the same, 
-%           WARNING: and only one of the two will be processed.
+%           figure
 %
-%       currentFig
+%               A MATLAB struct() with the following components:
 %
-%           A MATLAB struct() whose fields are the outputs of various plotting tools 
-%           used to make the current figure. These include the handle to the current figure (gcf), 
-%           the handle to the current axes in the plot (gca), the handle to colorbar (if any exists), 
-%           and other MATLAB plotting tools used to make to generate the figure.
+%                   enabled
 %
-%       outputFile
+%                       A boolean indicating whether a call to the
+%                       ``figure()`` function of MATLAB should be made or not.
+%                       If a call is made, a new figure will be generated.
+%                       Otherwise, the current active figure will be used.
 %
-%           optional string representing the name of the output file in which 
-%           the figure will be saved. If not provided (is empty), 
-%           no output file will be generated.
+%                   kws
 %
-%   Returns
-%   -------
+%                       A MATLAB struct() whose fields are directly passed to
+%                       the ``figure()`` function of MATLAB.
 %
-%       an object of BasePlot class
+%               Example usage:
+%
+%                   figure.enabled = false; % do not make new plot
+%                   figure.kws.color = "none"; % set the background color to none (transparent)
+%
+%               If a desired property is missing among the struct fields,
+%               simply add the field and its value to figure.kws.
+%
+%               WARNING
+%
+%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%                   therefore make sure you do not add the keyword as multiple different fields.
+%                   For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
+%                   and only one of the two will be processed.
+%
+%           legend
+%
+%               A MATLAB struct() with the following components:
+%
+%                   enabled
+%
+%                       A boolean indicating whether a call to the
+%                       ``legend()`` function of MATLAB should be made or not.
+%                       If a call is made, a new figure will be generated.
+%                       Otherwise, the current active figure will be used.
+%
+%                   kws
+%
+%                       A MATLAB struct() whose fields are directly passed to
+%                       the ``legend()`` function of MATLAB.
+%
+%               Example usage:
+%
+%                   legend.enabled = false; % do not make new plot
+%                   legend.kws.color = "none"; % set the background color to none (transparent)
+%
+%               If a desired property is missing among the struct fields,
+%               simply add the field and its value to figure.kws.
+%
+%               WARNING
+%
+%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%                   therefore make sure you do not add the keyword as multiple different fields.
+%                   For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
+%                   and only one of the two will be processed.
+%
+%               A MATLAB struct() whose components' values are passed to MATLAB's ``legend()`` function.
+%               If your desired attribute is missing from the fieldnames of legend.kws, simply add
+%               a new field named as the attribute and assign the desired value to it.
+%
+%               Example usage:
+%
+%                   legend.enabled = true; % add legend
+%                   legend.labels = ["this object","that object"]; % legend labels
+%
+%               NOTE
+%
+%                   A legend will be added to plot only if
+%                   plots with no colormap are requested.
+%
+%               NOTE
+%
+%                   If no legend labels is provided and legend is enabled, the names
+%                   of the columns of the dataFrame will be used.
+%
+%               WARNING
+%
+%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%                   therefore make sure you do not add the keyword as multiple different fields.
+%                   For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
+%                   and only one of the two will be processed.
+%
+%           currentFig
+%
+%               A MATLAB struct() whose fields are the outputs of various plotting tools
+%               used to make the current figure. These include the handle to the current figure (gcf),
+%               the handle to the current axes in the plot (gca), the handle to colorbar (if any exists),
+%               and other MATLAB plotting tools used to make to generate the figure.
+%
+%       Returns
+%       -------
+%
+%           An object of BasePlot class
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -186,20 +254,19 @@ classdef BasePlot < dynamicprops
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties (Access = public)
-
         dfref
-        gcf_kws
+        figure
         currentFig
-        outputFile
-
     end
 
     properties (Access = protected, Hidden)
         isdryrun = [];
     end
 
-    properties (Access = private)
-        isHeatmap
+    properties (Hidden)
+        resetExternal
+        rowsindex
+        type
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -207,25 +274,119 @@ classdef BasePlot < dynamicprops
     methods (Access = public)
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%% BasePlot
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function self = BasePlot(varargin)
+        function self = BasePlot( plotType ...
+                                , dataFrame ...
+                                , resetExternal ...
+                                )
 
-            try
-                self.dfref = varargin{1};
-            catch
-                self.dfref = [];
-            end
-            self.isHeatmap = false;
-            if (nargin==2 && strcmp(varargin{2},"heatmap"))
-                self.isHeatmap = true;
-            else
+            self.dfref = dataFrame;
+
+            self.type = struct();
+            self.type.name = plotType;
+
+            plotTypeLower = lower(plotType);
+
+            self.type.isLine       = contains(plotTypeLower,"line"      );
+            self.type.isScatter    = contains(plotTypeLower,"scatter"   );
+            self.type.isHeatmap    = strcmp  (plotTypeLower,"heatmap"   );
+            self.type.isHistfit    = strcmp  (plotTypeLower,"histfit"   );
+            self.type.isHistogram2 = strcmp  (plotTypeLower,"histogram2");
+            self.type.isHistogram  = strcmp  (plotTypeLower,"histogram" );
+            self.type.isEllipsoid  = contains(plotTypeLower,"covmat"    );
+            self.type.isEllipsoid  = contains(plotTypeLower,"cormat"    );
+            self.type.isGridPlot   = strcmp  (plotTypeLower,"grid"      );
+            self.type.isContour3   = strcmp  (plotTypeLower,"contour3"  );
+            self.type.isContourf   = strcmp  (plotTypeLower,"contourf"  );
+            self.type.isContour    = strcmp  (plotTypeLower,"contour"   );
+
+            self.type.is3d         = contains(plotTypeLower,"3") || self.type.isHistogram2;
+            self.type.is1d         = self.type.isHistfit || self.type.isHistogram;
+            self.type.is2d         = ~(self.type.isGridPlot || self.type.is1d || self.type.is3d);
+            self.type.isDiffusionPlot = self.type.isContour || self.type.isContourf || self.type.isContour3;
+
+            self.type.hasTarget = ~(self.type.isGridPlot || self.type.isHeatmap || self.type.is3d);
+
+            %prop="rowsindex"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %if self.type.isGridPlot
+            %    prop="colnames"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %    prop="colindex"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %else
+            %    prop="xcolnames"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %    prop="xcolindex"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %    prop="ycolnames"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %    prop="ycolindex"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %    prop="zcolnames"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %    prop="zcolindex"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %end
+
+            if ~self.type.isHeatmap
                 prop="rows"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                prop="gca_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-                prop="legend_kws"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="axes"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                prop="legend"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            end
+
+            if nargin<3 || (nargin==3 && isempty(resetExternal))
+                self.resetExternal = @self.resetInternal;
+            elseif nargin==3
+                self.resetExternal = resetExternal;
             end
 
         end
 
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%% reset
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function reset  ( self ...
+                        , resetType ...
+                        ..., varargin ...
+                        )
+            %
+            %   Reset the properties of the plot to the original default settings.
+            %   Use this method when you change many attributes of the plot and
+            %   you want to clean up and go back to the default settings.
+            %
+            %       Parameters
+            %       ----------
+            %
+            %           resetType (optional)
+            %
+            %               An optional string with possible value of ``"hard"``.
+            %               If provided, the plot object will be regenerated from scratch.
+            %               This includes reading the original data frame again and resetting
+            %               everything. If not provided, then only the plot settings will be
+            %               reset without reseting the dataFrame.
+            %
+            %       Returns
+            %       -------
+            %
+            %           None
+            %
+            %       Example
+            %       -------
+            %
+            %               reset()         # reset the plot to the default settings
+            %               reset("soft")   # reset the plot to the default settings
+            %               reset("hard")   # regenerate the plot from scratch
+            %
+            if nargin<2
+                resetType = "soft";
+            end
+            try
+                self.resetExternal  ( resetType ...
+                                    , self.type.name ...
+                                    ..., varargin{:} ...
+                                    ); % calls the external reset function
+            catch
+                self.resetExternal(); % calls the local reset routine
+            end
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%% exportFig
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function exportFig(self, file, varargin)
@@ -235,16 +396,10 @@ classdef BasePlot < dynamicprops
             %   Parameters
             %   ----------
             %
-            %       file (optional if varargin is also missing from input)
+            %       file (required)
             %
-            %           A string or char vector containing the path for the output generated figure file. 
+            %           A string or char vector containing the path for the output generated figure file.
             %           The type of output file is determined by its extension (e.g., pdf, png, ...).
-            %           If provided, the value of the component `outputFile` will be overwritten by 
-            %           the value of the input argument `file`.
-            %
-            %           NOTE:   If this input argument is missing from the input, then corresponding 
-            %           NOTE:   output figure file path from the `outputFile` component of the plot 
-            %           NOTE:   object will be used as the path and name of the exported output figure.
             %
             %           Example:
             %
@@ -252,13 +407,16 @@ classdef BasePlot < dynamicprops
             %
             %       varargin (optional)
             %
-            %           The set of input arguments to the `export_fig()` function of the export_fig 
+            %           The set of input arguments to the ``export_fig()`` function of the export_fig
             %           MATLAB library (except the path to the output exported figure which is given by `file`).
             %
-            %           NOTE:   If this input argument is missing from the input, then a default set of 
-            %           NOTE:   options, determined by the export_fig library, will be used.
-            %           NOTE:   *.png : "-m4 -transparent"
-            %           NOTE:   other : []
+            %           NOTE
+            %
+            %               If this input argument is missing from the input, then a default set of
+            %               options, determined by the export_fig library, will be used.
+            %
+            %                   *.png : "-m4 -transparent"
+            %                   other : []
             %
             %   Returns
             %   -------
@@ -272,13 +430,8 @@ classdef BasePlot < dynamicprops
             %       expoortFig("gridplot.pdf") % export figure to a PDF file.
             %       expoortFig("gridplot.png", "-m4 -transparent") % export a large png plot of magnitude 4 with transparency.
             %
-            if nargin==1
-                file = self.outputFile;
-            else
-                self.outputFile = file;
-            end
-            if ~( (isstring(file) || ischar(file)) && getVecLen(file) )
-                error   ( "The first input argument (file) must be either a " ...
+            if nargin==1 || ~( (isstring(file) || ischar(file)) && getVecLen(file) )
+                error   ( "The method ``exportFig()`` takes at least one input argument ``file`` which is a " ...
                         + "string or char-vector representing the path to the output figure file, for example, " + newline ...
                         + newline ...
                         + "    expoortFig('gridplot.png')" + newline ...
@@ -288,18 +441,18 @@ classdef BasePlot < dynamicprops
                         );
             end
 
-            set(0, "CurrentFigure", self.currentFig.gcf);
+            set(0, "CurrentFigure", self.currentFig.figure);
             if any(contains(string(varargin),"-transparent"))
                 transparencyRequested = true;
                 try
-                    set(self.currentFig.gcf,"color","none");
+                    set(self.currentFig.figure,"color","none");
                 catch
-                    warning("failed to set the color property of gcf to ""none"".");
+                    warning("Failed to set the color property of gcf to ""none"".");
                 end
                 try
                     set(gca,"color","none");
                 catch
-                    warning("failed to set the color property of gca to ""none"".");
+                    warning("Failed to set the color property of gca to ""none"".");
                 end
             else
                 transparencyRequested = false;
@@ -307,7 +460,7 @@ classdef BasePlot < dynamicprops
             %for i = 1:length(varargin)
             %    if contains(varargin{i},"-transparent")
             %        transparencyRequested = true;
-            %        set(self.currentFig.gcf,"color","none");
+            %        set(self.currentFig.figure,"color","none");
             %        set(gca,"color","none");
             %    end
             %    if isa(varargin{i},"string")
@@ -319,7 +472,7 @@ classdef BasePlot < dynamicprops
 
             if transparencyRequested
                 try
-                    set(self.currentFig.gcf,"color","default");
+                    set(self.currentFig.figure,"color","default");
                 catch
                     warning("failed to set the color property of gcf back to ""default"".");
                 end
@@ -333,11 +486,13 @@ classdef BasePlot < dynamicprops
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%% getLogLinSpace
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function LogLinSpace = getLogLinSpace(self,base,logskip,lowerLim,upperLim)
             %
-            %   Generate logarithmically-uniformly-spaced unique integer numbers 
-            %   between the input lowerLim and upperLim. These numbers are to 
+            %   Generate logarithmically-uniformly-spaced unique integer numbers
+            %   between the input lowerLim and upperLim. These numbers are to
             %   be used as the row indices in the plots.
             %
             %   % NOTE: This function does not exist for HeatmapPlot objects.
@@ -351,33 +506,33 @@ classdef BasePlot < dynamicprops
             %
             %       logskip
             %
-            %           The minimum logarithmic space jump between 
+            %           The minimum logarithmic space jump between
             %           the generated log-linearly-spaced integer numbers.
             %
             %       lowerLim (optional along with upperLim)
             %
-            %           The natural (non-logarithmic) lower limit of the 
+            %           The natural (non-logarithmic) lower limit of the
             %           generated log-linearly-spaced integer numbers.
             %           If not provided, the default value is 1.
             %
-            %           WARNING: if lowerLim is not provided as input, 
-            %           WARNING: then upperLim cannot be provided either, 
-            %           WARNING: otherwise, the value of upperLim will be  
+            %           WARNING: if lowerLim is not provided as input,
+            %           WARNING: then upperLim cannot be provided either,
+            %           WARNING: otherwise, the value of upperLim will be
             %           WARNING: used as the value of lowerLim and upperLim
             %           WARNING: will be assumed to not have been provided.
             %
             %       upperLim (optional)
             %
-            %           The natural (non-logarithmic) upper limit of the 
+            %           The natural (non-logarithmic) upper limit of the
             %           generated log-linearly-spaced integer numbers.
-            %           If not provided, the default value is the maximum 
-            %           of the number of the rows of the input dataframe 
+            %           If not provided, the default value is the maximum
+            %           of the number of the rows of the input dataframe
             %           to the BasePlot constructor.
             %
             %   Returns
             %   -------
             %
-            %       A set of unique log-linearly-spaced integer numbers. 
+            %       A set of unique log-linearly-spaced integer numbers.
             %
             %   Example
             %   -------
@@ -402,6 +557,8 @@ classdef BasePlot < dynamicprops
             LogLinSpace = getLogIntSpace(base,logskip,lowerLim,upperLim);
         end
 
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%% helpme
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         function helpme(self,varargin)
@@ -431,36 +588,48 @@ classdef BasePlot < dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function reset(self)
+        function resetInternal(self)
 
-            if ~self.isHeatmap
+            if ~self.type.isHeatmap
 
                 self.rows = {};
 
-                self.legend_kws = struct();
-                self.legend_kws.box = "off";
-                self.legend_kws.color = "white";
-                self.legend_kws.labels = {};
-                self.legend_kws.enabled = true;
-                self.legend_kws.fontsize = [];
-                self.legend_kws.location = "best";
-                self.legend_kws.interpreter = "none";
-                self.legend_kws.singleOptions = {};
+                self.legend.enabled = false;
+                self.legend.labels = {};
+                self.legend.kws = struct();
+                self.legend.kws.box = "off";
+                self.legend.kws.color = "none";
+                self.legend.kws.fontSize = [];
+                self.legend.kws.location = "best";
+                self.legend.kws.interpreter = "none";
 
-                self.gca_kws = struct();
-                self.gca_kws.color = "white";
-                self.gca_kws.xscale = "linear";
-                self.gca_kws.yscale = "linear";
+                self.axes.kws = struct();
+                self.axes.kws.color = "white";
+                self.axes.kws.xscale = "linear";
+                self.axes.kws.yscale = "linear";
+                self.axes.kws.zscale = "linear";
+
+                if ~self.type.isGridPlot
+                    self.axes.kws.box = "on";
+                    self.axes.kws.xgrid = "on";
+                    self.axes.kws.ygrid = "on";
+                    if self.type.is3d
+                        self.axes.kws.zgrid = "on";
+                    end
+                end
 
             end
 
-            self.gcf_kws = struct();
-            self.gcf_kws.color = "white";
-            self.gcf_kws.enabled = true;
+            self.figure.enabled = true;
+            self.figure.kws = struct();
+            self.figure.kws.color = "white";
 
             self.currentFig = struct();
-            self.outputFile = [];
 
+            if self.type.hasTarget
+                prop="target"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+                self.target = Target_class();
+            end
 
         end
 
@@ -532,43 +701,67 @@ classdef BasePlot < dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function doBasePlotStuff(self, lgEnabled, lglabels)
+        function doBasePlotStuff(self)
 
-            if ~self.isHeatmap
+            if ~(self.type.isHeatmap || self.type.isGridPlot)
 
                 % add legend
 
-                if lgEnabled
-                    if isa(self.legend_kws.labels,"cell") || isa(self.legend_kws.labels,"string")
-                        if getVecLen(self.legend_kws.labels)~=length(lglabels)
-                            self.legend_kws.labels = {lglabels{:}};
+                if self.legend.enabled
+                    if isa(self.legend.labels,"cell") || isa(self.legend.labels,"string")
+                        %if getVecLen(self.legend.labels)~=length(lglabels)
+                        %    self.legend.labels = {lglabels{:}};
+                        %end
+                        if isempty(self.legend.kws.fontSize)
+                            self.legend.kws.fontSize = self.currentFig.xlabel.FontSize;
                         end
-                        if isempty(self.legend_kws.fontsize)
-                            self.legend_kws.fontsize = self.currentFig.xlabel.FontSize;
+                        legend_kws_cell = convertStruct2Cell(self.legend.kws,{"enabled","singleOptions","labels"});
+                        if self.type.isScatter && self.scatter.enabled
+                            thisPlotName = "scatter"; if self.type.is3d; thisPlotName = thisPlotName + "3"; end
+                            self.currentFig.legend = legend([self.currentFig.(thisPlotName){:}], self.legend.labels{:},legend_kws_cell{:});
+                        elseif self.type.isHistfit && self.histfit.enabled
+                            nhandle = length(self.currentFig.histfit);
+                            handleCell = cell(nhandle,1);
+                            for i = 1:nhandle
+                                handleCell{i} = self.currentFig.histfit{i}(1); % get the handle to the histogram component of histfit
+                            end
+                            self.currentFig.legend = legend([handleCell{:}], self.legend.labels{:},legend_kws_cell{:});
+                        else
+                            self.currentFig.legend = legend(self.legend.labels{:},legend_kws_cell{:});
                         end
-                        legend_kws_cell = convertStruct2Cell(self.legend_kws,{"enabled","singleOptions","labels"});
-                        self.currentFig.legend = legend(self.legend_kws.labels{:},legend_kws_cell{:},self.legend_kws.singleOptions{:});
+                        %if isfield(self.legend,"color")
+                        %    set(self.currentFig.legend, 'color', self.legend.color);
+                        %end
                     else
                         error   ( newline ...
-                                + "The input ""legend_kws.labels"" must be a cell array of string values." ...
+                                + "The input ""legend.kws.labels"" must be a cell array of string values." ...
                                 + newline ...
                                 );
                     end
                 else
-                    legend(self.currentFig.gca,"off");
-                end
-
-                if ~isempty(self.gca_kws)
-                    gca_kws_cell = convertStruct2Cell(self.gca_kws,{"enabled","singleOptions","labels"});
-                    if isfield(self.gca_kws,"singleOptions"); gca_kws_cell = { gca_kws_cell{:}, self.gca_kws.singleOptions{:} }; end
-                    set(gca, gca_kws_cell{:});
+                    legend(self.currentFig.axes,"off");
                 end
 
             end
 
-            if isa(self.outputFile,"string") || isa(self.outputFile,"char")
-                self.exportFig(self.outputFile,"-m2 -transparent");
+            if ~isempty(self.axes.kws)
+                axes_kws_cell = convertStruct2Cell(self.axes.kws,{"enabled","singleOptions","labels"});
+                %if isfield(self.axes.kws,"singleOptions"); axes_kws_cell = { axes_kws_cell{:}, self.axes.kws.singleOptions{:} }; end
+                set(gca, axes_kws_cell{:});
             end
+
+            %if self.type.hasTarget && ~self.type.isEllipsoid
+            %    xcolumnsLen = length(self.xcolumns);
+            %    self.target.values = zeros(length(self.xcolumns),2);
+            %    yvalues = 0;
+            %    for i = 1:xcolumnsLen
+            %        yvalues = 0;
+            %        if ~(self.type.isHistfit || self.type.isHistogram)
+            %            yvalues = mean(self.dfref{:,self.ycolindex(i)});
+            %        end
+            %        self.target.values(i,:) = [ mean(self.dfref{:,self.xcolindex(i)}), yvalues ];
+            %    end
+            %end
 
         end
 

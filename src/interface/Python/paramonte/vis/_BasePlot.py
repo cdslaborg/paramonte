@@ -272,27 +272,25 @@ class BasePlot:
             self._type = Struct()
             self._type.name = plotType
 
-
             plotTypeLower = plotType.lower()
 
-            self._type.is3d         = True if "3"           in plotTypeLower    else False
-            self._type.isLine       = True if "line"        in plotTypeLower    else False
-            self._type.isScatter    = True if "scatter"     in plotTypeLower    else False
-            self._type.isHeatmap    = True if "heatmap"     in plotTypeLower    else False
-            self._type.isKdeplot1   = True if "kdeplot1"    in plotTypeLower    else False
-            self._type.isKdeplot2   = True if "kdeplot2"    in plotTypeLower    else False
-            self._type.isDistplot   = True if "distplot"    in plotTypeLower    else False
-            self._type.isJointplot  = True if "jointplot"   in plotTypeLower    else False
-            self._type.isContourf   = True if "contourf"    in plotTypeLower    else False
-            self._type.isEllipsoid  = True if "covmat"      in plotTypeLower    else False
-            self._type.isEllipsoid  = True if "cormat"      in plotTypeLower    else False
-            self._type.isGridPlot   = True if "grid"        in plotTypeLower    else False
-            self._type.isContour3   = True if "contour3"    in plotTypeLower    else False
-            self._type.isContourf   = True if "contourf"    in plotTypeLower    else False
-            self._type.isContour    = True if "contour"     in plotTypeLower    and not (self._type.isContour3 or self._type.isContourf) else False
+            self._type.is3d         = "3"           in plotTypeLower
+            self._type.isLine       = "line"        in plotTypeLower
+            self._type.isScatter    = "scatter"     in plotTypeLower
+            self._type.isHeatmap    = "heatmap"     in plotTypeLower
+            self._type.isKdeplot1   = "kdeplot1"    in plotTypeLower
+            self._type.isKdeplot2   = "kdeplot2"    in plotTypeLower
+            self._type.isDistplot   = "distplot"    in plotTypeLower
+            self._type.isJointplot  = "jointplot"   in plotTypeLower
+            self._type.isEllipsoid  = "covmat"      in plotTypeLower
+            self._type.isEllipsoid  = "cormat"      in plotTypeLower
+            self._type.isGridPlot   = "grid"        in plotTypeLower
+            self._type.isContour3   = "contour3"    in plotTypeLower
+            self._type.isContourf   = "contourf"    in plotTypeLower
+            self._type.isContour    = "contour"     in plotTypeLower and not (self._type.isContour3 or self._type.isContourf)
 
-            self._type.is1d         = True if self._type.isKdeplot1 or self._type.isDistplot else False
-            self._type.is2d         = True if not (self._type.isGridPlot or self._type.is1d or self._type.is3d) else False
+            self._type.is1d         = self._type.isKdeplot1 or self._type.isDistplot
+            self._type.is2d         = not (self._type.isGridPlot or self._type.is1d or self._type.is3d)
 
             self._type.isDiffusionPlot = self._type.isContour or self._type.isContourf or self._type.isContour3
 

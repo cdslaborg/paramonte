@@ -40,61 +40,62 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function filePathList = getFilePathList(self,file,fileType)
+function [filePathList, iswebfile] = getFilePathList(self,file,fileType)
 
+    iswebfile = false;
     suffix = "_" + fileType + ".txt";
     propertyName = self.objectName + ".spec.outputFileName";
 
     if isempty(file)
         if isempty(self.spec.outputFileName)
-            self.Err.msg    = "The " + self.methodName + " input simulation specification " + self.objectName + ".spec.outputFileName is not set. " ...
-                            + "This information is essential, otherwise how could the output files be found? " ...
-                            + "All that is needed is the common section of the paths to the output simulation files (including the simulation name) " ...
-                            + "or simply, the path to the " + fileType + " file.";
             if ~isempty(self.inputFile)
                 self.Err.msg    = self.Err.msg + newline ...
                                 + "Apparently, you have specified an input file for the simulation via the attribute """ + self.objectName + ".inputFile""." + newline ...
                                 + "Extract the value of outputFileName from this file, and assign it to the simulation specification """ + self.objectName + ".spec.outputFileName"".";
+                self.Err.abort();
             end
-            self.Err.abort();
+            if self.reportEnabled
+                self.Err.msg    = "The " + self.methodName + " input simulation specification " + self.objectName + ".spec.outputFileName is not set. " ...
+                                + "This information is essential, otherwise how could the output files be found? " ...
+                                + "All that is needed is the common section of the paths to the output simulation files (including the simulation name) " ...
+                                + "or simply, the path to the " + fileType + " file. For now, " + self.methodName + " will search the current working " ...
+                                + "for potential " + fileType + " files..." ...
+                                ;
+                self.Err.warn();
+            end
+            file = "./";
         else
             file = self.spec.outputFileName;
         end
     end
 
-    file = string(getFullPath(convertStringsToChars(file),'lean'));
+    filePath = string(getFullPath(convertStringsToChars(file),"lean"));
 
-    if isfile(file) % check if the input path is a full path to a file
+    if isfile(filePath) % check if the input path is a full path to a file
 
-        filePathList = [file];
-        pattern = file;
-        if ~endsWith(file,suffix)
+        filePathList = [filePath];
+        pattern = filePath;
+        if self.reportEnabled && ~endsWith(filePath,suffix)
             self.Err.msg    = "The name of the input file:" + newline + newline ...
-                            + "    """ + file + """" + newline + newline ...
+                            + "    """ + filePath + """" + newline + newline ...
                             + "does not end with the expected suffix '" + suffix + "' for a " + fileType + " file type.";
             self.Err.warn();
         end
 
-    %elseif isfolder(file) % ensure the input path is not a directory
-    %
-    %    self.Err.msg    = propertyName + " = """ + strrep(file,'\','\\') + """ cannot point to a directory." + newline ...
-    %                    + "Provide a string as the value of file that points to a unique " + fileType + " file or" + newline ...
-    %                    + "to the unique name (including path) of a simulation name that is shared among its output files.";
-    %    self.Err.abort();
-    %
     else % search for files matching the input pattern
 
-        if endsWith(file,"*")
-            pattern = file;
+        if isfolder(filePath) % check if the input path is a directory
+            if ispc; slash = string('\'); else; slash = "/"; end
+            if ~endsWith(filePath,slash); filePath = filePath + slash; end
+        end
+
+        if endsWith(filePath,"*")
+            pattern = filePath;
         else
-            pattern = file + "*";
+            pattern = filePath + "*";
         end
 
         dirList = dir(pattern);
-
-        if isempty(dirList)
-            
-        end
 
         counter = 0;
         filePathList = [];
@@ -108,8 +109,19 @@ function filePathList = getFilePathList(self,file,fileType)
         end
 
         if isempty(filePathList)
+            iswebfile = isurl(file); % check if the input path is a url
+            if iswebfile
+                try
+                    filePathList = [ string(websave(genRandFileName(),file)) ];
+                catch
+                    iswebfile = false;
+                    warning ( "Failed to read data from the URL: " + file );
+                end
+            end
+        end
+
+        if isempty(filePathList)
             self.Err.msg    = "Failed to detect any " + fileType + " files with the requested pattern:" + newline ...
-                            ... + "    " + strrep(pattern,'\','\\') + newline + newline ...
                             + newline ...
                             + "    " + pattern + newline ...
                             + newline ...
@@ -146,8 +158,9 @@ function filePathList = getFilePathList(self,file,fileType)
 
     end
 
-    if ~self.mpiEnabled
-        %self.Err.msg = string(length(filePathList)) + " files detected matching the pattern: """ +  strrep(pattern,'\','\\') + """";
+    if self.reportEnabled
         self.Err.msg = string(length(filePathList)) + " files detected matching the pattern: """ +  pattern + """";
+        self.Err.marginTop = 1;
+        self.Err.marginBot = 0;
         self.Err.note();
     end
