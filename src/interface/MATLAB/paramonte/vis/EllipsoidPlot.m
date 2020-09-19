@@ -260,19 +260,25 @@ classdef EllipsoidPlot < BasePlot
             self.title.kws.fontSize = 11;
             self.title.kws.interpreter = "tex";
 
-            self.type.isLine = false;
-            if self.type.isLine
-                prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
-            end
             if self.type.is3d
                 prop="zcolumn"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             end
 
+            prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             self.plot = struct();
             self.plot.enabled = true;
             self.plot.kws = struct();
             self.plot.kws.lineWidth = {};
             self.plot.kws.color = {};
+
+            prop="scatter"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            self.scatter = struct();
+            self.scatter.marker = [];
+            self.scatter.filled = [];
+            self.scatter.color = [];
+            self.scatter.size = [];
+            self.scatter.enabled = false;
+            self.scatter.kws = struct();
 
             self.legend.enabled = false;
 
@@ -399,33 +405,39 @@ classdef EllipsoidPlot < BasePlot
                 self.dimensionPair = [1,2];
             end
 
-            if self.type.isLine
-                % activate at least one plot in the figure
-                if ~self.plot.enabled
-                    warning ( newline ...
-                            + "The line-plot type has been disabled by the user. There is nothing to display. " ...
-                            + "To add at least one plot, set at least one the following components of the line-plot, " + newline ...
-                            + newline ...
-                            + "To add at least one plot, set at least one the following components of the line-plot, " + newline ...
-                            + newline ...
-                            + "    self.plot.enabled = true; % to generate single color monochromatic line plots" + newline ...
-                            + newline ...
-                            );
-                end
+            % activate at least one plot in the figure
+            if ~self.plot.enabled
+                warning ( newline ...
+                        + "The line-plot type has been disabled by the user. There is nothing to display. " ...
+                        + "To add at least one plot, set at least one the following components of the line-plot, " + newline ...
+                        + newline ...
+                        + "To add at least one plot, set at least one the following components of the line-plot, " + newline ...
+                        + newline ...
+                        + "    self.plot.enabled = true; % to generate single color monochromatic line plots" + newline ...
+                        + newline ...
+                        );
             end
 
-            if self.type.isLine && self.plot.enabled
-                key = "lineWidth"; val = 1; if isfield(self.plot.kws,key) && isempty(self.plot.kws.(key)); self.plot.kws.(key) = val; end
+            %%%% set scatter properties
+
+            fname = "scatter";
+            key = "marker"; val = "o"; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
+            key = "filled"; val = true; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
+            key = "size"; val = 5; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
+
+            %%%% set line properties
+
+            fname = "plot";
+            key = "lineWidth"; val = 1; if isfield(self.(fname).kws,key) && isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+            if self.scatter.enabled && self.plot.enabled
+                key = "color"; val = uint8([200 200 200 150]); if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
             end
 
             if self.colormap.enabled && ~getVecLen(self.colormap.values)
                 self.colormap.values = "winter";
-                %if self.type.is3d
-                %    self.colormap.values = "winter";
-                %else
-                %    self.colormap.values = "autumn";
-                %end
             end
+
+            %%%% set resolution
 
             if isempty(self.npoint)
                 self.npoint = 100;
@@ -441,6 +453,7 @@ classdef EllipsoidPlot < BasePlot
 
             if self.figure.enabled
                 figure_kws_cell = convertStruct2Cell(self.figure.kws,{"enabled","singleOptions"});
+                % ATTN: DO NOT ERASE
                 %if isfield(self.figure.kws,"singleOptions"); figure_kws_cell = { figure_kws_cell{:} , self.figure.kws.singleOptions{:} }; end
                 self.currentFig.figure = figure( figure_kws_cell{:} );
             else
@@ -544,7 +557,8 @@ classdef EllipsoidPlot < BasePlot
             %%%% get keyword arguments
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if self.type.isLine
+            excludes = {"enabled","singleOptions","color","cdata","size"};
+            if self.colormap.enabled
                 if isstring(self.colormap.values) || ischar(self.colormap.values)
                     try
                         cmap = eval(string(self.colormap.values)+"(rowindexLen)");
@@ -565,10 +579,10 @@ classdef EllipsoidPlot < BasePlot
                                 );
                     end
                 end
-                excludes = {"enabled","singleOptions"};
-                if self.colormap.enabled; excludes = {excludes{:},"color"}; end
-                plot_kws_cell = convertStruct2Cell(self.plot.kws,excludes);
             end
+            plot_kws_cell = convertStruct2Cell(self.plot.kws,excludes);
+            scatter_kws_cell = convertStruct2Cell(self.scatter.kws,{"enabled","singleOptions","color","cdata","size"});
+            if self.scatter.filled; scatter_kws_cell = {"filled", scatter_kws_cell{:}}; end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% add plot
@@ -576,72 +590,123 @@ classdef EllipsoidPlot < BasePlot
 
             lglabels = [];
 
-            if self.type.isLine && self.plot.enabled
+            if self.type.is3d
+                zdataOnes = ones(self.npoint,1);
+            end
 
-                if self.type.is3d
-                    zdataOnes = ones(self.npoint,1);
+            if getVecLen(self.plot.kws.color)
+                lineColorKeyVal = {"color",self.plot.kws.color};
+            else
+                lineColorKeyVal = {};
+            end
+
+            if getVecLen(self.scatter.color)
+                scatterColor = {self.scatter.color};
+            else
+                scatterColor = {};
+            end
+
+            counter.plot = 0;
+            counter.plot3 = 0;
+            counter.surface = 0;
+            counter.scatter = 0;
+            counter.scatter3 = 0;
+            if self.plot.enabled && self.type.is3d
+                self.currentFig.plot3 = cell(rowindexLen,1);
+            else
+                self.currentFig.plot = cell(rowindexLen,1);
+            end
+            if self.scatter.enabled && self.type.is3d
+                self.currentFig.scatter3 = cell(rowindexLen,1);
+            else
+                self.currentFig.scatter = cell(rowindexLen,1);
+            end
+
+            meanVec = zeros(dimPairLen,1);
+            for irow = 1:rowindexLen
+
+                %%%% set colormapping if enabled
+
+                if self.colormap.enabled
+                    lineColorKeyVal = {"color",cmap(irow,:)};
+                    scatterColor = {cmap(irow,:)};
                 end
 
-                if ~getVecLen(self.plot.kws.color)
-                    colorKeyVal = {"color",self.plot.kws.color};
+                %%%% compute the ellipsoid characteristics
+
+                submatrix = squeeze(self.dfref{self.rowsindex(irow),covcolindex});
+                submatrix = submatrix(self.dimensionPair,self.dimensionPair);
+                if avgcolindexlen>0
+                    meanVec = squeeze(self.dfref{self.rowsindex(irow),avgcolindex});
+                    meanVec = meanVec(self.dimensionPair);
                 end
 
-                meanVec = zeros(dimPairLen,1);
-                for irow = 1:rowindexLen
+                % get ellipsoid boundary
 
-                    % add plot
-
-                    if self.colormap.enabled
-                        colorKeyVal = {"color",cmap(irow,:)};
-                    end
-                    submatrix = squeeze(self.dfref{self.rowsindex(irow),covcolindex});
-                    submatrix = submatrix(self.dimensionPair,self.dimensionPair);
-                    if avgcolindexlen>0
-                        meanVec = squeeze(self.dfref{self.rowsindex(irow),avgcolindex});
-                        meanVec = meanVec(self.dimensionPair);
-                    end
-
-                    % get ellipsoid boundary
-
-                    bcrd = self.makeEllipsoid   ( submatrix ...
+                bcrd = self.getEllipsoidBoundary( submatrix ...
                                                 , meanVec ...
                                                 , self.npoint ...
                                                 );
 
-                    if self.type.isLine
-                        if self.plot.enabled
-                            if self.type.is3d
-                                self.currentFig.plot3   = plot3 ( bcrd(:,1) ...
-                                                                , bcrd(:,2) ...
-                                                                , self.zdata(irow)*zdataOnes ...
-                                                                , plot_kws_cell{:} ...
-                                                                , colorKeyVal{:} ...
-                                                                );
-                            else
-                                self.currentFig.plot    = plot  ( bcrd(:,1) ...
-                                                                , bcrd(:,2) ...
-                                                                , plot_kws_cell{:} ...
-                                                                , colorKeyVal{:} ...
-                                                                );
-                            end
-                            hold on;
-                        end
+
+                %%%% add plot
+
+                if self.plot.enabled
+                    if self.type.is3d
+                        counter.plot3 = counter.plot3 + 1;
+                        self.currentFig.plot3{counter.plot3}    = plot3 ( bcrd(:,1) ...
+                                                                        , bcrd(:,2) ...
+                                                                        , self.zdata(irow)*zdataOnes ...
+                                                                        , plot_kws_cell{:} ...
+                                                                        , lineColorKeyVal{:} ...
+                                                                        );
+                    else
+                        counter.plot = counter.plot + 1;
+                        self.currentFig.plot{counter.plot}  = plot  ( bcrd(:,1) ...
+                                                            , bcrd(:,2) ...
+                                                            , plot_kws_cell{:} ...
+                                                            , lineColorKeyVal{:} ...
+                                                            );
                     end
-
-                end % loop plot
-
-                self.currentFig.axes = gca;
-
-                % set gca properties
-
-                gca_kws_cell = convertStruct2Cell(self.axes.kws,{"enabled","singleOptions"});
-                %if isfield(self.axes.kws,"singleOptions"); gca_kws_cell = { gca_kws_cell{:} , self.axes.kws.singleOptions{:} }; end
-                self.currentFig.figure = set( self.currentFig.axes, gca_kws_cell{:} );
-
-                if self.colormap.enabled
-                    colormap(self.currentFig.axes,self.colormap.values);
+                    hold on;
                 end
 
+                if self.scatter.enabled
+                    if self.type.is3d
+                        counter.scatter3 = counter.scatter3 + 1;
+                        self.currentFig.scatter3{counter.scatter3} = scatter3   ( bcrd(:,1) ...
+                                                                                , bcrd(:,2) ...
+                                                                                , self.zdata(irow)*zdataOnes ...
+                                                                                , self.scatter.size ...
+                                                                                , scatterColor{:} ...
+                                                                                , self.scatter.marker ...
+                                                                                , scatter_kws_cell{:} ...
+                                                                                );
+                    else
+                        counter.scatter = counter.scatter + 1;
+                        self.currentFig.scatter{counter.scatter} = scatter  ( bcrd(:,1) ...
+                                                                            , bcrd(:,2) ...
+                                                                            , self.scatter.size ...
+                                                                            , scatterColor{:} ...
+                                                                            , self.scatter.marker ...
+                                                                            , scatter_kws_cell{:} ...
+                                                                            );
+                    end
+                    hold on;
+                end
+
+            end % loop plot
+
+            self.currentFig.axes = gca;
+
+            % set gca properties
+
+            gca_kws_cell = convertStruct2Cell(self.axes.kws,{"enabled","singleOptions"});
+            %if isfield(self.axes.kws,"singleOptions"); gca_kws_cell = { gca_kws_cell{:} , self.axes.kws.singleOptions{:} }; end
+            self.currentFig.figure = set( self.currentFig.axes, gca_kws_cell{:} );
+
+            if self.colormap.enabled
+                colormap(self.currentFig.axes,self.colormap.values);
             end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -705,7 +770,7 @@ classdef EllipsoidPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function bcrd = makeEllipsoid(covMat, meanVec, npoint) % returns the coordinates of the boundary of the ellipsoid
+        function bcrd = getEllipsoidBoundary(covMat, meanVec, npoint) % returns the coordinates of the boundary of the ellipsoid
             if isempty(npoint); npoint = 50; end
             independentVariable = linspace(0, 2*pi, npoint)';
             xval = cos(independentVariable);

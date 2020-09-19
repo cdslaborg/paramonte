@@ -628,10 +628,10 @@ class EllipsoidPlot(BasePlot):
 
             # get ellipsoid boundary
 
-            bcrd = self.makeEllipsoid   ( covMat = subMatrix
-                                        , meanVec = self.center[row,:]
-                                        , npoint = self.npoint
-                                        )
+            bcrd = self.getEllipsoidBoundary( covMat = subMatrix
+                                            , meanVec = self.center[row,:]
+                                            , npoint = self.npoint
+                                            )
 
             if self.plot.enabled:
 
@@ -688,14 +688,14 @@ class EllipsoidPlot(BasePlot):
         if reself: return self
 
     ################################################################################################################################
-    #### makeEllipsoid
+    #### getEllipsoidBoundary
     ################################################################################################################################
 
-    def makeEllipsoid   ( self
-                        , covMat
-                        , meanVec
-                        , npoint = 50
-                        ):
+    def getEllipsoidBoundary( self
+                            , covMat
+                            , meanVec
+                            , npoint = 50
+                            ):
         """
         
         Return the coordinates of the boundary of an 

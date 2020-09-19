@@ -43,6 +43,7 @@
 function cellArray = convertStruct2Cell(structure,excludeList)
     cellArray = {};
     fnameList = fieldnames(structure);
+    if nargin<2; excludeList = {}; end
     excludeList = string(excludeList);
     for i = 1:length(fnameList)
         fname = string(fnameList{i});

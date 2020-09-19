@@ -529,7 +529,7 @@ classdef LineScatterPlot < BasePlot
                 %NO%key = "markerFaceColor"; val = []; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
                 if self.type.isLine
                     fname = "plot";
-                    key = "color"; val = uint8([200 200 200 150]); if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
+                    key = "color"; val = uint8([200 200 200 150]); if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
                 end
             end
 
@@ -669,7 +669,7 @@ classdef LineScatterPlot < BasePlot
                 plot_kws_cell = convertStruct2Cell(self.plot.kws,{"enabled","singleOptions"});
             end
             if self.type.isScatter
-                scatter_kws_cell = convertStruct2Cell(self.scatter.kws,{"enabled","singleOptions","cdata","size"});
+                scatter_kws_cell = convertStruct2Cell(self.scatter.kws,{"enabled","singleOptions","color","cdata","size"});
                 if self.scatter.filled; scatter_kws_cell = {"filled", scatter_kws_cell{:}}; end
             end
             if self.type.isLine
