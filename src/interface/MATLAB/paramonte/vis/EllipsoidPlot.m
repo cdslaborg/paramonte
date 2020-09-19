@@ -268,13 +268,11 @@ classdef EllipsoidPlot < BasePlot
                 prop="zcolumn"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             end
 
-            if self.type.isLine
-                self.plot = struct();
-                self.plot.enabled = true;
-                self.plot.kws = struct();
-                self.plot.kws.lineWidth = {};
-                self.plot.kws.color = {};
-            end
+            self.plot = struct();
+            self.plot.enabled = true;
+            self.plot.kws = struct();
+            self.plot.kws.lineWidth = {};
+            self.plot.kws.color = {};
 
             self.legend.enabled = false;
 
