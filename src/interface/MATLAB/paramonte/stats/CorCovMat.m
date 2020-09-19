@@ -183,6 +183,7 @@ classdef CorCovMat < dynamicprops
 
     properties(Access = public)
         columns
+        plot
         rows
         df
     end
@@ -195,8 +196,8 @@ classdef CorCovMat < dynamicprops
         rowsindex
         isCorMat
         dfref
-        title
         Err
+        title
     end
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -222,13 +223,15 @@ classdef CorCovMat < dynamicprops
                 self.method = method;
             end
             self.columns = columns;
+            self.title = struct();
+            self.title.text = "";
+            self.title.subtext = "";
             self.rows = []; if ~isempty(rows); self.rows = rows; end
             self.df = [];
 
-            prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
+            %prop="plot"; if ~any(strcmp(properties(self),prop)); self.addprop(prop); end
             self.plot = struct();
             self.plot.helpme = @self.helpme;
-
             self.get();
 
         end
@@ -372,24 +375,8 @@ classdef CorCovMat < dynamicprops
 
             self.resetPlot("hard");
             self.plot.reset = @self.resetPlot;
-            self.plot.heatmap.title = self.title;
-            if self.isCorMat; self.plot.heatmap.precision = self.cormatPrecision; end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-            % set title for the heatmap
-
-            if isempty(self.title)
-                if self.isCorMat
-                    self.title = "The " + self.method + "'s Correlation Strength Matrix";
-                else
-                    self.title = "The Covariance Matrix";
-                end
-            end
-            try
-                self.plot.heatmap.title = self.title;
-                if self.isCorMat; self.plot.heatmap.precision = self.cormatPrecision; end
-            end
 
         end % get
 
@@ -521,6 +508,7 @@ classdef CorCovMat < dynamicprops
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 if isHeatmap
+
                     if resetTypeIsHard
                         self.plot.(requestedPlotType) = HeatmapPlot( requestedPlotType, self.df, @self.resetPlot );
                     else
@@ -531,6 +519,20 @@ classdef CorCovMat < dynamicprops
                     end
                     self.plot.(requestedPlotType).xcolumns = self.df.Properties.VariableNames;
                     self.plot.(requestedPlotType).ycolumns = self.df.Properties.RowNames;
+
+                    if self.isCorMat; self.plot.heatmap.precision = self.cormatPrecision; end
+
+                    % set title for the heatmap
+
+                    if ~( (isstring(self.title.text) || ischar(self.title.text)) && getVecLen(self.title.text) )
+                        if self.isCorMat
+                            self.title.text = "The " + self.method + "'s Correlation Strength Matrix";
+                        else
+                            self.title.text = "The Covariance Matrix";
+                        end
+                    end
+                    self.plot.heatmap.heatmap.kws.title = self.title.text;
+
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

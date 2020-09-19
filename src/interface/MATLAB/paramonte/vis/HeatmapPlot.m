@@ -225,12 +225,13 @@ classdef HeatmapPlot < BasePlot
 
             self.precision = [];
 
-            title = struct();
-            title.txt = "";
-            title.enabled = true;
-            title.kws = struct();
-            title.kws.fontSize = 11;
-            title.kws.fontWeight = "bold";
+            %self.title = struct();
+            %self.title.text = "";
+            %self.title.enabled = true;
+            %self.title.kws = struct();
+            %self.title.kws.fontSize = 11;
+            %self.title.kws.fontWeight = "bold";
+            %self.title.kws.color = "black";
 
             self.heatmap = struct();
             self.heatmap.enabled = true;
@@ -353,6 +354,15 @@ classdef HeatmapPlot < BasePlot
 
             parseArgs(self,varargin{:})
 
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % set heatmap keyword arguments
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            %if self.heatmap.enabled
+            %    fname = "heatmap";
+            %    key = "title"; val = ""; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
+            %end
+
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -385,21 +395,21 @@ classdef HeatmapPlot < BasePlot
                 hold on;
             end
 
-            %%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % get keyword arguments
-            %%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             heatmap_kws_cell = convertStruct2Cell(self.heatmap.kws,{"enabled","ColorLimits","singleOptions"});
 
-            %%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             % add heatmap
-            %%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if self.heatmap.enabled
                 if isempty(self.precision)
-                    self.currentFig.heatmap = heatmap( self.xcolnames, self.ycolnames, self.dfref{self.xcolnames,self.ycolnames} );
+                    self.currentFig.heatmap = heatmap( self.xcolnames, self.ycolnames, self.dfref{self.xcolnames,self.ycolnames}, heatmap_kws_cell{:} );
                 elseif isa(self.precision,"numeric")
-                    self.currentFig.heatmap = heatmap( self.xcolnames, self.ycolnames, round(self.dfref{self.xcolnames,self.ycolnames},self.precision) );
+                    self.currentFig.heatmap = heatmap( self.xcolnames, self.ycolnames, round(self.dfref{self.xcolnames,self.ycolnames},self.precision), heatmap_kws_cell{:} );
                 end
             end
 
@@ -427,12 +437,6 @@ classdef HeatmapPlot < BasePlot
                 %ylabel(self.currentFig.colorbar,self.colorbar.label,self.colorbar.kws.fontSize, "Interpreter", "none");
             %else
                 colorbar("off");
-            end
-
-            % add title if needed
-
-            if ~isempty(self.title.enabled)
-                title(self.title.txt, convertStruct2Cell(self.title.kws) );
             end
 
             self.doBasePlotStuff();

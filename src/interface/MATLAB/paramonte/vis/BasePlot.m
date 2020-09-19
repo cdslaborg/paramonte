@@ -742,17 +742,38 @@ classdef BasePlot < dynamicprops
                     legend(self.currentFig.axes,"off");
                 end
 
+                if ~isempty(self.axes.kws)
+                    axes_kws_cell = convertStruct2Cell(self.axes.kws,{"enabled","singleOptions","labels"});
+                    %if isfield(self.axes.kws,"singleOptions"); axes_kws_cell = { axes_kws_cell{:}, self.axes.kws.singleOptions{:} }; end
+                    set(gca, axes_kws_cell{:});
+                end
+
+                if self.type.hasTarget
+                    self.target.currentFig.axes = self.currentFig.axes;
+                end
+
             end
 
-            if ~isempty(self.axes.kws)
-                axes_kws_cell = convertStruct2Cell(self.axes.kws,{"enabled","singleOptions","labels"});
-                %if isfield(self.axes.kws,"singleOptions"); axes_kws_cell = { axes_kws_cell{:}, self.axes.kws.singleOptions{:} }; end
-                set(gca, axes_kws_cell{:});
+            %%%% add title if needed
+
+            if ~self.type.isHeatmap && (isfield(self,"title") || isprop(self,"title")) && isfield(self.title,"enabled") && self.title.enabled
+
+                title_kws_cell = {};
+                for fname = ["text", "subtext"] % do not change the order of elements here
+                    if isfield(self.title,fname) && getVecLen(self.title.(fname))
+                        title_kws_cell = {title_kws_cell{:}, self.title.(fname)};
+                    end
+                end
+
+                if isfield(self.title,"kws") && ~isempty(self.title.kws) && isstruct(self.title.kws)
+                    kws_cell = convertStruct2Cell(self.title.kws);
+                    title_kws_cell = {title_kws_cell{:}, kws_cell{:}};
+                end
+
+                self.currentFig.title = title( self.currentFig.axes, title_kws_cell{:} );
+
             end
 
-            if self.type.hasTarget
-                self.target.currentFig.axes = self.currentFig.axes;
-            end
             %if self.type.hasTarget && ~self.type.isEllipsoid
             %    xcolumnsLen = length(self.xcolumns);
             %    self.target.values = zeros(length(self.xcolumns),2);

@@ -229,7 +229,8 @@ classdef GridPlot < BasePlot
             %self.axes.subplot.width  = (1-self.axes.main.margin.left-self.axes.main.margin.right)/self.axes.main.nrow - self.axes.subplot.interspace;
 
             self.title = struct();
-            self.title.txt = [];
+            self.title.text = "";
+            self.title.subtext = "";
             self.title.enabled = false;
             self.title.kws = struct();
             self.title.kws.fontSize = 13;
