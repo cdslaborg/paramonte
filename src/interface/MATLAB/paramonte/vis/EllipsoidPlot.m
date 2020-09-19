@@ -707,10 +707,9 @@ classdef EllipsoidPlot < BasePlot
             self.currentFig.axes = gca;
 
             % set gca properties
-
-            gca_kws_cell = convertStruct2Cell(self.axes.kws,{"enabled","singleOptions"});
-            %if isfield(self.axes.kws,"singleOptions"); gca_kws_cell = { gca_kws_cell{:} , self.axes.kws.singleOptions{:} }; end
-            self.currentFig.figure = set( self.currentFig.axes, gca_kws_cell{:} );
+            %gca_kws_cell = convertStruct2Cell(self.axes.kws,{"enabled","singleOptions"});
+            %%if isfield(self.axes.kws,"singleOptions"); gca_kws_cell = { gca_kws_cell{:} , self.axes.kws.singleOptions{:} }; end
+            %self.currentFig.axes = set( self.currentFig.axes, gca_kws_cell{:} );
 
             if self.colormap.enabled
                 colormap(self.currentFig.axes,self.colormap.values);
