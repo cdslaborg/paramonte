@@ -463,7 +463,7 @@ classdef TabularFileContents < OutputFileContents
 
                         self.plot.(requestedPlotType).surface.enabled = false;
                         self.plot.(requestedPlotType).plot.enabled = true;
-                        self.plot.(requestedPlotType).plot.kws.linewidth = 1;
+                        self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
                         if is3d
                             self.plot.(requestedPlotType).plot.kws.color = [200 200 200 75] / 255;
                         else
@@ -473,9 +473,9 @@ classdef TabularFileContents < OutputFileContents
                     elseif isLine
 
                         self.plot.(requestedPlotType).plot.enabled = false;
-                        self.plot.(requestedPlotType).plot.kws.linewidth = 1;
+                        self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
                         self.plot.(requestedPlotType).surface.enabled = true;
-                        self.plot.(requestedPlotType).surface.kws.linewidth = 1;
+                        self.plot.(requestedPlotType).surface.kws.lineWidth = 1;
 
                     end
 

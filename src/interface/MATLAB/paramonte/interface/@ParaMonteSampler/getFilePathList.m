@@ -108,14 +108,15 @@ function [filePathList, iswebfile] = getFilePathList(self,file,fileType)
             end
         end
 
-        if isempty(filePathList)
+        if isempty(filePathList) % XXX this may be improved in the future to 
             iswebfile = isurl(file); % check if the input path is a url
             if iswebfile
                 try
                     filePathList = [ string(websave(genRandFileName(),file)) ];
+                    pattern = file;
                 catch
                     iswebfile = false;
-                    warning ( "Failed to read data from the URL: " + file );
+                    warning( "Failed to read data from the URL: " + file );
                 end
             end
         end

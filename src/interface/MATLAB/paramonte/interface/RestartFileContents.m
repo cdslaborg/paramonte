@@ -396,9 +396,9 @@ classdef RestartFileContents < OutputFileContents
                     self.plot.(requestedPlotType).ccolumns = "sampleSize";
                     self.plot.(requestedPlotType).axes.kws.xscale = "linear";
                     self.plot.(requestedPlotType).plot.enabled = false;
-                    self.plot.(requestedPlotType).plot.kws.linewidth = 1;
+                    self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
                     self.plot.(requestedPlotType).surface.enabled = true;
-                    self.plot.(requestedPlotType).surface.kws.linewidth = 1;
+                    self.plot.(requestedPlotType).surface.kws.lineWidth = 1;
                 end
 
                 % scatter / scatter3
@@ -430,7 +430,7 @@ classdef RestartFileContents < OutputFileContents
                     if is3d
                         self.plot.(requestedPlotType).plot.kws.color = [200 200 200 75] / 255;
                     else
-                        self.plot.(requestedPlotType).plot.kws.linewidth = 1;
+                        self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
                         self.plot.(requestedPlotType).plot.kws.color = uint8([200 200 200 200]);
                         self.plot.(requestedPlotType).scatter.size = 20;
                     end
@@ -526,7 +526,7 @@ classdef RestartFileContents < OutputFileContents
                     %self.plot.(requestedPlotType).ccolumn = "sampleSize";
                     self.plot.(requestedPlotType).axes.kws.xscale = "linear";
                     self.plot.(requestedPlotType).axes.kws.yscale = "linear";
-                    self.plot.(requestedPlotType).plot.kws.linewidth = 1;
+                    self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
                     matrixType = "covariance"; if isCorMatPlot; matrixType = "correlation"; end
                     self.plot.(requestedPlotType).title.enabled = true;
                     self.plot.(requestedPlotType).title.label = "Evolution of the " + matrixType + " matrices of the proposal distribution";

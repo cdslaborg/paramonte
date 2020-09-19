@@ -293,7 +293,7 @@ classdef Target_class < dynamicprops
             %
             %       make("values",[1500,2]) % single target
             %       make("values",[1500,2;200,2.5;3500,0.4]) % multiple targets corresponding to each row of `values`
-            %       make("hline.kws",{"linewidth",2})
+            %       make("hline.kws",{"lineWidth",2})
             %
 
             self.parseArgs(varargin{:});
@@ -310,8 +310,8 @@ classdef Target_class < dynamicprops
 
                     plotName = "line()";
 
-                    key = "linewidth"; val = 1.25; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
-                    key = "linestyle"; val = "-"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                    key = "lineWidth"; val = 1.5; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                    key = "lineStyle"; val = "-"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
                     key = "color"; val = rgbColor; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
 
                 elseif contains(fname,"scatter")
@@ -348,8 +348,7 @@ classdef Target_class < dynamicprops
                 self.currentFig.figure = get(groot,'CurrentFigure');
             end
 
-            self.currentFig.axes = [];
-            if (~isfield(self.currentFig,"gca") || isempty(isgraphics(self.currentFig.axes))) && ~isempty(self.currentFig.figure)
+            if (~isfield(self.currentFig,"axes") || isempty(isgraphics(self.currentFig.axes))) && ~isempty(self.currentFig.figure)
                 self.currentFig.axes = self.currentFig.figure.CurrentAxes;
             end
 

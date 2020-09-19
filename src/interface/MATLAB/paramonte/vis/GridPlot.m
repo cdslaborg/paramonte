@@ -222,13 +222,11 @@ classdef GridPlot < BasePlot
             %self.axes.main.width = 1 - self.axes.main.margin.right;
             self.axes.main.nrow = length(self.columns);
             self.axes.main.ncol = self.axes.main.nrow;
+            self.axes.kws = struct();
 
             self.axes.subplot.interspace = 0.015; % space between subplots
             %self.axes.subplot.height = (1-self.axes.main.margin.top-self.axes.main.margin.bottom)/self.axes.main.ncol - self.axes.subplot.interspace;
             %self.axes.subplot.width  = (1-self.axes.main.margin.left-self.axes.main.margin.right)/self.axes.main.nrow - self.axes.subplot.interspace;
-            self.axes.subplot.box = "on";
-            self.axes.subplot.grid = "on";
-            self.axes.subplot.fontSize = 11;
 
             self.title = struct();
             self.title.txt = [];
@@ -276,12 +274,12 @@ classdef GridPlot < BasePlot
             templateLocal.target.scatter = struct();
             templateLocal.target.scatter.kws = struct();
 
-            templateLocal.target.vline.kws.linewidth = 1;
-            templateLocal.target.vline.kws.linestyle = "-";
+            templateLocal.target.vline.kws.lineWidth = 1;
+            templateLocal.target.vline.kws.lineStyle = "-";
             templateLocal.target.vline.kws.color = orangered;
 
-            templateLocal.target.hline.kws.linewidth = 1;
-            templateLocal.target.hline.kws.linestyle = "-";
+            templateLocal.target.hline.kws.lineWidth = 1;
+            templateLocal.target.hline.kws.lineStyle = "-";
             templateLocal.target.hline.kws.color = orangered;
 
             templateLocal.target.scatter.size = 40;
@@ -750,7 +748,7 @@ classdef GridPlot < BasePlot
                         if ~isfield(self.template.(self.plotTypeList(i)).(fname),"kws") || isempty(self.template.(self.plotTypeList(i)).(fname).kws)
                             self.template.(self.plotTypeList(i)).(fname).kws = struct();
                         end
-                        propList = ["linewidth", "color"];
+                        propList = ["lineWidth", "color"];
                         valueList = {0.75, uint8([200 200 200 100])};
                         for j = 1:length(propList)
                             prop = propList(j);
@@ -1132,7 +1130,7 @@ classdef GridPlot < BasePlot
 
                         hold off;
 
-                        % set the diagonal YTicks
+                        %%%% set the diagonal YTicks
 
                         if icol==irow
                             xlower = self.currentFig.subplotList{irow,icol}.currentFig.axes.XLim(1);
@@ -1246,7 +1244,7 @@ classdef GridPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function rotateAxesLabels(self,varargin)
+        function rotateAxesLabels(self, degreeX, degreeY)
             %
             %   Rotate the axes labels of the subplots of the grid plot
             %
@@ -1284,12 +1282,8 @@ classdef GridPlot < BasePlot
                 degreeX = 45;
                 degreeY = 45;
             elseif nargin==2
-                degreeX = varargin{1};
                 degreeY = varargin{1};
-            elseif nargin==3
-                degreeX = varargin{1};
-                degreeY = varargin{2};
-            else
+            elseif nargin~=3
                 error   ( newline ...
                         + "The rotateAxesLabels() method gets at most two input numeric values representing the X-axis and Y-axis label orientations from the horizontal axis, in degrees. " ...
                         + "If only one argument is provided, the input degree value will be used for both X and Y axis label orientations. " + newline ...
@@ -1305,7 +1299,7 @@ classdef GridPlot < BasePlot
                 end
             end
 
-        end % function rotateAxesLabels
+        end % rotateAxesLabels
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1437,6 +1431,7 @@ classdef GridPlot < BasePlot
 
                     hold on;
 
+                    if icol==irow; self.currentFig.subplotList{irow,icol}.target.hline.enabled = false; end
                     self.currentFig.subplotList{irow,icol}.target.values = [ values(icol) values(irow) ];
                     for kws = ["hline","vline","scatter"]
                         if isfield(props,kws)
@@ -1518,14 +1513,14 @@ classdef GridPlot < BasePlot
             end
             for icol = 1:labelsLen % self.axes.main.ncol
                 for irow = 1:labelsLen % self.axes.main.nrow
-                    if strcmp(self.currentFig.subplotList{irow,icol}.currentFig.axes.Visible,"on")
-                        if ~isnumeric(labels{icol})
-                            if irow==labelsLen || (irow<labelsLen && strcmp(self.currentFig.subplotList{irow+1,icol}.currentFig.axes.Visible,"off"))
+                    if ~isempty(self.currentFig.subplotList{irow,icol}) && strcmp(self.currentFig.subplotList{irow,icol}.currentFig.axes.Visible,"on")
+                        if isstring(labels{icol}) || ischar(labels{icol})
+                            if irow==labelsLen || (irow<labelsLen && ~isempty(self.currentFig.subplotList{irow+1,icol}) && strcmp(self.currentFig.subplotList{irow+1,icol}.currentFig.axes.Visible,"off"))
                                 xlabel(self.currentFig.subplotList{irow,icol}.currentFig.axes, labels{icol}, varargin{:});
                             end
                         end
-                        if ~isnumeric(labels{irow})
-                            if icol==1 || (icol>1 && strcmp(self.currentFig.subplotList{irow,icol-1}.currentFig.axes.Visible,"off"))
+                        if isstring(labels{irow}) || ischar(labels{irow})
+                            if icol==1 || (icol>1 && ~isempty(self.currentFig.subplotList{irow,icol-1}) && strcmp(self.currentFig.subplotList{irow,icol-1}.currentFig.axes.Visible,"off"))
                                 ylabel(self.currentFig.subplotList{irow,icol}.currentFig.axes, labels{irow}, varargin{:});
                             end
                         end
@@ -1843,9 +1838,21 @@ classdef GridPlot < BasePlot
 
                 end
 
-                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                %%%% reset the ytick labels of the diagonal subplots to x-axis ticks when there are subplots to their right.
-                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            end % icol
+
+            self.adjustAxesTicks();
+
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        function adjustAxesTicks(self)
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%% reset the ytick labels of the diagonal subplots to x-axis ticks when there are subplots to their right.
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            for icol = 1:self.axes.main.ncol
 
                 if ~isempty(self.currentFig.subplotList{icol,icol}) && strcmp(self.currentFig.subplotList{icol,icol}.currentFig.axes.Visible,"on")
 
@@ -1944,7 +1951,7 @@ classdef GridPlot < BasePlot
 
                 end
 
-            end % icol
+            end
 
         end
 

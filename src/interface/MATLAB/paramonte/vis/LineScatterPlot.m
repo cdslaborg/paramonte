@@ -210,7 +210,7 @@
 %               Example usage:
 %
 %                   plot.enabled = true; % enable plot()
-%                   plot.kws.linewidth = 2;
+%                   plot.kws.lineWidth = 2;
 %
 %               If a desired property is missing among the struct fields, 
 %               simply add the field and its value to ``plot.kws``.
@@ -242,7 +242,7 @@
 %               Example usage:
 %
 %                   surface.enabled = true; % add surface()
-%                   surface.kws.linewidth = 2;
+%                   surface.kws.lineWidth = 2;
 %
 %               If a desired property is missing among the struct fields, 
 %               simply add the field and its value to ``surface.kws``.
@@ -251,7 +251,7 @@
 %
 %                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ````surface.kws.linewidth`` and ``surface.kws.Linewidth`` are the same, 
+%                   For example, ````surface.kws.lineWidth`` and ``surface.kws.Linewidth`` are the same, 
 %                   and only one of the two will be processed.
 %
 %           scatter (available only in scatter/lineScatter/scatter3/lineScatter3 objects)
@@ -285,7 +285,7 @@
 %
 %                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
 %                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ````surface.kws.linewidth`` and ``surface.kws.Linewidth`` are the same, 
+%                   For example, ````surface.kws.lineWidth`` and ``surface.kws.Linewidth`` are the same, 
 %                   and only one of the two will be processed.
 %
 %           target
@@ -365,7 +365,7 @@ classdef LineScatterPlot < BasePlot
                 self.plot = struct();
                 self.plot.enabled = true;
                 self.plot.kws = struct();
-                self.plot.kws.linewidth = {};
+                self.plot.kws.lineWidth = {};
                 self.plot.kws.color = {};
 
                 self.surface.kws = struct();
@@ -535,7 +535,7 @@ classdef LineScatterPlot < BasePlot
 
             if self.type.isLine % && self.plot.enabled
                 if self.surface.enabled; self.plot.enabled = false; end
-                key = "linewidth"; val = 1; if ~isfield(self.plot.kws,key) || isempty(self.plot.kws.(key)); self.plot.kws.(key) = val; end
+                key = "lineWidth"; val = 1; if ~isfield(self.plot.kws,key) || isempty(self.plot.kws.(key)); self.plot.kws.(key) = val; end
             end
 
             if self.type.isLine % && self.surface.enabled

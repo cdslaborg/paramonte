@@ -216,14 +216,14 @@
 %           Example usage:
 %
 %               contour3.enabled = true; % add contour3()
-%               contour3.kws.linewidth = 1;
+%               contour3.kws.lineWidth = 1;
 %
 %           If a desired property is missing among the struct fields, simply add the field
 %           and its value to contour3.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: contour3.kws.linewidth and contour3.kws.LineWidth are the same,
+%           WARNING: contour3.kws.lineWidth and contour3.kws.LineWidth are the same,
 %           WARNING: and only one of the two will be processed.
 %
 %       contour.kws (available only in contour objects)
@@ -235,14 +235,14 @@
 %           Example usage:
 %
 %               contour.enabled = true; % add contour()
-%               contour.kws.linewidth = 1;
+%               contour.kws.lineWidth = 1;
 %
 %           If a desired property is missing among the struct fields, simply add the field
 %           and its value to contour.kws.
 %
 %           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
 %           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: contour.kws.linewidth and contour.kws.LineWidth are the same,
+%           WARNING: contour.kws.lineWidth and contour.kws.LineWidth are the same,
 %           WARNING: and only one of the two will be processed.
 %
 %       target

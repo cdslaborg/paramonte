@@ -182,7 +182,7 @@
 %           Example usage:
 %
 %               plot.enabled = true; % enable plot()
-%               plot.kws.linewidth = 2;
+%               plot.kws.lineWidth = 2;
 %
 %           If a desired property is missing among the struct fields, simply add the field
 %           and its value to plot.kws.
@@ -272,7 +272,7 @@ classdef EllipsoidPlot < BasePlot
                 self.plot = struct();
                 self.plot.enabled = true;
                 self.plot.kws = struct();
-                self.plot.kws.linewidth = {};
+                self.plot.kws.lineWidth = {};
                 self.plot.kws.color = {};
             end
 
@@ -407,7 +407,7 @@ classdef EllipsoidPlot < BasePlot
                     warning ( newline ...
                             + "The line-plot type has been disabled by the user. There is nothing to display. " ...
                             + "To add at least one plot, set at least one the following components of the line-plot, " + newline ...
-                            + newline
+                            + newline ...
                             + "To add at least one plot, set at least one the following components of the line-plot, " + newline ...
                             + newline
                             + "    self.plot.enabled = true; % to generate single color monochromatic line plots" + newline ...
@@ -417,7 +417,7 @@ classdef EllipsoidPlot < BasePlot
             end
 
             if self.type.isLine && self.plot.enabled
-                key = "linewidth"; val = 1; if isfield(self.plot.kws,key) && isempty(self.plot.kws.(key)); self.plot.kws.(key) = val; end
+                key = "lineWidth"; val = 1; if isfield(self.plot.kws,key) && isempty(self.plot.kws.(key)); self.plot.kws.(key) = val; end
             end
 
             if self.colormap.enabled && ~getVecLen(self.colormap.values)

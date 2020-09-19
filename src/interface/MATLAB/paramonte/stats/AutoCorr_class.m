@@ -568,7 +568,7 @@ classdef AutoCorr_class < dynamicprops
 
                         self.plot.(requestedPlotType).surface.enabled = false;
                         self.plot.(requestedPlotType).plot.enabled = true;
-                        self.plot.(requestedPlotType).plot.kws.linewidth = 1;
+                        self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
                         if is3d
                             self.plot.(requestedPlotType).plot.kws.color = [200 200 200 75] / 255;
                             self.plot.(requestedPlotType).scatter.size = 10;
@@ -584,9 +584,9 @@ classdef AutoCorr_class < dynamicprops
                     elseif isLine
 
                         self.plot.(requestedPlotType).plot.enabled = true;
-                        self.plot.(requestedPlotType).plot.kws.linewidth = 1;
+                        self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
                         self.plot.(requestedPlotType).surface.enabled = false;
-                        self.plot.(requestedPlotType).surface.kws.linewidth = 1;
+                        self.plot.(requestedPlotType).surface.kws.lineWidth = 1;
 
                     end
 

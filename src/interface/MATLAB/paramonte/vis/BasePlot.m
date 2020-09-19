@@ -590,7 +590,7 @@ classdef BasePlot < dynamicprops
 
         function resetInternal(self)
 
-            if ~self.type.isHeatmap
+            if ~(self.type.isHeatmap || self.type.isGridPlot)
 
                 self.rows = {};
 
@@ -750,6 +750,9 @@ classdef BasePlot < dynamicprops
                 set(gca, axes_kws_cell{:});
             end
 
+            if self.type.hasTarget
+                self.target.currentFig.axes = self.currentFig.axes;
+            end
             %if self.type.hasTarget && ~self.type.isEllipsoid
             %    xcolumnsLen = length(self.xcolumns);
             %    self.target.values = zeros(length(self.xcolumns),2);

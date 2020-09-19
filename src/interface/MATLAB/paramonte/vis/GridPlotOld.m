@@ -470,7 +470,7 @@ classdef GridPlot < BasePlot
                             if ~isfield(self.layout.subplot.(self.plotTypeList(i)),"plot_kws") || isempty(self.layout.subplot.(self.plotTypeList(i)).plot_kws)
                                 self.layout.subplot.(self.plotTypeList(i)).plot_kws = struct();
                             end
-                            keyList = ["linewidth", "color", "enabled"];
+                            keyList = ["lineWidth", "color", "enabled"];
                             valueList = {0.75, uint8([200 200 200 100]), true};
                             for j = 1:length(keyList)
                                 prop = keyList(j);
