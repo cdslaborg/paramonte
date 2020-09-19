@@ -9,30 +9,30 @@
 %%%%
 %%%%   This file is part of the ParaMonte library.
 %%%%
-%%%%   Permission is hereby granted, free of charge, to any person obtaining a 
-%%%%   copy of this software and associated documentation files (the "Software"), 
-%%%%   to deal in the Software without restriction, including without limitation 
-%%%%   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-%%%%   and/or sell copies of the Software, and to permit persons to whom the 
+%%%%   Permission is hereby granted, free of charge, to any person obtaining a
+%%%%   copy of this software and associated documentation files (the "Software"),
+%%%%   to deal in the Software without restriction, including without limitation
+%%%%   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+%%%%   and/or sell copies of the Software, and to permit persons to whom the
 %%%%   Software is furnished to do so, subject to the following conditions:
 %%%%
-%%%%   The above copyright notice and this permission notice shall be 
+%%%%   The above copyright notice and this permission notice shall be
 %%%%   included in all copies or substantial portions of the Software.
 %%%%
-%%%%   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-%%%%   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-%%%%   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-%%%%   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-%%%%   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-%%%%   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+%%%%   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+%%%%   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+%%%%   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+%%%%   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+%%%%   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+%%%%   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 %%%%   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %%%%
 %%%%   ACKNOWLEDGMENT
 %%%%
 %%%%   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-%%%%   As per the ParaMonte library license agreement terms, if you use any parts of 
-%%%%   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-%%%%   work (education/research/industry/development/...) by citing the ParaMonte 
+%%%%   As per the ParaMonte library license agreement terms, if you use any parts of
+%%%%   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+%%%%   work (education/research/industry/development/...) by citing the ParaMonte
 %%%%   library as described on this page:
 %%%%
 %%%%       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -40,7 +40,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   This is the RestartFileContents class for generating instances 
+%   This is the RestartFileContents class for generating instances
 %   of ParaMonte output file contents. The ParaMonte read* methods
 %   return an object or a list of objects of class RestartFileContents.
 %
@@ -116,19 +116,19 @@ classdef RestartFileContents < OutputFileContents
 
         function helpme(self,varargin)
             %
-            %   Open the documentation for the input object's name in string format, otherwise, 
+            %   Open the documentation for the input object's name in string format, otherwise,
             %   open the documentation page for the class of the object owning the helpme() method.
             %
             %   Parameters
             %   ----------
             %
-            %       This function takes at most one string argument, 
+            %       This function takes at most one string argument,
             %       which is the name of the object for which help is needed.
             %
             %   Returns
             %   -------
             %
-            %       None. 
+            %       None.
             %
             %   Example
             %   -------
@@ -249,7 +249,7 @@ classdef RestartFileContents < OutputFileContents
             self.plot = struct();
 
             for plotType =  self.plotTypeList
-                self.resetPlot(plotType,"hard");
+                self.resetPlot("hard",plotType);
                 self.updateUser([]);
             end
             self.plot.reset = @self.resetPlot;
@@ -269,10 +269,29 @@ classdef RestartFileContents < OutputFileContents
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        function reportWrongPlotName(self,plotNames)
+            self.Err.marginTop = 1;
+            self.Err.marginBot = 1;
+            self.Err.msg    = "The input argument `plotNames` must be a string representing" + newline ...
+                            + "the name of a plot belonging to the RestartFileContents class or," + newline ...
+                            + "a list of such plot names. You have entered: " + plotNames + newline ...
+                            + "Possible plots are: " + newline ...
+                            + newline ...
+                            + join(self.plotTypeList,newline) + newline ...
+                            + newline ...
+                            + "Here is the help for the ``reset()`` method: " + newline ...
+                            + newline ...
+                            + string(help("self.resetPlot")) ...
+                            ;
+            self.Err.abort();
+        end
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         function resetPlot(self,resetType,plotNames)
             %
             %   Reset the properties of the plot to the original default settings.
-            %   Use this method when you change many attributes of the plot and 
+            %   Use this method when you change many attributes of the plot and
             %   you want to clean up and go back to the default settings.
             %
             %   Parameters
@@ -283,19 +302,19 @@ classdef RestartFileContents < OutputFileContents
             %           An optional string with possible value of "hard" or "soft".
             %           If set to "hard", the plot object(s) will be regenerated from scratch.
             %           This includes reading the original data frame again and resetting everything.
-            %           If set to "soft", then only the parameters of the plot objects will be reset 
+            %           If set to "soft", then only the parameters of the plot objects will be reset
             %           to the default values. The default is "soft".
             %
             %       plotNames
             %
             %           An optional string or array of string values representing the names of plots to reset.
-            %           If no value is provided, then all plots will be reset. Note that if ``plotNames`` is 
+            %           If no value is provided, then all plots will be reset. Note that if ``plotNames`` is
             %           present, then ``resetType`` must be also given as input argument.
             %
             %   Returns
             %   -------
             %
-            %       None. 
+            %       None.
             %
             %   Example
             %   -------
@@ -307,7 +326,7 @@ classdef RestartFileContents < OutputFileContents
             %
             if nargin<3 || isempty(plotNames); plotNames = "all"; end
             if nargin<2 || isempty(resetType); resetType = "soft"; end
-            
+
             requestedPlotTypeList = [];
             if isstring(plotNames) || ischar(plotNames)
                 plotTypeLower = lower(string(plotNames));
@@ -362,101 +381,143 @@ classdef RestartFileContents < OutputFileContents
                 requestedPlotType = string(requestedPlotTypeCell);
                 requestedPlotTypeLower = lower(requestedPlotType);
 
+                isLine          = contains(requestedPlotTypeLower,"line");
+                isScatter       = contains(requestedPlotTypeLower,"scatter");
+                isHistfit       = contains(requestedPlotTypeLower,"histfit");
+                isHistogram2    = contains(requestedPlotTypeLower,"histogram2");
+                isHistogram     = contains(requestedPlotTypeLower,"histogram") && ~isHistogram2;
+                isContourf      = contains(requestedPlotTypeLower,"contourf");
+                isContour3      = contains(requestedPlotTypeLower,"contour3");
+                isContour       = contains(requestedPlotTypeLower,"contour") && ~(isContourf || isContour3);
+                isGridPlot      = contains(requestedPlotTypeLower,"grid");
+                isCorMatPlot    = contains(requestedPlotTypeLower,"cormat");
+                isCovMatPlot    = contains(requestedPlotTypeLower,"covmat");
+                is3d            = contains(requestedPlotTypeLower,"3") || isHistogram2;
+
+                isDensityPlot = isHistfit || isHistogram2 || isHistogram || isContourf || isContour3 || isContour;
+
                 if self.reportEnabled
                     self.Err.msg = msgPrefix + requestedPlotType + msgSuffix;
                     self.Err.note();
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                %%%% reset line / scatter
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                isLineOrScatterPlot = contains(requestedPlotTypeLower,"scatter") || contains(requestedPlotTypeLower,"line");
-                isEllipsoidPlot = contains(requestedPlotTypeLower,"covmat") || contains(requestedPlotTypeLower,"cormat");
-                is3d = contains(requestedPlotTypeLower,"3") && ( isLineOrScatterPlot || isEllipsoidPlot );
+                if isLine || isScatter
 
-                % line
-
-                if strcmp(requestedPlotTypeLower,"line") || strcmp(requestedPlotTypeLower,"line3")
                     if resetTypeIsHard
                         self.plot.(requestedPlotType) = LineScatterPlot( requestedPlotType, self.df, @self.resetPlot );
                     else
                         self.plot.(requestedPlotType).resetInternal();
                     end
-                    self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
+
                     self.plot.(requestedPlotType).ccolumns = "sampleSize";
+                    self.plot.(requestedPlotType).ycolumns = string(self.df.Properties.VariableNames{self.offset});%:end);
                     self.plot.(requestedPlotType).axes.kws.xscale = "linear";
-                    self.plot.(requestedPlotType).plot.enabled = false;
-                    self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
-                    self.plot.(requestedPlotType).surface.enabled = true;
-                    self.plot.(requestedPlotType).surface.kws.lineWidth = 1;
-                end
 
-                % scatter / scatter3
-
-                if strcmp(requestedPlotTypeLower,"scatter") || strcmp(requestedPlotTypeLower,"scatter3")
-                    if resetTypeIsHard
-                        self.plot.(requestedPlotType) = LineScatterPlot( requestedPlotType, self.df, @self.resetPlot );
-                    else
-                        self.plot.(requestedPlotType).resetInternal();
+                    if isScatter
+                        if is3d
+                            self.plot.(requestedPlotType).scatter.size = 12;
+                        else
+                            self.plot.(requestedPlotType).scatter.size = 7;
+                        end
                     end
-                    self.plot.(requestedPlotType).ccolumns = "sampleSize";
-                    self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
-                    self.plot.(requestedPlotType).axes.kws.xscale = "linear";
-                    self.plot.(requestedPlotType).scatter.size = 10;
-                end
 
-                % lineScatter / lineScatter3
+                    if isScatter && isLine
 
-                if strcmp(requestedPlotTypeLower,"linescatter") || strcmp(requestedPlotTypeLower,"linescatter3")
-                    if resetTypeIsHard
-                        self.plot.(requestedPlotType) = LineScatterPlot( requestedPlotType, self.df, @self.resetPlot );
-                    else
-                        self.plot.(requestedPlotType).resetInternal();
-                    end
-                    self.plot.(requestedPlotType).surface.enabled = false;
-                    self.plot.(requestedPlotType).ccolumns = "sampleSize";
-                    self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset);%:end);
-                    self.plot.(requestedPlotType).axes.kws.xscale = "linear";
-                    if is3d
-                        self.plot.(requestedPlotType).plot.kws.color = [200 200 200 75] / 255;
-                    else
+                        self.plot.(requestedPlotType).surface.enabled = false;
+                        self.plot.(requestedPlotType).plot.enabled = true;
                         self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
-                        self.plot.(requestedPlotType).plot.kws.color = uint8([200 200 200 200]);
-                        self.plot.(requestedPlotType).scatter.size = 20;
-                    end
-                end
+                        if is3d
+                            self.plot.(requestedPlotType).plot.kws.color = [200 200 200 75] / 255;
+                        else
+                            self.plot.(requestedPlotType).plot.kws.color = uint8([200 200 200 200]);
+                        end
 
-                % 3d
+                    elseif isLine
 
-                if isLineOrScatterPlot && is3d
-                    if self.ndim==1
-                        self.plot.(requestedPlotType).xcolumns = {};
-                        self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset);
-                    else
-                        self.plot.(requestedPlotType).xcolumns = self.df.Properties.VariableNames(self.offset);
-                        self.plot.(requestedPlotType).ycolumns = self.df.Properties.VariableNames(self.offset+1);
+                        self.plot.(requestedPlotType).plot.enabled = false;
+                        self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
+                        self.plot.(requestedPlotType).surface.enabled = true;
+                        self.plot.(requestedPlotType).surface.kws.lineWidth = 1;
+
                     end
-                    self.plot.(requestedPlotType).zcolumns = "sampleSize";
+
+                    if is3d
+                        if self.ndim==1
+                            self.plot.(requestedPlotType).xcolumns = {};
+                            self.plot.(requestedPlotType).ycolumns = string(self.df.Properties.VariableNames{self.offset});
+                        else
+                            self.plot.(requestedPlotType).xcolumns = string(self.df.Properties.VariableNames{self.offset});
+                            self.plot.(requestedPlotType).ycolumns = string(self.df.Properties.VariableNames{self.offset+1});
+                        end
+                        self.plot.(requestedPlotType).zcolumns = "sampleSize";
+                    end
+
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                %%%% ellipsoid
+                %%%% reset histogram / histogram2 / histfit / contour / contourf / contour3
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                isCorMatPlot = strcmp(requestedPlotTypeLower,"cormat2") || strcmp(requestedPlotTypeLower,"cormat3");
-                isCovMatPlot = strcmp(requestedPlotTypeLower,"covmat2") || strcmp(requestedPlotTypeLower,"covmat3");
-                if isCorMatPlot || isCovMatPlot
-                    plotType = "line"; if is3d; plotType = plotType + "3"; end
-                    requestedPlotType = requestedPlotTypeLower;
+                if isDensityPlot
+
                     if resetTypeIsHard
-                        self.plot.(requestedPlotType) = EllipsoidPlot( plotType, self.df, @self.resetPlot );
+                        self.plot.(requestedPlotType) = DensityPlot( requestedPlotType, self.df, @self.resetPlot );
                     else
                         self.plot.(requestedPlotType).resetInternal();
                     end
-                    self.plot.(requestedPlotType).rows = self.plot.(requestedPlotType).getLogLinSpace ( 1.01 ... base
-                                                                                    , 1 ... logskip
-                                                                                    , 1 ... lowerLim
-                                                                                    , self.count ... upperLim
-                                                                                    );
+
+                    if isHistogram
+                        self.plot.(requestedPlotType).xcolumns = string(self.df.Properties.VariableNames{self.offset}); %:self.offset+2);
+                        self.plot.(requestedPlotType).histogram.kws.faceAlpha = 0.6;
+                        self.plot.(requestedPlotType).histogram.kws.faceColor = "auto";
+                        self.plot.(requestedPlotType).histogram.kws.edgeColor = "none";
+                    else
+                        self.plot.(requestedPlotType).xcolumns = string(self.df.Properties.VariableNames{self.offset});
+                        if isHistogram2 || isContour || isContourf || isContour3
+                            if self.ndim==1
+                                self.plot.(requestedPlotType).ycolumns = string(self.df.Properties.VariableNames{self.offset-1});
+                            else
+                                self.plot.(requestedPlotType).ycolumns = string(self.df.Properties.VariableNames{self.offset+1});
+                            end
+                        end
+                    end
+
+                end
+
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                %%%% reset grid
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                if isGridPlot
+                    %self.plot.(requestedPlotType).columns = string(self.df.Properties.VariableNames(self.offset:end));
+                    if resetTypeIsHard
+                        endIndx = min(lenVariableNames,self.offset+4);
+                        self.plot.(requestedPlotType) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset-1:endIndx), @self.resetPlot );
+                    else
+                        self.plot.(requestedPlotType).resetInternal();
+                    end
+                    self.plot.(requestedPlotType).ccolumn = string(self.df.Properties.VariableNames{self.offset-1});
+                end
+
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                %%%% reset ellipsoid
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                if isCorMatPlot || isCovMatPlot
+                    if resetTypeIsHard
+                        self.plot.(requestedPlotType) = EllipsoidPlot( requestedPlotType, self.df, @self.resetPlot );
+                    else
+                        self.plot.(requestedPlotType).resetInternal();
+                    end
+                    self.plot.(requestedPlotType).rows = self.plot.(requestedPlotType).getLogLinSpace   ( 1.05 ... base
+                                                                                                        , 1 ... logskip
+                                                                                                        , 1 ... lowerLim
+                                                                                                        , self.count ... upperLim
+                                                                                                        );
                     if isCorMatPlot
                         self.plot.(requestedPlotType).matrixColumn = self.df.Properties.VariableNames(end);
                     elseif isCovMatPlot
@@ -472,20 +533,21 @@ classdef RestartFileContents < OutputFileContents
                     self.plot.(requestedPlotType).title.label = "Evolution of the " + matrixType + " matrices of the proposal distribution";
                     self.plot.(requestedPlotType).title.kws.fontsize = 11;
                     self.plot.(requestedPlotType).title.kws.interpreter = "tex";
-                end
 
-                % 3d
+                    % 3d
 
-                if isEllipsoidPlot && is3d
-                    %if self.ndim==1
-                    %    self.plot.(requestedPlotType).matrixColumn = {};
-                    %    self.plot.(requestedPlotType).centerColumn = self.df.Properties.VariableNames(self.offset);
-                    %else
-                    %    self.plot.(requestedPlotType).matrixColumn = self.df.Properties.VariableNames(self.offset);
-                    %    self.plot.(requestedPlotType).centerColumn = self.df.Properties.VariableNames(self.offset+1);
-                    %end
-                    %self.plot.(requestedPlotType).zcolumn = "sampleSize";
-                    self.plot.(requestedPlotType).axes.kws.zscale = "log";
+                    if is3d
+                        %if self.ndim==1
+                        %    self.plot.(requestedPlotType).matrixColumn = {};
+                        %    self.plot.(requestedPlotType).centerColumn = self.df.Properties.VariableNames(self.offset);
+                        %else
+                        %    self.plot.(requestedPlotType).matrixColumn = self.df.Properties.VariableNames(self.offset);
+                        %    self.plot.(requestedPlotType).centerColumn = self.df.Properties.VariableNames(self.offset+1);
+                        %end
+                        %self.plot.(requestedPlotType).zcolumn = "sampleSize";
+                        self.plot.(requestedPlotType).axes.kws.zscale = "log";
+                    end
+
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -500,5 +562,4 @@ classdef RestartFileContents < OutputFileContents
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end % classdef RestartFileContents < handle
-
+end % classdef

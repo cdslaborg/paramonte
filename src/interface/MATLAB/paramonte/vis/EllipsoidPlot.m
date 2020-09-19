@@ -590,6 +590,13 @@ classdef EllipsoidPlot < BasePlot
 
             lglabels = [];
 
+            if ~self.type.is3d
+                self.target.currentFig = struct();
+                self.target.counter.xline = 0;
+                self.target.counter.yline = 0;
+                self.target.counter.scatter = 0;
+            end
+
             if self.type.is3d
                 zdataOnes = ones(self.npoint,1);
             end
