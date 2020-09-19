@@ -269,25 +269,28 @@ classdef RestartFileContents < OutputFileContents
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function resetPlot(self,varargin)
+        function resetPlot(self,resetType,plotNames)
             %
             %   Reset the properties of the plot to the original default settings.
-            %   Use this method when you change many attributes of the plot
-            %   and you want to clean up.
+            %   Use this method when you change many attributes of the plot and 
+            %   you want to clean up and go back to the default settings.
             %
             %   Parameters
             %   ----------
             %
+            %       resetType
+            %
+            %           An optional string with possible value of "hard" or "soft".
+            %           If set to "hard", the plot object(s) will be regenerated from scratch.
+            %           This includes reading the original data frame again and resetting everything.
+            %           If set to "soft", then only the parameters of the plot objects will be reset 
+            %           to the default values. The default is "soft".
+            %
             %       plotNames
             %
             %           An optional string or array of string values representing the names of plots to reset.
-            %           If no value is provided, then all plots will be reset.
-            %
-            %       resetType
-            %
-            %           An optional string with possible value of "hard".
-            %           If provided, the plot object will be regenerated from scratch.
-            %           This includes reading the original data frame again and resetting everything.
+            %           If no value is provided, then all plots will be reset. Note that if ``plotNames`` is 
+            %           present, then ``resetType`` must be also given as input argument.
             %
             %   Returns
             %   -------
@@ -297,67 +300,53 @@ classdef RestartFileContents < OutputFileContents
             %   Example
             %   -------
             %
-            %       reset("line3") % reset line3 plot to the default dettings
-            %       reset("line3","hard") % regenerate line3 plot from scratch
-            %       reset(["line","line3"],"hard") % regenerate line and line3 plots from scratch
-            %       reset("hard") % regenrate all plots from scratch
+            %       reset() % reset all plots to the default settings
+            %       reset("soft","line") % reset the line plot from scratch.
+            %       reset("hard",["line","scatter"]) % regenerate line and scatter plots from scratch
+            %       reset("hard") % regenerate all plots from scratch
             %
-            resetTypeIsHard = false;
+            if nargin<3 || isempty(plotNames); plotNames = "all"; end
+            if nargin<2 || isempty(resetType); resetType = "soft"; end
+            
             requestedPlotTypeList = [];
-            %plotTypeList =  [ "line" ...
-            %                , "scatter" ...
-            %                , "lineScatter" ...
-            %                , "line3" ...
-            %                , "scatter3" ...
-            %                , "lineScatter3" ...
-            %                , "histogram" ...
-            %                , "histogram2" ...
-            %                , "histfit" ...
-            %                , "contour" ...
-            %                , "contourf" ...
-            %                , "contour3" ...
-            %                , "grid" ...
-            %                ];
-            lenVariableNames = length(self.df.Properties.VariableNames);
-
-            if nargin==1
-                requestedPlotTypeList = self.plotTypeList;
-            else
-                argOne = string(varargin{1});
-                if length(argOne)==1 && strcmpi(argOne,"hard")
+            if isstring(plotNames) || ischar(plotNames)
+                plotTypeLower = lower(string(plotNames));
+                if strcmp(plotTypeLower,"all")
                     requestedPlotTypeList = self.plotTypeList;
-                    resetTypeIsHard = true;
+                elseif any(contains(self.plotTypeList,plotNames))
+                    requestedPlotTypeList = [plotNames];
                 else
-                    for requestedPlotTypeCell = varargin{1}
-                        if isa(requestedPlotTypeCell,"cell")
-                            requestedPlotType = string(requestedPlotTypeCell{1});
-                        else
-                            requestedPlotType = string(requestedPlotTypeCell);
-                        end
-                        plotTypeNotFound = true;
-                        for plotTypeCell = self.plotTypeList
-                            plotType = string(plotTypeCell{1});
-                            if strcmp(plotType,requestedPlotType)
-                                requestedPlotTypeList = [ requestedPlotTypeList , plotType ];
-                                plotTypeNotFound = false;
-                                break;
-                            end
-                        end
-                        if plotTypeNotFound
-                            error   ( newline ...
-                                    + "The input plot-type argument, " + varargin{1} + ", to the resetPlot method" + newline ...
-                                    + "did not match any plot type. Possible plot types include:" + newline ...
-                                    + "line, lineScatter." + newline ...
-                                    );
-                        end
+                    self.reportWrongPlotName(plotNames);
+                end
+            elseif getVecLen(plotNames)
+                for plotName = plotNames
+                    if ~any(contains(self.plotTypeList,plotName))
+                        self.reportWrongPlotName(plotName);
                     end
                 end
+            else
+                self.reportWrongPlotName("a none-string none-list object.")
             end
 
-            if nargin==3 && strcmpi(varargin{2},"hard"); resetTypeIsHard = true; end
+            resetTypeIsHard = false;
+            if isstring(resetType) || ischar(resetType)
+                resetTypeIsHard = strcmp(lower(resetType),"hard");
+            else
+                self.Err.marginTop = 1;
+                self.Err.marginBot = 1;
+                self.Err.msg    = "The input argument ``resetType`` must be a string representing" + newline ...
+                                + "the type of the reset to be performed on the plots." + newline ...
+                                + "A list of possible plots includes: ""hard"", ""soft""" + newline ...
+                                + "Here is the help for the ``reset()`` method: " + newline ...
+                                + newline ...
+                                + string(help("self.resetPlot")) ...
+                                ;
+                self.Err.abort();
+            end
+
+            lenVariableNames = length(self.df.Properties.VariableNames);
 
             if resetTypeIsHard
-                resetTypeIsHard = true;
                 msgPrefix = "creating the ";
                 msgSuffix = " plot object from scratch...";
             else
@@ -450,57 +439,8 @@ classdef RestartFileContents < OutputFileContents
                 end
 
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                % hist / hist2 / histfit / contour / contourf / contour3
-
-                isHist = strcmp(requestedPlotTypeLower,"histogram");
-                isHist2 = strcmp(requestedPlotTypeLower,"histogram2");
-                isHistfit = strcmp(requestedPlotTypeLower,"histfit");
-                isContour = strcmp(requestedPlotTypeLower,"contour");
-                isContourf = strcmp(requestedPlotTypeLower,"contourf");
-                isContour3 = strcmp(requestedPlotTypeLower,"contour3");
-                if isHist || isHist2 || isHistfit || isContour || isContourf || isContour3
-                    if resetTypeIsHard
-                        self.plot.(requestedPlotTypeLower) = HistPlot( self.df, requestedPlotTypeLower );
-                    else
-                        self.plot.(requestedPlotTypeLower).resetInternal();
-                    end
-                    if isHist
-                        self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset); %:self.offset+2);
-                        self.plot.(requestedPlotTypeLower).histogram.kws.faceAlpha = 0.6;
-                        self.plot.(requestedPlotTypeLower).histogram.kws.faceColor = "auto";
-                        self.plot.(requestedPlotTypeLower).histogram.kws.edgeColor = "none";
-                    else
-                        self.plot.(requestedPlotTypeLower).xcolumns = self.df.Properties.VariableNames(self.offset);
-                        if isHist2 || isContour || isContourf || isContour3
-                            if self.ndim==1
-                                self.plot.(requestedPlotTypeLower).ycolumns = self.df.Properties.VariableNames(self.offset-1);
-                            else
-                                self.plot.(requestedPlotTypeLower).ycolumns = self.df.Properties.VariableNames(self.offset+1);
-                            end
-                        end
-                    end
-                end
-
+                %%%% ellipsoid
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                % grid
-
-                isGrid = strcmp(requestedPlotTypeLower,"grid");
-                if isGrid
-                    %self.plot.(requestedPlotTypeLower).columns = string(self.df.Properties.VariableNames(self.offset:end));
-                    if resetTypeIsHard
-                        endIndex = min(lenVariableNames,self.offset+4);
-                        self.plot.(requestedPlotTypeLower) = GridPlot( self.df, self.df.Properties.VariableNames(self.offset-1:endIndex));
-                    else
-                        self.plot.(requestedPlotTypeLower).resetInternal();
-                    end
-                    self.plot.(requestedPlotTypeLower).ccolumn = string(self.df.Properties.VariableNames(self.offset-1));
-                end
-
-                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-                % ellipsoid
 
                 isCorMatPlot = strcmp(requestedPlotTypeLower,"cormat2") || strcmp(requestedPlotTypeLower,"cormat3");
                 isCovMatPlot = strcmp(requestedPlotTypeLower,"covmat2") || strcmp(requestedPlotTypeLower,"covmat3");
