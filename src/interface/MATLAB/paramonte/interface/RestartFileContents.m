@@ -508,7 +508,7 @@ classdef RestartFileContents < OutputFileContents
                     plotType = "line"; if is3d; plotType = plotType + "3"; end
                     requestedPlotType = requestedPlotTypeLower;
                     if resetTypeIsHard
-                        self.plot.(requestedPlotType) = EllipsoidPlot( self.df, plotType, @self.resetPlot );
+                        self.plot.(requestedPlotType) = EllipsoidPlot( plotType, self.df, @self.resetPlot );
                     else
                         self.plot.(requestedPlotType).resetInternal();
                     end
