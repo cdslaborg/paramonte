@@ -102,14 +102,21 @@ contains
         "sampleRefinementMethod is a string variable that represents the method of computing the Integrated Autocorrelation Time &
         &(IAC) to be used in "// methodName //" for refining the final output MCMC chain and sample. &
         &The string value must be enclosed by either single or double quotation marks when provided as input. &
-        &Options that are currently &
-        &supported include:\n\n&
+        &Options that are currently supported include:\n\n&
         &    sampleRefinementMethod = '" // BATCH_MEANS_METHOD_NAME // "'\n\n&
         &            This method of computing the Integrated Autocorrelation Time is based on the approach described in &
                     &SCHMEISER, B., 1982, Batch size effects in the analysis of simulation output, Oper. Res. 30 556-568. The &
                     &batch sizes in the BatchMeans method are chosen to be int(N^(2/3)) where N is the length of the MCMC chain. &
                     &As long as the batch size is larger than the IAC of the chain and there are significantly more than 10 &
-                    &batches, the BatchMeans method will provide reliable estimates of the IAC.\n\n&
+                    &batches, the BatchMeans method will provide reliable estimates of the IAC.&
+                    &Note that the refinement strategy involves two separate phases of sample decorrelation. At the first stage, &
+                    &the Markov chain is decorrelated recursively (for as long as needed) based on the IAC of its compact format, &
+                    &where only the the uniquely-visited states are kept in the (compact) chain. Once the Markov chain is refined such &
+                    &that its compact format is fully decorrelated, the second phase of the decorrelation begins during which the &
+                    &Markov chain is decorrelated based on the IAC of the chain in its verbose (Markov) format. This process is again &
+                    &repeated recursively for as long as there is &
+                    &Then, the decorrelated sample, &
+                    &\n\n&
         &Note that in order to obtain i.i.d. samples from a multidimensional chain, "//methodName//" will use the maximum of &
         &IAC among all dimensions of the chain to refine the chain. Also, note that the value specified for sampleRefinementCount &
         &is used only when the variable sampleSize < 0, otherwise, it will be ignored. &
