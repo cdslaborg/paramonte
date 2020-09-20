@@ -130,25 +130,6 @@
 %
 %               If colormap is not provided or is empty, the default will be "autumn".
 %
-%           colorbar.kws
-%
-%               A MATLAB struct() whose components' values are passed to MATLAB's colorbar function.
-%               If your desired attribute is missing from the fieldnames of colorbar.kws, simply add
-%               a new field named as the attribute and assign the desired value to it.
-%
-%               Example usage:
-%
-%                   colorbar.enabled = true % add colorbar
-%                   colorbar.kws.location = "west"
-%
-%               If a desired property is missing among the struct fields, simply add the field
-%               and its value to colorbar.kws.
-%
-%               WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%               WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%               WARNING: For example, colorbar.kws.color and colorbar.kws.Color are the same,
-%               WARNING: and only one of the two will be processed.
-%
 %           heatmap_kws
 %
 %               A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
@@ -195,12 +176,10 @@ classdef HeatmapPlot < BasePlot
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     properties (Access = public)
-        title
         xcolumns
         ycolumns
         colormap
         precision
-        colorbar
         heatmap
     end
 
@@ -237,13 +216,6 @@ classdef HeatmapPlot < BasePlot
             self.heatmap.enabled = true;
             self.heatmap.kws = struct();
             self.heatmap.ColorLimits = [];
-
-            self.colorbar = struct();
-            self.colorbar.enabled = true;
-            self.colorbar.kws = struct();
-            %self.colorbar.label = [];
-            %self.colorbar.kws.fontSize = [];
-            %self.colorbar.kws.singleOptions = {};
 
             self.colormap = struct();
             self.colormap.enabled = true;
@@ -358,10 +330,13 @@ classdef HeatmapPlot < BasePlot
             % set heatmap keyword arguments
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            %if self.heatmap.enabled
-            %    fname = "heatmap";
-            %    key = "title"; val = ""; if ~isfield(self.(fname),key) || isempty(self.(fname).(key)); self.(fname).(key) = val; end
-            %end
+            if self.heatmap.enabled
+                fname = "heatmap";
+                %key = "fontSize"; val = 12; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                %key = "fontName"; val = "Cambria"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                key = "colorbarVisible"; val = "on"; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+                key = "missingDataColor"; val = [0.1500 0.1500 0.1500]; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
+            end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if self.isdryrun; return; end
@@ -419,25 +394,16 @@ classdef HeatmapPlot < BasePlot
                 self.currentFig.heatmap.ColorLimits = self.heatmap.ColorLimits;
             end
 
-            % add line colorbar
+            % set colormap. do not put this anywhere before "if self.isdryrun; return; end". This command requires an existing figure.
 
             if self.colormap.enabled
                 if isempty(self.colormap.values)
-                    self.colormap.values = redblue(); % do not put this anywhere before "if self.isdryrun; return; end". This command reuires an existing figure.
+                    self.colormap.values = redblue();
                 end
-                colormap(self.colormap.values);
+            else
+                self.colormap.values = gray;
             end
-
-            if ~self.colorbar.enabled
-                %if isempty(self.colorbar.kws.fontSize) || ~isa(self.colorbar.kws.fontSize,"numeric")
-                %    self.colorbar.kws.fontSize = self.currentFig.axes.FontSize;
-                %end
-                %colorbar_kws_cell = convertStruct2Cell(self.colorbar.kws,{"enabled","label","singleOptions"});
-                %colorbar(colorbar_kws_cell{:});
-                %ylabel(self.currentFig.colorbar,self.colorbar.label,self.colorbar.kws.fontSize, "Interpreter", "none");
-            %else
-                colorbar("off");
-            end
+            colormap(self.colormap.values);
 
             self.doBasePlotStuff();
 

@@ -60,18 +60,17 @@ def kde2d(x, y, n=256, limits=None):
     Gaussian kernel with a standard deviation corresponding to 
     that bandwidth.
 
-        This module is based on the KDE-diffusion of 
+        This module is based on the KDE estimation method of 
 
             Z. I. Botev, J. F. Grotowski, D. P. Kroese: 
             Kernel density estimation via diffusion. 
             Annals of Statistics 38 (2010), no. 5, 2916--2957. 
             doi:10.1214/10-AOS799
 
-        and
+        and 
 
-            John Hennig
-            DOI: 10.5281/zenodo.3830437
-            https://doi.org/10.5281/zenodo.3830437
+            John Hennig 
+            DOI: 10.5281/zenodo.3830437 
 
         **Parameters**
 
