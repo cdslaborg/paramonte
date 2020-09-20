@@ -108,15 +108,24 @@ contains
                     &SCHMEISER, B., 1982, Batch size effects in the analysis of simulation output, Oper. Res. 30 556-568. The &
                     &batch sizes in the BatchMeans method are chosen to be int(N^(2/3)) where N is the length of the MCMC chain. &
                     &As long as the batch size is larger than the IAC of the chain and there are significantly more than 10 &
-                    &batches, the BatchMeans method will provide reliable estimates of the IAC.&
+                    &batches, the BatchMeans method will provide reliable estimates of the IAC. &
                     &Note that the refinement strategy involves two separate phases of sample decorrelation. At the first stage, &
                     &the Markov chain is decorrelated recursively (for as long as needed) based on the IAC of its compact format, &
-                    &where only the the uniquely-visited states are kept in the (compact) chain. Once the Markov chain is refined such &
-                    &that its compact format is fully decorrelated, the second phase of the decorrelation begins during which the &
-                    &Markov chain is decorrelated based on the IAC of the chain in its verbose (Markov) format. This process is again &
-                    &repeated recursively for as long as there is &
-                    &Then, the decorrelated sample, &
-                    &\n\n&
+                    &where only the the uniquely-visited states are kept in the (compact) chain. Once the Markov chain is refined &
+                    &such that its compact format is fully decorrelated, the second phase of the decorrelation begins during which &
+                    &the Markov chain is decorrelated based on the IAC of the chain in its verbose (Markov) format. This process &
+                    &is repeated recursively for as long as there is any residual autocorrelation in the refined sample.\n\n&
+        &    sampleRefinementMethod = '" // BATCH_MEANS_METHOD_NAME // "-compact'\n\n&
+        &            This is the same as the first case in the above, except that only the first phase of the sample refinement &
+                    &described in the above will be performed, that is, the (verbose) Markov chain is refined only based on the &
+                    &IAC computed from the compact format of the Markov chain. This will lead to a larger final refined sample. &
+                    &However, the final sample will likely not be fully decorrelated.\n\n&
+        &    sampleRefinementMethod = '" // BATCH_MEANS_METHOD_NAME // "-verbose'\n\n&
+        &            This is the same as the first case in the above, except that only the second phase of the sample refinement &
+                    &described in the above will be performed, that is, the (verbose) Markov chain is refined only based on the &
+                    &IAC computed from the verbose format of the Markov chain. While the resulting refined sample will be fully &
+                    &decorrelated, the size of the refined sample may be smaller than the default choice in the first case in the &
+                    &above.\n\n&
         &Note that in order to obtain i.i.d. samples from a multidimensional chain, "//methodName//" will use the maximum of &
         &IAC among all dimensions of the chain to refine the chain. Also, note that the value specified for sampleRefinementCount &
         &is used only when the variable sampleSize < 0, otherwise, it will be ignored. &
