@@ -987,7 +987,7 @@ classdef GridPlot < BasePlot
                 columnsRange.max(i) = maxvalue + margin;
             end
 
-            % targetRGB = getRGB("deep carrot orange");
+            targetRGB = getRGB("deep carrot orange");
 
             iaxis = 0;
             self.currentFig.subplotList = cell(self.axes.main.ncol,self.axes.main.nrow);
@@ -1067,19 +1067,19 @@ classdef GridPlot < BasePlot
 
                         %%%% set up subplot target
 
-                        %if ~self.currentFig.subplotList{irow,icol}.type.is3d
-                        %    for fname = ["hline","vline","scatter"]
-                        %        self.currentFig.subplotList{irow,icol}.target.(fname).kws.color = targetRGB;
-                        %    end
-                        %    if strcmp(currentPlotType,"histogram") || strcmp(currentPlotType,"histfit")
-                        %        self.currentFig.subplotList{irow,icol}.target.hline.enabled = false;
-                        %        self.currentFig.subplotList{irow,icol}.target.scatter.enabled = false;
-                        %    elseif strcmp(currentPlotType,"histogram2") || strcmp(currentPlotType,"contourf")
-                        %        self.currentFig.subplotList{irow,icol}.target.hline.enabled = false;
-                        %        self.currentFig.subplotList{irow,icol}.target.vline.enabled = false;
-                        %        self.currentFig.subplotList{irow,icol}.target.scatter.enabled = false;
-                        %    end
-                        %end
+                        if ~self.currentFig.subplotList{irow,icol}.type.is3d
+                            self.currentFig.subplotList{irow,icol}.target.scatter.color = targetRGB;
+                            self.currentFig.subplotList{irow,icol}.target.vline.color = targetRGB;
+                            self.currentFig.subplotList{irow,icol}.target.hline.color = targetRGB;
+                            if strcmp(currentPlotType,"histogram") || strcmp(currentPlotType,"histfit")
+                                self.currentFig.subplotList{irow,icol}.target.hline.enabled = false;
+                                self.currentFig.subplotList{irow,icol}.target.scatter.enabled = false;
+                            elseif strcmp(currentPlotType,"contourf")
+                                self.currentFig.subplotList{irow,icol}.target.hline.enabled = false;
+                                self.currentFig.subplotList{irow,icol}.target.vline.enabled = false;
+                                self.currentFig.subplotList{irow,icol}.target.scatter.enabled = false;
+                            end
+                        end
 
                         %if irow~=self.axes.main.nrow
                         %    set(gca,'XLabel',[]);

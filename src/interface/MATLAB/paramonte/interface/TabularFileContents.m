@@ -473,9 +473,9 @@ classdef TabularFileContents < OutputFileContents
                     elseif isLine
 
                         self.plot.(requestedPlotType).plot.enabled = false;
-                        self.plot.(requestedPlotType).plot.kws.lineWidth = 1.5;
+                        self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
                         self.plot.(requestedPlotType).surface.enabled = true;
-                        self.plot.(requestedPlotType).surface.kws.lineWidth = 1.5;
+                        self.plot.(requestedPlotType).surface.kws.lineWidth = 1;
 
                     end
 
@@ -559,6 +559,7 @@ classdef TabularFileContents < OutputFileContents
 
                     if isDensityPlot && self.plot.(requestedPlotType).type.is1d
                         self.plot.(requestedPlotType).target.hline.enabled = false;
+                        self.plot.(requestedPlotType).target.scatter.enabled = false;
                     end
                     if isLine || isScatter
                         self.plot.(requestedPlotType).target.vline.enabled = true;

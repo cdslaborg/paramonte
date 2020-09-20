@@ -646,23 +646,23 @@ classdef BasePlot < dynamicprops
         function parseArgs(self,varargin)
 
             vararginLen = length(varargin);
-            selfProperties = properties(self);
+            selfProperties = string(properties(self));
             selfPropertiesLen = length(selfProperties);
 
-            for i = 1:2:vararginLen
+            for i = 1:2:vararginLen % walk through input key val.
                 propertyDoesNotExist = true;
-                vararginString = string(varargin{i});
-                for ip = 1:selfPropertiesLen
-                    if strcmp(vararginString,string(selfProperties(ip)))
+                vararginItemString = string(varargin{i});
+                for ip = 1:selfPropertiesLen % walk through object prop val.
+                    if strcmpi(vararginItemString,selfProperties(ip))
                         propertyDoesNotExist = false;
-                        if i < vararginLen
-                            if isa(self.(selfProperties{ip}),"struct") && isa(varargin{i+1},"cell")
-                                self.(selfProperties{ip}) = parseArgs( self.(selfProperties{ip}) , varargin{i+1}{:} );
+                        if i < vararginLen % this must be here. checks for the correct pairing of key, val.
+                            if isstruct(self.(selfProperties(ip))) && iscell(varargin{i+1})
+                                self.(selfProperties(ip)) = parseArgs( self.(selfProperties(ip)) , varargin{i+1}{:} );
                             else
-                                self.(selfProperties{ip}) = varargin{i+1};
+                                self.(selfProperties(ip)) = varargin{i+1};
                             end
                         else
-                            error("The corresponding value for the property """ + string(selfProperties{ip}) + """ is missing as input argument.");
+                            error("The corresponding value for the property """ + string(selfProperties(ip)) + """ is missing as input argument.");
                         end
                         break;
                     end
@@ -679,15 +679,15 @@ classdef BasePlot < dynamicprops
             % vararginLen = length(varargin);
             % for i = 1:2:vararginLen
                 % propertyDoesNotExist = true;
-                % selfProperties = properties(self);
+                % selfProperties = string(properties(self));
                 % selfPropertiesLen = length(selfProperties);
                 % for ip = 1:selfPropertiesLen
-                    % if strcmp(string(varargin{i}),string(selfProperties{ip}))
+                    % if strcmp(string(varargin{i}),string(selfProperties(ip)))
                         % propertyDoesNotExist = false;
                         % if i < vararginLen
-                            % self.(selfProperties{ip}) = varargin{i+1};
+                            % self.(selfProperties(ip)) = varargin{i+1};
                         % else
-                            % error("The corresponding value for the property """ + string(selfProperties{ip}) + """ is missing as input argument.");
+                            % error("The corresponding value for the property """ + string(selfProperties(ip)) + """ is missing as input argument.");
                         % end
                         % break;
                     % end
