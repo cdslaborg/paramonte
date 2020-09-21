@@ -947,45 +947,45 @@ class GridPlot(BasePlot):
             if mappable is None and self.plotType.upper.enabled:
 
                 if mappable is None and "scatter" in self.plotType.upper.value.lower():
-                    mappable = self.currentFig.subplotGrid[0][1].currentFig.scatter
+                    mappable = self.currentFig.subplotGrid[0][1].currentFig.scatterList[0]
 
                 if mappable is None and "line"==self.plotType.upper.value and self.layout.line.lineCollection.enabled:
-                    mappable = self.currentFig.subplotGrid[0][1].currentFig.lineCollection
+                    mappable = self.currentFig.subplotGrid[0][1].currentFig.lineCollectionList[0]
 
                 if mappable is None and "lineScatter"==self.plotType.upper.value and self.layout.lineScatter.lineCollection.enabled:
-                    mappable = self.currentFig.subplotGrid[0][1].currentFig.lineCollection
+                    mappable = self.currentFig.subplotGrid[0][1].currentFig.lineCollectionList[0]
 
             if mappable is None and self.plotType.lower.enabled:
 
                 if mappable is None and "scatter" in self.plotType.lower.value.lower():
-                    mappable = self.currentFig.subplotGrid[1][0].currentFig.scatter
+                    mappable = self.currentFig.subplotGrid[1][0].currentFig.scatterList[0]
 
                 if mappable is None and "line"==self.plotType.upper.value and self.layout.line.lineCollection.enabled:
-                    mappable = self.currentFig.subplotGrid[1][0].currentFig.lineCollection
+                    mappable = self.currentFig.subplotGrid[1][0].currentFig.lineCollectionList[0]
 
                 if mappable is None and "lineScatter"==self.plotType.upper.value and self.layout.lineScatter.lineCollection.enabled:
-                    mappable = self.currentFig.subplotGrid[1][0].currentFig.lineCollection
+                    mappable = self.currentFig.subplotGrid[1][0].currentFig.lineCollectionList[0]
 
             # search for contour mappable
 
             if mappable is None and self.plotType.upper.enabled:
 
                 if mappable is None and "contour"==self.plotType.upper.value.lower():
-                    mappable = self.currentFig.subplotGrid[0][1].currentFig.contour
+                    mappable = self.currentFig.subplotGrid[0][1].currentFig.contourList[0]
                     isDensityMappable = True
 
                 if mappable is None and "contourf" in self.plotType.upper.value.lower():
-                    mappable = self.currentFig.subplotGrid[0][1].currentFig.contourf
+                    mappable = self.currentFig.subplotGrid[0][1].currentFig.contourfList[0]
                     isDensityMappable = True
 
             if mappable is None and self.plotType.lower.enabled:
 
                 if mappable is None and "contour"==self.plotType.lower.value.lower():
-                    mappable = self.currentFig.subplotGrid[1][0].currentFig.contour
+                    mappable = self.currentFig.subplotGrid[1][0].currentFig.contourList[0]
                     isDensityMappable = True
 
                 if mappable is None and "contourf" in self.plotType.lower.value.lower():
-                    mappable = self.currentFig.subplotGrid[1][0].currentFig.contourf
+                    mappable = self.currentFig.subplotGrid[1][0].currentFig.contourfList[0]
                     isDensityMappable = True
 
             # add colorbar

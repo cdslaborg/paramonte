@@ -309,7 +309,7 @@ class LineScatterPlot(BasePlot):
 
                             .. code-block:: python
 
-                                axes.kws.faceColor = "w"
+                                axes.kws.facecolor = "w"
 
                         **NOTE**
 
@@ -331,7 +331,7 @@ class LineScatterPlot(BasePlot):
 
                             .. code-block:: python
 
-                                axes3d.kws.faceColor = "w"
+                                axes3d.kws.facecolor = "w"
 
                         **NOTE**
 
@@ -359,7 +359,7 @@ class LineScatterPlot(BasePlot):
 
                             .. code-block:: python
 
-                                figure.kws.faceColor = "w"
+                                figure.kws.facecolor = "w"
 
                         **NOTE**
 
@@ -609,7 +609,7 @@ class LineScatterPlot(BasePlot):
                 if "c" not in vars(self.scatter.kws).keys(): self.scatter.kws.c = None
                 if "cmap" not in vars(self.scatter.kws).keys() or self.scatter.kws.cmap is None: self.scatter.kws.cmap = "autumn"
                 if "alpha" not in vars(self.scatter.kws).keys(): self.scatter.kws.alpha = 1
-                if "edgeColor" not in vars(self.scatter.kws).keys(): self.scatter.kws.edgeColor = None
+                if "edgecolors" not in vars(self.scatter.kws).keys(): self.scatter.kws.edgecolors = None
                 if "zorder" not in vars(self.scatter.kws).keys(): self.scatter.kws.zorder = 2
 
                 if not cEnabled: self.scatter.kws.cmap = None
@@ -684,8 +684,8 @@ class LineScatterPlot(BasePlot):
         if self.figure.enabled:
             if isinstance(self.figure.kws, Struct):
                 if "dpi" not in vars(self.figure.kws).keys(): self.figure.kws.dpi = 150
-                if "faceColor" not in vars(self.figure.kws).keys(): self.figure.kws.faceColor = "w"
-                if "edgeColor" not in vars(self.figure.kws).keys(): self.figure.kws.edgeColor = "w"
+                if "facecolor" not in vars(self.figure.kws).keys(): self.figure.kws.facecolor = "w"
+                if "edgecolor" not in vars(self.figure.kws).keys(): self.figure.kws.edgecolor = "w"
             else:
                 raise Exception ( "The figure.kws component of the current LineScatterPlot object must" + newline
                                 + "be an object of class Struct(), essentially a structure with components" + newline
@@ -823,6 +823,13 @@ class LineScatterPlot(BasePlot):
         ############################################################################################################################
 
         if self.legend.enabled: self.legend._labels = []
+        if self._type.isScatter and self.scatter.enabled: self.currentFig.scatterList = []
+        if self._type.isLine:
+            if self.plot.enabled: self.currentFig.plotList = []
+            if cEnabled and self.lineCollection.enabled:
+                self.currentFig.lineCollectionList = []
+                self.currentFig.plotList = []
+
         for i in range(maxLenColumns):
 
             if xcolindexlen>1:
@@ -864,18 +871,18 @@ class LineScatterPlot(BasePlot):
 
                 if self._type.is3d:
 
-                    self.currentFig.scatter = self.currentFig.axes.scatter  ( self.scatter._xvalues
-                                                                            , self.scatter._yvalues
-                                                                            , self.scatter._zvalues
-                                                                            , **vars(self.scatter.kws)
-                                                                            )
+                    self.currentFig.scatterList.append( self.currentFig.axes.scatter( self.scatter._xvalues
+                                                                                    , self.scatter._yvalues
+                                                                                    , self.scatter._zvalues
+                                                                                    , **vars(self.scatter.kws)
+                                                                                    ) )
 
                 else:
 
-                    self.currentFig.scatter = self.currentFig.axes.scatter  ( self.scatter._xvalues
-                                                                            , self.scatter._yvalues
-                                                                            , **vars(self.scatter.kws)
-                                                                            )
+                    self.currentFig.scatterList.append( self.currentFig.axes.scatter( self.scatter._xvalues
+                                                                                    , self.scatter._yvalues
+                                                                                    , **vars(self.scatter.kws)
+                                                                                    ) )
 
             ########################################################################################################################
             #### add line plot
@@ -887,18 +894,18 @@ class LineScatterPlot(BasePlot):
 
                     if self._type.is3d:
 
-                        self.currentFig.plot = self.currentFig.axes.plot( self.plot._xvalues
-                                                                        , self.plot._yvalues
-                                                                        , self.plot._zvalues
-                                                                        , **vars(self.plot.kws)
-                                                                        )
+                        self.currentFig.plotList.append ( self.currentFig.axes.plot ( self.plot._xvalues
+                                                                                    , self.plot._yvalues
+                                                                                    , self.plot._zvalues
+                                                                                    , **vars(self.plot.kws)
+                                                                                    ) )
 
                     else:
 
-                        self.currentFig.plot = self.currentFig.axes.plot( self.plot._xvalues
-                                                                        , self.plot._yvalues
-                                                                        , **vars(self.plot.kws)
-                                                                        )
+                        self.currentFig.plotList.append ( self.currentFig.axes.plot ( self.plot._xvalues
+                                                                                    , self.plot._yvalues
+                                                                                    , **vars(self.plot.kws)
+                                                                                    ) )
 
                 if cEnabled and self.lineCollection.enabled:
 
@@ -908,11 +915,11 @@ class LineScatterPlot(BasePlot):
 
                         # properly and automatically set the axes limits via plot()
 
-                        self.currentFig.plot = self.currentFig.axes.plot( self.plot._xvalues
-                                                                        , self.plot._yvalues
-                                                                        , self.plot._zvalues
-                                                                        , linewidth = 0
-                                                                        )
+                        self.currentFig.plotList.append ( self.currentFig.axes.plot ( self.plot._xvalues
+                                                                                    , self.plot._yvalues
+                                                                                    , self.plot._zvalues
+                                                                                    , linewidth = 0
+                                                                                    ) )
 
                         # now add the lineCollection
 
@@ -924,10 +931,10 @@ class LineScatterPlot(BasePlot):
 
                         # properly and automatically set the axes limits via plot()
 
-                        self.currentFig.plot = self.currentFig.axes.plot( self.plot._xvalues
-                                                                        , self.plot._yvalues
-                                                                        , linewidth = 0
-                                                                        )
+                        self.currentFig.plotList.append ( self.currentFig.axes.plot ( self.plot._xvalues
+                                                                                    , self.plot._yvalues
+                                                                                    , linewidth = 0
+                                                                                    ) )
 
                         # now add the lineCollection
 
@@ -938,7 +945,7 @@ class LineScatterPlot(BasePlot):
                     lineCollection.set_array(cdata)
                     #lineCollection.set_linewidth(0.5)
                     #lineCollection.set_solid_capstyle("round")
-                    self.currentFig.lineCollection = self.currentFig.axes.add_collection(lineCollection)
+                    self.currentFig.lineCollectionList.append( self.currentFig.axes.add_collection(lineCollection) )
 
         ############################################################################################################################
         #### add colorbar
@@ -950,11 +957,11 @@ class LineScatterPlot(BasePlot):
             self.colorbar.kws.mappable = None
             if self._type.isLine and self.lineCollection.enabled:
 
-                self.colorbar.kws.mappable = self.currentFig.lineCollection
+                self.colorbar.kws.mappable = self.currentFig.lineCollectionList[0]
 
             elif self._type.isScatter and self.scatter.enabled:
 
-                self.colorbar.kws.mappable = self.currentFig.scatter
+                self.colorbar.kws.mappable = self.currentFig.scatterList[0]
 
             if self.colorbar.kws.mappable is not None:
                 self.colorbar.kws.ax = self.currentFig.axes

@@ -843,7 +843,7 @@ class DensityPlot(BasePlot):
         #### check columns presence. This must be checked here, because it depends on the integrity of the in input dataFrame.
         ############################################################################################################################
 
-        # assign x columns to plot
+        #### assign x columns to plot
 
         lgxicol = 0 # legend column indicator index. By default, there is only one column, hence index 0.
         if self.xcolumns is None:
@@ -859,7 +859,7 @@ class DensityPlot(BasePlot):
                                 + self._getDocString()
                                 )
 
-        # assign x values if it is a single column of data
+        #### assign x values if it is a single column of data
 
         xcolindexlen = len(xcolindex)
         if xcolindexlen==0:
@@ -871,7 +871,7 @@ class DensityPlot(BasePlot):
                             + self._getDocString()
                             )
 
-        # assign y properties for 2D plots
+        #### assign y properties for 2D plots
 
         if not (self._type.isDistplot or self._type.isKdeplot1):
 
@@ -924,19 +924,20 @@ class DensityPlot(BasePlot):
 
             if self._type.isDiffusionPlot:
 
-                self.currentFig.kde2d = Struct()
+                if self._type.isContour or self._type.isContour3: self.currentFig.contourList = []
+                if self._type.isContourf: self.currentFig.contourfList = []
+                self.currentFig.kde2dList = []
+                kde2dTriplet = Struct()
 
                 if xcolindexlen<2 and ycolindexlen<2:
 
-                    ( self.currentFig.kde2d.density
-                    , self.currentFig.kde2d.grid
-                    , self.currentFig.kde2d.bandwidth
+                    ( kde2dTriplet.density
+                    , kde2dTriplet.grid
+                    , kde2dTriplet.bandwidth
                     ) = kde2d( self._xvalues, self._yvalues, n=self.gridSize, limits=self.limits )
 
-                    self.currentFig.kde2d.density[ np.where( self.currentFig.kde2d.density < self.noiseDensity ) ] = 0.0 # remove noise
-                    self.currentFig.kde2d.xmesh, self.currentFig.kde2d.ymesh = np.meshgrid  ( self.currentFig.kde2d.grid[0]
-                                                                                            , self.currentFig.kde2d.grid[1]
-                                                                                            ) 
+                    kde2dTriplet.density[ np.where( kde2dTriplet.density < self.noiseDensity ) ] = 0.0 # remove noise
+                    kde2dTriplet.xmesh, kde2dTriplet.ymesh = np.meshgrid( kde2dTriplet.grid[0], kde2dTriplet.grid[1] ) 
 
         ############################################################################################################################
         #### make plot
@@ -1003,31 +1004,33 @@ class DensityPlot(BasePlot):
 
                 if xcolindexlen>1 or ycolindexlen>1:
 
-                    ( self.currentFig.kde2d.density
-                    , self.currentFig.kde2d.grid
-                    , self.currentFig.kde2d.bandwidth
+                    ( kde2dTriplet.density
+                    , kde2dTriplet.grid
+                    , kde2dTriplet.bandwidth
                     ) = kde2d( self._xvalues, self._yvalues, n=self.gridSize, limits=self.limits )
 
-                    self.currentFig.kde2d.density[ np.where( self.currentFig.kde2d.density < self.noiseDensity ) ] = 0.0 # remove noise
-                    self.currentFig.kde2d.xmesh, self.currentFig.kde2d.ymesh = np.meshgrid  ( self.currentFig.kde2d.grid[0]
-                                                                                            , self.currentFig.kde2d.grid[1]
-                                                                                            ) 
+                    kde2dTriplet.density[ np.where( kde2dTriplet.density < self.noiseDensity ) ] = 0.0 # remove noise
+                    kde2dTriplet.xmesh, kde2dTriplet.ymesh = np.meshgrid( kde2dTriplet.grid[0]
+                                                                        , kde2dTriplet.grid[1]
+                                                                        ) 
+
+                self.currentFig.kde2dList.append(kde2dTriplet)
 
                 if self._type.isContour or self._type.isContour3:
 
-                    self.currentFig.contour = plt.contour   ( self.currentFig.kde2d.xmesh
-                                                            , self.currentFig.kde2d.ymesh
-                                                            , self.currentFig.kde2d.density
-                                                            , **vars(self.contour.kws)
-                                                            )
+                    self.currentFig.contourList.append( plt.contour ( kde2dTriplet.xmesh
+                                                                    , kde2dTriplet.ymesh
+                                                                    , kde2dTriplet.density
+                                                                    , **vars(self.contour.kws)
+                                                                    ) )
 
                 if self._type.isContourf:
 
-                    self.currentFig.contourf = plt.contourf ( self.currentFig.kde2d.xmesh
-                                                            , self.currentFig.kde2d.ymesh
-                                                            , self.currentFig.kde2d.density
-                                                            , **vars(self.contourf.kws)
-                                                            )
+                    self.currentFig.contourfList.append(plt.contourf( kde2dTriplet.xmesh
+                                                                    , kde2dTriplet.ymesh
+                                                                    , kde2dTriplet.density
+                                                                    , **vars(self.contourf.kws)
+                                                                    ) )
 
         ############################################################################################################################
         #### add colorbar
@@ -1037,9 +1040,9 @@ class DensityPlot(BasePlot):
 
             self.colorbar.kws.mappable = None
             if self._type.isContour or self._type.isContour3:
-                self.colorbar.kws.mappable = self.currentFig.contour
+                self.colorbar.kws.mappable = self.currentFig.contourList[0]
             elif self._type.isContourf:
-                self.colorbar.kws.mappable = self.currentFig.contourf
+                self.colorbar.kws.mappable = self.currentFig.contourfList[0]
 
             if self.colorbar.kws.mappable is not None:
                 self.colorbar.kws.ax = self.currentFig.axes
