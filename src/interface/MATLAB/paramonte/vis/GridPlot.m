@@ -1831,10 +1831,12 @@ classdef GridPlot < BasePlot
                     end
 
                     if ~( icol==1 || isempty(self.currentFig.subplotList{irow,icol}) )
-                        axisLabelY = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"YLabel"); set(axisLabelY,"rotation",45,"VerticalAlignment","middle","HorizontalAlignment","right");
+                        axisLabelY = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"YLabel");
+                        set(axisLabelY,"rotation",45,"VerticalAlignment","middle","HorizontalAlignment","right");
                     end
                     if ~( irow==self.axes.main.nrow || isempty(self.currentFig.subplotList{irow,icol}) )
-                        axisLabelX = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"XLabel"); set(axisLabelX,"rotation",45,"VerticalAlignment","top","HorizontalAlignment","right");
+                        axisLabelX = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"XLabel");
+                        set(axisLabelX,"rotation",45,"VerticalAlignment","top","HorizontalAlignment","right");
                     end
 
                 end

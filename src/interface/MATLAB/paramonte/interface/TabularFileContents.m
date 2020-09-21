@@ -453,7 +453,7 @@ classdef TabularFileContents < OutputFileContents
 
                     if isScatter
                         if is3d
-                            self.plot.(requestedPlotType).scatter.size = 12;
+                            self.plot.(requestedPlotType).scatter.size = 10;
                         else
                             self.plot.(requestedPlotType).scatter.size = 7;
                         end

@@ -535,7 +535,8 @@ classdef LineScatterPlot < BasePlot
 
             if self.type.isLine % && self.plot.enabled
                 if self.surface.enabled; self.plot.enabled = false; end
-                key = "lineWidth"; val = 1; if ~isfield(self.plot.kws,key) || isempty(self.plot.kws.(key)); self.plot.kws.(key) = val; end
+                fname = "plot";
+                key = "lineWidth"; val = 1; if ~isfield(self.(fname).kws,key) || isempty(self.(fname).kws.(key)); self.(fname).kws.(key) = val; end
             end
 
             if self.type.isLine % && self.surface.enabled
@@ -713,7 +714,7 @@ classdef LineScatterPlot < BasePlot
                 end
 
                 if ~self.type.is3d
-                    zdata = zeros(length(self.rowsindex(:)),1);
+                    zdata = zeros(length(self.ndata),1);
                 end
 
                 lgxicol = 1;
