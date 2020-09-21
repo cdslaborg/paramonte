@@ -40,15 +40,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function cellArray = convertStruct2Cell(structure,excludeList)
+function cellArray = convertStruct2Cell(structure,excludeList,duplicateRemovalEnabled)
+
     cellArray = {};
     fnameList = fieldnames(structure);
+    fnameListLen = length(fnameList);
+
     if nargin<2; excludeList = {}; end
+    if nargin<3; duplicateRemovalEnabled = true; end
+
+    if duplicateRemovalEnabled
+        fnameListLower = lower(fnameList);
+    end
+
     excludeList = string(excludeList);
-    for i = 1:length(fnameList)
+    for i = 1:fnameListLen
         fname = string(fnameList{i});
-        if ~any(strcmp(excludeList,fname)) 
-            if ~isempty(structure.(fname))
+        if ~any(strcmp(excludeList,fname))
+            if ~( isempty(structure.(fname)) || ( duplicateRemovalEnabled && any(strcmp(fnameListLower(1:i-1),lower(fname))) ) )
                 cellArray = { cellArray{:}, fname, structure.(fname) };
             end
         end

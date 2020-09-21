@@ -1810,31 +1810,35 @@ classdef GridPlot < BasePlot
 
                 for irow = 1:self.axes.main.nrow
 
-                    if irow < self.axes.main.nrow
-                        if ~isempty(self.currentFig.subplotList{irow+1,icol}) && strcmp(self.currentFig.subplotList{irow+1,icol}.currentFig.axes.Visible,"on")
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "XTickLabel", []);
-                            self.currentFig.subplotList{irow,icol}.currentFig.axes.XLabel.String = "";
-                        elseif ~isempty(self.currentFig.subplotList{irow,icol})
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "XTickLabelMode", "auto");
-                            self.currentFig.subplotList{irow,icol}.currentFig.axes.XLabel.String = self.colnames(icol);
+                    subplotExists = ~isempty(self.currentFig.subplotList{irow,icol});
+
+                    if subplotExists
+                        if irow < self.axes.main.nrow
+                            if ~isempty(self.currentFig.subplotList{irow+1,icol}) && strcmp(self.currentFig.subplotList{irow+1,icol}.currentFig.axes.Visible,"on")
+                                set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "XTickLabel", []);
+                                self.currentFig.subplotList{irow,icol}.currentFig.axes.XLabel.String = "";
+                            else
+                                set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "XTickLabelMode", "auto");
+                                self.currentFig.subplotList{irow,icol}.currentFig.axes.XLabel.String = self.colnames(icol);
+                            end
+                        end
+
+                        if icol > 1
+                            if ~isempty(self.currentFig.subplotList{irow,icol-1}) && strcmp(self.currentFig.subplotList{irow,icol-1}.currentFig.axes.Visible,"on")
+                                set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "YTickLabel", [])
+                                self.currentFig.subplotList{irow,icol}.currentFig.axes.YLabel.String = "";
+                            elseif ~isempty(self.currentFig.subplotList{irow,icol})
+                                set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "YTickLabelMode", "auto")
+                                self.currentFig.subplotList{irow,icol}.currentFig.axes.YLabel.String = self.colnames(irow);
+                            end
                         end
                     end
 
-                    if icol > 1
-                        if ~isempty(self.currentFig.subplotList{irow,icol-1}) && strcmp(self.currentFig.subplotList{irow,icol-1}.currentFig.axes.Visible,"on")
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "YTickLabel", [])
-                            self.currentFig.subplotList{irow,icol}.currentFig.axes.YLabel.String = "";
-                        elseif ~isempty(self.currentFig.subplotList{irow,icol})
-                            set(self.currentFig.subplotList{irow,icol}.currentFig.axes, "YTickLabelMode", "auto")
-                            self.currentFig.subplotList{irow,icol}.currentFig.axes.YLabel.String = self.colnames(irow);
-                        end
-                    end
-
-                    if ~( icol==1 || isempty(self.currentFig.subplotList{irow,icol}) )
+                    if icol~=1 && subplotExists
                         axisLabelY = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"YLabel");
                         set(axisLabelY,"rotation",45,"VerticalAlignment","middle","HorizontalAlignment","right");
                     end
-                    if ~( irow==self.axes.main.nrow || isempty(self.currentFig.subplotList{irow,icol}) )
+                    if irow~=self.axes.main.nrow && subplotExists
                         axisLabelX = get(self.currentFig.subplotList{irow,icol}.currentFig.axes,"XLabel");
                         set(axisLabelX,"rotation",45,"VerticalAlignment","top","HorizontalAlignment","right");
                     end

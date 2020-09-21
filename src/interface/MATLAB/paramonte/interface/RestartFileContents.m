@@ -530,8 +530,8 @@ classdef RestartFileContents < OutputFileContents
                     self.plot.(requestedPlotType).plot.kws.lineWidth = 1;
                     matrixType = "covariance"; if isCorMatPlot; matrixType = "correlation"; end
                     self.plot.(requestedPlotType).title.enabled = true;
-                    self.plot.(requestedPlotType).title.label = "Evolution of the " + matrixType + " matrices of the proposal distribution";
-                    self.plot.(requestedPlotType).title.kws.fontsize = 11;
+                    self.plot.(requestedPlotType).title.text = "Evolution of the " + matrixType + " matrices of the proposal distribution";
+                    self.plot.(requestedPlotType).title.kws.fontSize = 11;
                     self.plot.(requestedPlotType).title.kws.interpreter = "tex";
 
                     % 3d

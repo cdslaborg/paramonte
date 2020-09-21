@@ -256,7 +256,7 @@ classdef EllipsoidPlot < BasePlot
 
             self.title.kws = struct();
             self.title.enabled = false;
-            self.title.label = [];
+            self.title.text = [];
             self.title.kws.fontSize = 11;
             self.title.kws.interpreter = "tex";
 
@@ -730,13 +730,14 @@ classdef EllipsoidPlot < BasePlot
             %%%% set title properties
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-            if self.title.enabled && getVecLen(self.title.label)
-                if ~(isstring(self.title.label) || ischar(self.title.label))
-                    error("The title component of an EllipsoidPlot object must be a string or character vector.");
-                end
-                title_kws_cell = convertStruct2Cell(self.title.kws,{"enabled","label"});
-                title(self.title.label,title_kws_cell{:});
-            end
+            % this is now done in the BasePlot
+            %if self.title.enabled && getVecLen(self.title.text)
+            %    if ~(isstring(self.title.text) || ischar(self.title.text))
+            %        error("The title component of an EllipsoidPlot object must be a string or character vector.");
+            %    end
+            %    title_kws_cell = convertStruct2Cell(self.title.kws,{"enabled","text"});
+            %    title(self.title.text,title_kws_cell{:});
+            %end
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%% add line colorbar
@@ -749,7 +750,7 @@ classdef EllipsoidPlot < BasePlot
                 caxis(self.currentFig.axes, [min(cdata), max(cdata)] );
                 colorbar_kws_cell = convertStruct2Cell(self.colorbar.kws,{"enabled","singleOptions"});
                 self.currentFig.colorbar = colorbar(colorbar_kws_cell{:});
-                ylabel(self.currentFig.colorbar,self.ccolnames(1),"fontsize",self.colorbar.kws.fontSize, "Interpreter", "none");
+                ylabel(self.currentFig.colorbar,self.ccolnames(1),"fontSize",self.colorbar.kws.fontSize, "interpreter", "none");
             else
                 colorbar('off');
                 self.currentFig.colorbar = [];

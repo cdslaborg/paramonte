@@ -761,16 +761,17 @@ classdef BasePlot < dynamicprops
                 title_kws_cell = {};
                 for fname = ["text", "subtext"] % do not change the order of elements here
                     if isfield(self.title,fname) && getVecLen(self.title.(fname))
-                        title_kws_cell = {title_kws_cell{:}, self.title.(fname)};
+                        title_kws_cell = { title_kws_cell{:}, self.title.(fname) };
                     end
                 end
 
-                if isfield(self.title,"kws") && ~isempty(self.title.kws) && isstruct(self.title.kws)
-                    kws_cell = convertStruct2Cell(self.title.kws);
-                    title_kws_cell = {title_kws_cell{:}, kws_cell{:}};
+                if ~isempty(title_kws_cell)
+                    if isfield(self.title,"kws") && ~isempty(self.title.kws) && isstruct(self.title.kws)
+                        kws_cell = convertStruct2Cell(self.title.kws);
+                        title_kws_cell = {title_kws_cell{:}, kws_cell{:}};
+                    end
+                    self.currentFig.title = title( self.currentFig.axes, title_kws_cell{:} );
                 end
-
-                self.currentFig.title = title( self.currentFig.axes, title_kws_cell{:} );
 
             end
 
