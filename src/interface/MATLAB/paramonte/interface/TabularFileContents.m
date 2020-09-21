@@ -135,7 +135,7 @@ classdef TabularFileContents < OutputFileContents
             if markovChainRequested
                 cumSumWeight = cumsum(d.data(:,self.offset-2));
                 if cumSumWeight(end) > self.count % it is indeed a compact chain
-                    dMarkov = zeros( cumSumWeight(end) , self.ndim + self.offset - 1 );
+                    dMarkov = zeros( cumSumWeight(end) , self.ncol );
                     istart = 1;
                     for irow = 1:self.count
                         iend = cumSumWeight(irow);
@@ -181,7 +181,7 @@ classdef TabularFileContents < OutputFileContents
 
                 self.updateUser("computing the sample correlation matrix...");
                 self.stats.cormat = CorCovMat   ( self.df ...
-                                                , self.offset:self.offset+self.ndim-1 ...
+                                                , self.offset:self.ncol ...
                                                 , "pearson" ... method
                                                 , [] ... rows
                                                 , self.Err ...
@@ -193,7 +193,7 @@ classdef TabularFileContents < OutputFileContents
 
                 self.updateUser("computing the sample covariance matrix...");
                 self.stats.covmat = CorCovMat   ( self.df ...
-                                                , self.offset:self.offset+self.ndim-1 ...
+                                                , self.offset:self.ncol ...
                                                 , [] ... method
                                                 , [] ... rows
                                                 , self.Err ...
@@ -205,7 +205,7 @@ classdef TabularFileContents < OutputFileContents
 
                 self.updateUser("computing the sample autocorrelation...");
                 self.stats.autocorr = AutoCorr_class( self.df ...
-                                                    , self.offset-1:self.offset+self.ndim-1 ...
+                                                    , self.offset-1:self.ncol ...
                                                     , [] ... rows
                                                     , self.Err ...
                                                     , reportEnabled ...
@@ -448,7 +448,6 @@ classdef TabularFileContents < OutputFileContents
                     end
 
                     self.plot.(requestedPlotType).ccolumns = self.sampleLogFuncColName;
-                    self.plot.(requestedPlotType).ycolumns = string(self.df.Properties.VariableNames{self.offset});%:end);
                     self.plot.(requestedPlotType).axes.kws.xscale = "linear";
 
                     if isScatter
@@ -479,10 +478,10 @@ classdef TabularFileContents < OutputFileContents
 
                     end
 
+                    self.plot.(requestedPlotType).ycolumns = string(self.df.Properties.VariableNames{self.offset});%:end);
                     if is3d
                         if self.ndim==1
                             self.plot.(requestedPlotType).xcolumns = {};
-                            self.plot.(requestedPlotType).ycolumns = string(self.df.Properties.VariableNames{self.offset});
                         else
                             self.plot.(requestedPlotType).xcolumns = string(self.df.Properties.VariableNames{self.offset});
                             self.plot.(requestedPlotType).ycolumns = string(self.df.Properties.VariableNames{self.offset+1});

@@ -717,7 +717,7 @@ classdef LineScatterPlot < BasePlot
                 end
 
                 if ~self.type.is3d
-                    zdata = zeros(length(self.ndata),1);
+                    zdata = zeros(self.ndata,1);
                 end
 
                 lgxicol = 1;
