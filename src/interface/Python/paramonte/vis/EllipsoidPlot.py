@@ -617,6 +617,7 @@ class EllipsoidPlot(BasePlot):
         #### make ellipsoids
         ############################################################################################################################
 
+        if self.plot.enabled: self.currentFig.plot = []
         for i, row in enumerate(self.rows):
 
             if self._type.is3d: zdata = np.ones(self.npoint) * self.zdata[row]
@@ -637,18 +638,18 @@ class EllipsoidPlot(BasePlot):
 
                 if self._type.is3d:
 
-                    self.currentFig.plot = self.currentFig.axes.plot( bcrd[0,:]
-                                                                    , bcrd[1,:]
-                                                                    , zdata
-                                                                    , **vars(self.plot.kws)
-                                                                    )
+                    self.currentFig.plot.append( self.currentFig.axes.plot  ( bcrd[0,:]
+                                                                            , bcrd[1,:]
+                                                                            , zdata
+                                                                            , **vars(self.plot.kws)
+                                                                            ) )
 
                 else:
 
-                    self.currentFig.plot = self.currentFig.axes.plot( bcrd[0,:]
-                                                                    , bcrd[1,:]
-                                                                    , **vars(self.plot.kws)
-                                                                    )
+                    self.currentFig.plot.append( self.currentFig.axes.plot  ( bcrd[0,:]
+                                                                            , bcrd[1,:]
+                                                                            , **vars(self.plot.kws)
+                                                                            ) )
 
         ############################################################################################################################
         #### add axes and title labels
