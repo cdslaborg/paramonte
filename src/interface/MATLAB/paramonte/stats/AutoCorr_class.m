@@ -590,6 +590,9 @@ classdef AutoCorr_class < dynamicprops
 
                     end
 
+                    self.plot.(requestedPlotType).xlim = [1 nan];
+                    self.plot.(requestedPlotType).ylim = [nan 1];
+
                     if is3d
                         if self.ndim==1
                             self.plot.(requestedPlotType).xcolumns = {};

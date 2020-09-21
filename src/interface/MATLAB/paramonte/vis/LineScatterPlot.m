@@ -318,6 +318,9 @@ classdef LineScatterPlot < BasePlot
     properties (Hidden)
         % number of data points to plot
         ndata
+        xlim = [];
+        ylim = [];
+        zlim = [];
         ccolnames
         ccolindex
         xcolnames
@@ -859,6 +862,18 @@ classdef LineScatterPlot < BasePlot
 
             if self.legend.enabled && (~isfield(self.legend,"labels") || isempty(self.legend.labels)); self.legend.labels = lglabels; end
             self.doBasePlotStuff();
+
+            for fname = ["xlim","ylim","zlim"]
+                if ~isempty(self.(fname))
+                    limit = get(self.currentFig.axes, fname);
+                    for i = 1:2
+                        if ~isnan(self.(fname)(i))
+                            limit(i) = self.(fname)(i);
+                        end
+                    end
+                    set(self.currentFig.axes, fname, limit);
+                end
+            end
 
             %box on; grid on; hold off;
             hold off;
