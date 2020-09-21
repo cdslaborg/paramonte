@@ -415,9 +415,9 @@ classdef GridPlot < BasePlot
             %self.columns = {};
             self.ccolumn = {};
 
-            for i = 1:self.plotTypeListLen
-                self.axes.subplot.(self.plotTypeList{i}) = struct();
-            end
+            %for i = 1:self.plotTypeListLen
+            %    self.axes.subplot.(self.plotTypeList{i}) = struct();
+            %end
 
             self.updateLayout();
 
