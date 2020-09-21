@@ -68,7 +68,7 @@
 %
 %       ccolumn (standing for color-columns)
 %
-%           optional property that determines the column of dataFrame to serve
+%           Optional property that determines the column of dataFrame to serve
 %           as the color-mapping-values for each line/point element in the line/scatter
 %           plot. It can be either a char vector or a string, or the index of the column
 %           of interest from the input dataFrame.
@@ -80,58 +80,99 @@
 %
 %       colormap
 %
-%           A string or any other value that the colormap function of MATLAB accepts as input.
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the colormap will be applied 
+%                   to the plot. 
+%
+%               values
+%
+%                   A string or any other value that the colormap function 
+%                   of MATLAB accepts as input.
 %
 %           Example usage:
 %
-%               1.  colormap.values = "autumn"
-%               1.  colormap.values = "winter"
-%
-%           If colormap is not provided or is empty, the default will be "autumn".
+%               1.  colormap.enabled = true;
+%               1.  colormap.values = "winter";
+%               1.  colormap.values = "autumn";
 %
 %       colorbar
 %
-%           A MATLAB struct(); whose components' values are passed to MATLAB's colorbar function.
-%           If your desired attribute is missing from the fieldnames of colorbar.kws, simply add
-%           a new field named as the attribute and assign the desired value to it.
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the colorbar will be applied to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's colorbar() function. If your desired attribute is 
+%                   missing from the fieldnames of colorbar.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
 %           Example usage:
 %
-%               colorbar.enabled = true % add colorbar
-%               colorbar.kws.location = "west"
+%               colorbar.enabled = true; % add colorbar
+%               colorbar.kws.location = "west";
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to colorbar.kws.
+%           WARNING
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, colorbar.kws.color and colorbar.kws.Color are the same,
-%           WARNING: and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, colorbar.kws.color and colorbar.kws.Color are the same,
+%               and only one of the two will be processed.
 %
-%       layout
+%       title
 %
-%           A MATLAB struct(); containing an extensive amount of information about the layout
-%           and the overall design of the grid plot, with the following components:
+%           A MATLAB struct() with the following components:
 %
-%               - layout.colorbar   :   the layout and design of the colorbar of the plot
-%               - layout.subplot    :   the layout and design of the subplots of the plot
-%               - layout.axes       :   the layout and design of the gridplot's axes and the subplots' axes
-%               - layout.update()   :   a method that reflects the new layout changes into the grid-plot, when called.
-%               - layout.plotType   :   a struct(); with components: diag, lower, upper, each of which contains
-%                                       the type of plot to be added to the corresponding section of the grid plot.
-%                                       possible values for each section includes:
+%               enabled
 %
-%                                           diag: histogram, histfit
-%                                           lower: histogram2, contourf, contour, line, scatter, linescatter, line3, scatter3, linescatter3
-%                                           upper: histogram2, contourf, contour, line, scatter, linescatter, line3, scatter3, linescatter3
+%                   A logical value. If `true`, the title will be applied to the plot.
 %
-%                                       WARNING: Although it is possible to add 3d subplots to the gridplot
-%                                       WARNING: (line3, scatter3, linescatter3), there is no practical use
-%                                       WARNING: for them. Therefore, you should use them at your own risk.
-%                                       WARNING: Perhaps the most meaningful scenario would be when the third
-%                                       WARNING: Z-axis variable is the same column as the ccolumn of the grid-plot.
-%                                       WARNING: If you find the 3D plots useful, or find bugs with the 3d subplots,
-%                                       WARNING: please report it at: https://github.com/cdslaborg/paramonte/issues
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's title() function. If your desired attribute is 
+%                   missing from the fieldnames of title.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
+%
+%           Example usage:
+%
+%               title.enabled = true; % add title
+%               title.kws.location = "west";
+%
+%           WARNING
+%
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, title.kws.fontSize and title.kws.FONTSIZE are the same,
+%               and only one of the two will be processed.
+%
+%       template
+%
+%           A MATLAB struct() containing the templates of the ParaMonte plot objects 
+%           and their properties will will be used to set the properties of similar 
+%           types of plots in the subplots of the grid plot.
+%
+%       plotType
+%
+%           A MATLAB struct() containing the types of the plots to be plotted in each 
+%           section (upper, lower triangles) and the diagonal elements of the GridPlot.
+%
+%      WARNING: Adding 3d subplots to the GridPlot is not supported anymore as of 
+%      WARNING: ParaMonte 2.0.0. Although it is theoretically possible to add 3d subplots 
+%      WARNING: to the gridplot (line3, scatter3, linescatter3), there is no practical 
+%      WARNING: use for them. Therefore, you should use them at your own risk.
+%      WARNING: Perhaps the most meaningful scenario would be when the third
+%      WARNING: Z-axis variable is the same column as the ccolumn of the grid-plot.
+%      WARNING: If you find the 3D plots useful, or find bugs with the 3d subplots,
+%      WARNING: please report it at: https://github.com/cdslaborg/paramonte/issues
 %
 %   Superclass Attributes
 %   ---------------------
@@ -230,7 +271,7 @@ classdef GridPlot < BasePlot
 
             self.title = struct();
             self.title.text = "";
-            self.title.subtext = "";
+            %self.title.subtext = "";
             self.title.enabled = false;
             self.title.kws = struct();
             self.title.kws.fontSize = 13;
@@ -1327,11 +1368,11 @@ classdef GridPlot < BasePlot
             %
             %           pairs of key,value sequences are also possible as input. The possible keys include:
             %
-            %               "hline_kws", {}     : the values specified in the cell array, are directly passed to `hline_kws`
+            %               "hline", {}         : the values specified in the cell array, are directly passed to `hline`
             %                                   : component of Target_class object of each subplot.
-            %               "vline_kws", {}     : the values specified in the cell array, are directly passed to `vline_kws`
+            %               "vline", {}         : the values specified in the cell array, are directly passed to `vline`
             %                                   : component of Target_class object of each subplot.
-            %               "scatter_kws", {}   : the values specified in the cell array, are directly passed to `scatter_kws`
+            %               "scatter", {}       : the values specified in the cell array, are directly passed to `scatter`
             %                                   : component of Target_class object of each subplot.
             %               "values", values    : A numeric vector of same length as the number of variables used in the gridplot
             %                                   : (that is, the number of row or columns in the grid plot)
@@ -1621,10 +1662,9 @@ classdef GridPlot < BasePlot
             %   Example
             %   -------
             %
-            %       For xample, change the left/bottom margin of the main axis of the figure to provide room for lengthy variable names.
-            %       Then call the update() method of layout to reflect the changes.
-            %
-            %           update()
+            %       For example, change the left/bottom margin of the main 
+            %       axis of the figure to provide room for lengthy variable names.
+            %       Then call the updateLayout() method of layout to reflect the changes.
             %
             self.axes.main.height = 1 - self.axes.main.margin.top;
             self.axes.main.width = 1 - self.axes.main.margin.right;
@@ -1800,7 +1840,7 @@ classdef GridPlot < BasePlot
 
         function hideShowAxesLabels(self)
             %
-            % show or hide axis labels and ticks depending on the presence of the neighbor subplots
+            % show or hide axis labels and ticks depending on the presence of the neighbor subplots.
             %
             for icol = 1:self.axes.main.ncol
 

@@ -41,8 +41,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   This is the RestartFileContents class for generating instances
-%   of ParaMonte output file contents. The ParaMonte read* methods
-%   return an object or a list of objects of class RestartFileContents.
+%   of ParaMonte restart output file contents. The ParaDRAM readRestart() 
+%   method returns an object or a list of objects of class RestartFileContents.
+%
+%   This is an internal ParaMonte class and it is 
+%   not meant to be directly accessible to the users.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

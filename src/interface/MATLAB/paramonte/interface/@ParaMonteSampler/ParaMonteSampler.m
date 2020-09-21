@@ -69,44 +69,44 @@
 %   Naming conventions
 %   ------------------
 %
-%   camelCase naming style is used throughout the entire ParaMonte library, across
-%   all programming languages: C/Fortran/Julia/MATLAB/Python
+%       camelCase naming style is used throughout the entire ParaMonte library, across
+%       all programming languages: C/Fortran/Julia/MATLAB/Python
 %
-%   all simulation specifications start with a lowercase letter, including
-%   scalar/vector/matrix int, float, string, or boolean variables.
+%       All simulation specifications start with a lowercase letter, including
+%       scalar/vector/matrix int, float, string, or boolean variables.
 %
-%   The name of any variable that represents a vector of values is suffixed with "Vec",
-%   for example: startPointVec, domainLowerLimitVec, ...
+%       The name of any variable that represents a vector of values is suffixed with "Vec",
+%       for example: startPointVec, domainLowerLimitVec, ...
 %
-%   The name of any variable that represents a matrix of values is suffixed with "Mat",
-%   for example: proposalStartCorMat, ...
+%       The name of any variable that represents a matrix of values is suffixed with "Mat",
+%       for example: proposalStartCorMat, ...
 %
-%   The name of any variable that represents a list of varying-size values is suffixed
-%   with "List", for example: variableNameList, ...
+%       The name of any variable that represents a list of varying-size values is suffixed
+%       with "List", for example: variableNameList, ...
 %
-%   all functions or class methods begin with a lowercase verb.
+%       All functions or class methods begin with a lowercase verb.
 %
-%   significant attempt has been made to end all boolean variables with a passive verb,
-%   such that the full variable name virtually forms an English-language statement
-%   that should be either true or false, set by the user.
+%       Significant attempt has been made to end all boolean variables with a passive verb,
+%       such that the full variable name virtually forms an English-language statement
+%       that should be either true or false, set by the user.
 %
 %   Tips
 %   ----
 %
-%   when running ParaMonte samplers, in particular on multiple cores in parallel,
-%   it would be best to close any such aggressive software/applications as
-%   Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte
-%   simulation output files, potentially causing the sampler to
-%   crash before successful completion of the simulation.
-%   These situations should however happen only scarcely.
+%       When running ParaMonte samplers, in particular on multiple cores in parallel,
+%       it would be best to close any such aggressive software/applications as
+%       Dropbox, ZoneAlarm, ... that can interfere with your ParaMonte
+%       simulation output files, potentially causing the sampler to
+%       crash before successful completion of the simulation.
+%       These situations should however happen only scarcely.
 %
-%   on Windows systems, when restarting an old interrupted ParaMonteSampler simulation,
-%   ensure your MATLAB session is also restarted before the simulation
-%   restart. This is needed as Windows sometimes locks the access to
-%   all or some of the simulation output files.
+%       On Windows systems, when restarting an old interrupted ParaMonteSampler simulation,
+%       ensure your MATLAB session is also restarted before the simulation
+%       restart. This is needed as Windows sometimes locks the access to
+%       all or some of the simulation output files.
 %
-%   To unset an already-set input simulation specification, simply set the
-%   simulation attribute to None or re-instantiate the sampler object.
+%       To unset an already-set input simulation specification, simply set the
+%       simulation attribute to None or re-instantiate the sampler object.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

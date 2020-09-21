@@ -45,8 +45,10 @@
 %   This is the Target_class for generating instances of
 %   targets to be added to other plots. 
 %
-%   NOTE: This is a low-level ParaMonte class and is not meant
-%   NOTE: to be directly instantiated by the user.
+%       NOTE
+%
+%           This is a low-level ParaMonte class and is not meant
+%           to be directly instantiated by the user.
 %
 %   Parameters
 %   ----------
@@ -145,7 +147,7 @@
 %       Question: Why did we append the name of this class with "_class"?
 %       Answer: We had to do so since MATLAB has an intrinsic object named 
 %       Answer: "Target" whose help and documentation overrides the help and 
-%       Answer: documentation that we have developed for this class.
+%       Answer: the documentation that we have developed for this class.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

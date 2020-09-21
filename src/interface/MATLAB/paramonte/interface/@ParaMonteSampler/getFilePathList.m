@@ -42,6 +42,9 @@
 
 function [filePathList, iswebfile] = getFilePathList(self,file,fileType)
 
+    self.Err.marginTop = 1;
+    self.Err.marginBot = 0;
+
     iswebfile = false;
     suffix = "_" + fileType + ".txt";
     propertyName = self.objectName + ".spec.outputFileName";
@@ -109,14 +112,18 @@ function [filePathList, iswebfile] = getFilePathList(self,file,fileType)
         end
 
         if isempty(filePathList) % XXX this may be improved in the future to 
-            iswebfile = isurl(file); % check if the input path is a url
+            try
+                iswebfile = isurl(file); % check if the input path is a url
+            catch
+                iswebfile = false;
+            end
             if iswebfile
                 try
                     filePathList = [ string(websave(genRandFileName(),file)) ];
                     pattern = file;
                 catch
                     iswebfile = false;
-                    warning( "Failed to read data from the URL: " + file );
+                    warning( newline + "Failed to read data from the URL: " + file + newline );
                 end
             end
         end
@@ -161,7 +168,5 @@ function [filePathList, iswebfile] = getFilePathList(self,file,fileType)
 
     if self.reportEnabled
         self.Err.msg = string(length(filePathList)) + " files detected matching the pattern: """ +  pattern + """";
-        self.Err.marginTop = 1;
-        self.Err.marginBot = 0;
         self.Err.note();
     end

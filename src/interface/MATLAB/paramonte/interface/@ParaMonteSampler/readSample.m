@@ -46,28 +46,44 @@
 %   sample files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName.
 %
-%   WARNING: This method is to be only used for post-processing of the output
-%   sample file(s) of an already finished simulation. It is NOT meant to be
-%   called by all processes in parallel mode, although it is possible.
+%       WARNING
+%
+%           This method is to be only used for post-processing of the output
+%           chain file(s) of an already finished simulation. It is NOT meant 
+%           to be called by all processes in parallel mode, although it is possible.
 %
 %   Parameters
 %   ----------
 %
 %       file (optional)
 %
-%           A string representing the path to the sample file with the
+%           A string representing the path to the chain file with the
 %           default value of []. The path only needs to uniquely identify
-%           the name of the simulation to which the sample file belongs.
+%           the name of the simulation to which the chain file belongs.
 %           For example, specifying "./mydir/mysim" as input will lead to
 %           a search for a file that begins with "mysim" and ends with
-%           "_sample.txt" inside the directory "./mydir/".
+%           "_chain.txt" inside the directory "./mydir/".
+%
 %           If there are multiple files with such name, then all of them
 %           will be read and returned as a list.
+%
 %           If this input argument is not provided by the user, the
 %           value of the object's `spec` attribute `outputFileName`
 %           will be used instead.
 %
+%           If the specified path is a URL, the file will be downloaded 
+%           as a temporary file to the local system and its contents will 
+%           be parsed and the file will be subsequently removed.
+%
+%           If no input is specified via any of the possible routes, 
+%           the method will search for any possible candidate file 
+%           with the appropriate suffix in the current working directory.
+%
 %           Example usage:
+%
+%               pmpd.readSample();
+%
+%           or,
 %
 %               pmpd.readSample("./out/test_run_");
 %
@@ -76,8 +92,7 @@
 %               pmpd.spec.outputFileName = "./out/test_run_";
 %               pmpd.readSample();
 %
-%           Both of the above examples are equivalent.
-%           The latter is recommended as it is less confusing.
+%           The last two of the above examples are equivalent.
 %
 %       delimiter (optional)
 %
@@ -151,9 +166,9 @@ function sampleList = readSample(self,file,delimiter)
 
     if isempty(self.objectName); self.objectName = inputname(1); end
     callerName = string(mfilename());
-    chainType = string(callerName{1}(5:end));
-    chainType = string( [ lower(chainType{1}(1)) , chainType{1}(2:end) ] );
-    output = chainType + "List";
+    fileType = string(callerName{1}(5:end));
+    fileType = string( [ lower(fileType{1}(1)) , fileType{1}(2:end) ] );
+    output = fileType + "List";
 
     if nargout==0
         self.readTabular(callerName,file,delimiter);

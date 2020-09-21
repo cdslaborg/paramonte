@@ -46,206 +46,208 @@
 %   basic plots with minimally one (X)-axis. It serves as the
 %   superclass for a wide variety of other multi-axes ParaMonte plots.
 %
-%       Parameters
-%       ----------
+%   Parameters
+%   ----------
 %
-%           plotType
+%       plotType
 %
-%               A string indicating the name of the plot that is to be constructed.
+%           A string indicating the name of the plot that is to be constructed.
 %
-%           dataFrame (optional)
+%       dataFrame (optional)
 %
-%               A pandas dataFrame whose data will be plotted.
+%           A pandas dataFrame whose data will be plotted.
 %
-%           methodName (optional)
+%       methodName (optional)
 %
-%               The name of the ParaMonte sample requesting the BasePlot.
+%           The name of the ParaMonte sample requesting the BasePlot.
 %
-%           reportEnabled (optional)
+%       reportEnabled (optional)
 %
-%               A boolean whose value indicates whether guidelines should be
-%               printed in the standard output.
+%           A boolean whose value indicates whether guidelines should be
+%           printed in the standard output.
 %
-%           resetExternal (optional)
+%       resetExternal (optional)
 %
-%               A function that resets the properties of the plot as desired
-%               from outside. If provided, a pointer to this function will be
-%               saved for future internal usage.
+%           A function that resets the properties of the plot as desired
+%           from outside. If provided, a pointer to this function will be
+%           saved for future internal usage.
 %
-%       Attributes
-%       ----------
+%   Attributes
+%   ----------
 %
-%           dfref
+%       dfref
 %
-%               A reference to the input dataFrame whose data is used to generate plots.
-%               Despite its name (dfref: reference to dataFrame), this attribute is not
-%               a reference to the original input dataFrame but a deep copy of it.
-%               Therefore, changing its values will change the corresponding values
-%               in the original dataFrame.
+%           A reference to the input dataFrame whose data is used to generate plots.
+%           Despite its name (dfref: reference to dataFrame), this attribute is not
+%           a reference to the original input dataFrame but a deep copy of it.
+%           Therefore, changing its values will change the corresponding values
+%           in the original dataFrame.
 %
-%           xcolumns
+%       xcolumns
 %
-%               optional property that determines the columns of dataFrame to serve as
-%               the x-values. It can have multiple forms:
+%           Optional property that determines the columns of dataFrame to serve as
+%           the x-values. It can have multiple forms:
 %
-%                   1.  a numeric or cell array of column indices in the input dataFrame.
-%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%                   3.  a cell array of a mix of the above two.
-%                   4.  a numeric range.
+%               1.  a numeric or cell array of column indices in the input dataFrame.
+%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%               3.  a cell array of a mix of the above two.
+%               4.  a numeric range.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  xcolumns = [7,8,9]
-%                   2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
-%                   3.  xcolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%                   4.  xcolumns = 7:9      # every column in the data frame starting from column #7 to #9
-%                   5.  xcolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%               1.  xcolumns = [7,8,9]
+%               2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
+%               3.  xcolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  xcolumns = 7:9      # every column in the data frame starting from column #7 to #9
+%               5.  xcolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
 %
-%               WARNING: In all cases, xcolumns must have a length that is either 0, or 1, or equal
-%               WARNING: to the length of ycolumns. If the length is 1, then xcolumns will be
-%               WARNING: plotted against data corresponding to each element of ycolumns.
-%               WARNING: If it is an empty object having length 0, then the default value will be used.
+%           WARNING
+%
+%               In all cases, xcolumns must have a length that is either 0, or 1, 
+%               or equal to the length of ycolumns. If the length is 1, then xcolumns 
+%               will be plotted against data corresponding to each element of ycolumns.
+%               If it is an empty object having length 0, then a default value will be used.
 %
 %               The default value is the indices of the rows of the input dataFrame.
 %
-%           rows
+%       rows
 %
-%               a numeric vector that determines the rows of dataFrame
-%               to be visualized. It can be either:
+%           A numeric vector that determines the rows of dataFrame
+%           to be visualized. It can be either:
 %
-%                   1.  a numeric range, or,
-%                   2.  a list of row indices of the dataFrame.
+%               1.  a numeric range, or,
+%               2.  a list of row indices of the dataFrame.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  rows = 15:-2:8
-%                   2.  rows = [12,46,7,8,9,4,7,163]
+%               1.  rows = 15:-2:8
+%               2.  rows = [12,46,7,8,9,4,7,163]
 %
-%               If not provided, the default includes all rows of the dataFrame.
+%           If not provided, the default includes all rows of the dataFrame.
 %
-%           axes
+%       axes
 %
-%               A MATLAB struct() with the following components:
+%           A MATLAB struct() with the following components:
 %
-%                   kws
+%               kws
 %
-%                       A MATLAB struct() whose components will be directly passed
-%                       ``set(gca,axes.kws{:})`` to set the propoerties of the
-%                       current axes of the current figure. For example:
+%                   A MATLAB struct() whose components will be directly passed
+%                   ``set(gca,axes.kws{:})`` to set the propoerties of the
+%                   current axes of the current figure. For example:
 %
-%               Example usage:
+%           Example usage:
 %
-%                   axes.kws.xscale = "log";
+%               axes.kws.xscale = "log";
 %
-%               If a desired property is missing among the struct fields,
-%               simply add the field and its value to axes.kws.
+%           If a desired property is missing among the struct fields,
+%           simply add the field and its value to axes.kws.
 %
-%               WARNING
+%           WARNING
 %
-%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
-%                   and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               therefore make sure you do not add the keyword as multiple different fields.
+%               For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
+%               and only one of the two will be processed.
 %
-%           figure
+%       figure
 %
-%               A MATLAB struct() with the following components:
+%           A MATLAB struct() with the following components:
 %
-%                   enabled
+%               enabled
 %
-%                       A boolean indicating whether a call to the
-%                       ``figure()`` function of MATLAB should be made or not.
-%                       If a call is made, a new figure will be generated.
-%                       Otherwise, the current active figure will be used.
+%                   A boolean indicating whether a call to the
+%                   ``figure()`` function of MATLAB should be made or not.
+%                   If a call is made, a new figure will be generated.
+%                   Otherwise, the current active figure will be used.
 %
-%                   kws
+%               kws
 %
-%                       A MATLAB struct() whose fields are directly passed to
-%                       the ``figure()`` function of MATLAB.
+%                   A MATLAB struct() whose fields are directly passed to
+%                   the ``figure()`` function of MATLAB.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   figure.enabled = false; % do not make new plot
-%                   figure.kws.color = "none"; % set the background color to none (transparent)
+%               figure.enabled = false; % do not make new plot
+%               figure.kws.color = "none"; % set the background color to none (transparent)
 %
-%               If a desired property is missing among the struct fields,
-%               simply add the field and its value to figure.kws.
+%           If a desired property is missing among the struct fields,
+%           simply add the field and its value to figure.kws.
 %
-%               WARNING
+%           WARNING
 %
-%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
-%                   and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               therefore make sure you do not add the keyword as multiple different fields.
+%               For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
+%               and only one of the two will be processed.
 %
-%           legend
+%       legend
 %
-%               A MATLAB struct() with the following components:
+%           A MATLAB struct() with the following components:
 %
-%                   enabled
+%               enabled
 %
-%                       A boolean indicating whether a call to the
-%                       ``legend()`` function of MATLAB should be made or not.
-%                       If a call is made, a new figure will be generated.
-%                       Otherwise, the current active figure will be used.
+%                   A boolean indicating whether a call to the
+%                   ``legend()`` function of MATLAB should be made or not.
+%                   If a call is made, a new figure will be generated.
+%                   Otherwise, the current active figure will be used.
 %
-%                   kws
+%               kws
 %
-%                       A MATLAB struct() whose fields are directly passed to
-%                       the ``legend()`` function of MATLAB.
+%                   A MATLAB struct() whose fields are directly passed to
+%                   the ``legend()`` function of MATLAB.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   legend.enabled = false; % do not make new plot
-%                   legend.kws.color = "none"; % set the background color to none (transparent)
+%               legend.enabled = false; % do not make new plot
+%               legend.kws.color = "none"; % set the background color to none (transparent)
 %
-%               If a desired property is missing among the struct fields,
-%               simply add the field and its value to figure.kws.
+%           If a desired property is missing among the struct fields,
+%           simply add the field and its value to figure.kws.
 %
-%               WARNING
+%           WARNING
 %
-%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
-%                   and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               therefore make sure you do not add the keyword as multiple different fields.
+%               For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
+%               and only one of the two will be processed.
 %
-%               A MATLAB struct() whose components' values are passed to MATLAB's ``legend()`` function.
-%               If your desired attribute is missing from the fieldnames of legend.kws, simply add
-%               a new field named as the attribute and assign the desired value to it.
+%           A MATLAB struct() whose components' values are passed to MATLAB's ``legend()`` function.
+%           If your desired attribute is missing from the fieldnames of legend.kws, simply add
+%           a new field named as the attribute and assign the desired value to it.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   legend.enabled = true; % add legend
-%                   legend.labels = ["this object","that object"]; % legend labels
+%               legend.enabled = true; % add legend
+%               legend.labels = ["this object","that object"]; % legend labels
 %
-%               NOTE
+%           NOTE
 %
-%                   A legend will be added to plot only if
-%                   plots with no colormap are requested.
+%               A legend will be added to plot only if
+%               plots with no colormap are requested.
 %
-%               NOTE
+%           NOTE
 %
-%                   If no legend labels is provided and legend is enabled, the names
-%                   of the columns of the dataFrame will be used.
+%               If no legend labels is provided and legend is enabled, the names
+%               of the columns of the dataFrame will be used.
 %
-%               WARNING
+%           WARNING
 %
-%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
-%                   and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               therefore make sure you do not add the keyword as multiple different fields.
+%               For example, ``axes.kws.xscale`` and ``axes.kws.Xscale`` are the same,
+%               and only one of the two will be processed.
 %
-%           currentFig
+%       currentFig
 %
-%               A MATLAB struct() whose fields are the outputs of various plotting tools
-%               used to make the current figure. These include the handle to the current figure (gcf),
-%               the handle to the current axes in the plot (gca), the handle to colorbar (if any exists),
-%               and other MATLAB plotting tools used to make to generate the figure.
+%           A MATLAB struct() whose fields are the outputs of various plotting tools
+%           used to make the current figure. These include the handle to the current figure (gcf),
+%           the handle to the current axes in the plot (gca), the handle to colorbar (if any exists),
+%           and other MATLAB plotting tools used to make to generate the figure.
 %
-%       Returns
-%       -------
+%   Returns
+%   -------
 %
-%           An object of BasePlot class
+%       An object of BasePlot class
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

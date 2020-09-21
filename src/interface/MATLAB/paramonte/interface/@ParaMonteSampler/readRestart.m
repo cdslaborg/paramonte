@@ -48,22 +48,29 @@
 %   where SAMPLER can be an instance of any one of the ParaMonte's sampler classes, 
 %   such as ParaDRAM().
 %
-%   NOTE: Only restart output files in ASCII format can be read via this method. 
-%   The binary restart files are not meant to be parsed via this method. To request 
-%   for ASCII restart output files in simulations, set the input simulation specification 
+%       NOTE
+%   
+%           Only the restart output files in ASCII format can be read via this method. 
+%           The binary restart files are not meant to be parsed via this method. 
+%           To request for ASCII restart output files in simulations, 
+%           set the input simulation specification ,
+%   
+%               SAMPLER.spec.restartFileFormat = "ascii", 
+%   
+%           where SAMPLER can be an instance of any one of the ParaMonte's 
+%           sampler classes, such as ParaDRAM().
 %
-%       SAMPLER.spec.restartFileFormat = "ascii", 
+%       WARNING
 %
-%   where SAMPLER can be an instance of any one of the ParaMonte's sampler classes, 
-%   such as ParaDRAM().
+%           Avoid using this routine for very large long simulations.
+%           Reading the full restart file of a large-scale simulation problem 
+%           can be extremely memory-intensive.
 %
-%   WARNING: Avoid using this routine for very large long simulations.
-%   Reading the full restart file of a large-scale simulation problem 
-%   can be extremely memory-intensive.
+%       WARNING
 %
-%   WARNING: This method is to be only used for post-processing of the output
-%   restart file(s) of an already finished simulation. It is NOT meant to be
-%   called by all processes in parallel mode, although it is possible.
+%           This method is to be only used for post-processing of the output
+%           restart file(s) of an already finished simulation. It is NOT meant 
+%           to be called by all processes in parallel mode, although it is possible.
 %
 %   Parameters
 %   ----------
@@ -76,18 +83,27 @@
 %           For example, specifying "./mydir/mysim" as input will lead to
 %           a search for a file that begins with "mysim" and ends with
 %           "_restart.txt" inside the directory "./mydir/".
+%
 %           If there are multiple files with such name, then all of them
 %           will be read and returned as a list.
+%
 %           If this input argument is not provided by the user, the
 %           value of the object's `spec` attribute `outputFileName`
 %           will be used instead.
-%           ======================================================
-%           WARNING: At least one of the two mentioned routes must
-%           provide the path to the restart file. Otherwise,
-%           this method will abort the program.
-%           ======================================================
+%
+%           If the specified path is a URL, the file will be downloaded 
+%           as a temporary file to the local system and its contents will 
+%           be parsed and the file will be subsequently removed.
+%
+%           If no input is specified via any of the possible routes, 
+%           the method will search for any possible candidate file 
+%           with the appropriate suffix in the current working directory.
 %
 %           Example usage:
+%
+%               pmpd.readRestart();
+%
+%           or,
 %
 %               pmpd.readRestart("./out/test_run_");
 %
@@ -96,8 +112,7 @@
 %               pmpd.spec.outputFileName = "./out/test_run_";
 %               pmpd.readRestart();
 %
-%           Both of the above examples are equivalent.
-%           The latter is recommended as it is less confusing.
+%           The last two of the above examples are equivalent.
 %
 %   Returns
 %   -------
@@ -108,24 +123,25 @@
 %           of a unique restart file. Each object has the following components:
 %
 %               file
-%                   full absolute path to the restart file.
 %
-%               delimiter
-%                   the delimiter used in the restart file.
+%                   The full absolute path to the restart file.
 %
 %               ndim
-%                   number of dimensions of the domain of the objective function
-%                   for which the restart file was generated.
+%
+%                   number of dimensions of the domain of the objective 
+%                   function for which the restart file was generated.
 %
 %               count
-%                   the number of proposal updates.
+%
+%                   The number of proposal updates in the file.
 %
 %               df
-%                   the contents of the restart file in the form of
+%
+%                   The contents of the restart file in the form of
 %                   a MATLAB table (df stands for DataFrame).
 %
 %           If no output argument is provided, a restartList property will be added
-%           to the parent sampler-object to which the method ``readRestart()`` belongs.
+%           to the parent sampler-object to which the method readRestart() belongs.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

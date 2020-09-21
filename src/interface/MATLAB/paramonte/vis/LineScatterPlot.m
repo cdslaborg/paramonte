@@ -47,261 +47,289 @@
 %   based on a wide variety of MATLAB's builtin functions.
 %
 %       NOTE
-%       ----
 %
 %           This is a low-level ParaMonte class and is not meant
 %           to be directly instantiated by the user.
 %
-%       Parameters
-%       ----------
+%   Parameters
+%   ----------
 %
-%           dataFrame
+%       dataFrame
 %
-%               a MATLAB data Table from which the selected data will be plotted.
-%               This is a low-level internal argument and is not meant
-%               to be accessed or be provided by the user.
+%           a MATLAB data Table from which the selected data will be plotted.
+%           This is a low-level internal argument and is not meant
+%           to be accessed or be provided by the user.
 %
-%           plotType
+%       plotType
 %
-%               a string representing the type of the plot to be made.
-%               This is a low-level internal argument and is not meant
-%               to be accessed or be provided by the user.
+%           a string representing the type of the plot to be made.
+%           This is a low-level internal argument and is not meant
+%           to be accessed or be provided by the user.
 %
-%       Attributes
-%       ----------
+%   Attributes
+%   ----------
 %
-%           ycolumns
+%       xcolumns
 %
-%               optional property that determines the columns of dataFrame to serve as
-%               the y-values. It can have multiple forms:
+%           Optional property that determines the columns of dataFrame 
+%           to serve as the x-values. It can have multiple forms:
 %
-%                   1.  a numeric or cell array of column indices in the input dataFrame.
-%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%                   3.  a cell array of a mix of the above two.
-%                   4.  a numeric range.
+%               1.  a numeric or cell array of column indices in the input dataFrame.
+%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%               3.  a cell array of a mix of the above two.
+%               4.  a numeric range.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  ycolumns = [7,8,9]
-%                   2.  ycolumns = ["SampleLogFunc","SampleVariable1"]
-%                   3.  ycolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%                   4.  ycolumns = 7:9      # every column in the data frame starting from column #7 to #9
-%                   5.  ycolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%               1.  xcolumns = [7,8,9]
+%               2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
+%               3.  xcolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  xcolumns = 7:9      # every column in the data frame starting from column #7
+%               5.  xcolumns = 7:2:20   # every other column in the data frame starting from column #7
 %
-%               WARNING: In all cases, ycolumns must have a length that is either 0, or 1, or equal
-%               WARNING: to the length of xcolumns. If the length is 1, then ycolumns will be
-%               WARNING: plotted against data corresponding to each element of ycolumns.
-%               WARNING: If it is an empty object having length 0, then the default value will be used.
+%           WARNING
 %
-%               The default value is the names of all columns of the input dataFrame.
+%               In all cases, xcolumns must have a length that is either 0, or 1, 
+%               or equal to the length of ycolumns. If the length is 1, then xcolumns 
+%               will be plotted against data corresponding to each element of ycolumns.
+%               If it is an empty object having length 0, then a default value will be used.
 %
-%           zcolumns (available only in line3/scatter3/lineScatter3 objects)
+%       ycolumns
 %
-%               optional property that determines the columns of dataFrame to serve as
-%               the z-values. It can have multiple forms:
+%           optional property that determines the columns of dataFrame to serve as
+%           the y-values. It can have multiple forms:
 %
-%                   1.  a numeric or cell array of column indices in the input dataFrame.
-%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%                   3.  a cell array of a mix of the above two.
-%                   4.  a numeric range.
+%               1.  a numeric or cell array of column indices in the input dataFrame.
+%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%               3.  a cell array of a mix of the above two.
+%               4.  a numeric range.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  zcolumns = [7,8,9]
-%                   2.  zcolumns = ["SampleLogFunc","SampleVariable1"]
-%                   3.  zcolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%                   4.  zcolumns = 7:9      # every column in the data frame starting from column #7 to #9
-%                   5.  zcolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%               1.  ycolumns = [7,8,9]
+%               2.  ycolumns = ["SampleLogFunc","SampleVariable1"]
+%               3.  ycolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  ycolumns = 7:9      # every column in the data frame starting from column #7 to #9
+%               5.  ycolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
 %
-%               WARNING: In all cases, zcolumns must have a length that is either 0, or 1, or equal
-%               WARNING: to the length of xcolumns.
-%               WARNING: If it is an empty object having length 0, then the default value will be used.
+%           WARNING
 %
-%               The default value is the names of all columns of the input dataFrame.
+%               In all cases, ycolumns must have a length that is either 0, or 1, 
+%               or equal to the length of xcolumns. If the length is 1, then ycolumns 
+%               will be plotted against data corresponding to each element of xcolumns.
+%               If it is an empty object having length 0, then a default value will be used.
 %
-%           ccolumns (standing for color-columns)
+%       zcolumns (available only in line3/scatter3/lineScatter3 objects)
 %
-%               optional property that determines the columns of dataFrame to serve
-%               as the color-mapping-values for each line/point element in the plot.
-%               It can have multiple forms:
+%           optional property that determines the columns of dataFrame to serve as
+%           the z-values. It can have multiple forms:
 %
-%                   1.  a numeric or cell array of column indices in the input dataFrame.
-%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%                   3.  a cell array of a mix of the above two.
-%                   4.  a numeric range.
+%               1.  a numeric or cell array of column indices in the input dataFrame.
+%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%               3.  a cell array of a mix of the above two.
+%               4.  a numeric range.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  ccolumns = [7,8,9]
-%                   2.  ccolumns = ["SampleLogFunc","SampleVariable1"]
-%                   3.  ccolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%                   4.  ccolumns = 7:9      # every column in the data frame starting from column #7 to #9
-%                   5.  ccolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%               1.  zcolumns = [7,8,9]
+%               2.  zcolumns = ["SampleLogFunc","SampleVariable1"]
+%               3.  zcolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  zcolumns = 7:9      # every column in the data frame starting from column #7 to #9
+%               5.  zcolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
 %
-%               WARNING: In all cases, ccolumns must have a length that is either 0, or 1, or equal
-%               WARNING: to the maximum lengths of (xcolumns,ycolumns,zcolumns). If the length is 1, then all data
-%               WARNING: will be plotted with the same color mapping determined by values specified by the elements
-%               WARNING: of ccolumns. If it is an empty object having length 0, then the default value will be used.
+%           WARNING: In all cases, zcolumns must have a length that is either 0, or 1, or equal
+%           WARNING: to the length of xcolumns.
+%           WARNING: If it is an empty object having length 0, then the default value will be used.
 %
-%               The default value is the indices of the rows of the input dataFrame.
+%           The default value is the names of all columns of the input dataFrame.
 %
-%           colormap
+%       ccolumns (standing for color-columns)
 %
-%               A MATLAB struct() property with two components:
+%           optional property that determines the columns of dataFrame to serve
+%           as the color-mapping-values for each line/point element in the plot.
+%           It can have multiple forms:
 %
-%                   1. enabled: logical value. If `true`, the colormap will be applied to the plot
-%                   1. values: a string or any other value that the colormap function of MATLAB accepts as input.
+%               1.  a numeric or cell array of column indices in the input dataFrame.
+%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%               3.  a cell array of a mix of the above two.
+%               4.  a numeric range.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  colormap.values = "autumn"
-%                   1.  colormap.values = "winter"
+%               1.  ccolumns = [7,8,9]
+%               2.  ccolumns = ["SampleLogFunc","SampleVariable1"]
+%               3.  ccolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  ccolumns = 7:9      # every column in the data frame starting from column #7 to #9
+%               5.  ccolumns = 7:2:20   # every other column in the data frame starting from column #7 to #20
 %
-%               If colormap.values is not provided or is empty, the default will be "winter".
+%           WARNING: In all cases, ccolumns must have a length that is either 0, or 1, or equal
+%           WARNING: to the maximum lengths of (xcolumns,ycolumns,zcolumns). If the length is 1, then all data
+%           WARNING: will be plotted with the same color mapping determined by values specified by the elements
+%           WARNING: of ccolumns. If it is an empty object having length 0, then the default value will be used.
 %
-%           colorbar
+%           The default value is the indices of the rows of the input dataFrame.
 %
-%               A MATLAB struct() with the following components: 
+%       colormap (available only in histogram2/contourf/contour3/contour objects) 
 %
-%                   enabled
+%           A MATLAB struct() with the following components:
 %
-%                       A boolean indicating whether a call to the 
-%                       ``colorbar()`` function of MATLAB should be made or not.
-%                       If a call is made, a new colorbar will be added to the figure.
+%               enabled
 %
-%                   kws
+%                   A logical value. If `true`, the colormap will be applied 
+%                   to the plot. 
 %
-%                       A MATLAB struct() whose fields are directly passed to 
-%                       the ``colorbar()`` function of MATLAB.
+%               values
 %
-%               Example usage:
+%                   A string or any other value that the colormap function 
+%                   of MATLAB accepts as input.
 %
-%                   colorbar.enabled = true % add colorbar
-%                   colorbar.kws.location = "west"
+%           Example usage:
 %
-%               If a desired property is missing among the struct fields, simply add the field
-%               and its value to colorbar.kws.
+%               1.  colormap.enabled = true;
+%               1.  colormap.values = "winter";
+%               1.  colormap.values = "autumn";
 %
-%               WARNING
+%       colorbar (available only in histogram2/contourf/contour3/contour objects) 
 %
-%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ``colorbar.kws.color`` and ``colorbar.kws.Color`` are the same, 
-%                   and only one of the two will be processed.
+%           A MATLAB struct() with the following components:
 %
-%           plot (available only in line/lineScatter/line3/lineScatter3 objects)
+%               enabled
 %
-%               A MATLAB struct() with the following components: 
+%                   A logical value. If `true`, the colorbar will be applied to the plot.
 %
-%                   enabled
+%               kws
 %
-%                       A boolean indicating whether a call to the 
-%                       ``colorbar()`` function of MATLAB should be made or not.
-%                       If a call is made, a new colorbar will be added to the figure.
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's colorbar() function. If your desired attribute is 
+%                   missing from the fieldnames of colorbar.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
-%                   kws
+%           Example usage:
 %
-%                       A MATLAB struct() whose fields are directly passed to 
-%                       the ``plot()`` or ``plot3()`` function of MATLAB.
+%               colorbar.enabled = true; % add colorbar
+%               colorbar.kws.location = "west";
 %
-%               This property exists only if the object is instantiated 
-%               as a line/lineScatter/line3/lineScatter3 object. 
+%           WARNING
 %
-%               Example usage:
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, colorbar.kws.color and colorbar.kws.Color are the same,
+%               and only one of the two will be processed.
 %
-%                   plot.enabled = true; % enable plot()
-%                   plot.kws.lineWidth = 2;
+%       plot (available only in line/lineScatter/line3/lineScatter3 objects)
 %
-%               If a desired property is missing among the struct fields, 
-%               simply add the field and its value to ``plot.kws``.
+%           A MATLAB struct() with the following components: 
 %
-%               WARNING
+%               enabled
 %
-%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ````plot.kws.color`` and ``plot.kws.Color`` are the same, 
-%                   and only one of the two will be processed.
+%                   A boolean indicating whether a call to the 
+%                   ``colorbar()`` function of MATLAB should be made or not.
+%                   If a call is made, a new colorbar will be added to the figure.
 %
-%           surface (available only in line/lineScatter/line3/lineScatter3 objects)
+%               kws
 %
-%               A MATLAB struct() with the following components: 
+%                   A MATLAB struct() whose fields are directly passed to 
+%                   the ``plot()`` or ``plot3()`` function of MATLAB.
 %
-%                   enabled
+%           This property exists only if the object is instantiated 
+%           as a line/lineScatter/line3/lineScatter3 object. 
 %
-%                       A boolean indicating whether a call to the 
-%                       ``surface()`` function of MATLAB should be made or not.
+%           Example usage:
 %
-%                   kws
+%               plot.enabled = true; % enable plot()
+%               plot.kws.lineWidth = 2;
 %
-%                       A MATLAB ``struct()`` whose fields are directly passed to 
-%                       the ``surface()`` function of MATLAB.
+%           If a desired property is missing among the struct fields, 
+%           simply add the field and its value to ``plot.kws``.
 %
-%               This property exists only if the object is instantiated 
-%               as a line/lineScatter/line3/lineScatter3 object. 
+%           WARNING
 %
-%               Example usage:
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               therefore make sure you do not add the keyword as multiple different fields.
+%               For example, ````plot.kws.color`` and ``plot.kws.Color`` are the same, 
+%               and only one of the two will be processed.
 %
-%                   surface.enabled = true; % add surface()
-%                   surface.kws.lineWidth = 2;
+%       surface (available only in line/lineScatter/line3/lineScatter3 objects)
 %
-%               If a desired property is missing among the struct fields, 
-%               simply add the field and its value to ``surface.kws``.
+%           A MATLAB struct() with the following components: 
 %
-%               WARNING
+%               enabled
 %
-%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ````surface.kws.lineWidth`` and ``surface.kws.Linewidth`` are the same, 
-%                   and only one of the two will be processed.
+%                   A boolean indicating whether a call to the 
+%                   ``surface()`` function of MATLAB should be made or not.
 %
-%           scatter (available only in scatter/lineScatter/scatter3/lineScatter3 objects)
+%               kws
 %
-%               A MATLAB struct() with the following components: 
+%                   A MATLAB ``struct()`` whose fields are directly passed to 
+%                   the ``surface()`` function of MATLAB.
 %
-%                   enabled
+%           This property exists only if the object is instantiated 
+%           as a line/lineScatter/line3/lineScatter3 object. 
 %
-%                       A boolean indicating whether a call to the 
-%                       ``scatter()`` function of MATLAB should be made or not.
+%           Example usage:
 %
-%                   kws
+%               surface.enabled = true; % add surface()
+%               surface.kws.lineWidth = 2;
 %
-%                       A MATLAB ``struct()`` whose fields are directly passed to 
-%                       the ``scatter()`` or ``scatter3()`` function of MATLAB.
+%           If a desired property is missing among the struct fields, 
+%           simply add the field and its value to ``surface.kws``.
 %
-%               This property exists only if the object is instantiated 
-%               as a line/lineScatter/line3/lineScatter3 object. 
+%           WARNING
 %
-%               Example usage:
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               therefore make sure you do not add the keyword as multiple different fields.
+%               For example, ````surface.kws.lineWidth`` and ``surface.kws.Linewidth`` are the same, 
+%               and only one of the two will be processed.
 %
-%                   scatter.enabled = true; % add scatter()
-%                   scatter.kws.marker = ".";
-%                   scatter.size = 10; % set the point size 
-%                   scatter.color = "red"; % set the points color 
+%       scatter (available only in scatter/lineScatter/scatter3/lineScatter3 objects)
 %
-%               If a desired property is missing among the struct fields, simply add the field
-%               and its value to scatter.kws.
+%           A MATLAB struct() with the following components: 
 %
-%               WARNING
+%               enabled
 %
-%                   Keep in mind that MATLAB keyword arguments are case-INsensitive.
-%                   therefore make sure you do not add the keyword as multiple different fields.
-%                   For example, ````surface.kws.lineWidth`` and ``surface.kws.Linewidth`` are the same, 
-%                   and only one of the two will be processed.
+%                   A boolean indicating whether a call to the 
+%                   ``scatter()`` function of MATLAB should be made or not.
 %
-%           target
+%               kws
 %
-%               An object of class Target_class for adding target values to the plots.
-%               For more information, see the documentation for Target.
+%                   A MATLAB ``struct()`` whose fields are directly passed to 
+%                   the ``scatter()`` or ``scatter3()`` function of MATLAB.
 %
-%       Superclass Attributes
-%       ---------------------
+%           This property exists only if the object is instantiated 
+%           as a line/lineScatter/line3/lineScatter3 object. 
 %
-%           See the documentation for the ``BasePlot`` class.
+%           Example usage:
 %
-%       Returns
-%       -------
+%               scatter.enabled = true; % add scatter()
+%               scatter.kws.marker = ".";
+%               scatter.size = 10; % set the point size 
+%               scatter.color = "red"; % set the points color 
 %
-%           An object of ``LineScatterPlot`` class.
+%           If a desired property is missing among the struct fields, simply add the field
+%           and its value to scatter.kws.
+%
+%           WARNING
+%
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               therefore make sure you do not add the keyword as multiple different fields.
+%               For example, ````surface.kws.lineWidth`` and ``surface.kws.Linewidth`` are the same, 
+%               and only one of the two will be processed.
+%
+%       target
+%
+%           An object of class Target_class for adding target values to the plots.
+%           For more information, see the documentation for the Target_class().
+%
+%   Superclass Attributes
+%   ---------------------
+%
+%       See the documentation for the ``BasePlot`` class.
+%
+%   Returns
+%   -------
+%
+%       An object of ``LineScatterPlot`` class.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -495,7 +523,6 @@ classdef LineScatterPlot < BasePlot
             %
             %       make("ycolumns",[8])
             %       make("ycolumns",7:10)
-            %       make( "gcf_kws", {"enabled",true,"color","none"} )
             %
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

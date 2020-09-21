@@ -53,8 +53,10 @@
 %   computed and smoothed by a Gaussian kernel density estimator and then passed 
 %   to the MATLAB intrinsic plotting functions contourf/contour3/contour.
 %
-%   NOTE: This is a low-level ParaMonte class and is not meant
-%   NOTE: to be directly instantiated by the user.
+%   NOTE
+%
+%       This is a low-level ParaMonte class and is not meant
+%       to be directly instantiated by the user.
 %
 %   Parameters
 %   ----------
@@ -74,10 +76,35 @@
 %   Attributes
 %   ----------
 %
-%       ycolumns (available only in histogram2/contourf/contour3/contour objects)
+%       xcolumns
 %
-%           optional property that determines the columns of dataFrame to serve as
-%           the y-values. It can have multiple forms:
+%           Optional property that determines the columns of dataFrame 
+%           to serve as the x-values. It can have multiple forms:
+%
+%               1.  a numeric or cell array of column indices in the input dataFrame.
+%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%               3.  a cell array of a mix of the above two.
+%               4.  a numeric range.
+%
+%           Example usage:
+%
+%               1.  xcolumns = [7,8,9]
+%               2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
+%               3.  xcolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  xcolumns = 7:9      # every column in the data frame starting from column #7
+%               5.  xcolumns = 7:2:20   # every other column in the data frame starting from column #7
+%
+%           WARNING
+%
+%               In all cases, xcolumns must have a length that is either 0, or 1, 
+%               or equal to the length of ycolumns. If the length is 1, then xcolumns 
+%               will be plotted against data corresponding to each element of ycolumns.
+%               If it is an empty object having length 0, then a default value will be used.
+%
+%       ycolumns (available only in 2D and 3D objects)
+%
+%           Optional property that determines the columns of dataFrame 
+%           to serve as the y-values. It can have multiple forms:
 %
 %               1.  a numeric or cell array of column indices in the input dataFrame.
 %               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
@@ -92,173 +119,263 @@
 %               4.  ycolumns = 7:9      # every column in the data frame starting from column #7
 %               5.  ycolumns = 7:2:20   # every other column in the data frame starting from column #7
 %
-%           WARNING: In all cases, ycolumns must have a length that is either 0, or 1, or equal
-%           WARNING: to the length of xcolumns. If the length is 1, then ycolumns will be
-%           WARNING: plotted against data corresponding to each element of ycolumns.
-%           WARNING: If it is an empty object having length 0, then the default value will be used.
+%           WARNING
 %
-%           The default value is the names of all columns of the input dataFrame.
+%               In all cases, ycolumns must have a length that is either 0, or 1, 
+%               or equal to the length of xcolumns. If the length is 1, then ycolumns 
+%               will be plotted against data corresponding to each element of xcolumns.
+%               If it is an empty object having length 0, then a default value will be used.
 %
 %       colormap (available only in histogram2/contourf/contour3/contour objects) 
 %
-%           A MATLAB struct() property with two components:
+%           A MATLAB struct() with the following components:
 %
-%               1. enabled: logical value. If `true`, the colormap will be applied to the plot
-%               1. values: a string or any other value that the colormap function of MATLAB accepts as input.
+%               enabled
 %
-%           Example usage:
+%                   A logical value. If `true`, the colormap will be applied 
+%                   to the plot. 
 %
-%               1.  colormap.values = "autumn"
-%               1.  colormap.values = "winter"
+%               values
 %
-%           If colormap is not provided or is empty, the default will be "winter".
-%
-%       colorbar.kws (available only in histogram2/contourf/contour3/contour objects) 
-%
-%           A MATLAB struct() whose components' values are passed to MATLAB's colorbar function.
-%           If your desired attribute is missing from the fieldnames of colorbar.kws, simply add
-%           a new field named as the attribute and assign the desired value to it.
+%                   A string or any other value that the colormap function 
+%                   of MATLAB accepts as input.
 %
 %           Example usage:
 %
-%               colorbar.enabled = true % add colorbar
-%               colorbar.kws.location = "west"
+%               1.  colormap.enabled = true;
+%               1.  colormap.values = "winter";
+%               1.  colormap.values = "autumn";
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to colorbar.kws.
+%       colorbar (available only in histogram2/contourf/contour3/contour objects) 
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, colorbar.kws.color and colorbar.kws.Color are the same,
-%           WARNING: and only one of the two will be processed.
+%           A MATLAB struct() with the following components:
 %
-%       histfit.kws (available only in histfit objects)
+%               enabled
 %
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `histfit()` function of MATLAB.
-%           This property exists only if the object is instantiated as a histogram object.
+%                   A logical value. If `true`, the colorbar will be applied to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's colorbar() function. If your desired attribute is 
+%                   missing from the fieldnames of colorbar.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
+%
+%           Example usage:
+%
+%               colorbar.enabled = true; % add colorbar
+%               colorbar.kws.location = "west";
+%
+%           WARNING
+%
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, colorbar.kws.color and colorbar.kws.Color are the same,
+%               and only one of the two will be processed.
+%
+%       histfit (available only in histfit objects)
+%
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the histfit will be added to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's histfit() function. If your desired attribute is 
+%                   missing from the fieldnames of histfit.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
 %           Example usage:
 %
 %               histfit.enabled = true; % add histfit()
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to histfit.kws.
+%           WARNING
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, histfit.enabled and histfit.enabled are the same,
-%           WARNING: and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, histfit.kws.color and histfit.kws.Color are the same,
+%               and only one of the two will be processed.
 %
-%       histogram.kws (available only in histogram objects)
+%       histogram (available only in histogram objects)
 %
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `histogram()` function of MATLAB.
-%           This property exists only if the object is instantiated as a histogram object.
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the histogram will be added to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's histogram() function. If your desired attribute is 
+%                   missing from the fieldnames of histogram.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
 %           Example usage:
 %
 %               histogram.enabled = true; % add histogram()
 %               histogram.kws.edgeColor = "none";
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to histogram.kws.
+%           WARNING
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: histogram.kws.edgeColor and histogram.kws.edgeColor are the same,
-%           WARNING: and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, histogram.kws.edgeColor and histogram.kws.EdgeColor are the same,
+%               and only one of the two will be processed.
 %
-%       histogram2.kws (available only in histogram2 objects)
+%       histogram2 (available only in histogram2 objects)
 %
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `histogram2()` function of MATLAB.
-%           This property exists only if the object is instantiated as a histogram object.
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the histogram2 will be added to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's histogram2() function. If your desired attribute is 
+%                   missing from the fieldnames of histogram2.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
 %           Example usage:
 %
 %               histogram2.enabled = true; % add histogram2()
 %               histogram2.kws.edgeColor = "none";
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to histogram2.kws.
+%           WARNING
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: histogram2.kws.edgeColor and histogram2.kws.edgeColor are the same,
-%           WARNING: and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, histogram2.kws.edgeColor and histogram2.kws.EdgeColor are the same,
+%               and only one of the two will be processed.
 %
-%       contourf.kws (available only in contourf objects)
+%       contourf (available only in contourf objects)
 %
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `contourf()` function of MATLAB.
-%           This property exists only if the object is instantiated as a histogram object.
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the contourf will be added to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's contourf() function. If your desired attribute is 
+%                   missing from the fieldnames of contourf.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
 %           Example usage:
 %
 %               contourf.enabled = true; % add contourf()
 %               contourf.kws.color = "none";
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to contourf.kws.
+%           WARNING
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: contourf.kws.color and contourf.kws.Color are the same,
-%           WARNING: and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, contourf.kws.color and contourf.kws.Color are the same,
+%               and only one of the two will be processed.
 %
-%       contour3.kws (available only in contour3 objects)
+%       contour3 (available only in contour3 objects)
 %
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `contour3()` function of MATLAB.
-%           This property exists only if the object is instantiated as a histogram object.
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the contour3 will be added to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's contour3() function. If your desired attribute is 
+%                   missing from the fieldnames of contour3.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
 %           Example usage:
 %
 %               contour3.enabled = true; % add contour3()
-%               contour3.kws.lineWidth = 1;
+%               contour3.kws.lineWidth = "none";
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to contour3.kws.
+%           WARNING
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: contour3.kws.lineWidth and contour3.kws.LineWidth are the same,
-%           WARNING: and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, contour3.kws.lineWidth and contour3.kws.WineWidth are the same,
+%               and only one of the two will be processed.
 %
-%       contour.kws (available only in contour objects)
+%       contour (available only in contour objects)
 %
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `contour()` function of MATLAB.
-%           This property exists only if the object is instantiated as a histogram object.
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the contour will be added to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's contour() function. If your desired attribute is 
+%                   missing from the fieldnames of contour.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
 %           Example usage:
 %
 %               contour.enabled = true; % add contour()
-%               contour.kws.lineWidth = 1;
+%               contour.kws.lineWidth = "none";
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to contour.kws.
+%           WARNING
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: contour.kws.lineWidth and contour.kws.LineWidth are the same,
-%           WARNING: and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, contour.kws.lineWidth and contour.kws.WineWidth are the same,
+%               and only one of the two will be processed.
 %
-%       target
+%       gridSize (available in ``contour``, ``contourf``, ``contour3`` objects)
 %
-%           an object of class Target_class for adding target values to the plots.
-%           For more information, see the documentation for Target.
+%           An integer indicating the grid resolution for discretization of the 
+%           data during the kernel density estimation. It must be a power of 
+%           two, otherwise it will be changed to the next power of two at the
+%           time of using it. The default value is 512.
+%
+%           Example usage:
+%
+%                   gridSize = 512
+%
+%       noiseDensity (available in ``contour``, ``contourf``, ``contour3``)
+%
+%           A float indicating the threshold below which the kernel density 
+%           estimate is considered to be noise and is rounded to zero.
+%           The higher this value is, the less noise will be visible.
+%
+%           Example usage:
+%
+%                   noiseDensity = 1.e-5
+%
+%       target (available in 2D plots)
+%
+%           An object of class Target_class for adding target values to the plots.
+%           For more information, see the documentation for the Target_class().
 %
 %   Superclass Attributes
 %   ---------------------
 %
-%       See the documentation for the BasePlot class
+%       See the documentation for the BasePlot class.
 %
 %   Returns
 %   -------
 %
-%       An object of DensityPlot class
+%       An object of DensityPlot class.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

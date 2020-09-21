@@ -50,124 +50,135 @@
 %           This is a low-level ParaMonte class and is not meant
 %           to be directly instantiated by the user.
 %
-%       Parameters
-%       ----------
+%   Parameters
+%   ----------
 %
-%           dataFrame
+%       dataFrame
 %
-%               A MATLAB data Table from which the selected data will be plotted.
-%               This is a low-level internal argument and is not meant
-%               to be accessed or be provided by the user.
+%           A MATLAB data Table from which the selected data will be plotted.
+%           This is a low-level internal argument and is not meant
+%           to be accessed or be provided by the user.
 %
-%       Attributes
-%       ----------
+%   Attributes
+%   ----------
 %
-%           xcolumns
+%       xcolumns
 %
-%               Optional property that determines the columns of dataFrame to serve as
-%               the x-values. It can have multiple forms:
+%           Optional property that determines the columns of dataFrame to serve as
+%           the x-values. It can have multiple forms:
 %
-%                   1.  a numeric or cell array of column indices in the input dataFrame.
-%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%                   3.  a cell array of a mix of the above two.
-%                   4.  a numeric range.
+%               1.  a numeric or cell array of column indices in the input dataFrame.
+%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%               3.  a cell array of a mix of the above two.
+%               4.  a numeric range.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  xcolumns = [7,8,9]
-%                   2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
-%                   3.  xcolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%                   4.  xcolumns = 7:9      # every column in the data frame starting from column #7
-%                   5.  xcolumns = 7:2:20   # every other column in the data frame starting from column #7
+%               1.  xcolumns = [7,8,9]
+%               2.  xcolumns = ["SampleLogFunc","SampleVariable1"]
+%               3.  xcolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  xcolumns = 7:9      # every column in the data frame starting from column #7
+%               5.  xcolumns = 7:2:20   # every other column in the data frame starting from column #7
 %
-%               WARNING 
+%           WARNING 
 %
-%                   In all cases, xcolumns must have a length that is either 0, or 1, or equal
-%                   to the length of xcolumns. If the length is 1, then xcolumns will be
-%                   plotted against data corresponding to each element of xcolumns.
-%                   If it is an empty object having length 0, then the default value will be used.
+%               In all cases, xcolumns must have a length that is either 0, or 1, or equal
+%               to the length of xcolumns. If the length is 1, then xcolumns will be
+%               plotted against data corresponding to each element of xcolumns.
+%               If it is an empty object having length 0, then the default value will be used.
 %
-%               The default value is the names of all columns of the input dataFrame.
+%           The default value is the names of all columns of the input dataFrame.
 %
-%           ycolumns
+%       ycolumns
 %
-%               Optional property that determines the columns of dataFrame to serve as
-%               the y-values. It can have multiple forms:
+%           Optional property that determines the columns of dataFrame to serve as
+%           the y-values. It can have multiple forms:
 %
-%                   1.  a numeric or cell array of column indices in the input dataFrame.
-%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%                   3.  a cell array of a mix of the above two.
-%                   4.  a numeric range.
+%               1.  a numeric or cell array of column indices in the input dataFrame.
+%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%               3.  a cell array of a mix of the above two.
+%               4.  a numeric range.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  ycolumns = [7,8,9]
-%                   2.  ycolumns = ["SampleLogFunc","SampleVariable1"]
-%                   3.  ycolumns = {"SampleLogFunc",9,"SampleVariable1"}
-%                   4.  ycolumns = 7:9      # every column in the data frame starting from column #7
-%                   5.  ycolumns = 7:2:20   # every other column in the data frame starting from column #7
+%               1.  ycolumns = [7,8,9]
+%               2.  ycolumns = ["SampleLogFunc","SampleVariable1"]
+%               3.  ycolumns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  ycolumns = 7:9      # every column in the data frame starting from column #7
+%               5.  ycolumns = 7:2:20   # every other column in the data frame starting from column #7
 %
-%               WARNING 
+%           WARNING 
 %
-%                   In all cases, ycolumns must have a length that is either 0, or 1, or equal
-%                   to the length of xcolumns. If the length is 1, then ycolumns will be
-%                   plotted against data corresponding to each element of ycolumns.
-%                   If it is an empty object having length 0, then the default value will be used.
+%               In all cases, ycolumns must have a length that is either 0, or 1, or equal
+%               to the length of xcolumns. If the length is 1, then ycolumns will be
+%               plotted against data corresponding to each element of ycolumns.
+%               If it is an empty object having length 0, then the default value will be used.
 %
-%               The default value is the names of all columns of the input dataFrame.
+%           The default value is the names of all columns of the input dataFrame.
 %
-%           colormap
+%       colormap
 %
-%               A MATLAB struct() property with two components:
+%           A MATLAB struct() with the following components:
 %
-%                   1. enabled: logical value. If `true`, the colormap will be applied to the plot
-%                   1. values: a string or any other value that the colormap function of MATLAB accepts as input.
+%               enabled
 %
-%               Example usage:
+%                   A logical value. If `true`, the colormap will be applied 
+%                   to the plot. 
 %
-%                   1.  colormap.values = "autumn"
-%                   1.  colormap.values = "winter"
+%               values
 %
-%               If colormap is not provided or is empty, the default will be "autumn".
+%                   A string or any other value that the colormap function 
+%                   of MATLAB accepts as input.
 %
-%           heatmap_kws
+%           Example usage:
 %
-%               A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%               are directly passed to the `heatmap()` function of MATLAB.
+%               1.  colormap.enabled = true;
+%               1.  colormap.values = "winter";
+%               1.  colormap.values = "autumn";
 %
-%               Example usage:
+%       heatmap
 %
-%                   heatmap.enabled = true; % add heatmap()
-%                   heatmap.ColorLimits = [-1 1];
+%           A MATLAB struct() with the following components:
 %
-%               If a desired property is missing among the struct fields, simply add the field
-%               and its value to heatmap.kws.
+%               enabled
 %
-%               WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%               WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%               WARNING: heatmap.ColorLimits and heatmap.ColorLimits are the same,
-%               WARNING: and only one of the two will be processed.
+%                   A logical value. If `true`, the heatmap will be applied to the plot.
 %
-%           title
+%               kws
 %
-%               A string that is passed to the title() function of MATLAB to add title to the plot.
-%               If the property is empty, not title will be added.
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's heatmap() function. If your desired attribute is 
+%                   missing from the fieldnames of heatmap.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
-%           precision
+%           Example usage:
 %
-%               A numeric scalar value, representing the number of digits after the decimal point
-%               for the values that appear in each cell of the heatmap.
-%               The default value is not set to anything.
+%               heatmap.enabled = true; % add heatmap
+%               heatmap.kws.location = "west";
 %
-%       Superclass Attributes
-%       ---------------------
+%           WARNING
 %
-%           See the documentation for the BasePlot class
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, heatmap.kws.title and heatmap.kws.TITLE are the same,
+%               and only one of the two will be processed.
 %
-%       Returns
-%       -------
+%       precision
 %
-%           An object of HeatmapPlot class
+%           A numeric scalar value, representing the number of digits after 
+%           the decimal point for the values that appear in each cell 
+%           of the heatmap. The default value is not set to anything.
+%
+%   Superclass Attributes
+%   ---------------------
+%
+%       See the documentation for the BasePlot class
+%
+%   Returns
+%   -------
+%
+%       An object of HeatmapPlot class
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -246,7 +257,7 @@ classdef HeatmapPlot < BasePlot
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function adjustColorLimits(self,newLimits)
+        function adjustColorLimits(self, newLimits)
             %
             %   Adjust the limits of the colormap of the heatmap, according to
             %   the user-input value or the default symmetric value.

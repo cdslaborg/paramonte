@@ -44,8 +44,8 @@
 %   Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo
 %   sampler of the ParaMonte library.
 %   
-%   Once you set the desired attributes to the desired values,
-%   call the ParaDRAM sampler via the object's method runSampler().
+%   Once you set the desired attributes to the desired values via the `spec`
+%   component call the ParaDRAM sampler via the object's method runSampler().
 %
 %   Parameters
 %   ----------
@@ -106,82 +106,88 @@
 %   Parallel simulations
 %   --------------------
 %
-%   0.  ensure you need and will get a speedup by running the ParaDRAM sampler in parallel.
-%       Typically, if a single evaluation of the objective function takes much longer than
-%       a few milliseconds, your simulation may then benefit from the parallel simulation.
+%       0.  Ensure you need and will get a speedup by running the ParaDRAM sampler in parallel.
+%           Typically, if a single evaluation of the objective function takes much longer than
+%           a few milliseconds, your simulation may then benefit from the parallel simulation.
 %
-%   1.  First, ensure the required MPI libraries are installed on your System:
-%       (You can skip this step if you know that you already have 
-%       a compatible MPI library installed on your system). 
-%       On the MATLAB command line type the following, 
+%       1.  First, ensure the required MPI libraries are installed on your System:
+%           (You can skip this step if you know that you already have 
+%           a compatible MPI library installed on your system). 
+%           On the MATLAB command line type the following, 
 %
-%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%           pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
-%           addpath(genpath(pmlibRootDir));
-%           pm = paramonte();
-%           pm.verify();
-%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory
+%               addpath(genpath(pmlibRootDir));
+%               pm = paramonte();
+%               pm.verify();
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%       This will verify the existence of a valid MPI library on your system and,
-%       if missing, will install the MPI library on your system (with your permission).
+%           This will verify the existence of a valid MPI library on your system and,
+%           if missing, will install the MPI library on your system (with your permission).
 %
-%   2.  Once the MPI installation is verified, 
-%       copy and paste the following code enclosed 
-%       between the two comment lines in your MATLAB session:
+%       2.  Once the MPI installation is verified, 
+%           copy and paste the following code enclosed 
+%           between the two comment lines in your MATLAB session:
 %
-%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%           fid = fopen("main_mpi.m", "w");
-%           sourceCode = ...
-%           "pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory" + newline + ...
-%           "addpath(genpath(pmlibRootDir));" + newline + ...
-%           "pm = paramonte();" + newline + ...
-%           "pmpd = pm.ParaDRAM();" + newline + ...
-%           "pmpd.mpiEnabled = true;" + newline + ...
-%           "pmpd.runSampler ( 4                 ... number of dimensions of the objective function" + newline + ...
-%           "                , @(x) -sum(x.^2)   ... the natural log of the objective function" + newline + ...
-%           "                );";
-%           fprintf( fid, "%s\n", sourceCode );
-%           fclose(fid);
-%           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               fid = fopen("main_mpi.m", "w");
+%               sourceCode = ...
+%               "pmlibRootDir = './'; % if needed, change this path to the ParaMonte library root directory" + newline + ...
+%               "addpath(genpath(pmlibRootDir));" + newline + ...
+%               "pm = paramonte();" + newline + ...
+%               "pmpd = pm.ParaDRAM();" + newline + ...
+%               "pmpd.mpiEnabled = true;" + newline + ...
+%               "pmpd.runSampler ( 4                 ... number of dimensions of the objective function" + newline + ...
+%               "                , @(x) -sum(x.^2)   ... the natural log of the objective function" + newline + ...
+%               "                );";
+%               fprintf( fid, "%s\n", sourceCode );
+%               fclose(fid);
+%               %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   3.  This will generate a main_mpi.m MATLAB script file in the current
-%       working directory of your MATLAB session. Now, you can execute
-%       this MATLAB script file (main_mpi.m) in parallel. To do so, 
-%       you need to call MATLAB on a command-line, out of MATLAB.
+%       3.  This will generate a main_mpi.m MATLAB script file in the current
+%           working directory of your MATLAB session. Now, you can execute
+%           this MATLAB script file (main_mpi.m) in parallel. To do so, 
+%           you need to call MATLAB on a command-line, out of MATLAB.
 %
-%           a.  On Windows: 
+%               a.  On Windows: 
 %
-%               from within command prompt that recognizes both MATLAB and mpiexec, 
-%               (ideally, the Intel Parallel Studio's command-prompt)
-%               type the following,
+%                   From within command prompt that recognizes both MATLAB and mpiexec, 
+%                   (ideally, the Intel Parallel Studio's command-prompt)
+%                   type the following,
 %
-%                   mpiexec -localonly -n 3 matlab -batch "main_mpi"
+%                       mpiexec -localonly -n 3 matlab -batch "main_mpi"
 %
-%               NOTE: In the above MPI launcher commands for Windows OS, 
-%               NOTE: we assumed that you would be using the Intel MPI library, hence, 
-%               NOTE: the reason for the extra flag -localonly. This flag runs the parallel 
-%               NOTE: code only on one node, but in doing so, it avoids the use of Hydra service 
-%               NOTE: and its registration. If you are not on a Windows cluster, (e.g., you are 
-%               NOTE: using your personal device), then we recommend specifying this flag.
+%                   NOTE
+%
+%                       In the above MPI launcher commands for Windows OS, 
+%                       we assumed that you would be using the Intel MPI library, hence, 
+%                       the reason for the extra flag -localonly. This flag runs the parallel 
+%                       code only on one node, but in doing so, it avoids the use of Hydra service 
+%                       and its registration. If you are not on a Windows cluster, (e.g., you are 
+%                       using your personal device), then we recommend specifying this flag.
 %
 %
-%           b.  On macOS/Linux: 
+%               b.  On macOS/Linux: 
 %
-%               from within a Bash terminal that recognizes both MATLAB and mpiexec, 
-%               type the following,
+%                   From within a Bash terminal that recognizes both MATLAB and mpiexec, 
+%                   type the following,
 %
-%                   mpiexec -n 3 matlab -batch "main_mpi"
+%                       mpiexec -n 3 matlab -batch "main_mpi"
 %
-%       NOTE: In both cases in the above, the script 'main_mpi.m' will run on 3 processors.
-%       NOTE: Feel free to change the number of processors to any number desired. But do not 
-%       NOTE: request more than the available number of physical cores on your system.
+%           NOTE
 %
-%   WARNING: Do not add postprocessing codes (such as reading and plotting the output samples)
-%   WARNING: in your parallel code. There is no point in doing so, since MATLAB will run in `-batch`
-%   WARNING: mode for parallel simulations, disabling all plotting capabilities. Moreover, if you read
-%   WARNING: and postprocess the output files in parallel mode, the task will be done by all of the parallel
-%   WARNING: processes, potentially overwriting each others external activities.
-%   WARNING: Only perform the sampling (by calling the sampler routine) in parallel mode.
+%               In both cases in the above, the script 'main_mpi.m' will run on 3 processors.
+%               Feel free to change the number of processors to any number desired. But do not 
+%               request more than the available number of physical cores on your system.
+%
+%       WARNING
+%
+%           Do not add postprocessing codes (such as reading and plotting the output samples)
+%           in your parallel code. There is no point in doing so, since MATLAB will run in `-batch`
+%           mode for parallel simulations, disabling all plotting capabilities. Moreover, if you read
+%           and postprocess the output files in parallel mode, the task will be done by all of the parallel
+%           processes, potentially overwriting each others external activities.
+%           Only perform the sampling (by calling the sampler routine) in parallel mode.
 %
 %   ParaDRAM Simulation Attributes
 %   ------------------------------
@@ -191,6 +197,11 @@
 %
 %       The best way to learn about individual ParaDRAM simulation attributes
 %       is to a run a minimal serial simulation as given in the above.
+%       You can also use the helpme() method of the spec component:
+%
+%           pm = paramonte();
+%           pmpd = pm.ParaDRAM();
+%           pmpd.spec.helpme();
 %
 %       See also: https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
 %

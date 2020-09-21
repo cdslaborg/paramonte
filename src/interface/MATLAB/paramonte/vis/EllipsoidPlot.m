@@ -47,8 +47,10 @@
 %   It generates a plot of 2D ellipsoids corresponding to the input 
 %   list of covariance/correlation matrices.
 %
-%   NOTE: This is a low-level ParaMonte class and is not meant
-%   NOTE: to be directly instantiated by the user.
+%       NOTE
+%
+%           This is a low-level ParaMonte class and is not meant
+%           to be directly instantiated by the user.
 %
 %   Parameters
 %   ----------
@@ -59,9 +61,6 @@
 %           that represent the characteristic covariance/correlation of ellipsoids. 
 %           The covariance/correlation-matrix column of the input dataFrame must be a 3D 
 %           matrix of the size (nrows,ndim,ndim) where count is the number of dataFrame nrows.
-%
-%           NOTE: This is a low-level internal argument and is not meant
-%           NOTE: to be accessed or be provided by the user.
 %
 %   Attributes
 %   ----------
@@ -119,7 +118,7 @@
 %
 %       ccolumn (standing for color-columns)
 %
-%           optional property that determines the columns of dataFrame to serve
+%           Optional property that determines the columns of dataFrame to serve
 %           as the color-mapping-values for each line/point element in the plot.
 %           It can have multiple forms:
 %
@@ -140,72 +139,123 @@
 %
 %           The default value is the indices of the rows of the input dataFrame.
 %
-%       colormap
+%       colormap (available only in histogram2/contourf/contour3/contour objects) 
 %
-%           A MATLAB struct() property with two components:
+%           A MATLAB struct() with the following components:
 %
-%               1. enabled: logical value. If `true`, the colormap will be applied to the plot
-%               1. values: a string or any other value that the colormap function of MATLAB accepts as input.
+%               enabled
 %
-%           Example usage:
+%                   A logical value. If `true`, the colormap will be applied 
+%                   to the plot. 
 %
-%               1.  colormap.values = "autumn"
-%               1.  colormap.values = "winter"
+%               values
 %
-%           If colormap is not provided or is empty, the default will be "winter".
-%
-%       colorbar.kws
-%
-%           A MATLAB struct() whose components' values are passed to MATLAB's colorbar function.
-%           If your desired attribute is missing from the fieldnames of colorbar.kws, simply add
-%           a new field named as the attribute and assign the desired value to it.
+%                   A string or any other value that the colormap function 
+%                   of MATLAB accepts as input.
 %
 %           Example usage:
 %
-%               colorbar.enabled = true % add colorbar
-%               colorbar.kws.location = "west"
+%               1.  colormap.enabled = true;
+%               1.  colormap.values = "winter";
+%               1.  colormap.values = "autumn";
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to colorbar.kws.
+%       colorbar (available only in histogram2/contourf/contour3/contour objects) 
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, colorbar.kws.color and colorbar.kws.Color are the same,
-%           WARNING: and only one of the two will be processed.
+%           A MATLAB struct() with the following components:
 %
-%       plot.kws (available only in line/line3 objects)
+%               enabled
 %
-%           A MATLAB struct() whose fields (with the exception of few, e.g., enabled, singleOptions, ...)
-%           are directly passed to the `plot()` function of MATLAB (or plot3() if plot is 3d).
-%           This property exists only if the object is instantiated as a line/line3 object.
+%                   A logical value. If `true`, the colorbar will be applied to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's colorbar() function. If your desired attribute is 
+%                   missing from the fieldnames of colorbar.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
 %
 %           Example usage:
 %
-%               plot.enabled = true; % enable plot()
-%               plot.kws.lineWidth = 2;
+%               colorbar.enabled = true; % add colorbar
+%               colorbar.kws.location = "west";
 %
-%           If a desired property is missing among the struct fields, simply add the field
-%           and its value to plot.kws.
+%           WARNING
 %
-%           WARNING: keep in mind that MATLAB keyword arguments are case-INsensitive.
-%           WARNING: therefore make sure you do not add the keyword as multiple different fields.
-%           WARNING: For example, plot.kws.color and plot.kws.Color are the same,
-%           WARNING: and only one of the two will be processed.
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, colorbar.kws.color and colorbar.kws.Color are the same,
+%               and only one of the two will be processed.
 %
-%       target
+%       plot
 %
-%           an object of class Target_class for adding target values to the plots.
-%           For more information, see the documentation for Target.
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the plot() will be added to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's plot() function. If your desired attribute is 
+%                   missing from the fieldnames of plot.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
+%
+%           Example usage:
+%
+%               plot.enabled = true; % add plot()
+%               plot.kws.lineWidth = "none";
+%
+%           WARNING
+%
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, plot.kws.lineWidth and plot.kws.LineWidth are the same,
+%               and only one of the two will be processed.
+%
+%       scatter
+%
+%           A MATLAB struct() with the following components:
+%
+%               enabled
+%
+%                   A logical value. If `true`, the scatter() will be added to the plot.
+%
+%               kws
+%
+%                   A MATLAB struct() whose components' values are passed to 
+%                   MATLAB's scatter() function. If your desired attribute is 
+%                   missing from the fieldnames of scatter.kws, simply add 
+%                   a new field named as the attribute and assign the desired 
+%                   value to it.
+%
+%           Example usage:
+%
+%               scatter.enabled = true; % add scatter()
+%
+%           WARNING
+%
+%               Keep in mind that MATLAB keyword arguments are case-INsensitive.
+%               Hence, sure you do not add the keyword as multiple different fields.
+%               For example, scatter.kws.lineWidth and scatter.kws.LineWidth are the same,
+%               and only one of the two will be processed.
+%
+%       target (available in 2D plots)
+%
+%           An object of class Target_class for adding target values to the plots.
+%           For more information, see the documentation for the Target_class().
 %
 %   Superclass Attributes
 %   ---------------------
 %
-%       See the documentation for the BasePlot class
+%       See the documentation for the BasePlot class.
 %
 %   Returns
 %   -------
 %
-%       an object of EllipsoidPlot class
+%       An object of EllipsoidPlot class.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

@@ -46,9 +46,11 @@
 %   chain files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName.
 %
-%   WARNING: This method is to be only used for post-processing of the output
-%   chain file(s) of an already finished simulation. It is NOT meant to be
-%   called by all processes in parallel mode, although it is possible.
+%       WARNING
+%
+%           This method is to be only used for post-processing of the output
+%           chain file(s) of an already finished simulation. It is NOT meant 
+%           to be called by all processes in parallel mode, although it is possible.
 %
 %   Parameters
 %   ----------
@@ -61,13 +63,27 @@
 %           For example, specifying "./mydir/mysim" as input will lead to
 %           a search for a file that begins with "mysim" and ends with
 %           "_chain.txt" inside the directory "./mydir/".
+%
 %           If there are multiple files with such name, then all of them
 %           will be read and returned as a list.
+%
 %           If this input argument is not provided by the user, the
 %           value of the object's `spec` attribute `outputFileName`
 %           will be used instead.
 %
+%           If the specified path is a URL, the file will be downloaded 
+%           as a temporary file to the local system and its contents will 
+%           be parsed and the file will be subsequently removed.
+%
+%           If no input is specified via any of the possible routes, 
+%           the method will search for any possible candidate file 
+%           with the appropriate suffix in the current working directory.
+%
 %           Example usage:
+%
+%               pmpd.readChain();
+%
+%           or,
 %
 %               pmpd.readChain("./out/test_run_");
 %
@@ -76,8 +92,7 @@
 %               pmpd.spec.outputFileName = "./out/test_run_";
 %               pmpd.readChain();
 %
-%           Both of the above examples are equivalent.
-%           The latter is recommended as it is less confusing.
+%           The last two of the above examples are equivalent.
 %
 %       delimiter (optional)
 %
@@ -110,36 +125,37 @@
 %
 %       chainList (optional)
 %
-%           a cell array of objects, each of which corresponds to the contents
+%           A cell array of objects, each of which corresponds to the contents
 %           of a unique chain file. Each object has the following components:
 %
 %               file
-%                   full absolute path to the chain file.
+%
+%                   The full absolute path to the chain file.
 %
 %               delimiter
-%                   the delimiter used in the chain file.
+%
+%                   The delimiter used in the chain file.
 %
 %               ndim
-%                   number of dimensions of the domain of the objective function
-%                   for which the chain was generated.
+%
+%                   The number of dimensions of the domain of the objective 
+%                   function for which the chain was generated.
 %
 %               count
-%                   the number of unique (weighted) points in the chain file.
+%
+%                   The number of unique (weighted) points in the chain file.
 %                   This is essentially the number of rows in the chain file
 %                   minus one (representing the header line).
 %
 %               df
-%                   the contents of the chain file in the form of
+%
+%                   The contents of the chain file in the form of
 %                   a MATLAB table (df stands for DataFrame).
 %
-%               dynamic attributes:
-%                   corresponding to each column in the chain file, a property
-%                   with the same name as the column header is also created
-%                   for the object which contains the data stored in that column
-%                   of the chain file.
+%       NOTE 
 %
 %           If no output argument is provided, a chainList property will be added
-%           to the parent sampler-object to which the method readMarkovChain() belongs.
+%           to the parent sampler-object to which the method readChain() belongs.
 %           return value of the method. Otherwise, the list will be stored in a
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,9 +167,9 @@ function chainList = readChain(self,file,delimiter)
 
     if isempty(self.objectName); self.objectName = inputname(1); end
     callerName = string(mfilename());
-    chainType = string(callerName{1}(5:end));
-    chainType = string( [ lower(chainType{1}(1)) , chainType{1}(2:end) ] );
-    output = chainType + "List";
+    fileType = string(callerName{1}(5:end));
+    fileType = string( [ lower(fileType{1}(1)) , fileType{1}(2:end) ] );
+    output = fileType + "List";
 
     if nargout==0
         self.readTabular(callerName,file,delimiter);

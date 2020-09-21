@@ -45,137 +45,142 @@
 %               , method ...
 %               , rows ...
 %               , Err ...
+%               , reportEnabled ...
 %               )
 %
 %   This is the CorCovMat class for generating objects containing the
 %   computed correlation or covariance matrices of the input data.
 %
 %       NOTE
-%       ----
 %
 %           This is a low-level ParaMonte class and is not meant
 %           to be directly instantiated by the user.
 %
-%       Parameters
-%       ----------
+%   Parameters
+%   ----------
 %
-%           dataFrame
+%       dataFrame
 %
-%               A MATLAB data Table from which the selected data will be plotted.
-%               This is a low-level internal argument and is not meant
-%               to be manipulated or be provided by the user.
+%           A MATLAB data Table from which the selected data will be plotted.
+%           This is a low-level internal argument and is not meant
+%           to be manipulated or be provided by the user.
 %
-%           columns
+%       columns
 %
-%               An array of strings or numbers corresponding to column names or indices
-%               of the input dataFrame for which the correlation/covariance matrix is
-%               computed. This is a low-level internal argument and is not meant
-%               to be accessed or be provided by the user.
+%           An array of strings or numbers corresponding to column names or indices
+%           of the input dataFrame for which the correlation/covariance matrix is
+%           computed. This is a low-level internal argument and is not meant
+%           to be accessed or be provided by the user.
 %
-%               If the input value is empty, the default will be the names of all
-%               columns of the input dataFrame.
+%           If the input value is empty, the default will be the names of all
+%           columns of the input dataFrame.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  columns = [7,8,9]
-%                   2.  columns = ["SampleLogFunc","SampleVariable1"]
-%                   3.  columns = {"SampleLogFunc",9,"SampleVariable1"}
-%                   4.  columns = 7:9    # every column in dataFrame from column #7 to #9
-%                   5.  columns = 7:2:20 # every other column in dataFrame from column #7 to #20
+%               1.  columns = [7,8,9]
+%               2.  columns = ["SampleLogFunc","SampleVariable1"]
+%               3.  columns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  columns = 7:9    # every column in dataFrame from column #7 to #9
+%               5.  columns = 7:2:20 # every other column in dataFrame from column #7 to #20
 %
-%           method
+%       method
 %
-%               A string or char vector with one of the following possible values:
+%           A string or char vector with one of the following possible values:
 %
-%                   "pearson"   : compute the Pearson's correlation matrix of the input data
-%                   "kendall"   : compute the Kendall's correlation matrix of the input data
-%                   "spearman"  : compute the Spearman's correlation matrix of the input data
+%               "pearson"   : compute the Pearson's correlation matrix of the input data
+%               "kendall"   : compute the Kendall's correlation matrix of the input data
+%               "spearman"  : compute the Spearman's correlation matrix of the input data
 %
-%               If an empty object is provided as input, the covariance matrix
-%               of the input dataFrame will be computed for the selected columns.
-%               This is a low-level internal argument and is not meant
-%               to be accessed or be provided by the user.
+%           If an empty object is provided as input, the covariance matrix
+%           of the input dataFrame will be computed for the selected columns.
+%           This is a low-level internal argument and is not meant
+%           to be accessed or be provided by the user.
 %
-%           rows
+%       rows
 %
-%               A numeric vector that represents the rows of the dataFrame that have been used
-%               or will be used to compute the correlation/covariance matrix. It can be either:
+%           A numeric vector that represents the rows of the dataFrame that have been used
+%           or will be used to compute the correlation/covariance matrix. It can be either:
 %
-%                   1.  a numeric range, or,
-%                   2.  a list of row indices of the dataFrame.
+%               1.  a numeric range, or,
+%               2.  a list of row indices of the dataFrame.
 %
-%               Example usage:
+%           Example usage:
 %
-%                   1.  rows = 10000:-2:3
-%                   2.  rows = [12,46,7,8,9,4,7,163]
+%               1.  rows = 10000:-2:3
+%               2.  rows = [12,46,7,8,9,4,7,163]
 %
-%               If not provided, the default includes all rows of the input dataFrame.
+%           If not provided, the default includes all rows of the input dataFrame.
 %
-%           Err
+%       Err
 %
-%               An object of class Err_class for error reporting and warnings.
+%           An object of class Err_class for error reporting and warnings.
 %
-%       Attributes
-%       ----------
+%       reportEnabled
 %
-%           df
+%           An boolean indicating whether any descriptive messages 
+%           should be output or not.
 %
-%               A MATLAB data Table that contains the computed correlation/covariance matrix of the input
-%               dataFrame (MATLAB Table). This is a low-level internal argument and is not meant
-%               to be manipulated or be provided by the user.
+%   Attributes
+%   ----------
 %
-%           columns
+%       df
 %
-%               Optional property that determines the columns of the dataFrame for which the
-%               correlation/covariance matrix must be computed. It can have multiple forms:
+%           A MATLAB data Table that contains the computed correlation/covariance matrix of the input
+%           dataFrame (MATLAB Table). This is a low-level internal argument and is not meant
+%           to be manipulated or be provided by the user.
 %
-%                   1.  a numeric or cell array of column indices in the input dataFrame.
-%                   2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
-%                   3.  a cell array of a mix of the above two.
-%                   4.  a numeric range.
+%       columns
 %
-%               Example usage:
+%           Optional property that determines the columns of the dataFrame for which the
+%           correlation/covariance matrix must be computed. It can have multiple forms:
 %
-%                   1.  columns = [7,8,9]
-%                   2.  columns = ["SampleLogFunc","SampleVariable1"]
-%                   3.  columns = {"SampleLogFunc",9,"SampleVariable1"}
-%                   4.  columns = 7:9      # every column in the data frame starting from column #7 to #9
-%                   5.  columns = 7:2:20   # every other column in the data frame starting from column #7 to #20
+%               1.  a numeric or cell array of column indices in the input dataFrame.
+%               2.  a string or cell array of column names in dataFrame.Properties.VariableNames.
+%               3.  a cell array of a mix of the above two.
+%               4.  a numeric range.
 %
-%               The default value is the names of all columns of the input dataFrame.
+%           Example usage:
 %
-%           method (available only in correlation matrix objects)
+%               1.  columns = [7,8,9]
+%               2.  columns = ["SampleLogFunc","SampleVariable1"]
+%               3.  columns = {"SampleLogFunc",9,"SampleVariable1"}
+%               4.  columns = 7:9      # every column in the data frame starting from column #7 to #9
+%               5.  columns = 7:2:20   # every other column in the data frame starting from column #7 to #20
 %
-%               A string or char vector with one of the following possible values:
+%           The default value is the names of all columns of the input dataFrame.
 %
-%                   "pearson"   : compute the Pearson's correlation matrix of the input data
-%                   "kendall"   : compute the Kendall's correlation matrix of the input data
-%                   "spearman"  : compute the Spearman's correlation matrix of the input data
+%       method (available only in correlation matrix objects)
 %
-%           rows
+%           A string or char vector with one of the following possible values:
 %
-%               A numeric vector that represents the rows of the dataFrame that have been used
-%               or will be used to compute the correlation/covariance matrix. It can be either:
+%               "pearson"   : compute the Pearson's correlation matrix of the input data
+%               "kendall"   : compute the Kendall's correlation matrix of the input data
+%               "spearman"  : compute the Spearman's correlation matrix of the input data
 %
-%                   1.  a numeric range, or,
-%                   2.  a list of row indices of the dataFrame.
+%       rows
 %
-%               Example usage:
+%           A numeric vector that represents the rows of the dataFrame that have been used
+%           or will be used to compute the correlation/covariance matrix. It can be either:
 %
-%                   1.  rows = 15:-2:8
-%                   2.  rows = [12,46,7,8,9,4,7,163]
+%               1.  a numeric range, or,
+%               2.  a list of row indices of the dataFrame.
 %
-%               If not provided, the default includes all rows of the input dataFrame.
+%           Example usage:
 %
-%           plot
+%               1.  rows = 15:-2:8
+%               2.  rows = [12,46,7,8,9,4,7,163]
 %
-%               A structure containing several plotting tools for visualization of the
-%               computed correlation/covariance matrix as reported in the component ``df``.
+%           If not provided, the default includes all rows of the input dataFrame.
 %
-%       Returns
-%       -------
+%       plot
 %
-%           An object of ``CorCovMat`` class.
+%           A structure containing several plotting tools for visualization of the
+%           computed correlation/covariance matrix as reported in the component ``df``.
+%
+%   Returns
+%   -------
+%
+%       An object of ``CorCovMat`` class.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

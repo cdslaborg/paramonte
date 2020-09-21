@@ -46,9 +46,11 @@
 %   report files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName.
 %
-%   WARNING: This method is to be only used for post-processing of the output
-%   report file(s) of an already finished simulation. It is NOT meant to be
-%   called by all processes in parallel mode, although it is possible.
+%       WARNING
+%
+%           This method is to be only used for post-processing of the output
+%           report file(s) of an already finished simulation. It is NOT meant 
+%           to be called by all processes in parallel mode, although it is possible.
 %
 %   Parameters
 %   ----------
@@ -61,13 +63,27 @@
 %           For example, specifying "./mydir/mysim" as input will lead to
 %           a search for a file that begins with "mysim" and ends with
 %           "_report.txt" inside the directory "./mydir/".
+%
 %           If there are multiple files with such name, then all of them
 %           will be read and returned as a list.
+%
 %           If this input argument is not provided by the user, the
 %           value of the object's `spec` attribute `outputFileName`
 %           will be used instead.
 %
+%           If the specified path is a URL, the file will be downloaded 
+%           as a temporary file to the local system and its contents will 
+%           be parsed and the file will be subsequently removed.
+%
+%           If no input is specified via any of the possible routes, 
+%           the method will search for any possible candidate file 
+%           with the appropriate suffix in the current working directory.
+%
 %           Example usage:
+%
+%               pmpd.readReport();
+%
+%           or,
 %
 %               pmpd.readReport("./out/test_run_");
 %
@@ -76,52 +92,60 @@
 %               pmpd.spec.outputFileName = "./out/test_run_";
 %               pmpd.readReport();
 %
-%           Both of the above examples are equivalent.
-%           The latter is recommended as it is less confusing.
+%           The last two of the above examples are equivalent.
 %
 %   Returns
 %   -------
 %
 %       reportList (optional)
 %
-%           a cell array of objects, each of which corresponds to the contents
+%           A cell array of objects, each of which corresponds to the contents
 %           of a unique report file. Each object has the following components:
 %
 %               file
-%                   full absolute path to the report file.
+%
+%                   The full absolute path to the report file.
 %
 %               ndim
-%                   number of dimensions of the domain of the objective function
-%                   for which the report was generated.
+%
+%                   The number of dimensions of the domain of the objective 
+%                   function for which the report was generated.
 %
 %               contents
-%                   a char vector containing the entire contents of the report file.
+%
+%                   A char vector containing the entire contents of the report file.
 %
 %               lineList
-%                   a one-dimensional cell array whose length is the number of 
+%
+%                   A one-dimensional cell array whose length is the number of 
 %                   the report file. Each element of the array contains one line of 
 %                   the report file. 
 %
 %               setup
-%                   a structure containing information about the simulation setup as
+%
+%                   A structure containing information about the simulation setup as
 %                   it appears in the report file, as separate components:
 %
 %                       io
-%                           contains information about the input/output of the 
+%
+%                           Contains information about the input/output of the 
 %                           simulation. 
 %
 %                       library
-%                           contains information about the ParaMonte library that 
+%
+%                           Contains information about the ParaMonte library that 
 %                           was used to generate the report file, including the 
 %                           ParaMonte Banner, the simulation environment, the 
 %                           computing platform, ... .
 %
 %               spec
-%                   a string containing the entire simulation specifications that 
+%
+%                   A string containing the entire simulation specifications that 
 %                   appear in the report file. 
 %
 %               stats
-%                   a structure containing a variety of post-processing information
+%
+%                   A structure containing a variety of post-processing information
 %                   about the simulation that has been performed, including 
 %                   but not limited to, 
 %
@@ -132,12 +156,16 @@
 %                       -   summary statistical information about the results 
 %                           of the simulation.
 %
+%       NOTE 
+%
 %           If no output argument is provided, a reportList property will be added
 %           to the parent sampler-object to which the method readReport() belongs.
 %           return value of the method. Otherwise, the list will be stored in a
 %
-%           WARNING: If the contents of the report is manipulated, there is no 
-%           WARNING: guarantee of the correct functionality of readReport() method.
+%   WARNING 
+%
+%       If the contents of the report is manipulated, there is no 
+%       guarantee of the correct functionality of readReport() method.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

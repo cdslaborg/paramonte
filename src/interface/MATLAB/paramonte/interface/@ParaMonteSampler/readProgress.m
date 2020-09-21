@@ -46,9 +46,11 @@
 %   progress files whose names begin the user-provided prefix, specified,
 %   by the input simulation specification pmpd.spec.outputFileName.
 %
-%   WARNING: This method is to be only used for post-processing of the output
-%   progress file(s) of an already finished simulation. It is NOT meant to be
-%   called by all processes in parallel mode, although it is possible.
+%       WARNING
+%
+%           This method is to be only used for post-processing of the output
+%           progress file(s) of an already finished simulation. It is NOT meant 
+%           to be called by all processes in parallel mode, although it is possible.
 %
 %   Parameters
 %   ----------
@@ -61,13 +63,27 @@
 %           For example, specifying "./mydir/mysim" as input will lead to
 %           a search for a file that begins with "mysim" and ends with
 %           "_progress.txt" inside the directory "./mydir/".
+%
 %           If there are multiple files with such name, then all of them
 %           will be read and returned as a list.
+%
 %           If this input argument is not provided by the user, the
 %           value of the object's `spec` attribute `outputFileName`
 %           will be used instead.
 %
+%           If the specified path is a URL, the file will be downloaded 
+%           as a temporary file to the local system and its contents will 
+%           be parsed and the file will be subsequently removed.
+%
+%           If no input is specified via any of the possible routes, 
+%           the method will search for any possible candidate file 
+%           with the appropriate suffix in the current working directory.
+%
 %           Example usage:
+%
+%               pmpd.readProgress();
+%
+%           or,
 %
 %               pmpd.readProgress("./out/test_run_");
 %
@@ -76,8 +92,7 @@
 %               pmpd.spec.outputFileName = "./out/test_run_";
 %               pmpd.readProgress();
 %
-%           Both of the above examples are equivalent.
-%           The latter is recommended as it is less confusing.
+%           The last two of the above examples are equivalent.
 %
 %       delimiter (optional)
 %
@@ -110,33 +125,34 @@
 %
 %       progressList (optional)
 %
-%           a cell array of objects, each of which corresponds to the contents
+%           A cell array of objects, each of which corresponds to the contents
 %           of a unique progress file. Each object has the following components:
 %
 %               file
-%                   full absolute path to the progress file.
+%
+%                   The full absolute path to the progress file.
 %
 %               delimiter
-%                   the delimiter used in the progress file.
+%
+%                   The delimiter used in the progress file.
 %
 %               ndim
-%                   number of dimensions of the domain of the objective function
-%                   for which the progress was generated.
+%
+%                   The number of dimensions of the domain of the objective 
+%                   function for which the progress was generated.
 %
 %               count
-%                   the number of unique (weighted) points in the progress file.
+%
+%                   The number of unique (weighted) points in the progress file.
 %                   This is essentially the number of rows in the progress file
 %                   minus one (representing the header line).
 %
 %               df
-%                   the contents of the progress file in the form of
+%
+%                   The contents of the progress file in the form of
 %                   a MATLAB table (df stands for DataFrame).
 %
-%               dynamic attributes:
-%                   corresponding to each column in the progress file, a property
-%                   with the same name as the column header is also created
-%                   for the object which contains the data stored in that column
-%                   of the progress file.
+%       NOTE 
 %
 %           If no output argument is provided, a progressList property will be added
 %           to the parent sampler-object to which the method readProgress() belongs.

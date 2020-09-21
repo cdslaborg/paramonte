@@ -41,8 +41,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   This is the TabularFileContents class for generating instances
-%   of ParaMonte output file contents. The ParaMonte read* methods
-%   return an object or a list of objects of class TabularFileContents.
+%   of ParaMonte output file contents. For example, the ParaDRAM
+%   readSample(), readChain(), readMarkovChain(), readProgress()
+%   methods return an object or a list of objects of class
+%   TabularFileContents.
+%
+%   This is an internal ParaMonte class and it is
+%   not meant to be directly accessible to the users.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
