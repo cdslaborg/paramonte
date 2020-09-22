@@ -1,19 +1,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  
-%%  Description:
-%%      +   Return the natural logarithm of an ndim-dimensional Multivariate Normal (MVN) 
-%%          probability density function (PDF) with the Mean and Covariance Matrix as defined below.
-%%          Reference: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
-%%  Input:
-%%      +   point:      The input 64-bit real-valued vector of length ndim, 
-%%                      at which the natural logarithm of objective function is computed.
-%%  Output:
-%%      +   logFuncVal: A 64-bit real scalar number representing the natural logarithm of the objective function.
-%%  Author:
-%%      +   Computational Data Science Lab, Monday 9:03 AM, May 16 2016, ICES, UT Austin
-%%  Visit:
-%%      +   https://www.cdslab.org/paramonte
-%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%%%    Description:
+%%%%        +   Return the natural logarithm of an ndim-dimensional Multivariate Normal (MVN)
+%%%%            probability density function (PDF) with the Mean and Covariance Matrix as defined below.
+%%%%            Reference: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+%%%%    Input:
+%%%%        +   point:      The input 64-bit real-valued vector of length ndim,
+%%%%                        at which the natural logarithm of objective function is computed.
+%%%%  Output:
+%%%%        +   logFuncVal: A 64-bit real scalar number representing the natural logarithm of the objective function.
+%%%%  Author:
+%%%%        +   Computational Data Science Lab, Monday 9:03 AM, May 16 2016, ICES, UT Austin
+%%%%  Visit:
+%%%%        +   https://www.cdslab.org/paramonte
+%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 classdef logfunc

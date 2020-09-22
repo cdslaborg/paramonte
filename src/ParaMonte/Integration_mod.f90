@@ -302,7 +302,7 @@ contains
 
     ! must be: lowerLim*upperLim > 0.0
     ! integrate a function on a semi-infinite interval
-	subroutine midinf(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
+    subroutine midinf(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
     !checked by Joshua Osborne on 5/28/2020 at 8:58pm
         implicit none
         real(RK)    , intent(in)    :: lowerLim,upperLim
@@ -334,14 +334,14 @@ contains
             integral = ONE_THIRD * integral + (upperLimTrans-lowerLimTrans) * summ * inverseThreeNumFuncEval
             numFuncEval = 2_IK * numFuncEval
         end if
-	contains
-		function getTransFunc(x)
+    contains
+        function getTransFunc(x)
             implicit none
             real(RK), intent(in)    :: x
             real(RK)                :: getTransFunc
             getTransFunc = getFunc(1._RK/x) / x**2
-		end function getTransFunc
-	end subroutine midinf
+        end function getTransFunc
+    end subroutine midinf
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

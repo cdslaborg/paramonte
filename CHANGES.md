@@ -5,21 +5,30 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.2.0** -- Work in Progress
+### **Version 1.2.0** -- September 21, 2020
 
 **Enhancements**  
 
-+   The post-processing report in the output report file of ParaDRAM simulation has been significantly improved:  
-    +   The parallel simulation summary now also provides the predicted strong-scaling speedup behavior of the 
-        parallel ParaDRAM simulations in "single chain" parallelism mode. This can help make wiser decisions 
-        regarding the the number of processors for similar parallel simulations in the future.  
++   The post-processing report in the output report file 
+    of ParaDRAM simulation has been significantly improved:  
+    +   The parallel simulation summary now also provides the 
+        predicted strong-scaling speedup behavior of the parallel 
+        ParaDRAM simulations in "single chain" parallelism mode. 
+        This can help make wiser decisions regarding the the number 
+        of processors for similar parallel simulations in the future.  
 
-+   The ParaDRAM restart output file in ASCII mode now contains all proposal updates, including the first user-specified proposal specs.
++   The ParaDRAM restart output file in ASCII mode now contains all 
+    proposal updates, including the first user-specified proposal specs.
 
-+   All parallel simulations now avoid the unnecessary creation of temporary files by all processors for System and OS operations. 
-    As a side effect, this will also potentially improve the runtime performances of the simulation.
++   All parallel simulations now avoid the unnecessary creation of 
+    temporary files by all processors for System and OS operations. 
+    This is particularly important for large-scale parallel simulations.
+    As a side effect, this will also potentially improve the runtime 
+    performances of the simulation.  
 
-+   Major enhancements has been made to the parallel simulation performance analysis reported in the post-processing section of the ParaDRAM simulation output `_report.txt` files.
++   Major enhancements has been made to the parallel simulation 
+    performance analysis reported in the post-processing section 
+    of the ParaDRAM simulation output `_report.txt` files.  
 
 **Bug fixes**  
 
@@ -34,15 +43,16 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 +   **Windows**: Intel Parallel Studio Version 19.0.4.245 Build 20190417 / Intel(R) MPI Library 2019 Update 4 for Windows  
 +   **Linux**: Intel Parallel Studio Version 18.0.2 20180210 / Intel(R) MPI Library for Linux OS, Version 2018 Update 2 Build 20180125  
-+   **Linux**: GNU 8.3 / MPICH 3.2  
++   **Linux**: GNU 9.1 / MPICH 3.2  
 +   **macOS**: Intel Parallel Studio Version 19.1.0.166 20191121  
-+   **macOS**: GNU 9.3 / Open-MPI 4.0  
++   **macOS**: GNU 10.2.0 / Open-MPI 4.0.5  
 
 ### **Version 1.1.0** -- May 27, 2020  
 
 **New features**  
 
-+   The MATLAB interface to the ParaMonte library is now ready to use, in addition to the existing C/C++/Fortran/Python Programming language interfaces to ParaMonte.  
++   The MATLAB interface to the ParaMonte library is now ready to use, in addition 
+    to the existing C/C++/Fortran/Python Programming language interfaces to ParaMonte.  
 
 **Enhancements**  
 

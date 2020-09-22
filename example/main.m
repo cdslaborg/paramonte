@@ -1,14 +1,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  
-%%  Description:
-%%      +   Run the Monte Carlo sampler of the ParaMonte library given the input log-target density function `getLogFunc()`.
-%%  Output:
-%%      +   The simulation output files.
-%%  Author:
-%%      +   Computational Data Science Lab, Monday 9:03 AM, May 16 2016, ICES, UT Austin
-%%  Visit:
-%%      +   https://www.cdslab.org/paramonte
-%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%%%    Description:
+%%%%        +   Run the serial Monte Carlo sampler of the ParaMonte library given the input log-target density function `getLogFunc()`.
+%%%%    Output:
+%%%%        +   The simulation output files.
+%%%%    Author:
+%%%%        +   Computational Data Science Lab, Monday 9:03 AM, May 16 2016, ICES, UT Austin
+%%%%    Visit:
+%%%%        +   https://www.cdslab.org/paramonte
+%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % clear MATLAB space
@@ -39,7 +41,7 @@ cd(fileparts(mfilename('fullpath'))); % Change working directory to source code 
 %     - the objective function (getLogFunc)
 %     - its number of dimensions (NDIM)
 
-logFunc = logfunc(); 
+logFunc = logfunc();
 
 % create a ParaMonte object:
 
@@ -53,8 +55,8 @@ pmpd = pm.ParaDRAM();
 % NOTE:
 % NOTE:     https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
 
-pmpd.spec.chainSize = 30000;            % the number of uniquely-sampled points 
-pmpd.spec.outputFileName = "./out/";    % only the output folder specified here in the above, implying that 
+pmpd.spec.chainSize = 30000;            % the number of uniquely-sampled points
+pmpd.spec.outputFileName = "./out/";    % only the output folder specified here in the above, implying that
                                         % the filenames are to be generated automatically by the sampler.
 
 % run the ParaDRAM simulation

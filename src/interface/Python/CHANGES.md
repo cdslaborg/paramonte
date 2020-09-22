@@ -5,6 +5,17 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.0.4 -- September 21, 2020  
+
+**Minor enhancements**  
+
++   The output of the plotting functions is now stored as a list in 
+    the `currentFig` temporary component of the visualization objects.
+    This way, access to multiple individual objects on the active plot 
+    is maintained instead of only the last object. Overall, this is a 
+    minor change that will not cause any noticeable change in the 
+    behavior of the library in almost in all use cases.
+
 ### Version  2.0.3 -- September 11, 2020  
 
 **Minor enhancements**  
@@ -53,18 +64,19 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 **Minor enhancements**  
 
 +   The simulation output files reading is now completely overhauled. In particular, 
-    The output file reader methods are now capable of handling input file paths that 
+    the output file reader methods are now capable of handling input file paths that 
     point to a directory. In such cases, it will search the input directory for files 
     matching the requested file name pattern. If no input file is provided to the file 
     reader methods, the current working directory will be search for the the potential 
     simulation files that match the requested pattern. 
 
 +   The error-signaling behavior of the library now is very much controlled, that is, 
-    upon code failure, it does not automatically shutdown the Python kernel in Jupyter Notebooks. 
-    The library now simply throws an error message upon failing instead of restarting the environment.  
+    upon code failure, it does not automatically shutdown the Python kernel in Jupyter 
+    Notebooks. The library now simply throws an error message upon failing instead of 
+    restarting the environment.  
 
-+   The single value assignment to `spec.targetAcceptanceRate` component of a ParaDRAM object is now properly handles. 
-    For example, the following code is valid as expected,  
++   The single value assignment to `spec.targetAcceptanceRate` component of a ParaDRAM 
+    object is now properly handled. For example, the following code is valid as expected,  
     ```python  
     import paramonte as pm
     pmpd = pm.ParaDRAM()
