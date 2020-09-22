@@ -123,7 +123,7 @@ if not "%1"=="" (
             if defined LANG_LIST set DELIM=/
             set LANG_LIST=!LANG_LIST!!DELIM!%%~a
             set VALUE_SUPPORTED=false
-            for %%V in ( "c" "fortran" "matlab" "python" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
+            for %%V in ( "c" "c++" "fortran" "matlab" "python" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
             if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
         )
         shift
@@ -385,7 +385,7 @@ echo.
 
 :: set build type
 
-if not defined LANG_LIST        set LANG_LIST=c/fortran/matlab/python
+if not defined LANG_LIST        set LANG_LIST=c/c++/fortran/matlab/python
 if not defined BTYPE_LIST       set BTYPE_LIST=release/testing/debug
 if not defined LTYPE_LIST       set LTYPE_LIST=static/dynamic
 if not defined MEMORY_LIST      set MEMORY_LIST=stack/heap
@@ -395,6 +395,7 @@ REM remove redundancies
 
 set TEMP=
 set C_IS_MISSING=true
+set CPP_IS_MISSING=true
 set Fortran_IS_MISSING=true
 set MATLAB_IS_MISSING=true
 set Python_IS_MISSING=true
@@ -417,6 +418,16 @@ for %%G in ("!LANG_LIST:/=" "!") do (
                 set TEMP=!TEMP!/%%~G
             )
             set C_IS_MISSING=false
+        )
+    )
+    if %%~G==c++ (
+        if !CPP_IS_MISSING!==true (
+            if not defined TEMP (
+                set TEMP=%%~G
+            ) else (
+                set TEMP=!TEMP!/%%~G
+            )
+            set CPP_IS_MISSING=false
         )
     )
     if %%~G==matlab (

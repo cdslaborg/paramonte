@@ -5,12 +5,12 @@
 
     Example:
 
-        install.bat --lang C/Fortran --build release --lib dynamic/static --mem heap --par none/mpi --nproc 3
+        install.bat --lang C/C++/Fortran --build release --lib dynamic/static --mem heap --par none/mpi --nproc 3
 
     Flag definitions:
 
         --build         : the ParaMonte library build types. Possible values: release, testing, debug
-        --lang          : the ParaMonte library language choices to build for. Possible values (case-insensitive): C/Fortran/MATLAB/Python
+        --lang          : the ParaMonte library language choices to build for. Possible values (case-insensitive): C/C++/Fortran/MATLAB/Python
         --lib           : the ParaMonte library type. Possible values: static, dynamic
         --par           : the ParaMonte library parallelism type. Possible values: none mpi cafsingle cafshared
         --mem           : the ParaMonte library memory type for array allocations. Possible values: stack heap
@@ -19,6 +19,7 @@
         --matdram       : enables the ParaMonte MatDRAM MATLAB library build. If specified, it will disable all other specified flags.
         --nproc         : the default number of processes on which the ParaMonte examples/tests (if any) will be run. Possible values: positive integers
         --clean         : clean the environmental variables upon exit. Possible values: true, false. Only one can be specified. The default is true.
+        --matdram       : build the ParaMonte MatDRAM MATLAB library and do nothing else.
         --help          : help with the script usage
 
     NOTE: All flags are optional.

@@ -72,6 +72,7 @@ if not exist !ParaMonte_BIN_DIR! (
 
 set LANG_NAME=
 set LANG_IS_C=false
+set LANG_IS_CPP=false
 set LANG_IS_MATLAB=false
 set LANG_IS_Python=false
 set LANG_IS_Fortran=false
@@ -107,6 +108,13 @@ if !INTERFACE_LANGUAGE!==fortran (
     set LANG_IS_Fortran=true
     set LANG_FILE_EXT=f90
     set LANG_NAME=Fortran
+)
+
+if !INTERFACE_LANGUAGE!==c++ (
+    set LANG_IS_COMPILED=true
+    set LANG_FILE_EXT=cpp
+    set LANG_IS_CPP=true
+    set LANG_NAME=C++
 )
 
 if !INTERFACE_LANGUAGE!==c (

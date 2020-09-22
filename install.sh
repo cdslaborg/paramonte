@@ -253,6 +253,7 @@ reportBadValue()
 if ! [ -z ${LANG_LIST+x} ]; then
     for LANG in $LANG_LIST; do
         if  [[ $LANG != [cC]
+            && $LANG != [cC][+][+]
             && $LANG != [fF][oO][rR][tT][rR][aA][nN]
             && $LANG != [mM][aA][tT][lL][aA][bB]
             && $LANG != [pP][yY][tT][hH][oO][nN] ]]; then
@@ -443,7 +444,7 @@ fi
 ####################################################################################################################################
 
 if [ -z ${LANG_LIST+x} ]; then
-    LANG_LIST="fortran c matlab python"
+    LANG_LIST="c c++ fortran matlab python"
 fi
 # # CFI_ENABLED_LIST=""
 # C_IS_MISSING=true

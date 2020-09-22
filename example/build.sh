@@ -138,6 +138,7 @@ unset SRC_FILES
 unset COMPILER_LIST
 unset EXAMPLE_LANGUAGE
 unset PM_COMPILER_SUITE
+
 if [[ "$PMLIB_FULL_NAME" =~ .*"_fortran_".* ]]; then
     FILE_EXT=f90
     SRC_FILES="paramonte.${FILE_EXT}"; export SRC_FILES
@@ -151,6 +152,7 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"_fortran_".* ]]; then
         COMPILER_LIST=gfortran
     fi
 fi
+
 if [[ "$PMLIB_FULL_NAME" =~ .*"_c_".* ]]; then
     FILE_EXT=c
     EXAMPLE_LANGUAGE=C
@@ -161,6 +163,19 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"_c_".* ]]; then
     if [[ "$PMLIB_FULL_NAME" =~ .*"_gnu_".* ]]; then
         PM_COMPILER_SUITE=gnu
         COMPILER_LIST=gcc
+    fi
+fi
+
+if [[ "$PMLIB_FULL_NAME" =~ .*"_cpp_".* ]]; then
+    FILE_EXT=cpp
+    EXAMPLE_LANGUAGE=C++
+    if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* ]]; then
+        PM_COMPILER_SUITE=intel
+        COMPILER_LIST=icc
+    fi
+    if [[ "$PMLIB_FULL_NAME" =~ .*"_gnu_".* ]]; then
+        PM_COMPILER_SUITE=gnu
+        COMPILER_LIST=g++
     fi
 fi
 
@@ -233,7 +248,7 @@ if [ "${MPI_ENABLED}" = "true" ]; then
     if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then
         COMPILER_LIST="mpiifort mpifort"
     fi
-    if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then
+    if [ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
         COMPILER_LIST="mpiicc mpicc"
     fi
 fi
@@ -284,11 +299,11 @@ fi
 
 if [ -z ${USER_SELECTED_COMPILER+x} ] && [ -z ${USER_SELECTED_COMPILER_FLAGS+x} ]; then
     if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
-        if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then COMPILER_FLAGS=${INTEL_C_COMPILER_FLAGS}; fi
+        if [ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then COMPILER_FLAGS=${INTEL_C_COMPILER_FLAGS}; fi
         if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -fpp"; fi # -DIS_COMPATIBLE_COMPILER
     fi
     if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
-        if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then COMPILER_FLAGS=${GNU_C_COMPILER_FLAGS}; fi
+        if [ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then COMPILER_FLAGS=${GNU_C_COMPILER_FLAGS}; fi
         if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -cpp"; fi # -DIS_COMPATIBLE_COMPILER
     fi
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - inferred compiler/linker flags(s): ${COMPILER_FLAGS}"
@@ -315,7 +330,7 @@ do
 
     LINKER=${COMPILER}
     LINKER_FLAGS=
-    if [ "${EXAMPLE_LANGUAGE}" = "C" ] && [ "${PM_LIB_TYPE}" = "static" ]; then
+    if ([ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]) && [ "${PM_LIB_TYPE}" = "static" ]; then
         if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
             LINKER_FLAGS="-nofor_main"
             if [ "${MPI_ENABLED}" = "true" ]; then
