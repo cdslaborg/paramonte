@@ -253,7 +253,7 @@ reportBadValue()
 if ! [ -z ${LANG_LIST+x} ]; then
     for LANG in $LANG_LIST; do
         if  [[ $LANG != [cC]
-            && $LANG != [cC][+][+]
+            && ($LANG != "c++" && $LANG != "C++")
             && $LANG != [fF][oO][rR][tT][rR][aA][nN]
             && $LANG != [mM][aA][tT][lL][aA][bB]
             && $LANG != [pP][yY][tT][hH][oO][nN] ]]; then
