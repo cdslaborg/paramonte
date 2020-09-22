@@ -3,7 +3,7 @@
 This project follows [Semantic Versioning](https://semver.org/). 
 To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
 
-### Version  2.0.0 -- September 21, 2020  
+### Version  2.0.0 -- September 22, 2020  
 
 **Major enhancements to the ParaMonte / ParaDRAM sampler interfaces**  
 
