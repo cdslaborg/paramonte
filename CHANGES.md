@@ -30,6 +30,8 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     performance analysis reported in the post-processing section 
     of the ParaDRAM simulation output `_report.txt` files.  
 
++   The ParaMonte C/C++ build processes are now separate from each other.  
+
 **Bug fixes**  
 
 +   minor typo fixes
