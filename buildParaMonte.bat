@@ -171,6 +171,7 @@ if !CFI_ENABLED!==true (
 
 set "FPP_LANG_FLAG="
 if !INTERFACE_LANGUAGE!==c set FPP_LANG_FLAG=/define:C_ENABLED
+if !INTERFACE_LANGUAGE!==c++ set FPP_LANG_FLAG=/define:CPP_ENABLED
 if !INTERFACE_LANGUAGE!==fortran set FPP_LANG_FLAG=/define:FORTRAN_ENABLED
 if !INTERFACE_LANGUAGE!==matlab set FPP_LANG_FLAG=/define:MATLAB_ENABLED
 if !INTERFACE_LANGUAGE!==python set FPP_LANG_FLAG=/define:PYTHON_ENABLED
@@ -281,6 +282,7 @@ echo.
 
 set       ParaMonteInterface_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface
 set      ParaMonteInterfaceC_SRC_DIR=!ParaMonteInterface_SRC_DIR!\C
+set    ParaMonteInterfaceCPP_SRC_DIR=!ParaMonteInterface_SRC_DIR!\C++
 set ParaMonteInterfaceMATLAB_SRC_DIR=!ParaMonteInterface_SRC_DIR!\MATLAB
 set ParaMonteInterfacePython_SRC_DIR=!ParaMonteInterface_SRC_DIR!\Python
 
@@ -289,6 +291,7 @@ echo. -- !BUILD_SCRIPT_NAME! - interface source files directories: !ParaMonteInt
 for %%A in (
     !ParaMonteInterface_SRC_DIR!
     !ParaMonteInterfaceC_SRC_DIR!
+    !ParaMonteInterfaceCPP_SRC_DIR!
     !ParaMonteInterfaceMATLAB_SRC_DIR!
     !ParaMonteInterfacePython_SRC_DIR!
     ) do (  if exist %%A (
@@ -605,6 +608,7 @@ cd %~dp0
 
 REM if !ParaMonteExample_ENABLED! NEQ true goto LABEL_EOF
 set ParaMonteInterfaceC_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\C
+set ParaMonteInterfaceCPP_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\C++
 set ParaMonteInterfaceFortran_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\Fortran
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

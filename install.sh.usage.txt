@@ -2,7 +2,7 @@
     usage:
 
         ./install.sh \
-        -L <build library for: C Fortran MATLAB Python> \
+        -L <build library for: C C++ Fortran MATLAB Python> \
         -s <compiler suite: intel gnu> \
         -b <build mode: release testing debug> \
         -l <library type: static dynamic> \
@@ -26,11 +26,13 @@
 
         ./install.sh --lang "Python C" --build "release debug" --lib dynamic --par "none mpi" --mem heap --nproc 3
 
+        The above two commands will build the library for the C and Python programming languages.
+
     flag definitions:
 
-        -L | --lang             : the ParaMonte library interface language(case-insensitive): C Fortran MATLAB Python
+        -L | --lang             : the ParaMonte library interface language(case-insensitive): C C++ Fortran MATLAB Python
                                   the ParaMonte library will be built for usage from the user-specified languages.
-                                  the default is "C Fortran MATLAB Python".
+                                  the default is "C C++ Fortran MATLAB Python".
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
                                   If you are not sure whether you have any of the two installed on your system,
                                   leave this option out. The script will automatically search for the appropriate

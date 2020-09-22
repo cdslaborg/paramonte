@@ -42,17 +42,17 @@
 ::
 :: This is a simple standalone build Batch script for building C/Fortran applications that use ParaMonte library on Windows OS.
 ::
-:: Usage - building C/C++ aplications via Intel Visual C/C++ compiler:
+:: Usage - building C/C++ applications via Intel Visual C/C++ compiler:
 ::
 ::      build.bat
 ::
-:: Usage - building C/C++ aplications via Microsoft Visual C/C++ compiler:
+:: Usage - building C/C++ applications via Microsoft Visual C/C++ compiler:
 ::
 ::      build.bat msvc
 ::
-:: Usage - building Fortran aplications via Intel Visual Fortran compiler:
+:: Usage - building Fortran applications via Intel Visual Fortran compiler:
 ::
-::      build.bat msvc
+::      build.bat
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: build ParaMonteExample objects and executable
@@ -185,18 +185,27 @@ echo !ParaMonte_LIB_NAME!|find "_fortran_" >nul
 if errorlevel 1 (
     echo !ParaMonte_LIB_NAME!|find "_c_" >nul
     if errorlevel 1 (
-        echo.
-        echo. -- ParaMonte - Fatal Error: ParaMonte library target lanugage could not be recognized.
-        echo. -- ParaMonte - build failed. exiting...
-        echo.
-        cd %~dp0
-        set ERRORLEVEL=1
-        exit /B 1
+        echo !ParaMonte_LIB_NAME!|find "_cpp_" >nul
+        if errorlevel 1 (
+            echo.
+            echo. -- ParaMonte - Fatal Error: ParaMonte library target lanugage could not be recognized.
+            echo. -- ParaMonte - build failed. exiting...
+            echo.
+            cd %~dp0
+            set ERRORLEVEL=1
+            exit /B 1
+        ) else (
+            set TARGET_LANG_IS_CCPP=true
+            set TARGET_LANG=C++
+            set SEXT=cpp
+        )
     ) else (
+        set TARGET_LANG_IS_CCPP=true
         set TARGET_LANG=C
         set SEXT=c
     )
 ) else (
+    set TARGET_LANG_IS_CCPP=false
     set TARGET_LANG=Fortran
     set SEXT=f90
 )
@@ -252,7 +261,7 @@ if !TARGET_LANG!==Fortran (
 
 )
 
-if !TARGET_LANG!==C (
+if !TARGET_LANG_IS_CCPP!==true (
 
     set COMPILER_NAME=icl
     set COMPILER_SUITE=intel

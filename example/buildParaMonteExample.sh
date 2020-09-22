@@ -61,18 +61,12 @@ echo >&2
 
 unset LANG_NAME
 LANG_IS_C=false
+LANG_IS_CPP=false
 LANG_IS_MATLAB=false
 LANG_IS_Python=false
 LANG_IS_Fortran=false
 LANG_IS_DYNAMIC=false
 LANG_IS_COMPILED=false
-
-if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
-    LANG_IS_DYNAMIC=true
-    LANG_IS_MATLAB=true
-    LANG_FILE_EXT=m
-    LANG_NAME=MATLAB
-fi
 
 if [ "${INTERFACE_LANGUAGE}" = "python" ]; then
     LANG_IS_DYNAMIC=true
@@ -81,11 +75,25 @@ if [ "${INTERFACE_LANGUAGE}" = "python" ]; then
     LANG_NAME=Python
 fi
 
+if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+    LANG_IS_DYNAMIC=true
+    LANG_IS_MATLAB=true
+    LANG_FILE_EXT=m
+    LANG_NAME=MATLAB
+fi
+
 if [ "${INTERFACE_LANGUAGE}" = "fortran" ]; then
     LANG_IS_COMPILED=true
     LANG_IS_Fortran=true
     LANG_FILE_EXT=f90
     LANG_NAME=Fortran
+fi
+
+if [ "${INTERFACE_LANGUAGE}" = "c++" ]; then
+    LANG_IS_COMPILED=true
+    LANG_FILE_EXT=cpp
+    LANG_IS_CPP=true
+    LANG_NAME=C++
 fi
 
 if [ "${INTERFACE_LANGUAGE}" = "c" ]; then
@@ -100,6 +108,13 @@ if [ -z ${LANG_NAME+x} ]; then
     echo >&2 "-- ParaMonteExample - Fatal Error: unrecognized or no language specified. exiting..."
     echo >&2
     exit 1
+else
+    LANG_ABBR="${LANG_NAME//+/p}"
+#    if [ "${INTERFACE_LANGUAGE}" = "c++" ]; then
+#        LANG_ABBR="cpp"
+#    else
+#        LANG_ABBR="${INTERFACE_LANGUAGE}"
+#    fi
 fi
 
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -225,8 +240,6 @@ do
             echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
             cp ${ParaMonte_MOD_DIR}/paradram_mod.mod ${ParaMonteExample_BLD_DIR_CURRENT}/
         fi
-        # if [ "${LANG_NAME}" = "C" ]; then
-        # fi
 
     fi
 
@@ -334,7 +347,7 @@ ParaMonteExample_BLD_DIR_CURRENT="${ParaMonteExample_BLD_DIR}/mvn"
 if ! [ -d "${ParaMonte_BIN_DIR}" ]; then mkdir "${ParaMonte_BIN_DIR}/"; fi
 
 ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/${PMLIB_BASE_NAME}"
-if [ "${LANG_IS_DYNAMIC}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_${LANG_NAME}"; fi
+if [ "${LANG_IS_DYNAMIC}" = "true" ]; then ParaMonteExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_${LANG_ABBR}"; fi
 if ! [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then mkdir "${ParaMonteExample_BIN_DIR_CURRENT}/"; fi
 
 echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte ${LANG_NAME} library binary directory: ${ParaMonteExample_BIN_DIR_CURRENT}"

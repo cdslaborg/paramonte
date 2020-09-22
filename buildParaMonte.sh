@@ -157,7 +157,7 @@ cat << EndOfMessage
     usage:
 
         buildParaMonte.sh
-        -L <language: C/Fortran/MATLAB/Python>
+        -L <language: C/C++/Fortran/MATLAB/Python>
         -s <compiler suite: intel/gnu>
         -b <build mode: release/testing/debug>
         -l <library type: static/dynamic>
@@ -182,7 +182,7 @@ cat << EndOfMessage
 
     flag definitions:
 
-        -L | --lang             : the ParaMonte library interface programming language: C, Fortran, MATLAB, Python
+        -L | --lang             : the ParaMonte library interface programming language: C, C++, Fortran, MATLAB, Python
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
         -b | --build            : the ParaMonte library build type: release, testing, debug
         -l | --lib              : the ParaMonte library type: static, dynamic

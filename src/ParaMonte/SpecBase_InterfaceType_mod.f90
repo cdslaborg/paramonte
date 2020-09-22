@@ -86,6 +86,8 @@ contains
         type(InterfaceType_type) :: InterfaceTypeObj
 #if defined C_ENABLED
         InterfaceTypeObj%def = "The C Programming Language."
+#elif defined CPP_ENABLED
+        InterfaceTypeObj%def = "The C++ Programming Language."
 #elif defined FORTRAN_ENABLED
         InterfaceTypeObj%def = "The Fortran Programming Language."
 #elif defined MATLAB_ENABLED
