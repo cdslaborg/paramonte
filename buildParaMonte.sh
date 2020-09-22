@@ -1462,6 +1462,7 @@ echo >&2
 
 ParaMonte_BLD_DIR=${ParaMonte_ROOT_DIR}/build/${PLATFORM}${ARCHITECTURE}/${PMCS}/${COMPILER_VERSION}/${BTYPE}/${LTYPE}/${MEMORY_ALLOCATION}/${PARALLELIZATION_DIR}
 if [ ${INTERFACE_LANGUAGE} = "c" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/C; fi
+if [ ${INTERFACE_LANGUAGE} = "c++" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/C++; fi
 if [ ${INTERFACE_LANGUAGE} = "fortran" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/Fortran; fi
 if [ ${INTERFACE_LANGUAGE} = "matlab" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/MATLAB; fi
 if [ ${INTERFACE_LANGUAGE} = "python" ]; then ParaMonte_BLD_DIR=${ParaMonte_BLD_DIR}/Python; fi

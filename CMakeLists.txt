@@ -378,7 +378,7 @@ option(ParaMonteExampleMVNPython_RUN_ENABLED   "Run ParaMonte library examples' 
 # define library interface language (all must be lower-case)
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-set ( INTERFACE_LANGUAGE "c" CACHE STRING "Select the build interface language (c/fortran/matlab/python: all must be lower case)" )
+set ( INTERFACE_LANGUAGE "c" CACHE STRING "Select the build interface language (c/c++/fortran/matlab/python: all must be lower case)" )
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # define library linking type
@@ -601,7 +601,12 @@ if (NOT DEFINED PMLIB)
     endif()
     string(TOLOWER "${CMAKE_SYSTEM_NAME}" PLATFORM)
 
-    set(PMLIB paramonte_${INTERFACE_LANGUAGE}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION} )
+    if (${INTERFACE_LANGUAGE} STREQUAL "c++" OR ${INTERFACE_LANGUAGE} STREQUAL "C++")
+        set(LANG_ABBR "cpp")
+    else()
+        set(LANG_ABBR ${INTERFACE_LANGUAGE})
+    endif()
+    set(PMLIB paramonte_${LANG_ABBR}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION} )
 
     if (CAF_ENABLED)
         set(PMLIB ${PMLIB}_caf${CAFTYPE})

@@ -253,7 +253,7 @@ reportBadValue()
 if ! [ -z ${LANG_LIST+x} ]; then
     for LANG in $LANG_LIST; do
         if  [[ $LANG != [cC]
-            && $LANG != [cC][+][+]
+            && ($LANG != "c++" && $LANG != "C++")
             && $LANG != [fF][oO][rR][tT][rR][aA][nN]
             && $LANG != [mM][aA][tT][lL][aA][bB]
             && $LANG != [pP][yY][tT][hH][oO][nN] ]]; then
@@ -657,30 +657,30 @@ for PMCS in $PMCS_LIST; do
         # :: if MATLAB, generate MatDRAM
         # ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-        if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
-
-            echo >&2 "-- ParaMonte - Generating MATLAB MatDRAM library..."
-            echo >&2 ""
-
-            MatDRAM_ORIGIN_PATH=./bin/MATLAB
-            MatDRAM_DESTINATION_PATH=./bin/MatDRAM
-            if ! [ -d "${MatDRAM_DESTINATION_PATH}" ]; then
-                mkdir -p "${MatDRAM_DESTINATION_PATH}"
-            fi
-            echo >&2 "-- ParaMonte - copying the MatDRAM library files..."
-            echo >&2 "-- ParaMonte - from: ${MatDRAM_ORIGIN_PATH}"
-            echo >&2 "-- ParaMonte -   to: ${MatDRAM_DESTINATION_PATH}"
-            cp -frp "${MatDRAM_ORIGIN_PATH}" -T "${MatDRAM_DESTINATION_PATH}"
-
-            # delete the binary files
-
-            rm -rf "${MatDRAM_DESTINATION_PATH}/paramonte/lib"
-
-            # delete the mpi example file
-
-            rm -rf "${MatDRAM_DESTINATION_PATH}/main_mpi.m"
-
-        fi
+        #if [ "${INTERFACE_LANGUAGE}" = "matlab" ]; then
+        #
+        #    echo >&2 "-- ParaMonte - Generating the ParaMonte::MatDRAM library..."
+        #    echo >&2 ""
+        #
+        #    MatDRAM_ORIGIN_PATH=./bin/MATLAB
+        #    MatDRAM_DESTINATION_PATH=./bin/MatDRAM
+        #    if ! [ -d "${MatDRAM_DESTINATION_PATH}" ]; then
+        #        mkdir -p "${MatDRAM_DESTINATION_PATH}"
+        #    fi
+        #    echo >&2 "-- ParaMonte - copying the MatDRAM library files..."
+        #    echo >&2 "-- ParaMonte - from: ${MatDRAM_ORIGIN_PATH}"
+        #    echo >&2 "-- ParaMonte -   to: ${MatDRAM_DESTINATION_PATH}"
+        #    cp -frp "${MatDRAM_ORIGIN_PATH}" -T "${MatDRAM_DESTINATION_PATH}"
+        #
+        #    # delete the binary files
+        #
+        #    rm -rf "${MatDRAM_DESTINATION_PATH}/paramonte/lib"
+        #
+        #    # delete the mpi example file
+        #
+        #    rm -rf "${MatDRAM_DESTINATION_PATH}/main_mpi.m"
+        #
+        #fi
 
     done
 
