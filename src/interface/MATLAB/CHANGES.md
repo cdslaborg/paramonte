@@ -45,12 +45,6 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     pmpd.spec.targetAcceptanceRate = [0.2, 0.3] # this is also valid, which limits the acceptance rate to the specified range
     ```  
 
-## **Version 1.x.x**  
-
-### Version  1.1.1 -- Work in Progress  
-
-**Enhancements**  
-
 +   The default background color in all plots is now `"white"`.  
 +   The `rotateAxisLabels()` of the `GridPlot()` class is now renamed to `rotateAxesLabels()`.  
 
@@ -58,6 +52,8 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 +   ParaDRAM `readMarkovChain()` no-output-option bug is now fixed. 
     When calling `readMarkovChain()`, user can now either provide the output variable or not.  
+
+## **Version 1.x.x**  
 
 ### Version  1.1.0 -- June 5, 2020  
 
