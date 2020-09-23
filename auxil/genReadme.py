@@ -133,6 +133,8 @@ readme["quickstart"]["main"] = """"""
 
 readme["quickstart"]["c"] = """"""
 
+readme["quickstart"]["cpp"] = """"""
+
 readme["quickstart"]["fortran"] = """"""
 
 readme["quickstart"]["matlab"] = readme["quickstart"]["title"] + """
@@ -164,6 +166,8 @@ For more information and quick-start in the programming language of your choice,
 """
 
 readme["installation"]["c"] = readme["installation"]["main"]
+
+readme["installation"]["cpp"] = readme["installation"]["main"]
 
 readme["installation"]["fortran"] = readme["installation"]["main"]
 
@@ -202,6 +206,8 @@ Beyond an optional MPI runtime library for parallel simulations, the ParaMonte k
 """
 
 readme["dependencies"]["c"] = readme["dependencies"]["main"]
+
+readme["dependencies"]["cpp"] = readme["dependencies"]["main"]
 
 readme["dependencies"]["fortran"] = readme["dependencies"]["main"]
 
@@ -247,6 +253,8 @@ For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdsl
 
 readme["parallelism"]["c"] = readme["parallelism"]["main"]
 
+readme["parallelism"]["cpp"] = readme["parallelism"]["main"]
+
 readme["parallelism"]["fortran"] = readme["parallelism"]["main"]
 
 readme["parallelism"]["matlab"] = readme["parallelism"]["main"]
@@ -273,6 +281,8 @@ to access the PDF version of these files free of charge.
 """
 
 readme["citation"]["c"] = readme["citation"]["main"]
+
+readme["citation"]["cpp"] = readme["citation"]["main"]
 
 readme["citation"]["fortran"] = readme["citation"]["main"]
 
@@ -302,6 +312,8 @@ If you have questions or concerns about the license, do not hesitate to contact 
 """
 
 readme["license"]["c"] = readme["license"]["main"]
+
+readme["license"]["cpp"] = readme["license"]["main"]
 
 readme["license"]["fortran"] = readme["license"]["main"]
 
@@ -356,6 +368,8 @@ readme["authors"]["main"] = readme["authors"]["title"] + amir + fatima + shashan
 
 readme["authors"]["c"] = readme["authors"]["title"] + amir
 
+readme["authors"]["cpp"] = readme["authors"]["title"] + amir + fatima
+
 readme["authors"]["fortran"] = readme["authors"]["title"] + amir + fatima
 
 readme["authors"]["matlab"] = readme["authors"]["title"] + amir + shashank
@@ -380,7 +394,7 @@ readme["examples"]["main"] = readme["examples"]["title"] + """
     +   **Python**: [https://github.com/cdslaborg/paramonte/tree/master/src/interface/Python](https://github.com/cdslaborg/paramonte/tree/master/src/interface/Python)  
 """
 
-readme["examples"]["c"] = readme["examples"]["title"] + """
+readme["examples"]["c"] = readme["examples"]["cpp"] = readme["examples"]["title"] + """
 +   For complete clear organized up-to-date instructions on the build process and the installation of the ParaMonte library, visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
 
 ## Quick start  
@@ -743,6 +757,7 @@ print(cwd)
 
 filePathDict =  { "main"    : "../README.md"
                 , "c"       : "../src/interface/C/README.md"
+                , "cpp"     : "../src/interface/C++/README.md"
                 , "fortran" : "../src/interface/Fortran/README.md"
                 , "matlab"  : "../src/interface/MATLAB/README.md"
                 , "python"  : "../src/interface/Python/README.md"
