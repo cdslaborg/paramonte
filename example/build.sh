@@ -171,7 +171,7 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"_cpp_".* ]]; then
     EXAMPLE_LANGUAGE=C++
     if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* ]]; then
         PM_COMPILER_SUITE=intel
-        COMPILER_LIST=icc
+        COMPILER_LIST=icpc
     fi
     if [[ "$PMLIB_FULL_NAME" =~ .*"_gnu_".* ]]; then
         PM_COMPILER_SUITE=gnu
@@ -248,8 +248,11 @@ if [ "${MPI_ENABLED}" = "true" ]; then
     if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then
         COMPILER_LIST="mpiifort mpifort"
     fi
-    if [ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
+    if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then
         COMPILER_LIST="mpiicc mpicc"
+    fi
+    if [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
+        COMPILER_LIST="mpiicpc mpicxx mpic++ mpicc"
     fi
 fi
 
