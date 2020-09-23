@@ -882,7 +882,7 @@ class ParaMonteSampler:
     ################################################################################################################################
 
     def _setDelimiterToRead(self, delimiter, fileType, fileSuffix):
-        if self.spec.outputFileName is None:
+        if self.spec.outputDelimiter is None:
             delimiter   = ","
             if self.reportEnabled:
                 pm.warn ( msg   = "The ``delimiter`` is neither given as input to ``read" + fileType.capitalize() + "()``" + newline

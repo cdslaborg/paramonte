@@ -16,6 +16,10 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     minor change that will not cause any noticeable change in the 
     behavior of the library in almost in all use cases.
 
++   A minor bug regarding the input value for the `outputDelimiter` 
+    attribute of the `spec` component of the `ParaMonteSampler()` class,  
+    used in the `readTabular()` internal method, is now fixed.
+
 ### Version  2.0.3 -- September 11, 2020  
 
 **Minor enhancements**  
