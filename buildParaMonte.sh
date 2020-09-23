@@ -212,6 +212,7 @@ unset INTERFACE_LANGUAGE
 unset Fortran_COMPILER_PATH
 FRESH_INSTALL_ENABLED=false
 YES_TO_ALL_DISABLED=true
+DRYRUN_ENABLED=false
 CLEAN=false
 
 while [ "$1" != "" ]; do
@@ -256,6 +257,8 @@ while [ "$1" != "" ]; do
                                 FOR_COARRAY_NUM_IMAGES=$1
                                 ;;
         -F | --fresh )          FRESH_INSTALL_ENABLED=true; export FRESH_INSTALL_ENABLED
+                                ;;
+        -d | --dryrun )         DRYRUN_ENABLED=true; export DRYRUN_ENABLED
                                 ;;
         -y | --yes-to-all )     YES_TO_ALL_DISABLED=false; export YES_TO_ALL_DISABLED
                                 ;;
@@ -1692,6 +1695,12 @@ else
 fi
 if [ "${isMacOS}" = "true" ]; then ParaMonte_CAF_SETUP_PATH_CMD=""; fi
 
+####################################################################################################################################
+#### call cmake
+####################################################################################################################################
+
+if [ "${DRYRUN_ENABLED}" != "true" ]; then
+
 (cd ${ParaMonte_BLD_DIR} && \
 ${ParaMonte_CAF_SETUP_PATH_CMD} && \
 cmake \
@@ -1721,6 +1730,10 @@ verify $? "build with make"
 make install \
 )
 verify $? "installation"
+
+fi
+
+####################################################################################################################################
 
 LD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH
@@ -1948,7 +1961,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         echo >&2
 
         ParaMonteMATLAB_BLD_LIB_DIR="${ParaMonte_BLD_DIR}/lib"
-        if [ -d "${MATLAB_BIN_DIR}" ]; then
+        if [ -d "${MATLAB_BIN_DIR}" ] && [ "${DRYRUN_ENABLED}" != "true" ]; then
             # cd "${ParaMonteMATLAB_BLD_LIB_DIR}" && fname=$(find -type f -name 'libparamonte_*');
             # PMLIB_NAME_EXT=${fname:2} # removing first two characters './'
             # PMLIB_NAME=$(basename -- "$PMLIB_NAME_EXT")

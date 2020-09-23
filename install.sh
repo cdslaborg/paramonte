@@ -94,6 +94,7 @@ yes_to_all_flag=""
 gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
 MatDRAM_ENABLED="false"
+dryrun_flag=""
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -129,10 +130,11 @@ while [ "$1" != "" ]; do
                                 ;;
         -F | --fresh )          fresh_flag="--fresh"
                                 ;;
+        -d | --dryrun )         dryrun_flag="--dryrun"
+                                ;;
         -y | --yes-to-all )     yes_to_all_flag="--yes-to-all"
                                 ;;
-        -B | --bootstrap )      shift
-                                gcc_bootstrap_flag="--bootstrap"
+        -B | --bootstrap )      gcc_bootstrap_flag="--bootstrap"
                                 ;;
 #       -a | --matdram )        shift
 #                               MatDRAM_ENABLED="true"
@@ -583,6 +585,9 @@ for PMCS in $PMCS_LIST; do
                             if ! [ "${fresh_flag}" = "" ]; then
                             echo >&2 "                          ${fresh_flag} \ "
                             fi
+                            if ! [ "${dryrun_flag}" = "" ]; then
+                            echo >&2 "                          ${dryrun_flag} \ "
+                            fi
                             if ! [ "${gcc_bootstrap_flag}" = "" ]; then
                             echo >&2 "                          ${gcc_bootstrap_flag} \ "
                             fi
@@ -615,6 +620,7 @@ for PMCS in $PMCS_LIST; do
                             ${exam_enabled_flag} \
                             ${yes_to_all_flag} \
                             ${fresh_flag} \
+                            ${dryrun_flag} \
                             ${gcc_bootstrap_flag} \
                             ${fortran_flag} \
                             ${mpiexec_flag} \
