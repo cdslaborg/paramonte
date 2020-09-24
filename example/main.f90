@@ -27,14 +27,14 @@
     use LogFunc_mod, only: getLogFunc, NDIM
 
     implicit none
-    type(ParaDRAM) :: pd
+    type(ParaDRAM) :: pmpd
 
-    call pd%runSampler  ( ndim = NDIM &
+    call pmpd%runSampler( ndim = NDIM &
                         , getLogFunc = getLogFunc &
                         , inputFile = "./paramonte.in" &    ! this is optional argument
                         ! You can also specify simulation specifications as input arguments, like 
                         ! the following. This is possible only from the OOP interface to ParaDRAM.
-                        , greedyAdaptationCount = 0 &       ! this is optional argument
+                        , greedyAdaptationCount = 0_IK &    ! this is optional argument
                         , description = "an example run" &  ! this is optional argument
                         ! More optional arguments can appear here. 
                         ! See the ParaDRAM routine's list of input arguments.

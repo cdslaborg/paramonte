@@ -136,7 +136,7 @@ if exist "!DESTINATION_DIR!" (
             echo. -- ParaMonte - WARNING: skipping...
         ) else (
             echo. -- ParaMonte - compressing subdirectory: %%~G
-            !AUXIL_DIR!\7za.exe a -r -tzip "%%~G.zip" "%%~G"
+            !AUXIL_DIR!\7z.exe a -r -tzip "%%~G.zip" "%%~G"
         )
     )
 ) else (
