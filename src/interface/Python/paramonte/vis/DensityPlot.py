@@ -9,30 +9,30 @@
 ####
 ####   This file is part of the ParaMonte library.
 ####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
+####   Permission is hereby granted, free of charge, to any person obtaining a
+####   copy of this software and associated documentation files (the "Software"),
+####   to deal in the Software without restriction, including without limitation
+####   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+####   and/or sell copies of the Software, and to permit persons to whom the
 ####   Software is furnished to do so, subject to the following conditions:
 ####
-####   The above copyright notice and this permission notice shall be 
+####   The above copyright notice and this permission notice shall be
 ####   included in all copies or substantial portions of the Software.
 ####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ####
 ####   ACKNOWLEDGMENT
 ####
 ####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
+####   As per the ParaMonte library license agreement terms, if you use any parts of
+####   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
 ####       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -59,13 +59,13 @@ newline = pmutils.newline
 class DensityPlot(BasePlot):
     """
 
-    This is the DensityPlot class for generating instances 
+    This is the DensityPlot class for generating instances
     of histogram and contour figures in two and three dimensions
-    based on a wide range of plotting tools from the matplotlib, 
+    based on a wide range of plotting tools from the matplotlib,
     seaborn, and other Python libraries.
 
-    Normally, the public users are not supposed to use this 
-    class directly, although they can for the purposes other 
+    Normally, the public users are not supposed to use this
+    class directly, although they can for the purposes other
     than plotting the ParaMonte simulation files.
 
         **Parameters**
@@ -84,12 +84,12 @@ class DensityPlot(BasePlot):
 
             reportEnabled (optional)
 
-                A boolean whose value indicates whether guidelines should be 
+                A boolean whose value indicates whether guidelines should be
                 printed in the standard output.
 
             resetPlot (optional)
 
-                A function that resets the properties of the plot as desired 
+                A function that resets the properties of the plot as desired
                 from outside. If provided, a pointer to this function will be
                 saved for future internal usage.
 
@@ -97,7 +97,7 @@ class DensityPlot(BasePlot):
 
             xcolumns
 
-                An attribute that determines the columns of dataFrame 
+                An attribute that determines the columns of dataFrame
                 to be visualized as the X-axis. It can have three forms:
 
                     1.  A list of column indices in dataFrame.
@@ -114,7 +114,7 @@ class DensityPlot(BasePlot):
 
             ycolumns (only in kdeplot2, contour, contourf, contour3 plots)
 
-                An attribute that determines the columns of dataFrame 
+                An attribute that determines the columns of dataFrame
                 to be visualized as the Y-axis. It can have three forms:
 
                     1.  A list of column indices in dataFrame.
@@ -131,10 +131,10 @@ class DensityPlot(BasePlot):
 
             rows
 
-                An attribute that determines the rows of dataFrame to be 
+                An attribute that determines the rows of dataFrame to be
                 visualized. It can be either:
 
-                    1.  A ``range(start,stop,step)``, or, 
+                    1.  A ``range(start,stop,step)``, or,
                     2.  A list of row indices in dataFrame.index.
 
                 Examples:
@@ -144,36 +144,31 @@ class DensityPlot(BasePlot):
 
                 The default behavior includes all rows of the dataFrame.
 
-            distplot (available only in distplot objects)
+            histplot (available only in histplot objects)
 
                 A structure with two attributes:
 
                     enabled
 
-                        A boolean indicating whether a call to the ``distplot()``
+                        A boolean indicating whether a call to the ``histplot()``
                         function of the seaborn library should be made or not.
 
                     kws
 
-                        A structure whose components are directly passed as 
-                        keyword arguments to the ``distplot()`` function.
+                        A structure whose components are directly passed as
+                        keyword arguments to the ``histplot()`` function.
 
                         Example usage:
 
                             .. code-block:: python
                                 :linenos:
 
-                                distplot.kws.kde = False
-                                distplot.kws.hist_kws = { "histtype":"step"
-                                                        , "linewidth":0
-                                                        , "alpha":1
-                                                        , "color":"g"
-                                                        }
+                                histplot.kws.stat = "count"
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
             kdeplot (available only in ``kdeplot1`` and ``kdeplot2`` objects)
@@ -187,7 +182,7 @@ class DensityPlot(BasePlot):
 
                     kws
 
-                        A structure whose components are directly passed as 
+                        A structure whose components are directly passed as
                         keyword arguments to the ``kdeplot()`` function.
 
                         Example usage:
@@ -200,8 +195,8 @@ class DensityPlot(BasePlot):
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
             contour (available only in ``contour`` and ``contour3`` objects)
@@ -215,7 +210,7 @@ class DensityPlot(BasePlot):
 
                     kws
 
-                        A structure whose components are directly passed as 
+                        A structure whose components are directly passed as
                         keyword arguments to the ``contour()`` function.
 
                         Example usage:
@@ -228,8 +223,8 @@ class DensityPlot(BasePlot):
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
             contourf (available only in ``contourf`` objects)
@@ -243,7 +238,7 @@ class DensityPlot(BasePlot):
 
                     kws
 
-                        A structure whose components are directly passed as 
+                        A structure whose components are directly passed as
                         keyword arguments to the ``contourf()`` function.
 
                         Example usage:
@@ -256,14 +251,14 @@ class DensityPlot(BasePlot):
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
             gridSize (available in ``contour``, ``contourf``, ``contour3`` objects)
 
-                An integer indicating the grid resolution for discretization of the 
-                data during the kernel density estimation. It must be a power of 
+                An integer indicating the grid resolution for discretization of the
+                data during the kernel density estimation. It must be a power of
                 two, otherwise it will be changed to the next power of two at the
                 time of using it. The default value is 512.
 
@@ -276,11 +271,11 @@ class DensityPlot(BasePlot):
             limits (available in ``contour``, ``contourf``, ``contour3`` objects)
 
                 Data ``limits`` used in the kernel density estimation
-                specified as a tuple of tuples ``((xmin, xmax), (ymin, ymax))``. 
-                If any of the values are ``None``, they will be inferred 
-                from the data. Each tuple, or even both of them, may 
-                also be replaced by a single value denoting the 
-                upper bound of a range centered at zero. 
+                specified as a tuple of tuples ``((xmin, xmax), (ymin, ymax))``.
+                If any of the values are ``None``, they will be inferred
+                from the data. Each tuple, or even both of them, may
+                also be replaced by a single value denoting the
+                upper bound of a range centered at zero.
                 The default is ``None``.
 
                 Example usage:
@@ -291,7 +286,7 @@ class DensityPlot(BasePlot):
 
             noiseDensity (available in ``contour``, ``contourf``, ``contour3``)
 
-                A float indicating the threshold below which the kernel density 
+                A float indicating the threshold below which the kernel density
                 estimate is considered to be noise and is rounded to zero.
                 The higher this value is, the less noise will be visible.
 
@@ -312,7 +307,7 @@ class DensityPlot(BasePlot):
 
                     kws
 
-                        A structure whose components are directly passed as 
+                        A structure whose components are directly passed as
                         keyword arguments to the ``set()`` function.
 
                         Example usage:
@@ -323,8 +318,8 @@ class DensityPlot(BasePlot):
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
             axes (available only in 1D and 2D plots)
@@ -333,8 +328,8 @@ class DensityPlot(BasePlot):
 
                     kws
 
-                        A structure whose components are directly passed as 
-                        keyword arguments to the ``gca()`` function of the 
+                        A structure whose components are directly passed as
+                        keyword arguments to the ``gca()`` function of the
                         matplotlib library.
 
                         Example usage:
@@ -345,8 +340,8 @@ class DensityPlot(BasePlot):
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
             axes3d (available only in 3D plots)
@@ -355,8 +350,8 @@ class DensityPlot(BasePlot):
 
                     kws
 
-                        A structure whose components are directly passed as 
-                        keyword arguments to the ``Axes3D()`` function of the 
+                        A structure whose components are directly passed as
+                        keyword arguments to the ``Axes3D()`` function of the
                         matplotlib library.
 
                         Example usage:
@@ -367,8 +362,8 @@ class DensityPlot(BasePlot):
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
             figure
@@ -384,7 +379,7 @@ class DensityPlot(BasePlot):
 
                     kws
 
-                        A structure whose components are directly passed as 
+                        A structure whose components are directly passed as
                         keyword arguments to the ``figure()`` function.
 
                         Example usage:
@@ -395,8 +390,8 @@ class DensityPlot(BasePlot):
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
             colorbar (exists only for plots that require colorbar)
@@ -412,17 +407,17 @@ class DensityPlot(BasePlot):
 
                     kws
 
-                        A structure whose components are directly passed as 
-                        keyword arguments to the ``colorbar()`` function of 
+                        A structure whose components are directly passed as
+                        keyword arguments to the ``colorbar()`` function of
                         the matplotlib library.
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
-                A colorbar will be added to a plot only if a color-mappings 
+                A colorbar will be added to a plot only if a color-mappings
                 is requested in the plot.
 
             legend (may not exist for some types of plots)
@@ -438,7 +433,7 @@ class DensityPlot(BasePlot):
 
                     kws
 
-                        A structure whose components are directly passed as 
+                        A structure whose components are directly passed as
                         keyword arguments to the ``legend()`` function.
 
                         Example usage:
@@ -449,8 +444,8 @@ class DensityPlot(BasePlot):
 
                         **NOTE**
 
-                        If a desired property is missing among the ``kws`` 
-                        attributes, simply add the field and its value to 
+                        If a desired property is missing among the ``kws``
+                        attributes, simply add the field and its value to
                         the component.
 
                 A legend will be added to a plot only if no color-mappings are
@@ -458,16 +453,16 @@ class DensityPlot(BasePlot):
 
             currentFig
 
-                A structure whose attributes are the outputs of various plotting 
-                tools used to make the current figure. These include the handle 
-                to the current figure, the handle to the current axes in the plot, 
-                the handle to the colorbar (if any exists), and other Python 
+                A structure whose attributes are the outputs of various plotting
+                tools used to make the current figure. These include the handle
+                to the current figure, the handle to the current axes in the plot,
+                the handle to the colorbar (if any exists), and other Python
                 plotting tools used to make to generate the figure.
 
             target (available only in 1D and 2D plot objects)
 
-                A callable object of the ParaMonte library's ``Target`` class 
-                which can be used to add target point or lines to the current 
+                A callable object of the ParaMonte library's ``Target`` class
+                which can be used to add target point or lines to the current
                 active plot.
 
         **Returns**
@@ -514,11 +509,10 @@ class DensityPlot(BasePlot):
             if self._type.is1d:
                 self.target.axhline.enabled = False
                 self.target.scatter.enabled = False
-            
 
         self.xcolumns = None
 
-        if not (self._type.isDistplot or self._type.isKdeplot1):
+        if not (self._type.isHistplot or self._type.isKdeplot1):
 
             self.ycolumns = None
 
@@ -528,11 +522,11 @@ class DensityPlot(BasePlot):
             self.colorbar.kws = Struct()
             self.colorbar.enabled = True
 
-        if self._type.isDistplot:
+        if self._type.isHistplot:
 
-            self.distplot = Struct()
-            self.distplot.kws = Struct()
-            self.distplot.enabled = True
+            self.histplot = Struct()
+            self.histplot.kws = Struct()
+            self.histplot.enabled = True
 
         if self._type.isKdeplot1 or self._type.isKdeplot2:
 
@@ -585,17 +579,17 @@ class DensityPlot(BasePlot):
                 ):
         """
 
-        Call the ``make()`` method of the current instance 
+        Call the ``make()`` method of the current instance
         of the class.
 
             **Parameters**
 
-                Any arguments that can be passed to the 
+                Any arguments that can be passed to the
                 ``make()`` method of the plot object.
 
             **Returns**
 
-                Any return value from the ``make()`` method 
+                Any return value from the ``make()`` method
                 of the plot object.
 
         """
@@ -612,15 +606,15 @@ class DensityPlot(BasePlot):
             ):
         """
 
-        Generate a plot from the selected columns 
+        Generate a plot from the selected columns
         of the object's dataFrame.
 
             **Parameters**
 
                 reself
 
-                    A logical variable. If ``True``, an instance of 
-                    the object will be returned  to the calling routine 
+                    A logical variable. If ``True``, an instance of
+                    the object will be returned  to the calling routine
                     upon exit. The default value is ``False``.
 
             **Returns**
@@ -648,23 +642,36 @@ class DensityPlot(BasePlot):
 
         # set what to plot
 
-        cEnabled = not self._type.isDistplot
+        cEnabled = not self._type.isHistplot
 
         ############################################################################################################################
-        #### distplot properties
+        #### histplot properties
         ############################################################################################################################
 
-        if self._type.isDistplot:
-            if isinstance(self.distplot.kws,Struct):
-                if "kde" not in vars(self.distplot.kws).keys(): self.distplot.kws.kde = False
-                if "hist_kws" not in vars(self.distplot.kws).keys(): self.distplot.kws.hist_kws = dict()
-                if "linewidth" not in self.distplot.kws.hist_kws.keys(): self.distplot.kws.hist_kws["linewidth"] = 0
-                if "histtype" not in self.distplot.kws.hist_kws.keys(): self.distplot.kws.hist_kws["histtype"] = "stepfilled"
-                self.distplot.kws.hist_kws["density"] = self.distplot.kws.kde
+        if self._type.isHistplot:
+            if isinstance(self.histplot.kws,Struct):
+                self.histplot.kws.legend = self.legend.enabled
+                #if "legend" not in vars(self.histplot.kws).keys(): self.histplot.kws.legend = False
+                if "kde" not in vars(self.histplot.kws).keys(): self.histplot.kws.kde = False
+                if "bins" not in vars(self.histplot.kws).keys(): self.histplot.kws.bins = "auto"
+                if "stat" not in vars(self.histplot.kws).keys(): self.histplot.kws.stat = "count"
+                if "kde_kws" not in vars(self.histplot.kws).keys(): self.histplot.kws.kde_kws = dict()
+                if "binwidth" not in vars(self.histplot.kws).keys(): self.histplot.kws.binwidth = None
+                if "binrange" not in vars(self.histplot.kws).keys(): self.histplot.kws.binrange = None
+                if "multiple" not in vars(self.histplot.kws).keys(): self.histplot.kws.multiple = "stack"
+                if "element" not in vars(self.histplot.kws).keys(): self.histplot.kws.element = "step"
+                if "shrink" not in vars(self.histplot.kws).keys(): self.histplot.kws.shrink = 1
+                if "color" not in vars(self.histplot.kws).keys(): self.histplot.kws.color = None
+                if "fill" not in vars(self.histplot.kws).keys(): self.histplot.kws.fill = True
+                if "common_norm" not in vars(self.histplot.kws).keys(): self.histplot.kws.common_norm = True
+                if "common_bins" not in vars(self.histplot.kws).keys(): self.histplot.kws.common_bins = False
+                if "line_kws" not in vars(self.histplot.kws).keys(): self.histplot.kws.line_kws = dict()
+                if "linewidth" not in self.histplot.kws.line_kws.keys(): self.histplot.kws.line_kws["linewidth"] = 0
+                if "linestyle" not in self.histplot.kws.line_kws.keys(): self.histplot.kws.line_kws["linestyle"] = "-"
             else:
-                raise Exception ( "The distplot.kws component of the current DensityPlot object must" + newline
+                raise Exception ( "The histplot.kws component of the current DensityPlot object must" + newline
                                 + "be an object of class Struct(), essentially a structure with components" + newline
-                                + "whose names are the input arguments to the distplot() function of the" + newline
+                                + "whose names are the input arguments to the histplot() function of the" + newline
                                 + "seaborn library." + newline
                                 + self._getDocString()
                                 )
@@ -678,12 +685,14 @@ class DensityPlot(BasePlot):
                 if "height" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.height = 7
                 if "space" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.space = 0
                 if "kind" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.kind = "kde"
+                if "fill" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.fill = True
                 if self.jointplot.kws.kind=="kde":
                     if "cmap" not in vars(self.jointplot.kws).keys() or self.jointplot.kws.cmap is None: self.jointplot.kws.cmap = "Blues"
                     if "cbar" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.cbar = False
                     if "shade" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.shade = True
                     if "n_levels" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.n_levels = 100
-                    if "shade_lowest" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.shade_lowest = True
+                    if "thresh" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.thresh = 0
+                    #if "shade_lowest" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.shade_lowest = True # deprecated in seaborn 0.11.0
                     if "cbar_kws" not in vars(self.jointplot.kws).keys(): self.jointplot.kws.cbar_kws = dict()
                     if "label" not in self.jointplot.kws.cbar_kws.keys(): self.jointplot.kws.cbar_kws["label"] = "Density"
             else:
@@ -714,7 +723,8 @@ class DensityPlot(BasePlot):
             if self._type.isKdeplot2:
                 if "cmap" not in vars(self.kdeplot.kws).keys() or self.kdeplot.kws.cmap is None: self.kdeplot.kws.cmap = "Blues"
                 if "n_levels" not in vars(self.kdeplot.kws).keys(): self.kdeplot.kws.n_levels = 100
-                if "shade_lowest" not in vars(self.kdeplot.kws).keys(): self.kdeplot.kws.shade_lowest = True
+                if "thresh" not in vars(self.kdeplot.kws).keys(): self.kdeplot.kws.thresh = 0
+                #if "shade_lowest" not in vars(self.kdeplot.kws).keys(): self.kdeplot.kws.shade_lowest = True # deprecated in seaborn 0.11.0
                 if "cbar_kws" not in vars(self.kdeplot.kws).keys(): self.kdeplot.kws.cbar_kws = dict()
                 if "label" not in self.kdeplot.kws.cbar_kws.keys(): self.kdeplot.kws.cbar_kws["label"] = "Density"
 
@@ -873,7 +883,7 @@ class DensityPlot(BasePlot):
 
         #### assign y properties for 2D plots
 
-        if not (self._type.isDistplot or self._type.isKdeplot1):
+        if not (self._type.isHistplot or self._type.isKdeplot1):
 
             # assign y columns to plot
 
@@ -937,13 +947,24 @@ class DensityPlot(BasePlot):
                     ) = kde2d( self._xvalues, self._yvalues, n=self.gridSize, limits=self.limits )
 
                     kde2dTriplet.density[ np.where( kde2dTriplet.density < self.noiseDensity ) ] = 0.0 # remove noise
-                    kde2dTriplet.xmesh, kde2dTriplet.ymesh = np.meshgrid( kde2dTriplet.grid[0], kde2dTriplet.grid[1] ) 
+                    kde2dTriplet.xmesh, kde2dTriplet.ymesh = np.meshgrid( kde2dTriplet.grid[0], kde2dTriplet.grid[1] )
 
         ############################################################################################################################
         #### make plot
         ############################################################################################################################
 
         if not self._type.isDiffusionPlot and self.legend.enabled: self.legend._labels = []
+
+        if self._type.isHistplot:
+
+            ########################################################################################################################
+            #### make histplot
+            ########################################################################################################################
+
+            data = self._xvalues if xcolindexlen==1 else self._dfref().loc[:, xcolnames]
+            self.currentFig.axes = sns.histplot ( data = data
+                                                , **vars(self.histplot.kws)
+                                                )
 
         for i, icol in enumerate(xcolindex):
 
@@ -962,16 +983,6 @@ class DensityPlot(BasePlot):
 
                     if ycolindexlen>1: lgyicol = i
                     self.legend._labels[-1] += "-" + ycolnames[lgyicol]
-
-            ########################################################################################################################
-            #### make distplot
-            ########################################################################################################################
-
-            if self._type.isDistplot:
-
-                self.currentFig.axes = sns.distplot ( self._xvalues
-                                                    , **vars(self.distplot.kws)
-                                                    )
 
             ########################################################################################################################
             #### make kdeplot1 / kdeplot2
@@ -1012,7 +1023,7 @@ class DensityPlot(BasePlot):
                     kde2dTriplet.density[ np.where( kde2dTriplet.density < self.noiseDensity ) ] = 0.0 # remove noise
                     kde2dTriplet.xmesh, kde2dTriplet.ymesh = np.meshgrid( kde2dTriplet.grid[0]
                                                                         , kde2dTriplet.grid[1]
-                                                                        ) 
+                                                                        )
 
                 self.currentFig.kde2dList.append(kde2dTriplet)
 
@@ -1068,9 +1079,9 @@ class DensityPlot(BasePlot):
 
         if ylabelNeeded:
 
-            if self._type.isDistplot:
+            if self._type.isHistplot:
 
-                if self.distplot.kws.kde:
+                if self.histplot.kws.kde:
                     self.currentFig.axes.set_ylabel("Probability Density")
                 else:
                     self.currentFig.axes.set_ylabel("Count")
@@ -1123,21 +1134,21 @@ class DensityPlot(BasePlot):
     def helpme(self, topic=None):
         """
 
-        Print the documentation for the input string topic. 
+        Print the documentation for the input string topic.
         If the topic does not exist, the documentation for
         the object will be printed.
-     
+
             **Parameters**
-         
+
                 topic (optional)
 
-                A string containing the name of the object 
+                A string containing the name of the object
                 for which help is needed.
 
             **Returns**
-         
+
                 None
-         
+
             **Example**
 
                 .. code-block:: python

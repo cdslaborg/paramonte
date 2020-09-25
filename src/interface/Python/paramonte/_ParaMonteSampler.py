@@ -1043,7 +1043,7 @@ class ParaMonteSampler:
                             + "    " + outputListFullName + "[0].plot.contour()      # to make fast 2D kernel density plots." + newline
                             + "    " + outputListFullName + "[0].plot.contourf()     # to make fast 2D kernel density filled contour plots." + newline
                             + "    " + outputListFullName + "[0].plot.contour3()     # to make fast 3D kernel density contour plots." + newline
-                            + "    " + outputListFullName + "[0].plot.distplot()     # to make seaborn 1D distribution plots." + newline
+                            + "    " + outputListFullName + "[0].plot.histplot()     # to make seaborn 1D distribution plots." + newline
                             + "    " + outputListFullName + "[0].plot.kdeplot1()     # to make seaborn 1D kernel density plots." + newline
                             + "    " + outputListFullName + "[0].plot.kdeplot2()     # to make seaborn 2D kernel density plots." + newline
                             + "    " + outputListFullName + "[0].plot.grid()         # to make GridPlot" + newline

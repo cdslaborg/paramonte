@@ -43,6 +43,7 @@
 import os
 import sys
 import copy
+import typing as tp
 import numpy as np
 import _paramonte as pm
 import warnings
@@ -95,15 +96,16 @@ def verify(reset = True):
     if not isinstance(reset,bool):
         raise Exception ( newline
                         + "The input argument reset must be a logical (boolean) value: True or False"
+                        + newline
                         )
 
-    # require Python >3.6 for type hints
+    #### require Python >3.6 for type hints
 
     _MIN_PYTHON = (3,6)
     if sys.version_info < _MIN_PYTHON:
         sys.exit("Python %s.%s or newer is required for ParaMonte. Please install the latest version of Python.\n" % _MIN_PYTHON)
 
-    # ensure messages are printed only for the first-time import
+    #### ensure messages are printed only for the first-time import
 
     if reset: writeVerificationStatusFile("True")
 
@@ -128,25 +130,29 @@ def verify(reset = True):
 
     if verificationEnabled:
 
-        # ensure 64-bit architecture
+        #### ensure 64-bit architecture
 
         if (pm.platform.arch=="x64") and (pm.platform.isWin32 or pm.platform.isLinux or pm.platform.isMacOS):
 
             displayParaMonteBanner()
 
-            # verify module dependencies
+            #### display dependency version message
 
-            # On some systems like TACC, the matplotlib causes segmentation fault that is not controllable in any way.
-            # This is apparently a bug in the older versions of matplotlib. Until it is fully resolved, the following
-            # dependency version check is commented out.
+            displayDependencyVersionMessage()
+
+            #### verify module dependencies
+
+            #### On some systems like TACC, the matplotlib causes segmentation fault that is not controllable in any way.
+            #### This is apparently a bug in the older versions of matplotlib. Until it is fully resolved, the following
+            #### dependency version check is commented out.
 
             # verifyDependencyVersion()
 
-            # library path
+            #### library path
 
             if not pm.platform.isWin32: setupUnixPath()
 
-            # search for the MPI library
+            #### search for the MPI library
 
             mpi = findMPI()
 
@@ -552,7 +558,7 @@ def findMPI():
                                     + "to register to run Hydra services for multi-node simulations " + newline
                                     + "on Windows servers, visit: " + newline
                                     + newline
-                                    + pm.website.home.url
+                                    + "    " + pm.website.home.url
                             , marginTop = 1
                             , marginBot = 1
                             , methodName = pm.names.paramonte
@@ -1731,29 +1737,104 @@ def getPreviousVersion(currentVerionString):
     return previousVerionString
 
 ####################################################################################################################################
+#### getDependencyVersion
+####################################################################################################################################
+
+dependencyVersionDict = { "numpy": '1.19.2'
+                        , "scipy": '1.5.2'
+                        , "pandas": '1.1.2'
+                        , "seaborn": '0.11.0'
+                        , "matplotlib": '3.3.2'
+                        }
+
+def getDependencyVersion( pkg : tp.Optional[ str ] = None ):
+    """
+
+    Return the minimum required version of the Python library 
+    for the successful use of the ParaMonte library visualization
+    and post-processing tools.
+
+        **Parameters**
+
+            pkg
+
+                An optional string representing the name of the 
+                Python package whose version is being inquired.
+
+        **Returns**
+
+            A string representing the required minimum version 
+            of the input ``pkg``. If ``pkg`` is missing or the 
+            package dependency does not exist within the ParaMonte 
+            library, the dictionary of all dependencies will 
+            be returned.
+
+    """
+    if pkg is not None:
+        try:
+            version = dependencyVersionDict[ pkg ]
+        except:
+            version = dependencyVersionDict 
+    else:
+        version = dependencyVersionDict
+    return version
+
+####################################################################################################################################
+#### getDependencyVersion
+####################################################################################################################################
+
+def displayDependencyVersionMessage():
+    indentedNewLine = newline + "    "
+    pm.note( msg    = "The ParaMonte::Kernel samplers have no Python package dependencies " + newline
+                    + "beyond numpy. However, the ParaMonte::Python post-processing and " + newline
+                    + "visualization tools require the following Python packages, " + newline
+                    + indentedNewLine
+                    + indentedNewLine.join("{} : {}".format(key, val) for key, val in dependencyVersionDict.items()) + newline
+                    + newline
+                    + "If you do not intend to use the postprocessing and visualization tools, " + newline
+                    + "you can ignore this message. Otherwise, update the above packages to " + newline
+                    + "the requested versions or newer so that the visualization tools " + newline
+                    + "function properly."
+            , methodName = pm.names.paramonte
+            , marginTop = 1
+            , marginBot = 1
+            )
+
+####################################################################################################################################
 #### verifyDependencyVersion
 ####################################################################################################################################
 
 def verifyDependencyVersion():
+    """
 
-    moduleVersionDict = { "scipy": "1.4.0"
-                        , "numpy": "1.18.0"
-                        , "pandas": "1.0.0"
-                        , "seaborn": "0.10.0"
-                        , "matplotlib": "3.2.0"
-                        }
+    Verify the existence of the required Python packages and 
+    their minimum versions on the current system.
 
-    print(newline)
-    for module, version in moduleVersionDict.items():
+        **Parameters**
 
-        print("checking the ParaMonte module dependency on " + module + " ...")
+            None
+
+        **Returns**
+
+            None
+
+    """
+    print("")
+    for module, version in dependencyVersionDict.items():
+
+        versionIsCompatible = False
+        print("checking the ParaMonte::Python dependency on " + module + " ... ", end = "")
 
         try:
 
             exec("import " + module)
             installedVersion = eval(module + ".__version__")
 
-            if installedVersion != version:
+            if installedVersion == version:
+
+                versionIsCompatible = True
+
+            else:
 
                 if installedVersion.split(".")[0] != version.split(".")[0]:
                     pm.warn ( msg   = "The current installation version of the " + module + " library on" + newline
@@ -1773,7 +1854,7 @@ def verifyDependencyVersion():
                                     + newline
                                     + "for a possible solution. skipping for now..."
                             , methodName = pm.names.paramonte
-                            , marginTop = 0
+                            , marginTop = 1
                             , marginBot = 1
                             )
 
@@ -1793,7 +1874,7 @@ def verifyDependencyVersion():
                                     + newline
                                     + "for a possible solution. skipping for now..."
                             , methodName = pm.names.paramonte
-                            , marginTop = 0
+                            , marginTop = 1
                             , marginBot = 1
                             )
 
@@ -1815,7 +1896,7 @@ def verifyDependencyVersion():
                                 + newline
                                 + "for a possible solution. skipping for now..."
                         , methodName = pm.names.paramonte
-                        , marginTop = 0
+                        , marginTop = 1
                         , marginBot = 1
                         )
             else:
@@ -1832,9 +1913,11 @@ def verifyDependencyVersion():
                                 + newline
                                 + "for a possible solution. skipping for now..."
                         , methodName = pm.names.paramonte
-                        , marginTop = 0
+                        , marginTop = 1
                         , marginBot = 1
                         )
+
+        if versionIsCompatible: print("OK")
 
     return None
 
@@ -1865,24 +1948,41 @@ def checkForUpdate(package = "paramonte"):
         , marginBot = 1
         )
     else:
-        pm.note ( msg   = "A newer version (" + latestVersion + ") of the ParaMonte library appears " + newline
-                        + "to be available on the PyPI repository. The currently-installed version is: " + currentVersion + newline
-                        + "You can upgrade to the latest version by typing the following on " + newline
-                        + "your Bash terminal or Anaconda command prompt: " + newline
-                        + newline
-                        + "    pip install --user --upgrade " + package + newline
-                        + newline
-                        + "To upgrade from within your Jupyter or IPython session, try, " + newline
-                        + newline
-                        + "    !pip install --user --upgrade " + package + newline
-                        + newline
-                        + "To see the latest changes to the ParaMonte Python library, visit, " + newline
-                        + newline
-                        + "    " + pm.website.home.overview.changes.python.url
-        , methodName = pm.names.paramonte
-        , marginTop = 1
-        , marginBot = 1
-        )
+
+        currentVersionTriplet = currentVersion.split(".")
+        latestVersionTriplet = latestVersion.split(".")
+        newerVersionAvailable = True
+        for current, latest in currentVersionTriplet, latestVersionTriplet:
+            if int(current)>latest:
+                newerVersionAvailable = False
+                return
+                break
+
+        if newerVersionAvailable:
+            msg = ("A newer version (" + latestVersion + ") of the ParaMonte library appears " + newline
+                + "to be available on the PyPI repository. The currently-installed version is: " + currentVersion + newline
+                + "You can upgrade to the latest version by typing the following on " + newline
+                + "your Bash terminal or Anaconda command prompt: " + newline
+                + newline
+                + "    pip install --user --upgrade " + package + newline
+                + newline
+                + "To upgrade from within your Jupyter or IPython session, try, " + newline
+                + newline
+                + "    !pip install --user --upgrade " + package + newline
+                + newline
+                + "To see the latest changes to the ParaMonte Python library, visit, " + newline
+                + newline
+                + "    " + pm.website.home.overview.changes.python.url
+                )
+        else:
+            msg = "Looks like you have a version of ParaMonte that is newer than the PyPI version. Good for you!"
+
+        pm.note ( msg = msg
+                , methodName = pm.names.paramonte
+                , marginTop = 1
+                , marginBot = 1
+                )
+            
     return None
 
 ####################################################################################################################################

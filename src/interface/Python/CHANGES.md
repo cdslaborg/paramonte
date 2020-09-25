@@ -5,6 +5,25 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.0.5 -- September 25, 2020  
+
+**Minor enhancements**  
+
++   The explicit dependencies on `scipy`, `matplotlib`, and `seaborn` are 
+    now removed from the PyPI setup file of the ParaMonte library as these 
+    are only required for the post-processing and visualizations of the 
+    simulation results. From now on, only `numpy` and `pandas` are the 
+    minimally-required Python modules, and practically, only `numpy`.  
+
++   Two new functions `verifyDependencyVersion()` and `getDependencyVersion()`
+    are now added to the library that can check for the existence of the 
+    ParaMonte library's visualization dependencies and their required 
+    minimum versions.  
+
++   The `seaborn` Python library has now decided to deprecate the `distplot()` 
+    function. The corresponding visualization method in the ParaMonte library 
+    has been now updated to a more appropriate name and underlying function.  
+
 ### Version  2.0.4 -- September 22, 2020  
 
 **Minor enhancements**  

@@ -301,7 +301,7 @@ class TabularFileContents(OutputFileContents):
                                                             , "scatter3"
                                                             , "lineScatter3"
                                                             , "jointplot"
-                                                            , "distplot"
+                                                            , "histplot"
                                                             , "kdeplot1"
                                                             , "kdeplot2"
                                                             , "contour3"
@@ -405,7 +405,7 @@ class TabularFileContents(OutputFileContents):
             isScatter   = "scatter"     in requestedPlotTypeLower
 
             isJointplot = "jointplot"   in requestedPlotTypeLower
-            isDistplot  = "distplot"    in requestedPlotTypeLower
+            isHistplot  = "histplot"    in requestedPlotTypeLower
             isKdeplot1  = "kdeplot1"    in requestedPlotTypeLower
             isKdeplot2  = "kdeplot2"    in requestedPlotTypeLower
             isContourf  = "contourf"    in requestedPlotTypeLower
@@ -415,7 +415,7 @@ class TabularFileContents(OutputFileContents):
             isGridPlot  = "grid"        in requestedPlotTypeLower
 
             isLineScatterPlot = isLine or isScatter
-            isDensityPlot = isJointplot or isDistplot or isKdeplot1 or isKdeplot2 or isContourf or isContour3 or isContour
+            isDensityPlot = isJointplot or isHistplot or isKdeplot1 or isKdeplot2 or isContourf or isContour3 or isContour
 
             if not resetTypeIsHard:
                 plotComponent = getattr(self, "plot")
@@ -461,7 +461,7 @@ class TabularFileContents(OutputFileContents):
                         plotObject.plot.enabled = False
 
             ########################################################################################################################
-            #### reset density plots: kdeplot / distplot / jointplot / contour / contourf / contour3
+            #### reset density plots: kdeplot / histplot / jointplot / contour / contourf / contour3
             ########################################################################################################################
 
             if isDensityPlot:
@@ -475,7 +475,7 @@ class TabularFileContents(OutputFileContents):
                                             )
 
                 plotObject.xcolumns = self.df.columns[self._offset]
-                if not (isDistplot or isKdeplot1):
+                if not (isHistplot or isKdeplot1):
                     if self.ndim==1:
                         plotObject.xcolumns = self.df.columns[self._offset-1]
                         plotObject.ycolumns = self.df.columns[self._offset]

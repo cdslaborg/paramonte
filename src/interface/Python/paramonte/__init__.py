@@ -163,7 +163,7 @@ import _paramonte as _pm
 
 #### objects exposed to the user
 
-from _pmreqs import verify, build, checkForUpdate
+from _pmreqs import verify, build, checkForUpdate, verifyDependencyVersion, getDependencyVersion
 from _paradram import ParaDRAM
 from _paramonte import version, website, cite
 

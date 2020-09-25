@@ -416,8 +416,8 @@ class GridPlot(BasePlot):
 
         self.plotType.diag = Struct()
         self.plotType.diag.enabled = True
-        self.plotType.diag.value = "distplot"
-        self.plotType.diag.names = ["distplot"]
+        self.plotType.diag.value = "histplot"
+        self.plotType.diag.names = ["histplot"]
 
         self.plotType.upper = Struct()
         self.plotType.upper.enabled = True
@@ -479,16 +479,28 @@ class GridPlot(BasePlot):
         template.contourf.kws.alpha = 1
         template.contourf.kws.levels = 50
 
-        # distplot
+        # histplot
 
-        template.distplot = Struct()
-        template.distplot.enabled = True
-        template.distplot.kws = Struct()
-        template.distplot.kws.kde = False
-        template.distplot.kws.hist_kws = dict()
-        template.distplot.kws.hist_kws["linewidth"] = 0
-        template.distplot.kws.hist_kws["histtype"] = "stepfilled"
-        template.distplot.kws.hist_kws["density"] = template.distplot.kws.kde
+        template.histplot = Struct()
+        template.histplot.enabled = True
+        template.histplot.kws = Struct()
+        template.histplot.kws.kde = False
+        template.histplot.kws.bins = "auto"
+        template.histplot.kws.stat = "count"
+        template.histplot.kws.kde_kws = dict()
+        template.histplot.kws.binwidth = None
+        template.histplot.kws.binrange = None
+        template.histplot.kws.multiple = "stack"
+        template.histplot.kws.element = "step"
+        template.histplot.kws.legend = False
+        template.histplot.kws.shrink = 1
+        template.histplot.kws.color = None
+        template.histplot.kws.fill = True
+        template.histplot.kws.common_norm = True
+        template.histplot.kws.common_bins = False
+        template.histplot.kws.line_kws = dict()
+        template.histplot.kws.line_kws["linewidth"] = 0
+        template.histplot.kws.line_kws["linestyle"] = "-"
 
         # legend template
 
@@ -557,11 +569,11 @@ class GridPlot(BasePlot):
         self.layout.contourf.limits             = None
         self.layout.contourf.gridSize           = 512
 
-        self.layout.distplot                    = Struct()
-        self.layout.distplot.figure             = dcopy(template.figure)
-        self.layout.distplot.distplot           = dcopy(template.distplot)
-        self.layout.distplot.legend             = dcopy(template.legend)
-        #self.layout.distplot.target             = dcopy(template.target)
+        self.layout.histplot                    = Struct()
+        self.layout.histplot.figure             = dcopy(template.figure)
+        self.layout.histplot.histplot           = dcopy(template.histplot)
+        self.layout.histplot.legend             = dcopy(template.legend)
+        #self.layout.histplot.target             = dcopy(template.target)
 
         self.layout.line                        = Struct()
         self.layout.line.figure                 = dcopy(template.figure)
@@ -806,7 +818,7 @@ class GridPlot(BasePlot):
         if self.plotType.diag.enabled:
             #self._progress.note( msg = "generating diagonal subplots... ", end = "" )
             self._progress.timer.toc()
-            self.currentFig.pairgrid.map_diag( sns.distplot, **vars(self.layout.distplot.distplot.kws) )
+            self.currentFig.pairgrid.map_diag( sns.histplot, **vars(self.layout.histplot.histplot.kws) )
             self._progress.timer.toc()
             avgDiagTime = self._progress.timer.delta / self._nrow
             #if self._reportEnabled:
@@ -836,7 +848,7 @@ class GridPlot(BasePlot):
                 
                     plotEnabled = True
                     requestedPlotType = self.plotType.diag.value
-                    if self.plotType.diag.value=="distplot": RequestedPlotClass = DensityPlot
+                    if self.plotType.diag.value=="histplot": RequestedPlotClass = DensityPlot
 
                 if icol>irow and self.plotType.upper.enabled:
 

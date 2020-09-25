@@ -280,7 +280,7 @@ class BasePlot:
             self._type.isHeatmap    = "heatmap"     in plotTypeLower
             self._type.isKdeplot1   = "kdeplot1"    in plotTypeLower
             self._type.isKdeplot2   = "kdeplot2"    in plotTypeLower
-            self._type.isDistplot   = "distplot"    in plotTypeLower
+            self._type.isHistplot   = "histplot"    in plotTypeLower
             self._type.isJointplot  = "jointplot"   in plotTypeLower
             self._type.isEllipsoid  = "covmat"      in plotTypeLower
             self._type.isEllipsoid  = "cormat"      in plotTypeLower
@@ -289,7 +289,7 @@ class BasePlot:
             self._type.isContourf   = "contourf"    in plotTypeLower
             self._type.isContour    = "contour"     in plotTypeLower and not (self._type.isContour3 or self._type.isContourf)
 
-            self._type.is1d         = self._type.isKdeplot1 or self._type.isDistplot
+            self._type.is1d         = self._type.isKdeplot1 or self._type.isHistplot
             self._type.is2d         = not (self._type.isGridPlot or self._type.is1d or self._type.is3d)
 
             self._type.isDiffusionPlot = self._type.isContour or self._type.isContourf or self._type.isContour3
