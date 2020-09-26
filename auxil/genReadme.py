@@ -105,7 +105,7 @@ ParaMonte has been developed while bearing the following design goals in mind:
     of the library and minimal time investment requirements for building, running, and post-processing of simulation models.  
 
 -   **Interoperability** of the core library with as many programming languages as currently possible, 
-    including C/C++, Fortran, MATLAB, Python, with ongoing efforts to support other popular programming languages.  
+    including C, C++, Fortran, MATLAB, Python, with ongoing efforts to support other popular programming languages.  
 
 -   **High-Performance** meticulously-low-level implementation of the library to ensure the fastest-possible Monte Carlo simulations.  
 
