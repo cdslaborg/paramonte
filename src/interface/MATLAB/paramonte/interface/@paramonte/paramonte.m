@@ -394,7 +394,7 @@ classdef paramonte %< dynamicprops
             self.platform.isMacOS = ismac;
             self.platform.isLinux = isunix && ~ismac;
             if self.platform.isWin32; self.platform.osname = "Windows"; end
-            if self.platform.isMacOS; self.platform.osname = "macOS"; end
+            if self.platform.isMacOS; self.platform.osname = "Darwin"; end % do NOT set this to macOS !
             if self.platform.isLinux; self.platform.osname = "Linux"; end
 
             self.platform.systemInfoFilePrefix = fullfile(self.path.auxil, ".systemInfo_");
