@@ -1324,7 +1324,7 @@ classdef GridPlot < BasePlot
                 degreeX = 45;
                 degreeY = 45;
             elseif nargin==2
-                degreeY = varargin{1};
+                degreeY = 45;
             elseif nargin~=3
                 error   ( newline ...
                         + "The rotateAxesLabels() method gets at most two input numeric values representing the X-axis and Y-axis label orientations from the horizontal axis, in degrees. " ...

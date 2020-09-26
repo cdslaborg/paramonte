@@ -3,6 +3,16 @@
 This project follows [Semantic Versioning](https://semver.org/). 
 To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
 
+## **Version 1.x.x**  
+
+### Version  2.0.1 -- September 26, 2020  
+
+**Minor enhancements**  
+
++   The minor bug in GridPlot class method `rotateAxesLabels()` that caused 
+    the `readSample()` , `readChain()`, `readMarkovChain()` to crash upon adding 
+    Grid plots is now fixed.
+
 ### Version  2.0.0 -- September 22, 2020  
 
 **Major enhancements to the ParaMonte / ParaDRAM sampler interfaces**  
