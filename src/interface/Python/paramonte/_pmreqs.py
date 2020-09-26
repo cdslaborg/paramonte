@@ -1262,7 +1262,7 @@ def buildParaMontePrereqsForMac():
                     )
             return False
 
-    # cmake
+    #### cmake
 
     cmakeInstallationNeeded = False
     cmakePath = shutil.which("cmake")
@@ -1342,7 +1342,7 @@ def buildParaMontePrereqsForMac():
                     )
             return False
 
-    # gnu
+    #### gnu
 
     pm.note ( msg = "Installing GNU Compiler Collection..."
             , methodName = pm.names.paramonte
@@ -1361,7 +1361,7 @@ def buildParaMontePrereqsForMac():
                 )
         return False
 
-    # open-mpi
+    #### open-mpi
 
     pm.note ( msg = "Installing Open-MPI..."
             , methodName = pm.names.paramonte
@@ -1392,9 +1392,9 @@ def getMacosInstallHelpMsg(app = ""):
         + "build the ParaMonte components and prerequisites. " + newline
         + newline
         + "If you are performing this installation from within a Jupyter " + newline
-        + "Notebook, then, reinstalling from within an ipython environment or the " + newline
-        + "python command line (instead of Jupyter Notebook) will likely resolve " + newline
-        + "the errors. To do so, open a Bash command line and type, " + newline
+        + "Notebook, then, reinstalling from within an ipython environment or " + newline
+        + "the python command line (instead of Jupyter Notebook) will likely " + newline
+        + "resolve the errors. To do so, open a Bash command line and type, " + newline
         + newline
         + "    ipython || python" + newline
         + newline
@@ -1403,8 +1403,8 @@ def getMacosInstallHelpMsg(app = ""):
         + "    import paramonte as pm" + newline
         + "    pm.verify()" + newline
         + newline
-        + "Otherwise, you can install the application " + app + " manually on " + newline
-        + "your system. The " + app + " installation is only a single " + newline
+        + "Otherwise, you can install the application " + app + " manually " + newline
+        + "on your system. The " + app + " installation is only a single " + newline
         + "command and takes only a few seconds to install. " + newline
         + "You can get the installation command from this page: " + newline
         + newline

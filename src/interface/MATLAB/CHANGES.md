@@ -9,6 +9,9 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 **Minor enhancements**  
 
++   The guidelines for the installation of the 
+    MPI library on macOS have been improved.  
+
 +   The minor bug in GridPlot class method `rotateAxesLabels()` that caused 
     the `readSample()` , `readChain()`, `readMarkovChain()` to crash upon adding 
     Grid plots is now fixed.  
