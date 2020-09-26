@@ -5,6 +5,13 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.0.7 -- September 26, 2020  
+
+**Minor enhancements**  
+
++   The guidelines for the installation of the MPI 
+    library on macOS and Linux have been improved.  
+
 ### Version  2.0.6 -- September 25, 2020  
 
 **Minor enhancements**  

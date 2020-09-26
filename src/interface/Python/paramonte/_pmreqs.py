@@ -653,7 +653,7 @@ def findMPI():
             gfortranVersion = subprocess.run(args=["gfortran", "--version"],capture_output=True)
             if "GCC 10." in str(gfortranVersion.stdout): gfortranPath = shutil.which("gfortran")
         except:
-            warnings.warn("Failed to capture the gfortran version...")
+            warnings.warn("Failed to capture the GNU Compiler Collection version...")
 
         mpi.install.bin.mpiexec.path = None
         try:
@@ -1387,12 +1387,24 @@ def buildParaMontePrereqsForMac():
 ####################################################################################################################################
 
 def getMacosInstallHelpMsg(app = ""):
-    msg = ("Failed to install and link the " + app + " on your system. " + newline
-        + "The " + app + " application is required to install and " + newline
+    msg = ("Failed to install and link the application " + app + " on your " + newline
+        + "system. The " + app + " application is required to install and " + newline
         + "build the ParaMonte components and prerequisites. " + newline
-        + "Please install the " + app + " manually on your " + newline
-        + "system and retry the installation process. " + newline
-        + "The " + app + " installation is only a single " + newline
+        + newline
+        + "If you are performing this installation from within a Jupyter " + newline
+        + "Notebook, then, reinstalling from within an ipython environment or the " + newline
+        + "python command line (instead of Jupyter Notebook) will likely resolve " + newline
+        + "the errors. To do so, open a Bash command line and type, " + newline
+        + newline
+        + "    ipython || python" + newline
+        + newline
+        + "Then, inside the (i)python environment, type, " + newline
+        + newline
+        + "    import paramonte as pm" + newline
+        + "    pm.verify()" + newline
+        + newline
+        + "Otherwise, you can install the application " + app + " manually on " + newline
+        + "your system. The " + app + " installation is only a single " + newline
         + "command and takes only a few seconds to install. " + newline
         + "You can get the installation command from this page: " + newline
         + newline

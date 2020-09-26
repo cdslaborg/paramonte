@@ -734,8 +734,8 @@ classdef paramonte %< dynamicprops
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        function cite()
-            disp(self.website.home.overview.preface.url + "/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work");
+        function cite(self)
+            disp(href(self.website.home.overview.preface.url + "/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work"));
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -893,9 +893,12 @@ classdef paramonte %< dynamicprops
                 self.Err.marginBot = 1;
                 if self.pmInstallFailed
                     self.Err.msg    = "Failed to locally install the ParaMonte library on this system. This is highly unusual. " ...
-                                    + "If you have administrator previlages on this system (e.g., you are not using a supercomputer), " ...
-                                    + "Please close and reopen MATLAB with ""sudo matlab"" command from the Bash terminal. " ...
-                                    + "Then, navigate to the root directory of the ParaMonte library to reinstall it via: " + newline ...
+                                    + "If you have already successfully installed the ParaMonte library files locally on your system " ...
+                                    + "through the following procedure, you can safely ignore this warning message and the subsequent " ...
+                                    + "request for reinstallation given below. Otherwise, if you have administrator previlages on this system " ...
+                                    + "(e.g., you are not using a supercomputer), please close and reopen MATLAB with ""sudo matlab"" " ...
+                                    + "command from the Bash terminal. Then, navigate to the root directory of the ParaMonte library " ...
+                                    + "to reinstall it via: " + newline ...
                                     + newline ...
                                     + "     pm = paramonte();" + newline ...
                                     + "     pm.verify();" + newline ...
@@ -2079,7 +2082,7 @@ classdef paramonte %< dynamicprops
 
             end
 
-            % cmake
+            %%%% cmake
 
             cmakeInstallationNeeded = false;
             [~,cmakePath] = system("command -v cmake", "-echo"); cmakePath = string(cmakePath);
@@ -2160,13 +2163,13 @@ classdef paramonte %< dynamicprops
 
             end
 
-            % gnu
+            %%%% gnu
 
             self.Err.msg = "Installing GNU Compiler Collection...";
             self.Err.note();
 
-            [errorOccurred1,~] = system("brew install gcc@9", "-echo");
-            [errorOccurred2,~] = system("brew link gcc@9", "-echo");
+            [errorOccurred1,~] = system("brew install gcc@10", "-echo");
+            [errorOccurred2,~] = system("brew link gcc@10", "-echo");
 
             if errorOccurred1 || errorOccurred2
                 self.Err.msg    = "Failed to install and link GNU Compiler Collection on your system." + newline ...
@@ -2178,7 +2181,7 @@ classdef paramonte %< dynamicprops
                 self.Err.warn();
             end
 
-            % open-mpi
+            %%%% open-mpi
 
             self.Err.msg = "Installing Open-MPI...";
             self.Err.note();
