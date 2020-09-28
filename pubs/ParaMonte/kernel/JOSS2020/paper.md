@@ -15,7 +15,7 @@ authors:
     orcid: 0000-0002-9720-8937
     affiliation: "1, 2"
   - name: Fatemeh Bagheri
-    affiliation: "1, 2"
+    affiliation: "1"
 affiliations:
  - name: Department of Physics, The University of Texas, Arlington, TX
    index: 1
