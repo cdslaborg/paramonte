@@ -87,8 +87,8 @@ if defined ParaMonte_LIB_NAME (
         set LTYPE=static
     ) else (
         echo.
-        echo. -- ParaMonte - Fatal Error: ParaMonte library type could not be recognized.
-        echo. -- ParaMonte - build failed. exiting...
+        echo. -- ParaMonte - FATAL: ParaMonte library type could not be recognized.
+        echo. -- ParaMonte - FATAL: Build failed. exiting...
         echo.
         cd %~dp0
         set ERRORLEVEL=1
@@ -111,8 +111,8 @@ if errorlevel 1 (
         echo !ParaMonte_LIB_NAME!|find "debug" >nul
         if errorlevel 1 (
             echo.
-            echo. -- ParaMonte - Fatal Error: ParaMonte library build could not be recognized.
-            echo. -- ParaMonte - build failed. exiting...
+            echo. -- ParaMonte - FATAL: ParaMonte library build could not be recognized.
+            echo. -- ParaMonte - FATAL: Build failed. exiting...
             echo.
             cd %~dp0
             set ERRORLEVEL=1
@@ -164,11 +164,11 @@ if !PTYPE!==mpi (
         echo. -- ParaMonte - Intel C MPI library wrapper at: "!MPICC_PATH!"
     ) else (
         echo.
-        echo. -- ParaMonte - Fatal Error: The build-script cannot find MPI library wrappers.
-        echo. -- ParaMonte - Fatal Error: To build MPI-parallel ParaMonte examples, 
-        echo. -- ParaMonte - Fatal Error: you need Intel's MPI library installed on your system.
-        echo. -- ParaMonte - Fatal Error: you can download the latest Intel MPI library from their website.
-        echo. -- ParaMonte - Fatal Error: or visit www.cdslab.org/pm for more instructions on how to build.
+        echo. -- ParaMonte - FATAL: The build-script cannot find MPI library wrappers.
+        echo. -- ParaMonte - FATAL: To build MPI-parallel ParaMonte examples, 
+        echo. -- ParaMonte - FATAL: you need Intel's MPI library installed on your system.
+        echo. -- ParaMonte - FATAL: you can download the latest Intel MPI library from their website.
+        echo. -- ParaMonte - FATAL: or visit www.cdslab.org/pm for more instructions on how to build.
         echo.
         cd %~dp0
         set ERRORLEVEL=1
@@ -188,8 +188,8 @@ if errorlevel 1 (
         echo !ParaMonte_LIB_NAME!|find "_cpp_" >nul
         if errorlevel 1 (
             echo.
-            echo. -- ParaMonte - Fatal Error: ParaMonte library target lanugage could not be recognized.
-            echo. -- ParaMonte - build failed. exiting...
+            echo. -- ParaMonte - FATAL: ParaMonte library target lanugage could not be recognized.
+            echo. -- ParaMonte - FATAL: Build failed. exiting...
             echo.
             cd %~dp0
             set ERRORLEVEL=1
@@ -309,7 +309,13 @@ if !PTYPE!==mpi (
     echo. -- ParaMonte - ParaMonte example compiling: "!COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
                                                   call !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
                                                         echo. 
-                                                        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to compile and link the MPI-parallel application. exiting...
+                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: Failed to compile and link the MPI-parallel application. exiting...
+                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: I you are using the Microsoft Visual Studio C/C++ Compiler to 
+                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: compile a C/C++ application try:
+                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: 
+                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL:     build.bat msvc
+                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: 
+                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: Exiting the ParaMonte example build script...
                                                         echo. 
                                                         cd %~dp0
                                                         set ERRORLEVEL=1
@@ -318,7 +324,7 @@ if !PTYPE!==mpi (
 ) else (
                                                        !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
                                                         echo. 
-                                                        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to compile and link the application. exiting...
+                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: Failed to compile and link the application. exiting...
                                                         echo. 
                                                         cd %~dp0
                                                         set ERRORLEVEL=1
@@ -358,7 +364,7 @@ if !PTYPE!==mpi (
     echo. 
     mpiexec -localonly -n !nproc! !EXE_NAME! || (
         echo. 
-        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to run the MPI-parallel application. exiting...
+        echo. -- !BUILD_SCRIPT_NAME! - FATAL: failed to run the MPI-parallel application. exiting...
         echo. 
         cd %~dp0
         set ERRORLEVEL=1
@@ -370,7 +376,7 @@ if !PTYPE!==mpi (
     echo. 
     !EXE_NAME! || (
         echo. 
-        echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: failed to run the serial application. exiting...
+        echo. -- !BUILD_SCRIPT_NAME! - FATAL: failed to run the serial application. exiting...
         echo. 
         cd %~dp0
         set ERRORLEVEL=1
