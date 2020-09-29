@@ -591,7 +591,12 @@ class ParaMonteSampler:
                             )
             else:
                 parallelMsg = "Please report this issue at:" + newline
-            from _pmreqs import buildInstructionNote
+            if pm.platform.isWin32:
+                from _pmreqs import buildInstructionNoteWindows
+                buildMsg = buildInstructionNoteWindows
+            else:
+                from _pmreqs import buildInstructionNoteUnix
+                buildMsg = newline + newline + buildInstructionNoteUnix
             pm.abort( msg   = "Exhausted all possible ParaMonte dynamic library search" + newline
                             + "names but could not find any compatible library." + newline
                             #+ "Last search:" + newline
@@ -608,9 +613,8 @@ class ParaMonteSampler:
                             + "    " + pm.website.home.url + newline
                             + newline
                             + "for instructions on how to build the ParaMonte library" + newline
-                            + "object files on your system." + newline
-                            + newline
-                            + buildInstructionNote
+                            + "object files on your system."
+                            + buildMsg
                     , methodName = self._methodName
                     , marginTop = 1
                     , marginBot = 1

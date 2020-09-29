@@ -55,14 +55,15 @@ verificationStatusFilePath = os.path.join( pm.path.auxil, ".verificationEnabled"
 
 ####################################################################################################################################
 
-buildInstructionNote    = ("If your platform is non-Windows and is compatible with the " + newline
-                        + "GNU Compiler Collection (GCC), you can also build the required " + newline
-                        + "ParaMonte kernel's shared object files on your system by calling " + newline
-                        + "the ParaMonte's build() method from within your Python session, " + newline
-                        + newline
-                        + "    import paramonte as pm" + newline
-                        + "    pm.build()"
-                        )
+buildInstructionNoteWindows = ""
+buildInstructionNoteUnix    = ("If your platform is non-Windows and is compatible with the " + newline
+                            + "GNU Compiler Collection (GCC), you can also build the required " + newline
+                            + "ParaMonte kernel's shared object files on your system by calling " + newline
+                            + "the ParaMonte's build() method from within your Python session, " + newline
+                            + newline
+                            + "    import paramonte as pm" + newline
+                            + "    pm.build()"
+                            )
 
 ####################################################################################################################################
 #### verify

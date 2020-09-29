@@ -5,6 +5,13 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.0.8 -- September 29, 2020  
+
+**Minor enhancements**  
+
++   Enhanced error messages for situations when 
+    the MPI library cannot be found on the system.  
+
 ### Version  2.0.7 -- September 26, 2020  
 
 **Minor enhancements**  
