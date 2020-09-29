@@ -574,6 +574,23 @@ class ParaMonteSampler:
             #    #buildMode = mode
 
         if not libFound:
+            if self.mpiEnabled:
+                parallelMsg = ("This happens frequently will parallel simulations, and " + newline
+                            + "the most likely reason is that the user did NOT carefully " + newline
+                            + "follow the ParaMonte instructions to successfully install " + newline
+                            + "and define the variables of the MPI runtime library on " + newline
+                            + "their system. To learn these about these instructions, " + newline
+                            + "type the following in your Python session, " + newline
+                            + newline
+                            + "    import paramonte as pm" + newline
+                            + "    pm.verify()" + newline
+                            + newline
+                            + "Then, carefully follow the instructions provided to define " + newline
+                            + "the MPI runtime variables in your current Python session. " + newline
+                            + "If the error still persists, please report this issue at: " + newline
+                            )
+            else:
+                parallelMsg = "Please report this issue at:" + newline
             from _pmreqs import buildInstructionNote
             pm.abort( msg   = "Exhausted all possible ParaMonte dynamic library search" + newline
                             + "names but could not find any compatible library." + newline
@@ -581,8 +598,8 @@ class ParaMonteSampler:
                             #+ newline
                             #+ "    " + libPath + newline
                             #+ newline
-                            + "It appears your ParaMonte Python interface is missing" + newline
-                            + "the dynamic libraries. Please report this issue at:" + newline
+                            + "It appears your ParaMonte library is missing some shared files. " + newline
+                            + parallelMsg
                             + newline
                             + "    " + pm.website.github.issues.url + newline
                             + newline
