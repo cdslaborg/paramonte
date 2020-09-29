@@ -575,12 +575,12 @@ class ParaMonteSampler:
 
         if not libFound:
             if self.mpiEnabled:
-                parallelMsg = ("This happens frequently will parallel simulations, and " + newline
-                            + "the most likely reason is that the user did NOT carefully " + newline
-                            + "follow the ParaMonte instructions to successfully install " + newline
-                            + "and define the variables of the MPI runtime library on " + newline
-                            + "their system. To learn these about these instructions, " + newline
-                            + "type the following in your Python session, " + newline
+                parallelMsg = ("This happens frequently with parallel simulations and the " + newline
+                            + "most likely reason is that the user did NOT carefully follow " + newline
+                            + "the ParaMonte instructions to successfully install and define " + newline
+                            + "the variables of the MPI runtime library on their system. " + newline
+                            + "To learn these about these instructions, type the following " + newline
+                            + "in your Python session, " + newline
                             + newline
                             + "    import paramonte as pm" + newline
                             + "    pm.verify()" + newline
@@ -598,7 +598,7 @@ class ParaMonteSampler:
                             #+ newline
                             #+ "    " + libPath + newline
                             #+ newline
-                            + "It appears your ParaMonte library is missing some shared files. " + newline
+                            + "It appears your ParaMonte library is missing some files. " + newline
                             + parallelMsg
                             + newline
                             + "    " + pm.website.github.issues.url + newline
