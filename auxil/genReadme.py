@@ -167,7 +167,7 @@ pmpd.runSampler ( ndim = 4 # assume 4-dimensional objective function
                 )
 ```  
 
-To learn about the ParaMonte::Python post-processing and visualization tools, visit [this page in the documentation of the library](https://www.cdslab.org/paramonte/notes/examples/python/jupyter/).  
+To learn about the post-processing and visualization tools of the `ParaMonte::Python` library, visit [this this documentation page](https://www.cdslab.org/paramonte/notes/examples/python/jupyter/).  
 """
 
 ####################################################################################################################################
