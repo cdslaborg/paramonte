@@ -83,7 +83,7 @@ Then,
 import numpy as np
 def getLogFunc(point): return -0.5 * np.sum( point**2 )
 pmpd = pm.ParaDRAM()
-pmpd.runSampler ( ndim = 10 # assume 4-dimensional objective function
+pmpd.runSampler ( ndim = 4 # assume 4-dimensional objective function
                 , getLogFunc = getLogFunc   # the objective function
                 )
 ```  
