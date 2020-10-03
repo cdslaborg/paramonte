@@ -5,6 +5,30 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
+### **Version 1.3.0** -- October 3, 2020
+
+**Enhancements**  
+
++   A new simulation specification `overwriteRequested` has 
+    been added to all ParaMonte samplers. If `True` and the 
+    ParaMonte sampler detects an existing set of old simulation 
+    output files in the output path of the current simulation with 
+    the same names as the output file names of the current simulation, 
+    then, the ParaMonte sampler will overwrite the existing simulation files.  
+
+**Compiler support**  
+
++   Intel Parallel Studio (>2018.0.0)  
++   GNU Compiler Collection (>7.0.0)  
+
+**Compiler / MPI library used for this binary release**  
+
++   **Windows**: Intel Parallel Studio Version 19.0.4.245 Build 20190417 / Intel(R) MPI Library 2019 Update 4 for Windows  
++   **Linux**: Intel Parallel Studio Version 18.0.2 20180210 / Intel(R) MPI Library for Linux OS, Version 2018 Update 2 Build 20180125  
++   **Linux**: GNU 9.1 / MPICH 3.2  
++   **macOS**: Intel Parallel Studio Version 19.1.0.216 20200306  
++   **macOS**: GNU 10.2.0 / Open-MPI 4.0.5  
+
 ### **Version 1.2.0** -- September 22, 2020
 
 **Enhancements**  

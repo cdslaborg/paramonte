@@ -141,6 +141,20 @@ readme["quickstart"]["matlab"] = readme["quickstart"]["title"] + """
 For a quick start with some MATLAB Live Script examples, visit [this ParaMonte documentation page](https://www.cdslab.org/paramonte/notes/examples/matlab/mlx/). 
 The corresponding example source files (the `*.mlx` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/master/MATLAB/mlx), 
 a repository dedicated to the ParaMonte library examples.  
+
+The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,  
+
+```matlab  
+addpath(genpath("./"),"-begin") % change this path to the root directory of paramonte
+pm = paramonte();
+pmpd = pm.ParaDRAM();
+getLogFunc = @(x) -0.5 * sum( x.^2 );
+pmpd.runSampler ( 4 ... assume a 4-dimensional objective function
+                , getLogFunc ...           the objective function
+                );
+```  
+
+To learn about the post-processing and visualization tools of the `ParaMonte::Python` library, visit [this this documentation page](https://www.cdslab.org/paramonte/notes/examples/matlab/mlx/).  
 """
 
 readme["quickstart"]["python"] = readme["quickstart"]["title"] + """
@@ -148,18 +162,11 @@ For a quick start with some Jupyter Notebook examples, visit [this ParaMonte doc
 The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/master/Python/Jupyter), 
 which is a repository dedicated to the ParaMonte library examples.  
 
-The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution in serial mode,  
-
-First try,  
-
-```python  
-import paramonte as pm
-```  
-
-Then,  
+The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,  
 
 ```python  
 import numpy as np
+import paramonte as pm
 def getLogFunc(point): return -0.5 * np.sum( point**2 )
 pmpd = pm.ParaDRAM()
 pmpd.runSampler ( ndim = 4 # assume 4-dimensional objective function

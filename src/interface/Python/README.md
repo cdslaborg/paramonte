@@ -69,18 +69,11 @@ For a quick start with some Jupyter Notebook examples, visit [this ParaMonte doc
 The corresponding example source files (the `*.ipynb` files) can be downloaded from the [paramontex GitHub repository](https://github.com/cdslaborg/paramontex/tree/master/Python/Jupyter), 
 which is a repository dedicated to the ParaMonte library examples.  
 
-The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution in serial mode,  
-
-First try,  
-
-```python  
-import paramonte as pm
-```  
-
-Then,  
+The following example code samples a 4-dimensional MultiVariate Normal (MNV) distribution via the ParaDRAM sampler in serial mode,  
 
 ```python  
 import numpy as np
+import paramonte as pm
 def getLogFunc(point): return -0.5 * np.sum( point**2 )
 pmpd = pm.ParaDRAM()
 pmpd.runSampler ( ndim = 4 # assume 4-dimensional objective function
