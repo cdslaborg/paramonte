@@ -170,7 +170,7 @@ from _paramonte import version, website, cite
 
 __authors__ = "The Computational Data Science Lab @ The University of Texas"
 __credits__ = "The Peter O'Donnell Fellowship"
-__version__ = version.interface.get()
+__version__ = version.interface.dump()
 """ParaMonte Python interface version, defined at runtime."""
 
 verify(reset=False)

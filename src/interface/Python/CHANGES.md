@@ -5,6 +5,16 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.0.9 -- October 2, 2020  
+
+**Minor enhancements**  
+
++   Minor correction to the value of `__version__`, 
+    now representing solely the version number.  
+
++   A simple example-usage Python script is now 
+    added to the README.md file of the package.  
+
 ### Version  2.0.8 -- September 29, 2020  
 
 **Minor enhancements**  
