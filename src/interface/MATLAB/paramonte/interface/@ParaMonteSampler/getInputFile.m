@@ -86,6 +86,7 @@ function namelist = getInputFile(self)
         if  ~isempty(self.spec.variableNameList                    );  namelist = namelist + SpecBase.variableNameList                     (self.spec.variableNameList                   ); end
         if  ~isempty(self.spec.restartFileFormat                   );  namelist = namelist + SpecBase.restartFileFormat                    (self.spec.restartFileFormat                  ); end
         if  ~isempty(self.spec.outputColumnWidth                   );  namelist = namelist + SpecBase.outputColumnWidth                    (self.spec.outputColumnWidth                  ); end
+        if  ~isempty(self.spec.overwriteRequested                  );  namelist = namelist + SpecBase.overwriteRequested                   (self.spec.overwriteRequested                  ); end
         if  ~isempty(self.spec.outputRealPrecision                 );  namelist = namelist + SpecBase.outputRealPrecision                  (self.spec.outputRealPrecision                ); end
         if  ~isempty(self.spec.silentModeRequested                 );  namelist = namelist + SpecBase.silentModeRequested                  (self.spec.silentModeRequested                ); end
         if  ~isempty(self.spec.domainLowerLimitVec                 );  namelist = namelist + SpecBase.domainLowerLimitVec                  (self.spec.domainLowerLimitVec                ); end
