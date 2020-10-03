@@ -52,6 +52,7 @@ module SpecBase_mod
     use SpecBase_VariableNameList_mod               , only: VariableNameList_type
     use SpecBase_RestartFileFormat_mod              , only: RestartFileFormat_type
     use SpecBase_OutputColumnWidth_mod              , only: OutputColumnWidth_type
+    use SpecBase_OverwriteRequested_mod             , only: OverwriteRequested_type
     use SpecBase_OutputRealPrecision_mod            , only: OutputRealPrecision_type
     use SpecBase_SilentModeRequested_mod            , only: SilentModeRequested_type
     use SpecBase_DomainLowerLimitVec_mod            , only: DomainLowerLimitVec_type
@@ -77,6 +78,7 @@ module SpecBase_mod
     use SpecBase_VariableNameList_mod               , only: variableNameList
     use SpecBase_RestartFileFormat_mod              , only: restartFileFormat
     use SpecBase_OutputColumnWidth_mod              , only: outputColumnWidth
+    use SpecBase_OverwriteRequested_mod             , only: overwriteRequested
     use SpecBase_OutputRealPrecision_mod            , only: outputRealPrecision
     use SpecBase_SilentModeRequested_mod            , only: silentModeRequested
     use SpecBase_DomainLowerLimitVec_mod            , only: domainLowerLimitVec
@@ -84,7 +86,7 @@ module SpecBase_mod
     use SpecBase_ParallelizationModel_mod           , only: ParallelizationModel
     use SpecBase_InputFileHasPriority_mod           , only: inputFileHasPriority
     use SpecBase_ProgressReportPeriod_mod           , only: progressReportPeriod
-    use SpecBase_TargetAcceptanceRate_mod           , only: TargetAcceptanceRate
+    use SpecBase_TargetAcceptanceRate_mod           , only: targetAcceptanceRate
     use SpecBase_MpiFinalizeRequested_mod           , only: mpiFinalizeRequested
     use SpecBase_MaxNumDomainCheckToWarn_mod        , only: maxNumDomainCheckToWarn
     use SpecBase_MaxNumDomainCheckToStop_mod        , only: maxNumDomainCheckToStop
@@ -105,6 +107,7 @@ module SpecBase_mod
         type(VariableNameList_type)             :: VariableNameList
         type(RestartFileFormat_type)            :: RestartFileFormat
         type(OutputColumnWidth_type)            :: OutputColumnWidth
+        type(OverwriteRequested_type)           :: OverwriteRequested
         type(OutputRealPrecision_type)          :: OutputRealPrecision
         type(SilentModeRequested_type)          :: SilentModeRequested
         type(DomainLowerLimitVec_type)          :: domainLowerLimitVec
@@ -155,6 +158,7 @@ contains
         SpecBase%VariableNameList                   = VariableNameList_type(nd,methodName)
         SpecBase%RestartFileFormat                  = RestartFileFormat_type(methodName)
         SpecBase%OutputColumnWidth                  = OutputColumnWidth_type(methodName)
+        SpecBase%OverwriteRequested                 = OverwriteRequested_type(methodName)
         SpecBase%OutputRealPrecision                = OutputRealPrecision_type(methodName)
         SpecBase%SilentModeRequested                = SilentModeRequested_type(methodName)
         SpecBase%DomainLowerLimitVec                = DomainLowerLimitVec_type(methodName)
@@ -190,6 +194,7 @@ contains
         call SpecBase%VariableNameList              %nullifyNameListVar(nd)
         call SpecBase%RestartFileFormat             %nullifyNameListVar()
         call SpecBase%OutputColumnWidth             %nullifyNameListVar()
+        call SpecBase%OverwriteRequested            %nullifyNameListVar()
         call SpecBase%DomainLowerLimitVec           %nullifyNameListVar(nd)
         call SpecBase%DomainUpperLimitVec           %nullifyNameListVar(nd)
         call SpecBase%OutputRealPrecision           %nullifyNameListVar()
@@ -236,6 +241,7 @@ contains
         call SpecBase%OutputColumnWidth             %set(outputColumnWidth)
         call SpecBase%OutputDelimiter               %set(outputDelimiter,SpecBase%OutputColumnWidth%val)
 
+        call SpecBase%OverwriteRequested            %set(overwriteRequested)
         call SpecBase%OutputRealPrecision           %set(outputRealPrecision)
         call SpecBase%SilentModeRequested           %set(silentModeRequested)
         call SpecBase%ProgressReportPeriod          %set(progressReportPeriod)
@@ -266,6 +272,7 @@ contains
                                 , domainUpperLimitVec &
                                 , restartFileFormat &
                                 , outputColumnWidth &
+                                , overwriteRequested &
                                 , outputRealPrecision &
                                 , silentModeRequested &
                                 , parallelizationModel &
@@ -299,6 +306,7 @@ contains
         character(*), intent(in), optional  :: variableNameList(:)
         character(*), intent(in), optional  :: restartFileFormat
         integer(IK) , intent(in), optional  :: outputColumnWidth
+        logical     , intent(in), optional  :: overwriteRequested
         integer(IK) , intent(in), optional  :: outputRealPrecision
         logical     , intent(in), optional  :: silentModeRequested
         real(RK)    , intent(in), optional  :: domainLowerLimitVec(:)
@@ -324,6 +332,7 @@ contains
         if (present(outputColumnWidth))             call SpecBase%OutputColumnWidth             %set(outputColumnWidth)
         if (present(outputDelimiter))               call SpecBase%OutputDelimiter               %set(outputDelimiter,SpecBase%OutputColumnWidth%val)
 
+        if (present(overwriteRequested))            call SpecBase%OverwriteRequested            %set(overwriteRequested)
         if (present(parallelizationModel))          call SpecBase%ParallelizationModel          %set(parallelizationModel)
         if (present(outputRealPrecision))           call SpecBase%OutputRealPrecision           %set(outputRealPrecision)
         if (present(silentModeRequested))           call SpecBase%SilentModeRequested           %set(silentModeRequested)
@@ -438,6 +447,13 @@ contains
             write(outputUnit,GENERIC_OUTPUT_FORMAT)
             write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%OutputFileName%modified
             if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%OutputFileName%desc )
+
+
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_OUTPUT_FORMAT) "overwriteRequested"
+            write(outputUnit,GENERIC_OUTPUT_FORMAT)
+            write(outputUnit,GENERIC_TABBED_FORMAT) SpecBase%OverwriteRequested%val
+            if (SpecBase%SilentModeRequested%isFalse) call note( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = SpecBase%OverwriteRequested%desc )
 
 
             write(outputUnit,GENERIC_OUTPUT_FORMAT)

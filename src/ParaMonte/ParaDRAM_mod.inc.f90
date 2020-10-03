@@ -140,6 +140,7 @@
                                 , variableNameList                      &
                                 , restartFileFormat                     &
                                 , outputColumnWidth                     &
+                                , overwriteRequested                    &
                                 , outputRealPrecision                   &
                                 , silentModeRequested                   &
                                 , domainLowerLimitVec                   &
@@ -199,6 +200,7 @@
         character(*), intent(in), optional  :: variableNameList(ndim)
         character(*), intent(in), optional  :: restartFileFormat
         integer(IK) , intent(in), optional  :: outputColumnWidth
+        logical     , intent(in), optional  :: overwriteRequested
         integer(IK) , intent(in), optional  :: outputRealPrecision
         logical     , intent(in), optional  :: silentModeRequested
         real(RK)    , intent(in), optional  :: domainLowerLimitVec(ndim)

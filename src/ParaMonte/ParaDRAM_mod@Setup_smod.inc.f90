@@ -85,6 +85,7 @@ contains
                                 , variableNameList                      &
                                 , restartFileFormat                     &
                                 , outputColumnWidth                     &
+                                , overwriteRequested                    &
                                 , outputRealPrecision                   &
                                 , silentModeRequested                   &
                                 , domainLowerLimitVec                   &
@@ -162,6 +163,7 @@ contains
         character(*), intent(in), optional  :: variableNameList(ndim)
         character(*), intent(in), optional  :: restartFileFormat
         integer(IK) , intent(in), optional  :: outputColumnWidth
+        logical     , intent(in), optional  :: overwriteRequested
         integer(IK) , intent(in), optional  :: outputRealPrecision
         real(RK)    , intent(in), optional  :: domainLowerLimitVec(ndim)
         real(RK)    , intent(in), optional  :: domainUpperLimitVec(ndim)
@@ -256,6 +258,7 @@ contains
                                                 , variableNameList                      = variableNameList                      &
                                                 , restartFileFormat                     = restartFileFormat                     &
                                                 , outputColumnWidth                     = outputColumnWidth                     &
+                                                , overwriteRequested                    = overwriteRequested                    &
                                                 , outputRealPrecision                   = outputRealPrecision                   &
                                                 , silentModeRequested                   = silentModeRequested                   &
                                                 , domainLowerLimitVec                   = domainLowerLimitVec                   &
@@ -1749,6 +1752,7 @@ contains
         use SpecBase_VariableNameList_mod                   , only: variableNameList
         use SpecBase_RestartFileFormat_mod                  , only: restartFileFormat
         use SpecBase_OutputColumnWidth_mod                  , only: outputColumnWidth
+        use SpecBase_OverwriteRequested_mod                 , only: overwriteRequested
         use SpecBase_OutputRealPrecision_mod                , only: outputRealPrecision
         use SpecBase_SilentModeRequested_mod                , only: silentModeRequested
         use SpecBase_DomainLowerLimitVec_mod                , only: domainLowerLimitVec
@@ -1761,9 +1765,7 @@ contains
         use SpecBase_MaxNumDomainCheckToWarn_mod            , only: maxNumDomainCheckToWarn
         use SpecBase_MaxNumDomainCheckToStop_mod            , only: maxNumDomainCheckToStop
         use SpecBase_SystemInfoFilePath_mod                 , only: systemInfoFilePath
-#if defined CFI_ENABLED
         use SpecBase_InterfaceType_mod                      , only: interfaceType
-#endif
 
         ! ParaMCMC namelist variables
         use SpecMCMC_ChainSize_mod                          , only: chainSize
@@ -1802,6 +1804,7 @@ contains
         namelist /SAMPLER/ variableNameList
         namelist /SAMPLER/ restartFileFormat
         namelist /SAMPLER/ outputColumnWidth
+        namelist /SAMPLER/ overwriteRequested
         namelist /SAMPLER/ outputRealPrecision
         namelist /SAMPLER/ silentModeRequested
         namelist /SAMPLER/ domainLowerLimitVec
@@ -1814,9 +1817,7 @@ contains
         namelist /SAMPLER/ maxNumDomainCheckToWarn
         namelist /SAMPLER/ maxNumDomainCheckToStop
         namelist /SAMPLER/ systemInfoFilePath
-#if defined CFI_ENABLED
         namelist /SAMPLER/ interfaceType
-#endif
 
         ! ParaMCMC variables
         namelist /SAMPLER/ chainSize

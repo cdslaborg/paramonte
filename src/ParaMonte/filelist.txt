@@ -47,6 +47,7 @@
   SpecBase_VariableNameList_mod.f90
   SpecBase_RestartFileFormat_mod.f90
   SpecBase_OutputColumnWidth_mod.f90
+  SpecBase_OverwriteRequested_mod.f90
   SpecBase_SystemInfoFilePath_mod.f90
   SpecBase_OutputRealPrecision_mod.f90
   SpecBase_SilentModeRequested_mod.f90

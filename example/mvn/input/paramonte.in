@@ -68,6 +68,7 @@ This\n
     maxNumDomainCheckToWarn             = 100
     maxNumDomainCheckToStop             = 1000
     restartFileFormat                   = "binary"
+    overwriteRequested                  = false             ! FALSE, false, .false., .f., and f would be also all valid logical values representing False
     silentModeRequested                 = false             ! FALSE, false, .false., .f., and f would be also all valid logical values representing False
    !mpiFinalizeRequested                = true              ! TRUE, true, .true., .t., and t would be also all valid logical values representing True
 

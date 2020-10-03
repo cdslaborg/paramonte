@@ -5,6 +5,17 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.1.0 -- October 3, 2020  
+
+**Minor enhancements**  
+
++   A new simulation specification `overwriteRequested` has 
+    been added to all ParaMonte samplers. If `True` and the 
+    ParaMonte sampler detects an existing set of old simulation 
+    output files in the output path of the current simulation with 
+    the same names as the output file names of the current simulation, 
+    then, the ParaMonte sampler will overwrite the existing simulation files.  
+
 ### Version  2.0.1 -- September 26, 2020  
 
 **Minor enhancements**  

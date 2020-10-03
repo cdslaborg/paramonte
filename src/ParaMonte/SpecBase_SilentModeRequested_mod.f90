@@ -79,11 +79,12 @@ contains
         SilentModeRequestedObj%def = .false.
         SilentModeRequestedObj%isFalse = .true.
         SilentModeRequestedObj%desc = &
-        "If silentModeRequested = true (or T, both case-insensitive), then the following contents will not be printed in the &
-        &output report file of " // methodName // ":\n\n&
+        "A logical (boolean) variable. If TRUE (or .true. or true or .t. from within an input file), then the following contents &
+        &will not be printed in the output report file of " // methodName // ":\n\n&
         &    + " // methodName // " interface, compiler, and platform specifications.\n&
         &    + " // methodName // " simulation specification-descriptions.\n\n&
-        &The default value is " // log2str(SilentModeRequestedObj%def) // "."
+        &Setting this variable to true may break the functionality of the report-file parser methods of the ParaMonte library in &
+        &high-level languages (e.g., MATLAB, Python, R, ...). The default value is " // log2str(SilentModeRequestedObj%def) // "."
     end function constructSilentModeRequested
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -92,6 +92,10 @@ classdef SpecBaseVerify < SpecVerification
             result = self.verifySpec(outputColumnWidth,"integer",1);
         end
 
+        function result = overwriteRequested(self,overwriteRequested)
+            result = self.verifySpec(overwriteRequested,"logical",1);
+        end
+
         function result = outputRealPrecision(self,outputRealPrecision)
             result = self.verifySpec(outputRealPrecision,"integer",1);
         end

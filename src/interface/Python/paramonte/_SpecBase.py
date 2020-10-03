@@ -104,6 +104,14 @@ def outputColumnWidth(outputColumnWidth):
 
 ####################################################################################################################################
 
+def overwriteRequested(overwriteRequested):
+    if isinstance(overwriteRequested,bool):
+        return "overwriteRequested=" + str(overwriteRequested) + inputFileDelim
+    else:
+        raise TypeError("The input specification, overwriteRequested, must be of type bool (True or False).")
+
+####################################################################################################################################
+
 def outputRealPrecision(outputRealPrecision):
     if isinstance(outputRealPrecision,int):
         return "outputRealPrecision=" + str(outputRealPrecision) + inputFileDelim

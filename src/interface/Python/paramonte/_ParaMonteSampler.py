@@ -199,6 +199,7 @@ class ParaMonteSampler:
         self.spec.variableNameList                         = None
         self.spec.restartFileFormat                        = None
         self.spec.outputColumnWidth                        = None
+        self.spec.overwriteRequested                       = None
         self.spec.outputRealPrecision                      = None
         self.spec.silentModeRequested                      = None
         self.spec.domainLowerLimitVec                      = None
@@ -811,6 +812,7 @@ class ParaMonteSampler:
             if   self.spec.variableNameList                         is not None: nameList += SpecBase.variableNameList                      (self.spec.variableNameList                   )
             if   self.spec.restartFileFormat                        is not None: nameList += SpecBase.restartFileFormat                     (self.spec.restartFileFormat                  )
             if   self.spec.outputColumnWidth                        is not None: nameList += SpecBase.outputColumnWidth                     (self.spec.outputColumnWidth                  )
+            if   self.spec.overwriteRequested                       is not None: nameList += SpecBase.overwriteRequested                    (self.spec.overwriteRequested                 )
             if   self.spec.outputRealPrecision                      is not None: nameList += SpecBase.outputRealPrecision                   (self.spec.outputRealPrecision                )
             if   self.spec.silentModeRequested                      is not None: nameList += SpecBase.silentModeRequested                   (self.spec.silentModeRequested                )
             if   self.spec.domainLowerLimitVec                      is not None: nameList += SpecBase.domainLowerLimitVec                   (self.spec.domainLowerLimitVec                )

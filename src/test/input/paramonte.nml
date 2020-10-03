@@ -132,7 +132,9 @@ This\n
     maxNumDomainCheckToStop             = 1000
     inputFileHasPriority                = false
     restartFileFormat                   = "binary"
+    overwriteRequested                  = false
     silentModeRequested                 = false
+    
 
     ! MCMC
 

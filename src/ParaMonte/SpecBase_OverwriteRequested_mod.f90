@@ -40,26 +40,26 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-module SpecBase_InputFileHasPriority_mod
+module SpecBase_OverwriteRequested_mod
 
     implicit none
 
     ! namelist input
-    logical                         :: inputFileHasPriority
+    logical                         :: overwriteRequested
 
-    type                            :: InputFileHasPriority_type
+    type                            :: OverwriteRequested_type
         logical                     :: val
         logical                     :: def
         character(:), allocatable   :: desc
     contains
-        procedure, pass             :: set => setInputFileHasPriority, nullifyNameListVar
-    end type InputFileHasPriority_type
+        procedure, pass             :: set => setOverwriteRequested, nullifyNameListVar
+    end type OverwriteRequested_type
 
-    interface InputFileHasPriority_type
-        module procedure            :: constructInputFileHasPriority
-    end interface InputFileHasPriority_type
+    interface OverwriteRequested_type
+        module procedure            :: constructOverwriteRequested
+    end interface OverwriteRequested_type
 
-    private :: constructInputFileHasPriority, setInputFileHasPriority
+    private :: constructOverwriteRequested, setOverwriteRequested
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -67,51 +67,45 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function constructInputFileHasPriority(methodName) result(InputFileHasPriorityObj)
+    function constructOverwriteRequested(methodName) result(OverwriteRequestedObj)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructInputFileHasPriority
+        !DEC$ ATTRIBUTES DLLEXPORT :: constructOverwriteRequested
 #endif
         use String_mod, only: log2str
         implicit none
         character(*), intent(in)        :: methodName
-        type(InputFileHasPriority_type) :: InputFileHasPriorityObj
-        InputFileHasPriorityObj%def = .false.
-        InputFileHasPriorityObj%desc = &
-        "A logical (boolean) variable. If TRUE (or .true. or true or .t. from within an input file), then the &
-        &input specifications of the sampler will be read from the input file provided by the user, and the &
-        &simulation specification assignments from within the programming language environment (if any are made) &
-        &will be completely ignored. If inputFileHasPriority is FALSE, then all simulation specifications of the "//methodName//" &
-        &sampler that are taken from the user-specified input file will be overwritten by their &
-        &corresponding input values that are set from within the user's programming environment (if any is provided). &
-        &Note that this feature is useful when, for example, some simulation specifications have to computed and specified &
-        &at runtime and therefore, cannot be specified before the program execution. Currently, this functionality &
-        &(i.e., prioritizing the input file values to input-procedure-argument values) is available only in the &
-        &Fortran-interface to the ParaMonte library routines. The default value is " // log2str(InputFileHasPriorityObj%def) // "."
-    end function constructInputFileHasPriority
+        type(OverwriteRequested_type)   :: OverwriteRequestedObj
+        OverwriteRequestedObj%def = .false.
+        OverwriteRequestedObj%desc = &
+        "A logical (boolean) variable. If true (or .true. or TRUE or .t. from within an input file), then any existing old &
+        &simulation files with the same name as the current simulation will be overwritten with the new simulation output files. &
+        &The default value is " // log2str(OverwriteRequestedObj%def) // "."
+    end function constructOverwriteRequested
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine nullifyNameListVar(InputFileHasPriorityObj)
+    subroutine nullifyNameListVar(OverwriteRequestedObj)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
-        class(InputFileHasPriority_type), intent(in)    :: InputFileHasPriorityObj
-        inputFileHasPriority = InputFileHasPriorityObj%def
+        class(OverwriteRequested_type), intent(in) :: OverwriteRequestedObj
+        overwriteRequested = OverwriteRequestedObj%def
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setInputFileHasPriority(InputFileHasPriorityObj,inputFileHasPriority)
+    subroutine setOverwriteRequested(OverwriteRequestedObj,overwriteRequested)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: setInputFileHasPriority
+        !DEC$ ATTRIBUTES DLLEXPORT :: setOverwriteRequested
 #endif
         implicit none
-        class(InputFileHasPriority_type), intent(inout) :: InputFileHasPriorityObj
-        logical, intent(in)                             :: inputFileHasPriority
-        InputFileHasPriorityObj%val = inputFileHasPriority
-    end subroutine setInputFileHasPriority
+        class(OverwriteRequested_type), intent(inout)   :: OverwriteRequestedObj
+        logical, intent(in)                             :: overwriteRequested
+        OverwriteRequestedObj%val = overwriteRequested
+
+    end subroutine setOverwriteRequested
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecBase_InputFileHasPriority_mod
+end module SpecBase_OverwriteRequested_mod

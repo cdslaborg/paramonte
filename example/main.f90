@@ -23,7 +23,7 @@
     ! This is more flexible but less portable, as its compilation requires the same compiler 
     ! brand and version with which the ParaMonte library has been built.
 
-    use paramonte, only: ParaDRAM
+    use paramonte, only: ParaDRAM, IK
     use LogFunc_mod, only: getLogFunc, NDIM
 
     implicit none

@@ -52,6 +52,7 @@ classdef SpecBase < handle
         variableNameList                     = [];
         restartFileFormat                    = [];
         outputColumnWidth                    = [];
+        overwriteRequested                   = [];
         outputRealPrecision                  = [];
         silentModeRequested                  = [];
         domainLowerLimitVec                  = [];
