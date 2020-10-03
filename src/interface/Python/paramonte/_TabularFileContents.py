@@ -41,7 +41,6 @@
 ####################################################################################################################################
 
 import numpy as np
-import pandas as pd
 import _paramonte as pm
 import _CorCovMat as ccm
 from _AutoCorr import AutoCorr
@@ -202,6 +201,7 @@ class TabularFileContents(OutputFileContents):
 
         self.delimiter = delimiter
 
+        import pandas as pd
         self.df = pd.read_csv   ( self.file
                                 , delimiter = self.delimiter
                                 , header = 0

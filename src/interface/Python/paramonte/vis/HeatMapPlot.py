@@ -41,7 +41,6 @@
 ####################################################################################################################################
 
 import typing as tp
-import pandas as pd
 import weakref as wref
 
 import _paramonte as pm
@@ -296,10 +295,10 @@ class HeatMapPlot(BasePlot):
     ################################################################################################################################
 
     def __init__( self
-                , plotType      : str
-                , dataFrame     : tp.Optional[ pd.DataFrame ] = None
-                , methodName    : tp.Optional[ str ] = "ParaMonte"
-                , reportEnabled : tp.Optional[ bool ] = True
+                , plotType      # : str
+                , dataFrame     = None # : tp.Optional[ pd.DataFrame ] = None
+                , methodName    = "ParaMonte" # : tp.Optional[ str ] = "ParaMonte"
+                , reportEnabled = True # : tp.Optional[ bool ] = True
                 , resetPlot     = None
                 ):
 

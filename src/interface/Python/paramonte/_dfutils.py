@@ -40,8 +40,7 @@
 ####################################################################################################################################
 ####################################################################################################################################
 
-import typing as tp
-import pandas as pd
+#import typing as tp
 from collections.abc import Iterable
 
 class Struct: pass
@@ -50,8 +49,8 @@ class Struct: pass
 #### nam2num
 ####################################################################################################################################
 
-def nam2num ( nameList  : tp.Union[ pd.core.indexes.base.Index , tp.List[str] ]
-            , names     : tp.List[str]
+def nam2num ( nameList  # : tp.Union[ pd.core.indexes.base.Index , tp.List[str] ]
+            , names     # : tp.List[str]
             ):
     nml = list(nameList)
     return [ nml.index(name) for name in names ]
@@ -65,8 +64,8 @@ def nam2num ( nameList  : tp.Union[ pd.core.indexes.base.Index , tp.List[str] ]
 #### getColNamesIndex
 ####################################################################################################################################
 
-def getColNamesIndex( dfColumns     : pd.core.indexes.base.Index
-                    , columns       : tp.Optional[ tp.Union[ str, range , tp.List[int] , tp.List[str] ] ] = None
+def getColNamesIndex( dfColumns         # : pd.core.indexes.base.Index
+                    , columns    = None # : tp.Optional[ tp.Union[ str, range , tp.List[int] , tp.List[str] ] ] = None
                     ):
 
     allColumnsNeeded = False
@@ -112,8 +111,8 @@ def getColNamesIndex( dfColumns     : pd.core.indexes.base.Index
 #### getMaxLogFunc
 ####################################################################################################################################
 
-def getMaxLogFunc( dataFrame : pd.DataFrame
-                 , column    : tp.Optional[ str ] = "SampleLogFunc"
+def getMaxLogFunc( dataFrame # : pd.DataFrame
+                 , column = "SampleLogFunc" # : tp.Optional[ str ] = "SampleLogFunc"
                  ):
     """
 

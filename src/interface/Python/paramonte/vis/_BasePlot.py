@@ -43,7 +43,6 @@
 import os
 import numpy as np
 import typing as tp
-import pandas as pd
 import weakref as wref
 import _paramonte as pm
 import _pmutils as pmutils
@@ -705,6 +704,8 @@ class BasePlot:
                 None
 
         """
+
+        import pandas as pd
 
         fatalmsg = None
         if self._dfref is None:

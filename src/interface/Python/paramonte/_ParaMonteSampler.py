@@ -1813,3 +1813,55 @@ class ParaMonteSampler:
             return None
 
     ################################################################################################################################
+    #### helpme
+    ################################################################################################################################
+
+    def helpme  ( self
+                , topic : tp.Optional[ str ] = None
+                ):
+        """
+
+        Prints help on the input object.
+
+            **Parameters**
+
+                topic
+
+                    A string value that is the name of a component of the current 
+                    sample object for which help is needed. For example:  
+
+                    Example usage:
+
+                        .. code-block:: python
+
+                            pm.helpme("helpme")
+
+            **Returns**
+
+                None
+
+        """
+
+        usage   = ("    Usage:" + newline
+                + newline
+                + "        import paramonte as pm " + newline
+                + "        pm.helpme()      # to get help on paramonte module. " + newline
+                + "        pm.helpme(topic) # to get help on topic. " + newline
+                + newline
+                + "    where `topic` in the above can be the name of any " + newline
+                + "    component of the current sampler object."
+                )
+
+        try:
+            doc = eval("self."+topic+".__doc__")
+            print(doc + "\n")
+        except:
+            print(self.__doc__)
+            print("\nHere is the information on the parent class:\n")
+            print(ParaMonteSampler.__doc__)
+
+        if topic.lower()=="helpme": pm.note( msg = usage, methodName = "helpme()", marginTop = 0, marginBot = 1)
+
+        return None
+
+    ################################################################################################################################

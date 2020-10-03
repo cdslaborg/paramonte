@@ -785,7 +785,8 @@ contains
             return
         end if
 
-        self%isDryRun = self%LogFile%exists .or. self%TimeFile%exists .or. self%RestartFile%exists .or. self%ChainFile%exists .or. self%SampleFile%exists ! not fresh, if any file exists
+        self%isDryRun = (.not. self%SpecBase%OverwriteRequested%val) .and. & ! not fresh, if any file exists
+                        (self%LogFile%exists .or. self%TimeFile%exists .or. self%RestartFile%exists .or. self%ChainFile%exists .or. self%SampleFile%exists)
         self%isFreshRun = .not. self%isDryRun
 
         if (self%isFreshRun) then
@@ -823,11 +824,11 @@ contains
         if (self%Image%isMaster) then
             if (self%isFreshRun) then
                 workingOn = "Generating the output "
-                self%LogFile%status = "new"
-                self%TimeFile%status = "new"
-                self%ChainFile%status = "new"
-                self%SampleFile%status = "new"
-                self%RestartFile%status = "new"
+                self%LogFile%status = "replace"
+                self%TimeFile%status = "replace"
+                self%ChainFile%status = "replace"
+                self%SampleFile%status = "replace"
+                self%RestartFile%status = "replace"
                 self%LogFile%Position%value = "asis"
                 self%TimeFile%Position%value = "asis"
                 self%ChainFile%Position%value = "asis"

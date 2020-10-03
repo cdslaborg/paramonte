@@ -42,7 +42,7 @@
 
 import numpy as np
 import typing as tp
-import pandas as pd
+#import pandas as pd
 import weakref as wref
 from copy import deepcopy as dcopy
 
@@ -365,10 +365,10 @@ class GridPlot(BasePlot):
     ################################################################################################################################
 
     def __init__( self
-                , plotType      : str
-                , dataFrame     : tp.Optional[ pd.DataFrame ] = None
-                , methodName    : tp.Optional[ str ] = "ParaMonte"
-                , reportEnabled : tp.Optional[ bool ] = True
+                , plotType      # : str
+                , dataFrame     = None # : tp.Optional[ pd.DataFrame ] = None
+                , methodName    = "ParaMonte" # : tp.Optional[ str ] = "ParaMonte"
+                , reportEnabled = True # : tp.Optional[ bool ] = True
                 , resetPlot     = None
                 ):
 

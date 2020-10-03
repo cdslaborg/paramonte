@@ -194,6 +194,7 @@ def helpme  ( topic : _tp.Optional[ str ] = None
         **Parameters**
 
             topic
+
                 A string value that is the name of an object in ``paramonte``
                 module for which help is needed. To see the list of possible
                 objects. try: ``pm.helpme("helpme")``

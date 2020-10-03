@@ -79,6 +79,8 @@ contains
         OverwriteRequestedObj%desc = &
         "A logical (boolean) variable. If true (or .true. or TRUE or .t. from within an input file), then any existing old &
         &simulation files with the same name as the current simulation will be overwritten with the new simulation output files. &
+        &Note that if overwriteRequested is set to TRUE, then the restart functionality is automatically turned off and any &
+        &existing old simulation output files with the same name as the current simulation will be overwritten by "//methodName//". &
         &The default value is " // log2str(OverwriteRequestedObj%def) // "."
     end function constructOverwriteRequested
 

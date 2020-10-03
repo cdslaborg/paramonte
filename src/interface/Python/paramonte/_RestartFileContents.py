@@ -41,7 +41,6 @@
 ####################################################################################################################################
 
 import numpy as np
-import pandas as pd
 import _paramonte as pm
 import _CorCovMat as ccm
 from _OutputFileContents import OutputFileContents
@@ -243,6 +242,7 @@ class RestartFileContents(OutputFileContents):
         _ = fieldNamesDict.pop(self.propNameList[4])
         _ = fieldNamesDict.pop(self.propNameList[5])
         _ = fieldNamesDict.pop(self.propNameList[6]) # get rid of meanVec, covMat, corMat
+        import pandas as pd
         self.df = pd.DataFrame.from_dict(fieldNamesDict)
 
         self._progress.note()

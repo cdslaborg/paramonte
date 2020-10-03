@@ -139,10 +139,10 @@ class AutoCorr:
     ################################################################################################################################
 
     def __init__( self
-                , dataFrame     : tp.Optional[ pd.DataFrame ]
-                , columns       : tp.Optional[ tp.Union[ range , tp.List[int] , tp.List[str] ] ] = None
-                , methodName    : tp.Optional[ str ] = "ParaMonte"
-                , reportEnabled : tp.Optional[ bool ] = True
+                , dataFrame     # : tp.Optional[ pd.DataFrame ]
+                , columns       = None # : tp.Optional[ tp.Union[ range , tp.List[int] , tp.List[str] ] ] = None
+                , methodName    = "ParaMonte" # : tp.Optional[ str ] = "ParaMonte"
+                , reportEnabled = True # : tp.Optional[ bool ] = True
                 ):
 
         self.df = None

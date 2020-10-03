@@ -42,7 +42,6 @@
 
 import numpy as np
 import typing as tp
-import pandas as pd
 import weakref as wref
 
 import _message as err
@@ -74,10 +73,10 @@ class CorCovMat:
     ################################################################################################################################
 
     def __init__( self
-                , dataFrame     : tp.Optional[ pd.DataFrame ]
-                , columns       : tp.Optional[ tp.Union[ range , tp.List[int] , tp.List[str] ] ] = None
-                , methodName    : tp.Optional[ str ] = "ParaMonte"
-                , reportEnabled : tp.Optional[ bool ] = True
+                , dataFrame     # : tp.Optional[ pd.DataFrame ]
+                , columns       = None # : tp.Optional[ tp.Union[ range , tp.List[int] , tp.List[str] ] ] = None
+                , methodName    = "ParaMonte" # : tp.Optional[ str ] = "ParaMonte"
+                , reportEnabled = True # : tp.Optional[ bool ] = True
                 ):
 
         self.df = None
@@ -486,11 +485,11 @@ class CorMat(CorCovMat):
     """
 
     def __init__( self
-                , dataFrame     : tp.Optional[ pd.DataFrame ]
-                , columns       : tp.Optional[ tp.Union[ range , tp.List[int] , tp.List[str] ] ] = None
-                , methodName    : tp.Optional[ str ] = "ParaMonte"
-                , reportEnabled : tp.Optional[ bool ] = True
-                , method        : tp.Optional[str] = "pearson"
+                , dataFrame     # : tp.Optional[ pd.DataFrame ]
+                , columns       = None # : tp.Optional[ tp.Union[ range , tp.List[int] , tp.List[str] ] ] = None
+                , methodName    = "ParaMonte" # : tp.Optional[ str ] = "ParaMonte"
+                , reportEnabled = True # : tp.Optional[ bool ] = True
+                , method        = "pearson" # : tp.Optional[str] = "pearson"
                 ):
 
         self.method = method
@@ -581,10 +580,10 @@ class CovMat(CorCovMat):
     """
 
     def __init__( self
-                , dataFrame     : tp.Optional[ pd.DataFrame ]
-                , columns       : tp.Optional[ tp.Union[ range , tp.List[int] , tp.List[str] ] ] = None
-                , methodName    : tp.Optional[ str ] = "ParaMonte"
-                , reportEnabled : tp.Optional[ bool ] = True
+                , dataFrame     # : tp.Optional[ pd.DataFrame ]
+                , columns       = None # : tp.Optional[ tp.Union[ range , tp.List[int] , tp.List[str] ] ] = None
+                , methodName    = "ParaMonte" # : tp.Optional[ str ] = "ParaMonte"
+                , reportEnabled = True # : tp.Optional[ bool ] = True
                 ):
 
         super().__init__( dataFrame     = dataFrame
