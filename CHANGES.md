@@ -10,7 +10,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 **Enhancements**  
 
 +   A new simulation specification `overwriteRequested` has 
-    been added to all ParaMonte samplers. If `True` and the 
+    been added to all ParaMonte samplers. If TRUE and the 
     ParaMonte sampler detects an existing set of old simulation 
     output files in the output path of the current simulation with 
     the same names as the output file names of the current simulation, 
