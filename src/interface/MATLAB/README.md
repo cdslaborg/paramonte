@@ -81,7 +81,7 @@ pmpd.runSampler ( 4 ... assume a 4-dimensional objective function
                 );
 ```  
 
-To learn about the post-processing and visualization tools of the `ParaMonte::Python` library, visit [this this documentation page](https://www.cdslab.org/paramonte/notes/examples/matlab/mlx/).  
+To learn about the post-processing and visualization tools of the `ParaMonte::MATLAB` library, visit [this this documentation page](https://www.cdslab.org/paramonte/notes/examples/matlab/mlx/).  
 
   
 Installation  
