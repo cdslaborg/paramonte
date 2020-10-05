@@ -1,4 +1,4 @@
-The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.  
+**The ParaMonte library is an honor-ware and its currency is acknowledgment and citations**.  
   
 As per the ParaMonte library license agreement terms, if you use any parts of 
 this library for any purposes, kindly acknowledge the use of ParaMonte in your 
