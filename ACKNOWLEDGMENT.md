@@ -48,4 +48,25 @@ archivePrefix = {arXiv},
 
 ```  
   
+```text  
+
+@article{2020arXiv201000724S,
+       author = { {Shahmoradi}, Amir and {Bagheri}, Fatemeh and {Osborne}, Joshua Alexand
+        er},
+        title = "{Fast fully-reproducible serial/parallel Monte Carlo and MCMC simulations and visualizations via ParaMonte::Python library}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Mathematical Software, Astrophysics - Instrumentation and Methods for Astrophysics, Quantitative Biology - Quantitative Methods, Statistics - Machine Learning},
+         year = 2020,
+        month = oct,
+          eid = {arXiv:2010.00724},
+        pages = {arXiv:2010.00724},
+archivePrefix = {arXiv},
+       eprint = {2010.00724},
+ primaryClass = {cs.MS},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv201000724S},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+```  
+  
 Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) to access the PDF version of these files free of charge.  
