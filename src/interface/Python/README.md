@@ -117,17 +117,15 @@ Parallelism
 The ParaMonte library relies on the Message Passing Interface (MPI) standard for inter-processor communications. 
 To run a parallel simulation, you will have to have a compatible MPI runtime library installed on your system. 
 In most cases, ParaMonte will automatically install the required missing libraries on your system (with your permission). 
-These automatic checks and installations happen when you download, and use the library, for the first time, in your MATLAB environment. 
-If the automatic installation is unsuccessful, you can also install the libraries manually on your system. 
-On Windows and Linux operating systems, we highly recommend downloading and installing the [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), 
-which is available to the public free of charge. On macOS, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. 
-For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
+These automatic checks and installations happen when you download and install or use the library on your system, for the first time. 
+If the automatic installation is unsuccessful, you can also install the libraries manually on your system:  
 
 +   On **Windows** and **Linux** operating systems, we highly recommend downloading and installing the 
     [Intel MPI runtime libraries](https://software.intel.com/en-us/mpi-library), 
     which is available to the public free of charge.  
 +   On **macOS**, we recommend [Open-MPI](https://www.open-mpi.org/) since the Intel MPI library does not support macOS. 
-    For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
+
+For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
 
   
 Citing ParaMonte  
