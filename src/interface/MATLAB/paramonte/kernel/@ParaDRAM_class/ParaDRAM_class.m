@@ -162,14 +162,16 @@ classdef ParaDRAM_class < ParaMCMC_class
         methodName          = "MatDRAM";    % the algorithm's name
         mpiEnabled          = false;        % no parallelization implemented in MatDRAM yet
         objectName          = [];           % dynamic name of the user-defined objects
+        inputFile           = [];           % no input file in MatDRAM
         SpecDRAM            = [];
         Proposal            = [];
         Stats               = ParaDRAM_Statistics_class()
-        Chain               = []
-        RefinedChain        = []
+        Chain               = [];
+        RefinedChain        = [];
     end
 
     properties (Access = public)
+        reportEnabled       = true;         % no verbose messaging, if false;
         spec                = []
     end
 
@@ -181,7 +183,7 @@ classdef ParaDRAM_class < ParaMCMC_class
         %***************************************************************************************************************************
         %***************************************************************************************************************************
 
-        function self = ParaDRAM_class(platform,website)
+        function self = ParaDRAM_class(platform,website,version)
 
             addpath(genpath(pwd));
 
@@ -189,7 +191,8 @@ classdef ParaDRAM_class < ParaMCMC_class
 
             self.RefinedChain   = ParaDRAMRefinedChain_class();
 
-            self.spec           = spec();
+            self.version = version;
+            self.spec = spec();
 
             ...ParaMonte variables
             self.spec.sampleSize                            = [];
@@ -201,6 +204,7 @@ classdef ParaDRAM_class < ParaMCMC_class
             self.spec.variableNameList                      = [];
             self.spec.restartFileFormat                     = [];
             self.spec.outputColumnWidth                     = [];
+            self.spec.overwriteRequested                    = [];
             self.spec.outputRealPrecision                   = [];
             self.spec.silentModeRequested                   = [];
             self.spec.domainLowerLimitVec                   = [];
@@ -285,7 +289,7 @@ classdef ParaDRAM_class < ParaMCMC_class
         writeOutput(self)
         writeOutput2(self)
         writeRestartFile(self)
-        fileList = getFilePathList(self,file,fileType)
+        [filePathList, iswebfile] = getFilePathList(self,file,fileType)
 
         %***************************************************************************************************************************
         %***************************************************************************************************************************

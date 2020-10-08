@@ -465,7 +465,8 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
 %                self.Err.abort();
 %            end
 
-            self.isDryRun   = self.LogFile.exists || self.TimeFile.exists || self.RestartFile.exists || self.ChainFile.exists || self.SampleFile.exists; % not fresh, if any file exists
+            self.isDryRun = ~self.SpecBase.overwriteRequested.val & ( ... not fresh, if any file exists
+                            self.LogFile.exists || self.TimeFile.exists || self.RestartFile.exists || self.ChainFile.exists || self.SampleFile.exists);
             self.isFreshRun = ~self.isDryRun;
 %            if self.isFreshRun, self.SpecMCMC.chainSize.val = self.SpecMCMC.chainSize.val + 1; end
 
@@ -503,29 +504,29 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
 
             if self.Image.isMaster
                 if self.isFreshRun
-                    workingOn                           = "Generating the output "      ;
-                    self.LogFile.       status          = "new"                         ;
-                    self.TimeFile.      status          = "new"                         ;
-                    self.ChainFile.     status          = "new"                         ;
-                    self.SampleFile.    status          = "new"                         ;
-                    self.RestartFile.   status          = "new"                         ;
-                    self.LogFile.       Position.value  = "asis"                        ;
-                    self.TimeFile.      Position.value  = "asis"                        ;
-                    self.ChainFile.     Position.value  = "asis"                        ;
-                    self.SampleFile.    Position.value  = "asis"                        ;
-                    self.RestartFile.   Position.value  = "asis"                        ;
+                    workingOn                           = "Generating the output ";
+                    self.LogFile.       status          = "w";
+                    self.TimeFile.      status          = "w";
+                    self.ChainFile.     status          = "w";
+                    self.SampleFile.    status          = "w";
+                    self.RestartFile.   status          = "w";
+                    %self.LogFile.       Position.value  = "asis";
+                    %self.TimeFile.      Position.value  = "asis";
+                    %self.ChainFile.     Position.value  = "asis";
+                    %self.SampleFile.    Position.value  = "asis";
+                    %self.RestartFile.   Position.value  = "asis";
                 else
                     workingOn                           = "Appending to the existing "  ;
-                    self.LogFile.       status          = "old"                         ;
-                    self.TimeFile.      status          = "old"                         ;
-                    self.ChainFile.     status          = "old"                         ;
-                    self.SampleFile.    status          = "replace"                     ;
-                    self.RestartFile.   status          = "old"                         ;
-                    self.LogFile.       Position.value  = "append"                      ;
-                    self.TimeFile.      Position.value  = "asis"                        ;
-                    self.ChainFile.     Position.value  = "asis"                        ;
-                    self.SampleFile.    Position.value  = "asis"                        ;
-                    self.RestartFile.   Position.value  = "asis"                        ;
+                    self.LogFile.       status          = "r+";
+                    self.TimeFile.      status          = "r+";
+                    self.ChainFile.     status          = "r+";
+                    self.SampleFile.    status          = "w";
+                    self.RestartFile.   status          = "r+";
+                    self.LogFile.       Position.value  = "a+";
+                    %self.TimeFile.      Position.value  = "asis";
+                    %self.ChainFile.     Position.value  = "asis";
+                    %self.SampleFile.    Position.value  = "asis";
+                    %self.RestartFile.   Position.value  = "asis";
                 end
             end
 
@@ -561,8 +562,8 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
             if self.Image.isMaster
                 
                 % open LogFile
-                if self.LogFile.exists,     opentype = "a+";    else, opentype = "w"; end
-                [self.LogFile.unit, self.Err.msg] = fopen(self.LogFile.Path.original, opentype);
+                %if self.LogFile.exists,     opentype = "a+";    else, opentype = "w"; end
+                [self.LogFile.unit, self.Err.msg] = fopen(self.LogFile.Path.original, self.LogFile.status);
                 self.Err.outputUnit = self.LogFile.unit;
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.LogFile.suffix + " file='" + strrep(self.LogFile.Path.original, '\', '\\') + "'.";
@@ -583,8 +584,8 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
                     self.Err.note();
                 end
                 % open TimeFile
-                if self.TimeFile.exists,    opentype = "r+";    else, opentype = "w"; end
-                [self.TimeFile.unit, self.Err.msg] = fopen(self.TimeFile.Path.original, opentype);
+                %if self.TimeFile.exists,    opentype = "r+";    else, opentype = "w"; end
+                [self.TimeFile.unit, self.Err.msg] = fopen(self.TimeFile.Path.original, self.TimeFile.status);
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.TimeFile.suffix + " file='" + strrep(self.TimeFile.Path.original, '\', '\\') + "'.";
                     self.Err.abort();
@@ -597,15 +598,15 @@ classdef ParaMonte_class < dynamicprops % handle % dynamicprops is needed for ad
                 end
                 % open ChainFile
                 if self.ChainFile.exists,   opentype = "r+";    else, opentype = "w"; end
-                [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, opentype);
+                [self.ChainFile.unit, self.Err.msg] = fopen(self.ChainFile.Path.original, self.ChainFile.status);
                 if self.Err.msg
                     self.Err.msg    = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.ChainFile.suffix + " file='" + strrep(self.ChainFile.Path.original, '\', '\\') + "'.";
                     self.Err.abort();
                 end
 
                 % open RestartFile
-                if self.RestartFile.exists, opentype = "r+";    else, opentype = "w"; end
-                [self.RestartFile.unit, self.Err.msg] = fopen(self.RestartFile.Path.original, opentype);
+                %if self.RestartFile.exists, opentype = "r+";    else, opentype = "w"; end
+                [self.RestartFile.unit, self.Err.msg] = fopen(self.RestartFile.Path.original, self.RestartFile.status);
                 if self.Err.msg
                     self.Err.msg = FUNCTION_NAME + ": Error occurred while opening " + self.name + self.RestartFile.suffix + " file='" + strrep(self.RestartFile.Path.original, '\', '\\') + "'.";
                     self.Err.abort();

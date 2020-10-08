@@ -58,6 +58,7 @@ classdef SpecBase_class < handle
         domainUpperLimitVec     = []
         restartFileFormat       = []
         outputColumnWidth       = []
+        overwriteRequested      = []
         outputRealPrecision     = []
         silentModeRequested     = []
         parallelizationModel    = []
@@ -85,6 +86,7 @@ classdef SpecBase_class < handle
             self.variableNameList           = SpecBase_VariableNameList_class           (methodName, nd);
             self.restartFileFormat          = SpecBase_RestartFileFormat_class          (methodName);
             self.outputColumnWidth          = SpecBase_OutputColumnWidth_class          (methodName);
+            self.overwriteRequested         = SpecBase_OverwriteRequested_class         (methodName);
             self.outputRealPrecision        = SpecBase_OutputRealPrecision_class        (methodName);
             self.silentModeRequested        = SpecBase_SilentModeRequested_class        (methodName);
             self.domainLowerLimitVec        = SpecBase_DomainLowerLimitVec_class        (methodName);
@@ -111,6 +113,7 @@ classdef SpecBase_class < handle
                                     , variableNameList          ...
                                     , restartFileFormat         ...
                                     , outputColumnWidth         ...
+                                    , overwriteRequested        ...
                                     , outputRealPrecision       ...
                                     , silentModeRequested       ...
                                     , domainLowerLimitVec       ...
@@ -138,6 +141,7 @@ classdef SpecBase_class < handle
             self.outputColumnWidth.         set(outputColumnWidth);
             self.outputDelimiter.           set(outputDelimiter, self.outputColumnWidth.val);
 
+            self.overwriteRequested.        set(overwriteRequested);
             self.parallelizationModel.      set(parallelizationModel);
             self.outputRealPrecision.       set(outputRealPrecision);
             self.silentModeRequested.       set(silentModeRequested);
@@ -217,6 +221,13 @@ classdef SpecBase_class < handle
             fprintf(outputUnit, "\n" + "outputFileName" + "\n\n");
             fprintf(outputUnit, formatVal + num2str(strrep(self.outputFileName.modified, '\', '\\')) + "\n");
             Err.msg             = self.outputFileName.desc;
+            if self.silentModeRequested.isFalse, Err.note(); end
+
+            %-----------------------------------------------------------------------------------------------------------------------
+
+            fprintf(outputUnit, "\n" + "overwriteRequested" + "\n\n");
+            fprintf(outputUnit, formatVal + num2str(self.overwriteRequested.val) + "\n");
+            Err.msg             = self.overwriteRequested.desc;
             if self.silentModeRequested.isFalse, Err.note(); end
 
             %-----------------------------------------------------------------------------------------------------------------------

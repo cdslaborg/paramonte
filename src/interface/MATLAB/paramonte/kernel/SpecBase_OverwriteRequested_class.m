@@ -40,46 +40,46 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-classdef Global_class < handle
+classdef SpecBase_OverwriteRequested_class < handle
 
     properties
-        timeElapsedUntilLastReportInSeconds     = []
-        SumAccRateSinceStart                    = []    
-        sumAccRateLastReport                    = []
-        inverseProgressReportPeriod             = []
-        numFunCallAcceptedRejectedLastReport    = []
-        numFunCallAccepted_dummy                = []
-        co_proposalFound_samplerUpdateOccurred  = []
-        comv_chol                               = []
-        comv_covMat                             = []
-        lower_comv_covMat                       = []
-        mc_restartFileUnit                      = []
-        mv_sampleSizeOld_save                   = []
-        mv_logSqrtDetOld_save                   = []
-        mv_adaptiveScaleFactorSq_save           = []
-        mv_MeanOld_save                         = []
-        mc_Image                                = []     
-        mc_ndim                                 = []     
-        mc_logFileUnit                          = []     
-        mc_scalingRequested                     = []     
-        mc_defaultScaleFactorSq                 = []     
-        mc_DelayedRejectionCount                = []     
-        mc_MaxNumDomainCheckToWarn              = []     
-        mc_MaxNumDomainCheckToStop              = []     
-        mc_delayedRejectionRequested            = []     
-        mc_ndimInverse                          = []     
-        mc_targetAcceptanceRate                 = []     
-        mc_DelayedRejectionScaleFactorVec       = []     
-        mc_DomainLowerLimitVec                  = []     
-        mc_DomainUpperLimitVec                  = []     
-        mc_MaxNumDomainCheckToWarnMsg           = []     
-        mc_MaxNumDomainCheckToStopMsg           = []     
-        mc_negativeAdaptationMeasureMsg         = []     
-        mc_restartFileFormat                    = []     
-        mc_methodBrand                          = []     
-        mc_methodName                           = []     
-        mc_isNormal                             = []
-        mv_Err                                  = []
+        val     = []
+        def     = []
+        desc    = []
     end
+
+%***********************************************************************************************************************************
+%***********************************************************************************************************************************
+
+    methods (Access = public)
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+        function self = SpecBase_OverwriteRequested_class(methodName)
+            self.def        = false;
+            self.desc       = "If overwriteRequested = true, then the existing output files will be overwritable. " ...
+                            + "The default value is " + num2str(self.def) + "." ...
+                            ;
+        end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+        function set(self, overwriteRequested)
+            if isempty(overwriteRequested)
+                self.val = self.def;
+            else
+                self.val = overwriteRequested;
+            end
+        end
+
+    %*******************************************************************************************************************************
+    %*******************************************************************************************************************************
+
+    end
+
+%***********************************************************************************************************************************
+%***********************************************************************************************************************************
 
 end

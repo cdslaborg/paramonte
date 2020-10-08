@@ -144,6 +144,13 @@ for %%e in (!EXAM_LIST!) do (
     echo. -- MatDRAM -   to: !MatDRAM_BLD_DIR_CURRENT!\LICENSE.md
     copy "!ParaMonte_ROOT_DIR!LICENSE.md" "!MatDRAM_BLD_DIR_CURRENT!\LICENSE.md" || goto LABEL_copyErrorOccured
 
+    REM The MatDRAM library README file
+
+    echo. -- MatDRAM - copying the MatDRAM library license file...
+    echo. -- MatDRAM - from: !ParaMonteInterface_SRC_DIR_CURRENT!\README.MatDRAM.md
+    echo. -- MatDRAM -   to: !MatDRAM_BLD_DIR_CURRENT!\README.MatDRAM.md
+    copy "!ParaMonteInterface_SRC_DIR_CURRENT!\README.MatDRAM.md" "!MatDRAM_BLD_DIR_CURRENT!\README.md" || goto LABEL_copyErrorOccured
+
     REM The MatDRAM library interface files
 
     echo. -- MatDRAM - from: !ParaMonteInterface_SRC_DIR_CURRENT!\MatDRAM %= no need for final slash here =%
@@ -203,8 +210,8 @@ for %%e in (!EXAM_LIST!) do (
     REM The MatDRAM library banner file
 
     echo. -- MatDRAM - copying the MatDRAM library auxiliary files
-    echo. -- MatDRAM - from: !ParaMonteInterface_SRC_DIR!\auxil                     %= no need for final slash here =%
-    echo. -- MatDRAM -   to: !MatDRAM_BLD_DIR_CURRENT!\paramonte\auxil\    %= final slash tells this is folder =%
+    echo. -- MatDRAM - from: !ParaMonteInterface_SRC_DIR!\auxil             %= no need for final slash here =%
+    echo. -- MatDRAM -   to: !MatDRAM_BLD_DIR_CURRENT!\paramonte\auxil\     %= final slash tells this is folder =%
     xcopy /s /Y "!ParaMonteInterface_SRC_DIR!\auxil" "!MatDRAM_BLD_DIR_CURRENT!\paramonte\auxil\" || goto LABEL_copyErrorOccured
     echo.
 

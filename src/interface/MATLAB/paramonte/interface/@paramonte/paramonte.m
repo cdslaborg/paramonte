@@ -475,7 +475,7 @@ classdef paramonte %< dynamicprops
             % set ParaDRAM sampler
 
             if self.matdramKernelEnabled
-                self.ParaDRAM = ParaDRAM_class(self.platform,self.website);
+                self.ParaDRAM = ParaDRAM_class(self.platform,self.website,self.version.interface.dump);
             else
                 self.ParaDRAM = ParaDRAM(self.platform,self.website);
             end

@@ -760,7 +760,7 @@ contains
                 return
             end if
             !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
-            adaptationMeasure = sqrt( 1._RK - exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum ) ) ! totalVariationUpperBound
+            adaptationMeasure = sqrt( 1._RK - exp( 0.5*(mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum ) ) ! totalVariationUpperBound
             mv_logSqrtDetOld_save = logSqrtDetNew
 !block
 !integer, save :: counter = 0
