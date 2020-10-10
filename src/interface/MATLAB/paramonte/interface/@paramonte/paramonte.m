@@ -739,6 +739,10 @@ classdef paramonte %< dynamicprops
 
             end
 
+            if verificationEnabledString=="Testing"
+                self.writeVerificationStatusFile("False");
+            end
+
         end
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
