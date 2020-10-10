@@ -59,6 +59,13 @@ echo >&2
 # setup examples' interface language
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+abort() {
+    echo >&2
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - Copy action failed. Please resolve the error. Gracefully exiting..."
+    echo >&2
+    exit 1
+}
+
 unset LANG_NAME
 LANG_IS_C=false
 LANG_IS_CPP=false
@@ -183,7 +190,7 @@ do
     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files..."
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-    cp -R "${ParaMonte_LIB_DIR}/"libparamonte_* "${ParaMonteExample_LIB_DIR_CURRENT}/"
+    cp -R "${ParaMonte_LIB_DIR}/"libparamonte_* "${ParaMonteExample_LIB_DIR_CURRENT}/" || abort
 
     # The ParaMonte library dll dependency files
 
@@ -199,7 +206,7 @@ do
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency files..."
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
                     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-                    cp -R "${Fortran_COMPILER_LIB_DIR}/"libgfortran.so.* "${ParaMonteExample_LIB_DIR_CURRENT}/"
+                    cp -R "${Fortran_COMPILER_LIB_DIR}/"libgfortran.so.* "${ParaMonteExample_LIB_DIR_CURRENT}/" || abort
                     break
                 fi
             done
@@ -220,14 +227,14 @@ do
     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library license file..."
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE.md"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE.md"
-    cp "${ParaMonte_ROOT_DIR}/LICENSE.md" "${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE.md"
+    cp "${ParaMonte_ROOT_DIR}/LICENSE.md" "${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE.md" || abort
 
     # The ParaMonte library README.md file
 
     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library README.md file..."
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/README.md"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/README.md"
-    cp "${ParaMonteInterface_SRC_DIR_CURRENT}/README.md" "${ParaMonteExample_BLD_DIR_CURRENT}/README.md"
+    cp "${ParaMonteInterface_SRC_DIR_CURRENT}/README.md" "${ParaMonteExample_BLD_DIR_CURRENT}/README.md" || abort
 
     if [ "${LANG_IS_COMPILED}" = "true" ]; then
 
@@ -236,16 +243,16 @@ do
         echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/CHANGES.md"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
-        cp "${ParaMonte_ROOT_DIR}/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+        cp "${ParaMonte_ROOT_DIR}/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md" || abort
 
         # The ParaMonte library build script
 
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_SRC_DIR}"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
-        cp "${ParaMonteExample_SRC_DIR}/build.sh" "${ParaMonteExample_BLD_DIR_CURRENT}/"
+        cp "${ParaMonteExample_SRC_DIR}/build.sh" "${ParaMonteExample_BLD_DIR_CURRENT}/" || abort
         chmod +x ${ParaMonteExample_BLD_DIR_CURRENT}/build.sh
         if [[ -f "${SETUP_FILE_PATH}" ]]; then
-            cp "${SETUP_FILE_PATH}" "${ParaMonteExample_BLD_DIR_CURRENT}/"
+            cp "${SETUP_FILE_PATH}" "${ParaMonteExample_BLD_DIR_CURRENT}/" || abort
         fi
 
         # The ParaMonte library example header/module files
@@ -254,14 +261,14 @@ do
         echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library C header file paramonte.h..."
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
-        cp ${ParaMonteInterface_SRC_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
+        cp ${ParaMonteInterface_SRC_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/ || abort
 
         if [ "${LANG_NAME}" = "Fortran" ]; then
             echo >&2
             echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library Fortran module file paramonte.mod..."
             echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_MOD_DIR}"
             echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
-            cp ${ParaMonte_MOD_DIR}/paradram_mod.mod ${ParaMonteExample_BLD_DIR_CURRENT}/
+            cp ${ParaMonte_MOD_DIR}/paradram_mod.mod ${ParaMonteExample_BLD_DIR_CURRENT}/ || abort
         fi
 
     fi
@@ -273,20 +280,20 @@ do
         echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/CHANGES.md"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
-        cp "${ParaMonteInterface_SRC_DIR_CURRENT}/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+        cp "${ParaMonteInterface_SRC_DIR_CURRENT}/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md" || abort
 
         # The ParaMonte library interface files
 
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
-        cp -R "${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte" "${ParaMonteExample_BLD_DIR_CURRENT}/"
+        cp -R "${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte" "${ParaMonteExample_BLD_DIR_CURRENT}/" || abort
 
         # The ParaMonte library auxiliary file (this must be done to generate the auxil folder)
 
         echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library auxiliary files"
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR}/auxil"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
-        cp -R "${ParaMonteInterface_SRC_DIR}/auxil" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/"
+        cp -R "${ParaMonteInterface_SRC_DIR}/auxil" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/" || abort
         echo >&2
 
         # The ParaMonte kernel version file (this must appear only after the above)
@@ -294,14 +301,14 @@ do
         echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library kernel version file..."
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/.VERSION"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/auxil/.VERSION_KERNEL"
-        cp "${ParaMonte_ROOT_DIR}/.VERSION" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/auxil/.VERSION_KERNEL"
+        cp "${ParaMonte_ROOT_DIR}/.VERSION" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/auxil/.VERSION_KERNEL" || abort
 
         # The ParaMonte interface version file (this must appear only after the above)
 
         echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library interface version file..."
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR}/${LANG_NAME}/.VERSION"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/auxil/.VERSION_INTERFACE"
-        cp "${ParaMonteInterface_SRC_DIR}/${LANG_NAME}/.VERSION" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/auxil/.VERSION_INTERFACE"
+        cp "${ParaMonteInterface_SRC_DIR}/${LANG_NAME}/.VERSION" "${ParaMonteExample_BLD_DIR_CURRENT}/paramonte/auxil/.VERSION_INTERFACE" || abort
 
         if [ "${LANG_IS_Python}" = "true" ]; then
 
@@ -310,7 +317,7 @@ do
             echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library Python setup files..."
             echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/setup/*"
             echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
-            cp ${ParaMonteInterface_SRC_DIR_CURRENT}/setup/* "${ParaMonteExample_BLD_DIR_CURRENT}/"
+            cp ${ParaMonteInterface_SRC_DIR_CURRENT}/setup/* "${ParaMonteExample_BLD_DIR_CURRENT}/" || abort
 
         fi
 
@@ -323,7 +330,7 @@ do
     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library ${EXAM_NAME} example input files in ${LANG_NAME} language..."
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_INP_DIR_CURRENT}"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
-    cp -R ${ParaMonteExample_INP_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/
+    cp -R ${ParaMonteExample_INP_DIR_CURRENT}/* ${ParaMonteExample_BLD_DIR_CURRENT}/ || abort
 
     # The ParaMonte library example source files
 
@@ -339,11 +346,11 @@ do
 
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_SRC_DIR}/main.${LANG_FILE_EXT}"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/"
-    cp "${ParaMonteExample_SRC_DIR}/${mainFileName}" "${ParaMonteExample_BLD_DIR_CURRENT}/"
+    cp "${ParaMonteExample_SRC_DIR}/${mainFileName}" "${ParaMonteExample_BLD_DIR_CURRENT}/" || abort
 
     echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_SRC_DIR_CURRENT}/*"
     echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
-    cp "${ParaMonteExample_SRC_DIR_CURRENT}"/* "${ParaMonteExample_BLD_DIR_CURRENT}/"
+    cp "${ParaMonteExample_SRC_DIR_CURRENT}"/* "${ParaMonteExample_BLD_DIR_CURRENT}/" || abort
 
 done
 
@@ -371,12 +378,7 @@ fi
 echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files to the bin folder..."
 echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_BLD_DIR_CURRENT}"
 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BIN_DIR_CURRENT}"
-cp -R "${ParaMonteExample_BLD_DIR_CURRENT}"/* "${ParaMonteExample_BIN_DIR_CURRENT}" || {
-    echo >&2
-    echo >&2 "-- ParaMonteExample${LANG_NAME} - FATAL: copy failed."
-    echo >&2
-    exit 1
-}
+cp -R "${ParaMonteExample_BLD_DIR_CURRENT}"/* "${ParaMonteExample_BIN_DIR_CURRENT}" || abort
 
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # The ParaMonte library example build and run if requested
