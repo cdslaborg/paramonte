@@ -640,7 +640,7 @@ class ParaMonteSampler:
             logger.error(e, exc_info=True)
 
             from _pmreqs import buildInstructionNote
-            pm.abort( msg  = "Failed to load the required ParaMonte shared library (DLL)." + newline
+            pm.abort( msg  = "Failed to load the required ParaMonte shared library." + newline
                             + "This is either due to the incompatibility of the DLL with your" + newline
                             + "platform or due to missing some required dependent libraries." + newline
                             + "In either case, you can likely resolve this error by building." + newline
@@ -749,9 +749,9 @@ class ParaMonteSampler:
                 ct.dlclose(pmdll._handle)
             except:
                 if self.reportEnabled:
-                    pm.warn ( msg   = "Failed to properly close the ParaMonte dynamic library file" + newline
-                                    + "This should not cause any major problems, unless you intend to" + newline
-                                    + "run a new ParaMonte simulation, in which case, you may want to" + newline
+                    pm.warn ( msg   = "Failed to properly close the ParaMonte shared library file. " + newline
+                                    + "This should not cause any major problems, unless you intend to " + newline
+                                    + "run a new ParaMonte simulation, in which case, you may want to " + newline
                                     + "exit and re-enter your Python environment."
                             , methodName = self._methodName
                             , marginTop = 1

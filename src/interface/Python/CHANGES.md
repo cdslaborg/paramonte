@@ -5,6 +5,12 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.1.1 -- October 9, 2020  
+
+**Minor enhancements**  
+
++   A Linux bug in the installation of the MPI library is now fixed.
+
 ### Version  2.1.0 -- October 3, 2020  
 
 **Minor enhancements**  

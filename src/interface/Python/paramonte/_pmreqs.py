@@ -725,9 +725,9 @@ def findMPI():
 
         if pm.platform.isLinux:
 
-            defaultIntelLinuxMpiPath = pm.getDefaultIntelLinuxMpiPath()
+            defaultIntelLinuxMpiPath = getDefaultIntelLinuxMpiPath()
             if defaultIntelLinuxMpiPath.mpiRootDirNotFound:
-                return
+                return mpi
             else:
                 mpi.install.found = True
                 pm.warn ( msg   = "The PATH environmental variable of your Bash terminal does not point to " + newline
@@ -937,13 +937,16 @@ def installMPI():
                 tf.extractall(path=pm.path.lib)
                 mpiExtractDir = os.path.join(pm.path.lib, prereqs.mpi.intel.fileName)
 
-                pm.note ( msg   = "If this is your personal computer, choose " + newline
+                pm.note ( msg   = "If this is your personal computer and you have opened your Python " + newline
+                                + "session with superuser (sudo) privileges, then you can choose " + newline
                                 + newline
                                 + "    'install as root'" + newline
                                 + newline
                                 + "in the graphical user interface that appears in your session. " + newline
-                                + "Otherwise, if you are using ParaMonte on a public server, " + newline
-                                + "for example, on a supercomputer, choose the third option: " + newline
+                                + "Otherwise, if you are using the ParaMonte library on a public " + newline
+                                + "server, for example, on a supercomputer, or you do not have " + newline
+                                + "superuser (sudo) privileges on your system, then choose " + newline
+                                + "the third option: " + newline
                                 + newline
                                 + "   'install as current user'"
                         , methodName = pm.names.paramonte
