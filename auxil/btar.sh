@@ -50,6 +50,7 @@
 ####################################################################################################################################
 
 AUXIL_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+TARGET_DIR="${AUXIL_DIR}/../bin/"
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -89,7 +90,9 @@ if [ -d "${TARGET_DIR}" ]; then
         fi
     done
 else
+    echo >&2
     echo >&2 "-- ParaMonte - FATAL: The requested input target directory ${TARGET_DIR} specified" 
     echo >&2 "-- ParaMonte - FATAL: with the input flag --dir does not exist."
+    echo >&2
     exit 1
 fi
