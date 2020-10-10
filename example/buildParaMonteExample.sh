@@ -215,7 +215,30 @@ do
     echo >&2
     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library ${EXAM_NAME} example build files in ${LANG_NAME} language..."
 
+    # The ParaMonte library license file
+
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library license file..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE.md"
+    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE.md"
+    cp "${ParaMonte_ROOT_DIR}/LICENSE.md" "${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE.md"
+
+    # The ParaMonte library README.md file
+
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library README.md file..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/README.md"
+    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/README.md"
+    cp "${ParaMonteInterface_SRC_DIR_CURRENT}/README.md" "${ParaMonteExample_BLD_DIR_CURRENT}/README.md"
+
     if [ "${LANG_IS_COMPILED}" = "true" ]; then
+
+        # The ParaMonte library CHANGES.md file
+
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
+        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/CHANGES.md"
+        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+        cp "${ParaMonte_ROOT_DIR}/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
+
+        # The ParaMonte library build script
 
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_SRC_DIR}"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}"
@@ -245,26 +268,12 @@ do
 
     if [ "${LANG_IS_DYNAMIC}" = "true" ]; then
 
-        # The ParaMonte library README.md file
-
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library README.md file..."
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/README.md"
-        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/README.md"
-        cp "${ParaMonteInterface_SRC_DIR_CURRENT}/README.md" "${ParaMonteExample_BLD_DIR_CURRENT}/README.md"
-
         # The ParaMonte library CHANGES.md file
 
         echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library CHANGES.md file..."
         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/CHANGES.md"
         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
         cp "${ParaMonteInterface_SRC_DIR_CURRENT}/CHANGES.md" "${ParaMonteExample_BLD_DIR_CURRENT}/CHANGES.md"
-
-        # The ParaMonte library license file
-
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library license file..."
-        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE.md"
-        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE.md"
-        cp "${ParaMonte_ROOT_DIR}/LICENSE.md" "${ParaMonteExample_BLD_DIR_CURRENT}/LICENSE.md"
 
         # The ParaMonte library interface files
 

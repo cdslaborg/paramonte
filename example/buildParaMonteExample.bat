@@ -184,6 +184,20 @@ for %%e in (!EXAM_LIST!) do (
 
     echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library !EXAM_NAME! example required files in !LANG_NAME! language...
 
+    REM The ParaMonte library README.md file
+
+    echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library README.md file...
+    echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonteInterface_SRC_DIR_CURRENT!\README.md
+    echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\paramonte\README.md
+    copy /y "!ParaMonteInterface_SRC_DIR_CURRENT!\README.md" "!ParaMonteExample_BLD_DIR_CURRENT!\README.md" || goto LABEL_copyErrorOccured
+
+    REM The ParaMonte library license file
+
+    echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library license file...
+    echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonte_ROOT_DIR!\LICENSE.md
+    echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\LICENSE.md
+    copy "!ParaMonte_ROOT_DIR!\LICENSE.md" "!ParaMonteExample_BLD_DIR_CURRENT!\LICENSE.md" || goto LABEL_copyErrorOccured
+
     if !LANG_IS_COMPILED!==true (
 
         echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonteExample_SRC_DIR!         %= no need for final slash here =%
@@ -206,6 +220,13 @@ for %%e in (!EXAM_LIST!) do (
 
         )
 
+        REM The ParaMonte library CHANGES.md file
+
+        echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library CHANGES.md file...
+        echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonte_BLD_ROOT_DIR!\CHANGES.md
+        echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\paramonte\CHANGES.md
+        copy "!ParaMonte_BLD_ROOT_DIR!\CHANGES.md" "!ParaMonteExample_BLD_DIR_CURRENT!\CHANGES.md" || goto LABEL_copyErrorOccured
+
         REM if !LANG_IS_C!==true (
         REM )
 
@@ -213,26 +234,12 @@ for %%e in (!EXAM_LIST!) do (
 
     if !LANG_IS_DYNAMIC!==true (
 
-        REM The ParaMonte library README.md file
-
-        echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library README.md file...
-        echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonteInterface_SRC_DIR_CURRENT!\README.md
-        echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\paramonte\README.md
-        copy /y "!ParaMonteInterface_SRC_DIR_CURRENT!\README.md" "!ParaMonteExample_BLD_DIR_CURRENT!\README.md" || goto LABEL_copyErrorOccured
-
         REM The ParaMonte library CHANGES.md file
 
         echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library CHANGES.md file...
         echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonteInterface_SRC_DIR_CURRENT!\CHANGES.md
         echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\paramonte\CHANGES.md
         copy "!ParaMonteInterface_SRC_DIR_CURRENT!\CHANGES.md" "!ParaMonteExample_BLD_DIR_CURRENT!\CHANGES.md" || goto LABEL_copyErrorOccured
-
-        REM The ParaMonte library license file
-
-        echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library license file...
-        echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonte_ROOT_DIR!\LICENSE.md
-        echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT!\LICENSE.md
-        copy "!ParaMonte_ROOT_DIR!\LICENSE.md" "!ParaMonteExample_BLD_DIR_CURRENT!\LICENSE.md" || goto LABEL_copyErrorOccured
 
         REM The ParaMonte library interface files
 
