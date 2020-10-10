@@ -682,7 +682,7 @@ classdef paramonte %< dynamicprops
                                         + "please make sure your firewall allows ParaMonte to access the Internet.";
                         self.Err.warn();
 
-                        if verificationEnabledString~="Testing"
+                        if verificationEnabledString=="True"
 
                             isYes = getUserResponse ( newline ...
                                                     + "    Do you wish to download and install the MPI runtime library" + newline ...
