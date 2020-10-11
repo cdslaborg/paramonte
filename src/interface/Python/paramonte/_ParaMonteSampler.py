@@ -1100,7 +1100,7 @@ class ParaMonteSampler:
                     , marginBot = 1
                     )
 
-        if iswebfile: pm.utils.delFile( file = FileList[0], desc = "the temporarily-downloaded " + fileType + " file" )
+        if iswebfile: pm.utils.delFile( file = FileList[0], desc = "the temporarily-downloaded " + fileType + " file", methodName = self._methodName )
 
         if renabled:
             return tabularContentsList
@@ -1651,7 +1651,7 @@ class ParaMonteSampler:
                     , marginBot = 1
                     )
 
-        if iswebfile: pm.utils.delFile( file = FileList[0], desc = "the temporarily-downloaded " + fileType + " file" )
+        if iswebfile: pm.utils.delFile( file = FileList[0], desc = "the temporarily-downloaded " + fileType + " file", methodName = self._methodName )
 
         if renabled:
             return restartContentsList
@@ -1814,7 +1814,7 @@ class ParaMonteSampler:
                     , marginBot = 1
                     )
 
-        if iswebfile: pm.utils.delFile( file = FileList[0], desc = "the temporarily-downloaded " + fileType + " file" )
+        if iswebfile: pm.utils.delFile( file = FileList[0], desc = "the temporarily-downloaded " + fileType + " file", methodName = self._methodName )
 
         if renabled:
             return reportContentsList
