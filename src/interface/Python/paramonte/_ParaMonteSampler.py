@@ -943,7 +943,7 @@ class ParaMonteSampler:
                 file
 
                     A string representing the path to the tabular file with
-                    the default value of None.
+                    the default value of ``None``.
 
                     The path only needs to uniquely identify the simulation
                     to which the tabular file belongs. For example, specifying
@@ -952,6 +952,8 @@ class ParaMonteSampler:
                     name's prefix, such as, ``"_sample.txt"``, inside the directory 
                     ``"./mydir/"``. If there are multiple files with such name, 
                     then all of them will be read and returned as a list.
+
+                    The path can be also a world wide web address.
 
                     If this input argument is not provided by the user, the
                     value of the object attribute ``outputFileName`` will be 
@@ -1131,7 +1133,8 @@ class ParaMonteSampler:
                 file (optional)
 
                     A string representing the path to the output file with
-                    the default value of None.
+                    the default value of ``None``.
+
                     The path only needs to uniquely identify the simulation
                     to which the output file belongs. For example, specifying
                     ``"./mydir/mysim"`` as input will lead to a search for a 
@@ -1139,6 +1142,9 @@ class ParaMonteSampler:
                     inside the directory ``"./mydir/"``. If there are multiple
                     files with such name, then all of them will be read
                     and returned as a list.
+
+                    The path can be also a world wide web address.
+
                     If this input argument is not provided by the user, the
                     value of the object attribute outputFileName
                     will be used instead. At least one of the two mentioned
@@ -1248,7 +1254,8 @@ class ParaMonteSampler:
                 file (optional)
 
                     A string representing the path to the output file with
-                    the default value of None.
+                    the default value of ``None``.
+
                     The path only needs to uniquely identify the simulation
                     to which the output file belongs. For example, specifying
                     ``"./mydir/mysim"`` as input will lead to a search for a file
@@ -1256,6 +1263,9 @@ class ParaMonteSampler:
                     inside the directory ``"./mydir/"``. If there are multiple
                     files with such name, then all of them will be read
                     and returned as a list.
+
+                    The path can be also a world wide web address.
+
                     If this input argument is not provided by the user, the
                     value of the object attribute outputFileName
                     will be used instead. At least one of the two mentioned
@@ -1374,6 +1384,8 @@ class ParaMonteSampler:
                     inside the directory ``"./mydir/"``. If there are multiple
                     files with such name, then all of them will be read
                     and returned as a list.
+
+                    The path can be also a world wide web address.
 
                     If this input argument is not provided by the user, the
                     value of the object attribute outputFileName
