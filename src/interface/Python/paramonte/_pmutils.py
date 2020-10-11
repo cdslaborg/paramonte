@@ -142,7 +142,7 @@ def getList(x):
 #### delFile
 ####################################################################################################################################
 
-def delFile(file, desc="the requested file"):
+def delFile(file, desc="the requested file", methodName=""):
     try:
         import os
         os.remove(file) 
