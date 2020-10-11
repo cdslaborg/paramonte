@@ -92,7 +92,7 @@ Installation
 
 The latest release of the ParaMonte MatDRAM library can be downloaded from the release page of the library's repository on GitHub:  
 
-[https://github.com/cdslaborg/paramonte/releases/latest/lib](https://github.com/cdslaborg/paramonte/releases/latest/)  
+[https://github.com/cdslaborg/paramonte/releases/latest/](https://github.com/cdslaborg/paramonte/releases/latest/)  
 
 Alternatively, you can build the library from the source in the GitHub repository of the project: https://github.com/cdslaborg/paramonte  
 For instructions, please visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
