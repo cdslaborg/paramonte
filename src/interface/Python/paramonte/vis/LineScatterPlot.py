@@ -253,7 +253,8 @@ class LineScatterPlot(BasePlot):
                     kws
 
                         A structure whose components are directly passed as 
-                        keyword arguments to the ``LineCollection()`` class.
+                        keyword arguments to the ``LineCollection()`` class 
+                        of matplotlib library.
 
                         Example usage:
 

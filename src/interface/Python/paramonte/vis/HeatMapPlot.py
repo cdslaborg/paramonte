@@ -545,7 +545,7 @@ class HeatMapPlot(BasePlot):
         if "yticklabels" in vars(self.heatmap.kws).keys():
             if not any(self.heatmap.kws.yticklabels): ytickEyists = False
         else:
-            self.heatmap.kws.yticklabels = colnames
+            self.heatmap.kws.yticklabels = rownames
 
         ############################################################################################################################
         #### plot data

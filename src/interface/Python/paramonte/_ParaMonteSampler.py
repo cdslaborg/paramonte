@@ -1018,7 +1018,7 @@ class ParaMonteSampler:
         if file is None: file = self._setFileToRead(file, fileType, fileSuffix)
         if delimiter is None: delimiter = self._setDelimiterToRead(delimiter, fileType, fileSuffix)
 
-        FileList = pm.utils.getFileList(file, fileSuffix, self._methodName, self.reportEnabled)
+        FileList, iswebfile = pm.utils.getFileList(file, fileSuffix, self._methodName, self.reportEnabled)
 
         tabularContentsList = []
         for file in FileList:
@@ -1099,6 +1099,9 @@ class ParaMonteSampler:
                     , marginTop = 1
                     , marginBot = 1
                     )
+
+        if iswebfile: pm.utils.delFile( file = FileList[0], desc = "the temporarily-downloaded " + fileType + " file" )
+
         if renabled:
             return tabularContentsList
         else:
@@ -1588,7 +1591,7 @@ class ParaMonteSampler:
 
         if file is None: file = self._setFileToRead(file, fileType, fileSuffix)
 
-        FileList = pm.utils.getFileList(file, fileSuffix, self._methodName, self.reportEnabled)
+        FileList, iswebfile = pm.utils.getFileList(file, fileSuffix, self._methodName, self.reportEnabled)
 
         restartContentsList = []
         for file in FileList:
@@ -1647,6 +1650,9 @@ class ParaMonteSampler:
                     , marginTop = 1
                     , marginBot = 1
                     )
+
+        if iswebfile: pm.utils.delFile( file = FileList[0], desc = "the temporarily-downloaded " + fileType + " file" )
+
         if renabled:
             return restartContentsList
         else:
@@ -1751,7 +1757,7 @@ class ParaMonteSampler:
 
         if file is None: file = self._setFileToRead(file, fileType, fileSuffix)
 
-        FileList = pm.utils.getFileList(file, fileSuffix, self._methodName, self.reportEnabled)
+        FileList, iswebfile = pm.utils.getFileList(file, fileSuffix, self._methodName, self.reportEnabled)
 
         reportContentsList = []
         for file in FileList:
@@ -1807,6 +1813,9 @@ class ParaMonteSampler:
                     , marginTop = 1
                     , marginBot = 1
                     )
+
+        if iswebfile: pm.utils.delFile( file = FileList[0], desc = "the temporarily-downloaded " + fileType + " file" )
+
         if renabled:
             return reportContentsList
         else:
@@ -1817,7 +1826,7 @@ class ParaMonteSampler:
     ################################################################################################################################
 
     def helpme  ( self
-                , topic : tp.Optional[ str ] = None
+                , topic : tp.Optional[ str ] = ""
                 ):
         """
 

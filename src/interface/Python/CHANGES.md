@@ -5,6 +5,21 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.2.0 -- October 11, 2020  
+
+**Major enhancements**  
+
++   The `ParaMonte::Python` output file parsers method are now 
+    capable of parsing simulation output contents directly from 
+    the web. All that is needed, is to provide the link to the 
+    web file as the input file name to the simulation output 
+    file parser methods (e.g., `readSample()`, `readChain()`, 
+    `readReport()`, `readProgress()`, `readRestart()`, ...)
+
+**Minor enhancements**  
+
++   A bug in the y-axis variable names in the heatmap plot is now fixed.
+
 ### Version  2.1.1 -- October 9, 2020  
 
 **Minor enhancements**  

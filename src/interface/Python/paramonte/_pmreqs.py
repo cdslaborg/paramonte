@@ -272,8 +272,7 @@ def getUserResponse(msg=""):
 def download(url,filePath):
     import urllib.request
     import shutil
-    with urllib.request.urlopen(url) as response, open(filePath, 'wb') as out_file:
-        shutil.copyfileobj(response, out_file)
+    with urllib.request.urlopen(url) as response, open(filePath, 'wb') as out_file: shutil.copyfileobj(response, out_file)
     return None
 
 ####################################################################################################################################

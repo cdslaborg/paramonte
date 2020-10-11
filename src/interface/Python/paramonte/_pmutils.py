@@ -139,18 +139,40 @@ def getList(x):
         return [x]
 
 ####################################################################################################################################
+#### delFile
+####################################################################################################################################
+
+def delFile(file, desc="the requested file"):
+    try:
+        import os
+        os.remove(file) 
+    except:
+        err.warn( msg   = newline
+                        + "Failed to delete " + desc + " from the local disk. File may be protected. You can try manually deleting it: " + newline
+                        + newline
+                        + "    " + file + newline
+                        + newline
+                , methodName = methodName
+                , marginTop = 1
+                , marginBot = 1
+                )
+    return None
+
+####################################################################################################################################
 #### get file list
 ####################################################################################################################################
 
-def getFileList(file, fileSuffix, methodName, reportEnabled):
+def getFileList(file, fileSuffix, methodName, reportEnabled = True):
 
+    FileList = []
+    iswebfile = False
     fullSuffix = "_" + fileSuffix + ".txt"
 
     if os.path.isfile(file):
 
         # check if the input path is a full path to a file
 
-        FileList = [file]
+        FileList.append(file)
         pattern = file
         if fullSuffix != file[-len(fullSuffix):]:
             err.warn( msg   = "The name of the input file: \n\n"
@@ -163,63 +185,81 @@ def getFileList(file, fileSuffix, methodName, reportEnabled):
 
     else:
 
-        if os.path.isdir(file):
-
-            # ensure the input path is not a directory
-
-            err.warn( msg   = "file='" + file + "' points to a directory.\n"
-                            + "Now searching inside the folder for a " + fileSuffix + " file..."
-                    , methodName = methodName
-                    , marginTop = 1
-                    , marginBot = 1
-                    )
-            pattern = os.path.join(file, "*" + fullSuffix)
-
-        else:
-
-            # search for files matching the input pattern
-
-            if "*" in file: # file[-1:]=="*":
-                pattern = file
-            else:
-                pattern = file + "*" # + fullSuffix
-
         import glob
-        _ = glob.glob(pattern)
 
-        FileList = []
-        for filePath in _:
-            if filePath.endswith(fullSuffix):
-                FileList.append(filePath)
+        pattern = "" # not really needed, but just in case...
+        for i in [1,2]:
+
+            if i==1:
+
+                #### first search for files matching the input pattern, then for directory
+
+                pattern = file if "*" in file else file + "*" # + fullSuffix
+
+            elif i==2:
+
+                #### then search for file as directory
+
+                if os.path.isdir(file):
+
+                    pattern = os.path.join(file, "*" + fullSuffix)
+
+                    if reportEnabled:
+                        err.warn( msg   = "file='" + file + "' points to a directory.\n"
+                                        + "Now searching inside the folder for a " + fileSuffix + " file..."
+                                , methodName = methodName
+                                , marginTop = 1
+                                , marginBot = 1
+                                )
+
+            #### now search for pattern
+
+            for filePath in glob.glob(pattern):
+                if filePath.endswith(fullSuffix):
+                    FileList.append(filePath)
+
+            if len(FileList)>0: break
 
         if not pattern.endswith(fullSuffix): pattern += fullSuffix
 
         if len(FileList)==0:
-            err.abort   ( msg   = "Failed to detect any " + fileSuffix + " files with the requested pattern: \n\n"
-                                + "    " + pattern + "\n\n"
-                                + "Provide a string, as the value of the input argument ``file``, that either \n\n"
-                                + "    - points to one or more " + fileSuffix + " files, or, \n"
-                                + "    - represents the unique name of a ParaMonte simulation. \n"
-                                + "      This unique-name is the common prefix in the names of \n"
-                                + "      the output files of a ParaMonte simulation.\n\n"
-                                + "Most importantly, ensure the requested file is in ASCII format.\n"
-                                + "The binary-format chain or restart output files cannot be parsed.\n"
-                                + "You can request ASCII-format output files by setting the\n"
-                                + "appropriate simulation specifications of the " + methodName + " sampler,\n\n"
-                                + "    spec.restartFileFormat = \"ascii\"\n"
-                                + "    spec.chainFileFormat = \"ascii\""
-                        , methodName = methodName
-                        , marginTop = 1
-                        , marginBot = 1
-                        )
+
+            #### one last try, search the web
+
+            try:
+                import urllib.request
+                #filePath = getRandomFilePrefix(prefix = methodName + "_" + fileSuffix)
+                localFilePath, headers = urllib.request.urlretrieve(url = file)
+                FileList.append(localFilePath)
+                iswebfile = True
+            except:
+                err.abort   ( msg   = "Failed to detect any " + fileSuffix + " files with the requested pattern: \n\n"
+                                    + "    " + pattern + "\n\n"
+                                    + "Provide a string, as the value of the input argument ``file``, that either \n\n"
+                                    + "    - points to one or more " + fileSuffix + " files, or, \n"
+                                    + "    - represents the unique name of a ParaMonte simulation. \n"
+                                    + "      This unique-name is the common prefix in the names of \n"
+                                    + "      the output files of a ParaMonte simulation.\n\n"
+                                    + "Most importantly, ensure the requested file is in ASCII format.\n"
+                                    + "The binary-format chain or restart output files cannot be parsed.\n"
+                                    + "You can request ASCII-format output files by setting the\n"
+                                    + "appropriate simulation specifications of the " + methodName + " sampler,\n\n"
+                                    + "    spec.restartFileFormat = \"ascii\"\n"
+                                    + "    spec.chainFileFormat = \"ascii\""
+                            , methodName = methodName
+                            , marginTop = 1
+                            , marginBot = 1
+                            )
+
         elif reportEnabled:
+
             err.note( msg = str(len(FileList)) + ' files detected matching the pattern: "' + pattern + '"'
                     , methodName = methodName
                     , marginTop = 1
                     , marginBot = 1
                     )
 
-    return FileList
+    return FileList, iswebfile
 
 ####################################################################################################################################
 #### Timer class
