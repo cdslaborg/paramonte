@@ -111,7 +111,7 @@ fi
 LANG_FILE_EXT="m"
 LANG_NAME="MATLAB"
 
-if ! [ -z ${LANG_NAME+x} ]; then
+if [ -z ${LANG_NAME+x} ]; then
     echo >&2 
     echo >&2 "-- ${BUILD_NAME}Example - Fatal Error: unrecognized or no language specified. exiting..."
     echo >&2 
@@ -128,7 +128,7 @@ EXAM_LIST="mvn"
 
 # set and make example directories
 
-MatDRAM_BLD_DIR="${ParaMonte_ROOT_DIR}/build/MatDRAM"
+MatDRAM_BLD_DIR="${ParaMonte_ROOT_DIR}/build/libparamonte_MatDRAM"
 MatDRAM_EXP_DIR="${MatDRAM_BLD_DIR}/example"
 
 ParaMonteInterface_SRC_DIR_CURRENT="${ParaMonteInterface_SRC_DIR}/${LANG_NAME}"
@@ -149,8 +149,8 @@ do
         verify $? "deletion of the old files"
         echo >&2 "-- ${BUILD_NAME} - regenerating the MatDRAM library ${EXAM_NAME} example directory: ${MatDRAM_BLD_DIR_CURRENT}"
     fi
-    mkdir "${MatDRAM_BLD_DIR_CURRENT}/"
-    verify $? "directory creation"
+    mkdir -p "${MatDRAM_BLD_DIR_CURRENT}/"
+    verify $? "ParaMonte::MatDRAM example directory creation"
 
     # The MatDRAM library example required files
 
@@ -172,13 +172,15 @@ do
 
     # The MatDRAM library license file
 
+    echo >&2
     echo >&2 "-- ${BUILD_NAME} - copying the MatDRAM library license file..."
-    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonte_ROOT_DIR}LICENSE.md"
+    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonte_ROOT_DIR}/LICENSE.md"
     echo >&2 "-- ${BUILD_NAME} -   to: ${MatDRAM_BLD_DIR_CURRENT}/LICENSE.md"
-    cp "${ParaMonte_ROOT_DIR}LICENSE.md" "${MatDRAM_BLD_DIR_CURRENT}/LICENSE.md" || printCopyFailMsg
+    cp "${ParaMonte_ROOT_DIR}/LICENSE.md" "${MatDRAM_BLD_DIR_CURRENT}/LICENSE.md" || printCopyFailMsg
 
     # The MatDRAM library README file
 
+    echo >&2
     echo >&2 "-- ${BUILD_NAME} - copying the MatDRAM library license file..."
     echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/README.MatDRAM.md"
     echo >&2 "-- ${BUILD_NAME} -   to: ${MatDRAM_BLD_DIR_CURRENT}/README.MatDRAM.md"
@@ -186,7 +188,8 @@ do
 
     # The MatDRAM library interface files
 
-    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/MatDRAM"
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonteInterface_SRC_DIR_CURRENT}/libparamonte_MatDRAM"
     echo >&2 "-- ${BUILD_NAME} -   to: ${MatDRAM_BLD_DIR_CURRENT}/paramonte/"
     cp -R "${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte" "${MatDRAM_BLD_DIR_CURRENT}/paramonte/" || printCopyFailMsg
 
@@ -194,42 +197,50 @@ do
 
     COPY_PATH_SOURCE="${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte/interface/@ParaDRAM/readMarkovChain.m"
     COPY_PATH_DESTIN="${MatDRAM_BLD_DIR_CURRENT}/paramonte/kernel/@ParaDRAM_class/"
+    echo >&2
     echo >&2 "-- ${BUILD_NAME} - from: ${COPY_PATH_SOURCE}"
     echo >&2 "-- ${BUILD_NAME} -   to: ${COPY_PATH_DESTIN}"
     cp "${COPY_PATH_SOURCE}" "${COPY_PATH_DESTIN}" || printCopyFailMsg
 
     COPY_PATH_SOURCE="${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte/interface/@ParaMonteSampler/readChain.m"
     COPY_PATH_DESTIN="${MatDRAM_BLD_DIR_CURRENT}/paramonte/kernel/@ParaDRAM_class/"
+    echo >&2
     echo >&2 "-- ${BUILD_NAME} - from: ${COPY_PATH_SOURCE}"
     echo >&2 "-- ${BUILD_NAME} -   to: ${COPY_PATH_DESTIN}"
     cp "${COPY_PATH_SOURCE}" "${COPY_PATH_DESTIN}" || printCopyFailMsg
 
     COPY_PATH_SOURCE="${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte/interface/@ParaMonteSampler/readSample.m"
     COPY_PATH_DESTIN="${MatDRAM_BLD_DIR_CURRENT}/paramonte/kernel/@ParaDRAM_class/"
+    echo >&2
     echo >&2 "-- ${BUILD_NAME} - from: ${COPY_PATH_SOURCE}"
     echo >&2 "-- ${BUILD_NAME} -   to: ${COPY_PATH_DESTIN}"
     cp "${COPY_PATH_SOURCE}" "${COPY_PATH_DESTIN}" || printCopyFailMsg
 
     COPY_PATH_SOURCE="${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte/interface/@ParaMonteSampler/readRestart.m"
     COPY_PATH_DESTIN="${MatDRAM_BLD_DIR_CURRENT}/paramonte/kernel/@ParaDRAM_class/"
+    echo >&2
     echo >&2 "-- ${BUILD_NAME} - from: ${COPY_PATH_SOURCE}"
     echo >&2 "-- ${BUILD_NAME} -   to: ${COPY_PATH_DESTIN}"
     cp "${COPY_PATH_SOURCE}" "${COPY_PATH_DESTIN}" || printCopyFailMsg
 
     COPY_PATH_SOURCE="${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte/interface/@ParaMonteSampler/readReport.m"
     COPY_PATH_DESTIN="${MatDRAM_BLD_DIR_CURRENT}/paramonte/kernel/@ParaDRAM_class/"
+    echo >&2
     echo >&2 "-- ${BUILD_NAME} - from: ${COPY_PATH_SOURCE}"
     echo >&2 "-- ${BUILD_NAME} -   to: ${COPY_PATH_DESTIN}"
     cp "${COPY_PATH_SOURCE}" "${COPY_PATH_DESTIN}" || printCopyFailMsg
 
     COPY_PATH_SOURCE="${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte/interface/@ParaMonteSampler/readTabular.m"
     COPY_PATH_DESTIN="${MatDRAM_BLD_DIR_CURRENT}/paramonte/kernel/@ParaDRAM_class/"
+    echo >&2
     echo >&2 "-- ${BUILD_NAME} - from: ${COPY_PATH_SOURCE}"
     echo >&2 "-- ${BUILD_NAME} -   to: ${COPY_PATH_DESTIN}"
     cp "${COPY_PATH_SOURCE}" "${COPY_PATH_DESTIN}" || printCopyFailMsg
 
     COPY_PATH_SOURCE="${ParaMonteInterface_SRC_DIR_CURRENT}/paramonte/interface/@ParaMonteSampler/getFilePathList.m"
     COPY_PATH_DESTIN="${MatDRAM_BLD_DIR_CURRENT}/paramonte/kernel/@ParaDRAM_class/"
+
+    echo >&2
     echo >&2 "-- ${BUILD_NAME} - from: ${COPY_PATH_SOURCE}"
     echo >&2 "-- ${BUILD_NAME} -   to: ${COPY_PATH_DESTIN}"
     cp "${COPY_PATH_SOURCE}" "${COPY_PATH_DESTIN}" || printCopyFailMsg
@@ -238,17 +249,17 @@ do
 
     echo >&2
     echo >&2 "-- ${BUILD_NAME} - copying the MatDRAM library auxiliary files"
-    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonteInterface_SRC_DIR}/auxil"
+    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonteInterface_SRC_DIR}/auxil/"
     echo >&2 "-- ${BUILD_NAME} -   to: ${MatDRAM_BLD_DIR_CURRENT}/paramonte/auxil/"
-    cp -R "${ParaMonteInterface_SRC_DIR}/auxil" "${MatDRAM_BLD_DIR_CURRENT}/paramonte/auxil/" || printCopyFailMsg
+    cp -R "${ParaMonteInterface_SRC_DIR}/auxil" "${MatDRAM_BLD_DIR_CURRENT}/paramonte/" || printCopyFailMsg
 
     # The MatDRAM library kernel version file (must appear only after the above)
 
     echo >&2
     echo >&2 "-- ${BUILD_NAME} - copying the MatDRAM library kernel version file..."
-    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonte_ROOT_DIR}.VERSION"
+    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonte_ROOT_DIR}/.VERSION"
     echo >&2 "-- ${BUILD_NAME} -   to: ${MatDRAM_BLD_DIR_CURRENT}/paramonte/auxil/.VERSION_KERNEL"
-    cp "${ParaMonte_ROOT_DIR}.VERSION" "${MatDRAM_BLD_DIR_CURRENT}/paramonte/auxil/.VERSION_KERNEL" || printCopyFailMsg
+    cp "${ParaMonte_ROOT_DIR}/.VERSION" "${MatDRAM_BLD_DIR_CURRENT}/paramonte/auxil/.VERSION_KERNEL" || printCopyFailMsg
 
     # The MatDRAM library interface version file (must appear only after the above)
 
@@ -261,14 +272,15 @@ do
     # The MatDRAM library example input files
 
     ParaMonteExample_SRC_DIR_CURRENT="${ParaMonteExample_SRC_DIR}/${EXAM_NAME}/${LANG_NAME}"
-    echo >&2 "-- ${BUILD_NAME} - copying the MatDRAM library ${EXAM_NAME} example source files in ${LANG_NAME} language..."
-
     mainFileName=main.${LANG_FILE_EXT}
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME} - copying the MatDRAM library ${EXAM_NAME} example source files in ${LANG_NAME} language..."
     cp "${ParaMonteExample_SRC_DIR}/${mainFileName}" "${MatDRAM_BLD_DIR_CURRENT}/" || printCopyFailMsg
 
-    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonteExample_SRC_DIR_CURRENT}"
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME} - from: ${ParaMonteExample_SRC_DIR_CURRENT}/*"
     echo >&2 "-- ${BUILD_NAME} -   to: ${MatDRAM_BLD_DIR_CURRENT}"
-    cp -R "${ParaMonteExample_SRC_DIR_CURRENT}" "${MatDRAM_BLD_DIR_CURRENT}/" || printCopyFailMsg
+    cp -R "${ParaMonteExample_SRC_DIR_CURRENT}"/* "${MatDRAM_BLD_DIR_CURRENT}/" || printCopyFailMsg
 
 done
 
@@ -289,10 +301,11 @@ if ! [ -d ${MatDRAMExample_BIN_DIR_CURRENT} ]; then
     verify $? "directory creation"
 fi
 
+echo >&2
 echo >&2 "-- ${BUILD_NAME} - copying the MatDRAM library files to the bin folder..."
 echo >&2 "-- ${BUILD_NAME} - from: ${MatDRAM_BLD_DIR_CURRENT}"
 echo >&2 "-- ${BUILD_NAME} -   to: ${MatDRAMExample_BIN_DIR_CURRENT}"
-cp -R "${MatDRAM_BLD_DIR_CURRENT}" "${MatDRAMExample_BIN_DIR_CURRENT}" || printCopyFailMsg
+cp -R "${MatDRAM_BLD_DIR_CURRENT}"/* "${MatDRAMExample_BIN_DIR_CURRENT}" || printCopyFailMsg
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #: build test
@@ -301,14 +314,20 @@ cp -R "${MatDRAM_BLD_DIR_CURRENT}" "${MatDRAMExample_BIN_DIR_CURRENT}" || printC
 MatDRAMTest_BLD_DIR="${MatDRAM_BLD_DIR}/test"
 MatDRAMTest_SRC_DIR="${ParaMonteInterface_SRC_DIR_CURRENT}/test"
 
+echo >&2
 echo >&2 "-- ${BUILD_NAME} - copying the MatDRAM library files to the test folder..."
 echo >&2 "-- ${BUILD_NAME} - from: ${MatDRAM_BLD_DIR_CURRENT}"
 echo >&2 "-- ${BUILD_NAME} -   to: ${MatDRAMTest_BLD_DIR}"
-cp -R "${MatDRAM_BLD_DIR_CURRENT}" "${MatDRAMTest_BLD_DIR}" || printCopyFailMsg
+cp -R "${MatDRAM_BLD_DIR_CURRENT}"/* "${MatDRAMTest_BLD_DIR}" || printCopyFailMsg
 
-cd ${MatDRAMTest_BLD_DIR} && rm main.m logfunc.m LICENSE.md
-verify $? "file removal"
+cd ${MatDRAMTest_BLD_DIR}
+for file in main.m logfunc.m LICENSE.md; do
+    if [ -f "${MatDRAMTest_BLD_DIR}/${file}" ]; then
+        rm "${MatDRAMTest_BLD_DIR}/${file}" || verify $? "MatDRAM test ${file} file removal"
+    fi
+done
 
+echo >&2
 cp "${MatDRAMTest_SRC_DIR}/testParaMonte.m" "${MatDRAMTest_BLD_DIR}/testParaMonte.m" || printCopyFailMsg
 cp "${MatDRAMTest_SRC_DIR}/getLogFunc.m" "${MatDRAMTest_BLD_DIR}/getLogFunc.m" || printCopyFailMsg
 
@@ -342,3 +361,4 @@ fi
 echo >&2 
 echo >&2 "-- ${BUILD_NAME} -      the MatDRAM build files are located at: ${MatDRAM_BLD_DIR_CURRENT}"
 echo >&2 "-- ${BUILD_NAME} -    the MatDRAM library files are located at: ${MatDRAMExample_BIN_DIR_CURRENT}"
+echo >&2 

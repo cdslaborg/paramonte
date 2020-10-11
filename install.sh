@@ -71,7 +71,7 @@ if [[ ! -f "${ParaMonte_ROOT_DIR}/src/ParaMonte/ParaMonte_mod.f90" ]]; then
   exit 1
 fi
 
-echo "$(cat ./auxil/ParaMonteBanner.txt)"
+echo "$(cat ./auxil/.ParaMonteBanner)"
 
 usage()
 {
