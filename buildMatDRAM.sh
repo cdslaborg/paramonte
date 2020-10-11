@@ -99,7 +99,7 @@ echo >&2
 
 ParaMonte_BIN_DIR="${ParaMonte_ROOT_DIR}/bin"
 echo >&2 -- "${BUILD_NAME} - The MatDRAM binaries directory: ${ParaMonte_BIN_DIR}"
-if ![ -d "${ParaMonte_BIN_DIR}" ]; then
+if ! [ -d "${ParaMonte_BIN_DIR}" ]; then
     mkdir "${ParaMonte_BIN_DIR}"
     verify $? "binary directory creation"
 fi
@@ -111,7 +111,7 @@ fi
 LANG_FILE_EXT="m"
 LANG_NAME="MATLAB"
 
-if ![ -z ${LANG_NAME+x} ]; then
+if ! [ -z ${LANG_NAME+x} ]; then
     echo >&2 
     echo >&2 "-- ${BUILD_NAME}Example - Fatal Error: unrecognized or no language specified. exiting..."
     echo >&2 
@@ -284,7 +284,7 @@ MatDRAMExample_BIN_DIR_CURRENT="${ParaMonte_BIN_DIR}/libparamonte_MatDRAM"
 
 echo >&2 "-- ${BUILD_NAME} - The MatDRAM ${LANG_NAME} library binary directory: ${MatDRAMExample_BIN_DIR_CURRENT}"
 
-if ![ -d ${MatDRAMExample_BIN_DIR_CURRENT} ]; then
+if ! [ -d ${MatDRAMExample_BIN_DIR_CURRENT} ]; then
     mkdir "${MatDRAMExample_BIN_DIR_CURRENT}/"
     verify $? "directory creation"
 fi
