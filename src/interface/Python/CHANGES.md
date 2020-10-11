@@ -14,7 +14,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     the web. All that is needed, is to provide the link to the 
     web file as the input file name to the simulation output 
     file parser methods (e.g., `readSample()`, `readChain()`, 
-    `readReport()`, `readProgress()`, `readRestart()`, ...)
+    `readReport()`, `readProgress()`, `readRestart()`, ...).
 
 **Minor enhancements**  
 
