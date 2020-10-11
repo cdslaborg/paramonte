@@ -136,9 +136,9 @@ while [ "$1" != "" ]; do
                                 ;;
         -B | --bootstrap )      gcc_bootstrap_flag="--bootstrap"
                                 ;;
-#       -a | --matdram )        shift
-#                               MatDRAM_ENABLED="true"
-#                               ;;
+        -a | --matdram )        shift
+                                MatDRAM_ENABLED="true"
+                                ;;
         -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES="$1"
                                 ;;
@@ -161,9 +161,12 @@ done
 # determine whether to build MatDRAM or not. NOTE: If true, all other builds will be disabled. NOT IMPLEMENTED YET. NOT NEEDED.
 ####################################################################################################################################
 
-#export MatDRAM_ENABLED
-#if [ "${MatDRAM_ENABLED}" = "true" ]; then
-#fi
+export MatDRAM_ENABLED
+if [ "${MatDRAM_ENABLED}" = "true" ]; then
+    chmod +x buildMatDRAM.sh
+    ./buildMatDRAM.sh
+    exit 0
+fi
 
 ####################################################################################################################################
 # auxil

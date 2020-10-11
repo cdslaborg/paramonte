@@ -114,7 +114,7 @@ read -r ParaMonteVersion < .VERSION
 # set ParaMonte version (to be used by cmake)
 
 unset FPP_PARAMONTE_VERSION_FLAG
-if [ -z ${ParaMonteVersion+x} ]; then
+if [ -z ${ParaMonteVersion+x} ]; then # should not this be negated?
     export ParaMonteVersion
 fi
 

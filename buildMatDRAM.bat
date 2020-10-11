@@ -169,7 +169,7 @@ for %%e in (!EXAM_LIST!) do (
     set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
     echo. -- MatDRAM - from: !COPY_PATH_SOURCE!
     echo. -- MatDRAM -   to: !COPY_PATH_DESTIN!
-    xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOc
+    xcopy /s /Y "!COPY_PATH_SOURCE!" "!COPY_PATH_DESTIN!" || goto LABEL_copyErrorOccured
 
     set COPY_PATH_SOURCE=!ParaMonteInterface_SRC_DIR_CURRENT!\paramonte\interface\@ParaMonteSampler\readSample.m
     set COPY_PATH_DESTIN=!MatDRAM_BLD_DIR_CURRENT!\paramonte\kernel\@ParaDRAM_class\
