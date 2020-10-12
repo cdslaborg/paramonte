@@ -54,6 +54,10 @@ module Sort_mod
         module procedure :: indexArray_IK, indexArray_RK
     end interface indexArray
 
+    interface median
+        module procedure :: median_RK
+    end interface median
+
 contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,7 +136,7 @@ contains
         real(RK)        , intent(inout) :: Point(np)
         type(Err_type)  , intent(out)   :: Err
 
-        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@sortAscending_RK"
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@sortAscending_RK()"
         real(RK)                        :: dummy
         integer(IK)                     :: k,i,j,jstack,m,r,istack(NSTACK)
 
@@ -215,7 +219,7 @@ contains
         integer(IK)     , intent(out)   :: Indx(n)
         type(Err_type)  , intent(out)   :: Err
 
-        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_RK"
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_RK()"
         integer(IK)     , parameter     :: nn=15, NSTACK=50
         integer(IK)                     :: k,i,j,indext,jstack,l,r
         integer(IK)                     :: istack(NSTACK)
@@ -315,7 +319,7 @@ contains
         integer(IK)     , intent(out)   :: Indx(n)
         type(Err_type)  , intent(out)   :: Err
 
-        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_IK"
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_IK()"
         integer(IK)     , parameter     :: nn=15_IK, NSTACK=50_IK
         integer(IK)                     :: k,i,j,indext,jstack,l,r
         integer(IK)                     :: istack(NSTACK)
@@ -413,7 +417,7 @@ contains
         real(RK)        , intent(inout) :: Array(lenArray), Slave(lenArray)
         type(Err_type)  , intent(out)   :: Err
 
-        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_IK"
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_IK()"
         integer(IK)                     :: Indx(lenArray)
 
         call indexArray_RK(lenArray,Array,Indx,Err)
@@ -424,6 +428,35 @@ contains
         Array = Array(Indx)
         Slave = Slave(Indx)
     end subroutine sortAscending2_RK
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    pure subroutine median_RK(lenArray,Array,median,Err)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: median_RK
+#endif
+        use Constants_mod, only: IK, RK
+        use Err_mod, only: Err_type
+
+        implicit none
+
+        integer(IK)     , intent(in)    :: lenArray
+        real(RK)        , intent(in)    :: Array(lenArray)
+        real(RK)        , intent(out)   :: median
+        type(Err_type)  , intent(out)   :: Err
+
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@median_RK()"
+        real(RK)                        :: ArrayDummy(lenArray)
+
+        ArrayDummy = Array
+        call sortAscending(np=lenArray,Point=ArrayDummy,Err=Err)
+        if (Err%occurred) then
+            Err%msg = PROCEDURE_NAME//Err%msg
+            return
+        end if
+        median = ArrayDummy(lenArray/2_IK)
+
+    end subroutine median_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

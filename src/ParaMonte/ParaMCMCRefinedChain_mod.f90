@@ -69,6 +69,10 @@ module ParaMCMCRefinedChain_mod
     end type RefinedChain_type
 
    type Method_type
+       logical :: isMax = .false.
+       logical :: isMed = .false.
+       logical :: isMin = .false.
+       logical :: isAvg = .false.
        logical :: isBatchMeans = .false.
        logical :: isCutoffAutoCorr = .false.
        logical :: isViaCompactChain = .true.
@@ -97,7 +101,8 @@ contains
         use, intrinsic :: iso_fortran_env, only: output_unit
         use ParaMonteChainFileContents_mod, only: ChainFileContents_type, NUM_DEF_COL
         use CrossCorr_mod, only: getBatchMeansIAC, getCumSumIAC, getMaxCumSumIAC
-        use String_mod, only: getLowerCase
+        use String_mod, only: getLowerCase, replaceStr
+        use Sort_mod, only: median
 
         implicit none
 
@@ -108,12 +113,12 @@ contains
         type(Err_type)              , intent(out)               :: Err
         character(*)                , intent(in), optional      :: sampleRefinementMethod
         integer(IK)                 , intent(in), optional      :: burninLoc, refinedChainSize, sampleRefinementCount
-        integer(IK)                                             :: burninLocDefault, i, countCompact
+        integer(IK)                                             :: burninLocDefault, i, countCompact, ndimPlusOne
         integer(IK)                                             :: maxRefinementCurrent, maxRefinementCount
-        real(RK)                                                :: integratedAutoCorrTime
+        real(RK)                                                :: integratedAutoCorrTime, ndimPlusOneInverse
         logical                                                 :: refinedChainSizeIsPresent
         logical                                                 :: maxRefinementCountIsReached
-        character(:)    , allocatable                           :: sampleRefinementMethodLowerCase
+        character(:)    , allocatable                           :: sampleRefinementMethodDefault, sampleRefinementMethodDefaultLowerCase, srmethod
         type(Count_type), allocatable                           :: DumCount(:)
         real(RK)        , allocatable                           :: DumIAC(:,:), DumVec(:)
         integer(IK)     , allocatable                           :: SampleWeight(:)
@@ -162,29 +167,46 @@ contains
         if (CFC%Count%verbose == 0_IK) CFC%Count%verbose = sum(CFC%Weight(1:CFC%Count%compact))
         RefinedChain%Count(RefinedChain%numRefinement)%verbose = CFC%Count%verbose
 
-        if (present(sampleRefinementMethod)) then
-            sampleRefinementMethodLowerCase = getLowerCase(sampleRefinementMethod)
-            if (index(sampleRefinementMethodLowerCase,getLowerCase(BATCH_MEANS_METHOD_NAME))>0) then
-                Method%isBatchMeans = .true.
-            elseif (index(sampleRefinementMethodLowerCase,getLowerCase(CUTOFF_AUTOCORR_METHOD_NAME))>0 .or. index(sampleRefinementMethodLowerCase,"cutoff")>0) then
-                Method%isCutoffAutoCorr = .true.
-            elseif (index(sampleRefinementMethodLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR_METHOD_NAME))>0 .or. index(sampleRefinementMethodLowerCase,"cumsum")>0) then
-                Method%isMaxCumSumAutoCorr = .true.
-            else
-                Err%occurred = .true.
-                Err%msg = PROCEDURE_NAME // ": Unknown unsupported IAC computation method name: " // sampleRefinementMethod
-                return
-            end if
-            Method%isViaCompactChain = index(sampleRefinementMethodLowerCase,"compact") > 0
-            Method%isViaVerboseChain = index(sampleRefinementMethodLowerCase,"verbose") > 0
-            if (.not.(Method%isViaCompactChain .or. Method%isViaVerboseChain)) then
-                Method%isViaCompactChain = .true.
-                Method%isViaVerboseChain = .true.
-            end if
+        ! define the AIC computation method
+
+        sampleRefinementMethodDefault = BATCH_MEANS_METHOD_NAME; if (present(sampleRefinementMethod)) sampleRefinementMethodDefault = sampleRefinementMethod
+        sampleRefinementMethodDefaultLowerCase = getLowerCase(sampleRefinementMethodDefault)
+
+        if (index(sampleRefinementMethodDefaultLowerCase,getLowerCase(BATCH_MEANS_METHOD_NAME))>0) then
+            Method%isBatchMeans = .true.
+        elseif (index(sampleRefinementMethodDefaultLowerCase,getLowerCase(CUTOFF_AUTOCORR_METHOD_NAME))>0 .or. index(sampleRefinementMethodDefaultLowerCase,"cutoff")>0) then
+            Method%isCutoffAutoCorr = .true.
+        elseif (index(sampleRefinementMethodDefaultLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR_METHOD_NAME))>0 .or. index(sampleRefinementMethodDefaultLowerCase,"cumsum")>0) then
+            Method%isMaxCumSumAutoCorr = .true.
         else
-            Method%isBatchMeans = .true.     ! this is the default method
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Unknown unsupported IAC computation method name: " // sampleRefinementMethodDefault
+            return
         end if
 
+        ! define the chain types to use for the AIC computation
+
+        Method%isViaCompactChain = index(sampleRefinementMethodDefaultLowerCase,"compact") > 0
+        Method%isViaVerboseChain = index(sampleRefinementMethodDefaultLowerCase,"verbose") > 0
+        if (.not.(Method%isViaCompactChain .or. Method%isViaVerboseChain)) then
+            Method%isViaCompactChain = .true.
+            Method%isViaVerboseChain = .true.
+        end if
+
+        ! define the statistic to use for the AIC computation
+
+        srmethod = replaceStr(string=sampleRefinementMethodDefaultLowerCase,search=" ",substitute="-")
+        Method%isAvg =  index(srmethod,"-avg") > 0 .or. index(srmethod,"-mean") > 0 .or. index(srmethod,"-average") > 0
+        Method%isMed =  index(srmethod,"-med") > 0 .or. index(srmethod,"-median") > 0
+        Method%isMin =  index(srmethod,"-min") > 0 .or. index(srmethod,"-minimum") > 0
+        Method%isMax =  index(srmethod,"-max") > 0 .or. index(srmethod,"-maximum") > 0
+        if ( Method%isAvg .and. (Method%isMed .or. Method%isMax .or. Method%isMin) ) Err%occurred = .true.
+        if ( Method%isMed .and. (Method%isMax .or. Method%isMin) ) Err%occurred = .true.
+        if ( Method%isMax .and. Method%isMin ) Err%occurred = .true.
+        if (.not.(Method%isAvg .or. Method%isMed .or. Method%isMin .or. Method%isMax)) Method%isAvg = .true. ! default method of AIC summarization.
+
+        if (Method%isAvg) ndimPlusOneInverse = 1._RK / (RefinedChain%ndim + 1_IK)
+        if (Method%isMed) ndimPlusOne = RefinedChain%ndim + 1_IK
 
         ! assign the column headers
 
@@ -276,7 +298,19 @@ contains
             if (refinedChainSizeIsPresent) then
                 integratedAutoCorrTime = real(sum(RefinedChain%Weight),kind=RK) / real(refinedChainSize,kind=RK)
             else
-                integratedAutoCorrTime = maxval( RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement) )
+                if (Method%isAvg) then
+                    integratedAutoCorrTime = sum( RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement) ) * ndimPlusOneInverse
+                elseif (Method%isMed) then
+                    call median(lenArray=ndimPlusOne,Array=RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement),median=integratedAutoCorrTime,Err=Err)
+                    if (Err%occurred) then
+                        Err%msg = PROCEDURE_NAME//Err%msg
+                        return
+                    end if
+                elseif (Method%isMax) then
+                    integratedAutoCorrTime = maxval( RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement) )
+                elseif (Method%isMin) then
+                    integratedAutoCorrTime = minval( RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement) )
+                end if
             end if
 
             ! so far, we have computed the max IAC of the sample, but no refinement. Refine the sample only if needed.

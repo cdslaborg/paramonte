@@ -5,6 +5,16 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
+### **Version x.x.x** -- Work in progress
+
+**Enhancements**  
+
++   The Integrated Autocorrelation (IAC) for sample refinement in ParaDRAM 
+    sampler of ParaMonte is now set to the average of all variables' IAC values 
+    instead of the maximum IAC value. This will lead to less aggressive decorrelation 
+    of the final sample, which means significantly larger final sample sizes, without 
+    compromising the i.i.d. property of the final refined sample. 
+
 ### **Version 1.3.0** -- October 3, 2020
 
 **Enhancements**  
