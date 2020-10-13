@@ -196,7 +196,7 @@ contains
         ! define the statistic to use for the AIC computation
 
         srmethod = replaceStr(string=sampleRefinementMethodDefaultLowerCase,search=" ",substitute="-")
-        Method%isAvg =  index(srmethod,"-avg") > 0 .or. index(srmethod,"-mean") > 0 .or. index(srmethod,"-average") > 0
+        Method%isAvg =  index(srmethod,"-avg") > 0 .or. index(srmethod,"-average") > 0
         Method%isMed =  index(srmethod,"-med") > 0 .or. index(srmethod,"-median") > 0
         Method%isMin =  index(srmethod,"-min") > 0 .or. index(srmethod,"-minimum") > 0
         Method%isMax =  index(srmethod,"-max") > 0 .or. index(srmethod,"-maximum") > 0

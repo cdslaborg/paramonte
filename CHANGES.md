@@ -13,7 +13,10 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     sampler of ParaMonte is now set to the average of all variables' IAC values 
     instead of the maximum IAC value. This will lead to less aggressive decorrelation 
     of the final sample, which means significantly larger final sample sizes, without 
-    compromising the i.i.d. property of the final refined sample. 
+    compromising the i.i.d. property of the final refined sample. This behavior can 
+    be reversed back to the original by specifying "max" or "maximum" along with 
+    the requested refinement method, `SampleRefinementMethod = "batchmeans max"` 
+    or `SampleRefinementMethod = "BatchMeans-max"` (case-insensitive).
 
 ### **Version 1.3.0** -- October 3, 2020
 
