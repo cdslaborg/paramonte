@@ -64,6 +64,8 @@ cd %~dp0
 
 setlocal EnableDelayedExpansion
 
+set BUILD_NAME=ParaMonte
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: get ParaMonte library filename
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -87,8 +89,8 @@ if defined ParaMonte_LIB_NAME (
         set LTYPE=static
     ) else (
         echo.
-        echo. -- ParaMonte - FATAL: ParaMonte library type could not be recognized.
-        echo. -- ParaMonte - FATAL: Build failed. exiting...
+        echo. -- !BUILD_NAME! - FATAL: ParaMonte library type could not be recognized.
+        echo. -- !BUILD_NAME! - FATAL: Build failed. exiting...
         echo.
         cd %~dp0
         set ERRORLEVEL=1
@@ -96,8 +98,8 @@ if defined ParaMonte_LIB_NAME (
     )
 )
 
-echo. -- ParaMonte - ParaMonte library name: !ParaMonte_LIB_NAME!
-echo. -- ParaMonte - ParaMonte library type: !LTYPE!
+echo. -- !BUILD_NAME! - ParaMonte library name: !ParaMonte_LIB_NAME!
+echo. -- !BUILD_NAME! - ParaMonte library type: !LTYPE!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: determine library build
@@ -111,8 +113,8 @@ if errorlevel 1 (
         echo !ParaMonte_LIB_NAME!|find "debug" >nul
         if errorlevel 1 (
             echo.
-            echo. -- ParaMonte - FATAL: ParaMonte library build could not be recognized.
-            echo. -- ParaMonte - FATAL: Build failed. exiting...
+            echo. -- !BUILD_NAME! - FATAL: ParaMonte library build could not be recognized.
+            echo. -- !BUILD_NAME! - FATAL: Build failed. exiting...
             echo.
             cd %~dp0
             set ERRORLEVEL=1
@@ -127,7 +129,7 @@ if errorlevel 1 (
     set BTYPE=release
 )
 
-echo. -- ParaMonte - ParaMonte library build: !BTYPE!
+echo. -- !BUILD_NAME! - ParaMonte library build: !BTYPE!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: determine library parallelism
@@ -151,7 +153,7 @@ if errorlevel 1 (
     set PTYPE=mpi
 )
 
-echo. -- ParaMonte - ParaMonte library parallelism: !PTYPE!
+echo. -- !BUILD_NAME! - ParaMonte library parallelism: !PTYPE!
 
 if !PTYPE!==mpi (
     set MPICC_PATH=
@@ -161,14 +163,14 @@ if !PTYPE!==mpi (
     )
     :LABEL_MPI_FOUND
     if defined MPICC_PATH (
-        echo. -- ParaMonte - Intel C MPI library wrapper at: "!MPICC_PATH!"
+        echo. -- !BUILD_NAME! - Intel C MPI library wrapper at: "!MPICC_PATH!"
     ) else (
         echo.
-        echo. -- ParaMonte - FATAL: The build-script cannot find MPI library wrappers.
-        echo. -- ParaMonte - FATAL: To build MPI-parallel ParaMonte examples, 
-        echo. -- ParaMonte - FATAL: you need Intel's MPI library installed on your system.
-        echo. -- ParaMonte - FATAL: you can download the latest Intel MPI library from their website.
-        echo. -- ParaMonte - FATAL: or visit www.cdslab.org/pm for more instructions on how to build.
+        echo. -- !BUILD_NAME! - FATAL: The build-script cannot find MPI library wrappers.
+        echo. -- !BUILD_NAME! - FATAL: To build MPI-parallel ParaMonte examples, 
+        echo. -- !BUILD_NAME! - FATAL: you need Intel's MPI library installed on your system.
+        echo. -- !BUILD_NAME! - FATAL: you can download the latest Intel MPI library from their website.
+        echo. -- !BUILD_NAME! - FATAL: or visit www.cdslab.org/pm for more instructions on how to build.
         echo.
         cd %~dp0
         set ERRORLEVEL=1
@@ -188,8 +190,8 @@ if errorlevel 1 (
         echo !ParaMonte_LIB_NAME!|find "_cpp_" >nul
         if errorlevel 1 (
             echo.
-            echo. -- ParaMonte - FATAL: ParaMonte library target lanugage could not be recognized.
-            echo. -- ParaMonte - FATAL: Build failed. exiting...
+            echo. -- !BUILD_NAME! - FATAL: ParaMonte library target lanugage could not be recognized.
+            echo. -- !BUILD_NAME! - FATAL: Build failed. exiting...
             echo.
             cd %~dp0
             set ERRORLEVEL=1
@@ -210,7 +212,7 @@ if errorlevel 1 (
     set SEXT=f90
 )
 
-echo. -- ParaMonte - ParaMonte library target language: !TARGET_LANG!
+echo. -- !BUILD_NAME! - ParaMonte library target language: !TARGET_LANG!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: determine compiler/linker specs
@@ -292,10 +294,10 @@ if !TARGET_LANG_IS_CCPP!==true (
 
 )
 
-echo. -- ParaMonte - ParaMonte example compiler suite: !COMPILER_SUITE!
-echo. -- ParaMonte - ParaMonte example compiler name/wrapper: !COMPILER_NAME!
-echo. -- ParaMonte - ParaMonte example compiler flags: !COMPILER_FLAGS!
-echo. -- ParaMonte - ParaMonte example linker flags: !LINKER_FLAGS!
+echo. -- !BUILD_NAME! - ParaMonte example compiler suite: !COMPILER_SUITE!
+echo. -- !BUILD_NAME! - ParaMonte example compiler name/wrapper: !COMPILER_NAME!
+echo. -- !BUILD_NAME! - ParaMonte example compiler flags: !COMPILER_FLAGS!
+echo. -- !BUILD_NAME! - ParaMonte example linker flags: !LINKER_FLAGS!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: build ParaMonte example
@@ -306,30 +308,30 @@ if not defined ParaMonteExample_EXE_ENABLED set ParaMonteExample_EXE_ENABLED=tru
 if !ParaMonteExample_EXE_ENABLED!==false goto LABEL_ParaMonteExample_RUN_ENABLED
 
 if !PTYPE!==mpi (
-    echo. -- ParaMonte - ParaMonte example compiling: "!COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
-                                                  call !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
-                                                        echo. 
-                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: Failed to compile and link the MPI-parallel application. exiting...
-                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: I you are using the Microsoft Visual Studio C/C++ Compiler to 
-                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: compile a C/C++ application try:
-                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: 
-                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL:     build.bat msvc
-                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: 
-                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: Exiting the ParaMonte example build script...
-                                                        echo. 
-                                                        cd %~dp0
-                                                        set ERRORLEVEL=1
-                                                        exit /B 1
-                                                  )
+    echo. -- !BUILD_NAME! - example compile command:    "!COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
+                                                    call !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
+                                                         echo. 
+                                                         echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the MPI-parallel application. exiting...
+                                                         echo. -- !BUILD_NAME! - FATAL: I you are using the Microsoft Visual Studio C/C++ Compiler to 
+                                                         echo. -- !BUILD_NAME! - FATAL: compile a C/C++ application try:
+                                                         echo. -- !BUILD_NAME! - FATAL: 
+                                                         echo. -- !BUILD_NAME! - FATAL:     build.bat msvc
+                                                         echo. -- !BUILD_NAME! - FATAL: 
+                                                         echo. -- !BUILD_NAME! - FATAL: Exiting the ParaMonte example build script...
+                                                         echo. 
+                                                         cd %~dp0
+                                                         set ERRORLEVEL=1
+                                                         exit /B 1
+                                                    )
 ) else (
-                                                       !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
-                                                        echo. 
-                                                        echo. -- !BUILD_SCRIPT_NAME! - FATAL: Failed to compile and link the application. exiting...
-                                                        echo. 
-                                                        cd %~dp0
-                                                        set ERRORLEVEL=1
-                                                        exit /B 1
-                                                  )
+                                                         !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
+                                                         echo. 
+                                                         echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the application. exiting...
+                                                         echo. 
+                                                         cd %~dp0
+                                                         set ERRORLEVEL=1
+                                                         exit /B 1
+                                                    )
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -360,11 +362,11 @@ REM https://software.intel.com/en-us/mpi-developer-reference-windows-compilation
 
 if !PTYPE!==mpi (
     echo. 
-    echo. -- ParaMonte - running MPI-parallelized ParaMonte example on !nproc! processes...
+    echo. -- !BUILD_NAME! - running MPI-parallelized ParaMonte example on !nproc! processes...
     echo. 
     mpiexec -localonly -n !nproc! !EXE_NAME! || (
         echo. 
-        echo. -- !BUILD_SCRIPT_NAME! - FATAL: failed to run the MPI-parallel application. exiting...
+        echo. -- !BUILD_NAME! - FATAL: Failed to run the MPI-parallel application. exiting...
         echo. 
         cd %~dp0
         set ERRORLEVEL=1
@@ -372,11 +374,11 @@ if !PTYPE!==mpi (
     )
 ) else (
     echo. 
-    echo. -- ParaMonte - running serial ParaMonte example on 1 process...
+    echo. -- !BUILD_NAME! - running serial ParaMonte example on 1 process...
     echo. 
     !EXE_NAME! || (
         echo. 
-        echo. -- !BUILD_SCRIPT_NAME! - FATAL: failed to run the serial application. exiting...
+        echo. -- !BUILD_NAME! - FATAL: Failed to run the serial application. exiting...
         echo. 
         cd %~dp0
         set ERRORLEVEL=1
@@ -391,6 +393,19 @@ goto LABEL_EOF
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :LABEL_EOF
+
+if !TARGET_LANG!==Fortran set TARGET_LANG_WEB=fortran
+if !TARGET_LANG!==C++ set TARGET_LANG_WEB=cpp
+if !TARGET_LANG!==C set TARGET_LANG_WEB=c
+
+echo. -- !BUILD_NAME! - NOTE: For information on building ParaMonte simulations in !TARGET_LANG!, visit:
+echo. -- !BUILD_NAME! - NOTE: 
+echo. -- !BUILD_NAME! - NOTE:     https://www.cdslab.org/paramonte/notes/build/!TARGET_LANG_WEB!
+echo. -- !BUILD_NAME! - NOTE: 
+echo. -- !BUILD_NAME! - NOTE: For information on running ParaMonte simulations in !TARGET_LANG!, visit:
+echo. -- !BUILD_NAME! - NOTE: 
+echo. -- !BUILD_NAME! - NOTE:     https://www.cdslab.org/paramonte/notes/run/default
+echo.
 
 cd %~dp0
 
