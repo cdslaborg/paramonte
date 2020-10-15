@@ -1734,6 +1734,10 @@ def getVersionTriplet(versionDumpString):
     """
     return np.int32(versionDumpString.split("."))
 
+####################################################################################################################################
+#### getPreviousVersion
+####################################################################################################################################
+
 def getPreviousVersion(currentVerionString):
     """
     Take an input version string like, "1.1.1" and return another string representing the version before the input version, like, 1.1.0.
@@ -1797,7 +1801,7 @@ def getDependencyVersion( pkg : tp.Optional[ str ] = None ):
     return version
 
 ####################################################################################################################################
-#### getDependencyVersion
+#### displayDependencyVersionMessage
 ####################################################################################################################################
 
 def displayDependencyVersionMessage():
@@ -1939,7 +1943,7 @@ def verifyDependencyVersion():
     return None
 
 ####################################################################################################################################
-#### verifyDependencyVersion
+#### checkForUpdate
 ####################################################################################################################################
 
 def checkForUpdate(package = "paramonte"):
@@ -1956,6 +1960,7 @@ def checkForUpdate(package = "paramonte"):
     currentVersion = pm.version.interface.dump()
 
     if latestVersion == currentVersion:
+
         pm.note ( msg   = "You have the latest version of the ParaMonte library. " + newline
                         + "To see the most recent changes to the library, visit, " + newline
                         + newline
@@ -1964,22 +1969,23 @@ def checkForUpdate(package = "paramonte"):
         , marginTop = 1
         , marginBot = 1
         )
+
     else:
 
         currentVersionTriplet = currentVersion.split(".")
         latestVersionTriplet = latestVersion.split(".")
-        newerVersionAvailable = True
+        newerVersionAvailable = False
         for current, latest in zip(currentVersionTriplet, latestVersionTriplet):
-            if int(current)>int(latest):
-                newerVersionAvailable = False
-                return
+            if int(latest)>int(current):
+                newerVersionAvailable = True
                 break
 
         if newerVersionAvailable:
-            msg = ("A newer version (" + latestVersion + ") of the ParaMonte library appears " + newline
-                + "to be available on the PyPI repository. The currently-installed version is: " + currentVersion + newline
-                + "You can upgrade to the latest version by typing the following on " + newline
-                + "your Bash terminal or Anaconda command prompt: " + newline
+
+            msg = ("A newer version (" + latestVersion + ") of the ParaMonte library appears to be available " + newline
+                + "on the PyPI repository. The currently-installed version is: " + currentVersion + newline
+                + "You can upgrade to the latest version by typing the following " + newline
+                + "on your Bash terminal or Anaconda command prompt: " + newline
                 + newline
                 + "    pip install --user --upgrade " + package + newline
                 + newline
@@ -1991,15 +1997,19 @@ def checkForUpdate(package = "paramonte"):
                 + newline
                 + "    " + pm.website.home.overview.changes.python.url
                 )
+
         else:
-            msg = "Looks like you have a version of ParaMonte that is newer than the PyPI version. Good for you!"
+
+            msg =   ( "Looks like you have a version of the ParaMonte library (" + currentVersion + ") " + newline
+                    + "that is newer than the PyPI version (" + latestVersion + "). Good for you!"
+                    )
 
         pm.note ( msg = msg
                 , methodName = pm.names.paramonte
                 , marginTop = 1
                 , marginBot = 1
                 )
-            
+
     return None
 
 ####################################################################################################################################
