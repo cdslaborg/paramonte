@@ -46,7 +46,7 @@ function previousVerionString = getPreviousVersion(currentVerionString)
     %
     currentVerionTriplet = getVersionTriplet(currentVerionString);
     previousVerionString = [];
-    index = 3;
+    index = 4;
     while true
         index = index - 1;
         if index <= 0

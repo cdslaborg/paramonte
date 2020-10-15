@@ -763,15 +763,15 @@ classdef paramonte %< dynamicprops
             self.Err.marginTop = 1;
             self.Err.marginBot = 1;
 
-            while getVecLen(latestVersionString)
-                try
-                    latestVersionURL = "https://github.com/cdslaborg/paramonte/releases/tag/" + latestVersionString;
-                    webread(latestVersionURL);
-                    break;
-                catch
-                    latestVersionString = getPreviousVersion(latestVersionString);
-                end
-            end
+            %while getVecLen(latestVersionString)
+            %    try
+            %        latestVersionURL = "https://github.com/cdslaborg/paramonte/releases/tag/" + latestVersionString;
+            %        webread(latestVersionURL);
+            %        break;
+            %    catch
+            %        latestVersionString = getPreviousVersion(latestVersionString);
+            %    end
+            %end
 
             if getVecLen(latestVersionString)
                 currentVersionTriplet = getVersionTriplet(currentVersionString);
@@ -784,14 +784,15 @@ classdef paramonte %< dynamicprops
             end
 
             if updateAvailable
-                latestVersionFile = latestVersionURL + "/libparamonte_MATLAB";
+                latestVersionFile = self.website.github.release.latest.url + "/libparamonte_MATLAB";
                 if self.platform.isWin32
                     latestVersionFile = latestVersionFile + ".zip";
                 else
                     latestVersionFile = latestVersionFile + ".tar.gz";
                 end
                 self.Err.msg    = "A newer version (" + latestVersionString + ") of the ParaMonte library appears " + newline ...
-                                + "to be available on the GitHub repository. The currently-installed version is: " + currentVersionString + newline ...
+                                + "to be available on the GitHub repository or, is in preparation " + newline ...
+                                + "for release. The currently-installed version on your system is: " + currentVersionString + newline ...
                                 + "You can download the latest version of the ParaMonte MATLAB library from " + newline ...
                                 + newline ...
                                 + "    " + href(latestVersionFile) + newline ...
