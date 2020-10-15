@@ -5,11 +5,18 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.2.3 -- October 15, 2020  
+
+**Minor enhancements**  
+
++   Further enhancements and corrections to the 
+    `checkForUpdate()` function of `paramonte` module.  
+
 ### Version  2.2.2 -- October 14, 2020  
 
 **Minor enhancements**  
 
-+   The function `checkForUpdate()` method of `paramonte` now 
++   The `checkForUpdate()` function of `paramonte` module now 
     works fine when a newer version of the software is available.  
 
 ### Version  2.2.1 -- October 11, 2020  

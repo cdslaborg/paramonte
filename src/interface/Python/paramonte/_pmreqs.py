@@ -1982,8 +1982,8 @@ def checkForUpdate(package = "paramonte"):
 
         if newerVersionAvailable:
 
-            msg = ("A newer version (" + latestVersion + ") of the ParaMonte library appears to be available " + newline
-                + "on the PyPI repository. The currently-installed version is: " + currentVersion + newline
+            msg =("A newer version (" + latestVersion + ") of the ParaMonte::Python library appears to be " + newline
+                + "available on the PyPI repository. The currently-installed version is: " + currentVersion + newline
                 + "You can upgrade to the latest version by typing the following " + newline
                 + "on your Bash terminal or Anaconda command prompt: " + newline
                 + newline
@@ -1993,14 +1993,14 @@ def checkForUpdate(package = "paramonte"):
                 + newline
                 + "    !pip install --user --upgrade " + package + newline
                 + newline
-                + "To see the latest changes to the ParaMonte Python library, visit, " + newline
+                + "To see the latest changes to the ParaMonte::Python library, visit, " + newline
                 + newline
                 + "    " + pm.website.home.overview.changes.python.url
                 )
 
         else:
 
-            msg =   ( "Looks like you have a version of the ParaMonte library (" + currentVersion + ") " + newline
+            msg =   ( "Looks like you have a version of the ParaMonte::Python library (" + currentVersion + ") " + newline
                     + "that is newer than the PyPI version (" + latestVersion + "). Good for you!"
                     )
 
