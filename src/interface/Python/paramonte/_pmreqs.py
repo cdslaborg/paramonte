@@ -1969,8 +1969,8 @@ def checkForUpdate(package = "paramonte"):
         currentVersionTriplet = currentVersion.split(".")
         latestVersionTriplet = latestVersion.split(".")
         newerVersionAvailable = True
-        for current, latest in currentVersionTriplet, latestVersionTriplet:
-            if int(current)>latest:
+        for current, latest in zip(currentVersionTriplet, latestVersionTriplet):
+            if int(current)>int(latest):
                 newerVersionAvailable = False
                 return
                 break
