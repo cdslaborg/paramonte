@@ -623,7 +623,7 @@ def findMPI():
                                     + "For more information on how to install and use and run parallel " + newline
                                     + "ParaMonte simulations on Linux systems, visit: " + newline
                                     + newline
-                                    + pm.website.home.url
+                                    + "    " + pm.website.home.url
                             , marginTop = 1
                             , marginBot = 1
                             , methodName = pm.names.paramonte

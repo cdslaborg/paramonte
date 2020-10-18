@@ -52,7 +52,7 @@ class OutputFileContents:
     This is the **OutputFileContents** base class for the ParaMonte 
     sampler output file contents classes. **This class is NOT meant to be 
     directly accessed or called by the user of the ParaMonte library.**
-    However, its children, such the ParaDRAM sampler class will be 
+    However, its children, such as the ParaDRAM sampler class will be 
     indirectly accessible to the public. 
 
         **Parameters**

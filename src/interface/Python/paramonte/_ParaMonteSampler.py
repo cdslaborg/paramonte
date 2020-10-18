@@ -66,7 +66,7 @@ class ParaMonteSampler:
     This is the **ParaMonteSampler** base class for the ParaMonte
     sampler routines. This class is NOT meant to be directly accessed
     or called by the user of the ParaMonte library. However, its children,
-    such the ParaDRAM sampler class will be directly accessible to the public.
+    such as the ParaDRAM sampler class will be directly accessible to the public.
 
         **Parameters**
 
