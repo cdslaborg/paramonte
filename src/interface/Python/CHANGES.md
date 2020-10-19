@@ -5,6 +5,13 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.2.4 -- October 18, 2020  
+
+**Minor enhancements**  
+
++   The bug preventing the setting of 
+    SpecDRAM specifications is now fixed.  
+
 ### Version  2.2.3 -- October 15, 2020  
 
 **Minor enhancements**  

@@ -47,7 +47,7 @@ from _SpecBase import inputFileDelim
 #### SpecDRAM specification type-checking class
 ####################################################################################################################################
 
-def adaptiveUpdateCount(self,adaptiveUpdateCount):
+def adaptiveUpdateCount(adaptiveUpdateCount):
     if isinstance(adaptiveUpdateCount,int):
         return "adaptiveUpdateCount=" + str(adaptiveUpdateCount) + inputFileDelim
     else:
@@ -55,7 +55,7 @@ def adaptiveUpdateCount(self,adaptiveUpdateCount):
 
 ####################################################################################################################################
 
-def adaptiveUpdatePeriod(self,adaptiveUpdatePeriod):
+def adaptiveUpdatePeriod(adaptiveUpdatePeriod):
     if isinstance(adaptiveUpdatePeriod,int):
         return "adaptiveUpdatePeriod=" + str(adaptiveUpdatePeriod) + inputFileDelim
     else:
@@ -63,7 +63,7 @@ def adaptiveUpdatePeriod(self,adaptiveUpdatePeriod):
 
 ####################################################################################################################################
 
-def greedyAdaptationCount(self,greedyAdaptationCount):
+def greedyAdaptationCount(greedyAdaptationCount):
     if isinstance(greedyAdaptationCount,int):
         return "greedyAdaptationCount=" + str(greedyAdaptationCount) + inputFileDelim
     else:
@@ -71,7 +71,7 @@ def greedyAdaptationCount(self,greedyAdaptationCount):
 
 ####################################################################################################################################
 
-def delayedRejectionCount(self,delayedRejectionCount):
+def delayedRejectionCount(delayedRejectionCount):
     if isinstance(delayedRejectionCount,int):
         return "delayedRejectionCount=" + str(delayedRejectionCount) + inputFileDelim
     else:
@@ -79,7 +79,7 @@ def delayedRejectionCount(self,delayedRejectionCount):
 
 ####################################################################################################################################
 
-def burninAdaptationMeasure(self,burninAdaptationMeasure):
+def burninAdaptationMeasure(burninAdaptationMeasure):
     if isinstance(burninAdaptationMeasure,(int,float)):
         return "burninAdaptationMeasure=" + str(burninAdaptationMeasure) + inputFileDelim
     else:
@@ -87,7 +87,7 @@ def burninAdaptationMeasure(self,burninAdaptationMeasure):
 
 ####################################################################################################################################
 
-def delayedRejectionScaleFactorVec(self,delayedRejectionScaleFactorVec):
+def delayedRejectionScaleFactorVec(delayedRejectionScaleFactorVec):
     if isinstance(delayedRejectionScaleFactorVec,(list,tuple,np.ndarray)):
         return "delayedRejectionScaleFactorVec=" + str(np.array(list(delayedRejectionScaleFactorVec)).flatten()).strip('[]') + inputFileDelim
     else:
@@ -99,7 +99,7 @@ def helpme(specification = ""):
     """
     |
     Return help on the input ParaDRAM specification.
-    If no input is provided, then the weblink to the 
+    If no input is provided, then the web-link to the 
     entire list of ParaDRAM specifications will be output.
 
         **Parameters**
