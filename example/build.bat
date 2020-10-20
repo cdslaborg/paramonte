@@ -106,12 +106,15 @@ echo. -- !BUILD_NAME! - ParaMonte library type: !LTYPE!
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 set BTYPE=
-echo !ParaMonte_LIB_NAME!|find "release" >nul
+echo !ParaMonte_LIB_NAME! | find "release" >nul
 if errorlevel 1 (
-    echo !ParaMonte_LIB_NAME!|find "testing" >nul
+    for %%f in (find.exe) do @echo WARNING: Search failed using command %%~dpfnx$PATH:f
+    echo !ParaMonte_LIB_NAME! | find "testing" >nul
     if errorlevel 1 (
-        echo !ParaMonte_LIB_NAME!|find "debug" >nul
+        for %%f in (find.exe) do @echo WARNING: Search failed using command %%~dpfnx$PATH:f
+        echo !ParaMonte_LIB_NAME! | find "debug" >nul
         if errorlevel 1 (
+            for %%f in (find.exe) do @echo WARNING: Search failed using command %%~dpfnx$PATH:f
             echo.
             echo. -- !BUILD_NAME! - FATAL: ParaMonte library build could not be recognized.
             echo. -- !BUILD_NAME! - FATAL: Build failed. exiting...
@@ -236,7 +239,8 @@ if !TARGET_LANG!==Fortran (
         set COMPILER_NAME=mpiifort -fc=ifort
     )
 
-    set COMPILER_FLAGS=/fpp /DIS_COMPATIBLE_COMPILER
+    set COMPILER_FLAGS=/fpp
+    REM set COMPILER_FLAGS=/fpp /DIS_COMPATIBLE_COMPILER
     if !BTYPE!==debug   set COMPILER_FLAGS=!COMPILER_FLAGS! /debug:full /CB /Od /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /check:bounds /fpe-all:0 /Qdiag-error-limit:10 /Qdiag-disable:5268 /Qdiag-disable:7025 /Qtrapuv
     if !BTYPE!==release set COMPILER_FLAGS=!COMPILER_FLAGS! /O3 /Qip /Qipo /Qunroll /Qunroll-aggressive /Qinline-dllimport
     if !BTYPE!==testing set COMPILER_FLAGS=!COMPILER_FLAGS! /Od
