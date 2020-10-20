@@ -574,6 +574,13 @@ class ParaMonteSampler:
             #    #libName = libName.replace(buildMode,mode)
             #    #buildMode = mode
 
+        if pm.platform.isWin32:
+            from _pmreqs import buildInstructionNoteWindows
+            buildInstructionNote = buildInstructionNoteWindows
+        else:
+            from _pmreqs import buildInstructionNoteUnix
+            buildInstructionNote = newline + newline + buildInstructionNoteUnix
+
         if not libFound:
             if self.mpiEnabled:
                 parallelMsg = ("This happens frequently with parallel simulations and the " + newline
@@ -592,12 +599,7 @@ class ParaMonteSampler:
                             )
             else:
                 parallelMsg = "Please report this issue at:" + newline
-            if pm.platform.isWin32:
-                from _pmreqs import buildInstructionNoteWindows
-                buildMsg = buildInstructionNoteWindows
-            else:
-                from _pmreqs import buildInstructionNoteUnix
-                buildMsg = newline + newline + buildInstructionNoteUnix
+
             pm.abort( msg   = "Exhausted all possible ParaMonte dynamic library search" + newline
                             + "names but could not find any compatible library." + newline
                             #+ "Last search:" + newline
@@ -615,7 +617,7 @@ class ParaMonteSampler:
                             + newline
                             + "for instructions on how to build the ParaMonte library" + newline
                             + "object files on your system."
-                            + buildMsg
+                            + buildInstructionNote
                     , methodName = self._methodName
                     , marginTop = 1
                     , marginBot = 1
@@ -639,23 +641,21 @@ class ParaMonteSampler:
             logger = logging.Logger("catch_all")
             logger.error(e, exc_info=True)
 
-            from _pmreqs import buildInstructionNote
-            pm.abort( msg  = "Failed to load the required ParaMonte shared library." + newline
-                            + "This is either due to the incompatibility of the DLL with your" + newline
-                            + "platform or due to missing some required dependent libraries." + newline
-                            + "In either case, you can likely resolve this error by building." + newline
-                            + "the required ParaMonte shared libraries on your system." + newline
+            pm.abort( msg   = "Failed to load the required ParaMonte shared library. " + newline
+                            + "This is either due to the incompatibility of the DLL with your " + newline
+                            + "platform or due to missing some required dependent libraries. " + newline
+                            + "In either case, you can likely resolve this error by building. " + newline
+                            + "the required ParaMonte shared libraries on your system. " + newline
                             + newline
                             + "Visit," + newline
                             + newline
                             + "    " + pm.website.home.url + newline
                             + newline
-                            + "for instructions to build the ParaMonte library on your system." + newline
+                            + "for instructions to build the ParaMonte library on your system. " + newline
                             + newline
-                            + "Please report this issue at:" + newline
+                            + "Please report this issue at: " + newline
                             + newline
-                            + "    " + pm.website.github.issues.url + newline
-                            + newline
+                            + "    " + pm.website.github.issues.url
                             + buildInstructionNote
                     , methodName = self._methodName
                     , marginTop = 1

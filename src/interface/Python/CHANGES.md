@@ -5,6 +5,12 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
+### Version  2.2.5 -- October 20, 2020  
+
+**Minor enhancements**  
+
++   Enhancements to the messages for incompatible architecture.  
+
 ### Version  2.2.4 -- October 18, 2020  
 
 **Minor enhancements**  
