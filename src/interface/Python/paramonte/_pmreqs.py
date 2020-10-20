@@ -215,7 +215,7 @@ def verify(reset = True):
 
                 else:
 
-                    isYes = getUserResponse( msg =  "\n    Do you wish to download and install the MPI runtime library"
+                    isYes = getUserResponse( msg =  "\n    Do you wish to download and install the MPI runtime library "
                                                     "\n    (only needed for parallel simulations) on your system now (y/n)? "
                                             )
 
@@ -224,7 +224,7 @@ def verify(reset = True):
                         writeVerificationStatusFile("Testing")
                     else:
                         pm.note ( msg   = "Skipping the MPI library installation... " + newline
-                                        + "It is now the user's responsibility to ensure an MPI runtime library" + newline
+                                        + "It is now the user's responsibility to ensure an MPI runtime library " + newline
                                         + "exists on the system for parallel simulations. " + newline
                                        #+ "If you ever wish to install the MPI libraries via ParaMonte again, " + newline
                                        #+ "you can try: " + newline
@@ -232,7 +232,7 @@ def verify(reset = True):
                                        #+ "    import paramonte as pm" + newline
                                        #+ "    pm.verify()" + newline
                                        #+ newline
-                                        + "For more information visit:" + newline
+                                        + "For more information visit: " + newline
                                         + newline
                                         + "    " + pm.website.home.url
                         , marginTop = 1
