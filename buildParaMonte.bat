@@ -200,7 +200,7 @@ if !COMPILER_SUITE! NEQ intel (
 
 if not defined COMPILER_VERSION (
 
-    echo. -- !BUILD_SCRIPT_NAME! - Detecting intel compiler version...
+    echo. -- !BUILD_SCRIPT_NAME! - Detecting the Intel compiler version...
     cd .\bmake\
     call getCompilerVersion.bat || (
         echo. 
