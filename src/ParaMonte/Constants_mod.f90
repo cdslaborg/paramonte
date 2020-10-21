@@ -52,7 +52,7 @@ module Constants_mod
 
     implicit none
 
-    ! Constants for comutational accuracy
+    ! Constants for computational accuracy
 
     integer     , parameter :: SPR = real32                                             ! single precision real kind
     integer     , parameter :: DPR = real64                                             ! double precision real kind

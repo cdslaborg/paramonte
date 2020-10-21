@@ -155,7 +155,7 @@ contains
         procedure(integrand_proc)   :: getFunc
         procedure(integrator_proc)  :: integrate
         ierr = 0_IK
-        km = nRefinement-1
+        km = nRefinement - 1
         h(1) = 1.0_RK
         numFuncEval = 0_IK
         do refinementStage = 1, NSTEP
