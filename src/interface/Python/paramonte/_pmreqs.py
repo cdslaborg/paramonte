@@ -121,10 +121,10 @@ def verify(reset = True):
         verificationEnabled = True
     else:
         raise Exception ( newline
-                        + "The internal settings of the ParaMonte library appears to have been messed up" + newline
-                        + "potentially by the user, the operating system, Python, or other applications." + newline
-                        + "Please reinstall ParaMonte by typing the following commands" + newline
-                        + "on a Python-aware command-line interface:" + newline
+                        + "The internal settings of the ParaMonte library appear to have been messed up " + newline
+                        + "potentially by the user, the operating system, Python, or other applications. " + newline
+                        + "Please reinstall ParaMonte by typing the following commands " + newline
+                        + "on a Python-aware command-line interface: " + newline
                         + newline
                         + "    pip uninstall paramonte" + newline
                         + "    pip install --user --upgrade paramonte" + newline
