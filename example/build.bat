@@ -62,6 +62,8 @@
 set ERRORLEVEL=0
 cd %~dp0
 
+echo.
+
 setlocal EnableDelayedExpansion
 
 set BUILD_NAME=ParaMonte
@@ -108,14 +110,13 @@ echo. -- !BUILD_NAME! - ParaMonte library type: !LTYPE!
 set BTYPE=
 echo !ParaMonte_LIB_NAME! | find "release" >nul
 if errorlevel 1 (
-    for %%f in (find.exe) do @echo WARNING: Search failed using command %%~dpfnx$PATH:f
     echo !ParaMonte_LIB_NAME! | find "testing" >nul
     if errorlevel 1 (
-        for %%f in (find.exe) do @echo WARNING: Search failed using command %%~dpfnx$PATH:f
         echo !ParaMonte_LIB_NAME! | find "debug" >nul
         if errorlevel 1 (
-            for %%f in (find.exe) do @echo WARNING: Search failed using command %%~dpfnx$PATH:f
             echo.
+            for %%f in (find.exe) do @echo. -- !BUILD_NAME! - FATAL: Exhausted all builds in search of the ParaMonte library using command %%~dpfnx$PATH:f
+            echo. -- !BUILD_NAME! - FATAL: Please make sure the above path command to the Windows find.exe application.
             echo. -- !BUILD_NAME! - FATAL: ParaMonte library build could not be recognized.
             echo. -- !BUILD_NAME! - FATAL: Build failed. exiting...
             echo.
