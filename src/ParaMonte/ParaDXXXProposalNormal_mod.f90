@@ -45,13 +45,13 @@
 module ParaDRAMProposalNormal_mod
 !use Statistics_mod
 #define PARADRAM ParaDRAM
-#include "ParaDRAMProposal_mod.inc.f90"
+#include "ParaDXXXProposal_mod.inc.f90"
 #undef PARADRAM
 end module ParaDRAMProposalNormal_mod
 
 module ParaDISEProposalNormal_mod
 #define PARADISE ParaDISE
-#include "ParaDRAMProposal_mod.inc.f90"
+#include "ParaDXXXProposal_mod.inc.f90"
 #undef PARADISE
 end module ParaDISEProposalNormal_mod
 

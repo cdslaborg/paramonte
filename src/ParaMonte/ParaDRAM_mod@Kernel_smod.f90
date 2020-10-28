@@ -42,7 +42,7 @@
 
 submodule (ParaDRAM_mod) Kernel_smod
 #define PARADRAM ParaDRAM
-#include "ParaDRAM_mod@Kernel_smod.inc.f90"
+#include "ParaDXXX_mod@Kernel_smod.inc.f90"
 #undef PARADRAM
 end submodule Kernel_smod
 

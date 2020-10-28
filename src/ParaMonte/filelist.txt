@@ -97,6 +97,8 @@
   ParaDISE_mod.f90
   ParaDRAM_mod@Kernel_smod.f90
   ParaDISE_mod@Kernel_smod.f90
+  ParaDRAM_mod@Input_smod.f90
+  ParaDISE_mod@Input_smod.f90
   ParaDRAM_mod@Setup_smod.f90
   ParaDISE_mod@Setup_smod.f90
   ParaMonte@runParaDRAM.f90

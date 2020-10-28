@@ -52,7 +52,7 @@
 
 #else
 
-#error "Unrecognized sampler in ParaDRAM_mod.inc.f90"
+#error "Unrecognized sampler in ParaDXXX_mod.inc.f90"
 
 #endif
 
@@ -758,11 +758,11 @@ contains
 #if defined CAF_ENABLED || defined MPI_ENABLED
             blockSingleChainParallelism: if (self%SpecBase%ParallelizationModel%isSinglChain) then
 #define SINGLCHAIN_PARALLELISM
-#include "ParaDRAM_mod@Kernel_smod@nextMove.inc.f90"
+#include "ParaDXXX_mod@Kernel_smod@nextMove.inc.f90"
 #undef SINGLCHAIN_PARALLELISM
             else blockSingleChainParallelism
 #endif
-#include "ParaDRAM_mod@Kernel_smod@nextMove.inc.f90"
+#include "ParaDXXX_mod@Kernel_smod@nextMove.inc.f90"
 #if defined CAF_ENABLED || defined MPI_ENABLED
             end if blockSingleChainParallelism
 #endif

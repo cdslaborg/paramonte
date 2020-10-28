@@ -449,7 +449,7 @@ verify() {
         echo >&2 "    -- ${BUILD_NAME} - FATAL: If the source of the error cannot be identified,"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: consider a fresh installation of ParaMonte's required compilers by calling"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install --fresh"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --fresh"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL: If the error happens during the installation of ParaMonte prerequisites"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: it is possible that the current existing GCC compiler collection installed"

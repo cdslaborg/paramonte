@@ -126,13 +126,15 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonte_SRC_DIR}/ParaMonte_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDISEProposalAbstract_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAMProposalAbstract_mod.f90
-    ${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90
-    ${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90
+    ${ParaMonte_SRC_DIR}/ParaDXXXProposalUniform_mod.f90
+    ${ParaMonte_SRC_DIR}/ParaDXXXProposalNormal_mod.f90
     ${ParaMonte_SRC_DIR}/ParaMCMC_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDISE_mod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90
     ${ParaMonte_SRC_DIR}/ParaDISE_mod@Kernel_smod.f90
+    ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Input_smod.f90
+    ${ParaMonte_SRC_DIR}/ParaDISE_mod@Input_smod.f90
     ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90
     ${ParaMonte_SRC_DIR}/ParaDISE_mod@Setup_smod.f90
     ${ParaMonte_SRC_DIR}/ParaMonte@runParaDRAM.f90
@@ -140,15 +142,17 @@ SET(ParaMonte_SOURCE_FILES
    #${ParaMonte_SRC_DIR}/ParaDRAMProposalSymmetricUniform_mod.f90
 
 set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod.inc.f90)
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.inc.f90)
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISE_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.inc.f90)
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.inc.f90)
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod@nextMove.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Input_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXX_mod@Input_smod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISE_mod@Input_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXX_mod@Input_smod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXX_mod@Setup_smod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISE_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXX_mod@Setup_smod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXX_mod@Kernel_smod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXX_mod@Kernel_smod@nextMove.inc.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAM_mod@Kernel_smod@markovGen.inc.f90)
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90)
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposal_mod.inc.f90)
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalAbstract_mod.inc.f90)
-set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISEProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDRAMProposalAbstract_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalNormal_mod.f90    PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXXProposal_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90   PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXXProposal_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXXProposalAbstract_mod.inc.f90)
+set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISEProposalAbstract_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDXXXProposalAbstract_mod.inc.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaDISEProposalAbstract_mod.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/ParaMonteLogFunc_mod.f90)
 #set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAMProposalUniform_mod.f90  PROPERTIES OBJECT_DEPENDS ${ParaMonte_SRC_DIR}/Statistics_mod.f90)
@@ -201,6 +205,20 @@ set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISEProposalAbstract_mod.f9
 #set_source_files_properties(${ParaMonte_SRC_DIR}/SpecDRAM_DelayedRejectionCount_mod.f90               PROPERTIES OBJECT_DEPENDS "${ParaMonte_SRC_DIR}/SpecDRAM_DelayedRejectionCount_desc.f90               ")
 #set_source_files_properties(${ParaMonte_SRC_DIR}/SpecDRAM_BurninAdaptationMeasure_mod.f90             PROPERTIES OBJECT_DEPENDS "${ParaMonte_SRC_DIR}/SpecDRAM_BurninAdaptationMeasure_desc.f90             ")
 #set_source_files_properties(${ParaMonte_SRC_DIR}/SpecDRAM_DelayedRejectionScaleFactorVec_mod.f90      PROPERTIES OBJECT_DEPENDS "${ParaMonte_SRC_DIR}/SpecDRAM_DelayedRejectionScaleFactorVec_desc.f90      ")
+
+# enable debug info on IO source files
+
+#if (gnu_compiler)
+#    set(SRC_LEVEL_DEBUG_FLAG "-g")
+#elseif(intel_compiler)
+#    if (WIN32)
+#        set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Input_smod.f90 PROPERTIES COMPILE_FLAGS "/debug")
+#        set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISE_mod@Input_smod.f90 PROPERTIES COMPILE_FLAGS "/debug")
+#    elseif (UNIX OR APPLE)
+#        set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDRAM_mod@Input_smod.f90 PROPERTIES COMPILE_FLAGS "-g")
+#        set_source_files_properties(${ParaMonte_SRC_DIR}/ParaDISE_mod@Input_smod.f90 PROPERTIES COMPILE_FLAGS "-g") # ${INTEL_Fortran_DEBUG_FLAGS}
+#    endif()
+#endif()
 
 # search for static libraries
 

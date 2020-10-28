@@ -50,7 +50,7 @@
 
 #else
 
-#error "Unknown Proposal model in ParaDRAMProposal_mod.inc.f90"
+#error "Unknown Proposal model in ParaDXXXProposal_mod.inc.f90"
 
 #endif
 
