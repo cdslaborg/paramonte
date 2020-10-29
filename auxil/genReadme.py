@@ -696,7 +696,7 @@ readme["examples"]["matlab"] = readme["examples"]["title"] + """
         session and the Bash terminal from which you initiated the MATLAB session in **sudo** mode, **entirely**. 
         Then follow the instructions below on how to run your ParaMonte-enabled simulations.  
         <br>
-        **Note:**  
+        **Note (for MPI parallel library installation on macOS):**  
         On **macOS**, if you intend to install the MPI parallelization libraries via ParaMonte, 
         we highly recommended that you first quit your current sudo-mode MATLAB session, 
         then open a new bash command prompt and open MATLAB in normal (non-sudo) mode, 
