@@ -20,8 +20,8 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     of the final sample, which means significantly larger final sample sizes, without 
     compromising the i.i.d. property of the final refined sample. This behavior can 
     be reversed back to the original by specifying "max" or "maximum" along with 
-    the requested refinement method, `SampleRefinementMethod = "batchmeans max"` 
-    or `SampleRefinementMethod = "BatchMeans-max"` (case-insensitive).
+    the requested refinement method, `SampleRefinementMethod = "batchmeans-max"` 
+    or `SampleRefinementMethod = "BatchMeans-maximum"` (case-insensitive).
 
 ### Version  2.2.5 -- October 20, 2020  
 

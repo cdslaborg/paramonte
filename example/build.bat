@@ -316,8 +316,8 @@ if !PTYPE!==mpi (
     echo. -- !BUILD_NAME! - example compile command:    "!COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
                                                     call !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
                                                          echo. 
-                                                         echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the MPI-parallel application. exiting...
-                                                         echo. -- !BUILD_NAME! - FATAL: I you are using the Microsoft Visual Studio C/C++ Compiler to 
+                                                         echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the MPI-parallel application. 
+                                                         echo. -- !BUILD_NAME! - FATAL: If you are using the Microsoft Visual Studio C/C++ Compiler to 
                                                          echo. -- !BUILD_NAME! - FATAL: compile a C/C++ application try:
                                                          echo. -- !BUILD_NAME! - FATAL: 
                                                          echo. -- !BUILD_NAME! - FATAL:     build.bat msvc
@@ -331,7 +331,13 @@ if !PTYPE!==mpi (
 ) else (
                                                          !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
                                                          echo. 
-                                                         echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the application. exiting...
+                                                         echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the application. 
+                                                         echo. -- !BUILD_NAME! - FATAL: If you are using the Microsoft Visual Studio C/C++ Compiler to 
+                                                         echo. -- !BUILD_NAME! - FATAL: compile a C/C++ application try:
+                                                         echo. -- !BUILD_NAME! - FATAL: 
+                                                         echo. -- !BUILD_NAME! - FATAL:     build.bat msvc
+                                                         echo. -- !BUILD_NAME! - FATAL: 
+                                                         echo. -- !BUILD_NAME! - FATAL: Exiting the ParaMonte example build script...
                                                          echo. 
                                                          cd %~dp0
                                                          set ERRORLEVEL=1
