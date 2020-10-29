@@ -200,9 +200,22 @@ Example usage instructions
         pm.verify(); % verify the integrity of the ParaMonte library on your system.
         ```  
         If needed, follow any extra instructions provided by the library on your MATLAB command prompt. 
+        If you do not intend to run simulations in parallel say NO (`n`) to any MPI library installations. 
         Before beginning to use the ParaMonte library, we strongly recommend that you close your current MATLAB 
         session and the Bash terminal from which you initiated the MATLAB session in **sudo** mode, **entirely**. 
         Then follow the instructions below on how to run your ParaMonte-enabled simulations.  
+        **Note**  
+        On **macOS**, if you intend to install the MPI parallelization libraries via ParaMonte, 
+        we highly recommended that you first quit your current sudo-mode MATLAB session, 
+        then open a new bash command prompt and open MATLAB in normal (non-sudo) mode, 
+        and type the following commands in your MATLAB session,  
+        ```matlab  
+        addpath(genpath("./"),"-begin"); % add the ParaMonte library directories to MATLAB's list of search paths.
+        pm = paramonte(); % instantiate an object of class paramonte.
+        pm.verify(); % verify the integrity of the ParaMonte library on your system.
+        ```  
+        Then, answer YES (`y`) to any permission requests by the ParaMonte library to install the MPI libraries on your system.  
+        **The superuser (`sudo`) permission is only required for the installation of the ParaMonte library and not the MPI libraries**.  
 
 +   **Running the ParaMonte simulations**  
     For complete up-to-date detailed instructions, visit: https://www.cdslab.org/paramonte/notes/run/matlab/

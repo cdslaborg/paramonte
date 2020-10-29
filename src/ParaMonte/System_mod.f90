@@ -145,7 +145,10 @@ contains
         implicit none
         class(OS_type)  , intent(out)   :: OS
         character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME // "@queryOS()"
+
+#if !defined OS_IS_WINDOWS && !defined OS_IS_DARWIN && !defined OS_IS_LINUX
         character(:)    , allocatable   :: osname
+#endif
 
         OS%Err%occurred = .false.
         OS%Err%msg = ""
