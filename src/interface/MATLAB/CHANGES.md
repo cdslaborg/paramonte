@@ -5,11 +5,26 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
-### Version  2.2.0 -- October 28, 2020  
+### Version  2.2.0 -- October 29, 2020  
 
-**Minor enhancements**  
+**Enhancements**  
 
-+   .  
++   The `cmake` software dependency installation failure now 
+    does not nullify the installation of other dependencies.
+
++   The IO debugging info of all ParaMonte samplers have been enhanced. 
+    In cases of wrong syntax or syntax-breaking input values in the simulation 
+    output files, the error messages are now more informative and point directly 
+    to the exact location of of error in the input file.  
+
++   The Integrated Autocorrelation (IAC) for sample refinement in ParaDRAM 
+    sampler of ParaMonte is now set to the average of all variables' IAC values 
+    instead of the maximum IAC value. This will lead to less aggressive decorrelation 
+    of the final sample, which means significantly larger final sample sizes, without 
+    compromising the i.i.d. property of the final refined sample. This behavior can 
+    be reversed back to the original by specifying "max" or "maximum" along with 
+    the requested refinement method, `SampleRefinementMethod = "batchmeans max"` 
+    or `SampleRefinementMethod = "BatchMeans-max"` (case-insensitive).
 
 ### Version  2.1.3 -- October 15, 2020  
 
