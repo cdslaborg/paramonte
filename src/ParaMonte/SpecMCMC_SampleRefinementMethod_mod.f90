@@ -126,10 +126,17 @@ contains
                     &IAC computed from the verbose format of the Markov chain. While the resulting refined sample will be fully &
                     &decorrelated, the size of the refined sample may be smaller than the default choice in the first case in the &
                     &above.\n\n&
-        &Note that in order to obtain i.i.d. samples from a multidimensional chain, "//methodName//" will use the maximum of &
-        &IAC among all dimensions of the chain to refine the chain. Also, note that the value specified for sampleRefinementCount &
-        &is used only when the variable sampleSize < 0, otherwise, it will be ignored. &
-        &The default value is sampleRefinementMethod = '" // SampleRefinementMethodObj%def // "'. &
+        &Note that in order to obtain i.i.d. samples from a multidimensional chain, "//methodName//" will use the average of &
+        &IAC among all dimensions of the chain to refine the chain. If the maximum, minimum, or the median of IACs is preferred &
+        &add '-max' (or '-maximum'), '-min' (or '-minimum'), '-med' (or '-median'), respectively, to the value of &
+        &sampleRefinementMethod. For example, \n\n&
+        &    sampleRefinementMethod = '" // BATCH_MEANS_METHOD_NAME // "-max'\n\n&
+        &or, \n\n&
+        &    sampleRefinementMethod = '" // BATCH_MEANS_METHOD_NAME // "-compact-max'\n\n&
+        &or, \n\n&
+        &    sampleRefinementMethod = '" // BATCH_MEANS_METHOD_NAME // "-max-compact'\n\n&
+        &Also, note that the value specified for sampleRefinementCount is used only when the variable sampleSize < 0, otherwise, &
+        &it will be ignored. The default value is sampleRefinementMethod = '" // SampleRefinementMethodObj%def // "'. &
         &Note that the input values are case-insensitive and white-space characters are ignored."
     end function constructSampleRefinementMethod
 
