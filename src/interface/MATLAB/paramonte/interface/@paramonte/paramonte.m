@@ -2225,7 +2225,7 @@ classdef paramonte %< dynamicprops
                     self.Err.marginTop = 1;
                     self.Err.marginBot = 1;
                     self.Err.warn();
-                    return
+                    %return
                 end
 
                 [~,cmakeVersion] = system("cmake --version", "-echo");
@@ -2240,7 +2240,7 @@ classdef paramonte %< dynamicprops
                 else
                     self.Err.msg = self.getMacosInstallHelpMsg("cmake");
                     self.Err.warn();
-                    return;
+                    %return;
                 end
 
             end
@@ -2256,7 +2256,7 @@ classdef paramonte %< dynamicprops
             if errorOccurred1 || errorOccurred2
                 self.Err.msg = self.getMacosInstallHelpMsg("GNU Compiler Collection");
                 self.Err.warn();
-                return;
+                %return;
             end
 
             %%%% open-mpi
