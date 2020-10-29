@@ -209,10 +209,10 @@ Example usage instructions
         **Note (for MPI parallel library installation on macOS):**  
         On **macOS**, if you intend to install the MPI parallelization libraries via ParaMonte, 
         we highly recommended that you first quit your current sudo-mode MATLAB session, 
-        then open a new bash command prompt and open MATLAB in normal (non-sudo) mode, 
-        and type the following commands in your MATLAB session,  
+        then open a new Bash command prompt and open a MATLAB session from the Bash terminal, 
+        this time in normal (non-sudo) mode, then type the following commands in your MATLAB session,  
         ```matlab  
-        addpath(genpath("./"),"-begin"); % add the ParaMonte library directories to MATLAB's list of search paths.
+        addpath(genpath("./"),"-begin"); % add the ParaMonte library root directory to MATLAB's list of search paths.
         pm = paramonte(); % instantiate an object of class paramonte.
         pm.verify(); % verify the integrity of the ParaMonte library on your system.
         ```  
