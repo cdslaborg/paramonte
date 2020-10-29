@@ -5,9 +5,14 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.4.0** -- Work in progress
+### **Version 1.4.0** -- October 29, 2020
 
 **Enhancements**  
+
++   The IO debugging info of all ParaMonte samplers have been enhanced. 
+    In cases of wrong syntax or syntax-breaking input values in the simulation 
+    output files, the error messages are now more informative and point directly 
+    to the exact location of of error in the input file.  
 
 +   The Integrated Autocorrelation (IAC) for sample refinement in ParaDRAM 
     sampler of ParaMonte is now set to the average of all variables' IAC values 
