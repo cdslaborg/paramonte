@@ -86,8 +86,8 @@ contains
         AdaptiveUpdateCountObj%null = NULL_IK
         AdaptiveUpdateCountObj%desc = &
         "adaptiveUpdateCount represents the total number of adaptive updates that will be made &
-        &to the parameters of the proposal distribution, to increase the efficiency of the sampler &
-        &thus increasing the sampling efficiency of " // methodName // ". &
+        &to the parameters of the proposal distribution to increase the efficiency of the sampler &
+        &thus increasing the overall sampling efficiency of " // methodName // ". &
         &Every adaptiveUpdatePeriod number of calls to the objective function, the parameters of the proposal distribution &
         &will be updated until either the total number of adaptive updates reaches the value of adaptiveUpdateCount. &
         &This variable must be a non-negative integer. As a rule of thumb, it may be appropriate to &
