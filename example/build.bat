@@ -236,9 +236,9 @@ if !TARGET_LANG!==Fortran (
     set LINKER_FLAGS=/link /out:!EXE_NAME!
     set SRC_FILES=paramonte.!SEXT! !SRC_FILES!
 
-    if !PTYPE!==mpi (
-        set COMPILER_NAME=mpiifort -fc=ifort
-    )
+    REM if !PTYPE!==mpi (
+    REM     set COMPILER_NAME=mpiifort -fc=ifort
+    REM )
 
     set COMPILER_FLAGS=/fpp
     REM set COMPILER_FLAGS=/fpp /DIS_COMPATIBLE_COMPILER
@@ -312,37 +312,37 @@ if not defined ParaMonteExample_EXE_ENABLED set ParaMonteExample_EXE_ENABLED=tru
 
 if !ParaMonteExample_EXE_ENABLED!==false goto LABEL_ParaMonteExample_RUN_ENABLED
 
+echo. -- !BUILD_NAME! - example compile command:    "!COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
 if !PTYPE!==mpi (
-    echo. -- !BUILD_NAME! - example compile command:    "!COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS!"
-                                                    call !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
-                                                         echo. 
-                                                         echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the MPI-parallel application. 
-                                                         echo. -- !BUILD_NAME! - FATAL: If you are using the Microsoft Visual Studio C/C++ Compiler to 
-                                                         echo. -- !BUILD_NAME! - FATAL: compile a C/C++ application try:
-                                                         echo. -- !BUILD_NAME! - FATAL: 
-                                                         echo. -- !BUILD_NAME! - FATAL:     build.bat msvc
-                                                         echo. -- !BUILD_NAME! - FATAL: 
-                                                         echo. -- !BUILD_NAME! - FATAL: Exiting the ParaMonte example build script...
-                                                         echo. 
-                                                         cd %~dp0
-                                                         set ERRORLEVEL=1
-                                                         exit /B 1
-                                                    )
+                                                call !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
+                                                     echo. 
+                                                     echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the MPI-parallel application. 
+                                                     echo. -- !BUILD_NAME! - FATAL: If you are using the Microsoft Visual Studio C/C++ Compiler to 
+                                                     echo. -- !BUILD_NAME! - FATAL: compile a C/C++ application try:
+                                                     echo. -- !BUILD_NAME! - FATAL: 
+                                                     echo. -- !BUILD_NAME! - FATAL:     build.bat msvc
+                                                     echo. -- !BUILD_NAME! - FATAL: 
+                                                     echo. -- !BUILD_NAME! - FATAL: Exiting the ParaMonte example build script...
+                                                     echo. 
+                                                     cd %~dp0
+                                                     set ERRORLEVEL=1
+                                                     exit /B 1
+                                                )
 ) else (
-                                                         !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
-                                                         echo. 
-                                                         echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the application. 
-                                                         echo. -- !BUILD_NAME! - FATAL: If you are using the Microsoft Visual Studio C/C++ Compiler to 
-                                                         echo. -- !BUILD_NAME! - FATAL: compile a C/C++ application try:
-                                                         echo. -- !BUILD_NAME! - FATAL: 
-                                                         echo. -- !BUILD_NAME! - FATAL:     build.bat msvc
-                                                         echo. -- !BUILD_NAME! - FATAL: 
-                                                         echo. -- !BUILD_NAME! - FATAL: Exiting the ParaMonte example build script...
-                                                         echo. 
-                                                         cd %~dp0
-                                                         set ERRORLEVEL=1
-                                                         exit /B 1
-                                                    )
+                                                     !COMPILER_NAME! !COMPILER_FLAGS! !SRC_FILES! !ParaMonte_LIB_NAME!.lib !LINKER_FLAGS! || (
+                                                     echo. 
+                                                     echo. -- !BUILD_NAME! - FATAL: Failed to compile and link the application. 
+                                                     echo. -- !BUILD_NAME! - FATAL: If you are using the Microsoft Visual Studio C/C++ Compiler to 
+                                                     echo. -- !BUILD_NAME! - FATAL: compile a C/C++ application try:
+                                                     echo. -- !BUILD_NAME! - FATAL: 
+                                                     echo. -- !BUILD_NAME! - FATAL:     build.bat msvc
+                                                     echo. -- !BUILD_NAME! - FATAL: 
+                                                     echo. -- !BUILD_NAME! - FATAL: Exiting the ParaMonte example build script...
+                                                     echo. 
+                                                     cd %~dp0
+                                                     set ERRORLEVEL=1
+                                                     exit /B 1
+                                                )
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

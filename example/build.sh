@@ -145,11 +145,13 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"_fortran_".* ]]; then
     EXAMPLE_LANGUAGE=Fortran
     if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* ]]; then
         PM_COMPILER_SUITE=intel
-        COMPILER_LIST=ifort
+        #COMPILER_LIST="ifort gfortran"
+        declare -a COMPILER_LIST=("ifort" "gfortran")
     fi
     if [[ "$PMLIB_FULL_NAME" =~ .*"_gnu_".* ]]; then
         PM_COMPILER_SUITE=gnu
-        COMPILER_LIST=gfortran
+        #COMPILER_LIST="gfortran ifort"
+        declare -a COMPILER_LIST=("gfortran" "ifort")
     fi
 fi
 
@@ -158,11 +160,13 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"_c_".* ]]; then
     EXAMPLE_LANGUAGE=C
     if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* ]]; then
         PM_COMPILER_SUITE=intel
-        COMPILER_LIST=icc
+        #COMPILER_LIST="icc gcc"
+        declare -a COMPILER_LIST=("icc" "gcc")
     fi
     if [[ "$PMLIB_FULL_NAME" =~ .*"_gnu_".* ]]; then
         PM_COMPILER_SUITE=gnu
-        COMPILER_LIST=gcc
+        #COMPILER_LIST="gcc icc"
+        declare -a COMPILER_LIST=("gcc" "icc")
     fi
 fi
 
@@ -171,11 +175,13 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"_cpp_".* ]]; then
     EXAMPLE_LANGUAGE=C++
     if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* ]]; then
         PM_COMPILER_SUITE=intel
-        COMPILER_LIST=icpc
+        #COMPILER_LIST="icpc g++"
+        declare -a COMPILER_LIST=("icpc" "g++")
     fi
     if [[ "$PMLIB_FULL_NAME" =~ .*"_gnu_".* ]]; then
         PM_COMPILER_SUITE=gnu
-        COMPILER_LIST=g++
+        #COMPILER_LIST="g++ icpc"
+        declare -a COMPILER_LIST=("g++" "icpc")
     fi
 fi
 
@@ -244,17 +250,17 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"mpi".* ]]; then
 fi
 echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - MPI_ENABLED: ${MPI_ENABLED}"
 
-if [ "${MPI_ENABLED}" = "true" ]; then
-    if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then
-        COMPILER_LIST="mpiifort mpifort"
-    fi
-    if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then
-        COMPILER_LIST="mpiicc mpicc"
-    fi
-    if [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
-        COMPILER_LIST="mpiicpc mpicxx mpic++ mpicc"
-    fi
-fi
+#if [ "${MPI_ENABLED}" = "true" ]; then
+#    if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then
+#        COMPILER_LIST="mpiifort mpifort"
+#    fi
+#    if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then
+#        COMPILER_LIST="mpiicc mpicc"
+#    fi
+#    if [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
+#        COMPILER_LIST="mpiicpc mpicxx mpic++ mpicc"
+#    fi
+#fi
 
 ####################################################################################################################################
 # CAF
@@ -282,8 +288,14 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"cafdistributed".* ]]; then
 fi
 echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - CAFTYPE: ${CAFTYPE}"
 
-if [ "${PM_COMPILER_SUITE}" = "gnu" ] && [ "${CAF_ENABLED}" = "true" ]; then
-    COMPILER_LIST=caf
+if [[ "$PMLIB_FULL_NAME" =~ .*"_gnu_".* && "${CAF_ENABLED}" = "true" ]]; then
+    #COMPILER_LIST=caf
+    declare -a COMPILER_LIST=("caf")
+fi
+
+if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* && "${CAF_ENABLED}" = "true" ]]; then
+    #COMPILER_LIST=ifort
+    declare -a COMPILER_LIST=("ifort")
 fi
 
 ####################################################################################################################################
@@ -296,22 +308,36 @@ echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - inferred compiler choice(s): 
 if [ -z ${USER_SELECTED_COMPILER+x} ]; then
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - user-selected compiler/linker: none"
 else
-    COMPILER_LIST="${USER_SELECTED_COMPILER}"
+    #COMPILER_LIST="${USER_SELECTED_COMPILER}"
+    declare -a COMPILER_LIST=("${USER_SELECTED_COMPILER}")
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - user-selected compiler/linker: ${USER_SELECTED_COMPILER}"
 fi
 
 if [ -z ${USER_SELECTED_COMPILER+x} ] && [ -z ${USER_SELECTED_COMPILER_FLAGS+x} ]; then
     if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
-        if [ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then COMPILER_FLAGS=${INTEL_C_COMPILER_FLAGS}; fi
-        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -fpp"; fi # -DIS_COMPATIBLE_COMPILER
+        if [ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
+            #COMPILER_FLAGS_LIST=${INTEL_C_COMPILER_FLAGS}
+            declare -a COMPILER_FLAGS_LIST=("${INTEL_C_COMPILER_FLAGS}" "${GNU_C_COMPILER_FLAGS}")
+        fi
+        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then # -DIS_COMPATIBLE_COMPILER
+            #COMPILER_FLAGS_LIST="${INTEL_Fortran_COMPILER_FLAGS} -fpp"
+            declare -a COMPILER_FLAGS_LIST=("${INTEL_Fortran_COMPILER_FLAGS} -fpp" "${GNU_Fortran_COMPILER_FLAGS} -cpp")
+        fi
     fi
     if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
-        if [ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then COMPILER_FLAGS=${GNU_C_COMPILER_FLAGS}; fi
-        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then COMPILER_FLAGS="${GNU_Fortran_COMPILER_FLAGS} -cpp"; fi # -DIS_COMPATIBLE_COMPILER
+        if [ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
+            #COMPILER_FLAGS_LIST=${GNU_C_COMPILER_FLAGS}
+            declare -a COMPILER_FLAGS_LIST=("${GNU_C_COMPILER_FLAGS}" "${INTEL_C_COMPILER_FLAGS}")
+        fi
+        if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then
+            #COMPILER_FLAGS_LIST="${GNU_Fortran_COMPILER_FLAGS} -cpp"
+            declare -a COMPILER_FLAGS_LIST=("${GNU_Fortran_COMPILER_FLAGS} -cpp" "${INTEL_Fortran_COMPILER_FLAGS} -fpp")
+        fi # -DIS_COMPATIBLE_COMPILER
     fi
-    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - inferred compiler/linker flags(s): ${COMPILER_FLAGS}"
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - inferred compiler/linker flags(s): ${COMPILER_FLAGS_LIST}"
 else
-    COMPILER_FLAGS="${USER_SELECTED_COMPILER_FLAGS}"
+    #COMPILER_FLAGS_LIST="${USER_SELECTED_COMPILER_FLAGS}"
+    declare -a COMPILER_FLAGS_LIST=("${USER_SELECTED_COMPILER_FLAGS}")
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - user-selected compiler/linker flags: ${USER_SELECTED_COMPILER_FLAGS}"
 fi
 
@@ -322,8 +348,14 @@ fi
 BUILD_SUCCEEDED=false
 RUN_FILE_NAME="run.sh"
 
-for COMPILER in ${COMPILER_LIST}
+#for COMPILER in ${COMPILER_LIST}
+COMPILER_LIST_LEN=${#COMPILER_LIST[@]}
+COMPILER_LIST_LEN_MINUS_ONE="$(($COMPILER_LIST_LEN-1))"
+for i in $(seq 0 $COMPILER_LIST_LEN_MINUS_ONE)
 do
+
+    COMPILER="${COMPILER_LIST[$i]}"
+    COMPILER_FLAGS="${COMPILER_FLAGS_LIST[$i]}"
 
     echo >&2
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - compiling ParaMonte example with ${COMPILER}"
@@ -335,19 +367,17 @@ do
     LINKER_FLAGS=
     if ([ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]) && [ "${PM_LIB_TYPE}" = "static" ]; then
         if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
+            LINKER="ifort"
             LINKER_FLAGS="-nofor_main"
-            if [ "${MPI_ENABLED}" = "true" ]; then
-                LINKER="mpiifort" # xxx point of weakness: assumes intel mpi to have been installed
-            else
-                LINKER="ifort"
-            fi
+            #if [ "${MPI_ENABLED}" = "true" ]; then
+            #    LINKER="mpiifort" # xxx point of weakness: assumes intel mpi to have been installed
+            #fi
         fi
         if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
-            if [ "${MPI_ENABLED}" = "true" ]; then
-                LINKER="mpifort"
-            else
-                LINKER="gfortran"
-            fi
+            LINKER="gfortran"
+            #if [ "${MPI_ENABLED}" = "true" ]; then
+            #    LINKER="mpifort"
+            #fi
         fi
     fi
 
