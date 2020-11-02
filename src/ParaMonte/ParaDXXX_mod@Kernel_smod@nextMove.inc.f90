@@ -57,7 +57,7 @@
                                                                             , counterDRS    = counterDRS &
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1) &
                                                                             )
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif
 

@@ -466,7 +466,7 @@ contains
             return
         end if
 
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
             block
 #if defined PARADRAM
                 use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr

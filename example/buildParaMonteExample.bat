@@ -73,11 +73,33 @@ if not exist !ParaMonte_BIN_DIR! (
 set LANG_NAME=
 set LANG_IS_C=false
 set LANG_IS_CPP=false
+set LANG_IS_Fortran=false
 set LANG_IS_MATLAB=false
 set LANG_IS_Python=false
-set LANG_IS_Fortran=false
+set LANG_IS_R=false
 set LANG_IS_DYNAMIC=false
 set LANG_IS_COMPILED=false
+
+if !INTERFACE_LANGUAGE!==c (
+    set LANG_IS_COMPILED=true
+    set LANG_FILE_EXT=c
+    set LANG_IS_C=true
+    set LANG_NAME=C
+)
+
+if !INTERFACE_LANGUAGE!==c++ (
+    set LANG_IS_COMPILED=true
+    set LANG_FILE_EXT=cpp
+    set LANG_IS_CPP=true
+    set LANG_NAME=C++
+)
+
+if !INTERFACE_LANGUAGE!==fortran (
+    set LANG_IS_COMPILED=true
+    set LANG_IS_Fortran=true
+    set LANG_FILE_EXT=f90
+    set LANG_NAME=Fortran
+)
 
 if !INTERFACE_LANGUAGE!==matlab (
     set LANG_IS_DYNAMIC=true
@@ -103,25 +125,16 @@ if !INTERFACE_LANGUAGE!==python (
     REM )
 )
 
-if !INTERFACE_LANGUAGE!==fortran (
-    set LANG_IS_COMPILED=true
-    set LANG_IS_Fortran=true
-    set LANG_FILE_EXT=f90
-    set LANG_NAME=Fortran
-)
-
-if !INTERFACE_LANGUAGE!==c++ (
-    set LANG_IS_COMPILED=true
-    set LANG_FILE_EXT=cpp
-    set LANG_IS_CPP=true
-    set LANG_NAME=C++
-)
-
-if !INTERFACE_LANGUAGE!==c (
-    set LANG_IS_COMPILED=true
-    set LANG_FILE_EXT=c
-    set LANG_IS_C=true
-    set LANG_NAME=C
+if !INTERFACE_LANGUAGE!==r (
+    set LANG_IS_DYNAMIC=true
+    set LANG_IS_R=true
+    set LANG_FILE_EXT=R
+    set LANG_NAME=R
+    REM set ParaMonteR_BIN_ROOT_DIR=!ParaMonte_BIN_DIR!\libparamonte_R
+    REM echo.-- ParaMonte - The ParaMonte R binaries root directory: !ParaMonteR_BIN_ROOT_DIR!
+    REM if not exist !ParaMonteR_BIN_ROOT_DIR! (
+    REM     mkdir "!ParaMonteR_BIN_ROOT_DIR!\"
+    REM )
 )
 
 if not defined LANG_NAME (
@@ -169,8 +182,9 @@ for %%e in (!EXAM_LIST!) do (
     REM The ParaMonte library kernel files
 
     set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_BLD_DIR_CURRENT!
-    if !LANG_IS_Python!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte
     if !LANG_IS_MATLAB!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte\lib
+    if !LANG_IS_Python!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte
+    if !LANG_IS_R!==true set ParaMonteExample_LIB_DIR_CURRENT=!ParaMonteExample_LIB_DIR_CURRENT!\paramonte\lib
 
     echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library files...
     echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonte_LIB_DIR!                %= no need for final slash here =%

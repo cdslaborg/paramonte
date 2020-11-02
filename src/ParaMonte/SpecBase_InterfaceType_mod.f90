@@ -94,6 +94,8 @@ contains
         InterfaceTypeObj%def = "The MATLAB Programming Language."
 #elif defined PYTHON_ENABLED
         InterfaceTypeObj%def = "The Python Programming Language."
+#elif defined R_ENABLED
+        InterfaceTypeObj%def = "The R Programming Language."
 #else
 #error "Undefined ParaMonte interface type in SpecBase_InterfaceType_mod.f90"
 #endif

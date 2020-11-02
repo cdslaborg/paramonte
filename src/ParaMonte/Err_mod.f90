@@ -46,7 +46,7 @@ module Err_mod
 
     logical     , parameter :: ERR_HANDLING_REQUESTED = .false.
 
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
     logical     , parameter :: SOFT_EXIT_ENABLED = .true.
 #else
     logical     , parameter :: SOFT_EXIT_ENABLED = .false.

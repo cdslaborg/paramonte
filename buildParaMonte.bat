@@ -175,6 +175,7 @@ if !INTERFACE_LANGUAGE!==c++ set FPP_LANG_FLAG=/define:CPP_ENABLED
 if !INTERFACE_LANGUAGE!==fortran set FPP_LANG_FLAG=/define:FORTRAN_ENABLED
 if !INTERFACE_LANGUAGE!==matlab set FPP_LANG_FLAG=/define:MATLAB_ENABLED
 if !INTERFACE_LANGUAGE!==python set FPP_LANG_FLAG=/define:PYTHON_ENABLED
+if !INTERFACE_LANGUAGE!==r set FPP_LANG_FLAG=/define:R_ENABLED
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: report build spec and setup flags
@@ -287,6 +288,7 @@ set      ParaMonteInterfaceC_SRC_DIR=!ParaMonteInterface_SRC_DIR!\C
 set    ParaMonteInterfaceCPP_SRC_DIR=!ParaMonteInterface_SRC_DIR!\C++
 set ParaMonteInterfaceMATLAB_SRC_DIR=!ParaMonteInterface_SRC_DIR!\MATLAB
 set ParaMonteInterfacePython_SRC_DIR=!ParaMonteInterface_SRC_DIR!\Python
+set      ParaMonteInterfaceR_SRC_DIR=!ParaMonteInterface_SRC_DIR!\R
 
 echo.
 echo. -- !BUILD_SCRIPT_NAME! - interface source files directories: !ParaMonteInterface_SRC_DIR!
@@ -296,6 +298,7 @@ for %%A in (
     !ParaMonteInterfaceCPP_SRC_DIR!
     !ParaMonteInterfaceMATLAB_SRC_DIR!
     !ParaMonteInterfacePython_SRC_DIR!
+    !ParaMonteInterfaceR_SRC_DIR!
     ) do (  if exist %%A (
                 echo. -- !BUILD_SCRIPT_NAME! - %%A exists.
             ) else (
@@ -660,9 +663,9 @@ cd %~dp0
 
 :LABEL_ParaMontePython
 
-if !LTYPE!==static goto LABEL_ParaMonteExamples
-if !CFI_ENABLED! NEQ true goto LABEL_ParaMonteExamples
-if !INTERFACE_LANGUAGE! NEQ python goto LABEL_ParaMonteExamples
+if !LTYPE!==static goto LABEL_ParaMonteR
+if !CFI_ENABLED! NEQ true goto LABEL_ParaMonteR
+if !INTERFACE_LANGUAGE! NEQ python goto LABEL_ParaMonteR
 
 :: setup Python library source files directory
 
@@ -690,6 +693,49 @@ call !ParaMonteInterfacePython_SRC_DIR!\buildParaMontePython.bat || (
 if !ERRORLEVEL!==1 (
     echo. 
     echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library Python build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
+cd %~dp0
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: generate ParaMonte library R build directories and object files
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:LABEL_ParaMonteR
+
+if !LTYPE!==static goto LABEL_ParaMonteExamples
+if !CFI_ENABLED! NEQ true goto LABEL_ParaMonteExamples
+if !INTERFACE_LANGUAGE! NEQ r goto LABEL_ParaMonteExamples
+
+:: setup Python library source files directory
+
+set ParaMonteInterfaceR_SRC_DIR=!ParaMonte_ROOT_DIR!src\interface\R
+if exist !ParaMonteInterfaceR_SRC_DIR! (
+    echo. -- !BUILD_SCRIPT_NAME! - R source files directory: !ParaMonteInterfaceR_SRC_DIR!
+) else (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: R source files directory does not exist: !ParaMonteInterfaceR_SRC_DIR!
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
+echo.
+
+call !ParaMonteInterfaceR_SRC_DIR!\buildParaMonteR.bat || (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library R build failed. exiting...
+    echo. 
+    cd %~dp0
+    set ERRORLEVEL=1
+    exit /B 1
+)
+if !ERRORLEVEL!==1 (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: the ParaMonte library R build failed. exiting...
     echo. 
     cd %~dp0
     set ERRORLEVEL=1

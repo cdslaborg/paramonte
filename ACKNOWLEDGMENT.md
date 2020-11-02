@@ -84,6 +84,32 @@ library's main publications as listed here:
         
     ```  
   
+### The ParaMonte MatDRAM MATLAB library  
+
++   Shashank Kumbhare, Amir Shahmoradi (2020). 
+    **MatDRAM: A pure-MATLAB Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler**. 
+    Journal of Computer Physics Communications (CPC), submitted, [**PDF link**](https://www.cdslab.org/pubs/2020_Kumbhare_I.pdf).  
+    **BibTeX citation entries:**  
+    ```text  
+        
+        @article{2020arXiv201004190K,
+                   author = {{Kumbhare}, Shashank and {Shahmoradi}, Amir},
+                    title = "{MatDRAM: A pure-MATLAB Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler}",
+                  journal = {arXiv e-prints},
+                 keywords = {Physics - Data Analysis, Statistics and Probability, Astrophysics - Instrumentation and Methods for Astrophysics, Computer Science - Computational Engineering, Finance, and Science, Quantitative Biology - Quantitative Methods, Statistics - Applications},
+                     year = 2020,
+                    month = oct,
+                      eid = {arXiv:2010.04190},
+                    pages = {arXiv:2010.04190},
+            archivePrefix = {arXiv},
+                   eprint = {2010.04190},
+             primaryClass = {physics.data-an},
+                   adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv201004190K},
+                  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+        }
+
+    ```  
+  
 <br>
   
 For more information, visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work).  

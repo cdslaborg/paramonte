@@ -58,7 +58,7 @@
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
     use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr
 #endif
 #if defined MPI_ENABLED
@@ -587,7 +587,7 @@ contains
                                                         , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                    &
                                                         , adaptationMeasure         = AdaptationMeasure(dummy)                                                                  &
                                                         )
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
                         if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
 #endif
                         if (self%isDryRun) SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
