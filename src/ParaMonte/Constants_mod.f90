@@ -43,9 +43,9 @@
 module Constants_mod
 
     use, intrinsic :: iso_fortran_env, only: real32, real64, int32, int64
-    use, intrinsic ::   iso_c_binding, only: CIK => c_int32_t, CRK => c_double
+    use, intrinsic :: iso_c_binding, only: CIK => c_int32_t, CRK => c_double
 #if defined CFI_ENABLED
-    use, intrinsic ::   iso_c_binding, only: IK => c_int32_t, RK => c_double
+    use, intrinsic :: iso_c_binding, only: IK => c_int32_t, RK => c_double
 #else
     use, intrinsic :: iso_fortran_env, only: IK => int32, RK => real64
 #endif

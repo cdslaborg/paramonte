@@ -151,6 +151,58 @@ subroutine runParaDRAM  ( ndim          &
 
 end subroutine runParaDRAM
 
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+! The procedural Fortran interface to ParaDRAM with fixed global name
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+subroutine runParaDRAMIntelGNU  ( ndim                  &
+                                , getLogFuncIntelGNU    &
+                                , inputFileVec          &
+                                , inputFileLen          &
+                                ) bind(C, name="runParaDRAMIntelGNU")
+#if defined DLL_ENABLED
+    !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAMIntelGNU
+#endif
+    use ParaMonteLogFunc_mod, only: getLogFuncIntelGNU_proc
+    use Constants_mod, only: IK, RK
+    use ParaDRAM_mod, only: ParaDRAM_type
+
+    implicit none
+
+    integer(IK), intent(in)                 :: ndim
+    procedure(getLogFuncIntelGNU_proc)      :: getLogFuncIntelGNU
+    character(1), dimension(*), intent(in)  :: inputFileVec
+    integer(IK), intent(in)                 :: inputFileLen
+    character(:), allocatable               :: inputFile
+    type(ParaDRAM_type)                     :: self
+    integer(IK)                             :: i
+
+    if (inputFileLen>0_IK) then
+        allocate( character(inputFileLen) :: inputFile)
+        do i = 1, inputFileLen
+            inputFile(i:i) = inputFileVec(i)
+        end do
+    end if
+
+    ! call runParaDRAM
+
+    call self%runSampler( ndim = ndim               &
+                        , getLogFunc = getLogFunc   &
+                        , inputFile = inputFile     &
+                        )
+
+contains
+
+    function getLogFunc(ndim,Point) result(logFunc)
+        implicit none
+        integer(IK) , intent(in)    :: ndim
+        real(RK)    , intent(in)    :: Point(ndim)
+        real(RK)                    :: logFunc
+        logFunc = getLogFuncIntelGNU(ndim,Point)
+    end function getLogFunc
+
+end subroutine runParaDRAMIntelGNU
+
 #endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

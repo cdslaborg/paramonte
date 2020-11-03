@@ -218,6 +218,10 @@ for %%e in (!EXAM_LIST!) do (
         echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT! %= final slash tells this is folder =%
         xcopy /s /Y "!ParaMonteExample_SRC_DIR!\build.bat" "!ParaMonteExample_BLD_DIR_CURRENT!\" || goto LABEL_copyErrorOccured
 
+        echo.-- ParaMonteExample!LANG_NAME! - from: !ParaMonteExample_SRC_DIR!         %= no need for final slash here =%
+        echo.-- ParaMonteExample!LANG_NAME! -   to: !ParaMonteExample_BLD_DIR_CURRENT! %= final slash tells this is folder =%
+        xcopy /s /Y "!ParaMonteExample_SRC_DIR!\build.sh" "!ParaMonteExample_BLD_DIR_CURRENT!\" || goto LABEL_copyErrorOccured
+
         REM The ParaMonte library example header/module files
 
         echo.-- ParaMonteExample!LANG_NAME! - copying the ParaMonte library interface files...

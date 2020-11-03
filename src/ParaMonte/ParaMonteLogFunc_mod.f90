@@ -65,6 +65,34 @@ module ParaMonteLogFunc_mod
         end function getLogFunc_proc
     end interface
 
+#if defined CFI_ENABLED
+
+    ! C-interoperable interface for the gradient of the objective function
+
+    abstract interface
+        subroutine getGradLogFunc4C_proc(ndim,Point,GradLogFunc) bind(C)
+            import :: IK, RK
+            integer(IK), intent(in), value  :: ndim
+            real(RK)   , intent(in)         :: Point(ndim)
+            real(RK)   , intent(out)        :: GradLogFunc(ndim)
+        end subroutine getGradLogFunc4C_proc
+    end interface
+
+#else
+
+    ! C-style Fortran interface for the the objective function
+    ! This is to be used only to bind the ParaMonte library compiled by the 
+    ! Intel Compilers with Fortran applications compiled with GNU compilers on Windows.
+
+    abstract interface
+        function getLogFuncIntelGNU_proc(ndim,Point) result(logFunc) bind(C)
+            import :: IK, RK
+            integer(IK), intent(in)         :: ndim
+            real(RK), intent(in)            :: Point(ndim)
+            real(RK)                        :: logFunc
+        end function getLogFuncIntelGNU_proc
+    end interface
+
     ! Fortran interface for the gradient of the objective function
 
     abstract interface
@@ -76,18 +104,6 @@ module ParaMonteLogFunc_mod
         end function getGradLogFunc_proc
     end interface
 
-
-    ! C-interoperable interface for the gradient of the objective function
-
-#if defined CFI_ENABLED
-    abstract interface
-        subroutine getGradLogFunc4C_proc(ndim,Point,GradLogFunc) bind(C)
-            import :: IK, RK
-            integer(IK), intent(in), value  :: ndim
-            real(RK)   , intent(in)         :: Point(ndim)
-            real(RK)   , intent(out)        :: GradLogFunc(ndim)
-        end subroutine getGradLogFunc4C_proc
-    end interface
 #endif
 
 end module ParaMonteLogFunc_mod

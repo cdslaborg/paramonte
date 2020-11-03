@@ -73,10 +73,11 @@ module paramonte
 
     ! This is the procedural interface to the ParaDRAM sampler routine of the ParaMonte library.
     ! By default, if the preprocessor flag IS_COMPATIBLE_COMPILER is not passed to the compiler,
-    ! the following procedural interface will be used.
+    ! the following procedural interfaces will be used, depending on the choice of Fortran compiler.
 
     use, intrinsic :: iso_fortran_env, only: IK => int32, RK => real64
     implicit none
+    public :: runParaDRAM, getLogFunc_proc
 
     ! The Fortran objective function interface (getLogFunc). Here, `proc` stands for the procedure interface.
 
@@ -88,6 +89,84 @@ module paramonte
             real(RK)                    :: logFunc
         end function getLogFunc_proc
     end interface
+
+#if defined __WIN64__ && __GFORTRAN__
+
+    ! NOTE: __WIN64__ is not automatically predefined by GNU Fortran compiler.
+    ! NOTE: The onus is on the user to define __WIN64__ at the time of compiling this code.
+
+    ! This is the procedural interface to the ParaDRAM sampler routine of the ParaMonte library, 
+    ! to be used by the GNU Fortran compiler in combination with the ParaMonte library prebuilt 
+    ! via the Intel compiler suite on Windows. This particular separate interface exists here 
+    ! because of the fundamental symbol exporting convention differences of the GNU and Intel 
+    ! Fortran compilers, with Intel making all symbols uppercase, while GNU making all 
+    ! symbols lowercase. 
+
+    abstract interface
+        ! C-style Fortran interface for the the objective function
+        ! This is to be used only to bind the ParaMonte library compiled by the 
+        ! Intel Compilers with Fortran applications compiled with GNU compilers on Windows.
+        function getLogFuncIntelGNU_proc(ndim,Point) result(logFunc) bind(C)
+            import :: IK, RK
+            integer(IK), intent(in)         :: ndim
+            real(RK), intent(in)            :: Point(ndim)
+            real(RK)                        :: logFunc
+        end function getLogFuncIntelGNU_proc
+    end interface
+
+    interface
+        subroutine runParaDRAMIntelGNU  ( ndim                  &
+                                        , getLogFuncIntelGNU    &
+                                        , inputFileVec          &
+                                        , inputFileLen          &
+                                        ) bind(C, name = "runParaDRAMIntelGNU")
+            import :: IK, getLogFuncIntelGNU_proc
+            implicit none
+            integer(IK) , intent(in)                :: ndim
+            procedure(getLogFuncIntelGNU_proc)      :: getLogFuncIntelGNU
+            character(1), dimension(*), intent(in)  :: inputFileVec
+            integer(IK) , intent(in)                :: inputFileLen
+        end subroutine runParaDRAMIntelGNU
+    end interface
+
+contains
+
+    subroutine runParaDRAM  ( ndim          &
+                            , getLogFunc    &
+                            , inputFile     &
+                            )
+        implicit none
+        integer(IK) , intent(in)            :: ndim
+        procedure(getLogFunc_proc)          :: getLogFunc
+        character(*), intent(in), optional  :: inputFile
+        character(1)                        :: inputFileVec(10000) ! (kind=c_char)
+        integer(IK)                         :: inputFileLen
+        integer(IK)                         :: i
+        if (present(inputFile)) then
+            inputFileLen = len(inputFile)
+            do i = 1, inputFileLen
+                inputFileVec(i) = inputFile(i:i)
+            end do
+        else
+            inputFileLen = 0
+        end if
+        call runParaDRAMIntelGNU( ndim = ndim & ! int(ndim, kind=CIK) &
+                                , getLogFuncIntelGNU = getLogFuncIntelGNU &
+                                , inputFileVec = inputFileVec(1:inputFileLen) &
+                                , inputFileLen = inputFileLen &
+                                )
+    contains
+        function getLogFuncIntelGNU(ndim,Point) result(logFunc) bind(C)
+            ! The C-style Fortran objective function wrapper.
+            implicit none
+            integer(IK) , intent(in)    :: ndim
+            real(RK)    , intent(in)    :: Point(ndim)
+            real(RK)                    :: logFunc
+            logFunc = getLogFunc(ndim,Point)
+        end function getLogFuncIntelGNU
+    end subroutine runParaDRAM
+
+#else
 
     interface
         subroutine runParaDRAM  ( ndim          &
@@ -101,6 +180,8 @@ module paramonte
             character(*), intent(in), optional  :: inputFile
         end subroutine runParaDRAM
     end interface
+
+#endif
 
 #endif
 
