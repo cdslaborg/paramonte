@@ -447,7 +447,7 @@ do
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - linking ParaMonte example with ${LINKER}"
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//.$SRC_EXT/.o} ${PMLIB_FULL_NAME} -o ${PM_EXAM_EXE_NAME}"
 
-    ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} "${SRC_FILES//.$SRC_EXT/.o}" "${PMLIB_FULL_NAME}" -o ${PM_EXAM_EXE_NAME}
+    ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//.$SRC_EXT/.o} "${PMLIB_FULL_NAME}" -o ${PM_EXAM_EXE_NAME}
 
     if [ $? -eq 0 ]; then
 
