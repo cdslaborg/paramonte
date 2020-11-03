@@ -42,29 +42,29 @@
 
 program main
 
-!use Test_Decoration_mod
-!use Test_Err_mod
-!use Test_DateTime_mod
-!use Test_String_mod
-!use Test_System_mod
-!use Test_FileList_mod
-!use Test_Path_mod
-!use Test_Timer_mod
-!use Test_TimerCPU_mod
-!use Test_RandomSeed_mod
-!use Test_FileContents_mod
-!use Test_File_mod
-!use Test_CrossCorr_mod
-!use Test_Matrix_mod
-!use Test_CorrCoef_mod
-!use Test_TranGaus_mod
-!use Test_Math_mod
-!use Test_Misc_mod
-!use Test_Batse_mod
-!use Test_Statistics_mod
+use Test_Decoration_mod
+use Test_Err_mod
+use Test_DateTime_mod
+use Test_String_mod
+use Test_System_mod
+use Test_FileList_mod
+use Test_Path_mod
+use Test_Timer_mod
+use Test_TimerCPU_mod
+use Test_RandomSeed_mod
+use Test_FileContents_mod
+use Test_File_mod
+use Test_CrossCorr_mod
+use Test_Matrix_mod
+use Test_CorrCoef_mod
+use Test_TranGaus_mod
+use Test_Math_mod
+use Test_Misc_mod
+use Test_Batse_mod
+use Test_Statistics_mod
 use Test_Optimization_mod
 !!use Test_EconomicsToolbox_mod
-!use Test_BandSpectrum_mod
+use Test_BandSpectrum_mod
 use Test_ParaMonte_mod
 
 use iso_fortran_env, only: compiler_options
