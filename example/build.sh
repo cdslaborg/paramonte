@@ -168,15 +168,15 @@ PMLIB_BASE_NAME=${PMLIB_FULL_NAME%.*}
 # get ParaMonte's compiler suite
 ####################################################################################################################################
 
-unset FILE_EXT
+unset SRC_EXT
 unset SRC_FILES
 unset COMPILER_LIST
 unset EXAMPLE_LANGUAGE
 unset PM_COMPILER_SUITE
 
 if [[ "$PMLIB_FULL_NAME" =~ .*"_fortran_".* ]]; then
-    FILE_EXT=f90
-    SRC_FILES="paramonte.${FILE_EXT}"; export SRC_FILES
+    SRC_EXT=f90
+    SRC_FILES="paramonte.${SRC_EXT}"; export SRC_FILES
     EXAMPLE_LANGUAGE=Fortran
     if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* ]]; then
         PM_COMPILER_SUITE=intel
@@ -192,7 +192,7 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"_fortran_".* ]]; then
 fi
 
 if [[ "$PMLIB_FULL_NAME" =~ .*"_c_".* ]]; then
-    FILE_EXT=c
+    SRC_EXT=c
     EXAMPLE_LANGUAGE=C
     if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* ]]; then
         PM_COMPILER_SUITE=intel
@@ -208,7 +208,7 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"_c_".* ]]; then
 fi
 
 if [[ "$PMLIB_FULL_NAME" =~ .*"_cpp_".* ]]; then
-    FILE_EXT=cpp
+    SRC_EXT=cpp
     EXAMPLE_LANGUAGE=C++
     if [[ "$PMLIB_FULL_NAME" =~ .*"_intel_".* ]]; then
         PM_COMPILER_SUITE=intel
@@ -223,7 +223,7 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"_cpp_".* ]]; then
     if [ "$PLATFORM" = "mingw" ] || [ "$PLATFORM" = "cygwin" ]; then declare -a COMPILER_LIST=("g++"); fi
 fi
 
-SRC_FILES="${SRC_FILES} logfunc.${FILE_EXT} main.${FILE_EXT}"
+SRC_FILES="${SRC_FILES} logfunc.${SRC_EXT} main.${SRC_EXT}"
 
 echo >&2
 echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ParaMonte library's full path: ${PMLIB_FULL_PATH}"
@@ -445,9 +445,9 @@ do
 
     echo >&2
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - linking ParaMonte example with ${LINKER}"
-    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//$FILE_EXT/.o} ${PMLIB_FULL_NAME} -o ${PM_EXAM_EXE_NAME}"
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//$SRC_EXT/.o} ${PMLIB_FULL_NAME} -o ${PM_EXAM_EXE_NAME}"
 
-    ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//$FILE_EXT/.o} "${PMLIB_FULL_NAME}" -o ${PM_EXAM_EXE_NAME}
+    ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} "${SRC_FILES//$SRC_EXT/.o}" "${PMLIB_FULL_NAME}" -o ${PM_EXAM_EXE_NAME}
 
     if [ $? -eq 0 ]; then
 
