@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains the classes and procedures for refining MCMC output chains.
+!>  @author Amir Shahmoradi
 
 module ParaMCMCRefinedChain_mod
 
@@ -54,6 +57,7 @@ module ParaMCMCRefinedChain_mod
 
     character(*), parameter :: MODULE_NAME = "@ParaMCMCRefinedChain_mod"
 
+    !> The `RefinedChain_type` class.
     type                                    :: RefinedChain_type
         integer(IK)                         :: ndim  = 0_IK         ! number of sampling variables
         integer(IK)                         :: numRefinement = 0_IK ! number of refinements, zero if sample size is prescribed by the user
@@ -86,6 +90,20 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Return the refined Markov chain, given the input Markov chain and its specifications.
+    !> This procedure is a method of the [RefinedChain_type](@ref refinedchain_type) class.
+    !>
+    !> @param[inout] RefinedChain           :   An object of class [RefinedChain_type](@ref refinedchain_type).
+    !> @param[inout] CFC                    :   An object of type [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type)
+    !!                                          containing the Markov chain.
+    !> @param[out]   Err                    :   An object of class [Err_type](@ref err_mod::err_type) indicating whether any error has occurred or not.
+    !> @param[in]    burninLoc              :   The estimated location of burnin point in the Markov chain (optional).
+    !!                                          If not provided, it will be extracted from the components of the input `CFC`.
+    !> @param[in]    refinedChainSize       :   The requested refined sample size (optional). If the size of the refined sample is given as input,
+    !!                                          then the requested sample is directly generated based on the input size.
+    !> @param[in]    sampleRefinementCount  :   The maximum number of times the sample can be refined (optional, default = `Infinity`).
+    !!                                      :   For example, if set to 1, then only one round of refinement will be performed on the Markov chain.
+    !> @param[in]    sampleRefinementMethod :   The requested method of refining the sample (optional, default = "BatchMeans").
     subroutine getRefinedChain  ( RefinedChain              &
                                 , CFC                       &
                                 , Err                       &
@@ -365,16 +383,28 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! examples:
-    !          skip: 1
-    !        Weight: 5, 0, 1, 3, 1
-    ! RefinedWeight: 5, 0, 1, 3, 1
-    !          skip: 2
-    !        Weight: 5, 0, 1, 3, 1
-    ! RefinedWeight: 3, 0, 0, 2, 0
-    !          skip: 3
-    !        Weight: 5, 0, 1, 3, 1
-    ! RefinedWeight: 2, 0, 0, 1, 1
+    !> Return the refined vector of weights of the vector of weights of a weighted Markov chain.
+    !>
+    !> @param[in]   np                  :   The number of elements of the `Weight` vector.
+    !> @param[in]   Weight              :   The input vector of weights.
+    !> @param[in]   skip                :   The size of the jumps that have to be made through the weighted Markov chain.
+    !> @param[in]   refinedChainSize    :   The requested refined sample size (optional). If present, then the refined chain (represented by the
+    !>                                  :   vector `Weight`) will be refined such that the resulting refined chain has the size `refinedChainSize`.
+    !>
+    !> \return
+    !> `RefinedWeight` : An array of size `np`, whose elements indicate which points are present in the final refined chain.\n
+    !> Examples:
+    !> ```
+    !>          skip: 1
+    !>        Weight: 5, 0, 1, 3, 1
+    !> RefinedWeight: 5, 0, 1, 3, 1
+    !>          skip: 2
+    !>        Weight: 5, 0, 1, 3, 1
+    !> RefinedWeight: 3, 0, 0, 2, 0
+    !>          skip: 3
+    !>        Weight: 5, 0, 1, 3, 1
+    !> RefinedWeight: 2, 0, 0, 1, 1
+    !> ```
     pure function getRefinedWeight(np,Weight,skip,refinedChainSize) result(RefinedWeight)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRefinedWeight
@@ -427,6 +457,19 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Refined an input weighted sample according to the new requested weights.
+    !>
+    !> @param[in]   nd                  :   The number of dimensions of the input `Sample(0:nd,np)`.
+    !> @param[in]   np                  :   The number of points in the input `Sample(0:nd,np)`.
+    !> @param[in]   skip                :   The jump size with which the input chain has to be refined.
+    !> @param[in]   Sample              :   The input 2-dimensional array of sampled states which has to be refined.
+    !> @param[in]   Weight              :   The weights of the sampled points.
+    !> @param[out]  RefinedChain        :   The refined array.
+    !> @param[out]  RefinedWeight       :   The vector of refined weights corresponding to the output refined array.
+    !> @param[out]  PointCount          :   An object of derived type [Count_type](@ref paramontechainfilecontents_mod::count_type)
+    !>                                      containing the number of points in the refined sample.
+    !> @param[in]   refinedChainSize    :   The requested refined sample size (optional). If the size of the refined sample is given as input,
+    !>                                      then the requested sample is directly generated based on the input size.
     pure subroutine refineWeightedSample(nd,np,skip,Sample,Weight,RefinedChain,RefinedWeight,PointCount,refinedChainSize)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: refineWeightedSample
@@ -458,6 +501,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Return the best skip size through a Markov chain to refined it to the optimal requested size.
+    !>
+    !> @param[in]   oldSampleSize   :   The original size of the Markov chain.
+    !> @param[in]   newSampleSize   :   The final desired size of the refined sample.
+    !>
+    !> \return
+    !> `skip4NewSampleSize` : The computed skip size.
     pure function getSkip4NewSampleSize(oldSampleSize,newSampleSize) result(skip4NewSampleSize)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSkip4NewSampleSize
@@ -474,6 +524,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Write the computed refined chain to the specified output file.
+    !>
+    !> @param[in]   RefinedChain                :   An object of class [RefinedChain_type](@ref refinedchain_type)
+    !>                                              containing the refined sample to be written to the output file.
+    !> @param[in]   sampleFileUnit              :   The unit of the file to which the sample must be written.
+    !> @param[in]   sampleFileHeaderFormat      :   The IO format of the header of the sample file.
+    !> @param[in]   sampleFileContentsFormat    :   The IO format of the contents (sampled states) in the sample file.
     subroutine writeRefinedChain(RefinedChain,sampleFileUnit,sampleFileHeaderFormat,sampleFileContentsFormat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRefinedChain
@@ -494,6 +551,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Write the computed refined chain to the specified output file.
+    !>
+    !> @param[in]   sampleFilePath      :   The path to the input chain file that must be read.
+    !> @param[in]   delimiter           :   The delimiter used in the file.
+    !> @param[in]   ndim                :   The number of dimensions of the sampled states in the sample file.
+    !>                                      This is basically, the size of the domain of the objective function.
+    !>
+    !> \return
+    !> `RefinedChain` : An object of class [RefinedChain_type](@ref refinedchain_type) containing
+    !>                  the sampled states read from the specified input file.
     function readRefinedChain(sampleFilePath,delimiter,ndim) result(RefinedChain)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: readRefinedChain

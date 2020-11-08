@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -40,15 +40,23 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This file implements the body of the `Kernel_smod` submodules of the `ParaDRAM_mod` and `ParaDISE_mod` modules.
+!>
+!> \remark
+!> This module requires preprocessing, prior to compilation.
+!>
+!> @author Amir Shahmoradi
+
 #if defined PARADRAM
 
-#define SAMPLER_TYPE ParaDRAM_type
-#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDRAMProposalAbstract_mod
+#define ParaDXXX_type ParaDRAM_type
+#define ParaDXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
 
 #elif defined PARADISE
 
-#define SAMPLER_TYPE ParaDISE_type
-#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDISEProposalAbstract_mod
+#define ParaDXXX_type ParaDISE_type
+#define ParaDXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
 
 #else
 
@@ -59,7 +67,7 @@
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
 #if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
-    use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr
+    use ParaDXXXProposalAbstract_mod, only: ProposalErr
 #endif
 #if defined MPI_ENABLED
     use mpi
@@ -80,6 +88,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of [ParaDRAM_type](@ref paradram_type) and [ParaDISE_type](@ref paradise_type) classes.
+    !> Run the sampler and return the sampled states.
+    !>
+    !> @param[inout]    self        :   An object of class [ParaDRAM_type](@ref paradram_type) or [ParaDISE_type](@ref paradise_type).
+    !> @param[in]       getLogFunc  :   The target objective function that is to be sampled.
+    !>
+    !> \remark
+    !> This procedure requires preprocessing.
     module subroutine runKernel ( self          &
                                 , getLogFunc    &
                                 )
@@ -97,7 +114,7 @@ contains
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME//"@runKernel()"
         integer(IK) , parameter             :: CHAIN_RESTART_OFFSET = 2_IK
 
-        class(SAMPLER_TYPE), intent(inout)  :: self
+        class(ParaDXXX_type), intent(inout) :: self
         procedure(getLogFunc_proc)          :: getLogFunc
 
 #if defined CAF_ENABLED
@@ -158,7 +175,7 @@ contains
         inverseProgressReportPeriod = 1._RK/real(self%SpecBase%ProgressReportPeriod%val,kind=RK)    ! this remains a constant except for the last the last report of the simulation
         sumAccRateLastReport = 0._RK
         nd = self%nd%val
-        
+
         if (allocated(co_AccRate)) deallocate(co_AccRate)
         if (allocated(co_LogFuncState)) deallocate(co_LogFuncState)
 #if defined CAF_ENABLED
@@ -193,7 +210,7 @@ contains
         self%Stats%NumFunCall%acceptedRejected          = 0_IK                                      ! Markov Chain counter
         counterAUC                                      = 0_IK                                      ! counter for padaptiveUpdateCount.
         counterPRP                                      = 0_IK                                      ! counter for progressReportPeriod.
-        counterAUP                                      = 0_IK                                      ! counter for adaptiveUpdatePeriod. 
+        counterAUP                                      = 0_IK                                      ! counter for adaptiveUpdatePeriod.
         self%Stats%NumFunCall%accepted                  = 0_IK                                      ! Markov Chain acceptance counter.
         samplerUpdateSucceeded                          = .true.                                    ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal
         numFunCallAcceptedLastAdaptation                = 0_IK
@@ -255,7 +272,7 @@ contains
 
                     ! create a copy of the chain file, just for the sake of not losing the simulation results
 
-                    RFN = RandomFileName_type(dir = "", key = self%ChainFile%Path%original//".temporary_restart_copy", ext="") 
+                    RFN = RandomFileName_type(dir = "", key = self%ChainFile%Path%original//".temporary_restart_copy", ext="")
                     call copyFile(pathOld=self%ChainFile%Path%original,pathNew=RFN%path,isWindows=self%OS%isWindows,Err=self%err)
                     if (self%Err%occurred) then
                         self%Err%msg = PROCEDURE_NAME//self%Err%msg
@@ -788,7 +805,7 @@ contains
             self%Stats%NumFunCall%acceptedRejectedDelayed = self%Stats%NumFunCall%acceptedRejected
             SumAccRateSinceStart%acceptedRejectedDelayed = SumAccRateSinceStart%acceptedRejected
         end if
-            
+
 
         if (self%Image%isMaster) then
             block
@@ -841,6 +858,8 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        !> \brief
+        !> Write the latest simulated state to the output file.
         subroutine writeOutput()
 
             implicit none
@@ -893,7 +912,11 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        ! Objects that change state in this subroutine are: Timer, timeElapsedUntilLastReportInSeconds, sumAccRateLastReport
+        !> \brief
+        !> Update the user with the simulation progress information.
+        !>
+        !> \remark
+        !> Objects that change state in this subroutine are: `Timer`, `timeElapsedUntilLastReportInSeconds`, `sumAccRateLastReport`.
         subroutine reportProgress()
 
             use Constants_mod, only: CARRIAGE_RETURN
@@ -973,6 +996,11 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        !> \brief
+        !> Return the predicted remaining fraction of the simulation for the purpose of updating the user.
+        !>
+        !> \return
+        !> `remainingSimulationFraction` : The predicted remaining fraction of the simulation.
         pure function getRemainingSimulationFraction() result(remainingSimulationFraction)
             use Constants_mod, only: IK, RK
             implicit none
@@ -987,6 +1015,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the predicted burnin location within the currently sampled chain.
+    !>
+    !> @param[in]   lenLogFunc  :   The length of the input `lenLogFunc`.
+    !> @param[in]   refLogFunc  :   The reference logFunc value with respect to which the relative importance of the points is gauged.
+    !> @param[in]   LogFunc     :   The vector of length `lenLogFunc` of log(function) values.
+    !>
+    !> \return
+    !> `burninLoc` : The location of burnin in the input `LogFunc` vector.
     pure function getBurninLoc(lenLogFunc,refLogFunc,LogFunc) result(burninLoc)
         use Constants_mod, only: IK, RK
         implicit none
@@ -1006,5 +1043,5 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef SAMPLER_TYPE
-#undef SAMPLER_PROPOSAL_ABSTRACT_MOD
+#undef ParaDXXX_type
+#undef ParaDXXXProposalAbstract_mod

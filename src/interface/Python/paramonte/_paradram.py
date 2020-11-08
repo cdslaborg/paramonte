@@ -62,7 +62,7 @@ class ParaDRAM(ParaMonteSampler):
     child of the ``ParaMonteSampler`` class.
 
     All ParaDRAM class attributes (input arguments to the ParaDRAM constructor)
-    are optional and all attributes can be also set after a ParaDRAM instance
+    are optional and all attributes can be set after a ParaDRAM instance
     is returned by the constructor.
 
     Once you set the optional attributes to your desired values,

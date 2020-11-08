@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains the class and procedures for setting or resetting the random seed of the processor(s).
+!>  @author Amir Shahmoradi
 
 module RandomSeed_mod
 
@@ -51,14 +54,15 @@ module RandomSeed_mod
     public
     private :: setRandomSeed, getRandomSeed
 
+    !> The `RandomSeed_type` class.
     type :: RandomSeed_type
-        integer(IK)               :: size = -huge(1_IK)
-        integer(IK)               :: imageID = -huge(1_IK)
-        integer(IK), allocatable  :: Value(:)
-        logical                   :: isRepeatable = .false.
-        logical                   :: isImageDistinct = .true.
-        character(:), allocatable :: info
-        type(Err_type)            :: Err
+        integer(IK)               :: size = -huge(1_IK)         !< The size of the random seed vector.
+        integer(IK)               :: imageID = -huge(1_IK)      !< The ID of the current image/processor.
+        integer(IK), allocatable  :: Value(:)                   !< The random seed vector.
+        logical                   :: isRepeatable = .false.     !< The logical flag indicating whether the random number sequence must be repeatable upon each restart.
+        logical                   :: isImageDistinct = .true.   !< The logical flag indicating whether the random seed must be distinct on each processor from others.
+        type(Err_type)            :: Err                        !< An object of class [Err_type](@ref err_mod::err_type) containing the error handling tools.
+       !character(:), allocatable :: info
     contains
         procedure, public :: set => setRandomSeed
         procedure, public :: get => getRandomSeed
@@ -72,8 +76,20 @@ module RandomSeed_mod
 
 contains
 
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> This is the constructor of the [RandomSeed_type](@ref randomseed_type) class.
+    !> Initialize the seed of the random number generator and return an object of class [RandomSeed_type](@ref randomseed_type)
+    !> containing the information and methods for setting and resetting the random seed.
+    !>
+    !> @param[in]   imageID         :   The ID of the current process.
+    !> @param[in]   inputSeed       :   The optional scalar integer based upon which the seed of the random number generator will be set (optional).
+    !> @param[in]   isRepeatable    :   The logical flag indicating whether the random number sequence must be repeatable upon each restart (optional).
+    !> @param[in]   isImageDistinct :   The logical flag indicating whether the random seed must be distinct on each processor from others (optional).
+    !>
+    !> \return
+    !> `RandomSeed` : An object of class [RandomSeed_type](@ref randomseed_type) containing the information and methods for
+    !> setting and resetting the random seed.
     function constructRandomSeed(imageID, inputSeed, isRepeatable, isImageDistinct) result(RandomSeed)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructRandomSeed
@@ -88,7 +104,7 @@ contains
 
         RandomSeed%Err%occurred = .false.
         RandomSeed%Err%msg = ""
-        RandomSeed%info = ""
+        !RandomSeed%info = ""
 
         RandomSeed%imageID = imageID
         if (RandomSeed%imageID<1_IK) then
@@ -113,8 +129,12 @@ contains
 
     end function constructRandomSeed
 
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> This procedure is a method of the [RandomSeed_type](@ref randomseed_type) class.
+    !> Get the size and value of the current random seed.
+    !>
+    !> @param[inout]    RandomSeed  :   An object of class [RandomSeed_type](@ref randomseed_type).
     subroutine getRandomSeed(RandomSeed)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandomSeed
@@ -131,8 +151,16 @@ contains
         call random_seed(get = RandomSeed%Value)
     end subroutine getRandomSeed
 
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> This procedure is a method of the [RandomSeed_type](@ref randomseed_type) class.
+    !> Get the size and value of the current random seed.
+    !>
+    !> @param[inout]    RandomSeed  :   An object of class [RandomSeed_type](@ref randomseed_type).
+    !> @param[in]       inputSeed   :   The optional scalar integer based upon which the seed of the random number generator will be set (optional).
+    !>
+    !> \warning
+    !> Upon return from this procedure, the value of `RandomSeed%Err%occurred` must be checked for the occurrence of any potential errors.
     subroutine setRandomSeed(RandomSeed,inputSeed)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setRandomSeed
@@ -181,34 +209,34 @@ contains
         do i = 1, RandomSeed%size
             RandomSeed%Value(i) = HUGE_IK - scalarSeed - offsetImageRandomSeed - 127_IK * (i-1)
             if (RandomSeed%Value(i)<0_IK) then
-                RandomSeed%Value(i) = -RandomSeed%Value(i) 
+                RandomSeed%Value(i) = -RandomSeed%Value(i)
             else
-                RandomSeed%Value(i) = HUGE_IK - RandomSeed%Value(i) 
-            end if 
+                RandomSeed%Value(i) = HUGE_IK - RandomSeed%Value(i)
+            end if
         end do
         call random_seed(put=RandomSeed%Value)
 
 !block
-!write(*,"(*(g0,:,' '))") 
+!write(*,"(*(g0,:,' '))")
 !write(*,"(*(g0,:,' '))") "RandomSeed%Value", RandomSeed%Value
-!write(*,"(*(g0,:,' '))") 
+!write(*,"(*(g0,:,' '))")
 !end block
 
 
         ! ATTN: xxx Intel compilers - for some unknown reason, the first generated random number seems to be garbage
         ! so here, the random number generator is iterated a couple of times before further usage.
-        ! This needs to be taken care of, in the future. This problem showed itself when StartPoint in ParaDRAM sampler were to be set randomly. 
+        ! This needs to be taken care of, in the future. This problem showed itself when StartPoint in ParaDRAM sampler were to be set randomly.
         ! This is where the first instance of random number usage occurs in ParaDRAM sampler.
         ! write(*,*) "RandomSeedObj%imageID, co_RandomSeed(1)%Value(:): ", RandomSeedObj%imageID, co_RandomSeed(1)%Value(:)
 
         ! ATTN: A follow-up on the above issue with the Intel compiler which seems to be a compiler bug: In a truly bizarre behavior,
         ! the Intel compiler random numbers as generated by call random_number() in the Statistics_mod module, for example when called from
-        ! ParaDRAMProposal_mod.inc.f90, are not repeatable even after reseting the random_seed. Even more bizarre is the observation that the 
+        ! ParaDRAMProposal_mod.inc.f90, are not repeatable even after reseting the random_seed. Even more bizarre is the observation that the
         ! repeatability of the random numbers depends on the loop length (for example as implemented in the debugging of getRandGaus().
         ! The same behavior is also observed below, where any loop length less than ~30 yields non-repeatable random number sequences.
         ! This needs an in-depth investigation. Update: Such behavior was also observed with the GNU compiler.
         ! 101 is the number that fixes this issue for both compilers.
-        
+
 
         block
             real(RK) :: unifrnd(101)

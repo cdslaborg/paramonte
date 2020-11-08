@@ -87,6 +87,10 @@ NOTE:
 NOTE: Upon finishing the build, the script will generate another Bash script named run.sh in 
 NOTE: the same directory, which can be used to run the executable. Usage:
 NOTE: 
+NOTE:     ./run.sh
+NOTE: 
+NOTE: or, 
+NOTE: 
 NOTE:     source ./run.sh
 
 EndOfMessage
@@ -456,12 +460,17 @@ do
         echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - example build appears to have succeeded."
 
         {
+        echo "#!/bin/bash"
         echo "# ParaMonte example runtime setup script."
         echo "# "
         } > ${RUN_FILE_NAME}
         if [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ]; then
             {
             echo "# usage:"
+            echo "# "
+            echo "#     ./${RUN_FILE_NAME} -n number_of_processors"
+            echo "# "
+            echo "# or,"
             echo "# "
             echo "#     source ./${RUN_FILE_NAME} -n number_of_processors"
             echo "# "
@@ -483,6 +492,11 @@ do
         else
             {
             echo "# usage:"
+            echo "# "
+            echo "#     ./${RUN_FILE_NAME}"
+            echo "# "
+            echo "# or,"
+            echo "# "
             echo "#     source ./${RUN_FILE_NAME}"
             echo ""
             } >> ${RUN_FILE_NAME}
@@ -556,6 +570,10 @@ echo >&2
 if [ "${BUILD_SUCCEEDED}" = "true" ]; then
 
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - To run the example's executable with the proper environmental setup, try:"
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     ./${RUN_FILE_NAME}"
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
+    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - or,"
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     source ./${RUN_FILE_NAME}"
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "

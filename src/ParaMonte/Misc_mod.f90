@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains miscellaneous procedures.
+!>  @author Amir Shahmoradi
 
 module Misc_mod
 
@@ -232,7 +235,7 @@ contains
 
     !pure subroutine swap_z(a,b)
     !    use Constants_mod, only: DPC
-    !    implicit none    
+    !    implicit none
     !    complex(DPC), intent(inout) :: a,b
     !    complex(DPC) :: dum
     !    dum=a
@@ -242,7 +245,7 @@ contains
 
     !pure subroutine swap_zv(a,b)
     !    use Constants_mod, only: DPC
-    !    implicit none    
+    !    implicit none
     !    complex(DPC), dimension(:), intent(inout) :: a,b
     !    complex(DPC), dimension(size(a)) :: dum
     !    dum=a
@@ -252,7 +255,7 @@ contains
 
     !pure subroutine swap_zm(a,b)
     !    use Constants_mod, only: DPC
-    !    implicit none    
+    !    implicit none
     !    complex(DPC), dimension(:,:), intent(inout) :: a,b
     !    complex(DPC), dimension(size(a,1),size(a,2)) :: dum
     !    dum=a
@@ -265,7 +268,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: masked_swap_SPR
 #endif
         use Constants_mod, only: SPR
-        implicit none    
+        implicit none
         real(SPR), intent(inout) :: a,b
         logical, intent(in) :: mask
         real(SPR) :: swp
@@ -281,7 +284,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: masked_swap_SPRV
 #endif
         use Constants_mod, only: SPR
-        implicit none    
+        implicit none
         real(SPR), dimension(:), intent(inout) :: a,b
         logical, dimension(:), intent(in) :: mask
         real(SPR), dimension(size(a)) :: swp
@@ -297,7 +300,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: masked_swap_SPRM
 #endif
         use Constants_mod, only: SPR
-        implicit none    
+        implicit none
         real(SPR), dimension(:,:), intent(inout) :: a,b
         logical, dimension(:,:), intent(in) :: mask
         real(SPR), dimension(size(a,1),size(a,2)) :: swp
@@ -344,11 +347,11 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> returns an arithmetic progression as an array
     pure function arth_IK(first,increment,n) result(arth)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: arth_IK
 #endif
-        ! returns an arithmetic progression as an array
         use Constants_mod, only: IK, RK
         integer(IK) , intent(in)    :: first,increment,n
         integer(IK)                 :: arth(n)
@@ -431,6 +434,13 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Find the unique values in the input integer vector.
+    !>
+    !> @param[in]       lenVector   :   The size of the input square matrix - `nd` by `nd`.
+    !> @param[in]       Vector      :   The input integer vector.
+    !> @param[out]      UniqueValue :   The vector of unique values identified in the input vector.
+    !> @param[out]      UniqueCount :   The counts of each unique value in the input vector.
+    !> @param[out]      lenUnique   :   The length of `UniqueValue`, that is, the total number of unique values.
     pure subroutine findUnique_IK(lenVector, Vector, UniqueValue, UniqueCount, lenUnique)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: findUnique_IK
@@ -449,7 +459,7 @@ contains
         lenUniq = 0
         do i = 1, lenVector
             isUnique = .true.
-            loopSearchUnique: do j = 1, lenUniq 
+            loopSearchUnique: do j = 1, lenUniq
                 if (UniqueValue(j)==Vector(i)) then
                     UniqueCount(j) = UniqueCount(j) + 1
                     isUnique = .false.
@@ -469,6 +479,12 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+    !> Resize the input 1-dimensional real vector to a new size.
+    !>
+    !> @param[inout]    Vector  :   The input real vector that will be resized on return.
+    !> @param[out]      from    :   The number of elements of `Vector`.
+    !> @param[out]      to      :   The new size of `Vector`.
     pure subroutine resizeVector_RK(Vector, from, to)
         use Constants_mod, only: IK, RK
         implicit none

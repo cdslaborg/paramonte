@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!> \brief This module contains the classes and procedures for various statistical computations.
+!> \author Amir Shahmoradi
 
 module Statistics_mod
 
@@ -180,9 +183,18 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-    ! returns square of Mahalanobis distance for a single point. output is a scalar variable.
-    ! NOTE: if computation fails, the first element of output will be returned negative.
-    pure function getMahalSqSP_RK(nd,MeanVec,InvCovMat,Point)
+    !> \brief
+    !> Return the square of Mahalanobis distance for a single point. The output is a scalar variable.
+    !>
+    !> \param[in]   nd          :   The number of dimensions of the input `Point`.
+    !> \param[in]   MeanVec     :   The mean vector of the sample.
+    !> \param[in]   InvCovMat   :   The inverse covariance matrix of the sample.
+    !> \param[in]   Point       :   The `Point` whose distance from the sample is to computed.
+    !>
+    !> \return
+    !> `mahalSq` : The Mahalanobis distance squared of the point from
+    !> the sample characterized by the input `MeanVec` and `InvCovMat`.
+    pure function getMahalSqSP_RK(nd,MeanVec,InvCovMat,Point) result(mahalSq)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMahalSqSP_RK
 #endif
@@ -192,17 +204,31 @@ contains
         real(RK)   , intent(in) :: MeanVec(nd)
         real(RK)   , intent(in) :: InvCovMat(nd,nd)        ! Inverse of the covariance matrix
         real(RK)   , intent(in) :: Point(nd)               ! input data points
-        real(RK)                :: getMahalSqSP_RK
+        real(RK)                :: mahalSq
         real(RK)                :: NormedPoint(nd)
         NormedPoint = Point - MeanVec
-        getMahalSqSP_RK = dot_product( NormedPoint , matmul(InvCovMat,NormedPoint) )
+        mahalSq = dot_product( NormedPoint , matmul(InvCovMat,NormedPoint) )
     end function getMahalSqSP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns square of the Mahalanobis distance
-    ! NOTE: if computation fails, the first element of output (if array) will be returned negative.
-    pure function getMahalSqMP_RK(nd,np,MeanVec,InvCovMat,Point)
+    !> \brief
+    !> Return the square of Mahalanobis distances for an row-wise array of points.
+    !>
+    !> \param[in]   nd          :   The number of dimensions of the input `Point` array.
+    !> \param[in]   np          :   The number of points in the input input `Point` array.
+    !> \param[in]   MeanVec     :   The mean vector of length `nd` of the sample.
+    !> \param[in]   InvCovMat   :   The inverse covariance matrix `(nd,nd)` of the sample.
+    !> \param[in]   Point       :   The `(nd,np)` array of points whose distances squared from the sample are to computed.
+    !>
+    !> \return
+    !> `MahalSq` : A vector of length `np` containing the squares of the Mahalanobis distances
+    !> of the input points from the sample characterized by the input `MeanVec` and `InvCovMat`.
+    !>
+    !> \warning
+    !> For the sake of preserving the purity and computational efficiency of the function,
+    !> if the computation fails at any stage, the first element of output will be returned negative.
+    pure function getMahalSqMP_RK(nd,np,MeanVec,InvCovMat,Point) result(MahalSq)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMahalSqMP_RK
 #endif
@@ -210,16 +236,16 @@ contains
         implicit none
         integer(IK), intent(in) :: nd,np
         real(RK), intent(in)    :: MeanVec(nd)
-        real(RK), intent(in)    :: InvCovMat(nd,nd)         ! Inverse of the covariance matrix
-        real(RK), intent(in)    :: Point(nd,np)             ! input data points
-        real(RK)                :: getMahalSqMP_RK(np)      ! function return
+        real(RK), intent(in)    :: InvCovMat(nd,nd) ! Inverse of the covariance matrix
+        real(RK), intent(in)    :: Point(nd,np)     ! input data points
+        real(RK)                :: MahalSq(np)      ! function return
         real(RK)                :: NormedPoint(nd)
         integer(IK)             :: ip
         do ip = 1,np
             NormedPoint = Point(1:nd,ip) - MeanVec
-            getMahalSqMP_RK(ip) = dot_product( NormedPoint , matmul(InvCovMat,NormedPoint) )
-            if (getMahalSqMP_RK(ip)<0._RK) then
-                getMahalSqMP_RK(1) = -1._RK
+            MahalSq(ip) = dot_product( NormedPoint , matmul(InvCovMat,NormedPoint) )
+            if (MahalSq(ip)<0._RK) then
+                MahalSq(1) = -1._RK
                 return
             end if
         end do
@@ -227,9 +253,18 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns square of Mahalanobis distance for a single Point_CK. output is a scalar variable.
-    ! NOTE: if computation fails, the first element of output will be returned negative.
-    pure function getMahalSqSP_CK(nd,MeanVec_CK,InvCovMat_CK,Point_CK)
+    !> \brief
+    !> Return the square of Mahalanobis distance for a single complex point. The output is a scalar variable.
+    !>
+    !> \param[in]   nd              :   The number of dimensions of the input `Point`.
+    !> \param[in]   MeanVec_CK      :   The mean vector of the sample.
+    !> \param[in]   InvCovMat_CK    :   The inverse covariance matrix of the sample.
+    !> \param[in]   Point_CK        :   The `Point` whose distance from the sample is to computed.
+    !>
+    !> \return
+    !> `mahalSq` : The Mahalanobis distance squared of the point from
+    !> the sample characterized by the input `MeanVec` and `InvCovMat`.
+    pure function getMahalSqSP_CK(nd,MeanVec_CK,InvCovMat_CK,Point_CK) result(mahalSq)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMahalSqSP_CK
 #endif
@@ -237,17 +272,31 @@ contains
         implicit none
         integer(IK), intent(in)  :: nd
         complex(CK), intent(in)  :: MeanVec_CK(nd)
-        complex(CK), intent(in)  :: InvCovMat_CK(nd,nd)        ! Inverse of the covariance matrix
-        complex(CK), intent(in)  :: Point_CK(nd)               ! input data points
-        complex(CK)              :: getMahalSqSP_CK            ! function return
-        getMahalSqSP_CK = sum( (Point_CK-MeanVec_CK) * matmul(InvCovMat_CK,Point_CK-MeanVec_CK) )
+        complex(CK), intent(in)  :: InvCovMat_CK(nd,nd) ! Inverse of the covariance matrix
+        complex(CK), intent(in)  :: Point_CK(nd)        ! input data points
+        complex(CK)              :: mahalSq             ! function return
+        mahalSq = sum( (Point_CK-MeanVec_CK) * matmul(InvCovMat_CK,Point_CK-MeanVec_CK) )
     end function getMahalSqSP_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns square of the Mahalanobis distance
-    ! NOTE: if computation fails, the first element of output will be returned negative.
-    pure function getMahalSqMP_CK(nd,np,MeanVec_CK,InvCovMat_CK,Point_CK)
+    !> \brief
+    !> Return the square of Mahalanobis distances for an row-wise array of complex-valued points.
+    !>
+    !> \param[in]   nd              :   The number of dimensions of the input `Point` array.
+    !> \param[in]   np              :   The number of points in the input input `Point` array.
+    !> \param[in]   MeanVec_CK      :   The mean vector of length `nd` of the sample.
+    !> \param[in]   InvCovMat_CK    :   The inverse covariance matrix `(nd,nd)` of the sample.
+    !> \param[in]   Point_CK        :   The `(nd,np)` array of points whose distances squared from the sample are to computed.
+    !>
+    !> \return
+    !> `MahalSq` : A vector of length `np` containing the squares of the Mahalanobis distances
+    !> of the input points from the sample characterized by the input `MeanVec` and `InvCovMat`.
+    !>
+    !> \warning
+    !> For the sake of preserving the purity and computational efficiency of the function,
+    !> if the computation fails at any stage, the first element of output will be returned negative.
+    pure function getMahalSqMP_CK(nd,np,MeanVec_CK,InvCovMat_CK,Point_CK) result(MahalSq)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMahalSqMP_CK
 #endif
@@ -255,15 +304,15 @@ contains
         implicit none
         integer(IK), intent(in)  :: nd,np
         complex(CK), intent(in)  :: MeanVec_CK(nd)
-        complex(CK), intent(in)  :: InvCovMat_CK(nd,nd)       ! Inverse of the covariance matrix
-        complex(CK), intent(in)  :: Point_CK(nd,np)           ! input data points
-        complex(CK)              :: getMahalSqMP_CK(np)       ! function return
+        complex(CK), intent(in)  :: InvCovMat_CK(nd,nd) ! Inverse of the covariance matrix
+        complex(CK), intent(in)  :: Point_CK(nd,np)     ! input data points
+        complex(CK)              :: MahalSq(np)         ! function return
         integer(IK)              :: ip
         do ip = 1,np
-            getMahalSqMP_CK(ip) = sum( (Point_CK(1:nd,ip)-MeanVec_CK) * &
+            MahalSq(ip) = sum( (Point_CK(1:nd,ip)-MeanVec_CK) * &
             matmul(InvCovMat_CK,Point_CK(1:nd,ip)-MeanVec_CK) )
-            if (real(getMahalSqMP_CK(ip))<0._RK) then
-                getMahalSqMP_CK(1) = (-1._RK, -1._RK)
+            if (real(MahalSq(ip))<0._RK) then
+                MahalSq(1) = (-1._RK, -1._RK)
                 return
             end if
         end do
@@ -274,20 +323,20 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getLogProbNormSP_RK(mean,inverseVariance,logSqrtInverseVariance,point)
+    pure function getLogProbNormSP_RK(mean,inverseVariance,logSqrtInverseVariance,point) result(logProbNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbNormSP_RK
 #endif
         use Constants_mod, only: RK, LOGINVSQRT2PI
         implicit none
         real(RK), intent(in) :: mean,inverseVariance,logSqrtInverseVariance,point
-        real(RK)             :: getLogProbNormSP_RK
-        getLogProbNormSP_RK = LOGINVSQRT2PI + logSqrtInverseVariance - 0.5_RK * inverseVariance * (point-mean)**2
+        real(RK)             :: logProbNorm
+        logProbNorm = LOGINVSQRT2PI + logSqrtInverseVariance - 0.5_RK * inverseVariance * (point-mean)**2
     end function getLogProbNormSP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function GetLogProbNormMP_RK(np,mean,inverseVariance,logSqrtInverseVariance,Point)
+    pure function GetLogProbNormMP_RK(np,mean,inverseVariance,logSqrtInverseVariance,Point) result(logProbNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: GetLogProbNormMP_RK
 #endif
@@ -295,14 +344,14 @@ contains
         implicit none
         integer(IK), intent(in) :: np
         real(RK)   , intent(in) :: mean,inverseVariance,logSqrtInverseVariance,Point(np)
-        real(RK)                :: GetLogProbNormMP_RK(np)
-        GetLogProbNormMP_RK = LOGINVSQRT2PI + logSqrtInverseVariance - 0.5_RK * inverseVariance * (Point-mean)**2
+        real(RK)                :: logProbNorm(np)
+        logProbNorm = LOGINVSQRT2PI + logSqrtInverseVariance - 0.5_RK * inverseVariance * (Point-mean)**2
     end function GetLogProbNormMP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! NOTE: if MahalSq computation fails, output probability will be returned as NullVal%RK from module Constant_mod.
-    pure function getProbMVNSP_RK(nd,MeanVec,InvCovMat,sqrtDetInvCovMat,Point)
+    pure function getProbMVNSP_RK(nd,MeanVec,InvCovMat,sqrtDetInvCovMat,Point) result(logProbNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbMVNSP_RK
 #endif
@@ -313,19 +362,19 @@ contains
         real(RK)   , intent(in) :: InvCovMat(nd,nd)
         real(RK)   , intent(in) :: sqrtDetInvCovMat
         real(RK)   , intent(in) :: Point(nd)
-        real(RK)                :: getProbMVNSP_RK, dummy
+        real(RK)                :: logProbNorm, dummy
         dummy = getMahalSqSP_RK(nd,MeanVec,InvCovMat,Point)
         if (dummy<0._RK) then
-            getProbMVNSP_RK = NullVal%RK
+            logProbNorm = NullVal%RK
         else
-            getProbMVNSP_RK = INVSQRT2PI**nd * sqrtDetInvCovMat * exp( -0.5_RK * dummy )
+            logProbNorm = INVSQRT2PI**nd * sqrtDetInvCovMat * exp( -0.5_RK * dummy )
         end if
     end function getProbMVNSP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! NOTE: if MahalSq computation fails, output probability will be returned as NullVal%RK from module Constant_mod.
-    pure function getProbMVNMP_RK(nd,np,MeanVec,InvCovMat,sqrtDetInvCovMat,Point)
+    pure function getProbMVNMP_RK(nd,np,MeanVec,InvCovMat,sqrtDetInvCovMat,Point) result(logProbNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbMVNMP_RK
 #endif
@@ -336,19 +385,19 @@ contains
         real(RK)   , intent(in) :: InvCovMat(nd,nd)
         real(RK)   , intent(in) :: sqrtDetInvCovMat
         real(RK)   , intent(in) :: Point(nd,np)
-        real(RK)                :: getProbMVNMP_RK(np), Dummy(np)
+        real(RK)                :: logProbNorm(np), Dummy(np)
         Dummy = getMahalSqMP_RK(nd,np,MeanVec,InvCovMat,Point)
         if (Dummy(1)<0._RK) then
-            getProbMVNMP_RK = NullVal%RK
+            logProbNorm = NullVal%RK
         else
-            getProbMVNMP_RK = INVSQRT2PI**nd * sqrtDetInvCovMat * exp( -0.5_RK * Dummy )
+            logProbNorm = INVSQRT2PI**nd * sqrtDetInvCovMat * exp( -0.5_RK * Dummy )
         end if
     end function getProbMVNMP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! NOTE: if MahalSq computation fails, output probability will be returned as NullVal%RK from module Constant_mod.
-    pure function getLogProbMVNSP_RK(nd,MeanVec,InvCovMat,logSqrtDetInvCovMat,Point)
+    pure function getLogProbMVNSP_RK(nd,MeanVec,InvCovMat,logSqrtDetInvCovMat,Point) result(logProbNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVNSP_RK
 #endif
@@ -359,19 +408,19 @@ contains
         real(RK)   , intent(in) :: InvCovMat(nd,nd)
         real(RK)   , intent(in) :: logSqrtDetInvCovMat
         real(RK)   , intent(in) :: Point(nd)
-        real(RK)                :: getLogProbMVNSP_RK, dummy
+        real(RK)                :: logProbNorm, dummy
         dummy = getMahalSqSP_RK(nd,MeanVec,InvCovMat,Point)
         if (dummy<0._RK) then
-            getLogProbMVNSP_RK = NullVal%RK
+            logProbNorm = NullVal%RK
         else
-            getLogProbMVNSP_RK = nd*LOGINVSQRT2PI + logSqrtDetInvCovMat - 0.5_RK * dummy
+            logProbNorm = nd*LOGINVSQRT2PI + logSqrtDetInvCovMat - 0.5_RK * dummy
         end if
     end function getLogProbMVNSP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! NOTE: if MahalSq computation fails, output probability will be returned as NullVal%RK from module Constant_mod.
-    pure function getLogProbMVNMP_RK(nd,np,MeanVec,InvCovMat,logSqrtDetInvCovMat,Point)
+    pure function getLogProbMVNMP_RK(nd,np,MeanVec,InvCovMat,logSqrtDetInvCovMat,Point) result(logProbNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVNMP_RK
 #endif
@@ -382,31 +431,31 @@ contains
         real(RK)   , intent(in) :: InvCovMat(nd,nd)
         real(RK)   , intent(in) :: logSqrtDetInvCovMat
         real(RK)   , intent(in) :: Point(nd,np)
-        real(RK)                :: getLogProbMVNMP_RK(np), Dummy(np)
+        real(RK)                :: logProbNorm(np), Dummy(np)
         Dummy = getMahalSqMP_RK(nd,np,MeanVec,InvCovMat,Point)
         if (Dummy(1)<0._RK) then
-            getLogProbMVNMP_RK = NullVal%RK
+            logProbNorm = NullVal%RK
         else
-            getLogProbMVNMP_RK = nd*LOGINVSQRT2PI + logSqrtDetInvCovMat - 0.5_RK * Dummy
+            logProbNorm = nd*LOGINVSQRT2PI + logSqrtDetInvCovMat - 0.5_RK * Dummy
         end if
     end function getLogProbMVNMP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getLogProbNormSP_CK(mean_CK,inverseVariance_CK,logSqrtInverseVariance_CK,point_CK)
+    function getLogProbNormSP_CK(mean_CK,inverseVariance_CK,logSqrtInverseVariance_CK,point_CK) result(logProbNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbNormSP_CK
 #endif
         use Constants_mod, only: RK, CK, LOGINVSQRT2PI
         implicit none
         complex(CK), intent(in) :: mean_CK,inverseVariance_CK,logSqrtInverseVariance_CK,point_CK
-        complex(CK)             :: getLogProbNormSP_CK
-        getLogProbNormSP_CK = LOGINVSQRT2PI + logSqrtInverseVariance_CK - 0.5_RK * inverseVariance_CK * (point_CK-mean_CK)**2
+        complex(CK)             :: logProbNorm
+        logProbNorm = LOGINVSQRT2PI + logSqrtInverseVariance_CK - 0.5_RK * inverseVariance_CK * (point_CK-mean_CK)**2
     end function getLogProbNormSP_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function GetLogProbNormMP_CK(np,mean_CK,inverseVariance_CK,logSqrtInverseVariance_CK,Point_CK)
+    function GetLogProbNormMP_CK(np,mean_CK,inverseVariance_CK,logSqrtInverseVariance_CK,Point_CK) result(logProbNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: GetLogProbNormMP_CK
 #endif
@@ -414,13 +463,13 @@ contains
         implicit none
         integer(IK), intent(in) :: np
         complex(CK)   , intent(in) :: mean_CK,inverseVariance_CK,logSqrtInverseVariance_CK,Point_CK(np)
-        complex(CK)                :: GetLogProbNormMP_CK(np)
-        GetLogProbNormMP_CK = LOGINVSQRT2PI + logSqrtInverseVariance_CK - 0.5_RK * inverseVariance_CK * (Point_CK-mean_CK)**2
+        complex(CK)                :: logProbNorm(np)
+        logProbNorm = LOGINVSQRT2PI + logSqrtInverseVariance_CK - 0.5_RK * inverseVariance_CK * (Point_CK-mean_CK)**2
     end function GetLogProbNormMP_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getProbMVNSP_CK(nd,MeanVec_CK,InvCovMat_CK,sqrtDetInvCovMat_CK,Point_CK)
+    function getProbMVNSP_CK(nd,MeanVec_CK,InvCovMat_CK,sqrtDetInvCovMat_CK,Point_CK) result(probMVN)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbMVNSP_CK
 #endif
@@ -431,18 +480,18 @@ contains
         complex(CK)   , intent(in) :: InvCovMat_CK(nd,nd)
         complex(CK)   , intent(in) :: sqrtDetInvCovMat_CK
         complex(CK)   , intent(in) :: Point_CK(nd)
-        complex(CK)                :: getProbMVNSP_CK, dummy
+        complex(CK)                :: probMVN, dummy
         dummy = getMahalSqSP_CK(nd,MeanVec_CK,InvCovMat_CK,Point_CK)
         if (real(dummy)<0._RK) then
-            getProbMVNSP_CK = NullVal%RK
+            probMVN = NullVal%RK
         else
-            getProbMVNSP_CK = INVSQRT2PI**nd * sqrtDetInvCovMat_CK * exp( -0.5_RK * dummy )
+            probMVN = INVSQRT2PI**nd * sqrtDetInvCovMat_CK * exp( -0.5_RK * dummy )
         end if
     end function getProbMVNSP_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getProbMVNMP_CK(nd,np,MeanVec_CK,InvCovMat_CK,sqrtDetInvCovMat_CK,Point_CK)
+    function getProbMVNMP_CK(nd,np,MeanVec_CK,InvCovMat_CK,sqrtDetInvCovMat_CK,Point_CK) result(probMVN)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbMVNMP_CK
 #endif
@@ -453,18 +502,18 @@ contains
         complex(CK), intent(in) :: InvCovMat_CK(nd,nd)
         complex(CK), intent(in) :: sqrtDetInvCovMat_CK
         complex(CK), intent(in) :: Point_CK(nd,np)
-        complex(CK)             :: getProbMVNMP_CK(np), Dummy(np)
+        complex(CK)             :: probMVN(np), Dummy(np)
         Dummy = getMahalSqMP_CK(nd,np,MeanVec_CK,InvCovMat_CK,Point_CK)
         if (real(Dummy(1))<0._RK) then
-            getProbMVNMP_CK = NullVal%RK
+            probMVN = NullVal%RK
         else
-            getProbMVNMP_CK = INVSQRT2PI**nd * sqrtDetInvCovMat_CK * exp( -0.5_RK * Dummy )
+            probMVN = INVSQRT2PI**nd * sqrtDetInvCovMat_CK * exp( -0.5_RK * Dummy )
         end if
     end function getProbMVNMP_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getLogProbMVNSP_CK(nd,MeanVec_CK,InvCovMat_CK,logSqrtDetInvCovMat_CK,Point_CK)
+    function getLogProbMVNSP_CK(nd,MeanVec_CK,InvCovMat_CK,logSqrtDetInvCovMat_CK,Point_CK) result(logProbMVN)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVNSP_CK
 #endif
@@ -475,18 +524,18 @@ contains
         complex(CK), intent(in) :: InvCovMat_CK(nd,nd)
         complex(CK), intent(in) :: logSqrtDetInvCovMat_CK
         complex(CK), intent(in) :: Point_CK(nd)
-        complex(CK)             :: getLogProbMVNSP_CK, dummy
+        complex(CK)             :: logProbMVN, dummy
         dummy = getMahalSqSP_CK(nd,MeanVec_CK,InvCovMat_CK,Point_CK)
         if (real(dummy)<0._RK) then
-            getLogProbMVNSP_CK = NullVal%RK
+            logProbMVN = NullVal%RK
         else
-            getLogProbMVNSP_CK  = nd*LOGINVSQRT2PI + logSqrtDetInvCovMat_CK - 0.5_RK * dummy
+            logProbMVN  = nd*LOGINVSQRT2PI + logSqrtDetInvCovMat_CK - 0.5_RK * dummy
         end if
     end function getLogProbMVNSP_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getLogProbMVNMP_CK(nd,np,MeanVec_CK,InvCovMat_CK,logSqrtDetInvCovMat_CK,Point_CK)
+    function getLogProbMVNMP_CK(nd,np,MeanVec_CK,InvCovMat_CK,logSqrtDetInvCovMat_CK,Point_CK) result(logProbMVN)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVNMP_CK
 #endif
@@ -497,12 +546,12 @@ contains
         complex(CK), intent(in) :: InvCovMat_CK(nd,nd)
         complex(CK), intent(in) :: logSqrtDetInvCovMat_CK
         complex(CK), intent(in) :: Point_CK(nd,np)
-        complex(CK)             :: getLogProbMVNMP_CK(np), Dummy(np)
+        complex(CK)             :: logProbMVN(np), Dummy(np)
         Dummy = getMahalSqMP_CK(nd,np,MeanVec_CK,InvCovMat_CK,Point_CK)
         if (real(Dummy(1))<0._RK) then
-            getLogProbMVNMP_CK = NullVal%RK
+            logProbMVN = NullVal%RK
         else
-            getLogProbMVNMP_CK  = nd*LOGINVSQRT2PI + logSqrtDetInvCovMat_CK - 0.5_RK * Dummy
+            logProbMVN  = nd*LOGINVSQRT2PI + logSqrtDetInvCovMat_CK - 0.5_RK * Dummy
         end if
     end function getLogProbMVNMP_CK
 
@@ -512,7 +561,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! SDSP stands for Single-Dimensional Gaussian mixture with Single Point input
-    function getLogProbGausMixSDSP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,point)
+    function getLogProbGausMixSDSP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,point) result(logProbGausMix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGausMixSDSP_RK
 #endif
@@ -522,12 +571,11 @@ contains
         real(RK)   , intent(in) :: LogAmplitude(nmode),MeanVec(nmode)
         real(RK)   , intent(in) :: InvCovMat(nmode),LogSqrtDetInvCovMat(nmode)
         real(RK)   , intent(in) :: point
-        real(RK)                :: getLogProbGausMixSDSP_RK
+        real(RK)                :: logProbGausMix
         real(RK)                :: normFac,LogProb(nmode)
         integer(IK)             :: imode
         do imode = 1, nmode
-            LogProb(imode)  = LogAmplitude(imode) &
-                            + getLogProbNormSP_RK(MeanVec(imode),InvCovMat(imode),LogSqrtDetInvCovMat(imode),point)
+            LogProb(imode)  = LogAmplitude(imode) + getLogProbNormSP_RK(MeanVec(imode),InvCovMat(imode),LogSqrtDetInvCovMat(imode),point)
         end do
         normFac = maxval(LogProb)
         LogProb = LogProb - normFac
@@ -536,12 +584,12 @@ contains
         elsewhere
             LogProb = exp(LogProb)
         end where
-        getLogProbGausMixSDSP_RK = normFac + log(sum(LogProb))
+        logProbGausMix = normFac + log(sum(LogProb))
     end function getLogProbGausMixSDSP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  function getLogProbGausMixSDMP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point)
+  function getLogProbGausMixSDMP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point) result(logProbGausMix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGausMixSDMP_RK
 #endif
@@ -551,12 +599,11 @@ contains
         real(RK)   , intent(in) :: LogAmplitude(nmode),MeanVec(nmode)
         real(RK)   , intent(in) :: InvCovMat(nmode),LogSqrtDetInvCovMat(nmode)
         real(RK)   , intent(in) :: Point(np)
-        real(RK)                :: getLogProbGausMixSDMP_RK(np)
+        real(RK)                :: logProbGausMix(np)
         real(RK)                :: NormFac(np),LogProb(nmode,np)
         integer(IK)             :: imode, ip
         do imode = 1, nmode
-            LogProb(imode,1:np) = LogAmplitude(imode) &
-                                + getLogProbNormMP_RK(np,MeanVec(imode),InvCovMat(imode),LogSqrtDetInvCovMat(imode),Point)
+            LogProb(imode,1:np) = LogAmplitude(imode) + getLogProbNormMP_RK(np,MeanVec(imode),InvCovMat(imode),LogSqrtDetInvCovMat(imode),Point)
         end do
         NormFac = maxval(LogProb,dim=1)
         do ip = 1,np
@@ -568,13 +615,13 @@ contains
                     LogProb(imode,ip) = exp( LogProb(imode,ip) )
                 end if
             end do
-            getLogProbGausMixSDMP_RK(ip) = NormFac(ip) + log(sum(LogProb(1:nmode,ip)))
+            logProbGausMix(ip) = NormFac(ip) + log(sum(LogProb(1:nmode,ip)))
         end do
     end function getLogProbGausMixSDMP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getLogProbGausMixMDSP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point)
+    function getLogProbGausMixMDSP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point) result(logProbGausMix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGausMixMDSP_RK
 #endif
@@ -584,12 +631,11 @@ contains
         real(RK)   , intent(in) :: LogAmplitude(nmode), MeanVec(nd,nmode)
         real(RK)   , intent(in) :: InvCovMat(nd,nd,nmode), LogSqrtDetInvCovMat(nmode)
         real(RK)   , intent(in) :: Point(nd)
-        real(RK)                :: getLogProbGausMixMDSP_RK
+        real(RK)                :: logProbGausMix
         real(RK)                :: normFac,LogProb(nmode)
         integer(IK)             :: imode
         do imode = 1, nmode
-            LogProb(imode) = LogAmplitude(imode) + &
-            getLogProbMVNSP_RK(nd,MeanVec(1:nd,imode),InvCovMat(1:nd,1:nd,imode),LogSqrtDetInvCovMat(imode),Point)
+            LogProb(imode) = LogAmplitude(imode) + getLogProbMVNSP_RK(nd,MeanVec(1:nd,imode),InvCovMat(1:nd,1:nd,imode),LogSqrtDetInvCovMat(imode),Point)
         end do
         normFac = maxval(LogProb)
         LogProb = LogProb - normFac
@@ -598,12 +644,12 @@ contains
         elsewhere
             LogProb = exp(LogProb)
         end where
-        getLogProbGausMixMDSP_RK = normFac + log(sum(LogProb))
+        logProbGausMix = normFac + log(sum(LogProb))
     end function getLogProbGausMixMDSP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  function getLogProbGausMixMDMP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point)
+  function getLogProbGausMixMDMP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point) result(logProbGausMix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGausMixMDMP_RK
 #endif
@@ -613,7 +659,7 @@ contains
         real(RK)   , intent(in) :: LogAmplitude(nmode),MeanVec(nd,nmode)
         real(RK)   , intent(in) :: InvCovMat(nd,nd,nmode), LogSqrtDetInvCovMat(nmode)
         real(RK)   , intent(in) :: Point(nd,np)
-        real(RK)                :: getLogProbGausMixMDMP_RK(np)
+        real(RK)                :: logProbGausMix(np)
         real(RK)                :: NormFac(np),LogProb(nmode,np)
         integer(IK)             :: imode, ip
         do imode = 1, nmode
@@ -630,14 +676,14 @@ contains
                     LogProb(imode,ip) = exp( LogProb(imode,ip) )
                 end if
             end do
-        getLogProbGausMixMDMP_RK(ip) = NormFac(ip) + log(sum(LogProb(1:nmode,ip)))
+        logProbGausMix(ip) = NormFac(ip) + log(sum(LogProb(1:nmode,ip)))
         end do
     end function getLogProbGausMixMDMP_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! SDSP stands for 1-dimensional Gaussian mixture with scalar input point
-    function getLogProbGausMixSDSP_CK(nmode,nd,np,LogAmplitude_CK,MeanVec_CK,InvCovMat_CK,LogSqrtDetInvCovMat_CK,point_CK)
+    function getLogProbGausMixSDSP_CK(nmode,nd,np,LogAmplitude_CK,MeanVec_CK,InvCovMat_CK,LogSqrtDetInvCovMat_CK,point_CK) result(logProbGausMix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGausMixSDSP_CK
 #endif
@@ -647,7 +693,7 @@ contains
         complex(CK), intent(in) :: LogAmplitude_CK(nmode),MeanVec_CK(nmode)
         complex(CK), intent(in) :: InvCovMat_CK(nmode),LogSqrtDetInvCovMat_CK(nmode)
         complex(CK), intent(in) :: point_CK
-        complex(CK)             :: getLogProbGausMixSDSP_CK
+        complex(CK)             :: logProbGausMix
         complex(CK)             :: normFac_CK,LogProb_CK(nmode)
         integer(IK)             :: imode
         do imode = 1, nmode
@@ -661,12 +707,12 @@ contains
         elsewhere
             LogProb_CK = exp(LogProb_CK)
         end where
-        getLogProbGausMixSDSP_CK = normFac_CK + log(sum(LogProb_CK))
+        logProbGausMix = normFac_CK + log(sum(LogProb_CK))
     end function getLogProbGausMixSDSP_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getLogProbGausMixSDMP_CK(nmode,nd,np,LogAmplitude_CK,MeanVec_CK,InvCovMat_CK,LogSqrtDetInvCovMat_CK,Point_CK)
+    function getLogProbGausMixSDMP_CK(nmode,nd,np,LogAmplitude_CK,MeanVec_CK,InvCovMat_CK,LogSqrtDetInvCovMat_CK,Point_CK) result(logProbGausMix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGausMixSDMP_CK
 #endif
@@ -676,7 +722,7 @@ contains
         complex(CK), intent(in) :: LogAmplitude_CK(nmode),MeanVec_CK(nmode)
         complex(CK), intent(in) :: InvCovMat_CK(nmode),LogSqrtDetInvCovMat_CK(nmode)
         complex(CK), intent(in) :: Point_CK(np)
-        complex(CK)             :: getLogProbGausMixSDMP_CK(np)
+        complex(CK)             :: logProbGausMix(np)
         complex(CK)             :: normFac_CK(np),LogProb_CK(nmode,np)
         integer(IK)             :: imode, ip
         do imode = 1, nmode
@@ -693,13 +739,13 @@ contains
                     LogProb_CK(imode,ip) = exp( LogProb_CK(imode,ip) )
                 end if
             end do
-            getLogProbGausMixSDMP_CK(ip) = normFac_CK(ip) + log(sum(LogProb_CK(1:nmode,ip)))
+            logProbGausMix(ip) = normFac_CK(ip) + log(sum(LogProb_CK(1:nmode,ip)))
         end do
     end function getLogProbGausMixSDMP_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  function getLogProbGausMixMDSP_CK(nmode,nd,np,LogAmplitude_CK,MeanVec_CK,InvCovMat_CK,LogSqrtDetInvCovMat_CK,Point_CK)
+  function getLogProbGausMixMDSP_CK(nmode,nd,np,LogAmplitude_CK,MeanVec_CK,InvCovMat_CK,LogSqrtDetInvCovMat_CK,Point_CK) result(logProbGausMix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGausMixMDSP_CK
 #endif
@@ -709,7 +755,7 @@ contains
         complex(CK), intent(in) :: LogAmplitude_CK(nmode), MeanVec_CK(nd,nmode)
         complex(CK), intent(in) :: InvCovMat_CK(nd,nd,nmode), LogSqrtDetInvCovMat_CK(nmode)
         complex(CK), intent(in) :: Point_CK(nd)
-        complex(CK)             :: getLogProbGausMixMDSP_CK
+        complex(CK)             :: logProbGausMix
         complex(CK)             :: normFac_CK,LogProb_CK(nmode)
         integer(IK)             :: imode
         do imode = 1, nmode
@@ -724,12 +770,12 @@ contains
         elsewhere
             LogProb_CK = exp(LogProb_CK)
         end where
-        getLogProbGausMixMDSP_CK = normFac_CK + log(sum(LogProb_CK))
+        logProbGausMix = normFac_CK + log(sum(LogProb_CK))
     end function getLogProbGausMixMDSP_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getLogProbGausMixMDMP_CK(nmode,nd,np,LogAmplitude_CK,MeanVec_CK,InvCovMat_CK,LogSqrtDetInvCovMat_CK,Point_CK)
+    function getLogProbGausMixMDMP_CK(nmode,nd,np,LogAmplitude_CK,MeanVec_CK,InvCovMat_CK,LogSqrtDetInvCovMat_CK,Point_CK) result(logProbGausMix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGausMixMDMP_CK
 #endif
@@ -739,13 +785,12 @@ contains
         complex(CK), intent(in) :: LogAmplitude_CK(nmode),MeanVec_CK(nd,nmode)
         complex(CK), intent(in) :: InvCovMat_CK(nd,nd,nmode), LogSqrtDetInvCovMat_CK(nmode)
         complex(CK), intent(in) :: Point_CK(nd,np)
-        complex(CK)             :: getLogProbGausMixMDMP_CK(np)
+        complex(CK)             :: logProbGausMix(np)
         complex(CK)             :: normFac_CK(np),LogProb_CK(nmode,np)
         integer(IK)             :: imode, ip
         do imode = 1, nmode
             LogProb_CK(imode,1:np) = LogAmplitude_CK(imode) + &
-            getLogProbMVNMP_CK(nd,np,MeanVec_CK(1:nd,imode),InvCovMat_CK(1:nd,1:nd,imode)&
-                                ,LogSqrtDetInvCovMat_CK(imode),Point_CK)
+            getLogProbMVNMP_CK(nd,np,MeanVec_CK(1:nd,imode),InvCovMat_CK(1:nd,1:nd,imode),LogSqrtDetInvCovMat_CK(imode),Point_CK)
         end do
         normFac_CK = maxval(real(LogProb_CK),dim=1)
         do ip = 1,np
@@ -757,7 +802,7 @@ contains
                     LogProb_CK(imode,ip) = exp( LogProb_CK(imode,ip) )
                 end if
             end do
-            getLogProbGausMixMDMP_CK(ip) = normFac_CK(ip) + log(sum(LogProb_CK(1:nmode,ip)))
+            logProbGausMix(ip) = normFac_CK(ip) + log(sum(LogProb_CK(1:nmode,ip)))
         end do
     end function getLogProbGausMixMDMP_CK
 
@@ -775,6 +820,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the mean of a sample of multidimensional points.
+    !>
+    !> \param[in]       nd      :   The number of dimensions of the input sample.
+    !> \param[in]       np      :   The number of points in the sample.
+    !> \param[in]       Point   :   The array of shape `(nd,np)` containing the sample.
+    !> \param[in]       Weight  :   The vector of length `np` containing the weights of points in the sample (optional, default = vector of ones).
+    !>
+    !> \return
+    !> `Mean` : The output mean vector of length `nd`.
     pure function getMean_2D(nd,np,Point,Weight) result(Mean)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMean_2D
@@ -804,6 +859,19 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the normalized data with respect to the input mean vector of length `nd`.
+    !>
+    !> \param[in]       nd      :   The number of dimensions of the input sample.
+    !> \param[in]       np      :   The number of points in the sample.
+    !> \param[in]       Mean    :   The mean vector of length `nd`.
+    !> \param[in]       Point   :   The array of shape `(nd,np)` containing the sample.
+    !>
+    !> \return
+    !> `NormData` : The output normalized points array of shape `(np,nd)`.
+    !>
+    !> \remark
+    !> Note the difference in the shape of the input `Point` vs. the output `NormedData`.
     pure function getNormData_2D(nd,np,Mean,Point) result(NormData)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormData_2D
@@ -821,16 +889,33 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the variance of the input vector of values of length `np`.
+    !>
+    !> \param[in]       np          :   The number of points in the sample.
+    !> \param[in]       mean        :   The mean of the vector.
+    !> \param[in]       Point       :   The array of shape `np` containing the sample.
+    !> \param[in]       Weight      :   The vector of weights of the points in the sample (optional).
+    !> \param[in]       sumWeight   :   The sum of the vector of weights (optional, if `Weight` is also missing).
+    !>
+    !> \return
+    !> `variance` : The variance of the input sample.
+    !>
+    !> \warning
+    !> If `Weight` is present, then `SumWeight` must be also present.
+    !> Why? if mean is already given, it implies that SumWeight is also computed a priori.
+    !>
+    !> \remark
+    !> One also use the concise Fortran syntax to achieve the same goal as this function:
+    !> ```
+    !> mean = sum(Weight*Point) / sum(Weight)
+    !> variance = sum( (Weight*(Point-mean))**2 ) / (sum(Weight)-1)
+    !> ```
+    !> But the above concise version will be slightly slower as it involves three loops instead of two.
     pure function getVariance_1D(np,mean,Point,Weight,sumWeight) result(variance)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getVariance_1D
 #endif
-        ! ATTN: if Weight is present, then SumWeight must be also present
-        ! reason for requesting sumWeight: if mean is already given, it means sum weight is also computed a priori
-        ! This function is rather redundant as one could also use the concise Fortran syntax to achieve the same goal:
-        ! mean = sum(Weight*Point) / sum(Weight)
-        ! variance = sum( (Weight*(Point-mean))**2 ) / (sum(Weight)-1)
-        ! But the concise version will be slightly slower as it involves three loops instead of two.
         implicit none
         integer(IK), intent(in)             :: np                       ! np is the number of observations (points) whose variance is to be computed
         real(RK)   , intent(in)             :: mean                     ! the mean value of the vector Point
@@ -854,6 +939,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the vector of variance of a set of `np` points of `nd` dimensions.
+    !>
+    !> \param[in]       nd          :   The number of dimensions of the input sample.
+    !> \param[in]       np          :   The number of points in the sample.
+    !> \param[in]       Mean        :   The mean vector of the sample.
+    !> \param[in]       Point       :   The array of shape `(nd,np)` containing the sample.
+    !> \param[in]       Weight      :   The vector of weights of the points in the sample of shape `(nd,np)` (optional).
+    !>
+    !> \return
+    !> `Variance` : The vector of length `nd` of the variances of the input sample.
     pure function getVariance_2D(nd,np,Mean,Point,Weight) result(Variance)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getVariance_2D
@@ -885,9 +981,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Returns the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of CholeskyLower.
-    ! The upper part of CholeskyLower, including the diagonal elements of it, contains the Covariance matrix of the sample.
-    ! Diagonal, contains on output, the diagonal terms of Cholesky Factor.
+    !> \brief
+    !> Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of `CholeskyLower`.
+    ! The upper part of `CholeskyLower`, including the diagonal elements of it, will contain the covariance matrix of the sample.
+    ! The output argument `Diagonal`, contains the diagonal terms of Cholesky Factor.
+    !>
+    !> \param[in]       nd              :   The number of dimensions of the input sample.
+    !> \param[in]       np              :   The number of points in the sample.
+    !> \param[in]       Mean            :   The mean vector of the sample.
+    !> \param[in]       Point           :   The array of shape `(nd,np)` containing the sample.
+    !> \param[out]      CholeskyLower   :   The output matrix of shape `(nd,nd)` whose lower triangle contains elements of the Cholesky factor.
+    !>                                      The upper triangle of the matrix contains the covariance matrix of the sample.
+    !> \param[out]      Diagonal        :   The diagonal elements of the Cholesky factor.
+    !>
+    !> @todo
+    !> The efficiency of this code can be further improved.
     subroutine getSamCholFac(nd,np,Mean,Point,CholeskyLower,Diagonal)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCholFac
@@ -922,27 +1030,50 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This subroutine finds the elements of the symmetric nd*nd sample covariance matrix of a given set of
-    ! np observations, each one with nd parameters in the format of a "" np*nd "" matrix.
-    ! For a review, refer to Geisser & Cornfield (1963) "Posterior distributions for multivariate normal parameters".
-    ! Also refer to Box and Tiao (1973), "Bayesian Inference in Statistical Analysis" Page 421.
-    ! Amir Shahmoradi, Oct 16, 2009, 11:14 AM, MTU
+    !> \brief
+    !> Return the sample mean, covariance matrix, the Mahalanobis distances squared of the points with respect to the sample,
+    !> and the square root of the determinant of the inverse covariance matrix of the sample.
+    !>
+    !> \param[in]       nd                  :   The number of dimensions of the input sample.
+    !> \param[in]       np                  :   The number of points in the sample.
+    !> \param[in]       Point               :   The array of shape `(np,nd)` containing the sample.
+    !> \param[out]      CovMat              :   The output matrix of shape `(nd,nd)` representing the covariance matrix of the input data.
+    !> \param[out]      Mean                :   The output mean vector of the sample.
+    !> \param[out]      MahalSq             :   The output Mahalanobis distances squared of the points with respect to the sample (optional).
+    !> \param[out]      InvCovMat           :   The output inverse covariance matrix of the input data (optional).
+    !> \param[out]      sqrtDetInvCovMat    :   The output square root of the determinant of the inverse covariance matrix of the sample (optional).
+    !>
+    !> \warning
+    !> If `sqrtDetInvCovMat` is present, then `MahalSq` and `InvCovMat` must be also present.
+    !>
+    !> \remark
+    !> Note the shape of the input `Point(np,nd)`.
+    !>
+    !> \remark
+    !> See also, [getSamCovMeanTrans](@ref getsamcovmeantrans).
+    !>
+    !> \remark
+    !> For more information, see Geisser & Cornfield (1963) "Posterior distributions for multivariate normal parameters".
+    !> Also, Box and Tiao (1973), "Bayesian Inference in Statistical Analysis" Page 421.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine getSamCovMean(np,nd,Point,CovMat,Mean,MahalSq,InvCovMat,sqrtDetInvCovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCovMean
 #endif
         use Matrix_mod, only: getInvPosDefMatSqrtDet
         implicit none
-        integer(IK), intent(in)            :: np,nd                  ! np is the number of observations, nd is the number of parameters for each observation
-        real(RK)   , intent(in)            :: Point(np,nd)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
-        real(RK)   , intent(out)           :: CovMat(nd,nd)          ! Covariance matrix of the input data
-        real(RK)   , intent(out)           :: Mean(nd)               ! Mean vector
-        real(RK)   , intent(out), optional :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the mean position of the sample
-        real(RK)   , intent(out), optional :: InvCovMat(nd,nd)       ! Inverse Covariance matrix of the input data
-        real(RK)   , intent(out), optional :: sqrtDetInvCovMat       ! sqrt determinant of the inverse covariance matrix
-        real(RK)   , dimension(nd)         :: DummyVec
-        real(RK)   , dimension(np,nd)      :: NormedData
-        integer(IK)                        :: i,j
+        integer(IK), intent(in)             :: np,nd                  ! np is the number of observations, nd is the number of parameters for each observation
+        real(RK)   , intent(in)             :: Point(np,nd)           ! Point is the matrix of the data, CovMat contains the elements of the sample covariance matrix
+        real(RK)   , intent(out)            :: CovMat(nd,nd)          ! Covariance matrix of the input data
+        real(RK)   , intent(out)            :: Mean(nd)               ! Mean vector
+        real(RK)   , intent(out), optional  :: MahalSq(np)            ! Vector of Mahalanobis Distances Squared, with respect to the mean position of the sample
+        real(RK)   , intent(out), optional  :: InvCovMat(nd,nd)       ! Inverse Covariance matrix of the input data
+        real(RK)   , intent(out), optional  :: sqrtDetInvCovMat       ! sqrt determinant of the inverse covariance matrix
+        real(RK)                            :: NormedData(np,nd)
+        real(RK)                            :: DummyVec(nd)
+        integer(IK)                         :: i,j
 
         do j = 1,nd
             Mean(j) = sum(Point(1:np,j)) / real(np,kind=RK)
@@ -973,8 +1104,35 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This subroutine is exact same thing as getSamCovMean, with the only difference that input data is transposed here on input.
-    ! Based on my preliminary benchmarks with Intel 2017 ifort, getSamCovMean() is slightly faster than getSamCovMeanTrans()
+    !> \brief
+    !> Return the sample mean, covariance matrix, the Mahalanobis distances squared of the points with respect to the sample,
+    !> and the square root of the determinant of the inverse covariance matrix of the sample.
+    !>
+    !> \param[in]       nd                  :   The number of dimensions of the input sample.
+    !> \param[in]       np                  :   The number of points in the sample.
+    !> \param[in]       Point               :   The array of shape `(nd,np)` containing the sample.
+    !> \param[out]      CovMat              :   The output matrix of shape `(nd,nd)` representing the covariance matrix of the input data.
+    !> \param[out]      Mean                :   The output mean vector of the sample.
+    !> \param[out]      MahalSq             :   The output Mahalanobis distances squared of the points with respect to the sample (optional).
+    !> \param[out]      InvCovMat           :   The output inverse covariance matrix of the input data (optional).
+    !> \param[out]      sqrtDetInvCovMat    :   The output square root of the determinant of the inverse covariance matrix of the sample (optional).
+    !>
+    !> \warning
+    !> If `sqrtDetInvCovMat` is present, then `MahalSq` and `InvCovMat` must be also present.
+    !>
+    !> \remark
+    !> Note the shape of the input `Point(nd,np)`.
+    !>
+    !> \remark
+    !> This subroutine has the same functionality as [getSamCovMean](@ref getsamcovmean), with the only difference that input data is transposed here on input.
+    !> Based on the preliminary benchmarks with Intel 2017 ifort, `getSamCovMean()` is slightly faster than `getSamCovMeanTrans()`.
+    !>
+    !> \remark
+    !> For more information, see Geisser & Cornfield (1963) "Posterior distributions for multivariate normal parameters".
+    !> Also, Box and Tiao (1973), "Bayesian Inference in Statistical Analysis" Page 421.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine getSamCovMeanTrans(np,nd,Point,CovMat,Mean,MahalSq,InvCovMat,sqrtDetInvCovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCovMeanTrans
@@ -1033,8 +1191,29 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This subroutine is exact same thing as getSamCovMeanTrans, with the only differences that only the upper triangle of the covariance matrix is returned.
-    ! Also, optional arguments are not available. This subroutine is specifically optimized for use in ParaMCMC.
+    !> \brief
+    !> Return the sample mean and the upper triangle of the covariance matrix of the input sample.
+    !>
+    !> \param[in]       nd                  :   The number of dimensions of the input sample.
+    !> \param[in]       np                  :   The number of points in the sample.
+    !> \param[in]       Point               :   The array of shape `(nd,np)` containing the sample.
+    !> \param[out]      CovMatUpper         :   The output matrix of shape `(nd,nd)` whose upper triangle represents the covariance matrix of the input data.
+    !> \param[out]      Mean                :   The output mean vector of the sample.
+    !>
+    !> \remark
+    !> Note the shape of the input `Point(nd,np)`.
+    !>
+    !> \remark
+    !> This subroutine has the same functionality as [getSamCovMeanTrans](@ref getsamcovmeantrans), with the only difference
+    !> only the upper triangle of the covariance matrix is returned. Also, optional arguments are not available.
+    !> This subroutine is specifically optimized for use in the ParaMonte samplers.
+    !>
+    !> \remark
+    !> For more information, see Geisser & Cornfield (1963) "Posterior distributions for multivariate normal parameters".
+    !> Also, Box and Tiao (1973), "Bayesian Inference in Statistical Analysis" Page 421.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine getSamCovUpperMeanTrans(np,nd,Point,CovMatUpper,Mean)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCovUpperMeanTrans
@@ -1071,8 +1250,31 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This subroutine is exact same thing as getSamCovUpperMeanTrans,
-    ! with the only difference that here points can have different weights. This subroutine is specifically optimized for use in ParaMCMC.
+    !> \brief
+    !> Return the mean and the upper triangle of the covariance matrix of the input *weighted* sample.
+    !>
+    !> \param[in]       nd                  :   The number of dimensions of the input sample.
+    !> \param[in]       sumWeight           :   The sum of all sample weights.
+    !> \param[in]       np                  :   The number of points in the sample.
+    !> \param[in]       Point               :   The array of shape `(nd,np)` containing the sample.
+    !> \param[in]       Weight              :   The integer array of length `np`, representing the weights of individual points in the sample.
+    !> \param[out]      CovMatUpper         :   The output matrix of shape `(nd,nd)` whose upper triangle represents the covariance matrix of the input data.
+    !> \param[out]      Mean                :   The output mean vector of the sample.
+    !>
+    !> \remark
+    !> Note the shape of the input `Point(nd,np)`.
+    !>
+    !> \remark
+    !> This subroutine has the same functionality as [getSamCovUpperMeanTrans](@ref getsamcovuppermeantrans), with the only difference
+    !> only the upper triangle of the covariance matrix is returned. Also, optional arguments are not available.
+    !> This subroutine is specifically optimized for use in the ParaMonte samplers.
+    !>
+    !> \remark
+    !> For more information, see Geisser & Cornfield (1963) "Posterior distributions for multivariate normal parameters".
+    !> Also, Box and Tiao (1973), "Bayesian Inference in Statistical Analysis" Page 421.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine getWeiSamCovUppMeanTrans(np,sumWeight,nd,Point,Weight,CovMatUpper,Mean)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getWeiSamCovUppMeanTrans
@@ -1116,15 +1318,28 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This subroutine combines the mean and covariance of two samples given as input.
-    ! It uses the recursion equation similar to http://stats.stackexchange.com/questions/97642/how-to-combine-sample-means-and-sample-variances
-    ! See also https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Covariance to update the covariance:
-    ! See also https://stats.stackexchange.com/questions/43159/how-to-calculate-pooled-variance-of-two-groups-given-known-group-variances-mean
+    !> \brief
+    !> Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix.
+    !>
+    !> \param[in]       nd          :   The number of dimensions of the input sample.
+    !> \param[in]       npA         :   The number of points in sample `A`.
+    !> \param[in]       MeanA       :   The mean vector of sample `A`.
+    !> \param[in]       CovMatA     :   The covariance matrix of sample `A`.
+    !> \param[in]       npB         :   The number of points in sample `B`.
+    !> \param[in]       MeanB       :   The mean vector of sample `B`.
+    !> \param[in]       CovMatB     :   The covariance matrix of sample `B`.
+    !> \param[out]      Mean        :   The output mean vector of the combined sample.
+    !> \param[out]      CovMat      :   The output covariance matrix of the combined sample.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
+    ! This subroutine uses a recursion equation similar to http://stats.stackexchange.com/questions/97642/how-to-combine-sample-means-and-sample-variances
+    ! See also: https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Covariance
+    ! See also: https://stats.stackexchange.com/questions/43159/how-to-calculate-pooled-variance-of-two-groups-given-known-group-variances-mean
     subroutine combineCovMean(nd,npA,MeanA,CovMatA,npB,MeanB,CovMatB,Mean,CovMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: combineCovMean
 #endif
-
         implicit none
         integer(IK), intent(in)       :: nd
         integer(IK), intent(in)       :: npA,npB
@@ -1132,27 +1347,49 @@ contains
         real(RK)   , intent(in)       :: MeanB(nd),CovMatB(nd,nd)
         real(RK)   , intent(out)      :: Mean(nd),CovMat(nd,nd)
         real(RK)   , dimension(nd,1)  :: MatMeanA,MatMeanB,MatMean
-        real(RK)                      :: npAB
+        real(RK)                      :: npABinverse
 
-        npAB = real(npA + npB,kind=RK)
+        npABinverse = 1._RK / real(npA + npB, kind=RK)
         MatMeanA(1:nd,1) = MeanA
         MatMeanB(1:nd,1) = MeanB
 
-        ! First find Mean:
-        Mean = ( real(npA,kind=RK)*MeanA + real(npB,kind=RK)*MeanB ) / npAB
+        ! First find the Mean
+
+        Mean = ( real(npA,kind=RK)*MeanA + real(npB,kind=RK)*MeanB ) * npABinverse
         MatMean(1:nd,1) = Mean
 
-        ! Now find new Covariance matrix:
+        ! Now find new Covariance matrix
+
         CovMat  = real(npA,kind=RK) * ( CovMatA + matmul(MatMeanA,transpose(MatMeanA)) ) &
                 + real(npB,kind=RK) * ( CovMatB + matmul(MatMeanB,transpose(MatMeanB)) )
-        CovMat  = CovMat/npAB - matmul(MatMean,transpose(MatMean))
+        CovMat  = npABinverse * CovMat - matmul(MatMean,transpose(MatMean))
 
     end subroutine combineCovMean
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This subroutine is the same as combineCovMean, with the IMPORTANT difference that
-    ! only the upper triangles and diagonals of the input covariance matrices need to be given by the user: CovMatUpper, CovMatUpperB
+    !> \brief
+    !> Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix.
+    !>
+    !> \param[in]       nd              :   The number of dimensions of the input sample.
+    !> \param[in]       npA             :   The number of points in sample `A`.
+    !> \param[in]       MeanVecA        :   The mean vector of sample `A`.
+    !> \param[in]       CovMatUpperA    :   The upper triangle of the covariance matrix of sample `A`.
+    !> \param[in]       npB             :   The number of points in sample `B`.
+    !> \param[in]       MeanVecB        :   The mean vector of sample `B`.
+    !> \param[in]       CovMatUpperB    :   The upper triangle of the covariance matrix of sample `B`.
+    !> \param[out]      MeanVec         :   The output mean vector of the combined sample.
+    !> \param[out]      CovMatUpper     :   The output upper triangle of the covariance matrix of the combined sample.
+    !>
+    !> @todo
+    !> The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.
+    !>
+    !> \remark
+    !> This subroutine is the same as [combineCovMean](@ref combinecovmean), with the **important difference** that only the
+    !> upper triangles and diagonals of the input covariance matrices need to be given by the user: `CovMatUpperA`, `CovMatUpperB`
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine combineMeanCovUpper(nd,npA,MeanVecA,CovMatUpperA,npB,MeanVecB,CovMatUpperB,MeanVec,CovMatUpper)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: combineMeanCovUpper
@@ -1164,22 +1401,21 @@ contains
         real(RK)   , intent(in)  :: MeanVecA(nd),CovMatUpperA(nd,nd)
         real(RK)   , intent(in)  :: MeanVecB(nd),CovMatUpperB(nd,nd)
         real(RK)   , intent(out) :: MeanVec(nd),CovMatUpper(nd,nd)
-        real(RK)                 :: npAreal, npBreal, npABinverse
+        real(RK)                 :: npAreal, npBreal, npABinverse, npA2npAB, npB2npAB
         integer(IK)              :: i,j
 
         npAreal = real(npA,kind=RK)
         npBreal = real(npB,kind=RK)
-        npABinverse = 1._RK / real(npA + npB,kind=RK)
+        npABinverse = 1._RK / (npAreal + npBreal)
+        npA2npAB = npAreal * npABinverse
+        npB2npAB = npBreal * npABinverse
 
-        ! First find MeanVec:
-        MeanVec = npABinverse * ( npAreal*MeanVecA + npBreal*MeanVecB )
-
-        ! Now find new Covariance matrix:
-        do j = 1,nd
-          do i = 1,j
-            CovMatUpper(i,j) = ( npAreal * ( CovMatUpperA(i,j) + MeanVecA(i) * MeanVecA(j) ) &
-                               + npBreal * ( CovMatUpperB(i,j) + MeanVecB(i) * MeanVecB(j) ) &
-                               ) * npABinverse - MeanVec(i) * MeanVec(j)
+        do j = 1, nd
+            MeanVec(j) = npA2npAB * MeanVecA(j) + npB2npAB * MeanVecB(j) ! First find MeanVec
+            do i = 1, j ! Now find new Covariance matrix
+                CovMatUpper(i,j) = ( npA2npAB * ( CovMatUpperA(i,j) + MeanVecA(i) * MeanVecA(j) ) &
+                                   + npB2npAB * ( CovMatUpperB(i,j) + MeanVecB(i) * MeanVecB(j) ) &
+                                   ) - MeanVec(i) * MeanVec(j)
             end do
         end do
 
@@ -1187,8 +1423,27 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This subroutine is the same as combineMeanCovUpper, with the IMPORTANT difference that the resulting Mean and CovMat
-    ! are now returned as CovMatB and MeanB.
+    !> \brief
+    !> Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix.
+    !>
+    !> \param[in]       nd              :   The number of dimensions of the input sample.
+    !> \param[in]       npA             :   The number of points in sample `A`.
+    !> \param[in]       MeanVecA        :   The mean vector of sample `A`.
+    !> \param[in]       CovMatUpperA    :   The upper triangle of the covariance matrix of sample `A`.
+    !> \param[in]       npB             :   The number of points in sample `B`.
+    !> \param[inout]    MeanVecB        :   The mean vector of sample `B` and the merged mean on return.
+    !> \param[inout]    CovMatUpperB    :   The upper triangle of the covariance matrix of sample `B` on input and
+    !>                                      the output upper triangle of the covariance matrix of the combined sample on return.
+    !>
+    !> @todo
+    !> The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.
+    !>
+    !> \remark
+    !> This subroutine is the same as [combineMeanCovUpper](@ref combinemeancovupper), with the **important difference** that
+    !> the resulting `MeanVec` and `CovMatUpper` are now returned as `MeanB` and `CovMatB`.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine mergeMeanCovUpper(nd,npA,MeanVecA,CovMatUpperA,npB,MeanVecB,CovMatUpperB)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: mergeMeanCovUpper
@@ -1200,18 +1455,18 @@ contains
         real(RK)   , intent(in)     :: MeanVecA(nd),CovMatUpperA(nd,nd)
         real(RK)   , intent(inout)  :: MeanVecB(nd),CovMatUpperB(nd,nd)
         real(RK)                    :: MeanVec(nd)
-        real(RK)                    :: npABinverse, npAnpABinverseProd, npBnpABinverseProd
+        real(RK)                    :: npABinverse, npA2npAB, npB2npAB
         integer(IK)                 :: i,j
 
         npABinverse = 1._RK / real(npA + npB,kind=RK)
-        npAnpABinverseProd = real(npA,kind=RK) * npABinverse
-        npBnpABinverseProd = real(npB,kind=RK) * npABinverse
+        npA2npAB = real(npA,kind=RK) * npABinverse
+        npB2npAB = real(npB,kind=RK) * npABinverse
 
-        do j = 1,nd
-            MeanVec(j) = npAnpABinverseProd*MeanVecA(j) + npBnpABinverseProd*MeanVecB(j)
-            do i = 1,j
-                CovMatUpperB(i,j)   = npAnpABinverseProd * ( CovMatUpperA(i,j) + MeanVecA(i) * MeanVecA(j) ) &
-                                    + npBnpABinverseProd * ( CovMatUpperB(i,j) + MeanVecB(i) * MeanVecB(j) ) &
+        do j = 1, nd
+            MeanVec(j) = npA2npAB * MeanVecA(j) + npB2npAB * MeanVecB(j)
+            do i = 1, j
+                CovMatUpperB(i,j)   = npA2npAB * ( CovMatUpperA(i,j) + MeanVecA(i) * MeanVecA(j) ) &
+                                    + npB2npAB * ( CovMatUpperB(i,j) + MeanVecB(i) * MeanVecB(j) ) &
                                     - MeanVec(i) * MeanVec(j)
             end do
         end do
@@ -1221,8 +1476,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This code returns a normally distributed deviate with zero mean and unit variance.
-    function getRandGaus()
+    !> \brief
+    !> Return a random standard Gaussian deviate with zero mean and unit variance.
+    !>
+    !> \return
+    !> `randGaus` : The random standard Gaussian deviate with zero mean and unit variance.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
+    function getRandGaus() result(randGaus)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandGaus
 #endif
@@ -1231,32 +1493,30 @@ contains
         integer(IK), save :: iset=0
         real(RK)   , save :: gset
         real(RK)          :: fac,rsq,vec(2)
-        real(RK)          :: getRandGaus
+        real(RK)          :: randGaus
 
-        if (iset == 0) then
+        if (iset == 0_IK) then
             do
-
-!block
-!integer :: i, n
-!real(RK) :: unifrnd(30)
-!!integer, dimension(:), allocatable :: seed
-!if (paradramPrintEnabled .or. paradisePrintEnabled) then
-!    !do i = 1, 22
-!    call random_number(unifrnd)
-!    write(*,"(*(g0,:,'"//new_line("a")//"'))") unifrnd
-!    !end do
-!    !call random_seed(size = n); allocate(seed(n))
-!    !call random_seed(get = seed)
-!    !write(*,"(*(g0,:,' '))") seed
-!    !write(*,"(*(g0,:,' '))") StateOld
-!    !write(*,"(*(g0,:,' '))") StateNew
-!    !write(*,"(*(g0,:,' '))") CholeskyLower
-!    !write(*,"(*(g0,:,' '))") domainCheckCounter
-!    paradisePrintEnabled = .false.
-!    paradramPrintEnabled = .false.
-!end if
-!end block
-
+                !block
+                !integer :: i, n
+                !real(RK) :: unifrnd(30)
+                !!integer, dimension(:), allocatable :: seed
+                !if (paradramPrintEnabled .or. paradisePrintEnabled) then
+                !    !do i = 1, 22
+                !    call random_number(unifrnd)
+                !    write(*,"(*(g0,:,'"//new_line("a")//"'))") unifrnd
+                !    !end do
+                !    !call random_seed(size = n); allocate(seed(n))
+                !    !call random_seed(get = seed)
+                !    !write(*,"(*(g0,:,' '))") seed
+                !    !write(*,"(*(g0,:,' '))") StateOld
+                !    !write(*,"(*(g0,:,' '))") StateNew
+                !    !write(*,"(*(g0,:,' '))") CholeskyLower
+                !    !write(*,"(*(g0,:,' '))") domainCheckCounter
+                !    paradisePrintEnabled = .false.
+                !    paradramPrintEnabled = .false.
+                !end if
+                !end block
                 call random_number(vec)
                 vec = 2._RK*vec - 1._RK
                 rsq = vec(1)**2 + vec(2)**2
@@ -1264,39 +1524,59 @@ contains
             end do
             fac = sqrt(-2._RK*log(rsq)/rsq)
             gset = vec(1)*fac
-            getRandGaus = vec(2)*fac
-            iset = 1
+            randGaus = vec(2)*fac
+            iset = 1_IK
         else
-            getRandGaus = gset
-            iset = 0
+            randGaus = gset
+            iset = 0_IK
         endif
 
     end function getRandGaus
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This code returns a normally distributed deviate with the given mean and standard deviation.
-    function getRandNorm(mean,std)
+    !> \brief
+    !> Return a random Gaussian deviate with the given mean and standard deviation.
+    !>
+    !> \param[in]       mean    :   The mean of the Gaussian distribution.
+    !> \param[in]       std     :   The standard deviation of the Gaussian distribution.
+    !>
+    !> \return
+    !> `randNorm` : A normally distributed deviate with the given mean and standard deviation.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
+    function getRandNorm(mean,std) result(randNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandNorm
 #endif
         implicit none
-        real(RK), intent(in) :: mean, std
-        real(RK)       :: getRandNorm
-        getRandNorm = mean + std*getRandGaus()
+        real(RK), intent(in)    :: mean, std
+        real(RK)                :: randNorm
+        randNorm = mean + std*getRandGaus()
     end function getRandNorm
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This code returns a log-normally distributed deviate with the given mean and standard deviation.
-    function getRandLogn(mean,std)
+    !> \brief
+    !> Return a log-normally distributed deviate with the given mean and standard deviation.
+    !>
+    !> \param[in]       mean    :   The mean of the Lognormal distribution.
+    !> \param[in]       std     :   The standard deviation of the Lognormal distribution.
+    !>
+    !> \return
+    !> `randLogn` : A Lognormally distributed deviate with the given mean and standard deviation.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
+    function getRandLogn(mean,std) result(randLogn)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandLogn
 #endif
         implicit none
         real(RK), intent(in) :: mean, std
-        real(RK)       :: getRandLogn
-        getRandLogn = exp( mean + std*getRandGaus() )
+        real(RK)       :: randLogn
+        randLogn = exp( mean + std*getRandGaus() )
     end function getRandLogn
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1396,19 +1676,31 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return a MultiVariate Normal (MVN) random vector with the given mean and
+    !> covariance matrix represented by the the input Cholesky factorization.
+    !>
+    !> \param[in]   nd              :   The number of dimensions of the MVN distribution.
+    !> \param[in]   MeanVec         :   The mean vector of the MVN distribution.
+    !> \param[in]   CholeskyLower   :   The Cholesky lower triangle of the covariance matrix of the MVN distribution.
+    !> \param[in]   Diagonal        :   The Diagonal elements of the Cholesky lower triangle of the covariance matrix of the MVN distribution.
+    !>
+    !> \return
+    !> `RandMVN` : The randomly generated MVN vector.
+    !>
+    !> \author
+    !> Amir Shahmoradi, April 23, 2017, 12:36 AM, ICES, UTEXAS
     function getRandMVN(nd,MeanVec,CholeskyLower,Diagonal) result(RandMVN)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandMVN
 #endif
-        ! Amir Shahmoradi, April 23, 2017, 12:36 AM, ICES, UTEXAS
-        ! returns a multivariate Normal random vector.
         implicit none
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: MeanVec(nd)
         real(RK)   , intent(in) :: CholeskyLower(nd,nd), Diagonal(nd)   ! Cholesky lower triangle and its diagonal terms, calculated from the input CovMat.
         real(RK)                :: RandMVN(nd), dummy
         integer(IK)             :: j,i
-        RandMVN = 0._RK
+        RandMVN = MeanVec
         do j = 1,nd
             dummy = getRandGaus()
             RandMVN(j) = RandMVN(j) + Diagonal(j) * dummy
@@ -1416,7 +1708,6 @@ contains
                 RandMVN(i) = RandMVN(i) + CholeskyLower(i,j) * dummy
             end do
         end do
-        RandMVN = RandMVN + MeanVec
     end function getRandMVN
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1438,11 +1729,25 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
-    ! Given the Cholesky Lower triangle and diagonals of a given covariance matrix, this function return one point
-    ! uniformly randomly drawn from inside of an nd-ellipsoid, whose nd elements getRandMVU(i), i=1,nd are guaranteed to be in range
-    ! MeanVec(i) - sqrt(CovMat(i,i)) < getRandMVU(i) < MeanVec(i) + sqrt(CovMat(i,i))
-    function getRandMVU(nd,MeanVec,CholeskyLower,Diagonal)
+    !> \brief
+    !> Given the Cholesky Lower triangle and diagonals of a given covariance matrix, this function return one point uniformly
+    !> randomly drawn from inside of an `nd`-ellipsoid, whose `nd` elements `RandMVU(i), i=1:nd` are guaranteed
+    !> to be in the range:
+    !> ```
+    !> MeanVec(i) - sqrt(CovMat(i,i)) < RandMVU(i) < MeanVec(i) + sqrt(CovMat(i,i))
+    !> ```
+    !>
+    !> \param[in]   nd              :   The number of dimensions of the MVU distribution.
+    !> \param[in]   MeanVec         :   The mean vector of the MVU distribution.
+    !> \param[in]   CholeskyLower   :   The Cholesky lower triangle of the covariance matrix of the MVU distribution.
+    !> \param[in]   Diagonal        :   The Diagonal elements of the Cholesky lower triangle of the covariance matrix of the MVU distribution.
+    !>
+    !> \return
+    !> `RandMVU` : The randomly generated MVU vector.
+    !>
+    !> \author
+    !> Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
+    function getRandMVU(nd,MeanVec,CholeskyLower,Diagonal) result(RandMVU)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandMVU
 #endif
@@ -1451,7 +1756,7 @@ contains
         real(RK)   , intent(in) :: MeanVec(nd)
         real(RK)   , intent(in) :: CholeskyLower(nd,nd) ! Cholesky lower triangle, calculated from the input CovMat.
         real(RK)   , intent(in) :: Diagonal(nd)         ! Cholesky diagonal terms, calculated from the input CovMat.
-        real(RK)                :: getRandMVU(nd), dummy, DummyVec(nd), sumSqDummyVec
+        real(RK)                :: RandMVU(nd), dummy, DummyVec(nd), sumSqDummyVec
         integer(IK)             :: i,j
         sumSqDummyVec = 0._RK
         do j=1,nd
@@ -1459,23 +1764,41 @@ contains
             sumSqDummyVec = sumSqDummyVec + DummyVec(j)**2
         end do
         call random_number(dummy)
-        dummy = (dummy**(1._RK/dble(nd)))/sqrt(sumSqDummyVec)
-        DummyVec = DummyVec * dummy  ! DummyVec(j) * dummy is a uniform random point from inside of nd-sphere
-        getRandMVU = 0._RK
+        dummy = dummy**(1._RK/nd) / sqrt(sumSqDummyVec)
+        DummyVec = DummyVec * dummy  ! a uniform random point from inside of nd-sphere
+        RandMVU = MeanVec
         do j = 1,nd
-            getRandMVU(j) = getRandMVU(j) + Diagonal(j) * DummyVec(j)
+            RandMVU(j) = RandMVU(j) + Diagonal(j) * DummyVec(j)
             do i = j+1,nd
-                getRandMVU(i) = getRandMVU(i) + CholeskyLower(i,j) * DummyVec(j)
+                RandMVU(i) = RandMVU(i) + CholeskyLower(i,j) * DummyVec(j)
             end do
         end do
-        getRandMVU = getRandMVU + MeanVec
     end function getRandMVU
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! determines if the input NormedPoint (normalized with respect to the mean of the target ellipsoid) is within or on the boundary 
-    ! of the ellipsoid that is centered at origin and its boundary is described by the representative matrix Sigma (RepMat), 
-    ! such that x^T Sigma^(-1) x = 1 for all x on the boundary. Note that the input matrix is the inverse of RepMat: InvRepMat
+    !> \brief
+    !> Return `.true.` if the input `NormedPoint` (normalized with respect to the center of the target ellipsoid) is
+    !> within or on the boundary of the ellipsoid whose boundary is described by the representative matrix
+    !> \f$ \Sigma \f$ (`RepMat`), such that,
+    !> \f{equation}{
+    !> X^T ~ \Sigma^{-1} ~ X = 1 ~,
+    !> \f}
+    !> for all \f$X\f$ on the boundary.
+    !>
+    !> \param[in]   nd          :   The number of dimensions of the ellipsoid (the size of `NormedPoint`).
+    !> \param[in]   NormedPoint :   The input point, normalized with respect to the center of the ellipsoid,
+    !>                                  whose location with respect to the ellipsoid boundary is to be determined.
+    !> \param[in]   InvRepMat   :   The inverse of the representative matrix of the target ellipsoid.
+    !>
+    !> \return
+    !> `isInsideEllipsoid` : The logical value indicating whether the input point is inside or on the boundary of the target ellipsoid.
+    !>
+    !> \remark
+    !> Note that the input matrix is the inverse of `RepMat`: `InvRepMat`.
+    !>
+    !> \author
+    !> Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
     pure function isInsideEllipsoid(nd,NormedPoint,InvRepMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: isInsideEllipsoid
@@ -1491,7 +1814,20 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! NOTE: if MahalSq computation fails, output probability will be returned as NullVal%RK from module Constant_mod.
+    !> \brief
+    !> Return the natural logarithm of the probability density function value of a point uniformly distributed within an ellipsoid,
+    !> whose logarithm of the square root of the determinant of the inverse of its representative matrix is given by `logSqrtDetInvCovMat`.
+    !>
+    !> \param[in]   nd                  :   The number of dimensions of the MVU distribution.
+    !> \param[in]   logSqrtDetInvCovMat :   The logarithm of the square root of the determinant of
+    !>                                      the inverse of the representative covariance matrix of the ellipsoid.
+    !>
+    !> \return
+    !> `logProbMVU` :   The natural logarithm of the probability density function value
+    !>                  of a point uniformly distributed within the target ellipsoid.
+    !>
+    !> \author
+    !> Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
     pure function getLogProbMVU(nd,logSqrtDetInvCovMat) result(logProbMVU)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVU
@@ -1506,12 +1842,33 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
-    ! This is algorithm is similar to getRandMVU, with the only difference that points are drawn randomly from the surface of the ellipsoid instead of inside of its interior.
-    ! Note that the distribution of points on the surface of the ellipsoid is NOT uniform.
-    ! Regions of high curvature will have more points randomly sampled from them.
-    ! generating uniform random points on arbitrary-dimension ellipsoids is not a task with trivial solution!
-    function getRandPointOnEllipsoid(nd,MeanVec,CholeskyLower,Diagonal)
+    !> \brief
+    !> Return a random point on the target ellipsoid by projecting a random point uniformly distributed within the ellipsoid on its boundary.
+    !>
+    !> \param[in]   nd              :   The number of dimensions of the ellipsoid.
+    !> \param[in]   MeanVec         :   The mean vector (center) of the ellipsoid.
+    !> \param[in]   CholeskyLower   :   The Cholesky lower triangle of the representative covariance matrix of the ellipsoid.
+    !> \param[in]   Diagonal        :   The Diagonal elements of the Cholesky lower triangle of the representative covariance matrix of the ellipsoid.
+    !>
+    !> \return
+    !> `RandPointOnEllipsoid` : A random point on the target ellipsoid by projecting a random
+    !>                          point uniformly distributed within the ellipsoid on its boundary.
+    !>
+    !> \remark
+    !> This is algorithm is similar to [getRandMVU](@ref getrandmvu), with the only difference that
+    !> points are drawn randomly from the surface of the ellipsoid instead of inside of its interior.
+    !>
+    !> \remark
+    !> Note that the distribution of points on the surface of the ellipsoid is **NOT** uniform.
+    !> Regions of high curvature will have more points randomly sampled from them.
+    !> Generating uniform random points on arbitrary-dimension ellipsoids is not a task with trivial solution!
+    !>
+    !> @todo
+    !> The performance of this algorithm can be further improved.
+    !>
+    !> \author
+    !> Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
+    function getRandPointOnEllipsoid(nd,MeanVec,CholeskyLower,Diagonal) result(RandPointOnEllipsoid)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandPointOnEllipsoid
 #endif
@@ -1520,7 +1877,7 @@ contains
         real(RK)   , intent(in) :: MeanVec(nd)
         real(RK)   , intent(in) :: CholeskyLower(nd,nd) ! Cholesky lower triangle, calculated from the MVN CovMat.
         real(RK)   , intent(in) :: Diagonal(nd)         ! Cholesky diagonal terms, calculated from the MVN CovMat.
-        real(RK)                :: getRandPointOnEllipsoid(nd), DummyVec(nd), sumSqDummyVec
+        real(RK)                :: RandPointOnEllipsoid(nd), DummyVec(nd), sumSqDummyVec
         integer(IK)             :: i,j
         sumSqDummyVec = 0._RK
         do j=1,nd
@@ -1528,20 +1885,31 @@ contains
             sumSqDummyVec = sumSqDummyVec + DummyVec(j)**2
         end do
         DummyVec = DummyVec / sqrt(sumSqDummyVec)    ! DummyVec is a random point on the surface of nd-sphere.
-        getRandPointOnEllipsoid = 0._RK
+        RandPointOnEllipsoid = 0._RK
         do j = 1,nd
-            getRandPointOnEllipsoid(j) = getRandPointOnEllipsoid(j) + Diagonal(j) * DummyVec(j)
+            RandPointOnEllipsoid(j) = RandPointOnEllipsoid(j) + Diagonal(j) * DummyVec(j)
             do i = j+1,nd
-                getRandPointOnEllipsoid(i) = getRandPointOnEllipsoid(i) + CholeskyLower(i,j) * DummyVec(j)
+                RandPointOnEllipsoid(i) = RandPointOnEllipsoid(i) + CholeskyLower(i,j) * DummyVec(j)
             end do
         end do
-        getRandPointOnEllipsoid = getRandPointOnEllipsoid + MeanVec
+        RandPointOnEllipsoid = RandPointOnEllipsoid + MeanVec
     end function getRandPointOnEllipsoid
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the complementary error function with fractional error everywhere less than 1.2*10^-7.
-    ! amir shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    !> \brief
+    !> Return the single-precision complementary Error function with fractional error everywhere less than \f$ 1.2 \times 10^{-7} \f$.
+    !>
+    !> \param[in]   x   :   The input real value.
+    !>
+    !> \return
+    !> `erfcc` : The complementary Error function for the input value `x`.
+    !>
+    !> \remark
+    !> There is no need to use this algorithm as the Fortran intrinsic function `erf()` can achieve the goal.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function erfcc(x)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: erfcc
@@ -1560,20 +1928,47 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getLogProbLogNormS(logMean,inverseVariance,logSqrtInverseVariance,logPoint)
+    !> \brief
+    !> Return the natural logarithm of the Lognormal probability density function.
+    !>
+    !> \param[in]   logMean                 :   The mean of the Lognormal distribution.
+    !> \param[in]   inverseVariance         :   The inverse variance of the Lognormal distribution.
+    !> \param[in]   logSqrtInverseVariance  :   The natural logarithm of the square root of the inverse variance of the Lognormal distribution.
+    !> \param[in]   logPoint                :   The natural logarithm of the point at which the Lognormal PDF must be computed.
+    !>
+    !> \return
+    !> `logProbLogNorm` : The natural logarithm of the Lognormal probability density function.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    pure function getLogProbLogNormS(logMean,inverseVariance,logSqrtInverseVariance,logPoint) result(logProbLogNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbLogNormS
 #endif
         use Constants_mod, only: LOGINVSQRT2PI
         implicit none
         real(RK), intent(in) :: logMean,inverseVariance,logSqrtInverseVariance,logPoint
-        real(RK)             :: getLogProbLogNormS
-        getLogProbLogNormS = LOGINVSQRT2PI + logSqrtInverseVariance - logPoint - 0.5_RK * inverseVariance * (logPoint-logMean)**2
+        real(RK)             :: logProbLogNorm
+        logProbLogNorm = LOGINVSQRT2PI + logSqrtInverseVariance - logPoint - 0.5_RK * inverseVariance * (logPoint-logMean)**2
     end function getLogProbLogNormS
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function GetLogProbLogNormMP(np,logMean,inverseVariance,logSqrtInverseVariance,LogPoint)
+    !> \brief
+    !> Return the natural logarithm of the Lognormal probability density function.
+    !>
+    !> \param[in]   np                      :   The size of the input vector of points represented by `LogPoint`.
+    !> \param[in]   logMean                 :   The mean of the Lognormal distribution.
+    !> \param[in]   inverseVariance         :   The inverse variance of the Lognormal distribution.
+    !> \param[in]   logSqrtInverseVariance  :   The natural logarithm of the square root of the inverse variance of the Lognormal distribution.
+    !> \param[in]   LogPoint                :   The natural logarithm of the vector of points at which the Lognormal PDF must be computed.
+    !>
+    !> \return
+    !> `logProbLogNorm` : The natural logarithm of the Lognormal probability density function.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    pure function GetLogProbLogNormMP(np,logMean,inverseVariance,logSqrtInverseVariance,LogPoint) result(logProbLogNorm)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: GetLogProbLogNormMP
 #endif
@@ -1581,15 +1976,34 @@ contains
         implicit none
         integer(IK), intent(in) :: np
         real(RK)   , intent(in) :: logMean,inverseVariance,logSqrtInverseVariance,LogPoint(np)
-        real(RK)                :: GetLogProbLogNormMP(np)
-        GetLogProbLogNormMP = LOGINVSQRT2PI + logSqrtInverseVariance - LogPoint - 0.5_RK * inverseVariance * (LogPoint-logMean)**2
+        real(RK)                :: logProbLogNorm(np)
+        logProbLogNorm = LOGINVSQRT2PI + logSqrtInverseVariance - LogPoint - 0.5_RK * inverseVariance * (LogPoint-logMean)**2
     end function GetLogProbLogNormMP
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  ! Returns random numbers with priodicity larger than ~2*10**18 random numbers.
-  ! For more info see Press et al. (1990) Numerical Recipes.
-    function getRandRealLecuyer(idum)  ! do not change idum between calls
+    !> \brief
+    !> Return a single-precision uniformly-distributed random real-valued number in the range `[0,1]`.
+    !>
+    !> \param[inout]    idum    :   The input integer random seed with the `save` attribute.
+    !>
+    !> \return
+    !> `randRealLecuyer`        :   A single-precision uniformly-distributed random real-valued number in the range `[0,1]`.
+    !>
+    !> \warning
+    !> Do not change the value of `idum` between calls.
+    !>
+    !> \remark
+    !> This routine is guaranteed to random numbers with priodicity larger than `~2*10**18` random numbers.
+    !> For more info see Press et al. (1990) Numerical Recipes.
+    !>
+    !> \remark
+    !> This routine is solely kept for backward compatibility reasons.
+    !> The Fortran intrinsic subroutine `random_number()` is recommended to be used against this function.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandRealLecuyer(idum) result(randRealLecuyer)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandRealLecuyer
 #endif
@@ -1598,7 +2012,7 @@ contains
         integer(IK), parameter     :: im1=2147483563, im2=2147483399, imm1=im1-1, ia1=40014, ia2=40692
         integer(IK), parameter     :: iq1=53668, iq2=52774, ir1=12211, ir2=3791, ntab=32, ndiv=1+imm1/ntab
         real(RK)   , parameter     :: am=1._RK/real(im1,kind=RK), eps=1.2e-7_RK, rnmx=1._RK-eps
-        real(RK)                   :: getRandRealLecuyer
+        real(RK)                   :: randRealLecuyer
         integer(IK)                :: idum2,j,k,iv(ntab),iy
         save                       :: iv, iy, idum2
         data idum2/123456789/, iv/ntab*0/, iy/0/
@@ -1623,13 +2037,34 @@ contains
         iy = iv(j)-idum2
         iv(j) = idum
         if(iy < 1)iy = iy+imm1
-        getRandRealLecuyer = min(am*iy,rnmx)
+        randRealLecuyer = min(am*iy,rnmx)
     end function getRandRealLecuyer
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns integer random number in the range [lowerBound,upperBound],
-    ! using the real random number generator of Lecuyer: Statistics@getRandRealLecuyer()
+    !> \brief
+    !> Return an integer uniformly-distributed random integer-valued number in the range `[lowerBound , upperBound]`.
+    !>
+    !> \param[in]       lowerBound  :   The inclusive integer lower bound of the integer uniform distribution.
+    !> \param[in]       upperBound  :   The inclusive integer upper bound of the integer uniform distribution.
+    !> \param[inout]    idum        :   The input integer random seed with the `save` attribute.
+    !>
+    !> \return
+    !> `randRealLecuyer`    : A uniformly-distributed random integer-valued number in the range `[lowerBound , upperBound]`.
+    !>
+    !> \warning
+    !> Do not change the value of `idum` between calls.
+    !>
+    !> \remark
+    !> This routine is guaranteed to random numbers with priodicity larger than `~2*10**18` random numbers.
+    !> For more info see Press et al. (1990) Numerical Recipes.
+    !>
+    !> \remark
+    !> This routine is solely kept for backward compatibility reasons.
+    !> The [getRandInt](@ref getrandint) is recommended to be used against this routine.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandIntLecuyer(lowerBound,upperBound,idum)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandIntLecuyer
@@ -1643,53 +2078,85 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns integer random number in the range [lowerBound,upperBound], using built-in random number generator of Fortran.
-    function getRandInt(lowerBound,upperBound)
+    !> \brief
+    !> Return an integer uniformly-distributed random integer-valued number in the range `[lowerBound , upperBound]`.
+    !>
+    !> \param[in]       lowerBound  :   The lower bound of the integer uniform distribution.
+    !> \param[in]       upperBound  :   The upper bound of the integer uniform distribution.
+    !>
+    !> \return
+    !> `randInt` : A uniformly-distributed random integer-valued number in the range `[lowerBound , upperBound]`.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandInt(lowerBound,upperBound) result(randInt)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandInt
 #endif
         implicit none
         integer(IK), intent(in) :: lowerBound,upperBound
         real(RK)                :: dummy
-        integer(IK)             :: getRandInt
+        integer(IK)             :: randInt
         call random_number(dummy)
-        getRandInt = lowerBound + nint( dummy*real(upperBound-lowerBound,kind=RK) )
+        randInt = lowerBound + nint( dummy*real(upperBound-lowerBound,kind=RK) )
     end function getRandInt
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns real random number in the range [lowerBound,upperBound], using built-in random number generator of Fortran.
-    function getRandUniform(lowerBound,upperBound) result(unifrnd)
+    !> \brief
+    !> Return an integer uniformly-distributed random integer-valued number in the range `[lowerBound , upperBound]` using
+    !> the built-in random number generator of Fortran.
+    !>
+    !> \param[in]       lowerBound  :   The lower bound of the integer uniform distribution.
+    !> \param[in]       upperBound  :   The upper bound of the integer uniform distribution.
+    !>
+    !> \return
+    !> `randUniform`    : A uniformly-distributed random real-valued number in the range `[lowerBound , upperBound]`.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandUniform(lowerBound,upperBound) result(randUniform)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandUniform
 #endif
         implicit none
-        real(RK), intent(in)    :: lowerBound,upperBound
-        real(RK)                :: unifrnd
-        call random_number(unifrnd)
-        unifrnd = lowerBound + unifrnd * real(upperBound-lowerBound,kind=RK)
+        real(RK), intent(in)    :: lowerBound, upperBound
+        real(RK)                :: randUniform
+        call random_number(randUniform)
+        randUniform = lowerBound + randUniform * (upperBound - lowerBound)
     end function getRandUniform
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! ATTN: alpha must be > 0, else negative random Gamma variable (-1) will be output to indicate error occurrence.
-    ! returns a Gamma distributed random number, following the prescription in GSL library.
-    function getRandGamma(alpha)
+    !> \brief
+    !> Return a Gamma-distributed random number, following the prescription in the GSL library.
+    !>
+    !> \param[in]       alpha   :   The shape parameter of the Gamma distribution.
+    !>
+    !> \return
+    !> `randGamma`    : A Gamma-distributed random real-valued number in the range `[0,+Infinity]`.
+    !>
+    !> \warning
+    !> The condition `alpha > 0` must hold, otherwise the negative value `-1` will be returned to indicate the occurrence of error.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandGamma(alpha) result(randGamma)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandGamma
 #endif
         implicit none
         real(RK), intent(in) :: alpha
-        real(RK)             :: getRandGamma
+        real(RK)             :: randGamma
         real(RK)             :: c,u,v,z
         if (alpha<=0._RK) then  ! illegal value of alpha
-            getRandGamma = -1._RK
+            randGamma = -1._RK
             return
         else
-            getRandGamma = alpha
-            if (getRandGamma<1._RK) getRandGamma = getRandGamma + 1._RK
-            getRandGamma = getRandGamma - 0.3333333333333333
-            c = 3._RK*sqrt(getRandGamma)
+            randGamma = alpha
+            if (randGamma<1._RK) randGamma = randGamma + 1._RK
+            randGamma = randGamma - 0.3333333333333333_RK
+            c = 3._RK*sqrt(randGamma)
             c = 1._RK / c
             do
                 do
@@ -1700,31 +2167,42 @@ contains
                 end do
                 v = v**3
                 call random_number(u)
-                if ( log(u)>=0.5_RK*z**2+getRandGamma*(1._RK-v+log(v)) ) cycle
-                getRandGamma = getRandGamma*v
+                if ( log(u) >= 0.5_RK * z**2 + randGamma * ( 1._RK - v + log(v) ) ) cycle
+                randGamma = randGamma * v
                 exit
             end do
             if (alpha<1._RK) then
                 call random_number(u)
-                getRandGamma = getRandGamma * u**(1._RK/alpha)
+                randGamma = randGamma * u**(1._RK/alpha)
             end if
         end if
     end function getRandGamma
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! ATTN: alpha must be > 1, else a negative random Gamma value (-1) will be output, to indicate error occurrence.
-    ! returns a Gamma-distributed random number whose shape parameter is integer
-    function getRandGammaIntShape(alpha)
+    !> \brief
+    !> Return a Gamma-distributed random number, whose shape parameter `alpha` is an integer.
+    !>
+    !> \param[in]       alpha   :   The shape integer parameter of the Gamma distribution.
+    !>
+    !> \return
+    !> `randGamma`    : A Gamma-distributed random real-valued number in the range `[0,+Infinity]`.
+    !>
+    !> \warning
+    !> The condition `alpha > 1` must hold, otherwise the negative value `-1` will be returned to indicate the occurrence of error.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandGammaIntShape(alpha) result(randGamma)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandGammaIntShape
 #endif
         implicit none
         integer(IK), intent(in) :: alpha
-        real(RK)                :: getRandGammaIntShape
+        real(RK)                :: randGamma
         real(RK)                :: am,e,h,s,x,y,Vector(2),Array(5)
         if (alpha < 1) then  ! illegal value of alpha
-            getRandGammaIntShape = -1._RK
+            randGamma = -1._RK
             return
         elseif (alpha < 6) then
             call random_number(Array(1:alpha))
@@ -1744,32 +2222,57 @@ contains
                 if (h <= e) exit
             end do
         end if
-        getRandGammaIntShape = x
+        randGamma = x
     end function getRandGammaIntShape
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! ATTN: both alpha, beta must be > 1, else a negative random Beta variable will be output to indicate error.
-    ! returns a random BEta-distributed variable.
-    function getRandBeta(alpha,beta)
+    !> \brief
+    !> Return a random Beta-distributed variable.
+    !>
+    !> \param[in]       alpha   :   The first shape parameter of the Beta distribution.
+    !> \param[in]       beta    :   The second shape parameter of the Beta distribution.
+    !>
+    !> \return
+    !> `randBeta`   : A Beta-distributed random real-valued number in the range `[0,1]`.
+    !>
+    !> \warning
+    !> The conditions `alpha > 0` and `beta > 0` must hold, otherwise the negative
+    !> value `-1` will be returned to indicate the occurrence of error.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandBeta(alpha,beta) result(randBeta)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandBeta
 #endif
         implicit none
         real(RK), intent(in) :: alpha,beta
-        real(RK)             :: getRandBeta
+        real(RK)             :: randBeta
         real(RK)             :: x
-        if ( alpha>0._RK .and. beta>0._RK ) then  ! illegal value of alpha
+        if ( alpha>0._RK .and. beta>0._RK ) then
             x = getRandGamma(alpha)
-            getRandBeta = x / ( x + getRandGamma(beta) )
-        else
-            getRandBeta = -1._RK
+            randBeta = x / ( x + getRandGamma(beta) )
+        else ! illegal value of alpha or beta
+            randBeta = -1._RK
         end if
     end function getRandBeta
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns an exponentially-distributed random variable with mean 1/invMean
+    !> \brief
+    !> Return a random Exponential-distributed value whose inverse mean is given as input.
+    !>
+    !> \param[in]   invMean :   The inverse of the mean of the Exponential distribution.
+    !>
+    !> \return
+    !> `randExp` : An Exponential-distributed random real-valued number in the range `[0,+Infinity]` with mean `1 / invMean`.
+    !>
+    !> \warning
+    !> It is the user's onus to ensure `invMean > 0` on input. This condition will NOT be checked by this routine.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandExpWithInvMean(invMean) result(randExp)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandExpWithInvMean
@@ -1783,22 +2286,45 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns a standard (mean=1) exponential-distributed random variable
-    function getRandExp()
+    !> \brief
+    !> Return a random Exponential-distributed value whose mean is \f$\lambda = 1\f$.
+    !>
+    !> \return
+    !> `randExp` : A random Exponential-distributed value whose mean \f$\lambda = 1\f$.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandExp() result(randExp)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandExp
 #endif
         implicit none
-        real(RK) :: getRandExp
-        call random_number(getRandExp)
-        getRandExp = -log(getRandExp)
+        real(RK) :: randExp
+        call random_number(randExp)
+        randExp = -log(randExp)
     end function getRandExp
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! ATTN: nd>1 and eta>0.0, otherwise the first element of output, getRandCorMat(1,1), will be set to -1 to indicate error.
-    ! returns a random correlation matrix
-    function getRandCorMat(nd,eta)
+    !> \brief
+    !> Return a random correlation matrix.
+    !>
+    !> \param[in]   nd  :   The rank of the correlation matrix.
+    !> \param[in]   eta :   The parameter that roughly represents the shape parameters of the Beta distribution.
+    !>                      The larger the value of `eta` is, the more homogeneous the correlation matrix will look.
+    !>                      In other words, set this parameter to some small number to generate strong random correlations
+    !>                      in the output random correlation matrix.
+    !>
+    !> \return
+    !> `RandCorMat` : A random correlation matrix.
+    !>
+    !> \warning
+    !> The conditions `nd > 1` and `eta > 0.0` must hold, otherwise the first element of
+    !> output, `getRandCorMat(1,1)`, will be set to `-1` to indicate the occurrence of an error.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandCorMat(nd,eta) result(RandCorMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandCorMat
 #endif
@@ -1806,17 +2332,17 @@ contains
         implicit none
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: eta
-        real(RK)                :: getRandCorMat(nd,nd), dummy
+        real(RK)                :: RandCorMat(nd,nd), dummy
         real(RK)                :: beta,sumSqDummyVec,DummyVec(nd-1),W(nd-1),Diagonal(nd-1)
         integer(IK)             :: m,j,i
 
-        if (nd<2 .or. eta<=0._RK) then  ! illegal value for eta. set getRandCorMat=0, return
-            getRandCorMat(1,1) = -1._RK
+        if (nd<2_IK .or. eta<=0._RK) then  ! illegal value for eta.
+            RandCorMat(1,1) = -1._RK
             return
         end if
 
         do m = 1,nd
-            getRandCorMat(m,m) = 1._RK
+            RandCorMat(m,m) = 1._RK
         end do
         beta = eta + 0.5_RK*(nd-2._RK)
         dummy = getRandBeta(beta,beta)
@@ -1824,7 +2350,7 @@ contains
             error stop
             !call abortProgram( output_unit , 1 , 1 , 'Statitistics@getRandCorMat() failed. Random Beta variable out of bound: ' // num2str(dummy) )
         end if
-        getRandCorMat(1,2) = 2._RK * dummy - 1._RK    ! for the moment, only the upper half of getRandCorMat is needed, the lower half will contain cholesky lower triangle.
+        RandCorMat(1,2) = 2._RK * dummy - 1._RK ! for the moment, only the upper half of RandCorMat is needed, the lower half will contain cholesky lower triangle.
 
         do m = 2,nd-1
             beta = beta - 0.5_RK
@@ -1836,7 +2362,7 @@ contains
             DummyVec(1:m) = DummyVec(1:m) / sqrt(sumSqDummyVec)   ! DummyVec is now a uniform random point from inside of m-sphere
             dummy = getRandBeta(0.5e0_RK*m,beta)
             W(1:m) = sqrt(dummy) * DummyVec(1:m)
-            call getCholeskyFactor(m,getRandCorMat(1:m,1:m),Diagonal(1:m))
+            call getCholeskyFactor(m,RandCorMat(1:m,1:m),Diagonal(1:m))
             if (Diagonal(1)<0._RK) then
                 error stop
                 !call abortProgram( output_unit , 1 , 1 , 'Statitistics@getRandCorMat()@getCholeskyFactor() failed.' )
@@ -1845,13 +2371,13 @@ contains
             do j = 1,m
                 DummyVec(j) = DummyVec(j) + Diagonal(j) * W(j)
                 do i = j+1,m
-                    DummyVec(i) = DummyVec(i) + getRandCorMat(i,j) * DummyVec(j)
+                    DummyVec(i) = DummyVec(i) + RandCorMat(i,j) * DummyVec(j)
                 end do
             end do
-            getRandCorMat(1:m,m+1) = DummyVec(1:m)
+            RandCorMat(1:m,m+1) = DummyVec(1:m)
         end do
         do i=1,nd-1
-            getRandCorMat(i+1:nd,i) = getRandCorMat(i,i+1:nd)
+            RandCorMat(i+1:nd,i) = RandCorMat(i,i+1:nd)
         end do
   end function getRandCorMat
 
@@ -1950,10 +2476,26 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Returns a random correlation matrix using Monte Carlo rejection method.
-    ! Only the upper half of getRandCorMatRejection is the correlatrion matrix, lower half is giberish.
-    ! Therefore this subroutine is very slow for high matrix dimensions ( nd>10 ).
-    function getRandCorMatRejection(nd,minRho,maxRho)
+    !> \brief
+    !> Returns a random correlation matrix using Monte Carlo rejection method.
+    !>
+    !> \param[in]   nd      :   The rank of the correlation matrix.
+    !> \param[in]   minRho  :   The minimum correlation coefficient to be expected in the output random correlation matrix.
+    !> \param[in]   maxRho  :   The maximum correlation coefficient to be expected in the output random correlation matrix.
+    !>
+    !> \return
+    !> `RandCorMat` : A random correlation matrix. Only the upper half of
+    !> `RandCorMat` is the correlation matrix, lower half is NOT set on output.
+    !>
+    !> \warning
+    !> The conditions `nd >= 1` must hold.
+    !>
+    !> \remark
+    !> This subroutine is very slow for high matrix dimensions ( `nd >~ 10` ).
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getRandCorMatRejection(nd,minRho,maxRho) result(RandCorMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandCorMatRejection
 #endif
@@ -1961,189 +2503,245 @@ contains
         implicit none
         integer(IK), intent(in) :: nd
         real(RK)   , intent(in) :: minRho,maxRho
-        real(RK)                :: getRandCorMatRejection(nd,nd),RhoVec(nd*(nd-1))
+        real(RK)                :: RandCorMat(nd,nd), RhoVec(nd*(nd-1))
         integer(IK)             :: i,j,irho
         if (maxRho<minRho .or. nd<1) then
             error stop
             !call abortProgram( output_unit , 1 , 1 , 'Statitistics@getRandCorMatRejection() failed: Invalid input values.' )
         end if
-        if (nd==1) then
-          getRandCorMatRejection = 1._RK
+        if (nd==1_IK) then
+          RandCorMat = 1._RK
         else
             rejection: do
                 call random_number(RhoVec)
                 RhoVec = minRho + RhoVec*(maxRho-minRho)
                 irho = 0
                 do j=1,nd
-                    getRandCorMatRejection(j,j) = 1._RK
+                    RandCorMat(j,j) = 1._RK
                     do i=1,j-1
                         irho = irho + 1
-                        getRandCorMatRejection(i,j) = RhoVec(irho)
+                        RandCorMat(i,j) = RhoVec(irho)
                     end do
                 end do
-                if (isPosDef(nd,getRandCorMatRejection)) exit rejection
+                if (isPosDef(nd,RandCorMat)) exit rejection
                 cycle rejection
             end do rejection
         end if
         do j=1,nd-1
-            getRandCorMatRejection(j+1:nd,j) = getRandCorMatRejection(j,j+1:nd)
+            RandCorMat(j+1:nd,j) = RandCorMat(j,j+1:nd)
         end do
   end function getRandCorMatRejection
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getUpperCorMatFromUpperCovMat(nd,CovMatUpper) result(CorMat)
+    !> \brief
+    !> Convert the upper-triangle covariance matrix to the upper-triangle correlation matrix.
+    !>
+    !> \param[in]   nd          :   The rank of the covariance matrix.
+    !> \param[in]   CovMatUpper :   The upper-triangle covariance matrix. The lower-triangle will not be used.
+    !>
+    !> \return
+    !> `CorMatUpper` : An upper-triangle correlation matrix. The lower-triangle will NOT be set.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    pure function getUpperCorMatFromUpperCovMat(nd,CovMatUpper) result(CorMatUpper)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCorMatFromUpperCovMat
 #endif
         implicit none
         integer(IK)  , intent(in) :: nd
-        real(RK)     , intent(in) :: CovMatUpper(nd,nd)   ! only upper half needed
-        real(RK)                  :: CorMat(nd,nd)
-        real(RK)                  :: StdVec(nd)
+        real(RK)     , intent(in) :: CovMatUpper(nd,nd)
+        real(RK)                  :: CorMatUpper(nd,nd)
+        real(RK)                  :: InverseStdVec(nd)
         integer(IK)               :: i,j
         do j=1,nd
-            StdVec(j) = sqrt(CovMatUpper(j,j))
+            InverseStdVec(j) = 1._RK / sqrt(CovMatUpper(j,j))
             do i=1,j
-                CorMat(i,j) = CovMatUpper(i,j) / ( StdVec(j) * StdVec(i) )
+                CorMatUpper(i,j) = CovMatUpper(i,j) * InverseStdVec(j) * InverseStdVec(i)
             end do
         end do
     end function getUpperCorMatFromUpperCovMat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getUpperCovMatFromUpperCorMat(nd,StdVec,CorMat) result(CovMat)
+    !> \brief
+    !> Convert the upper-triangle correlation matrix to the upper-triangle covariance matrix.
+    !>
+    !> \param[in]   nd          :   The rank of the correlation matrix.
+    !> \param[in]   StdVec      :   The input standard deviation vector of length `nd`.
+    !> \param[in]   CorMatUpper :   The upper-triangle correlation matrix. The lower-triangle will not be used.
+    !>
+    !> \return
+    !> `CovMatUpper` : An upper-triangle covariance matrix. The lower-triangle will NOT be set.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    pure function getUpperCovMatFromUpperCorMat(nd,StdVec,CorMatUpper) result(CovMatUpper)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCovMatFromUpperCorMat
 #endif
         implicit none
         integer(IK)  , intent(in) :: nd
-        real(RK)     , intent(in) :: StdVec(nd), CorMat(nd,nd)   ! only upper half needed
-        real(RK)                  :: CovMat(nd,nd)
+        real(RK)     , intent(in) :: StdVec(nd), CorMatUpper(nd,nd)
+        real(RK)                  :: CovMatUpper(nd,nd)
         integer(IK)               :: i,j
         do j=1,nd
-            CovMat(j,j) = StdVec(j)**2
-            do i=1,j-1
-                CovMat(i,j) = CorMat(i,j) * StdVec(j) * StdVec(i)
+            do i=1,j
+                CovMatUpper(i,j) = CorMatUpper(i,j) * StdVec(j) * StdVec(i)
             end do
         end do
     end function getUpperCovMatFromUpperCorMat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getUpperCovMatFromLowerCorMat(nd,StdVec,CorMat) result(CovMat)
+    !> \brief
+    !> Convert the lower-triangle correlation matrix to the upper-triangle covariance matrix.
+    !>
+    !> \param[in]   nd          :   The rank of the correlation matrix.
+    !> \param[in]   StdVec      :   The input standard deviation vector of length `nd`.
+    !> \param[in]   CorMatLower :   The lower-triangle correlation matrix. The upper-triangle will not be used.
+    !>
+    !> \return
+    !> `CovMatUpper` : An upper-triangle covariance matrix. The lower-triangle will NOT be set.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    pure function getUpperCovMatFromLowerCorMat(nd,StdVec,CorMatLower) result(CovMatUpper)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCovMatFromLowerCorMat
 #endif
         implicit none
         integer(IK)  , intent(in) :: nd
-        real(RK)     , intent(in) :: StdVec(nd), CorMat(nd,nd)   ! only upper half needed
-        real(RK)                  :: CovMat(nd,nd)
+        real(RK)     , intent(in) :: StdVec(nd), CorMatLower(nd,nd)
+        real(RK)                  :: CovMatUpper(nd,nd)
         integer(IK)               :: i,j
         do j=1,nd
-            CovMat(j,j) = StdVec(j)**2
+            CovMatUpper(j,j) = StdVec(j)**2
             do i=1,j-1
-                CovMat(i,j) = CorMat(j,i) * StdVec(j) * StdVec(i)
+                CovMatUpper(i,j) = CorMatLower(j,i) * StdVec(j) * StdVec(i)
             end do
         end do
     end function getUpperCovMatFromLowerCorMat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getLowerCovMatFromUpperCorMat(nd,StdVec,CorMat) result(CovMat)
+    !> \brief
+    !> Convert the upper-triangle correlation matrix to the lower-triangle covariance matrix.
+    !>
+    !> \param[in]   nd          :   The rank of the correlation matrix.
+    !> \param[in]   StdVec      :   The input standard deviation vector of length `nd`.
+    !> \param[in]   CorMatUpper :   The upper-triangle correlation matrix. The lower-triangle will not be used.
+    !>
+    !> \return
+    !> `CovMatLower` : An lower-triangle covariance matrix. The upper-triangle will NOT be set.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    pure function getLowerCovMatFromUpperCorMat(nd,StdVec,CorMatUpper) result(CovMatLower)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCovMatFromUpperCorMat
 #endif
         implicit none
         integer(IK)  , intent(in) :: nd
-        real(RK)     , intent(in) :: StdVec(nd), CorMat(nd,nd)   ! only upper half needed
-        real(RK)                  :: CovMat(nd,nd)
+        real(RK)     , intent(in) :: StdVec(nd), CorMatUpper(nd,nd)
+        real(RK)                  :: CovMatLower(nd,nd)
         integer(IK)               :: i,j
         do j=1,nd
-            CovMat(j,j) = StdVec(j)**2
+            CovMatLower(j,j) = StdVec(j)**2
             do i=1,j-1
-                CovMat(j,i) = CorMat(i,j) * StdVec(j) * StdVec(i)
+                CovMatLower(j,i) = CorMatUpper(i,j) * StdVec(j) * StdVec(i)
             end do
         end do
     end function getLowerCovMatFromUpperCorMat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getLowerCovMatFromLowerCorMat(nd,StdVec,CorMat) result(CovMat)
+    !> \brief
+    !> Convert the lower-triangle correlation matrix to the lower-triangle covariance matrix.
+    !>
+    !> \param[in]   nd          :   The rank of the correlation matrix.
+    !> \param[in]   StdVec      :   The input standard deviation vector of length `nd`.
+    !> \param[in]   CorMatLower :   The lower-triangle correlation matrix. The upper-triangle will not be used.
+    !>
+    !> \return
+    !> `CovMatLower` : An lower-triangle covariance matrix. The upper-triangle will NOT be set.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    pure function getLowerCovMatFromLowerCorMat(nd,StdVec,CorMatLower) result(CovMatLower)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCovMatFromLowerCorMat
 #endif
         implicit none
         integer(IK)  , intent(in) :: nd
-        real(RK)     , intent(in) :: StdVec(nd), CorMat(nd,nd)   ! only upper half needed
-        real(RK)                  :: CovMat(nd,nd)
+        real(RK)     , intent(in) :: StdVec(nd), CorMatLower(nd,nd)
+        real(RK)                  :: CovMatLower(nd,nd)
         integer(IK)               :: i,j
         do j=1,nd
-            CovMat(j,j) = StdVec(j)**2
+            CovMatLower(j,j) = StdVec(j)**2
             do i=1,j-1
-                CovMat(j,i) = CorMat(j,i) * StdVec(j) * StdVec(i)
+                CovMatLower(j,i) = CorMatLower(j,i) * StdVec(j) * StdVec(i)
             end do
         end do
     end function getLowerCovMatFromLowerCorMat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getCovMatFromCorMat(nd,StdVec,CorMat) result(CovMat)
+    !> \brief
+    !> Convert the input correlation matrix to the output covariance matrix.
+    !>
+    !> \param[in]   nd          :   The rank of the correlation matrix.
+    !> \param[in]   StdVec      :   The input standard deviation vector of length `nd`.
+    !> \param[in]   CorMatUpper :   The upper-triangle correlation matrix. The lower-triangle will not be used.
+    !>
+    !> \return
+    !> `CovMatFull` : The full covariance matrix.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    pure function getCovMatFromCorMatUpper(nd,StdVec,CorMatUpper) result(CovMatFull)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getCovMatFromCorMat
+        !DEC$ ATTRIBUTES DLLEXPORT :: getCovMatFromCorMatUpper
 #endif
         implicit none
         integer(IK)  , intent(in) :: nd
-        real(RK)     , intent(in) :: StdVec(nd), CorMat(nd,nd)   ! only upper half needed
-        real(RK)                  :: CovMat(nd,nd)
+        real(RK)     , intent(in) :: StdVec(nd), CorMatUpper(nd,nd)   ! only upper half needed
+        real(RK)                  :: CovMatFull(nd,nd)
         integer(IK)               :: i,j
         do j=1,nd
-            CovMat(j,j) = StdVec(j)**2
+            CovMatFull(j,j) = StdVec(j)**2
             do i=1,j-1
-                CovMat(i,j) = CorMat(i,j) * StdVec(j) * StdVec(i)
-                CovMat(j,i) = CovMat(i,j)
+                CovMatFull(i,j) = CorMatUpper(i,j) * StdVec(j) * StdVec(i)
+                CovMatFull(j,i) = CovMatFull(i,j)
             end do
         end do
-    end function getCovMatFromCorMat
+    end function getCovMatFromCorMatUpper
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the Geometric distribution PDF values for a range of trials, starting at index `1`.
+    !> If the probability of success on each trial is `successProb`, then the probability that
+    !> the `k`th trial (out of `k` trials) is the first success is `GeoLogPDF(k)`.
+    !>
+    !> \param[in]   successProb     :   The probability of success.
+    !> \param[in]   logPdfPrecision :   The precision value below which the PDF is practically considered to be zero (optional).
+    !> \param[in]   minSeqLen       :   The minimum length of the range of `k` values for which the PDF will be computed (optional).
+    !> \param[in]   seqLen          :   The length of the range of `k` values for which the PDF will be computed (optional).
+    !>                                  If provided, it will overwrite the the output sequence length as inferred from
+    !>                                  the combination of `minSeqLen` and `logPdfPrecision`.
+    !>
+    !> \return
+    !> `GeoLogPDF`  :   An allocatable representing the geometric PDF over a range of `k` values, whose length is
+    !>                  `seqLen`, or if not provided, is determined from the values of `logPdfPrecision` and `minSeqLen`.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getGeoLogPDF_old(successProb,logPdfPrecision,minSeqLen,seqLen) result(GeoLogPDF)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeoLogPDF_old
 #endif
-        !   return the Geometric distribution PDF values for a range of trials, starting at index 1.
-        !   If the probability of success on each trial is successProb,
-        !   then the probability that the kth trial (out of k trials) is
-        !   the first success is GeoLogPDF(k).
-        !
-        !   Input
-        !
-        !       successProb
-        !
-        !           The probability of success.
-        !
-        !       logPdfPrecision
-        !
-        !           The precision value below which the PDF is practically considered to be zero.
-        !
-        !       minSeqLen
-        !
-        !           The minimum length of the range of k values for which the PDF will be computed.
-        !
-        !       seqLen
-        !
-        !           The length of the range of k values for which the PDF will be computed.
-        !           If provided, it will overwrite the the output sequence length as inferred from 
-        !           the combination of minSeqLen and logPdfPrecision.
-        !
-        !   Output
-        !
-        !       GeoLogPDF
-        !
-        !           An allocatable representing the geometric PDF over a range of k values, whose length is 
-        !           seqLen, or if not provided, is determined from the values of logPdfPrecision and minSeqLen.
-        !
         use Constants_mod, only: IK, RK
         implicit none
         real(RK)    , intent(in)            :: successProb
@@ -2174,6 +2772,19 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the Geometric distribution PDF values for the input number of trials,
+    !> the trials at which first success happens, and the success probability.
+    !>
+    !> \param[in]   numTrial    :   The number of trials.
+    !> \param[in]   SuccessStep :   The vector of trials of length `numTrial` at which the first success happens.
+    !> \param[in]   successProb :   The probability of success.
+    !>
+    !> \return
+    !> `LogProbGeo` :   An output vector of length `numTrial` representing the geometric PDF values.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getLogProbGeo(numTrial, SuccessStep, successProb) result(LogProbGeo)
         use Constants_mod, only: IK, RK
         implicit none
@@ -2189,34 +2800,25 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return a fit of the Geometric distribution PDF to the input natural logarithm of a sequence of Counts,
+    !> the `i`th element of which represents the number of successes after `SuccessStep(i)` tries in a Bernoulli trail.
+    !>
+    !> \param[in]   numTrial    :   The number of trials. The length of the input vector `LogCount`.
+    !> \param[in]   SuccessStep :   The vector of trials of length `numTrial` at which the first success happens.
+    !> \param[in]   LogCount    :   A vector of real values representing the natural logarithms of the counts
+    !>                              of success at each Bernoulli trial, sequentially, from `1` to `numTrial`.
+    !>
+    !> \return
+    !> `PowellMinimum`  :   An object of class [PowellMinimum_type](@ref optimization_mod::powellminimum_type) containing
+    !>                      the best-fit successProb and the normalization constant of the fit in the vector component `xmin`.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function fitGeoLogPDF_old(numTrial, SuccessStep, LogCount) result(PowellMinimum)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF_old
 #endif
-        !
-        !   return a fit of the Geometric distribution PDF to the input natural logarithm of a sequence of Counts, 
-        !   the ith element of which represents the number of successes after SuccessStep(i) tries in a Bernoulli trail.
-        !   It is assumed that the input LogCount represents a sequence of counts at
-        !   the first success is GeoLogPDF(k).
-        !
-        !   Input
-        !
-        !       numTrial
-        !
-        !           The length of the input vector LogCount
-        !
-        !       LogCount
-        !
-        !           A vector of real values representing the natural logarithms of the counts of success at each Bernoulli trial, 
-        !           sequentially, from 1 to numTrial.
-        !
-        !   Output
-        !
-        !       PowellMinimum
-        !
-        !           An object of type PowellMinimum_type from Optimiziation_mod, containing the best-fit successProb and the 
-        !           normalization constant of the fit in the vector component xmin.
-        !
         use Optimization_mod, only: PowellMinimum_type
         use Constants_mod, only: IK, RK, POSINF_RK, NEGINF_RK
         implicit none
@@ -2260,44 +2862,33 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Compute the natural logarithm of the Geometric distribution PDF of a limited range of Bernoulli trials,
+    !> starting at index `1` up to `maxNumTrial`. In other words, upon reaching the trial `maxNumTrial`,
+    !> the Bernoulli trials count restart from index `1`. This Cyclic Geometric distribution is
+    !> particularly useful in the parallelization studies of Monte Carlo simulation.
+    !>
+    !> \param[in]   successProb :   The probability of success.
+    !> \param[in]   maxNumTrial :   The maximum number of trails possible.
+    !>                              After `maxNumTrial` tries, the Geometric distribution restarts from index `1`.
+    !> \param[in]   numTrial    :   The length of the array `SuccessStep`. Note that `numTrial < maxNumTrial` must hold.
+    !> \param[in]   SuccessStep :   A vector of length `(1:numTrial)` of integers that represent
+    !>                              the steps at which the Bernoulli successes occur.
+    !>
+    !> \return
+    !> `LogProbGeoCyclic`       :   A real-valued vector of length `(1:numTrial)` whose values represent the probabilities
+    !>                              of having Bernoulli successes at the corresponding SuccessStep values.
+    !>
+    !> \warning
+    !> Any value of SuccessStep must be an integer numbers between `1` and `maxNumTrial`.
+    !> The onus is on the user to ensure this condition holds.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getLogProbGeoCyclic(successProb,maxNumTrial,numTrial,SuccessStep) result(LogProbGeoCyclic)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGeoCyclic
 #endif
-        !   Compute the natural logarithm of the Geometric distribution PDF of a limited range of Bernoulli trials, 
-        !   starting at index 1 up to maxNumTrial. In other words, upon reaching the trial maxNumTrial, 
-        !   the Bernoulli trials count restart from index 1. This Cyclic Geometric distribution is 
-        !   particularly useful in the parallelization studies of Monte Carlo simulation.
-        !
-        !   Input
-        !
-        !       successProb
-        !
-        !           The probability of success.
-        !
-        !       maxNumTrial
-        !
-        !           The maximum number of trails possible. After maxNumTrial tries, 
-        !           the Geometric distribution restarts from index 1.
-        !
-        !       numTrial < maxNumTrial
-        !
-        !           The length of the array SuccessStep. 
-        !
-        !       SuccessStep(1:numTrial)
-        !
-        !           An array of integers that represent the steps at which the Bernoulli successes occur. 
-        !
-        !           WARNING: Any value of SuccessStep must be an integer numbers between 1 and maxNumTrial.
-        !           WARNING: The onus is on the user to ensure this condition holds.
-        !
-        !   Output
-        !
-        !       LogProbGeoCyclic(1:numTrial)
-        !
-        !           A real-valued array of length numTrial whose values represent the probabilities of having 
-        !           Bernoulli successes at the corresponding SuccessStep values.
-        !
         use Constants_mod, only: IK, RK, NEGLOGINF_RK
         implicit none
         real(RK)    , intent(in)    :: successProb
@@ -2330,44 +2921,33 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return a fit of the Cyclic Geometric distribution PDF to the input natural logarithm of a sequence of Counts,
+    !> the `i`th element of which represents the number of successes after `SuccessStep(i)` tries in a Bernoulli trail.
+    !>
+    !> \param[in]   maxNumTrial :   The maximum number of trails possible. After `maxNumTrial` tries,
+    !                               the Geometric distribution restarts from index `1`.
+    !> \param[in]   numTrial    :   The length of the array `SuccessStep` and `LogCount`.
+    !>                              Note that `numTrial < maxNumTrial` must hold.
+    !> \param[in]   SuccessStep :   A vector of length `(1:numTrial)` of integers that represent
+    !>                              the steps at which the Bernoulli successes occur.
+    !> \param[in]   LogCount    :   A real-valued vector of length `(1:numTrial)` representing the natural logarithms of the
+    !>                              counts of success at the corresponding Bernoulli trials specified by elements of `SuccessStep`.
+    !>
+    !> \return
+    !> `PowellMinimum`          :   An object of class [PowellMinimum_type](@ref optimization_mod::powellminimum_type) containing
+    !>                              the best-fit successProb and the normalization constant of the fit in the vector component `xmin`.
+    !>
+    !> \warning
+    !> Any value of SuccessStep must be an integer numbers between `1` and `maxNumTrial`.
+    !> The onus is on the user to ensure this condition holds.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function fitGeoCyclicLogPDF(maxNumTrial, numTrial, SuccessStep, LogCount) result(PowellMinimum)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF
 #endif
-        !
-        !   Return a fit of the Cyclic Geometric distribution PDF to the input natural logarithm of a sequence of Counts, 
-        !   the ith element of which represents the number of successes after SuccessStep(i) tries in a Bernoulli trail.
-        !
-        !   Input
-        !
-        !       maxNumTrial
-        !
-        !           The maximum number of trails possible. After maxNumTrial tries, 
-        !           the Geometric distribution restarts from index 1.
-        !
-        !       numTrial
-        !
-        !           The length of the input vector SuccessStep and LogCount.
-        !
-        !       SuccessStep(1:numTrial)
-        !
-        !           An array of integers that represent the steps at which the Bernoulli successes occur. 
-        !
-        !           WARNING: THESE VALUES MUST BE INTEGER NUMBERS BETWEEN 1 AND MAXNUMTRIAL.
-        !           WARNING: THE ONUS IS ON THE USER TO ENSURE THIS CONDITION HOLDS.
-        !
-        !       LogCount(1:numTrial)
-        !
-        !           A vector of real values representing the natural logarithms of the counts of success at the corresponding 
-        !           Bernoulli trials specified by elements of SuccessStep. 
-        !
-        !   Output
-        !
-        !       PowellMinimum
-        !
-        !           An object of type PowellMinimum_type from Optimiziation_mod, containing the best-fit successProb and the 
-        !           normalization constant of the fit in the vector component xmin.
-        !
         use Optimization_mod, only: PowellMinimum_type
         use Constants_mod, only: IK, RK, POSINF_RK, NEGINF_RK
         implicit none
@@ -2381,7 +2961,7 @@ contains
         real(RK)    , parameter     :: SUCCESS_PROB_INIT_GUESS = 0.23_RK
         real(RK)    , parameter     :: FISHER_TRANS_SUCCESS_PROB_INIT_GUESS = atanh(2*(SUCCESS_PROB_INIT_GUESS - 0.5_RK))
 
-        ! do Fisher transformation to make the limits infinity
+        ! do Fisher transformation to make the limits infinity.
         BestFitSuccessProbNormFac = [FISHER_TRANS_SUCCESS_PROB_INIT_GUESS, 0._RK] ! LogCount(1)]
 
         PowellMinimum = PowellMinimum_type  ( ndim = 2_IK &
@@ -2412,47 +2992,90 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns standard normal distribution PDF value.
-    function getSNormPDF(z)
+    !> \brief
+    !> Return the standard normal distribution PDF value.
+    !>
+    !> \param[in]   z   :   The input value at which the PDF will be computed.
+    !>
+    !> \return
+    !> `snormPDF`   :   The standard normal distribution PDF value.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getSNormPDF(z) result(snormPDF)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSNormPDF
 #endif
         use Constants_mod, only: INVSQRT2PI
         implicit none
         real(RK), intent(in) :: z
-        real(RK)             :: getSNormPDF
-        getSNormPDF = INVSQRT2PI * exp( -0.5_RK*z**2 )
+        real(RK)             :: snormPDF
+        snormPDF = INVSQRT2PI * exp( -0.5_RK*z**2 )
     end function getSNormPDF
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the non-standard normal distribution PDF value.
-    function getNormPDF(mean,stdev,variance,x)
+    !> \brief
+    !> Return the non-standard normal distribution PDF value.
+    !>
+    !> \param[in]   mean        :   The mean of the Normal distribution.
+    !> \param[in]   stdev       :   The standard deviation of the Normal distribution.
+    !> \param[in]   variance    :   The variance of the Normal distribution.
+    !> \param[in]   x           :   The point at which the PDF will be computed.
+    !>
+    !> \return
+    !> `normPDF`   :   The normal distribution PDF value at the given input point.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getNormPDF(mean,stdev,variance,x) result(normPDF)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormPDF
 #endif
         use Constants_mod, only: INVSQRT2PI
         implicit none
         real(RK), intent(in) :: mean,stdev,variance,x
-        real(RK)             :: getNormPDF
-        getNormPDF = INVSQRT2PI * exp( -(x-mean)**2/(2._RK*variance) ) / stdev
+        real(RK)             :: normPDF
+        normPDF = INVSQRT2PI * exp( -(x-mean)**2/(2._RK*variance) ) / stdev
     end function getNormPDF
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getNormCDF(mean,stdev,x)
+    !> \brief
+    !> Return the non-standard normal distribution Cumulative Probability Density function (CDF) value.
+    !>
+    !> \param[in]   mean        :   The mean of the Normal distribution.
+    !> \param[in]   stdev       :   The standard deviation of the Normal distribution.
+    !> \param[in]   x           :   The point at which the PDF will be computed.
+    !>
+    !> \return
+    !> `normCDF`   :   The normal distribution CDF value at the given input point.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getNormCDF(mean,stdev,x) result(normCDF)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormCDF
 #endif
         use Constants_mod, only: SPR,SQRT2
         implicit none
         real(RK), intent(in) :: mean,stdev,x
-        real(RK)             :: getNormCDF
-        getNormCDF = 0.5_RK * ( 1._RK + erf( real((x-mean)/(SQRT2*stdev),kind=SPR) ) )
+        real(RK)             :: normCDF
+        normCDF = 0.5_RK * ( 1._RK + erf( real((x-mean)/(SQRT2*stdev),kind=SPR) ) )
     end function getNormCDF
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the standard normal distribution Cumulative Probability Density function (CDF) value.
+    !>
+    !> \param[in]   x           :   The point at which the PDF will be computed.
+    !>
+    !> \return
+    !> `normCDF`   :   The normal distribution CDF value at the given input point.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getSNormCDF(x)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSNormCDF
@@ -2466,50 +3089,78 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! ATTN: if x is not in [0,1], a negative value for getBetaCDF will be return to indicate error.
-    ! The efficiency of this code can be improved by making x a vector on input.
-    function getBetaCDF(a,b,x)
+    !> \brief
+    !> Return the Beta distribution Cumulative Probability Density function (CDF) value.
+    !>
+    !> \param[in]   alpha   :   The first shape parameter of the Beta distribution.
+    !> \param[in]   beta    :   The second shape parameter of the Beta distribution.
+    !> \param[in]   x       :   The point at which the CDF will be computed.
+    !>
+    !> \return
+    !> `betaCDF`   :   The Beta distribution CDF value at the given input point.
+    !>
+    !> \warning
+    !> If `x` is not in the range `[0,1]`, a negative value for `getBetaCDF` will be returned to indicate the occurrence of error.
+    !>
+    !> \todo
+    !> The efficiency of this code can be improved by making `x` a vector on input.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getBetaCDF(alpha,beta,x) result(betaCDF)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaCDF
 #endif
         use Constants_mod, only : SPR
         implicit none
-        real(RK), intent(in) :: a,b,x
+        real(RK), intent(in) :: alpha,beta,x
         real(RK)             :: bt
-        real(RK)             :: getBetaCDF
+        real(RK)             :: betaCDF
         if (x < 0._RK .or. x > 1._RK) then
-            getBetaCDF = -1._RK
+            betaCDF = -1._RK
             return
         end if
         if (x == 0._RK .or. x == 1._RK) then
             bt = 0._RK
         else
-            bt = exp( log_gamma(real(a+b,kind=SPR)) - log_gamma(real(a,kind=SPR)) - log_gamma(real(b,kind=SPR)) &
-               + a*log(x) + b*log(1._RK-x) )
+            bt = exp( log_gamma(real(alpha+beta,kind=SPR)) - log_gamma(real(alpha,kind=SPR)) - log_gamma(real(beta,kind=SPR)) &
+               + alpha*log(x) + beta*log(1._RK-x) )
         end if
-        if ( x < (a+1._RK) / (a+b+2._RK) ) then
-            getBetaCDF = bt * getBetaContinuedFraction(a,b,x) / a
+        if ( x < (alpha+1._RK) / (alpha+beta+2._RK) ) then
+            betaCDF = bt * getBetaContinuedFraction(alpha,beta,x) / alpha
         else
-            getBetaCDF = 1._RK - bt * getBetaContinuedFraction(b,a,1._RK-x) / b
+            betaCDF = 1._RK - bt * getBetaContinuedFraction(beta,alpha,1._RK-x) / beta
         end if
     end function getBetaCDF
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getBetaContinuedFraction(a,b,x)
+    !> \brief
+    !> Return the Beta Continued Fraction (BCF).
+    !>
+    !> \param[in]   alpha   :   The first shape parameter of the Beta distribution.
+    !> \param[in]   beta    :   The second shape parameter of the Beta distribution.
+    !> \param[in]   x       :   The point at which the BCF will be computed.
+    !>
+    !> \return
+    !> `betaCDF`   :   The BCF value at the given input point.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
+    function getBetaContinuedFraction(alpha,beta,x)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaContinuedFraction
 #endif
         implicit none
-        real(RK)   , intent(in) :: a,b,x
+        real(RK)   , intent(in) :: alpha,beta,x
         real(RK)   , parameter  :: eps = epsilon(x), fpmin = tiny(x)/eps
         integer(IK), parameter  :: maxit = 100
         real(RK)                :: aa,c,d,del,qab,qam,qap
         real(RK)                :: getBetaContinuedFraction
         integer(IK)             :: m,m2
-        qab = a+b
-        qap = a+1._RK
-        qam = a-1._RK
+        qab = alpha+beta
+        qap = alpha+1._RK
+        qam = alpha-1._RK
         c = 1._RK
         d = 1._RK-qab*x/qap
         if (abs(d) < fpmin) d = fpmin
@@ -2517,14 +3168,14 @@ contains
         getBetaContinuedFraction = d
         do m = 1,maxit
             m2 = 2*m
-            aa = m*(b-m)*x/((qam+m2)*(a+m2))
+            aa = m*(beta-m)*x/((qam+m2)*(alpha+m2))
             d = 1._RK+aa*d
             if (abs(d) < fpmin) d = fpmin
             c = 1._RK+aa/c
             if (abs(c) < fpmin) c = fpmin
             d = 1._RK/d
             getBetaContinuedFraction = getBetaContinuedFraction*d*c
-            aa = -(a+m)*(qab+m)*x/((a+m2)*(qap+m2))
+            aa = -(alpha+m)*(qab+m)*x/((alpha+m2)*(qap+m2))
             d = 1._RK+aa*d
             if (abs(d) < fpmin) d = fpmin
             c = 1._RK+aa/c
@@ -2537,12 +3188,28 @@ contains
         if (m > maxit) then
             error stop
             !call abortProgram( output_unit , 1 , 1 , &
-            !'Statitistics@getBetaContinuedFraction() failed: a or b too big, or maxit too small.' )
+            !'Statitistics@getBetaContinuedFraction() failed: alpha or beta too big, or maxit too small.' )
         end if
     end function getBetaContinuedFraction
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the one-sample Kolmogorov–Smirnov (KS) test results.
+    !>
+    !> \param[in]       np      :   The number of points in the input vector `Point`.
+    !> \param[inout]    Point   :   The sample. On return, this array will be sorted in Ascending order.
+    !> \param[in]       getCDF  :   The function returning the Cumulative Distribution Function (CDF) of the sample.
+    !> \param[out]      statKS  :   The KS test statistic.
+    !> \param[out]      probKS  :   The `p`-value of the test, returned as a scalar value in the range `[0,1]`.
+    !>                              The output `probKS` is the probability of observing a test statistic as extreme as,
+    !>                              or more extreme than, the observed value under the null hypothesis.
+    !>                              Small values of `probKS` cast doubt on the validity of the null hypothesis.
+    !> \param[out]      Err     :   An object of class [Err_type](@ref err_mod::err_type) containing information
+    !>                              about the occurrence of any error during the KS test computation.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     subroutine doKS1(np,Point,getCDF,statKS,probKS,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doKS1
@@ -2593,7 +3260,22 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This assumes that points are coming from a uniform distribution in [0,1]. So, all Point must be in [0,1] on input.
+    !> \brief
+    !> Return the one-sample Kolmogorov–Smirnov (KS) test results under the assumption that the
+    !> points originate from a uniform distribution in [0,1]. So, all Point must be in [0,1] on input.
+    !>
+    !> \param[in]       np      :   The number of points in the input vector `Point`.
+    !> \param[inout]    Point   :   The sample. On return, this array will be sorted in Ascending order.
+    !> \param[out]      statKS  :   The KS test statistic.
+    !> \param[out]      probKS  :   The `p`-value of the test, returned as a scalar value in the range `[0,1]`.
+    !>                              The output `probKS` is the probability of observing a test statistic as extreme as,
+    !>                              or more extreme than, the observed value under the null hypothesis.
+    !>                              Small values of `probKS` cast doubt on the validity of the null hypothesis.
+    !> \param[out]      Err     :   An object of class [Err_type](@ref err_mod::err_type) containing information
+    !>                              about the occurrence of any error during the KS test computation.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure subroutine doUniformKS1(np,Point,statKS,probKS,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doUniformKS1
@@ -2635,7 +3317,22 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! it is assumed that the input data1 and data2 arrays are sorted in ascending-order on input
+    !> \brief
+    !> Return the one-sample Kolmogorov–Smirnov (KS) test results under the assumption that the
+    !> points originate from a uniform distribution in [0,1]. So, all Point must be in [0,1] on input.
+    !>
+    !> \param[in]       np1             :   The number of points in the input vector `SortedPoint1`.
+    !> \param[in]       np2             :   The number of points in the input vector `SortedPoint2`.
+    !> \param[inout]    SortedPoint1    :   The first input sorted sample. On input, it must be sorted in ascending-order.
+    !> \param[inout]    SortedPoint2    :   The second input sorted sample. On input, it must be sorted in ascending-order.
+    !> \param[out]      statKS          :   The KS test statistic.
+    !> \param[out]      probKS          :   The `p`-value of the test, returned as a scalar value in the range `[0,1]`.
+    !>                                      The output `probKS` is the probability of observing a test statistic as extreme as,
+    !>                                      or more extreme than, the observed value under the null hypothesis.
+    !>                                      Small values of `probKS` cast doubt on the validity of the null hypothesis.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     subroutine doSortedKS2(np1,np2,SortedPoint1,SortedPoint2,statKS,probKS)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doSortedKS2
@@ -2676,6 +3373,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the Kolmogorov–Smirnov (KS) probability.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getProbKS(lambda) result(probKS)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS
@@ -2683,7 +3385,7 @@ contains
         implicit none
         real(RK)   , intent(in) :: lambda
         real(RK)   , parameter  :: EPS1 = 0.001_RK, EPS2 = 1.e-8_RK
-        integer(IK), parameter  :: NITER=100
+        integer(IK), parameter  :: NITER = 100
         integer(IK)             :: j
         real(RK)                :: a2,fac,term,termbf
         real(RK)                :: probKS
@@ -2703,7 +3405,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the uniform CDF on support [0,1). rather redundant, aint it? but sometimes, needed
+    !> \brief
+    !> Returns the uniform CDF on support [0,1). This is rather redundant, aint it? but sometimes, needed.
+    !>
+    !> \param[in] x : The point at which the CDF must be computed.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getUniformCDF(x)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUniformCDF
@@ -2716,11 +3424,26 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Returns the 1-D histogram (Density plot) of a vector X.
-    ! The number of bins in the X range (nxbin) is determined by the user
-    ! The range of X (xmin,xmax) should also be given by the user
-    ! The program returns 2 arrays of Xbin & Density(x) as output.
-    ! Amir Shahmoradi, Sep 1, 2017, 12:30 AM, ICES, UT Austin
+    !> \brief
+    !> Return the 1-D histogram (Density plot) of the input vector `X`.
+    !> The number of bins in the `X` range (`nxbin`) is determined by the user.
+    !> The range of `X`, `[xmin, xmax]`, should be also given by the user.
+    !> The program returns two arrays of `Xbin` and `Density(x)` as output.
+    !>
+    !> \param[in]       method          :   The method by which the hist count should be returned:
+    !>                                      + `"pdf"`   : Return the probability density function histogram.
+    !>                                      + `"count"` : Return the count histogram.
+    !> \param[in]       xmin            :   The minimum of the histogram binning.
+    !> \param[in]       xmax            :   The maximum of the histogram binning.
+    !> \param[in]       nxbin           :   The number of histogram bins.
+    !> \param[in]       np              :   The length of input vector `X`.
+    !> \param[in]       X               :   The vector of length `nxbin` of values to be binned.
+    !> \param[out]      Xbin            :   The vector of length `nxbin` of values representing the bin centers.
+    !> \param[out]      Density         :   The vector of length `nxbin` of values representing the densities in each bin.
+    !> \param[out]      errorOccurred   :   The logical output flag indicating whether error has occurred.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Sep 1, 2017, 12:30 AM, ICES, UT Austin
     subroutine getHist1d(method,xmin,xmax,nxbin,np,X,Xbin,Density,errorOccurred)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getHist1d
@@ -2758,10 +3481,31 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Returns the 2-D histogram (Density plot) of a set of data points with (X,Y) coordinates.
-    ! The number of bins in the X and Y directions (nxbin, nybin) are determined by the user
-    ! The range of X & Y (xmin,xmax,ymin,ymax) should also be given by the user
-    ! The program returns 3 arrays of Xbin, Ybin & Density(y,x) as the output.
+    !> \brief
+    !> Return the 2-D histogram (Density plot) of a set of data points with (X,Y) coordinates.
+    !> The number of bins in the `X` and `Y` directions (`[nxbin, nybin]`) are determined by the user.
+    !> The range of `X` and `Y` (`xmin`,`xmax`,`ymin`,`ymax`) should also be given by the user.
+    !> The program returns three arrays of `Xbin`, `Ybin`, and `Density(y,x)` as the output.
+    !>
+    !> \param[in]       histType        :   The method by which the normalization of the histogram counts should be done:
+    !>                                      + `"count"`     : Return the count histogram.
+    !>                                      + `"pdf"`       : Return the probability density function (PDF) histogram.
+    !>                                      + `"pdf(y|x)"`  : Return the conditional PDF of `y` given `x` histogram.
+    !>                                      + `"pdf(x|y)"`  : Return the conditional PDF of `x` given `y` histogram.
+    !> \param[in]       xmin            :   The minimum of the histogram binning along the x-axis.
+    !> \param[in]       xmax            :   The maximum of the histogram binning along the x-axis.
+    !> \param[in]       ymin            :   The minimum of the histogram binning along the y-axis.
+    !> \param[in]       ymax            :   The maximum of the histogram binning along the y-axis.
+    !> \param[in]       nxbin           :   The number of histogram bins along the x-axis.
+    !> \param[in]       nybin           :   The number of histogram bins along the y-axis.
+    !> \param[in]       np              :   The length of input vector `X`.
+    !> \param[in]       X               :   The vector of length `nxbin` of values to be binned.
+    !> \param[in]       Y               :   The vector of length `nybin` of values to be binned.
+    !> \param[out]      Xbin            :   The vector of length `nxbin` of values representing the bin centers.
+    !> \param[out]      Ybin            :   The vector of length `nybin` of values representing the bin centers.
+    !> \param[out]      Density         :   The array of shape `(nybin,nxbin)` of values representing the densities per bin.
+    !>
+    !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine getHist2d(histType,xmin,xmax,ymin,ymax,nxbin,nybin,np,X,Y,Xbin,Ybin,Density)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -2815,14 +3559,28 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! ATTN: if x <= xmin or x xmin+nbin*binsize then getBin=-1 will be returned to indicate error.
-    ! Given the range of the variable x, (xmin:xmin+binsize*nbin), and the number of bins, nbin,
-    ! which this range is going to be divided, this FUNCTION finds which bin\in[1,nbin], the input variable X belongs to.
-    ! The output is the number that identifies the bin.
-    ! On input, binsize must be exactly (xmax-xmin)/nbin.
-    ! if bmin < x <= bmax then x belongs to this bin.
-    ! Version 3.0, Sep 1, 2017, 11:12 AM, Amir Shahmoradi, ICES, The University of Texas at Austin.
-    pure function getBin(x,lowerBound,nbin,binsize)
+    !> \brief
+    !> Given the range of the variable `x`, `xmin:xmin+binsize*nbin`, and the number of bins, `nbin`, with which
+    !> this range is divided, find which bin the input value `x` falls among `[1:nbin]` bins.
+    !> The output `ibin` is the number that identifies the bin.
+    !>
+    !> \param[in]       x               :   The input value whose bin ID is to be found.
+    !> \param[in]       lowerBound      :   The lower limit on the value of `x`.
+    !> \param[in]       nbin            :   The number of bins to be considered starting from `lowerBound`.
+    !> \param[in]       binsize         :   The size of the bins. It must be exactly `(xmax - xmin) / nbin`.
+    !>
+    !> \return
+    !> `ibin` : The ID of the bin to which the input value `x` belongs.
+    !>
+    !> \warning
+    !> If `x <= xmin` or `x xmin + nbin * binsize`, then `ibin = -1` will be returned to indicate error.
+    !>
+    !> \remark
+    !> If `bmin < x <= bmax` then `x` belongs to this bin.
+    !>
+    !> \author
+    !> Version 3.0, Sep 1, 2017, 11:12 AM, Amir Shahmoradi, ICES, The University of Texas at Austin.
+    pure function getBin(x,lowerBound,nbin,binsize) result(ibin)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBin
 #endif
@@ -2831,10 +3589,10 @@ contains
         integer(IK), intent(in) :: nbin
         real(RK)   , intent(in) :: x,lowerBound,binsize
         real(RK)                :: xmin,xmid
-        integer(IK)             :: getBin,minbin,midbin,maxbin
+        integer(IK)             :: ibin,minbin,midbin,maxbin
 
         if (x<lowerBound .or. x>=lowerBound+nbin*binsize) then
-            getBin = -1_IK
+            ibin = -1_IK
             return
         end if
 
@@ -2846,14 +3604,14 @@ contains
             xmid = xmin + midbin*binsize
             if (x<xmid) then
                 if (minbin==midbin) then
-                    getBin = minbin
+                    ibin = minbin
                     exit loopFindBin
                 end if
                 maxbin = midbin
                 cycle loopFindBin
             else
                 if (minbin==midbin) then
-                    getBin = maxbin
+                    ibin = maxbin
                     exit loopFindBin
                 end if
                 minbin = midbin
@@ -2865,6 +3623,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the quantiles of an input sample of points, given the input quantile probabilities.
+    !>
+    !> \param[in]       np                          :   The number of points in the input sample.
+    !> \param[in]       nq                          :   The number of output quantiles.
+    !> \param[in]       SortedQuantileProbability   :   A sorted ascending-order vector of probabilities at which the quantiles will be returned.
+    !> \param[in]       Point                       :   The vector of length `np` representing the input sample.
+    !> \param[in]       Weight                      :   The vector of length `np` representing the weights of the points in the input sample.
+    !> \param[in]       sumWeight                   :   The sum of the vector weights of the points: `sum(Weight)`.
+    !>
+    !> \return
+    !> `Quantile` : The output vector of length `nq`, representing the quantiles corresponding to the input `SortedQuantileProbability` probabilities.
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function getQuantile(np,nq,SortedQuantileProbability,Point,Weight,sumWeight) result(Quantile)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuantile

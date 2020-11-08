@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -40,15 +40,23 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This file implements the body of the `Input_smod` submodules of the `ParaDRAM_mod` and `ParaDISE_mod` modules.
+!>
+!> \remark
+!> This module requires preprocessing, prior to compilation.
+!>
+!> @author Amir Shahmoradi
+
 #if defined PARADRAM
 
-#define SAMPLER ParaDRAM
-#define SAMPLER_TYPE ParaDRAM_type
+#define ParaDXXX ParaDRAM
+#define ParaDXXX_type ParaDRAM_type
 
 #elif defined PARADISE
 
-#define SAMPLER ParaDISE
-#define SAMPLER_TYPE ParaDISE_type
+#define ParaDXXX ParaDISE
+#define ParaDXXX_type ParaDISE_type
 
 #else
 #error "Unrecognized sampler in ParaDXXX_mod@Input_mod.inc.f90"
@@ -66,6 +74,15 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of [ParaDRAM_type](@ref paradram_type) and [ParaDISE_type](@ref paradise_type) classes.
+    !> Read the input file and assign the simulation specification variables.
+    !>
+    !> @param[inout]    self    :   An object of class [ParaDRAM_type](@ref paradram_type) or [ParaDISE_type](@ref paradise_type).
+    !> @param[in]       nd      :   The number of dimensions of the domain of the objective function.
+    !>
+    !> \remark
+    !> This procedure requires preprocessing.
     module subroutine getSpecFromInputFile(self,nd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile
@@ -121,56 +138,56 @@ contains
         use SpecDRAM_delayedRejectionScaleFactorVec_mod     , only: delayedRejectionScaleFactorVec
 
         implicit none
-        class(SAMPLER_TYPE), intent(inout)  :: self
+        class(ParaDXXX_type), intent(inout) :: self
         integer(IK), intent(in)             :: nd
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME//"@getSpecFromInputFile()"
 
         ! ParaMonte variables
-        namelist /SAMPLER/ sampleSize
-        namelist /SAMPLER/ randomSeed
-        namelist /SAMPLER/ description
-        namelist /SAMPLER/ outputFileName
-        namelist /SAMPLER/ outputDelimiter
-        namelist /SAMPLER/ ChainFileFormat
-        namelist /SAMPLER/ variableNameList
-        namelist /SAMPLER/ restartFileFormat
-        namelist /SAMPLER/ outputColumnWidth
-        namelist /SAMPLER/ overwriteRequested
-        namelist /SAMPLER/ outputRealPrecision
-        namelist /SAMPLER/ silentModeRequested
-        namelist /SAMPLER/ domainLowerLimitVec
-        namelist /SAMPLER/ domainUpperLimitVec
-        namelist /SAMPLER/ parallelizationModel
-        namelist /SAMPLER/ progressReportPeriod
-        namelist /SAMPLER/ inputFileHasPriority
-        namelist /SAMPLER/ targetAcceptanceRate
-        namelist /SAMPLER/ mpiFinalizeRequested
-        namelist /SAMPLER/ maxNumDomainCheckToWarn
-        namelist /SAMPLER/ maxNumDomainCheckToStop
-        namelist /SAMPLER/ systemInfoFilePath
-        namelist /SAMPLER/ interfaceType
+        namelist /ParaDXXX/ sampleSize
+        namelist /ParaDXXX/ randomSeed
+        namelist /ParaDXXX/ description
+        namelist /ParaDXXX/ outputFileName
+        namelist /ParaDXXX/ outputDelimiter
+        namelist /ParaDXXX/ ChainFileFormat
+        namelist /ParaDXXX/ variableNameList
+        namelist /ParaDXXX/ restartFileFormat
+        namelist /ParaDXXX/ outputColumnWidth
+        namelist /ParaDXXX/ overwriteRequested
+        namelist /ParaDXXX/ outputRealPrecision
+        namelist /ParaDXXX/ silentModeRequested
+        namelist /ParaDXXX/ domainLowerLimitVec
+        namelist /ParaDXXX/ domainUpperLimitVec
+        namelist /ParaDXXX/ parallelizationModel
+        namelist /ParaDXXX/ progressReportPeriod
+        namelist /ParaDXXX/ inputFileHasPriority
+        namelist /ParaDXXX/ targetAcceptanceRate
+        namelist /ParaDXXX/ mpiFinalizeRequested
+        namelist /ParaDXXX/ maxNumDomainCheckToWarn
+        namelist /ParaDXXX/ maxNumDomainCheckToStop
+        namelist /ParaDXXX/ systemInfoFilePath
+        namelist /ParaDXXX/ interfaceType
 
         ! ParaMCMC variables
-        namelist /SAMPLER/ chainSize
-        namelist /SAMPLER/ scaleFactor
-        namelist /SAMPLER/ startPointVec
-        namelist /SAMPLER/ proposalModel
-        namelist /SAMPLER/ proposalStartStdVec
-        namelist /SAMPLER/ proposalStartCorMat
-        namelist /SAMPLER/ proposalStartCovMat
-        namelist /SAMPLER/ sampleRefinementCount
-        namelist /SAMPLER/ sampleRefinementMethod
-        namelist /SAMPLER/ randomStartPointRequested
-        namelist /SAMPLER/ randomStartPointDomainLowerLimitVec
-        namelist /SAMPLER/ randomStartPointDomainUpperLimitVec
+        namelist /ParaDXXX/ chainSize
+        namelist /ParaDXXX/ scaleFactor
+        namelist /ParaDXXX/ startPointVec
+        namelist /ParaDXXX/ proposalModel
+        namelist /ParaDXXX/ proposalStartStdVec
+        namelist /ParaDXXX/ proposalStartCorMat
+        namelist /ParaDXXX/ proposalStartCovMat
+        namelist /ParaDXXX/ sampleRefinementCount
+        namelist /ParaDXXX/ sampleRefinementMethod
+        namelist /ParaDXXX/ randomStartPointRequested
+        namelist /ParaDXXX/ randomStartPointDomainLowerLimitVec
+        namelist /ParaDXXX/ randomStartPointDomainUpperLimitVec
 
         ! ParaDRAM variables
-        namelist /SAMPLER/ adaptiveUpdateCount
-        namelist /SAMPLER/ adaptiveUpdatePeriod
-        namelist /SAMPLER/ greedyAdaptationCount
-        namelist /SAMPLER/ delayedRejectionCount
-        namelist /SAMPLER/ burninAdaptationMeasure
-        namelist /SAMPLER/ delayedRejectionScaleFactorVec
+        namelist /ParaDXXX/ adaptiveUpdateCount
+        namelist /ParaDXXX/ adaptiveUpdatePeriod
+        namelist /ParaDXXX/ greedyAdaptationCount
+        namelist /ParaDXXX/ delayedRejectionCount
+        namelist /ParaDXXX/ burninAdaptationMeasure
+        namelist /ParaDXXX/ delayedRejectionScaleFactorVec
 
         ! initialize/nullify all general input options
 
@@ -187,9 +204,9 @@ contains
                 ! read input file as an internal file
 
 !#if defined DBG_ENABLED
-                read(self%InputFile%Path%original,nml=SAMPLER)
+                read(self%InputFile%Path%original,nml=ParaDXXX)
 !#else
-!                read(self%InputFile%Path%original,nml=SAMPLER,iostat=self%InputFile%Err%stat)
+!                read(self%InputFile%Path%original,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
 !                self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 !                if (self%Err%occurred) then
 !                    if (is_iostat_end(self%Err%stat)) then
@@ -237,9 +254,9 @@ contains
                 ! read input file
 
 !#if defined DBG_ENABLED
-                read(self%InputFile%unit,nml=SAMPLER)
+                read(self%InputFile%unit,nml=ParaDXXX)
 !#else
-!                read(self%InputFile%unit,nml=SAMPLER,iostat=self%InputFile%Err%stat)
+!                read(self%InputFile%unit,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
 !                self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 !                if (self%Err%occurred) then
 !                    if (is_iostat_end(self%Err%stat)) then
@@ -298,6 +315,6 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#undef SAMPLER_TYPE
-#undef SAMPLER
+#undef ParaDXXX_type
+#undef ParaDXXX
 

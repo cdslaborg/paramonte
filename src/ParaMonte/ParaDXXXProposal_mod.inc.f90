@@ -9,36 +9,44 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!> \brief
+!> This file implements the body of the Proposal modules of the `ParaDRAM` and `ParaDISE` samplers.
+!>
+!> \remark
+!> This module requires preprocessing, prior to compilation.
+!>
+!> @author Amir Shahmoradi
 
 #if defined UNIFORM
 
@@ -57,12 +65,12 @@
 
 #if defined PARADRAM
 
-#define SAMPLER ParaDRAM
+#define ParaDXXX ParaDRAM
     use ParaDRAMProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
 
 #elif defined PARADISE
 
-#define SAMPLER ParaDISE
+#define ParaDXXX ParaDISE
     use ParaDISEProposalAbstract_mod, only: ProposalAbstract_type, ProposalErr
 
 #endif
@@ -77,9 +85,9 @@
     !public :: Proposal_type
 
 #if defined NORMAL
-    character(*), parameter         :: MODULE_NAME = "@"//PMSM%SAMPLER//"ProposalNormal_mod"
+    character(*), parameter         :: MODULE_NAME = "@"//PMSM%ParaDXXX//"ProposalNormal_mod"
 #elif defined UNIFORM
-    character(*), parameter         :: MODULE_NAME = "@"//PMSM%SAMPLER//"ProposalUniform_mod"
+    character(*), parameter         :: MODULE_NAME = "@"//PMSM%ParaDXXX//"ProposalUniform_mod"
 #endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -89,6 +97,7 @@
         real(RK)                    :: target
     end type AccRate_type
 
+    !> The `Proposal_type` class.
     type, extends(ProposalAbstract_type) :: Proposal_type
        !type(AccRate_type)          :: AccRate
     contains
@@ -162,9 +171,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This interface madness is a result of the internal compiler bug in GFortran as of Jan 2020, which diagnoses a SAMPLER_TYPE 
-    ! argument as circular dependency due to this constructor appearing the type-bound setup procedure of SAMPLER_TYPE.
-    ! Intel does not complain. Until GFortran comes up with a fix, we have to live with this interface.
+    !> This is the constructor of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
+    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> Return an object of [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
+    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes given the input simulation characteristics.
+    !>
+    !> \remark
+    !> This interface madness is a result of the internal compiler bug in GFortran as of Jan 2020, which diagnoses a `ParaDXXX_type`
+    !> argument as circular dependency due to this constructor appearing in the type-bound setup procedure of `ParaDXXX_type`.
+    !> Intel does not complain. Until GFortran comes up with a fix, we have to live with this interface.
     function constructProposalSymmetric ( ndim &
                                         , SpecBase &
                                         , SpecMCMC &
@@ -357,6 +372,18 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
+    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> Return a newly sampled state to the kernel routine for acceptance check.
+    !>
+    !>
+    !> @param[in]   nd          :   The number of dimensions of the objective function.
+    !> @param[in]   counterDRS  :   The Delayed Rejection Stage counter.
+    !> @param[in]   StateOld    :   The old sampled state.
+    !>
+    !> \return
+    !> `StateNew` : The newly sampled state.
     function getNew ( nd            &
                     , counterDRS    &
                     , StateOld      &
@@ -370,9 +397,9 @@ contains
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
 
         implicit none
-        
+
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@getNew()"
-        
+
         integer(IK), intent(in)                         :: nd
         integer(IK), intent(in)                         :: counterDRS
         real(RK)   , intent(in)                         :: StateOld(nd)
@@ -411,6 +438,18 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
+    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> Return the natural logarithm of the probability of acceptance of the new state given the old state.
+    !>
+    !> @param[in]   nd          :   The number of dimensions of the objective function.
+    !> @param[in]   counterDRS  :   The Delayed Rejection Stage counter.
+    !> @param[in]   StateOld    :   The old sampled state.
+    !> @param[in]   StateNew    :   The new sampled state.
+    !>
+    !> \return
+    !> `logProb` : The log probability of obtaining obtaining the new sample given the old sample.
     pure function getLogProb( nd                &
                             , counterDRS        &
                             , StateOld          &
@@ -446,6 +485,25 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
+    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> Perform adaptation of the proposal distribution of the MCMC sampler.
+    !>
+    !> @param[in]       nd                      :   The number of dimensions of the objective function.
+    !> @param[in]       chainSize               :   The size of the input chain in compact format.
+    !> @param[in]       Chain                   :   The two dimensional `(nd, chainSize)` array of accepted states.
+    !> @param[in]       ChainWeight             :   The one dimensional integer array of the weights of the sampled states in the chain.
+    !> @param[in]       isFreshRun              :   The logical flag indicating whether the simulation is in regular (non-restart) mode.
+    !> @param[in]       samplerUpdateIsGreedy   :   The logical flag indicating whether the adaptation is in greedy mode..
+    !> @param[inout]    meanAccRateSinceStart   :   The mean acceptance rate since the start of the sampling.
+    !> @param[out]      samplerUpdateSucceeded  :   The output logical flag indicating whether the sampling succeeded.
+    !> @param[out]      adaptationMeasure       :   The output real number in the range `[0,1]` indicating the amount of adaptation,
+    !>                                              with zero indicating no adaptation and one indicating extreme adaptation to the extent
+    !>                                              that the new adapted proposal distribution is completely different from the previous proposal.
+    !> \remark
+    !> For information on the meaning of `adaptationMeasure`, see the paper by Shahmoradi and Bagheri, 2020, whose PDF is available at:
+    !> [https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler](https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler)
     subroutine doAdaptation ( nd                        &
                             , chainSize                 &
                             , Chain                     &
@@ -767,13 +825,13 @@ contains
 !counter = counter + 1
 !!if (counter==1) then
 !if (adaptationMeasure>1._RK) then
-!write(*,*) 
+!write(*,*)
 !write(*,*) mv_logSqrtDetOld_save
 !write(*,*) logSqrtDetNew
 !write(*,*) logSqrtDetSum
 !write(*,*) mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum
 !write(*,*) exp( mv_logSqrtDetOld_save + logSqrtDetNew - 2_IK * logSqrtDetSum )
-!write(*,*) 
+!write(*,*)
 !end if
 !end block
 
@@ -872,7 +930,7 @@ contains
     ! Note: image 2: avgTime =  1.420345299036357E-005
     ! Note: avg(avgTime): 1.532153060760448e-05
     ! Note: avg(speedup): 1.924798889020109
-    ! Note: One would expect this speed up to diminish as ndim goes to infinity, 
+    ! Note: One would expect this speed up to diminish as ndim goes to infinity,
     ! Note: since data transfer will dominate communication overhead.
     ! broadcast adaptation to all images
     subroutine bcastAdaptation()
@@ -901,7 +959,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! required for the proposal probabilities
+    !> \brief
+    !> Return the inverse covariance matrix of the current covariance of the proposal distribution.
+    !>
+    !> \warning
+    !> This procedure is `impure` and sets the values of multiple global variables upon exit.
+    !>
+    !> \remark
+    !> This procedure is required for the proposal probabilities
     subroutine getInvCovMat()
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvCovMat
@@ -928,8 +993,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! the performance of this update could be improved by only updating the higher-stage covariance, only when needed.
-    ! but the gain will be likely minimal, especially in low-dimensions.
+    !> \brief
+    !> Update the Cholesky factorization of the higher-stage delayed rejection covariance matrices.
+    !>
+    !> \warning
+    !> This procedure is impure and sets the values of multiple global variables upon exit.
+    !>
+    !> \todo
+    !> The performance of this update could be improved by only updating the higher-stage covariance, only when needed.
+    !> However, the gain will be likely minimal, especially in low-dimensions.
     subroutine updateDelRejCholDiagLower()
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: updateDelRejCholDiagLower
@@ -939,7 +1011,7 @@ contains
         ! update the Cholesky factor of the delayed-rejection-stage proposal distributions
         do istage = 1, mc_DelayedRejectionCount
             comv_CholDiagLower(1:mc_ndim,0,istage) = comv_CholDiagLower(1:mc_ndim,0,istage-1) * mc_DelayedRejectionScaleFactorVec(istage)
-            do j = 1, mc_ndim 
+            do j = 1, mc_ndim
                 comv_CholDiagLower(j+1:mc_ndim,j,istage) = comv_CholDiagLower(j+1:mc_ndim,j,istage-1) * mc_DelayedRejectionScaleFactorVec(istage)
             end do
         end do
@@ -948,6 +1020,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
+    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> This procedure is called by the sampler kernel routines.\n
+    !> Write the restart information to the output file.
+    !>
+    !> @param[in]   meanAccRateSinceStart : The current mean acceptance rate of the sampling (optional).
     subroutine writeRestartFile(meanAccRateSinceStart)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFile
@@ -979,6 +1058,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
+    !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
+    !> This procedure is called by the sampler kernel routines.\n
+    !> Read the restart information from the restart file.
+    !>
+    !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (optional).
     subroutine readRestartFile(meanAccRateSinceStart)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFile
@@ -1004,6 +1090,6 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-#undef SAMPLER
+#undef ParaDXXX
 #undef GET_RANDOM_PROPOSAL
 

@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains numerical optimization procedures.
+!>  @author Amir Shahmoradi
 
 module Optimization_mod
 
@@ -51,12 +54,13 @@ module Optimization_mod
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> The Brent minimizer class.
     type :: BrentMinimum_type
-        integer(IK)     :: niter                        ! the number of iterations to reach the minimum of the function
-        real(RK)        :: Bracket(3)                   ! the initial 3 Bracketing points that envelop the minimum
-        real(RK)        :: xtol = sqrt(epsilon(1._RK))  ! the stopping rule tolerance
-        real(RK)        :: xmin                         ! the x-value at the minimum of the function
-        real(RK)        :: fmin                         ! the minimum of the function
+        integer(IK)     :: niter                        !< the number of iterations to reach the minimum of the function
+        real(RK)        :: Bracket(3)                   !< the initial 3 Bracketing points that envelop the minimum
+        real(RK)        :: xtol = sqrt(epsilon(1._RK))  !< the stopping rule tolerance
+        real(RK)        :: xmin                         !< the x-value at the minimum of the function
+        real(RK)        :: fmin                         !< the minimum of the function
         type(Err_type)  :: Err
     end type BrentMinimum_type
 
@@ -78,14 +82,15 @@ module Optimization_mod
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> The Powell minimizer class.
     type :: PowellMinimum_type
-        integer(IK)             :: niter                        ! the number of iterations to reach the minimum of the function
-        integer(IK)             :: ndim                         ! the number of dimensions of the function
-        real(RK)                :: ftol = sqrt(epsilon(1._RK))  ! the stopping rule tolerance for the value of function
-        real(RK), allocatable   :: xmin(:)                      ! the x-value at the minimum of the function
-        real(RK), allocatable   :: DirMat(:,:)                  ! an initial (ndim,ndim) matrix whose columns contain the initial set of directions (usually the ndim unit vectors)
-       !real(RK), allocatable   :: StartVec(:)                  ! an initial (ndim) vector representing the start of the search
-        real(RK)                :: fmin                         ! the minimum of the function
+        integer(IK)             :: niter                        !< The number of iterations to reach the minimum of the function.
+        integer(IK)             :: ndim                         !< The number of dimensions of the function.
+        real(RK)                :: ftol = sqrt(epsilon(1._RK))  !< The stopping rule tolerance for the value of function.
+        real(RK), allocatable   :: xmin(:)                      !< The x-value at the minimum of the function.
+        real(RK), allocatable   :: DirMat(:,:)                  !< An initial `(ndim,ndim)` matrix whose columns contain the initial set of directions (usually the `ndim` unit vectors).
+       !real(RK), allocatable   :: StartVec(:)                  !< An initial vector of size `ndim` representing the start of the search.
+        real(RK)                :: fmin                         !< The minimum of the function.
         type(Err_type)          :: Err
     end type PowellMinimum_type
 
@@ -116,38 +121,30 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> The constructor of the class [BrentMinimum_type](@ref brentminimum_type).
+    !> Compute the minimum of the input 1-dimensional function isolated to
+    !> a fractional precision of about xtol using Brent's method.
+    !>
+    !> @param[in]   getFunc :   The 1-dimensional function which will have to be minimized.
+    !> @param[in]   x0      :   The lower point in the set of optional bracketing triplet of abscissas that
+    !>                          bracket the minimum of the function such that, `x0 < x1 < x2` and
+    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (optional).
+    !> @param[in]   x1      :   The middle point in the set of optional bracketing triplet of abscissas that
+    !>                          bracket the minimum of the function such that, `x0 < x1 < x2` and
+    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (optional).
+    !> @param[in]   x2      :   The upper point in the set of optional bracketing triplet of abscissas that
+    !>                          bracket the minimum of the function such that, `x0 < x1 < x2` and
+    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (optional).
+    !> @param[in]   xtol    :   An optional fractional precision within which is the minimum is returned.
+    !>                          The default value is sqrt(epsilon(1._RK)).
+    !>
+    !> \return
+    !> `BrentMinimum` : An object of class [BrentMinimum_type](@ref brentminimum_type) that contains the minimum of the
+    !>                  function (`xmin`) and the function value at the minimum (`fmin`) as well as other relevant information.
     function minimizeBrent(getFunc, x0, x1, x2, xtol) result(BrentMinimum)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: minimizeBrent
 #endif
-        !   Compute the minimum of the input 1-dimensional function isolated to 
-        !   a fractional precision of about xtol using Brent's method.
-        !
-        !   Input
-        !   =====
-        !
-        !       getFunc
-        !
-        !           The 1-dimensional function which will have to be minimized.
-        !
-        !       x0, x1, x2
-        !
-        !           A set of optional bracketing triplet of abscissas that bracket the minimum of 
-        !           the function such that, x0 < x1 < x2 and getFunc(x0) > getFunc(x1) < getFunc(x2).
-        !
-        !       xtol
-        !
-        !           An optional fractional precision within which is the minimum is returned.
-        !           The default value is sqrt(epsilon(1._RK)).
-        !
-        !   Output
-        !   ======
-        !
-        !       BrentMinimum
-        !
-        !           An object of type BrentMinimum_type that contains the minimum of the function (xmin) 
-        !           and the function value at the minimum (fmin) as well as other relevant information.
-        !
         use Constants_mod, only: IK, RK
         procedure(getFunc1D_proc)           :: getFunc
         real(RK)    , intent(in), optional  :: x0, x1, x2
@@ -362,6 +359,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> The constructor of the class [PowellMinimum_type](@ref powellminimum_type).
     function minimizePowell(ndim, getFuncMD, StartVec, DirMat, ftol) result(PowellMinimum)
 
         use Constants_mod, only: IK, RK, TINY_RK ! tiny = 1.0e-25_RK

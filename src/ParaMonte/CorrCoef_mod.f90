@@ -40,6 +40,9 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief This module contains procedures for computing various statistical correlation coefficients.
+!> @author Amir Shahmoradi
+
 module CorrCoef_mod
 
     use Constants_mod, only: RK, IK
@@ -63,14 +66,20 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Given two data arrays, data1(1:ndata) and data2(1:ndata), this routine returns:
-    ! their sum-squared difference of ranks as dStarStar,
-    ! the number of standard deviations by which dStarStar deviates from its null-hypothesis expected value as dStarStarSignif,
-    ! the two-sided significance level of this deviation as dStarStarProb,
-    ! the Spearman rank correlation as rho,
-    ! the two-sided significance level of its deviation from zero as rhoProb.
-    ! The external routines crank and sortAscending are used.
-    ! A small value of either dStarStarProb or rhoProb indicates a significant correlation.
+    !> Return the Spearman correlation coefficient of the two input data arrays.
+    !> 
+    !> @param[in] ndata             :   The length of the two input data arrays.
+    !> @param[in] Data1             :   The input data array of size `(1:ndata)`.
+    !> @param[in] Data2             :   The input data array of size `(1:ndata)`.
+    !> @param[out] rho              :   The Spearman rank correlation coefficient.
+    !> @param[out] rhoProb          :   The two-sided significance level of the deviation of `rho` from zero.
+    !> @param[out] dStarStar        :   The sum-squared difference of ranks of the two data vectors.
+    !> @param[out] dStarStarSignif  :   The number of standard deviations by which `dStarStar` deviates from its null-hypothesis expected value.
+    !> @param[out] dStarStarProb    :   The two-sided significance level of the deviation represented by `dStarStarSignif`.
+    !> @param[out] Err              :   An object of [Err_type](@ref err_mod::err_type) class, indicating whether an error has occurred.
+    !> 
+    !> \remark
+    !> A small value of either `dStarStarProb` or `rhoProb` indicates a significant correlation.
     subroutine getCorrCoefSpearman(ndata,Data1,Data2,rho,rhoProb,dStarStar,dStarStarSignif,dStarStarProb,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorrCoefSpearman

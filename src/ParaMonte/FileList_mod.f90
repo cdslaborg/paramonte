@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains classes and procedures to obtain a list of files in a given directory.
+!>  @author Amir Shahmoradi
 
 module FileList_mod
 
@@ -51,6 +54,7 @@ module FileList_mod
 
     character(*), parameter :: MODULE_NAME = "@FileList_mod"
 
+    !> The FileList_type class.
     type :: FileList_type
         character(:), allocatable       :: searchStr
         character(:), allocatable       :: orderStr
@@ -72,6 +76,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> The constructor of the [FileList_type](@ref filelist_type) class.
+    !> @param[in]   searchStr   :   The pattern for the file search (optional).
+    !> @param[in]   orderStr    :   The order by which the search results will be listed (optional, default = "name").
+    !> @param[in]   excludeStr  :   The string which the listed files should not contain (optional, default = "").
+    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (optional).
+    !>
+    !> \return
+    !> FileList : An object of [FileList_type](@ref filelist_type) class.
     function construct(searchStr,orderStr,excludeStr,OS) result(FileList)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: construct
@@ -103,8 +115,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns a list of files that match searchStr
-    ! searchStr can contain the path of the folder of interest to be searched.
+    !> Return a list of files that match `searchStr`.
+    !> @param[out]  FileList    :   The list of files matching the requested search pattern (optional).
+    !> @param[out]  count       :   The number of files (optional).
+    !> @param[out]  Err         :   The error object indicating the occurrence of error.
+    !> @param[in]   searchStr   :   The pattern for the file search (optional). It can be the path of the folder of interest to be searched.
+    !> @param[in]   orderStr    :   The order by which the search results will be listed (optional, default = "name").
+    !> @param[in]   excludeStr  :   The string which the listed files should not contain (optional, default = "").
+    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (optional).
+    !>
+    !> \return
+    !> FileList : An object of [FileList_type](@ref filelist_type) class.
     subroutine getFileList(FileList,Err,count,searchStr,orderStr,excludeStr,OS)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileList
@@ -387,7 +408,7 @@ contains
         !    command = "del " // filename // "; del " // stdErr
         !else
         !    command = "rm " // filename // "; rm " // stdErr
-        !end if        
+        !end if
         !call executeCmd( command = command//" > "//filename//" 2> "//stdErr, Err=Err )
         !if (Err%occurred) then
         !    Err%msg =   PROCEDURE_NAME // &

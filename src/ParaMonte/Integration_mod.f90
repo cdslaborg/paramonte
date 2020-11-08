@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains classes and procedures to perform numerical integrations.
+!>  \author Amir Shahmoradi
 
 module Integration_mod
 
@@ -56,6 +59,7 @@ module Integration_mod
 
     abstract interface
 
+        !> The abstract interface of the integrand.
         function integrand_proc(x) result(integrand)
             use Constants_mod, only: RK
             implicit none
@@ -63,6 +67,7 @@ module Integration_mod
             real(RK)              :: integrand
         end function integrand_proc
 
+        !> The abstract interface of the integrator.
         subroutine integrator_proc(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
             use Constants_mod, only: IK, RK
             import :: integrand_proc
@@ -82,7 +87,22 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the integral of function getFunc in the closed range [lowerLim,upperLim] using Adaptive Romberg extrapolation method.
+    !> \brief
+    !> Return the integral of function getFunc in the closed range [lowerLim,upperLim] using Adaptive Romberg extrapolation method.
+    !> \param[in]   getFunc             :   The input function to be integrated. It must have the interface specified by
+    !!                                      [integrand_proc](@ref integrand_proc).
+    !> \param[in]   lowerLim            :   The lower limit of integration.
+    !> \param[in]   upperLim            :   The upper limit of integration.
+    !> \param[in]   maxRelativeError    :   The tolerance that once reach, the integration will stop.
+    !> \param[in]   nRefinement         :   The number of refinements in the Romberg method. A number between 4-6 is typically good.
+    !> \param[out]  integral            :   The result of integration.
+    !> \param[out]  relativeError       :   The final estimated relative error in the result. By definition, this is always
+    !!                                      smaller than `maxRelativeError`.
+    !> \param[out]  numFuncEval         :   The number of function evaluations made.
+    !> \param[out]  ierr                :   Integer flag indicating whether an error has occurred.
+    !!                                      If `ierr == 0`, then no error has occurred.
+    !!                                      Otherwise, the integer value points to the corresponding element of
+    !!                                      [ErrorMessage](@ref errormessage) array.
     recursive subroutine doQuadRombClosed   ( getFunc &
                                             , lowerLim &
                                             , upperLim &
@@ -126,7 +146,26 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! integrate getFunc() using Romberg adaptive extrapolation method on an Open interval (lowerLim,upperLim).
+    !> \brief
+    !> Return the integral of function getFunc in the open range `[lowerLim,upperLim]` using Adaptive Romberg extrapolation method.
+    !> \param[in]   getFunc             :   The input function to be integrated. It must have the interface specified by
+    !!                                      [integrand_proc](@ref integrand_proc).
+    !> \param[in]   integrate           :   The integrator routine. It can be either [midexp](@ref midexp), [midpnt](@ref midpnt),
+    !!                                      or [midinf](@ref midinf).
+    !> \param[in]   lowerLim            :   The lower limit of integration.
+    !> \param[in]   upperLim            :   The upper limit of integration.
+    !> \param[in]   maxRelativeError    :   The tolerance that once reach, the integration will stop.
+    !> \param[in]   nRefinement         :   The number of refinements in the Romberg method. A number between 4-6 is typically good.
+    !> \param[out]  integral            :   The result of integration.
+    !> \param[out]  relativeError       :   The final estimated relative error in the result. By definition, this is always
+    !!                                      smaller than `maxRelativeError`.
+    !> \param[out]  numFuncEval         :   The number of function evaluations made.
+    !> \param[out]  ierr                :   Integer flag indicating whether an error has occurred.
+    !!                                      If `ierr == 0`, then no error has occurred.
+    !!                                      Otherwise, the integer value points to the corresponding element
+    !!                                      of [ErrorMessage](@ref errormessage) array.
+    !> \remark
+    !> Checked by Joshua Osborne on 5/28/2020 at 9:03 pm.
     recursive subroutine doQuadRombOpen ( getFunc &
                                         , integrate &
                                         , lowerLim &
@@ -138,7 +177,6 @@ contains
                                         , numFuncEval &
                                         , ierr &
                                         )
-        !checked by Joshua Osborne on 5/28/2020 at 9:03pm
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadRombOpen
 #endif
@@ -300,10 +338,23 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! must be: lowerLim*upperLim > 0.0
-    ! integrate a function on a semi-infinite interval
+    !> \brief
+    !> Integrate a function on a semi-infinite interval.
+    !>
+    !> \param[in]       getFunc         :   The input function to be integrated. It must have the interface specified by
+    !!                                      [integrand_proc](@ref integrand_proc).
+    !> \param[in]       lowerLim        :   The lower limit of integration.
+    !> \param[in]       upperLim        :   The upper limit of integration.
+    !> \param[inout]    integral        :   The result of integration.
+    !> \param[in]       refinementStage :   The number of refinements since the first call to the integrator.
+    !> \param[out]      numFuncEval     :   The number of function evaluations made.
+    !>
+    !> \remark
+    !> `lowerLim * upperLim > 0.0` must hold for this integrator to function properly.
+    !>
+    !> \remark
+    !> Tested by Joshua Osborne on 5/28/2020 at 8:58 pm.
     subroutine midinf(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
-    !checked by Joshua Osborne on 5/28/2020 at 8:58pm
         implicit none
         real(RK)    , intent(in)    :: lowerLim,upperLim
         integer(IK) , intent(in)    :: refinementStage
@@ -335,18 +386,19 @@ contains
             numFuncEval = 2_IK * numFuncEval
         end if
     contains
-        function getTransFunc(x)
+        function getTransFunc(x) result(transFunc)
             implicit none
             real(RK), intent(in)    :: x
-            real(RK)                :: getTransFunc
-            getTransFunc = getFunc(1._RK/x) / x**2
+            real(RK)                :: transFunc
+            transFunc = getFunc(1._RK/x) / x**2
         end function getTransFunc
     end subroutine midinf
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \remark
+    !> Tested by Joshua Osborne on 5/28/2020 at 8:55 pm.
     subroutine midpnt(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
-    !checked by Joshua Osborne on 5/28/2020 at 8:55pm
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: midpnt
 #endif

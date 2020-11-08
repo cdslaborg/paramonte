@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -40,17 +40,25 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This file implements the body of the `Setup_smod` submodules of the `ParaDRAM_mod` and `ParaDISE_mod` modules.
+!>
+!> \remark
+!> This module requires preprocessing, prior to compilation.
+!>
+!> @author Amir Shahmoradi
+
 #if defined PARADRAM
 
-#define SAMPLER ParaDRAM
-#define SAMPLER_TYPE ParaDRAM_type
-#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDRAMProposalAbstract_mod
+#define ParaDXXX ParaDRAM
+#define ParaDXXX_type ParaDRAM_type
+#define ParaDXXXProposalAbstract_mod ParaDRAMProposalAbstract_mod
 
 #elif defined PARADISE
 
-#define SAMPLER ParaDISE
-#define SAMPLER_TYPE ParaDISE_type
-#define SAMPLER_PROPOSAL_ABSTRACT_MOD ParaDISEProposalAbstract_mod
+#define ParaDXXX ParaDISE
+#define ParaDXXX_type ParaDISE_type
+#define ParaDXXXProposalAbstract_mod ParaDISEProposalAbstract_mod
 
 #else
 #error "Unrecognized sampler in ParaDXXX_mod@Setup_mod.inc.f90"
@@ -71,6 +79,25 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of [ParaDRAM_type](@ref paradram_type) and [ParaDISE_type](@ref paradise_type) classes.
+    !> Setup the sampler and run the simulation.
+    !>
+    !> \remark
+    !> There are only two mandatory pieces of information that must be provided when calling this subroutine.
+    !> The rest of the parameters can be also set from within an external input file, whose path can be given
+    !> as an input argument `inputFile` to this subroutine.
+    !>
+    !> @param[in]   ndim        :   The number of dimensions of the domain of the objective function to be sampled.
+    !> @param[in]   getLogFunc  :   The first point.
+    !> @param[in]   inputFile   :   The path to the external input file (optional).
+    !>
+    !> \remark
+    !> For detailed descriptions of the rest of the input parameters of this subroutine,
+    !> see: https://www.cdslab.org/paramonte/notes/usage/paradram/specifications/
+    !>
+    !> \remark
+    !> This procedure requires preprocessing.
     module subroutine runSampler( self                                  &
                                 , ndim                                  &
                                 , getLogFunc                            &
@@ -118,7 +145,7 @@ contains
                                 , delayedRejectionScaleFactorVec        &
                                 ) !  result(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !!DEC$ ATTRIBUTES DLLEXPORT :: SAMPLER_TYPE
+        !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDXXX_type
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit, stat_stopped_image
@@ -145,7 +172,7 @@ contains
         implicit none
 
         ! self
-        class(SAMPLER_TYPE), intent(inout)  :: self
+        class(ParaDXXX_type), intent(inout) :: self
 
         ! mandatory variables
         integer(IK) , intent(in)            :: ndim
@@ -209,7 +236,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call self%setupParaMonte( nd = ndim             &
-                                , name = PMSM%SAMPLER   &
+                                , name = PMSM%ParaDXXX  &
                                 , inputFile = inputFile &
                                 )
         if (self%Err%occurred) then
@@ -226,7 +253,7 @@ contains
         call self%setupParaMCMC()
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! Initialize SAMPLER variables
+        ! Initialize ParaDXXX variables
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         self%SpecDRAM = SpecDRAM_type( self%nd%val, self%name ) ! , self%SpecMCMC%ChainSize%def )
@@ -469,9 +496,9 @@ contains
 #if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
             block
 #if defined PARADRAM
-                use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr
+                use ParaDXXXProposalAbstract_mod, only: ProposalErr
 #elif defined PARADISE
-                use SAMPLER_PROPOSAL_ABSTRACT_MOD, only: ProposalErr
+                use ParaDXXXProposalAbstract_mod, only: ProposalErr
 #endif
                 if (ProposalErr%occurred) then
                     self%Err%occurred = .true.
@@ -483,7 +510,7 @@ contains
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! run SAMPLER kernel
+        ! run ParaDXXX kernel
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (self%isFreshRun .and. self%Image%isMaster) then
@@ -511,7 +538,7 @@ contains
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! start SAMPLER post-processing
+        ! start ParaDXXX post-processing
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         blockMasterPostProcessing: if (self%Image%isMaster) then
@@ -699,7 +726,7 @@ contains
                 logical                     :: isForkJoinParallelism
                 type(ForkJoin_type)         :: ForkJoin
                 character(:), allocatable   :: undefinedInfinity
-                
+
                 if (self%SpecBase%ParallelizationModel%isMultiChain) then
                     undefinedInfinity = "+INFINITY"
                 else
@@ -1737,7 +1764,7 @@ contains
 
 !end submodule Setup_smod
 
-#undef SAMPLER_PROPOSAL_ABSTRACT_MOD
-#undef SAMPLER_TYPE
-#undef SAMPLER
+#undef ParaDXXXProposalAbstract_mod
+#undef ParaDXXX_type
+#undef ParaDXXX
 

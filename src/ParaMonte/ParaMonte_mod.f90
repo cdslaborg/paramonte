@@ -9,36 +9,110 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \mainpage ParaMonte: Plain Powerful <b>Para</b>llel <b>Monte</b> Carlo Library
+!>
+!>  This is the `ParaMonte::Kernel` developer documentation website.
+!>  For information about the usage and examples visit the [ParaMonte Documentation website](https://www.cdslab.org/paramonte/).
+!>
+!>  What is ParaMonte?
+!>  ==================
+!>
+!>  ParaMonte is a serial / parallel library of Monte Carlo routines for sampling
+!>  mathematical objective functions of arbitrary-dimensions, in particular,
+!>  the posterior distributions of Bayesian models in data science,
+!>  Machine Learning, and scientific inference, with the design
+!>  goal of unifying the
+!>
+!>  +    **automation** of Monte Carlo simulations,
+!>  +    **user-friendliness** of the library,
+!>  +    **accessibility** from multiple programming environments,
+!>  +    **high-performance** at runtime, and,
+!>  +    **scalability** across many parallel processors.
+!>
+!>  For more information on the installation, usage, and examples, visit:
+!>
+!>  [https://www.cdslab.org/paramonte](https://www.cdslab.org/paramonte)
+!>
+!>  For the API developer documentation, visit:
+!>
+!>     [https://www.cdslab.org/paramonte/notes/api/kernel](https://www.cdslab.org/paramonte/notes/api/kernel)
+!>
+!>
+!>  ParaMonte samplers
+!>  ==================
+!>
+!>  The routines currently supported by the ParaMonte kernel library include:
+!>
+!>  ### ParaDRAM
+!>
+!>  Parallel Delayed-Rejection Adaptive Metropolis-Hastings Markov
+!>  Chain Monte Carlo Sampler. For a quick start, example scripts,
+!>  and instructions on how to use he ParaDRAM sampler in your
+!>  language of choice, visit:
+!>
+!>  [https://www.cdslab.org/paramonte](https://www.cdslab.org/paramonte)
+!>
+!>  Naming conventions
+!>  ==================
+!>
+!>  +   The CamelCase naming style is used throughout the entire ParaMonte
+!>      kernel library.
+!>
+!>  +   Although the Fortran language is case-insensitive, by convention,
+!>      all scalar variable names begin with a lower case, whereas all vectors,
+!>      arrays, types, and module names begin with an upper-case letter.
+!>
+!>  +   The name of any variable that represents a vector of values is normally
+!>      suffixed with `Vec` or `Vector`, for example: `StartPointVec`, ...
+!>
+!>  +   The name of any variable that represents a matrix of values is normally
+!>      suffixed with `Mat`, for example: `proposalStartCorMat`, ...
+!>
+!>  +   The name of any variable that represents a list of varying-size values
+!>      is normally suffixed with `List`, like: `variableNameList`, ...
+!>
+!>  +   All static functions or methods of classes begin with a lowercase verb.
+!>
+!>  +   Significant attempt has been made to end all boolean variables with a
+!>      passive verb, such that the full variable name virtually forms a
+!>      proposition, that is, an English-language statement that should
+!>      be either `.true.` or `.false.`, set by the user.
+!>
+!-------------------------------------------------------------------------------
+
+!>  \brief This module contains the base class of all ParaMonte samplers and its associated methods.
+!>  @author Amir Shahmoradi
 
 module ParaMonte_mod
 
@@ -60,6 +134,7 @@ module ParaMonte_mod
 
     character(*), parameter         :: MODULE_NAME = "@ParaMonte_mod"
 
+    !> The Quantile derived type containing the distribution quantiles.
     type                            :: QuantileProbability_type
         integer(IK)                 :: count = 9_IK
         real(RK)                    :: Value(9) = [0._RK,0.05_RK,0.10_RK,0.25_RK,0.50_RK,0.75_RK,0.90_RK,0.95_RK,1.0_RK]
@@ -67,6 +142,7 @@ module ParaMonte_mod
     end type QuantileProbability_type
     type(QuantileProbability_type), parameter :: QPROB = QuantileProbability_type()
 
+    !> The derived type containing the statistical moments of the objective function.
     type                            :: Moment_type
         integer(IK)                 :: count = 0_IK
         real(RK), allocatable       :: Mean(:)
@@ -75,20 +151,23 @@ module ParaMonte_mod
         real(RK), allocatable       :: Quantile(:,:)
     end type Moment_type
 
+    !> The derived type containing the number of function calls.
     type                            :: ParaMonteNumFunCall_type
-        integer(IK)                 :: accepted                         ! accepted in the simulation
-        integer(IK)                 :: acceptedRejected                 ! accepted + rejected function calls
+        integer(IK)                 :: accepted         !< The number of objective function calls accepted in the simulation.
+        integer(IK)                 :: acceptedRejected !< The accepted + rejected function calls.
     end type ParaMonteNumFunCall_type
 
+    !> The derived type containing information about the function mode.
     type                            :: ParaMonteLogFuncMode_type
-        real(RK)                    :: val
-        real(RK), allocatable       :: Crd(:)
+        real(RK)                    :: val      !< The function mode.
+        real(RK), allocatable       :: Crd(:)   !< The location of the mode in the domain of the the objective function.
     end type ParaMonteLogFuncMode_type
 
+    !> The derived type containing information about the statistics of the objective function and the runtime performance of the simulation.
     type                            :: ParaMonteStatistics_type
-        real(RK)                    :: avgTimePerFunCalInSec = 0._RK
-        real(RK)                    :: avgCommTimePerFunCall = 0._RK
-        type(Moment_type)           :: Sample
+        real(RK)                    :: avgTimePerFunCalInSec = 0._RK    !< Average time per objective function call.
+        real(RK)                    :: avgCommTimePerFunCall = 0._RK    !< Average inter-process communication time per function call.
+        type(Moment_type)           :: Sample                           !< The statistical moments of the objective function.
     end type ParaMonteStatistics_type
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,33 +206,41 @@ module ParaMonte_mod
     ! ParaMonte type
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> The `ParaMonte_type` sampler base class.
     type                                :: ParaMonte_type
-        type(IntStr_type)               :: nd
-        character(8)                    :: name
-        character(16)                   :: brand
-        character(:), allocatable       :: date
-        character(:), allocatable       :: version
-        logical                         :: isDryRun
-        logical                         :: isFreshRun
-        logical                         :: procArgNeeded
-        logical                         :: procArgHasPriority
-        logical                         :: inputFileArgIsPresent
-        type(OS_type)                   :: OS
-        type(Err_type)                  :: Err
-        type(Image_type)                :: Image
-        type(SpecBase_type)             :: SpecBase
+        type(IntStr_type)               :: nd                       !< The number of dimensions of the domain of the objective function.
+        character(8)                    :: name                     !< The ParaMonte sampler method name.
+        character(16)                   :: brand                    !< The ParaMonte sampler brand (The decorated tabbed version of the sampler name).
+        character(:), allocatable       :: date                     !< The date of the simulation.
+        character(:), allocatable       :: version                  !< The ParaMonte version.
+        logical                         :: isDryRun                 !< The logical flag that, if `.true.`, indicates the simulation is in restart mode.
+        logical                         :: isFreshRun               !< The logical flag that, if `.false.`, indicates the simulation is in new mode.
+        logical                         :: procArgNeeded            !< The logical flag that, if `.true.`, requires reading the simulation specification
+                                                                    !< from the Object-Oriented interface of the sampler and prioritizing them over the
+                                                                    !< corresponding values in the external input file.
+        logical                         :: procArgHasPriority       !< The logical flag that, if `.true.`, indicates that the simulation specifications
+                                                                    !< have priority over the corresponding values from the external input file.
+        logical                         :: inputFileArgIsPresent    !< The logical flag that indicates whether the external input file has been provided by the user.
+        type(OS_type)                   :: OS                       !< An object of class [OS_type](@ref system_mod::os_type) containing information about the Operating System.
+        type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) containing information
+                                                                    !< about error occurrence and message during the simulation setup and runtime.
+        type(Image_type)                :: Image                    !< An object of type [Image_type](@ref image_type) containing information about
+                                                                    !< the processor count and types in the simulation.
+        type(SpecBase_type)             :: SpecBase                 !< An object of class [SpecBase_type](@ref specbase_mod::specbase_type) containing information
+                                                                    !< about the basic simulation specification properties.
         !type(ParaMonteStatistics_type) :: Stats
-        type(SystemInfo_type)           :: SystemInfo
-        type(Timer_type)                :: Timer
-        type(File_type)                 :: InputFile
-        type(LogFile_type)              :: LogFile
-        type(TimeFile_type)             :: TimeFile
-        type(ChainFile_type)            :: ChainFile
-        type(SampleFile_type)           :: SampleFile
-        type(RestartFile_type)          :: RestartFile
-        type(ChainFileContents_type)    :: Chain
-        type(Decoration_type)           :: Decor
-    contains    
+        type(SystemInfo_type)           :: SystemInfo               !< An object of class [SystemInfo_type](@ref system_mod::systeminfo_type) containing
+                                                                    !< information about the operating system and platform.
+        type(Timer_type)                :: Timer                    !< An object of class [Timer_type](@ref timer_mod::timer_type) used for timing of the simulation.
+        type(File_type)                 :: InputFile                !< An object of class [File_type](@ref file_mod::file_type) containing information about the simulation input file.
+        type(LogFile_type)              :: LogFile                  !< An object of class [LogFile_type](@ref logfile_type) containing information about the simulation report file.
+        type(TimeFile_type)             :: TimeFile                 !< An object of class [TimeFile_type](@ref timefile_type) containing information about the simulation timing.
+        type(ChainFile_type)            :: ChainFile                !< An object of class [ChainFile_type](@ref chainfile_type) containing information about the simulation output chain.
+        type(SampleFile_type)           :: SampleFile               !< An object of class [SampleFile_type](@ref samplefile_type) containing information about the simulation output sample.
+        type(RestartFile_type)          :: RestartFile              !< An object of class [RestartFile_type](@ref restartfile_type) containing information about the simulation output restart.
+        type(ChainFileContents_type)    :: Chain                    !< An object of class [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type) containing information and methods for chain IO.
+        type(Decoration_type)           :: Decor                    !< An object of class [Decoration_type](@ref decoration_mod::decoration_type) containing IO decoration tools.
+    contains
         procedure, pass                 :: reportDesc
         procedure, pass                 :: setupParaMonte
         procedure, pass                 :: addSplashScreen
@@ -172,12 +259,22 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! To be called by all images.
-    ! Tasks: setup initial variables, as well as construct default and null values for SpecBase. Sets
-    ! self%InputFile%exists = .true. if the input file exists and opens and assigns to it a unit number and sets
-    ! and self%InputFile%isOpen = .true. if the opening process is successful.
-    ! If the input file exists, the path used to open it successfully will be also written to InpuFile%Path%modified
-    !subroutine setupParaMonte(self,nd,name,date,version,inputFile)
+    !> \brief
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !> Set up the ParaMonte sampler with the requested input specifications. This method,
+    !> + sets up initial variables,
+    !> + and constructs the default and null values for `SpecBase`.
+    !> + `self%InputFile%exists = .true.` if the input file exists and opens and assigns to it a unit number and sets
+    !>    and `self%InputFile%isOpen = .true.` if the opening process is successful.
+    !> + If the input file exists, the path used to open it successfully will be also written to `InpuFile%Path%modified`.
+    !>
+    !> @param[inout]    self        :   An object of class [ParaMonte_type](@ref paramonte_type).
+    !> @param[in]       nd          :   The number of dimensions of the domain of the objective function.
+    !> @param[in]       name        :   The name of the sampler. Example: `ParaDRAM`.
+    !> @param[in]       inputFile   :   The path to the input file, or the contents of an input file.
+    !>
+    !> \warning
+    !> This routine has to be called by all images (processes).
     subroutine setupParaMonte(self,nd,name,inputFile)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMonte
@@ -305,6 +402,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !> Add a splash screen to the output report file.
+    !>
+    !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
+    !>
+    !> \remark
+    !> This routine has to be called by all master images (processes).
     subroutine addSplashScreen(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: addSplashScreen
@@ -371,6 +476,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !> Add information about the compiler and the platform/OS to the output report file.
+    !>
+    !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
+    !>
+    !> \remark
+    !> This routine has to be called by all master images (processes).
     subroutine addCompilerPlatformInfo(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: addCompilerPlatformInfo
@@ -444,7 +557,7 @@ contains
                                             )
 
         ! Get system info by all images. why? Not anymore.
-        ! On many parallel processors via singlChain this leads to 
+        ! On many parallel processors via singlChain this leads to
         ! the creation of thousands of files on the system, simultaneously.
         ! this is not needed by any process other than the masters.
 
@@ -489,6 +602,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !> Write to the output report file, the relevant platform setup messages.
+    !>
+    !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
+    !>
+    !> \remark
+    !> This routine has to be called by all master images (processes).
     subroutine noteUserAboutEnvSetup(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: noteUserAboutEnvSetup
@@ -504,6 +625,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> If the relevant method name is missing in the namelist input file, then warn the user about this issue.
+    !>
+    !> @param[inout]    prefix      :   The prefix of the warning message.
+    !> @param[inout]    name        :   The sampler method name.
+    !> @param[inout]    namelist    :   The name of the missing namelist.
+    !> @param[inout]    outputUnit  :   The file unit to which the message must be output.
     subroutine warnUserAboutMissingNamelist(prefix,name,namelist,outputUnit)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutMissingNamelist
@@ -525,6 +653,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !> Warn the user about whether the input file is missing, or is present, and other input file activities.
+    !>
+    !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     subroutine warnUserAboutInputFilePresence(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutInputFilePresence
@@ -572,6 +705,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !> Warn the user about whether the specifications setup from within the program are allowed or not.
+    !>
+    !> @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).
     subroutine setWarnAboutProcArgHasPriority(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnAboutProcArgHasPriority
@@ -585,8 +723,8 @@ contains
         self%procArgNeeded = self%procArgHasPriority .or. (.not.self%inputFileArgIsPresent)
 
 #if defined FORTRAN_ENABLED
-        if (self%Image%isFirst) then 
-            if (self%procArgHasPriority) then 
+        if (self%Image%isFirst) then
+            if (self%procArgHasPriority) then
                 msg =   "Variable inputFileHasPriority = .false.\n&
                         &All variable values will be overwritten by the corresponding procedure argument values,\n&
                         &only if provided as procedure arguments."
@@ -601,6 +739,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !> Set up the output files of the simulation.
+    !>
+    !> @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).
     subroutine setupOutputFiles(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupOutputFiles
@@ -1032,6 +1175,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !> Output the relevant description.
+    !>
+    !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
+    !> @param[inout]    msg     :   The message to be output.
     subroutine reportDesc(self, msg) !, marginTop, marginBot)
 #if defined DLL_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: reportDesc

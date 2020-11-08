@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains procedures for computing the parallel performance of the parallel algorithms.
+!>  @author Amir Shahmoradi
 
 module Parallelism_mod
 
@@ -78,6 +81,7 @@ module Parallelism_mod
         type(PowellMinimum_type)    :: PowellMinimum
     end type SuccessProb_type
 
+    !> The `ForkJoin_type` class.
     type :: ForkJoin_type
         type(UniqueProcess_type)    :: UniqueProcess
         type(Contribution_type)     :: Contribution ! similar to UniqueProcess, but including all processes, including zero contributors
@@ -98,6 +102,19 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> This is the constructor of the [ForkJoin_type](@ref forkjoin_type) class.
+    !> Return the predicted speedup of the parallel simulation given the input characteristics and timing information of the simulation.
+    !>
+    !> @param[in]   processCount    :   The number of processes in the simulation.
+    !> @param[in]   lenProcessID    :   The length of `ProcessID` vector.
+    !> @param[in]   ProcessID       :   The vector of process IDs.
+    !> @param[in]   successProb     :   The success probability (the effective acceptance rate per objective function call).
+    !> @param[in]   seqSecTime      :   The timing of the sequential sections of the code.
+    !> @param[in]   parSecTime      :   The timing of the parallel sections of the code.
+    !> @param[in]   comSecTime      :   The timing of the communication sections of the code.
+    !>
+    !> \return
+    !> `ForkJoin` : An object of class [ForkJoin_type](@ref forkjoin_type) containing the parallelization speedup.
     function constructForkJoin(processCount, lenProcessID, ProcessID, successProb, seqSecTime, parSecTime, comSecTime) result(ForkJoin) ! nonpure
 
         use Statistics_mod, only: fitGeoCyclicLogPDF
@@ -253,6 +270,18 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Predict the parallel simulation speedup for a range of possible processor counts.
+    !>
+    !> @param[in]   successProb         :   The success probability (the effective acceptance rate per objective function call).
+    !> @param[in]   seqSecTime          :   The timing of the sequential sections of the code.
+    !> @param[in]   parSecTime          :   The timing of the parallel sections of the code.
+    !> @param[in]   comSecTimePerProc   :   The timing of the communication sections of the code per processor.
+    !> @param[in]   minMaxNumProc       :   The minimum number of processes for which the speedup will be computed. It must be at least 1.
+    !> @param[out]  Speedup             :   The vector of speedup values for different counts of processes.
+    !> @param[out]  lenSpeedup          :   The length of the vector `Speedup`.
+    !> @param[out]  maxSpeedupNumProc   :   The number of processes at which the maximum speedup happens.
+    !> @param[out]  maxSpeedup          :   The maximum speedup for any number of processors.
+    !> @param[out]  Err                 :   An object of [Err_type](@ref err_mod::err_type) class indicating whether and error has occurred upon return.
     subroutine getForkJoinSpeedup(successProb, seqSecTime, parSecTime, comSecTimePerProc, minMaxNumProc, Speedup, lenSpeedup, maxSpeedupNumProc, maxSpeedup, Err)
 
         use Statistics_mod, only: getLogProbGeoCyclic

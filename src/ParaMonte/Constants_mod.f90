@@ -40,6 +40,9 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief This module contains the mathematical and programming constants.
+!> @author Amir Shahmoradi
+
 module Constants_mod
 
     use, intrinsic :: iso_fortran_env, only: real32, real64, int32, int64
@@ -54,41 +57,41 @@ module Constants_mod
 
     ! Constants for computational accuracy
 
-    integer     , parameter :: SPR = real32                                             ! single precision real kind
-    integer     , parameter :: DPR = real64                                             ! double precision real kind
-    integer     , parameter :: SPI = int32                                              ! single precision integer kind
-    integer     , parameter :: DPI = int64                                              ! double precision integer kind
-    integer     , parameter :: SPC = kind((1._SPR,1._SPR))                              ! single-precision complex kind
-    integer     , parameter :: DPC = kind((1._DPR,1._DPR))                              ! double-precision complex kind
-    integer     , parameter :: CK = kind((1._RK,1._RK))                                 ! complex kind
-    integer     , parameter :: RKP = precision(1._RK)                                   ! real kind precision
-    integer(IK) , parameter :: MAX_REC_LEN = 9999                                       ! maximum string record length
+    integer     , parameter :: SPR = real32                                             !< @public single precision real kind
+    integer     , parameter :: DPR = real64                                             !< @public double precision real kind
+    integer     , parameter :: SPI = int32                                              !< @public single precision integer kind
+    integer     , parameter :: DPI = int64                                              !< @public double precision integer kind
+    integer     , parameter :: SPC = kind((1._SPR,1._SPR))                              !< @public single-precision complex kind
+    integer     , parameter :: DPC = kind((1._DPR,1._DPR))                              !< @public double-precision complex kind
+    integer     , parameter :: CK = kind((1._RK,1._RK))                                 !< @public complex kind
+    integer     , parameter :: RKP = precision(1._RK)                                   !< @public real kind precision
+    integer(IK) , parameter :: MAX_REC_LEN = 9999                                       !< @public maximum string record length
 
     ! Mathematical constants
 
-    real(RK)    , parameter :: PI = 3.141592653589793238462643383279502884197_DPR       ! = acos(-1._RK) : The irrational number Pi.
-    real(RK)    , PARAMETER :: TWOPI = 6.283185307179586476925286766559005768394_DPR    ! 2*PI
-    real(RK)    , parameter :: LN2 = log(2._RK)                                         ! Natural Log of 2 (= 0.693147180559945_RK).
-    real(RK)    , parameter :: INVLN2 = 1._RK / LN2                                     ! Inverse of the natural Log of 2 (= 0.693147180559945_RK).
-    real(RK)    , parameter :: LN10 = log(1.e1_RK)                                      ! Natural Log of 10 (= 2.302585092994046_RK).
-    real(RK)    , parameter :: LN2PI = log(2._RK*PI)                                    ! ln(2pi) (= 1.837877066409345_RK)
-    real(RK)    , parameter :: SQRT2 = sqrt(2._RK)                                      ! Square root of 2.
-    real(RK)    , parameter :: NAPIER = exp(1._RK)                                      ! Napier number e.
-    real(RK)    , parameter :: SQRTPI = sqrt(PI)                                        ! Square root of Pi.
-    real(RK)    , parameter :: SQRT2PI = sqrt(2._RK*acos(-1._RK))                       ! Square root of 2Pi.
-    real(RK)    , parameter :: HALFLN2PI = 0.5_RK*LN2PI                                 ! ln(sqrt(2pi))
-    real(RK)    , parameter :: INVSQRT2PI = 1._RK / SQRT2PI                             ! 1/sqrt(2*Pi) (= 0.398942280401432_RK)
-    real(RK)    , parameter :: LOGINVSQRT2PI = log(INVSQRT2PI)                          ! Log(1/sqrt(2Pi)), used in Gaussian distribution.
-    real(RK)    , parameter :: SQRT_HALF_PI = sqrt(0.5_RK*PI)                           ! Square root of PI/2 (= 1.2533141373155_RK)
-    real(RK)    , parameter :: LOG10NAPIER = log10(NAPIER)                              ! Log10 of Napier constant (= 0.434294481903259_RK).
-    real(RK)    , parameter :: EPS_RK = epsilon(1._RK)                                  ! the smallest representable real increment (highest precision) by the machine
-    real(RK)    , parameter :: HUGE_IK = huge(1_IK)                                     ! largest number of kind RK
-    real(RK)    , parameter :: HUGE_RK = huge(1._RK)                                    ! largest number of kind RK
-    real(RK)    , parameter :: TINY_RK = tiny(1._RK)                                    ! tiniest number of kind RK
-    real(RK)    , parameter :: LOGHUGE_RK = log(HUGE_RK)                                ! log of the largest number of kind RK
-    real(RK)    , parameter :: LOGTINY_RK = log(TINY_RK)                                ! log of the smallest number of kind RK
-    real(RK)    , parameter :: POSINF_RK =  HUGE_RK / 1.e1_RK                           ! the division is done to avoid overflow in output
-    real(RK)    , parameter :: POSINF_IK =  HUGE_IK / 2_IK                              ! the division is done to avoid overflow in output
+    real(RK)    , parameter :: PI = 3.141592653589793238462643383279502884197_DPR       !< @public = acos(-1._RK) : The irrational number Pi.
+    real(RK)    , PARAMETER :: TWOPI = 6.283185307179586476925286766559005768394_DPR    !< @public 2*PI
+    real(RK)    , parameter :: LN2 = log(2._RK)                                         !< @public Natural Log of 2 (= 0.693147180559945_RK).
+    real(RK)    , parameter :: INVLN2 = 1._RK / LN2                                     !< @public Inverse of the natural Log of 2 (= 0.693147180559945_RK).
+    real(RK)    , parameter :: LN10 = log(1.e1_RK)                                      !< @public Natural Log of 10 (= 2.302585092994046_RK).
+    real(RK)    , parameter :: LN2PI = log(2._RK*PI)                                    !< @public ln(2pi) (= 1.837877066409345_RK)
+    real(RK)    , parameter :: SQRT2 = sqrt(2._RK)                                      !< @public Square root of 2.
+    real(RK)    , parameter :: NAPIER = exp(1._RK)                                      !< @public Napier number e.
+    real(RK)    , parameter :: SQRTPI = sqrt(PI)                                        !< @public Square root of Pi.
+    real(RK)    , parameter :: SQRT2PI = sqrt(2._RK*acos(-1._RK))                       !< @public Square root of 2Pi.
+    real(RK)    , parameter :: HALFLN2PI = 0.5_RK*LN2PI                                 !< @public ln(sqrt(2pi))
+    real(RK)    , parameter :: INVSQRT2PI = 1._RK / SQRT2PI                             !< @public 1/sqrt(2*Pi) (= 0.398942280401432_RK)
+    real(RK)    , parameter :: LOGINVSQRT2PI = log(INVSQRT2PI)                          !< @public Log(1/sqrt(2Pi)), used in Gaussian distribution.
+    real(RK)    , parameter :: SQRT_HALF_PI = sqrt(0.5_RK*PI)                           !< @public Square root of PI/2 (= 1.2533141373155_RK)
+    real(RK)    , parameter :: LOG10NAPIER = log10(NAPIER)                              !< @public Log10 of Napier constant (= 0.434294481903259_RK).
+    real(RK)    , parameter :: EPS_RK = epsilon(1._RK)                                  !< @public the smallest representable real increment (highest precision) by the machine
+    real(RK)    , parameter :: HUGE_IK = huge(1_IK)                                     !< @public largest number of kind RK
+    real(RK)    , parameter :: HUGE_RK = huge(1._RK)                                    !< @public largest number of kind RK
+    real(RK)    , parameter :: TINY_RK = tiny(1._RK)                                    !< @public tiniest number of kind RK
+    real(RK)    , parameter :: LOGHUGE_RK = log(HUGE_RK)                                !< @public log of the largest number of kind RK
+    real(RK)    , parameter :: LOGTINY_RK = log(TINY_RK)                                !< @public log of the smallest number of kind RK
+    real(RK)    , parameter :: POSINF_RK =  HUGE_RK / 1.e1_RK                           !< @public the division is done to avoid overflow in output
+    real(RK)    , parameter :: POSINF_IK =  HUGE_IK / 2_IK                              !< @public the division is done to avoid overflow in output
     real(RK)    , parameter :: LOGINF_RK =  log(POSINF_RK)
     real(RK)    , parameter :: NEGLOGINF_RK = -LOGINF_RK
     real(RK)    , parameter :: LOGINF_IK =  log(POSINF_IK)
@@ -113,10 +116,10 @@ module Constants_mod
 
     ! Physical constants
 
-    real(RK), parameter :: ERG2KEV = 6.241509125883258e8_RK                     ! 1 (erg) = ERG2KEV (keV)
-    real(RK), parameter :: KEV2ERG = 1.60217662080000e-9_RK                     ! 1 (keV) = KEV2ERG (erg)
-    real(RK), parameter :: LOG_ERG2KEV = log(ERG2KEV)                           ! 1 (erg) = ERG2KEV (keV)
-    real(RK), parameter :: LOG_KEV2ERG = log(KEV2ERG)                           ! 1 (keV) = KEV2ERG (erg)
+    real(RK), parameter :: ERG2KEV = 6.241509125883258e8_RK                      !< @public 1 (erg) = ERG2KEV (keV)
+    real(RK), parameter :: KEV2ERG = 1.60217662080000e-9_RK                      !< @public 1 (keV) = KEV2ERG (erg)
+    real(RK), parameter :: LOG_ERG2KEV = log(ERG2KEV)
+    real(RK), parameter :: LOG_KEV2ERG = log(KEV2ERG)
 
     ! Cosmological constants
 
@@ -186,6 +189,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getPosInf_RK() result(posInf)
+        !> \brief Return IEEE positive infinity.
+        !> @param[out] posInf The positive infinity.
         use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_positive_inf
         implicit none
         real(RK) :: posInf
@@ -195,6 +200,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getNegInf_RK() result(negInf)
+        !> \brief Return IEEE negative infinity.
+        !> @param[out] posInf The negative infinity.
         use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_negative_inf
         implicit none
         real(RK) :: negInf

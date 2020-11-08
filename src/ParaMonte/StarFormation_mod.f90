@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! \brief This module contains procedures for computing the Cosmic Star Formation Rate in the Universe.
+! @author Amir Shahmoradi
 
 module StarFormation_mod
 
@@ -81,7 +84,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! GRBFR based on Petrosian et al (2015)
+    !> \brief
+    !> Return GRBFR density based on the formation rate estimates of Petrosian et al (2015).
     pure function getLogRateDensityP15(logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityP15
@@ -104,6 +108,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return GRBFR density based on the formation rate estimates of Hopkins and Beacom (2007).
     pure function getLogRateDensityH06(logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06
@@ -132,6 +138,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return GRBFR density based on the formation rate estimates of Li (2008).
     pure function getLogRateDensityL08(logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08
@@ -160,7 +168,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Metalicity corrected SFR of Butler, Bloom et al 2010
+    !> \brief
+    !> Return GRBFR density based on the formation rate estimates of Butler et al. (2010).
+    !>
+    !> \remark
+    !> The formation estimate of B10 takes into acount the metalicity-correction to the SFR.
     pure function getLogRateDensityB10(logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityB10
@@ -189,8 +201,9 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the Comoving Star Formation Rate Density according to Eqn 15 of Madau 2014: Cosmic Star-Formation History
-    ! densitySFR(z) = 0.015 * (1+z)^2.7 / ( 1 + [(1+z)/2.9]^5.6 )
+    !> \brief
+    !> Return the Comoving Star Formation Rate Density according to Eqn 15 of Madau 2014: Cosmic Star-Formation History.\n
+    !> `densitySFR(z) = 0.015 * (1+z)^2.7 / ( 1 + [(1+z)/2.9]^5.6 )`
     pure function getLogRateDensityM14(zplus1,logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14
@@ -209,8 +222,9 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the Comoving Star Formation Rate Density according to Eqn 1 of Madau 2017: Cosmic Star-Formation History
-    ! densitySFR(z) = 0.01 * (1+z)^2.6 / ( 1 + [(1+z)/3.2]^6.2 )
+    !> \brief
+    !> Return the Comoving Star Formation Rate Density according to Eqn 1 of Madau 2017: Cosmic Star-Formation History
+    !> `densitySFR(z) = 0.01 * (1+z)^2.6 / ( 1 + [(1+z)/3.2]^6.2 )`
     pure function getLogRateDensityM17(zplus1,logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17
@@ -229,8 +243,9 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Mordau Comoving Star Formation Rate Density with updated parameters from Fermi 2018
-    ! densitySFR(z) = 0.013 * (1+z)^2.99 / ( 1 + [(1+z)/2.63]^6.19 )
+    !> \brief
+    !> Return the Mordau Comoving Star Formation Rate Density with updated parameters from Fermi 2018.\n
+    ! `densitySFR(z) = 0.013 * (1+z)^2.99 / ( 1 + [(1+z)/2.63]^6.19 )`
     pure function getLogRateDensityF18(zplus1,logzplus1) result(logDensitySFR)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18
@@ -249,6 +264,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the cosmic formation rate according to the work of Petrosian et al. (2015).
     pure function getLogRateP15(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateP15
@@ -265,6 +282,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the cosmic star formation rate according to the work of Hopkins and Beacom (2007).
     pure function getLogRateH06(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateH06
@@ -281,6 +300,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the cosmic star formation rate according to the work of Li (2008).
     pure function getLogRateL08(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateL08
@@ -297,6 +318,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the cosmic GRB formation rate according to the work of Butler et al. (2010).
     pure function getLogRateB10(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateB10
@@ -313,6 +336,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the cosmic star formation rate according to the work of Madau et al. (2014).
     pure function getLogRateM14(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateM14
@@ -329,6 +354,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the cosmic star formation rate according to the work of Madau et al. (2017).
     pure function getLogRateM17(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateM17
@@ -345,6 +372,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the cosmic star formation rate according to the work of the Fermi collaboration (2018).
     pure function getLogRateF18(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateF18
@@ -461,8 +490,8 @@ contains
             mergerDelayTime = getLookBackTime   ( zplus1 = zplus1 &
                                                 , maxRelativeError = maxRelativeErrorDefault &
                                                 , nRefinement = nRefinementDefault &
-                                                ) 
-            mergerDelayTime = mergerDelayTime - lookBackTimeRef    
+                                                )
+            mergerDelayTime = mergerDelayTime - lookBackTimeRef
             if (mergerDelayTime<=0._RK) then
                 write(output_unit,"(A)") "The mergerDelayTime is non-positive in getBinaryMergerRateDensityIntegrand(): (zplus1, mergerDelayTime) = ", zplus1, mergerDelayTime
                 error stop
@@ -543,7 +572,7 @@ contains
         real(RK)    , intent(in)    :: logzplus1
         real(RK)                    :: logBinaryMergerRate
         if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.20701416938432557_RK) then
-            logBinaryMergerRate = & 
+            logBinaryMergerRate = &
                                 - 15.27802857671202000_RK &
                                 + 94.54179164991284000_RK * logzplus1 &
                                 - 687.3676159275769000_RK * logzplus1**2 &
@@ -552,30 +581,30 @@ contains
         elseif (logzplus1>0.20701416938432557_RK .and. logzplus1<=0.8241754429663476_RK) then
             logBinaryMergerRate = &
                                 - 13.5066182170954650_RK &
-                                + 40.1985219822299200_RK * logzplus1 & 
-                                - 121.506350703598660_RK * logzplus1**2 & 
+                                + 40.1985219822299200_RK * logzplus1 &
+                                - 121.506350703598660_RK * logzplus1**2 &
                                 + 224.621285123736100_RK * logzplus1**3 &
                                 - 210.878836655472500_RK * logzplus1**4 &
                                 + 76.3335749498628400_RK * logzplus1**5
         elseif (logzplus1>0.8241754429663476_RK .and. logzplus1<=1.4243124283074096_RK) then
             logBinaryMergerRate = &
                                 - 10.0515447816113700_RK &
-                                + 12.6659826494097970_RK * logzplus1 & 
-                                - 13.2268991886238200_RK * logzplus1**2 & 
+                                + 12.6659826494097970_RK * logzplus1 &
+                                - 13.2268991886238200_RK * logzplus1**2 &
                                 + 6.84523627043807100_RK * logzplus1**3 &
                                 - 1.44645280124922220_RK * logzplus1**4
         elseif (logzplus1>1.4243124283074096_RK .and. logzplus1<=1.6104374127671848_RK) then
             logBinaryMergerRate = &
                                 - 1187.90539057029950_RK &
-                                + 3240.19327021926350_RK * logzplus1 & 
-                                - 3330.70645904271000_RK * logzplus1**2 & 
+                                + 3240.19327021926350_RK * logzplus1 &
+                                - 3330.70645904271000_RK * logzplus1**2 &
                                 + 1522.87499612399850_RK * logzplus1**3 &
                                 - 261.341408956542300_RK * logzplus1**4
         elseif (logzplus1>1.6104374127671848_RK .and. logzplus1<=3.0411835364579027_RK) then
             logBinaryMergerRate = &
                                 - 1.43934839576471260_RK &
-                                + 1.72951867017028120_RK * logzplus1 & 
-                                - 4.06729555225025000_RK * logzplus1**2 & 
+                                + 1.72951867017028120_RK * logzplus1 &
+                                - 4.06729555225025000_RK * logzplus1**2 &
                                 + 1.18253386764330200_RK * logzplus1**3 &
                                 - 0.15201156018584210_RK * logzplus1**4
         elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
@@ -599,37 +628,37 @@ contains
         real(RK)    , intent(in)    :: logzplus1
         real(RK)                    :: logBinaryMergerRate
         if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.16551443847757297_RK) then
-            logBinaryMergerRate = & 
+            logBinaryMergerRate = &
                                 - 13.80128475140318000_RK &
                                 + 79.17963739241087000_RK * logzplus1 &
                                 - 420.9808813943490700_RK * logzplus1**2 &
-                                + 902.4149755380632000_RK * logzplus1**3 
+                                + 902.4149755380632000_RK * logzplus1**3
         elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
             logBinaryMergerRate = &
                                 - 10.89131941401880800_RK &
-                                + 21.59483273763076400_RK * logzplus1 & 
-                                - 33.07662054750123000_RK * logzplus1**2 & 
+                                + 21.59483273763076400_RK * logzplus1 &
+                                - 33.07662054750123000_RK * logzplus1**2 &
                                 + 29.23608723915102600_RK * logzplus1**3 &
-                                - 11.33984422193848700_RK * logzplus1**4 
+                                - 11.33984422193848700_RK * logzplus1**4
         elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
             logBinaryMergerRate = &
                                 - 14.02518830695731000_RK &
-                                + 24.92009885816913300_RK * logzplus1 & 
-                                - 20.04762612951797000_RK * logzplus1**2 & 
+                                + 24.92009885816913300_RK * logzplus1 &
+                                - 20.04762612951797000_RK * logzplus1**2 &
                                 + 4.885281389900379500_RK * logzplus1**3 &
                                 - 0.168402813838908260_RK * logzplus1**4
         elseif (logzplus1>1.3937663759585892_RK .and. logzplus1<=3.0411835364579027_RK) then
             logBinaryMergerRate = &
                                 - 4.348081430972656000_RK &
-                                + 4.815143234949144000_RK * logzplus1 & 
-                                - 6.143880845780776000_RK * logzplus1**2 & 
+                                + 4.815143234949144000_RK * logzplus1 &
+                                - 6.143880845780776000_RK * logzplus1**2 &
                                 + 1.738835623950871300_RK * logzplus1**3 &
                                 - 0.206972882929076480_RK * logzplus1**4
         elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
             logBinaryMergerRate = 0._RK
         end if
     end function getLogBinaryMergerRateLognormF18
-    
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! computes the natural log of the binary merger rate as a function of logzplus1.
@@ -646,37 +675,37 @@ contains
         real(RK)    , intent(in)    :: logzplus1
         real(RK)                    :: logBinaryMergerRate
         if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.1441003439737565_RK) then
-            logBinaryMergerRate = & 
+            logBinaryMergerRate = &
                                 - 14.26464149493092000_RK &
                                 + 84.73477757043948000_RK * logzplus1 &
                                 - 488.5893985602366500_RK * logzplus1**2 &
-                                + 1154.414655194473900_RK * logzplus1**3 
+                                + 1154.414655194473900_RK * logzplus1**3
         elseif (logzplus1>0.1441003439737565_RK .and. logzplus1<=0.6575200029167926_RK) then
             logBinaryMergerRate = &
                                 - 11.19700066921606300_RK &
-                                + 20.46712963401572300_RK * logzplus1 & 
-                                - 24.31794334813894300_RK * logzplus1**2 & 
-                                + 12.21213317590724400_RK * logzplus1**3 
+                                + 20.46712963401572300_RK * logzplus1 &
+                                - 24.31794334813894300_RK * logzplus1**2 &
+                                + 12.21213317590724400_RK * logzplus1**3
         elseif (logzplus1>0.6575200029167926_RK .and. logzplus1<=1.5591966959973538_RK) then
             logBinaryMergerRate = &
                                 - 9.094912666461765000_RK &
-                                + 15.23119806754538900_RK * logzplus1 & 
-                                - 18.77526325204311800_RK * logzplus1**2 & 
+                                + 15.23119806754538900_RK * logzplus1 &
+                                - 18.77526325204311800_RK * logzplus1**2 &
                                 + 9.941360355936961000_RK * logzplus1**3 &
                                 - 2.077370913197473000_RK * logzplus1**4
         elseif (logzplus1>1.5591966959973538_RK .and. logzplus1<=1.7056567701746455_RK) then
             logBinaryMergerRate = &
                                 - 2392.907733171019000_RK &
-                                + 6210.872744126407000_RK * logzplus1 & 
-                                - 6054.866136454215000_RK * logzplus1**2 & 
+                                + 6210.872744126407000_RK * logzplus1 &
+                                - 6054.866136454215000_RK * logzplus1**2 &
                                 + 2622.628785434413700_RK * logzplus1**3 &
                                 - 426.0273477222719000_RK * logzplus1**4
         elseif (logzplus1>1.7056567701746455_RK .and. logzplus1<=3.0411835364579027_RK) then
             logBinaryMergerRate = &
                                 + 9.538876239886940000_RK &
-                                - 8.753418172517534000_RK * logzplus1 & 
-                                - 0.159980818030374640_RK * logzplus1**2 & 
-                                - 0.088551503657680930_RK * logzplus1**3 
+                                - 8.753418172517534000_RK * logzplus1 &
+                                - 0.159980818030374640_RK * logzplus1**2 &
+                                - 0.088551503657680930_RK * logzplus1**3
         elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
             logBinaryMergerRate = 0._RK
         end if
@@ -698,7 +727,7 @@ contains
         real(RK)    , intent(in)    :: logzplus1
         real(RK)                    :: logBinaryMergerRate
         if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.20701416938432557_RK) then
-            logBinaryMergerRate = & 
+            logBinaryMergerRate = &
                                 - 14.53696144309043900_RK &
                                 + 94.70274747509626000_RK * logzplus1 &
                                 - 687.3663996060040000_RK * logzplus1**2 &
@@ -707,37 +736,37 @@ contains
         elseif (logzplus1>0.20701416938432557_RK .and. logzplus1<=0.8241754429663476_RK) then
             logBinaryMergerRate = &
                                 - 13.5104005566057670_RK &
-                                + 49.6443928683743600_RK * logzplus1 & 
-                                - 164.286063097338630_RK * logzplus1**2 & 
+                                + 49.6443928683743600_RK * logzplus1 &
+                                - 164.286063097338630_RK * logzplus1**2 &
                                 + 315.721394966368100_RK * logzplus1**3 &
                                 - 300.345052726248640_RK * logzplus1**4 &
                                 + 108.470535327547080_RK * logzplus1**5
         elseif (logzplus1>0.8241754429663476_RK .and. logzplus1<=1.4243124283074096_RK) then
             logBinaryMergerRate = &
                                 - 8.77634469738400500_RK &
-                                + 13.1999684738558810_RK * logzplus1 & 
-                                - 15.8698236818922140_RK * logzplus1**2 & 
+                                + 13.1999684738558810_RK * logzplus1 &
+                                - 15.8698236818922140_RK * logzplus1**2 &
                                 + 8.48676936452957000_RK * logzplus1**3 &
                                 - 1.83190451512279620_RK * logzplus1**4
         elseif (logzplus1>1.4243124283074096_RK .and. logzplus1<=1.6154199841116488_RK) then
             logBinaryMergerRate = &
                                 + 4158.29353781047900_RK &
-                                - 10954.1105856433040_RK * logzplus1 & 
-                                + 10789.3451136201870_RK * logzplus1**2 & 
+                                - 10954.1105856433040_RK * logzplus1 &
+                                + 10789.3451136201870_RK * logzplus1**2 &
                                 - 4713.80244702217800_RK * logzplus1**3 &
                                 + 770.488645040204600_RK * logzplus1**4
         elseif (logzplus1>1.6154199841116488_RK .and. logzplus1<=3.0411835364579027_RK) then
             logBinaryMergerRate = &
                                 + 0.37742655174185624_RK &
-                                + 0.30883738015163340_RK * logzplus1 & 
-                                - 4.04937550957291800_RK * logzplus1**2 & 
+                                + 0.30883738015163340_RK * logzplus1 &
+                                - 4.04937550957291800_RK * logzplus1**2 &
                                 + 1.11680537027038170_RK * logzplus1**3 &
                                 - 0.13770838345089523_RK * logzplus1**4
         elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
             logBinaryMergerRate = 0._RK
         end if
     end function getLogBinaryMergerRateLognormL08
-    
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! computes the natural log of the binary merger rate as a function of logzplus1.
@@ -754,30 +783,30 @@ contains
         real(RK)    , intent(in)    :: logzplus1
         real(RK)                    :: logBinaryMergerRate
         if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.16551443847757297_RK) then
-            logBinaryMergerRate = & 
+            logBinaryMergerRate = &
                                 - 13.91129314580349600_RK &
                                 + 78.88963489621422000_RK * logzplus1 &
                                 - 420.9801740859396700_RK * logzplus1**2 &
-                                + 902.4783078800951000_RK * logzplus1**3 
+                                + 902.4783078800951000_RK * logzplus1**3
         elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
             logBinaryMergerRate = &
                                 - 11.00951046136480500_RK &
-                                + 21.38817515748999000_RK * logzplus1 & 
-                                - 33.29451048508970000_RK * logzplus1**2 & 
+                                + 21.38817515748999000_RK * logzplus1 &
+                                - 33.29451048508970000_RK * logzplus1**2 &
                                 + 29.32158835244860400_RK * logzplus1**3 &
-                                - 10.97377449040440000_RK * logzplus1**4 
+                                - 10.97377449040440000_RK * logzplus1**4
         elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
             logBinaryMergerRate = &
                                 - 8.254476015464371000_RK &
-                                + 3.620963332444886000_RK * logzplus1 & 
-                                + 6.734585433384001000_RK * logzplus1**2 & 
+                                + 3.620963332444886000_RK * logzplus1 &
+                                + 6.734585433384001000_RK * logzplus1**2 &
                                 - 9.151412394211048000_RK * logzplus1**3 &
                                 + 2.516171777428496000_RK * logzplus1**4
         elseif (logzplus1>1.3937663759585892_RK .and. logzplus1<=3.0411835364579027_RK) then
             logBinaryMergerRate = &
                                 - 6.539697727782377000_RK &
-                                + 8.522331572601950000_RK * logzplus1 & 
-                                - 8.242990979412244000_RK * logzplus1**2 & 
+                                + 8.522331572601950000_RK * logzplus1 &
+                                - 8.242990979412244000_RK * logzplus1**2 &
                                 + 2.316632169715435300_RK * logzplus1**3 &
                                 - 0.266462340853027450_RK * logzplus1**4
         elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
@@ -801,30 +830,30 @@ contains
         real(RK)    , intent(in)    :: logzplus1
         real(RK)                    :: logBinaryMergerRate
         if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.16551443847757297_RK) then
-            logBinaryMergerRate = & 
+            logBinaryMergerRate = &
                                 - 14.01939141013502300_RK &
                                 + 78.80010843737509000_RK * logzplus1 &
                                 - 420.9593253775164000_RK * logzplus1**2 &
-                                + 902.5668042795056000_RK * logzplus1**3 
+                                + 902.5668042795056000_RK * logzplus1**3
         elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
             logBinaryMergerRate = &
                                 - 11.12915953695671500_RK &
-                                + 21.43217730985805500_RK * logzplus1 & 
-                                - 33.75904206577289000_RK * logzplus1**2 & 
+                                + 21.43217730985805500_RK * logzplus1 &
+                                - 33.75904206577289000_RK * logzplus1**2 &
                                 + 30.03916282499634200_RK * logzplus1**3 &
-                                - 11.12086545981264500_RK * logzplus1**4 
+                                - 11.12086545981264500_RK * logzplus1**4
         elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
             logBinaryMergerRate = &
                                 - 1.802362223155230800_RK &
-                                - 20.58526172567768200_RK * logzplus1 & 
-                                + 38.93828966743146000_RK * logzplus1**2 & 
+                                - 20.58526172567768200_RK * logzplus1 &
+                                + 38.93828966743146000_RK * logzplus1**2 &
                                 - 27.19863916580484500_RK * logzplus1**3 &
                                 + 6.138928143113263000_RK * logzplus1**4
         elseif (logzplus1>1.3937663759585892_RK .and. logzplus1<=3.0411835364579027_RK) then
             logBinaryMergerRate = &
                                 - 7.711815956299844000_RK &
-                                + 11.68891993486079700_RK * logzplus1 & 
-                                - 10.62908897824095300_RK * logzplus1**2 & 
+                                + 11.68891993486079700_RK * logzplus1 &
+                                - 10.62908897824095300_RK * logzplus1**2 &
                                 + 2.945685425778300700_RK * logzplus1**3 &
                                 - 0.327069839977957850_RK * logzplus1**4
         elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then

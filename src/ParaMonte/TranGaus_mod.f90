@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains procedures for computing random numbers from a truncated Gaussian distribution.
+!>  @author Amir Shahmoradi
 
 module TranGaus_mod
 
@@ -2533,33 +2536,46 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getTranGaus(lowerLim,upperLim,mu,sigma) result(tranGaus)
+    !> \brief
+    !> Return a pseudorandom number from a truncated (normalized) Gaussian distribution. Example:
+    !> ```
+    !> tranGaus = getTranGaus(lowerLim, upperLim, 0._RK, 1._RK)
+    !> ```
+    !>
+    !> \param[in]   lowerLim    :   The lower limit of the random number (the lower truncation on the Gaussian distribution).
+    !> \param[in]   upperLim    :   The upper limit of the random number (the lower truncation on the Gaussian distribution).
+    !> \param[in]   avg         :   The mean of the (non-truncated) Gaussian distribution (optional, default = 0).
+    !> \param[in]   std         :   The standard deviation of the (non-truncated) Gaussian distribution (optional, default = 1).
+    !>
+    !> \return
+    !> `tranGaus`   :   The output truncated random Gaussian number.
+    function getTranGaus(lowerLim,upperLim,avg,std) result(tranGaus)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getTranGaus
 #endif
     ! getTranGaus    Pseudorandom numbers from a truncated Gaussian distribution.
-    ! 
+    !
     !   X = getTranGaus(lowerLim,B) returns a pseudorandom variable generated from a normal
     !   distribution with mean zero and standard deviation one (i.e. standard
     !   normal distribution) truncated to the interval [lowerLim,B].
-    ! 
-    !   X = getTranGaus(lowerLim,B,MU,SIGMA) returns a pseudorandom variable generated from
-    !   a normal distribution with mean MU and standard deviation SIGMA
+    !
+    !   X = getTranGaus(lowerLim,B,avg,std) returns a pseudorandom variable generated from
+    !   a normal distribution with mean avg and standard deviation std
     !   truncated to the interval [lowerLim,B].
-    ! 
+    !
     !   [X,P] = getTranGaus(...) also returns the vector of probabilities of X.
-    ! 
+    !
     !   This implements an extension of the algorithm of Chopin detailed in
     !   N. Chopin, "Fast simulation of truncated Gaussian distributions", Stat
     !   Comput (2011) 21:275-288
-    ! 
+    !
     ! Copyright (C) 2014 Vincent Mazet (ICube, CNRS/Université de Strasbourg),
     ! Version 2014-09-09, vincent.mazet@unistra.fr
     ! 18/06/2012:
     !   - first launch of getTranGaus.m
     ! 05/07/2012:
-    !   - fix bug concerning the computing of the pdf when (mu,sigma) is
-    !     different from (0,1). 
+    !   - fix bug concerning the computing of the pdf when (avg,std) is
+    !     different from (0,1).
     !   - fix bug about some indexes out of bounds when computing yl for some
     !     values of the input arguments.
     ! 04/09/2012:
@@ -2567,7 +2583,7 @@ contains
     ! 09/09/2014:
     !   - replace "variance" by "standard deviation" in the comments (thanks
     !   Umberto).
-    ! 
+    !
     ! Licence: GNU Lesser General Public License Version 2
     ! This program is free software; you can redistribute it and/or modify it
     ! under the terms of the GNU Lesser General Public License as published by the
@@ -2579,42 +2595,52 @@ contains
     ! copy of the GNU Lesser General Public License along with this program; if not,
     ! see http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
 
-        use Constants_mod, only: IK, RK
-        implicit none
-        real(RK), intent(in)            :: lowerLim,upperLim
-        real(RK), intent(in), optional  :: mu,sigma
-        real(RK)                        :: tranGaus !,p
-        real(RK)                        :: lowerLimStd,upperLimStd, avg, std
+    use Constants_mod, only: IK, RK
+    implicit none
+    real(RK), intent(in)            :: lowerLim,upperLim
+    real(RK), intent(in), optional  :: avg, std
+    real(RK)                        :: tranGaus !,p
+    real(RK)                        :: lowerLimStd,upperLimStd, mean, stdev
 
-        avg = 0._RK
-        std = 1._RK
-        if (present(mu))    avg = mu
-        if (present(sigma)) std = sigma
+    mean = 0._RK
+    stdev = 1._RK
+    if (present(avg))    mean = avg
+    if (present(std)) stdev = std
 
-        ! Scaling
-        lowerLimStd = (lowerLim-avg)/std
-        upperLimStd = (upperLim-avg)/std
-        tranGaus = getStdTranGaus(lowerLimStd,upperLimStd)    ! Generate the random variables
+    ! Scaling
+    lowerLimStd = (lowerLim-avg)/stdev
+    upperLimStd = (upperLim-avg)/stdev
+    tranGaus = getStdTranGaus(lowerLimStd,upperLimStd)    ! Generate the random variables
 
-        ! Scaling
-        tranGaus = tranGaus * std + avg
+    ! Scaling
+    tranGaus = tranGaus * stdev + avg
 
-        !! Compute the probabilities
-        !if (present(p)) then
-        !    Z = sqrt(pi/2)*sigma * (erf(upperLim/sqrt(2))-erf(lowerLim/sqrt(2)))
-        !    Z = max(Z,1e-15)      ! Avoid NaN
-        !    p = exp(-(tranGaus-mu).^2/2/sigma**2) / Z
-        !end if
+    !! Compute the probabilities
+    !if (present(p)) then
+    !    Z = sqrt(pi/2)*std * (erf(upperLim/sqrt(2))-erf(lowerLim/sqrt(2)))
+    !    Z = max(Z,1e-15)      ! Avoid NaN
+    !    p = exp(-(tranGaus-mu).^2/2/std**2) / Z
+    !end if
 
     end function getTranGaus
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return a pseudorandom number from a truncated Standard Gaussian distribution. Example:
+    !> ```
+    !> tranGaus = getTranGaus(lowerLim, upperLim)
+    !> ```
+    !>
+    !> \param[in]   lowerLim    :   The lower limit of the random number (the lower truncation on the Gaussian distribution).
+    !> \param[in]   upperLim    :   The upper limit of the random number (the lower truncation on the Gaussian distribution).
+    !>
+    !> \return
+    !> `tranGaus`   :   The output truncated random Standard Gaussian number.
     recursive function getStdTranGaus(lowerLim,upperLim) result(stdTranGaus)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getStdTranGaus
 #endif
-    ! getTranGaus    Pseudorandom numbers from a truncated (normalized) Gaussian distribution (i.e. getTranGaus(lowerLim,upperLim,0,1)).
 
         use Constants_mod, only: IK, RK
         use Statistics_mod, only: getRandInt, getRandGaus
@@ -2705,7 +2731,7 @@ contains
 
                 ! Sample integer between ka and kb
                 k = getRandInt(ka,kb) + 1_IK;   ! +1 due to index offset in Fortran
-                
+
                 if (k == LEN_VEC_YU + 1_IK) then
 
                     ! Right tail
@@ -2733,7 +2759,7 @@ contains
                         ! Accept this proposition, otherwise reject
                         call random_number(unifrnd)
                         simy = VEC_YU(k)*unifrnd
-                        
+
                         ! Compute y_l from y_k
                         if (k == 1_IK) then
                            ylk = YL0
@@ -2744,7 +2770,7 @@ contains
                         else
                             ylk = VEC_YU(k+1_IK)
                         end if
-                        
+
                         if ( (simy<ylk) .or. (sim**2 + 2._RK*log(simy) + ALPHA < 0._RK) ) then
                             stdTranGaus = sim
                             return
@@ -2753,7 +2779,7 @@ contains
                     end if
 
                 else
-                    
+
                     ! All the other boxes
 
                     call random_number(unifrndFixed)
@@ -2771,7 +2797,7 @@ contains
                         ylk = VEC_YU(k+1_IK)
                     end if
 
-                    if (simy < ylk) then  ! That is what happens most of the time 
+                    if (simy < ylk) then  ! That is what happens most of the time
                         stdTranGaus = VEC_X(k) + unifrndFixed*d*VEC_YU(k) / ylk
                         return
                     end if
@@ -2786,7 +2812,7 @@ contains
                 end if
 
             end do
-        
+
         end if blockRange
 
     end function getStdTranGaus

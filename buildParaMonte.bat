@@ -417,6 +417,7 @@ if !COMPILER_SUITE!==intel (
 
     ::  /QxHost
     set FCL_FLAGS_DEFAULT=/nologo /standard-semantics /F0x1000000000
+    if !FAST_ENABLED!==true set FCL_FLAGS_DEFAULT=!FCL_FLAGS_DEFAULT! /fast
     
     if !BTYPE!==debug set FCL_BUILD_FLAGS=!INTEL_FORTRAN_DEBUG_FLAGS! /stand:f08
     
@@ -557,6 +558,13 @@ if !ERRORLEVEL!==1 (
     exit /B 1
 )
 cd %~dp0
+
+if !FPP_ONLY_ENABLED!==true (
+    echo. 
+    echo. -- !BUILD_SCRIPT_NAME! - The preprocessed source files are stored at: !ParaMonte_OBJ_DIR!
+    echo. 
+    goto LABEL_EOF
+)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: generate ParaMonte library TEST build directories and object files
@@ -821,6 +829,3 @@ cd !ParaMonte_BLD_ROOT_DIR!
 :: endlocal
 
 exit /B 0
-
-
-

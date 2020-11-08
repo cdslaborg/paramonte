@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains the classs and procedures for chain IO and manipulation.
+!>  @author Amir Shahmoradi
 
 module ParaMonteChainFileContents_mod
 
@@ -73,16 +76,16 @@ module ParaMonteChainFileContents_mod
         integer(IK)                         :: lenHeader = 0_IK
         integer(IK)                         :: numDefCol = NUM_DEF_COL
         type(Count_type)                    :: Count
-        integer(IK)         , allocatable   :: ProcessID(:)     ! the vector of the ID of the images whose function calls haven been accepted
-        integer(IK)         , allocatable   :: DelRejStage(:)   ! delayed rejection stages at which the proposed states were accepted
-        real(RK)            , allocatable   :: Adaptation(:)    ! the vector of the adaptation measures at the MCMC accepted states.
-        real(RK)            , allocatable   :: MeanAccRate(:)   ! the vector of the average acceptance rates at the given point in the chain
-        integer(IK)         , allocatable   :: BurninLoc(:)     ! the burnin locations at the given locations in the chains
-        integer(IK)         , allocatable   :: Weight(:)        ! the vector of the weights of the MCMC accepted states.
-        real(RK)            , allocatable   :: LogFunc(:)       ! the vector of LogFunc values corresponding to the MCMC states.
-        real(RK)            , allocatable   :: State(:,:)       ! the (nd,chainSize) MCMC chain of accepted proposed states
-        type(CharVec_type)  , allocatable   :: ColHeader(:)     ! column headers of the chain file
-        character(:)        , allocatable   :: delimiter        ! delimiter used to separate objects in the chain file
+        integer(IK)         , allocatable   :: ProcessID(:)     !< The vector of the ID of the images whose function calls haven been accepted.
+        integer(IK)         , allocatable   :: DelRejStage(:)   !< The delayed rejection stages at which the proposed states were accepted.
+        real(RK)            , allocatable   :: Adaptation(:)    !< The vector of the adaptation measures at the MCMC accepted states.
+        real(RK)            , allocatable   :: MeanAccRate(:)   !< The vector of the average acceptance rates at the given point in the chain.
+        integer(IK)         , allocatable   :: BurninLoc(:)     !< The burnin locations at the given locations in the chains.
+        integer(IK)         , allocatable   :: Weight(:)        !< The vector of the weights of the MCMC accepted states.
+        real(RK)            , allocatable   :: LogFunc(:)       !< The vector of LogFunc values corresponding to the MCMC states.
+        real(RK)            , allocatable   :: State(:,:)       !< The (nd,chainSize) MCMC chain of accepted proposed states.
+        type(CharVec_type)  , allocatable   :: ColHeader(:)     !< The column headers of the chain file.
+        character(:)        , allocatable   :: delimiter        !< The delimiter used to separate objects in the chain file.
         type(Err_type)                      :: Err
     contains
         procedure, pass :: nullify => nullifyChainFileContents
@@ -102,7 +105,24 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! if chainFilePath is given, the rest of the optional arguments must be also given
+    !> \brief
+    !> This is the constructor of the class [ChainFileContents_type](@ref chainfilecontents_type).\n
+    !> Return an object of class [ChainFileContents_type](@ref chainfilecontents_type) given the input specifications.
+    !>
+    !> @param[in]   ndim                : The number of dimensions of the domain of the objective function.
+    !> @param[in]   variableNameList    : The list of variable names corresponding to each axis of the domain of the objective function (optional).
+    !> @param[in]   chainFilePath       : The list of variable names corresponding to each axis of the domain of the objective function (optional).
+    !> @param[in]   chainSize           : The size of the chain in the chain file specified by the input `chainFilePath` (optional).
+    !> @param[in]   chainFileForm       : The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`) (optional).
+    !> @param[in]   lenHeader           : The full length of the first line in the input file (the header line) (optional).
+    !> @param[in]   delimiter           : The delimiter symbol used in the chain file (optional).
+    !> @param[in]   targetChainSize     : The final target size of the chain (in case the chain file is an interrupted simulation) (optional).
+    !>
+    !> \return
+    !> `CFC` : An object of class [ChainFileContents_type](@ref chainfilecontents_type) containing the chain.
+    !>
+    !> \warning
+    !> If `chainFilePath` is given, then the rest of the optional arguments *must be also given*.
     function constructChainFileContents(ndim,variableNameList,chainFilePath,chainSize,chainFileForm,lenHeader,delimiter,targetChainSize) result(CFC)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructChainFileContents
@@ -152,15 +172,31 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This is a method of the class [ChainFileContents_type](@ref chainfilecontents_type).\n
+    !> Return the contents of a ParaMonte simulation output chain file, always in `compact` format, regardless of the
+    !> value of `chainFileFormat` and store it in the object of class [ChainFileContents_type](@ref chainfilecontents_type).
+    !>
+    !> @param[inout]    CFC             : The object of class [ChainFileContents_type](@ref chainfilecontents_type).
+    !> @param[in]       chainFilePath   : The list of variable names corresponding to each axis of the domain of the objective function.
+    !> @param[in]       chainFileForm   : The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`).
+    !> @param[out]      Err             : An object of class [Err_type](@ref err_mod::err_type) containing information about whether an error has occurred.
+    !> @param[in]       chainSize       : The size of the chain in the chain file specified by the input `chainFilePath` (optional).
+    !> @param[in]       lenHeader       : The full length of the first line in the input file (the header line) (optional).
+    !> @param[in]       ndim            : The number of dimensions of the domain of the objective function (optional).
+    !> @param[in]       delimiter       : The delimiter symbol used in the chain file (optional).
+    !> @param[in]       targetChainSize : The final target size of the chain (in case the chain file is an interrupted simulation) (optional).
+    !>
+    !> \warning
+    !> `targetChainSize` must be `>= chainSize`, if provided. It is used for the allocation of the chain components.
+    !> 
+    !> \warning
+    !> `chainSize` must be `<= targetChainSize`. The first `chainSize` elements of the `CFC` components will contain
+    !> the chain information read from the chain file. The chain component elements beyond `chainSize` will be set to zero.
     subroutine getChainFileContents(CFC,chainFilePath,chainFileForm,Err,chainSize,lenHeader,ndim,delimiter,targetChainSize)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getChainFileContents
 #endif
-        ! returns the contents of a ParaMonte simulation output chain file, always in compact format, regardless of chainFileFormat.
-        ! targetChainSize: must be >= chainSize. Used for the allocation of the chain components
-        !       chainSize: must be <= targetChainSize. The first chainSize elements of the Chain components will contain the Chain 
-        !                  information read from the chain file. The Chain component elements beyond chainSize will be set to zero.
-
         use FileContents_mod, only: getNumRecordInFile
         use Constants_mod, only: IK, RK, NLC, NEGINF_IK, NEGINF_RK
         use String_mod, only: String_type, getLowerCase, num2str
@@ -528,10 +564,10 @@ contains
                         Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
                         if (Record%nPart<numColTot) then
                             call warnUserAboutCorruptChainFile(iState)
-                            !exit blockChainSizeDefault 
-                            ! intel 2018 to 2019.05 yields internal compiler error with the above exit. Intel 19.1 and gnu 9.1 are fine. 
+                            !exit blockChainSizeDefault
+                            ! intel 2018 to 2019.05 yields internal compiler error with the above exit. Intel 19.1 and gnu 9.1 are fine.
                             ! The following is a workaround for now.
-                            exit blockReadVerbose 
+                            exit blockReadVerbose
                         else
                             read(Record%Parts(1)%record,*) CFC%ProcessID(CFC%Count%compact)
                             read(Record%Parts(2)%record,*) CFC%DelRejStage(CFC%Count%compact)
@@ -678,6 +714,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This is a method of the class [ChainFileContents_type](@ref chainfilecontents_type).\n
+    !> Reset the components of the chain object to an unlikely value for the purpose of error catching and debugging.
+    !> Store the modified components as part of the input object of class [ChainFileContents_type](@ref chainfilecontents_type).
+    !>
+    !> @param[inout]    CFC             : The number of dimensions of the domain of the objective function.
+    !> @param[in]       startIndex      : The beginning index beyond which the component values will be reset.
+    !> @param[in]       endIndex        : The ending index below which the component values will be reset.
     subroutine nullifyChainFileContents(CFC,startIndex,endIndex)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyChainFileContents
@@ -697,6 +741,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This is a method of the class [ChainFileContents_type](@ref chainfilecontents_type).\n
+    !> Return the length of the header of the chain file.
+    !>
+    !> @param[inout]    CFC             :   The object of class [ChainFileContents_type](@ref chainfilecontents_type).
+    !> @param[in]       ndim            :   The number of dimensions of the domain of the objective function.
+    !> @param[in]       isBinary        :   The logical flag indicating whether the file is in `binary` format.
+    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
+    !>                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
     subroutine getLenHeader(CFC,ndim,isBinary,chainFileFormat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLenHeader
@@ -730,6 +783,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This is a method of the class [ChainFileContents_type](@ref chainfilecontents_type).\n
+    !> Write the requested header to the chain file.
+    !>
+    !> @param[inout]    CFC             :   The object of class [ChainFileContents_type](@ref chainfilecontents_type).
+    !> @param[in]       ndim            :   The number of dimensions of the domain of the objective function.
+    !> @param[in]       chainFileUnit   :   The unit ID of the chain file to which the header should be written.
+    !> @param[in]       isBinary        :   The logical flag indicating whether the file is in `binary` format.
+    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
+    !>                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
     subroutine writeHeader(CFC,ndim,chainFileUnit,isBinary,chainFileFormat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeHeader
@@ -763,6 +826,19 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This is a method of the class [ChainFileContents_type](@ref chainfilecontents_type).\n
+    !> Write the chain properties to the chain file.
+    !>
+    !> @param[inout]    CFC                     :   The object of class [ChainFileContents_type](@ref chainfilecontents_type).
+    !> @param[in]       ndim                    :   The number of dimensions of the domain of the objective function.
+    !> @param[in]       compactStartIndex       :   The beginning index of the compact chain beyond which the elements of the chain will be written to the output file.
+    !> @param[in]       compactEndIndex         :   The ending index of the compact chain below which the elements of the chain will be written to the output file.
+    !> @param[in]       chainFileUnit           :   The unit ID of the chain file to which the header should be written.
+    !> @param[in]       chainFileForm           :   The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`).
+    !> @param[in]       chainFileFormat         :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
+    !>                                              This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
+    !> @param[in]       adaptiveUpdatePeriod    :   The adaptive update period (optional). It must be provided if `chainFileForm = "verbose"`.
     subroutine writeChainFile(CFC,ndim,compactStartIndex,compactEndIndex,chainFileUnit,chainFileForm,chainFileFormat,adaptiveUpdatePeriod)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeChainFile

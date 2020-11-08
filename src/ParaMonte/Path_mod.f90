@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!> This module contains classes and procedures for manipulating system file/folder paths.
+!>  @author Amir Shahmoradi
 
 module Path_mod
 
@@ -50,37 +53,37 @@ module Path_mod
 
     integer(IK), parameter  :: MAX_FILE_PATH_LEN = 2047
 
-    ! Windows reserved characters (not allowed in filenames):
+    !> Windows reserved characters (not allowed in filenames):
     character(*), parameter :: WINDOWS_RESERVED_CHAR = "<>:" // '"' // "|?*" ! /\
 
 #if defined IFORT_ENABLED
 
     character(*), parameter :: SHELL_ESCAPE_CHAR =  &
-                                                    " " // & ! — space character
-                                                    "!" // & ! — history expansion.
-                                                    '"' // & ! — shell syntax.
-                                                    "#" // & ! — comment start when preceded by whitespace; zsh wildcards.
-                                                    "$" // & ! — shell syntax.
-                                                    "&" // & ! — shell syntax.
-                                                    "'" // & ! — shell syntax.
-                                                    "(" // & ! — even in the middle of a word: ksh extended globs (also available in bash and zsh); zsh wildcards.
-                                                    ")" // & ! - even in the middle of a word: ksh extended globs (also available in bash and zsh); zsh wildcards.
-                                                    "*" // & ! — sh wildcard.
-                                                    "," // & ! — only inside brace expansion.
-                                                    ";" // & ! — shell syntax.
-                                                    "<" // & ! — shell syntax.
-                                                    "=" // & ! — in zsh, when it is at the beginning of a file name (filename expansion with PATH lookup).
-                                                    ">" // & ! — shell syntax.
-                                                    "?" // & ! — sh wildcard.
-                                                    "[" // & ! — sh wildcard.
-                                                    "\" // & ! — shell syntax.
-                                                    "]" // & ! — you may get away with leaving it unquoted.
-                                                    "^" // & ! — history expansion; zsh wildcard.
-                                                    "`" // & ! — shell syntax.
-                                                    "{" // & ! — brace expansion.
-                                                    "|" // & ! — shell syntax.
-                                                    "}" // & ! — needs to be escaped in zsh, other shells are more lenient when there is no matching opening brace.
-                                                    "~"      ! — home directory expansion when at the beginning of a filename; zsh wildcard; safe when it is the last character.
+                                                    " " // & ! space character
+                                                    "!" // & ! history expansion.
+                                                    '"' // & ! shell syntax.
+                                                    "#" // & ! comment start when preceded by whitespace; zsh wildcards.
+                                                    "$" // & ! shell syntax.
+                                                    "&" // & ! shell syntax.
+                                                    "'" // & ! shell syntax.
+                                                    "(" // & ! even in the middle of a word: ksh extended globs (also available in bash and zsh); zsh wildcards.
+                                                    ")" // & ! even in the middle of a word: ksh extended globs (also available in bash and zsh); zsh wildcards.
+                                                    "*" // & ! sh wildcard.
+                                                    "," // & ! only inside brace expansion.
+                                                    ";" // & ! shell syntax.
+                                                    "<" // & ! shell syntax.
+                                                    "=" // & ! in zsh, when it is at the beginning of a file name (filename expansion with PATH lookup).
+                                                    ">" // & ! shell syntax.
+                                                    "?" // & ! sh wildcard.
+                                                    "[" // & ! sh wildcard.
+                                                    "\" // & ! shell syntax.
+                                                    "]" // & ! you may get away with leaving it unquoted.
+                                                    "^" // & ! history expansion; zsh wildcard.
+                                                    "`" // & ! shell syntax.
+                                                    "{" // & ! brace expansion.
+                                                    "|" // & ! shell syntax.
+                                                    "}" // & ! needs to be escaped in zsh, other shells are more lenient when there is no matching opening brace.
+                                                    "~"      ! home directory expansion when at the beginning of a filename; zsh wildcard; safe when it is the last character.
 
 #else
 
@@ -89,10 +92,16 @@ module Path_mod
 
 #endif
 
+    ! The `Path_type` class.
     type :: Path_type
-        character(:), allocatable       :: original, modified, dir, name, base, ext
-        character(1)                    :: slashOS    ! the type of slash with which the original path was "modified"
-        type(Err_type)                  :: Err
+        character(:), allocatable       :: original !< The original path.
+        character(:), allocatable       :: modified !< The modified path based on the OS/platform type.
+        character(:), allocatable       :: dir      !< The directory segment of the path.
+        character(:), allocatable       :: name     !< The name of the file, if any exists in the path.
+        character(:), allocatable       :: base     !< The base of the file name, if any exists in the path.
+        character(:), allocatable       :: ext      !< The file extension, if any exists in the path (including the dot separator).
+        character(1)                    :: slashOS  !< The type of the separator (forward/backward slash) with which the original path is *modified*.
+        type(Err_type)                  :: Err      !< An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
     contains
         procedure, pass                 :: query => queryPath
         procedure, nopass               :: modify => modifyPath, getSlashOS
@@ -111,6 +120,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This is the constructor of the class [Path_type](@ref path_type).\n
+    !> Return an object of class [Path_type](@ref path_type) given the input specifications.
+    !>
+    !> \param[in]   inputPath   :   The input path.
+    !> \param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) containing information about the operating system (optional).
+    !>
+    !> \return
+    !> `Path` : An object of class [Path_type](@ref path_type) containing the path properties and methods.
     function constructPath(inputPath,OS) result(Path)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructPath
@@ -125,7 +143,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Construct a Path object as output. On output, check Err%occurred before using the output Path.
+    !> \brief
+    !> This procedure is a method of the class [Path_type](@ref path_type).\n
+    !> Construct an object of class [Path_type](@ref path_type) as output.
+    !>
+    !> \param[inout]    Path        :   An object of class [Path_type](@ref path_type) containing the path properties and methods.
+    !> \param[in]       inputPath   :   The input path (optional). If provided, it will overwrite `Path%original`.
+    !> \param[in]       OS          :   An object of class [OS_type](@ref system_mod::os_type) containing information about the operating system (optional).
+    !>
+    !> \warning
+    !> On output, do not forget to check the value `Path%%Err%%occurred` before using the output `Path`.
     subroutine queryPath(Path,inputPath,OS)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: queryPath
@@ -201,10 +228,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This code assumes that the input path is a Linux path. Windows paths like .\(paramonte)\paramonte.nml will be horribly
-    ! treated by this routine as \( also represents a Linux escape character. The result will be .(paramonte)\paramonte.nml
-    ! this routine strictly assumes that there is no dangling \ in the input Linux path, and if there is, then either it is used
-    ! to escape the special shell characters, or otherwise, the path is a Windows path.
+    !> \brief
+    !> This procedure is a static method of the class [Path_type](@ref path_type).\n
+    !> Convert the the input path to the modified path according to the rules of the Windows operating system.
+    !>
+    !> \param[in]       inputPath   :   The input path. If provided, it will overwrite `Path%original`.
+    !> \param[out]      outputPath  :   The output modified path which conforms to the rules of the Windows OS.
+    !> \param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
+    !>
+    !> \warning
+    !> This code assumes that the input path is a Linux path. Windows paths like `.\(paramonte)\paramonte.nml` will be horribly
+    !> treated by this routine as `\(` also represents a Linux escape character. The result will be `.(paramonte)\paramonte.nml`.
+    !>
+    !> \warning
+    !> This routine strictly assumes that there is no dangling `\` in the input Linux path, and if there is,
+    !> then either it is used to escape the special shell characters, or otherwise, the path is a Windows path.
     pure subroutine winifyPath(inputPath,outputPath,Err)!,ignoreWindowsReservedChars)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: winifyPath
@@ -248,7 +286,7 @@ contains
         !    return
         !end if
 
-        ! note that multiple \ character in sequence is meaningless in Linux (basically \\ reduces to \), 
+        ! note that multiple \ character in sequence is meaningless in Linux (basically \\ reduces to \),
         ! and in Windows means the same as a single \. Therefore, reduce all sequential \ characters to a single \.
         outputPath = trim(adjustl(inputPath))
         loopRemoveMultipleSlash: do
@@ -296,6 +334,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This `pure` procedure is a static method of the class [Path_type](@ref path_type).\n
+    !> Convert the the input path to the modified path according to the rules of the Unix operating systems.
+    !>
+    !> \param[in]       inputPath   :   The input path. If provided, it will overwrite `Path%original`.
+    !> \param[out]      outputPath  :   The output modified path which conforms to the rules of the Unix OS.
     pure subroutine linifyPath(inputPath,outputPath)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: linifyPath
@@ -340,7 +384,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Returns the slash type of the OS (backslash in Windows, forward-slash in NonWindows).
+    !> \brief
+    !> This procedure is a static method of the class [Path_type](@ref path_type).\n
+    !> Return the slash type of the OS (backslash in Windows, forward-slash in Unix OS).
+    !>
+    !> \param[out]  slashOS :   The slash separator character of length 1, used by the OS to separate segments of the paths.
+    !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
     subroutine getSlashOS(slashOS,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSlashOS
@@ -376,6 +425,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a static method of the class [Path_type](@ref path_type).\n
+    !> Modify the input path to conform to the rules of the current inferred operating system.
+    !>
+    !> \param[in]       inputPath   :   The input path. If provided, it will overwrite `Path%original`.
+    !> \param[out]      outputPath  :   The output modified path which conforms to the rules of the current OS.
+    !> \param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
     subroutine modifyPath(inputPath,outputPath,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: modifyPath
@@ -421,6 +477,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure is a static method of the class [Path_type](@ref path_type).\n
+    !> Split the input path to directory, base file name, and the file extension, based on the input OS slash.
+    !>
+    !> \param[in]       path    :   The input path.
+    !> \param[in]       slash   :   The separator used by the operating system to delimit segments of a path.
+    !> \param[out]      dir     :   The directory segment of the path.
+    !> \param[out]      name    :   The base file name segment of the path.
+    !> \param[out]      ext     :   The file extension segment of the path.
     subroutine getDirNameExt(path,slash,dir,name,ext)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirNameExt
@@ -428,7 +493,7 @@ contains
         implicit none
         character(*)             , intent(in)   :: path
         character(1)             , intent(in)   :: slash
-        character(:), allocatable, intent(out)  :: dir,name,ext
+        character(:), allocatable, intent(out)  :: dir, name, ext
         character(:), allocatable               :: fullName
         call getDirFullName(path,slash,dir,fullName)
         call getNameExt(fullName,name,ext)
@@ -436,7 +501,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the directory and full filename of the input path.
+    !> \brief
+    !> This procedure is a static method of the class [Path_type](@ref path_type).\n
+    !> Return the directory and full filename (including the file extension) of the input path.
+    !>
+    !> \param[in]       path        :   The input path.
+    !> \param[in]       slash       :   The separator used by the operating system to delimit segments of a path.
+    !> \param[out]      dir         :   The directory segment of the path.
+    !> \param[out]      fullName    :   The full file name and extension segment of the path.
     subroutine getDirFullName(path,slash,dir,fullName)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirFullName
@@ -445,7 +517,7 @@ contains
         implicit none
         character(*)             , intent(in)   :: path
         character(1)             , intent(in)   :: slash
-        character(:), allocatable, intent(out)  :: dir,fullName
+        character(:), allocatable, intent(out)  :: dir, fullName
 
         integer(IK)                             :: pathLen, slashPos
 
@@ -474,7 +546,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the name and file extension of the input full file name.
+    !> \brief
+    !> This procedure is a static method of the class [Path_type](@ref path_type).\n
+    !> Return the name and file extension of the input full file name.
+    !>
+    !> \param[in]       fullName    :   The full file name and extension of the path.
+    !> \param[out]      name        :   The name segment of the file.
+    !> \param[out]      ext         :   The extension segment of the file.
     subroutine getNameExt(fullName,name,ext)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNameExt
@@ -505,7 +583,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! this routine does not check for OS type
+    !> \brief
+    !> This procedure is a static method of the class [Path_type](@ref path_type).\n
+    !> Make the requested (nested) directory (recursively, if needed).
+    !>
+    !> \param[in]       dirPath     :   The full directory path.
+    !> \param[out]      isWindows   :   The logical flag indicating whether the OS is Windows (optional). If not present, Unix OS will be assumed.
+    !> \param[out]      wait        :   The logical flag indicating whether the procedure should wait
+    !>                                  for the system operation to complete and return (optional, default = `.true.`).
+    !>
+    !> \warning
+    !> This routine does not currently check for OS type.
     function mkdir(dirPath,isWindows,wait) result(Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: mkdir

@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains classes and procedures for reporting and handling errors.
+!>  @author Amir Shahmoradi
 
 module Err_mod
 
@@ -52,11 +55,12 @@ module Err_mod
     logical     , parameter :: SOFT_EXIT_ENABLED = .false.
 #endif
 
+    !> The error type.
     type :: Err_type
         logical                     :: occurred = .false.
-        integer                     :: stat     = -huge(0)
-        integer                     :: statNull = -huge(0)
-        character(:), allocatable   :: msg
+        integer                     :: stat     = -huge(0) !< The output integer flag or status code by the compiler or program.
+        integer                     :: statNull = -huge(0) !< The null value initially assigned to `stat`.
+        character(:), allocatable   :: msg !< The error message.
     end type Err_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,6 +69,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Terminate or report the occurrence a fatal error and potentially terminate the program (if requested).
+    !> @param[in]   Err             :   An object of type [Err_type](@ref err_type) containing the error information.
+    !> @param[in]   prefix          :   The string to prepend to the error message (optional, default = dynamically set).
+    !> @param[in]   newline         :   The substring representing the newline character in the error message (optional, default = "\n").
+    !> @param[in]   outputUnit      :   The output file unit (optional, default = stdout).
+    !> @param[in]   returnEnabled   :   A logical value. If `.true.`, the program will not be abruptly terminated.
+    !>                                  Instead, the control is returned to the calling routine.
     subroutine abort(Err,prefix,newline,outputUnit,returnEnabled)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: abort
@@ -179,6 +190,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Report warning message.
+    !> @param[in]   msg         : The warning message.
+    !> @param[in]   prefix      : The string to prepend to the error message (optional, default = dynamically set).
+    !> @param[in]   newline     : The substring representing the newline character in the error message (optional, default = "\n").
+    !> @param[in]   outputUnit  : The output file unit (optional, default = stdout).
+    !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
+    !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
     subroutine warn(msg,prefix,newline,outputUnit,marginTop,marginBot)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warn
@@ -209,6 +227,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Report a note.
+    !> @param[in]   msg         : The warning message.
+    !> @param[in]   prefix      : The string to prepend to the error message (optional, default = dynamically set).
+    !> @param[in]   newline     : The substring representing the newline character in the error message (optional, default = "\n").
+    !> @param[in]   outputUnit  : The output file unit (optional, default = stdout).
+    !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
+    !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
     subroutine note(msg,prefix,newline,outputUnit,marginTop,marginBot)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: note
@@ -239,6 +264,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Write the input message to the output file unit.
+    !> @param[in]   msg         : The warning message.
+    !> @param[in]   prefix      : The string to prepend to the error message (optional, default = dynamically set).
+    !> @param[in]   newline     : The substring representing the newline character in the error message (optional, default = "\n").
+    !> @param[in]   outputUnit  : The output file unit (optional, default = stdout).
+    !> @param[in]   wrapSplit   : The substring at which the input `msg` can be wrapped and continued on the next line (optional, default = " ").
+    !> @param[in]   wrapWidth   : The maximum width of the line beyond which the input `msg` is wrapped and continued on the next line (optional, default = 100).
+    !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
+    !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
     subroutine informUser(msg,prefix,newline,outputUnit,wrapSplit,wrapWidth,marginTop,marginBot)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: informUser

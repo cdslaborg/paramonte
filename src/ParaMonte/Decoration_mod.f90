@@ -40,6 +40,9 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!>  \brief This module contains classes and procedures for decorating and outputting text.
+!>  @author Amir Shahmoradi
+
 module Decoration_mod
 
     use Constants_mod, only: IK
@@ -59,6 +62,7 @@ module Decoration_mod
     character(*), parameter :: GENERIC_OUTPUT_FORMAT = "(*(g0,:,' '))"
     character(*), parameter :: GENERIC_TABBED_FORMAT = "('" // TAB // TAB // "',*(g0,:,' '))"
 
+    !> The decoration class
     type :: decoration_type
         character(:), allocatable       :: tab
         character(:), allocatable       :: text
@@ -221,6 +225,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Return an IO Fortran format given the input characteristics.
+    !> @param[in]   width : The width of the target IO record (optional, default = dynamically set).
+    !> @param[in]   precision : The precision of the target IO record if it happens to be a real number (optional, default = dynamically set).
+    !> @param[in]   delim : The delimiter of the target IO record if it happens multiple entries (optional, default = "").
+    !> @param[in]   prefix : The prefix of the target IO record (optional, default = "").
+    !>
+    !> \return
+    !> formatStr : The output format string to be used in IO.
     pure function getGenericFormat(width,precision,delim,prefix) result(formatStr)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat

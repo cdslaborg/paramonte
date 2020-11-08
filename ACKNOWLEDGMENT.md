@@ -93,7 +93,7 @@ library's main publications as listed here:
     ```text  
         
         @article{2020arXiv201004190K,
-                   author = {{Kumbhare}, Shashank and {Shahmoradi}, Amir},
+                   author = { {Kumbhare}, Shashank and {Shahmoradi}, Amir},
                     title = "{MatDRAM: A pure-MATLAB Delayed-Rejection Adaptive Metropolis-Hastings Markov Chain Monte Carlo Sampler}",
                   journal = {arXiv e-prints},
                  keywords = {Physics - Data Analysis, Statistics and Probability, Astrophysics - Instrumentation and Methods for Astrophysics, Computer Science - Computational Engineering, Finance, and Science, Quantitative Biology - Quantitative Methods, Statistics - Applications},

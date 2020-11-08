@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains procedures for sorting arrays.
+!>  @author Amir Shahmoradi
 
 module Sort_mod
 
@@ -62,6 +65,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and
+    !> return the result inside the input array.
+    !>
+    !> @param[inout] array : The input vector to be sorted.
+    !>
+    !> \warning
+    !> On return, the contents of the input array is completely overwritten.
     pure recursive subroutine sortArray(array)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortArray
@@ -70,7 +81,7 @@ contains
         implicit none
         real(RK), intent(inout) :: array(:)
         integer(IK)             :: iq
-  
+
         if(size(array) > 1) then
             call partition(array, iq)
             call sortArray(array(:iq-1))
@@ -118,9 +129,22 @@ contains
             endif
         end do
   end subroutine partition
-  
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and
+    !> return the result inside the input array.
+    !>
+    !> @param[in]       np      :   The length of the input vector to be sorted.
+    !> @param[inout]    Point   :   The input vector to be sorted.
+    !> @param[out]      Err     :   An object of class [Err_type](@ref err_mod::err_type).
+    !>
+    !> \warning
+    !> On return, the contents of the input array is completely overwritten by the output sorted array.
+    !>
+    !> \warning
+    !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine sortAscending_RK(np,Point,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscending_RK
@@ -203,7 +227,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Given Array(1:n) returns the array Indx(1:n) such that Array(Indx(j)), j=1:n is in ascending order.
+    !> \brief
+    !> Given the real `Array(1:n)` return the array `Indx(1:n)` such that `Array(Indx(j)), j=1:n` is in ascending order.
+    !>
+    !> @param[in]   n       :   The length of the input vector to be sorted.
+    !> @param[in]   Array   :   The input vector of length `n` to be sorted.
+    !> @param[out]  Indx    :   The output integer vector of indices of the sorted vector.
+    !> @param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type).
+    !>
+    !> \warning
+    !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine indexArray_RK(n,Array,Indx,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: indexArray_RK
@@ -303,7 +336,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Given Array(1:n) returns the array Indx(1:n) such that Array(Indx(j)), j=1:n is in ascending order.
+    !> \brief
+    !> Given the integer `Array(1:n)` return the array `Indx(1:n)` such that `Array(Indx(j)), j=1:n` is in ascending order.
+    !>
+    !> @param[in]   n       :   The length of the input vector to be sorted.
+    !> @param[in]   Array   :   The input vector of length `n` to be sorted.
+    !> @param[out]  Indx    :   The output integer vector of indices of the sorted vector.
+    !> @param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type).
+    !>
+    !> \warning
+    !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine indexArray_IK(n,Array,Indx,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: indexArray_IK
@@ -403,7 +445,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Sorts Array(1:lenArray) in ascending order using Quicksort while making the corresponding rearrangement of Slave(1:lenArray).
+    !> \brief
+    !> Sort the real `Array(1:lenArray)` in ascending order using Quicksort while making the corresponding rearrangement of real `Slave(1:lenArray)`.
+    !>
+    !> @param[in]       lenArray    :   The length of the input vector to be sorted.
+    !> @param[inout]    Array       :   The vector of length `lenArray` to be sorted.
+    !> @param[inout]    Slave       :   The vector of length `lenArray` to be sorted according to the rearrangement of the elements of `Array`.
+    !> @param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type).
+    !>
+    !> \warning
+    !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine sortAscending2_RK(lenArray,Array,Slave,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscending2_RK
@@ -431,6 +482,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the median of the input vector.
+    !>
+    !> @param[in]       lenArray    :   The length of the input vector.
+    !> @param[in]       Array       :   The input vector of length `lenArray` whose median is to be found.
+    !> @param[out]      median      :   The median of the input `Array`.
+    !> @param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type).
+    !>
+    !> \warning
+    !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine median_RK(lenArray,Array,median,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: median_RK

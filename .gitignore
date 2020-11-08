@@ -186,6 +186,7 @@ _deps
 # documentation
 #########################
 
+**/doxygen/*
 **/docs/*
 **/doc/*
 

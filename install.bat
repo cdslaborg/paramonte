@@ -87,6 +87,8 @@ set PARALLELISM_LIST=
 set FOR_COARRAY_NUM_IMAGES=
 set ParaMonte_INSTALL_CLEANUP_ENABLED=true
 set DRY_RUN=false
+set FAST_ENABLED=false
+set FPP_ONLY_ENABLED=false
 set MatDRAM_ENABLED=false
 
 echo.
@@ -114,7 +116,7 @@ if not "%1"=="" (
     set FLAG_SUPPORTED=false
     set VALUE_SUPPORTED=false
 
-    REM -lang
+    REM --lang
 
     if "!FLAG!"=="--lang" (
         set FLAG_SUPPORTED=true
@@ -242,10 +244,24 @@ if not "%1"=="" (
     )
 
     REM --clf preprocessor/Compiler/linker flags
+    REM To only preprocess the source files without compilation and linking, 
+    REM pass /P or /preprocess-only in case of Intel compiler choice.
+    REM For example,
+    REM
+    REM     install.bat --lang c --lib dynamic --par mpi --build testing --fpp /P
 
     if "!FLAG!"=="--fpp" (
         set FLAG_SUPPORTED=true
-        set FPP_FLAGS_EXTRA=%2
+        set FPP_ONLY_ENABLED_TEMP=false
+        set FPP_MACRO=%2
+        if "!FPP_MACRO!"=="/P" set FPP_ONLY_ENABLED_TEMP=true
+        if "!FPP_MACRO!"=="/preprocess-only" set FPP_ONLY_ENABLED_TEMP=true
+        if "!FPP_MACRO!"=="only" set FPP_ONLY_ENABLED_TEMP=true
+        if !FPP_ONLY_ENABLED_TEMP!==true (
+            set FPP_ONLY_ENABLED=true
+        ) else (
+            set "FPP_FLAGS_EXTRA=!FPP_FLAGS_EXTRA! !FPP_MACRO!"
+        )
         shift
     )
 
@@ -254,6 +270,13 @@ if not "%1"=="" (
     if "!FLAG!"=="--dryrun" (
         set FLAG_SUPPORTED=true
         set DRY_RUN=true
+    )
+
+    REM --fast
+
+    if "!FLAG!"=="--fast" (
+        set FLAG_SUPPORTED=true
+        set FAST_ENABLED=true
     )
 
     REM --help

@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains procedures for computing the cross-correlation of time series data.
+!>  @author Amir Shahmoradi
 
 module CrossCorr_mod
 
@@ -52,12 +55,22 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Return the integrated autocorrelation (IAC) via the BatchMeans method.
+    !>
+    !> @param[in]   np              : The number of data points in the input time series data.
+    !> @param[in]   Point           : The input data series data vector.
+    !> @param[in]   Weight          : The vector of weights of the input data points (optional, default = array of ones).
+    !> @param[in]   batchSize       : The batch size (optional, default = computed from the input parameters).
+    !>
+    !> \return
+    !> `iac` : The integrated autocorrelation (IAC) via the BatchMeans method.
+    !>
+    !> \remark
+    !> Note that np must be large enough to get a meaningful answer.
     function getBatchMeansIAC(np,Point,Weight,batchSize) result(iac)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBatchMeansIAC
 #endif
-        ! return the integrated autocorrelation (iac) computed via the BatchMeans method
-        ! note that np must be large enough to get a meaningful answer
         use Constants_mod, only: IK, RK
         use Statistics_mod, only: getVariance
         use Math_mod, only: getCumSum
@@ -166,7 +179,7 @@ contains
                     ip = ip + 1 ! by definition, ip never become > np, otherwise it leads to disastrous errors
                     diffSquared = ( Point(ip) - avgPoint )**2
                 end if
-                varPoint = varPoint + diffSquared 
+                varPoint = varPoint + diffSquared
             end do loopComputeVarPoint
         else
             do ip = 1, npEffective
@@ -183,6 +196,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Return the integrated autocorrelation (IAC) based on the cumulative autocorrelation.
+    !>
+    !> @param[in]   np              :   The number of data points in the input time series data.
+    !> @param[in]   Point           :   The input data series data vector.
+    !> @param[in]   Weight          :   The vector of weights of the input data points (optional, default = array of ones).
+    !> @param[in]   significance    :   The significance in units of standard deviation below which the autocorrelation is 
+    !>                                  considered noise (optional, default = 2).
+    !>
+    !> \return
+    !> `iac` : The integrated autocorrelation (IAC).
     function getCumSumIAC(np,Point,Weight,significance) result(iac)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSumIAC
@@ -231,6 +254,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Return the integrated autocorrelation (IAC) based on the maximum cumulative autocorrelation.
+    !>
+    !> @param[in]   np              : The number of data points in the input time series data.
+    !> @param[in]   Point           : The input data series data vector.
+    !> @param[in]   Weight          : The vector of weights of the input data points (optional, default = array of ones).
+    !>
+    !> \return
+    !> `maxIAC` : The integrated autocorrelation (IAC).
     function getMaxCumSumIAC(np,Point,Weight) result(maxIAC)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxCumSumIAC
@@ -268,8 +299,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! For crossCorrelation, pass actualLen=max(actualLen1,actualLen2)
-    ! For weighted-data crossCorrelation, pass actualLen=max(sum(Weight1(1:actualLen1)),sum(Weight2(1:actualLen2)))
+    !> Return the smallest length of vector that is a power of `base` and larger than the input vector length `actualLen`.
+    !>
+    !> @param[in]   actualLen   : The input vector length.
+    !> @param[in]   base        : The base of the exponentiation.
+    !>
+    !> \return
+    !> `paddedLen` : The minimum power-of-`base` length given `actualLen`.
+    !>
+    !> \remark
+    !> This method is used to compute the cross-correlation. Usage:
+    !> `actualLen = max( actualLen1, actualLen2 )`
+    !>
+    !> \remark
+    !> For weighted-data cross-correlation computation, try,
+    !> `actualLen = max( sum(Weight1(1:actualLen1)), sum(Weight2(1:actualLen2)) )`.
     pure function getPaddedLen(actualLen,base) result(paddedLen)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedLen
@@ -283,6 +327,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Return the exponent that yields the smallest real number larger than the input number `absoluteValue`.
+    !>
+    !> @param[in]   absoluteValue   : The input real number.
+    !> @param[in]   base            : The base of the exponentiation.
+    !>
+    !> \return
+    !> `nextExponent` : The output minimum exponent.
     pure function getNextExponent(absoluteValue,base) result(nextExponent)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNextExponent
@@ -300,6 +351,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Return an array that is extended and padded with zeros for the requested length `paddedLen`.
+    !>
+    !> @param[in]   currentLen  : The length of the input array.
+    !> @param[in]   Array       : The array to be extended.
+    !> @param[in]   paddedLen   : The requested new length of the array.
+    !>
+    !> \return
+    !> `ArrayPadded` : The output extended array, padded with zeros.
     pure function padZero(currentLen,Array,paddedLen) result(ArrayPadded)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: padZero
@@ -326,16 +385,25 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Computes the CrossCorrelation of two real data sets Data1(1:n) and Data2(1:n) (including
-    ! any user-supplied zero padding). n MUST be an integer power of two. The answer
-    ! is returned as the first n points in ans stored in wrap-around order, i.e., CrossCorrelation at
-    ! increasingly negative lags are in ans(n) on down to ans(n/2+1), while CrossCorrelation at
-    ! increasingly positive lags are in ans(1) (zero lag) on up to ans(n/2). Note that ans
-    ! must be supplied in the calling program with length at least 2*n, since it is also used as
-    ! working space. Sign convention of this routine: if Data1 lags Data2, i.e., is shifted to the
-    ! right of it, then ans will show a peak at positive lags.
-    ! For autocorrelation, under the assumption of a completely random series, the ACF standard error reduces to sqrt(1/ndata)
-
+    !> Return the cross-correlation of the two input data vectors, (including any user-supplied zero padding), computed via Fast-Fourier Transform.
+    !>
+    !> @param[in]   ndata   : The lengths of the input arrays. It MUST be an integer power of two.
+    !> @param[in]   Data1   : The first array.
+    !> @param[in]   Data2   : The second array.
+    !>
+    !> \return
+    !> `CrossCorrFFT` : A vector of same length as the input arrays containing the cross-correlation.
+    !> The answer is returned as the first `ndata` points in ans stored in wrap-around order, i.e., cross-correlation
+    !> at increasingly negative lags are in `CrossCorrFFT(ndata)` on down to `CrossCorrFFT(ndata/2+1)`, while cross-correlation
+    !> increasingly positive lags are in `CrossCorrFFT(1)` (zero lag) on up to `CrossCorrFFT(ndata/2)`.
+    !>
+    !> \remark
+    !> Sign convention of this routine: If `Data1` lags Data2, i.e., is shifted to the
+    !> right of it, then ans will show a peak at positive lags.
+    !>
+    !> \remark
+    !> For autocorrelation, under the assumption of a completely random series,
+    !> the ACF standard error reduces to: \f$\sqrt{ 1 / \texttt{ndata} }\f$
     function getCrossCorrFFT(ndata,Data1,Data2) result(CrossCorrFFT)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCrossCorrFFT
@@ -360,6 +428,19 @@ contains
         call realft(ndata,CrossCorrFFT,-1,Cdat1)
     end function getCrossCorrFFT
 
+    !> Return the cross-correlation of the two input *weighted* data vectors,
+    !> (including any user-supplied zero padding), computed via Fast-Fourier Transform.
+    !>
+    !> @param[in]   ndata1      : The length of the first input array `Data1`.
+    !> @param[in]   ndata2      : The length of the second input array `Data2`.
+    !> @param[in]   paddedLen   : The length by which the input data vectors must be extended and padded.
+    !> @param[in]   Data1       : The first array.
+    !> @param[in]   Data2       : The second array.
+    !> @param[in]   Weight1     : The weights of the elements in the first array.
+    !> @param[in]   Weight2     : The weights of the elements in the second array.
+    !>
+    !> \return
+    !> `CrossCorrFFT` : A vector of length `paddedLen` containing the cross-correlation.
     function getCrossCorrFFTweighted(nData1,nData2,paddedLen,Data1,Data2,Weight1,Weight2) result(CrossCorrFFT)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCrossCorrFFTweighted
@@ -594,7 +675,7 @@ contains
     end subroutine fourrow
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-! The following are for autogetCrossCorrFFTation computation using the conventional definition of autogetCrossCorrFFTation
+! The following are for the AutoCorrelation computation using the conventional definition of correlation.
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getInverseSumNormedDataSq(nd,np,NormedData) result(InverseSumNormedDataSq)

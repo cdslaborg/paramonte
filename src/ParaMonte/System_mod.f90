@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!>  \brief This module contains classes and procedures relevant to the system operations.
+!>  @author Amir Shahmoradi
 
 module System_mod
 
@@ -50,40 +53,51 @@ module System_mod
     character(*), parameter             :: MODULE_NAME = "@System_mod"
     integer(IK) , parameter             :: MAX_OS_NAME_LEN = 63_IK
 
+    !> The `RandomFileName_type` class.
     type :: RandomFileName_type
-        character(:), allocatable       :: path
-        character(:), allocatable       :: dir
-        character(:), allocatable       :: key
-        character(:), allocatable       :: ext
-        type(Err_type)                  :: Err
+        character(:), allocatable       :: path !< The full path to the randomly-generated unique file name.
+        character(:), allocatable       :: dir  !< The directory within which is the unique new file is supposed to be generated.
+        character(:), allocatable       :: key  !< The optionally user-specified file prefix for the unique file name.
+        character(:), allocatable       :: ext  !< The optionally user-specified file extension.
+        type(Err_type)                  :: Err  !< An object of class [Err_type](@ref err_mod::err_type) indicating whether
+                                                !! any error has occurred during the file name generation.
     end type RandomFileName_type
 
+    !> The `RandomFileName_type` constructor.
     interface RandomFileName_type
         module procedure                :: getRandomFileName
     end interface RandomFileName_type
 
+    !> The `SystemInfo_type` class.
     type :: SystemInfo_type
-        integer(IK)                     :: nRecord
-        type(CharVec_type), allocatable :: List(:)
-        type(Err_type)                  :: Err
+        integer(IK)                     :: nRecord  !< The number of elements of the vector `List`.
+        type(CharVec_type), allocatable :: List(:)  !< An array of length `nRecord` of strings, each element of which represents
+                                                    !! one line in the output system information.
+        type(Err_type)                  :: Err      !< An object of class [Err_type](@ref err_mod::err_type) indicating whether
+                                                    !! any error has occurred during information collection.
     contains
         procedure, nopass               :: get => getSystemInfo
     end type SystemInfo_type
 
+    !> The `SystemInfo_type` constructor.
     interface SystemInfo_type
         module procedure                :: constructSystemInfo
     end interface SystemInfo_type
 
+    !> The `OS_type` class.
     type :: OS_type
-        character(:), allocatable       :: name, slash
-        logical                         :: isWindows = .false.
-        logical                         :: isDarwin = .false.
-        logical                         :: isLinux = .false.
-        type(Err_type)                  :: Err
+        character(:), allocatable       :: name                 !< The name of the operating system.
+        character(:), allocatable       :: slash                !< The file/folder name separator used by the OS.
+        logical                         :: isWindows = .false.  !< Logical variable indicating whether the OS is Windows.
+        logical                         :: isDarwin = .false.   !< Logical variable indicating whether the OS is Darwin (macOS).
+        logical                         :: isLinux = .false.    !< Logical variable indicating whether the OS is Linux.
+        type(Err_type)                  :: Err                  !< An object of class [Err_type](@ref err_mod::err_type) indicating whether
+                                                                !! error has occurred during the object initialization.
     contains
         procedure, pass                 :: query => queryOS
     end type OS_type
 
+    !> The `EnvVar_type` class.
     type :: EnvVar_type
         character(:), allocatable       :: name
         character(:), allocatable       :: value
@@ -93,24 +107,30 @@ module System_mod
         procedure, nopass               :: get => getEnvVar
     end type EnvVar_type
 
+    !> The `CmdArg_type` class.
     type :: CmdArg_type
-        character(:), allocatable       :: cmd
-        type(CharVec_type), allocatable :: Arg(:)
-        integer                         :: count
-        type(Err_type)                  :: Err
+        character(:), allocatable       :: cmd      !< A string containing the full command line obtained via `get_command()` Fortran intrinsic subroutine.
+        type(CharVec_type), allocatable :: Arg(:)   !< A list of `(0:CmdArg_type%count)` elements, each of which represents one command line argument,
+                                                    !! including the main command as the zeroth element.
+        integer                         :: count    !< The number of command line arguments, excluding the main (zeroth) command.
+        type(Err_type)                  :: Err      !< An object of class [Err_type](@ref err_mod::err_type) indicating
+                                                    !! whether error has occurred during the object initialization.
     contains
         procedure, pass                 :: query => queryCmdArg
     end type CmdArg_type
 
+    !> The `SysCmd_type` class.
     type :: SysCmd_type
-        character(:), allocatable       :: cmd
-        logical                         :: wait
-        integer                         :: exitstat
-        type(Err_type)                  :: Err
+        character(:), allocatable       :: cmd      !< The command to be executed by the program in the terminal.
+        logical                         :: wait     !< Indicated if the program should wait for the terminal to return the control to it.
+        integer                         :: exitstat !< The exit status from the terminal.
+        type(Err_type)                  :: Err      !< An object of class [Err_type](@ref err_mod::err_type) indicating
+                                                    !! whether error has occurred during the object initialization.
     contains
         procedure, pass                 :: run => runSysCmd
     end type SysCmd_type
 
+    !> The `SysCmd_type` constructor.
     interface SysCmd_type
         module procedure :: constructSysCmd
     end interface SysCmd_type
@@ -121,6 +141,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> The constructor of the class [SystemInfo_type](@ref systeminfo_type).
+    !> Return a comprehensive report of the system information.
+    !>
+    !> @param[in]   OS      :   An object of class [OS_type](@ref os_type) (optional).
+    !>
+    !> \return
+    !> `SystemInfo` : An object of class [SystemInfo_type](@ref systeminfo_type) containing the system information.
     function constructSystemInfo(OS) result(SystemInfo)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSystemInfo
@@ -133,7 +160,9 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! Queries all of the OS class attributes: name, slash, isWindows, slash, Err
+    !> Query all attributes of the [OS_type](@ref os_type) class: `name`, `slash`, `isWindows`, `Err`.
+    !>
+    !> @param[out]  OS : An object of class [OS_type](@ref os_type).
     subroutine queryOS(OS)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: queryOS
@@ -324,7 +353,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! generates unique file path in the requested directory for temporary usage
+    !> Generate a unique file path in the requested directory for temporary usage.
+    !>
+    !> @param[in]   dir : The requested directory within which the unique new file is supposed to be generated (optional).
+    !> @param[in]   key : The requested input file name prefix (optional, default = "RandomFileName").
+    !> @param[in]   ext : The requested input file extension (optional, default = ".rfn", standing for random file name).
+    !>
+    !> \return
+    !> `RFN` : An object of class [RandomFileName_type](@ref randomfilename_type) containing the attributes of the random file name.
     function getRandomFileName(dir,key,ext) result(RFN)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandomFileName
@@ -392,11 +428,18 @@ contains
             exit
 
         end do
-        
+
     end function getRandomFileName
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Return the value of the requested input environmental variable.
+    !>
+    !> @param[in]   name    :   The requested environmental variable name.
+    !> @param[out]  value   :   The value of the requested environmental variable name.
+    !> @param[out]  length  :   The length of the value of the requested environmental variable name.
+    !> @param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
+    !!                          indicating whether any error has occurred during information collection.
     subroutine getEnvVar(name,value,length,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEnvVar
@@ -441,6 +484,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> The [SysCmd_type](@ref syscmd_type) class constructor.
+    !> Execute the input system command `cmd` and return.
+    !>
+    !> @param[in]   cmd : The requested input system command to be executed.
+    !> @param[in]   wait : A logical value indicating whether the program should wait for the control to be returned to it by the terminal.
+    !>
+    !> \return
+    !> `SysCmd` : An object of class [SysCmd_type](@ref syscmd_type) containing the attributes and the statistics of the system command execution.
     function constructSysCmd(cmd,wait) result(SysCmd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSysCmd
@@ -461,6 +512,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> A method of the [SysCmd_type](@ref syscmd_type) class.
+    !> Execute the requested system command and return.
+    !>
+    !> @param[inout] SysCmd : An object of class [SysCmd_type](@ref syscmd_type) containing the attributes and
+    !!                        the statistics of the system command execution.
     subroutine runSysCmd(SysCmd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runSysCmd
@@ -501,7 +557,18 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! This is the same as runSysCmd, but procedural, rahter than OOP, kept only for legacy usage.
+    !> Execute the input system command `cmd` and return.
+    !>
+    !> @param[in]       command     :   The command to executed in the terminal.
+    !> @param[in]       wait        :   A logical argument indicating whether the program should wait until the control is
+    !!                                  returned to it or should not wait (optional, default = `.true.`).
+    !> @param[inout]    exitstat    :   An integer indicating the exit status flag upon exiting the terminal.
+    !> @param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type)
+    !!                                  indicating whether any error has occurred during information collection.
+    !>
+    !> \remark
+    !> This is the procedural implementation of the object-oriented [runSysCmd](@ref runsyscmd) method,
+    !! kept here only for legacy usage.
     subroutine executeCmd(command,wait,exitstat,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: executeCmd
@@ -567,6 +634,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Fetch the input command-line arguments to the main program.
+    !>
+    !> @param[inout]    CmdArg : An object of class [CmdArg_type](@ref cmdarg_type) which will contain the command line arguments.
+    !>
+    !> \remark
+    !> This is a method of the class [CmdArg_type](@ref cmdarg_type).
     subroutine queryCmdArg(CmdArg)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: queryCmdArg
@@ -625,6 +698,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Fetch a comprehensive report of the operating system and platform specifications.
+    !>
+    !> @param[out]  List    :   A list of strings each of which represents one line of information about the system specs.
+    !> @param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
+    !!                          indicating whether any error has occurred during information collection.
+    !> @param[in]   OS      :   An object of class [OS_type](@ref os_type) containing information about the Operating System (optional).
+    !> @param[out]  count   :   The count of elements in the output `List` (optional).
     subroutine getSystemInfo(List,Err,OS,count)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSystemInfo
@@ -810,6 +890,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Sleep for the input number of seconds (real number).
+    !>
+    !> @param[in]   seconds :   The amount of time in seconds to sleep.
+    !> @param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
+    !!                          indicating whether any error has occurred before, during, or after the sleep.
     subroutine sleep(seconds,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sleep
@@ -821,7 +906,7 @@ contains
         implicit none
 
         real(RK), intent(in)            :: seconds ! sleep time
-        type(Err_type) , intent(out)    :: Err 
+        type(Err_type) , intent(out)    :: Err
 
         integer(int64)                  :: countOld, countNew, countMax
         real(RK)                        :: countRate
@@ -853,6 +938,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Copy file from the origin path to the destination path.
+    !>
+    !> @param[in]   pathOld     :   The original path.
+    !> @param[in]   pathNew     :   The destination path.
+    !> @param[in]   isWindows   :   Logical value indicating whether the OS is Windows.
+    !> @param[out]  Err         :   An object of class [Err_type](@ref err_mod::err_type)
+    !!                              indicating whether any error has occurred the copy.
     subroutine copyFile(pathOld,pathNew,isWindows,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: copyFile
@@ -921,6 +1013,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Remove the requested file.
+    !>
+    !> @param[in]   path        :   The path to the file to be removed.
+    !> @param[in]   isWindows   :   Logical value indicating whether the OS is Windows.
+    !> @param[out]  Err         :   An object of class [Err_type](@ref err_mod::err_type)
+    !!                              indicating whether any error has occurred before, during, or after the sleep.
+    !>
+    !> \warning
+    !> This subroutine can become extremely dangerous if one does understands the
+    !! scopes of the removal of the requested file or pattern. **Use with caution**.
     subroutine removeFile(path,isWindows,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: removeFile

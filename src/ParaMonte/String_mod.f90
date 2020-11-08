@@ -9,36 +9,39 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
 !!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!> \brief This module contains the classes and procedures for various string manipulations.
+!> \author Amir Shahmoradi
 
 module String_mod
 
@@ -53,26 +56,29 @@ module String_mod
 
     integer(int8) :: NUM2STR_MAXLEN = 63_int8
 
+    !> The `IntStr_type` class for converting integers to strings.
     type :: IntStr_type
-        integer(IK)                 :: val
-        character(:), allocatable   :: str
+        integer(IK)                 :: val !< The integer value.
+        character(:), allocatable   :: str !< The integer value in string format.
     contains
         procedure, nopass           :: int322str, int642str
         generic                     :: int2str => int322str, int642str
     end type IntStr_type
 
+    !> The `RealStr_type` class for converting real numbers to strings.
     type :: RealStr_type
-        integer(IK)                 :: val
-        character(:), allocatable   :: str
+        integer(IK)                 :: val !< The real value.
+        character(:), allocatable   :: str !< The real value in string format.
     contains
         procedure, nopass           :: real322str, real642str
         generic                     :: real2str => real322str, real642str
     end type RealStr_type
 
+    !> The `String_type` class for manipulating strings.
     type :: String_type
-        character(:)      , allocatable   :: value
-        type(CharVec_type), allocatable   :: Parts(:)
-        integer(IK)                       :: nPart = 0_IK
+        character(:)      , allocatable   :: value          !< The string value.
+        type(CharVec_type), allocatable   :: Parts(:)       !< The string parts.
+        integer(IK)                       :: nPart = 0_IK   !< The number of parts in the string.
     contains
         procedure, nopass :: replaceStr, splitStr, getLowerCase, getUpperCase, isInteger, isDigit
         procedure, nopass :: str2int, str2real, str2int32, str2int64, str2real32, str2real64
@@ -96,6 +102,22 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Replace the input `search` string with the input `substitute` in the input `string` and return the result.
+    !>
+    !> \param[in]       string      :   The input string whose subparts will have to replaced.
+    !> \param[in]       search      :   The input substring pattern that will have to replaced.
+    !> \param[in]       substitute  :   The input substitute substring that will replace the `search` pattern in the input string.
+    !>
+    !> \return
+    !> `modifiedString` : The modified input `string` such that with all
+    !> instances of `search` are replaced with the input `substitute` string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure recursive function replaceStr(string,search,substitute) result(modifiedString)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: replaceStr
@@ -130,6 +152,22 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Split the input string string with the input `substitute` in the input `string` and return the result.
+    !>
+    !> \param[in]       string      :   The input string.
+    !> \param[in]       delimiter   :   The delimiter to be used to split the input string.
+    !> \param[out]      nPart       :   The number of substrings resulting from splitting the string (optional).
+    !>
+    !> \return
+    !> `Parts` : An allocatable array of type [CharVec_type](@ref jaggedarray_mod::charvec_type)
+    !> containing the split parts of the input string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function splitStr(string,delimiter,nPart) result(Parts)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: splitStr
@@ -204,6 +242,19 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return `.true.` if the input single character is a digit: `["0","1","2","3","4","5","6","7","8","9"]`.
+    !>
+    !> \param[in]       singleChar  :   The input single character.
+    !>
+    !> \return
+    !> `stringIsDigit` : A logical value indicating whether the input character is a digit or not.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function isDigit(singleChar) result(stringIsDigit)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: isDigit
@@ -223,6 +274,19 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return `.true.` if the input string is an integer containing only: `["0","1","2","3","4","5","6","7","8","9"]`.
+    !>
+    !> \param[in]       string  :   The input string.
+    !>
+    !> \return
+    !> `stringIsInteger` : A logical value indicating whether the input string is an integer.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function isInteger(string) result(stringIsInteger)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: isInteger
@@ -245,6 +309,19 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the lowercase of the input string.
+    !>
+    !> \param[in]       string  :   The input string.
+    !>
+    !> \return
+    !> `output` : The lowercase string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function getLowerCase(string) result(output)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCase
@@ -263,6 +340,19 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the uppercase of the input string.
+    !>
+    !> \param[in]       string  :   The input string.
+    !>
+    !> \return
+    !> `output` : The uppercase string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function getUpperCase(string) result(output)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCase
@@ -319,6 +409,19 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert the input logical value to string and return the result.
+    !>
+    !> \param[in]   logicalIn   :   The input logical value.
+    !>
+    !> \return
+    !> `log2str` : The logical value in string format. Depending on the logical value, it can be either `"TRUE"` or `"FALSE"`.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function log2str(logicalIn)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: log2str
@@ -336,6 +439,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert the input 32-bit integer value to string, with the requested format, if provided.
+    !>
+    !> \param[in]   integerIn   :   The input integer value.
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (optional).
+    !> \param[in]   minLen      :   The minimum length of the output string.
+    !>
+    !> \return
+    !> `int322str` : The integer value as a string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function int322str(integerIn,formatIn,minLen)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: int322str
@@ -362,6 +480,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert the input 64-bit integer value to string, with the requested format, if provided.
+    !>
+    !> \param[in]   integerIn   :   The input integer value.
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (optional).
+    !> \param[in]   minLen      :   The minimum length of the output string.
+    !>
+    !> \return
+    !> `int322str` : The integer value as a string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function int642str(integerIn,formatIn,minLen)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: int642str
@@ -388,6 +521,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert the input 32-bit real value to string, with the requested format, if provided.
+    !>
+    !> \param[in]   realIn      :   The input real value.
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   minLen      :   The minimum length of the output string.
+    !>
+    !> \return
+    !> `int322str` : The real value as a string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real322str(realIn,formatIn,minLen)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: real322str
@@ -414,6 +562,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert the input 64-bit real value to string, with the requested format, if provided.
+    !>
+    !> \param[in]   realIn      :   The input real value.
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   minLen      :   The minimum length of the output string.
+    !>
+    !> \return
+    !> `int322str` : The real value as a string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real642str(realIn,formatIn,minLen)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: real642str
@@ -440,6 +603,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert an input vector of  64-bit real values to string, with the requested format, if provided.
+    !>
+    !> \param[in]   RealIn      :   The input vector of real values.
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   minLen      :   The minimum length of the output string.
+    !>
+    !> \return
+    !> `real642str_1D` : The output vector of strings each representing one real value in the input vector.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real642str_1D(RealIn,formatIn,minLen)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: real642str_1D
@@ -466,6 +644,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert an input 2D matrix of  64-bit real values to string, with the requested format, if provided.
+    !>
+    !> \param[in]   RealIn      :   The input 2D matrix of real values.
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   minLen      :   The minimum length of the output string.
+    !>
+    !> \return
+    !> `real642str_2D` : The output 2D array of strings each representing one real value in the input 2D matrix.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real642str_2D(RealIn,formatIn,minLen)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: real642str_2D
@@ -492,6 +685,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert an input string to integer.
+    !>
+    !> \param[in]   str         :   The input string.
+    !> \param[in]   iostat      :   The Fortran IO status integer of default kind. Refer to the Fortran `read/write` functions
+    !>                              for the meaning of different output values for `iostat`.
+    !>
+    !> \return
+    !> `str2int` : The inferred integer from the input string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2int(str,iostat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: str2int
@@ -511,6 +719,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert an input string to 32-bit integer.
+    !>
+    !> \param[in]   str         :   The input string.
+    !> \param[in]   iostat      :   The Fortran IO status integer of default kind. Refer to the Fortran `read/write` functions
+    !>                              for the meaning of different output values for `iostat`.
+    !>
+    !> \return
+    !> `str2int` : The inferred 32-bit integer from the input string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2int32(str,iostat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: str2int32
@@ -530,6 +753,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert an input string to 64-bit integer.
+    !>
+    !> \param[in]   str         :   The input string.
+    !> \param[in]   iostat      :   The Fortran IO status integer of default kind. Refer to the Fortran `read/write` functions
+    !>                              for the meaning of different output values for `iostat`.
+    !>
+    !> \return
+    !> `str2int` : The inferred 64-bit integer from the input string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2int64(str,iostat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: str2int64
@@ -549,6 +787,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert an input string to real value.
+    !>
+    !> \param[in]   str         :   The input string.
+    !> \param[in]   iostat      :   The Fortran IO status integer of default kind. Refer to the Fortran `read/write` functions
+    !>                              for the meaning of different output values for `iostat`.
+    !>
+    !> \return
+    !> `str2int` : The inferred real value from the input string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2real(str,iostat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real
@@ -568,6 +821,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert an input string to 32-bit real value.
+    !>
+    !> \param[in]   str         :   The input string.
+    !> \param[in]   iostat      :   The Fortran IO status integer of default kind. Refer to the Fortran `read/write` functions
+    !>                              for the meaning of different output values for `iostat`.
+    !>
+    !> \return
+    !> `str2int` : The inferred 32-bit real value from the input string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2real32(str,iostat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real32
@@ -587,6 +855,21 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Convert an input string to 64-bit real value.
+    !>
+    !> \param[in]   str         :   The input string.
+    !> \param[in]   iostat      :   The Fortran IO status integer of default kind. Refer to the Fortran `read/write` functions
+    !>                              for the meaning of different output values for `iostat`.
+    !>
+    !> \return
+    !> `str2int` : The inferred 64-bit real value from the input string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \author
+    ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2real64(str,iostat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real64
