@@ -62,7 +62,7 @@ module RandomSeed_mod
         logical                   :: isRepeatable = .false.     !< The logical flag indicating whether the random number sequence must be repeatable upon each restart.
         logical                   :: isImageDistinct = .true.   !< The logical flag indicating whether the random seed must be distinct on each processor from others.
         type(Err_type)            :: Err                        !< An object of class [Err_type](@ref err_mod::err_type) containing the error handling tools.
-       !character(:), allocatable :: info
+        character(:), allocatable :: info
     contains
         procedure, public :: set => setRandomSeed
         procedure, public :: get => getRandomSeed
