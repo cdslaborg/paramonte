@@ -189,7 +189,6 @@ _deps
 **/doxygen/*
 **/draft/*
 **/doc/*
-**/doc/*
 
 #########################
 # temporary files
