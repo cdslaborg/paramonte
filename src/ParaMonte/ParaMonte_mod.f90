@@ -43,7 +43,7 @@
 !>  \mainpage ParaMonte: Plain Powerful <b>Para</b>llel <b>Monte</b> Carlo Library
 !>
 !>  This is the `ParaMonte::Kernel` developer documentation website.
-!>  For information about the usage and examples visit the [ParaMonte Documentation website](https://www.cdslab.org/paramonte/).
+!>  For information about the usage and examples visit the [**ParaMonte Documentation website**](https://www.cdslab.org/paramonte/).
 !>
 !>  What is ParaMonte?
 !>  ==================
@@ -62,11 +62,11 @@
 !>
 !>  For more information on the installation, usage, and examples, visit:
 !>
-!>  [https://www.cdslab.org/paramonte](https://www.cdslab.org/paramonte)
+!>  [**https://www.cdslab.org/paramonte**](https://www.cdslab.org/paramonte)
 !>
 !>  For the API developer documentation, visit:
 !>
-!>     [https://www.cdslab.org/paramonte/notes/api/kernel](https://www.cdslab.org/paramonte/notes/api/kernel)
+!>     [**https://www.cdslab.org/paramonte/notes/api/kernel**](https://www.cdslab.org/paramonte/notes/api/kernel)
 !>
 !>
 !>  ParaMonte samplers
@@ -81,7 +81,7 @@
 !>  and instructions on how to use he ParaDRAM sampler in your
 !>  language of choice, visit:
 !>
-!>  [https://www.cdslab.org/paramonte](https://www.cdslab.org/paramonte)
+!>  [**https://www.cdslab.org/paramonte**](https://www.cdslab.org/paramonte)
 !>
 !>  Naming conventions
 !>  ==================

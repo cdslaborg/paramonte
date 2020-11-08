@@ -136,8 +136,7 @@ while [ "$1" != "" ]; do
                                 ;;
         -B | --bootstrap )      gcc_bootstrap_flag="--bootstrap"
                                 ;;
-        -a | --matdram )        shift
-                                MatDRAM_ENABLED="true"
+        -a | --matdram )        MatDRAM_ENABLED="true"
                                 ;;
         -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES="$1"
