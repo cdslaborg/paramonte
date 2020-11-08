@@ -102,10 +102,10 @@ contains
             ! Random variable generation
 
             do isim = 1, NSIM
-                write(fileUnit1,*) getTranGaus(lowerLim=1._RK,upperLim=9._RK,mu=avg,sigma=std)
-                write(fileUnit2,*) getTranGaus(lowerLim=20._RK,upperLim=30._RK,mu=avg,sigma=std)
-                write(fileUnit3,*) getTranGaus(lowerLim=-15._RK,upperLim=4._RK,mu=avg,sigma=std)
-                write(fileUnit4,*) getTranGaus(lowerLim=50._RK,upperLim=55._RK,mu=avg,sigma=std)
+                write(fileUnit1,*) getTranGaus(lowerLim=1._RK,upperLim=9._RK,avg=avg,std=std)
+                write(fileUnit2,*) getTranGaus(lowerLim=20._RK,upperLim=30._RK,avg=avg,std=std)
+                write(fileUnit3,*) getTranGaus(lowerLim=-15._RK,upperLim=4._RK,avg=avg,std=std)
+                write(fileUnit4,*) getTranGaus(lowerLim=50._RK,upperLim=55._RK,avg=avg,std=std)
             end do
             close(fileUnit1)
             close(fileUnit2)
