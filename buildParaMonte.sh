@@ -876,7 +876,7 @@ else # if fortran compiler path defined
     if [[ "${Fortran_COMPILER_NAME}" =~ .*"gfortran".* || "${Fortran_COMPILER_NAME}" =~ .*"caf".* ]]; then
         PMCS=gnu
     fi
-    if [[ "${Fortran_COMPILER_NAME}" =~ .*"ifort".* ]; then
+    if [[ "${Fortran_COMPILER_NAME}" =~ .*"ifort".* ]]; then
         PMCS=intel
     fi
 
