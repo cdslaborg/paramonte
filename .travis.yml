@@ -29,7 +29,7 @@ matrix:
         - cmake --version
         - gfortran-8 --version
         - which mpiexec
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu --fortran $(which gfortran-8) --mpiexec $(which mpiexec)
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --fortran $(which gfortran-8) --mpiexec $(which mpiexec)
 
     - os: osx
       addons:
