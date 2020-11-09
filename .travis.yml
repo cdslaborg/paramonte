@@ -47,8 +47,6 @@ matrix:
       os: linux
       sudo: false
       dist: xenial
-      env:
-        - GCC=9
       cache:
         apt: true
         directories:
@@ -61,9 +59,9 @@ matrix:
               key_url: 'https://apt.kitware.com/keys/kitware-archive-latest.asc'
           packages: &gcc8pkgs
             - cmake
-            - gcc-9
-            - g++-9
-            - gfortran-9
+            - gcc
+            - g++
+            - gfortran
     -
       <<: *ubuntu
       env:
@@ -73,18 +71,18 @@ matrix:
           sources: *linuxsrcs
           packages: &gcc7pkgs
             - cmake
-            - gcc-9
-            - g++-9
-            - gfortran-9
+            - gcc
+            - g++
+            - gfortran
     -
       <<: *ubuntu
       addons:
         apt:
           sources: *linuxsrcs
           packages:
-            - gcc-8
-            - g++-8
-            - gfortran-8
+            - gcc
+            - g++
+            - gfortran
     - &linux_allowed_failure
       <<: *ubuntu
       addons:
@@ -100,6 +98,8 @@ matrix:
 
 install:
   - pwd
+  #- sudo apt-get update
+  #- sudo apt-get install gcc gfortran
   - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --yes-to-all 
 
 #after_success:
