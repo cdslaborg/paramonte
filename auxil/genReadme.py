@@ -43,21 +43,6 @@
 
 # ATTN: This code must be executed from the base directory where it exists. Navigate the the directory containing this file, then: python getReadme.py
 
-class Struct: pass
-
-sectionList =   [ "quickstart"
-                , "installation"
-                , "dependencies"
-                , "parallelism"
-                , "examples"
-                , "citation"
-                , "license"
-                , "authors"
-                ]
-
-readme = dict()
-for section in sectionList: readme[section] = dict()
-
 banner = """
   
 <div align="center">
@@ -89,10 +74,10 @@ banner = """
 <a href="#installation">Installation</a> | 
 <a href="#dependencies">Dependencies</a> | 
 <a href="#parallelism">Parallelism</a> | 
+<a href="#example-usage-instructions">Examples</a> |
 <a href="#citing-paramonte">Acknowledgments</a> | 
 <a href="#license">License</a> | 
-<a href="#authors-and-contributors">Authors</a> | 
-<a href="#example-usage-instructions">Examples</a> 
+<a href="#authors-and-contributors">Authors</a>  
 </div>
   
   
@@ -132,6 +117,23 @@ ParaMonte has been developed while bearing the following design goals in mind:
 -   **Comprehensive-reporting and post-processing** of each simulation and its results, as well as their automatic storage in 
     external files to ensure the simulation results will be comprehensible and reproducible at any time in the distant future.  
 """
+
+####################################################################################################################################
+
+class Struct: pass
+
+sectionList =   [ "quickstart"
+                , "installation"
+                , "dependencies"
+                , "parallelism"
+                , "examples"
+                , "citation"
+                , "license"
+                , "authors"
+                ]
+
+readme = dict()
+for section in sectionList: readme[section] = dict()
 
 ####################################################################################################################################
 

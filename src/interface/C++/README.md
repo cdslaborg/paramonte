@@ -29,10 +29,10 @@
 <a href="#installation">Installation</a> | 
 <a href="#dependencies">Dependencies</a> | 
 <a href="#parallelism">Parallelism</a> | 
+<a href="#example-usage-instructions">Examples</a> |
 <a href="#citing-paramonte">Acknowledgments</a> | 
 <a href="#license">License</a> | 
-<a href="#authors-and-contributors">Authors</a> | 
-<a href="#example-usage-instructions">Examples</a> 
+<a href="#authors-and-contributors">Authors</a>  
 </div>
   
   
