@@ -46,10 +46,10 @@ matrix:
         #- brew install openmpi || brew upgrade openmpi
         - brew link gcc
         - brew link cmake
-        - brew link openmpi
+        #- brew link openmpi
       script:
         - cmake --version
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" -s gnu
 
 #    - os: osx
 #      script:
