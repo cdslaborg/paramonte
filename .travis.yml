@@ -21,7 +21,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - mpich-3
+            - mpich
             - gfortran-8
       script:
         - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
