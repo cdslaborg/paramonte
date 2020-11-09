@@ -50,7 +50,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 |----------------------------------:|:-----:|:-----:|:---------------:|  
 | GNU Compiler Collection > 7.0     | ✅    | ✅    | ✅              |  
 | Intel Parallel Studio > 18.0.0    | ✅    | ✅    | ✅              |  
-| Microsoft C/C++ Compiler > 16.0.0 | ✅    | ❌    | ❌              |  
+| Microsoft C/C++ Compiler > 16.0.0 | ❌    | ❌    | ✅              | 
 
 **Compiler / MPI library used for this binary release**  
 
@@ -97,7 +97,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 |----------------------------------:|:-----:|:-----:|:---------------:|  
 | GNU Compiler Collection > 7.0     | ✅    | ✅    | ✅              |  
 | Intel Parallel Studio > 18.0.0    | ✅    | ✅    | ✅              |  
-| Microsoft C/C++ Compiler > 16.0.0 | ✅    | ❌    | ❌              |  
+| Microsoft C/C++ Compiler > 16.0.0 | ❌    | ❌    | ✅              | 
 
 **Compiler / MPI library used for this binary release**  
 
@@ -130,7 +130,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 |----------------------------------:|:-----:|:-----:|:---------------:|  
 | GNU Compiler Collection > 7.0     | ✅    | ✅    | ✅              |  
 | Intel Parallel Studio > 18.0.0    | ✅    | ✅    | ✅              |  
-| Microsoft C/C++ Compiler > 16.0.0 | ✅    | ❌    | ❌              |  
+| Microsoft C/C++ Compiler > 16.0.0 | ❌    | ❌    | ✅              |  
 
 **Compiler / MPI library used for this binary release**  
 
@@ -156,7 +156,7 @@ This is the first public release of the ParaMonte library.
 |----------------------------------:|:-----:|:-----:|:---------------:|  
 | GNU Compiler Collection > 7.0     | ✅    | ✅    | ✅              |  
 | Intel Parallel Studio > 18.0.0    | ✅    | ✅    | ✅              |  
-| Microsoft C/C++ Compiler > 16.0.0 | ✅    | ❌    | ❌              |  
+| Microsoft C/C++ Compiler > 16.0.0 | ❌    | ❌    | ✅              | 
 
 **Compiler / MPI library used for this binary release**  
 
