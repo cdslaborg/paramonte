@@ -31,13 +31,15 @@ matrix:
         - which mpiexec
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --fortran $(which gfortran-8) --mpiexec $(which mpiexec)
 
-    - os: osx
+    - name: "darwin"
+      os: osx
+      osx_image: xcode10
       addons:
         homebrew:
           packages:
-          - gcc
-          - cmake
-          - openmpi
+            - gcc
+            - cmake
+            - openmpi
       before_install:
         #- brew install gcc || brew upgrade gcc
         #- brew install cmake || brew upgrade cmake
