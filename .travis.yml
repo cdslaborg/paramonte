@@ -25,14 +25,11 @@ matrix:
             - gfortran-8
       script:
         - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
-        - alias gfortran=gfortran-8
         - export FC=gfortran-8
         - cmake --version
-        - gfortran --version
         - gfortran-8 --version
-        - which gfortran
-        - which gfortran-8
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
+        - which mpiexec
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu -f $(which gfortran-8)
 
     - os: osx
       addons:
