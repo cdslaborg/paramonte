@@ -1,11 +1,109 @@
 language: c
 sudo: required
-before_install:
-  - sudo apt-get install gfortran
 
-script:
-  - gfortran -fprofile-arcs -ftest-coverage -O0 hello.f90 -o hello
-  - ./hello
+git:
+  submodules: false
+  symlinks: true
+  clone: true
+  #quiet: true
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+##############################
+
+# blocklist
+branches:
+  except:
+  - development
+
+# safelist
+branches:
+  only:
+  - master
+
+##############################
+
+matrix:
+  fast_finish: true
+  include:
+    - &macOS
+      os: osx
+      osx_image: xcode10.2
+      addons:
+        homebrew:
+          packages:
+            - gcc
+            - cmake
+            - openmpi
+          update: true
+    - &macOS_allowed_failure
+      <<: *macOS
+      addons:
+        homebrew:
+          packages:
+            - gcc
+            - cmake
+            - openmpi
+          update: true
+    - &ubuntu
+      os: linux
+      sudo: false
+      dist: xenial
+      env:
+        - GCC=8
+      cache:
+        apt: true
+        directories:
+          - "$CACHE"
+      addons:
+        apt:
+          sources: &linuxsrcs
+            - ubuntu-toolchain-r-test
+            - sourceline: 'deb https://apt.kitware.com/ubuntu/ xenial main'
+              key_url: 'https://apt.kitware.com/keys/kitware-archive-latest.asc'
+          packages: &gcc8pkgs
+            - cmake
+            - gcc-8
+            - g++-8
+            - gfortran-8
+    -
+      <<: *ubuntu
+      env:
+        - GCC=7
+      addons:
+        apt:
+          sources: *linuxsrcs
+          packages: &gcc7pkgs
+            - cmake
+            - gcc-7
+            - g++-7
+            - gfortran-7
+    -
+      <<: *ubuntu
+      env:
+        - BUILD_TYPE="InstallScript"
+          GCC=8
+      addons:
+        apt:
+          sources: *linuxsrcs
+          packages:
+            - gcc-8
+            - g++-8
+            - gfortran-8
+    - &linux_allowed_failure
+      <<: *ubuntu
+      addons:
+        apt:
+          sources: *linuxsrcs
+          packages: *gcc8pkgs
+
+  allow_failures:
+    - *linux_allowed_failure
+    - *macOS_allowed_failure
+
+##############################
+
+install:
+  - pwd
+  - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none
+
+#after_success:
+#  - bash <(curl -s https://codecov.io/bash)
