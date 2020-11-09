@@ -27,6 +27,15 @@
 </div>
   
   
+[Overview](#paramonte-plain-powerful-parallel-monte-carlo-library) | 
+[Installation](#installation) | 
+[Dependencies](#dependencies) | 
+[Parallelism](#parallelism) | 
+[License](#license) | 
+[Authors](#authors-and-contributors) | 
+[Examples](#example-usage-instructions)  
+  
+  
 ParaMonte: Plain Powerful Parallel Monte Carlo Library
 ======================================================
   
