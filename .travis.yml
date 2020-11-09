@@ -37,7 +37,7 @@ addons:
   apt:
     packages:
       - gcc
-      - cmake
+      - cmake-3.16
       - mpich
       - gfortran
 
@@ -60,7 +60,7 @@ matrix:
             - kalakris-cmake
             - ubuntu-toolchain-r-test
           packages:
-            - cmake
+            - cmake-3.16
             - gcc-9
             - gfortran-9
       env:
@@ -72,9 +72,6 @@ matrix:
 
 install:
   - pwd
-  - sudo apt remove --purge cmake
-  - hash -r
-  - sudo snap install cmake --classic
   - cmake --version
   - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none
 
