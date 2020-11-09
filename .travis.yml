@@ -43,12 +43,30 @@ addons:
 
 ##############################
 
-jobs:
+cache:
+  apt: true
+  pip: true
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.local
+
+matrix:
   include:
     - os: linux
       dist: trusty
-    - os: osx
-      osx_image: xcode10.2
+      addons:
+        apt:
+          sources:
+            - kalakris-cmake
+            - ubuntu-toolchain-r-test
+          packages:
+            - cmake
+            - gcc-9
+            - gfortran-9
+      env:
+        - GFORTRAN=gfortran-9
+        - gfortran=gfortran-9
+        - GCOV=gcov-9
 
 ##############################
 
