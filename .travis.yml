@@ -21,19 +21,19 @@ branches:
 
 os:
   - linux
-  - osx
+  #- osx
 
 #jobs:
 #  allow_failures:
 #    - os: osx
 
 addons:
-  homebrew:
-    packages:
-      - gcc
-      - cmake
-      - openmpi
-    update: true
+  #homebrew:
+  #  packages:
+  #    - gcc
+  #    - cmake
+  #    - openmpi
+  #  update: true
   apt:
     packages:
       - gcc
@@ -72,7 +72,13 @@ matrix:
 
 install:
   - pwd
+  - sudo apt remove --purge cmake
+  - hash -r
+  - sudo snap install cmake --classic
+  - cmake --version
   - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none
+
+script: ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --dryrun
 
 #after_success:
 #  - bash <(curl -s https://codecov.io/bash)
