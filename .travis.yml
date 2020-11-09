@@ -100,7 +100,7 @@ matrix:
 
 install:
   - pwd
-  - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --yes-to-all
+  - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --yes-to-all 
 
 #after_success:
 #  - bash <(curl -s https://codecov.io/bash)
