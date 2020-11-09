@@ -873,10 +873,10 @@ else # if fortran compiler path defined
     echo >&2
     echo >&2 "-- ${BUILD_NAME}Compiler - user-requested compiler path: ${Fortran_COMPILER_PATH}"
     echo >&2 "-- ${BUILD_NAME}Compiler - user-requested compiler name: ${Fortran_COMPILER_NAME}"
-    if [ "${Fortran_COMPILER_NAME}" = "gfortran" ] || [ "${Fortran_COMPILER_NAME}" = "caf" ]; then
+    if [[ "${Fortran_COMPILER_NAME}" =~ .*"gfortran".* || "${Fortran_COMPILER_NAME}" =~ .*"caf".* ]]; then
         PMCS=gnu
     fi
-    if [ "${Fortran_COMPILER_NAME}" = "ifort" ]; then
+    if [[ "${Fortran_COMPILER_NAME}" =~ .*"ifort".* ]; then
         PMCS=intel
     fi
 
