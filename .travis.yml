@@ -36,10 +36,9 @@ addons:
   #  update: true
   apt:
     packages:
-      - gcc
-      - cmake-3.16
-      - mpich
-      - gfortran
+      - gcc-9
+      - mpich-3
+      - gfortran-9
 
 ##############################
 
@@ -60,7 +59,6 @@ matrix:
             - kalakris-cmake
             - ubuntu-toolchain-r-test
           packages:
-            - cmake-3.16
             - gcc-9
             - gfortran-9
       env:
@@ -73,6 +71,7 @@ matrix:
 install:
   - pwd
   - cmake --version
+  - ./.travis/install.cmake.sh
   - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none
 
 script: ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --dryrun
