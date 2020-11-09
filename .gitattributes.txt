@@ -1,0 +1,13 @@
+# Prevent dev-ops files from making it into the release archives
+.travis.yml export-ignore
+.pullapprove.yml export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+developer-scripts export-ignore
+codecov.yml export-ignore
+*.enc export-ignore
+.github export-ignore
+makefile export-ignore
+Makefile export-ignore
+make.inc* export-ignore
+.Dockerfiles export-ignore
