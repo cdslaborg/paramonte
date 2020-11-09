@@ -3,7 +3,6 @@
 .pullapprove.yml export-ignore
 .gitattributes export-ignore
 .gitignore export-ignore
-developer-scripts export-ignore
 codecov.yml export-ignore
 *.enc export-ignore
 .github export-ignore
