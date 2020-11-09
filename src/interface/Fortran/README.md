@@ -25,13 +25,13 @@
 <br><br>
 <a href="https://twitter.com/intent/tweet?text=ParaMonte%20-%20Plain%20Powerfull%20Parallel%20Monte%20Carlo%20Library:&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" target="_blank"><img src="https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fcdslaborg%2Fparamonte" alt="Twitter" /></a> 
 <br><br>
-[Overview](#paramonte-plain-powerful-parallel-monte-carlo-library) | 
-[Installation](#installation) | 
-[Dependencies](#dependencies) | 
-[Parallelism](#parallelism) | 
-[License](#license) | 
-[Authors](#authors-and-contributors) | 
-[Examples](#example-usage-instructions)  
+<a href="#paramonte-plain-powerful-parallel-monte-carlo-library">Overview</a> | 
+<a href="#installation">Installation</a> | 
+<a href="#dependencies">Dependencies</a> | 
+<a href="#parallelism">Parallelism</a> | 
+<a href="#authors-and-contributors">Authors</a> | 
+<a href="#license">License</a> | 
+<a href="#example-usage-instructions">Examples</a> 
 </div>
   
   
