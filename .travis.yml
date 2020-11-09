@@ -19,92 +19,41 @@ branches:
   only:
   - master
 
+os:
+  - linux
+  - osx
+
+#jobs:
+#  allow_failures:
+#    - os: osx
+
+addons:
+  homebrew:
+    packages:
+      - gcc
+      - cmake
+      - openmpi
+    update: true
+  apt:
+    packages:
+      - gcc
+      - cmake
+      - mpich
+      - gfortran
+
 ##############################
 
-matrix:
-  fast_finish: true
+jobs:
   include:
-    - &macOS
-      os: osx
+    - os: linux
+      dist: trusty
+    - os: osx
       osx_image: xcode10.2
-      env:
-        - GCC=9
-          CC=gcc-9
-          CXX=g++-9
-          FC=gfortran-9
-      addons:
-        homebrew:
-          packages:
-            - gcc
-            - cmake
-            - openmpi
-          update: true
-    - &macOS_allowed_failure
-      <<: *macOS
-      addons:
-        homebrew:
-          packages:
-            - gcc
-            - cmake
-            - openmpi
-          update: true
-#    - &ubuntu
-#      os: linux
-#      sudo: false
-#      dist: xenial
-#      cache:
-#        apt: true
-#        directories:
-#          - "$CACHE"
-#      addons:
-#        apt:
-#          sources: &linuxsrcs
-#            - ubuntu-toolchain-r-test
-#            - sourceline: 'deb https://apt.kitware.com/ubuntu/ xenial main'
-#              key_url: 'https://apt.kitware.com/keys/kitware-archive-latest.asc'
-#          packages: &gcc8pkgs
-#            - cmake
-#            - gcc
-#            - g++
-#            - gfortran
-#    -
-#      <<: *ubuntu
-#      env:
-#        - GCC=9
-#      addons:
-#        apt:
-#          sources: *linuxsrcs
-#          packages: &gcc7pkgs
-#            - cmake
-#            - gcc
-#            - g++
-#            - gfortran
-#    -
-#      <<: *ubuntu
-#      addons:
-#        apt:
-#          sources: *linuxsrcs
-#          packages:
-#            - gcc
-#            - g++
-#            - gfortran
-#    - &linux_allowed_failure
-#      <<: *ubuntu
-#      addons:
-#        apt:
-#          sources: *linuxsrcs
-#          packages: *gcc8pkgs
-
-  allow_failures:
-    - *linux_allowed_failure
-    - *macOS_allowed_failure
 
 ##############################
 
 install:
   - pwd
-  #- sudo apt-get update
-  #- sudo apt-get install gcc gfortran
   - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none
 
 #after_success:
