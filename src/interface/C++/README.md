@@ -106,55 +106,6 @@ If the automatic installation is unsuccessful, you can also install the librarie
 For more information, visit [https://www.cdslab.org/paramonte/](https://www.cdslab.org/paramonte/).  
 
   
-Citing ParaMonte  
-================  
-
-The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.  
-  
-As per the ParaMonte library license agreement terms, if you use any parts of this library for any purposes, 
-kindly acknowledge the use of the ParaMonte library in your work (education/research/industry/development/...) 
-by citing the ParaMonte library's main publications as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md).  
-
-Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) 
-to access the PDF version of these files free of charge.  
-
-  
-License  
-=======  
-
-[MIT License](https://github.com/cdslaborg/paramonte/blob/master/LICENSE.md)  
-
-**What does this license mean?**  
-
-Essentially, all we are asking from the users or developers is to  
-
->   explicitly acknowledge the use of this library or any concepts or parts of it in their education, research, or software (free or commercial).  
-
-This is a free software, so help us keep it freely available to the public by redistributing the library and contributing to it. 
-If you have questions or concerns about the license, do not hesitate to contact us (shahmoradi@utexas.edu).  
-
-  
-Authors and contributors  
-========================  
-
-+   [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi)  
-    +   astrophysicist/bioinformatician by training (and a science-lover in general),  
-    +   Ph.D. in computational physics/bioinformatics from the University of Texas at Austin,  
-    +   currently a faculty member of Physics and Data Science at The University of Texas at Arlington,  
-    +   with teaching/research experience/background in computational and data sciences, statistics, 
-        data analysis, and modeling, stochastic processes, Monte Carlo Methods, Bayesian probability theory, 
-        high energy physics, astronomy and astrophysics, computational physics, Molecular Dynamics simulations, 
-        biomedical science and MRI data analysis, bioinformatics and evolutionary biology (viral evolution, 
-        protein dynamics, and interactions),  
-    +   contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
-
-+   [Fatemeh Bagheri](https://www.linkedin.com/in/fbagheri)  
-    +   physicist / cosmologist by training,  
-    +   currently a UTA Physics member,  
-    +   deep philosophical thinker,  
-    +   contact: [Fatemeh.Bagheri@uta.edu](mailto:"Fatemeh.Bagheri@uta.edu")  
-
-  
 Example usage instructions  
 ==========================  
 
@@ -272,6 +223,55 @@ Example usage instructions
     ./run.sh -n NUM_PROCESSOR
     ```  
     where you will have to replace `NUM_PROCESSOR` with your desired number of processes.  
+
+  
+Citing ParaMonte  
+================  
+
+The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.  
+  
+As per the ParaMonte library license agreement terms, if you use any parts of this library for any purposes, 
+kindly acknowledge the use of the ParaMonte library in your work (education/research/industry/development/...) 
+by citing the ParaMonte library's main publications as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md).  
+
+Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) 
+to access the PDF version of these files free of charge.  
+
+  
+License  
+=======  
+
+[MIT License](https://github.com/cdslaborg/paramonte/blob/master/LICENSE.md)  
+
+**What does this license mean?**  
+
+Essentially, all we are asking from the users or developers is to  
+
+>   explicitly acknowledge the use of this library or any concepts or parts of it in their education, research, or software (free or commercial).  
+
+This is a free software, so help us keep it freely available to the public by redistributing the library and contributing to it. 
+If you have questions or concerns about the license, do not hesitate to contact us (shahmoradi@utexas.edu).  
+
+  
+Authors and contributors  
+========================  
+
++   [Amir Shahmoradi](https://www.cdslab.org/people/#amir-shahmoradi)  
+    +   astrophysicist/bioinformatician by training (and a science-lover in general),  
+    +   Ph.D. in computational physics/bioinformatics from the University of Texas at Austin,  
+    +   currently a faculty member of Physics and Data Science at The University of Texas at Arlington,  
+    +   with teaching/research experience/background in computational and data sciences, statistics, 
+        data analysis, and modeling, stochastic processes, Monte Carlo Methods, Bayesian probability theory, 
+        high energy physics, astronomy and astrophysics, computational physics, Molecular Dynamics simulations, 
+        biomedical science and MRI data analysis, bioinformatics and evolutionary biology (viral evolution, 
+        protein dynamics, and interactions),  
+    +   contact: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  
+
++   [Fatemeh Bagheri](https://www.linkedin.com/in/fbagheri)  
+    +   physicist / cosmologist by training,  
+    +   currently a UTA Physics member,  
+    +   deep philosophical thinker,  
+    +   contact: [Fatemeh.Bagheri@uta.edu](mailto:"Fatemeh.Bagheri@uta.edu")  
 
 
 **For more information**, visit [cdslab.org/pm](https://www.cdslab.org/paramonte) or contact Amir Shahmoradi: [shahmoradi@utexas.edu](mailto:"shahmoradi@utexas.edu")  

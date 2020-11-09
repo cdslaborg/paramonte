@@ -49,10 +49,10 @@ sectionList =   [ "quickstart"
                 , "installation"
                 , "dependencies"
                 , "parallelism"
+                , "examples"
                 , "citation"
                 , "license"
                 , "authors"
-                , "examples"
                 ]
 
 readme = dict()
