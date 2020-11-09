@@ -186,6 +186,7 @@ _deps
 # documentation
 #########################
 
+**/devscripts/*
 **/doxygen/*
 **/draft/*
 **/doc/*
