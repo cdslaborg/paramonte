@@ -4,13 +4,6 @@ sudo: false
 matrix:
   include:
     - os: osx
-      addons:
-        homebrew:
-          update: false
-          packages:
-            - gcc
-            - cmake
-            - openmpi
       before_install:
         - brew install gcc || brew upgrade gcc
         - brew install cmake || brew upgrade cmake
