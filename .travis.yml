@@ -21,9 +21,10 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - mpich-3
             - gfortran-8
       script:
-        - chmod +x ./ci/install_cmake.sh && ./ci/install_cmake.sh
+        - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
         - alias gfortran=gfortran-8
         - export FC=gfortran-8
         - cmake --version
