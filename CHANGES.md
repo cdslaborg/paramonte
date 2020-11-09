@@ -45,9 +45,11 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     then, the ParaMonte sampler will overwrite the existing simulation files.  
 
 **Compiler support**  
-
-+   Intel Parallel Studio (>2018.0.0)  
-+   GNU Compiler Collection (>7.0.0)  
+  
+| Compiler Suite                    | Linux | macOS | Windows (64bit) |  
+|----------------------------------:|:-----:|:-----:|:---------------:|  
+| GNU Compiler Collection > 7.1     |&check;|&check;| &cross;         |  
+| Intel Parallel Studio > 18.0.0    |&check;|&check;| &check;         |  
 
 **Compiler / MPI library used for this binary release**  
 
@@ -89,9 +91,11 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 +   minor typo fixes
 
 **Compiler support**  
-
-+   Intel Parallel Studio (>2018.0.0)  
-+   GNU Compiler Collection (>7.0.0)  
+  
+| Compiler Suite                    | Linux | macOS | Windows (64bit) |  
+|----------------------------------:|:-----:|:-----:|:---------------:|  
+| GNU Compiler Collection > 7.1     |&check;|&check;| &cross;         |  
+| Intel Parallel Studio > 18.0.0    |&check;|&check;| &check;         |  
 
 **Compiler / MPI library used for this binary release**  
 
@@ -119,9 +123,11 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 +   The fully-deterministic restart functionality is now functional also when chainFileFormat="verbose" in ParaDRAM simulations.
 
 **Compiler support**  
-
-+   Intel Parallel Studio (>2018.0.0)  
-+   GNU Compiler Collection (>7.0.0)  
+  
+| Compiler Suite                    | Linux | macOS | Windows (64bit) |  
+|----------------------------------:|:-----:|:-----:|:---------------:|  
+| GNU Compiler Collection > 7.1     |&check;|&check;| &cross;         |  
+| Intel Parallel Studio > 18.0.0    |&check;|&check;| &check;         |  
 
 **Compiler / MPI library used for this binary release**  
 
@@ -142,9 +148,11 @@ This is the first public release of the ParaMonte library.
 +   ParaMonte simulation-output visualization via the ParaMonte Python interface.  
 
 **Compiler support**  
-
-+   Intel Parallel Studio (>2018.0.0)  
-+   GNU Compiler Collection (>7.0.0)  
+  
+| Compiler Suite                    | Linux | macOS | Windows (64bit) |  
+|----------------------------------:|:-----:|:-----:|:---------------:|  
+| GNU Compiler Collection > 7.1     |&check;|&check;| &cross;         |  
+| Intel Parallel Studio > 18.0.0    |&check;|&check;| &check;         |  
 
 **Compiler / MPI library used for this binary release**  
 

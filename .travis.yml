@@ -1,0 +1,11 @@
+language: c
+sudo: required
+before_install:
+  - sudo apt-get install gfortran
+
+script:
+  - gfortran -fprofile-arcs -ftest-coverage -O0 hello.f90 -o hello
+  - ./hello
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
