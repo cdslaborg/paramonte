@@ -41,10 +41,10 @@ matrix:
       before_install:
         - brew install gcc || brew upgrade gcc
         - brew install cmake || brew upgrade cmake
-        - brew install openmpi || brew upgrade openmpi
+        #- brew install openmpi || brew upgrade openmpi
         - brew link gcc
         - brew link cmake
-        - brew link openmpi
+        #- brew link openmpi
       script:
         - cmake --version
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
