@@ -79,13 +79,13 @@ Installation
 The pre-built ready-to-use libraries are available on [the release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases). 
 Each prebuilt ParaMonte library automatically ships with a full-fledged set of example codes and build scripts.  
 
-Alternatively, you can build the library from the source in the GitHub repository of the project: https://github.com/cdslaborg/paramonte  
+Alternatively, you can build the library from the source in the [GitHub repository of the project](https://github.com/cdslaborg/paramonte). 
 The ParaMonte library installation/build process is fully automated for all of the supported programming languages. 
 Currently, the following compiler suites are supported for builds from source:  
   
 | Compiler Suite | Linux | macOS | Windows (64bit) |  
 |---------------:|:-----:|:-----:|:---------------:|  
-| GCC > 7.1      |&check;|&check;| &cross;         |  
+| GNU > 7.1      |&check;|&check;| &cross;         |  
 | Intel > 18.0.0 |&check;|&check;| &check;         |  
 
 For more information and quick-start in the programming language of your choice, visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).  
