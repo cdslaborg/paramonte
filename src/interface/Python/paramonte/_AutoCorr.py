@@ -373,6 +373,7 @@ class AutoCorr:
             elif plotNames in self._plotTypeList:
                 requestedPlotTypeList = [plotNames]
             else:
+                requestedPlotTypeList = None # non-essential, only to silence scrutinizer.
                 self._reportWrongPlotName(plotNames)
         elif isinstance(plotNames, list):
             for plotName in plotNames:

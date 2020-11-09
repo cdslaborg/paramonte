@@ -33,3 +33,4 @@ matrix:
         - tar xvzf libparamonte_c_darwin_x64_gnu_release_dynamic_heap.tar.gz
         - cd libparamonte_c_darwin_x64_gnu_release_dynamic_heap
         - ./build.sh
+        - ./run.sh
