@@ -200,9 +200,19 @@ Installation
 """
 
 readme["installation"]["main"] = readme["installation"]["title"] + """
-The ParaMonte library installation/build process is fully automated for all of the supported programming languages. 
-The pre-built ready-to-use libraries are also available on [the release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases). 
+The pre-built ready-to-use libraries are available on [the release page of the ParaMonte library on GitHub](https://github.com/cdslaborg/paramonte/releases). 
 Each prebuilt ParaMonte library automatically ships with a full-fledged set of example codes and build scripts.  
+
+Alternatively, you can build the library from the source in the GitHub repository of the project: https://github.com/cdslaborg/paramonte  
+The ParaMonte library installation/build process is fully automated for all of the supported programming languages. 
+For instructions, please visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
+
+Currently, the following compiler suites are supported for builds from source:  
+  
+| Compiler Suite | Linux | macOS | Windows (64bit) |  
+|---------------:|:-----:|:-----:|:---------------:|  
+| GCC > 7.1      |&check;|&check;| &cross;         |  
+| Intel > 18.0.0 |&check;|&check;| &check;         |  
 
 For more information and quick-start in the programming language of your choice, visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).  
 """
@@ -217,16 +227,6 @@ readme["installation"]["matlab"] = readme["installation"]["title"] + """
 The latest release of the ParaMonte MATLAB library can be downloaded from the release page of the library's repository on GitHub:  
 
 [https://github.com/cdslaborg/paramonte/releases/latest/](https://github.com/cdslaborg/paramonte/releases/latest/)  
-
-Alternatively, you can build the library from the source in the GitHub repository of the project: https://github.com/cdslaborg/paramonte  
-For instructions, please visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
-
-Currently, the following compiler suites are supported for builds from source:  
-  
-| Compiler Suite | Linux | macOS | Windows (64bit) |  
-|---------------:|:-----:|:-----:|:---------------:|  
-| GCC 8          |&check;|&check;| &cross;         |  
-| Intel 18       |&check;|&check;| &check;         |  
 """
 
 readme["installation"]["python"] = readme["installation"]["title"] + """
