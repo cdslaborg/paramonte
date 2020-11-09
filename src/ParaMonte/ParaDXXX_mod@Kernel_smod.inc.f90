@@ -699,7 +699,7 @@ contains
 
             else blockMasterImage   ! This block should be executed only when singlChain parallelizationModel is requested
 
-                ! fetch winning rank to all processes
+                ! fetch the winning rank from the main process
 
                 call self%Timer%toc()
                 call mpi_bcast  ( imageID           &   ! buffer

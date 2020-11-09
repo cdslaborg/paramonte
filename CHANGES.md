@@ -15,6 +15,22 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     on the MPI compiler wrappers is now removed as the MPI libraries are not required to 
     build the ParaMonte examples, even in cases of parallel ParaMonte example builds.
 
+**Compiler support**  
+  
+| Compiler Suite                    | Windows (64bit) | Linux | macOS |  
+|----------------------------------:|:---------------:|:-----:|:-----:|  
+| GNU Compiler Collection > 7.0     | ✅              | ✅    | ✅    |  
+| Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
+| Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
+
+**Compiler / MPI library used for this binary release**  
+
++   **Windows**: Intel Parallel Studio Version 19.0.4.245 Build 20190417 / Intel(R) MPI Library 2019 Update 4 for Windows  
++   **Linux**: Intel Parallel Studio Version 18.0.2 20180210 / Intel(R) MPI Library for Linux OS, Version 2018 Update 2 Build 20180125  
++   **Linux**: GNU 9.1 / MPICH 3.2  
++   **macOS**: Intel Parallel Studio Version 19.1.0.216 20200306  
++   **macOS**: GNU 10.2.0 / Open-MPI 4.0.5  
+
 ### **Version 1.4.0** -- October 29, 2020
 
 **Enhancements**  
@@ -32,6 +48,22 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     be reversed back to the original by specifying "max" or "maximum" along with 
     the requested refinement method, `SampleRefinementMethod = "batchmeans max"` 
     or `SampleRefinementMethod = "BatchMeans-max"` (case-insensitive).
+
+**Compiler support**  
+  
+| Compiler Suite                    | Windows (64bit) | Linux | macOS |  
+|----------------------------------:|:---------------:|:-----:|:-----:|  
+| GNU Compiler Collection > 7.0     | ✅              | ✅    | ✅    |  
+| Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
+| Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
+
+**Compiler / MPI library used for this binary release**  
+
++   **Windows**: Intel Parallel Studio Version 19.0.4.245 Build 20190417 / Intel(R) MPI Library 2019 Update 4 for Windows  
++   **Linux**: Intel Parallel Studio Version 18.0.2 20180210 / Intel(R) MPI Library for Linux OS, Version 2018 Update 2 Build 20180125  
++   **Linux**: GNU 9.1 / MPICH 3.2  
++   **macOS**: Intel Parallel Studio Version 19.1.0.216 20200306  
++   **macOS**: GNU 10.2.0 / Open-MPI 4.0.5  
 
 ### **Version 1.3.0** -- October 3, 2020
 
