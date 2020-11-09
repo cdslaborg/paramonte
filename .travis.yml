@@ -15,6 +15,20 @@ cache:
 matrix:
   include:
 
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - gfortran-8
+      script:
+        - chmod +x ./ci/install_cmake.sh && ./ci/install_cmake.sh
+        - alias gfortran=gfortran-8
+        - export FC=gfortran-8
+        - cmake --version
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
+
     - os: osx
       before_install:
         - brew install gcc || brew upgrade gcc
