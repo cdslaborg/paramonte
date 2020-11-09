@@ -27,6 +27,11 @@ matrix:
     - &macOS
       os: osx
       osx_image: xcode10.2
+      env:
+        - GCC=9
+          CC=gcc-9
+          CXX=g++-9
+          FC=gfortran-9
       addons:
         homebrew:
           packages:
