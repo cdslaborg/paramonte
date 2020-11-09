@@ -12,7 +12,9 @@ matrix:
             - cmake
             - openmpi
       before_install:
+        - brew install gcc
         - brew link gcc
+        - brew install openmpi
         - brew link openmpi
       script:
         - cmake --version
