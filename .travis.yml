@@ -46,6 +46,7 @@ matrix:
         - brew link cmake
         #- brew link openmpi
       script:
+        - which mpiexec
         - cmake --version
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
 
