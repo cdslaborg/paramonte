@@ -28,11 +28,8 @@ matrix:
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
 
     - os: osx
-      before_install:
+      script:
         - wget "https://github.com/cdslaborg/paramonte/releases/download/v1.4.0/libparamonte_c_darwin_x64_gnu_release_dynamic_heap.tar.gz"
         - tar xvzf libparamonte_c_darwin_x64_gnu_release_dynamic_heap.tar.gz
         - cd libparamonte_c_darwin_x64_gnu_release_dynamic_heap
         - ./build.sh
-      script:
-        - cmake --version
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
