@@ -220,6 +220,14 @@ The latest release of the ParaMonte MATLAB library can be downloaded from the re
 
 Alternatively, you can build the library from the source in the GitHub repository of the project: https://github.com/cdslaborg/paramonte  
 For instructions, please visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
+
+Currently, the following compiler suites are supported for builds from source:
+
+| Compiler Suite | Linux | macOS | Windows (64bit) |
+|---------------:|:-----:|:-----:|:---------------:|
+| GCC 8          |&check;|&check;| &cross;         |
+| Intel 18       |&check;|&check;| &check;         |
+
 """
 
 readme["installation"]["python"] = readme["installation"]["title"] + """
