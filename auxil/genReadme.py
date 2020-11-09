@@ -205,8 +205,6 @@ Each prebuilt ParaMonte library automatically ships with a full-fledged set of e
 
 Alternatively, you can build the library from the source in the GitHub repository of the project: https://github.com/cdslaborg/paramonte  
 The ParaMonte library installation/build process is fully automated for all of the supported programming languages. 
-For instructions, please visit: [cdslab.org/pm](https://www.cdslab.org/paramonte)  
-
 Currently, the following compiler suites are supported for builds from source:  
   
 | Compiler Suite | Linux | macOS | Windows (64bit) |  
