@@ -1,80 +1,33 @@
 language: c
-sudo: required
-
-git:
-  submodules: false
-  symlinks: true
-  clone: true
-  #quiet: true
-
-##############################
-
-# blocklist
-branches:
-  except:
-  - development
-
-# safelist
-branches:
-  only:
-  - master
-
-os:
-  - linux
-  #- osx
-
-#jobs:
-#  allow_failures:
-#    - os: osx
-
-addons:
-  #homebrew:
-  #  packages:
-  #    - gcc
-  #    - cmake
-  #    - openmpi
-  #  update: true
-  apt:
-    packages:
-      - gcc-9
-      - mpich-3
-      - gfortran-9
-
-##############################
-
-cache:
-  apt: true
-  pip: true
-  directories:
-    - $HOME/.cache/pip
-    - $HOME/.local
+sudo: false
 
 matrix:
   include:
     - os: linux
-      dist: trusty
       addons:
         apt:
           sources:
-            - kalakris-cmake
             - ubuntu-toolchain-r-test
           packages:
+            - cmake
+            - gfortran-8
+
+      script:
+        - cmake --version
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
+
+    - os: osx
+      addons:
+        homebrew:
+          update: true
+          packages:
             - gcc-9
-            - gfortran-9
-      env:
-        - GFORTRAN=gfortran-9
-        - gfortran=gfortran-9
-        - GCOV=gcov-9
+            - cmake
+            - openmpi
+      before_install:
+        - brew link gcc
+        - brew link openmpi
 
-##############################
-
-install:
-  - pwd
-  - cmake --version
-  - chmod +x ./.travis/install.cmake.sh && ./.travis/install.cmake.sh
-  - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none
-
-script: ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --dryrun
-
-#after_success:
-#  - bash <(curl -s https://codecov.io/bash)
+      script:
+        - cmake --version
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
