@@ -71,7 +71,7 @@ matrix:
 install:
   - pwd
   - cmake --version
-  - ./.travis/install.cmake.sh
+  - chmod +x ./.travis/install.cmake.sh && ./.travis/install.cmake.sh
   - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none
 
 script: ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --dryrun
