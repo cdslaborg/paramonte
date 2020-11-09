@@ -31,22 +31,22 @@ matrix:
             - shellcheck
           update: true
 
-#    - os: linux
-#      addons:
-#        apt:
-#          sources:
-#            - ubuntu-toolchain-r-test
-#          packages:
-#            - mpich
-#            - gfortran-8
-#      script:
-#        - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
-#        - export FC=gfortran-8
-#        - cmake --version
-#        - gfortran-8 --version
-#        - which mpiexec
-#        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --fortran $(which gfortran-8) --mpiexec $(which mpiexec) --yes-to-all
-#
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - mpich
+            - gfortran-8
+      script:
+        - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
+        - export FC=gfortran-8
+        - cmake --version
+        - gfortran-8 --version
+        - echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --fortran $(which gfortran-8) --mpiexec $(which mpiexec) --yes-to-all
+
 #    - name: "darwin"
 #      os: osx
 #      osx_image: xcode10
