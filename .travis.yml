@@ -3,6 +3,7 @@ sudo: false
 
 matrix:
   include:
+
     - os: osx
       before_install:
         - brew install gcc || brew upgrade gcc
@@ -11,6 +12,16 @@ matrix:
         - brew link gcc
         - brew link cmake
         - brew link openmpi
+      script:
+        - cmake --version
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
+
+    - os: osx
+      before_install:
+        - wget "https://github.com/cdslaborg/paramonte/releases/download/v1.4.0/libparamonte_c_darwin_x64_gnu_release_dynamic_heap.tar.gz"
+        - ls libparamonte*.tar.gz | xargs -i tar xvzf {}
+        - cd libparamonte_c_darwin_x64_gnu_release_dynamic_heap
+        - ./build.sh
       script:
         - cmake --version
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none -s gnu
