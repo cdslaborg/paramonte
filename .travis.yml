@@ -39,8 +39,8 @@ matrix:
           - cmake
           - openmpi
       before_install:
-        - brew install gcc || brew upgrade gcc
-        - brew install cmake || brew upgrade cmake
+        #- brew install gcc || brew upgrade gcc
+        #- brew install cmake || brew upgrade cmake
         #- brew install openmpi || brew upgrade openmpi
         - brew link gcc
         - brew link cmake
