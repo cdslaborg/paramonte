@@ -1076,6 +1076,9 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                                 echo >&2
                                 read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
                                 echo >&2
+                                if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                    answer=YES
+                                fi
                                 if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                                     GCC_BOOTSTRAP="--bootstrap"
                                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
