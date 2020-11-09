@@ -138,6 +138,11 @@ if not exist !ParaMonte_FILE_LIST! (
 
 :: generate ParaMonte library object files
 
+if !FPP_ONLY_ENABLED!==true (
+    set MPI_ENABLED=false
+    if !COMPILER_SUITE!==intel set FCL=ifort
+)
+
 if !MPI_ENABLED!==true (
     for /F "eol=! tokens=*" %%A in (!ParaMonte_FILE_LIST!) do (
         echo. -- ParaMonte - generating object file for %%A

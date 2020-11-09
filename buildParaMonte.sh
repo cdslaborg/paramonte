@@ -503,12 +503,16 @@ export cmakeInstallEnabled
 # set local dependencies
 ####################################################################################################################################
 
+openCoarraysVersion="2.9.0"
+gnuVersionOpenCoarrays="10.1.0"
+mpichVersionOpenCoarrays="3.2"
+
 ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
 export ParaMonte_REQ_DIR
 ParaMonte_REQ_INSTALL_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations"
-ParaMonte_GNU_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/gnu/8.3.0"
-ParaMonte_MPI_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/mpich/3.2"
-ParaMonte_CAF_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/opencoarrays/2.8.0"
+ParaMonte_GNU_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/gnu/${gnuVersionOpenCoarrays}"
+ParaMonte_MPI_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/mpich/${mpichVersionOpenCoarrays}"
+ParaMonte_CAF_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/opencoarrays/${openCoarraysVersion}"
 ParaMonte_CMAKE_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/cmake/${cmakeVersionRequired}"
 
 ParaMonte_GNU_BIN_DIR="${ParaMonte_GNU_ROOT_DIR}/bin"
@@ -944,7 +948,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
     if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${gnuInstallEnabled}" = "true" ] || [ "${cmakeInstallEnabled}" = "true" ]; then
 
         #ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
-        #ParaMonte_CAF_SETUP_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/2.8.0/setup.sh"
+        #ParaMonte_CAF_SETUP_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/${openCoarraysVersion}/setup.sh"
 
         if [ "${FRESH_INSTALL_ENABLED}" = "true" ]; then
             rm -rf "${ParaMonte_REQ_DIR}"
@@ -1060,7 +1064,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
             else
                 CURRENT_PKG="the MPICH library"
                 if [ "${mpiInstallEnabled}" = "true" ]; then
-                    #ParaMonte_MPI_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/mpich/3.2/bin"
+                    #ParaMonte_MPI_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/mpich/${mpichVersionOpenCoarrays}/bin"
                     MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
                     if [[ -f "${MPIEXEC_PATH}" ]]; then
                         echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected."
@@ -1100,7 +1104,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
             CURRENT_PKG="the GNU compiler collection"
             if [ "${gnuInstallEnabled}" = "true" ]; then
-                #ParaMonte_GNU_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/gnu/8.3.0/bin"
+                #ParaMonte_GNU_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/gnu/${gnuVersionOpenCoarrays}/bin"
                 Fortran_COMPILER_PATH="${ParaMonte_GNU_BIN_DIR}/gfortran"
                 if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
                     echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected."

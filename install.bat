@@ -78,7 +78,7 @@ set "INSTALL_SCRIPT_NAME=ParaMonte install.bat"
 
 REM type .\bmake\install_usage.txt
 
-set FPP_FLAGS_EXTRA=
+set FPP_FLAGS_USER=
 set LANG_LIST=
 set BTYPE_LIST=
 set LTYPE_LIST=
@@ -252,16 +252,11 @@ if not "%1"=="" (
 
     if "!FLAG!"=="--fpp" (
         set FLAG_SUPPORTED=true
-        set FPP_ONLY_ENABLED_TEMP=false
         set FPP_MACRO=%2
-        if "!FPP_MACRO!"=="/P" set FPP_ONLY_ENABLED_TEMP=true
-        if "!FPP_MACRO!"=="/preprocess-only" set FPP_ONLY_ENABLED_TEMP=true
-        if "!FPP_MACRO!"=="only" set FPP_ONLY_ENABLED_TEMP=true
-        if !FPP_ONLY_ENABLED_TEMP!==true (
-            set FPP_ONLY_ENABLED=true
-        ) else (
-            set "FPP_FLAGS_EXTRA=!FPP_FLAGS_EXTRA! !FPP_MACRO!"
-        )
+        if "!FPP_MACRO!"=="only" set FPP_MACRO=/preprocess-only
+        if "!FPP_MACRO!"=="/P" set FPP_ONLY_ENABLED=true
+        if "!FPP_MACRO!"=="/preprocess-only" set FPP_ONLY_ENABLED=true
+        set "FPP_FLAGS_USER=!FPP_FLAGS_USER! !FPP_MACRO!"
         shift
     )
 
@@ -501,6 +496,7 @@ echo. BTYPE_LIST=!BTYPE_LIST!
 echo. LTYPE_LIST=!LTYPE_LIST!
 echo. MEMORY_LIST=!MEMORY_LIST!
 echo. PARALLELISM_LIST=!PARALLELISM_LIST!
+echo. FPP_ONLY_ENABLED=!FPP_ONLY_ENABLED!
 
 for %%G in ("!LANG_LIST:/=" "!") do (
 
