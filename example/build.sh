@@ -538,7 +538,7 @@ do
         echo "" >> ${RUN_FILE_NAME}
         echo "chmod +x ${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
         if [ "${MPI_ENABLED}" = "true" ]; then
-            echo "mpiexec -n \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
+            echo "mpiexec -n \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME} || mpiexec --oversubscribe -n \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
             echo "" >> ${RUN_FILE_NAME}
         else
             if [ "${CAF_ENABLED}" = "true" ]; then
