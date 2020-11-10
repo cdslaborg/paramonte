@@ -27,13 +27,13 @@ matrix:
       addons:
         homebrew:
           packages:
-            - gcc-9
+            - gcc@9
             - cmake
             - openmpi
             - shellcheck
           update: true
       before_install:
-        - brew install gcc || brew upgrade gcc
+        - brew install gcc@9 || brew upgrade gcc
         - brew install cmake || brew upgrade cmake
         - brew install openmpi || brew upgrade openmpi
         - brew link gcc
@@ -53,11 +53,11 @@ matrix:
           packages:
             - cmake
             - mpich
-            - gcc-10
+            - gcc@10
             - shellcheck
           update: true
       before_install:
-        - brew install gcc || brew upgrade gcc
+        - brew install gcc@10 || brew upgrade gcc
         - brew install cmake || brew upgrade cmake
         - brew install mpich || brew upgrade mpich
         - brew link gcc
