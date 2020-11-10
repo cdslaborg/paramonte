@@ -27,18 +27,43 @@ matrix:
       addons:
         homebrew:
           packages:
-            - gcc
-            - mpich
+            - gcc-9
+            - cmake
+            - openmpi
             - shellcheck
           update: true
-     #before_install:
-        #- brew install gcc || brew upgrade gcc
-        #- brew install cmake || brew upgrade cmake
-        #- brew install openmpi || brew upgrade openmpi
-        #- brew link openmpi
-      script:
+      before_install:
+        - brew install gcc || brew upgrade gcc
+        - brew install cmake || brew upgrade cmake
+        - brew install openmpi || brew upgrade openmpi
         - brew link gcc
         - brew link cmake
+        - brew link openmpi
+      script:
+        - cmake --version
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
+
+    - &macOS
+      os: osx
+      osx_image: xcode10.2
+      env:
+        - BUILD_TYPE="InstallScript"
+      addons:
+        homebrew:
+          packages:
+            - cmake
+            - mpich
+            - gcc-10
+            - shellcheck
+          update: true
+      before_install:
+        - brew install gcc || brew upgrade gcc
+        - brew install cmake || brew upgrade cmake
+        - brew install mpich || brew upgrade mpich
+        - brew link gcc
+        - brew link cmake
+        - brew link mpich
+      script:
         - cmake --version
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
 
