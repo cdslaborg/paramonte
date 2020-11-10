@@ -226,7 +226,7 @@ do
 
     # The ParaMonte library dll dependency files
 
-    if ! [ "${PMCS}" = "intel" ]; then
+    if ! [ "${PMCS}" = "intel" ] && ! [ "${CAF_ENABLED}" = "true" ]; then # caf does not have lib dependency
         if ! [ -z ${Fortran_COMPILER_PATH+x} ]; then
             Fortran_COMPILER_DIR=$(dirname "${Fortran_COMPILER_PATH}")
             Fortran_COMPILER_ROOT_DIR="${Fortran_COMPILER_DIR}"/..

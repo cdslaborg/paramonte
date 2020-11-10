@@ -122,11 +122,26 @@ else()
     -ffpe-trap=zero,overflow,underflow    # Floating-point invalid, divide-by-zero, and overflow exceptions are enabled
     -finit-real=snan                      # initialize REAL and COMPLEX variables with a signaling NaN
     -fbacktrace                           # trace back for debugging
-    --pedantic                            # issue warnings for uses of extensions to the Fortran standard
+   #--pedantic                            # issue warnings for uses of extensions to the Fortran standard. Gfortran10 with MPICH 3.2 in debug mode crashes with this flag at mpi_bcast. Excluded until MPICH upgraded.
     -fmax-errors=10                       # max diagnostic error count
     -Wall                                 # enable all warnings: 
                                           # -Waliasing, -Wampersand, -Wconversion, -Wsurprising, -Wc-binding-type, -Wintrinsics-std, -Wtabs, -Wintrinsic-shadow,
                                           # -Wline-truncation, -Wtarget-lifetime, -Winteger-division, -Wreal-q-constant, -Wunused, -Wundefined-do-loop
+                                          # gfortran10 crashes and cannot compile MPI ParaMonte with mpich in debug mode. Therefore -wall is disabled for now, until MPICH upgrades interface.
+    #-Waliasing
+    #-Wampersand
+    #-Wconversion
+    #-Wsurprising
+    #-Wc-binding-type
+    #-Wintrinsics-std
+    #-Wtabs
+    #-Wintrinsic-shadow
+    #-Wline-truncation
+    #-Wtarget-lifetime
+    #-Winteger-division
+    #-Wreal-q-constant
+    #-Wunused
+    #-Wundefined-do-loop
     )
 endif()
 if (DEFINED INTEL_Fortran_DEBUG_FLAGS)
@@ -763,7 +778,11 @@ if (intel_compiler)
 
 elseif (gnu_compiler)
 
-    set(FCL_FLAGS_DEFAULT -std=gnu -ffree-line-length-none  CACHE STRING "GNU Fortran default compiler flags" )
+    # -std=legacy is required to bypass the new gfortran 10 error on argument-mismatch. The MPICH 3.2 library mpi_bcast still requires argument-mismatch, 
+    # which causes gfortran to break the compilation.
+    # The problem still persists in debug mode. Therefore, when gfortran is 10, debug mode is disabled.
+    #set(FCL_FLAGS_DEFAULT -std=gnu -ffree-line-length-none -fallow-argument-mismatch CACHE STRING "GNU Fortran default compiler flags" )
+    set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none CACHE STRING "GNU Fortran default compiler flags" )
     set(CCL_FLAGS_DEFAULT -ffree-line-length-none  CACHE STRING "GNU CXX default compiler flags" )
     if (MT_ENABLED)
         set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -pthread )

@@ -48,13 +48,21 @@ program getCompilerVersion
     integer(IK)                 :: fileunit, startindex, endindex
     logical                     :: isIntel = .false.
     logical                     :: isGNU = .false.
-    character(:), allocatable   :: string, isParaMonteCompatibleCompiler
+    character(:), allocatable   :: string, isParaMonteCompatibleCompiler, outdir, isGfortran10
 
     type :: CharVec_type
         character(:)    , allocatable   :: record
     end type CharVec_type
 
     type(CharVec_type)  , allocatable   :: VersionParts(:)
+
+    if (command_argument_count()==2) then
+        allocate( character(1000) :: outdir )
+        call get_command_argument(2, value = outdir)
+        outdir = trim(adjustl(outdir))
+    else
+        outdir = "./"
+    end if
 
     isParaMonteCompatibleCompiler = "false"
     string = trim(adjustl(compiler_version()))
@@ -70,7 +78,7 @@ program getCompilerVersion
     end if
 
     string = trim(adjustl(string(startindex:endindex)))
-    open(newunit=fileunit,file="getCompilerVersion.tmp")
+    open(newunit=fileunit,file=outdir//"getCompilerVersion.tmp")
     write(fileunit,"(A)") string
     close(fileunit)
 
@@ -80,17 +88,23 @@ program getCompilerVersion
     !if ( lge(string(1:6),"18.0.0") ) isParaMonteCompatibleCompiler = "true"
 
     VersionParts = splitStr(string, ".")
+    isGfortran10 = "false"
     if (isIntel) then
         MinVersion = INTEL_VERSION
     elseif (isGNU) then
         MinVersion = GNU_VERSION
+        if ( str2int(VersionParts(1)%record) > 9 ) isGfortran10 = "true"
     end if
     if  ( str2int(VersionParts(1)%record) > MinVersion(1) .or. &
         ( str2int(VersionParts(1)%record)== MinVersion(1) .and. str2int(VersionParts(2)%record) >= MinVersion(2) ) ) &
         isParaMonteCompatibleCompiler = "true"
 
-    open(newunit=fileunit,file="isParaMonteCompatibleCompiler.tmp")
+    open(newunit=fileunit,file=outdir//"isParaMonteCompatibleCompiler.tmp")
     write(fileunit,"(A)") isParaMonteCompatibleCompiler
+    close(fileunit)
+
+    open(newunit=fileunit,file=outdir//"isGfortran10.tmp")
+    write(fileunit,"(A)") isGfortran10
     close(fileunit)
 
 contains
