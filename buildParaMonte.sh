@@ -609,8 +609,9 @@ do
 
             if [ "${LANG}" = "Fortran" ]; then
 
-                cd ./auxil/
-
+                tempDir=$(mktemp --directory --tmpdir="${ParaMonte_ROOT_DIR}/build");
+                cd "${tempDir}"
+                cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
                 if ${!suiteLangCompilerPath} getCompilerVersion.f90 -o getCompilerVersion.exe; then
 
                     chmod +x getCompilerVersion.exe
@@ -618,6 +619,7 @@ do
                         eval ${suiteLangCompilerVersion}='$(head -n 1 getCompilerVersion.tmp)'
                         echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version: ${suiteLangCompilerVersion}=${!suiteLangCompilerVersion}"
                         isParaMonteCompatibleCompiler=$(head -n 1 isParaMonteCompatibleCompiler.tmp)
+                        isGfortran10=$(head -n 1 isGfortran10.tmp); export isGfortran10
                         if [ "$isParaMonteCompatibleCompiler" = "true" ]; then
                             echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is ParaMonte compatible!"
                             eval "export $suiteLangCompilerPath"
@@ -640,7 +642,8 @@ do
 
                 fi
 
-                cd ..
+                cd "${ParaMonte_ROOT_DIR}"
+                rm -rf "${tempDir}"
 
             fi
 
@@ -830,7 +833,7 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
             fi
         fi
 
-        if [ "${MPI_ENABLED}" = "true" ]; then
+        if [ "${MPI_ENABLED}" = "true" ]; then # && ! [ -f "${MPIEXEC_PATH}" ]; then
             if [ -f "${gnuFortranMpiWrapperPath}" ]; then
                 MPIEXEC_PATH=$(dirname "${gnuFortranMpiWrapperPath}")/mpiexec
                 mpiInstallEnabled=false
@@ -941,6 +944,12 @@ if [ "${FRESH_INSTALL_ENABLED}" = "true" ]; then
     gnuInstallEnabled=true
 fi
 
+echo >&2 "-- ${BUILD_NAME} - prereqInstallAllowed: ${prereqInstallAllowed}"
+echo >&2 "-- ${BUILD_NAME} -  cmakeInstallEnabled: ${cmakeInstallEnabled}"
+echo >&2 "-- ${BUILD_NAME} -    cafInstallEnabled: ${cafInstallEnabled}"
+echo >&2 "-- ${BUILD_NAME} -    mpiInstallEnabled: ${mpiInstallEnabled}"
+echo >&2 "-- ${BUILD_NAME} -    gnuInstallEnabled: ${gnuInstallEnabled}"
+
 # chmod 777 -R "${ParaMonte_ROOT_DIR}/auxil/prerequisites"
 
 if [ "${prereqInstallAllowed}" = "true" ]; then
@@ -955,7 +964,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
         fi
 
         answer=y
-        if [ ! -d "${ParaMonte_REQ_DIR}" ]; then
+        if [ ! -d "${ParaMonte_REQ_DIR}" ] || [ ! "$(ls -A ${ParaMonte_REQ_DIR})" ]; then
 
             echo >&2
             echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte build with the requested configuration requires the installations"
@@ -991,9 +1000,12 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 echo >&2 "-- ${BUILD_NAME} - generating directory: ${ParaMonte_REQ_DIR}/"
                 mkdir -p "${ParaMonte_REQ_DIR}/"
 
-                tarFileName="opencoarrays.tar.gz"
+                tarFileName="OpenCoarrays-${openCoarraysVersion}.tar.gz"
+                tarFileWeb="https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${openCoarraysVersion}/${tarFileName}"
+                wget -P "${ParaMonte_REQ_DIR}/.." "${tarFileWeb}"
+                verify $? "Download of the prerequisites failed."
                 #tarFileName="prerequisites.tar.gz"
-                cp -rv "${ParaMonte_ROOT_DIR}/auxil/${tarFileName}" "${ParaMonte_REQ_DIR}/../"
+                #cp -rv "${ParaMonte_ROOT_DIR}/auxil/${tarFileName}" "${ParaMonte_REQ_DIR}/../"
                 verify $? "installation setup of prerequisites"
                 if ! [ -d "${ParaMonte_REQ_DIR}" ]; then
                     mkdir "${ParaMonte_REQ_DIR}"
@@ -1028,7 +1040,9 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 fi
             fi
 
-            # check cmake
+            ########################################################################################################################
+            #### check cmake
+            ########################################################################################################################
 
             if [ "${cmakeInstallEnabled}" = "true" ]; then
                 # ParaMonte_CMAKE_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/cmake/${cmakeVersionRequired}/bin"
@@ -1051,7 +1065,9 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 fi
             fi
 
-            # check mpi
+            ########################################################################################################################
+            #### check mpi
+            ########################################################################################################################
 
             if [ "${isMacOS}" = "true" ]; then
                 CURRENT_PKG="the Open-MPI library"
@@ -1100,7 +1116,9 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                 fi
             fi
 
-            # check gnu
+            ########################################################################################################################
+            #### check gnu
+            ########################################################################################################################
 
             CURRENT_PKG="the GNU compiler collection"
             if [ "${gnuInstallEnabled}" = "true" ]; then
@@ -1160,7 +1178,9 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
             # echo "# before compiling your source files and linking with ParaMonte library." >> ${SETUP_FILE_PATH}
             # echo "" >> ${SETUP_FILE_PATH}
 
-            # check caf
+            ########################################################################################################################
+            #### check caf
+            ########################################################################################################################
 
             CURRENT_PKG="the OpenCoarrays compiler wrapper"
             if [ "${cafInstallEnabled}" = "true" ]; then
@@ -1396,13 +1416,18 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
 
     LANG=Fortran
     isUnknownVersion=false
+
+    tempDir=$(mktemp --directory --tmpdir="${ParaMonte_ROOT_DIR}/build");
+    cd "${tempDir}"
+    cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
     if ${Fortran_COMPILER_PATH} getCompilerVersion.f90 -o getCompilerVersion.exe; then
 
         chmod +x getCompilerVersion.exe
-        ./getCompilerVersion.exe && {
+        ./getCompilerVersion.exe -outdir "" && {
             COMPILER_VERSION=$(head -n 1 getCompilerVersion.tmp)
             echo >&2 "-- ${BUILD_NAME}Compiler - ${PMCS} ${LANG} compiler version: ${COMPILER_VERSION}"
             isParaMonteCompatibleCompiler=$(head -n 1 isParaMonteCompatibleCompiler.tmp)
+            isGfortran10=$(head -n 1 isGfortran10.tmp); export isGfortran10
             if [ "$isParaMonteCompatibleCompiler" = "true" ]; then
                 echo >&2 "-- ${BUILD_NAME}Compiler - ${PMCS} ${LANG} compiler is ParaMonte compatible!"
             else
@@ -1424,7 +1449,8 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
 
     fi
 
-    cd ..
+    cd "${ParaMonte_ROOT_DIR}"
+    rm -rf "${tempDir}"
 
     if [ "${isUnknownVersion}" = "true" ]; then
         echo >&2 "-- ${BUILD_NAME}Compiler - failed to detect the ${PMCS} ${LANG} compiler version...skipping"

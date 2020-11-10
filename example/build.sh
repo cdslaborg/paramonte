@@ -292,17 +292,17 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"mpi".* ]]; then
 fi
 echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - MPI_ENABLED: ${MPI_ENABLED}"
 
-#if [ "${MPI_ENABLED}" = "true" ]; then
-#    if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then
-#        COMPILER_LIST="mpiifort mpifort"
-#    fi
-#    if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then
-#        COMPILER_LIST="mpiicc mpicc"
-#    fi
-#    if [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
-#        COMPILER_LIST="mpiicpc mpicxx mpic++ mpicc"
-#    fi
-#fi
+if [ "${MPI_ENABLED}" = "true" ] && [ "${PM_LIB_TYPE}" = "static" ]; then
+    if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then
+        declare -a COMPILER_LIST=("mpiifort" "mpifort")
+    fi
+    if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then
+        declare -a COMPILER_LIST=("mpiicc" "mpicc")
+    fi
+    if [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
+        declare -a COMPILER_LIST=("mpiicpc" "mpicxx" "mpic++" "mpicc")
+    fi
+fi
 
 ####################################################################################################################################
 # CAF
