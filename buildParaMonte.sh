@@ -57,8 +57,12 @@ BUILD_NAME="ParaMonte"; export BUILD_NAME
 FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 ParaMonte_ROOT_DIR="${FILE_DIR}"
-ParaMonte_SRC_DIR="${ParaMonte_ROOT_DIR}/src/ParaMonte"
-export ParaMonte_ROOT_DIR
+ParaMonte_SRC_DIR="${ParaMonte_ROOT_DIR}/src/ParaMonte"; export ParaMonte_ROOT_DIR
+ParaMonte_ROOT_BUILD_DIR="${ParaMonte_ROOT_DIR}/build"; export ParaMonte_ROOT_BUILD_DIR
+if ! [ -d "${ParaMonte_ROOT_BUILD_DIR}" ]; then
+    mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
+fi
+
 #export ParaMonte_ROOT_DIR="${ParaMonte_ROOT_DIR:-${PWD%/}}"
 
 if [[ ! -f "$(pwd)/build${BUILD_NAME}.sh" ]]; then
@@ -609,7 +613,7 @@ do
 
             if [ "${LANG}" = "Fortran" ]; then
 
-                tempDir=$(mktemp --directory --tmpdir="${ParaMonte_ROOT_DIR}/build");
+                tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}");
                 cd "${tempDir}"
                 cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
                 if ${!suiteLangCompilerPath} getCompilerVersion.f90 -o getCompilerVersion.exe; then
@@ -1417,7 +1421,7 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
     LANG=Fortran
     isUnknownVersion=false
 
-    tempDir=$(mktemp --directory --tmpdir="${ParaMonte_ROOT_DIR}/build");
+    tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}");
     cd "${tempDir}"
     cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
     if ${Fortran_COMPILER_PATH} getCompilerVersion.f90 -o getCompilerVersion.exe; then
