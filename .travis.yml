@@ -14,6 +14,7 @@ cache:
 
 matrix:
   include:
+
     - &macOS
       os: osx
       osx_image: xcode10.2
@@ -26,26 +27,61 @@ matrix:
       addons:
         homebrew:
           packages:
-            - gcc
-            - mpich
+            - gcc-9
+            - cmake
+            - openmpi
             - shellcheck
           update: true
-
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - mpich
-            - gfortran-8
+      before_install:
+        - brew install gcc || brew upgrade gcc
+        - brew install cmake || brew upgrade cmake
+        - brew install openmpi || brew upgrade openmpi
+        - brew link gcc
+        - brew link cmake
+        - brew link openmpi
       script:
-        - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
-        - export FC=gfortran-8
         - cmake --version
-        - gfortran-8 --version
-        - echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --fortran $(which gfortran-8) --mpiexec $(which mpiexec) --yes-to-all
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
+
+    - &macOS
+      os: osx
+      osx_image: xcode10.2
+      env:
+        - BUILD_TYPE="InstallScript"
+      addons:
+        homebrew:
+          packages:
+            - cmake
+            - mpich
+            - gcc-10
+            - shellcheck
+          update: true
+      before_install:
+        - brew install gcc || brew upgrade gcc
+        - brew install cmake || brew upgrade cmake
+        - brew install mpich || brew upgrade mpich
+        - brew link gcc
+        - brew link cmake
+        - brew link mpich
+      script:
+        - cmake --version
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
+
+#    - os: linux
+#      addons:
+#        apt:
+#          sources:
+#            - ubuntu-toolchain-r-test
+#          packages:
+#            - mpich
+#            - gfortran-8
+#      script:
+#        - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
+#        - export FC=gfortran-8
+#        - cmake --version
+#        - gfortran-8 --version
+#        - echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
+#        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --fortran $(which gfortran-8) --mpiexec $(which mpiexec) --yes-to-all
 
 #    - name: "darwin"
 #      os: osx
@@ -62,11 +98,11 @@ matrix:
         #- brew install cmake || brew upgrade cmake
         #- brew install openmpi || brew upgrade openmpi
         #- brew link openmpi
-      script:
-        - brew link gcc
-        - brew link cmake
-        - cmake --version
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" -s gnu
+#      script:
+#        - brew link gcc
+#        - brew link cmake
+#        - cmake --version
+#        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" -s gnu
 
 #    - os: osx
 #      script:
