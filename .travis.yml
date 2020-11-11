@@ -75,7 +75,6 @@ matrix:
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - wget
 
 #    - os: linux
 #      addons:
