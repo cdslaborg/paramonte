@@ -510,6 +510,7 @@ export cmakeInstallEnabled
 openCoarraysVersion="2.9.0"
 gnuVersionOpenCoarrays="10.1.0"
 mpichVersionOpenCoarrays="3.2"
+gnuVersionParaMonteCompatible="7.0.0"
 
 ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
 export ParaMonte_REQ_DIR
@@ -592,9 +593,10 @@ do
     do
 
         suiteLangCompilerName="${SUITE}${LANG}CompilerName"
+        suiteLangCompilerPath="${SUITE}${LANG}CompilerPath"
+        suiteLangCompilerVersion="${SUITE}${LANG}CompilerVersion"
         if eval "command -v ${!suiteLangCompilerName} >/dev/null 2>&1"; then
 
-            suiteLangCompilerPath="${SUITE}${LANG}CompilerPath"
             eval "unset ${suiteLangCompilerPath}"
             eval ${suiteLangCompilerPath}='$(command -v ${!suiteLangCompilerName})'
 
@@ -602,7 +604,6 @@ do
 
             # get compiler version
 
-            suiteLangCompilerVersion="${SUITE}${LANG}CompilerVersion"
 
             if [ "${LANG}" = "C" ]; then
 
@@ -628,7 +629,7 @@ do
                         isGfortran10=$(head -n 1 isGfortran10.tmp); export isGfortran10
                         if [ "$isParaMonteCompatibleCompiler" = "true" ]; then
                             echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is ParaMonte compatible!"
-                            eval "export $suiteLangCompilerPath"
+                            eval "export ${suiteLangCompilerPath}"
                         else
                             echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is not ParaMonte compatible...skipping"
                             unset ${suiteLangCompilerPath}
@@ -659,6 +660,48 @@ do
             echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${!suiteLangCompilerName} not found."
             unset ${suiteLangCompilerPath}
 
+        fi
+
+        # if no compiler has been identified and version extraction has failed, try one last time by searching for alternative compiler names.
+
+        if [ -z ${!suiteLangCompilerPath+x} ] && [ "${SUITE}" = "gnu" ]; then
+
+            echo >&2 "-- ${BUILD_NAME}Compiler - searching all system paths for a ${SUITE} ${LANG} compiler..."
+
+            clist=$(( IFS=:; for p in $PATH; do ls -d "$p"/*${!suiteLangCompilerName}; done ) 2>/dev/null)
+            for cname in $clist; do
+
+                echo >&2 "-- ${BUILD_NAME}Compiler - checking ${cname}"
+
+                versionExtractionSucceeded=false
+                eval ${suiteLangCompilerVersion}="$(${!suiteLangCompilerName} -dumpversion)" && \
+                eval ${suiteLangCompilerPath}='$(command -v ${!suiteLangCompilerName})' && versionExtractionSucceeded=true
+                if [ "${versionExtractionSucceeded}" = "true" ]; then
+                    echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version: ${suiteLangCompilerVersion}=${!suiteLangCompilerVersion}"
+                    isParaMonteCompatibleCompiler=true
+                    if [ "${LANG}" = "Fortran" ]; then
+                        compareVersions "${!suiteLangCompilerVersion}" "${gnuVersionParaMonteCompatible}"
+                        if [ "$?" = "2" ]; then
+                            isParaMonteCompatibleCompiler=false
+                        fi
+                    fi
+                    if [ "$isParaMonteCompatibleCompiler" = "true" ]; then
+                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is ParaMonte compatible!"
+                        eval "export ${suiteLangCompilerVersion}"
+                        eval "export ${suiteLangCompilerPath}"
+                        break
+                    else
+                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is not ParaMonte compatible...skipping"
+                        unset ${suiteLangCompilerVersion}
+                        unset ${suiteLangCompilerPath}
+                    fi
+                else
+                    unset ${suiteLangCompilerVersion}
+                    unset ${suiteLangCompilerPath}
+                    continue
+                fi
+                
+            done
         fi
 
     done
