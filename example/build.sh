@@ -560,6 +560,11 @@ do
 
         echo >&2
         echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - example build appears to have failed. skipping..."
+        echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script:"
+        echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - For instructions, type on the command line:"
+        echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
+        echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     ./build.sh --help"
+        echo >&2
 
     fi
 

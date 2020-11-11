@@ -17,70 +17,6 @@ matrix:
 
     - &macOS
       os: osx
-      osx_image: xcode9
-      env:
-          CC=gcc-7
-          CXX=g++-7
-          FC=gfortran-7
-      addons:
-        homebrew:
-          packages:
-            - gcc@7
-            - cmake
-            - openmpi
-            - shellcheck
-          update: true
-      before_install:
-        - brew install gcc@7 || brew upgrade gcc
-        - brew install cmake || brew upgrade cmake
-        - brew install openmpi || brew upgrade openmpi
-        - brew link gcc
-        - brew link cmake
-        - brew link openmpi
-      script:
-        - cmake --version
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-
-    - &macOS
-      os: osx
-      osx_image: xcode10
-      env:
-          CC=gcc-8
-          CXX=g++-8
-          FC=gfortran-8
-      addons:
-        homebrew:
-          packages:
-            - gcc@8
-            - cmake
-            - openmpi
-            - shellcheck
-          update: true
-      before_install:
-        - brew install gcc@8 || brew upgrade gcc
-        - brew install cmake || brew upgrade cmake
-        - brew install openmpi || brew upgrade openmpi
-        - brew link gcc
-        - brew link cmake
-        - brew link openmpi
-      script:
-        - cmake --version
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-
-    - &macOS
-      os: osx
       osx_image: xcode11
       env:
           GCC=9
@@ -139,6 +75,7 @@ matrix:
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        - wget
 
 #    - os: linux
 #      addons:
