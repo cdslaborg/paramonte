@@ -103,30 +103,30 @@ matrix:
         - gfortran-8 --version
         - cmake --version
         - echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" #-s gnu
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
 
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - mpich
-            - gfortran-8
-      script:
-        - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
-        - export FC=gfortran-8
-        - cmake --version
-        - gfortran-8 --version
-        - echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none
-        #- ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --fortran $(which gfortran-8) --mpiexec $(which mpiexec) --yes-to-all
+#    - os: linux
+#      addons:
+#        apt:
+#          sources:
+#            - ubuntu-toolchain-r-test
+#          packages:
+#            - mpich
+#            - gfortran-8
+#      script:
+#        - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
+#        - export FC=gfortran-8
+#        - cmake --version
+#        - gfortran-8 --version
+#        - echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
+#        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none
+#        #- ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --fortran $(which gfortran-8) --mpiexec $(which mpiexec) --yes-to-all
 
 #    - name: "darwin"
 #      os: osx

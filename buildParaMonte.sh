@@ -737,6 +737,27 @@ do
 
             echo >&2 "-- ${BUILD_NAME}MPI - ${SUITE} ${!suiteLangMpiWrapperName} detected at: ${suiteLangMpiWrapperPath}=${!suiteLangMpiWrapperPath}"
 
+            if [ "${LANG}" = "Fortran" ]; then
+
+                # check if the compiler wrapper can compile a simple Fortran MPI test code.
+
+                tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+                echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
+                cd "${tempDir}"
+                cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90"
+                { 
+                    mpifort testMPI.f90 -o main.exe && mpiexec -n 1 main.exe 
+                } || {
+                    echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}...skipping..."
+                    unset ${suiteLangMpiWrapperPath}
+                    if [ -z ${PMCS+x} ] && [ "${MPI_ENABLED}" = "true" ] ; then
+                        prereqInstallAllowed=true
+                        mpiInstallEnabled=true
+                    fi
+                }
+
+            fi
+
         else
 
             echo >&2 "-- ${BUILD_NAME}MPI - failed to detect the ${SUITE} ${LANG} MPI wrapper...skipping"
@@ -768,8 +789,8 @@ if [ "${CAFTYPE}" != "none" ]; then
             compareVersions "$cafVersion" "$cafVersionRequired"
             if [ "$?" = "2" ]; then
                 cafInstallEnabled=true
-                mpiInstallEnabled=true
-                gnuInstallEnabled=true
+                #mpiInstallEnabled=true
+                #gnuInstallEnabled=true
                 #PMCS=caf
                 #COMPILER_VERSION=unknownversion
             else
@@ -778,8 +799,8 @@ if [ "${CAFTYPE}" != "none" ]; then
             fi
         else
             cafInstallEnabled=true
-            mpiInstallEnabled=true
-            gnuInstallEnabled=true
+            #mpiInstallEnabled=true
+            #gnuInstallEnabled=true
         fi
     #fi
     if [ "${cafInstallEnabled}" = "true" ]; then
@@ -890,7 +911,7 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
             else
                 unset MPIEXEC_PATH
                 mpiInstallEnabled=true
-                gnuInstallEnabled=true
+                #gnuInstallEnabled=true
                 if [ "${prereqInstallAllowed}" = "false" ]; then # xxx should this be true?
                     echo >&2
                     echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
@@ -911,8 +932,8 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                 cafInstallEnabled=false
             else
                 cafInstallEnabled=true
-                mpiInstallEnabled=true
-                gnuInstallEnabled=true
+                #mpiInstallEnabled=true
+                #gnuInstallEnabled=true
             fi
         fi
 
@@ -939,7 +960,7 @@ else # if fortran compiler path defined
 
     if [ "${MPI_ENABLED}" = "true" ] && [ -z ${MPIEXEC_PATH+x} ]; then
         mpiInstallEnabled=true
-        gnuInstallEnabled=true
+        #gnuInstallEnabled=true
     fi
 
 fi
