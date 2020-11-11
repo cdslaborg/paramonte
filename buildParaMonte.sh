@@ -613,7 +613,7 @@ do
 
             if [ "${LANG}" = "Fortran" ]; then
 
-                tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}/") || mkdir -p "${${ParaMonte_ROOT_BUILD_DIR}}"
+                tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}/") || mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
                 cd "${tempDir}"
                 cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
                 if ${!suiteLangCompilerPath} getCompilerVersion.f90 -o getCompilerVersion.exe; then
@@ -1421,7 +1421,7 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
     LANG=Fortran
     isUnknownVersion=false
 
-    tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}/") || mkdir -p "${${ParaMonte_ROOT_BUILD_DIR}}"
+    tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}/") || mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
     cd "${tempDir}"
     cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
     if ${Fortran_COMPILER_PATH} getCompilerVersion.f90 -o getCompilerVersion.exe; then
