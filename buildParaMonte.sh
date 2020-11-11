@@ -1173,13 +1173,33 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                         (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
                         {
                             if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                                echo >&2
-                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
-                                echo >&2
                                 if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
-                                    answer=YES
+                                    answerNotGiven=true
+                                    while [ "${answerNotGiven}" = "true" ]; do
+                                        echo >&2
+                                        read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                        echo >&2
+                                        if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                            answer=y
+                                            answerNotGiven=false
+                                        fi
+                                        if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                            answer=n
+                                            answerNotGiven=false
+                                        fi
+                                        if [ "${answerNotGiven}" = "true" ]; then
+                                            echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                        fi
+                                    done
+                                else
+                                    echo >&2
+                                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2
+                                    answer=y
                                 fi
-                                if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                echo >&2
+
+                                if [ "${answer}" = "y" ]; then
                                     GCC_BOOTSTRAP="--bootstrap"
                                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
                                     (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
