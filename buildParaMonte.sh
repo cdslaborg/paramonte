@@ -613,7 +613,9 @@ do
 
             if [ "${LANG}" = "Fortran" ]; then
 
-                tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}/") || mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
+                #tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}/") || mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
+                tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+                echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
                 cd "${tempDir}"
                 cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
                 if ${!suiteLangCompilerPath} getCompilerVersion.f90 -o getCompilerVersion.exe; then
@@ -646,6 +648,7 @@ do
 
                 fi
 
+                echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${ParaMonte_ROOT_DIR}"
                 cd "${ParaMonte_ROOT_DIR}"
                 rm -rf "${tempDir}"
 
@@ -1421,7 +1424,9 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
     LANG=Fortran
     isUnknownVersion=false
 
-    tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}/") || mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
+    #tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}/") || mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
+    tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+    echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
     cd "${tempDir}"
     cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
     if ${Fortran_COMPILER_PATH} getCompilerVersion.f90 -o getCompilerVersion.exe; then
@@ -1453,6 +1458,7 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
 
     fi
 
+    echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${ParaMonte_ROOT_DIR}"
     cd "${ParaMonte_ROOT_DIR}"
     rm -rf "${tempDir}"
 
