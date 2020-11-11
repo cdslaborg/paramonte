@@ -789,8 +789,8 @@ if [ "${CAFTYPE}" != "none" ]; then
             compareVersions "$cafVersion" "$cafVersionRequired"
             if [ "$?" = "2" ]; then
                 cafInstallEnabled=true
-                #mpiInstallEnabled=true
-                #gnuInstallEnabled=true
+                mpiInstallEnabled=true
+                gnuInstallEnabled=true
                 #PMCS=caf
                 #COMPILER_VERSION=unknownversion
             else
@@ -799,8 +799,8 @@ if [ "${CAFTYPE}" != "none" ]; then
             fi
         else
             cafInstallEnabled=true
-            #mpiInstallEnabled=true
-            #gnuInstallEnabled=true
+            mpiInstallEnabled=true
+            gnuInstallEnabled=true
         fi
     #fi
     if [ "${cafInstallEnabled}" = "true" ]; then
@@ -911,7 +911,7 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
             else
                 unset MPIEXEC_PATH
                 mpiInstallEnabled=true
-                #gnuInstallEnabled=true
+                gnuInstallEnabled=true
                 if [ "${prereqInstallAllowed}" = "false" ]; then # xxx should this be true?
                     echo >&2
                     echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
@@ -932,8 +932,8 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                 cafInstallEnabled=false
             else
                 cafInstallEnabled=true
-                #mpiInstallEnabled=true
-                #gnuInstallEnabled=true
+                mpiInstallEnabled=true
+                gnuInstallEnabled=true
             fi
         fi
 
@@ -960,7 +960,7 @@ else # if fortran compiler path defined
 
     if [ "${MPI_ENABLED}" = "true" ] && [ -z ${MPIEXEC_PATH+x} ]; then
         mpiInstallEnabled=true
-        #gnuInstallEnabled=true
+        gnuInstallEnabled=true
     fi
 
 fi
@@ -1140,6 +1140,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
             #### check mpi
             ########################################################################################################################
 
+            localMpiInstallationDetected=false
             if [ "${isMacOS}" = "true" ]; then
                 CURRENT_PKG="the Open-MPI library"
                 echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
@@ -1155,6 +1156,14 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                     MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
                     if [[ -f "${MPIEXEC_PATH}" ]]; then
                         echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected."
+                        localMpiInstallationDetected=true
+                        if [[ ":$PATH:" != *":${ParaMonte_MPI_BIN_DIR}:"* ]]; then
+                            PATH="${ParaMonte_MPI_BIN_DIR}:${PATH}"
+                        fi
+                        if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_MPI_LIB_DIR}:"* ]]; then
+                            LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
+                        fi
+                        PATH="${ParaMonte_MPI_LIB_DIR}:${PATH}"; export PATH
                         #mpiInstallEnabled=false
                     else
                         ##########################################################################
@@ -1192,7 +1201,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
             ########################################################################################################################
 
             CURRENT_PKG="the GNU compiler collection"
-            if [ "${gnuInstallEnabled}" = "true" ]; then
+            if [ "${gnuInstallEnabled}" = "true" ] || [ "${localMpiInstallationDetected}" = "false" ]; then
                 #ParaMonte_GNU_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/gnu/${gnuVersionOpenCoarrays}/bin"
                 Fortran_COMPILER_PATH="${ParaMonte_GNU_BIN_DIR}/gfortran"
                 if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
@@ -1305,6 +1314,12 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
 
     fi
 
+fi
+
+# check one last time if Fortran compiler path exists, if not unset
+
+if [[ ! -f "${Fortran_COMPILER_PATH}" ]]; then
+    unset Fortran_COMPILER_PATH
 fi
 
 ####################################################################################################################################
