@@ -1483,7 +1483,7 @@ echo >&2
 
 if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
 
-    cd ./auxil/
+    #cd ./auxil/
 
     LANG=Fortran
     isUnknownVersion=false
