@@ -280,12 +280,12 @@ do
         # copy MPI shared library files
 
         if ! [ -z ${MPIEXEC_PATH+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
-            copySucceeded=false
             MPIEXEC_BIN_DIR=$(dirname "${MPIEXEC_PATH}")
             MPIEXEC_ROOT_DIR="${MPIEXEC_BIN_DIR}"/..
             MPIEXEC_LIB_DIR_LIST="${MPIEXEC_ROOT_DIR}/lib:${MPIEXEC_ROOT_DIR}/lib64"
             keyList="libmpi:libmpifort"
             for key in ${keyList//:/ }
+                copySucceeded=false
                 for MPIEXEC_LIB_DIR in ${MPIEXEC_LIB_DIR_LIST//:/ }
                 do
                     if [ -d "${MPIEXEC_LIB_DIR}" ]; then
