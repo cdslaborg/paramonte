@@ -80,8 +80,6 @@ matrix:
       os: linux
       sudo: true
       dist: xenial
-      env:
-        - GCC=8
       cache:
         apt: true
         directories:
@@ -93,16 +91,21 @@ matrix:
             - sourceline: 'deb https://apt.kitware.com/ubuntu/ xenial main'
               key_url: 'https://apt.kitware.com/keys/kitware-archive-latest.asc'
           packages: &gcc8pkgs
+            - gcc
+            - g++
             - cmake
-            - gcc-8
-            - g++-8
             - mpich
-            - gfortran-8
+            - gfortran
       script:
         - sudo apt update
-        - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
-        - gfortran-8 --version
+        - sudo apt install gcc
+        - sudo apt install g++
+        - sudo apt install cmake
+        - sudo apt install mpich
+        - sudo apt install gfortran
+        #- chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
         - cmake --version
+        - gfortran --version
         - echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" --yes-to-all
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
