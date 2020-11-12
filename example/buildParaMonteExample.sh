@@ -230,9 +230,10 @@ do
         if ! [ -z ${Fortran_COMPILER_PATH+x} ]; then
             Fortran_COMPILER_DIR=$(dirname "${Fortran_COMPILER_PATH}")
             Fortran_COMPILER_ROOT_DIR="${Fortran_COMPILER_DIR}"/..
-            for Fortran_COMPILER_LIB_SUBDIR in "lib64"
+            for Fortran_COMPILER_LIB_SUBDIR in "${Fortran_COMPILER_ROOT_DIR}/lib64 /usr/lib/gcc /usr/lib64/gcc /usr/lib /usr/lib64"
             do
-                Fortran_COMPILER_LIB_DIR="${Fortran_COMPILER_ROOT_DIR}"/"${Fortran_COMPILER_LIB_SUBDIR}"
+                libgfortranPath=$(find /usr/lib/gcc/ -name "libgfortran.so*")
+                Fortran_COMPILER_LIB_DIR=""/"${Fortran_COMPILER_LIB_SUBDIR}"
                 if [ -d "${Fortran_COMPILER_LIB_DIR}" ]; then
                     echo >&2
                     echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency files..."
