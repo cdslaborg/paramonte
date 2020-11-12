@@ -411,6 +411,15 @@ fi
 # build example
 ####################################################################################################################################
 
+if [ -z ${LD_LIBRARY_PATH+x} ]; then
+    LD_LIBRARY_PATH="${FILE_DIR}"
+else
+    if [[ ":${LD_LIBRARY_PATH}:" != *":${FILE_DIR}:"* ]]; then
+        LD_LIBRARY_PATH="${FILE_DIR}:${LD_LIBRARY_PATH}"
+    fi
+fi
+export LD_LIBRARY_PATH
+
 BUILD_SUCCEEDED=false
 RUN_FILE_NAME="run.sh"
 
@@ -513,7 +522,7 @@ do
         echo "fi"
         echo "export LD_LIBRARY_PATH"
         echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-        echo "    LD_LIBRARY_PATH=."
+        echo "    LD_LIBRARY_PATH=${FILE_DIR}"
         echo "else"
         echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
         echo "        LD_LIBRARY_PATH=\"${FILE_DIR}:\${LD_LIBRARY_PATH}\""
