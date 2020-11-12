@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -47,9 +47,12 @@ module SpecBase_RandomSeed_mod
     implicit none
 
 #if defined CAF_ENABLED
-    type(RandomSeed_t), save        :: comv_RandomSeed[*]
+    ! This must be allocatable, even though it will have only one element.
+    ! Otherwise, GNU Fortran 10 compiler results in runtime segmentation fault in coarray mode,
+    ! when the routine is called multiple times.
+    type(RandomSeed_t), allocatable :: comv_RandomSeed(:)[:]
 #else
-    type(RandomSeed_t), save        :: comv_RandomSeed
+    type(RandomSeed_t), allocatable :: comv_RandomSeed(:)
 #endif
 
     character(*), parameter :: MODULE_NAME = "@SpecBase_RandomSeed_mod"
@@ -62,7 +65,8 @@ module SpecBase_RandomSeed_mod
         integer(IK)                 :: userSeed
         integer(IK)                 :: nullSeed
         integer(IK)                 :: sizeSeed
-        integer(IK)                 :: imageID, imageCount
+        integer(IK)                 :: imageID
+        integer(IK)                 :: imageCount
         integer(IK)                 :: ProcessID
         integer(IK) , allocatable   :: Seed(:,:)
         character(:), allocatable   :: desc
@@ -129,7 +133,15 @@ contains
         use Constants_mod, only: IK
         use Err_mod, only: Err_type
 
-        implicit none
+#if defined CAF_ENABLED
+            implicit none
+            integer(IK) :: imageID
+#elif defined MPI_ENABLED
+            use mpi
+            implicit none
+            integer :: ierrMPI
+            integer(IK), allocatable :: Seed(:,:)
+#endif
 
         class(RandomSeed_type), intent(inout)   :: RandomSeedObj
         integer(IK), intent(in)                 :: randomSeed
@@ -141,62 +153,60 @@ contains
 
         ! broadcast all random seed values of all images to all images
 
-        blockBcastSeeds: block
 #if defined CAF_ENABLED
-            integer(IK) :: imageID
-#elif defined MPI_ENABLED
-            use mpi
-            integer :: ierrMPI
-            integer(IK), allocatable :: Seed(:,:)
+        allocate(comv_RandomSeed(1)[*])
+#else
+        allocate(comv_RandomSeed(1))
 #endif
-            if ( RandomSeedObj%userSeed == RandomSeedObj%nullSeed ) then
-                comv_RandomSeed = RandomSeed_t  ( imageID            = RandomSeedObj%imageID         &
+
+        if ( RandomSeedObj%userSeed == RandomSeedObj%nullSeed ) then
+            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         &
                                                 , isRepeatable       = RandomSeedObj%isRepeatable    &
                                                 , isImageDistinct    = RandomSeedObj%isImageDistinct &
                                                 )
-            else
-                comv_RandomSeed = RandomSeed_t  ( imageID            = RandomSeedObj%imageID         &
+        else
+            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         &
                                                 , isRepeatable       = RandomSeedObj%isRepeatable    &
                                                 , isImageDistinct    = RandomSeedObj%isImageDistinct &
                                                 , inputSeed          = RandomSeedObj%userSeed        &
                                                 )
-            end if
+        end if
 
 #if defined GNU_ENABLED && CAF_ENABLED
-            ! opencoarrays crashes without this, by somehow setting comv_RandomSeed%Err%occurred = TRUE
-            ! likely a result of memory corruption
-            if (comv_RandomSeed%Err%occurred) write(*,*) ""
+        ! opencoarrays crashes without this, by somehow setting comv_RandomSeed(1)%Err%occurred = TRUE
+        ! likely a result of memory corruption
+        !if (comv_RandomSeed(1)%Err%occurred) write(*,*) ""
 #endif
 
-            if (comv_RandomSeed%Err%occurred) then
-                Err%occurred = .true.
-                Err%msg = Err%msg // PROCEDURE_NAME // comv_RandomSeed%Err%msg
-                return
-            end if
+        if (comv_RandomSeed(1)%Err%occurred) then
+            Err%occurred = .true.
+            Err%msg = Err%msg // PROCEDURE_NAME // comv_RandomSeed(1)%Err%msg
+            return
+        end if
 
-            call comv_RandomSeed%get()
-            RandomSeedObj%Seed(:,RandomSeedObj%imageID) = comv_RandomSeed%Value(:)
+        call comv_RandomSeed(1)%get()
+        RandomSeedObj%Seed(:,RandomSeedObj%imageID) = comv_RandomSeed(1)%Value(:)
 #if defined CAF_ENABLED
-            sync all    ! allow all images to set the seed first, then fetch the values
-            do imageID = 1, RandomSeedObj%imageCount
-                if (imageID/=RandomSeedObj%imageID) RandomSeedObj%Seed(:,imageID) = comv_RandomSeed[imageID]%Value(:)
-            end do
+        sync all    ! allow all images to set the seed first, then fetch the values
+        do imageID = 1, RandomSeedObj%imageCount
+            if (imageID/=RandomSeedObj%imageID) RandomSeedObj%Seed(:,imageID) = comv_RandomSeed(1)[imageID]%Value(:)
+        end do
 #elif defined MPI_ENABLED
-            allocate(Seed(RandomSeedObj%sizeSeed,RandomSeedObj%imageCount))
-            call mpi_barrier(mpi_comm_world,ierrMPI) ! allow all images to set the seed first, then fetch the values
-            call mpi_allgather  ( RandomSeedObj%Seed(:,RandomSeedObj%imageID)   &   ! send buffer
-                                , RandomSeedObj%sizeSeed                        &   ! send count
-                                , mpi_integer                                   &   ! send datatype
-                                , Seed(:,:)                                     &   ! receive buffer
-                                , RandomSeedObj%sizeSeed                        &   ! receive count
-                                , mpi_integer                                   &   ! receive datatype
-                                , mpi_comm_world                                &   ! comm
-                                , ierrMPI                                       &   ! ierr
-                                )
-            RandomSeedObj%Seed(:,:) = Seed
-            deallocate(Seed)
+        allocate(Seed(RandomSeedObj%sizeSeed,RandomSeedObj%imageCount))
+        call mpi_barrier(mpi_comm_world,ierrMPI) ! allow all images to set the seed first, then fetch the values
+        call mpi_allgather  ( RandomSeedObj%Seed(:,RandomSeedObj%imageID)   &   ! send buffer
+                            , RandomSeedObj%sizeSeed                        &   ! send count
+                            , mpi_integer                                   &   ! send datatype
+                            , Seed(:,:)                                     &   ! receive buffer
+                            , RandomSeedObj%sizeSeed                        &   ! receive count
+                            , mpi_integer                                   &   ! receive datatype
+                            , mpi_comm_world                                &   ! comm
+                            , ierrMPI                                       &   ! ierr
+                            )
+        RandomSeedObj%Seed(:,:) = Seed
+        deallocate(Seed)
 #endif
-        end block blockBcastSeeds
+        deallocate(comv_RandomSeed)
 
     end subroutine setRandomSeed
 
