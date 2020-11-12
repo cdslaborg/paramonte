@@ -1830,7 +1830,7 @@ echo >&2 "-- ${BUILD_NAME} - CMAKE Fortran compiler option: ${FC_OPTION}"
 echo >&2 "-- ${BUILD_NAME} - CMAKE mpiexec option: ${MPIEXEC_OPTION}"
 echo >&2
 
-if [ -f "${ParaMonte_CAF_SETUP_PATH}" = "true" ] && ([ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${cafInstallEnabled}" = "true" ]); then
+if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && ([ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${cafInstallEnabled}" = "true" ]); then
     ParaMonte_CAF_SETUP_PATH_CMD="source ${ParaMonte_CAF_SETUP_PATH}"
 else
     ParaMonte_CAF_SETUP_PATH_CMD=""
