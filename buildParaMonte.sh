@@ -746,7 +746,7 @@ do
                 cd "${tempDir}"
                 cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90"
                 { 
-                    mpifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe 
+                    mpiifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe || mpifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe 
                 } || {
                     echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}...skipping..."
                     unset ${suiteLangMpiWrapperPath}
@@ -778,7 +778,8 @@ echo >&2
 CAF_ENABLED=false
 if [ "${CAFTYPE}" != "none" ]; then
     CAF_ENABLED=true
-    #if [ -z ${intelFortranMpiWrapperPath+x} ]; then
+    # The following conditional needed to ensure CAF compilation is automatically done with Intel compiler if available.
+    if [ -z ${intelFortranMpiWrapperPath+x} ]; then
         if command -v caf >/dev/null 2>&1; then
             cafCompilerPath=$(command -v caf)
             echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper detected at: ${cafCompilerPath}"
@@ -802,7 +803,7 @@ if [ "${CAFTYPE}" != "none" ]; then
             mpiInstallEnabled=true
             gnuInstallEnabled=true
         fi
-    #fi
+    fi
     if [ "${cafInstallEnabled}" = "true" ]; then
         echo >&2 "-- ${BUILD_NAME}CAF - NOTE: OpenCoarrays caf compiler wrapper could not be found on your system."
         echo >&2
@@ -2306,7 +2307,8 @@ fi
 # build ParaMonte example
 ####################################################################################################################################
 
-source ./example/buildParaMonteExample.sh
+cd "${ParaMonte_ROOT_DIR}"
+source "${ParaMonte_ROOT_DIR}/example/buildParaMonteExample.sh"
 
 ####################################################################################################################################
 # copy ParaMonte binary / library files to the bin directory
