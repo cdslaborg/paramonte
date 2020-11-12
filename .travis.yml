@@ -95,7 +95,7 @@ matrix:
             - g++
             - cmake
             - mpich
-            - gfortran-8
+            - gfortran-10
       script:
         - sudo apt update
         - sudo apt install gcc
