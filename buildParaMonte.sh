@@ -746,7 +746,7 @@ do
                 cd "${tempDir}"
                 cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90"
                 { 
-                    mpifort testMPI.f90 -o main.exe && mpiexec -n 1 main.exe 
+                    mpifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe 
                 } || {
                     echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}...skipping..."
                     unset ${suiteLangMpiWrapperPath}
