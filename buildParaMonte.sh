@@ -1360,7 +1360,7 @@ fi
 # set up setup.sh file
 ####################################################################################################################################
 
-if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then
+if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then
 
     SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
     export SETUP_FILE_PATH
@@ -1374,7 +1374,7 @@ if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isM
     chmod +x ${SETUP_FILE_PATH}
 
     if [[ -f "${SETUP_FILE_PATH}" ]]; then
-        if [[ -f "${ParaMonte_CAF_SETUP_PATH}" ]]; then
+        #if [[ -f "${ParaMonte_CAF_SETUP_PATH}" ]]; then
             {
             echo ""
             echo "source ${ParaMonte_CAF_SETUP_PATH}"
@@ -1394,7 +1394,7 @@ if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isM
                 echo ""
                 } >> ${SETUP_FILE_PATH}
             fi
-        fi
+        #fi
     fi
 
     if [ -d "${ParaMonte_GNU_BIN_DIR}" ]; then
