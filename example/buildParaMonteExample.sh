@@ -234,7 +234,7 @@ do
             Fortran_COMPILER_ROOT_DIR="${Fortran_COMPILER_DIR}"/..
             copySucceeded=false
             Fortran_COMPILER_LIB_DIR_LIST="${Fortran_COMPILER_ROOT_DIR}/lib64:/usr/lib/gcc/x86_64-linux-gnu/${FortranCompilerMajorVersion}"
-            for Fortran_COMPILER_LIB_DIR in ${Fortran_COMPILER_LIB_DIR_LIST//:/ }; do
+            for Fortran_COMPILER_LIB_DIR in ${Fortran_COMPILER_LIB_DIR_LIST//:/ }
             do
                 if [ -d "${Fortran_COMPILER_LIB_DIR}" ]; then
                     libgfortranPathList=$(find "${Fortran_COMPILER_LIB_DIR}" -name "libgfortran.so*")
