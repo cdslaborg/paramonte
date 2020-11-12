@@ -78,7 +78,7 @@ matrix:
 
     - &ubuntu
       os: linux
-      sudo: false
+      sudo: true
       dist: xenial
       env:
         - GCC=8
@@ -99,6 +99,7 @@ matrix:
             - mpich
             - gfortran-8
       script:
+        - sudo apt update
         - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
         - gfortran-8 --version
         - cmake --version
