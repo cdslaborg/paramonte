@@ -229,7 +229,7 @@ do
     if [ "${PMCS}" = "gnu" ] && ! [ "${CAF_ENABLED}" = "true" ]; then # caf does not have lib dependency
         if ! [ -z ${Fortran_COMPILER_PATH+x} ]; then
             Fortran_COMPILER_DIR=$(dirname "${Fortran_COMPILER_PATH}")
-            FortranCompilerVersion=$("${Fortran_COMPILER_PATH}" -dumversion)
+            FortranCompilerVersion=$("${Fortran_COMPILER_PATH}" -dumpversion)
             FortranCompilerMajorVersion="$(cut -d '.' -f 1 <<< "$FortranCompilerVersion")"
             Fortran_COMPILER_ROOT_DIR="${Fortran_COMPILER_DIR}"/..
             copySucceeded=false
