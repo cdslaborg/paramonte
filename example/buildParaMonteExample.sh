@@ -238,8 +238,8 @@ do
             do
                 if [ -d "${Fortran_COMPILER_LIB_DIR}" ]; then
                     libgfortranPathList=$(find "${Fortran_COMPILER_LIB_DIR}" -name "libgfortran.so*")
-                    echo >&2 "-- ParaMonteExample${LANG_NAME} - searching for the ParaMonte library dll dependency file at: ${Fortran_COMPILER_LIB_DIR}"
-                    echo >&2 "-- ParaMonteExample${LANG_NAME} - detected shared files: ${libgfortranPathList}"
+                    #echo >&2 "-- ParaMonteExample${LANG_NAME} - searching for the ParaMonte library dll dependency file at: ${Fortran_COMPILER_LIB_DIR}"
+                    #echo >&2 "-- ParaMonteExample${LANG_NAME} - detected shared files: ${libgfortranPathList}"
                     for libgfortranPath in ${libgfortranPathList}
                     do
                         echo >&2
