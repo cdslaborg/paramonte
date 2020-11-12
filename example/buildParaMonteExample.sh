@@ -246,7 +246,7 @@ do
                         echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
                         echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
                         echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-                        yes | \cp -rf "${libgfortranPath}/"libgfortran.so.* "${ParaMonteExample_LIB_DIR_CURRENT}/" && {
+                        yes | \cp -rf "${libgfortranPath}" "${ParaMonteExample_LIB_DIR_CURRENT}/" && {
                             copySucceeded=true
                             break
                         } || {
