@@ -1360,21 +1360,21 @@ fi
 # set up setup.sh file
 ####################################################################################################################################
 
-if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then
+if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then
 
-    SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
-    export SETUP_FILE_PATH
-    {
-    echo "# ParaMonte runtime environment setup script."
-    echo "# Source this Bash script in your Bash environment like,"
-    echo "#     source ./setup.sh"
-    echo "# before compiling your source files and linking with ParaMonte library."
-    echo ""
-    } > ${SETUP_FILE_PATH}
-    chmod +x ${SETUP_FILE_PATH}
+    if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
+        SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
+        export SETUP_FILE_PATH
+        {
+        echo "# ParaMonte runtime environment setup script."
+        echo "# Source this Bash script in your Bash environment like,"
+        echo "#     source ./setup.sh"
+        echo "# before compiling your source files and linking with ParaMonte library."
+        echo ""
+        } > ${SETUP_FILE_PATH}
+        chmod +x ${SETUP_FILE_PATH}
 
-    if [[ -f "${SETUP_FILE_PATH}" ]]; then
-        #if [[ -f "${ParaMonte_CAF_SETUP_PATH}" ]]; then
+        if [[ -f "${SETUP_FILE_PATH}" ]]; then
             {
             echo ""
             echo "source ${ParaMonte_CAF_SETUP_PATH}"
@@ -1394,7 +1394,7 @@ if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ "${PMCS}" = "gnu" ] && [ "${prereqI
                 echo ""
                 } >> ${SETUP_FILE_PATH}
             fi
-        #fi
+        fi
     fi
 
     if [ -d "${ParaMonte_GNU_BIN_DIR}" ]; then
@@ -1412,7 +1412,7 @@ if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ "${PMCS}" = "gnu" ] && [ "${prereqI
                 LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
             fi
         fi
-        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
             {
             echo "if [ -z \${PATH+x} ]; then"
             echo "    export PATH=\"${ParaMonte_GNU_BIN_DIR}\""
@@ -1447,7 +1447,7 @@ if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ "${PMCS}" = "gnu" ] && [ "${prereqI
                 LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
             fi
         fi
-        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
             {
             echo "if [ -z \${PATH+x} ]; then"
             echo "    export PATH=\"${ParaMonte_MPI_BIN_DIR}\""
@@ -1482,7 +1482,7 @@ if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ "${PMCS}" = "gnu" ] && [ "${prereqI
                 LD_LIBRARY_PATH="${ParaMonte_CAF_LIB_DIR}:${LD_LIBRARY_PATH}"
             fi
         fi
-        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
             {
             echo "if [ -z \${PATH+x} ]; then"
             echo "    export PATH=\"${ParaMonte_CAF_BIN_DIR}\""
