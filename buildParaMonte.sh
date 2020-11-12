@@ -95,14 +95,18 @@ else
     export PLATFORM
 fi
 
+isMacOS=false
+isLinux=false
 if [[ "${UNAME_PLATFORM}" =~ .*"Darwin".* ]]; then
     isMacOS=true
     OSNAME="macOS"
-else
-    isMacOS=false
+elif [[ "${UNAME_PLATFORM}" =~ .*"Linux".* ]]; then
+    isLinux=true
     OSNAME="Linux"
 fi
-
+export isMacOS
+export isLinux
+export OSNAME
 
 ARCHITECTURE=$(uname -p)
 if [[ "$ARCHITECTURE" =~ .*"64".* ]]; then

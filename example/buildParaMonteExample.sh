@@ -226,7 +226,7 @@ do
 
     # The ParaMonte library dll dependency files
 
-    if [ "${PMCS}" = "gnu" ] && ! [ "${CAF_ENABLED}" = "true" ]; then # caf does not have lib dependency
+    if [ "${PMCS}" = "gnu" ] && ! [ "${isMacOS}" = "true" ] && ! [ "${CAF_ENABLED}" = "true" ]; then # caf does not have lib dependency
 
         # copy Fortran compiler shared library files
 
