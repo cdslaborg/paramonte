@@ -226,23 +226,42 @@ do
 
     # The ParaMonte library dll dependency files
 
-    if ! [ "${PMCS}" = "intel" ] && ! [ "${CAF_ENABLED}" = "true" ]; then # caf does not have lib dependency
+    if [ "${PMCS}" = "gnu" ] && ! [ "${CAF_ENABLED}" = "true" ]; then # caf does not have lib dependency
         if ! [ -z ${Fortran_COMPILER_PATH+x} ]; then
             Fortran_COMPILER_DIR=$(dirname "${Fortran_COMPILER_PATH}")
+            FortranCompilerVersion=$("${Fortran_COMPILER_PATH}" -dumversion)
+            FortranCompilerMajorVersion="$(cut -d '.' -f 1 <<< "$FortranCompilerVersion")"
             Fortran_COMPILER_ROOT_DIR="${Fortran_COMPILER_DIR}"/..
-            for Fortran_COMPILER_LIB_SUBDIR in "${Fortran_COMPILER_ROOT_DIR}/lib64 /usr/lib/gcc /usr/lib64/gcc /usr/lib /usr/lib64"
+            copySucceeded=false
+            for Fortran_COMPILER_LIB_DIR in "${Fortran_COMPILER_ROOT_DIR}/lib64 /usr/lib/gcc/x86_64-linux-gnu/${FortranCompilerMajorVersion}"
             do
-                libgfortranPath=$(find /usr/lib/gcc/ -name "libgfortran.so*")
-                Fortran_COMPILER_LIB_DIR=""/"${Fortran_COMPILER_LIB_SUBDIR}"
                 if [ -d "${Fortran_COMPILER_LIB_DIR}" ]; then
-                    echo >&2
-                    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency files..."
-                    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
-                    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-                    cp -R "${Fortran_COMPILER_LIB_DIR}/"libgfortran.so.* "${ParaMonteExample_LIB_DIR_CURRENT}/" || printCopyFailMsg
-                    break
+                    libgfortranPathList=$(find "${Fortran_COMPILER_LIB_DIR}" -name "libgfortran.so*")
+                    for libgfortranPath in ${libgfortranPathList}
+                    do
+                        echo >&2
+                        echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
+                        echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${PMLIB_FULL_PATH}"
+                        echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+                        yes | \cp -rf "${libgfortranPath}/"libgfortran.so.* "${ParaMonteExample_LIB_DIR_CURRENT}/" && {
+                            copySucceeded=true
+                            break
+                        }
+                    done
                 fi
+                if [ "${copySucceeded}" = "true" ]; then break; fi
             done
+            if [ "${copySucceeded}" = "false" ]; then
+                echo >&2
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: Failed to copy the libgfortran shared library dependency files."
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: Ensure the path to the necessary shared files is defined in your terminal"
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: before attempting to compile the ParaMonte ${LANG_NAME} example."
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: If the ParaMonte example compilations are unsuccessful,"
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: please report the issue at,"
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: "
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING:     https://github.com/cdslaborg/paramonte/issues"
+                echo >&2
+            fi
         else
             echo >&2
             echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: the ParaMonte library dll dependency files could not be found."
