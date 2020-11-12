@@ -85,25 +85,25 @@ contains
         SampleSizeObj%null = NULL_IK
         SampleSizeObj%desc = &
         "The variable sampleSize is an integer that dictates the number of (hopefully, independent and identically distributed &
-        &[i.i.d.]) samples to be drawn from the user-provided objective function. Three ranges of values are possible:\n\n&
-        &    sampleSize < 0:\n\n&
-        &            Then, the absolute value of sampleSize dictates the sample size in units of the effective sample size. &
-                     &The effective sample is by definition i.i.d., and free from duplicates. The effective sample size &
-                     &is determined by " // methodName // " automatically toward the end of the simulation.\n&
-        &            For example:\n\n&
+        &[i.i.d.]) samples to be drawn from the user-provided objective function. Three ranges of values are possible. If\n\n&
+        &    sampleSize < 0,\n\n&
+        &            then, the absolute value of sampleSize dictates the sample size in units of the effective sample size. &
+                     &The effective sample is by definition i.i.d., and free from duplicates and residual autocorrelation. The &
+                     &effective sample size is automatically determined by " // methodName // " toward the end of the simulation. &
+                     &For example:\n\n&
         &                    sampleSize = -1 yields the effective i.i.d. sample drawn from the objective function.\n\n&
         &                    sampleSize = -2 yields a (potentially non-i.i.d.) sample twice as big as the effective &
                              &sample.\n\n&
-        &    sampleSize > 0:\n\n&
-        &            Then, the sample size is assumed to be in units of the number of points to be sampled. &
+        &    sampleSize > 0,\n\n&
+        &            then, the sample size is assumed to be in units of the number of points to be sampled. &
                      &If sampleSize turns out to be less than effectiveSampleSize, the resulting sample will be i.i.d.. &
                      &If sampleSize turns out to be larger than effectiveSampleSize, the resulting sample will be &
-                     &potentially non-i.i.d.. The larger the difference, the more non-i.i.d. the resulting sample will be.\n&
-        &            For example:\n\n&
+                     &potentially non-i.i.d.. The larger this difference, the more non-i.i.d. the resulting &
+                     &final refined sample will be. For example:\n\n&
         &                    sampleSize = 1000 yields a 1000-points sample from the objective function.\n\n&
-        &    sampleSize = 0:\n\n&
-        &            in which case, no sample file will be generated.\n\n&
-        &Default value is sampleSize = "// num2str(SampleSizeObj%def) //"."
+        &    sampleSize = 0,\n\n&
+        &            then, no sample file will be generated.\n\n&
+        &The default value is sampleSize = "// num2str(SampleSizeObj%def) //"."
     end function constructSampleSize
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

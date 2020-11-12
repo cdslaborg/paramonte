@@ -691,6 +691,8 @@ do
                     fi
                     if [ "$isParaMonteCompatibleCompiler" = "true" ]; then
                         echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is ParaMonte compatible!"
+                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version: ${suiteLangCompilerVersion}"
+                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler path: ${suiteLangCompilerPath}"
                         eval "export ${suiteLangCompilerVersion}"
                         eval "export ${suiteLangCompilerPath}"
                         break
