@@ -707,6 +707,7 @@ do
                         unset ${suiteLangCompilerPath}
                     fi
                 else
+                    echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version extraction failed...skipping"
                     unset ${suiteLangCompilerVersion}
                     unset ${suiteLangCompilerPath}
                     continue
