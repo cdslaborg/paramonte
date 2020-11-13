@@ -57,7 +57,7 @@ BUILD_NAME="ParaMonte"; export BUILD_NAME
 FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 ParaMonte_ROOT_DIR="${FILE_DIR}"
-ParaMonte_SRC_DIR="${ParaMonte_ROOT_DIR}/src/ParaMonte"; export ParaMonte_ROOT_DIR
+ParaMonteKernel_SRC_DIR="${ParaMonte_ROOT_DIR}/src/kernel"; export ParaMonte_ROOT_DIR
 ParaMonte_ROOT_BUILD_DIR="${ParaMonte_ROOT_DIR}/build"; export ParaMonte_ROOT_BUILD_DIR
 if ! [ -d "${ParaMonte_ROOT_BUILD_DIR}" ]; then
     mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
@@ -2138,10 +2138,10 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             if [ "${BTYPE}" = "release" ]; then MEX_FLAGS="${MEX_FLAGS} -O"; fi
             echo >&2 "-- ${BUILD_NAME}MATLAB - generating the ParaMonte MATLAB dynamic library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
             echo >&2 "-- ${BUILD_NAME}MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
-            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} ${CFLAGS} ${LINKFLAGS} ${ParaMonte_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
+            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} ${CFLAGS} ${LINKFLAGS} ${ParaMonteKernel_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
             # CC=icl COMPFLAGS="${MATLAB_BUILD_FLAGS}"
             cd "${ParaMonteMATLAB_BLD_LIB_DIR}"
-            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${CFLAGS}" "${LINKFLAGS}" "${ParaMonte_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
+            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${CFLAGS}" "${LINKFLAGS}" "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
                 echo >&2 "-- ${BUILD_NAME}MATLAB - The ParaMonte MATLAB dynamic library build appears to have succeeded."
             else

@@ -218,6 +218,7 @@ if not defined COMPILER_VERSION (
 
 echo. -- !BUILD_SCRIPT_NAME! - COMPILER_VERSION: !COMPILER_VERSION!
 echo. -- !BUILD_SCRIPT_NAME! - TEST_RUN_ENABLED: !ParaMonteTest_RUN_ENABLED!
+echo. -- !BUILD_SCRIPT_NAME! - CODECOV_ENALBED: !CODECOV_ENALBED!
 echo. -- !BUILD_SCRIPT_NAME! - CFI_ENABLED: !CFI_ENABLED!
 echo. -- !BUILD_SCRIPT_NAME! - build type: !BTYPE!
 echo. -- !BUILD_SCRIPT_NAME! - link type: !LTYPE!
@@ -268,12 +269,12 @@ echo. -- !BUILD_SCRIPT_NAME! - project root directory: !ParaMonte_ROOT_DIR!
 
 :: set the ParaMonte source files directory
 
-set ParaMonte_SRC_DIR=!ParaMonte_ROOT_DIR!src\ParaMonte
-if exist !ParaMonte_SRC_DIR! (
-    echo. -- !BUILD_SCRIPT_NAME! - source files directory: !ParaMonte_SRC_DIR!
+set ParaMonteKernel_SRC_DIR=!ParaMonte_ROOT_DIR!src\kernel
+if exist !ParaMonteKernel_SRC_DIR! (
+    echo. -- !BUILD_SCRIPT_NAME! - source files directory: !ParaMonteKernel_SRC_DIR!
 ) else (
     echo. 
-    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: source files directory does not exist: !ParaMonte_SRC_DIR!
+    echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: source files directory does not exist: !ParaMonteKernel_SRC_DIR!
     echo. 
     cd %~dp0
     set ERRORLEVEL=1
@@ -316,8 +317,10 @@ echo.
 :: set preprocessor build flags
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-set FPP_BUILD_FLAGS=/define:OS_IS_WINDOWS
-if !BTYPE!==debug set FPP_BUILD_FLAGS=!FPP_BUILD_FLAGS! /define:DBG_ENABLED
+if !COMPILER_SUITE!==intel (
+    set FPP_BUILD_FLAGS=/define:OS_IS_WINDOWS
+    if !BTYPE!==debug set FPP_BUILD_FLAGS=!FPP_BUILD_FLAGS! /define:DBG_ENABLED
+)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: set default C/CPP/Fortran compilers/linkers
@@ -335,7 +338,9 @@ if !COMPILER_SUITE!==intel (
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 REM echo. FPP_FLAGS_USER = !FPP_FLAGS_USER!
 REM /define:IS_ENABLED
-set FPP_FLAGS=/fpp /define:PARAMONTE_VERSION=^"'!ParaMonteVersion!'^" !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !FPP_FLAGS_USER!
+if !COMPILER_SUITE!==intel (
+    set FPP_FLAGS=/fpp /define:PARAMONTE_VERSION=^"'!ParaMonteVersion!'^" !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !FPP_FLAGS_USER!
+)
 REM set FPP_FLAGS=/fpp !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !USER_PREPROCESSOR_MACROS! !FPP_FLAGS_USER!
 :: to save the intermediate files use this on the command line: FPP /Qsave_temps <original file> <intermediate file>
 
@@ -354,10 +359,12 @@ if !CAFTYPE!==distributed set CAF_ENABLED=true
 
 if !CAF_ENABLED!==true (
     set SERIAL_ENABLED=false
-    echo. -- !BUILD_SCRIPT_NAME! - enabling Coarray Fortran syntax via preprocesor flag /define:CAF_ENABLED
-    set FPP_FLAGS=!FPP_FLAGS! /define:CAF_ENABLED
-    set CAF_FLAGS=/Qcoarray=!CAFTYPE!
-    if not defined FOR_COARRAY_NUM_IMAGES set FOR_COARRAY_NUM_IMAGES=3
+    if !COMPILER_SUITE!==intel (
+        echo. -- !BUILD_SCRIPT_NAME! - enabling Coarray Fortran syntax via preprocesor flag /define:CAF_ENABLED
+        set FPP_FLAGS=!FPP_FLAGS! /define:CAF_ENABLED
+        set CAF_FLAGS=/Qcoarray=!CAFTYPE!
+        if not defined FOR_COARRAY_NUM_IMAGES set FOR_COARRAY_NUM_IMAGES=3
+    )
     echo. -- !BUILD_SCRIPT_NAME! - number of Coarray images: !FOR_COARRAY_NUM_IMAGES!
 ) else (
     echo. -- !BUILD_SCRIPT_NAME! - ignoring Coarray Fortran parallelization.
@@ -376,10 +383,12 @@ set MPI_FLAGS=
 if !MPI_ENABLED!==true (
     set SERIAL_ENABLED=false
     if not defined CAFTYPE (
-        set FPP_FLAGS=!FPP_FLAGS! /define:MPI_ENABLED
-        REM set MPI_FLAGS=-fast
-        set FCL=mpiifort.bat -fc=ifort
-        set CCL=mpicc -cc=icl.exe
+        if !COMPILER_SUITE!==intel (
+            set FPP_FLAGS=!FPP_FLAGS! /define:MPI_ENABLED
+            REM set MPI_FLAGS=-fast
+            set FCL=mpiifort.bat -fc=ifort
+            set CCL=mpicc -cc=icl.exe
+        )
     ) else (
         echo.
         echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: Coarray Fortran cannot be mixed with MPI.
@@ -395,8 +404,10 @@ if !MPI_ENABLED!==true (
 
 set OMP_FLAGS=
 if !OMP_ENABLED!==true (
-    set OMP_FLAGS=/Qopenmp
-    set SERIAL_ENABLED=false
+    if !COMPILER_SUITE!==intel (
+        set OMP_FLAGS=/Qopenmp
+        set SERIAL_ENABLED=false
+    )
 )
 
 set FCL_PARALLELIZATION_FLAGS=!CAF_FLAGS! !MPI_FLAGS! !OMP_FLAGS!
@@ -447,9 +458,11 @@ if !COMPILER_SUITE!==intel (
 
 set FCL_FLAGS=!FCL_FLAGS_DEFAULT! !FCL_PARALLELIZATION_FLAGS! !FCL_BUILD_FLAGS!
 
-if !HEAP_ARRAY_ENABLED!==true (
-    set FCL_FLAGS=!FCL_FLAGS! /heap-arrays
+if !COMPILER_SUITE!==intel (
+    if !HEAP_ARRAY_ENABLED!==true set FCL_FLAGS=!FCL_FLAGS! /heap-arrays
+    if !CODECOV_ENALBED!==true set FCL_FLAGS=!FCL_FLAGS! /Qprof-gen:srcpos /Qcov-gen:paramonte
 )
+
 
 echo.
 echo. -- !BUILD_SCRIPT_NAME! - Fortran preprocessor user: !FPP_FLAGS_USER!
@@ -542,7 +555,7 @@ REM exit /B 1
 
 :LABEL_BUILD_ParaMonte
 
-call !ParaMonte_SRC_DIR!\buildParaMonteSource.bat || (
+call !ParaMonteKernel_SRC_DIR!\buildParaMonteKernel.bat || (
     echo. 
     echo. -- !BUILD_SCRIPT_NAME! - Fatal Error: build failed. exiting...
     echo. 

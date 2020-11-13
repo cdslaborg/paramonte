@@ -14,6 +14,26 @@ cache:
 
 matrix:
   include:
+    - os: linux
+      dist: trusty
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - cmake
+            - mpich
+            - gfortran-9
+      script:
+        - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
+        - cmake --version
+        - gfortran --version
+        - gfortran-9 --version
+        #- echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" --yes-to-all
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
 
 #    - &macOS
 #      os: osx
@@ -95,18 +115,12 @@ matrix:
             - g++
             - cmake
             - mpich
-            - gfortran-10
+            - gfortran-8
       script:
-        - sudo apt update
-        - sudo apt install gcc
-        - sudo apt install g++
-        - sudo apt install cmake
-        - sudo apt install mpich
-        - sudo apt install gfortran-10
         #- chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
         - cmake --version
         - gfortran --version
-        - gfortran-10 --version
+        - gfortran-8 --version
         #- echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" --yes-to-all
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
