@@ -95,14 +95,18 @@ else
     export PLATFORM
 fi
 
+isMacOS=false
+isLinux=false
 if [[ "${UNAME_PLATFORM}" =~ .*"Darwin".* ]]; then
     isMacOS=true
     OSNAME="macOS"
-else
-    isMacOS=false
+elif [[ "${UNAME_PLATFORM}" =~ .*"Linux".* ]]; then
+    isLinux=true
     OSNAME="Linux"
 fi
-
+export isMacOS
+export isLinux
+export OSNAME
 
 ARCHITECTURE=$(uname -p)
 if [[ "$ARCHITECTURE" =~ .*"64".* ]]; then
@@ -687,6 +691,8 @@ do
                     fi
                     if [ "$isParaMonteCompatibleCompiler" = "true" ]; then
                         echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is ParaMonte compatible!"
+                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version: ${suiteLangCompilerVersion}"
+                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler path: ${suiteLangCompilerPath}"
                         eval "export ${suiteLangCompilerVersion}"
                         eval "export ${suiteLangCompilerPath}"
                         break
@@ -746,7 +752,7 @@ do
                 cd "${tempDir}"
                 cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90"
                 { 
-                    mpifort testMPI.f90 -o main.exe && mpiexec -n 1 main.exe 
+                    mpiifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe || mpifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe 
                 } || {
                     echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}...skipping..."
                     unset ${suiteLangMpiWrapperPath}
@@ -778,7 +784,8 @@ echo >&2
 CAF_ENABLED=false
 if [ "${CAFTYPE}" != "none" ]; then
     CAF_ENABLED=true
-    #if [ -z ${intelFortranMpiWrapperPath+x} ]; then
+    # The following conditional needed to ensure CAF compilation is automatically done with Intel compiler if available.
+    if [ -z ${intelFortranMpiWrapperPath+x} ]; then
         if command -v caf >/dev/null 2>&1; then
             cafCompilerPath=$(command -v caf)
             echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper detected at: ${cafCompilerPath}"
@@ -802,7 +809,7 @@ if [ "${CAFTYPE}" != "none" ]; then
             mpiInstallEnabled=true
             gnuInstallEnabled=true
         fi
-    #fi
+    fi
     if [ "${cafInstallEnabled}" = "true" ]; then
         echo >&2 "-- ${BUILD_NAME}CAF - NOTE: OpenCoarrays caf compiler wrapper could not be found on your system."
         echo >&2
@@ -1130,7 +1137,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                         verify $? "installation of cmake"
                     else
                         chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && ./install.sh  --yes-to-all --package cmake --install-version ${cmakeVersionRequired} )
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionRequired} )
                         verify $? "installation of cmake"
                     fi
                 fi
@@ -1170,7 +1177,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                         echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
                         echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
                         chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
                         {
                             if [ -z ${GCC_BOOTSTRAP+x} ]; then
                                 if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
@@ -1202,7 +1209,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                                 if [ "${answer}" = "y" ]; then
                                     GCC_BOOTSTRAP="--bootstrap"
                                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                    (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
                                     verify $? "installation of ${CURRENT_PKG}"
                                 else
                                     verify 1 "installation of ${CURRENT_PKG}"
@@ -1244,7 +1251,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                         Fortran_COMPILER_PATH=$(command -v gfortran)
                     else
                         chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
                         {
                             if [ -z ${GCC_BOOTSTRAP+x} ]; then
                                 echo >&2
@@ -1253,7 +1260,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                                 if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                                     GCC_BOOTSTRAP="--bootstrap"
                                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                    (cd ${ParaMonte_REQ_DIR} && ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
                                     verify $? "installation of ${CURRENT_PKG}"
                                 else
                                     verify 1 "installation of ${CURRENT_PKG}"
@@ -1299,7 +1306,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                         ParaMonte_CAF_WRAPPER_PATH=$(command -v caf)
                     else
                         chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
+                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
                         {
                             if [ -z ${GCC_BOOTSTRAP+x} ]; then
                                 echo >&2
@@ -1308,7 +1315,7 @@ if [ "${prereqInstallAllowed}" = "true" ]; then
                                 if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
                                     GCC_BOOTSTRAP="--bootstrap"
                                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                    (cd ${ParaMonte_REQ_DIR} && ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
+                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
                                     verify $? "installation of ${CURRENT_PKG}"
                                 else
                                     verify 1 "${CURRENT_PKG} installation"
@@ -1362,19 +1369,19 @@ fi
 
 if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then
 
-    SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
-    export SETUP_FILE_PATH
-    {
-    echo "# ParaMonte runtime environment setup script."
-    echo "# Source this Bash script in your Bash environment like,"
-    echo "#     source ./setup.sh"
-    echo "# before compiling your source files and linking with ParaMonte library."
-    echo ""
-    } > ${SETUP_FILE_PATH}
-    chmod +x ${SETUP_FILE_PATH}
+    if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
+        SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
+        export SETUP_FILE_PATH
+        {
+        echo "# ParaMonte runtime environment setup script."
+        echo "# Source this Bash script in your Bash environment like,"
+        echo "#     source ./setup.sh"
+        echo "# before compiling your source files and linking with ParaMonte library."
+        echo ""
+        } > ${SETUP_FILE_PATH}
+        chmod +x ${SETUP_FILE_PATH}
 
-    if [[ -f "${SETUP_FILE_PATH}" ]]; then
-        if [[ -f "${ParaMonte_CAF_SETUP_PATH}" ]]; then
+        if [[ -f "${SETUP_FILE_PATH}" ]]; then
             {
             echo ""
             echo "source ${ParaMonte_CAF_SETUP_PATH}"
@@ -1412,7 +1419,7 @@ if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isM
                 LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
             fi
         fi
-        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
             {
             echo "if [ -z \${PATH+x} ]; then"
             echo "    export PATH=\"${ParaMonte_GNU_BIN_DIR}\""
@@ -1447,7 +1454,7 @@ if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isM
                 LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
             fi
         fi
-        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
             {
             echo "if [ -z \${PATH+x} ]; then"
             echo "    export PATH=\"${ParaMonte_MPI_BIN_DIR}\""
@@ -1482,7 +1489,7 @@ if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isM
                 LD_LIBRARY_PATH="${ParaMonte_CAF_LIB_DIR}:${LD_LIBRARY_PATH}"
             fi
         fi
-        if [[ -f "${SETUP_FILE_PATH}" ]]; then
+        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
             {
             echo "if [ -z \${PATH+x} ]; then"
             echo "    export PATH=\"${ParaMonte_CAF_BIN_DIR}\""
@@ -1830,7 +1837,7 @@ echo >&2 "-- ${BUILD_NAME} - CMAKE Fortran compiler option: ${FC_OPTION}"
 echo >&2 "-- ${BUILD_NAME} - CMAKE mpiexec option: ${MPIEXEC_OPTION}"
 echo >&2
 
-if [ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${cafInstallEnabled}" = "true" ]; then
+if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && ([ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${cafInstallEnabled}" = "true" ]); then
     ParaMonte_CAF_SETUP_PATH_CMD="source ${ParaMonte_CAF_SETUP_PATH}"
 else
     ParaMonte_CAF_SETUP_PATH_CMD=""
@@ -2306,7 +2313,8 @@ fi
 # build ParaMonte example
 ####################################################################################################################################
 
-source ./example/buildParaMonteExample.sh
+cd "${ParaMonte_ROOT_DIR}"
+source "${ParaMonte_ROOT_DIR}/example/buildParaMonteExample.sh"
 
 ####################################################################################################################################
 # copy ParaMonte binary / library files to the bin directory

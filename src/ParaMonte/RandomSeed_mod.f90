@@ -140,7 +140,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandomSeed
 #endif
         implicit none
-        class(RandomSeed_type), intent(inout)   :: RandomSeed
+        class(RandomSeed_type), intent(inout) :: RandomSeed
         RandomSeed%Err%occurred = .false.
         RandomSeed%Err%msg = ""
         !if (allocated(RandomSeed%Value)) deallocate(RandomSeed%Value)
@@ -201,6 +201,7 @@ contains
         end if
 
         ! now use scalarSeed to construct the random seed on all images
+
         if (RandomSeed%isImageDistinct) then
             offsetImageRandomSeed = 127_IK * RandomSeed%size * (RandomSeed%imageID-1)
         else
