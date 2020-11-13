@@ -28,8 +28,8 @@ matrix:
         - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
         - export PATH="/usr/local/cmake-3.16.3/bin:${PATH}"
         - cmake --version || echo "cmake not found..."
-        - gfortran --version && FCFLAG="-f gfortran" || echo "gfortran not found..."
-        - gfortran-9 --version && FCFLAG="-f gfortran-9" || echo "gfortran-9 not found..."
+        - gfortran --version && FCFLAG="-f (which gfortran)" || echo "gfortran not found..."
+        - gfortran-9 --version && FCFLAG="-f (which gfortran-9)" || echo "gfortran-9 not found..."
         #- echo >&2 "The MPIEXEC binday path: $(which mpiexec) || echo >&2 "MPI library not found...skipping"
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" -s gnu --yes-to-all ${FCFLAG}
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
