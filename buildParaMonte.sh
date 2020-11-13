@@ -677,8 +677,9 @@ do
 
             echo >&2 "-- ${BUILD_NAME}Compiler - searching all system paths for a ${SUITE} ${LANG} compiler..."
 
-            clist=$(( IFS=:; for p in $PATH; do ls -d "$p"/*${!suiteLangCompilerName}; done ) 2>/dev/null)
-            for cname in $clist; do
+            #clist=$(( IFS=:; for p in $PATH; do echo $(ls -d "$p"/*${!suiteLangCompilerName}); done ) 2>/dev/null)
+            clist=$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*${!suiteLangCompilerName}); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)
+            for cname in $(echo $clist | sed "s/,/ /g"); do
 
                 echo >&2 "-- ${BUILD_NAME}Compiler - checking ${cname}"
 
