@@ -213,6 +213,11 @@ cat << EndOfMessage
 EndOfMessage
 }
 
+cafInstallEnabled=false
+cafInstallEnabled=false
+mpiInstallEnabled=false
+cmakeInstallEnabled=false
+
 unset PMCS
 unset MPIEXEC_PATH
 unset GCC_BOOTSTRAP
@@ -782,6 +787,7 @@ done
 echo >&2
 
 CAF_ENABLED=false
+cafInstallEnabled=false
 if [ "${CAFTYPE}" != "none" ]; then
     CAF_ENABLED=true
     # The following conditional needed to ensure CAF compilation is automatically done with Intel compiler if available.
