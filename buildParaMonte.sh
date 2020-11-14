@@ -55,6 +55,7 @@
 BUILD_NAME="ParaMonte"; export BUILD_NAME
 
 FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+#export ParaMonte_ROOT_DIR="${ParaMonte_ROOT_DIR:-${PWD%/}}"
 
 ParaMonte_ROOT_DIR="${FILE_DIR}"
 ParaMonteKernel_SRC_DIR="${ParaMonte_ROOT_DIR}/src/kernel"; export ParaMonte_ROOT_DIR
@@ -63,7 +64,11 @@ if ! [ -d "${ParaMonte_ROOT_BUILD_DIR}" ]; then
     mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
 fi
 
-#export ParaMonte_ROOT_DIR="${ParaMonte_ROOT_DIR:-${PWD%/}}"
+echo >&2
+echo >&2 "-- ${BUILD_NAME} -       ParaMonte_ROOT_DIR: ${ParaMonte_ROOT_DIR}"
+echo >&2 "-- ${BUILD_NAME} -  ParaMonteKernel_SRC_DIR: ${ParaMonteKernel_SRC_DIR}"
+echo >&2 "-- ${BUILD_NAME} - ParaMonte_ROOT_BUILD_DIR: ${ParaMonte_ROOT_BUILD_DIR}"
+echo >&2
 
 if [[ ! -f "$(pwd)/build${BUILD_NAME}.sh" ]]; then
     echo >&2
