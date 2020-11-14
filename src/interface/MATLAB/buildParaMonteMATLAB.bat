@@ -127,11 +127,11 @@ if defined MATLAB_BIN_DIR (
     if !BTYPE!==release set "MEX_FLAGS=!MEX_FLAGS! -O"
     echo. -- ParaMonteMATLAB - generating the ParaMonte MATLAB dynamic library: !ParaMonteMATLAB_BLD_LIB_DIR!\!PMLIB_MATLAB_NAME!
     echo. -- ParaMonteMATLAB - compiler options: !MATLAB_BUILD_FLAGS!
-    echo. -- ParaMonteMATLAB - compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
+    echo. -- ParaMonteMATLAB - compiler command: "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonteKernel_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME!
     cd !ParaMonteMATLAB_BLD_LIB_DIR!
     if !FRESH_RUN!==true (
         REM CC=icl COMPFLAGS="!MATLAB_BUILD_FLAGS!"
-        call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonte_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME! && (
+        call "!MATLAB_BIN_DIR!\mex.bat" !MEX_FLAGS! "!ParaMonteKernel_SRC_DIR!\paramonte.m.c" !PMLIB_NAME!.lib -output !PMLIB_MATLAB_NAME! && (
         REM if !ERRORLEVEL!==0 (
             echo.
             echo. -- ParaMonteMATLAB - the ParaMonte MATLAB dynamic library build appears to have succeeded.

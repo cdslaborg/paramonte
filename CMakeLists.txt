@@ -139,7 +139,7 @@ if ("${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
             "       $ buildDir=$(uname -s)$(uname -m) # set build folder to OS name + architecture\n"
             "       $ mkdir $\{buildDir\}\n"
             "       $ cd $\{buildDir\}\n"
-            "       $ CC=gcc FC=gfortran cmake -DBUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/install/dir /path/to/ParaMonte/src/dir\n\n"
+            "       $ CC=gcc FC=gfortran cmake -DBUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/install/dir /path/to/ParaMonte/kernel/src/dir\n\n"
             "   substituting the appropriate syntax for your shell (the above line assumes the bash shell)."
             )
 endif()
@@ -439,8 +439,8 @@ message( STATUS "${pmattn} project root directory: ${CMAKE_SOURCE_DIR}" )
 
 # set the ParaMonte source files directory
 
-set(ParaMonte_SRC_DIR
-    "${CMAKE_SOURCE_DIR}/src/ParaMonte"
+set(ParaMonteKernel_SRC_DIR
+    "${CMAKE_SOURCE_DIR}/src/kernel"
     CACHE PATH "ParaMonte source files directory" )
 
 set(ParaMonteTest_SRC_DIR
@@ -460,7 +460,7 @@ set(ParaMonteInterfacePython_SRC_DIR
     CACHE PATH "ParaMonte-interface Python source files directory" )
 
 message( STATUS "${pmattn} interface source files directory: ${ParaMonteInterface_SRC_DIR}" )
-foreach(X IN LISTS  ParaMonte_SRC_DIR 
+foreach(X IN LISTS  ParaMonteKernel_SRC_DIR 
                     ParaMonteInterface_SRC_DIR 
                     ParaMonteInterfaceC_SRC_DIR 
                     ParaMonteInterfacePython_SRC_DIR )
@@ -630,8 +630,8 @@ endif()
 # set(CMAKE_Fortran_MODULE_DIRECTORY "${ParaMonte_MOD_DIR}")
 
 # The source for the ParaMonte library and its binaries in the ParaMonte_OBJ_DIR folder
-#add_subdirectory(${ParaMonte_SRC_DIR} ${ParaMonte_OBJ_DIR})
-add_subdirectory(${ParaMonte_SRC_DIR} "${ParaMonte_OBJ_DIR}")
+#add_subdirectory(${ParaMonteKernel_SRC_DIR} ${ParaMonte_OBJ_DIR})
+add_subdirectory(${ParaMonteKernel_SRC_DIR} "${ParaMonte_OBJ_DIR}")
 
 # The source for the ParaMonte library tests and its binaries in the ParaMonte_BIN_DIR folder
 add_subdirectory(${ParaMonteTest_SRC_DIR} ${ParaMonteTest_OBJ_DIR})

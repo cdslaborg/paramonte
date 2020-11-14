@@ -57,7 +57,7 @@ BUILD_NAME="ParaMonte"; export BUILD_NAME
 FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 ParaMonte_ROOT_DIR="${FILE_DIR}"
-ParaMonte_SRC_DIR="${ParaMonte_ROOT_DIR}/src/ParaMonte"; export ParaMonte_ROOT_DIR
+ParaMonteKernel_SRC_DIR="${ParaMonte_ROOT_DIR}/src/kernel"; export ParaMonte_ROOT_DIR
 ParaMonte_ROOT_BUILD_DIR="${ParaMonte_ROOT_DIR}/build"; export ParaMonte_ROOT_BUILD_DIR
 if ! [ -d "${ParaMonte_ROOT_BUILD_DIR}" ]; then
     mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
@@ -677,8 +677,9 @@ do
 
             echo >&2 "-- ${BUILD_NAME}Compiler - searching all system paths for a ${SUITE} ${LANG} compiler..."
 
-            clist=$(( IFS=:; for p in $PATH; do ls -d "$p"/*${!suiteLangCompilerName}; done ) 2>/dev/null)
-            for cname in $clist; do
+            #clist=$(( IFS=:; for p in $PATH; do echo $(ls -d "$p"/*${!suiteLangCompilerName}); done ) 2>/dev/null)
+            clist=$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*${!suiteLangCompilerName}); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)
+            for cname in $(echo $clist | sed "s/,/ /g"); do
 
                 echo >&2 "-- ${BUILD_NAME}Compiler - checking ${cname}"
 
@@ -707,6 +708,7 @@ do
                         unset ${suiteLangCompilerPath}
                     fi
                 else
+                    echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version extraction failed...skipping"
                     unset ${suiteLangCompilerVersion}
                     unset ${suiteLangCompilerPath}
                     continue
@@ -2138,10 +2140,10 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             if [ "${BTYPE}" = "release" ]; then MEX_FLAGS="${MEX_FLAGS} -O"; fi
             echo >&2 "-- ${BUILD_NAME}MATLAB - generating the ParaMonte MATLAB dynamic library: ${ParaMonteMATLAB_BLD_LIB_DIR}${PMLIB_MATLAB_NAME}"
             echo >&2 "-- ${BUILD_NAME}MATLAB - compiler options: ${MATLAB_BUILD_FLAGS}"
-            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} ${CFLAGS} ${LINKFLAGS} ${ParaMonte_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
+            echo >&2 "-- ${BUILD_NAME}MATLAB - compiler command: ${MATLAB_BIN_DIR}/mex ${MEX_FLAGS} ${CFLAGS} ${LINKFLAGS} ${ParaMonteKernel_SRC_DIR}/paramonte.m.c ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}"
             # CC=icl COMPFLAGS="${MATLAB_BUILD_FLAGS}"
             cd "${ParaMonteMATLAB_BLD_LIB_DIR}"
-            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${CFLAGS}" "${LINKFLAGS}" "${ParaMonte_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
+            "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${CFLAGS}" "${LINKFLAGS}" "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
                 echo >&2 "-- ${BUILD_NAME}MATLAB - The ParaMonte MATLAB dynamic library build appears to have succeeded."
             else

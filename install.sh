@@ -62,7 +62,7 @@ ParaMonte_ROOT_DIR=${FILE_DIR}
 export ParaMonte_ROOT_DIR
 #export ParaMonte_ROOT_DIR="${ParaMonte_ROOT_DIR:-${PWD%/}}"
 
-if [[ ! -f "${ParaMonte_ROOT_DIR}/src/ParaMonte/ParaMonte_mod.f90" ]]; then
+if [[ ! -f "${ParaMonte_ROOT_DIR}/src/kernel/ParaMonte_mod.f90" ]]; then
   echo >&2
   echo >&2 "-- ParaMonte - FATAL: build failed."
   echo >&2 "-- ParaMonte - FATAL: Please run this script inside the top-level ParaMonte library root directory."

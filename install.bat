@@ -88,6 +88,7 @@ set FOR_COARRAY_NUM_IMAGES=
 set ParaMonte_INSTALL_CLEANUP_ENABLED=true
 set DRY_RUN=false
 set FAST_ENABLED=false
+set CODECOV_ENALBED=false
 set FPP_ONLY_ENABLED=false
 set MatDRAM_ENABLED=false
 
@@ -272,6 +273,13 @@ if not "%1"=="" (
     if "!FLAG!"=="--fast" (
         set FLAG_SUPPORTED=true
         set FAST_ENABLED=true
+    )
+
+    REM --codecov
+
+    if "!FLAG!"=="--codecov" (
+        set FLAG_SUPPORTED=true
+        set CODECOV_ENALBED=true
     )
 
     REM --help

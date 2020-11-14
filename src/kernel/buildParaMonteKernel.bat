@@ -125,7 +125,7 @@ echo. -- ParaMonte - generating object files at: !ParaMonte_OBJ_DIR!
 
 :: First verify the source filelist exists
 
-set ParaMonte_FILE_LIST=!ParaMonte_SRC_DIR!\filelist.txt
+set ParaMonte_FILE_LIST=!ParaMonteKernel_SRC_DIR!\filelist.txt
 if not exist !ParaMonte_FILE_LIST! (
     echo.
     echo. -- ParaMonte - Fatal Error: The filelist.txt containing the ParaMonte source filenames does not exist. Path: !ParaMonte_FILE_LIST!
@@ -147,10 +147,10 @@ if !MPI_ENABLED!==true (
     for /F "eol=! tokens=*" %%A in (!ParaMonte_FILE_LIST!) do (
         echo. -- ParaMonte - generating object file for %%A
         call !FCL! !FCL_FLAGS! !FPP_FLAGS! !FC_LIB_FLAGS! ^
-        /module:"!ParaMonte_MOD_DIR!"   %=path to output ParaMonte example module files=% ^
-        /I:"!ParaMonte_MOD_DIR!"        %=path to input ParaMonte module files=%  ^
-        /I:"!MATLAB_INC_DIR!"           %=path to the MATLAB include files=% ^
-        /c "!ParaMonte_SRC_DIR!\%%A"    %=path to input ParaMonte example source files=% ^
+        /module:"!ParaMonte_MOD_DIR!"       %=path to output ParaMonte example module files=% ^
+        /I:"!ParaMonte_MOD_DIR!"            %=path to input ParaMonte module files=%  ^
+        /I:"!MATLAB_INC_DIR!"               %=path to the MATLAB include files=% ^
+        /c "!ParaMonteKernel_SRC_DIR!\%%A"  %=path to input ParaMonte example source files=% ^
         || (
             REM if not !ERRORLEVEL!==0 (
             echo.
@@ -186,10 +186,10 @@ if !MPI_ENABLED!==true (
     for /F "eol=! tokens=*" %%A in (!ParaMonte_FILE_LIST!) do (
         echo. -- ParaMonte - generating object file for %%A
         !FCL! !FCL_FLAGS! !FPP_FLAGS! !FCL_IPOC_FLAG! !FC_LIB_FLAGS! ^
-        /module:"!ParaMonte_MOD_DIR!"   %=path to output ParaMonte example module files=% ^
-        /I:"!ParaMonte_MOD_DIR!"        %=path to input ParaMonte module files=%  ^
-        /I:"!MATLAB_INC_DIR!"           %=path to the MATLAB include files=% ^
-        /c "!ParaMonte_SRC_DIR!\%%A"    %=path to input ParaMonte example source files=% ^
+        /module:"!ParaMonte_MOD_DIR!"       %=path to output ParaMonte example module files=% ^
+        /I:"!ParaMonte_MOD_DIR!"            %=path to input ParaMonte module files=%  ^
+        /I:"!MATLAB_INC_DIR!"               %=path to the MATLAB include files=% ^
+        /c "!ParaMonteKernel_SRC_DIR!\%%A"  %=path to input ParaMonte example source files=% ^
         || (
             echo.
             echo. -- ParaMonte - Fatal Error: compilation of the object file for %%A failed.
