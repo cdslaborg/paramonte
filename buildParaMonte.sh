@@ -225,6 +225,7 @@ unset INTERFACE_LANGUAGE
 unset Fortran_COMPILER_PATH
 FRESH_INSTALL_ENABLED=false
 YES_TO_ALL_DISABLED=true
+RELEASE_ENABLED=false
 DRYRUN_ENABLED=false
 CLEAN=false
 
@@ -272,6 +273,8 @@ while [ "$1" != "" ]; do
         -F | --fresh )          FRESH_INSTALL_ENABLED=true; export FRESH_INSTALL_ENABLED
                                 ;;
         -d | --dryrun )         DRYRUN_ENABLED=true; export DRYRUN_ENABLED
+                                ;;
+        -r | --release )        RELEASE_ENABLED=true; export RELEASE_ENABLED
                                 ;;
         -y | --yes-to-all )     YES_TO_ALL_DISABLED=false; export YES_TO_ALL_DISABLED
                                 ;;
@@ -760,7 +763,7 @@ do
                 cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90"
                 { 
                     mpiifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe || mpifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe 
-                } || {
+                } &> /dev/null || {
                     echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}...skipping..."
                     unset ${suiteLangMpiWrapperPath}
                     if [ -z ${PMCS+x} ] && [ "${MPI_ENABLED}" = "true" ] ; then

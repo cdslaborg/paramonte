@@ -30,9 +30,10 @@
 
     flag definitions:
 
-        -L | --lang             : the ParaMonte library interface language(case-insensitive): C C++ Fortran MATLAB Python
+        -L | --lang             : the ParaMonte library interface language(case-insensitive): C C++ Fortran MATLAB Python.
                                   the ParaMonte library will be built for usage from the user-specified languages.
                                   the default is "C C++ Fortran MATLAB Python".
+                                  Note that CPP or cpp is also acceptable in place of C++.
         -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
                                   If you are not sure whether you have any of the two installed on your system,
                                   leave this option out. The script will automatically search for the appropriate

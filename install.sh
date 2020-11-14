@@ -94,6 +94,7 @@ yes_to_all_flag=""
 gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
 MatDRAM_ENABLED="false"
+release_flag=""
 dryrun_flag=""
 
 while [ "$1" != "" ]; do
@@ -131,6 +132,8 @@ while [ "$1" != "" ]; do
         -F | --fresh )          fresh_flag="--fresh"
                                 ;;
         -d | --dryrun )         dryrun_flag="--dryrun"
+                                ;;
+        -r | --release )        release_flag="--release"; export release_flag
                                 ;;
         -y | --yes-to-all )     yes_to_all_flag="--yes-to-all"
                                 ;;
@@ -257,7 +260,7 @@ reportBadValue()
 if ! [ -z ${LANG_LIST+x} ]; then
     for LANG in $LANG_LIST; do
         if  [[ $LANG != [cC]
-            && ($LANG != "c++" && $LANG != "C++")
+            && ($LANG != "c++" && $LANG != "C++" && $LANG != [cC][pP][pP])
             && $LANG != [fF][oO][rR][tT][rR][aA][nN]
             && $LANG != [mM][aA][tT][lL][aA][bB]
             && $LANG != [pP][yY][tT][hH][oO][nN] ]]; then
@@ -516,7 +519,11 @@ for PMCS in $PMCS_LIST; do
 
                         BENABLED=true
 
-                        interface_language_flag="--lang ${INTERFACE_LANGUAGE}"
+                        if [ "${INTERFACE_LANGUAGE}" = "cpp" ]; then
+                            interface_language_flag="--lang c++"
+                        else
+                            interface_language_flag="--lang ${INTERFACE_LANGUAGE}"
+                        fi
                         if [ "${INTERFACE_LANGUAGE}" = "fortran" ]; then
                             CFI_ENABLED="false"
                         else
@@ -590,6 +597,9 @@ for PMCS in $PMCS_LIST; do
                             if ! [ "${dryrun_flag}" = "" ]; then
                             echo >&2 "                          ${dryrun_flag} \ "
                             fi
+                            if ! [ "${release_flag}" = "" ]; then
+                            echo >&2 "                          ${release_flag} \ "
+                            fi
                             if ! [ "${gcc_bootstrap_flag}" = "" ]; then
                             echo >&2 "                          ${gcc_bootstrap_flag} \ "
                             fi
@@ -623,6 +633,7 @@ for PMCS in $PMCS_LIST; do
                             ${yes_to_all_flag} \
                             ${fresh_flag} \
                             ${dryrun_flag} \
+                            ${release_flag} \
                             ${gcc_bootstrap_flag} \
                             ${fortran_flag} \
                             ${mpiexec_flag} \

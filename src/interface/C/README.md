@@ -137,7 +137,7 @@ Example usage instructions
     +   On **macOS/Linux**: Open a Bash terminal and navigate to the folder containing the compressed library. 
         Use the following command to untar the compressed file,  
         ```  
-        ls libparamonte*.tar.gz | xargs -i tar xvzf {}
+        ls libparamonte*.tar.gz* | xargs -i tar xvzf {}
         ```  
         to extract all libparamonte tar files in the current directory.  
 
