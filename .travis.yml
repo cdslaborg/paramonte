@@ -24,6 +24,10 @@ matrix:
             - cmake
             - mpich
             - gfortran-9
+            - libblas-dev
+            - liblapack-dev
+            - libopenmpi-dev
+            - openmpi-bin
       script:
         - chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
         - export PATH="/usr/local/cmake-3.16.3/bin:${PATH}"

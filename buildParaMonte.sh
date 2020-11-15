@@ -725,7 +725,7 @@ if [[ "${SUITE_LIST}" =~ .*"gnu".* ]] && [ -z ${gnuFortranCompilerPath+x} ]; the
 
     #### return a comma-separated list of available compiler paths
 
-    clist=$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*${gnuFortranCompilerName}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)
+    clist=$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/${gnuFortranCompilerName}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)
 
     for cname in $(echo $clist | sed "s/,/ /g"); do
 
