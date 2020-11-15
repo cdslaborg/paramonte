@@ -1372,7 +1372,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
                     echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package mpich --install-version ${mpichVersionOpenCoarrays} ) ||
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
