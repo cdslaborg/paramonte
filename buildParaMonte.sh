@@ -829,11 +829,11 @@ fi
 #### identify the MPI wrappers
 ####################################################################################################################################
 
-gnuCMpiWrapperName="mpicc"
-gnuFortranMpiWrapperName=mpifort
+gnuCMpiWrapperList="mpicc"
+gnuFortranMpiWrapperList="mpifort:mpif90"
 
-intelCMpiWrapperName=mpiicc
-intelFortranMpiWrapperName=mpiifort
+intelCMpiWrapperList="mpiicc"
+intelFortranMpiWrapperList="mpiifort"
 
 for SUITE in $SUITE_LIST
 do
@@ -846,41 +846,52 @@ do
     do
 
         suiteLangMpiWrapperName="${SUITE}${LANG}MpiWrapperName"
+        suiteLangMpiWrapperList="${SUITE}${LANG}MpiWrapperList"
         suiteLangMpiWrapperPath="${SUITE}${LANG}MpiWrapperPath"
-        if eval "command -v ${!suiteLangMpiWrapperName} >/dev/null 2>&1"; then
 
-            eval "unset ${suiteLangMpiWrapperPath}"
-            eval ${suiteLangMpiWrapperPath}='$(command -v ${!suiteLangMpiWrapperName})'
+        for mpiWrapperName in ${!suiteLangMpiWrapperList//:/ }
+        do
 
-            echo >&2 "-- ${BUILD_NAME}MPI - ${SUITE} ${!suiteLangMpiWrapperName} detected at: ${suiteLangMpiWrapperPath}=${!suiteLangMpiWrapperPath}"
+            eval ${suiteLangMpiWrapperName}="${mpiWrapperName}"
 
-            if [ "${LANG}" = "Fortran" ]; then
+            if eval "command -v ${!suiteLangMpiWrapperName} >/dev/null 2>&1"; then
 
-                # check if the compiler wrapper can compile a simple Fortran MPI test code.
+                eval "unset ${suiteLangMpiWrapperPath}"
+                eval ${suiteLangMpiWrapperPath}='$(command -v ${!suiteLangMpiWrapperName})'
 
-                tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-                echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
-                cd "${tempDir}" && cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90" && \
-                {
-                    ${!suiteLangMpiWrapperName} testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe
-                } &> /dev/null || {
-                    echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}. skipping..."
-                    unset ${suiteLangMpiWrapperPath}
-                    if [ "${MPI_ENABLED}" = "true" ] ; then
-                        mpiInstallEnabled=true
-                    fi
-                }
-                rm -rf "${tempDir}"
-                cd "${ParaMonte_ROOT_DIR}"
+                echo >&2 "-- ${BUILD_NAME}MPI - ${SUITE} ${!suiteLangMpiWrapperName} detected at: ${suiteLangMpiWrapperPath}=${!suiteLangMpiWrapperPath}"
+
+                if [ "${LANG}" = "Fortran" ]; then
+
+                    # check if the compiler wrapper can compile a simple Fortran MPI test code.
+
+                    tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+                    echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
+                    cd "${tempDir}" && cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90" && \
+                    {
+                        ${!suiteLangMpiWrapperName} testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe
+                    } &> /dev/null || {
+                        echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}. skipping..."
+                        unset ${suiteLangMpiWrapperPath}
+                        if [ "${MPI_ENABLED}" = "true" ] ; then
+                            mpiInstallEnabled=true
+                        fi
+                    }
+                    rm -rf "${tempDir}"
+                    cd "${ParaMonte_ROOT_DIR}"
+
+                fi
+
+                break
+
+            else
+
+                echo >&2 "-- ${BUILD_NAME}MPI - failed to detect the ${SUITE} ${LANG} MPI wrapper. skipping..."
+                unset ${suiteLangMpiWrapperPath}
 
             fi
 
-        else
-
-            echo >&2 "-- ${BUILD_NAME}MPI - failed to detect the ${SUITE} ${LANG} MPI wrapper. skipping..."
-            unset ${suiteLangMpiWrapperPath}
-
-        fi
+        done
 
     done
 
