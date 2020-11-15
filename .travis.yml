@@ -23,7 +23,8 @@ matrix:
           packages:
             - cmake
             - gfortran-9
-            - mpich
+            - openmpi-bin
+            #- mpich
             #- libmpich-dev
             #- libblas-dev
             #- liblapack-dev
@@ -32,14 +33,15 @@ matrix:
       script:
         #- chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
         #- export PATH="/usr/local/cmake-3.16.3/bin:${PATH}"
+        #- echo "The MPIEXEC binary path: $(which mpiexec)" || echo "MPI library not found...skipping"
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
-        - sudo apt install mpich
+        - sudo apt install openmpi-bin
         - echo $(which mpicc)
         - echo $(which mpif90)
         - echo $(which mpifort)
-        - echo "The MPIEXEC binary path: $(which mpiexec)" || echo "MPI library not found...skipping"
+        - echo $(which mpiexec)
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "mpi" --yes-to-all ${FCFLAG}
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
