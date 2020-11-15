@@ -44,7 +44,7 @@ matrix:
         - echo $(which mpiexec)
         - mpiexecFlag="$(command -v mpiexec)"
         - if [ -f "${mpiexecFlag}" ]; then mpiexecFlag="--mpiexec ${mpiexecFlag}"; else unset mpiexecFlag; echo "mpiexec not found..."; fi
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "mpi" --yes-to-all ${FCFLAG} "${mpiexecFlag}"
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "mpi" --yes-to-all "${FCFLAG}" "${mpiexecFlag}"
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
