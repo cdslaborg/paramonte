@@ -1174,6 +1174,7 @@ echo >&2 "-- ${BUILD_NAME} -    gnuInstallEnabled: ${gnuInstallEnabled}"
 
 # chmod 777 -R "${ParaMonte_ROOT_DIR}/auxil/prerequisites"
 
+echo >&2
 if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${gnuInstallEnabled}" = "true" ] || [ "${cmakeInstallEnabled}" = "true" ]; then
 
     #ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
@@ -1293,9 +1294,29 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
                     (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} )
                     verify $? "installation of cmake"
-                    if [[ ":$PATH:" != *":${ParaMonte_CMAKE_BIN_DIR}:"* ]]; then
-                        PATH="${ParaMonte_CMAKE_BIN_DIR}:${PATH}"
-                        export PATH
+                    cmakeFound=false
+                    if [ -f "${ParaMonte_CMAKE_PATH}" ]; then
+                        cmakeFound=true
+                    else
+                        ParaMonte_CMAKE_BIN_DIR="${ParaMonte_REQ_INSTALL_DIR}/bin"; export ParaMonte_CMAKE_BIN_DIR
+                        ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"; export ParaMonte_CMAKE_PATH
+                        if [ -f "${ParaMonte_CMAKE_PATH}" ]; then
+                            cmakeFound=true
+                        else
+                            unset ParaMonte_CMAKE_BIN_DIR
+                            unset ParaMonte_CMAKE_PATH
+                        fi
+                    fi
+                    if [ "${cmakeFound}" = "true" ]; then
+                        if [[ ":$PATH:" != *":${ParaMonte_CMAKE_BIN_DIR}:"* ]]; then
+                            PATH="${ParaMonte_CMAKE_BIN_DIR}:${PATH}"
+                            export PATH
+                        fi
+                        cmakeVersion="$(cmake --version)"
+                        cmakeVersionArray=($cmakeVersion)
+                        cmakeVersion="${cmakeVersionArray[2]}"
+                        echo >&2 "-- ${BUILD_NAME} -       cmake binary path: ${ParaMonte_CMAKE_PATH}"
+                        echo >&2 "-- ${BUILD_NAME} - cmake installed version: ${cmakeVersion}"
                     fi
                 fi
             fi
