@@ -55,13 +55,14 @@ matrix:
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" -r --yes-to-all ${FCFLAG} ${mpiexecFlag}
-        - ls $(pwd)/bin/
-        - cd $(pwd)/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        #- cd $(pwd)/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        #- cd $(pwd)/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        #- cd $(pwd)/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        - pmRootDir="$(pwd)"
+        - ls ${pmRootDir}/bin/
+        - cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd ${pmRootDir}/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        #- cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd ${pmRootDir}/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
 
     - &macOS
       os: osx
@@ -84,13 +85,14 @@ matrix:
       script:
         - cmake --version
         - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
-        - ls $(pwd)/bin/
-        - cd $(pwd)/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        - pmRootDir=$(pwd)
+        - ls ${pmRootDir}/bin/
+        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
 
 #    - &macOS
 #      os: osx
@@ -119,12 +121,13 @@ matrix:
 #        - cmake --version
 #        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
 #        - echo $(pwd)
-#        - cd $(pwd)/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd $(pwd)/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd $(pwd)/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd $(pwd)/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-#        - cd $(pwd)/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-#        - cd $(pwd)/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+#        - pmRootDir="$(pwd)";
+#        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
 
 #    - &ubuntu
 #      os: linux
