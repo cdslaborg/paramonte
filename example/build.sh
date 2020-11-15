@@ -285,6 +285,9 @@ if [[ "$PMLIB_FULL_NAME" =~ .*"debug".* ]]; then
     INTEL_C_COMPILER_FLAGS="${INTEL_C_COMPILER_FLAGS} -O0 -debug full"
     INTEL_Fortran_COMPILER_FLAGS="${INTEL_Fortran_COMPILER_FLAGS} -O0 -debug full"
 fi
+if [ "${EXAMPLE_LANGUAGE}" = "C++" ]; then
+    GNU_C_COMPILER_FLAGS="${GNU_C_COMPILER_FLAGS} -std=gnu++11"
+fi
 echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ParaMonte build type: ${PM_BLD_TYPE}"
 
 ####################################################################################################################################
