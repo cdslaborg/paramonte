@@ -72,7 +72,7 @@ if [ -z ${INTERFACE_LANGUAGE+x} ]; then
     ############################################################
     export INTERFACE_LANGUAGE
 fi
-echo "    interface language: $INTERFACE_LANGUAGE"
+echo "             interface language: $INTERFACE_LANGUAGE"
 
 ####################################################################################################################################
 

@@ -10,30 +10,30 @@
 ####
 ####   This file is part of the ParaMonte library.
 ####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
+####   Permission is hereby granted, free of charge, to any person obtaining a
+####   copy of this software and associated documentation files (the "Software"),
+####   to deal in the Software without restriction, including without limitation
+####   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+####   and/or sell copies of the Software, and to permit persons to whom the
 ####   Software is furnished to do so, subject to the following conditions:
 ####
-####   The above copyright notice and this permission notice shall be 
+####   The above copyright notice and this permission notice shall be
 ####   included in all copies or substantial portions of the Software.
 ####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ####
 ####   ACKNOWLEDGMENT
 ####
 ####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
+####   As per the ParaMonte library license agreement terms, if you use any parts of
+####   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
 ####       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -48,362 +48,35 @@
 # this file will first call the configuration file configParaMonte.bat to read the user's
 # requested configuration for building the ParaMonte library.
 
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-#: set build type: release, debug, testing :: set library type: static, dynamic
-#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+####################################################################################################################################
+#### set up the main root paths
+####################################################################################################################################
 
 BUILD_NAME="ParaMonte"; export BUILD_NAME
 
-FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+workingDir="$(pwd)"
+sourceFileDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ParaMonte_ROOT_DIR="${sourceFileDir}"; export ParaMonte_ROOT_DIR
+ParaMonteKernel_SRC_DIR="${ParaMonte_ROOT_DIR}/src/kernel"; export ParaMonteKernel_SRC_DIR
+ParaMonteTest_SRC_DIR="${ParaMonte_ROOT_DIR}/src/test"; export ParaMonteTest_SRC_DIR
 #export ParaMonte_ROOT_DIR="${ParaMonte_ROOT_DIR:-${PWD%/}}"
 
-ParaMonte_ROOT_DIR="${FILE_DIR}"
-ParaMonteKernel_SRC_DIR="${ParaMonte_ROOT_DIR}/src/kernel"; export ParaMonte_ROOT_DIR
 ParaMonte_ROOT_BUILD_DIR="${ParaMonte_ROOT_DIR}/build"; export ParaMonte_ROOT_BUILD_DIR
 if ! [ -d "${ParaMonte_ROOT_BUILD_DIR}" ]; then
     mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
 fi
 
-echo >&2
-echo >&2 "-- ${BUILD_NAME} -       ParaMonte_ROOT_DIR: ${ParaMonte_ROOT_DIR}"
-echo >&2 "-- ${BUILD_NAME} -  ParaMonteKernel_SRC_DIR: ${ParaMonteKernel_SRC_DIR}"
-echo >&2 "-- ${BUILD_NAME} - ParaMonte_ROOT_BUILD_DIR: ${ParaMonte_ROOT_BUILD_DIR}"
-echo >&2
-
 if [[ ! -f "$(pwd)/build${BUILD_NAME}.sh" ]]; then
     echo >&2
-    echo >&2 "-- ${BUILD_NAME} - FATAL: build failed."
+    echo >&2 "-- ${BUILD_NAME} - FATAL: Build failed."
     echo >&2 "-- ${BUILD_NAME} - FATAL: Please run this script inside the top-level ParaMonte library root directory."
     echo >&2 "-- ${BUILD_NAME} - FATAL: This is the directory which contains this file in the GitHub repository of ParaMonte."
     echo >&2
     exit 1
 fi
 
-UNAME_PLATFORM="$(uname -s)"
-case "${UNAME_PLATFORM}" in
-    Linux*)     PLATFORM=linux;;
-    Darwin*)    PLATFORM=darwin;;
-    CYGWIN*)    PLATFORM=cygwin;;
-    MINGW*)     PLATFORM=mingw;;
-    *)          PLATFORM="unknown:${UNAME_PLATFORM}"
-esac
-if [[ "$PLATFORM" =~ .*"unknown".* ]]; then
-    echo >&2
-    echo >&2 "-- ${BUILD_NAME} - FATAL: build failed. unrecognized platform - ${PLATFORM}"
-    echo >&2 "-- ${BUILD_NAME} - supported platforms include: Linux, Darwin, CYGWIN, MINGW"
-    echo >&2 "-- ${BUILD_NAME} - ParaMonte build has been only tested on Linux and Darwin platforms."
-    echo >&2
-    echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-    echo >&2
-    exit 1
-else
-    export PLATFORM
-fi
-
-isMacOS=false
-isLinux=false
-if [[ "${UNAME_PLATFORM}" =~ .*"Darwin".* ]]; then
-    isMacOS=true
-    OSNAME="macOS"
-elif [[ "${UNAME_PLATFORM}" =~ .*"Linux".* ]]; then
-    isLinux=true
-    OSNAME="Linux"
-fi
-export isMacOS
-export isLinux
-export OSNAME
-
-ARCHITECTURE=$(uname -p)
-if [[ "$ARCHITECTURE" =~ .*"64".* ]]; then
-    ARCHITECTURE="x64"
-else
-    ARCHITECTURE=$(uname -m)
-    if [[ "$ARCHITECTURE" =~ .*"64".* ]]; then ARCHITECTURE="x64"; fi
-fi
-export ARCHITECTURE
-
-read -r ParaMonteVersion < .VERSION
-
-# set ParaMonte version (to be used by cmake)
-
-unset FPP_PARAMONTE_VERSION_FLAG
-if ! [ -z ${ParaMonteVersion+x} ]; then
-    export ParaMonteVersion
-fi
-
-#echo "$(cat ./auxil/.ParaMonteBanner)"
-
-echo >&2
-echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-echo >&2 "::::                                                                                                                            ::::"
-echo >&2 "                                      ParaMonte library version ${ParaMonteVersion} build on ${OSNAME}                              "
-echo >&2 "::::                                                                                                                            ::::"
-echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-echo >&2
-
-echo >&2
-echo >&2 "-- ${BUILD_NAME} - current directory: ${FILE_DIR}"
-echo >&2 "-- ${BUILD_NAME} - current system's platform: ${OSNAME}"
-echo >&2 "-- ${BUILD_NAME} - current system's architecture: ${ARCHITECTURE}"
-
 ####################################################################################################################################
-# Configure ParaMonte Build
-####################################################################################################################################
-
-chmod a+x ./configParaMonte.sh
-
-echo >&2
-echo >&2 "-- ${BUILD_NAME} - configuring ParaMonte Build..."
-
-echo >&2
-echo >&2 "-- ${BUILD_NAME} - default configuration: "
-
-#output=$("./configParaMonte.sh")
-#echo "${output}"
-
-. ./configParaMonte.sh
-
-usage()
-{
-cat << EndOfMessage
-
-    usage:
-
-        buildParaMonte.sh
-        -L <language: C/C++/Fortran/MATLAB/Python>
-        -s <compiler suite: intel/gnu>
-        -b <build mode: release/testing/debug>
-        -l <library type: static/dynamic>
-        -c <coarray: none/single/shared/distributed>
-        -m <mpi enabled: true/false>
-        -i <C-Fortran interface enabled: true/false>
-        -e <heap allocation enabled: true/false>
-        -t <ParaMonte test run enabled: true/false>
-        -x <ParaMonte example run enabled: true/false>
-        -f <path to Fortran compiler>
-        -M <path to mpiexec>
-        -F <purge the existing prerequisite library installations and perform a fresh installation>
-        -y <assume yes as answer to all installation permission inquiries>
-        -B <perform GCC bootstrap installation>
-        -n <default number of processors for parallel application>
-        -a <clean bash variables upon exit from the script>
-        -h <help on the script usage>
-
-    example:
-
-        buildParaMonte.sh -b release -l dynamic -c none -m true -i true -d true -n 3
-
-    flag definitions:
-
-        -L | --lang             : the ParaMonte library interface programming language: C, C++, Fortran, MATLAB, Python
-        -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
-        -b | --build            : the ParaMonte library build type: release, testing, debug
-        -l | --lib              : the ParaMonte library type: static, dynamic
-        -c | --caf              : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
-        -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
-        -i | --cfi_enabled      : the ParaMonte library C-Fortran interface enabled? must be true if the library is to be called from non-Fortran languages: true, false
-        -e | --heap_enabled     : the ParaMonte library heap array allocation enabled?: true, false
-        -t | --test_enabled     : the ParaMonte library test run enabled?: true, false
-        -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
-        -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
-        -M | --mpiexec          : path to mpiexec routine. If provided, it will be used to find the MPI library.
-        -F | --fresh            : enables a fresh installation of all of the prerequisites of ParaMonte library. Applicable only to GNU compiler suite.
-        -y | --yes-to-all       : if a fresh installation of all of the prerequisites is needed, automatically answer yes to all permission requests.
-        -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
-        -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
-        -a | --clean            : clean the environmental variables upon exit, if flag is provided.
-        -h | --help             : help with the script usage
-
-
-EndOfMessage
-}
-
-cafInstallEnabled=false
-cafInstallEnabled=false
-mpiInstallEnabled=false
-cmakeInstallEnabled=false
-
-unset PMCS
-unset MPIEXEC_PATH
-unset GCC_BOOTSTRAP
-unset INTERFACE_LANGUAGE
-unset Fortran_COMPILER_PATH
-FRESH_INSTALL_ENABLED=false
-YES_TO_ALL_DISABLED=true
-RELEASE_ENABLED=false
-DRYRUN_ENABLED=false
-CLEAN=false
-
-while [ "$1" != "" ]; do
-    case $1 in
-        -L | --lang )           shift
-                                INTERFACE_LANGUAGE=$1
-                                ;;
-        -s | --compiler_suite ) shift
-                                PMCS=$1
-                                ;;
-        -b | --build )          shift
-                                BTYPE=$1
-                                ;;
-        -l | --lib )            shift
-                                LTYPE=$1
-                                ;;
-        -c | --caf )            shift
-                                CAFTYPE=$1
-                                ;;
-        -m | --mpi_enabled )    shift
-                                MPI_ENABLED=$1
-                                ;;
-        -i | --cfi_enabled )    shift
-                                CFI_ENABLED=$1
-                                ;;
-        -e | --heap_enabled )   shift
-                                HEAP_ARRAY_ENABLED=$1
-                                ;;
-        -t | --test_enabled )   shift
-                                ParaMonteTest_RUN_ENABLED=$1; export ParaMonteTest_RUN_ENABLED
-                                ;;
-        -x | --exam_enabled )   shift
-                                ParaMonteExample_RUN_ENABLED=$1; export ParaMonteExample_RUN_ENABLED
-                                ;;
-        -f | --fortran )        shift
-                                Fortran_COMPILER_PATH=$1; export Fortran_COMPILER_PATH
-                                ;;
-        -M | --mpiexec )        shift
-                                MPIEXEC_PATH=$1; export MPIEXEC_PATH
-                                ;;
-        -n | --nproc )          shift
-                                FOR_COARRAY_NUM_IMAGES=$1
-                                ;;
-        -F | --fresh )          FRESH_INSTALL_ENABLED=true; export FRESH_INSTALL_ENABLED
-                                ;;
-        -d | --dryrun )         DRYRUN_ENABLED=true; export DRYRUN_ENABLED
-                                ;;
-        -r | --release )        RELEASE_ENABLED=true; export RELEASE_ENABLED
-                                ;;
-        -y | --yes-to-all )     YES_TO_ALL_DISABLED=false; export YES_TO_ALL_DISABLED
-                                ;;
-        -B | --bootstrap )      GCC_BOOTSTRAP="--bootstrap"; export GCC_BOOTSTRAP
-                                ;;
-        -a | --clean )          shift
-                                CLEAN=true
-                                ;;
-        -h | --help )           usage
-                                exit
-                                ;;
-        * )                     echo >&2 "-- ${BUILD_NAME} - FATAL: the input flag is not recognized: $1"
-                                usage
-                                exit 1
-    esac
-    shift
-done
-
-export PMCS
-export BTYPE
-export LTYPE
-export CAFTYPE
-export MPI_ENABLED
-export CFI_ENABLED
-export FOR_COARRAY_NUM_IMAGES
-
-echo >&2
-echo >&2 "-- ${BUILD_NAME} - current requested configuration: "
-
-#OUTPUT=$("./configParaMonte.sh")
-#echo "${OUTPUT}"
-. ./configParaMonte.sh
-
-# check flag consistencies
-
-if [ -z ${INTERFACE_LANGUAGE+x} ]; then
-    echo >&2
-    echo >&2 "-- ${BUILD_NAME} - FATAL: The INTERFACE_LANGUAGE must be specified as input."
-    echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-    echo >&2
-    exit 1
-fi
-
-CAF_ENABLED=false
-if [ "${CAFTYPE}" = "single" ] || [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
-    CAF_ENABLED=true
-fi
-
-if [ "${isMacOS}" = "true" ]; then
-    if [[ "${PMCS}" =~ .*"intel".* ]]; then
-        if [[ "${MPI_ENABLED}" =~ .*"true".* ]]; then
-            echo >&2
-            echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
-            echo >&2 "-- ${BUILD_NAME} - FATAL:     -s | --compiler_suite : ${PMCS}"
-            echo >&2 "-- ${BUILD_NAME} - FATAL:     -m | --mpi_enabled : ${MPI_ENABLED}"
-            echo >&2 "-- ${BUILD_NAME} - FATAL: \"--compiler_suite ${PMCS}\" cannot be used along with \"--mpi_enabled ${MPI_ENABLED}\" on macOS."
-            echo >&2 "-- ${BUILD_NAME} - FATAL: For parallel ParaMonte builds on macOS, use \"--compiler_suite gnu\" instead."
-            echo >&2
-            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-            echo >&2
-            exit 1
-        fi
-        if [[ "${CAF_ENABLED}" =~ .*"true".* ]]; then
-            echo >&2
-            echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
-            echo >&2 "-- ${BUILD_NAME} - FATAL:     -s | --compiler_suite : ${PMCS}"
-            echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf_enabled : ${CAF_ENABLED}"
-            echo >&2 "-- ${BUILD_NAME} - FATAL: \"--compiler_suite ${PMCS}\" cannot be used along with \"--caf_enabled ${CAF_ENABLED}\" on macOS."
-            echo >&2 "-- ${BUILD_NAME} - FATAL: For parallel ParaMonte builds on macOS, use \"--compiler_suite gnu\" instead."
-            echo >&2
-            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-            echo >&2
-            exit 1
-        fi
-    else
-        if [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ]; then PMCS="gnu"; fi
-    fi
-fi
-
-if [ "${CFI_ENABLED}" = "true" ]; then
-    if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
-        echo >&2
-        echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -i | --cfi_enabled : ${CFI_ENABLED}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL: coarray parallelism is not available in C language."
-        echo >&2
-        echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-        echo >&2
-        exit 1
-    fi
-fi
-
-if [ "${MPI_ENABLED}" = "true" ]; then
-    if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
-        echo >&2
-        echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -m | --mpi_enabled : ${MPI_ENABLED}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL: coarray parallelism cannot be mixed with MPI in the current version of ParaMonte."
-        echo >&2
-        echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-        echo >&2
-        exit 1
-    fi
-fi
-
-if [ "${LTYPE}" = "dynamic" ]; then
-    if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
-        echo >&2
-        echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -l | --lib : ${LTYPE}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
-        echo >&2 "-- ${BUILD_NAME} - FATAL: ParaMonte dynamic library build with coarray parallelism currently unsupported."
-        echo >&2
-        echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
-        echo >&2
-        exit 1
-    fi
-fi
-
-
-####################################################################################################################################
-# define utils
+#### utils
 ####################################################################################################################################
 
 # Compare two version strings [$1: version string 1 (v1), $2: version string 2 (v2)]
@@ -492,25 +165,415 @@ verify() {
 }
 
 ####################################################################################################################################
-# check cmake version
+#### determine the platform
+####################################################################################################################################
+
+UNAME_PLATFORM="$(uname -s)"
+case "${UNAME_PLATFORM}" in
+    Linux*)     PLATFORM=linux;;
+    Darwin*)    PLATFORM=darwin;;
+    CYGWIN*)    PLATFORM=cygwin;;
+    MINGW*)     PLATFORM=mingw;;
+    *)          PLATFORM="unknown:${UNAME_PLATFORM}"
+esac
+if [[ "$PLATFORM" =~ .*"unknown".* ]]; then
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME} - FATAL: Build failed. unrecognized platform - ${PLATFORM}"
+    echo >&2 "-- ${BUILD_NAME} - FATAL: The supported platforms include: Linux, Darwin, CYGWIN, MINGW"
+    echo >&2 "-- ${BUILD_NAME} - FATAL: The ParaMonte build has been only tested on Linux and Darwin platforms."
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+    echo >&2
+    exit 1
+else
+    export PLATFORM
+fi
+
+isMacOS=false
+isLinux=false
+isMingw=false
+isCygwin=false
+isWindows=false
+if [[ "${UNAME_PLATFORM}" =~ .*"Darwin".* ]]; then
+    isMacOS=true
+    OSNAME="macOS"
+elif [[ "${UNAME_PLATFORM}" =~ .*"Linux".* ]]; then
+    isLinux=true
+    OSNAME="Linux"
+elif [[ "${UNAME_PLATFORM}" =~ .*"CYGWIN".* ]]; then
+    OSNAME="Cygwin"
+    isWindows=true
+    isCygwin=true
+elif [[ "${UNAME_PLATFORM}" =~ .*"MINGW".* ]]; then
+    OSNAME="MinGW"
+    isWindows=true
+    isMingw=true
+fi
+export isMacOS
+export isLinux
+export isWindows
+export isCygwin
+export isMingw
+export OSNAME
+
+####################################################################################################################################
+#### determine the architecture
+####################################################################################################################################
+
+ARCHITECTURE=$(uname -p)
+if [[ "$ARCHITECTURE" =~ .*"64".* ]]; then
+    ARCHITECTURE="x64"
+else
+    ARCHITECTURE=$(uname -m)
+    if [[ "$ARCHITECTURE" =~ .*"64".* ]]; then ARCHITECTURE="x64"; fi
+fi
+export ARCHITECTURE
+
+####################################################################################################################################
+#### set the ParaMonte version (to be used by cmake)
+####################################################################################################################################
+
+read -r ParaMonteVersion < .VERSION
+
+unset FPP_PARAMONTE_VERSION_FLAG
+if ! [ -z ${ParaMonteVersion+x} ]; then
+    export ParaMonteVersion
+fi
+
+#echo "$(cat ./auxil/.ParaMonteBanner)"
+
+####################################################################################################################################
+#### report build setup
+####################################################################################################################################
+
+echo >&2
+echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+echo >&2 "::::                                                                                                                            ::::"
+echo >&2 "                                      ParaMonte library version ${ParaMonteVersion} build on ${OSNAME}                              "
+echo >&2 "::::                                                                                                                            ::::"
+echo >&2 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+echo >&2
+
+echo >&2
+echo >&2 "-- ${BUILD_NAME} -             working directory: $(pwd)"
+echo >&2 "-- ${BUILD_NAME} -         source file directory: ${sourceFileDir}"
+echo >&2 "-- ${BUILD_NAME} -     current system's platform: ${OSNAME}"
+echo >&2 "-- ${BUILD_NAME} - current system's architecture: ${ARCHITECTURE}"
+echo >&2
+
+echo >&2
+echo >&2 "-- ${BUILD_NAME} -            ParaMonte_ROOT_DIR: ${ParaMonte_ROOT_DIR}"
+echo >&2 "-- ${BUILD_NAME} -         ParaMonteTest_SRC_DIR: ${ParaMonteTest_SRC_DIR}"
+echo >&2 "-- ${BUILD_NAME} -       ParaMonteKernel_SRC_DIR: ${ParaMonteKernel_SRC_DIR}"
+echo >&2 "-- ${BUILD_NAME} -      ParaMonte_ROOT_BUILD_DIR: ${ParaMonte_ROOT_BUILD_DIR}"
+echo >&2
+
+####################################################################################################################################
+#### usage
+####################################################################################################################################
+
+usage()
+{
+cat << EndOfMessage
+
+    usage:
+
+        buildParaMonte.sh
+        -L <language: C/C++/Fortran/MATLAB/Python>
+        -s <compiler suite: intel/gnu>
+        -b <build mode: release/testing/debug>
+        -l <library type: static/dynamic>
+        -c <coarray: none/single/shared/distributed>
+        -m <mpi enabled: true/false>
+        -i <C-Fortran interface enabled: true/false>
+        -e <heap allocation enabled: true/false>
+        -t <ParaMonte test run enabled: true/false>
+        -x <ParaMonte example run enabled: true/false>
+        -f <path to Fortran compiler>
+        -M <path to mpiexec>
+        -F <purge the existing prerequisite library installations and perform a fresh installation>
+        -y <assume yes as answer to all installation permission inquiries>
+        -B <perform GCC bootstrap installation>
+        -n <default number of processors for parallel application>
+        -a <clean bash variables upon exit from the script>
+        -h <help on the script usage>
+
+    example:
+
+        buildParaMonte.sh -b release -l dynamic -c none -m true -i true -d true -n 3
+
+    flag definitions:
+
+        -L | --lang             : the ParaMonte library interface programming language: C, C++, Fortran, MATLAB, Python
+        -s | --compiler_suite   : the ParaMonte library build compiler suite: intel, gnu
+        -b | --build            : the ParaMonte library build type: release, testing, debug
+        -l | --lib              : the ParaMonte library type: static, dynamic
+        -c | --caf              : the ParaMonte library Coarray Fortran parallelism type: none, single, shared, distributed
+        -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
+        -i | --cfi_enabled      : the ParaMonte library C-Fortran interface enabled? must be true if the library is to be called from non-Fortran languages: true, false
+        -e | --heap_enabled     : the ParaMonte library heap array allocation enabled?: true, false
+        -t | --test_enabled     : the ParaMonte library test run enabled?: true, false
+        -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
+        -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
+        -M | --mpiexec          : path to mpiexec routine. If provided, it will be used to find the MPI library.
+        -F | --fresh            : enables a fresh installation of all of the prerequisites of ParaMonte library. Applicable only to GNU compiler suite.
+        -y | --yes-to-all       : if a fresh installation of all of the prerequisites is needed, automatically answer yes to all permission requests.
+        -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
+        -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
+        -a | --clean            : clean the environmental variables upon exit, if flag is provided.
+        -h | --help             : help with the script usage
+
+
+EndOfMessage
+}
+
+####################################################################################################################################
+# Configure ParaMonte Build
+####################################################################################################################################
+
+cmakeInstallEnabled=false
+cafInstallEnabled=false
+gnuInstallEnabled=false
+mpiInstallEnabled=false
+
+unset PMCS
+unset BTYPE
+unset LTYPE
+unset CAFTYPE
+unset MPI_ENABLED
+unset CFI_ENABLED
+unset GCC_BOOTSTRAP
+unset MPIEXEC_PATH_USER
+unset HEAP_ARRAY_ENABLED
+unset INTERFACE_LANGUAGE
+unset FOR_COARRAY_NUM_IMAGES
+unset Fortran_COMPILER_PATH_USER
+ParaMonteExample_RUN_ENABLED=true
+ParaMonteTest_RUN_ENABLED=true
+freshInstallEnabled=false
+YES_TO_ALL_DISABLED=true
+RELEASE_ENABLED=false
+DRYRUN_ENABLED=false
+CLEAN=false
+
+chmod a+x ./configParaMonte.sh
+echo >&2
+echo >&2 "-- ${BUILD_NAME} - configuring ParaMonte Build..."
+echo >&2 "-- ${BUILD_NAME} - default configuration: "
+source ./configParaMonte.sh
+#output=$("./configParaMonte.sh")
+#echo "${output}"
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -L | --lang )           shift
+                                INTERFACE_LANGUAGE=$1
+                                ;;
+        -s | --compiler_suite ) shift
+                                PMCS=$1; export PMCS
+                                ;;
+        -b | --build )          shift
+                                BTYPE=$1; export BTYPE
+                                ;;
+        -l | --lib )            shift
+                                LTYPE=$1; export LTYPE
+                                ;;
+        -c | --caf )            shift
+                                CAFTYPE=$1; export CAFTYPE
+                                ;;
+        -m | --mpi_enabled )    shift
+                                MPI_ENABLED=$1; export MPI_ENABLED
+                                ;;
+        -i | --cfi_enabled )    shift
+                                CFI_ENABLED=$1; export CFI_ENABLED
+                                ;;
+        -e | --heap_enabled )   shift
+                                HEAP_ARRAY_ENABLED=$1; export HEAP_ARRAY_ENABLED
+                                ;;
+        -t | --test_enabled )   shift
+                                ParaMonteTest_RUN_ENABLED=$1; export ParaMonteTest_RUN_ENABLED
+                                ;;
+        -x | --exam_enabled )   shift
+                                ParaMonteExample_RUN_ENABLED=$1; export ParaMonteExample_RUN_ENABLED
+                                ;;
+        -f | --fortran )        shift
+                                Fortran_COMPILER_PATH_USER=$1; export Fortran_COMPILER_PATH_USER
+                                ;;
+        -M | --mpiexec )        shift
+                                MPIEXEC_PATH_USER=$1; export MPIEXEC_PATH_USER
+                                ;;
+        -n | --nproc )          shift
+                                FOR_COARRAY_NUM_IMAGES=$1; export FOR_COARRAY_NUM_IMAGES
+                                ;;
+        -F | --fresh )          freshInstallEnabled=true; export freshInstallEnabled
+                                ;;
+        -d | --dryrun )         DRYRUN_ENABLED=true; export DRYRUN_ENABLED
+                                ;;
+        -r | --release )        RELEASE_ENABLED=true; export RELEASE_ENABLED
+                                ;;
+        -y | --yes-to-all )     YES_TO_ALL_DISABLED=false; export YES_TO_ALL_DISABLED
+                                ;;
+        -B | --bootstrap )      GCC_BOOTSTRAP="--bootstrap"; export GCC_BOOTSTRAP
+                                ;;
+        -a | --clean )          shift
+                                CLEAN=true
+                                ;;
+        -h | --help )           usage
+                                exit
+                                ;;
+        * )                     echo >&2 "-- ${BUILD_NAME} - FATAL: the input flag is not recognized: $1"
+                                usage
+                                exit 1
+    esac
+    shift
+done
+
+echo >&2
+echo >&2 "-- ${BUILD_NAME} - current requested configuration: "
+. ./configParaMonte.sh
+
+####################################################################################################################################
+# check flag consistencies
+####################################################################################################################################
+
+if [ -z ${INTERFACE_LANGUAGE+x} ]; then
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME} - FATAL: The environmental INTERFACE_LANGUAGE must be specified as input."
+    echo >&2
+    usage
+    echo >&2
+    echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+    echo >&2
+    exit 1
+fi
+
+CAF_ENABLED=false
+if [ "${CAFTYPE}" = "single" ] || [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
+    CAF_ENABLED=true
+fi
+export CAF_ENABLED
+
+if [ "${isMacOS}" = "true" ]; then
+    if [[ "${PMCS}" =~ .*"intel".* ]]; then
+        if [[ "${MPI_ENABLED}" =~ .*"true".* ]]; then
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
+            echo >&2 "-- ${BUILD_NAME} - FATAL:     -s | --compiler_suite : ${PMCS}"
+            echo >&2 "-- ${BUILD_NAME} - FATAL:     -m | --mpi_enabled : ${MPI_ENABLED}"
+            echo >&2 "-- ${BUILD_NAME} - FATAL: \"--compiler_suite ${PMCS}\" cannot be used along with \"--mpi_enabled ${MPI_ENABLED}\" on macOS."
+            echo >&2 "-- ${BUILD_NAME} - FATAL: For parallel ParaMonte builds on macOS, use \"--compiler_suite gnu\" instead."
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+            echo >&2
+            exit 1
+        fi
+        if [[ "${CAF_ENABLED}" =~ .*"true".* ]]; then
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
+            echo >&2 "-- ${BUILD_NAME} - FATAL:     -s | --compiler_suite : ${PMCS}"
+            echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf_enabled : ${CAF_ENABLED}"
+            echo >&2 "-- ${BUILD_NAME} - FATAL: \"--compiler_suite ${PMCS}\" cannot be used along with \"--caf_enabled ${CAF_ENABLED}\" on macOS."
+            echo >&2 "-- ${BUILD_NAME} - FATAL: For parallel ParaMonte builds on macOS, use \"--compiler_suite gnu\" instead."
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+            echo >&2
+            exit 1
+        fi
+    else
+        if [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ]; then PMCS="gnu"; fi
+    fi
+fi
+
+if [ "${CFI_ENABLED}" = "true" ]; then
+    if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -i | --cfi_enabled : ${CFI_ENABLED}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL: coarray parallelism is not available in C language."
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+        echo >&2
+        exit 1
+    fi
+fi
+
+if [ "${MPI_ENABLED}" = "true" ]; then
+    if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -m | --mpi_enabled : ${MPI_ENABLED}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL: coarray parallelism cannot be mixed with MPI in the current version of ParaMonte."
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+        echo >&2
+        exit 1
+    fi
+fi
+
+if [ "${LTYPE}" = "dynamic" ]; then
+    if [ "${CAFTYPE}" = "shared" ] || [ "${CAFTYPE}" = "distributed" ]; then
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - FATAL: incompatible input flags specified by the user:"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -l | --lib : ${LTYPE}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL:     -c | --caf : ${CAFTYPE}"
+        echo >&2 "-- ${BUILD_NAME} - FATAL: ParaMonte dynamic library build with coarray parallelism currently unsupported."
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+        echo >&2
+        exit 1
+    fi
+fi
+
+####################################################################################################################################
+#### set minimum requirements
+####################################################################################################################################
+
+openCoarraysVersion="2.9.0"
+gnuVersionOpenCoarrays="10.1.0"
+mpichVersionOpenCoarrays="3.2"
+gnuVersionParaMonteCompatible="7.0.0"
+cmakeVersionParaMonteCompatible="3.14.0"
+intelVersionParaMonteCompatible="18.0.0"
+
+####################################################################################################################################
+#### set local dependencies paths
+####################################################################################################################################
+
+ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"; export ParaMonte_REQ_DIR
+ParaMonte_REQ_INSTALL_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations"; export ParaMonte_REQ_INSTALL_DIR
+ParaMonte_GNU_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/gnu/${gnuVersionOpenCoarrays}"; export ParaMonte_GNU_ROOT_DIR
+ParaMonte_MPI_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/mpich/${mpichVersionOpenCoarrays}"; export ParaMonte_MPI_ROOT_DIR
+ParaMonte_CAF_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/opencoarrays/${openCoarraysVersion}"; export ParaMonte_CAF_ROOT_DIR
+ParaMonte_CMAKE_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/cmake/${cmakeVersionParaMonteCompatible}"; export ParaMonte_CMAKE_ROOT_DIR
+
+ParaMonte_GNU_BIN_DIR="${ParaMonte_GNU_ROOT_DIR}/bin";      export ParaMonte_GNU_BIN_DIR
+ParaMonte_CAF_BIN_DIR="${ParaMonte_CAF_ROOT_DIR}/bin";      export ParaMonte_CAF_BIN_DIR
+ParaMonte_MPI_BIN_DIR="${ParaMonte_MPI_ROOT_DIR}/bin";      export ParaMonte_MPI_BIN_DIR
+ParaMonte_CMAKE_BIN_DIR="${ParaMonte_CMAKE_ROOT_DIR}/bin";  export ParaMonte_CMAKE_BIN_DIR
+
+ParaMonte_GNU_LIB_DIR="${ParaMonte_GNU_ROOT_DIR}/lib64";    export ParaMonte_GNU_LIB_DIR
+ParaMonte_CAF_LIB_DIR="${ParaMonte_CAF_ROOT_DIR}/lib64";    export ParaMonte_CAF_LIB_DIR
+ParaMonte_MPI_LIB_DIR="${ParaMonte_MPI_ROOT_DIR}/lib";      export ParaMonte_MPI_LIB_DIR
+
+ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_BIN_DIR}/caf"; export ParaMonte_CAF_WRAPPER_PATH
+ParaMonte_CAF_SETUP_PATH="${ParaMonte_CAF_ROOT_DIR}/setup.sh"; export ParaMonte_CAF_SETUP_PATH
+ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"; export ParaMonte_CMAKE_PATH
+
+####################################################################################################################################
+#### check cmake version
 ####################################################################################################################################
 
 cmakeVersion="$(cmake --version)"
-#cmakeVersion=${cmakeVersion:14:18}
-##echo >&2 "cmake version: ${cmakeVersion}"
-#cmakeVersion=${cmakeVersion#c*[0-9]}
-#cmakeVersion=${cmakeVersion%\-*}
 cmakeVersionArray=($cmakeVersion)
-cmakeVersion=${cmakeVersionArray[2]}
-cmakeVersionRequired=3.14.0
-echo "-- ${BUILD_NAME} - cmake version: ${cmakeVersion}"
-echo "-- ${BUILD_NAME} - cmake version required: ${cmakeVersionRequired}"
+cmakeVersion="${cmakeVersionArray[2]}"
 
 if [ "${cmakeVersion}" = "" ]; then
     cmakeInstallEnabled=true
 else
     cmakeInstallEnabled=false
-    compareVersions "${cmakeVersion}" "${cmakeVersionRequired}"
+    compareVersions "${cmakeVersion}" "${cmakeVersionParaMonteCompatible}"
     if [ "$?" = "2" ]; then
         cmakeInstallEnabled=true
         echo >&2 "-- ${BUILD_NAME} - failed to detect a ParaMonte-compatible installation of cmake!"
@@ -520,51 +583,22 @@ else
 fi
 export cmakeInstallEnabled
 
-####################################################################################################################################
-# set local dependencies
-####################################################################################################################################
-
-openCoarraysVersion="2.9.0"
-gnuVersionOpenCoarrays="10.1.0"
-mpichVersionOpenCoarrays="3.2"
-gnuVersionParaMonteCompatible="7.0.0"
-
-ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
-export ParaMonte_REQ_DIR
-ParaMonte_REQ_INSTALL_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations"
-ParaMonte_GNU_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/gnu/${gnuVersionOpenCoarrays}"
-ParaMonte_MPI_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/mpich/${mpichVersionOpenCoarrays}"
-ParaMonte_CAF_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/opencoarrays/${openCoarraysVersion}"
-ParaMonte_CMAKE_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/cmake/${cmakeVersionRequired}"
-
-ParaMonte_GNU_BIN_DIR="${ParaMonte_GNU_ROOT_DIR}/bin"
-ParaMonte_CAF_BIN_DIR="${ParaMonte_CAF_ROOT_DIR}/bin"
-ParaMonte_MPI_BIN_DIR="${ParaMonte_MPI_ROOT_DIR}/bin"
-ParaMonte_CMAKE_BIN_DIR="${ParaMonte_CMAKE_ROOT_DIR}/bin"
-
-ParaMonte_GNU_LIB_DIR="${ParaMonte_GNU_ROOT_DIR}/lib64"
-ParaMonte_MPI_LIB_DIR="${ParaMonte_MPI_ROOT_DIR}/lib"
-ParaMonte_CAF_LIB_DIR="${ParaMonte_CAF_ROOT_DIR}/lib64"
-
-ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_BIN_DIR}/caf"
-export ParaMonte_CAF_WRAPPER_PATH
-
-ParaMonte_CAF_SETUP_PATH="${ParaMonte_CAF_ROOT_DIR}/setup.sh"
-export ParaMonte_CAF_SETUP_PATH
-
-ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"
-export ParaMonte_CMAKE_PATH
+echo >&2 
+echo >&2 "-- ${BUILD_NAME} -              cmake path: $(which cmake)"
+echo >&2 "-- ${BUILD_NAME} -   cmake version current: ${cmakeVersion}"
+echo >&2 "-- ${BUILD_NAME} -  cmake version required: ${cmakeVersionParaMonteCompatible}"
+echo >&2 "-- ${BUILD_NAME} -     cmakeInstallEnabled: ${cmakeInstallEnabled}"
 
 ####################################################################################################################################
-# set compiler suite
+#### set compiler suite
 ####################################################################################################################################
 
-if [ -z ${PMCS+x} ]
-then
-    ############################################################
+if [ -z ${PMCS+x} ]; then
+
     SUITE_LIST="intel gnu"
-    ############################################################
+
 else
+
     if [[ ${PMCS} == [iI][nN][tT][eE][lL] ]]; then
         PMCS=intel
         SUITE_LIST=${PMCS}
@@ -573,9 +607,12 @@ else
             PMCS=gnu
             SUITE_LIST=${PMCS}
         else
+            echo >&2
             echo >&2 "-- ${BUILD_NAME} - FATAL: the requested compiler suite ${PMCS} is unrecognized."
             echo >&2 "-- ${BUILD_NAME} - FATAL: please choose either intel or gnu, or drop the option."
             echo >&2 "-- ${BUILD_NAME} - FATAL: The installer will automatically find the proper compiler suite."
+            echo >&2
+            usage
             echo >&2
             echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
             echo >&2
@@ -586,10 +623,8 @@ else
 fi
 
 ####################################################################################################################################
-# detect the compiler suites, C/Fortran compilers and CAF/MPI libraries
+#### detect the available compiler suites, C/Fortran compilers and CAF/MPI libraries
 ####################################################################################################################################
-
-#prereqInstallEnabled=false
 
 gnuCCompilerName=gcc
 gnuFortranCompilerName=gfortran
@@ -603,7 +638,7 @@ for SUITE in $SUITE_LIST
 do
 
     echo >&2
-    echo >&2 "-- ${BUILD_NAME}Compiler - checking for ${SUITE} compilers and libraries presence..."
+    echo >&2 "-- ${BUILD_NAME}Compiler - checking for the ${SUITE} compilers and libraries presence..."
     echo >&2
 
     for LANG in $LANG_LIST
@@ -612,56 +647,50 @@ do
         suiteLangCompilerName="${SUITE}${LANG}CompilerName"
         suiteLangCompilerPath="${SUITE}${LANG}CompilerPath"
         suiteLangCompilerVersion="${SUITE}${LANG}CompilerVersion"
+
         if eval "command -v ${!suiteLangCompilerName} >/dev/null 2>&1"; then
 
             eval "unset ${suiteLangCompilerPath}"
             eval ${suiteLangCompilerPath}='$(command -v ${!suiteLangCompilerName})'
 
-            echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${!suiteLangCompilerName} detected at: ${suiteLangCompilerPath}=${!suiteLangCompilerPath}"
+            echo >&2 "-- ${BUILD_NAME}Compiler - the ${SUITE} ${!suiteLangCompilerName} detected at ${suiteLangCompilerPath} = ${!suiteLangCompilerPath}"
 
-            # get compiler version
-
+            #### get compiler version
 
             if [ "${LANG}" = "C" ]; then
 
                 eval ${suiteLangCompilerVersion}="$(${!suiteLangCompilerName} -dumpversion)"
-                echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version: ${suiteLangCompilerVersion}=${!suiteLangCompilerVersion}"
+                echo >&2 "-- ${BUILD_NAME}Compiler - the ${SUITE} ${LANG} compiler version is ${suiteLangCompilerVersion} = ${!suiteLangCompilerVersion}"
 
-            fi
+            elif [ "${LANG}" = "Fortran" ]; then
 
-            if [ "${LANG}" = "Fortran" ]; then
-
-                #tempDir=$(mktemp -d --tmpdir="${ParaMonte_ROOT_BUILD_DIR}/") || mkdir -p "${ParaMonte_ROOT_BUILD_DIR}"
                 tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
                 echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
-                cd "${tempDir}"
-                cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
+                cd "${tempDir}" && cp "${ParaMonte_ROOT_DIR}/auxil/getCompilerVersion.f90" "./getCompilerVersion.f90"
+
                 if ${!suiteLangCompilerPath} getCompilerVersion.f90 -o getCompilerVersion.exe; then
 
-                    chmod +x getCompilerVersion.exe
-                    ./getCompilerVersion.exe && {
+                    chmod +x getCompilerVersion.exe && ./getCompilerVersion.exe && {
                         eval ${suiteLangCompilerVersion}='$(head -n 1 getCompilerVersion.tmp)'
-                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version: ${suiteLangCompilerVersion}=${!suiteLangCompilerVersion}"
+                        echo >&2 "-- ${BUILD_NAME}Compiler - the ${SUITE} ${LANG} compiler version is ${suiteLangCompilerVersion} = ${!suiteLangCompilerVersion}"
                         isParaMonteCompatibleCompiler=$(head -n 1 isParaMonteCompatibleCompiler.tmp)
                         isGfortran10=$(head -n 1 isGfortran10.tmp); export isGfortran10
                         if [ "$isParaMonteCompatibleCompiler" = "true" ]; then
-                            echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is ParaMonte compatible!"
+                            echo >&2 "-- ${BUILD_NAME}Compiler - the ${SUITE} ${LANG} compiler is ParaMonte compatible!"
                             eval "export ${suiteLangCompilerPath}"
                         else
-                            echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is not ParaMonte compatible...skipping"
+                            echo >&2 "-- ${BUILD_NAME}Compiler - the ${SUITE} ${LANG} compiler is not ParaMonte compatible. skipping..."
                             unset ${suiteLangCompilerPath}
                         fi
                         rm *.tmp *.exe
-                        #cd ..
-                        #break
                     } || {
-                        echo >&2 "-- ${BUILD_NAME}Compiler - failed to detect the ${SUITE} ${LANG} compiler version...skipping"
+                        echo >&2 "-- ${BUILD_NAME}Compiler - failed to detect the ${SUITE} ${LANG} compiler version. skipping..."
                         unset ${suiteLangCompilerPath}
                     }
 
                 else
 
-                    echo >&2 "-- ${BUILD_NAME}Compiler - failed to detect the ${SUITE} ${LANG} compiler version...skipping"
+                    echo >&2 "-- ${BUILD_NAME}Compiler - failed to detect the ${SUITE} ${LANG} compiler version. skipping..."
                     unset ${suiteLangCompilerPath}
 
                 fi
@@ -674,55 +703,9 @@ do
 
         else
 
-            echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${!suiteLangCompilerName} not found."
+            echo >&2 "-- ${BUILD_NAME}Compiler - the ${SUITE} ${!suiteLangCompilerName} not found. skipping..."
             unset ${suiteLangCompilerPath}
 
-        fi
-
-        # if no compiler has been identified and version extraction has failed, try one last time by searching for alternative compiler names.
-
-        if [ -z ${!suiteLangCompilerPath+x} ] && [ "${SUITE}" = "gnu" ]; then
-
-            echo >&2 "-- ${BUILD_NAME}Compiler - searching all system paths for a ${SUITE} ${LANG} compiler..."
-
-            #clist=$(( IFS=:; for p in $PATH; do echo $(ls -d "$p"/*${!suiteLangCompilerName}); done ) 2>/dev/null)
-            clist=$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*${!suiteLangCompilerName}); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)
-            for cname in $(echo $clist | sed "s/,/ /g"); do
-
-                echo >&2 "-- ${BUILD_NAME}Compiler - checking ${cname}"
-
-                versionExtractionSucceeded=false
-                eval ${suiteLangCompilerVersion}="$(${!suiteLangCompilerName} -dumpversion)" && \
-                eval ${suiteLangCompilerPath}='$(command -v ${!suiteLangCompilerName})' && versionExtractionSucceeded=true
-                if [ "${versionExtractionSucceeded}" = "true" ]; then
-                    echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version: ${suiteLangCompilerVersion}=${!suiteLangCompilerVersion}"
-                    isParaMonteCompatibleCompiler=true
-                    if [ "${LANG}" = "Fortran" ]; then
-                        compareVersions "${!suiteLangCompilerVersion}" "${gnuVersionParaMonteCompatible}"
-                        if [ "$?" = "2" ]; then
-                            isParaMonteCompatibleCompiler=false
-                        fi
-                    fi
-                    if [ "$isParaMonteCompatibleCompiler" = "true" ]; then
-                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is ParaMonte compatible!"
-                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version: ${suiteLangCompilerVersion}"
-                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler path: ${suiteLangCompilerPath}"
-                        eval "export ${suiteLangCompilerVersion}"
-                        eval "export ${suiteLangCompilerPath}"
-                        break
-                    else
-                        echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler is not ParaMonte compatible...skipping"
-                        unset ${suiteLangCompilerVersion}
-                        unset ${suiteLangCompilerPath}
-                    fi
-                else
-                    echo >&2 "-- ${BUILD_NAME}Compiler - ${SUITE} ${LANG} compiler version extraction failed...skipping"
-                    unset ${suiteLangCompilerVersion}
-                    unset ${suiteLangCompilerPath}
-                    continue
-                fi
-                
-            done
         fi
 
     done
@@ -730,10 +713,95 @@ do
 done
 
 ####################################################################################################################################
-# detect MPI wrappers
+#### if no compiler has been identified and version extraction has failed,
+#### try one last time by searching for the alternative compiler names.
 ####################################################################################################################################
 
-gnuCMpiWrapperName="mpic++"
+if [[ "${SUITE_LIST}" =~ .*"gnu".* ]] && [ -z ${gnuFortranCompilerPath+x} ]; then
+
+    echo >&2 
+    echo >&2 "-- ${BUILD_NAME}Compiler - searching all system paths for a the gnu Fortran compiler..."
+    echo >&2 
+
+    #### return a comma-separated list of available compiler paths
+
+    clist=$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*${gnuFortranCompilerName}*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)
+
+    for cname in $(echo $clist | sed "s/,/ /g"); do
+
+        echo >&2 "-- ${BUILD_NAME}Compiler - checking ${cname}"
+
+        gnuFortranCompilerVersion="$("${cname}" -dumpversion)" && \
+        gnuFortranCompilerPath="$(command -v "${cname}")" && \
+        gnuFortranCompilerName="$(basename "${cname}")" && \
+        {
+
+            echo >&2 "-- ${BUILD_NAME}Compiler - the gnu Fortran compiler version: ${gnuFortranCompilerVersion}"
+            echo >&2 "-- ${BUILD_NAME}Compiler - the gnu Fortran compiler path: ${gnuFortranCompilerPath}"
+            echo >&2 "-- ${BUILD_NAME}Compiler - the gnu Fortran compiler name: ${gnuFortranCompilerName}"
+
+            compareVersions "${gnuFortranCompilerVersion}" "${gnuVersionParaMonteCompatible}"
+            if [ "$?" = "2" ]; then
+
+                echo >&2 "-- ${BUILD_NAME}Compiler - the gnu Fortran compiler is not ParaMonte compatible. skipping..."
+                unset gnuFortranCompilerVersion
+                unset gnuFortranCompilerPath
+
+            else
+
+                echo >&2 "-- ${BUILD_NAME}Compiler - the gnu Fortran compiler is ParaMonte compatible!"
+
+                export gnuFortranCompilerVersion
+                export gnuFortranCompilerPath
+                export gnuFortranCompilerName
+
+                #### check for a companion C processor
+                #gnuFortranCompilerDir="$(dirname "${gnuFortranCompilerPath}")"
+
+                gnuCCompanionDetected=false
+                tempFilePath="${gnuFortranCompilerPath//gfortran/gcc}"
+                if [ -f "${tempFilePath}" ]; then
+                    tempFileVersion="$("${tempFilePath}" -dumpversion)" && \
+                    {
+                        gnuCCompanionDetected=true
+                        gnuCCompilerVersion="${tempFileVersion}"
+                        gnuCCompilerPath="${tempFilePath}"
+                        gnuCCompilerName="$(basename "${tempFilePath}")"
+                    }
+                fi
+                if [ "${gnuCCompanionDetected}" = "true" ]; then
+                    echo >&2 "-- ${BUILD_NAME}Compiler - a companion gnu C processor detected!"
+                    echo >&2 "-- ${BUILD_NAME}Compiler - the gnu C compiler version: ${gnuCCompilerVersion}"
+                    echo >&2 "-- ${BUILD_NAME}Compiler - the gnu C compiler path: ${gnuCCompilerPath}"
+                    echo >&2 "-- ${BUILD_NAME}Compiler - the gnu C compiler name: ${gnuCCompilerName}"
+                    export gnuCCompilerVersion
+                    export gnuCCompilerPath
+                    export gnuCCompilerName
+                else
+                    echo >&2 "-- ${BUILD_NAME}Compiler - no companion gnu C processor detected. skipping..."
+                fi
+
+                break
+
+            fi
+
+        } || {
+
+            echo >&2 "-- ${BUILD_NAME}Compiler - the gnu Fortran compiler version extraction failed. skipping..."
+            unset ${suiteLangCompilerVersion}
+            unset ${suiteLangCompilerPath}
+            continue
+
+        }
+
+    done
+fi
+
+####################################################################################################################################
+#### identify the MPI wrappers
+####################################################################################################################################
+
+gnuCMpiWrapperName="mpicc"
 gnuFortranMpiWrapperName=mpifort
 
 intelCMpiWrapperName=mpiicc
@@ -764,24 +832,24 @@ do
 
                 tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
                 echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
-                cd "${tempDir}"
-                cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90"
-                { 
-                    mpiifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe || mpifort testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe 
+                cd "${tempDir}" && cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90" && \
+                {
+                    ${!suiteLangMpiWrapperName} testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe
                 } &> /dev/null || {
-                    echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}...skipping..."
+                    echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}. skipping..."
                     unset ${suiteLangMpiWrapperPath}
-                    if [ -z ${PMCS+x} ] && [ "${MPI_ENABLED}" = "true" ] ; then
-                        prereqInstallAllowed=true
+                    if [ "${MPI_ENABLED}" = "true" ] ; then
                         mpiInstallEnabled=true
                     fi
                 }
+                rm -rf "${tempDir}"
+                cd "${ParaMonte_ROOT_DIR}"
 
             fi
 
         else
 
-            echo >&2 "-- ${BUILD_NAME}MPI - failed to detect the ${SUITE} ${LANG} MPI wrapper...skipping"
+            echo >&2 "-- ${BUILD_NAME}MPI - failed to detect the ${SUITE} ${LANG} MPI wrapper. skipping..."
             unset ${suiteLangMpiWrapperPath}
 
         fi
@@ -791,57 +859,81 @@ do
 done
 
 ####################################################################################################################################
-# detect CAF wrapper
+#### detect CAF wrapper
 ####################################################################################################################################
 
 echo >&2
+if [ "${CAF_ENABLED}" = "true" ]; then
 
-CAF_ENABLED=false
-cafInstallEnabled=false
-if [ "${CAFTYPE}" != "none" ]; then
-    CAF_ENABLED=true
-    # The following conditional needed to ensure CAF compilation is automatically done with Intel compiler if available.
-    if [ -z ${intelFortranMpiWrapperPath+x} ]; then
+    unset cafCompilerPath
+
+    if [[ "${PMCS}" =~ .*"intel".* ]]; then
+
+        if [ -z ${intelFortranMpiWrapperPath+x} ]; then
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Failed to identify the Intel MPI library."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The Intel MPI library is required to compile"
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Coarray Fortran applications via Intel compilers."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The ParaMonte build will continue at the risk of failing..."
+            echo >&2
+        elif [ -z ${intelFortranCompilerPath+x} ]; then
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Failed to identify the Intel Fortran compiler path."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The Intel MPI library and Fortran compiler are required"
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: to compile Coarray Fortran applications via Intel compilers."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The ParaMonte build will continue at the risk of failing..."
+            echo >&2
+        else
+            cafCompilerPath="${intelFortranCompilerPath}"
+            echo >&2 "-- ${BUILD_NAME}CAF - The inferred Coarray Fortran compiler wrapper path: ${cafCompilerPath}"
+        fi
+
+    elif [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"gnu".* ]]; then
+
+        # assume OpenCoarrays
+
+        PMCS=gnu
+
         if command -v caf >/dev/null 2>&1; then
-            cafCompilerPath=$(command -v caf)
+            cafCompilerPath="$(command -v caf)"
             echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper detected at: ${cafCompilerPath}"
             cafVersion="$(caf -dumpversion)"
-            cafVersionRequired="7.3.0"
+            cafVersionRequired="${gnuVersionParaMonteCompatible}"
             echo >&2 "-- ${BUILD_NAME}CAF - caf version: ${cafVersion}"
             echo >&2 "-- ${BUILD_NAME}CAF - caf version required: ${cafVersionRequired}"
             compareVersions "$cafVersion" "$cafVersionRequired"
             if [ "$?" = "2" ]; then
+                echo >&2 
+                echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The existing OpenCoarrays caf compiler wrapper version is not ParaMonte compatible."
+                echo >&2 "-- ${BUILD_NAME}CAF - WARNING: A fresh installation of the OpenCoarrays library might be needed."
+                echo >&2 
                 cafInstallEnabled=true
-                mpiInstallEnabled=true
-                gnuInstallEnabled=true
-                #PMCS=caf
-                #COMPILER_VERSION=unknownversion
+                #mpiInstallEnabled=true
+                #gnuInstallEnabled=true
             else
-                #if [ "$(printf '%s\n' "$cafVersionRequired" "$currentver" | sort -V | head -n1)" = "$cafVersionRequired" ]; then
                 echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper is ParaMonte compatible!"
             fi
         else
+            echo >&2 
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The OpenCoarrays caf compiler wrapper was not found on your system."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: A fresh installation of the OpenCoarrays library might be needed."
+            echo >&2 
             cafInstallEnabled=true
-            mpiInstallEnabled=true
-            gnuInstallEnabled=true
+            #mpiInstallEnabled=true
+            #gnuInstallEnabled=true
         fi
+
     fi
-    if [ "${cafInstallEnabled}" = "true" ]; then
-        echo >&2 "-- ${BUILD_NAME}CAF - NOTE: OpenCoarrays caf compiler wrapper could not be found on your system."
-        echo >&2
-    fi
+
 fi
-export CAF_ENABLED
 
 ####################################################################################################################################
-# set ParaMonte compiler suite
+#### set the ParaMonte compiler suite
 ####################################################################################################################################
 
-prereqInstallAllowed=false
-if [ -z ${PMCS+x} ]; then prereqInstallAllowed=true; fi
-if [ "${isMacOS}" = "true" ]; then prereqInstallAllowed=true; fi
+if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
 
-if [ -z ${Fortran_COMPILER_PATH+x} ]; then
+    #### attempt to set up build with the Intel compiler suite
 
     if [ -z ${PMCS+x} ]; then
 
@@ -853,9 +945,8 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                     PMCS=intel
                     COMPILER_VERSION=${intelFortranCompilerVersion}
                     Fortran_COMPILER_PATH="${intelFortranCompilerPath}"
-                    MPIEXEC_PATH=$(dirname "${intelFortranMpiWrapperPath}")/mpiexec
+                    MPIEXEC_PATH="$(dirname "${intelFortranMpiWrapperPath}")/mpiexec"
                     #MPIEXEC_PATH=$(command -v mpiexec)
-                    prereqInstallAllowed=false
                 else
                     PMCS=gnu
                 fi
@@ -863,7 +954,6 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                 PMCS=intel
                 COMPILER_VERSION=${intelFortranCompilerVersion}
                 Fortran_COMPILER_PATH="${intelFortranCompilerPath}"
-                prereqInstallAllowed=false
             fi
         else
             PMCS=gnu
@@ -878,13 +968,16 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
                     if ! ${intelFortranMpiWrapperPath+false}; then
                         COMPILER_VERSION=${intelFortranCompilerVersion}
                         Fortran_COMPILER_PATH="${intelFortranCompilerPath}"
-                        if [ -f "${intelFortranMpiWrapperPath}" ]; then
-                            MPIEXEC_PATH=$(dirname "${intelFortranMpiWrapperPath}")/mpiexec
-                        else
-                            unset MPIEXEC_PATH
-                        fi
+                        MPIEXEC_PATH="$(dirname "${intelFortranMpiWrapperPath}")/mpiexec"
                     else
-                        errorOccurred=true
+                        if [ -z ${MPIEXEC_PATH_USER+x} ]; then
+                            echo >&2
+                            echo >&2 "-- ${BUILD_NAME} - WARNING: Failed to identify the Intel MPI library."
+                            echo >&2 "-- ${BUILD_NAME} - WARNING: The Intel MPI library is required to compile"
+                            echo >&2 "-- ${BUILD_NAME} - WARNING: the parallel ParaMonte library via Intel compilers."
+                            echo >&2 "-- ${BUILD_NAME} - WARNING: The library build will continue at the risk of failing..."
+                            echo >&2
+                        fi
                     fi
                 else
                     COMPILER_VERSION=${intelFortranCompilerVersion}
@@ -898,9 +991,12 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
         if [ "${errorOccurred}" = "true" ]; then
             echo >&2
             echo >&2 "-- ${BUILD_NAME} - FATAL: the Fortran compiler and wrapper components of the"
-            echo >&2 "-- ${BUILD_NAME} - FATAL: requested compiler suite ${PMCS} could not be detected."
+            echo >&2 "-- ${BUILD_NAME} - FATAL: requested compiler suite (${PMCS}) could not be detected."
             echo >&2 "-- ${BUILD_NAME} - FATAL: Please make sure the ${PMCS} compiler suite is installed on your system"
-            echo >&2 "-- ${BUILD_NAME} - FATAL: and avariable in the environmental variable PATH of your shell."
+            echo >&2 "-- ${BUILD_NAME} - FATAL: and is available in the environmental PATH variable of your shell."
+            echo >&2 "-- ${BUILD_NAME} - FATAL: Otherwise, drop the \"-s intel\" or \"--compiler_suite intel\""
+            echo >&2 "-- ${BUILD_NAME} - FATAL: from the input list of flags to the build script to the let"
+            echo >&2 "-- ${BUILD_NAME} - FATAL: the script build the library with other available compilers."
             echo >&2
             echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
             echo >&2
@@ -908,6 +1004,8 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
         fi
 
     fi
+
+    #### If needed, set up build with the GNU compiler suite
 
     if [ "${PMCS}" = "gnu" ]; then
 
@@ -917,75 +1015,106 @@ if [ -z ${Fortran_COMPILER_PATH+x} ]; then
             gnuInstallEnabled=false
         else
             gnuInstallEnabled=true
-            if [ "${prereqInstallAllowed}" = "false" ]; then # xxx should this be true?
-                echo >&2
-                echo >&2 "-- ${BUILD_NAME} - WARNING: GNU Fortran compiler could not be found on your system."
-                echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have GNU compiler suite installed on your system,"
-                echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install the compiler suite for you. To do so,"
-                echo >&2 "-- ${BUILD_NAME} - WARNING: drop the input argument -s or --compiler_suite when calling the script."
-                echo >&2
-            fi
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - WARNING: The GNU Fortran compiler could not be found on your system."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have GNU compiler suite installed on your system,"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install the GNU compiler suite for you."
+            echo >&2
         fi
 
-        if [ "${MPI_ENABLED}" = "true" ]; then # && ! [ -f "${MPIEXEC_PATH}" ]; then
+        if [ "${MPI_ENABLED}" = "true" ]; then
             if [ -f "${gnuFortranMpiWrapperPath}" ]; then
-                MPIEXEC_PATH=$(dirname "${gnuFortranMpiWrapperPath}")/mpiexec
-                mpiInstallEnabled=false
+                MPIEXEC_PATH="$(dirname "${gnuFortranMpiWrapperPath}")/mpiexec"
+                if [ -f "${MPIEXEC_PATH}" ]; then
+                    mpiInstallEnabled=false
+                else
+                    if command -v mpiexec >/dev/null 2>&1; then
+                        MPIEXEC_PATH="$(command -v mpiexec)"
+                        mpiInstallEnabled=false
+                    else
+                        mpiInstallEnabled=true
+                    fi
+                fi
             else
                 unset MPIEXEC_PATH
                 mpiInstallEnabled=true
-                gnuInstallEnabled=true
-                if [ "${prereqInstallAllowed}" = "false" ]; then # xxx should this be true?
-                    echo >&2
-                    echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
-                    echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
-                    echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install one for you. To do so, drop the"
-                    echo >&2 "-- ${BUILD_NAME} - WARNING: input argument -s or --compiler_suite when calling the script."
-                    echo >&2
-                fi
+                #gnuInstallEnabled=true
+                echo >&2
+                echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
+                echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
+                echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install the MPICH MPI library for you."
+                echo >&2
             fi
         else
             mpiInstallEnabled=false
         fi
 
-        if [ "${CAF_ENABLED}" = "true" ]; then
-            if ! ${cafCompilerPath+false}; then
-                COMPILER_VERSION=unknownversion
-                Fortran_COMPILER_PATH="${cafCompilerPath}"
-                cafInstallEnabled=false
-            else
-                cafInstallEnabled=true
-                mpiInstallEnabled=true
-                gnuInstallEnabled=true
-            fi
-        fi
+        #if [ "${CAF_ENABLED}" = "true" ]; then
+        #    if ! ${cafCompilerPath+false}; then
+        #        COMPILER_VERSION=unknownversion
+        #        Fortran_COMPILER_PATH="${cafCompilerPath}"
+        #        cafInstallEnabled=false
+        #    else
+        #        cafInstallEnabled=true
+        #        mpiInstallEnabled=true
+        #        gnuInstallEnabled=true
+        #    fi
+        #fi
 
     fi
 
-else # if fortran compiler path defined
+else # user has specified the Fortran compiler path
 
     cafInstallEnabled=false
-    mpiInstallEnabled=false
-    gnuInstallEnabled=false
+    #gnuInstallEnabled=false
 
-    PMCS=unknownsuite
-    COMPILER_VERSION=unknownversion
-    Fortran_COMPILER_NAME=${Fortran_COMPILER_PATH##*/}
+    PMCS=UNKNOWN
+    COMPILER_VERSION=UNKNOWN
+    Fortran_COMPILER_NAME=${Fortran_COMPILER_PATH_USER##*/}
+    Fortran_COMPILER_PATH="${Fortran_COMPILER_PATH_USER}"
     echo >&2
     echo >&2 "-- ${BUILD_NAME}Compiler - user-requested compiler path: ${Fortran_COMPILER_PATH}"
     echo >&2 "-- ${BUILD_NAME}Compiler - user-requested compiler name: ${Fortran_COMPILER_NAME}"
     if [[ "${Fortran_COMPILER_NAME}" =~ .*"gfortran".* || "${Fortran_COMPILER_NAME}" =~ .*"caf".* ]]; then
         PMCS=gnu
     fi
-    if [[ "${Fortran_COMPILER_NAME}" =~ .*"ifort".* ]]; then
+    if [ "${Fortran_COMPILER_NAME}" = "ifort" ]; then
         PMCS=intel
     fi
 
-    if [ "${MPI_ENABLED}" = "true" ] && [ -z ${MPIEXEC_PATH+x} ]; then
+    if [ "${MPI_ENABLED}" = "true" ] && [ -z ${MPIEXEC_PATH_USER+x} ]; then
         mpiInstallEnabled=true
-        gnuInstallEnabled=true
+        #gnuInstallEnabled=true
     fi
 
+fi
+
+if ! [ -z ${MPIEXEC_PATH_USER+x} ]; then
+    mpiInstallEnabled=false
+    if [ -f "${MPIEXEC_PATH_USER}" ]; then
+        if ! [ -z ${MPIEXEC_PATH+x} ]; then
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - WARNING: The specified mpiexec path via the input flag -M | --mpiexec"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: will overwrite the inferred mpiexec path by the build script."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: user-specified mpiexec path: ${MPIEXEC_PATH_USER}"
+            echo >&2 "-- ${BUILD_NAME} - WARNING:       inferred mpiexec path: ${MPIEXEC_PATH}"
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+            echo >&2
+        fi
+        MPIEXEC_PATH="${MPIEXEC_PATH_USER}"
+    else
+        usage
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - FATAL: The specified mpiexec path via the input flag -M | --mpiexec"
+        echo >&2 "-- ${BUILD_NAME} - FATAL: does not point to a valid file name on the system."
+        echo >&2 "-- ${BUILD_NAME} - FATAL: Please provide a valid path to the mpiexec executable"
+        echo >&2 "-- ${BUILD_NAME} - FATAL: or drop it from the list of input flags."
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
+        echo >&2
+        exit 1
+    fi
 fi
 
 #if [ "${MPI_ENABLED}" = "true" ]; then
@@ -1027,18 +1156,17 @@ fi
 #fi
 
 ####################################################################################################################################
-# set up ParaMonte library prerequisites
+#### set up ParaMonte library prerequisites
 ####################################################################################################################################
 
-if [ "${FRESH_INSTALL_ENABLED}" = "true" ]; then
-    prereqInstallAllowed=true
-    cmakeInstallEnabled=true
+if [ "${freshInstallEnabled}" = "true" ]; then
+    #cmakeInstallEnabled=true
     cafInstallEnabled=true
     mpiInstallEnabled=true
     gnuInstallEnabled=true
 fi
 
-echo >&2 "-- ${BUILD_NAME} - prereqInstallAllowed: ${prereqInstallAllowed}"
+echo >&2 "-- ${BUILD_NAME} -  freshInstallEnabled: ${freshInstallEnabled}"
 echo >&2 "-- ${BUILD_NAME} -  cmakeInstallEnabled: ${cmakeInstallEnabled}"
 echo >&2 "-- ${BUILD_NAME} -    cafInstallEnabled: ${cafInstallEnabled}"
 echo >&2 "-- ${BUILD_NAME} -    mpiInstallEnabled: ${mpiInstallEnabled}"
@@ -1046,313 +1174,367 @@ echo >&2 "-- ${BUILD_NAME} -    gnuInstallEnabled: ${gnuInstallEnabled}"
 
 # chmod 777 -R "${ParaMonte_ROOT_DIR}/auxil/prerequisites"
 
-if [ "${prereqInstallAllowed}" = "true" ]; then
+if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${gnuInstallEnabled}" = "true" ] || [ "${cmakeInstallEnabled}" = "true" ]; then
 
-    if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${gnuInstallEnabled}" = "true" ] || [ "${cmakeInstallEnabled}" = "true" ]; then
+    #ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
+    #ParaMonte_CAF_SETUP_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/${openCoarraysVersion}/setup.sh"
+    #if [ "${freshInstallEnabled}" = "true" ]; then
+    #    rm -rf "${ParaMonte_REQ_DIR}"
+    #fi
 
-        #ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
-        #ParaMonte_CAF_SETUP_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/${openCoarraysVersion}/setup.sh"
+    answer=y
+    if [ ! -d "${ParaMonte_REQ_DIR}" ] || [ ! "$(ls -A ${ParaMonte_REQ_DIR})" ]; then
 
-        if [ "${FRESH_INSTALL_ENABLED}" = "true" ]; then
-            rm -rf "${ParaMonte_REQ_DIR}"
-        fi
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte build with the requested configuration requires the installations"
+        echo >&2 "-- ${BUILD_NAME} - WARNING: of either OpenCoarrays, MPICH MPI library (on Linux) or Open-MPI MPI library (on macOS),"
+        echo >&2 "-- ${BUILD_NAME} - WARNING: GNU compilers, or CMAKE on your system."
+        echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte can install all  prerequisites on your system from the web, if needed."
+        echo >&2 "-- ${BUILD_NAME} - WARNING: The prerequisite build objects may occupy up to 5Gb of your system's memory."
+        echo >&2
 
-        answer=y
-        if [ ! -d "${ParaMonte_REQ_DIR}" ] || [ ! "$(ls -A ${ParaMonte_REQ_DIR})" ]; then
+        ############################################################################################################################
+        #### request permission to download and unpack prereqs
+        ############################################################################################################################
 
-            echo >&2
-            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte build with the requested configuration requires the installations"
-            echo >&2 "-- ${BUILD_NAME} - WARNING: of either OpenCoarrays, MPICH MPI library (on Linux) or Open-MPI MPI library (on macOS),"
-            echo >&2 "-- ${BUILD_NAME} - WARNING: GNU compilers, or CMAKE on your system."
-            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte can install all the prerequisites on your system from the web, if needed."
-            echo >&2 "-- ${BUILD_NAME} - WARNING: The prerequisites build objects may occupy up to 5Gb of your system's memory."
-            echo >&2
-            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
-                answerNotGiven=true
-                while [ "${answerNotGiven}" = "true" ]; do
-                    read -p "-- ${BUILD_NAME} - Do you wish to continue with the installation of the prerequisites (y/n)? " answer
-                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                        answer=y
-                        answerNotGiven=false
-                    fi
-                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
-                        answer=n
-                        answerNotGiven=false
-                    fi
-                    if [ "${answerNotGiven}" = "true" ]; then
-                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
-                    fi
-                done
-            else
-                echo >&2 "-- ${BUILD_NAME} - Do you wish to continue with the installation of the prerequisites (y/n)? y"
-                answer=y
-            fi
-            echo >&2
-
-            if [ "${answer}" = "y" ]; then
-
-                echo >&2 "-- ${BUILD_NAME} - generating directory: ${ParaMonte_REQ_DIR}/"
-                mkdir -p "${ParaMonte_REQ_DIR}/"
-
-                tarFileName="OpenCoarrays-${openCoarraysVersion}.tar.gz"
-                tarFileWeb="https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${openCoarraysVersion}/${tarFileName}"
-                wget -P "${ParaMonte_REQ_DIR}/.." "${tarFileWeb}"
-                verify $? "Download of the prerequisites failed."
-                #tarFileName="prerequisites.tar.gz"
-                #cp -rv "${ParaMonte_ROOT_DIR}/auxil/${tarFileName}" "${ParaMonte_REQ_DIR}/../"
-                verify $? "installation setup of prerequisites"
-                if ! [ -d "${ParaMonte_REQ_DIR}" ]; then
-                    mkdir "${ParaMonte_REQ_DIR}"
+        if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+            answerNotGiven=true
+            while [ "${answerNotGiven}" = "true" ]; do
+                read -p "-- ${BUILD_NAME} - Do you wish to continue with the installation of the prerequisites (y/n)? " answer
+                if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                    answer=y
+                    answerNotGiven=false
                 fi
-                (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf "${tarFileName}" -C prerequisites --strip-components 1)
-                verify $? "unpacking of prerequisites"
-                # chmod +x -R "${ParaMonte_REQ_DIR}"
-
-            else
-
-                echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte installation will proceed with no guarantee of success."
-                echo >&2
-                #exit 1
-
-            fi
-
+                if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                    answer=n
+                    answerNotGiven=false
+                fi
+                if [ "${answerNotGiven}" = "true" ]; then
+                    echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                fi
+            done
+        else
+            echo >&2 "-- ${BUILD_NAME} - Do you wish to continue with the installation of the prerequisites (y/n)? y"
+            answer=y
         fi
+        echo >&2
+
+        ############################################################################################################################
+        #### download and unpack prereqs
+        ############################################################################################################################
 
         if [ "${answer}" = "y" ]; then
 
-            # check brew on Mac
-
-            if [ "${isMacOS}" = "true" ]; then
-                if command -v brew >/dev/null 2>&1; then
-                    brewCompilerPath=$(command -v brew)
-                    echo >&2 "-- ${BUILD_NAME} - Homebrew detected at: ${brewCompilerPath}"
-                else
-                    echo >&2 "-- ${BUILD_NAME} - Homebrew missing. Installing Homebrew..."
-                    (xcode-select --install && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" )
-                    (command -v brew >/dev/null 2>&1 )
-                    verify $? "installation of brew"
-                fi
+            echo >&2 "-- ${BUILD_NAME} - generating directory: ${ParaMonte_REQ_DIR}/"
+            if ! [ -d "${ParaMonte_REQ_DIR}" ]; then
+                mkdir -p "${ParaMonte_REQ_DIR}"
             fi
 
-            ########################################################################################################################
-            #### check cmake
-            ########################################################################################################################
+            tarFileName="OpenCoarrays-${openCoarraysVersion}.tar.gz"
+            tarFileWeb="https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${openCoarraysVersion}/${tarFileName}"
+            wget -P "${ParaMonte_REQ_DIR}/.." "${tarFileWeb}"
+            verify $? "download of the prerequisites"
 
-            if [ "${cmakeInstallEnabled}" = "true" ]; then
-                # ParaMonte_CMAKE_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/cmake/${cmakeVersionRequired}/bin"
-                # ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"
-                if [[ -f "${ParaMonte_CMAKE_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - cmake ${cmakeVersionRequired} detected."
-                    #cmakeInstallEnabled=false
+            #tarFileName="prerequisites.tar.gz"
+            #cp -rv "${ParaMonte_ROOT_DIR}/auxil/${tarFileName}" "${ParaMonte_REQ_DIR}/../"
+            #verify $? "installation setup of prerequisites"
+
+            (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf "${tarFileName}" -C prerequisites --strip-components 1)
+            verify $? "unpacking of prerequisites"
+            # chmod +x -R "${ParaMonte_REQ_DIR}"
+
+        else
+
+            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte installation will proceed with no guarantee of success."
+            echo >&2
+            #exit 1
+
+        fi
+
+    fi
+
+    ################################################################################################################################
+    #### install prereqs
+    ################################################################################################################################
+
+    if [ "${answer}" = "y" ]; then
+
+        ############################################################################################################################
+        #### check brew installation on macOS
+        ############################################################################################################################
+
+        if [ "${isMacOS}" = "true" ]; then
+            if command -v brew >/dev/null 2>&1; then
+                brewCompilerPath="$(command -v brew)"
+                echo >&2 "-- ${BUILD_NAME} - Homebrew detected at: ${brewCompilerPath}"
+            else
+                echo >&2 "-- ${BUILD_NAME} - Homebrew missing. Installing Homebrew..."
+                (xcode-select --install && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" </dev/null )
+                (command -v brew >/dev/null 2>&1 )
+                verify $? "installation of Homebrew"
+            fi
+        fi
+
+        ############################################################################################################################
+        #### check cmake installation
+        ############################################################################################################################
+
+        if [ "${cmakeInstallEnabled}" = "true" ]; then
+            if [[ -f "${ParaMonte_CMAKE_PATH}" ]]; then
+                echo >&2 "-- ${BUILD_NAME} - cmake ${cmakeVersionParaMonteCompatible} detected."
+            else
+                echo >&2 "-- ${BUILD_NAME} - cmake ${cmakeVersionParaMonteCompatible} missing."
+                echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                if [ "${isMacOS}" = "true" ]; then
+                    (brew install cmake && brew link cmake )
+                    (command -v cmake >/dev/null 2>&1 )
+                    verify $? "installation of cmake"
                 else
-                    echo >&2 "-- ${BUILD_NAME} - cmake ${cmakeVersionRequired} missing."
-                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                    if [ "${isMacOS}" = "true" ]; then
-                        (brew install cmake && brew link cmake )
-                        (command -v cmake >/dev/null 2>&1 )
-                        verify $? "installation of cmake"
-                    else
-                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionRequired} )
-                        verify $? "installation of cmake"
+                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} )
+                    verify $? "installation of cmake"
+                    if [[ ":$PATH:" != *":${ParaMonte_CMAKE_BIN_DIR}:"* ]]; then
+                        PATH="${ParaMonte_CMAKE_BIN_DIR}:${PATH}"
+                        export PATH
                     fi
                 fi
             fi
+        fi
 
-            ########################################################################################################################
-            #### check mpi
-            ########################################################################################################################
+        ############################################################################################################################
+        #### check mpi installation
+        ############################################################################################################################
 
-            localMpiInstallationDetected=false
-            if [ "${isMacOS}" = "true" ]; then
-                CURRENT_PKG="the Open-MPI library"
+        localMpiInstallationDetected=false
+        if [ "${isMacOS}" = "true" ]; then
+            CURRENT_PKG="the Open-MPI library"
+            echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+            echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+            (brew install open-mpi && brew link open-mpi )
+            (command -v mpiexec >/dev/null 2>&1 )
+            verify $? "installation of ${CURRENT_PKG}"
+            MPIEXEC_PATH="$(command -v mpiexec)"
+        else
+            CURRENT_PKG="the MPICH library"
+            if [ "${mpiInstallEnabled}" = "true" ]; then
+                MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
+                if [[ -f "${MPIEXEC_PATH}" ]]; then
+                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_MPI_BIN_DIR}"
+                    localMpiInstallationDetected=true
+                    if [[ ":$PATH:" != *":${ParaMonte_MPI_BIN_DIR}:"* ]]; then
+                        PATH="${ParaMonte_MPI_BIN_DIR}:${PATH}"
+                    fi
+                    if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_MPI_LIB_DIR}:"* ]]; then
+                        LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
+                        export LD_LIBRARY_PATH
+                    fi
+                    PATH="${ParaMonte_MPI_LIB_DIR}:${PATH}"
+                    export PATH
+                else
+                    ##########################################################################
+                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
+                    {
+                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                answerNotGiven=true
+                                while [ "${answerNotGiven}" = "true" ]; do
+                                    echo >&2
+                                    read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2
+                                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                        answer=y
+                                        answerNotGiven=false
+                                    fi
+                                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                        answer=n
+                                        answerNotGiven=false
+                                    fi
+                                    if [ "${answerNotGiven}" = "true" ]; then
+                                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                    fi
+                                done
+                            else
+                                echo >&2
+                                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
+                                echo >&2
+                                answer=y
+                            fi
+                            echo >&2
+                            if [ "${answer}" = "y" ]; then
+                                GCC_BOOTSTRAP="--bootstrap"
+                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                verify $? "installation of ${CURRENT_PKG}"
+                            else
+                                verify 1 "installation of ${CURRENT_PKG}"
+                            fi
+                        else
+                            verify 1 "installation of ${CURRENT_PKG}"
+                        fi
+                    }
+                    ##########################################################################
+                fi
+            fi
+        fi
+
+        ############################################################################################################################
+        #### check gnu
+        ############################################################################################################################
+
+        CURRENT_PKG="the GNU compiler collection"
+        if [ "${gnuInstallEnabled}" = "true" ]; then # || [ "${localMpiInstallationDetected}" = "false" ]); then
+            Fortran_COMPILER_PATH="${ParaMonte_GNU_BIN_DIR}/gfortran"
+            if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
+                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_GNU_BIN_DIR}"
+                if [[ ":$PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
+                    PATH="${ParaMonte_GNU_LIB_DIR}:${PATH}"
+                    export PATH
+                fi
+                if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
+                    LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
+                    export LD_LIBRARY_PATH
+                fi
+                #gnuInstallEnabled=false
+            else
+                ##########################################################################
                 echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
                 echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                (brew install open-mpi && brew link open-mpi )
-                (command -v mpiexec >/dev/null 2>&1 )
-                verify $? "installation of ${CURRENT_PKG}"
-                MPIEXEC_PATH=$(command -v mpiexec)
+                if [ "${isMacOS}" = "true" ]; then
+                    (brew install gcc && brew link gcc )
+                    (command -v gfortran >/dev/null 2>&1 )
+                    verify $? "installation of ${CURRENT_PKG}"
+                    Fortran_COMPILER_PATH="$(command -v gfortran)"
+                else
+                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
+                    {
+                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                answerNotGiven=true
+                                while [ "${answerNotGiven}" = "true" ]; do
+                                    echo >&2
+                                    read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2
+                                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                        answer=y
+                                        answerNotGiven=false
+                                    fi
+                                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                        answer=n
+                                        answerNotGiven=false
+                                    fi
+                                    if [ "${answerNotGiven}" = "true" ]; then
+                                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                    fi
+                                done
+                            else
+                                echo >&2
+                                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
+                                echo >&2
+                                answer=y
+                            fi
+                            echo >&2
+                            if [ "${answer}" = "y" ]; then
+                                GCC_BOOTSTRAP="--bootstrap"
+                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                verify $? "installation of ${CURRENT_PKG}"
+                            else
+                                verify 1 "installation of ${CURRENT_PKG}"
+                            fi
+                        else
+                            verify 1 "installation of ${CURRENT_PKG}"
+                        fi
+                    }
+                fi
+                ##########################################################################
+            fi
+        fi
+
+        # # set up setup.sh file
+
+        # SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
+        # export SETUP_FILE_PATH
+
+        # echo "# ParaMonte runtime environment setup script." > ${SETUP_FILE_PATH}
+        # echo "# Source this Bash script in your Bash environment like," >> ${SETUP_FILE_PATH}
+        # echo "#     source ./setup.sh" >> ${SETUP_FILE_PATH}
+        # echo "# before compiling your source files and linking with ParaMonte library." >> ${SETUP_FILE_PATH}
+        # echo "" >> ${SETUP_FILE_PATH}
+
+        ############################################################################################################################
+        #### check caf
+        ############################################################################################################################
+
+        CURRENT_PKG="the OpenCoarrays compiler wrapper"
+        if [ "${cafInstallEnabled}" = "true" ]; then
+            if [[ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]]; then
+                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_CAF_WRAPPER_PATH}"
             else
-                CURRENT_PKG="the MPICH library"
-                if [ "${mpiInstallEnabled}" = "true" ]; then
-                    #ParaMonte_MPI_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/mpich/${mpichVersionOpenCoarrays}/bin"
-                    MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
-                    if [[ -f "${MPIEXEC_PATH}" ]]; then
-                        echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected."
-                        localMpiInstallationDetected=true
-                        if [[ ":$PATH:" != *":${ParaMonte_MPI_BIN_DIR}:"* ]]; then
-                            PATH="${ParaMonte_MPI_BIN_DIR}:${PATH}"
-                        fi
-                        if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_MPI_LIB_DIR}:"* ]]; then
-                            LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
-                        fi
-                        PATH="${ParaMonte_MPI_LIB_DIR}:${PATH}"; export PATH
-                        #mpiInstallEnabled=false
-                    else
-                        ##########################################################################
-                        echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                        echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
-                        {
-                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                                if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
-                                    answerNotGiven=true
-                                    while [ "${answerNotGiven}" = "true" ]; do
-                                        echo >&2
-                                        read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
-                                        echo >&2
-                                        if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                            answer=y
-                                            answerNotGiven=false
-                                        fi
-                                        if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
-                                            answer=n
-                                            answerNotGiven=false
-                                        fi
-                                        if [ "${answerNotGiven}" = "true" ]; then
-                                            echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
-                                        fi
-                                    done
-                                else
-                                    echo >&2
-                                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
-                                    echo >&2
-                                    answer=y
-                                fi
-                                echo >&2
-
-                                if [ "${answer}" = "y" ]; then
-                                    GCC_BOOTSTRAP="--bootstrap"
-                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                    verify $? "installation of ${CURRENT_PKG}"
-                                else
-                                    verify 1 "installation of ${CURRENT_PKG}"
-                                fi
-                            else
-                                verify 1 "installation of ${CURRENT_PKG}"
-                            fi
-                        }
-                        ##########################################################################
-                    fi
-                fi
-            fi
-
-            ########################################################################################################################
-            #### check gnu
-            ########################################################################################################################
-
-            CURRENT_PKG="the GNU compiler collection"
-            if [ "${gnuInstallEnabled}" = "true" ] || [ "${localMpiInstallationDetected}" = "false" ]; then
-                #ParaMonte_GNU_BIN_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations/gnu/${gnuVersionOpenCoarrays}/bin"
-                Fortran_COMPILER_PATH="${ParaMonte_GNU_BIN_DIR}/gfortran"
-                if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected."
-                    if [[ ":$PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
-                        PATH="${ParaMonte_GNU_LIB_DIR}:${PATH}"
-                    fi
-                    if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
-                        LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
-                    fi
-                    #gnuInstallEnabled=false
+                ##########################################################################
+                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
+                echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
+                if [ "${isMacOS}" = "true" ]; then
+                    (brew install opencoarrays && brew link opencoarrays )
+                    (command -v caf >/dev/null 2>&1 )
+                    verify $? "installation of ${CURRENT_PKG}"
+                    ParaMonte_CAF_WRAPPER_PATH="$(command -v caf)"
                 else
-                    ##########################################################################
-                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                    if [ "${isMacOS}" = "true" ]; then
-                        (brew install gcc && brew link gcc )
-                        (command -v gfortran >/dev/null 2>&1 )
-                        verify $? "installation of ${CURRENT_PKG}"
-                        Fortran_COMPILER_PATH=$(command -v gfortran)
-                    else
-                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
-                        {
-                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
+                    {
+                        if [ -z ${GCC_BOOTSTRAP+x} ]; then
+                            if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
+                                answerNotGiven=true
+                                while [ "${answerNotGiven}" = "true" ]; do
+                                    echo >&2
+                                    read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                    echo >&2
+                                    if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
+                                        answer=y
+                                        answerNotGiven=false
+                                    fi
+                                    if [[ $answer == [nN] || $answer == [nN][oO] ]]; then
+                                        answer=n
+                                        answerNotGiven=false
+                                    fi
+                                    if [ "${answerNotGiven}" = "true" ]; then
+                                        echo >&2 "-- ${BUILD_NAME} - please enter either y or n"
+                                    fi
+                                done
+                            else
                                 echo >&2
-                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
+                                echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? y"
                                 echo >&2
-                                if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                    GCC_BOOTSTRAP="--bootstrap"
-                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
-                                    verify $? "installation of ${CURRENT_PKG}"
-                                else
-                                    verify 1 "installation of ${CURRENT_PKG}"
-                                fi
+                                answer=y
+                            fi
+                            echo >&2
+                            if [ "${answer}" = "y" ]; then
+                                GCC_BOOTSTRAP="--bootstrap"
+                                chmod +x "${ParaMonte_REQ_DIR}/install.sh"
+                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                verify $? "installation of ${CURRENT_PKG}"
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
                             fi
-                        }
-                    fi
-                    ##########################################################################
+                        else
+                            verify 1 "installation of ${CURRENT_PKG}"
+                        fi
+                    }
                 fi
+                ##########################################################################
             fi
+            Fortran_COMPILER_PATH="${ParaMonte_CAF_WRAPPER_PATH}"
+        fi
 
-            # # set up setup.sh file
-
-            # SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
-            # export SETUP_FILE_PATH
-
-            # echo "# ParaMonte runtime environment setup script." > ${SETUP_FILE_PATH}
-            # echo "# Source this Bash script in your Bash environment like," >> ${SETUP_FILE_PATH}
-            # echo "#     source ./setup.sh" >> ${SETUP_FILE_PATH}
-            # echo "# before compiling your source files and linking with ParaMonte library." >> ${SETUP_FILE_PATH}
+        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
+            source "${ParaMonte_CAF_SETUP_PATH}"
             # echo "" >> ${SETUP_FILE_PATH}
-
-            ########################################################################################################################
-            #### check caf
-            ########################################################################################################################
-
-            CURRENT_PKG="the OpenCoarrays compiler wrapper"
-            if [ "${cafInstallEnabled}" = "true" ]; then
-                #ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_BIN_DIR}/caf"
-                if [[ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected."
-                    #cafInstallEnabled=false
-                else
-                    ##########################################################################
-                    echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
-                    echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
-                    if [ "${isMacOS}" = "true" ]; then
-                        (brew install opencoarrays && brew link opencoarrays )
-                        (command -v caf >/dev/null 2>&1 )
-                        verify $? "installation of ${CURRENT_PKG}"
-                        ParaMonte_CAF_WRAPPER_PATH=$(command -v caf)
-                    else
-                        chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                        (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
-                        {
-                            if [ -z ${GCC_BOOTSTRAP+x} ]; then
-                                echo >&2
-                                read -p "-- ${BUILD_NAME} - ${CURRENT_PKG} installation failed. Shall I retry with bootstrap (y/n)? " answer
-                                echo >&2
-                                if [[ $answer == [yY] || $answer == [yY][eE][sS] ]]; then
-                                    GCC_BOOTSTRAP="--bootstrap"
-                                    chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all)
-                                    verify $? "installation of ${CURRENT_PKG}"
-                                else
-                                    verify 1 "${CURRENT_PKG} installation"
-                                fi
-                            else
-                                verify 1 "installation of ${CURRENT_PKG}"
-                            fi
-                        }
-                    fi
-                    ##########################################################################
-                fi
-                Fortran_COMPILER_PATH="${ParaMonte_CAF_WRAPPER_PATH}"
-            fi
-
-            if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
-                source "${ParaMonte_CAF_SETUP_PATH}"
-                # echo "" >> ${SETUP_FILE_PATH}
-                # echo "source ${ParaMonte_CAF_SETUP_PATH}" >> ${SETUP_FILE_PATH}
-                # echo "" >> ${SETUP_FILE_PATH}
-            fi
-
+            # echo "source ${ParaMonte_CAF_SETUP_PATH}" >> ${SETUP_FILE_PATH}
+            # echo "" >> ${SETUP_FILE_PATH}
         fi
 
     fi
@@ -1366,7 +1548,7 @@ if [[ ! -f "${Fortran_COMPILER_PATH}" ]]; then
 fi
 
 ####################################################################################################################################
-# set up PATH & LD_LIBRARY_PATH
+#### set up PATH & LD_LIBRARY_PATH
 ####################################################################################################################################
 
 if [ -d "${ParaMonte_CMAKE_BIN_DIR}" ]; then
@@ -1380,10 +1562,10 @@ if [ -d "${ParaMonte_CMAKE_BIN_DIR}" ]; then
 fi
 
 ####################################################################################################################################
-# set up setup.sh file
+##### set up setup.sh file
 ####################################################################################################################################
 
-if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isMacOS}" = "true" ]; then
+if [ "${PMCS}" = "gnu" ] && ! [ "${isMacOS}" = "true" ]; then
 
     if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
         SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
@@ -1408,9 +1590,9 @@ if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isM
                 echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
                 echo "    LD_LIBRARY_PATH=."
                 echo "else"
-                echo "    FILE_DIR=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
-                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
-                echo "        LD_LIBRARY_PATH=\"${FILE_DIR}:\${LD_LIBRARY_PATH}\""
+                echo "    sourceFileDir=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
+                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${sourceFileDir}:\"* ]]; then"
+                echo "        LD_LIBRARY_PATH=\"${sourceFileDir}:\${LD_LIBRARY_PATH}\""
                 echo "    fi"
                 echo "fi"
                 echo "export LD_LIBRARY_PATH"
@@ -1531,7 +1713,7 @@ if [ "${PMCS}" = "gnu" ] && [ "${prereqInstallAllowed}" = "true" ] && ! [ "${isM
 fi
 
 ####################################################################################################################################
-# set Fortran compiler version one last time
+#### set Fortran compiler version one last time
 ####################################################################################################################################
 
 echo >&2
@@ -1585,7 +1767,7 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
     rm -rf "${tempDir}"
 
     if [ "${isUnknownVersion}" = "true" ]; then
-        echo >&2 "-- ${BUILD_NAME}Compiler - failed to detect the ${PMCS} ${LANG} compiler version...skipping"
+        echo >&2 "-- ${BUILD_NAME}Compiler - failed to detect the ${PMCS} ${LANG} compiler version. skipping..."
         COMPILER_VERSION=unknownversion
     fi
 
@@ -1679,7 +1861,6 @@ export ParaMonte_BIN_DIR
 # set ParaMonte library source directories
 ####################################################################################################################################
 
-            ParaMonteTest_SRC_DIR=${ParaMonte_ROOT_DIR}/src/test
          ParaMonteExample_SRC_DIR=${ParaMonte_ROOT_DIR}/example
        ParaMonteInterface_SRC_DIR=${ParaMonte_ROOT_DIR}/src/interface
       ParaMonteInterfaceC_SRC_DIR=${ParaMonteInterface_SRC_DIR}/C
@@ -1689,7 +1870,6 @@ ParaMonteInterfaceFortran_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Fortran
       ParaMonteMATLABTest_SRC_DIR=${ParaMonteInterfaceMATLAB_SRC_DIR}/test
       ParaMontePythonTest_SRC_DIR=${ParaMonteInterfacePython_SRC_DIR}/test
 
-export ParaMonteTest_SRC_DIR
 export ParaMonteExample_SRC_DIR
 export ParaMonteMATLABTest_SRC_DIR
 export ParaMontePythonTest_SRC_DIR
@@ -1908,6 +2088,9 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
         if [ -z ${MPIEXEC_PATH+x} ]; then
             MPIEXEC_PATH_RESET_ENABLED="true"
             MPIEXEC_PATH=$(command -v mpiexec)
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - Inferred mpiexec path: $(command -v mpiexec)"
+            echo >&2
         else
             MPIEXEC_PATH_RESET_ENABLED="false"
         fi
@@ -1922,8 +2105,7 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
             echo >&2 "-- ${BUILD_NAME} - WARNING: No tests of the ParaMonte library will be performed."
             echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
             echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
-            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install one for you. To do so, drop the"
-            echo >&2 "-- ${BUILD_NAME} - WARNING: input argument -s or --compiler_suite when calling the script."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install one for you."
             echo >&2
         fi
     else
@@ -2182,7 +2364,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
                 echo >&2
                 exit 1
             fi
-            cd "${FILE_DIR}"
+            cd "${sourceFileDir}"
         fi
 
     fi

@@ -45,7 +45,7 @@
 #
 #   ./auxil/btar.sh --dir ./bin/
 #
-
+#
 ####################################################################################################################################
 # auxil
 ####################################################################################################################################
@@ -69,15 +69,22 @@ reportBadValue()
 # parse arguments
 ####################################################################################################################################
 
-AUXIL_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-TARGET_DIR="${AUXIL_DIR}/../bin/"
+#sourceFileDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+sourceFileDir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+workingDir=$(pwd)
+targetDir="${sourceFileDir}/../bin/"
+
+echo >&2 
+echo >&2 "-- ParaMonte -    btar.sh file directory: ${sourceFileDir}"
+echo >&2 "-- ParaMonte - current working directory: ${workingDir}"
+echo >&2 
 
 unset LANG_LIST # must be all lower case
 
 while [ "$1" != "" ]; do
     case $1 in
         -d | --dir )    shift
-                        TARGET_DIR=$1
+                        targetDir=$1
                         ;;
         -L | --lang )   shift
                         LANG_LIST="$1"
@@ -128,11 +135,11 @@ else
 fi
 
 
-if [ -d "${TARGET_DIR}" ]; then
+if [ -d "${targetDir}" ]; then
     echo >&2
-    echo >&2 "-- ParaMonte - compressing all subdirectories in the directory: ${TARGET_DIR}"
+    echo >&2 "-- ParaMonte - compressing all subdirectories in the directory: ${targetDir}"
     echo >&2
-    cd "${TARGET_DIR}"
+    cd "${targetDir}"
     for subdir in ./*; do
         if [ -d "${subdir}" ]; then
             compressionEnabled=false
@@ -161,7 +168,7 @@ if [ -d "${TARGET_DIR}" ]; then
     done
 else
     echo >&2
-    echo >&2 "-- ParaMonte - FATAL: The requested input target directory ${TARGET_DIR} specified" 
+    echo >&2 "-- ParaMonte - FATAL: The requested input target directory ${targetDir} specified" 
     echo >&2 "-- ParaMonte - FATAL: with the input flag --dir does not exist."
     echo >&2
     exit 1
