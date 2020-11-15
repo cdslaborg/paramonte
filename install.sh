@@ -90,6 +90,7 @@ unset MPIEXEC_PATH
 
 PMCS_LIST="none"
 fresh_flag=""
+silent_flag=""
 yes_to_all_flag=""
 gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
@@ -130,6 +131,8 @@ while [ "$1" != "" ]; do
                                 MPIEXEC_PATH="$1"
                                 ;;
         -F | --fresh )          fresh_flag="--fresh"
+                                ;;
+        -S | --silent )         silent_flag="--silent"
                                 ;;
         -d | --dryrun )         dryrun_flag="--dryrun"
                                 ;;
@@ -594,6 +597,9 @@ for PMCS in $PMCS_LIST; do
                             if ! [ "${fresh_flag}" = "" ]; then
                             echo >&2 "                          ${fresh_flag} \ "
                             fi
+                            if ! [ "${silent_flag}" = "" ]; then
+                            echo >&2 "                          ${silent_flag} \ "
+                            fi
                             if ! [ "${dryrun_flag}" = "" ]; then
                             echo >&2 "                          ${dryrun_flag} \ "
                             fi
@@ -632,6 +638,7 @@ for PMCS in $PMCS_LIST; do
                             ${exam_enabled_flag} \
                             ${yes_to_all_flag} \
                             ${fresh_flag} \
+                            ${silent_flag} \
                             ${dryrun_flag} \
                             ${release_flag} \
                             ${gcc_bootstrap_flag} \
