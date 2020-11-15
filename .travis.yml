@@ -14,6 +14,7 @@ cache:
 
 matrix:
   include:
+
     - os: linux
       dist: trusty
       addons:
@@ -23,7 +24,10 @@ matrix:
           packages:
             - cmake
             - gfortran-9
-            #- openmpi-bin
+            - libblas-dev
+            - liblapack-dev
+            - libopenmpi-dev
+            - openmpi-bin
             #- mpich
             #- libmpich-dev
             #- libblas-dev
@@ -34,13 +38,13 @@ matrix:
         #- chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
         #- export PATH="/usr/local/cmake-3.16.3/bin:${PATH}"
         #- echo "The MPIEXEC binary path: $(which mpiexec)" || echo "MPI library not found...skipping"
-        #- echo $(which mpicc)
-        #- echo $(which mpif90)
-        #- echo $(which mpifort)
-        #- echo $(which mpiexec)
-        #- echo $(which mpirun)
-        #- mpiexecFlag="$(command -v mpirun)"
-        #- if [ -f "${mpiexecFlag}" ]; then mpiexecFlag="--mpiexec ${mpiexecFlag}"; else unset mpiexecFlag; echo "mpiexec not found..."; fi
+        - echo $(which mpicc)
+        - echo $(which mpif90)
+        - echo $(which mpifort)
+        - echo $(which mpiexec)
+        - echo $(which mpirun)
+        - mpiexecFlag="$(command -v mpiexec.openmpi)"
+        - if [ -f "${mpiexecFlag}" ]; then mpiexecFlag="--mpiexec ${mpiexecFlag}"; else unset mpiexecFlag; echo "mpiexec not found..."; fi
         #- echo "FCFLAG = ${FCFLAG}"
         #- echo "mpiexecFlag = ${mpiexecFlag}"
         #- ls /usr/bin/
@@ -50,74 +54,74 @@ matrix:
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none" --yes-to-all ${FCFLAG} ${mpiexecFlag}
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par none --yes-to-all ${FCFLAG} ${mpiexecFlag}
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
         - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
 
-#    - &macOS
-#      os: osx
-#      osx_image: xcode11
-#      env:
-#          GCC=9
-#          CC=gcc-9
-#          CXX=g++-9
-#          FC=gfortran-9
-#      addons:
-#        homebrew:
-#          packages:
-#            - gcc@9
-#            - cmake
-#            - openmpi
-#            - shellcheck
-#          update: true
-#      before_install:
-#        - brew install gcc@9 || brew upgrade gcc
-#        - brew install cmake || brew upgrade cmake
-#        - brew install openmpi || brew upgrade openmpi
-#        - brew link gcc
-#        - brew link cmake
-#        - brew link openmpi
-#      script:
-#        - cmake --version
-#        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-#
-#    - &macOS
-#      os: osx
-#      osx_image: xcode12
-#      addons:
-#        homebrew:
-#          packages:
-#            - cmake
-#            - mpich
-#            - gcc@10
-#            - shellcheck
-#          update: true
-#      before_install:
-#        - brew install gcc@10 || brew upgrade gcc
-#        - brew install cmake || brew upgrade cmake
-#        - brew install mpich || brew upgrade mpich
-#        - brew link gcc
-#        - brew link cmake
-#        - brew link mpich
-#      script:
-#        - cmake --version
-#        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-#        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+    - &macOS
+      os: osx
+      osx_image: xcode11
+      env:
+          GCC=9
+          CC=gcc-9
+          CXX=g++-9
+          FC=gfortran-9
+      addons:
+        homebrew:
+          packages:
+            - gcc@9
+            - cmake
+            - openmpi
+            - shellcheck
+          update: true
+      before_install:
+        - brew install gcc@9 || brew upgrade gcc
+        - brew install cmake || brew upgrade cmake
+        - brew install openmpi || brew upgrade openmpi
+        - brew link gcc
+        - brew link cmake
+        - brew link openmpi
+      script:
+        - cmake --version
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+
+    - &macOS
+      os: osx
+      osx_image: xcode12
+      addons:
+        homebrew:
+          packages:
+            - cmake
+            - mpich
+            - gcc@10
+            - shellcheck
+          update: true
+      before_install:
+        - brew install gcc@10 || brew upgrade gcc
+        - brew install cmake || brew upgrade cmake
+        - brew install mpich || brew upgrade mpich
+        - brew link gcc
+        - brew link cmake
+        - brew link mpich
+      script:
+        - cmake --version
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
 
 #    - &ubuntu
 #      os: linux
