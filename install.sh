@@ -377,7 +377,7 @@ fi
 fortran_flag=""
 if ! [ -z ${Fortran_COMPILER_PATH+x} ]; then
     if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
-        fortran_flag="--mpiexec ${Fortran_COMPILER_PATH}"
+        fortran_flag="--fortran ${Fortran_COMPILER_PATH}"
     else
         if [ "${Fortran_COMPILER_PATH}" = "" ]; then
             unset Fortran_COMPILER_PATH
