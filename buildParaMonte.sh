@@ -317,6 +317,7 @@ cat << EndOfMessage
         -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
         -M | --mpiexec          : path to mpiexec routine. If provided, it will be used to find the MPI library.
         -F | --fresh            : enables a fresh installation of all of the prerequisites of ParaMonte library. Applicable only to GNU compiler suite.
+        -S | --silent           : silences all messages from the installation of all of the prerequisites of ParaMonte library.
         -y | --yes-to-all       : if a fresh installation of all of the prerequisites is needed, automatically answer yes to all permission requests.
         -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
         -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
@@ -354,6 +355,7 @@ freshInstallEnabled=false
 YES_TO_ALL_DISABLED=true
 RELEASE_ENABLED=false
 DRYRUN_ENABLED=false
+silent_flag=""
 CLEAN=false
 
 chmod a+x ./configParaMonte.sh
@@ -406,6 +408,8 @@ while [ "$1" != "" ]; do
                                 FOR_COARRAY_NUM_IMAGES=$1; export FOR_COARRAY_NUM_IMAGES
                                 ;;
         -F | --fresh )          freshInstallEnabled=true; export freshInstallEnabled
+                                ;;
+        -S | --silent )         silent_flag=">/dev/null"
                                 ;;
         -d | --dryrun )         DRYRUN_ENABLED=true; export DRYRUN_ENABLED
                                 ;;
@@ -1315,7 +1319,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     verify $? "installation of cmake"
                 else
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} )
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} ) ${silent_flag}
                     verify $? "installation of cmake"
                     cmakeFound=false
                     if [ -f "${ParaMonte_CMAKE_PATH}" ]; then
@@ -1379,7 +1383,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
                     echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package mpich --install-version ${mpichVersionOpenCoarrays} ) ||
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package mpich --install-version ${mpichVersionOpenCoarrays} ) ${silent_flag} ||
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
@@ -1410,7 +1414,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                             if [ "${answer}" = "y" ]; then
                                 GCC_BOOTSTRAP="--bootstrap"
                                 chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ${silent_flag}
                                 verify $? "installation of ${CURRENT_PKG}"
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
@@ -1453,7 +1457,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     Fortran_COMPILER_PATH="$(command -v gfortran)"
                 else
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ${silent_flag} ||
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
@@ -1484,7 +1488,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                             if [ "${answer}" = "y" ]; then
                                 GCC_BOOTSTRAP="--bootstrap"
                                 chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ${silent_flag}
                                 verify $? "installation of ${CURRENT_PKG}"
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
@@ -1528,7 +1532,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     ParaMonte_CAF_WRAPPER_PATH="$(command -v caf)"
                 else
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ${silent_flag} ||
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
@@ -1559,7 +1563,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                             if [ "${answer}" = "y" ]; then
                                 GCC_BOOTSTRAP="--bootstrap"
                                 chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
+                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ${silent_flag}
                                 verify $? "installation of ${CURRENT_PKG}"
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
