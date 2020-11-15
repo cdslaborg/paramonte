@@ -811,6 +811,13 @@ if ! [ -z ${gnuFortranCompilerPath+x} ]; then
         PATH="${gnuFortranCompilerBinDir}:${PATH}"
         export PATH
     fi
+    if ! [ -z ${gnuFortranCompilerName+x} ]; then
+        gnuFortranCompilerName="$(dirname "${gnuFortranCompilerPath}")"
+    fi
+    if ! [ "${gnuFortranCompilerName}" = "gfortran" ]; then
+        shopt -s expand_aliases
+        alias gfortran="${gnuFortranCompilerPath}"
+    fi
 fi
 
 ####################################################################################################################################
