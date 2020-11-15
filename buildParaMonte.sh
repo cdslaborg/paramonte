@@ -1105,11 +1105,7 @@ else # user has specified the Fortran compiler path
 
 fi
 
-echo >&2
-echo >&2 "MPIEXEC_PATH_USER = ${MPIEXEC_PATH_USER}"
-echo >&2
-
-if [ ! -z ${MPIEXEC_PATH_USER+x} ]; then
+if ! [ -z ${MPIEXEC_PATH_USER+x} ]; then
     mpiInstallEnabled=false
     if [ -f "${MPIEXEC_PATH_USER}" ]; then
         if ! [ -z ${MPIEXEC_PATH+x} ]; then
