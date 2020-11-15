@@ -42,7 +42,8 @@ matrix:
         - echo $(which mpif90)
         - echo $(which mpifort)
         - echo $(which mpiexec)
-        - mpiexecFlag="$(command -v mpiexec)"
+        - echo $(which mpirun)
+        - mpiexecFlag="$(command -v mpirun)"
         - if [ -f "${mpiexecFlag}" ]; then mpiexecFlag="--mpiexec ${mpiexecFlag}"; else unset mpiexecFlag; echo "mpiexec not found..."; fi
         - echo "FCFLAG = ${FCFLAG}"
         - echo "mpiexecFlag = ${mpiexecFlag}"
