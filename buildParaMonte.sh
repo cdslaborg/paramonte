@@ -797,6 +797,22 @@ if [[ "${SUITE_LIST}" =~ .*"gnu".* ]] && [ -z ${gnuFortranCompilerPath+x} ]; the
     done
 fi
 
+if ! [ -z ${intelFortranCompilerPath+x} ]; then
+    intelFortranCompilerBinDir="$(dirname "${intelFortranCompilerPath}")"
+    if [[ ":$PATH:" != *":${intelFortranCompilerBinDir}:"* ]]; then
+        PATH="${intelFortranCompilerBinDir}:${PATH}"
+        export PATH
+    fi
+fi
+
+if ! [ -z ${gnuFortranCompilerPath+x} ]; then
+    gnuFortranCompilerBinDir="$(dirname "${gnuFortranCompilerPath}")"
+    if [[ ":$PATH:" != *":${gnuFortranCompilerBinDir}:"* ]]; then
+        PATH="${gnuFortranCompilerBinDir}:${PATH}"
+        export PATH
+    fi
+fi
+
 ####################################################################################################################################
 #### identify the MPI wrappers
 ####################################################################################################################################
