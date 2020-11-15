@@ -42,15 +42,15 @@ matrix:
         #- echo "$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*mpifort*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)"
         #- echo "$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*mpicc*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)"
         #- sudo apt install openmpi-bin
-        - echo $(which mpicc)
-        - echo $(which mpif90)
-        - echo $(which mpifort)
-        - echo $(which mpiexec)
-        - echo $(which mpirun)
-        - mpiexecFlag="$(command -v mpiexec.openmpi)"
-        - if [ -f "${mpiexecFlag}" ]; then mpiexecFlag="--mpiexec ${mpiexecFlag}"; else unset mpiexecFlag; echo "mpiexec not found..."; fi
+        #- echo $(which mpicc)
+        #- echo $(which mpif90)
+        #- echo $(which mpifort)
+        #- echo $(which mpiexec)
+        #- echo $(which mpirun)
+        #- mpiexecFlag="$(command -v mpiexec.openmpi)"
+        #- if [ -f "${mpiexecFlag}" ]; then mpiexecFlag="--mpiexec ${mpiexecFlag}"; else unset mpiexecFlag; echo "mpiexec not found..."; fi
+        #- echo "mpiexecFlag = ${mpiexecFlag}"
         - echo "FCFLAG = ${FCFLAG}"
-        - echo "mpiexecFlag = ${mpiexecFlag}"
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
@@ -59,9 +59,9 @@ matrix:
         - cd $(pwd)/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
         - cd $(pwd)/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
         - cd $(pwd)/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
-        - cd $(pwd)/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd $(pwd)/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd $(pwd)/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
+        #- cd $(pwd)/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh
 
     - &macOS
       os: osx
