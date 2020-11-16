@@ -45,24 +45,24 @@
 @echo off
 set ERRORLEVEL=0
 cd %~dp0
+set "AUXIL_DIR=%~dp0"
+set "ParaMonte_ROOT_DIR=!AUXIL_DIR!.."
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: parse arguments
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 echo.
-echo.-- ParaMonte - parsing input arguments...
+echo. -- ParaMonte - parsing input arguments...
 echo.
 
 :LABEL_parseArgLoop
 
-set FLAG_SUPPORTED=true
-set VALUE_SUPPORTED=true
 set "DESTINATION_DIR="
 
 if not "%1"=="" (
 
-    echo.-- ParaMonte - processing: %1 %2
+    echo. -- ParaMonte - processing: %1 %2
 
     set FLAG=%1
     set VALUE=%2
@@ -85,7 +85,7 @@ if not "%1"=="" (
             echo. 
             echo. -- ParaMonte - Fatal Error: input destination directory does not exist: !DESTINATION_DIR!
             echo. 
-            cd %~dp0
+            cd !ParaMonte_ROOT_DIR!
             set ERRORLEVEL=1
             exit /B 1
         )
@@ -103,13 +103,13 @@ REM check flag/value support
 if "!FLAG_SUPPORTED!"=="true" (
     if "!VALUE_SUPPORTED!" NEQ "true" (
         echo.
-        echo.-- ParaMonte - FATAL: The requested input value "!VALUE!" specified 
-        echo.-- ParaMonte - FATAL: with the input flag "!FLAG!" is not supported.
+        echo. -- ParaMonte - FATAL: The requested input value "!VALUE!" specified 
+        echo. -- ParaMonte - FATAL: with the input flag "!FLAG!" is not supported.
         goto LABEL_ERR
     )
 ) else (
     echo.
-    echo.-- ParaMonte - FATAL: The requested input flag "!FLAG!" is not supported.
+    echo. -- ParaMonte - FATAL: The requested input flag "!FLAG!" is not supported.
     goto LABEL_ERR
 )
 
@@ -117,12 +117,7 @@ if "!FLAG_SUPPORTED!"=="true" (
 :: zip subfolders
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-cd %~dp0
-set "AUXIL_DIR=%~dp0"
-
-if not defined DESTINATION_DIR (
-    set DESTINATION_DIR=..\bin
-)
+if not defined DESTINATION_DIR set DESTINATION_DIR=!ParaMonte_ROOT_DIR!\bin
 
 call :NORMALIZEPATH "!DESTINATION_DIR!"
 if exist "!DESTINATION_DIR!" (
@@ -143,11 +138,18 @@ if exist "!DESTINATION_DIR!" (
     echo. 
     echo. -- ParaMonte - Fatal Error: input destination directory does not exist: !DESTINATION_DIR!
     echo. 
-    cd %~dp0
+    cd !ParaMonte_ROOT_DIR!
     set ERRORLEVEL=1
     exit /B 1
 )
 echo.
+
+
+set "FLAG="
+set "VALUE="
+set "AUXIL_DIR="
+set "DESTINATION_DIR="
+cd !ParaMonte_ROOT_DIR!
 exit /B 0
 
 goto LABEL_EOF
@@ -174,18 +176,20 @@ GOTO:EOF
 
 :LABEL_ERR
 
-cd %~dp0
+cd !ParaMonte_ROOT_DIR!
 set ERRORLEVEL=1
 exit /B 1
 
 :NORMALIZEPATH
+cd !ParaMonte_ROOT_DIR!
 set DESTINATION_DIR=%~dpfn1
 exit /B
 
 :LABEL_EOF
 
 echo.
-echo.-- ParaMonte - mission accomplished. 
+echo. -- ParaMonte - mission accomplished. 
 echo.
 
+cd !ParaMonte_ROOT_DIR!
 exit /B 0
