@@ -34,9 +34,9 @@ matrix:
         - echo "pmRootDir = ${pmRootDir}"
         - echo "pmBinDir = ${pmBinDir}"
         - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
-        - ls "$HOME/opt/"
-        - ls "$HOME/opt/openmpi/"
-        - ls "$HOME/opt/openmpi/bin"
+        - ls "$(dpkg -L openmpi)"
+        - ls "$(dpkg -L openmpi-bin)"
+        - ls "$(dpkg -L openmpi-dev)"
 
     - os: linux
       dist: trusty
