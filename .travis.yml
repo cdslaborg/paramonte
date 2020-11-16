@@ -54,7 +54,7 @@ matrix:
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" -r --yes-to-all ${FCFLAG} ${mpiexecFlag}
+        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" --yes-to-all ${FCFLAG} ${mpiexecFlag}
         - pmRootDir="$(pwd)"
         - ls ${pmRootDir}/bin/
         - cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
