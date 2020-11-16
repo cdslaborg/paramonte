@@ -864,7 +864,7 @@ do
 
                 # ensure the MPI library is not intel
 
-                if [[ "${SUITE}" = "gnu" && "${!suiteLangMpiWrapperPath}" =~ .*"/intel/".* ]]; then
+                if [[ "${SUITE}" = "gnu" && "${!suiteLangMpiWrapperPath}" =~ .*"intel".* ]]; then
 
                     searchFailed=true
 
