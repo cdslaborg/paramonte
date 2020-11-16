@@ -226,7 +226,7 @@ do
 
     # The ParaMonte library dll dependency files
 
-    if [ "${RELEASE_ENABLED}" = "true" ]; then
+    if [ "${shared_enabled}" = "true" ]; then
 
         if [ "${PMCS}" = "gnu" ] && ! [ "${isMacOS}" = "true" ] && ! [ "${CAF_ENABLED}" = "true" ]; then # caf does not have lib dependency
 

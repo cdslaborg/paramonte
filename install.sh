@@ -90,12 +90,12 @@ unset MPIEXEC_PATH
 
 PMCS_LIST="none"
 fresh_flag=""
-silent_flag=""
+local_flag=""
 yes_to_all_flag=""
 gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
 MatDRAM_ENABLED="false"
-release_flag=""
+shared_enabled="true"
 dryrun_flag=""
 
 while [ "$1" != "" ]; do
@@ -124,6 +124,9 @@ while [ "$1" != "" ]; do
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED="$1"
                                 ;;
+        -S | --shared_enabled ) shift
+                                shared_enabled="$1"
+                                ;;
         -f | --fortran )        shift
                                 Fortran_COMPILER_PATH="$1"
                                 ;;
@@ -132,11 +135,9 @@ while [ "$1" != "" ]; do
                                 ;;
         -F | --fresh )          fresh_flag="--fresh"
                                 ;;
-        -S | --silent )         silent_flag="--silent"
+        -o | --local )          local_flag="--local"
                                 ;;
         -d | --dryrun )         dryrun_flag="--dryrun"
-                                ;;
-        -r | --release )        release_flag="--release"; export release_flag
                                 ;;
         -y | --yes-to-all )     yes_to_all_flag="--yes-to-all"
                                 ;;
@@ -536,6 +537,7 @@ for PMCS in $PMCS_LIST; do
 
                         test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
                         exam_enabled_flag="--exam_enabled ${ParaMonteExample_RUN_ENABLED}"
+                        shared_enabled_flag="--shared_enabled ${shared_enabled}"
 
                         if [ "${PMCS}" = "none" ]; then
                            compiler_suite_flag=""
@@ -591,20 +593,18 @@ for PMCS in $PMCS_LIST; do
                             echo >&2 "                          ${caftype_flag} \ "
                             echo >&2 "                          ${test_enabled_flag} \ "
                             echo >&2 "                          ${exam_enabled_flag} \ "
+                            echo >&2 "                          ${shared_enabled_flag} \ "
                             if ! [ "${yes_to_all_flag}" = "" ]; then
                             echo >&2 "                          ${yes_to_all_flag} \ "
                             fi
                             if ! [ "${fresh_flag}" = "" ]; then
                             echo >&2 "                          ${fresh_flag} \ "
                             fi
-                            if ! [ "${silent_flag}" = "" ]; then
-                            echo >&2 "                          ${silent_flag} \ "
+                            if ! [ "${local_flag}" = "" ]; then
+                            echo >&2 "                          ${local_flag} \ "
                             fi
                             if ! [ "${dryrun_flag}" = "" ]; then
                             echo >&2 "                          ${dryrun_flag} \ "
-                            fi
-                            if ! [ "${release_flag}" = "" ]; then
-                            echo >&2 "                          ${release_flag} \ "
                             fi
                             if ! [ "${gcc_bootstrap_flag}" = "" ]; then
                             echo >&2 "                          ${gcc_bootstrap_flag} \ "
@@ -636,9 +636,10 @@ for PMCS in $PMCS_LIST; do
                             ${caftype_flag} \
                             ${test_enabled_flag} \
                             ${exam_enabled_flag} \
+                            ${shared_enabled_flag} \
                             ${yes_to_all_flag} \
                             ${fresh_flag} \
-                            ${silent_flag} \
+                            ${local_flag} \
                             ${dryrun_flag} \
                             ${release_flag} \
                             ${gcc_bootstrap_flag} \

@@ -314,10 +314,10 @@ cat << EndOfMessage
         -e | --heap_enabled     : the ParaMonte library heap array allocation enabled?: true, false
         -t | --test_enabled     : the ParaMonte library test run enabled?: true, false
         -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
+        -S | --shared_enabled   : release the shared library dependencies in the binary release of the ParaMonte library: true, false
         -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
         -M | --mpiexec          : path to mpiexec routine. If provided, it will be used to find the MPI library.
         -F | --fresh            : enables a fresh installation of all of the prerequisites of ParaMonte library. Applicable only to GNU compiler suite.
-        -S | --silent           : silences all messages from the installation of all of the prerequisites of ParaMonte library.
         -y | --yes-to-all       : if a fresh installation of all of the prerequisites is needed, automatically answer yes to all permission requests.
         -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
         -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer
@@ -350,12 +350,12 @@ unset INTERFACE_LANGUAGE
 unset FOR_COARRAY_NUM_IMAGES
 unset Fortran_COMPILER_PATH_USER
 ParaMonteExample_RUN_ENABLED=true
+localInstallationEnabled=false
 ParaMonteTest_RUN_ENABLED=true
 freshInstallEnabled=false
 YES_TO_ALL_DISABLED=true
-RELEASE_ENABLED=false
 DRYRUN_ENABLED=false
-silent_flag=""
+shared_enabled=true
 CLEAN=false
 
 chmod a+x ./configParaMonte.sh
@@ -372,7 +372,7 @@ while [ "$1" != "" ]; do
                                 INTERFACE_LANGUAGE=$1
                                 ;;
         -s | --compiler_suite ) shift
-                                PMCS=$1; export PMCS
+                                PMCS=$1; export PMCS;
                                 ;;
         -b | --build )          shift
                                 BTYPE=$1; export BTYPE
@@ -398,6 +398,9 @@ while [ "$1" != "" ]; do
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED=$1; export ParaMonteExample_RUN_ENABLED
                                 ;;
+        -S | --shared_enabled ) shift
+                                shared_enabled=$1; export shared_enabled
+                                ;;
         -f | --fortran )        shift
                                 Fortran_COMPILER_PATH_USER=$1; export Fortran_COMPILER_PATH_USER
                                 ;;
@@ -409,11 +412,9 @@ while [ "$1" != "" ]; do
                                 ;;
         -F | --fresh )          freshInstallEnabled=true; export freshInstallEnabled
                                 ;;
-        -S | --silent )         silent_flag=">/dev/null"
+        -o | --local )          localInstallationEnabled=true; export localInstallationEnabled
                                 ;;
         -d | --dryrun )         DRYRUN_ENABLED=true; export DRYRUN_ENABLED
-                                ;;
-        -r | --release )        RELEASE_ENABLED=true; export RELEASE_ENABLED
                                 ;;
         -y | --yes-to-all )     YES_TO_ALL_DISABLED=false; export YES_TO_ALL_DISABLED
                                 ;;
@@ -816,9 +817,10 @@ if ! [ -z ${gnuFortranCompilerPath+x} ]; then
         export PATH
     fi
     if ! [ -z ${gnuFortranCompilerName+x} ]; then
-        gnuFortranCompilerName="$(dirname "${gnuFortranCompilerPath}")"
+        gnuFortranCompilerName="$(basename "${gnuFortranCompilerPath}")"
     fi
     if ! [ "${gnuFortranCompilerName}" = "gfortran" ]; then
+        echo >&2 "gnuFortranCompilerName = ${gnuFortranCompilerName}"
         alias gfortran="${gnuFortranCompilerPath}" >> $HOME/.bashrc
         #shopt -s expand_aliases
         source $HOME/.bashrc
@@ -849,6 +851,7 @@ do
         suiteLangMpiWrapperList="${SUITE}${LANG}MpiWrapperList"
         suiteLangMpiWrapperPath="${SUITE}${LANG}MpiWrapperPath"
 
+        searchFailed=false
         for mpiWrapperName in ${!suiteLangMpiWrapperList//:/ }
         do
 
@@ -859,36 +862,52 @@ do
                 eval "unset ${suiteLangMpiWrapperPath}"
                 eval ${suiteLangMpiWrapperPath}='$(command -v ${!suiteLangMpiWrapperName})'
 
-                echo >&2 "-- ${BUILD_NAME}MPI - ${SUITE} ${!suiteLangMpiWrapperName} detected at: ${suiteLangMpiWrapperPath}=${!suiteLangMpiWrapperPath}"
+                # ensure the MPI library is not intel
 
-                if [ "${LANG}" = "Fortran" ]; then
+                if [[ "${SUITE}" = "gnu" && "${!suiteLangMpiWrapperPath}" =~ .*"/intel/".* ]]; then
 
-                    # check if the compiler wrapper can compile a simple Fortran MPI test code.
+                    searchFailed=true
 
-                    tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-                    echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
-                    cd "${tempDir}" && cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90" && \
-                    {
-                        ${!suiteLangMpiWrapperName} testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe
-                    } &> /dev/null || {
-                        echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}. skipping..."
-                        unset ${suiteLangMpiWrapperPath}
-                        if [ "${MPI_ENABLED}" = "true" ] ; then
-                            mpiInstallEnabled=true
-                        fi
-                    }
-                    rm -rf "${tempDir}"
-                    cd "${ParaMonte_ROOT_DIR}"
+                else
+
+                    echo >&2 "-- ${BUILD_NAME}MPI - ${SUITE} ${!suiteLangMpiWrapperName} MPI wrapper detected at: ${suiteLangMpiWrapperPath} = ${!suiteLangMpiWrapperPath}"
+
+                    if [ "${LANG}" = "Fortran" ]; then
+
+                        # check if the compiler wrapper can compile a simple Fortran MPI test code.
+
+                        tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+                        echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
+                        cd "${tempDir}" && cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90" && \
+                        {
+                            ${!suiteLangMpiWrapperName} testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe
+                        } &> /dev/null && {
+                            echo >&2 "-- ${BUILD_NAME}MPI - checking whether ${SUITE} ${!suiteLangMpiWrapperName} MPI wrapper compiles and runs a test program...yes"
+                        }|| {
+                            echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}. skipping..."
+                            unset ${suiteLangMpiWrapperPath}
+                            if [ "${MPI_ENABLED}" = "true" ] ; then
+                                mpiInstallEnabled=true
+                            fi
+                        }
+                        rm -rf "${tempDir}"
+                        cd "${ParaMonte_ROOT_DIR}"
+
+                    fi
+
+                    break
 
                 fi
 
-                break
-
             else
 
+                searchFailed=true
+
+            fi
+
+            if [ "${searchFailed}" = "true" ]; then
                 echo >&2 "-- ${BUILD_NAME}MPI - failed to detect the ${SUITE} ${LANG} MPI wrapper. skipping..."
                 unset ${suiteLangMpiWrapperPath}
-
             fi
 
         done
@@ -1047,7 +1066,6 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
     #### If needed, set up build with the GNU compiler suite
 
     if [ "${PMCS}" = "gnu" ]; then
-
         if ! ${gnuFortranCompilerPath+false}; then
             COMPILER_VERSION=${gnuFortranCompilerVersion}
             Fortran_COMPILER_PATH="${gnuFortranCompilerPath}"
@@ -1069,28 +1087,34 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
                 else
                     if command -v mpiexec >/dev/null 2>&1; then
                         MPIEXEC_PATH="$(command -v mpiexec)"
-                        mpiInstallEnabled=false
+                        if [[ "${MPIEXEC_PATH}" =~ .*"intel".* ]]; then
+                            mpiInstallEnabled=true
+                        else
+                            mpiInstallEnabled=false
+                        fi
                     else
                         mpiInstallEnabled=true
                     fi
                 fi
-            else
-                unset MPIEXEC_PATH
-                mpiInstallEnabled=true
-                #gnuInstallEnabled=true
-                echo >&2
-                echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
-                echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
-                echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install the MPICH MPI library for you."
-                echo >&2
             fi
         else
             mpiInstallEnabled=false
         fi
 
+        if [ "${mpiInstallEnabled}" = "true" ]; then
+            unset MPIEXEC_PATH
+            # enable usage of the local installation of the GNU compiler for MPI-GNUcompiler compatibility
+            gnuInstallEnabled=true
+            echo >&2
+            echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install the MPICH MPI library for you."
+            echo >&2
+        fi
+
         #if [ "${CAF_ENABLED}" = "true" ]; then
         #    if ! ${cafCompilerPath+false}; then
-        #        COMPILER_VERSION=unknownversion
+        #        COMPILER_VERSION="unknown"
         #        Fortran_COMPILER_PATH="${cafCompilerPath}"
         #        cafInstallEnabled=false
         #    else
@@ -1107,8 +1131,8 @@ else # user has specified the Fortran compiler path
     cafInstallEnabled=false
     #gnuInstallEnabled=false
 
-    PMCS=UNKNOWN
-    COMPILER_VERSION=UNKNOWN
+    PMCS="unknown"
+    COMPILER_VERSION="unknown"
     Fortran_COMPILER_NAME=${Fortran_COMPILER_PATH_USER##*/}
     Fortran_COMPILER_PATH="${Fortran_COMPILER_PATH_USER}"
     echo >&2
@@ -1198,18 +1222,19 @@ fi
 #### set up ParaMonte library prerequisites
 ####################################################################################################################################
 
-if [ "${freshInstallEnabled}" = "true" ]; then
+if [ "${freshInstallEnabled}" = "true" ] || [ "${localInstallationEnabled}" = "true" ]; then
     #cmakeInstallEnabled=true
     cafInstallEnabled=true
     mpiInstallEnabled=true
     gnuInstallEnabled=true
 fi
 
-echo >&2 "-- ${BUILD_NAME} -  freshInstallEnabled: ${freshInstallEnabled}"
-echo >&2 "-- ${BUILD_NAME} -  cmakeInstallEnabled: ${cmakeInstallEnabled}"
-echo >&2 "-- ${BUILD_NAME} -    cafInstallEnabled: ${cafInstallEnabled}"
-echo >&2 "-- ${BUILD_NAME} -    mpiInstallEnabled: ${mpiInstallEnabled}"
-echo >&2 "-- ${BUILD_NAME} -    gnuInstallEnabled: ${gnuInstallEnabled}"
+echo >&2 "-- ${BUILD_NAME} -  localInstallationEnabled: ${localInstallationEnabled}"
+echo >&2 "-- ${BUILD_NAME} -       freshInstallEnabled: ${freshInstallEnabled}"
+echo >&2 "-- ${BUILD_NAME} -       cmakeInstallEnabled: ${cmakeInstallEnabled}"
+echo >&2 "-- ${BUILD_NAME} -         cafInstallEnabled: ${cafInstallEnabled}"
+echo >&2 "-- ${BUILD_NAME} -         mpiInstallEnabled: ${mpiInstallEnabled}"
+echo >&2 "-- ${BUILD_NAME} -         gnuInstallEnabled: ${gnuInstallEnabled}"
 
 # chmod 777 -R "${ParaMonte_ROOT_DIR}/auxil/prerequisites"
 
@@ -1218,9 +1243,10 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
     #ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
     #ParaMonte_CAF_SETUP_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/${openCoarraysVersion}/setup.sh"
-    #if [ "${freshInstallEnabled}" = "true" ]; then
-    #    rm -rf "${ParaMonte_REQ_DIR}"
-    #fi
+
+    if [ "${freshInstallEnabled}" = "true" ]; then
+        rm -rf "${ParaMonte_REQ_DIR}"
+    fi
 
     answer=y
     if [ ! -d "${ParaMonte_REQ_DIR}" ] || [ ! "$(ls -A ${ParaMonte_REQ_DIR})" ]; then
@@ -1331,7 +1357,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     verify $? "installation of cmake"
                 else
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} ${silent_flag} )
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} )
                     verify $? "installation of cmake"
                     cmakeFound=false
                     if [ -f "${ParaMonte_CMAKE_PATH}" ]; then
@@ -1395,7 +1421,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
                     echo >&2 "-- ${BUILD_NAME} - installing the prerequisites...this can take a while."
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package mpich --install-version ${mpichVersionOpenCoarrays} ${silent_flag} ) ||
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package mpich --install-version ${mpichVersionOpenCoarrays} ) ||
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
@@ -1426,7 +1452,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                             if [ "${answer}" = "y" ]; then
                                 GCC_BOOTSTRAP="--bootstrap"
                                 chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ${silent_flag} )
+                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
                                 verify $? "installation of ${CURRENT_PKG}"
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
@@ -1469,7 +1495,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     Fortran_COMPILER_PATH="$(command -v gfortran)"
                 else
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ${silent_flag} ) ||
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ) ||
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
@@ -1500,7 +1526,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                             if [ "${answer}" = "y" ]; then
                                 GCC_BOOTSTRAP="--bootstrap"
                                 chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ${silent_flag} )
+                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
                                 verify $? "installation of ${CURRENT_PKG}"
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
@@ -1530,7 +1556,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         ############################################################################################################################
 
         CURRENT_PKG="the OpenCoarrays compiler wrapper"
-        if [ "${cafInstallEnabled}" = "true" ]; then
+        if [ "${CAF_ENABLED}" = "true" ] && [ "${cafInstallEnabled}" = "true" ]; then
             if [[ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]]; then
                 echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_CAF_WRAPPER_PATH}"
             else
@@ -1544,7 +1570,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     ParaMonte_CAF_WRAPPER_PATH="$(command -v caf)"
                 else
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all ${silent_flag}) ||
+                    (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
                     {
                         if [ -z ${GCC_BOOTSTRAP+x} ]; then
                             if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
@@ -1575,7 +1601,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                             if [ "${answer}" = "y" ]; then
                                 GCC_BOOTSTRAP="--bootstrap"
                                 chmod +x "${ParaMonte_REQ_DIR}/install.sh"
-                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} ${silent_flag} )
+                                (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all ${GCC_BOOTSTRAP} )
                                 verify $? "installation of ${CURRENT_PKG}"
                             else
                                 verify 1 "installation of ${CURRENT_PKG}"
@@ -1781,7 +1807,7 @@ echo >&2 "-- ${BUILD_NAME}Compiler - Fortran compiler path: ${Fortran_COMPILER_P
 echo >&2 "-- ${BUILD_NAME}Compiler - MPI mpiexec path: ${MPIEXEC_PATH}"
 echo >&2
 
-if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
+if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknown" ]; then
 
     #cd ./auxil/
 
@@ -1828,7 +1854,7 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknownversion" ]; then
 
     if [ "${isUnknownVersion}" = "true" ]; then
         echo >&2 "-- ${BUILD_NAME}Compiler - failed to detect the ${PMCS} ${LANG} compiler version. skipping..."
-        COMPILER_VERSION=unknownversion
+        COMPILER_VERSION="unknown"
     fi
 
 fi
