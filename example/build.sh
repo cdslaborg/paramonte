@@ -461,6 +461,8 @@ do
         ${COMPILER} -dumpversion >/dev/null 2>&1 && ${COMPILER} ${COMPILER_FLAGS} ${SRC_FILES} -c && \
         {
 
+            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - The example's source file compilation appears to have succeeded."
+
             csvLinkerList=${COMPILER}
             LINKER_FLAGS=
             if ([ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]) && [ "${PM_LIB_TYPE}" = "static" ]; then
@@ -493,7 +495,7 @@ do
 
                     BUILD_SUCCEEDED=true
 
-                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - example build appears to have succeeded."
+                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - The example's source file linking appears to have succeeded."
 
                     {
                     echo "#!/bin/bash"
@@ -595,7 +597,7 @@ do
                 else
 
                     echo >&2
-                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - example build appears to have failed. skipping..."
+                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - The example's source files compilation and linking appear to have failed. skipping..."
                     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script:"
                     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - For instructions, type on the command line:"
                     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
@@ -609,7 +611,7 @@ do
         } || {
 
             echo >&2
-            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - The example's source files compilation appears to have failed. skipping..."
+            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - The example's source files compilation and linking appear to have failed. skipping..."
             echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script."
             echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - For instructions, type on the command line:"
             echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
@@ -617,6 +619,8 @@ do
             echo >&2
 
         }
+
+        if [ "${BUILD_SUCCEEDED}" = "true" ]; then break; fi
 
     done
 
