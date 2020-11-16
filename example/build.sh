@@ -471,7 +471,8 @@ do
                 #fi
             fi
             if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
-                csvLinkerList="${clist}"
+                csvLinkerList="gfortran"
+                #csvLinkerList="${clist}"
                 #if [ "${MPI_ENABLED}" = "true" ]; then
                 #    LINKER="mpifort"
                 #fi
