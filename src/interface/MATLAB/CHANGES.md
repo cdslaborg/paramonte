@@ -10,7 +10,11 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 **Minor enhancements**  
 
 +   Minor enhancements to the Kernel library 
-    build scripts and dependencies management.
+    build scripts and dependencies management.  
+
++   More informative error messages are now printed 
+    on MATLAB console if any error happens during the 
+    ParaMonte library setup on macOS for the first time.  
 
 ### Version  2.2.0 -- October 29, 2020  
 
