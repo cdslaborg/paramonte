@@ -28,6 +28,29 @@ matrix:
             - liblapack-dev
             - libopenmpi-dev
             - openmpi-bin
+      script:
+        - pmRootDir="$(pwd)"
+        - pmBinDir="${pmRootDir}/bin/"
+        - echo "pmRootDir = ${pmRootDir}"
+        - echo "pmBinDir = ${pmBinDir}"
+        - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
+        - ls "$HOME/opt/"
+        - ls "$HOME/opt/openmpi/"
+        - ls "$HOME/opt/openmpi/bin"
+
+    - os: linux
+      dist: trusty
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - cmake
+            - gfortran-9
+            - libblas-dev
+            - liblapack-dev
+            - libopenmpi-dev
+            - openmpi-bin
             #- mpich
             #- libmpich-dev
             #- libblas-dev
