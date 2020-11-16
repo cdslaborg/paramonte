@@ -35,10 +35,9 @@ matrix:
         - echo "pmRootDir = ${pmRootDir}"
         - echo "pmBinDir = ${pmBinDir}"
         - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
-        - ls "$(dpkg -L mpich)"
-        - ls "$(dpkg -L openmpi)"
-        - ls "$(dpkg -L openmpi-bin)"
-        - ls "$(dpkg -L openmpi-dev)"
+        - echo "$(dpkg -L mpich)"
+        - echo "$(dpkg -L openmpi-bin)"
+        - echo "$(dpkg -L libopenmpi-dev)"
 
     - os: linux
       dist: trusty
