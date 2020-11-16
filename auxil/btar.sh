@@ -158,7 +158,13 @@ if [ -d "${targetDir}" ]; then
                     echo >&2 "-- ParaMonte - WARNING: skipping..."
                 else
                     echo >&2 "-- ParaMonte - compressing subdirectory: ${subdir}"
-                    tar -zcvf ${tarfile} --exclude="${subdir}/setup.sh" ${subdir}
+                    tar -zcvf ${tarfile} --exclude="${subdir}/setup.sh" "${subdir}" || {
+                        echo >&2
+                        echo >&2 "-- ParaMonte - FATAL: compression failed for subdirectory: ${subdir}"
+                        echo >&2 "-- ParaMonte - FATAL: gracefully exiting."
+                        echo >&2
+                        exit 1
+                    }
                     #cd ..
                 fi
             fi
