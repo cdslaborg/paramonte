@@ -141,7 +141,7 @@ if (CAF_ENABLED OR MPI_ENABLED)
                 " ${pmwarn}\n"
                 " ${pmattn} CMake failed to find `mpiexec` or similar. If building with `./install.sh`\n"
                 " ${pmattn} please report this bug to the ParaMonte developers at\n"
-                " ${pmattn} https://github.com/cdslaborg/ParaMonte/issues, \n"
+                " ${pmattn} https://github.com/cdslaborg/paramonte/issues, \n"
                 " ${pmattn} otherwise point CMake to the desired MPI runtime.\n"
                 )
         #message ( WARNING 
@@ -194,7 +194,7 @@ if (CAF_ENABLED OR MPI_ENABLED)
                 " ${pmattn} ${MPIFC_DIR}, respectively.\n"
                 " ${pmattn} This is likely indicative of a problem. If building with `./install.sh` please report\n"
                 " ${pmattn} this to the ParaMonte developers by filing a new issue at:\n"
-                " ${pmattn} https://github.com/cdslaborg/ParaMonte/issues/new"
+                " ${pmattn} https://github.com/cdslaborg/paramonte/issues/new"
                 )
     endif()
 
@@ -209,7 +209,7 @@ if (CAF_ENABLED OR MPI_ENABLED)
                 " ${pmattn} The `noexecstack` linker flag was found in the MPI_<lang>_LINK_FLAGS variable. This is\n"
                 " ${pmattn} known to cause segmentation faults for some Fortran codes. See, e.g.,\n"
                 " ${pmattn} https://gcc.gnu.org/bugzilla/show_bug.cgi?id=71729 or\n"
-                " ${pmattn} https://github.com/cdslaborg/ParaMonte/issues/317.\n"
+                " ${pmattn} https://github.com/cdslaborg/paramonte/issues/317.\n"
                 " ${pmattn} `noexecstack` is being replaced with `execstack`\n"
                 )
         string(REPLACE "noexecstack" "execstack" MPI_C_LINK_FLAGS_FIXED ${MPI_C_LINK_FLAGS})

@@ -72,6 +72,7 @@ if !INTERFACE_LANGUAGE!==c++ set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\C++
 if !INTERFACE_LANGUAGE!==matlab set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\MATLAB
 if !INTERFACE_LANGUAGE!==python set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\Python
 if !INTERFACE_LANGUAGE!==fortran set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\Fortran
+if !INTERFACE_LANGUAGE!==r set ParaMonte_BLD_DIR=!ParaMonte_BLD_DIR!\R
 
 if exist !ParaMonte_BLD_DIR! (
     echo. -- ParaMonte - !ParaMonte_BLD_DIR! already exists. skipping...
