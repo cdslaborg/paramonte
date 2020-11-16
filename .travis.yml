@@ -36,7 +36,7 @@ matrix:
         - echo "pmBinDir = ${pmBinDir}"
         - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
         - echo "$(dpkg -L mpich)"
-        - echo "$(dpkg -L openmpi-bin)"
+        - echo "$(dpkg -L openmpi-bin | egrep bin/mpiexec.openmpi)"
         - echo "$(dpkg -L libopenmpi-dev)"
 
     - os: linux
