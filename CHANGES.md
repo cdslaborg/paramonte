@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.5.1** -- November 15, 2020
+### **Version 1.4.1** -- November 15, 2020
 
 **Enhancements**  
 
