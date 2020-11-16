@@ -28,6 +28,7 @@ matrix:
             - liblapack-dev
             - libopenmpi-dev
             - openmpi-bin
+            - mpich
       script:
         - pmRootDir="$(pwd)"
         - pmBinDir="${pmRootDir}/bin/"
