@@ -24,10 +24,7 @@ matrix:
           packages:
             - cmake
             - gfortran-9
-            - libblas-dev
-            - liblapack-dev
-            - libopenmpi-dev
-            - openmpi-bin
+            - libmpich-dev
             - mpich
       script:
         - pmRootDir="$(pwd)"
@@ -35,9 +32,18 @@ matrix:
         - echo "pmRootDir = ${pmRootDir}"
         - echo "pmBinDir = ${pmBinDir}"
         - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
-        - echo "$(dpkg -L mpich)"
-        - echo "$(dpkg -L openmpi-bin | egrep bin/mpiexec.openmpi)"
         - echo "$(dpkg -L libopenmpi-dev)"
+        - echo "$(dpkg -L mpich)"
+        - MPIEXEC_PATH="$(dpkg -L mpich | egrep bin/mpiexec.mpich)"
+        - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
+        - PATH="${MPI_BIN_DIR}:${PATH}"
+        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
+        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
+        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
+        - ls libparamonte*.tar.gz* | xargs -i tar xvzf {}
+        - cd libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh && cd ..
+        - cd libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh && cd ..
+        - cd libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh && cd ..
 
     - os: linux
       dist: trusty
