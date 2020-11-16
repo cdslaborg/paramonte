@@ -458,161 +458,174 @@ do
         echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - compiling ParaMonte example with ${COMPILER}"
         echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${COMPILER} ${COMPILER_FLAGS} ${SRC_FILES} -c"
 
-        ${COMPILER} -dumpversion >/dev/null 2>&1 && ${COMPILER} ${COMPILER_FLAGS} ${SRC_FILES} -c
+        ${COMPILER} -dumpversion >/dev/null 2>&1 && ${COMPILER} ${COMPILER_FLAGS} ${SRC_FILES} -c && \
+        {
 
-        csvLinkerList=${COMPILER}
-        LINKER_FLAGS=
-        if ([ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]) && [ "${PM_LIB_TYPE}" = "static" ]; then
-            if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
-                csvLinkerList="ifort"
-                LINKER_FLAGS="-nofor_main"
-                #if [ "${MPI_ENABLED}" = "true" ]; then
-                #    LINKER="mpiifort" # xxx point of weakness: assumes intel mpi to have been installed
-                #fi
+            csvLinkerList=${COMPILER}
+            LINKER_FLAGS=
+            if ([ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]) && [ "${PM_LIB_TYPE}" = "static" ]; then
+                if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
+                    csvLinkerList="ifort"
+                    LINKER_FLAGS="-nofor_main"
+                    #if [ "${MPI_ENABLED}" = "true" ]; then
+                    #    LINKER="mpiifort" # xxx point of weakness: assumes intel mpi to have been installed
+                    #fi
+                fi
+                if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
+                    csvLinkerList="gfortran"
+                    #csvLinkerList="${clist}"
+                    #if [ "${MPI_ENABLED}" = "true" ]; then
+                    #    LINKER="mpifort"
+                    #fi
+                fi
             fi
-            if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
-                csvLinkerList="gfortran"
-                #csvLinkerList="${clist}"
-                #if [ "${MPI_ENABLED}" = "true" ]; then
-                #    LINKER="mpifort"
-                #fi
-            fi
-        fi
 
-        for LINKER in $(echo ${csvLinkerList} | sed "s/,/ /g")
-        do
+            for LINKER in $(echo ${csvLinkerList} | sed "s/,/ /g")
+            do
+
+                echo >&2
+                echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - linking ParaMonte example with ${LINKER}"
+                echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//.$SRC_EXT/.o} ${PMLIB_FULL_NAME} -o ${PM_EXAM_EXE_NAME}"
+
+                ${LINKER} -dumpversion >/dev/null 2>&1 && \
+                ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//.$SRC_EXT/.o} "${PMLIB_FULL_NAME}" -o ${PM_EXAM_EXE_NAME}
+                if [ $? -eq 0 ]; then
+
+                    BUILD_SUCCEEDED=true
+
+                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - example build appears to have succeeded."
+
+                    {
+                    echo "#!/bin/bash"
+                    echo "# ParaMonte example runtime setup script."
+                    echo "# "
+                    } > ${RUN_FILE_NAME}
+                    if [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ]; then
+                        {
+                        echo "# usage:"
+                        echo "# "
+                        echo "#     ./${RUN_FILE_NAME} -n number_of_processors"
+                        echo "# "
+                        echo "# or,"
+                        echo "# "
+                        echo "#     source ./${RUN_FILE_NAME} -n number_of_processors"
+                        echo "# "
+                        echo "# where number_of_processors is an integer representing the number"
+                        echo "# of physical processors on which the example will be run."
+                        echo ""
+                        echo "while [ \"\$1\" != \"\" ]; do"
+                        echo "    case \$1 in"
+                        echo "        -n | --nproc )        shift"
+                        echo "                              FOR_COARRAY_NUM_IMAGES=\$1"
+                        echo "                              ;;"
+                        echo "        * )                   echo >\&2 \"-- ParaMonteExampleRunScript - FATAL: the input flag is not recognized: \$1\""
+                        echo "                              exit 1"
+                        echo "    esac"
+                        echo "    shift"
+                        echo "done"
+                        echo ""
+                        } >> ${RUN_FILE_NAME}
+                    else
+                        {
+                        echo "# usage:"
+                        echo "# "
+                        echo "#     ./${RUN_FILE_NAME}"
+                        echo "# "
+                        echo "# or,"
+                        echo "# "
+                        echo "#     source ./${RUN_FILE_NAME}"
+                        echo ""
+                        } >> ${RUN_FILE_NAME}
+                    fi
+                    {
+                    echo ""
+                    echo "FILE_DIR=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
+                    echo "if [ -z \${PATH+x} ]; then"
+                    echo "    PATH=."
+                    echo "else"
+                    echo "    if [[ \":\$PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
+                    echo "        PATH=\"${FILE_DIR}:\${PATH}\""
+                    echo "    fi"
+                    echo "fi"
+                    echo "export LD_LIBRARY_PATH"
+                    echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+                    echo "    LD_LIBRARY_PATH=${FILE_DIR}"
+                    echo "else"
+                    echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
+                    echo "        LD_LIBRARY_PATH=\"${FILE_DIR}:\${LD_LIBRARY_PATH}\""
+                    echo "    fi"
+                    echo "fi"
+                    echo "export LD_LIBRARY_PATH"
+                    echo "export PATH"
+                    echo ""
+                    echo ""
+                    echo "if [ -z \${FOR_COARRAY_NUM_IMAGES+x} ]; then"
+                    echo "    FOR_COARRAY_NUM_IMAGES=${FOR_COARRAY_NUM_IMAGES}"
+                    echo "fi"
+                    echo ""
+                    } >> ${RUN_FILE_NAME}
+
+                    if [ -f "./setup.sh" ]; then
+                        echo "source ./setup.sh" >> ${RUN_FILE_NAME}
+                        echo "" >> ${RUN_FILE_NAME}
+                    fi
+
+                    echo "# run ParaMonte example executable" >> ${RUN_FILE_NAME}
+                    echo "" >> ${RUN_FILE_NAME}
+                    echo "chmod +x ${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
+                    if [ "${MPI_ENABLED}" = "true" ]; then
+                        echo "mpiexec -n \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME} || mpiexec --oversubscribe -n \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
+                        echo "" >> ${RUN_FILE_NAME}
+                    else
+                        if [ "${CAF_ENABLED}" = "true" ]; then
+                            if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
+                                echo "export FOR_COARRAY_NUM_IMAGES && ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
+                            else
+                                echo "cafrun -np \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
+                            fi
+                        else
+                            echo "./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
+                        fi
+                    fi
+
+                    chmod +x ${RUN_FILE_NAME}
+
+                    break
+
+                else
+
+                    echo >&2
+                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - example build appears to have failed. skipping..."
+                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script:"
+                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - For instructions, type on the command line:"
+                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
+                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     ./build.sh --help"
+                    echo >&2
+
+                fi
+
+            done
+
+        } || {
 
             echo >&2
-            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - linking ParaMonte example with ${LINKER}"
-            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//.$SRC_EXT/.o} ${PMLIB_FULL_NAME} -o ${PM_EXAM_EXE_NAME}"
+            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - The example's source files compilation appears to have failed. skipping..."
+            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script."
+            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - For instructions, type on the command line:"
+            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
+            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     ./build.sh --help"
+            echo >&2
 
-            ${LINKER} -dumpversion >/dev/null 2>&1 && ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//.$SRC_EXT/.o} "${PMLIB_FULL_NAME}" -o ${PM_EXAM_EXE_NAME}
-
-            if [ $? -eq 0 ]; then
-
-                BUILD_SUCCEEDED=true
-
-                echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - example build appears to have succeeded."
-
-                {
-                echo "#!/bin/bash"
-                echo "# ParaMonte example runtime setup script."
-                echo "# "
-                } > ${RUN_FILE_NAME}
-                if [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ]; then
-                    {
-                    echo "# usage:"
-                    echo "# "
-                    echo "#     ./${RUN_FILE_NAME} -n number_of_processors"
-                    echo "# "
-                    echo "# or,"
-                    echo "# "
-                    echo "#     source ./${RUN_FILE_NAME} -n number_of_processors"
-                    echo "# "
-                    echo "# where number_of_processors is an integer representing the number"
-                    echo "# of physical proceesors on which the example will be run."
-                    echo ""
-                    echo "while [ \"\$1\" != \"\" ]; do"
-                    echo "    case \$1 in"
-                    echo "        -n | --nproc )        shift"
-                    echo "                              FOR_COARRAY_NUM_IMAGES=\$1"
-                    echo "                              ;;"
-                    echo "        * )                   echo >\&2 \"-- ParaMonteExampleRunScript - FATAL: the input flag is not recognized: \$1\""
-                    echo "                              exit 1"
-                    echo "    esac"
-                    echo "    shift"
-                    echo "done"
-                    echo ""
-                    } >> ${RUN_FILE_NAME}
-                else
-                    {
-                    echo "# usage:"
-                    echo "# "
-                    echo "#     ./${RUN_FILE_NAME}"
-                    echo "# "
-                    echo "# or,"
-                    echo "# "
-                    echo "#     source ./${RUN_FILE_NAME}"
-                    echo ""
-                    } >> ${RUN_FILE_NAME}
-                fi
-                {
-                echo ""
-                echo "FILE_DIR=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
-                echo "if [ -z \${PATH+x} ]; then"
-                echo "    PATH=."
-                echo "else"
-                echo "    if [[ \":\$PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
-                echo "        PATH=\"${FILE_DIR}:\${PATH}\""
-                echo "    fi"
-                echo "fi"
-                echo "export LD_LIBRARY_PATH"
-                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-                echo "    LD_LIBRARY_PATH=${FILE_DIR}"
-                echo "else"
-                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${FILE_DIR}:\"* ]]; then"
-                echo "        LD_LIBRARY_PATH=\"${FILE_DIR}:\${LD_LIBRARY_PATH}\""
-                echo "    fi"
-                echo "fi"
-                echo "export LD_LIBRARY_PATH"
-                echo "export PATH"
-                echo ""
-                echo ""
-                echo "if [ -z \${FOR_COARRAY_NUM_IMAGES+x} ]; then"
-                echo "    FOR_COARRAY_NUM_IMAGES=${FOR_COARRAY_NUM_IMAGES}"
-                echo "fi"
-                echo ""
-                } >> ${RUN_FILE_NAME}
-
-                if [ -f "./setup.sh" ]; then
-                    echo "source ./setup.sh" >> ${RUN_FILE_NAME}
-                    echo "" >> ${RUN_FILE_NAME}
-                fi
-
-                echo "# run ParaMonte example executable" >> ${RUN_FILE_NAME}
-                echo "" >> ${RUN_FILE_NAME}
-                echo "chmod +x ${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
-                if [ "${MPI_ENABLED}" = "true" ]; then
-                    echo "mpiexec -n \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME} || mpiexec --oversubscribe -n \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
-                    echo "" >> ${RUN_FILE_NAME}
-                else
-                    if [ "${CAF_ENABLED}" = "true" ]; then
-                        if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
-                            echo "export FOR_COARRAY_NUM_IMAGES && ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
-                        else
-                            echo "cafrun -np \${FOR_COARRAY_NUM_IMAGES} ./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
-                        fi
-                    else
-                        echo "./${PM_EXAM_EXE_NAME}" >> ${RUN_FILE_NAME}
-                    fi
-                fi
-
-                chmod +x ${RUN_FILE_NAME}
-
-                break
-
-            else
-
-                echo >&2
-                echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - example build appears to have failed. skipping..."
-                echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script:"
-                echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - For instructions, type on the command line:"
-                echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
-                echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     ./build.sh --help"
-                echo >&2
-
-            fi
-
-        done
+        }
 
     done
+
+    if [ "${BUILD_SUCCEEDED}" = "true" ]; then break; fi
 
 done
 
 echo >&2
-
 if [ "${BUILD_SUCCEEDED}" = "true" ]; then
-
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - To run the example's executable with the proper environmental setup, try:"
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     ./${RUN_FILE_NAME}"
@@ -623,9 +636,8 @@ if [ "${BUILD_SUCCEEDED}" = "true" ]; then
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - Look at the contents of ${RUN_FILE_NAME} to change the runtime settings as you wish."
     echo >&2
-
+    exit 0
 else
-
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - exhausted all possible compiler names to build and run ParaMonte example but failed."
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - Please consider reporting the circumstances surrounding this issue at"
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
@@ -635,9 +647,5 @@ else
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - gracefully exiting ParaMonte"
     echo >&2
-
     exit 1
-
 fi
-
-exit 0
