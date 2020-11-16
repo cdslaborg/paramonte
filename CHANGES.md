@@ -10,7 +10,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 **Enhancements**  
 
 +   The ParaMonte C/C++/Fortran example build scripts `build.sh` and `build.bat` 
-    now check for the existence of both of Intel and GNU compilers in the appropriate 
+    now check for the existence of both Intel and GNU compilers in the appropriate 
     order that is automatically inferred at the compilation time. Also, the dependencies 
     on the MPI compiler wrappers is now removed as the MPI libraries are not required to 
     build the ParaMonte examples, even in cases of parallel ParaMonte example builds.
