@@ -131,7 +131,15 @@ if exist "!DESTINATION_DIR!" (
             echo. -- ParaMonte - WARNING: skipping...
         ) else (
             echo. -- ParaMonte - compressing subdirectory: %%~G
-            !AUXIL_DIR!\7z.exe a -r -tzip "%%~G.zip" "%%~G"
+            !AUXIL_DIR!\7z.exe a -r -tzip "%%~G.zip" "%%~G" || (
+                echo.
+                echo. -- ParaMonte - FATAL: compression failed for subdirectory: %%~G
+                echo. -- ParaMonte - FATAL: gracefully exiting.
+                echo.
+                cd !ParaMonte_ROOT_DIR!
+                set ERRORLEVEL=1
+                exit /B 1
+            )
         )
     )
 ) else (
