@@ -146,9 +146,10 @@ message( STATUS "${pmattn} CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}" )
 # copy input data for testing to the bin folder
 
 set( TEST_INPUT_FILES
-   "${ParaMonteTest_SRC_DIR}/input/autoCorrDataWeightedCompactResultRef.txt"
-   "${ParaMonteTest_SRC_DIR}/input/autoCorrDataWeightedCompact.txt"
-   "${ParaMonteTest_SRC_DIR}/input/paramonte.nml"
+   "${ParaMonteTest_SRC_DIR}/input/*"
+   #"${ParaMonteTest_SRC_DIR}/input/autoCorrDataWeightedCompactResultRef.txt"
+   #"${ParaMonteTest_SRC_DIR}/input/autoCorrDataWeightedCompact.txt"
+   #"${ParaMonteTest_SRC_DIR}/input/paramonte.nml"
 )
 foreach( file_i ${TEST_INPUT_FILES})
     add_custom_command( TARGET ${ParaMonteTest_EXE_NAME} POST_BUILD
