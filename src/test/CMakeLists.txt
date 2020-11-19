@@ -61,7 +61,7 @@ set(ParaMonteTest_SOURCE_FILES
     #${ParaMonteTest_SRC_DIR}/Test_TranGaus_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Math_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Misc_mod.f90
-    ParaMonteTest_SRC_DIR}/Test_BandSpectrum_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_BandSpectrum_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Batse_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Statistics_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Optimization_mod.f90
