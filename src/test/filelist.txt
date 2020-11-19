@@ -4,6 +4,8 @@
 !
   Test_mod.f90
   Test_BandSpectrum_mod.f90
+  Test_Batse_mod.f90
+  Test_CorrCoef_mod.f90
 !  Test_Decoration_mod.f90
 !  Test_Err_mod.f90
 !  Test_DateTime_mod.f90
@@ -18,11 +20,9 @@
 !  Test_File_mod.f90
 !  Test_CrossCorr_mod.f90
 !  Test_Matrix_mod.f90
-!  Test_CorrCoef_mod.f90
 !  Test_TranGaus_mod.f90
 !  Test_Math_mod.f90
 !  Test_Misc_mod.f90
-!  Test_Batse_mod.f90
 !  Test_Statistics_mod.f90
 !  Test_Optimization_mod.f90
   !Test_EconomicsToolbox_mod.f90

@@ -43,6 +43,9 @@
 # test source files
 set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_BandSpectrum_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_Batse_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_CorrCoef_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Decoration_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Err_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_DateTime_mod.f90
@@ -57,12 +60,9 @@ set(ParaMonteTest_SOURCE_FILES
     #${ParaMonteTest_SRC_DIR}/Test_File_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_CrossCorr_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Matrix_mod.f90
-    #${ParaMonteTest_SRC_DIR}/Test_CorrCoef_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_TranGaus_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Math_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Misc_mod.f90
-    ${ParaMonteTest_SRC_DIR}/Test_BandSpectrum_mod.f90
-    #${ParaMonteTest_SRC_DIR}/Test_Batse_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Statistics_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_Optimization_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_ParaMonte_mod.f90

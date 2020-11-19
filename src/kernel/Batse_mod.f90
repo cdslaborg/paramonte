@@ -136,7 +136,8 @@ contains
             GRB%count = NSGRB
         end if
 
-        allocate(GRB%Event(GRB%count), Trigger(GRB%count))
+        if (allocated(GRB%Event)) deallocate(GRB%Event); allocate(GRB%Event(GRB%count))
+        if (allocated(Trigger)) deallocate(Trigger); allocate(Trigger(GRB%count))
 
 #if defined CAF_ENABLED
         if (this_image()==1) then

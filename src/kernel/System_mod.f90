@@ -399,9 +399,7 @@ contains
         type(RandomFileName_type)           :: RFN
         type(FileContents_type)             :: FileContents
         character(:), allocatable           :: command
-        integer                             :: fileUnit
         integer                             :: exitstat
-        integer                             :: counter
 
         ! create a random output file name
 

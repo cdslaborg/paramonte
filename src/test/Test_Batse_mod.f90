@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -142,78 +142,129 @@ module Test_Batse_mod
                                                         , 5.40000000000000000_RK, 4.92043994240004_RK &
                                                         , 5.50000000000000000_RK, 4.92000000000000_RK ],shape=shape(LOG10EPK_LOG10PH))
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
-
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine test_Batse()
-
         implicit none
-
         Test = Test_type(moduleName=MODULE_NAME)
-
-        call test_getLog10PF53()
-        call test_getLogPF53()
+        call Test%run(test_readDataGRB_1,"test_readDataGRB_1")
+        call Test%run(test_readDataGRB_2,"test_readDataGRB_2")
+        call Test%run(test_getLog10PF53,"test_getLog10PF53")
+        call Test%run(test_getLogPF53,"test_getLogPF53")
+        call Test%run(test_getLogPbol,"test_getLogPbol")
+        call Test%run(test_getLogEffectivePeakPhotonFlux,"test_getLogEffectivePeakPhotonFlux")
         call Test%finalize()
-        
     end subroutine test_Batse
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    function test_readDataGRB_1() result(assertion)
+        implicit none
+        logical             :: assertion
+        call readDataGRB(inFilePath = Test%inDir//"/batseDataLGRB1366.txt", outFilePath = Test%outDir//"/batseDataLGRB1366.txt", isLgrb = .true.)
+        assertion = .true.
+    end function test_readDataGRB_1
 
-    subroutine test_getLog10PF53()
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_readDataGRB_2() result(assertion)
+        implicit none
+        logical             :: assertion
+        call readDataGRB(inFilePath = Test%inDir//"/batseDataSGRB565.txt", outFilePath = Test%outDir//"/batseDataLGRB1366.txt", isLgrb = .false.)
+        assertion = .true.
+    end function test_readDataGRB_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getLog10PF53() result(assertion)
 
         use Constants_mod, only: IK, RK
         implicit none
+        logical             :: assertion
         integer(IK)         :: ip
-        character(len=1000) :: msg
         real(RK), parameter :: tolerance = 1.e-12_RK
 
-        call Test%testing("getLog10PF53()")
-
         do ip = 1,np
-            Test%assertion = abs(LOG10EPK_LOG10PH(2,ip)-getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL))<tolerance
-            write(msg,* ) "The error with respect to reference value is larger than the tolerance.", new_line("a") &
-                        , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
-                        , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
-            call Test%verify(trim(adjustl(msg)))
+            assertion = abs(LOG10EPK_LOG10PH(2,ip)-getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL))<tolerance
+            if (assertion) cycle
+            if (Test%isDebugMode) then
+                write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
+                             , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
+                             , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
+            end if
+            exit
         end do
 
-    end subroutine test_getLog10PF53
+    end function test_getLog10PF53
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_getLogPF53()
+    function test_getLogPF53() result(assertion)
 
         use Constants_mod, only: IK, RK, LN10
         implicit none
         integer(IK) , parameter :: np = 86
-        integer(IK)         :: ip
-        character(len=1000) :: msg
-        real(RK), parameter :: tolerance = 1.e-12_RK
-
-        call Test%testing("getLogPF53()")
+        logical                 :: assertion
+        integer(IK)             :: ip
+        real(RK), parameter     :: tolerance = 1.e-12_RK
 
         do ip = 1,np
-            Test%assertion = abs( getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL) &
-                                -   getLogPF53(LOG10EPK_LOG10PH(1,ip)*LN10,LOG10PBOL)/LN10 &
-                                ) < tolerance
-            write(msg,* ) "The error with respect to reference value is larger than the tolerance.", new_line("a") &
-                        , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
-                        , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
-            call Test%verify(trim(adjustl(msg)))
+            assertion = abs( getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL) - getLogPF53(LOG10EPK_LOG10PH(1,ip)*LN10,LOG10PBOL)/LN10 ) < tolerance
+            if (assertion) cycle
+            if (Test%isDebugMode) then
+                write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
+                             , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
+                             , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
+            end if
+            exit
         end do
 
-    end subroutine test_getLogPF53
+    end function test_getLogPF53
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getLogPbol() result(assertion)
+
+        use Constants_mod, only: IK, RK, LN10
+        implicit none
+        integer(IK) , parameter :: np = 86
+        logical                 :: assertion
+        integer(IK)             :: ip
+        real(RK), parameter     :: tolerance = 1.e-12_RK
+
+        assertion = .true.
+        do ip = 1,np
+            assertion = abs ( getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL) &
+                            + getLogPbol(LOG10EPK_LOG10PH(1,ip)*LN10,LOG10PBOL) / LN10 &
+                            - LOG10PBOL &
+                            ) < tolerance
+            if (assertion) cycle
+            if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
+                write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
+                             , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
+                             , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
+            end if
+            exit
+        end do
+
+    end function test_getLogPbol
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getLogEffectivePeakPhotonFlux() result(assertion)
+        implicit none
+        logical                 :: assertion
+        real(RK), parameter     :: tolerance = 1.e-12_RK
+        assertion = abs(THRESH_ERFC_AMP + getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)) < tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
+            write(Test%outputUnit,*) "getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG) = ", getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)
+        end if
+    end function test_getLogEffectivePeakPhotonFlux
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module Test_Batse_mod

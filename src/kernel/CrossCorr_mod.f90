@@ -55,6 +55,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the integrated autocorrelation (IAC) via the BatchMeans method.
     !>
     !> @param[in]   np              : The number of data points in the input time series data.
@@ -196,6 +197,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the integrated autocorrelation (IAC) based on the cumulative autocorrelation.
     !>
     !> @param[in]   np              :   The number of data points in the input time series data.
@@ -254,6 +256,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the integrated autocorrelation (IAC) based on the maximum cumulative autocorrelation.
     !>
     !> @param[in]   np              : The number of data points in the input time series data.
@@ -299,6 +302,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the smallest length of vector that is a power of `base` and larger than the input vector length `actualLen`.
     !>
     !> @param[in]   actualLen   : The input vector length.
@@ -351,6 +355,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return an array that is extended and padded with zeros for the requested length `paddedLen`.
     !>
     !> @param[in]   currentLen  : The length of the input array.
@@ -385,6 +390,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the cross-correlation of the two input data vectors, (including any user-supplied zero padding), computed via Fast-Fourier Transform.
     !>
     !> @param[in]   ndata   : The lengths of the input arrays. It MUST be an integer power of two.
@@ -428,6 +434,7 @@ contains
         call realft(ndata,CrossCorrFFT,-1,Cdat1)
     end function getCrossCorrFFT
 
+    !> \brief
     !> Return the cross-correlation of the two input *weighted* data vectors,
     !> (including any user-supplied zero padding), computed via Fast-Fourier Transform.
     !>
@@ -709,7 +716,7 @@ contains
         real(RK)   , intent(in), optional   :: InverseSumNormedDataSq(nd)
         real(RK)   , intent(out)            :: AutoCorr(nd,nlag)
         real(RK)                            :: InverseSumNormedDataSqComputed(nd)
-        integer(IK)                         :: ip,ilag
+        integer(IK)                         :: ip, ilag
 
         if (any(Lag>np-1_IK)) then
             AutoCorr    = -huge(1._RK)

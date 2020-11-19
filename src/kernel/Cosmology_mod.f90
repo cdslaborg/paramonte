@@ -71,6 +71,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the natural logarithm of the differential comoving volume of cosmos.
     !>
     !> @param[in]   zplus1              : The redshift plus 1.
@@ -93,6 +94,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the approximate logarithm of the cosmological luminosity distance in units of MPc.
     !>
     !> @param[in]   zplus1 : The redshift plus 1.
@@ -134,6 +136,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the approximate logarithm of the cosmological luminosity distance.
     !>
     !> @param[in]   zplus1 : The redshift plus 1.
@@ -165,6 +168,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters.
     !>
     !> @param[in]   zplus1              : The redshift plus 1.
@@ -233,6 +237,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the derivative of the age of the Universe, w.r.t. redshift for a given input redshift + 1.
     !>
     !> @param[in] zplus1 : The redshift plus 1.

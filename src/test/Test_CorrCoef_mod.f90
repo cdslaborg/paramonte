@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -155,39 +155,32 @@ module Test_CorrCoef_mod
                                         , 5.47659170000000_RK &
                                         , 4.65761920000000_RK ]
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine test_CorrCoef()
-
         implicit none
-
         Test = Test_type(moduleName=MODULE_NAME)
-
-        call test_getCorrCoefSpearman()
+        call Test%run(test_getCorrCoefSpearman, "test_getCorrCoefSpearman")
         call Test%finalize()
-
     end subroutine test_CorrCoef
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_getCorrCoefSpearman()
-        
+    function test_getCorrCoefSpearman() result(assertion)
+
         use System_mod, only: sleep
         use Constants_mod, only: RK, IK
         use CorrCoef_mod
 
         implicit none
+
+        logical :: assertion
         type(CorrCoefSpearman_type) :: Spearman
         real(RK)                    :: refCorrCoef = 0.443361344537815_RK, refCorrPval = 0.00140031209338936_RK
-
-        if (Test%Image%isFirst) call Test%testing("getCorrCoefSpearman")
 
         call Spearman%get   ( ndata             = ndata                     &
                             , Data1             = Data1                     &
@@ -200,11 +193,17 @@ contains
                             , Err               = Spearman%Err              &
                             )
         if (Spearman%Err%occurred) then
-            Test%assertion = .false.
-            call Test%verify()
+            assertion = .false.
+            if (Test%isDebugMode .and. .not. assertion) then
+                write(Test%outputUnit,"(*(g0))") "Error occurred: "//Spearman%Err%msg
+            end if
+            return
         end if
 
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = abs(Spearman%rho - refCorrCoef) / (Spearman%rho + refCorrCoef) < 1.e-10_RK
+        assertion = assertion .and. abs(Spearman%rhoProb-refCorrPval) / (Spearman%rhoProb+refCorrPval) < 1.e-1_RK
+
+        if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Computed Spearman's statistic:"
             write(Test%outputUnit,"(*(g0))") "rho               = ", Spearman%rho
@@ -219,15 +218,8 @@ contains
             write(Test%outputUnit,"(*(g0))")
         end if
 
-        Test%assertion = abs(Spearman%rho - refCorrCoef) / (Spearman%rho + refCorrCoef) < 1.e-10_RK
-        call Test%verify()
-        Test%assertion = abs(Spearman%rhoProb-refCorrPval) / (Spearman%rhoProb+refCorrPval) < 1.e-1_RK
-        call Test%verify()
-        !call Test%skipping()
+    end function test_getCorrCoefSpearman
 
-    end subroutine test_getCorrCoefSpearman
-
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module Test_CorrCoef_mod

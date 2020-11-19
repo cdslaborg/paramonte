@@ -97,6 +97,9 @@ use Test_mod, only: setup, finalize
 call setup()
 
 block; use Test_BandSpectrum_mod; call test_BandSpectrum(); end block
+block; use Test_Batse_mod; call test_Batse(); end block
+block; use Test_CorrCoef_mod; call test_CorrCoef(); end block
+
 
 !call test_Decoration()
 !call test_Err()

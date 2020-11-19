@@ -179,7 +179,7 @@ contains
             color = "green"; if (mv_nfail>0_IK) color = "red"
             msg = msg // style( num2str(mv_nfail,"(g0)")//" tests failed. ", "bright", color)
 
-            msg = msg // style( "Total wall clock time: " // num2str(mv_timeTotal,"(f0.6)")//" seconds.", "bright", "yellow" )
+            msg = msg // style( "Total elapsed wall clock time: " // num2str(mv_timeTotal,"(f0.6)")//" seconds.", "bright", "yellow" )
 
             write(output_unit, "(*(g0,:,' '))")
             write(output_unit, "(*(g0,:,' '))") msg
@@ -307,8 +307,8 @@ contains
         ! announce the module being tested
 
         if (Test%Image%isFirst) then
-            Test%Err%msg = "Testing "//Test%moduleName//" ..."
-            write(Test%outputUnit, "(*(g0,:,' '))") style(Test%Err%msg, "bright", "yellow")
+            !Test%Err%msg = "Testing "//Test%moduleName//" ..."
+            !write(Test%outputUnit, "(*(g0,:,' '))") style(Test%Err%msg, "bright", "yellow")
 #if defined CAF_ENABLED
             ! sync images
             sync images(*)

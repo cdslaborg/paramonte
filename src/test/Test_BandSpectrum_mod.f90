@@ -121,7 +121,7 @@ contains
     subroutine test_BandSpectrum()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
-        call Test%run(test_getEbreak, "test_getEbreak()")
+        call Test%run(test_getEbreak, "test_getEbreak")
         call Test%run(test_getPhotonFluence_1, "test_getPhotonFluence_1")
         call Test%run(test_getPhotonFluence_2, "test_getPhotonFluence_2")
         call Test%run(test_getPhotonFluence_3, "test_getPhotonFluence_3")
@@ -147,13 +147,13 @@ contains
         real(RK) :: ebrk, difference
         ebrk = getEbreak(BAND_SPEC1%epk,BAND_SPEC1%alpha,BAND_SPEC1%beta)
         difference = 2._RK * abs(ebrk - BAND_SPEC1%ebrk) / (ebrk + BAND_SPEC1%ebrk)
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < 1.e-7_RK
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Ebreak, Reference Ebreak, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") ebrk, BAND_SPEC1%ebrk, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < 1.e-7_RK
     end function test_getEbreak
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -177,13 +177,13 @@ contains
                                 , Err           = Err                   &
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC1%photonFluence ) / ( photonFluence + BAND_SPEC1%photonFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC1%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC1%photonFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC1%tolerance
     end function test_getPhotonFluence_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -207,13 +207,13 @@ contains
                                 , Err           = Err                   &
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC2%photonFluence ) / ( photonFluence + BAND_SPEC2%photonFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC2%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC2%photonFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC2%tolerance
     end function test_getPhotonFluence_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -237,13 +237,13 @@ contains
                                 , Err           = Err                   &
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC3%photonFluence ) / ( photonFluence + BAND_SPEC3%photonFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC3%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC3%photonFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC3%tolerance
      end function test_getPhotonFluence_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -268,13 +268,13 @@ contains
                                 , Err           = Err                   &
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC4%photonFluence ) / ( photonFluence + BAND_SPEC4%photonFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC4%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC4%photonFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC4%tolerance
     end function test_getPhotonFluence_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -298,13 +298,13 @@ contains
                                 , Err           = Err                   &
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC1%energyFluence ) / ( energyFluence + BAND_SPEC1%energyFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC1%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") energyFluence, BAND_SPEC1%energyFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC1%tolerance
     end function test_getEnergyFluence_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -328,13 +328,13 @@ contains
                                 , Err           = Err                   &
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC2%energyFluence ) / ( energyFluence + BAND_SPEC2%energyFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC2%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") energyFluence, BAND_SPEC2%energyFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC2%tolerance
     end function test_getEnergyFluence_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -358,13 +358,13 @@ contains
                                 , Err           = Err                   &
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC3%energyFluence ) / ( energyFluence + BAND_SPEC3%energyFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC3%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") energyFluence, BAND_SPEC3%energyFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC3%tolerance
     end function test_getEnergyFluence_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -388,13 +388,13 @@ contains
                                 , Err           = Err                   &
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC4%energyFluence ) / ( energyFluence + BAND_SPEC4%energyFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC4%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") energyFluence, BAND_SPEC4%energyFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC4%tolerance
     end function test_getEnergyFluence_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -417,13 +417,13 @@ contains
                                                 , Err           = Err                       &
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC1%photonFluence ) / ( photonFluence + BAND_SPEC1%photonFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC1%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC1%photonFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC1%tolerance
     end function test_getPhotonFluenceFromEnergyFluence_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -446,13 +446,13 @@ contains
                                                 , Err           = Err                       &
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC2%photonFluence ) / ( photonFluence + BAND_SPEC2%photonFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC2%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC2%photonFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC2%tolerance
     end function test_getPhotonFluenceFromEnergyFluence_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -475,13 +475,13 @@ contains
                                                 , Err           = Err                       &
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC3%photonFluence ) / ( photonFluence + BAND_SPEC3%photonFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC3%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC3%photonFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC3%tolerance
     end function test_getPhotonFluenceFromEnergyFluence_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -504,13 +504,13 @@ contains
                                                 , Err           = Err                       &
                                                 )
         difference = 2 * abs( photonFluence - BAND_SPEC4%photonFluence ) / ( photonFluence + BAND_SPEC4%photonFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC4%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC4%photonFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC4%tolerance
     end function test_getPhotonFluenceFromEnergyFluence_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -535,13 +535,13 @@ contains
                                                 , Err           = Err                       &
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC2%photonFluence ) / ( photonFluence + BAND_SPEC2%photonFluence )
-        if (Test%isDebugMode .and. Test%Image%isFirst) then
+        assertion = difference < BAND_SPEC4%tolerance
+        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC2%photonFluence, difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
-        assertion = difference < BAND_SPEC4%tolerance
     end function test_getPhotonFluenceFromEnergyFluence_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
