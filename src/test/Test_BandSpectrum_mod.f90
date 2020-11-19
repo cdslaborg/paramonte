@@ -122,8 +122,7 @@ contains
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_getEbreak, "test_getEbreak()")
-        call Test%run(test_getEbreak, "test_getEbreak()")
-        !call Test%run(test_getPhotonFluence_1, "test_getPhotonFluence_1")
+        call Test%run(test_getPhotonFluence_1, "test_getPhotonFluence_1")
         !call Test%run(test_getPhotonFluence_2, "test_getPhotonFluence_2")
         !call Test%run(test_getPhotonFluence_3, "test_getPhotonFluence_3")
         !call Test%run(test_getPhotonFluence_4, "test_getPhotonFluence_4")
