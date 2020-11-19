@@ -357,6 +357,8 @@ contains
         end if
         write(*,*) "flag3"
 
+        write(Test%outputUnit,"(*(g0,:,' '))", advance="no") "testing", Test%moduleName//"@"//Message%Parts(1)%record, counterStr, "..."
+
         call Test%Timer%toc()
         assertion = test_func()
         call Test%Timer%toc()
@@ -372,8 +374,7 @@ contains
         end if
         write(*,*) "flag5"
 
-        write(Test%outputUnit,"(*(g0,:,' '))") "testing", Test%moduleName//"@"//Message%Parts(1)%record, counterStr &
-                                             , "...", Message%value, "in", num2str(Test%Timer%Time%delta,"(f0.6)"), "seconds"
+        write(Test%outputUnit,"(*(g0,:,' '))") Message%value, "in", num2str(Test%Timer%Time%delta,"(f0.6)"), "seconds"
 
     end subroutine runTest
 
