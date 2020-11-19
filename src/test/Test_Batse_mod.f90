@@ -165,7 +165,7 @@ contains
     function test_readDataGRB_1() result(assertion)
         implicit none
         logical             :: assertion
-        call readDataGRB(inFilePath = Test%inDir//"/batseDataLGRB1366.txt", outFilePath = Test%outDir//"/batseDataLGRB1366.txt", isLgrb = .true.)
+        call readDataGRB(inFilePath = Test%inDir//"/batseDataLGRB1366.in", outFilePath = Test%outDir//"/batseDataLGRB1366.in", isLgrb = .true.)
         assertion = .true.
     end function test_readDataGRB_1
 
@@ -174,7 +174,7 @@ contains
     function test_readDataGRB_2() result(assertion)
         implicit none
         logical             :: assertion
-        call readDataGRB(inFilePath = Test%inDir//"/batseDataSGRB565.txt", outFilePath = Test%outDir//"/batseDataLGRB1366.txt", isLgrb = .false.)
+        call readDataGRB(inFilePath = Test%inDir//"/batseDataSGRB565.in", outFilePath = Test%outDir//"/batseDataLGRB1366.in", isLgrb = .false.)
         assertion = .true.
     end function test_readDataGRB_2
 
