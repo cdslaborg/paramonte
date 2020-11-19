@@ -255,6 +255,7 @@ contains
         OS%Err%msg = "Error occurred while querying OS type.\n" // OS%Err%msg
         call Test%checkForErr(OS%Err)
 
+        call removeFile(path=RFN%path)
         call removeFile(path=RFN%path,isWindows=OS%isWindows,Err=OS%Err)
         OS%Err%msg = "Error occurred.\n" // OS%Err%msg
         call Test%checkForErr(OS%Err)

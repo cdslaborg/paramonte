@@ -222,7 +222,7 @@ module ParaMonte_mod
                                                                     !< have priority over the corresponding values from the external input file.
         logical                         :: inputFileArgIsPresent    !< The logical flag that indicates whether the external input file has been provided by the user.
         type(OS_type)                   :: OS                       !< An object of class [OS_type](@ref system_mod::os_type) containing information about the Operating System.
-        type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) containing information
+        type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
                                                                     !< about error occurrence and message during the simulation setup and runtime.
         type(Image_type)                :: Image                    !< An object of type [Image_type](@ref image_type) containing information about
                                                                     !< the processor count and types in the simulation.

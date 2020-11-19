@@ -598,7 +598,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: mkdir
 #endif
-        use System_mod, only: SysCmd_type
+        use System_mod, only: SysCmd_type, OS_type
         use String_mod, only: num2str
         use Err_mod, only: Err_type
         implicit none
@@ -607,21 +607,39 @@ contains
         logical, intent(in), optional   :: isWindows, wait
         type(Err_type)                  :: Err
         type(SysCmd_type)               :: SysCmd
+        type(OS_type)                   :: OS
+        logical                         :: isWindowsDefault
+        character(:), allocatable       :: command
+
         Err%occurred= .false.
+        OS%Err%occurred = .false.
         if (present(isWindows)) then
-            if (isWindows) then
-                SysCmd = SysCmd_type('mkdir "'//dirPath//'" >nul 2>&1',wait) ! path has to be enclosed with "" to allow nested mkdir
-            else
-                SysCmd = SysCmd_type("mkdir -p "//dirPath//" > /dev/null 2>&1",wait) ! -p enables nested mkdir
-            end if
+            isWindowsDefault = isWindows
         else
-            SysCmd = SysCmd_type("mkdir "//dirPath,wait)
+            call OS%query(shellQueryEnabled = .true.)
+            isWindowsDefault = .not. OS%Shell%isUnix
         end if
+
+        if (.not. OS%Err%occurred) then
+
+            if (isWindowsDefault) then
+                command = 'mkdir "'//dirPath//'" >nul 2>&1' ! path has to be enclosed with "" to allow nested mkdir
+            else
+                command = "mkdir -p "//dirPath//" > /dev/null 2>&1" ! -p enables nested mkdir
+            end if
+
+            SysCmd = SysCmd_type(command, wait)
+            if (.not.SysCmd%Err%occurred) return
+
+        end if
+
+        SysCmd = SysCmd_type("mkdir "//dirPath,wait)
         if (SysCmd%Err%occurred) then
             Err%occurred = .true.
             Err%stat = SysCmd%Err%stat
             Err%msg = PROCEDURE_NAME // SysCmd%Err%msg // "\nexecute_command_line() exitstat: " // num2str(SysCmd%exitstat)
         end if
+
     end function mkdir
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

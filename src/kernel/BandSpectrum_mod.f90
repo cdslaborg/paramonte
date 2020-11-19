@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -42,7 +42,7 @@
 
 module BandSpectrum_mod
 ! This module contains methods for computing the Band Spectrum properties of GRBs.
-! The Band spectral form is given by Eqn A6 of Shahmoradi and Nemiroff 2015: 
+! The Band spectral form is given by Eqn A6 of Shahmoradi and Nemiroff 2015:
 ! "Short versus long gamma-ray bursts: a comprehensive study of energetics and prompt gamma-ray correlations"
 ! Amir Shahmoradi, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
 
@@ -62,7 +62,15 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns epk*(alpha-beta)/(alpha+2), which is the normalization factor in the exponent of the first component of the Band model
+    !> \brief
+    !> Return `epk*(alpha-beta)/(alpha+2)`, which is the normalization
+    !> factor in the exponent of the first component of the Band model.
+    !> \param[in]   epk     :   The spectral peak energy in units of [keV].
+    !> \param[in]   alpha   :   The lower spectral exponent of the Band model.
+    !> \param[in]   beta    :   The upper spectral exponent of the Band model.
+    !>
+    !> \return
+    !> `ebrk` : The spectral break energy in units of [keV].
     pure function getEbreak(epk,alpha,beta) result(ebrk)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEbreak
@@ -77,9 +85,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! computes the break energy ebrk o fthe Band model, as well as the coefficient by which the high energy component of the
-    ! Band model must be multiplied in order to get a smooth function (assuming the coefficient of the lower energy component
-    ! is unity).
+    !> \brief
+    !> Compute the break energy `ebrk` of the Band model, as well as the coefficient by which the high energy component of the
+    !> Band model must be multiplied in order to get a smooth function (assuming the normalization coefficient of the lower
+    !> energy component is unity).
+    !>
+    !> \param[in]   epk             :   The spectral peak energy in units of [keV].
+    !> \param[in]   alpha           :   The lower spectral exponent of the Band model.
+    !> \param[in]   beta            :   The upper spectral exponent of the Band model.
+    !> \param[out]  ebrk            :   The spectral break energy in units of [keV].
+    !> \param[out]  coef            :   The spectral continuity coefficient.
+    !> \param[out]  alphaPlusTwo    :   The lower spectral exponent of the Band model plus two.
     pure subroutine getBandParam(epk,alpha,beta,ebrk,coef,alphaPlusTwo)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandParam
@@ -97,9 +113,26 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the value the Band differential spectrum for the given energy and input parameters.
-    ! It is expected that the input energy is in units of KeV, although it does not affect the computations here.
-    ! NOTE: A negative huge output value is used to signal error has occurred. Under normal conditions, output is always positive.
+    !> \brief
+    !> Compute the differential photon flux according to the Band differential spectrum at the given input `energy` value.
+    !>
+    !> \param[in]   energy          :   The energy (in units of [keV]) at which the differential photon flux must be computed.
+    !> \param[in]   epk             :   The spectral peak energy in units of [keV].
+    !> \param[in]   alpha           :   The lower spectral exponent of the Band model.
+    !> \param[in]   beta            :   The upper spectral exponent of the Band model.
+    !> \param[in]   ebrk            :   The spectral break energy in units of [keV].
+    !> \param[in]   coef            :   The spectral continuity coefficient.
+    !> \param[in]   alphaPlusTwo    :   The lower spectral exponent of the Band model plus two.
+    !>
+    !> \return
+    !> `photonFlux` : The energy flux in units of photon counts.
+    !>
+    !> \warning
+    !> A negative huge output value is used to signal error has occurred. Under normal conditions, the output is always positive.
+    !>
+    !> \warning
+    !> The input energy values `energy`, `epk`, `ebrk`, must all have the same units.
+    !> It is expected that the input energy is in units of keV, although it does not affect the accuracy of the results.
     pure function getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo) result(photonFlux)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFlux
@@ -123,8 +156,18 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! computes the differential photon count as a function of energy in keV, given the lower component of the Band model.
-    ! NOTE: energy values beyond ebrk should not be passed to this function.
+    !> \brief
+    !> Compute the differential photon flux according to the lower component of the Band spectrum at the given input `energy` value.
+    !>
+    !> \param[in]   energy              :   The energy (in units of [keV]) at which the differential photon flux must be computed.
+    !> \param[in]   alpha               :   The lower spectral exponent of the Band model.
+    !> \param[in]   alphaPlusTwoOverEpk :   The lower spectral exponent of the Band model plus two.
+    !>
+    !> \return
+    !> `photonFluxLower` : The energy flux in units of photon counts.
+    !>
+    !> \warning
+    !> The input `energy` values must be less than `ebrk`.
     pure function getPhotonFluxLower(energy,alpha,alphaPlusTwoOverEpk) result(photonFluxLower)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluxLower
@@ -138,9 +181,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the integral of the Band differential spectrum over the input energy range.
-    ! It is expected that the input energy is in units of KeV, although it does not affect the computations here.
-    ! NOTE: A negative huge output value is used to signal error has occurred. Under normal conditions, output is always positive.
+    !> \brief
+    !> Integrate the Band differential spectrum over the input energy range.
+    !>
+    !> \param[in]   lowerLim        :   The lower limit energy (in units of [keV]) of the integration.
+    !> \param[in]   upperLim        :   The upper limit energy (in units of [keV]) of the integration.
+    !> \param[in]   epk             :   The spectral peak energy in units of [keV].
+    !> \param[in]   alpha           :   The lower spectral exponent of the Band model.
+    !> \param[in]   beta            :   The upper spectral exponent of the Band model.
+    !> \param[in]   tolerance       :   The relative accuracy tolerance of the integration.
+    !> \param[out]  photonFluence   :   The fluence in units of photon counts within the input energy range.
+    !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
     subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence
@@ -266,9 +317,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns the integral of the Band differential spectrum over the input energy range, in units of the input energy.
-    ! It is expected that the input energy is in units of KeV, although it does not affect the computations here.
-    ! NOTE: A negative huge output value is used to signal error has occurred. Under normal conditions, output is always positive.
+    !> \brief
+    !> Integrate the Band differential spectrum over the input energy range in units of the input energy.
+    !>
+    !> \param[in]   lowerLim        :   The lower limit energy (in units of [keV]) of the integration.
+    !> \param[in]   upperLim        :   The upper limit energy (in units of [keV]) of the integration.
+    !> \param[in]   epk             :   The spectral peak energy in units of [keV].
+    !> \param[in]   alpha           :   The lower spectral exponent of the Band model.
+    !> \param[in]   beta            :   The upper spectral exponent of the Band model.
+    !> \param[in]   tolerance       :   The relative accuracy tolerance of the integration.
+    !> \param[out]  energyFluence   :   The fluence in units of the input energy (keV) within the input energy range.
+    !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
     subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence
@@ -366,13 +425,28 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! converts an input energy fluence in [lowerLim, upperLim] energy window, all in units of keV (or ALL in some other units),
-    ! to photon fluence, within the same energy range, or if [lowerLimNew, upperLimNew] is provided, then in that range.
-    ! tolerance is passed to integration units as a measure of the desired accuracy for the computation of the fluence.
-    ! NOTE: A negative huge output value is used to signal error has occurred. Under normal conditions, output is always positive.
+    !> \brief
+    !> Convert an **input energy fluence** in `[lowerLim, upperLim]` energy window, all in units of keV (or ALL in some other units),
+    !> **to photon fluence**, within the same energy range, or if `[lowerLimNew, upperLimNew]` is provided, then in that range.
+    !> The input `tolerance` is passed to integrators as a measure of the desired accuracy for the computation of `photonFluence`.
+    !>
+    !> \param[in]   energyFluence   :   The input energy fluence (in units of [keV]) to be converted to the output photon fluence.
+    !> \param[in]   lowerLim        :   The lower limit energy (in units of [keV]) of the integration.
+    !> \param[in]   upperLim        :   The upper limit energy (in units of [keV]) of the integration.
+    !> \param[in]   epk             :   The spectral peak energy in units of [keV].
+    !> \param[in]   alpha           :   The lower spectral exponent of the Band model.
+    !> \param[in]   beta            :   The upper spectral exponent of the Band model.
+    !> \param[in]   tolerance       :   The relative accuracy tolerance of the integration.
+    !> \param[out]  photonFluence   :   The output fluence in units of photon counts.
+    !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
+    !> \param[in]   lowerLimNew     :   The lower limit of energy windows (in keV) to be used for the computation of `photonFluence` (optional).
+    !> \param[in]   upperLimNew     :   The upper limit of energy windows (in keV) to be used for the computation of `photonFluence` (optional).
+    !>
+    !> \remark
+    !> If the optional `[lowerLimNew, upperLimNew]` are provided, each will replace the
+    !> corresponding input `[lowerLim, upperLim]` in the computation of the output `photonFluence`.
     subroutine getPhotonFluenceFromEnergyFluence( energyFluence, lowerLim, upperLim, epk, alpha, beta, tolerance &
                                                 , photonFluence, Err, lowerLimNew, upperLimNew )
-
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluenceFromEnergyFluence
 #endif

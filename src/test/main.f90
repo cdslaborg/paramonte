@@ -42,39 +42,36 @@
 
 program main
 
-use Test_Decoration_mod
-use Test_Err_mod
-use Test_DateTime_mod
-use Test_String_mod
-use Test_System_mod
-use Test_FileList_mod
-use Test_Path_mod
-use Test_Timer_mod
-use Test_TimerCPU_mod
-use Test_RandomSeed_mod
-use Test_FileContents_mod
-use Test_File_mod
-use Test_CrossCorr_mod
-use Test_Matrix_mod
-use Test_CorrCoef_mod
-use Test_TranGaus_mod
-use Test_Math_mod
-use Test_Misc_mod
-use Test_Batse_mod
-use Test_Statistics_mod
-use Test_Optimization_mod
+!use Test_Decoration_mod
+!use Test_Err_mod
+!use Test_DateTime_mod
+!use Test_String_mod
+!use Test_System_mod
+!use Test_FileList_mod
+!use Test_Path_mod
+!use Test_Timer_mod
+!use Test_TimerCPU_mod
+!use Test_RandomSeed_mod
+!use Test_FileContents_mod
+!use Test_File_mod
+!use Test_CrossCorr_mod
+!use Test_Matrix_mod
+!use Test_CorrCoef_mod
+!use Test_TranGaus_mod
+!use Test_Math_mod
+!use Test_Misc_mod
+!use Test_Batse_mod
+!use Test_Statistics_mod
+!use Test_Optimization_mod
 !!use Test_EconomicsToolbox_mod
-use Test_BandSpectrum_mod
-use Test_ParaMonte_mod
+!use Test_ParaMonte_mod
 
-use iso_fortran_env, only: compiler_options
-
+!use iso_fortran_env, only: compiler_options
 !use mpi
 !implicit none
 !integer :: ierrMPI
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 !block
 !use iso_fortran_env, only: IK=>int32, RK=>real64
@@ -93,40 +90,37 @@ use iso_fortran_env, only: compiler_options
 
 ! result:  5000444.27932245 0.147000074386597 in debug mode
 
-!***********************************************************************************************************************************
-!***********************************************************************************************************************************
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-call test_Decoration()
-call test_Err()
-call test_DateTime()
-call test_String()
-call test_System()
-call test_FileList()
-call test_Path()
-call test_Timer()
-call test_TimerCPU()
-call test_RandomSeed()
-call test_File()
-call test_CrossCorr()
-call test_Matrix()
-call test_CorrCoef()
-call test_TranGaus()
-call test_Math()
-call test_Misc()
-!call test_EconomicsToolbox()
-call test_Batse()
-call test_BandSpectrum()
-call test_Statistics()
-call test_Optimization()
-call test_ParaMonte()
+use Test_mod, only: setup, finalize
 
-!write(*,"(A)") compiler_options()
+call setup()
 
-#if defined MPI_ENABLED
-block
-    use Test_mod, only: finalizeMPI
-    call finalizeMPI()
-end block
-#endif
+block; use Test_BandSpectrum_mod; call test_BandSpectrum(); end block
+
+!call test_Decoration()
+!call test_Err()
+!call test_DateTime()
+!call test_String()
+!call test_System()
+!call test_FileList()
+!call test_Path()
+!call test_Timer()
+!call test_TimerCPU()
+!call test_RandomSeed()
+!call test_File()
+!call test_CrossCorr()
+!call test_Matrix()
+!call test_CorrCoef()
+!call test_TranGaus()
+!call test_Math()
+!call test_Misc()
+!!call test_EconomicsToolbox()
+!call test_Batse()
+!call test_Statistics()
+!call test_Optimization()
+!call test_ParaMonte()
+
+call finalize()
 
 end program main

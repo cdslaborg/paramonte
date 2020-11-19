@@ -55,12 +55,11 @@ module System_mod
 
     !> The `RandomFileName_type` class.
     type :: RandomFileName_type
-        character(:), allocatable       :: path !< The full path to the randomly-generated unique file name.
-        character(:), allocatable       :: dir  !< The directory within which is the unique new file is supposed to be generated.
-        character(:), allocatable       :: key  !< The optionally user-specified file prefix for the unique file name.
-        character(:), allocatable       :: ext  !< The optionally user-specified file extension.
-        type(Err_type)                  :: Err  !< An object of class [Err_type](@ref err_mod::err_type) indicating whether
-                                                !! any error has occurred during the file name generation.
+        character(:), allocatable       :: path                     !< The full path to the randomly-generated unique file name.
+        character(:), allocatable       :: dir                      !< The directory within which is the unique new file is supposed to be generated.
+        character(:), allocatable       :: key                      !< The optionally user-specified file prefix for the unique file name.
+        character(:), allocatable       :: ext                      !< The optionally user-specified file extension.
+        type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type).
     end type RandomFileName_type
 
     !> The `RandomFileName_type` constructor.
@@ -70,11 +69,11 @@ module System_mod
 
     !> The `SystemInfo_type` class.
     type :: SystemInfo_type
-        integer(IK)                     :: nRecord  !< The number of elements of the vector `List`.
-        type(CharVec_type), allocatable :: List(:)  !< An array of length `nRecord` of strings, each element of which represents
-                                                    !! one line in the output system information.
-        type(Err_type)                  :: Err      !< An object of class [Err_type](@ref err_mod::err_type) indicating whether
-                                                    !! any error has occurred during information collection.
+        integer(IK)                     :: nRecord                  !< The number of elements of the vector `List`.
+        type(CharVec_type), allocatable :: List(:)                  !< An array of length `nRecord` of strings, each element of which represents
+                                                                    !! one line in the output system information.
+        type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) indicating whether
+                                                                    !! any error has occurred during information collection.
     contains
         procedure, nopass               :: get => getSystemInfo
     end type SystemInfo_type
@@ -84,15 +83,38 @@ module System_mod
         module procedure                :: constructSystemInfo
     end interface SystemInfo_type
 
+    !> The Shell name type.
+    type, private :: ShellName_type
+        character(:), allocatable       :: current                  !< The name of the current runtime shell.
+        character(:), allocatable       :: default                  !< The name of the default runtime shell.
+    end type ShellName_type
+
+    !> The `Shell_type` class.
+    type :: Shell_type
+        logical                         :: isCMD        = .false.   !< The logical value indicating whether the shell is Windows CMD.
+        logical                         :: isZsh        = .false.   !< The logical value indicating whether the shell is Unix zsh.
+        logical                         :: isCsh        = .false.   !< The logical value indicating whether the shell is Unix csh.
+        logical                         :: isBash       = .false.   !< The logical value indicating whether the shell is Unix Bash.
+        logical                         :: isPowerShell = .false.   !< The logical value indicating whether the shell is Windows PowerShell.
+        logical                         :: isUnix       = .false.   !< The logical value indicating whether the shell is Unix-like.
+        character(:), allocatable       :: name                     !< The name of or path to the current shell.
+        type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) indicating
+                                                                    !! whether error has occurred during the query.
+    contains
+        procedure, pass                 :: query => queryRuntimeShell
+    end type Shell_type
+
     !> The `OS_type` class.
     type :: OS_type
-        character(:), allocatable       :: name                 !< The name of the operating system.
-        character(:), allocatable       :: slash                !< The file/folder name separator used by the OS.
-        logical                         :: isWindows = .false.  !< Logical variable indicating whether the OS is Windows.
-        logical                         :: isDarwin = .false.   !< Logical variable indicating whether the OS is Darwin (macOS).
-        logical                         :: isLinux = .false.    !< Logical variable indicating whether the OS is Linux.
-        type(Err_type)                  :: Err                  !< An object of class [Err_type](@ref err_mod::err_type) indicating whether
-                                                                !! error has occurred during the object initialization.
+        character(:), allocatable       :: name                     !< The name of the operating system.
+        character(:), allocatable       :: slash                    !< The file/folder name separator used by the OS.
+        logical                         :: isWindows = .false.      !< Logical variable indicating whether the OS is Windows.
+        logical                         :: isDarwin = .false.       !< Logical variable indicating whether the OS is Darwin (macOS).
+        logical                         :: isLinux = .false.        !< Logical variable indicating whether the OS is Linux.
+        type(Shell_type)                :: Shell                    !< An object of class [Shell_type](@ref shell_type) containing
+                                                                    !! information about the runtime shell name and type.
+        type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) indicating whether
+                                                                    !! error has occurred during the object initialization.
     contains
         procedure, pass                 :: query => queryOS
     end type OS_type
@@ -135,16 +157,22 @@ module System_mod
         module procedure :: constructSysCmd
     end interface SysCmd_type
 
+    ! cache the OS query result to speed up code
+
+    logical                             :: mv_osCacheEnabled = .false.
+    type(OS_type)                       :: mv_OS
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> The constructor of the class [SystemInfo_type](@ref systeminfo_type).
     !> Return a comprehensive report of the system information.
     !>
-    !> @param[in]   OS      :   An object of class [OS_type](@ref os_type) (optional).
+    !> \param[in]   OS      :   An object of class [OS_type](@ref os_type) (optional).
     !>
     !> \return
     !> `SystemInfo` : An object of class [SystemInfo_type](@ref systeminfo_type) containing the system information.
@@ -160,10 +188,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Query all attributes of the [OS_type](@ref os_type) class: `name`, `slash`, `isWindows`, `Err`.
     !>
-    !> @param[out]  OS : An object of class [OS_type](@ref os_type).
-    subroutine queryOS(OS)
+    !> \param[out]  OS : An object of class [OS_type](@ref os_type).
+    subroutine queryOS(OS, shellQueryEnabled)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: queryOS
 #endif
@@ -172,13 +201,26 @@ contains
         use Constants_mod, only: IK, RK
         use Err_mod, only: Err_type
         implicit none
-        class(OS_type)  , intent(out)   :: OS
-        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME // "@queryOS()"
-
+        class(OS_type)  , intent(out)           :: OS
+        logical         , intent(in), optional  :: shellQueryEnabled
+        character(*)    , parameter             :: PROCEDURE_NAME = MODULE_NAME // "@queryOS()"
+        logical                                 :: shellQueryEnabledDefault
 #if !defined OS_IS_WINDOWS && !defined OS_IS_DARWIN && !defined OS_IS_LINUX
-        character(:)    , allocatable   :: osname
+        character(:)    , allocatable           :: osname
 #endif
 
+        if (mv_osCacheEnabled) then
+            OS%name         = mv_OS%name
+            OS%slash        = mv_OS%slash
+            OS%isWindows    = mv_OS%isWindows
+            OS%isDarwin     = mv_OS%isDarwin
+            OS%isLinux      = mv_OS%isLinux
+            OS%Shell        = mv_OS%Shell
+            return
+        end if
+
+        shellQueryEnabledDefault = .false.
+        if (present(shellQueryEnabled)) shellQueryEnabledDefault = shellQueryEnabled
         OS%Err%occurred = .false.
         OS%Err%msg = ""
 
@@ -259,7 +301,7 @@ contains
 
                 blockUnknownOS: block
 
-                    integer                     :: idummy
+                    integer                     :: fileUnit
                     type(RandomFileName_type)   :: RFN
                     RFN = RandomFileName_type(key="queryOS")
                     if (RFN%Err%occurred) then
@@ -276,7 +318,7 @@ contains
                         return
                     end if
 
-                    open(newunit=idummy,file=RFN%path,status="old",iostat=OS%Err%stat)
+                    open(newunit=fileUnit,file=RFN%path,status="old",iostat=OS%Err%stat)
                     if (OS%Err%stat>0) then
                         OS%Err%occurred = .true.
                         OS%Err%msg =    PROCEDURE_NAME // ": Unknown error occurred while opening file = '" // RFN%path // "'."
@@ -284,7 +326,7 @@ contains
                         return
                     end if
 
-                    read(idummy,*,iostat=OS%Err%stat) OS%name
+                    read(fileUnit,*,iostat=OS%Err%stat) OS%name
 
                     if ( is_iostat_eor(OS%Err%stat) ) then
                         OS%Err%occurred = .true.
@@ -306,27 +348,7 @@ contains
                         return
                     end if
 
-                    close(idummy)
-                    if (OS%Err%stat>0) then
-                        OS%Err%occurred = .true.
-                        OS%Err%msg = PROCEDURE_NAME // ": Unknown error occurred while closing file = '" // RFN%path // "'."
-                        OS%name = ""
-                        return
-                    end if
-
-                    call sleep( seconds=0.5_RK, Err=OS%Err )
-                    if (OS%Err%occurred) then
-                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while calling subroutine sleep() for querying file = '" // RFN%path // "'." // NLC // OS%Err%msg
-                        OS%name = ""
-                        return
-                    end if
-
-                    call removeFile( path=RFN%path, isWindows=.false., Err=OS%Err )
-                    if (OS%Err%occurred) then
-                        OS%Err%msg = PROCEDURE_NAME // ": Error occurred while removing file = '"// RFN%path // "'." // NLC // OS%Err%msg
-                        OS%name = ""
-                        return
-                    end if
+                    close(fileUnit, status = "delete")
 
                     OS%name = trim(adjustl(OS%name))
                     osname = getLowerCase(OS%name)
@@ -349,15 +371,125 @@ contains
 
 #endif
 
+        if (shellQueryEnabledDefault) call OS%Shell%query(OS%isWindows)
+
+        mv_osCacheEnabled = .true.
+        mv_OS%name      = OS%name
+        mv_OS%slash     = OS%slash
+        mv_OS%isWindows = OS%isWindows
+        mv_OS%isDarwin  = OS%isDarwin
+        mv_OS%isLinux   = OS%isLinux
+        mv_OS%Shell     = OS%Shell
+
     end subroutine queryOS
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    subroutine queryRuntimeShell(Shell, isWindowsOS)
+
+        use FileContents_mod, only: FileContents_type
+
+        implicit none
+
+        class(Shell_type), intent(inout)    :: Shell
+        logical, intent(in)                 :: isWindowsOS
+
+        character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // "@queryRuntimeShell()"
+
+        type(RandomFileName_type)           :: RFN
+        type(FileContents_type)             :: FileContents
+        character(:), allocatable           :: command
+        integer                             :: fileUnit
+        integer                             :: exitstat
+        integer                             :: counter
+
+        ! create a random output file name
+
+        RFN = RandomFileName_type(key="queryShell")
+        if (RFN%Err%occurred) then
+            Shell%Err = RFN%Err
+            Shell%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring OS type." // NLC // Shell%Err%msg
+            Shell%name = ""
+            return
+        end if
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! define the shell command. First try the bash command,
+        ! as it does not lead to oddities on Windows terminal.
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        !command = "echo $0 >" // RFN%path // " 2>&1 && echo $SHELL >" // RFN%path // " 2>&1"
+        command = "echo $0 >" // RFN%path // " 2>&1"
+
+        call executeCmd( command = command, exitstat = exitstat, Err = Shell%Err )
+        if (Shell%Err%occurred .or. exitstat/=0) then
+            Shell%Err%msg = PROCEDURE_NAME // ": Error occurred while executing the Unix command "// command // NLC // Shell%Err%msg
+            Shell%name = ""
+            return
+        end if
+
+        ! read the command output
+
+        FileContents = FileContents_type(RFN%path, delEnabled = .true.)
+        if (FileContents%Err%occurred) then
+            Shell%Err%occurred = .true.
+            Shell%Err%msg = PROCEDURE_NAME // FileContents%Err%msg
+            Shell%name = ""
+            return
+        end if
+
+        if (FileContents%numRecord>0_IK) then
+            Shell%name      = trim(adjustl(FileContents%Line(1)%record))
+            Shell%isZsh     = index(Shell%name,"zsh") > 0
+            Shell%isCsh     = index(Shell%name,"csh") > 0
+            Shell%isBash    = index(Shell%name,"bash") > 0
+            Shell%isUnix    = Shell%isBash .or. Shell%isZsh .or. Shell%isCsh
+        end if
+
+        if (Shell%isUnix) return
+
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        ! define the shell command, this time for Windows Batch.
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        if (isWindowsOS) then
+
+            command = "(dir 2>&1 *`|echo CMD >temp.txt);&<# rem #>echo PowerShell >temp.txt 2>&1"
+
+            call executeCmd( command = command, exitstat = exitstat, Err = Shell%Err )
+            if (Shell%Err%occurred .or. exitstat/=0) then
+                Shell%Err%msg = PROCEDURE_NAME // ": Error occurred while executing the Windows command "// command // NLC // Shell%Err%msg
+                Shell%name = ""
+                return
+            end if
+
+            ! read the command output
+
+            FileContents = FileContents_type(RFN%path, delEnabled = .true.)
+            if (FileContents%Err%occurred) then
+                Shell%Err%occurred = .true.
+                Shell%Err%msg = PROCEDURE_NAME // FileContents%Err%msg
+                Shell%name = ""
+                return
+            end if
+
+            if (FileContents%numRecord>0_IK) then
+                Shell%isCMD = index(Shell%name,"CMD") > 0
+                Shell%isPowerShell = index(Shell%name,"PowerShell") > 0
+            end if
+
+        end if
+
+    end subroutine queryRuntimeShell
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
     !> Generate a unique file path in the requested directory for temporary usage.
     !>
-    !> @param[in]   dir : The requested directory within which the unique new file is supposed to be generated (optional).
-    !> @param[in]   key : The requested input file name prefix (optional, default = "RandomFileName").
-    !> @param[in]   ext : The requested input file extension (optional, default = ".rfn", standing for random file name).
+    !> \param[in]   dir : The requested directory within which the unique new file is supposed to be generated (optional).
+    !> \param[in]   key : The requested input file name prefix (optional, default = "RandomFileName").
+    !> \param[in]   ext : The requested input file extension (optional, default = ".rfn", standing for random file name).
     !>
     !> \return
     !> `RFN` : An object of class [RandomFileName_type](@ref randomfilename_type) containing the attributes of the random file name.
@@ -433,12 +565,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the value of the requested input environmental variable.
     !>
-    !> @param[in]   name    :   The requested environmental variable name.
-    !> @param[out]  value   :   The value of the requested environmental variable name.
-    !> @param[out]  length  :   The length of the value of the requested environmental variable name.
-    !> @param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
+    !> \param[in]   name    :   The requested environmental variable name.
+    !> \param[out]  value   :   The value of the requested environmental variable name.
+    !> \param[out]  length  :   The length of the value of the requested environmental variable name.
+    !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
     !!                          indicating whether any error has occurred during information collection.
     subroutine getEnvVar(name,value,length,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -484,11 +617,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> The [SysCmd_type](@ref syscmd_type) class constructor.
     !> Execute the input system command `cmd` and return.
     !>
-    !> @param[in]   cmd : The requested input system command to be executed.
-    !> @param[in]   wait : A logical value indicating whether the program should wait for the control to be returned to it by the terminal.
+    !> \param[in]   cmd : The requested input system command to be executed.
+    !> \param[in]   wait : A logical value indicating whether the program should wait for the control to be returned to it by the terminal.
     !>
     !> \return
     !> `SysCmd` : An object of class [SysCmd_type](@ref syscmd_type) containing the attributes and the statistics of the system command execution.
@@ -512,10 +646,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> A method of the [SysCmd_type](@ref syscmd_type) class.
     !> Execute the requested system command and return.
     !>
-    !> @param[inout] SysCmd : An object of class [SysCmd_type](@ref syscmd_type) containing the attributes and
+    !> \param[inout] SysCmd : An object of class [SysCmd_type](@ref syscmd_type) containing the attributes and
     !!                        the statistics of the system command execution.
     subroutine runSysCmd(SysCmd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -557,13 +692,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Execute the input system command `cmd` and return.
     !>
-    !> @param[in]       command     :   The command to executed in the terminal.
-    !> @param[in]       wait        :   A logical argument indicating whether the program should wait until the control is
+    !> \param[in]       command     :   The command to executed in the terminal.
+    !> \param[in]       wait        :   A logical argument indicating whether the program should wait until the control is
     !!                                  returned to it or should not wait (optional, default = `.true.`).
-    !> @param[inout]    exitstat    :   An integer indicating the exit status flag upon exiting the terminal.
-    !> @param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type)
+    !> \param[inout]    exitstat    :   An integer indicating the exit status flag upon exiting the terminal.
+    !> \param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type)
     !!                                  indicating whether any error has occurred during information collection.
     !>
     !> \remark
@@ -634,9 +770,10 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Fetch the input command-line arguments to the main program.
     !>
-    !> @param[inout]    CmdArg : An object of class [CmdArg_type](@ref cmdarg_type) which will contain the command line arguments.
+    !> \param[inout]    CmdArg : An object of class [CmdArg_type](@ref cmdarg_type) which will contain the command line arguments.
     !>
     !> \remark
     !> This is a method of the class [CmdArg_type](@ref cmdarg_type).
@@ -698,13 +835,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Fetch a comprehensive report of the operating system and platform specifications.
     !>
-    !> @param[out]  List    :   A list of strings each of which represents one line of information about the system specs.
-    !> @param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
+    !> \param[out]  List    :   A list of strings each of which represents one line of information about the system specs.
+    !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
     !!                          indicating whether any error has occurred during information collection.
-    !> @param[in]   OS      :   An object of class [OS_type](@ref os_type) containing information about the Operating System (optional).
-    !> @param[out]  count   :   The count of elements in the output `List` (optional).
+    !> \param[in]   OS      :   An object of class [OS_type](@ref os_type) containing information about the Operating System (optional).
+    !> \param[out]  count   :   The count of elements in the output `List` (optional).
     subroutine getSystemInfo(List,Err,OS,count)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSystemInfo
@@ -865,7 +1003,7 @@ contains
             List(counter)%record = trim(adjustl(record))
         end do
 
-        close(fileUnit,iostat=Err%stat)
+        close(fileUnit,iostat=Err%stat,status="delete")
         if (Err%stat/=0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file = '" // filename // "'."
@@ -875,25 +1013,26 @@ contains
         if (present(count)) count = nRecord
 
         ! remove the files
-        call removeFile(filename,OpSy%isWindows,Err)
-        if (Err%occurred) then
-            Err%msg = PROCEDURE_NAME // Err%msg
-            return
-        end if
-        call removeFile(stdErr,OpSy%isWindows,Err)
-        if (Err%occurred) then
-            Err%msg = PROCEDURE_NAME // Err%msg
-            return
-        end if
+        !call removeFile(filename,OpSy%isWindows,Err)
+        !if (Err%occurred) then
+        !    Err%msg = PROCEDURE_NAME // Err%msg
+        !    return
+        !end if
+        !call removeFile(stdErr,OpSy%isWindows,Err)
+        !if (Err%occurred) then
+        !    Err%msg = PROCEDURE_NAME // Err%msg
+        !    return
+        !end if
 
     end subroutine getSystemInfo
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Sleep for the input number of seconds (real number).
     !>
-    !> @param[in]   seconds :   The amount of time in seconds to sleep.
-    !> @param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
+    !> \param[in]   seconds :   The amount of time in seconds to sleep.
+    !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
     !!                          indicating whether any error has occurred before, during, or after the sleep.
     subroutine sleep(seconds,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -938,12 +1077,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Copy file from the origin path to the destination path.
     !>
-    !> @param[in]   pathOld     :   The original path.
-    !> @param[in]   pathNew     :   The destination path.
-    !> @param[in]   isWindows   :   Logical value indicating whether the OS is Windows.
-    !> @param[out]  Err         :   An object of class [Err_type](@ref err_mod::err_type)
+    !> \param[in]   pathOld     :   The original path.
+    !> \param[in]   pathNew     :   The destination path.
+    !> \param[in]   isWindows   :   Logical value indicating whether the OS is Windows.
+    !> \param[out]  Err         :   An object of class [Err_type](@ref err_mod::err_type)
     !!                              indicating whether any error has occurred the copy.
     subroutine copyFile(pathOld,pathNew,isWindows,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -1013,11 +1153,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Remove the requested file.
     !>
-    !> @param[in]   path        :   The path to the file to be removed.
-    !> @param[in]   isWindows   :   Logical value indicating whether the OS is Windows.
-    !> @param[out]  Err         :   An object of class [Err_type](@ref err_mod::err_type)
+    !> \param[in]   path        :   The path to the file to be removed.
+    !> \param[in]   isWindows   :   Logical value indicating whether the OS is Windows.
+    !> \param[out]  Err         :   An object of class [Err_type](@ref err_mod::err_type)
     !!                              indicating whether any error has occurred before, during, or after the sleep.
     !>
     !> \warning
@@ -1031,58 +1172,75 @@ contains
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        character(*), intent(in)    :: path
-        logical     , intent(in)    :: isWindows
-        type(Err_type), intent(out) :: Err
-        character(:), allocatable   :: cmd
-        integer                     :: counter
-        logical                     :: fileExists
+        character(*), intent(in)                :: path
+        type(Err_type), intent(out), optional   :: Err
+        logical     , intent(in), optional      :: isWindows
+        logical                                 :: fileExists
+        logical                                 :: isPresentErr
+        character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@removeFile()"
 
-        character(*), parameter     :: PROCEDURE_NAME = MODULE_NAME // "@removeFile()"
+        isPresentErr = present(Err)
+        if (isPresentErr) Err%occurred = .false.
 
-        Err%occurred = .false.
+        ! First check whether file exists.
 
-        ! First check whether file exists:
         inquire(file=path,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
         if (Err%stat/=0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file = '" // path // "'."
             return
         end if
-        if (.not.fileExists) then
-            Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // ": The requested file = '" // path // "' does not exist."
-            return
-        end if
+        if (.not.fileExists) return
 
-        if (isWindows) then
-            cmd = "del " // path // " > nul"
+        if (isPresentErr .and. present(isWindows)) then
+
+            blockBrittle: block
+
+                character(:), allocatable               :: cmd
+                integer                                 :: counter
+
+                if (isWindows) then
+                    cmd = "del " // path // " > nul"
+                else
+                    cmd = "rm " // path
+                end if
+
+                counter = 0
+                do
+                    counter = counter + 1
+                    call executeCmd( command=cmd, Err=Err )
+                    if (Err%occurred) then
+                        Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'." // NLC
+                        return
+                    end if
+                    ! ensure file is removed
+                    inquire(file=path,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
+                    if (Err%stat/=0) then
+                        Err%occurred = .true.
+                        Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of removed file = '" // path // "'."
+                        return
+                    end if
+                    if (fileExists .and. counter<100) cycle
+                    exit
+                end do
+                if (fileExists) then
+                    Err%occurred = .true.
+                    Err%msg = PROCEDURE_NAME // ": Failed to remove file = '" // path // "' after " // num2str(counter) // " attempts."
+                    return
+                end if
+
+            end block blockBrittle
+
         else
-            cmd = "rm " // path
-        end if
 
-        counter = 0
-        do
-            counter = counter + 1
-            call executeCmd( command=cmd, Err=Err )
-            if (Err%occurred) then
-                Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'." // NLC
-                return
-            end if
-            ! ensure file is removed
-            inquire(file=path,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
-            if (Err%stat/=0) then
-                Err%occurred = .true.
-                Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of removed file = '" // path // "'."
-                return
-            end if
-            if (fileExists .and. counter<100) cycle
-            exit
-        end do
-        if (fileExists) then
-            Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // ": Failed to remove file = '" // path // "' after " // num2str(counter) // " attempts."
-            return
+            blockRobust: block
+                logical :: isOpen
+                integer :: fileUnit
+                inquire(file=path,opened=isOpen)
+                if (.not. isOpen) open(newunit = fileUnit, file = path, status = "replace")
+                close(fileUnit,status="delete")
+            end block blockRobust
+
         end if
 
     end subroutine removeFile

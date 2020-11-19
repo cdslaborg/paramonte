@@ -134,6 +134,7 @@ module Constants_mod
 
     character(len=1), parameter :: CARRIAGE_RETURN = achar(13)
     character(len=1), parameter :: ESCAPE = achar(27)
+    character(len=1), parameter :: ESC = achar(27)
     character(len=1), parameter :: CLOCK_TICK(4) = [ "|" , "/" , "-" , "\" ]
 
     interface getPosInf

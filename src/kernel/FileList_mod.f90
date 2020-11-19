@@ -388,16 +388,16 @@ contains
         end if
 
         ! remove the files
-        call removeFile(filename,OSisWindows,Err)
-        if (Err%occurred) then
-            Err%msg = PROCEDURE_NAME // Err%msg
-            return
-        end if
-        call removeFile(stdErr,OSisWindows,Err)
-        if (Err%occurred) then
-            Err%msg = PROCEDURE_NAME // Err%msg
-            return
-        end if
+        !call removeFile(filename,OSisWindows,Err)
+        !if (Err%occurred) then
+        !    Err%msg = PROCEDURE_NAME // Err%msg
+        !    return
+        !end if
+        !call removeFile(stdErr,OSisWindows,Err)
+        !if (Err%occurred) then
+        !    Err%msg = PROCEDURE_NAME // Err%msg
+        !    return
+        !end if
 
         !call sleep(seconds=0.1_RK,Err=Err)
         !if (Err%occurred) then

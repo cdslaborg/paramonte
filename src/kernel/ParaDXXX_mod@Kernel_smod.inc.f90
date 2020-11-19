@@ -311,12 +311,7 @@ contains
 
                     ! remove the temporary copy of the chain file
 
-                    call removeFile(path=RFN%path,isWindows=self%OS%isWindows,Err=self%Err)
-                    if (self%Err%occurred) then
-                        self%Err%msg = PROCEDURE_NAME//self%Err%msg
-                        call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
-                        return
-                    end if
+                    call removeFile(RFN%path)
 
                 end block
 

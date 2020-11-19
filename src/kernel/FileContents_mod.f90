@@ -77,14 +77,15 @@ contains
     !>
     !> \return
     !> `FileContents` : An object of [FileContents_type](@ref filecontents_type) class.
-    function constructFileContents(filePath) result(FileContents)
+    function constructFileContents(filePath,delEnabled) result(FileContents)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructFileContents
 #endif
         implicit none
-        character(*), intent(in)    :: filePath
-        type(FileContents_type)     :: FileContents
-        call getFileContents(filePath,FileContents%Line,FileContents%numRecord,FileContents%Err)
+        character(*), intent(in)            :: filePath
+        logical     , intent(in), optional  :: delEnabled
+        type(FileContents_type)             :: FileContents
+        call getFileContents(filePath,FileContents%Line,FileContents%numRecord,FileContents%Err,delEnabled)
         if (FileContents%Err%occurred) FileContents%Err%msg = "@constructFileContents()" // FileContents%Err%msg
     end function constructFileContents
 
@@ -96,7 +97,8 @@ contains
     !> @param[out]  Contents    :   A list of lines in the file. Each array element corresponds to one line (record) in the file.
     !> @param[out]  numRecord   :   The number of lines in the file.
     !> @param[out]  Err         :   An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
-    subroutine getFileContents(path,Contents,numRecord,Err)
+    !> @param[out]  delEnabled  :   An optional logical value indicating whether the file should be deleted upon successful reading of it.
+    subroutine getFileContents(path,Contents,numRecord,Err,delEnabled)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileContents
 #endif
@@ -106,16 +108,23 @@ contains
         implicit none
         character(len=*), intent(in)                    :: path
         type(CharVec_type), allocatable, intent(out)    :: Contents(:)
-        integer, intent(out)                            :: numRecord
+        logical, intent(in), optional                   :: delEnabled
         type(Err_type), intent(out)                     :: Err
+        integer, intent(out)                            :: numRecord
 
         character(99999)                                :: record
+        character(:), allocatable                       :: closeStatus
         integer                                         :: fileUnit, irecord, iostat
 
         character(*), parameter                         :: PROCEDURE_NAME = "@getFileContents()"
 
         Err%occurred = .false.
         Err%msg = ""
+
+        closeStatus = "keep"
+        if (present(delEnabled)) then
+            if (delEnabled) closeStatus = "delete"
+        end if
 
         call getNumRecordInFile(path,numRecord,Err)
         if (Err%occurred) then
@@ -148,10 +157,10 @@ contains
             end if
         end do
 
-        close(fileUnit,iostat=Err%stat)
+        close(fileUnit,iostat=Err%stat,status=closeStatus)
         if (Err%stat>0) then
             Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // "Error occurred while attempting to close the open file='" // path // "'."
+            Err%msg = PROCEDURE_NAME // "Error occurred while attempting to close or delete the open file='" // path // "'."
             return
         end if
 

@@ -53,13 +53,13 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/Optimization_mod.f90
     ${ParaMonteKernel_SRC_DIR}/DateTime_mod.f90
     ${ParaMonteKernel_SRC_DIR}/String_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/FileContents_mod.f90
     ${ParaMonteKernel_SRC_DIR}/System_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Path_mod.f90
     ${ParaMonteKernel_SRC_DIR}/FileList_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Timer_mod.f90
     ${ParaMonteKernel_SRC_DIR}/TimerCPU_mod.f90
     ${ParaMonteKernel_SRC_DIR}/RandomSeed_mod.f90
-    ${ParaMonteKernel_SRC_DIR}/FileContents_mod.f90
     ${ParaMonteKernel_SRC_DIR}/File_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Sort_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Math_mod.f90

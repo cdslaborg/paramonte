@@ -55,6 +55,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> The constructor of the [Decoration_type](@ref decoration_type class.
     !> @param[in]   tabStr : The string representing the tab character (optional, default = `TAB`).
     !> @param[in]   symbol : The symbol with which the text is decorated (optional).
@@ -88,6 +89,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Given a text and the requested characteristics, this function wraps the text to within the maximum width specified.
     !> @param[in]   text            : The input text.
     !> @param[in]   symbol          : The decoration symbol added to beginning and ending of the wrapped line (optional).
@@ -126,6 +128,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Given a list of lines and the requested characteristics, this function wraps the text to within the maximum width specified.
     !> @param[in]   List            : The input list of lines to decorate and write.
     !> @param[in]   symbol          : The decoration symbol added to beginning and ending of the wrapped line (optional).
@@ -162,6 +165,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return a string which is a pattern repetition for the requested width.
     !> @param[in]   symbol  : The decoration symbol added to beginning and ending of the wrapped line (optional).
     !> @param[in]   width   : The width of the line (optional).
@@ -210,6 +214,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Sandwich the input string with the input symbol for the requested thickness on both ends of the string.
     !> @param[in]   text            : The text to be sandwiched (optional).
     !> @param[in]   symbol          : The decoration symbol added to beginning and ending of the wrapped line (optional).
@@ -337,6 +342,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Write the decorated text to the output.
     !> @param[in]   outputUnit  : The output file unit (optional).
     !> @param[in]   marginTop   : The number of empty lines before writing the string (optional).
@@ -449,6 +455,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Wrap the input text to fit it within the requested line width.
     !> @param[in]   string  : The string to wrap.
     !> @param[in]   width   : The wrapping width.
@@ -621,6 +628,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Convert a string to a list of lines.
     !> @param[in]   string      : The string.
     !> @param[in]   delimiter   : The substring at which the string will be split to form multiple lines.
