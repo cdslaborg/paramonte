@@ -355,8 +355,6 @@ contains
                         )
         end if
 
-        write(Test%outputUnit,"(*(g0,:,' '))", advance="no") "testing", Test%moduleName//"@"//Message%Parts(1)%record, counterStr, "..."
-
         call Test%Timer%toc()
         assertion = test_func()
         call Test%Timer%toc()
@@ -370,7 +368,8 @@ contains
             mv_FailedTestFuncName(mv_nfail)%record = "Test_"//Test%moduleName(2:)//"@"//funcName
         end if
 
-        write(Test%outputUnit,"(*(g0,:,' '))") Message%value, "in", num2str(Test%Timer%Time%delta,"(f0.6)"), "seconds"
+        write(Test%outputUnit,"(*(g0,:,' '))") "testing", Test%moduleName//"@"//Message%Parts(1)%record, counterStr &
+                                             , "...", Message%value, "in", num2str(Test%Timer%Time%delta,"(f0.6)"), "seconds"
 
     end subroutine runTest
 

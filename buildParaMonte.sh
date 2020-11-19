@@ -1289,32 +1289,34 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         #### download and unpack prereqs
         ############################################################################################################################
 
-        if [ "${answer}" = "y" ]; then
+        if ! [ "${isMacOS}" = "true" ]; then
+            if [ "${answer}" = "y" ]; then
 
-            echo >&2 "-- ${BUILD_NAME} - generating directory: ${ParaMonte_REQ_DIR}/"
-            if ! [ -d "${ParaMonte_REQ_DIR}" ]; then
-                mkdir -p "${ParaMonte_REQ_DIR}"
+                echo >&2 "-- ${BUILD_NAME} - generating directory: ${ParaMonte_REQ_DIR}/"
+                if ! [ -d "${ParaMonte_REQ_DIR}" ]; then
+                    mkdir -p "${ParaMonte_REQ_DIR}"
+                fi
+
+                tarFileName="OpenCoarrays-${openCoarraysVersion}.tar.gz"
+                tarFileWeb="https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${openCoarraysVersion}/${tarFileName}"
+                wget -P "${ParaMonte_REQ_DIR}/.." "${tarFileWeb}"
+                verify $? "download of the prerequisites"
+
+                #tarFileName="prerequisites.tar.gz"
+                #cp -rv "${ParaMonte_ROOT_DIR}/auxil/${tarFileName}" "${ParaMonte_REQ_DIR}/../"
+                #verify $? "installation setup of prerequisites"
+
+                (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf "${tarFileName}" -C prerequisites --strip-components 1)
+                verify $? "unpacking of prerequisites"
+                # chmod +x -R "${ParaMonte_REQ_DIR}"
+
+            else
+
+                echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte installation will proceed with no guarantee of success."
+                echo >&2
+                #exit 1
+
             fi
-
-            tarFileName="OpenCoarrays-${openCoarraysVersion}.tar.gz"
-            tarFileWeb="https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${openCoarraysVersion}/${tarFileName}"
-            wget -P "${ParaMonte_REQ_DIR}/.." "${tarFileWeb}"
-            verify $? "download of the prerequisites"
-
-            #tarFileName="prerequisites.tar.gz"
-            #cp -rv "${ParaMonte_ROOT_DIR}/auxil/${tarFileName}" "${ParaMonte_REQ_DIR}/../"
-            #verify $? "installation setup of prerequisites"
-
-            (cd "${ParaMonte_REQ_DIR}/../" && tar xvzf "${tarFileName}" -C prerequisites --strip-components 1)
-            verify $? "unpacking of prerequisites"
-            # chmod +x -R "${ParaMonte_REQ_DIR}"
-
-        else
-
-            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte installation will proceed with no guarantee of success."
-            echo >&2
-            #exit 1
-
         fi
 
     fi
