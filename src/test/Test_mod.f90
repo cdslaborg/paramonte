@@ -340,7 +340,9 @@ contains
         type(String_type)               :: Message
         logical                         :: assertion
 
+        write(*,*) "flag1"
         Message%Parts = Message%splitStr(string=funcName(6:), delimiter="_", nPart=Message%nPart)
+        write(*,*) "flag2"
         if (Message%nPart==2_IK) then
             counterStr = "#"//Message%Parts(2)%record
         elseif (Message%nPart==1_IK) then
@@ -353,10 +355,12 @@ contains
                         , outputUnit = Test%outputUnit &
                         )
         end if
+        write(*,*) "flag3"
 
         call Test%Timer%toc()
         assertion = test_func()
         call Test%Timer%toc()
+        write(*,*) "flag4"
 
         if (assertion) then
             mv_npass = mv_npass + 1
@@ -366,6 +370,7 @@ contains
             mv_nfail = mv_nfail + 1
             mv_FailedTestFuncName(mv_nfail)%record = "Test_"//Test%moduleName(2:)//"@"//funcName
         end if
+        write(*,*) "flag5"
 
         write(Test%outputUnit,"(*(g0,:,' '))") "testing", Test%moduleName//"@"//Message%Parts(1)%record, counterStr &
                                              , "...", Message%value, "in", num2str(Test%Timer%Time%delta,"(f0.6)"), "seconds"
