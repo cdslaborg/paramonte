@@ -228,6 +228,8 @@ do
 
     if [ "${shared_enabled}" = "true" ]; then
 
+        #### GNU
+
         if [ "${PMCS}" = "gnu" ] && ! [ "${isMacOS}" = "true" ] && ! [ "${CAF_ENABLED}" = "true" ]; then # caf does not have lib dependency
 
             #### copy Fortran compiler shared library files
@@ -282,63 +284,106 @@ do
 
             #### copy MPI shared library files
 
-            #if ! [ -z ${MPIEXEC_PATH+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
-            #
-            #    echo >&2
-            #    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the the mpiexec executable file..."
-            #    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${MPIEXEC_PATH}*"
-            #    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-            #    yes | \cp -rf "${MPIEXEC_PATH}"* "${ParaMonteExample_LIB_DIR_CURRENT}/"
-            #    MPIEXEC_BIN_DIR=$(dirname "${MPIEXEC_PATH}")
-            #    MPIEXEC_ROOT_DIR="${MPIEXEC_BIN_DIR}"/..
-            #    MPIEXEC_LIB_DIR_LIST="${MPIEXEC_ROOT_DIR}/lib:${MPIEXEC_ROOT_DIR}/lib64"
-            #    keyList="libmpi:libmpifort"
-            #    for key in ${keyList//:/ }
-            #    do
-            #        for MPIEXEC_LIB_DIR in ${MPIEXEC_LIB_DIR_LIST//:/ }
-            #        do
-            #            if [ -d "${MPIEXEC_LIB_DIR}" ]; then
-            #                find "${MPIEXEC_LIB_DIR}" -name "${key}.so"* -print0 |
-            #                while IFS= read -r -d '' libMpiPath; do
-            #                    echo >&2
-            #                    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
-            #                    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${libMpiPath}"
-            #                    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-            #                    #yes | \cp -rf "${libMpiPath}" "${ParaMonteExample_LIB_DIR_CURRENT}/" && {
-            #                    yes | \cp -rf "${libMpiPath}" "${ParaMonteExample_LIB_DIR_CURRENT}/"
-            #                done
-            #            fi
-            #        done
-            #    done
-            #
-            #    #### copy numa shared files
-            #
-            #    FILE_LIST="libnuma.so:libpciaccess.so"
-            #    FILE_DIR_LIST="/usr/lib64"
-            #    for FILE in ${FILE_LIST//:/ }
-            #    do
-            #        for FILE_DIR in ${FILE_DIR_LIST//:/ }
-            #        do
-            #            if [ -d "${FILE_DIR}" ]; then
-            #                flist=$(( IFS=:; unset lsout; lsout=$(ls -dm "${FILE_DIR}/${FILE}"*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi) 2>/dev/null)
-            #                for fpath in $(echo $flist | sed "s/,/ /g"); do
-            #                    echo >&2
-            #                    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
-            #                    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${fpath}"
-            #                    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
-            #                    (yes | \cp -rf "${fpath}" "${ParaMonteExample_LIB_DIR_CURRENT}/") >/dev/null 2>&1 || {
-            #                        echo >&2
-            #                        echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: A ParaMonte library dll dependency file copy attempt failed at: ${fpath}"
-            #                        echo >&2
-            #                        continue
-            #                    }
-            #                done
-            #            fi
-            #        done
-            #    done
-            #    
-            #fi
+            if ! [ -z ${MPIEXEC_PATH+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
 
+                #echo >&2
+                #echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the the mpiexec executable file..."
+                #echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${MPIEXEC_PATH}*"
+                #echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+                #yes | \cp -rf "${MPIEXEC_PATH}"* "${ParaMonteExample_LIB_DIR_CURRENT}/"
+                MPI_BIN_DIR=$(dirname "${MPIEXEC_PATH}")
+                MPI_ROOT_DIR="${MPI_BIN_DIR}"/..
+                MPI_LIB_DIR_LIST="${MPI_ROOT_DIR}/lib:${MPI_ROOT_DIR}/lib64"
+                # copy all so files
+                for MPI_LIB_DIR in ${MPI_LIB_DIR_LIST//:/ }
+                do
+                    echo >&2
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${MPI_LIB_DIR}/*.so*"
+                    echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+                    if [ -d "${MPI_LIB_DIR}" ]; then
+                        cp -rf "${MPI_LIB_DIR}/"*.so* "${ParaMonteExample_LIB_DIR_CURRENT}/" && break || {
+                            echo >&2 "-- ParaMonteExample${LANG_NAME} - copy failed. skipping..."
+                        }
+                    fi
+                done
+                #keyList="libmpi:libmpifort"
+                #for key in ${keyList//:/ }
+                #do
+                #    for MPI_LIB_DIR in ${MPI_LIB_DIR_LIST//:/ }
+                #    do
+                #        if [ -d "${MPI_LIB_DIR}" ]; then
+                #            find "${MPI_LIB_DIR}" -name "${key}.so"* -print0 |
+                #            while IFS= read -r -d '' libMpiPath; do
+                #                echo >&2
+                #                echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
+                #                echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${libMpiPath}"
+                #                echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+                #                #yes | \cp -rf "${libMpiPath}" "${ParaMonteExample_LIB_DIR_CURRENT}/" && {
+                #                yes | \cp -rf "${libMpiPath}" "${ParaMonteExample_LIB_DIR_CURRENT}/"
+                #            done
+                #        fi
+                #    done
+                #done
+
+                ##### copy numa shared files
+                #
+                #FILE_LIST="libnuma.so:libpciaccess.so"
+                #FILE_DIR_LIST="/usr/lib64"
+                #for FILE in ${FILE_LIST//:/ }
+                #do
+                #    for FILE_DIR in ${FILE_DIR_LIST//:/ }
+                #    do
+                #        if [ -d "${FILE_DIR}" ]; then
+                #            flist=$(( IFS=:; unset lsout; lsout=$(ls -dm "${FILE_DIR}/${FILE}"*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi) 2>/dev/null)
+                #            for fpath in $(echo $flist | sed "s/,/ /g"); do
+                #                echo >&2
+                #                echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
+                #                echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${fpath}"
+                #                echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+                #                (yes | \cp -rf "${fpath}" "${ParaMonteExample_LIB_DIR_CURRENT}/") >/dev/null 2>&1 || {
+                #                    echo >&2
+                #                    echo >&2 "-- ParaMonteExample${LANG_NAME} - WARNING: A ParaMonte library dll dependency file copy attempt failed at: ${fpath}"
+                #                    echo >&2
+                #                    continue
+                #                }
+                #            done
+                #        fi
+                #    done
+                #done
+
+            fi
+
+        fi
+
+        #### intel
+
+        if [ "${PMCS}" = "intel" ] && ! [ -z ${MPIEXEC_PATH+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
+            #echo >&2
+            #echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the the mpiexec executable file..."
+            #echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${MPIEXEC_PATH}*"
+            #echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+            #yes | \cp -rf "${MPIEXEC_PATH}"* "${ParaMonteExample_LIB_DIR_CURRENT}/"
+            MPI_BIN_DIR=$(dirname "${MPIEXEC_PATH}")
+            MPI_ROOT_DIR="${MPI_BIN_DIR}"/..
+            MPI_LIB_DIR_LIST="${MPI_ROOT_DIR}/lib:${MPI_ROOT_DIR}/lib64"
+            # copy all so files
+            for MPI_LIB_DIR in ${MPI_LIB_DIR_LIST//:/ }
+            do
+                echo >&2
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library dll dependency file..."
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${MPI_LIB_DIR}/libmpifort.so*"
+                echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${MPI_LIB_DIR}/libmpi.so*"
+                echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_LIB_DIR_CURRENT}/"
+                thisIntelBuild="${BTYPE}"; if [ "${BTYPE}" = "testing" ]; then thisIntelBuild="release"; fi
+                if [ -d "${MPI_LIB_DIR}" ]; then
+                    cp -rf "${MPI_LIB_DIR}/"libmpifort.so* "${ParaMonteExample_LIB_DIR_CURRENT}/" && \
+                    cp -rf "${MPI_LIB_DIR}/${thisIntelBuild}_mt/"libmpi.so* "${ParaMonteExample_LIB_DIR_CURRENT}/" && \
+                    break || {
+                        echo >&2 "-- ParaMonteExample${LANG_NAME} - copy failed. skipping..."
+                    }
+                fi
+            done
         fi
 
     fi
