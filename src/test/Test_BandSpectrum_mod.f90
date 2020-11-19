@@ -130,12 +130,12 @@ contains
         !call Test%run(test_getEnergyFluence_2, "test_getEnergyFluence_2")
         !call Test%run(test_getEnergyFluence_3, "test_getEnergyFluence_3")
         !call Test%run(test_getEnergyFluence_4, "test_getEnergyFluence_4")
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_1, "test_getPhotonFluenceFromEnergyFluence_1")
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_2, "test_getPhotonFluenceFromEnergyFluence_2")
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_3, "test_getPhotonFluenceFromEnergyFluence_3")
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_4, "test_getPhotonFluenceFromEnergyFluence_4")
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_5, "test_getPhotonFluenceFromEnergyFluence_5")
-        call Test%finalize()
+        !call Test%run(test_getPhotonFluenceFromEnergyFluence_1, "test_getPhotonFluenceFromEnergyFluence_1")
+        !call Test%run(test_getPhotonFluenceFromEnergyFluence_2, "test_getPhotonFluenceFromEnergyFluence_2")
+        !call Test%run(test_getPhotonFluenceFromEnergyFluence_3, "test_getPhotonFluenceFromEnergyFluence_3")
+        !call Test%run(test_getPhotonFluenceFromEnergyFluence_4, "test_getPhotonFluenceFromEnergyFluence_4")
+        !call Test%run(test_getPhotonFluenceFromEnergyFluence_5, "test_getPhotonFluenceFromEnergyFluence_5")
+        !call Test%finalize()
     end subroutine test_BandSpectrum
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
