@@ -79,7 +79,7 @@ contains
     ! integrate the Gaussian PDF via the midexp routine on the open interval \f$[0, +\infty)\f$.
     function test_doQuadRombOpen_1() result(assertion)
 
-        use Constants_mod, only: RK, IK
+        use Constants_mod, only: RK, IK, HUGE_RK
         use Integration_mod
 
         implicit none
@@ -93,7 +93,7 @@ contains
         call doQuadRombOpen ( getFunc = getTestFuncOpenInterval_1 &
                             , integrate = midexp &
                             , lowerLim = 0._RK &
-                            , upperLim = huge(0._RK) &
+                            , upperLim = HUGE_RK &
                             , maxRelativeError = 0.1*tolerance &
                             , nRefinement = 10_IK &
                             , integral = integral &
