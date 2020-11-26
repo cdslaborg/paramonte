@@ -69,7 +69,7 @@
 !>
 !>  For information about the usage and examples visit **the ParaMonte documentation and examples website** at:
 !>
-!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte/**](https://www.cdslab.org/paramonte/).
+!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte/**](https://www.cdslab.org/paramonte/)
 !>
 !>  ### ParaMonte API documentation website
 !>
