@@ -69,7 +69,7 @@
 !>
 !>  For information about the usage and examples visit **the ParaMonte documentation and examples website** at:
 !>
-!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte/**](https://www.cdslab.org/paramonte/)
+!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte**](https://www.cdslab.org/paramonte)
 !>
 !>  ### ParaMonte API documentation website
 !>
@@ -89,7 +89,7 @@
 !>  and instructions on how to use he ParaDRAM sampler in your
 !>  language of choice, visit:
 !>
-!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte/notes/usage/paradram/interface/**](https://www.cdslab.org/paramonte/notes/usage/paradram/interface/)
+!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte/notes/usage/paradram/interface**](https://www.cdslab.org/paramonte/notes/usage/paradram/interface)
 !>
 !>  Naming conventions
 !>  ==================
