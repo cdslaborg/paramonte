@@ -91,6 +91,7 @@ module System_mod
 
     !> The `Shell_type` class.
     type :: Shell_type
+        logical                         :: isSh         = .false.   !< The logical value indicating whether the shell is Unix sh.
         logical                         :: isCMD        = .false.   !< The logical value indicating whether the shell is Windows CMD.
         logical                         :: isZsh        = .false.   !< The logical value indicating whether the shell is Unix zsh.
         logical                         :: isCsh        = .false.   !< The logical value indicating whether the shell is Unix csh.
@@ -160,6 +161,7 @@ module System_mod
     ! cache the OS query result to speed up code
 
     logical                             :: mv_osCacheEnabled = .false.
+    logical                             :: mv_shCacheEnabled = .false.
     type(OS_type)                       :: mv_OS
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,7 +194,7 @@ contains
     !> Query all attributes of the [OS_type](@ref os_type) class: `name`, `slash`, `isWindows`, `Err`.
     !>
     !> \param[out]  OS                  :   An object of class [OS_type](@ref os_type).
-    !> \param[in]   shellQueryEnabled   :   A logical variable indicating if the type and name of the current 
+    !> \param[in]   shellQueryEnabled   :   A logical variable indicating if the type and name of the current
     !>                                      runtime shell should be queried or not (optional, default = `.false.`).
     subroutine queryOS(OS, shellQueryEnabled)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -211,20 +213,34 @@ contains
         character(:)    , allocatable           :: osname
 #endif
 
+        shellQueryEnabledDefault = .false.
+        if (present(shellQueryEnabled)) shellQueryEnabledDefault = shellQueryEnabled
+        OS%Err%occurred = .false.
+        OS%Err%msg = ""
+
         if (mv_osCacheEnabled) then
+
             OS%name         = mv_OS%name
             OS%slash        = mv_OS%slash
             OS%isWindows    = mv_OS%isWindows
             OS%isDarwin     = mv_OS%isDarwin
             OS%isLinux      = mv_OS%isLinux
-            OS%Shell        = mv_OS%Shell
-            return
-        end if
 
-        shellQueryEnabledDefault = .false.
-        if (present(shellQueryEnabled)) shellQueryEnabledDefault = shellQueryEnabled
-        OS%Err%occurred = .false.
-        OS%Err%msg = ""
+            if (mv_shCacheEnabled) then
+                OS%Shell    = mv_OS%Shell
+            else
+                mv_shCacheEnabled = .true.
+                call OS%Shell%query(OS%isWindows)
+                if (OS%Shell%Err%occurred) then
+                    OS%Err = OS%Shell%Err
+                    return
+                end if
+                mv_OS%Shell = OS%Shell
+            end if
+
+            return
+
+        end if
 
 #if defined OS_IS_WINDOWS
 
@@ -373,7 +389,6 @@ contains
 
 #endif
 
-        if (shellQueryEnabledDefault) call OS%Shell%query(OS%isWindows)
 
         mv_osCacheEnabled = .true.
         mv_OS%name      = OS%name
@@ -381,7 +396,22 @@ contains
         mv_OS%isWindows = OS%isWindows
         mv_OS%isDarwin  = OS%isDarwin
         mv_OS%isLinux   = OS%isLinux
-        mv_OS%Shell     = OS%Shell
+
+        if (shellQueryEnabledDefault) then
+
+            if (mv_shCacheEnabled) then
+                OS%Shell    = mv_OS%Shell
+            else
+                mv_shCacheEnabled = .true.
+                call OS%Shell%query(OS%isWindows)
+                if (OS%Shell%Err%occurred) then
+                    OS%Err = OS%Shell%Err
+                    return
+                end if
+                mv_OS%Shell = OS%Shell
+            end if
+
+        end if
 
     end subroutine queryOS
 
@@ -401,7 +431,7 @@ contains
         type(RandomFileName_type)           :: RFN
         type(FileContents_type)             :: FileContents
         character(:), allocatable           :: command
-        integer                             :: exitstat
+        logical                             :: fileExists
 
         ! create a random output file name
 
@@ -420,9 +450,9 @@ contains
 
         !command = "echo $0 >" // RFN%path // " 2>&1 && echo $SHELL >" // RFN%path // " 2>&1"
         command = "echo $0 >" // RFN%path // " 2>&1"
-
-        call executeCmd( command = command, exitstat = exitstat, Err = Shell%Err )
-        if (Shell%Err%occurred .or. exitstat/=0) then
+        call executeCmd( command = command, Err = Shell%Err )
+        inquire(file = RFN%path, exist = fileExists)
+        if (Shell%Err%occurred .or. .not. fileExists) then
             Shell%Err%msg = PROCEDURE_NAME // ": Error occurred while executing the Unix command "// command // NLC // Shell%Err%msg
             Shell%name = ""
             return
@@ -430,7 +460,7 @@ contains
 
         ! read the command output
 
-        FileContents = FileContents_type(RFN%path, delEnabled = .true.)
+        FileContents = FileContents_type(RFN%path)!, delEnabled = .true.)
         if (FileContents%Err%occurred) then
             Shell%Err%occurred = .true.
             Shell%Err%msg = PROCEDURE_NAME // FileContents%Err%msg
@@ -443,7 +473,8 @@ contains
             Shell%isZsh     = index(Shell%name,"zsh") > 0
             Shell%isCsh     = index(Shell%name,"csh") > 0
             Shell%isBash    = index(Shell%name,"bash") > 0
-            Shell%isUnix    = Shell%isBash .or. Shell%isZsh .or. Shell%isCsh
+            Shell%isSh      = .false.; if (.not. (Shell%isBash .or. Shell%isZsh .or. Shell%isCsh)) Shell%isSh = index(Shell%name,"sh") > 0
+            Shell%isUnix    = (.not. isWindowsOS) .or. Shell%isBash .or. Shell%isZsh .or. Shell%isCsh .or. Shell%isSh
         end if
 
         if (Shell%isUnix) return
@@ -456,8 +487,8 @@ contains
 
             command = "(dir 2>&1 *`|echo CMD >temp.txt);&<# rem #>echo PowerShell >temp.txt 2>&1"
 
-            call executeCmd( command = command, exitstat = exitstat, Err = Shell%Err )
-            if (Shell%Err%occurred .or. exitstat/=0) then
+            call executeCmd( command = command, Err = Shell%Err )
+            if (Shell%Err%occurred .or. .not. fileExists) then
                 Shell%Err%msg = PROCEDURE_NAME // ": Error occurred while executing the Windows command "// command // NLC // Shell%Err%msg
                 Shell%name = ""
                 return
