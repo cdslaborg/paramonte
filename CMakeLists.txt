@@ -444,7 +444,7 @@ set(ParaMonteKernel_SRC_DIR
     CACHE PATH "ParaMonte source files directory" )
 
 set(ParaMonteTest_SRC_DIR
-    "${CMAKE_SOURCE_DIR}/src/test"
+    "${CMAKE_SOURCE_DIR}/src/kernel/tests"
     CACHE PATH "ParaMonte test source files directory" )
 
 # set the ParaMonte interface source files directory and loop over them to ensure their existence
