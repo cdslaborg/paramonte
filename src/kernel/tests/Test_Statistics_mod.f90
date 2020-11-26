@@ -566,7 +566,7 @@ contains
         integer(IK) , parameter :: np = 2_IK
         integer(IK) , parameter :: nd = 3_IK
         real(RK)    , parameter :: tolerance = 1.e-12_RK
-        real(RK)    , parameter :: Point(nd,np) = [(real(i,RK),i=1,nd*np)]
+        real(RK)    , parameter :: Point(nd,np) = reshape( [(real(i,RK),i=1,nd*np)], shape = shape(Point) )
         real(RK)    , parameter :: MeanVec(nd) = [(real(i**2+1._RK,RK),i=1,nd)]
         real(RK)    , parameter :: InvCovMat(nd,nd) = reshape(  [ 1.500000000000000_RK, 0.000000000000000_RK, -0.50000000000000_RK &
                                                                 , 0.000000000000000_RK, 0.500000000000000_RK, 0.000000000000000_RK &
@@ -728,7 +728,7 @@ contains
         real(RK)    , parameter :: tolerance = 1.e-12_RK
         integer(IK) , parameter :: np = 2_IK
         integer(IK) , parameter :: nd = 3_IK
-        complex(CK) , parameter :: Point(nd,np) = cmplx([(real(i,RK),i=1,nd*np)], kind=RK)
+        complex(CK) , parameter :: Point(nd,np) = reshape( cmplx([(real(i,RK),i=1,nd*np)], kind=RK), shape = shape(Point) )
         complex(CK) , parameter :: MeanVec(nd) = cmplx([(real(i**2+1._RK,RK),i=1,nd)], kind=RK)
         complex(CK) , parameter :: InvCovMat(nd,nd) = cmplx( reshape(  [ 1.500000000000000_RK, 0.000000000000000_RK, -0.50000000000000_RK &
                                                                     , 0.000000000000000_RK, 0.500000000000000_RK, 0.000000000000000_RK &
