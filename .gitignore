@@ -197,3 +197,4 @@ _deps
 
 *.R
 *.r.*
+.Rproj.user

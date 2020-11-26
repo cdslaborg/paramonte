@@ -49,6 +49,8 @@ module Integration_mod
 
     implicit none
 
+    character(*), parameter :: MODULE_NAME = "@Integration_mod"
+
     real(RK), parameter :: ONE_THIRD = 1._RK / 3._RK
 
     character(len=117)  :: ErrorMessage(3) = &
@@ -189,19 +191,19 @@ contains
         integer(IK)                 :: refinementStage,km,numFuncEvalNew
         integer(IK) , parameter     :: NSTEP = 20_IK
         real(RK)    , parameter     :: ONE_OVER_NINE = 1._RK / 9._RK
-        real(RK)                    :: h(NSTEP+1),s(NSTEP+1)
+        real(RK)                    :: h(NSTEP+1), s(NSTEP+1)
         procedure(integrand_proc)   :: getFunc
         procedure(integrator_proc)  :: integrate
         ierr = 0_IK
-        km = nRefinement - 1
-        h(1) = 1.0_RK
+        km = nRefinement - 1_IK
+        h(1) = 1._RK
         numFuncEval = 0_IK
         do refinementStage = 1, NSTEP
             call integrate(getFunc,lowerLim,upperLim,s(refinementStage),refinementStage,numFuncEvalNew)
             numFuncEval = numFuncEval + numFuncEvalNew
             if (refinementStage>=nRefinement) then
-                call doPolInterp(h(refinementStage-km),s(refinementStage-km),nRefinement,0.0_RK,integral,relativeError,ierr)
-                if ( abs(relativeError)<=maxRelativeError*abs(integral) .or. ierr/=0_IK ) return
+                call doPolInterp(h(refinementStage-km),s(refinementStage-km),nRefinement,0._RK,integral,relativeError,ierr)
+                if ( abs(relativeError) <= maxRelativeError * abs(integral) .or. ierr/=0_IK ) return
             end if
             s(refinementStage+1)=s(refinementStage)
             h(refinementStage+1)=h(refinementStage)*ONE_OVER_NINE
@@ -276,7 +278,7 @@ contains
         procedure(integrand_proc)   :: getFunc
         if (refinementStage==1) then
             numFuncEval = 2_IK
-            integral = 0.5_RK*(upperLim-lowerLim)*(getFunc(lowerLim)+getFunc(upperLim))
+            integral = 0.5_RK * (upperLim - lowerLim) * ( getFunc(lowerLim) + getFunc(upperLim) )
         else
             numFuncEval = 2**(refinementStage-2)
             tnm = real(numFuncEval,kind=RK)
@@ -284,15 +286,32 @@ contains
             x = lowerLim + 0.5_RK * del
             sum = 0._RK
             do iFuncEval = 1, numFuncEval
-                sum=sum+getFunc(x)
-                x=x+del
+                sum = sum + getFunc(x)
+                x = x + del
             end do
-            integral=0.5_RK*(integral+(upperLim-lowerLim)*sum/tnm)
+            integral = 0.5_RK * (integral + (upperLim-lowerLim) * sum / tnm)
         endif
     end subroutine doQuadTrap
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the refinement of the integration of an exponentially-decaying function on a semi-infinite.
+    !> This function is an integrator driver to be passed to [doQuadRombOpen](@ref doquadrombopen).
+    !>
+    !> \param[in]       getFunc         :   The input function to be integrated. It must have the interface specified by
+    !!                                      [integrand_proc](@ref integrand_proc).
+    !> \param[in]       lowerLim        :   The lower limit of integration.
+    !> \param[in]       upperLim        :   The upper limit of integration (typically set to `huge(1._RK)` to represent \f$+\infty\f$).
+    !> \param[inout]    integral        :   The result of integration.
+    !> \param[in]       refinementStage :   The number of refinements since the first call to the integrator.
+    !> \param[out]      numFuncEval     :   The number of function evaluations made.
+    !>
+    !> \remark
+    !> It is expected that `upperLim > lowerLim > 0.0` must hold for this integrator to function properly.
+    !>
+    !> \remark
+    !> Tested by Joshua Osborne on 5/28/2020 at 8:58 pm.
     recursive subroutine midexp(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: midexp
@@ -308,7 +327,7 @@ contains
         integer(IK)                 :: iFuncEval
         upperLimTrans = exp(-lowerLim)
         lowerLimTrans = exp(-upperLim)
-        if (refinementStage==1) then
+        if (refinementStage==1_IK) then
             numFuncEval = 1_IK
             integral = (upperLimTrans-lowerLimTrans)*getTransFunc(0.5_RK*(lowerLimTrans+upperLimTrans))
         else
@@ -317,7 +336,7 @@ contains
             del = (upperLimTrans-lowerLimTrans) * inverseThreeNumFuncEval
             ddel = del + del
             x = lowerLimTrans + 0.5_RK*del
-            summ=0._RK
+            summ = 0._RK
             do iFuncEval = 1,numFuncEval
                 summ = summ + getTransFunc(x)
                 x = x + ddel
@@ -339,7 +358,10 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Integrate a function on a semi-infinite interval.
+    !> This routine is an exact replacement for [midpnt](@ref midpnt), i.e., returns as `integral` the nth stage of refinement
+    !> of the integral of funk from `lowerLim` to `upperLim`, except that the function is evaluated at evenly spaced
+    !> points in `1/x` rather than in `x`. This allows the upper limit `upperLim` to be as large and positive
+    !> as the computer allows, or the lower limit `lowerLim` to be as large and negative, but not both.
     !>
     !> \param[in]       getFunc         :   The input function to be integrated. It must have the interface specified by
     !!                                      [integrand_proc](@ref integrand_proc).
@@ -349,7 +371,7 @@ contains
     !> \param[in]       refinementStage :   The number of refinements since the first call to the integrator.
     !> \param[out]      numFuncEval     :   The number of function evaluations made.
     !>
-    !> \remark
+    !> \warning
     !> `lowerLim * upperLim > 0.0` must hold for this integrator to function properly.
     !>
     !> \remark
@@ -396,6 +418,23 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This routine computes the nth stage of refinement of an extended midpoint rule.
+    !> When called with `n = 1`, the routine returns as `integral` the crudest estimate of \f$\int_a^b f(x) ~ dx\f$.
+    !> Subsequent calls with `n = 2, 3, ...` (in that sequential order) will improve the accuracy of `integral` by adding
+    !> `(2/3) * 3n-1` additional interior points.
+    !>
+    !> \param[in]       getFunc         :   The input function to be integrated. It must have the interface specified by
+    !!                                      [integrand_proc](@ref integrand_proc).
+    !> \param[in]       lowerLim        :   The lower limit of integration.
+    !> \param[in]       upperLim        :   The upper limit of integration.
+    !> \param[inout]    integral        :   The result of integration.
+    !> \param[in]       refinementStage :   The number of refinements since the first call to the integrator.
+    !> \param[out]      numFuncEval     :   The number of function evaluations made.
+    !>
+    !> \warning
+    !> The argument `integral` should not be modified between sequential calls.
+    !>
     !> \remark
     !> Tested by Joshua Osborne on 5/28/2020 at 8:55 pm.
     subroutine midpnt(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)

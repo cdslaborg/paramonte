@@ -622,6 +622,7 @@ class BasePlot:
 
         import seaborn as sns
         from matplotlib import pyplot as plt
+        plt.ion() # turn on the interactive mode. Used to detach the figure from the command line in ipython
         if self._type.is3d: from mpl_toolkits.mplot3d import Axes3D
 
         if self.set.enabled:
@@ -685,6 +686,7 @@ class BasePlot:
             plt.tight_layout()
 
         self._progress.note()
+
 
     ################################################################################################################################
     #### _checkDataType

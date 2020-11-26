@@ -403,7 +403,7 @@ contains
     !> @param[in]   prefix      :   The prefix of the target IO record (optional, default = "").
     !>
     !> \return
-    !> formatStr : The output format string to be used in IO.
+    !> `formatStr` : The output format string to be used in IO.
     pure function getGenericFormat(width,precision,delim,prefix) result(formatStr)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat
@@ -422,7 +422,7 @@ contains
         character(:), allocatable           :: delimDefault
 
         widthStr = "0"; if (present(width)) widthStr = num2str(width)
-        precisionStr = ".0"; if (present(precision)) precisionStr = "."//num2str(precision)
+        precisionStr = ""; if (present(precision)) precisionStr = "."//num2str(precision)
         delimDefault = ""; if (present(delim)) delimDefault = ",:,'"//delim//"'"
         formatStr = "*(g"//widthStr//precisionStr//delimDefault//"))"
         if (present(prefix)) then

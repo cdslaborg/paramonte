@@ -367,6 +367,7 @@ class Target:
         ############################################################################################################################
 
         from matplotlib import pyplot as plt
+        plt.ion() # turn on the interactive mode. Used to detach the figure from the command line in ipython
 
         # generate figure and axes if needed
 

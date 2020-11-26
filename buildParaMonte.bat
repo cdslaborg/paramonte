@@ -593,7 +593,7 @@ if !ParaMonteTest_RUN_ENABLED!==true set ParaMonteTest_ENABLED=true
 
 :: set path to ParaMonte test source files
 
-set ParaMonteTest_SRC_DIR=!ParaMonte_ROOT_DIR!src\test
+set ParaMonteTest_SRC_DIR=!ParaMonte_ROOT_DIR!src\kernel\tests
 if exist !ParaMonteTest_SRC_DIR! (
     echo. 
     echo. -- !BUILD_SCRIPT_NAME! - ParaMonte library test source files directory: !ParaMonteTest_SRC_DIR!

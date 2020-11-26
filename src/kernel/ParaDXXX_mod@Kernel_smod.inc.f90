@@ -261,7 +261,7 @@ contains
             call mpi_barrier(mpi_comm_world,ierrMPI)
 #endif
 
-            blockMasterSetup: if (self%Image%isMaster) then
+            blockLeaderSetup: if (self%Image%isLeader) then
 
                 ! set up the chain file
 
@@ -317,11 +317,11 @@ contains
 
                 adaptationMeasureLen = maxval(self%Chain%Weight(1:self%Chain%Count%compact-CHAIN_RESTART_OFFSET))
 
-            end if blockMasterSetup
+            end if blockLeaderSetup
 
         end if blockDryRunSetup
 
-        if (self%Image%isMaster) then
+        if (self%Image%isLeader) then
             if (allocated(AdaptationMeasure)) deallocate(AdaptationMeasure); allocate(AdaptationMeasure(adaptationMeasureLen))
         end if
 
@@ -381,7 +381,7 @@ contains
             co_proposalFound_samplerUpdateOccurred(2) = 0_IK ! at each iteration assume no samplerUpdateOccurred, unless it occurs
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
-            blockMasterImage: if (self%Image%isMaster) then
+            blockLeaderImage: if (self%Image%isLeader) then
 #endif
 
                 co_proposalFound_samplerUpdateOccurred(1) = 0_IK ! co_proposalFound = .false.
@@ -658,7 +658,7 @@ contains
                     call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
                 end if
 
-            else blockMasterImage   ! ATTN: This block should be executed only when singlChain parallelizationModel is requested
+            else blockLeaderImage   ! ATTN: This block should be executed only when singlChain parallelizationModel is requested
 
                 sync images(1)
 
@@ -688,11 +688,11 @@ contains
 #endif
                 end if
 
-            end if blockMasterImage
+            end if blockLeaderImage
 
 #elif defined MPI_ENABLED
 
-            else blockMasterImage   ! This block should be executed only when singlChain parallelizationModel is requested
+            else blockLeaderImage   ! This block should be executed only when singlChain parallelizationModel is requested
 
                 ! fetch the winning rank from the main process
 
@@ -740,7 +740,7 @@ contains
 #endif
                 end if
 
-            end if blockMasterImage
+            end if blockLeaderImage
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% begin Common block between all images %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -802,7 +802,7 @@ contains
         end if
 
 
-        if (self%Image%isMaster) then
+        if (self%Image%isLeader) then
             block
                 integer(IK) :: i
                 if (self%SpecDRAM%BurninAdaptationMeasure%val>0.999999_RK) then

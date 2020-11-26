@@ -505,6 +505,7 @@ class HeatMapPlot(BasePlot):
 
         import seaborn as sns
         import matplotlib.pyplot as plt
+        plt.ion() # turn on the interactive mode. Used to detach the figure from the command line in ipython
 
         ############################################################################################################################
         #### generate figure and axes if needed

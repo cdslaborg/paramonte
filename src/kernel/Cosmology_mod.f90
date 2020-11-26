@@ -56,7 +56,7 @@ module Cosmology_mod
     real(RK), parameter :: LIGHT_SPEED = 3.e5_RK                                    !< @public LIGHT_SPEED is the speed of light (Km/s).
     real(RK), parameter :: HUBBLE_CONST = 7.1e1_RK                                  !< @public HUBBLE_CONST is the Hubble constant in units of km/s/MPc.
     real(RK), parameter :: HUBBLE_TIME_GYRS = 13.8_RK                               !< @public hubble time (liddle 2003, page 57) in units of gyrs
-    real(RK), parameter :: INVERSE_HUBBLE_CONST = 1._RK / HUBBLE_CONST              !< @public inverse of HUBBLE_CONST.
+    real(RK), parameter :: INVERSE_HUBBLE_CONST = 1._RK / HUBBLE_CONST              !< @public inverse of HUBBLE_CONST: 0.014084507042254
     real(RK), parameter :: LS2HC = LIGHT_SPEED / HUBBLE_CONST                       !< @public the speed of light in units of km/s divided by the Hubble constant.
     real(RK), parameter :: LOGLS2HC = log(LIGHT_SPEED) - log(HUBBLE_CONST)          !< @public log speed of light in units of km/s divided by the Hubble constant.
     real(RK), parameter :: MPC2CM = 3.09e24_RK                                      !< @public 1 Mega Parsec = MPC2CM centimeters.
@@ -87,9 +87,9 @@ contains
         use Constants_mod, only: RK, PI
         implicit none
         real(RK), intent(in)    :: zplus1, logzplus1, twiceLogLumDisMpc
-        real(RK), parameter     :: LOG_COEF = log(4._RK*PI*LS2HC)
+        real(RK), parameter     :: LOG_COEF = log(4*PI*LS2HC)
         real(RK)                :: logdvdz
-        logdvdz = LOG_COEF + twiceLogLumDisMpc - ( 2._RK*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+omega_DE) )
+        logdvdz = LOG_COEF + twiceLogLumDisMpc - ( 2*logzplus1 + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) )
     end function getlogdvdz
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -100,7 +100,7 @@ contains
     !> @param[in]   zplus1 : The redshift plus 1.
     !>
     !> \return
-    !> logLumDisWicMpc : The approximate logarithm of the cosmological luminosity distance.
+    !> `logLumDisWicMpc` : The approximate logarithm of the cosmological luminosity distance.
     !>
     !> \warning
     !> The approximation is accurate with a relative error of 0.001 for any redshift above 0.1, or `zplus1 >= 1.1`.
@@ -137,17 +137,18 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return the approximate logarithm of the cosmological luminosity distance.
+    !> Return the approximation to the cosmological luminosity distance.
     !>
     !> @param[in]   zplus1 : The redshift plus 1.
     !>
     !> \return
-    !> ldiswickram : The approximate logarithm of the cosmological luminosity distance.
+    !> `ldiswickram` : The approximate cosmological luminosity distance.
     !>
     !> The approximation is accurate with a relative error of 0.001 for any redshift above 0.1.
     !>
     !> \remark
-    !> This function is the same as [getLogLumDisWicMpc()](@ref getloglumdiswicmpc) function.
+    !> This function is the same as [getLogLumDisWicMpc()](@ref getloglumdiswicmpc) function,
+    !> except for the fact that it return the natural value, as opposed to the natural logarithm.
     !> It is kept only for legacy reasons and should not be used in new code.
     pure function ldiswickram(zplus1)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -157,13 +158,13 @@ contains
         implicit none
         real(RK), intent(in)    :: zplus1
         real(RK)                :: ldiswickram,alpha,alpha0,x,x0,psi,psi0
-        alpha=1.d0+2.d0*OMEGA_DE/(OMEGA_DM*zplus1**3)
-        alpha0=1.d0+2.d0*OMEGA_DE/OMEGA_DM
-        x=log(alpha+sqrt(alpha*alpha-1.d0))
-        x0=log(alpha0+sqrt(alpha0*alpha0-1.d0))
-        psi=x**0.33333333*(1.5874010519682-6.2992105236833d-3*x*x+7.5375168659459d-5*x**4)
-        psi0=x0**0.33333333*(1.5874010519682-6.2992105236833d-3*x0*x0+7.5375168659459d-5*x0**4)
-        ldiswickram=LS2HC*zplus1*(psi0-psi)/(OMEGA_DE**0.16666666*OMEGA_DM**0.33333333)
+        alpha=1._RK+2*OMEGA_DE/(OMEGA_DM*zplus1**3)
+        alpha0=1._RK+2*OMEGA_DE/OMEGA_DM
+        x=log(alpha+sqrt(alpha*alpha-1._RK))
+        x0=log(alpha0+sqrt(alpha0*alpha0-1._RK))
+        psi=x**0.333333333333333_RK*(1.5874010519682_RK-6.2992105236833e-3_RK*x*x+7.5375168659459e-5_RK*x**4)
+        psi0=x0**0.333333333333333_RK*(1.5874010519682_RK-6.2992105236833e-3_RK*x0*x0+7.5375168659459e-5_RK*x0**4)
+        ldiswickram=LS2HC*zplus1*(psi0-psi)/(OMEGA_DE**0.1666666666666667_RK*OMEGA_DM**0.333333333333333_RK)
     end function ldiswickram
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -204,8 +205,8 @@ contains
         real(RK)                            :: maxRelativeErrorDefault, relerr
         integer(IK)                         :: neval, ierr, nRefinementDefault
 
-        nRefinementDefault = 7_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
         maxRelativeErrorDefault = 1.e-6_RK; if (present(maxRelativeError)) maxRelativeErrorDefault = maxRelativeError
+        nRefinementDefault = 7_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
 
         call doQuadRombClosed   ( getFunc           = getIntegrand              &
                                 , lowerLim          = ZPLUS1_MIN                &

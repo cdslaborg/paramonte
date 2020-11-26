@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains mathematical procedures.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Matrix_mod
 
@@ -55,11 +55,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the Cholesky factorization of the input positive-definite matrix.
     !>
-    !> @param[in]       nd          :   The size of the input square matrix - `nd` by `nd`.
-    !> @param[in,out]   PosDefMat   :   The input square matrix.
-    !> @param[out]      Diagonal    :   The Diagonal elements of the Cholesky factorization.
+    !> \param[in]       nd          :   The size of the input square matrix - `nd` by `nd`.
+    !> \param[in,out]   PosDefMat   :   The input square matrix.
+    !> \param[out]      Diagonal    :   The Diagonal elements of the Cholesky factorization.
     !>
     !> \remark
     !> If `nd = 1`, `PosDefMat` will not be touched, only `sqrt(PosDefMat)` will be output to `Diagonal`.
@@ -94,13 +95,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Solve the linear equation system of the form: \f$ \texttt{PosDefMat} \times \texttt{InputSolution} = \texttt{Intercept} \f$
     !>
-    !> @param[in]       nd              :   The size of the input square matrix - `nd` by `nd`.
-    !> @param[in]       PosDefMat       :   The input square matrix.
-    !> @param[in]       Diagonal        :   The Diagonal elements of the Cholesky factorization.
-    !> @param[in]       Intercept       :   The intercept.
-    !> @param[in,out]   InputSolution   :   The input right-hand-side which becomes the solution on return.
+    !> \param[in]       nd              :   The size of the input square matrix - `nd` by `nd`.
+    !> \param[in]       PosDefMat       :   The input square matrix.
+    !> \param[in]       Diagonal        :   The Diagonal elements of the Cholesky factorization.
+    !> \param[in]       Intercept       :   The intercept.
+    !> \param[in,out]   InputSolution   :   The input right-hand-side which becomes the solution on return.
     !>
     !> \remark
     !> `PosDefMat` and `Diagonal` are the output of subroutine [getCholeskyFactor](@ref getcholeskyfactor)
@@ -125,20 +127,25 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the inverse matrix of a symmetric-positive-definite input matrix, which is given in the upper triangle of `MatInvMat`.
     !> On output `MatInvMat` is completely overwritten by in the inverse of the matrix. Also, return the square root of determinant
     !> of the inverse matrix.
     !>
-    !> @param[in]       nd                  :   The size of the input square matrix - `nd` by `nd`.
-    !> @param[in,out]   MatInvMat           :   The input square matrix. On input, the upper half must be covariance matrix.
+    !> \param[in]       nd                  :   The size of the input square matrix - `nd` by `nd`.
+    !> \param[in,out]   MatInvMat           :   The input square matrix. On input, the upper half must be covariance matrix.
     !>                                          On output, it is completely overwritten by the inverse matrix.
-    !> @param[out]      sqrtDetInvPosDefMat :   The square root of the determinant of the inverse matrix.
+    !> \param[out]      sqrtDetInvPosDefMat :   The square root of the determinant of the inverse matrix.
     !>
     !> \warning
     !> Do not call this routine when `nd = 1`. There is no need to call this routine when `nd = 1`.
-    !> (i.g., only the lower triangle of `PosDefMat` is used).
     !>
-    !> @author Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
+    !> \warning
+    !> If the input matrix is not positive-definite, the output `sqrtDetInvPosDefMat`
+    !> will be set to `-1` on return to indicate the occurrence of an error.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
     pure subroutine getInvPosDefMatSqrtDet(nd,MatInvMat,sqrtDetInvPosDefMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvPosDefMatSqrtDet
@@ -188,12 +195,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the inverse matrix of a symmetric-positive-definite matrix, whose Cholesky Lower triangle is given in the lower part
     !> of `CholeskyLower` and and its diagonal elements in `Diagonal`.
     !>
-    !> @param[in]       nd              :   The size of the input square matrix - `nd` by `nd`.
-    !> @param[in]       CholeskyLower   :   The Cholesky factorization of the matrix.
-    !> @param[in]       Diagonal        :   The diagonal elements of the Cholesky factorization of the matrix.
+    !> \param[in]       nd              :   The size of the input square matrix - `nd` by `nd`.
+    !> \param[in]       CholeskyLower   :   The Cholesky factorization of the matrix.
+    !> \param[in]       Diagonal        :   The diagonal elements of the Cholesky factorization of the matrix.
     !>
     !> \return
     !> `InvMatFromCholFac` : The full inverse matrix.
@@ -201,7 +209,7 @@ contains
     !> \warning
     !> Do not call this routine when `nd = 1`. For `nd = 1`: `InvMatFromCholFac = 1._RK / Diagonal(1)^2`.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
     pure function getInvMatFromCholFac(nd,CholeskyLower,Diagonal) result(InvMatFromCholFac)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -245,10 +253,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the inverse matrix of an input symmetric-positive-definite matrix `PosDefMat`.
     !>
-    !> @param[in]   nd          :   The size of the input square matrix - `nd` by `nd`.
-    !> @param[in]   PosDefMat   :   The input symmetric-positive-definite matrix.
+    !> \param[in]   nd          :   The size of the input square matrix - `nd` by `nd`.
+    !> \param[in]   PosDefMat   :   The input symmetric-positive-definite matrix.
     !>
     !> \return
     !> `InvPosDefMat` : The full inverse matrix.
@@ -269,7 +278,7 @@ contains
     !> According to the timing tests, `compare_InvMatRoutines_1()`, the function version appears to be 15-30% faster than
     !> the subroutine version [getInvPosDefMatSqrtDet()](@ref getinvposdefmatsqrtdet).
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
     pure function getInvPosDefMat(nd,PosDefMat) result(InvPosDefMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -284,7 +293,7 @@ contains
         real(RK)                :: summ
         integer(IK)             :: i,j,k
        !if (nd==1) then
-       !    InvPosDefMat(1) = sqrt(PosDefMat(1))
+       !    InvPosDefMat(1,1) = 1._RK / sqrt(PosDefMat(1,1))
        !    return
        !end if
         do j=1,nd
@@ -293,7 +302,10 @@ contains
             end do
         end do
         call getCholeskyFactor(nd,CholeskyLower,Diagonal)
-        if (Diagonal(1)<0._RK) InvPosDefMat(1,1) = -1._RK   ! error occurred: getCholeskyFactor() failed in getInvPosDefMat()
+        if (Diagonal(1)<0._RK) then
+            InvPosDefMat = -1._RK   ! error occurred: getCholeskyFactor() failed in getInvPosDefMat()
+            return
+        end if
         do i = 1,nd
             CholeskyLower(i,i) = 1._RK / Diagonal(i)
             do j = i+1,nd
@@ -305,8 +317,7 @@ contains
             end do
         end do
         do i = 1,nd
-            InvPosDefMat(i,i) = dot_product(CholeskyLower(j:nd,j),CholeskyLower(j:nd,i))
-            do j = i+1,nd
+            do j = i,nd
                 InvPosDefMat(j,i) = dot_product(CholeskyLower(j:nd,j),CholeskyLower(j:nd,i))
                 InvPosDefMat(i,j) = InvPosDefMat(j,i)
             end do
@@ -315,12 +326,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the inverse matrix `InverseMatrix` of a `nd*nd` input matrix `MatrixLU`, and its determinant, using `LU` decomposition.
     !>
-    !> @param[in]       nd              : The size of the square matrix and its `LU` decomposition - `nd` by `nd`.
-    !> @param[inout]    MatrixLU        : The target symmetric-positive-definite matrix. On input it is the matrix, on output it is the LU decomposition.
-    !> @param[out]      InverseMatrix   : The input symmetric-positive-definite matrix.
-    !> @param[out]      detInvMat       : The determinant of the inverse of the symmetric-positive-definite matrix.
+    !> \param[in]       nd              : The size of the square matrix and its `LU` decomposition - `nd` by `nd`.
+    !> \param[inout]    MatrixLU        : The target symmetric-positive-definite matrix. On input it is the matrix, on output it is the LU decomposition.
+    !> \param[out]      InverseMatrix   : The input symmetric-positive-definite matrix.
+    !> \param[out]      detInvMat       : The determinant of the inverse of the symmetric-positive-definite matrix.
     !>
     !> \warning
     !> Do not call this routine when `nd = 1`. For `nd = 1`: `InverseMatrix = detInvMat = 1._RK / InverseMatrix`.
@@ -331,7 +343,7 @@ contains
     !> According to the timing tests, `compare_InvMatRoutines_1()`, the function version of this code [getInvMat()](@ref getinvmat)
     !> appears to be 15-30% faster than this subroutine version.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Oct 18, 2009, 1:54 AM, MTU
     subroutine getInvMatDet(nd,MatrixLU,InverseMatrix,detInvMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -360,10 +372,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the inverse matrix `InverseMatrix` of a `nd*nd` input matrix `Matrix`, and its determinant, using `LU` decomposition.
     !>
-    !> @param[in]       nd      :   The size of the square matrix and its `LU` decomposition - `nd` by `nd`.
-    !> @param[inout]    Matrix  :   The target symmetric-positive-definite matrix.
+    !> \param[in]       nd      :   The size of the square matrix and its `LU` decomposition - `nd` by `nd`.
+    !> \param[inout]    Matrix  :   The target symmetric-positive-definite matrix.
     !>
     !> \return
     !> `InverseMatrix` : The full inverse matrix.
@@ -374,7 +387,7 @@ contains
     !> According to the timing tests, `compare_InvMatRoutines_1()`, this function version appears
     !> to be 15-30% faster than the subroutine equivalent [getInvMatDet()](@ref getinvmatdet).
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 8, 2017, 1:54 PM, MTU
     function getInvMat(nd,Matrix) result(InverseMatrix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -402,12 +415,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Solve the set of `nd` linear equations `Matrix * X = InputSolution`.
     !>
-    !> @param[in]       nd              :   The size of the square matrix and its `LU` decomposition - `nd` by `nd`.
-    !> @param[in]       LU              :   The LU factorization of the matrix, determined by the routine [getLU()](@ref getlu).
-    !> @param[in]       Permutation     :   The permutation vector returned by [getLU()](@ref getlu).
-    !> @param[inout]    InputSolution   :   The right-hand-side vector of length `nd`.
+    !> \param[in]       nd              :   The size of the square matrix and its `LU` decomposition - `nd` by `nd`.
+    !> \param[in]       LU              :   The LU factorization of the matrix, determined by the routine [getLU()](@ref getlu).
+    !> \param[in]       Permutation     :   The permutation vector returned by [getLU()](@ref getlu).
+    !> \param[inout]    InputSolution   :   The right-hand-side vector of length `nd`.
     !>                                      On output, it is completely overwritten by the solution to the system.
     !>
     !> \remark
@@ -418,7 +432,7 @@ contains
     !> This routine takes into account the possibility that `InputSolution` will begin with many zero elements,
     !> and is therefore efficient for matrix inversion.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 8, 2017, 1:54 PM, MTU
     subroutine solveLinearSystem(nd, LU, Permutation, InputSolution)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -449,32 +463,34 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the LU decomposition of the input matrix `MatrixLU(nd,nd)`.
     !>
-    !> @param[in]       nd          :   The size of the square matrix and its `LU` decomposition - `nd` by `nd`.
-    !> @param[inout]    MatrixLU    :   The input matrix. On output, it is completely overwritten by its LU decomposition.
-    !> @param[out]      Permutation :   An output vector of length `nd` that records the row permutation effected by the partial pivoting.
-    !> @param[out]      Parity      :   An output real as `+-1` depending on whether the number of row interchanges was even or odd, respectively.
+    !> \param[in]       nd          :   The size of the square matrix and its `LU` decomposition - `nd` by `nd`.
+    !> \param[inout]    MatrixLU    :   The input matrix. On output, it is completely overwritten by its LU decomposition.
+    !> \param[out]      Permutation :   An output vector of length `nd` that records the row permutation effected by the partial pivoting.
+    !> \param[out]      Parity      :   An output real as `+-1` depending on whether the number of row interchanges was even or odd, respectively.
     !>
     !> \remark
     !> This routine is used in combination with [solveLinearSystem](@ref solvelinearsystem) to solve linear equations or invert a matrix.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:43 PM, ICES, UT Austin
-    subroutine getLU(nd,MatrixLU,Permutation,parity) !,errorMessage)
+    subroutine getLU(nd,MatrixLU,Permutation,parity) ! ,errorOccurred)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLU
 #endif
         use Constants_mod, only: RK, IK
         use, intrinsic :: iso_fortran_env, only: output_unit
-        !use Misc  , only: abortProgram
-        integer(IK), intent(in)    :: nd
-        integer(IK), intent(out)   :: Permutation(nd)
-        real(RK)   , intent(inout) :: MatrixLU(nd,nd)
-        real(RK)   , intent(out)   :: parity
-        real(RK)   , parameter     :: TINY = 1.e-20_RK
-        real(RK)                   :: aamax,dum,summ,vv(nd)
-        integer(IK)                :: i,imax,j,k
+        integer(IK) , intent(in)    :: nd
+        integer(IK) , intent(out)   :: Permutation(nd)
+        real(RK)    , intent(inout) :: MatrixLU(nd,nd)
+        real(RK)    , intent(out)   :: parity
+        !logical     , intent(out)   :: errorOccurred
+        real(RK)    , parameter     :: TINY = 1.e-20_RK
+        real(RK)                    :: aamax,dum,summ,vv(nd)
+        integer(IK)                 :: i,imax,j,k
+        !errorOccurred = .false.
         parity = 1._RK
         do i = 1,nd
             aamax = 0._RK
@@ -482,9 +498,10 @@ contains
                 if ( abs(MatrixLU(i,j)) > aamax ) aamax = abs( MatrixLU(i,j) )
             end do
             if (aamax == 0._RK) then
-                write(*,*) 'Statistics@getLU() failed. Singular matrix detected.'
-                stop
-                !call abortProgram( output_unit , 1 , 1 , 'Statistics@getLU() failed. Singular matrix detected.' )
+                write(*,*) "Statistics@getLU() failed. Singular matrix detected."
+                error stop
+                !errorOccurred = .true.
+                !return
             end if
             vv(i) = 1._RK/aamax
         end do
@@ -531,6 +548,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the product of two matrices.
     !> The product of two matrices is defined by `c(i,j) = a(i,1)*b(1,j) + a(i,2)*b(2,j) + ... + a(i,n)*b(n,j)`.
     !>
@@ -538,7 +556,7 @@ contains
     !> There is not reason to use this routine as the Fortran intrinsic already provides an optimized implementation of matrix
     !> multiplication via `matmul()`. It is present here only for archival and legacy reasons.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Oct 20, 2009, 10:56 PM, MTU
     subroutine multiplyMatrix(A,rowsA,colsA,B,rowsB,colsB,C)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -579,15 +597,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the determinant of a given `nd * nd` matrix via LU factorization.
     !>
-    !> @param[in]       nd      :   The size of the square matrix - `nd` by `nd`.
-    !> @param[in]       Matrix  :   The input matrix.
+    !> \param[in]       nd      :   The size of the square matrix - `nd` by `nd`.
+    !> \param[in]       Matrix  :   The input matrix.
     !>
     !> \return
     !> `determinant` : The determinant of the matrix.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Oct 18, 2009, 4:10 PM, MTU
     function getDeterminant(nd,Matrix) result(determinant)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -612,8 +631,8 @@ contains
 
     !> Return the square root of the determinant of a given positive-definite `nd * nd` matrix `PosDefMat` using Cholesky factorization.
     !>
-    !> @param[in]       nd          :   The size of the square matrix - `nd` by `nd`.
-    !> @param[in]       PosDefMat   :   The input matrix.
+    !> \param[in]       nd          :   The size of the square matrix - `nd` by `nd`.
+    !> \param[in]       PosDefMat   :   The input matrix.
     !>
     !> \return
     !> `sqrtDetPosDefMat` : The square root of the determinant of the matrix.
@@ -621,7 +640,7 @@ contains
     !> \warning
     !> If the input matrix is not positive definite, then `sqrtDetPosDefMat = -1._RK` upon return.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     function getSqrtDetPosDefMat(nd,PosDefMat) result(sqrtDetPosDefMat)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -649,15 +668,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the natural logarithm of the square root of the determinant of a given positive-definite `nd * nd` matrix `PosDefMat`
     !> using Cholesky factorization.
     !>
-    !> @param[in]       nd                  :   The size of the square matrix - `nd` by `nd`.
-    !> @param[inout]    PosDefMat           :   The input matrix. On input, the upper triangle should be given, which remains intact on output.
-    !> @param[out]      logSqrtDetPosDefMat :   The natural logarithm of the square root of the determinant of `PosDefMat`.
-    !> @param[out]      failed              :   A logical value. If `.true.`, the determinant computation has failed.
+    !> \param[in]       nd                  :   The size of the square matrix - `nd` by `nd`.
+    !> \param[inout]    PosDefMat           :   The input matrix. On input, the upper triangle should be given, which remains intact on output.
+    !> \param[out]      logSqrtDetPosDefMat :   The natural logarithm of the square root of the determinant of `PosDefMat`.
+    !> \param[out]      failed              :   A logical value. If `.true.`, the determinant computation has failed.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure subroutine getLogSqrtDetPosDefMat(nd,PosDefMat,logSqrtDetPosDefMat,failed)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -687,11 +707,12 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return `.false.` value for `isPosDef`, if the Cholesky decomposition of the input matrix fails
     !> (i.e. matrix is not positive definite), otherwise return `.true.`.
     !>
-    !> @param[in]       nd      :   The size of the square matrix - `nd` by `nd`.
-    !> @param[inout]    Matrix  :   The input matrix.
+    !> \param[in]       nd      :   The size of the square matrix - `nd` by `nd`.
+    !> \param[inout]    Matrix  :   The input matrix.
     !>
     !> \return
     !> `isPosDef` : A logical value indicating whether the input matrix is positive-definite.
@@ -699,7 +720,7 @@ contains
     !> \warning
     !> Do not call this routine when `nd = 1`. In such a case, if `Matrix(1,1) <= 0`, then the matrix is not positive-definite.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure logical function isPosDef(nd,Matrix)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -735,15 +756,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the outer product of the two input matrices.
     !>
-    !> @param[in]       Vector1 : The first input vector.
-    !> @param[in]       Vector2 : The second input vector.
+    !> \param[in]       Vector1 : The first input vector.
+    !> \param[in]       Vector2 : The second input vector.
     !>
     !> \return
     !> `OuterProd` : A matrix of size `( size(Vector1), size(Vector2) )`.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure function getOuterProd(Vector1,Vector2) result(OuterProd)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -757,6 +779,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return an ordered matrix of the input matrix by rearranging the columns corresponding to `ColIndx` to into the corresponding
     !> columns in `ColIndxMap`, while keeping the rest of the matrix structure intact,
     !> such that if it is positive-definite, it remains positive-definite.
@@ -777,18 +800,18 @@ contains
     !>  0.0     0.0     0.0     0.0    44.0
     !> ```
     !>
-    !> @param[in]       rank            :   The number of columns (or rows) of the input square matrix `PosDefMatUpper`.
-    !> @param[in]       PosDefMatUpper  :   The input matrix.
-    !> @param[in]       lenColIndx      :   The length of the input `ColIndx` vector.
-    !> @param[in]       ColIndx         :   An input array of indices indicating the order by which
+    !> \param[in]       rank            :   The number of columns (or rows) of the input square matrix `PosDefMatUpper`.
+    !> \param[in]       PosDefMatUpper  :   The input matrix.
+    !> \param[in]       lenColIndx      :   The length of the input `ColIndx` vector.
+    !> \param[in]       ColIndx         :   An input array of indices indicating the order by which
     !>                                      the columns in the input matrix must be rearranged.
-    !> @param[in]       ColIndxMap      :   An input array of length `lenColIndxs` that indicated the
+    !> \param[in]       ColIndxMap      :   An input array of length `lenColIndxs` that indicated the
     !>                                      new column index of the corresponding column indices in `ColIndx`.
     !>
     !> \return
     !> `SortedPosDefMatUpper` : An ordered matrix of size `( rank, rank )`.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure function sortPosDefMat(rank,PosDefMatUpper,lenColIndx,ColIndx,ColIndxMap) result(SortedPosDefMatUpper)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -826,12 +849,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Symmetrize an input upper-triangular matrix by copying the upper to the lower triangle.
     !>
-    !> @param[in]       nd                  :   The size of the input matrix `PosDefMatUpper`.
-    !> @param[inout]    UpperSquareMatrix   :   The input upper, and output full matrix. On output, the matrix is symmetrized.
+    !> \param[in]       nd                  :   The size of the input matrix `PosDefMatUpper`.
+    !> \param[inout]    UpperSquareMatrix   :   The input upper, and output full matrix. On output, the matrix is symmetrized.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure subroutine symmetrizeUpperSquareMatrix(nd,UpperSquareMatrix)
         use Constants_mod, only: RK, IK
@@ -848,6 +872,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Return the the Regression Coefficient Matrix, whose dimension is `rankS11` by `rankS22`, as well as optionally the
     !> Schur complement of the `S22` block of rank `rankS22` of the input matrix `PosDefMat` of rank `rankPDM`.
     !> For example, if,
@@ -870,7 +895,7 @@ contains
     !> \remark
     !> For clarity, note that `rankS11 + rankS22 = rankPDM`.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure subroutine getRegresCoef(rankPDM,rankS11,rankS22,PosDefMat,RegresCoefMat,SchurComplement)
 #if defined DLL_ENABLED && !defined CFI_ENABLED

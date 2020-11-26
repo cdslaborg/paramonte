@@ -40,22 +40,29 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+#define UNIFORM
+
 !> \brief
-!> This file implements the body of the `ParaDRAMProposalUniform_mod` and `ParaDISEProposalUniform_mod`
-!> modules of the `ParaDRAM` and `ParaDISE` samplers.
+!> This module implements the body of the `ParaDRAMProposalUniform_mod` module of the `ParaDRAM` sampler.
 !>
 !> \remark
-!> This module requires preprocessing, prior to compilation.
+!> This module requires preprocessing prior to compilation.
 !>
 !> @author Amir Shahmoradi
-
-#define UNIFORM
 
 module ParaDRAMProposalUniform_mod
 #define PARADRAM ParaDRAM
 #include "ParaDXXXProposal_mod.inc.f90"
 #undef PARADRAM
 end module ParaDRAMProposalUniform_mod
+
+!> \brief
+!> This module implements the body of the `ParaDISEProposalUniform_mod` module of the `ParaDISE` sampler.
+!>
+!> \remark
+!> This module requires preprocessing prior to compilation.
+!>
+!> @author Amir Shahmoradi
 
 module ParaDISEProposalUniform_mod
 #define PARADISE ParaDISE

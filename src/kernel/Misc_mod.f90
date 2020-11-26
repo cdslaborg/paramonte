@@ -313,11 +313,12 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return an arithmetic progression as an array
     pure function arth_RK(first,increment,n) result(arth)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: arth_RK
 #endif
-        ! returns an arithmetic progression as an array
         use Constants_mod, only: IK, RK
         real(RK)    , intent(in)    :: first,increment
         integer(IK) , intent(in)    :: n
@@ -347,7 +348,8 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> returns an arithmetic progression as an array
+    !> \brief
+    !> Return an arithmetic progression as an array.
     pure function arth_IK(first,increment,n) result(arth)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: arth_IK
@@ -379,13 +381,15 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return `nn` consecutive powers of the `n`th root of unity.
     pure function zroots_unity(n,nn)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: zroots_unity
 #endif
         use Constants_mod, only: IK, RK, CK, TWOPI
         implicit none
-        integer(IK), intent(in)  :: n,nn
+        integer(IK), intent(in)  :: n, nn
         complex(CK)              :: zroots_unity(nn)
         integer(IK)              :: k
         real(RK)                 :: theta
@@ -399,22 +403,6 @@ contains
             k = 2 * k
         end do
     end function zroots_unity
-
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    pure subroutine copyArray_RK(Source,Destination,numCopied,numNotCopied)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: copyArray_RK
-#endif
-        use Constants_mod, only: IK, RK
-        implicit none
-        real(RK), intent(in)        :: Source(:)
-        real(RK), intent(out)       :: Destination(:)
-        integer(IK), intent(out)    :: numCopied, numNotCopied
-        numCopied = min(size(Source),size(Destination))
-        numNotCopied = size(Source) - numCopied
-        Destination(1:numCopied) = Source(1:numCopied)
-    end subroutine copyArray_RK
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -434,6 +422,23 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    pure subroutine copyArray_RK(Source,Destination,numCopied,numNotCopied)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: copyArray_RK
+#endif
+        use Constants_mod, only: IK, RK
+        implicit none
+        real(RK), intent(in)        :: Source(:)
+        real(RK), intent(out)       :: Destination(:)
+        integer(IK), intent(out)    :: numCopied, numNotCopied
+        numCopied = min(size(Source),size(Destination))
+        numNotCopied = size(Source) - numCopied
+        Destination(1:numCopied) = Source(1:numCopied)
+    end subroutine copyArray_RK
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
     !> Find the unique values in the input integer vector.
     !>
     !> @param[in]       lenVector   :   The size of the input square matrix - `nd` by `nd`.
@@ -479,7 +484,7 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+    !> \brief
     !> Resize the input 1-dimensional real vector to a new size.
     !>
     !> @param[inout]    Vector  :   The input real vector that will be resized on return.

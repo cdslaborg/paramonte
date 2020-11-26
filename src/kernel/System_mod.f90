@@ -191,7 +191,9 @@ contains
     !> \brief
     !> Query all attributes of the [OS_type](@ref os_type) class: `name`, `slash`, `isWindows`, `Err`.
     !>
-    !> \param[out]  OS : An object of class [OS_type](@ref os_type).
+    !> \param[out]  OS                  :   An object of class [OS_type](@ref os_type).
+    !> \param[in]   shellQueryEnabled   :   A logical variable indicating if the type and name of the current 
+    !>                                      runtime shell should be queried or not (optional, default = `.false.`).
     subroutine queryOS(OS, shellQueryEnabled)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: queryOS
@@ -580,8 +582,8 @@ contains
         implicit none
         character(*), intent(in)                    :: name
         character(:), allocatable, intent(out)      :: value
-        integer(IK) , optional, intent(out)         :: length
-        type(Err_type), optional, intent(out)       :: Err
+        integer(IK) , intent(out), optional         :: length
+        type(Err_type), intent(out), optional       :: Err
 
         character(*), parameter                     :: PROCEDURE_NAME = MODULE_NAME // "@getEnvVar()"
         allocate( character(MAX_REC_LEN) :: value )
@@ -1080,7 +1082,7 @@ contains
     !>
     !> \param[in]   pathOld     :   The original path.
     !> \param[in]   pathNew     :   The destination path.
-    !> \param[in]   isWindows   :   Logical value indicating whether the OS is Windows.
+    !> \param[in]   isWindows   :   Logical value indicating whether the OS and the terminal is Windows shell (CMD or Powershell).
     !> \param[out]  Err         :   An object of class [Err_type](@ref err_mod::err_type)
     !!                              indicating whether any error has occurred the copy.
     subroutine copyFile(pathOld,pathNew,isWindows,Err)
@@ -1162,7 +1164,7 @@ contains
     !> \warning
     !> This subroutine can become extremely dangerous if one does understands the
     !! scopes of the removal of the requested file or pattern. **Use with caution**.
-    subroutine removeFile(path,isWindows,Err)
+    subroutine removeFile(path,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: removeFile
 #endif
@@ -1172,74 +1174,84 @@ contains
         implicit none
         character(*), intent(in)                :: path
         type(Err_type), intent(out), optional   :: Err
-        logical     , intent(in), optional      :: isWindows
+        !logical     , intent(in), optional      :: isWindows
         logical                                 :: fileExists
         logical                                 :: isPresentErr
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@removeFile()"
 
         isPresentErr = present(Err)
-        if (isPresentErr) Err%occurred = .false.
 
         ! First check whether file exists.
 
-        inquire(file=path,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
-        if (Err%stat/=0) then
-            Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file = '" // path // "'."
-            return
-        end if
-        if (.not.fileExists) return
-
-        if (isPresentErr .and. present(isWindows)) then
-
-            blockBrittle: block
-
-                character(:), allocatable               :: cmd
-                integer                                 :: counter
-
-                if (isWindows) then
-                    cmd = "del " // path // " > nul"
-                else
-                    cmd = "rm " // path
-                end if
-
-                counter = 0
-                do
-                    counter = counter + 1
-                    call executeCmd( command=cmd, Err=Err )
-                    if (Err%occurred) then
-                        Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'." // NLC
-                        return
-                    end if
-                    ! ensure file is removed
-                    inquire(file=path,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
-                    if (Err%stat/=0) then
-                        Err%occurred = .true.
-                        Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of removed file = '" // path // "'."
-                        return
-                    end if
-                    if (fileExists .and. counter<100) cycle
-                    exit
-                end do
-                if (fileExists) then
-                    Err%occurred = .true.
-                    Err%msg = PROCEDURE_NAME // ": Failed to remove file = '" // path // "' after " // num2str(counter) // " attempts."
-                    return
-                end if
-
-            end block blockBrittle
-
+        if (isPresentErr) then
+            Err%occurred = .false.
+            inquire(file=path,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
+            if (Err%stat/=0) then
+                Err%occurred = .true.
+                Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file = '" // path // "'."
+                return
+            end if
         else
+            inquire(file=path,exist=fileExists) ! check if the file already exists
+        end if
+
+        if (.not. fileExists) return
+
+        !if (isPresentErr .and. present(isWindows)) then
+        !
+        !    blockBrittle: block
+        !
+        !        character(:), allocatable               :: cmd
+        !        integer                                 :: counter
+        !
+        !        if (isWindows) then
+        !            cmd = "del " // path // " > nul"
+        !        else
+        !            cmd = "rm " // path
+        !        end if
+        !
+        !        counter = 0
+        !        do
+        !            counter = counter + 1
+        !            call executeCmd( command=cmd, Err=Err )
+        !            if (Err%occurred) then
+        !                Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'." // NLC
+        !                return
+        !            end if
+        !            ! ensure file is removed
+        !            inquire(file=path,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
+        !            if (Err%stat/=0) then
+        !                Err%occurred = .true.
+        !                Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of removed file = '" // path // "'."
+        !                return
+        !            end if
+        !            if (fileExists .and. counter<100) cycle
+        !            exit
+        !        end do
+        !        if (fileExists) then
+        !            Err%occurred = .true.
+        !            Err%msg = PROCEDURE_NAME // ": Failed to remove file = '" // path // "' after " // num2str(counter) // " attempts."
+        !            return
+        !        end if
+        !
+        !    end block blockBrittle
+        !
+        !else
 
             blockRobust: block
                 logical :: isOpen
                 integer :: fileUnit
                 inquire(file=path,opened=isOpen)
                 if (.not. isOpen) open(newunit = fileUnit, file = path, status = "replace")
-                close(fileUnit,status="delete")
+                if (isPresentErr) then
+                    close(fileUnit, status="delete", iostat = Err%stat)
+                    Err%occurred = Err%stat > 0_IK
+                else
+                    close(fileUnit,status="delete")
+                end if
             end block blockRobust
 
-        end if
+        !end if
 
     end subroutine removeFile
 

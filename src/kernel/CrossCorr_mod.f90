@@ -49,6 +49,10 @@ module CrossCorr_mod
 
     character(len=*), parameter :: MODULE_NAME = "@CrossCorr_mod"
 
+    interface getPaddedLen
+        module procedure :: getPaddedLen_IK, getPaddedLen_RK
+    end interface getPaddedLen
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
@@ -88,10 +92,10 @@ contains
         !type(Err_type), intent(out)         :: Err
         real(RK)                            :: iac
 
-        integer(IK)                         :: CumSumWeight(np), currentSampleEndLoc, sampleSize, sampleCount, isample
+        integer(IK)                         :: CumSumWeight(np), currentSampleEndLoc, batchSizeDefault, sampleCount, isample
         integer(IK)                         :: ip, ipVerbose, ipStart, ipEnd, npEffective
         real(RK)                            :: avgPoint, varPoint, avgBatchMean, varBatchMean
-        real(RK)                            :: diffSquared, sampleSizeInverse
+        real(RK)                            :: diffSquared, batchSizeDefaultInverse
         real(RK), allocatable               :: BatchMean(:)
 
         !Err%occurred = .false.
@@ -104,13 +108,13 @@ contains
 
         ! compute batch size and count
         if (present(batchSize)) then
-            sampleSize = batchSize
+            batchSizeDefault = batchSize
         else
-            sampleSize = int( real(CumSumWeight(np),kind=RK)**(0.666666666666666_RK) )
+            batchSizeDefault = int( real(CumSumWeight(np),kind=RK)**(0.666666666666666_RK) )
         end if
-        sampleSizeInverse = 1._RK / real(sampleSize,kind=RK)
-        sampleCount = CumSumWeight(np) / sampleSize
-        npEffective = sampleCount * sampleSize
+        batchSizeDefaultInverse = 1._RK / real(batchSizeDefault,kind=RK)
+        sampleCount = CumSumWeight(np) / batchSizeDefault
+        npEffective = sampleCount * batchSizeDefault
 
         if (sampleCount<2) then
             !Err%occurred = .true.
@@ -135,16 +139,16 @@ contains
             ip = 1
             isample = 1
             ipVerbose = 0
-            currentSampleEndLoc = sampleSize
+            currentSampleEndLoc = batchSizeDefault
             BatchMean(isample) = 0._RK
             loopOverWeight: do
                 ipVerbose = ipVerbose + 1
                 if (ipVerbose>CumSumWeight(ip)) ip = ip + 1
                 if (ipVerbose>currentSampleEndLoc) then ! we are done with the current batch
                     avgPoint = avgPoint + BatchMean(isample)
-                    BatchMean(isample) = BatchMean(isample) * sampleSizeInverse
+                    BatchMean(isample) = BatchMean(isample) * batchSizeDefaultInverse
                     if (ipVerbose>npEffective) exit loopOverWeight  ! condition equivalent to currentSampleEndLoc==npEffective
-                    currentSampleEndLoc = currentSampleEndLoc + sampleSize
+                    currentSampleEndLoc = currentSampleEndLoc + batchSizeDefault
                     isample = isample + 1
                     BatchMean(isample) = 0._RK
                 end if
@@ -153,13 +157,13 @@ contains
         else    ! there is no weight
             do isample = 1, sampleCount
                 BatchMean(isample) = 0._RK
-                ipEnd = ipEnd + sampleSize
+                ipEnd = ipEnd + batchSizeDefault
                 do ip = ipStart, ipEnd
                     BatchMean(isample)  = BatchMean(isample) + Point(ip)
                 end do
                 ipStart = ipEnd + 1_IK
                 avgPoint = avgPoint + BatchMean(isample)
-                BatchMean(isample) = BatchMean(isample) * sampleSizeInverse
+                BatchMean(isample) = BatchMean(isample) * batchSizeDefaultInverse
             end do
         end if
         avgBatchMean = sum( BatchMean ) / real(sampleCount,kind=RK)
@@ -191,7 +195,7 @@ contains
 
         ! compute the IAC
 
-        iac = sampleSize * varBatchMean / varPoint
+        iac = batchSizeDefault * varBatchMean / varPoint
 
     end function getBatchMeansIAC
 
@@ -203,7 +207,7 @@ contains
     !> @param[in]   np              :   The number of data points in the input time series data.
     !> @param[in]   Point           :   The input data series data vector.
     !> @param[in]   Weight          :   The vector of weights of the input data points (optional, default = array of ones).
-    !> @param[in]   significance    :   The significance in units of standard deviation below which the autocorrelation is 
+    !> @param[in]   significance    :   The significance in units of standard deviation below which the autocorrelation is
     !>                                  considered noise (optional, default = 2).
     !>
     !> \return
@@ -217,11 +221,12 @@ contains
         implicit none
         integer(IK) , intent(in)            :: np
         real(RK)    , intent(in)            :: Point(np)
-        integer(IK) , intent(in), optional  :: Weight(np), significance ! in units of sigma
-        real(RK)                            :: iac, meanPoint, normFac, NormedData(np), cutoff
+        integer(IK) , intent(in), optional  :: Weight(np)
+        real(RK)    , intent(in), optional  :: significance ! in units of sigma
+        real(RK)                            :: iac, meanPoint, normFac, NormedData(np), cutoff, significanceDefault
         real(RK)    , allocatable           :: AutoCorr(:)
-        integer(IK)                         :: i, paddedLen, sumWeight, significanceDefault, cutoffIndex
-        significanceDefault = 2_IK
+        integer(IK)                         :: i, paddedLen, sumWeight, cutoffIndex
+        significanceDefault = 2._RK
         if (present(significance)) significanceDefault = significance
         if (present(Weight)) then
             sumWeight = sum(Weight)
@@ -232,13 +237,13 @@ contains
         end if
         NormedData = Point - meanPoint
         paddedLen = getPaddedLen(sumWeight)
-        AutoCorr = getCrossCorrFFTweighted  ( nData1    = np            &
-                                            , nData2    = np            &
-                                            , paddedLen = paddedLen     &
-                                            , Data1     = NormedData    &
-                                            , Data2     = NormedData    &
-                                            , Weight1   = Weight        &
-                                            , Weight2   = Weight        &
+        AutoCorr = getCrossCorrWeightedFFT  ( lenCompactData1   = np            &
+                                            , lenCompactData2   = np            &
+                                            , paddedLen         = paddedLen     &
+                                            , CompactData1      = NormedData    &
+                                            , CompactData2      = NormedData    &
+                                            , Weight1           = Weight        &
+                                            , Weight2           = Weight        &
                                             )
         normFac = 1._RK / AutoCorr(1)
         AutoCorr = AutoCorr * normFac
@@ -287,13 +292,13 @@ contains
         end if
         NormedData = Point - meanPoint
         paddedLen = getPaddedLen(sumWeight)
-        AutoCorr = getCrossCorrFFTweighted  ( nData1    = np            &
-                                            , nData2    = np            &
-                                            , paddedLen = paddedLen     &
-                                            , Data1     = NormedData    &
-                                            , Data2     = NormedData    &
-                                            , Weight1   = Weight        &
-                                            , Weight2   = Weight        &
+        AutoCorr = getCrossCorrWeightedFFT  ( lenCompactData1   = np            &
+                                            , lenCompactData2   = np            &
+                                            , paddedLen         = paddedLen     &
+                                            , CompactData1      = NormedData    &
+                                            , CompactData2      = NormedData    &
+                                            , Weight1           = Weight        &
+                                            , Weight2           = Weight        &
                                             )
         normFac = 1._RK / AutoCorr(1)
         AutoCorr = AutoCorr * normFac
@@ -303,10 +308,10 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return the smallest length of vector that is a power of `base` and larger than the input vector length `actualLen`.
+    !> Return the smallest length of a vector that is a power of `base` and at least `base**2` times larger than the input length `actualLen`.
     !>
     !> @param[in]   actualLen   : The input vector length.
-    !> @param[in]   base        : The base of the exponentiation.
+    !> @param[in]   base        : The integer-valued base of the exponentiation (optional, default = `2`).
     !>
     !> \return
     !> `paddedLen` : The minimum power-of-`base` length given `actualLen`.
@@ -315,29 +320,102 @@ contains
     !> This method is used to compute the cross-correlation. Usage:
     !> `actualLen = max( actualLen1, actualLen2 )`
     !>
+    !> \warning
+    !> The input values for `absoluteValue` and `base` must be both larger than 1.
+    !>
     !> \remark
     !> For weighted-data cross-correlation computation, try,
     !> `actualLen = max( sum(Weight1(1:actualLen1)), sum(Weight2(1:actualLen2)) )`.
-    pure function getPaddedLen(actualLen,base) result(paddedLen)
+    pure function getPaddedLen_IK(actualLen,base) result(paddedLen)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedLen
 #endif
         use Constants_mod, only: IK, RK
-        integer(IK), intent(in)         :: actualLen
-        real(RK), intent(in), optional  :: base
-        integer(IK)                     :: paddedLen
-        paddedLen = 2 ** ( getNextExponent(real(actualLen,kind=RK),base) + 1 )
-    end function getPaddedLen
+        integer(IK) , intent(in)            :: actualLen
+        integer(IK) , intent(in), optional  :: base
+        integer(IK)                         :: baseDefault
+        integer(IK)                         :: paddedLen
+        baseDefault = 2_IK
+        if (present(base)) baseDefault = base
+        paddedLen = baseDefault ** ( getNextExponent( real(actualLen,kind=RK), real(baseDefault,kind=RK)) + 1_IK )
+    end function getPaddedLen_IK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> Return the exponent that yields the smallest real number larger than the input number `absoluteValue`.
+    !> \brief
+    !> Return the smallest length of a vector that is a power of `base` and at least `base**2` times larger than the input length `actualLen`.
     !>
-    !> @param[in]   absoluteValue   : The input real number.
-    !> @param[in]   base            : The base of the exponentiation.
+    !> @param[in]   actualLen   : The real-valued input vector length.
+    !> @param[in]   base        : The real-valued base of the exponentiation (optional, default = `2.`).
     !>
     !> \return
-    !> `nextExponent` : The output minimum exponent.
+    !> `paddedLen` : The minimum power-of-`base` length given `actualLen`.
+    !>
+    !> \remark
+    !> This method is used to compute the cross-correlation. Usage:
+    !> `actualLen = max( actualLen1, actualLen2 )`
+    !>
+    !> \warning
+    !> The input values for `absoluteValue` and `base` must be both larger than 1.
+    !>
+    !> \remark
+    !> For weighted-data cross-correlation computation, try,
+    !> `actualLen = max( sum(Weight1(1:actualLen1)), sum(Weight2(1:actualLen2)) )`.
+    pure function getPaddedLen_RK(actualLen,base) result(paddedLen)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedLen
+#endif
+        use Constants_mod, only: IK, RK
+        real(RK)    , intent(in)            :: actualLen
+        real(RK)    , intent(in), optional  :: base
+        real(RK)                            :: baseDefault
+        integer(IK)                         :: paddedLen
+        baseDefault = 2._RK
+        if (present(base)) baseDefault = base
+        paddedLen = nint( baseDefault ** ( getNextExponent(real(actualLen,kind=RK), baseDefault) + 1_IK ) )
+    end function getPaddedLen_RK
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return the exponent that yields the largest real number smaller than **or equal to** the input number `absoluteValue`.
+    !>
+    !> @param[in]   absoluteValue   : The input real number.
+    !> @param[in]   base            : The base of the exponentiation (optional, default = `2`).
+    !>
+    !> \return
+    !> `previousExponent` : The output minimum integer exponent.
+    !>
+    !> \warning
+    !> The input values for `absoluteValue` and `base` must be both larger than 1.
+    pure function getPreviousExponent(absoluteValue,base) result(previousExponent)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPreviousExponent
+#endif
+        use Constants_mod, only: IK, RK, INVLN2
+        real(RK), intent(in)            :: absoluteValue
+        real(RK), intent(in), optional  :: base
+        integer(IK)                     :: previousExponent
+        if (present(base)) then
+            previousExponent = floor( log(absoluteValue) / log(base) )
+        else    ! assume the base is 2
+            previousExponent = floor( log(absoluteValue) * INVLN2 )
+        end if
+    end function getPreviousExponent
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return the exponent that yields the smallest real number larger than **or equal to** the input number `absoluteValue`.
+    !>
+    !> @param[in]   absoluteValue   : The input real number.
+    !> @param[in]   base            : The base of the exponentiation (optional, default = `2`).
+    !>
+    !> \warning
+    !> The input values for `absoluteValue` and `base` must be both larger than 1.
+    !>
+    !> \return
+    !> `nextExponent` : The output minimum integer exponent.
     pure function getNextExponent(absoluteValue,base) result(nextExponent)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNextExponent
@@ -364,6 +442,10 @@ contains
     !>
     !> \return
     !> `ArrayPadded` : The output extended array, padded with zeros.
+    !>
+    !> \warning
+    !> The input variable `paddedLen` must be a power of two, such that \f$2^\texttt{paddedLen}\f$
+    !> represents the smallest integer larger than both `ndata1` and `ndata2`.
     pure function padZero(currentLen,Array,paddedLen) result(ArrayPadded)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: padZero
@@ -391,211 +473,260 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return the cross-correlation of the two input data vectors, (including any user-supplied zero padding), computed via Fast-Fourier Transform.
+    !> Return the cross-correlation of the two input data vectors,
+    !> (including any user-supplied zero padding), computed via Fast-Fourier Transform.
     !>
-    !> @param[in]   ndata   : The lengths of the input arrays. It MUST be an integer power of two.
-    !> @param[in]   Data1   : The first array.
-    !> @param[in]   Data2   : The second array.
+    !> @param[in]   paddedLen   : The lengths of the input arrays, which **MUST** be an integer *power of two*.
+    !> @param[in]   PaddedData1 : The first array, possibly padded with zero to become an array of length `paddedLen`.
+    !> @param[in]   PaddedData2 : The second array, possibly padded with zero to become an array of length `paddedLen`.
     !>
     !> \return
     !> `CrossCorrFFT` : A vector of same length as the input arrays containing the cross-correlation.
-    !> The answer is returned as the first `ndata` points in ans stored in wrap-around order, i.e., cross-correlation
-    !> at increasingly negative lags are in `CrossCorrFFT(ndata)` on down to `CrossCorrFFT(ndata/2+1)`, while cross-correlation
-    !> increasingly positive lags are in `CrossCorrFFT(1)` (zero lag) on up to `CrossCorrFFT(ndata/2)`.
+    !> The answer is returned as the first `paddedLen` points in ans stored in wrap-around order, i.e., cross-correlation
+    !> at increasingly negative lags are in `CrossCorrFFT(paddedLen)` on down to `CrossCorrFFT(paddedLen/2+1)`, while
+    !> cross-correlation increasingly positive lags are in `CrossCorrFFT(1)` (zero lag) on up to `CrossCorrFFT(paddedLen/2)`.
     !>
     !> \remark
-    !> Sign convention of this routine: If `Data1` lags Data2, i.e., is shifted to the
-    !> right of it, then ans will show a peak at positive lags.
+    !> Sign convention of this routine: If `PaddedData1` lags `PaddedData2`, i.e.,
+    !> is shifted to the right of it, then ans will show a peak at positive lags.
     !>
     !> \remark
     !> For autocorrelation, under the assumption of a completely random series,
-    !> the ACF standard error reduces to: \f$\sqrt{ 1 / \texttt{ndata} }\f$
-    function getCrossCorrFFT(ndata,Data1,Data2) result(CrossCorrFFT)
+    !> the ACF standard error reduces to: \f$\sqrt{ 1 / \texttt{paddedLen} }\f$
+    function getCrossCorrFFT(paddedLen, PaddedData1, PaddedData2) result(CrossCorrFFT)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCrossCorrFFT
 #endif
         use Constants_mod, only: IK, RK, CK
-        implicit none
-        integer(IK), intent(in)                 :: ndata
-        real(RK), intent(inout)                 :: Data1(ndata),Data2(ndata)
-        real(RK)                                :: CrossCorrFFT(ndata)
-        character(len=*), parameter             :: PROCEDURE_NAME = MODULE_NAME//"@getCrossCorrFFT()"
-        complex(CK), dimension(ndata/2)         :: Cdat1,Cdat2
-        integer(IK)                             :: no2
-        if (iand(ndata,ndata-1)/=0) then
-            write(*,*) PROCEDURE_NAME//": paddedLen must be a power of 2."
-            error stop
-        end if
-        no2=ndata/2
-        call realft(ndata,Data1,1,Cdat1)
-        call realft(ndata,Data2,1,Cdat2)
-        Cdat1(1)=cmplx(real(Cdat1(1))*real(Cdat2(1))/no2, aimag(Cdat1(1))*aimag(Cdat2(1))/no2, kind=CK)
-        Cdat1(2:)=Cdat1(2:)*conjg(Cdat2(2:))/no2
-        call realft(ndata,CrossCorrFFT,-1,Cdat1)
-    end function getCrossCorrFFT
 
-    !> \brief
-    !> Return the cross-correlation of the two input *weighted* data vectors,
-    !> (including any user-supplied zero padding), computed via Fast-Fourier Transform.
-    !>
-    !> @param[in]   ndata1      : The length of the first input array `Data1`.
-    !> @param[in]   ndata2      : The length of the second input array `Data2`.
-    !> @param[in]   paddedLen   : The length by which the input data vectors must be extended and padded.
-    !> @param[in]   Data1       : The first array.
-    !> @param[in]   Data2       : The second array.
-    !> @param[in]   Weight1     : The weights of the elements in the first array.
-    !> @param[in]   Weight2     : The weights of the elements in the second array.
-    !>
-    !> \return
-    !> `CrossCorrFFT` : A vector of length `paddedLen` containing the cross-correlation.
-    function getCrossCorrFFTweighted(nData1,nData2,paddedLen,Data1,Data2,Weight1,Weight2) result(CrossCorrFFT)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getCrossCorrFFTweighted
-#endif
-        use Constants_mod, only: IK, RK, CK
         implicit none
-        integer(IK), intent(in)                 :: nData1, nData2, paddedLen
-        real(RK), intent(inout)                 :: Data1(nData1),Data2(nData2)
-        integer(IK), intent(in), optional       :: Weight1(nData1), Weight2(nData2)
+
+        integer(IK), intent(in)                 :: paddedLen
+        real(RK), intent(inout)                 :: PaddedData1(paddedLen), PaddedData2(paddedLen)
         real(RK)                                :: CrossCorrFFT(paddedLen)
-        character(len=*), parameter             :: PROCEDURE_NAME = MODULE_NAME//"@getCrossCorrFFTweighted()"
-        complex(CK), dimension(paddedLen/2)     :: Cdat1,Cdat2
-        integer(IK)                             :: no2
-        if (iand(paddedLen,paddedLen-1)/=0) then
+
+        character(len=*), parameter             :: PROCEDURE_NAME = MODULE_NAME//"@getCrossCorrFFT()"
+        complex(CK), dimension(paddedLen/2)     :: Cdat1, Cdat2
+        integer(IK)                             :: paddedLenHalf, paddedLenQuarter
+
+        if (iand(paddedLen,paddedLen-1) /= 0) then
             write(*,*) PROCEDURE_NAME//": paddedLen must be a power of 2."
             error stop
         end if
-        no2 = paddedLen / 2
-        call realftWeighted(ndata1,paddedLen/4,Data1,Cdat1,Weight1)
-        call realftWeighted(ndata2,paddedLen/4,Data2,Cdat2,Weight2)
-        Cdat1(1)=cmplx(real(Cdat1(1))*real(Cdat2(1))/no2, aimag(Cdat1(1))*aimag(Cdat2(1))/no2, kind=CK)
-        Cdat1(2:)=Cdat1(2:)*conjg(Cdat2(2:))/no2
-        call realft(paddedLen,CrossCorrFFT,-1,Cdat1)
-    end function getCrossCorrFFTweighted
+
+        paddedLenHalf = paddedLen / 2
+        paddedLenQuarter = paddedLenHalf / 2
+        call realft(paddedLen, paddedLenHalf, paddedLenQuarter, PaddedData1, 1_IK, Cdat1)
+        call realft(paddedLen, paddedLenHalf, paddedLenQuarter, PaddedData2, 1_IK, Cdat2)
+        Cdat1(1) = cmplx( real(Cdat1(1)) * real(Cdat2(1)) / paddedLenHalf, aimag(Cdat1(1)) * aimag(Cdat2(1)) / paddedLenHalf , kind = CK )
+        Cdat1(2:paddedLenHalf) = Cdat1(2:paddedLenHalf) * conjg(Cdat2(2:paddedLenHalf)) / paddedLenHalf
+        call realft(paddedLen, paddedLenHalf, paddedLenQuarter, CrossCorrFFT, -1_IK, Cdat1)
+
+    end function getCrossCorrFFT
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine realft(ndata,Data,isign,Zdata)
+    !> \brief
+    !> Return the cross-correlation of the two input *weighted* compact data vectors,
+    !> (including any user-supplied zero padding), computed via Fast-Fourier Transform.
+    !>
+    !> @param[in]   lenCompactData1 : The length of the first input array `CompactData1`.
+    !> @param[in]   lenCompactData2 : The length of the second input array `CompactData2`.
+    !> @param[in]   paddedLen       : The length by which the input data vectors must be extended and padded.
+    !> @param[in]   CompactData1    : The first array, in compact weighted format.
+    !> @param[in]   CompactData2    : The second array, in compact weighted format.
+    !> @param[in]   Weight1         : The weights of the elements in the first array.
+    !> @param[in]   Weight2         : The weights of the elements in the second array.
+    !>
+    !> \return
+    !> `CrossCorrFFT` : A vector of length `paddedLen` containing the cross-correlation.
+    !>
+    !> \warning
+    !> The input variable `paddedLen` must be a power of two, such that \f$2^\texttt{paddedLen}\f$
+    !> represents the smallest integer larger than both `lenCompactData1` and `lenCompactData2`.
+    !>
+    !> \remark
+    !> Unlike [getCrossCorrFFT](@ref getcrosscorrfft), the input arguments `CompactData1`
+    !> and `CompactData2` to this function can be the same arrays, as the `intent` of both is `in`.
+    function getCrossCorrWeightedFFT(lenCompactData1, lenCompactData2, paddedLen, CompactData1, CompactData2, Weight1, Weight2) result(CrossCorrFFT)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getCrossCorrWeightedFFT
+#endif
+        use Constants_mod, only: IK, RK, CK
+        implicit none
+        integer(IK), intent(in)                 :: lenCompactData1, lenCompactData2, paddedLen
+        real(RK), intent(in)                    :: CompactData1(lenCompactData1), CompactData2(lenCompactData2)
+        integer(IK), intent(in), optional       :: Weight1(lenCompactData1), Weight2(lenCompactData2)
+        real(RK)                                :: CrossCorrFFT(paddedLen)
+
+        character(len=*), parameter             :: PROCEDURE_NAME = MODULE_NAME//"@getCrossCorrWeightedFFT()"
+
+        complex(CK), dimension(paddedLen/2)     :: Cdat1, Cdat2
+        integer(IK)                             :: paddedLenHalf, paddedLenQuarter
+
+        if (iand(paddedLen,paddedLen-1) /= 0) then
+            write(*,*) PROCEDURE_NAME//": paddedLen must be a power of 2."
+            error stop
+        end if
+
+        paddedLenHalf = paddedLen / 2
+        paddedLenQuarter = paddedLenHalf / 2
+        call realftWeighted(lenCompactData1, paddedLen, paddedLenHalf, paddedLenQuarter, CompactData1, Cdat1, Weight1)
+        call realftWeighted(lenCompactData2, paddedLen, paddedLenHalf, paddedLenQuarter, CompactData2, Cdat2, Weight2)
+        Cdat1(1) = cmplx( real(Cdat1(1)) * real(Cdat2(1)) / paddedLenHalf, aimag(Cdat1(1)) * aimag(Cdat2(1)) / paddedLenHalf , kind = CK )
+        Cdat1(2:paddedLenHalf) = Cdat1(2:paddedLenHalf) * conjg(Cdat2(2:paddedLenHalf)) / paddedLenHalf
+        call realft(paddedLen, paddedLenHalf, paddedLenQuarter, CrossCorrFFT, -1_IK, Cdat1)
+
+    end function getCrossCorrWeightedFFT
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    ! Here, `paddedLenQuarter` is 1/4 of the length of the input array, which is already padded with zeros.
+    subroutine realft(paddedLen, paddedLenHalf, paddedLenQuarter, PaddedData, isign, Zdata)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: realft
 #endif
         use Constants_mod, only: IK, RK, CK
         use Misc_mod, only: zroots_unity
+
         implicit none
-        integer(IK), intent(in)             :: ndata, isign
-        real(RK), intent(inout)             :: Data(ndata)
-        complex(CK), optional, target       :: Zdata(ndata/2)
-        integer(IK)                         :: nh,nq
-        complex(CK), dimension(ndata/4)     :: w
-        complex(CK), dimension(ndata/4-1)   :: h1,h2
-        complex(CK), dimension(:), pointer  :: Cdata
-        complex(CK)                         :: z
-        real(RK)                            :: c1=0.5_RK,c2
-        nh = ndata / 2
-        nq = ndata / 4
+
+        integer(IK), intent(in)                     :: paddedLen, paddedLenHalf, paddedLenQuarter, isign
+        real(RK), intent(inout)                     :: PaddedData(paddedLen)
+        complex(CK), optional, target               :: Zdata(paddedLenHalf)
+
+        complex(CK), dimension(paddedLenQuarter-1)  :: h1, h2
+        complex(CK), pointer                        :: Cdata(:)
+        complex(CK)                                 :: w(paddedLenQuarter)
+        complex(CK)                                 :: z
+        real(RK)                                    :: c1, c2
+
+        c1 = 0.5_RK
+
         if (present(Zdata)) then
-            Cdata=>Zdata
-            if (isign == 1) Cdata=cmplx(Data(1:ndata-1:2),Data(2:ndata:2),kind=CK)
+            Cdata => Zdata
+            if (isign == 1_IK) Cdata = cmplx(PaddedData(1:paddedLen-1:2), PaddedData(2:paddedLen:2), kind=CK)
         else
-            allocate(Cdata(nh))
-            Cdata=cmplx(Data(1:ndata-1:2),Data(2:ndata:2),kind=CK)
+            allocate(Cdata(paddedLenHalf))
+            Cdata = cmplx(PaddedData(1:paddedLen-1:2), PaddedData(2:paddedLen:2), kind=CK)
         end if
-        if (isign == 1) then
-            c2=-0.5_RK
-            call four1(nh,Cdata,+1)
+
+        if (isign == 1_IK) then
+            c2 = -0.5_RK
+            call four1(paddedLenHalf, Cdata, +1_IK)
         else
-            c2=0.5_RK
+            c2 = 0.5_RK
         end if
-        w=zroots_unity(sign(ndata,isign),nq)
-        w=cmplx(-aimag(w),real(w),kind=CK)
-        h1=c1*(Cdata(2:nq)+conjg(Cdata(nh:nq+2:-1)))
-        h2=c2*(Cdata(2:nq)-conjg(Cdata(nh:nq+2:-1)))
-        Cdata(2:nq)=h1+w(2:nq)*h2
-        Cdata(nh:nq+2:-1)=conjg(h1-w(2:nq)*h2)
-        z=Cdata(1)
-        if (isign == 1) then
-            Cdata(1)=cmplx(real(z)+aimag(z),real(z)-aimag(z),kind=CK)
+
+        w = zroots_unity(sign(paddedLen,isign), paddedLenQuarter)
+        w = cmplx(-aimag(w), real(w), kind=CK)
+        h1 = c1 * ( Cdata(2:paddedLenQuarter) + conjg(Cdata(paddedLenHalf:paddedLenQuarter+2:-1)) )
+        h2 = c2 * ( Cdata(2:paddedLenQuarter) - conjg(Cdata(paddedLenHalf:paddedLenQuarter+2:-1)) )
+        Cdata(2:paddedLenQuarter) = h1 + w(2:paddedLenQuarter) * h2
+        Cdata(paddedLenHalf:paddedLenQuarter+2:-1) = conjg(h1 - w(2:paddedLenQuarter) * h2)
+        z = Cdata(1)
+
+        if (isign == 1_IK) then
+            Cdata(1) = cmplx(real(z)+aimag(z), real(z)-aimag(z), kind=CK)
         else
-            Cdata(1)=cmplx(c1*(real(z)+aimag(z)),c1*(real(z)-aimag(z)),kind=CK)
-            call four1(nh,Cdata,-1)
+            Cdata(1) = cmplx(c1*(real(z)+aimag(z)), c1*(real(z)-aimag(z)), kind=CK)
+            call four1(paddedLenHalf, Cdata, -1)
         end if
-        if (present(Zdata)) then
-            if (isign /= 1) then
-                Data(1:ndata-1:2)=real(Cdata)
-                Data(2:ndata:2)=aimag(Cdata)
+
+     if (present(Zdata)) then
+            if (isign /= 1_IK) then
+                PaddedData(1:paddedLen-1:2) = real(Cdata)
+                PaddedData(2:paddedLen:2) = aimag(Cdata)
             end if
         else
-            Data(1:ndata-1:2)=real(Cdata)
-            Data(2:ndata:2)=aimag(Cdata)
+            PaddedData(1:paddedLen-1:2) = real(Cdata)
+            PaddedData(2:paddedLen:2) = aimag(Cdata)
             nullify(Cdata)
         end if
+
     end subroutine realft
 
-    subroutine realftWeighted(ndata,paddedLenQuarter,Data,Zdata,Weight)
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    ! The `lenCompactData` is the length of the compact input array `CompactData`, which is NOT padded by default.
+    subroutine realftWeighted(lenCompactData, paddedLen, paddedLenHalf, paddedLenQuarter, CompactData, Zdata, Weight)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: realftWeighted
 #endif
         use Constants_mod, only: IK, RK, CK
         use Misc_mod, only: zroots_unity
+
         implicit none
-        integer(IK), intent(in)                     :: ndata, paddedLenQuarter
-        integer(IK), intent(in), optional           :: Weight(ndata)
-        real(RK), intent(inout)                     :: Data(ndata)
-        complex(CK)                                 :: Zdata(2*paddedLenQuarter)
-        integer(IK)                                 :: paddedLenHalf, id, idEnd, iw, counter
-        complex(CK), dimension(paddedLenQuarter)    :: w
-        complex(CK), dimension(paddedLenQuarter-1)  :: h1,h2
-        real(RK)                                    :: zReal,zImag
-        real(RK)                                    :: c1 = 0.5_RK, c2
-        paddedLenHalf = 2 * paddedLenQuarter
+
+        integer(IK) , intent(in)            :: lenCompactData, paddedLen, paddedLenHalf, paddedLenQuarter
+        real(RK)    , intent(in)            :: CompactData(lenCompactData)
+        integer(IK) , intent(in), optional  :: Weight(lenCompactData)
+        complex(CK) , intent(out)           :: Zdata(paddedLenHalf)
+
+        integer(IK)                         :: id, idEnd, iw, counter
+        complex(CK)                         :: w(paddedLenQuarter)
+        complex(CK)                         :: h1(paddedLenQuarter-1)
+        complex(CK)                         :: h2(paddedLenQuarter-1)
+        real(RK)                            :: zReal, zImag
+        real(RK)                            :: c1, c2
+
+        c1 = 0.5_RK
+
         if (present(Weight)) then
+
             iw = 1
             counter = 0
-            loopOverData: do id = 1, ndata
+            loopOverCompactData: do id = 1, lenCompactData
                 loopOverWeight: do
                     if (iw>Weight(id)) then
                         iw = 1
-                        cycle loopOverData
+                        cycle loopOverCompactData
                     elseif (iw==Weight(id)) then
                         counter = counter + 1
-                        if (id==ndata) then
-                            Zdata(counter) = cmplx( Data(id) , 0._RK , kind=CK )
-                            exit loopOverData
+                        if (id==lenCompactData) then
+                            Zdata(counter) = cmplx( CompactData(id) , 0._RK , kind=CK )
+                            exit loopOverCompactData
                         else
-                            Zdata(counter) = cmplx( Data(id) , Data(id+1) , kind=CK )
+                            Zdata(counter) = cmplx( CompactData(id) , CompactData(id+1) , kind=CK )
                             iw = 2
-                            cycle loopOverData
+                            cycle loopOverCompactData
                         end if
                     else
                         counter = counter + 1
-                        Zdata(counter) = cmplx( Data(id) , Data(id) , kind=CK )
+                        Zdata(counter) = cmplx( CompactData(id) , CompactData(id) , kind=CK )
                         iw = iw + 2
                         cycle loopOverWeight
                     end if
                 end do loopOverWeight
-            end do loopOverData
+            end do loopOverCompactData
             Zdata(counter+1:paddedLenHalf) = cmplx( 0._RK , 0._RK , kind=CK )
+
         else
-            if (mod(ndata,2)==0) then
-                idEnd = ndata / 2
-            else
-                idEnd = (ndata-1) / 2
-            end if
+
+            idEnd = lenCompactData / 2_IK
             do concurrent(id=1:idEnd)
-                Zdata(id) = cmplx( Data(2*id-1) , Data(2*id) , kind=CK )
+                Zdata(id) = cmplx( CompactData(2*id-1) , CompactData(2*id) , kind=CK )
             end do
-            Zdata(idEnd+1:paddedLenHalf) = cmplx( 0._RK , 0._RK , kind=CK )
+            if (2*idEnd<lenCompactData) then
+                idEnd = idEnd + 1
+                Zdata(idEnd) = cmplx( CompactData(lenCompactData) , 0._RK , kind=CK )
+            end if
+            Zdata(idEnd+1:paddedLenHalf) = cmplx(0._RK, 0._RK, kind=CK)
+
         end if
-        c2=-0.5_RK
+
+        c2 = -0.5_RK
         call four1(paddedLenHalf,Zdata,1_IK)
-        w=zroots_unity(sign(2*paddedLenHalf,1_IK),paddedLenQuarter)
-        w=cmplx(-aimag(w),real(w),kind=CK)
-        h1=c1*(Zdata(2:paddedLenQuarter)+conjg(Zdata(paddedLenHalf:paddedLenQuarter+2:-1)))
-        h2=c2*(Zdata(2:paddedLenQuarter)-conjg(Zdata(paddedLenHalf:paddedLenQuarter+2:-1)))
-        Zdata(2:paddedLenQuarter)=h1+w(2:paddedLenQuarter)*h2
-        Zdata(paddedLenHalf:paddedLenQuarter+2:-1)=conjg(h1-w(2:paddedLenQuarter)*h2)
+
+        w = zroots_unity(paddedLen, paddedLenQuarter)
+        w = cmplx(-aimag(w), real(w,kind=RK), kind=CK)
+        h1 = c1 * ( Zdata(2:paddedLenQuarter) + conjg(Zdata(paddedLenHalf:paddedLenQuarter+2:-1)) )
+        h2 = c2 * ( Zdata(2:paddedLenQuarter) - conjg(Zdata(paddedLenHalf:paddedLenQuarter+2:-1)) )
+        Zdata(2:paddedLenQuarter) = h1 + w(2:paddedLenQuarter) * h2
+        Zdata(paddedLenHalf:paddedLenQuarter+2:-1) = conjg(h1 - w(2:paddedLenQuarter) * h2)
         zReal = real(Zdata(1)); zImag = aimag(Zdata(1))
-        Zdata(1) = cmplx(zReal+zImag,zReal-zImag,kind=CK)
+        Zdata(1) = cmplx(zReal+zImag, zReal-zImag, kind=CK)
+
     end subroutine realftWeighted
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -704,9 +835,28 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure subroutine getAutoCorrSlow(nd,np,NormedData,nlag,Lag,AutoCorr,InverseSumNormedDataSq)
+    !> \brief
+    !> Compute the autocorrelation of the input data matrix (that is already normalized with respect to its mean).
+    !>
+    !> \param[in]   nd                      :   The number of dimensions of the input data (the number of data features).
+    !> \param[in]   np                      :   The length of the input data (the number of observations or points).
+    !> \param[in]   NormedData              :   The input data of size `(nd,np)`. On input, it must be normalized
+    !>                                          with respect to it mean vector.
+    !> \param[in]   nlag                    :   The length of the input vector of lags.
+    !> \param[in]   Lag                     :   The input vector of lags at which the autocorrelation must be computed.
+    !> \param[out]  AutoCorr                :   The output AutoCorrelation matrix of shape `(nd,nlag)`.
+    !> \param[in]   InverseSumNormedDataSq  :   The inverse sum of the square of the input normalized data (optional).
+    !>
+    !> \remark
+    !> If `InverseSumNormedDataSq` is provided, the computations will be slightly faster.
+    !>
+    !> \remark
+    !> This function uses the direct method of covariance computation for computing the autocorrelation.
+    !> It is therefore highly inefficient and not recommended for use in HPC solutions.
+    !> Use instead, [getCrossCorrFFT](@ref getcrosscorrfft) or [getCrossCorrWeightedFFT](@ref getcrosscorrweightedfft).
+    pure subroutine getAutoCorrDirect(nd, np, NormedData, nlag, Lag, AutoCorr, InverseSumNormedDataSq)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getAutoCorrSlow
+        !DEC$ ATTRIBUTES DLLEXPORT :: getAutoCorrDirect
 #endif
 
         use Constants_mod, only: IK, RK
@@ -736,14 +886,18 @@ contains
         ! Now compute the non-normalized covariances
 
         do ilag = 1, nlag
-            AutoCorr(1:nd,ilag) = 0._RK
-            do ip = 1, np-Lag(ilag)
-                AutoCorr(1:nd,ilag) = AutoCorr(1:nd,ilag) + NormedData(1:nd,ip) * NormedData(1:nd,ip+Lag(ilag))
-            end do
-            AutoCorr(1:nd,ilag) = AutoCorr(1:nd,ilag) * InverseSumNormedDataSqComputed
+            if (Lag(ilag)==0_IK) then
+                AutoCorr(1:nd,ilag) = 1._RK
+            else
+                AutoCorr(1:nd,ilag) = 0._RK
+                do ip = 1, np-Lag(ilag)
+                    AutoCorr(1:nd,ilag) = AutoCorr(1:nd,ilag) + NormedData(1:nd,ip) * NormedData(1:nd,ip+Lag(ilag))
+                end do
+                AutoCorr(1:nd,ilag) = AutoCorr(1:nd,ilag) * InverseSumNormedDataSqComputed
+            end if
         end do
 
-    end subroutine getAutoCorrSlow
+    end subroutine getAutoCorrDirect
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

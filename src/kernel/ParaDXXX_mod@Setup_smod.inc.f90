@@ -161,7 +161,7 @@ contains
         use Decoration_mod, only: GENERIC_TABBED_FORMAT
         use Decoration_mod, only: getGenericFormat
         use Decoration_mod, only: INDENT
-        use Statistics_mod, only: getUpperCorMatFromUpperCovMat
+        use Statistics_mod, only: getCorMatUpperFromCovMatUpper
         use Statistics_mod, only: getWeiSamCovUppMeanTrans
         use Statistics_mod, only: getQuantile
         use ParaMonte_mod, only: QPROB
@@ -327,21 +327,21 @@ contains
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! Now depending on the requested parallelism type, determine the process master/slave type and open output files
+        ! Now depending on the requested parallelism type, determine the process leader/rooter type and open output files
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        self%Image%isMaster = .false.
+        self%Image%isLeader = .false.
         if (self%SpecBase%ParallelizationModel%isSinglChain) then
-            if (self%Image%isFirst) self%Image%isMaster = .true.
+            if (self%Image%isFirst) self%Image%isLeader = .true.
         elseif (self%SpecBase%ParallelizationModel%isMultiChain) then
-            self%Image%isMaster = .true.
+            self%Image%isLeader = .true.
         else
             self%Err%occurred = .true.
             self%Err%msg = PROCEDURE_NAME//": Error occurred. Unknown parallelism requested via the input variable parallelizationModel='"//self%SpecBase%ParallelizationModel%val//"'."
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
             return
         end if
-        self%Image%isNotMaster = .not. self%Image%isMaster
+        self%Image%isRooter = .not. self%Image%isLeader
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! setup log file and open output files
@@ -359,9 +359,9 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (self%isFreshRun) then
-            call self%SpecBase%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isMasterImage=self%Image%isMaster)
-            call self%SpecMCMC%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isMasterImage=self%Image%isMaster,methodName=self%name,splashModeRequested=self%SpecBase%SilentModeRequested%isFalse)
-            call self%SpecDRAM%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isMasterImage=self%Image%isMaster,splashModeRequested=self%SpecBase%SilentModeRequested%isFalse)
+            call self%SpecBase%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isLeaderImage=self%Image%isLeader)
+            call self%SpecMCMC%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isLeaderImage=self%Image%isLeader,methodName=self%name,splashModeRequested=self%SpecBase%SilentModeRequested%isFalse)
+            call self%SpecDRAM%reportValues(prefix=self%brand,outputUnit=self%LogFile%unit,isLeaderImage=self%Image%isLeader,splashModeRequested=self%SpecBase%SilentModeRequested%isFalse)
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -387,7 +387,7 @@ contains
                                             , nd = ndim                 &
                                             )
 
-        !if (self%Image%isMaster) then
+        !if (self%Image%isLeader) then
         if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
@@ -407,7 +407,7 @@ contains
         end block
 
         if (self%isFreshRun) then
-            if (self%Image%isMaster) then
+            if (self%Image%isLeader) then
                 call self%Chain%writeHeader ( ndim              = ndim &
                                             , chainFileUnit     = self%ChainFile%unit &
                                             , isBinary          = self%SpecBase%ChainFileFormat%isBinary &
@@ -421,7 +421,7 @@ contains
 
         ! setup progress file
 
-        if (self%Image%isMaster) then
+        if (self%Image%isLeader) then
             if (.not.self%isFreshRun) then
                 read(self%TimeFile%unit, *, iostat = self%Err%stat) ! read the header line of the time file, only by master images
             end if
@@ -513,7 +513,7 @@ contains
         ! run ParaDXXX kernel
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (self%isFreshRun .and. self%Image%isMaster) then
+        if (self%isFreshRun .and. self%Image%isLeader) then
             call self%Decor%writeDecoratedText  ( text = "\nStarting the " // self%name // " sampling - " // getNiceDateTime() // "\n" &
                                                 , marginTop = 1_IK  &
                                                 , marginBot = 1_IK  &
@@ -529,7 +529,7 @@ contains
             return
         end if
 
-        if (self%isFreshRun .and. self%Image%isMaster) then
+        if (self%isFreshRun .and. self%Image%isLeader) then
             call self%Decor%writeDecoratedText  ( text = "\nExiting the " // self%name // " sampling - " // getNiceDateTime() // "\n" &
                                                 , marginTop = 1_IK  &
                                                 , marginBot = 1_IK  &
@@ -541,7 +541,7 @@ contains
         ! start ParaDXXX post-processing
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        blockMasterPostProcessing: if (self%Image%isMaster) then
+        blockLeaderPostProcessing: if (self%Image%isLeader) then
 
             formatStrInt  = "('" // INDENT // "',1A" // self%LogFile%maxColWidth%str // ",*(I" // self%LogFile%maxColWidth%str // "))"
             formatStrReal = "('" // INDENT // "',1A" // self%LogFile%maxColWidth%str // ",*(E" // self%LogFile%maxColWidth%str // "." // self%SpecBase%OutputRealPrecision%str // "E3))"
@@ -1064,7 +1064,7 @@ contains
                                             , Mean = self%Stats%Chain%Mean &
                                             )
 
-            self%Stats%Chain%CorMat = getUpperCorMatFromUpperCovMat(nd=ndim,CovMatUpper=self%Stats%Chain%CovMat)
+            self%Stats%Chain%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Chain%CovMat)
 
             ! transpose the covariance and correlation matrices
 
@@ -1407,7 +1407,7 @@ contains
                                                 , Mean = self%Stats%Sample%Mean &
                                                 )
 
-                self%Stats%Sample%CorMat = getUpperCorMatFromUpperCovMat(nd=ndim,CovMatUpper=self%Stats%Sample%CovMat)
+                self%Stats%Sample%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Sample%CovMat)
 
                 ! transpose the covariance and correlation matrices
 
@@ -1741,7 +1741,7 @@ contains
             close(self%TimeFile%unit)
             close(self%LogFile%unit)
 
-        end if blockMasterPostProcessing
+        end if blockLeaderPostProcessing
 
         !nullify(self%Proposal)
 #if defined CAF_ENABLED

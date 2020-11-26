@@ -40,16 +40,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+#define NORMAL
+
 !> \brief
-!> This file implements the body of the `ParaDRAMProposalNormal_mod` and `ParaDISEProposalNormal_mod`
-!> modules of the `ParaDRAM` and `ParaDISE` samplers.
+!> This module implements the body of the `ParaDRAMProposalNormal_mod` module of the `ParaDRAM` sampler.
 !>
 !> \remark
-!> This module requires preprocessing, prior to compilation.
+!> This module requires preprocessing prior to compilation.
 !>
 !> @author Amir Shahmoradi
-
-#define NORMAL
 
 module ParaDRAMProposalNormal_mod
 !use Statistics_mod
@@ -57,6 +56,14 @@ module ParaDRAMProposalNormal_mod
 #include "ParaDXXXProposal_mod.inc.f90"
 #undef PARADRAM
 end module ParaDRAMProposalNormal_mod
+
+!> \brief
+!> This module implements the body of the `ParaDISEProposalNormal_mod` module of the `ParaDISE` sampler.
+!>
+!> \remark
+!> This module requires preprocessing prior to compilation.
+!>
+!> @author Amir Shahmoradi
 
 module ParaDISEProposalNormal_mod
 #define PARADISE ParaDISE

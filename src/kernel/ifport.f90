@@ -40,7 +40,10 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief This module appears here for portability of code between the Intel and the GNU Fortran compilers.
+!> @author Amir Shahmoradi
+
 !DEC$ IF(.FALSE.)
-	module ifport   ! This appears here for portability of code between Intel and Gfortran compilers
+	module ifport
 	end module ifport
 !DEC$ ENDIF

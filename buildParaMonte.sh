@@ -58,7 +58,7 @@ workingDir="$(pwd)"
 sourceFileDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ParaMonte_ROOT_DIR="${sourceFileDir}"; export ParaMonte_ROOT_DIR
 ParaMonteKernel_SRC_DIR="${ParaMonte_ROOT_DIR}/src/kernel"; export ParaMonteKernel_SRC_DIR
-ParaMonteTest_SRC_DIR="${ParaMonte_ROOT_DIR}/src/test"; export ParaMonteTest_SRC_DIR
+ParaMonteTest_SRC_DIR="${ParaMonte_ROOT_DIR}/src/kernel/tests"; export ParaMonteTest_SRC_DIR
 #export ParaMonte_ROOT_DIR="${ParaMonte_ROOT_DIR:-${PWD%/}}"
 
 ParaMonte_ROOT_BUILD_DIR="${ParaMonte_ROOT_DIR}/build"; export ParaMonte_ROOT_BUILD_DIR

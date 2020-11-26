@@ -40,6 +40,11 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This module contains the procedures for modeling and manipulating the BATSE Catalog.
+!> \author
+!> Amir Shahmoradi, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+
 module Batse_mod
 
     use Constants_mod, only: IK, RK, PI, LN10
@@ -103,8 +108,10 @@ module Batse_mod
     end type GRB_type
 
 #if defined CAF_ENABLED
+    !> The `GRB_type` class containing GRB prompt attributes.
     type(GRB_type) :: GRB[*]
 #else
+    !> The `GRB_type` class containing GRB prompt attributes.
     type(GRB_type) :: GRB
 #endif
 

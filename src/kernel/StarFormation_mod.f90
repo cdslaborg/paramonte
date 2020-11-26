@@ -390,123 +390,6 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getBinaryMergerRate( zplus1 &
-                                , zplus1Max &
-                                , nRefinement &
-                                , maxRelativeError &
-                                , getMergerDelayTimePDF &
-                                , getStarFormationRateDensity &
-                                ) result(binaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRate
-#endif
-        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE, getLogLumDisWicMpc
-        use Constants_mod, only: RK, PI
-        implicit none
-        real(RK)    , intent(in)                :: zplus1
-        real(RK)    , intent(in), optional      :: zplus1Max, maxRelativeError
-        integer(IK) , intent(in), optional      :: nRefinement
-        procedure(getRateDensity_proc)          :: getStarFormationRateDensity
-        procedure(getMergerDelayTimePDF_proc)   :: getMergerDelayTimePDF
-        real(RK)                                :: binaryMergerRate
-        real(RK), parameter                     :: LOG_COEF = log(4._RK*PI*LS2HC)
-
-        binaryMergerRate    = exp( LOG_COEF + 2_IK*getLogLumDisWicMpc(zplus1) - ( 3._RK*log(zplus1) + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) ) &
-                            * getBinaryMergerRateDensity( zplus1 &
-                                                        , zplus1Max &
-                                                        , nRefinement &
-                                                        , maxRelativeError &
-                                                        , getMergerDelayTimePDF &
-                                                        , getStarFormationRateDensity &
-                                                        )
-
-    end function getBinaryMergerRate
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    function getBinaryMergerRateDensity ( zplus1 &
-                                        , zplus1Max &
-                                        , nRefinement &
-                                        , maxRelativeError &
-                                        , getMergerDelayTimePDF &
-                                        , getStarFormationRateDensity &
-                                        ) result(binaryMergerRateDensity)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRateDensity
-#endif
-        use, intrinsic :: iso_fortran_env, only: output_unit
-        use Constants_mod, only: RK, HUGE_RK
-        use Cosmology_mod, only: getLookBackTime
-        use Integration_mod, only: doQuadRombOpen, ErrorMessage!, midinf
-        use Integration_mod, only: midexp
-       !use Integration_mod, only: midinf
-        implicit none
-        real(RK)    , intent(in)                :: zplus1
-        real(RK)    , intent(in), optional      :: zplus1Max, maxRelativeError
-        integer(IK) , intent(in), optional      :: nRefinement
-        procedure(getRateDensity_proc)          :: getStarFormationRateDensity
-        procedure(getMergerDelayTimePDF_proc)   :: getMergerDelayTimePDF
-        integer(IK)                             :: neval, ierr, nRefinementDefault
-        real(RK)                                :: zplus1MaxDefault, maxRelativeErrorDefault, relerr
-        real(RK)                                :: binaryMergerRateDensity, lookBackTimeRef
-
-        nRefinementDefault = 7_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
-        zplus1MaxDefault = HUGE_RK; if (present(zplus1Max)) zplus1MaxDefault = zplus1Max
-        maxRelativeErrorDefault = 1.e-6_RK; if (present(maxRelativeError)) maxRelativeErrorDefault = maxRelativeError
-
-        lookBackTimeRef = getLookBackTime   ( zplus1 = zplus1 &
-                                            , maxRelativeError = maxRelativeErrorDefault &
-                                            , nRefinement = nRefinementDefault &
-                                            )
-
-        call doQuadRombOpen ( getFunc           = getBinaryMergerRateDensityIntegrand   &
-                            , integrate         = midexp                                &
-                           !, integrate         = midinf                                &
-                            , lowerLim          = zplus1                                &
-                            , upperLim          = zplus1MaxDefault                      &
-                            , maxRelativeError  = maxRelativeErrorDefault               &
-                            , nRefinement       = nRefinementDefault                    &
-                            , integral          = binaryMergerRateDensity               &
-                            , relativeError     = relerr                                &
-                            , numFuncEval       = neval                                 &
-                            , ierr              = ierr                                  &
-                            )
-        if (ierr/=0_IK) then
-            write(output_unit,"(A)") ErrorMessage(ierr)
-            error stop
-        end if
-
-    contains
-
-        function getBinaryMergerRateDensityIntegrand(zplus1) result(binaryMergerRateIntegrand)
-
-            use Cosmology_mod, only: getUniverseAgeDerivative
-            implicit none
-            real(RK)    , intent(in)    :: zplus1
-            real(RK)                    :: binaryMergerRateIntegrand !,lognormpdf
-            real(RK)                    :: mergerDelayTime
-
-            ! note that zp<z always, so that delay>0.
-            mergerDelayTime = getLookBackTime   ( zplus1 = zplus1 &
-                                                , maxRelativeError = maxRelativeErrorDefault &
-                                                , nRefinement = nRefinementDefault &
-                                                )
-            mergerDelayTime = mergerDelayTime - lookBackTimeRef
-            if (mergerDelayTime<=0._RK) then
-                write(output_unit,"(A)") "The mergerDelayTime is non-positive in getBinaryMergerRateDensityIntegrand(): (zplus1, mergerDelayTime) = ", zplus1, mergerDelayTime
-                error stop
-            end if
-
-            binaryMergerRateIntegrand   = getMergerDelayTimePDF(mergerDelayTime) &
-                                        * getStarFormationRateDensity(zplus1) &
-                                        * getUniverseAgeDerivative(zplus1)
-
-        end function getBinaryMergerRateDensityIntegrand
-
-    end function getBinaryMergerRateDensity
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
     ! Amir Shahmoradi, Wednesday 5:43 PM, December 25, 2013, IFS, UT Austin
     ! compute the binary merger rate as a function of z, according to Shahmoradi and Nemiroff (2015)
     ! equivalent to delayed_rate_Belz_Li(z) in S15
@@ -555,109 +438,6 @@ contains
             binaryMergerRateS15 = 0._RK
         end if
     end function getBinaryMergerRateS15
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    ! computes the natural log of the binary merger rate as a function of logzplus1.
-    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
-    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK.
-    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
-    pure function getLogBinaryMergerRateLognormB10(logzplus1) result(logBinaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormB10
-#endif
-        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
-        use Constants_mod, only: RK, PI
-        implicit none
-        real(RK)    , intent(in)    :: logzplus1
-        real(RK)                    :: logBinaryMergerRate
-        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.20701416938432557_RK) then
-            logBinaryMergerRate = &
-                                - 15.27802857671202000_RK &
-                                + 94.54179164991284000_RK * logzplus1 &
-                                - 687.3676159275769000_RK * logzplus1**2 &
-                                + 2695.420977251770600_RK * logzplus1**3 &
-                                - 4077.601406650646000_RK * logzplus1**4
-        elseif (logzplus1>0.20701416938432557_RK .and. logzplus1<=0.8241754429663476_RK) then
-            logBinaryMergerRate = &
-                                - 13.5066182170954650_RK &
-                                + 40.1985219822299200_RK * logzplus1 &
-                                - 121.506350703598660_RK * logzplus1**2 &
-                                + 224.621285123736100_RK * logzplus1**3 &
-                                - 210.878836655472500_RK * logzplus1**4 &
-                                + 76.3335749498628400_RK * logzplus1**5
-        elseif (logzplus1>0.8241754429663476_RK .and. logzplus1<=1.4243124283074096_RK) then
-            logBinaryMergerRate = &
-                                - 10.0515447816113700_RK &
-                                + 12.6659826494097970_RK * logzplus1 &
-                                - 13.2268991886238200_RK * logzplus1**2 &
-                                + 6.84523627043807100_RK * logzplus1**3 &
-                                - 1.44645280124922220_RK * logzplus1**4
-        elseif (logzplus1>1.4243124283074096_RK .and. logzplus1<=1.6104374127671848_RK) then
-            logBinaryMergerRate = &
-                                - 1187.90539057029950_RK &
-                                + 3240.19327021926350_RK * logzplus1 &
-                                - 3330.70645904271000_RK * logzplus1**2 &
-                                + 1522.87499612399850_RK * logzplus1**3 &
-                                - 261.341408956542300_RK * logzplus1**4
-        elseif (logzplus1>1.6104374127671848_RK .and. logzplus1<=3.0411835364579027_RK) then
-            logBinaryMergerRate = &
-                                - 1.43934839576471260_RK &
-                                + 1.72951867017028120_RK * logzplus1 &
-                                - 4.06729555225025000_RK * logzplus1**2 &
-                                + 1.18253386764330200_RK * logzplus1**3 &
-                                - 0.15201156018584210_RK * logzplus1**4
-        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
-            logBinaryMergerRate = 0._RK
-        end if
-    end function getLogBinaryMergerRateLognormB10
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    ! computes the natural log of the binary merger rate as a function of logzplus1.
-    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
-    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
-    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
-    pure function getLogBinaryMergerRateLognormF18(logzplus1) result(logBinaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormF18
-#endif
-        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
-        use Constants_mod, only: RK, PI
-        implicit none
-        real(RK)    , intent(in)    :: logzplus1
-        real(RK)                    :: logBinaryMergerRate
-        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.16551443847757297_RK) then
-            logBinaryMergerRate = &
-                                - 13.80128475140318000_RK &
-                                + 79.17963739241087000_RK * logzplus1 &
-                                - 420.9808813943490700_RK * logzplus1**2 &
-                                + 902.4149755380632000_RK * logzplus1**3
-        elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
-            logBinaryMergerRate = &
-                                - 10.89131941401880800_RK &
-                                + 21.59483273763076400_RK * logzplus1 &
-                                - 33.07662054750123000_RK * logzplus1**2 &
-                                + 29.23608723915102600_RK * logzplus1**3 &
-                                - 11.33984422193848700_RK * logzplus1**4
-        elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
-            logBinaryMergerRate = &
-                                - 14.02518830695731000_RK &
-                                + 24.92009885816913300_RK * logzplus1 &
-                                - 20.04762612951797000_RK * logzplus1**2 &
-                                + 4.885281389900379500_RK * logzplus1**3 &
-                                - 0.168402813838908260_RK * logzplus1**4
-        elseif (logzplus1>1.3937663759585892_RK .and. logzplus1<=3.0411835364579027_RK) then
-            logBinaryMergerRate = &
-                                - 4.348081430972656000_RK &
-                                + 4.815143234949144000_RK * logzplus1 &
-                                - 6.143880845780776000_RK * logzplus1**2 &
-                                + 1.738835623950871300_RK * logzplus1**3 &
-                                - 0.206972882929076480_RK * logzplus1**4
-        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
-            logBinaryMergerRate = 0._RK
-        end if
-    end function getLogBinaryMergerRateLognormF18
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -771,6 +551,62 @@ contains
 
     ! computes the natural log of the binary merger rate as a function of logzplus1.
     ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK.
+    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
+    pure function getLogBinaryMergerRateLognormB10(logzplus1) result(logBinaryMergerRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormB10
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK)    , intent(in)    :: logzplus1
+        real(RK)                    :: logBinaryMergerRate
+        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.20701416938432557_RK) then
+            logBinaryMergerRate = &
+                                - 15.27802857671202000_RK &
+                                + 94.54179164991284000_RK * logzplus1 &
+                                - 687.3676159275769000_RK * logzplus1**2 &
+                                + 2695.420977251770600_RK * logzplus1**3 &
+                                - 4077.601406650646000_RK * logzplus1**4
+        elseif (logzplus1>0.20701416938432557_RK .and. logzplus1<=0.8241754429663476_RK) then
+            logBinaryMergerRate = &
+                                - 13.5066182170954650_RK &
+                                + 40.1985219822299200_RK * logzplus1 &
+                                - 121.506350703598660_RK * logzplus1**2 &
+                                + 224.621285123736100_RK * logzplus1**3 &
+                                - 210.878836655472500_RK * logzplus1**4 &
+                                + 76.3335749498628400_RK * logzplus1**5
+        elseif (logzplus1>0.8241754429663476_RK .and. logzplus1<=1.4243124283074096_RK) then
+            logBinaryMergerRate = &
+                                - 10.0515447816113700_RK &
+                                + 12.6659826494097970_RK * logzplus1 &
+                                - 13.2268991886238200_RK * logzplus1**2 &
+                                + 6.84523627043807100_RK * logzplus1**3 &
+                                - 1.44645280124922220_RK * logzplus1**4
+        elseif (logzplus1>1.4243124283074096_RK .and. logzplus1<=1.6104374127671848_RK) then
+            logBinaryMergerRate = &
+                                - 1187.90539057029950_RK &
+                                + 3240.19327021926350_RK * logzplus1 &
+                                - 3330.70645904271000_RK * logzplus1**2 &
+                                + 1522.87499612399850_RK * logzplus1**3 &
+                                - 261.341408956542300_RK * logzplus1**4
+        elseif (logzplus1>1.6104374127671848_RK .and. logzplus1<=3.0411835364579027_RK) then
+            logBinaryMergerRate = &
+                                - 1.43934839576471260_RK &
+                                + 1.72951867017028120_RK * logzplus1 &
+                                - 4.06729555225025000_RK * logzplus1**2 &
+                                + 1.18253386764330200_RK * logzplus1**3 &
+                                - 0.15201156018584210_RK * logzplus1**4
+        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
+            logBinaryMergerRate = 0._RK
+        end if
+    end function getLogBinaryMergerRateLognormB10
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    ! computes the natural log of the binary merger rate as a function of logzplus1.
+    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
     ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormM14(logzplus1) result(logBinaryMergerRate)
@@ -860,6 +696,170 @@ contains
             logBinaryMergerRate = 0._RK
         end if
     end function getLogBinaryMergerRateLognormM17
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    ! computes the natural log of the binary merger rate as a function of logzplus1.
+    ! However, note that the computed rate is dN/dz, even though the input is logzplus1.
+    ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
+    ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
+    pure function getLogBinaryMergerRateLognormF18(logzplus1) result(logBinaryMergerRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormF18
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK)    , intent(in)    :: logzplus1
+        real(RK)                    :: logBinaryMergerRate
+        if (logzplus1>0.02955880224154443_RK .and. logzplus1<=0.16551443847757297_RK) then
+            logBinaryMergerRate = &
+                                - 13.80128475140318000_RK &
+                                + 79.17963739241087000_RK * logzplus1 &
+                                - 420.9808813943490700_RK * logzplus1**2 &
+                                + 902.4149755380632000_RK * logzplus1**3
+        elseif (logzplus1>0.16551443847757297_RK .and. logzplus1<=0.9282193027394269_RK) then
+            logBinaryMergerRate = &
+                                - 10.89131941401880800_RK &
+                                + 21.59483273763076400_RK * logzplus1 &
+                                - 33.07662054750123000_RK * logzplus1**2 &
+                                + 29.23608723915102600_RK * logzplus1**3 &
+                                - 11.33984422193848700_RK * logzplus1**4
+        elseif (logzplus1>0.9282193027394269_RK .and. logzplus1<=1.3937663759585892_RK) then
+            logBinaryMergerRate = &
+                                - 14.02518830695731000_RK &
+                                + 24.92009885816913300_RK * logzplus1 &
+                                - 20.04762612951797000_RK * logzplus1**2 &
+                                + 4.885281389900379500_RK * logzplus1**3 &
+                                - 0.168402813838908260_RK * logzplus1**4
+        elseif (logzplus1>1.3937663759585892_RK .and. logzplus1<=3.0411835364579027_RK) then
+            logBinaryMergerRate = &
+                                - 4.348081430972656000_RK &
+                                + 4.815143234949144000_RK * logzplus1 &
+                                - 6.143880845780776000_RK * logzplus1**2 &
+                                + 1.738835623950871300_RK * logzplus1**3 &
+                                - 0.206972882929076480_RK * logzplus1**4
+        elseif (logzplus1<=0.02955880224154443_RK .or. logzplus1>3.0411835364579027_RK) then
+            logBinaryMergerRate = 0._RK
+        end if
+    end function getLogBinaryMergerRateLognormF18
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function getBinaryMergerRateDensity ( zplus1 &
+                                        , zplus1Max &
+                                        , nRefinement &
+                                        , maxRelativeError &
+                                        , getMergerDelayTimePDF &
+                                        , getStarFormationRateDensity &
+                                        ) result(binaryMergerRateDensity)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRateDensity
+#endif
+        use, intrinsic :: iso_fortran_env, only: output_unit
+        use Constants_mod, only: RK, HUGE_RK
+        use Cosmology_mod, only: getLookBackTime
+        use Integration_mod, only: doQuadRombOpen, ErrorMessage!, midinf
+        use Integration_mod, only: midexp
+       !use Integration_mod, only: midinf
+        implicit none
+        real(RK)    , intent(in)                :: zplus1
+        real(RK)    , intent(in), optional      :: zplus1Max, maxRelativeError
+        integer(IK) , intent(in), optional      :: nRefinement
+        procedure(getRateDensity_proc)          :: getStarFormationRateDensity
+        procedure(getMergerDelayTimePDF_proc)   :: getMergerDelayTimePDF
+        integer(IK)                             :: neval, ierr, nRefinementDefault
+        real(RK)                                :: zplus1MaxDefault, maxRelativeErrorDefault, relerr
+        real(RK)                                :: binaryMergerRateDensity, lookBackTimeRef
+
+        nRefinementDefault = 7_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
+        zplus1MaxDefault = HUGE_RK; if (present(zplus1Max)) zplus1MaxDefault = zplus1Max
+        maxRelativeErrorDefault = 1.e-6_RK; if (present(maxRelativeError)) maxRelativeErrorDefault = maxRelativeError
+
+        lookBackTimeRef = getLookBackTime   ( zplus1 = zplus1 &
+                                            , maxRelativeError = maxRelativeErrorDefault &
+                                            , nRefinement = nRefinementDefault &
+                                            )
+
+        call doQuadRombOpen ( getFunc           = getBinaryMergerRateDensityIntegrand   &
+                            , integrate         = midexp                                &
+                           !, integrate         = midinf                                &
+                            , lowerLim          = zplus1                                &
+                            , upperLim          = zplus1MaxDefault                      &
+                            , maxRelativeError  = maxRelativeErrorDefault               &
+                            , nRefinement       = nRefinementDefault                    &
+                            , integral          = binaryMergerRateDensity               &
+                            , relativeError     = relerr                                &
+                            , numFuncEval       = neval                                 &
+                            , ierr              = ierr                                  &
+                            )
+        if (ierr/=0_IK) then
+            write(output_unit,"(A)") ErrorMessage(ierr)
+            error stop
+        end if
+
+    contains
+
+        function getBinaryMergerRateDensityIntegrand(zplus1) result(binaryMergerRateIntegrand)
+
+            use Cosmology_mod, only: getUniverseAgeDerivative
+            implicit none
+            real(RK)    , intent(in)    :: zplus1
+            real(RK)                    :: binaryMergerRateIntegrand !,lognormpdf
+            real(RK)                    :: mergerDelayTime
+
+            ! note that zp<z always, so that delay>0.
+            mergerDelayTime = getLookBackTime   ( zplus1 = zplus1 &
+                                                , maxRelativeError = maxRelativeErrorDefault &
+                                                , nRefinement = nRefinementDefault &
+                                                )
+            mergerDelayTime = mergerDelayTime - lookBackTimeRef
+            if (mergerDelayTime<=0._RK) then
+                write(output_unit,"(A)") "The mergerDelayTime is non-positive in getBinaryMergerRateDensityIntegrand(): (zplus1, mergerDelayTime) = ", zplus1, mergerDelayTime
+                error stop
+            end if
+
+            binaryMergerRateIntegrand   = getMergerDelayTimePDF(mergerDelayTime) &
+                                        * getStarFormationRateDensity(zplus1) &
+                                        * getUniverseAgeDerivative(zplus1)
+
+        end function getBinaryMergerRateDensityIntegrand
+
+    end function getBinaryMergerRateDensity
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function getBinaryMergerRate( zplus1 &
+                                , zplus1Max &
+                                , nRefinement &
+                                , maxRelativeError &
+                                , getMergerDelayTimePDF &
+                                , getStarFormationRateDensity &
+                                ) result(binaryMergerRate)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRate
+#endif
+        use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE, getLogLumDisWicMpc
+        use Constants_mod, only: RK, PI
+        implicit none
+        real(RK)    , intent(in)                :: zplus1
+        real(RK)    , intent(in), optional      :: zplus1Max, maxRelativeError
+        integer(IK) , intent(in), optional      :: nRefinement
+        procedure(getRateDensity_proc)          :: getStarFormationRateDensity
+        procedure(getMergerDelayTimePDF_proc)   :: getMergerDelayTimePDF
+        real(RK)                                :: binaryMergerRate
+        real(RK), parameter                     :: LOG_COEF = log(4._RK*PI*LS2HC)
+
+        binaryMergerRate    = exp( LOG_COEF + 2_IK*getLogLumDisWicMpc(zplus1) - ( 3._RK*log(zplus1) + 0.5_RK*log(OMEGA_DM*zplus1**3+OMEGA_DE) ) ) &
+                            * getBinaryMergerRateDensity( zplus1 &
+                                                        , zplus1Max &
+                                                        , nRefinement &
+                                                        , maxRelativeError &
+                                                        , getMergerDelayTimePDF &
+                                                        , getStarFormationRateDensity &
+                                                        )
+
+    end function getBinaryMergerRate
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

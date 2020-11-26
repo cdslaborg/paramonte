@@ -348,7 +348,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine reportValues(SpecBase,prefix,outputUnit,isMasterImage)
+    subroutine reportValues(SpecBase,prefix,outputUnit,isLeaderImage)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: reportValues
 #endif
@@ -361,11 +361,11 @@ contains
         class(SpecBase_type), intent(in)    :: SpecBase
         character(*), intent(in)            :: prefix
         integer(IK) , intent(in)            :: outputUnit
-        logical     , intent(in)            :: isMasterImage
+        logical     , intent(in)            :: isLeaderImage
         integer(IK)                         :: i, ndim
         character(:), allocatable           :: msg
 
-        if (isMasterImage) then
+        if (isLeaderImage) then
 
             ndim = size(SpecBase%DomainLowerLimitVec%Val(:))
             msg =   "ndim is a 32-bit positive integer, representing the number of dimensions of the domain of the objective function. &

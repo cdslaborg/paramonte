@@ -829,6 +829,7 @@ class DensityPlot(BasePlot):
 
         import seaborn as sns
         import matplotlib.pyplot as plt
+        plt.ion() # turn on the interactive mode. Used to detach the figure from the command line in ipython
         if self._type.isDiffusionPlot: from paramonte.vis.kde2d import kde2d
 
         ############################################################################################################################

@@ -355,7 +355,7 @@ contains
 
         ! read/write the first entry of the restart file
 
-        if (mc_Image%isMaster) then
+        if (mc_Image%isLeader) then
             block
                 real(RK) :: meanAccRateSinceStart
                 if (isFreshRun) then
@@ -518,7 +518,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: doAdaptation
 #endif
 
-        use Statistics_mod, only: getSamCovUpperMeanTrans, getWeiSamCovUppMeanTrans, combineMeanCovUpper
+        use Statistics_mod, only: getSamCovUpperMeanTrans, getWeiSamCovUppMeanTrans, mergeMeanCovUpper!, combineMeanCovUpper
         use Matrix_mod, only: getCholeskyFactor, getLogSqrtDetPosDefMat
         use Constants_mod, only: RK, IK, EPS_RK
         use String_mod, only: num2str
@@ -554,7 +554,7 @@ contains
 
         ! read/write meanAccRateSinceStart from/to restart file
 
-        if (mc_Image%isMaster) then
+        if (mc_Image%isLeader) then
             if (isFreshRun) then
                 call writeRestartFile(meanAccRateSinceStart)
             else
@@ -607,36 +607,20 @@ contains
                     end do
                 end do
 
-                ! now combine it with the old covariance matrix
+                ! now combine it with the old covariance matrix.
+                ! Do not set the full boundaries' range `(1:nd)` for `comv_CholDiagLower` in the following subroutine call.
+                ! Setting the boundaries forces the compiler to generate a temporary array.
 
-#if defined DBG_ENABLED
-                block
-                real(RK), allocatable :: Dummy(:,:)
-                Dummy = comv_CholDiagLower(1:nd,1:nd,0)
-                call combineMeanCovUpper( nd            = nd                                &
-                                        , npA           = mv_sampleSizeOld_save             &
-                                        , MeanVecA      = mv_MeanOld_save                   &
-                                        , CovMatUpperA  = CovMatUpperOld                    &
-                                        , npB           = sampleSizeCurrent                 &
-                                        , MeanVecB      = MeanCurrent                       &
-                                        , CovMatUpperB  = CovMatUpperCurrent                &
-                                        , MeanVec       = MeanNew                           &
-                                        , CovMatUpper   = Dummy                             &
+                call mergeMeanCovUpper  ( nd            = nd                        &
+                                        , npA           = mv_sampleSizeOld_save     &
+                                        , MeanVecA      = mv_MeanOld_save           &
+                                        , CovMatUpperA  = CovMatUpperOld            &
+                                        , npB           = sampleSizeCurrent         &
+                                        , MeanVecB      = MeanCurrent               &
+                                        , CovMatUpperB  = CovMatUpperCurrent        &
+                                        , MeanVecAB     = MeanNew                   &
+                                        , CovMatUpperAB = comv_CholDiagLower(:,:,0) &
                                         )
-                comv_CholDiagLower(1:nd,1:nd,0) = Dummy
-                end block
-#else
-                call combineMeanCovUpper( nd            = nd                                &
-                                        , npA           = mv_sampleSizeOld_save             &
-                                        , MeanVecA      = mv_MeanOld_save                   &
-                                        , CovMatUpperA  = CovMatUpperOld                    &
-                                        , npB           = sampleSizeCurrent                 &
-                                        , MeanVecB      = MeanCurrent                       &
-                                        , CovMatUpperB  = CovMatUpperCurrent                &
-                                        , MeanVec       = MeanNew                           &
-                                        , CovMatUpper   = comv_CholDiagLower(1:nd,1:nd,0)   &
-                                        )
-#endif
                 mv_MeanOld_save(1:nd) = MeanNew
 
             end if blockMergeCovMat
@@ -644,17 +628,10 @@ contains
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             ! now get the Cholesky factorization
+            ! Do not set the full boundaries' range `(1:nd)` for `comv_CholDiagLower` in the following subroutine call.
+            ! Setting the boundaries forces the compiler to generate a temporary array.
 
-#if defined DBG_ENABLED
-            block
-                real(RK), allocatable :: Dummy(:,:)
-                Dummy = comv_CholDiagLower(1:nd,1:nd,0)
-                call getCholeskyFactor( nd, Dummy, comv_CholDiagLower(1:nd,0,0) )
-                comv_CholDiagLower(1:nd,1:nd,0) = Dummy
-            end block
-#else
-            call getCholeskyFactor( nd, comv_CholDiagLower(1:nd,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
-#endif
+            call getCholeskyFactor( nd, comv_CholDiagLower(:,:,0), comv_CholDiagLower(1:nd,0,0) )
 
             blockPosDefCheck: if (comv_CholDiagLower(1,0,0)>0._RK) then
 
@@ -851,7 +828,7 @@ contains
 
         ! read/write restart file
 
-        if (mc_Image%isMaster) then
+        if (mc_Image%isLeader) then
             if (isFreshRun) then
                 call writeRestartFile()
             else
@@ -952,7 +929,7 @@ contains
                         , mpi_comm_world        &   ! comm
                         , ierrMPI               &   ! ierr
                         )
-        if (mc_Image%isNotMaster .and. mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
+        if (mc_Image%isRooter .and. mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
 #endif
         call getInvCovMat()
     end subroutine bcastAdaptation
@@ -967,6 +944,12 @@ contains
     !>
     !> \remark
     !> This procedure is required for the proposal probabilities
+    !>
+    !> \todo
+    !> The specification of the array bounds causes the compiler to generate a temporary copy of the array, despite being unnecessary.
+    !> Right now, this is resolved by replacing the array bounds with `:`. A better solution is to add the `contiguous` attribute to
+    !> the corresponding argument of [getInvMatFromCholFac](ref matrix_mod::getinvmatfromcholfac) to guarantee it to the compiler.
+    !> More than improving performance, this would turn off the pesky compiler warnings about temporary array creation.
     subroutine getInvCovMat()
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvCovMat
@@ -976,8 +959,9 @@ contains
         integer(IK) :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
+            ! Do not set the full boundaries' range `(1:mc_ndim)` for `comv_CholDiagLower` in the following call.
+            ! Setting the boundaries forces the compiler to generate a temporary array.
             mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim &
-                                                                            !, CholeskyLower = comv_CholDiagLower(1:mc_ndim,1:mc_ndim,istage) & ! this causes an array temporary to be created.
                                                                             , CholeskyLower = comv_CholDiagLower(:,:,istage) &
                                                                             , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) &
                                                                             )

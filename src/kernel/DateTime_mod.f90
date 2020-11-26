@@ -48,7 +48,7 @@ module DateTime_mod
     implicit none
 
     public
-    private :: query
+    private :: queryDateTime
 
     character(*), parameter :: MODULE_NAME = "@DateTime_mod"
 
@@ -70,7 +70,7 @@ module DateTime_mod
         character(35)   :: fancyStyle
     contains
         !> Query date and time.
-        procedure, pass :: query
+        procedure, pass :: query => queryDateTime
     end type DateTime_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,9 +82,9 @@ contains
     !> Function to query the [DateTime_type](@ref datetime_type) instance to the current time.
     !>
     !> @param[in,out]   self : An object of [DateTime_type](@ref datetime_type) class.
-    subroutine query(self)
+    subroutine queryDateTime(self)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: query
+        !DEC$ ATTRIBUTES DLLEXPORT :: queryDateTime
 #endif
         implicit none
         class(DateTime_type), intent(inout) :: self
@@ -101,16 +101,16 @@ contains
         self%minute             = self%time(3:4)
         self%second             = self%time(5:6)
         self%millisecond        = self%time(8:10)
-        self%fancyStyleBasic    = self%year // "/" // &    ! 5 characters
-                                  self%month // "/" // &   ! 3 characters
-                                  self%day //" - " // &    ! 5 characters
-                                  self%hour // ":" // &    ! 3 characters
-                                  self%minute // ":" // &  ! 3 characters
-                                  self%second              ! 2 characters
-        self%fancyStyle         = self%fancyStyleBasic // "." // & ! basic+1 characters
-                                  self%millisecond // " " // &     ! 4 characters
-                                  self%zone // " UTC"              ! 9 characters
-    end subroutine query
+        self%fancyStyleBasic    = self%year // "/" // &             ! 5 characters
+                                  self%month // "/" // &            ! 3 characters
+                                  self%day //" - " // &             ! 5 characters
+                                  self%hour // ":" // &             ! 3 characters
+                                  self%minute // ":" // &           ! 3 characters
+                                  self%second                       ! 2 characters
+        self%fancyStyle         = self%fancyStyleBasic // "." // &  ! basic+1 characters
+                                  self%millisecond // " " // &      ! 4 characters
+                                  self%zone // " UTC"               ! 9 characters
+    end subroutine queryDateTime
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

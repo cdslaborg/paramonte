@@ -71,9 +71,11 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> The constructor of the [FileContents_type](@ref filecontents_type) class.
     !>
-    !> @param[in] filePath : the path to the file.
+    !> @param[in] filePath      :   The path to the file.
+    !> @param[in] delEnabled    :   A logical flag indicating whether the file should be deleted upon return (optional, default = `.false.`).
     !>
     !> \return
     !> `FileContents` : An object of [FileContents_type](@ref filecontents_type) class.
@@ -91,6 +93,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Returns the entire content of a file as an array of strings.
     !>
     !> @param[in]   path        :   The path to the file.
@@ -168,12 +171,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Returns the number of lines in a file.
     !>
-    !> @param[in] filePath : The path to the file.
-    !> @param[out] numRecord : The number of lines in the file.
-    !> @param[out] Err : An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
-    !> @param[in] exclude : A string. If any line matches `exclude`, it will NOT be counted.
+    !> @param[in]   filePath    :   The path to the file.
+    !> @param[out]  numRecord   :   The number of lines in the file.
+    !> @param[out]  Err         :   An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
+    !> @param[in]   exclude     :   A string. If any line matches `exclude`, it will NOT be counted.
     subroutine getNumRecordInFile(filePath,numRecord,Err,exclude)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumRecordInFile

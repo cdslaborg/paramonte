@@ -58,7 +58,8 @@ module TimerCPU_mod
     type                    :: Time_type
         real(RK)            :: start            !< The CPU start time.
         real(RK)            :: stop             !< The CPU stop time.
-        real(RK)            :: delta            !< The CPU time spent between start and stop in seconds.
+        real(RK)            :: delta            !< The CPU time spent since the last clock call in seconds.
+        real(RK)            :: total            !< The total CPU time spent between start and stop in seconds.
         character(7)        :: unit = "seconds" !< The time unit.
     end type Time_type
 
@@ -133,6 +134,9 @@ contains
         implicit none
         class(TimerCPU_type), intent(inout) :: TimerCPU
         call cpu_time( time=TimerCPU%Time%start )
+        TimerCPU%Time%total = 0._RK
+        TimerCPU%Time%delta = 0._RK
+        TimerCPU%Time%stop = TimerCPU%Time%start
     end subroutine setTicCPU
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,7 +162,8 @@ contains
         implicit none
         class(TimerCPU_type), intent(inout)    :: TimerCPU
         call cpu_time( time=TimerCPU%Time%stop )
-        TimerCPU%Time%delta = TimerCPU%Time%stop - TimerCPU%Time%start
+        TimerCPU%Time%delta = TimerCPU%Time%stop - TimerCPU%Time%total
+        TimerCPU%Time%total = TimerCPU%Time%stop - TimerCPU%Time%start
     end subroutine setTocCPU
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

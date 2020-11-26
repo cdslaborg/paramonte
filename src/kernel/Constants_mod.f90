@@ -70,16 +70,20 @@ module Constants_mod
     ! Mathematical constants
 
     real(RK)    , parameter :: PI = 3.141592653589793238462643383279502884197_DPR       !< @public = acos(-1._RK) : The irrational number Pi.
+    real(RK)    , parameter :: INVPI = 1._DPR / PI                                      !< @public = inverse Pi.
     real(RK)    , PARAMETER :: TWOPI = 6.283185307179586476925286766559005768394_DPR    !< @public 2*PI
     real(RK)    , parameter :: LN2 = log(2._RK)                                         !< @public Natural Log of 2 (= 0.693147180559945_RK).
     real(RK)    , parameter :: INVLN2 = 1._RK / LN2                                     !< @public Inverse of the natural Log of 2 (= 0.693147180559945_RK).
     real(RK)    , parameter :: LN10 = log(1.e1_RK)                                      !< @public Natural Log of 10 (= 2.302585092994046_RK).
+    real(RK)    , parameter :: LNPI = log(PI)                                           !< @public ln(2pi) (= 1.144729885849400_RK)
     real(RK)    , parameter :: LN2PI = log(2._RK*PI)                                    !< @public ln(2pi) (= 1.837877066409345_RK)
     real(RK)    , parameter :: SQRT2 = sqrt(2._RK)                                      !< @public Square root of 2.
     real(RK)    , parameter :: NAPIER = exp(1._RK)                                      !< @public Napier number e.
     real(RK)    , parameter :: SQRTPI = sqrt(PI)                                        !< @public Square root of Pi.
     real(RK)    , parameter :: SQRT2PI = sqrt(2._RK*acos(-1._RK))                       !< @public Square root of 2Pi.
+    real(RK)    , parameter :: INVSQRT2 = 1._RK / SQRT2PI                               !< @public Square root of 2.
     real(RK)    , parameter :: HALFLN2PI = 0.5_RK*LN2PI                                 !< @public ln(sqrt(2pi))
+    real(RK)    , parameter :: INVSQRTPI = sqrt(INVPI)                                  !< @public = inverse of the square root of Pi.
     real(RK)    , parameter :: INVSQRT2PI = 1._RK / SQRT2PI                             !< @public 1/sqrt(2*Pi) (= 0.398942280401432_RK)
     real(RK)    , parameter :: LOGINVSQRT2PI = log(INVSQRT2PI)                          !< @public Log(1/sqrt(2Pi)), used in Gaussian distribution.
     real(RK)    , parameter :: SQRT_HALF_PI = sqrt(0.5_RK*PI)                           !< @public Square root of PI/2 (= 1.2533141373155_RK)

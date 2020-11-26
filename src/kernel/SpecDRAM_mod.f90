@@ -188,7 +188,7 @@ contains
     subroutine reportValues ( SpecDRAM              &
                             , prefix                &
                             , outputUnit            &
-                            , isMasterImage         &
+                            , isLeaderImage         &
                             , splashModeRequested   &
                             )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -202,10 +202,10 @@ contains
         class(SpecDRAM_type), intent(in)    :: SpecDRAM
         character(*), intent(in)            :: prefix
         integer(IK), intent(in)             :: outputUnit
-        logical, intent(in)                 :: isMasterImage, splashModeRequested
+        logical, intent(in)                 :: isLeaderImage, splashModeRequested
         integer(IK)                         :: i
 
-        if (isMasterImage) then
+        if (isLeaderImage) then
 
             write(outputUnit,GENERIC_OUTPUT_FORMAT)
             write(outputUnit,GENERIC_OUTPUT_FORMAT) "adaptiveUpdatePeriod"

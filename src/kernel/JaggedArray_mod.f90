@@ -40,6 +40,12 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This module contains the derived types for generating arrays of variable-size vectors of integer, real, and string.
+!>
+!> \author
+!> Amir Shahmoradi, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+
 module JaggedArray_mod
 
     use Constants_mod, only: IK, RK

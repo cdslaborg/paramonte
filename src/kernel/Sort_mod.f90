@@ -49,17 +49,21 @@ module Sort_mod
 
     character(*), parameter :: MODULE_NAME = "@Sort_mod"
 
+    interface sortArray
+        module procedure :: sortArray_RK, sortAscending_RK, sortAscendingWithRooter_RK
+    end interface sortArray
+
     interface sortAscending
-        module procedure :: sortAscending_RK, sortAscending2_RK
+        module procedure :: sortAscending_RK, sortAscendingWithRooter_RK
     end interface sortAscending
 
     interface indexArray
         module procedure :: indexArray_IK, indexArray_RK
     end interface indexArray
 
-    interface median
-        module procedure :: median_RK
-    end interface median
+    interface getMedian
+        module procedure :: getMedian_RK
+    end interface getMedian
 
 contains
 
@@ -73,7 +77,7 @@ contains
     !>
     !> \warning
     !> On return, the contents of the input array is completely overwritten.
-    pure recursive subroutine sortArray(array)
+    pure recursive subroutine sortArray_RK(array)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortArray
 #endif
@@ -84,10 +88,10 @@ contains
 
         if(size(array) > 1) then
             call partition(array, iq)
-            call sortArray(array(:iq-1))
-            call sortArray(array(iq:))
+            call sortArray_RK(array(:iq-1))
+            call sortArray_RK(array(iq:))
         endif
-    end subroutine sortArray
+    end subroutine sortArray_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -446,39 +450,39 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Sort the real `Array(1:lenArray)` in ascending order using Quicksort while making the corresponding rearrangement of real `Slave(1:lenArray)`.
+    !> Sort the real `Leader(1:lenLeader)` in ascending order using Quicksort while making the corresponding rearrangement of real `Rooter(1:lenLeader)`.
     !>
-    !> @param[in]       lenArray    :   The length of the input vector to be sorted.
-    !> @param[inout]    Array       :   The vector of length `lenArray` to be sorted.
-    !> @param[inout]    Slave       :   The vector of length `lenArray` to be sorted according to the rearrangement of the elements of `Array`.
+    !> @param[in]       lenLeader   :   The length of the input vector to be sorted.
+    !> @param[inout]    Leader      :   The vector of length `lenLeader` to be sorted.
+    !> @param[inout]    Rooter      :   The vector of length `lenLeader` to be sorted according to the rearrangement of the elements of `Leader`.
     !> @param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type).
     !>
     !> \warning
     !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
-    pure subroutine sortAscending2_RK(lenArray,Array,Slave,Err)
+    pure subroutine sortAscendingWithRooter_RK(lenLeader,Leader,Rooter,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: sortAscending2_RK
+        !DEC$ ATTRIBUTES DLLEXPORT :: sortAscendingWithRooter_RK
 #endif
         use Constants_mod, only: IK, RK
         use Err_mod, only: Err_type
 
         implicit none
 
-        integer(IK)     , intent(in)    :: lenArray
-        real(RK)        , intent(inout) :: Array(lenArray), Slave(lenArray)
+        integer(IK)     , intent(in)    :: lenLeader
+        real(RK)        , intent(inout) :: Leader(lenLeader), Rooter(lenLeader)
         type(Err_type)  , intent(out)   :: Err
 
-        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@indexArray_IK()"
-        integer(IK)                     :: Indx(lenArray)
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@sortAscendingWithRooter_RK()"
+        integer(IK)                     :: Indx(lenLeader)
 
-        call indexArray_RK(lenArray,Array,Indx,Err)
+        call indexArray_RK(lenLeader,Leader,Indx,Err)
         if (Err%occurred) then
             Err%msg = PROCEDURE_NAME//": NSTACK is too small."
             return
         end if
-        Array = Array(Indx)
-        Slave = Slave(Indx)
-    end subroutine sortAscending2_RK
+        Leader = Leader(Indx)
+        Rooter = Rooter(Indx)
+    end subroutine sortAscendingWithRooter_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -492,7 +496,7 @@ contains
     !>
     !> \warning
     !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
-    pure subroutine median_RK(lenArray,Array,median,Err)
+    pure subroutine getMedian_RK(lenArray,Array,median,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: median_RK
 #endif
@@ -508,6 +512,7 @@ contains
 
         character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@median_RK()"
         real(RK)                        :: ArrayDummy(lenArray)
+        integer(IK)                     :: lenArrayHalf
 
         ArrayDummy = Array
         call sortAscending(np=lenArray,Point=ArrayDummy,Err=Err)
@@ -515,9 +520,12 @@ contains
             Err%msg = PROCEDURE_NAME//Err%msg
             return
         end if
-        median = ArrayDummy(lenArray/2_IK)
 
-    end subroutine median_RK
+        lenArrayHalf = lenArray / 2
+        median = ArrayDummy(lenArrayHalf+1)
+        if (2*lenArrayHalf==lenArray) median = 0.5_RK * ( ArrayDummy(lenArrayHalf) + median )
+
+    end subroutine getMedian_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

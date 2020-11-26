@@ -42,8 +42,7 @@
 
 !>  \mainpage ParaMonte: Plain Powerful <b>Para</b>llel <b>Monte</b> Carlo Library
 !>
-!>  This is the `ParaMonte::Kernel` developer documentation website.
-!>  For information about the usage and examples visit the [**ParaMonte Documentation website**](https://www.cdslab.org/paramonte/).
+!>  This is the <b>`ParaMonte::Kernel`</b> developer documentation website.
 !>
 !>  What is ParaMonte?
 !>  ==================
@@ -60,14 +59,23 @@
 !>  +    **high-performance** at runtime, and,
 !>  +    **scalability** across many parallel processors.
 !>
-!>  For more information on the installation, usage, and examples, visit:
+!>  ### ParaMonte project's repository
 !>
-!>  [**https://www.cdslab.org/paramonte**](https://www.cdslab.org/paramonte)
+!>  The ParaMonte library is open-source is permanently located and maintained on **GitHub** at:
+!>
+!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://github.com/cdslaborg/paramonte**](https://github.com/cdslaborg/paramonte)
+!>
+!>  ### ParaMonte usage and examples website
+!>
+!>  For information about the usage and examples visit **the ParaMonte documentation and examples website** at:
+!>
+!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte/**](https://www.cdslab.org/paramonte/).
+!>
+!>  ### ParaMonte API documentation website
 !>
 !>  For the API developer documentation, visit:
 !>
-!>     [**https://www.cdslab.org/paramonte/notes/api/kernel**](https://www.cdslab.org/paramonte/notes/api/kernel)
-!>
+!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte/notes/api/kernel**](https://www.cdslab.org/paramonte/notes/api/kernel)
 !>
 !>  ParaMonte samplers
 !>  ==================
@@ -81,7 +89,7 @@
 !>  and instructions on how to use he ParaDRAM sampler in your
 !>  language of choice, visit:
 !>
-!>  [**https://www.cdslab.org/paramonte**](https://www.cdslab.org/paramonte)
+!>  &nbsp;&nbsp;&nbsp;&nbsp;[**https://www.cdslab.org/paramonte/notes/usage/paradram/interface/**](https://www.cdslab.org/paramonte/notes/usage/paradram/interface/)
 !>
 !>  Naming conventions
 !>  ==================
@@ -176,7 +184,7 @@ module ParaMonte_mod
 
     type                            :: Image_type
         integer(IK)                 :: id, count
-        logical                     :: isFirst, isNotFirst, isMaster, isNotMaster
+        logical                     :: isFirst, isNotFirst, isLeader, isRooter
         character(:), allocatable   :: name
     end type Image_type
 
@@ -338,17 +346,17 @@ contains
         self%Image%count          = 1_IK
 #endif
 
-        self%Image%name           = "@process(" // num2str(self%Image%id) // ")"
-        self%Image%isFirst        = self%Image%id==1_IK
-        self%Image%isNotFirst     = self%Image%id/=1_IK
-        self%Image%isMaster       = .false.  ! ATTN: this will have to change later on, depending on the requested type of parallelism
-        self%Image%isNotMaster    = .false.
+        self%Image%name         = "@process(" // num2str(self%Image%id) // ")"
+        self%Image%isFirst      = self%Image%id==1_IK
+        self%Image%isNotFirst   = self%Image%id/=1_IK
+        self%Image%isLeader     = .false.  ! ATTN: this will have to change later on, depending on the requested type of parallelism
+        self%Image%isRooter     = .false.
 
         ! setup formatting variables
 
         self%nd%str = num2str(self%nd%val)
 
-        ! determine OS. Should be only needed by the Master processes. But apparently not.
+        ! determine OS. Should be only needed by the Leader processes. But apparently not.
 
         call self%OS%query()
         if (self%OS%Err%occurred) then
@@ -964,7 +972,7 @@ contains
 
         ! open/append the output files:
 
-        if (self%Image%isMaster) then
+        if (self%Image%isLeader) then
             if (self%isFreshRun) then
                 workingOn = "Generating the output "
                 self%LogFile%status = "replace"
@@ -1058,7 +1066,7 @@ contains
         ! open the output files
         ! Intel ifort SHARED attribute is essential for file unlocking
 
-        blockMasterFileSetup: if (self%Image%isMaster) then
+        blockLeaderFileSetup: if (self%Image%isLeader) then
 
             self%LogFile%unit = 1001 + self%Image%id ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
             open( unit = self%LogFile%unit              &
@@ -1157,7 +1165,7 @@ contains
                                                     , outputUnit = self%LogFile%unit )
             end if
 
-        end if blockMasterFileSetup
+        end if blockLeaderFileSetup
 
         ! These must be defined for all images, because they may be passed as arguments to the kernel subroutines.
 

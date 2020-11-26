@@ -67,7 +67,7 @@ module FileList_mod
     end type FileList_type
 
     interface FileList_type
-        module procedure :: construct
+        module procedure :: constructFileList
     end interface FileList_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,17 +84,17 @@ contains
     !>
     !> \return
     !> FileList : An object of [FileList_type](@ref filelist_type) class.
-    function construct(searchStr,orderStr,excludeStr,OS) result(FileList)
+    function constructFileList(searchStr,orderStr,excludeStr,OS) result(FileList)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: construct
+        !DEC$ ATTRIBUTES DLLEXPORT :: constructFileList
 #endif
         use System_mod, only: OS_type
         implicit none
-        character(*), intent(in), optional  :: searchStr
-        character(*), intent(in), optional  :: excludeStr
-        character(*), intent(in), optional  :: orderStr
-        type(OS_type), intent(in), optional :: OS
-        type(FileList_type)                 :: FileList
+        character(*), intent(in), optional      :: searchStr
+        character(*), intent(in), optional      :: excludeStr
+        character(*), intent(in), optional      :: orderStr
+        type(OS_type), intent(inout), optional  :: OS
+        type(FileList_type)                     :: FileList
         if (present(searchStr)) then
             FileList%searchStr = searchStr
         else
@@ -111,7 +111,7 @@ contains
             FileList%excludeStr = ""
         end if
         call getFileList(FileList%File,FileList%Err,FileList%count,FileList%searchStr,FileList%orderStr,FileList%excludeStr,OS)
-    end function construct
+    end function constructFileList
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -132,7 +132,7 @@ contains
 #endif
 
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use System_mod, only: OS_type, executeCmd, sleep, removeFile
+        use System_mod, only: OS_type, executeCmd, sleep !, removeFile
         use Constants_mod, only: IK, RK, MAX_REC_LEN
         use String_mod, only: getLowerCase, num2str
         !use Path_mod, only: winifyPath, linifyPath
@@ -146,14 +146,14 @@ contains
         type(CharVec_type), allocatable, intent(out)    :: FileList(:)
         type(Err_type), intent(out)                     :: Err
         integer(IK), intent(out), optional              :: count
-        type(OS_type), intent(in), optional             :: OS
+        type(OS_type), intent(inout), optional          :: OS
 
         character(:), allocatable                       :: search,order,exclude !,searchModified
         character(:), allocatable                       :: command,filename,stdErr,recordTrimmed
         character(MAX_REC_LEN)                          :: record
         integer(IK)                                     :: fileUnit
         integer(IK)                                     :: counter,nrecord,nskip,fileCounter
-        logical                                         :: fileIsOpen, OSisWindows
+        logical                                         :: fileIsOpen, isWindowsShell
 
         character(*), parameter                         ::  PROCEDURE_NAME = "@getFileList()"
 
@@ -176,12 +176,13 @@ contains
             order = "name"
         end if
 
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! check if the input order request is supported
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (order/="name" .and. order/="date") then
             Err%occurred = .true.
-            Err%msg =   PROCEDURE_NAME // ": Error Occurred. The requested search order orderStr='" // &
-                        order // "' is not supported."
+            Err%msg =   PROCEDURE_NAME // ": Error Occurred. The requested search order orderStr='" // order // "' is not supported."
             return
         end if
 
@@ -192,23 +193,37 @@ contains
         end if
 
         if (present(OS)) then
-            OSisWindows = OS%isWindows
-        else
-            block
-                type(OS_type) :: OS
-                call OS%query()
-                if (OS%Err%occurred) then
-                    Err = OS%Err
+            if ( OS%isWindows .and. .not. (OS%Shell%isCMD .or. OS%Shell%isPowershell) ) then
+                call OS%Shell%query(isWindowsOS = OS%isWindows)
+                if (OS%Shell%Err%occurred) then
+                    Err = OS%Shell%Err
                     Err%msg =   PROCEDURE_NAME // &
                                 ": Error occurred while attempting to query OS type in search of files containing '" // &
                                 search // "'.\n" // Err%msg
                     return
                 end if
-                OSisWindows = OS%isWindows
+            end if
+            isWindowsShell = OS%isWindows .and. .not. OS%Shell%isUnix
+        else
+            block
+                type(OS_type) :: OS
+                call OS%query(shellQueryEnabled = .true.)
+                if (OS%Err%occurred) then
+                    Err = OS%Err
+                elseif (OS%Shell%Err%occurred) then
+                    Err = OS%Shell%Err
+                end if
+                if (Err%occurred) then
+                    Err%msg =   PROCEDURE_NAME // &
+                                ": Error occurred while attempting to query OS type in search of files containing '" // &
+                                search // "'.\n" // Err%msg
+                    return
+                end if
+                isWindowsShell = OS%isWindows .and. .not. OS%Shell%isUnix
             end block
         end if
 
-        if (OSisWindows) then
+        if (isWindowsShell) then
 
             !call winifyPath(search,searchModified,Err)
             !if (Err%occurred) then
@@ -261,7 +276,10 @@ contains
 
         end if
 
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! generate a brand new, non-existing filename
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         block
             use System_mod, only: RandomFileName_type
             type(RandomFileName_type)   :: RFN
@@ -281,7 +299,9 @@ contains
             return
         end if
 
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! now count the number of records in file:
+        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         inquire(file=filename,opened=fileIsOpen,number=fileUnit,iostat=Err%stat)    ! check if the file already exists
         if (Err%stat/=0) then
@@ -302,6 +322,13 @@ contains
             Err%msg = PROCEDURE_NAME // Err%msg
             return
         end if
+
+        ! delete the stderr file
+
+        open(newunit = fileUnit, file = stdErr, status = "replace")
+        close(fileUnit, status = "delete")
+
+        ! open the list file
 
         open(newunit=fileUnit,file=filename,status="old",iostat=Err%stat)
         if (Err%stat>0) then
@@ -333,7 +360,7 @@ contains
                 cycle
             end if
         end do
-        close(fileUnit,iostat=Err%stat)
+        close(fileUnit, iostat = Err%stat)
         if (Err%stat/=0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // filename // "'."
@@ -380,7 +407,7 @@ contains
 
         if (present(count)) count = fileCounter
 
-        close(fileUnit,iostat=Err%stat)
+        close(fileUnit, iostat = Err%stat, status = "delete")
         if (Err%stat/=0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // filename // "'."
@@ -388,12 +415,12 @@ contains
         end if
 
         ! remove the files
-        !call removeFile(filename,OSisWindows,Err)
+        !call removeFile(filename,isWindowsShell,Err)
         !if (Err%occurred) then
         !    Err%msg = PROCEDURE_NAME // Err%msg
         !    return
         !end if
-        !call removeFile(stdErr,OSisWindows,Err)
+        !call removeFile(stdErr,isWindowsShell,Err)
         !if (Err%occurred) then
         !    Err%msg = PROCEDURE_NAME // Err%msg
         !    return
@@ -404,7 +431,7 @@ contains
         !    Err%msg = PROCEDURE_NAME // Err%msg
         !    return
         !end if
-        !if (OSisWindows) then  ! it is Windows cmd
+        !if (isWindowsShell) then  ! it is Windows cmd
         !    command = "del " // filename // "; del " // stdErr
         !else
         !    command = "rm " // filename // "; rm " // stdErr

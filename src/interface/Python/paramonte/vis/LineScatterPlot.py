@@ -703,6 +703,7 @@ class LineScatterPlot(BasePlot):
         from matplotlib import pyplot as plt
         from matplotlib.collections import LineCollection
         if self._type.is3d: from mpl_toolkits.mplot3d.art3d import Line3DCollection
+        plt.ion() # turn on the interactive mode. Used to detach the figure from the command line in ipython
 
         ############################################################################################################################
         #### generate figure and axes if needed

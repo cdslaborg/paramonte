@@ -202,23 +202,23 @@ contains
     !> @param[in]   Vec     : The input vector.
     !>
     !> \return
-    !> `CumSum` : An integer array of length `vecLen` representing the cumulative sum.
+    !> `CumSumReverse` : An integer array of length `vecLen` representing the cumulative sum.
     !>
     !> \remark
-    !> The last element of `CumSum` is the same as the last element of `Vec`.
-    pure function getCumSumReverse_IK(vecLen,Vec) result(CumSum)
+    !> The last element of `CumSumReverse` is the same as the last element of `Vec`.
+    pure function getCumSumReverse_IK(vecLen,Vec) result(CumSumReverse)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSumReverse_IK
 #endif
         use Constants_mod, only: IK
         integer(IK), intent(in) :: vecLen
         integer(IK), intent(in) :: Vec(vecLen)
-        integer(IK)             :: CumSum(vecLen)
+        integer(IK)             :: CumSumReverse(vecLen)
         integer(IK)             :: i, indx
-        CumSum(1) = Vec(vecLen)
+        CumSumReverse(1) = Vec(vecLen)
         do i = vecLen-1,1,-1
             indx = vecLen - i
-            CumSum(indx+1) = CumSum(indx) + Vec(i)
+            CumSumReverse(indx+1) = CumSumReverse(indx) + Vec(i)
         end do
     end function getCumSumReverse_IK
 
@@ -229,47 +229,47 @@ contains
     !> @param[in]   Vec     : The input vector.
     !>
     !> \return
-    !> `CumSum` : A real array of length `vecLen` representing the cumulative sum.
+    !> `CumSumReverse` : A real array of length `vecLen` representing the cumulative sum.
     !>
     !> \remark
-    !> The last element of `CumSum` is the same as the last element of `Vec`.
-    pure function getCumSumReverse_RK(vecLen,Vec) result(CumSum)
+    !> The last element of `CumSumReverse` is the same as the last element of `Vec`.
+    pure function getCumSumReverse_RK(vecLen,Vec) result(CumSumReverse)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSumReverse_RK
 #endif
         use Constants_mod, only: IK, RK
         integer(IK), intent(in) :: vecLen
         real(RK)   , intent(in) :: Vec(vecLen)
-        real(RK)                :: CumSum(vecLen)
+        real(RK)                :: CumSumReverse(vecLen)
         integer(IK)             :: i, indx
-        CumSum(1) = Vec(vecLen)
+        CumSumReverse(1) = Vec(vecLen)
         do i = vecLen-1,1,-1
             indx = vecLen - i
-            CumSum(indx+1) = CumSum(indx) + Vec(i)
+            CumSumReverse(indx+1) = CumSumReverse(indx) + Vec(i)
         end do
     end function getCumSumReverse_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return `log( exp(logValue1) - exp(logValue2) )` robustly (without overflow or underflow).
+    !> Return `log( exp(logValueLarger) - exp(logValueSamller) )` robustly (without overflow or underflow).
     !>
-    !> @param[in]   logValue1 : A real number.
-    !> @param[in]   logValue2 : A real number.
+    !> @param[in]   logValueLarger  : A real number.
+    !> @param[in]   logValueSamller : A real number.
     !>
     !> \return
     !> `logSubExp` : A real number.
     !>
     !> \warning
-    !> The onus is on the user to ensure `logValue1 > logValue2`.
-    pure function getLogSubExp_RK(logValue1,logValue2) result(logSubExp)
+    !> The onus is on the user to ensure `logValueLarger > logValueSamller`.
+    pure function getLogSubExp_RK(logValueLarger,logValueSamller) result(logSubExp)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSubExp_RK
 #endif
         use Constants_mod, only: RK
-        real(RK)   , intent(in) :: logValue1, logValue2
+        real(RK)   , intent(in) :: logValueLarger, logValueSamller
         real(RK)                :: logSubExp
-        logSubExp = logValue1 + log( 1._RK - exp(logValue2-logValue1) )
+        logSubExp = logValueLarger + log( 1._RK - exp(logValueSamller-logValueLarger) )
     end function getLogSubExp_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -279,22 +279,28 @@ contains
     !>
     !> @param[in]   lenLogValue : The length of the input vector.
     !> @param[in]   LogValue    : The input vector of log-values whose log-sum-exp must be computed.
+    !> @param[in]   maxLogValue : The maximum of the input `LogValue` argument (optional).
     !>
     !> \return
     !> `logSumExp` : A real number.
-    pure function getLogSumExp_RK(lenLogValue,LogValue) result(logSumExp)
+    pure function getLogSumExp_RK(lenLogValue, LogValue, maxLogValue) result(logSumExp)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExp_RK
 #endif
         use Constants_mod, only: IK, RK, LOGTINY_RK
-        integer(IK), intent(in) :: lenLogValue
-        real(RK)   , intent(in) :: LogValue(lenLogValue)
-        real(RK)                :: logSumExp
-        real(RK)                :: LogValueCopy(lenLogValue)
-        real(RK)                :: normFac
-        integer(IK)             :: i
-        normFac = maxval(LogValue)
-        LogValueCopy = LogValue - normFac
+        integer(IK) , intent(in)            :: lenLogValue
+        real(RK)    , intent(in)            :: LogValue(lenLogValue)
+        real(RK)    , intent(in), optional  :: maxLogValue
+        real(RK)                            :: logSumExp
+        real(RK)                            :: maxLogValueDefault
+        real(RK)                            :: LogValueCopy(lenLogValue)
+        integer(IK)                         :: i
+        if (present(maxLogValue)) then
+            maxLogValueDefault = maxLogValue
+        else
+            maxLogValueDefault = maxval(LogValue)
+        end if
+        LogValueCopy = LogValue - maxLogValueDefault
         do concurrent(i=1:lenLogValue)
             if (LogValueCopy(i)<LOGTINY_RK) then
                 LogValueCopy(i) = 0._RK
@@ -302,7 +308,7 @@ contains
                 LogValueCopy(i) = exp(LogValueCopy(i))
             end if
         end do
-        logSumExp = normFac + log(sum(LogValueCopy))
+        logSumExp = maxLogValueDefault + log(sum(LogValueCopy))
     end function getLogSumExp_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -312,22 +318,28 @@ contains
     !>
     !> @param[in]   lenLogValue : The length of the input vector.
     !> @param[in]   LogValue    : The input vector of log-values whose log-sum-exp must be computed.
+    !> @param[in]   maxLogValue : The maximum of the real component of the input `LogValue` argument (optional).
     !>
     !> \return
     !> `logSumExp` : A complex number.
-    pure function getLogSumExp_CK(lenLogValue,LogValue) result(logSumExp)
+    pure function getLogSumExp_CK(lenLogValue, LogValue, maxLogValue) result(logSumExp)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExp_CK
 #endif
         use Constants_mod, only: IK, RK, LOGTINY_RK
-        integer(IK), intent(in) :: lenLogValue
-        complex(RK), intent(in) :: LogValue(lenLogValue)
-        complex(RK)             :: logSumExp
-        complex(RK)             :: LogValueCopy(lenLogValue)
-        complex(RK)             :: normFac
-        integer(IK)             :: i
-        normFac = maxval(real(LogValue))
-        LogValueCopy = LogValue - normFac
+        integer(IK) , intent(in)            :: lenLogValue
+        complex(RK) , intent(in)            :: LogValue(lenLogValue)
+        complex(RK) , intent(in), optional  :: maxLogValue
+        complex(RK)                         :: logSumExp
+        complex(RK)                         :: LogValueCopy(lenLogValue)
+        complex(RK)                         :: maxLogValueDefault
+        integer(IK)                         :: i
+        if (present(maxLogValue)) then
+            maxLogValueDefault = maxLogValue
+        else
+            maxLogValueDefault = maxval(real(LogValue))
+        end if
+        LogValueCopy = LogValue - maxLogValueDefault
         do concurrent(i=1:lenLogValue)
             if (real(LogValueCopy(i))<LOGTINY_RK) then
                 LogValueCopy(i) = 0._RK
@@ -335,7 +347,7 @@ contains
                 LogValueCopy(i) = exp(LogValueCopy(i))
             end if
         end do
-        logSumExp = normFac + log(sum(LogValueCopy))
+        logSumExp = maxLogValueDefault + log(sum(LogValueCopy))
     end function getLogSumExp_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -350,8 +362,8 @@ contains
         implicit none
         real(RK), intent(in) :: constant
         real(RK), intent(in) :: exponent
-        real(RK), intent(in) :: Coef
-        real(RK), intent(in) :: Point
+        real(RK), intent(in) :: coef
+        real(RK), intent(in) :: point
         real(RK)             :: logEggBox
         logEggBox = exponent * log( constant + cos(coef*point) )
     end function getLogEggBoxSD_RK
@@ -368,7 +380,7 @@ contains
         implicit none
         complex(RK), intent(in) :: constant
         complex(RK), intent(in) :: exponent
-        complex(RK), intent(in) :: Coef
+        complex(RK), intent(in) :: coef
         complex(RK), intent(in) :: Point
         complex(RK)             :: logEggBox
         logEggBox = exponent * log( constant + cos(coef*point) )
@@ -425,7 +437,12 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return the log Gamma function for a whole integer input. This is basically `logGamma( positiveInteger + 1 )`.
+    !> Return the log(factorial) for a whole integer input. This is basically `logGamma( positiveInteger + 1 )`.
+    !>
+    !> \param[in]   positiveInteger :   The input positive integer whose log factorial must be computed.
+    !>
+    !> \return
+    !> `logFactorial`  :   The natural logarithm of the factorial.
     !>
     !> \remark
     !> This function is mostly useful for large input integers.
@@ -447,19 +464,24 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return the Gamma function for a whole integer input. This is basically `logGamma( intNum + 1 )`.
-    pure function getFactorial(intNum)
+    !> Return the factorial for a whole integer input. This is basically `Gamma( intNum + 1 )`.
+    !>
+    !> \param[in]   positiveInteger :   The input positive integer whose log factorial must be computed.
+    !>
+    !> \return
+    !> `factorial`  :   The factorial.
+    pure function getFactorial(positiveInteger) result(factorial)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getFactorial
 #endif
         use Constants_mod, only: IK, RK
         implicit none
-        integer(IK), intent(in) :: intNum
+        integer(IK), intent(in) :: positiveInteger
         integer(IK)             :: i
-        real(RK)                :: getFactorial
-        getFactorial = 1._RK
-        do i = 2,intNum
-            getFactorial = getFactorial * i
+        real(RK)                :: factorial
+        factorial = 1._RK
+        do i = 2, positiveInteger
+            factorial = factorial * i
         end do
     end function getFactorial
 
@@ -505,13 +527,16 @@ contains
         implicit none
         integer(IK), intent(in) :: nd
         integer(IK)             :: i,k
+        real(RK), parameter     :: FOUR_PI = PI * 4._RK
         real(RK)                :: ellVolCoef
-        if (mod(nd,2_IK)==0_IK) then  ! nd is even
+        if (mod(nd,2_IK)==0_IK) then ! nd is even
+
             ellVolCoef = PI
             do i = 2_IK, nd / 2_IK
                 ellVolCoef = ellVolCoef * PI / i    ! nd = 2k ; ellVolCoef = PI^(k) / Factorial(k)
             end do
-        else    ! nd is an odd integer
+
+        else ! nd is an odd integer
 
             ! nd = 2k-1 ; gamma(nd/2 + 1) = gamma(k + 1/2) ; gamma(k+1/2) = sqrt(PI) * (2k)! / (4^k * k!)
             k = (nd + 1_IK) / 2_IK
@@ -521,7 +546,7 @@ contains
 
             do i = k+2_IK, 2_IK*k
                 ! ellVolCoef = PI^(k-1/2) / gamma(k+1/2) = PI^(k+1) * 4^k * k! / (2k)!
-                ellVolCoef = ellVolCoef * PI * 4._RK / i
+                ellVolCoef = ellVolCoef * FOUR_PI / i
             end do
 
         end if
@@ -535,10 +560,65 @@ contains
     ! getEllVolCoef = PI^(nd/2) / gamma(nd/2+1) where n is just a positive integer
     !
     !> \brief
-    !> Return the logarithm of the volume of an `nd`-dimensional ball of unit-radius.
+    !> Return the coefficient of the volume of an `nd`-dimensional ellipsoid.
+    !>
     !> param[in]    nd : The number of dimensions.
+    !>
+    !> \return
+    !> `logEllVolCoef` : The natural logarithm of the volume of an `nd`-dimensional unit-ball.
+    pure function getLogEllVolCoef(nd) result(logEllVolCoef)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getEllVolCoef
+#endif
+        use Constants_mod, only: IK, RK, PI
+        implicit none
+        integer(IK), intent(in) :: nd
+        integer(IK)             :: i,k
+        real(RK), parameter     :: FOUR_PI = PI * 4._RK
+        real(RK)                :: logEllVolCoef
+        if (mod(nd,2_IK)==0_IK) then ! nd is even
+
+            logEllVolCoef = PI
+            do i = 2_IK, nd / 2_IK
+                logEllVolCoef = logEllVolCoef * PI / i    ! nd = 2k ; ellVolCoef = PI^(k) / Factorial(k)
+            end do
+
+        else ! nd is an odd integer
+
+            ! nd = 2k-1 ; gamma(nd/2 + 1) = gamma(k + 1/2) ; gamma(k+1/2) = sqrt(PI) * (2k)! / (4^k * k!)
+            k = (nd + 1_IK) / 2_IK
+
+            ! This is to avoid an extra unnecessary division of ellVolCoef by PI
+            logEllVolCoef = 4._RK / (k + 1_IK)
+
+            do i = k+2_IK, 2_IK*k
+                ! ellVolCoef = PI^(k-1/2) / gamma(k+1/2) = PI^(k+1) * 4^k * k! / (2k)!
+                logEllVolCoef = logEllVolCoef * FOUR_PI / i
+            end do
+
+        end if
+        logEllVolCoef = log(logEllVolCoef)
+    end function getLogEllVolCoef
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return the logarithm of the volume of an `nd`-dimensional ball of unit-radius.
+    !>
+    !> param[in]    nd  : The number of dimensions.
+    !>
     !> \return
     !> `logVolUnitBall` : The logarithm of the volume of an `nd`-dimensional ball of unit-radius.
+    !>
+    !> \brief
+    !> This routine is an exact replacement for [getLogEllVolCoef](@ref getlogellvolcoef).
+    !> However, it is, on average, 10%-15% faster than [getLogEllVolCoef](@ref getlogellvolcoef) based
+    !> on benchmarks with Intel ifort 19.4 with all optimization flags on.
+    !
+    ! see for example: http://math.stackexchange.com/questions/606184/volume-of-n-dimensional-ellipsoid
+    ! see for example: https://en.wikipedia.org/wiki/Volume_of_an_n-ball
+    ! see for example: https://en.wikipedia.org/wiki/Particular_values_of_the_Gamma_function
+    ! getEllVolCoef = PI^(nd/2) / gamma(nd/2+1) where n is just a positive integer
     pure function getLogVolUnitBall(nd) result(logVolUnitBall)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolUnitBall
@@ -561,55 +641,60 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! see for example: https://math.stackexchange.com/questions/2854930/volume-of-an-n-dimensional-ellipsoid
-    !
     !> \brief
     !> Return the logarithm of the volume of an `nd`-dimensional hyper-ellipsoid.
-    !> param[in]    nd : The number of dimensions.
-    !> param[in]    logSqrtDetInvCovMat : The logarithm of the square root of the determinant of the inverse covariance matrix of the ellipsoid.
+    !>
+    !> param[in]    nd                  :   The number of dimensions.
+    !> param[in]    logSqrtDetCovMat    :   The logarithm of the square root of the determinant of the representative covariance matrix of the ellipsoid.
+    !>
     !> \return
     !> `logVolEllipsoid` : The logarithm of the volume of an `nd`-dimensional hyper-ellipsoid.
-    pure function getLogVolEllipsoid(nd,logSqrtDetInvCovMat) result(logVolEllipsoid)
+    !
+    ! see for example: https://math.stackexchange.com/questions/332391/volume-of-hyperellipsoid/332434
+    ! see for example: https://math.stackexchange.com/questions/2854930/volume-of-an-n-dimensional-ellipsoid
+    pure function getLogVolEllipsoid(nd,logSqrtDetCovMat) result(logVolEllipsoid)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEllipsoid
 #endif
         use Constants_mod, only: IK, RK
         implicit none
         integer(IK) , intent(in)    :: nd
-        real(RK)    , intent(in)    :: logSqrtDetInvCovMat
+        real(RK)    , intent(in)    :: logSqrtDetCovMat
         real(RK)                    :: logVolEllipsoid
-        logVolEllipsoid = getLogVolUnitBall(nd) + logSqrtDetInvCovMat
+        logVolEllipsoid = getLogVolUnitBall(nd) + logSqrtDetCovMat
     end function getLogVolEllipsoid
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return the volume of an nd-dimensional hyper-ellipsoid.
+    !> Return the volume of a list of `nEllipsoid` `nd`-dimensional hyper-ellipsoids.
     !>
-    !> @param[in]   nEllipsoid      : The number of ellipsoids.
-    !> @param[in]   ndim            : The number of dimensions of the ellipsoids.
-    !> @param[in]   SqrtDeterminant : The vector of square roots of the determinants of the covariance matrices of the ellipsoids.
+    !> @param[in]   nd                  :   The number of dimensions of the ellipsoids.
+    !> @param[in]   nEllipsoid          :   The number of ellipsoids.
+    !> @param[in]   LogSqrtDetCovMat    :   The vector of natural logarithms of the square roots of the determinants of the covariance matrices of the ellipsoids.
+    !>
+    !> \return
+    !> `logVolEllipsoid` : The logarithm of the volume of an `nd`-dimensional hyper-ellipsoid.
     !>
     !> \remark
     !> There is really no reason to use this function for HPC solutions, as it can be likely done more efficiently.
-    !>
-    !> @todo
-    !> This function has not been tested.
-    pure function getEllipsoidVolume(nEllipsoid,ndim,SqrtDeterminant)
+    pure function getLogVolEllipsoids(nd,nEllipsoid,LogSqrtDetCovMat) result(LogVolEllipsoids)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getEllipsoidVolume
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEllipsoids
 #endif
         use Constants_mod, only: IK, RK
         implicit none
-        integer(IK)             :: i
-        integer(IK), intent(in) :: nEllipsoid
-        integer(IK), intent(in) :: ndim(nEllipsoid)
-        integer(IK), intent(in) :: SqrtDeterminant(nEllipsoid)
-        real(RK)                :: getEllipsoidVolume(nEllipsoid)
-        do i=1,nEllipsoid
-            getEllipsoidVolume(i) = getEllVolCoef(ndim(i)) / SqrtDeterminant(i)
+        integer(IK)                 :: i
+        integer(IK) , intent(in)    :: nd
+        integer(IK) , intent(in)    :: nEllipsoid
+        real(RK)    , intent(in)    :: LogSqrtDetCovMat(nEllipsoid)
+        real(RK)                    :: LogVolEllipsoids(nEllipsoid)
+        real(RK)                    :: logVolUnitBall
+        logVolUnitBall = getLogVolUnitBall(nd)
+        do i = 1, nEllipsoid
+            LogVolEllipsoids(i) = logVolUnitBall + LogSqrtDetCovMat(i)
         end do
-    end function getEllipsoidVolume
+    end function getLogVolEllipsoids
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -680,9 +765,12 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return the lower incomplete gamma function `P(exponent, upperLim)` evaluated by its series representation as `gamser`.
-    !> `logGammaExponent` is `log( gamma(exponent) )` on input.
-    !> `tolerance` represents the relative accuracy.
+    !> Return the lower incomplete gamma function `P(exponent, upperLim)` evaluated by its series representation as `gammaSeries`.
+    !>
+    !> \param[in]   exponent            :   The exponent in lower incomplete gamma function `P(exponent, upperLim)`.
+    !> \param[in]   logGammaExponent    :   The input `log( gamma(exponent) )`.
+    !> \param[in]   upperLim            :   The upper limit in lower incomplete gamma function `P(exponent, upperLim)`.
+    !> \param[in]   tolerance           :   The input relative accuracy.
     !>
     !> \warning
     !> Do not set `tolerance` to a number larger than 1, or else the code will crash spectacularly.
@@ -731,17 +819,12 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return the incomplete gamma function `Q(exponent, lowerLim)` evaluated by its continued fraction representation as `gammcf`.
+    !> Return the incomplete gamma function `Q(exponent, lowerLim)` evaluated by its continued fraction representation as `gammaContFrac`.
     !>
-    !> @param[in]   logGammaExponent : This is the `log( gamma(exponent) )`.
-    !> @param[in]   tolerance : Represents the relative accuracy (optional).
-    !> @param[in]   exponent : The exponent.
-    !> @param[in]   lowerLim : The lower limit.
-    !>
-    !> \remark
-    !> + `ITMAX` is the maximum allowed number of iterations.
-    !> + `EPS` represents the relative accuracy.
-    !> + `FPMIN` is a number near the smallest representable floating-point number.
+    !> @param[in]   logGammaExponent    :   This is the `log( gamma(exponent) )`.
+    !> @param[in]   tolerance           :   Represents the relative accuracy (optional).
+    !> @param[in]   exponent            :   The exponent.
+    !> @param[in]   lowerLim            :   The lower limit.
     !>
     !> \warning
     !> If the algorithm fails to converge, `gammaContFrac` will be set to negative infinity on output to signal error.
@@ -755,8 +838,9 @@ contains
         real(RK), intent(in)            :: exponent, logGammaExponent, lowerLim
         real(RK), optional, intent(in)  :: tolerance
         real(RK)                        :: gammaContFrac
-        integer(IK), parameter          :: ITMAX = 100
-        real(RK), parameter             :: EPS_DEFAULT = epsilon(lowerLim), FPMIN_DEFAULT = tiny(lowerLim) / EPS_DEFAULT
+        integer(IK), parameter          :: ITMAX = 100_IK                               !< The maximum allowed number of iterations.
+        real(RK), parameter             :: EPS_DEFAULT = epsilon(lowerLim)              !< The default relative accuracy.
+        real(RK), parameter             :: FPMIN_DEFAULT = tiny(lowerLim) / EPS_DEFAULT !< A number near the smallest representable floating-point number.
         real(RK)                        :: eps, fpmin
         real(RK)                        :: an,b,c,d,del,h
         integer(IK)                     :: iter

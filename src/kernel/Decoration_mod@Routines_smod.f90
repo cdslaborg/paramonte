@@ -167,8 +167,8 @@ contains
 
     !> \brief
     !> Return a string which is a pattern repetition for the requested width.
-    !> @param[in]   symbol  : The decoration symbol added to beginning and ending of the wrapped line (optional).
-    !> @param[in]   width   : The width of the line (optional).
+    !> @param[in]   symbol  : The decoration symbol added to beginning and ending of the wrapped line (optional, default = `STAR`).
+    !> @param[in]   width   : The width of the line (optional, default = `DECORATION_WIDTH`).
     !>
     !> \return
     !> `line` : A string of the requested pattern.
@@ -514,13 +514,13 @@ contains
         iend = istart + splitLen - 1_IK
         padLength = 0_IK
         isPadZone = .true.
-        if (padLen==0) isPadZone = .false.
+        if (padLen==0_IK) isPadZone = .false.
         blockFindSplit: do
             if (iend==stringLen) then
                 IsEndOfSplitLoc(stringLen) = 1_IK
                 exit blockFindSplit
             end if
-            if ( isPadZone .and. mod(iend,padLen)==0 .and. string(istart:iend)==pad ) then
+            if ( isPadZone .and. mod(iend,padLen)==0_IK .and. string(istart:iend)==pad ) then
                 padLength = iend
             else
                 isPadZone = .false.
@@ -631,10 +631,13 @@ contains
     !> \brief
     !> Convert a string to a list of lines.
     !> @param[in]   string      : The string.
-    !> @param[in]   delimiter   : The substring at which the string will be split to form multiple lines.
+    !> @param[in]   delimiter   : The substring at which the string will be split to form multiple lines (optional, default = "").
     !>
     !> \return
     !> ListOfLines : The list of lines generated from the input string.
+    !>
+    !> \remark
+    !> The escape sequence "\n" can be passed as the input value of `delimiter` to separate the lines.
     module function getListOfLines(string,delimiter) result(ListOfLines)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getListOfLines

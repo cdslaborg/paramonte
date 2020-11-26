@@ -65,7 +65,7 @@
 
 #if defined SINGLCHAIN_PARALLELISM && defined CAF_ENABLED
                     ! this is necessary to avoid racing condition on co_LogFuncState and co_proposalFoundSinglChainMode
-                    if (self%Image%isMaster) then
+                    if (self%Image%isLeader) then
                         call self%Timer%toc()
                         sync images(*)
                         call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
@@ -149,7 +149,7 @@
                     co_proposalFoundSinglChainMode = co_AccRate(-1) > -1._RK
                     if (delayedRejectionRequested) then ! broadcast the sampling status from the first image to all others
 #if defined CAF_ENABLED
-                        if (self%Image%isMaster) then ! this is necessary to avoid racing condition on the value of co_proposalFoundSinglChainMode
+                        if (self%Image%isLeader) then ! this is necessary to avoid racing condition on the value of co_proposalFoundSinglChainMode
                             call self%Timer%toc()
                             sync images(*)
                             call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta

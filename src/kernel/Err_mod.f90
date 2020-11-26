@@ -58,10 +58,12 @@ module Err_mod
     !> The error type.
     type :: Err_type
         logical                     :: occurred = .false.
-        integer                     :: stat     = -huge(0) !< The output integer flag or status code by the compiler or program.
-        integer                     :: statNull = -huge(0) !< The null value initially assigned to `stat`.
-        character(:), allocatable   :: msg !< The error message.
+        integer                     :: stat     = -huge(0)          !< The output integer flag or status code by the compiler or program.
+        integer                     :: statNull = -huge(0)          !< The null value initially assigned to `stat`.
+        character(:), allocatable   :: msg                          !< The error message.
     end type Err_type
+
+    logical :: mv_isTestingMode = .false.   !< A logical flag, only to be used and set for testing purposes.
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -76,7 +78,7 @@ contains
     !> @param[in]   outputUnit      :   The output file unit (optional, default = stdout).
     !> @param[in]   returnEnabled   :   A logical value. If `.true.`, the program will not be abruptly terminated.
     !>                                  Instead, the control is returned to the calling routine.
-    subroutine abort(Err,prefix,newline,outputUnit,returnEnabled)
+    subroutine abort(Err, prefix, newline, outputUnit, returnEnabled)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: abort
 #endif
@@ -131,26 +133,28 @@ contains
             call informUser(msg,prefix//" - FATAL: ",nlstr,outputUnit)
             pfx = prefix
         else
-            call informUser(msg," - ",nlstr,outputUnit)
+            call informUser(msg," - FATAL: ",nlstr,outputUnit)
             pfx = ""
         end if
 
         if (present(outputUnit)) then
             if (outputUnit/=output_unit) then
-                call write(outputUnit,1,0,1, pfx // " - Please Correct the error(s) and rerun the simulation." )
+                call write(outputUnit,1,0,1, pfx // " - Please correct the error(s) and rerun the program." )
                 call write(outputUnit,0,0,1, pfx // " - If the cause of the error cannot be diagnosed, please report it at:" )
                 call write(outputUnit,0,0,1, pfx // " -" )
                 call write(outputUnit,0,0,1, pfx // " -     https://github.com/cdslaborg/paramonte/issues" )
                 call write(outputUnit,0,0,1, pfx // " -" )
-                call write(outputUnit,0,2,1, pfx // " - Gracefully Exiting on image " // trim(adjustl(imageChar)) // "." )
+                call write(outputUnit,0,2,1, pfx // " - Gracefully exiting on image " // trim(adjustl(imageChar)) // "." )
             end if
         end if
 
         ! notify the user on screen too
 
-        call write(output_unit,1,0,1, pfx // " - FATAL: Runtime error occurred." )
-        call write(output_unit,0,0,1, pfx // " - FATAL: For more information, see the output '*_report.txt' file (if generated)." )
-        call write(output_unit,0,2,1, pfx // " - FATAL: Gracefully Exiting on image " // trim(adjustl(imageChar)) // "." )
+        if (.not. mv_isTestingMode) then
+            call write(output_unit,1,0,1, pfx // " - FATAL: Runtime error occurred." )
+            call write(output_unit,0,0,1, pfx // " - FATAL: For more information, see the output '*_report.txt' file (if generated)." )
+            call write(output_unit,0,2,1, pfx // " - FATAL: Gracefully exiting on image " // trim(adjustl(imageChar)) // "." )
+        end if
 
         flush(output_unit) ! call execute_command_line(" ")
         flush(outputUnit)
@@ -176,6 +180,8 @@ contains
             end if
         end block
 
+        if (returnEnabledDefault) return
+
 #if defined MPI_ENABLED
         block
             use mpi
@@ -183,7 +189,6 @@ contains
             errcode = 1; call mpi_abort(mpi_comm_world, errcode, ierrMPI)
         end block
 #endif
-        if (returnEnabledDefault) return
         error stop
 
     end subroutine abort

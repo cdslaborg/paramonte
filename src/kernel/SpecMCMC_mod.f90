@@ -270,7 +270,7 @@ contains
                             , prefix                &
                             , methodName            &
                             , outputUnit            &
-                            , isMasterImage         &
+                            , isLeaderImage         &
                             , splashModeRequested   &
                             )
 #if defined DLL_ENABLED && !defined CFI_ENABLED
@@ -285,10 +285,10 @@ contains
         class(SpecMCMC_type), intent(in)    :: SpecMCMC
         character(*), intent(in)            :: prefix, methodName
         integer(IK), intent(in)             :: outputUnit
-        logical, intent(in)                 :: isMasterImage, splashModeRequested
+        logical, intent(in)                 :: isLeaderImage, splashModeRequested
         integer(IK)                         :: ndim, i
 
-        if (isMasterImage) then
+        if (isLeaderImage) then
 
             ndim = size(SpecMCMC%proposalStartCovMat%val(:,1))
 

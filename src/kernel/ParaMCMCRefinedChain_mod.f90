@@ -120,7 +120,7 @@ contains
         use ParaMonteChainFileContents_mod, only: ChainFileContents_type, NUM_DEF_COL
         use CrossCorr_mod, only: getBatchMeansIAC, getCumSumIAC, getMaxCumSumIAC
         use String_mod, only: getLowerCase, replaceStr
-        use Sort_mod, only: median
+        use Sort_mod, only: getMedian
 
         implicit none
 
@@ -319,7 +319,7 @@ contains
                 if (Method%isAvg) then
                     integratedAutoCorrTime = sum( RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement) ) * ndimPlusOneInverse
                 elseif (Method%isMed) then
-                    call median(lenArray=ndimPlusOne,Array=RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement),median=integratedAutoCorrTime,Err=Err)
+                    call getMedian(lenArray=ndimPlusOne,Array=RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement),median=integratedAutoCorrTime,Err=Err)
                     if (Err%occurred) then
                         Err%msg = PROCEDURE_NAME//Err%msg
                         return

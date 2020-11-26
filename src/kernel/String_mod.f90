@@ -80,8 +80,9 @@ module String_mod
         type(CharVec_type), allocatable   :: Parts(:)       !< The string parts.
         integer(IK)                       :: nPart = 0_IK   !< The number of parts in the string.
     contains
-        procedure, nopass :: replaceStr, splitStr, getLowerCase, getUpperCase, isInteger, isDigit
+        procedure, nopass :: splitStr, replaceStr, getLowerCase, getUpperCase, isInteger, isDigit
         procedure, nopass :: str2int, str2real, str2int32, str2int64, str2real32, str2real64
+        procedure, nopass :: pad => padString
     end type String_type
 
     interface int2str
@@ -371,41 +372,41 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to lower case
-    pure function getLowerCaseOld(string)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCaseOld
-#endif
-        implicit None
-        character(*), intent(in) :: string
-        character(len(string))   :: getLowerCaseOld
-        character(26), parameter :: lowerCase = 'abcdefghijklmnopqrstuvwxyz', upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        integer(IK)              :: ic, i
-        getLowerCaseOld = string
-        do i = 1, len(string)
-            ic = INDEX(upperCase, string(i:i))
-            if (ic > 0) getLowerCaseOld(i:i) = lowerCase(ic:ic)
-        end do
-    end function getLowerCaseOld
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to upper case
-    pure function getUpperCaseOld(string)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCaseOld
-#endif
-        implicit None
-        character(*), intent(in) :: string
-        character(len(string))   :: getUpperCaseOld
-        character(26), parameter :: lowerCase = 'abcdefghijklmnopqrstuvwxyz', upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        integer(IK)              :: ic, i
-        getUpperCaseOld = string
-        do i = 1, len(string)
-            ic = INDEX(lowerCase, string(i:i))
-            if (ic > 0) getUpperCaseOld(i:i) = upperCase(ic:ic)
-        end do
-    end function getUpperCaseOld
+!    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to lower case
+!    pure function getLowerCaseOld(string)
+!#if defined DLL_ENABLED && !defined CFI_ENABLED
+!        !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCaseOld
+!#endif
+!        implicit None
+!        character(*), intent(in) :: string
+!        character(len(string))   :: getLowerCaseOld
+!        character(26), parameter :: lowerCase = 'abcdefghijklmnopqrstuvwxyz', upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+!        integer(IK)              :: ic, i
+!        getLowerCaseOld = string
+!        do i = 1, len(string)
+!            ic = INDEX(upperCase, string(i:i))
+!            if (ic > 0) getLowerCaseOld(i:i) = lowerCase(ic:ic)
+!        end do
+!    end function getLowerCaseOld
+!
+!!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!
+!    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to upper case
+!    pure function getUpperCaseOld(string)
+!#if defined DLL_ENABLED && !defined CFI_ENABLED
+!        !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCaseOld
+!#endif
+!        implicit None
+!        character(*), intent(in) :: string
+!        character(len(string))   :: getUpperCaseOld
+!        character(26), parameter :: lowerCase = 'abcdefghijklmnopqrstuvwxyz', upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+!        integer(IK)              :: ic, i
+!        getUpperCaseOld = string
+!        do i = 1, len(string)
+!            ic = INDEX(lowerCase, string(i:i))
+!            if (ic > 0) getUpperCaseOld(i:i) = upperCase(ic:ic)
+!        end do
+!    end function getUpperCaseOld
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -444,7 +445,7 @@ contains
     !>
     !> \param[in]   integerIn   :   The input integer value.
     !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (optional).
-    !> \param[in]   minLen      :   The minimum length of the output string.
+    !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
     !> `int322str` : The integer value as a string.
@@ -485,7 +486,7 @@ contains
     !>
     !> \param[in]   integerIn   :   The input integer value.
     !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (optional).
-    !> \param[in]   minLen      :   The minimum length of the output string.
+    !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
     !> `int322str` : The integer value as a string.
@@ -526,7 +527,7 @@ contains
     !>
     !> \param[in]   realIn      :   The input real value.
     !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
-    !> \param[in]   minLen      :   The minimum length of the output string.
+    !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
     !> `int322str` : The real value as a string.
@@ -567,7 +568,7 @@ contains
     !>
     !> \param[in]   realIn      :   The input real value.
     !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
-    !> \param[in]   minLen      :   The minimum length of the output string.
+    !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
     !> `int322str` : The real value as a string.
@@ -608,7 +609,7 @@ contains
     !>
     !> \param[in]   RealIn      :   The input vector of real values.
     !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
-    !> \param[in]   minLen      :   The minimum length of the output string.
+    !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
     !> `real642str_1D` : The output vector of strings each representing one real value in the input vector.
@@ -649,7 +650,7 @@ contains
     !>
     !> \param[in]   RealIn      :   The input 2D matrix of real values.
     !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
-    !> \param[in]   minLen      :   The minimum length of the output string.
+    !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
     !> `real642str_2D` : The output 2D array of strings each representing one real value in the input 2D matrix.
@@ -707,7 +708,7 @@ contains
         use Constants_mod, only: IK
         implicit none
         character(*), intent(in)        :: str
-        integer, optional, intent(out)  :: iostat
+        integer, intent(out), optional  :: iostat
         integer(IK)                     :: str2int
         if (present(iostat)) then
             iostat = 0
@@ -741,7 +742,7 @@ contains
         use, intrinsic :: iso_fortran_env, only: int32
         implicit none
         character(*), intent(in)        :: str
-        integer, optional, intent(out)  :: iostat
+        integer, intent(out), optional  :: iostat
         integer(int32)                  :: str2int32
         if (present(iostat)) then
             iostat = 0
@@ -775,7 +776,7 @@ contains
         use, intrinsic :: iso_fortran_env, only: int64
         implicit none
         character(*), intent(in)        :: str
-        integer, optional, intent(out)  :: iostat
+        integer, intent(out), optional  :: iostat
         integer(int64)                  :: str2int64
         if (present(iostat)) then
             iostat = 0
@@ -886,6 +887,41 @@ contains
             read(str,*) str2real64
         endif
     end function str2real64
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Pad the input `string` with the input `symbol` string for a length of `paddedLen` and return the resulting new string.
+    !> @param[in]   string      :   The input string to be padded.
+    !> @param[in]   symbol      :   The symbol to be used for padding.
+    !> @param[in]   paddedLen   :   The length of the resulting final string.
+    !>
+    !> \return
+    !> `paddedString` : The output string padded with `symbol`.
+    !>
+    !> \remark
+    !> Note that `symbol` can be a string of any length. However, if the full lengths of symbols do not fit
+    !> at the end of the padded output string, the symbol will be cut at the end of the output padded string.
+    function padString(string, symbol, paddedLen) result(paddedString)
+        use Constants_mod, only: IK
+        implicit none
+        character(*), intent(in)            :: string
+        character(*), intent(in)            :: symbol
+        integer(IK) , intent(in)            :: paddedLen
+        character(paddedLen)                :: paddedString
+        character(:), allocatable           :: pad
+        integer(IK)                         :: stringLen, symbolLen, symbolCount, diff
+        stringLen = len(string)
+        if (stringLen>paddedLen) then
+            paddedString = string
+            return
+        end if
+        symbolLen = len(symbol)
+        diff = paddedLen - stringLen
+        symbolCount = diff / symbolLen + 1
+        pad = repeat(symbol,symbolCount)
+        paddedString = string // pad(1:diff)
+    end function padString
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

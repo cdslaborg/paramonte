@@ -84,7 +84,7 @@ contains
         SampleRefinementCountObj%def  = POSINF_IK
         SampleRefinementCountObj%null = NULL_IK
         SampleRefinementCountObj%desc = &
-        "When sampleSize < 0, the variable sampleRefinementCount is an integer that dictates the maximum number of times &
+        "When sampleSize < 0, the integer variable sampleRefinementCount dictates the maximum number of times &
         &the MCMC chain will be refined to remove the autocorrelation within the output MCMC sample. For example,\n\n&
         &    if sampleRefinementCount = 0,\n\n&
         &            no refinement of the output MCMC chain will be performed, the resulting MCMC sample will simply correspond &
@@ -108,7 +108,7 @@ contains
         &            the refinement of the output MCMC chain will continue until the integrated autocorrelation of the resulting &
                     &final sample is less than 2, virtually implying that an independent identically-distributed (i.i.d.) sample &
                     &has finally been obtained.\n\n&
-        &Note that to obtain i.i.d. samples from a multidimensional chain, "//methodName//" will use the maximum of &
+        &Note that to obtain i.i.d. samples from a multidimensional chain, "//methodName//" will, by default, use the maximum of &
         &Integrated Autocorrelation (IAC) among all dimensions of the chain to refine the chain. &
         &Note that the value specified for sampleRefinementCount is used only when the variable sampleSize < 0, otherwise, &
         &it will be ignored. The default value is sampleRefinementCount = "// num2str(SampleRefinementCountObj%def) //"."

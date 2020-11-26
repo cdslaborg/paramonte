@@ -49,7 +49,7 @@ module Timer_mod
     use Constants_mod, only: RK
     implicit none
 
-    ! Doxygen does not comprehend the following statements. Therefore, are commented out.
+    ! Doxygen does not comprehend the following statements. Therefore, these are commented out.
     !private
     !public :: MODULE_NAME, Timer_type
 

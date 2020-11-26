@@ -40,11 +40,14 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!> \brief
+!> This module contains the procedures for computing the various Band Spectrum properties of GRBs.
+!> See Eqn. A6 of [Shahmoradi and Nemiroff, 2015, MNRAS, 451:4645-4662](https://www.cdslab.org/pubs/2015_Shahmoradi_I.pdf).
+!>
+!> \author
+!> Amir Shahmoradi, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
+
 module BandSpectrum_mod
-! This module contains methods for computing the Band Spectrum properties of GRBs.
-! The Band spectral form is given by Eqn A6 of Shahmoradi and Nemiroff 2015:
-! "Short versus long gamma-ray bursts: a comprehensive study of energetics and prompt gamma-ray correlations"
-! Amir Shahmoradi, Tuesday April 30, 2019, 12:58 PM, SEIR, UTA
 
     use Constants_mod, only: IK, RK
 
