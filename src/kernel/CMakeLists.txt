@@ -70,7 +70,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/TranGaus_mod.f90
     ${ParaMonteKernel_SRC_DIR}/CrossCorr_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Integration_mod.f90
-    #${ParaMonteKernel_SRC_DIR}/QuadPackSPR_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/QuadPackSPR_mod.f90
     #${ParaMonteKernel_SRC_DIR}/QuadPackDPR_mod.f
     ${ParaMonteKernel_SRC_DIR}/Cosmology_mod.f90
     ${ParaMonteKernel_SRC_DIR}/StarFormation_mod.f90
