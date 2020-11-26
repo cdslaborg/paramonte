@@ -58,8 +58,8 @@ module Test_CrossCorr_mod
     ! input Test data
 
     type :: WeightedData_type
-        integer(IK)                 :: nd = 1
-        integer(IK)                 :: np = 1
+        integer(IK)                 :: nd = 1_IK
+        integer(IK)                 :: np = 9985_IK
         integer(IK) , allocatable   :: Weight(:)
         real(RK)    , allocatable   :: Data(:,:)
         real(RK)    , allocatable   :: NormedData(:,:)
@@ -398,8 +398,8 @@ contains
 
         ! read the input data required for other Tests
 
-        WeightedData%nd = 1
-        WeightedData%np = 9985
+        WeightedData%nd = 1_IK
+        WeightedData%np = 9985_IK
         if (allocated(WeightedData%Weight)) deallocate(WeightedData%Weight); allocate(WeightedData%Weight(WeightedData%np))
         if (allocated(WeightedData%Data)) deallocate(WeightedData%Data); allocate(WeightedData%Data(WeightedData%nd,WeightedData%np))
 
@@ -472,9 +472,8 @@ contains
                                                 , -.4164933936801392E-01_RK &
                                                 , .4757873176344895E-02_RK &
                                                 ], shape = [ 1, size(AutoCorr%Lag_ref) ] )
-
         AutoCorr%nlag = getPreviousExponent( real(WeightedData%np, kind=RK) ) + 1
-        AutoCorr%Lag = [ 0, ( 2_IK**(ilag-1), ilag = 1, AutoCorr%nlag-1 ) ]
+        AutoCorr%Lag = [ 0, ( 2_IK**(ilag-1), ilag = 1, AutoCorr%nlag ) ]
         DifferenceLag = abs( AutoCorr%Lag - AutoCorr%Lag_ref )
         assertion = all( DifferenceLag == 0_IK )
 
@@ -488,7 +487,7 @@ contains
 
         ! Generate and verify AutoCorrs
 
-        if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag) )
+        if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag+1) )
         call getAutoCorrDirect  ( nd = WeightedData%nd &
                                 , np = WeightedData%np &
                                 , NormedData = WeightedData%NormedData(1:WeightedData%nd,1:WeightedData%np) &
@@ -557,9 +556,8 @@ contains
                                                 , -.4164933936801392E-01_RK &
                                                 , .4757873176344895E-02_RK &
                                                 ], shape = [ 1, size(AutoCorr%Lag_ref) ] )
-
         AutoCorr%nlag = getPreviousExponent( real(WeightedData%np, kind=RK) ) + 1
-        AutoCorr%Lag = [ 0, ( 2_IK**(ilag-1), ilag = 1, AutoCorr%nlag-1 ) ]
+        AutoCorr%Lag = [ 0, ( 2_IK**(ilag-1), ilag = 1, AutoCorr%nlag ) ]
         DifferenceLag = abs( AutoCorr%Lag - AutoCorr%Lag_ref )
         assertion = all( DifferenceLag == 0_IK )
 
@@ -573,7 +571,7 @@ contains
 
         ! Generate and verify AutoCorrs
 
-        if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag) )
+        if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag+1) )
         call getAutoCorrDirect  ( nd = WeightedData%nd &
                                 , np = WeightedData%np &
                                 , NormedData = WeightedData%NormedData(1:WeightedData%nd,1:WeightedData%np) &
