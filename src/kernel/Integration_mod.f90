@@ -316,6 +316,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: midexp
 #endif
+        use Constants_mod, only: LOGHUGE_RK
         implicit none
         integer(IK) , intent(in)    :: refinementStage
         real(RK)    , intent(in)    :: lowerLim,upperLim
@@ -326,7 +327,7 @@ contains
         real(RK)                    :: inverseThreeNumFuncEval
         integer(IK)                 :: iFuncEval
         upperLimTrans = exp(-lowerLim)
-        lowerLimTrans = exp(-upperLim)
+        lowerLimTrans = 0._RK; if (upperLim<LOGHUGE_RK) lowerLimTrans = exp(-upperLim)
         if (refinementStage==1_IK) then
             numFuncEval = 1_IK
             integral = (upperLimTrans-lowerLimTrans)*getTransFunc(0.5_RK*(lowerLimTrans+upperLimTrans))

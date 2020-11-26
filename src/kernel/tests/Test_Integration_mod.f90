@@ -79,7 +79,7 @@ contains
     ! integrate the Gaussian PDF via the midexp routine on the open interval \f$[0, +\infty)\f$.
     function test_doQuadRombOpen_1() result(assertion)
 
-        use Constants_mod, only: RK, IK, HUGE_RK
+        use Constants_mod, only: RK, IK, POSINF_RK
         use Integration_mod
 
         implicit none
@@ -93,7 +93,7 @@ contains
         call doQuadRombOpen ( getFunc = getTestFuncOpenInterval_1 &
                             , integrate = midexp &
                             , lowerLim = 0._RK &
-                            , upperLim = HUGE_RK &
+                            , upperLim = POSINF_RK & ! do not set this to huge() as GNU Fortran in debug mode crashes
                             , maxRelativeError = 0.1*tolerance &
                             , nRefinement = 10_IK &
                             , integral = integral &
@@ -129,7 +129,7 @@ contains
 
     function test_doQuadRombOpen_2() result(assertion)
 
-        use Constants_mod, only: RK, IK
+        use Constants_mod, only: RK, IK, POSINF_RK
         use Integration_mod
 
         implicit none
@@ -144,7 +144,7 @@ contains
         call doQuadRombOpen ( getFunc = getTestFuncOpenInterval_1 &
                             , integrate = midinf &
                             , lowerLim = 1._RK &
-                            , upperLim = huge(0._RK) &
+                            , upperLim = POSINF_RK & ! do not set this to huge() as GNU Fortran in debug mode crashes
                             , maxRelativeError = 0.1*tolerance &
                             , nRefinement = 10_IK &
                             , integral = integral &
@@ -180,7 +180,7 @@ contains
 
     function test_doQuadRombOpen_3() result(assertion)
 
-        use Constants_mod, only: RK, IK
+        use Constants_mod, only: RK, IK, POSINF_RK
         use Integration_mod
 
         implicit none
@@ -194,7 +194,7 @@ contains
 
         call doQuadRombOpen ( getFunc = getTestFuncOpenInterval_1 &
                             , integrate = midinf &
-                            , lowerLim = -huge(0._RK) &
+                            , lowerLim = POSINF_RK & ! do not set this to huge() as GNU Fortran in debug mode crashes
                             , upperLim = -1._RK &
                             , maxRelativeError = 1.e-10_RK &
                             , nRefinement = 10_IK &
@@ -332,11 +332,17 @@ contains
 
     ! The Gaussian PDF with sigma = 1/sqrt(2)
     function getTestFuncOpenInterval_1(x) result(funcVal)
-        use Constants_mod, only: RK, INVSQRTPI
+        use Constants_mod, only: RK, INVSQRTPI, NEGLOGINF_RK
         implicit none
         real(RK), intent(in)    :: x
         real(RK)                :: funcVal
-        funcVal = INVSQRTPI * exp(-x**2)
+        real(RK), parameter     :: LOGINVSQRTPI = log(INVSQRTPI)
+        funcVal = LOGINVSQRTPI - x**2
+        if (funcVal<NEGLOGINF_RK) then ! This takes care of the GNU Fortran 9.1 test crash in debug mode.
+            funcVal = 0._RK
+        else
+            funcVal = exp(funcVal)
+        end if
     end function getTestFuncOpenInterval_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

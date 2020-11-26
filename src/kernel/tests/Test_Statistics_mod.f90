@@ -2617,12 +2617,14 @@ contains
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
         end do
-        RandCorMat = getRandCorMat(nd = 0_IK, eta = 1._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
-        RandCorMat = getRandCorMat(nd = -1_IK, eta = +2._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
-        RandCorMat = getRandCorMat(nd = +1_IK, eta = +0._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        ! do not uncomment this as GNU Fortran 9.1 crashes on this in debug mode with error message:
+        ! Fortran runtime error: Dimension 1 of array 'randcormat' has extent 0 instead of 2...
+        !RandCorMat = getRandCorMat(nd = 0_IK, eta = 1._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        !RandCorMat = getRandCorMat(nd = -1_IK, eta = +2._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        !RandCorMat = getRandCorMat(nd = +1_IK, eta = +0._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
         RandCorMat = getRandCorMat(nd = +2_IK, eta = +0._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
-        RandCorMat = getRandCorMat(nd = +3_IK, eta = -1._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
-        RandCorMat = getRandCorMat(nd = -3_IK, eta = -2._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        RandCorMat = getRandCorMat(nd = +2_IK, eta = -1._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        RandCorMat = getRandCorMat(nd = +2_IK, eta = -2._RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
     end function test_getRandCorMat_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2660,11 +2662,13 @@ contains
             end if
             assertion = assertion .and. assertionCurrent
         end do
-        RandCorMat = getRandCorMatRejection(nd = +1_IK, minRho = +.2_RK, maxRho = -.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
-        RandCorMat = getRandCorMatRejection(nd = +1_IK, minRho = -.2_RK, maxRho = -.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
-        RandCorMat = getRandCorMatRejection(nd = +0_IK, minRho = +.2_RK, maxRho = -.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
-        RandCorMat = getRandCorMatRejection(nd = +0_IK, minRho = +.2_RK, maxRho = +.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
-        RandCorMat = getRandCorMatRejection(nd = -3_IK, minRho = +.2_RK, maxRho = +.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        ! do not uncomment this as GNU Fortran 9.1 crashes on this in debug mode with error message:
+        ! Fortran runtime error: Dimension 1 of array 'randcormat' has extent 1 instead of 2...
+        !RandCorMat = getRandCorMatRejection(nd = +1_IK, minRho = +.2_RK, maxRho = -.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        RandCorMat = getRandCorMatRejection(nd = +2_IK, minRho = -.2_RK, maxRho = -.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        RandCorMat = getRandCorMatRejection(nd = +2_IK, minRho = +.2_RK, maxRho = -.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        !RandCorMat = getRandCorMatRejection(nd = +0_IK, minRho = +.2_RK, maxRho = +.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
+        !RandCorMat = getRandCorMatRejection(nd = -3_IK, minRho = +.2_RK, maxRho = +.5_RK); assertion = assertion .and. RandCorMat(1,1) < 0._RK
     end function test_getRandCorMatRejection_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2926,11 +2930,18 @@ contains
         integer(IK) , parameter :: SuccessStep(numTrial) = [ (i, i = 1, numTrial) ]
         real(RK)    , parameter :: successProb = 0.7_RK
         real(RK)    , parameter :: tolerance = 1.e-12_RK
-        real(RK)    , parameter :: LogProbGeoCyclic_ref(maxNumTrial) =  [ -.3293037471426004_RK &
-                                                                        , -1.533276551468536_RK &
-                                                                        , -2.737249355794472_RK ]
-        real(RK)                :: LogProbGeoCyclic(maxNumTrial)
-        real(RK)                :: Difference(maxNumTrial)
+        real(RK)    , parameter :: LogProbGeoCyclic_ref(numTrial) = [ -0.32930374714260041_RK &
+                                                                    , -1.53327655146853630_RK &
+                                                                    , -2.73724935579447240_RK &
+                                                                    , -3.94122216012040830_RK &
+                                                                    , -5.14519496444634420_RK &
+                                                                    , -6.34916776877228010_RK &
+                                                                    , -7.55314057309821600_RK &
+                                                                    , -8.75711337742415100_RK &
+                                                                    , -9.96108618175008690_RK &
+                                                                    , -11.1650589860760230_RK ]
+        real(RK)                :: LogProbGeoCyclic(numTrial)
+        real(RK)                :: Difference(numTrial)
 
         LogProbGeoCyclic = getLogProbGeoCyclic(successProb, maxNumTrial, numTrial, SuccessStep)
         Difference = abs(LogProbGeoCyclic - LogProbGeoCyclic_ref) / abs(LogProbGeoCyclic_ref)
