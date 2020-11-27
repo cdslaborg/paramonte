@@ -340,8 +340,8 @@ contains
 
         mv_testCounter = mv_testCounter + 1
         write(Test%outputUnit,"(*(g0,:,' '))") "["//adjustr(num2str(mv_testCounter,minLen=4_IK))//"] testing" &
-                                             , padString( Test%moduleName//"@"//funcName//" "//counterStr//" ","." , 90_IK ) &
-                                             , Message%value, "in", adjustr(num2str(Test%Timer%Time%delta,"(f0.4)",8_IK)), "seconds"
+                                             , padString( Test%moduleName//"@"//funcName//" "//counterStr//" ","." , 79_IK ) &
+                                             , Message%value, "in", adjustr(num2str(Test%Timer%Time%delta,"(f0.4)",8_IK)), "seconds on image "//num2str(Test%Image%id)
 
         block
             use System_mod, only: sleep
@@ -362,8 +362,8 @@ contains
 !if (mv_Image%isFirst) read(*,*)
         if (Test%Image%isFirst) then
             Test%Err%msg = "["//adjustr(num2str(mv_testCounter-mv_testCounterOld,minLen=4_IK))//"] testing " &
-                         //padString(Test%moduleName//" ",".",90)//" isdone in " &
-                         //adjustr(num2str(Test%Timer%Time%total,"(f0.4)",8_IK))//" seconds"
+                         //padString(Test%moduleName//" ",".",79)//" isdone in " &
+                         //adjustr(num2str(Test%Timer%Time%total,"(f0.4)",8_IK))//" seconds on image "//num2str(Test%Image%id)
             write(Test%outputUnit, "(*(g0,:,' '))") style(Test%Err%msg, "bright", "yellow")
         end if
         mv_testCounterOld = mv_testCounter

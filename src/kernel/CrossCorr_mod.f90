@@ -865,7 +865,7 @@ contains
         real(RK)   , intent(in)             :: NormedData(nd,np)
         real(RK)   , intent(in), optional   :: InverseSumNormedDataSq(nd)
         real(RK)   , intent(out)            :: AutoCorr(nd,nlag)
-        real(RK)                            :: InverseSumNormedDataSqComputed(nd)
+        real(RK)                            :: InverseSumNormedDataSqDefault(nd)
         integer(IK)                         :: ip, ilag
 
         if (any(Lag>np-1_IK)) then
@@ -874,13 +874,9 @@ contains
         end if
 
         if (present(InverseSumNormedDataSq)) then
-            InverseSumNormedDataSqComputed = InverseSumNormedDataSq
+            InverseSumNormedDataSqDefault = InverseSumNormedDataSq
         else
-            InverseSumNormedDataSqComputed = 0._RK
-            do ip = 1, np
-                InverseSumNormedDataSqComputed = InverseSumNormedDataSqComputed + NormedData(1:nd,ip)**2
-            end do
-            InverseSumNormedDataSqComputed = 1._RK / InverseSumNormedDataSqComputed
+            InverseSumNormedDataSqDefault = getInverseSumNormedDataSq(nd, np, NormedData)
         end if
 
         ! Now compute the non-normalized covariances
@@ -893,7 +889,7 @@ contains
                 do ip = 1, np-Lag(ilag)
                     AutoCorr(1:nd,ilag) = AutoCorr(1:nd,ilag) + NormedData(1:nd,ip) * NormedData(1:nd,ip+Lag(ilag))
                 end do
-                AutoCorr(1:nd,ilag) = AutoCorr(1:nd,ilag) * InverseSumNormedDataSqComputed
+                AutoCorr(1:nd,ilag) = AutoCorr(1:nd,ilag) * InverseSumNormedDataSqDefault
             end if
         end do
 
