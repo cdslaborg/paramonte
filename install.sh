@@ -486,7 +486,8 @@ if [ -z ${BTYPE_LIST+x} ]; then
     BTYPE_LIST="release debug"
 fi
 if [ -z ${LTYPE_LIST+x} ]; then
-    LTYPE_LIST="static dynamic"
+    #LTYPE_LIST="static dynamic"
+    LTYPE_LIST="dynamic"
 fi
 if [ -z ${PARALLELISM_LIST+x} ]; then
     PARALLELISM_LIST="none mpi cafsingle cafshared cafdistributed"
@@ -502,13 +503,7 @@ if [ -z ${ParaMonteExample_RUN_ENABLED+x} ]; then
     ParaMonteExample_RUN_ENABLED="true"
 fi
 
-if [ "${LANG_LIST}" = "c" ] || [ "${LANG_LIST}" = "c++" ] || [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "matlab" ]; then
-    MEMORY_LIST="heap"
-    LTYPE_LIST="dynamic"
-    if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
-fi
-
-if [ "${LANG_LIST}" = "python" ]; then
+if [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "python" ]; then
     MEMORY_LIST="heap"
     LTYPE_LIST="dynamic"
     if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
