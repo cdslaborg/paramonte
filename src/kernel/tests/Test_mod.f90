@@ -354,7 +354,7 @@ contains
             end if
 
 #if defined CAF_ENABLED || MPI_ENABLED
-            call execute_command_line(" ")
+            call execute_command_line(" ", cmdstat = Test%Err%stat)
             flush(output_unit)
 #if defined CAF_ENABLED
             sync all
