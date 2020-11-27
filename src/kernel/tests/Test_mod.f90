@@ -344,9 +344,9 @@ contains
 
         mv_testCounter = mv_testCounter + 1
 
-        do imageID = 1, self%Image%count
+        do imageID = 1, Test%Image%count
 
-            if (imageID==self%Image%id) then
+            if (imageID==Test%Image%id) then
                 write(Test%outputUnit,"(*(g0,:,' '))") "["//adjustr(num2str(mv_testCounter,minLen=4_IK))//"] testing" &
                                                      , padString( Test%moduleName//"@"//funcName//" "//counterStr//" ","." , 79_IK ) &
                                                      , Message%value, "in", adjustr(num2str(Test%Timer%Time%delta,"(f0.4)",8_IK)), "seconds on image "//num2str(Test%Image%id)
