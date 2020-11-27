@@ -470,8 +470,8 @@ endif()
 # ParaMonte Version Preprocessor Flag
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-if (DEFINED ParaMonteVersion)
-    set( FPP_PARAMONTE_VERSION_FLAG -DPARAMONTE_VERSION="'${ParaMonteVersion}'" )
+if (DEFINED fppParaMonteVersion)
+    set( FPP_PARAMONTE_VERSION_FLAG -DPARAMONTE_VERSION="'${fppParaMonteVersion}'" )
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
