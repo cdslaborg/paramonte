@@ -149,7 +149,7 @@ verify() {
         echo >&2 "    -- ${BUILD_NAME} - FATAL: it is possible that the current existing GCC compiler collection installed"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: on your system cannot compile the downloaded version of GCC that is required"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: for ParaMonte build. In such case, make sure you have a GCC compiler collection"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: version 7.1 or newer installed on your system, with an updated PATH environmental"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: version 8.1 or newer installed on your system, with an updated PATH environmental"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: variable, then reinstall ParaMonte."
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL: If all ParaMonte installation attempts fail, please report this issue at"
@@ -1139,6 +1139,7 @@ else # user has specified the Fortran compiler path
     echo >&2
     echo >&2 "-- ${BUILD_NAME}Compiler - user-requested compiler path: ${Fortran_COMPILER_PATH}"
     echo >&2 "-- ${BUILD_NAME}Compiler - user-requested compiler name: ${Fortran_COMPILER_NAME}"
+    echo >&2
     if [[ "${Fortran_COMPILER_NAME}" =~ .*"gfortran".* || "${Fortran_COMPILER_NAME}" =~ .*"caf".* ]]; then
         PMCS=gnu
     fi
@@ -1147,11 +1148,22 @@ else # user has specified the Fortran compiler path
     fi
 
     if [ "${MPI_ENABLED}" = "true" ] && [ -z ${MPIEXEC_PATH_USER+x} ]; then
-        mpiInstallEnabled=true
+        if [ -f "${MPIEXEC_PATH}" ]; then
+            mpiInstallEnabled=false
+        else
+            if command -v mpiexec >/dev/null 2>&1; then
+                MPIEXEC_PATH="$(command -v mpiexec)"
+                mpiInstallEnabled=false
+            else
+                mpiInstallEnabled=true
+            fi
+        fi
+        #mpiInstallEnabled=true
         #gnuInstallEnabled=true
     fi
 
 fi
+
 
 if ! [ -z ${MPIEXEC_PATH_USER+x} ]; then
     mpiInstallEnabled=false
