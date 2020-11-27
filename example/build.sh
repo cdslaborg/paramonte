@@ -458,7 +458,17 @@ do
         echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - compiling ParaMonte example with ${COMPILER}"
         echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${COMPILER} ${COMPILER_FLAGS} ${SRC_FILES} -c"
 
-        ${COMPILER} -dumpversion >/dev/null 2>&1 && ${COMPILER} ${COMPILER_FLAGS} ${SRC_FILES} -c && \
+        # Intel compiler does not support -dumpversion
+
+        #CPATH="$(command -v "${COMPILER}")"
+        #if [[ -f "${CPATH}" && "${CPATH}" =~ .*"ifort".* && "${CPATH}" =~ .*"intel".* ]]; then
+        #    CVERSION="${COMPILER} --version"
+        #elif [[ "${COMPILER}" =~ .*"gfortran".* ]]; then
+        #    CVERSION="${COMPILER} -dumpversion"
+        #fi
+        #${CVERSION} >/dev/null 2>&1 && \
+
+        ${COMPILER} ${COMPILER_FLAGS} ${SRC_FILES} -c >/dev/null 2>&1 && \
         {
 
             echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - The example's source file compilation appears to have succeeded."
@@ -489,9 +499,12 @@ do
                 echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - linking ParaMonte example with ${LINKER}"
                 echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//.$SRC_EXT/.o} ${PMLIB_FULL_NAME} -o ${PM_EXAM_EXE_NAME}"
 
-                ${LINKER} -dumpversion >/dev/null 2>&1 && \
-                ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//.$SRC_EXT/.o} "${PMLIB_FULL_NAME}" -o ${PM_EXAM_EXE_NAME}
-                if [ $? -eq 0 ]; then
+                # Intel compiler does not support -dumpversion
+                #${LINKER} -dumpversion >/dev/null 2>&1 && \
+
+                ${LINKER} ${COMPILER_FLAGS} ${LINKER_FLAGS} ${SRC_FILES//.$SRC_EXT/.o} "${PMLIB_FULL_NAME}" -o ${PM_EXAM_EXE_NAME} >/dev/null 2>&1 && \
+                {
+                #if [ $? -eq 0 ]; then
 
                     BUILD_SUCCEEDED=true
 
@@ -594,17 +607,20 @@ do
 
                     break
 
-                else
+                } || {
+                #else
 
                     echo >&2
                     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - The example's source files compilation and linking appear to have failed. skipping..."
                     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script:"
                     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - For instructions, type on the command line:"
                     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
+                    echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     cd $(pwd)"
                     echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     ./build.sh --help"
                     echo >&2
 
-                fi
+                #fi
+                }
 
             done
 
@@ -615,6 +631,7 @@ do
             echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - If the compiler is missing or unidentified, you can pass the path to the compiler to the build script."
             echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - For instructions, type on the command line:"
             echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - "
+            echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     cd $(pwd)"
             echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} -     ./build.sh --help"
             echo >&2
 

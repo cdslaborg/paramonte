@@ -19,7 +19,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
   
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 7.0     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -53,7 +53,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
   
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 7.0     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -80,7 +80,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
   
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 7.0     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -127,7 +127,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 7.0     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -160,7 +160,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 7.0     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -186,7 +186,7 @@ This is the first public release of the ParaMonte library.
 
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 7.0     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
