@@ -101,7 +101,7 @@ contains
         real(RK), parameter :: zplus1 = 1.e1_RK
         real(RK), parameter :: logzplus1 = log(zplus1)
         real(RK), parameter :: logRate_ref = 9.87062241049176_RK
-        real(RK), parameter :: tolerance = 1.e-12_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
         real(RK)            :: difference
         real(RK)            :: logRate
 
@@ -132,7 +132,7 @@ contains
         real(RK), parameter :: zplus1 = 1.e1_RK
         real(RK), parameter :: logzplus1 = log(zplus1)
         real(RK), parameter :: logRate_ref = 11.5870199718159_RK
-        real(RK), parameter :: tolerance = 1.e-12_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
         real(RK)            :: difference
         real(RK)            :: logRate
 
@@ -163,7 +163,7 @@ contains
         real(RK), parameter :: zplus1 = 1.e1_RK
         real(RK), parameter :: logzplus1 = log(zplus1)
         real(RK), parameter :: logRate_ref = 13.9081968356527_RK
-        real(RK), parameter :: tolerance = 1.e-12_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
         real(RK)            :: difference
         real(RK)            :: logRate
 
@@ -194,7 +194,7 @@ contains
         real(RK), parameter :: zplus1 = 1.e1_RK
         real(RK), parameter :: logzplus1 = log(zplus1)
         real(RK), parameter :: logRate_ref = 7.62065413866848_RK
-        real(RK), parameter :: tolerance = 1.e-12_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
         real(RK)            :: difference
         real(RK)            :: logRate
 
@@ -225,7 +225,7 @@ contains
         real(RK), parameter :: zplus1 = 1.e1_RK
         real(RK), parameter :: logzplus1 = log(zplus1)
         real(RK), parameter :: logRate_ref = 7.87332272998867_RK
-        real(RK), parameter :: tolerance = 1.e-12_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
         real(RK)            :: difference
         real(RK)            :: logRate
 
@@ -256,7 +256,7 @@ contains
         real(RK), parameter :: zplus1 = 1.e1_RK
         real(RK), parameter :: logzplus1 = log(zplus1)
         real(RK), parameter :: logRate_ref = 6.85265527251550_RK
-        real(RK), parameter :: tolerance = 1.e-12_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
         real(RK)            :: difference
         real(RK)            :: logRate
 
@@ -287,7 +287,7 @@ contains
         real(RK), parameter :: zplus1 = 1.e1_RK
         real(RK), parameter :: logzplus1 = log(zplus1)
         real(RK), parameter :: logRate_ref = 6.81074639841109_RK
-        real(RK), parameter :: tolerance = 1.e-12_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
         real(RK)            :: difference
         real(RK)            :: logRate
 
@@ -315,7 +315,7 @@ contains
 
         logical :: assertion
         real(RK)    , parameter :: z = 1.e-2_RK
-        real(RK)    , parameter :: tolerance = 1.e-12_RK
+        real(RK)    , parameter :: tolerance = 1.e-10_RK
         real(RK)    , parameter :: binaryMergerRateS15_ref = .000000000000000_RK
         real(RK)                :: binaryMergerRateS15
         real(RK)                :: difference
@@ -345,7 +345,7 @@ contains
 
         logical :: assertion
         real(RK)    , parameter :: z = 2._RK
-        real(RK)    , parameter :: tolerance = 1.e-12_RK
+        real(RK)    , parameter :: tolerance = 1.e-10_RK
         real(RK)    , parameter :: binaryMergerRateS15_ref = .1242102965042102E-01_RK
         real(RK)                :: binaryMergerRateS15
         real(RK)                :: difference
@@ -375,7 +375,7 @@ contains
 
         logical :: assertion
         real(RK)    , parameter :: z = 4._RK
-        real(RK)    , parameter :: tolerance = 1.e-12_RK
+        real(RK)    , parameter :: tolerance = 1.e-10_RK
         real(RK)    , parameter :: binaryMergerRateS15_ref = .2658922023902166E-02_RK
         real(RK)                :: binaryMergerRateS15
         real(RK)                :: difference
@@ -405,7 +405,7 @@ contains
 
         logical :: assertion
         real(RK)    , parameter :: z = 10._RK
-        real(RK)    , parameter :: tolerance = 1.e-12_RK
+        real(RK)    , parameter :: tolerance = 1.e-10_RK
         real(RK)    , parameter :: binaryMergerRateS15_ref = 0._RK
         real(RK)                :: binaryMergerRateS15
         real(RK)                :: difference
@@ -436,7 +436,7 @@ contains
         logical                     :: assertion
         integer(IK)                 :: i
         real(RK)    , parameter     :: Logzplus1(*) = [0.01_RK, 0.1_RK, 0.5_RK, 1._RK, 1.6_RK, 2._RK, 4._RK]
-        real(RK)    , parameter     :: tolerance = 1.e-12_RK
+        real(RK)    , parameter     :: tolerance = 1.e-10_RK
         real(RK)    , parameter     :: LogBinaryMergerRate_ref(*) = [ .000000000000000_RK &
                                                                     , -9.522643068294865_RK &
                                                                     , -5.516405042254531_RK &
@@ -476,7 +476,7 @@ contains
         logical                     :: assertion
         integer(IK)                 :: i
         real(RK)    , parameter     :: Logzplus1(*) = [0.01_RK, 0.1_RK, 0.5_RK, 1._RK, 1.5_RK, 2._RK, 4._RK]
-        real(RK)    , parameter     :: tolerance = 1.e-12_RK
+        real(RK)    , parameter     :: tolerance = 1.e-10_RK
         real(RK)    , parameter     :: LogBinaryMergerRate_ref(*) = [ .000000000000000_RK &
                                                                     , -9.652689811083633_RK &
                                                                     , -5.676407092361923_RK &
@@ -516,7 +516,7 @@ contains
         logical                     :: assertion
         integer(IK)                 :: i
         real(RK)    , parameter     :: Logzplus1(*) = [0.01_RK, 0.1_RK, 0.5_RK, 1._RK, 1.5_RK, 2._RK, 4._RK]
-        real(RK)    , parameter     :: tolerance = 1.e-12_RK
+        real(RK)    , parameter     :: tolerance = 1.e-10_RK
         real(RK)    , parameter     :: LogBinaryMergerRate_ref(*) = [ .000000000000000_RK &
                                                                     , -10.40986473440980_RK &
                                                                     , -6.500787335196973_RK &
@@ -556,7 +556,7 @@ contains
         logical                     :: assertion
         integer(IK)                 :: i
         real(RK)    , parameter     :: Logzplus1(*) = [0.01_RK, 0.1_RK, 0.5_RK, 1._RK, 1.5_RK, 2._RK, 4._RK]
-        real(RK)    , parameter     :: tolerance = 1.e-12_RK
+        real(RK)    , parameter     :: tolerance = 1.e-10_RK
         real(RK)    , parameter     :: LogBinaryMergerRate_ref(*) = [ .000000000000000_RK &
                                                                     , -9.329653089161376_RK &
                                                                     , -5.659712865486435_RK &
@@ -596,7 +596,7 @@ contains
         logical                     :: assertion
         integer(IK)                 :: i
         real(RK)    , parameter     :: Logzplus1(*) = [0.01_RK, 0.1_RK, 0.5_RK, 1._RK, 1.5_RK, 2._RK, 4._RK]
-        real(RK)    , parameter     :: tolerance = 1.e-12_RK
+        real(RK)    , parameter     :: tolerance = 1.e-10_RK
         real(RK)    , parameter     :: LogBinaryMergerRate_ref(*) = [ .000000000000000_RK &
                                                                     , -9.446407015893174_RK &
                                                                     , -5.792990136584658_RK &
@@ -636,7 +636,7 @@ contains
         logical                     :: assertion
         integer(IK)                 :: i
         real(RK)    , parameter     :: Logzplus1(*) = [0.01_RK, 0.1_RK, 0.5_RK, 1._RK, 1.5_RK, 2._RK, 4._RK]
-        real(RK)    , parameter     :: tolerance = 1.e-12_RK
+        real(RK)    , parameter     :: tolerance = 1.e-10_RK
         real(RK)    , parameter     :: LogBinaryMergerRate_ref(*) = [ .000000000000000_RK &
                                                                     , -9.190714850567522_RK &
                                                                     , -5.417287541056011_RK &
