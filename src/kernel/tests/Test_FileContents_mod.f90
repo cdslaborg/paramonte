@@ -66,9 +66,6 @@ contains
         call Test%run(test_constructFileContents_1, "test_constructFileContents_1")
         call Test%run(test_constructFileContents_2, "test_constructFileContents_2")
         call Test%finalize()
-#ifdef CAF_ENABLED
-        sync all
-#endif
 
     end subroutine test_FileContents
 

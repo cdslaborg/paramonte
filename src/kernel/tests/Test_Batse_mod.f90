@@ -154,14 +154,12 @@ contains
     subroutine test_Batse()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
-        if (Test%Image%isFirst) then
-            call Test%run(test_readDataGRB_1,"test_readDataGRB_1")
-            call Test%run(test_readDataGRB_2,"test_readDataGRB_2")
-            call Test%run(test_getLog10PF53,"test_getLog10PF53")
-            call Test%run(test_getLogPF53,"test_getLogPF53")
-            call Test%run(test_getLogPbol,"test_getLogPbol")
-            call Test%run(test_getLogEffectivePeakPhotonFlux,"test_getLogEffectivePeakPhotonFlux")
-        end if
+        call Test%run(test_readDataGRB_1,"test_readDataGRB_1")
+        call Test%run(test_readDataGRB_2,"test_readDataGRB_2")
+        call Test%run(test_getLog10PF53,"test_getLog10PF53")
+        call Test%run(test_getLogPF53,"test_getLogPF53")
+        call Test%run(test_getLogPbol,"test_getLogPbol")
+        call Test%run(test_getLogEffectivePeakPhotonFlux,"test_getLogEffectivePeakPhotonFlux")
         call Test%finalize()
     end subroutine test_Batse
 

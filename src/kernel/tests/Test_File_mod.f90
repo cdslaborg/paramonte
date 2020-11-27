@@ -138,10 +138,6 @@ contains
         call Test%run(test_getInqErr_2, "test_getInqErr_2")
         call Test%run(test_getInqErr_3, "test_getInqErr_3")
         call Test%finalize()
-#ifdef CAF_ENABLED
-        sync all
-#endif
-
 
     end subroutine test_File
 

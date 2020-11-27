@@ -86,12 +86,7 @@ contains
         call Test%run(test_getInvPosDefMatSqrtDet_2, "test_getInvPosDefMatSqrtDet_2")
         call Test%run(test_getLogSqrtDetPosDefMat_1, "test_getLogSqrtDetPosDefMat_1")
         call Test%run(test_getLogSqrtDetPosDefMat_2, "test_getLogSqrtDetPosDefMat_2")
-        !call Test%run(test_getRegresCoef()
         call Test%finalize()
-#ifdef CAF_ENABLED
-        sync all
-#endif
-
 
     end subroutine test_Matrix
 
