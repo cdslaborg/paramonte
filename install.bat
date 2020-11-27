@@ -427,11 +427,17 @@ echo.
 
 :: set build type
 
-if not defined LANG_LIST        set LANG_LIST=c/c++/fortran/matlab/python/r
-if not defined BTYPE_LIST       set BTYPE_LIST=release/testing/debug
-if not defined LTYPE_LIST       set LTYPE_LIST=static/dynamic
-if not defined MEMORY_LIST      set MEMORY_LIST=stack/heap
-if not defined PARALLELISM_LIST set PARALLELISM_LIST=none/mpi/cafsingle/cafshared
+REM if not defined LANG_LIST        set LANG_LIST=c/c++/fortran/matlab/python/r
+REM if not defined BTYPE_LIST       set BTYPE_LIST=release/testing/debug
+REM if not defined LTYPE_LIST       set LTYPE_LIST=static/dynamic
+REM if not defined MEMORY_LIST      set MEMORY_LIST=stack/heap
+REM if not defined PARALLELISM_LIST set PARALLELISM_LIST=none/mpi/cafsingle/cafshared
+
+if not defined LANG_LIST        set LANG_LIST=c/c++/fortran/matlab/python
+if not defined BTYPE_LIST       set BTYPE_LIST=release/debug
+if not defined LTYPE_LIST       set LTYPE_LIST=dynamic
+if not defined MEMORY_LIST      set MEMORY_LIST=heap
+if not defined PARALLELISM_LIST set PARALLELISM_LIST=none/mpi
 
 REM remove redundancies
 
