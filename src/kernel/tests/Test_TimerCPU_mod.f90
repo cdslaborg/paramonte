@@ -81,6 +81,9 @@ contains
         logical             :: assertion
         type(TimerCPU_type) :: TimerCPU
 
+        assertion = .true.
+
+#if !defined CAF_ENABLED && !defined MPI_ENABLED 
         TimerCPU = TimerCPU_type()
         assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
         call sleep(seconds=seconds,Err=TimerCPU%Err)
@@ -99,6 +102,7 @@ contains
             write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%unit  : ", TimerCPU%Time%unit
             write(Test%outputUnit,"(*(g0))")
         end if
+#endif
 
     end function test_TimerCPU_type_1
 
