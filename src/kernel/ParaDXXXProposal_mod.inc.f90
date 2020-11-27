@@ -667,7 +667,8 @@ contains
 
                 ! ensure the old Cholesky factorization can be recovered
 
-                call getCholeskyFactor( nd, comv_CholDiagLower(1:nd,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
+                !call getCholeskyFactor( nd, comv_CholDiagLower(1:nd,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
+                call getCholeskyFactor( nd, comv_CholDiagLower(:,:,0), comv_CholDiagLower(1:nd,0,0) ) ! avoid temporary array creation
                 if (comv_CholDiagLower(1,0,0)<0._RK) then
                     write(mc_logFileUnit,"(A)")
                     write(mc_logFileUnit,"(A)") "Singular covariance matrix detected:"
