@@ -81,7 +81,7 @@ contains
         type(OS_type)               :: OS
         integer                     :: fileUnit, i, iostat
 
-        RandomFileName = RandomFileName_type(key = Test%outDir//"Test_FileContents_mod@test_constructFileContents@"//num2str(Test%Image%id))
+        RandomFileName = RandomFileName_type(key = Test%outDir//"Test_FileContents_mod@test_constructFileContents")
         assertion = .not. RandomFileName%Err%occurred
         if (.not. assertion) then
             if (Test%isDebugMode) then
@@ -168,7 +168,7 @@ contains
         integer                     :: fileUnit, i, iostat
         logical                     :: exist
 
-        RandomFileName = RandomFileName_type(key = Test%outDir//"Test_FileContents_mod@test_constructFileContents@"//num2str(Test%Image%id))
+        RandomFileName = RandomFileName_type(key = Test%outDir//"Test_FileContents_mod@test_constructFileContents")
         assertion = .not. RandomFileName%Err%occurred
         if (.not. assertion) then
             if (Test%isDebugMode) then
