@@ -477,14 +477,22 @@ do
             LINKER_FLAGS=
             if ([ "${EXAMPLE_LANGUAGE}" = "C" ] || [ "${EXAMPLE_LANGUAGE}" = "C++" ]) && [ "${PM_LIB_TYPE}" = "static" ]; then
                 if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
-                    csvLinkerList="ifort"
+                    if [ "${PM_LIB_TYPE}" = "static" ] && ( [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ] ); then
+                        csvLinkerList="mpiifort"
+                    else
+                        csvLinkerList="ifort"
+                    fi
                     LINKER_FLAGS="-nofor_main"
                     #if [ "${MPI_ENABLED}" = "true" ]; then
                     #    LINKER="mpiifort" # xxx point of weakness: assumes intel mpi to have been installed
                     #fi
                 fi
                 if [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
-                    csvLinkerList="gfortran"
+                    if [ "${PM_LIB_TYPE}" = "static" ] && ( [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ] ); then
+                        csvLinkerList="mpifort"
+                    else
+                        csvLinkerList="gfortran"
+                    fi
                     #csvLinkerList="${clist}"
                     #if [ "${MPI_ENABLED}" = "true" ]; then
                     #    LINKER="mpifort"
