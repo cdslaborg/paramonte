@@ -304,10 +304,11 @@ contains
 
         block
             use Matrix_mod, only: getCholeskyFactor
-            real(RK), allocatable :: CholeskyLower(:,:) ! dummy variable to avoid copy in / copy out
-            CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
-            call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
-            comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower
+            !real(RK), allocatable :: CholeskyLower(:,:) ! dummy variable to avoid copy in / copy out
+            !CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
+            !call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
+            !comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower
+            call getCholeskyFactor( ndim, comv_CholDiagLower(:,:,0), comv_CholDiagLower(1:ndim,0,0) )
             call getInvCovMat()
         end block
         if (comv_CholDiagLower(1,0,0)<0._RK) then
