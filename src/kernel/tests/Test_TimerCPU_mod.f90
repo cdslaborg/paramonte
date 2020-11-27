@@ -83,6 +83,7 @@ contains
 
         assertion = .true.
 
+        ! Note: On macOS the TimerCPU tests fail.
         ! The CPU timer is neither available on all processors nor is 
         ! essential for the successful build and run of the ParaMonte library.
         ! Therefore, it is only tested in code coverage.
