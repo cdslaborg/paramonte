@@ -440,12 +440,15 @@ if ! [ -z ${PARALLELISM_LIST+x} ]; then
     done
 fi
 
+# avoid static library build for non-Fortran languages
+
 if ! [ -z ${LANG_LIST+x} ]; then
     for LANG in $LANG_LIST; do
-        if  [ "${LANG}" = "matlab" ] || [ "${LANG}" = "python" ]; then
+        #if  [ "${LANG}" = "matlab" ] || [ "${LANG}" = "python" ]; then
+        if ! [ "${LANG}" = "fortran" ]; then
             for LTYPE in $LTYPE_LIST; do
                 if  [ "${LTYPE}" = "static" ]; then
-                    reportConflict "ParaMonte static library build is not possible for usage from Python language."
+                    reportConflict "ParaMonte static library build is not possible for usage from non-Fortran languages."
                 fi
             done
         fi
