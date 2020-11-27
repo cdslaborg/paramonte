@@ -244,7 +244,7 @@ reportConflict()
     echo >&2 "-- ParaMonte - WARNING: The requested build configuration will ignored."
     echo >&2 "-- ParaMonte - skipping..."
     echo >&2 ""
-    exit 1
+    #exit 1
 }
 
 reportBadValue()
@@ -444,7 +444,6 @@ fi
 
 if ! [ -z ${LANG_LIST+x} ]; then
     for LANG in $LANG_LIST; do
-        #if  [ "${LANG}" = "matlab" ] || [ "${LANG}" = "python" ]; then
         if ! [ "${LANG}" = "fortran" ]; then
             for LTYPE in $LTYPE_LIST; do
                 if  [ "${LTYPE}" = "static" ]; then
@@ -483,7 +482,8 @@ if [ -z ${PMCS_LIST+x} ]; then
     PMCS_LIST="none"
 fi
 if [ -z ${BTYPE_LIST+x} ]; then
-    BTYPE_LIST="release testing debug"
+    #BTYPE_LIST="release testing debug"
+    BTYPE_LIST="release debug"
 fi
 if [ -z ${LTYPE_LIST+x} ]; then
     LTYPE_LIST="static dynamic"
@@ -492,7 +492,8 @@ if [ -z ${PARALLELISM_LIST+x} ]; then
     PARALLELISM_LIST="none mpi cafsingle cafshared cafdistributed"
 fi
 if [ -z ${MEMORY_LIST+x} ]; then
-    MEMORY_LIST="stack heap"
+    #MEMORY_LIST="stack heap"
+    MEMORY_LIST="heap"
 fi
 if [ -z ${ParaMonteTest_RUN_ENABLED+x} ]; then
     ParaMonteTest_RUN_ENABLED="true"
@@ -501,7 +502,7 @@ if [ -z ${ParaMonteExample_RUN_ENABLED+x} ]; then
     ParaMonteExample_RUN_ENABLED="true"
 fi
 
-if [ "${LANG_LIST}" = "matlab" ]; then
+if [ "${LANG_LIST}" = "c" ] || [ "${LANG_LIST}" = "c++" ] || [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "matlab" ]; then
     MEMORY_LIST="heap"
     LTYPE_LIST="dynamic"
     if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
