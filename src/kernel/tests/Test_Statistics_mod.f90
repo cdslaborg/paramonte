@@ -383,11 +383,11 @@ contains
         integer(IK) , parameter :: nd = 3_IK
         real(RK)    , parameter :: tolerance = 1.e-12_RK
         complex(CK) , parameter :: mahalSq_ref = 180._CK
-        complex(CK) , parameter :: Point(nd) = [(cmplx(i,0.,RK),i=1,nd)]
-        complex(CK) , parameter :: MeanVec(nd) = [(cmplx(i**2+1._RK,0.,RK),i=1,nd)]
+        complex(CK) , parameter :: Point(nd) = [(cmplx(i,0.,kind=RK),i=1,nd)]
+        complex(CK) , parameter :: MeanVec(nd) = [(cmplx(i**2+1._RK,0.,kind=RK),i=1,nd)]
         complex(CK) , parameter :: InvCovMat(nd,nd) = cmplx(reshape([ 1._RK, 0._RK, 1._RK &
                                                                     , 0._RK, 2._RK, 0._RK &
-                                                                    , 1._RK, 0._RK, 3._RK ], shape = shape(InvCovMat) ), RK )
+                                                                    , 1._RK, 0._RK, 3._RK ], shape = shape(InvCovMat) ), kind = RK )
         real(RK)                :: mahalSq
         real(RK)                :: difference
         mahalSq = getMahalSq(nd = nd, MeanVec = MeanVec, InvCovMat = InvCovMat, Point = Point)
@@ -414,11 +414,11 @@ contains
         real(RK)    , parameter :: tolerance = 1.e-12_RK
         integer(IK) , parameter :: nd = 3_IK, np = 2_IK
         complex(CK) , parameter :: MahalSq_ref(np) = [180._CK, 36._CK]
-        complex(CK) , parameter :: Point(nd,np) = reshape([(cmplx(i,0.,RK),i=1,nd*np)], shape = shape(Point))
-        complex(CK) , parameter :: MeanVec(nd) = [(cmplx(i**2+1._RK,0.,RK),i=1,nd)]
+        complex(CK) , parameter :: Point(nd,np) = reshape([(cmplx(i,0.,kind=RK),i=1,nd*np)], shape = shape(Point))
+        complex(CK) , parameter :: MeanVec(nd) = [(cmplx(i**2+1._RK,0.,kind=RK),i=1,nd)]
         complex(CK) , parameter :: InvCovMat(nd,nd) = cmplx(reshape([ 1._RK, 0._RK, 1._RK &
                                                                     , 0._RK, 2._RK, 0._RK &
-                                                                    , 1._RK, 0._RK, 3._RK ], shape = shape(InvCovMat) ), RK )
+                                                                    , 1._RK, 0._RK, 3._RK ], shape = shape(InvCovMat) ), kind=RK )
 
         real(RK)                :: MahalSq(np)
         real(RK)                :: Difference(np)
@@ -1467,7 +1467,7 @@ contains
         implicit none
 
         logical                 :: assertion, assertionCurrent
-        real(RK)    , parameter :: tolerance = 1.e-12_RK
+        real(RK)    , parameter :: tolerance = 1.e-11_RK
         integer(IK) , parameter :: nd = 3_IK
         integer(IK) , parameter :: np = 5_IK
         real(RK)    , parameter :: Point(np,nd) = transpose(reshape([ 0.706046088019609_RK, 0.031832846377421_RK, 0.276922984960890_RK &
@@ -1486,12 +1486,12 @@ contains
                                                                     , -1.757283899385404_RK, 13.444000278032743_RK, +4.534128105255763_RK &
                                                                     , +1.477819211284223_RK, +4.534128105255763_RK, 10.670726269401085_RK &
                                                                     ] , shape = shape(CovMat_ref) )
-        real(RK), parameter     :: MahalSq_ref(nd) = [3.178088257444105_RK, 1.653804994353691_RK, 2.669296951657121_RK]
+        real(RK), parameter     :: MahalSq_ref(np) = [3.178088257444105_RK, 1.653804994353691_RK, 2.669296951657121_RK, 1.8980344204538842_RK, 2.6007753760912014_RK]
         real(RK), parameter     :: sqrtDetInvCovMat_ref = 29.607059382128476_RK
         real(RK)                :: CovMat(nd,nd)
         real(RK)                :: CovMat_diff(nd,nd)
-        real(RK)                :: Mean_diff(nd), MahalSq_diff(nd), InvCovMat_diff(nd,nd), sqrtDetInvCovMat_diff
-        real(RK)                :: Mean(nd), MahalSq(nd), InvCovMat(nd,nd), sqrtDetInvCovMat
+        real(RK)                :: Mean_diff(nd), MahalSq_diff(np), InvCovMat_diff(nd,nd), sqrtDetInvCovMat_diff
+        real(RK)                :: Mean(nd), MahalSq(np), InvCovMat(nd,nd), sqrtDetInvCovMat
 
         assertion = .true.
 
@@ -1566,7 +1566,7 @@ contains
         implicit none
 
         logical                 :: assertion, assertionCurrent
-        real(RK)    , parameter :: tolerance = 1.e-12_RK
+        real(RK)    , parameter :: tolerance = 1.e-11_RK
         integer(IK) , parameter :: nd = 3_IK
         integer(IK) , parameter :: np = 5_IK
         real(RK)    , parameter :: Point(nd,np) = reshape(  [ 0.706046088019609_RK, 0.031832846377421_RK, 0.276922984960890_RK &
@@ -1584,12 +1584,12 @@ contains
                                                                     , -1.757283899385404_RK, 13.444000278032743_RK, +4.534128105255763_RK &
                                                                     , +1.477819211284223_RK, +4.534128105255763_RK, 10.670726269401085_RK &
                                                                     ] , shape = shape(CovMat_ref) )
-        real(RK), parameter     :: MahalSq_ref(nd) = [3.178088257444105_RK, 1.653804994353691_RK, 2.669296951657121_RK]
+        real(RK), parameter     :: MahalSq_ref(np) = [3.178088257444105_RK, 1.653804994353691_RK, 2.669296951657121_RK, 1.8980344204538842_RK, 2.6007753760912014_RK]
         real(RK), parameter     :: sqrtDetInvCovMat_ref = 29.607059382128476_RK
         real(RK)                :: CovMat(nd,nd)
         real(RK)                :: CovMat_diff(nd,nd)
-        real(RK)                :: Mean_diff(nd), MahalSq_diff(nd), InvCovMat_diff(nd,nd), sqrtDetInvCovMat_diff
-        real(RK)                :: Mean(nd), MahalSq(nd), InvCovMat(nd,nd), sqrtDetInvCovMat
+        real(RK)                :: Mean_diff(nd), MahalSq_diff(np), InvCovMat_diff(nd,nd), sqrtDetInvCovMat_diff
+        real(RK)                :: Mean(nd), MahalSq(np), InvCovMat(nd,nd), sqrtDetInvCovMat
 
         assertion = .true.
 

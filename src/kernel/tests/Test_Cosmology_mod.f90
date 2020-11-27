@@ -67,8 +67,10 @@ contains
         call Test%run(test_getlogdvdz, "test_getlogdvdz")
         call Test%run(test_ldiswickram, "test_ldiswickram")
         call Test%run(test_getLogLumDisWicMpc, "test_getLogLumDisWicMpc")
-        call Test%run(test_getLookBackTime_1, "test_getLookBackTime_1")
-        call Test%run(test_getLookBackTime_2, "test_getLookBackTime_2")
+#if defined CODECOV_ENABLED
+        call Test%run(test_getLookBackTime_1, "test_getLookBackTime_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
+        call Test%run(test_getLookBackTime_2, "test_getLookBackTime_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
+#endif
         call Test%run(test_getUniverseAgeDerivative, "test_getLookBackTime_2")
         call Test%finalize()
     end subroutine test_Cosmology
