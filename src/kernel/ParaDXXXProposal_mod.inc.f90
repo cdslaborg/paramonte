@@ -304,10 +304,11 @@ contains
 
         block
             use Matrix_mod, only: getCholeskyFactor
-            real(RK), allocatable :: CholeskyLower(:,:) ! dummy variable to avoid copy in / copy out
-            CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
-            call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
-            comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower
+            !real(RK), allocatable :: CholeskyLower(:,:) ! dummy variable to avoid copy in / copy out
+            !CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
+            !call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
+            !comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower
+            call getCholeskyFactor( ndim, comv_CholDiagLower(:,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) )
             call getInvCovMat()
         end block
         if (comv_CholDiagLower(1,0,0)<0._RK) then
@@ -628,10 +629,10 @@ contains
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             ! now get the Cholesky factorization
-            ! Do not set the full boundaries' range `(1:nd)` for `comv_CholDiagLower` in the following subroutine call.
+            ! Do not set the full boundaries' range `(1:nd)` for the first index of `comv_CholDiagLower` in the following subroutine call.
             ! Setting the boundaries forces the compiler to generate a temporary array.
 
-            call getCholeskyFactor( nd, comv_CholDiagLower(:,:,0), comv_CholDiagLower(1:nd,0,0) )
+            call getCholeskyFactor( nd, comv_CholDiagLower(:,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
 
             blockPosDefCheck: if (comv_CholDiagLower(1,0,0)>0._RK) then
 
@@ -667,7 +668,8 @@ contains
 
                 ! ensure the old Cholesky factorization can be recovered
 
-                call getCholeskyFactor( nd, comv_CholDiagLower(1:nd,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
+                !call getCholeskyFactor( nd, comv_CholDiagLower(1:nd,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
+                call getCholeskyFactor( nd, comv_CholDiagLower(:,1:nd,0), comv_CholDiagLower(1:nd,0,0) ) ! avoid temporary array creation by using :
                 if (comv_CholDiagLower(1,0,0)<0._RK) then
                     write(mc_logFileUnit,"(A)")
                     write(mc_logFileUnit,"(A)") "Singular covariance matrix detected:"
