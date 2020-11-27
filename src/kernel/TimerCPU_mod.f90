@@ -134,8 +134,8 @@ contains
         implicit none
         class(TimerCPU_type), intent(inout) :: TimerCPU
         call cpu_time( time=TimerCPU%Time%start )
-        TimerCPU%Time%total = 0._RK
         TimerCPU%Time%delta = 0._RK
+        TimerCPU%Time%total = 0._RK
         TimerCPU%Time%stop = TimerCPU%Time%start
     end subroutine setTicCPU
 
@@ -159,11 +159,14 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setTocCPU
 #endif
+        use Constants_mod, only: RK
         implicit none
-        class(TimerCPU_type), intent(inout)    :: TimerCPU
+        class(TimerCPU_type), intent(inout) :: TimerCPU
+        real(RK)                            :: dummy
         call cpu_time( time=TimerCPU%Time%stop )
-        TimerCPU%Time%delta = TimerCPU%Time%stop - TimerCPU%Time%total
-        TimerCPU%Time%total = TimerCPU%Time%stop - TimerCPU%Time%start
+        dummy = TimerCPU%Time%stop - TimerCPU%Time%start
+        TimerCPU%Time%delta = dummy - TimerCPU%Time%total
+        TimerCPU%Time%total = dummy
     end subroutine setTocCPU
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
