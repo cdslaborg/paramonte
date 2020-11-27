@@ -65,7 +65,9 @@ set ParaMonte_BLD_ROOT_DIR=%cd%
 :: change directory to the folder containing this batch file 
 cd %~dp0
 
-:: fetch ParaMonte library kernel version
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: fetch and set the ParaMonte library kernel version
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 set "ParaMonteVersion="
 
@@ -74,11 +76,18 @@ for /f "tokens=*" %%i in ('head.bat 1 "..\.VERSION"') do set "ParaMonteVersion=%
 cd %~dp0
 
 set "FPP_PARAMONTE_VERSION_FLAG="
-if defined ParaMonteVersion (
-    set FPP_PARAMONTE_VERSION_FLAG=/define:PARAMONTE_VERSION='!ParaMonteVersion!'
-)
 
+REM uncomment the following conditional block to set the ParaMonte version in the source files via the preprocessor flags.
+REM This is, however, not recommended. Generating the include source file is the preferred default method of
+REM the ParaMonte version to the binaries. Starting ParaMonte release 1.4.2, this is the default behavior.
+
+REM if defined ParaMonteVersion (
+REM     set FPP_PARAMONTE_VERSION_FLAG=/define:PARAMONTE_VERSION='!ParaMonteVersion!'
+REM )
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: fetch ParaMonte library kernel release date
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 set dayName=!date:~0,3!
 set year=!date:~10,4!
