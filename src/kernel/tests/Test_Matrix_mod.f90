@@ -98,6 +98,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_getCholeskyFactor_1() result(assertion)
+
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
@@ -115,8 +116,15 @@ contains
         real(RK), allocatable   :: CholeskyLower_diff(:,:), CholeskyDiagonal_diff(:)
         CholeskyLower = PosDefMat
         call getCholeskyFactor(nd = nd, PosDefMat = CholeskyLower, Diagonal = CholeskyDiagonal)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(CholeskyLower_diff)) deallocate(CholeskyLower_diff); allocate(CholeskyLower_diff, mold = PosDefMat)
         CholeskyLower_diff = abs(PosDefMat - CholeskyLower_ref)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(CholeskyDiagonal_diff)) deallocate(CholeskyDiagonal_diff); allocate(CholeskyDiagonal_diff, mold = CholeskyDiagonal)
         CholeskyDiagonal_diff = abs(CholeskyDiagonal - CholeskyDiagonal_ref)
+
         assertion = all(CholeskyLower_diff < tolerance) .and. all(CholeskyDiagonal_diff < tolerance)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
@@ -129,6 +137,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyDiagonal_diff  = ", CholeskyDiagonal_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+
     end function test_getCholeskyFactor_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -178,6 +187,9 @@ contains
         MatInvMat = PosDefMat
 
         call getInvPosDefMatSqrtDet(nd = nd, MatInvMat = MatInvMat, sqrtDetInvPosDefMat = sqrtDetInvPosDefMat)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(MatInvMat_diff)) deallocate(MatInvMat_diff); allocate(MatInvMat_diff, mold = MatInvMat)
 
         MatInvMat_diff = abs(MatInvMat - MatInvMat_ref)
         sqrtDetInvPosDefMat_diff = abs(sqrtDetInvPosDefMat - sqrtDetInvPosDefMat_ref)
@@ -251,6 +263,9 @@ contains
 
         InvMatFromCholFac = getInvMatFromCholFac(nd = nd, CholeskyLower = CholeskyLower, Diagonal = CholeskyDiagonal)
 
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(InvMatFromCholFac_diff)) deallocate(InvMatFromCholFac_diff); allocate(InvMatFromCholFac_diff, mold = InvMatFromCholFac)
+
         InvMatFromCholFac_diff = abs(InvMatFromCholFac - InvMatFromCholFac_ref)
 
         assertion = all(InvMatFromCholFac_diff < tolerance)
@@ -287,6 +302,8 @@ contains
 
         MatInvMat = getInvPosDefMat(nd = nd, PosDefMat = PosDefMat)
 
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(MatInvMat_diff)) deallocate(MatInvMat_diff); allocate(MatInvMat_diff, mold = MatInvMat)
         MatInvMat_diff = abs(MatInvMat - MatInvMat_ref)
 
         assertion = all(MatInvMat_diff < tolerance)
@@ -356,8 +373,14 @@ contains
 
         call getInvMatDet(nd = nd, MatrixLU = MatrixLU, InverseMatrix = MatInvMat, detInvMat = detInvMat)
 
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(MatrixLU_diff)) deallocate(MatrixLU_diff); allocate(MatrixLU_diff, mold = MatrixLU)
         MatrixLU_diff = abs(MatrixLU - MatrixLU_ref)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(MatInvMat_diff)) deallocate(MatInvMat_diff); allocate(MatInvMat_diff, mold = MatInvMat)
         MatInvMat_diff = abs(MatInvMat - MatInvMat_ref)
+
         detInvMat_diff = abs(detInvMat - detInvMat_ref)
 
         assertion = all(MatInvMat_diff < tolerance) .and. detInvMat_diff < tolerance
@@ -402,6 +425,9 @@ contains
 
         InverseMatrix = getInvMat(nd = nd, Matrix = PosDefMat)
 
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(InverseMatrix_diff)) deallocate(InverseMatrix_diff); allocate(InverseMatrix_diff, mold = InverseMatrix)
+
         InverseMatrix_diff = abs(InverseMatrix - InverseMatrix_ref)
 
         assertion = all(InverseMatrix_diff < tolerance)
@@ -435,6 +461,9 @@ contains
         MatrixProduct_ref = matmul(PosDefMat,PosDefMat)
 
         call multiplyMatrix(A = PosDefMat, rowsA = nd, colsA = nd, B = PosDefMat, rowsB = nd, colsB = nd, C = MatrixProduct)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(MatrixProduct_diff)) deallocate(MatrixProduct_diff); allocate(MatrixProduct_diff, mold = MatrixProduct)
 
         MatrixProduct_diff = abs(MatrixProduct - MatrixProduct_ref)
 
@@ -651,6 +680,10 @@ contains
         real(RK), allocatable   :: OuterProduct(:,:), OuterProduct_diff(:,:)
 
         OuterProduct = getOuterProd(Vector1 = Vector1, Vector2 = Vector2)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(OuterProduct_diff)) deallocate(OuterProduct_diff); allocate(OuterProduct_diff, mold = OuterProduct)
+
         OuterProduct_diff = abs(OuterProduct - OuterProduct_ref)
 
         assertion = all(OuterProduct_diff < tolerance)

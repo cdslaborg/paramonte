@@ -1152,6 +1152,10 @@ contains
         real(RK), allocatable   :: Mean(:)
         real(RK), allocatable   :: Difference(:)
         Mean = getMean(nd,np,Point)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = Mean)
+
         Difference = abs( (Mean - Mean_ref) / Mean_ref )
         assertion = all(Difference < tolerance)
 
@@ -1189,6 +1193,10 @@ contains
         real(RK), allocatable   :: Mean(:)
         real(RK), allocatable   :: Difference(:)
         Mean = getMean(nd, np, Point, Weight)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = Mean)
+
         Difference = abs( (Mean - Mean_ref) / Mean_ref )
         assertion = all(Difference < tolerance)
 
@@ -1240,6 +1248,10 @@ contains
         real(RK), allocatable   :: NormData(:,:)
         real(RK), allocatable   :: Difference(:,:)
         NormData = getNormData(nd,np,Mean,Point)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = NormData_ref)
+
         Difference = abs( (transpose(NormData) - NormData_ref) / NormData_ref )
         assertion = all(Difference <= tolerance)
 

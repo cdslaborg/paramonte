@@ -161,8 +161,8 @@ contains
             call Test%run(test_getLogPF53,"test_getLogPF53")
             call Test%run(test_getLogPbol,"test_getLogPbol")
             call Test%run(test_getLogEffectivePeakPhotonFlux,"test_getLogEffectivePeakPhotonFlux")
-            call Test%finalize()
         end if
+        call Test%finalize()
     end subroutine test_Batse
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

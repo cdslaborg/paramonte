@@ -469,7 +469,7 @@ contains
         if (present(formatIn)) then
             write(int322str,formatIn) integerIn
         else
-            write(int322str,*) integerIn
+            write(int322str,"(I0)") integerIn
         end if
         if (present(minLen)) then
             int322str = adjustl(int322str)

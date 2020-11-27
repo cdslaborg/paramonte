@@ -119,7 +119,7 @@ contains
         call Test%run(Test_getAutoCorrDirect_2, "Test_getAutoCorrDirect_2")
         call Test%run(Test_getPreviousExponent_1, "Test_getPreviousExponent_1")
         call Test%run(Test_getPreviousExponent_2, "Test_getPreviousExponent_2")
-        call Test%run(Test_getInverseSumNormedDataSq, "Test_getInverseSumNormedDataSq")
+        call Test%run(Test_getInverseSumNormedDataSq_1, "Test_getInverseSumNormedDataSq_1")
         call Test%run(Test_getCrossCorrWeightedFFT_1, "Test_getCrossCorrWeightedFFT_1")
         call Test%run(Test_getCrossCorrWeightedFFT_2, "Test_getCrossCorrWeightedFFT_2")
         call Test%run(Test_getCrossCorrWeightedFFT_3, "Test_getCrossCorrWeightedFFT_3")
@@ -138,8 +138,8 @@ contains
         real(RK)    , parameter     :: PaddedArray_ref(*) = [1._RK, 1._RK, 1._RK, 1._RK, 0._RK, 0._RK, 0._RK, 0._RK, 0._RK, 0._RK]
         integer(IK) , parameter     :: lenCurrentArray = size(CurrentArray)
         integer(IK) , parameter     :: paddedLen = size(PaddedArray_ref)
-        real(RK)    , allocatable   :: PaddedArray(:)
-        real(RK)    , allocatable   :: Difference(:)
+        real(RK)                    :: PaddedArray(size(PaddedArray_ref)) ! Gfortran 7.1 fails to automatically allocate an allocatable version of these arrays
+        real(RK)                    :: Difference(size(PaddedArray_ref))  ! Gfortran 7.1 fails to automatically allocate an allocatable version of these arrays
         PaddedArray = padZero(currentLen = lenCurrentArray, Array = CurrentArray, paddedLen = paddedLen)
         Difference = abs(PaddedArray - PaddedArray_ref)
         assertion = all(Difference < tolerance)
@@ -164,8 +164,8 @@ contains
         real(RK)    , parameter     :: PaddedArray_ref(*) = [1._RK, 1._RK, 1._RK, 1._RK, 0._RK, 0._RK, 0._RK, 0._RK]
         integer(IK) , parameter     :: lenCurrentArray = size(CurrentArray)
         integer(IK) , parameter     :: paddedLen = size(PaddedArray_ref)
-        real(RK)    , allocatable   :: PaddedArray(:)
-        real(RK)    , allocatable   :: Difference(:)
+        real(RK)                    :: PaddedArray(size(PaddedArray_ref)) ! Gfortran 7.1 fails to automatically allocate an allocatable version of these arrays
+        real(RK)                    :: Difference(size(PaddedArray_ref))  ! Gfortran 7.1 fails to automatically allocate an allocatable version of these arrays
         PaddedArray = padZero(currentLen = lenCurrentArray, Array = CurrentArray)
         Difference = abs(PaddedArray - PaddedArray_ref)
         assertion = all(Difference < tolerance)
@@ -418,14 +418,20 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function Test_getInverseSumNormedDataSq() result(assertion)
+    function Test_getInverseSumNormedDataSq_1() result(assertion)
+
         use Constants_mod, only: RK
         implicit none
         logical                 :: assertion
         real(RK), allocatable   :: Difference(:)
         real(RK), parameter     :: tolerance = 1.e-12_RK
         call WeightedData%read()
+
         WeightedData%InverseSumNormedDataSq = getInverseSumNormedDataSq(1_IK, WeightedData%np, WeightedData%NormedData)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = WeightedData%InverseSumNormedDataSq)
+
         Difference = abs( (WeightedData%InverseSumNormedDataSq - WeightedData%InverseSumNormedDataSq_ref) / WeightedData%InverseSumNormedDataSq_ref)
         assertion = all( Difference < tolerance )
         if (Test%isDebugMode .and. .not. assertion) then
@@ -435,7 +441,8 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Difference                  =", Difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
-    end function Test_getInverseSumNormedDataSq
+
+    end function Test_getInverseSumNormedDataSq_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -474,6 +481,10 @@ contains
                                                 ], shape = [ 1, size(AutoCorr%Lag_ref) ] )
         AutoCorr%nlag = getPreviousExponent( real(WeightedData%np, kind=RK) ) + 1
         AutoCorr%Lag = [ 0, ( 2_IK**(ilag-1), ilag = 1, AutoCorr%nlag ) ]
+
+        ! Gfortran 7.1 fails to automatically allocate an allocatable version of these arrays
+        if (allocated(DifferenceLag)) deallocate(DifferenceLag); allocate(DifferenceLag, mold = AutoCorr%Lag)
+
         DifferenceLag = abs( AutoCorr%Lag - AutoCorr%Lag_ref )
         assertion = all( DifferenceLag == 0_IK )
 
@@ -496,6 +507,9 @@ contains
                                 , AutoCorr = AutoCorr%AutoCorrDirect &
                                 , InverseSumNormedDataSq = WeightedData%InverseSumNormedDataSq &
                                 )
+
+        ! Gfortran 7.1 fails to automatically allocate an reallocatable version of these arrays
+        if (allocated(DifferenceAutoCorrDirect)) deallocate(DifferenceAutoCorrDirect); allocate(DifferenceAutoCorrDirect, mold = AutoCorr%AutoCorrDirect)
 
         DifferenceAutoCorrDirect = abs( AutoCorr%AutoCorrDirect - AutoCorr%AutoCorrDirect_ref )
 
@@ -558,6 +572,10 @@ contains
                                                 ], shape = [ 1, size(AutoCorr%Lag_ref) ] )
         AutoCorr%nlag = getPreviousExponent( real(WeightedData%np, kind=RK) ) + 1
         AutoCorr%Lag = [ 0, ( 2_IK**(ilag-1), ilag = 1, AutoCorr%nlag ) ]
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(DifferenceLag)) deallocate(DifferenceLag); allocate(DifferenceLag, mold = AutoCorr%Lag)
+
         DifferenceLag = abs( AutoCorr%Lag - AutoCorr%Lag_ref )
         assertion = all( DifferenceLag == 0_IK )
 
@@ -579,6 +597,9 @@ contains
                                 , Lag = AutoCorr%Lag &
                                 , AutoCorr = AutoCorr%AutoCorrDirect &
                                 )
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(DifferenceAutoCorrDirect)) deallocate(DifferenceAutoCorrDirect); allocate(DifferenceAutoCorrDirect, mold = AutoCorr%AutoCorrDirect)
 
         DifferenceAutoCorrDirect = abs( AutoCorr%AutoCorrDirect - AutoCorr%AutoCorrDirect_ref )
 
@@ -660,6 +681,9 @@ contains
         end do
         close(fileUnit)
 
+        ! Gfortran 7.1 fails to automatically allocate an allocatable version of these arrays
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = AutoCorr%AutoCorrFFT)
+
         Difference = abs( AutoCorr%AutoCorrFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
 
@@ -714,6 +738,9 @@ contains
                                                                                             )
             AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) / AutoCorr%AutoCorrWeightedFFT(1,id)
         end do
+
+        ! Gfortran 7.1 fails to automatically allocate an allocatable version of these arrays
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = AutoCorr%AutoCorrWeightedFFT)
 
         Difference = abs( AutoCorr%AutoCorrWeightedFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
@@ -803,6 +830,9 @@ contains
         end do
         close(fileUnit)
 
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = AutoCorr%AutoCorrWeightedFFT)
+
         Difference = abs( AutoCorr%AutoCorrWeightedFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
 
@@ -890,6 +920,9 @@ contains
             read(fileUnit,*) ilag, AutoCorr%AutoCorrFFT_ref(ip,1)
         end do
         close(fileUnit)
+
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = AutoCorr%AutoCorrWeightedFFT)
 
         Difference = abs( AutoCorr%AutoCorrWeightedFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )

@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -120,22 +120,30 @@ module Batse_mod
     !integer(IK) :: TriggerSGRB(NSGRB)
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
+
 contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! returns all log of data in natural (Neper) base.
+    !> Return all log of data in natural (Neper) base.
+    !>
+    !> \param[in]   inFilePath  :   The path to the input BATSE file.
+    !> \param[in]   outFilePath :   The path to the output BATSE file.
+    !> \param[in]   isLgrb      :   A logical flag indicating what type of input file is being processed.
     subroutine readDataGRB(inFilePath,outFilePath,isLgrb)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: readDataGRB
 #endif
 
+        use Parallelism_mod, only: Image_type
         use Constants_mod, only: IK, RK
         implicit none
         character(*), intent(in)            :: inFilePath, outFilePath
         integer(IK)                         :: inFileUnit, outFileUnit, igrb
         logical     , intent(in)            :: isLgrb
+        type(Image_type)                    :: Image
+
+        call Image%query()
 
         if (isLgrb) then
             GRB%count = NLGRB
@@ -146,10 +154,9 @@ contains
         if (allocated(GRB%Event)) deallocate(GRB%Event); allocate(GRB%Event(GRB%count))
         if (allocated(Trigger)) deallocate(Trigger); allocate(Trigger(GRB%count))
 
-#if defined CAF_ENABLED
-        if (this_image()==1) then
-#endif
-            open(newunit=inFileUnit,file=inFilePath,status="old")
+        open(newunit=inFileUnit,file=inFilePath,status="old")
+
+        if (Image%isFirst) then
             open(newunit=outFileUnit,file=outFilePath,status="replace")
             write(outFileUnit,"(9a30)"  ) "trigger"             &
                                         , "logPbol_1eV_20MeV"   &
@@ -160,36 +167,39 @@ contains
                                         , "logFPR1024"          &
                                         , "logT90"              &
                                         , "logEffPF53"
+        end if
 
-            ! skip the header row in the input file
-            read(inFileUnit,*)
+        ! skip the header row in the input file
+        read(inFileUnit,*)
 
-            ! read BATSE GRB data
-            do igrb = 1, GRB%count
+        ! read BATSE GRB data
+        do igrb = 1, GRB%count
 
-                read(inFileUnit,*   ) Trigger(igrb)             &
-                                    , GRB%Event(igrb)%logPF53   &
-                                    , GRB%Event(igrb)%logEpk    &
-                                    , GRB%Event(igrb)%logSbol   &
-                                    , GRB%Event(igrb)%logT90
+            read(inFileUnit,*   ) Trigger(igrb)             &
+                                , GRB%Event(igrb)%logPF53   &
+                                , GRB%Event(igrb)%logEpk    &
+                                , GRB%Event(igrb)%logSbol   &
+                                , GRB%Event(igrb)%logT90
 
-                ! convert all values to logarithm in base Neper
+            ! convert all values to logarithm in base Neper
 
-                GRB%Event(igrb)%logPF53 = LN10 * GRB%Event(igrb)%logPF53
-                GRB%Event(igrb)%logEpk  = LN10 * GRB%Event(igrb)%logEpk
-                GRB%Event(igrb)%logSbol = LN10 * GRB%Event(igrb)%logSbol
-                GRB%Event(igrb)%logT90  = LN10 * GRB%Event(igrb)%logT90
+            GRB%Event(igrb)%logPF53 = LN10 * GRB%Event(igrb)%logPF53
+            GRB%Event(igrb)%logEpk  = LN10 * GRB%Event(igrb)%logEpk
+            GRB%Event(igrb)%logSbol = LN10 * GRB%Event(igrb)%logSbol
+            GRB%Event(igrb)%logT90  = LN10 * GRB%Event(igrb)%logT90
 
-                ! convert photon count data to energy in units of ergs
+            ! convert photon count data to energy in units of ergs
 
-                GRB%Event(igrb)%logPbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logPF53 )
-                if (isLgrb) then
-                    GRB%Event(igrb)%logSbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logSbol )
-                else
-                    GRB%Event(igrb)%logPF53 = GRB%Event(igrb)%logPF53 - THRESH_ERFC_AMP * erfc( (GRB%Event(igrb)%logT90-THRESH_ERFC_AVG) * THRESH_ERFC_STD_INV )
-                end if
+            GRB%Event(igrb)%logPbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logPF53 )
+            if (isLgrb) then
+                GRB%Event(igrb)%logSbol = getLogPbol( GRB%Event(igrb)%logEpk, GRB%Event(igrb)%logSbol )
+            else
+                GRB%Event(igrb)%logPF53 = GRB%Event(igrb)%logPF53 - THRESH_ERFC_AMP * erfc( (GRB%Event(igrb)%logT90-THRESH_ERFC_AVG) * THRESH_ERFC_STD_INV )
+            end if
 
-                ! write the converted data to output file
+            ! write the converted data to output file
+
+            if (Image%isFirst) then
                 write(outFileUnit,"(I30,8E30.6)") Trigger(igrb)                                     &
                                                 , GRB%Event(igrb)%logPbol                           &
                                                 , GRB%Event(igrb)%logSbol                           &
@@ -200,26 +210,30 @@ contains
                                                 , GRB%Event(igrb)%logT90                            &
                                                 , GRB%Event(igrb)%logPF53
 
-            end do
-        close(outFileUnit)
-        close(inFileUnit)
+            end if
 
-#if defined CAF_ENABLED
-        sync images(*)
-
-    else
-
-        sync images(*)
-        do igrb = 1, GRB%count
-            GRB%Event(igrb)%logPbol = GRB[1]%Event(igrb)%logPbol
-            GRB%Event(igrb)%logSbol = GRB[1]%Event(igrb)%logSbol
-            GRB%Event(igrb)%logPF53 = GRB[1]%Event(igrb)%logPF53
-            GRB%Event(igrb)%logEpk  = GRB[1]%Event(igrb)%logEpk
-            GRB%Event(igrb)%logT90  = GRB[1]%Event(igrb)%logT90
         end do
 
-    end if
-#endif
+        if (Image%isFirst) close(outFileUnit)
+
+        close(inFileUnit)
+
+!#if defined CAF_ENABLED
+!        sync images(*)
+!
+!    else
+!
+!        sync images(1)
+!        do igrb = 1, GRB%count
+!            GRB%Event(igrb)%logPbol = GRB[1]%Event(igrb)%logPbol
+!            GRB%Event(igrb)%logSbol = GRB[1]%Event(igrb)%logSbol
+!            GRB%Event(igrb)%logPF53 = GRB[1]%Event(igrb)%logPF53
+!            GRB%Event(igrb)%logEpk  = GRB[1]%Event(igrb)%logEpk
+!            GRB%Event(igrb)%logT90  = GRB[1]%Event(igrb)%logT90
+!        end do
+!
+!    end if
+!#endif
 
     end subroutine readDataGRB
 
@@ -229,7 +243,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog10PF53
 #endif
-        ! Given Log10(Epk [KeV]) of an LGRB and its bolometric (0.0001-20000 KeV) peak flux [in units of Ergs/s], Log(Pbol), 
+        ! Given Log10(Epk [KeV]) of an LGRB and its bolometric (0.0001-20000 KeV) peak flux [in units of Ergs/s], Log(Pbol),
         ! this function calculates the corresponding Log10(peak photon flux) in the BATSE detection energy range [50,300] KeV.
         ! Amir Shahmoradi, Wednesday June 27, 2012, 7:15 PM, IFS, The University of Texas at Austin.
         ! Amir Shahmoradi, Wednesday June 27, 2012, 9:29 PM, IFS, The University of Texas at Austin.
@@ -279,7 +293,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53
 #endif
-        ! Given Log(Epk [KeV]) of an LGRB and its bolometric (0.0001-20000 KeV) peak flux [in units of Ergs/s], Log(Pbol), 
+        ! Given Log(Epk [KeV]) of an LGRB and its bolometric (0.0001-20000 KeV) peak flux [in units of Ergs/s], Log(Pbol),
         ! this function calculates the corresponding Log(peak photon flux) in the BATSE detection energy range [50,300] KeV.
         ! Amir Shahmoradi, Wednesday June 27, 2012, 7:15 PM, IFS, The University of Texas at Austin.
         ! Amir Shahmoradi, Wednesday June 27, 2012, 9:29 PM, IFS, The University of Texas at Austin.
@@ -330,7 +344,7 @@ contains
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol
 #endif
-        ! Given Log10(Epk [KeV]) of an LGRB and its bolometric (0.0001-20000 KeV) peak flux [in units of Ergs/s], Log(Pbol), 
+        ! Given Log10(Epk [KeV]) of an LGRB and its bolometric (0.0001-20000 KeV) peak flux [in units of Ergs/s], Log(Pbol),
         ! this function calculates the corresponding Log10(peak photon flux) in the BATSE detection energy range [50,300] KeV.
         ! Amir Shahmoradi, Wednesday June 27, 2012, 7:15 PM, IFS, The University of Texas at Austin.
         ! Amir Shahmoradi, Wednesday June 27, 2012, 9:29 PM, IFS, The University of Texas at Austin.
@@ -372,7 +386,7 @@ contains
         implicit none
         real(RK), intent(in)    :: logT90
         real(RK)                :: logEffectivePeakPhotonFluxCorrection
-        logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=real32)) 
+        logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=real32))
                                               ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms
     end function getLogEffectivePeakPhotonFluxCorrection
 

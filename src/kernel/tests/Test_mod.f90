@@ -47,6 +47,7 @@ module Test_mod
 
     use, intrinsic  :: iso_fortran_env, only: output_unit
     use JaggedArray_mod, only: CharVec_type
+    use Parallelism_mod, only: Image_type
     use Timer_mod, only: Timer_type
     use Constants_mod, only: IK, RK
     use Err_mod, only: Err_type
@@ -56,11 +57,8 @@ module Test_mod
     character(*)    , parameter     :: MODULE_NAME = "Test_mod"
 
     real(RK)                        :: mv_timeTotal
-    logical                         :: mv_imageIsFirst
     integer(IK)                     :: mv_testCounterOld
     integer(IK)                     :: mv_testCounter
-    integer(IK)                     :: mv_imageCount
-    integer(IK)                     :: mv_imageID
     integer(IK)                     :: mv_nfailMax
     integer(IK)                     :: mv_nfail
     integer(IK)                     :: mv_npass
@@ -69,14 +67,7 @@ module Test_mod
     character(:), allocatable       :: mc_passedString
     character(:), allocatable       :: mc_failedString
 
-    type                            :: Image_type
-        integer(IK)                 :: id, count
-        logical                     :: isFirst = .false.
-        logical                     :: isLeader = .false.
-        logical                     :: isRooter = .false.
-        logical                     :: isNotFirst = .false.
-        character(:), allocatable   :: name
-    end type Image_type
+    type(Image_type)                :: mv_Image
 
     type :: Test_type
 #if defined DBG_ENABLED
@@ -124,25 +115,7 @@ contains
 
         ! set up image counts
 
-#if defined CAF_ENABLED
-        mv_imageID = this_image()
-        mv_imageCount = num_images()
-#elif defined MPI_ENABLED
-        block
-            use mpi
-            integer(IK) :: ierrMPI
-            logical     :: isInitialized
-            call mpi_initialized( isInitialized, ierrMPI )
-            if (.not. isInitialized) call mpi_init(ierrMPI)
-            call mpi_comm_rank(mpi_comm_world, mv_imageID, ierrMPI)
-            call mpi_comm_size(mpi_comm_world, mv_imageCount, ierrMPI)
-            mv_imageID = mv_imageID + 1_IK ! make the ranks consistent with Fortran coarray indexing conventions
-        end block
-#else
-        mv_imageID = 1_IK
-        mv_imageCount = 1_IK
-#endif
-        mv_imageIsFirst = mv_imageID == 1_IK
+        call mv_Image%query()
 
         mc_passedString = style("passed", "bright", "green")
         mc_failedString = style("FAILED", "bright", "red")
@@ -170,6 +143,7 @@ contains
         use Constants_mod, only: RK, IK
         use Decoration_mod, only: style
         use String_mod, only: num2str
+        use Err_mod, only: abort
         implicit none
         integer(IK)                 :: percentageTestPassed
         integer(IK)                 :: ntotal
@@ -181,7 +155,7 @@ contains
 
         percentageTestPassed = nint( 100_IK * mv_npass / real(ntotal, kind=RK) )
 
-        if (mv_imageIsFirst) then
+        if (mv_Image%isFirst) then
 
             color = "green"; if (percentageTestPassed==0_IK) color = "red"
             msg = style( num2str(percentageTestPassed,"(g0)")//"% of "//num2str(ntotal)//" tests passed. ", "bright", color)
@@ -211,17 +185,16 @@ contains
                 write(output_unit, "(*(g0,:,' '))")
                 write(output_unit, "(*(g0,:,' '))") style("To get more information about the failure, you may also compile and run the test in debug mode.", "bright", "red")
 #endif
-                error stop
 
             end if
 
         end if
 
-#if defined MPI_ENABLED
-        call finalizeMPI()
-#elif defined CAF_ENABLED
-        sync all
-#endif
+        if (mv_nfail>0_IK) then
+            call abort()
+        else
+            call mv_Image%finalize()
+        end if
 
     end subroutine finalize
 
@@ -245,10 +218,7 @@ contains
 
         ! set up image counts
 
-        Test%Image%id       = mv_imageID
-        Test%Image%count    = mv_imageCount
-        Test%Image%isFirst  = mv_imageIsFirst
-        Test%Image%name     = "@process(" // num2str(Test%Image%id) // ")"
+        Test%Image          = mv_Image
         Test%outputUnit     = output_unit
         Test%moduleName     = moduleName
 
@@ -304,26 +274,7 @@ contains
             end if
         end if
 
-        ! announce the module being tested
-
-        if (Test%Image%isFirst) then
-            !Test%Err%msg = "Testing "//Test%moduleName//" ..."
-            !write(Test%outputUnit, "(*(g0,:,' '))") style(Test%Err%msg, "bright", "yellow")
-#if defined CAF_ENABLED
-            ! sync images
-            sync images(*)
-        else
-            sync images(1)
-#endif
-        end if
-
-#if defined MPI_ENABLED
-        block
-            use mpi
-            integer(IK) :: ierrMPI
-            call mpi_barrier(mpi_comm_world,ierrMPI)
-        end block
-#endif
+        call mv_Image%sync()
 
     end function constructTest
 
@@ -396,9 +347,8 @@ contains
             use System_mod, only: sleep
             use Err_mod, only: Err_type
             type(Err_type) :: Err
-            call sleep(0.025_RK, Err)
+            call sleep(0.02_RK, Err)
         end block
-
     end subroutine runTest
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -408,6 +358,8 @@ contains
         use String_mod, only: num2str, padString
         implicit none
         class(Test_type), intent(inout) :: Test
+!write(*,*) "mv_Image%id : ", mv_Image%id
+!if (mv_Image%isFirst) read(*,*)
         if (Test%Image%isFirst) then
             Test%Err%msg = "["//adjustr(num2str(mv_testCounter-mv_testCounterOld,minLen=4_IK))//"] testing " &
                          //padString(Test%moduleName//" ",".",90)//" isdone in " &
@@ -417,42 +369,8 @@ contains
         mv_testCounterOld = mv_testCounter
         if (allocated(Test%moduleName)) deallocate(Test%moduleName)
         mv_timeTotal = mv_timeTotal + Test%Timer%Time%total
-        call sync()
+        call mv_Image%sync()
     end subroutine finalizeTest
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    subroutine sync()
-        implicit none
-#if defined MPI_ENABLED
-        block
-            use mpi
-            integer(IK) :: ierrMPI
-            logical     :: isFinalized
-            call mpi_finalized( isFinalized, ierrMPI )
-            if (.not. isFinalized) then
-                call mpi_barrier(mpi_comm_world,ierrMPI)
-            end if
-        end block
-#elif defined CAF_ENABLED
-        sync all
-#endif
-    end subroutine sync
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-#if defined MPI_ENABLED
-    subroutine finalizeMPI()
-        use mpi
-        integer(IK) :: ierrMPI
-        logical     :: isFinalized
-        call mpi_finalized( isFinalized, ierrMPI )
-        if (.not. isFinalized) then
-            call mpi_barrier(mpi_comm_world,ierrMPI)
-            call mpi_finalize(ierrMPI)
-        end if
-    end subroutine finalizeMPI
-#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -86,14 +86,14 @@ contains
         use Decoration_mod, only: write
         use Constants_mod, only: NLC
         implicit none
-        type(Err_type), intent(in)          :: Err
-        character(*), intent(in), optional  :: prefix, newline
-        integer     , intent(in), optional  :: outputUnit
-        logical     , intent(in), optional  :: returnEnabled
+        type(Err_type)  , intent(in), optional  :: Err
+        character(*)    , intent(in), optional  :: prefix, newline
+        integer         , intent(in), optional  :: outputUnit
+        logical         , intent(in), optional  :: returnEnabled
 
-        logical                             :: returnEnabledDefault
-        character(:), allocatable           :: pfx, msg, nlstr
-        character(63)                       :: dummyChar1, imageChar !, dummyChar2
+        logical                                 :: returnEnabledDefault
+        character(:), allocatable               :: pfx, msg, nlstr
+        character(63)                           :: dummyChar1, imageChar !, dummyChar2
 
         if (present(returnEnabled)) then
             returnEnabledDefault = returnEnabled
@@ -101,84 +101,88 @@ contains
             returnEnabledDefault = SOFT_EXIT_ENABLED
         end if
 
+        if (present(Err)) then
+
 #if defined CAF_ENABLED
-        write(imageChar ,"(g0)") this_image()
+            write(imageChar ,"(g0)") this_image()
 #elif defined MPI_ENABLED
-        block
-            use mpi
-            integer :: imageID, ierrMPI
-            call mpi_comm_rank(mpi_comm_world, imageID, ierrMPI)
-            write(imageChar ,"(g0)") imageID + 1
-        end block
+            block
+                use mpi
+                integer :: imageID, ierrMPI
+                call mpi_comm_rank(mpi_comm_world, imageID, ierrMPI)
+                write(imageChar ,"(g0)") imageID + 1
+            end block
 #else
-        imageChar =  "1"
+            imageChar =  "1"
 #endif
 
-        if (present(newline)) then
-            nlstr = newline
-        else
-            nlstr = NLC
-        end if
-
-        if (Err%stat==Err%statNull) then    ! it is a null error code, ignore it and do not report the error code
-            msg = Err%msg
-        else
-            write(dummyChar1,"(g0)") Err%stat
-           !write(dummyChar2,"(g0)") Err%statNull
-           !msg =   Err%msg // nlstr // "Error Code: " // trim(adjustl(dummyChar1)) // ". Null Error Code: " // trim(adjustl(dummyChar2)) // "."
-            msg =   Err%msg // nlstr // "Error Code: " // trim(adjustl(dummyChar1)) // "."
-        end if
-
-        if (present(prefix)) then
-            call informUser(msg,prefix//" - FATAL: ",nlstr,outputUnit)
-            pfx = prefix
-        else
-            call informUser(msg," - FATAL: ",nlstr,outputUnit)
-            pfx = ""
-        end if
-
-        if (present(outputUnit)) then
-            if (outputUnit/=output_unit) then
-                call write(outputUnit,1,0,1, pfx // " - Please correct the error(s) and rerun the program." )
-                call write(outputUnit,0,0,1, pfx // " - If the cause of the error cannot be diagnosed, please report it at:" )
-                call write(outputUnit,0,0,1, pfx // " -" )
-                call write(outputUnit,0,0,1, pfx // " -     https://github.com/cdslaborg/paramonte/issues" )
-                call write(outputUnit,0,0,1, pfx // " -" )
-                call write(outputUnit,0,2,1, pfx // " - Gracefully exiting on image " // trim(adjustl(imageChar)) // "." )
+            if (present(newline)) then
+                nlstr = newline
+            else
+                nlstr = NLC
             end if
-        end if
 
-        ! notify the user on screen too
-
-        if (.not. mv_isTestingMode) then
-            call write(output_unit,1,0,1, pfx // " - FATAL: Runtime error occurred." )
-            call write(output_unit,0,0,1, pfx // " - FATAL: For more information, see the output '*_report.txt' file (if generated)." )
-            call write(output_unit,0,2,1, pfx // " - FATAL: Gracefully exiting on image " // trim(adjustl(imageChar)) // "." )
-        end if
-
-        flush(output_unit) ! call execute_command_line(" ")
-        flush(outputUnit)
-
-        ! wait for one second:
-        block
-            use Constants_mod, only: RK
-            use, intrinsic  :: iso_fortran_env, only: int64
-            integer(int64)  :: countOld, countNew, countMax
-            real(RK)        :: countRate
-            call system_clock( count=countOld, count_rate=countRate, count_max=countMax )
-            if (countOld/=-huge(0_int64) .and. countRate/=0._RK .and. countMax==0_int64) then
-                loopWait: do
-                    call system_clock( count=countNew )
-                    if (countNew==countMax) then
-                        if (returnEnabledDefault) return
-                        error stop
-                    elseif ( real(countNew-countOld,kind=RK) / countRate >= 2._RK ) then
-                        exit loopWait
-                    end if
-                    cycle
-                end do loopWait
+            if (Err%stat==Err%statNull) then    ! it is a null error code, ignore it and do not report the error code
+                msg = Err%msg
+            else
+                write(dummyChar1,"(g0)") Err%stat
+               !write(dummyChar2,"(g0)") Err%statNull
+               !msg =   Err%msg // nlstr // "Error Code: " // trim(adjustl(dummyChar1)) // ". Null Error Code: " // trim(adjustl(dummyChar2)) // "."
+                msg =   Err%msg // nlstr // "Error Code: " // trim(adjustl(dummyChar1)) // "."
             end if
-        end block
+
+            if (present(prefix)) then
+                call informUser(msg,prefix//" - FATAL: ",nlstr,outputUnit)
+                pfx = prefix
+            else
+                call informUser(msg," - FATAL: ",nlstr,outputUnit)
+                pfx = ""
+            end if
+
+            if (present(outputUnit)) then
+                if (outputUnit/=output_unit) then
+                    call write(outputUnit,1,0,1, pfx // " - Please correct the error(s) and rerun the program." )
+                    call write(outputUnit,0,0,1, pfx // " - If the cause of the error cannot be diagnosed, please report it at:" )
+                    call write(outputUnit,0,0,1, pfx // " -" )
+                    call write(outputUnit,0,0,1, pfx // " -     https://github.com/cdslaborg/paramonte/issues" )
+                    call write(outputUnit,0,0,1, pfx // " -" )
+                    call write(outputUnit,0,2,1, pfx // " - Gracefully exiting on image " // trim(adjustl(imageChar)) // "." )
+                end if
+            end if
+
+            ! notify the user on screen too
+
+            if (.not. mv_isTestingMode) then
+                call write(output_unit,1,0,1, pfx // " - FATAL: Runtime error occurred." )
+                call write(output_unit,0,0,1, pfx // " - FATAL: For more information, see the output '*_report.txt' file (if generated)." )
+                call write(output_unit,0,2,1, pfx // " - FATAL: Gracefully exiting on image " // trim(adjustl(imageChar)) // "." )
+            end if
+
+            flush(output_unit) ! call execute_command_line(" ")
+            flush(outputUnit)
+
+            ! wait for one second:
+            block
+                use Constants_mod, only: RK
+                use, intrinsic  :: iso_fortran_env, only: int64
+                integer(int64)  :: countOld, countNew, countMax
+                real(RK)        :: countRate
+                call system_clock( count=countOld, count_rate=countRate, count_max=countMax )
+                if (countOld/=-huge(0_int64) .and. countRate/=0._RK .and. countMax==0_int64) then
+                    loopWait: do
+                        call system_clock( count=countNew )
+                        if (countNew==countMax) then
+                            if (returnEnabledDefault) return
+                            error stop
+                        elseif ( real(countNew-countOld,kind=RK) / countRate >= 2._RK ) then
+                            exit loopWait
+                        end if
+                        cycle
+                    end do loopWait
+                end if
+            end block
+
+        end if
 
         if (returnEnabledDefault) return
 
@@ -188,8 +192,9 @@ contains
             integer :: ierrMPI, errcode
             errcode = 1; call mpi_abort(mpi_comm_world, errcode, ierrMPI)
         end block
-#endif
+#else
         error stop
+#endif
 
     end subroutine abort
 

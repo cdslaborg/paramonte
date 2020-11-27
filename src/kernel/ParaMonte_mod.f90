@@ -125,6 +125,7 @@
 module ParaMonte_mod
 
     use System_mod, only: SystemInfo_type
+    use Parallelism_mod, only: Image_type
     use Decoration_mod, only: Decoration_type
     use Constants_mod, only: RK, IK, CIK, CRK, HUGE_IK, HUGE_RK
     use String_mod, only: IntStr_type
@@ -181,12 +182,6 @@ module ParaMonte_mod
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ! ParaMonte IO variables and types
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    type                            :: Image_type
-        integer(IK)                 :: id, count
-        logical                     :: isFirst, isNotFirst, isLeader, isRooter
-        character(:), allocatable   :: name
-    end type Image_type
 
     type, extends(File_type)        :: LogFile_type
         type(IntStr_type)           :: maxColWidth
@@ -327,30 +322,7 @@ contains
 
         ! setup general processor / coarray image variables
 
-#if defined CAF_ENABLED
-        self%Image%id             = this_image()
-        self%Image%count          = num_images()
-#elif defined MPI_ENABLED
-        block
-            use mpi
-            integer(IK) :: ierrMPI
-            logical     :: isInitialized
-            call mpi_initialized( isInitialized, ierrMPI )
-            if (.not. isInitialized) call mpi_init(ierrMPI)
-            call mpi_comm_rank(mpi_comm_world, self%Image%id, ierrMPI)
-            call mpi_comm_size(mpi_comm_world, self%Image%count, ierrMPI)
-            self%Image%id = self%Image%id + 1_IK ! make the ranks consistent with Fortran coarray indexing conventions
-        end block
-#else
-        self%Image%id             = 1_IK
-        self%Image%count          = 1_IK
-#endif
-
-        self%Image%name         = "@process(" // num2str(self%Image%id) // ")"
-        self%Image%isFirst      = self%Image%id==1_IK
-        self%Image%isNotFirst   = self%Image%id/=1_IK
-        self%Image%isLeader     = .false.  ! ATTN: this will have to change later on, depending on the requested type of parallelism
-        self%Image%isRooter     = .false.
+        call self%Image%query()
 
         ! setup formatting variables
 

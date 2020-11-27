@@ -181,6 +181,8 @@ contains
         integer(IK), allocatable    :: CumSum(:)
         integer(IK), allocatable    :: Difference(:)
         CumSum = getCumSum(vecLen = int(size(Vector),kind=IK), Vec = Vector)
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = CumSum)
         Difference = abs(CumSum - CumSum_ref)
         assertion  = all(Difference == 0_IK)
         if (Test%isDebugMode .and. .not. assertion) then
@@ -205,6 +207,8 @@ contains
         real(RK), allocatable   :: CumSum(:)
         real(RK), allocatable   :: Difference(:)
         CumSum = getCumSum(vecLen = int(size(Vector),kind=IK), Vec = Vector)
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = CumSum)
         Difference = abs(CumSum - CumSum_ref)
         assertion  = all(Difference < tolerance)
         if (Test%isDebugMode .and. .not. assertion) then
@@ -228,6 +232,8 @@ contains
         integer(IK), allocatable    :: CumSumReverse(:)
         integer(IK), allocatable    :: Difference(:)
         CumSumReverse = getCumSum(vecLen = int(size(Vector),kind=IK), Vec = Vector)
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = CumSumReverse)
         Difference = abs(CumSumReverse - CumSumReverse_ref)
         assertion  = all(Difference == 0_IK)
         if (Test%isDebugMode .and. .not. assertion) then
@@ -252,6 +258,8 @@ contains
         real(RK), allocatable   :: CumSumReverse(:)
         real(RK), allocatable   :: Difference(:)
         CumSumReverse = getCumSum(vecLen = int(size(Vector),kind=IK), Vec = Vector)
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = CumSumReverse)
         Difference = abs(CumSumReverse - CumSumReverse_ref)
         assertion  = all(Difference < tolerance)
         if (Test%isDebugMode .and. .not. assertion) then
@@ -723,15 +731,17 @@ contains
         real(RK)    , parameter :: LogSqrtDetCovMat(nEllipsoid) = [ (log(real(i,RK)), i = 1, nEllipsoid) ]
         real(RK)    , parameter :: EllipsoidVolume_ref(*) = [ 1.144729885849400_RK, 1.837877066409345_RK ]
         real(RK), allocatable   :: EllipsoidVolume(:)
-        real(RK), allocatable   :: difference(:)
+        real(RK), allocatable   :: Difference(:)
         EllipsoidVolume = getLogVolEllipsoids(nd = nd, nEllipsoid = nEllipsoid, LogSqrtDetCovMat = LogSqrtDetCovMat)
-        difference = abs(EllipsoidVolume - EllipsoidVolume_ref)
-        assertion  = all(difference < tolerance)
+        ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
+        if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = EllipsoidVolume)
+        Difference = abs(EllipsoidVolume - EllipsoidVolume_ref)
+        assertion  = all(Difference < tolerance)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "EllipsoidVolume_ref = ", EllipsoidVolume_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "EllipsoidVolume     = ", EllipsoidVolume
-            write(Test%outputUnit,"(*(g0,:,' '))") "difference          = ", difference
+            write(Test%outputUnit,"(*(g0,:,' '))") "difference          = ", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
     end function test_getLogVolEllipsoids_1

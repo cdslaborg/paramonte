@@ -53,6 +53,21 @@ module Parallelism_mod
 
     character(*), parameter :: MODULE_NAME = "@Parallelism_mod"
 
+    !> The [Image_type](@ref image_type) class.
+    type                            :: Image_type
+        integer(IK)                 :: id                   !<  The ID of the runtime parallel process: 1, 2, 3, ...
+        integer(IK)                 :: count                !<  The total number of runtime parallel processes available.
+        logical                     :: isFirst = .false.    !<  A logical flag indicating whether the current process is ID #1.
+        logical                     :: isNotFirst = .false. !<  A logical flag indicating whether the current process is NOT ID #1.
+        logical                     :: isLeader = .false.   !<  A logical flag indicating whether the current process is a leader. This must be defined by the user.
+        logical                     :: isRooter = .false.   !<  A logical flag indicating whether the current process is a follower. This must be defined by the user.
+        character(:), allocatable   :: name                 !<  The name of the current process as a string with the format `"@process(id)"`.
+    contains
+        procedure, nopass           :: sync => syncImages
+        procedure, pass             :: query => queryImage
+        procedure, nopass           :: finalize => finalizeImages
+    end type Image_type
+
     type, private :: Maximum_type
         real(RK)                    :: value
         integer(IK)                 :: nproc
@@ -96,12 +111,109 @@ module Parallelism_mod
         module procedure :: constructForkJoin
     end interface ForkJoin_type
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the statistics of the parallel processors available, depending on the type of parallelism requested.
+    !> This is a dynamic member of the [Image_type](@ref image_type) class.
+    !>
+    !> @param[inout]    Image       :   An object of class [Image_type](@ref image_type).
+    !>                                  On output, all properties of `Image` will be reset,
+    !>                                  except the attributes `isLeader` and `isRooter`.
+    !>
+    !> \warning
+    !> This routine must not contain any synchronization statements under any circumstances.
+    subroutine queryImage(Image)
+
+        use Statistics_mod, only: fitGeoCyclicLogPDF
+        use Constants_mod, only: RK, IK
+        use String_mod, only: num2str
+        implicit none
+        class(Image_type), intent(inout) :: Image
+
+        ! setup general processor / coarray image variables
+
+#if defined CAF_ENABLED
+        Image%id             = this_image()
+        Image%count          = num_images()
+#elif defined MPI_ENABLED
+        block
+            use mpi
+            integer(IK) :: ierrMPI
+            logical     :: isInitialized
+            call mpi_initialized( isInitialized, ierrMPI )
+            if (.not. isInitialized) call mpi_init(ierrMPI)
+            call mpi_comm_rank(mpi_comm_world, Image%id, ierrMPI)
+            call mpi_comm_size(mpi_comm_world, Image%count, ierrMPI)
+            Image%id = Image%id + 1_IK ! make the ranks consistent with Fortran coarray indexing conventions
+        end block
+#else
+        Image%id            = 1_IK
+        Image%count         = 1_IK
+#endif
+        Image%name          = "@process(" // num2str(Image%id) // ")"
+        Image%isFirst       = Image%id==1_IK
+        Image%isNotFirst    = Image%id/=1_IK
+        !Image%isLeader      = .false.   ! ATTN: this is to be set by the user at runtime, depending on the type of parallelism.
+        !Image%isRooter      = .false.   ! ATTN: this is to be set by the user at runtime, depending on the type of parallelism.
+
+    end subroutine queryImage
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Synchronize all existing parallel images and return nothing.
+    !> This is a static member of the [Image_type](@ref image_type) class.
+    !>
+    !> \warning
+    !> This routine global Coarray and MPI synchronization barriers and
+    !> therefore, must be called by all processes in the current simulation.
+    subroutine syncImages()
+        implicit none
+#if defined MPI_ENABLED
+        block
+            use mpi
+            integer(IK) :: ierrMPI
+            logical     :: isFinalized
+            call mpi_finalized( isFinalized, ierrMPI )
+            if (.not. isFinalized) then
+                call mpi_barrier(mpi_comm_world,ierrMPI)
+            end if
+        end block
+#elif defined CAF_ENABLED
+        sync all
+#endif
+    end subroutine syncImages
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Finalize the current parallel simulation and return nothing.
+    !> This is a static member of the [Image_type](@ref image_type) class.
+    !>
+    !> \warning
+    !> MPI communications will be shut down upon calling this routine and further interprocess communications will be impossible.
+    subroutine finalizeImages()
+#if defined MPI_ENABLED
+        use mpi
+        implicit none
+        integer(IK) :: ierrMPI
+        logical     :: isFinalized
+        call mpi_finalized( isFinalized, ierrMPI )
+        if (.not. isFinalized) then
+            call mpi_barrier(mpi_comm_world,ierrMPI)
+            call mpi_finalize(ierrMPI)
+        end if
+#endif
+    end subroutine finalizeImages
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
     !> This is the constructor of the [ForkJoin_type](@ref forkjoin_type) class.
     !> Return the predicted speedup of the parallel simulation given the input characteristics and timing information of the simulation.
     !>
@@ -268,8 +380,9 @@ contains
 
     end function constructForkJoin
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
     !> Predict the parallel simulation speedup for a range of possible processor counts.
     !>
     !> @param[in]   successProb         :   The success probability (the effective acceptance rate per objective function call).
@@ -376,6 +489,6 @@ contains
 
     end subroutine getForkJoinSpeedup
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module Parallelism_mod
