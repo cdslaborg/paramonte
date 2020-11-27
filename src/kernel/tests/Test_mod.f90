@@ -265,13 +265,15 @@ contains
                       )
         else
             Test%outDir = Path%modified
-            Path%Err = Path%mkdir(Test%outDir)
-            if (Path%Err%occurred) then
-                call abort  ( Err = Path%Err &
-                            !, prefix = "FATAL: " &
-                            , newline = "\n" &
-                            , outputUnit = Test%outputUnit &
-                            )
+            if (Test%Image%isFirst) then
+                Path%Err = Path%mkdir(Test%outDir)
+                if (Path%Err%occurred) then
+                    call abort  ( Err = Path%Err &
+                                !, prefix = "FATAL: " &
+                                , newline = "\n" &
+                                , outputUnit = Test%outputUnit &
+                                )
+                end if
             end if
         end if
 
@@ -292,6 +294,7 @@ contains
         character(:), allocatable       :: counterStr, funcName
         type(String_type)               :: Message
         logical                         :: assertion
+        integer                         :: imageID
 
         funcName = test_func_name(6:) ! remove "test_"
         Message%Parts = Message%splitStr(string=funcName, delimiter="_", nPart=Message%nPart)
@@ -340,9 +343,31 @@ contains
         end if
 
         mv_testCounter = mv_testCounter + 1
-        write(Test%outputUnit,"(*(g0,:,' '))") "["//adjustr(num2str(mv_testCounter,minLen=4_IK))//"] testing" &
-                                             , padString( Test%moduleName//"@"//funcName//" "//counterStr//" ","." , 79_IK ) &
-                                             , Message%value, "in", adjustr(num2str(Test%Timer%Time%delta,"(f0.4)",8_IK)), "seconds on image "//num2str(Test%Image%id)
+
+        do imageID = 1, self%Image%count
+
+            if (imageID==self%Image%id) then
+                write(Test%outputUnit,"(*(g0,:,' '))") "["//adjustr(num2str(mv_testCounter,minLen=4_IK))//"] testing" &
+                                                     , padString( Test%moduleName//"@"//funcName//" "//counterStr//" ","." , 79_IK ) &
+                                                     , Message%value, "in", adjustr(num2str(Test%Timer%Time%delta,"(f0.4)",8_IK)), "seconds on image "//num2str(Test%Image%id)
+
+            end if
+
+#if defined CAF_ENABLED || MPI_ENABLED
+            call execute_command_line(" ")
+            flush(output_unit)
+#if defined CAF_ENABLED
+            sync all
+#elif defined MPI_ENABLED
+            block
+                use mpi
+                integer :: ierrMPI
+                call mpi_barrier(mpi_comm_world,ierrMPI)
+            end block
+#endif
+#endif
+
+        end do
 
         block
             use System_mod, only: sleep
@@ -350,6 +375,7 @@ contains
             type(Err_type) :: Err
             call sleep(0.02_RK, Err)
         end block
+
     end subroutine runTest
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

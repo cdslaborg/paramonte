@@ -877,11 +877,12 @@ do
                         # check if the compiler wrapper can compile a simple Fortran MPI test code.
 
                         tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-                        echo >&2 "-- ${BUILD_NAME}Compiler - changing directory to: ${tempDir}"
+                        echo >&2 "-- ${BUILD_NAME}MPI - changing directory to: ${tempDir}"
                         cd "${tempDir}" && cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90" && \
                         {
                             ${!suiteLangMpiWrapperName} testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe
-                        } &> /dev/null && {
+                        } && {
+                        #} &> /dev/null && {
                             echo >&2 "-- ${BUILD_NAME}MPI - checking whether ${SUITE} ${!suiteLangMpiWrapperName} MPI wrapper compiles and runs a test program...yes"
                         }|| {
                             echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}. skipping..."
