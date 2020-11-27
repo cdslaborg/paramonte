@@ -839,7 +839,7 @@ fi
 #### identify the MPI wrappers
 ####################################################################################################################################
 
-if [ "${MPI_ENABLED}" = "true" ]; then
+if [ "${MPI_ENABLED}" = "true" ] || [ "${CAF_ENABLED}" = "true" ]; then
 
     gnuCMpiWrapperList="mpicc"
     gnuFortranMpiWrapperList="mpifort:mpif90"
@@ -938,16 +938,16 @@ if [ "${CAF_ENABLED}" = "true" ]; then
 
     unset cafCompilerPath
 
-    if [[ "${PMCS}" =~ .*"intel".* ]]; then
+    if [ -z "${cafCompilerPath+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"intel".* ]] ); then
 
-        if [ -z ${intelFortranMpiWrapperPath+x} ]; then
+        if [ -z "${intelFortranMpiWrapperPath+x}" ]; then
             echo >&2
             echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Failed to identify the Intel MPI library."
             echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The Intel MPI library is required to compile"
             echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Coarray Fortran applications via Intel compilers."
             echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The ParaMonte build will continue at the risk of failing..."
             echo >&2
-        elif [ -z ${intelFortranCompilerPath+x} ]; then
+        elif [ -z "${intelFortranCompilerPath+x}" ]; then
             echo >&2
             echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Failed to identify the Intel Fortran compiler path."
             echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The Intel MPI library and Fortran compiler are required"
@@ -959,7 +959,9 @@ if [ "${CAF_ENABLED}" = "true" ]; then
             echo >&2 "-- ${BUILD_NAME}CAF - The inferred Coarray Fortran compiler wrapper path: ${cafCompilerPath}"
         fi
 
-    elif [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"gnu".* ]]; then
+    fi
+
+    if [ -z "${cafCompilerPath+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"gnu".* ]] ); then
 
         # assume OpenCoarrays
 
