@@ -2154,18 +2154,16 @@ ${ParaMonte_ROOT_DIR} \
 )
 verify $? "build with cmake"
 
-(cd ${ParaMonte_BLD_DIR} && \
-make \
-)
+(cd ${ParaMonte_BLD_DIR} && make)
 verify $? "build with make"
 
-(cd ${ParaMonte_BLD_DIR} && \
-make install \
-)
+(cd ${ParaMonte_BLD_DIR} && make install)
 verify $? "installation"
 
 fi
 
+####################################################################################################################################
+#### Test the ParaMonte library if requested
 ####################################################################################################################################
 
 LD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${LD_LIBRARY_PATH}
@@ -2184,9 +2182,8 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
         fi
         if [ -f "${MPIEXEC_PATH}" ]; then
             echo >&2 "-- ${BUILD_NAME} - running command: ${MPIEXEC_PATH} -n ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte"
-            (cd ${ParaMonte_BLD_DIR}/test/bin && \
-            "${MPIEXEC_PATH}" -n ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte \
-            )
+            (cd ${ParaMonte_BLD_DIR}/test/bin && "${MPIEXEC_PATH}" -n ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte)
+            verify $? "test run"
             if [ "${MPIEXEC_PATH_RESET_ENABLED}" = "true" ]; then unset MPIEXEC_PATH; fi
         else
             echo >&2
@@ -2202,30 +2199,24 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
                 cp ${SETUP_FILE_PATH} ${ParaMonte_BLD_DIR}/test/bin/
             fi
             if [ "${CAF_ENABLED}" = "true" ]; then
-                (cd ${ParaMonte_BLD_DIR}/test/bin && \
-                source ${SETUP_FILE_PATH} &&\
-                cafrun -np ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte \
-                )
+                (cd ${ParaMonte_BLD_DIR}/test/bin && source ${SETUP_FILE_PATH} && cafrun -np ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte)
+                verify $? "test run"
             else
-                (cd ${ParaMonte_BLD_DIR}/test/bin && \
-                ./testParaMonte \
-                )
+                (cd ${ParaMonte_BLD_DIR}/test/bin && ./testParaMonte)
+                verify $? "test run"
             fi
         fi
         if [ "${PMCS}" = "intel" ]; then
             if [ "${CAF_ENABLED}" = "true" ]; then
-                (export FOR_COARRAY_NUM_IMAGES && \
-                cd ${ParaMonte_BLD_DIR}/test/bin && \
-                ./testParaMonte \
-                )
+                (export FOR_COARRAY_NUM_IMAGES && cd ${ParaMonte_BLD_DIR}/test/bin && ./testParaMonte)
+                verify $? "test run"
             else
-                (cd ${ParaMonte_BLD_DIR}/test/bin && \
-                ./testParaMonte \
-                )
+                (cd ${ParaMonte_BLD_DIR}/test/bin && ./testParaMonte)
+                verify $? "test run"
             fi
         fi
     fi
-    verify $? "test run"
+    #verify $? "test run"
 else
     echo >&2 "skipping ParaMonte library test run..."
 fi
