@@ -69,11 +69,10 @@ contains
         !
         !   Fortran runtime error: EXECUTE_COMMAND_LINE: Termination status of the command-language interpreter cannot be obtained
         !
-        ! Therefore, these tests are only enabled for code-coverage and instrumentation purposes.
+        ! Therefore, these tests might be only enabled for code-coverage and instrumentation purposes.
         !
         ! See: https://community.intel.com/t5/Intel-Fortran-Compiler/Fortran-execute-command-line-runtime-error-depends-on-memory/m-p/1168196#M145090
 
-#if defined CODECOV_ENABLED
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_sleep_1, "test_sleep_1")
         call Test%run(test_OS_type_1, "test_OS_type_1")
@@ -90,7 +89,6 @@ contains
         call Test%run(test_SystemInfo_type_1, "test_SystemInfo_type_1")
         call Test%run(test_RandomFileName_type_1, "test_RandomFileName_type_1")
         call Test%finalize()
-#end if
 
     end subroutine test_System
 
