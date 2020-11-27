@@ -86,6 +86,8 @@ contains
         if (.not. assertion) then
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%occurred = ", RandomFileName%Err%occurred
+                write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%stat = ", RandomFileName%Err%stat
+                write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%msg = ", RandomFileName%Err%msg
             end if
             return
         end if
@@ -109,6 +111,8 @@ contains
         if (.not. assertion) then
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%occurred = ", FileContents%Err%occurred
+                write(Test%outputUnit,"(*(g0))") "FileContents%Err%stat = ", FileContents%Err%stat
+                write(Test%outputUnit,"(*(g0))") "FileContents%Err%msg = ", FileContents%Err%msg
             end if
             return
         end if
@@ -158,6 +162,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_constructFileContents_2() result(assertion)
+
         use System_mod, only: RandomFileName_type, removeFile, OS_type
         use String_mod, only: num2str
         implicit none
@@ -173,6 +178,8 @@ contains
         if (.not. assertion) then
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%occurred = ", RandomFileName%Err%occurred
+                write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%stat = ", RandomFileName%Err%stat
+                write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%msg = ", RandomFileName%Err%msg
             end if
             return
         end if
@@ -196,6 +203,8 @@ contains
         if (.not. assertion) then
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%occurred = ", FileContents%Err%occurred
+                write(Test%outputUnit,"(*(g0))") "FileContents%Err%stat = ", FileContents%Err%stat
+                write(Test%outputUnit,"(*(g0))") "FileContents%Err%msg = ", FileContents%Err%msg
             end if
             return
         end if

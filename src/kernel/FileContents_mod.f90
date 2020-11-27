@@ -200,17 +200,21 @@ contains
         excludeIsPresent = present(exclude)
 
         ! Check if file exists
+        ! GFortran 7.3 bug: If file is not open, compiler assumes internal file if `number` is specified, causing runtime error.
+
         inquire( file=filePath, exist=fileExists, opened=fileIsOpen, number=fileUnit, iostat=Err%stat )
         if (Err%stat/=0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file='" // filePath // "'."
             return
         end if
+
         if (.not.fileExists) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": The input file='" // filePath // "' does not exist."
             return
         end if
+
         if (fileIsOpen) close(unit=fileUnit,iostat=Err%stat)
         if (Err%stat>0) then
             Err%occurred = .true.

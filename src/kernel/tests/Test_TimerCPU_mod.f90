@@ -83,7 +83,7 @@ contains
 
         TimerCPU = TimerCPU_type()
         assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
-        call sleep(seconds=0.1_RK,Err=TimerCPU%Err)
+        call sleep(seconds=seconds,Err=TimerCPU%Err)
         assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
         call TimerCPU%toc()
         assertion = assertion .and. TimerCPU%Time%total > 0.9_RK * seconds

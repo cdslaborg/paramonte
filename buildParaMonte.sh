@@ -538,7 +538,7 @@ fi
 openCoarraysVersion="2.9.0"
 gnuVersionOpenCoarrays="10.1.0"
 mpichVersionOpenCoarrays="3.2"
-gnuVersionParaMonteCompatible="7.0.0"
+gnuVersionParaMonteCompatible="8.4.0"
 cmakeVersionParaMonteCompatible="3.14.0"
 intelVersionParaMonteCompatible="18.0.0"
 
@@ -831,91 +831,95 @@ fi
 #### identify the MPI wrappers
 ####################################################################################################################################
 
-gnuCMpiWrapperList="mpicc"
-gnuFortranMpiWrapperList="mpifort:mpif90"
+if [ "${MPI_ENABLED}" = "true" ]; then
 
-intelCMpiWrapperList="mpiicc"
-intelFortranMpiWrapperList="mpiifort"
+    gnuCMpiWrapperList="mpicc"
+    gnuFortranMpiWrapperList="mpifort:mpif90"
 
-for SUITE in $SUITE_LIST
-do
+    intelCMpiWrapperList="mpiicc"
+    intelFortranMpiWrapperList="mpiifort"
 
-    echo >&2
-    echo >&2 "-- ${BUILD_NAME}MPI - checking for ${SUITE} MPI wrappers and libraries presence..."
-    echo >&2
-
-    for LANG in $LANG_LIST
+    for SUITE in $SUITE_LIST
     do
 
-        suiteLangMpiWrapperName="${SUITE}${LANG}MpiWrapperName"
-        suiteLangMpiWrapperList="${SUITE}${LANG}MpiWrapperList"
-        suiteLangMpiWrapperPath="${SUITE}${LANG}MpiWrapperPath"
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME}MPI - checking for ${SUITE} MPI wrappers and libraries presence..."
+        echo >&2
 
-        searchFailed=false
-        for mpiWrapperName in ${!suiteLangMpiWrapperList//:/ }
+        for LANG in $LANG_LIST
         do
 
-            eval ${suiteLangMpiWrapperName}="${mpiWrapperName}"
+            suiteLangMpiWrapperName="${SUITE}${LANG}MpiWrapperName"
+            suiteLangMpiWrapperList="${SUITE}${LANG}MpiWrapperList"
+            suiteLangMpiWrapperPath="${SUITE}${LANG}MpiWrapperPath"
 
-            if eval "command -v ${!suiteLangMpiWrapperName} >/dev/null 2>&1"; then
+            searchFailed=false
+            for mpiWrapperName in ${!suiteLangMpiWrapperList//:/ }
+            do
 
-                eval "unset ${suiteLangMpiWrapperPath}"
-                eval ${suiteLangMpiWrapperPath}='$(command -v ${!suiteLangMpiWrapperName})'
+                eval ${suiteLangMpiWrapperName}="${mpiWrapperName}"
 
-                # ensure the MPI library is not intel
+                if eval "command -v ${!suiteLangMpiWrapperName} >/dev/null 2>&1"; then
 
-                if [[ "${SUITE}" = "gnu" && "${!suiteLangMpiWrapperPath}" =~ .*"intel".* ]]; then
+                    eval "unset ${suiteLangMpiWrapperPath}"
+                    eval ${suiteLangMpiWrapperPath}='$(command -v ${!suiteLangMpiWrapperName})'
 
-                    searchFailed=true
+                    # ensure the MPI library is not intel
 
-                else
+                    if [[ "${SUITE}" = "gnu" && "${!suiteLangMpiWrapperPath}" =~ .*"intel".* ]]; then
 
-                    echo >&2 "-- ${BUILD_NAME}MPI - ${SUITE} ${!suiteLangMpiWrapperName} MPI wrapper detected at: ${suiteLangMpiWrapperPath} = ${!suiteLangMpiWrapperPath}"
+                        searchFailed=true
 
-                    if [ "${LANG}" = "Fortran" ]; then
+                    else
 
-                        # check if the compiler wrapper can compile a simple Fortran MPI test code.
+                        echo >&2 "-- ${BUILD_NAME}MPI - ${SUITE} ${!suiteLangMpiWrapperName} MPI wrapper detected at: ${suiteLangMpiWrapperPath} = ${!suiteLangMpiWrapperPath}"
 
-                        tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
-                        echo >&2 "-- ${BUILD_NAME}MPI - changing directory to: ${tempDir}"
-                        cd "${tempDir}" && cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90" && \
-                        {
-                            ${!suiteLangMpiWrapperName} testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe
-                        } && {
-                        #} &> /dev/null && {
-                            echo >&2 "-- ${BUILD_NAME}MPI - checking whether ${SUITE} ${!suiteLangMpiWrapperName} MPI wrapper compiles and runs a test program...yes"
-                        }|| {
-                            echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}. skipping..."
-                            unset ${suiteLangMpiWrapperPath}
-                            if [ "${MPI_ENABLED}" = "true" ] ; then
-                                mpiInstallEnabled=true
-                            fi
-                        }
-                        rm -rf "${tempDir}"
-                        cd "${ParaMonte_ROOT_DIR}"
+                        if [ "${LANG}" = "Fortran" ]; then
+
+                            # check if the compiler wrapper can compile a simple Fortran MPI test code.
+
+                            tempDir=$(mktemp -d "${TMPDIR:-/tmp}/cversion.XXXXXXXXX")
+                            echo >&2 "-- ${BUILD_NAME}MPI - changing directory to: ${tempDir}"
+                            cd "${tempDir}" && cp "${ParaMonte_ROOT_DIR}/auxil/testMPI.f90" "./testMPI.f90" && \
+                            {
+                                ${!suiteLangMpiWrapperName} testMPI.f90 -o main.exe && mpiexec -n 1 ./main.exe
+                            } && {
+                            #} &> /dev/null && {
+                                echo >&2 "-- ${BUILD_NAME}MPI - checking whether ${SUITE} ${!suiteLangMpiWrapperName} MPI wrapper compiles and runs a test program...yes"
+                            }|| {
+                                echo >&2 "-- ${BUILD_NAME}MPI - failed to compile a simple MPI test program with ${SUITE} ${!suiteLangMpiWrapperName}. skipping..."
+                                unset ${suiteLangMpiWrapperPath}
+                                if [ "${MPI_ENABLED}" = "true" ] ; then
+                                    mpiInstallEnabled=true
+                                fi
+                            }
+                            rm -rf "${tempDir}"
+                            cd "${ParaMonte_ROOT_DIR}"
+
+                        fi
+
+                        break
 
                     fi
 
-                    break
+                else
+
+                    searchFailed=true
 
                 fi
 
-            else
+                if [ "${searchFailed}" = "true" ]; then
+                    echo >&2 "-- ${BUILD_NAME}MPI - failed to detect the ${SUITE} ${LANG} MPI wrapper. skipping..."
+                    unset ${suiteLangMpiWrapperPath}
+                fi
 
-                searchFailed=true
-
-            fi
-
-            if [ "${searchFailed}" = "true" ]; then
-                echo >&2 "-- ${BUILD_NAME}MPI - failed to detect the ${SUITE} ${LANG} MPI wrapper. skipping..."
-                unset ${suiteLangMpiWrapperPath}
-            fi
+            done
 
         done
 
     done
 
-done
+fi
 
 ####################################################################################################################################
 #### detect CAF wrapper
