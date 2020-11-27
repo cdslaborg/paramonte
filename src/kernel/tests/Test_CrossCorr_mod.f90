@@ -498,11 +498,11 @@ contains
 
         ! Generate and verify AutoCorrs
 
-        if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag+1) )
+        if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag + 1_IK) )
         call getAutoCorrDirect  ( nd = WeightedData%nd &
                                 , np = WeightedData%np &
                                 , NormedData = WeightedData%NormedData(1:WeightedData%nd,1:WeightedData%np) &
-                                , nlag = AutoCorr%nlag &
+                                , nlag = AutoCorr%nlag + 1_IK &
                                 , Lag = AutoCorr%Lag &
                                 , AutoCorr = AutoCorr%AutoCorrDirect &
                                 , InverseSumNormedDataSq = WeightedData%InverseSumNormedDataSq &
@@ -520,7 +520,7 @@ contains
             ! write data to output for further investigation
 
             open(newunit=fileUnit,file=Test%outDir//"Test_CrossCorr_mod@WeightedData@AutoCorr@getAutoCorrDirect."//num2str(Test%Image%id)//".txt",status="replace")
-            do ilag = 1, AutoCorr%nlag
+            do ilag = 1, AutoCorr%nlag + 1_IK
                 write(fileUnit,"(*(g0.15,:,' '))") AutoCorr%Lag(ilag), AutoCorr%AutoCorrDirect(1:WeightedData%nd,ilag)
             end do
             close(fileUnit)
@@ -589,11 +589,11 @@ contains
 
         ! Generate and verify AutoCorrs
 
-        if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag+1) )
+        if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag+1_IK) )
         call getAutoCorrDirect  ( nd = WeightedData%nd &
                                 , np = WeightedData%np &
                                 , NormedData = WeightedData%NormedData(1:WeightedData%nd,1:WeightedData%np) &
-                                , nlag = AutoCorr%nlag &
+                                , nlag = AutoCorr%nlag + 1_IK &
                                 , Lag = AutoCorr%Lag &
                                 , AutoCorr = AutoCorr%AutoCorrDirect &
                                 )
@@ -610,7 +610,7 @@ contains
             ! write data to output for further investigation
 
             open(newunit=fileUnit,file=Test%outDir//"WeightedDataAutoCorrDirect.Without.InverseSumNormedDataSq."//num2str(Test%Image%id)//".txt",status="replace")
-            do ilag = 1, AutoCorr%nlag
+            do ilag = 1, AutoCorr%nlag + 1_IK
                 write(fileUnit,"(*(g0.15,:,' '))") AutoCorr%Lag(ilag), AutoCorr%AutoCorrDirect(1:WeightedData%nd,ilag)
             end do
             close(fileUnit)

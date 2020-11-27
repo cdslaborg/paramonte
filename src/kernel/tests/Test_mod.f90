@@ -185,6 +185,7 @@ contains
                 write(output_unit, "(*(g0,:,' '))")
                 write(output_unit, "(*(g0,:,' '))") style("To get more information about the failure, you may also compile and run the test in debug mode.", "bright", "red")
 #endif
+                write(output_unit, "(*(g0,:,' '))")
 
             end if
 
