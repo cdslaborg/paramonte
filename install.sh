@@ -135,7 +135,7 @@ while [ "$1" != "" ]; do
                                 ;;
         -F | --fresh )          fresh_flag="--fresh"
                                 ;;
-        -o | --local )          local_flag="--local"
+        -O | --local )          local_flag="--local"
                                 ;;
         -d | --dryrun )         dryrun_flag="--dryrun"
                                 ;;
@@ -149,6 +149,8 @@ while [ "$1" != "" ]; do
                                 FOR_COARRAY_NUM_IMAGES="$1"
                                 ;;
         -h | --help )           usage
+                                echo >&2 ""
+                                echo >&2 ""
                                 exit
                                 ;;
         * )                     usage

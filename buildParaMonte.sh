@@ -49,6 +49,17 @@
 # requested configuration for building the ParaMonte library.
 
 ####################################################################################################################################
+#### set minimum requirements
+####################################################################################################################################
+
+openCoarraysVersion="2.9.0"
+gnuVersionOpenCoarrays="10.1.0"
+mpichVersionOpenCoarrays="3.2"
+gnuVersionParaMonteCompatible="8.4.0"
+cmakeVersionParaMonteCompatible="3.14.0"
+intelVersionParaMonteCompatible="18.0.0"
+
+####################################################################################################################################
 #### set up the main root paths
 ####################################################################################################################################
 
@@ -145,18 +156,26 @@ verify() {
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --fresh"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: If the error happens during the installation of ParaMonte prerequisites"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: it is possible that the current existing GCC compiler collection installed"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: on your system cannot compile the downloaded version of GCC that is required"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: for ParaMonte build. In such case, make sure you have a GCC compiler collection"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: version 8.1 or newer installed on your system, with an updated PATH environmental"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: If the error happens during the installation of ParaMonte prerequisites,"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: it is possible that the current existing GNU compiler collection installed"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: on your system cannot compile the downloaded version of GNU that is required"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: for ParaMonte build. In such case, make sure you have a GNU compiler collection"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: version ${gnuVersionParaMonteCompatible} or newer installed on your system, with an updated PATH environmental"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: variable, then reinstall ParaMonte."
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: If the error is solely due to the failures of some ParaMonte tests, then"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: you may want to skip the testing of the library by specifying \"-t false\" or"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: \"--test_enabled false\" when calling the ParaMonte installation script."
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: To get more help on the usage of the optional install flags, try:"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
+        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --help"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL: If all ParaMonte installation attempts fail, please report this issue at"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL:     https://github.com/shahmoradi/paramonte/issues"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL: or by contacting the ParaMonte authors directly (e.g., shahmoradi@utexas.edu)."
+        echo >&2
         echo >&2
         echo >&2 "    -- ${BUILD_NAME} - gracefully exiting."
         echo >&2
@@ -530,17 +549,6 @@ if [ "${LTYPE}" = "dynamic" ]; then
         exit 1
     fi
 fi
-
-####################################################################################################################################
-#### set minimum requirements
-####################################################################################################################################
-
-openCoarraysVersion="2.9.0"
-gnuVersionOpenCoarrays="10.1.0"
-mpichVersionOpenCoarrays="3.2"
-gnuVersionParaMonteCompatible="8.4.0"
-cmakeVersionParaMonteCompatible="3.14.0"
-intelVersionParaMonteCompatible="18.0.0"
 
 ####################################################################################################################################
 #### set local dependencies paths
