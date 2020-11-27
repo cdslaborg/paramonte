@@ -71,8 +71,10 @@ contains
         call Test%run(test_getLogRateP15, "test_getLogRateP15")
         call Test%run(test_getLogRateM17, "test_getLogRateM17")
         call Test%run(test_getLogRateF18, "test_getLogRateF18")
-        call Test%run(test_getBinaryMergerRate_1, "test_getBinaryMergerRate_1")
-        call Test%run(test_getBinaryMergerRate_2, "test_getBinaryMergerRate_2")
+#if defined CODECOV_ENABLED
+        call Test%run(test_getBinaryMergerRate_1, "test_getBinaryMergerRate_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+        call Test%run(test_getBinaryMergerRate_2, "test_getBinaryMergerRate_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+#endif
         call Test%run(test_getBinaryMergerRateS15_1, "test_getBinaryMergerRateS15_1")
         call Test%run(test_getBinaryMergerRateS15_2, "test_getBinaryMergerRateS15_2")
         call Test%run(test_getBinaryMergerRateS15_3, "test_getBinaryMergerRateS15_3")
