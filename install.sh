@@ -563,11 +563,21 @@ for PMCS in $PMCS_LIST; do
 
                         # verify no conflict
 
+                        # avoid static library build for non-Fortran languages
+
+                        if [ "${CFI_ENABLED}" = "true" ] && [ "${LTYPE}" = "static" ]; then
+                            BENABLED=false
+                        fi
+
+                        # avoid caf library builds for non-Fortran languages
+
                         if [[ "${PARALLELISM}" =~ .*"caf".* ]]; then
                             if [ "${CFI_ENABLED}" = "true" ] || [ "${LTYPE}" = "dynamic" ]; then
                                 BENABLED=false
                             fi
                         fi
+
+                        # avoid stack memory allocations for dynamic library builds
 
                         if [ "${LTYPE}" = "dynamic" ]; then
                             if [ "${MEMORY}" = "stack" ]; then BENABLED=false; fi
