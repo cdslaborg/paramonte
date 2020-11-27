@@ -81,19 +81,21 @@ contains
         logical             :: assertion
         type(TimerCPU_type) :: TimerCPU
 
-        ! The CPU timer is neither available on all processors nor is 
-        ! essential for the successful build and run of the ParaMonte library.
-
         assertion = .true.
 
+        ! The CPU timer is neither available on all processors nor is 
+        ! essential for the successful build and run of the ParaMonte library.
+        ! Therefore, it is only tested in code coverage.
+
+#if defined CODECOV_ENABLED
         TimerCPU = TimerCPU_type()
-        !assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
+        assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
         call sleep(seconds=seconds,Err=TimerCPU%Err)
-        !assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
+        assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
         call TimerCPU%toc()
-        !assertion = assertion .and. TimerCPU%Time%total > 0.9_RK * seconds
-        !assertion = assertion .and. TimerCPU%Time%delta > 0.9_RK * seconds
-        !assertion = assertion .and. TimerCPU%Time%start < TimerCPU%Time%stop
+        assertion = assertion .and. TimerCPU%Time%total > 0.9_RK * seconds
+        assertion = assertion .and. TimerCPU%Time%delta > 0.9_RK * seconds
+        assertion = assertion .and. TimerCPU%Time%start < TimerCPU%Time%stop
 
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
@@ -104,6 +106,7 @@ contains
             write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%unit  : ", TimerCPU%Time%unit
             write(Test%outputUnit,"(*(g0))")
         end if
+#endif
 
     end function test_TimerCPU_type_1
 
