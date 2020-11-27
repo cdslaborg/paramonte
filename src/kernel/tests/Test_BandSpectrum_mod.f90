@@ -126,23 +126,23 @@ contains
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_getEbreak, "test_getEbreak")
 #if defined CODECOV_ENABLED
-        call Test%run(test_getPhotonFluence_1, "test_getPhotonFluence_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
-        call Test%run(test_getPhotonFluence_2, "test_getPhotonFluence_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
+        call Test%run(test_getPhotonFluence_1, "test_getPhotonFluence_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+        call Test%run(test_getPhotonFluence_2, "test_getPhotonFluence_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
 #endif
         call Test%run(test_getPhotonFluence_3, "test_getPhotonFluence_3")
 #if defined CODECOV_ENABLED
-        call Test%run(test_getPhotonFluence_4, "test_getPhotonFluence_4") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
-        call Test%run(test_getEnergyFluence_1, "test_getEnergyFluence_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
-        call Test%run(test_getEnergyFluence_2, "test_getEnergyFluence_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
+        call Test%run(test_getPhotonFluence_4, "test_getPhotonFluence_4") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+        call Test%run(test_getEnergyFluence_1, "test_getEnergyFluence_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+        call Test%run(test_getEnergyFluence_2, "test_getEnergyFluence_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
 #endif
         call Test%run(test_getEnergyFluence_3, "test_getEnergyFluence_3")
 #if defined CODECOV_ENABLED
-        call Test%run(test_getEnergyFluence_4, "test_getEnergyFluence_4") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_1, "test_getPhotonFluenceFromEnergyFluence_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_2, "test_getPhotonFluenceFromEnergyFluence_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_3, "test_getPhotonFluenceFromEnergyFluence_3") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_4, "test_getPhotonFluenceFromEnergyFluence_4") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
-        call Test%run(test_getPhotonFluenceFromEnergyFluence_5, "test_getPhotonFluenceFromEnergyFluence_5") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Linux subsystem for Windows.
+        call Test%run(test_getEnergyFluence_4, "test_getEnergyFluence_4") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+        call Test%run(test_getPhotonFluenceFromEnergyFluence_1, "test_getPhotonFluenceFromEnergyFluence_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+        call Test%run(test_getPhotonFluenceFromEnergyFluence_2, "test_getPhotonFluenceFromEnergyFluence_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+        call Test%run(test_getPhotonFluenceFromEnergyFluence_3, "test_getPhotonFluenceFromEnergyFluence_3") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+        call Test%run(test_getPhotonFluenceFromEnergyFluence_4, "test_getPhotonFluenceFromEnergyFluence_4") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+        call Test%run(test_getPhotonFluenceFromEnergyFluence_5, "test_getPhotonFluenceFromEnergyFluence_5") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
 #endif
         call Test%finalize()
     end subroutine test_BandSpectrum

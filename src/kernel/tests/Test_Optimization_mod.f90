@@ -93,7 +93,9 @@ contains
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_BrentMinimum_type_1, "test_BrentMinimum_type_1")
         call Test%run(test_BrentMinimum_type_2, "test_BrentMinimum_type_2")
-        call Test%run(test_PowellMinimum_type_1, "test_PowellMinimum_type_1")
+#if defined CODECOV_ENABLED
+        call Test%run(test_PowellMinimum_type_1, "test_PowellMinimum_type_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+#endif
         call Test%finalize()
     end subroutine test_Optimization
 
