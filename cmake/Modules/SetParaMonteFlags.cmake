@@ -740,6 +740,12 @@ if (intel_compiler)
         endif()
     endif()
 
+    if (CODECOV_ENABLED)
+        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -prof-gen=srcpos )
+        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" -prof-gen=srcpos )
+        set(FL_FLAGS "${FL_FLAGS}" -prof-gen=srcpos )
+    endif()
+
     if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
         if (WIN32)
             set(FCL_BUILD_FLAGS
