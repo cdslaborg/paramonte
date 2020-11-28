@@ -119,6 +119,11 @@ module Batse_mod
     !integer(IK) :: Trigger(NLGRB)
     !integer(IK) :: TriggerSGRB(NSGRB)
 
+    interface getLogEffectivePeakPhotonFluxCorrection
+        module procedure :: getLogEffectivePeakPhotonFluxCorrection_SPR
+        module procedure :: getLogEffectivePeakPhotonFluxCorrection_DPR
+    end interface getLogEffectivePeakPhotonFluxCorrection
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
@@ -359,7 +364,7 @@ contains
 
     pure function getLogEffectivePeakPhotonFlux(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getEffectivePeakPhotonFlux
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFlux
 #endif
         ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
         ! To do so, the observed T90 duration of the event is also necessary as input.
@@ -374,21 +379,39 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getLogEffectivePeakPhotonFluxCorrection(logT90) result(logEffectivePeakPhotonFluxCorrection)
+    pure function getLogEffectivePeakPhotonFluxCorrection_SPR(logT90) result(logEffectivePeakPhotonFluxCorrection)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getEffectivePeakPhotonFlux
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFluxCorrection_SPR
 #endif
         ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
         ! To do so, the observed T90 duration of the event is also necessary as input.
         ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
-        use, intrinsic :: iso_fortran_env, only: real32
+        use, intrinsic :: iso_fortran_env, only: RK => real32
         use Constants_mod, only: RK
         implicit none
         real(RK), intent(in)    :: logT90
         real(RK)                :: logEffectivePeakPhotonFluxCorrection
-        logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=real32))
+        logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))
                                               ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms
-    end function getLogEffectivePeakPhotonFluxCorrection
+    end function getLogEffectivePeakPhotonFluxCorrection_SPR
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    pure function getLogEffectivePeakPhotonFluxCorrection_DPR(logT90) result(logEffectivePeakPhotonFluxCorrection)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFluxCorrection_DPR
+#endif
+        ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
+        ! To do so, the observed T90 duration of the event is also necessary as input.
+        ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
+        use, intrinsic :: iso_fortran_env, only: RK => real64
+        use Constants_mod, only: RK
+        implicit none
+        real(RK), intent(in)    :: logT90
+        real(RK)                :: logEffectivePeakPhotonFluxCorrection
+        logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))
+                                              ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms
+    end function getLogEffectivePeakPhotonFluxCorrection_DPR
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

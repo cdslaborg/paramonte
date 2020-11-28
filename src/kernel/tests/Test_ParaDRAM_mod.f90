@@ -96,17 +96,30 @@ contains
     !> \brief
     !> Test the ParaDRAM sampler with an internal input file.
     function test_runSampler_2() result(assertion)
+        use String_mod, only: num2str
         implicit none
-        logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: chainSize_ref = 100_IK
+        integer(IK) , parameter :: userSeed_ref = 1111_IK
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , inputFile = "&ParaDRAM randomSeed = 1111 chainSize = 300 /" &
+                            , inputFile = "&ParaDRAM randomSeed = "//num2str(userSeed_ref)//" chainSize = "//num2str(chainSize_ref)//" /" &
                             )
-        assertion = .not. PD%Err%occurred .and. PD%SpecBase%RandomSeed%userSeed==1111_IK .and. PD%SpecMCMC%ChainSize%val==100_IK
+        assertion = .not. PD%Err%occurred .and. PD%SpecBase%RandomSeed%userSeed==userSeed_ref .and. PD%SpecMCMC%ChainSize%val==chainSize_ref
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "PD%Err%occurred                   = ", PD%Err%occurred
+            write(Test%outputUnit,"(*(g0))") "PD%Err%msg                        = ", PD%Err%msg
+            write(Test%outputUnit,"(*(g0))") "userSeed_ref                      = ", userSeed_ref
+            write(Test%outputUnit,"(*(g0))") "PD%SpecBase%RandomSeed%userSeed   = ", PD%SpecBase%RandomSeed%userSeed
+            write(Test%outputUnit,"(*(g0))") "chainSize_ref                     = ", chainSize_ref
+            write(Test%outputUnit,"(*(g0))") "PD%SpecMCMC%ChainSize%val         = ", PD%SpecMCMC%ChainSize%val
+            write(Test%outputUnit,"(*(g0))")
+        end if
 #endif
     end function test_runSampler_2
 

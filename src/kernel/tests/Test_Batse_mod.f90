@@ -160,7 +160,8 @@ contains
         call Test%run(test_readDataGRB_1,"test_readDataGRB_1")
         call Test%run(test_readDataGRB_2,"test_readDataGRB_2")
         call Test%run(test_getLogEffectivePeakPhotonFlux_1,"test_getLogEffectivePeakPhotonFlux_1")
-        call Test%run(test_getLogEffectivePeakPhotonFluxCorrection_1,"test_getLogEffectivePeakPhotonFluxCorrection_1")
+        call Test%run(test_getLogEffectivePeakPhotonFluxCorrection_SPR_1,"test_getLogEffectivePeakPhotonFluxCorrection_SPR_1")
+        call Test%run(test_getLogEffectivePeakPhotonFluxCorrection_DPR_1,"test_getLogEffectivePeakPhotonFluxCorrection_DPR_1")
         call Test%finalize()
     end subroutine test_Batse
 
@@ -271,21 +272,55 @@ contains
         real(RK), parameter     :: tolerance = 1.e-12_RK
         assertion = abs(THRESH_ERFC_AMP + getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)) < tolerance
         if (Test%isDebugMode .and. .not. assertion) then
-            write(Test%outputUnit,*) "getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG) = ", getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG) = ", getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)
+            write(Test%outputUnit,"(*(g0))")
         end if
     end function test_getLogEffectivePeakPhotonFlux_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_getLogEffectivePeakPhotonFluxCorrection_1() result(assertion)
+    function test_getLogEffectivePeakPhotonFluxCorrection_SPR_1() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real32
         implicit none
         logical                 :: assertion
-        real(RK), parameter     :: tolerance = 1.e-12_RK
-        assertion = abs(THRESH_ERFC_AMP + getLogEffectivePeakPhotonFluxCorrection(THRESH_ERFC_AVG)) < tolerance
+        real(RK), parameter     :: tolerance = sqrt(epsilon(1._RK))
+        real(RK), parameter     :: logEffectivePeakPhotonFluxCorrection_ref = real(THRESH_ERFC_AMP,RK)
+        real(RK)                :: logEffectivePeakPhotonFluxCorrection
+        real(RK)                :: difference
+        logEffectivePeakPhotonFluxCorrection = getLogEffectivePeakPhotonFluxCorrection_SPR(real(THRESH_ERFC_AVG,RK))
+        difference = abs(logEffectivePeakPhotonFluxCorrection - logEffectivePeakPhotonFluxCorrection_ref)
+        assertion = difference < tolerance
         if (Test%isDebugMode .and. .not. assertion) then
-            write(Test%outputUnit,*) "getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG) = ", getLogEffectivePeakPhotonFluxCorrection(THRESH_ERFC_AVG)
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection_ref  = ", logEffectivePeakPhotonFluxCorrection_ref
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection      = ", logEffectivePeakPhotonFluxCorrection
+            write(Test%outputUnit,"(*(g0))") "difference                                = ", difference
+            write(Test%outputUnit,"(*(g0))")
         end if
-    end function test_getLogEffectivePeakPhotonFluxCorrection_1
+    end function test_getLogEffectivePeakPhotonFluxCorrection_SPR_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getLogEffectivePeakPhotonFluxCorrection_DPR_1() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64
+        implicit none
+        logical                 :: assertion
+        real(RK), parameter     :: tolerance = sqrt(epsilon(1._RK))
+        real(RK), parameter     :: logEffectivePeakPhotonFluxCorrection_ref = real(THRESH_ERFC_AMP,RK)
+        real(RK)                :: logEffectivePeakPhotonFluxCorrection
+        real(RK)                :: difference
+        logEffectivePeakPhotonFluxCorrection = getLogEffectivePeakPhotonFluxCorrection_DPR(real(THRESH_ERFC_AVG,RK))
+        difference = abs(logEffectivePeakPhotonFluxCorrection - logEffectivePeakPhotonFluxCorrection_ref)
+        assertion = difference < tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection_ref  = ", logEffectivePeakPhotonFluxCorrection_ref
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection      = ", logEffectivePeakPhotonFluxCorrection
+            write(Test%outputUnit,"(*(g0))") "difference                                = ", difference
+            write(Test%outputUnit,"(*(g0))")
+        end if
+    end function test_getLogEffectivePeakPhotonFluxCorrection_DPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
