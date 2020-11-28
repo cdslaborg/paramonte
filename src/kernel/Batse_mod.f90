@@ -124,6 +124,11 @@ module Batse_mod
         module procedure :: getLogEffectivePeakPhotonFluxCorrection_DPR
     end interface getLogEffectivePeakPhotonFluxCorrection
 
+    interface getLogEffectivePeakPhotonFlux
+        module procedure :: getLogEffectivePeakPhotonFlux_SPR
+        module procedure :: getLogEffectivePeakPhotonFlux_DPR
+    end interface getLogEffectivePeakPhotonFlux
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
