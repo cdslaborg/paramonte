@@ -2194,6 +2194,12 @@ if [ "${isMacOS}" = "true" ]; then ParaMonte_CAF_SETUP_PATH_CMD=""; fi
 
 if [ "${DRYRUN_ENABLED}" != "true" ]; then
 
+if [ "${CODECOV_ENABLED}" = "true" ]; then
+    CODECOV_ENABLED_FLAG="-DCODECOV_ENABLED=${CODECOV_ENABLED}"
+else
+    CODECOV_ENABLED_FLAG=""
+fi
+
 (cd ${ParaMonte_BLD_DIR} && \
 ${ParaMonte_CAF_SETUP_PATH_CMD} && \
 cmake \
@@ -2210,7 +2216,7 @@ cmake \
 -DHEAP_ARRAY_ENABLED=${HEAP_ARRAY_ENABLED} \
 -DCFI_ENABLED=${CFI_ENABLED} \
 -DOMP_ENABLED=${OMP_ENABLED} \
--DCODECOV_ENABLED=${CODECOV_ENABLED} \
+${CODECOV_ENABLED_FLAG} \
 ${ParaMonte_ROOT_DIR} \
 )
 verify $? "build with cmake"
@@ -2663,12 +2669,16 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
             else
                 MEMORY_ALLOCATION="stack"
             fi
+
             gcovDataDir=$(find "${ParaMonte_OBJ_DIR}" -name ParaMonte_mod*.o)
             gcovDataDir=$(dirname "${gcovDataDir}")
+
             if [ -d "${gcovDataDir}" ]; then
+
                 ParaMonte_GCOV_DIR="${ParaMonte_BLD_DIR}"/gcov
                 mkdir -p "${ParaMonte_GCOV_DIR}"
                 cd "${ParaMonte_GCOV_DIR}"
+
                 for srcFileName in "${ParaMonteKernel_SRC_DIR}"/*.f90; do
                     srcFileNameBase=$(basename -- "${srcFileName}")
                     #if ! [[ "${srcFileName}" =~ .*".inc.f90".* ]]; then
@@ -2678,14 +2688,62 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     gcov "${srcFileName}" -o "${objFilePath}"
                     #fi
                 done
+
+                # generate summary report file
+
+                if command -v lcov >/dev/null 2>&1; then
+
+                    ParaMonte_LCOV_DIR="${ParaMonte_BLD_DIR}"/lcov
+                    mkdir -p "${ParaMonte_LCOV_DIR}"
+                    cd "${ParaMonte_LCOV_DIR}"
+
+                    lcov --capture --directory "${gcovDataDir}" --output-file ./main_coverage.info
+
+                    if command -v genhtml >/dev/null 2>&1; then
+
+                        genhtml main_coverage.info --output-directory html
+
+                    else
+                        echo >&2
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Failed to find the GNU genhtml test coverage summarizer."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - The genhtml program is required to generate the coverage report."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - If you believe genhtml is already installed on your system,"
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - please make sure the path its directory is added to the"
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - PATH environmental variable of your terminal."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - Once added, rerun the ParaMonte code coverage."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
+                        echo >&2
+                        exit 1
+                    fi
+
+                else
+
+                    echo >&2
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Failed to find the GNU lcov test coverage summarizer."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - The lcov program is required to generate the coverage report."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - If you believe lcov is already installed on your system,"
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - please make sure the path its directory is added to the"
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - PATH environmental variable of your terminal."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - Once added, rerun the ParaMonte code coverage."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
+                    echo >&2
+                    exit 1
+
+                fi
+
                 cd "${ParaMonte_ROOT_DIR}"
+
             else
+
                 echo >&2
                 echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Failed to find the ParaMonte library objects directory."
                 echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
                 echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
                 echo >&2
                 exit 1
+
             fi
 
         else
