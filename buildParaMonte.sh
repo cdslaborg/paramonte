@@ -2697,7 +2697,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     mkdir -p "${ParaMonte_LCOV_DIR}"
                     cd "${ParaMonte_LCOV_DIR}"
 
-                    lcov --capture --directory "${gcovDataDir}" --output-file ./main_coverage.info
+                    lcov --legend --capture --directory "${gcovDataDir}" --output-file ./main_coverage.info
 
                     if command -v genhtml >/dev/null 2>&1; then
 

@@ -83,7 +83,7 @@ contains
         type(ParaDRAM_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = NDIM &
+        call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             )
@@ -101,12 +101,12 @@ contains
         type(ParaDRAM_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = NDIM &
+        call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , inputFile = "&ParaDRAM randomSeed = 1111 chainSize = 300 /" &
                             )
-        assertion = .not. PD%Err%occurred .and. PD%SpecBase%RandsomSeed%userSeed==1111_IK .and. PD%SpecBase%ChainSize%val==100_IK
+        assertion = .not. PD%Err%occurred .and. PD%SpecBase%RandomSeed%userSeed==1111_IK .and. PD%SpecMCMC%ChainSize%val==100_IK
 #endif
     end function test_runSampler_2
 
@@ -120,10 +120,10 @@ contains
         type(ParaDRAM_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = NDIM &
+        call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , inputFile = Test%inDir/"Test_ParaDRAM_mod@test_runSampler_3.in" &
+                            , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_3.in" &
                             )
         assertion = .not. PD%Err%occurred
 #endif
@@ -139,9 +139,8 @@ contains
         type(ParaDRAM_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = NDIM &
+        call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
-                            , inputFile = Test%inDir//"ParaDRAM.nml" &
                             , mpiFinalizeRequested = .false. &
                             , inputFile = " " &
                             )
