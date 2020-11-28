@@ -81,8 +81,8 @@
 
     implicit none
 
-    !private
-    !public :: Proposal_type
+    private
+    public :: Proposal_type
 
 #if defined NORMAL
     character(*), parameter         :: MODULE_NAME = "@"//PMSM%ParaDXXX//"ProposalNormal_mod"
@@ -308,6 +308,7 @@ contains
             !CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
             !call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
             !comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower
+            ! The colon indexing avoids temporary array creation
             call getCholeskyFactor( ndim, comv_CholDiagLower(:,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) )
             call getInvCovMat()
         end block

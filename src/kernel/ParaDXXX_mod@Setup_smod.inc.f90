@@ -229,7 +229,9 @@ contains
        !type(ProposalSymmetric_type), target:: ProposalSymmetric
         integer(IK)                         :: i, iq, effectiveSampleSize
         character(:), allocatable           :: msg, formatStr, formatStrInt, formatStrReal, formatAllReal
+        real(RK)    , allocatable           :: ContiguousChain(:,:) ! used to avoid temporary array creation and the compiler warning message in debug mode
         real(RK)                            :: mcmcSamplingEfficiency
+
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Initialize SpecBase variables, then check existence of inputFile and open it and return the unit file, if it exists
@@ -1078,14 +1080,15 @@ contains
 
             if (allocated(self%Stats%Chain%Quantile)) deallocate(self%Stats%Chain%Quantile)
             allocate(self%Stats%Chain%Quantile(QPROB%count,ndim))
+            ContiguousChain = transpose(self%Chain%State(1:ndim,self%Stats%BurninLoc%compact:self%Chain%count%compact)) ! avoid temporary array creation and the warning message in debug mode
             do i = 1, ndim
-                self%Stats%Chain%Quantile(1:QPROB%count,i) = getQuantile( np = self%Chain%count%compact - self%Stats%BurninLoc%compact + 1_IK &
-                                                                        , nq = QPROB%count &
-                                                                        , SortedQuantileProbability = QPROB%Value &
-                                                                        , Point = self%Chain%State(i,self%Stats%BurninLoc%compact:self%Chain%count%compact) &
-                                                                        , Weight = self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact) &
-                                                                        , sumWeight = self%Stats%Chain%count &
-                                                                        )
+                    self%Stats%Chain%Quantile(1:QPROB%count,i) = getQuantile( np = self%Chain%count%compact - self%Stats%BurninLoc%compact + 1_IK &
+                                                                            , nq = QPROB%count &
+                                                                            , SortedQuantileProbability = QPROB%Value &
+                                                                            , Point = ContiguousChain(:,i) &
+                                                                            , Weight = self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact) &
+                                                                            , sumWeight = self%Stats%Chain%count &
+                                                                            )
             end do
 
             ! report the MCMC chain statistics
@@ -1398,10 +1401,11 @@ contains
 
                 if (allocated(self%Stats%Sample%Mean)) deallocate(self%Stats%Sample%Mean); allocate(self%Stats%Sample%Mean(ndim))
                 if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat); allocate(self%Stats%Sample%CovMat(ndim,ndim))
+                ContiguousChain = transpose(self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) ! avoid temporary array creation and the warning message in debug mode
                 call getWeiSamCovUppMeanTrans   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
                                                 , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &
                                                 , nd = ndim &
-                                                , Point = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
+                                                , Point = ContiguousChain &
                                                 , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
                                                 , CovMatUpper = self%Stats%Sample%CovMat &
                                                 , Mean = self%Stats%Sample%Mean &
@@ -1425,7 +1429,7 @@ contains
                     self%Stats%Sample%Quantile(1:QPROB%count,i) = getQuantile   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
                                                                                 , nq = QPROB%count &
                                                                                 , SortedQuantileProbability = QPROB%Value &
-                                                                                , Point = self%RefinedChain%LogFuncState(i,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
+                                                                                , Point = ContiguousChain(:,i) &
                                                                                 , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
                                                                                 , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &
                                                                                 )
