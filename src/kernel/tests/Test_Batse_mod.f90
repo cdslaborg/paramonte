@@ -154,12 +154,13 @@ contains
     subroutine test_Batse()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
-        call Test%run(test_readDataGRB_1,"test_readDataGRB_1")
-        call Test%run(test_readDataGRB_2,"test_readDataGRB_2")
-        call Test%run(test_getLog10PF53,"test_getLog10PF53")
         call Test%run(test_getLogPF53,"test_getLogPF53")
         call Test%run(test_getLogPbol,"test_getLogPbol")
-        call Test%run(test_getLogEffectivePeakPhotonFlux,"test_getLogEffectivePeakPhotonFlux")
+        call Test%run(test_getLog10PF53,"test_getLog10PF53")
+        call Test%run(test_readDataGRB_1,"test_readDataGRB_1")
+        call Test%run(test_readDataGRB_2,"test_readDataGRB_2")
+        call Test%run(test_getLogEffectivePeakPhotonFlux_1,"test_getLogEffectivePeakPhotonFlux_1")
+        call Test%run(test_getLogEffectivePeakPhotonFluxCorrection_1,"test_getLogEffectivePeakPhotonFluxCorrection_1")
         call Test%finalize()
     end subroutine test_Batse
 
@@ -252,7 +253,7 @@ contains
                             - LOG10PBOL &
                             ) < tolerance
             if (assertion) cycle
-            if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
+            if (Test%isDebugMode .and. .not. assertion) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
@@ -264,15 +265,27 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_getLogEffectivePeakPhotonFlux() result(assertion)
+    function test_getLogEffectivePeakPhotonFlux_1() result(assertion)
         implicit none
         logical                 :: assertion
         real(RK), parameter     :: tolerance = 1.e-12_RK
         assertion = abs(THRESH_ERFC_AMP + getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)) < tolerance
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
+        if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,*) "getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG) = ", getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)
         end if
-    end function test_getLogEffectivePeakPhotonFlux
+    end function test_getLogEffectivePeakPhotonFlux_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getLogEffectivePeakPhotonFluxCorrection_1() result(assertion)
+        implicit none
+        logical                 :: assertion
+        real(RK), parameter     :: tolerance = 1.e-12_RK
+        assertion = abs(THRESH_ERFC_AMP + getLogEffectivePeakPhotonFluxCorrection(THRESH_ERFC_AVG)) < tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,*) "getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG) = ", getLogEffectivePeakPhotonFluxCorrection(THRESH_ERFC_AVG)
+        end if
+    end function test_getLogEffectivePeakPhotonFluxCorrection_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

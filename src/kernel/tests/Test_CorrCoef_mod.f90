@@ -167,13 +167,14 @@ contains
     subroutine test_CorrCoef()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
-        call Test%run(test_getCorrCoefSpearman, "test_getCorrCoefSpearman")
+        call Test%run(test_getCorrCoefSpearman_1, "test_getCorrCoefSpearman_1")
+        call Test%run(test_getCorrCoefSpearman_2, "test_getCorrCoefSpearman_2")
         call Test%finalize()
     end subroutine test_CorrCoef
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_getCorrCoefSpearman() result(assertion)
+    function test_getCorrCoefSpearman_1() result(assertion)
 
         use System_mod, only: sleep
         use Constants_mod, only: RK, IK
@@ -221,7 +222,59 @@ contains
             write(Test%outputUnit,"(*(g0))")
         end if
 
-    end function test_getCorrCoefSpearman
+    end function test_getCorrCoefSpearman_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getCorrCoefSpearman_2() result(assertion)
+
+        use System_mod, only: sleep
+        use Constants_mod, only: RK, IK
+        use CorrCoef_mod
+
+        implicit none
+
+        logical :: assertion
+        type(CorrCoefSpearman_type) :: Spearman
+        real(RK)                    :: CorrCoef_ref = 0.443361344537815_RK, CorrPval_ref = 0.00140031209338936_RK
+
+        call getCorrCoefSpearman( ndata             = ndata                     &
+                                , Data1             = Data1                     &
+                                , Data2             = Data2                     &
+                                , rho               = Spearman%rho              &
+                                , rhoProb           = Spearman%rhoProb          &
+                                , dStarStar         = Spearman%dStarStar        &
+                                , dStarStarSignif   = Spearman%dStarStarSignif  &
+                                , dStarStarProb     = Spearman%dStarStarProb    &
+                                , Err               = Spearman%Err              &
+                                )
+        if (Spearman%Err%occurred) then
+            assertion = .false.
+            if (Test%isDebugMode .and. .not. assertion) then
+                write(Test%outputUnit,"(*(g0))") "Error occurred: "//Spearman%Err%msg
+            end if
+            return
+        end if
+
+        assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) < 1.e-10_RK
+        assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) < 1.e-1_RK
+
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "Computed Spearman's statistic:"
+            write(Test%outputUnit,"(*(g0))") "rho               = ", Spearman%rho
+            write(Test%outputUnit,"(*(g0))") "rhoProb           = ", Spearman%rhoProb
+            write(Test%outputUnit,"(*(g0))") "dStarStar         = ", Spearman%dStarStar
+            write(Test%outputUnit,"(*(g0))") "dStarStarSignif   = ", Spearman%dStarStarSignif
+            write(Test%outputUnit,"(*(g0))") "dStarStarProb     = ", Spearman%dStarStarProb
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "Reference Spearman's statistic:"
+            write(Test%outputUnit,"(*(g0))") "rho               = ", CorrCoef_ref
+            write(Test%outputUnit,"(*(g0))") "rhoProb           = ", CorrPval_ref
+            write(Test%outputUnit,"(*(g0))")
+        end if
+
+    end function test_getCorrCoefSpearman_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

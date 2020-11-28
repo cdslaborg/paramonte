@@ -168,4 +168,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecMCMC_SampleRefinementCount_mod
+end module SpecMCMC_SampleRefinementCount_mod ! LCOV_EXCL_LINE

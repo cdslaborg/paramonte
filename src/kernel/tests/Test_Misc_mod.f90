@@ -66,6 +66,8 @@ contains
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_arth_IK_1, "test_arth_IK_1")
         call Test%run(test_arth_RK_1, "test_arth_RK_1")
+        call Test%run(test_arth_RK_2, "test_arth_RK_2")
+        call Test%run(test_swap_IK_1, "test_swap_IK_1")
         call Test%run(test_swap_RK_1, "test_swap_RK_1")
         call Test%run(test_swap_CK_1, "test_swap_RK_1")
         call Test%run(test_swap_SPI_1, "test_swap_SPI_1")
@@ -102,7 +104,7 @@ contains
         integer(IK)             :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2)
+        call swap_IK(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -128,7 +130,7 @@ contains
         integer(SPI)             :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2)
+        call swap_SPI(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -154,7 +156,7 @@ contains
         integer(DPI)             :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2)
+        call swap_DPI(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -180,7 +182,7 @@ contains
         real(RK)                :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2)
+        call swap_RK(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -206,7 +208,7 @@ contains
         real(SPR)               :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2)
+        call swap_SPR(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -232,7 +234,7 @@ contains
         real(DPR)               :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2)
+        call swap_DPR(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -258,7 +260,7 @@ contains
         complex(CK)             :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2)
+        call swap_CK(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -284,7 +286,7 @@ contains
         complex(SPC)            :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2)
+        call swap_SPC(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -310,7 +312,7 @@ contains
         complex(DPC)            :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2)
+        call swap_DPC(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -335,7 +337,7 @@ contains
         real(SPR)               :: scalar2
         scalar1 = scalar1_ref
         scalar2 = scalar2_ref
-        call swap(scalar1,scalar2,mask)
+        call masked_swap_SPR(scalar1,scalar2,mask)
         assertion = scalar1==scalar2_ref .and. scalar2==scalar1_ref
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -360,7 +362,7 @@ contains
         real(SPR)               :: scalar2
         scalar1 = scalar1_ref
         scalar2 = scalar2_ref
-        call swap(scalar1,scalar2,mask)
+        call masked_swap_SPR(scalar1,scalar2,mask)
         assertion = scalar1==scalar1_ref .and. scalar2==scalar2_ref
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -387,7 +389,7 @@ contains
         real(SPR)               :: Vector2(vecLen)
         Vector1 = Vector1_ref
         Vector2 = Vector2_ref
-        call swap(Vector1,Vector2,Mask)
+        call masked_swap_SPRV(Vector1,Vector2,Mask)
         assertion = all((Vector1==Vector2_ref) .eqv. Mask) .and. all( (Vector2==Vector1_ref) .eqv. Mask)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -416,7 +418,7 @@ contains
         real(SPR)               :: Matrix2(nrow,ncol)
         Matrix1 = Matrix1_ref
         Matrix2 = Matrix2_ref
-        call swap(Matrix1,Matrix2,mask)
+        call masked_swap_SPRM(Matrix1,Matrix2,mask)
         assertion = all((Matrix1==Matrix2_ref) .eqv. mask) .and. all( (Matrix2==Matrix1_ref) .eqv. mask)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -439,7 +441,7 @@ contains
         integer(IK) , parameter     :: first = 13, increment = 5, n = 10
         integer(IK) , parameter     :: ArithmeticProgression_ref(n) = [(i*increment+first,i=0,n-1)]
         integer(IK), allocatable    :: ArithmeticProgression(:)
-        ArithmeticProgression = arth(first = first,increment = increment, n = n)
+        ArithmeticProgression = arth_IK(first = first,increment = increment, n = n)
         assertion = all(ArithmeticProgression == ArithmeticProgression_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -456,10 +458,11 @@ contains
         implicit none
         logical                     :: assertion
         integer(IK)                 :: i
-        integer(IK) , parameter     :: first = 13, increment = 5, n = 10
-        integer(RK) , parameter     :: ArithmeticProgression_ref(n) = [(real(i*increment+first,RK),i=0,n-1)]
-        integer(RK), allocatable    :: ArithmeticProgression(:)
-        ArithmeticProgression = arth(first = first,increment = increment, n = n)
+        real(RK)    , parameter     :: first = 13._RK, increment = 5._RK
+        integer(IK) , parameter     :: n = 10_IK
+        real(RK)    , parameter     :: ArithmeticProgression_ref(n) = [(real(i*increment+first,RK),i=0,n-1)]
+        real(RK)    , allocatable   :: ArithmeticProgression(:)
+        ArithmeticProgression = arth_RK(first = first, increment = increment, n = n)
         assertion = all(ArithmeticProgression == ArithmeticProgression_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -468,6 +471,27 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
     end function test_arth_RK_1
+
+    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_arth_RK_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical                     :: assertion
+        integer(IK)                 :: i
+        real(RK)    , parameter     :: first = 13._RK, increment = 5._RK
+        integer(IK) , parameter     :: n = 20_IK
+        real(RK)    , parameter     :: ArithmeticProgression_ref(n) = [(real(i*increment+first,RK),i=0,n-1)]
+        real(RK)    , allocatable   :: ArithmeticProgression(:)
+        ArithmeticProgression = arth_RK(first = first, increment = increment, n = n)
+        assertion = all(ArithmeticProgression == ArithmeticProgression_ref)
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0,:,' '))")
+            write(Test%outputUnit,"(*(g0,:,' '))") "ArithmeticProgression_ref   =", ArithmeticProgression_ref
+            write(Test%outputUnit,"(*(g0,:,' '))") "ArithmeticProgression       =", ArithmeticProgression
+            write(Test%outputUnit,"(*(g0,:,' '))")
+        end if
+    end function test_arth_RK_2
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -502,7 +526,7 @@ contains
         integer(IK)                 :: Destin(lenDestin)
         integer(IK)                 :: numCopied, numNotCopied
         Destin = 0_IK
-        call copyArray(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
+        call copyArray_IK(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
         assertion = all(Destin == Destin_ref) .and. (numCopied == numCopied_ref) .and. (numNotCopied == numNotCopied_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -531,7 +555,7 @@ contains
         integer(IK)                 :: Destin(lenDestin)
         integer(IK)                 :: numCopied, numNotCopied
         Destin = 0_IK
-        call copyArray(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
+        call copyArray_IK(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
         assertion = all(Destin == Destin_ref) .and. (numCopied == numCopied_ref) .and. (numNotCopied == numNotCopied_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -560,7 +584,7 @@ contains
         real(RK)                    :: Destin(lenDestin)
         integer(IK)                 :: numCopied, numNotCopied
         Destin = 0._RK
-        call copyArray(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
+        call copyArray_RK(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
         assertion = all(Destin == Destin_ref) .and. (numCopied == numCopied_ref) .and. (numNotCopied == numNotCopied_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -589,7 +613,7 @@ contains
         real(RK)                    :: Destin(lenDestin)
         integer(IK)                 :: numCopied, numNotCopied
         Destin = 0._RK
-        call copyArray(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
+        call copyArray_RK(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
         assertion = all(Destin == Destin_ref) .and. (numCopied == numCopied_ref) .and. (numNotCopied == numNotCopied_ref)
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")

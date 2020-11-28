@@ -54,7 +54,7 @@ module ParaDRAMProposalUniform_mod
 #define PARADRAM ParaDRAM
 #include "ParaDXXXProposal_mod.inc.f90"
 #undef PARADRAM
-end module ParaDRAMProposalUniform_mod
+end module ParaDRAMProposalUniform_mod ! LCOV_EXCL_LINE
 
 !> \brief
 !> This module implements the body of the `ParaDISEProposalUniform_mod` module of the `ParaDISE` sampler.
@@ -68,6 +68,6 @@ module ParaDISEProposalUniform_mod
 #define PARADISE ParaDISE
 #include "ParaDXXXProposal_mod.inc.f90"
 #undef PARADISE
-end module ParaDISEProposalUniform_mod
+end module ParaDISEProposalUniform_mod ! LCOV_EXCL_LINE
 
 #undef UNIFORM

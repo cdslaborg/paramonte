@@ -193,6 +193,7 @@ contains
         end if
 
         if (present(OS)) then
+            ! LCOV_EXCL_START
             if ( OS%isWindows .and. .not. (OS%Shell%isCMD .or. OS%Shell%isPowershell) ) then
                 call OS%Shell%query(isWindowsOS = OS%isWindows)
                 if (OS%Shell%Err%occurred) then
@@ -204,10 +205,12 @@ contains
                 end if
             end if
             isWindowsShell = OS%isWindows .and. .not. OS%Shell%isUnix
+            ! LCOV_EXCL_STOP
         else
             block
                 type(OS_type) :: OS
                 call OS%query(shellQueryEnabled = .true.)
+                ! LCOV_EXCL_START
                 if (OS%Err%occurred) then
                     Err = OS%Err
                 elseif (OS%Shell%Err%occurred) then
@@ -219,6 +222,7 @@ contains
                                 search // "'.\n" // Err%msg
                     return
                 end if
+                ! LCOV_EXCL_STOP
                 isWindowsShell = OS%isWindows .and. .not. OS%Shell%isUnix
             end block
         end if
@@ -284,44 +288,54 @@ contains
             use System_mod, only: RandomFileName_type
             type(RandomFileName_type)   :: RFN
             RFN = RandomFileName_type(key="getFileList")
+            ! LCOV_EXCL_START
             if (RFN%Err%occurred) then
                 RFN%Err%msg = PROCEDURE_NAME // RFN%Err%msg
                 return
             end if
+            ! LCOV_EXCL_STOP
             filename = RFN%path
         end block
         stdErr = filename // ".stderr"
 
         call executeCmd( command = command//" > "//filename//" 2> "//stdErr, Err=Err )
+        ! LCOV_EXCL_START
         if (Err%occurred) then
             Err%msg =   PROCEDURE_NAME // &
                         ": Error occurred while attempting to write the search results to external file.\n" // Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! now count the number of records in file:
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         inquire(file=filename,opened=fileIsOpen,number=fileUnit,iostat=Err%stat)    ! check if the file already exists
+        ! LCOV_EXCL_START
         if (Err%stat/=0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the open status of file='" // filename // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         if (fileIsOpen) close(fileUnit,iostat=Err%stat)
+        ! LCOV_EXCL_START
         if (Err%stat/=0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // filename // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         call sleep(seconds=0.1_RK,Err=Err)
+        ! LCOV_EXCL_START
         if (Err%occurred) then
             Err%msg = PROCEDURE_NAME // Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         ! delete the stderr file
 
@@ -331,11 +345,13 @@ contains
         ! open the list file
 
         open(newunit=fileUnit,file=filename,status="old",iostat=Err%stat)
+        ! LCOV_EXCL_START
         if (Err%stat>0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Unknown error occurred while opening file='" // filename // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         nskip = 0   ! check filename is not among records
         nrecord = 0 ! number of filenames in the file
@@ -361,43 +377,49 @@ contains
             end if
         end do
         close(fileUnit, iostat = Err%stat)
+        ! LCOV_EXCL_START
         if (Err%stat/=0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // filename // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         allocate(FileList(nrecord-nskip))
 
         call sleep(seconds=0.1_RK,Err=Err)
+        ! LCOV_EXCL_START
         if (Err%occurred) then
             Err%msg = PROCEDURE_NAME // Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         open(newunit=fileUnit,file=filename,status="old",iostat=Err%stat)
+        ! LCOV_EXCL_START
         if (Err%stat>0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Unknown error occurred while opening file='" // filename // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         fileCounter = 0
         do counter = 1,nrecord
             read(fileUnit,"(A)",iostat=Err%stat) record
+            ! LCOV_EXCL_START
             if ( is_iostat_eor(Err%stat) ) then
                 Err%occurred = .true.
-                Err%msg  = PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to read &
-                         & from file='" // filename // "'."
+                Err%msg  = PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to read from file='" // filename // "'."
                 return
             elseif ( is_iostat_end(Err%stat) ) then
                 exit
             elseif ( Err%stat>0 ) then
                 Err%occurred = .true.
-                Err%msg = PROCEDURE_NAME // ": Unknown error condition occurred while attempting to read &
-                        & from file='" // filename // "'."
+                Err%msg = PROCEDURE_NAME // ": Unknown error condition occurred while attempting to read from file='" // filename // "'."
                 return
             end if
+            ! LCOV_EXCL_STOP
             recordTrimmed = trim(adjustl(record))
             if(filename/=recordTrimmed) then
                 fileCounter = fileCounter + 1
@@ -408,11 +430,13 @@ contains
         if (present(count)) count = fileCounter
 
         close(fileUnit, iostat = Err%stat, status = "delete")
+        ! LCOV_EXCL_START
         if (Err%stat/=0) then
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // filename // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         ! remove the files
         !call removeFile(filename,isWindowsShell,Err)
@@ -448,4 +472,4 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-end module FileList_mod
+end module FileList_mod ! LCOV_EXCL_LINE

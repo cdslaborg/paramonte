@@ -254,7 +254,7 @@ contains
 
         DataUnsorted    = DataUnsorted_RK
         DataUnsorted2   = DataUnsorted2_RK
-        call sortAscending(lenLeader = ndata, Leader = DataUnsorted, Rooter = DataUnsorted2, Err = Err)
+        call sortAscendingWithRooter_RK(lenLeader = ndata, Leader = DataUnsorted, Rooter = DataUnsorted2, Err = Err)
         assertion = .not. Err%occurred
         if (.not. assertion) return
 
@@ -325,7 +325,7 @@ contains
         real(RK)                    :: median
         type(Err_type)              :: Err
 
-        call getMedian(lenArray = ndata-1, Array = DataUnsorted_RK(1:ndata-1), median = median, Err = Err)
+        call getMedian_RK(lenArray = ndata-1, Array = DataUnsorted_RK(1:ndata-1), median = median, Err = Err)
         assertion = .not. Err%occurred
         if (.not. assertion) return
 

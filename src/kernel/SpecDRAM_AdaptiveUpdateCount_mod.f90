@@ -149,4 +149,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecDRAM_AdaptiveUpdateCount_mod
+end module SpecDRAM_AdaptiveUpdateCount_mod ! LCOV_EXCL_LINE

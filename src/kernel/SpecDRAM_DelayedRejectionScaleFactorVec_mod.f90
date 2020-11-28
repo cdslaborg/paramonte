@@ -169,4 +169,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecDRAM_DelayedRejectionScaleFactorVec_mod
+end module SpecDRAM_DelayedRejectionScaleFactorVec_mod ! LCOV_EXCL_LINE

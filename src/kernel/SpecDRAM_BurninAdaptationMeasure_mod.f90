@@ -157,4 +157,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecDRAM_BurninAdaptationMeasure_mod
+end module SpecDRAM_BurninAdaptationMeasure_mod ! LCOV_EXCL_LINE

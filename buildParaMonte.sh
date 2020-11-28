@@ -2670,38 +2670,53 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                 MEMORY_ALLOCATION="stack"
             fi
 
-            gcovDataDir=$(find "${ParaMonte_OBJ_DIR}" -name ParaMonte_mod*.o)
-            gcovDataDir=$(dirname "${gcovDataDir}")
+            gcovKernelDataDir=$(find "${ParaMonte_OBJ_DIR}" -name ParaMonte_mod*.o)
+            gcovKernelDataDir=$(dirname "${gcovKernelDataDir}")
 
-            if [ -d "${gcovDataDir}" ]; then
+            if [ -d "${gcovKernelDataDir}" ]; then
 
-                ParaMonte_GCOV_DIR="${ParaMonte_BLD_DIR}"/gcov
-                mkdir -p "${ParaMonte_GCOV_DIR}"
-                cd "${ParaMonte_GCOV_DIR}"
+                gcovKernelDir="${ParaMonte_BLD_DIR}"/gcov
+                mkdir -p "${gcovKernelDir}"
+                cd "${gcovKernelDir}"
 
                 for srcFileName in "${ParaMonteKernel_SRC_DIR}"/*.f90; do
-                    srcFileNameBase=$(basename -- "${srcFileName}")
-                    #if ! [[ "${srcFileName}" =~ .*".inc.f90".* ]]; then
-                    #objFilePath=$(find "${gcovDataDir}" -name ${srcFileNameBase}.o)
-                    objFilePath="${gcovDataDir}/${srcFileNameBase}.o"
-                    echo >&2 gcov "${ParaMonteKernel_SRC_DIR}"/${srcFileName} -o "${objFilePath}"
-                    gcov "${srcFileName}" -o "${objFilePath}"
-                    #fi
+                    if ! [[ "${srcFileName}" =~ .*"ifport.f90".* ]]; then
+                        srcFileNameBase=$(basename -- "${srcFileName}")
+                        #if ! [[ "${srcFileName}" =~ .*".inc.f90".* ]]; then
+                        #objFilePath=$(find "${gcovKernelDataDir}" -name ${srcFileNameBase}.o)
+                        objFilePath="${gcovKernelDataDir}/${srcFileNameBase}.o"
+                        echo >&2 gcov "${ParaMonteKernel_SRC_DIR}"/${srcFileName} -o "${objFilePath}"
+                        gcov "${srcFileName}" -o "${objFilePath}"
+                        #fi
+                    fi
                 done
 
                 # generate summary report file
 
                 if command -v lcov >/dev/null 2>&1; then
 
-                    ParaMonte_LCOV_DIR="${ParaMonte_BLD_DIR}"/lcov
-                    mkdir -p "${ParaMonte_LCOV_DIR}"
-                    cd "${ParaMonte_LCOV_DIR}"
+                    lcovKernelDir="${ParaMonte_BLD_DIR}"/lcov
+                    mkdir -p "${lcovKernelDir}"
+                    cd "${lcovKernelDir}"
 
-                    lcov --legend --capture --directory "${gcovDataDir}" --output-file ./main_coverage.info
+                    lcov --capture --directory "${gcovKernelDataDir}" --output-file ./paramonte.coverage.info
 
                     if command -v genhtml >/dev/null 2>&1; then
 
-                        genhtml main_coverage.info --output-directory html
+                        genhtml paramonte.coverage.info --output-directory html
+
+                        ## generate test files code coverage
+                        #
+                        #gcovKernelTestDataDir=$(find "${ParaMonte_OBJ_DIR}" -name Test_mod*.o)
+                        #gcovKernelTestDataDir=$(dirname "${gcovKernelTestDataDir}")
+                        #
+                        #lcovKernelTestDir="${ParaMonte_BLD_DIR}"/test/lcov
+                        #mkdir -p "${lcovKernelTestDir}"
+                        #cd "${lcovKernelTestDir}"
+                        #
+                        #lcov --capture --directory "${gcovKernelTestDataDir}" --output-file ./paramonte.coverage.info
+                        #
+                        #genhtml paramonte.coverage.info --output-directory html
 
                     else
                         echo >&2

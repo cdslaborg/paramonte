@@ -50,7 +50,7 @@ module Misc_mod
 
     character(*), parameter :: MODULE_NAME = "@Misc_mod"
 
-    integer(int32), PARAMETER :: NPAR_ARTH = 16, NPAR2_ARTH = 8
+    integer(int32), PARAMETER :: NPAR_ARTH = 16_int32, NPAR2_ARTH = 8_int32
 
     interface copyArray
         module procedure :: copyArray_IK, copyArray_RK
@@ -320,22 +320,23 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: arth_RK
 #endif
         use Constants_mod, only: IK, RK
+        implicit none
         real(RK)    , intent(in)    :: first,increment
         integer(IK) , intent(in)    :: n
         real(RK)                    :: arth(n)
         integer(IK)                 :: k,k2
         real(RK)                    :: temp
         if (n > 0) arth(1)=first
-        if (n <= npar_arth) then
+        if (n <= NPAR_ARTH) then
             do k = 2,n
                 arth(k) = arth(k-1) + increment
             end do
         else
-            do k = 2, npar2_arth
+            do k = 2, NPAR2_ARTH
                 arth(k) = arth(k-1) + increment
             end do
-            temp = increment * npar2_arth
-            k = npar2_arth
+            temp = increment * NPAR2_ARTH
+            k = NPAR2_ARTH
             do
                 if (k >= n) exit
                 k2 = k+k
@@ -355,20 +356,21 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: arth_IK
 #endif
         use Constants_mod, only: IK, RK
+        implicit none
         integer(IK) , intent(in)    :: first,increment,n
         integer(IK)                 :: arth(n)
         integer(IK)                 :: k,k2,temp
         if (n > 0) arth(1) = first
-        if (n <= npar_arth) then
+        if (n <= NPAR_ARTH) then
             do k=2,n
                 arth(k) = arth(k-1) + increment
             end do
         else
-            do k = 2, npar2_arth
+            do k = 2, NPAR2_ARTH
                 arth(k) = arth(k-1) + increment
             end do
-            temp = increment * npar2_arth
-            k = npar2_arth
+            temp = increment * NPAR2_ARTH
+            k = NPAR2_ARTH
             do
                 if (k >= n) exit
                 k2 = k + k

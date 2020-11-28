@@ -139,4 +139,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecBase_MaxNumDomainCheckToStop_mod
+end module SpecBase_MaxNumDomainCheckToStop_mod ! LCOV_EXCL_LINE

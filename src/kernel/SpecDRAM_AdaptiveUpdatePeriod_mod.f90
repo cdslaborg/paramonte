@@ -151,4 +151,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecDRAM_AdaptiveUpdatePeriod_mod
+end module SpecDRAM_AdaptiveUpdatePeriod_mod ! LCOV_EXCL_LINE

@@ -169,4 +169,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecMCMC_RandomStartPointDomainLowerLimitVec_mod
+end module SpecMCMC_RandomStartPointDomainLowerLimitVec_mod ! LCOV_EXCL_LINE

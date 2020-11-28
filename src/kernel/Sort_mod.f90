@@ -148,7 +148,7 @@ contains
     !> On return, the contents of the input array is completely overwritten by the output sorted array.
     !>
     !> \warning
-    !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
+    !> On return, the value of `Err%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine sortAscending_RK(np,Point,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscending_RK
@@ -212,9 +212,11 @@ contains
                 Point(j) = dummy
                 jstack = jstack+2
                 if (jstack > NSTACK) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": NSTACK is too small."
                     return
+                    ! LCOV_EXCL_STOP
                 end if
                 if (r-i+1 >= j-m) then
                     istack(jstack) = r
@@ -311,9 +313,11 @@ contains
                 Indx(j)=indext
                 jstack=jstack+2
                 if (jstack > NSTACK) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": NSTACK is too small."
                     return
+                    ! LCOV_EXCL_STOP
                 end if
                 if (r-i+1 >= j-l) then
                     istack(jstack)=r
@@ -420,9 +424,11 @@ contains
                 Indx(j)=indext
                 jstack=jstack+2
                 if (jstack > NSTACK) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": NSTACK is too small."
                     return
+                    ! LCOV_EXCL_STOP
                 end if
                 if (r-i+1 >= j-l) then
                     istack(jstack)=r
@@ -476,10 +482,12 @@ contains
         integer(IK)                     :: Indx(lenLeader)
 
         call indexArray_RK(lenLeader,Leader,Indx,Err)
+        ! LCOV_EXCL_START
         if (Err%occurred) then
             Err%msg = PROCEDURE_NAME//": NSTACK is too small."
             return
         end if
+        ! LCOV_EXCL_STOP
         Leader = Leader(Indx)
         Rooter = Rooter(Indx)
     end subroutine sortAscendingWithRooter_RK
@@ -516,10 +524,12 @@ contains
 
         ArrayDummy = Array
         call sortAscending(np=lenArray,Point=ArrayDummy,Err=Err)
+        ! LCOV_EXCL_START
         if (Err%occurred) then
             Err%msg = PROCEDURE_NAME//Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         lenArrayHalf = lenArray / 2
         median = ArrayDummy(lenArrayHalf+1)
