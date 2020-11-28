@@ -120,10 +120,12 @@ contains
         if (present(isImageDistinct)) RandomSeed%isImageDistinct = isImageDistinct
 
         call RandomSeed%set(inputSeed)
+        ! LCOV_EXCL_START
         if (RandomSeed%Err%occurred) then
             RandomSeed%Err%msg = PROCEDURE_NAME // RandomSeed%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         call RandomSeed%get()
 
@@ -193,11 +195,13 @@ contains
                 if (scalarSeed<=huge(scalarSeed) ) exit
                 scalarSeed = scalarSeed - huge(scalarSeed)
             end do
-            if (scalarSeed==0) then
+            ! LCOV_EXCL_START
+            if (scalarSeed==0_IK) then
                 RandomSeed%Err%occurred = .true.
                 RandomSeed%Err%msg = PROCEDURE_NAME // ": Random seed cannot be zero."
                 return
             end if
+            ! LCOV_EXCL_STOP
         end if
 
         ! now use scalarSeed to construct the random seed on all images

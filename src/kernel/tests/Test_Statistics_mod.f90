@@ -329,7 +329,7 @@ contains
                                                                 , 1._RK, 0._RK, 3._RK ], shape = shape(InvCovMat) )
         real(RK)                :: mahalSq
         real(RK)                :: difference
-        mahalSq = getMahalSq(nd = nd, MeanVec = MeanVec, InvCovMat = InvCovMat, Point = Point)
+        mahalSq = getMahalSqSP_RK(nd = nd, MeanVec = MeanVec, InvCovMat = InvCovMat, Point = Point)
         difference = abs(mahalSq - mahalSq_ref) / mahalSq_ref
         assertion = difference <= tolerance
 
@@ -360,7 +360,7 @@ contains
                                                                 , 1._RK, 0._RK, 3._RK ], shape = shape(InvCovMat) )
         real(RK)                :: MahalSq(np)
         real(RK)                :: Difference(np)
-        MahalSq = getMahalSq(nd = nd, np = np, MeanVec = MeanVec, InvCovMat = InvCovMat, Point = Point)
+        MahalSq = getMahalSqMP_RK(nd = nd, np = np, MeanVec = MeanVec, InvCovMat = InvCovMat, Point = Point)
         Difference = abs(MahalSq - MahalSq_ref) / MahalSq_ref
         assertion = all(Difference <= tolerance)
 
@@ -392,7 +392,7 @@ contains
                                                                     , 1._RK, 0._RK, 3._RK ], shape = shape(InvCovMat) ), kind = RK )
         real(RK)                :: mahalSq
         real(RK)                :: difference
-        mahalSq = getMahalSq(nd = nd, MeanVec = MeanVec, InvCovMat = InvCovMat, Point = Point)
+        mahalSq = getMahalSqSP_CK(nd = nd, MeanVec = MeanVec, InvCovMat = InvCovMat, Point = Point)
         difference = abs(mahalSq - mahalSq_ref) / mahalSq_ref
         assertion = difference <= tolerance
 
@@ -424,7 +424,7 @@ contains
 
         real(RK)                :: MahalSq(np)
         real(RK)                :: Difference(np)
-        MahalSq = getMahalSq(nd = nd, np = np, MeanVec = MeanVec, InvCovMat = InvCovMat, Point = Point)
+        MahalSq = getMahalSqMP_CK(nd = nd, np = np, MeanVec = MeanVec, InvCovMat = InvCovMat, Point = Point)
         Difference = abs(real(MahalSq - MahalSq_ref,RK) / real(MahalSq_ref,RK))
         assertion = all(Difference <= tolerance)
 
