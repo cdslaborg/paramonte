@@ -513,10 +513,10 @@ if [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "python" ]; then
 fi
 
 if ! [ "${codecov_flag}" = "" ]; then
+    PARALLELISM_LIST="mpi"
     BTYPE_LIST="release"
     LTYPE_LIST="static"
     LANG_LIST="fortran"
-    PARALLELISM="mpi"
     MEMORY="heap"
 fi
 
