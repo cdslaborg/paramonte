@@ -278,13 +278,13 @@ contains
         logEffectivePeakPhotonFlux = getLogEffectivePeakPhotonFlux(0._RK,real(THRESH_ERFC_AVG,RK))
         difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
         assertion = difference < tolerance
-        !if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux        = ", logEffectivePeakPhotonFlux
             write(Test%outputUnit,"(*(g0))") "difference                        = ", difference
             write(Test%outputUnit,"(*(g0))")
-        !end if
+        end if
     end function test_getLogEffectivePeakPhotonFlux_SPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -300,13 +300,13 @@ contains
         logEffectivePeakPhotonFlux = getLogEffectivePeakPhotonFlux(0._RK,real(THRESH_ERFC_AVG,RK))
         difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
         assertion = difference < tolerance
-        !if (Test%isDebugMode .and. .not. assertion) then
+        if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux        = ", logEffectivePeakPhotonFlux
             write(Test%outputUnit,"(*(g0))") "difference                        = ", difference
             write(Test%outputUnit,"(*(g0))")
-        !end if
+        end if
     end function test_getLogEffectivePeakPhotonFlux_DPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
