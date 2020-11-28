@@ -159,7 +159,8 @@ contains
         call Test%run(test_getLog10PF53,"test_getLog10PF53")
         call Test%run(test_readDataGRB_1,"test_readDataGRB_1")
         call Test%run(test_readDataGRB_2,"test_readDataGRB_2")
-        call Test%run(test_getLogEffectivePeakPhotonFlux_1,"test_getLogEffectivePeakPhotonFlux_1")
+        call Test%run(test_getLogEffectivePeakPhotonFlux_SPR_1,"test_getLogEffectivePeakPhotonFlux_SPR_1")
+        call Test%run(test_getLogEffectivePeakPhotonFlux_DPR_1,"test_getLogEffectivePeakPhotonFlux_DPR_1")
         call Test%run(test_getLogEffectivePeakPhotonFluxCorrection_SPR_1,"test_getLogEffectivePeakPhotonFluxCorrection_SPR_1")
         call Test%run(test_getLogEffectivePeakPhotonFluxCorrection_DPR_1,"test_getLogEffectivePeakPhotonFluxCorrection_DPR_1")
         call Test%finalize()
@@ -266,17 +267,47 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_getLogEffectivePeakPhotonFlux_1() result(assertion)
+    function test_getLogEffectivePeakPhotonFlux_SPR_1() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real32
         implicit none
         logical                 :: assertion
-        real(RK), parameter     :: tolerance = 1.e-12_RK
-        assertion = abs(THRESH_ERFC_AMP + getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)) < tolerance
+        real(RK), parameter     :: tolerance = sqrt(epsilon(1._RK))
+        real(RK), parameter     :: logEffectivePeakPhotonFlux_ref = real(THRESH_ERFC_AMP,RK)
+        real(RK)                :: logEffectivePeakPhotonFlux
+        real(RK)                :: difference
+        logEffectivePeakPhotonFlux = getLogEffectivePeakPhotonFlux(0._RK,real(THRESH_ERFC_AVG,RK))
+        difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
+        assertion = difference < tolerance
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
-            write(Test%outputUnit,"(*(g0))") "getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG) = ", getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux        = ", logEffectivePeakPhotonFlux
+            write(Test%outputUnit,"(*(g0))") "difference                        = ", difference
             write(Test%outputUnit,"(*(g0))")
         end if
-    end function test_getLogEffectivePeakPhotonFlux_1
+    end function test_getLogEffectivePeakPhotonFlux_SPR_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getLogEffectivePeakPhotonFlux_DPR_1() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64
+        implicit none
+        logical                 :: assertion
+        real(RK), parameter     :: tolerance = sqrt(epsilon(1._RK))
+        real(RK), parameter     :: logEffectivePeakPhotonFlux_ref = real(THRESH_ERFC_AMP,RK)
+        real(RK)                :: logEffectivePeakPhotonFlux
+        real(RK)                :: difference
+        logEffectivePeakPhotonFlux = getLogEffectivePeakPhotonFlux(0._RK,real(THRESH_ERFC_AVG,RK))
+        difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
+        assertion = difference < tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux        = ", logEffectivePeakPhotonFlux
+            write(Test%outputUnit,"(*(g0))") "difference                        = ", difference
+            write(Test%outputUnit,"(*(g0))")
+        end if
+    end function test_getLogEffectivePeakPhotonFlux_DPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

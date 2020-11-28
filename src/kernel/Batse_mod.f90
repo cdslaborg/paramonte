@@ -362,20 +362,35 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getLogEffectivePeakPhotonFlux(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)
+    pure function getLogEffectivePeakPhotonFlux_SPR(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFlux
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFlux_SPR
 #endif
         ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
         ! To do so, the observed T90 duration of the event is also necessary as input.
         ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
-        use, intrinsic :: iso_fortran_env, only: real32
-        use Constants_mod, only: RK
+        use, intrinsic :: iso_fortran_env, only: RK => real32
         implicit none
         real(RK), intent(in)    :: logPeakPhotonFlux64ms, logT90
         real(RK)                :: logEffectivePeakPhotonFlux
         logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms - getLogEffectivePeakPhotonFluxCorrection(logT90)
-    end function getLogEffectivePeakPhotonFlux
+    end function getLogEffectivePeakPhotonFlux_SPR
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    pure function getLogEffectivePeakPhotonFlux_DPR(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFlux_DPR
+#endif
+        ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
+        ! To do so, the observed T90 duration of the event is also necessary as input.
+        ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
+        use, intrinsic :: iso_fortran_env, only: RK => real64
+        implicit none
+        real(RK), intent(in)    :: logPeakPhotonFlux64ms, logT90
+        real(RK)                :: logEffectivePeakPhotonFlux
+        logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms - getLogEffectivePeakPhotonFluxCorrection(logT90)
+    end function getLogEffectivePeakPhotonFlux_DPR
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -387,7 +402,6 @@ contains
         ! To do so, the observed T90 duration of the event is also necessary as input.
         ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
         use, intrinsic :: iso_fortran_env, only: RK => real32
-        use Constants_mod, only: RK
         implicit none
         real(RK), intent(in)    :: logT90
         real(RK)                :: logEffectivePeakPhotonFluxCorrection
@@ -405,7 +419,6 @@ contains
         ! To do so, the observed T90 duration of the event is also necessary as input.
         ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
         use, intrinsic :: iso_fortran_env, only: RK => real64
-        use Constants_mod, only: RK
         implicit none
         real(RK), intent(in)    :: logT90
         real(RK)                :: logEffectivePeakPhotonFluxCorrection
