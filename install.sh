@@ -512,6 +512,14 @@ if [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "python" ]; then
     if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
 fi
 
+if ! [ "${codecov_flag}" = "" ]; then
+    BTYPE_LIST="release"
+    LTYPE_LIST="static"
+    LANG_LIST="fortran"
+    PARALLELISM="mpi"
+    MEMORY="heap"
+fi
+
 for PMCS in $PMCS_LIST; do
 
     #for CFI_ENABLED in $CFI_ENABLED_LIST; do
