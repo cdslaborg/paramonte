@@ -294,18 +294,19 @@ contains
         character(*), intent(in), optional      :: inputFile
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@setupParaMonte()"
 
+        self%LogFile%unit = output_unit ! temporarily set the report file to stdout.
+        self%Err%occurred = .false.
+        self%Err%msg = ""
+
         self%Timer = Timer_type(self%Err)
         if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while setting up the " // self%name // "timer."//NLC// self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
-        self%nd%val = nd
-        self%LogFile%unit = output_unit   ! temporarily set the report file to stdout.
-        self%Decor = Decoration_type()    ! initialize the TAB character and decoration symbol to the default values.
 
-        self%Err%occurred = .false.
-        self%Err%msg = ""
+        self%nd%val = nd
+        self%Decor = Decoration_type()    ! initialize the TAB character and decoration symbol to the default values.
 
         self%name     = name
         self%brand    = INDENT // self%name

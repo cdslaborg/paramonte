@@ -43,19 +43,18 @@
 !>  \brief This module contains tests of the module [ParaMonte_mod](@ref paramonte_mod).
 !>  @author Amir Shahmoradi
 
-module Test_ParaMonte_mod
+module Test_ParaDRAM_mod
 
     use Constants_mod, only: IK, RK
     use Test_mod, only: Test_type
+    use ParaDRAM_mod
 
+    !use Statistics_mod, only: paradramPrintEnabled
     implicit none
-
-    ! Standard MultiVariate Normal (SMVN) specifications: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
-    integer(IK) , parameter :: NDIM = 1_IK                                              ! number of dimensions of the distribution
-    real(RK)    , parameter :: LOG_SMVN_COEF = NDIM*log(1._RK/sqrt(2._RK*acos(-1._RK))) ! log(1/sqrt(2*Pi)^ndim)
+    !paradramPrintEnabled = .true.
 
     private
-    public :: test_ParaMonte
+    public :: test_ParaDRAM
 
     type(Test_type) :: Test
 
@@ -65,109 +64,109 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_ParaMonte()
-        implicit none
-        call test_ParaDRAM()
-        call test_ParaDISE()
-    end subroutine test_ParaMonte
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
     subroutine test_ParaDRAM()
-
-        use ParaDRAM_mod, only: MODULE_NAME
         implicit none
-
         Test = Test_type(moduleName=MODULE_NAME)
-
-        call test_runParaDRAM()
+        call Test%run(test_runSampler_1, "test_runSampler_1")
+        call Test%run(test_runSampler_2, "test_runSampler_2")
+        call Test%run(test_runSampler_3, "test_runSampler_3")
         call Test%finalize()
-
     end subroutine test_ParaDRAM
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_ParaDISE()
-
-        use ParaDISE_mod, only: MODULE_NAME
+    !> \brief
+    !> Test the ParaDRAM sampler with no input arguments or input file.
+    function test_runSampler_1() result(assertion)
         implicit none
-
-        Test = Test_type(moduleName=MODULE_NAME)
-
-        call test_runParaDISE()
-        call Test%finalize()
-
-    end subroutine test_ParaDISE
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    subroutine test_runParaDRAM()
-
-!use Statistics_mod, only: paradramPrintEnabled
-        use ParaDRAM_mod, only: ParaDRAM_type
-        implicit none
-        character(:), allocatable   :: internalFile
-        type(ParaDRAM_type)         :: PD
-
-        internalFile = "&ParaDRAM randomSeed = 1111 chainSize = 30000 /"
-
-        call Test%testing("ParaDRAM class")
-
-!paradramPrintEnabled = .true.
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = NDIM &
-                            , getLogFunc = getLogFunc &
-                            , inputFile = Test%inDir//"paramonte.nml" &
+                            , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            !, inputFile = internalFile &
-                            !, inputFile = " " &
                             )
-
-        !Test%assertion = .true.
-        !call Test%verify()
-        call Test%skipping()
-
-    end subroutine test_runParaDRAM
+        assertion = .not. PD%Err%occurred
+#endif
+    end function test_runSampler_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_runParaDISE()
-
-!use Statistics_mod, only: paradisePrintEnabled
-        use ParaDISE_mod, only: ParaDISE_type
+    !> \brief
+    !> Test the ParaDRAM sampler with an internal input file.
+    function test_runSampler_2() result(assertion)
         implicit none
-        character(:), allocatable   :: internalFile
-        type(ParaDISE_type)         :: PS
-
-        internalFile = "&ParaDISE randomSeed = 1111 chainSize = 30000 /"
-
-        call Test%testing("ParaDISE class")
-
-!paradisePrintEnabled = .true.
-        call PS%runSampler  ( ndim = NDIM &
-                            , getLogFunc = getLogFunc &
-                            , inputFile = Test%inDir//"paramonte.nml" &
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            !, inputFile = internalFile &
-                            !, inputFile = " " &
+                            , inputFile = "&ParaDRAM randomSeed = 1111 chainSize = 300 /" &
                             )
-
-        !Test%assertion = .true.
-        !call Test%verify()
-        call Test%skipping()
-
-    end subroutine test_runParaDISE
+        assertion = .not. PD%Err%occurred .and. PD%SpecBase%RandsomSeed%userSeed==1111_IK .and. PD%SpecBase%ChainSize%val==100_IK
+#endif
+    end function test_runSampler_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Test the ParaDRAM sampler with an external input file.
+    function test_runSampler_3() result(assertion)
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , inputFile = Test%inDir/"Test_ParaDRAM_mod@test_runSampler_3.in" &
+                            )
+        assertion = .not. PD%Err%occurred
+#endif
+    end function test_runSampler_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a path to a non-existing external input file.
+    function test_runSampler_4() result(assertion)
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , inputFile = Test%inDir//"ParaDRAM.nml" &
+                            , mpiFinalizeRequested = .false. &
+                            , inputFile = " " &
+                            )
+        assertion = .not. PD%Err%occurred
+#endif
+    end function test_runSampler_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return the density function value of the uncorrelated Multivariate Normal distribution for the given input 
+    !> location specified by the vector `Point` of length `ndim`.
 #if defined CFI_ENABLED
-    function getLogFunc(ndim,Point) result(logFunc) bind(C)
+    function getLogFuncMVN(ndim,Point) result(logFunc) bind(C)
 #else
-    function getLogFunc(ndim,Point) result(logFunc)
+    function getLogFuncMVN(ndim,Point) result(logFunc)
 #endif
         ! This function returns the probability density function of the standard multivariate normal distribution of ndim dimensions.
-        use Statistics_mod, only: getLogProbGausMix
+        !use Statistics_mod, only: getLogProbMixMVN
         use Constants_mod, only : IK, RK
         implicit none
+
+        !! Standard MultiVariate Normal (SMVN) specifications: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+        !real(RK), parameter :: LOG_SMVN_COEF = NDIM*log(1._RK/sqrt(2._RK*acos(-1._RK))) ! log(1/sqrt(2*Pi)^ndim)
+
 #if defined CFI_ENABLED
         integer(IK), intent(in), value  :: ndim
 #else
@@ -175,20 +174,24 @@ contains
 #endif
         real(RK), intent(in)            :: Point(ndim)
         real(RK)                        :: logFunc
+
         !block
         !    use System_mod, only: sleep
         !    use Err_mod, only: Err_type
         !    type(Err_type) :: Err
         !    call sleep(seconds=5000.e-6_RK,Err=Err)
         !end block
-        block
-            real(RK), allocatable :: unifrnd(:,:)
-            allocate(unifrnd(200,20))
-            call random_number(unifrnd)
-            logFunc = sum(unifrnd) + LOG_SMVN_COEF - 0.5_RK * sum(Point**2) - sum(unifrnd)
-            deallocate(unifrnd)
-        end block
-        logFunc = LOG_SMVN_COEF - 0.5_RK * sum(Point**2)
+
+        !block
+        !    real(RK), allocatable :: unifrnd(:,:)
+        !    allocate(unifrnd(200,20))
+        !    call random_number(unifrnd)
+        !    logFunc = sum(unifrnd) - 0.5_RK * sum(Point**2) - sum(unifrnd)
+        !    deallocate(unifrnd)
+        !end block
+
+        logFunc = -sum(Point**2)
+
        !block
        !    integer(IK), parameter :: nmode = 2_IK
        !    real(RK) :: LogAmplitude(nmode), MeanVec(nmode), InvCovMat(nmode), LogSqrtDetInvCovMat(nmode)
@@ -206,8 +209,8 @@ contains
        !                                , Point = Point(1) &
        !                                )
        !end block
-    end function getLogFunc
+    end function getLogFuncMVN
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_ParaMonte_mod
+end module Test_ParaDRAM_mod

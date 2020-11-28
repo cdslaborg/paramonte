@@ -407,16 +407,15 @@ contains
         real(RK)   , intent(in)                         :: StateOld(nd)
         real(RK)                                        :: StateNew(nd)
         integer(IK)                                     :: domainCheckCounter
-        real(RK)                                        :: CholeskyLower(nd,nd) ! dummy variable to avoid copy in / copy out
 
         domainCheckCounter = 0_IK
-        CholeskyLower = comv_CholDiagLower(1:nd,1:nd,counterDRS)
 
         loopBoundaryCheck: do ! Check for the support Region consistency:
 #if defined UNIFORM || defined NORMAL
             StateNew(1:nd) = GET_RANDOM_PROPOSAL( nd                                    &
                                                 , StateOld                              &
-                                                , CholeskyLower                         &
+                                                ! ATTN: The colon index in place of 1:nd below avoids the temporary array creation
+                                                , comv_CholDiagLower(:,1:nd,counterDRS) &
                                                 , comv_CholDiagLower(1:nd,0,counterDRS) &
                                                 )
 #endif
@@ -630,8 +629,9 @@ contains
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             ! now get the Cholesky factorization
-            ! Do not set the full boundaries' range `(1:nd)` for the first index of `comv_CholDiagLower` in the following subroutine call.
-            ! Setting the boundaries forces the compiler to generate a temporary array.
+
+            ! WARNING: Do not set the full boundaries' range `(1:nd)` for the first index of `comv_CholDiagLower` in the following subroutine call.
+            ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
 
             call getCholeskyFactor( nd, comv_CholDiagLower(:,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
 
@@ -669,8 +669,10 @@ contains
 
                 ! ensure the old Cholesky factorization can be recovered
 
-                !call getCholeskyFactor( nd, comv_CholDiagLower(1:nd,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
-                call getCholeskyFactor( nd, comv_CholDiagLower(:,1:nd,0), comv_CholDiagLower(1:nd,0,0) ) ! avoid temporary array creation by using :
+                ! WARNING: Do not set the full boundaries' range `(1:nd)` for the first index of `comv_CholDiagLower` in the following subroutine call.
+                ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
+
+                call getCholeskyFactor( nd, comv_CholDiagLower(:,1:nd,0), comv_CholDiagLower(1:nd,0,0) ) ! avoid temporary array creation by using : indexer
                 if (comv_CholDiagLower(1,0,0)<0._RK) then
                     write(mc_logFileUnit,"(A)")
                     write(mc_logFileUnit,"(A)") "Singular covariance matrix detected:"
@@ -678,6 +680,7 @@ contains
                     do j = 1, nd
                         write(mc_logFileUnit,"(*(E25.15))") comv_CholDiagLower(1:j,j,0)
                     end do
+                    write(mc_logFileUnit,"(A)")
                     ProposalErr%occurred = .true.
                     ProposalErr%msg = PROCEDURE_NAME // &
                                     ": Error occurred while attempting to compute the Cholesky factorization of the &
@@ -962,10 +965,10 @@ contains
         integer(IK) :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
-            ! Do not set the full boundaries' range `(1:mc_ndim)` for `comv_CholDiagLower` in the following call.
-            ! Setting the boundaries forces the compiler to generate a temporary array.
+            ! WARNING: Do not set the full boundaries' range `(1:mc_ndim)` for the first index of `comv_CholDiagLower` in the following subroutine call.
+            ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
             mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim &
-                                                                            , CholeskyLower = comv_CholDiagLower(:,:,istage) &
+                                                                            , CholeskyLower = comv_CholDiagLower(:,1:mc_ndim,istage) &
                                                                             , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) &
                                                                             )
             mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))

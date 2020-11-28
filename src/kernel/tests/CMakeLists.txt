@@ -70,7 +70,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_TimerCPU_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_TranGaus_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_EconomicsToolbox_mod.f90
-    #${ParaMonteTest_SRC_DIR}/Test_ParaMonte_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90
     ${ParaMonteTest_SRC_DIR}/main.f90
 )
 

@@ -96,6 +96,7 @@ gcc_bootstrap_flag=""
 FOR_COARRAY_NUM_IMAGES=3
 MatDRAM_ENABLED="false"
 shared_enabled="true"
+codecov_flag=""
 dryrun_flag=""
 
 while [ "$1" != "" ]; do
@@ -144,6 +145,8 @@ while [ "$1" != "" ]; do
         -B | --bootstrap )      gcc_bootstrap_flag="--bootstrap"
                                 ;;
         -a | --matdram )        MatDRAM_ENABLED="true"
+                                ;;
+        -c | --codecov )        codecov_flag="--codecov"
                                 ;;
         -n | --nproc )          shift
                                 FOR_COARRAY_NUM_IMAGES="$1"
@@ -617,6 +620,9 @@ for PMCS in $PMCS_LIST; do
                             if ! [ "${dryrun_flag}" = "" ]; then
                             echo >&2 "                          ${dryrun_flag} \ "
                             fi
+                            if ! [ "${codecov_flag}" = "" ]; then
+                            echo >&2 "                          ${codecov_flag} \ "
+                            fi
                             if ! [ "${gcc_bootstrap_flag}" = "" ]; then
                             echo >&2 "                          ${gcc_bootstrap_flag} \ "
                             fi
@@ -652,7 +658,7 @@ for PMCS in $PMCS_LIST; do
                             ${fresh_flag} \
                             ${local_flag} \
                             ${dryrun_flag} \
-                            ${release_flag} \
+                            ${codecov_flag} \
                             ${gcc_bootstrap_flag} \
                             ${fortran_flag} \
                             ${mpiexec_flag} \
@@ -726,7 +732,9 @@ done
 
 echo >&2 ""
 echo >&2 "-- ParaMonte - all build files are stored at ${ParaMonte_ROOT_DIR}/build/"
+if [ "${codecov_flag}" = "" ]; then
 echo >&2 "-- ParaMonte - the library files are ready to use at ${ParaMonte_ROOT_DIR}/bin/"
+fi
 echo >&2 ""
 echo >&2 "-- ParaMonte - mission accomplished."
 echo >&2 ""

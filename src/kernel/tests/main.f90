@@ -48,17 +48,17 @@ program main
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 !block
-!use iso_fortran_env, only: IK=>int32, RK=>real64
-!use Timer_mod, only: Timer_type
-!integer(IK) :: i
-!real(RK) :: unifrnd(10**7)
-!type(Timer_type) :: Timer
-!call Timer%tic()
-!do i = 1, 10**7
-!    call random_number(Unifrnd(i))
-!end do
-!call Timer%toc()
-!write(*,*) sum(Unifrnd), Timer%Time%delta
+!    use iso_fortran_env, only: IK=>int32, RK=>real64
+!    use Timer_mod, only: Timer_type
+!    integer(IK) :: i
+!    real(RK) :: unifrnd(10**7)
+!    type(Timer_type) :: Timer
+!    call Timer%tic()
+!    do i = 1, 10**7
+!        call random_number(Unifrnd(i))
+!    end do
+!    call Timer%toc()
+!    write(*,*) sum(Unifrnd), Timer%Time%delta
 !end block
 !stop
 
@@ -97,10 +97,8 @@ block; use Test_System_mod; call test_System(); end block
 block; use Test_Timer_mod; call test_Timer(); end block
 block; use Test_TimerCPU_mod; call test_TimerCPU(); end block
 block; use Test_TranGaus_mod; call test_TranGaus(); end block
+block; use Test_ParaDRAM_mod; call test_ParaDRAM(); end block
 
 call finalize()
-
-!!call test_EconomicsToolbox()
-!call test_ParaMonte()
 
 end program main

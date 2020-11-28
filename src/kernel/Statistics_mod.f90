@@ -50,8 +50,8 @@ module Statistics_mod
 
     implicit none
 
-!logical, save :: paradramPrintEnabled = .false.
-!logical, save :: paradisePrintEnabled = .false.
+    !logical, save :: paradramPrintEnabled = .false.
+    !logical, save :: paradisePrintEnabled = .false.
 
     character(len=*), parameter :: MODULE_NAME = "@Statistics_mod"
 

@@ -59,6 +59,7 @@
         -o | --local            : prefer a build with the local installation of the prerequisites by ParaMonte (if they exist) over the default system settings.
         -y | --yes-to-all       : if a fresh installation of all of the prerequisites is needed, automatically answer yes to all permission requests.
         -B | --bootstrap        : enables robust bootstrap build when building the required GCC version with an old GCC version. Applicable only to GNU compiler suite.
+        -c | --codecov          : perform code coverage analysis. This option will disable the ParaMonte examples builds and runs and the ParaMonte library installation.
         -d | --dryrun           : skip a fresh library build and use the existing build to run the tests and examples and install the library (if any is possible).
         -a | --matdram          : build (only) the ParaMonte MatDRAM MATLAB library and return.
         -n | --nproc            : the default number of processes (coarray images) on which the ParaMonte examples/tests (if any) will be run: positive integer

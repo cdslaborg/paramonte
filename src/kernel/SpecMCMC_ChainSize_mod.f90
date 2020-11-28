@@ -79,7 +79,11 @@ contains
         implicit none
         character(*), intent(in)    :: methodName
         type(ChainSize_type)        :: ChainSizeObj
+#if defined CODECOV_ENABLED
+        ChainSizeObj%def    = 300_IK
+#else
         ChainSizeObj%def    = 100000_IK
+#endif
         ChainSizeObj%null   = NULL_IK
         ChainSizeObj%desc   = &
         "chainSize determines the number of non-refined, potentially auto-correlated, but unique, samples &

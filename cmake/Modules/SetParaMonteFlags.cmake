@@ -785,14 +785,22 @@ elseif (gnu_compiler)
     # which causes gfortran to break the compilation.
     # The problem still persists in debug mode. Therefore, when gfortran is 10, debug mode is disabled.
     #set(FCL_FLAGS_DEFAULT -std=gnu -ffree-line-length-none -fallow-argument-mismatch CACHE STRING "GNU Fortran default compiler flags" )
+
     set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none CACHE STRING "GNU Fortran default compiler flags" )
     set(CCL_FLAGS_DEFAULT -ffree-line-length-none  CACHE STRING "GNU CXX default compiler flags" )
+
+    set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt ) # set Fortran linker flags for release mode
+
     if (MT_ENABLED)
         set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -pthread )
         set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" -pthread )
     endif()
 
-    set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt ) # set Fortran linker flags for release mode
+    if (CODECOV_ENABLED)
+        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -fprofile-arcs -ftest-coverage -static-libgcc )
+        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" -fprofile-arcs -ftest-coverage -static-libgcc )
+        set(FL_FLAGS "${FL_FLAGS}" -fprofile-arcs -lgcov -static-libgcc )
+    endif()
 
     if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
         set(FCL_BUILD_FLAGS "${GNU_Fortran_DEBUG_FLAGS}")
