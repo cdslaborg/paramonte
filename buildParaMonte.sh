@@ -1985,9 +1985,9 @@ echo >&2 "-- ${BUILD_NAME} - all generated build files will be stored at: ${Para
 
 # set object/module/lib files directories
 
-ParaMonte_OBJ_DIR=${ParaMonte_BLD_DIR}/obj; export ParaMonte_OBJ_DIR
-ParaMonte_MOD_DIR=${ParaMonte_BLD_DIR}/mod; export ParaMonte_MOD_DIR
-ParaMonte_LIB_DIR=${ParaMonte_BLD_DIR}/lib; export ParaMonte_LIB_DIR
+ParaMonte_OBJ_DIR="${ParaMonte_BLD_DIR}/obj"; export ParaMonte_OBJ_DIR
+ParaMonte_MOD_DIR="${ParaMonte_BLD_DIR}/mod"; export ParaMonte_MOD_DIR
+ParaMonte_LIB_DIR="${ParaMonte_BLD_DIR}/lib"; export ParaMonte_LIB_DIR
 
 echo >&2 "-- ${BUILD_NAME} - ParaMonte object files directory: ${ParaMonte_OBJ_DIR}"
 echo >&2 "-- ${BUILD_NAME} - ParaMonte module files directory: ${ParaMonte_MOD_DIR}"
@@ -1995,7 +1995,7 @@ echo >&2 "-- ${BUILD_NAME} - ParaMonte library files directory: ${ParaMonte_LIB_
 
 # make bin directory
 
-ParaMonte_BIN_DIR=${ParaMonte_ROOT_DIR}/bin
+ParaMonte_BIN_DIR="${ParaMonte_ROOT_DIR}/bin"
 echo >&2 "-- ${BUILD_NAME} - ParaMonte binaries directory: ${ParaMonte_BIN_DIR}"
 if [[ -d "${ParaMonte_BIN_DIR}" ]]; then
     echo >&2 "-- ${BUILD_NAME} - ParaMonte binaries directory already exists. skipping..."
@@ -2009,14 +2009,14 @@ export ParaMonte_BIN_DIR
 # set ParaMonte library source directories
 ####################################################################################################################################
 
-         ParaMonteExample_SRC_DIR=${ParaMonte_ROOT_DIR}/example
-       ParaMonteInterface_SRC_DIR=${ParaMonte_ROOT_DIR}/src/interface
-      ParaMonteInterfaceC_SRC_DIR=${ParaMonteInterface_SRC_DIR}/C
- ParaMonteInterfaceMATLAB_SRC_DIR=${ParaMonteInterface_SRC_DIR}/MATLAB
- ParaMonteInterfacePython_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Python
-ParaMonteInterfaceFortran_SRC_DIR=${ParaMonteInterface_SRC_DIR}/Fortran
-      ParaMonteMATLABTest_SRC_DIR=${ParaMonteInterfaceMATLAB_SRC_DIR}/test
-      ParaMontePythonTest_SRC_DIR=${ParaMonteInterfacePython_SRC_DIR}/test
+         ParaMonteExample_SRC_DIR="${ParaMonte_ROOT_DIR}/example"
+       ParaMonteInterface_SRC_DIR="${ParaMonte_ROOT_DIR}/src/interface"
+      ParaMonteInterfaceC_SRC_DIR="${ParaMonteInterface_SRC_DIR}/C"
+ ParaMonteInterfaceMATLAB_SRC_DIR="${ParaMonteInterface_SRC_DIR}/MATLAB"
+ ParaMonteInterfacePython_SRC_DIR="${ParaMonteInterface_SRC_DIR}/Python"
+ParaMonteInterfaceFortran_SRC_DIR="${ParaMonteInterface_SRC_DIR}/Fortran"
+      ParaMonteMATLABTest_SRC_DIR="${ParaMonteInterfaceMATLAB_SRC_DIR}/test"
+      ParaMontePythonTest_SRC_DIR="${ParaMonteInterfacePython_SRC_DIR}/test"
 
 export ParaMonteExample_SRC_DIR
 export ParaMonteMATLABTest_SRC_DIR
@@ -2655,6 +2655,14 @@ fi
 
 if [ "${CODECOV_ENABLED}" = "true" ]; then
 
+    # set test object/module/lib files directories
+
+    ParaMonteTest_BLD_DIR="${ParaMonte_BLD_DIR}/test"
+    ParaMonteTest_OBJ_DIR="${ParaMonteTest_BLD_DIR}/obj"
+
+    htmlDir="${ParaMonte_ROOT_DIR}/codecov/${PMLIB_BASE_NAME}"
+    titleCodeCov="ParaMonte :: kernel - LCOV code coverage report"
+
     if [[ ${PMCS} == [gG][nN][uU] ]]; then
 
         if command -v gcov >/dev/null 2>&1; then
@@ -2676,17 +2684,24 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
             if [ -d "${gcovKernelDataDir}" ]; then
 
                 gcovKernelDir="${ParaMonte_BLD_DIR}"/gcov
-                mkdir -p "${gcovKernelDir}"
+                if ! [ -d "${gcovKernelDir}" ]; then
+                    mkdir -p "${gcovKernelDir}"
+                fi
                 cd "${gcovKernelDir}"
+
+                # Generate *.gcda *.gcno codecov files for the kernel source files
 
                 for srcFileName in "${ParaMonteKernel_SRC_DIR}"/*.f90; do
                     if ! [[ "${srcFileName}" =~ .*"ifport.f90".* ]]; then
+
                         srcFileNameBase=$(basename -- "${srcFileName}")
                         #if ! [[ "${srcFileName}" =~ .*".inc.f90".* ]]; then
                         #objFilePath=$(find "${gcovKernelDataDir}" -name ${srcFileNameBase}.o)
+                        # The following assumes that cmake names the object files with full source file name (including file extension).
                         objFilePath="${gcovKernelDataDir}/${srcFileNameBase}.o"
-                        echo >&2 gcov "${ParaMonteKernel_SRC_DIR}"/${srcFileName} -o "${objFilePath}"
-                        gcov "${srcFileName}" -o "${objFilePath}" \
+                        echo >&2 gcov "${ParaMonteKernel_SRC_DIR}/${srcFileName}" -o "${objFilePath}"
+
+                        gcov "${ParaMonteKernel_SRC_DIR}/${srcFileName}" -o "${objFilePath}" \
                         || {
                             echo >&2
                             echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage analysis via GNU gcov tool failed."
@@ -2694,26 +2709,72 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                             exit 1
                         }
                         #fi
+
                     fi
                 done
+
+                # Generate *.gcda *.gcno codecov files for the kernel test source files
+
+                gcovKernelTestDataDir=$(find "${ParaMonteTest_OBJ_DIR}" -name Test_mod*.o)
+                gcovKernelTestDataDir=$(dirname "${gcovKernelTestDataDir}")
+
+                if [ -d "${gcovKernelTestDataDir}" ]; then
+
+                    gcovKernelTestDir="${ParaMonteTest_BLD_DIR}"/gcov
+                    if ! [ -d "${gcovKernelTestDir}" ]; then
+                        mkdir -p "${gcovKernelTestDir}"
+                    fi
+                    cd "${gcovKernelTestDir}"
+
+                    for srcFileName in "${ParaMonteTest_SRC_DIR}"/*.f90; do
+                        if ! [[ "${srcFileName}" =~ .*"ifport.f90".* ]]; then
+
+                            srcFileNameBase=$(basename -- "${srcFileName}")
+                            objFilePath="${gcovKernelTestDataDir}/${srcFileNameBase}.o"
+                            echo >&2 gcov "${ParaMonteTest_SRC_DIR}/${srcFileName}" -o "${objFilePath}"
+
+                            gcov "${ParaMonteTest_SRC_DIR}/${srcFileName}" -o "${objFilePath}" \
+                            || {
+                                echo >&2
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: The ParaMonte Code Coverage analysis of the test source files via GNU gcov tool failed."
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: The ParaMonte test source file: ${ParaMonteTest_SRC_DIR}/${srcFileName}"
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - skipping..."
+                                echo >&2
+                            }
+                            #fi
+                        fi
+                    done
+
+                else
+
+                    echo >&2
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: the directory for the *.gcda *.gcno codecov data files does not exist."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: the expected directory path: ${gcovKernelTestDataDir}"
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: skipping code coverage report generation for the test files..."
+                    echo >&2
+
+                fi
 
                 # generate summary report file
 
                 if command -v lcov >/dev/null 2>&1; then
 
+                    #### generate the kernel code coverage report file
+
                     lcovKernelDir="${ParaMonte_BLD_DIR}"/lcov
                     mkdir -p "${lcovKernelDir}"
                     cd "${lcovKernelDir}"
 
-                    codeCovFilePath="${lcovKernelDir}/paramonte.coverage.info"
+                    lcovOutputKernelFilePath="${lcovKernelDir}/paramonte.kernel.coverage.info"
 
                     unset branchCoverageFlag
-                    # Uncomment the following line to enable branch coverage
+                    # Add the following flag to lcov to enable branch coverage:
                     # branchCoverageFlag="--rc lcov_branch_coverage=1"
+                    # "${branchCoverageFlag}"
 
                     lcov --capture \
                     --directory "${gcovKernelDataDir}" \
-                    --output-file "${codeCovFilePath}" \
+                    --output-file "${lcovOutputKernelFilePath}" \
                     || {
                         echo >&2
                         echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage report generation via lcov tool failed."
@@ -2721,27 +2782,84 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         exit 1
                     }
 
-                    #"${branchCoverageFlag}"
+                    #### generate the kernel code coverage report file
+
+                    lcovOutputCombinedFilePath="${lcovKernelDir}/paramonte.combined.coverage.info"
+
+                    unset lcovOutputTestFilePath
+                    if ls "${gcovKernelTestDir}"/*.gcov 1> /dev/null 2>&1; then
+
+                        lcovOutputTestFilePath="${lcovKernelDir}/paramonte.test.coverage.info"
+
+                        lcov --capture \
+                        --directory "${gcovKernelTestDir}" \
+                        --output-file "${lcovOutputTestFilePath}" \
+                        && {
+
+                            lcov \
+                            --add-tracefile "${lcovOutputKernelFilePath}" \
+                            --add-tracefile "${lcovOutputTestFilePath}" \ 
+                            --output-file "${lcovOutputCombinedFilePath}"
+
+                        } || {
+
+                            echo >&2
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: Code Coverage report generation for the ParaMonte test source files via lcov tool failed."
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: skipping..."
+                            echo >&2
+
+                        }
+
+                    else
+
+                        echo >&2
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: Failed to detect the *.gcda *.gcno codecov data files for the ParaMonte test source files."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: the expected directory path for the files: ${gcovKernelTestDir}"
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: The coverage report for the ParaMonte test source file will not be included."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: skipping the lcov code coverage report generation for the test files..."
+                        echo >&2
+
+                    fi
 
                     if command -v genhtml >/dev/null 2>&1; then
 
-                        #htmlDir="${ParaMonte}/html"
-                        htmlDir="${ParaMonte_ROOT_DIR}/codecov/${PMLIB_BASE_NAME}"
                         if [ -d "${htmlDir}" ]; then
                             rm -rf "${htmlDir}"
                         else
                             mkdir -p "${htmlDir}"
                         fi
 
+                        if ! [ -f "${lcovOutputCombinedFilePath}" ]; then
+                            cp "${lcovOutputKernelFilePath}" "${lcovOutputCombinedFilePath}" || {
+                                echo >&2
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: copy action failed:"
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - from: ${lcovOutputKernelFilePath}"
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage -   to: ${lcovOutputCombinedFilePath}"
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
+                                echo >&2
+                                exit 1
+                            }
+                        fi
+
                         genhtml \
-                        "${codeCovFilePath}" \
+                        "${lcovOutputCombinedFilePath}" \
                         --output-directory "${htmlDir}" \
                         --legend \
-                        --title "ParaMonte::kernel code coverage report" \
+                        --title "${titleCodeCov}" \
                         && {
+
                             echo >&2
-                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - The report files are stored at: ${htmlDir}"
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - The code coverage build files are stored at: ${ParaMonte_BLD_DIR}"
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - The code coverage report files are stored at: ${htmlDir}"
                             echo >&2
+
+                            # postprocess the html files
+                            shopt -s globstar
+                            for htmlFilePath in "${htmlDir}"/**/*.html; do # Whitespace-safe and recursive
+                                sed -i 's/<tr><td class="title">LCOV - code coverage report<\/td><\/tr>/<tr><td class="title"><a href="https:\/\/www.cdslab.org\/paramonte\/" target="_blank"><img alt="ParaMonte Kernel" src="https:\/\/www.cdslab.org\/paramonte\/notes\/api\/kernel\/logo.png"\/><\/a><\/td><\/tr>/g' "${htmlFilePath}"
+                            done
+
                         } || {
                             echo >&2
                             echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage report generation via genhtml failed."
