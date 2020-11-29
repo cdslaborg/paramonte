@@ -168,6 +168,24 @@ while [ "$1" != "" ]; do
     shift
 done
 
+if ! [ "${codecov_flag}" = "" ]; then
+    if [ -z ${LANG_LIST+x} ]; then
+        LANG_LIST="fortran"
+    fi
+    if [ -z ${BTYPE_LIST+x} ]; then
+        BTYPE_LIST="testing"
+    fi
+    if [ -z ${LTYPE_LIST+x} ]; then
+        LTYPE_LIST="static"
+    fi
+    if [ -z ${MEMORY_LIST+x} ]; then
+        MEMORY_LIST="heap"
+    fi
+    if [ -z ${PARALLELISM_LIST+x} ]; then
+        PARALLELISM_LIST="none"
+    fi
+fi
+
 ####################################################################################################################################
 # determine whether to build MatDRAM or not. NOTE: If true, all other builds will be disabled. NOT IMPLEMENTED YET. NOT NEEDED.
 ####################################################################################################################################
@@ -510,14 +528,6 @@ if [ "${LANG_LIST}" = "matlab" ] || [ "${LANG_LIST}" = "python" ]; then
     MEMORY_LIST="heap"
     LTYPE_LIST="dynamic"
     if [ -z ${PARALLELISM_LIST+x} ]; then PARALLELISM_LIST="none mpi"; fi
-fi
-
-if ! [ "${codecov_flag}" = "" ]; then
-    #PARALLELISM_LIST="none"
-    BTYPE_LIST="release"
-    LTYPE_LIST="static"
-    LANG_LIST="fortran"
-    MEMORY="heap"
 fi
 
 for PMCS in $PMCS_LIST; do
