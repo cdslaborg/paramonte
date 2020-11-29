@@ -460,7 +460,7 @@ contains
 
         ! read the command output
 
-        FileContents = FileContents_type(RFN%path)!, delEnabled = .true.)
+        FileContents = FileContents_type(RFN%path, delEnabled = .true.)
         if (FileContents%Err%occurred) then
             Shell%Err%occurred = .true.
             Shell%Err%msg = PROCEDURE_NAME // FileContents%Err%msg
