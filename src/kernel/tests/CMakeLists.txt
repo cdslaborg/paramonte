@@ -84,6 +84,10 @@ set(ParaMonteTest_SOURCE_FILES
 
 add_executable(${ParaMonteTest_EXE_NAME} ${ParaMonteTest_SOURCE_FILES})
 
+if (CODECOV_ENABLED AND gnu_compiler)
+    target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC gcov)
+endif()
+
 if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
     target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC ${PMLIB})
 elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")

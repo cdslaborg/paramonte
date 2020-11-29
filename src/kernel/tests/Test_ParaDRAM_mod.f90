@@ -110,6 +110,7 @@ contains
                             , inputFile = "&ParaDRAM randomSeed = "//num2str(userSeed_ref)//" chainSize = "//num2str(chainSize_ref)//" /" &
                             )
         assertion = .not. PD%Err%occurred .and. PD%SpecBase%RandomSeed%userSeed==userSeed_ref .and. PD%SpecMCMC%ChainSize%val==chainSize_ref
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "PD%Err%occurred                   = ", PD%Err%occurred
@@ -120,6 +121,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "PD%SpecMCMC%ChainSize%val         = ", PD%SpecMCMC%ChainSize%val
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 #endif
     end function test_runSampler_2
 

@@ -347,6 +347,10 @@ target_compile_options( ${PMLIB} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}"
 message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}" )
 target_link_options( ${PMLIB} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}} )
 
+if (CODECOV_ENABLED AND gnu_compiler)
+    target_link_libraries(${PMLIB} PUBLIC gcov)
+endif()
+
 install(TARGETS ${PMLIB} 
         CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
         DESTINATION "${ParaMonte_LIB_DIR}/"

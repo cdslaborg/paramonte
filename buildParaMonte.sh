@@ -216,6 +216,13 @@ else
     export PLATFORM
 fi
 
+UNAME_PLATFORM_FULL="$(uname -a)"
+if [[ "$UNAME_PLATFORM_FULL" =~ .*"Microsoft".* && "$UNAME_PLATFORM_FULL" =~ .*"Linux".* ]]; then
+    isWSL=true
+else
+    isWSL=false
+fi
+
 isMacOS=false
 isLinux=false
 isMingw=false
@@ -242,6 +249,7 @@ export isWindows
 export isCygwin
 export isMingw
 export OSNAME
+export isWSL
 
 ####################################################################################################################################
 #### determine the architecture
@@ -2200,6 +2208,20 @@ else
     CODECOV_ENABLED_FLAG=""
 fi
 
+# determine whether the current system is a Windows Subsystem for Linux (WSL).
+# The ParaMonte tests that contain internal procedure calls from outside the parent procedure
+# fail with static builds on WSL for code coverage purposes.
+# This GFortran bug does not exist when the program is compiled as a shared library.
+# However, the same bug happens also with shared library files at the time of code coverage generation. 
+# The only resolution left is to fence the internal function calls in the code when the code is being 
+# built on WSL. This is done by enabling the preprocessor flag OS_IS_WSL.
+
+if [ "${isWSL}" = "true" ]; then
+    OS_IS_WSL_FLAG="-DOS_IS_WSL=${isWSL}"
+else
+    OS_IS_WSL_FLAG=""
+fi
+
 (cd ${ParaMonte_BLD_DIR} && \
 ${ParaMonte_CAF_SETUP_PATH_CMD} && \
 cmake \
@@ -2217,6 +2239,7 @@ cmake \
 -DCFI_ENABLED=${CFI_ENABLED} \
 -DOMP_ENABLED=${OMP_ENABLED} \
 ${CODECOV_ENABLED_FLAG} \
+${OS_IS_WSL_FLAG} \
 ${ParaMonte_ROOT_DIR} \
 )
 verify $? "build with cmake"
@@ -2653,6 +2676,10 @@ if [ "${INTERFACE_LANGUAGE}" = "python" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
 
 fi
 
+####################################################################################################################################
+#### Generate *.gcda *.gcno codecov files for the kernel test source files
+####################################################################################################################################
+
 if [ "${CODECOV_ENABLED}" = "true" ]; then
 
     # set test object/module/lib files directories
@@ -2689,7 +2716,9 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                 fi
                 cd "${gcovKernelDir}"
 
-                # Generate *.gcda *.gcno codecov files for the kernel source files
+                ####################################################################################################################
+                #### GCOV KERNEL SOURCE: Generate *.gcda *.gcno codecov files for the kernel source files
+                ####################################################################################################################
 
                 for srcFileName in "${ParaMonteKernel_SRC_DIR}"/*.f90; do
                     if ! [[ "${srcFileName}" =~ .*"ifport.f90".* ]]; then
@@ -2713,7 +2742,11 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     fi
                 done
 
-                # Generate *.gcda *.gcno codecov files for the kernel test source files
+                ####################################################################################################################
+                #### GCOV TEST SOURCE: Generate *.gcda *.gcno codecov files for the kernel test source files
+                ####################################################################################################################
+
+                #### first attempt to infer the cmake object files' directory
 
                 gcovKernelTestDataDir=$(find "${ParaMonteTest_OBJ_DIR}" -name Test_mod*.o)
                 gcovKernelTestDataDir=$(dirname "${gcovKernelTestDataDir}")
@@ -2727,7 +2760,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     cd "${gcovKernelTestDir}"
 
                     for srcFileName in "${ParaMonteTest_SRC_DIR}"/*.f90; do
-                        if ! [[ "${srcFileName}" =~ .*"ifport.f90".* ]]; then
+                        if ! [[ "${srcFileName}" =~ .*"Test_mod.f90".* ]]; then
 
                             srcFileNameBase=$(basename -- "${srcFileName}")
                             objFilePath="${gcovKernelTestDataDir}/${srcFileNameBase}.o"
@@ -2755,7 +2788,9 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
 
                 fi
 
-                # generate summary report file
+                ####################################################################################################################
+                # LCOV: generate lcov summary report file
+                ####################################################################################################################
 
                 if command -v lcov >/dev/null 2>&1; then
 
@@ -2789,17 +2824,22 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     unset lcovOutputTestFilePath
                     if ls "${gcovKernelTestDir}"/*.gcov 1> /dev/null 2>&1; then
 
+                        echo >&2
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - generating the code coverage report file for the ParaMonte test files..."
+                        echo >&2
+
                         lcovOutputTestFilePath="${lcovKernelDir}/paramonte.test.coverage.info"
 
                         lcov --capture \
-                        --directory "${gcovKernelTestDir}" \
+                        --directory "${gcovKernelTestDataDir}" \
                         --output-file "${lcovOutputTestFilePath}" \
                         && {
 
-                            lcov \
-                            --add-tracefile "${lcovOutputKernelFilePath}" \
-                            --add-tracefile "${lcovOutputTestFilePath}" \ 
-                            --output-file "${lcovOutputCombinedFilePath}"
+                            echo >&2
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - Combining all LCOV code coverage report files as a single final report file..."
+                            echo >&2
+
+                            lcov --add-tracefile "${lcovOutputKernelFilePath}" -a "${lcovOutputTestFilePath}" -o "${lcovOutputCombinedFilePath}"
 
                         } || {
 
@@ -2820,6 +2860,10 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         echo >&2
 
                     fi
+
+                    ################################################################################################################
+                    # HTML: convert the lcov summary file to the final html report files
+                    ################################################################################################################
 
                     if command -v genhtml >/dev/null 2>&1; then
 

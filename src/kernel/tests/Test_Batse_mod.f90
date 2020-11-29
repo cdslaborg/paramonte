@@ -203,12 +203,13 @@ contains
         do ip = 1,np
             assertion = abs(LOG10EPK_LOG10PH(2,ip)-getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL))<tolerance
             if (assertion) cycle
+            ! LCOV_EXCL_START
             if (Test%isDebugMode) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
             end if
-            exit
+            ! LCOV_EXCL_STOP
         end do
 
     end function test_getLog10PF53
@@ -227,12 +228,13 @@ contains
         do ip = 1,np
             assertion = abs( getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL) - getLogPF53(LOG10EPK_LOG10PH(1,ip)*LN10,LOG10PBOL)/LN10 ) < tolerance
             if (assertion) cycle
+            ! LCOV_EXCL_START
             if (Test%isDebugMode) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
             end if
-            exit
+            ! LCOV_EXCL_STOP
         end do
 
     end function test_getLogPF53
@@ -255,12 +257,13 @@ contains
                             - LOG10PBOL &
                             ) < tolerance
             if (assertion) cycle
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
             end if
-            exit
+            ! LCOV_EXCL_STOP
         end do
 
     end function test_getLogPbol
@@ -278,6 +281,7 @@ contains
         logEffectivePeakPhotonFlux = getLogEffectivePeakPhotonFlux(0._RK,real(THRESH_ERFC_AVG,RK))
         difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
@@ -285,6 +289,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "difference                        = ", difference
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getLogEffectivePeakPhotonFlux_SPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -300,6 +305,7 @@ contains
         logEffectivePeakPhotonFlux = getLogEffectivePeakPhotonFlux(0._RK,real(THRESH_ERFC_AVG,RK))
         difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
@@ -307,6 +313,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "difference                        = ", difference
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getLogEffectivePeakPhotonFlux_DPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -322,6 +329,7 @@ contains
         logEffectivePeakPhotonFluxCorrection = getLogEffectivePeakPhotonFluxCorrection_SPR(real(THRESH_ERFC_AVG,RK))
         difference = abs(logEffectivePeakPhotonFluxCorrection - logEffectivePeakPhotonFluxCorrection_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection_ref  = ", logEffectivePeakPhotonFluxCorrection_ref
@@ -329,6 +337,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "difference                                = ", difference
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getLogEffectivePeakPhotonFluxCorrection_SPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -344,6 +353,7 @@ contains
         logEffectivePeakPhotonFluxCorrection = getLogEffectivePeakPhotonFluxCorrection_DPR(real(THRESH_ERFC_AVG,RK))
         difference = abs(logEffectivePeakPhotonFluxCorrection - logEffectivePeakPhotonFluxCorrection_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection_ref  = ", logEffectivePeakPhotonFluxCorrection_ref
@@ -351,6 +361,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "difference                                = ", difference
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getLogEffectivePeakPhotonFluxCorrection_DPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

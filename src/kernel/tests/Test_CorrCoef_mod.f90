@@ -196,6 +196,7 @@ contains
                             , dStarStarProb     = Spearman%dStarStarProb    &
                             , Err               = Spearman%Err              &
                             )
+        ! LCOV_EXCL_START
         if (Spearman%Err%occurred) then
             assertion = .false.
             if (Test%isDebugMode .and. .not. assertion) then
@@ -203,10 +204,12 @@ contains
             end if
             return
         end if
+        ! LCOV_EXCL_STOP
 
         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) < 1.e-10_RK
         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) < 1.e-1_RK
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Computed Spearman's statistic:"
@@ -221,6 +224,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "rhoProb           = ", CorrPval_ref
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getCorrCoefSpearman_1
 
@@ -248,6 +252,7 @@ contains
                                 , dStarStarProb     = Spearman%dStarStarProb    &
                                 , Err               = Spearman%Err              &
                                 )
+        ! LCOV_EXCL_START
         if (Spearman%Err%occurred) then
             assertion = .false.
             if (Test%isDebugMode .and. .not. assertion) then
@@ -255,10 +260,12 @@ contains
             end if
             return
         end if
+        ! LCOV_EXCL_STOP
 
         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) < 1.e-10_RK
         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) < 1.e-1_RK
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Computed Spearman's statistic:"
@@ -273,6 +280,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "rhoProb           = ", CorrPval_ref
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getCorrCoefSpearman_2
 

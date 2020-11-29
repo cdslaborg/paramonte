@@ -103,6 +103,7 @@ contains
 
         assertion = assertion .and. Timer%Time%delta > 0.9_RK * seconds
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Timer%Count%start: ", Timer%Count%start
@@ -119,6 +120,7 @@ contains
             write(Test%outputUnit,"(*(g0))")   "Timer%Time%unit  : ", Timer%Time%unit
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_Timer_type_1
 
@@ -140,6 +142,7 @@ contains
         assertion = .not. Err%occurred; if (.not. assertion) return
         assertion = assertion .and. Timer%total() > 0.9_RK * seconds
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Timer%Count%start: ", Timer%Count%start
@@ -156,6 +159,7 @@ contains
             write(Test%outputUnit,"(*(g0))")   "Timer%Time%unit  : ", Timer%Time%unit
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getTimeSinceStart_1
 
@@ -177,6 +181,7 @@ contains
         assertion = .not. Err%occurred; if (.not. assertion) return
         assertion = assertion .and. Timer%delta() > 0.9_RK * seconds
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Timer%Count%start: ", Timer%Count%start
@@ -193,9 +198,10 @@ contains
             write(Test%outputUnit,"(*(g0))")   "Timer%Time%unit  : ", Timer%Time%unit
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getTimeSinceLastCall_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Timer_mod
+end module Test_Timer_mod ! LCOV_EXCL_LINE

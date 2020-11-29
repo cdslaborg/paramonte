@@ -273,8 +273,13 @@ contains
         call Test%run(test_isInsideEllipsoid_1, "test_isInsideEllipsoid_1")
         call Test%run(test_mergeMeanCovUpper_1, "test_mergeMeanCovUpper_1")
         call Test%run(test_getRandIntLecuyer_1, "test_getRandIntLecuyer_1")
-#if defined CODECOV_ENABLED
+#if defined OS_IS_WSL
+        ! LCOV_EXCL_START
+#else
         call Test%run(test_fitGeoCyclicLogPDF_1, "test_fitGeoCyclicLogPDF_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
+#endif
+#if defined OS_IS_WSL
+        ! LCOV_EXCL_STOP
 #endif
         call Test%run(test_getRandRealLecuyer_1, "test_getRandRealLecuyer_1")
         call Test%run(test_getSamCovMeanTrans_1, "test_getSamCovMeanTrans_1")
@@ -333,6 +338,7 @@ contains
         difference = abs(mahalSq - mahalSq_ref) / mahalSq_ref
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "mahalSq_ref    ", mahalSq_ref
@@ -340,6 +346,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getMahalSqSP_RK_1
 
@@ -364,6 +371,7 @@ contains
         Difference = abs(MahalSq - MahalSq_ref) / MahalSq_ref
         assertion = all(Difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MahalSq_ref    ", MahalSq_ref
@@ -371,6 +379,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference     ", Difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getMahalSqMP_RK_1
 
@@ -396,6 +405,7 @@ contains
         difference = abs(mahalSq - mahalSq_ref) / mahalSq_ref
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "mahalSq_ref    ", mahalSq_ref
@@ -403,6 +413,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getMahalSqSP_CK_1
 
@@ -428,6 +439,7 @@ contains
         Difference = abs(real(MahalSq - MahalSq_ref,RK) / real(MahalSq_ref,RK))
         assertion = all(Difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MahalSq_ref    ", MahalSq_ref
@@ -435,6 +447,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference     ", Difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getMahalSqMP_CK_1
 
@@ -466,6 +479,7 @@ contains
         difference = abs( (logProbNorm - logProbNorm_ref) / logProbNorm_ref )
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "LogProbNorm_ref    ", logProbNorm_ref
@@ -473,6 +487,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbNormSP_RK_1
 
@@ -504,6 +519,7 @@ contains
         difference = abs( (logProbNorm - logProbNorm_ref) / logProbNorm_ref )
         assertion = all(difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "LogProbNorm_ref    ", logProbNorm_ref
@@ -511,6 +527,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbNormMP_RK_1
 
@@ -546,6 +563,7 @@ contains
         difference = abs( (logProbNorm - logProbNorm_ref) / logProbNorm_ref )
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "LogProbNorm_ref    ", logProbNorm_ref
@@ -553,6 +571,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMVNSP_RK_1
 
@@ -590,6 +609,7 @@ contains
         difference = abs( (logProbNorm - logProbNorm_ref) / logProbNorm_ref )
         assertion = all(difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "LogProbNorm_ref    ", logProbNorm_ref
@@ -597,6 +617,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMVNMP_RK_1
 
@@ -628,6 +649,7 @@ contains
         difference = abs( real(logProbNorm - logProbNorm_ref,kind=RK) / real(logProbNorm_ref,kind=RK) )
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "LogProbNorm_ref    ", real(logProbNorm_ref, kind = RK)
@@ -635,6 +657,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbNormSP_CK_1
 
@@ -666,6 +689,7 @@ contains
         difference = abs( (real(logProbNorm, kind=RK) - real(logProbNorm_ref, kind=RK)) / real(logProbNorm_ref, kind=RK) )
         assertion = all(difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "LogProbNorm_ref    ", real(logProbNorm_ref, kind = RK)
@@ -673,6 +697,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbNormMP_CK_1
 
@@ -708,6 +733,7 @@ contains
         difference = abs( (real(logProbNorm, kind=RK) - real(logProbNorm_ref, kind=RK)) / real(logProbNorm_ref, kind=RK) )
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "LogProbNorm_ref    ", real(logProbNorm_ref, kind = RK)
@@ -715,6 +741,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMVNSP_CK_1
 
@@ -752,6 +779,7 @@ contains
         difference = abs( (real(logProbNorm, kind=RK) - real(logProbNorm_ref, kind=RK)) / real(logProbNorm_ref, kind=RK) )
         assertion = all(difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "LogProbNorm_ref    ", real(logProbNorm_ref, kind = RK)
@@ -759,6 +787,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMVNMP_CK_1
 
@@ -794,6 +823,7 @@ contains
         difference = abs( (logProbMixNorm - logProbMixNorm_ref) / logProbMixNorm_ref )
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbMixNorm_ref ", logProbMixNorm_ref
@@ -801,6 +831,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMixNormSP_RK_1
 
@@ -836,6 +867,7 @@ contains
         difference = abs( (logProbMixNorm - logProbMixNorm_ref) / logProbMixNorm_ref )
         assertion = all(difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbMixNorm_ref ", logProbMixNorm_ref
@@ -843,6 +875,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMixNormMP_RK_1
 
@@ -885,6 +918,7 @@ contains
         difference = abs( (logProbMixMVN - logProbMixMVN_ref) / logProbMixMVN_ref )
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbMixMVN_ref ", logProbMixMVN_ref
@@ -892,6 +926,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMixMVNSP_RK_1
 
@@ -936,6 +971,7 @@ contains
         difference = abs( (logProbMixMVN - logProbMixMVN_ref) / logProbMixMVN_ref )
         assertion = all(difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbMixMVN_ref ", logProbMixMVN_ref
@@ -943,6 +979,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMixMVNMP_RK_1
 
@@ -978,6 +1015,7 @@ contains
         difference = abs( (real(logProbMixNorm, kind = RK) - real(logProbMixNorm_ref, kind = RK)) / real(logProbMixNorm_ref, kind = RK) )
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbMixNorm_ref ", real(logProbMixNorm_ref, kind = RK)
@@ -985,6 +1023,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMixNormSP_CK_1
 
@@ -1020,6 +1059,7 @@ contains
         difference = abs( (real(logProbMixNorm, kind = RK) - real(logProbMixNorm_ref, kind = RK)) / real(logProbMixNorm_ref, kind = RK) )
         assertion = all(difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbMixNorm_ref ", real(logProbMixNorm_ref, kind = RK)
@@ -1027,6 +1067,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMixNormMP_CK_1
 
@@ -1069,6 +1110,7 @@ contains
         difference = abs( (real(logProbMixMVN, kind = RK) - real(logProbMixMVN_ref, kind = RK)) / real(logProbMixMVN_ref, kind = RK) )
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbMixMVN_ref  ", real(logProbMixMVN_ref, kind = RK)
@@ -1076,6 +1118,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMixMVNSP_CK_1
 
@@ -1120,6 +1163,7 @@ contains
         difference = abs( (real(logProbMixMVN, kind = RK) - real(logProbMixMVN_ref, kind = RK)) / real(logProbMixMVN_ref, kind = RK) )
         assertion = all(difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbMixMVN_ref  ", real(logProbMixMVN_ref, kind = RK)
@@ -1127,6 +1171,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference         ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbMixMVNMP_CK_1
 
@@ -1161,6 +1206,7 @@ contains
         Difference = abs( (Mean - Mean_ref) / Mean_ref )
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_ref   ", real(Mean_ref, kind = RK)
@@ -1168,6 +1214,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getMean_2D_1
 
@@ -1202,6 +1249,7 @@ contains
         Difference = abs( (Mean - Mean_ref) / Mean_ref )
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_ref   ", real(Mean_ref, kind = RK)
@@ -1209,6 +1257,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getMean_2D_2
 
@@ -1257,6 +1306,7 @@ contains
         Difference = abs( (transpose(NormData) - NormData_ref) / NormData_ref )
         assertion = all(Difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "NormData_ref   ", real(NormData_ref, kind = RK)
@@ -1264,6 +1314,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference     ", real(difference, kind = RK)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getNormData_2D_1
 
@@ -1291,6 +1342,7 @@ contains
         difference = abs(variance - variance_ref) / variance_ref
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "variance_ref   ", variance_ref
@@ -1298,6 +1350,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getVariance_1D_1
 
@@ -1327,6 +1380,7 @@ contains
         difference = abs(variance - variance_ref) / variance_ref
         assertion = difference <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "variance_ref   ", variance_ref
@@ -1334,6 +1388,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getVariance_1D_2
 
@@ -1363,6 +1418,7 @@ contains
         Difference = abs(Variance - Variance_ref) / Variance_ref
         assertion = all(Difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Variance_ref   ", Variance_ref
@@ -1370,6 +1426,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference     ", Difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getVariance_2D_1
 
@@ -1401,6 +1458,7 @@ contains
         Difference = abs(Variance - Variance_ref) / Variance_ref
         assertion = all(Difference <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Variance_ref   ", Variance_ref
@@ -1408,6 +1466,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Difference     ", Difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getVariance_2D_2
 
@@ -1447,6 +1506,7 @@ contains
         Diagonal_diff = abs(Diagonal - Diagonal_ref) / abs(Diagonal_ref)
         assertion = all(CholeskyLower_diff <= tolerance) .and. all(Diagonal_diff <= tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyLower_ref  ", CholeskyLower_ref
@@ -1458,6 +1518,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Diagonal_diff ", Diagonal_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getSamCholFac_1
 
@@ -1502,6 +1563,7 @@ contains
         assertionCurrent = all(CovMat_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMat_ref  ", CovMat_ref
@@ -1509,11 +1571,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMat_diff ", CovMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Mean_diff = abs(Mean - Mean_ref) / abs(Mean_ref)
         assertionCurrent = all(Mean_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_ref  ", Mean_ref
@@ -1521,11 +1585,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_diff ", Mean_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         MahalSq_diff = abs(MahalSq - MahalSq_ref) / abs(MahalSq_ref)
         assertionCurrent = all(MahalSq_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MahalSq_ref  ", MahalSq_ref
@@ -1533,11 +1599,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "MahalSq_diff ", MahalSq_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         InvCovMat_diff = abs(InvCovMat - InvCovMat_ref) / abs(InvCovMat_ref)
         assertionCurrent = all(InvCovMat_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "InvCovMat_ref  ", InvCovMat_ref
@@ -1545,11 +1613,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "InvCovMat_diff ", InvCovMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         sqrtDetInvCovMat_diff = abs(sqrtDetInvCovMat - sqrtDetInvCovMat_ref) / abs(sqrtDetInvCovMat_ref)
         assertionCurrent = sqrtDetInvCovMat_diff <= tolerance
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetInvCovMat_ref  ", sqrtDetInvCovMat_ref
@@ -1557,6 +1627,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetInvCovMat_diff ", sqrtDetInvCovMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getSamCovMean_1
 
@@ -1600,6 +1671,7 @@ contains
         assertionCurrent = all(CovMat_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMat_ref  ", CovMat_ref
@@ -1607,11 +1679,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMat_diff ", CovMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Mean_diff = abs(Mean - Mean_ref) / abs(Mean_ref)
         assertionCurrent = all(Mean_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_ref  ", Mean_ref
@@ -1619,11 +1693,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_diff ", Mean_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         MahalSq_diff = abs(MahalSq - MahalSq_ref) / abs(MahalSq_ref)
         assertionCurrent = all(MahalSq_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MahalSq_ref  ", MahalSq_ref
@@ -1631,11 +1707,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "MahalSq_diff ", MahalSq_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         InvCovMat_diff = abs(InvCovMat - InvCovMat_ref) / abs(InvCovMat_ref)
         assertionCurrent = all(InvCovMat_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "InvCovMat_ref  ", InvCovMat_ref
@@ -1643,11 +1721,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "InvCovMat_diff ", InvCovMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         sqrtDetInvCovMat_diff = abs(sqrtDetInvCovMat - sqrtDetInvCovMat_ref) / abs(sqrtDetInvCovMat_ref)
         assertionCurrent = sqrtDetInvCovMat_diff <= tolerance
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetInvCovMat_ref  ", sqrtDetInvCovMat_ref
@@ -1655,6 +1735,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetInvCovMat_diff ", sqrtDetInvCovMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getSamCovMeanTrans_1
 
@@ -1694,6 +1775,7 @@ contains
         assertionCurrent = all([ ((CovMatUpper_diff(i,j) <= tolerance, i=1,j), j=1,nd) ])
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpper_ref  ", ((CovMatUpper_ref(i,j), i=1,j), j=1,nd)
@@ -1701,11 +1783,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpper_diff ", ((CovMatUpper_diff(i,j), i=1,j), j=1,nd)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Mean_diff = abs(Mean - Mean_ref) / abs(Mean_ref)
         assertionCurrent = all(Mean_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_ref  ", Mean_ref
@@ -1713,6 +1797,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_diff ", Mean_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getSamCovUpperMeanTrans_1
 
@@ -1757,6 +1842,7 @@ contains
         end do
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpper_ref  ", ((CovMatUpper_ref(i,j), i=1,j), j=1,nd)
@@ -1764,11 +1850,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpper_diff ", ((CovMatUpper_diff(i,j), i=1,j), j=1,nd)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Mean_diff = abs(Mean - Mean_ref) / abs(Mean_ref)
         assertionCurrent = all(Mean_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_ref  ", Mean_ref
@@ -1776,6 +1864,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Mean_diff ", Mean_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getWeiSamCovUppMeanTrans_1
 
@@ -1846,6 +1935,7 @@ contains
         assertionCurrent = all([ ((CovMatAB_diff(i,j) <= tolerance, i=1,j), j=1,nd) ])
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatAB_refMATLAB ", ((CovMatAB_refMATLAB(i,j), i=1,nd), j=1,nd)
@@ -1857,11 +1947,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatAB_diff      ", ((CovMatAB_diff(i,j), i=1,nd), j=1,nd)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         MeanAB_diff = abs(MeanAB - MeanAB_ref) / abs(MeanAB_ref)
         assertionCurrent = all(MeanAB_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MeanAB_ref  ", MeanAB_ref
@@ -1869,6 +1961,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "MeanAB_diff ", MeanAB_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_mergeMeanCov_1
 
@@ -1943,6 +2036,7 @@ contains
 !        end do
 !        assertion = assertion .and. assertionCurrent
 !
+!        LCOV_EXCL_START
 !        if (Test%isDebugMode .and. .not. assertionCurrent) then
 !            write(Test%outputUnit,"(*(g0,:,', '))")
 !            write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpperAB_refMATLAB ", ((CovMatUpperAB_refMATLAB(i,j), i=1,j), j=1,nd)
@@ -1954,11 +2048,13 @@ contains
 !            write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpperAB_diff      ", ((CovMatUpperAB_diff(i,j), i=1,j), j=1,nd)
 !            write(Test%outputUnit,"(*(g0,:,', '))")
 !        end if
+!        LCOV_EXCL_STOP
 !
 !        MeanAB_diff = abs(MeanAB - MeanAB_ref) / abs(MeanAB_ref)
 !        assertionCurrent = all(MeanAB_diff <= tolerance)
 !        assertion = assertion .and. assertionCurrent
 !
+!        LCOV_EXCL_START
 !        if (Test%isDebugMode .and. .not. assertionCurrent) then
 !            write(Test%outputUnit,"(*(g0,:,', '))")
 !            write(Test%outputUnit,"(*(g0,:,', '))") "MeanAB_ref  ", MeanAB_ref
@@ -1966,6 +2062,7 @@ contains
 !            write(Test%outputUnit,"(*(g0,:,', '))") "MeanAB_diff ", MeanAB_diff
 !            write(Test%outputUnit,"(*(g0,:,', '))")
 !        end if
+!        LCOV_EXCL_STOP
 !
 !    end function test_mergeMeanCovUpperSlow_1
 
@@ -2041,6 +2138,7 @@ contains
         end do
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpperAB_refMATLAB ", ((CovMatUpperAB_refMATLAB(i,j), i=1,nd), j=1,nd)
@@ -2052,11 +2150,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpperAB_diff      ", ((CovMatUpperAB_diff(i,j), i=1,j), j=1,nd)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         MeanAB_diff = abs(MeanAB - MeanAB_ref) / abs(MeanAB_ref)
         assertionCurrent = all(MeanAB_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MeanAB_ref  ", MeanAB_ref
@@ -2064,6 +2164,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "MeanAB_diff ", MeanAB_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_mergeMeanCovUpper_1
 
@@ -2144,6 +2245,7 @@ contains
         end do
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpperAB_refMATLAB ", ((CovMatUpperAB_refMATLAB(i,j), i=1,j), j=1,nd)
@@ -2155,11 +2257,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "CovMatUpperAB_diff      ", ((CovMatUpperAB_diff(i,j), i=1,j), j=1,nd)
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         MeanAB_diff = abs(MeanAB - MeanAB_ref) / abs(MeanAB_ref)
         assertionCurrent = all(MeanAB_diff <= tolerance)
         assertion = assertion .and. assertionCurrent
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertionCurrent) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MeanAB_ref  ", MeanAB_ref
@@ -2167,6 +2271,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "MeanAB_diff ", MeanAB_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_mergeMeanCovUpperDense_1
 
@@ -2318,6 +2423,7 @@ contains
         logProbMVU = getLogProbMVU(nd, logSqrtDetCovMat)
         difference = abs( (logProbMVU - logProbMVU_ref) / logProbMVU_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbMVU_ref ", logProbMVU_ref
@@ -2325,6 +2431,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getLogProbMVU_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2348,6 +2455,7 @@ contains
         assertion = dot_product(NormedPoint,matmul(InvCovMat,NormedPoint)) - 1._RK < tolerance
         NormedPoint = [-1.e2_RK, 1.e2_RK]
         assertion = assertion .and. .not. isInsideEllipsoid(nd, NormedPoint, InvCovMat)
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "RandPointOnEllipsoid   ", X
@@ -2355,11 +2463,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "expected distance      ", 1._RK
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getRandPointOnEllipsoid_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_getLogProbLognSP_1() result(assertion)
+
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
@@ -2381,6 +2491,7 @@ contains
         difference = abs( (logProbLogn - logProbLogn_ref) / logProbLogn_ref )
         assertion = assertion .and. difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logProbLogn_ref    ", logProbLogn_ref
@@ -2388,11 +2499,14 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
+
     end function test_getLogProbLognSP_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_getLogProbLognMP_1() result(assertion)
+
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
@@ -2414,6 +2528,7 @@ contains
         difference = abs( (LogProbLogn - LogProbLogn_ref) / LogProbLogn_ref )
         assertion = assertion .and. all(difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "LogProbLogn_ref    ", LogProbLogn_ref
@@ -2421,6 +2536,8 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference         ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
+
     end function test_getLogProbLognMP_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2436,11 +2553,13 @@ contains
         do i = 1, np
             RandRealLecuyer(i) = getRandRealLecuyer(idum)
             assertion = assertion .and. RandRealLecuyer(i) <= 1._RK .and. RandRealLecuyer(i) >= 0._RK
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandRealLecuyer(",i,") =", RandRealLecuyer(i)
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
         end do
     end function test_getRandRealLecuyer_1
 
@@ -2458,11 +2577,13 @@ contains
         do i = 1, np
             RandIntLecuyer(i) = getRandIntLecuyer(lowerBound,upperBound,idum)
             assertion = assertion .and. RandIntLecuyer(i) <= upperBound .and. RandIntLecuyer(i) >= lowerBound
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandIntLecuyer(",i,") =", RandIntLecuyer(i)
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
         end do
     end function test_getRandIntLecuyer_1
 
@@ -2480,11 +2601,13 @@ contains
         do i = 1, np
             RandUniform(i) = getRandUniform(lowerBound,upperBound)
             assertion = assertion .and. RandUniform(i) <= upperBound .and. RandUniform(i) >= lowerBound
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandUniform(",i,") =", RandUniform(i)
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
         end do
     end function test_getRandUniform_1
 
@@ -2503,11 +2626,13 @@ contains
         do i = 1, np
             RandGamma(i) = getRandGamma(alpha)
             assertion = assertion .and. RandGamma(i) <= upperBound .and. RandGamma(i) >= lowerBound
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandGamma(",i,") =", RandGamma(i)
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
         end do
         assertion = assertion .and. getRandGamma(alpha=-1._RK) < 0._RK
     end function test_getRandGamma_1
@@ -2527,11 +2652,13 @@ contains
         do i = 1, np
             RandGamma(i) = getRandGammaIntShape(alpha)
             assertion = assertion .and. RandGamma(i) <= upperBound .and. RandGamma(i) >= lowerBound
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandGamma(",i,") =", RandGamma(i)
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
         end do
         assertion = assertion .and. getRandGammaIntShape(alpha=-1_IK) < 0._RK
     end function test_getRandGammaIntShape_1
@@ -2551,11 +2678,13 @@ contains
         do i = 1, np
             RandBeta(i) = getRandBeta(alpha, beta)
             assertion = assertion .and. RandBeta(i) <= upperBound .and. RandBeta(i) >= lowerBound
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandBeta(",i,") =", RandBeta(i)
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
         end do
         assertion = assertion .and. getRandBeta(alpha=-1._RK, beta=+2._RK) < 0._RK
         assertion = assertion .and. getRandBeta(alpha=+1._RK, beta=-2._RK) < 0._RK
@@ -2577,11 +2706,13 @@ contains
         do i = 1, np
             RandExp(i) = getRandExpWithInvMean(invMean)
             assertion = assertion .and. RandExp(i) <= upperBound .and. RandExp(i) >= lowerBound
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandExp(",i,") =", RandExp(i)
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
         end do
     end function test_getRandExpWithInvMean_1
 
@@ -2599,11 +2730,13 @@ contains
         do i = 1, np
             RandExp(i) = getRandExp()
             assertion = assertion .and. RandExp(i) <= upperBound .and. RandExp(i) >= lowerBound
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandExp(",i,") =", RandExp(i)
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
         end do
     end function test_getRandExp_1
 
@@ -2625,11 +2758,13 @@ contains
             RandCorMat = getRandCorMat(nd,eta)
             assertion = assertion .and. all(RandCorMat <= upperBound) .and. all(RandCorMat >= lowerBound)
             assertion = assertion .and. isPosDef(nd,RandCorMat)
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandCorMat(:,:,) =", RandCorMat
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
         end do
         ! do not uncomment this as GNU Fortran 9.1 crashes on this in debug mode with error message:
         ! Fortran runtime error: Dimension 1 of array 'randcormat' has extent 0 instead of 2...
@@ -2669,11 +2804,13 @@ contains
                 end do
             end do
             assertionCurrent = isPosDef(nd,RandCorMat)
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0,:,' '))")
                 write(Test%outputUnit,"(*(g0,:,' '))") "RandCorMat(:,:,) =", RandCorMat
                 write(Test%outputUnit,"(*(g0,:,' '))")
             end if
+            ! LCOV_EXCL_STOP
             assertion = assertion .and. assertionCurrent
         end do
         ! do not uncomment this as GNU Fortran 9.1 crashes on this in debug mode with error message:
@@ -2709,6 +2846,7 @@ contains
             end do
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "CorMatUpper_ref =", CorMatUpper_ref
@@ -2716,6 +2854,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference      =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getCorMatUpperFromCovMatUpper_1
 
@@ -2744,6 +2883,7 @@ contains
             end do
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "CovMatUpper_ref =", CovMatUpper_ref
@@ -2751,6 +2891,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference      =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getCovMatUpperFromCorMatUpper_1
 
@@ -2779,6 +2920,7 @@ contains
             end do
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "CovMatUpper_ref =", CovMatUpper_ref
@@ -2786,6 +2928,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference      =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getCovMatUpperFromCorMatLower_1
 
@@ -2814,6 +2957,7 @@ contains
             end do
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "CovMatLower_ref =", CovMatLower_ref
@@ -2821,6 +2965,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference      =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getCovMatLowerFromCorMatUpper_1
 
@@ -2849,6 +2994,7 @@ contains
             end do
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "CovMatLower_ref =", CovMatLower_ref
@@ -2856,6 +3002,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference      =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getCovMatLowerFromCorMatLower_1
 
@@ -2884,6 +3031,7 @@ contains
             end do
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "CovMat_ref  =", CovMat_ref
@@ -2891,6 +3039,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference  =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getCovMatFromCorMatUpper_1
 
@@ -2922,6 +3071,7 @@ contains
         Difference = abs(LogProbGeo - LogProbGeo_ref) / abs(LogProbGeo_ref)
         assertion = all( Difference < tolerance )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogProbGeo_ref  =", LogProbGeo_ref
@@ -2929,6 +3079,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference      =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbGeo_1
 
@@ -2961,6 +3112,7 @@ contains
         Difference = abs(LogProbGeoCyclic - LogProbGeoCyclic_ref) / abs(LogProbGeoCyclic_ref)
         assertion = all( Difference < tolerance )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogProbGeoCyclic_ref =", LogProbGeoCyclic_ref
@@ -2968,6 +3120,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference           =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogProbGeoCyclic_1
 
@@ -3007,6 +3160,7 @@ contains
         Difference = abs(GeoCyclicLogPDF%PowellMinimum%xmin - xmin_ref) / abs(xmin_ref)
         assertion = all( Difference < tolerance )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "xmin_ref    =", xmin_ref
@@ -3014,6 +3168,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference  =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_fitGeoCyclicLogPDF_1
 
@@ -3031,6 +3186,7 @@ contains
         snormPDF = getSNormPDF(3._RK)
         difference = abs( (snormPDF - snormPDF_ref) / snormPDF_ref )
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "snormPDF_ref   ", snormPDF_ref
@@ -3038,6 +3194,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getSNormPDF_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3055,6 +3212,7 @@ contains
         snormCDF = getSNormCDF(3._RK)
         difference = abs( (snormCDF - snormCDF_ref) / snormCDF_ref )
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "snormCDF_ref   ", snormCDF_ref
@@ -3062,6 +3220,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getSNormCDF_SPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3079,6 +3238,7 @@ contains
         snormCDF = getSNormCDF(3._RK)
         difference = abs( (snormCDF - snormCDF_ref) / snormCDF_ref )
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "snormCDF_ref   ", snormCDF_ref
@@ -3086,6 +3246,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getSNormCDF_DPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3105,6 +3266,7 @@ contains
         normPDF = getNormPDF(avg,std,std**2,val)
         difference = abs( (normPDF - normPDF_ref) / normPDF_ref )
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "normPDF_ref    ", normPDF_ref
@@ -3112,6 +3274,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getNormPDF_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3131,6 +3294,7 @@ contains
         normCDF = getNormCDF(avg,std,val)
         difference = abs( (normCDF - normCDF_ref) / normCDF_ref )
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "normCDF_ref    ", normCDF_ref
@@ -3138,6 +3302,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getNormCDF_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3158,6 +3323,7 @@ contains
         betaCDF = getBetaCDF(alpha,beta,val)
         difference = abs( (betaCDF - betaCDF_ref) / betaCDF_ref )
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "betaCDF_ref    ", betaCDF_ref
@@ -3165,6 +3331,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
         assertion = assertion .and. getBetaCDF(alpha,beta,-.01_RK) < 0._RK .and. getBetaCDF(alpha,beta,+1.01_RK) < 0._RK
     end function test_getBetaCDF_SPR_1
 
@@ -3186,6 +3353,7 @@ contains
         betaCDF = getBetaCDF(alpha,beta,val)
         difference = abs( (betaCDF - betaCDF_ref) / betaCDF_ref )
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "betaCDF_ref    ", betaCDF_ref
@@ -3193,6 +3361,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
         assertion = assertion .and. getBetaCDF(alpha,beta,-.01_RK) < 0._RK .and. getBetaCDF(alpha,beta,+1.01_RK) < 0._RK
     end function test_getBetaCDF_DPR_1
 
@@ -3213,6 +3382,7 @@ contains
         uniformCDF = getUniformCDF(val)
         difference = abs( (uniformCDF - uniformCDF_ref) / uniformCDF_ref )
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "uniformCDF_ref ", uniformCDF_ref
@@ -3220,6 +3390,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getUniformCDF_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3253,6 +3424,7 @@ contains
         difference = abs( (probKS - probKS_ref) / probKS_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "probKS_ref :", probKS_ref
@@ -3260,10 +3432,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference :", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         difference = abs( (statKS - statKS_ref) / statKS_ref )
         assertion = assertion .and. difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "statKS_ref :", statKS_ref
@@ -3271,6 +3445,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference :", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doKS1_1
 
@@ -3304,6 +3479,7 @@ contains
         difference = abs( (probKS - probKS_ref) / probKS_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "probKS_ref :", probKS_ref
@@ -3311,10 +3487,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference :", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         difference = abs( (statKS - statKS_ref) / statKS_ref )
         assertion = assertion .and. difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "statKS_ref :", statKS_ref
@@ -3322,6 +3500,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference :", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doUniformKS1_1
 
@@ -3362,6 +3541,7 @@ contains
         difference = 2 * abs(probKS - probKS_ref) / (probKS_ref + probKS)
         assertion = assertion .and. difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "probKS_ref :", probKS_ref
@@ -3369,10 +3549,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference :", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         difference = 2 * abs(statKS - statKS_ref) / (statKS_ref + statKS)
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "statKS_ref :", statKS_ref
@@ -3380,6 +3562,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference :", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doSortedKS2_1
 
@@ -3434,6 +3617,7 @@ contains
         Difference = abs( (Xbin - Xbin_ref) / Xbin_ref )
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_ref   ", Xbin_ref
@@ -3441,10 +3625,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference ", Difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Difference = abs( (Density - Density_ref) / Density_ref )
         assertion = assertion .and. all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_ref", Density_ref
@@ -3452,6 +3638,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getHist1D_1
 
@@ -3506,6 +3693,7 @@ contains
         Difference = abs( (Xbin - Xbin_ref) / Xbin_ref )
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_ref   ", Xbin_ref
@@ -3513,10 +3701,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference ", Difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Difference = abs( (Density - Density_ref) / Density_ref )
         assertion = assertion .and. all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_ref", Density_ref
@@ -3524,6 +3714,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference ", difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getHist1D_2
 
@@ -3663,6 +3854,7 @@ contains
         Xbin_diff = abs( (Xbin - Xbin_ref) / Xbin_ref )
         assertion = all(Xbin_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_ref   ", Xbin_ref
@@ -3670,10 +3862,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_diff  ", Xbin_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Ybin_diff = abs( (Ybin - Ybin_ref) / Ybin_ref )
         assertion = all(Ybin_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Ybin_ref   ", Ybin_ref
@@ -3681,10 +3875,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Ybin_diff  ", Ybin_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Density_diff = abs(Density - Density_ref)
         assertion = assertion .and. all(Density_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_ref    ", Density_ref
@@ -3692,6 +3888,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_diff   ", Density_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getHist2D_1
 
@@ -3805,6 +4002,7 @@ contains
         Xbin_diff = abs( (Xbin - Xbin_ref) / Xbin_ref )
         assertion = all(Xbin_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_ref   ", Xbin_ref
@@ -3812,10 +4010,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_diff  ", Xbin_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Ybin_diff = abs( (Ybin - Ybin_ref) / Ybin_ref )
         assertion = all(Ybin_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Ybin_ref   ", Ybin_ref
@@ -3823,10 +4023,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Ybin_diff  ", Ybin_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Density_diff = abs(Density - Density_ref)
         assertion = assertion .and. all(Density_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_ref    ", Density_ref
@@ -3834,6 +4036,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_diff   ", Density_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getHist2D_2
 
@@ -3947,6 +4150,7 @@ contains
         Xbin_diff = abs( (Xbin - Xbin_ref) / Xbin_ref )
         assertion = all(Xbin_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_ref   ", Xbin_ref
@@ -3954,10 +4158,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_diff  ", Xbin_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Ybin_diff = abs( (Ybin - Ybin_ref) / Ybin_ref )
         assertion = all(Ybin_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Ybin_ref   ", Ybin_ref
@@ -3965,10 +4171,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Ybin_diff  ", Ybin_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Density_diff = abs(Density - Density_ref)
         assertion = assertion .and. all(Density_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_ref    ", Density_ref
@@ -3976,6 +4184,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_diff   ", Density_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getHist2D_3
 
@@ -4089,6 +4298,7 @@ contains
         Xbin_diff = abs( (Xbin - Xbin_ref) / Xbin_ref )
         assertion = all(Xbin_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_ref   ", Xbin_ref
@@ -4096,10 +4306,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Xbin_diff  ", Xbin_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Ybin_diff = abs( (Ybin - Ybin_ref) / Ybin_ref )
         assertion = all(Ybin_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Ybin_ref   ", Ybin_ref
@@ -4107,10 +4319,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Ybin_diff  ", Ybin_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         Density_diff = abs(Density - Density_ref)
         assertion = assertion .and. all(Density_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_ref    ", Density_ref
@@ -4118,6 +4332,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "Density_diff   ", Density_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getHist2D_4
 
@@ -4192,6 +4407,7 @@ contains
         Difference = (Quantile - Quantile_ref)
         assertion = all(Difference==0._RK)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Quantile_ref   ", Quantile_ref
@@ -4199,6 +4415,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", Difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getQuantile_1
 
@@ -4234,6 +4451,7 @@ contains
         Difference = (Quantile - Quantile_ref)
         assertion = all(Difference==0._RK)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Quantile_ref   ", Quantile_ref
@@ -4241,6 +4459,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", Difference
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getQuantile_2
 

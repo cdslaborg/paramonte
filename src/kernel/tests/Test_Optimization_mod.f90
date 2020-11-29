@@ -93,7 +93,7 @@ contains
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_BrentMinimum_type_1, "test_BrentMinimum_type_1")
         call Test%run(test_BrentMinimum_type_2, "test_BrentMinimum_type_2")
-#if defined CODECOV_ENABLED
+#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
         call Test%run(test_PowellMinimum_type_1, "test_PowellMinimum_type_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
 #endif
         call Test%finalize()
@@ -116,17 +116,20 @@ contains
 
         assertion = .not. BrentMinimum%Err%occurred
         if (.not. assertion) then
+            ! LCOV_EXCL_START
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0,:,', '))")
                 write(Test%outputUnit,"(*(g0,:,', '))") BrentMinimum%Err%msg
                 write(Test%outputUnit,"(*(g0,:,', '))")
             end if
+            ! LCOV_EXCL_STOP
             return
         end if
 
         assertion = assertion .and. abs(BrentMinimum%xmin-TestFuncRosenBrock1D%XMIN_REF) / abs(TestFuncRosenBrock1D%XMIN_REF) < 1.e-6_RK
         assertion = assertion .and. abs(BrentMinimum%fmin-TestFuncRosenBrock1D%FMIN_REF) / abs(TestFuncRosenBrock1D%FMIN_REF) < 1.e-6_RK
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "BrentMinimum%xmin", BrentMinimum%xmin
@@ -139,6 +142,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "BrentMinimum%Bracket", BrentMinimum%Bracket
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_BrentMinimum_type_1
 
@@ -164,17 +168,20 @@ contains
 
         assertion = .not. BrentMinimum%Err%occurred
         if (.not. assertion) then
+            ! LCOV_EXCL_START
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0,:,', '))")
                 write(Test%outputUnit,"(*(g0,:,', '))") BrentMinimum%Err%msg
                 write(Test%outputUnit,"(*(g0,:,', '))")
             end if
+            ! LCOV_EXCL_STOP
             return
         end if
 
         assertion = abs(BrentMinimum%xmin-TestFuncRosenBrock1D%XMIN_REF) / abs(TestFuncRosenBrock1D%XMIN_REF) < 1.e-6_RK
         assertion = abs(BrentMinimum%fmin-TestFuncRosenBrock1D%FMIN_REF) / abs(TestFuncRosenBrock1D%FMIN_REF) < 1.e-6_RK
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "BrentMinimum%xmin", BrentMinimum%xmin
@@ -187,11 +194,13 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "BrentMinimum%Bracket", BrentMinimum%Bracket
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_BrentMinimum_type_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
     function test_PowellMinimum_type_1() result(assertion)
 
         use Constants_mod, only: RK, IK
@@ -215,17 +224,20 @@ contains
 
         assertion = .not. PowellMinimum%Err%occurred
         if (.not. assertion) then
+            ! LCOV_EXCL_START
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0,:,', '))")
                 write(Test%outputUnit,"(*(g0,:,', '))") PowellMinimum%Err%msg
                 write(Test%outputUnit,"(*(g0,:,', '))")
             end if
+            ! LCOV_EXCL_STOP
             return
         end if
 
         assertion = assertion .and. any(abs(PowellMinimum%xmin-TestFuncRosenBrock2D%XMIN_REF) / abs(TestFuncRosenBrock2D%XMIN_REF) < 1.e-6_RK)
         assertion = assertion .and. abs(PowellMinimum%fmin-TestFuncRosenBrock2D%FMIN_REF) / abs(TestFuncRosenBrock2D%FMIN_REF) < 1.e-6_RK
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "PowellMinimum%xmin", PowellMinimum%xmin
@@ -240,8 +252,10 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "PowellMinimum%DirMat", PowellMinimum%DirMat
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_PowellMinimum_type_1
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -266,4 +280,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Optimization_mod
+end module Test_Optimization_mod ! LCOV_EXCL_LINE

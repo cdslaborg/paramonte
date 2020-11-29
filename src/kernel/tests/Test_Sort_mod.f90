@@ -198,6 +198,7 @@ contains
             assertion = assertion .and. DataUnsorted(i-1) <= DataUnsorted(i)
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "DataUnsorted, DataSorted"
@@ -206,6 +207,7 @@ contains
             end do
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_sortArray_1
 
@@ -230,6 +232,7 @@ contains
             assertion = assertion .and. DataUnsorted(i-1) <= DataUnsorted(i)
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "DataUnsorted, DataSorted"
@@ -238,6 +241,7 @@ contains
             end do
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_sortAscending_RK_1
 
@@ -264,6 +268,7 @@ contains
             assertion = assertion .and. DataUnsorted(i-1) <= DataUnsorted(i)
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "LeaderUnsorted, LeaderSorted"
@@ -272,11 +277,13 @@ contains
             end do
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         do i = 2, ndata
             assertion = assertion .and. DataUnsorted2(i-1) <= DataUnsorted2(i)
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "RooterUnsorted, RooterSorted"
@@ -285,6 +292,7 @@ contains
             end do
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_sortAscendingWithRooter_IK_1
 
@@ -311,6 +319,7 @@ contains
             assertion = assertion .and. DataUnsorted(i-1) <= DataUnsorted(i)
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "LeaderUnsorted, LeaderSorted"
@@ -319,11 +328,13 @@ contains
             end do
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         do i = 2, ndata
             assertion = assertion .and. DataUnsorted2(i-1) <= DataUnsorted2(i)
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))") 
             write(Test%outputUnit,"(*(g0,:,', '))") "RooterUnsorted, RooterSorted"
@@ -332,6 +343,7 @@ contains
             end do
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_sortAscendingWithRooter_RK_1
 
@@ -353,12 +365,14 @@ contains
 
         assertion = median == median_ref
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))") 
             write(Test%outputUnit,"(*(g0,:,' '))") "median_ref  =", median_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "median      =", median
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getMedian_RK_1
 
@@ -380,12 +394,14 @@ contains
 
         assertion = median == median_ref
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))") 
             write(Test%outputUnit,"(*(g0,:,' '))") "median_ref  =", median_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "median      =", median
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getMedian_RK_2
 

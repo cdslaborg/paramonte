@@ -67,11 +67,11 @@ contains
         call Test%run(test_getlogdvdz, "test_getlogdvdz")
         call Test%run(test_ldiswickram, "test_ldiswickram")
         call Test%run(test_getLogLumDisWicMpc, "test_getLogLumDisWicMpc")
-#if defined CODECOV_ENABLED
+#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
         call Test%run(test_getLookBackTime_1, "test_getLookBackTime_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
         call Test%run(test_getLookBackTime_2, "test_getLookBackTime_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
 #endif
-        call Test%run(test_getUniverseAgeDerivative, "test_getLookBackTime_2")
+        call Test%run(test_getUniverseAgeDerivative, "test_getUniverseAgeDerivative")
         call Test%finalize()
     end subroutine test_Cosmology
 
@@ -96,6 +96,7 @@ contains
         difference = abs( (logdvdz - logdvdz_ref) / logdvdz_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "logdvdz_ref   = ", logdvdz_ref
@@ -103,6 +104,7 @@ contains
             write(Test%outputUnit,"(*(g0.15))") "difference    = ", difference
             write(Test%outputUnit,"(*(g0.15))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getlogdvdz
 
@@ -125,6 +127,7 @@ contains
         difference = abs( (lumDisWicMpc - lumDisWicMpc_ref) / lumDisWicMpc_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "lumDisWicMpc_ref  = ", lumDisWicMpc_ref
@@ -132,6 +135,7 @@ contains
             write(Test%outputUnit,"(*(g0.15))") "difference        = ", difference
             write(Test%outputUnit,"(*(g0.15))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_ldiswickram
 
@@ -154,6 +158,7 @@ contains
         difference = abs( (logLumDisWicMpc - logLumDisWicMpc_ref) / logLumDisWicMpc_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "logLumDisWicMpc_ref   = ", logLumDisWicMpc_ref
@@ -161,10 +166,13 @@ contains
             write(Test%outputUnit,"(*(g0.15))") "difference            = ", difference
             write(Test%outputUnit,"(*(g0.15))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogLumDisWicMpc
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
 
     function test_getLookBackTime_1() result(assertion)
 
@@ -185,6 +193,7 @@ contains
         difference = abs( (lookBackTime - lookBackTime_ref) / lookBackTime_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "lookBackTime_ref  = ", lookBackTime_ref
@@ -192,6 +201,7 @@ contains
             write(Test%outputUnit,"(*(g0.15))") "difference        = ", difference
             write(Test%outputUnit,"(*(g0.15))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLookBackTime_1
 
@@ -214,6 +224,7 @@ contains
         difference = abs( (lookBackTime - lookBackTime_ref) / lookBackTime_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "lookBackTime_ref  = ", lookBackTime_ref
@@ -221,8 +232,11 @@ contains
             write(Test%outputUnit,"(*(g0.15))") "difference        = ", difference
             write(Test%outputUnit,"(*(g0.15))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLookBackTime_2
+
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -243,6 +257,7 @@ contains
         difference = abs( (universeAgeDerivative - universeAgeDerivative_ref) / universeAgeDerivative_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15))")
             write(Test%outputUnit,"(*(g0.15))") "universeAgeDerivative_ref = ", universeAgeDerivative_ref
@@ -250,9 +265,10 @@ contains
             write(Test%outputUnit,"(*(g0.15))") "difference                = ", difference
             write(Test%outputUnit,"(*(g0.15))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getUniverseAgeDerivative
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Cosmology_mod
+end module Test_Cosmology_mod ! LCOV_EXCL_LINE

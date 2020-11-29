@@ -180,6 +180,7 @@ contains
         assertion = assertion .and. File%Err%occurred   .eqv. .false.
         assertion = assertion .and. File%Err%msg        == ""
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "File%Path%original  : ", File%Path%original
@@ -212,6 +213,7 @@ contains
             write(Test%outputUnit,"(*(g0))")   "File%Err%msg        : ", File%Err%msg
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_constructFile_1
 
@@ -279,6 +281,7 @@ contains
         assertion = assertion .and. File%Err%occurred   .eqv. .false.
         assertion = assertion .and. File%Err%msg        == ""
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "File%Path%original  : ", File%Path%original
@@ -311,6 +314,7 @@ contains
             write(Test%outputUnit,"(*(g0))")   "File%Err%msg        : ", File%Err%msg
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_constructFile_2
 
@@ -1306,4 +1310,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_File_mod
+end module Test_File_mod ! LCOV_EXCL_LINE

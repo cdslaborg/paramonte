@@ -98,6 +98,7 @@ contains
         assertion = assertion .and. TimerCPU%Time%delta > 0.9_RK * seconds
         assertion = assertion .and. TimerCPU%Time%start < TimerCPU%Time%stop
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%start : ", TimerCPU%Time%start
@@ -107,10 +108,11 @@ contains
             write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%unit  : ", TimerCPU%Time%unit
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 #endif
 
     end function test_TimerCPU_type_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_TimerCPU_mod
+end module Test_TimerCPU_mod ! LCOV_EXCL_LINE

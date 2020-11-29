@@ -83,6 +83,7 @@ contains
 
         call DateTime%query()
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "           date:", DateTime%date
@@ -101,6 +102,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "     fancyStyle:", DateTime%fancyStyle
             write(Test%outputUnit,"(*(g0,:,' '))") 
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_queryDateTime
 
@@ -119,12 +121,14 @@ contains
         niceDateTime = getNiceDateTime()
         assertion = niceDateTime == DateTime%fancyStyleBasic
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "       getNiceDateTime():", niceDateTime
             write(Test%outputUnit,"(*(g0,:,' '))") "DateTime%fancyStyleBasic:", DateTime%fancyStyleBasic
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
         assertion = .true.
 
@@ -132,4 +136,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_DateTime_mod
+end module Test_DateTime_mod ! LCOV_EXCL_LINE

@@ -142,6 +142,7 @@ contains
         call EnvVar%get(EnvVar%name,EnvVar%value,EnvVar%length,EnvVar%Err)
         assertion = .not. EnvVar%Err%occurred .and. allocated(EnvVar%name) .and. allocated(EnvVar%value)
 
+        ! LCOV_EXCL_START
         !if (Test%isDebugMode .and. .not. assertion) then
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "EnvVar%name     : ", EnvVar%name
@@ -149,6 +150,7 @@ contains
         !    write(Test%outputUnit,"(2A)")   "EnvVar%length   : ", num2str(EnvVar%length)
         !    write(Test%outputUnit,"(2A)")
         !end if
+        ! LCOV_EXCL_STOP
 
     end function test_EnvVar_type_2
 
@@ -181,6 +183,7 @@ contains
         assertion = .not. CmdArg%Err%occurred
         if (.not. assertion) return
 
+        ! LCOV_EXCL_START
         !if (Test%isDebugMode .and. .not. assertion) then
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "CmdArg%cmd      : ", CmdArg%cmd
@@ -188,6 +191,7 @@ contains
         !    write(Test%outputUnit,      "(*('CmdArg%slash    : ', 2A))") (CmdArg%Arg(i)%record, new_line('a'), i=1,CmdArg%count)
         !    write(Test%outputUnit,"(2A)")
         !end if
+        ! LCOV_EXCL_STOP
 
     end function test_CmdArg_type_1
 
@@ -204,6 +208,7 @@ contains
         assertion = .not. OS%Err%occurred .and. .not. OS%Shell%Err%occurred
         if (.not. assertion) return
 
+        ! LCOV_EXCL_START
         !if (Test%isDebugMode .and. .not. assertion) then
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "OS%name     : ", OS%name
@@ -211,6 +216,7 @@ contains
         !    write(Test%outputUnit,"(2A)")   "OS%isWindows: ", log2str(OS%isWindows)
         !    write(Test%outputUnit,"(2A)")
         !end if
+        ! LCOV_EXCL_STOP
 
     end function test_OS_type_1
 
@@ -318,6 +324,7 @@ contains
         assertion = assertion .and. RFN%key == "test_RandomFileName_type"  !  // "_image_" // num2str(this_image())
         assertion = assertion .and. RFN%ext == ".rfn"
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(2A)")
             write(Test%outputUnit,"(2A)")   "RFN%path     : ", RFN%path
@@ -326,6 +333,7 @@ contains
             write(Test%outputUnit,"(2A)")   "RFN%ext      : ", RFN%ext
             write(Test%outputUnit,"(2A)")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_RandomFileName_type_1
 
@@ -424,4 +432,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_System_mod
+end module Test_System_mod ! LCOV_EXCL_LINE

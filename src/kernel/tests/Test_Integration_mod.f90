@@ -104,9 +104,11 @@ contains
 
         if (ierr/=0_IK) then
             assertion = .false.
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
+            ! LCOV_EXCL_STOP
             return
         end if
 
@@ -114,6 +116,7 @@ contains
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
@@ -122,6 +125,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombOpen_1
 
@@ -155,9 +159,11 @@ contains
 
         if (ierr/=0_IK) then
             assertion = .false.
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
+            ! LCOV_EXCL_STOP
             return
         end if
 
@@ -165,6 +171,7 @@ contains
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
@@ -173,6 +180,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombOpen_2
 
@@ -206,9 +214,11 @@ contains
 
         if (ierr/=0_IK) then
             assertion = .false.
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
+            ! LCOV_EXCL_STOP
             return
         end if
 
@@ -216,6 +226,7 @@ contains
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
@@ -224,6 +235,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombOpen_3
 
@@ -257,9 +269,11 @@ contains
 
         if (ierr/=0_IK) then
             assertion = .false.
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
+            ! LCOV_EXCL_STOP
             return
         end if
 
@@ -267,6 +281,7 @@ contains
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
@@ -275,6 +290,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombOpen_4
 
@@ -307,9 +323,11 @@ contains
 
         if (ierr/=0_IK) then
             assertion = .false.
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
+            ! LCOV_EXCL_STOP
             return
         end if
 
@@ -317,6 +335,7 @@ contains
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
@@ -325,6 +344,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombClosed_1
 
@@ -359,4 +379,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Integration_mod
+end module Test_Integration_mod ! LCOV_EXCL_LINE
