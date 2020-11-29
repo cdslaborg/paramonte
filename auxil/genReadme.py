@@ -210,7 +210,7 @@ Currently, the following compiler suites are supported for builds from source:
   
 | Compiler Suite                    | Linux | macOS | Windows (64bit) |  
 |----------------------------------:|:-----:|:-----:|:---------------:|  
-| GNU Compiler Collection > 7.1     |&check;|&check;| &cross;         |  
+| GNU Compiler Collection > 8.4     |&check;|&check;| &cross;         |  
 | Intel Parallel Studio > 18.0.0    |&check;|&check;| &check;         |  
 
 For more information and quick-start in the programming language of your choice, visit the [ParaMonte library homepage](https://www.cdslab.org/paramonte).  
