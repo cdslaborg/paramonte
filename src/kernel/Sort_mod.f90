@@ -465,6 +465,45 @@ contains
     !>
     !> \warning
     !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
+    pure subroutine sortAscendingWithRooter_IK(lenLeader,Leader,Rooter,Err)
+#if defined DLL_ENABLED && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: sortAscendingWithRooter_RK
+#endif
+        use Constants_mod, only: IK
+        use Err_mod, only: Err_type
+
+        implicit none
+
+        integer(IK)     , intent(in)    :: lenLeader
+        integer(IK)     , intent(inout) :: Leader(lenLeader), Rooter(lenLeader)
+        type(Err_type)  , intent(out)   :: Err
+
+        character(*)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//"@sortAscendingWithRooter_RK()"
+        integer(IK)                     :: Indx(lenLeader)
+
+        call indexArray_IK(lenLeader,Leader,Indx,Err)
+        ! LCOV_EXCL_START
+        if (Err%occurred) then
+            Err%msg = PROCEDURE_NAME//": NSTACK is too small."
+            return
+        end if
+        ! LCOV_EXCL_STOP
+        Leader = Leader(Indx)
+        Rooter = Rooter(Indx)
+    end subroutine sortAscendingWithRooter_IK
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Sort the real `Leader(1:lenLeader)` in ascending order using Quicksort while making the corresponding rearrangement of real `Rooter(1:lenLeader)`.
+    !>
+    !> @param[in]       lenLeader   :   The length of the input vector to be sorted.
+    !> @param[inout]    Leader      :   The vector of length `lenLeader` to be sorted.
+    !> @param[inout]    Rooter      :   The vector of length `lenLeader` to be sorted according to the rearrangement of the elements of `Leader`.
+    !> @param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type).
+    !>
+    !> \warning
+    !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine sortAscendingWithRooter_RK(lenLeader,Leader,Rooter,Err)
 #if defined DLL_ENABLED && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscendingWithRooter_RK

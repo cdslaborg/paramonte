@@ -811,9 +811,9 @@ elseif (gnu_compiler)
     endif()
 
     if (CODECOV_ENABLED)
-        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -fprofile-arcs -ftest-coverage -static-libgcc )
-        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" -fprofile-arcs -ftest-coverage -static-libgcc )
-        set(FL_FLAGS "${FL_FLAGS}" -fprofile-arcs -lgcov -static-libgcc )
+        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage -static-libgcc -fcf-protection=full )
+        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage -static-libgcc -fcf-protection=full )
+        set(FL_FLAGS "${FL_FLAGS}" --coverage -fprofile-arcs -lgcov -static-libgcc -fcf-protection=full )
     endif()
 
     if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")

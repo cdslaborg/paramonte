@@ -2686,7 +2686,13 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         #objFilePath=$(find "${gcovKernelDataDir}" -name ${srcFileNameBase}.o)
                         objFilePath="${gcovKernelDataDir}/${srcFileNameBase}.o"
                         echo >&2 gcov "${ParaMonteKernel_SRC_DIR}"/${srcFileName} -o "${objFilePath}"
-                        gcov "${srcFileName}" -o "${objFilePath}"
+                        gcov "${srcFileName}" -o "${objFilePath}" \
+                        || {
+                            echo >&2
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage analysis via GNU gcov tool failed."
+                            echo >&2
+                            exit 1
+                        }
                         #fi
                     fi
                 done
@@ -2699,11 +2705,51 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     mkdir -p "${lcovKernelDir}"
                     cd "${lcovKernelDir}"
 
-                    lcov --capture --directory "${gcovKernelDataDir}" --output-file ./paramonte.coverage.info
+                    codeCovFilePath="${lcovKernelDir}/paramonte.coverage.info"
+
+                    unset branchCoverageFlag
+                    # Uncomment the following line to enable branch coverage
+                    # branchCoverageFlag="--rc lcov_branch_coverage=1"
+
+                    lcov --capture \
+                    --directory "${gcovKernelDataDir}" \
+                    --output-file "${codeCovFilePath}" \
+                    || {
+                        echo >&2
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage report generation via lcov tool failed."
+                        echo >&2
+                        exit 1
+                    }
+
+                    #"${branchCoverageFlag}"
 
                     if command -v genhtml >/dev/null 2>&1; then
 
-                        genhtml paramonte.coverage.info --output-directory html
+                        #htmlDir="${ParaMonte}/html"
+                        htmlDir="${ParaMonte_ROOT_DIR}/codecov/${PMLIB_BASE_NAME}"
+                        if [ -d "${htmlDir}" ]; then
+                            rm -rf "${htmlDir}"
+                        else
+                            mkdir -p "${htmlDir}"
+                        fi
+
+                        genhtml \
+                        "${codeCovFilePath}" \
+                        --output-directory "${htmlDir}" \
+                        --legend \
+                        --title "ParaMonte::kernel code coverage report" \
+                        && {
+                            echo >&2
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - The report files are stored at: ${htmlDir}"
+                            echo >&2
+                        } || {
+                            echo >&2
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage report generation via genhtml failed."
+                            echo >&2
+                            exit 1
+                        }
+                        # "${branchCoverageFlag}" \
+                        #--title "<a href=\"https://github.com/cdslaborg/paramonte\" target=\"_blank\">ParaMonte::kernel</a> code coverage report" \
 
                         ## generate test files code coverage
                         #
@@ -2716,7 +2762,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         #
                         #lcov --capture --directory "${gcovKernelTestDataDir}" --output-file ./paramonte.coverage.info
                         #
-                        #genhtml paramonte.coverage.info --output-directory html
+                        #genhtml paramonte.coverage.info --output-directory "${lcovKernelTestDir}/html"
 
                     else
                         echo >&2

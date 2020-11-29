@@ -118,6 +118,7 @@ Thumbs.db
 #########################
 
 ./src/kernel/ParaMonte_mod@version@kernel.inc.f90
+**/codecov
 **/.ipynb_checkpoints/*
 **/benchmark/*
 **/build/*

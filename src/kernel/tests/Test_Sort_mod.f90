@@ -158,7 +158,8 @@ module Test_Sort_mod
                                                     , 5.47659170000000_RK &
                                                     , 4.65761920000000_RK ]
 
-    real(RK), parameter :: DataUnsorted2_RK(ndata) = DataUnsorted_RK
+    integer(IK) , parameter :: DataUnsorted2_IK(ndata) = DataUnsorted_IK
+    real(RK)    , parameter :: DataUnsorted2_RK(ndata) = DataUnsorted_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -173,6 +174,7 @@ contains
         call Test%run(test_getMedian_RK_1, "test_getMedian_RK_1")
         call Test%run(test_getMedian_RK_2, "test_getMedian_RK_2")
         call Test%run(test_sortAscending_RK_1, "test_sortAscending_RK_1")
+        call Test%run(test_sortAscendingWithRooter_IK_1, "test_sortAscendingWithRooter_IK_1")
         call Test%run(test_sortAscendingWithRooter_RK_1, "test_sortAscendingWithRooter_RK_1")
         call Test%finalize()
     end subroutine test_Sort
@@ -238,6 +240,53 @@ contains
         end if
 
     end function test_sortAscending_RK_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_sortAscendingWithRooter_IK_1() result(assertion)
+
+        use Err_mod, only: Err_type
+        implicit none
+
+        integer(IK)                 :: i
+        logical                     :: assertion
+        integer(IK) , allocatable   :: DataUnsorted(:)
+        integer(IK) , allocatable   :: DataUnsorted2(:)
+        type(Err_type)              :: Err
+
+        DataUnsorted    = DataUnsorted_IK
+        DataUnsorted2   = DataUnsorted2_IK
+        call sortAscendingWithRooter_IK(lenLeader = ndata, Leader = DataUnsorted, Rooter = DataUnsorted2, Err = Err)
+        assertion = .not. Err%occurred
+        if (.not. assertion) return
+
+        do i = 2, ndata
+            assertion = assertion .and. DataUnsorted(i-1) <= DataUnsorted(i)
+        end do
+
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0,:,', '))") 
+            write(Test%outputUnit,"(*(g0,:,', '))") "LeaderUnsorted, LeaderSorted"
+            do i = 1, ndata
+                write(Test%outputUnit,"(*(g0,:,', '))") DataUnsorted_IK(i), DataUnsorted(i)
+            end do
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+
+        do i = 2, ndata
+            assertion = assertion .and. DataUnsorted2(i-1) <= DataUnsorted2(i)
+        end do
+
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0,:,', '))") 
+            write(Test%outputUnit,"(*(g0,:,', '))") "RooterUnsorted, RooterSorted"
+            do i = 1, ndata
+                write(Test%outputUnit,"(*(g0,:,', '))") DataUnsorted2_IK(i), DataUnsorted2(i)
+            end do
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+
+    end function test_sortAscendingWithRooter_IK_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
