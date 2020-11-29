@@ -301,11 +301,15 @@ contains
         call executeCmd( command = command//" > "//filename//" 2> "//stdErr, Err=Err )
         ! LCOV_EXCL_START
         if (Err%occurred) then
-            Err%msg =   PROCEDURE_NAME // &
-                        ": Error occurred while attempting to write the search results to external file.\n" // Err%msg
+            Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to write the search results to external file.\n" // Err%msg
             return
         end if
         ! LCOV_EXCL_STOP
+
+        ! delete the stderr file
+
+        open(newunit = fileUnit, file = stdErr, status = "replace")
+        close(fileUnit, status = "delete")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! now count the number of records in file:
@@ -336,11 +340,6 @@ contains
             return
         end if
         ! LCOV_EXCL_STOP
-
-        ! delete the stderr file
-
-        open(newunit = fileUnit, file = stdErr, status = "replace")
-        close(fileUnit, status = "delete")
 
         ! open the list file
 

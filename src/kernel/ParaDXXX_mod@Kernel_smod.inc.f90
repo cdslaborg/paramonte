@@ -273,7 +273,7 @@ contains
                     ! create a copy of the chain file, just for the sake of not losing the simulation results
 
                     RFN = RandomFileName_type(dir = "", key = self%ChainFile%Path%original//".temporary_restart_copy", ext="")
-                    call copyFile(pathOld=self%ChainFile%Path%original,pathNew=RFN%path,isWindows=self%OS%isWindows,Err=self%err)
+                    call copyFile(pathOld=self%ChainFile%Path%original,pathNew=RFN%path,isUnixShell=self%OS%Shell%isUnix,Err=self%err)
                     if (self%Err%occurred) then
                         self%Err%msg = PROCEDURE_NAME//self%Err%msg
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )

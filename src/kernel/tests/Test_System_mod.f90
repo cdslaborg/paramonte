@@ -200,7 +200,7 @@ contains
         logical                 :: assertion
         type(OS_type)           :: OS
 
-        call OS%query(shellQueryEnabled = .true.)
+        call OS%query()
         assertion = .not. OS%Err%occurred .and. .not. OS%Shell%Err%occurred
         if (.not. assertion) return
 
@@ -224,7 +224,7 @@ contains
         type(SysCmd_type)       :: SysCmd
         type(OS_type)           :: OS
 
-        call OS%query(shellQueryEnabled = .true.)
+        call OS%query()
         assertion = .not. OS%Err%occurred
         if (.not. assertion) return
 
@@ -258,7 +258,7 @@ contains
         logical, parameter          :: wait = .true.
         character(:), allocatable   :: command
 
-        call OS%query(shellQueryEnabled = .true.)
+        call OS%query()
         assertion = .not. OS%Err%occurred
         if (.not. assertion) return
 
@@ -284,7 +284,7 @@ contains
         type(OS_type)               :: OS
         character(:), allocatable   :: command
 
-        call OS%query(shellQueryEnabled = .true.)
+        call OS%query()
         assertion = .not. OS%Err%occurred
         if (.not. assertion) return
 
@@ -401,11 +401,11 @@ contains
         open(newunit=fileUnit,file=RFN%path,status="new")
         close(fileUnit)
 
-        call OS%query(shellQueryEnabled = .true.)
+        call OS%query()
         assertion = .not. OS%Err%occurred
         if (.not. assertion) return
 
-        call copyFile(RFN%path, RFN%path//".copy", .not. OS%Shell%isUnix, OS%Err)
+        call copyFile(RFN%path, RFN%path//".copy", OS%Shell%isUnix, OS%Err)
         assertion = .not. OS%Err%occurred
         if (.not. assertion) return
 
