@@ -74,6 +74,16 @@
 # endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# unset flags
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+unset(FCL_FLAGS_DEFAULT)
+unset(CCL_FLAGS_DEFAULT)
+unset(FCL_BUILD_FLAGS)
+unset(CCL_BUILD_FLAGS)
+unset(FL_FLAGS)
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Fortran compiler/linker debug build flags. Will be used only when build mode is set to debug
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -563,11 +573,8 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
         endif()
     endif()
 
-    # bizarrely, when FPP_DLL_FLAGS is set to -DDLL_ENABLED, the codecov on WSL OS in dynamic mode crashes.
     unset(FPP_DLL_FLAGS)
-    if (DLL_ENABLED)
-        set( FPP_DLL_FLAGS -DDLL_ENABLED )
-    endif()
+    set( FPP_DLL_FLAGS -DDLL_ENABLED )
     set(FPP_DLL_FLAGS "${FPP_DLL_FLAGS}" CACHE STRING "Fortran preprocessor dynamic library definitions" )
 
 endif()
@@ -816,8 +823,8 @@ elseif (gnu_compiler)
     endif()
 
     if (CODECOV_ENABLED)
-        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage -static-libgcc -fcf-protection=full ) #
-        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage -static-libgcc -fcf-protection=full ) #
+        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage ) # -static-libgcc -fcf-protection=full
+        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage ) # -static-libgcc -fcf-protection=full
         set(FL_FLAGS "${FL_FLAGS}" --coverage -fprofile-arcs -ftest-coverage -lgcov -static-libgcc -fcf-protection=full )
     endif()
 

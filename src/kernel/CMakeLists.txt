@@ -65,6 +65,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/Math_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Matrix_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Statistics_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/GeoCyclicFit_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Parallelism_mod.f90
     ${ParaMonteKernel_SRC_DIR}/CorrCoef_mod.f90
     ${ParaMonteKernel_SRC_DIR}/TranGaus_mod.f90
@@ -75,6 +76,8 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/Cosmology_mod.f90
     ${ParaMonteKernel_SRC_DIR}/StarFormation_mod.f90
     ${ParaMonteKernel_SRC_DIR}/BandSpectrum_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/BandSpectrum_mod@PhotonFluence_smod.f90
+    ${ParaMonteKernel_SRC_DIR}/BandSpectrum_mod@EnergyFluence_smod.f90
     ${ParaMonteKernel_SRC_DIR}/Batse_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecBase_SampleSize_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecBase_RandomSeed_mod.f90

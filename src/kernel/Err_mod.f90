@@ -153,10 +153,12 @@ contains
             ! notify the user on screen too
 
             if (.not. mv_isTestingMode) then
+            ! LCOV_EXCL_START
                 call write(output_unit,1,0,1, pfx // " - FATAL: Runtime error occurred." )
                 call write(output_unit,0,0,1, pfx // " - FATAL: For more information, see the output '*_report.txt' file (if generated)." )
                 call write(output_unit,0,2,1, pfx // " - FATAL: Gracefully exiting on image " // trim(adjustl(imageChar)) // "." )
             end if
+            ! LCOV_EXCL_STOP
 
             flush(output_unit) ! call execute_command_line(" ")
             flush(outputUnit)
@@ -169,6 +171,7 @@ contains
                 real(RK)        :: countRate
                 call system_clock( count=countOld, count_rate=countRate, count_max=countMax )
                 if (countOld/=-huge(0_int64) .and. countRate/=0._RK .and. countMax==0_int64) then
+                ! LCOV_EXCL_START
                     loopWait: do
                         call system_clock( count=countNew )
                         if (countNew==countMax) then
@@ -180,12 +183,14 @@ contains
                         cycle
                     end do loopWait
                 end if
+                ! LCOV_EXCL_STOP
             end block
 
         end if
 
         if (returnEnabledDefault) return
 
+! LCOV_EXCL_START
 #if defined MPI_ENABLED
         block
             use mpi
@@ -195,6 +200,7 @@ contains
 #else
         error stop
 #endif
+! LCOV_EXCL_STOP
 
     end subroutine abort
 
@@ -304,9 +310,11 @@ contains
 
         if (present(outputUnit)) then
             stdout = outputUnit
+        ! LCOV_EXCL_START
         else
             stdout = output_unit
         end if
+        ! LCOV_EXCL_STOP
         if (present(prefix)) then
             pfx = prefix
         else

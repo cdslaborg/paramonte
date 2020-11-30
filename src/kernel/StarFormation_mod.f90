@@ -78,6 +78,14 @@ module StarFormation_mod
     end function getMergerDelayTimePDF_proc
     end interface
 
+#if defined OS_IS_WSL
+        procedure(getMergerDelayTimePDF_proc), pointer  :: getMergerDelayTimePDF_WSL        !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+        procedure(getRateDensity_proc), pointer         :: getStarFormationRateDensity_WSL  !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+        real(RK)                                        :: maxRelativeErrorDefault_WSL      !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+        integer(IK)                                     :: nRefinementDefault_WSL           !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+        real(RK)                                        :: lookBackTimeRef_WSL              !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+#endif
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
@@ -757,8 +765,8 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRateDensity
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
-        use Constants_mod, only: RK, HUGE_RK
         use Cosmology_mod, only: getLookBackTime
+        use Constants_mod, only: RK, HUGE_RK
         use Integration_mod, only: doQuadRombOpen, ErrorMessage!, midinf
         use Integration_mod, only: midexp
        !use Integration_mod, only: midinf
@@ -781,6 +789,14 @@ contains
                                             , nRefinement = nRefinementDefault &
                                             )
 
+#if defined OS_IS_WSL
+        getMergerDelayTimePDF_WSL => getMergerDelayTimePDF
+        getStarFormationRateDensity_WSL => getStarFormationRateDensity
+        maxRelativeErrorDefault_WSL = maxRelativeErrorDefault
+        nRefinementDefault_WSL = nRefinementDefault
+        lookBackTimeRef_WSL = lookBackTimeRef
+#endif
+
         call doQuadRombOpen ( getFunc           = getBinaryMergerRateDensityIntegrand   &
                             , integrate         = midexp                                &
                            !, integrate         = midinf                                &
@@ -794,10 +810,16 @@ contains
                             , ierr              = ierr                                  &
                             )
         if (ierr/=0_IK) then
+            ! LCOV_EXCL_START
             write(output_unit,"(A)") ErrorMessage(ierr)
             error stop
+            ! LCOV_EXCL_STOP
         end if
 
+#if defined OS_IS_WSL
+        nullify(getStarFormationRateDensity_WSL)
+        nullify(getMergerDelayTimePDF_WSL)
+#else
     contains
 
         function getBinaryMergerRateDensityIntegrand(zplus1) result(binaryMergerRateIntegrand)
@@ -815,8 +837,10 @@ contains
                                                 )
             mergerDelayTime = mergerDelayTime - lookBackTimeRef
             if (mergerDelayTime<=0._RK) then
+                ! LCOV_EXCL_START
                 write(output_unit,"(A)") "The mergerDelayTime is non-positive in getBinaryMergerRateDensityIntegrand(): (zplus1, mergerDelayTime) = ", zplus1, mergerDelayTime
                 error stop
+                ! LCOV_EXCL_STOP
             end if
 
             binaryMergerRateIntegrand   = getMergerDelayTimePDF(mergerDelayTime) &
@@ -824,8 +848,38 @@ contains
                                         * getUniverseAgeDerivative(zplus1)
 
         end function getBinaryMergerRateDensityIntegrand
-
+#endif
     end function getBinaryMergerRateDensity
+
+#if defined OS_IS_WSL
+        ! This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+        function getBinaryMergerRateDensityIntegrand(zplus1) result(binaryMergerRateIntegrand)
+            use, intrinsic :: iso_fortran_env, only: output_unit
+            use Cosmology_mod, only: getUniverseAgeDerivative
+            use Cosmology_mod, only: getLookBackTime
+            implicit none
+            real(RK)    , intent(in)    :: zplus1
+            real(RK)                    :: binaryMergerRateIntegrand !,lognormpdf
+            real(RK)                    :: mergerDelayTime
+            ! note that zp<z always, so that delay>0.
+            mergerDelayTime = getLookBackTime   ( zplus1 = zplus1 &
+                                                , maxRelativeError = maxRelativeErrorDefault_WSL &
+                                                , nRefinement = nRefinementDefault_WSL &
+                                                )
+            mergerDelayTime = mergerDelayTime - lookBackTimeRef_WSL
+            if (mergerDelayTime<=0._RK) then
+            ! LCOV_EXCL_START
+                write(output_unit,"(A)") "The mergerDelayTime is non-positive in getBinaryMergerRateDensityIntegrand(): (zplus1, mergerDelayTime) = ", zplus1, mergerDelayTime
+                error stop
+            end if
+            ! LCOV_EXCL_START
+
+            binaryMergerRateIntegrand   = getMergerDelayTimePDF_WSL(mergerDelayTime) &
+                                        * getStarFormationRateDensity_WSL(zplus1) &
+                                        * getUniverseAgeDerivative(zplus1)
+
+        end function getBinaryMergerRateDensityIntegrand
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

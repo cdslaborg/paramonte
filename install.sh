@@ -173,10 +173,10 @@ if ! [ "${codecov_flag}" = "" ]; then
         LANG_LIST="fortran"
     fi
     if [ -z ${BTYPE_LIST+x} ]; then
-        BTYPE_LIST="testing"
+        BTYPE_LIST="debug"
     fi
     if [ -z ${LTYPE_LIST+x} ]; then
-        LTYPE_LIST="dynamic"
+        LTYPE_LIST="static"
     fi
     if [ -z ${MEMORY_LIST+x} ]; then
         MEMORY_LIST="heap"

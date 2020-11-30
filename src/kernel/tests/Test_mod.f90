@@ -71,7 +71,7 @@ module Test_mod
     type(Image_type)                :: mv_Image
 
     type :: Test_type
-#if defined DBG_ENABLED || defined TESTING_ENABLD
+#if defined DBG_ENABLED || defined TESTING_ENABLD || defined CODECOV_ENABLD
         logical                     :: isDebugMode = .true.
 #else
         logical                     :: isDebugMode = .false.

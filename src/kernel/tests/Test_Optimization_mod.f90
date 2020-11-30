@@ -93,9 +93,7 @@ contains
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_BrentMinimum_type_1, "test_BrentMinimum_type_1")
         call Test%run(test_BrentMinimum_type_2, "test_BrentMinimum_type_2")
-!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
         call Test%run(test_PowellMinimum_type_1, "test_PowellMinimum_type_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
-!#endif
         call Test%finalize()
     end subroutine test_Optimization
 
@@ -129,8 +127,8 @@ contains
         assertion = assertion .and. abs(BrentMinimum%xmin-TestFuncRosenBrock1D%XMIN_REF) / abs(TestFuncRosenBrock1D%XMIN_REF) < 1.e-6_RK
         assertion = assertion .and. abs(BrentMinimum%fmin-TestFuncRosenBrock1D%FMIN_REF) / abs(TestFuncRosenBrock1D%FMIN_REF) < 1.e-6_RK
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "BrentMinimum%xmin", BrentMinimum%xmin
             write(Test%outputUnit,"(*(g0,:,', '))") "XMIN_REF         ", TestFuncRosenBrock1D%XMIN_REF
@@ -181,8 +179,8 @@ contains
         assertion = abs(BrentMinimum%xmin-TestFuncRosenBrock1D%XMIN_REF) / abs(TestFuncRosenBrock1D%XMIN_REF) < 1.e-6_RK
         assertion = abs(BrentMinimum%fmin-TestFuncRosenBrock1D%FMIN_REF) / abs(TestFuncRosenBrock1D%FMIN_REF) < 1.e-6_RK
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "BrentMinimum%xmin", BrentMinimum%xmin
             write(Test%outputUnit,"(*(g0,:,', '))") "XMIN_REF         ", TestFuncRosenBrock1D%XMIN_REF
@@ -200,7 +198,6 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
     function test_PowellMinimum_type_1() result(assertion)
 
         use Constants_mod, only: RK, IK
@@ -213,14 +210,14 @@ contains
 
         assertion = .true.
 
-        StartVec = [0.25_RK,-0.25_RK]
+        StartVec = [.25_RK,-.25_RK]
 
-        PowellMinimum = minimize( ndim = 2_IK &
-                                , getFuncMD = getTestFuncRosenBrock2D &
-                                , StartVec = StartVec &
-                                !, DirMat = reshape([1._RK, 0._RK, 0._RK, 1._RK], shape = [2,2])
-                                !, ftol = 1.e-8_RK &
-                                )
+        PowellMinimum = PowellMinimum_type  ( ndim = 2_IK &
+                                            , getFuncMD = getTestFuncRosenBrock2D &
+                                            , StartVec = StartVec &
+                                            !, DirMat = reshape([1._RK, 0._RK, 0._RK, 1._RK], shape = [2,2])
+                                            !, ftol = 1.e-8_RK &
+                                            )
 
         assertion = .not. PowellMinimum%Err%occurred
         if (.not. assertion) then
@@ -237,8 +234,8 @@ contains
         assertion = assertion .and. any(abs(PowellMinimum%xmin-TestFuncRosenBrock2D%XMIN_REF) / abs(TestFuncRosenBrock2D%XMIN_REF) < 1.e-6_RK)
         assertion = assertion .and. abs(PowellMinimum%fmin-TestFuncRosenBrock2D%FMIN_REF) / abs(TestFuncRosenBrock2D%FMIN_REF) < 1.e-6_RK
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "PowellMinimum%xmin", PowellMinimum%xmin
             write(Test%outputUnit,"(*(g0,:,', '))") "XMIN_REF          ", TestFuncRosenBrock2D%XMIN_REF
@@ -255,11 +252,10 @@ contains
         ! LCOV_EXCL_STOP
 
     end function test_PowellMinimum_type_1
-!#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getTestFuncRosenBrock1D(x) result(testFuncVal)
+    pure function getTestFuncRosenBrock1D(x) result(testFuncVal)
         use Constants_mod, only: RK
         implicit none
         real(RK), intent(in)    :: x
@@ -269,8 +265,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    ! LCOV_EXCL_START
-    function getTestFuncRosenBrock2D(ndim,Point) result(testFuncVal)
+    pure function getTestFuncRosenBrock2D(ndim,Point) result(testFuncVal)
         use Constants_mod, only: RK, IK
         implicit none
         integer(IK) , intent(in)    :: ndim
@@ -278,7 +273,6 @@ contains
         real(RK)                    :: testFuncVal
         testFuncVal = exp(-(Point(1)-Point(2))**2 - 2*Point(1)**2) * cos(Point(2)) * sin(2*Point(2))
     end function getTestFuncRosenBrock2D
-    ! LCOV_EXCL_STOP
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -83,8 +83,8 @@ contains
 
         call DateTime%query()
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "           date:", DateTime%date
             write(Test%outputUnit,"(*(g0,:,' '))") "           time:", DateTime%time
@@ -121,8 +121,8 @@ contains
         niceDateTime = getNiceDateTime()
         assertion = niceDateTime == DateTime%fancyStyleBasic
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "       getNiceDateTime():", niceDateTime
             write(Test%outputUnit,"(*(g0,:,' '))") "DateTime%fancyStyleBasic:", DateTime%fancyStyleBasic
@@ -130,8 +130,9 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
+#if !defined CODECOV_ENABLED
         assertion = .true.
-
+#endif
     end function test_getNiceDateTime
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

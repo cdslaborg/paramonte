@@ -86,6 +86,7 @@ contains
         call Test%run(test_getInvPosDefMatSqrtDet_2, "test_getInvPosDefMatSqrtDet_2")
         call Test%run(test_getLogSqrtDetPosDefMat_1, "test_getLogSqrtDetPosDefMat_1")
         call Test%run(test_getLogSqrtDetPosDefMat_2, "test_getLogSqrtDetPosDefMat_2")
+        call Test%run(test_symmetrizeUpperSquareMatrix_1, "test_symmetrizeUpperSquareMatrix_1")
         call Test%finalize()
 
     end subroutine test_Matrix
@@ -689,6 +690,40 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    function test_symmetrizeUpperSquareMatrix_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical                 :: assertion
+        integer(IK) , parameter :: nd = 3_IK
+        real(RK)    , parameter :: UpperSquareMatrix_ref(nd,nd) = reshape(  [ -1._RK, -0._RK, -1._RK &
+                                                                            , -0._RK, -2._RK, -0._RK &
+                                                                            , -1._RK, -0._RK, -3._RK ], shape = shape(UpperSquareMatrix_ref) )
+        real(RK)                :: UpperSquareMatrix(nd,nd)
+        integer(IK)             :: i, j
+
+        UpperSquareMatrix = 0._RK
+        do j = 1, nd
+            do i = 1, j
+                UpperSquareMatrix(i,j) = UpperSquareMatrix_ref(i,j)
+            end do
+        end do
+
+        call symmetrizeUpperSquareMatrix(nd,UpperSquareMatrix)
+        assertion = all( abs(UpperSquareMatrix-UpperSquareMatrix_ref) < 1.e-14_RK )
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "UpperSquareMatrix_ref  = ", UpperSquareMatrix_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "UpperSquareMatrix      = ", UpperSquareMatrix
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_symmetrizeUpperSquareMatrix_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     function test_getOuterProd_1() result(assertion)
 
         use Constants_mod, only: IK, RK
@@ -711,8 +746,8 @@ contains
 
         assertion = all(OuterProduct_diff < tolerance)
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "OuterProduct_ref  = ", OuterProduct_ref
             write(Test%outputUnit,"(*(g0,:,', '))") "OuterProduct      = ", OuterProduct
@@ -764,8 +799,8 @@ contains
             end do
         end do
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
 
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "OutPosDefMat_ref:"

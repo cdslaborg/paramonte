@@ -273,9 +273,6 @@ contains
         call Test%run(test_isInsideEllipsoid_1, "test_isInsideEllipsoid_1")
         call Test%run(test_mergeMeanCovUpper_1, "test_mergeMeanCovUpper_1")
         call Test%run(test_getRandIntLecuyer_1, "test_getRandIntLecuyer_1")
-!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
-        call Test%run(test_fitGeoCyclicLogPDF_1, "test_fitGeoCyclicLogPDF_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
-!#endif
         call Test%run(test_getRandRealLecuyer_1, "test_getRandRealLecuyer_1")
         call Test%run(test_getSamCovMeanTrans_1, "test_getSamCovMeanTrans_1")
         call Test%run(test_getLogProbMVNSP_RK_1, "test_getLogProbMVNSP_RK_1")
@@ -3118,54 +3115,6 @@ contains
         ! LCOV_EXCL_STOP
 
     end function test_getLogProbGeoCyclic_1
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    function test_fitGeoCyclicLogPDF_1() result(assertion)
-        use Constants_mod, only: IK, RK
-        implicit none
-        logical                     :: assertion
-        integer(IK)                 :: i
-        integer(IK) , parameter     :: nparam = 2_IK
-        integer(IK) , parameter     :: numTrial = 64_IK
-        integer(IK) , parameter     :: maxNumTrial = 64_IK
-        integer(IK) , parameter     :: SuccessStep(numTrial) = [ (i, i = 1, numTrial) ]
-        real(RK)    , parameter     :: LogCount(numTrial) = log( real(  [ 64_IK, 55_IK, 53_IK, 43_IK, 54_IK, 41_IK &
-                                                                        , 45_IK, 55_IK, 50_IK, 42_IK, 48_IK, 52_IK &
-                                                                        , 38_IK, 52_IK, 56_IK, 54_IK, 45_IK, 54_IK &
-                                                                        , 69_IK, 50_IK, 50_IK, 49_IK, 45_IK, 38_IK &
-                                                                        , 45_IK, 34_IK, 55_IK, 51_IK, 49_IK, 49_IK &
-                                                                        , 47_IK, 58_IK, 37_IK, 54_IK, 50_IK, 59_IK &
-                                                                        , 37_IK, 39_IK, 36_IK, 52_IK, 51_IK, 37_IK &
-                                                                        , 44_IK, 46_IK, 37_IK, 29_IK, 41_IK, 39_IK &
-                                                                        , 50_IK, 39_IK, 46_IK, 42_IK, 54_IK, 54_IK &
-                                                                        , 54_IK, 24_IK, 44_IK, 43_IK, 37_IK, 43_IK &
-                                                                        , 53_IK, 47_IK, 50_IK, 42_IK ], kind = RK ))
-        real(RK)    , parameter     :: successProb = 0.7_RK
-        real(RK)    , parameter     :: tolerance = 1.e-6_RK
-        !real(RK)                    :: xmin_ref(nparam) = [ 1._RK, 2._RK ]
-        real(RK)                    :: xmin_ref(nparam) = [ 0.31952589641887075E-002_RK, 7.992349027030083_RK ]
-        real(RK)                    :: Difference(nparam)
-        type(GeoCyclicLogPDF_type)  :: GeoCyclicLogPDF
-
-        GeoCyclicLogPDF%PowellMinimum = GeoCyclicLogPDF%fit(maxNumTrial, numTrial, SuccessStep, LogCount)
-        assertion = .not. GeoCyclicLogPDF%PowellMinimum%Err%occurred
-        if (.not. assertion) return
-
-        Difference = abs(GeoCyclicLogPDF%PowellMinimum%xmin - xmin_ref) / abs(xmin_ref)
-        assertion = all( Difference < tolerance )
-
-        ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
-            write(Test%outputUnit,"(*(g0,:,' '))")
-            write(Test%outputUnit,"(*(g0,:,' '))") "xmin_ref    =", xmin_ref
-            write(Test%outputUnit,"(*(g0,:,' '))") "xmin        =", GeoCyclicLogPDF%PowellMinimum%xmin
-            write(Test%outputUnit,"(*(g0,:,' '))") "Difference  =", Difference
-            write(Test%outputUnit,"(*(g0,:,' '))")
-        end if
-        ! LCOV_EXCL_STOP
-
-    end function test_fitGeoCyclicLogPDF_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

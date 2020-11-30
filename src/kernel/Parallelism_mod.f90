@@ -129,7 +129,6 @@ contains
     !> This routine must not contain any synchronization statements under any circumstances.
     subroutine queryImage(Image)
 
-        use Statistics_mod, only: fitGeoCyclicLogPDF
         use Constants_mod, only: RK, IK
         use String_mod, only: num2str
         implicit none
@@ -229,7 +228,7 @@ contains
     !> `ForkJoin` : An object of class [ForkJoin_type](@ref forkjoin_type) containing the parallelization speedup.
     function constructForkJoin(processCount, lenProcessID, ProcessID, successProb, seqSecTime, parSecTime, comSecTime) result(ForkJoin) ! nonpure
 
-        use Statistics_mod, only: fitGeoCyclicLogPDF
+        use GeoCyclicFit_mod, only: fitGeoCyclicLogPDF
         use Constants_mod, only: RK, IK
         use String_mod, only: num2str
         use Misc_mod, only: findUnique

@@ -52,7 +52,13 @@ module Optimization_mod
 
     character(*), parameter :: MODULE_NAME = "@Optimization_mod"
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#if defined OS_IS_WSL
+    procedure(getFuncMD_proc), pointer  :: getFuncMD_WSL                    !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+    real(RK), allocatable               :: StartVec_WSL(:), DirVec_WSL(:)   !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+    integer(IK)                         :: ndim_WSL                         !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+#endif
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> The Brent minimizer class.
     type :: BrentMinimum_type
@@ -80,7 +86,7 @@ module Optimization_mod
         end function getFunc1D_proc
     end interface
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> The Powell minimizer class.
     type :: PowellMinimum_type
@@ -109,17 +115,17 @@ module Optimization_mod
         end function getFuncMD_proc
     end interface
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     interface minimize
         module procedure :: minimizeBrent, minimizePowell
     end interface minimize
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> The constructor of the class [BrentMinimum_type](@ref brentminimum_type).
     !> Compute the minimum of the input 1-dimensional function isolated to
@@ -278,7 +284,7 @@ contains
 
     end function minimizeBrent
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getBracket(ax,bx,cx,fa,fb,fc,getFunc)
 
@@ -357,7 +363,7 @@ contains
 
     end subroutine getBracket
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> The constructor of the class [PowellMinimum_type](@ref powellminimum_type).
     function minimizePowell(ndim, getFuncMD, StartVec, DirMat, ftol) result(PowellMinimum)
@@ -444,20 +450,26 @@ contains
 
     end function minimizePowell
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine linmin(getFuncMD, ndim, StartVec, dirVec, fmin, Err)
+    subroutine linmin(getFuncMD, ndim, StartVec, DirVec, fmin, Err)
         use Constants_mod, only: IK, RK
         use Err_mod, only: Err_type
         implicit none
         procedure(getFuncMD_proc)       :: getFuncMD
         integer(IK)     , intent(in)    :: ndim
-        real(RK)        , intent(inout) :: StartVec(ndim), dirVec(ndim)
+        real(RK)        , intent(inout) :: StartVec(ndim), DirVec(ndim)
         real(RK)        , intent(out)   :: fmin
         type(Err_type)  , intent(out)   :: Err
         real(RK)        , parameter     :: XTOL = 1.0e-8_RK
         real(RK)                        :: ax, bx, fa, fb, fx, xx
         type(BrentMinimum_type)         :: BrentMinimum
+#if defined OS_IS_WSL
+        getFuncMD_WSL => getFuncMD
+        DirVec_WSL = DirVec
+        StartVec_WSL = StartVec
+        ndim_WSL = ndim
+#endif
         ax = 0.0
         xx = 1.0
         call getBracket(ax,xx,bx,fa,fx,fb,getFunc1D)
@@ -469,19 +481,38 @@ contains
             Err%occurred = .false.
         end if
         fmin = BrentMinimum%fmin
-        dirVec = BrentMinimum%xmin * dirVec
-        StartVec = StartVec + dirVec
+        DirVec = BrentMinimum%xmin * DirVec
+        StartVec = StartVec + DirVec
+#if defined OS_IS_WSL
+        nullify(getFuncMD_WSL)
+#else
     contains
         function getFunc1D(x) result(funcVal)
             implicit none
             real(RK), intent(in)    :: x
             real(RK)                :: funcVal
             real(RK), allocatable   :: xt(:)
-            xt = StartVec + x * dirVec
+            xt = StartVec + x * DirVec
             funcVal = getFuncMD(ndim,xt)
         end function getFunc1D
+#endif
     end subroutine linmin
 
-    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if defined OS_IS_WSL
+        !> \brief
+        !> Bypass the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
+        function getFunc1D(x) result(funcVal)
+            implicit none
+            real(RK), intent(in)    :: x
+            real(RK)                :: funcVal
+            real(RK), allocatable   :: xt(:)
+            xt = StartVec_WSL + x * DirVec_WSL
+            funcVal = getFuncMD_WSL(ndim_WSL,xt)
+        end function getFunc1D
+#endif
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module Optimization_mod ! LCOV_EXCL_LINE

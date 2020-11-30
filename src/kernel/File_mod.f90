@@ -595,7 +595,11 @@ contains
         Err%msg = ""
         Err%occurred = .false.
         isNumbered = .true.
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,number=number,iostat=Err%stat)
             if (Err%stat>0) then
             ! LCOV_EXCL_START
@@ -640,7 +644,11 @@ contains
         Err%msg = ""
         Err%occurred = .false.
         allocate( character(MAX_FILE_PATH_LEN) :: nameByCompiler )
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,named=isNamed,name=nameByCompiler,iostat=Err%stat)
             if (Err%stat>0) then
             ! LCOV_EXCL_START
@@ -683,7 +691,11 @@ contains
         Err%msg = ""
         Err%occurred = .false.
         allocate( character(63) :: access )
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,access=access,iostat=Err%stat)
             if (Err%stat>0) then
             ! LCOV_EXCL_START
@@ -726,11 +738,15 @@ contains
         Err%msg = ""
         Err%occurred = .false.
         allocate( character(63) :: form )
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,form=form,iostat=Err%stat)
             if (Err%stat>0) then
-                Err%occurred = .true.
             ! LCOV_EXCL_START
+                Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
@@ -768,7 +784,11 @@ contains
         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // "@getRecl()"
         Err%msg = ""
         Err%occurred = .false.
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,recl=recl,iostat=Err%stat)
             if (Err%stat>0) then
             ! LCOV_EXCL_START
@@ -810,7 +830,11 @@ contains
         Err%msg = ""
         Err%occurred = .false.
         allocate( character(63) :: blank )
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,blank=blank,iostat=Err%stat)
             if (Err%stat>0) then
             ! LCOV_EXCL_START
@@ -853,7 +877,11 @@ contains
         Err%msg = ""
         Err%occurred = .false.
         allocate( character(63) :: position )
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,position=position,iostat=Err%stat)
             if (Err%stat>0) then
             ! LCOV_EXCL_START
@@ -896,7 +924,11 @@ contains
         Err%msg = ""
         Err%occurred = .false.
         allocate( character(63) :: action )
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,action=action,iostat=Err%stat)
             if (Err%stat>0) then
             ! LCOV_EXCL_START
@@ -939,7 +971,11 @@ contains
         Err%msg = ""
         Err%occurred = .false.
         allocate( character(63) :: delim )
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,delim=delim,iostat=Err%stat)
             if (Err%stat>0) then
             ! LCOV_EXCL_START

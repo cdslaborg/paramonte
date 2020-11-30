@@ -79,7 +79,6 @@ block; use Test_CrossCorr_mod; call test_CrossCorr(); end block
 block; use Test_DateTime_mod; call test_DateTime(); end block
 block; use Test_Decoration_mod; call test_Decoration(); end block
 block; use Test_Err_mod; call test_Err(); end block
-block; use Test_Err_mod; call test_Err(); end block
 block; use Test_File_mod; call test_File(); end block
 block; use Test_FileContents_mod; call test_FileContents(); end block
 block; use Test_FileList_mod; call test_FileList(); end block
@@ -93,6 +92,7 @@ block; use Test_RandomSeed_mod; call test_RandomSeed(); end block
 block; use Test_Sort_mod; call test_Sort(); end block
 block; use Test_StarFormation_mod; call test_StarFormation(); end block
 block; use Test_Statistics_mod; call test_Statistics(); end block
+block; use Test_GeoCyclicFit_mod; call test_GeoCyclicFit(); end block
 block; use Test_String_mod; call test_String(); end block
 block; use Test_System_mod; call test_System(); end block
 block; use Test_Timer_mod; call test_Timer(); end block

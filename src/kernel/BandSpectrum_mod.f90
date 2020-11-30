@@ -61,6 +61,42 @@ module BandSpectrum_mod
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    interface
+    module subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence
+#endif
+        use Constants_mod, only: IK, RK, HUGE_RK
+        use QuadPackSPR_mod, only: qag
+        use Err_mod, only: Err_type
+        implicit none
+        real(RK), intent(in)            :: lowerLim, upperLim, epk, alpha, beta, tolerance
+        real(RK), intent(out)           :: energyFluence
+        type(Err_type), intent(out)     :: Err
+    end subroutine getEnergyFluence
+    end interface
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    interface
+    module subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence
+#endif
+
+       !use Integration_mod, only: doQuadRombClosed
+        use Constants_mod, only: IK, RK, HUGE_RK
+        use QuadPackSPR_mod, only: qag
+        use Err_mod, only: Err_type
+        implicit none
+        real(RK), intent(in)            :: lowerLim, upperLim, epk, alpha, beta, tolerance
+        real(RK), intent(out)           :: photonFluence
+        type(Err_type), intent(out)     :: Err
+    end subroutine getPhotonFluence
+    end interface
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -184,263 +220,271 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> \brief
-    !> Integrate the Band differential spectrum over the input energy range.
-    !>
-    !> \param[in]   lowerLim        :   The lower limit energy (in units of [keV]) of the integration.
-    !> \param[in]   upperLim        :   The upper limit energy (in units of [keV]) of the integration.
-    !> \param[in]   epk             :   The spectral peak energy in units of [keV].
-    !> \param[in]   alpha           :   The lower spectral exponent of the Band model.
-    !> \param[in]   beta            :   The upper spectral exponent of the Band model.
-    !> \param[in]   tolerance       :   The relative accuracy tolerance of the integration.
-    !> \param[out]  photonFluence   :   The fluence in units of photon counts within the input energy range.
-    !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
-    subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence
-#endif
+! Bizarrely and frustratingly, Microsoft Windows Subsystem for Linux Ubuntu with GFortran yields Segmentation faults with internal procedure calls.
+! This is so unfortunate. To bypass this issue for now, the following subroutine is implemented as separate submodule 
+! so that the internal shared parameters can be safely passed as submodule parameters.
 
-       !use Integration_mod, only: doQuadRombClosed
-        use Constants_mod, only: IK, RK, HUGE_RK
-        use QuadPackSPR_mod, only: qag
-        use Err_mod, only: Err_type
-        implicit none
-        real(RK), intent(in)            :: lowerLim, upperLim, epk, alpha, beta, tolerance
-        real(RK), intent(out)           :: photonFluence
-        type(Err_type), intent(out)     :: Err
-        character(*), parameter         :: PROCEDURE_NAME = "@getPhotonFluence()"
-        real(RK)                        :: ebrk, alphaPlusTwo
-        real(RK)                        :: thisUpperLim, alphaPlusTwoOverEpk, betaPlusOne
-        real(RK)                        :: alphaMinusBeta, coef
-        real(RK)                        :: abserr
-        integer(IK)                     :: neval
-        integer(IK)                     :: ierr
-       !real(RK)                        :: alphaPlusOne, logGammaAlphaPlusOne
-
-        Err%occurred = .false.
-
-        if (lowerLim>=upperLim) then
-            photonFluence = 0._RK
-            return
-        end if
-
-        ! check if the photon indices are consistent with the mathematical rules
-        if (alpha<beta .or. alpha<-2._RK) then
-            photonFluence = -HUGE_RK
-            Err%occurred = .true.
-            Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred: alpha<beta .or. alpha<-2._RK"
-            return
-        end if
-
-        ! integrate the spectrum
-        alphaPlusTwo = alpha + 2._RK
-        alphaMinusBeta = alpha - beta
-        ebrk = epk*alphaMinusBeta/alphaPlusTwo
-
-        if (lowerLim>ebrk) then
-
-            ! there is only the high energy component in the photonFluence
-            betaPlusOne = beta + 1._RK
-            coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta);
-            photonFluence = coef * ( upperLim**betaPlusOne - lowerLim**betaPlusOne ) / betaPlusOne
-            return
-
-!#if defined OS_IS_WSL && defined CODECOV_ENABLED
-!! LCOV_EXCL_START
-!#endif
-
-        elseif (lowerLim<ebrk) then
-
-            alphaPlusTwoOverEpk = alphaPlusTwo / epk
-            thisUpperLim = min(upperLim,ebrk)
-            !alphaPlusOne = alpha + 1._RK
-            !if (alpha>-1._RK) then
-            !    logGammaAlphaPlusOne = log_gamma( alphaPlusOne )
-            !    ! use the analytical approach to compute the photonFluence:
-            !    ! https://www.wolframalpha.com/input/?i=integrate+x%5Ea+*+exp(-b*x)
-            !    photonFluence = getUpperGamma( exponent = alphaPlusOne &
-            !                            , logGammaExponent = logGammaAlphaPlusOne &
-            !                            , lowerLim = alphaPlusTwoOverEpk * lowerLim &
-            !                            , tolerance = tolerance &
-            !                            ) &
-            !             - getUpperGamma( exponent = alphaPlusOne &
-            !                            , logGammaExponent = logGammaAlphaPlusOne &
-            !                            , lowerLim = alphaPlusTwoOverEpk * thisUpperLim &
-            !                            , tolerance = tolerance &
-            !                            )
-            !    photonFluence = photonFluence / alphaPlusTwoOverEpk**alphaPlusOne
-            !else
-                ! use brute-force integration
-                call qag( f             = getBandCompLowPhoton  &
-                        , a             = lowerLim              &
-                        , b             = thisUpperLim          &
-                        , epsabs        = 0._RK                 &
-                        , epsrel        = tolerance             &
-                        , key           = 1_IK                  &
-                        , result        = photonFluence         &
-                        , abserr        = abserr                &
-                        , neval         = neval                 &
-                        , ier           = ierr                  &
-                        )
-                !write(*,*) neval
-                !call doQuadRombClosed   ( getFunc       = getBandCompLowPhoton &
-                !                        , xmin          = lowerLim             &
-                !                        , xmax          = thisUpperLim         &
-                !                        , tolerance     = 1.e-7_RK             &
-                !                        , nRefinement   = 10_IK                &
-                !                        , photonFluence = photonFluence        &
-                !                        , ierr          = ierr                 &
-                !                        )
-                if (ierr/=0_IK) then
-                    photonFluence = -HUGE_RK
-                    Err%occurred = .true.
-                    Err%stat = ierr
-                    Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred at QuadPack routine. Check the error code to identify the root cause."
-                    return
-                end if
-            !end if
-
-            if (upperLim>ebrk) then
-                ! add the remaining part of the photonFluence from the high-energy component
-                betaPlusOne = beta + 1._RK
-                alphaMinusBeta = alpha - beta
-                coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta);
-                photonFluence = photonFluence + coef * ( upperLim**betaPlusOne - ebrk**betaPlusOne ) / betaPlusOne
-                return
-            end if
-
-        end if
-
-    contains
-
-        pure function getBandCompLowPhoton(energy) result(bandCompLow)
-            implicit none
-            real(RK), intent(in)    :: energy
-            real(RK)                :: bandCompLow
-            bandCompLow = energy**alpha * exp(-alphaPlusTwoOverEpk*energy)
-        end function getBandCompLowPhoton
-
-!#if defined OS_IS_WSL && defined CODECOV_ENABLED
-!! LCOV_EXCL_STOP
-!#endif
-
-    end subroutine getPhotonFluence
+!WSL_GFORTRAN_BUG     !> \brief
+!WSL_GFORTRAN_BUG     !> Integrate the Band differential spectrum over the input energy range.
+!WSL_GFORTRAN_BUG     !>
+!WSL_GFORTRAN_BUG     !> \param[in]   lowerLim        :   The lower limit energy (in units of [keV]) of the integration.
+!WSL_GFORTRAN_BUG     !> \param[in]   upperLim        :   The upper limit energy (in units of [keV]) of the integration.
+!WSL_GFORTRAN_BUG     !> \param[in]   epk             :   The spectral peak energy in units of [keV].
+!WSL_GFORTRAN_BUG     !> \param[in]   alpha           :   The lower spectral exponent of the Band model.
+!WSL_GFORTRAN_BUG     !> \param[in]   beta            :   The upper spectral exponent of the Band model.
+!WSL_GFORTRAN_BUG     !> \param[in]   tolerance       :   The relative accuracy tolerance of the integration.
+!WSL_GFORTRAN_BUG     !> \param[out]  photonFluence   :   The fluence in units of photon counts within the input energy range.
+!WSL_GFORTRAN_BUG     !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
+!WSL_GFORTRAN_BUG     subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)
+!WSL_GFORTRAN_BUG #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!WSL_GFORTRAN_BUG         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence
+!WSL_GFORTRAN_BUG #endif
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG        !use Integration_mod, only: doQuadRombClosed
+!WSL_GFORTRAN_BUG         use Constants_mod, only: IK, RK, HUGE_RK
+!WSL_GFORTRAN_BUG         use QuadPackSPR_mod, only: qag
+!WSL_GFORTRAN_BUG         use Err_mod, only: Err_type
+!WSL_GFORTRAN_BUG         implicit none
+!WSL_GFORTRAN_BUG         real(RK), intent(in)            :: lowerLim, upperLim, epk, alpha, beta, tolerance
+!WSL_GFORTRAN_BUG         real(RK), intent(out)           :: photonFluence
+!WSL_GFORTRAN_BUG         type(Err_type), intent(out)     :: Err
+!WSL_GFORTRAN_BUG         character(*), parameter         :: PROCEDURE_NAME = "@getPhotonFluence()"
+!WSL_GFORTRAN_BUG         real(RK)                        :: ebrk, alphaPlusTwo
+!WSL_GFORTRAN_BUG         real(RK)                        :: thisUpperLim, alphaPlusTwoOverEpk, betaPlusOne
+!WSL_GFORTRAN_BUG         real(RK)                        :: alphaMinusBeta, coef
+!WSL_GFORTRAN_BUG         real(RK)                        :: abserr
+!WSL_GFORTRAN_BUG         integer(IK)                     :: neval
+!WSL_GFORTRAN_BUG         integer(IK)                     :: ierr
+!WSL_GFORTRAN_BUG        !real(RK)                        :: alphaPlusOne, logGammaAlphaPlusOne
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         Err%occurred = .false.
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         if (lowerLim>=upperLim) then
+!WSL_GFORTRAN_BUG             photonFluence = 0._RK
+!WSL_GFORTRAN_BUG             return
+!WSL_GFORTRAN_BUG         end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         ! check if the photon indices are consistent with the mathematical rules
+!WSL_GFORTRAN_BUG         if (alpha<beta .or. alpha<-2._RK) then
+!WSL_GFORTRAN_BUG             photonFluence = -HUGE_RK
+!WSL_GFORTRAN_BUG             Err%occurred = .true.
+!WSL_GFORTRAN_BUG             Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred: alpha<beta .or. alpha<-2._RK"
+!WSL_GFORTRAN_BUG             return
+!WSL_GFORTRAN_BUG         end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         ! integrate the spectrum
+!WSL_GFORTRAN_BUG         alphaPlusTwo = alpha + 2._RK
+!WSL_GFORTRAN_BUG         alphaMinusBeta = alpha - beta
+!WSL_GFORTRAN_BUG         ebrk = epk*alphaMinusBeta/alphaPlusTwo
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         if (lowerLim>ebrk) then
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG             ! there is only the high energy component in the photonFluence
+!WSL_GFORTRAN_BUG             betaPlusOne = beta + 1._RK
+!WSL_GFORTRAN_BUG             coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta);
+!WSL_GFORTRAN_BUG             photonFluence = coef * ( upperLim**betaPlusOne - lowerLim**betaPlusOne ) / betaPlusOne
+!WSL_GFORTRAN_BUG             return
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG !#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!WSL_GFORTRAN_BUG !! LCOV_EXCL_START
+!WSL_GFORTRAN_BUG !#endif
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         elseif (lowerLim<ebrk) then
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG             alphaPlusTwoOverEpk = alphaPlusTwo / epk
+!WSL_GFORTRAN_BUG             thisUpperLim = min(upperLim,ebrk)
+!WSL_GFORTRAN_BUG             !alphaPlusOne = alpha + 1._RK
+!WSL_GFORTRAN_BUG             !if (alpha>-1._RK) then
+!WSL_GFORTRAN_BUG             !    logGammaAlphaPlusOne = log_gamma( alphaPlusOne )
+!WSL_GFORTRAN_BUG             !    ! use the analytical approach to compute the photonFluence:
+!WSL_GFORTRAN_BUG             !    ! https://www.wolframalpha.com/input/?i=integrate+x%5Ea+*+exp(-b*x)
+!WSL_GFORTRAN_BUG             !    photonFluence = getUpperGamma( exponent = alphaPlusOne &
+!WSL_GFORTRAN_BUG             !                            , logGammaExponent = logGammaAlphaPlusOne &
+!WSL_GFORTRAN_BUG             !                            , lowerLim = alphaPlusTwoOverEpk * lowerLim &
+!WSL_GFORTRAN_BUG             !                            , tolerance = tolerance &
+!WSL_GFORTRAN_BUG             !                            ) &
+!WSL_GFORTRAN_BUG             !             - getUpperGamma( exponent = alphaPlusOne &
+!WSL_GFORTRAN_BUG             !                            , logGammaExponent = logGammaAlphaPlusOne &
+!WSL_GFORTRAN_BUG             !                            , lowerLim = alphaPlusTwoOverEpk * thisUpperLim &
+!WSL_GFORTRAN_BUG             !                            , tolerance = tolerance &
+!WSL_GFORTRAN_BUG             !                            )
+!WSL_GFORTRAN_BUG             !    photonFluence = photonFluence / alphaPlusTwoOverEpk**alphaPlusOne
+!WSL_GFORTRAN_BUG             !else
+!WSL_GFORTRAN_BUG                 ! use brute-force integration
+!WSL_GFORTRAN_BUG                 call qag( f             = getBandCompLowPhoton  &
+!WSL_GFORTRAN_BUG                         , a             = lowerLim              &
+!WSL_GFORTRAN_BUG                         , b             = thisUpperLim          &
+!WSL_GFORTRAN_BUG                         , epsabs        = 0._RK                 &
+!WSL_GFORTRAN_BUG                         , epsrel        = tolerance             &
+!WSL_GFORTRAN_BUG                         , key           = 1_IK                  &
+!WSL_GFORTRAN_BUG                         , result        = photonFluence         &
+!WSL_GFORTRAN_BUG                         , abserr        = abserr                &
+!WSL_GFORTRAN_BUG                         , neval         = neval                 &
+!WSL_GFORTRAN_BUG                         , ier           = ierr                  &
+!WSL_GFORTRAN_BUG                         )
+!WSL_GFORTRAN_BUG                 !write(*,*) neval
+!WSL_GFORTRAN_BUG                 !call doQuadRombClosed   ( getFunc       = getBandCompLowPhoton &
+!WSL_GFORTRAN_BUG                 !                        , xmin          = lowerLim             &
+!WSL_GFORTRAN_BUG                 !                        , xmax          = thisUpperLim         &
+!WSL_GFORTRAN_BUG                 !                        , tolerance     = 1.e-7_RK             &
+!WSL_GFORTRAN_BUG                 !                        , nRefinement   = 10_IK                &
+!WSL_GFORTRAN_BUG                 !                        , photonFluence = photonFluence        &
+!WSL_GFORTRAN_BUG                 !                        , ierr          = ierr                 &
+!WSL_GFORTRAN_BUG                 !                        )
+!WSL_GFORTRAN_BUG                 if (ierr/=0_IK) then
+!WSL_GFORTRAN_BUG                     photonFluence = -HUGE_RK
+!WSL_GFORTRAN_BUG                     Err%occurred = .true.
+!WSL_GFORTRAN_BUG                     Err%stat = ierr
+!WSL_GFORTRAN_BUG                     Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred at QuadPack routine. Check the error code to identify the root cause."
+!WSL_GFORTRAN_BUG                     return
+!WSL_GFORTRAN_BUG                 end if
+!WSL_GFORTRAN_BUG             !end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG             if (upperLim>ebrk) then
+!WSL_GFORTRAN_BUG                 ! add the remaining part of the photonFluence from the high-energy component
+!WSL_GFORTRAN_BUG                 betaPlusOne = beta + 1._RK
+!WSL_GFORTRAN_BUG                 alphaMinusBeta = alpha - beta
+!WSL_GFORTRAN_BUG                 coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta);
+!WSL_GFORTRAN_BUG                 photonFluence = photonFluence + coef * ( upperLim**betaPlusOne - ebrk**betaPlusOne ) / betaPlusOne
+!WSL_GFORTRAN_BUG                 return
+!WSL_GFORTRAN_BUG             end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG     contains
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         pure function getBandCompLowPhoton(energy) result(bandCompLow)
+!WSL_GFORTRAN_BUG             implicit none
+!WSL_GFORTRAN_BUG             real(RK), intent(in)    :: energy
+!WSL_GFORTRAN_BUG             real(RK)                :: bandCompLow
+!WSL_GFORTRAN_BUG             bandCompLow = energy**alpha * exp(-alphaPlusTwoOverEpk*energy)
+!WSL_GFORTRAN_BUG         end function getBandCompLowPhoton
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG !#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!WSL_GFORTRAN_BUG !! LCOV_EXCL_STOP
+!WSL_GFORTRAN_BUG !#endif
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG     end subroutine getPhotonFluence
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    !> \brief
-    !> Integrate the Band differential spectrum over the input energy range in units of the input energy.
-    !>
-    !> \param[in]   lowerLim        :   The lower limit energy (in units of [keV]) of the integration.
-    !> \param[in]   upperLim        :   The upper limit energy (in units of [keV]) of the integration.
-    !> \param[in]   epk             :   The spectral peak energy in units of [keV].
-    !> \param[in]   alpha           :   The lower spectral exponent of the Band model.
-    !> \param[in]   beta            :   The upper spectral exponent of the Band model.
-    !> \param[in]   tolerance       :   The relative accuracy tolerance of the integration.
-    !> \param[out]  energyFluence   :   The fluence in units of the input energy (keV) within the input energy range.
-    !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
-    subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence
-#endif
+! Bizarrely and frustratingly, Microsoft Windows Subsystem for Linux Ubuntu with GFortran yields Segmentation faults with internal procedure calls.
+! This is so unfortunate. To bypass this issue for now, the following subroutine is implemented as separate submodule 
+! so that the internal shared parameters can be safely passed as submodule parameters.
 
-        use Constants_mod, only: IK, RK, HUGE_RK
-        use QuadPackSPR_mod, only: qag
-        use Err_mod, only: Err_type
-        implicit none
-        real(RK), intent(in)            :: lowerLim, upperLim, epk, alpha, beta, tolerance
-        type(Err_type), intent(out)     :: Err
-        real(RK), intent(out)           :: energyFluence
-        character(*), parameter         :: PROCEDURE_NAME = "@getEnergyFluence()"
-        real(RK)                        :: ebrk, alphaPlusTwo
-        real(RK)                        :: thisUpperLim, alphaPlusTwoOverEpk, betaPlusTwo
-        real(RK)                        :: alphaMinusBeta, coef, alphaPlusOne
-        real(RK)                        :: abserr
-        integer(IK)                     :: neval
-        integer(IK)                     :: ierr
-
-        Err%occurred = .false.
-
-        if (lowerLim>=upperLim) then
-            energyFluence = 0._RK
-            return
-        end if
-
-        ! check if the photon indices are consistent with the mathematical rules
-        if (alpha<beta .or. alpha<-2._RK) then
-            energyFluence = -HUGE_RK
-            Err%occurred = .true.
-            Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred: alpha<beta .or. alpha<-2._RK"
-            return
-        end if
-
-        ! integrate the spectrum
-        alphaPlusTwo = alpha + 2._RK
-        alphaMinusBeta = alpha - beta
-        ebrk = epk*alphaMinusBeta/alphaPlusTwo
-
-        if (lowerLim>ebrk) then
-
-            ! there is only the high energy component in the energyFluence
-            betaPlusTwo = beta + 2._RK
-            coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta);
-            energyFluence = coef * ( upperLim**betaPlusTwo - lowerLim**betaPlusTwo ) / betaPlusTwo
-            return
-
-!#if defined OS_IS_WSL && defined CODECOV_ENABLED
-!! LCOV_EXCL_START
-!#endif
-
-        elseif (lowerLim<ebrk) then
-
-            alphaPlusTwoOverEpk = alphaPlusTwo / epk
-            thisUpperLim = min(upperLim,ebrk)
-            alphaPlusOne = alpha + 1._RK
-            ! use brute-force integration
-            call qag( f             = getBandCompLowEnergy  &
-                    , a             = lowerLim              &
-                    , b             = thisUpperLim          &
-                    , epsabs        = 0._RK                 &
-                    , epsrel        = tolerance             &
-                    , key           = 1_IK                  &
-                    , result        = energyFluence         &
-                    , abserr        = abserr                &
-                    , neval         = neval                 &
-                    , ier           = ierr                  &
-                    )
-
-            if (ierr/=0_IK) then
-                energyFluence = -HUGE_RK
-                Err%occurred = .true.
-                Err%stat = ierr
-                Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred at QuadPack routine. Check the error code to identify the root cause."
-                return
-            end if
-
-            if (upperLim>ebrk) then ! add the remaining part of the energyFluence from the high-energy component
-                betaPlusTwo = beta + 2._RK
-                alphaMinusBeta = alpha - beta
-                coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta);
-                energyFluence = energyFluence + coef * ( upperLim**betaPlusTwo - ebrk**betaPlusTwo ) / betaPlusTwo
-                return
-            end if
-
-        end if
-
-    contains
-
-        function getBandCompLowEnergy(energy) result(bandCompLow)
-            implicit none
-            real(RK), intent(in)    :: energy
-            real(RK)                :: bandCompLow
-            bandCompLow = energy**alphaPlusOne * exp(-alphaPlusTwoOverEpk*energy)
-        end function getBandCompLowEnergy
-
-!#if defined OS_IS_WSL && defined CODECOV_ENABLED
-!! LCOV_EXCL_STOP
-!#endif
-
-    end subroutine getEnergyFluence
+!WSL_GFORTRAN_BUG     !> \brief
+!WSL_GFORTRAN_BUG     !> Integrate the Band differential spectrum over the input energy range in units of the input energy.
+!WSL_GFORTRAN_BUG     !>
+!WSL_GFORTRAN_BUG     !> \param[in]   lowerLim        :   The lower limit energy (in units of [keV]) of the integration.
+!WSL_GFORTRAN_BUG     !> \param[in]   upperLim        :   The upper limit energy (in units of [keV]) of the integration.
+!WSL_GFORTRAN_BUG     !> \param[in]   epk             :   The spectral peak energy in units of [keV].
+!WSL_GFORTRAN_BUG     !> \param[in]   alpha           :   The lower spectral exponent of the Band model.
+!WSL_GFORTRAN_BUG     !> \param[in]   beta            :   The upper spectral exponent of the Band model.
+!WSL_GFORTRAN_BUG     !> \param[in]   tolerance       :   The relative accuracy tolerance of the integration.
+!WSL_GFORTRAN_BUG     !> \param[out]  energyFluence   :   The fluence in units of the input energy (keV) within the input energy range.
+!WSL_GFORTRAN_BUG     !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
+!WSL_GFORTRAN_BUG     subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)
+!WSL_GFORTRAN_BUG #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!WSL_GFORTRAN_BUG         !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence
+!WSL_GFORTRAN_BUG #endif
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         use Constants_mod, only: IK, RK, HUGE_RK
+!WSL_GFORTRAN_BUG         use QuadPackSPR_mod, only: qag
+!WSL_GFORTRAN_BUG         use Err_mod, only: Err_type
+!WSL_GFORTRAN_BUG         implicit none
+!WSL_GFORTRAN_BUG         real(RK), intent(in)            :: lowerLim, upperLim, epk, alpha, beta, tolerance
+!WSL_GFORTRAN_BUG         type(Err_type), intent(out)     :: Err
+!WSL_GFORTRAN_BUG         real(RK), intent(out)           :: energyFluence
+!WSL_GFORTRAN_BUG         character(*), parameter         :: PROCEDURE_NAME = "@getEnergyFluence()"
+!WSL_GFORTRAN_BUG         real(RK)                        :: ebrk, alphaPlusTwo
+!WSL_GFORTRAN_BUG         real(RK)                        :: thisUpperLim, alphaPlusTwoOverEpk, betaPlusTwo
+!WSL_GFORTRAN_BUG         real(RK)                        :: alphaMinusBeta, coef, alphaPlusOne
+!WSL_GFORTRAN_BUG         real(RK)                        :: abserr
+!WSL_GFORTRAN_BUG         integer(IK)                     :: neval
+!WSL_GFORTRAN_BUG         integer(IK)                     :: ierr
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         Err%occurred = .false.
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         if (lowerLim>=upperLim) then
+!WSL_GFORTRAN_BUG             energyFluence = 0._RK
+!WSL_GFORTRAN_BUG             return
+!WSL_GFORTRAN_BUG         end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         ! check if the photon indices are consistent with the mathematical rules
+!WSL_GFORTRAN_BUG         if (alpha<beta .or. alpha<-2._RK) then
+!WSL_GFORTRAN_BUG             energyFluence = -HUGE_RK
+!WSL_GFORTRAN_BUG             Err%occurred = .true.
+!WSL_GFORTRAN_BUG             Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred: alpha<beta .or. alpha<-2._RK"
+!WSL_GFORTRAN_BUG             return
+!WSL_GFORTRAN_BUG         end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         ! integrate the spectrum
+!WSL_GFORTRAN_BUG         alphaPlusTwo = alpha + 2._RK
+!WSL_GFORTRAN_BUG         alphaMinusBeta = alpha - beta
+!WSL_GFORTRAN_BUG         ebrk = epk*alphaMinusBeta/alphaPlusTwo
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         if (lowerLim>ebrk) then
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG             ! there is only the high energy component in the energyFluence
+!WSL_GFORTRAN_BUG             betaPlusTwo = beta + 2._RK
+!WSL_GFORTRAN_BUG             coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta);
+!WSL_GFORTRAN_BUG             energyFluence = coef * ( upperLim**betaPlusTwo - lowerLim**betaPlusTwo ) / betaPlusTwo
+!WSL_GFORTRAN_BUG             return
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG !#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!WSL_GFORTRAN_BUG !! LCOV_EXCL_START
+!WSL_GFORTRAN_BUG !#endif
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         elseif (lowerLim<ebrk) then
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG             alphaPlusTwoOverEpk = alphaPlusTwo / epk
+!WSL_GFORTRAN_BUG             thisUpperLim = min(upperLim,ebrk)
+!WSL_GFORTRAN_BUG             alphaPlusOne = alpha + 1._RK
+!WSL_GFORTRAN_BUG             ! use brute-force integration
+!WSL_GFORTRAN_BUG             call qag( f             = getBandCompLowEnergy  &
+!WSL_GFORTRAN_BUG                     , a             = lowerLim              &
+!WSL_GFORTRAN_BUG                     , b             = thisUpperLim          &
+!WSL_GFORTRAN_BUG                     , epsabs        = 0._RK                 &
+!WSL_GFORTRAN_BUG                     , epsrel        = tolerance             &
+!WSL_GFORTRAN_BUG                     , key           = 1_IK                  &
+!WSL_GFORTRAN_BUG                     , result        = energyFluence         &
+!WSL_GFORTRAN_BUG                     , abserr        = abserr                &
+!WSL_GFORTRAN_BUG                     , neval         = neval                 &
+!WSL_GFORTRAN_BUG                     , ier           = ierr                  &
+!WSL_GFORTRAN_BUG                     )
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG             if (ierr/=0_IK) then
+!WSL_GFORTRAN_BUG                 energyFluence = -HUGE_RK
+!WSL_GFORTRAN_BUG                 Err%occurred = .true.
+!WSL_GFORTRAN_BUG                 Err%stat = ierr
+!WSL_GFORTRAN_BUG                 Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred at QuadPack routine. Check the error code to identify the root cause."
+!WSL_GFORTRAN_BUG                 return
+!WSL_GFORTRAN_BUG             end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG             if (upperLim>ebrk) then ! add the remaining part of the energyFluence from the high-energy component
+!WSL_GFORTRAN_BUG                 betaPlusTwo = beta + 2._RK
+!WSL_GFORTRAN_BUG                 alphaMinusBeta = alpha - beta
+!WSL_GFORTRAN_BUG                 coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta);
+!WSL_GFORTRAN_BUG                 energyFluence = energyFluence + coef * ( upperLim**betaPlusTwo - ebrk**betaPlusTwo ) / betaPlusTwo
+!WSL_GFORTRAN_BUG                 return
+!WSL_GFORTRAN_BUG             end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         end if
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG     contains
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG         pure function getBandCompLowEnergy(energy) result(bandCompLow)
+!WSL_GFORTRAN_BUG             implicit none
+!WSL_GFORTRAN_BUG             real(RK), intent(in)    :: energy
+!WSL_GFORTRAN_BUG             real(RK)                :: bandCompLow
+!WSL_GFORTRAN_BUG             bandCompLow = energy**alphaPlusOne * exp(-alphaPlusTwoOverEpk*energy)
+!WSL_GFORTRAN_BUG         end function getBandCompLowEnergy
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG !#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!WSL_GFORTRAN_BUG !! LCOV_EXCL_STOP
+!WSL_GFORTRAN_BUG !#endif
+!WSL_GFORTRAN_BUG 
+!WSL_GFORTRAN_BUG     end subroutine getEnergyFluence
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -65,6 +65,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_Sort_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_StarFormation_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Statistics_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_GeoCyclicFit_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_String_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_System_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Timer_mod.f90

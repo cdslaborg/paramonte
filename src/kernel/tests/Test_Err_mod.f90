@@ -431,6 +431,9 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Test the effects of an input non-null error code `Err%stat`.
+    !> Test the effects of missing arguments `prefix`, `returnEnabled`, and `newline`.
     function test_abort_2() result(assertion)
 
         use JaggedArray_mod, only: CharVec_type
@@ -458,16 +461,15 @@ contains
         OutputList_ref(4)%record = " - FATAL: The absence of evidence is not evidence for absence.    Carl Sagan"
         OutputList_ref(5)%record = " - FATAL: If I have seen further, it is by standing on the shoulders of giants.    Isaac Newton"
         OutputList_ref(6)%record = " - FATAL: I don't pretend to understand the universe - it's much bigger than I am.    Thomas Carlyle"
-        OutputList_ref(7)%record = ""
+        OutputList_ref(7)%record = " - FATAL: Error Code: 123."
 
         open(newunit = fileUnit, status = "scratch")
         !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_abort_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         Err%msg = replaceStr(mc_msg, "\n", NLC)
+        Err%stat = 123_IK
         call abort  ( Err = Err &
-                    , returnEnabled = .true. &
                     , outputUnit = fileUnit &
-                    , newline  = NLC &
                     )
 
         rewind(fileUnit)
@@ -491,8 +493,8 @@ contains
             ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
                 write(Test%outputUnit,"(*(g0))")
-                write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
-                write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
+                write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = '", OutputList_ref(i)%record, "'"
+                write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = '", OutputList(i)%record, "'"
                 write(Test%outputUnit,"(*(g0))")
             end if
             ! LCOV_EXCL_STOP

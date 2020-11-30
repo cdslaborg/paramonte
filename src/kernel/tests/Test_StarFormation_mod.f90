@@ -71,10 +71,8 @@ contains
         call Test%run(test_getLogRateP15, "test_getLogRateP15")
         call Test%run(test_getLogRateM17, "test_getLogRateM17")
         call Test%run(test_getLogRateF18, "test_getLogRateF18")
-!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
         call Test%run(test_getBinaryMergerRate_1, "test_getBinaryMergerRate_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
         call Test%run(test_getBinaryMergerRate_2, "test_getBinaryMergerRate_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
-!#endif
         call Test%run(test_getBinaryMergerRateS15_1, "test_getBinaryMergerRateS15_1")
         call Test%run(test_getBinaryMergerRateS15_2, "test_getBinaryMergerRateS15_2")
         call Test%run(test_getBinaryMergerRateS15_3, "test_getBinaryMergerRateS15_3")
@@ -704,7 +702,6 @@ contains
 !#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
     function test_getBinaryMergerRate_1() result(assertion)
 
-        use Statistics_mod, only: getLogProbLogNorm
         use Constants_mod, only: RK, IK, HUGE_RK
 
         implicit none
@@ -732,7 +729,7 @@ contains
                                                         , zplus1Max = zplus1Max &
                                                         , nRefinement = nRefinement &
                                                         , maxRelativeError = maxRelativeError &
-                                                        , getMergerDelayTimePDF = getMergerDelayTimePDF &
+                                                        , getMergerDelayTimePDF = getTestMergerDelayTimePDF &
                                                         , getStarFormationRateDensity = getLogRateDensityB10 &
                                                         )
         end do
@@ -740,8 +737,8 @@ contains
         Difference = abs(LogBinaryMergerRate - LogBinaryMergerRate_ref) / LogBinaryMergerRate_ref
         assertion = all(Difference < tolerance)
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate        =", LogBinaryMergerRate
@@ -750,28 +747,12 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
-    contains
-
-        function getMergerDelayTimePDF(mergerDelayTime) result(mergerDelayTimePDF)
-            implicit none
-            real(RK), intent(in)    :: mergerDelayTime
-            real(RK)                :: mergerDelayTimePDF
-            real(RK), parameter     :: inverseVariance = 1._RK
-            real(RK), parameter     :: logSqrtInverseVariance = log(sqrt(inverseVariance))
-            mergerDelayTimePDF = getLogProbLogNorm  ( logMean = 1._RK &
-                                                    , inverseVariance = inverseVariance &
-                                                    , logSqrtInverseVariance = logSqrtInverseVariance &
-                                                    , logPoint = mergerDelayTime &
-                                                    )
-        end function 
-
     end function test_getBinaryMergerRate_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_getBinaryMergerRate_2() result(assertion)
 
-        use Statistics_mod, only: getLogProbLogNorm
         use Constants_mod, only: RK, IK, HUGE_RK
 
         implicit none
@@ -806,7 +787,7 @@ contains
                                                         !, zplus1Max = zplus1Max &
                                                         !, nRefinement = nRefinement &
                                                         !, maxRelativeError = maxRelativeError &
-                                                        , getMergerDelayTimePDF = getMergerDelayTimePDF &
+                                                        , getMergerDelayTimePDF = getTestMergerDelayTimePDF &
                                                         , getStarFormationRateDensity = getLogRateDensityB10 &
                                                         )
         end do
@@ -814,8 +795,8 @@ contains
         Difference = abs(LogBinaryMergerRate - LogBinaryMergerRate_ref) / LogBinaryMergerRate_ref
         assertion = all(Difference < tolerance)
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate        =", LogBinaryMergerRate
@@ -824,25 +805,25 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
-    contains
-
-        function getMergerDelayTimePDF(mergerDelayTime) result(mergerDelayTimePDF)
-            implicit none
-            real(RK), intent(in)    :: mergerDelayTime
-            real(RK)                :: mergerDelayTimePDF
-            real(RK), parameter     :: inverseVariance = 1._RK
-            real(RK), parameter     :: logSqrtInverseVariance = log(sqrt(inverseVariance))
-            mergerDelayTimePDF = getLogProbLogNorm  ( logMean = 1._RK &
-                                                    , inverseVariance = inverseVariance &
-                                                    , logSqrtInverseVariance = logSqrtInverseVariance &
-                                                    , logPoint = mergerDelayTime &
-                                                    )
-        end function 
-
     end function test_getBinaryMergerRate_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-!#endif
+    function getTestMergerDelayTimePDF(mergerDelayTime) result(mergerDelayTimePDF)
+        use Statistics_mod, only: getLogProbLogNorm
+        use Constants_mod, only: IK, RK
+        implicit none
+        real(RK), intent(in)    :: mergerDelayTime
+        real(RK)                :: mergerDelayTimePDF
+        real(RK), parameter     :: inverseVariance = 1._RK
+        real(RK), parameter     :: logSqrtInverseVariance = log(sqrt(inverseVariance))
+        mergerDelayTimePDF = getLogProbLogNorm  ( logMean = 1._RK &
+                                                , inverseVariance = inverseVariance &
+                                                , logSqrtInverseVariance = logSqrtInverseVariance &
+                                                , logPoint = mergerDelayTime &
+                                                )
+    end function getTestMergerDelayTimePDF
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module Test_StarFormation_mod ! LCOV_EXCL_LINE

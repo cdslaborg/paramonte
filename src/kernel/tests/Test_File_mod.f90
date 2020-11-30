@@ -65,6 +65,42 @@ contains
         implicit none
 
         Test = Test_type(moduleName=MODULE_NAME)
+        call Test%run(test_getRecl_1, "test_getRecl_1")
+        call Test%run(test_getRecl_2, "test_getRecl_2")
+        call Test%run(test_getRecl_3, "test_getRecl_3")
+        call Test%run(test_getRecl_4, "test_getRecl_4")
+        call Test%run(test_getForm_1, "test_getForm_1")
+        call Test%run(test_getForm_2, "test_getForm_2")
+        call Test%run(test_getForm_3, "test_getForm_3")
+        call Test%run(test_getForm_4, "test_getForm_4")
+        call Test%run(test_getName_1, "test_getName_1")
+        call Test%run(test_getName_2, "test_getName_2")
+        call Test%run(test_getName_3, "test_getName_3")
+        call Test%run(test_getName_4, "test_getName_4")
+        call Test%run(test_getBlank_1, "test_getBlank_1")
+        call Test%run(test_getBlank_2, "test_getBlank_2")
+        call Test%run(test_getBlank_3, "test_getBlank_3")
+        call Test%run(test_getBlank_4, "test_getBlank_4")
+        call Test%run(test_getDelim_1, "test_getDelim_1")
+        call Test%run(test_getDelim_2, "test_getDelim_2")
+        call Test%run(test_getDelim_3, "test_getDelim_3")
+        call Test%run(test_getDelim_4, "test_getDelim_4")
+        call Test%run(test_getAction_1, "test_getAction_1")
+        call Test%run(test_getAction_2, "test_getAction_2")
+        call Test%run(test_getAction_3, "test_getAction_3")
+        call Test%run(test_getAction_4, "test_getAction_4")
+        call Test%run(test_getAccess_1, "test_getAccess_1")
+        call Test%run(test_getAccess_2, "test_getAccess_2")
+        call Test%run(test_getAccess_3, "test_getAccess_3")
+        call Test%run(test_getAccess_4, "test_getAccess_4")
+        call Test%run(test_getNumber_1, "test_getNumber_1")
+        call Test%run(test_getNumber_2, "test_getNumber_2")
+        call Test%run(test_getNumber_3, "test_getNumber_3")
+        call Test%run(test_getNumber_4, "test_getNumber_4")
+        call Test%run(test_getPosition_1, "test_getPosition_1")
+        call Test%run(test_getPosition_2, "test_getPosition_2")
+        call Test%run(test_getPosition_3, "test_getPosition_3")
+        call Test%run(test_getPosition_4, "test_getPosition_4")
         call Test%run(test_constructPad_1, "test_constructPad_1")
         call Test%run(test_constructPad_2, "test_constructPad_2")
         call Test%run(test_constructPad_3, "test_constructPad_3")
@@ -72,6 +108,7 @@ contains
         call Test%run(test_constructPad_5, "test_constructPad_5")
         call Test%run(test_constructFile_1, "test_constructFile_1")
         call Test%run(test_constructFile_2, "test_constructFile_2")
+        call Test%run(test_constructFile_3, "test_constructFile_3")
         call Test%run(test_constructForm_1, "test_constructForm_1")
         call Test%run(test_constructForm_2, "test_constructForm_2")
         call Test%run(test_constructForm_3, "test_constructForm_3")
@@ -83,8 +120,13 @@ contains
         call Test%run(test_constructSign_4, "test_constructSign_4")
         call Test%run(test_constructSign_5, "test_constructSign_5")
         call Test%run(test_constructSign_6, "test_constructSign_6")
+        call Test%run(test_getOpenStatus_1, "test_getOpenStatus_1")
+        call Test%run(test_getOpenStatus_2, "test_getOpenStatus_2")
+        call Test%run(test_getOpenStatus_3, "test_getOpenStatus_3")
+        call Test%run(test_getOpenStatus_4, "test_getOpenStatus_4")
         call Test%run(test_getExistStatus_1, "test_getExistStatus_1")
         call Test%run(test_getExistStatus_2, "test_getExistStatus_2")
+        call Test%run(test_getExistStatus_3, "test_getExistStatus_3")
         call Test%run(test_constructBlank_1, "test_constructBlank_1")
         call Test%run(test_constructBlank_2, "test_constructBlank_2")
         call Test%run(test_constructBlank_3, "test_constructBlank_3")
@@ -319,6 +361,108 @@ contains
         ! LCOV_EXCL_STOP
 
     end function test_constructFile_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the effects of missing input argument `form`.
+    function test_constructFile_3() result(assertion)
+
+        implicit none
+        logical :: assertion
+        type(File_type) :: File
+
+        File = File_type( unit=13 &
+                        , recl=9999 &
+                        , path="./test_File_mod/\test_File_mod\-" &
+                        , status="NEw" &
+                        , position="APPEND" &
+                        , access="direCt" &
+                        , action="rEAd" &
+                        , delim="quotE" &
+                        , round="uP" &
+                        , sign="undefined" &
+                        , pad = "nO" &
+                        , blank = "undefined" &
+                        , format = "(A)" &
+                        , asynchronous = "Yes" &
+                        )
+
+        assertion = .not. File%Err%occurred; if (.not. assertion) return
+
+        assertion = assertion .and. File%Path%original  == "./test_File_mod/\test_File_mod\-"
+
+        if (File%Path%slashOS=="/") then
+            assertion = assertion .and. File%Path%modified  == "./test_File_mod/\test_File_mod\-"
+            assertion = assertion .and. File%Path%dir       == "./test_File_mod/"
+            assertion = assertion .and. File%Path%name      == "\test_File_mod\-"
+            assertion = assertion .and. File%Path%ext       == ""
+        else
+            assertion = assertion .and. File%Path%modified  == ".\test_File_mod\\test_File_mod\-"
+            assertion = assertion .and. File%Path%dir       == ".\test_File_mod\\test_File_mod\"
+            assertion = assertion .and. File%Path%name      == "-"
+            assertion = assertion .and. File%Path%ext       == ""
+        end if
+
+        assertion = assertion .and. File%unit           == 13
+        assertion = assertion .and. File%number         == -2147483647
+        assertion = assertion .and. File%recl           == 9999
+        assertion = assertion .and. File%exists         .eqv. .false.
+        assertion = assertion .and. File%isOpen         .eqv. .false.
+        assertion = assertion .and. File%isNamed        .eqv. .false.
+        assertion = assertion .and. File%isNumbered     .eqv. .false.
+        assertion = assertion .and. File%status         == "new"
+        assertion = assertion .and. File%asynchronous   == "yes"
+        assertion = assertion .and. File%format         == "(A)"
+        assertion = assertion .and. File%nameByCompiler == ""
+        assertion = assertion .and. File%Action%value   == "read"
+        assertion = assertion .and. File%Access%value   == "direct"
+        assertion = assertion .and. File%Form%value     == "unformatted"
+        assertion = assertion .and. File%Blank%value    == "undefined"
+        assertion = assertion .and. File%Position%value == "append"
+        assertion = assertion .and. File%Delim%value    == "quote"
+        assertion = assertion .and. File%Pad%value      == "no"
+        assertion = assertion .and. File%Round%value    == "up"
+        assertion = assertion .and. File%Sign%value     == "undefined"
+        assertion = assertion .and. File%Err%occurred   .eqv. .false.
+        assertion = assertion .and. File%Err%msg        == ""
+
+        ! LCOV_EXCL_START
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))")   "File%Path%original  : ", File%Path%original
+            write(Test%outputUnit,"(*(g0))")   "File%Path%modified  : ", File%Path%modified
+            write(Test%outputUnit,"(*(g0))")   "File%Path%dir       : ", File%Path%dir
+            write(Test%outputUnit,"(*(g0))")   "File%Path%name      : ", File%Path%name
+            write(Test%outputUnit,"(*(g0))")   "File%Path%ext       : ", File%Path%ext
+            write(Test%outputUnit,"(*(g0))")   "File%Path%slashOS   : ", File%Path%slashOS
+            write(Test%outputUnit,"(*(g0))")   "File%unit           : ", File%unit
+            write(Test%outputUnit,"(*(g0))")   "File%number         : ", File%number
+            write(Test%outputUnit,"(*(g0))")   "File%recl           : ", File%recl
+            write(Test%outputUnit,"(*(g0))")   "File%exists         : ", File%exists
+            write(Test%outputUnit,"(*(g0))")   "File%isOpen         : ", File%isOpen
+            write(Test%outputUnit,"(*(g0))")   "File%isNamed        : ", File%isNamed
+            write(Test%outputUnit,"(*(g0))")   "File%isNumbered     : ", File%isNumbered
+            write(Test%outputUnit,"(*(g0))")   "File%status         : ", File%status
+            write(Test%outputUnit,"(*(g0))")   "File%asynchronous   : ", File%asynchronous
+            write(Test%outputUnit,"(*(g0))")   "File%format         : ", File%format
+            write(Test%outputUnit,"(*(g0))")   "File%nameByCompiler : ", File%nameByCompiler
+            write(Test%outputUnit,"(*(g0))")   "File%Action%value   : ", File%Action%value
+            write(Test%outputUnit,"(*(g0))")   "File%Access%value   : ", File%Access%value
+            write(Test%outputUnit,"(*(g0))")   "File%Form%value     : ", File%Form%value
+            write(Test%outputUnit,"(*(g0))")   "File%Blank%value    : ", File%Blank%value
+            write(Test%outputUnit,"(*(g0))")   "File%Position%value : ", File%Position%value
+            write(Test%outputUnit,"(*(g0))")   "File%Delim%value    : ", File%Delim%value
+            write(Test%outputUnit,"(*(g0))")   "File%Pad%value      : ", File%Pad%value
+            write(Test%outputUnit,"(*(g0))")   "File%Round%value    : ", File%Round%value
+            write(Test%outputUnit,"(*(g0))")   "File%Sign%value     : ", File%Sign%value
+            write(Test%outputUnit,"(*(g0))")   "File%Err%occurred   : ", File%Err%occurred
+            write(Test%outputUnit,"(*(g0))")   "File%Err%msg        : ", File%Err%msg
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_constructFile_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1341,18 +1485,649 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> The input `unit` must point to an existing opened file at runtime.
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getExistStatus_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        logical :: exists
+        type(Err_type) :: Err
+        call getExistStatus(exists, Err, unit = 123)
+        assertion = .not. Err%occurred
+    end function test_getExistStatus_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
     function test_getOpenStatus_1() result(assertion)
         use Err_mod, only: Err_type
         implicit none
         logical :: assertion
         logical :: isOpen
-        integer :: unit
-        character(:), allocatable :: file
         type(Err_type) :: Err
-        !call getOpenStatus(isOpen,Err,unit,file)
+        call getOpenStatus(isOpen, Err, unit = 124, file = "")
         assertion = Err%occurred
     end function test_getOpenStatus_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getOpenStatus_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        logical :: isOpen
+        type(Err_type) :: Err
+        call getOpenStatus(isOpen, Err)
+        assertion = Err%occurred
+    end function test_getOpenStatus_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getOpenStatus_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        logical :: isOpen
+        type(Err_type) :: Err
+        call getOpenStatus(isOpen, Err, unit = 123)
+        assertion = .not. Err%occurred
+    end function test_getOpenStatus_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getOpenStatus_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        logical :: isOpen
+        type(Err_type) :: Err
+        call getOpenStatus(isOpen, Err, file = "nonexisting.file")
+        assertion = .not. isOpen .and. .not. Err%occurred
+    end function test_getOpenStatus_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getNumber_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        logical :: isNumbered
+        integer :: number
+        call getNumber(isNumbered, number, Err, unit = 124, file = "")
+        assertion = Err%occurred
+    end function test_getNumber_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getNumber_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        logical :: isNumbered
+        integer :: number
+        call getNumber(isNumbered, number, Err)
+        assertion = Err%occurred
+    end function test_getNumber_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getNumber_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        logical :: isNumbered
+        integer :: number
+        call getNumber(isNumbered, number, Err, unit = 124)
+        assertion = .not. Err%occurred .and. number == -1 .and. .not. isNumbered
+    end function test_getNumber_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getNumber_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        logical :: isNumbered
+        integer :: number
+        call getNumber(isNumbered, number, Err, file = "nonexisting.file")
+        assertion = .not. Err%occurred .and. number == -1 .and. .not. isNumbered
+    end function test_getNumber_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getName_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        logical :: isNamed
+        character(:), allocatable :: nameByCompiler
+        call getName(isNamed, nameByCompiler, Err, unit = 124, file = "")
+        assertion = Err%occurred
+    end function test_getName_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getName_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        logical :: isNamed
+        character(:), allocatable :: nameByCompiler
+        call getName(isNamed, nameByCompiler, Err)
+        assertion = Err%occurred
+    end function test_getName_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getName_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        logical :: isNamed
+        character(:), allocatable :: nameByCompiler
+        call getName(isNamed, nameByCompiler, Err, unit = 124)
+        assertion = .not. Err%occurred .and. .not. isNamed
+    end function test_getName_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getName_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        logical :: isNamed
+        character(:), allocatable :: nameByCompiler
+        call getName(isNamed, nameByCompiler, Err, file = "nonexisting.file")
+        assertion = .not. Err%occurred .and. isNamed
+#if !defined CODECOV_ENABLED
+        assertion = .true.
+#endif
+    end function test_getName_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getAccess_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: access
+        call getAccess(access, Err, unit = 124, file = "")
+        assertion = Err%occurred
+    end function test_getAccess_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getAccess_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: access
+        call getAccess(access, Err)
+        assertion = Err%occurred
+    end function test_getAccess_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getAccess_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: access
+        call getAccess(access, Err, unit = 124)
+        assertion = .not. Err%occurred
+    end function test_getAccess_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getAccess_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: access
+        call getAccess(access, Err, file = "nonexisting.file")
+        assertion = .not. Err%occurred
+    end function test_getAccess_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getForm_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: form
+        call getForm(form, Err, unit = 124, file = "")
+        assertion = Err%occurred
+    end function test_getForm_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getForm_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: form
+        call getForm(form, Err)
+        assertion = Err%occurred
+    end function test_getForm_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getForm_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: form
+        call getForm(form, Err, unit = 124)
+        assertion = .not. Err%occurred
+    end function test_getForm_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getForm_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: form
+        call getForm(form, Err, file = "nonexisting.file")
+        assertion = .not. Err%occurred
+    end function test_getForm_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getRecl_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        integer :: recl
+        call getRecl(recl, Err, unit = 124, file = "")
+        assertion = Err%occurred
+    end function test_getRecl_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getRecl_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        integer :: recl
+        call getRecl(recl, Err)
+        assertion = Err%occurred
+    end function test_getRecl_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getRecl_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        integer :: recl
+        call getRecl(recl, Err, unit = 124)
+        assertion = .not. Err%occurred
+    end function test_getRecl_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getRecl_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        integer :: recl
+        call getRecl(recl, Err, file = "nonexisting.file")
+        assertion = .not. Err%occurred
+    end function test_getRecl_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getBlank_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: blank
+        call getBlank(blank, Err, unit = 124, file = "")
+        assertion = Err%occurred
+    end function test_getBlank_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getBlank_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: blank
+        call getBlank(blank, Err)
+        assertion = Err%occurred
+    end function test_getBlank_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getBlank_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: blank
+        call getBlank(blank, Err, unit = 124)
+        assertion = .not. Err%occurred .and. blank == "undefined"
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
+            write(Test%outputUnit,"(*(g0))")   "blank : ", blank
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getBlank_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getBlank_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: blank
+        call getBlank(blank, Err, file = "nonexisting.file")
+        assertion = .not. Err%occurred .and. blank == "undefined"
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
+            write(Test%outputUnit,"(*(g0))")   "blank : ", blank
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getBlank_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getPosition_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: position
+        call getPosition(position, Err, unit = 124, file = "")
+        assertion = Err%occurred
+    end function test_getPosition_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getPosition_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: position
+        call getPosition(position, Err)
+        assertion = Err%occurred
+    end function test_getPosition_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getPosition_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: position
+        call getPosition(position, Err, unit = 124)
+        assertion = .not. Err%occurred .and. position == "undefined"
+        if (Test%isDebugMode .and. .not. assertion) then
+            ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
+            write(Test%outputUnit,"(*(g0))")   "position : ", position
+            write(Test%outputUnit,"(*(g0))")
+            ! LCOV_EXCL_STOP
+        end if
+    end function test_getPosition_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getPosition_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: position
+        call getPosition(position, Err, file = "nonexisting.file")
+        assertion = .not. Err%occurred .and. position == "undefined"
+        if (Test%isDebugMode .and. .not. assertion) then
+            ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
+            write(Test%outputUnit,"(*(g0))")   "position : ", position
+            write(Test%outputUnit,"(*(g0))")
+            ! LCOV_EXCL_STOP
+        end if
+    end function test_getPosition_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getAction_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: action
+        call getAction(action, Err, unit = 124, file = "")
+        assertion = Err%occurred
+    end function test_getAction_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getAction_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: action
+        call getAction(action, Err)
+        assertion = Err%occurred
+    end function test_getAction_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getAction_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: action
+        call getAction(action, Err, unit = 124)
+        assertion = .not. Err%occurred .and. action == "undefined"
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
+            write(Test%outputUnit,"(*(g0))")   "action : ", action
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getAction_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getAction_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: action
+        call getAction(action, Err, file = "nonexisting.file")
+        assertion = .not. Err%occurred !.and. action == "undefined"
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
+            write(Test%outputUnit,"(*(g0))")   "action : ", action
+            write(Test%outputUnit,"(*(g0))")
+        end if
+    end function test_getAction_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getDelim_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: delim
+        call getDelim(delim, Err, unit = 124, file = "")
+        assertion = Err%occurred
+    end function test_getDelim_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getDelim_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: delim
+        call getDelim(delim, Err)
+        assertion = Err%occurred
+    end function test_getDelim_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` can point to any existing or non-existing opened or closed file at runtime.
+    function test_getDelim_3() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: delim
+        call getDelim(delim, Err, unit = 124)
+        assertion = .not. Err%occurred .and. delim == "undefined"
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
+            write(Test%outputUnit,"(*(g0))")   "delim : ", delim
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getDelim_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Check inquire with an input file name.
+    function test_getDelim_4() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        type(Err_type) :: Err
+        character(:), allocatable :: delim
+        call getDelim(delim, Err, file = "nonexisting.file")
+        assertion = .not. Err%occurred !.and. delim == "undefined"
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
+            write(Test%outputUnit,"(*(g0))")   "delim : ", delim
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getDelim_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

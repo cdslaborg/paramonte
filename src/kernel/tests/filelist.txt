@@ -25,6 +25,7 @@
   Test_Sort_mod.f90
   Test_StarFormation_mod.f90
   Test_Statistics_mod.f90
+  Test_GeoCyclicFit_mod.f90
   Test_String_mod.f90
   Test_System_mod.f90
   Test_Timer_mod.f90

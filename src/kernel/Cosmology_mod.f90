@@ -181,8 +181,6 @@ contains
     !> \remark
     !> The rest of the required parameters are taken from the module:
     !> - `HUBBLE_TIME_GYRS` : The Hubble time in units of Gyrs (Giga Years). It should be a number close to 13.8 Gyrs (Liddle, 2003, Page 57).
-    !> - `OMEGA_DE` : the dark energy density,
-    !> - `OMEGA_DM` : the dark matter density.
     !>
     !> \remark
     !> The integrations are performed using the Romberg integration method.
@@ -208,7 +206,7 @@ contains
         maxRelativeErrorDefault = 1.e-6_RK; if (present(maxRelativeError)) maxRelativeErrorDefault = maxRelativeError
         nRefinementDefault = 7_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
 
-        call doQuadRombClosed   ( getFunc           = getIntegrand              &
+        call doQuadRombClosed   ( getFunc           = getLookBackTimeDensity    &
                                 , lowerLim          = ZPLUS1_MIN                &
                                 , upperLim          = zplus1                    &
                                 , maxRelativeError  = maxRelativeErrorDefault   &
@@ -224,17 +222,36 @@ contains
         end if
         lookBackTime = HUBBLE_TIME_GYRS * lookBackTime
 
-    contains
-
-        function getIntegrand(zplus1) result(integrand)
-            use Constants_mod, only: RK
-            implicit none
-            real(RK), intent(in)    :: zplus1
-            real(RK)                :: integrand
-            integrand = 1._RK / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )
-        end function getIntegrand
-
     end function getLookBackTime
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return the **differential** (w.r.t. `z`) cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters.
+    !>
+    !> @param[in]   zplus1              : The redshift plus 1.
+    !> \return
+    !> `lookBackTimeDnesity` : The cosmological lookback time in GYrs at the given redshift.
+    !>
+    !> \remark
+    !> The rest of the required parameters are taken from the module:
+    !> - `OMEGA_DE` : the dark energy density,
+    !> - `OMEGA_DM` : the dark matter density.
+    !>
+    !> \remark
+    !> This function could have become an internal function within [getLookBackTime](@ref getlookbacktime).
+    !> However, the library yields segmentation fault error when compiled and run on the Windows Subsystem 
+    !> for Linux Ubuntu with GFortran. As such, it is implemented as an independent function.
+    !>
+    !> @author
+    !> Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
+    pure function getLookBackTimeDensity(zplus1) result(lookBackTimeDnesity)
+        use Constants_mod, only: RK
+        implicit none
+        real(RK), intent(in)    :: zplus1
+        real(RK)                :: lookBackTimeDnesity
+        lookBackTimeDnesity = 1._RK / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )
+    end function getLookBackTimeDensity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -150,7 +150,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvPosDefMatSqrtDet
 #endif
-        use Constants_mod, only: RK, IK
+        use Constants_mod, only: RK, IK ! LCOV_EXCL_LINE
         implicit none
         integer(IK), intent(in)    :: nd
         real(RK)   , intent(inout) :: MatInvMat(nd,nd)           ! input: upper half is covariance matrix, output: inverse matrix
@@ -354,8 +354,8 @@ contains
         integer(IK), intent(in)    :: nd
         real(RK)   , intent(inout) :: MatrixLU(nd,nd) ! On input it is the matrix, on output it is the LU decomposition.
         real(RK)   , intent(out)   :: InverseMatrix(nd,nd)
-        real(RK)   , intent(out)   :: detInvMat   ! determinant of the inverse matrix
-        integer(IK)                :: i,j,Permutation(nd)
+        real(RK)   , intent(out)   :: detInvMat
+        integer(IK)                :: i,j,Permutation(nd) ! LCOV_EXCL_LINE
         do i = 1,nd
             do j = 1,nd
                 InverseMatrix(i,j) = 0._RK
@@ -498,10 +498,12 @@ contains
                 if ( abs(MatrixLU(i,j)) > aamax ) aamax = abs( MatrixLU(i,j) )
             end do
             if (aamax == 0._RK) then
+            ! LCOV_EXCL_START
                 write(*,*) "Statistics@getLU() failed. Singular matrix detected."
                 error stop
                 !errorOccurred = .true.
                 !return
+            ! LCOV_EXCL_STOP
             end if
             vv(i) = 1._RK/aamax
         end do
@@ -571,13 +573,15 @@ contains
         real(RK)   , intent(in)  :: B(rowsB,colsB)
         real(RK)   , intent(out) :: C(rowsA,colsB)
         integer(IK)              :: i,j,k,rowsC,colsC !Counters
-        if (colsA /= rowsB) then
+        if (colsA == rowsB) then
+            rowsC = rowsA
+            colsC = colsB
+        ! LCOV_EXCL_START
+        else
             write(*,*) 'Matrix@multiplyMatrix() failed. dimensions of matrices do not match.'
             stop
             !call abortProgram( output_unit , 1 , 1 , 'Statistics@multiplyMatrix() failed. dimensions of matrices do not match.' )
-        else
-            rowsC = rowsA
-            colsC = colsB
+        ! LCOV_EXCL_STOP
         end if
         ! Initialize product matrix to 0
         do i = 1, rowsC
@@ -901,7 +905,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRegresCoef
 #endif
-        use Constants_mod, only: RK, IK
+        use Constants_mod, only: RK, IK ! LCOV_EXCL_LINE
         implicit none
         integer(IK), intent(in)             :: rankPDM, rankS11, rankS22
         real(RK), intent(in)                :: PosDefMat(rankPDM,rankPDM)
@@ -928,4 +932,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Matrix_mod
+end module Matrix_mod ! LCOV_EXCL_LINE
