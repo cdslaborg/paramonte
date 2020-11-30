@@ -143,6 +143,7 @@ contains
         PaddedArray = padZero(currentLen = lenCurrentArray, Array = CurrentArray, paddedLen = paddedLen)
         Difference = abs(PaddedArray - PaddedArray_ref)
         assertion = all(Difference < tolerance)
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "CurrentArray      =", CurrentArray
@@ -151,6 +152,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Difference        =", Difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_padZero_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -169,6 +171,7 @@ contains
         PaddedArray = padZero(currentLen = lenCurrentArray, Array = CurrentArray)
         Difference = abs(PaddedArray - PaddedArray_ref)
         assertion = all(Difference < tolerance)
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "CurrentArray      =", CurrentArray
@@ -177,6 +180,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Difference        =", Difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_padZero_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -193,6 +197,7 @@ contains
         paddedLen = getPaddedLen(actualLen = actualLen, base = base)
         difference = abs(paddedLen - paddedLen_ref)
         assertion = difference == 0_IK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "actualLen     =", actualLen
@@ -201,6 +206,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference    =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getPaddedLen_IK_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -216,6 +222,7 @@ contains
         paddedLen = getPaddedLen(actualLen = actualLen)
         difference = abs(paddedLen - paddedLen_ref)
         assertion = difference == 0_IK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "actualLen     =", actualLen
@@ -224,6 +231,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference    =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getPaddedLen_IK_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -240,6 +248,7 @@ contains
         paddedLen = getPaddedLen(actualLen = actualLen, base = base)
         difference = abs(paddedLen - paddedLen_ref)
         assertion = difference == 0_IK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "actualLen     =", actualLen
@@ -248,6 +257,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference    =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getPaddedLen_RK_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -264,6 +274,7 @@ contains
         paddedLen = getPaddedLen(actualLen = actualLen, base = base)
         difference = abs(paddedLen - paddedLen_ref)
         assertion = difference == 0_IK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "actualLen     =", actualLen
@@ -272,6 +283,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference    =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getPaddedLen_RK_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -288,6 +300,7 @@ contains
         nextExponent = getNextExponent(absoluteValue = absoluteValue, base = base)
         difference = abs(nextExponent - nextExponent_ref)
         assertion = difference == 0_IK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "nextExponent_ref      =", nextExponent_ref
@@ -295,6 +308,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference            =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getNextExponent_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -311,6 +325,7 @@ contains
         nextExponent = getNextExponent(absoluteValue = absoluteValue, base = base)
         difference = abs(nextExponent - nextExponent_ref)
         assertion = difference == 0_IK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "nextExponent_ref      =", nextExponent_ref
@@ -318,6 +333,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference            =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getNextExponent_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -333,6 +349,7 @@ contains
         nextExponent = getNextExponent(absoluteValue = absoluteValue)
         difference = abs(nextExponent - nextExponent_ref)
         assertion = difference == 0_IK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "nextExponent_ref      =", nextExponent_ref
@@ -340,6 +357,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference            =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getNextExponent_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -355,6 +373,7 @@ contains
         previousExponent = getPreviousExponent(absoluteValue = absoluteValue)
         difference = abs(previousExponent - previousExponent_ref)
         assertion = difference == 0_IK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "previousExponent_ref    =", previousExponent_ref
@@ -362,6 +381,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Difference              =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getPreviousExponent_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -378,6 +398,7 @@ contains
         previousExponent = getPreviousExponent(absoluteValue = absoluteValue, base = base)
         difference = abs(previousExponent - previousExponent_ref)
         assertion = difference == 0_IK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "previousExponent_ref    =", previousExponent_ref
@@ -385,6 +406,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Difference              =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getPreviousExponent_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -434,6 +456,7 @@ contains
 
         Difference = abs( (WeightedData%InverseSumNormedDataSq - WeightedData%InverseSumNormedDataSq_ref) / WeightedData%InverseSumNormedDataSq_ref)
         assertion = all( Difference < tolerance )
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "InverseSumNormedDataSq_ref  =", WeightedData%InverseSumNormedDataSq_ref
@@ -441,6 +464,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Difference                  =", Difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function Test_getInverseSumNormedDataSq_1
 
@@ -488,6 +512,7 @@ contains
         DifferenceLag = abs( AutoCorr%Lag - AutoCorr%Lag_ref )
         assertion = all( DifferenceLag == 0_IK )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "AutoCorr%Lag_ref    =", AutoCorr%Lag_ref
@@ -495,6 +520,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "nlag                =", AutoCorr%nlag
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
         ! Generate and verify AutoCorrs
 
@@ -515,6 +541,7 @@ contains
 
         assertion = assertion .and. all( DifferenceAutoCorrDirect < tolerance )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             ! write data to output for further investigation
@@ -532,6 +559,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))")
 
         end if
+        ! LCOV_EXCL_STOP
 
     end function Test_getAutoCorrDirect_1
 
@@ -579,6 +607,7 @@ contains
         DifferenceLag = abs( AutoCorr%Lag - AutoCorr%Lag_ref )
         assertion = all( DifferenceLag == 0_IK )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "AutoCorr%Lag_ref    =", AutoCorr%Lag_ref
@@ -586,6 +615,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "nlag                =", AutoCorr%nlag
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
         ! Generate and verify AutoCorrs
 
@@ -605,6 +635,7 @@ contains
 
         assertion = assertion .and. all( DifferenceAutoCorrDirect <= tolerance )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             ! write data to output for further investigation
@@ -622,6 +653,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))")
 
         end if
+        ! LCOV_EXCL_STOP
 
     end function Test_getAutoCorrDirect_2
 
@@ -687,6 +719,7 @@ contains
         Difference = abs( AutoCorr%AutoCorrFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             ! write data to output for further investigation
@@ -698,6 +731,7 @@ contains
             close(fileUnit)
 
         end if
+        ! LCOV_EXCL_STOP
 
     end function Test_getCrossCorrFFT
 
@@ -745,6 +779,7 @@ contains
         Difference = abs( AutoCorr%AutoCorrWeightedFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             ! write data to output for further investigation
@@ -767,6 +802,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))")
 
         end if
+        ! LCOV_EXCL_STOP
 
     end function Test_getCrossCorrWeightedFFT_1
 
@@ -815,9 +851,11 @@ contains
             do ip = 1, WeightedData%np
                 assertionCurrent = AutoCorr%NormedDataFFT1(ip,id) == WeightedData%NormedData(ip,id)
                 assertion = assertion .and. assertionCurrent
+                ! LCOV_EXCL_START
                 if (Test%isDebugMode .and. .not. assertionCurrent) then
                     write(Test%outputUnit,"(*(g0.15,:,' '))") "Nonsense. These two must be equal ", ip, id, WeightedData%NormedData(ip,id), AutoCorr%NormedDataFFT1(ip,id)
                 end if
+                ! LCOV_EXCL_STOP
             end do
 
         end do
@@ -836,6 +874,7 @@ contains
         Difference = abs( AutoCorr%AutoCorrWeightedFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             ! write data to output for further investigation
@@ -847,6 +886,7 @@ contains
             close(fileUnit)
 
         end if
+        ! LCOV_EXCL_STOP
 
     end function Test_getCrossCorrWeightedFFT_2
 
@@ -904,9 +944,11 @@ contains
             do ip = 1, WeightedData%np
                 assertionCurrent = AutoCorr%NormedDataFFT1(ip,id) == WeightedData%NormedData(ip,id)
                 assertion = assertion .and. assertionCurrent
+                ! LCOV_EXCL_START
                 if (Test%isDebugMode .and. .not. assertionCurrent) then
                     write(Test%outputUnit,"(*(g0.15,:,' '))") "Nonsense. These two must be equal ", ip, id, WeightedData%NormedData(ip,id), AutoCorr%NormedDataFFT1(ip,id)
                 end if
+                ! LCOV_EXCL_STOP
             end do
 
         end do
@@ -927,6 +969,7 @@ contains
         Difference = abs( AutoCorr%AutoCorrWeightedFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             ! write data to output for further investigation
@@ -938,6 +981,7 @@ contains
             close(fileUnit)
 
         end if
+        ! LCOV_EXCL_STOP
 
     end function Test_getCrossCorrWeightedFFT_3
 
@@ -955,6 +999,7 @@ contains
         cumSumIAC = getCumSumIAC(np = WeightedData%np, Point = WeightedData%Data)
         difference = abs( (cumSumIAC - cumSumIAC_ref) / cumSumIAC_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "cumSumIAC_ref    =", cumSumIAC_ref
@@ -962,6 +1007,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference       =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getCumSumIAC_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -978,6 +1024,7 @@ contains
         cumSumIAC = getCumSumIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight)
         difference = abs( (cumSumIAC - cumSumIAC_ref) / cumSumIAC_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "cumSumIAC_ref    =", cumSumIAC_ref
@@ -985,6 +1032,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference       =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getCumSumIAC_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1002,6 +1050,7 @@ contains
         cumSumIAC = getCumSumIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight, significance = significance)
         difference = abs( (cumSumIAC - cumSumIAC_ref) / cumSumIAC_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "cumSumIAC_ref    =", cumSumIAC_ref
@@ -1009,6 +1058,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference       =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getCumSumIAC_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1025,6 +1075,7 @@ contains
         maxCumSumIAC = getMaxCumSumIAC(np = WeightedData%np, Point = WeightedData%Data)
         difference = abs( (maxCumSumIAC - maxCumSumIAC_ref) / maxCumSumIAC_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "maxCumSumIAC_ref    =", maxCumSumIAC_ref
@@ -1032,6 +1083,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference          =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getMaxCumSumIAC_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1048,6 +1100,7 @@ contains
         maxCumSumIAC = getMaxCumSumIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight)
         difference = abs( (maxCumSumIAC - maxCumSumIAC_ref) / maxCumSumIAC_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "maxCumSumIAC_ref    =", maxCumSumIAC_ref
@@ -1055,6 +1108,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference          =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getMaxCumSumIAC_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1071,6 +1125,7 @@ contains
         batchMeansIAC = getBatchMeansIAC(np = WeightedData%np, Point = WeightedData%Data)
         difference = abs( (batchMeansIAC - batchMeansIAC_ref) / batchMeansIAC_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "batchMeansIAC_ref    =", batchMeansIAC_ref
@@ -1078,6 +1133,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference           =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getBatchMeansIAC_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1094,6 +1150,7 @@ contains
         batchMeansIAC = getBatchMeansIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight)
         difference = abs( (batchMeansIAC - batchMeansIAC_ref) / batchMeansIAC_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "batchMeansIAC_ref    =", batchMeansIAC_ref
@@ -1101,6 +1158,7 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference           =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getBatchMeansIAC_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1118,6 +1176,7 @@ contains
         batchMeansIAC = getBatchMeansIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight, batchSize = batchSize)
         difference = abs( (batchMeansIAC - batchMeansIAC_ref) / batchMeansIAC_ref)
         assertion = difference < tolerance
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "batchMeansIAC_ref    =", batchMeansIAC_ref
@@ -1125,8 +1184,9 @@ contains
             write(Test%outputUnit,"(*(g0.15,:,' '))") "difference           =", difference
             write(Test%outputUnit,"(*(g0.15,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function Test_getBatchMeansIAC_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_CrossCorr_mod
+end module Test_CrossCorr_mod ! LCOV_EXCL_LINE

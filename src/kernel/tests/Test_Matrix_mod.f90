@@ -86,6 +86,7 @@ contains
         call Test%run(test_getInvPosDefMatSqrtDet_2, "test_getInvPosDefMatSqrtDet_2")
         call Test%run(test_getLogSqrtDetPosDefMat_1, "test_getLogSqrtDetPosDefMat_1")
         call Test%run(test_getLogSqrtDetPosDefMat_2, "test_getLogSqrtDetPosDefMat_2")
+        call Test%run(test_symmetrizeUpperSquareMatrix_1, "test_symmetrizeUpperSquareMatrix_1")
         call Test%finalize()
 
     end subroutine test_Matrix
@@ -119,8 +120,9 @@ contains
         ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
         if (allocated(CholeskyDiagonal_diff)) deallocate(CholeskyDiagonal_diff); allocate(CholeskyDiagonal_diff, mold = CholeskyDiagonal)
         CholeskyDiagonal_diff = abs(CholeskyDiagonal - CholeskyDiagonal_ref)
-
         assertion = all(CholeskyLower_diff < tolerance) .and. all(CholeskyDiagonal_diff < tolerance)
+
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyLower_ref  = ", CholeskyLower_ref
@@ -132,6 +134,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyDiagonal_diff  = ", CholeskyDiagonal_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getCholeskyFactor_1
 
@@ -149,12 +152,14 @@ contains
         CholeskyLower = PosDefMat
         call getCholeskyFactor(nd = nd, PosDefMat = CholeskyLower, Diagonal = CholeskyDiagonal)
         assertion = CholeskyDiagonal(1) < 0._RK
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyLower      = ", CholeskyLower
             write(Test%outputUnit,"(*(g0,:,', '))") "CholeskyDiagonal   = ", CholeskyDiagonal
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getCholeskyFactor_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -191,6 +196,7 @@ contains
 
         assertion = all(MatInvMat_diff < tolerance) .and. sqrtDetInvPosDefMat_diff < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat_ref  = ", MatInvMat_ref
@@ -202,6 +208,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetInvPosDefMat       = ", sqrtDetInvPosDefMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getInvPosDefMatSqrtDet_1
 
@@ -223,12 +230,14 @@ contains
 
         assertion = sqrtDetInvPosDefMat < 0._RK
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat              = ", MatInvMat
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetInvPosDefMat    = ", sqrtDetInvPosDefMat
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getInvPosDefMatSqrtDet_2
 
@@ -265,6 +274,7 @@ contains
 
         assertion = all(InvMatFromCholFac_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "InvMatFromCholFac_ref  = ", InvMatFromCholFac_ref
@@ -272,6 +282,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "InvMatFromCholFac_diff = ", InvMatFromCholFac_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getInvMatFromCholFac
 
@@ -303,6 +314,7 @@ contains
 
         assertion = all(MatInvMat_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat_ref  = ", MatInvMat_ref
@@ -310,6 +322,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat_diff = ", MatInvMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getInvPosDefMat_1
 
@@ -331,11 +344,13 @@ contains
 
         assertion = MatInvMat(1,1) < 0._RK
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatInvMat      = ", MatInvMat
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getInvPosDefMat_2
 
@@ -380,6 +395,7 @@ contains
 
         assertion = all(MatInvMat_diff < tolerance) .and. detInvMat_diff < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatrixLU_ref  = ", MatrixLU_ref
@@ -395,6 +411,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "detInvMat_diff = ", detInvMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getInvMatDet_1
 
@@ -427,6 +444,7 @@ contains
 
         assertion = all(InverseMatrix_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "InverseMatrix_ref  = ", InverseMatrix_ref
@@ -434,6 +452,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "InverseMatrix_diff = ", InverseMatrix_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getInvMat_1
 
@@ -464,6 +483,7 @@ contains
 
         assertion = all(MatrixProduct_diff < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "MatrixProduct_ref  = ", MatrixProduct_ref
@@ -471,6 +491,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "MatrixProduct_diff = ", MatrixProduct_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_multiplyMatrix_1
 
@@ -496,6 +517,7 @@ contains
 
         assertion = determinant_diff < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "determinant_ref  = ", determinant_ref
@@ -503,6 +525,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "determinant_diff = ", determinant_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getDeterminant_1
 
@@ -528,6 +551,7 @@ contains
 
         assertion = sqrtDetPosDefMat_diff < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetPosDefMat_ref  = ", sqrtDetPosDefMat_ref
@@ -535,6 +559,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetPosDefMat_diff = ", sqrtDetPosDefMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getSqrtDetPosDefMat_1
 
@@ -557,11 +582,13 @@ contains
 
         assertion = sqrtDetPosDefMat < 0._RK
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "sqrtDetPosDefMat      = ", sqrtDetPosDefMat
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getSqrtDetPosDefMat_2
 
@@ -594,6 +621,7 @@ contains
 
         assertion = logSqrtDetPosDefMat_diff < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "logSqrtDetPosDefMat_ref  = ", logSqrtDetPosDefMat_ref
@@ -601,6 +629,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "logSqrtDetPosDefMat_diff = ", logSqrtDetPosDefMat_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogSqrtDetPosDefMat_1
 
@@ -661,6 +690,40 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    function test_symmetrizeUpperSquareMatrix_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical                 :: assertion
+        integer(IK) , parameter :: nd = 3_IK
+        real(RK)    , parameter :: UpperSquareMatrix_ref(nd,nd) = reshape(  [ -1._RK, -0._RK, -1._RK &
+                                                                            , -0._RK, -2._RK, -0._RK &
+                                                                            , -1._RK, -0._RK, -3._RK ], shape = shape(UpperSquareMatrix_ref) )
+        real(RK)                :: UpperSquareMatrix(nd,nd)
+        integer(IK)             :: i, j
+
+        UpperSquareMatrix = 0._RK
+        do j = 1, nd
+            do i = 1, j
+                UpperSquareMatrix(i,j) = UpperSquareMatrix_ref(i,j)
+            end do
+        end do
+
+        call symmetrizeUpperSquareMatrix(nd,UpperSquareMatrix)
+        assertion = all( abs(UpperSquareMatrix-UpperSquareMatrix_ref) < 1.e-14_RK )
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "UpperSquareMatrix_ref  = ", UpperSquareMatrix_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "UpperSquareMatrix      = ", UpperSquareMatrix
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_symmetrizeUpperSquareMatrix_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     function test_getOuterProd_1() result(assertion)
 
         use Constants_mod, only: IK, RK
@@ -684,12 +747,14 @@ contains
         assertion = all(OuterProduct_diff < tolerance)
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "OuterProduct_ref  = ", OuterProduct_ref
             write(Test%outputUnit,"(*(g0,:,', '))") "OuterProduct      = ", OuterProduct
             write(Test%outputUnit,"(*(g0,:,', '))") "OuterProduct_diff = ", OuterProduct_diff
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getOuterProd_1
 
@@ -735,6 +800,7 @@ contains
         end do
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
 
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "OutPosDefMat_ref:"
@@ -757,6 +823,7 @@ contains
             end do
 
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_sortPosDefMat_1
 
@@ -808,6 +875,7 @@ contains
             end do
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Original Covariance Matrix:"
@@ -829,6 +897,7 @@ contains
             end do
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
         do i = 1,rankS11
             do j = 1,rankS11
@@ -837,6 +906,7 @@ contains
             end do
         end do
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             do i = 1,rankS11
                 do j = 1,rankS11
@@ -847,9 +917,10 @@ contains
                 end do
             end do
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getRegresCoef_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Matrix_mod
+end module Test_Matrix_mod ! LCOV_EXCL_LINE

@@ -49,7 +49,7 @@ module Err_mod
 
     logical     , parameter :: ERR_HANDLING_REQUESTED = .false.
 
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if defined CODECOV_ENABLED || ((defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED)
     logical     , parameter :: SOFT_EXIT_ENABLED = .true.
 #else
     logical     , parameter :: SOFT_EXIT_ENABLED = .false.
@@ -79,7 +79,7 @@ contains
     !> @param[in]   returnEnabled   :   A logical value. If `.true.`, the program will not be abruptly terminated.
     !>                                  Instead, the control is returned to the calling routine.
     subroutine abort(Err, prefix, newline, outputUnit, returnEnabled)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: abort
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -153,10 +153,12 @@ contains
             ! notify the user on screen too
 
             if (.not. mv_isTestingMode) then
+            ! LCOV_EXCL_START
                 call write(output_unit,1,0,1, pfx // " - FATAL: Runtime error occurred." )
                 call write(output_unit,0,0,1, pfx // " - FATAL: For more information, see the output '*_report.txt' file (if generated)." )
                 call write(output_unit,0,2,1, pfx // " - FATAL: Gracefully exiting on image " // trim(adjustl(imageChar)) // "." )
             end if
+            ! LCOV_EXCL_STOP
 
             flush(output_unit) ! call execute_command_line(" ")
             flush(outputUnit)
@@ -169,6 +171,7 @@ contains
                 real(RK)        :: countRate
                 call system_clock( count=countOld, count_rate=countRate, count_max=countMax )
                 if (countOld/=-huge(0_int64) .and. countRate/=0._RK .and. countMax==0_int64) then
+                ! LCOV_EXCL_START
                     loopWait: do
                         call system_clock( count=countNew )
                         if (countNew==countMax) then
@@ -180,12 +183,14 @@ contains
                         cycle
                     end do loopWait
                 end if
+                ! LCOV_EXCL_STOP
             end block
 
         end if
 
         if (returnEnabledDefault) return
 
+! LCOV_EXCL_START
 #if defined MPI_ENABLED
         block
             use mpi
@@ -195,6 +200,7 @@ contains
 #else
         error stop
 #endif
+! LCOV_EXCL_STOP
 
     end subroutine abort
 
@@ -208,7 +214,7 @@ contains
     !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
     !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
     subroutine warn(msg,prefix,newline,outputUnit,marginTop,marginBot)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warn
 #endif
         use Constants_mod, only: IK
@@ -245,7 +251,7 @@ contains
     !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
     !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
     subroutine note(msg,prefix,newline,outputUnit,marginTop,marginBot)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: note
 #endif
         use Constants_mod, only: IK
@@ -284,7 +290,7 @@ contains
     !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
     !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
     subroutine informUser(msg,prefix,newline,outputUnit,wrapSplit,wrapWidth,marginTop,marginBot)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: informUser
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -304,9 +310,11 @@ contains
 
         if (present(outputUnit)) then
             stdout = outputUnit
+        ! LCOV_EXCL_START
         else
             stdout = output_unit
         end if
+        ! LCOV_EXCL_STOP
         if (present(prefix)) then
             pfx = prefix
         else
@@ -356,4 +364,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Err_mod
+end module Err_mod ! LCOV_EXCL_LINE

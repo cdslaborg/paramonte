@@ -91,6 +91,7 @@ contains
         if (.not. assertion) return
 
         assertion = Path%original == "./temp\ Folder/\{inside\}\/"
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%original  :", Path%original
@@ -101,6 +102,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%ext       :", Path%ext
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_constructPath
 
@@ -122,12 +124,14 @@ contains
         if (.not. assertion) return
 
         assertion = Path%modified == '".\temp Folder\{inside}\"'
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") Path%original
             write(Test%outputUnit,"(*(g0,:,' '))") Path%modified
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_winify
 
@@ -148,6 +152,7 @@ contains
 
         assertion = Path%modified == "./temp\ Folder/\{inside\}/"
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%original :", Path%original
@@ -158,6 +163,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%ext      :", Path%ext
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_linify_1
 
@@ -178,6 +184,7 @@ contains
 
         assertion = Path%modified == "./temp\ Folder/\{inside\}/-"
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%original:", Path%original
@@ -188,7 +195,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%ext       :", Path%ext
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
-
+        ! LCOV_EXCL_STOP
 
     end function test_linify_2
 
@@ -213,6 +220,7 @@ contains
         assertion = assertion .and. Path%name == ""
         assertion = assertion .and. Path%ext == ""
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%dir :", Path%dir
@@ -220,8 +228,11 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%ext :", Path%ext
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getDirNameExt_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_getDirNameExt_2() result(assertion)
 
@@ -242,6 +253,7 @@ contains
         assertion = assertion .and. Path%name == "Temp"
         assertion = assertion .and. Path%ext == ".tXt"
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%dir :", Path%dir
@@ -249,10 +261,9 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%ext :", Path%ext
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getDirNameExt_2
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -274,12 +285,14 @@ contains
         assertion = assertion .and. Path%dir == ".\temp Folder\{inside}\"
         assertion = assertion .and. Path%name == "-"
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%dir :", Path%dir
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%name:", Path%name
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getDirFullName_1
 
@@ -303,15 +316,17 @@ contains
         assertion = assertion .and. Path%name == "-"
         assertion = assertion .and. Path%ext == ""
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%name:", Path%name
             write(Test%outputUnit,"(*(g0,:,' '))")   "Path%ext :", Path%ext
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getDirFullName_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Path_mod
+end module Test_Path_mod ! LCOV_EXCL_LINE

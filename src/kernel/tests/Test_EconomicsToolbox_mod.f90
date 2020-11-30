@@ -118,6 +118,7 @@ contains
                     , func = getTestFuncRosenBrock2D &
                     )
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "xmin    ", xmin
@@ -127,11 +128,10 @@ contains
             write(Test%outputUnit,"(*(g0,:,', '))") "FMIN_REF", TestFuncRosenBrock2D%FMIN_REF
             write(Test%outputUnit,"(*(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
-        Test%assertion = all( abs(xmin-TestFuncRosenBrock2D%XMIN_REF) / abs(TestFuncRosenBrock2D%XMIN_REF) < 1.e-6_RK )
-        call Test%verify()
-        Test%assertion = abs(fmin-TestFuncRosenBrock2D%FMIN_REF) / abs(TestFuncRosenBrock2D%FMIN_REF) < 1.e-6_RK
-        call Test%verify()
+        assertion = all( abs(xmin-TestFuncRosenBrock2D%XMIN_REF) / abs(TestFuncRosenBrock2D%XMIN_REF) < 1.e-6_RK )
+        assertion = abs(fmin-TestFuncRosenBrock2D%FMIN_REF) / abs(TestFuncRosenBrock2D%FMIN_REF) < 1.e-6_RK
 
     end subroutine test_minimize
 
@@ -157,4 +157,4 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_EconomicsToolbox_mod
+end module Test_EconomicsToolbox_mod ! LCOV_EXCL_LINE

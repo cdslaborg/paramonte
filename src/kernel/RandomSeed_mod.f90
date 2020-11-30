@@ -91,7 +91,7 @@ contains
     !> `RandomSeed` : An object of class [RandomSeed_type](@ref randomseed_type) containing the information and methods for
     !> setting and resetting the random seed.
     function constructRandomSeed(imageID, inputSeed, isRepeatable, isImageDistinct) result(RandomSeed)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructRandomSeed
 #endif
         implicit none
@@ -120,10 +120,12 @@ contains
         if (present(isImageDistinct)) RandomSeed%isImageDistinct = isImageDistinct
 
         call RandomSeed%set(inputSeed)
+        ! LCOV_EXCL_START
         if (RandomSeed%Err%occurred) then
             RandomSeed%Err%msg = PROCEDURE_NAME // RandomSeed%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         call RandomSeed%get()
 
@@ -136,7 +138,7 @@ contains
     !>
     !> @param[inout]    RandomSeed  :   An object of class [RandomSeed_type](@ref randomseed_type).
     subroutine getRandomSeed(RandomSeed)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandomSeed
 #endif
         implicit none
@@ -162,7 +164,7 @@ contains
     !> \warning
     !> Upon return from this procedure, the value of `RandomSeed%Err%occurred` must be checked for the occurrence of any potential errors.
     subroutine setRandomSeed(RandomSeed,inputSeed)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setRandomSeed
 #endif
         use Constants_mod, only: IK, RK, HUGE_IK
@@ -193,11 +195,13 @@ contains
                 if (scalarSeed<=huge(scalarSeed) ) exit
                 scalarSeed = scalarSeed - huge(scalarSeed)
             end do
-            if (scalarSeed==0) then
+            ! LCOV_EXCL_START
+            if (scalarSeed==0_IK) then
                 RandomSeed%Err%occurred = .true.
                 RandomSeed%Err%msg = PROCEDURE_NAME // ": Random seed cannot be zero."
                 return
             end if
+            ! LCOV_EXCL_STOP
         end if
 
         ! now use scalarSeed to construct the random seed on all images
@@ -450,4 +454,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module RandomSeed_mod
+end module RandomSeed_mod ! LCOV_EXCL_LINE

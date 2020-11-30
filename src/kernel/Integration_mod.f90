@@ -116,7 +116,7 @@ contains
                                             , ierr &
                                             )
         !checked by Joshua Osborne on 5/28/2020 at 9:06pm
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadRombClosed
 #endif
         use, intrinsic :: iso_fortran_env, only: DPI => int64
@@ -179,7 +179,7 @@ contains
                                         , numFuncEval &
                                         , ierr &
                                         )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadRombOpen
 #endif
         use, intrinsic :: iso_fortran_env, only: DPI => int64
@@ -214,7 +214,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     recursive subroutine doPolInterp(xa,ya,ndata,x,y,dy,ierr)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doPolInterp
 #endif
         implicit none
@@ -265,7 +265,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     recursive subroutine doQuadTrap(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doQuadTrap
 #endif
         implicit none
@@ -313,7 +313,7 @@ contains
     !> \remark
     !> Tested by Joshua Osborne on 5/28/2020 at 8:58 pm.
     recursive subroutine midexp(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: midexp
 #endif
         use Constants_mod, only: LOGHUGE_RK
@@ -439,7 +439,7 @@ contains
     !> \remark
     !> Tested by Joshua Osborne on 5/28/2020 at 8:55 pm.
     subroutine midpnt(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: midpnt
 #endif
         implicit none

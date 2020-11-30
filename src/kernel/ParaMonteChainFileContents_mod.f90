@@ -124,7 +124,7 @@ contains
     !> \warning
     !> If `chainFilePath` is given, then the rest of the optional arguments *must be also given*.
     function constructChainFileContents(ndim,variableNameList,chainFilePath,chainSize,chainFileForm,lenHeader,delimiter,targetChainSize) result(CFC)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructChainFileContents
 #endif
         implicit none
@@ -194,7 +194,7 @@ contains
     !> `chainSize` must be `<= targetChainSize`. The first `chainSize` elements of the `CFC` components will contain
     !> the chain information read from the chain file. The chain component elements beyond `chainSize` will be set to zero.
     subroutine getChainFileContents(CFC,chainFilePath,chainFileForm,Err,chainSize,lenHeader,ndim,delimiter,targetChainSize)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getChainFileContents
 #endif
         use FileContents_mod, only: getNumRecordInFile
@@ -723,7 +723,7 @@ contains
     !> @param[in]       startIndex      : The beginning index beyond which the component values will be reset.
     !> @param[in]       endIndex        : The ending index below which the component values will be reset.
     subroutine nullifyChainFileContents(CFC,startIndex,endIndex)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyChainFileContents
 #endif
         implicit none
@@ -751,7 +751,7 @@ contains
     !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
     !>                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
     subroutine getLenHeader(CFC,ndim,isBinary,chainFileFormat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLenHeader
 #endif
         use Constants_mod, only: IK
@@ -794,7 +794,7 @@ contains
     !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
     !>                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
     subroutine writeHeader(CFC,ndim,chainFileUnit,isBinary,chainFileFormat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeHeader
 #endif
         use Constants_mod, only: IK
@@ -840,7 +840,7 @@ contains
     !>                                              This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
     !> @param[in]       adaptiveUpdatePeriod    :   The adaptive update period (optional). It must be provided if `chainFileForm = "verbose"`.
     subroutine writeChainFile(CFC,ndim,compactStartIndex,compactEndIndex,chainFileUnit,chainFileForm,chainFileFormat,adaptiveUpdatePeriod)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeChainFile
 #endif
         use Constants_mod, only: IK, RK
@@ -939,4 +939,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module ParaMonteChainFileContents_mod
+end module ParaMonteChainFileContents_mod ! LCOV_EXCL_LINE

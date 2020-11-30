@@ -119,6 +119,16 @@ module Batse_mod
     !integer(IK) :: Trigger(NLGRB)
     !integer(IK) :: TriggerSGRB(NSGRB)
 
+    interface getLogEffectivePeakPhotonFluxCorrection
+        module procedure :: getLogEffectivePeakPhotonFluxCorrection_SPR
+        module procedure :: getLogEffectivePeakPhotonFluxCorrection_DPR
+    end interface getLogEffectivePeakPhotonFluxCorrection
+
+    interface getLogEffectivePeakPhotonFlux
+        module procedure :: getLogEffectivePeakPhotonFlux_SPR
+        module procedure :: getLogEffectivePeakPhotonFlux_DPR
+    end interface getLogEffectivePeakPhotonFlux
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
@@ -131,7 +141,7 @@ contains
     !> \param[in]   outFilePath :   The path to the output BATSE file.
     !> \param[in]   isLgrb      :   A logical flag indicating what type of input file is being processed.
     subroutine readDataGRB(inFilePath,outFilePath,isLgrb)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: readDataGRB
 #endif
 
@@ -240,7 +250,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getLog10PF53(log10epk,log10pbol) result(log10PF53)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog10PF53
 #endif
         ! Given Log10(Epk [KeV]) of an LGRB and its bolometric (0.0001-20000 KeV) peak flux [in units of Ergs/s], Log(Pbol),
@@ -290,7 +300,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getLogPF53(logEpk,logPbol) result(logPF53)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53
 #endif
         ! Given Log(Epk [KeV]) of an LGRB and its bolometric (0.0001-20000 KeV) peak flux [in units of Ergs/s], Log(Pbol),
@@ -341,7 +351,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getLogPbol(logEpk,logPF53) result(logPbol)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol
 #endif
         ! Given Log10(Epk [KeV]) of an LGRB and its bolometric (0.0001-20000 KeV) peak flux [in units of Ergs/s], Log(Pbol),
@@ -357,39 +367,70 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getLogEffectivePeakPhotonFlux(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getEffectivePeakPhotonFlux
+    pure function getLogEffectivePeakPhotonFlux_SPR(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFlux_SPR
 #endif
         ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
         ! To do so, the observed T90 duration of the event is also necessary as input.
         ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
-        use, intrinsic :: iso_fortran_env, only: real32
-        use Constants_mod, only: RK
+        use, intrinsic :: iso_fortran_env, only: RK => real32
         implicit none
         real(RK), intent(in)    :: logPeakPhotonFlux64ms, logT90
         real(RK)                :: logEffectivePeakPhotonFlux
         logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms - getLogEffectivePeakPhotonFluxCorrection(logT90)
-    end function getLogEffectivePeakPhotonFlux
+    end function getLogEffectivePeakPhotonFlux_SPR
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure function getLogEffectivePeakPhotonFluxCorrection(logT90) result(logEffectivePeakPhotonFluxCorrection)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getEffectivePeakPhotonFlux
+    pure function getLogEffectivePeakPhotonFlux_DPR(logPeakPhotonFlux64ms,logT90) result(logEffectivePeakPhotonFlux)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFlux_DPR
 #endif
         ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
         ! To do so, the observed T90 duration of the event is also necessary as input.
         ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
-        use, intrinsic :: iso_fortran_env, only: real32
-        use Constants_mod, only: RK
+        use, intrinsic :: iso_fortran_env, only: RK => real64
         implicit none
-        real(RK), intent(in)    :: logT90
-        real(RK)                :: logEffectivePeakPhotonFluxCorrection
-        logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=real32))
-                                              ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms
-    end function getLogEffectivePeakPhotonFluxCorrection
+        real(RK), intent(in)    :: logPeakPhotonFlux64ms, logT90
+        real(RK)                :: logEffectivePeakPhotonFlux
+        logEffectivePeakPhotonFlux  = logPeakPhotonFlux64ms - getLogEffectivePeakPhotonFluxCorrection(logT90)
+    end function getLogEffectivePeakPhotonFlux_DPR
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Batse_mod
+    pure function getLogEffectivePeakPhotonFluxCorrection_SPR(logT90) result(logEffectivePeakPhotonFluxCorrection)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFluxCorrection_SPR
+#endif
+        ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
+        ! To do so, the observed T90 duration of the event is also necessary as input.
+        ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
+        use, intrinsic :: iso_fortran_env, only: RK => real32
+        implicit none
+        real(RK), intent(in)    :: logT90
+        real(RK)                :: logEffectivePeakPhotonFluxCorrection
+        logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))
+                                              ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms
+    end function getLogEffectivePeakPhotonFluxCorrection_SPR
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    pure function getLogEffectivePeakPhotonFluxCorrection_DPR(logT90) result(logEffectivePeakPhotonFluxCorrection)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffectivePeakPhotonFluxCorrection_DPR
+#endif
+        ! Converts an input natural-log peak photon flux in 64ms timescale to an effective triggering peak photon flux.
+        ! To do so, the observed T90 duration of the event is also necessary as input.
+        ! Reference: Eqn A4 of Shahmoradi and Nemiroff 2015, MNRAS, Short versus long gamma-ray bursts.
+        use, intrinsic :: iso_fortran_env, only: RK => real64
+        implicit none
+        real(RK), intent(in)    :: logT90
+        real(RK)                :: logEffectivePeakPhotonFluxCorrection
+        logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))
+                                              ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms
+    end function getLogEffectivePeakPhotonFluxCorrection_DPR
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+end module Batse_mod ! LCOV_EXCL_LINE

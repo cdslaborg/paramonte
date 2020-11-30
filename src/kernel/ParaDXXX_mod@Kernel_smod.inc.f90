@@ -100,7 +100,7 @@ contains
     module subroutine runKernel ( self          &
                                 , getLogFunc    &
                                 )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -273,7 +273,7 @@ contains
                     ! create a copy of the chain file, just for the sake of not losing the simulation results
 
                     RFN = RandomFileName_type(dir = "", key = self%ChainFile%Path%original//".temporary_restart_copy", ext="")
-                    call copyFile(pathOld=self%ChainFile%Path%original,pathNew=RFN%path,isWindows=self%OS%isWindows,Err=self%err)
+                    call copyFile(pathOld=self%ChainFile%Path%original,pathNew=RFN%path,isUnixShell=self%OS%Shell%isUnix,Err=self%err)
                     if (self%Err%occurred) then
                         self%Err%msg = PROCEDURE_NAME//self%Err%msg
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )

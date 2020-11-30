@@ -71,10 +71,8 @@ contains
         call Test%run(test_getLogRateP15, "test_getLogRateP15")
         call Test%run(test_getLogRateM17, "test_getLogRateM17")
         call Test%run(test_getLogRateF18, "test_getLogRateF18")
-#if defined CODECOV_ENABLED
         call Test%run(test_getBinaryMergerRate_1, "test_getBinaryMergerRate_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
         call Test%run(test_getBinaryMergerRate_2, "test_getBinaryMergerRate_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
-#endif
         call Test%run(test_getBinaryMergerRateS15_1, "test_getBinaryMergerRateS15_1")
         call Test%run(test_getBinaryMergerRateS15_2, "test_getBinaryMergerRateS15_2")
         call Test%run(test_getBinaryMergerRateS15_3, "test_getBinaryMergerRateS15_3")
@@ -109,6 +107,7 @@ contains
         difference = abs( (logRate - logRate_ref) / logRate_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logRate_ref   = ", logRate_ref
@@ -116,6 +115,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference    = ", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogRateH06
 
@@ -140,6 +140,7 @@ contains
         difference = abs( (logRate - logRate_ref) / logRate_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logRate_ref   = ", logRate_ref
@@ -147,6 +148,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference    = ", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogRateL08
 
@@ -171,6 +173,7 @@ contains
         difference = abs( (logRate - logRate_ref) / logRate_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logRate_ref   = ", logRate_ref
@@ -178,6 +181,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference    = ", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogRateB10
 
@@ -202,6 +206,7 @@ contains
         difference = abs( (logRate - logRate_ref) / logRate_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logRate_ref   = ", logRate_ref
@@ -209,6 +214,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference    = ", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogRateM14
 
@@ -233,6 +239,7 @@ contains
         difference = abs( (logRate - logRate_ref) / logRate_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logRate_ref   = ", logRate_ref
@@ -240,6 +247,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference    = ", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogRateP15
 
@@ -264,6 +272,7 @@ contains
         difference = abs( (logRate - logRate_ref) / logRate_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logRate_ref   = ", logRate_ref
@@ -271,6 +280,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference    = ", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogRateM17
 
@@ -295,6 +305,7 @@ contains
         difference = abs( (logRate - logRate_ref) / logRate_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logRate_ref   = ", logRate_ref
@@ -302,6 +313,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference    = ", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogRateF18
 
@@ -325,6 +337,7 @@ contains
         difference = abs(binaryMergerRateS15 - binaryMergerRateS15_ref)
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "binaryMergerRateS15_ref    =", binaryMergerRateS15_ref
@@ -332,6 +345,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference                 =", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getBinaryMergerRateS15_1
 
@@ -355,6 +369,7 @@ contains
         difference = abs( (binaryMergerRateS15 - binaryMergerRateS15_ref) / binaryMergerRateS15_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "binaryMergerRateS15_ref    =", binaryMergerRateS15_ref
@@ -362,6 +377,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference                 =", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getBinaryMergerRateS15_2
 
@@ -385,6 +401,7 @@ contains
         difference = abs( (binaryMergerRateS15 - binaryMergerRateS15_ref) / binaryMergerRateS15_ref )
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "binaryMergerRateS15_ref    =", binaryMergerRateS15_ref
@@ -392,6 +409,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference                 =", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getBinaryMergerRateS15_3
 
@@ -415,6 +433,7 @@ contains
         difference = abs(binaryMergerRateS15 - binaryMergerRateS15_ref)
         assertion = difference < tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "binaryMergerRateS15_ref    =", binaryMergerRateS15_ref
@@ -422,6 +441,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "difference                 =", difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getBinaryMergerRateS15_4
 
@@ -455,6 +475,7 @@ contains
         Difference = abs(LogBinaryMergerRate - LogBinaryMergerRate_ref)
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
@@ -462,6 +483,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference                 =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogBinaryMergerRateLognormH06_1
 
@@ -495,6 +517,7 @@ contains
         Difference = abs(LogBinaryMergerRate - LogBinaryMergerRate_ref)
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
@@ -502,6 +525,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference                 =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogBinaryMergerRateLognormL08_1
 
@@ -535,6 +559,7 @@ contains
         Difference = abs(LogBinaryMergerRate - LogBinaryMergerRate_ref)
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
@@ -542,6 +567,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference                 =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogBinaryMergerRateLognormB10_1
 
@@ -575,6 +601,7 @@ contains
         Difference = abs(LogBinaryMergerRate - LogBinaryMergerRate_ref)
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
@@ -582,6 +609,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference                 =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogBinaryMergerRateLognormM14_1
 
@@ -615,6 +643,7 @@ contains
         Difference = abs(LogBinaryMergerRate - LogBinaryMergerRate_ref)
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
@@ -622,6 +651,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference                 =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogBinaryMergerRateLognormM17_1
 
@@ -655,6 +685,7 @@ contains
         Difference = abs(LogBinaryMergerRate - LogBinaryMergerRate_ref)
         assertion = all(Difference < tolerance)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
@@ -662,14 +693,15 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference                 =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_getLogBinaryMergerRateLognormF18_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
     function test_getBinaryMergerRate_1() result(assertion)
 
-        use Statistics_mod, only: getLogProbLogNorm
         use Constants_mod, only: RK, IK, HUGE_RK
 
         implicit none
@@ -697,7 +729,7 @@ contains
                                                         , zplus1Max = zplus1Max &
                                                         , nRefinement = nRefinement &
                                                         , maxRelativeError = maxRelativeError &
-                                                        , getMergerDelayTimePDF = getMergerDelayTimePDF &
+                                                        , getMergerDelayTimePDF = getTestMergerDelayTimePDF &
                                                         , getStarFormationRateDensity = getLogRateDensityB10 &
                                                         )
         end do
@@ -706,27 +738,14 @@ contains
         assertion = all(Difference < tolerance)
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate        =", LogBinaryMergerRate
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference                 =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
-
-    contains
-
-        function getMergerDelayTimePDF(mergerDelayTime) result(mergerDelayTimePDF)
-            implicit none
-            real(RK), intent(in)    :: mergerDelayTime
-            real(RK)                :: mergerDelayTimePDF
-            real(RK), parameter     :: inverseVariance = 1._RK
-            real(RK), parameter     :: logSqrtInverseVariance = log(sqrt(inverseVariance))
-            mergerDelayTimePDF = getLogProbLogNorm  ( logMean = 1._RK &
-                                                    , inverseVariance = inverseVariance &
-                                                    , logSqrtInverseVariance = logSqrtInverseVariance &
-                                                    , logPoint = mergerDelayTime &
-                                                    )
-        end function 
+        ! LCOV_EXCL_STOP
 
     end function test_getBinaryMergerRate_1
 
@@ -734,7 +753,6 @@ contains
 
     function test_getBinaryMergerRate_2() result(assertion)
 
-        use Statistics_mod, only: getLogProbLogNorm
         use Constants_mod, only: RK, IK, HUGE_RK
 
         implicit none
@@ -769,7 +787,7 @@ contains
                                                         !, zplus1Max = zplus1Max &
                                                         !, nRefinement = nRefinement &
                                                         !, maxRelativeError = maxRelativeError &
-                                                        , getMergerDelayTimePDF = getMergerDelayTimePDF &
+                                                        , getMergerDelayTimePDF = getTestMergerDelayTimePDF &
                                                         , getStarFormationRateDensity = getLogRateDensityB10 &
                                                         )
         end do
@@ -778,30 +796,34 @@ contains
         assertion = all(Difference < tolerance)
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate_ref    =", LogBinaryMergerRate_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "LogBinaryMergerRate        =", LogBinaryMergerRate
             write(Test%outputUnit,"(*(g0,:,' '))") "Difference                 =", Difference
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
-
-    contains
-
-        function getMergerDelayTimePDF(mergerDelayTime) result(mergerDelayTimePDF)
-            implicit none
-            real(RK), intent(in)    :: mergerDelayTime
-            real(RK)                :: mergerDelayTimePDF
-            real(RK), parameter     :: inverseVariance = 1._RK
-            real(RK), parameter     :: logSqrtInverseVariance = log(sqrt(inverseVariance))
-            mergerDelayTimePDF = getLogProbLogNorm  ( logMean = 1._RK &
-                                                    , inverseVariance = inverseVariance &
-                                                    , logSqrtInverseVariance = logSqrtInverseVariance &
-                                                    , logPoint = mergerDelayTime &
-                                                    )
-        end function 
+        ! LCOV_EXCL_STOP
 
     end function test_getBinaryMergerRate_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_StarFormation_mod
+    function getTestMergerDelayTimePDF(mergerDelayTime) result(mergerDelayTimePDF)
+        use Statistics_mod, only: getLogProbLogNorm
+        use Constants_mod, only: IK, RK
+        implicit none
+        real(RK), intent(in)    :: mergerDelayTime
+        real(RK)                :: mergerDelayTimePDF
+        real(RK), parameter     :: inverseVariance = 1._RK
+        real(RK), parameter     :: logSqrtInverseVariance = log(sqrt(inverseVariance))
+        mergerDelayTimePDF = getLogProbLogNorm  ( logMean = 1._RK &
+                                                , inverseVariance = inverseVariance &
+                                                , logSqrtInverseVariance = logSqrtInverseVariance &
+                                                , logPoint = mergerDelayTime &
+                                                )
+    end function getTestMergerDelayTimePDF
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+end module Test_StarFormation_mod ! LCOV_EXCL_LINE
