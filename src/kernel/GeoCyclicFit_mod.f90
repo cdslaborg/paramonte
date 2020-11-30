@@ -54,11 +54,11 @@ module GeoCyclicFit_mod
     use Constants_mod, only: IK, RK
     implicit none
 
-    private :: getSumDistSq
 
     character(len=*), parameter :: MODULE_NAME = "@GeoCyclicFit_mod"
 
 #if defined OS_IS_WSL
+    private                     :: getSumDistSq
     integer(IK)                 :: numTrial_WSL         !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
     integer(IK)                 :: maxNumTrial_WSL      !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
     integer(IK) , allocatable   :: SuccessStep_WSL(:)   !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
@@ -159,6 +159,7 @@ contains
         !!> Although `successProbFisherTransNormFac` is a vector on input, it is expected to have a length of one at all times.
         !!> This is solely to fullfile the interface restrictions of [PowellMinimum_type](@ref optimization_mod::powellminimum_type).
         pure function getSumDistSq(ndim,successProbFisherTransNormFac) result(sumDistSq)
+            use Statistics_mod, only: getLogProbGeoCyclic
             !use Constants_mod, only: IK, RK
             implicit none
             integer(IK) , intent(in)    :: ndim

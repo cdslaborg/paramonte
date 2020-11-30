@@ -117,7 +117,7 @@ Thumbs.db
 # ParaMonte temp folders
 #########################
 
-./src/kernel/ParaMonte_mod@version@kernel.inc.f90
+**/src/kernel/ParaMonte_mod@version@kernel.inc.f90
 **/codecov
 **/.ipynb_checkpoints/*
 **/benchmark/*
