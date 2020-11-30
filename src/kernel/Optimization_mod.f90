@@ -142,7 +142,7 @@ contains
     !> `BrentMinimum` : An object of class [BrentMinimum_type](@ref brentminimum_type) that contains the minimum of the
     !>                  function (`xmin`) and the function value at the minimum (`fmin`) as well as other relevant information.
     function minimizeBrent(getFunc, x0, x1, x2, xtol) result(BrentMinimum)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: minimizeBrent
 #endif
         use Constants_mod, only: IK, RK

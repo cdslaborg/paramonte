@@ -5,6 +5,7 @@
   Test_mod.f90
   Test_BandSpectrum_mod.f90
   Test_Batse_mod.f90
+  Test_Constants_mod.f90
   Test_CorrCoef_mod.f90
   Test_Cosmology_mod.f90
   Test_CrossCorr_mod.f90

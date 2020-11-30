@@ -87,7 +87,7 @@ contains
     !> \brief
     !> Return GRBFR density based on the formation rate estimates of Petrosian et al (2015).
     pure function getLogRateDensityP15(logzplus1) result(logDensitySFR)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityP15
 #endif
         use Constants_mod, only: RK
@@ -111,7 +111,7 @@ contains
     !> \brief
     !> Return GRBFR density based on the formation rate estimates of Hopkins and Beacom (2007).
     pure function getLogRateDensityH06(logzplus1) result(logDensitySFR)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06
 #endif
         use Constants_mod, only: RK
@@ -141,7 +141,7 @@ contains
     !> \brief
     !> Return GRBFR density based on the formation rate estimates of Li (2008).
     pure function getLogRateDensityL08(logzplus1) result(logDensitySFR)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08
 #endif
         use Constants_mod, only: RK
@@ -174,7 +174,7 @@ contains
     !> \remark
     !> The formation estimate of B10 takes into acount the metalicity-correction to the SFR.
     pure function getLogRateDensityB10(logzplus1) result(logDensitySFR)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityB10
 #endif
         use Constants_mod, only: IK, RK
@@ -205,7 +205,7 @@ contains
     !> Return the Comoving Star Formation Rate Density according to Eqn 15 of Madau 2014: Cosmic Star-Formation History.\n
     !> `densitySFR(z) = 0.015 * (1+z)^2.7 / ( 1 + [(1+z)/2.9]^5.6 )`
     pure function getLogRateDensityM14(zplus1,logzplus1) result(logDensitySFR)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14
 #endif
         use Constants_mod, only: RK
@@ -226,7 +226,7 @@ contains
     !> Return the Comoving Star Formation Rate Density according to Eqn 1 of Madau 2017: Cosmic Star-Formation History
     !> `densitySFR(z) = 0.01 * (1+z)^2.6 / ( 1 + [(1+z)/3.2]^6.2 )`
     pure function getLogRateDensityM17(zplus1,logzplus1) result(logDensitySFR)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17
 #endif
         use Constants_mod, only: RK
@@ -247,7 +247,7 @@ contains
     !> Return the Mordau Comoving Star Formation Rate Density with updated parameters from Fermi 2018.\n
     ! `densitySFR(z) = 0.013 * (1+z)^2.99 / ( 1 + [(1+z)/2.63]^6.19 )`
     pure function getLogRateDensityF18(zplus1,logzplus1) result(logDensitySFR)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18
 #endif
         use Constants_mod, only: RK
@@ -267,7 +267,7 @@ contains
     !> \brief
     !> Return the cosmic formation rate according to the work of Petrosian et al. (2015).
     pure function getLogRateP15(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateP15
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -285,7 +285,7 @@ contains
     !> \brief
     !> Return the cosmic star formation rate according to the work of Hopkins and Beacom (2007).
     pure function getLogRateH06(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateH06
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -303,7 +303,7 @@ contains
     !> \brief
     !> Return the cosmic star formation rate according to the work of Li (2008).
     pure function getLogRateL08(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateL08
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -321,7 +321,7 @@ contains
     !> \brief
     !> Return the cosmic GRB formation rate according to the work of Butler et al. (2010).
     pure function getLogRateB10(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateB10
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -339,7 +339,7 @@ contains
     !> \brief
     !> Return the cosmic star formation rate according to the work of Madau et al. (2014).
     pure function getLogRateM14(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateM14
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -357,7 +357,7 @@ contains
     !> \brief
     !> Return the cosmic star formation rate according to the work of Madau et al. (2017).
     pure function getLogRateM17(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateM17
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -375,7 +375,7 @@ contains
     !> \brief
     !> Return the cosmic star formation rate according to the work of the Fermi collaboration (2018).
     pure function getLogRateF18(zplus1,logzplus1,twiceLogLumDisMpc) result(logRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateF18
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -395,7 +395,7 @@ contains
     ! equivalent to delayed_rate_Belz_Li(z) in S15
     ! returns 0, if z>6.501_RK or z<0.09_RK
     pure function getBinaryMergerRateS15(z) result(binaryMergerRateS15)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRateS15
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -446,7 +446,7 @@ contains
     ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormH06(logzplus1) result(logBinaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormH06
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -498,7 +498,7 @@ contains
     ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormL08(logzplus1) result(logBinaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormL08
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -554,7 +554,7 @@ contains
     ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK.
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormB10(logzplus1) result(logBinaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormB10
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -610,7 +610,7 @@ contains
     ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormM14(logzplus1) result(logBinaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormM14
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -657,7 +657,7 @@ contains
     ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormM17(logzplus1) result(logBinaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormM17
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -704,7 +704,7 @@ contains
     ! the merger delay time distribution is the same as that of Shahmoradi and Nemiroff (2015), but with the logMean:log(0.1_RK) and sigma: 0.9612813_RK..
     ! returns 0, if z>19.929999999999882_RK or z<0.03_RK
     pure function getLogBinaryMergerRateLognormF18(logzplus1) result(logBinaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBinaryMergerRateLognormF18
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE
@@ -753,7 +753,7 @@ contains
                                         , getMergerDelayTimePDF &
                                         , getStarFormationRateDensity &
                                         ) result(binaryMergerRateDensity)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRateDensity
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -836,7 +836,7 @@ contains
                                 , getMergerDelayTimePDF &
                                 , getStarFormationRateDensity &
                                 ) result(binaryMergerRate)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinaryMergerRate
 #endif
         use Cosmology_mod, only: LS2HC, OMEGA_DM, OMEGA_DE, getLogLumDisWicMpc

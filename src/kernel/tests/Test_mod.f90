@@ -43,6 +43,7 @@
 !>  \brief This is the driver module of the unit testing framework of the ParaMonte kernel routines.
 !>  @author Amir Shahmoradi
 
+! LCOV_EXCL_START
 module Test_mod
 
     use, intrinsic  :: iso_fortran_env, only: output_unit
@@ -70,7 +71,7 @@ module Test_mod
     type(Image_type)                :: mv_Image
 
     type :: Test_type
-#if defined DBG_ENABLED
+#if defined DBG_ENABLED || defined TESTING_ENABLD
         logical                     :: isDebugMode = .true.
 #else
         logical                     :: isDebugMode = .false.
@@ -402,3 +403,4 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 end module Test_mod ! LCOV_EXCL_LINE
+! LCOV_EXCL_STOP

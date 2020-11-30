@@ -67,10 +67,10 @@ contains
         call Test%run(test_getlogdvdz, "test_getlogdvdz")
         call Test%run(test_ldiswickram, "test_ldiswickram")
         call Test%run(test_getLogLumDisWicMpc, "test_getLogLumDisWicMpc")
-#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
+!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
         call Test%run(test_getLookBackTime_1, "test_getLookBackTime_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
         call Test%run(test_getLookBackTime_2, "test_getLookBackTime_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
-#endif
+!#endif
         call Test%run(test_getUniverseAgeDerivative, "test_getUniverseAgeDerivative")
         call Test%finalize()
     end subroutine test_Cosmology
@@ -172,7 +172,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
+!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
 
     function test_getLookBackTime_1() result(assertion)
 
@@ -236,7 +236,7 @@ contains
 
     end function test_getLookBackTime_2
 
-#endif
+!#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -75,7 +75,7 @@ contains
     !> \return
     !> `ebrk` : The spectral break energy in units of [keV].
     pure function getEbreak(epk,alpha,beta) result(ebrk)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEbreak
 #endif
         use Constants_mod, only: RK
@@ -100,7 +100,7 @@ contains
     !> \param[out]  coef            :   The spectral continuity coefficient.
     !> \param[out]  alphaPlusTwo    :   The lower spectral exponent of the Band model plus two.
     pure subroutine getBandParam(epk,alpha,beta,ebrk,coef,alphaPlusTwo)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandParam
 #endif
         use Constants_mod, only: IK, RK
@@ -137,7 +137,7 @@ contains
     !> The input energy values `energy`, `epk`, `ebrk`, must all have the same units.
     !> It is expected that the input energy is in units of keV, although it does not affect the accuracy of the results.
     pure function getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo) result(photonFlux)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFlux
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
@@ -172,7 +172,7 @@ contains
     !> \warning
     !> The input `energy` values must be less than `ebrk`.
     pure function getPhotonFluxLower(energy,alpha,alphaPlusTwoOverEpk) result(photonFluxLower)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluxLower
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
@@ -196,7 +196,7 @@ contains
     !> \param[out]  photonFluence   :   The fluence in units of photon counts within the input energy range.
     !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
     subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence
 #endif
 
@@ -244,6 +244,10 @@ contains
             coef = ebrk**alphaMinusBeta * exp(-alphaMinusBeta);
             photonFluence = coef * ( upperLim**betaPlusOne - lowerLim**betaPlusOne ) / betaPlusOne
             return
+
+!#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!! LCOV_EXCL_START
+!#endif
 
         elseif (lowerLim<ebrk) then
 
@@ -316,6 +320,10 @@ contains
             bandCompLow = energy**alpha * exp(-alphaPlusTwoOverEpk*energy)
         end function getBandCompLowPhoton
 
+!#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!! LCOV_EXCL_STOP
+!#endif
+
     end subroutine getPhotonFluence
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -332,7 +340,7 @@ contains
     !> \param[out]  energyFluence   :   The fluence in units of the input energy (keV) within the input energy range.
     !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
     subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence
 #endif
 
@@ -379,6 +387,10 @@ contains
             energyFluence = coef * ( upperLim**betaPlusTwo - lowerLim**betaPlusTwo ) / betaPlusTwo
             return
 
+!#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!! LCOV_EXCL_START
+!#endif
+
         elseif (lowerLim<ebrk) then
 
             alphaPlusTwoOverEpk = alphaPlusTwo / epk
@@ -424,6 +436,10 @@ contains
             bandCompLow = energy**alphaPlusOne * exp(-alphaPlusTwoOverEpk*energy)
         end function getBandCompLowEnergy
 
+!#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!! LCOV_EXCL_STOP
+!#endif
+
     end subroutine getEnergyFluence
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -448,9 +464,8 @@ contains
     !> \remark
     !> If the optional `[lowerLimNew, upperLimNew]` are provided, each will replace the
     !> corresponding input `[lowerLim, upperLim]` in the computation of the output `photonFluence`.
-    subroutine getPhotonFluenceFromEnergyFluence( energyFluence, lowerLim, upperLim, epk, alpha, beta, tolerance &
-                                                , photonFluence, Err, lowerLimNew, upperLimNew )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+    subroutine getPhotonFluenceFromEnergyFluence( energyFluence, lowerLim, upperLim, epk, alpha, beta, tolerance, photonFluence, Err, lowerLimNew, upperLimNew )
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluenceFromEnergyFluence
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
@@ -466,12 +481,23 @@ contains
         Err%occurred = .false.
 
         ! check if the photon indices are consistent with the mathematical rules
-        if (lowerLim>=upperLim .or. alpha<beta .or. alpha<-2._RK) then
-            Err%occurred = .true.
-            Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred: lowerLim>=upperLim .or. alpha<beta .or. alpha<-2._RK"
-            photonFluence = -HUGE_RK
+
+        if (lowerLim>=upperLim) then
+            photonFluence = 0._RK
             return
         end if
+
+        ! check if the photon indices are consistent with the mathematical rules
+        if (alpha<beta .or. alpha<-2._RK) then
+            photonFluence = -HUGE_RK
+            Err%occurred = .true.
+            Err%msg = MODULE_NAME // PROCEDURE_NAME // ": Error occurred: alpha<beta .or. alpha<-2._RK"
+            return
+        end if
+
+!#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!! LCOV_EXCL_START
+!#endif
 
         lowLimNew = lowerLim
         if (present(lowerLimNew)) lowLimNew = lowerLimNew
@@ -480,22 +506,30 @@ contains
 
         call getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,amplitude,Err)
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             photonFluence = -HUGE_RK
             Err%msg = MODULE_NAME // PROCEDURE_NAME // Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
         amplitude = energyFluence / amplitude
 
         call getPhotonFluence(lowLimNew,uppLimNew,epk,alpha,beta,tolerance,photonFluence,Err)
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             photonFluence = -HUGE_RK
             Err%msg = MODULE_NAME // PROCEDURE_NAME // Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
         photonFluence = amplitude * photonFluence
+
+!#if defined OS_IS_WSL && defined CODECOV_ENABLED
+!! LCOV_EXCL_STOP
+!#endif
 
     end subroutine getPhotonFluenceFromEnergyFluence
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module BandSpectrum_mod
+end module BandSpectrum_mod ! LCOV_EXCL_LINE

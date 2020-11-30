@@ -125,9 +125,25 @@ contains
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_getEbreak, "test_getEbreak")
+        call Test%run(test_getBandParam_1, "test_getBandParam_1")
+        call Test%run(test_getPhotonFlux_1, "test_getPhotonFlux_1")
+        call Test%run(test_getPhotonFlux_2, "test_getPhotonFlux_2")
+        call Test%run(test_getPhotonFlux_3, "test_getPhotonFlux_3")
+        call Test%run(test_getPhotonFlux_4, "test_getPhotonFlux_4")
         call Test%run(test_getPhotonFluence_3, "test_getPhotonFluence_3")
+        call Test%run(test_getPhotonFluence_5, "test_getPhotonFluence_5")
+        call Test%run(test_getPhotonFluence_6, "test_getPhotonFluence_6")
+        call Test%run(test_getPhotonFluence_7, "test_getPhotonFluence_7")
+        call Test%run(test_getPhotonFluence_8, "test_getPhotonFluence_8")
         call Test%run(test_getEnergyFluence_3, "test_getEnergyFluence_3")
-#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
+        call Test%run(test_getEnergyFluence_6, "test_getEnergyFluence_6")
+        call Test%run(test_getEnergyFluence_7, "test_getEnergyFluence_7")
+        call Test%run(test_getEnergyFluence_8, "test_getEnergyFluence_8")
+        call Test%run(test_getPhotonFluxLower_1, "test_getPhotonFluxLower_1")
+        call Test%run(test_getPhotonFluenceFromEnergyFluence_6, "test_getPhotonFluenceFromEnergyFluence_6")
+        call Test%run(test_getPhotonFluenceFromEnergyFluence_7, "test_getPhotonFluenceFromEnergyFluence_7")
+        call Test%run(test_getPhotonFluenceFromEnergyFluence_8, "test_getPhotonFluenceFromEnergyFluence_8")
+!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
         call Test%run(test_getPhotonFluence_1, "test_getPhotonFluence_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
         call Test%run(test_getPhotonFluence_2, "test_getPhotonFluence_2") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
         call Test%run(test_getPhotonFluence_4, "test_getPhotonFluence_4") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
@@ -139,7 +155,7 @@ contains
         call Test%run(test_getPhotonFluenceFromEnergyFluence_3, "test_getPhotonFluenceFromEnergyFluence_3") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
         call Test%run(test_getPhotonFluenceFromEnergyFluence_4, "test_getPhotonFluenceFromEnergyFluence_4") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
         call Test%run(test_getPhotonFluenceFromEnergyFluence_5, "test_getPhotonFluenceFromEnergyFluence_5") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
-#endif
+!#endif
         call Test%finalize()
     end subroutine test_BandSpectrum
 
@@ -154,7 +170,7 @@ contains
         difference = 2._RK * abs(ebrk - BAND_SPEC1%ebrk) / (ebrk + BAND_SPEC1%ebrk)
         assertion = difference < 1.e-7_RK
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
+        if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "Ebreak, Reference Ebreak, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") ebrk, BAND_SPEC1%ebrk, difference
@@ -164,6 +180,250 @@ contains
     end function test_getEbreak
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getBandParam_1() result(assertion)
+
+        use Constants_mod, only: RK, IK
+        implicit none
+
+        real(RK), parameter :: alphaPlusTwo_ref = 0.5_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
+        real(RK), parameter :: ebrk_ref = 6.e2_RK
+        real(RK), parameter :: coef_ref = 220.72766470286541_RK
+        real(RK), parameter :: alpha = -1.5_RK
+        real(RK), parameter :: beta = -2.5_RK
+        real(RK), parameter :: epk = 3.e2_RK
+
+        logical  :: assertion
+        real(RK) :: difference
+        real(RK) :: alphaPlusTwo
+        real(RK) :: ebrk
+        real(RK) :: coef
+
+        call getBandParam(epk,alpha,beta,ebrk,coef,alphaPlusTwo)
+
+        difference = abs( (ebrk - ebrk_ref) / ebrk_ref )
+        assertion = difference < tolerance
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "ebrk_ref   ", ebrk_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "ebrk       ", ebrk
+            write(Test%outputUnit,"(*(g0,:,', '))") "difference ", difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+        difference = abs( (coef - coef_ref) / coef_ref )
+        assertion = difference < tolerance
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "coef_ref   ", coef_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "coef       ", coef
+            write(Test%outputUnit,"(*(g0,:,', '))") "difference ", difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+        difference = abs( (alphaPlusTwo - alphaPlusTwo_ref) / alphaPlusTwo_ref )
+        assertion = difference < tolerance
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "alphaPlusTwo_ref   ", alphaPlusTwo_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "alphaPlusTwo       ", alphaPlusTwo
+            write(Test%outputUnit,"(*(g0,:,', '))") "difference         ", difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_getBandParam_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getPhotonFluxLower_1() result(assertion)
+
+        use Constants_mod, only: RK, IK
+        implicit none
+
+        real(RK), parameter :: photonFluxLower_ref = 0.59727709940405714E-5_RK
+        real(RK), parameter :: alphaPlusTwo = 0.5_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
+        real(RK), parameter :: energy = 1.e3_RK
+        real(RK), parameter :: alpha = -1.5_RK
+        real(RK), parameter :: beta = -2.5_RK
+        real(RK), parameter :: coef = 220.72766470286541_RK
+        real(RK), parameter :: ebrk = 6.e2_RK
+        real(RK), parameter :: epk = 3.e2_RK
+        real(RK), parameter :: alphaPlusTwoOverEpk = alphaPlusTwo / epk
+
+        logical  :: assertion
+        real(RK) :: difference
+        real(RK) :: photonFluxLower
+
+        photonFluxLower = getPhotonFluxLower(energy,alpha,alphaPlusTwoOverEpk)
+        assertion = photonFluxLower > 0._RK
+
+        difference = abs( (photonFluxLower - photonFluxLower_ref) / photonFluxLower_ref )
+        assertion = assertion .and. difference < tolerance
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFluxLower_ref", photonFluxLower_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFluxLower    ", photonFluxLower
+            write(Test%outputUnit,"(*(g0,:,', '))") "difference         ", difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_getPhotonFluxLower_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getPhotonFlux_1() result(assertion)
+
+        use Constants_mod, only: RK, IK
+        implicit none
+
+        real(RK), parameter :: photonFlux_ref = 0.69800216307100779E-5_RK
+        real(RK), parameter :: alphaPlusTwo = 0.5_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
+        real(RK), parameter :: energy = 1.e3_RK
+        real(RK), parameter :: alpha = -1.5_RK
+        real(RK), parameter :: beta = -2.5_RK
+        real(RK), parameter :: coef = 220.72766470286541_RK
+        real(RK), parameter :: ebrk = 6.e2_RK
+        real(RK), parameter :: epk = 3.e2_RK
+
+        logical  :: assertion
+        real(RK) :: difference
+        real(RK) :: photonFlux
+
+        photonFlux = getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo)
+        assertion = photonFlux > 0._RK
+
+        difference = abs( (photonFlux - photonFlux_ref) / photonFlux_ref )
+        assertion = assertion .and. difference < tolerance
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux_ref ", photonFlux_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux     ", photonFlux
+            write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_getPhotonFlux_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getPhotonFlux_2() result(assertion)
+
+        use Constants_mod, only: RK, IK
+        implicit none
+
+        real(RK), parameter :: photonFlux_ref = 0.31100098078334186E-1_RK
+        real(RK), parameter :: alphaPlusTwo = 0.5_RK
+        real(RK), parameter :: tolerance = 1.e-10_RK
+        real(RK), parameter :: energy = 1.e1_RK
+        real(RK), parameter :: alpha = -1.5_RK
+        real(RK), parameter :: beta = -2.5_RK
+        real(RK), parameter :: coef = 220.72766470286541_RK
+        real(RK), parameter :: ebrk = 6.e2_RK
+        real(RK), parameter :: epk = 3.e2_RK
+
+        logical  :: assertion
+        real(RK) :: difference
+        real(RK) :: photonFlux
+
+        photonFlux = getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo)
+        assertion = photonFlux > 0._RK
+
+        difference = abs( (photonFlux - photonFlux_ref) / photonFlux_ref )
+        assertion = assertion .and. difference < tolerance
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux_ref ", photonFlux_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux     ", photonFlux
+            write(Test%outputUnit,"(*(g0,:,', '))") "difference     ", difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_getPhotonFlux_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    ! alpha < -2
+    function test_getPhotonFlux_3() result(assertion)
+
+        use Constants_mod, only: RK, IK
+        implicit none
+
+        real(RK), parameter :: alphaPlusTwo = 0.5_RK
+        real(RK), parameter :: energy = 1.e1_RK
+        real(RK), parameter :: alpha = -3.5_RK
+        real(RK), parameter :: beta = -2.5_RK
+        real(RK), parameter :: coef = 220.72766470286541_RK
+        real(RK), parameter :: ebrk = 6.e2_RK
+        real(RK), parameter :: epk = 3.e2_RK
+
+        logical  :: assertion
+        real(RK) :: photonFlux
+
+        photonFlux = getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo)
+        assertion = photonFlux < 0._RK
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux     ", photonFlux
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_getPhotonFlux_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    ! alpha < beta
+    function test_getPhotonFlux_4() result(assertion)
+
+        use Constants_mod, only: RK, IK
+        implicit none
+
+        real(RK), parameter :: alphaPlusTwo = 0.5_RK
+        real(RK), parameter :: energy = 1.e1_RK
+        real(RK), parameter :: alpha = -1.5_RK
+        real(RK), parameter :: beta = -0.5_RK
+        real(RK), parameter :: coef = 220.72766470286541_RK
+        real(RK), parameter :: ebrk = 6.e2_RK
+        real(RK), parameter :: epk = 3.e2_RK
+
+        logical  :: assertion
+        real(RK) :: photonFlux
+
+        photonFlux = getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo)
+        assertion = photonFlux < 0._RK
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFlux     ", photonFlux
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_getPhotonFlux_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -187,8 +447,8 @@ contains
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC3%photonFluence ) / ( photonFluence + BAND_SPEC3%photonFluence )
         assertion = difference < BAND_SPEC3%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC3%photonFluence, difference
@@ -196,6 +456,130 @@ contains
         end if
         ! LCOV_EXCL_STOP
      end function test_getPhotonFluence_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the integration of when lower limit is larger than upper limit.
+    function test_getPhotonFluence_5() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: tolerance = 1.e-10_RK
+        real(RK)        :: photonFluence, difference
+        type(Err_type)  :: Err
+        call getPhotonFluence   ( lowerLim      = BAND_SPEC3%Limit(2)   &
+                                , upperLim      = BAND_SPEC3%Limit(1)   &
+                                , epk           = BAND_SPEC3%epk        &
+                                , alpha         = BAND_SPEC3%alpha      &
+                                , beta          = BAND_SPEC3%beta       &
+                                , tolerance     = BAND_SPEC3%tolerance  &
+                                , photonFluence = photonFluence         &
+                                , Err           = Err                   &
+                                )
+        difference = abs( photonFluence - 0._RK )
+        assertion = difference < tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
+            write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC3%photonFluence, difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getPhotonFluence_5
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the integration of when lower limit is larger than upper limit.
+    function test_getPhotonFluence_6() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: photonFluence
+        type(Err_type)  :: Err
+        call getPhotonFluence   ( lowerLim      = BAND_SPEC3%Limit(2)   &
+                                , upperLim      = BAND_SPEC3%Limit(1)   &
+                                , epk           = BAND_SPEC3%epk        &
+                                , alpha         = BAND_SPEC3%alpha      &
+                                , beta          = BAND_SPEC3%beta       &
+                                , tolerance     = BAND_SPEC3%tolerance  &
+                                , photonFluence = photonFluence         &
+                                , Err           = Err                   &
+                                )
+        assertion = abs(photonFluence - 0._RK) < 1.e-12_RK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence", photonFluence
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getPhotonFluence_6
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test with conflicting alpha photon index.
+    function test_getPhotonFluence_7() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: photonFluence
+        type(Err_type)  :: Err
+        call getPhotonFluence   ( lowerLim      = BAND_SPEC3%Limit(1)   &
+                                , upperLim      = BAND_SPEC3%Limit(2)   &
+                                , epk           = BAND_SPEC3%epk        &
+                                , alpha         = -1.e1_RK              &
+                                , beta          = BAND_SPEC3%beta       &
+                                , tolerance     = BAND_SPEC3%tolerance  &
+                                , photonFluence = photonFluence         &
+                                , Err           = Err                   &
+                                )
+        assertion = Err%occurred .and. photonFluence < 0._RK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence", photonFluence
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getPhotonFluence_7
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test with conflicting alpha < beta photon indices.
+    function test_getPhotonFluence_8() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: photonFluence, difference
+        type(Err_type)  :: Err
+        call getPhotonFluence   ( lowerLim      = BAND_SPEC3%Limit(1)   &
+                                , upperLim      = BAND_SPEC3%Limit(2)   &
+                                , epk           = BAND_SPEC3%epk        &
+                                , alpha         = BAND_SPEC3%beta       &
+                                , beta          = BAND_SPEC3%alpha      &
+                                , tolerance     = BAND_SPEC3%tolerance  &
+                                , photonFluence = photonFluence         &
+                                , Err           = Err                   &
+                                )
+        assertion = Err%occurred .and. photonFluence < 0._RK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
+            write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC3%photonFluence, difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getPhotonFluence_8
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -219,8 +603,8 @@ contains
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC3%energyFluence ) / ( energyFluence + BAND_SPEC3%energyFluence )
         assertion = difference < BAND_SPEC3%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") energyFluence, BAND_SPEC3%energyFluence, difference
@@ -231,7 +615,190 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
+    !> \brief
+    !> Test the integration of when lower limit is larger than upper limit.
+    function test_getEnergyFluence_6() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: EnergyFluence
+        type(Err_type)  :: Err
+        call getEnergyFluence   ( lowerLim      = BAND_SPEC3%Limit(2)   &
+                                , upperLim      = BAND_SPEC3%Limit(1)   &
+                                , epk           = BAND_SPEC3%epk        &
+                                , alpha         = BAND_SPEC3%alpha      &
+                                , beta          = BAND_SPEC3%beta       &
+                                , tolerance     = BAND_SPEC3%tolerance  &
+                                , EnergyFluence = EnergyFluence         &
+                                , Err           = Err                   &
+                                )
+        assertion = abs(EnergyFluence - 0._RK) < 1.e-12_RK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "EnergyFluence", EnergyFluence
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getEnergyFluence_6
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test with conflicting alpha photon index.
+    function test_getEnergyFluence_7() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: EnergyFluence
+        type(Err_type)  :: Err
+        call getEnergyFluence   ( lowerLim      = BAND_SPEC3%Limit(1)   &
+                                , upperLim      = BAND_SPEC3%Limit(2)   &
+                                , epk           = BAND_SPEC3%epk        &
+                                , alpha         = -1.e1_RK              &
+                                , beta          = BAND_SPEC3%beta       &
+                                , tolerance     = BAND_SPEC3%tolerance  &
+                                , EnergyFluence = EnergyFluence         &
+                                , Err           = Err                   &
+                                )
+        assertion = Err%occurred .and. EnergyFluence < 0._RK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "EnergyFluence", EnergyFluence
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getEnergyFluence_7
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test with conflicting alpha < beta photon indices.
+    function test_getEnergyFluence_8() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: EnergyFluence
+        type(Err_type)  :: Err
+        call getEnergyFluence   ( lowerLim      = BAND_SPEC3%Limit(1)   &
+                                , upperLim      = BAND_SPEC3%Limit(2)   &
+                                , epk           = BAND_SPEC3%epk        &
+                                , alpha         = BAND_SPEC3%beta       &
+                                , beta          = BAND_SPEC3%alpha      &
+                                , tolerance     = BAND_SPEC3%tolerance  &
+                                , EnergyFluence = EnergyFluence         &
+                                , Err           = Err                   &
+                                )
+        assertion = Err%occurred .and. EnergyFluence < 0._RK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "EnergyFluence", EnergyFluence
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getEnergyFluence_8
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the integration of when lower limit is larger than upper limit.
+    function test_getPhotonFluenceFromEnergyFluence_6() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: photonFluence
+        type(Err_type)  :: Err
+        call getPhotonFluenceFromEnergyFluence  ( energyFluence = BAND_SPEC2%energyFluence  &
+                                                , lowerLim      = BAND_SPEC2%Limit(2)       &
+                                                , upperLim      = BAND_SPEC2%Limit(1)       &
+                                                , epk           = BAND_SPEC2%epk            &
+                                                , alpha         = BAND_SPEC2%alpha          &
+                                                , beta          = BAND_SPEC2%alpha          &
+                                                , tolerance     = BAND_SPEC2%tolerance      &
+                                                , photonFluence = photonFluence             &
+                                                , Err           = Err                       &
+                                                )
+        assertion = abs(photonFluence - 0._RK) < 1.e-12_RK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFluence", photonFluence
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getPhotonFluenceFromEnergyFluence_6
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test with conflicting alpha photon index alpha < -2.
+    function test_getPhotonFluenceFromEnergyFluence_7() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: photonFluence
+        type(Err_type)  :: Err
+        call getPhotonFluenceFromEnergyFluence  ( energyFluence = BAND_SPEC2%energyFluence  &
+                                                , lowerLim      = BAND_SPEC2%Limit(1)       &
+                                                , upperLim      = BAND_SPEC2%Limit(2)       &
+                                                , epk           = BAND_SPEC2%epk            &
+                                                , alpha         = -1.e1_RK                  &
+                                                , beta          = BAND_SPEC2%beta           &
+                                                , tolerance     = BAND_SPEC2%tolerance      &
+                                                , photonFluence = photonFluence             &
+                                                , Err           = Err                       &
+                                                )
+        assertion = Err%occurred .and. photonFluence < 0._RK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFluence", photonFluence
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getPhotonFluenceFromEnergyFluence_7
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test with conflicting alpha < beta photon indices.
+    function test_getPhotonFluenceFromEnergyFluence_8() result(assertion)
+        use Constants_mod, only: RK, IK
+        use Err_mod, only: Err_type
+        implicit none
+        logical         :: assertion
+        real(RK)        :: photonFluence
+        type(Err_type)  :: Err
+        call getPhotonFluenceFromEnergyFluence  ( energyFluence = BAND_SPEC2%energyFluence  &
+                                                , lowerLim      = BAND_SPEC2%Limit(1)       &
+                                                , upperLim      = BAND_SPEC2%Limit(2)       &
+                                                , epk           = BAND_SPEC2%epk            &
+                                                , alpha         = BAND_SPEC2%beta           &
+                                                , beta          = BAND_SPEC2%alpha          &
+                                                , tolerance     = BAND_SPEC2%tolerance      &
+                                                , photonFluence = photonFluence             &
+                                                , Err           = Err                       &
+                                                )
+        assertion = Err%occurred .and. photonFluence < 0._RK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "photonFluence", photonFluence
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+     end function test_getPhotonFluenceFromEnergyFluence_8
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
 
     !> \brief
     !> Test the integration of both the upper and lower tails.
@@ -253,8 +820,8 @@ contains
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC1%photonFluence ) / ( photonFluence + BAND_SPEC1%photonFluence )
         assertion = difference < BAND_SPEC1%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC1%photonFluence, difference
@@ -285,8 +852,8 @@ contains
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC2%photonFluence ) / ( photonFluence + BAND_SPEC2%photonFluence )
         assertion = difference < BAND_SPEC2%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC2%photonFluence, difference
@@ -318,8 +885,8 @@ contains
                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC4%photonFluence ) / ( photonFluence + BAND_SPEC4%photonFluence )
         assertion = difference < BAND_SPEC4%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC4%photonFluence, difference
@@ -348,8 +915,8 @@ contains
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC1%energyFluence ) / ( energyFluence + BAND_SPEC1%energyFluence )
         assertion = difference < BAND_SPEC1%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") energyFluence, BAND_SPEC1%energyFluence, difference
@@ -380,8 +947,8 @@ contains
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC2%energyFluence ) / ( energyFluence + BAND_SPEC2%energyFluence )
         assertion = difference < BAND_SPEC2%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") energyFluence, BAND_SPEC2%energyFluence, difference
@@ -412,8 +979,8 @@ contains
                                 )
         difference = 2._RK * abs( energyFluence - BAND_SPEC4%energyFluence ) / ( energyFluence + BAND_SPEC4%energyFluence )
         assertion = difference < BAND_SPEC4%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") energyFluence, BAND_SPEC4%energyFluence, difference
@@ -443,7 +1010,7 @@ contains
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC1%photonFluence ) / ( photonFluence + BAND_SPEC1%photonFluence )
         assertion = difference < BAND_SPEC1%tolerance
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
+        if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC1%photonFluence, difference
@@ -472,8 +1039,8 @@ contains
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC2%photonFluence ) / ( photonFluence + BAND_SPEC2%photonFluence )
         assertion = difference < BAND_SPEC2%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC2%photonFluence, difference
@@ -503,8 +1070,8 @@ contains
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC3%photonFluence ) / ( photonFluence + BAND_SPEC3%photonFluence )
         assertion = difference < BAND_SPEC3%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC3%photonFluence, difference
@@ -534,8 +1101,8 @@ contains
                                                 )
         difference = 2 * abs( photonFluence - BAND_SPEC4%photonFluence ) / ( photonFluence + BAND_SPEC4%photonFluence )
         assertion = difference < BAND_SPEC4%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC4%photonFluence, difference
@@ -567,8 +1134,8 @@ contains
                                                 )
         difference = 2._RK * abs( photonFluence - BAND_SPEC2%photonFluence ) / ( photonFluence + BAND_SPEC2%photonFluence )
         assertion = difference < BAND_SPEC4%tolerance
+        if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "photon fluence, Reference photon fluence, difference"
             write(Test%outputUnit,"(*(g0,:,', '))") photonFluence, BAND_SPEC2%photonFluence, difference
@@ -579,6 +1146,6 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#endif
+!#endif
 
 end module Test_BandSpectrum_mod ! LCOV_EXCL_LINE

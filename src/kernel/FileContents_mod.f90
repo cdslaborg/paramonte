@@ -80,7 +80,7 @@ contains
     !> \return
     !> `FileContents` : An object of [FileContents_type](@ref filecontents_type) class.
     function constructFileContents(filePath,delEnabled) result(FileContents)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructFileContents
 #endif
         implicit none
@@ -102,7 +102,7 @@ contains
     !> @param[out]  Err         :   An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
     !> @param[out]  delEnabled  :   An optional logical value indicating whether the file should be deleted upon successful reading of it.
     subroutine getFileContents(path,Contents,numRecord,Err,delEnabled)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileContents
 #endif
         use JaggedArray_mod, only: CharVec_type
@@ -185,7 +185,7 @@ contains
     !> @param[out]  Err         :   An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
     !> @param[in]   exclude     :   A string. If any line matches `exclude`, it will NOT be counted.
     subroutine getNumRecordInFile(filePath,numRecord,Err,exclude)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumRecordInFile
 #endif
         use Constants_mod, only: IK

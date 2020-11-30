@@ -83,6 +83,8 @@ contains
         call Test%run(test_constructSign_4, "test_constructSign_4")
         call Test%run(test_constructSign_5, "test_constructSign_5")
         call Test%run(test_constructSign_6, "test_constructSign_6")
+        call Test%run(test_getExistStatus_1, "test_getExistStatus_1")
+        call Test%run(test_getExistStatus_2, "test_getExistStatus_2")
         call Test%run(test_constructBlank_1, "test_constructBlank_1")
         call Test%run(test_constructBlank_2, "test_constructBlank_2")
         call Test%run(test_constructBlank_3, "test_constructBlank_3")
@@ -1307,6 +1309,50 @@ contains
         Err = getInqErr(-1)
         assertion = Err%occurred
     end function test_getInqErr_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input arguments `unit` and `file` must NOT be present simultaneously.
+    function test_getExistStatus_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        logical :: exists
+        type(Err_type) :: Err
+        call getExistStatus(exists, Err, unit = -1, file = "")
+        assertion = Err%occurred
+    end function test_getExistStatus_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> At least one of the two identifiers (`unit` or `file`) must be present.
+    function test_getExistStatus_2() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        logical :: exists
+        type(Err_type) :: Err
+        call getExistStatus(exists, Err)
+        assertion = Err%occurred
+    end function test_getExistStatus_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> The input `unit` must point to an existing opened file at runtime.
+    function test_getOpenStatus_1() result(assertion)
+        use Err_mod, only: Err_type
+        implicit none
+        logical :: assertion
+        logical :: isOpen
+        integer :: unit
+        character(:), allocatable :: file
+        type(Err_type) :: Err
+        !call getOpenStatus(isOpen,Err,unit,file)
+        assertion = Err%occurred
+    end function test_getOpenStatus_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

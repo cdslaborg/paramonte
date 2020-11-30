@@ -45,6 +45,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_BandSpectrum_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Batse_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_Constants_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_CorrCoef_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Cosmology_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_CrossCorr_mod.f90

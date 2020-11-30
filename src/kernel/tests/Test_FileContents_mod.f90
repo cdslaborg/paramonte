@@ -90,8 +90,8 @@ contains
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%stat = ", RandomFileName%Err%stat
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%msg = ", RandomFileName%Err%msg
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         open(newunit = fileUnit, file = RandomFileName%path, status = "new", iostat = iostat)
@@ -101,8 +101,8 @@ contains
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "iostat = ", iostat, " <= 0"
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         write(fileUnit,"(A)") "Testing FileContents_type..."
@@ -119,8 +119,8 @@ contains
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%stat = ", FileContents%Err%stat
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%msg = ", FileContents%Err%msg
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         call OS%query()
@@ -130,8 +130,8 @@ contains
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "OS%Err%occurred = ", OS%Err%occurred
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         call removeFile(RandomFileName%path,OS%Err)
@@ -141,8 +141,8 @@ contains
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "OS%Err%occurred = ", OS%Err%occurred
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         assertion = assertion .and. FileContents%numRecord==4
@@ -151,8 +151,8 @@ contains
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "FileContents%numRecord = ", FileContents%numRecord, " /= ", 4
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         assertion = assertion .and. FileContents%Line(1)%record=="Testing FileContents_type..."
@@ -196,8 +196,8 @@ contains
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%stat = ", RandomFileName%Err%stat
                 write(Test%outputUnit,"(*(g0))") "RandomFileName%Err%msg = ", RandomFileName%Err%msg
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         open(newunit = fileUnit, file = RandomFileName%path, status = "new", iostat = iostat)
@@ -207,8 +207,8 @@ contains
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "iostat = ", iostat, " <= 0"
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         write(fileUnit,"(A)") "Testing FileContents_type..."
@@ -225,8 +225,8 @@ contains
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%stat = ", FileContents%Err%stat
                 write(Test%outputUnit,"(*(g0))") "FileContents%Err%msg = ", FileContents%Err%msg
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         call OS%query()
@@ -236,8 +236,8 @@ contains
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "OS%Err%occurred = ", OS%Err%occurred
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         inquire(file = RandomFileName%path, exist = exist)
@@ -248,8 +248,8 @@ contains
                 write(Test%outputUnit,"(*(g0))") "delEnabled = ", .true.
                 write(Test%outputUnit,"(*(g0))") "exist = ", exist
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         assertion = assertion .and. FileContents%numRecord==4
@@ -258,8 +258,8 @@ contains
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0))") "FileContents%numRecord = ", FileContents%numRecord, " /= ", 4
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         assertion = assertion .and. FileContents%Line(1)%record=="Testing FileContents_type..."
@@ -267,8 +267,8 @@ contains
         assertion = assertion .and. FileContents%Line(3)%record==""
         assertion = assertion .and. FileContents%Line(4)%record==""
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "numRecord  : ", num2str(FileContents%numRecord)
             do i = 1,FileContents%numRecord

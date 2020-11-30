@@ -563,6 +563,7 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
         endif()
     endif()
 
+    # bizarrely, when FPP_DLL_FLAGS is set to -DDLL_ENABLED, the codecov on WSL OS in dynamic mode crashes.
     unset(FPP_DLL_FLAGS)
     if (DLL_ENABLED)
         set( FPP_DLL_FLAGS -DDLL_ENABLED )
@@ -581,9 +582,9 @@ if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
     set(FPP_BUILD_FLAGS 
         -DDBG_ENABLED 
         CACHE STRING "ParaMonete build preprocessor flags" FORCE)
-else()
+elseif (CMAKE_BUILD_TYPE MATCHES "Testing|TESTING|testing")
     set(FPP_BUILD_FLAGS 
-        ""
+        "-DTESTING_ENABLD"
         CACHE STRING "ParaMonete build preprocessor flags" FORCE)
 endif()
 
@@ -815,8 +816,8 @@ elseif (gnu_compiler)
     endif()
 
     if (CODECOV_ENABLED)
-        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage -static-libgcc -fcf-protection=full )
-        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage -static-libgcc -fcf-protection=full )
+        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage -static-libgcc -fcf-protection=full ) #
+        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage -static-libgcc -fcf-protection=full ) #
         set(FL_FLAGS "${FL_FLAGS}" --coverage -fprofile-arcs -ftest-coverage -lgcov -static-libgcc -fcf-protection=full )
     endif()
 

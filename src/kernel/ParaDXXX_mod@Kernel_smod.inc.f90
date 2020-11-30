@@ -100,7 +100,7 @@ contains
     module subroutine runKernel ( self          &
                                 , getLogFunc    &
                                 )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc

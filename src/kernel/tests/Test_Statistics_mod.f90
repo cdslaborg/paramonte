@@ -273,14 +273,9 @@ contains
         call Test%run(test_isInsideEllipsoid_1, "test_isInsideEllipsoid_1")
         call Test%run(test_mergeMeanCovUpper_1, "test_mergeMeanCovUpper_1")
         call Test%run(test_getRandIntLecuyer_1, "test_getRandIntLecuyer_1")
-#if defined OS_IS_WSL
-        ! LCOV_EXCL_START
-#else
+!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
         call Test%run(test_fitGeoCyclicLogPDF_1, "test_fitGeoCyclicLogPDF_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
-#endif
-#if defined OS_IS_WSL
-        ! LCOV_EXCL_STOP
-#endif
+!#endif
         call Test%run(test_getRandRealLecuyer_1, "test_getRandRealLecuyer_1")
         call Test%run(test_getSamCovMeanTrans_1, "test_getSamCovMeanTrans_1")
         call Test%run(test_getLogProbMVNSP_RK_1, "test_getLogProbMVNSP_RK_1")

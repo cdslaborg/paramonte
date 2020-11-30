@@ -85,7 +85,7 @@ contains
     !>
     !> @param[inout] PMPM : An object of class [ParaMCMC_type](@ref paramcmc_type).
     subroutine setupParaMCMC(PMPM)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMCMC
 #endif
         use SpecMCMC_mod, only: SpecMCMC_type

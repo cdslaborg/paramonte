@@ -179,7 +179,7 @@ contains
     !> \return
     !> `SystemInfo` : An object of class [SystemInfo_type](@ref systeminfo_type) containing the system information.
     function constructSystemInfo(OS) result(SystemInfo)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSystemInfo
 #endif
         implicit none
@@ -197,7 +197,7 @@ contains
     !> \param[in]   shellQueryEnabled   :   A logical variable indicating if the type and name of the current
     !>                                      runtime shell should be queried or not (optional, default = `.true.`).
     subroutine queryOS(OS, shellQueryEnabled)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: queryOS
 #endif
 
@@ -551,7 +551,7 @@ contains
     !> \return
     !> `RFN` : An object of class [RandomFileName_type](@ref randomfilename_type) containing the attributes of the random file name.
     function getRandomFileName(dir,key,ext) result(RFN)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandomFileName
 #endif
         use Constants_mod, only: IK, RK
@@ -633,7 +633,7 @@ contains
     !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
     !!                          indicating whether any error has occurred during information collection.
     subroutine getEnvVar(name,value,length,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEnvVar
 #endif
         use Constants_mod, only: IK, MAX_REC_LEN
@@ -688,7 +688,7 @@ contains
     !> \return
     !> `SysCmd` : An object of class [SysCmd_type](@ref syscmd_type) containing the attributes and the statistics of the system command execution.
     function constructSysCmd(cmd,wait) result(SysCmd)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSysCmd
 #endif
         implicit none
@@ -714,7 +714,7 @@ contains
     !> \param[inout] SysCmd : An object of class [SysCmd_type](@ref syscmd_type) containing the attributes and
     !!                        the statistics of the system command execution.
     subroutine runSysCmd(SysCmd)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runSysCmd
 #endif
         use Constants_mod, only: MAX_REC_LEN
@@ -769,7 +769,7 @@ contains
     !> This is the procedural implementation of the object-oriented [runSysCmd](@ref runsyscmd) method,
     !! kept here only for legacy usage.
     subroutine executeCmd(command,wait,exitstat,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: executeCmd
 #endif
         use Constants_mod, only: MAX_REC_LEN
@@ -843,7 +843,7 @@ contains
     !> \remark
     !> This is a method of the class [CmdArg_type](@ref cmdarg_type).
     subroutine queryCmdArg(CmdArg)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: queryCmdArg
 #endif
         use String_mod, only: num2str
@@ -913,7 +913,7 @@ contains
     !> \param[in]   OS      :   An object of class [OS_type](@ref os_type) containing information about the Operating System (optional).
     !> \param[out]  count   :   The count of elements in the output `List` (optional).
     subroutine getSystemInfo(List,Err,OS,count)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSystemInfo
 #endif
         use Err_mod, only: Err_type
@@ -1137,7 +1137,7 @@ contains
     !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
     !!                          indicating whether any error has occurred before, during, or after the sleep.
     subroutine sleep(seconds,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sleep
 #endif
 
@@ -1192,7 +1192,7 @@ contains
     !> \param[out]  Err         :   An object of class [Err_type](@ref err_mod::err_type)
     !!                              indicating whether any error has occurred the copy.
     subroutine copyFile(pathOld,pathNew,isUnixShell,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: copyFile
 #endif
 
@@ -1288,7 +1288,7 @@ contains
     !> This subroutine can become extremely dangerous if one does understands the
     !! scopes of the removal of the requested file or pattern. **Use with caution**.
     subroutine removeFile(path,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: removeFile
 #endif
 

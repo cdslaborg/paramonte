@@ -228,7 +228,7 @@ contains
                           , round, sign,pad, blank, format, asynchronous &
                           , OS &
                           ) result(File)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructFile
 #endif
 
@@ -284,10 +284,12 @@ contains
 !write(*,*) File%Path%original
 !write(*,*) File%Path%modified
         if (File%Path%Err%occurred) then
+        ! LCOV_EXCL_START
             File%Err = File%Path%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         ! check if file exists
 
@@ -295,9 +297,11 @@ contains
                                 , Err = File%err            &
                                 , file = File%Path%modified )
         if (File%Err%occurred) then
+        ! LCOV_EXCL_START
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
          ! if it does not exist, try the original file path
 
@@ -308,9 +312,11 @@ contains
             if (File%exists) File%Path%modified = File%Path%original    ! restore the original path, which is apparently the correct path
         end if
         if (File%Err%occurred) then
+        ! LCOV_EXCL_START
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         ! set up the rest of attributes
 
@@ -334,31 +340,39 @@ contains
 
         File%Action = Action_type(action)
         If (File%Action%Err%occurred) then
+        ! LCOV_EXCL_START
             File%Err = File%Action%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         File%Delim = Delim_type(delim)
         If (File%Delim%Err%occurred) then
+        ! LCOV_EXCL_START
             File%Err = File%Delim%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         File%Access = Access_type(access)
         If (File%Access%Err%occurred) then
+        ! LCOV_EXCL_START
             File%Err = File%Access%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         File%Position = Position_type(position)
+        ! LCOV_EXCL_START
         If (File%Position%Err%occurred) then
             File%Err = File%Position%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
         
         if (present(form)) then
             File%form = Form_type(form)
@@ -369,39 +383,49 @@ contains
                 File%Form = Form_type("formatted")
             end if
         end if
+        ! LCOV_EXCL_START
         If (File%Form%Err%occurred) then
             File%Err = File%Form%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         File%Round = Round_type(round)
+        ! LCOV_EXCL_START
         If (File%Round%Err%occurred) then
             File%Err = File%Round%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         File%Sign = Sign_type(sign)
         If (File%Sign%Err%occurred) then
+        ! LCOV_EXCL_START
             File%Err = File%Sign%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         File%Pad = Pad_type(pad)
         If (File%Pad%Err%occurred) then
+        ! LCOV_EXCL_START
             File%Err = File%Pad%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         File%Blank = Blank_type(blank)
         If (File%Blank%Err%occurred) then
+        ! LCOV_EXCL_START
             File%Err = File%Blank%Err
             File%Err%msg = PROCEDURE_NAME // File%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         File%nameByCompiler = ""
 
@@ -466,7 +490,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getExistStatus(exists,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getExistStatus
 #endif
         use String_mod, only: num2str
@@ -479,24 +503,28 @@ contains
         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // "@getExistStatus()"
         Err%msg = ""
         Err%occurred = .false.
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,exist=exists,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,exist=exists,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
-        elseif (present(unit) .and. present(file)) then
-            Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
-            return
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -507,7 +535,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getOpenStatus(isOpen,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getOpenStatus
 #endif
         use String_mod, only: num2str
@@ -520,20 +548,28 @@ contains
         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // "@getOpenStatus()"
         Err%msg = ""
         Err%occurred = .false.
-        if (present(unit)) then
+        if (present(unit) .and. present(file)) then
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Only one of the two optional arguments (unit, file) must be provided as input."
+            return
+        elseif (present(unit)) then
             inquire(unit=unit,opened=isOpen,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,opened=isOpen,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -544,7 +580,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getNumber(isNumbered,number,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumber
 #endif
         use String_mod, only: num2str
@@ -562,17 +598,21 @@ contains
         if (present(unit)) then
             inquire(unit=unit,number=number,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,number=number,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -584,7 +624,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getName(isNamed,nameByCompiler,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getName
 #endif
         use String_mod, only: num2str
@@ -603,17 +643,21 @@ contains
         if (present(unit)) then
             inquire(unit=unit,named=isNamed,name=nameByCompiler,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,named=isNamed,name=nameByCompiler,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -625,7 +669,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getAccess(access,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getAccess
 #endif
         use String_mod, only: num2str, getLowerCase
@@ -642,17 +686,21 @@ contains
         if (present(unit)) then
             inquire(unit=unit,access=access,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,access=access,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -664,7 +712,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getForm(form,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getForm
 #endif
         use String_mod, only: num2str, getLowerCase
@@ -682,16 +730,20 @@ contains
             inquire(unit=unit,form=form,iostat=Err%stat)
             if (Err%stat>0) then
                 Err%occurred = .true.
+            ! LCOV_EXCL_START
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,form=form,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -703,7 +755,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getRecl(recl,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRecl
 #endif
         use String_mod, only: num2str
@@ -719,17 +771,21 @@ contains
         if (present(unit)) then
             inquire(unit=unit,recl=recl,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,recl=recl,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -740,7 +796,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getBlank(blank,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBlank
 #endif
         use String_mod, only: num2str, getLowerCase
@@ -757,17 +813,21 @@ contains
         if (present(unit)) then
             inquire(unit=unit,blank=blank,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,blank=blank,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -779,7 +839,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getPosition(position,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPosition
 #endif
         use String_mod, only: num2str, getLowerCase
@@ -796,17 +856,21 @@ contains
         if (present(unit)) then
             inquire(unit=unit,position=position,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,position=position,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -818,7 +882,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getAction(action,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getAction
 #endif
         use String_mod, only: num2str, getLowerCase
@@ -835,17 +899,21 @@ contains
         if (present(unit)) then
             inquire(unit=unit,action=action,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,action=action,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -857,7 +925,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getDelim(delim,Err,unit,file)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getDelim
 #endif
         use String_mod, only: num2str, getLowerCase
@@ -874,17 +942,21 @@ contains
         if (present(unit)) then
             inquire(unit=unit,delim=delim,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with unit=" // num2str(unit) // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         elseif (present(file)) then
             inquire(file=file,delim=delim,iostat=Err%stat)
             if (Err%stat>0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file with name=" // file // "."
                 return
             end if
+            ! LCOV_EXCL_STOP
         else
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": At least one of the two input arguments (unit,path) must be provided."
@@ -896,7 +968,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine closeFile( File )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: closeFile
 #endif
         implicit none
@@ -910,19 +982,23 @@ contains
                , iostat = File%Err%stat         &
                )
         if (File%Err%stat/=0) then
+        ! LCOV_EXCL_START
             File%Err%occurred = .true.
             File%Err%msg =  PROCEDURE_NAME // &
                             ": Error occurred while inquiring the open status and unit number of &
                             &file='" // File%Path%modified // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
         if (File%exists) then
             if (File%isOpen) close(unit=File%number,iostat=File%Err%stat)
             File%Err = File%getCloseErr(File%Err%stat)
             if (File%Err%occurred) then
-                File%Err%msg =    PROCEDURE_NAME // &
-                                ": Error occurred while attempting to close the open file='" // File%Path%modified // "'."
+            ! LCOV_EXCL_START
+                File%Err%msg =    PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // File%Path%modified // "'."
+                return
             end if
+            ! LCOV_EXCL_STOP
         else
             ! check if the file with the original filename is open, and if so, close it.
             inquire( file   = File%Path%original    &
@@ -932,19 +1008,20 @@ contains
                    , iostat = File%Err%stat         &
                    )
             if (File%Err%stat/=0) then
+            ! LCOV_EXCL_START
                 File%Err%occurred = .true.
-                File%Err%msg =  PROCEDURE_NAME // &
-                                ": Error occurred while inquiring the open status and unit number of &
-                                &file='" // File%Path%original // "'."
+                File%Err%msg =  PROCEDURE_NAME // ": Error occurred while inquiring the open status and unit number of file='" // File%Path%original // "'."
                 return
             end if
+            ! LCOV_EXCL_STOP
             if (File%exists) then
                 if (File%isOpen) close(unit=File%number,iostat=File%Err%stat)
                 File%Err = File%getCloseErr(File%Err%stat)
                 if (File%Err%occurred) then
-                    File%Err%msg =  PROCEDURE_NAME // &
-                                    ": Error occurred while attempting to close the open file='" // File%Path%original // "'."
+                ! LCOV_EXCL_START
+                    File%Err%msg =  PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // File%Path%original // "'."
                 end if
+                ! LCOV_EXCL_STOP
             end if
         end if
     end subroutine closeFile
@@ -953,7 +1030,7 @@ contains
 
     ! sets values for File%unit, File%exists, File%isOpen, File%number, File%Err, and updates File%Path%modified (if needed)
     subroutine openFile( File )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: openFile
 #endif
 
@@ -969,11 +1046,11 @@ contains
                , iostat = File%Err%stat &
                )
         if (File%Err%stat/=0) then
+            ! LCOV_EXCL_START
             File%Err%occurred = .true.
-            File%Err%msg =  PROCEDURE_NAME // &
-                            ": Error occurred while inquiring the existence and open status, unit number of &
-                            &file='" // File%Path%original // "'."
+            File%Err%msg =  PROCEDURE_NAME // ": Error occurred while inquiring the existence and open status, unit number of file='" // File%Path%original // "'."
             return
+            ! LCOV_EXCL_STOP
         end if
         if (File%exists) then
             File%Path%modified = File%Path%original
@@ -1008,11 +1085,11 @@ contains
                    , iostat = File%Err%stat         &
                    )
             if (File%Err%stat/=0) then
+            ! LCOV_EXCL_START
                 File%Err%occurred = .true.
-                File%Err%msg =  PROCEDURE_NAME // &
-                                ": Error occurred while inquiring the existence and open status, unit number of &
-                                &file='" // File%Path%modified // "'."
+                File%Err%msg =  PROCEDURE_NAME // ": Error occurred while inquiring the existence and open status, unit number of file='" // File%Path%modified // "'."
                 return
+            ! LCOV_EXCL_STOP
             end if
             if (File%exists) then
                 if (File%isOpen) then
@@ -1039,9 +1116,7 @@ contains
                 end if
             else
                 File%Err%occurred = .true.
-                File%Err%msg =  PROCEDURE_NAME // &
-                                ": The requested file to open with possible addresses '" // File%Path%original // "' or '" // &
-                                File%Path%modified // "' does not exist."
+                File%Err%msg =  PROCEDURE_NAME // ": The requested file to open with possible addresses '" // File%Path%original // "' or '" // File%Path%modified // "' does not exist."
                 return
             end if
         end if
@@ -1050,7 +1125,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getWriteErr(stat) result(Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getWriteErr
 #endif
         use Err_mod, only: Err_type
@@ -1062,24 +1137,30 @@ contains
         Err%stat = stat
         Err%msg = ""
         if ( is_iostat_eor(Err%stat) ) then
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg  = PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to write to file."
             return
+            ! LCOV_EXCL_STOP
         elseif ( is_iostat_end(Err%stat) ) then
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg  = PROCEDURE_NAME // ": End-Of-File error condition occurred while attempting to write to file."
             return
+            ! LCOV_EXCL_STOP
         elseif ( Err%stat>0 ) then
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg  = PROCEDURE_NAME // ": Unknown error condition occurred while attempting to write to file."
             return
+            ! LCOV_EXCL_STOP
         end if
     end function getWriteErr
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getReadErr(stat,path) result(Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getReadErr
 #endif
         use Err_mod, only: Err_type
@@ -1095,7 +1176,6 @@ contains
             return
         else
             Err%occurred = .true.
-            !write(*,*) stat
             Err%stat = stat
             if ( is_iostat_eor(stat) ) then
                 Err%msg  = PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to read from file."
@@ -1111,7 +1191,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getCloseErr(stat) result(Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCloseErr
 #endif
         use Err_mod, only: Err_type
@@ -1132,7 +1212,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getOpenErr(stat) result(Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getOpenErr
 #endif
         use Err_mod, only: Err_type
@@ -1153,7 +1233,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getInqErr(stat) result(Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInqErr
 #endif
         use Err_mod, only: Err_type
@@ -1174,7 +1254,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructAction(value) result(Action)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructAction
 #endif
         use String_mod, only: getLowerCase
@@ -1203,7 +1283,7 @@ contains
     end function constructAction
 
     function constructAccess(value) result(Access)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructAccess
 #endif
         use String_mod, only: getLowerCase
@@ -1230,7 +1310,7 @@ contains
     end function constructAccess
 
     function constructForm(value) result(Form)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructForm
 #endif
         use String_mod, only: getLowerCase
@@ -1257,7 +1337,7 @@ contains
     end function constructForm
 
     function constructBlank(value) result(Blank)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructBlank
 #endif
         use String_mod, only: getLowerCase
@@ -1284,7 +1364,7 @@ contains
     end function constructBlank
 
     function constructPosition(value) result(Position)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructPosition
 #endif
         use String_mod, only: getLowerCase
@@ -1313,7 +1393,7 @@ contains
     end function constructPosition
 
     function constructDelim(value) result(Delim)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructDelim
 #endif
         use String_mod, only: getLowerCase
@@ -1342,7 +1422,7 @@ contains
     end function constructDelim
 
     function constructPad(value) result(Pad)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructPad
 #endif
         use String_mod, only: getLowerCase
@@ -1369,7 +1449,7 @@ contains
     end function constructPad
 
     function constructRound(value) result(Round)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructRound
 #endif
         use String_mod, only: getLowerCase
@@ -1404,7 +1484,7 @@ contains
     end function constructRound
 
     function constructSign(value) result(Sign)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSign
 #endif
         use String_mod, only: getLowerCase

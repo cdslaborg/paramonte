@@ -82,9 +82,53 @@ contains
         call Test%run(test_writeDecoratedText_2, "test_writeDecoratedText_2")
         call Test%run(test_writeDecoratedList_1, "test_writeDecoratedList_1")
         call Test%run(test_writeDecoratedList_2, "test_writeDecoratedList_2")
+        call Test%run(test_constructDecoration_1, "test_constructDecoration_1")
+        call Test%run(test_constructDecoration_2, "test_constructDecoration_2")
         call Test%finalize()
 
     end subroutine test_Decoration
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_constructDecoration_1() result(assertion)
+        use Constants_mod, only: IK
+        implicit none
+        logical                     :: assertion
+        character(*), parameter     :: tab_ref = "!!!!!"
+        character(:), allocatable   :: tab
+        type(Decoration_type)       :: Decoration
+        Decoration = Decoration_type(tabStr = tab_ref)
+        assertion = Decoration%tab == tab_ref
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0.15,:,' '))")
+            write(Test%outputUnit,"(*(g0.15,:,' '))") "tab_ref          =", tab_ref
+            write(Test%outputUnit,"(*(g0.15,:,' '))") "Decoration%tab   =", Decoration%tab
+            write(Test%outputUnit,"(*(g0.15,:,' '))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_constructDecoration_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_constructDecoration_2() result(assertion)
+        use Constants_mod, only: IK
+        implicit none
+        logical                     :: assertion
+        character(*), parameter     :: symbol_ref = "!!!!!"
+        character(:), allocatable   :: symbol
+        type(Decoration_type)       :: Decoration
+        Decoration = Decoration_type(symbol = symbol_ref)
+        assertion = Decoration%symbol == symbol_ref
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0.15,:,' '))")
+            write(Test%outputUnit,"(*(g0.15,:,' '))") "symbol_ref           =", symbol_ref
+            write(Test%outputUnit,"(*(g0.15,:,' '))") "Decoration%symbol    =", Decoration%symbol
+            write(Test%outputUnit,"(*(g0.15,:,' '))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_constructDecoration_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -96,8 +140,8 @@ contains
         character(:), allocatable   :: genericFormat
         genericFormat = getGenericFormat(width = 25_IK, precision = 10_IK, delim = ",", prefix = "ParaMonte")
         assertion = genericFormat == genericFormat_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat_ref    =", genericFormat_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat        =", genericFormat
@@ -116,8 +160,8 @@ contains
         character(:), allocatable   :: genericFormat
         genericFormat = getGenericFormat(width = 25_IK, precision = 10_IK, delim = ",")
         assertion = genericFormat == genericFormat_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat_ref    =", genericFormat_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat        =", genericFormat
@@ -136,8 +180,8 @@ contains
         character(:), allocatable   :: genericFormat
         genericFormat = getGenericFormat(width = 25_IK, precision = 10_IK)
         assertion = genericFormat == genericFormat_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat_ref    =", genericFormat_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat        =", genericFormat
@@ -156,8 +200,8 @@ contains
         character(:), allocatable   :: genericFormat
         genericFormat = getGenericFormat(width = 25_IK)
         assertion = genericFormat == genericFormat_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat_ref    =", genericFormat_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat        =", genericFormat
@@ -176,8 +220,8 @@ contains
         character(:), allocatable   :: genericFormat
         genericFormat = getGenericFormat()
         assertion = genericFormat == genericFormat_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat_ref    =", genericFormat_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "genericFormat        =", genericFormat
@@ -270,8 +314,8 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -356,8 +400,8 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -425,8 +469,8 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -507,8 +551,8 @@ contains
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -552,8 +596,8 @@ contains
         character(:), allocatable   :: line
         line = drawLine(symbol = "HelloWorld!")
         assertion = line == line_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "line_ref =", line_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "line     =", line
@@ -573,8 +617,8 @@ contains
         character(:), allocatable   :: line
         line = drawLine()
         assertion = line == line_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "line_ref =", line_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "line     =", line
@@ -597,8 +641,8 @@ contains
                                     , thicknessHorz = 1_IK &
                                     )
         assertion = sandwichedText == sandwichedText_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText_ref   =", sandwichedText_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText       =", sandwichedText
@@ -620,8 +664,8 @@ contains
                                     , width = 100_IK &
                                     )
         assertion = sandwichedText == sandwichedText_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText_ref   =", sandwichedText_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText       =", sandwichedText
@@ -642,8 +686,8 @@ contains
                                     , symbol = "%" &
                                     )
         assertion = sandwichedText == sandwichedText_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText_ref   =", sandwichedText_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText       =", sandwichedText
@@ -662,8 +706,8 @@ contains
         character(:), allocatable   :: sandwichedText
         sandwichedText = sandwich( text = "The absence of evidence is not evidence for absence." )
         assertion = sandwichedText == sandwichedText_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText_ref   =", sandwichedText_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText       =", sandwichedText
@@ -682,8 +726,8 @@ contains
         character(:), allocatable   :: sandwichedText
         sandwichedText = sandwich()
         assertion = sandwichedText == sandwichedText_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText_ref   =", sandwichedText_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "sandwichedText       =", sandwichedText
@@ -729,8 +773,8 @@ contains
 
         if (.not. assertion) then
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "nline_ref = ", nline_ref
                 write(Test%outputUnit,"(*(g0))") "nline     = ", nline
@@ -747,8 +791,8 @@ contains
                 assertionCurrent = ListOfLines(i)%record == ListOfLines_ref(i)%record
                 assertion = assertion .and. assertionCurrent
 
-                ! LCOV_EXCL_START
                 if (Test%isDebugMode .and. .not. assertionCurrent) then
+                ! LCOV_EXCL_START
                     write(Test%outputUnit,"(*(g0))")
                     write(Test%outputUnit,"(*(g0))") "ListOfLines_ref(",num2str(i),")%record = '", ListOfLines_ref(i)%record, "'"
                     write(Test%outputUnit,"(*(g0))") "ListOfLines    (",num2str(i),")%record = '", ListOfLines(i)%record, "'"

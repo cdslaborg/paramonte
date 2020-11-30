@@ -40,16 +40,52 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!> \brief
-!> This submodule contains procedures and routines for the PARADRAM simulation input.
-!>
-!> \remark
-!> This module requires preprocessing, prior to compilation.
-!>
-!> @author Amir Shahmoradi
+!>  \brief This module contains tests of the module [Constants_mod](@ref constants_mod).
+!>  @author Amir Shahmoradi
 
-submodule (ParaDRAM_mod) Input_smod
-#define PARADRAM ParaDRAM
-#include "ParaDXXX_mod@Input_smod.inc.f90"
-#undef PARADRAM
-end submodule Input_smod ! LCOV_EXCL_LINE
+module Test_Constants_mod
+
+    use Constants_mod
+    use Test_mod, only: Test_type
+    implicit none
+
+    private
+    public :: test_Constants
+
+    type(Test_type) :: Test
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+contains
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    subroutine test_Constants()
+        implicit none
+        Test = Test_type(moduleName=MODULE_NAME)
+        call Test%run(test_getPosInf_RK_1,"test_getPosInf_RK_1")
+        call Test%run(test_getNegInf_RK_1,"test_getNegInf_RK_1")
+        call Test%finalize()
+    end subroutine test_Constants
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getPosInf_RK_1() result(assertion)
+        use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_positive_inf
+        implicit none
+        logical             :: assertion
+        assertion = getPosInf_RK() == ieee_value(0._RK, ieee_positive_inf)
+    end function test_getPosInf_RK_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getNegInf_RK_1() result(assertion)
+        use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_negative_inf
+        implicit none
+        logical             :: assertion
+        assertion = getNegInf_RK() == ieee_value(0._RK, ieee_negative_inf)
+    end function test_getNegInf_RK_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+end module Test_Constants_mod

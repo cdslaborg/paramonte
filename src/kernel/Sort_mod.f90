@@ -78,7 +78,7 @@ contains
     !> \warning
     !> On return, the contents of the input array is completely overwritten.
     pure recursive subroutine sortArray_RK(array)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortArray
 #endif
         use Constants_mod, only: IK, RK
@@ -96,7 +96,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure subroutine partition(array, marker)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: partition
 #endif
         use Constants_mod, only: IK, RK
@@ -150,7 +150,7 @@ contains
     !> \warning
     !> On return, the value of `Err%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine sortAscending_RK(np,Point,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscending_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -244,7 +244,7 @@ contains
     !> \warning
     !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine indexArray_RK(n,Array,Indx,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: indexArray_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -355,7 +355,7 @@ contains
     !> \warning
     !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine indexArray_IK(n,Array,Indx,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: indexArray_IK
 #endif
         use Constants_mod, only: IK, RK
@@ -466,7 +466,7 @@ contains
     !> \warning
     !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine sortAscendingWithRooter_IK(lenLeader,Leader,Rooter,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscendingWithRooter_RK
 #endif
         use Constants_mod, only: IK
@@ -505,7 +505,7 @@ contains
     !> \warning
     !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine sortAscendingWithRooter_RK(lenLeader,Leader,Rooter,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortAscendingWithRooter_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -544,7 +544,7 @@ contains
     !> \warning
     !> On return, the value of `Err%%occurred` must be checked for any potential occurrences of errors during sorting.
     pure subroutine getMedian_RK(lenArray,Array,median,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: median_RK
 #endif
         use Constants_mod, only: IK, RK

@@ -79,7 +79,7 @@ contains
     !> @param[in]   returnEnabled   :   A logical value. If `.true.`, the program will not be abruptly terminated.
     !>                                  Instead, the control is returned to the calling routine.
     subroutine abort(Err, prefix, newline, outputUnit, returnEnabled)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: abort
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -208,7 +208,7 @@ contains
     !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
     !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
     subroutine warn(msg,prefix,newline,outputUnit,marginTop,marginBot)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warn
 #endif
         use Constants_mod, only: IK
@@ -245,7 +245,7 @@ contains
     !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
     !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
     subroutine note(msg,prefix,newline,outputUnit,marginTop,marginBot)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: note
 #endif
         use Constants_mod, only: IK
@@ -284,7 +284,7 @@ contains
     !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
     !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
     subroutine informUser(msg,prefix,newline,outputUnit,wrapSplit,wrapWidth,marginTop,marginBot)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: informUser
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit

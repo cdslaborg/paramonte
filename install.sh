@@ -176,7 +176,7 @@ if ! [ "${codecov_flag}" = "" ]; then
         BTYPE_LIST="testing"
     fi
     if [ -z ${LTYPE_LIST+x} ]; then
-        LTYPE_LIST="static"
+        LTYPE_LIST="dynamic"
     fi
     if [ -z ${MEMORY_LIST+x} ]; then
         MEMORY_LIST="heap"

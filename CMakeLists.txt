@@ -363,7 +363,7 @@ include(SetParaMonteCompilerVersion)
 # flags configuring the ParaMonte library build
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-option(DLL_ENABLED                             "Define DLL_ENABLED preprocessor flag" OFF)
+#option(DLL_ENABLED                             "Define DLL_ENABLED preprocessor flag" OFF)
 option(ParaMonte_OBJ_ENABLED                   "Build ParaMonte library object files" ON)
 option(ParaMonteTest_OBJ_ENABLED               "Build ParaMonte library test object files, intended only for developers" ON)
 option(ParaMonteTest_EXE_ENABLED               "Build ParaMonte library test executables, intended only for developers" OFF)

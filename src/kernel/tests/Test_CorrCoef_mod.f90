@@ -196,8 +196,8 @@ contains
                             , dStarStarProb     = Spearman%dStarStarProb    &
                             , Err               = Spearman%Err              &
                             )
-        ! LCOV_EXCL_START
         if (Spearman%Err%occurred) then
+        ! LCOV_EXCL_START
             assertion = .false.
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "Error occurred: "//Spearman%Err%msg
@@ -209,8 +209,8 @@ contains
         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) < 1.e-10_RK
         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) < 1.e-1_RK
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Computed Spearman's statistic:"
             write(Test%outputUnit,"(*(g0))") "rho               = ", Spearman%rho
@@ -252,8 +252,8 @@ contains
                                 , dStarStarProb     = Spearman%dStarStarProb    &
                                 , Err               = Spearman%Err              &
                                 )
-        ! LCOV_EXCL_START
         if (Spearman%Err%occurred) then
+        ! LCOV_EXCL_START
             assertion = .false.
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "Error occurred: "//Spearman%Err%msg
@@ -265,8 +265,8 @@ contains
         assertion = abs(Spearman%rho - CorrCoef_ref) / (Spearman%rho + CorrCoef_ref) < 1.e-10_RK
         assertion = assertion .and. abs(Spearman%rhoProb-CorrPval_ref) / (Spearman%rhoProb+CorrPval_ref) < 1.e-1_RK
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Computed Spearman's statistic:"
             write(Test%outputUnit,"(*(g0))") "rho               = ", Spearman%rho

@@ -72,6 +72,7 @@ call setup()
 
 block; use Test_BandSpectrum_mod; call test_BandSpectrum(); end block
 block; use Test_Batse_mod; call test_Batse(); end block
+block; use Test_Constants_mod; call test_Constants(); end block
 block; use Test_CorrCoef_mod; call test_CorrCoef(); end block
 block; use Test_Cosmology_mod; call test_Cosmology(); end block
 block; use Test_CrossCorr_mod; call test_CrossCorr(); end block

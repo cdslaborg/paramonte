@@ -93,9 +93,9 @@ contains
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_BrentMinimum_type_1, "test_BrentMinimum_type_1")
         call Test%run(test_BrentMinimum_type_2, "test_BrentMinimum_type_2")
-#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
+!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
         call Test%run(test_PowellMinimum_type_1, "test_PowellMinimum_type_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
-#endif
+!#endif
         call Test%finalize()
     end subroutine test_Optimization
 
@@ -200,7 +200,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if !defined OS_IS_WSL || !defined CODECOV_ENABLED
+!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
     function test_PowellMinimum_type_1() result(assertion)
 
         use Constants_mod, only: RK, IK
@@ -255,7 +255,7 @@ contains
         ! LCOV_EXCL_STOP
 
     end function test_PowellMinimum_type_1
-#endif
+!#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -269,6 +269,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    ! LCOV_EXCL_START
     function getTestFuncRosenBrock2D(ndim,Point) result(testFuncVal)
         use Constants_mod, only: RK, IK
         implicit none
@@ -277,6 +278,7 @@ contains
         real(RK)                    :: testFuncVal
         testFuncVal = exp(-(Point(1)-Point(2))**2 - 2*Point(1)**2) * cos(Point(2)) * sin(2*Point(2))
     end function getTestFuncRosenBrock2D
+    ! LCOV_EXCL_STOP
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
