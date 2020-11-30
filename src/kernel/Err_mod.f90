@@ -188,7 +188,7 @@ contains
 
         end if
 
-        if (returnEnabledDefault) return
+        if (returnEnabledDefault .or. mv_isTestingMode) return
 
 ! LCOV_EXCL_START
 #if defined MPI_ENABLED
