@@ -159,6 +159,7 @@ contains
         !!> Although `successProbFisherTransNormFac` is a vector on input, it is expected to have a length of one at all times.
         !!> This is solely to fullfile the interface restrictions of [PowellMinimum_type](@ref optimization_mod::powellminimum_type).
         pure function getSumDistSq(ndim,successProbFisherTransNormFac) result(sumDistSq)
+            use Statistics_mod, only: getLogProbGeoCyclic
             !use Constants_mod, only: IK, RK
             implicit none
             integer(IK) , intent(in)    :: ndim
