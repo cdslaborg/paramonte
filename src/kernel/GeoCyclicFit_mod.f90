@@ -54,11 +54,11 @@ module GeoCyclicFit_mod
     use Constants_mod, only: IK, RK
     implicit none
 
-    private :: getSumDistSq
 
     character(len=*), parameter :: MODULE_NAME = "@GeoCyclicFit_mod"
 
 #if defined OS_IS_WSL
+    private                     :: getSumDistSq
     integer(IK)                 :: numTrial_WSL         !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
     integer(IK)                 :: maxNumTrial_WSL      !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
     integer(IK) , allocatable   :: SuccessStep_WSL(:)   !< This madness bypasses the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
