@@ -130,8 +130,8 @@ contains
         end if
 
         call getNumRecordInFile(path,numRecord,Err)
-        ! LCOV_EXCL_START
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME // Err%msg
             return
         end if
@@ -144,7 +144,7 @@ contains
             read(fileUnit,"(A)",iostat=Err%stat) record
             if (Err%stat==0) then
                 Contents(irecord)%record = trim(adjustl(record))
-                ! LCOV_EXCL_START
+            ! LCOV_EXCL_START
             elseif (is_iostat_end(iostat)) then
                 Err%occurred = .true.
                 Err%msg =   PROCEDURE_NAME // ": End-of-file error occurred while expecting " // &
@@ -160,13 +160,13 @@ contains
                 Err%msg =   PROCEDURE_NAME // ": Unknown error occurred while reading line number " // &
                             num2str(irecord) // " from file='" // path // "'."
                 return
-                ! LCOV_EXCL_STOP
             end if
+            ! LCOV_EXCL_STOP
         end do
 
         close(fileUnit,iostat=Err%stat,status=closeStatus)
-        ! LCOV_EXCL_START
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // "Error occurred while attempting to close or delete the open file='" // path // "'."
             return
@@ -209,16 +209,16 @@ contains
         ! GFortran 7.3 bug: If file is not open, compiler assumes internal file if `number` is specified, causing runtime error.
 
         inquire( file=filePath, exist=fileExists, opened=fileIsOpen, number=fileUnit, iostat=Err%stat )
-        ! LCOV_EXCL_START
         if (Err%stat/=0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file='" // filePath // "'."
             return
         end if
         ! LCOV_EXCL_STOP
 
-        ! LCOV_EXCL_START
         if (.not.fileExists) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": The input file='" // filePath // "' does not exist."
             return
@@ -226,8 +226,8 @@ contains
         ! LCOV_EXCL_STOP
 
         if (fileIsOpen) close(unit=fileUnit,iostat=Err%stat)
-        ! LCOV_EXCL_START
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open input file='" // filePath // "'."
             return
@@ -235,8 +235,8 @@ contains
         ! LCOV_EXCL_STOP
 
         open(newunit=fileUnit,file=filePath,status="old",iostat=Err%stat)
-        ! LCOV_EXCL_START
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while opening input file='" // filePath // "'."
             return
@@ -253,7 +253,7 @@ contains
                     numRecord = numRecord + 1_IK
                 end if
                 cycle
-            elseif(is_iostat_end(iostat)) then
+            elseif(is_iostat_end(iostat) .or. is_iostat_eor(iostat)) then
                 exit
             ! LCOV_EXCL_START
             else
@@ -264,9 +264,10 @@ contains
             end if
             ! LCOV_EXCL_STOP
         end do
+
         close(fileUnit,iostat=Err%stat)
-        ! LCOV_EXCL_START
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg =   PROCEDURE_NAME // ": Error occurred while attempting to close the open input file='" // &
                         filePath // "' after counting the number of records in file."

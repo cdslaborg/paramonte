@@ -95,7 +95,6 @@ contains
         implicit none
         logical                     :: assertion
         character(*), parameter     :: tab_ref = "!!!!!"
-        character(:), allocatable   :: tab
         type(Decoration_type)       :: Decoration
         Decoration = Decoration_type(tabStr = tab_ref)
         assertion = Decoration%tab == tab_ref
@@ -116,7 +115,6 @@ contains
         implicit none
         logical                     :: assertion
         character(*), parameter     :: symbol_ref = "!!!!!"
-        character(:), allocatable   :: symbol
         type(Decoration_type)       :: Decoration
         Decoration = Decoration_type(symbol = symbol_ref)
         assertion = Decoration%symbol == symbol_ref

@@ -424,7 +424,6 @@ contains
         implicit none
         logical :: assertion
         type(FileList_type) :: FileList
-        integer(IK)         :: i
 
         assertion = .true.
 

@@ -128,7 +128,10 @@ contains
         if (.not. assertion) then
             ! LCOV_EXCL_START
             if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0))")
+                write(Test%outputUnit,"(*(g0))") "OS query failed."
                 write(Test%outputUnit,"(*(g0))") "OS%Err%occurred = ", OS%Err%occurred
+                write(Test%outputUnit,"(*(g0))")
             end if
             return
             ! LCOV_EXCL_STOP
@@ -139,7 +142,10 @@ contains
         if (.not. assertion) then
             ! LCOV_EXCL_START
             if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0))")
+                write(Test%outputUnit,"(*(g0))") "File removal failed.", OS%Err%occurred
                 write(Test%outputUnit,"(*(g0))") "OS%Err%occurred = ", OS%Err%occurred
+                write(Test%outputUnit,"(*(g0))")
             end if
             return
             ! LCOV_EXCL_STOP
@@ -160,8 +166,8 @@ contains
         assertion = assertion .and. FileContents%Line(3)%record==""
         assertion = assertion .and. FileContents%Line(4)%record==""
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "numRecord  : ", num2str(FileContents%numRecord)
             do i = 1,FileContents%numRecord
@@ -234,7 +240,10 @@ contains
         if (.not. assertion) then
             ! LCOV_EXCL_START
             if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0))")
+                write(Test%outputUnit,"(*(g0))") "OS query failed."
                 write(Test%outputUnit,"(*(g0))") "OS%Err%occurred = ", OS%Err%occurred
+                write(Test%outputUnit,"(*(g0))")
             end if
             return
             ! LCOV_EXCL_STOP

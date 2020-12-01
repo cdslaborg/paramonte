@@ -98,6 +98,7 @@ module System_mod
         logical                         :: isBash       = .false.   !< The logical value indicating whether the shell is Unix Bash.
         logical                         :: isPowerShell = .false.   !< The logical value indicating whether the shell is Windows PowerShell.
         logical                         :: isUnix       = .false.   !< The logical value indicating whether the shell is Unix-like.
+        character(:), allocatable       :: slash                    !< The path separator character in the current shell (Windows Shell: "\", Unix-like: "/").
         character(:), allocatable       :: name                     !< The name of or path to the current shell.
         type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) indicating
                                                                     !! whether error has occurred during the query.
@@ -160,9 +161,9 @@ module System_mod
 
     ! cache the OS query result to speed up code
 
-    logical                             :: mv_osCacheEnabled = .false.
-    logical                             :: mv_shCacheEnabled = .false.
-    type(OS_type)                       :: mv_OS
+    logical      , private              :: mv_osCacheActivated = .false.
+    logical      , private              :: mv_shCacheActivated = .false.
+    type(OS_type), private              :: mv_OS
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -218,7 +219,7 @@ contains
         OS%Err%occurred = .false.
         OS%Err%msg = ""
 
-        if (mv_osCacheEnabled) then
+        if (mv_osCacheActivated) then
 
             OS%name         = mv_OS%name
             OS%slash        = mv_OS%slash
@@ -226,13 +227,13 @@ contains
             OS%isDarwin     = mv_OS%isDarwin
             OS%isLinux      = mv_OS%isLinux
 
-            if (mv_shCacheEnabled) then
+            if (mv_shCacheActivated) then
                 OS%Shell    = mv_OS%Shell
             else
-                mv_shCacheEnabled = .true.
+                mv_shCacheActivated = .true.
                 call OS%Shell%query(OS%isWindows)
-                ! LCOV_EXCL_START
                 if (OS%Shell%Err%occurred) then
+                ! LCOV_EXCL_START
                     OS%Err = OS%Shell%Err
                     return
                 end if
@@ -266,8 +267,8 @@ contains
 
         if (allocated(OS%name)) deallocate(OS%name); allocate( character(MAX_OS_NAME_LEN) :: OS%name )
         call getEnvVar( name="OS", value=OS%name, Err=OS%Err )
-        ! LCOV_EXCL_START
         if (OS%Err%occurred) then
+        ! LCOV_EXCL_START
             OS%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type." // NLC // OS%Err%msg
             OS%name = ""
             return
@@ -296,8 +297,8 @@ contains
 
             if (allocated(OS%name)) deallocate(OS%name); allocate( character(MAX_OS_NAME_LEN) :: OS%name )
             call getEnvVar( name="OSTYPE", value=OS%name, Err=OS%Err )
-            ! LCOV_EXCL_START
             if (OS%Err%occurred) then
+            ! LCOV_EXCL_START
                 OS%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type." // NLC // OS%Err%msg
                 OS%name = ""
                 return
@@ -328,8 +329,8 @@ contains
                     integer                     :: fileUnit
                     type(RandomFileName_type)   :: RFN
                     RFN = RandomFileName_type(key="queryOS")
-                    ! LCOV_EXCL_START
                     if (RFN%Err%occurred) then
+                    ! LCOV_EXCL_START
                         OS%Err = RFN%Err
                         OS%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring OS type." // NLC // OS%Err%msg
                         OS%name = ""
@@ -338,8 +339,8 @@ contains
                     ! LCOV_EXCL_STOP
 
                     call executeCmd( command="uname > "//RFN%path, Err=OS%Err )
-                    ! LCOV_EXCL_START
                     if (OS%Err%occurred) then
+                    ! LCOV_EXCL_START
                         OS%Err%msg = PROCEDURE_NAME // ": Error occurred while executing command 'uname > "// RFN%path // "'." // NLC // OS%Err%msg
                         OS%name = ""
                         return
@@ -347,8 +348,8 @@ contains
                     ! LCOV_EXCL_STOP
 
                     open(newunit=fileUnit,file=RFN%path,status="old",iostat=OS%Err%stat)
-                    ! LCOV_EXCL_START
                     if (OS%Err%stat>0) then
+                    ! LCOV_EXCL_START
                         OS%Err%occurred = .true.
                         OS%Err%msg =    PROCEDURE_NAME // ": Unknown error occurred while opening file = '" // RFN%path // "'."
                         OS%name = ""
@@ -358,8 +359,8 @@ contains
 
                     read(fileUnit,*,iostat=OS%Err%stat) OS%name
 
-                    ! LCOV_EXCL_START
                     if ( is_iostat_eor(OS%Err%stat) ) then
+                    ! LCOV_EXCL_START
                         OS%Err%occurred = .true.
                         OS%Err%msg =    PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to read &
                                         &the Operating System's name from file = '" // RFN%path // "'."
@@ -403,8 +404,7 @@ contains
 
 #endif
 
-
-        mv_osCacheEnabled = .true.
+        mv_osCacheActivated = .true.
         mv_OS%name      = OS%name
         mv_OS%slash     = OS%slash
         mv_OS%isWindows = OS%isWindows
@@ -413,13 +413,13 @@ contains
 
         if (shellQueryEnabledDefault) then
 
-            if (mv_shCacheEnabled) then
+            if (mv_shCacheActivated) then
                 OS%Shell    = mv_OS%Shell
             else
-                mv_shCacheEnabled = .true.
+                mv_shCacheActivated = .true.
                 call OS%Shell%query(OS%isWindows)
-                ! LCOV_EXCL_START
                 if (OS%Shell%Err%occurred) then
+                ! LCOV_EXCL_START
                     OS%Err = OS%Shell%Err
                     return
                 end if
@@ -449,11 +449,14 @@ contains
         character(:), allocatable           :: command
         logical                             :: fileExists
 
+        Shell%Err%occurred = .false.
+        Shell%Err%msg = ""
+
         ! create a random output file name
 
         RFN = RandomFileName_type(key="queryShell")
-        ! LCOV_EXCL_START
         if (RFN%Err%occurred) then
+        ! LCOV_EXCL_START
             Shell%Err = RFN%Err
             Shell%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring OS type." // NLC // Shell%Err%msg
             Shell%name = ""
@@ -470,8 +473,8 @@ contains
         command = "echo $0 >" // RFN%path // " 2>&1"
         call executeCmd( command = command, Err = Shell%Err )
         inquire(file = RFN%path, exist = fileExists)
-        ! LCOV_EXCL_START
         if (Shell%Err%occurred .or. .not. fileExists) then
+        ! LCOV_EXCL_START
             Shell%Err%msg = PROCEDURE_NAME // ": Error occurred while executing the Unix command "// command // NLC // Shell%Err%msg
             Shell%name = ""
             return
@@ -481,8 +484,8 @@ contains
         ! read the command output
 
         FileContents = FileContents_type(RFN%path, delEnabled = .true.)
-        ! LCOV_EXCL_START
         if (FileContents%Err%occurred) then
+        ! LCOV_EXCL_START
             Shell%Err%occurred = .true.
             Shell%Err%msg = PROCEDURE_NAME // FileContents%Err%msg
             Shell%name = ""
@@ -507,11 +510,11 @@ contains
 
         if (isWindowsOS) then
 
-            command = "(dir 2>&1 *`|echo CMD >temp.txt);&<# rem #>echo PowerShell >temp.txt 2>&1"
+            command = "(dir 2>&1 *`|echo CMD >"//RFN%path//");&<# rem #>echo PowerShell >"//RFN%path//" 2>&1"
 
             call executeCmd( command = command, Err = Shell%Err )
-            ! LCOV_EXCL_START
             if (Shell%Err%occurred .or. .not. fileExists) then
+            ! LCOV_EXCL_START
                 Shell%Err%msg = PROCEDURE_NAME // ": Error occurred while executing the Windows command "// command // NLC // Shell%Err%msg
                 Shell%name = ""
                 return
@@ -521,8 +524,8 @@ contains
             ! read the command output
 
             FileContents = FileContents_type(RFN%path, delEnabled = .true.)
-            ! LCOV_EXCL_START
             if (FileContents%Err%occurred) then
+            ! LCOV_EXCL_START
                 Shell%Err%occurred = .true.
                 Shell%Err%msg = PROCEDURE_NAME // FileContents%Err%msg
                 Shell%name = ""

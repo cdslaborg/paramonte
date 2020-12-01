@@ -34,4 +34,3 @@
   Test_TranGaus_mod.f90
   main.f90
   !Test_EconomicsToolbox_mod.f90
-!  Test_ParaMonte_mod.f90
