@@ -500,6 +500,7 @@ contains
             Shell%isBash    = index(Shell%name,"bash") > 0
             Shell%isSh      = .false.; if (.not. (Shell%isBash .or. Shell%isZsh .or. Shell%isCsh)) Shell%isSh = index(Shell%name,"sh") > 0
             Shell%isUnix    = (.not. isWindowsOS) .or. Shell%isBash .or. Shell%isZsh .or. Shell%isCsh .or. Shell%isSh
+            if (Shell%isUnix) Shell%slash = "/"
         end if
 
         if (Shell%isUnix) return
@@ -534,8 +535,10 @@ contains
             ! LCOV_EXCL_STOP
 
             if (FileContents%numRecord>0_IK) then
+                Shell%name = trim(adjustl(FileContents%Line(1)%record))
                 Shell%isCMD = index(Shell%name,"CMD") > 0
                 Shell%isPowerShell = index(Shell%name,"PowerShell") > 0
+                if (Shell%isPowerShell .or. Shell%isCMD) Shell%slash = "\"
             end if
 
         end if
