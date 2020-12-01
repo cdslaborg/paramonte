@@ -81,7 +81,7 @@ contains
     !> \return
     !> `logdvdz` : The natural logarithm of the differential comoving volume of cosmos.
     pure function getlogdvdz(zplus1,logzplus1,twiceLogLumDisMpc) result(logdvdz)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getlogdvdz
 #endif
         use Constants_mod, only: RK, PI
@@ -110,7 +110,7 @@ contains
     !> \remark
     !> The distance is calculated according to approximate algorithm of Wickramasinghe & Okwatta (2010).
     pure function getLogLumDisWicMpc(zplus1) result(logLumDisWicMpc)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogLumDisWicMpc
 #endif
         use Constants_mod, only: RK
@@ -151,7 +151,7 @@ contains
     !> except for the fact that it return the natural value, as opposed to the natural logarithm.
     !> It is kept only for legacy reasons and should not be used in new code.
     pure function ldiswickram(zplus1)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: ldiswickram
 #endif
         use Constants_mod, only: RK
@@ -181,8 +181,6 @@ contains
     !> \remark
     !> The rest of the required parameters are taken from the module:
     !> - `HUBBLE_TIME_GYRS` : The Hubble time in units of Gyrs (Giga Years). It should be a number close to 13.8 Gyrs (Liddle, 2003, Page 57).
-    !> - `OMEGA_DE` : the dark energy density,
-    !> - `OMEGA_DM` : the dark matter density.
     !>
     !> \remark
     !> The integrations are performed using the Romberg integration method.
@@ -190,7 +188,7 @@ contains
     !> @author
     !> Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
     function getLookBackTime(zplus1,maxRelativeError,nRefinement) result(lookBackTime)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLookBackTime
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -208,7 +206,7 @@ contains
         maxRelativeErrorDefault = 1.e-6_RK; if (present(maxRelativeError)) maxRelativeErrorDefault = maxRelativeError
         nRefinementDefault = 7_IK; if (present(nRefinement)) nRefinementDefault = nRefinement
 
-        call doQuadRombClosed   ( getFunc           = getIntegrand              &
+        call doQuadRombClosed   ( getFunc           = getLookBackTimeDensity    &
                                 , lowerLim          = ZPLUS1_MIN                &
                                 , upperLim          = zplus1                    &
                                 , maxRelativeError  = maxRelativeErrorDefault   &
@@ -224,17 +222,36 @@ contains
         end if
         lookBackTime = HUBBLE_TIME_GYRS * lookBackTime
 
-    contains
-
-        function getIntegrand(zplus1) result(integrand)
-            use Constants_mod, only: RK
-            implicit none
-            real(RK), intent(in)    :: zplus1
-            real(RK)                :: integrand
-            integrand = 1._RK / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )
-        end function getIntegrand
-
     end function getLookBackTime
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return the **differential** (w.r.t. `z`) cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters.
+    !>
+    !> @param[in]   zplus1              : The redshift plus 1.
+    !> \return
+    !> `lookBackTimeDnesity` : The cosmological lookback time in GYrs at the given redshift.
+    !>
+    !> \remark
+    !> The rest of the required parameters are taken from the module:
+    !> - `OMEGA_DE` : the dark energy density,
+    !> - `OMEGA_DM` : the dark matter density.
+    !>
+    !> \remark
+    !> This function could have become an internal function within [getLookBackTime](@ref getlookbacktime).
+    !> However, the library yields segmentation fault error when compiled and run on the Windows Subsystem 
+    !> for Linux Ubuntu with GFortran. As such, it is implemented as an independent function.
+    !>
+    !> @author
+    !> Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
+    pure function getLookBackTimeDensity(zplus1) result(lookBackTimeDnesity)
+        use Constants_mod, only: RK
+        implicit none
+        real(RK), intent(in)    :: zplus1
+        real(RK)                :: lookBackTimeDnesity
+        lookBackTimeDnesity = 1._RK / ( zplus1 * sqrt(OMEGA_DM * zplus1**3 + OMEGA_DE) )
+    end function getLookBackTimeDensity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -258,7 +275,7 @@ contains
     !> @author
     !> Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
     pure function getUniverseAgeDerivative(zplus1) result(universeAgeDerivative)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUniverseAgeDerivative
 #endif
         use Constants_mod, only: RK

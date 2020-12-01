@@ -40,17 +40,17 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [TimerCPU_mod](@ref timercpu_mod).
+!>  \brief This module contains tests of the module [Constants_mod](@ref constants_mod).
 !>  @author Amir Shahmoradi
 
-module Test_TimerCPU_mod
+module Test_Constants_mod
 
-    use TimerCPU_mod
+    use Constants_mod
     use Test_mod, only: Test_type
     implicit none
 
     private
-    public :: test_TimerCPU
+    public :: test_Constants
 
     type(Test_type) :: Test
 
@@ -60,59 +60,32 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_TimerCPU()
-
+    subroutine test_Constants()
         implicit none
-
         Test = Test_type(moduleName=MODULE_NAME)
-        call Test%run(test_TimerCPU_type_1, "test_TimerCPU_type_1")
+        call Test%run(test_getPosInf_RK_1,"test_getPosInf_RK_1")
+        call Test%run(test_getNegInf_RK_1,"test_getNegInf_RK_1")
         call Test%finalize()
-
-    end subroutine test_TimerCPU
+    end subroutine test_Constants
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_TimerCPU_type_1() result(assertion)
-
-        use Constants_mod, only: IK, RK
-        use System_mod, only: sleep
+    function test_getPosInf_RK_1() result(assertion)
+        use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_positive_inf
         implicit none
-        real(RK), parameter :: seconds = 0.05_RK
         logical             :: assertion
-        type(TimerCPU_type) :: TimerCPU
-
-        assertion = .true.
-
-        ! Note: On macOS the TimerCPU tests fail.
-        ! The CPU timer is neither available on all processors nor is 
-        ! essential for the successful build and run of the ParaMonte library.
-        ! Therefore, it is only tested in code coverage.
-
-#if defined CODECOV_ENABLED
-        TimerCPU = TimerCPU_type()
-        assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
-        call sleep(seconds=seconds,Err=TimerCPU%Err)
-        assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
-        call TimerCPU%toc()
-        assertion = assertion .and. TimerCPU%Time%total > 0.9_RK * seconds
-        assertion = assertion .and. TimerCPU%Time%delta > 0.9_RK * seconds
-        assertion = assertion .and. TimerCPU%Time%start < TimerCPU%Time%stop
-
-        ! LCOV_EXCL_START
-        if (Test%isDebugMode .and. .not. assertion) then
-            write(Test%outputUnit,"(*(g0))")
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%start : ", TimerCPU%Time%start
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%stop  : ", TimerCPU%Time%stop
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%delta : ", TimerCPU%Time%delta
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%total : ", TimerCPU%Time%total
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%unit  : ", TimerCPU%Time%unit
-            write(Test%outputUnit,"(*(g0))")
-        end if
-        ! LCOV_EXCL_STOP
-#endif
-
-    end function test_TimerCPU_type_1
+        assertion = getPosInf_RK() == ieee_value(0._RK, ieee_positive_inf)
+    end function test_getPosInf_RK_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_TimerCPU_mod ! LCOV_EXCL_LINE
+    function test_getNegInf_RK_1() result(assertion)
+        use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_negative_inf
+        implicit none
+        logical             :: assertion
+        assertion = getNegInf_RK() == ieee_value(0._RK, ieee_negative_inf)
+    end function test_getNegInf_RK_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+end module Test_Constants_mod

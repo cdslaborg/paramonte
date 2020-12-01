@@ -72,7 +72,7 @@ contains
     !> Returns in the lower triangle of `PosDefMat`, the Cholesky factorization L of \f$\texttt{PosDefMat} = L.L^T\f$.
     !> On input, the upper upper triangle of `PosDefMat` should be given, which remains intact on output.
     pure subroutine getCholeskyFactor(nd,PosDefMat,Diagonal)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCholeskyFactor
 #endif
         use Constants_mod, only: RK, IK
@@ -108,7 +108,7 @@ contains
     !> `PosDefMat` and `Diagonal` are the output of subroutine [getCholeskyFactor](@ref getcholeskyfactor)
     !> (i.g., only the lower triangle of `PosDefMat` is used).
     subroutine solveLinearPosDefSystem(nd,PosDefMat,Diagonal,Intercept,InputSolution)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: solveLinearPosDefSystem
 #endif
         use Constants_mod, only: RK, IK
@@ -147,10 +147,10 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
     pure subroutine getInvPosDefMatSqrtDet(nd,MatInvMat,sqrtDetInvPosDefMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvPosDefMatSqrtDet
 #endif
-        use Constants_mod, only: RK, IK
+        use Constants_mod, only: RK, IK ! LCOV_EXCL_LINE
         implicit none
         integer(IK), intent(in)    :: nd
         real(RK)   , intent(inout) :: MatInvMat(nd,nd)           ! input: upper half is covariance matrix, output: inverse matrix
@@ -212,7 +212,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
     pure function getInvMatFromCholFac(nd,CholeskyLower,Diagonal) result(InvMatFromCholFac)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMatFromCholFac
 #endif
         use Constants_mod, only: RK, IK
@@ -281,7 +281,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
     pure function getInvPosDefMat(nd,PosDefMat) result(InvPosDefMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvPosDefMat
 #endif
         use Constants_mod, only: RK, IK
@@ -346,7 +346,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 18, 2009, 1:54 AM, MTU
     subroutine getInvMatDet(nd,MatrixLU,InverseMatrix,detInvMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMatDet
 #endif
         use Constants_mod, only: RK, IK
@@ -354,8 +354,8 @@ contains
         integer(IK), intent(in)    :: nd
         real(RK)   , intent(inout) :: MatrixLU(nd,nd) ! On input it is the matrix, on output it is the LU decomposition.
         real(RK)   , intent(out)   :: InverseMatrix(nd,nd)
-        real(RK)   , intent(out)   :: detInvMat   ! determinant of the inverse matrix
-        integer(IK)                :: i,j,Permutation(nd)
+        real(RK)   , intent(out)   :: detInvMat
+        integer(IK)                :: i,j,Permutation(nd) ! LCOV_EXCL_LINE
         do i = 1,nd
             do j = 1,nd
                 InverseMatrix(i,j) = 0._RK
@@ -390,7 +390,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 8, 2017, 1:54 PM, MTU
     function getInvMat(nd,Matrix) result(InverseMatrix)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMat
 #endif
         use Constants_mod, only: RK, IK
@@ -435,7 +435,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 8, 2017, 1:54 PM, MTU
     subroutine solveLinearSystem(nd, LU, Permutation, InputSolution)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: solveLinearSystem
 #endif
         use Constants_mod, only: RK, IK
@@ -477,7 +477,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:43 PM, ICES, UT Austin
     subroutine getLU(nd,MatrixLU,Permutation,parity) ! ,errorOccurred)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLU
 #endif
         use Constants_mod, only: RK, IK
@@ -498,10 +498,12 @@ contains
                 if ( abs(MatrixLU(i,j)) > aamax ) aamax = abs( MatrixLU(i,j) )
             end do
             if (aamax == 0._RK) then
+            ! LCOV_EXCL_START
                 write(*,*) "Statistics@getLU() failed. Singular matrix detected."
                 error stop
                 !errorOccurred = .true.
                 !return
+            ! LCOV_EXCL_STOP
             end if
             vv(i) = 1._RK/aamax
         end do
@@ -559,7 +561,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 20, 2009, 10:56 PM, MTU
     subroutine multiplyMatrix(A,rowsA,colsA,B,rowsB,colsB,C)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: multiplyMatrix
 #endif
         use Constants_mod, only: RK, IK
@@ -571,13 +573,15 @@ contains
         real(RK)   , intent(in)  :: B(rowsB,colsB)
         real(RK)   , intent(out) :: C(rowsA,colsB)
         integer(IK)              :: i,j,k,rowsC,colsC !Counters
-        if (colsA /= rowsB) then
+        if (colsA == rowsB) then
+            rowsC = rowsA
+            colsC = colsB
+        ! LCOV_EXCL_START
+        else
             write(*,*) 'Matrix@multiplyMatrix() failed. dimensions of matrices do not match.'
             stop
             !call abortProgram( output_unit , 1 , 1 , 'Statistics@multiplyMatrix() failed. dimensions of matrices do not match.' )
-        else
-            rowsC = rowsA
-            colsC = colsB
+        ! LCOV_EXCL_STOP
         end if
         ! Initialize product matrix to 0
         do i = 1, rowsC
@@ -609,7 +613,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 18, 2009, 4:10 PM, MTU
     function getDeterminant(nd,Matrix) result(determinant)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getDeterminant
 #endif
         use Constants_mod, only: RK, IK
@@ -643,7 +647,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     function getSqrtDetPosDefMat(nd,PosDefMat) result(sqrtDetPosDefMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtDetPosDefMat
 #endif
         use Constants_mod, only: RK, IK
@@ -680,7 +684,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure subroutine getLogSqrtDetPosDefMat(nd,PosDefMat,logSqrtDetPosDefMat,failed)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSqrtDetPosDefMat
 #endif
         use Constants_mod, only: RK, IK
@@ -723,7 +727,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure logical function isPosDef(nd,Matrix)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: isPosDef
 #endif
         use Constants_mod, only: RK, IK
@@ -768,7 +772,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure function getOuterProd(Vector1,Vector2) result(OuterProd)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getOuterProd
 #endif
         use Constants_mod, only: RK, IK
@@ -814,7 +818,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure function sortPosDefMat(rank,PosDefMatUpper,lenColIndx,ColIndx,ColIndxMap) result(SortedPosDefMatUpper)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sortPosDefMat
 #endif
         use Constants_mod, only: RK, IK
@@ -898,10 +902,10 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure subroutine getRegresCoef(rankPDM,rankS11,rankS22,PosDefMat,RegresCoefMat,SchurComplement)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRegresCoef
 #endif
-        use Constants_mod, only: RK, IK
+        use Constants_mod, only: RK, IK ! LCOV_EXCL_LINE
         implicit none
         integer(IK), intent(in)             :: rankPDM, rankS11, rankS22
         real(RK), intent(in)                :: PosDefMat(rankPDM,rankPDM)
@@ -928,4 +932,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Matrix_mod
+end module Matrix_mod ! LCOV_EXCL_LINE

@@ -61,8 +61,8 @@ class ParaDRAM(ParaMonteSampler):
     sampler class of the ParaMonte library. The ``ParaDRAM`` class is a 
     child of the ``ParaMonteSampler`` class.
 
-    All ParaDRAM class attributes (input arguments to the ParaDRAM constructor)
-    are optional and all attributes can be set after a ParaDRAM instance
+    All ParaDRAM class attributes are optional and all 
+    attributes can be set after a ParaDRAM instance
     is returned by the constructor.
 
     Once you set the optional attributes to your desired values,
@@ -83,8 +83,8 @@ class ParaDRAM(ParaMonteSampler):
         import paramonte as pm
         import numpy as np
         def getLogFunc(point):
-            # return the log of the standard multivariate
-            # Normal density function with ndim dimensions
+            # return the log of a multivariate Normal 
+            # density function with ndim dimensions
             return -0.5 * np.sum( point**2 )
         pmpd = pm.ParaDRAM()
         pmpd.runSampler ( ndim = 4 # assume 4-dimensional objective function

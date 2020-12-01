@@ -98,7 +98,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function constructTimerCPU() result(TimerCPU)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructTimerCPU
 #endif
         use Constants_mod, only: RK
@@ -128,7 +128,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine setTicCPU(TimerCPU)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setTicCPU
 #endif
         implicit none
@@ -156,7 +156,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine setTocCPU(TimerCPU)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setTocCPU
 #endif
         use Constants_mod, only: RK
@@ -172,4 +172,4 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module TimerCPU_mod
+end module TimerCPU_mod ! LCOV_EXCL_LINE

@@ -45,23 +45,14 @@
 
 module Statistics_mod
 
-    use Optimization_mod, only: PowellMinimum_type
     use Constants_mod, only: RK, IK
 
     implicit none
 
-!logical, save :: paradramPrintEnabled = .false.
-!logical, save :: paradisePrintEnabled = .false.
+    !logical, save :: paradramPrintEnabled = .false.
+    !logical, save :: paradisePrintEnabled = .false.
 
     character(len=*), parameter :: MODULE_NAME = "@Statistics_mod"
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    type :: GeoCyclicLogPDF_type
-        type(PowellMinimum_type) :: PowellMinimum
-    contains
-        procedure, nopass :: fit => fitGeoCyclicLogPDF
-    end type GeoCyclicLogPDF_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -178,7 +169,7 @@ contains
     !> `mahalSq` : The Mahalanobis distance squared of the point from
     !> the sample characterized by the input `MeanVec` and `InvCovMat`.
     pure function getMahalSqSP_RK(nd,MeanVec,InvCovMat,Point) result(mahalSq)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMahalSqSP_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -212,7 +203,7 @@ contains
     !> For the sake of preserving the purity and computational efficiency of the function,
     !> if the computation fails at any stage, the first element of output will be returned negative.
     pure function getMahalSqMP_RK(nd,np,MeanVec,InvCovMat,Point) result(MahalSq)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMahalSqMP_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -248,7 +239,7 @@ contains
     !> `mahalSq` : The Mahalanobis distance squared of the point from
     !> the sample characterized by the input `MeanVec` and `InvCovMat`.
     pure function getMahalSqSP_CK(nd,MeanVec,InvCovMat,Point) result(mahalSq)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMahalSqSP_CK
 #endif
         use Constants_mod, only: IK, RK, CK
@@ -280,7 +271,7 @@ contains
     !> For the sake of preserving the purity and computational efficiency of the function,
     !> if the computation fails at any stage, the first element of output will be returned negative.
     pure function getMahalSqMP_CK(nd,np,MeanVec,InvCovMat,Point) result(MahalSq)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMahalSqMP_CK
 #endif
         use Constants_mod, only: IK, RK, CK
@@ -307,7 +298,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getLogProbNormSP_RK(mean,inverseVariance,logSqrtInverseVariance,point) result(logProbNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbNormSP_RK
 #endif
         use Constants_mod, only: RK, LOGINVSQRT2PI
@@ -320,7 +311,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getLogProbNormMP_RK(np,mean,inverseVariance,logSqrtInverseVariance,Point) result(logProbNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbNormMP_RK
 #endif
         use Constants_mod, only: LOGINVSQRT2PI
@@ -335,7 +326,7 @@ contains
 
     ! NOTE: if MahalSq computation fails, output probability will be returned as NullVal%RK from module Constant_mod.
     pure function getLogProbMVNSP_RK(nd,MeanVec,InvCovMat,logSqrtDetInvCovMat,Point) result(logProbNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVNSP_RK
 #endif
         use Constants_mod, only: LOGINVSQRT2PI, NullVal
@@ -358,7 +349,7 @@ contains
 
     ! NOTE: if MahalSq computation fails, output probability will be returned as NullVal%RK from module Constant_mod.
     pure function getLogProbMVNMP_RK(nd,np,MeanVec,InvCovMat,logSqrtDetInvCovMat,Point) result(logProbNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVNMP_RK
 #endif
         use Constants_mod, only: LOGINVSQRT2PI, NullVal
@@ -380,7 +371,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getLogProbNormSP_CK(mean,inverseVariance,logSqrtInverseVariance,point) result(logProbNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbNormSP_CK
 #endif
         use Constants_mod, only: RK, CK, LOGINVSQRT2PI
@@ -393,7 +384,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getLogProbNormMP_CK(np,mean,inverseVariance,logSqrtInverseVariance,Point) result(logProbNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbNormMP_CK
 #endif
         use Constants_mod, only: IK, RK, CK, LOGINVSQRT2PI
@@ -407,7 +398,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getLogProbMVNSP_CK(nd,MeanVec,InvCovMat,logSqrtDetInvCovMat,Point) result(logProbMVN)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVNSP_CK
 #endif
         use Constants_mod, only: IK, RK, CK, LOGINVSQRT2PI, NullVal
@@ -429,7 +420,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getLogProbMVNMP_CK(nd,np,MeanVec,InvCovMat,logSqrtDetInvCovMat,Point) result(logProbMVN)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVNMP_CK
 #endif
         use Constants_mod, only: IK, RK, CK, LOGINVSQRT2PI, NullVal
@@ -456,7 +447,7 @@ contains
     ! SDSP stands for Single-Dimensional Gaussian mixture with Single Point input
     ! For a proper probability normalization, the sum of the amplitudes must equal one.
     function getLogProbMixNormSP_RK(nmode,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,point) result(logProbMixNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMixNormSP_RK
 #endif
         use Constants_mod, only: IK, RK, LOGTINY_RK
@@ -484,7 +475,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   function getLogProbMixNormMP_RK(nmode,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point) result(logProbMixNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMixNormMP_RK
 #endif
         use Constants_mod, only: IK, RK, LOGTINY_RK
@@ -516,7 +507,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getLogProbMixMVNSP_RK(nmode,nd,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point) result(logProbMixMVN)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMixMVNSP_RK
 #endif
         use Constants_mod, only: IK, RK, LOGTINY_RK
@@ -544,7 +535,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   function getLogProbMixMVNMP_RK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point) result(logProbMixMVN)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMixMVNMP_RK
 #endif
         use Constants_mod, only: IK, RK, LOGTINY_RK
@@ -578,7 +569,7 @@ contains
 
     ! SDSP stands for 1-dimensional Gaussian mixture with scalar input point
     function getLogProbMixNormSP_CK(nmode,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,point) result(logProbMixNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMixNormSP_CK
 #endif
         use Constants_mod, only: IK, RK, CK, LOGTINY_RK
@@ -606,7 +597,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getLogProbMixNormMP_CK(nmode,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point) result(logProbMixNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMixNormMP_CK
 #endif
         use Constants_mod, only: IK, RK, CK, LOGTINY_RK
@@ -638,7 +629,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   function getLogProbMixMVNSP_CK(nmode,nd,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point) result(logProbMixMVN)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMixMVNSP_CK
 #endif
         use Constants_mod, only: IK, RK, CK, LOGTINY_RK
@@ -666,7 +657,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function getLogProbMixMVNMP_CK(nmode,nd,np,LogAmplitude,MeanVec,InvCovMat,LogSqrtDetInvCovMat,Point) result(logProbMixMVN)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMixMVNMP_CK
 #endif
         use Constants_mod, only: IK, RK, CK, LOGTINY_RK
@@ -720,7 +711,7 @@ contains
     !> \return
     !> `Mean` : The output mean vector of length `nd`.
     pure function getMean_2D(nd,np,Point,Weight) result(Mean)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMean_2D
 #endif
         ! the implementation for one-dimension is very concise and nice: mean = sum(Weight*Point) / sum(Weight)
@@ -762,7 +753,7 @@ contains
     !> \remark
     !> Note the difference in the shape of the input `Point` vs. the output `NormData`.
     pure function getNormData_2D(nd,np,Mean,Point) result(NormData)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormData_2D
 #endif
         implicit none
@@ -794,7 +785,7 @@ contains
     !> \remark
     !> Note that np must be large enough to get a meaningful answer.
     pure function normalizeWeightedData_2D(nd, np, Data, Weight, tenabled) result(NormData)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: normalize
 #endif
         use Constants_mod, only: IK, RK
@@ -867,7 +858,7 @@ contains
     !> ```
     !> But the above concise version will be slightly slower as it involves three loops instead of two.
     pure function getVariance_1D(np,mean,Point,Weight,sumWeight) result(variance)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getVariance_1D
 #endif
         implicit none
@@ -905,7 +896,7 @@ contains
     !> \return
     !> `Variance` : The vector of length `nd` of the variances of the input sample.
     pure function getVariance_2D(nd,np,Mean,Point,Weight) result(Variance)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getVariance_2D
 #endif
         ! returns the variance of each row in Point weighted by the corresponding Weight if provided
@@ -951,7 +942,7 @@ contains
     !> \todo
     !> The efficiency of this code can be further improved.
     subroutine getSamCholFac(nd,np,Mean,Point,CholeskyLower,Diagonal)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCholFac
 #endif
         use Matrix_mod, only: getCholeskyFactor
@@ -1013,7 +1004,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine getSamCovMean(np,nd,Point,CovMat,Mean,MahalSq,InvCovMat,sqrtDetInvCovMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCovMean
 #endif
         use Matrix_mod, only: getInvPosDefMatSqrtDet
@@ -1088,7 +1079,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine getSamCovMeanTrans(np,nd,Point,CovMat,Mean,MahalSq,InvCovMat,sqrtDetInvCovMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCovMeanTrans
 #endif
 
@@ -1169,7 +1160,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine getSamCovUpperMeanTrans(np,nd,Point,CovMatUpper,Mean)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSamCovUpperMeanTrans
 #endif
         use Matrix_mod, only: getInvPosDefMatSqrtDet
@@ -1230,7 +1221,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     subroutine getWeiSamCovUppMeanTrans(np,sumWeight,nd,Point,Weight,CovMatUpper,Mean)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getWeiSamCovUppMeanTrans
 #endif
 
@@ -1298,7 +1289,7 @@ contains
     ! See also: https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Covariance
     ! See also: https://stats.stackexchange.com/questions/43159/how-to-calculate-pooled-variance-of-two-groups-given-known-group-variances-mean
     subroutine mergeMeanCov(nd,npA,MeanVecA,CovMatA,npB,MeanVecB,CovMatB,MeanVecAB,CovMatAB)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: mergeMeanCov
 #endif
         implicit none
@@ -1355,7 +1346,7 @@ contains
 !    !> \author
 !    !> Amir Shahmoradi, Nov 24, 2020, 4:19 AM, Dallas, TX
 !    subroutine mergeMeanCovUpperSlow(nd,npA,MeanVecA,CovMatUpperA,npB,MeanVecB,CovMatUpperB,MeanVecAB,CovMatUpperAB)
-!#if defined DLL_ENABLED && !defined CFI_ENABLED
+!#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
 !        !DEC$ ATTRIBUTES DLLEXPORT :: mergeMeanCovUpperSlow
 !#endif
 !        implicit none
@@ -1417,7 +1408,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Nov 24, 2020, 4:19 AM, Dallas, TX
     subroutine mergeMeanCovUpper(nd,npA,MeanVecA,CovMatUpperA,npB,MeanVecB,CovMatUpperB,MeanVecAB,CovMatUpperAB)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: mergeMeanCovUpper
 #endif
         implicit none
@@ -1485,7 +1476,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Nov 25, 2020, 1:00 AM, Dallas, TX
     subroutine mergeMeanCovUpperDense(nd,npA,MeanVecA,CovMatUpperA,npB,MeanVecB,CovMatUpperB)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: mergeMeanCovUpperTest
 #endif
         implicit none
@@ -1540,7 +1531,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     function getRandGaus() result(randGaus)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandGaus
 #endif
 
@@ -1602,7 +1593,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     function getRandNorm(mean,std) result(randNorm)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandNorm
 #endif
         implicit none
@@ -1625,7 +1616,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     function getRandLogn(mean,std) result(randLogn)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandLogn
 #endif
         implicit none
@@ -1648,7 +1639,7 @@ contains
     ! USES choldc.f90, getRandGaus.f90
     !> Amir Shahmoradi, March 22, 2012, 2:21 PM, IFS, UTEXAS
     subroutine getMVNDev(nd,MeanVec,CovMat,X)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMVNDev
 #endif
 
@@ -1689,7 +1680,7 @@ contains
     ! USES getCholeskyFactor.f90, getRandGaus.f90
     !> Amir Shahmoradi, April 25, 2016, 2:21 PM, IFS, UTEXAS
     subroutine getMVUDev(nd,MeanVec,CovMat,X)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getMVUDev
 #endif
 
@@ -1746,7 +1737,7 @@ contains
     !> \author
     !> Amir Shahmoradi, April 23, 2017, 12:36 AM, ICES, UTEXAS
     function getRandMVN(nd,MeanVec,CholeskyLower,Diagonal) result(RandMVN)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandMVN
 #endif
         implicit none
@@ -1803,7 +1794,7 @@ contains
     !> \author
     !> Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
     function getRandMVU(nd,MeanVec,CholeskyLower,Diagonal) result(RandMVU)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandMVU
 #endif
         implicit none
@@ -1855,7 +1846,7 @@ contains
     !> \author
     !> Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
     pure function isInsideEllipsoid(nd,NormedPoint,InvRepMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: isInsideEllipsoid
 #endif
         use Math_mod, only: getLogVolEllipsoid
@@ -1884,7 +1875,7 @@ contains
     !> \author
     !> Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
     pure function getLogProbMVU(nd,logSqrtDetCovMat) result(logProbMVU)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbMVU
 #endif
         use Math_mod, only: getLogVolEllipsoid
@@ -1924,7 +1915,7 @@ contains
     !> \author
     !> Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, UTEXAS
     function getRandPointOnEllipsoid(nd,MeanVec,CholeskyLower,Diagonal) result(RandPointOnEllipsoid)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandPointOnEllipsoid
 #endif
         implicit none
@@ -1966,7 +1957,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getLogProbLognSP(logMean,inverseVariance,logSqrtInverseVariance,logPoint) result(logProbLogn)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbLognSP
 #endif
         use Constants_mod, only: LOGINVSQRT2PI
@@ -1993,7 +1984,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getLogProbLognMP(np,logMean,inverseVariance,logSqrtInverseVariance,LogPoint) result(logProbLogn)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbLognMP
 #endif
         use Constants_mod, only: LOGINVSQRT2PI
@@ -2028,7 +2019,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandRealLecuyer(idum) result(randRealLecuyer)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandRealLecuyer
 #endif
         implicit none
@@ -2090,7 +2081,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandIntLecuyer(lowerBound,upperBound,idum)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandIntLecuyer
 #endif
         implicit none
@@ -2114,7 +2105,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandInt(lowerBound,upperBound) result(randInt)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandInt
 #endif
         implicit none
@@ -2140,7 +2131,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandUniform(lowerBound,upperBound) result(randUniform)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandUniform
 #endif
         implicit none
@@ -2166,7 +2157,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandGamma(alpha) result(randGamma)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandGamma
 #endif
         implicit none
@@ -2218,7 +2209,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandGammaIntShape(alpha) result(randGamma)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandGammaIntShape
 #endif
         implicit none
@@ -2267,7 +2258,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandBeta(alpha,beta) result(randBeta)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandBeta
 #endif
         implicit none
@@ -2298,7 +2289,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandExpWithInvMean(invMean) result(randExp)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandExpWithInvMean
 #endif
         implicit none
@@ -2319,7 +2310,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandExp() result(randExp)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandExp
 #endif
         implicit none
@@ -2349,7 +2340,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandCorMat(nd,eta) result(RandCorMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandCorMat
 #endif
         use Matrix_mod, only: getCholeskyFactor
@@ -2520,7 +2511,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getRandCorMatRejection(nd,minRho,maxRho) result(RandCorMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandCorMatRejection
 #endif
 
@@ -2571,7 +2562,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getCorMatUpperFromCovMatUpper(nd,CovMatUpper) result(CorMatUpper)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorMatUpperFromCovMatUpper
 #endif
         implicit none
@@ -2603,7 +2594,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getCovMatUpperFromCorMatUpper(nd,StdVec,CorMatUpper) result(CovMatUpper)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMatUpperFromCorMatUpper
 #endif
         implicit none
@@ -2633,7 +2624,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getCovMatUpperFromCorMatLower(nd,StdVec,CorMatLower) result(CovMatUpper)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMatUpperFromCorMatLower
 #endif
         implicit none
@@ -2664,7 +2655,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getCovMatLowerFromCorMatUpper(nd,StdVec,CorMatUpper) result(CovMatLower)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMatLowerFromCorMatUpper
 #endif
         implicit none
@@ -2695,7 +2686,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getCovMatLowerFromCorMatLower(nd,StdVec,CorMatLower) result(CovMatLower)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMatLowerFromCorMatLower
 #endif
         implicit none
@@ -2726,7 +2717,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getCovMatFromCorMatUpper(nd,StdVec,CorMatUpper) result(CovMatFull)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMatFromCorMatUpper
 #endif
         implicit none
@@ -2764,7 +2755,7 @@ contains
 !    !> \author
 !    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
 !    function getGeoLogPDF_old(successProb,logPdfPrecision,minSeqLen,seqLen) result(GeoLogPDF)
-!#if defined DLL_ENABLED && !defined CFI_ENABLED
+!#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getGeoLogPDF_old
 !#endif
 !        use Constants_mod, only: IK, RK
@@ -2825,68 +2816,6 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-!    !> \brief
-!    !> Return a fit of the Geometric distribution PDF to the input natural logarithm of a sequence of Counts,
-!    !> the `i`th element of which represents the number of successes after `SuccessStep(i)` tries in a Bernoulli trail.
-!    !>
-!    !> \param[in]   numTrial    :   The number of trials. The length of the input vector `LogCount`.
-!    !> \param[in]   SuccessStep :   The vector of trials of length `numTrial` at which the first success happens.
-!    !> \param[in]   LogCount    :   A vector of real values representing the natural logarithms of the counts
-!    !>                              of success at each Bernoulli trial, sequentially, from `1` to `numTrial`.
-!    !>
-!    !> \return
-!    !> `PowellMinimum`  :   An object of class [PowellMinimum_type](@ref optimization_mod::powellminimum_type) containing
-!    !>                      the best-fit successProb and the normalization constant of the fit in the vector component `xmin`.
-!    !>
-!    !> \author
-!    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
-!    function fitGeoLogPDF_old(numTrial, SuccessStep, LogCount) result(PowellMinimum)
-!#if defined DLL_ENABLED && !defined CFI_ENABLED
-!        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF_old
-!#endif
-!        use Optimization_mod, only: PowellMinimum_type
-!        use Constants_mod, only: IK, RK, POSINF_RK, NEGINF_RK
-!        implicit none
-!        integer(IK) , intent(in)    :: numTrial
-!        integer(IK) , intent(in)    :: SuccessStep(numTrial)
-!        real(RK)    , intent(in)    :: LogCount(numTrial)
-!        type(PowellMinimum_type)    :: PowellMinimum
-!
-!        real(RK)                    :: BestFitSuccessProbNormFac(2) ! vector of the two parameters
-!        real(RK)    , parameter     :: SUCCESS_PROB_INIT_GUESS = 0.23_RK
-!        real(RK)    , parameter     :: FISHER_TRANS_SUCCESS_PROB_INIT_GUESS = atanh(2*(SUCCESS_PROB_INIT_GUESS - 0.5_RK))
-!
-!        ! do Fisher transformation to make the limits infinity
-!        BestFitSuccessProbNormFac = [FISHER_TRANS_SUCCESS_PROB_INIT_GUESS, LogCount(1)]
-!
-!        PowellMinimum = PowellMinimum_type  ( ndim = 2_IK &
-!                                            , getFuncMD = getSumDistSq &
-!                                            , StartVec = BestFitSuccessProbNormFac &
-!                                            )
-!        if (PowellMinimum%Err%occurred) return
-!        PowellMinimum%xmin(1) = 0.5_RK * tanh(PowellMinimum%xmin(1)) + 0.5_RK ! reverse Fisher-transform
-!
-!    contains
-!
-!        function getSumDistSq(ndim,successProbFisherTransNormFac) result(sumDistSq)
-!            !use Constants_mod, only: IK, RK
-!            implicit none
-!            integer(IK) , intent(in)    :: ndim
-!            real(RK)    , intent(in)    :: successProbFisherTransNormFac(ndim)
-!            real(RK)                    :: sumDistSq, successProb
-!            successProb = 0.5_RK*tanh(successProbFisherTransNormFac(1)) + 0.5_RK ! reverse Fisher-transform
-!            !sumDistSq = sum( (LogCount - getGeoLogPDF(successProb=successProb,seqLen=numTrial) - successProbFisherTransNormFac(2) )**2 )
-!            sumDistSq = sum(    ( LogCount &
-!                                - numTrial * successProbFisherTransNormFac(2) &
-!                                - getLogProbGeo(numTrial = numTrial, SuccessStep = SuccessStep, successProb = successProb) &
-!                                )**2 &
-!                            )
-!        end function getSumDistSq
-!
-!    end function fitGeoLogPDF_old
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
     !> \brief
     !> Compute the natural logarithm of the Geometric distribution PDF of a limited range of Bernoulli trials,
     !> starting at index `1` up to `maxNumTrial`. In other words, upon reaching the trial `maxNumTrial`,
@@ -2911,7 +2840,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getLogProbGeoCyclic(successProb,maxNumTrial,numTrial,SuccessStep) result(LogProbGeoCyclic)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogProbGeoCyclic
 #endif
         use Constants_mod, only: IK, RK, NEGLOGINF_RK
@@ -2946,89 +2875,6 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return a fit of the Cyclic Geometric distribution PDF to the input natural logarithm of a sequence of Counts,
-    !> the `i`th element of which represents the number of successes after `SuccessStep(i)` tries in a Bernoulli trail.
-    !>
-    !> \param[in]   maxNumTrial :   The maximum number of trails possible. After `maxNumTrial` tries,
-    !                               the Geometric distribution restarts from index `1`.
-    !> \param[in]   numTrial    :   The length of the array `SuccessStep` and `LogCount`.
-    !>                              Note that `numTrial < maxNumTrial` must hold.
-    !> \param[in]   SuccessStep :   A vector of length `(1:numTrial)` of integers that represent
-    !>                              the steps at which the Bernoulli successes occur.
-    !> \param[in]   LogCount    :   A real-valued vector of length `(1:numTrial)` representing the natural logarithms of the
-    !>                              counts of success at the corresponding Bernoulli trials specified by elements of `SuccessStep`.
-    !>
-    !> \return
-    !> `PowellMinimum`          :   An object of class [PowellMinimum_type](@ref optimization_mod::powellminimum_type) containing
-    !>                              the best-fit successProb and the normalization constant of the fit in the vector component `xmin`.
-    !>
-    !> \warning
-    !> Any value of SuccessStep must be an integer numbers between `1` and `maxNumTrial`.
-    !> The onus is on the user to ensure this condition holds.
-    !>
-    !> \author
-    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
-    function fitGeoCyclicLogPDF(maxNumTrial, numTrial, SuccessStep, LogCount) result(PowellMinimum)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF
-#endif
-        use Optimization_mod, only: PowellMinimum_type
-        use Constants_mod, only: IK, RK, POSINF_RK, NEGINF_RK
-        implicit none
-        integer(IK) , intent(in)    :: maxNumTrial
-        integer(IK) , intent(in)    :: numTrial
-        integer(IK) , intent(in)    :: SuccessStep(numTrial)
-        real(RK)    , intent(in)    :: LogCount(numTrial)
-        type(PowellMinimum_type)    :: PowellMinimum
-
-        real(RK)                    :: BestFitSuccessProbNormFac(2) ! vector of the two parameters
-        real(RK)    , parameter     :: SUCCESS_PROB_INIT_GUESS = 0.23_RK
-        real(RK)    , parameter     :: FISHER_TRANS_SUCCESS_PROB_INIT_GUESS = atanh(2*(SUCCESS_PROB_INIT_GUESS - 0.5_RK))
-
-        ! do Fisher transformation to make the limits infinity.
-        BestFitSuccessProbNormFac = [FISHER_TRANS_SUCCESS_PROB_INIT_GUESS, 0._RK] ! LogCount(1)]
-
-        PowellMinimum = PowellMinimum_type  ( ndim = 2_IK &
-                                            , getFuncMD = getSumDistSq &
-                                            , StartVec = BestFitSuccessProbNormFac &
-                                            )
-        if (PowellMinimum%Err%occurred) return
-        PowellMinimum%xmin(1) = 0.5_RK * tanh(PowellMinimum%xmin(1)) + 0.5_RK ! reverse Fisher-transform
-
-    contains
-
-        !! doxygen has problems digesting the documentation of Fortran internal functions.
-        !!> \brief
-        !!>
-        !!> \param[in]   ndim                            :   The length of the input vector `successProbFisherTransNormFac`.
-        !!> \param[in]   successProbFisherTransNormFac   :   The length of the input vector `successProbFisherTransNormFac`.
-        !!>
-        !!> \return
-        !!> `sumDistSq` : The sum of distances squared.
-        !!>
-        !!> \remark
-        !!> Although `successProbFisherTransNormFac` is a vector on input, it is expected to have a length of one at all times.
-        !!> This is solely to fullfile the interface restrictions of [PowellMinimum_type](@ref optimization_mod::powellminimum_type).
-        pure function getSumDistSq(ndim,successProbFisherTransNormFac) result(sumDistSq)
-            !use Constants_mod, only: IK, RK
-            implicit none
-            integer(IK) , intent(in)    :: ndim
-            real(RK)    , intent(in)    :: successProbFisherTransNormFac(ndim)
-            real(RK)                    :: sumDistSq, successProb
-            successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK ! reverse Fisher-transform
-            !sumDistSq = sum( (LogCount - getGeoLogPDF(successProb=successProb,seqLen=numTrial) - successProbFisherTransNormFac(2) )**2 )
-            sumDistSq = sum(    ( LogCount &
-                                - getLogProbGeoCyclic(successProb=successProb, maxNumTrial=maxNumTrial, numTrial=numTrial, SuccessStep=SuccessStep) &
-                                - successProbFisherTransNormFac(2) &
-                                )**2 &
-                            )
-        end function getSumDistSq
-
-    end function fitGeoCyclicLogPDF
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
     !> Return the standard normal distribution PDF value.
     !>
     !> \param[in]   z   :   The input value at which the PDF will be computed.
@@ -3039,7 +2885,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getSNormPDF(z) result(snormPDF)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSNormPDF
 #endif
         use Constants_mod, only: INVSQRT2PI
@@ -3065,7 +2911,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getNormPDF(avg,std,var,x) result(normPDF)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormPDF
 #endif
         use Constants_mod, only: INVSQRT2PI
@@ -3090,7 +2936,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getNormCDF(avg,std,x) result(normCDF)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormCDF
 #endif
         use Constants_mod, only: RK, SQRT2
@@ -3117,7 +2963,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getSNormCDF_SPR(x) result(normCDF)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSNormCDF_SPR
 #endif
         use iso_fortran_env, only: RK => real32
@@ -3145,7 +2991,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getSNormCDF_DPR(x) result(normCDF)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSNormCDF_DPR
 #endif
         use iso_fortran_env, only: RK => real64
@@ -3184,7 +3030,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getBetaCDF_SPR(alpha,beta,x) result(betaCDF)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaCDF_SPR
 #endif
         use iso_fortran_env, only: RK => real32
@@ -3238,7 +3084,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getBetaCDF_DPR(alpha,beta,x) result(betaCDF)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaCDF_DPR
 #endif
         use iso_fortran_env, only: RK => real64
@@ -3279,7 +3125,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getBetaContinuedFraction_SPR(alpha,beta,x) result(betaContinuedFraction)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaContinuedFraction_SPR
 #endif
         use iso_fortran_env, only: RK => real32
@@ -3339,7 +3185,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function getBetaContinuedFraction_DPR(alpha,beta,x) result(betaContinuedFraction)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaContinuedFraction_DPR
 #endif
         use iso_fortran_env, only: RK => real64
@@ -3404,7 +3250,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     subroutine doKS1(np,Point,getCDF,statKS,probKS,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doKS1
 #endif
         use Sort_mod, only : sortAscending
@@ -3470,7 +3316,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure subroutine doUniformKS1(np,Point,statKS,probKS,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doUniformKS1
 #endif
         use Sort_mod, only : sortAscending
@@ -3527,7 +3373,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     subroutine doSortedKS2(np1,np2,SortedPoint1,SortedPoint2,statKS,probKS)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doSortedKS2
 #endif
         integer(IK) , intent(in)    :: np1, np2
@@ -3572,7 +3418,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getProbKS(lambda) result(probKS)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS
 #endif
         implicit none
@@ -3606,7 +3452,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     pure function getUniformCDF(x)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUniformCDF
 #endif
         implicit none
@@ -3638,7 +3484,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:30 AM, ICES, UT Austin
     subroutine getHist1D(method, xmin, xmax, nxbin, np, X, Xbin, Density, errorOccurred)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getHist1D
 #endif
         implicit none
@@ -3703,7 +3549,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine getHist2D(histType,xmin,xmax,ymin,ymax,nxbin,nybin,np,X,Y,Xbin,Ybin,Density,errorOccurred)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getHist2D
 #endif
         !use, intrinsic :: iso_fortran_env, only: output_unit
@@ -3778,7 +3624,7 @@ contains
     !> \author
     !> Version 3.0, Sep 1, 2017, 11:12 AM, Amir Shahmoradi, ICES, The University of Texas at Austin.
     pure function getBin(x,lowerBound,nbin,binsize) result(ibin)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBin
 #endif
 
@@ -3836,7 +3682,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function getQuantile(np,nq,SortedQuantileProbability,Point,Weight,sumWeight) result(Quantile)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuantile
 #endif
         use Constants_mod, only: IK, RK, NEGINF_RK
@@ -3885,4 +3731,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Statistics_mod
+end module Statistics_mod ! LCOV_EXCL_LINE

@@ -56,6 +56,11 @@ echo. ::::                                                                      
 echo. ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 echo.
 
+:: set the FPP tetsing flags
+
+set FPP_FLAGS_TESTING=/fpp /DTESTING_ENABLED
+
+
 :: copy necessary lib files in the executable's directory
 
 if !LTYPE!==dynamic (
@@ -132,7 +137,7 @@ if !MPI_ENABLED!==true (
     echo.
     for /F "eol=! tokens=*" %%A in (!ParaMonteTest_FILE_LIST!) do (
         echo. -- ParaMonteTest - generating object file for %%A
-        call !FCL! !FCL_FLAGS! !FPP_FLAGS! ^
+        call !FCL! !FCL_FLAGS! !FPP_FLAGS! !FPP_FLAGS_TESTING! ^
         /module:!ParaMonteTest_MOD_DIR!     %=path to output ParaMonte Test module files=% ^
         /I:!ParaMonteTest_MOD_DIR!          %=path to required ParaMonte Test module files=%  ^
         /I:!ParaMonte_MOD_DIR!              %=path to input ParaMonte module files=%  ^
@@ -161,7 +166,7 @@ if !MPI_ENABLED!==true (
 
         echo. -- ParaMonteTest - generating object file for %%A
 
-        !FCL! !FCL_FLAGS! !FPP_FLAGS! ^
+        !FCL! !FCL_FLAGS! !FPP_FLAGS! !FPP_FLAGS_TESTING! ^
         /module:!ParaMonteTest_MOD_DIR!     %=path to output ParaMonte Test module files=% ^
         /I:!ParaMonteTest_MOD_DIR!          %=path to required ParaMonte Test module files=% ^
         /I:!ParaMonte_MOD_DIR!              %=path to input ParaMonte module files=% ^

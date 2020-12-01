@@ -80,7 +80,7 @@ contains
     !> \return
     !> `FileContents` : An object of [FileContents_type](@ref filecontents_type) class.
     function constructFileContents(filePath,delEnabled) result(FileContents)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructFileContents
 #endif
         implicit none
@@ -102,7 +102,7 @@ contains
     !> @param[out]  Err         :   An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
     !> @param[out]  delEnabled  :   An optional logical value indicating whether the file should be deleted upon successful reading of it.
     subroutine getFileContents(path,Contents,numRecord,Err,delEnabled)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileContents
 #endif
         use JaggedArray_mod, only: CharVec_type
@@ -131,9 +131,11 @@ contains
 
         call getNumRecordInFile(path,numRecord,Err)
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME // Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         allocate(Contents(numRecord))
 
@@ -142,6 +144,7 @@ contains
             read(fileUnit,"(A)",iostat=Err%stat) record
             if (Err%stat==0) then
                 Contents(irecord)%record = trim(adjustl(record))
+            ! LCOV_EXCL_START
             elseif (is_iostat_end(iostat)) then
                 Err%occurred = .true.
                 Err%msg =   PROCEDURE_NAME // ": End-of-file error occurred while expecting " // &
@@ -158,14 +161,17 @@ contains
                             num2str(irecord) // " from file='" // path // "'."
                 return
             end if
+            ! LCOV_EXCL_STOP
         end do
 
         close(fileUnit,iostat=Err%stat,status=closeStatus)
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // "Error occurred while attempting to close or delete the open file='" // path // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
     end subroutine getFileContents
 
@@ -179,7 +185,7 @@ contains
     !> @param[out]  Err         :   An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
     !> @param[in]   exclude     :   A string. If any line matches `exclude`, it will NOT be counted.
     subroutine getNumRecordInFile(filePath,numRecord,Err,exclude)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumRecordInFile
 #endif
         use Constants_mod, only: IK
@@ -204,30 +210,38 @@ contains
 
         inquire( file=filePath, exist=fileExists, opened=fileIsOpen, number=fileUnit, iostat=Err%stat )
         if (Err%stat/=0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the status of file='" // filePath // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         if (.not.fileExists) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": The input file='" // filePath // "' does not exist."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         if (fileIsOpen) close(unit=fileUnit,iostat=Err%stat)
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open input file='" // filePath // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         open(newunit=fileUnit,file=filePath,status="old",iostat=Err%stat)
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while opening input file='" // filePath // "'."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         numRecord = 0_IK
         do
@@ -239,25 +253,30 @@ contains
                     numRecord = numRecord + 1_IK
                 end if
                 cycle
-            elseif(is_iostat_end(iostat)) then
+            elseif(is_iostat_end(iostat) .or. is_iostat_eor(iostat)) then
                 exit
+            ! LCOV_EXCL_START
             else
                 Err%occurred = .true.
                 Err%stat = iostat
                 Err%msg = PROCEDURE_NAME // ": Error occurred while reading input file='" // filePath // "'."
                 return
             end if
+            ! LCOV_EXCL_STOP
         end do
+
         close(fileUnit,iostat=Err%stat)
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg =   PROCEDURE_NAME // ": Error occurred while attempting to close the open input file='" // &
                         filePath // "' after counting the number of records in file."
             return
         end if
+        ! LCOV_EXCL_STOP
 
     end subroutine getNumRecordInFile
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module FileContents_mod
+end module FileContents_mod ! LCOV_EXCL_LINE

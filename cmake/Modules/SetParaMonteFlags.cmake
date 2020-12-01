@@ -74,6 +74,16 @@
 # endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# unset flags
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+unset(FCL_FLAGS_DEFAULT)
+unset(CCL_FLAGS_DEFAULT)
+unset(FCL_BUILD_FLAGS)
+unset(CCL_BUILD_FLAGS)
+unset(FL_FLAGS)
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Fortran compiler/linker debug build flags. Will be used only when build mode is set to debug
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -466,12 +476,16 @@ elseif(UNIX AND NOT APPLE)
     set( FPP_OS_FLAG -DOS_IS_LINUX )
 endif()
 
+if(OS_IS_WSL)
+    set(FPP_OS_FLAG "${FPP_OS_FLAG}" -DOS_IS_WSL )
+endif()
+
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # ParaMonte Version Preprocessor Flag
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-if (DEFINED ParaMonteVersion)
-    set( FPP_PARAMONTE_VERSION_FLAG -DPARAMONTE_VERSION="'${ParaMonteVersion}'" )
+if (DEFINED fppParaMonteVersion)
+    set( FPP_PARAMONTE_VERSION_FLAG -DPARAMONTE_VERSION="'${fppParaMonteVersion}'" )
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -560,9 +574,7 @@ if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
     endif()
 
     unset(FPP_DLL_FLAGS)
-    if (DLL_ENABLED)
-        set( FPP_DLL_FLAGS -DDLL_ENABLED )
-    endif()
+    set( FPP_DLL_FLAGS -DDLL_ENABLED )
     set(FPP_DLL_FLAGS "${FPP_DLL_FLAGS}" CACHE STRING "Fortran preprocessor dynamic library definitions" )
 
 endif()
@@ -577,9 +589,9 @@ if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
     set(FPP_BUILD_FLAGS 
         -DDBG_ENABLED 
         CACHE STRING "ParaMonete build preprocessor flags" FORCE)
-else()
+elseif (CMAKE_BUILD_TYPE MATCHES "Testing|TESTING|testing")
     set(FPP_BUILD_FLAGS 
-        ""
+        "-DTESTING_ENABLD"
         CACHE STRING "ParaMonete build preprocessor flags" FORCE)
 endif()
 
@@ -611,6 +623,14 @@ set(FPP_FLAGS
     "${FPP_PARAMONTE_VERSION_FLAG}" "${FPP_FLAGS}" "${FPP_OS_FLAG}" "${FPP_CFI_FLAG}" "${FPP_LANG_FLAG}" "${FPP_BUILD_FLAGS}" "${FPP_FCL_FLAGS}" "${FPP_DLL_FLAGS}" "${USER_PREPROCESSOR_MACROS}"
     CACHE STRING "Fortran compiler preprocessor flags" FORCE )
 #add_definitions(${FPP_FLAGS})
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#: set code coverage preprocessor flag
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if (CODECOV_ENABLED)
+    set(FPP_FLAGS "${FPP_FLAGS}" -DCODECOV_ENABLED )
+endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #: set up coarray flags
@@ -732,6 +752,12 @@ if (intel_compiler)
         endif()
     endif()
 
+    if (CODECOV_ENABLED)
+        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -prof-gen=srcpos )
+        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" -prof-gen=srcpos )
+        set(FL_FLAGS "${FL_FLAGS}" -prof-gen=srcpos )
+    endif()
+
     if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
         if (WIN32)
             set(FCL_BUILD_FLAGS
@@ -785,14 +811,22 @@ elseif (gnu_compiler)
     # which causes gfortran to break the compilation.
     # The problem still persists in debug mode. Therefore, when gfortran is 10, debug mode is disabled.
     #set(FCL_FLAGS_DEFAULT -std=gnu -ffree-line-length-none -fallow-argument-mismatch CACHE STRING "GNU Fortran default compiler flags" )
+
     set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none CACHE STRING "GNU Fortran default compiler flags" )
     set(CCL_FLAGS_DEFAULT -ffree-line-length-none  CACHE STRING "GNU CXX default compiler flags" )
+
+    set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt ) # set Fortran linker flags for release mode
+
     if (MT_ENABLED)
         set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" -pthread )
         set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" -pthread )
     endif()
 
-    set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt ) # set Fortran linker flags for release mode
+    if (CODECOV_ENABLED)
+        set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage ) # -static-libgcc -fcf-protection=full
+        set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" --coverage -fprofile-arcs -ftest-coverage ) # -static-libgcc -fcf-protection=full
+        set(FL_FLAGS "${FL_FLAGS}" --coverage -fprofile-arcs -ftest-coverage -lgcov -static-libgcc -fcf-protection=full )
+    endif()
 
     if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
         set(FCL_BUILD_FLAGS "${GNU_Fortran_DEBUG_FLAGS}")
