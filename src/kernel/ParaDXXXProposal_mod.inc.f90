@@ -612,15 +612,15 @@ contains
                 ! Do not set the full boundaries' range `(1:nd)` for `comv_CholDiagLower` in the following subroutine call.
                 ! Setting the boundaries forces the compiler to generate a temporary array.
 
-                call mergeMeanCovUpper  ( nd            = nd                        &
-                                        , npA           = mv_sampleSizeOld_save     &
-                                        , MeanVecA      = mv_MeanOld_save           &
-                                        , CovMatUpperA  = CovMatUpperOld            &
-                                        , npB           = sampleSizeCurrent         &
-                                        , MeanVecB      = MeanCurrent               &
-                                        , CovMatUpperB  = CovMatUpperCurrent        &
-                                        , MeanVecAB     = MeanNew                   &
-                                        , CovMatUpperAB = comv_CholDiagLower(:,:,0) &
+                call mergeMeanCovUpper  ( nd            = nd                            &
+                                        , npA           = mv_sampleSizeOld_save         &
+                                        , MeanVecA      = mv_MeanOld_save               &
+                                        , CovMatUpperA  = CovMatUpperOld                &
+                                        , npB           = sampleSizeCurrent             &
+                                        , MeanVecB      = MeanCurrent                   &
+                                        , CovMatUpperB  = CovMatUpperCurrent            &
+                                        , MeanVecAB     = MeanNew                       &
+                                        , CovMatUpperAB = comv_CholDiagLower(:,1:nd,0)  &
                                         )
                 mv_MeanOld_save(1:nd) = MeanNew
 
