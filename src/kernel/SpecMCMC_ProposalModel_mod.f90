@@ -77,7 +77,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructProposalModel() result(ProposalModelObj)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalModel
 #endif
         use Decoration_mod, only: TAB
@@ -107,7 +107,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar(ProposalModelObj)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
@@ -118,7 +118,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setProposalModel(ProposalModelObj,proposalModel)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setProposalModel
 #endif
         use String_mod, only: getLowerCase
@@ -134,7 +134,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine checkForSanity(ProposalModelObj,Err,methodName)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Err_mod, only: Err_type
@@ -158,4 +158,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecMCMC_ProposalModel_mod
+end module SpecMCMC_ProposalModel_mod ! LCOV_EXCL_LINE

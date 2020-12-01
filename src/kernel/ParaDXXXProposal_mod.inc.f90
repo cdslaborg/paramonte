@@ -81,8 +81,8 @@
 
     implicit none
 
-    !private
-    !public :: Proposal_type
+    private
+    public :: Proposal_type
 
 #if defined NORMAL
     character(*), parameter         :: MODULE_NAME = "@"//PMSM%ParaDXXX//"ProposalNormal_mod"
@@ -191,7 +191,7 @@ contains
                                         , RestartFile &
                                         , isFreshRun &
                                         ) result(Proposal)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalSymmetric
 #endif
         use Constants_mod, only: IK, RK, NULL_RK
@@ -308,6 +308,7 @@ contains
             !CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
             !call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
             !comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower
+            ! The colon indexing avoids temporary array creation
             call getCholeskyFactor( ndim, comv_CholDiagLower(:,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) )
             call getInvCovMat()
         end block
@@ -389,7 +390,7 @@ contains
                     , counterDRS    &
                     , StateOld      &
                     ) result (StateNew)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNew
 #endif
         use Statistics_mod, only: GET_RANDOM_PROPOSAL
@@ -406,16 +407,15 @@ contains
         real(RK)   , intent(in)                         :: StateOld(nd)
         real(RK)                                        :: StateNew(nd)
         integer(IK)                                     :: domainCheckCounter
-        real(RK)                                        :: CholeskyLower(nd,nd) ! dummy variable to avoid copy in / copy out
 
         domainCheckCounter = 0_IK
-        CholeskyLower = comv_CholDiagLower(1:nd,1:nd,counterDRS)
 
         loopBoundaryCheck: do ! Check for the support Region consistency:
 #if defined UNIFORM || defined NORMAL
             StateNew(1:nd) = GET_RANDOM_PROPOSAL( nd                                    &
                                                 , StateOld                              &
-                                                , CholeskyLower                         &
+                                                ! ATTN: The colon index in place of 1:nd below avoids the temporary array creation
+                                                , comv_CholDiagLower(:,1:nd,counterDRS) &
                                                 , comv_CholDiagLower(1:nd,0,counterDRS) &
                                                 )
 #endif
@@ -515,7 +515,7 @@ contains
                             , samplerUpdateSucceeded    &
                             , adaptationMeasure         &
                             )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doAdaptation
 #endif
 
@@ -612,15 +612,15 @@ contains
                 ! Do not set the full boundaries' range `(1:nd)` for `comv_CholDiagLower` in the following subroutine call.
                 ! Setting the boundaries forces the compiler to generate a temporary array.
 
-                call mergeMeanCovUpper  ( nd            = nd                        &
-                                        , npA           = mv_sampleSizeOld_save     &
-                                        , MeanVecA      = mv_MeanOld_save           &
-                                        , CovMatUpperA  = CovMatUpperOld            &
-                                        , npB           = sampleSizeCurrent         &
-                                        , MeanVecB      = MeanCurrent               &
-                                        , CovMatUpperB  = CovMatUpperCurrent        &
-                                        , MeanVecAB     = MeanNew                   &
-                                        , CovMatUpperAB = comv_CholDiagLower(:,:,0) &
+                call mergeMeanCovUpper  ( nd            = nd                            &
+                                        , npA           = mv_sampleSizeOld_save         &
+                                        , MeanVecA      = mv_MeanOld_save               &
+                                        , CovMatUpperA  = CovMatUpperOld                &
+                                        , npB           = sampleSizeCurrent             &
+                                        , MeanVecB      = MeanCurrent                   &
+                                        , CovMatUpperB  = CovMatUpperCurrent            &
+                                        , MeanVecAB     = MeanNew                       &
+                                        , CovMatUpperAB = comv_CholDiagLower(:,1:nd,0)  &
                                         )
                 mv_MeanOld_save(1:nd) = MeanNew
 
@@ -629,8 +629,9 @@ contains
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             ! now get the Cholesky factorization
-            ! Do not set the full boundaries' range `(1:nd)` for the first index of `comv_CholDiagLower` in the following subroutine call.
-            ! Setting the boundaries forces the compiler to generate a temporary array.
+
+            ! WARNING: Do not set the full boundaries' range `(1:nd)` for the first index of `comv_CholDiagLower` in the following subroutine call.
+            ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
 
             call getCholeskyFactor( nd, comv_CholDiagLower(:,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
 
@@ -668,8 +669,10 @@ contains
 
                 ! ensure the old Cholesky factorization can be recovered
 
-                !call getCholeskyFactor( nd, comv_CholDiagLower(1:nd,1:nd,0), comv_CholDiagLower(1:nd,0,0) )
-                call getCholeskyFactor( nd, comv_CholDiagLower(:,1:nd,0), comv_CholDiagLower(1:nd,0,0) ) ! avoid temporary array creation by using :
+                ! WARNING: Do not set the full boundaries' range `(1:nd)` for the first index of `comv_CholDiagLower` in the following subroutine call.
+                ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
+
+                call getCholeskyFactor( nd, comv_CholDiagLower(:,1:nd,0), comv_CholDiagLower(1:nd,0,0) ) ! avoid temporary array creation by using : indexer
                 if (comv_CholDiagLower(1,0,0)<0._RK) then
                     write(mc_logFileUnit,"(A)")
                     write(mc_logFileUnit,"(A)") "Singular covariance matrix detected:"
@@ -677,6 +680,7 @@ contains
                     do j = 1, nd
                         write(mc_logFileUnit,"(*(E25.15))") comv_CholDiagLower(1:j,j,0)
                     end do
+                    write(mc_logFileUnit,"(A)")
                     ProposalErr%occurred = .true.
                     ProposalErr%msg = PROCEDURE_NAME // &
                                     ": Error occurred while attempting to compute the Cholesky factorization of the &
@@ -846,7 +850,7 @@ contains
     subroutine doAutoTune   ( adaptationMeasure &
                             , AutoTuneScaleSq   &
                             )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: doAutoTune
 #endif
         use Matrix_mod, only: getLogSqrtDetPosDefMat
@@ -913,7 +917,7 @@ contains
     ! Note: since data transfer will dominate communication overhead.
     ! broadcast adaptation to all images
     subroutine bcastAdaptation()
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: bcastAdaptation
 #endif
 #if defined CAF_ENABLED
@@ -953,7 +957,7 @@ contains
     !> the corresponding argument of [getInvMatFromCholFac](ref matrix_mod::getinvmatfromcholfac) to guarantee it to the compiler.
     !> More than improving performance, this would turn off the pesky compiler warnings about temporary array creation.
     subroutine getInvCovMat()
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvCovMat
 #endif
         use Matrix_mod, only: getInvMatFromCholFac
@@ -961,10 +965,10 @@ contains
         integer(IK) :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
-            ! Do not set the full boundaries' range `(1:mc_ndim)` for `comv_CholDiagLower` in the following call.
-            ! Setting the boundaries forces the compiler to generate a temporary array.
+            ! WARNING: Do not set the full boundaries' range `(1:mc_ndim)` for the first index of `comv_CholDiagLower` in the following subroutine call.
+            ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
             mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim &
-                                                                            , CholeskyLower = comv_CholDiagLower(:,:,istage) &
+                                                                            , CholeskyLower = comv_CholDiagLower(:,1:mc_ndim,istage) &
                                                                             , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) &
                                                                             )
             mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))
@@ -989,7 +993,7 @@ contains
     !> The performance of this update could be improved by only updating the higher-stage covariance, only when needed.
     !> However, the gain will be likely minimal, especially in low-dimensions.
     subroutine updateDelRejCholDiagLower()
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: updateDelRejCholDiagLower
 #endif
         implicit none
@@ -1014,7 +1018,7 @@ contains
     !>
     !> @param[in]   meanAccRateSinceStart : The current mean acceptance rate of the sampling (optional).
     subroutine writeRestartFile(meanAccRateSinceStart)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFile
 #endif
         implicit none
@@ -1052,7 +1056,7 @@ contains
     !>
     !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (optional).
     subroutine readRestartFile(meanAccRateSinceStart)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFile
 #endif
         implicit none

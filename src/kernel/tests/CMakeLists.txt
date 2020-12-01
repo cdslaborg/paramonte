@@ -45,6 +45,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_BandSpectrum_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Batse_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_Constants_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_CorrCoef_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Cosmology_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_CrossCorr_mod.f90
@@ -64,13 +65,14 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_Sort_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_StarFormation_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Statistics_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_GeoCyclicFit_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_String_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_System_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Timer_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_TimerCPU_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_TranGaus_mod.f90
     #${ParaMonteTest_SRC_DIR}/Test_EconomicsToolbox_mod.f90
-    #${ParaMonteTest_SRC_DIR}/Test_ParaMonte_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90
     ${ParaMonteTest_SRC_DIR}/main.f90
 )
 
@@ -83,6 +85,10 @@ set(ParaMonteTest_SOURCE_FILES
 #find_library(PMLIB_PATH ${PMLIB} PATHS ${ParaMonte_OBJ_DIR})
 
 add_executable(${ParaMonteTest_EXE_NAME} ${ParaMonteTest_SOURCE_FILES})
+
+if (CODECOV_ENABLED AND gnu_compiler)
+    target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC gcov)
+endif()
 
 if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
     target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC ${PMLIB})

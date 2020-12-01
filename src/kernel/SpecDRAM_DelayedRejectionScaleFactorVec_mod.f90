@@ -71,7 +71,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructDelayedRejectionScaleFactorVec(nd,methodName) result(DelayedRejectionScaleFactorVecObj)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructDelayedRejectionScaleFactorVec
 #endif
         use Decoration_mod, only: TAB
@@ -97,7 +97,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar(DelayedRejectionScaleFactorVecObj)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use SpecDRAM_DelayedRejectionCount_mod, only: MAX_DELAYED_REJECTION_COUNT
@@ -112,7 +112,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setDelayedRejectionScaleFactorVec(DelayedRejectionScaleFactorVecObj,delayedRejectionScaleFactorVec,delayedRejectionCount)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setDelayedRejectionScaleFactorVec
 #endif
         use Constants_mod, only: IK, RK
@@ -135,7 +135,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine checkForSanity(DelayedRejectionScaleFactorVecObj,Err,methodName,delayedRejectionCount)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Constants_mod, only: IK, RK
@@ -169,4 +169,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecDRAM_DelayedRejectionScaleFactorVec_mod
+end module SpecDRAM_DelayedRejectionScaleFactorVec_mod ! LCOV_EXCL_LINE

@@ -72,7 +72,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructProposalStartCovMat(nd,methodName) result(self)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalStartCovMat
 #endif
         use Constants_mod, only: IK, NULL_RK
@@ -102,7 +102,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar(self,nd)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK
@@ -117,7 +117,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setProposalStartCorMat(self, proposalStartStdVec, proposalStartCorMat, proposalStartCovMat)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setProposalStartCorMat
 #endif
         use Statistics_mod, only: getCovMatFromCorMatUpper
@@ -158,7 +158,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine checkForSanity(self,Err,methodName,nd)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Constants_mod, only: IK, RK
@@ -182,4 +182,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module SpecMCMC_ProposalStartCovMat_mod
+end module SpecMCMC_ProposalStartCovMat_mod ! LCOV_EXCL_LINE

@@ -84,7 +84,7 @@ contains
     !> \remark
     !> This procedure requires preprocessing.
     module subroutine getSpecFromInputFile(self,nd)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile
 #endif
         use Constants_mod, only: IK, RK
@@ -222,6 +222,7 @@ contains
 
                 ! close input file if it is open
 
+                ! LCOV_EXCL_START
                 if (self%InputFile%isOpen) then
                     close(unit=self%InputFile%unit,iostat=self%InputFile%Err%stat)
                     self%Err = self%InputFile%getCloseErr(self%InputFile%Err%stat)
@@ -232,6 +233,7 @@ contains
                         return
                     end if
                 end if
+                ! LCOV_EXCL_STOP
 
                 ! open input file
 
@@ -244,12 +246,14 @@ contains
 #endif
                     )
                 self%Err = self%InputFile%getOpenErr(self%InputFile%Err%stat)
+                ! LCOV_EXCL_START
                 if (self%Err%occurred) then
                     self%Err%msg =  PROCEDURE_NAME // ": Error occurred while attempting to open the user-provided input file='" // &
                                     self%InputFile%Path%modified // "', unit=" // num2str(self%InputFile%unit) // ".\n" // &
                                     self%Err%msg
                     return
                 end if
+                ! LCOV_EXCL_STOP
 
                 ! read input file
 
@@ -271,6 +275,7 @@ contains
                 ! close input file
 
                 close(unit=self%InputFile%unit,iostat=self%InputFile%Err%stat)
+                ! LCOV_EXCL_START
                 self%Err = self%InputFile%getCloseErr(self%InputFile%Err%stat)
                 if (self%Err%occurred) then
                     self%Err%msg =  PROCEDURE_NAME // ": Error occurred while attempting to close the user-provided input file='" // &
@@ -278,6 +283,7 @@ contains
                                     self%Err%msg
                     return
                 end if
+                ! LCOV_EXCL_STOP
 
             end if blockInputFileType
 
@@ -286,10 +292,12 @@ contains
         ! setup SpecBase variables that have been read form the input file
 
         call self%SpecBase%setFromInputFile( Err = self%Err )
+        ! LCOV_EXCL_START
         if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         ! setup SpecMCMC variables that have been read form the input file
 
@@ -297,18 +305,22 @@ contains
                                             , nd = nd &
                                             , domainLowerLimitVec = self%SpecBase%DomainLowerLimitVec%Val &
                                             , domainUpperLimitVec = self%SpecBase%DomainUpperLimitVec%Val )
+        ! LCOV_EXCL_START
         if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         ! setup SpecDRAM variables that have been read form the input file
 
         call self%SpecDRAM%setFromInputFile( self%Err )
+        ! LCOV_EXCL_START
         if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
     end subroutine getSpecFromInputFile
 

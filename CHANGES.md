@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.4.2** -- November 15, 2020
+### **Version 1.4.2** -- November 27, 2020
 
 **Enhancements**  
 
@@ -17,10 +17,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     build the library with `stack` memory allocation by specifying the appropriate build flags with
     the `install.sh` on Unix or `install.bat` script on Windows systems. For further information, 
     see the installation guidelines on the ParaMonte documentation website.
-
-    order that is automatically inferred at the compilation time. Also, the dependencies 
-    on the MPI compiler wrappers is now removed as the MPI libraries are not required to 
-    build the ParaMonte examples, even in cases of parallel ParaMonte example builds.
++   The temporary array creations in debug mode are now resolved.
 
 **Compiler support**  
   
@@ -52,7 +49,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
   
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 7.5     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -86,7 +83,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
   
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 7.5     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -113,7 +110,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
   
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 7.5     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -160,7 +157,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 7.5     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -193,7 +190,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 7.5     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
@@ -219,7 +216,7 @@ This is the first public release of the ParaMonte library.
 
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
-| GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
+| GNU Compiler Collection > 7.5     | ✅              | ✅    | ✅    |  
 | Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 

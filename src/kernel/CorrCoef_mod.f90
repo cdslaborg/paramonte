@@ -82,7 +82,7 @@ contains
     !> \remark
     !> A small value of either `dStarStarProb` or `rhoProb` indicates a significant correlation.
     subroutine getCorrCoefSpearman(ndata,Data1,Data2,rho,rhoProb,dStarStar,dStarStarSignif,dStarStarProb,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorrCoefSpearman
 #endif
         use Constants_mod, only: IK, RK, SQRT2, SPR
@@ -105,16 +105,20 @@ contains
         WorkSpace2 = Data2
         call sortAscending(ndata,WorkSpace1,WorkSpace2,Err)
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME//Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
         call crank(ndata,WorkSpace1,sf)
 
         call sortAscending(ndata,WorkSpace2,WorkSpace1,Err)
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME//Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
         call crank(ndata,WorkSpace2,sg)
 
         WorkSpace1 = WorkSpace1 - WorkSpace2
@@ -168,4 +172,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module CorrCoef_mod
+end module CorrCoef_mod ! LCOV_EXCL_LINE

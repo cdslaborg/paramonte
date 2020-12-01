@@ -7,4 +7,5 @@
 .gitattributes export-ignore
 .pullapprove.yml export-ignore
 **/.travis/* export-ignore
+**/pubs/* export-ignore
 codecov.yml export-ignore

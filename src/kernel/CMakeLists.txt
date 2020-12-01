@@ -65,6 +65,7 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/Math_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Matrix_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Statistics_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/GeoCyclicFit_mod.f90
     ${ParaMonteKernel_SRC_DIR}/Parallelism_mod.f90
     ${ParaMonteKernel_SRC_DIR}/CorrCoef_mod.f90
     ${ParaMonteKernel_SRC_DIR}/TranGaus_mod.f90
@@ -75,6 +76,8 @@ SET(ParaMonte_SOURCE_FILES
     ${ParaMonteKernel_SRC_DIR}/Cosmology_mod.f90
     ${ParaMonteKernel_SRC_DIR}/StarFormation_mod.f90
     ${ParaMonteKernel_SRC_DIR}/BandSpectrum_mod.f90
+    ${ParaMonteKernel_SRC_DIR}/BandSpectrum_mod@PhotonFluence_smod.f90
+    ${ParaMonteKernel_SRC_DIR}/BandSpectrum_mod@EnergyFluence_smod.f90
     ${ParaMonteKernel_SRC_DIR}/Batse_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecBase_SampleSize_mod.f90
     ${ParaMonteKernel_SRC_DIR}/SpecBase_RandomSeed_mod.f90
@@ -143,6 +146,7 @@ SET(ParaMonte_SOURCE_FILES
 
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_mod.inc.f90)
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_mod.inc.f90)
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaMonte_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaMonte_mod@version@kernel.inc.f90)
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Input_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_mod@Input_smod.inc.f90)
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDISE_mod@Input_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_mod@Input_smod.inc.f90)
 set_source_files_properties(${ParaMonteKernel_SRC_DIR}/ParaDRAM_mod@Setup_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteKernel_SRC_DIR}/ParaDXXX_mod@Setup_smod.inc.f90)
@@ -345,6 +349,10 @@ target_compile_options( ${PMLIB} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}"
 #target_link_options( ${PMLIB} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS} )
 message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}" )
 target_link_options( ${PMLIB} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}} )
+
+if (CODECOV_ENABLED AND gnu_compiler)
+    target_link_libraries(${PMLIB} PUBLIC gcov)
+endif()
 
 install(TARGETS ${PMLIB} 
         CONFIGURATIONS "${CMAKE_BUILD_TYPE}"

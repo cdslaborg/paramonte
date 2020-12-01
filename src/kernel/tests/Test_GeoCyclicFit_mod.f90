@@ -40,17 +40,17 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [TimerCPU_mod](@ref timercpu_mod).
+!>  \brief This module contains tests of the module [GeoCyclicFit_mod](@ref geocyclicfit_mod).
 !>  @author Amir Shahmoradi
 
-module Test_TimerCPU_mod
+module Test_GeoCyclicFit_mod
 
-    use TimerCPU_mod
     use Test_mod, only: Test_type
+    use GeoCyclicFit_mod
     implicit none
 
     private
-    public :: test_TimerCPU
+    public :: test_GeoCyclicFit
 
     type(Test_type) :: Test
 
@@ -60,59 +60,60 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_TimerCPU()
-
+    subroutine test_GeoCyclicFit()
         implicit none
-
         Test = Test_type(moduleName=MODULE_NAME)
-        call Test%run(test_TimerCPU_type_1, "test_TimerCPU_type_1")
+        call Test%run(test_fitGeoCyclicLogPDF_1, "test_fitGeoCyclicLogPDF_1")
         call Test%finalize()
-
-    end subroutine test_TimerCPU
+    end subroutine test_GeoCyclicFit
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_TimerCPU_type_1() result(assertion)
-
+    function test_fitGeoCyclicLogPDF_1() result(assertion)
         use Constants_mod, only: IK, RK
-        use System_mod, only: sleep
         implicit none
-        real(RK), parameter :: seconds = 0.05_RK
-        logical             :: assertion
-        type(TimerCPU_type) :: TimerCPU
+        logical                     :: assertion
+        integer(IK)                 :: i
+        integer(IK) , parameter     :: nparam = 2_IK
+        integer(IK) , parameter     :: numTrial = 64_IK
+        integer(IK) , parameter     :: maxNumTrial = 64_IK
+        integer(IK) , parameter     :: SuccessStep(numTrial) = [ (i, i = 1, numTrial) ]
+        real(RK)    , parameter     :: LogCount(numTrial) = log( real(  [ 64_IK, 55_IK, 53_IK, 43_IK, 54_IK, 41_IK &
+                                                                        , 45_IK, 55_IK, 50_IK, 42_IK, 48_IK, 52_IK &
+                                                                        , 38_IK, 52_IK, 56_IK, 54_IK, 45_IK, 54_IK &
+                                                                        , 69_IK, 50_IK, 50_IK, 49_IK, 45_IK, 38_IK &
+                                                                        , 45_IK, 34_IK, 55_IK, 51_IK, 49_IK, 49_IK &
+                                                                        , 47_IK, 58_IK, 37_IK, 54_IK, 50_IK, 59_IK &
+                                                                        , 37_IK, 39_IK, 36_IK, 52_IK, 51_IK, 37_IK &
+                                                                        , 44_IK, 46_IK, 37_IK, 29_IK, 41_IK, 39_IK &
+                                                                        , 50_IK, 39_IK, 46_IK, 42_IK, 54_IK, 54_IK &
+                                                                        , 54_IK, 24_IK, 44_IK, 43_IK, 37_IK, 43_IK &
+                                                                        , 53_IK, 47_IK, 50_IK, 42_IK ], kind = RK ))
+        real(RK)    , parameter     :: successProb = 0.7_RK
+        real(RK)    , parameter     :: tolerance = 1.e-6_RK
+        real(RK)                    :: xmin_ref(nparam) = [ 0.31952589641887075E-002_RK, 7.992349027030083_RK ]
+        real(RK)                    :: Difference(nparam)
+        type(GeoCyclicFit_type)     :: GeoCyclicFit
 
-        assertion = .true.
+        GeoCyclicFit%PowellMinimum = GeoCyclicFit%fit(maxNumTrial, numTrial, SuccessStep, LogCount)
+        assertion = .not. GeoCyclicFit%PowellMinimum%Err%occurred
+        if (.not. assertion) return
 
-        ! Note: On macOS the TimerCPU tests fail.
-        ! The CPU timer is neither available on all processors nor is 
-        ! essential for the successful build and run of the ParaMonte library.
-        ! Therefore, it is only tested in code coverage.
+        Difference = abs(GeoCyclicFit%PowellMinimum%xmin - xmin_ref) / abs(xmin_ref)
+        assertion = all( Difference < tolerance )
 
-#if defined CODECOV_ENABLED
-        TimerCPU = TimerCPU_type()
-        assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
-        call sleep(seconds=seconds,Err=TimerCPU%Err)
-        assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
-        call TimerCPU%toc()
-        assertion = assertion .and. TimerCPU%Time%total > 0.9_RK * seconds
-        assertion = assertion .and. TimerCPU%Time%delta > 0.9_RK * seconds
-        assertion = assertion .and. TimerCPU%Time%start < TimerCPU%Time%stop
-
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
-            write(Test%outputUnit,"(*(g0))")
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%start : ", TimerCPU%Time%start
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%stop  : ", TimerCPU%Time%stop
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%delta : ", TimerCPU%Time%delta
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%total : ", TimerCPU%Time%total
-            write(Test%outputUnit,"(*(g0))")   "TimerCPU%Time%unit  : ", TimerCPU%Time%unit
-            write(Test%outputUnit,"(*(g0))")
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,' '))")
+            write(Test%outputUnit,"(*(g0,:,' '))") "xmin_ref    =", xmin_ref
+            write(Test%outputUnit,"(*(g0,:,' '))") "xmin        =", GeoCyclicFit%PowellMinimum%xmin
+            write(Test%outputUnit,"(*(g0,:,' '))") "Difference  =", Difference
+            write(Test%outputUnit,"(*(g0,:,' '))")
         end if
         ! LCOV_EXCL_STOP
-#endif
 
-    end function test_TimerCPU_type_1
+    end function test_fitGeoCyclicLogPDF_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_TimerCPU_mod ! LCOV_EXCL_LINE
+end module Test_GeoCyclicFit_mod

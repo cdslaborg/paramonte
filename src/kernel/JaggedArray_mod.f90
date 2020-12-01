@@ -63,4 +63,4 @@ module JaggedArray_mod
         character(:)    , allocatable   :: record
     end type CharVec_type
 
-end module JaggedArray_mod
+end module JaggedArray_mod ! LCOV_EXCL_LINE

@@ -130,7 +130,7 @@ contains
     !> \return
     !> `Path` : An object of class [Path_type](@ref path_type) containing the path properties and methods.
     function constructPath(inputPath,OS) result(Path)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructPath
 #endif
         use System_mod, only: OS_type
@@ -154,7 +154,7 @@ contains
     !> \warning
     !> On output, do not forget to check the value `Path%%Err%%occurred` before using the output `Path`.
     subroutine queryPath(Path,inputPath,OS)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: queryPath
 #endif
         use Err_mod, only: Err_type
@@ -244,7 +244,7 @@ contains
     !> This routine strictly assumes that there is no dangling `\` in the input Linux path, and if there is,
     !> then either it is used to escape the special shell characters, or otherwise, the path is a Windows path.
     pure subroutine winifyPath(inputPath,outputPath,Err)!,ignoreWindowsReservedChars)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: winifyPath
 #endif
         use Err_mod, only: Err_type
@@ -341,7 +341,7 @@ contains
     !> \param[in]       inputPath   :   The input path. If provided, it will overwrite `Path%original`.
     !> \param[out]      outputPath  :   The output modified path which conforms to the rules of the Unix OS.
     pure subroutine linifyPath(inputPath,outputPath)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: linifyPath
 #endif
         use Constants_mod, only: IK
@@ -391,7 +391,7 @@ contains
     !> \param[out]  slashOS :   The slash separator character of length 1, used by the OS to separate segments of the paths.
     !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
     subroutine getSlashOS(slashOS,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSlashOS
 #endif
         use Err_mod, only: Err_type
@@ -433,7 +433,7 @@ contains
     !> \param[out]      outputPath  :   The output modified path which conforms to the rules of the current OS.
     !> \param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
     subroutine modifyPath(inputPath,outputPath,Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: modifyPath
 #endif
         use Err_mod, only: Err_type
@@ -487,7 +487,7 @@ contains
     !> \param[out]      name    :   The base file name segment of the path.
     !> \param[out]      ext     :   The file extension segment of the path.
     subroutine getDirNameExt(path,slash,dir,name,ext)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirNameExt
 #endif
         implicit none
@@ -510,7 +510,7 @@ contains
     !> \param[out]      dir         :   The directory segment of the path.
     !> \param[out]      fullName    :   The full file name and extension segment of the path.
     subroutine getDirFullName(path,slash,dir,fullName)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirFullName
 #endif
         use Constants_mod, only: IK
@@ -554,7 +554,7 @@ contains
     !> \param[out]      name        :   The name segment of the file.
     !> \param[out]      ext         :   The extension segment of the file.
     subroutine getNameExt(fullName,name,ext)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNameExt
 #endif
         use Constants_mod, only: IK
@@ -595,7 +595,7 @@ contains
     !> \warning
     !> This routine does not currently check for OS type.
     function mkdir(dirPath,isWindows,wait) result(Err)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: mkdir
 #endif
         use System_mod, only: SysCmd_type, OS_type
@@ -644,4 +644,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Path_mod
+end module Path_mod ! LCOV_EXCL_LINE

@@ -154,12 +154,15 @@ contains
     subroutine test_Batse()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
-        call Test%run(test_readDataGRB_1,"test_readDataGRB_1")
-        call Test%run(test_readDataGRB_2,"test_readDataGRB_2")
-        call Test%run(test_getLog10PF53,"test_getLog10PF53")
         call Test%run(test_getLogPF53,"test_getLogPF53")
         call Test%run(test_getLogPbol,"test_getLogPbol")
-        call Test%run(test_getLogEffectivePeakPhotonFlux,"test_getLogEffectivePeakPhotonFlux")
+        call Test%run(test_getLog10PF53,"test_getLog10PF53")
+        call Test%run(test_readDataGRB_1,"test_readDataGRB_1")
+        call Test%run(test_readDataGRB_2,"test_readDataGRB_2")
+        call Test%run(test_getLogEffectivePeakPhotonFlux_SPR_1,"test_getLogEffectivePeakPhotonFlux_SPR_1")
+        call Test%run(test_getLogEffectivePeakPhotonFlux_DPR_1,"test_getLogEffectivePeakPhotonFlux_DPR_1")
+        call Test%run(test_getLogEffectivePeakPhotonFluxCorrection_SPR_1,"test_getLogEffectivePeakPhotonFluxCorrection_SPR_1")
+        call Test%run(test_getLogEffectivePeakPhotonFluxCorrection_DPR_1,"test_getLogEffectivePeakPhotonFluxCorrection_DPR_1")
         call Test%finalize()
     end subroutine test_Batse
 
@@ -200,12 +203,13 @@ contains
         do ip = 1,np
             assertion = abs(LOG10EPK_LOG10PH(2,ip)-getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL))<tolerance
             if (assertion) cycle
+            ! LCOV_EXCL_START
             if (Test%isDebugMode) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
             end if
-            exit
+            ! LCOV_EXCL_STOP
         end do
 
     end function test_getLog10PF53
@@ -224,12 +228,13 @@ contains
         do ip = 1,np
             assertion = abs( getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL) - getLogPF53(LOG10EPK_LOG10PH(1,ip)*LN10,LOG10PBOL)/LN10 ) < tolerance
             if (assertion) cycle
+            ! LCOV_EXCL_START
             if (Test%isDebugMode) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
             end if
-            exit
+            ! LCOV_EXCL_STOP
         end do
 
     end function test_getLogPF53
@@ -252,27 +257,112 @@ contains
                             - LOG10PBOL &
                             ) < tolerance
             if (assertion) cycle
-            if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
+            ! LCOV_EXCL_START
+            if (Test%isDebugMode .and. .not. assertion) then
                 write(*,"(A)") "The error with respect to reference value is larger than the tolerance.", new_line("a") &
                              , "tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL): " &
                              , tolerance, ip, LOG10EPK_LOG10PH(2,ip), getLog10PF53(LOG10EPK_LOG10PH(1,ip),LOG10PBOL)
             end if
-            exit
+            ! LCOV_EXCL_STOP
         end do
 
     end function test_getLogPbol
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_getLogEffectivePeakPhotonFlux() result(assertion)
+    function test_getLogEffectivePeakPhotonFlux_SPR_1() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real32
         implicit none
         logical                 :: assertion
-        real(RK), parameter     :: tolerance = 1.e-12_RK
-        assertion = abs(THRESH_ERFC_AMP + getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)) < tolerance
-        if (Test%isDebugMode .and. .not. assertion .and. Test%Image%isFirst) then
-            write(Test%outputUnit,*) "getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG) = ", getLogEffectivePeakPhotonFlux(0._RK,THRESH_ERFC_AVG)
+        real(RK), parameter     :: tolerance = sqrt(epsilon(1._RK))
+        real(RK), parameter     :: logEffectivePeakPhotonFlux_ref = -real(THRESH_ERFC_AMP,RK)
+        real(RK)                :: logEffectivePeakPhotonFlux
+        real(RK)                :: difference
+        logEffectivePeakPhotonFlux = getLogEffectivePeakPhotonFlux(0._RK,real(THRESH_ERFC_AVG,RK))
+        difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
+        assertion = difference < tolerance
+        ! LCOV_EXCL_START
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux        = ", logEffectivePeakPhotonFlux
+            write(Test%outputUnit,"(*(g0))") "difference                        = ", difference
+            write(Test%outputUnit,"(*(g0))")
         end if
-    end function test_getLogEffectivePeakPhotonFlux
+        ! LCOV_EXCL_STOP
+    end function test_getLogEffectivePeakPhotonFlux_SPR_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getLogEffectivePeakPhotonFlux_DPR_1() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64
+        implicit none
+        logical                 :: assertion
+        real(RK), parameter     :: tolerance = sqrt(epsilon(1._RK))
+        real(RK), parameter     :: logEffectivePeakPhotonFlux_ref = -real(THRESH_ERFC_AMP,RK)
+        real(RK)                :: logEffectivePeakPhotonFlux
+        real(RK)                :: difference
+        logEffectivePeakPhotonFlux = getLogEffectivePeakPhotonFlux(0._RK,real(THRESH_ERFC_AVG,RK))
+        difference = abs(logEffectivePeakPhotonFlux - logEffectivePeakPhotonFlux_ref)
+        assertion = difference < tolerance
+        ! LCOV_EXCL_START
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux_ref    = ", logEffectivePeakPhotonFlux_ref
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFlux        = ", logEffectivePeakPhotonFlux
+            write(Test%outputUnit,"(*(g0))") "difference                        = ", difference
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getLogEffectivePeakPhotonFlux_DPR_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getLogEffectivePeakPhotonFluxCorrection_SPR_1() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real32
+        implicit none
+        logical                 :: assertion
+        real(RK), parameter     :: tolerance = sqrt(epsilon(1._RK))
+        real(RK), parameter     :: logEffectivePeakPhotonFluxCorrection_ref = real(THRESH_ERFC_AMP,RK)
+        real(RK)                :: logEffectivePeakPhotonFluxCorrection
+        real(RK)                :: difference
+        logEffectivePeakPhotonFluxCorrection = getLogEffectivePeakPhotonFluxCorrection_SPR(real(THRESH_ERFC_AVG,RK))
+        difference = abs(logEffectivePeakPhotonFluxCorrection - logEffectivePeakPhotonFluxCorrection_ref)
+        assertion = difference < tolerance
+        ! LCOV_EXCL_START
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection_ref  = ", logEffectivePeakPhotonFluxCorrection_ref
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection      = ", logEffectivePeakPhotonFluxCorrection
+            write(Test%outputUnit,"(*(g0))") "difference                                = ", difference
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getLogEffectivePeakPhotonFluxCorrection_SPR_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getLogEffectivePeakPhotonFluxCorrection_DPR_1() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64
+        implicit none
+        logical                 :: assertion
+        real(RK), parameter     :: tolerance = sqrt(epsilon(1._RK))
+        real(RK), parameter     :: logEffectivePeakPhotonFluxCorrection_ref = real(THRESH_ERFC_AMP,RK)
+        real(RK)                :: logEffectivePeakPhotonFluxCorrection
+        real(RK)                :: difference
+        logEffectivePeakPhotonFluxCorrection = getLogEffectivePeakPhotonFluxCorrection_DPR(real(THRESH_ERFC_AVG,RK))
+        difference = abs(logEffectivePeakPhotonFluxCorrection - logEffectivePeakPhotonFluxCorrection_ref)
+        assertion = difference < tolerance
+        ! LCOV_EXCL_START
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection_ref  = ", logEffectivePeakPhotonFluxCorrection_ref
+            write(Test%outputUnit,"(*(g0))") "logEffectivePeakPhotonFluxCorrection      = ", logEffectivePeakPhotonFluxCorrection
+            write(Test%outputUnit,"(*(g0))") "difference                                = ", difference
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getLogEffectivePeakPhotonFluxCorrection_DPR_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -124,7 +124,7 @@ contains
         rewind(fileUnit)
 
         do i = 1, NLINE
-        
+
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
 
@@ -135,17 +135,19 @@ contains
             end if
 
             OutputList(i)%record = trim(OutputList(i)%record)
-        
+
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
-        
+
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
                 write(Test%outputUnit,"(*(g0))")
             end if
-        
+            ! LCOV_EXCL_STOP
+
         end do
 
     end function test_note_1
@@ -190,7 +192,7 @@ contains
         rewind(fileUnit)
 
         do i = 1, NLINE
-        
+
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
 
@@ -201,17 +203,19 @@ contains
             end if
 
             OutputList(i)%record = trim(OutputList(i)%record)
-        
+
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
-        
+
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
                 write(Test%outputUnit,"(*(g0))")
             end if
-        
+            ! LCOV_EXCL_STOP
+
         end do
 
     end function test_note_2
@@ -257,7 +261,7 @@ contains
         rewind(fileUnit)
 
         do i = 1, NLINE
-        
+
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
 
@@ -268,17 +272,19 @@ contains
             end if
 
             OutputList(i)%record = trim(OutputList(i)%record)
-        
+
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
-        
+
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
                 write(Test%outputUnit,"(*(g0))")
             end if
-        
+            ! LCOV_EXCL_STOP
+
         end do
 
     end function test_warn_1
@@ -323,7 +329,7 @@ contains
         rewind(fileUnit)
 
         do i = 1, NLINE
-        
+
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
 
@@ -334,17 +340,19 @@ contains
             end if
 
             OutputList(i)%record = trim(OutputList(i)%record)
-        
+
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
-        
+
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
                 write(Test%outputUnit,"(*(g0))")
             end if
-        
+            ! LCOV_EXCL_STOP
+
         end do
 
     end function test_warn_2
@@ -354,7 +362,7 @@ contains
     function test_abort_1() result(assertion)
 
         use JaggedArray_mod, only: CharVec_type
-        use Constants_mod, only: IK 
+        use Constants_mod, only: IK
         use String_mod, only: num2str
 
         implicit none
@@ -393,7 +401,7 @@ contains
         rewind(fileUnit)
 
         do i = 1, NLINE
-        
+
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
 
@@ -404,23 +412,28 @@ contains
             end if
 
             OutputList(i)%record = trim(OutputList(i)%record)
-        
+
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
-        
+
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
                 write(Test%outputUnit,"(*(g0))")
             end if
-        
+            ! LCOV_EXCL_STOP
+
         end do
 
     end function test_abort_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Test the effects of an input non-null error code `Err%stat`.
+    !> Test the effects of missing arguments `prefix`, `returnEnabled`, and `newline`.
     function test_abort_2() result(assertion)
 
         use JaggedArray_mod, only: CharVec_type
@@ -448,22 +461,21 @@ contains
         OutputList_ref(4)%record = " - FATAL: The absence of evidence is not evidence for absence.    Carl Sagan"
         OutputList_ref(5)%record = " - FATAL: If I have seen further, it is by standing on the shoulders of giants.    Isaac Newton"
         OutputList_ref(6)%record = " - FATAL: I don't pretend to understand the universe - it's much bigger than I am.    Thomas Carlyle"
-        OutputList_ref(7)%record = ""
+        OutputList_ref(7)%record = " - FATAL: Error Code: 123."
 
         open(newunit = fileUnit, status = "scratch")
         !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_abort_2."//num2str(Test%Image%id)//".out", status = "replace")
 
-        Err%msg = replaceStr(mc_msg, "\n", NLC) 
+        Err%msg = replaceStr(mc_msg, "\n", NLC)
+        Err%stat = 123_IK
         call abort  ( Err = Err &
-                    , returnEnabled = .true. &
                     , outputUnit = fileUnit &
-                    , newline  = NLC &
                     )
 
         rewind(fileUnit)
 
         do i = 1, NLINE
-        
+
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
 
@@ -474,21 +486,23 @@ contains
             end if
 
             OutputList(i)%record = trim(OutputList(i)%record)
-        
+
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
-        
+
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
                 write(Test%outputUnit,"(*(g0))")
-                write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
-                write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
+                write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = '", OutputList_ref(i)%record, "'"
+                write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = '", OutputList(i)%record, "'"
                 write(Test%outputUnit,"(*(g0))")
             end if
-        
+            ! LCOV_EXCL_STOP
+
         end do
 
     end function test_abort_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Err_mod
+end module Test_Err_mod ! LCOV_EXCL_LINE

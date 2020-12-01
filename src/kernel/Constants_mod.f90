@@ -55,6 +55,8 @@ module Constants_mod
 
     implicit none
 
+    character(*), parameter :: MODULE_NAME = "@Constants_mod"
+
     ! Constants for computational accuracy
 
     integer     , parameter :: SPR = real32                                             !< @public single precision real kind

@@ -5,6 +5,7 @@
   Test_mod.f90
   Test_BandSpectrum_mod.f90
   Test_Batse_mod.f90
+  Test_Constants_mod.f90
   Test_CorrCoef_mod.f90
   Test_Cosmology_mod.f90
   Test_CrossCorr_mod.f90
@@ -20,10 +21,12 @@
   Test_Misc_mod.f90
   Test_Optimization_mod.f90
   Test_Path_mod.f90
+  Test_ParaDRAM_mod.f90
   Test_RandomSeed_mod.f90
   Test_Sort_mod.f90
   Test_StarFormation_mod.f90
   Test_Statistics_mod.f90
+  Test_GeoCyclicFit_mod.f90
   Test_String_mod.f90
   Test_System_mod.f90
   Test_Timer_mod.f90
@@ -31,4 +34,3 @@
   Test_TranGaus_mod.f90
   main.f90
   !Test_EconomicsToolbox_mod.f90
-!  Test_ParaMonte_mod.f90

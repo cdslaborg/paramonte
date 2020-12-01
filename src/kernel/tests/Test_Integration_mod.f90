@@ -102,18 +102,22 @@ contains
                             , ierr = ierr &
                             )
 
-        if (ierr/=0_IK) then
-            assertion = .false.
+        assertion = ierr == 0_IK
+
+        if (Test%isDebugMode .and. .not. assertion) then
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
+            ! LCOV_EXCL_STOP
         end if
 
         difference = abs(integral - integral_ref) / abs(integral_ref)
         assertion = difference < tolerance
         assertion = assertion .and. relativeError <= tolerance
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
@@ -122,6 +126,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombOpen_1
 
@@ -153,12 +158,15 @@ contains
                             , ierr = ierr &
                             )
 
-        if (ierr/=0_IK) then
-            assertion = .false.
+        assertion = ierr == 0_IK
+
+        if (Test%isDebugMode .and. .not. assertion) then
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
+            ! LCOV_EXCL_STOP
         end if
 
         difference = abs(integral - integral_ref) / abs(integral_ref)
@@ -166,6 +174,7 @@ contains
         assertion = assertion .and. relativeError <= tolerance
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
             write(Test%outputUnit,"(*(g0))") "integral      = ", integral
@@ -173,6 +182,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombOpen_2
 
@@ -204,12 +214,14 @@ contains
                             , ierr = ierr &
                             )
 
-        if (ierr/=0_IK) then
-            assertion = .false.
+        assertion = ierr == 0_IK
+        if (Test%isDebugMode .and. .not. assertion) then
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
+            ! LCOV_EXCL_STOP
         end if
 
         difference = abs(integral - integral_ref) / abs(integral_ref)
@@ -217,6 +229,7 @@ contains
         assertion = assertion .and. relativeError <= tolerance
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
             write(Test%outputUnit,"(*(g0))") "integral      = ", integral
@@ -224,6 +237,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombOpen_3
 
@@ -255,12 +269,14 @@ contains
                             , ierr = ierr &
                             )
 
-        if (ierr/=0_IK) then
-            assertion = .false.
+        assertion = ierr == 0_IK
+        if (Test%isDebugMode .and. .not. assertion) then
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
+            ! LCOV_EXCL_STOP
         end if
 
         difference = abs(integral - integral_ref) / abs(integral_ref)
@@ -268,6 +284,7 @@ contains
         assertion = assertion .and. relativeError <= tolerance
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
             write(Test%outputUnit,"(*(g0))") "integral      = ", integral
@@ -275,6 +292,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombOpen_4
 
@@ -304,13 +322,14 @@ contains
                                 , numFuncEval = numFuncEval &
                                 , ierr = ierr &
                                 )
-
-        if (ierr/=0_IK) then
-            assertion = .false.
+        assertion = ierr == 0_IK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 write(Test%outputUnit,"(*(g0))") "ierr = ", ierr, " /= 0"
             end if
             return
+        ! LCOV_EXCL_STOP
         end if
 
         difference = abs(integral - integral_ref) / abs(integral_ref)
@@ -318,6 +337,7 @@ contains
         assertion = assertion .and. relativeError <= tolerance
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "integral_ref  = ", integral_ref
             write(Test%outputUnit,"(*(g0))") "integral      = ", integral
@@ -325,6 +345,7 @@ contains
             write(Test%outputUnit,"(*(g0))") "relativeError = ", relativeError
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_doQuadRombClosed_1
 
@@ -349,6 +370,7 @@ contains
 
     ! requires `midsql`.
     ! The MATLAB test function: https://www.mathworks.com/help/matlab/ref/integral.html
+    ! LCOV_EXCL_START
     function getTestFuncOpenIntervalMATLAB(x) result(funcVal)
         use Constants_mod, only: RK
         implicit none
@@ -356,7 +378,8 @@ contains
         real(RK)                :: funcVal
         funcVal = exp(-x**2) * log(x)**2
     end function getTestFuncOpenIntervalMATLAB
+    ! LCOV_EXCL_STOP
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Integration_mod
+end module Test_Integration_mod ! LCOV_EXCL_LINE

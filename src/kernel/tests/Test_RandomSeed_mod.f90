@@ -98,6 +98,7 @@ contains
         call random_seed(size=seedSize)
         assertion = RandomSeed%size == seedSize
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -120,6 +121,7 @@ contains
 #endif
 
         end if
+        ! LCOV_EXCL_STOP
 
 #if defined CAF_ENABLED
         allocate( Seed(seedSize)[*] )
@@ -141,6 +143,7 @@ contains
         call random_seed(get=Seed)
         assertion = all(RandomSeed%Value == Seed)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -163,6 +166,7 @@ contains
 #endif
 
         end if
+        ! LCOV_EXCL_STOP
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Testing RandomSeed_type for equivalence of Seed vector on all images
@@ -195,6 +199,7 @@ contains
         call random_seed(get=Seed)
         assertion = all(RandomSeed%Value == Seed)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -217,6 +222,7 @@ contains
 #endif
 
         end if
+        ! LCOV_EXCL_STOP
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! Testing RandomSeed_type for equivalence of Seed vector on all images
@@ -246,6 +252,7 @@ contains
             allocate( SeedNew(seedSize) )
             call random_seed(get=SeedNew)
             assertion = all(SeedNew==Seed)
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 if (Test%Image%id==1) then
                     write(Test%outputUnit,"(*(g0,' '))") "this_image(), SeedOld:", Test%Image%id,",", Seed
@@ -261,6 +268,7 @@ contains
                 if (Test%Image%id<Test%Image%count) sync images (Test%Image%id+1)
 #endif
             end if
+            ! LCOV_EXCL_STOP
             deallocate(SeedNew)
         end block
 
@@ -279,6 +287,7 @@ contains
         call random_seed(get=Seed)
         assertion = all(RandomSeed%Value == Seed)
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 
             write(Test%outputUnit,"(*(g0,:,' '))")
@@ -301,6 +310,7 @@ contains
 #endif
 
         end if
+        ! LCOV_EXCL_STOP
 
 #if defined CAF_ENABLED
         sync all
@@ -319,6 +329,7 @@ contains
             allocate( SeedNew(seedSize) )
             call random_seed(get=SeedNew)
             assertion = all(SeedNew==Seed)
+            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertion) then
                 if (Test%Image%id==1) then
                     write(Test%outputUnit,"(*(g0,' '))") "this_image(), SeedOld(diff. on each image):", Test%Image%id,",", Seed
@@ -334,6 +345,7 @@ contains
                 if (Test%Image%id<Test%Image%count) sync images (Test%Image%id+1)
 #endif
             end if
+            ! LCOV_EXCL_STOP
             deallocate(SeedNew)
         end block
 
@@ -360,6 +372,7 @@ contains
         assertion = .not. RandomSeed%Err%occurred
         if (.not. assertion) return
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
 #if defined CAF_ENABLED
             if (Test%Image%id==1) then
@@ -371,6 +384,7 @@ contains
             if (Test%Image%id<Test%Image%count) sync images (Test%Image%id+1)
 #endif
         end if
+        ! LCOV_EXCL_STOP
 
         call random_seed(get=Seed)
         assertion = .true.
@@ -405,6 +419,7 @@ contains
         end if
 #endif
 
+        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             if (Test%Image%id==1) then
                 write(Test%outputUnit,"(*(g0,' '))") "this_image(), Seed(same on each image):", Test%Image%id,",", RandomSeed%Value
@@ -418,6 +433,7 @@ contains
             if (Test%Image%id<Test%Image%count) sync images (Test%Image%id+1)
 #endif
         end if
+        ! LCOV_EXCL_STOP
 
         deallocate( Seed )
 
@@ -425,4 +441,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_RandomSeed_mod
+end module Test_RandomSeed_mod ! LCOV_EXCL_LINE

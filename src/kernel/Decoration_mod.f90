@@ -100,7 +100,7 @@ module Decoration_mod
 
     interface
     module function constructDecoration(tabStr,symbol,text,List) result(Decoration)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructDecoration
 #endif
         use JaggedArray_mod, only: CharVec_type
@@ -115,7 +115,7 @@ module Decoration_mod
 
     interface
     module subroutine writeDecoratedText(text,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit,newLine)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedText
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -132,7 +132,7 @@ module Decoration_mod
 
     interface
     module subroutine writeDecoratedList(List,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedList
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -149,7 +149,7 @@ module Decoration_mod
 
     interface
     pure module function drawLine(symbol,width) result(line)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: drawLine
 #endif
         use Constants_mod, only: IK
@@ -164,7 +164,7 @@ module Decoration_mod
 
     interface
     pure module function sandwich(text,symbol,width,thicknessHorz) result(sandwichedText)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sandwich
 #endif
         use Constants_mod, only: IK
@@ -187,7 +187,7 @@ module Decoration_mod
                             , advance       &
 #endif
                             )
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: write
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -206,7 +206,7 @@ module Decoration_mod
 
     interface
     module function getListOfLines(string,delimiter) result(ListOfLines)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getListOfLines
 #endif
         implicit none
@@ -220,7 +220,7 @@ module Decoration_mod
 
     interface
     module function wrapText(string,width,split, pad) result(ListOfLines)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: wrapText
 #endif
         use Constants_mod, only: IK
@@ -236,7 +236,7 @@ module Decoration_mod
 
 !    interface
 !    module function style(string, attr, clbg, clfg, isUnixShell) result(modifiedString)
-!#if defined DLL_ENABLED && !defined CFI_ENABLED
+!#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat
 !#endif
 !        implicit none
@@ -294,7 +294,7 @@ contains
     !
     !  For more information, see: https://misc.flogisoft.com/bash/tip_colors_and_formatting
     function style(string, attr, clfg, clbg) result(modifiedString)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat
 #endif
         use Constants_mod, only: ESC
@@ -405,7 +405,7 @@ contains
     !> \return
     !> `formatStr` : The output format string to be used in IO.
     pure function getGenericFormat(width,precision,delim,prefix) result(formatStr)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat
 #endif
         ! generates IO format strings, primarily for use in the output report files of ParaMonte
@@ -435,4 +435,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Decoration_mod
+end module Decoration_mod ! LCOV_EXCL_LINE

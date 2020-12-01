@@ -86,7 +86,7 @@ contains
     !> \return
     !> `distanceSq` : The distance squared.
     pure function getDistanceSq(nd,Point1,Point2) result(distanceSq)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getDistanceSq
 #endif
         use Constants_mod, only: IK, RK
@@ -111,7 +111,7 @@ contains
     !> \return
     !> `corCoef` : The correlation coefficient corresponding to the input Fisher transformation.
     pure elemental function getCorCeofFromFisherTrans(fisherTrans) result(corCoef)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorCeofFromFisherTrans
 #endif
         use Constants_mod, only: RK
@@ -131,7 +131,7 @@ contains
     !> \return
     !> `fisherTrans` : The output Fisher transformation.
     pure elemental function getFisherTransFromCorCoef(corCoef) result(fisherTrans)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherTransFromCorCoef
 #endif
         use Constants_mod, only: RK
@@ -155,7 +155,7 @@ contains
     !> \remark
     !> The first element of `CumSum` is the same as the first element of `Vec`.
     pure function getCumSum_IK(vecLen,Vec) result(CumSum)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_IK
 #endif
         use Constants_mod, only: IK
@@ -180,7 +180,7 @@ contains
     !> \remark
     !> The first element of `CumSum` is the same as the first element of `Vec`.
     pure function getCumSum_RK(vecLen,Vec) result(CumSum)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -207,7 +207,7 @@ contains
     !> \remark
     !> The last element of `CumSumReverse` is the same as the last element of `Vec`.
     pure function getCumSumReverse_IK(vecLen,Vec) result(CumSumReverse)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSumReverse_IK
 #endif
         use Constants_mod, only: IK
@@ -234,7 +234,7 @@ contains
     !> \remark
     !> The last element of `CumSumReverse` is the same as the last element of `Vec`.
     pure function getCumSumReverse_RK(vecLen,Vec) result(CumSumReverse)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSumReverse_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -263,7 +263,7 @@ contains
     !> \warning
     !> The onus is on the user to ensure `logValueLarger > logValueSamller`.
     pure function getLogSubExp_RK(logValueLarger,logValueSamller) result(logSubExp)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSubExp_RK
 #endif
         use Constants_mod, only: RK
@@ -284,7 +284,7 @@ contains
     !> \return
     !> `logSumExp` : A real number.
     pure function getLogSumExp_RK(lenLogValue, LogValue, maxLogValue) result(logSumExp)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExp_RK
 #endif
         use Constants_mod, only: IK, RK, LOGTINY_RK
@@ -323,7 +323,7 @@ contains
     !> \return
     !> `logSumExp` : A complex number.
     pure function getLogSumExp_CK(lenLogValue, LogValue, maxLogValue) result(logSumExp)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExp_CK
 #endif
         use Constants_mod, only: IK, RK, LOGTINY_RK
@@ -355,7 +355,7 @@ contains
     !> \brief
     !> Return the logarithm of the egg-box probability density function in one dimension.
     pure function getLogEggBoxSD_RK(constant,exponent,coef,point) result(logEggBox)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEggBoxSD_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -373,7 +373,7 @@ contains
     !> \brief
     !> Return the logarithm of the egg-box probability density function in one dimension, as a complex number.
     pure function getLogEggBoxSD_CK(constant,exponent,coef,point) result(logEggBox)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEggBoxSD_CK
 #endif
         use Constants_mod, only: IK, RK
@@ -391,7 +391,7 @@ contains
     !> \brief
     !> Return the logarithm of the egg-box probability density function in multiple dimensions, as a real number.
     pure function getLogEggBoxMD_RK(nd,constant,exponent,Coef,Point) result(logEggBox)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEggBoxMD_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -415,7 +415,7 @@ contains
     !> \brief
     !> Return the logarithm of the egg-box probability density function in multiple dimensions, as a complex number.
     pure function getLogEggBoxMD_CK(nd,constant,exponent,Coef,Point) result(logEggBox)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEggBoxMD_CK
 #endif
         use Constants_mod, only: IK, RK
@@ -447,7 +447,7 @@ contains
     !> \remark
     !> This function is mostly useful for large input integers.
     pure function getLogFactorial(positiveInteger) result(logFactorial)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFactorial
 #endif
         use Constants_mod, only: IK, RK
@@ -471,7 +471,7 @@ contains
     !> \return
     !> `factorial`  :   The factorial.
     pure function getFactorial(positiveInteger) result(factorial)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getFactorial
 #endif
         use Constants_mod, only: IK, RK
@@ -490,7 +490,7 @@ contains
     !> \brief
     !> Return the Gamma function for a half integer input.
     pure function getGammaHalfInt(halfIntNum)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaHalfInt
 #endif
         use Constants_mod, only: IK, RK, SQRTPI
@@ -520,7 +520,7 @@ contains
     !> \return
     !> `ellVolCoef` : The coefficient of the volume of an `nd`-dimensional ellipsoid.
     pure function getEllVolCoef(nd) result(ellVolCoef)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEllVolCoef
 #endif
         use Constants_mod, only: IK, RK, PI
@@ -567,7 +567,7 @@ contains
     !> \return
     !> `logEllVolCoef` : The natural logarithm of the volume of an `nd`-dimensional unit-ball.
     pure function getLogEllVolCoef(nd) result(logEllVolCoef)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEllVolCoef
 #endif
         use Constants_mod, only: IK, RK, PI
@@ -620,7 +620,7 @@ contains
     ! see for example: https://en.wikipedia.org/wiki/Particular_values_of_the_Gamma_function
     ! getEllVolCoef = PI^(nd/2) / gamma(nd/2+1) where n is just a positive integer
     pure function getLogVolUnitBall(nd) result(logVolUnitBall)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolUnitBall
 #endif
         use Constants_mod, only: IK, RK, PI
@@ -653,7 +653,7 @@ contains
     ! see for example: https://math.stackexchange.com/questions/332391/volume-of-hyperellipsoid/332434
     ! see for example: https://math.stackexchange.com/questions/2854930/volume-of-an-n-dimensional-ellipsoid
     pure function getLogVolEllipsoid(nd,logSqrtDetCovMat) result(logVolEllipsoid)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEllipsoid
 #endif
         use Constants_mod, only: IK, RK
@@ -679,7 +679,7 @@ contains
     !> \remark
     !> There is really no reason to use this function for HPC solutions, as it can be likely done more efficiently.
     pure function getLogVolEllipsoids(nd,nEllipsoid,LogSqrtDetCovMat) result(LogVolEllipsoids)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEllipsoids
 #endif
         use Constants_mod, only: IK, RK
@@ -712,7 +712,7 @@ contains
     !> On input, both `exponent` and `upperLim` must be positive, otherwise, a `lowerGamma = -infinity` will be returned to signal error.
     ! This algorithm borrows from the `gammp` implementation of the Numerical Recipes by Press et al 1992.
     pure function getLowerGamma(exponent,logGammaExponent,upperLim,tolerance) result(lowerGamma)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerGamma
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
@@ -744,7 +744,7 @@ contains
     !> On input, both `exponent` and `lowerLim` must be positive, otherwise, a `upperGamma = -infinity` will be returned to signal error.
     ! This algorithm borrows from the gammq implementation of the Numerical Recipes by Press et al 1992.
     pure function getUpperGamma(exponent,logGammaExponent,lowerLim,tolerance) result(upperGamma)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperGamma
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
@@ -779,7 +779,7 @@ contains
     !> If the algorithm fails to converge, `gammaSeries` will be set to negative infinity on output to signal error.
     ! This algorithm borrows from the gser implementation of the Numerical Recipes by Press et al 1992.
     pure function getGammaSeries(exponent,logGammaExponent,upperLim,tolerance) result(gammaSeries)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaSeries
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
@@ -830,7 +830,7 @@ contains
     !> If the algorithm fails to converge, `gammaContFrac` will be set to negative infinity on output to signal error.
     ! This algorithm borrows from the gcf implementation of the Numerical Recipes by Press et al 1992.
     pure function getGammaContFrac(exponent,logGammaExponent,lowerLim,tolerance) result(gammaContFrac)
-#if defined DLL_ENABLED && !defined CFI_ENABLED
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaContFrac
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
