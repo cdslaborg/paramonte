@@ -177,11 +177,11 @@ contains
         block
             use mpi
             integer(IK) :: ierrMPI
-            logical     :: isFinalized
-            call mpi_finalized( isFinalized, ierrMPI )
-            if (.not. isFinalized) then
+            !logical     :: isFinalized
+            !call mpi_finalized( isFinalized, ierrMPI )
+            !if (.not. isFinalized) then
                 call mpi_barrier(mpi_comm_world,ierrMPI)
-            end if
+            !end if
         end block
 #elif defined CAF_ENABLED
         sync all

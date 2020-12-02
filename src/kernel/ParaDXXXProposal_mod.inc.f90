@@ -201,6 +201,7 @@ contains
         use SpecBase_mod, only: SpecBase_type
         use SpecMCMC_mod, only: SpecMCMC_type
         use SpecDRAM_mod, only: SpecDRAM_type
+        use Matrix_mod, only: getCholeskyFactor
         use String_mod, only: num2str
         use Err_mod, only: abort
 #if defined UNIFORM
@@ -302,36 +303,22 @@ contains
 
         ! Now get the Cholesky Factor of the Covariance Matrix. Lower comv_CholDiagLower will be the CholFac
 
-        block
-            use Matrix_mod, only: getCholeskyFactor
-            !real(RK), allocatable :: CholeskyLower(:,:) ! dummy variable to avoid copy in / copy out
-            !CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
-            !call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
-            !comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower
-            ! The colon indexing avoids temporary array creation
-            call getCholeskyFactor( ndim, comv_CholDiagLower(:,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) )
-            call getInvCovMat()
-        end block
+        call getCholeskyFactor( ndim, comv_CholDiagLower(:,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) ) ! The `:` instead of `1:ndim` avoids temporary array creation.
         if (comv_CholDiagLower(1,0,0)<0._RK) then
+        ! LCOV_EXCL_START
             ProposalErr%msg = mc_Image%name // PROCEDURE_NAME // ": Singular input covariance matrix by user was detected. This is strange.\nCovariance matrix lower triangle:"
             do j = 1, ndim
                 do i = 1, j
                     ProposalErr%msg = ProposalErr%msg // "\n" // num2str(comv_CholDiagLower(1:i,j,0))
                 end do
             end do
-#if defined CAF_ENABLED
-            sync all
-#elif defined MPI_ENABLED
-            block
-                use mpi
-                integer :: ierrMPI
-                call mpi_barrier(mpi_comm_world,ierrMPI)
-            end block
-#endif
             ProposalErr%occurred = .true.
             call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
+        ! LCOV_EXCL_STOP
         end if
+
+        call getInvCovMat()
         mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:ndim,0,0) ))
 
         ! Scale the higher-stage delayed-rejection Cholesky Lower matrices
