@@ -212,8 +212,10 @@ contains
         logical                 :: assertion
         type(OS_type)           :: OS
 
+#if defined CODECOV_ENABLED
         mv_osCacheActivated = .false.
         mv_shCacheActivated = .false.
+#endif
 
         call OS%query()
         assertion = .not. OS%Err%occurred .and. .not. OS%Shell%Err%occurred
@@ -244,8 +246,10 @@ contains
 
         assertion = .true.
 
+#if defined CODECOV_ENABLED
         mv_osCacheActivated = .false.
         mv_shCacheActivated = .false.
+#endif
 
         call OS%Shell%query()
         assertion = assertion .and. .not. OS%Shell%Err%occurred
