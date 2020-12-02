@@ -172,7 +172,7 @@ module System_mod
 
     ! cache the OS query result to speed up code
 
-#if defined CODECOV_ENABLED || TESTING_ENABLED
+#if defined CODECOV_ENABLED || defined TESTING_ENABLED || defined DBG_ENABLED
     logical                             :: mv_osCacheActivated = .false. !< A logical flag indicating whether an OS query has occurred or not.
     logical                             :: mv_shCacheActivated = .false. !< A logical flag indicating whether a Shell query has occurred or not.
 #else
