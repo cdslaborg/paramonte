@@ -203,20 +203,17 @@ contains
 
                 ! read input file as an internal file
 
-!#if defined DBG_ENABLED
-                read(self%InputFile%Path%original,nml=ParaDXXX)
-!#else
-!                read(self%InputFile%Path%original,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
-!                self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
-!                if (self%Err%occurred) then
-!                    if (is_iostat_end(self%Err%stat)) then
-!                        call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
-!                    else
-!                        self%Err%msg = PROCEDURE_NAME // self%Err%msg
-!                        return
-!                    end if
-!                end if
-!#endif
+                read(self%InputFile%Path%original,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
+                self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
+                if (self%Err%occurred) then
+                    if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
+                        call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
+                    else
+                        read(self%InputFile%Path%original,nml=ParaDXXX)
+                        self%Err%msg = PROCEDURE_NAME // self%Err%msg
+                        return
+                    end if
+                end if
 
             else blockInputFileType ! the input file is external
 
@@ -257,20 +254,18 @@ contains
 
                 ! read input file
 
-!#if defined DBG_ENABLED
-                read(self%InputFile%unit,nml=ParaDXXX)
-!#else
-!                read(self%InputFile%unit,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
-!                self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
-!                if (self%Err%occurred) then
-!                    if (is_iostat_end(self%Err%stat)) then
-!                        call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
-!                    else
-!                        self%Err%msg = PROCEDURE_NAME // self%Err%msg
-!                        return
-!                    end if
-!                end if
-!#endif
+                read(self%InputFile%unit,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
+                self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
+                if (self%Err%occurred) then
+                    if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
+                        call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
+                    else
+                        rewind(self%InputFile%unit)
+                        read(self%InputFile%unit, nml=ParaDXXX)
+                        self%Err%msg = PROCEDURE_NAME // self%Err%msg
+                        return
+                    end if
+                end if
 
                 ! close input file
 

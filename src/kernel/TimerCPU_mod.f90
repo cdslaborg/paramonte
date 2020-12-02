@@ -109,10 +109,12 @@ contains
         TimerCPU%Err%msg = ""
         call cpu_time( time=TimerCPU%Time%start )
         if ( TimerCPU%Time%start<0 ) then
+        ! LCOV_EXCL_START
             TimerCPU%Err%occurred = .true.
             TimerCPU%Err%msg = PROCEDURE_NAME // ": There is no processor clock."
             return
         end if
+        ! LCOV_EXCL_STOP
         call TimerCPU%tic()
     end function constructTimerCPU
 

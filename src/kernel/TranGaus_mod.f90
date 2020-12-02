@@ -2644,31 +2644,36 @@ contains
 
         use Constants_mod, only: IK, RK
         use Statistics_mod, only: getRandInt, getRandGaus
+
         implicit none
+
         real(RK), intent(in)    :: lowerLim, upperLim
         real(RK)                :: stdTranGaus
 
-        ! Left and right limits
-        real(RK), parameter     :: xmin = -2.00443204036_RK, xmax = 3.48672170399_RK
+        real(RK), parameter     :: xmin = -2.00443204036_RK !< The left limit.
+        real(RK), parameter     :: xmax = +3.48672170399_RK !< The right limit.
 
         ! Design variables
-        integer(IK), parameter  :: KMIN = 5_IK &                        ! if kb-ka < KMIN then use a rejection algorithm
-                                 , I0 = 3271_IK                         ! = - floor(VEC_X(1)/h)
-                                   !LEN_VEC_YU = 4001 &                 ! Index of the right tail
-        real(RK)                :: INVH = 1631.73284006_RK &            ! 1/h, h being the minimal interval range
-                                 , ALPHA = 1.837877066409345_RK &       ! = log(2*pi)
-                                 , YL0 = 0.053513975472_RK &            ! y_l of the leftmost rectangle
-                                 , YLN = 0.000914116389555_RK           ! y_l of the rightmost rectangle
+       !integer(IK), parameter  :: LEN_VEC_YU = 4001                    !< Index of the right tail
+        integer(IK), parameter  :: KMIN = 5_IK                          !< if kb-ka < KMIN then use a rejection algorithm
+        integer(IK), parameter  :: I0 = 3271_IK                         !< = - floor(VEC_X(1)/h)
+        real(RK)                :: INVH = 1631.73284006_RK              !< 1/h, h being the minimal interval range
+        real(RK)                :: ALPHA = 1.837877066409345_RK         !< = log(2*pi)
+        real(RK)                :: YL0 = 0.053513975472_RK              !< y_l of the leftmost rectangle
+        real(RK)                :: YLN = 0.000914116389555_RK           !< y_l of the rightmost rectangle
 
         real(RK)                :: twiceLowerLim, expLowerUpper, z, negLogUnifRnd, unifrnd, unifrndFixed
         real(RK)                :: sim, simy, ylk, d, lowerBound    !, u
         integer(IK)             :: i, ka, kb, k
 
         ! Check if lowerLim < upperLim
+
         blockRange: if (lowerLim>=upperLim) then
 
+            ! LCOV_EXCL_START
             write(*,*) MODULE_NAME//"@getStdTranGaus: upperLim must be greater than lowerLim."
             error stop
+            ! LCOV_EXCL_STOP
 
         ! Check if |lowerLim| < |upperLim|
         elseif (abs(lowerLim)>abs(upperLim)) then blockRange
@@ -2692,7 +2697,7 @@ contains
         ! If lowerLim in the left tail (lowerLim < xmin), use rejection algorithm with a Gaussian proposal
         elseif (lowerLim<xmin) then blockRange
 
-            do
+            do ! LCOV_EXCL_LINE
                 stdTranGaus = getRandGaus();
                 if ( (stdTranGaus>=lowerLim) .and. (stdTranGaus<=upperLim) ) exit
             end do
@@ -2727,7 +2732,7 @@ contains
                 return
             end if
 
-            do
+            do ! LCOV_EXCL_LINE
 
                 ! Sample integer between ka and kb
                 k = getRandInt(ka,kb) + 1_IK;   ! +1 due to index offset in Fortran
@@ -2819,4 +2824,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module TranGaus_mod
+end module TranGaus_mod ! LCOV_EXCL_LINE

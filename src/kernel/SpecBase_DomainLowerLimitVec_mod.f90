@@ -106,7 +106,7 @@ contains
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(DomainLowerLimitVec_type), intent(in)    :: DomainLowerLimitVecObj
+        class(DomainLowerLimitVec_type), intent(in) :: DomainLowerLimitVecObj
         integer(IK), intent(in)                     :: nd
         if (allocated(domainLowerLimitVec)) deallocate(domainLowerLimitVec)
         allocate(domainLowerLimitVec(nd))

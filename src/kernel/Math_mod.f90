@@ -450,7 +450,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFactorial
 #endif
-        use Constants_mod, only: IK, RK
+        use Constants_mod, only: IK, RK ! LCOV_EXCL_LINE
         implicit none
         integer(IK), intent(in) :: positiveInteger
         integer(IK)             :: i
@@ -488,22 +488,66 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Return the Gamma function for a half integer input.
-    pure function getGammaHalfInt(halfIntNum)
+    !> Return the Gamma function for a half-integer input as real of kind `RK`.
+    !>
+    !> \param[in]   positiveHalfInteger :   The input half integer as a real number
+    !>
+    !> \remark
+    !> The equation for half-integer Gamma-function is given as,
+    !> \f{equation}
+    !>     \Gamma \left( \frac{n}{2} \right) = \sqrt \pi \frac{ (n-2)!! }{ 2^\frac{n-1}{2} } ~,
+    !> \f}
+    !> 
+    !> \return
+    !> `gammaHalfInt`   :   The Gamma function for a half integer input.
+    pure function getGammaHalfInt(positiveHalfInteger) result(gammaHalfInt)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaHalfInt
 #endif
         use Constants_mod, only: IK, RK, SQRTPI
         implicit none
-        real(RK), intent(in) :: halfIntNum
-        real(RK)             :: getGammaHalfInt
+        real(RK), intent(in) :: positiveHalfInteger
+        real(RK)             :: gammaHalfInt
         integer(IK)          :: i,k
-        getGammaHalfInt = SQRTPI
-        k = nint(halfIntNum-0.5_RK,kind=IK)    ! halfIntNum = k + 1/2
+        gammaHalfInt = SQRTPI
+        k = nint(positiveHalfInteger-0.5_RK,kind=IK) ! positiveHalfInteger = k + 1/2
         do i = k+1, 2*k
-            getGammaHalfInt = getGammaHalfInt * i / 4._RK
+            gammaHalfInt = gammaHalfInt * 0.25_RK * i
         end do
     end function getGammaHalfInt
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Return the natural logarithm of the Gamma function for a half-integer input as real of kind `RK`.
+    !>
+    !> \param[in]   positiveHalfInteger :   The input half integer as a real number
+    !>
+    !> \remark
+    !> The equation for half-integer Gamma-function is given as,
+    !> \f{equation}
+    !>     \Gamma \left( \frac{n}{2} \right) = \sqrt \pi \frac{ (n-2)!! }{ 2^\frac{n-1}{2} } ~,
+    !> \f}
+    !> 
+    !> \return
+    !> `gammaHalfInt`   :   The Gamma function for a half integer input.
+    pure function getLogGammaHalfInt(positiveHalfInteger) result(logGammaHalfInt)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getGammaHalfInt
+#endif
+        use Constants_mod, only: IK, RK, SQRTPI
+        implicit none
+        real(RK), intent(in)    :: positiveHalfInteger
+        real(RK), parameter     :: COEF = log(0.25_RK)
+        real(RK), parameter     :: LOG_SQRTPI = log(SQRTPI)
+        real(RK)                :: logGammaHalfInt
+        integer(IK)             :: i, k
+        k = nint(positiveHalfInteger-0.5_RK,kind=IK) ! positiveHalfInteger = k + 1/2
+        logGammaHalfInt = LOG_SQRTPI
+        do i = k+1, 2*k
+            logGammaHalfInt = logGammaHalfInt + COEF + log(real(i,kind=RK))
+        end do
+    end function getLogGammaHalfInt
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -881,4 +925,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Math_mod
+end module Math_mod ! LCOV_EXCL_LINE

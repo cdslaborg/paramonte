@@ -453,6 +453,10 @@ contains
     !> \remark
     !> This procedure is a static method of the class [String_type](@ref string_type).
     !>
+    !> \todo
+    !> Currently, `minLen` must be smaller than `NUM2STR_MAXLEN`, for the code to function properly.
+    !> This has to be improved, similar to the `real2str` procedures.
+    !>
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function int322str(integerIn,formatIn,minLen)
@@ -493,6 +497,10 @@ contains
     !>
     !> \remark
     !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \todo
+    !> Currently, `minLen` must be smaller than `NUM2STR_MAXLEN`, for the code to function properly.
+    !> This has to be improved, similar to the `real2str` procedures.
     !>
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
@@ -543,11 +551,13 @@ contains
 #endif
         use, intrinsic :: iso_fortran_env, only: real32
         implicit none
-        real(real32), intent(in)           :: realIn
-        character(*), intent(in), optional :: formatIn
-        integer(IK) , intent(in), optional :: minLen
-        character(:), allocatable          :: real322str
-        allocate(character(NUM2STR_MAXLEN) :: real322str)
+        real(real32), intent(in)            :: realIn
+        character(*), intent(in), optional  :: formatIn
+        integer(IK) , intent(in), optional  :: minLen
+        character(:), allocatable           :: dumstr
+        character(:), allocatable           :: real322str
+        integer(IK)                         :: len_real322str
+        allocate(character(NUM2STR_MAXLEN)  :: real322str)
         if (present(formatIn)) then
             write(real322str,formatIn) realIn
         else
@@ -555,7 +565,14 @@ contains
         end if
         if (present(minLen)) then
             real322str = adjustl(real322str)
-            real322str = real322str(1:minLen)
+            len_real322str = len(real322str)
+            if (minLen>len_real322str) then
+                allocate(character(minLen) :: dumstr)
+                dumstr(1:len_real322str) = real322str
+                call move_alloc(from = dumstr, to = real322str)
+            else
+                real322str = real322str(1:minLen)
+            end if
         else
             real322str = trim(adjustl(real322str))
         end if
@@ -584,11 +601,13 @@ contains
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
         implicit none
-        real(real64), intent(in)           :: realIn
-        character(*), intent(in), optional :: formatIn
-        integer(IK) , intent(in), optional :: minLen
-        character(:), allocatable          :: real642str
-        allocate(character(NUM2STR_MAXLEN) :: real642str)
+        real(real64), intent(in)            :: realIn
+        character(*), intent(in), optional  :: formatIn
+        integer(IK) , intent(in), optional  :: minLen
+        character(:), allocatable           :: dumstr
+        character(:), allocatable           :: real642str
+        integer(IK)                         :: len_real642str
+        allocate(character(NUM2STR_MAXLEN)  :: real642str)
         if (present(formatIn)) then
             write(real642str,formatIn) realIn
         else
@@ -596,7 +615,14 @@ contains
         end if
         if (present(minLen)) then
             real642str = adjustl(real642str)
-            real642str = real642str(1:minLen)
+            len_real642str = len(real642str)
+            if (minLen>len_real642str) then
+                allocate(character(minLen) :: dumstr)
+                dumstr(1:len_real642str) = real642str
+                call move_alloc(from = dumstr, to = real642str)
+            else
+                real642str = real642str(1:minLen)
+            end if
         else
             real642str = trim(adjustl(real642str))
         end if
@@ -625,10 +651,12 @@ contains
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
         implicit none
-        real(real64), intent(in)           :: RealIn(:)
-        character(*), intent(in), optional :: formatIn
-        integer(IK) , intent(in), optional :: minLen
-        character(:), allocatable          :: real642str_1D
+        real(real64), intent(in)            :: RealIn(:)
+        character(*), intent(in), optional  :: formatIn
+        integer(IK) , intent(in), optional  :: minLen
+        character(:), allocatable           :: dumstr
+        character(:), allocatable           :: real642str_1D
+        integer(IK)                         :: len_real642str_1D
         allocate(character(NUM2STR_MAXLEN*size(RealIn)) :: real642str_1D)
         if (present(formatIn)) then
             write(real642str_1D,formatIn) RealIn
@@ -637,7 +665,14 @@ contains
         end if
         if (present(minLen)) then
             real642str_1D = adjustl(real642str_1D)
-            real642str_1D = real642str_1D(1:minLen)
+            len_real642str_1D = len(real642str_1D)
+            if (minLen>len_real642str_1D) then
+                allocate(character(minLen) :: dumstr)
+                dumstr(1:len_real642str_1D) = real642str_1D
+                call move_alloc(from = dumstr, to = real642str_1D)
+            else
+                real642str_1D = real642str_1D(1:minLen)
+            end if
         else
             real642str_1D = trim(adjustl(real642str_1D))
         end if
@@ -666,10 +701,12 @@ contains
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
         implicit none
-        real(real64), intent(in)           :: RealIn(:,:)
-        character(*), intent(in), optional :: formatIn
-        integer(IK) , intent(in), optional :: minLen
-        character(:), allocatable          :: real642str_2D
+        real(real64), intent(in)            :: RealIn(:,:)
+        character(*), intent(in), optional  :: formatIn
+        integer(IK) , intent(in), optional  :: minLen
+        character(:), allocatable           :: real642str_2D
+        character(:), allocatable           :: dumstr
+        integer(IK)                         :: len_real642str_2D
         allocate(character(NUM2STR_MAXLEN*size(RealIn,1)*size(RealIn,2)) :: real642str_2D)
         if (present(formatIn)) then
             write(real642str_2D,formatIn) RealIn
@@ -678,7 +715,14 @@ contains
         end if
         if (present(minLen)) then
             real642str_2D = adjustl(real642str_2D)
-            real642str_2D = real642str_2D(1:minLen)
+            len_real642str_2D = len(real642str_2D)
+            if (minLen>len_real642str_2D) then
+                allocate(character(minLen) :: dumstr)
+                dumstr(1:len_real642str_2D) = real642str_2D
+                call move_alloc(from = dumstr, to = real642str_2D)
+            else
+                real642str_2D = real642str_2D(1:minLen)
+            end if
         else
             real642str_2D = trim(adjustl(real642str_2D))
         end if
@@ -807,7 +851,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real
 #endif
-        use Constants_mod, only: RK
+        use Constants_mod, only: RK ! LCOV_EXCL_LINE
         implicit none
         character(*), intent(in)        :: str
         integer, optional, intent(out)  :: iostat

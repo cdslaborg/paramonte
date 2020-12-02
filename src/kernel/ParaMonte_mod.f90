@@ -300,10 +300,12 @@ contains
 
         self%Timer = Timer_type(self%Err)
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while setting up the " // self%name // "timer."//NLC// self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         self%nd%val = nd
         self%Decor = Decoration_type()    ! initialize the TAB character and decoration symbol to the default values.
@@ -339,11 +341,13 @@ contains
 
         call self%OS%query()
         if (self%OS%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err = self%OS%Err
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type."//NLC//self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         ! This is where SystemInfo used to live, but not anymore.
 
@@ -359,11 +363,13 @@ contains
         blockInputFileExistence: if (self%inputFileArgIsPresent) then
             self%InputFile = File_type( path=inputFile, status="old", OS=self%OS )
             if (self%InputFile%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err = self%InputFile%Err
                 self%Err%msg = PROCEDURE_NAME//": Error occurred while attempting to setup the user's input file='"//inputFile//"'."//NLC//self%Err%msg
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
             ! determine if the file is internal
             self%InputFile%isInternal = self%inputFileArgIsPresent .and. .not.self%InputFile%exists .and. index(getLowerCase(inputFile),"&"//getLowerCase(self%name)) > 0
             if (.not.(self%InputFile%isInternal .or. self%InputFile%exists)) then
@@ -554,10 +560,12 @@ contains
                 type(FileContents_type) :: FileContents
                 FileContents = FileContents_type(filePath = self%SpecBase%SystemInfoFilePath%val)
                 if (FileContents%Err%occurred) then
+                ! LCOV_EXCL_START
                     self%Err = FileContents%Err
                     self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                     return
+                ! LCOV_EXCL_STOP
                 else
                     do j = 1, FileContents%numRecord
                         self%Decor%List = self%Decor%wrapText( FileContents%Line(j)%record , 132 )
@@ -571,11 +579,13 @@ contains
         else
             self%SystemInfo = SystemInfo_type(OS=self%OS)
             if (self%SystemInfo%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err = self%SystemInfo%Err
                 self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
             do j = 1, self%SystemInfo%nRecord
                 self%Decor%List = self%Decor%wrapText( self%SystemInfo%List(j)%record , 132 )
                 do i = 1,size(self%Decor%List)
@@ -634,8 +644,10 @@ contains
               "All " // name // " options will be assigned appropriate default values."
         call warn( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = msg )
         if (outputUnit/=output_unit) then
+        ! LCOV_EXCL_START
             call warn( prefix = prefix, outputUnit = output_unit, newline = "\n", msg = msg )
         end if
+        ! LCOV_EXCL_STOP
     end subroutine warnUserAboutMissingNamelist
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -649,7 +661,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutInputFilePresence
 #endif
-        use Constants_mod, only: NLC
+        use Constants_mod, only: NLC ! LCOV_EXCL_LINE
         implicit none
         class(ParaMonte_type), intent(inout) :: self
 #if defined CFI_ENABLED
@@ -756,11 +768,13 @@ contains
         call self%SpecBase%OutputFileName%query(OS=self%OS)
 
         if (self%SpecBase%OutputFileName%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err = self%SpecBase%OutputFileName%Err
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to construct OutputFileName path type." //NLC// self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         self%SpecBase%OutputFileName%namePrefix = self%SpecBase%OutputFileName%name // self%SpecBase%OutputFileName%ext
 
@@ -781,10 +795,12 @@ contains
 #endif
         end block
         if (self%Err%stat/=0) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME//": Error occurred while fetching the current working directory via getcwd()."//NLC
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
         msg = msg //NLC//NLC// "Absolute path to the current working directory:"//NLC//currentWorkingDir
 
         if (len_trim(adjustl(self%SpecBase%OutputFileName%dir))==0) then
@@ -799,10 +815,12 @@ contains
         if (self%Image%isFirst) then
             self%Err = mkdir( dirPath = self%SpecBase%OutputFileName%dir, isWindows = self%OS%isWindows )
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME//": Error occurred while making directory = '"//self%SpecBase%OutputFileName%dir//"'."//NLC//self%Err%msg
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
         end if
 
         ! in parallel mode, ensure the directory exists before moving on
@@ -878,42 +896,52 @@ contains
         inquire( file = self%LogFile%Path%original, exist = self%LogFile%exists, iostat = self%LogFile%Err%stat )
         self%Err = self%LogFile%getInqErr( self%LogFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%LogFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         inquire( file = self%SampleFile%Path%original, exist = self%SampleFile%exists, iostat = self%SampleFile%Err%stat )
         self%Err = self%SampleFile%getInqErr( self%SampleFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%SampleFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         inquire( file = self%TimeFile%Path%original, exist = self%TimeFile%exists, iostat = self%TimeFile%Err%stat )
         self%Err = self%TimeFile%getInqErr( self%TimeFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%TimeFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         inquire( file = self%ChainFile%Path%original, exist = self%ChainFile%exists, iostat = self%ChainFile%Err%stat )
         self%Err = self%ChainFile%getInqErr( self%ChainFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%ChainFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         inquire( file = self%RestartFile%Path%original, exist = self%RestartFile%exists, iostat = self%RestartFile%Err%stat )
         self%Err = self%RestartFile%getInqErr( self%RestartFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%RestartFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         self%isDryRun = (.not. self%SpecBase%OverwriteRequested%val) .and. & ! not fresh, if any file exists
                         (self%LogFile%exists .or. self%TimeFile%exists .or. self%RestartFile%exists .or. self%ChainFile%exists .or. self%SampleFile%exists)
@@ -925,7 +953,7 @@ contains
             if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "Previous run of "//self%name//" detected."//NLC//"Searching for restart files..." )
             if (self%SampleFile%exists) then ! sampling is already complete
                 self%Err%occurred = .true.
-                self%Err%msg =    PROCEDURE_NAME//": Error occurred. Output sample file detected: "//self%SampleFile%Path%original//&
+                self%Err%msg =  PROCEDURE_NAME//": Error occurred. Output sample file detected: "//self%SampleFile%Path%original//&
                                 NLC//self%name//" cannot overwrite an already-completed simulation."//&
                                 NLC//"Please provide an alternative file name for the new simulation outputs."
             elseif (self%LogFile%exists .and. self%TimeFile%exists .and. self%RestartFile%exists .and. self%ChainFile%exists) then  ! restart mode
@@ -1058,6 +1086,7 @@ contains
                 , position = self%LogFile%Position%value)
             self%Err = self%LogFile%getOpenErr(self%LogFile%Err%stat)
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%LogFile%suffix // " file='" // self%LogFile%Path%original // "'. "
                 if (scan(" ",trim(adjustl(self%LogFile%Path%original)))/=0) then
                     self%Err%msg = self%Err%msg // "It appears that absolute path used for the output files contains whitespace characters. " &
@@ -1068,6 +1097,7 @@ contains
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             ! rewrite the same old stuff to all report files
 
@@ -1095,10 +1125,12 @@ contains
                 , position = self%TimeFile%Position%value   )
             self%Err = self%TimeFile%getOpenErr(self%TimeFile%Err%stat)
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%TimeFile%suffix // " file='" // self%TimeFile%Path%original // "'. "
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             if (self%isFreshRun) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = workingOn//self%ChainFile%suffix//"file:"//NLC//self%ChainFile%Path%original )
 
@@ -1114,10 +1146,12 @@ contains
                 , position = self%ChainFile%Position%value  )
             self%Err = self%ChainFile%getOpenErr(self%ChainFile%Err%stat)
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%ChainFile%suffix // " file='" // self%ChainFile%Path%original // "'. "
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             self%RestartFile%unit = 3000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
             open( unit = self%RestartFile%unit              &
@@ -1131,10 +1165,12 @@ contains
                 , position = self%RestartFile%Position%value)
             self%Err = self%RestartFile%getOpenErr(self%RestartFile%Err%stat)
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%RestartFile%suffix // " file='" // self%RestartFile%Path%original // "'. "
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             if (self%isFreshRun) then
                 call self%Decor%writeDecoratedText  ( text = NLC // self%name // " simulation specifications" // NLC &

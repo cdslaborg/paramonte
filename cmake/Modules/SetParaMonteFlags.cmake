@@ -77,10 +77,29 @@
 # unset flags
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+unset(INTEL_Fortran_RELEASE_FLAGS)
+unset(INTEL_Fortran_TESTING_FLAGS)
+unset(INTEL_Fortran_DEBUG_FLAGS)
+unset(GNU_Fortran_RELEASE_FLAGS)
+unset(GNU_Fortran_TESTING_FLAGS)
+unset(GNU_Fortran_DEBUG_FLAGS)
+
+unset(INTEL_CXX_RELEASE_FLAGS)
+unset(INTEL_CXX_TESTING_FLAGS)
+unset(INTEL_CXX_DEBUG_FLAGS)
+unset(GNU_CXX_RELEASE_FLAGS)
+unset(GNU_CXX_TESTING_FLAGS)
+unset(GNU_CXX_DEBUG_FLAGS)
+
+unset(FCL_PARALLELIZATION_FLAGS)
 unset(FCL_FLAGS_DEFAULT)
 unset(CCL_FLAGS_DEFAULT)
 unset(FCL_BUILD_FLAGS)
 unset(CCL_BUILD_FLAGS)
+unset(FPP_OS_FLAG)
+unset(CCL_FLAGS)
+unset(FCL_FLAGS)
+unset(FPP_FLAGS)
 unset(FL_FLAGS)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -703,7 +722,6 @@ else()
     set(OMP_FLAGS  CACHE STRING "OpenMP parallelism compiler flags")
 endif()
 
-unset(FCL_PARALLELIZATION_FLAGS)
 if (CAF_ENABLED)
     message( STATUS "${pmattn} CAF flags: ${CAF_FLAGS}" )
     set(FCL_PARALLELIZATION_FLAGS "${CAF_FLAGS}")
@@ -812,8 +830,8 @@ elseif (gnu_compiler)
     # The problem still persists in debug mode. Therefore, when gfortran is 10, debug mode is disabled.
     #set(FCL_FLAGS_DEFAULT -std=gnu -ffree-line-length-none -fallow-argument-mismatch CACHE STRING "GNU Fortran default compiler flags" )
 
-    set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none CACHE STRING "GNU Fortran default compiler flags" )
-    set(CCL_FLAGS_DEFAULT -ffree-line-length-none  CACHE STRING "GNU CXX default compiler flags" )
+    set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none ) # CACHE STRING "GNU Fortran default compiler flags" )
+    set(CCL_FLAGS_DEFAULT -ffree-line-length-none )# CACHE STRING "GNU CXX default compiler flags" )
 
     set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt ) # set Fortran linker flags for release mode
 
@@ -842,10 +860,10 @@ elseif (gnu_compiler)
 
 endif()
 
-set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" CACHE STRING "Fortran default compiler flags" FORCE)
-set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" CACHE STRING "CXX default compiler flags" FORCE)
-set(FCL_FLAGS "${FCL_FLAGS_DEFAULT}" "${FCL_PARALLELIZATION_FLAGS}" "${FCL_BUILD_FLAGS}" )
-set(CCL_FLAGS "${CCL_FLAGS_DEFAULT}" "${CCL_BUILD_FLAGS}" )
+# set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" CACHE STRING "Fortran default compiler flags" FORCE)
+# set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" CACHE STRING "CXX default compiler flags" FORCE)
+set(FCL_FLAGS "${FCL_FLAGS_DEFAULT}" "${FCL_PARALLELIZATION_FLAGS}" "${FCL_BUILD_FLAGS}" CACHE STRING "Fortran default compiler/linker flags" FORCE)
+set(CCL_FLAGS "${CCL_FLAGS_DEFAULT}" "${CCL_BUILD_FLAGS}" CACHE STRING "CXX default compiler/linker flags" FORCE)
 
 if (HEAP_ARRAY_ENABLED)
     if (intel_compiler)

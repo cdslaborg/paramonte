@@ -108,10 +108,12 @@ contains
 
         RandomSeed%imageID = imageID
         if (RandomSeed%imageID<1_IK) then
+        ! LCOV_EXCL_START
             RandomSeed%Err%occurred = .true.
             RandomSeed%Err%msg = PROCEDURE_NAME // ": Internal error occurred. imageID cannot be less than 1."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         RandomSeed%isRepeatable = .false.
         if (present(isRepeatable)) RandomSeed%isRepeatable = isRepeatable
@@ -120,8 +122,8 @@ contains
         if (present(isImageDistinct)) RandomSeed%isImageDistinct = isImageDistinct
 
         call RandomSeed%set(inputSeed)
-        ! LCOV_EXCL_START
         if (RandomSeed%Err%occurred) then
+        ! LCOV_EXCL_START
             RandomSeed%Err%msg = PROCEDURE_NAME // RandomSeed%Err%msg
             return
         end if
@@ -195,8 +197,8 @@ contains
                 if (scalarSeed<=huge(scalarSeed) ) exit
                 scalarSeed = scalarSeed - huge(scalarSeed)
             end do
-            ! LCOV_EXCL_START
             if (scalarSeed==0_IK) then
+            ! LCOV_EXCL_START
                 RandomSeed%Err%occurred = .true.
                 RandomSeed%Err%msg = PROCEDURE_NAME // ": Random seed cannot be zero."
                 return

@@ -164,11 +164,14 @@ contains
             implicit none
             integer(IK) , intent(in)    :: ndim
             real(RK)    , intent(in)    :: successProbFisherTransNormFac(ndim)
-            real(RK)                    :: sumDistSq, successProb
-            successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK ! reverse Fisher-transform
+            real(RK)                    :: sumDistSq
             !sumDistSq = sum( (LogCount - getGeoLogPDF(successProb=successProb,seqLen=numTrial) - successProbFisherTransNormFac(2) )**2 )
-            sumDistSq = sum(    ( LogCount &
-                                - getLogProbGeoCyclic(successProb=successProb, maxNumTrial=maxNumTrial, numTrial=numTrial, SuccessStep=SuccessStep) &
+            sumDistSq = sum(    ( LogCount & ! LCOV_EXCL_LINE
+                                - getLogProbGeoCyclic   ( successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK & ! reverse Fisher-transform ! LCOV_EXCL_LINE
+                                                        , maxNumTrial = maxNumTrial & ! LCOV_EXCL_LINE
+                                                        , numTrial = numTrial & ! LCOV_EXCL_LINE
+                                                        , SuccessStep = SuccessStep & ! LCOV_EXCL_LINE
+                                                        ) &
                                 - successProbFisherTransNormFac(2) &
                                 )**2 &
                             )
@@ -197,11 +200,14 @@ contains
         implicit none
         integer(IK) , intent(in)    :: ndim
         real(RK)    , intent(in)    :: successProbFisherTransNormFac(ndim)
-        real(RK)                    :: sumDistSq, successProb
-        successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK ! reverse Fisher-transform
+        real(RK)                    :: sumDistSq
         !sumDistSq = sum( (LogCount - getGeoLogPDF(successProb=successProb,seqLen=numTrial) - successProbFisherTransNormFac(2) )**2 )
-        sumDistSq = sum(    ( LogCount_WSL &
-                            - getLogProbGeoCyclic(successProb=successProb, maxNumTrial=maxNumTrial_WSL, numTrial=numTrial_WSL, SuccessStep=SuccessStep_WSL) &
+        sumDistSq = sum(    ( LogCount_WSL & ! LCOV_EXCL_LINE
+                            - getLogProbGeoCyclic   ( successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK & ! reverse Fisher-transform ! LCOV_EXCL_LINE
+                                                    , maxNumTrial=maxNumTrial_WSL & ! LCOV_EXCL_LINE
+                                                    , numTrial=numTrial_WSL & ! LCOV_EXCL_LINE
+                                                    , SuccessStep=SuccessStep_WSL & ! LCOV_EXCL_LINE
+                                                    ) &
                             - successProbFisherTransNormFac(2) &
                             )**2 &
                         )

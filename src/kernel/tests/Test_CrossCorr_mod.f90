@@ -108,6 +108,8 @@ contains
         call Test%run(Test_getMaxCumSumIAC_1, "Test_getMaxCumSumIAC_1")
         call Test%run(Test_getMaxCumSumIAC_2, "Test_getMaxCumSumIAC_2")
         call Test%run(Test_getPaddedLen_IK_1, "Test_getPaddedLen_IK_1")
+        call Test%run(Test_getPaddedLen_IK_2, "Test_getPaddedLen_IK_2")
+        call Test%run(Test_getPaddedLen_RK_1, "Test_getPaddedLen_RK_1")
         call Test%run(Test_getPaddedLen_RK_2, "Test_getPaddedLen_RK_2")
         call Test%run(Test_getNextExponent_1, "Test_getNextExponent_1")
         call Test%run(Test_getNextExponent_2, "Test_getNextExponent_2")
@@ -143,8 +145,8 @@ contains
         PaddedArray = padZero(currentLen = lenCurrentArray, Array = CurrentArray, paddedLen = paddedLen)
         Difference = abs(PaddedArray - PaddedArray_ref)
         assertion = all(Difference < tolerance)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "CurrentArray      =", CurrentArray
             write(Test%outputUnit,"(*(g0.15,:,' '))") "PaddedArray_ref   =", PaddedArray_ref
@@ -171,8 +173,8 @@ contains
         PaddedArray = padZero(currentLen = lenCurrentArray, Array = CurrentArray)
         Difference = abs(PaddedArray - PaddedArray_ref)
         assertion = all(Difference < tolerance)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "CurrentArray      =", CurrentArray
             write(Test%outputUnit,"(*(g0.15,:,' '))") "PaddedArray_ref   =", PaddedArray_ref
@@ -197,8 +199,8 @@ contains
         paddedLen = getPaddedLen(actualLen = actualLen, base = base)
         difference = abs(paddedLen - paddedLen_ref)
         assertion = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "actualLen     =", actualLen
             write(Test%outputUnit,"(*(g0.15,:,' '))") "paddedLen_ref =", paddedLen_ref
@@ -222,8 +224,8 @@ contains
         paddedLen = getPaddedLen(actualLen = actualLen)
         difference = abs(paddedLen - paddedLen_ref)
         assertion = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "actualLen     =", actualLen
             write(Test%outputUnit,"(*(g0.15,:,' '))") "paddedLen_ref =", paddedLen_ref
@@ -248,8 +250,8 @@ contains
         paddedLen = getPaddedLen(actualLen = actualLen, base = base)
         difference = abs(paddedLen - paddedLen_ref)
         assertion = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "actualLen     =", actualLen
             write(Test%outputUnit,"(*(g0.15,:,' '))") "paddedLen_ref =", paddedLen_ref
@@ -274,8 +276,8 @@ contains
         paddedLen = getPaddedLen(actualLen = actualLen, base = base)
         difference = abs(paddedLen - paddedLen_ref)
         assertion = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "actualLen     =", actualLen
             write(Test%outputUnit,"(*(g0.15,:,' '))") "paddedLen_ref =", paddedLen_ref
@@ -300,8 +302,8 @@ contains
         nextExponent = getNextExponent(absoluteValue = absoluteValue, base = base)
         difference = abs(nextExponent - nextExponent_ref)
         assertion = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "nextExponent_ref      =", nextExponent_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Computed nextExponent =", nextExponent
@@ -325,8 +327,8 @@ contains
         nextExponent = getNextExponent(absoluteValue = absoluteValue, base = base)
         difference = abs(nextExponent - nextExponent_ref)
         assertion = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "nextExponent_ref      =", nextExponent_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Computed nextExponent =", nextExponent
@@ -349,8 +351,8 @@ contains
         nextExponent = getNextExponent(absoluteValue = absoluteValue)
         difference = abs(nextExponent - nextExponent_ref)
         assertion = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "nextExponent_ref      =", nextExponent_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "Computed nextExponent =", nextExponent
@@ -373,8 +375,8 @@ contains
         previousExponent = getPreviousExponent(absoluteValue = absoluteValue)
         difference = abs(previousExponent - previousExponent_ref)
         assertion = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "previousExponent_ref    =", previousExponent_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "previousExponent        =", previousExponent
@@ -398,8 +400,8 @@ contains
         previousExponent = getPreviousExponent(absoluteValue = absoluteValue, base = base)
         difference = abs(previousExponent - previousExponent_ref)
         assertion = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "previousExponent_ref    =", previousExponent_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "previousExponent        =", previousExponent
@@ -456,8 +458,8 @@ contains
 
         Difference = abs( (WeightedData%InverseSumNormedDataSq - WeightedData%InverseSumNormedDataSq_ref) / WeightedData%InverseSumNormedDataSq_ref)
         assertion = all( Difference < tolerance )
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "InverseSumNormedDataSq_ref  =", WeightedData%InverseSumNormedDataSq_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "InverseSumNormedDataSq      =", WeightedData%InverseSumNormedDataSq
@@ -512,8 +514,8 @@ contains
         DifferenceLag = abs( AutoCorr%Lag - AutoCorr%Lag_ref )
         assertion = all( DifferenceLag == 0_IK )
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "AutoCorr%Lag_ref    =", AutoCorr%Lag_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "AutoCorr%Lag        =", AutoCorr%Lag
@@ -525,13 +527,13 @@ contains
         ! Generate and verify AutoCorrs
 
         if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag + 1_IK) )
-        call getAutoCorrDirect  ( nd = WeightedData%nd &
-                                , np = WeightedData%np &
-                                , NormedData = WeightedData%NormedData(1:WeightedData%nd,1:WeightedData%np) &
-                                , nlag = AutoCorr%nlag + 1_IK &
-                                , Lag = AutoCorr%Lag &
-                                , AutoCorr = AutoCorr%AutoCorrDirect &
-                                , InverseSumNormedDataSq = WeightedData%InverseSumNormedDataSq &
+        call getAutoCorrDirect  ( nd = WeightedData%nd                                                      & ! LCOV_EXCL_LINE
+                                , np = WeightedData%np                                                      & ! LCOV_EXCL_LINE
+                                , NormedData = WeightedData%NormedData(1:WeightedData%nd,1:WeightedData%np) & ! LCOV_EXCL_LINE
+                                , nlag = AutoCorr%nlag + 1_IK                                               & ! LCOV_EXCL_LINE
+                                , Lag = AutoCorr%Lag                                                        & ! LCOV_EXCL_LINE
+                                , AutoCorr = AutoCorr%AutoCorrDirect                                        & ! LCOV_EXCL_LINE
+                                , InverseSumNormedDataSq = WeightedData%InverseSumNormedDataSq              & ! LCOV_EXCL_LINE
                                 )
 
         ! Gfortran 7.1 fails to automatically allocate an reallocatable version of these arrays
@@ -541,8 +543,8 @@ contains
 
         assertion = assertion .and. all( DifferenceAutoCorrDirect < tolerance )
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
 
             ! write data to output for further investigation
 
@@ -607,8 +609,8 @@ contains
         DifferenceLag = abs( AutoCorr%Lag - AutoCorr%Lag_ref )
         assertion = all( DifferenceLag == 0_IK )
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "AutoCorr%Lag_ref    =", AutoCorr%Lag_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "AutoCorr%Lag        =", AutoCorr%Lag
@@ -620,12 +622,12 @@ contains
         ! Generate and verify AutoCorrs
 
         if (allocated(AutoCorr%AutoCorrDirect)) deallocate(AutoCorr%AutoCorrDirect); allocate( AutoCorr%AutoCorrDirect(WeightedData%nd,AutoCorr%nlag+1_IK) )
-        call getAutoCorrDirect  ( nd = WeightedData%nd &
-                                , np = WeightedData%np &
-                                , NormedData = WeightedData%NormedData(1:WeightedData%nd,1:WeightedData%np) &
-                                , nlag = AutoCorr%nlag + 1_IK &
-                                , Lag = AutoCorr%Lag &
-                                , AutoCorr = AutoCorr%AutoCorrDirect &
+        call getAutoCorrDirect  ( nd = WeightedData%nd & ! LCOV_EXCL_LINE
+                                , np = WeightedData%np & ! LCOV_EXCL_LINE
+                                , NormedData = WeightedData%NormedData(1:WeightedData%nd,1:WeightedData%np) & ! LCOV_EXCL_LINE
+                                , nlag = AutoCorr%nlag + 1_IK           & ! LCOV_EXCL_LINE
+                                , Lag = AutoCorr%Lag                    & ! LCOV_EXCL_LINE
+                                , AutoCorr = AutoCorr%AutoCorrDirect    & ! LCOV_EXCL_LINE
                                 )
 
         ! Gfortran 7.1 fails to automatically reallocate this array. This is not implemented in Gfortran 7.0.0
@@ -635,8 +637,8 @@ contains
 
         assertion = assertion .and. all( DifferenceAutoCorrDirect <= tolerance )
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
 
             ! write data to output for further investigation
 
@@ -675,10 +677,10 @@ contains
         call WeightedData%read()
 
         AutoCorr%paddedLen = getPaddedLen(WeightedData%np)
-        allocate( AutoCorr%AutoCorrFFT_ref(AutoCorr%paddedLen,WeightedData%nd) &
-                , AutoCorr%NormedDataFFT1(AutoCorr%paddedLen,WeightedData%nd) &
-                , AutoCorr%NormedDataFFT2(AutoCorr%paddedLen,WeightedData%nd) &
-                , AutoCorr%AutoCorrFFT(AutoCorr%paddedLen,WeightedData%nd) &
+        allocate( AutoCorr%AutoCorrFFT_ref(AutoCorr%paddedLen,WeightedData%nd)  & ! LCOV_EXCL_LINE
+                , AutoCorr%NormedDataFFT1(AutoCorr%paddedLen,WeightedData%nd)   & ! LCOV_EXCL_LINE
+                , AutoCorr%NormedDataFFT2(AutoCorr%paddedLen,WeightedData%nd)   & ! LCOV_EXCL_LINE
+                , AutoCorr%AutoCorrFFT(AutoCorr%paddedLen,WeightedData%nd)      & ! LCOV_EXCL_LINE
                 )
         do id = 1, WeightedData%nd
             DummyArray = WeightedData%NormedData(id,1:WeightedData%np)
@@ -688,9 +690,10 @@ contains
 
         do id = 1, WeightedData%nd
 
-            AutoCorr%AutoCorrFFT(1:AutoCorr%paddedLen,id) = getCrossCorrFFT ( AutoCorr%paddedLen &
-                                                                            , AutoCorr%NormedDataFFT1(1:AutoCorr%paddedLen,id) &
-                                                                            , AutoCorr%NormedDataFFT1(1:AutoCorr%paddedLen,id) )
+            AutoCorr%AutoCorrFFT(1:AutoCorr%paddedLen,id) = getCrossCorrFFT ( AutoCorr%paddedLen                                & ! LCOV_EXCL_LINE
+                                                                            , AutoCorr%NormedDataFFT1(1:AutoCorr%paddedLen,id)  & ! LCOV_EXCL_LINE
+                                                                            , AutoCorr%NormedDataFFT1(1:AutoCorr%paddedLen,id)  & ! LCOV_EXCL_LINE
+                                                                            )
             AutoCorr%AutoCorrFFT(1:AutoCorr%paddedLen,id) = AutoCorr%AutoCorrFFT(1:AutoCorr%paddedLen,id) / AutoCorr%AutoCorrFFT(1,id)
 
             ! ensure NormedDataFFT1 does not change upon entering and exiting getCrossCorrFFT()
@@ -699,8 +702,10 @@ contains
                 assertionCurrent = AutoCorr%NormedDataFFT2(ip,id) == AutoCorr%NormedDataFFT1(ip,id)
                 assertion = assertion .and. assertionCurrent
                 if (Test%isDebugMode .and. .not. assertionCurrent) then
+                ! LCOV_EXCL_START
                     write(Test%outputUnit,"(*(g0.15,:,' '))") "Nonsense. These two must be equal: ", AutoCorr%NormedDataFFT1(ip,id), AutoCorr%NormedDataFFT2(ip,id)
                 end if
+                ! LCOV_EXCL_STOP
             end do
 
         end do
@@ -719,8 +724,8 @@ contains
         Difference = abs( AutoCorr%AutoCorrFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
 
             ! write data to output for further investigation
 
@@ -764,11 +769,11 @@ contains
 
         do id = 1, WeightedData%nd
             DummyArray = WeightedData%NormedData(id,1:WeightedData%np)
-            AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = getCrossCorrWeightedFFT ( lenCompactData1 = WeightedData%np &
-                                                                                            , lenCompactData2 = WeightedData%np &
-                                                                                            , paddedLen = AutoCorr%paddedLen &
-                                                                                            , CompactData1 = DummyArray &
-                                                                                            , CompactData2 = DummyArray &
+            AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = getCrossCorrWeightedFFT ( lenCompactData1 = WeightedData%np & ! LCOV_EXCL_LINE
+                                                                                            , lenCompactData2 = WeightedData%np & ! LCOV_EXCL_LINE
+                                                                                            , paddedLen = AutoCorr%paddedLen    & ! LCOV_EXCL_LINE
+                                                                                            , CompactData1 = DummyArray         & ! LCOV_EXCL_LINE
+                                                                                            , CompactData2 = DummyArray         & ! LCOV_EXCL_LINE
                                                                                             )
             AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) / AutoCorr%AutoCorrWeightedFFT(1,id)
         end do
@@ -779,8 +784,8 @@ contains
         Difference = abs( AutoCorr%AutoCorrWeightedFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
 
             ! write data to output for further investigation
 
@@ -836,13 +841,13 @@ contains
         allocate( AutoCorr%AutoCorrFFT_ref(AutoCorr%paddedLen, WeightedData%nd) )
         do id = 1, WeightedData%nd
 
-            AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = getCrossCorrWeightedFFT ( lenCompactData1 = WeightedData%np &
-                                                                                            , lenCompactData2 = WeightedData%np &
-                                                                                            , paddedLen = AutoCorr%paddedLen &
-                                                                                            , CompactData1 = WeightedData%NormedData(1:WeightedData%np,id) &
-                                                                                            , CompactData2 = WeightedData%NormedData(1:WeightedData%np,id) &
-                                                                                            , Weight1 = WeightedData%Weight(1:WeightedData%np) &
-                                                                                            , Weight2 = WeightedData%Weight(1:WeightedData%np) &
+            AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = getCrossCorrWeightedFFT ( lenCompactData1 = WeightedData%np                             & ! LCOV_EXCL_LINE
+                                                                                            , lenCompactData2 = WeightedData%np                             & ! LCOV_EXCL_LINE
+                                                                                            , paddedLen = AutoCorr%paddedLen                                & ! LCOV_EXCL_LINE
+                                                                                            , CompactData1 = WeightedData%NormedData(1:WeightedData%np,id)  & ! LCOV_EXCL_LINE
+                                                                                            , CompactData2 = WeightedData%NormedData(1:WeightedData%np,id)  & ! LCOV_EXCL_LINE
+                                                                                            , Weight1 = WeightedData%Weight(1:WeightedData%np)              & ! LCOV_EXCL_LINE
+                                                                                            , Weight2 = WeightedData%Weight(1:WeightedData%np)              & ! LCOV_EXCL_LINE
                                                                                             )
             AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) / AutoCorr%AutoCorrWeightedFFT(1,id)
 
@@ -851,8 +856,8 @@ contains
             do ip = 1, WeightedData%np
                 assertionCurrent = AutoCorr%NormedDataFFT1(ip,id) == WeightedData%NormedData(ip,id)
                 assertion = assertion .and. assertionCurrent
-                ! LCOV_EXCL_START
                 if (Test%isDebugMode .and. .not. assertionCurrent) then
+                ! LCOV_EXCL_START
                     write(Test%outputUnit,"(*(g0.15,:,' '))") "Nonsense. These two must be equal ", ip, id, WeightedData%NormedData(ip,id), AutoCorr%NormedDataFFT1(ip,id)
                 end if
                 ! LCOV_EXCL_STOP
@@ -929,13 +934,13 @@ contains
         allocate(AutoCorr%AutoCorrWeightedFFT(AutoCorr%paddedLen,WeightedData%nd))
         do id = 1, WeightedData%nd
 
-            AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = getCrossCorrWeightedFFT ( lenCompactData1 = WeightedData%np                             &
-                                                                                            , lenCompactData2 = WeightedData%np                             &
-                                                                                            , paddedLen = AutoCorr%paddedLen                                &
-                                                                                            , CompactData1 = WeightedData%NormedData(1:WeightedData%np,id)  &
-                                                                                            , CompactData2 = WeightedData%NormedData(1:WeightedData%np,id)  &
-                                                                                            , Weight1 = WeightedData%Weight(1:WeightedData%np)              &
-                                                                                            , Weight2 = WeightedData%Weight(1:WeightedData%np)              &
+            AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = getCrossCorrWeightedFFT ( lenCompactData1 = WeightedData%np                             & ! LCOV_EXCL_LINE
+                                                                                            , lenCompactData2 = WeightedData%np                             & ! LCOV_EXCL_LINE
+                                                                                            , paddedLen = AutoCorr%paddedLen                                & ! LCOV_EXCL_LINE
+                                                                                            , CompactData1 = WeightedData%NormedData(1:WeightedData%np,id)  & ! LCOV_EXCL_LINE
+                                                                                            , CompactData2 = WeightedData%NormedData(1:WeightedData%np,id)  & ! LCOV_EXCL_LINE
+                                                                                            , Weight1 = WeightedData%Weight(1:WeightedData%np)              & ! LCOV_EXCL_LINE
+                                                                                            , Weight2 = WeightedData%Weight(1:WeightedData%np)              & ! LCOV_EXCL_LINE
                                                                                             )
             AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) = AutoCorr%AutoCorrWeightedFFT(1:AutoCorr%paddedLen,id) / AutoCorr%AutoCorrWeightedFFT(1,id)
 
@@ -944,8 +949,8 @@ contains
             do ip = 1, WeightedData%np
                 assertionCurrent = AutoCorr%NormedDataFFT1(ip,id) == WeightedData%NormedData(ip,id)
                 assertion = assertion .and. assertionCurrent
-                ! LCOV_EXCL_START
                 if (Test%isDebugMode .and. .not. assertionCurrent) then
+                ! LCOV_EXCL_START
                     write(Test%outputUnit,"(*(g0.15,:,' '))") "Nonsense. These two must be equal ", ip, id, WeightedData%NormedData(ip,id), AutoCorr%NormedDataFFT1(ip,id)
                 end if
                 ! LCOV_EXCL_STOP
@@ -969,8 +974,8 @@ contains
         Difference = abs( AutoCorr%AutoCorrWeightedFFT - AutoCorr%AutoCorrFFT_ref )
         assertion = assertion .and. all( Difference <= tolerance )
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
 
             ! write data to output for further investigation
 
@@ -999,8 +1004,8 @@ contains
         cumSumIAC = getCumSumIAC(np = WeightedData%np, Point = WeightedData%Data)
         difference = abs( (cumSumIAC - cumSumIAC_ref) / cumSumIAC_ref)
         assertion = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "cumSumIAC_ref    =", cumSumIAC_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "cumSumIAC        =", cumSumIAC
@@ -1024,8 +1029,8 @@ contains
         cumSumIAC = getCumSumIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight)
         difference = abs( (cumSumIAC - cumSumIAC_ref) / cumSumIAC_ref)
         assertion = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "cumSumIAC_ref    =", cumSumIAC_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "cumSumIAC        =", cumSumIAC
@@ -1050,8 +1055,8 @@ contains
         cumSumIAC = getCumSumIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight, significance = significance)
         difference = abs( (cumSumIAC - cumSumIAC_ref) / cumSumIAC_ref)
         assertion = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "cumSumIAC_ref    =", cumSumIAC_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "cumSumIAC        =", cumSumIAC
@@ -1075,8 +1080,8 @@ contains
         maxCumSumIAC = getMaxCumSumIAC(np = WeightedData%np, Point = WeightedData%Data)
         difference = abs( (maxCumSumIAC - maxCumSumIAC_ref) / maxCumSumIAC_ref)
         assertion = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "maxCumSumIAC_ref    =", maxCumSumIAC_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "maxCumSumIAC        =", maxCumSumIAC
@@ -1100,8 +1105,8 @@ contains
         maxCumSumIAC = getMaxCumSumIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight)
         difference = abs( (maxCumSumIAC - maxCumSumIAC_ref) / maxCumSumIAC_ref)
         assertion = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "maxCumSumIAC_ref    =", maxCumSumIAC_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "maxCumSumIAC        =", maxCumSumIAC
@@ -1125,8 +1130,8 @@ contains
         batchMeansIAC = getBatchMeansIAC(np = WeightedData%np, Point = WeightedData%Data)
         difference = abs( (batchMeansIAC - batchMeansIAC_ref) / batchMeansIAC_ref)
         assertion = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "batchMeansIAC_ref    =", batchMeansIAC_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "batchMeansIAC        =", batchMeansIAC
@@ -1150,8 +1155,8 @@ contains
         batchMeansIAC = getBatchMeansIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight)
         difference = abs( (batchMeansIAC - batchMeansIAC_ref) / batchMeansIAC_ref)
         assertion = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "batchMeansIAC_ref    =", batchMeansIAC_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "batchMeansIAC        =", batchMeansIAC
@@ -1176,8 +1181,8 @@ contains
         batchMeansIAC = getBatchMeansIAC(np = WeightedData%np, Point = WeightedData%Data, Weight = WeightedData%Weight, batchSize = batchSize)
         difference = abs( (batchMeansIAC - batchMeansIAC_ref) / batchMeansIAC_ref)
         assertion = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0.15,:,' '))")
             write(Test%outputUnit,"(*(g0.15,:,' '))") "batchMeansIAC_ref    =", batchMeansIAC_ref
             write(Test%outputUnit,"(*(g0.15,:,' '))") "batchMeansIAC        =", batchMeansIAC

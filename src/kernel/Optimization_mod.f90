@@ -266,8 +266,10 @@ contains
             end if
         end do
 
+        ! LCOV_EXCL_START
         BrentMinimum%Err%occurred = .true.
         BrentMinimum%Err%msg = PROCEDURE_NAME//": maximum number of iterations exceeded."
+        ! LCOV_EXCL_STOP
         return
 
     contains
@@ -414,9 +416,11 @@ contains
                 fptt = PowellMinimum%fmin
                 call linmin(getFuncMD, ndim, PowellMinimum%xmin, xit, PowellMinimum%fmin, PowellMinimum%Err)
                 if (PowellMinimum%Err%occurred) then
+                ! LCOV_EXCL_START
                     PowellMinimum%Err%msg = PROCEDURE_NAME//PowellMinimum%Err%msg
                     return
                 end if
+                ! LCOV_EXCL_STOP
                 if (fptt - PowellMinimum%fmin > del) then
                     del = fptt - PowellMinimum%fmin
                     ibig = i
@@ -426,10 +430,12 @@ contains
             if ( 2._RK*(fp-PowellMinimum%fmin) <= PowellMinimum%ftol*(abs(fp)+abs(PowellMinimum%fmin)) + TINY_RK ) return
 
             if (PowellMinimum%niter == ITMAX) then
+            ! LCOV_EXCL_START
                 PowellMinimum%Err%occurred = .true.
                 PowellMinimum%Err%msg = PROCEDURE_NAME//": maximum number of iterations exceeded."
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             ptt = 2._RK * PowellMinimum%xmin - pt
             xit = PowellMinimum%xmin - pt
@@ -440,9 +446,11 @@ contains
             if (t >= 0.0) cycle
             call linmin(getFuncMD, ndim, PowellMinimum%xmin, xit, PowellMinimum%fmin, PowellMinimum%Err)
             if (PowellMinimum%Err%occurred) then
+            ! LCOV_EXCL_START
                 PowellMinimum%Err%msg = PROCEDURE_NAME//PowellMinimum%Err%msg
                 return
             end if
+            ! LCOV_EXCL_STOP
             PowellMinimum%DirMat(1:ndim,ibig) = PowellMinimum%DirMat(1:ndim,ndim)
             PowellMinimum%DirMat(1:ndim,ndim) = xit
 
@@ -475,8 +483,10 @@ contains
         call getBracket(ax,xx,bx,fa,fx,fb,getFunc1D)
         BrentMinimum = minimizeBrent(getFunc1D, ax, xx, bx, XTOL)
         if (BrentMinimum%Err%occurred) then
+        ! LCOV_EXCL_START
             Err = BrentMinimum%Err
             return
+        ! LCOV_EXCL_STOP
         else
             Err%occurred = .false.
         end if

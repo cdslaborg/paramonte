@@ -112,11 +112,11 @@ contains
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(RandomStartPointDomainLowerLimitVec_type), intent(in)  :: RandomStartPointDomainLowerLimitVecObj
-        integer(IK), intent(in)                             :: nd
+        class(RandomStartPointDomainLowerLimitVec_type), intent(in) :: RandomStartPointDomainLowerLimitVecObj
+        integer(IK), intent(in)                                     :: nd
         if (allocated(randomStartPointDomainLowerLimitVec)) deallocate(randomStartPointDomainLowerLimitVec)
         allocate(randomStartPointDomainLowerLimitVec(nd))
-        randomStartPointDomainLowerLimitVec = RandomStartPointDomainLowerLimitVecObj%null
+        randomStartPointDomainLowerLimitVec(:) = RandomStartPointDomainLowerLimitVecObj%null
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

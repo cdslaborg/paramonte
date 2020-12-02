@@ -195,7 +195,7 @@ contains
         if (present(OS)) then
             if ( OS%isWindows .and. .not. (OS%Shell%isCMD .or. OS%Shell%isPowershell) ) then
             ! LCOV_EXCL_START
-                call OS%Shell%query(isWindowsOS = OS%isWindows)
+                call OS%Shell%query()
                 if (OS%Shell%Err%occurred) then
                     Err = OS%Shell%Err
                     Err%msg =   PROCEDURE_NAME // &

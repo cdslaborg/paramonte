@@ -70,6 +70,11 @@ contains
         call Test%run(test_runSampler_1, "test_runSampler_1")
         call Test%run(test_runSampler_2, "test_runSampler_2")
         call Test%run(test_runSampler_3, "test_runSampler_3")
+        call Test%run(test_runSampler_4, "test_runSampler_4")
+        call Test%run(test_runSampler_5, "test_runSampler_5")
+        call Test%run(test_runSampler_6, "test_runSampler_6")
+        call Test%run(test_runSampler_7, "test_runSampler_7")
+        call Test%run(test_runSampler_8, "test_runSampler_8")
         call Test%finalize()
     end subroutine test_ParaDRAM
 
@@ -162,6 +167,91 @@ contains
         assertion = .not. PD%Err%occurred
 #endif
     end function test_runSampler_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with wrong SpecBase input values.
+    function test_runSampler_5() result(assertion)
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_5.in" &
+                            )
+        assertion = PD%Err%occurred
+#endif
+    end function test_runSampler_5
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with another set of wrong input values:
+    !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
+    function test_runSampler_6() result(assertion)
+        use Constants_mod, only: RK, HUGE_RK
+        implicit none
+        logical             :: assertion
+        real(RK), parameter :: domainLowerLimitVec(*) = [-HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
+        real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , domainLowerLimitVec = domainLowerLimitVec &
+                            , domainUpperLimitVec = domainUpperLimitVec &
+                            , mpiFinalizeRequested = .false. &
+                            )
+        assertion = PD%Err%occurred
+#endif
+    end function test_runSampler_6
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a wrong internal input namelist group:
+    !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
+    function test_runSampler_7() result(assertion)
+        use Constants_mod, only: RK, HUGE_RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , inputFile = "&ParaDXXX randomSeed = 1111 /" &
+                            , mpiFinalizeRequested = .false. &
+                            )
+        assertion = .not. PD%Err%occurred
+#endif
+    end function test_runSampler_7
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a wrong internal input namelist group:
+    !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
+    function test_runSampler_8() result(assertion)
+        use Constants_mod, only: RK, HUGE_RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_8.in" &
+                            , mpiFinalizeRequested = .false. &
+                            )
+        assertion = .not. PD%Err%occurred
+#endif
+    end function test_runSampler_8
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

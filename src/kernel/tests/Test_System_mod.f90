@@ -76,6 +76,7 @@ contains
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_sleep_1, "test_sleep_1")
         call Test%run(test_OS_type_1, "test_OS_type_1")
+        call Test%run(test_OS_type_2, "test_OS_type_2")
         call Test%run(test_copyFile_1, "test_copyFile_1")
         call Test%run(test_removeFile_1, "test_removeFile_1")
         call Test%run(test_removeFile_2, "test_removeFile_2")
@@ -110,8 +111,11 @@ contains
         implicit none
         logical                 :: assertion
         type(SystemInfo_type)   :: SystemInfo
-        SystemInfo = SystemInfo_type()
-        assertion = .not. SystemInfo%Err%occurred .and. allocated(SystemInfo%List) .and. size(SystemInfo%List) > 0
+        assertion = .true.
+        if (Test%Image%isFirst) then
+            SystemInfo = SystemInfo_type()
+            assertion = .not. SystemInfo%Err%occurred .and. allocated(SystemInfo%List) .and. size(SystemInfo%List) > 0
+        end if
     end function test_SystemInfo_type_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,11 +126,12 @@ contains
         implicit none
         logical                 :: assertion
         type(EnvVar_type)       :: EnvVar
-
-        EnvVar%name = ""
-        call EnvVar%get(EnvVar%name,EnvVar%value,EnvVar%length,EnvVar%Err)
-        assertion = EnvVar%Err%occurred
-
+        assertion = .true.
+        if (Test%Image%isFirst) then
+            EnvVar%name = ""
+            call EnvVar%get(EnvVar%name,EnvVar%value,EnvVar%length,EnvVar%Err)
+            assertion = EnvVar%Err%occurred
+        end if
     end function test_EnvVar_type_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,20 +142,21 @@ contains
         implicit none
         logical                 :: assertion
         type(EnvVar_type)       :: EnvVar
-
-        EnvVar%name = "OS"
-        call EnvVar%get(EnvVar%name,EnvVar%value,EnvVar%length,EnvVar%Err)
-        assertion = .not. EnvVar%Err%occurred .and. allocated(EnvVar%name) .and. allocated(EnvVar%value)
-
-        ! LCOV_EXCL_START
-        !if (Test%isDebugMode .and. .not. assertion) then
-        !    write(Test%outputUnit,"(2A)")
-        !    write(Test%outputUnit,"(2A)")   "EnvVar%name     : ", EnvVar%name
-        !    write(Test%outputUnit,"(2A)")   "EnvVar%value    : ", EnvVar%value
-        !    write(Test%outputUnit,"(2A)")   "EnvVar%length   : ", num2str(EnvVar%length)
-        !    write(Test%outputUnit,"(2A)")
-        !end if
-        ! LCOV_EXCL_STOP
+        assertion = .true.
+        if (Test%Image%isFirst) then
+            EnvVar%name = "OS"
+            call EnvVar%get(EnvVar%name,EnvVar%value,EnvVar%length,EnvVar%Err)
+            assertion = .not. EnvVar%Err%occurred .and. allocated(EnvVar%name) .and. allocated(EnvVar%value)
+            !if (Test%isDebugMode .and. .not. assertion) then
+            !! LCOV_EXCL_START
+            !    write(Test%outputUnit,"(2A)")
+            !    write(Test%outputUnit,"(2A)")   "EnvVar%name     : ", EnvVar%name
+            !    write(Test%outputUnit,"(2A)")   "EnvVar%value    : ", EnvVar%value
+            !    write(Test%outputUnit,"(2A)")   "EnvVar%length   : ", num2str(EnvVar%length)
+            !    write(Test%outputUnit,"(2A)")
+            !end if
+            !! LCOV_EXCL_STOP
+        end if
 
     end function test_EnvVar_type_2
 
@@ -162,10 +168,12 @@ contains
         implicit none
         logical                 :: assertion
         type(EnvVar_type)       :: EnvVar
-
-        EnvVar%name = "OS"
-        call EnvVar%get(EnvVar%name, EnvVar%value, Err = EnvVar%Err)
-        assertion = .not. EnvVar%Err%occurred .and. allocated(EnvVar%name) .and. allocated(EnvVar%value)
+        assertion = .true.
+        if (Test%Image%isFirst) then
+            EnvVar%name = "OS"
+            call EnvVar%get(EnvVar%name, EnvVar%value, Err = EnvVar%Err)
+            assertion = .not. EnvVar%Err%occurred .and. allocated(EnvVar%name) .and. allocated(EnvVar%value)
+        end if
 
     end function test_EnvVar_type_3
 
@@ -175,24 +183,24 @@ contains
 
         use String_mod, only: num2str
         implicit none
-        !integer                 :: i
+       !integer                 :: i
         logical                 :: assertion
         type(CmdArg_type)       :: CmdArg
-
-        call CmdArg%query()
-        assertion = .not. CmdArg%Err%occurred
-        if (.not. assertion) return
-
-        ! LCOV_EXCL_START
-        !if (Test%isDebugMode .and. .not. assertion) then
-        !    write(Test%outputUnit,"(2A)")
-        !    write(Test%outputUnit,"(2A)")   "CmdArg%cmd      : ", CmdArg%cmd
-        !    write(Test%outputUnit,"(2A)")   "CmdArg%count    : ", num2str(CmdArg%count)
-        !    write(Test%outputUnit,      "(*('CmdArg%slash    : ', 2A))") (CmdArg%Arg(i)%record, new_line('a'), i=1,CmdArg%count)
-        !    write(Test%outputUnit,"(2A)")
-        !end if
-        ! LCOV_EXCL_STOP
-
+        assertion = .true.
+        if (Test%Image%isFirst) then
+            call CmdArg%query()
+            assertion = .not. CmdArg%Err%occurred
+            if (.not. assertion) return
+            !if (Test%isDebugMode .and. .not. assertion) then
+            !! LCOV_EXCL_START
+            !    write(Test%outputUnit,"(2A)")
+            !    write(Test%outputUnit,"(2A)")   "CmdArg%cmd      : ", CmdArg%cmd
+            !    write(Test%outputUnit,"(2A)")   "CmdArg%count    : ", num2str(CmdArg%count)
+            !    write(Test%outputUnit,      "(*('CmdArg%slash    : ', 2A))") (CmdArg%Arg(i)%record, new_line('a'), i=1,CmdArg%count)
+            !    write(Test%outputUnit,"(2A)")
+            !end if
+            !! LCOV_EXCL_STOP
+        end if
     end function test_CmdArg_type_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -204,21 +212,76 @@ contains
         logical                 :: assertion
         type(OS_type)           :: OS
 
+        mv_osCacheActivated = .false.
+        mv_shCacheActivated = .false.
+
         call OS%query()
         assertion = .not. OS%Err%occurred .and. .not. OS%Shell%Err%occurred
         if (.not. assertion) return
 
-        ! LCOV_EXCL_START
         !if (Test%isDebugMode .and. .not. assertion) then
+        !! LCOV_EXCL_START
         !    write(Test%outputUnit,"(2A)")
         !    write(Test%outputUnit,"(2A)")   "OS%name     : ", OS%name
         !    write(Test%outputUnit,"(2A)")   "OS%slash    : ", OS%slash
         !    write(Test%outputUnit,"(2A)")   "OS%isWindows: ", log2str(OS%isWindows)
         !    write(Test%outputUnit,"(2A)")
         !end if
-        ! LCOV_EXCL_STOP
+        !! LCOV_EXCL_STOP
 
     end function test_OS_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Query Shell first and then OS to ensure caching the Shell query results work correctly.
+    function test_OS_type_2() result(assertion)
+
+        use String_mod, only: log2str, getLowerCase
+        implicit none
+        logical                 :: assertion
+        type(OS_type)           :: OS
+
+        assertion = .true.
+
+        mv_osCacheActivated = .false.
+        mv_shCacheActivated = .false.
+
+        call OS%Shell%query()
+        assertion = assertion .and. .not. OS%Shell%Err%occurred
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(2A)")
+            write(Test%outputUnit,"(2A)")   "OS%name           : ", OS%name
+            write(Test%outputUnit,"(2A)")   "OS%slash          : ", OS%slash
+            write(Test%outputUnit,"(2A)")   "OS%isWindows      : ", log2str(OS%isWindows)
+            write(Test%outputUnit,"(2A)")   "OS%Shell%name     : ", OS%Shell%name
+            write(Test%outputUnit,"(2A)")   "OS%Shell%slash    : ", OS%Shell%slash
+            write(Test%outputUnit,"(2A)")   "OS%Shell%isUnix   : ", log2str(OS%Shell%isUnix)
+            write(Test%outputUnit,"(2A)")
+        end if
+        ! LCOV_EXCL_STOP
+
+        call OS%query()
+        assertion = assertion .and. .not. OS%Err%occurred .and. .not. OS%Shell%Err%occurred
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(2A)")
+            write(Test%outputUnit,"(2A)")   "OS%name           : ", OS%name
+            write(Test%outputUnit,"(2A)")   "OS%slash          : ", OS%slash
+            write(Test%outputUnit,"(2A)")   "OS%isWindows      : ", log2str(OS%isWindows)
+            write(Test%outputUnit,"(2A)")   "OS%Shell%name     : ", OS%Shell%name
+            write(Test%outputUnit,"(2A)")   "OS%Shell%slash    : ", OS%Shell%slash
+            write(Test%outputUnit,"(2A)")   "OS%Shell%isUnix   : ", log2str(OS%Shell%isUnix)
+            write(Test%outputUnit,"(2A)")
+        end if
+        ! LCOV_EXCL_STOP
+
+        if (.not. assertion) return
+
+    end function test_OS_type_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -324,8 +387,8 @@ contains
         assertion = assertion .and. RFN%key == "test_RandomFileName_type"  !  // "_image_" // num2str(this_image())
         assertion = assertion .and. RFN%ext == ".rfn"
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(2A)")
             write(Test%outputUnit,"(2A)")   "RFN%path     : ", RFN%path
             write(Test%outputUnit,"(2A)")   "RFN%dir      : ", RFN%dir

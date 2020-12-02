@@ -76,8 +76,8 @@ contains
         use Constants_mod, only: NULL_RK
         use String_mod, only: num2str
         implicit none
-        character(*), intent(in)                    :: methodName
-        type(RandomStartPointDomainUpperLimitVec_type) :: RandomStartPointDomainUpperLimitVecObj
+        character(*), intent(in)                        :: methodName
+        type(RandomStartPointDomainUpperLimitVec_type)  :: RandomStartPointDomainUpperLimitVecObj
         RandomStartPointDomainUpperLimitVecObj%null = NULL_RK
         RandomStartPointDomainUpperLimitVecObj%desc = &
         "randomStartPointDomainUpperLimitVec represents the upper boundaries of the cubical domain from which the starting point(s) of &
@@ -112,11 +112,11 @@ contains
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(RandomStartPointDomainUpperLimitVec_type), intent(in)    :: RandomStartPointDomainUpperLimitVecObj
+        class(RandomStartPointDomainUpperLimitVec_type), intent(in) :: RandomStartPointDomainUpperLimitVecObj
         integer(IK), intent(in)                                     :: nd
         if (allocated(randomStartPointDomainUpperLimitVec)) deallocate(randomStartPointDomainUpperLimitVec)
         allocate(randomStartPointDomainUpperLimitVec(nd))
-        randomStartPointDomainUpperLimitVec = RandomStartPointDomainUpperLimitVecObj%null
+        randomStartPointDomainUpperLimitVec(:) = RandomStartPointDomainUpperLimitVecObj%null
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

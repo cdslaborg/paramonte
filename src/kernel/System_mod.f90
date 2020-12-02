@@ -53,6 +53,17 @@ module System_mod
     character(*), parameter             :: MODULE_NAME = "@System_mod"
     integer(IK) , parameter             :: MAX_OS_NAME_LEN = 63_IK
 
+#if defined OS_IS_WINDOWS
+    character(*), parameter             :: OS_NAME = "Windows"
+    character(*), parameter             :: OS_PATH_SEPARATOR = "\"
+#elif defined OS_IS_DARWIN
+    character(*), parameter             :: OS_NAME = "Darwin"
+    character(*), parameter             :: OS_PATH_SEPARATOR = "/"
+#elif defined OS_IS_LINUX
+    character(*), parameter             :: OS_NAME = "Linux"
+    character(*), parameter             :: OS_PATH_SEPARATOR = "/"
+#endif
+
     !> The `RandomFileName_type` class.
     type :: RandomFileName_type
         character(:), allocatable       :: path                     !< The full path to the randomly-generated unique file name.
@@ -161,8 +172,13 @@ module System_mod
 
     ! cache the OS query result to speed up code
 
-    logical      , private              :: mv_osCacheActivated = .false.
-    logical      , private              :: mv_shCacheActivated = .false.
+#if defined CODECOV_ENABLED || TESTING_ENABLED
+    logical                             :: mv_osCacheActivated = .false. !< A logical flag indicating whether an OS query has occurred or not.
+    logical                             :: mv_shCacheActivated = .false. !< A logical flag indicating whether a Shell query has occurred or not.
+#else
+    logical      , private              :: mv_osCacheActivated = .false. !< A logical flag indicating whether an OS query has occurred or not.
+    logical      , private              :: mv_shCacheActivated = .false. !< A logical flag indicating whether a Shell query has occurred or not.
+#endif
     type(OS_type), private              :: mv_OS
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -231,7 +247,7 @@ contains
                 OS%Shell    = mv_OS%Shell
             else
                 mv_shCacheActivated = .true.
-                call OS%Shell%query(OS%isWindows)
+                call OS%Shell%query()
                 if (OS%Shell%Err%occurred) then
                 ! LCOV_EXCL_START
                     OS%Err = OS%Shell%Err
@@ -245,23 +261,17 @@ contains
 
         end if
 
+#if defined OS_IS_WINDOWS || defined OS_IS_DARWIN || defined OS_IS_LINUX
+
+        OS%name = OS_NAME
+        OS%slash = OS_PATH_SEPARATOR
 #if defined OS_IS_WINDOWS
-
         OS%isWindows = .true.
-        OS%name = "Windows"
-        OS%slash = "\"
-
 #elif defined OS_IS_DARWIN
-
         OS%isDarwin = .true.
-        OS%name = "Darwin"
-        OS%slash = "/"
-
 #elif defined OS_IS_LINUX
-
         OS%isLinux = .true.
-        OS%name = "Linux"
-        OS%slash = "/"
+#endif
 
 #else
 
@@ -417,7 +427,7 @@ contains
                 OS%Shell    = mv_OS%Shell
             else
                 mv_shCacheActivated = .true.
-                call OS%Shell%query(OS%isWindows)
+                call OS%Shell%query()
                 if (OS%Shell%Err%occurred) then
                 ! LCOV_EXCL_START
                     OS%Err = OS%Shell%Err
@@ -433,14 +443,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine queryRuntimeShell(Shell, isWindowsOS)
+    subroutine queryRuntimeShell(Shell)
 
         use FileContents_mod, only: FileContents_type
 
         implicit none
 
         class(Shell_type), intent(inout)    :: Shell
-        logical, intent(in)                 :: isWindowsOS
 
         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // "@queryRuntimeShell()"
 
@@ -499,17 +508,20 @@ contains
             Shell%isCsh     = index(Shell%name,"csh") > 0
             Shell%isBash    = index(Shell%name,"bash") > 0
             Shell%isSh      = .false.; if (.not. (Shell%isBash .or. Shell%isZsh .or. Shell%isCsh)) Shell%isSh = index(Shell%name,"sh") > 0
-            Shell%isUnix    = (.not. isWindowsOS) .or. Shell%isBash .or. Shell%isZsh .or. Shell%isCsh .or. Shell%isSh
+#if defined OS_IS_WINDOWS
+            Shell%isUnix    = Shell%isBash .or. Shell%isZsh .or. Shell%isCsh .or. Shell%isSh
+#else
+            Shell%isUnix    = .true.
+#endif
             if (Shell%isUnix) Shell%slash = "/"
         end if
 
-        if (Shell%isUnix) return
+#if defined OS_IS_WINDOWS
+        if (.not. Shell%isUnix) then
 
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        ! define the shell command, this time for Windows Batch.
-        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        if (isWindowsOS) then
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            ! define the shell command, this time for Windows Batch.
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             command = "(dir 2>&1 *`|echo CMD >"//RFN%path//");&<# rem #>echo PowerShell >"//RFN%path//" 2>&1"
 
@@ -542,6 +554,12 @@ contains
             end if
 
         end if
+#endif
+
+        ! cache the results
+
+        mv_shCacheActivated = .true.
+        mv_OS%Shell = Shell
 
     end subroutine queryRuntimeShell
 
@@ -673,10 +691,10 @@ contains
                 Err%msg = PROCEDURE_NAME//": Unknown error occurred while fetching the value of the environment variable "//name//"."
                 return
             end if
-            ! LCOV_EXCL_STOP
         else
             call get_environment_variable(name=name,value=value,length=length)
         end if
+        ! LCOV_EXCL_STOP
 
         value = trim(adjustl(value))
 
@@ -727,13 +745,14 @@ contains
         implicit none
         class(SysCmd_type), intent(inout)   :: SysCmd
         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // "@runSysCmd()"
-        if (allocated(SysCmd%Err%msg)) deallocate(SysCmd%Err%msg)
+        if (allocated(SysCmd%Err%msg)) deallocate(SysCmd%Err%msg) ! LCOV_EXCL_LINE
         allocate( character(MAX_REC_LEN) :: SysCmd%Err%msg )
-        call execute_command_line   ( SysCmd%cmd &
-                                    , wait=SysCmd%wait &
-                                    , exitstat=SysCmd%exitstat &
-                                    , cmdstat=SysCmd%Err%stat &
-                                    , cmdmsg=SysCmd%Err%msg )
+        call execute_command_line   ( SysCmd%cmd                & ! LCOV_EXCL_LINE
+                                    , wait=SysCmd%wait          & ! LCOV_EXCL_LINE
+                                    , exitstat=SysCmd%exitstat  & ! LCOV_EXCL_LINE
+                                    , cmdstat=SysCmd%Err%stat   & ! LCOV_EXCL_LINE
+                                    , cmdmsg=SysCmd%Err%msg     & ! LCOV_EXCL_LINE
+                                    )
         if (SysCmd%Err%stat==0) then
             SysCmd%Err%occurred = .false.
             return
@@ -957,14 +976,24 @@ contains
 
         stdErr = RFN%path // ".stderr"
 
-        ! determine the operating system
+#if defined OS_IS_DARWIN
 
+        command = "uname -a >> " // RFN%path // "; sysctl -a | grep machdep.cpu >> " // RFN%path ! LCOV_EXCL_LINE
+
+#elif defined OS_IS_LINUX
+
+        !command = "uname -a >> " // RFN%path // "; lshw -short >> " // RFN%path // "; lscpu >> " // RFN%path
+        command = "uname -a >> " // RFN%path // "; lscpu >> " // RFN%path
+
+#elif defined OS_IS_WINDOWS
+
+        ! determine the runtime shell
         if (present(OS)) then
             OpSy = OS
         else
             call OpSy%query()
-            ! LCOV_EXCL_START
             if (OpSy%Err%occurred) then
+            ! LCOV_EXCL_START
                 Err = OpSy%Err
                 Err%msg = PROCEDURE_NAME // Err%msg
                 return
@@ -972,23 +1001,26 @@ contains
             ! LCOV_EXCL_STOP
         end if
 
-        if (OpSy%isWindows) then
-            command = "systeminfo > " // RFN%path
-        elseif (OpSy%isDarwin) then
-            command = "uname -a >> " // RFN%path // "; sysctl -a | grep machdep.cpu >> " // RFN%path
-        elseif (OpSy%isLinux) then
-            !command = "uname -a >> " // RFN%path // "; lshw -short >> " // RFN%path // "; lscpu >> " // RFN%path
+        if (OpSy%Shell%isCMD .or. OpSy%Shell%isPowerShell) then
+            command = "systeminfo > " // RFN%path ! LCOV_EXCL_LINE
+        elseif (OpSy%Shell%isUnix) then
             command = "uname -a >> " // RFN%path // "; lscpu >> " // RFN%path
-        else ! unknown operating system
+        end if
+
+#endif
+
+        if (.not. allocated(command)) then
+        ! LCOV_EXCL_START
             allocate(List(1))
             List(1)%record = "Unknown operating system: " // OpSy%name
             if (present(count)) count = 1_IK
             return
         end if
+        ! LCOV_EXCL_STOP
 
         call executeCmd( command=command // " 2> " // stdErr, Err=Err )
-        ! LCOV_EXCL_START
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             Err%msg =   PROCEDURE_NAME // ": Error occurred while attempting to write the system info to external file." // NLC // Err%msg
             return
         end if
@@ -997,8 +1029,8 @@ contains
         ! now count the number of records in file:
 
         inquire(file=RFN%path,opened=fileIsOpen,number=fileUnit,iostat=Err%stat)    ! check if the file already exists
-        ! LCOV_EXCL_START
         if (Err%stat/=0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the open status of file = '" // RFN%path // "'."
             return
@@ -1006,8 +1038,8 @@ contains
         ! LCOV_EXCL_STOP
 
         if (fileIsOpen) close(fileUnit,iostat=Err%stat)
-        ! LCOV_EXCL_START
         if (Err%stat/=0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file = '" // RFN%path // "'."
             return
@@ -1015,16 +1047,16 @@ contains
         ! LCOV_EXCL_STOP
 
         call sleep(seconds=0.1_RK,Err=Err)
-        ! LCOV_EXCL_START
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME // Err%msg
             return
         end if
         ! LCOV_EXCL_STOP
 
         open(newunit=fileUnit,file=RFN%path,status="old",iostat=Err%stat)
-        ! LCOV_EXCL_START
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Unknown error occurred while opening file = '" // RFN%path // "'."
             return
@@ -1034,14 +1066,14 @@ contains
         nRecord = 0 ! number of filenames in the file
         do
             read(fileUnit,'(A)',iostat=Err%stat) record
-            ! LCOV_EXCL_START
             if ( is_iostat_eor(Err%stat) ) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg  = PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to read &
                          & from file = '" // RFN%path // "'."
                 return
-            ! LCOV_EXCL_STOP
             elseif ( is_iostat_end(Err%stat) ) then
+            ! LCOV_EXCL_STOP
                 exit
             ! LCOV_EXCL_START
             elseif ( Err%stat>0 ) then
@@ -1056,8 +1088,8 @@ contains
             end if
         end do
         close(fileUnit,iostat=Err%stat)
-        ! LCOV_EXCL_START
         if (Err%stat/=0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file = '" // RFN%path // "'."
             return
@@ -1067,16 +1099,16 @@ contains
         ! now read the contents of the file
 
         call sleep(seconds=0.1_RK,Err=Err)
-        ! LCOV_EXCL_START
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME // Err%msg
             return
         end if
         ! LCOV_EXCL_STOP
 
         open(newunit=fileUnit,file=RFN%path,status="old",iostat=Err%stat)
-        ! LCOV_EXCL_START
         if (Err%stat>0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Unknown error occurred while opening file = '" // RFN%path // "'."
             return
@@ -1086,14 +1118,14 @@ contains
         allocate(List(nRecord))
         do counter = 1,nRecord
             read(fileUnit,'(A)',iostat=Err%stat) record
-            ! LCOV_EXCL_START
             if ( is_iostat_eor(Err%stat) ) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg  = PROCEDURE_NAME // ": End-Of-Record error condition occurred while attempting to read &
                          & from file = '" // RFN%path // "'."
                 return
-            ! LCOV_EXCL_STOP
             elseif ( is_iostat_end(Err%stat) ) then
+            ! LCOV_EXCL_STOP
                 exit
             ! LCOV_EXCL_START
             elseif ( Err%stat>0 ) then
@@ -1102,7 +1134,6 @@ contains
                 return
             ! LCOV_EXCL_STOP
             end if
-            ! LCOV_EXCL_STOP
             List(counter)%record = trim(adjustl(record))
         end do
 
@@ -1110,8 +1141,8 @@ contains
 
         open(newunit=fileUnit,file=stdErr,status="replace",iostat=Err%stat)
         close(fileUnit,iostat=Err%stat,status="delete")
-        ! LCOV_EXCL_START
         if (Err%stat/=0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file = '" // RFN%path // "'."
             return
@@ -1119,18 +1150,6 @@ contains
         ! LCOV_EXCL_STOP
 
         if (present(count)) count = nRecord
-
-        ! remove the files
-        !call removeFile(filename,OpSy%isWindows,Err)
-        !if (Err%occurred) then
-        !    Err%msg = PROCEDURE_NAME // Err%msg
-        !    return
-        !end if
-        !call removeFile(stdErr,OpSy%isWindows,Err)
-        !if (Err%occurred) then
-        !    Err%msg = PROCEDURE_NAME // Err%msg
-        !    return
-        !end if
 
     end subroutine getSystemInfo
 
@@ -1164,8 +1183,8 @@ contains
         Err%msg = ""
 
         call system_clock( count=countOld, count_rate=countRate, count_max=countMax )
-        ! LCOV_EXCL_START
         if (countOld==-huge(0) .or. nint(countRate)==0 .or. countMax==0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred. There is no processor clock."
             return
@@ -1175,8 +1194,8 @@ contains
         countRate = 1._RK / countRate
         do
             call system_clock( count=countNew )
-            ! LCOV_EXCL_START
             if (countNew==countMax) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred. Maximum processor clock count reached."
             end if
@@ -1221,18 +1240,22 @@ contains
         ! First check whether file exists:
 
         inquire(file=pathNew,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
-        ! LCOV_EXCL_START
+
         if (Err%stat/=0) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file = '" // pathNew // "'."
             return
         end if
         ! LCOV_EXCL_STOP
+
         if (fileExists) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": The requested copy file = '" // pathNew // "' already exists."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         ! define platform specific copy command
 
@@ -1247,8 +1270,8 @@ contains
 
             counter = counter + 1
             call executeCmd( command=cmd, Err=Err )
-            ! LCOV_EXCL_START
             if (Err%occurred) then
+            ! LCOV_EXCL_START
                 Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'." // NLC
                 return
             end if
@@ -1257,8 +1280,8 @@ contains
             ! ensure file is copied
 
             inquire(file=pathNew,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
-            ! LCOV_EXCL_START
             if (Err%stat/=0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of copied file = '" // pathNew // "'."
                 return
@@ -1271,8 +1294,8 @@ contains
 
         end do
 
-        ! LCOV_EXCL_START
         if (.not. fileExists) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Failed to copy file from '" // pathOld // "' to '" // pathNew // "' after " // num2str(counter) // " attempts."
             return
@@ -1315,8 +1338,8 @@ contains
         if (isPresentErr) then
             Err%occurred = .false.
             inquire(file=path,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
-            ! LCOV_EXCL_START
             if (Err%stat/=0) then
+            ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file = '" // path // "'."
                 return
@@ -1376,9 +1399,7 @@ contains
                 if (.not. isOpen) open(newunit = fileUnit, file = path, status = "replace")
                 if (isPresentErr) then
                     close(fileUnit, status="delete", iostat = Err%stat)
-                    ! LCOV_EXCL_START
                     Err%occurred = Err%stat > 0_IK
-                    ! LCOV_EXCL_STOP
                 else
                     close(fileUnit,status="delete")
                 end if

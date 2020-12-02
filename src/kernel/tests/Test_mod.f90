@@ -284,6 +284,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> This procedure must be called by all MPI/CAF processors.
     subroutine runTest(Test, test_func, test_func_name)
 
         use String_mod, only: String_type, num2str, isInteger, replaceStr, padString

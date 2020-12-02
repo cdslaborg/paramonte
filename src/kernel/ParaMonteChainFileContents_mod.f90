@@ -163,10 +163,12 @@ contains
 
         if (present(chainFilePath)) call CFC%get(chainFilePath,chainFileForm,Err,chainSize,lenHeader,ndim,delimiter,targetChainSize)
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             CFC%Err%occurred = .true.
             CFC%Err%msg = Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
     end function constructChainFileContents
 
@@ -317,9 +319,11 @@ contains
                 else ! is not binary
                     call getNumRecordInFile(chainFilePathTrimmed,chainSizeDefault,Err,exclude="")
                     if (Err%occurred) then
+                    ! LCOV_EXCL_START
                         Err%msg = PROCEDURE_NAME//Err%msg
                         return
                     end if
+                    ! LCOV_EXCL_STOP
                     chainSizeDefault = chainSizeDefault - 1_IK ! subtract header
                 end if
             end if
@@ -381,10 +385,12 @@ contains
 #endif
                     )
                 if (Err%stat/=0) then
+                ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": Unable to open the file located at: "//chainFilePathTrimmed//"."//NLC
                     return
                 end if
+                ! LCOV_EXCL_STOP
 
                 read(chainFileUnit,*)   ! skip the header
                 read(chainFileUnit,"(A)") Record%value  ! read the first numeric row in string format
