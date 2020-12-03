@@ -51,10 +51,12 @@ module SpecBase_InterfaceType_mod
     character(:)    , allocatable   :: interfaceType ! namelist input
 
     type                            :: InterfaceType_type
+        logical                     :: isC = .false.
+        logical                     :: isCPP = .false.
         logical                     :: isFortran = .false.
         logical                     :: isMATLAB = .false.
         logical                     :: isPython = .false.
-        logical                     :: isClang = .false.
+        logical                     :: isR = .false.
         character(:), allocatable   :: val
         character(:), allocatable   :: def
         character(:), allocatable   :: null
@@ -86,16 +88,22 @@ contains
         type(InterfaceType_type) :: InterfaceTypeObj
 #if defined C_ENABLED
         InterfaceTypeObj%def = "The C Programming Language."
+        InterfaceTypeObj%isC = .true.
 #elif defined CPP_ENABLED
         InterfaceTypeObj%def = "The C++ Programming Language."
+        InterfaceTypeObj%isCPP = .true.
 #elif defined FORTRAN_ENABLED
         InterfaceTypeObj%def = "The Fortran Programming Language."
+        InterfaceTypeObj%isFortran = .true. ! index(interfaceLowerCase,"fortran") /= 0
 #elif defined MATLAB_ENABLED
         InterfaceTypeObj%def = "The MATLAB Programming Language."
+        InterfaceTypeObj%isMATLAB = .true.
 #elif defined PYTHON_ENABLED
         InterfaceTypeObj%def = "The Python Programming Language."
+        InterfaceTypeObj%isPython = .true.
 #elif defined R_ENABLED
         InterfaceTypeObj%def = "The R Programming Language."
+        InterfaceTypeObj%isR = .true.
 #else
 #error "Undefined ParaMonte interface type in SpecBase_InterfaceType_mod.f90"
 #endif
@@ -127,21 +135,10 @@ contains
         implicit none
         class(InterfaceType_type), intent(inout)    :: InterfaceTypeObj
         character(*), intent(in)                    :: interfaceType
-        character(:), allocatable                   :: interfaceLowerCase
         if (allocated(InterfaceTypeObj%val)) deallocate(InterfaceTypeObj%val)
         InterfaceTypeObj%val = trim(adjustl(interfaceType))
         if (InterfaceTypeObj%val==trim(adjustl(InterfaceTypeObj%null))) then
             InterfaceTypeObj%val=InterfaceTypeObj%def
-        end if
-        interfaceLowerCase = getLowerCase(InterfaceTypeObj%val)
-        if (index(interfaceLowerCase,"fortran")/=0) then
-            InterfaceTypeObj%isFortran = .true.
-        elseif (index(interfaceLowerCase,"matlab")/=0) then
-            InterfaceTypeObj%isMATLAB = .true.
-        elseif (index(interfaceLowerCase,"python")/=0) then
-            InterfaceTypeObj%isPython = .true.
-        else
-            InterfaceTypeObj%isClang = .true.
         end if
     end subroutine setInterfaceType
 
