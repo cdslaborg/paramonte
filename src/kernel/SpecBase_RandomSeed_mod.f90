@@ -160,15 +160,15 @@ contains
 #endif
 
         if ( RandomSeedObj%userSeed == RandomSeedObj%nullSeed ) then
-            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         &
-                                                , isRepeatable       = RandomSeedObj%isRepeatable    &
-                                                , isImageDistinct    = RandomSeedObj%isImageDistinct &
+            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         & ! LCOV_EXCL_LINE
+                                                , isRepeatable       = RandomSeedObj%isRepeatable    & ! LCOV_EXCL_LINE
+                                                , isImageDistinct    = RandomSeedObj%isImageDistinct & ! LCOV_EXCL_LINE
                                                 )
         else
-            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         &
-                                                , isRepeatable       = RandomSeedObj%isRepeatable    &
-                                                , isImageDistinct    = RandomSeedObj%isImageDistinct &
-                                                , inputSeed          = RandomSeedObj%userSeed        &
+            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         & ! LCOV_EXCL_LINE
+                                                , isRepeatable       = RandomSeedObj%isRepeatable    & ! LCOV_EXCL_LINE
+                                                , isImageDistinct    = RandomSeedObj%isImageDistinct & ! LCOV_EXCL_LINE
+                                                , inputSeed          = RandomSeedObj%userSeed        & ! LCOV_EXCL_LINE
                                                 )
         end if
 
@@ -179,9 +179,11 @@ contains
 #endif
 
         if (comv_RandomSeed(1)%Err%occurred) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = Err%msg // PROCEDURE_NAME // comv_RandomSeed(1)%Err%msg
             return
+        ! LCOV_EXCL_STOP
         end if
 
         call comv_RandomSeed(1)%get()
@@ -194,14 +196,14 @@ contains
 #elif defined MPI_ENABLED
         allocate(Seed(RandomSeedObj%sizeSeed,RandomSeedObj%imageCount))
         call mpi_barrier(mpi_comm_world,ierrMPI) ! allow all images to set the seed first, then fetch the values
-        call mpi_allgather  ( RandomSeedObj%Seed(:,RandomSeedObj%imageID)   &   ! send buffer
-                            , RandomSeedObj%sizeSeed                        &   ! send count
-                            , mpi_integer                                   &   ! send datatype
-                            , Seed(:,:)                                     &   ! receive buffer
-                            , RandomSeedObj%sizeSeed                        &   ! receive count
-                            , mpi_integer                                   &   ! receive datatype
-                            , mpi_comm_world                                &   ! comm
-                            , ierrMPI                                       &   ! ierr
+        call mpi_allgather  ( RandomSeedObj%Seed(:,RandomSeedObj%imageID)   &   ! LCOV_EXCL_LINE : send buffer
+                            , RandomSeedObj%sizeSeed                        &   ! LCOV_EXCL_LINE : send count
+                            , mpi_integer                                   &   ! LCOV_EXCL_LINE : send datatype
+                            , Seed(:,:)                                     &   ! LCOV_EXCL_LINE : receive buffer
+                            , RandomSeedObj%sizeSeed                        &   ! LCOV_EXCL_LINE : receive count
+                            , mpi_integer                                   &   ! LCOV_EXCL_LINE : receive datatype
+                            , mpi_comm_world                                &   ! LCOV_EXCL_LINE : comm
+                            , ierrMPI                                       &   ! LCOV_EXCL_LINE : ierr
                             )
         RandomSeedObj%Seed(:,:) = Seed
         deallocate(Seed)

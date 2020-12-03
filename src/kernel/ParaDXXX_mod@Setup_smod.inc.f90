@@ -464,6 +464,7 @@ contains
         ! setup the proposal distribution
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        if (allocated(self%Proposal)) deallocate(self%Proposal)
         if (self%SpecMCMC%ProposalModel%isNormal) then
             allocate( self%Proposal, source = ProposalNormal_type   ( ndim          = ndim &
                                                                     , SpecBase      = self%SpecBase &

@@ -133,12 +133,14 @@ contains
         implicit none
         class(RestartFileFormat_type), intent(inout)    :: RestartFileFormatObj
         character(*), intent(in)                        :: restartFileFormat
+        character(:), allocatable                       :: restartFileFormatLowerCase
         RestartFileFormatObj%val = trim(adjustl(restartFileFormat))
         if ( RestartFileFormatObj%val==trim(adjustl(RestartFileFormatObj%null)) ) then
             RestartFileFormatObj%val = trim(adjustl(RestartFileFormatObj%def))
         end if
-        if (getLowerCase(RestartFileFormatObj%val)==getLowerCase(RestartFileFormatObj%binary)) RestartFileFormatObj%isBinary = .true.
-        if (getLowerCase(RestartFileFormatObj%val)==getLowerCase(RestartFileFormatObj%ascii)) RestartFileFormatObj%isAscii = .true.
+        restartFileFormatLowerCase = getLowerCase(RestartFileFormatObj%val)
+        RestartFileFormatObj%isBinary = restartFileFormatLowerCase == getLowerCase(RestartFileFormatObj%binary)
+        RestartFileFormatObj%isAscii = restartFileFormatLowerCase == getLowerCase(RestartFileFormatObj%ascii)
     end subroutine setRestartFileFormat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

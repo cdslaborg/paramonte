@@ -644,43 +644,42 @@ contains
 #endif
         use Constants_mod, only: NLC ! LCOV_EXCL_LINE
         implicit none
-        class(ParaMonte_type), intent(inout) :: self
-#if defined CFI_ENABLED
-        if (self%SpecBase%InterfaceType%isPython) then
-            call self%note  ( prefix     = self%brand &
-                            , outputUnit = self%LogFile%unit &
-                            , newline    = NLC &
-                            , msg        = "Interfacing Python with "// self%name //"..." )
-        elseif (self%SpecBase%InterfaceType%isClang) then
-#else
-            if (self%inputFileArgIsPresent) then
-                if (self%InputFile%exists) then
-                    call self%note  ( prefix     = self%brand &
-                                    , outputUnit = self%LogFile%unit &
-                                    , newline    = NLC &
-                                    , msg        = "The user's input file for " // self%name // " options was detected."// NLC // &
-                                                   "All " // self%name // " options will be read from the input file."// NLC // &
-                                                   "Here is " // self%name // " input options file:"// NLC // self%inputFile%Path%modified )
-                elseif (self%InputFile%isInternal) then
-                    call self%note  ( prefix     = self%brand &
-                                    , outputUnit = self%LogFile%unit &
-                                    , newline    = NLC &
-                                    , msg        = "No external file corresponding to the user's input file for "//self%name//" options &
-                                                   &could be found."//NLC//"The user-provided input file will be processed as an input &
-                                                   &string of "//self%name//" options." )
-                end if
-            else
-                call self%note  ( prefix     = self%brand &
-                                , outputUnit = self%LogFile%unit &
-                                , newline    = NLC &
-                                , msg        = "No " // self%name  // " input file is provided by the user."//NLC//&
-                                               "Variable values from the procedure arguments will be used instead, where provided."//NLC//&
-                                               "Otherwise, the default options will be used." )
+        class(ParaMonte_type), intent(inout)    :: self
+        character(:), allocatable               :: msg
+#if defined JULIA_ENABLED
+        msg = "Interfacing Julia with "// self%name //"..."
+#elif defined MATLAB_ENABLED
+        msg = "Interfacing MATLAB with "// self%name //"..."
+#elif defined MATTHEMATICA_ENABLED
+        msg = "Interfacing Mathematica with "// self%name //"..."
+#elif defined PYTHON_ENABLED
+        msg = "Interfacing Python with "// self%name //"..."
+#elif defined R_ENABLED
+        msg = "Interfacing R with "// self%name //"..."
+#elif defined C_ENABLED || defined CPP_ENABLED || defined FORTRAN_ENABLED
+        if (self%inputFileArgIsPresent) then
+            if (self%InputFile%exists) then
+                msg =   "The user's input file for " // self%name // " options was detected."// NLC // &
+                        "All " // self%name // " specifications will be read from the input file."// NLC // &
+                        "Here is " // self%name // " input specifications file:"// NLC // self%inputFile%Path%modified
+            elseif (self%InputFile%isInternal) then
+                msg =   "No external file corresponding to the user's input file for "//self%name//" options could be found."//NLC// &
+                        "The user-provided input file will be processed as an input string of "//self%name//" options."
             end if
+        else
+                msg =   "No " // self%name  // " input file is provided by the user."//NLC// &
+#if defined FORTRAN_ENABLED
+                        "Variable values from the procedure arguments will be used instead, where provided."//NLC//"Otherwise, "// &
+#else
+                        "Where needed, "// &
 #endif
-#if defined CFI_ENABLED
+                        "the default options will be used."
         end if
 #endif
+        call self%note  ( prefix     = self%brand &
+                        , outputUnit = self%LogFile%unit &
+                        , newline    = NLC &
+                        , msg        = msg )
     end subroutine warnUserAboutInputFilePresence
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

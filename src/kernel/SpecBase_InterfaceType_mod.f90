@@ -95,9 +95,15 @@ contains
 #elif defined FORTRAN_ENABLED
         InterfaceTypeObj%def = "The Fortran Programming Language."
         InterfaceTypeObj%isFortran = .true. ! index(interfaceLowerCase,"fortran") /= 0
+#elif defined JULIA_ENABLED
+        InterfaceTypeObj%def = "The Julia Programming Language."
+        InterfaceTypeObj%isJulia = .true.
 #elif defined MATLAB_ENABLED
         InterfaceTypeObj%def = "The MATLAB Programming Language."
         InterfaceTypeObj%isMATLAB = .true.
+#elif defined MATTHEMATICA_ENABLED
+        InterfaceTypeObj%def = "The Wolfram Mathermatica Programming Language."
+        InterfaceTypeObj%isMathermatica = .true.
 #elif defined PYTHON_ENABLED
         InterfaceTypeObj%def = "The Python Programming Language."
         InterfaceTypeObj%isPython = .true.

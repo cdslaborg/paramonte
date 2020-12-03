@@ -88,7 +88,7 @@
     !> \brief
     !> Test the ParaDRAM sampler with a too-small input value for `domainLowerLimitVec`.
     function test_SpecBase_DomainLowerLimitVec_type_1() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
+        use Constants_mod, only: IK, RK, HUGE_RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainLowerLimitVec(*) = [-HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
@@ -110,7 +110,7 @@
     !> \brief
     !> Test the ParaDRAM sampler with a too-small input value for `domainLowerLimitVec`.
     function test_SpecBase_DomainLowerLimitVec_type_2() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
+        use Constants_mod, only: IK, RK, HUGE_RK
         use String_mod, only: num2str
         implicit none
         logical             :: assertion
@@ -133,7 +133,7 @@
     !> \brief
     !> Test the ParaDRAM sampler with a too-large input value for `domainUpperLimitVec`.
     function test_SpecBase_DomainUpperLimitVec_type_1() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
+        use Constants_mod, only: IK, RK, HUGE_RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
@@ -155,7 +155,7 @@
     !> \brief
     !> Test the ParaDRAM sampler with a too-large input value for `domainUpperLimitVec`.
     function test_SpecBase_DomainUpperLimitVec_type_2() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
+        use Constants_mod, only: IK, RK, HUGE_RK
         use String_mod, only: num2str
         implicit none
         logical             :: assertion
@@ -179,7 +179,7 @@
     !> Test the ParaDRAM sampler with an input value for `domainUpperLimitVec` 
     !> that is smaller than the input value for `domainLowerLimitVec`.
     function test_SpecBase_DomainUpperLimitVec_type_3() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainLowerLimitVec(*) = [+2._RK]
@@ -204,7 +204,7 @@
     !> Test the ParaDRAM sampler with an input value for `domainUpperLimitVec` 
     !> that is equal to the input value for `domainLowerLimitVec`.
     function test_SpecBase_DomainUpperLimitVec_type_4() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainLowerLimitVec(*) = [+2._RK]
@@ -228,7 +228,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToWarn < 1`.
     function test_SpecBase_MaxNumDomainCheckToWarn_type_1() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
@@ -253,7 +253,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToWarn < 1`.
     function test_SpecBase_MaxNumDomainCheckToWarn_type_2() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
@@ -278,7 +278,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToStop < 1`.
     function test_SpecBase_MaxNumDomainCheckToStop_type_1() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
@@ -303,7 +303,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
     function test_SpecBase_MaxNumDomainCheckToStop_type_2() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
@@ -328,7 +328,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
     function test_SpecBase_MaxNumDomainCheckToStop_type_3() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
@@ -353,7 +353,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `outputColumnWidth < 0`.
     function test_SpecBase_OutputColumnWidth_type_1() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -374,7 +374,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `outputColumnWidth < 0`.
     function test_SpecBase_OutputColumnWidth_type_2() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -395,7 +395,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `outputColumnWidth < outputRealPrecision + 7`.
     function test_SpecBase_OutputColumnWidth_type_3() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -417,7 +417,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `outputDelimiter` contains `.`.
     function test_SpecBase_OutputDelimiter_type_1() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -438,7 +438,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `outputDelimiter` contains `+`.
     function test_SpecBase_OutputDelimiter_type_2() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -459,7 +459,7 @@
     !> \brief
     !> Test whether the ParaDRAM sampler quits with an error message when `outputDelimiter` contains digit.
     function test_SpecBase_OutputDelimiter_type_3() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -478,9 +478,9 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDRAM sampler converts `\t` to tab character when `outputDelimiter = "\t"` contains digit.
+    !> Test whether the ParaDRAM sampler converts `\t` to tab character when `outputDelimiter = "\t"`.
     function test_SpecBase_OutputDelimiter_type_4() result(assertion)
-        use Constants_mod, only: RK, TAB
+        use Constants_mod, only: IK, RK, TAB
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -499,9 +499,9 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test whether the ParaDRAM sampler converts `\\t` to `\t` when `outputDelimiter = "\\t"` contains digit.
+    !> Test whether the ParaDRAM sampler converts `\\t` to `\t` when `outputDelimiter = "\\t"`.
     function test_SpecBase_OutputDelimiter_type_5() result(assertion)
-        use Constants_mod, only: RK, TAB
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -520,10 +520,276 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
+    !> Test whether the ParaDRAM sampler converts `""` to `" "` when `outputDelimiter = ""` contains digit.
+    function test_SpecBase_OutputDelimiter_type_6() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OutputDelimiter_type_6" &
+                            , outputDelimiter = "" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%OutputDelimiter%val == " " .and. len(PD%SpecBase%OutputDelimiter%val) == 1
+#endif
+    end function test_SpecBase_OutputDelimiter_type_6
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `outputRealPrecision < 1`.
+    function test_SpecBase_OutputRealPrecision_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_OutputRealPrecision_type_1" &
+                            , outputRealPrecision = 0_IK &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_OutputRealPrecision_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `outputRealPrecision < 1`.
+    function test_SpecBase_OutputRealPrecision_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_OutputRealPrecision_type_1" &
+                            , inputFile = "&ParaDRAM outputRealPrecision = 0 /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_OutputRealPrecision_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler overwrites existing simulation files when `overwriteRequested = .true.`.
+    function test_SpecBase_OverwriteRequested_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OverwriteRequested_type_1" &
+                            , overwriteRequested = .true. &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OverwriteRequested_type_1" &
+                            , inputFile = "&ParaDRAM overwriteRequested = true /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_OverwriteRequested_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when attempting to overwrite an existing simulation with `overwriteRequested = .false.`.
+    function test_SpecBase_OverwriteRequested_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OverwriteRequested_type_2" &
+                            , overwriteRequested = .false. &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OverwriteRequested_type_2" &
+                            , inputFile = "&ParaDRAM overwriteRequested = false /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_OverwriteRequested_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler handles properly the `singleChain` parallelization model.
+    function test_SpecBase_ParallelizationModel_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_ParallelizationModel_type_1" &
+                            , parallelizationModel = "SinGleChAin" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_ParallelizationModel_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler handles properly the `multiChain` parallelization model.
+    function test_SpecBase_ParallelizationModel_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_ParallelizationModel_type_2" &
+                            , inputFile = "&ParaDRAM parallelizationModel = 'MULTI ChAin' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_ParallelizationModel_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when the specified value for `parallelizationModel` is not recognized.
+    function test_SpecBase_ParallelizationModel_type_3() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_ParallelizationModel_type_3" &
+                            , inputFile = "&ParaDRAM parallelizationModel = 'nonsense' /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_ParallelizationModel_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when the `progressReportPeriod < 1`.
+    function test_SpecBase_ProgressReportPeriod_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_ProgressReportPeriod_type_1" &
+                            , progressReportPeriod = -1_IK &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_ProgressReportPeriod_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when the `progressReportPeriod < 1`.
+    function test_SpecBase_ProgressReportPeriod_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_ProgressReportPeriod_type_2" &
+                            , inputFile = "&ParaDRAM progressReportPeriod = 0 /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_ProgressReportPeriod_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler appropriately considers the user's input random seed value.
+    function test_SpecBase_RandomSeed_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_RandomSeed_type_1" &
+                            , randomSeed = -12345_IK &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_RandomSeed_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler appropriately considers the user's input random seed value.
+    function test_SpecBase_RandomSeed_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_RandomSeed_type_2" &
+                            , inputFile = "&ParaDRAM randomSeed = 12345 /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_RandomSeed_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
     !> Test the ParaDRAM sampler with a wrong internal input namelist group:
     !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
     function test_runSampler_7() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -545,7 +811,7 @@
     !> Test the ParaDRAM sampler with a wrong internal input namelist group:
     !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
     function test_runSampler_8() result(assertion)
-        use Constants_mod, only: RK
+        use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
