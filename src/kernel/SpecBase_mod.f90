@@ -74,7 +74,7 @@ module SpecBase_mod
     use SpecBase_Description_mod                    , only: description
     use SpecBase_OutputFileName_mod                 , only: outputFileName
     use SpecBase_OutputDelimiter_mod                , only: outputDelimiter
-    use SpecBase_ChainFileFormat_mod                , only: ChainFileFormat
+    use SpecBase_ChainFileFormat_mod                , only: chainFileFormat
     use SpecBase_VariableNameList_mod               , only: variableNameList
     use SpecBase_RestartFileFormat_mod              , only: restartFileFormat
     use SpecBase_OutputColumnWidth_mod              , only: outputColumnWidth

@@ -105,7 +105,7 @@ module Constants_mod
     real(RK)    , parameter :: NEGINF_IK = -POSINF_IK
     real(RK)    , parameter :: NULL_RK = -HUGE_RK
     integer(IK) , parameter :: NULL_IK = -HUGE_IK
-    character(1), parameter :: NULL_SK = achar(30)                                      ! This must remain a single character as it is assumed in multiple routines: Record separator
+    character(1), parameter :: NULL_SK = achar(30)                                      ! This must remain a single character as it is assumed to be so in multiple routines: Record separator
     character(1), parameter :: NLC = achar(10)                                          ! the New Line Character
     character(1), parameter :: TAB = achar(9)                                           ! the TAB Character
     character(*), parameter :: UNDEFINED = "UNDEFINED"

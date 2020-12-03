@@ -57,6 +57,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , chainFileFormat = "nonsense" &
+                            , outputFileName = "test_SpecBase_ChainFileFormat_type_1" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -76,6 +77,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , inputFile = "&ParaDRAM chainFileFormat = 'nonsense' /" &
+                            , outputFileName = "test_SpecBase_ChainFileFormat_type_2" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -95,8 +97,9 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
-                            , domainLowerLimitVec = domainLowerLimitVec &
                             , mpiFinalizeRequested = .false. &
+                            , domainLowerLimitVec = domainLowerLimitVec &
+                            , outputFileName = "test_SpecBase_DomainLowerLimitVec_type_1" &
                             )
         assertion = PD%Err%occurred
 #endif
@@ -117,8 +120,9 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
-                            , inputFile = "&ParaDRAM domainLowerLimitVec = "//num2str(domainLowerLimitVec)//" /" &
                             , mpiFinalizeRequested = .false. &
+                            , inputFile = "&ParaDRAM domainLowerLimitVec = "//num2str(domainLowerLimitVec)//" /" &
+                            , outputFileName = "test_SpecBase_DomainLowerLimitVec_type_2" &
                             )
         assertion = PD%Err%occurred
 #endif
@@ -138,8 +142,9 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
-                            , domainUpperLimitVec = domainUpperLimitVec &
                             , mpiFinalizeRequested = .false. &
+                            , domainUpperLimitVec = domainUpperLimitVec &
+                            , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_1" &
                             )
         assertion = PD%Err%occurred
 #endif
@@ -160,8 +165,9 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
-                            , inputFile = "&ParaDRAM domainUpperLimitVec = "//num2str(domainUpperLimitVec)//" /" &
                             , mpiFinalizeRequested = .false. &
+                            , inputFile = "&ParaDRAM domainUpperLimitVec = "//num2str(domainUpperLimitVec)//" /" &
+                            , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_2" &
                             )
         assertion = PD%Err%occurred
 #endif
@@ -183,9 +189,10 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
-                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_3" &
                             )
         assertion = PD%Err%occurred
 #endif
@@ -207,9 +214,10 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
-                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_4" &
                             )
         assertion = PD%Err%occurred
 #endif
@@ -229,8 +237,9 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
-                            , inputFile = "&ParaDXXX randomSeed = 1111 /" &
                             , mpiFinalizeRequested = .false. &
+                            , inputFile = "&ParaDXXX randomSeed = 1111 /" &
+                            , outputFileName = "test_runSampler_7" &
                             )
         assertion = .not. PD%Err%occurred
 #endif
@@ -250,8 +259,9 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
-                            , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_8.in" &
                             , mpiFinalizeRequested = .false. &
+                            , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_8.in" &
+                            , outputFileName = "test_runSampler_8" &
                             )
         assertion = .not. PD%Err%occurred
 #endif
@@ -272,10 +282,11 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_runSampler_9" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , maxNumDomainCheckToWarn = 1_IK &
-                            , mpiFinalizeRequested = .false. &
                             )
         assertion = PD%Err%occurred
 #endif
@@ -296,10 +307,11 @@
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_runSampler_10" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , maxNumDomainCheckToStop = 1_IK &
-                            , mpiFinalizeRequested = .false. &
                             )
         assertion = PD%Err%occurred
 #endif
