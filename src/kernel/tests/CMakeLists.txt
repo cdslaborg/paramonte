@@ -60,6 +60,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_Matrix_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Misc_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Optimization_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Path_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_RandomSeed_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Sort_mod.f90
@@ -71,10 +72,11 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_Timer_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_TimerCPU_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_TranGaus_mod.f90
-    #${ParaMonteTest_SRC_DIR}/Test_EconomicsToolbox_mod.f90
-    ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90
     ${ParaMonteTest_SRC_DIR}/main.f90
+    #${ParaMonteTest_SRC_DIR}/Test_EconomicsToolbox_mod.f90
 )
+
+set_source_files_properties(${ParaMonteKernel_SRC_DIR}/Test_ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod@SpecBase_mod.inc.f90)
 
 # Define the executable in terms of the source files
 

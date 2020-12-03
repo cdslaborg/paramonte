@@ -40,7 +40,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [ParaMonte_mod](@ref paramonte_mod).
+!>  \brief This module contains tests of the module [ParaDRAM_mod](@ref paradram_mod).
 !>  @author Amir Shahmoradi
 
 module Test_ParaDRAM_mod
@@ -77,8 +77,20 @@ contains
         call Test%run(test_runSampler_8, "test_runSampler_8")
         call Test%run(test_runSampler_9, "test_runSampler_9")
         call Test%run(test_runSampler_10, "test_runSampler_10")
+        call Test%run(test_SpecBase_ChainFileFormat_type_1, "test_SpecBase_ChainFileFormat_type_1")
+        call Test%run(test_SpecBase_ChainFileFormat_type_2, "test_SpecBase_ChainFileFormat_type_2")
+        call Test%run(test_SpecBase_DomainLowerLimitVec_type_1, "test_SpecBase_DomainLowerLimitVec_type_1")
+        call Test%run(test_SpecBase_DomainLowerLimitVec_type_2, "test_SpecBase_DomainLowerLimitVec_type_2")
+        call Test%run(test_SpecBase_DomainUpperLimitVec_type_1, "test_SpecBase_DomainUpperLimitVec_type_1")
+        call Test%run(test_SpecBase_DomainUpperLimitVec_type_2, "test_SpecBase_DomainUpperLimitVec_type_2")
+        call Test%run(test_SpecBase_DomainUpperLimitVec_type_3, "test_SpecBase_DomainUpperLimitVec_type_3")
+        call Test%run(test_SpecBase_DomainUpperLimitVec_type_4, "test_SpecBase_DomainUpperLimitVec_type_4")
         call Test%finalize()
     end subroutine test_ParaDRAM
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#include Test_ParaDRAM_mod@SpecBase_mod.inc.f90
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -94,7 +106,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             )
-        assertion = .not. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_runSampler_1
 
@@ -116,7 +128,7 @@ contains
                             , mpiFinalizeRequested = .false. &
                             , inputFile = "&ParaDRAM randomSeed = "//num2str(userSeed_ref)//" chainSize = "//num2str(chainSize_ref)//" /" &
                             )
-        assertion = .not. PD%Err%occurred .and. PD%SpecBase%RandomSeed%userSeed==userSeed_ref .and. PD%SpecMCMC%ChainSize%val==chainSize_ref
+        assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%RandomSeed%userSeed==userSeed_ref .and. PD%SpecMCMC%ChainSize%val==chainSize_ref
         ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
             write(Test%outputUnit,"(*(g0))")
@@ -147,7 +159,7 @@ contains
                             , mpiFinalizeRequested = .false. &
                             , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_3.in" &
                             )
-        assertion = .not. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_runSampler_3
 
@@ -166,7 +178,7 @@ contains
                             , mpiFinalizeRequested = .false. &
                             , inputFile = " " &
                             )
-        assertion = .not. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_runSampler_4
 
@@ -185,123 +197,9 @@ contains
                             , mpiFinalizeRequested = .false. &
                             , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_5.in" &
                             )
-        assertion = PD%Err%occurred
+        assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_runSampler_5
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
-    !> Test the ParaDRAM sampler with another set of wrong input values:
-    !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
-    function test_runSampler_6() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
-        implicit none
-        logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
-        real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
-        type(ParaDRAM_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = 1_IK &
-                            , getLogFunc = getLogFuncMVN &
-                            , domainLowerLimitVec = domainLowerLimitVec &
-                            , domainUpperLimitVec = domainUpperLimitVec &
-                            , mpiFinalizeRequested = .false. &
-                            )
-        assertion = PD%Err%occurred
-#endif
-    end function test_runSampler_6
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
-    !> Test the ParaDRAM sampler with a wrong internal input namelist group:
-    !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
-    function test_runSampler_7() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
-        implicit none
-        logical             :: assertion
-        type(ParaDRAM_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = 1_IK &
-                            , getLogFunc = getLogFuncMVN &
-                            , inputFile = "&ParaDXXX randomSeed = 1111 /" &
-                            , mpiFinalizeRequested = .false. &
-                            )
-        assertion = .not. PD%Err%occurred
-#endif
-    end function test_runSampler_7
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
-    !> Test the ParaDRAM sampler with a wrong internal input namelist group:
-    !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
-    function test_runSampler_8() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
-        implicit none
-        logical             :: assertion
-        type(ParaDRAM_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = 1_IK &
-                            , getLogFunc = getLogFuncMVN &
-                            , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_8.in" &
-                            , mpiFinalizeRequested = .false. &
-                            )
-        assertion = .not. PD%Err%occurred
-#endif
-    end function test_runSampler_8
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
-    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToWarn` has reached.
-    function test_runSampler_9() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
-        implicit none
-        logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK] ! NOTE: HUGE_RK is the null value.
-        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK] ! NOTE: HUGE_RK is the null value.
-        type(ParaDRAM_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = 1_IK &
-                            , getLogFunc = getLogFuncMVN &
-                            , domainLowerLimitVec = domainLowerLimitVec &
-                            , domainUpperLimitVec = domainUpperLimitVec &
-                            , maxNumDomainCheckToWarn = 1_IK &
-                            , mpiFinalizeRequested = .false. &
-                            )
-        assertion = PD%Err%occurred
-#endif
-    end function test_runSampler_9
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
-    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
-    function test_runSampler_10() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
-        implicit none
-        logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK] ! NOTE: HUGE_RK is the null value.
-        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK] ! NOTE: HUGE_RK is the null value.
-        type(ParaDRAM_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = 1_IK &
-                            , getLogFunc = getLogFuncMVN &
-                            , domainLowerLimitVec = domainLowerLimitVec &
-                            , domainUpperLimitVec = domainUpperLimitVec &
-                            , maxNumDomainCheckToStop = 1_IK &
-                            , mpiFinalizeRequested = .false. &
-                            )
-        assertion = PD%Err%occurred
-#endif
-    end function test_runSampler_10
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
