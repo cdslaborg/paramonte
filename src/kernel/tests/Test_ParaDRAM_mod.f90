@@ -72,7 +72,6 @@ contains
         call Test%run(test_runSampler_3, "test_runSampler_3")
         call Test%run(test_runSampler_4, "test_runSampler_4")
         call Test%run(test_runSampler_5, "test_runSampler_5")
-        call Test%run(test_runSampler_6, "test_runSampler_6")
         call Test%run(test_runSampler_7, "test_runSampler_7")
         call Test%run(test_runSampler_8, "test_runSampler_8")
         call Test%run(test_runSampler_9, "test_runSampler_9")
@@ -90,7 +89,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#include Test_ParaDRAM_mod@SpecBase_mod.inc.f90
+#include "Test_ParaDRAM_mod@SpecBase_mod.inc.f90"
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -151,6 +151,7 @@
     !> Test the ParaDRAM sampler with a too-large input value for `domainUpperLimitVec`.
     function test_SpecBase_DomainUpperLimitVec_type_2() result(assertion)
         use Constants_mod, only: RK, HUGE_RK
+        use String_mod, only: num2str
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
