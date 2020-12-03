@@ -87,7 +87,11 @@ contains
         &consecutively-proposed new points that fall outside the domain of the objective function, the user will be warned until &
         &maxNumDomainCheckToWarn = maxNumDomainCheckToStop, in which case the sampler returns a fatal error and the program stops &
         &globally. The counter for this warning message is reset after a proposal sample from within the domain of the &
-        &objective function is obtained. The default value is " // num2str(MaxNumDomainCheckToWarnObj%def) // "."
+        &objective function is obtained. &
+        &When out-of-domain sampling happens frequently, it is a strong indication of something fundamentally wrong in the &
+        &simulation. It is, therefore, important to closely inspect and monitor for such frequent out-of-domain samplings. &
+        &This can be done by setting maxNumDomainCheckToWarn to an appropriate value determined by the user. &
+        The default value is " // num2str(MaxNumDomainCheckToWarnObj%def) // "."
     end function constructMaxNumDomainCheckToWarn
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

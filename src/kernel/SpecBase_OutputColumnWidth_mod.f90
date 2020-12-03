@@ -113,8 +113,8 @@ contains
         use String_mod, only: num2str
         use Constants_mod, only: IK
         implicit none
-        class(OutputColumnWidth_type), intent(inout)  :: OutputColumnWidthObj
-        integer(IK), intent(in)                    :: outputColumnWidth
+        class(OutputColumnWidth_type), intent(inout)    :: OutputColumnWidthObj
+        integer(IK), intent(in)                         :: outputColumnWidth
         OutputColumnWidthObj%val = outputColumnWidth
         if (OutputColumnWidthObj%val==OutputColumnWidthObj%null) then
             OutputColumnWidthObj%val = OutputColumnWidthObj%def

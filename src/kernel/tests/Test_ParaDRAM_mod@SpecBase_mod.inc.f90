@@ -101,7 +101,7 @@
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , outputFileName = "test_SpecBase_DomainLowerLimitVec_type_1" &
                             )
-        assertion = PD%Err%occurred
+        assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_SpecBase_DomainLowerLimitVec_type_1
 
@@ -124,7 +124,7 @@
                             , inputFile = "&ParaDRAM domainLowerLimitVec = "//num2str(domainLowerLimitVec)//" /" &
                             , outputFileName = "test_SpecBase_DomainLowerLimitVec_type_2" &
                             )
-        assertion = PD%Err%occurred
+        assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_SpecBase_DomainLowerLimitVec_type_2
 
@@ -146,7 +146,7 @@
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_1" &
                             )
-        assertion = PD%Err%occurred
+        assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_SpecBase_DomainUpperLimitVec_type_1
 
@@ -169,7 +169,7 @@
                             , inputFile = "&ParaDRAM domainUpperLimitVec = "//num2str(domainUpperLimitVec)//" /" &
                             , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_2" &
                             )
-        assertion = PD%Err%occurred
+        assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_SpecBase_DomainUpperLimitVec_type_2
 
@@ -179,11 +179,11 @@
     !> Test the ParaDRAM sampler with an input value for `domainUpperLimitVec` 
     !> that is smaller than the input value for `domainLowerLimitVec`.
     function test_SpecBase_DomainUpperLimitVec_type_3() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
+        use Constants_mod, only: RK
         implicit none
         logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [+2._RK] ! NOTE: HUGE_RK is the null value.
-        real(RK), parameter :: domainUpperLimitVec(*) = [-2._RK] ! NOTE: HUGE_RK is the null value.
+        real(RK), parameter :: domainLowerLimitVec(*) = [+2._RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [-2._RK]
         type(ParaDRAM_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
@@ -194,7 +194,7 @@
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_3" &
                             )
-        assertion = PD%Err%occurred
+        assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_SpecBase_DomainUpperLimitVec_type_3
 
@@ -204,11 +204,11 @@
     !> Test the ParaDRAM sampler with an input value for `domainUpperLimitVec` 
     !> that is equal to the input value for `domainLowerLimitVec`.
     function test_SpecBase_DomainUpperLimitVec_type_4() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
+        use Constants_mod, only: RK
         implicit none
         logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [+2._RK] ! NOTE: HUGE_RK is the null value.
-        real(RK), parameter :: domainUpperLimitVec(*) = [+2._RK] ! NOTE: HUGE_RK is the null value.
+        real(RK), parameter :: domainLowerLimitVec(*) = [+2._RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [+2._RK]
         type(ParaDRAM_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
@@ -219,9 +219,303 @@
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_4" &
                             )
-        assertion = PD%Err%occurred
+        assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_SpecBase_DomainUpperLimitVec_type_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToWarn < 1`.
+    function test_SpecBase_MaxNumDomainCheckToWarn_type_1() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToWarn_type_1" &
+                            , domainLowerLimitVec = domainLowerLimitVec &
+                            , domainUpperLimitVec = domainUpperLimitVec &
+                            , maxNumDomainCheckToWarn = 0_IK &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_MaxNumDomainCheckToWarn_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToWarn < 1`.
+    function test_SpecBase_MaxNumDomainCheckToWarn_type_2() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToWarn_type_2" &
+                            , domainLowerLimitVec = domainLowerLimitVec &
+                            , domainUpperLimitVec = domainUpperLimitVec &
+                            , inputFile = "&ParaDRAM maxNumDomainCheckToWarn = 0 /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_MaxNumDomainCheckToWarn_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToStop < 1`.
+    function test_SpecBase_MaxNumDomainCheckToStop_type_1() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToStop_type_1" &
+                            , domainLowerLimitVec = domainLowerLimitVec &
+                            , domainUpperLimitVec = domainUpperLimitVec &
+                            , maxNumDomainCheckToStop = 0_IK &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_MaxNumDomainCheckToStop_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
+    function test_SpecBase_MaxNumDomainCheckToStop_type_2() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToStop_type_2" &
+                            , domainLowerLimitVec = domainLowerLimitVec &
+                            , domainUpperLimitVec = domainUpperLimitVec &
+                            , inputFile = "&ParaDRAM  maxNumDomainCheckToStop = 0 /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_MaxNumDomainCheckToStop_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
+    function test_SpecBase_MaxNumDomainCheckToStop_type_3() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToStop_type_3" &
+                            , domainLowerLimitVec = domainLowerLimitVec &
+                            , domainUpperLimitVec = domainUpperLimitVec &
+                            , maxNumDomainCheckToStop = 1_IK &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_MaxNumDomainCheckToStop_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `outputColumnWidth < 0`.
+    function test_SpecBase_OutputColumnWidth_type_1() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OutputColumnWidth_type_1" &
+                            , outputColumnWidth = -1_IK &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_OutputColumnWidth_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `outputColumnWidth < 0`.
+    function test_SpecBase_OutputColumnWidth_type_2() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OutputColumnWidth_type_2" &
+                            , inputFile = "&ParaDRAM outputColumnWidth = -1 /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_OutputColumnWidth_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `outputColumnWidth < outputRealPrecision + 7`.
+    function test_SpecBase_OutputColumnWidth_type_3() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OutputColumnWidth_type_3" &
+                            , outputRealPrecision = 8_IK &
+                            , outputColumnWidth = 14_IK &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_OutputColumnWidth_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `outputDelimiter` contains `.`.
+    function test_SpecBase_OutputDelimiter_type_1() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OutputDelimiter_type_1" &
+                            , outputDelimiter = "this.that" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_OutputDelimiter_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `outputDelimiter` contains `+`.
+    function test_SpecBase_OutputDelimiter_type_2() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OutputDelimiter_type_2" &
+                            , inputFile = "&ParaDRAM outputDelimiter = 'this+that' /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_OutputDelimiter_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `outputDelimiter` contains digit.
+    function test_SpecBase_OutputDelimiter_type_3() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OutputDelimiter_type_3" &
+                            , inputFile = "&ParaDRAM outputDelimiter = 'this1234that' /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_OutputDelimiter_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler converts `\t` to tab character when `outputDelimiter = "\t"` contains digit.
+    function test_SpecBase_OutputDelimiter_type_4() result(assertion)
+        use Constants_mod, only: RK, TAB
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OutputDelimiter_type_4" &
+                            , outputDelimiter = "\t" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%OutputDelimiter%val == TAB
+#endif
+    end function test_SpecBase_OutputDelimiter_type_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler converts `\\t` to `\t` when `outputDelimiter = "\\t"` contains digit.
+    function test_SpecBase_OutputDelimiter_type_5() result(assertion)
+        use Constants_mod, only: RK, TAB
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_OutputDelimiter_type_5" &
+                            , outputDelimiter = "\\t" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%OutputDelimiter%val == "\t"
+#endif
+    end function test_SpecBase_OutputDelimiter_type_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -229,7 +523,7 @@
     !> Test the ParaDRAM sampler with a wrong internal input namelist group:
     !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
     function test_runSampler_7() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
+        use Constants_mod, only: RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -241,7 +535,7 @@
                             , inputFile = "&ParaDXXX randomSeed = 1111 /" &
                             , outputFileName = "test_runSampler_7" &
                             )
-        assertion = .not. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_runSampler_7
 
@@ -251,7 +545,7 @@
     !> Test the ParaDRAM sampler with a wrong internal input namelist group:
     !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
     function test_runSampler_8() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
+        use Constants_mod, only: RK
         implicit none
         logical             :: assertion
         type(ParaDRAM_type) :: PD
@@ -263,58 +557,8 @@
                             , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_8.in" &
                             , outputFileName = "test_runSampler_8" &
                             )
-        assertion = .not. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_runSampler_8
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
-    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToWarn` has reached.
-    function test_runSampler_9() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
-        implicit none
-        logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK] ! NOTE: HUGE_RK is the null value.
-        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK] ! NOTE: HUGE_RK is the null value.
-        type(ParaDRAM_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = 1_IK &
-                            , getLogFunc = getLogFuncMVN &
-                            , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_runSampler_9" &
-                            , domainLowerLimitVec = domainLowerLimitVec &
-                            , domainUpperLimitVec = domainUpperLimitVec &
-                            , maxNumDomainCheckToWarn = 1_IK &
-                            )
-        assertion = PD%Err%occurred
-#endif
-    end function test_runSampler_9
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
-    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
-    function test_runSampler_10() result(assertion)
-        use Constants_mod, only: RK, HUGE_RK
-        implicit none
-        logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK] ! NOTE: HUGE_RK is the null value.
-        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK] ! NOTE: HUGE_RK is the null value.
-        type(ParaDRAM_type) :: PD
-        assertion = .true.
-#if defined CODECOV_ENABLED
-        call PD%runSampler  ( ndim = 1_IK &
-                            , getLogFunc = getLogFuncMVN &
-                            , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_runSampler_10" &
-                            , domainLowerLimitVec = domainLowerLimitVec &
-                            , domainUpperLimitVec = domainUpperLimitVec &
-                            , maxNumDomainCheckToStop = 1_IK &
-                            )
-        assertion = PD%Err%occurred
-#endif
-    end function test_runSampler_10
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

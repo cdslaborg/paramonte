@@ -129,7 +129,7 @@ contains
                 OutputDelimiterObj%val = " "
             end if
         elseif (OutputDelimiterObj%val=="") then
-            if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
+            !if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
             OutputDelimiterObj%val = " "
         elseif (OutputDelimiterObj%val=="\t") then
             OutputDelimiterObj%val = TAB

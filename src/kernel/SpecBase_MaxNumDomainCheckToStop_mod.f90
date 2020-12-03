@@ -84,6 +84,9 @@ contains
         "maxNumDomainCheckToStop is an integer number beyond which the program will stop globally with a fatal error message &
         &declaring that the maximum number of proposal-out-of-domain-bounds has reached. The counter for this global-stop request &
         &is reset after a proposal point is accepted as a sample from within the domain of the objective function. &
+        &When out-of-domain sampling happens frequently, it is a strong indication of something fundamentally wrong in the &
+        &simulation. It is, therefore, important to closely inspect and monitor for such frequent out-of-domain samplings. &
+        &This can be done by setting maxNumDomainCheckToStop to an appropriate value determined by the user. &
         &The default value is " // num2str(MaxNumDomainCheckToStopObj%def) // "."
     end function constructMaxNumDomainCheckToStop
 

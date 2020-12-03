@@ -2306,7 +2306,9 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
             fi
         fi
     fi
-    #verify $? "test run"
+    if [ "${CODECOV_ENABLED}" = "true" ]; then # stop on test failure when code coverage analysis is being performed.
+        verify $? "test run"
+    fi
 else
     echo >&2 "skipping ParaMonte library test run..."
 fi

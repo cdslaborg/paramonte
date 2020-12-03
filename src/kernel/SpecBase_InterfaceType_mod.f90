@@ -135,7 +135,6 @@ contains
         implicit none
         class(InterfaceType_type), intent(inout)    :: InterfaceTypeObj
         character(*), intent(in)                    :: interfaceType
-        if (allocated(InterfaceTypeObj%val)) deallocate(InterfaceTypeObj%val)
         InterfaceTypeObj%val = trim(adjustl(interfaceType))
         if (InterfaceTypeObj%val==trim(adjustl(InterfaceTypeObj%null))) then
             InterfaceTypeObj%val=InterfaceTypeObj%def
