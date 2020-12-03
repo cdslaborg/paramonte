@@ -77,10 +77,10 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> The constructor of the [FileList_type](@ref filelist_type) class.
-    !> @param[in]   searchStr   :   The pattern for the file search (optional).
-    !> @param[in]   orderStr    :   The order by which the search results will be listed (optional, default = "name").
-    !> @param[in]   excludeStr  :   The string which the listed files should not contain (optional, default = "").
-    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (optional).
+    !> @param[in]   searchStr   :   The pattern for the file search (**optional**).
+    !> @param[in]   orderStr    :   The order by which the search results will be listed (**optional**, default = "name").
+    !> @param[in]   excludeStr  :   The string which the listed files should not contain (**optional**, default = "").
+    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (**optional**).
     !>
     !> \return
     !> FileList : An object of [FileList_type](@ref filelist_type) class.
@@ -116,13 +116,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> Return a list of files that match `searchStr`.
-    !> @param[out]  FileList    :   The list of files matching the requested search pattern (optional).
-    !> @param[out]  count       :   The number of files (optional).
+    !> @param[out]  FileList    :   The list of files matching the requested search pattern (**optional**).
+    !> @param[out]  count       :   The number of files (**optional**).
     !> @param[out]  Err         :   The error object indicating the occurrence of error.
-    !> @param[in]   searchStr   :   The pattern for the file search (optional). It can be the path of the folder of interest to be searched.
-    !> @param[in]   orderStr    :   The order by which the search results will be listed (optional, default = "name").
-    !> @param[in]   excludeStr  :   The string which the listed files should not contain (optional, default = "").
-    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (optional).
+    !> @param[in]   searchStr   :   The pattern for the file search (**optional**). It can be the path of the folder of interest to be searched.
+    !> @param[in]   orderStr    :   The order by which the search results will be listed (**optional**, default = "name").
+    !> @param[in]   excludeStr  :   The string which the listed files should not contain (**optional**, default = "").
+    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (**optional**).
     !>
     !> \return
     !> FileList : An object of [FileList_type](@ref filelist_type) class.

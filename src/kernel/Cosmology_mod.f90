@@ -173,8 +173,8 @@ contains
     !> Return the cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters.
     !>
     !> @param[in]   zplus1              : The redshift plus 1.
-    !> @param[in]   maxRelativeError    : The maximum tolerance for error in the numerical integration (optional, default = 1.e-6).
-    !> @param[in]   nRefinement         : The number of refinements in the Romberg numerical integration (optional, default = 5).
+    !> @param[in]   maxRelativeError    : The maximum tolerance for error in the numerical integration (**optional**, default = 1.e-6).
+    !> @param[in]   nRefinement         : The number of refinements in the Romberg numerical integration (**optional**, default = 5).
     !> \return
     !> `lookBackTime` : The cosmological lookback time in GYrs at the given redshift.
     !>

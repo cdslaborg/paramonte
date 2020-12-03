@@ -470,13 +470,15 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
-    !> Add information about the compiler and the platform/OS to the output report file.
+    !> Add information about the compiler and the platform/OS to the output report file(s).
     !>
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     !>
     !> \remark
-    !> This routine has to be called by all master images (processes).
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !>
+    !> \remark
+    !> This routine has to be called by all leader images (processes).
     subroutine addCompilerPlatformInfo(self)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: addCompilerPlatformInfo
@@ -554,45 +556,24 @@ contains
         ! the creation of thousands of files on the system, simultaneously.
         ! this is not needed by any process other than the masters.
 
-        if (allocated(self%SpecBase%SystemInfoFilePath%val)) then
-            block
-                use FileContents_mod, only: FileContents_type
-                type(FileContents_type) :: FileContents
-                FileContents = FileContents_type(filePath = self%SpecBase%SystemInfoFilePath%val)
-                if (FileContents%Err%occurred) then
-                ! LCOV_EXCL_START
-                    self%Err = FileContents%Err
-                    self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
-                    call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
-                    return
-                ! LCOV_EXCL_STOP
-                else
-                    do j = 1, FileContents%numRecord
-                        self%Decor%List = self%Decor%wrapText( FileContents%Line(j)%record , 132 )
-                        do i = 1,size(self%Decor%List)
-                            write(self%LogFile%unit,"(A)") self%Decor%List(i)%record
-                        end do
-                    end do
-                    deallocate(self%SpecBase%SystemInfoFilePath%val)
-                end if
-            end block
-        else
-            self%SystemInfo = SystemInfo_type(OS=self%OS)
-            if (self%SystemInfo%Err%occurred) then
-            ! LCOV_EXCL_START
-                self%Err = self%SystemInfo%Err
-                self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
-                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
-                return
-            end if
-            ! LCOV_EXCL_STOP
-            do j = 1, self%SystemInfo%nRecord
-                self%Decor%List = self%Decor%wrapText( self%SystemInfo%List(j)%record , 132 )
-                do i = 1,size(self%Decor%List)
-                    write(self%LogFile%unit,"(A)") self%Decor%List(i)%record
-                end do
-            end do
+        self%SystemInfo = SystemInfo_type(OS = self%OS, path = self%SpecBase%SystemInfoFilePath%val)
+        if (self%SystemInfo%Err%occurred) then
+        ! LCOV_EXCL_START
+            self%Err = self%SystemInfo%Err
+            self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+            return
         end if
+        ! LCOV_EXCL_STOP
+
+        ! write the system info to the output file
+
+        do j = 1, self%SystemInfo%nRecord
+            self%Decor%List = self%Decor%wrapText( self%SystemInfo%Records(j)%record , 132 )
+            do i = 1,size(self%Decor%List)
+                write(self%LogFile%unit,"(A)") self%Decor%List(i)%record
+            end do
+        end do
         call self%Decor%write(self%LogFile%unit)
 
     end subroutine addCompilerPlatformInfo

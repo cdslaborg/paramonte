@@ -73,9 +73,9 @@ contains
 
     !> Terminate or report the occurrence a fatal error and potentially terminate the program (if requested).
     !> @param[in]   Err             :   An object of type [Err_type](@ref err_type) containing the error information.
-    !> @param[in]   prefix          :   The string to prepend to the error message (optional, default = dynamically set).
-    !> @param[in]   newline         :   The substring representing the newline character in the error message (optional, default = "\n").
-    !> @param[in]   outputUnit      :   The output file unit (optional, default = stdout).
+    !> @param[in]   prefix          :   The string to prepend to the error message (**optional**, default = dynamically set).
+    !> @param[in]   newline         :   The substring representing the newline character in the error message (**optional**, default = "\n").
+    !> @param[in]   outputUnit      :   The output file unit (**optional**, default = stdout).
     !> @param[in]   returnEnabled   :   A logical value. If `.true.`, the program will not be abruptly terminated.
     !>                                  Instead, the control is returned to the calling routine.
     subroutine abort(Err, prefix, newline, outputUnit, returnEnabled)
@@ -208,11 +208,11 @@ contains
 
     !> Report warning message.
     !> @param[in]   msg         : The warning message.
-    !> @param[in]   prefix      : The string to prepend to the error message (optional, default = dynamically set).
-    !> @param[in]   newline     : The substring representing the newline character in the error message (optional, default = "\n").
-    !> @param[in]   outputUnit  : The output file unit (optional, default = stdout).
-    !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
-    !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
+    !> @param[in]   prefix      : The string to prepend to the error message (**optional**, default = dynamically set).
+    !> @param[in]   newline     : The substring representing the newline character in the error message (**optional**, default = "\n").
+    !> @param[in]   outputUnit  : The output file unit (**optional**, default = stdout).
+    !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (**optional**).
+    !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (**optional**).
     subroutine warn(msg,prefix,newline,outputUnit,marginTop,marginBot)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warn
@@ -245,11 +245,11 @@ contains
 
     !> Report a note.
     !> @param[in]   msg         : The warning message.
-    !> @param[in]   prefix      : The string to prepend to the error message (optional, default = dynamically set).
-    !> @param[in]   newline     : The substring representing the newline character in the error message (optional, default = "\n").
-    !> @param[in]   outputUnit  : The output file unit (optional, default = stdout).
-    !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
-    !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
+    !> @param[in]   prefix      : The string to prepend to the error message (**optional**, default = dynamically set).
+    !> @param[in]   newline     : The substring representing the newline character in the error message (**optional**, default = "\n").
+    !> @param[in]   outputUnit  : The output file unit (**optional**, default = stdout).
+    !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (**optional**).
+    !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (**optional**).
     subroutine note(msg,prefix,newline,outputUnit,marginTop,marginBot)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: note
@@ -282,13 +282,13 @@ contains
 
     !> Write the input message to the output file unit.
     !> @param[in]   msg         : The warning message.
-    !> @param[in]   prefix      : The string to prepend to the error message (optional, default = dynamically set).
-    !> @param[in]   newline     : The substring representing the newline character in the error message (optional, default = "\n").
-    !> @param[in]   outputUnit  : The output file unit (optional, default = stdout).
-    !> @param[in]   wrapSplit   : The substring at which the input `msg` can be wrapped and continued on the next line (optional, default = " ").
-    !> @param[in]   wrapWidth   : The maximum width of the line beyond which the input `msg` is wrapped and continued on the next line (optional, default = 100).
-    !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (optional).
-    !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (optional).
+    !> @param[in]   prefix      : The string to prepend to the error message (**optional**, default = dynamically set).
+    !> @param[in]   newline     : The substring representing the newline character in the error message (**optional**, default = "\n").
+    !> @param[in]   outputUnit  : The output file unit (**optional**, default = stdout).
+    !> @param[in]   wrapSplit   : The substring at which the input `msg` can be wrapped and continued on the next line (**optional**, default = " ").
+    !> @param[in]   wrapWidth   : The maximum width of the line beyond which the input `msg` is wrapped and continued on the next line (**optional**, default = 100).
+    !> @param[in]   marginTop   : The number of empty lines before printing the message to the output (**optional**).
+    !> @param[in]   marginBot   : The number of empty lines after printing the message to the output (**optional**).
     subroutine informUser(msg,prefix,newline,outputUnit,wrapSplit,wrapWidth,marginTop,marginBot)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: informUser

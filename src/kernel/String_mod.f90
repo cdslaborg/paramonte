@@ -158,7 +158,7 @@ contains
     !>
     !> \param[in]       string      :   The input string.
     !> \param[in]       delimiter   :   The delimiter to be used to split the input string.
-    !> \param[out]      nPart       :   The number of substrings resulting from splitting the string (optional).
+    !> \param[out]      nPart       :   The number of substrings resulting from splitting the string (**optional**).
     !>
     !> \return
     !> `Parts` : An allocatable array of type [CharVec_type](@ref jaggedarray_mod::charvec_type)
@@ -444,7 +444,7 @@ contains
     !> Convert the input 32-bit integer value to string, with the requested format, if provided.
     !>
     !> \param[in]   integerIn   :   The input integer value.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -489,7 +489,7 @@ contains
     !> Convert the input 64-bit integer value to string, with the requested format, if provided.
     !>
     !> \param[in]   integerIn   :   The input integer value.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -534,7 +534,7 @@ contains
     !> Convert the input 32-bit real value to string, with the requested format, if provided.
     !>
     !> \param[in]   realIn      :   The input real value.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -584,7 +584,7 @@ contains
     !> Convert the input 64-bit real value to string, with the requested format, if provided.
     !>
     !> \param[in]   realIn      :   The input real value.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -634,7 +634,7 @@ contains
     !> Convert an input vector of  64-bit real values to string, with the requested format, if provided.
     !>
     !> \param[in]   RealIn      :   The input vector of real values.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -684,7 +684,7 @@ contains
     !> Convert an input 2D matrix of  64-bit real values to string, with the requested format, if provided.
     !>
     !> \param[in]   RealIn      :   The input 2D matrix of real values.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return

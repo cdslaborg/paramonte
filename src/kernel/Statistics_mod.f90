@@ -706,7 +706,7 @@ contains
     !> \param[in]       nd      :   The number of dimensions of the input sample.
     !> \param[in]       np      :   The number of points in the sample.
     !> \param[in]       Point   :   The array of shape `(nd,np)` containing the sample.
-    !> \param[in]       Weight  :   The vector of length `np` containing the weights of points in the sample (optional, default = vector of ones).
+    !> \param[in]       Weight  :   The vector of length `np` containing the weights of points in the sample (**optional**, default = vector of ones).
     !>
     !> \return
     !> `Mean` : The output mean vector of length `nd`.
@@ -775,9 +775,9 @@ contains
     !> \param[in]   nd          :   The length of the input `Data` matrix along the first dimension.
     !> \param[in]   np          :   The length of the input `Data` matrix along the second dimension.
     !> \param[in]   Data        :   The input data series data vector.
-    !> \param[in]   Weight      :   The vector of weights of the input data points (optional, default = array of ones).
+    !> \param[in]   Weight      :   The vector of weights of the input data points (**optional**, default = array of ones).
     !> \param[in]   tenabled    :   A logical value that, if `.true.` will cause the output `NormData` to have transposed shape
-    !>                              of the input `Point(nd,np)` matrix, that is `(np,nd)` (optional, default = `.false.`).
+    !>                              of the input `Point(nd,np)` matrix, that is `(np,nd)` (**optional**, default = `.false.`).
     !>
     !> \return
     !> `NormData` : The integrated autocorrelation (IAC) via the BatchMeans method.
@@ -840,8 +840,8 @@ contains
     !> \param[in]       np          :   The number of points in the sample.
     !> \param[in]       mean        :   The mean of the vector.
     !> \param[in]       Point       :   The array of shape `np` containing the sample.
-    !> \param[in]       Weight      :   The vector of weights of the points in the sample (optional).
-    !> \param[in]       sumWeight   :   The sum of the vector of weights (optional, if `Weight` is also missing).
+    !> \param[in]       Weight      :   The vector of weights of the points in the sample (**optional**).
+    !> \param[in]       sumWeight   :   The sum of the vector of weights (**optional**, if `Weight` is also missing).
     !>
     !> \return
     !> `variance` : The variance of the input sample.
@@ -891,7 +891,7 @@ contains
     !> \param[in]       np          :   The number of points in the sample.
     !> \param[in]       Mean        :   The mean vector of the sample.
     !> \param[in]       Point       :   The array of shape `(nd,np)` containing the sample.
-    !> \param[in]       Weight      :   The vector of weights of the points in the sample of shape `(nd,np)` (optional).
+    !> \param[in]       Weight      :   The vector of weights of the points in the sample of shape `(nd,np)` (**optional**).
     !>
     !> \return
     !> `Variance` : The vector of length `nd` of the variances of the input sample.
@@ -984,9 +984,9 @@ contains
     !> \param[in]       Point               :   The array of shape `(np,nd)` containing the sample.
     !> \param[out]      CovMat              :   The output matrix of shape `(nd,nd)` representing the covariance matrix of the input data.
     !> \param[out]      Mean                :   The output mean vector of the sample.
-    !> \param[out]      MahalSq             :   The output Mahalanobis distances squared of the points with respect to the sample (optional).
-    !> \param[out]      InvCovMat           :   The output inverse covariance matrix of the input data (optional).
-    !> \param[out]      sqrtDetInvCovMat    :   The output square root of the determinant of the inverse covariance matrix of the sample (optional).
+    !> \param[out]      MahalSq             :   The output Mahalanobis distances squared of the points with respect to the sample (**optional**).
+    !> \param[out]      InvCovMat           :   The output inverse covariance matrix of the input data (**optional**).
+    !> \param[out]      sqrtDetInvCovMat    :   The output square root of the determinant of the inverse covariance matrix of the sample (**optional**).
     !>
     !> \warning
     !> If `sqrtDetInvCovMat` is present, then `MahalSq` and `InvCovMat` must be also present.
@@ -1058,9 +1058,9 @@ contains
     !> \param[in]       Point               :   The array of shape `(nd,np)` containing the sample.
     !> \param[out]      CovMat              :   The output matrix of shape `(nd,nd)` representing the covariance matrix of the input data.
     !> \param[out]      Mean                :   The output mean vector of the sample.
-    !> \param[out]      MahalSq             :   The output Mahalanobis distances squared of the points with respect to the sample (optional).
-    !> \param[out]      InvCovMat           :   The output inverse covariance matrix of the input data (optional).
-    !> \param[out]      sqrtDetInvCovMat    :   The output square root of the determinant of the inverse covariance matrix of the sample (optional).
+    !> \param[out]      MahalSq             :   The output Mahalanobis distances squared of the points with respect to the sample (**optional**).
+    !> \param[out]      InvCovMat           :   The output inverse covariance matrix of the input data (**optional**).
+    !> \param[out]      sqrtDetInvCovMat    :   The output square root of the determinant of the inverse covariance matrix of the sample (**optional**).
     !>
     !> \warning
     !> If `sqrtDetInvCovMat` is present, then `MahalSq` and `InvCovMat` must be also present.
@@ -2742,9 +2742,9 @@ contains
 !    !> the `k`th trial (out of `k` trials) is the first success is `GeoLogPDF(k)`.
 !    !>
 !    !> \param[in]   successProb     :   The probability of success.
-!    !> \param[in]   logPdfPrecision :   The precision value below which the PDF is practically considered to be zero (optional).
-!    !> \param[in]   minSeqLen       :   The minimum length of the range of `k` values for which the PDF will be computed (optional).
-!    !> \param[in]   seqLen          :   The length of the range of `k` values for which the PDF will be computed (optional).
+!    !> \param[in]   logPdfPrecision :   The precision value below which the PDF is practically considered to be zero (**optional**).
+!    !> \param[in]   minSeqLen       :   The minimum length of the range of `k` values for which the PDF will be computed (**optional**).
+!    !> \param[in]   seqLen          :   The length of the range of `k` values for which the PDF will be computed (**optional**).
 !    !>                                  If provided, it will overwrite the the output sequence length as inferred from
 !    !>                                  the combination of `minSeqLen` and `logPdfPrecision`.
 !    !>

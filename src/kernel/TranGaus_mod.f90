@@ -2544,8 +2544,8 @@ contains
     !>
     !> \param[in]   lowerLim    :   The lower limit of the random number (the lower truncation on the Gaussian distribution).
     !> \param[in]   upperLim    :   The upper limit of the random number (the lower truncation on the Gaussian distribution).
-    !> \param[in]   avg         :   The mean of the (non-truncated) Gaussian distribution (optional, default = 0).
-    !> \param[in]   std         :   The standard deviation of the (non-truncated) Gaussian distribution (optional, default = 1).
+    !> \param[in]   avg         :   The mean of the (non-truncated) Gaussian distribution (**optional**, default = 0).
+    !> \param[in]   std         :   The standard deviation of the (non-truncated) Gaussian distribution (**optional**, default = 1).
     !>
     !> \return
     !> `tranGaus`   :   The output truncated random Gaussian number.

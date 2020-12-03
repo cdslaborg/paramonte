@@ -125,7 +125,7 @@ contains
     !> Return an object of class [Path_type](@ref path_type) given the input specifications.
     !>
     !> \param[in]   inputPath   :   The input path.
-    !> \param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) containing information about the operating system (optional).
+    !> \param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) containing information about the operating system (**optional**).
     !>
     !> \return
     !> `Path` : An object of class [Path_type](@ref path_type) containing the path properties and methods.
@@ -148,8 +148,8 @@ contains
     !> Construct an object of class [Path_type](@ref path_type) as output.
     !>
     !> \param[inout]    Path        :   An object of class [Path_type](@ref path_type) containing the path properties and methods.
-    !> \param[in]       inputPath   :   The input path (optional). If provided, it will overwrite `Path%original`.
-    !> \param[in]       OS          :   An object of class [OS_type](@ref system_mod::os_type) containing information about the operating system (optional).
+    !> \param[in]       inputPath   :   The input path (**optional**). If provided, it will overwrite `Path%original`.
+    !> \param[in]       OS          :   An object of class [OS_type](@ref system_mod::os_type) containing information about the operating system (**optional**).
     !>
     !> \warning
     !> On output, do not forget to check the value `Path%%Err%%occurred` before using the output `Path`.
@@ -588,9 +588,9 @@ contains
     !> Make the requested (nested) directory (recursively, if needed).
     !>
     !> \param[in]       dirPath     :   The full directory path.
-    !> \param[out]      isWindows   :   The logical flag indicating whether the OS is Windows (optional). If not present, Unix OS will be assumed.
+    !> \param[out]      isWindows   :   The logical flag indicating whether the OS is Windows (**optional**). If not present, Unix OS will be assumed.
     !> \param[out]      wait        :   The logical flag indicating whether the procedure should wait
-    !>                                  for the system operation to complete and return (optional, default = `.true.`).
+    !>                                  for the system operation to complete and return (**optional**, default = `.true.`).
     !>
     !> \warning
     !> This routine does not currently check for OS type.

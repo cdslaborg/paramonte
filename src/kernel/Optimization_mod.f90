@@ -134,13 +134,13 @@ contains
     !> @param[in]   getFunc :   The 1-dimensional function which will have to be minimized.
     !> @param[in]   x0      :   The lower point in the set of optional bracketing triplet of abscissas that
     !>                          bracket the minimum of the function such that, `x0 < x1 < x2` and
-    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (optional).
+    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (**optional**).
     !> @param[in]   x1      :   The middle point in the set of optional bracketing triplet of abscissas that
     !>                          bracket the minimum of the function such that, `x0 < x1 < x2` and
-    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (optional).
+    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (**optional**).
     !> @param[in]   x2      :   The upper point in the set of optional bracketing triplet of abscissas that
     !>                          bracket the minimum of the function such that, `x0 < x1 < x2` and
-    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (optional).
+    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (**optional**).
     !> @param[in]   xtol    :   An optional fractional precision within which is the minimum is returned.
     !>                          The default value is sqrt(epsilon(1._RK)).
     !>

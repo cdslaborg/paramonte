@@ -97,13 +97,13 @@ contains
     !> @param[inout] CFC                    :   An object of type [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type)
     !!                                          containing the Markov chain.
     !> @param[out]   Err                    :   An object of class [Err_type](@ref err_mod::err_type) indicating whether any error has occurred or not.
-    !> @param[in]    burninLoc              :   The estimated location of burnin point in the Markov chain (optional).
+    !> @param[in]    burninLoc              :   The estimated location of burnin point in the Markov chain (**optional**).
     !!                                          If not provided, it will be extracted from the components of the input `CFC`.
-    !> @param[in]    refinedChainSize       :   The requested refined sample size (optional). If the size of the refined sample is given as input,
+    !> @param[in]    refinedChainSize       :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,
     !!                                          then the requested sample is directly generated based on the input size.
-    !> @param[in]    sampleRefinementCount  :   The maximum number of times the sample can be refined (optional, default = `Infinity`).
+    !> @param[in]    sampleRefinementCount  :   The maximum number of times the sample can be refined (**optional**, default = `Infinity`).
     !!                                      :   For example, if set to 1, then only one round of refinement will be performed on the Markov chain.
-    !> @param[in]    sampleRefinementMethod :   The requested method of refining the sample (optional, default = "BatchMeans").
+    !> @param[in]    sampleRefinementMethod :   The requested method of refining the sample (**optional**, default = "BatchMeans").
     subroutine getRefinedChain  ( RefinedChain              &
                                 , CFC                       &
                                 , Err                       &
@@ -388,7 +388,7 @@ contains
     !> @param[in]   np                  :   The number of elements of the `Weight` vector.
     !> @param[in]   Weight              :   The input vector of weights.
     !> @param[in]   skip                :   The size of the jumps that have to be made through the weighted Markov chain.
-    !> @param[in]   refinedChainSize    :   The requested refined sample size (optional). If present, then the refined chain (represented by the
+    !> @param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If present, then the refined chain (represented by the
     !>                                  :   vector `Weight`) will be refined such that the resulting refined chain has the size `refinedChainSize`.
     !>
     !> \return
@@ -468,7 +468,7 @@ contains
     !> @param[out]  RefinedWeight       :   The vector of refined weights corresponding to the output refined array.
     !> @param[out]  PointCount          :   An object of derived type [Count_type](@ref paramontechainfilecontents_mod::count_type)
     !>                                      containing the number of points in the refined sample.
-    !> @param[in]   refinedChainSize    :   The requested refined sample size (optional). If the size of the refined sample is given as input,
+    !> @param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,
     !>                                      then the requested sample is directly generated based on the input size.
     pure subroutine refineWeightedSample(nd,np,skip,Sample,Weight,RefinedChain,RefinedWeight,PointCount,refinedChainSize)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED

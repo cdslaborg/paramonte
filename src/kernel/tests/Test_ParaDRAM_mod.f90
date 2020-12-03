@@ -75,6 +75,8 @@ contains
         call Test%run(test_runSampler_6, "test_runSampler_6")
         call Test%run(test_runSampler_7, "test_runSampler_7")
         call Test%run(test_runSampler_8, "test_runSampler_8")
+        call Test%run(test_runSampler_9, "test_runSampler_9")
+        call Test%run(test_runSampler_10, "test_runSampler_10")
         call Test%finalize()
     end subroutine test_ParaDRAM
 
@@ -252,6 +254,54 @@ contains
         assertion = .not. PD%Err%occurred
 #endif
     end function test_runSampler_8
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToWarn` has reached.
+    function test_runSampler_9() result(assertion)
+        use Constants_mod, only: RK, HUGE_RK
+        implicit none
+        logical             :: assertion
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK] ! NOTE: HUGE_RK is the null value.
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK] ! NOTE: HUGE_RK is the null value.
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , domainLowerLimitVec = domainLowerLimitVec &
+                            , domainUpperLimitVec = domainUpperLimitVec &
+                            , maxNumDomainCheckToWarn = 1_IK &
+                            , mpiFinalizeRequested = .false. &
+                            )
+        assertion = PD%Err%occurred
+#endif
+    end function test_runSampler_9
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
+    function test_runSampler_10() result(assertion)
+        use Constants_mod, only: RK, HUGE_RK
+        implicit none
+        logical             :: assertion
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK] ! NOTE: HUGE_RK is the null value.
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK] ! NOTE: HUGE_RK is the null value.
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , domainLowerLimitVec = domainLowerLimitVec &
+                            , domainUpperLimitVec = domainUpperLimitVec &
+                            , maxNumDomainCheckToStop = 1_IK &
+                            , mpiFinalizeRequested = .false. &
+                            )
+        assertion = PD%Err%occurred
+#endif
+    end function test_runSampler_10
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

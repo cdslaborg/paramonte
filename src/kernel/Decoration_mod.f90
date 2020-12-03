@@ -257,7 +257,7 @@ contains
     !> Wrap the input text with ANSI/VT100 Control sequences to stylize and color the string.
     !>
     !> @param[in]   string      : The input string to be stylized.
-    !> @param[in]   attr        : The requested attribute (optional). It can be:
+    !> @param[in]   attr        : The requested attribute (**optional**). It can be:
     !>                            + `"off"`         : All attributes off (0).
     !>                            + `"bold"`        : Boldface text (1)
     !>                            + `"bright"`      : Bright text (1)
@@ -267,8 +267,8 @@ contains
     !>                            + `"reverse"`     : Reversed attributes text (7)
     !>                            + `"hidden"`      : Hidden text (8)
     !>                            The **default** value is "off".
-    !> @param[in]   clfg        : The Foreground color of the text (optional, see below for possible colors).
-    !> @param[in]   clbg        : The Background color of the text (optional, see below for possible colors).
+    !> @param[in]   clfg        : The Foreground color of the text (**optional**, see below for possible colors).
+    !> @param[in]   clbg        : The Background color of the text (**optional**, see below for possible colors).
     !>
     !> \return
     !> `modifiedString` : The output string wrapped with the requested style and coloring.
@@ -397,10 +397,10 @@ contains
 
     !> \brief
     !> Return an IO Fortran format given the input characteristics.
-    !> @param[in]   width       :   The width of the target IO record (optional, default = dynamically set).
-    !> @param[in]   precision   :   The precision of the target IO record if it happens to be a real number (optional, default = dynamically set).
-    !> @param[in]   delim       :   The delimiter of the target IO record if it happens multiple entries (optional, default = "").
-    !> @param[in]   prefix      :   The prefix of the target IO record (optional, default = "").
+    !> @param[in]   width       :   The width of the target IO record (**optional**, default = dynamically set).
+    !> @param[in]   precision   :   The precision of the target IO record if it happens to be a real number (**optional**, default = dynamically set).
+    !> @param[in]   delim       :   The delimiter of the target IO record if it happens multiple entries (**optional**, default = "").
+    !> @param[in]   prefix      :   The prefix of the target IO record (**optional**, default = "").
     !>
     !> \return
     !> `formatStr` : The output format string to be used in IO.

@@ -57,10 +57,10 @@ contains
 
     !> \brief
     !> The constructor of the [Decoration_type](@ref decoration_type class.
-    !> @param[in]   tabStr : The string representing the tab character (optional, default = `TAB`).
-    !> @param[in]   symbol : The symbol with which the text is decorated (optional).
-    !> @param[in]   text : The text to be decorated (optional).
-    !> @param[in]   List : A list of lines to be decorated (optional).
+    !> @param[in]   tabStr : The string representing the tab character (**optional**, default = `TAB`).
+    !> @param[in]   symbol : The symbol with which the text is decorated (**optional**).
+    !> @param[in]   text : The text to be decorated (**optional**).
+    !> @param[in]   List : A list of lines to be decorated (**optional**).
     !>
     !> \return
     !> Decoration : An object of class [Decoration_type](@ref decoration_type).
@@ -92,14 +92,14 @@ contains
     !> \brief
     !> Given a text and the requested characteristics, this function wraps the text to within the maximum width specified.
     !> @param[in]   text            : The input text.
-    !> @param[in]   symbol          : The decoration symbol added to beginning and ending of the wrapped line (optional).
-    !> @param[in]   width           : The wrapping with (optional).
-    !> @param[in]   thicknessHorz   : The horizontal thickness of the symbol that sandwiches the text (optional).
-    !> @param[in]   thicknessVert   : The vertical thickness of the symbol that sandwiches the text from top and bottom (optional).
-    !> @param[in]   marginTop       : The number of empty lines between the top symbol line and the text start (optional).
-    !> @param[in]   marginBot       : The number of empty lines between the bottom symbol line and the text start (optional).
-    !> @param[in]   outputUnit      : The file unit to which the wrapper text must be written (optional).
-    !> @param[in]   newLine         : The string that represent the new line in the input text (optional).
+    !> @param[in]   symbol          : The decoration symbol added to beginning and ending of the wrapped line (**optional**).
+    !> @param[in]   width           : The wrapping with (**optional**).
+    !> @param[in]   thicknessHorz   : The horizontal thickness of the symbol that sandwiches the text (**optional**).
+    !> @param[in]   thicknessVert   : The vertical thickness of the symbol that sandwiches the text from top and bottom (**optional**).
+    !> @param[in]   marginTop       : The number of empty lines between the top symbol line and the text start (**optional**).
+    !> @param[in]   marginBot       : The number of empty lines between the bottom symbol line and the text start (**optional**).
+    !> @param[in]   outputUnit      : The file unit to which the wrapper text must be written (**optional**).
+    !> @param[in]   newLine         : The string that represent the new line in the input text (**optional**).
     module subroutine writeDecoratedText(text,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit,newLine)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedText
@@ -131,13 +131,13 @@ contains
     !> \brief
     !> Given a list of lines and the requested characteristics, this function wraps the text to within the maximum width specified.
     !> @param[in]   List            : The input list of lines to decorate and write.
-    !> @param[in]   symbol          : The decoration symbol added to beginning and ending of the wrapped line (optional).
-    !> @param[in]   width           : The wrapping with (optional).
-    !> @param[in]   thicknessHorz   : The horizontal thickness of the symbol that sandwiches the text (optional).
-    !> @param[in]   thicknessVert   : The vertical thickness of the symbol that sandwiches the text from top and bottom (optional).
-    !> @param[in]   marginTop       : The number of empty lines between the top symbol line and the text start (optional).
-    !> @param[in]   marginBot       : The number of empty lines between the bottom symbol line and the text start (optional).
-    !> @param[in]   outputUnit      : The file unit to which the wrapper text must be written (optional).
+    !> @param[in]   symbol          : The decoration symbol added to beginning and ending of the wrapped line (**optional**).
+    !> @param[in]   width           : The wrapping with (**optional**).
+    !> @param[in]   thicknessHorz   : The horizontal thickness of the symbol that sandwiches the text (**optional**).
+    !> @param[in]   thicknessVert   : The vertical thickness of the symbol that sandwiches the text from top and bottom (**optional**).
+    !> @param[in]   marginTop       : The number of empty lines between the top symbol line and the text start (**optional**).
+    !> @param[in]   marginBot       : The number of empty lines between the bottom symbol line and the text start (**optional**).
+    !> @param[in]   outputUnit      : The file unit to which the wrapper text must be written (**optional**).
     module subroutine writeDecoratedList(List,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedList
@@ -167,8 +167,8 @@ contains
 
     !> \brief
     !> Return a string which is a pattern repetition for the requested width.
-    !> @param[in]   symbol  : The decoration symbol added to beginning and ending of the wrapped line (optional, default = `STAR`).
-    !> @param[in]   width   : The width of the line (optional, default = `DECORATION_WIDTH`).
+    !> @param[in]   symbol  : The decoration symbol added to beginning and ending of the wrapped line (**optional**, default = `STAR`).
+    !> @param[in]   width   : The width of the line (**optional**, default = `DECORATION_WIDTH`).
     !>
     !> \return
     !> `line` : A string of the requested pattern.
@@ -216,10 +216,10 @@ contains
 
     !> \brief
     !> Sandwich the input string with the input symbol for the requested thickness on both ends of the string.
-    !> @param[in]   text            : The text to be sandwiched (optional).
-    !> @param[in]   symbol          : The decoration symbol added to beginning and ending of the wrapped line (optional).
-    !> @param[in]   width           : The width of the line (optional).
-    !> @param[in]   thicknessHorz   : The width of the decoration to be added at the beginning and end of the string (optional).
+    !> @param[in]   text            : The text to be sandwiched (**optional**).
+    !> @param[in]   symbol          : The decoration symbol added to beginning and ending of the wrapped line (**optional**).
+    !> @param[in]   width           : The width of the line (**optional**).
+    !> @param[in]   thicknessHorz   : The width of the decoration to be added at the beginning and end of the string (**optional**).
     !>
     !> \return
     !> `sandwichedText` : A string of the requested pattern.
@@ -344,12 +344,12 @@ contains
 
     !> \brief
     !> Write the decorated text to the output.
-    !> @param[in]   outputUnit  : The output file unit (optional).
-    !> @param[in]   marginTop   : The number of empty lines before writing the string (optional).
-    !> @param[in]   marginBot   : The number of empty lines after writing the string (optional).
-    !> @param[in]   count       : The number of times to write the string to the output (optional, default = 1).
-    !> @param[in]   width       : The width of the line (optional).
-    !> @param[in]   string      : The string to output (optional, default = "").
+    !> @param[in]   outputUnit  : The output file unit (**optional**).
+    !> @param[in]   marginTop   : The number of empty lines before writing the string (**optional**).
+    !> @param[in]   marginBot   : The number of empty lines after writing the string (**optional**).
+    !> @param[in]   count       : The number of times to write the string to the output (**optional**, default = 1).
+    !> @param[in]   width       : The width of the line (**optional**).
+    !> @param[in]   string      : The string to output (**optional**, default = "").
     module subroutine write ( outputUnit    &
                             , marginTop     &
                             , marginBot     &
@@ -459,8 +459,8 @@ contains
     !> Wrap the input text to fit it within the requested line width.
     !> @param[in]   string  : The string to wrap.
     !> @param[in]   width   : The wrapping width.
-    !> @param[in]   split   : The string at which the text can be broken and put on the next line, if needed (optional, default = "").
-    !> @param[in]   pad     : The string to prepend each line (optional).
+    !> @param[in]   split   : The string at which the text can be broken and put on the next line, if needed (**optional**, default = "").
+    !> @param[in]   pad     : The string to prepend each line (**optional**).
     !>
     !> \return
     !> ListOfLines : The list of lines that are wrapped to fit within the requested input width.
@@ -631,7 +631,7 @@ contains
     !> \brief
     !> Convert a string to a list of lines.
     !> @param[in]   string      : The string.
-    !> @param[in]   delimiter   : The substring at which the string will be split to form multiple lines (optional, default = "").
+    !> @param[in]   delimiter   : The substring at which the string will be split to form multiple lines (**optional**, default = "").
     !>
     !> \return
     !> ListOfLines : The list of lines generated from the input string.

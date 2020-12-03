@@ -81,7 +81,7 @@ module System_mod
     !> The `SystemInfo_type` class.
     type :: SystemInfo_type
         integer(IK)                     :: nRecord                  !< The number of elements of the vector `List`.
-        type(CharVec_type), allocatable :: List(:)                  !< An array of length `nRecord` of strings, each element of which represents
+        type(CharVec_type), allocatable :: Records(:)               !< An array of length `nRecord` of strings, each element of which represents
                                                                     !! one line in the output system information.
         type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) indicating whether
                                                                     !! any error has occurred during information collection.
@@ -191,18 +191,69 @@ contains
     !> The constructor of the class [SystemInfo_type](@ref systeminfo_type).
     !> Return a comprehensive report of the system information.
     !>
-    !> \param[in]   OS      :   An object of class [OS_type](@ref os_type) (optional).
+    !> \param[in]   OS      :   An object of class [OS_type](@ref os_type) loaded with `OS%query()` results (**optional**).
+    !> \param[in]   path    :   A string representing the path to file that has the system information already cached (**optional**).
+    !>                          If the path is provided and the file exists, then the system information will be read from that file.
     !>
     !> \return
     !> `SystemInfo` : An object of class [SystemInfo_type](@ref systeminfo_type) containing the system information.
-    function constructSystemInfo(OS) result(SystemInfo)
+    function constructSystemInfo(OS, path) result(SystemInfo)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSystemInfo
 #endif
+        use FileContents_mod, only: getFileContents
+        use DateTime_mod, only: DateTime_type
+        use Constants_mod, only: NLC
         implicit none
+
+        character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // "@constructSystemInfo()"
+
         type(SystemInfo_type)               :: SystemInfo
         type(OS_type), intent(in), optional :: OS
-        call getSystemInfo( SystemInfo%List, SystemInfo%Err, OS, SystemInfo%nRecord )
+        character(*), intent(in), optional  :: path
+        type(DateTime_type)                 :: DateTime
+        character(:), allocatable           :: cacheFile
+        logical                             :: fileIsOpen, fileExists
+        integer                             :: fileUnit
+
+        fileExists = present(path)
+
+        if (fileExists) then
+            cacheFile = path
+        else ! construct the default cache file name
+            call DateTime%query()
+            cacheFile = ".paramonte.sysinfo."//DateTime%year//DateTime%month//DateTime%day//".cache"
+        end if
+
+        ! check if the cache file exists
+
+        inquire(file = cacheFile, opened = fileIsOpen, number = fileUnit, exist = fileExists, iostat = SystemInfo%Err%stat) ! check if the file exists
+        if (SystemInfo%Err%stat/=0) then
+        ! LCOV_EXCL_START
+            SystemInfo%Err%occurred = .true.
+            SystemInfo%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file = '" // cacheFile // "'."
+            return
+        end if
+        ! LCOV_EXCL_STOP
+
+        if (fileExists) then
+
+            if (fileIsOpen) close(fileUnit)
+
+            call getFileContents(cacheFile, SystemInfo%Records, SystemInfo%nRecord, SystemInfo%Err)
+            if (SystemInfo%Err%occurred) then
+            ! LCOV_EXCL_START
+                SystemInfo%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info from the input file: "//cacheFile//NLC//SystemInfo%Err%msg
+                return
+            end if
+            ! LCOV_EXCL_STOP
+
+        else
+
+            call getSystemInfo( SystemInfo%Records, SystemInfo%Err, OS, SystemInfo%nRecord, cacheFile )
+
+        end if
+
     end function constructSystemInfo
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -212,7 +263,7 @@ contains
     !>
     !> \param[out]  OS                  :   An object of class [OS_type](@ref os_type).
     !> \param[in]   shellQueryEnabled   :   A logical variable indicating if the type and name of the current
-    !>                                      runtime shell should be queried or not (optional, default = `.true.`).
+    !>                                      runtime shell should be queried or not (**optional**, default = `.true.`).
     subroutine queryOS(OS, shellQueryEnabled)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: queryOS
@@ -568,9 +619,9 @@ contains
     !> \brief
     !> Generate a unique file path in the requested directory for temporary usage.
     !>
-    !> \param[in]   dir : The requested directory within which the unique new file is supposed to be generated (optional).
-    !> \param[in]   key : The requested input file name prefix (optional, default = "RandomFileName").
-    !> \param[in]   ext : The requested input file extension (optional, default = ".rfn", standing for random file name).
+    !> \param[in]   dir : The requested directory within which the unique new file is supposed to be generated (**optional**).
+    !> \param[in]   key : The requested input file name prefix (**optional**, default = "RandomFileName").
+    !> \param[in]   ext : The requested input file extension (**optional**, default = ".rfn", standing for random file name).
     !>
     !> \return
     !> `RFN` : An object of class [RandomFileName_type](@ref randomfilename_type) containing the attributes of the random file name.
@@ -785,7 +836,7 @@ contains
     !>
     !> \param[in]       command     :   The command to executed in the terminal.
     !> \param[in]       wait        :   A logical argument indicating whether the program should wait until the control is
-    !!                                  returned to it or should not wait (optional, default = `.true.`).
+    !!                                  returned to it or should not wait (**optional**, default = `.true.`).
     !> \param[inout]    exitstat    :   An integer indicating the exit status flag upon exiting the terminal.
     !> \param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type)
     !!                                  indicating whether any error has occurred during information collection.
@@ -932,31 +983,33 @@ contains
     !> \brief
     !> Fetch a comprehensive report of the operating system and platform specifications.
     !>
-    !> \param[out]  List    :   A list of strings each of which represents one line of information about the system specs.
-    !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
-    !!                          indicating whether any error has occurred during information collection.
-    !> \param[in]   OS      :   An object of class [OS_type](@ref os_type) containing information about the Operating System (optional).
-    !> \param[out]  count   :   The count of elements in the output `List` (optional).
-    subroutine getSystemInfo(List,Err,OS,count)
+    !> \param[out]  List        :   A list of strings each of which represents one line of information about the system specs.
+    !> \param[out]  Err         :   An object of class [Err_type](@ref err_mod::err_type)
+    !>                              indicating whether any error has occurred during information collection.
+    !> \param[in]   OS          :   An object of class [OS_type](@ref os_type) containing information about the Operating System (**optional**).
+    !> \param[out]  count       :   The count of elements in the output `List` (**optional**).
+    !> \param[in]  cacheFile    :   The path to the external file where the results of the system information query will be stored and kept (**optional**).
+    !>                              If no file is specified, the system information will not be stored in an external file.
+    subroutine getSystemInfo(List,Err,OS,count,cacheFile)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSystemInfo
 #endif
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         use Constants_mod, only: IK, RK, MAX_REC_LEN
-        use DateTime_mod, only: DateTime_type
         use JaggedArray_mod, only: CharVec_type
         implicit none
         type(CharVec_type)  , intent(out), allocatable  :: List(:)
         type(Err_type)      , intent(out)               :: Err
         type(OS_type)       , intent(in) , optional     :: OS
         integer(IK)         , intent(out), optional     :: count
+        character(*)        , intent(in), optional      :: cacheFile
 
         type(OS_type)                                   :: OpSy
         character(len=:), allocatable                   :: command, stdErr !, filename
         character(len=MAX_REC_LEN)                      :: record
         integer(IK)                                     :: fileUnit,counter,nRecord
-        logical                                         :: fileIsOpen
+        logical                                         :: fileIsOpen, cacheFileIsPresent
         type(RandomFileName_type)                       :: RFN
 
         character(*), parameter                         :: PROCEDURE_NAME = MODULE_NAME // "@getSystemInfo()"
@@ -966,13 +1019,18 @@ contains
 
         ! generate a brand new, non-existing filename
 
-        RFN = RandomFileName_type(key="getFileList")
-        ! LCOV_EXCL_START
-        if (RFN%Err%occurred) then
-            RFN%Err%msg = PROCEDURE_NAME // RFN%Err%msg
-            return
+        cacheFileIsPresent = present(cacheFile)
+        if (cacheFileIsPresent) then
+            RFN%path = cacheFile
+        else
+            RFN = RandomFileName_type(key=".getSystemInfo")
+            ! LCOV_EXCL_START
+            if (RFN%Err%occurred) then
+                RFN%Err%msg = PROCEDURE_NAME // RFN%Err%msg
+                return
+            end if
+            ! LCOV_EXCL_STOP
         end if
-        ! LCOV_EXCL_STOP
 
         stdErr = RFN%path // ".stderr"
 

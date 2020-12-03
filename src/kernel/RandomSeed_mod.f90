@@ -83,9 +83,9 @@ contains
     !> containing the information and methods for setting and resetting the random seed.
     !>
     !> @param[in]   imageID         :   The ID of the current process.
-    !> @param[in]   inputSeed       :   The optional scalar integer based upon which the seed of the random number generator will be set (optional).
-    !> @param[in]   isRepeatable    :   The logical flag indicating whether the random number sequence must be repeatable upon each restart (optional).
-    !> @param[in]   isImageDistinct :   The logical flag indicating whether the random seed must be distinct on each processor from others (optional).
+    !> @param[in]   inputSeed       :   The optional scalar integer based upon which the seed of the random number generator will be set (**optional**).
+    !> @param[in]   isRepeatable    :   The logical flag indicating whether the random number sequence must be repeatable upon each restart (**optional**).
+    !> @param[in]   isImageDistinct :   The logical flag indicating whether the random seed must be distinct on each processor from others (**optional**).
     !>
     !> \return
     !> `RandomSeed` : An object of class [RandomSeed_type](@ref randomseed_type) containing the information and methods for
@@ -161,7 +161,7 @@ contains
     !> Get the size and value of the current random seed.
     !>
     !> @param[inout]    RandomSeed  :   An object of class [RandomSeed_type](@ref randomseed_type).
-    !> @param[in]       inputSeed   :   The optional scalar integer based upon which the seed of the random number generator will be set (optional).
+    !> @param[in]       inputSeed   :   The optional scalar integer based upon which the seed of the random number generator will be set (**optional**).
     !>
     !> \warning
     !> Upon return from this procedure, the value of `RandomSeed%Err%occurred` must be checked for the occurrence of any potential errors.

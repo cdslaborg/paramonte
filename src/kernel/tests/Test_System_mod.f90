@@ -114,7 +114,7 @@ contains
         assertion = .true.
         if (Test%Image%isFirst) then
             SystemInfo = SystemInfo_type()
-            assertion = .not. SystemInfo%Err%occurred .and. allocated(SystemInfo%List) .and. size(SystemInfo%List) > 0
+            assertion = .not. SystemInfo%Err%occurred .and. allocated(SystemInfo%Records) .and. size(SystemInfo%Records) > 0
         end if
     end function test_SystemInfo_type_1
 

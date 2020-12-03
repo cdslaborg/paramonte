@@ -154,15 +154,17 @@ contains
         integer                                                     :: i
         do i = 1,size(RandomStartPointDomainUpperLimitVecObj%Val(:))
             if ( RandomStartPointDomainUpperLimitVecObj%Val(i)>domainUpperLimitVec(i) ) then
-                Err%occurred = .true.
-                Err%msg =   Err%msg // &
-                            MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                            &The component " // num2str(i) // " of the variable randomStartPointDomainUpperLimitVec (" // &
-                            num2str(RandomStartPointDomainUpperLimitVecObj%Val(i)) // &
-                            ") cannot be larger than the corresponding component of the variable &
-                            &domainUpperLimitVec (" // num2str(domainUpperLimitVec(i)) // "). If you don't know &
-                            &an appropriate value to set for randomStartPointDomainUpperLimitVec, drop it from the input list. " // &
-                            methodName // " will automatically assign an appropriate value to it.\n\n"
+                if (RandomStartPointDomainUpperLimitVecObj%Val(i) /= RandomStartPointDomainUpperLimitVecObj%null) then
+                    Err%occurred = .true.
+                    Err%msg =   Err%msg // &
+                                MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
+                                &The component " // num2str(i) // " of the variable randomStartPointDomainUpperLimitVec (" // &
+                                num2str(RandomStartPointDomainUpperLimitVecObj%Val(i)) // &
+                                ") cannot be larger than the corresponding component of the variable &
+                                &domainUpperLimitVec (" // num2str(domainUpperLimitVec(i)) // "). If you don't know &
+                                &an appropriate value to set for randomStartPointDomainUpperLimitVec, drop it from the input list. " // &
+                                methodName // " will automatically assign an appropriate value to it.\n\n"
+                end if
             end if
             if ( RandomStartPointDomainUpperLimitVecObj%Val(i)<=randomStartPointDomainLowerLimitVec(i) ) then
                 Err%occurred = .true.

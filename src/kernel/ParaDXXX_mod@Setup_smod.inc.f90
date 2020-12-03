@@ -90,7 +90,7 @@ contains
     !>
     !> @param[in]   ndim        :   The number of dimensions of the domain of the objective function to be sampled.
     !> @param[in]   getLogFunc  :   The first point.
-    !> @param[in]   inputFile   :   The path to the external input file (optional).
+    !> @param[in]   inputFile   :   The path to the external input file (**optional**).
     !>
     !> \remark
     !> For detailed descriptions of the rest of the input parameters of this subroutine,

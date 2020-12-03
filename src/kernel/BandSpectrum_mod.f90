@@ -502,8 +502,8 @@ contains
     !> \param[in]   tolerance       :   The relative accuracy tolerance of the integration.
     !> \param[out]  photonFluence   :   The output fluence in units of photon counts.
     !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
-    !> \param[in]   lowerLimNew     :   The lower limit of energy windows (in keV) to be used for the computation of `photonFluence` (optional).
-    !> \param[in]   upperLimNew     :   The upper limit of energy windows (in keV) to be used for the computation of `photonFluence` (optional).
+    !> \param[in]   lowerLimNew     :   The lower limit of energy windows (in keV) to be used for the computation of `photonFluence` (**optional**).
+    !> \param[in]   upperLimNew     :   The upper limit of energy windows (in keV) to be used for the computation of `photonFluence` (**optional**).
     !>
     !> \remark
     !> If the optional `[lowerLimNew, upperLimNew]` are provided, each will replace the

@@ -279,7 +279,7 @@ contains
     !>
     !> @param[in]   lenLogValue : The length of the input vector.
     !> @param[in]   LogValue    : The input vector of log-values whose log-sum-exp must be computed.
-    !> @param[in]   maxLogValue : The maximum of the input `LogValue` argument (optional).
+    !> @param[in]   maxLogValue : The maximum of the input `LogValue` argument (**optional**).
     !>
     !> \return
     !> `logSumExp` : A real number.
@@ -318,7 +318,7 @@ contains
     !>
     !> @param[in]   lenLogValue : The length of the input vector.
     !> @param[in]   LogValue    : The input vector of log-values whose log-sum-exp must be computed.
-    !> @param[in]   maxLogValue : The maximum of the real component of the input `LogValue` argument (optional).
+    !> @param[in]   maxLogValue : The maximum of the real component of the input `LogValue` argument (**optional**).
     !>
     !> \return
     !> `logSumExp` : A complex number.
@@ -866,7 +866,7 @@ contains
     !> Return the incomplete gamma function `Q(exponent, lowerLim)` evaluated by its continued fraction representation as `gammaContFrac`.
     !>
     !> @param[in]   logGammaExponent    :   This is the `log( gamma(exponent) )`.
-    !> @param[in]   tolerance           :   Represents the relative accuracy (optional).
+    !> @param[in]   tolerance           :   Represents the relative accuracy (**optional**).
     !> @param[in]   exponent            :   The exponent.
     !> @param[in]   lowerLim            :   The lower limit.
     !>

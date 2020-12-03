@@ -75,7 +75,7 @@ contains
     !> The constructor of the [FileContents_type](@ref filecontents_type) class.
     !>
     !> @param[in] filePath      :   The path to the file.
-    !> @param[in] delEnabled    :   A logical flag indicating whether the file should be deleted upon return (optional, default = `.false.`).
+    !> @param[in] delEnabled    :   A logical flag indicating whether the file should be deleted upon return (**optional**, default = `.false.`).
     !>
     !> \return
     !> `FileContents` : An object of [FileContents_type](@ref filecontents_type) class.

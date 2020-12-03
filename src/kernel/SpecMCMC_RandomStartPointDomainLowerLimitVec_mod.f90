@@ -153,16 +153,18 @@ contains
         character(*), parameter                                     :: PROCEDURE_NAME = "@checkForSanity()"
         integer                                                     :: i
         do i = 1,size(RandomStartPointDomainLowerLimitVecObj%Val(:))
-            if ( RandomStartPointDomainLowerLimitVecObj%Val(i)<domainLowerLimitVec(i) ) then
-                Err%occurred = .true.
-                Err%msg =   Err%msg // &
-                            MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                            &The component " // num2str(i) // " of the variable RandomStartPointDomainLowerLimitVec (" // &
-                            num2str(RandomStartPointDomainLowerLimitVecObj%Val(i)) // &
-                            ") cannot be smaller than the corresponding component of the variable &
-                            &domainLowerLimitVec (" // num2str(domainLowerLimitVec(i)) // "). If you don't know &
-                            &an appropriate value to set for RandomStartPointDomainLowerLimitVec, drop it from the input list. " // &
-                            methodName // " will automatically assign an appropriate value to it.\n\n"
+            if ( RandomStartPointDomainLowerLimitVecObj%Val(i)<domainLowerLimitVec(i) ) then 
+                if (RandomStartPointDomainLowerLimitVecObj%Val(i) /= RandomStartPointDomainLowerLimitVecObj%null) then
+                    Err%occurred = .true.
+                    Err%msg =   Err%msg // &
+                                MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
+                                &The component " // num2str(i) // " of the variable RandomStartPointDomainLowerLimitVec (" // &
+                                num2str(RandomStartPointDomainLowerLimitVecObj%Val(i)) // &
+                                ") cannot be smaller than the corresponding component of the variable &
+                                &domainLowerLimitVec (" // num2str(domainLowerLimitVec(i)) // "). If you don't know &
+                                &an appropriate value to set for RandomStartPointDomainLowerLimitVec, drop it from the input list. " // &
+                                methodName // " will automatically assign an appropriate value to it.\n\n"
+                end if
             end if
         end do
     end subroutine checkForSanity

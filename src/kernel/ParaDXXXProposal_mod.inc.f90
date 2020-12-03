@@ -399,11 +399,11 @@ contains
 
         loopBoundaryCheck: do ! Check for the support Region consistency:
 #if defined UNIFORM || defined NORMAL
-            StateNew(1:nd) = GET_RANDOM_PROPOSAL( nd                                    &
-                                                , StateOld                              &
+            StateNew(1:nd) = GET_RANDOM_PROPOSAL( nd                                    & ! LCOV_EXCL_LINE
+                                                , StateOld                              & ! LCOV_EXCL_LINE
                                                 ! ATTN: The colon index in place of 1:nd below avoids the temporary array creation
-                                                , comv_CholDiagLower(:,1:nd,counterDRS) &
-                                                , comv_CholDiagLower(1:nd,0,counterDRS) &
+                                                , comv_CholDiagLower(:,1:nd,counterDRS) & ! LCOV_EXCL_LINE
+                                                , comv_CholDiagLower(1:nd,0,counterDRS) & ! LCOV_EXCL_LINE
                                                 )
 #endif
             if ( any(StateNew(1:nd)<=mc_DomainLowerLimitVec) .or. any(StateNew(1:nd)>=mc_DomainUpperLimitVec) ) then
@@ -506,7 +506,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: doAdaptation
 #endif
 
-        use Statistics_mod, only: getSamCovUpperMeanTrans, getWeiSamCovUppMeanTrans, mergeMeanCovUpper!, combineMeanCovUpper
+        use Statistics_mod, only: getSamCovUpperMeanTrans, getWeiSamCovUppMeanTrans, mergeMeanCovUpper ! LCOV_EXCL_LINE
         use Matrix_mod, only: getCholeskyFactor, getLogSqrtDetPosDefMat
         use Constants_mod, only: RK, IK, EPS_RK
         use String_mod, only: num2str
@@ -599,15 +599,15 @@ contains
                 ! Do not set the full boundaries' range `(1:nd)` for `comv_CholDiagLower` in the following subroutine call.
                 ! Setting the boundaries forces the compiler to generate a temporary array.
 
-                call mergeMeanCovUpper  ( nd            = nd                            &
-                                        , npA           = mv_sampleSizeOld_save         &
-                                        , MeanVecA      = mv_MeanOld_save               &
-                                        , CovMatUpperA  = CovMatUpperOld                &
-                                        , npB           = sampleSizeCurrent             &
-                                        , MeanVecB      = MeanCurrent                   &
-                                        , CovMatUpperB  = CovMatUpperCurrent            &
-                                        , MeanVecAB     = MeanNew                       &
-                                        , CovMatUpperAB = comv_CholDiagLower(:,1:nd,0)  &
+                call mergeMeanCovUpper  ( nd            = nd                            & ! LCOV_EXCL_LINE
+                                        , npA           = mv_sampleSizeOld_save         & ! LCOV_EXCL_LINE
+                                        , MeanVecA      = mv_MeanOld_save               & ! LCOV_EXCL_LINE
+                                        , CovMatUpperA  = CovMatUpperOld                & ! LCOV_EXCL_LINE
+                                        , npB           = sampleSizeCurrent             & ! LCOV_EXCL_LINE
+                                        , MeanVecB      = MeanCurrent                   & ! LCOV_EXCL_LINE
+                                        , CovMatUpperB  = CovMatUpperCurrent            & ! LCOV_EXCL_LINE
+                                        , MeanVecAB     = MeanNew                       & ! LCOV_EXCL_LINE
+                                        , CovMatUpperAB = comv_CholDiagLower(:,1:nd,0)  & ! LCOV_EXCL_LINE
                                         )
                 mv_MeanOld_save(1:nd) = MeanNew
 
@@ -639,11 +639,11 @@ contains
 
                 ! it may be a good idea to add a warning message printed out here for the singularity occurrence
 
-                call warn   ( prefix = mc_methodBrand &
-                            , outputUnit = mc_logFileUnit &
-                            , marginTop = 0_IK &
-                            , marginBot = 0_IK &
-                            , msg = "Singularity occurred while updating the proposal distribution's covariance matrix." &
+                call warn   ( prefix = mc_methodBrand       & ! LCOV_EXCL_LINE
+                            , outputUnit = mc_logFileUnit   & ! LCOV_EXCL_LINE
+                            , marginTop = 0_IK              & ! LCOV_EXCL_LINE
+                            , marginBot = 0_IK              & ! LCOV_EXCL_LINE
+                            , msg = "Singularity occurred while updating the proposal distribution's covariance matrix." & ! LCOV_EXCL_LINE
                             )
 
                 ! recover the old upper covariance matrix
@@ -833,6 +833,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    ! LCOV_EXCL_START
     ! ATTN: This routine needs further correction for the delayed rejection method
     subroutine doAutoTune   ( adaptationMeasure &
                             , AutoTuneScaleSq   &
@@ -884,6 +885,7 @@ contains
         adaptationMeasure = 1._RK - exp( 0.5_RK*(logSqrtDetOld+logSqrtDetNew) - logSqrtDetSum )
 
     end subroutine doAutoTune
+    ! LCOV_EXCL_STOP
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1003,7 +1005,7 @@ contains
     !> This procedure is called by the sampler kernel routines.\n
     !> Write the restart information to the output file.
     !>
-    !> @param[in]   meanAccRateSinceStart : The current mean acceptance rate of the sampling (optional).
+    !> @param[in]   meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
     subroutine writeRestartFile(meanAccRateSinceStart)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFile
@@ -1041,7 +1043,7 @@ contains
     !> This procedure is called by the sampler kernel routines.\n
     !> Read the restart information from the restart file.
     !>
-    !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (optional).
+    !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
     subroutine readRestartFile(meanAccRateSinceStart)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFile

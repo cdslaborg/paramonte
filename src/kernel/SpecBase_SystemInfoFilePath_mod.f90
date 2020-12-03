@@ -50,6 +50,7 @@ module SpecBase_SystemInfoFilePath_mod
     character(:), allocatable       :: systemInfoFilePath ! namelist input
 
     type                            :: SystemInfoFilePath_type
+        character(:), allocatable   :: def
         character(:), allocatable   :: val
         character(:), allocatable   :: null
     contains
@@ -73,9 +74,13 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSystemInfoFilePath
 #endif
         use Path_mod, only: MAX_FILE_PATH_LEN
+        use DateTime_mod, only: DateTime_type
         use Constants_mod, only: NULL_SK
         implicit none
-        type(SystemInfoFilePath_type) :: SystemInfoFilePathObj
+        type(SystemInfoFilePath_type)   :: SystemInfoFilePathObj
+        type(DateTime_type)             :: DateTime
+        call DateTime%query()
+        SystemInfoFilePathObj%def = ".paramonte.sysinfo."//DateTime%year//DateTime%month//DateTime%day//".cache"
         SystemInfoFilePathObj%null = repeat(NULL_SK, MAX_FILE_PATH_LEN)
     end function constructSystemInfoFilePath
 
@@ -100,9 +105,7 @@ contains
         class(SystemInfoFilePath_type), intent(inout)   :: SystemInfoFilePathObj
         character(*)                                    :: systemInfoFilePath
         SystemInfoFilePathObj%val = trim(adjustl(systemInfoFilePath))
-        if ( SystemInfoFilePathObj%val==SystemInfoFilePathObj%null ) then
-            deallocate(SystemInfoFilePathObj%val)
-        end if
+        if ( SystemInfoFilePathObj%val==SystemInfoFilePathObj%null ) SystemInfoFilePathObj%val = SystemInfoFilePathObj%def
         deallocate(SystemInfoFilePathObj%null)
     end subroutine setSystemInfoFilePath
 

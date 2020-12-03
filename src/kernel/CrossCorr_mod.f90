@@ -64,8 +64,8 @@ contains
     !>
     !> @param[in]   np              : The number of data points in the input time series data.
     !> @param[in]   Point           : The input data series data vector.
-    !> @param[in]   Weight          : The vector of weights of the input data points (optional, default = array of ones).
-    !> @param[in]   batchSize       : The batch size (optional, default = computed from the input parameters).
+    !> @param[in]   Weight          : The vector of weights of the input data points (**optional**, default = array of ones).
+    !> @param[in]   batchSize       : The batch size (**optional**, default = computed from the input parameters).
     !>
     !> \return
     !> `iac` : The integrated autocorrelation (IAC) via the BatchMeans method.
@@ -206,9 +206,9 @@ contains
     !>
     !> @param[in]   np              :   The number of data points in the input time series data.
     !> @param[in]   Point           :   The input data series data vector.
-    !> @param[in]   Weight          :   The vector of weights of the input data points (optional, default = array of ones).
+    !> @param[in]   Weight          :   The vector of weights of the input data points (**optional**, default = array of ones).
     !> @param[in]   significance    :   The significance in units of standard deviation below which the autocorrelation is
-    !>                                  considered noise (optional, default = 2).
+    !>                                  considered noise (**optional**, default = 2).
     !>
     !> \return
     !> `iac` : The integrated autocorrelation (IAC).
@@ -266,7 +266,7 @@ contains
     !>
     !> @param[in]   np              : The number of data points in the input time series data.
     !> @param[in]   Point           : The input data series data vector.
-    !> @param[in]   Weight          : The vector of weights of the input data points (optional, default = array of ones).
+    !> @param[in]   Weight          : The vector of weights of the input data points (**optional**, default = array of ones).
     !>
     !> \return
     !> `maxIAC` : The integrated autocorrelation (IAC).
@@ -311,7 +311,7 @@ contains
     !> Return the smallest length of a vector that is a power of `base` and at least `base**2` times larger than the input length `actualLen`.
     !>
     !> @param[in]   actualLen   : The input vector length.
-    !> @param[in]   base        : The integer-valued base of the exponentiation (optional, default = `2`).
+    !> @param[in]   base        : The integer-valued base of the exponentiation (**optional**, default = `2`).
     !>
     !> \return
     !> `paddedLen` : The minimum power-of-`base` length given `actualLen`.
@@ -346,7 +346,7 @@ contains
     !> Return the smallest length of a vector that is a power of `base` and at least `base**2` times larger than the input length `actualLen`.
     !>
     !> @param[in]   actualLen   : The real-valued input vector length.
-    !> @param[in]   base        : The real-valued base of the exponentiation (optional, default = `2.`).
+    !> @param[in]   base        : The real-valued base of the exponentiation (**optional**, default = `2.`).
     !>
     !> \return
     !> `paddedLen` : The minimum power-of-`base` length given `actualLen`.
@@ -381,7 +381,7 @@ contains
     !> Return the exponent that yields the largest real number smaller than **or equal to** the input number `absoluteValue`.
     !>
     !> @param[in]   absoluteValue   : The input real number.
-    !> @param[in]   base            : The base of the exponentiation (optional, default = `2`).
+    !> @param[in]   base            : The base of the exponentiation (**optional**, default = `2`).
     !>
     !> \return
     !> `previousExponent` : The output minimum integer exponent.
@@ -409,7 +409,7 @@ contains
     !> Return the exponent that yields the smallest real number larger than **or equal to** the input number `absoluteValue`.
     !>
     !> @param[in]   absoluteValue   : The input real number.
-    !> @param[in]   base            : The base of the exponentiation (optional, default = `2`).
+    !> @param[in]   base            : The base of the exponentiation (**optional**, default = `2`).
     !>
     !> \warning
     !> The input values for `absoluteValue` and `base` must be both larger than 1.
@@ -845,7 +845,7 @@ contains
     !> \param[in]   nlag                    :   The length of the input vector of lags.
     !> \param[in]   Lag                     :   The input vector of lags at which the autocorrelation must be computed.
     !> \param[out]  AutoCorr                :   The output AutoCorrelation matrix of shape `(nd,nlag)`.
-    !> \param[in]   InverseSumNormedDataSq  :   The inverse sum of the square of the input normalized data (optional).
+    !> \param[in]   InverseSumNormedDataSq  :   The inverse sum of the square of the input normalized data (**optional**).
     !>
     !> \remark
     !> If `InverseSumNormedDataSq` is provided, the computations will be slightly faster.

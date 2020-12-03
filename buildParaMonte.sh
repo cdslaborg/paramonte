@@ -2754,6 +2754,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                 if [ -d "${gcovKernelTestDataDir}" ]; then
 
                     gcovKernelTestDir="${ParaMonteTest_BLD_DIR}"/gcov
+                    rm -rf "${gcovKernelTestDir}"
                     if ! [ -d "${gcovKernelTestDir}" ]; then
                         mkdir -p "${gcovKernelTestDir}"
                     fi
@@ -2797,6 +2798,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     #### generate the kernel code coverage report file
 
                     lcovKernelDir="${ParaMonte_BLD_DIR}"/lcov
+                    rm -rf "${lcovKernelDir}"
                     mkdir -p "${lcovKernelDir}"
                     cd "${lcovKernelDir}"
 

@@ -110,13 +110,13 @@ contains
     !> Return an object of class [ChainFileContents_type](@ref chainfilecontents_type) given the input specifications.
     !>
     !> @param[in]   ndim                : The number of dimensions of the domain of the objective function.
-    !> @param[in]   variableNameList    : The list of variable names corresponding to each axis of the domain of the objective function (optional).
-    !> @param[in]   chainFilePath       : The list of variable names corresponding to each axis of the domain of the objective function (optional).
-    !> @param[in]   chainSize           : The size of the chain in the chain file specified by the input `chainFilePath` (optional).
-    !> @param[in]   chainFileForm       : The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`) (optional).
-    !> @param[in]   lenHeader           : The full length of the first line in the input file (the header line) (optional).
-    !> @param[in]   delimiter           : The delimiter symbol used in the chain file (optional).
-    !> @param[in]   targetChainSize     : The final target size of the chain (in case the chain file is an interrupted simulation) (optional).
+    !> @param[in]   variableNameList    : The list of variable names corresponding to each axis of the domain of the objective function (**optional**).
+    !> @param[in]   chainFilePath       : The list of variable names corresponding to each axis of the domain of the objective function (**optional**).
+    !> @param[in]   chainSize           : The size of the chain in the chain file specified by the input `chainFilePath` (**optional**).
+    !> @param[in]   chainFileForm       : The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`) (**optional**).
+    !> @param[in]   lenHeader           : The full length of the first line in the input file (the header line) (**optional**).
+    !> @param[in]   delimiter           : The delimiter symbol used in the chain file (**optional**).
+    !> @param[in]   targetChainSize     : The final target size of the chain (in case the chain file is an interrupted simulation) (**optional**).
     !>
     !> \return
     !> `CFC` : An object of class [ChainFileContents_type](@ref chainfilecontents_type) containing the chain.
@@ -183,11 +183,11 @@ contains
     !> @param[in]       chainFilePath   : The list of variable names corresponding to each axis of the domain of the objective function.
     !> @param[in]       chainFileForm   : The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`).
     !> @param[out]      Err             : An object of class [Err_type](@ref err_mod::err_type) containing information about whether an error has occurred.
-    !> @param[in]       chainSize       : The size of the chain in the chain file specified by the input `chainFilePath` (optional).
-    !> @param[in]       lenHeader       : The full length of the first line in the input file (the header line) (optional).
-    !> @param[in]       ndim            : The number of dimensions of the domain of the objective function (optional).
-    !> @param[in]       delimiter       : The delimiter symbol used in the chain file (optional).
-    !> @param[in]       targetChainSize : The final target size of the chain (in case the chain file is an interrupted simulation) (optional).
+    !> @param[in]       chainSize       : The size of the chain in the chain file specified by the input `chainFilePath` (**optional**).
+    !> @param[in]       lenHeader       : The full length of the first line in the input file (the header line) (**optional**).
+    !> @param[in]       ndim            : The number of dimensions of the domain of the objective function (**optional**).
+    !> @param[in]       delimiter       : The delimiter symbol used in the chain file (**optional**).
+    !> @param[in]       targetChainSize : The final target size of the chain (in case the chain file is an interrupted simulation) (**optional**).
     !>
     !> \warning
     !> `targetChainSize` must be `>= chainSize`, if provided. It is used for the allocation of the chain components.
@@ -754,7 +754,7 @@ contains
     !> @param[inout]    CFC             :   The object of class [ChainFileContents_type](@ref chainfilecontents_type).
     !> @param[in]       ndim            :   The number of dimensions of the domain of the objective function.
     !> @param[in]       isBinary        :   The logical flag indicating whether the file is in `binary` format.
-    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
+    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (**optional**).
     !>                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
     subroutine getLenHeader(CFC,ndim,isBinary,chainFileFormat)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
@@ -797,7 +797,7 @@ contains
     !> @param[in]       ndim            :   The number of dimensions of the domain of the objective function.
     !> @param[in]       chainFileUnit   :   The unit ID of the chain file to which the header should be written.
     !> @param[in]       isBinary        :   The logical flag indicating whether the file is in `binary` format.
-    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
+    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (**optional**).
     !>                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
     subroutine writeHeader(CFC,ndim,chainFileUnit,isBinary,chainFileFormat)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
@@ -842,9 +842,9 @@ contains
     !> @param[in]       compactEndIndex         :   The ending index of the compact chain below which the elements of the chain will be written to the output file.
     !> @param[in]       chainFileUnit           :   The unit ID of the chain file to which the header should be written.
     !> @param[in]       chainFileForm           :   The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`).
-    !> @param[in]       chainFileFormat         :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
+    !> @param[in]       chainFileFormat         :   The Fortran IO formatting string to be used to read the contents of the chain file (**optional**).
     !>                                              This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
-    !> @param[in]       adaptiveUpdatePeriod    :   The adaptive update period (optional). It must be provided if `chainFileForm = "verbose"`.
+    !> @param[in]       adaptiveUpdatePeriod    :   The adaptive update period (**optional**). It must be provided if `chainFileForm = "verbose"`.
     subroutine writeChainFile(CFC,ndim,compactStartIndex,compactEndIndex,chainFileUnit,chainFileForm,chainFileFormat,adaptiveUpdatePeriod)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeChainFile
