@@ -955,6 +955,28 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
+    !> Test whether the ParaDRAM sampler does not do scaling when the `targetAcceptanceRate = [0., 1.]`.
+    function test_SpecBase_TargetAcceptanceRate_type_6() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        real(RK), parameter :: targetAcceptanceRate(*) = [0._RK, 1._RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_6" &
+                            , targetAcceptanceRate = targetAcceptanceRate &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. .not. PD%SpecBase%TargetAcceptanceRate%scalingRequested
+#endif
+    end function test_SpecBase_TargetAcceptanceRate_type_6
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
     !> Test the ParaDRAM sampler with a wrong internal input namelist group:
     !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
     function test_runSampler_7() result(assertion)

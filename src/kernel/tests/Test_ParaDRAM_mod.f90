@@ -110,6 +110,7 @@ contains
         call Test%run(test_SpecBase_TargetAcceptanceRate_type_3, "test_SpecBase_TargetAcceptanceRate_type_3")
         call Test%run(test_SpecBase_TargetAcceptanceRate_type_4, "test_SpecBase_TargetAcceptanceRate_type_4")
         call Test%run(test_SpecBase_TargetAcceptanceRate_type_5, "test_SpecBase_TargetAcceptanceRate_type_5")
+        call Test%run(test_SpecBase_TargetAcceptanceRate_type_6, "test_SpecBase_TargetAcceptanceRate_type_6")
         call Test%run(test_SpecBase_MaxNumDomainCheckToWarn_type_1, "test_SpecBase_MaxNumDomainCheckToWarn_type_1")
         call Test%run(test_SpecBase_MaxNumDomainCheckToWarn_type_2, "test_SpecBase_MaxNumDomainCheckToWarn_type_2")
         call Test%run(test_SpecBase_MaxNumDomainCheckToStop_type_1, "test_SpecBase_MaxNumDomainCheckToStop_type_1")
