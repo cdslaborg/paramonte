@@ -758,7 +758,7 @@
                             , outputFileName = "test_SpecBase_RandomSeed_type_1" &
                             , randomSeed = -12345_IK &
                             )
-        assertion = assertion .and. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_SpecBase_RandomSeed_type_1
 
@@ -779,9 +779,178 @@
                             , outputFileName = "test_SpecBase_RandomSeed_type_2" &
                             , inputFile = "&ParaDRAM randomSeed = 12345 /" &
                             )
-        assertion = assertion .and. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_SpecBase_RandomSeed_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler appropriately considers a binary restart file format.
+    function test_SpecBase_RestartFileFormat_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_RestartFileFormat_type_1" &
+                            , restartFileFormat = "BINARY" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_RestartFileFormat_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler appropriately considers an ascii restart file format.
+    function test_SpecBase_RestartFileFormat_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_RestartFileFormat_type_2" &
+                            , inputFile = "&ParaDRAM restartFileFormat = 'asCII' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_RestartFileFormat_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when the specified restart file format is not recognized.
+    function test_SpecBase_RestartFileFormat_type_3() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_RestartFileFormat_type_3" &
+                            , inputFile = "&ParaDRAM restartFileFormat = 'nonsense' /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_RestartFileFormat_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
+    function test_SpecBase_TargetAcceptanceRate_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        real(RK), parameter :: targetAcceptanceRate(*) = [-1._RK, 0.5_RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_1" &
+                            , targetAcceptanceRate = targetAcceptanceRate &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_TargetAcceptanceRate_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
+    function test_SpecBase_TargetAcceptanceRate_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_2" &
+                            , inputFile = "&ParaDRAM targetAcceptanceRate = +2. /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_TargetAcceptanceRate_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
+    function test_SpecBase_TargetAcceptanceRate_type_3() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_3" &
+                            , inputFile = "&ParaDRAM targetAcceptanceRate = +0.5, 0.2 /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_TargetAcceptanceRate_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
+    function test_SpecBase_TargetAcceptanceRate_type_4() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_4" &
+                            , inputFile = "&ParaDRAM targetAcceptanceRate(1) = 1. /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_TargetAcceptanceRate_type_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
+    function test_SpecBase_TargetAcceptanceRate_type_5() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_5" &
+                            , inputFile = "&ParaDRAM targetAcceptanceRate(2) = 0. /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecBase_TargetAcceptanceRate_type_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
