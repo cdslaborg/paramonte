@@ -193,7 +193,7 @@ contains
         real(RK)                   :: summ
         integer(IK)                :: i,j,k
         if (nd==1_IK) then
-            MatInvMat = 1._RK / MatInvMat
+            MatInvMat(1,1) = 1._RK / MatInvMat(1,1)
             sqrtDetInvPosDefMat = MatInvMat(1,1)
             return
         end if

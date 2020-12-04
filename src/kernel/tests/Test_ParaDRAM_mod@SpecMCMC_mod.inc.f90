@@ -56,7 +56,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ChainSize_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ChainSize_type_1" &
                             , chainSize = 0_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -76,7 +76,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ChainSize_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ChainSize_type_2" &
                             , inputFile = "&ParaDRAM chainSize = 1 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -96,7 +96,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_1" &
                             , proposalModel = "UniForm" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -116,7 +116,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_2" &
                             , inputFile = "&ParaDRAM proposalModel = 'UNIFORM' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -136,7 +136,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_3" &
                             , proposalModel = "Normal" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -156,7 +156,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_4" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_4" &
                             , inputFile = "&ParaDRAM proposalModel = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -179,7 +179,7 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_1" &
                             , ProposalStartCorMat = ProposalStartCorMat &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -203,7 +203,7 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_2" &
                             , inputFile = "&ParaDRAM ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -227,7 +227,7 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_3" &
                             , inputFile = "&ParaDRAM ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -251,7 +251,7 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_4" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_4" &
                             , inputFile = "&ParaDRAM ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartCorMat%Val==PD%SpecMCMC%ProposalStartCovMat%Val)
@@ -276,11 +276,259 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_5" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_5" &
                             , inputFile = "&ParaDRAM ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_SpecMCMC_ProposalStartCorMat_type_5
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a valid unidimensional `ProposalStartCorMat`.
+    function test_SpecMCMC_ProposalStartCovMat_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 1_IK
+        real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([2._RK], shape = shape(ProposalStartCovMat))
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCovMat_type_1" &
+                            , ProposalStartCovMat = ProposalStartCovMat &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_ProposalStartCovMat_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a valid unidimensional `ProposalStartCovMat`.
+    function test_SpecMCMC_ProposalStartCovMat_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 1_IK
+        real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCovMat))
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCovMat_type_2" &
+                            , inputFile = "&ParaDRAM ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_ProposalStartCovMat_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a wrong value for the unidimensional `ProposalStartCovMat`.
+    function test_SpecMCMC_ProposalStartCovMat_type_3() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 1_IK
+        real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([0._RK], shape = shape(ProposalStartCovMat))
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCovMat_type_3" &
+                            , inputFile = "&ParaDRAM ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_ProposalStartCovMat_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a multidimensional `ProposalStartCovMat`.
+    function test_SpecMCMC_ProposalStartCovMat_type_4() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCovMat))
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCovMat_type_4" &
+                            , inputFile = "&ParaDRAM ProposalStartCovMat = "//num2str(ProposalStartCovMat)//" /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartCovMat%Val==PD%SpecMCMC%ProposalStartCovMat%Val)
+#endif
+    end function test_SpecMCMC_ProposalStartCovMat_type_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a multidimensional `ProposalStartCovMat`, in the presence of `ProposalStartCorMat` 
+    !> and `ProposalStartStdVec`, in which case, the `ProposalStartCovMat` must be preferred.
+    function test_SpecMCMC_ProposalStartCovMat_type_5() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([2._RK, 0.5_RK, 0.5_RK, 2._RK], shape = shape(ProposalStartCovMat))
+        real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.0_RK, 0.0_RK, 1._RK], shape = shape(ProposalStartCovMat))
+        real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [1._RK, 1._RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCovMat_type_5" &
+                            , ProposalStartCovMat = ProposalStartCovMat &
+                            , ProposalStartCorMat = ProposalStartCorMat &
+                            , ProposalStartStdVec = ProposalStartStdVec &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_ProposalStartCovMat_type_5
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a valid unidimensional `ProposalStartCorMat`.
+    function test_SpecMCMC_ProposalStartStdVec_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 1_IK
+        real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [2._RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartStdVec_type_1" &
+                            , ProposalStartStdVec = ProposalStartStdVec &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_ProposalStartStdVec_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a valid unidimensional `ProposalStartStdVec`.
+    function test_SpecMCMC_ProposalStartStdVec_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 1_IK
+        real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [1._RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartStdVec_type_2" &
+                            , inputFile = "&ParaDRAM ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_ProposalStartStdVec_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a wrong value for the unidimensional `ProposalStartStdVec`.
+    function test_SpecMCMC_ProposalStartStdVec_type_3() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 1_IK
+        real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [0._RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartStdVec_type_3" &
+                            , inputFile = "&ParaDRAM ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
+                            )
+        assertion = assertion .and. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_ProposalStartStdVec_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a multidimensional `ProposalStartStdVec`.
+    function test_SpecMCMC_ProposalStartStdVec_type_4() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        real(RK)    , parameter :: ProposalStartStdVec(NDIM) = reshape([1._RK, 0.5_RK], shape = shape(ProposalStartStdVec))
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartStdVec_type_4" &
+                            , inputFile = "&ParaDRAM ProposalStartStdVec = "//num2str(ProposalStartStdVec)//" /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartStdVec%Val==PD%SpecMCMC%ProposalStartStdVec%Val)
+#endif
+    end function test_SpecMCMC_ProposalStartStdVec_type_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a multidimensional `ProposalStartStdVec`, in the presence of `ProposalStartCorMat`,
+    !> in which case, the `ProposalStartStdVec` must be correctly computed.
+    function test_SpecMCMC_ProposalStartStdVec_type_5() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        real(RK)    , parameter :: tolerance = 1.e-12_RK
+        real(RK)    , parameter :: ProposalStartStdVec(NDIM) = reshape([1._RK, 2._RK], shape = shape(ProposalStartStdVec))
+        real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCorMat))
+        real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK, 1.0_RK, 1.0_RK, 4._RK], shape = shape(ProposalStartCovMat))
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartStdVec_type_5" &
+                            , ProposalStartStdVec = ProposalStartStdVec &
+                            , ProposalStartCorMat = ProposalStartCorMat &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. all(abs(PD%SpecMCMC%ProposalStartCovMat%Val-ProposalStartCovMat) <= tolerance)
+#endif
+    end function test_SpecMCMC_ProposalStartStdVec_type_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -148,9 +148,9 @@ contains
 
         if (self%isPresent) return
 
-        self%val = getCovMatFromCorMatUpper ( nd = nd &
-                                            , StdVec = proposalStartStdVec &
-                                            , CorMatUpper = proposalStartCorMat &
+        self%val = getCovMatFromCorMatUpper ( nd = nd & ! LCOV_EXCL_LINE
+                                            , StdVec = proposalStartStdVec & ! LCOV_EXCL_LINE
+                                            , CorMatUpper = proposalStartCorMat & ! LCOV_EXCL_LINE
                                             )
 
     end subroutine setProposalStartCoVMat
