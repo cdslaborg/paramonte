@@ -126,9 +126,9 @@ contains
         class(ProposalModel_type), intent(inout)    :: ProposalModelObj
         character(*), intent(in)                    :: proposalModel
         ProposalModelObj%val = getLowerCase( trim(adjustl(proposalModel)) )
-        if (ProposalModelObj%val==trim(adjustl(ProposalModelObj%null))) ProposalModelObj%val = trim(adjustl(ProposalModelObj%def))
-        if (ProposalModelObj%val==ProposalModelObj%normal) ProposalModelObj%isNormal = .true.
-        if (ProposalModelObj%val==ProposalModelObj%uniform) ProposalModelObj%isUniform = .true.
+        if (ProposalModelObj%val==ProposalModelObj%null) ProposalModelObj%val = ProposalModelObj%def
+        ProposalModelObj%isNormal   = ProposalModelObj%val == ProposalModelObj%normal
+        ProposalModelObj%isUniform  = ProposalModelObj%val == ProposalModelObj%uniform
     end subroutine setProposalModel
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

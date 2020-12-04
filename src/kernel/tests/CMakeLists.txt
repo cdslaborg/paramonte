@@ -77,6 +77,7 @@ set(ParaMonteTest_SOURCE_FILES
 )
 
 set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod@SpecBase_mod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod@SpecMCMC_mod.inc.f90)
 
 # Define the executable in terms of the source files
 

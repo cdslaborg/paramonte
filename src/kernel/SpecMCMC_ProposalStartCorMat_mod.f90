@@ -76,16 +76,14 @@ contains
 #endif
         use Constants_mod, only: IK, NULL_RK
         use String_mod, only: num2str
+        use Matrix_mod, only: getEye
         implicit none
         integer(IK), intent(in)         :: nd
         character(*), intent(in)        :: methodName
         type(ProposalStartCorMat_type)  :: self
-        integer(IK)                     :: i
-        allocate( self%def(nd,nd) )
-        self%def = 0._RK
-        do i = 1,nd
-            self%def(i,i) = 1._RK
-        end do
+        integer(IK)                     :: i, j
+        allocate( self%Def(nd,nd) )
+        self%Def    = getEye(nd,nd)
         self%null   = NULL_RK
         self%desc   = &
         "proposalStartCorMat is a real-valued positive-definite matrix of size (ndim,ndim), where ndim is the dimension of the &
@@ -124,10 +122,11 @@ contains
         implicit none
         class(ProposalStartCorMat_type), intent(inout)  :: self
         real(RK), intent(in)                            :: proposalStartCorMat(:,:)
-        self%val = proposalStartCorMat
-        where (self%val==self%null)
-            self%val = self%def
+        self%Val = proposalStartCorMat
+        where (self%Val==self%null)
+            self%Val = self%Def
         end where
+write(*,*) self%Val
     end subroutine setProposalStartCorMat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -146,13 +145,30 @@ contains
         character(*), intent(in)                    :: methodName
         type(Err_type), intent(inout)               :: Err
         character(*), parameter                     :: PROCEDURE_NAME = "@checkForSanity()"
-        if (.not.isPosDef(nd,self%val)) then
+        integer(IK)                                 :: i, j
+        if (.not.isPosDef(nd,self%Val)) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
-                        MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &The input requested proposalStartCorMat for the proposal of " // methodName // &
-                        " is not a positive-definite matrix.\n\n"
+                        MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The input requested proposalStartCorMat &
+                        &for the proposal of " // methodName // " is not a positive-definite matrix.\n\n"
         end if
+        do j = 1, nd
+            do i = 1, nd
+                if (i==j .and. nint(1e10_IK*proposalStartCorMat(i,j),kind=IK)/=1e10_IK) then
+                    Err%occurred = .true.
+                    Err%msg =   Err%msg // &
+                                MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The input requested element &
+                                &proposalStartCorMat("//num2str(i)//","//num2str(j)//") = "//num2str(proposalStartCorMat(i,j))// &
+                                " must be, by definition, equal to one.\n\n"
+                elseif (i/=j .and. proposalStartCorMat(i,j) <= -1._RK .or. proposalStartCorMat(i,j) >= 1._RK) then
+                    Err%occurred = .true.
+                    Err%msg =   Err%msg // &
+                                MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The input requested element &
+                                &proposalStartCorMat("//num2str(i)//","//num2str(j)//") = "//num2str(proposalStartCorMat(i,j))// &
+                                " must be, by definition, bounded within the open range (-1,1).\n\n"
+                end if
+            end do
+        end do
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

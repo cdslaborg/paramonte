@@ -66,6 +66,8 @@ contains
         implicit none
 
         Test = Test_type(moduleName=MODULE_NAME)
+        call Test%run(test_eye_1, "test_eye_1")
+        call Test%run(test_eye_2, "test_eye_2")
         call Test%run(test_isPosDef_1, "test_isPosDef_1")
         call Test%run(test_isPosDef_2, "test_isPosDef_2")
         call Test%run(test_getInvMat_1, "test_getInvMat_1")
@@ -90,6 +92,71 @@ contains
         call Test%finalize()
 
     end subroutine test_Matrix
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether [getEye()](@ref matrix_mod::geteye) return a correct output eye matrix.
+    function test_eye_1() result(assertion)
+
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical                 :: assertion
+        integer(IK) , parameter :: n = 3_IK, m = 4_IK
+        real(RK)    , parameter :: Eye_ref(n, m) = reshape( [ 1._RK, 0._RK, 0._RK &
+                                                            , 0._RK, 1._RK, 0._RK &
+                                                            , 0._RK, 0._RK, 1._RK &
+                                                            , 0._RK, 0._RK, 0._RK ], shape = shape(eye_ref) )
+        real(RK), allocatable   :: Eye(:,:)
+        real(RK), allocatable   :: Difference(:,:)
+        Eye = getEye(n,m)
+
+        Difference = abs(Eye - Eye_ref)
+        assertion = all(Difference==0._RK)
+
+        ! LCOV_EXCL_START
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "Eye_ref    = ", Eye_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "Eye        = ", Eye
+            write(Test%outputUnit,"(*(g0,:,', '))") "Difference = ", Difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_eye_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether [getEye()](@ref matrix_mod::geteye) return a correct output eye matrix with the input optional argument.
+    function test_eye_2() result(assertion)
+
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical                 :: assertion
+        integer(IK) , parameter :: n = 3_IK, m = 3_IK
+        real(RK)    , parameter :: Eye_ref(n, m) = reshape( [ 2._RK, 0._RK, 0._RK &
+                                                            , 0._RK, 2._RK, 0._RK &
+                                                            , 0._RK, 0._RK, 2._RK ], shape = shape(eye_ref) )
+        real(RK), allocatable   :: Eye(:,:)
+        real(RK), allocatable   :: Difference(:,:)
+        Eye = getEye(n,m, diag = 2._RK)
+
+        Difference = abs(Eye - Eye_ref)
+        assertion = all(Difference==0._RK)
+
+        ! LCOV_EXCL_START
+        if (Test%isDebugMode .and. .not. assertion) then
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "Eye_ref    = ", Eye_ref
+            write(Test%outputUnit,"(*(g0,:,', '))") "Eye        = ", Eye
+            write(Test%outputUnit,"(*(g0,:,', '))") "Difference = ", Difference
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_eye_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

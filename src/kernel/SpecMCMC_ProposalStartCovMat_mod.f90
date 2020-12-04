@@ -56,14 +56,14 @@ module SpecMCMC_ProposalStartCovMat_mod
         real(RK)                    :: null
         character(:), allocatable   :: desc
     contains
-        procedure, pass             :: set => setProposalStartCorMat, checkForSanity, nullifyNameListVar
+        procedure, pass             :: set => setProposalStartCoVMat, checkForSanity, nullifyNameListVar
     end type ProposalStartCovMat_type
 
     interface ProposalStartCovMat_type
         module procedure            :: constructProposalStartCovMat
     end interface ProposalStartCovMat_type
 
-    private :: constructProposalStartCovMat, setProposalStartCorMat, checkForSanity, nullifyNameListVar
+    private :: constructProposalStartCovMat, setProposalStartCoVMat, checkForSanity, nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -116,9 +116,9 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setProposalStartCorMat(self, proposalStartStdVec, proposalStartCorMat, proposalStartCovMat)
+    subroutine setProposalStartCoVMat(self, proposalStartStdVec, proposalStartCorMat, proposalStartCovMat)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: setProposalStartCorMat
+        !DEC$ ATTRIBUTES DLLEXPORT :: setProposalStartCoVMat
 #endif
         use Statistics_mod, only: getCovMatFromCorMatUpper
         use Constants_mod, only: RK, IK
@@ -153,7 +153,7 @@ contains
                                             , CorMatUpper = proposalStartCorMat &
                                             )
 
-    end subroutine setProposalStartCorMat
+    end subroutine setProposalStartCoVMat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

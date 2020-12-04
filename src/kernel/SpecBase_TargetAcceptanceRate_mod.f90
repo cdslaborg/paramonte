@@ -113,7 +113,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setTargetAcceptanceRate(TargetAcceptanceRateObj,TargetAcceptanceRate)
+    subroutine setTargetAcceptanceRate(TargetAcceptanceRateObj,targetAcceptanceRate)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setTargetAcceptanceRate
 #endif
@@ -122,19 +122,13 @@ contains
         class(TargetAcceptanceRate_type), intent(inout)     :: TargetAcceptanceRateObj
         real(RK), intent(in)                                :: TargetAcceptanceRate(2)
         logical                                             :: lowerLimitSet, upperLimitSet
-        TargetAcceptanceRateObj%Val = TargetAcceptanceRate
-        lowerLimitSet = TargetAcceptanceRateObj%Val(1)/=TargetAcceptanceRateObj%null
-        upperLimitSet = TargetAcceptanceRateObj%Val(2)/=TargetAcceptanceRateObj%null
-        if      ( lowerLimitSet .and. (.not. upperLimitSet) ) then
-            TargetAcceptanceRateObj%Val(2) = TargetAcceptanceRateObj%Val(1)
-        elseif  ( upperLimitSet .and. (.not. lowerLimitSet) ) then
-            TargetAcceptanceRateObj%Val(1) = TargetAcceptanceRateObj%Val(2)
-        elseif  ( .not. (lowerLimitSet .or.  upperLimitSet) ) then
-            TargetAcceptanceRateObj%Val = TargetAcceptanceRateObj%Def
-            TargetAcceptanceRateObj%scalingRequested = .false.
-        elseif ( all(TargetAcceptanceRateObj%Val==TargetAcceptanceRateObj%Def) ) then
-            TargetAcceptanceRateObj%scalingRequested = .false.
-        end if
+        TargetAcceptanceRateObj%Val = targetAcceptanceRate
+        lowerLimitSet = TargetAcceptanceRateObj%Val(1) /= TargetAcceptanceRateObj%null
+        upperLimitSet = TargetAcceptanceRateObj%Val(2) /= TargetAcceptanceRateObj%null
+        if (lowerLimitSet .and. .not. upperLimitSet) TargetAcceptanceRateObj%Val(2) = TargetAcceptanceRateObj%Val(1)
+        if (upperLimitSet .and. .not. lowerLimitSet) TargetAcceptanceRateObj%Val(1) = TargetAcceptanceRateObj%Val(2)
+        if (.not.(lowerLimitSet .or. upperLimitSet)) TargetAcceptanceRateObj%Val(:) = TargetAcceptanceRateObj%Def
+        TargetAcceptanceRateObj%scalingRequested = any(TargetAcceptanceRateObj%Val /= TargetAcceptanceRateObj%Def)
     end subroutine setTargetAcceptanceRate
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,21 +145,29 @@ contains
         type(Err_type), intent(inout)       :: Err
         character(*), parameter             :: PROCEDURE_NAME = "@checkForSanity()"
         if (.not. TargetAcceptanceRateObj%scalingRequested) return
-        if ( any(TargetAcceptanceRateObj%val<0._RK) .or. any(TargetAcceptanceRateObj%val>1._RK) ) then
+        if ( any(TargetAcceptanceRateObj%Val<0._RK) .or. any(TargetAcceptanceRateObj%Val>1._RK) ) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
                         &The target acceptance ratio limits targetAcceptanceRate [" // &
-                        num2str(TargetAcceptanceRateObj%val) // "," // num2str(TargetAcceptanceRateObj%val) // &
+                        num2str(TargetAcceptanceRateObj%Val(1)) // "," // num2str(TargetAcceptanceRateObj%Val(2)) // &
                         "] cannot be less than 0 or larger than 1.\n\n"
         end if
-        if ( all(TargetAcceptanceRateObj%val==0._RK) .or. all(TargetAcceptanceRateObj%val==1._RK) ) then
+        if ( all(TargetAcceptanceRateObj%Val==0._RK) .or. all(TargetAcceptanceRateObj%Val==1._RK) ) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
                         &The target acceptance ratio limits targetAcceptanceRate [" // &
-                        num2str(TargetAcceptanceRateObj%val) // "," // num2str(TargetAcceptanceRateObj%val) // &
+                        num2str(TargetAcceptanceRateObj%Val(1)) // "," // num2str(TargetAcceptanceRateObj%Val(2)) // &
                         "] cannot be both 0 or both 1.\n\n"
+        end if
+        if (TargetAcceptanceRateObj%Val(2) < TargetAcceptanceRateObj%Val(1)) then
+            Err%occurred = .true.
+            Err%msg =   Err%msg // &
+                        MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
+                        &The the lower limit of the input specification targetAcceptanceRate [" // &
+                        num2str(TargetAcceptanceRateObj%Val(1)) // "," // num2str(TargetAcceptanceRateObj%Val(2)) // &
+                        "] cannot be larger than the specified upper limit.\n\n"
         end if
     end subroutine checkForSanity
 

@@ -904,7 +904,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_3" &
-                            , inputFile = "&ParaDRAM targetAcceptanceRate = +0.5, 0.2 /" &
+                            , inputFile = "&ParaDRAM targetAcceptanceRate = +0.5d0, 0.2d0 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif

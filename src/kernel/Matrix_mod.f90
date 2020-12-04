@@ -56,6 +56,39 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
+    !> Return the an eye matrix of rank (nd, md).
+    !>
+    !> \param[in]   n       :   The number of rows of the eye matrix.
+    !> \param[in]   m       :   The number of columns of the eye matrix.
+    !> \param[in]   diag    :   The value to appear on the diagonal elements of the output eye matrix (**optional**, default = `1.`).
+    !>
+    !> \return
+    !> `eye` : A matrix of rank n * m whose diagonal elements are set to the input `diag` value or, if not provided, to `1.`.
+    pure function getEye(n,m,diag) result(eye)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: getEye
+#endif
+        use Constants_mod, only: RK, IK
+        implicit none
+        integer(IK), intent(in)             :: n, m
+        real(RK)   , intent(in), optional   :: diag
+        real(RK)                            :: eye(n,m)
+        real(RK)                            :: diagonal
+        integer(IK)                         :: i, j
+        diagonal = 1._RK
+        if (present(diag)) diagonal = diag
+        do concurrent(i=1:n, j=1:m)
+            if (i==j) then
+                eye(i,j) = diagonal
+            else
+                eye(i,j) = 0._RK
+            end if
+        end do
+    end function getEye
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
     !> Return the Cholesky factorization of the input positive-definite matrix.
     !>
     !> \param[in]       nd          :   The size of the input square matrix - `nd` by `nd`.

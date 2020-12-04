@@ -116,12 +116,27 @@ contains
         call Test%run(test_SpecBase_MaxNumDomainCheckToStop_type_1, "test_SpecBase_MaxNumDomainCheckToStop_type_1")
         call Test%run(test_SpecBase_MaxNumDomainCheckToStop_type_2, "test_SpecBase_MaxNumDomainCheckToStop_type_2")
         call Test%run(test_SpecBase_MaxNumDomainCheckToStop_type_3, "test_SpecBase_MaxNumDomainCheckToStop_type_3")
+        call Test%run(test_SpecMCMC_ChainSize_type_1, "test_SpecMCMC_ChainSize_type_1")
+        call Test%run(test_SpecMCMC_ChainSize_type_2, "test_SpecMCMC_ChainSize_type_2")
+        call Test%run(test_SpecMCMC_ProposalModel_type_1, "test_SpecMCMC_ProposalModel_type_1")
+        call Test%run(test_SpecMCMC_ProposalModel_type_2, "test_SpecMCMC_ProposalModel_type_2")
+        call Test%run(test_SpecMCMC_ProposalModel_type_3, "test_SpecMCMC_ProposalModel_type_3")
+        call Test%run(test_SpecMCMC_ProposalModel_type_4, "test_SpecMCMC_ProposalModel_type_4")
+        call Test%run(test_SpecMCMC_ProposalStartCorMat_type_1, "test_SpecMCMC_ProposalStartCorMat_type_1")
+        call Test%run(test_SpecMCMC_ProposalStartCorMat_type_2, "test_SpecMCMC_ProposalStartCorMat_type_2")
+        call Test%run(test_SpecMCMC_ProposalStartCorMat_type_3, "test_SpecMCMC_ProposalStartCorMat_type_3")
+        call Test%run(test_SpecMCMC_ProposalStartCorMat_type_4, "test_SpecMCMC_ProposalStartCorMat_type_4")
+        call Test%run(test_SpecMCMC_ProposalStartCorMat_type_5, "test_SpecMCMC_ProposalStartCorMat_type_5")
         call Test%finalize()
     end subroutine test_ParaDRAM
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #include "Test_ParaDRAM_mod@SpecBase_mod.inc.f90"
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#include "Test_ParaDRAM_mod@SpecMCMC_mod.inc.f90"
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
