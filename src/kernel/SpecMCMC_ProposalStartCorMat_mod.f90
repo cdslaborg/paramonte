@@ -135,7 +135,7 @@ write(*,*) self%Val
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
-        use Constants_mod, only: IK, RK
+        use Constants_mod, only: IK, RK, SPR
         use Matrix_mod, only: isPosDef
         use String_mod, only: num2str
         use Err_mod, only: Err_type
@@ -154,7 +154,7 @@ write(*,*) self%Val
         end if
         do j = 1, nd
             do i = 1, nd
-                if (i==j .and. nint(1e10_IK*proposalStartCorMat(i,j),kind=IK)/=1e10_IK) then
+                if (i==j .and. proposalStartCorMat(i,j) - 1._RK < 1.e-10_RK) then
                     Err%occurred = .true.
                     Err%msg =   Err%msg // &
                                 MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The input requested element &

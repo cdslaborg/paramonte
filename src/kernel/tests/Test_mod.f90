@@ -238,7 +238,7 @@ contains
         if (present(inDir)) then
             Test%inDir = inDir
         else
-            Test%inDir = "./input/"
+            Test%inDir = "./input"
         end if
         Path = Path_type(Test%inDir)
         if (Path%Err%occurred) then
@@ -255,7 +255,7 @@ contains
         if (present(outDir)) then
             Test%outDir = outDir
         else
-            Test%outDir = "./output/"
+            Test%outDir = "./output"
         end if
         Path = Path_type(Test%outDir)
         if (Path%Err%occurred) then

@@ -111,7 +111,7 @@ contains
         OutputList_ref(5)%record = "        ParaMonte - NOTE: I don't pretend to understand the universe - it's much bigger than I am.    Thomas Carlyle"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_note_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_note_1."//num2str(Test%Image%id)//".out", status = "replace")
 
         call note   ( msg = mc_msg &
                     , prefix  = mc_prefix &
@@ -182,7 +182,7 @@ contains
         OutputList_ref(7)%record = ""
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_note_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_note_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         call note   ( msg = replaceStr(mc_msg, "\n", NLC) &
                     , outputUnit = fileUnit &
@@ -248,7 +248,7 @@ contains
         OutputList_ref(5)%record = "        ParaMonte - WARNING: I don't pretend to understand the universe - it's much bigger than I am.    Thomas Carlyle"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_warn_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_warn_1."//num2str(Test%Image%id)//".out", status = "replace")
 
         call warn   ( msg = mc_msg &
                     , prefix  = mc_prefix &
@@ -319,7 +319,7 @@ contains
         OutputList_ref(7)%record = ""
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_warn_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_warn_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         call warn   ( msg = replaceStr(mc_msg, "\n", NLC) &
                     , outputUnit = fileUnit &
@@ -388,7 +388,7 @@ contains
         OutputList_ref(6)%record = "        ParaMonte - FATAL: I don't pretend to understand the universe - it's much bigger than I am.    Thomas Carlyle"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_abort_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_abort_1."//num2str(Test%Image%id)//".out", status = "replace")
 
         Err%msg = mc_msg
         call abort  ( Err = Err &
@@ -464,7 +464,7 @@ contains
         OutputList_ref(7)%record = " - FATAL: Error Code: 123."
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_abort_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_abort_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         Err%msg = replaceStr(mc_msg, "\n", NLC)
         Err%stat = 123_IK

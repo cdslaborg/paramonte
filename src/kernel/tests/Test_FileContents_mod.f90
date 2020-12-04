@@ -81,7 +81,7 @@ contains
         type(OS_type)               :: OS
         integer                     :: fileUnit, i, iostat
 
-        RandomFileName = RandomFileName_type(key = Test%outDir//"Test_FileContents_mod@test_constructFileContents")
+        RandomFileName = RandomFileName_type(key = Test%outDir//"/Test_FileContents_mod@test_constructFileContents")
         assertion = .not. RandomFileName%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
@@ -193,7 +193,7 @@ contains
         integer                     :: fileUnit, i, iostat
         logical                     :: exist
 
-        RandomFileName = RandomFileName_type(key = Test%outDir//"Test_FileContents_mod@test_constructFileContents")
+        RandomFileName = RandomFileName_type(key = Test%outDir//"/Test_FileContents_mod@test_constructFileContents")
         assertion = .not. RandomFileName%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START

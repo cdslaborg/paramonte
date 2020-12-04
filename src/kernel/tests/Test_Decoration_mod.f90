@@ -283,7 +283,7 @@ contains
                             Decoration%List(4)%record // "\n\n\n"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Decoration_mod@test_writeDecoratedText_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Decoration_mod@test_writeDecoratedText_1."//num2str(Test%Image%id)//".out", status = "replace")
 
         call Decoration%writeDecoratedText  ( Decoration%text &
                                             , newLine="\n" &
@@ -375,7 +375,7 @@ contains
                             Decoration%List(4)%record // NLC//NLC//NLC
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Decoration_mod@test_writeDecoratedText_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Decoration_mod@test_writeDecoratedText_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         call Decoration%writeDecoratedText  ( Decoration%text &
                                             , newLine = NLC &
@@ -447,7 +447,7 @@ contains
         Decoration%List(4)%record = "What is the origin of life?"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Decoration_mod@test_writeDecoratedList_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Decoration_mod@test_writeDecoratedList_1."//num2str(Test%Image%id)//".out", status = "replace")
 
         call Decoration%writeDecoratedList(Decoration%List, outputUnit = fileUnit)
 
@@ -521,7 +521,7 @@ contains
         Decoration%List(4)%record = "What is the origin of life?"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Decoration_mod@test_writeDecoratedList_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Decoration_mod@test_writeDecoratedList_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         call Decoration%writeDecoratedList  ( Decoration%List &
                                             , symbol = "%" &

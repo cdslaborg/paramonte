@@ -87,11 +87,11 @@ contains
 
         assertion = .true.
 
-        open(newunit=fileUnit1, file=Test%outDir//"Test_TranGaus_mod@test_getTranGaus_Low1Upp9Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace")
-        open(newunit=fileUnit2, file=Test%outDir//"Test_TranGaus_mod@test_getTranGaus_Low20Upp30Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace")
-        open(newunit=fileUnit3, file=Test%outDir//"Test_TranGaus_mod@test_getTranGaus_Low-15Upp4Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace")
-        open(newunit=fileUnit4, file=Test%outDir//"Test_TranGaus_mod@test_getTranGaus_Low50Upp55Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace")
-        open(newunit=fileUnit5, file=Test%outDir//"Test_TranGaus_mod@test_getTranGaus_Low-50Upp55Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace") ! test `lowerLim < xmin`
+        open(newunit=fileUnit1, file=Test%outDir//"/Test_TranGaus_mod@test_getTranGaus_Low1Upp9Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace")
+        open(newunit=fileUnit2, file=Test%outDir//"/Test_TranGaus_mod@test_getTranGaus_Low20Upp30Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace")
+        open(newunit=fileUnit3, file=Test%outDir//"/Test_TranGaus_mod@test_getTranGaus_Low-15Upp4Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace")
+        open(newunit=fileUnit4, file=Test%outDir//"/Test_TranGaus_mod@test_getTranGaus_Low50Upp55Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace")
+        open(newunit=fileUnit5, file=Test%outDir//"/Test_TranGaus_mod@test_getTranGaus_Low-50Upp55Avg2Std3."//num2str(Test%Image%id)//".temp", status="replace") ! test `lowerLim < xmin`
         write(fileUnit1,*) "TranGaus"
         write(fileUnit2,*) "TranGaus"
         write(fileUnit3,*) "TranGaus"

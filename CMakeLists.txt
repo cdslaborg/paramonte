@@ -447,6 +447,10 @@ set(ParaMonteTest_SRC_DIR
     "${CMAKE_SOURCE_DIR}/src/kernel/tests"
     CACHE PATH "ParaMonte test source files directory" )
 
+set(ParaMonteTest_SRC_INPUT_DIR
+    "${ParaMonteTest_SRC_DIR}/input"
+    CACHE PATH "ParaMonte test source files directory" )
+
 # set the ParaMonte interface source files directory and loop over them to ensure their existence
 
 set(ParaMonteInterface_SRC_DIR
@@ -568,10 +572,10 @@ endif()
 
 # set up test bin directory
 
-set(ParaMonteTest_INPUT_DIR "${ParaMonteTest_BIN_DIR}/input")
-message( STATUS "${pmattn} ParaMonteTest_INPUT_DIR: ${ParaMonteTest_INPUT_DIR}" )
-if (NOT EXISTS "${ParaMonteTest_INPUT_DIR}/")
-    file(MAKE_DIRECTORY "${ParaMonteTest_INPUT_DIR}")
+set(ParaMonteTest_BIN_INPUT_DIR "${ParaMonteTest_BIN_DIR}/input")
+message( STATUS "${pmattn} ParaMonteTest_BIN_INPUT_DIR: ${ParaMonteTest_BIN_INPUT_DIR}" )
+if (NOT EXISTS "${ParaMonteTest_BIN_INPUT_DIR}/")
+    file(MAKE_DIRECTORY "${ParaMonteTest_BIN_INPUT_DIR}")
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

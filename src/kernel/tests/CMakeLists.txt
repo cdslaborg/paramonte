@@ -159,19 +159,21 @@ message( STATUS "${pmattn} CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}" )
 
 # copy input data for testing to the bin folder
 
-set( TEST_INPUT_FILES
-   "${ParaMonteTest_SRC_DIR}/input/*"
-   #"${ParaMonteTest_SRC_DIR}/input/autoCorrDataWeightedCompactResultRef.txt"
-   #"${ParaMonteTest_SRC_DIR}/input/autoCorrDataWeightedCompact.txt"
-   #"${ParaMonteTest_SRC_DIR}/input/paramonte.nml"
-)
+enable_testing()
+
+file(GLOB TEST_INPUT_FILES "${ParaMonteTest_SRC_INPUT_DIR}/*")
+
+message( STATUS "${pmattn} copying the tests' input files" )
+message( STATUS "${pmattn} from: ${ParaMonteTest_SRC_INPUT_DIR}/" )
+message( STATUS "${pmattn}   to: ${ParaMonteTest_BIN_INPUT_DIR}/" )
+
 foreach( file_i ${TEST_INPUT_FILES})
     add_custom_command( TARGET ${ParaMonteTest_EXE_NAME} POST_BUILD
                         # ${CMAKE_COMMAND} -E achieves a cross-platform copy
                         COMMAND ${CMAKE_COMMAND} -E copy 
                         ${file_i}
                         # $<TARGET_FILE:${ParaMonteTest_EXE_NAME}> resolves to the full path of the library created by ParaMonteTest_EXE_NAME: "${ParaMonteTest_BIN_DIR}/", regardless of platform or compiler
-                        "${ParaMonteTest_INPUT_DIR}/"
+                        "${ParaMonteTest_BIN_INPUT_DIR}/"
                         COMMENT "copying test data ${file_i} to the test runtime directory ..."
                         )
 endforeach( file_i )

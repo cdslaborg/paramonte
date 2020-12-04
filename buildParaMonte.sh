@@ -2258,7 +2258,27 @@ fi
 
 LD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH
+
+# set test object/module/lib files directories
+
+ParaMonteTest_BLD_DIR="${ParaMonte_BLD_DIR}/test"
+ParaMonteTest_OBJ_DIR="${ParaMonteTest_BLD_DIR}/obj"
+ParaMonteTest_BIN_DIR="${ParaMonteTest_BLD_DIR}/bin"
+ParaMonteTest_SRC_INPUT_DIR="${ParaMonteTest_SRC_DIR}/input"
+ParaMonteTest_BIN_INPUT_DIR="${ParaMonteTest_BIN_DIR}/input"
+
 if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
+
+    # first ensure the test input files exist in the test runtime bin folder
+
+    if ! [ -d "${ParaMonteTest_BIN_INPUT_DIR}" ]; then
+        mkdir "${ParaMonteTest_BIN_INPUT_DIR}"
+    fi
+
+    cp "${ParaMonteTest_SRC_INPUT_DIR}"/* "${ParaMonteTest_BIN_INPUT_DIR}"/
+
+    # run the tests
+
     if [ "${MPI_ENABLED}" = "true" ]; then
         # first attempt to find an installation of the mpiexec on the system
         if [ -z ${MPIEXEC_PATH+x} ]; then
@@ -2683,11 +2703,6 @@ fi
 ####################################################################################################################################
 
 if [ "${CODECOV_ENABLED}" = "true" ]; then
-
-    # set test object/module/lib files directories
-
-    ParaMonteTest_BLD_DIR="${ParaMonte_BLD_DIR}/test"
-    ParaMonteTest_OBJ_DIR="${ParaMonteTest_BLD_DIR}/obj"
 
     htmlDir="${ParaMonte_ROOT_DIR}/codecov/${PMLIB_BASE_NAME}"
     titleCodeCov="ParaMonte :: kernel - LCOV code coverage report"
