@@ -137,6 +137,8 @@ contains
         call Test%run(test_SpecMCMC_ProposalStartStdVec_type_3, "test_SpecMCMC_ProposalStartStdVec_type_3")
         call Test%run(test_SpecMCMC_ProposalStartStdVec_type_4, "test_SpecMCMC_ProposalStartStdVec_type_4")
         call Test%run(test_SpecMCMC_ProposalStartStdVec_type_5, "test_SpecMCMC_ProposalStartStdVec_type_5")
+        call Test%run(test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_1, "test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_1")
+        call Test%run(test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2, "test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2")
         call Test%finalize()
     end subroutine test_ParaDRAM
 

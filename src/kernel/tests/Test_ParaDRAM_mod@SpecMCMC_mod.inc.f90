@@ -532,3 +532,58 @@
     end function test_SpecMCMC_ProposalStartStdVec_type_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
+    function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_1" &
+                            , RandomStartPointDomainLowerLimitVec = RandomStartPointDomainLowerLimitVec &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == RandomStartPointDomainLowerLimitVec)
+#endif
+    end function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
+    function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2" &
+                            , inputFile = "&ParaDRAM RandomStartPointDomainLowerLimitVec = "//num2str(-RandomStartPointDomainLowerLimitVec)//" /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == -RandomStartPointDomainLowerLimitVec)
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2" &
+                            , inputFile = "&ParaDRAM RandomStartPointDomainLowerLimitVec = "//num2str(RandomStartPointDomainLowerLimitVec)//" /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == RandomStartPointDomainLowerLimitVec)
+#endif
+    end function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
