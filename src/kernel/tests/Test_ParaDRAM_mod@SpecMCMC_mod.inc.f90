@@ -56,7 +56,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ChainSize_type_1" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ChainSize_type_1" &
                             , chainSize = 0_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -76,7 +76,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ChainSize_type_2" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ChainSize_type_2" &
                             , inputFile = "&ParaDRAM chainSize = 1 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -96,7 +96,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ProposalModel_type_1" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_1" &
                             , proposalModel = "UniForm" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -116,7 +116,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ProposalModel_type_2" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_2" &
                             , inputFile = "&ParaDRAM proposalModel = 'UNIFORM' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -136,7 +136,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ProposalModel_type_3" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_3" &
                             , proposalModel = "Normal" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -156,7 +156,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ProposalModel_type_4" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalModel_type_4" &
                             , inputFile = "&ParaDRAM proposalModel = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -166,7 +166,7 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid unidimensional ProposalStartCorMat.
+    !> Test the ParaDRAM sampler with a valid unidimensional `ProposalStartCorMat`.
     function test_SpecMCMC_ProposalStartCorMat_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
@@ -179,7 +179,7 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ProposalStartCorMat_type_1" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_1" &
                             , ProposalStartCorMat = ProposalStartCorMat &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -189,7 +189,7 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid unidimensional ProposalStartCorMat.
+    !> Test the ParaDRAM sampler with a valid unidimensional `ProposalStartCorMat`.
     function test_SpecMCMC_ProposalStartCorMat_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
@@ -203,7 +203,7 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ProposalStartCorMat_type_2" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_2" &
                             , inputFile = "&ParaDRAM ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -213,7 +213,7 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a wrong value for the unidimensional ProposalStartCorMat.
+    !> Test the ParaDRAM sampler with a wrong value for the unidimensional `ProposalStartCorMat`.
     function test_SpecMCMC_ProposalStartCorMat_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
@@ -227,7 +227,7 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ProposalStartCorMat_type_3" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_3" &
                             , inputFile = "&ParaDRAM ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -237,7 +237,7 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a multidimensional ProposalStartCorMat.
+    !> Test the ParaDRAM sampler with a multidimensional `ProposalStartCorMat`.
     function test_SpecMCMC_ProposalStartCorMat_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
@@ -251,7 +251,7 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ProposalStartCorMat_type_4" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_4" &
                             , inputFile = "&ParaDRAM ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%ProposalStartCorMat%Val==PD%SpecMCMC%ProposalStartCovMat%Val)
@@ -261,7 +261,8 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a wrong multidimensional ProposalStartCorMat.
+    !> Test the ParaDRAM sampler with a wrong multidimensional `ProposalStartCorMat`, 
+    !> which must be fine with the sampler, as long as it leads to a correct positive-definite covariance matrix.
     function test_SpecMCMC_ProposalStartCorMat_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
@@ -275,10 +276,10 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecMCMC_ProposalStartCorMat_type_5" &
+                            , outputFileName = MODULE_NAME//"@SpecMCMC/test_SpecMCMC_ProposalStartCorMat_type_5" &
                             , inputFile = "&ParaDRAM ProposalStartCorMat = "//num2str(ProposalStartCorMat)//" /" &
                             )
-        assertion = assertion .and. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_SpecMCMC_ProposalStartCorMat_type_5
 

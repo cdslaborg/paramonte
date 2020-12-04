@@ -126,11 +126,12 @@ contains
         where (self%Val==self%null)
             self%Val = self%Def
         end where
-write(*,*) self%Val
     end subroutine setProposalStartCorMat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    ! There is no need to check for eyeness of the input correlation matrix. Only positive definiteness is enough.
+    ! If the input correlation matrix is problematic, it will eventually lead to a non-positive-definite covariance matrix.
     subroutine checkForSanity(self,Err,methodName,nd)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
@@ -152,23 +153,24 @@ write(*,*) self%Val
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The input requested proposalStartCorMat &
                         &for the proposal of " // methodName // " is not a positive-definite matrix.\n\n"
         end if
-        do j = 1, nd
-            do i = 1, nd
-                if (i==j .and. proposalStartCorMat(i,j) - 1._RK < 1.e-10_RK) then
-                    Err%occurred = .true.
-                    Err%msg =   Err%msg // &
-                                MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The input requested element &
-                                &proposalStartCorMat("//num2str(i)//","//num2str(j)//") = "//num2str(proposalStartCorMat(i,j))// &
-                                " must be, by definition, equal to one.\n\n"
-                elseif (i/=j .and. proposalStartCorMat(i,j) <= -1._RK .or. proposalStartCorMat(i,j) >= 1._RK) then
-                    Err%occurred = .true.
-                    Err%msg =   Err%msg // &
-                                MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The input requested element &
-                                &proposalStartCorMat("//num2str(i)//","//num2str(j)//") = "//num2str(proposalStartCorMat(i,j))// &
-                                " must be, by definition, bounded within the open range (-1,1).\n\n"
-                end if
-            end do
-        end do
+        !do j = 1, nd
+        !    if (abs(proposalStartCorMat(j,j) - 1._RK) > 1.e-10_RK) then
+        !        Err%occurred = .true.
+        !        Err%msg =   Err%msg // &
+        !                    MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The input requested element &
+        !                    &proposalStartCorMat("//num2str(j)//","//num2str(j)//") = "//num2str(proposalStartCorMat(j,j))// &
+        !                    " must be, by definition, equal to one.\n\n"
+        !    end if
+        !    do i = 1, j-1
+        !        if ( abs(proposalStartCorMat(i,j)) >= 1._RK ) then
+        !            Err%occurred = .true.
+        !            Err%msg =   Err%msg // &
+        !                        MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The input requested element &
+        !                        &proposalStartCorMat("//num2str(i)//","//num2str(j)//") = "//num2str(proposalStartCorMat(i,j))// &
+        !                        " must be, by definition, bounded within the open range (-1,1).\n\n"
+        !        end if
+        !    end do
+        !end do
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

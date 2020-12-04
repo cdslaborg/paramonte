@@ -749,7 +749,7 @@ contains
     !> (i.e. matrix is not positive definite), otherwise return `.true.`.
     !>
     !> \param[in]       nd      :   The size of the square matrix - `nd` by `nd`.
-    !> \param[inout]    Matrix  :   The input matrix.
+    !> \param[inout]    Matrix  :   The input matrix. Note that only the upper triangle of the matrix is used.
     !>
     !> \return
     !> `isPosDef` : A logical value indicating whether the input matrix is positive-definite.
@@ -771,10 +771,9 @@ contains
         real(RK)                :: dummySum
         integer(IK)             :: i,j,k
         isPosDef = .true.
-        Array = Matrix
-        do i = 1,nd
-            do j = i,nd
-                dummySum = Array(i,j)
+        do i = 1, nd
+            do j = i, nd
+                dummySum = Matrix(i,j)
                 do k = i-1,1,-1
                     dummySum = dummySum - Array(i,k) * Array(j,k)
                 end do
