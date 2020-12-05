@@ -65,6 +65,11 @@ contains
         implicit none
 
         Test = Test_type(moduleName=MODULE_NAME)
+        call Test%run(test_split_1, "test_split_1")
+        call Test%run(test_split_2, "test_split_2")
+        call Test%run(test_split_3, "test_split_3")
+        call Test%run(test_split_4, "test_split_4")
+        call Test%run(test_split_5, "test_split_5")
         call Test%run(test_num2str_1, "test_num2str_1")
         call Test%run(test_num2str_2, "test_num2str_2")
         call Test%run(test_isDigit_1, "test_isDigit_1")
@@ -78,8 +83,10 @@ contains
         call Test%run(test_splitStr_2, "test_splitStr_2")
         call Test%run(test_splitStr_3, "test_splitStr_3")
         call Test%run(test_splitStr_4, "test_splitStr_4")
+        call Test%run(test_splitStr_5, "test_splitStr_5")
         call Test%run(test_padString_1, "test_padString_1")
         call Test%run(test_padString_2, "test_padString_2")
+        call Test%run(test_padString_3, "test_padString_3")
         call Test%run(test_isInteger_1, "test_isInteger_1")
         call Test%run(test_str2int32_1, "test_str2int32_1")
         call Test%run(test_str2int32_2, "test_str2int32_2")
@@ -125,6 +132,132 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    function test_split_1() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "  StringString "
+        String%Parts  = split(string=String%value,delim="String")
+        assertion = String%Parts(1)%record == "  " .and. String%Parts(2)%record == " "
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim='String') = ", (String%Parts(i)%record,i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_split_2() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "  Stringstring "
+        String%Parts  = split(string=String%value,delim='str')
+        assertion = String%Parts(1)%record == "  String" .and. String%Parts(2)%record == "ing "
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim='str') = ", (String%Parts(i)%record,i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_split_3() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "   "
+        String%Parts  = split(string=String%value,delim=' ')
+        assertion = String%Parts(1)%record == ""
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(A,*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_split_4() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "   "
+        String%Parts  = split(string = String%value, delim = " ", nPart = String%nPart)
+        assertion = String%nPart == 4_IK
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "String%nPart = ", String%nPart
+            write(Test%outputUnit,"(A,*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> When the input delim is empty, the whole string, split character by character, should be returned.
+    function test_split_5() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "ParaMonte"
+        String%Parts  = split(string = String%value, delim = "", nPart = String%nPart)
+        assertion = String%nPart == len(String%value)
+        do i = 1, len(String%value)
+            assertion = assertion .and. string%parts(i)%record == string%value(i:i)
+        end do
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "String%nPart = ", String%nPart
+            write(Test%outputUnit,"(A,*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_5
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     function test_splitStr_1() result(assertion)
 
         implicit none
@@ -133,14 +266,14 @@ contains
         integer             :: i
 
         String%value = "  StringString "
-        String%Parts  = String%splitStr(string=String%value,delimiter="String")
+        String%Parts  = splitStr(string=String%value,delimiter="String")
         assertion = String%Parts(1)%record == "  " .and. String%Parts(2)%record == " "
 
         if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
-            write(Test%outputUnit,"(*(g0))") "String%splitStr(string=String%value,delimiter='String') = ", (String%Parts(i)%record,i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delimiter='String') = ", (String%Parts(i)%record,i=1,size(String%Parts))
             write(Test%outputUnit,"(*(g0))")
         end if
         ! LCOV_EXCL_STOP
@@ -157,14 +290,14 @@ contains
         integer             :: i
 
         String%value = "  Stringstring "
-        String%Parts  = String%splitStr(string=String%value,delimiter='str')
+        String%Parts  = splitStr(string=String%value,delimiter='str')
         assertion = String%Parts(1)%record == "  String" .and. String%Parts(2)%record == "ing "
 
         if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
-            write(Test%outputUnit,"(*(g0))") "String%splitStr(string=String%value,delimiter='str') = ", (String%Parts(i)%record,i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delimiter='str') = ", (String%Parts(i)%record,i=1,size(String%Parts))
             write(Test%outputUnit,"(*(g0))")
         end if
         ! LCOV_EXCL_STOP
@@ -181,14 +314,14 @@ contains
         integer             :: i
 
         String%value = "   "
-        String%Parts  = String%splitStr(string=String%value,delimiter=' ')
+        String%Parts  = splitStr(string=String%value,delimiter=' ')
         assertion = String%Parts(1)%record == ""
 
         if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
-            write(Test%outputUnit,"(*(g0))") "String%splitStr(string=String%value,delimiter=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delimiter=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
             write(Test%outputUnit,"(A,*(g0))")
         end if
         ! LCOV_EXCL_STOP
@@ -205,20 +338,46 @@ contains
         integer             :: i
 
         String%value = "   "
-        String%Parts  = String%splitStr(string = String%value, delimiter = " ", nPart = String%nPart)
+        String%Parts  = splitStr(string = String%value, delimiter = " ", nPart = String%nPart)
         assertion = String%nPart == 1_IK
 
         if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
-            write(Test%outputUnit,"(*(g0))") "String%splitStr(string=String%value,delimiter=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delimiter=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
             write(Test%outputUnit,"(*(g0))") "String%nPart = ", String%nPart
             write(Test%outputUnit,"(A,*(g0))")
         end if
         ! LCOV_EXCL_STOP
 
     end function test_splitStr_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> When the input delim is empty, the whole string should be returned.
+    function test_splitStr_5() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "ParaMonte"
+        String%Parts  = splitStr(string = String%value, delimiter = "", nPart = String%nPart)
+        assertion = String%nPart == 1_IK .and. string%parts(1)%record == string%value
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delim=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "String%nPart = ", String%nPart
+            write(Test%outputUnit,"(A,*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_splitStr_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1212,10 +1371,10 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_padString_1() result(assertion)
-        use, intrinsic :: iso_fortran_env, only: int32, int64, real32, real64
+        use Constants_mod, only: IK
         implicit none
         logical                     :: assertion
-        integer     , parameter     :: paddedLen = 30
+        integer(IK) , parameter     :: paddedLen = 30_IK
         character(*), parameter     :: string_nonPadded = "ParaMonte"
         character(*), parameter     :: stringPadded_ref = "ParaMonte....................."
         character(*), parameter     :: symbol = "."
@@ -1236,10 +1395,10 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_padString_2() result(assertion)
-        use, intrinsic :: iso_fortran_env, only: int32, int64, real32, real64
+        use Constants_mod, only: IK
         implicit none
         logical                     :: assertion
-        integer     , parameter     :: paddedLen = 9
+        integer(IK) , parameter     :: paddedLen = 9_IK
         character(*), parameter     :: string_nonPadded = "ParaMonte"
         character(*), parameter     :: stringPadded_ref = "ParaMonte"
         character(*), parameter     :: symbol = "."
@@ -1256,6 +1415,32 @@ contains
         end if
         ! LCOV_EXCL_STOP
     end function test_padString_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> When `len(string) > paddedLen`, the full string must be returned without any padding.
+    function test_padString_3() result(assertion)
+        use Constants_mod, only: IK
+        implicit none
+        logical                     :: assertion
+        integer     , parameter     :: paddedLen = 5_IK
+        character(*), parameter     :: string_nonPadded = "ParaMonte"
+        character(*), parameter     :: stringPadded_ref = "ParaM"
+        character(*), parameter     :: symbol = "."
+        character(:), allocatable   :: stringPadded
+        stringPadded = padString(string_nonPadded, symbol, paddedLen)
+        assertion = stringPadded == stringPadded_ref .and. len(stringPadded) == paddedLen .and. stringPadded == stringPadded_ref
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "string_nonPadded  : '", string_nonPadded, "'"
+            write(Test%outputUnit,"(*(g0))") "stringPadded_ref  : '", stringPadded_ref, "'"
+            write(Test%outputUnit,"(*(g0))") "stringPadded      : '", stringPadded, "'"
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_padString_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

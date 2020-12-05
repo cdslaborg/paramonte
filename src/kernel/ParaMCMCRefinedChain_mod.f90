@@ -604,12 +604,14 @@ contains
         ! read header
 
         read(sampleFileUnit,"(A)") Record%value
-        Record%Parts = Record%SplitStr(Record%value,delimiter,Record%nPart)
+        Record%Parts = Record%split(Record%value,delimiter,Record%nPart)
         if (Record%nPart/=ndim+1_IK) then
+        ! LCOV_EXCL_START
             RefinedChain%Err%occurred = .true.
-            RefinedChain%Err%msg = PROCEDURE_NAME // ": The number of column headers ("//num2str(Record%nPart)//") is not equal to ndim + 1: "//num2str(ndim+1_IK)
+            RefinedChain%Err%msg = PROCEDURE_NAME // ": The number of header columns ("//num2str(Record%nPart)//") is not equal to ndim + 1: "//num2str(ndim+1_IK)
             return
         end if
+        ! LCOV_EXCL_STOP
 
         allocate(RefinedChain%ColHeader(0:ndim))
         do i = 0, ndim
@@ -620,7 +622,7 @@ contains
 
         do isample = 1, RefinedChain%Count(RefinedChain%numRefinement)%verbose
             read(sampleFileUnit, "(A)") Record%value
-            Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),delimiter)
+            Record%Parts = Record%split(trim(adjustl(Record%value)),delimiter)
             do i = 0, ndim
                 read(Record%Parts(i+1)%record,*) RefinedChain%LogFuncState(isample,i)
             end do

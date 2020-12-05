@@ -299,8 +299,7 @@ contains
                                                 , maxNumDomainCheckToWarn               = maxNumDomainCheckToWarn               &
                                                 , maxNumDomainCheckToStop               = maxNumDomainCheckToStop               &
                                                 )
-            call self%SpecMCMC%setFromInputArgs ( domainLowerLimitVec                   = self%SpecBase%DomainLowerLimitVec%Val &
-                                                , domainUpperLimitVec                   = self%SpecBase%DomainUpperLimitVec%Val &
+            call self%SpecMCMC%setFromInputArgs ( SpecBase                              = self%SpecBase                         &
                                                 , chainSize                             = chainSize                             &
                                                 , scaleFactor                           = scaleFactor                           &
                                                 , startPointVec                         = startPointVec                         &
@@ -373,21 +372,9 @@ contains
         self%Err%msg = ""
         self%Err%occurred = .false.
 
-        call self%SpecBase%checkForSanity   ( Err = self%Err          &
-                                            , methodName = self%name  &
-                                            )
-
-        call self%SpecMCMC%checkForSanity   ( Err = self%Err                                                &
-                                            , methodName = self%name                                        &
-                                            , nd = ndim                                                     &
-                                            , domainLowerLimitVec = self%SpecBase%DomainLowerLimitVec%Val   &
-                                            , domainUpperLimitVec = self%SpecBase%DomainUpperLimitVec%Val   &
-                                            )
-
-        call self%SpecDRAM%checkForSanity   ( Err = self%Err            &
-                                            , methodName = self%name    &
-                                            , nd = ndim                 &
-                                            )
+        call self%SpecBase%checkForSanity(Err = self%Err, methodName = self%name)
+        call self%SpecMCMC%checkForSanity(SpecBase = self%SpecBase, methodName = self%name, Err = self%Err, nd = ndim)
+        call self%SpecDRAM%checkForSanity(Err = self%Err, methodName = self%name, nd = ndim)
 
         !if (self%Image%isLeader) then
         if (self%Err%occurred) then

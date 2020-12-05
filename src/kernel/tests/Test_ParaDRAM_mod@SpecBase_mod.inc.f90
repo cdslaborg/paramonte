@@ -57,7 +57,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , chainFileFormat = "nonsense" &
-                            , outputFileName = "test_SpecBase_ChainFileFormat_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_1" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -77,7 +77,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , inputFile = "&ParaDRAM chainFileFormat = 'nonsense' /" &
-                            , outputFileName = "test_SpecBase_ChainFileFormat_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_2" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -99,7 +99,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , domainLowerLimitVec = domainLowerLimitVec &
-                            , outputFileName = "test_SpecBase_DomainLowerLimitVec_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainLowerLimitVec_type_1" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -122,7 +122,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , inputFile = "&ParaDRAM domainLowerLimitVec = "//num2str(domainLowerLimitVec)//" /" &
-                            , outputFileName = "test_SpecBase_DomainLowerLimitVec_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainLowerLimitVec_type_2" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -144,7 +144,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , domainUpperLimitVec = domainUpperLimitVec &
-                            , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainUpperLimitVec_type_1" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -167,7 +167,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , inputFile = "&ParaDRAM domainUpperLimitVec = "//num2str(domainUpperLimitVec)//" /" &
-                            , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainUpperLimitVec_type_2" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -192,7 +192,7 @@
                             , mpiFinalizeRequested = .false. &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
-                            , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainUpperLimitVec_type_3" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -217,7 +217,7 @@
                             , mpiFinalizeRequested = .false. &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
-                            , outputFileName = "test_SpecBase_DomainUpperLimitVec_type_4" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_DomainUpperLimitVec_type_4" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -239,7 +239,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToWarn_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_MaxNumDomainCheckToWarn_type_1" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , maxNumDomainCheckToWarn = 0_IK &
@@ -264,7 +264,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToWarn_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_MaxNumDomainCheckToWarn_type_2" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , inputFile = "&ParaDRAM maxNumDomainCheckToWarn = 0 /" &
@@ -289,7 +289,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToStop_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_MaxNumDomainCheckToStop_type_1" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , maxNumDomainCheckToStop = 0_IK &
@@ -314,7 +314,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToStop_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_MaxNumDomainCheckToStop_type_2" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , inputFile = "&ParaDRAM  maxNumDomainCheckToStop = 0 /" &
@@ -339,7 +339,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_MaxNumDomainCheckToStop_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_MaxNumDomainCheckToStop_type_3" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
                             , maxNumDomainCheckToStop = 1_IK &
@@ -362,7 +362,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OutputColumnWidth_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputColumnWidth_type_1" &
                             , outputColumnWidth = -1_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -383,7 +383,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OutputColumnWidth_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputColumnWidth_type_2" &
                             , inputFile = "&ParaDRAM outputColumnWidth = -1 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -404,7 +404,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OutputColumnWidth_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputColumnWidth_type_3" &
                             , outputRealPrecision = 8_IK &
                             , outputColumnWidth = 14_IK &
                             )
@@ -426,7 +426,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OutputDelimiter_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputDelimiter_type_1" &
                             , outputDelimiter = "this.that" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -447,7 +447,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OutputDelimiter_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputDelimiter_type_2" &
                             , inputFile = "&ParaDRAM outputDelimiter = 'this+that' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -468,7 +468,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OutputDelimiter_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputDelimiter_type_3" &
                             , inputFile = "&ParaDRAM outputDelimiter = 'this1234that' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -489,7 +489,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OutputDelimiter_type_4" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputDelimiter_type_4" &
                             , outputDelimiter = "\t" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%OutputDelimiter%val == TAB
@@ -510,7 +510,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OutputDelimiter_type_5" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputDelimiter_type_5" &
                             , outputDelimiter = "\\t" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%OutputDelimiter%val == "\t"
@@ -531,7 +531,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OutputDelimiter_type_6" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputDelimiter_type_6" &
                             , outputDelimiter = "" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%OutputDelimiter%val == " " .and. len(PD%SpecBase%OutputDelimiter%val) == 1
@@ -552,7 +552,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_OutputRealPrecision_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_OutputRealPrecision_type_1" &
                             , outputRealPrecision = 0_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -573,7 +573,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_OutputRealPrecision_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_OutputRealPrecision_type_1" &
                             , inputFile = "&ParaDRAM outputRealPrecision = 0 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -594,14 +594,14 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OverwriteRequested_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OverwriteRequested_type_1" &
                             , overwriteRequested = .true. &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OverwriteRequested_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OverwriteRequested_type_1" &
                             , inputFile = "&ParaDRAM overwriteRequested = true /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -622,14 +622,14 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OverwriteRequested_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OverwriteRequested_type_2" &
                             , overwriteRequested = .false. &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_OverwriteRequested_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OverwriteRequested_type_2" &
                             , inputFile = "&ParaDRAM overwriteRequested = false /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -650,7 +650,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_ParallelizationModel_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ParallelizationModel_type_1" &
                             , parallelizationModel = "SinGleChAin" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -671,7 +671,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_ParallelizationModel_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ParallelizationModel_type_2" &
                             , inputFile = "&ParaDRAM parallelizationModel = 'MULTI ChAin' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -692,7 +692,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_ParallelizationModel_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ParallelizationModel_type_3" &
                             , inputFile = "&ParaDRAM parallelizationModel = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -713,7 +713,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_ProgressReportPeriod_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ProgressReportPeriod_type_1" &
                             , progressReportPeriod = -1_IK &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -734,7 +734,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_ProgressReportPeriod_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ProgressReportPeriod_type_2" &
                             , inputFile = "&ParaDRAM progressReportPeriod = 0 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -755,7 +755,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_RandomSeed_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_RandomSeed_type_1" &
                             , randomSeed = -12345_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -776,7 +776,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_RandomSeed_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_RandomSeed_type_2" &
                             , inputFile = "&ParaDRAM randomSeed = 12345 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -797,7 +797,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_RestartFileFormat_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_RestartFileFormat_type_1" &
                             , restartFileFormat = "BINARY" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -818,7 +818,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_RestartFileFormat_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_RestartFileFormat_type_2" &
                             , inputFile = "&ParaDRAM restartFileFormat = 'asCII' /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -839,7 +839,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_RestartFileFormat_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_RestartFileFormat_type_3" &
                             , inputFile = "&ParaDRAM restartFileFormat = 'nonsense' /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -861,7 +861,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_TargetAcceptanceRate_type_1" &
                             , targetAcceptanceRate = targetAcceptanceRate &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -882,7 +882,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_2" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_TargetAcceptanceRate_type_2" &
                             , inputFile = "&ParaDRAM targetAcceptanceRate = +2. /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -903,7 +903,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_TargetAcceptanceRate_type_3" &
                             , inputFile = "&ParaDRAM targetAcceptanceRate = +0.5d0, 0.2d0 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -924,7 +924,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_4" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_TargetAcceptanceRate_type_4" &
                             , inputFile = "&ParaDRAM targetAcceptanceRate(1) = 1. /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -945,7 +945,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_5" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_TargetAcceptanceRate_type_5" &
                             , inputFile = "&ParaDRAM targetAcceptanceRate(2) = 0. /" &
                             )
         assertion = assertion .and. PD%Err%occurred
@@ -967,7 +967,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = "test_SpecBase_TargetAcceptanceRate_type_6" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_TargetAcceptanceRate_type_6" &
                             , targetAcceptanceRate = targetAcceptanceRate &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. .not. PD%SpecBase%TargetAcceptanceRate%scalingRequested
@@ -990,7 +990,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , inputFile = "&ParaDXXX randomSeed = 1111 /" &
-                            , outputFileName = "test_runSampler_7" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_runSampler_7" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -1012,7 +1012,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_8.in" &
-                            , outputFileName = "test_runSampler_8" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_runSampler_8" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif

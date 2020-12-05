@@ -414,7 +414,9 @@ contains
                 if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
                     ProposalErr%occurred = .true.
                     ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
+#if !defined CODECOV_ENABLED && ((!defined MATLAB_ENABLED && !defined PYTHON_ENABLED && !defined R_ENABLED) || defined CAF_ENABLED && defined MPI_ENABLED )
                     call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+#endif
                     return
                 end if
                 cycle loopBoundaryCheck

@@ -200,7 +200,7 @@ contains
         character(*), parameter                         :: PROCEDURE_NAME = "@checkForSanity()"
         character(:), allocatable                       :: sampleRefinementMethodLowerCase
         sampleRefinementMethodLowerCase = getLowerCase(SampleRefinementMethodObj%val)
-        if  (index(sampleRefinementMethodLowerCase,getLowerCase(replaceStr(BATCH_MEANS_METHOD_NAME," ","")))==0 &
+        if  (index(sampleRefinementMethodLowerCase,getLowerCase(replaceStr(BATCH_MEANS_METHOD_NAME," ","")))==0 & ! LCOV_EXCL_LINE
             .and. &
             (index(sampleRefinementMethodLowerCase,getLowerCase(CUTOFF_AUTOCORR_METHOD_NAME))==0 .and. index(sampleRefinementMethodLowerCase,"cutoff")==0) &
             .and. &

@@ -80,7 +80,7 @@ module String_mod
         type(CharVec_type), allocatable   :: Parts(:)       !< The string parts.
         integer(IK)                       :: nPart = 0_IK   !< The number of parts in the string.
     contains
-        procedure, nopass :: splitStr, replaceStr, getLowerCase, getUpperCase, isInteger, isDigit
+        procedure, nopass :: split, replaceStr, getLowerCase, getUpperCase, isInteger, isDigit
         procedure, nopass :: str2int, str2real, str2int32, str2int64, str2real32, str2real64
         procedure, nopass :: pad => padString
     end type String_type
@@ -156,6 +156,97 @@ contains
     !> \brief
     !> Split the input string string with the input `substitute` in the input `string` and return the result.
     !>
+    !> \param[in]       string  :   The input string.
+    !> \param[in]       delim   :   The delimiter to be used to split the input string.
+    !> \param[out]      npart   :   The number of substrings resulting from splitting the string (**optional**).
+    !>
+    !> \return
+    !> `Parts` : An allocatable array of type [CharVec_type](@ref jaggedarray_mod::charvec_type)
+    !> containing the split parts of the input string.
+    !>
+    !> \remark
+    !> When `delim = ""`, this routine returns a jagged array of strings, each element of which is one
+    !> character of the input string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \remark
+    !> This procedure should be preferred over the the legacy implementation [splitStr()](@ref splitstr)
+    !> that is kept only for legacy support. This routine is significantly faster than the legacy implementation
+    !> and its semantic behavior is identical to the Python3's `split()` string method, except when `delim` is empty.
+    !>
+    !> \author
+    ! Amir Shahmoradi, Friday Dec 4, 2020, 11:40 PM, Dallas, TX
+    function split(string,delim,npart) result(Parts)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: split
+#endif
+        implicit none
+        character(len=*)    , intent(in)            :: string, delim
+        integer(IK)         , intent(out), optional :: npart
+        character(len=:)    , allocatable           :: dummyStr
+        type(CharVec_type)  , allocatable           :: Parts(:)
+        integer(IK)         , allocatable           :: PartEnd(:)
+        integer(IK)         , allocatable           :: PartBegin(:)
+        integer(IK)                                 :: dlmlenMinusOne
+        integer(IK)                                 :: strlen, dlmlen, npartMax, ipart, ibeg, iend, i
+        logical                                     :: npartIsPresent
+
+        dlmlen = len(delim)
+        strlen = len(string)
+        npartIsPresent = present(npart)
+
+        ! if dlm is empty, return the whole string split character by character
+
+        if (dlmlen==0_IK) then
+            allocate(Parts(strlen))
+            do ipart = 1, strlen
+                Parts(ipart)%record = string(ipart:ipart)
+            end do
+            if (npartIsPresent) npart = strlen
+            return
+        end if
+
+        npartMax = 1_IK + strlen / dlmlen ! There can be at most strlen + 1 splits
+        allocate(PartBegin(npartMax), PartEnd(npartMax)) ! This will contain the beginning and the ends of the splits.
+        dlmlenMinusOne = dlmlen - 1_IK
+
+        ibeg = 0_IK
+        ipart = 1_IK
+        PartBegin(ipart) = 1_IK
+        loopParseString: do
+
+            ibeg = ibeg + 1_IK
+            iend = ibeg + dlmlenMinusOne
+
+            if (strlen<iend) then ! the remaining part of the string is shorter than the delim
+                PartEnd(ipart) = strlen
+                exit loopParseString
+            elseif ( string(ibeg:iend) == delim ) then
+                PartEnd(ipart) = ibeg - 1_IK
+                ipart = ipart + 1_IK
+                PartBegin(ipart) = iend + 1_IK
+                ibeg = iend
+            end if
+
+        end do loopParseString
+
+        allocate(Parts(ipart))
+        do i = 1, ipart
+            Parts(i)%record = string(PartBegin(i):PartEnd(i))
+        end do
+        if (present(npart)) npart = ipart
+
+        deallocate(PartBegin, PartEnd)
+
+    end function split
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Split the input string string with the input `substitute` in the input `string` and return the result.
+    !>
     !> \param[in]       string      :   The input string.
     !> \param[in]       delimiter   :   The delimiter to be used to split the input string.
     !> \param[out]      nPart       :   The number of substrings resulting from splitting the string (**optional**).
@@ -166,6 +257,14 @@ contains
     !>
     !> \remark
     !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \warning
+    !> This algorithm is only kept for archival purposes and should not be used in new development, unless the
+    !> implications and the behavior of this algorithm are fully understood. Use instead [split()](@ref split).
+    !>
+    !> \warning
+    !> The semantic behavior of this algorithm is different from [split()](@ref split).
+    !> Furthermore, this algorithm is slower than the alternative implementation in [split()](@ref split).
     !>
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
@@ -189,6 +288,7 @@ contains
         if (delimLen==0) then
             allocate(Parts(1))
             Parts(1)%record = string
+            if (present(nPart)) nPart = 1_IK
             return
         end if
 
@@ -904,8 +1004,8 @@ contains
     !> Convert an input string to 64-bit real value.
     !>
     !> \param[in]   str         :   The input string.
-    !> \param[in]   iostat      :   The Fortran IO status integer of default kind. Refer to the Fortran `read/write` functions
-    !>                              for the meaning of different output values for `iostat`.
+    !> \param[in]   iostat      :   The optional output Fortran IO status integer of default kind. Refer to the Fortran `read/write`
+    !>                              functions for the meaning of different output values for `iostat` (**optional**).
     !>
     !> \return
     !> `str2int` : The inferred 64-bit real value from the input string.
@@ -927,6 +1027,7 @@ contains
         if (present(iostat)) then
             iostat = 0
             read(str,*,iostat=iostat) str2real64
+            if (iostat/=0) str2real64 = -huge(1._real64)
         else
             read(str,*) str2real64
         endif
@@ -946,7 +1047,7 @@ contains
     !> \remark
     !> Note that `symbol` can be a string of any length. However, if the full lengths of symbols do not fit
     !> at the end of the padded output string, the symbol will be cut at the end of the output padded string.
-    function padString(string, symbol, paddedLen) result(paddedString)
+    pure function padString(string, symbol, paddedLen) result(paddedString)
         use Constants_mod, only: IK
         implicit none
         character(*), intent(in)            :: string
@@ -954,9 +1055,9 @@ contains
         integer(IK) , intent(in)            :: paddedLen
         character(paddedLen)                :: paddedString
         character(:), allocatable           :: pad
-        integer(IK)                         :: stringLen, symbolLen, symbolCount, diff
-        stringLen = len(string)
-        if (stringLen>paddedLen) then
+        integer(IK)                         :: stringLen, symbolLen, symbolCount, diff ! LCOV_EXCL_LINE
+        stringLen = len(string) ! LCOV_EXCL_LINE
+        if (stringLen>=paddedLen) then
             paddedString = string
             return
         end if

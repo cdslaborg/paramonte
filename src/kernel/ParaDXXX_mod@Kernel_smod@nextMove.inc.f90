@@ -45,7 +45,7 @@
 #else
 #define LOOP_NEXT_MOVE loopNextMove
 #endif
-
+write(*,*) "co_LogFuncState(0,-1)", co_LogFuncState(0,-1)
                 LOOP_NEXT_MOVE : do counterDRS = 0, self%SpecDRAM%DelayedRejectionCount%val
 
 #if defined SINGLCHAIN_PARALLELISM
@@ -57,8 +57,9 @@
                                                                             , counterDRS    = counterDRS &
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1) &
                                                                             )
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
-                    if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
+write(*,*) "co_LogFuncState(0,0)", co_LogFuncState(0,0)
+#if defined CODECOV_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
+                    if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
 #endif
 
                     call random_number(uniformRnd) ! only for the purpose of restart mode reproducibility

@@ -66,7 +66,7 @@
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if defined CODECOV_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
     use ParaDXXXProposalAbstract_mod, only: ProposalErr
 #endif
 #if defined MPI_ENABLED
@@ -599,8 +599,8 @@ contains
                                                         , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                    &
                                                         , adaptationMeasure         = AdaptationMeasure(dummy)                                                                  &
                                                         )
-#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
-                        if(ProposalErr%occurred) then; self%Err%occurred = .true.; return; end if
+#if defined CODECOV_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
+                        if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
 #endif
                         if (self%isDryRun) SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
 
@@ -949,7 +949,7 @@ contains
                     type(String_type) :: Record
                     allocate( character(600) :: Record%value )
                     read(self%TimeFile%unit, "(A)" ) Record%value
-                    Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),self%SpecBase%OutputDelimiter%val,Record%nPart)
+                    Record%Parts = Record%split(trim(adjustl(Record%value)),self%SpecBase%OutputDelimiter%val,Record%nPart)
                     read(Record%Parts(1)%record,*) numFunCallAcceptedRejectedLastReport
                     read(Record%Parts(2)%record,*) numFunCallAccepted_dummy
                     read(Record%Parts(3)%record,*) meanAccRateSinceStart

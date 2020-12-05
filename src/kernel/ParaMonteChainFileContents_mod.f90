@@ -213,12 +213,12 @@ contains
         type(Err_type)  , intent(out)                   :: Err
         character(*)    , intent(in), optional          :: delimiter
         integer(IK)     , intent(in), optional          :: chainSize, lenHeader, ndim, targetChainSize
-        logical                                         :: fileExists, fileIsOpen, delimHasBegun, delimHasEnded, isBinary, isCompact, isVerbose
-        integer(IK)                                     :: chainFileUnit, i, iState, delimiterLen, chainSizeDefault
+        character(:)    , allocatable                   :: chainFilePathTrimmed, thisForm
         type(String_type)                               :: Record
-        character(:), allocatable                       :: chainFilePathTrimmed, thisForm
+        integer(IK)                                     :: chainFileUnit, i, iState, delimiterLen, chainSizeDefault
         integer(IK)                                     :: irowLastUniqueSample
-        integer(IK)                                     :: numColTot
+        integer(IK)                                     :: numColTot, lenColHeader
+        logical                                         :: fileExists, fileIsOpen, delimHasBegun, delimHasEnded, isBinary, isCompact, isVerbose
 
         Err%occurred = .false.
         chainFilePathTrimmed = trim(adjustl(chainFilePath))
@@ -446,7 +446,7 @@ contains
             if (present(ndim)) then
                 CFC%ndim = ndim
             else
-                Record%Parts = Record%SplitStr(Record%value,CFC%delimiter,Record%nPart)
+                Record%Parts = Record%split(Record%value,CFC%delimiter,Record%nPart)
                 CFC%numDefCol = 0_IK
                 loopFindNumDefCol: do i = 1, Record%nPart
                     if ( index(string=Record%Parts(i)%record,substring="LogFunc") > 0 ) then
@@ -486,11 +486,11 @@ contains
                 allocate( character(lenHeader) :: Record%value )
                 read(chainFileUnit) Record%value
             else
-                allocate( character(99999) :: Record%value )    ! such huge allocation is rather redundant
+                allocate( character(99999) :: Record%value ) ! such huge allocation is rather redundant and is good for a ~4000 dimensional objective function.
                 read(chainFileUnit, "(A)" ) Record%value
             end if
-            CFC%ColHeader = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter)
-            do i = 1,size(CFC%ColHeader)
+            CFC%ColHeader = Record%split(trim(adjustl(Record%value)), CFC%delimiter, Record%npart)
+            do i = 1, Record%npart ! xxx is this trimming necessary?
                 CFC%ColHeader(i)%record = trim(adjustl(CFC%ColHeader(i)%record))
             end do
 
@@ -525,7 +525,7 @@ contains
 
                 loopReadCompact: do iState = 1, chainSizeDefault
                     read(chainFileUnit, "(A)" ) Record%value
-                    Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
+                    Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
                     if (Record%nPart<numColTot) then
                         call warnUserAboutCorruptChainFile(iState)
                         exit loopReadCompact
@@ -567,7 +567,7 @@ contains
                         ! read the first sample
 
                         read(chainFileUnit, "(A)" ) Record%value
-                        Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
+                        Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
                         if (Record%nPart<numColTot) then
                             call warnUserAboutCorruptChainFile(iState)
                             !exit blockChainSizeDefault
@@ -593,7 +593,7 @@ contains
                         loopOverChainfFileContents: do iState = 2, chainSizeDefault
 
                             read(chainFileUnit, "(A)" ) Record%value
-                            Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter)
+                            Record%Parts = Record%split(trim(adjustl(Record%value)), CFC%delimiter, Record%nPart)
                             if (Record%nPart<numColTot) then
                                 call warnUserAboutCorruptChainFile(iState)
                                 exit loopOverChainfFileContents

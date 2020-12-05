@@ -296,10 +296,7 @@ contains
 
         ! setup SpecMCMC variables that have been read form the input file
 
-        call self%SpecMCMC%setFromInputFile ( Err = self%Err &
-                                            , nd = nd &
-                                            , domainLowerLimitVec = self%SpecBase%DomainLowerLimitVec%Val &
-                                            , domainUpperLimitVec = self%SpecBase%DomainUpperLimitVec%Val )
+        call self%SpecMCMC%setFromInputFile(SpecBase = self%SpecBase, Err = self%Err)
         ! LCOV_EXCL_START
         if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME // self%Err%msg

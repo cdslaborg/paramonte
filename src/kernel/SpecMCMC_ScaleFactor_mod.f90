@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -46,7 +46,7 @@ module SpecMCMC_ScaleFactor_mod
     implicit none
 
     character(*), parameter         :: MODULE_NAME = "@SpecMCMC_ScaleFactor_mod"
-    integer(IK), parameter          :: MAX_LEN_STRING_SCALE_FACTOR = 127
+    integer(IK), parameter          :: MAX_LEN_STRING_SCALE_FACTOR = 127_IK
 
     character(:), allocatable       :: scaleFactor
 
@@ -162,6 +162,7 @@ contains
         character(*), parameter                 :: PROCEDURE_NAME = "@checkForSanity()"
         type(String_type)                       :: String
         integer(IK)                             :: i
+        real(RK)                                :: temp
 
         ! First convert the scaleFactor string to real value:
 
@@ -179,22 +180,24 @@ contains
 
         ! Now split the string by "*" to real coefficient and character (gelman) parts for further evaluations
 
-        String%Parts = String%splitStr( string = String%value, delimiter = "*", nPart = String%nPart )
+        String%Parts = String%split(string = String%value, delim = "*", nPart = String%nPart)
         ScaleFactorObj%val = 1._RK
         do i = 1, String%nPart
             if ( String%getLowerCase( String%Parts(i)%record ) == "gelman" ) then
                 ScaleFactorObj%val = ScaleFactorObj%val * ScaleFactorObj%defVal
             else
-                ScaleFactorObj%val = ScaleFactorObj%val * String%str2real64( str=String%Parts(i)%record, iostat=Err%stat )
+                temp = String%str2real64( str=String%Parts(i)%record, iostat=Err%stat )
                 if ( Err%stat/=0 ) then
                     Err%occurred = .true.
-                    Err%msg = Err%msg // &
-                    MODULE_NAME // PROCEDURE_NAME // ": Error occurred while reading real number.\n&
-                    &The input string value for the variable scaleFactor (" // ScaleFactorObj%str // ") does not appear to follow &
-                    &the standard syntax rules of "// methodName // " for this variable. '" // String%Parts(i)%record // &
-                    "' cannot be parsed into any meaningful token. Please correct the input value, or drop it from the input list, &
-                    &in which case, " // methodName // " will automatically assign an appropriate value to it.\n\n"
+                    Err%msg = Err%msg // & ! LCOV_EXCL_LINE
+                    MODULE_NAME // PROCEDURE_NAME // ": Error occurred while reading real number.\n"//& ! LCOV_EXCL_LINE
+                    "The input string value for the variable scaleFactor (" // ScaleFactorObj%str // ") does not appear to follow "//& ! LCOV_EXCL_LINE
+                    "the standard syntax rules of "// methodName // " for this variable. '" // String%Parts(i)%record // & ! LCOV_EXCL_LINE
+                    "' cannot be parsed into any meaningful token. Please correct the input value, or drop it from the input list, "//& ! LCOV_EXCL_LINE
+                    "in which case, " // methodName // " will automatically assign an appropriate value to it.\n\n"
                     return
+                else
+                    ScaleFactorObj%val = ScaleFactorObj%val * temp
                 end if
             end if
         end do

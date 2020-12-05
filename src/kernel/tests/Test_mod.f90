@@ -51,7 +51,7 @@ module Test_mod
     use Parallelism_mod, only: Image_type
     use Timer_mod, only: Timer_type
     use Constants_mod, only: IK, RK
-    use Err_mod, only: Err_type
+    use Err_mod, only: Err_type, mv_isTestingMode
 
     implicit none
 
@@ -113,6 +113,10 @@ contains
         use Decoration_mod, only: style
 
         implicit none
+
+        ! set the mode of error handling to testing mode
+
+        mv_isTestingMode = .true.
 
         ! set up image counts
 
@@ -300,7 +304,7 @@ contains
         integer                         :: imageID
 
         funcName = test_func_name(6:) ! remove "test_"
-        Message%Parts = Message%splitStr(string=funcName, delimiter="_", nPart=Message%nPart)
+        Message%Parts = Message%split(string = funcName, delim = "_", npart = Message%nPart)
         if ( Message%nPart==1_IK .or. .not. isInteger(Message%Parts(Message%nPart)%record) ) then
             counterStr = "#1"
         else

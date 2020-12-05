@@ -54,14 +54,14 @@ module SpecMCMC_RandomStartPointDomainUpperLimitVec_mod
         real(RK)                    :: null
         character(:), allocatable   :: desc
     contains
-        procedure, pass             :: set => setRandomStartPointDomainUpperLimitVec, checkForSanity, nullifyNameListVar
+        procedure, pass             :: set, checkForSanity, nullifyNameListVar
     end type RandomStartPointDomainUpperLimitVec_type
 
     interface RandomStartPointDomainUpperLimitVec_type
-        module procedure            :: constructRandomStartPointDomainUpperLimitVec
+        module procedure            :: construct
     end interface RandomStartPointDomainUpperLimitVec_type
 
-    private :: constructRandomStartPointDomainUpperLimitVec, setRandomStartPointDomainUpperLimitVec, checkForSanity, nullifyNameListVar
+    private :: construct, set, checkForSanity, nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -69,17 +69,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function constructRandomStartPointDomainUpperLimitVec(methodName) result(RandomStartPointDomainUpperLimitVecObj)
+    function construct(methodName) result(self)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructRandomStartPointDomainUpperLimitVec
+        !DEC$ ATTRIBUTES DLLEXPORT :: construct
 #endif
         use Constants_mod, only: NULL_RK
         use String_mod, only: num2str
         implicit none
         character(*), intent(in)                        :: methodName
-        type(RandomStartPointDomainUpperLimitVec_type)  :: RandomStartPointDomainUpperLimitVecObj
-        RandomStartPointDomainUpperLimitVecObj%null = NULL_RK
-        RandomStartPointDomainUpperLimitVecObj%desc = &
+        type(RandomStartPointDomainUpperLimitVec_type)  :: self
+        self%null = NULL_RK
+        self%desc = &
         "randomStartPointDomainUpperLimitVec represents the upper boundaries of the cubical domain from which the starting point(s) of &
         &the MCMC chain(s) will be initialized randomly (only if requested via the input variable randomStartPointRequested. &
         &This happens only when some or all of the elements of the input variable StartPoint are missing. &
@@ -102,79 +102,112 @@ contains
                     &the upper limits for the missing dimensions will be automatically set to the default value.\n\n&
         &The default values for all elements of randomStartPointDomainUpperLimitVec are taken from the corresponding values in the input &
         &variable domainUpperLimitVec."
-    end function constructRandomStartPointDomainUpperLimitVec
+    end function construct
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine nullifyNameListVar(RandomStartPointDomainUpperLimitVecObj,nd)
+    subroutine nullifyNameListVar(self,nd)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(RandomStartPointDomainUpperLimitVec_type), intent(in) :: RandomStartPointDomainUpperLimitVecObj
+        class(RandomStartPointDomainUpperLimitVec_type), intent(in) :: self
         integer(IK), intent(in)                                     :: nd
         if (allocated(randomStartPointDomainUpperLimitVec)) deallocate(randomStartPointDomainUpperLimitVec)
         allocate(randomStartPointDomainUpperLimitVec(nd))
-        randomStartPointDomainUpperLimitVec(:) = RandomStartPointDomainUpperLimitVecObj%null
+        randomStartPointDomainUpperLimitVec(:) = self%null
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setRandomStartPointDomainUpperLimitVec(RandomStartPointDomainUpperLimitVecObj,randomStartPointDomainUpperLimitVec,domainUpperLimitVec)
+    subroutine set(self,SpecBase,randomStartPointDomainUpperLimitVec)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: setRandomStartPointDomainUpperLimitVec
+        !DEC$ ATTRIBUTES DLLEXPORT :: set
 #endif
+        use SpecBase_mod, only: SpecBase_type
         use Constants_mod, only: IK, RK
         implicit none
-        class(RandomStartPointDomainUpperLimitVec_type), intent(inout) :: RandomStartPointDomainUpperLimitVecObj
-        real(RK), intent(in)                                        :: randomStartPointDomainUpperLimitVec(:)
-        real(RK), intent(in)                                        :: domainUpperLimitVec(:)
-        RandomStartPointDomainUpperLimitVecObj%Val = randomStartPointDomainUpperLimitVec
-        where (RandomStartPointDomainUpperLimitVecObj%Val==RandomStartPointDomainUpperLimitVecObj%null)
-            RandomStartPointDomainUpperLimitVecObj%Val = domainUpperLimitVec
-        end where
-    end subroutine setRandomStartPointDomainUpperLimitVec
+        class(RandomStartPointDomainUpperLimitVec_type), intent(inout)  :: self
+        type(SpecBase_type), intent(in)                                 :: SpecBase
+        real(RK), intent(in), optional                                  :: randomStartPointDomainUpperLimitVec(:)
+        integer(IK)                                                     :: i
+        if (present(randomStartPointDomainUpperLimitVec)) then
+            self%Val = randomStartPointDomainUpperLimitVec
+        elseif (.not.allocated(self%Val)) then ! This should not happen, otherwise it is really an internal error
+            ! LCOV_EXCL_START
+            block
+                use iso_fortran_env, only: output_unit
+                write(output_unit, "(a)") MODULE_NAME//"@set(): FATAL - Internal ParaMonte error occurred. self%Val is not allocated."
+                error stop
+            end block
+            ! LCOV_EXCL_STOP
+        end if
+        do concurrent(i = 1:size(self%Val))
+            if (self%Val(i)==self%null .or. self%Val(i)==SpecBase%DomainUpperLimitVec%def .or. self%Val(i)==SpecBase%DomainUpperLimitVec%null) then
+                self%Val(i) = SpecBase%DomainUpperLimitVec%Val(i)
+            end if
+        end do
+    end subroutine set
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(RandomStartPointDomainUpperLimitVecObj,Err,methodName,randomStartPointDomainLowerLimitVec,domainUpperLimitVec)
+    subroutine checkForSanity(self, Err, methodName, SpecBase, randomStartPointRequested, randomStartPointDomainLowerLimitVec)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
+        use SpecBase_mod, only: SpecBase_type
         use Constants_mod, only: RK
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(RandomStartPointDomainUpperLimitVec_type), intent(in)    :: RandomStartPointDomainUpperLimitVecObj
-        real(RK), intent(in)                                        :: randomStartPointDomainLowerLimitVec(:), domainUpperLimitVec(:)
-        character(*), intent(in)                                    :: methodName
+        class(RandomStartPointDomainUpperLimitVec_type), intent(in) :: self
         type(Err_type), intent(inout)                               :: Err
+        type(SpecBase_type), intent(in)                             :: SpecBase
+        character(*), intent(in)                                    :: methodName
+        logical, intent(in)                                         :: randomStartPointRequested
+        real(RK), intent(in)                                        :: randomStartPointDomainLowerLimitVec(:)
         character(*), parameter                                     :: PROCEDURE_NAME = "@checkForSanity()"
         integer                                                     :: i
-        do i = 1,size(RandomStartPointDomainUpperLimitVecObj%Val(:))
-            if ( RandomStartPointDomainUpperLimitVecObj%Val(i)>domainUpperLimitVec(i) ) then
-                if (RandomStartPointDomainUpperLimitVecObj%Val(i) /= RandomStartPointDomainUpperLimitVecObj%null) then
-                    Err%occurred = .true.
-                    Err%msg =   Err%msg // &
-                                MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                                &The component " // num2str(i) // " of the variable randomStartPointDomainUpperLimitVec (" // &
-                                num2str(RandomStartPointDomainUpperLimitVecObj%Val(i)) // &
-                                ") cannot be larger than the corresponding component of the variable &
-                                &domainUpperLimitVec (" // num2str(domainUpperLimitVec(i)) // "). If you don't know &
-                                &an appropriate value to set for randomStartPointDomainUpperLimitVec, drop it from the input list. " // &
-                                methodName // " will automatically assign an appropriate value to it.\n\n"
-                end if
+        do i = 1,size(self%Val(:))
+
+            ! check if the domain is set when random start point is requested
+
+            if ( randomStartPointRequested .and. (self%Val(i)==self%null .or. self%Val(i)==SpecBase%DomainUpperLimitVec%null .or. self%Val(i)==SpecBase%DomainUpperLimitVec%def) ) then
+                Err%occurred = .true.
+                Err%msg =   Err%msg // &
+                            MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
+                            &You have requested a random start point by setting randomStartPointRequested to TRUE while the &
+                            &element #"//num2str(i)//" of RandomStartPointDomainLowerLimitVec has not been preset. This information &
+                            &is essential otherwise, how could the sampler draw points randomly from within an unspecified domain?\n\n"
             end if
-            if ( RandomStartPointDomainUpperLimitVecObj%Val(i)<=randomStartPointDomainLowerLimitVec(i) ) then
+
+            ! the upper boundary of the domain of random-start-point must be smaller than the upper boundary of the target's domain.
+
+            if ( self%Val(i)>SpecBase%DomainUpperLimitVec%Val(i) ) then
+                Err%occurred = .true.
+                Err%msg =   Err%msg // &
+                            MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
+                            &The component " // num2str(i) // " of the variable randomStartPointDomainUpperLimitVec (" // &
+                            num2str(self%Val(i)) // &
+                            ") cannot be larger than the corresponding component of the variable &
+                            &domainUpperLimitVec (" // num2str(SpecBase%DomainUpperLimitVec%Val(i)) // "). If you don't know &
+                            &an appropriate value to set for randomStartPointDomainUpperLimitVec, drop it from the input list. " // &
+                            methodName // " will automatically assign an appropriate value to it.\n\n"
+            end if
+
+            ! the upper boundary of the domain of random-start-point must be smaller than the corresponding lower boundary.
+
+            if ( self%Val(i)<=randomStartPointDomainLowerLimitVec(i) ) then
                 Err%occurred = .true.
                 Err%msg =   Err%msg // &
                             PROCEDURE_NAME // ": Error occurred. The input upper limit value in the component " // num2str(i) // &
                             " of the variable randomStartPointDomainUpperLimitVec cannot be smaller than or equal to the corresponding input &
                             &lower limit value in randomStartPointDomainLowerLimitVec:\n" // &
                             "    randomStartPointDomainLowerLimitVec(" // num2str(i) // ") = " // num2str(randomStartPointDomainLowerLimitVec(i)) // "\n" // &
-                            "    randomStartPointDomainUpperLimitVec(" // num2str(i) // ") = " // num2str(RandomStartPointDomainUpperLimitVecObj%Val(i)) // "\n\n"
+                            "    randomStartPointDomainUpperLimitVec(" // num2str(i) // ") = " // num2str(self%Val(i)) // "\n\n"
             end if
+
         end do
     end subroutine checkForSanity
 
