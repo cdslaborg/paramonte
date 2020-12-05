@@ -103,11 +103,11 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
+        use Constants_mod, only: RK, IK, NEGINF_RK, NLC, LOGTINY_RK
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
-        use Decoration_mod, only: write
-        use Constants_mod, only: RK, IK, NEGINF_RK, NLC
-        use String_mod, only: num2str
         use Math_mod, only: getLogSubExp
+        use Decoration_mod, only: write
+        use String_mod, only: num2str
 
         implicit none
 
@@ -141,6 +141,7 @@ contains
         real(RK)                            :: sumAccRateLastReport                                 ! used for progress-report: must be initialized to zero upon entry to the procedure
         real(RK)                            :: uniformRnd                                           ! used for random number generation.
         real(RK)                            :: meanAccRateSinceStart                                ! used for restart file read
+        real(RK)                            :: logFuncDiff                                          ! The difference between the log of the old and the new states. Used to avoid underflow.
        !real(RK)                            :: adaptationMeasureDummy
         real(RK)                            :: maxLogFuncRejectedProposal
         logical                             :: samplerUpdateIsGreedy

@@ -45,7 +45,7 @@
 #else
 #define LOOP_NEXT_MOVE loopNextMove
 #endif
-write(*,*) "co_LogFuncState(0,-1)", co_LogFuncState(0,-1)
+
                 LOOP_NEXT_MOVE : do counterDRS = 0, self%SpecDRAM%DelayedRejectionCount%val
 
 #if defined SINGLCHAIN_PARALLELISM
@@ -83,7 +83,7 @@ write(*,*) "co_LogFuncState(0,-1)", co_LogFuncState(0,-1)
                             call self%Timer%toc()
                             co_LogFuncState(0,counterDRS) = getLogFunc(nd,co_LogFuncState(1:nd,counterDRS))
                             call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta
-write(*,*) "co_LogFuncState(0,0)", co_LogFuncState(0,0)
+
                             ! accept or reject the proposed state
 
                             if ( co_LogFuncState(0,counterDRS) >= co_LogFuncState(0,-1) ) then ! accept the proposed state
@@ -102,7 +102,12 @@ write(*,*) "co_LogFuncState(0,0)", co_LogFuncState(0,0)
                             else    ! accept with probability co_AccRate
 
                                 if ( counterDRS == 0_IK ) then ! This should be equivalent to maxLogFuncRejectedProposal == NEGINF_RK
-                                    co_AccRate(counterDRS) = exp( co_LogFuncState(0,counterDRS) - co_LogFuncState(0,-1) )
+                                    logFuncDiff = co_LogFuncState(0,counterDRS) - co_LogFuncState(0,-1)
+                                    if (logFuncDiff<LOGTINY_RK) then ! xxx should the condition for LOGHUGE_RK be also added?
+                                        co_AccRate(counterDRS) = 0._RK
+                                    else
+                                        co_AccRate(counterDRS) = exp( logFuncDiff )
+                                    end if
                                 else    ! ensure no arithmetic overflow/underflow. ATT: co_LogFuncState(0,-1) > co_LogFuncState(0,counterDRS) > maxLogFuncRejectedProposal
                                     co_AccRate(counterDRS) = exp( getLogSubExp( co_LogFuncState(0,counterDRS)   , maxLogFuncRejectedProposal ) &
                                                                 - getLogSubExp( co_LogFuncState(0,-1)           , maxLogFuncRejectedProposal ) )

@@ -121,7 +121,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine set(self,SpecBase,randomStartPointDomainUpperLimitVec)
+    pure subroutine set(self,randomStartPointDomainUpperLimitVec)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: set
 #endif
@@ -129,25 +129,9 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         class(RandomStartPointDomainUpperLimitVec_type), intent(inout)  :: self
-        type(SpecBase_type), intent(in)                                 :: SpecBase
         real(RK), intent(in), optional                                  :: randomStartPointDomainUpperLimitVec(:)
         integer(IK)                                                     :: i
-        if (present(randomStartPointDomainUpperLimitVec)) then
-            self%Val = randomStartPointDomainUpperLimitVec
-        elseif (.not.allocated(self%Val)) then ! This should not happen, otherwise it is really an internal error
-            ! LCOV_EXCL_START
-            block
-                use iso_fortran_env, only: output_unit
-                write(output_unit, "(a)") MODULE_NAME//"@set(): FATAL - Internal ParaMonte error occurred. self%Val is not allocated."
-                error stop
-            end block
-            ! LCOV_EXCL_STOP
-        end if
-        do concurrent(i = 1:size(self%Val))
-            if (self%Val(i)==self%null .or. self%Val(i)==SpecBase%DomainUpperLimitVec%def .or. self%Val(i)==SpecBase%DomainUpperLimitVec%null) then
-                self%Val(i) = SpecBase%DomainUpperLimitVec%Val(i)
-            end if
-        end do
+        if (present(randomStartPointDomainUpperLimitVec)) self%Val = randomStartPointDomainUpperLimitVec
     end subroutine set
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -161,19 +145,21 @@ contains
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(RandomStartPointDomainUpperLimitVec_type), intent(in) :: self
-        type(Err_type), intent(inout)                               :: Err
-        type(SpecBase_type), intent(in)                             :: SpecBase
-        character(*), intent(in)                                    :: methodName
-        logical, intent(in)                                         :: randomStartPointRequested
-        real(RK), intent(in)                                        :: randomStartPointDomainLowerLimitVec(:)
-        character(*), parameter                                     :: PROCEDURE_NAME = "@checkForSanity()"
-        integer                                                     :: i
+        class(RandomStartPointDomainUpperLimitVec_type), intent(inout)  :: self
+        type(Err_type), intent(inout)                                   :: Err
+        type(SpecBase_type), intent(in)                                 :: SpecBase
+        character(*), intent(in)                                        :: methodName
+        logical, intent(in)                                             :: randomStartPointRequested
+        real(RK), intent(in)                                            :: randomStartPointDomainLowerLimitVec(:)
+        character(*), parameter                                         :: PROCEDURE_NAME = "@checkForSanity()"
+        integer                                                         :: i
         do i = 1,size(self%Val(:))
+
+            if (self%Val(i)==self%null) self%Val(i) = SpecBase%DomainUpperLimitVec%Val(i)
 
             ! check if the domain is set when random start point is requested
 
-            if ( randomStartPointRequested .and. (self%Val(i)==self%null .or. self%Val(i)==SpecBase%DomainUpperLimitVec%null .or. self%Val(i)==SpecBase%DomainUpperLimitVec%def) ) then
+            if ( randomStartPointRequested .and. self%Val(i)==SpecBase%DomainUpperLimitVec%def ) then
                 Err%occurred = .true.
                 Err%msg =   Err%msg // &
                             MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
@@ -187,12 +173,11 @@ contains
             if ( self%Val(i)>SpecBase%DomainUpperLimitVec%Val(i) ) then
                 Err%occurred = .true.
                 Err%msg =   Err%msg // &
-                            MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                            &The component " // num2str(i) // " of the variable randomStartPointDomainUpperLimitVec (" // &
-                            num2str(self%Val(i)) // &
-                            ") cannot be larger than the corresponding component of the variable &
-                            &domainUpperLimitVec (" // num2str(SpecBase%DomainUpperLimitVec%Val(i)) // "). If you don't know &
-                            &an appropriate value to set for randomStartPointDomainUpperLimitVec, drop it from the input list. " // &
+                            MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The component " // num2str(i) // &
+                            " of the variable randomStartPointDomainUpperLimitVec (" // num2str(self%Val(i)) // ") cannot be " // &
+                            "larger than the corresponding component of the variable domainUpperLimitVec (" // &
+                            num2str(SpecBase%DomainUpperLimitVec%Val(i)) // "). If you don't know an appropriate " // & ! LCOV_EXCL_LINE
+                            "value to set for randomStartPointDomainUpperLimitVec, drop it from the input list. " // &
                             methodName // " will automatically assign an appropriate value to it.\n\n"
             end if
 
@@ -209,6 +194,7 @@ contains
             end if
 
         end do
+        deallocate(randomStartPointDomainUpperLimitVec)
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

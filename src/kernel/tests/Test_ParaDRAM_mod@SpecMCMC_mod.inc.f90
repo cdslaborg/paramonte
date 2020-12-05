@@ -808,8 +808,8 @@
         logical                 :: assertion
         type(ParaDRAM_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
-        real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e1_RK, +1.e3_RK]
-        real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e1_RK, +2.e3_RK]
+        real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e2_RK]
+        real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e2_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = NDIM &

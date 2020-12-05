@@ -121,33 +121,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine set(self, SpecBase, randomStartPointDomainLowerLimitVec)
+    subroutine set(self, randomStartPointDomainLowerLimitVec)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: set
 #endif
-        use SpecBase_mod, only: SpecBase_type
         use Constants_mod, only: IK, RK
         implicit none
         class(RandomStartPointDomainLowerLimitVec_type), intent(inout)  :: self
-        type(SpecBase_type), intent(in)                                 :: SpecBase
         real(RK), intent(in), optional                                  :: randomStartPointDomainLowerLimitVec(:)
         integer(IK)                                                     :: i
-        if (present(randomStartPointDomainLowerLimitVec)) then
-            self%Val = randomStartPointDomainLowerLimitVec
-        elseif (.not.allocated(self%Val)) then ! This should not happen, otherwise it is really an internal error
-            ! LCOV_EXCL_START
-            block
-                use iso_fortran_env, only: output_unit
-                write(output_unit, "(a)") MODULE_NAME//"@set(): FATAL - Internal ParaMonte error occurred. self%Val is not allocated."
-                error stop
-            end block
-            ! LCOV_EXCL_STOP
-        end if
-        do concurrent(i = 1:size(self%Val))
-            if (self%Val(i)==self%null .or. self%Val(i)==SpecBase%DomainLowerLimitVec%def .or. self%Val(i)==SpecBase%DomainLowerLimitVec%null) then
-                self%Val(i) = SpecBase%DomainLowerLimitVec%Val(i)
-            end if
-        end do
+        if (present(randomStartPointDomainLowerLimitVec)) self%Val = randomStartPointDomainLowerLimitVec
     end subroutine set
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -161,18 +144,20 @@ contains
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(RandomStartPointDomainLowerLimitVec_type), intent(in) :: self
-        type(Err_type), intent(inout)                               :: Err
-        type(SpecBase_type), intent(in)                             :: SpecBase
-        character(*), intent(in)                                    :: methodName
-        logical     , intent(in)                                    :: randomStartPointRequested
-        character(*), parameter                                     :: PROCEDURE_NAME = "@checkForSanity()"
-        integer                                                     :: i
+        class(RandomStartPointDomainLowerLimitVec_type), intent(inout)  :: self
+        type(Err_type), intent(inout)                                   :: Err
+        type(SpecBase_type), intent(in)                                 :: SpecBase
+        character(*), intent(in)                                        :: methodName
+        logical     , intent(in)                                        :: randomStartPointRequested
+        character(*), parameter                                         :: PROCEDURE_NAME = "@checkForSanity()"
+        integer                                                         :: i
         do i = 1,size(self%Val(:))
+
+            if (self%Val(i)==self%null) self%Val(i) = SpecBase%DomainLowerLimitVec%Val(i)
 
             ! check if the domain is set when random start point is requested
 
-            if ( randomStartPointRequested .and. (self%Val(i)==self%null .or. self%Val(i)==SpecBase%DomainLowerLimitVec%null .or. self%Val(i)==SpecBase%DomainLowerLimitVec%def) ) then
+            if ( randomStartPointRequested .and. self%Val(i)==SpecBase%DomainLowerLimitVec%def ) then
                 Err%occurred = .true.
                 Err%msg =   Err%msg // &
                             MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
@@ -186,16 +171,16 @@ contains
             if ( self%Val(i)<SpecBase%DomainLowerLimitVec%Val(i) ) then
                 Err%occurred = .true.
                 Err%msg =   Err%msg // &
-                            MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                            &The component " // num2str(i) // " of the variable RandomStartPointDomainLowerLimitVec (" // &
-                            num2str(self%Val(i)) // &
-                            ") cannot be smaller than the corresponding component of the variable &
-                            &domainLowerLimitVec (" // num2str(SpecBase%DomainLowerLimitVec%Val(i)) // "). If you don't know &
-                            &an appropriate value to set for RandomStartPointDomainLowerLimitVec, drop it from the input list. " // &
-                            methodName // " will automatically assign an appropriate value to it.\n\n"
+                            MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The component " // num2str(i) // &
+                            " of the variable RandomStartPointDomainLowerLimitVec (" // num2str(self%Val(i)) // &
+                            ") cannot be smaller than the corresponding component of the variable domainLowerLimitVec (" // &
+                            num2str(SpecBase%DomainLowerLimitVec%Val(i)) // "). If you don't know &an appropriate value to " // & ! LCOV_EXCL_LINE
+                            "set for RandomStartPointDomainLowerLimitVec, drop it from the input list. " // methodName // " will &
+                            &automatically assign an appropriate value to it.\n\n"
             end if
 
         end do
+        deallocate(randomStartPointDomainLowerLimitVec)
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -262,14 +262,19 @@ contains
     !>
     !> \warning
     !> The onus is on the user to ensure `logValueLarger > logValueSamller`.
+    !>
+    !> \remark
+    !> This function is very useful for situations where `exp(logValueLarger)` is likely to cause overflow.
     pure function getLogSubExp_RK(logValueLarger,logValueSamller) result(logSubExp)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSubExp_RK
 #endif
-        use Constants_mod, only: RK
+        use Constants_mod, only: RK, LOGTINY_RK
         real(RK)   , intent(in) :: logValueLarger, logValueSamller
-        real(RK)                :: logSubExp
-        logSubExp = logValueLarger + log( 1._RK - exp(logValueSamller-logValueLarger) )
+        real(RK)                :: logSubExp, diff
+        logSubExp = logValueLarger
+        diff = logValueSamller - logValueLarger
+        if (diff>LOGTINY_RK) logSubExp = logSubExp + log( 1._RK - exp(diff) )
     end function getLogSubExp_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

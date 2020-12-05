@@ -180,8 +180,8 @@ contains
         call SpecMCMC%SampleRefinementCount                 %set(sampleRefinementCount)
         call SpecMCMC%SampleRefinementMethod                %set(sampleRefinementMethod)
         call SpecMCMC%RandomStartPointRequested             %set(randomStartPointRequested)
-        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(SpecBase, randomStartPointDomainLowerLimitVec)
-        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(SpecBase, randomStartPointDomainUpperLimitVec)
+        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(randomStartPointDomainLowerLimitVec)
+        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(randomStartPointDomainUpperLimitVec)
         call SpecMCMC%startPointVec                         %set(startPointVec)
 
     end subroutine setFromInputFile
@@ -247,8 +247,8 @@ contains
         if (present(sampleRefinementMethod))                call SpecMCMC%SampleRefinementMethod                %set(sampleRefinementMethod)
         if (present(randomStartPointRequested))             call SpecMCMC%RandomStartPointRequested             %set(randomStartPointRequested)
 
-        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(SpecBase, randomStartPointDomainLowerLimitVec)
-        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(SpecBase, randomStartPointDomainUpperLimitVec)
+        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(randomStartPointDomainLowerLimitVec)
+        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(randomStartPointDomainUpperLimitVec)
         call SpecMCMC%startPointVec                         %set(startPointVec)
 
     end subroutine setFromInputArgs
