@@ -57,7 +57,6 @@ write(*,*) "co_LogFuncState(0,-1)", co_LogFuncState(0,-1)
                                                                             , counterDRS    = counterDRS &
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1) &
                                                                             )
-write(*,*) "co_LogFuncState(0,0)", co_LogFuncState(0,0)
 #if defined CODECOV_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
 #endif
@@ -84,7 +83,7 @@ write(*,*) "co_LogFuncState(0,0)", co_LogFuncState(0,0)
                             call self%Timer%toc()
                             co_LogFuncState(0,counterDRS) = getLogFunc(nd,co_LogFuncState(1:nd,counterDRS))
                             call self%Timer%toc(); self%Stats%avgTimePerFunCalInSec = self%Stats%avgTimePerFunCalInSec + self%Timer%Time%delta
-
+write(*,*) "co_LogFuncState(0,0)", co_LogFuncState(0,0)
                             ! accept or reject the proposed state
 
                             if ( co_LogFuncState(0,counterDRS) >= co_LogFuncState(0,-1) ) then ! accept the proposed state
