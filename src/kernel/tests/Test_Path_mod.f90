@@ -197,7 +197,7 @@ contains
         if (.not. assertion) return
 
         Path%original = '".\temp Folder\{inside}\"'
-        call Path%linify(Path%original,Path%modified)
+        Path%modified = linify(Path%original)
 
         assertion = Path%modified == "./temp\ Folder/\{inside\}/"
 
