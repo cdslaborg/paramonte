@@ -46,7 +46,7 @@
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
     use Constants_mod, only: IK, RK
     use Err_mod, only: Err_type

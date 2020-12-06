@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains procedures for computing random numbers from a truncated Gaussian distribution.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module TranGaus_mod
 

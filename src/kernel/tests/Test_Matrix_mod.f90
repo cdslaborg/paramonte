@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [Matrix_mod](@ref matrix_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_Matrix_mod
 

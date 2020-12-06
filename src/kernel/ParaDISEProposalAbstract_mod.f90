@@ -46,7 +46,7 @@
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 module ParaDISEProposalAbstract_mod
 #define PARADISE ParaDISE

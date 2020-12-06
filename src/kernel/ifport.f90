@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief This module appears here for portability of code between the Intel and the GNU Fortran compilers.
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 !DEC$ IF(.FALSE.)
 	module ifport

@@ -40,17 +40,17 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [Optimization_mod](@ref optimization_mod).
+!>  \brief This module contains tests of the module [Parallelism_mod](@ref parallelism_mod).
 !>  \author Amir Shahmoradi
 
-module Test_Optimization_mod
+module Test_Parallelism_mod
 
-    use Optimization_mod
+    use Parallelism_mod
     use Test_mod, only: Test_type
     implicit none
 
     private
-    public :: test_Optimization
+    public :: test_Parallelism
 
     type(Test_type) :: Test
 
@@ -88,14 +88,14 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine test_Optimization()
+    subroutine test_Parallelism()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_BrentMinimum_type_1, "test_BrentMinimum_type_1")
         call Test%run(test_BrentMinimum_type_2, "test_BrentMinimum_type_2")
         call Test%run(test_PowellMinimum_type_1, "test_PowellMinimum_type_1") ! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.
         call Test%finalize()
-    end subroutine test_Optimization
+    end subroutine test_Parallelism
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -276,4 +276,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module Test_Optimization_mod ! LCOV_EXCL_LINE
+end module Test_Parallelism_mod ! LCOV_EXCL_LINE

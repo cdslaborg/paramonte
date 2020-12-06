@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [System_mod](@ref system_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_System_mod
 

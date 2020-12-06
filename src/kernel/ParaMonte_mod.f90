@@ -120,7 +120,7 @@
 !-------------------------------------------------------------------------------
 
 !>  \brief This module contains the base class of all ParaMonte samplers and its associated methods.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module ParaMonte_mod
 

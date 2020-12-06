@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [BandSpectrum_mod](@ref bandspectrum_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_BandSpectrum_mod
 

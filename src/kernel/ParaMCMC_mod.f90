@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module implements the `ParaDRAM_type` class and its constructor.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module ParaMCMC_mod
 

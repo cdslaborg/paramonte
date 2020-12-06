@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [ParaDRAM_mod](@ref paradram_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_ParaDRAM_mod
 
@@ -77,6 +77,7 @@ contains
         call Test%run(test_runSampler_7, "test_runSampler_7")
         call Test%run(test_runSampler_8, "test_runSampler_8")
         call Test%run(test_runSampler_9, "test_runSampler_9")
+        call Test%run(test_runSampler_10, "test_runSampler_10")
 
         call Test%run(test_SpecBase_RandomSeed_type_1, "test_SpecBase_RandomSeed_type_1")
         call Test%run(test_SpecBase_RandomSeed_type_2, "test_SpecBase_RandomSeed_type_2")
@@ -345,6 +346,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_6" &
+                            , outputRealPrecision = 16_IK &
                             , randomSeed = 12345_IK &
                             , sampleSize = 500_IK &
                             , chainSize = 1000_IK &
@@ -363,6 +365,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_6" &
+                            , outputRealPrecision = 16_IK &
                             , randomSeed = 12345_IK &
                             , sampleSize = 500_IK &
                             , chainSize = 1000_IK &
@@ -476,9 +479,74 @@ contains
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
-        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK )
+        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
 #endif
     end function test_runSampler_9
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler to restart a complete simulation without an output sample file, with an ASCII output file.
+    function test_runSampler_10() result(assertion)
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD1, PD2
+        assertion = .true.
+#if defined CODECOV_ENABLED
+
+        ! Run the fresh simulation as a reference run
+
+        call PD1%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_10_ref" &
+                            , restartFileFormat = "ascii" &
+                            , proposalModel = "uniform" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 500_IK &
+                            , chainSize = 1000_IK &
+                            )
+        assertion = assertion .and. .not. PD1%Err%occurred
+        if (.not. assertion) return ! LCOV_EXCL_LINE
+
+        ! Run the fresh simulation
+
+        call PD1%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_10" &
+                            , restartFileFormat = "ascii" &
+                            , proposalModel = "uniform" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 500_IK &
+                            , chainSize = 1000_IK &
+                            )
+        assertion = assertion .and. .not. PD1%Err%occurred
+        if (.not. assertion) return ! LCOV_EXCL_LINE
+
+        ! delete the sample file
+
+        open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
+        close(PD1%SampleFile%unit, status = "delete")
+
+        ! restart the simulation with the same configuration
+
+        call PD2%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_10" &
+                            , restartFileFormat = "ascii" &
+                            , proposalModel = "uniform" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 500_IK &
+                            , chainSize = 1000_IK &
+                            )
+        assertion = assertion .and. .not. PD2%Err%occurred
+        if (.not. assertion) return ! LCOV_EXCL_LINE
+
+        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
+#endif
+    end function test_runSampler_10
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

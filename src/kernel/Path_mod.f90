@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> This module contains classes and procedures for manipulating system file/folder paths.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Path_mod
 

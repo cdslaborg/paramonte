@@ -45,7 +45,7 @@
 #endif
 
 !>  \brief This submodule contains module procedures for outputting text.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 submodule (Decoration_mod) Routines_mod
 

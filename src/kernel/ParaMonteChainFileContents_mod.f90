@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains the classs and procedures for chain IO and manipulation.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module ParaMonteChainFileContents_mod
 

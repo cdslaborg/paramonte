@@ -46,7 +46,7 @@
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 #if defined UNIFORM
 
@@ -102,7 +102,9 @@
        !type(AccRate_type)          :: AccRate
     contains
         procedure   , nopass        :: getNew
+#if defined PARADISE
         procedure   , nopass        :: getLogProb
+#endif
         procedure   , nopass        :: doAdaptation
        !procedure   , nopass        :: readRestartFile
        !procedure   , nopass        :: writeRestartFile

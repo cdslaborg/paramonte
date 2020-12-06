@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief This module contains procedures and constants for cosmological calculations.
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 module Cosmology_mod
 
@@ -185,7 +185,7 @@ contains
     !> \remark
     !> The integrations are performed using the Romberg integration method.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
     function getLookBackTime(zplus1,maxRelativeError,nRefinement) result(lookBackTime)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
@@ -243,7 +243,7 @@ contains
     !> However, the library yields segmentation fault error when compiled and run on the Windows Subsystem 
     !> for Linux Ubuntu with GFortran. As such, it is implemented as an independent function.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
     pure function getLookBackTimeDensity(zplus1) result(lookBackTimeDnesity)
         use Constants_mod, only: RK
@@ -272,7 +272,7 @@ contains
     !> \remark
     !> The integrations are performed using the Romberg integration method.
     !>
-    !> @author
+    !> \author
     !> Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
     pure function getUniverseAgeDerivative(zplus1) result(universeAgeDerivative)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED

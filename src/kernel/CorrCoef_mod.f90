@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief This module contains procedures for computing various statistical correlation coefficients.
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 module CorrCoef_mod
 

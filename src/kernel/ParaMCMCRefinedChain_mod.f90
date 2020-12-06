@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains the classes and procedures for refining MCMC output chains.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module ParaMCMCRefinedChain_mod
 

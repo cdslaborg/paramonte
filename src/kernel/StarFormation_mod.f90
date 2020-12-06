@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ! \brief This module contains procedures for computing the Cosmic Star Formation Rate in the Universe.
-! @author Amir Shahmoradi
+! \author Amir Shahmoradi
 
 module StarFormation_mod
 

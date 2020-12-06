@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This is the driver module of the unit testing framework of the ParaMonte kernel routines.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 ! LCOV_EXCL_START
 module Test_mod

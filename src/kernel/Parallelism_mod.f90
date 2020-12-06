@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains procedures for computing the parallel performance of the parallel algorithms.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Parallelism_mod
 

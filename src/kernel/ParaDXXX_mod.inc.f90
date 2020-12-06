@@ -46,7 +46,7 @@
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 !#define CAT(a,b) a##b
 !#define XCAT(a,b) CAT(a,b)

@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains the class and procedures for setting or resetting the random seed of the processor(s).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module RandomSeed_mod
 

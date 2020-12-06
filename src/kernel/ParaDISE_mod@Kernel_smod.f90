@@ -46,7 +46,7 @@
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 submodule (ParaDISE_mod) Kernel_smod
 #define PARADISE ParaDISE
