@@ -40,18 +40,18 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This include file contains tests of the module [SpecBase_mod](@ref specbase_mod) when accessed by the ParaDRAM sampler.
+!>  \brief This include file contains tests of the module [SpecBase_mod](@ref specbase_mod) when accessed by the ParaDXXX sampler.
 !>  \author Amir Shahmoradi
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a wrong input value for `daptiveUpdateCount < 0`.
+    !> Test the ParaDXXX sampler with a wrong input value for `daptiveUpdateCount < 0`.
     function test_SpecDRAM_AdaptiveUpdateCount_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -67,12 +67,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `daptiveUpdateCount`.
+    !> Test the ParaDXXX sampler with a valid input value for `daptiveUpdateCount`.
     function test_SpecDRAM_AdaptiveUpdateCount_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -88,19 +88,19 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `daptiveUpdateCount`.
+    !> Test the ParaDXXX sampler with a valid input value for `daptiveUpdateCount`.
     function test_SpecDRAM_AdaptiveUpdateCount_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_AdaptiveUpdateCount_type_3" &
-                            , inputFile = "&ParaDRAM adaptiveUpdateCount = 0 /" &
+                            , inputFile = ParaDXXX_NML//" adaptiveUpdateCount = 0 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -109,12 +109,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a wrong input value for `adaptiveUpdatePeriod < 0`.
+    !> Test the ParaDXXX sampler with a wrong input value for `adaptiveUpdatePeriod < 0`.
     function test_SpecDRAM_AdaptiveUpdatePeriod_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -130,12 +130,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `adaptiveUpdatePeriod`.
+    !> Test the ParaDXXX sampler with a valid input value for `adaptiveUpdatePeriod`.
     function test_SpecDRAM_AdaptiveUpdatePeriod_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -151,19 +151,19 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `adaptiveUpdatePeriod`.
+    !> Test the ParaDXXX sampler with a valid input value for `adaptiveUpdatePeriod`.
     function test_SpecDRAM_AdaptiveUpdatePeriod_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_AdaptiveUpdatePeriod_type_3" &
-                            , inputFile = "&ParaDRAM adaptiveUpdatePeriod = 1 /" &
+                            , inputFile = ParaDXXX_NML//" adaptiveUpdatePeriod = 1 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -172,12 +172,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a wrong input value for `burninAdaptationMeasure < 0.`.
+    !> Test the ParaDXXX sampler with a wrong input value for `burninAdaptationMeasure < 0.`.
     function test_SpecDRAM_BurninAdaptationMeasure_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -193,12 +193,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a wrong input value for `burninAdaptationMeasure > 1.`.
+    !> Test the ParaDXXX sampler with a wrong input value for `burninAdaptationMeasure > 1.`.
     function test_SpecDRAM_BurninAdaptationMeasure_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -214,12 +214,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `adaptiveUpdatePeriod`.
+    !> Test the ParaDXXX sampler with a valid input value for `adaptiveUpdatePeriod`.
     function test_SpecDRAM_BurninAdaptationMeasure_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -235,19 +235,19 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `adaptiveUpdatePeriod`.
+    !> Test the ParaDXXX sampler with a valid input value for `adaptiveUpdatePeriod`.
     function test_SpecDRAM_BurninAdaptationMeasure_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_BurninAdaptationMeasure_type_4" &
-                            , inputFile = "&ParaDRAM burninAdaptationMeasure = 0.5 /" &
+                            , inputFile = ParaDXXX_NML//" burninAdaptationMeasure = 0.5 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -256,13 +256,13 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a wrong input value for `burninAdaptationMeasure < 0.`.
+    !> Test the ParaDXXX sampler with a wrong input value for `burninAdaptationMeasure < 0.`.
     function test_SpecDRAM_DelayedRejectionCount_type_1() result(assertion)
         use SpecDRAM_DelayedRejectionCount_mod, only: MIN_DELAYED_REJECTION_COUNT
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -278,13 +278,13 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a wrong input value for `DelayedRejectionCount > 1.`.
+    !> Test the ParaDXXX sampler with a wrong input value for `DelayedRejectionCount > 1.`.
     function test_SpecDRAM_DelayedRejectionCount_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use SpecDRAM_DelayedRejectionCount_mod, only: MAX_DELAYED_REJECTION_COUNT
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -300,12 +300,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `adaptiveUpdatePeriod`.
+    !> Test the ParaDXXX sampler with a valid input value for `adaptiveUpdatePeriod`.
     function test_SpecDRAM_DelayedRejectionCount_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -321,19 +321,19 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `adaptiveUpdatePeriod`.
+    !> Test the ParaDXXX sampler with a valid input value for `adaptiveUpdatePeriod`.
     function test_SpecDRAM_DelayedRejectionCount_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_DelayedRejectionCount_type_4" &
-                            , inputFile = "&ParaDRAM delayedRejectionCount = 3 /" &
+                            , inputFile = ParaDXXX_NML//" delayedRejectionCount = 3 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -342,12 +342,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `DelayedRejectionScaleFactorVec`.
+    !> Test the ParaDXXX sampler with a valid input value for `DelayedRejectionScaleFactorVec`.
     function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
@@ -355,7 +355,7 @@
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_DelayedRejectionScaleFactorVec_type_1" &
                             , delayedRejectionCount = 3_IK &
-                            , inputFile = "&ParaDRAM DelayedRejectionScaleFactorVec = 3., 2., 1., /" &
+                            , inputFile = ParaDXXX_NML//" DelayedRejectionScaleFactorVec = 3., 2., 1., /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -364,13 +364,13 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `delayedRejectionCount`, which should lead to default values for
+    !> Test the ParaDXXX sampler with a valid input value for `delayedRejectionCount`, which should lead to default values for
     !> the vector `DelayedRejectionScaleFactorVec`.
     function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
-        type(ParaDRAM_type)     :: PD
+        type(ParaDXXX_type)     :: PD
         integer(IK), parameter  :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED
@@ -378,7 +378,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_DelayedRejectionScaleFactorVec_type_2" &
-                            , inputFile = "&ParaDRAM delayedRejectionCount = 3 /" &
+                            , inputFile = ParaDXXX_NML//" delayedRejectionCount = 3 /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(abs(PD%SpecDRAM%DelayedRejectionScaleFactorVec%Val-0.5_RK**(1._RK/real(NDIM,kind=RK)))<1.e-12_RK)
 #endif
@@ -387,13 +387,13 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `DelayedRejectionScaleFactorVec`.
+    !> Test the ParaDXXX sampler with a valid input value for `DelayedRejectionScaleFactorVec`.
     function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDRAM_type)     :: PD
+        type(ParaDXXX_type)     :: PD
         real(RK), parameter     :: DelayedRejectionScaleFactorVec(*) = [3._RK, 2._RK]
         integer(IK), parameter  :: delayedRejectionCount = 2_IK
         assertion = .true.
@@ -403,7 +403,7 @@
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_DelayedRejectionScaleFactorVec_type_3" &
                             , DelayedRejectionScaleFactorVec = DelayedRejectionScaleFactorVec &
-                            , inputFile = "&ParaDRAM delayedRejectionCount = "//num2str(delayedRejectionCount)//" /" &
+                            , inputFile = ParaDXXX_NML//" delayedRejectionCount = "//num2str(delayedRejectionCount)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecDRAM%DelayedRejectionScaleFactorVec%Val==DelayedRejectionScaleFactorVec(1:delayedRejectionCount))
 #endif
@@ -412,12 +412,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `DelayedRejectionScaleFactorVec`.
+    !> Test the ParaDXXX sampler with a valid input value for `DelayedRejectionScaleFactorVec`.
     function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         real(RK), parameter :: DelayedRejectionScaleFactorVec(*) = [-1._RK, 2._RK]
         assertion = .true.
 #if defined CODECOV_ENABLED
@@ -426,7 +426,7 @@
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_DelayedRejectionScaleFactorVec_type_4" &
                             , DelayedRejectionScaleFactorVec = DelayedRejectionScaleFactorVec &
-                            , inputFile = "&ParaDRAM delayedRejectionCount = 2 /" &
+                            , inputFile = ParaDXXX_NML//" delayedRejectionCount = 2 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -435,12 +435,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `DelayedRejectionScaleFactorVec`.
+    !> Test the ParaDXXX sampler with a valid input value for `DelayedRejectionScaleFactorVec`.
     function test_SpecDRAM_DelayedRejectionScaleFactorVec_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        type(ParaDRAM_type) :: PD
+        type(ParaDXXX_type) :: PD
         real(RK), parameter :: DelayedRejectionScaleFactorVec(*) = [2._RK, 0._RK, 1._RK]
         assertion = .true.
 #if defined CODECOV_ENABLED
@@ -449,7 +449,7 @@
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_DelayedRejectionScaleFactorVec_type_5" &
                             , DelayedRejectionScaleFactorVec = DelayedRejectionScaleFactorVec &
-                            , inputFile = "&ParaDRAM delayedRejectionCount = 2 /" &
+                            , inputFile = ParaDXXX_NML//" delayedRejectionCount = 2 /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
@@ -458,12 +458,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `greedyAdaptationCount >= 0`.
+    !> Test the ParaDXXX sampler with a valid input value for `greedyAdaptationCount >= 0`.
     function test_SpecDRAM_GreedyAdaptationCount_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
-        type(ParaDRAM_type)     :: PD
+        type(ParaDXXX_type)     :: PD
         integer(IK), parameter  :: greedyAdaptationCount = 10_IK
         assertion = .true.
 #if defined CODECOV_ENABLED
@@ -480,13 +480,13 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with a valid input value for `greedyAdaptationCount >= 0`.
+    !> Test the ParaDXXX sampler with a valid input value for `greedyAdaptationCount >= 0`.
     function test_SpecDRAM_GreedyAdaptationCount_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDRAM_type)     :: PD
+        type(ParaDXXX_type)     :: PD
         integer(IK), parameter  :: greedyAdaptationCount = 0_IK
         assertion = .true.
 #if defined CODECOV_ENABLED
@@ -494,7 +494,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_GreedyAdaptationCount_type_2" &
-                            , inputFile = "&ParaDRAM greedyAdaptationCount = "//num2str(greedyAdaptationCount)//" /" &
+                            , inputFile = ParaDXXX_NML//" greedyAdaptationCount = "//num2str(greedyAdaptationCount)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecDRAM%greedyAdaptationCount%val==greedyAdaptationCount
 #endif
@@ -503,13 +503,13 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDRAM sampler with an invalid input value for `greedyAdaptationCount >= 0`.
+    !> Test the ParaDXXX sampler with an invalid input value for `greedyAdaptationCount >= 0`.
     function test_SpecDRAM_GreedyAdaptationCount_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
         logical                 :: assertion
-        type(ParaDRAM_type)     :: PD
+        type(ParaDXXX_type)     :: PD
         integer(IK), parameter  :: greedyAdaptationCount = -1_IK
         assertion = .true.
 #if defined CODECOV_ENABLED
@@ -517,7 +517,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecDRAM/test_SpecDRAM_GreedyAdaptationCount_type_3" &
-                            , inputFile = "&ParaDRAM greedyAdaptationCount = "//num2str(greedyAdaptationCount)//" /" &
+                            , inputFile = ParaDXXX_NML//" greedyAdaptationCount = "//num2str(greedyAdaptationCount)//" /" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif

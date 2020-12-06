@@ -242,9 +242,11 @@ contains
                                 , inputFile = inputFile &
                                 )
         if (self%Err%occurred) then
+            ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
+            ! LCOV_EXCL_STOP
         end if
 
 
@@ -266,9 +268,11 @@ contains
 
         call self%getSpecFromInputFile(ndim)
         if (self%Err%occurred) then
+            ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
             return
+            ! LCOV_EXCL_STOP
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -277,53 +281,55 @@ contains
 
         call self%setWarnAboutProcArgHasPriority()
         if (self%procArgNeeded) then
-            call self%SpecBase%setFromInputArgs ( Err                                   = self%Err                              &
-                                                , sampleSize                            = sampleSize                            &
-                                                , randomSeed                            = randomSeed                            &
-                                                , description                           = description                           &
-                                                , outputFileName                        = outputFileName                        &
-                                                , outputDelimiter                       = outputDelimiter                       &
-                                                , chainFileFormat                       = chainFileFormat                       &
-                                                , variableNameList                      = variableNameList                      &
-                                                , restartFileFormat                     = restartFileFormat                     &
-                                                , outputColumnWidth                     = outputColumnWidth                     &
-                                                , overwriteRequested                    = overwriteRequested                    &
-                                                , outputRealPrecision                   = outputRealPrecision                   &
-                                                , silentModeRequested                   = silentModeRequested                   &
-                                                , domainLowerLimitVec                   = domainLowerLimitVec                   &
-                                                , domainUpperLimitVec                   = domainUpperLimitVec                   &
-                                                , parallelizationModel                  = parallelizationModel                  &
-                                                , progressReportPeriod                  = progressReportPeriod                  &
-                                                , targetAcceptanceRate                  = targetAcceptanceRate                  &
-                                                , mpiFinalizeRequested                  = mpiFinalizeRequested                  &
-                                                , maxNumDomainCheckToWarn               = maxNumDomainCheckToWarn               &
-                                                , maxNumDomainCheckToStop               = maxNumDomainCheckToStop               &
+            call self%SpecBase%setFromInputArgs ( Err                                   = self%Err                              & ! LCOV_EXCL_LINE
+                                                , sampleSize                            = sampleSize                            & ! LCOV_EXCL_LINE
+                                                , randomSeed                            = randomSeed                            & ! LCOV_EXCL_LINE
+                                                , description                           = description                           & ! LCOV_EXCL_LINE
+                                                , outputFileName                        = outputFileName                        & ! LCOV_EXCL_LINE
+                                                , outputDelimiter                       = outputDelimiter                       & ! LCOV_EXCL_LINE
+                                                , chainFileFormat                       = chainFileFormat                       & ! LCOV_EXCL_LINE
+                                                , variableNameList                      = variableNameList                      & ! LCOV_EXCL_LINE
+                                                , restartFileFormat                     = restartFileFormat                     & ! LCOV_EXCL_LINE
+                                                , outputColumnWidth                     = outputColumnWidth                     & ! LCOV_EXCL_LINE
+                                                , overwriteRequested                    = overwriteRequested                    & ! LCOV_EXCL_LINE
+                                                , outputRealPrecision                   = outputRealPrecision                   & ! LCOV_EXCL_LINE
+                                                , silentModeRequested                   = silentModeRequested                   & ! LCOV_EXCL_LINE
+                                                , domainLowerLimitVec                   = domainLowerLimitVec                   & ! LCOV_EXCL_LINE
+                                                , domainUpperLimitVec                   = domainUpperLimitVec                   & ! LCOV_EXCL_LINE
+                                                , parallelizationModel                  = parallelizationModel                  & ! LCOV_EXCL_LINE
+                                                , progressReportPeriod                  = progressReportPeriod                  & ! LCOV_EXCL_LINE
+                                                , targetAcceptanceRate                  = targetAcceptanceRate                  & ! LCOV_EXCL_LINE
+                                                , mpiFinalizeRequested                  = mpiFinalizeRequested                  & ! LCOV_EXCL_LINE
+                                                , maxNumDomainCheckToWarn               = maxNumDomainCheckToWarn               & ! LCOV_EXCL_LINE
+                                                , maxNumDomainCheckToStop               = maxNumDomainCheckToStop               & ! LCOV_EXCL_LINE
                                                 )
-            call self%SpecMCMC%setFromInputArgs ( chainSize                             = chainSize                             &
-                                                , scaleFactor                           = scaleFactor                           &
-                                                , startPointVec                         = startPointVec                         &
-                                                , proposalModel                         = proposalModel                         &
-                                                , proposalStartStdVec                   = proposalStartStdVec                   &
-                                                , proposalStartCorMat                   = proposalStartCorMat                   &
-                                                , proposalStartCovMat                   = proposalStartCovMat                   &
-                                                , sampleRefinementCount                 = sampleRefinementCount                 &
-                                                , sampleRefinementMethod                = sampleRefinementMethod                &
-                                                , randomStartPointRequested             = randomStartPointRequested             &
-                                                , randomStartPointDomainLowerLimitVec   = randomStartPointDomainLowerLimitVec   &
-                                                , randomStartPointDomainUpperLimitVec   = randomStartPointDomainUpperLimitVec   &
+            call self%SpecMCMC%setFromInputArgs ( chainSize                             = chainSize                             & ! LCOV_EXCL_LINE
+                                                , scaleFactor                           = scaleFactor                           & ! LCOV_EXCL_LINE
+                                                , startPointVec                         = startPointVec                         & ! LCOV_EXCL_LINE
+                                                , proposalModel                         = proposalModel                         & ! LCOV_EXCL_LINE
+                                                , proposalStartStdVec                   = proposalStartStdVec                   & ! LCOV_EXCL_LINE
+                                                , proposalStartCorMat                   = proposalStartCorMat                   & ! LCOV_EXCL_LINE
+                                                , proposalStartCovMat                   = proposalStartCovMat                   & ! LCOV_EXCL_LINE
+                                                , sampleRefinementCount                 = sampleRefinementCount                 & ! LCOV_EXCL_LINE
+                                                , sampleRefinementMethod                = sampleRefinementMethod                & ! LCOV_EXCL_LINE
+                                                , randomStartPointRequested             = randomStartPointRequested             & ! LCOV_EXCL_LINE
+                                                , randomStartPointDomainLowerLimitVec   = randomStartPointDomainLowerLimitVec   & ! LCOV_EXCL_LINE
+                                                , randomStartPointDomainUpperLimitVec   = randomStartPointDomainUpperLimitVec   & ! LCOV_EXCL_LINE
                                                 )
-            call self%SpecDRAM%setFromInputArgs ( adaptiveUpdateCount                   = adaptiveUpdateCount                   &
-                                                , adaptiveUpdatePeriod                  = adaptiveUpdatePeriod                  &
-                                                , greedyAdaptationCount                 = greedyAdaptationCount                 &
-                                                , delayedRejectionCount                 = delayedRejectionCount                 &
-                                                , burninAdaptationMeasure               = burninAdaptationMeasure               &
-                                                , delayedRejectionScaleFactorVec        = delayedRejectionScaleFactorVec        &
+            call self%SpecDRAM%setFromInputArgs ( adaptiveUpdateCount                   = adaptiveUpdateCount                   & ! LCOV_EXCL_LINE
+                                                , adaptiveUpdatePeriod                  = adaptiveUpdatePeriod                  & ! LCOV_EXCL_LINE
+                                                , greedyAdaptationCount                 = greedyAdaptationCount                 & ! LCOV_EXCL_LINE
+                                                , delayedRejectionCount                 = delayedRejectionCount                 & ! LCOV_EXCL_LINE
+                                                , burninAdaptationMeasure               = burninAdaptationMeasure               & ! LCOV_EXCL_LINE
+                                                , delayedRejectionScaleFactorVec        = delayedRejectionScaleFactorVec        & ! LCOV_EXCL_LINE
                                                 )
         end if
         if (self%Err%occurred) then
+            ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
             return
+            ! LCOV_EXCL_STOP
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -349,9 +355,11 @@ contains
 
         call self%setupOutputFiles()
         if (self%Err%occurred) then
+            ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
+            ! LCOV_EXCL_STOP
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -452,34 +460,36 @@ contains
 
         if (allocated(self%Proposal)) deallocate(self%Proposal)
         if (self%SpecMCMC%ProposalModel%isNormal) then
-            allocate( self%Proposal, source = ProposalNormal_type   ( ndim          = ndim &
-                                                                    , SpecBase      = self%SpecBase &
-                                                                    , SpecMCMC      = self%SpecMCMC &
-                                                                    , SpecDRAM      = self%SpecDRAM &
-                                                                    , Image         = self%Image &
-                                                                    , name          = self%name &
-                                                                    , brand         = self%brand &
-                                                                    , LogFile       = self%LogFile &
-                                                                    , RestartFile   = self%RestartFile &
-                                                                    , isFreshRun    = self%isFreshRun &
+            allocate( self%Proposal, source = ProposalNormal_type   ( ndim          = ndim & ! LCOV_EXCL_LINE
+                                                                    , SpecBase      = self%SpecBase & ! LCOV_EXCL_LINE
+                                                                    , SpecMCMC      = self%SpecMCMC & ! LCOV_EXCL_LINE
+                                                                    , SpecDRAM      = self%SpecDRAM & ! LCOV_EXCL_LINE
+                                                                    , Image         = self%Image & ! LCOV_EXCL_LINE
+                                                                    , name          = self%name & ! LCOV_EXCL_LINE
+                                                                    , brand         = self%brand & ! LCOV_EXCL_LINE
+                                                                    , LogFile       = self%LogFile & ! LCOV_EXCL_LINE
+                                                                    , RestartFile   = self%RestartFile & ! LCOV_EXCL_LINE
+                                                                    , isFreshRun    = self%isFreshRun & ! LCOV_EXCL_LINE
                                                                     ) )
         elseif (self%SpecMCMC%ProposalModel%isUniform) then
-            allocate( self%Proposal, source = ProposalUniform_type  ( ndim          = ndim &
-                                                                    , SpecBase      = self%SpecBase &
-                                                                    , SpecMCMC      = self%SpecMCMC &
-                                                                    , SpecDRAM      = self%SpecDRAM &
-                                                                    , Image         = self%Image &
-                                                                    , name          = self%name &
-                                                                    , brand         = self%brand &
-                                                                    , LogFile       = self%LogFile &
-                                                                    , RestartFile   = self%RestartFile &
-                                                                    , isFreshRun    = self%isFreshRun &
+            allocate( self%Proposal, source = ProposalUniform_type  ( ndim          = ndim & ! LCOV_EXCL_LINE
+                                                                    , SpecBase      = self%SpecBase & ! LCOV_EXCL_LINE
+                                                                    , SpecMCMC      = self%SpecMCMC & ! LCOV_EXCL_LINE
+                                                                    , SpecDRAM      = self%SpecDRAM & ! LCOV_EXCL_LINE
+                                                                    , Image         = self%Image & ! LCOV_EXCL_LINE
+                                                                    , name          = self%name & ! LCOV_EXCL_LINE
+                                                                    , brand         = self%brand & ! LCOV_EXCL_LINE
+                                                                    , LogFile       = self%LogFile & ! LCOV_EXCL_LINE
+                                                                    , RestartFile   = self%RestartFile & ! LCOV_EXCL_LINE
+                                                                    , isFreshRun    = self%isFreshRun & ! LCOV_EXCL_LINE
                                                                     ) )
         else
+            ! LCOV_EXCL_START
             self%Err%occurred = .true.
             self%Err%msg = PROCEDURE_NAME // ": Internal error occurred. Unsupported proposal distribution for " // self%name // "."
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
             return
+            ! LCOV_EXCL_STOP
         end if
 
 #if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
@@ -660,9 +670,9 @@ contains
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             if (self%Image%count==1_IK) then
-                msg = UNDEFINED
+                msg = UNDEFINED ! LCOV_EXCL_LINE
             else
-                msg = num2str( self%Stats%avgCommTimePerFunCall )
+                msg = num2str( self%Stats%avgCommTimePerFunCall ) ! LCOV_EXCL_LINE
             end if
 
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
@@ -732,19 +742,21 @@ contains
 
                 imageCount = 1_IK
                 if (isForkJoinParallelism) imageCount = self%Image%count
-                ForkJoin = ForkJoin_type( processCount = imageCount &
-                                        , lenProcessID = self%Stats%NumFunCall%accepted &
-                                        , ProcessID = self%Chain%ProcessID &
-                                        , successProb = mcmcSamplingEfficiency &
-                                        , seqSecTime = epsilon(1._RK) & ! time cost of the sequential section of the code, which is negligible here &
-                                        , parSecTime = self%Stats%avgTimePerFunCalInSec &
-                                        , comSecTime = self%Stats%avgCommTimePerFunCall &
+                ForkJoin = ForkJoin_type( processCount = imageCount & ! LCOV_EXCL_LINE
+                                        , lenProcessID = self%Stats%NumFunCall%accepted & ! LCOV_EXCL_LINE
+                                        , ProcessID = self%Chain%ProcessID & ! LCOV_EXCL_LINE
+                                        , successProb = mcmcSamplingEfficiency & ! LCOV_EXCL_LINE
+                                        , seqSecTime = epsilon(1._RK) &  ! LCOV_EXCL_LINE ! time cost of the sequential section of the code, which is negligible here
+                                        , parSecTime = self%Stats%avgTimePerFunCalInSec & ! LCOV_EXCL_LINE
+                                        , comSecTime = self%Stats%avgCommTimePerFunCall & ! LCOV_EXCL_LINE
                                         )
                 if (ForkJoin%Err%occurred) then
+                    ! LCOV_EXCL_START
                     self%Err = ForkJoin%Err
                     self%Err%msg = PROCEDURE_NAME // self%Err%msg
                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                     return
+                    ! LCOV_EXCL_STOP
                 end if
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -866,13 +878,13 @@ contains
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 if (isForkJoinParallelism) then
-                    ForkJoin = ForkJoin_type( processCount = self%Image%count &
-                                            , lenProcessID = self%Stats%NumFunCall%accepted &
-                                            , ProcessID = self%Chain%ProcessID &
-                                            , successProb = 0._RK &
-                                            , seqSecTime = epsilon(1._RK) & ! time cost of the sequential section of the code, which is negligible here &
-                                            , parSecTime = self%Stats%avgTimePerFunCalInSec &
-                                            , comSecTime = self%Stats%avgCommTimePerFunCall &
+                    ForkJoin = ForkJoin_type( processCount = self%Image%count & ! LCOV_EXCL_LINE
+                                            , lenProcessID = self%Stats%NumFunCall%accepted & ! LCOV_EXCL_LINE
+                                            , ProcessID = self%Chain%ProcessID & ! LCOV_EXCL_LINE
+                                            , successProb = 0._RK & ! LCOV_EXCL_LINE
+                                            , seqSecTime = epsilon(1._RK) &  ! LCOV_EXCL_LINE ! time cost of the sequential section of the code, which is negligible here
+                                            , parSecTime = self%Stats%avgTimePerFunCalInSec & ! LCOV_EXCL_LINE
+                                            , comSecTime = self%Stats%avgCommTimePerFunCall & ! LCOV_EXCL_LINE
                                             )
                     if (ForkJoin%Err%occurred) then
                         self%Err = ForkJoin%Err
@@ -1044,13 +1056,13 @@ contains
 
             if (allocated(self%Stats%Chain%Mean)) deallocate(self%Stats%Chain%Mean); allocate(self%Stats%Chain%Mean(ndim))
             if (allocated(self%Stats%Chain%CovMat)) deallocate(self%Stats%Chain%CovMat); allocate(self%Stats%Chain%CovMat(ndim,ndim))
-            call getWeiSamCovUppMeanTrans   ( np = self%Chain%count%compact - self%Stats%BurninLoc%compact + 1_IK &
-                                            , sumWeight = self%Stats%Chain%count &
-                                            , nd = ndim &
-                                            , Point = self%Chain%State(1:ndim,self%Stats%BurninLoc%compact:self%Chain%count%compact) &
+            call getWeiSamCovUppMeanTrans   ( np = self%Chain%count%compact - self%Stats%BurninLoc%compact + 1_IK & ! LCOV_EXCL_LINE
+                                            , sumWeight = self%Stats%Chain%count & ! LCOV_EXCL_LINE
+                                            , nd = ndim & ! LCOV_EXCL_LINE
+                                            , Point = self%Chain%State(1:ndim,self%Stats%BurninLoc%compact:self%Chain%count%compact) & ! LCOV_EXCL_LINE
                                             , Weight = self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact) &
-                                            , CovMatUpper = self%Stats%Chain%CovMat &
-                                            , Mean = self%Stats%Chain%Mean &
+                                            , CovMatUpper = self%Stats%Chain%CovMat & ! LCOV_EXCL_LINE
+                                            , Mean = self%Stats%Chain%Mean & ! LCOV_EXCL_LINE
                                             )
 
             self%Stats%Chain%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Chain%CovMat)
@@ -1070,11 +1082,11 @@ contains
             ContiguousChain = transpose(self%Chain%State(1:ndim,self%Stats%BurninLoc%compact:self%Chain%count%compact)) ! avoid temporary array creation and the warning message in debug mode
             do i = 1, ndim
                     self%Stats%Chain%Quantile(1:QPROB%count,i) = getQuantile( np = self%Chain%count%compact - self%Stats%BurninLoc%compact + 1_IK &
-                                                                            , nq = QPROB%count &
-                                                                            , SortedQuantileProbability = QPROB%Value &
-                                                                            , Point = ContiguousChain(:,i) &
+                                                                            , nq = QPROB%count & ! LCOV_EXCL_LINE
+                                                                            , SortedQuantileProbability = QPROB%Value & ! LCOV_EXCL_LINE
+                                                                            , Point = ContiguousChain(:,i) & ! LCOV_EXCL_LINE
                                                                             , Weight = self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact) &
-                                                                            , sumWeight = self%Stats%Chain%count &
+                                                                            , sumWeight = self%Stats%Chain%count & ! LCOV_EXCL_LINE
                                                                             )
             end do
 
@@ -1158,9 +1170,11 @@ contains
                                         )
 
             if (self%Err%occurred) then
+                ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // self%Err%msg
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
+                ! LCOV_EXCL_STOP
             end if
 
             ! compute the maximum integrated autocorrelation times for each variable
@@ -1326,9 +1340,11 @@ contains
                                                 , sampleRefinementMethod    = self%SpecMCMC%SampleRefinementMethod%val    &
                                                 )
                     if (self%Err%occurred) then
+                        ! LCOV_EXCL_START
                         self%Err%msg = PROCEDURE_NAME // self%Err%msg
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                         return
+                        ! LCOV_EXCL_STOP
                     end if
 
                 end if
@@ -1346,9 +1362,11 @@ contains
                     , position  = self%SampleFile%Position%value  )
                 self%Err = self%SampleFile%getOpenErr(self%SampleFile%Err%stat)
                 if (self%Err%occurred) then
+                    ! LCOV_EXCL_START
                     self%Err%msg = PROCEDURE_NAME//": Error occurred while opening the "//self%name//" "//self%SampleFile%suffix//" file='"//self%SampleFile%Path%original//"'. "
                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                     return
+                    ! LCOV_EXCL_STOP
                 end if
 
                 ! determine the sample file's contents' format
@@ -1391,11 +1409,11 @@ contains
                 ContiguousChain = transpose(self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) ! avoid temporary array creation and the warning message in debug mode
                 call getWeiSamCovUppMeanTrans   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
                                                 , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &
-                                                , nd = ndim &
-                                                , Point = ContiguousChain &
+                                                , nd = ndim & ! LCOV_EXCL_LINE
+                                                , Point = ContiguousChain & ! LCOV_EXCL_LINE
                                                 , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
-                                                , CovMatUpper = self%Stats%Sample%CovMat &
-                                                , Mean = self%Stats%Sample%Mean &
+                                                , CovMatUpper = self%Stats%Sample%CovMat & ! LCOV_EXCL_LINE
+                                                , Mean = self%Stats%Sample%Mean & ! LCOV_EXCL_LINE
                                                 )
 
                 self%Stats%Sample%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Sample%CovMat)
@@ -1416,7 +1434,7 @@ contains
                     self%Stats%Sample%Quantile(1:QPROB%count,i) = getQuantile   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
                                                                                 , nq = QPROB%count &
                                                                                 , SortedQuantileProbability = QPROB%Value &
-                                                                                , Point = ContiguousChain(:,i) &
+                                                                                , Point = ContiguousChain(:,i) & ! LCOV_EXCL_LINE
                                                                                 , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
                                                                                 , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &
                                                                                 )
@@ -1435,23 +1453,15 @@ contains
                 msg = "This is the final output refined sample size. "
                 if (self%SpecBase%SampleSize%val/=-1_IK) then
                     if (abs(self%SpecBase%SampleSize%abs)<effectiveSampleSize) then
-                        msg = msg // &
-                            "The user-requested sample size ("// num2str(self%SpecBase%SampleSize%abs) // ") &
-                            &is smaller than the potentially-optimal i.i.d. sample size &
-                            &(" // num2str(effectiveSampleSize) // "). &
-                            &The output sample contains i.i.d. samples, however, the sample-size &
-                            &could have been larger if it had been set to the optimal size. &
-                            &To get the optimal size in the future runs, set sampleSize = -1, or drop&
-                            &it from the input list."
+                        msg = msg // "The user-requested sample size ("// num2str(self%SpecBase%SampleSize%abs) // ") is smaller &
+                            &than the potentially-optimal i.i.d. sample size (" // num2str(effectiveSampleSize) // "). The output sample &
+                            &contains i.i.d. samples, however, the sample-size could have been larger if it had been set to the optimal size. &
+                            &To get the optimal size in the future runs, set sampleSize = -1, or drop it from the input list."
                     elseif (abs(self%SpecBase%SampleSize%abs)>effectiveSampleSize) then
-                        msg = msg // &
-                            "The user-requested sample size ("// num2str(self%SpecBase%SampleSize%abs) // ") &
-                            &is larger than the potentially-optimal i.i.d. sample size &
-                            &(" // num2str(effectiveSampleSize) // "). &
-                            &The resulting sample likely contains duplicates and is not independently &
-                            &and identically distributed (i.i.d.).\nTo get the optimal &
-                            &size in the future runs, set sampleSize = -1, or drop &
-                            &it from the input list."
+                        msg = msg // "The user-requested sample size ("// num2str(self%SpecBase%SampleSize%abs) // ") is larger than &
+                            &the potentially-optimal i.i.d. sample size (" // num2str(effectiveSampleSize) // "). The resulting sample &
+                            &likely contains duplicates and is not independently and identically distributed (i.i.d.).\nTo get the optimal &
+                            &size in the future runs, set sampleSize = -1, or drop it from the input list."
                     else
                         msg = msg // &
                             "How lucky that could be! The user-requested sample size (" // num2str(self%SpecBase%SampleSize%abs) // ") &

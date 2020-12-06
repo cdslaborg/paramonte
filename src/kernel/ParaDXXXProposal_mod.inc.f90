@@ -443,6 +443,7 @@ contains
     !>
     !> \return
     !> `logProb` : The log probability of obtaining obtaining the new sample given the old sample.
+    ! LCOV_EXCL_START
     pure function getLogProb( nd                &
                             , counterDRS        &
                             , StateOld          &
@@ -475,6 +476,7 @@ contains
                                     )
 #endif
     end function getLogProb
+    ! LCOV_EXCL_STOP
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

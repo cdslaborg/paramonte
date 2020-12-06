@@ -219,9 +219,11 @@ contains
             NormedPoint = Point(1:nd,ip) - MeanVec
             MahalSq(ip) = dot_product( NormedPoint , matmul(InvCovMat,NormedPoint) )
             if (MahalSq(ip)<0._RK) then
+            ! LCOV_EXCL_START
                 MahalSq(1) = -1._RK
                 return
             end if
+            ! LCOV_EXCL_STOP
         end do
     end function getMahalSqMP_RK
 
@@ -286,9 +288,11 @@ contains
             MahalSq(ip) = sum( (Point(1:nd,ip)-MeanVec) * &
             matmul(InvCovMat,Point(1:nd,ip)-MeanVec) )
             if (real(MahalSq(ip))<0._RK) then
+            ! LCOV_EXCL_START
                 MahalSq(1) = (-1._RK, -1._RK)
                 return
             end if
+            ! LCOV_EXCL_STOP
         end do
     end function getMahalSqMP_CK
 
@@ -1655,9 +1659,11 @@ contains
         CholeskyLower = CovMat
         call getCholeskyFactor(nd,CholeskyLower,Diagonal)
         if (Diagonal(1)<0._RK) then
+        ! LCOV_EXCL_START
             write(*,*) 'getCholeskyFactor() failed in getMVNDev()'
             stop
         end if
+        ! LCOV_EXCL_STOP
         do i=1,nd
             DummyVec(i) = getRandGaus()
             x(i) = DummyVec(i) * Diagonal(i)
@@ -1697,9 +1703,11 @@ contains
         CholeskyLower = CovMat
         call getCholeskyFactor(nd,CholeskyLower,Diagonal)
         if (Diagonal(1)<0._RK) then
+        ! LCOV_EXCL_START
             error stop
             !call abortProgram( output_unit , 1 , 1 , 'Statitistics@getMVUDev()@getCholeskyFactor() failed.' )
         end if
+        ! LCOV_EXCL_STOP
         do i=1,nd
             DummyVec(i) = getRandGaus()
         end do
@@ -2362,9 +2370,11 @@ contains
         beta = eta + 0.5_RK*(nd-2._RK)
         dummy = getRandBeta(beta,beta)
         if (dummy<=0._RK .or. dummy>=1._RK) then
+        ! LCOV_EXCL_START
             error stop
             !call abortProgram( output_unit , 1 , 1 , 'Statitistics@getRandCorMat() failed. Random Beta variable out of bound: ' // num2str(dummy) )
         end if
+        ! LCOV_EXCL_STOP
         RandCorMat(1,2) = 2._RK * dummy - 1._RK ! for the moment, only the upper half of RandCorMat is needed, the lower half will contain cholesky lower triangle.
 
         do m = 2,nd-1
@@ -3164,10 +3174,12 @@ contains
             if (abs(del-1._RK) <=  eps) exit
         end do
         if (m > maxit) then
+        ! LCOV_EXCL_START
             error stop
             !call abortProgram( output_unit , 1 , 1 , &
             !'Statitistics@getBetaContinuedFraction_SPR() failed: alpha or beta too big, or maxit too small.' )
         end if
+        ! LCOV_EXCL_STOP
     end function getBetaContinuedFraction_SPR
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3224,10 +3236,12 @@ contains
             if (abs(del-1._RK) <=  eps) exit
         end do
         if (m > maxit) then
+        ! LCOV_EXCL_START
             error stop
             !call abortProgram( output_unit , 1 , 1 , &
             !'Statitistics@getBetaContinuedFraction_DPR() failed: alpha or beta too big, or maxit too small.' )
         end if
+        ! LCOV_EXCL_STOP
     end function getBetaContinuedFraction_DPR
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3278,9 +3292,11 @@ contains
 
         call sortAscending(np,Point,Err)
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME//Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
         statKS = 0._RK
         cdfObserved = 0._RK
@@ -3336,8 +3352,10 @@ contains
 
         call sortAscending(np,Point,Err)
         if (Err%occurred) then
+            ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME//Err%msg
             return
+            ! LCOV_EXCL_STOP
         end if
 
         statKS = 0._RK
@@ -3495,15 +3513,19 @@ contains
         real(RK)    , intent(out) :: Xbin(nxbin), Density(nxbin)
         logical     , intent(out) :: errorOccurred
         real(RK)                  :: xbinsize
-        integer(IK)               :: i,ip,thisXbin
+        integer(IK)               :: i, ip, thisXbin, npEffective
+
+        xbinsize = (xmax-xmin) / real(nxbin,kind=RK)
+        Xbin = [ (xmin + real(i-1,kind=RK)*xbinsize,i=1,nxbin) ]
 
         Density = 0._RK
-        xbinsize = (xmax-xmin) / real(nxbin,kind=RK)
-        Xbin = [ (xmin+real(i-1,kind=RK)*xbinsize,i=1,nxbin) ]
-
-        do ip = 1,np
-            thisXbin = getBin(X(ip),xmin,nxbin,xbinsize)
-            Density(thisXbin) = Density(thisXbin) + 1._RK
+        npEffective = 0_IK
+        do ip = 1, np
+            if (X(ip)>=xmin .and. X(ip)<xmax) then
+                npEffective = npEffective + 1_IK
+                thisXbin = getBin(X(ip),xmin,nxbin,xbinsize)
+                Density(thisXbin) = Density(thisXbin) + 1._RK
+            end if
         end do
 
         Xbin = Xbin + 0.5_RK * xbinsize
@@ -3512,7 +3534,7 @@ contains
             errorOccurred = .false.
             return
         elseif(method=="pdf") then
-            Density = Density / real(np,kind=RK)
+            Density = Density / real(npEffective,kind=RK)
             errorOccurred = .false.
         else
             errorOccurred = .true.
@@ -3563,27 +3585,31 @@ contains
         logical     , intent(out) :: errorOccurred
         character(:), allocatable :: method
         real(RK)                  :: xbinsize,ybinsize
-        integer(IK)               :: i,ip,thisXbin,thisYbin
+        integer(IK)               :: i, ip, thisXbin, thisYbin, npEffective
 
         errorOccurred = .false.
 
-        Density = 0._RK
         xbinsize = (xmax-xmin) / real(nxbin,kind=RK)
         ybinsize = (ymax-ymin) / real(nybin,kind=RK)
         Xbin = [ (xmin+real(i-1,kind=RK)*xbinsize,i=1,nxbin) ]
         Ybin = [ (ymin+real(i-1,kind=RK)*ybinsize,i=1,nybin) ]
 
+        Density = 0._RK
+        npEffective = 0_IK
         do ip = 1,np
-            thisXbin = getBin(X(ip),xmin,nxbin,xbinsize)
-            thisYbin = getBin(Y(ip),ymin,nybin,ybinsize)
-            Density(thisYbin,thisXbin) = Density(thisYbin,thisXbin) + 1._RK
+            if (X(ip)>=xmin .and. X(ip)<xmax .and. Y(ip)>=ymin .and. Y(ip)<ymax) then
+                npEffective = npEffective + 1_IK
+                thisXbin = getBin(X(ip),xmin,nxbin,xbinsize)
+                thisYbin = getBin(Y(ip),ymin,nybin,ybinsize)
+                Density(thisYbin,thisXbin) = Density(thisYbin,thisXbin) + 1._RK
+            end if
         end do
 
         Xbin = Xbin + 0.5_RK * xbinsize
         Ybin = Ybin + 0.5_RK * ybinsize
         method = getLowerCase(trim(adjustl(histType)))
         if(method=="pdf") then
-            Density = Density / real(np,kind=RK)
+            Density = Density / real(npEffective,kind=RK)
         elseif(method=="pdf(y|x)") then
             do i = 1,nxbin
                 Density(1:nybin,i) = Density(1:nybin,i) / sum(Density(1:nybin,i))
@@ -3621,6 +3647,11 @@ contains
     !> \remark
     !> If `bmin < x <= bmax` then `x` belongs to this bin.
     !>
+    !> \todo
+    !> The performance and interface of this routine can be significantly improved.
+    !> It is more sensible to pass a contiguous array of bin edges as input instead of `lowerBound` and `binsize`.
+    !> If the input point is not within any bins, an index of zero should be returned.
+    !>
     !> \author
     !> Version 3.0, Sep 1, 2017, 11:12 AM, Amir Shahmoradi, ICES, The University of Texas at Austin.
     pure function getBin(x,lowerBound,nbin,binsize) result(ibin)
@@ -3635,8 +3666,10 @@ contains
         integer(IK)             :: ibin,minbin,midbin,maxbin
 
         if (x<lowerBound .or. x>=lowerBound+nbin*binsize) then
+            ! LCOV_EXCL_START
             ibin = -1_IK
             return
+            ! LCOV_EXCL_STOP
         end if
 
         minbin = 1
@@ -3702,8 +3735,10 @@ contains
         weightCounter = 0_IK
         call indexArray(np,Point,Indx,Err)
         if (Err%occurred) then
+            ! LCOV_EXCL_START
             Quantile = NEGINF_RK
             return
+            ! LCOV_EXCL_STOP
         end if
         if (present(sumWeight)) then
             SortedQuantileDensity = nint( SortedQuantileProbability * sumWeight )

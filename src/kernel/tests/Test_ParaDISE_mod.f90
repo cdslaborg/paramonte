@@ -40,18 +40,18 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [ParaDRAM_mod](@ref paradram_mod).
+!>  \brief This module contains tests of the module [ParaDISE_mod](@ref paradise_mod).
 !>  \author Amir Shahmoradi
 
-#define ParaDXXX_mod ParaDRAM_mod
-#define ParaDXXX_type ParaDRAM_type
-#define test_ParaDXXX test_ParaDRAM
-#define ParaDXXX_NML "&ParaDRAM"
-#define ParaDXXX ParaDRAM
+#define ParaDXXX_mod ParaDISE_mod
+#define ParaDXXX_type ParaDISE_type
+#define test_ParaDXXX test_ParaDISE
+#define ParaDXXX_NML "&ParaDISE"
+#define ParaDXXX ParaDISE
 
-module Test_ParaDRAM_mod
+module Test_ParaDISE_mod
 #include "Test_ParaDXXX_mod.inc.f90"
-end module Test_ParaDRAM_mod
+end module Test_ParaDISE_mod
 
 #undef ParaDXXX_mod
 #undef ParaDXXX_type
