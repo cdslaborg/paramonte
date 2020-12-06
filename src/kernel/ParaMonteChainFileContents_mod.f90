@@ -238,17 +238,21 @@ contains
             elseif (getLowerCase(chainFileForm)=="verbose") then
                 isVerbose = .false.
             else
+                ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME//": Unrecognized chain file form: "//chainFileForm
                 return
+                ! LCOV_EXCL_STOP
             end if
 
             if (isBinary) then
                 thisForm = "unformatted"
                 if (.not. present(ndim) .or. .not. present(lenHeader) .or. .not. present(delimiter)) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": If the chain file is in binary form, chainSize, lenHeader, delimiter, and ndim must be provided by the user."
                     return
+                    ! LCOV_EXCL_STOP
                 end if
             else
                 thisForm = "formatted"
@@ -256,9 +260,11 @@ contains
 
             if (fileIsOpen) then
                 if (chainFileUnit==-1) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": The file located at: "//chainFilePathTrimmed//NLC//"is open, but no unit is connected to the file."//NLC
                     return
+                    ! LCOV_EXCL_STOP
                 else
                     close(chainFileUnit)
                 end if
@@ -280,22 +286,24 @@ contains
 #endif
                         )
                     if (Err%stat/=0) then
+                        ! LCOV_EXCL_START
                         Err%occurred = .true.
                         Err%msg = PROCEDURE_NAME//": Unable to open the file located at: "//chainFilePathTrimmed//NLC
                         return
+                        ! LCOV_EXCL_STOP
                     end if
                     if (allocated(Record%value)) deallocate(Record%value)
                     allocate( character(lenHeader) :: Record%value )
                     read(chainFileUnit) Record%value
                     block
-                        integer(IK)             :: processID
-                        integer(IK)             :: delRejStage
-                        real(RK)                :: meanAccRate
-                        real(RK)                :: adaptation
-                        integer(IK)             :: burninLoc
-                        integer(IK)             :: weight
-                        real(RK)                :: logFunc
-                        real(RK), allocatable   :: State(:)
+                        integer(IK)             :: processID ! LCOV_EXCL_LINE
+                        integer(IK)             :: delRejStage ! LCOV_EXCL_LINE
+                        real(RK)                :: meanAccRate ! LCOV_EXCL_LINE
+                        real(RK)                :: adaptation ! LCOV_EXCL_LINE
+                        integer(IK)             :: burninLoc ! LCOV_EXCL_LINE
+                        integer(IK)             :: weight ! LCOV_EXCL_LINE
+                        real(RK)                :: logFunc ! LCOV_EXCL_LINE
+                        real(RK), allocatable   :: State(:) ! LCOV_EXCL_LINE
                         allocate(State(ndim))
                         chainSizeDefault = 0_IK
                         loopFindChainSizeDefault: do
@@ -305,6 +313,7 @@ contains
                             elseif (is_iostat_end(Err%stat)) then
                                 exit loopFindChainSizeDefault
                             elseif (is_iostat_eor(Err%stat)) then
+                            ! LCOV_EXCL_START
                                 Err%occurred = .true.
                                 Err%msg = PROCEDURE_NAME//": Incomplete record detected while reading the input binary chain file at: "//chainFilePathTrimmed//NLC
                                 return
@@ -312,6 +321,7 @@ contains
                                 Err%occurred = .true.
                                 Err%msg = PROCEDURE_NAME//": IO error occurred while reading the input binary chain file at: "//chainFilePathTrimmed//NLC
                                 return
+                            ! LCOV_EXCL_STOP
                             end if
                         end do loopFindChainSizeDefault
                     end block
@@ -407,16 +417,20 @@ contains
                         if (delimHasBegun) then
                             delimHasEnded = .true.
                         else
+                            ! LCOV_EXCL_START
                             Err%occurred = .true.
                             Err%msg = PROCEDURE_NAME//": The file located at: " // chainFilePathTrimmed //NLC//&
                             "has unrecognizable format. Found "//Record%value(i:i)//" in the first column, while expecting positive integer."//NLC
                             return
+                            ! LCOV_EXCL_STOP
                         end if
                     else
                         if (i==1) then  ! here it is assumed that the first column in chain file always contains integers
+                            ! LCOV_EXCL_START
                             Err%occurred = .true.
                             Err%msg = PROCEDURE_NAME//": The file located at: "//chainFilePathTrimmed//NLC//"has unrecognizable format."//NLC
                             return
+                            ! LCOV_EXCL_STOP
                         else
                             delimHasBegun = .true.
                             delimiterLen = delimiterLen + 1
@@ -427,9 +441,11 @@ contains
                 end do loopSearchDelimiter
 
                 if (.not.(delimHasBegun.and.delimHasEnded)) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": The file located at: "//chainFilePathTrimmed//NLC//"has unrecognizable format. Could not identify the column delimiter."//NLC
                     return
+                    ! LCOV_EXCL_STOP
                 else
                     CFC%delimiter = trim(adjustl(CFC%delimiter(1:delimiterLen)))
                     delimiterLen = len(CFC%delimiter)
@@ -455,9 +471,11 @@ contains
                     end if
                 end do loopFindNumDefCol
                 if (CFC%numDefCol/=NUM_DEF_COL .or. CFC%numDefCol==0_IK) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": Internal error occurred. CFC%numDefCol/=NUM_DEF_COL: " // num2str(CFC%numDefCol) // num2str(NUM_DEF_COL)
                     return
+                    ! LCOV_EXCL_STOP
                 end if
                 CFC%ndim = Record%nPart - NUM_DEF_COL
             end if
@@ -474,9 +492,11 @@ contains
 #endif
                 )
             if (Err%stat/=0) then
+                ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME//": Unable to open the file located at: "//chainFilePathTrimmed //"."//NLC
                 return
+                ! LCOV_EXCL_STOP
             end if
 
             ! first read the column headers
@@ -665,11 +685,13 @@ contains
             else
                 CFC%Count%verbose = chainSizeDefault
                 if (CFC%Count%verbose/=sum(CFC%Weight(1:CFC%Count%compact))) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg =   PROCEDURE_NAME//": Internal error occurred. CountVerbose/=sum(Weight): "// &
                                 num2str(CFC%Count%verbose)//" /= "//num2str(sum(CFC%Weight(1:CFC%Count%compact)))// &
                                 ", CFC%Count%compact = "//num2str(CFC%Count%compact)
                     return
+                    ! LCOV_EXCL_STOP
                 elseif (.not. present(targetChainSize)) then
                     CFC%ProcessID     = CFC%ProcessID   (1:CFC%Count%compact)
                     CFC%DelRejStage   = CFC%DelRejStage (1:CFC%Count%compact)
@@ -690,9 +712,11 @@ contains
 
         else blockFileExistence
 
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME//": The chain file does not exist in the given file path: "//chainFilePathTrimmed
             return
+            ! LCOV_EXCL_STOP
 
         end if blockFileExistence
 
@@ -778,9 +802,12 @@ contains
             if ( present(chainFileFormat) ) then
                 write(record,chainFileFormat) (CFC%ColHeader(i)%record, i=1,CFC%numDefCol+ndim)
             else
+                ! LCOV_EXCL_START
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
                 call abort(CFC%Err)
+                return
+                ! LCOV_EXCL_STOP
             end if
         end if
         CFC%lenHeader = len_trim(adjustl(record))
@@ -823,9 +850,12 @@ contains
             if ( present(chainFileFormat) ) then
                 write(chainFileUnit,chainFileFormat) (CFC%ColHeader(i)%record, i=1,CFC%numDefCol+ndim)
             else
+                ! LCOV_EXCL_START
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
                 call abort(CFC%Err)
+                return
+                ! LCOV_EXCL_STOP
             end if
         end if
     end subroutine writeHeader
@@ -874,23 +904,31 @@ contains
         elseif (chainFileForm=="verbose") then
             isVerbose = .true.
         else
+            ! LCOV_EXCL_START
             CFC%Err%occurred = .true.
             CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. Unknown chain file format: "//chainFileForm
+            ! LCOV_EXCL_STOP
         end if
 
         if ( .not. isBinary .and. .not. present(chainFileFormat) ) then
+                ! LCOV_EXCL_START
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
+                ! LCOV_EXCL_STOP
         end if
 
         if ( isVerbose .and. .not. present(adaptiveUpdatePeriod) ) then
+                ! LCOV_EXCL_START
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For verbose chain files, adaptiveUpdatePeriod must be given."
+                ! LCOV_EXCL_STOP
         end if
 
         if (CFC%Err%occurred) then
+            ! LCOV_EXCL_START
             call abort(CFC%Err)
             return
+            ! LCOV_EXCL_STOP
         end if
 
         call CFC%writeHeader(ndim,chainFileUnit,isBinary,chainFileFormat)

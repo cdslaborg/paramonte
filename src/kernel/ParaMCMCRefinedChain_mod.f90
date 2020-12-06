@@ -490,7 +490,7 @@ contains
         integer(IK)     , intent(out), allocatable  :: RefinedWeight(:)
         integer(IK)     , intent(in) , optional     :: refinedChainSize
         type(Count_type), intent(out)               :: PointCount
-        integer(IK)                                 :: ip, ipRefined, npRefined, UpdatedWeight(np)
+        integer(IK)                                 :: ip, ipRefined, npRefined, UpdatedWeight(np) ! LCOV_EXCL_LINE
         UpdatedWeight = getRefinedWeight(np,Weight,skip,refinedChainSize)
         npRefined = count(UpdatedWeight>0)
         allocate( RefinedChain(0:nd,npRefined) , RefinedWeight(npRefined) )
