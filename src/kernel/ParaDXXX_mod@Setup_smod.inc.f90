@@ -887,10 +887,12 @@ contains
                                             , comSecTime = self%Stats%avgCommTimePerFunCall & ! LCOV_EXCL_LINE
                                             )
                     if (ForkJoin%Err%occurred) then
+                        ! LCOV_EXCL_START
                         self%Err = ForkJoin%Err
                         self%Err%msg = PROCEDURE_NAME // self%Err%msg
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                         return
+                        ! LCOV_EXCL_STOP
                     end if
                 end if ! otherwise, use the previously-generated ForkJoin
 
@@ -898,7 +900,7 @@ contains
 
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.numProcess"
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) ! LCOV_EXCL_LINE
                 if (isForkJoinParallelism) then
                     write(self%LogFile%unit,GENERIC_TABBED_FORMAT) ForkJoin%Speedup%Maximum%nproc
                 else
@@ -911,7 +913,7 @@ contains
 
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.speedup"
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) ! LCOV_EXCL_LINE
                 if (isForkJoinParallelism) then
                     write(self%LogFile%unit,GENERIC_TABBED_FORMAT) ForkJoin%Speedup%Maximum%value
                 else
@@ -928,7 +930,7 @@ contains
 
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
                 write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) "stats.parallelism.optimal.absolute.scaling.strong.speedup"
-                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
+                write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT) ! LCOV_EXCL_LINE
                 if (isForkJoinParallelism) then
                     do imageCount = 1, ForkJoin%Speedup%count, 10
                         write(self%LogFile%unit,formatScaling) ForkJoin%Speedup%Scaling(imageCount:min(imageCount+9_IK,ForkJoin%Speedup%count))
@@ -1060,7 +1062,7 @@ contains
                                             , sumWeight = self%Stats%Chain%count & ! LCOV_EXCL_LINE
                                             , nd = ndim & ! LCOV_EXCL_LINE
                                             , Point = self%Chain%State(1:ndim,self%Stats%BurninLoc%compact:self%Chain%count%compact) & ! LCOV_EXCL_LINE
-                                            , Weight = self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact) &
+                                            , Weight = self%Chain%Weight(self%Stats%BurninLoc%compact:self%Chain%count%compact) & ! LCOV_EXCL_LINE
                                             , CovMatUpper = self%Stats%Chain%CovMat & ! LCOV_EXCL_LINE
                                             , Mean = self%Stats%Chain%Mean & ! LCOV_EXCL_LINE
                                             )
@@ -1262,9 +1264,9 @@ contains
 
             blockSampleFileGeneration: if (self%SpecBase%SampleSize%val==0_IK) then
 
-                call self%note  ( prefix        = self%brand        &
-                                , outputUnit    = self%LogFile%unit &
-                                , newline       = NLC               &
+                call self%note  ( prefix        = self%brand        & ! LCOV_EXCL_LINE
+                                , outputUnit    = self%LogFile%unit & ! LCOV_EXCL_LINE
+                                , newline       = NLC               & ! LCOV_EXCL_LINE
                                 , msg           = "Skipping the generation of the decorrelated sample and output file, as requested by the user..." )
 
             else blockSampleFileGeneration
@@ -1275,9 +1277,9 @@ contains
 
                 ! report to the report-file(s)
 
-                call self%note  ( prefix        = self%brand        &
-                                , outputUnit    = self%LogFile%unit &
-                                , newline       = NLC               &
+                call self%note  ( prefix        = self%brand        & ! LCOV_EXCL_LINE
+                                , outputUnit    = self%LogFile%unit & ! LCOV_EXCL_LINE
+                                , newline       = NLC               & ! LCOV_EXCL_LINE
                                 , msg           = "Generating the output " // self%SampleFile%suffix // " file:"//NLC // self%SampleFile%Path%original )
 
 
@@ -1285,10 +1287,10 @@ contains
 
                     ! print the message for the generating the output sample file on the first image
 
-                    call self%note  ( prefix     = self%brand       &
-                                    , outputUnit = output_unit      &
-                                    , newline    = NLC              &
-                                    , marginBot  = 0_IK             &
+                    call self%note  ( prefix     = self%brand       & ! LCOV_EXCL_LINE
+                                    , outputUnit = output_unit      & ! LCOV_EXCL_LINE
+                                    , newline    = NLC              & ! LCOV_EXCL_LINE
+                                    , marginBot  = 0_IK             & ! LCOV_EXCL_LINE
                                     , msg        = "Generating the output " // self%SampleFile%suffix // " file:" )
 
                     call self%note  ( prefix     = self%brand       &
@@ -1463,8 +1465,7 @@ contains
                             &likely contains duplicates and is not independently and identically distributed (i.i.d.).\nTo get the optimal &
                             &size in the future runs, set sampleSize = -1, or drop it from the input list."
                     else
-                        msg = msg // &
-                            "How lucky that could be! The user-requested sample size (" // num2str(self%SpecBase%SampleSize%abs) // ") &
+                        msg = msg // "How lucky that could be! The user-requested sample size (" // num2str(self%SpecBase%SampleSize%abs) // ") &
                             &is equal to the potentially-optimal i.i.d. sample size determined by the "//self%name//" sampler."
                     end if
                 end if

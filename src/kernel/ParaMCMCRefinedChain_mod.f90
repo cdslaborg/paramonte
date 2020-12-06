@@ -197,9 +197,11 @@ contains
         elseif (index(sampleRefinementMethodDefaultLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR_METHOD_NAME))>0 .or. index(sampleRefinementMethodDefaultLowerCase,"cumsum")>0) then
             Method%isMaxCumSumAutoCorr = .true.
         else
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Unknown unsupported IAC computation method name: " // sampleRefinementMethodDefault
             return
+            ! LCOV_EXCL_STOP
         end if
 
         ! define the chain types to use for the AIC computation
@@ -235,9 +237,11 @@ contains
                 RefinedChain%ColHeader(i)%record = CFC%ColHeader(i+NUM_DEF_COL)%record
             end do
         else
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Internal error occurred. CFC%ColHeader is NULL."
             return
+            ! LCOV_EXCL_STOP
         end if
 
         if (present(burninLoc)) then
@@ -255,9 +259,11 @@ contains
         ! check if there are more than 1 sample points in the burnin-subtracted CFC
 
         if (RefinedChain%Count(RefinedChain%numRefinement)%compact==0_IK) then
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": The size of the refined sample is zero."
             return
+            ! LCOV_EXCL_STOP
         elseif (RefinedChain%Count(RefinedChain%numRefinement)%compact==1_IK) then
             if (allocated(RefinedChain%Weight)) deallocate(RefinedChain%Weight)
             allocate(RefinedChain%Weight(RefinedChain%Count(RefinedChain%numRefinement)%compact))
@@ -321,8 +327,10 @@ contains
                 elseif (Method%isMed) then
                     call getMedian(lenArray=ndimPlusOne,Array=RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement),median=integratedAutoCorrTime,Err=Err)
                     if (Err%occurred) then
+                        ! LCOV_EXCL_START
                         Err%msg = PROCEDURE_NAME//Err%msg
                         return
+                        ! LCOV_EXCL_STOP
                     end if
                 elseif (Method%isMax) then
                     integratedAutoCorrTime = maxval( RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement) )
@@ -586,8 +594,10 @@ contains
 
         call getNumRecordInFile(filePath=sampleFilePath,numRecord=RefinedChain%Count(RefinedChain%numRefinement)%verbose,Err=RefinedChain%Err)
         if (RefinedChain%Err%occurred) then
+            ! LCOV_EXCL_START
             RefinedChain%Err%msg = PROCEDURE_NAME // RefinedChain%Err%msg
             return
+            ! LCOV_EXCL_STOP
         end if
 
         RefinedChain%Count(RefinedChain%numRefinement)%verbose = RefinedChain%Count(RefinedChain%numRefinement)%verbose - 1_IK ! remove header from the count
@@ -606,12 +616,12 @@ contains
         read(sampleFileUnit,"(A)") Record%value
         Record%Parts = Record%split(Record%value,delimiter,Record%nPart)
         if (Record%nPart/=ndim+1_IK) then
-        ! LCOV_EXCL_START
+            ! LCOV_EXCL_START
             RefinedChain%Err%occurred = .true.
             RefinedChain%Err%msg = PROCEDURE_NAME // ": The number of header columns ("//num2str(Record%nPart)//") is not equal to ndim + 1: "//num2str(ndim+1_IK)
             return
+            ! LCOV_EXCL_STOP
         end if
-        ! LCOV_EXCL_STOP
 
         allocate(RefinedChain%ColHeader(0:ndim))
         do i = 0, ndim

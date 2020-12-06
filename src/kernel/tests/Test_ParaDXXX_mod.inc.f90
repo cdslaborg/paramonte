@@ -81,6 +81,10 @@ contains
 
         call Test%run(test_SpecBase_RandomSeed_type_1, "test_SpecBase_RandomSeed_type_1")
         call Test%run(test_SpecBase_RandomSeed_type_2, "test_SpecBase_RandomSeed_type_2")
+        call Test%run(test_SpecBase_SampleSize_type_1, "test_SpecBase_SampleSize_type_1")
+        call Test%run(test_SpecBase_SampleSize_type_2, "test_SpecBase_SampleSize_type_2")
+        call Test%run(test_SpecBase_SampleSize_type_3, "test_SpecBase_SampleSize_type_3")
+        call Test%run(test_SpecBase_SampleSize_type_4, "test_SpecBase_SampleSize_type_4")
         call Test%run(test_SpecBase_OutputDelimiter_type_1, "test_SpecBase_OutputDelimiter_type_1")
         call Test%run(test_SpecBase_OutputDelimiter_type_2, "test_SpecBase_OutputDelimiter_type_2")
         call Test%run(test_SpecBase_OutputDelimiter_type_3, "test_SpecBase_OutputDelimiter_type_3")

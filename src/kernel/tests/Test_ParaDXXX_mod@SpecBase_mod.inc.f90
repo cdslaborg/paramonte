@@ -99,7 +99,7 @@
                             , inputFile = ParaDXXX_NML//" chainFileFormat = 'asCII' /" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_3" &
                             )
-        assertion = assertion .and. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_SpecBase_ChainFileFormat_type_3
 
@@ -911,6 +911,93 @@
         assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_SpecBase_RestartFileFormat_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleSize`.
+    function test_SpecBase_SampleSize_type_1() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDXXX_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_SampleSize_type_1" &
+                            , sampleSize = -1_IK &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_SampleSize_type_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleSize`.
+    function test_SpecBase_SampleSize_type_2() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDXXX_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_SampleSize_type_2" &
+                            , sampleSize = -2_IK &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_SampleSize_type_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleSize`.
+    function test_SpecBase_SampleSize_type_3() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDXXX_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_SampleSize_type_3" &
+                            , sampleSize = 200_IK &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_SampleSize_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleSize`.
+    function test_SpecBase_SampleSize_type_4() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion, exist
+        integer             :: iostat
+        type(ParaDXXX_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_SampleSize_type_4" &
+                            , sampleSize = 0_IK &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+        inquire(file = PD%SampleFile%Path%original, exist = exist, iostat = iostat)
+        assertion = assertion .and. .not. exist .and. iostat == 0
+#endif
+    end function test_SpecBase_SampleSize_type_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
