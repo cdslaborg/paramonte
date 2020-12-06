@@ -66,10 +66,10 @@
     type, abstract :: ProposalAbstract_type
     contains
         procedure(getNew_proc)                  , nopass    , deferred  :: getNew
+#if defined PARADISE
         procedure(getLogProb_proc)              , nopass    , deferred  :: getLogProb
+#endif
         procedure(doAdaptation_proc)            , nopass    , deferred  :: doAdaptation
-       !procedure(readRestartFileAscii_proc)    , nopass    , deferred  :: readRestartFileAscii
-       !procedure(writeRestartFileAscii_proc)   , nopass    , deferred  :: writeRestartFileAscii
 #if defined CAF_ENABLED || defined MPI_ENABLED
         procedure(bcastAdaptation_proc)         , nopass    , deferred  :: bcastAdaptation
 #endif
