@@ -408,5 +408,67 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> \brief
+    !> Return the density function value of the uncorrelated Multivariate Normal distribution for the given input
+    !> location specified by the vector `Point` of length `ndim`.
+#if defined CFI_ENABLED
+    function getLogFuncMVN(ndim,Point) result(logFunc) bind(C)
+#else
+    function getLogFuncMVN(ndim,Point) result(logFunc)
+#endif
+        ! This function returns the probability density function of the standard multivariate normal distribution of ndim dimensions.
+        !use Statistics_mod, only: getLogProbMixMVN
+        use Constants_mod, only : IK, RK
+        implicit none
+
+        !! Standard MultiVariate Normal (SMVN) specifications: https://en.wikipedia.org/wiki/Multivariate_normal_distribution
+        !real(RK), parameter :: LOG_SMVN_COEF = NDIM*log(1._RK/sqrt(2._RK*acos(-1._RK))) ! log(1/sqrt(2*Pi)^ndim)
+
+#if defined CFI_ENABLED
+        integer(IK), intent(in), value  :: ndim
+#else
+        integer(IK), intent(in)         :: ndim
+#endif
+        real(RK), intent(in)            :: Point(ndim)
+        real(RK)                        :: logFunc
+
+        !block
+        !    use System_mod, only: sleep
+        !    use Err_mod, only: Err_type
+        !    type(Err_type) :: Err
+        !    call sleep(seconds=5000.e-6_RK,Err=Err)
+        !end block
+
+        !block
+        !    real(RK), allocatable :: unifrnd(:,:)
+        !    allocate(unifrnd(200,20))
+        !    call random_number(unifrnd)
+        !    logFunc = sum(unifrnd) - 0.5_RK * sum(Point**2) - sum(unifrnd)
+        !    deallocate(unifrnd)
+        !end block
+
+        logFunc = -sum(Point**2)
+
+       !block
+       !    integer(IK), parameter :: nmode = 2_IK
+       !    real(RK) :: LogAmplitude(nmode), MeanVec(nmode), InvCovMat(nmode), LogSqrtDetInvCovMat(nmode)
+       !    LogAmplitude        = [1._RK, 1._RK]
+       !    MeanVec             = [0._RK, 7._RK]
+       !    InvCovMat           = [1._RK,1._RK]
+       !    LogSqrtDetInvCovMat = [1._RK,1._RK]
+       !    logFunc = getLogProbGausMix ( nmode = 2_IK &
+       !                                , nd = 1_IK &
+       !                                , np = 1_IK &
+       !                                , LogAmplitude = LogAmplitude &
+       !                                , MeanVec = MeanVec &
+       !                                , InvCovMat = InvCovMat &
+       !                                , LogSqrtDetInvCovMat = LogSqrtDetInvCovMat &
+       !                                , Point = Point(1) &
+       !                                )
+       !end block
+    end function getLogFuncMVN
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 end module Test_mod ! LCOV_EXCL_LINE
 ! LCOV_EXCL_STOP
