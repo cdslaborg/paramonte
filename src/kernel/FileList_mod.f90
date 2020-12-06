@@ -135,7 +135,6 @@ contains
         use System_mod, only: OS_type, executeCmd, sleep !, removeFile
         use Constants_mod, only: IK, RK, MAX_REC_LEN
         use String_mod, only: getLowerCase, num2str
-        !use Path_mod, only: winifyPath, linifyPath
         use JaggedArray_mod, only: CharVec_type
         use DateTime_mod, only: DateTime_type
         use Err_mod, only: Err_type
@@ -198,9 +197,7 @@ contains
                 call OS%Shell%query()
                 if (OS%Shell%Err%occurred) then
                     Err = OS%Shell%Err
-                    Err%msg =   PROCEDURE_NAME // &
-                                ": Error occurred while attempting to query OS type in search of files containing '" // &
-                                search // "'.\n" // Err%msg
+                    Err%msg = PROCEDURE_NAME//": Error occurred while attempting to query OS type in search of files containing '"//search//"'.\n"//Err%msg
                     return
                 end if
             end if
@@ -221,9 +218,7 @@ contains
                 end if
                 if (Err%occurred) then
                 ! LCOV_EXCL_START
-                    Err%msg =   PROCEDURE_NAME // &
-                                ": Error occurred while attempting to query OS type in search of files containing '" // &
-                                search // "'.\n" // Err%msg
+                    Err%msg = PROCEDURE_NAME//": Error occurred while attempting to query OS type in search of files containing '"//search//"'.\n"//Err%msg
                     return
                 ! LCOV_EXCL_STOP
                 end if
@@ -233,7 +228,7 @@ contains
 
         if (isWindowsShell) then
 
-            !call winifyPath(search,searchModified,Err)
+            !call winify(search,searchModified,Err)
             !if (Err%occurred) then
             !    Err%msg =   PROCEDURE_NAME // ": Error occurred while attempting to modify searchStr='" // search // &
             !                "' according to the OS type.\n" // Err%msg

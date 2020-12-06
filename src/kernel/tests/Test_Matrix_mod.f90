@@ -45,7 +45,7 @@
 
 module Test_Matrix_mod
 
-    use Matrix_mod
+    use Matrix_mod ! LCOV_EXCL_LINE
     use Err_mod, only: Err_type
     use Test_mod, only: Test_type
     implicit none

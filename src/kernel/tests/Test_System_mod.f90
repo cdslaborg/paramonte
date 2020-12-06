@@ -301,18 +301,21 @@ contains
         assertion = .not. OS%Err%occurred
         if (.not. assertion) return
 
+#if defined OS_IS_WINDOWS
+        if (OS%Shell%isCMD .or. OS%Shell%isPowerShell) then
+            SysCmd = SysCmd_type("dir > nul 2>&1", .true.)
+            assertion = .not. SysCmd%Err%occurred
+            if (.not. assertion) return
+            SysCmd = SysCmd_type("dir > nul 2>&1", .false.)
+            assertion = .not. SysCmd%Err%occurred
+            if (.not. assertion) return
+        end if
+#endif
         if (OS%Shell%isUnix) then
             SysCmd = SysCmd_type("ls >/dev/null 2>&1", .true.)
             assertion = .not. SysCmd%Err%occurred
             if (.not. assertion) return
             SysCmd = SysCmd_type("ls >/dev/null 2>&1", .false.)
-            assertion = .not. SysCmd%Err%occurred
-            if (.not. assertion) return
-        else
-            SysCmd = SysCmd_type("dir > nul 2>&1", .true.)
-            assertion = .not. SysCmd%Err%occurred
-            if (.not. assertion) return
-            SysCmd = SysCmd_type("dir > nul 2>&1", .false.)
             assertion = .not. SysCmd%Err%occurred
             if (.not. assertion) return
         end if
@@ -335,10 +338,13 @@ contains
         assertion = .not. OS%Err%occurred
         if (.not. assertion) return
 
+#if defined OS_IS_WINDOWS
+        if (OS%Shell%isCMD .or. OS%Shell%isPowerShell) then
+            command = "dir > nul 2>&1"
+        end if
+#endif
         if (OS%Shell%isUnix) then
             command = "ls >/dev/null 2>&1"
-        else
-            command = "dir > nul 2>&1"
         end if
 
         call executeCmd(command,wait,exitstat,OS%Err)
@@ -361,10 +367,13 @@ contains
         assertion = .not. OS%Err%occurred
         if (.not. assertion) return
 
+#if defined OS_IS_WINDOWS
+        if (OS%Shell%isCMD .or. OS%Shell%isPowerShell) then
+            command = "dir > nul 2>&1"
+        end if
+#endif
         if (OS%Shell%isUnix) then
             command = "ls >/dev/null 2>&1"
-        else
-            command = "dir > nul 2>&1"
         end if
 
         call executeCmd(command)

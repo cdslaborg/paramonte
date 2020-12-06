@@ -94,19 +94,19 @@ module Path_mod
 
     ! The `Path_type` class.
     type :: Path_type
-        character(:), allocatable       :: original !< The original path.
-        character(:), allocatable       :: modified !< The modified path based on the OS/platform type.
-        character(:), allocatable       :: dir      !< The directory segment of the path.
-        character(:), allocatable       :: name     !< The name of the file, if any exists in the path.
-        character(:), allocatable       :: base     !< The base of the file name, if any exists in the path.
-        character(:), allocatable       :: ext      !< The file extension, if any exists in the path (including the dot separator).
-        character(1)                    :: slashOS  !< The type of the separator (forward/backward slash) with which the original path is *modified*.
-        type(Err_type)                  :: Err      !< An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
+        character(:), allocatable       :: original     !< The original path.
+        character(:), allocatable       :: modified     !< The modified path based on the OS/platform type.
+        character(:), allocatable       :: dir          !< The directory segment of the path.
+        character(:), allocatable       :: name         !< The name of the file, if any exists in the path.
+        character(:), allocatable       :: base         !< The base of the file name, if any exists in the path.
+        character(:), allocatable       :: ext          !< The file extension, if any exists in the path (including the dot separator).
+        character(1)                    :: shellSlash   !< The type of the separator (forward/backward slash) with which the original path is *modified*.
+        type(Err_type)                  :: Err          !< An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
     contains
-        procedure, pass                 :: query => queryPath
-        procedure, nopass               :: modify => modifyPath, getSlashOS
+        procedure, pass                 :: query
+        procedure, nopass               :: modify
         procedure, nopass               :: getDirNameExt, getDirFullName, getNameExt
-        procedure, nopass               :: winify => winifyPath, linify => linifyPath
+        procedure, nopass               :: winify, linify
         procedure, nopass               :: mkdir
     end type Path_type
 
@@ -153,9 +153,9 @@ contains
     !>
     !> \warning
     !> On output, do not forget to check the value `Path%%Err%%occurred` before using the output `Path`.
-    subroutine queryPath(Path,inputPath,OS)
+    subroutine query(Path,inputPath,OS)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: queryPath
+        !DEC$ ATTRIBUTES DLLEXPORT :: query
 #endif
         use Err_mod, only: Err_type
         use Constants_mod, only: IK
@@ -165,9 +165,9 @@ contains
         class(Path_type), intent(inout)     :: Path
         character(*), intent(in), optional  :: inputPath
         type(OS_type), intent(in), optional :: OS
-        logical                             :: OSisWindows
+        logical                             :: isUnixShell
 
-        character(*), parameter             :: PROCEDURE_NAME = "@queryPath()"
+        character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME//"@query()"
 
         Path%Err%occurred = .false.
         Path%Err%msg = ""
@@ -175,56 +175,58 @@ contains
         if (present(inputPath)) then
             Path%original = trim(adjustl(inputPath))
         elseif (.not.allocated(Path%original)) then
+        ! LCOV_EXCL_START
             Path%Err%occurred = .true.
-            Path%Err%msg = PROCEDURE_NAME // ": Error occurred. Neither inputPath argument is given as input,&
-                                             & nor Path%original is allocated to construct the Path object."
+            Path%Err%msg = PROCEDURE_NAME//": Error occurred. Neither inputPath argument is given as input, nor Path%original is allocated to construct the Path object."
             return
+        ! LCOV_EXCL_STOP
         else
             if ( len(trim(adjustl(Path%original)))==0 ) then
+            ! LCOV_EXCL_START
                 Path%Err%occurred = .true.
-                Path%Err%msg = PROCEDURE_NAME // ": Error occurred. Neither inputPath argument is given as input,&
-                                                 & nor Path%original has a non-blank length > 0 to construct the Path object."
+                Path%Err%msg = PROCEDURE_NAME//": Error occurred. Neither inputPath argument is given as input, nor Path%original has a non-blank length > 0 to construct the Path object."
                 return
             end if
+            ! LCOV_EXCL_STOP
         end if
 
         if (present(OS)) then
-            Path%slashOS = OS%slash
-            OSisWindows = OS%isWindows
+            Path%shellSlash = OS%Shell%slash
+            isUnixShell = OS%Shell%isUnix
         else
             block
                 type(OS_type) :: OS
                 call OS%query()
                 if (OS%Err%occurred) then
+                ! LCOV_EXCL_START
                     Path%Err%stat = OS%Err%stat
                     Path%Err%occurred = OS%Err%occurred
                     Path%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type.\n" // Path%Err%msg
                 end if
-                Path%slashOS = OS%slash
-                OSisWindows = OS%isWindows
+                ! LCOV_EXCL_STOP
+                Path%shellSlash = OS%Shell%slash
+                isUnixShell = OS%Shell%isUnix
             end block
             if (Path%Err%occurred) return
         end if
 
-        if (OSisWindows) then
-            call winifyPath(Path%original,Path%modified,Path%Err)
-            if (Path%Err%occurred) then
-                Path%Err%msg = PROCEDURE_NAME//": Error occurred while making path='"//Path%original//"' compatible with Windows OS.\n"//Path%Err%msg
-                return
-            end if
-        else
+        if (isUnixShell) then
             ! if the path contains both / and \, then assume that it is already in linux style
             if (index(Path%original,"/")==0) then ! path is given in Windows style
-                call linifyPath(Path%original,Path%modified)
+                Path%modified = linify(Path%original)
             else
                 Path%modified = Path%original
             end if
+#if defined OS_IS_WINDOWS
+        else
+            Path%modified = winify(Path%original)
+#endif
         end if
 
-        call Path%getDirNameExt( Path%modified, Path%slashOS, Path%dir, Path%name, Path%ext )
+        call Path%getDirNameExt( Path%modified, Path%shellSlash, Path%dir, Path%name, Path%ext )
         Path%base = Path%dir // Path%name
 
-    end subroutine queryPath
+    end subroutine query
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -233,8 +235,9 @@ contains
     !> Convert the the input path to the modified path according to the rules of the Windows operating system.
     !>
     !> \param[in]       inputPath   :   The input path. If provided, it will overwrite `Path%original`.
-    !> \param[out]      outputPath  :   The output modified path which conforms to the rules of the Windows OS.
-    !> \param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
+    !>
+    !> \return
+    !> `outputPath` : The output modified path which conforms to the rules of the Windows OS.
     !>
     !> \warning
     !> This code assumes that the input path is a Linux path. Windows paths like `.\(paramonte)\paramonte.nml` will be horribly
@@ -243,26 +246,25 @@ contains
     !> \warning
     !> This routine strictly assumes that there is no dangling `\` in the input Linux path, and if there is,
     !> then either it is used to escape the special shell characters, or otherwise, the path is a Windows path.
-    pure subroutine winifyPath(inputPath,outputPath,Err)!,ignoreWindowsReservedChars)
+    pure function winify(inputPath) result(outputPath) !,Err)!,ignoreWindowsReservedChars)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: winifyPath
+        !DEC$ ATTRIBUTES DLLEXPORT :: winify
 #endif
-        use Err_mod, only: Err_type
+       !use Err_mod, only: Err_type
         use Constants_mod, only: IK
         use String_mod, only: replaceStr
         implicit none
         character(len=*), intent(in)            :: inputPath
-        character(:), allocatable, intent(out)  :: outputPath
-        type(Err_type), intent(out)             :: Err
+        character(:), allocatable               :: outputPath
+       !type(Err_type), intent(out)             :: Err
        !logical, intent(in), optional           :: ignoreWindowsReservedChars
        !logical                                 :: reservedCharInspectionNeeded
-        character(:), allocatable               :: outputPathNew
-        integer(IK)                             :: i, j
+       !character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME//"@winify()"
+        character(:), allocatable               :: outputPathDummy
+        integer(IK)                             :: i, j, outputPathLen
 
-        character(*), parameter                 :: PROCEDURE_NAME = "@winifyPath()"
-
-        Err%occurred = .false.
-        Err%msg = ""
+        !Err%occurred = .false.
+        !Err%msg = ""
 
         ! check if any character in the input path is Windows Reserved Character:
 
@@ -288,34 +290,37 @@ contains
 
         ! note that multiple \ character in sequence is meaningless in Linux (basically \\ reduces to \),
         ! and in Windows means the same as a single \. Therefore, reduce all sequential \ characters to a single \.
+
         outputPath = trim(adjustl(inputPath))
         loopRemoveMultipleSlash: do
-            outputPathNew = replaceStr(outputPath,"\\","\")
-            if (outputPathNew==outputPath) exit loopRemoveMultipleSlash
-            outputPath = outputPathNew
+            outputPathDummy = replaceStr(outputPath,"\\","\")
+            if (outputPathDummy==outputPath) exit loopRemoveMultipleSlash
+            outputPath = outputPathDummy
         end do loopRemoveMultipleSlash
+        outputPathLen = len(outputPath)
 
         ! Now check for the presence of any Linux Shell Escape Character in the input path without a preceding \.
         ! If there is any, this would imply that the input path is a Windows path,
         ! otherwise a escape character without preceding \ would be invalid in Linux.
-        do i = 1, len(SHELL_ESCAPE_CHAR)
-            if (SHELL_ESCAPE_CHAR(i:i)/="\") then
-                do j = 1, len(outputPath)
-                    if (outputPath(j:j)==SHELL_ESCAPE_CHAR(i:i)) then
-                        if (j==1) then
-                            !write(*,*) "secLoc = 1"
-                            return  ! it is a windows path, so no need for further winifying
-                        elseif (outputPath(j-1:j-1)/="\") then
-                            !write(*,*) "secLoc= ", j-1
-                            return  ! it is a windows path, so no need for further winifying
+
+        if (outputPathLen==1_IK) then
+            if (outputPath=="/") outputPath = "\"
+            return
+        else
+            do i = 1, len(SHELL_ESCAPE_CHAR)
+                if (SHELL_ESCAPE_CHAR(i:i)/="\") then
+                    do j = 2, outputPathLen
+                        if (outputPath(j:j)==SHELL_ESCAPE_CHAR(i:i)) then
+                            if (outputPath(j-1:j-1)/="\") return ! no escaping has occurred. Therefore, it is a windows path, there is no need for further winifying.
                         end if
-                    end if
-                end do
-            end if
-        end do
+                    end do
+                end if
+            end do
+        end if
 
         ! By now, there is no way but to assume that the path is indeed a Linux path
         ! Thus, correct for any Linux Shell Escape Character in the input path:
+
         do i = 1, len(SHELL_ESCAPE_CHAR)
             outputPath = replaceStr(outputPath,"\"//SHELL_ESCAPE_CHAR(i:i),SHELL_ESCAPE_CHAR(i:i))
         end do
@@ -325,12 +330,13 @@ contains
         !outputPath = replaceStr(outputPath,"\","")
 
         ! check if the file name contains white space. if so, put the entire name in quotations
+
         if ( index(outputPath," ") /= 0 ) then
             outputPath = '"' // outputPath  // '"'
         end if
         outputPath = replaceStr(outputPath,"/","\")
 
-    end subroutine winifyPath
+    end function winify
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -338,21 +344,21 @@ contains
     !> This `pure` procedure is a static method of the class [Path_type](@ref path_type).\n
     !> Convert the the input path to the modified path according to the rules of the Unix operating systems.
     !>
-    !> \param[in]       inputPath   :   The input path. If provided, it will overwrite `Path%original`.
-    !> \param[out]      outputPath  :   The output modified path which conforms to the rules of the Unix OS.
-    pure subroutine linifyPath(inputPath,outputPath)
+    !> \param[in]   inputPath   :   The input path. If provided, it will overwrite `Path%original`.
+    !>
+    !> \return
+    !> `outputPath` : The output modified path which conforms to the rules of the Unix OS.
+    pure function linify(inputPath) result(outputPath)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: linifyPath
+        !DEC$ ATTRIBUTES DLLEXPORT :: linify
 #endif
         use Constants_mod, only: IK
         use String_mod, only: replaceStr
         implicit none
-        character(*), intent(in)                :: inputPath
-        character(:), allocatable, intent(out)  :: outputPath
-        character(:), allocatable               :: outputPathNew
-        integer(IK)                             :: i
-
-        character(*), parameter                 :: PROCEDURE_NAME = "@linifyPath()"
+        character(*), intent(in)    :: inputPath
+        character(:), allocatable   :: outputPath
+        character(:), allocatable   :: outputPathDummy
+        integer(IK)                 :: i
 
         ! check if the path is sandwiched between quotation marks. If so, remove them:
         outputPath = trim(adjustl(inputPath))
@@ -360,68 +366,27 @@ contains
         if (i==0) return
         if ( i>1 ) then
             if ( (outputPath(1:1)=='"' .and. outputPath(i:i)=='"') .or. (outputPath(1:1)=="'" .and. outputPath(i:i)=="'") )then
-                outputPathNew = outputPath(2:i-1)
+                outputPathDummy = outputPath(2:i-1)
             else
-                outputPathNew = outputPath
+                outputPathDummy = outputPath
             end if
         end if
 
         ! First change all backslashes to forward slash:
-        outputPath = replaceStr(outputPathNew,"\","/")
+        outputPath = replaceStr(outputPathDummy,"\","/")
 
         ! Now correct for any Linux Shell Escape Character in the input path:
         do i = 1, len(SHELL_ESCAPE_CHAR)
             if (SHELL_ESCAPE_CHAR(i:i)/="\") then
-                outputPathNew = replaceStr(outputPath,SHELL_ESCAPE_CHAR(i:i),"\"//SHELL_ESCAPE_CHAR(i:i))
-                outputPath = outputPathNew
+                outputPathDummy = replaceStr(outputPath,SHELL_ESCAPE_CHAR(i:i),"\"//SHELL_ESCAPE_CHAR(i:i))
+                outputPath = outputPathDummy
             end if
         end do
 
         !! Now correct for any white spaces in outputPath:
         !outputPath = replaceStr(outputPath," ","\ ")
 
-    end subroutine linifyPath
-
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    !> \brief
-    !> This procedure is a static method of the class [Path_type](@ref path_type).\n
-    !> Return the slash type of the OS (backslash in Windows, forward-slash in Unix OS).
-    !>
-    !> \param[out]  slashOS :   The slash separator character of length 1, used by the OS to separate segments of the paths.
-    !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
-    subroutine getSlashOS(slashOS,Err)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getSlashOS
-#endif
-        use Err_mod, only: Err_type
-        use System_mod, only: OS_type
-        use String_mod, only: replaceStr
-        implicit none
-        character(1)  , intent(out) :: slashOS
-        type(Err_type), intent(out) :: Err
-
-        type(OS_type)               :: OS
-        character(*), parameter     :: PROCEDURE_NAME = "@getSlashOS()"
-
-        Err%occurred = .false.
-        Err%msg = ""
-
-        call OS%query()
-
-        if (OS%Err%occurred) then
-            Err = OS%Err
-            Err%msg = PROCEDURE_NAME // ": Error occurred while fetching the OS slash character.\n" // Err%msg
-            return
-        end if
-
-        if (OS%isWindows) then
-            slashOS = "\"
-        else
-            slashOS = "/"
-        end if
-
-    end subroutine getSlashOS
+    end function linify
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -432,9 +397,9 @@ contains
     !> \param[in]       inputPath   :   The input path. If provided, it will overwrite `Path%original`.
     !> \param[out]      outputPath  :   The output modified path which conforms to the rules of the current OS.
     !> \param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
-    subroutine modifyPath(inputPath,outputPath,Err)
+    subroutine modify(inputPath,outputPath,Err)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: modifyPath
+        !DEC$ ATTRIBUTES DLLEXPORT :: modify
 #endif
         use Err_mod, only: Err_type
         use Constants_mod, only: IK
@@ -447,7 +412,7 @@ contains
 
         type(OS_type) :: OS
 
-        character(*), parameter :: PROCEDURE_NAME = "@modifyPath()"
+        character(*), parameter :: PROCEDURE_NAME = MODULE_NAME//"@modify()"
 
         outputPath = trim(adjustl(inputPath))
 
@@ -463,17 +428,12 @@ contains
         end if
 
         if (OS%isWindows) then
-            call winifyPath(inputPath,outputPath,Err)
-            if (Err%occurred) then
-                Err%msg =  PROCEDURE_NAME // ": Error occurred while making path='" // &
-                           inputPath // "' compatible with Windows OS.\n" // Err%msg
-                return
-            end if
+            outputPath = winify(inputPath)
         else
-            call linifyPath(inputPath,outputPath)
+            outputPath = linify(inputPath)
         end if
 
-    end subroutine modifyPath
+    end subroutine modify
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -552,7 +512,7 @@ contains
     !>
     !> \param[in]       fullName    :   The full file name and extension of the path.
     !> \param[out]      name        :   The name segment of the file.
-    !> \param[out]      ext         :   The extension segment of the file.
+    !> \param[out]      ext         :   The extension segment of the file (including the dot separator).
     subroutine getNameExt(fullName,name,ext)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getNameExt
@@ -571,9 +531,6 @@ contains
             if ( dotPos==0 .or. dotPos==lenFilename ) then     ! there is no extension
                 name = fullName
                 ext = ""
-            elseif ( dotPos==1 ) then   ! it is all extension, no file name.
-                name = ""
-                ext  = fullName(1:)
             else
                 name = fullName(1:dotPos-1)
                 ext  = fullName(dotPos:)
@@ -602,7 +559,7 @@ contains
         use String_mod, only: num2str
         use Err_mod, only: Err_type
         implicit none
-        character(*), parameter         :: PROCEDURE_NAME = "@mkdir()"
+        character(*), parameter         :: PROCEDURE_NAME = MODULE_NAME//"@mkdir()"
         character(*), intent(in)        :: dirPath
         logical, intent(in), optional   :: isWindows, wait
         type(Err_type)                  :: Err

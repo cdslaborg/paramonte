@@ -98,7 +98,7 @@ block; use Test_System_mod; call test_System(); end block
 block; use Test_Timer_mod; call test_Timer(); end block
 block; use Test_TimerCPU_mod; call test_TimerCPU(); end block
 block; use Test_TranGaus_mod; call test_TranGaus(); end block
-block; use Test_ParaDRAM_mod; call test_ParaDRAM(); end block
+!block; use Test_ParaDRAM_mod; call test_ParaDRAM(); end block
 
 call finalize()
 

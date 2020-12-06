@@ -1299,3 +1299,42 @@
     end function test_SpecMCMC_StartPointVec_type_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDRAM sampler returns with an error message when `StartPointVec` is out of domain boundary.
+    function test_SpecMCMC_StartPointVec_type_5() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDRAM_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e1_RK]
+        real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
+        real(RK)    , parameter :: StartPointVec(NDIM) = [-2.e1_RK, +2.e2_RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_StartPointVec_type_5" &
+                            , DomainLowerLimitVec = DomainLowerLimitVec &
+                            , DomainUpperLimitVec = DomainUpperLimitVec &
+                            , StartPointVec = StartPointVec &
+                            , chainSize = 100_IK &
+                            )
+        assertion = assertion .and. PD%Err%occurred .and. all(PD%SpecMCMC%StartPointVec%Val==StartPointVec)
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,' '))")
+            write(Test%outputUnit,"(*(g0,:,' '))") "PD%Err%occurred", PD%Err%occurred
+            write(Test%outputUnit,"(*(g0,:,' '))") "PD%SpecMCMC%StartPointVec%Val", PD%SpecMCMC%StartPointVec%Val
+            write(Test%outputUnit,"(*(g0,:,' '))") "DomainUpperLimitVec", DomainUpperLimitVec
+            write(Test%outputUnit,"(*(g0,:,' '))") "DomainLowerLimitVec", DomainLowerLimitVec
+            write(Test%outputUnit,"(*(g0,:,' '))")
+        end if
+        ! LCOV_EXCL_STOP
+#endif
+    end function test_SpecMCMC_StartPointVec_type_5
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

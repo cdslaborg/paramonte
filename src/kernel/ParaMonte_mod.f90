@@ -784,7 +784,7 @@ contains
         msg = msg //NLC//NLC// "Absolute path to the current working directory:"//NLC//currentWorkingDir
 
         if (len_trim(adjustl(self%SpecBase%OutputFileName%dir))==0) then
-            self%SpecBase%OutputFileName%dir = trim(adjustl(currentWorkingDir)) // self%SpecBase%OutputFileName%slashOS
+            self%SpecBase%OutputFileName%dir = trim(adjustl(currentWorkingDir)) // self%SpecBase%OutputFileName%shellSlash
             msg = msg //NLC//NLC// "All output files will be written to the current working directory:"//NLC//self%SpecBase%OutputFileName%dir
         else
             msg = msg //NLC//NLC// "Generating the requested directory for the "//self%name//" output files:"//NLC//self%SpecBase%OutputFileName%dir

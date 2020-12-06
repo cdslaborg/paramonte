@@ -154,7 +154,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setFromInputFile(SpecMCMC, SpecBase, Err) ! domainLowerLimitVec, domainUpperLimitVec )
+    subroutine setFromInputFile(SpecMCMC, Err) ! domainLowerLimitVec, domainUpperLimitVec )
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setFromInputFile
 #endif
@@ -165,7 +165,6 @@ contains
         implicit none
 
         class(SpecMCMC_type), intent(inout)     :: SpecMCMC
-        type(SpecBase_type), intent(in)         :: SpecBase
         type(Err_type), intent(out)             :: Err
 
         Err%occurred = .false.
@@ -189,7 +188,6 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setFromInputArgs ( SpecMCMC &
-                                , SpecBase &
                                 ! ParaMCMC variables
                                 , chainSize                             &
                                 , scaleFactor                           &
@@ -212,7 +210,6 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         class(SpecMCMC_type), intent(inout) :: SpecMCMC
-        type(SpecBase_type) , intent(in)    :: SpecBase
 
         ! ParaMCMC variables
         integer(IK) , intent(in), optional  :: chainSize
@@ -419,11 +416,11 @@ contains
         call SpecMCMC%proposalStartStdVec                   %checkForSanity(Err,methodName,nd)
         call SpecMCMC%SampleRefinementCount                 %checkForSanity(Err,methodName)
         call SpecMCMC%SampleRefinementMethod                %checkForSanity(Err,methodName)
-        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %checkForSanity(Err,methodName, SpecBase, SpecMCMC%RandomStartPointRequested%val )
-        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %checkForSanity(Err,methodName, SpecBase, SpecMCMC%RandomStartPointRequested%val &
-                                                                                                    , SpecMCMC%RandomStartPointDomainLowerLimitVec%val )
+        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %checkForSanity(Err,methodName, SpecBase, randomStartPointRequested = SpecMCMC%RandomStartPointRequested%val )
+        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %checkForSanity(Err,methodName, SpecBase, randomStartPointRequested = SpecMCMC%RandomStartPointRequested%val &
+                                                                                                    , randomStartPointDomainLowerLimitVec = SpecMCMC%RandomStartPointDomainLowerLimitVec%val )
         call SpecMCMC%startPointVec                         %checkForSanity(Err,methodName, SpecBase, randomStartPointRequested = SpecMCMC%RandomStartPointRequested%val &
-                                                                                                    , randomStartPointDomainLowerLimitVec = SpecMCMC%RandomStartPointDomainLowerLimitVec%Val &
+                                                                                                    , randomStartPointDomainLowerLimitVec = SpecMCMC%RandomStartPointDomainLowerLimitVec%Val & ! LCOV_EXCL_LINE
                                                                                                     , randomStartPointDomainUpperLimitVec = SpecMCMC%RandomStartPointDomainUpperLimitVec%val )
     end subroutine checkForSanity
 

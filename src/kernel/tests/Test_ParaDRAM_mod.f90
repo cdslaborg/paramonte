@@ -137,6 +137,7 @@ contains
         call Test%run(test_SpecMCMC_StartPointVec_type_2, "test_SpecMCMC_StartPointVec_type_2")
         call Test%run(test_SpecMCMC_StartPointVec_type_3, "test_SpecMCMC_StartPointVec_type_3")
         call Test%run(test_SpecMCMC_StartPointVec_type_4, "test_SpecMCMC_StartPointVec_type_4")
+        call Test%run(test_SpecMCMC_StartPointVec_type_5, "test_SpecMCMC_StartPointVec_type_5")
         call Test%run(test_SpecMCMC_ProposalStartCovMat_type_1, "test_SpecMCMC_ProposalStartCovMat_type_1")
         call Test%run(test_SpecMCMC_ProposalStartCovMat_type_2, "test_SpecMCMC_ProposalStartCovMat_type_2")
         call Test%run(test_SpecMCMC_ProposalStartCovMat_type_3, "test_SpecMCMC_ProposalStartCovMat_type_3")
@@ -172,6 +173,29 @@ contains
         call Test%run(test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_3, "test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_3")
         call Test%run(test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_4, "test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_4")
 
+        call Test%run(test_SpecDRAM_AdaptiveUpdateCount_type_1, "test_SpecDRAM_AdaptiveUpdateCount_type_1")
+        call Test%run(test_SpecDRAM_AdaptiveUpdateCount_type_2, "test_SpecDRAM_AdaptiveUpdateCount_type_2")
+        call Test%run(test_SpecDRAM_AdaptiveUpdateCount_type_3, "test_SpecDRAM_AdaptiveUpdateCount_type_3")
+        call Test%run(test_SpecDRAM_AdaptiveUpdatePeriod_type_1, "test_SpecDRAM_AdaptiveUpdatePeriod_type_1")
+        call Test%run(test_SpecDRAM_AdaptiveUpdatePeriod_type_2, "test_SpecDRAM_AdaptiveUpdatePeriod_type_2")
+        call Test%run(test_SpecDRAM_AdaptiveUpdatePeriod_type_3, "test_SpecDRAM_AdaptiveUpdatePeriod_type_3")
+        call Test%run(test_SpecDRAM_DelayedRejectionCount_type_1, "test_SpecDRAM_DelayedRejectionCount_type_1")
+        call Test%run(test_SpecDRAM_DelayedRejectionCount_type_2, "test_SpecDRAM_DelayedRejectionCount_type_2")
+        call Test%run(test_SpecDRAM_DelayedRejectionCount_type_3, "test_SpecDRAM_DelayedRejectionCount_type_3")
+        call Test%run(test_SpecDRAM_DelayedRejectionCount_type_4, "test_SpecDRAM_DelayedRejectionCount_type_4")
+        call Test%run(test_SpecDRAM_GreedyAdaptationCount_type_1, "test_SpecDRAM_GreedyAdaptationCount_type_1")
+        call Test%run(test_SpecDRAM_GreedyAdaptationCount_type_2, "test_SpecDRAM_GreedyAdaptationCount_type_2")
+        call Test%run(test_SpecDRAM_GreedyAdaptationCount_type_3, "test_SpecDRAM_GreedyAdaptationCount_type_3")
+        call Test%run(test_SpecDRAM_BurninAdaptationMeasure_type_1, "test_SpecDRAM_BurninAdaptationMeasure_type_1")
+        call Test%run(test_SpecDRAM_BurninAdaptationMeasure_type_2, "test_SpecDRAM_BurninAdaptationMeasure_type_2")
+        call Test%run(test_SpecDRAM_BurninAdaptationMeasure_type_3, "test_SpecDRAM_BurninAdaptationMeasure_type_3")
+        call Test%run(test_SpecDRAM_BurninAdaptationMeasure_type_4, "test_SpecDRAM_BurninAdaptationMeasure_type_4")
+        call Test%run(test_SpecDRAM_DelayedRejectionScaleFactorVec_type_1, "test_SpecDRAM_DelayedRejectionScaleFactorVec_type_1")
+        call Test%run(test_SpecDRAM_DelayedRejectionScaleFactorVec_type_2, "test_SpecDRAM_DelayedRejectionScaleFactorVec_type_2")
+        call Test%run(test_SpecDRAM_DelayedRejectionScaleFactorVec_type_3, "test_SpecDRAM_DelayedRejectionScaleFactorVec_type_3")
+        call Test%run(test_SpecDRAM_DelayedRejectionScaleFactorVec_type_4, "test_SpecDRAM_DelayedRejectionScaleFactorVec_type_4")
+        call Test%run(test_SpecDRAM_DelayedRejectionScaleFactorVec_type_5, "test_SpecDRAM_DelayedRejectionScaleFactorVec_type_5")
+
         call Test%finalize()
     end subroutine test_ParaDRAM
 
@@ -182,6 +206,10 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #include "Test_ParaDRAM_mod@SpecMCMC_mod.inc.f90"
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#include "Test_ParaDRAM_mod@SpecDRAM_mod.inc.f90"
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

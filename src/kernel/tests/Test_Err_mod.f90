@@ -129,18 +129,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -197,18 +195,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -266,18 +262,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -334,18 +328,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -406,18 +398,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -480,18 +470,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = '", OutputList_ref(i)%record, "'"
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = '", OutputList(i)%record, "'"

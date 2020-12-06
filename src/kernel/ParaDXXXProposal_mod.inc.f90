@@ -318,6 +318,7 @@ contains
         ! LCOV_EXCL_STOP
         end if
 
+        if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
         call getInvCovMat()
         mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:ndim,0,0) ))
 
@@ -491,6 +492,9 @@ contains
     !> @param[out]      adaptationMeasure       :   The output real number in the range `[0,1]` indicating the amount of adaptation,
     !>                                              with zero indicating no adaptation and one indicating extreme adaptation to the extent
     !>                                              that the new adapted proposal distribution is completely different from the previous proposal.
+    !> \warning
+    !> This routine must be exclusively called by the leader images.
+    !>
     !> \remark
     !> For information on the meaning of `adaptationMeasure`, see the paper by Shahmoradi and Bagheri, 2020, whose PDF is available at:
     !> [https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler](https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler)
@@ -892,7 +896,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! Note: based on some benchmarks with ndim = 1, the new design with merging cholesky diag and lower is faster than the original
-    ! Note: double communication. Here are some timings on 4 images:
+    ! Note: double-communication, implementation. Here are some timings on 4 images:
     ! Note: new single communication:
     ! Note: image 2: avgTime =  6.960734060198531E-006
     ! Note: image 3: avgTime =  7.658279491640721E-006
@@ -905,8 +909,12 @@ contains
     ! Note: avg(avgTime): 1.532153060760448e-05
     ! Note: avg(speedup): 1.924798889020109
     ! Note: One would expect this speed up to diminish as ndim goes to infinity,
-    ! Note: since data transfer will dominate communication overhead.
-    ! broadcast adaptation to all images
+    ! Note: since data transfer will dominate the communication overhead.
+    !> \brief
+    !> Broadcast adaptation to all images.
+    !> \warning
+    !> When CAF parallelism is used, this routine must be exclusively called by the rooter images.
+    !> When MPI parallelism is used, this routine must be called by all images.
     subroutine bcastAdaptation()
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: bcastAdaptation
@@ -919,13 +927,14 @@ contains
         use mpi
         implicit none
         integer :: ierrMPI
-        call mpi_bcast  ( comv_CholDiagLower    &   ! buffer: XXX: first element is not needed to be shared. This may need a fix in future
+        call mpi_bcast  ( comv_CholDiagLower    &   ! buffer: XXX: first element need not be shared. This may need a fix in future.
                         , mc_ndimSqPlusNdim     &   ! count
                         , mpi_double_precision  &   ! datatype
                         , 0                     &   ! root: broadcasting rank
                         , mpi_comm_world        &   ! comm
                         , ierrMPI               &   ! ierr
                         )
+        ! It is essential for the following to be exclusively done by the rooter images. The leaders have had their updates in `doAdaptation()`.
         if (mc_Image%isRooter .and. mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
 #endif
         call getInvCovMat()

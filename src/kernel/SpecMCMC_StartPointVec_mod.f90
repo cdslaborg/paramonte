@@ -150,10 +150,10 @@ contains
                             MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
                             &The input requested value for the component " // num2str(i) // " of the vector startPointVec (" // &
                             num2str(self%Val(i)) // ") must be within the range of the sampling Domain defined &
-                            &in the program: (" &
-                            // num2str(SpecBase%DomainLowerLimitVec%Val(i)) // "," &
-                            // num2str(SpecBase%DomainUpperLimitVec%Val(i)) // "). If you don't &
-                            &know an appropriate value for startPointVec, drop it from the input list. " // &
+                            &in the program: (" // &
+                            num2str(SpecBase%DomainLowerLimitVec%Val(i)) // "," // & ! LCOV_EXCL_LINE
+                            num2str(SpecBase%DomainUpperLimitVec%Val(i)) // & ! LCOV_EXCL_LINE
+                            "). If you don't know an appropriate value for startPointVec, drop it from the input list. " // &
                             methodName // " will automatically assign an appropriate value to it.\n\n"
             end if
         end do

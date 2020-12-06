@@ -93,6 +93,8 @@ contains
         call Test%run(test_getLogEllVolCoef_2, "test_getLogEllVolCoef_2")
         call Test%run(test_getLogEggBoxSD_RK_1, "test_getLogEggBoxSD_RK_1")
         call Test%run(test_getLogEggBoxSD_CK_1, "test_getLogEggBoxSD_CK_1")
+        call Test%run(test_getLogEggBoxMD_RK_1, "test_getLogEggBoxMD_RK_1")
+        call Test%run(test_getLogEggBoxMD_CK_1, "test_getLogEggBoxMD_CK_1")
         call Test%run(test_getLogVolUnitBall_1, "test_getLogVolUnitBall_1")
         call Test%run(test_getLogVolUnitBall_2, "test_getLogVolUnitBall_2")
         call Test%run(test_getLogGammaHalfInt_1, "test_getLogGammaHalfInt_1")
@@ -120,8 +122,8 @@ contains
         distanceSq = getDistanceSq(nd = size(Point1), Point1 = Point1, Point2 = Point2)
         difference = abs(distanceSq - distanceSq_ref) / distanceSq_ref
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "distanceSq_ref    = ", distanceSq_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "distanceSq        = ", distanceSq
@@ -145,8 +147,8 @@ contains
         corCoef = getCorCeofFromFisherTrans(fisherTrans = fisherTrans)
         difference = abs(corCoef - corCoef_ref) / corCoef_ref
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "corCoef_ref   = ", corCoef_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "corCoef       = ", corCoef
@@ -170,8 +172,8 @@ contains
         fisherTrans = getFisherTransFromcorCoef(corCoef = corCoef)
         difference = abs(fisherTrans - fisherTrans_ref) / fisherTrans_ref
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "fisherTrans_ref   = ", fisherTrans_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "fisherTrans       = ", fisherTrans
@@ -197,8 +199,8 @@ contains
         if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = CumSum)
         Difference = abs(CumSum - CumSum_ref)
         assertion  = all(Difference == 0_IK)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "CumSum_ref    = ", CumSum_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "CumSum        = ", CumSum
@@ -281,8 +283,8 @@ contains
         if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = CumSumReverse)
         Difference = abs(CumSumReverse - CumSumReverse_ref)
         assertion  = all(Difference < tolerance)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector              = ", Vector
             write(Test%outputUnit,"(*(g0,:,' '))") "CumSumReverse_ref   = ", CumSumReverse_ref
@@ -308,8 +310,8 @@ contains
         logSubExp = getLogSubExp_RK(logValueLarger = logTiny1, logValueSamller = logTiny2)
         difference = abs(logSubExp - logSubExp_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logSubExp_ref   = ", logSubExp_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logSubExp       = ", logSubExp
@@ -333,8 +335,8 @@ contains
         logSumExp = getLogSumExp_RK(lenLogValue = size(LogValue), LogValue = LogValue, maxLogValue = maxval(LogValue))
         difference = abs(logSumExp - logSumExp_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logSumExp_ref   = ", logSumExp_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logSumExp       = ", logSumExp
@@ -358,8 +360,8 @@ contains
         logSumExp = getLogSumExp_RK(lenLogValue = size(LogValue), LogValue = LogValue)
         difference = abs(logSumExp - logSumExp_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logSumExp_ref   = ", logSumExp_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logSumExp       = ", logSumExp
@@ -389,8 +391,8 @@ contains
                                     )
         difference = abs(logSumExp - logSumExp_ref)
         assertion  = real(difference,RK) < real(tolerance,RK)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logSumExp_ref   = ", logSumExp_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logSumExp       = ", logSumExp
@@ -417,8 +419,8 @@ contains
         logSumExp = getLogSumExp_CK(lenLogValue = int(size(LogValue),IK), LogValue = LogValue)
         difference = abs(logSumExp - logSumExp_ref)
         assertion  = real(difference,RK) < real(tolerance,RK)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logSumExp_ref   = ", logSumExp_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logSumExp       = ", logSumExp
@@ -439,14 +441,14 @@ contains
         real(RK), parameter     :: constant = 1._RK
         real(RK), parameter     :: exponent = 1._RK
         real(RK), parameter     :: tolerance = 1.e-10_RK
-        real(RK), parameter     :: logEggBox_ref = -1.826795292697230_RK
+        real(RK), parameter     :: logEggBox_ref = 0.16092847092354756_RK
         real(RK)                :: logEggBox
         real(RK)                :: difference
         logEggBox = getLogEggBoxSD_RK(constant = constant, exponent = exponent, coef = coef, point = point)
         difference = abs(logEggBox - logEggBox_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logEggBox_ref   = ", logEggBox_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logEggBox       = ", logEggBox
@@ -467,14 +469,14 @@ contains
         complex(RK), parameter  :: constant = cmplx(1._RK, 0._RK, RK)
         complex(RK), parameter  :: exponent = cmplx(1._RK, 0._RK, RK)
         complex(RK), parameter  :: tolerance = cmplx(1.e-10_RK, 0._RK, RK)
-        complex(RK), parameter  :: logEggBox_ref = -1.826795292697230_RK
+        complex(RK), parameter  :: logEggBox_ref = cmplx(0.16092847092354756_RK, 0._RK, RK)
         complex(RK)             :: logEggBox
         complex(RK)             :: difference
         logEggBox = getLogEggBoxSD_CK(constant = constant, exponent = exponent, coef = coef, point = point)
         difference = abs(logEggBox - logEggBox_ref)
         assertion  = real(difference,RK) < real(tolerance,RK)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logEggBox_ref   = ", logEggBox_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logEggBox       = ", logEggBox
@@ -486,7 +488,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_getLogEggBoxMD_RK() result(assertion)
+    function test_getLogEggBoxMD_RK_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
         logical                 :: assertion
@@ -496,14 +498,14 @@ contains
         real(RK)    , parameter :: constant = 1._RK
         real(RK)    , parameter :: exponent = 1._RK
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        real(RK)    , parameter :: logEggBox_ref = -1.826795292697230_RK
+        real(RK)    , parameter :: logEggBox_ref = 1.3988445480199623_RK
         real(RK)                :: logEggBox
         real(RK)                :: difference
         logEggBox = getLogEggBoxMD_RK(nd = nd, constant = constant, exponent = exponent, coef = coef, point = point)
         difference = abs(logEggBox - logEggBox_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logEggBox_ref   = ", logEggBox_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logEggBox       = ", logEggBox
@@ -511,11 +513,11 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
         ! LCOV_EXCL_STOP
-    end function test_getLogEggBoxMD_RK
+    end function test_getLogEggBoxMD_RK_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_getLogEggBoxMD_CK() result(assertion)
+    function test_getLogEggBoxMD_CK_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
         logical                 :: assertion
@@ -525,14 +527,14 @@ contains
         complex(RK), parameter  :: constant = cmplx(1._RK, 0._RK, RK)
         complex(RK), parameter  :: exponent = cmplx(1._RK, 0._RK, RK)
         complex(RK), parameter  :: tolerance = cmplx(1.e-10_RK, 0._RK, RK)
-        complex(RK), parameter  :: logEggBox_ref = -1.826795292697230_RK
+        complex(RK), parameter  :: logEggBox_ref = cmplx(1.3988445480199623_RK, 0._RK, RK)
         complex(RK)             :: logEggBox
         complex(RK)             :: difference
         logEggBox = getLogEggBoxMD_CK(nd = nd, constant = constant, exponent = exponent, coef = coef, point = point)
         difference = abs(logEggBox - logEggBox_ref)
         assertion  = real(difference,RK) < real(tolerance,RK)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logEggBox_ref   = ", logEggBox_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logEggBox       = ", logEggBox
@@ -540,12 +542,12 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
         ! LCOV_EXCL_STOP
-    end function test_getLogEggBoxMD_CK
+    end function test_getLogEggBoxMD_CK_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_getFactorial_1() result(assertion)
-        use Constants_mod, only: RK, IK
+        use Constants_mod, only: RK, IK ! LCOV_EXCL_LINE
         implicit none
         logical                 :: assertion
         integer(RK), parameter  :: factorial_ref = 3628800_IK
@@ -555,8 +557,8 @@ contains
         factorial = getFactorial(positiveInteger = positiveInteger)
         difference = abs(factorial - factorial_ref)
         assertion  = difference == 0_IK
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "factorial_ref   = ", factorial_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "factorial       = ", factorial
@@ -580,8 +582,8 @@ contains
         logFactorial = getLogFactorial(positiveInteger = positiveInteger)
         difference = abs(logFactorial - logFactorial_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logFactorial_ref    = ", logFactorial_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logFactorial        = ", logFactorial
@@ -605,8 +607,8 @@ contains
         ellVolCoef = getEllVolCoef(nd = nd)
         difference = abs(ellVolCoef - ellVolCoef_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "ellVolCoef_ref  = ", ellVolCoef_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "ellVolCoef      = ", ellVolCoef
@@ -633,8 +635,8 @@ contains
         !end do
         difference = abs(ellVolCoef - ellVolCoef_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "ellVolCoef_ref  = ", ellVolCoef_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "ellVolCoef      = ", ellVolCoef
@@ -658,8 +660,8 @@ contains
         logEllVolCoef = getLogEllVolCoef(nd = nd)
         difference = abs(logEllVolCoef - logEllVolCoef_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logEllVolCoef_ref   = ", logEllVolCoef_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logEllVolCoef       = ", logEllVolCoef
@@ -686,8 +688,8 @@ contains
         !end do
         difference = abs(logEllVolCoef - logEllVolCoef_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logEllVolCoef_ref   = ", logEllVolCoef_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logEllVolCoef       = ", logEllVolCoef
@@ -711,8 +713,8 @@ contains
         logVolUnitBall = getLogVolUnitBall(nd = nd)
         difference = abs(logVolUnitBall - logVolUnitBall_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logVolUnitBall_ref  = ", logVolUnitBall_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logVolUnitBall      = ", logVolUnitBall
@@ -739,8 +741,8 @@ contains
         !end do
         difference = abs(logVolUnitBall - logVolUnitBall_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logVolUnitBall_ref  = ", logVolUnitBall_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logVolUnitBall      = ", logVolUnitBall
@@ -765,8 +767,8 @@ contains
         logVolEllipsoid = getLogVolEllipsoid(nd = nd, logSqrtDetCovMat = logSqrtDetCovMat)
         difference = abs(logVolEllipsoid - logVolEllipsoid_ref)
         assertion  = difference < tolerance
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "logVolEllipsoid_ref = ", logVolEllipsoid_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "logVolEllipsoid     = ", logVolEllipsoid
@@ -795,8 +797,8 @@ contains
         if (allocated(Difference)) deallocate(Difference); allocate(Difference, mold = EllipsoidVolume)
         Difference = abs(EllipsoidVolume - EllipsoidVolume_ref)
         assertion  = all(Difference < tolerance)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "EllipsoidVolume_ref = ", EllipsoidVolume_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "EllipsoidVolume     = ", EllipsoidVolume

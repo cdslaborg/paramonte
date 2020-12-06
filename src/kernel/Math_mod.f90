@@ -370,7 +370,7 @@ contains
         real(RK), intent(in) :: coef
         real(RK), intent(in) :: point
         real(RK)             :: logEggBox
-        logEggBox = exponent * log( constant + cos(coef*point) )
+        logEggBox = exponent * ( constant + cos(coef*point) )
     end function getLogEggBoxSD_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -388,7 +388,7 @@ contains
         complex(RK), intent(in) :: coef
         complex(RK), intent(in) :: Point
         complex(RK)             :: logEggBox
-        logEggBox = exponent * log( constant + cos(coef*point) )
+        logEggBox = exponent * ( constant + cos(coef*point) )
     end function getLogEggBoxSD_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -408,17 +408,22 @@ contains
         real(RK), intent(in) :: Point(nd)
         real(RK)             :: logEggBox
         integer(IK)          :: i
-        logEggBox = 0._RK
-        do i = 1,nd
+        logEggBox = 1._RK
+        do i = 1, nd
             logEggBox = logEggBox * cos(Coef(i)*Point(i))
         end do
-        logEggBox = exponent * log( constant + logEggBox )
+        logEggBox = exponent * ( constant + logEggBox )
     end function getLogEggBoxMD_RK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Return the logarithm of the egg-box probability density function in multiple dimensions, as a complex number.
+    !> \remark
+    !> The multidimensional EggBox function follows an equation of the form,
+    !> \f{equation}
+    !> f({\mathbf{\theta}}) = \bigg[ \exp( \text{constant} + \prod_{i=1)^{\text{nd}} ~ \cos(\text{Coef}_i^2)
+    !> \f}
     pure function getLogEggBoxMD_CK(nd,constant,exponent,Coef,Point) result(logEggBox)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEggBoxMD_CK
@@ -432,11 +437,11 @@ contains
         complex(RK), intent(in) :: Point(nd)
         complex(RK)             :: logEggBox
         integer(IK)          :: i
-        logEggBox = 0._RK
-        do i = 1,nd
+        logEggBox = 1._RK
+        do i = 1, nd
             logEggBox = logEggBox * cos(Coef(i)*Point(i))
         end do
-        logEggBox = exponent * log( constant + logEggBox )
+        logEggBox = exponent * ( constant + logEggBox )
     end function getLogEggBoxMD_CK
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

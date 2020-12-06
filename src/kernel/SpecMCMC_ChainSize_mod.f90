@@ -80,7 +80,7 @@ contains
         character(*), intent(in)    :: methodName
         type(ChainSize_type)        :: ChainSizeObj
 #if defined CODECOV_ENABLED
-        ChainSizeObj%def    = 300_IK
+        ChainSizeObj%def    = 100_IK
 #else
         ChainSizeObj%def    = 100000_IK
 #endif

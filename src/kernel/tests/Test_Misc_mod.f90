@@ -106,8 +106,8 @@ contains
         Vector2 = Vector2_ref
         call swap_IK(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector2     =", Vector2
@@ -134,8 +134,8 @@ contains
         Vector2 = Vector2_ref
         call swap_SPI(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector2     =", Vector2
@@ -162,8 +162,8 @@ contains
         Vector2 = Vector2_ref
         call swap_DPI(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector2     =", Vector2
@@ -190,8 +190,8 @@ contains
         Vector2 = Vector2_ref
         call swap_RK(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector2     =", Vector2
@@ -218,8 +218,8 @@ contains
         Vector2 = Vector2_ref
         call swap_SPR(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector2     =", Vector2
@@ -246,8 +246,8 @@ contains
         Vector2 = Vector2_ref
         call swap_DPR(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector2     =", Vector2
@@ -274,8 +274,8 @@ contains
         Vector2 = Vector2_ref
         call swap_CK(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector2     =", Vector2
@@ -302,8 +302,8 @@ contains
         Vector2 = Vector2_ref
         call swap_SPC(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector2     =", Vector2
@@ -330,8 +330,8 @@ contains
         Vector2 = Vector2_ref
         call swap_DPC(Vector1,Vector2)
         assertion = all(Vector1==Vector2_ref) .and. all(Vector2==Vector1_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector2     =", Vector2
@@ -357,8 +357,8 @@ contains
         scalar2 = scalar2_ref
         call masked_swap_SPR(scalar1,scalar2,mask)
         assertion = scalar1==scalar2_ref .and. scalar2==scalar1_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "scalar1_ref =", scalar1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "scalar2     =", scalar2
@@ -384,8 +384,8 @@ contains
         scalar2 = scalar2_ref
         call masked_swap_SPR(scalar1,scalar2,mask)
         assertion = scalar1==scalar1_ref .and. scalar2==scalar2_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "scalar1_ref =", scalar1_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "scalar1     =", scalar1
@@ -413,8 +413,8 @@ contains
         Vector2 = Vector2_ref
         call masked_swap_SPRV(Vector1,Vector2,Mask)
         assertion = all((Vector1==Vector2_ref) .eqv. Mask) .and. all( (Vector2==Vector1_ref) .eqv. Mask)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Mask        =", Mask
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector1_ref =", Vector1_ref
@@ -444,8 +444,8 @@ contains
         Matrix2 = Matrix2_ref
         call masked_swap_SPRM(Matrix1,Matrix2,mask)
         assertion = all((Matrix1==Matrix2_ref) .eqv. mask) .and. all( (Matrix2==Matrix1_ref) .eqv. mask)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Mask        =", Mask
             write(Test%outputUnit,"(*(g0,:,' '))") "Matrix1_ref =", Matrix1_ref
@@ -469,8 +469,8 @@ contains
         integer(IK), allocatable    :: ArithmeticProgression(:)
         ArithmeticProgression = arth_IK(first = first,increment = increment, n = n)
         assertion = all(ArithmeticProgression == ArithmeticProgression_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "ArithmeticProgression_ref   =", ArithmeticProgression_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "ArithmeticProgression       =", ArithmeticProgression
@@ -492,8 +492,8 @@ contains
         real(RK)    , allocatable   :: ArithmeticProgression(:)
         ArithmeticProgression = arth_RK(first = first, increment = increment, n = n)
         assertion = all(ArithmeticProgression == ArithmeticProgression_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "ArithmeticProgression_ref   =", ArithmeticProgression_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "ArithmeticProgression       =", ArithmeticProgression
@@ -515,8 +515,8 @@ contains
         real(RK)    , allocatable   :: ArithmeticProgression(:)
         ArithmeticProgression = arth_RK(first = first, increment = increment, n = n)
         assertion = all(ArithmeticProgression == ArithmeticProgression_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "ArithmeticProgression_ref   =", ArithmeticProgression_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "ArithmeticProgression       =", ArithmeticProgression
@@ -536,8 +536,8 @@ contains
         integer(CK), allocatable    :: Zroots(:)
         Zroots = zroots_unity(n,nn)
         assertion = all(real(Zroots) == real(Zroots_ref))! .and. all(aimag(Zroots) == aimag(Zroots_ref))
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Zroots_ref   =", Zroots_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "Zroots       =", Zroots
@@ -563,6 +563,7 @@ contains
         call copyArray_IK(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
         assertion = all(Destin == Destin_ref) .and. (numCopied == numCopied_ref) .and. (numNotCopied == numNotCopied_ref)
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "numNotCopied_ref    =", numNotCopied_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "numNotCopied        =", numNotCopied
@@ -573,6 +574,7 @@ contains
             write(Test%outputUnit,"(*(g0,:,' '))") "Destin              =", Destin
             write(Test%outputUnit,"(*(g0,:,' '))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_copyArray_IK_1
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -591,8 +593,8 @@ contains
         Destin = 0_IK
         call copyArray_IK(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
         assertion = all(Destin == Destin_ref) .and. (numCopied == numCopied_ref) .and. (numNotCopied == numNotCopied_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "numNotCopied_ref    =", numNotCopied_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "numNotCopied        =", numNotCopied
@@ -622,8 +624,8 @@ contains
         Destin = 0._RK
         call copyArray_RK(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
         assertion = all(Destin == Destin_ref) .and. (numCopied == numCopied_ref) .and. (numNotCopied == numNotCopied_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "numNotCopied_ref    =", numNotCopied_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "numNotCopied        =", numNotCopied
@@ -653,8 +655,8 @@ contains
         Destin = 0._RK
         call copyArray_RK(Source = Source, Destination = Destin, numCopied = numCopied, numNotCopied = numNotCopied)
         assertion = all(Destin == Destin_ref) .and. (numCopied == numCopied_ref) .and. (numNotCopied == numNotCopied_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "numNotCopied_ref    =", numNotCopied_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "numNotCopied        =", numNotCopied
@@ -681,8 +683,8 @@ contains
         Vector = Vector_ref
         call resizeVector_RK(Vector = Vector, from = lenVector, to = lenVectorNew)
         assertion = size(Vector) == lenVectorNew .and. all(Vector(1:lenVector) == Vector_ref(1:lenVector))
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
             write(Test%outputUnit,"(*(g0,:,' '))") "Vector_ref      =", Vector_ref
             write(Test%outputUnit,"(*(g0,:,' '))") "lenVectorNew    =", lenVectorNew
@@ -719,15 +721,15 @@ contains
         ! test with empty input vector
 
         allocate(ZeroLenVector(0))
-        call findUnique ( lenVector = 0_IK &
-                        , Vector = ZeroLenVector &
-                        , UniqueValue = UniqueValue &
-                        , UniqueCount = UniqueCount &
-                        , lenUnique = lenUnique &
+        call findUnique ( lenVector = 0_IK & ! LCOV_EXCL_LINE
+                        , Vector = ZeroLenVector & ! LCOV_EXCL_LINE
+                        , UniqueValue = UniqueValue & ! LCOV_EXCL_LINE
+                        , UniqueCount = UniqueCount & ! LCOV_EXCL_LINE
+                        , lenUnique = lenUnique & ! LCOV_EXCL_LINE
                         )
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,', '))")
             write(Test%outputUnit,"(*(g0,:,', '))") "VECTOR", VECTOR
             write(Test%outputUnit,"(*(g0,:,', '))")

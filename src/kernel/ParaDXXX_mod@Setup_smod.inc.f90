@@ -299,8 +299,7 @@ contains
                                                 , maxNumDomainCheckToWarn               = maxNumDomainCheckToWarn               &
                                                 , maxNumDomainCheckToStop               = maxNumDomainCheckToStop               &
                                                 )
-            call self%SpecMCMC%setFromInputArgs ( SpecBase                              = self%SpecBase                         &
-                                                , chainSize                             = chainSize                             &
+            call self%SpecMCMC%setFromInputArgs ( chainSize                             = chainSize                             &
                                                 , scaleFactor                           = scaleFactor                           &
                                                 , startPointVec                         = startPointVec                         &
                                                 , proposalModel                         = proposalModel                         &
