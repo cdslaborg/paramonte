@@ -209,10 +209,12 @@ contains
                     if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
                         call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
                     else
+                    ! LCOV_EXCL_START
                         read(self%InputFile%Path%original,nml=ParaDXXX)
                         self%Err%msg = PROCEDURE_NAME // self%Err%msg
                         return
                     end if
+                    ! LCOV_EXCL_STOP
                 end if
 
             else blockInputFileType ! the input file is external
@@ -260,11 +262,13 @@ contains
                     if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
                         call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
                     else
+                    ! LCOV_EXCL_START
                         rewind(self%InputFile%unit)
                         read(self%InputFile%unit, nml=ParaDXXX)
                         self%Err%msg = PROCEDURE_NAME // self%Err%msg
                         return
                     end if
+                    ! LCOV_EXCL_STOP
                 end if
 
                 ! close input file

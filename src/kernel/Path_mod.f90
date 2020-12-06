@@ -45,7 +45,7 @@
 
 module Path_mod
 
-    use Constants_mod, only: IK
+    use Constants_mod, only: IK ! LCOV_EXCL_LINE
     use Err_mod, only: Err_type
     implicit none
 
@@ -175,19 +175,15 @@ contains
         if (present(inputPath)) then
             Path%original = trim(adjustl(inputPath))
         elseif (.not.allocated(Path%original)) then
-        ! LCOV_EXCL_START
             Path%Err%occurred = .true.
             Path%Err%msg = PROCEDURE_NAME//": Error occurred. Neither inputPath argument is given as input, nor Path%original is allocated to construct the Path object."
             return
-        ! LCOV_EXCL_STOP
         else
             if ( len(trim(adjustl(Path%original)))==0 ) then
-            ! LCOV_EXCL_START
                 Path%Err%occurred = .true.
                 Path%Err%msg = PROCEDURE_NAME//": Error occurred. Neither inputPath argument is given as input, nor Path%original has a non-blank length > 0 to construct the Path object."
                 return
             end if
-            ! LCOV_EXCL_STOP
         end if
 
         if (present(OS)) then
@@ -422,15 +418,19 @@ contains
         call OS%query()
 
         if (OS%Err%occurred) then
+        ! LCOV_EXCL_START
             Err = OS%Err
             Err%msg = PROCEDURE_NAME // ": Error occurred while modifying inputPath='" // outputPath // "'.\n" // Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
-        if (OS%isWindows) then
-            outputPath = winify(inputPath)
-        else
+        if (OS%Shell%isUnix) then
             outputPath = linify(inputPath)
+#if defined OS_IS_WINDOWS
+        else
+            outputPath = winify(inputPath)
+#endif
         end if
 
     end subroutine modify
@@ -545,13 +545,13 @@ contains
     !> Make the requested (nested) directory (recursively, if needed).
     !>
     !> \param[in]       dirPath     :   The full directory path.
-    !> \param[out]      isWindows   :   The logical flag indicating whether the OS is Windows (**optional**). If not present, Unix OS will be assumed.
+    !> \param[out]      isUnixShell :   The logical flag indicating whether the OS is Windows (**optional**). If not present, Unix OS will be assumed.
     !> \param[out]      wait        :   The logical flag indicating whether the procedure should wait
     !>                                  for the system operation to complete and return (**optional**, default = `.true.`).
     !>
     !> \warning
     !> This routine does not currently check for OS type.
-    function mkdir(dirPath,isWindows,wait) result(Err)
+    function mkdir(dirPath,isUnixShell,wait) result(Err)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: mkdir
 #endif
@@ -561,41 +561,50 @@ contains
         implicit none
         character(*), parameter         :: PROCEDURE_NAME = MODULE_NAME//"@mkdir()"
         character(*), intent(in)        :: dirPath
-        logical, intent(in), optional   :: isWindows, wait
+        logical, intent(in), optional   :: isUnixShell, wait
         type(Err_type)                  :: Err
         type(SysCmd_type)               :: SysCmd
         type(OS_type)                   :: OS
-        logical                         :: isWindowsDefault
+        logical                         :: isUnixShellDefault
         character(:), allocatable       :: command
 
-        Err%occurred= .false.
-        OS%Err%occurred = .false.
-        if (present(isWindows)) then
-            isWindowsDefault = isWindows
+        Err%occurred = .false.
+
+        if (present(isUnixShell)) then
+            isUnixShellDefault = isUnixShell
         else
-            call OS%query(shellQueryEnabled = .true.)
-            isWindowsDefault = .not. OS%Shell%isUnix
+            OS%Err%occurred = .false.
+            call OS%query()
+            if (OS%Err%occurred) then
+                ! LCOV_EXCL_START
+                command = "mkdir "//dirPath
+                ! LCOV_EXCL_STOP
+            else
+                isUnixShellDefault = OS%Shell%isUnix
+            end if
         end if
 
-        if (.not. OS%Err%occurred) then
-
-            if (isWindowsDefault) then
+        if (.not. allocated(command)) then
+            if (isUnixShellDefault) then
                 command = 'mkdir "'//dirPath//'" >nul 2>&1' ! path has to be enclosed with "" to allow nested mkdir
+#if defined OS_IS_WINDOWS
             else
                 command = "mkdir -p "//dirPath//" > /dev/null 2>&1" ! -p enables nested mkdir
+#endif
             end if
-
-            SysCmd = SysCmd_type(command, wait)
-            if (.not.SysCmd%Err%occurred) return
-
         end if
 
-        SysCmd = SysCmd_type("mkdir "//dirPath,wait)
+        SysCmd = SysCmd_type(command, wait)
+
         if (SysCmd%Err%occurred) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%stat = SysCmd%Err%stat
             Err%msg = PROCEDURE_NAME // SysCmd%Err%msg // "\nexecute_command_line() exitstat: " // num2str(SysCmd%exitstat)
         end if
+        ! LCOV_EXCL_STOP
+
+        deallocate(command)
 
     end function mkdir
 

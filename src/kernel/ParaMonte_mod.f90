@@ -793,7 +793,7 @@ contains
         ! Generate the output files directory:
 
         if (self%Image%isFirst) then
-            self%Err = mkdir( dirPath = self%SpecBase%OutputFileName%dir, isWindows = self%OS%isWindows )
+            self%Err = mkdir( dirPath = self%SpecBase%OutputFileName%dir, isUnixShell = self%OS%Shell%isUnix )
             if (self%Err%occurred) then
             ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME//": Error occurred while making directory = '"//self%SpecBase%OutputFileName%dir//"'."//NLC//self%Err%msg

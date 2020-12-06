@@ -635,6 +635,7 @@ contains
                 adaptationMeasureComputationNeeded = .true.
                 mv_sampleSizeOld_save = mv_sampleSizeOld_save + sampleSizeCurrent
 
+            ! LCOV_EXCL_START
             else blockPosDefCheck
 
                 adaptationMeasure = 0._RK
@@ -690,6 +691,7 @@ contains
                 end if
 
             end if blockPosDefCheck
+            ! LCOV_EXCL_STOP
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -773,6 +775,7 @@ contains
             end do
             call getLogSqrtDetPosDefMat(nd,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
             if (singularityOccurred) then
+                ! LCOV_EXCL_START
                 write(mc_logFileUnit,"(A)")
                 write(mc_logFileUnit,"(A)") "Singular covariance matrix detected while computing the Adaptation measure:"
                 write(mc_logFileUnit,"(A)")
@@ -792,10 +795,13 @@ contains
                                 &Otherwise, restarting the simulation might resolve the error."
                 call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                 return
+                ! LCOV_EXCL_STOP
             end if
+
             !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
             adaptationMeasure = sqrt( 1._RK - exp( 0.5*(mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum ) ) ! totalVariationUpperBound
             mv_logSqrtDetOld_save = logSqrtDetNew
+
 !block
 !integer, save :: counter = 0
 !counter = counter + 1
@@ -812,10 +818,12 @@ contains
 !end block
 
             if (adaptationMeasure<0._RK) then
+                ! LCOV_EXCL_START
                 call warn   ( prefix = mc_methodBrand &
                             , outputUnit = mc_logFileUnit &
                             , msg = mc_negativeTotalVariationMsg//num2str(adaptationMeasure) )
                 adaptationMeasure = 0._RK
+                ! LCOV_EXCL_STOP
             end if
 
             ! update the higher-stage delayed-rejection Cholesky Lower matrices
@@ -915,6 +923,7 @@ contains
     !> \warning
     !> When CAF parallelism is used, this routine must be exclusively called by the rooter images.
     !> When MPI parallelism is used, this routine must be called by all images.
+#if defined CAF_ENABLED || MPI_ENABLED
     subroutine bcastAdaptation()
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: bcastAdaptation
@@ -939,6 +948,7 @@ contains
 #endif
         call getInvCovMat()
     end subroutine bcastAdaptation
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -960,16 +970,16 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvCovMat
 #endif
-        use Matrix_mod, only: getInvMatFromCholFac
+        use Matrix_mod, only: getInvMatFromCholFac ! LCOV_EXCL_LINE
         implicit none
         integer(IK) :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
             ! WARNING: Do not set the full boundaries' range `(1:mc_ndim)` for the first index of `comv_CholDiagLower` in the following subroutine call.
             ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
-            mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim &
-                                                                            , CholeskyLower = comv_CholDiagLower(:,1:mc_ndim,istage) &
-                                                                            , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) &
+            mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim & ! LCOV_EXCL_LINE
+                                                                            , CholeskyLower = comv_CholDiagLower(:,1:mc_ndim,istage) & ! LCOV_EXCL_LINE
+                                                                            , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) & ! LCOV_EXCL_LINE
                                                                             )
             mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))
         end do
@@ -1038,7 +1048,7 @@ contains
                                                             , "adaptiveScaleFactorSquared" & ! adaptiveScaleFactorSq
                                                             , mv_adaptiveScaleFactorSq_save * mc_defaultScaleFactorSq &
                                                             , "meanVec" & ! MeanOld(1:ndim)
-                                                            , mv_MeanOld_save(1:mc_ndim) &
+                                                            , mv_MeanOld_save(1:mc_ndim) & ! LCOV_EXCL_LINE
                                                             , "covMat" & ! CholDiagLower(1:ndim,0:ndim,0)
                                                             , ((comv_CholDiagLower(i,j,0),i=1,j),j=1,mc_ndim)
                                                            !, (comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
