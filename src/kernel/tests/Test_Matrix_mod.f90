@@ -876,7 +876,7 @@ contains
         use Constants_mod, only: RK, IK
 
         implicit none
-        logical(IK)             :: assertion
+        logical                 :: assertion
         integer(IK), parameter  :: ColIndx(*) = [4]
         integer(IK), parameter  :: ColIndxMap(*) = [5]
         integer(IK)             :: rank
