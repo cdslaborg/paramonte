@@ -22,6 +22,7 @@
   Test_Optimization_mod.f90
   Test_Path_mod.f90
   Test_ParaDRAM_mod.f90
+  Test_ParaDISE_mod.f90
   Test_RandomSeed_mod.f90
   Test_Sort_mod.f90
   Test_StarFormation_mod.f90
