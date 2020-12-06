@@ -1183,15 +1183,13 @@ contains
                          & from file = '" // RFN%path // "'."
                 return
             elseif ( is_iostat_end(Err%stat) ) then
-            ! LCOV_EXCL_STOP
                 exit
-            ! LCOV_EXCL_START
             elseif ( Err%stat>0 ) then
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME // ": Unknown error condition occurred while attempting to read from file = '" // RFN%path // "'."
                 return
-            ! LCOV_EXCL_STOP
             end if
+            ! LCOV_EXCL_STOP
             List(counter)%record = trim(adjustl(record))
         end do
 
@@ -1319,8 +1317,10 @@ contains
 
         if (isUnixShell) then
             cmd = "cp "     // pathOld // " " // pathNew
+#if defined OS_IS_WINDOWS
         else
             cmd = 'copy "'  // pathOld // '" "' // pathNew // '" > nul'
+#endif
         end if
 
         counter = 0
@@ -1469,4 +1469,4 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-end module System_mod
+end module System_mod ! LCOV_EXCL_LINE

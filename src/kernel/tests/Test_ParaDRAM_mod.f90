@@ -73,8 +73,10 @@ contains
         call Test%run(test_runSampler_3, "test_runSampler_3")
         call Test%run(test_runSampler_4, "test_runSampler_4")
         call Test%run(test_runSampler_5, "test_runSampler_5")
+        call Test%run(test_runSampler_6, "test_runSampler_6")
         call Test%run(test_runSampler_7, "test_runSampler_7")
         call Test%run(test_runSampler_8, "test_runSampler_8")
+        call Test%run(test_runSampler_9, "test_runSampler_9")
 
         call Test%run(test_SpecBase_RandomSeed_type_1, "test_SpecBase_RandomSeed_type_1")
         call Test%run(test_SpecBase_RandomSeed_type_2, "test_SpecBase_RandomSeed_type_2")
@@ -224,6 +226,7 @@ contains
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_1" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -240,11 +243,13 @@ contains
         type(ParaDRAM_type)     :: PD
         integer(IK) , parameter :: chainSize_ref = 100_IK
         integer(IK) , parameter :: userSeed_ref = 1111_IK
+
         assertion = .true.
 #if defined CODECOV_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_2" &
                             , inputFile = "&ParaDRAM randomSeed = "//num2str(userSeed_ref)//" chainSize = "//num2str(chainSize_ref)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecBase%RandomSeed%userSeed==userSeed_ref .and. PD%SpecMCMC%ChainSize%val==chainSize_ref
@@ -277,6 +282,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_3.in" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_3" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
@@ -295,6 +301,7 @@ contains
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_4" &
                             , inputFile = " " &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -314,11 +321,164 @@ contains
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_5" &
                             , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_5.in" &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_runSampler_5
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler to restart a complete simulation without an output sample file.
+    function test_runSampler_6() result(assertion)
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD1, PD2
+        assertion = .true.
+#if defined CODECOV_ENABLED
+
+        ! Run the fresh simulation
+
+        call PD1%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_6" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 500_IK &
+                            , chainSize = 1000_IK &
+                            )
+        assertion = assertion .and. .not. PD1%Err%occurred
+        if (.not. assertion) return ! LCOV_EXCL_LINE
+
+        ! delete the sample file
+
+        open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
+        close(PD1%SampleFile%unit, status = "delete")
+
+        ! restart the simulation with the same configuration
+
+        call PD2%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_6" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 500_IK &
+                            , chainSize = 1000_IK &
+                            )
+        assertion = assertion .and. .not. PD2%Err%occurred
+        if (.not. assertion) return ! LCOV_EXCL_LINE
+
+        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK )
+#endif
+    end function test_runSampler_6
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a wrong internal input namelist group:
+    !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
+    function test_runSampler_7() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , inputFile = "&ParaDXXX randomSeed = 1111 /" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_runSampler_7" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_runSampler_7
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler with a wrong internal input namelist group:
+    !> +    Infinity values for `domainLowerLimitVec` and `domainUpperLimitVec`.
+    function test_runSampler_8() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , inputFile = Test%inDir//"/Test_ParaDRAM_mod@test_runSampler_8.in" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_runSampler_8" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_runSampler_8
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDRAM sampler to restart a complete simulation without an output sample file.
+    function test_runSampler_9() result(assertion)
+        implicit none
+        logical             :: assertion
+        type(ParaDRAM_type) :: PD1, PD2
+        assertion = .true.
+#if defined CODECOV_ENABLED
+
+        ! Run the fresh simulation as a reference run
+
+        call PD1%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_9_ref" &
+                            , proposalModel = "uniform" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 500_IK &
+                            , chainSize = 1000_IK &
+                            )
+        assertion = assertion .and. .not. PD1%Err%occurred
+        if (.not. assertion) return ! LCOV_EXCL_LINE
+
+        ! Run the fresh simulation
+
+        call PD1%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_9" &
+                            , proposalModel = "uniform" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 500_IK &
+                            , chainSize = 1000_IK &
+                            )
+        assertion = assertion .and. .not. PD1%Err%occurred
+        if (.not. assertion) return ! LCOV_EXCL_LINE
+
+        ! delete the sample file
+
+        open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
+        close(PD1%SampleFile%unit, status = "delete")
+
+        ! restart the simulation with the same configuration
+
+        call PD2%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_9" &
+                            , proposalModel = "uniform" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 500_IK &
+                            , chainSize = 1000_IK &
+                            )
+        assertion = assertion .and. .not. PD2%Err%occurred
+        if (.not. assertion) return ! LCOV_EXCL_LINE
+
+        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK )
+#endif
+    end function test_runSampler_9
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -87,6 +87,7 @@ contains
         call Test%run(test_EnvVar_type_3, "test_EnvVar_type_3")
         call Test%run(test_CmdArg_type_1, "test_CmdArg_type_1")
         call Test%run(test_SysCmd_type_1, "test_SysCmd_type_1")
+        call Test%run(test_getSystemInfo_1, "test_getSystemInfo_1")
         call Test%run(test_SystemInfo_type_1, "test_SystemInfo_type_1")
         call Test%run(test_RandomFileName_type_1, "test_RandomFileName_type_1")
         call Test%finalize()
@@ -252,6 +253,7 @@ contains
 #endif
 
         call OS%Shell%query()
+        call queryRuntimeShell(OS%Shell)
         assertion = assertion .and. .not. OS%Shell%Err%occurred
 
         if (Test%isDebugMode .and. .not. assertion) then
@@ -467,10 +469,26 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    !> Obtain the system info without providing the cachefile name, in which case, no cache file will be generated.
+    function test_getSystemInfo_1() result(assertion)
+
+        use JaggedArray_mod, only: CharVec_type
+        use Err_mod, only: Err_type
+        implicit none
+        logical                         :: assertion
+        type(CharVec_type), allocatable :: List(:)
+        type(Err_type)                  :: Err
+
+        call getSystemInfo(List,Err)
+        assertion = .not. Err%occurred
+
+    end function test_getSystemInfo_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     function test_copyFile_1() result(assertion)
 
         use Constants_mod, only: RK
-        use String_mod, only: log2str
         implicit none
         logical                     :: assertion
         type(RandomFileName_type)   :: RFN

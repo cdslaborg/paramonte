@@ -53,9 +53,9 @@
                     self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayedUnused + self%Image%count
 #endif
 
-                    co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew ( nd            = nd &
-                                                                            , counterDRS    = counterDRS &
-                                                                            , StateOld      = co_LogFuncState(1:nd,counterDRS-1) &
+                    co_LogFuncState(1:nd,counterDRS) = self%Proposal%getNew ( nd            = nd & ! LCOV_EXCL_LINE
+                                                                            , counterDRS    = counterDRS & ! LCOV_EXCL_LINE
+                                                                            , StateOld      = co_LogFuncState(1:nd,counterDRS-1) & ! LCOV_EXCL_LINE
                                                                             )
 #if defined CODECOV_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
@@ -109,7 +109,7 @@
                                         co_AccRate(counterDRS) = exp( logFuncDiff )
                                     end if
                                 else    ! ensure no arithmetic overflow/underflow. ATT: co_LogFuncState(0,-1) > co_LogFuncState(0,counterDRS) > maxLogFuncRejectedProposal
-                                    co_AccRate(counterDRS) = exp( getLogSubExp( co_LogFuncState(0,counterDRS)   , maxLogFuncRejectedProposal ) &
+                                    co_AccRate(counterDRS) = exp( getLogSubExp( co_LogFuncState(0,counterDRS)   , maxLogFuncRejectedProposal ) & ! LCOV_EXCL_LINE
                                                                 - getLogSubExp( co_LogFuncState(0,-1)           , maxLogFuncRejectedProposal ) )
                                 end if
 
