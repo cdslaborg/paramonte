@@ -550,10 +550,10 @@ contains
         use Constants_mod, only: RK, IK ! LCOV_EXCL_LINE
         implicit none
         logical                 :: assertion
-        integer(RK), parameter  :: factorial_ref = 3628800_IK
+        integer(IK), parameter  :: factorial_ref = 3628800_IK
         integer(IK), parameter  :: positiveInteger = 10_IK
-        integer(RK)             :: factorial
-        integer(RK)             :: difference
+        real(RK)                :: difference
+        real(RK)                :: factorial
         factorial = getFactorial(positiveInteger = positiveInteger)
         difference = abs(factorial - factorial_ref)
         assertion  = difference == 0_IK
