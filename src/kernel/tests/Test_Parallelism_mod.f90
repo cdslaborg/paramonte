@@ -129,7 +129,7 @@ contains
         use Constants_mod, only: IK, RK
         implicit none
         logical :: assertion
-        real(RK), parameter :: tolerance = 1.e-7_RK
+        real(RK), parameter :: tolerance = 1.e-5_RK
         type(ForkJoin_type) :: ForkJoin
 
         ForkJoin = ForkJoin_type( processCount = processCount &
@@ -247,7 +247,7 @@ contains
         implicit none
         logical :: assertion
         type(ForkJoin_type) :: ForkJoin
-        real(RK), parameter :: tolerance = 1.e-7_RK
+        real(RK), parameter :: tolerance = 1.e-5_RK
 
         integer(IK) , parameter :: processCount = 1_IK
         real(RK)    , parameter :: ForkJoin_Speedup_Maximum_value = 1._RK
