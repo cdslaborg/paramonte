@@ -63,33 +63,37 @@ contains
     subroutine test_ParaMCMCRefinedChain()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
-        call Test%run(test_getSkip4NewSampleSize_1, "getSkip4NewSampleSize")
+        call Test%run(test_getSkip4NewSampleSize_1, "test_getSkip4NewSampleSize_1")
         call Test%finalize()
     end subroutine test_ParaMCMCRefinedChain
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function getSkip4NewSampleSize() result(assertion)
-        use Constants_mod, only: IK, RK
+    function test_getSkip4NewSampleSize_1() result(assertion)
+        use Constants_mod, only: IK
         use ParaDRAM_mod, only: ParaDRAM_type
         implicit none
         logical                     :: assertion
         type(ParaDRAM_type)         :: PD
+        integer(IK), parameter      :: oldSampleSize = 10_IK
+        integer(IK), parameter      :: newSampleSize = 3_IK
+        integer(IK), parameter      :: skip4NewSampleSize_ref = 3_IK
+        integer(IK)                 :: skip4NewSampleSize
         assertion = .true.
 
-
-        assertion = assertion .and. .not. CFC%Err%occurred
+        skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)
+        assertion = skip4NewSampleSize == skip4NewSampleSize_ref
         if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
-            write(*,"(10(g0,:,', '))") "CFC%Err%occurred", CFC%Err%occurred
-            write(*,"(10(g0,:,', '))") "CFC%Err%msg     ", CFC%Err%msg
+            write(*,"(10(g0,:,', '))") "skip4NewSampleSize_ref  ", skip4NewSampleSize_ref
+            write(*,"(10(g0,:,', '))") "skip4NewSampleSize      ", skip4NewSampleSize
             write(*,"(10(g0,:,', '))")
             return
         end if
         ! LCOV_EXCL_STOP
 
-    end function getSkip4NewSampleSize
+    end function test_getSkip4NewSampleSize_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

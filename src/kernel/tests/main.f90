@@ -101,6 +101,7 @@ block; use Test_TimerCPU_mod; call test_TimerCPU(); end block
 block; use Test_TranGaus_mod; call test_TranGaus(); end block
 block; use Test_ParaDRAM_mod; call test_ParaDRAM(); end block
 block; use Test_ParaDISE_mod; call test_ParaDISE(); end block
+block; use Test_ParaMCMCRefinedChain_mod; call test_ParaMCMCRefinedChain(); end block
 block; use Test_ParaMonteChainFileContents_mod; call test_ParaMonteChainFileContents(); end block
 
 call finalize()

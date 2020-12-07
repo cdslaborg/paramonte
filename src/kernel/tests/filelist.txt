@@ -24,6 +24,7 @@
   Test_ParaDRAM_mod.f90
   Test_ParaDISE_mod.f90
   Test_Parallelism_mod.f90
+  Test_ParaMCMCRefinedChain_mod.f90
   Test_ParaMonteChainFileContents_mod.f90
   Test_RandomSeed_mod.f90
   Test_Sort_mod.f90
