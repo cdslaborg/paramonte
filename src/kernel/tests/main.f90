@@ -88,7 +88,6 @@ block; use Test_Matrix_mod; call test_Matrix(); end block
 block; use Test_Misc_mod; call test_Misc(); end block
 block; use Test_Optimization_mod; call test_Optimization(); end block
 block; use Test_Parallelism_mod; call test_Parallelism(); end block
-block; use Test_ParaMonteChainFileContents_mod; call test_ParaMonteChainFileContents(); end block
 block; use Test_Path_mod; call test_Path(); end block
 block; use Test_RandomSeed_mod; call test_RandomSeed(); end block
 block; use Test_Sort_mod; call test_Sort(); end block
@@ -102,6 +101,7 @@ block; use Test_TimerCPU_mod; call test_TimerCPU(); end block
 block; use Test_TranGaus_mod; call test_TranGaus(); end block
 block; use Test_ParaDRAM_mod; call test_ParaDRAM(); end block
 block; use Test_ParaDISE_mod; call test_ParaDISE(); end block
+block; use Test_ParaMonteChainFileContents_mod; call test_ParaMonteChainFileContents(); end block
 
 call finalize()
 

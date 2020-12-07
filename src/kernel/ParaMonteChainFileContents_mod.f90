@@ -129,9 +129,9 @@ contains
 #endif
         implicit none
         integer(IK) , intent(in)            :: ndim
+        character(*), intent(in), optional  :: chainFileForm
         character(*), intent(in), optional  :: variableNameList(ndim)
         character(*), intent(in), optional  :: chainFilePath
-        character(*), intent(in), optional  :: chainFileForm
         character(*), intent(in), optional  :: delimiter
         integer(IK) , intent(in), optional  :: lenHeader, chainSize, targetChainSize
         type(ChainFileContents_type)        :: CFC
@@ -161,7 +161,7 @@ contains
 
         ! read the chain file if the path is given
 
-        if (present(chainFilePath)) call CFC%get(chainFilePath,chainFileForm,Err,chainSize,lenHeader,ndim,delimiter,targetChainSize)
+        if (present(chainFilePath) .and. present(chainFileForm)) call CFC%get(chainFilePath,chainFileForm,Err,chainSize,lenHeader,ndim,delimiter,targetChainSize)
         if (Err%occurred) then
         ! LCOV_EXCL_START
             CFC%Err%occurred = .true.

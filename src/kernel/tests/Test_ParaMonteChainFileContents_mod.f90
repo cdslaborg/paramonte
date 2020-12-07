@@ -63,13 +63,13 @@ contains
     subroutine test_ParaMonteChainFileContents()
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
-        call Test%run(test_nullifyChainFileContents_1, "test_nullifyChainFileContents_1")
+        call Test%run(test_constructChainFileContents_1, "test_constructChainFileContents_1")
         call Test%finalize()
     end subroutine test_ParaMonteChainFileContents
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function test_nullifyChainFileContents_1() result(assertion)
+    function test_constructChainFileContents_1() result(assertion)
         use Constants_mod, only: IK, RK
         use ParaDRAM_mod, only: ParaDRAM_type
         implicit none
@@ -82,22 +82,39 @@ contains
         integer(IK) , parameter     :: NDIM = 2_IK
         assertion = .true.
 #if defined CODECOV_ENABLED
+
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_15" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_constructChainFileContents_1" &
                             , mpiFinalizeRequested = .false. &
                             , outputRealPrecision = 15_IK &
                             , outputDelimiter = DELIM &
                             , sampleSize = 10_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
-        if (.not. assertion) return ! LCOV_EXCL_LINE
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(*,"(10(g0,:,', '))")
+            write(*,"(10(g0,:,', '))") "PD%Err%occurred", PD%Err%occurred
+            write(*,"(10(g0,:,', '))") "PD%Err%msg     ", PD%Err%msg
+            write(*,"(10(g0,:,', '))")
+            return
+        end if
+        ! LCOV_EXCL_STOP
 
         ! read the chain file, first call without the optional input file, in which case no error should happen.
 
         CFC = ChainFileContents_type( ndim = NDIM )
         assertion = assertion .and. .not. CFC%Err%occurred
-        if (.not. assertion) return ! LCOV_EXCL_LINE
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(*,"(10(g0,:,', '))")
+            write(*,"(10(g0,:,', '))") "CFC%Err%occurred", CFC%Err%occurred
+            write(*,"(10(g0,:,', '))") "CFC%Err%msg     ", CFC%Err%msg
+            write(*,"(10(g0,:,', '))")
+            return
+        end if
+        ! LCOV_EXCL_STOP
 
         CFC = ChainFileContents_type( ndim = NDIM &
                                     !, variableNameList = variableNameList &
@@ -106,9 +123,18 @@ contains
                                     , chainSize = PD%Chain%Count%compact &
                                     )
         assertion = assertion .and. .not. CFC%Err%occurred
-        if (.not. assertion) return ! LCOV_EXCL_LINE
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(*,"(10(g0,:,', '))")
+            write(*,"(10(g0,:,', '))") "CFC%Err%occurred", CFC%Err%occurred
+            write(*,"(10(g0,:,', '))") "CFC%Err%msg     ", CFC%Err%msg
+            write(*,"(10(g0,:,', '))")
+            return
+        end if
+        ! LCOV_EXCL_STOP
+
 #endif
-    end function test_nullifyChainFileContents_1
+    end function test_constructChainFileContents_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
