@@ -263,7 +263,9 @@ contains
         else
             Test%outDir = "./output"
         end if
+write(*,*) "AMIR1"
         Path = Path_type(Test%outDir)
+write(*,*) "AMIR2"
         if (Path%Err%occurred) then
             call abort( Err = Path%Err &
                      !, prefix = "FATAL: " &
@@ -271,7 +273,9 @@ contains
                       , outputUnit = Test%outputUnit &
                       )
         else
+write(*,*) "AMIR3"
             Test%outDir = Path%modified
+write(*,*) "AMIR4"
             if (Test%Image%isFirst) then
                 Path%Err = Path%mkdir(Test%outDir)
                 if (Path%Err%occurred) then
