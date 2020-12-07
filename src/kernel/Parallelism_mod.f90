@@ -416,6 +416,7 @@ contains
         real(RK)                                    :: serialRuntime, parSecTimePerProc, comSecTime
         integer(IK)                                 :: numProc, lenSpeedupNew !, maxNumProc
         logical                                     :: maxSpeedupFound, isPresentErr
+        integer(IK), parameter                      :: SuccessStep(*) = [1_IK]
 
         isPresentErr = present(Err)
         if (isPresentErr) Err%occurred = .false.
@@ -443,16 +444,16 @@ contains
                 lenSpeedup = lenSpeedupNew
             end if
 
-
             ! compute the fraction of work done by the first image
 
             if (successProb==0._RK) then
                 FirstImageContribution(1) = 1._RK / numProc
             else
+                
                 FirstImageContribution = exp(getLogProbGeoCyclic( successProb = successProb &
                                                                 , maxNumTrial = numProc &
                                                                 , numTrial = 1_IK &
-                                                                , SuccessStep = [1_IK] &
+                                                                , SuccessStep = SuccessStep &
                                                                 ) )
             end if
 
