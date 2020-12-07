@@ -190,13 +190,13 @@ contains
         call Test%run(test_SpecMCMC_RandomStartPointRequested_type_2, "test_SpecMCMC_RandomStartPointRequested_type_2")
         call Test%run(test_SpecMCMC_RandomStartPointRequested_type_3, "test_SpecMCMC_RandomStartPointRequested_type_3")
         call Test%run(test_SpecMCMC_RandomStartPointRequested_type_4, "test_SpecMCMC_RandomStartPointRequested_type_4")
-        call Test%run(test_RSPDLowerLimitVec_type_1, "test_RSPDLowerLimitVec_type_1")
-        call Test%run(test_RSPDLowerLimitVec_type_2, "test_RSPDLowerLimitVec_type_2")
-        call Test%run(test_RSPDLowerLimitVec_type_3, "test_RSPDLowerLimitVec_type_3")
-        call Test%run(test_RSPDUpperLimitVec_type_1, "test_RSPDUpperLimitVec_type_1")
-        call Test%run(test_RSPDUpperLimitVec_type_2, "test_RSPDUpperLimitVec_type_2")
-        call Test%run(test_RSPDUpperLimitVec_type_3, "test_RSPDUpperLimitVec_type_3")
-        call Test%run(test_RSPDUpperLimitVec_type_4, "test_RSPDUpperLimitVec_type_4")
+        call Test%run(test_RSPDLowerLimitVec_type_1, "test_RSPDLowerLimitVec_type_1") ! global names shortened to accommodate the file length limits of Intel ifort on windows.
+        call Test%run(test_RSPDLowerLimitVec_type_2, "test_RSPDLowerLimitVec_type_2") ! global names shortened to accommodate the file length limits of Intel ifort on windows.
+        call Test%run(test_RSPDLowerLimitVec_type_3, "test_RSPDLowerLimitVec_type_3") ! global names shortened to accommodate the file length limits of Intel ifort on windows.
+        call Test%run(test_RSPDUpperLimitVec_type_1, "test_RSPDUpperLimitVec_type_1") ! global names shortened to accommodate the file length limits of Intel ifort on windows.
+        call Test%run(test_RSPDUpperLimitVec_type_2, "test_RSPDUpperLimitVec_type_2") ! global names shortened to accommodate the file length limits of Intel ifort on windows.
+        call Test%run(test_RSPDUpperLimitVec_type_3, "test_RSPDUpperLimitVec_type_3") ! global names shortened to accommodate the file length limits of Intel ifort on windows.
+        call Test%run(test_RSPDUpperLimitVec_type_4, "test_RSPDUpperLimitVec_type_4") ! global names shortened to accommodate the file length limits of Intel ifort on windows.
 
         call Test%run(test_SpecDRAM_AdaptiveUpdateCount_type_1, "test_SpecDRAM_AdaptiveUpdateCount_type_1")
         call Test%run(test_SpecDRAM_AdaptiveUpdateCount_type_2, "test_SpecDRAM_AdaptiveUpdateCount_type_2")

@@ -162,8 +162,10 @@ contains
 
         if (mv_Image%isFirst) then
 
+            msg = style( num2str(ntotal)//" tests performed. ", "bright", "yellow")
+
             color = "green"; if (nint(percentageTestPassed,kind=IK)==0_IK) color = "red"
-            msg = style( num2str(percentageTestPassed,"(f0.2)")//"% of "//num2str(ntotal)//" tests passed. ", "bright", color)
+            msg = msg // style( num2str(percentageTestPassed,"(f0.2)")//"% of "//num2str(ntotal)//" tests passed. ", "bright", color)
 
             color = "green"; if (mv_nfail>0_IK) color = "red"
             msg = msg // style( num2str(mv_nfail,"(g0)")//" tests failed. ", "bright", color)

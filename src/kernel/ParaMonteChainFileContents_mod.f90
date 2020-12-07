@@ -784,7 +784,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getLenHeader
 #endif
-        use Constants_mod, only: IK
+        use Constants_mod, only: IK ! LCOV_EXCL_LINE
         use Err_mod, only: abort
         implicit none
         class(ChainFileContents_type), intent(inout)    :: CFC
