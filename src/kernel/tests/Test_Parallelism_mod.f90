@@ -150,12 +150,12 @@ contains
         if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
-            write(*,"(10(g0,:,', '))") "ForkJoin%UniqueProcess%count"
-            write(*,"(10(g0,:,', '))") ForkJoin%UniqueProcess%count
-            write(*,"(10(g0,:,', '))") "ForkJoin%UniqueProcess%Identity"
-            write(*,"(10(g0,:,', '))") ForkJoin%UniqueProcess%Identity
-            write(*,"(10(g0,:,', '))") "ForkJoin%UniqueProcess%Frequency"
-            write(*,"(10(g0,:,', '))") ForkJoin%UniqueProcess%Frequency
+            write(*,"(10(g0,:,', '))") "ForkJoin%UniqueProcess%count    ", ForkJoin%UniqueProcess%count
+            write(*,"(10(g0,:,', '))") "ForkJoin_UniqueProcess_count    ", 8_IK
+            write(*,"(10(g0,:,', '))") "ForkJoin%UniqueProcess%Identity ", ForkJoin%UniqueProcess%Identity
+            write(*,"(10(g0,:,', '))") "ForkJoin_UniqueProcess_Identity ", [1_IK, 2_IK, 3_IK, 4_IK, 5_IK, 6_IK, 7_IK, 8_IK]
+            write(*,"(10(g0,:,', '))") "ForkJoin%UniqueProcess%Frequency", ForkJoin%UniqueProcess%Frequency
+            write(*,"(10(g0,:,', '))") "ForkJoin_UniqueProcess_Frequency", [13_IK, 11_IK, 18_IK, 16_IK, 7_IK, 11_IK, 8_IK, 16_IK]
             write(*,"(10(g0,:,', '))")
         end if
         ! LCOV_EXCL_STOP
@@ -188,7 +188,7 @@ contains
         ! LCOV_EXCL_STOP
 
         assertion = assertion .and. abs(ForkJoin%SuccessProb%current - successProb) < tolerance
-        assertion = assertion .and. ForkJoin%SuccessProb%effective == ForkJoin%SuccessProb%PowellMinimum%xmin(1)
+        assertion = assertion .and. abs(ForkJoin%SuccessProb%effective - ForkJoin%SuccessProb%PowellMinimum%xmin(1)) < tolerance
         assertion = assertion .and. all( abs(ForkJoin%SuccessProb%PowellMinimum%xmin - [0.28663337425270718E-1_RK, 4.5593657754033101_RK]) < tolerance )
         assertion = assertion .and. all( abs(ForkJoin%Contribution%LogFrequency-[ 2.5649493574615367_RK &
                                                                                 , 2.3978952727983707_RK &
@@ -202,12 +202,12 @@ contains
         if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
-            write(*,"(10(g0,:,', '))") "ForkJoin%SuccessProb%current"
-            write(*,"(10(g0,:,', '))")  ForkJoin%SuccessProb%current
-            write(*,"(10(g0,:,', '))") "ForkJoin%SuccessProb%effective"
-            write(*,"(10(g0,:,', '))")  ForkJoin%SuccessProb%effective
-            write(*,"(10(g0,:,', '))") "ForkJoin%SuccessProb%PowellMinimum%xmin"
-            write(*,"(10(g0,:,', '))")  ForkJoin%SuccessProb%PowellMinimum%xmin
+            write(*,"(10(g0,:,', '))") "ForkJoin%SuccessProb%current            ", ForkJoin%SuccessProb%current
+            write(*,"(10(g0,:,', '))") "ForkJoin_SuccessProb_current            ", successProb
+            write(*,"(10(g0,:,', '))") "ForkJoin%SuccessProb%effective          ", ForkJoin%SuccessProb%effective
+            write(*,"(10(g0,:,', '))") "ForkJoin_SuccessProb_effective          ", ForkJoin%SuccessProb%PowellMinimum%xmin(1)
+            write(*,"(10(g0,:,', '))") "ForkJoin%SuccessProb%PowellMinimum%xmin ", ForkJoin%SuccessProb%PowellMinimum%xmin
+            write(*,"(10(g0,:,', '))") "ForkJoin_SuccessProb_PowellMinimum_xmin ", [0.28663337425270718E-1_RK, 4.5593657754033101_RK]
             write(*,"(10(g0,:,', '))")
         end if
         ! LCOV_EXCL_STOP

@@ -121,6 +121,7 @@ contains
                                     , chainFilePath = PD%ChainFile%Path%original &
                                     , targetChainSize = 2 * PD%Chain%Count%compact &
                                     , chainSize = PD%Chain%Count%compact &
+                                    , chainFileForm = "compact" &
                                     )
         assertion = assertion .and. .not. CFC%Err%occurred
         if (Test%isDebugMode .and. .not. assertion) then

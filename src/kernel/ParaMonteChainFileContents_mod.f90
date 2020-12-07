@@ -535,9 +535,11 @@ contains
                                                         , CFC%LogFunc                  (iState)    &
                                                         , CFC%State         (1:CFC%ndim,iState)
                     if (is_iostat_eor(Err%stat) .or. is_iostat_end(Err%stat)) then
+                    ! LCOV_EXCL_START
                         call warnUserAboutCorruptChainFile(iState)
                         exit loopReadBinary
                     end if
+                    ! LCOV_EXCL_STOP
                     CFC%Count%verbose = CFC%Count%verbose + CFC%Weight(iState)
                 end do loopReadBinary
 
@@ -547,8 +549,10 @@ contains
                     read(chainFileUnit, "(A)" ) Record%value
                     Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
                     if (Record%nPart<numColTot) then
+                        ! LCOV_EXCL_START
                         call warnUserAboutCorruptChainFile(iState)
                         exit loopReadCompact
+                        ! LCOV_EXCL_STOP
                     else
                         read(Record%Parts(1)%record,*) CFC%ProcessID    (iState)
                         read(Record%Parts(2)%record,*) CFC%DelRejStage  (iState)
@@ -589,11 +593,13 @@ contains
                         read(chainFileUnit, "(A)" ) Record%value
                         Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
                         if (Record%nPart<numColTot) then
+                            ! LCOV_EXCL_START
                             call warnUserAboutCorruptChainFile(iState)
                             !exit blockChainSizeDefault
                             ! intel 2018 to 2019.05 yields internal compiler error with the above exit. Intel 19.1 and gnu 9.1 are fine.
                             ! The following is a workaround for now.
                             exit blockReadVerbose
+                            ! LCOV_EXCL_STOP
                         else
                             read(Record%Parts(1)%record,*) CFC%ProcessID(CFC%Count%compact)
                             read(Record%Parts(2)%record,*) CFC%DelRejStage(CFC%Count%compact)
@@ -615,8 +621,10 @@ contains
                             read(chainFileUnit, "(A)" ) Record%value
                             Record%Parts = Record%split(trim(adjustl(Record%value)), CFC%delimiter, Record%nPart)
                             if (Record%nPart<numColTot) then
+                                ! LCOV_EXCL_START
                                 call warnUserAboutCorruptChainFile(iState)
                                 exit loopOverChainfFileContents
+                                ! LCOV_EXCL_STOP
                             else
                                 read(Record%Parts(1)%record,*) ProcessID
                                 read(Record%Parts(2)%record,*) DelRejStage
