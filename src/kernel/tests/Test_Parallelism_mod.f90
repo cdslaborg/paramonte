@@ -163,13 +163,13 @@ contains
         assertion = assertion .and. ForkJoin%Contribution%count == 8_IK
         assertion = assertion .and. all(ForkJoin%Contribution%Identity == [1_IK, 2_IK, 3_IK, 4_IK, 5_IK, 6_IK, 7_IK, 8_IK])
         assertion = assertion .and. all(ForkJoin%Contribution%Frequency == [13_IK, 11_IK, 18_IK, 16_IK, 7_IK, 11_IK, 8_IK, 16_IK])
-        assertion = assertion .and. all( abs(ForkJoin%Contribution%LogFrequency-[ 2.5649493574615367_RK &
-                                                                                , 2.3978952727983707_RK &
-                                                                                , 2.8903717578961645_RK &
-                                                                                , 2.7725887222397811_RK &
-                                                                                , 1.9459101490553132_RK &
-                                                                                , 2.3978952727983707_RK &
-                                                                                , 2.0794415416798357_RK &
+        assertion = assertion .and. all( abs(ForkJoin%Contribution%LogFrequency-[ 2.5649493574615367_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.3978952727983707_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.8903717578961645_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.7725887222397811_RK & ! LCOV_EXCL_LINE
+                                                                                , 1.9459101490553132_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.3978952727983707_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.0794415416798357_RK & ! LCOV_EXCL_LINE
                                                                                 , 2.7725887222397811_RK ] ) < 1.e-10_RK )
 
         if (Test%isDebugMode .and. .not. assertion) then
@@ -190,13 +190,13 @@ contains
         assertion = assertion .and. abs(ForkJoin%SuccessProb%current - successProb) < tolerance
         assertion = assertion .and. abs(ForkJoin%SuccessProb%effective - ForkJoin%SuccessProb%PowellMinimum%xmin(1)) < tolerance
         assertion = assertion .and. all( abs(ForkJoin%SuccessProb%PowellMinimum%xmin - [0.28663337425270718E-1_RK, 4.5593657754033101_RK]) < tolerance )
-        assertion = assertion .and. all( abs(ForkJoin%Contribution%LogFrequency-[ 2.5649493574615367_RK &
-                                                                                , 2.3978952727983707_RK &
-                                                                                , 2.8903717578961645_RK &
-                                                                                , 2.7725887222397811_RK &
-                                                                                , 1.9459101490553132_RK &
-                                                                                , 2.3978952727983707_RK &
-                                                                                , 2.0794415416798357_RK &
+        assertion = assertion .and. all( abs(ForkJoin%Contribution%LogFrequency-[ 2.5649493574615367_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.3978952727983707_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.8903717578961645_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.7725887222397811_RK & ! LCOV_EXCL_LINE
+                                                                                , 1.9459101490553132_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.3978952727983707_RK & ! LCOV_EXCL_LINE
+                                                                                , 2.0794415416798357_RK & ! LCOV_EXCL_LINE
                                                                                 , 2.7725887222397811_RK ] ) < tolerance )
 
         if (Test%isDebugMode .and. .not. assertion) then
