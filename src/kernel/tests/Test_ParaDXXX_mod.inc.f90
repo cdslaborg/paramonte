@@ -761,14 +761,13 @@ contains
         implicit none
         logical                 :: assertion
         real(RK)    , parameter :: tolerance = 1.e-10_RK
-        integer(IK) , parameter :: NDIM = 2_IK
         character(*), parameter :: DELIM = "delim"
+        integer(IK) , parameter :: NDIM = 2_IK
         type(ParaDXXX_type)     :: PD
         type(RefinedChain_type) :: RefinedChain
         real(RK), allocatable   :: Difference(:,:)
         assertion = .true.
 #if defined CODECOV_ENABLED
-
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_15" &
@@ -818,7 +817,6 @@ contains
             return
         end if
         ! LCOV_EXCL_STOP
-
 #endif
     end function test_runSampler_15
 

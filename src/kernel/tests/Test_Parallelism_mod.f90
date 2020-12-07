@@ -148,6 +148,7 @@ contains
         assertion = assertion .and. all(ForkJoin%UniqueProcess%Frequency == [13_IK, 11_IK, 18_IK, 16_IK, 7_IK, 11_IK, 8_IK, 16_IK])
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "ForkJoin%UniqueProcess%count"
             write(*,"(10(g0,:,', '))") ForkJoin%UniqueProcess%count
@@ -157,6 +158,7 @@ contains
             write(*,"(10(g0,:,', '))") ForkJoin%UniqueProcess%Frequency
             write(*,"(10(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         assertion = assertion .and. ForkJoin%Contribution%count == 8_IK
         assertion = assertion .and. all(ForkJoin%Contribution%Identity == [1_IK, 2_IK, 3_IK, 4_IK, 5_IK, 6_IK, 7_IK, 8_IK])
@@ -171,6 +173,7 @@ contains
                                                                                 , 2.7725887222397811_RK ] ) < 1.e-10_RK )
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "ForkJoin%Contribution%count"
             write(*,"(10(g0,:,', '))")  ForkJoin%Contribution%count
@@ -182,6 +185,7 @@ contains
             write(*,"(10(g0,:,', '))")  ForkJoin%Contribution%LogFrequency
             write(*,"(10(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         assertion = assertion .and. abs(ForkJoin%SuccessProb%current - successProb) < tolerance
         assertion = assertion .and. ForkJoin%SuccessProb%effective == ForkJoin%SuccessProb%PowellMinimum%xmin(1)
@@ -196,6 +200,7 @@ contains
                                                                                 , 2.7725887222397811_RK ] ) < tolerance )
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "ForkJoin%SuccessProb%current"
             write(*,"(10(g0,:,', '))")  ForkJoin%SuccessProb%current
@@ -205,6 +210,7 @@ contains
             write(*,"(10(g0,:,', '))")  ForkJoin%SuccessProb%PowellMinimum%xmin
             write(*,"(10(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
         assertion = assertion .and. ForkJoin%Speedup%count == size(ForkJoinSpeedupScaling)
         assertion = assertion .and. ForkJoin%Speedup%Maximum%nproc == 79_IK
@@ -213,6 +219,7 @@ contains
         assertion = assertion .and. all(abs(ForkJoin%Speedup%Scaling - ForkJoinSpeedupScaling) < tolerance)
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
             write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%count"
             write(*,"(10(g0,:,', '))")  ForkJoin%Speedup%count
@@ -226,6 +233,7 @@ contains
             write(*,"(10(g0,:,', '))")  ForkJoin%Speedup%Scaling
             write(*,"(10(g0,:,', '))")
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_constructForkJoin_1
 
@@ -281,6 +289,7 @@ contains
         assertion = assertion .and. abs(ForkJoin%SuccessProb%effective - ForkJoin_SuccessProb_effective) < tolerance
 
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%Maximum%value    ", ForkJoin%Speedup%Maximum%value
             write(*,"(10(g0,:,', '))") "ForkJoin_Speedup_Maximum_value    ", ForkJoin_Speedup_Maximum_value
             write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%Maximum%nproc    ", ForkJoin%Speedup%Maximum%nproc
@@ -310,6 +319,7 @@ contains
             write(*,"(10(g0,:,', '))") "ForkJoin%SuccessProb%effective    ", ForkJoin%SuccessProb%effective
             write(*,"(10(g0,:,', '))") "ForkJoin_SuccessProb_effective    ", ForkJoin_SuccessProb_effective
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_constructForkJoin_2
 

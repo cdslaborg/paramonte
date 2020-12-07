@@ -312,8 +312,8 @@ contains
                                 chainSizeDefault = chainSizeDefault + 1_IK
                             elseif (is_iostat_end(Err%stat)) then
                                 exit loopFindChainSizeDefault
-                            elseif (is_iostat_eor(Err%stat)) then
                             ! LCOV_EXCL_START
+                            elseif (is_iostat_eor(Err%stat)) then
                                 Err%occurred = .true.
                                 Err%msg = PROCEDURE_NAME//": Incomplete record detected while reading the input binary chain file at: "//chainFilePathTrimmed//NLC
                                 return
@@ -722,6 +722,7 @@ contains
 
     contains
 
+        ! LCOV_EXCL_START
         subroutine warnUserAboutCorruptChainFile(lineNumber)
             implicit none
             integer(IK) :: lineNumber
@@ -738,6 +739,7 @@ contains
                         , msg = "An end-of-file or end-of-record condition occurred while parsing the contents of the chain file at line = "//num2str(lineNumber)//" with iostat = "//num2str(Err%stat)// &
                                 ". Assuming the previous line as the last line of the chain file..." &
                         )
+        ! LCOV_EXCL_STOP
         end subroutine warnUserAboutCorruptChainFile
 
     end subroutine getChainFileContents
