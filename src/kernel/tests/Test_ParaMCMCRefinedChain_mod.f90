@@ -64,6 +64,9 @@ contains
         implicit none
         Test = Test_type(moduleName=MODULE_NAME)
         call Test%run(test_getSkip4NewSampleSize_1, "test_getSkip4NewSampleSize_1")
+        call Test%run(test_getSkip4NewSampleSize_2, "test_getSkip4NewSampleSize_2")
+        call Test%run(test_getSkip4NewSampleSize_3, "test_getSkip4NewSampleSize_3")
+        call Test%run(test_getSkip4NewSampleSize_4, "test_getSkip4NewSampleSize_4")
         call Test%finalize()
     end subroutine test_ParaMCMCRefinedChain
 
@@ -71,16 +74,12 @@ contains
 
     function test_getSkip4NewSampleSize_1() result(assertion)
         use Constants_mod, only: IK
-        use ParaDRAM_mod, only: ParaDRAM_type
         implicit none
         logical                     :: assertion
-        type(ParaDRAM_type)         :: PD
         integer(IK), parameter      :: oldSampleSize = 10_IK
         integer(IK), parameter      :: newSampleSize = 3_IK
-        integer(IK), parameter      :: skip4NewSampleSize_ref = 3_IK
+        integer(IK), parameter      :: skip4NewSampleSize_ref = 4_IK
         integer(IK)                 :: skip4NewSampleSize
-        assertion = .true.
-
         skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)
         assertion = skip4NewSampleSize == skip4NewSampleSize_ref
         if (Test%isDebugMode .and. .not. assertion) then
@@ -92,8 +91,74 @@ contains
             return
         end if
         ! LCOV_EXCL_STOP
-
     end function test_getSkip4NewSampleSize_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getSkip4NewSampleSize_2() result(assertion)
+        use Constants_mod, only: IK
+        implicit none
+        logical                     :: assertion
+        integer(IK), parameter      :: oldSampleSize = 6_IK
+        integer(IK), parameter      :: newSampleSize = 3_IK
+        integer(IK), parameter      :: skip4NewSampleSize_ref = 2_IK
+        integer(IK)                 :: skip4NewSampleSize
+        skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)
+        assertion = skip4NewSampleSize == skip4NewSampleSize_ref
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(*,"(10(g0,:,', '))")
+            write(*,"(10(g0,:,', '))") "skip4NewSampleSize_ref  ", skip4NewSampleSize_ref
+            write(*,"(10(g0,:,', '))") "skip4NewSampleSize      ", skip4NewSampleSize
+            write(*,"(10(g0,:,', '))")
+            return
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getSkip4NewSampleSize_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getSkip4NewSampleSize_3() result(assertion)
+        use Constants_mod, only: IK
+        implicit none
+        logical                     :: assertion
+        integer(IK), parameter      :: oldSampleSize = 3_IK
+        integer(IK), parameter      :: newSampleSize = 3_IK
+        integer(IK), parameter      :: skip4NewSampleSize_ref = 1_IK
+        integer(IK)                 :: skip4NewSampleSize
+        skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)
+        assertion = skip4NewSampleSize == skip4NewSampleSize_ref
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(*,"(10(g0,:,', '))")
+            write(*,"(10(g0,:,', '))") "skip4NewSampleSize_ref  ", skip4NewSampleSize_ref
+            write(*,"(10(g0,:,', '))") "skip4NewSampleSize      ", skip4NewSampleSize
+            write(*,"(10(g0,:,', '))")
+            return
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getSkip4NewSampleSize_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_getSkip4NewSampleSize_4() result(assertion)
+        use Constants_mod, only: IK
+        implicit none
+        logical                     :: assertion
+        integer(IK), parameter      :: oldSampleSize = 2_IK
+        integer(IK), parameter      :: newSampleSize = 3_IK
+        integer(IK)                 :: skip4NewSampleSize
+        skip4NewSampleSize = getSkip4NewSampleSize(oldSampleSize,newSampleSize)
+        assertion = skip4NewSampleSize < 0_IK
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(*,"(10(g0,:,', '))")
+            write(*,"(10(g0,:,', '))") "skip4NewSampleSize      ", skip4NewSampleSize
+            write(*,"(10(g0,:,', '))")
+            return
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_getSkip4NewSampleSize_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

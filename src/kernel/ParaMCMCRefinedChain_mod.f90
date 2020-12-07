@@ -55,7 +55,7 @@ module ParaMCMCRefinedChain_mod
 
     implicit none
 
-    character(*), parameter :: MODULE_NAME = "@ParaMCMCRefinedChain_mod"
+    character(*), parameter :: MODULE_NAME = "\paramCMCRefinedChain_mod"
 
     !> The `RefinedChain_type` class.
     type                                    :: RefinedChain_type
@@ -93,17 +93,17 @@ contains
     !> Return the refined Markov chain, given the input Markov chain and its specifications.
     !> This procedure is a method of the [RefinedChain_type](@ref refinedchain_type) class.
     !>
-    !> @param[inout] RefinedChain           :   An object of class [RefinedChain_type](@ref refinedchain_type).
-    !> @param[inout] CFC                    :   An object of type [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type)
+    !> \param[inout] RefinedChain           :   An object of class [RefinedChain_type](@ref refinedchain_type).
+    !> \param[inout] CFC                    :   An object of type [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type)
     !!                                          containing the Markov chain.
-    !> @param[out]   Err                    :   An object of class [Err_type](@ref err_mod::err_type) indicating whether any error has occurred or not.
-    !> @param[in]    burninLoc              :   The estimated location of burnin point in the Markov chain (**optional**).
+    !> \param[out]   Err                    :   An object of class [Err_type](@ref err_mod::err_type) indicating whether any error has occurred or not.
+    !> \param[in]    burninLoc              :   The estimated location of burnin point in the Markov chain (**optional**).
     !!                                          If not provided, it will be extracted from the components of the input `CFC`.
-    !> @param[in]    refinedChainSize       :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,
+    !> \param[in]    refinedChainSize       :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,
     !!                                          then the requested sample is directly generated based on the input size.
-    !> @param[in]    sampleRefinementCount  :   The maximum number of times the sample can be refined (**optional**, default = `Infinity`).
+    !> \param[in]    sampleRefinementCount  :   The maximum number of times the sample can be refined (**optional**, default = `Infinity`).
     !!                                      :   For example, if set to 1, then only one round of refinement will be performed on the Markov chain.
-    !> @param[in]    sampleRefinementMethod :   The requested method of refining the sample (**optional**, default = "BatchMeans").
+    !> \param[in]    sampleRefinementMethod :   The requested method of refining the sample (**optional**, default = "BatchMeans").
     subroutine getRefinedChain  ( RefinedChain              &
                                 , CFC                       &
                                 , Err                       &
@@ -393,10 +393,10 @@ contains
 
     !> Return the refined vector of weights of the vector of weights of a weighted Markov chain.
     !>
-    !> @param[in]   np                  :   The number of elements of the `Weight` vector.
-    !> @param[in]   Weight              :   The input vector of weights.
-    !> @param[in]   skip                :   The size of the jumps that have to be made through the weighted Markov chain.
-    !> @param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If present, then the refined chain (represented by the
+    !> \param[in]   np                  :   The number of elements of the `Weight` vector.
+    !> \param[in]   Weight              :   The input vector of weights.
+    !> \param[in]   skip                :   The size of the jumps that have to be made through the weighted Markov chain.
+    !> \param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If present, then the refined chain (represented by the
     !>                                  :   vector `Weight`) will be refined such that the resulting refined chain has the size `refinedChainSize`.
     !>
     !> \return
@@ -467,16 +467,16 @@ contains
 
     !> Refined an input weighted sample according to the new requested weights.
     !>
-    !> @param[in]   nd                  :   The number of dimensions of the input `Sample(0:nd,np)`.
-    !> @param[in]   np                  :   The number of points in the input `Sample(0:nd,np)`.
-    !> @param[in]   skip                :   The jump size with which the input chain has to be refined.
-    !> @param[in]   Sample              :   The input 2-dimensional array of sampled states which has to be refined.
-    !> @param[in]   Weight              :   The weights of the sampled points.
-    !> @param[out]  RefinedChain        :   The refined array.
-    !> @param[out]  RefinedWeight       :   The vector of refined weights corresponding to the output refined array.
-    !> @param[out]  PointCount          :   An object of derived type [Count_type](@ref paramontechainfilecontents_mod::count_type)
+    !> \param[in]   nd                  :   The number of dimensions of the input `Sample(0:nd,np)`.
+    !> \param[in]   np                  :   The number of points in the input `Sample(0:nd,np)`.
+    !> \param[in]   skip                :   The jump size with which the input chain has to be refined.
+    !> \param[in]   Sample              :   The input 2-dimensional array of sampled states which has to be refined.
+    !> \param[in]   Weight              :   The weights of the sampled points.
+    !> \param[out]  RefinedChain        :   The refined array.
+    !> \param[out]  RefinedWeight       :   The vector of refined weights corresponding to the output refined array.
+    !> \param[out]  PointCount          :   An object of derived type [Count_type](@ref paramontechainfilecontents_mod::count_type)
     !>                                      containing the number of points in the refined sample.
-    !> @param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,
+    !> \param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,
     !>                                      then the requested sample is directly generated based on the input size.
     pure subroutine refineWeightedSample(nd,np,skip,Sample,Weight,RefinedChain,RefinedWeight,PointCount,refinedChainSize)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
@@ -511,11 +511,15 @@ contains
 
     !> Return the best skip size through a Markov chain to refined it to the optimal requested size.
     !>
-    !> @param[in]   oldSampleSize   :   The original size of the Markov chain.
-    !> @param[in]   newSampleSize   :   The final desired size of the refined sample.
+    !> \param[in]   oldSampleSize   :   The original size of the Markov chain.
+    !> \param[in]   newSampleSize   :   The final desired size of the refined sample.
     !>
     !> \return
     !> `skip4NewSampleSize` : The computed skip size.
+    !>
+    !> \warning
+    !> The condition `oldSampleSize >= newSampleSize` must always hold, 
+    !> otherwise a negative value for `skip4NewSampleSize` will be returned to indicate the occurrence of an error.
     pure function getSkip4NewSampleSize(oldSampleSize,newSampleSize) result(skip4NewSampleSize)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getSkip4NewSampleSize
@@ -524,6 +528,10 @@ contains
         implicit none
         integer(IK) , intent(in)    :: oldSampleSize,newSampleSize
         integer(IK)                 :: skip4NewSampleSize, addition, quotient
+        if (oldSampleSize < newSampleSize) then
+            skip4NewSampleSize = -1_IK
+            return
+        end if
         addition = 1
         quotient = oldSampleSize / newSampleSize
         if (mod(oldSampleSize,newSampleSize)==0) addition = 0
@@ -534,11 +542,11 @@ contains
 
     !> Write the computed refined chain to the specified output file.
     !>
-    !> @param[in]   RefinedChain                :   An object of class [RefinedChain_type](@ref refinedchain_type)
+    !> \param[in]   RefinedChain                :   An object of class [RefinedChain_type](@ref refinedchain_type)
     !>                                              containing the refined sample to be written to the output file.
-    !> @param[in]   sampleFileUnit              :   The unit of the file to which the sample must be written.
-    !> @param[in]   sampleFileHeaderFormat      :   The IO format of the header of the sample file.
-    !> @param[in]   sampleFileContentsFormat    :   The IO format of the contents (sampled states) in the sample file.
+    !> \param[in]   sampleFileUnit              :   The unit of the file to which the sample must be written.
+    !> \param[in]   sampleFileHeaderFormat      :   The IO format of the header of the sample file.
+    !> \param[in]   sampleFileContentsFormat    :   The IO format of the contents (sampled states) in the sample file.
     subroutine writeRefinedChain(RefinedChain,sampleFileUnit,sampleFileHeaderFormat,sampleFileContentsFormat)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRefinedChain
@@ -561,9 +569,9 @@ contains
 
     !> Write the computed refined chain to the specified output file.
     !>
-    !> @param[in]   sampleFilePath      :   The path to the input chain file that must be read.
-    !> @param[in]   delimiter           :   The delimiter used in the file.
-    !> @param[in]   ndim                :   The number of dimensions of the sampled states in the sample file.
+    !> \param[in]   sampleFilePath      :   The path to the input chain file that must be read.
+    !> \param[in]   delimiter           :   The delimiter used in the file.
+    !> \param[in]   ndim                :   The number of dimensions of the sampled states in the sample file.
     !>                                      This is basically, the size of the domain of the objective function.
     !>
     !> \return
