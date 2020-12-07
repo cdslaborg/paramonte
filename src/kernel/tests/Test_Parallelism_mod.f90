@@ -221,16 +221,17 @@ contains
         if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
             write(*,"(10(g0,:,', '))")
-            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%count"
-            write(*,"(10(g0,:,', '))")  ForkJoin%Speedup%count
-            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%current"
-            write(*,"(10(g0,:,', '))")  ForkJoin%Speedup%current
-            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%maximum%value"
-            write(*,"(10(g0,:,', '))")  ForkJoin%Speedup%maximum%value
-            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%maximum%nproc"
-            write(*,"(10(g0,:,', '))")  ForkJoin%Speedup%maximum%nproc
-            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%Scaling"
-            write(*,"(10(g0,:,', '))")  ForkJoin%Speedup%Scaling
+            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%count          ", ForkJoin%Speedup%count
+            write(*,"(10(g0,:,', '))") "ForkJoin_Speedup_count          ", size(ForkJoinSpeedupScaling)
+            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%current        ", ForkJoin%Speedup%current
+            write(*,"(10(g0,:,', '))") "ForkJoin_Speedup_current        ", 7.2045569830497680_RK
+            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%maximum%value  ", ForkJoin%Speedup%maximum%value
+            write(*,"(10(g0,:,', '))") "ForkJoin_Speedup_maximum_value  ", 25.109589458344086_RK
+            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%maximum%nproc  ", ForkJoin%Speedup%maximum%nproc
+            write(*,"(10(g0,:,', '))") "ForkJoin_Speedup_maximum_nproc  ", 79_IK
+            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%Scaling        ", ForkJoin%Speedup%Scaling
+            write(*,"(10(g0,:,', '))") "ForkJoin%Speedup%Scaling        ", ForkJoinSpeedupScaling
+            write(*,"(10(g0,:,', '))") "Difference                      ", abs(ForkJoin%Speedup%Scaling - ForkJoinSpeedupScaling)
             write(*,"(10(g0,:,', '))")
         end if
         ! LCOV_EXCL_STOP
