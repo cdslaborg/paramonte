@@ -1151,7 +1151,6 @@ contains
     function test_getGammaSeries_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
-        integer(IK)             :: i
         logical                 :: assertion
         real(RK)    , parameter :: exponent = +1.0_RK
         real(RK)    , parameter :: upperLim = 0._RK
@@ -1184,7 +1183,6 @@ contains
     function test_getGammaContFrac_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
-        integer(IK)             :: i
         logical                 :: assertion
         real(RK)    , parameter :: exponent = +1.0_RK
         real(RK)    , parameter :: lowerLim = 0._RK
@@ -1217,7 +1215,6 @@ contains
     function test_getGammaHalfInt_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
-        integer(IK)             :: i
         logical                 :: assertion
         real(RK)    , parameter :: tolerance = 1.e-10_RK
         real(RK)    , parameter :: positiveHalfInteger = 0.5_RK
@@ -1246,7 +1243,6 @@ contains
     function test_getLogGammaHalfInt_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
-        integer(IK)             :: i
         logical                 :: assertion
         real(RK)    , parameter :: tolerance = 1.e-10_RK
         real(RK)    , parameter :: positiveHalfInteger = 0.5_RK

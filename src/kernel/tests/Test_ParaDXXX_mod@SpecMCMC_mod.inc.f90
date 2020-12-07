@@ -535,7 +535,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
-    function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_1() result(assertion)
+    function test_RSPDLowerLimitVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -548,19 +548,19 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDLowerLimitVec_type_1" &
                             , RandomStartPointDomainLowerLimitVec = RandomStartPointDomainLowerLimitVec &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == RandomStartPointDomainLowerLimitVec)
 #endif
-    end function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_1
+    end function test_RSPDLowerLimitVec_type_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Test whether the ParaDXXX sampler can correctly set the value of
     !> `RandomStartPointDomainLowerLimitVec` for two consecutive simulations.
-    function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2() result(assertion)
+    function test_RSPDLowerLimitVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -573,26 +573,26 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2A" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDLowerLimitVec_type_2A" &
                             , inputFile = ParaDXXX_NML//" RandomStartPointDomainLowerLimitVec = "//num2str(-RandomStartPointDomainLowerLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == -RandomStartPointDomainLowerLimitVec)
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2B" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDLowerLimitVec_type_2B" &
                             , inputFile = ParaDXXX_NML//" RandomStartPointDomainLowerLimitVec = "//num2str(RandomStartPointDomainLowerLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainLowerLimitVec%Val == RandomStartPointDomainLowerLimitVec)
 #endif
-    end function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_2
+    end function test_RSPDLowerLimitVec_type_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message when
     !> `RandomStartPointDomainLowerLimitVec` goes below the limits of `DomainLowerLimitVec`.
-    function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_3() result(assertion)
+    function test_RSPDLowerLimitVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -606,19 +606,19 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDLowerLimitVec_type_3" &
                             , RandomStartPointDomainLowerLimitVec = RandomStartPointDomainLowerLimitVec &
                             , DomainLowerLimitVec = DomainLowerLimitVec &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
-    end function test_SpecMCMC_RandomStartPointDomainLowerLimitVec_type_3
+    end function test_RSPDLowerLimitVec_type_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Test whether the ParaDXXX sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
-    function test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_1() result(assertion)
+    function test_RSPDUpperLimitVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -631,19 +631,19 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_1" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDUpperLimitVec_type_1" &
                             , RandomStartPointDomainUpperLimitVec = RandomStartPointDomainUpperLimitVec &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainUpperLimitVec%Val == RandomStartPointDomainUpperLimitVec)
 #endif
-    end function test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_1
+    end function test_RSPDUpperLimitVec_type_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Test whether the ParaDXXX sampler can correctly set the value of
     !> `RandomStartPointDomainUpperLimitVec` for two consecutive simulations.
-    function test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_2() result(assertion)
+    function test_RSPDUpperLimitVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -656,26 +656,26 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_2A" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDUpperLimitVec_type_2A" &
                             , inputFile = ParaDXXX_NML//" RandomStartPointDomainUpperLimitVec = "//num2str(-RandomStartPointDomainUpperLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainUpperLimitVec%Val == -RandomStartPointDomainUpperLimitVec)
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_2B" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDUpperLimitVec_type_2B" &
                             , inputFile = ParaDXXX_NML//" RandomStartPointDomainUpperLimitVec = "//num2str(RandomStartPointDomainUpperLimitVec)//" /" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%SpecMCMC%RandomStartPointDomainUpperLimitVec%Val == RandomStartPointDomainUpperLimitVec)
 #endif
-    end function test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_2
+    end function test_RSPDUpperLimitVec_type_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message when
     !> `RandomStartPointDomainUpperLimitVec <= RandomStartPointDomainLowerLimitVec`.
-    function test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_3() result(assertion)
+    function test_RSPDUpperLimitVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -689,20 +689,20 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_3" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDUpperLimitVec_type_3" &
                             , RandomStartPointDomainLowerLimitVec = RandomStartPointDomainLowerLimitVec &
                             , RandomStartPointDomainUpperLimitVec = RandomStartPointDomainUpperLimitVec &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
-    end function test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_3
+    end function test_RSPDUpperLimitVec_type_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message when
     !> `RandomStartPointDomainUpperLimitVec` goes beyond the limits of `DomainUpperLimitVec`.
-    function test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_4() result(assertion)
+    function test_RSPDUpperLimitVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -716,13 +716,13 @@
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_4" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_RSPDUpperLimitVec_type_4" &
                             , RandomStartPointDomainUpperLimitVec = RandomStartPointDomainUpperLimitVec &
                             , DomainUpperLimitVec = DomainUpperLimitVec &
                             )
         assertion = assertion .and. PD%Err%occurred
 #endif
-    end function test_SpecMCMC_RandomStartPointDomainUpperLimitVec_type_4
+    end function test_RSPDUpperLimitVec_type_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

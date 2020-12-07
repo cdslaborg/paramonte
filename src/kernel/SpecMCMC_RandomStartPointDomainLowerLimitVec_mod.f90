@@ -129,7 +129,6 @@ contains
         implicit none
         class(RandomStartPointDomainLowerLimitVec_type), intent(inout)  :: self
         real(RK), intent(in), optional                                  :: randomStartPointDomainLowerLimitVec(:)
-        integer(IK)                                                     :: i
         if (present(randomStartPointDomainLowerLimitVec)) self%Val = randomStartPointDomainLowerLimitVec
     end subroutine set
 
