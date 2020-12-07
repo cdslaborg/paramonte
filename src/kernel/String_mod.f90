@@ -185,7 +185,6 @@ contains
         implicit none
         character(len=*)    , intent(in)            :: string, delim
         integer(IK)         , intent(out), optional :: npart
-        character(len=:)    , allocatable           :: dummyStr
         type(CharVec_type)  , allocatable           :: Parts(:)
         integer(IK)         , allocatable           :: PartEnd(:)
         integer(IK)         , allocatable           :: PartBegin(:)

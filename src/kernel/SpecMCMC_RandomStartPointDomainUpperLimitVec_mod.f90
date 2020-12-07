@@ -130,7 +130,6 @@ contains
         implicit none
         class(RandomStartPointDomainUpperLimitVec_type), intent(inout)  :: self
         real(RK), intent(in), optional                                  :: randomStartPointDomainUpperLimitVec(:)
-        integer(IK)                                                     :: i
         if (present(randomStartPointDomainUpperLimitVec)) self%Val = randomStartPointDomainUpperLimitVec
     end subroutine set
 

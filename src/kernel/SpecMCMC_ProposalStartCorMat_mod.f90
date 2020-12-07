@@ -146,7 +146,7 @@ contains
         character(*), intent(in)                    :: methodName
         type(Err_type), intent(inout)               :: Err
         character(*), parameter                     :: PROCEDURE_NAME = "@checkForSanity()"
-        integer(IK)                                 :: i, j
+       !integer(IK)                                 :: i, j
         if (.not.isPosDef(nd,self%Val)) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &

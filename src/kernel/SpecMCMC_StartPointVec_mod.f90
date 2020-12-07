@@ -111,7 +111,6 @@ contains
         implicit none
         class(StartPointVec_type), intent(inout)    :: self
         real(RK), intent(in), optional              :: startPointVec(:)
-        integer(IK)                                 :: i
         if (present(startPointVec)) self%Val = startPointVec
     end subroutine set
 
