@@ -586,10 +586,10 @@ contains
 
         if (.not. allocated(command)) then
             if (isUnixShellDefault) then
-                command = 'mkdir "'//dirPath//'" >nul 2>&1' ! path has to be enclosed with "" to allow nested mkdir
+                command = "mkdir -p "//dirPath//" > /dev/null 2>&1" ! -p enables nested mkdir
 #if defined OS_IS_WINDOWS
             else
-                command = "mkdir -p "//dirPath//" > /dev/null 2>&1" ! -p enables nested mkdir
+                command = 'mkdir "'//dirPath//'" >nul 2>&1' ! path has to be enclosed with "" to allow nested mkdir
 #endif
             end if
         end if
