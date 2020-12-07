@@ -304,7 +304,7 @@ contains
                         integer(IK)             :: weight ! LCOV_EXCL_LINE
                         real(RK)                :: logFunc ! LCOV_EXCL_LINE
                         real(RK), allocatable   :: State(:) ! LCOV_EXCL_LINE
-                        allocate(State(ndim))
+                        if (allocated(State)) deallocate(State); allocate(State(ndim))
                         chainSizeDefault = 0_IK
                         loopFindChainSizeDefault: do
                             read(chainFileUnit,iostat=Err%stat) processID, delRejStage, meanAccRate, adaptation, burninLoc, weight, logFunc, State
@@ -580,7 +580,7 @@ contains
                         integer(IK)             :: weight
                         real(RK)                :: logFunc
                         real(RK), allocatable   :: State(:)
-                        allocate(State(ndim))
+                        if (allocated(State)) deallocate(State); allocate(State(ndim))
 
                         irowLastUniqueSample = 0_IK
 

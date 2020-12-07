@@ -764,9 +764,17 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointRequested_type_2" &
-                            , inputFile = "&paradram randomStartPointRequested = true /" &
+                            , inputFile = ParaDXXX_NML//" randomStartPointRequested = true /" &
                             )
         assertion = assertion .and. PD%Err%occurred .and. PD%SpecMCMC%RandomStartPointRequested%val
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,', '))")
+            write(Test%outputUnit,"(*(g0,:,', '))") "PD%Err%occurred :", PD%Err%occurred
+            write(Test%outputUnit,"(*(g0,:,', '))") "PD%SpecMCMC%RandomStartPointRequested%val :", PD%SpecMCMC%RandomStartPointRequested%val
+            write(Test%outputUnit,"(*(g0,:,', '))")
+        end if
+        ! LCOV_EXCL_STOP
 #endif
     end function test_SpecMCMC_RandomStartPointRequested_type_2
 
@@ -789,7 +797,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointRequested_type_3" &
-                            , inputFile = "&paradram randomStartPointRequested = true /" &
+                            , inputFile = ParaDXXX_NML//" randomStartPointRequested = true /" &
                             , RandomStartPointDomainLowerLimitVec = RandomStartPointDomainLowerLimitVec &
                             , RandomStartPointDomainUpperLimitVec = RandomStartPointDomainUpperLimitVec &
                             )
@@ -816,7 +824,7 @@
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_RandomStartPointRequested_type_4" &
-                            , inputFile = "&paradram randomStartPointRequested = true /" &
+                            , inputFile = ParaDXXX_NML//" randomStartPointRequested = true /" &
                             , DomainLowerLimitVec = DomainLowerLimitVec &
                             , DomainUpperLimitVec = DomainUpperLimitVec &
                             )
@@ -1007,6 +1015,190 @@
         assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_SpecMCMC_SampleRefinementMethod_type_5
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    function test_SpecMCMC_SampleRefinementMethod_type_6() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_6" &
+                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-avg' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_SampleRefinementMethod_type_6
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    function test_SpecMCMC_SampleRefinementMethod_type_7() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_7" &
+                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-average' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_SampleRefinementMethod_type_7
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    function test_SpecMCMC_SampleRefinementMethod_type_8() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_8" &
+                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-med' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_SampleRefinementMethod_type_8
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    function test_SpecMCMC_SampleRefinementMethod_type_9() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_9" &
+                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-median' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_SampleRefinementMethod_type_9
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    function test_SpecMCMC_SampleRefinementMethod_type_10() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_10" &
+                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-min' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_SampleRefinementMethod_type_10
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    function test_SpecMCMC_SampleRefinementMethod_type_11() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_11" &
+                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-minimum' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_SampleRefinementMethod_type_11
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    function test_SpecMCMC_SampleRefinementMethod_type_12() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_12" &
+                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-max' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_SampleRefinementMethod_type_12
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
+    function test_SpecMCMC_SampleRefinementMethod_type_13() result(assertion)
+        use Constants_mod, only: IK, RK
+        use String_mod, only: num2str
+        implicit none
+        logical                 :: assertion
+        type(ParaDXXX_type)     :: PD
+        integer(IK) , parameter :: NDIM = 2_IK
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecMCMC/test_SpecMCMC_SampleRefinementMethod_type_13" &
+                            , inputFile = ParaDXXX_NML//" sampleRefinementMethod = 'batchmeans-maximum' /" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecMCMC_SampleRefinementMethod_type_13
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

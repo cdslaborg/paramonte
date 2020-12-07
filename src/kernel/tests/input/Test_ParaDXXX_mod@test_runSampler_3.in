@@ -51,21 +51,33 @@
 ! All vectors and arrays in the input file begin with index 1, following the convention of the majority 
 ! of science-oriented programming languages: Fortran, MATLAB, Julia, R, Mathematica
 
-&ParaDRAM
+&ParaDXXX
 
     ! Base
 
-    domainLowerLimitVec                 = 1*-1.7e308
-    domainUpperLimitVec                 = 1*+1.7e308
-    parallelizationModel                = "several chain"
-    targetAcceptanceRate                = -1.e0
-    progressReportPeriod                = -1000
-    maxNumDomainCheckToWarn             = -100
-    maxNumDomainCheckToStop             = -1000
+    description                         = "
+This\n
+    is a\n
+        test\n
+            run."
+   !outputColumnWidth			        = 25
+    outputRealPrecision			        = 17
+   !outputDelimiter			            = ","
+    outputFileName                      = "./out/"
+   !sampleSize                          = 111
+    randomSeed                          = 2136275,
+    chainFileFormat                     = "compact"
+   !variableNameList                    = "x","y"
+    domainLowerLimitVec                 = 1*-1.e300
+    domainUpperLimitVec                 = 1*1.e300
+    parallelizationModel                = "single chain"
+    targetAcceptanceRate                = 0.23e0
+    progressReportPeriod                = 1000
+    maxNumDomainCheckToWarn             = 100
+    maxNumDomainCheckToStop             = 1000
     inputFileHasPriority                = false
-    restartFileFormat                   = "random"
-    silentModeRequested                 = true
-    mpiFinalizeRequested                = false
+    restartFileFormat                   = "binary"
+    silentModeRequested                 = false
 
     ! MCMC
 
@@ -92,3 +104,4 @@
    !proposalStartCovMat                 = 1 !,0,0,0.1
 
 /
+

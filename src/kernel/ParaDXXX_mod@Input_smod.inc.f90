@@ -48,30 +48,99 @@
 !>
 !> \author Amir Shahmoradi
 
-#if defined PARADRAM
+    ! ParaMonte namelist variables
+    use SpecBase_SampleSize_mod                         , only: sampleSize
+    use SpecBase_RandomSeed_mod                         , only: randomSeed
+    use SpecBase_Description_mod                        , only: description
+    use SpecBase_OutputFileName_mod                     , only: outputFileName
+    use SpecBase_OutputDelimiter_mod                    , only: outputDelimiter
+    use SpecBase_ChainFileFormat_mod                    , only: chainFileFormat
+    use SpecBase_VariableNameList_mod                   , only: variableNameList
+    use SpecBase_RestartFileFormat_mod                  , only: restartFileFormat
+    use SpecBase_OutputColumnWidth_mod                  , only: outputColumnWidth
+    use SpecBase_OverwriteRequested_mod                 , only: overwriteRequested
+    use SpecBase_OutputRealPrecision_mod                , only: outputRealPrecision
+    use SpecBase_SilentModeRequested_mod                , only: silentModeRequested
+    use SpecBase_DomainLowerLimitVec_mod                , only: domainLowerLimitVec
+    use SpecBase_DomainUpperLimitVec_mod                , only: domainUpperLimitVec
+    use SpecBase_ParallelizationModel_mod               , only: parallelizationModel
+    use SpecBase_InputFileHasPriority_mod               , only: inputFileHasPriority
+    use SpecBase_ProgressReportPeriod_mod               , only: progressReportPeriod
+    use SpecBase_targetAcceptanceRate_mod               , only: targetAcceptanceRate
+    use SpecBase_MpiFinalizeRequested_mod               , only: mpiFinalizeRequested
+    use SpecBase_MaxNumDomainCheckToWarn_mod            , only: maxNumDomainCheckToWarn
+    use SpecBase_MaxNumDomainCheckToStop_mod            , only: maxNumDomainCheckToStop
+    use SpecBase_SystemInfoFilePath_mod                 , only: systemInfoFilePath
+    use SpecBase_InterfaceType_mod                      , only: interfaceType
 
-#define ParaDXXX ParaDRAM
-#define ParaDXXX_type ParaDRAM_type
+    ! ParaMCMC namelist variables
+    use SpecMCMC_ChainSize_mod                          , only: chainSize
+    use SpecMCMC_ScaleFactor_mod                        , only: scaleFactor
+    use SpecMCMC_StartPointVec_mod                      , only: startPointVec
+    use SpecMCMC_ProposalModel_mod                      , only: proposalModel
+    use SpecMCMC_proposalStartCovMat_mod                , only: proposalStartCovMat
+    use SpecMCMC_proposalStartCorMat_mod                , only: proposalStartCorMat
+    use SpecMCMC_proposalStartStdVec_mod                , only: proposalStartStdVec
+    use SpecMCMC_SampleRefinementCount_mod              , only: sampleRefinementCount
+    use SpecMCMC_sampleRefinementMethod_mod             , only: sampleRefinementMethod
+    use SpecMCMC_RandomStartPointRequested_mod          , only: randomStartPointRequested
+    use SpecMCMC_RandomStartPointDomainLowerLimitVec_mod, only: randomStartPointDomainLowerLimitVec
+    use SpecMCMC_RandomStartPointDomainUpperLimitVec_mod, only: randomStartPointDomainUpperLimitVec
 
-#elif defined PARADISE
-
-#define ParaDXXX ParaDISE
-#define ParaDXXX_type ParaDISE_type
-
-#else
-#error "Unrecognized sampler in ParaDXXX_mod@Input_mod.inc.f90"
-#endif
+    ! ParaDRAM namelist variables
+    use SpecDRAM_AdaptiveUpdateCount_mod                , only: adaptiveUpdateCount
+    use SpecDRAM_AdaptiveUpdatePeriod_mod               , only: adaptiveUpdatePeriod
+    use SpecDRAM_greedyAdaptationCount_mod              , only: greedyAdaptationCount
+    use SpecDRAM_DelayedRejectionCount_mod              , only: delayedRejectionCount
+    use SpecDRAM_BurninAdaptationMeasure_mod            , only: burninAdaptationMeasure
+    use SpecDRAM_delayedRejectionScaleFactorVec_mod     , only: delayedRejectionScaleFactorVec
 
     implicit none
 
     character(*), parameter :: SUBMODULE_NAME = MODULE_NAME // "@Input_smod"
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#if defined PARADRAM
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+! This will be used in the read statement
+#define ParaDXXX ParaDRAM
+! This will be used in the declaration of the parent object
+#define ParaDXXX_type ParaDRAM_type
+! This will be used in the namelist declaration
+#define NAMELIST ParaDRAM
+#include "ParaDXXX_mod@Input_smod.nml.inc.f90"
+#undef NAMELIST
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#elif defined PARADISE
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+! This will be used in the read statement
+#define ParaDXXX ParaDISE
+! This will be used in the declaration of the parent object
+#define ParaDXXX_type ParaDISE_type
+! This will be used in the namelist declaration
+#define NAMELIST ParaDISE
+#include "ParaDXXX_mod@Input_smod.nml.inc.f90"
+#undef NAMELIST
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#else
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#error "Unrecognized sampler in ParaDXXX_mod@Input_mod.inc.f90"
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#endif
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#define NAMELIST paradxxx
+#include "ParaDXXX_mod@Input_smod.nml.inc.f90"
+#undef NAMELIST
+
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 contains
 
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
@@ -90,104 +159,10 @@ contains
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
 
-        ! ParaMonte namelist variables
-        use SpecBase_SampleSize_mod                         , only: sampleSize
-        use SpecBase_RandomSeed_mod                         , only: randomSeed
-        use SpecBase_Description_mod                        , only: description
-        use SpecBase_OutputFileName_mod                     , only: outputFileName
-        use SpecBase_OutputDelimiter_mod                    , only: outputDelimiter
-        use SpecBase_ChainFileFormat_mod                    , only: chainFileFormat
-        use SpecBase_VariableNameList_mod                   , only: variableNameList
-        use SpecBase_RestartFileFormat_mod                  , only: restartFileFormat
-        use SpecBase_OutputColumnWidth_mod                  , only: outputColumnWidth
-        use SpecBase_OverwriteRequested_mod                 , only: overwriteRequested
-        use SpecBase_OutputRealPrecision_mod                , only: outputRealPrecision
-        use SpecBase_SilentModeRequested_mod                , only: silentModeRequested
-        use SpecBase_DomainLowerLimitVec_mod                , only: domainLowerLimitVec
-        use SpecBase_DomainUpperLimitVec_mod                , only: domainUpperLimitVec
-        use SpecBase_ParallelizationModel_mod               , only: parallelizationModel
-        use SpecBase_InputFileHasPriority_mod               , only: inputFileHasPriority
-        use SpecBase_ProgressReportPeriod_mod               , only: progressReportPeriod
-        use SpecBase_targetAcceptanceRate_mod               , only: targetAcceptanceRate
-        use SpecBase_MpiFinalizeRequested_mod               , only: mpiFinalizeRequested
-        use SpecBase_MaxNumDomainCheckToWarn_mod            , only: maxNumDomainCheckToWarn
-        use SpecBase_MaxNumDomainCheckToStop_mod            , only: maxNumDomainCheckToStop
-        use SpecBase_SystemInfoFilePath_mod                 , only: systemInfoFilePath
-        use SpecBase_InterfaceType_mod                      , only: interfaceType
-
-        ! ParaMCMC namelist variables
-        use SpecMCMC_ChainSize_mod                          , only: chainSize
-        use SpecMCMC_ScaleFactor_mod                        , only: scaleFactor
-        use SpecMCMC_StartPointVec_mod                      , only: startPointVec
-        use SpecMCMC_ProposalModel_mod                      , only: proposalModel
-        use SpecMCMC_proposalStartCovMat_mod                , only: proposalStartCovMat
-        use SpecMCMC_proposalStartCorMat_mod                , only: proposalStartCorMat
-        use SpecMCMC_proposalStartStdVec_mod                , only: proposalStartStdVec
-        use SpecMCMC_SampleRefinementCount_mod              , only: sampleRefinementCount
-        use SpecMCMC_sampleRefinementMethod_mod             , only: sampleRefinementMethod
-        use SpecMCMC_RandomStartPointRequested_mod          , only: randomStartPointRequested
-        use SpecMCMC_RandomStartPointDomainLowerLimitVec_mod, only: randomStartPointDomainLowerLimitVec
-        use SpecMCMC_RandomStartPointDomainUpperLimitVec_mod, only: randomStartPointDomainUpperLimitVec
-
-        ! ParaDRAM namelist variables
-        use SpecDRAM_AdaptiveUpdateCount_mod                , only: adaptiveUpdateCount
-        use SpecDRAM_AdaptiveUpdatePeriod_mod               , only: adaptiveUpdatePeriod
-        use SpecDRAM_greedyAdaptationCount_mod              , only: greedyAdaptationCount
-        use SpecDRAM_DelayedRejectionCount_mod              , only: delayedRejectionCount
-        use SpecDRAM_BurninAdaptationMeasure_mod            , only: burninAdaptationMeasure
-        use SpecDRAM_delayedRejectionScaleFactorVec_mod     , only: delayedRejectionScaleFactorVec
-
         implicit none
         class(ParaDXXX_type), intent(inout) :: self
         integer(IK), intent(in)             :: nd
         character(*), parameter             :: PROCEDURE_NAME = SUBMODULE_NAME//"@getSpecFromInputFile()"
-
-        ! ParaMonte variables
-        namelist /ParaDXXX/ sampleSize
-        namelist /ParaDXXX/ randomSeed
-        namelist /ParaDXXX/ description
-        namelist /ParaDXXX/ outputFileName
-        namelist /ParaDXXX/ outputDelimiter
-        namelist /ParaDXXX/ ChainFileFormat
-        namelist /ParaDXXX/ variableNameList
-        namelist /ParaDXXX/ restartFileFormat
-        namelist /ParaDXXX/ outputColumnWidth
-        namelist /ParaDXXX/ overwriteRequested
-        namelist /ParaDXXX/ outputRealPrecision
-        namelist /ParaDXXX/ silentModeRequested
-        namelist /ParaDXXX/ domainLowerLimitVec
-        namelist /ParaDXXX/ domainUpperLimitVec
-        namelist /ParaDXXX/ parallelizationModel
-        namelist /ParaDXXX/ progressReportPeriod
-        namelist /ParaDXXX/ inputFileHasPriority
-        namelist /ParaDXXX/ targetAcceptanceRate
-        namelist /ParaDXXX/ mpiFinalizeRequested
-        namelist /ParaDXXX/ maxNumDomainCheckToWarn
-        namelist /ParaDXXX/ maxNumDomainCheckToStop
-        namelist /ParaDXXX/ systemInfoFilePath
-        namelist /ParaDXXX/ interfaceType
-
-        ! ParaMCMC variables
-        namelist /ParaDXXX/ chainSize
-        namelist /ParaDXXX/ scaleFactor
-        namelist /ParaDXXX/ startPointVec
-        namelist /ParaDXXX/ proposalModel
-        namelist /ParaDXXX/ proposalStartStdVec
-        namelist /ParaDXXX/ proposalStartCorMat
-        namelist /ParaDXXX/ proposalStartCovMat
-        namelist /ParaDXXX/ sampleRefinementCount
-        namelist /ParaDXXX/ sampleRefinementMethod
-        namelist /ParaDXXX/ randomStartPointRequested
-        namelist /ParaDXXX/ randomStartPointDomainLowerLimitVec
-        namelist /ParaDXXX/ randomStartPointDomainUpperLimitVec
-
-        ! ParaDRAM variables
-        namelist /ParaDXXX/ adaptiveUpdateCount
-        namelist /ParaDXXX/ adaptiveUpdatePeriod
-        namelist /ParaDXXX/ greedyAdaptationCount
-        namelist /ParaDXXX/ delayedRejectionCount
-        namelist /ParaDXXX/ burninAdaptationMeasure
-        namelist /ParaDXXX/ delayedRejectionScaleFactorVec
 
         ! initialize/nullify all general input options
 
@@ -205,24 +180,43 @@ contains
 
                 read(self%InputFile%Path%original,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
                 self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
+
                 if (self%Err%occurred) then
-                    if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
+
+                    if ( is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat) ) then
+
+                        ! search for the paradxxx namelist group in the file.
+
                         call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
-                    else
-                    ! LCOV_EXCL_START
-                        read(self%InputFile%Path%original,nml=ParaDXXX)
-                        self%Err%msg = PROCEDURE_NAME // self%Err%msg
-                        return
+                        read(self%InputFile%Path%original,nml=paradxxx,iostat=self%InputFile%Err%stat) ! WARNING: "paradxxx" is NOT the same as fpp macro name "ParaDXXX"
+                        self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
+
                     end if
-                    ! LCOV_EXCL_STOP
+
+                    if (self%Err%occurred) then
+
+                        if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
+
+                            call self%warnUserAboutMissingNamelist(self%brand,self%name,"ParaDXXX",self%LogFile%unit)
+
+                        else
+
+                            ! LCOV_EXCL_START
+                            read(self%InputFile%Path%original,nml=ParaDXXX) ! let the compiler print diagnostic messages, should any error happen.
+                            ! LCOV_EXCL_STOP
+
+                        end if
+
+                    end if
+
                 end if
 
             else blockInputFileType ! the input file is external
 
                 ! close input file if it is open
 
-                ! LCOV_EXCL_START
                 if (self%InputFile%isOpen) then
+                    ! LCOV_EXCL_START
                     close(unit=self%InputFile%unit,iostat=self%InputFile%Err%stat)
                     self%Err = self%InputFile%getCloseErr(self%InputFile%Err%stat)
                     if (self%Err%occurred) then
@@ -231,8 +225,8 @@ contains
                                         self%Err%msg
                         return
                     end if
+                    ! LCOV_EXCL_STOP
                 end if
-                ! LCOV_EXCL_STOP
 
                 ! open input file
 
@@ -245,30 +239,50 @@ contains
 #endif
                     )
                 self%Err = self%InputFile%getOpenErr(self%InputFile%Err%stat)
-                ! LCOV_EXCL_START
                 if (self%Err%occurred) then
+                    ! LCOV_EXCL_START
                     self%Err%msg =  PROCEDURE_NAME // ": Error occurred while attempting to open the user-provided input file='" // &
                                     self%InputFile%Path%modified // "', unit=" // num2str(self%InputFile%unit) // ".\n" // &
                                     self%Err%msg
                     return
+                    ! LCOV_EXCL_STOP
                 end if
-                ! LCOV_EXCL_STOP
 
                 ! read input file
 
                 read(self%InputFile%unit,nml=ParaDXXX,iostat=self%InputFile%Err%stat)
                 self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
+
                 if (self%Err%occurred) then
-                    if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
-                        call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
-                    else
-                    ! LCOV_EXCL_START
+
+                    if ( is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat) ) then
+
+                        ! search for the paradxxx namelist group in the file.
+
                         rewind(self%InputFile%unit)
-                        read(self%InputFile%unit, nml=ParaDXXX)
-                        self%Err%msg = PROCEDURE_NAME // self%Err%msg
-                        return
+                        call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
+                        read(self%InputFile%unit, nml=paradxxx, iostat=self%InputFile%Err%stat) ! WARNING: "paradxxx" is NOT the same as fpp macro name "ParaDXXX"
+                        self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
+
                     end if
-                    ! LCOV_EXCL_STOP
+
+                    if (self%Err%occurred) then
+
+                        if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
+
+                            call self%warnUserAboutMissingNamelist(self%brand,self%name,"ParaDXXX",self%LogFile%unit)
+
+                        else ! attempt to read the file one more time, without error handling, so that the compiler prints out the error message.
+
+                            ! LCOV_EXCL_START
+                            rewind(self%InputFile%unit)
+                            read(self%InputFile%unit, nml=ParaDXXX)
+                            ! LCOV_EXCL_STOP
+
+                        end if
+
+                    end if
+
                 end if
 
                 ! close input file
@@ -320,7 +334,6 @@ contains
 
     end subroutine getSpecFromInputFile
 
-!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #undef ParaDXXX_type

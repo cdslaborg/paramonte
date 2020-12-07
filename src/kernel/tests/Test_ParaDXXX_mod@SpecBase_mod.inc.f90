@@ -96,7 +96,7 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , inputFile = ParaDXXX_NML//" chainFileFormat = 'asCII' /" &
+                            , inputFile = ParaDXXX_NML//" chainFileFormat = 'VerBose' /" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_3" &
                             )
         assertion = assertion .and. .not. PD%Err%occurred
@@ -116,12 +116,32 @@
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
-                            , inputFile = ParaDXXX_NML//" chainFileFormat = 'BiNaRy' /" &
+                            , inputFile = ParaDXXX_NML//" chainFileFormat = 'Compact' /" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_4" &
                             )
-        assertion = assertion .and. PD%Err%occurred
+        assertion = assertion .and. .not. PD%Err%occurred
 #endif
     end function test_SpecBase_ChainFileFormat_type_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDXXX sampler with a valid input value for `chainFileFormat`.
+    function test_SpecBase_ChainFileFormat_type_5() result(assertion)
+        implicit none
+        logical             :: assertion
+        type(ParaDXXX_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , inputFile = ParaDXXX_NML//" chainFileFormat = 'BiNaRy' /" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_ChainFileFormat_type_5" &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_ChainFileFormat_type_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -477,6 +497,28 @@
         assertion = assertion .and. PD%Err%occurred
 #endif
     end function test_SpecBase_OutputColumnWidth_type_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether the ParaDXXX sampler successfully return with a valid value for `outputColumnWidth`.
+    function test_SpecBase_OutputColumnWidth_type_4() result(assertion)
+        use Constants_mod, only: IK, RK
+        implicit none
+        logical             :: assertion
+        type(ParaDXXX_type) :: PD
+        assertion = .true.
+#if defined CODECOV_ENABLED
+        call PD%runSampler  ( ndim = 1_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_OutputColumnWidth_type_4" &
+                            , outputRealPrecision = 8_IK &
+                            , outputColumnWidth = 21_IK &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+#endif
+    end function test_SpecBase_OutputColumnWidth_type_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

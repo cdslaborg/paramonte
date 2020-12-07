@@ -162,8 +162,8 @@ contains
                 Err%msg =   Err%msg // &
                             MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
                             &You have requested a random start point by setting randomStartPointRequested to TRUE while the &
-                            &element #"//num2str(i)//" of RandomStartPointDomainLowerLimitVec has not been preset. This information &
-                            &is essential otherwise, how could the sampler draw points randomly from within an unspecified domain?\n\n"
+                            &element #"//num2str(i)//" of RandomStartPointDomainLowerLimitVec has not been preset to a finite value. &
+                            &This information is essential otherwise, how could the sampler draw points randomly from within an unspecified domain?\n\n"
             end if
 
             ! check if the random start point domain is within the boundaries of the domain of the target.

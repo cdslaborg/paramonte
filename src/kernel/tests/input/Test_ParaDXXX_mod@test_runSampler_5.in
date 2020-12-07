@@ -60,5 +60,48 @@ This\n
     is a\n
         test\n
             run."
+    outputColumnWidth			        = -1
+    outputRealPrecision			        = -1
+    outputDelimiter			            = "."
+    outputFileName                      = ""
+    sampleSize                          = 0
+    randomSeed                          = -12346,
+    chainFileFormat                     = "nonsense"
+    variableNameList                    = ""
+    domainLowerLimitVec                 = 1*+1.7e308
+    domainUpperLimitVec                 = 1*-1.7e308
+    parallelizationModel                = "several chain"
+    targetAcceptanceRate                = -1.e0
+    progressReportPeriod                = -1000
+    maxNumDomainCheckToWarn             = -100
+    maxNumDomainCheckToStop             = -1000
+    inputFileHasPriority                = true
+    restartFileFormat                   = "random"
+    silentModeRequested                 = true
+    mpiFinalizeRequested                = false
+
+    ! MCMC
+
+    chainSize                           = 100
+    startPointVec                       = 1*1.e0
+   !sampleRefinementCount               = 10
+    sampleRefinementMethod              = "BatchMeans"    ! MaxCumSumAutoCorr
+    randomStartPointDomainLowerLimitVec = -100.e0
+    randomStartPointDomainUpperLimitVec = 100.0
+    randomStartPointRequested           = true
+
+    ! DRAM
+
+    scaleFactor                         = "Gelman"
+    proposalModel                       = "normal"
+    adaptiveUpdateCount                 = 10000000
+    adaptiveUpdatePeriod                = 35
+    greedyAdaptationCount               = 0
+   !delayedRejectionCount               = 20
+   !delayedRejectionScaleFactorVec      = 20*1.
+   !burninAdaptationMeasure             = 1.
+   !proposalStartStdVec                 = 1*0.0001e6
+   !proposalStartCorMat                 = 1000,0,0,1000
+   !proposalStartCovMat                 = 1 !,0,0,0.1
 
 /

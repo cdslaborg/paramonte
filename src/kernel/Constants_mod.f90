@@ -91,6 +91,7 @@ module Constants_mod
     real(RK)    , parameter :: SQRT_HALF_PI = sqrt(0.5_RK*PI)                           !< @public Square root of PI/2 (= 1.2533141373155_RK)
     real(RK)    , parameter :: LOG10NAPIER = log10(NAPIER)                              !< @public Log10 of Napier constant (= 0.434294481903259_RK).
     real(RK)    , parameter :: EPS_RK = epsilon(1._RK)                                  !< @public the smallest representable real increment (highest precision) by the machine
+    real(RK)    , parameter :: SQRT_EPS_RK = sqrt(EPS_RK)                               !< @public the smallest representable real increment (highest precision) by the machine
     real(RK)    , parameter :: HUGE_IK = huge(1_IK)                                     !< @public largest number of kind RK
     real(RK)    , parameter :: HUGE_RK = huge(1._RK)                                    !< @public largest number of kind RK
     real(RK)    , parameter :: TINY_RK = tiny(1._RK)                                    !< @public tiniest number of kind RK

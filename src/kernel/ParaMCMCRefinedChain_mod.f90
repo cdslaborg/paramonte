@@ -303,18 +303,18 @@ contains
                 DumVec = RefinedChain%LogFuncState(i,1:RefinedChain%Count(RefinedChain%numRefinement)%compact)
                 if (Method%isBatchMeans) then
                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getBatchMeansIAC   ( np        = countCompact  &
-                                                                                        , Point     = DumVec        &
-                                                                                        , Weight    = SampleWeight  &
+                                                                                        , Point     = DumVec        & ! LCOV_EXCL_LINE
+                                                                                        , Weight    = SampleWeight  & ! LCOV_EXCL_LINE
                                                                                         )
                 elseif (Method%isCutoffAutoCorr) then
                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getCumSumIAC       ( np        = countCompact  &
-                                                                                        , Point     = DumVec        &
-                                                                                        , Weight    = SampleWeight  &
+                                                                                        , Point     = DumVec        & ! LCOV_EXCL_LINE
+                                                                                        , Weight    = SampleWeight  & ! LCOV_EXCL_LINE
                                                                                         )
                 elseif (Method%isMaxCumSumAutoCorr) then
                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getMaxCumSumIAC    ( np        = countCompact  &
-                                                                                        , Point     = DumVec        &
-                                                                                        , Weight    = SampleWeight  &
+                                                                                        , Point     = DumVec        & ! LCOV_EXCL_LINE
+                                                                                        , Weight    = SampleWeight  & ! LCOV_EXCL_LINE
                                                                                         )
                 end if
             end do
@@ -370,15 +370,15 @@ contains
 
             if (integratedAutoCorrTime<2._RK) cycle loopRefinement ! no need for refinement. should happen only when transitioning from compact to verbose
 
-            call refineWeightedSample   ( nd = RefinedChain%ndim                                        &
-                                        , np = countCompact                                             &
-                                        , skip = integratedAutoCorrTime                                 &
-                                        , Sample = RefinedChain%LogFuncState                            &
-                                        , Weight = RefinedChain%Weight                                  &
-                                        , RefinedChain = DumCFC%State                                   &
-                                        , RefinedWeight = DumCFC%Weight                                 &
+            call refineWeightedSample   ( nd = RefinedChain%ndim                                        & ! LCOV_EXCL_LINE
+                                        , np = countCompact                                             & ! LCOV_EXCL_LINE
+                                        , skip = integratedAutoCorrTime                                 & ! LCOV_EXCL_LINE
+                                        , Sample = RefinedChain%LogFuncState                            & ! LCOV_EXCL_LINE
+                                        , Weight = RefinedChain%Weight                                  & ! LCOV_EXCL_LINE
+                                        , RefinedChain = DumCFC%State                                   & ! LCOV_EXCL_LINE
+                                        , RefinedWeight = DumCFC%Weight                                 & ! LCOV_EXCL_LINE
                                         , PointCount = RefinedChain%Count(RefinedChain%numRefinement)   &
-                                        , refinedChainSize = refinedChainSize                           &
+                                        , refinedChainSize = refinedChainSize                           & ! LCOV_EXCL_LINE
                                         )
             RefinedChain%Weight        = DumCFC%Weight
             RefinedChain%LogFuncState  = DumCFC%State
@@ -555,7 +555,7 @@ contains
             end do
         end do
         flush(sampleFileUnit)
-    end subroutine writeRefinedChain
+    end subroutine writeRefinedChain ! LCOV_EXCL_LINE
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -583,7 +583,7 @@ contains
         integer(IK)                         :: sampleFileUnit, isample, i
         type(String_type)                   :: Record
 
-        if (allocated(Record%value)) deallocate(Record%value)
+        if (allocated(Record%value)) deallocate(Record%value) ! LCOV_EXCL_LINE
         allocate( character(99999) :: Record%value )
 
         RefinedChain%numRefinement = 0_IK
@@ -601,7 +601,7 @@ contains
         end if
 
         RefinedChain%Count(RefinedChain%numRefinement)%verbose = RefinedChain%Count(RefinedChain%numRefinement)%verbose - 1_IK ! remove header from the count
-        allocate( RefinedChain%LogFuncState(RefinedChain%Count(RefinedChain%numRefinement)%verbose,0:ndim) )
+        allocate( RefinedChain%LogFuncState(0:ndim, RefinedChain%Count(RefinedChain%numRefinement)%verbose) )
 
         open( newunit = sampleFileUnit &
             , file = sampleFilePath &
@@ -634,7 +634,7 @@ contains
             read(sampleFileUnit, "(A)") Record%value
             Record%Parts = Record%split(trim(adjustl(Record%value)),delimiter)
             do i = 0, ndim
-                read(Record%Parts(i+1)%record,*) RefinedChain%LogFuncState(isample,i)
+                read(Record%Parts(i+1)%record,*) RefinedChain%LogFuncState(i,isample)
             end do
         end do
 

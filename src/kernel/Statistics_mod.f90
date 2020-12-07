@@ -724,15 +724,15 @@ contains
         real(RK)   , intent(in)             :: Point(nd,np)     ! Point is the data matrix
         integer(IK), intent(in), optional   :: Weight(np)       ! sample weight
         real(RK)                            :: Mean(nd)         ! output mean vector
-        integer(IK)                         :: ip, SumWeight
+        integer(IK)                         :: ip, sumWeight
         Mean = 0._RK
         if (present(Weight)) then
-            SumWeight = 0_IK
+            sumWeight = 0_IK
             do ip = 1,np
-                SumWeight = SumWeight + Weight(ip)
+                sumWeight = sumWeight + Weight(ip)
                 Mean = Mean + Weight(ip) * Point(1:nd,ip)
             end do
-            Mean = Mean / SumWeight
+            Mean = Mean / sumWeight
         else
             do ip = 1,np
                 Mean = Mean + Point(1:nd,ip)
@@ -851,8 +851,8 @@ contains
     !> `variance` : The variance of the input sample.
     !>
     !> \warning
-    !> If `Weight` is present, then `SumWeight` must be also present.
-    !> Why? if mean is already given, it implies that SumWeight is also computed a priori.
+    !> If `Weight` is present, then `sumWeight` must be also present.
+    !> Why? if mean is already given, it implies that sumWeight is also computed a priori.
     !>
     !> \remark
     !> One also use the concise Fortran syntax to achieve the same goal as this function:
@@ -3726,13 +3726,8 @@ contains
         real(RK)    , intent(in)            :: SortedQuantileProbability(nq), Point(np)
         integer(IK) , intent(in), optional  :: Weight(np), sumWeight
         real(RK)                            :: Quantile(nq)
-        real(RK)                            :: probability
         integer(IK)                         :: ip, iq, iw, weightCounter, Indx(np), SortedQuantileDensity(nq)
         type(Err_type)                      :: Err
-        iq = 1_IK
-        Quantile = 0._RK
-        probability = 0._RK
-        weightCounter = 0_IK
         call indexArray(np,Point,Indx,Err)
         if (Err%occurred) then
             ! LCOV_EXCL_START
@@ -3740,7 +3735,9 @@ contains
             return
             ! LCOV_EXCL_STOP
         end if
+        iq = 1_IK
         if (present(sumWeight)) then
+            weightCounter = 0_IK
             SortedQuantileDensity = nint( SortedQuantileProbability * sumWeight )
             loopWeighted: do ip = 1, np
                 do iw = 1, Weight(Indx(ip))
@@ -3762,6 +3759,7 @@ contains
                 end if
             end do loopNonWeighted
         end if
+        if (iq<=nq) Quantile(iq:nq) = Point(Indx(np))
     end function getQuantile
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

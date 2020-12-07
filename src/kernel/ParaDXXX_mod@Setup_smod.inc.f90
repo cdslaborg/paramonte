@@ -164,10 +164,12 @@ contains
         use Statistics_mod, only: getCorMatUpperFromCovMatUpper
         use Statistics_mod, only: getWeiSamCovUppMeanTrans
         use Statistics_mod, only: getQuantile
+        use Statistics_mod, only: getMean
         use ParaMonte_mod, only: QPROB
-        use Constants_mod, only: IK, RK, NLC, PMSM, UNDEFINED
+        use Constants_mod, only: IK, RK, NLC, PMSM, UNDEFINED, POSINF_RK
         use DateTime_mod, only: getNiceDateTime
         use String_mod, only: num2str
+        use Matrix_mod, only: getEye
 
         implicit none
 
@@ -459,7 +461,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         if (allocated(self%Proposal)) deallocate(self%Proposal)
-        if (self%SpecMCMC%ProposalModel%isNormal) then
+        if (self%SpecMCMC%ProposalModel%isNormal) then ! LCOV_EXCL_LINE
             allocate( self%Proposal, source = ProposalNormal_type   ( ndim          = ndim & ! LCOV_EXCL_LINE
                                                                     , SpecBase      = self%SpecBase & ! LCOV_EXCL_LINE
                                                                     , SpecMCMC      = self%SpecMCMC & ! LCOV_EXCL_LINE
@@ -471,7 +473,7 @@ contains
                                                                     , RestartFile   = self%RestartFile & ! LCOV_EXCL_LINE
                                                                     , isFreshRun    = self%isFreshRun & ! LCOV_EXCL_LINE
                                                                     ) )
-        elseif (self%SpecMCMC%ProposalModel%isUniform) then
+        elseif (self%SpecMCMC%ProposalModel%isUniform) then ! LCOV_EXCL_LINE
             allocate( self%Proposal, source = ProposalUniform_type  ( ndim          = ndim & ! LCOV_EXCL_LINE
                                                                     , SpecBase      = self%SpecBase & ! LCOV_EXCL_LINE
                                                                     , SpecMCMC      = self%SpecMCMC & ! LCOV_EXCL_LINE
@@ -671,7 +673,7 @@ contains
 
             if (self%Image%count==1_IK) then
                 msg = UNDEFINED ! LCOV_EXCL_LINE
-            else
+            else ! LCOV_EXCL_LINE
                 msg = num2str( self%Stats%avgCommTimePerFunCall ) ! LCOV_EXCL_LINE
             end if
 
@@ -1408,17 +1410,28 @@ contains
 
                 if (allocated(self%Stats%Sample%Mean)) deallocate(self%Stats%Sample%Mean); allocate(self%Stats%Sample%Mean(ndim))
                 if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat); allocate(self%Stats%Sample%CovMat(ndim,ndim))
-                ContiguousChain = transpose(self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) ! avoid temporary array creation and the warning message in debug mode
-                call getWeiSamCovUppMeanTrans   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
-                                                , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &
-                                                , nd = ndim & ! LCOV_EXCL_LINE
-                                                , Point = ContiguousChain & ! LCOV_EXCL_LINE
-                                                , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
-                                                , CovMatUpper = self%Stats%Sample%CovMat & ! LCOV_EXCL_LINE
-                                                , Mean = self%Stats%Sample%Mean & ! LCOV_EXCL_LINE
-                                                )
+                ContiguousChain = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) ! avoid temporary array creation and the warning message in debug mode
+                if (self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact > ndim + 1_IK) then
+                    call getWeiSamCovUppMeanTrans   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
+                                                    , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &
+                                                    , nd = ndim & ! LCOV_EXCL_LINE
+                                                    , Point = ContiguousChain & ! LCOV_EXCL_LINE
+                                                    , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) & ! LCOV_EXCL_LINE
+                                                    , CovMatUpper = self%Stats%Sample%CovMat & ! LCOV_EXCL_LINE
+                                                    , Mean = self%Stats%Sample%Mean & ! LCOV_EXCL_LINE
+                                                    )
+                    self%Stats%Sample%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Sample%CovMat)
 
-                self%Stats%Sample%CorMat = getCorMatUpperFromCovMatUpper(nd=ndim,CovMatUpper=self%Stats%Sample%CovMat)
+                else
+                    if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat) ! LCOV_EXCL_LINE
+                    allocate(self%Stats%Sample%CovMat(ndim,ndim), source = POSINF_RK)
+                    self%Stats%Sample%CorMat = getEye(ndim,ndim)
+                    self%Stats%Sample%Mean   = getMean  ( nd = ndim &
+                                                        , np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
+                                                        , Point = ContiguousChain & ! LCOV_EXCL_LINE
+                                                        , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
+                                                        )
+                end if
 
                 ! transpose the covariance and correlation matrices
 
@@ -1434,10 +1447,10 @@ contains
                 allocate(self%Stats%Sample%Quantile(QPROB%count,ndim))
                 do i = 1, ndim
                     self%Stats%Sample%Quantile(1:QPROB%count,i) = getQuantile   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
-                                                                                , nq = QPROB%count &
-                                                                                , SortedQuantileProbability = QPROB%Value &
+                                                                                , nq = QPROB%count & ! LCOV_EXCL_LINE
+                                                                                , SortedQuantileProbability = QPROB%Value & ! LCOV_EXCL_LINE
                                                                                 , Point = ContiguousChain(:,i) & ! LCOV_EXCL_LINE
-                                                                                , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
+                                                                                , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) & ! LCOV_EXCL_LINE
                                                                                 , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &
                                                                                 )
                 end do
@@ -1464,9 +1477,9 @@ contains
                             &the potentially-optimal i.i.d. sample size (" // num2str(effectiveSampleSize) // "). The resulting sample &
                             &likely contains duplicates and is not independently and identically distributed (i.i.d.).\nTo get the optimal &
                             &size in the future runs, set sampleSize = -1, or drop it from the input list."
-                    else
-                        msg = msg // "How lucky that could be! The user-requested sample size (" // num2str(self%SpecBase%SampleSize%abs) // ") &
-                            &is equal to the potentially-optimal i.i.d. sample size determined by the "//self%name//" sampler."
+                    else ! LCOV_EXCL_LINE
+                        msg = msg // "How lucky that could be! The user-requested sample size (" // num2str(self%SpecBase%SampleSize%abs) // & ! LCOV_EXCL_LINE
+                             ") is equal to the potentially-optimal i.i.d. sample size determined by the "//self%name//" sampler." ! LCOV_EXCL_LINE
                     end if
                 end if
                 call self%reportDesc(msg)
@@ -1542,15 +1555,7 @@ contains
                                         , msg           = "Computing the inter-chain convergence probabilities..." )
                     end if
 
-#if defined CAF_ENABLED
-                    sync all
-#elif defined MPI_ENABLED
-                    block
-                        use mpi
-                        integer :: ierrMPI
-                        call mpi_barrier(mpi_comm_world,ierrMPI)
-                    end block
-#endif
+                    call self%Image%sync()
 
                     ! read the sample files generated by other images
 
@@ -1573,10 +1578,12 @@ contains
 
                         RefinedChainThisImage = readRefinedChain( sampleFilePath=self%SampleFile%Path%original, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim )
                         if (RefinedChainThisImage%Err%occurred) then
+                            ! LCOV_EXCL_START
                             self%Err%occurred = .true.
                             self%Err%msg = PROCEDURE_NAME//RefinedChainThisImage%Err%msg
                             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                             return
+                            ! LCOV_EXCL_STOP
                         end if
 
                         ! sort the refined chain on the current image
@@ -1587,9 +1594,11 @@ contains
                                                 , Err = self%Err &
                                                 )
                             if (self%Err%occurred) then
+                                ! LCOV_EXCL_START
                                 self%Err%msg = PROCEDURE_NAME//self%Err%msg
                                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                                 return
+                                ! LCOV_EXCL_STOP
                             end if
                         end do
 
@@ -1616,10 +1625,12 @@ contains
 
                                 RefinedChainThatImage = readRefinedChain( sampleFilePath=inputSamplePath, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim )
                                 if (RefinedChainThatImage%Err%occurred) then
+                                    ! LCOV_EXCL_START
                                     self%Err%occurred = .true.
                                     self%Err%msg = PROCEDURE_NAME//RefinedChainThatImage%Err%msg
                                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                                     return
+                                    ! LCOV_EXCL_STOP
                                 end if
 
                                 do i = 0, ndim
@@ -1631,9 +1642,11 @@ contains
                                                         , Err = self%Err &
                                                         )
                                     if (self%Err%occurred) then
+                                        ! LCOV_EXCL_START
                                         self%Err%msg = PROCEDURE_NAME//self%Err%msg
                                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                                         return
+                                        ! LCOV_EXCL_STOP
                                     end if
 
                                     ! compute the inter-chain KS probability table
@@ -1702,15 +1715,7 @@ contains
 #if defined CAF_ENABLED || MPI_ENABLED
                             call execute_command_line(" ", cmdstat = self%Err%stat)
                             flush(output_unit)
-#if defined CAF_ENABLED
-                            sync all
-#elif defined MPI_ENABLED
-                            block
-                                use mpi
-                                integer :: ierrMPI
-                                call mpi_barrier(mpi_comm_world,ierrMPI)
-                            end block
-#endif
+                            call self%Image%sync()
 #endif
                         end do
 
@@ -1746,17 +1751,8 @@ contains
         end if blockLeaderPostProcessing
 
         !nullify(self%Proposal)
-#if defined CAF_ENABLED
-        sync all
-#elif defined MPI_ENABLED
-        block
-            use mpi
-            integer :: ierrMPI
-            call mpi_barrier(mpi_comm_world,ierrMPI)
-            if (self%SpecBase%MpiFinalizeRequested%val) then
-                call mpi_finalize(ierrMPI)
-            end if
-        end block
+#if defined CAF_ENABLED || defined MPI_ENABLED
+            if (self%SpecBase%MpiFinalizeRequested%val) call self%Image%finalize()
 #endif
 
     end subroutine runSampler
@@ -1769,4 +1765,3 @@ contains
 #undef ParaDXXXProposalAbstract_mod
 #undef ParaDXXX_type
 #undef ParaDXXX
-

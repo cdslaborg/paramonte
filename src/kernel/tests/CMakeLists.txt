@@ -62,6 +62,7 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_Optimization_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaDISE_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_Parallelism_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Path_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_RandomSeed_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Sort_mod.f90
