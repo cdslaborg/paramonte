@@ -65,6 +65,7 @@ contains
         implicit none
 
         Test = Test_type(moduleName=MODULE_NAME)
+        call Test%run(test_isdir_1, "test_isdir_1")
         call Test%run(test_query_1, "test_query_1")
         call Test%run(test_query_2, "test_query_2")
         call Test%run(test_query_3, "test_query_3")
@@ -84,6 +85,17 @@ contains
         call Test%finalize()
 
     end subroutine test_Path
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test if `isdir()` can successfully detect an existing directory.
+    function test_isdir_1() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical         :: assertion
+        assertion = isdir("../")
+    end function test_isdir_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -108,6 +108,7 @@ module Path_mod
         procedure, nopass               :: getDirNameExt, getDirFullName, getNameExt
         procedure, nopass               :: winify, linify
         procedure, nopass               :: mkdir
+        procedure, nopass               :: isdir
     end type Path_type
 
     interface Path_type
@@ -544,17 +545,22 @@ contains
     !> This procedure is a static method of the class [Path_type](@ref path_type).\n
     !> Make the requested (nested) directory (recursively, if needed).
     !>
-    !> \param[in]       dirPath     :   The full directory path.
-    !> \param[out]      isUnixShell :   The logical flag indicating whether the OS is Windows (**optional**). If not present, Unix OS will be assumed.
-    !> \param[out]      wait        :   The logical flag indicating whether the procedure should wait
-    !>                                  for the system operation to complete and return (**optional**, default = `.true.`).
+    !> \param[in]   dirPath     :   The full directory path.
+    !> \param[in]   isUnixShell :   The logical flag indicating whether the OS is Windows (**optional**).
+    !>                              If not present, the runtime shell type will be inferred by the procedure.
+    !> \param[in]   wait        :   The logical flag indicating whether the procedure should wait for the system
+    !>                              operation to complete and return (**optional**, default = `.true.`).
     !>
-    !> \warning
-    !> This routine does not currently check for OS type.
+    !> \return
+    !> `Err` : An object of class [Err_type](@ref err_mod::err_type), indicating whether an error has occurred while creating the directory.
+    !>
+    !> \author
+    !> Last updated by Amir Shahmoradi, Tuesday 3:09 AM, Dec 8, 2020, Dallas, TX
     function mkdir(dirPath,isUnixShell,wait) result(Err)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: mkdir
 #endif
+        use Constants_mod, only: IK, NLC
         use System_mod, only: SysCmd_type, OS_type
         use String_mod, only: num2str
         use Err_mod, only: Err_type
@@ -567,6 +573,9 @@ contains
         type(OS_type)                   :: OS
         logical                         :: isUnixShellDefault
         character(:), allocatable       :: command
+        integer(IK)                     :: itry
+
+
 
         Err%occurred = .false.
 
@@ -589,24 +598,56 @@ contains
                 command = "mkdir -p "//dirPath//" > /dev/null 2>&1" ! -p enables nested mkdir
 #if defined OS_IS_WINDOWS
             else
-                command = 'mkdir "'//dirPath//'" >nul 2>&1' ! path has to be enclosed with "" to allow nested mkdir
+                command = 'mkdir "'//dirPath//'" >nul 2>&1' ! WARNING: path has to be enclosed with "" to allow nested mkdir
 #endif
             end if
         end if
 
-        SysCmd = SysCmd_type(command, wait)
+        ! Try to create the folder for 10 times, and fail if all attempts fail.
 
-        if (SysCmd%Err%occurred) then
+        loopTry: do itry = 1, 10
+            SysCmd = SysCmd_type(command, wait)
+            if (SysCmd%Err%occurred .and. .not. isdir(dirPath)) cycle loopTry
+            deallocate(command)
+            return
+        end do loopTry
+
         ! LCOV_EXCL_START
-            Err%occurred = .true.
-            Err%stat = SysCmd%Err%stat
-            Err%msg = PROCEDURE_NAME // SysCmd%Err%msg // "\nexecute_command_line() exitstat: " // num2str(SysCmd%exitstat)
-        end if
+        Err%occurred = .true.
+        Err%stat = SysCmd%Err%stat
+        Err%msg = PROCEDURE_NAME // SysCmd%Err%msg //NLC//"execute_command_line() exitstat: " // num2str(SysCmd%exitstat)
         ! LCOV_EXCL_STOP
 
-        deallocate(command)
-
     end function mkdir
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> This procedure is a static method of the class [Path_type](@ref path_type).\n
+    !> Return `.true.` if the input path is a directory, otherwise, return `.false.`.
+    !>
+    !> \param[in]   path    :   The full directory path.
+    !>
+    !> \return
+    !> `pathIsDir` : A logical output variable indicating whether the input path is a directory.
+    !>
+    !> \author
+    !> Amir Shahmoradi, Tuesday 3:09 AM, Dec 8, 2020, Dallas, TX
+    function isdir(path) result(pathIsDir)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: isdir
+#endif
+        implicit none
+        character(*), intent(in)        :: path
+        logical                         :: pathIsDir
+#if defined IFORT_ENABLED
+        inquire(directory = path, exist = pathIsDir)
+#elif defined __GFORTRAN__
+        inquire(file = path, exist = pathIsDir)
+#else
+#error "This procedure does not currently support compilers other than Intel ifort and GNU gfortran."
+#endif
+    end function isdir
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

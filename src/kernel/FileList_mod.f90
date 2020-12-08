@@ -308,7 +308,7 @@ contains
         ! delete the stderr file
 
         open(newunit = fileUnit, file = stdErr, status = "replace")
-        close(fileUnit, status = "delete")
+        close(fileUnit, status = "delete", iostat = Err%stat) ! parallel processes cannot delete the same file
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! now count the number of records in file:
@@ -431,14 +431,15 @@ contains
 
         if (present(count)) count = fileCounter
 
-        close(fileUnit, iostat = Err%stat, status = "delete")
-        if (Err%stat/=0) then
-        ! LCOV_EXCL_START
-            Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // filename // "'."
-            return
-        end if
-        ! LCOV_EXCL_STOP
+        close(fileUnit, status = "delete", iostat = Err%stat) ! parallel processes cannot delete the same file
+
+        !if (Err%stat/=0) then
+        !! LCOV_EXCL_START
+        !    Err%occurred = .true.
+        !    Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // filename // "'."
+        !    return
+        !end if
+        !! LCOV_EXCL_STOP
 
         ! remove the files
         !call removeFile(filename,isWindowsShell,Err)

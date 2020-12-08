@@ -164,14 +164,15 @@ contains
             ! LCOV_EXCL_STOP
         end do
 
-        close(fileUnit,iostat=Err%stat,status=closeStatus)
-        if (Err%stat>0) then
-        ! LCOV_EXCL_START
-            Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // "Error occurred while attempting to close or delete the open file='" // path // "'."
-            return
-        end if
-        ! LCOV_EXCL_STOP
+        close(fileUnit,status=closeStatus, iostat = Err%stat) ! parallel processes cannot delete the same file
+
+        !if (Err%stat>0) then
+        !! LCOV_EXCL_START
+        !    Err%occurred = .true.
+        !    Err%msg = PROCEDURE_NAME // "Error occurred while attempting to close or delete the open file='" // path // "'."
+        !    return
+        !end if
+        !! LCOV_EXCL_STOP
 
     end subroutine getFileContents
 

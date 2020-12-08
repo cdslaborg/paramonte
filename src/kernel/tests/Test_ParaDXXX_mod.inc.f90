@@ -359,6 +359,7 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
+        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED
 
@@ -379,7 +380,7 @@ contains
         ! delete the sample file
 
         open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-        close(PD1%SampleFile%unit, status = "delete")
+        close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
 
         ! restart the simulation with the same configuration
 
@@ -395,7 +396,8 @@ contains
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
-        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK )
+        if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK )
+
 #endif
     end function test_runSampler_6
 
@@ -451,6 +453,7 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
+        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED
 
@@ -485,7 +488,7 @@ contains
         ! delete the sample file
 
         open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-        close(PD1%SampleFile%unit, status = "delete")
+        close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
 
         ! restart the simulation with the same configuration
 
@@ -501,7 +504,7 @@ contains
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
-        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
+        if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
 #endif
     end function test_runSampler_9
 
@@ -513,6 +516,7 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
+        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED
 
@@ -549,7 +553,7 @@ contains
         ! delete the sample file
 
         open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-        close(PD1%SampleFile%unit, status = "delete")
+        close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
 
         ! restart the simulation with the same configuration
 
@@ -566,7 +570,7 @@ contains
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
-        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
+        if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
 #endif
     end function test_runSampler_10
 
@@ -579,6 +583,7 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
+        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED
 
@@ -617,7 +622,7 @@ contains
         ! delete the sample file
 
         open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-        close(PD1%SampleFile%unit, status = "delete")
+        close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
 
         ! restart the simulation with the same configuration
 
@@ -635,7 +640,7 @@ contains
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
-        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
+        if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
 #endif
     end function test_runSampler_11
 
@@ -648,6 +653,7 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
+        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED
 
@@ -686,7 +692,7 @@ contains
         ! delete the sample file
 
         open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-        close(PD1%SampleFile%unit, status = "delete")
+        close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
 
         ! restart the simulation with the same configuration
 
@@ -704,7 +710,7 @@ contains
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
-        assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
+        if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
 #endif
     end function test_runSampler_12
 

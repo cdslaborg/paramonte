@@ -442,7 +442,7 @@ contains
                     end if
                     ! LCOV_EXCL_STOP
 
-                    close(fileUnit, status = "delete")
+                    close(fileUnit, status = "delete", iostat = OS%Err%stat) ! parallel processes cannot delete the same file
 
                     OS%name = trim(adjustl(OS%name))
                     osname = getLowerCase(OS%name)
@@ -1196,14 +1196,14 @@ contains
         ! delete the stderr file
 
         open(newunit=fileUnit,file=stdErr,status="replace",iostat=Err%stat)
-        close(fileUnit,iostat=Err%stat,status="delete")
-        if (Err%stat/=0) then
-        ! LCOV_EXCL_START
-            Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file = '" // RFN%path // "'."
-            return
-        end if
-        ! LCOV_EXCL_STOP
+        close(fileUnit, status="delete", iostat = Err%stat) ! parallel processes cannot delete the same file
+        !if (Err%stat/=0) then
+        !! LCOV_EXCL_START
+        !    Err%occurred = .true.
+        !    Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file = '" // RFN%path // "'."
+        !    return
+        !end if
+        !! LCOV_EXCL_STOP
 
         if (present(count)) count = nRecord
 
@@ -1385,6 +1385,7 @@ contains
         character(*), intent(in)                :: path
         type(Err_type), intent(out), optional   :: Err
        !logical     , intent(in), optional      :: isWindows
+        integer                                 :: iostat
         logical                                 :: fileExists
         logical                                 :: isPresentErr
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@removeFile()"
@@ -1455,12 +1456,8 @@ contains
                 integer :: fileUnit
                 inquire(file=path,opened=isOpen)
                 if (.not. isOpen) open(newunit = fileUnit, file = path, status = "replace")
-                if (isPresentErr) then
-                    close(fileUnit, status="delete", iostat = Err%stat)
-                    Err%occurred = Err%stat > 0_IK
-                else
-                    close(fileUnit,status="delete")
-                end if
+                close(fileUnit, status="delete", iostat = iostat) ! parallel processes cannot delete the same file
+                if (isPresentErr) Err%stat = iostat
             end block blockRobust
 
         !end if

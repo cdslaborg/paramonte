@@ -2293,7 +2293,7 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
         if [ -f "${MPIEXEC_PATH}" ]; then
             echo >&2 "-- ${BUILD_NAME} - running command: ${MPIEXEC_PATH} -n ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte"
             (cd ${ParaMonte_BLD_DIR}/test/bin && "${MPIEXEC_PATH}" -n ${FOR_COARRAY_NUM_IMAGES} ./testParaMonte)
-            verify $? "test run"
+            verify $? "test run" 
             if [ "${MPIEXEC_PATH_RESET_ENABLED}" = "true" ]; then unset MPIEXEC_PATH; fi
         else
             echo >&2
