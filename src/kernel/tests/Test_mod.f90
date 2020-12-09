@@ -158,7 +158,8 @@ contains
 
         ntotal = mv_npass + mv_nfail
 
-        percentageTestPassed = 100_IK * mv_npass / real(ntotal, kind=RK)
+        percentageTestPassed = 0._RK
+        if (ntotal/=0_IK) percentageTestPassed = 100_IK * mv_npass / real(ntotal, kind=RK)
 
         if (mv_Image%isFirst) then
 

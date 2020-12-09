@@ -69,37 +69,38 @@ module Parallelism_mod
     end type Image_type
 
     type, private :: Maximum_type
-        real(RK)                    :: value
-        integer(IK)                 :: nproc
+        real(RK)                    :: value            !<  The maximum speedup attained (or attainable).
+        integer(IK)                 :: nproc            !<  The required number of processes for maximum speedup.
     end type Maximum_type
 
     type, private :: Speedup_type
-        integer(IK)                 :: count
-        real(RK)                    :: current
-        type(Maximum_type)          :: Maximum
-        real(RK)    , allocatable   :: Scaling(:)
+        integer(IK)                 :: count            !<  The size of the `Scaling` vector.
+        real(RK)                    :: current          !<  The speedup given the current available number of processes.
+        type(Maximum_type)          :: Maximum          !<  An object of type [Maximum_type](@ref maximum_type), containing the predicted maximum speedup and process count.
+        real(RK)    , allocatable   :: Scaling(:)       !<  A real vector of length `Speedup_type%count` containing the predicted speedup for a range process counts.
     end type Speedup_type
 
     type, private :: UniqueProcess_type
-        integer(IK)                 :: count
-        integer(IK) , allocatable   :: Identity(:)
-        integer(IK) , allocatable   :: Frequency(:)
+        integer(IK)                 :: count            !<  The sizes of the two vector components `Identity` and `Frequency` of `UniqueProcess_type`.
+        integer(IK) , allocatable   :: Identity(:)      !<  A vector of size `UniqueProcess_type%count` containing the unique IDs of processes, i.e., the ranks of processes, starting from 1.
+        integer(IK) , allocatable   :: Frequency(:)     !<  The frequency with which the process IDs have contributed to the simulation at hand.
     end type UniqueProcess_type
 
     type, private, extends(UniqueProcess_type) :: Contribution_type
-        real(RK) , allocatable      :: LogFrequency(:)
+        real(RK) , allocatable      :: LogFrequency(:)  !<  The natural logarithm of the `Frequency` vector component of the type [UniqueProcess_type](@ref uniqueprocess_type).
     end type Contribution_type
 
     type, private :: SuccessProb_type
-        real(RK)                    :: current
-        real(RK)                    :: effective
-        type(PowellMinimum_type)    :: PowellMinimum
+        real(RK)                    :: current          !<  The probability of success in the Bernoulli trial. For example, the sampling efficiency of the ParaDRAM sampler.
+        real(RK)                    :: effective        !<  The computed effective probability of success inferred from fitting the Cyclic Geometric distribution.
+        type(PowellMinimum_type)    :: PowellMinimum    !<  An object of class [PowellMinimum_type](@ref optimization_mod::powellminimum_type) containing
+                                                        !<  information about the Cyclic Geometric fit to process contribution data.
     end type SuccessProb_type
 
     !> The `ForkJoin_type` class.
     type :: ForkJoin_type
         type(UniqueProcess_type)    :: UniqueProcess
-        type(Contribution_type)     :: Contribution ! similar to UniqueProcess, but including all processes, including zero contributors
+        type(Contribution_type)     :: Contribution     !<  Contains information similar to `UniqueProcess`, but including all processes, even zero contributors.
         type(SuccessProb_type)      :: SuccessProb
         type(Speedup_type)          :: Speedup
         type(Err_type)              :: Err
@@ -312,11 +313,17 @@ contains
 
         ForkJoin%UniqueProcess%Identity(:) = ForkJoin%UniqueProcess%Identity(Indx)
         ForkJoin%UniqueProcess%Frequency(:) = ForkJoin%UniqueProcess%Frequency(Indx)
+
         deallocate(Indx)
+
         ForkJoin%Contribution%count = processCount
-        if (allocated(ForkJoin%Contribution%LogFrequency)) deallocate(ForkJoin%Contribution%LogFrequency); allocate(ForkJoin%Contribution%LogFrequency(ForkJoin%Contribution%count), source = 0._RK)
-        if (allocated(ForkJoin%Contribution%Frequency)) deallocate(ForkJoin%Contribution%Frequency); allocate(ForkJoin%Contribution%Frequency(ForkJoin%Contribution%count), source = 0_IK)
-        if (allocated(ForkJoin%Contribution%Identity)) deallocate(ForkJoin%Contribution%Identity); allocate(ForkJoin%Contribution%Identity(ForkJoin%Contribution%count))
+        if (allocated(ForkJoin%Contribution%LogFrequency)) deallocate(ForkJoin%Contribution%LogFrequency);
+        allocate(ForkJoin%Contribution%LogFrequency(ForkJoin%Contribution%count), source = 0._RK)
+        if (allocated(ForkJoin%Contribution%Frequency)) deallocate(ForkJoin%Contribution%Frequency);
+        allocate(ForkJoin%Contribution%Frequency(ForkJoin%Contribution%count), source = 0_IK)
+        if (allocated(ForkJoin%Contribution%Identity)) deallocate(ForkJoin%Contribution%Identity);
+        allocate(ForkJoin%Contribution%Identity(ForkJoin%Contribution%count))
+
         ForkJoin%Contribution%Frequency(ForkJoin%UniqueProcess%Identity) = ForkJoin%UniqueProcess%Frequency
         ForkJoin%Contribution%Identity = [(i, i = 1, ForkJoin%Contribution%count)]
         if (ForkJoin%Contribution%Frequency(1)==0_IK) then
@@ -362,7 +369,7 @@ contains
                                 , comSecTimePerProc = comSecTime / (processCount - 1) &         ! the communication overhead for each additional image beyond master.
                                 , minMaxNumProc = 2 * processCount &                            ! speedup will be computed at least up to this process count, if not more.
                                 , Speedup = ForkJoin%Speedup%Scaling &                          ! returned Speedup.
-                                , lenSpeedup = ForkJoin%Speedup%count &                         ! length of the returned Speedup vector.
+                                , lenSpeedup = ForkJoin%Speedup%count &                         ! length of the returned `Speedup%Scaling` vector.
                                 , maxSpeedup = ForkJoin%Speedup%Maximum%value &                 ! returned maximum speedup.
                                 , maxSpeedupNumProc = ForkJoin%Speedup%Maximum%nproc &          ! returned number of processes for maximum speedup.
                                 , Err = ForkJoin%Err &
@@ -449,7 +456,7 @@ contains
             if (successProb==0._RK) then
                 FirstImageContribution(1) = 1._RK / numProc
             else
-                
+
                 FirstImageContribution = exp(getLogProbGeoCyclic( successProb = successProb &
                                                                 , maxNumTrial = numProc &
                                                                 , numTrial = 1_IK &

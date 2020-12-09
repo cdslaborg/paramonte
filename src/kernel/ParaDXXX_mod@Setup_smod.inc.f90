@@ -770,8 +770,9 @@ contains
                     integer, parameter :: NCOL = 40
                     character(:), allocatable :: formatInteger
                     formatInteger = "('"//INDENT//"',"//num2str(NCOL)//"(I0,:,' '))"
+write(*,*) ForkJoin%Contribution%Frequency, ForkJoin%Contribution%count
                     do imageCount = 1, ForkJoin%Contribution%count, NCOL
-                        write(self%LogFile%unit,formatInteger) ForkJoin%Contribution%Frequency(imageCount:min(imageCount+NCOL-1,ForkJoin%Contribution%count))
+                        write(self%LogFile%unit,formatInteger) ForkJoin%Contribution%Frequency( imageCount : min( imageCount+NCOL-1, ForkJoin%Contribution%count ) )
                     end do
                 end block
                 msg =   "These are contributions of individual processes to the construction of the MCMC chain. &
@@ -1576,7 +1577,7 @@ contains
 
                         ! read the refined chain on the current image
 
-                        RefinedChainThisImage = readRefinedChain( sampleFilePath=self%SampleFile%Path%original, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim )
+                        RefinedChainThisImage = readRefinedChain( sampleFilePath=self%SampleFile%Path%original, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim, tenabled = .true. )
                         if (RefinedChainThisImage%Err%occurred) then
                             ! LCOV_EXCL_START
                             self%Err%occurred = .true.
@@ -1589,6 +1590,7 @@ contains
                         ! sort the refined chain on the current image
 
                         do i = 0, ndim
+write(*,*) self%Image%id, RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose, size(RefinedChainThisImage%LogFuncState(:,i))
                             call sortAscending  ( np = RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose &
                                                 , Point = RefinedChainThisImage%LogFuncState(1:RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose,i) &
                                                 , Err = self%Err &
@@ -1623,7 +1625,7 @@ contains
                                                             , search = "process_"//num2str(self%Image%id) &
                                                             , substitute = "process_"//num2str(imageID) )
 
-                                RefinedChainThatImage = readRefinedChain( sampleFilePath=inputSamplePath, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim )
+                                RefinedChainThatImage = readRefinedChain( sampleFilePath=inputSamplePath, delimiter=self%SpecBase%OutputDelimiter%val, ndim=ndim, tenabled = .true. )
                                 if (RefinedChainThatImage%Err%occurred) then
                                     ! LCOV_EXCL_START
                                     self%Err%occurred = .true.

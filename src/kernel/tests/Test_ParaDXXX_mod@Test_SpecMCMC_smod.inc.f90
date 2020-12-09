@@ -40,19 +40,23 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This include file contains tests of the module [SpecBase_mod](@ref specbase_mod) when accessed by the ParaDXXX sampler.
+!>  \brief This include file contains the body of the submodules 
+!>  [ParaDRAM_mod@Test_SpecMCMC_smod](@ref paradram_mod@test_specmcmc_smod) and 
+!>  [ParaDISE_mod@@Test_SpecMCMC_smod](@ref paradise_mod@@test_specmcmc_smod).
 !>  \author Amir Shahmoradi
+
+contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Test the ParaDXXX sampler with a wrong input value for `chainSize < ndim + 1`.
-    function test_SpecMCMC_ChainSize_type_1() result(assertion)
+    module function test_SpecMCMC_ChainSize_type_1() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -67,12 +71,12 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a wrong input value for `chainSize < ndim + 1`.
-    function test_SpecMCMC_ChainSize_type_2() result(assertion)
+    module function test_SpecMCMC_ChainSize_type_2() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -87,12 +91,12 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a uniform proposal model.
-    function test_SpecMCMC_ProposalModel_type_1() result(assertion)
+    module function test_SpecMCMC_ProposalModel_type_1() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -107,12 +111,12 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a uniform proposal model.
-    function test_SpecMCMC_ProposalModel_type_2() result(assertion)
+    module function test_SpecMCMC_ProposalModel_type_2() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -127,12 +131,12 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a uniform proposal model.
-    function test_SpecMCMC_ProposalModel_type_3() result(assertion)
+    module function test_SpecMCMC_ProposalModel_type_3() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -147,12 +151,12 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a wrong unrecognized proposal model.
-    function test_SpecMCMC_ProposalModel_type_4() result(assertion)
+    module function test_SpecMCMC_ProposalModel_type_4() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -167,7 +171,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCorMat`.
-    function test_SpecMCMC_ProposalStartCorMat_type_1() result(assertion)
+    module function test_SpecMCMC_ProposalStartCorMat_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
@@ -175,7 +179,7 @@
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -190,7 +194,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCorMat`.
-    function test_SpecMCMC_ProposalStartCorMat_type_2() result(assertion)
+    module function test_SpecMCMC_ProposalStartCorMat_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -199,7 +203,7 @@
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -214,7 +218,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a wrong value for the unidimensional `ProposalStartCorMat`.
-    function test_SpecMCMC_ProposalStartCorMat_type_3() result(assertion)
+    module function test_SpecMCMC_ProposalStartCorMat_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -223,7 +227,7 @@
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([0._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -238,7 +242,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a multidimensional `ProposalStartCorMat`.
-    function test_SpecMCMC_ProposalStartCorMat_type_4() result(assertion)
+    module function test_SpecMCMC_ProposalStartCorMat_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -247,7 +251,7 @@
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -263,7 +267,7 @@
     !> \brief
     !> Test the ParaDXXX sampler with a wrong multidimensional `ProposalStartCorMat`,
     !> which must be fine with the sampler, as long as it leads to a correct positive-definite covariance matrix.
-    function test_SpecMCMC_ProposalStartCorMat_type_5() result(assertion)
+    module function test_SpecMCMC_ProposalStartCorMat_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -272,7 +276,7 @@
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([2._RK, 0.5_RK, 0.5_RK, 2._RK], shape = shape(ProposalStartCorMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -287,7 +291,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCorMat`.
-    function test_SpecMCMC_ProposalStartCovMat_type_1() result(assertion)
+    module function test_SpecMCMC_ProposalStartCovMat_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
@@ -295,7 +299,7 @@
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([2._RK], shape = shape(ProposalStartCovMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -310,7 +314,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCovMat`.
-    function test_SpecMCMC_ProposalStartCovMat_type_2() result(assertion)
+    module function test_SpecMCMC_ProposalStartCovMat_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -319,7 +323,7 @@
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK], shape = shape(ProposalStartCovMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -334,7 +338,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a wrong value for the unidimensional `ProposalStartCovMat`.
-    function test_SpecMCMC_ProposalStartCovMat_type_3() result(assertion)
+    module function test_SpecMCMC_ProposalStartCovMat_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -343,7 +347,7 @@
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([0._RK], shape = shape(ProposalStartCovMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -358,7 +362,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a multidimensional `ProposalStartCovMat`.
-    function test_SpecMCMC_ProposalStartCovMat_type_4() result(assertion)
+    module function test_SpecMCMC_ProposalStartCovMat_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -367,7 +371,7 @@
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCovMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -383,7 +387,7 @@
     !> \brief
     !> Test the ParaDXXX sampler with a multidimensional `ProposalStartCovMat`, in the presence of `ProposalStartCorMat`
     !> and `ProposalStartStdVec`, in which case, the `ProposalStartCovMat` must be preferred.
-    function test_SpecMCMC_ProposalStartCovMat_type_5() result(assertion)
+    module function test_SpecMCMC_ProposalStartCovMat_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -394,7 +398,7 @@
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.0_RK, 0.0_RK, 1._RK], shape = shape(ProposalStartCovMat))
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [1._RK, 1._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -411,7 +415,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartCorMat`.
-    function test_SpecMCMC_ProposalStartStdVec_type_1() result(assertion)
+    module function test_SpecMCMC_ProposalStartStdVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical                 :: assertion
@@ -419,7 +423,7 @@
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [2._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -434,7 +438,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a valid unidimensional `ProposalStartStdVec`.
-    function test_SpecMCMC_ProposalStartStdVec_type_2() result(assertion)
+    module function test_SpecMCMC_ProposalStartStdVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -443,7 +447,7 @@
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [1._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -458,7 +462,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a wrong value for the unidimensional `ProposalStartStdVec`.
-    function test_SpecMCMC_ProposalStartStdVec_type_3() result(assertion)
+    module function test_SpecMCMC_ProposalStartStdVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -467,7 +471,7 @@
         integer(IK) , parameter :: NDIM = 1_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = [0._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -482,7 +486,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a multidimensional `ProposalStartStdVec`.
-    function test_SpecMCMC_ProposalStartStdVec_type_4() result(assertion)
+    module function test_SpecMCMC_ProposalStartStdVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -491,7 +495,7 @@
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: ProposalStartStdVec(NDIM) = reshape([1._RK, 0.5_RK], shape = shape(ProposalStartStdVec))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -507,7 +511,7 @@
     !> \brief
     !> Test the ParaDXXX sampler with a multidimensional `ProposalStartStdVec`, in the presence of `ProposalStartCorMat`,
     !> in which case, the `ProposalStartStdVec` must be correctly computed.
-    function test_SpecMCMC_ProposalStartStdVec_type_5() result(assertion)
+    module function test_SpecMCMC_ProposalStartStdVec_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -519,7 +523,7 @@
         real(RK)    , parameter :: ProposalStartCorMat(NDIM,NDIM) = reshape([1._RK, 0.5_RK, 0.5_RK, 1._RK], shape = shape(ProposalStartCorMat))
         real(RK)    , parameter :: ProposalStartCovMat(NDIM,NDIM) = reshape([1._RK, 1.0_RK, 1.0_RK, 4._RK], shape = shape(ProposalStartCovMat))
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -535,7 +539,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
-    function test_RSPDLowerLimitVec_type_1() result(assertion)
+    module function test_RSPDLowerLimitVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -544,7 +548,7 @@
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -560,7 +564,7 @@
     !> \brief
     !> Test whether the ParaDXXX sampler can correctly set the value of
     !> `RandomStartPointDomainLowerLimitVec` for two consecutive simulations.
-    function test_RSPDLowerLimitVec_type_2() result(assertion)
+    module function test_RSPDLowerLimitVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -569,7 +573,7 @@
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -592,7 +596,7 @@
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message when
     !> `RandomStartPointDomainLowerLimitVec` goes below the limits of `DomainLowerLimitVec`.
-    function test_RSPDLowerLimitVec_type_3() result(assertion)
+    module function test_RSPDLowerLimitVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -602,7 +606,7 @@
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [+1._RK, +2._RK]
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1._RK, +3._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -618,7 +622,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler can correctly set the value of `RandomStartPointDomainLowerLimitVec` from input argument.
-    function test_RSPDUpperLimitVec_type_1() result(assertion)
+    module function test_RSPDUpperLimitVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -627,7 +631,7 @@
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [1._RK, 2._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -643,7 +647,7 @@
     !> \brief
     !> Test whether the ParaDXXX sampler can correctly set the value of
     !> `RandomStartPointDomainUpperLimitVec` for two consecutive simulations.
-    function test_RSPDUpperLimitVec_type_2() result(assertion)
+    module function test_RSPDUpperLimitVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -652,7 +656,7 @@
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [1._RK, 2._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -675,7 +679,7 @@
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message when
     !> `RandomStartPointDomainUpperLimitVec <= RandomStartPointDomainLowerLimitVec`.
-    function test_RSPDUpperLimitVec_type_3() result(assertion)
+    module function test_RSPDUpperLimitVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -685,7 +689,7 @@
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [1._RK, 2._RK]
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [-1._RK, -2._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -702,7 +706,7 @@
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message when
     !> `RandomStartPointDomainUpperLimitVec` goes beyond the limits of `DomainUpperLimitVec`.
-    function test_RSPDUpperLimitVec_type_4() result(assertion)
+    module function test_RSPDUpperLimitVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -712,7 +716,7 @@
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [+1._RK, +2._RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [-1._RK, +3._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -728,7 +732,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler correctly randomizes the start point when requested.
-    function test_SpecMCMC_RandomStartPointRequested_type_1() result(assertion)
+    module function test_SpecMCMC_RandomStartPointRequested_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -736,7 +740,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -751,7 +755,7 @@
 
     !> \brief
     !> Test `randomStartPointRequested = true`, the use must also specify domain of either the target or the random start point.
-    function test_SpecMCMC_RandomStartPointRequested_type_2() result(assertion)
+    module function test_SpecMCMC_RandomStartPointRequested_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -759,7 +763,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -782,7 +786,7 @@
 
     !> \brief
     !> Test `randomStartPointRequested = true`, the use must also specify domain of either the target or the random start point.
-    function test_SpecMCMC_RandomStartPointRequested_type_3() result(assertion)
+    module function test_SpecMCMC_RandomStartPointRequested_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -792,7 +796,7 @@
         real(RK)    , parameter :: RandomStartPointDomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e1_RK]
         real(RK)    , parameter :: RandomStartPointDomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -809,7 +813,7 @@
 
     !> \brief
     !> Test `randomStartPointRequested = true`, the use must also specify domain of either the target or the random start point.
-    function test_SpecMCMC_RandomStartPointRequested_type_4() result(assertion)
+    module function test_SpecMCMC_RandomStartPointRequested_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -819,7 +823,7 @@
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e2_RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e2_RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -836,7 +840,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns an error message when `sampleRefinementCount < 0`.
-    function test_SpecMCMC_SampleRefinementCount_type_1() result(assertion)
+    module function test_SpecMCMC_SampleRefinementCount_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -844,7 +848,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -859,7 +863,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns an error message when `sampleRefinementCount < 0`.
-    function test_SpecMCMC_SampleRefinementCount_type_2() result(assertion)
+    module function test_SpecMCMC_SampleRefinementCount_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -867,7 +871,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -882,7 +886,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid `sampleRefinementCount >= 0`.
-    function test_SpecMCMC_SampleRefinementCount_type_3() result(assertion)
+    module function test_SpecMCMC_SampleRefinementCount_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -890,7 +894,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -905,7 +909,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns an error message with an unrecognized value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_1() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -913,7 +917,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -928,7 +932,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_2() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -936,7 +940,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -951,7 +955,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_3() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -959,7 +963,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -974,7 +978,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_4() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -982,7 +986,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -997,7 +1001,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_5() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1005,7 +1009,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1020,7 +1024,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_6() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_6() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1028,7 +1032,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1043,7 +1047,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_7() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_7() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1051,7 +1055,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1066,7 +1070,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_8() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_8() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1074,7 +1078,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1089,7 +1093,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_9() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_9() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1097,7 +1101,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1112,7 +1116,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_10() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_10() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1120,7 +1124,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1135,7 +1139,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_11() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_11() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1143,7 +1147,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1158,7 +1162,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_12() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_12() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1166,7 +1170,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1181,7 +1185,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleRefinementMethod`.
-    function test_SpecMCMC_SampleRefinementMethod_type_13() result(assertion)
+    module function test_SpecMCMC_SampleRefinementMethod_type_13() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1189,7 +1193,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1204,7 +1208,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message for a wrong input value for `scaleFactor`.
-    function test_SpecMCMC_ScaleFactor_type_1() result(assertion)
+    module function test_SpecMCMC_ScaleFactor_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1212,7 +1216,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1227,7 +1231,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message for an empty input value for `scaleFactor`.
-    function test_SpecMCMC_ScaleFactor_type_2() result(assertion)
+    module function test_SpecMCMC_ScaleFactor_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1235,7 +1239,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1250,7 +1254,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message for an empty input value for `scaleFactor`.
-    function test_SpecMCMC_ScaleFactor_type_3() result(assertion)
+    module function test_SpecMCMC_ScaleFactor_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1258,7 +1262,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1273,7 +1277,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message for a wrong input value for `scaleFactor`.
-    function test_SpecMCMC_ScaleFactor_type_4() result(assertion)
+    module function test_SpecMCMC_ScaleFactor_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1281,7 +1285,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1296,7 +1300,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns successfully for a valid input value for `scaleFactor`.
-    function test_SpecMCMC_ScaleFactor_type_5() result(assertion)
+    module function test_SpecMCMC_ScaleFactor_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1304,7 +1308,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1319,7 +1323,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message for a negative input value for `scaleFactor`.
-    function test_SpecMCMC_ScaleFactor_type_6() result(assertion)
+    module function test_SpecMCMC_ScaleFactor_type_6() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1327,7 +1331,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1342,7 +1346,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message for a wrong input value for `scaleFactor`.
-    function test_SpecMCMC_ScaleFactor_type_7() result(assertion)
+    module function test_SpecMCMC_ScaleFactor_type_7() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1350,7 +1354,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1365,7 +1369,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns successfully for a valid input value for `scaleFactor`.
-    function test_SpecMCMC_ScaleFactor_type_8() result(assertion)
+    module function test_SpecMCMC_ScaleFactor_type_8() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1373,7 +1377,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1388,7 +1392,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns successfully for a valid input value for `StartPointVec`.
-    function test_SpecMCMC_StartPointVec_type_1() result(assertion)
+    module function test_SpecMCMC_StartPointVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1397,7 +1401,7 @@
         integer(IK) , parameter :: NDIM = 2_IK
         real(RK)    , parameter :: StartPointVec(NDIM) = [1._RK, -10._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1412,7 +1416,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns successfully for a valid input value for `StartPointVec`.
-    function test_SpecMCMC_StartPointVec_type_2() result(assertion)
+    module function test_SpecMCMC_StartPointVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1420,7 +1424,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1435,7 +1439,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns successfully and correctly computes `StartPointVec` when not provided.
-    function test_SpecMCMC_StartPointVec_type_3() result(assertion)
+    module function test_SpecMCMC_StartPointVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1443,7 +1447,7 @@
         type(ParaDXXX_type)     :: PD
         integer(IK) , parameter :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1457,7 +1461,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns successfully and correctly computes `StartPointVec` when not provided.
-    function test_SpecMCMC_StartPointVec_type_4() result(assertion)
+    module function test_SpecMCMC_StartPointVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1467,7 +1471,7 @@
         real(RK)    , parameter :: DomainLowerLimitVec(NDIM) = [-1.e0_RK, +1.e1_RK]
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1494,7 +1498,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler returns with an error message when `StartPointVec` is out of domain boundary.
-    function test_SpecMCMC_StartPointVec_type_5() result(assertion)
+    module function test_SpecMCMC_StartPointVec_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         implicit none
@@ -1505,7 +1509,7 @@
         real(RK)    , parameter :: DomainUpperLimitVec(NDIM) = [+2.e0_RK, +2.e1_RK]
         real(RK)    , parameter :: StartPointVec(NDIM) = [-2.e1_RK, +2.e2_RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &

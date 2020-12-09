@@ -83,7 +83,6 @@ unset BTYPE_LIST
 unset LTYPE_LIST
 unset PARALLELISM_LIST
 unset MEMORY_LIST
-unset ParaMonteTest_RUN_ENABLED
 unset ParaMonteExample_RUN_ENABLED
 unset Fortran_COMPILER_PATH
 unset MPIEXEC_PATH
@@ -98,6 +97,7 @@ MatDRAM_ENABLED="false"
 shared_enabled="true"
 codecov_flag=""
 dryrun_flag=""
+test_type_flag=""
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -119,8 +119,8 @@ while [ "$1" != "" ]; do
         -m | --mem )            shift
                                 MEMORY_LIST="$1"
                                 ;;
-        -t | --test_enabled )   shift
-                                ParaMonteTest_RUN_ENABLED="$1"
+        -t | --test )           shift
+                                test_type_flag="--test $1"
                                 ;;
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED="$1"
@@ -377,16 +377,10 @@ if ! [ -z ${MEMORY_LIST+x} ]; then
     fi
 fi
 
-if ! [ -z ${ParaMonteTest_RUN_ENABLED+x} ]; then
-    if  [[ $ParaMonteTest_RUN_ENABLED != [tT][rR][uU][eE] 
-        && $ParaMonteTest_RUN_ENABLED != [fF][aA][lL][sS][eE] ]]; then
-        reportBadValue "-t or --test_enabled" $ParaMonteTest_RUN_ENABLED
-    fi
-    if [ "${ParaMonteTest_RUN_ENABLED}" = "" ]; then
-        unset ParaMonteTest_RUN_ENABLED
-    else
-        ParaMonteTest_RUN_ENABLED="$(getLowerCase $ParaMonteTest_RUN_ENABLED)"
-    fi
+# Check the value of Testing TYPE.
+
+if [ [[ $TTYPE != [nN][oO][nN][eE] || $TTYPE != [aA][lL][lL] || ${TTYPE} == [bB][aA][sS][iI][cC] || ${TTYPE} == [sS][aA][mM][pP][lL][eE][rR] ]]; then
+    reportBadValue "-t or --test" $TTYPE
 fi
 
 if ! [ -z ${ParaMonteExample_RUN_ENABLED+x} ]; then
@@ -557,7 +551,7 @@ for PMCS in $PMCS_LIST; do
                         fi
                         cfi_enabled_flag="--cfi_enabled ${CFI_ENABLED}"
 
-                        test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
+                        #test_enabled_flag="--test_enabled ${ParaMonteTest_RUN_ENABLED}"
                         exam_enabled_flag="--exam_enabled ${ParaMonteExample_RUN_ENABLED}"
                         shared_enabled_flag="--shared_enabled ${shared_enabled}"
 
@@ -623,7 +617,7 @@ for PMCS in $PMCS_LIST; do
                             echo >&2 "                          ${heap_enabled_flag} \ "
                             echo >&2 "                          ${mpi_enabled_flag} \ "
                             echo >&2 "                          ${caftype_flag} \ "
-                            echo >&2 "                          ${test_enabled_flag} \ "
+                            echo >&2 "                          ${test_type_flag} \ "
                             echo >&2 "                          ${exam_enabled_flag} \ "
                             echo >&2 "                          ${shared_enabled_flag} \ "
                             if ! [ "${yes_to_all_flag}" = "" ]; then
@@ -669,7 +663,7 @@ for PMCS in $PMCS_LIST; do
                             ${heap_enabled_flag} \
                             ${mpi_enabled_flag} \
                             ${caftype_flag} \
-                            ${test_enabled_flag} \
+                            ${test_type_flag} \
                             ${exam_enabled_flag} \
                             ${shared_enabled_flag} \
                             ${yes_to_all_flag} \

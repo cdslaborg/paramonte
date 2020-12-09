@@ -40,19 +40,23 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This include file contains tests of the module [SpecBase_mod](@ref specbase_mod) when accessed by the ParaDXXX sampler.
+!>  \brief This include file contains the body of the submodules 
+!>  [ParaDRAM_mod@Test_SpecBase_smod](@ref paradram_mod@test_specbase_smod) and 
+!>  [ParaDISE_mod@@Test_SpecBase_smod](@ref paradise_mod@@test_specbase_smod).
 !>  \author Amir Shahmoradi
+
+contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
     !> Test the ParaDXXX sampler with a wrong input value for `chainFileFormat`.
-    function test_SpecBase_ChainFileFormat_type_1() result(assertion)
+    module function test_SpecBase_ChainFileFormat_type_1() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -67,12 +71,12 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a wrong input value for `chainFileFormat`.
-    function test_SpecBase_ChainFileFormat_type_2() result(assertion)
+    module function test_SpecBase_ChainFileFormat_type_2() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -87,12 +91,12 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a valid input value for `chainFileFormat`.
-    function test_SpecBase_ChainFileFormat_type_3() result(assertion)
+    module function test_SpecBase_ChainFileFormat_type_3() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -107,12 +111,12 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a valid input value for `chainFileFormat`.
-    function test_SpecBase_ChainFileFormat_type_4() result(assertion)
+    module function test_SpecBase_ChainFileFormat_type_4() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -127,12 +131,12 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a valid input value for `chainFileFormat`.
-    function test_SpecBase_ChainFileFormat_type_5() result(assertion)
+    module function test_SpecBase_ChainFileFormat_type_5() result(assertion)
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -147,14 +151,14 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a too-small input value for `domainLowerLimitVec`.
-    function test_SpecBase_DomainLowerLimitVec_type_1() result(assertion)
+    module function test_SpecBase_DomainLowerLimitVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK, HUGE_RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainLowerLimitVec(*) = [-HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -169,7 +173,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a too-small input value for `domainLowerLimitVec`.
-    function test_SpecBase_DomainLowerLimitVec_type_2() result(assertion)
+    module function test_SpecBase_DomainLowerLimitVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK, HUGE_RK
         use String_mod, only: num2str
         implicit none
@@ -177,7 +181,7 @@
         real(RK), parameter :: domainLowerLimitVec(*) = [-HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -192,14 +196,14 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a too-large input value for `domainUpperLimitVec`.
-    function test_SpecBase_DomainUpperLimitVec_type_1() result(assertion)
+    module function test_SpecBase_DomainUpperLimitVec_type_1() result(assertion)
         use Constants_mod, only: IK, RK, HUGE_RK
         implicit none
         logical             :: assertion
         real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -214,7 +218,7 @@
 
     !> \brief
     !> Test the ParaDXXX sampler with a too-large input value for `domainUpperLimitVec`.
-    function test_SpecBase_DomainUpperLimitVec_type_2() result(assertion)
+    module function test_SpecBase_DomainUpperLimitVec_type_2() result(assertion)
         use Constants_mod, only: IK, RK, HUGE_RK
         use String_mod, only: num2str
         implicit none
@@ -222,7 +226,7 @@
         real(RK), parameter :: domainUpperLimitVec(*) = [+HUGE_RK/2._RK] ! NOTE: HUGE_RK is the null value.
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -238,7 +242,7 @@
     !> \brief
     !> Test the ParaDXXX sampler with an input value for `domainUpperLimitVec` 
     !> that is smaller than the input value for `domainLowerLimitVec`.
-    function test_SpecBase_DomainUpperLimitVec_type_3() result(assertion)
+    module function test_SpecBase_DomainUpperLimitVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
@@ -246,7 +250,7 @@
         real(RK), parameter :: domainUpperLimitVec(*) = [-2._RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -263,7 +267,7 @@
     !> \brief
     !> Test the ParaDXXX sampler with an input value for `domainUpperLimitVec` 
     !> that is equal to the input value for `domainLowerLimitVec`.
-    function test_SpecBase_DomainUpperLimitVec_type_4() result(assertion)
+    module function test_SpecBase_DomainUpperLimitVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
@@ -271,7 +275,7 @@
         real(RK), parameter :: domainUpperLimitVec(*) = [+2._RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -287,7 +291,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `maxNumDomainCheckToWarn < 1`.
-    function test_SpecBase_MaxNumDomainCheckToWarn_type_1() result(assertion)
+    module function test_SpecBase_MaxNumDomainCheckToWarn_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
@@ -295,7 +299,7 @@
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -312,7 +316,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `maxNumDomainCheckToWarn < 1`.
-    function test_SpecBase_MaxNumDomainCheckToWarn_type_2() result(assertion)
+    module function test_SpecBase_MaxNumDomainCheckToWarn_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
@@ -320,7 +324,7 @@
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -337,7 +341,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `maxNumDomainCheckToWarn < 1`.
-    function test_SpecBase_MaxNumDomainCheckToWarn_type_3() result(assertion)
+    module function test_SpecBase_MaxNumDomainCheckToWarn_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
@@ -345,7 +349,7 @@
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e-2_RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -363,7 +367,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `maxNumDomainCheckToStop < 1`.
-    function test_SpecBase_MaxNumDomainCheckToStop_type_1() result(assertion)
+    module function test_SpecBase_MaxNumDomainCheckToStop_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
@@ -371,7 +375,7 @@
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -388,7 +392,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
-    function test_SpecBase_MaxNumDomainCheckToStop_type_2() result(assertion)
+    module function test_SpecBase_MaxNumDomainCheckToStop_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
@@ -396,7 +400,7 @@
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -413,7 +417,7 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
-    function test_SpecBase_MaxNumDomainCheckToStop_type_3() result(assertion)
+    module function test_SpecBase_MaxNumDomainCheckToStop_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
@@ -421,7 +425,7 @@
         real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -438,13 +442,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `outputColumnWidth < 0`.
-    function test_SpecBase_OutputColumnWidth_type_1() result(assertion)
+    module function test_SpecBase_OutputColumnWidth_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -459,13 +463,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `outputColumnWidth < 0`.
-    function test_SpecBase_OutputColumnWidth_type_2() result(assertion)
+    module function test_SpecBase_OutputColumnWidth_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -480,13 +484,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `outputColumnWidth < outputRealPrecision + 7`.
-    function test_SpecBase_OutputColumnWidth_type_3() result(assertion)
+    module function test_SpecBase_OutputColumnWidth_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -502,13 +506,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler successfully return with a valid value for `outputColumnWidth`.
-    function test_SpecBase_OutputColumnWidth_type_4() result(assertion)
+    module function test_SpecBase_OutputColumnWidth_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -524,13 +528,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `outputDelimiter` contains `.`.
-    function test_SpecBase_OutputDelimiter_type_1() result(assertion)
+    module function test_SpecBase_OutputDelimiter_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -545,13 +549,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `outputDelimiter` contains `+`.
-    function test_SpecBase_OutputDelimiter_type_2() result(assertion)
+    module function test_SpecBase_OutputDelimiter_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -566,13 +570,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `outputDelimiter` contains digit.
-    function test_SpecBase_OutputDelimiter_type_3() result(assertion)
+    module function test_SpecBase_OutputDelimiter_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -587,13 +591,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler converts `\t` to tab character when `outputDelimiter = "\t"`.
-    function test_SpecBase_OutputDelimiter_type_4() result(assertion)
+    module function test_SpecBase_OutputDelimiter_type_4() result(assertion)
         use Constants_mod, only: IK, RK, TAB
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -608,13 +612,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler converts `\\t` to `\t` when `outputDelimiter = "\\t"`.
-    function test_SpecBase_OutputDelimiter_type_5() result(assertion)
+    module function test_SpecBase_OutputDelimiter_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -629,13 +633,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler converts `""` to `" "` when `outputDelimiter = ""` contains digit.
-    function test_SpecBase_OutputDelimiter_type_6() result(assertion)
+    module function test_SpecBase_OutputDelimiter_type_6() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -650,13 +654,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `outputRealPrecision < 1`.
-    function test_SpecBase_OutputRealPrecision_type_1() result(assertion)
+    module function test_SpecBase_OutputRealPrecision_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -671,13 +675,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `outputRealPrecision < 1`.
-    function test_SpecBase_OutputRealPrecision_type_2() result(assertion)
+    module function test_SpecBase_OutputRealPrecision_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -692,13 +696,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler overwrites existing simulation files when `overwriteRequested = .true.`.
-    function test_SpecBase_OverwriteRequested_type_1() result(assertion)
+    module function test_SpecBase_OverwriteRequested_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -720,13 +724,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when attempting to overwrite an existing simulation with `overwriteRequested = .false.`.
-    function test_SpecBase_OverwriteRequested_type_2() result(assertion)
+    module function test_SpecBase_OverwriteRequested_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -748,13 +752,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler handles properly the `singleChain` parallelization model.
-    function test_SpecBase_ParallelizationModel_type_1() result(assertion)
+    module function test_SpecBase_ParallelizationModel_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -769,13 +773,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler handles properly the `multiChain` parallelization model.
-    function test_SpecBase_ParallelizationModel_type_2() result(assertion)
+    module function test_SpecBase_ParallelizationModel_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -790,13 +794,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when the specified value for `parallelizationModel` is not recognized.
-    function test_SpecBase_ParallelizationModel_type_3() result(assertion)
+    module function test_SpecBase_ParallelizationModel_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -811,13 +815,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when the `progressReportPeriod < 1`.
-    function test_SpecBase_ProgressReportPeriod_type_1() result(assertion)
+    module function test_SpecBase_ProgressReportPeriod_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -832,13 +836,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when the `progressReportPeriod < 1`.
-    function test_SpecBase_ProgressReportPeriod_type_2() result(assertion)
+    module function test_SpecBase_ProgressReportPeriod_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -853,13 +857,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler appropriately considers the user's input random seed value.
-    function test_SpecBase_RandomSeed_type_1() result(assertion)
+    module function test_SpecBase_RandomSeed_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -874,13 +878,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler appropriately considers the user's input random seed value.
-    function test_SpecBase_RandomSeed_type_2() result(assertion)
+    module function test_SpecBase_RandomSeed_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -895,13 +899,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler appropriately considers a binary restart file format.
-    function test_SpecBase_RestartFileFormat_type_1() result(assertion)
+    module function test_SpecBase_RestartFileFormat_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -916,13 +920,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler appropriately considers an ascii restart file format.
-    function test_SpecBase_RestartFileFormat_type_2() result(assertion)
+    module function test_SpecBase_RestartFileFormat_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -937,13 +941,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when the specified restart file format is not recognized.
-    function test_SpecBase_RestartFileFormat_type_3() result(assertion)
+    module function test_SpecBase_RestartFileFormat_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -958,13 +962,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleSize`.
-    function test_SpecBase_SampleSize_type_1() result(assertion)
+    module function test_SpecBase_SampleSize_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -979,13 +983,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleSize`.
-    function test_SpecBase_SampleSize_type_2() result(assertion)
+    module function test_SpecBase_SampleSize_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1000,13 +1004,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleSize`.
-    function test_SpecBase_SampleSize_type_3() result(assertion)
+    module function test_SpecBase_SampleSize_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1021,14 +1025,14 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler succeeds with a valid value for `sampleSize`.
-    function test_SpecBase_SampleSize_type_4() result(assertion)
+    module function test_SpecBase_SampleSize_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion, exist
         integer             :: iostat
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1045,14 +1049,14 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
-    function test_SpecBase_TargetAcceptanceRate_type_1() result(assertion)
+    module function test_SpecBase_TargetAcceptanceRate_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         real(RK), parameter :: targetAcceptanceRate(*) = [-1._RK, 0.5_RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1067,13 +1071,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
-    function test_SpecBase_TargetAcceptanceRate_type_2() result(assertion)
+    module function test_SpecBase_TargetAcceptanceRate_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1088,13 +1092,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
-    function test_SpecBase_TargetAcceptanceRate_type_3() result(assertion)
+    module function test_SpecBase_TargetAcceptanceRate_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1109,13 +1113,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
-    function test_SpecBase_TargetAcceptanceRate_type_4() result(assertion)
+    module function test_SpecBase_TargetAcceptanceRate_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1130,13 +1134,13 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler exits with an error message when the specified `targetAcceptanceRate` is out of range.
-    function test_SpecBase_TargetAcceptanceRate_type_5() result(assertion)
+    module function test_SpecBase_TargetAcceptanceRate_type_5() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
@@ -1151,14 +1155,14 @@
 
     !> \brief
     !> Test whether the ParaDXXX sampler does not do scaling when the `targetAcceptanceRate = [0., 1.]`.
-    function test_SpecBase_TargetAcceptanceRate_type_6() result(assertion)
+    module function test_SpecBase_TargetAcceptanceRate_type_6() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD
         real(RK), parameter :: targetAcceptanceRate(*) = [0._RK, 1._RK]
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &

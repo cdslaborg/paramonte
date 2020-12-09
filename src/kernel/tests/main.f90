@@ -70,6 +70,7 @@ use Test_mod, only: setup, finalize
 
 call setup()
 
+#if defined BASIC_TEST_ENABLED
 block; use Test_BandSpectrum_mod; call test_BandSpectrum(); end block
 block; use Test_Batse_mod; call test_Batse(); end block
 block; use Test_Constants_mod; call test_Constants(); end block
@@ -99,10 +100,14 @@ block; use Test_System_mod; call test_System(); end block
 block; use Test_Timer_mod; call test_Timer(); end block
 block; use Test_TimerCPU_mod; call test_TimerCPU(); end block
 block; use Test_TranGaus_mod; call test_TranGaus(); end block
+#endif
+
+#if defined SAMPLER_TEST_ENABLED
 block; use Test_ParaDRAM_mod; call test_ParaDRAM(); end block
 block; use Test_ParaDISE_mod; call test_ParaDISE(); end block
 block; use Test_ParaMCMCRefinedChain_mod; call test_ParaMCMCRefinedChain(); end block
 block; use Test_ParaMonteChainFileContents_mod; call test_ParaMonteChainFileContents(); end block
+#endif
 
 call finalize()
 

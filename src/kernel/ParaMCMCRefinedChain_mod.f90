@@ -518,7 +518,7 @@ contains
     !> `skip4NewSampleSize` : The computed skip size.
     !>
     !> \warning
-    !> The condition `oldSampleSize >= newSampleSize` must always hold, 
+    !> The condition `oldSampleSize >= newSampleSize` must always hold,
     !> otherwise a negative value for `skip4NewSampleSize` will be returned to indicate the occurrence of an error.
     pure function getSkip4NewSampleSize(oldSampleSize,newSampleSize) result(skip4NewSampleSize)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
@@ -573,11 +573,17 @@ contains
     !> \param[in]   delimiter           :   The delimiter used in the file.
     !> \param[in]   ndim                :   The number of dimensions of the sampled states in the sample file.
     !>                                      This is basically, the size of the domain of the objective function.
+    !> \param[in]   tenabled            :   An optional input logical value standing for `transpose-enabled`. If `.false.`,
+    !>                                      the input data will be naturally read according to Fortran column-wise data storage
+    !>                                      rule as a matrix of rank `0:nd * 1:np`. If `.false.`, the input sample file will be
+    !>                                      read as a matrix of rank `1:np * 0:nd`. Note that `np` represents the number of rows
+    !>                                      in the files (that is, the number of sampled points, whereas `nd` represents the
+    !>                                      number of columns in the input file (**optional**, default = `.false.`).
     !>
     !> \return
     !> `RefinedChain` : An object of class [RefinedChain_type](@ref refinedchain_type) containing
     !>                  the sampled states read from the specified input file.
-    function readRefinedChain(sampleFilePath,delimiter,ndim) result(RefinedChain)
+    function readRefinedChain(sampleFilePath,delimiter,ndim,tenabled) result(RefinedChain)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: readRefinedChain
 #endif
@@ -586,21 +592,23 @@ contains
         implicit none
         integer(IK) , intent(in)            :: ndim
         character(*), intent(in)            :: sampleFilePath, delimiter
+        logical     , intent(in), optional  :: tenabled
         type(RefinedChain_type)             :: RefinedChain
         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME//"@readRefinedChain()"
         integer(IK)                         :: sampleFileUnit, isample, i
+        logical                             :: tenabledDefault
         type(String_type)                   :: Record
 
         if (allocated(Record%value)) deallocate(Record%value) ! LCOV_EXCL_LINE
         allocate( character(99999) :: Record%value )
 
-        RefinedChain%numRefinement = 0_IK
         RefinedChain%ndim = ndim
-        allocate(RefinedChain%Count(RefinedChain%numRefinement:RefinedChain%numRefinement))
+        RefinedChain%numRefinement = 0_IK
+        allocate(RefinedChain%Count(RefinedChain%numRefinement:RefinedChain%numRefinement)) ! allocate just the zeroth level of `RefinedChain`.
 
         ! find the number of lines in the sample file
 
-        call getNumRecordInFile(filePath=sampleFilePath,numRecord=RefinedChain%Count(RefinedChain%numRefinement)%verbose,Err=RefinedChain%Err)
+        call getNumRecordInFile(filePath=sampleFilePath, numRecord=RefinedChain%Count(RefinedChain%numRefinement)%verbose, Err=RefinedChain%Err)
         if (RefinedChain%Err%occurred) then
             ! LCOV_EXCL_START
             RefinedChain%Err%msg = PROCEDURE_NAME // RefinedChain%Err%msg
@@ -609,7 +617,6 @@ contains
         end if
 
         RefinedChain%Count(RefinedChain%numRefinement)%verbose = RefinedChain%Count(RefinedChain%numRefinement)%verbose - 1_IK ! remove header from the count
-        allocate( RefinedChain%LogFuncState(0:ndim, RefinedChain%Count(RefinedChain%numRefinement)%verbose) )
 
         open( newunit = sampleFileUnit &
             , file = sampleFilePath &
@@ -638,13 +645,32 @@ contains
 
         ! read contents
 
-        do isample = 1, RefinedChain%Count(RefinedChain%numRefinement)%verbose
-            read(sampleFileUnit, "(A)") Record%value
-            Record%Parts = Record%split(trim(adjustl(Record%value)),delimiter)
-            do i = 0, ndim
-                read(Record%Parts(i+1)%record,*) RefinedChain%LogFuncState(i,isample)
+        tenabledDefault = .false.
+        if (present(tenabled)) tenabledDefault = tenabled
+
+        if (tenabledDefault) then
+
+            allocate( RefinedChain%LogFuncState(RefinedChain%Count(RefinedChain%numRefinement)%verbose, 0:ndim) )
+            do isample = 1, RefinedChain%Count(RefinedChain%numRefinement)%verbose
+                read(sampleFileUnit, "(A)") Record%value
+                Record%Parts = Record%split(trim(adjustl(Record%value)),delimiter)
+                do i = 0, ndim
+                    read(Record%Parts(i+1)%record,*) RefinedChain%LogFuncState(isample,i)
+                end do
             end do
-        end do
+
+        else
+
+            allocate( RefinedChain%LogFuncState(0:ndim, RefinedChain%Count(RefinedChain%numRefinement)%verbose) )
+            do isample = 1, RefinedChain%Count(RefinedChain%numRefinement)%verbose
+                read(sampleFileUnit, "(A)") Record%value
+                Record%Parts = Record%split(trim(adjustl(Record%value)),delimiter)
+                do i = 0, ndim
+                    read(Record%Parts(i+1)%record,*) RefinedChain%LogFuncState(i,isample)
+                end do
+            end do
+
+        end if
 
         close(sampleFileUnit)
 

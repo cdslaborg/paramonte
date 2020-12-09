@@ -165,14 +165,14 @@ verify() {
         echo >&2 "    -- ${BUILD_NAME} - FATAL: variable, then reinstall ParaMonte."
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL: If the error is solely due to the failures of some ParaMonte tests, then"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: you may want to skip the testing of the library by specifying \"-t false\" or"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: \"--test_enabled false\" when calling the ParaMonte installation script."
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: you may want to skip the testing of the library by specifying \"-t none\" or"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL: \"--test none\" when calling the ParaMonte installation script."
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --test_enabled false"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --test none"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL: or,"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --t false"
+        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --t none"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
         echo >&2 "    -- ${BUILD_NAME} - FATAL: To get more help on the usage of the optional install flags, try:"
         echo >&2 "    -- ${BUILD_NAME} - FATAL: "
@@ -338,7 +338,7 @@ cat << EndOfMessage
         -m <mpi enabled: true/false>
         -i <C-Fortran interface enabled: true/false>
         -e <heap allocation enabled: true/false>
-        -t <ParaMonte test run enabled: true/false>
+        -t <ParaMonte test run enabled: none/all/pm/nopm>
         -x <ParaMonte example run enabled: true/false>
         -f <path to Fortran compiler>
         -M <path to mpiexec>
@@ -363,7 +363,7 @@ cat << EndOfMessage
         -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
         -i | --cfi_enabled      : the ParaMonte library C-Fortran interface enabled? must be true if the library is to be called from non-Fortran languages: true, false
         -e | --heap_enabled     : the ParaMonte library heap array allocation enabled?: true, false
-        -t | --test_enabled     : the ParaMonte library test run enabled?: true, false
+        -t | --test             : the ParaMonte library test run enabled?: none, all, pm, nopm
         -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
         -S | --shared_enabled   : release the shared library dependencies in the binary release of the ParaMonte library: true, false
         -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
@@ -391,6 +391,7 @@ mpiInstallEnabled=false
 unset PMCS
 unset BTYPE
 unset LTYPE
+unset TTYPE
 unset CAFTYPE
 unset MPI_ENABLED
 unset CFI_ENABLED
@@ -402,7 +403,6 @@ unset FOR_COARRAY_NUM_IMAGES
 unset Fortran_COMPILER_PATH_USER
 ParaMonteExample_RUN_ENABLED=true
 localInstallationEnabled=false
-ParaMonteTest_RUN_ENABLED=true
 freshInstallEnabled=false
 YES_TO_ALL_DISABLED=true
 CODECOV_ENABLED=false
@@ -444,8 +444,8 @@ while [ "$1" != "" ]; do
         -e | --heap_enabled )   shift
                                 HEAP_ARRAY_ENABLED=$1; export HEAP_ARRAY_ENABLED
                                 ;;
-        -t | --test_enabled )   shift
-                                ParaMonteTest_RUN_ENABLED=$1; export ParaMonteTest_RUN_ENABLED
+        -t | --test )           shift
+                                TTYPE=$1; export TTYPE
                                 ;;
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED=$1; export ParaMonteExample_RUN_ENABLED
@@ -2238,6 +2238,8 @@ cmake \
 -DHEAP_ARRAY_ENABLED=${HEAP_ARRAY_ENABLED} \
 -DCFI_ENABLED=${CFI_ENABLED} \
 -DOMP_ENABLED=${OMP_ENABLED} \
+${SAMPLER_TEST_ENABLED_FLAG} \
+${BASIC_TEST_ENABLED_FLAG} \
 ${CODECOV_ENABLED_FLAG} \
 ${OS_IS_WSL_FLAG} \
 ${ParaMonte_ROOT_DIR} \

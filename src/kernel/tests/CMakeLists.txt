@@ -62,6 +62,10 @@ set(ParaMonteTest_SOURCE_FILES
     ${ParaMonteTest_SRC_DIR}/Test_Optimization_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaDISE_mod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecBase_smod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecMCMC_smod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecDRAM_smod.f90
+    ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_runSampler_smod.f90
     ${ParaMonteTest_SRC_DIR}/Test_Parallelism_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaMCMCRefinedChain_mod.f90
     ${ParaMonteTest_SRC_DIR}/Test_ParaMonteChainFileContents_mod.f90
@@ -80,15 +84,10 @@ set(ParaMonteTest_SOURCE_FILES
     #${ParaMonteTest_SRC_DIR}/Test_EconomicsToolbox_mod.f90
 )
 
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@SpecBase_mod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@SpecMCMC_mod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDRAM_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@SpecDRAM_mod.inc.f90)
-
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDISE_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDISE_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@SpecBase_mod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDISE_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@SpecMCMC_mod.inc.f90)
-set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDISE_mod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@SpecDRAM_mod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecBase_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecBase_smod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecMCMC_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecMCMC_smod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecDRAM_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_SpecDRAM_smod.inc.f90)
+set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_runSampler_smod.f90 PROPERTIES OBJECT_DEPENDS ${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_runSampler_smod.inc.f90)
 
 # Define the executable in terms of the source files
 
@@ -97,6 +96,10 @@ set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDISE_mod.f90 PROPE
 #set(CMAKE_Fortran_MODULE_DIRECTORY "${ParaMonteTest_MOD_DIR}")
 
 #find_library(PMLIB_PATH ${PMLIB} PATHS ${ParaMonte_OBJ_DIR})
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#: add test target
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 add_executable(${ParaMonteTest_EXE_NAME} ${ParaMonteTest_SOURCE_FILES})
 
