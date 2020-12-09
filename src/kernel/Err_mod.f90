@@ -49,7 +49,7 @@ module Err_mod
 
     logical     , parameter :: ERR_HANDLING_REQUESTED = .false.
 
-#if defined CODECOV_ENABLED || ((defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED)
+#if defined CODECOV_ENABLED || defined BASIC_TEST_ENABLED || defined SAMPLER_TEST_ENABLED || ((defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED)
     logical     , parameter :: SOFT_EXIT_ENABLED = .true.
 #else
     logical     , parameter :: SOFT_EXIT_ENABLED = .false.
@@ -361,6 +361,72 @@ contains
         if (.not.present(marginBot)) call write(stdout)
 
     end subroutine informUser
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+    !> \brief
+    !> Broadcast the error condition from all images to all images. 
+    !> 
+    !> \param[in]   Err : An object of type [Err_type](@ref err_type) containing the error information.
+    !> 
+    !> \warning
+    !> This subroutine must be called in parallel by ALL images or NONE.
+    !> 
+    !> \warning
+    !> This function solely exist for soft handling of fatal errors in parallel testing mode and 
+    !> should therefore must never be defined and used in production builds. This function is defined 
+    !> by either `CODECOVE_ENABLED` or `SAMPLER_TEST_ENABLED` preprocessor flags in parallel builds and if 
+    !> defined, it will SIGNIFICANTLY degrade the parallel performance of the code. 
+    !> Therefore, **`SAMPLER_TEST_ENABLED` should never be defined when building for production**.
+    subroutine bcastErr(Err)
+        use Constants_mod, only: IK
+        implicit none
+        type(Err_type), intent(inout)   :: Err
+        integer                         :: imageID, imageCount
+#if defined CAF_ENABLED
+        block
+            logical, allocatable, save  :: ErrorOccurred(:)[:]
+            integer(IK)                 :: i
+            imageID     = this_image()
+            imageCount  = num_images()
+            allocate(ErrorOccurred(Image%count)[*])
+            error stop "work needs to be done here!"
+            Err%occurred = any(ErrorOccurred)
+            deallocate(ErrorOccurred)
+        end block
+#elif defined MPI_ENABLED
+        block
+            use mpi
+            integer                     :: ierrMPI
+            logical, allocatable        :: ErrorOccurred(:)
+            call mpi_comm_rank(mpi_comm_world, imageID, ierrMPI)
+            call mpi_comm_size(mpi_comm_world, imageCount, ierrMPI)
+            allocate(ErrorOccurred(imageCount))
+            call mpi_allgather  ( Err%occurred      &   ! LCOV_EXCL_LINE : send buffer
+                                , 1                 &   ! LCOV_EXCL_LINE : send count
+                                , mpi_logical       &   ! LCOV_EXCL_LINE : send datatype
+                                , ErrorOccurred(:)  &   ! LCOV_EXCL_LINE : receive buffer
+                                , 1                 &   ! LCOV_EXCL_LINE : receive count
+                                , mpi_logical       &   ! LCOV_EXCL_LINE : receive datatype
+                                , mpi_comm_world    &   ! LCOV_EXCL_LINE : comm
+                                , ierrMPI           &   ! LCOV_EXCL_LINE : ierr
+                                )
+           !call mpi_alltoall   ( Err%occurred &    ! buffer_send   : The buffer containing the data that will be scattered to other processes.
+           !                    , 1 &               ! count_send    : The number of elements that will be sent to each process.
+           !                    , mpi_logical &     ! datatype_send : The type of one send buffer element.
+           !                    , ErrorOccurred &   ! buffer_recv   : The buffer in which store the gathered data.
+           !                    , imageCount &      ! count_recv    : The number of elements in the message to receive per process, not the total number of elements to receive from all processes altogether.
+           !                    , mpi_logical &     ! datatype_recv : The type of one receive buffer element.
+           !                    , mpi_comm_world &  ! communicator  : The communicator in which the all to all takes place.
+           !                    , ierrMPI &         ! ierror        : The error code returned from the all to all.
+           !                    )
+            Err%occurred = any(ErrorOccurred)
+            deallocate(ErrorOccurred)
+        end block
+#endif
+    end subroutine bcastErr
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

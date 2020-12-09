@@ -57,7 +57,7 @@
                                                                             , counterDRS    = counterDRS & ! LCOV_EXCL_LINE
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1) & ! LCOV_EXCL_LINE
                                                                             )
-#if defined CODECOV_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
 #endif
 

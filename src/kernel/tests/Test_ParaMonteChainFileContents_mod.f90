@@ -81,7 +81,7 @@ contains
        !character(9), parameter     :: variableNameList(*) = ["var1", "var2"]
         integer(IK) , parameter     :: NDIM = 2_IK
         assertion = .true.
-#if defined CODECOV_ENABLED
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &

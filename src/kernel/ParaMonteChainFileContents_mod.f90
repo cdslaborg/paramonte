@@ -816,6 +816,7 @@ contains
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
                 call abort(CFC%Err)
+                error stop
                 return
                 ! LCOV_EXCL_STOP
             end if
@@ -864,6 +865,7 @@ contains
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
                 call abort(CFC%Err)
+                error stop
                 return
                 ! LCOV_EXCL_STOP
             end if

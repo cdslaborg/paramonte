@@ -699,7 +699,6 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-!#if !defined OS_IS_WSL || !defined CODECOV_ENABLED || defined DLL_ENABLED
     function test_getBinaryMergerRate_1() result(assertion)
 
         use Constants_mod, only: RK, IK, HUGE_RK

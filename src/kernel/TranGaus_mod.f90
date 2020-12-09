@@ -2644,6 +2644,7 @@ contains
 
         use Constants_mod, only: IK, RK
         use Statistics_mod, only: getRandInt, getRandGaus
+        use iso_fortran_env, only: output_unit
 
         implicit none
 
@@ -2671,7 +2672,7 @@ contains
         blockRange: if (lowerLim>=upperLim) then
 
             ! LCOV_EXCL_START
-            write(*,*) MODULE_NAME//"@getStdTranGaus: upperLim must be greater than lowerLim."
+            write(output_unit,"(A)") MODULE_NAME//"@getStdTranGaus: upperLim must be greater than lowerLim."
             error stop
             ! LCOV_EXCL_STOP
 

@@ -243,6 +243,9 @@ contains
                                 , name = PMSM%ParaDXXX  &
                                 , inputFile = inputFile &
                                 )
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+#endif
         if (self%Err%occurred) then
             ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
@@ -269,6 +272,9 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call self%getSpecFromInputFile(ndim)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+#endif
         if (self%Err%occurred) then
             ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
@@ -326,6 +332,9 @@ contains
                                                 , delayedRejectionScaleFactorVec        = delayedRejectionScaleFactorVec        & ! LCOV_EXCL_LINE
                                                 )
         end if
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+#endif
         if (self%Err%occurred) then
             ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
@@ -345,6 +354,11 @@ contains
             self%Image%isLeader = .true.
         else
             self%Err%occurred = .true.
+        end if
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+#endif
+        if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME//": Error occurred. Unknown parallelism requested via the input variable parallelizationModel='"//self%SpecBase%ParallelizationModel%val//"'."
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
             return
@@ -356,6 +370,9 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call self%setupOutputFiles()
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+#endif
         if (self%Err%occurred) then
             ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
@@ -386,6 +403,9 @@ contains
         call self%SpecDRAM%checkForSanity(Err = self%Err, methodName = self%name, nd = ndim)
 
         !if (self%Image%isLeader) then
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+#endif
         if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
@@ -490,6 +510,7 @@ contains
             self%Err%occurred = .true.
             self%Err%msg = PROCEDURE_NAME // ": Internal error occurred. Unsupported proposal distribution for " // self%name // "."
             call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
+            error stop
             return
             ! LCOV_EXCL_STOP
         end if
@@ -500,6 +521,10 @@ contains
                 use ParaDXXXProposalAbstract_mod, only: ProposalErr
 #elif defined PARADISE
                 use ParaDXXXProposalAbstract_mod, only: ProposalErr
+#endif
+
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+                block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
                 if (ProposalErr%occurred) then
                     self%Err%occurred = .true.
@@ -523,6 +548,9 @@ contains
         end if
 
         call self%runKernel( getLogFunc = getLogFunc )
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+#endif
         ! relevant only for MATLAB / Python
         if (self%Err%occurred) then
             self%Err%msg = PROCEDURE_NAME // self%Err%msg
@@ -541,6 +569,9 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! start ParaDXXX post-processing
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        ! WARNING: For any error that happens within the leader if block below, the control must be passed to after the block
+        ! WARNING: This is essential for error handling during testing in parallel mode.
 
         blockLeaderPostProcessing: if (self%Image%isLeader) then
 
@@ -757,6 +788,7 @@ contains
                     self%Err = ForkJoin%Err
                     self%Err%msg = PROCEDURE_NAME // self%Err%msg
                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                    exit blockLeaderPostProcessing
                     return
                     ! LCOV_EXCL_STOP
                 end if
@@ -893,6 +925,7 @@ contains
                         self%Err = ForkJoin%Err
                         self%Err%msg = PROCEDURE_NAME // self%Err%msg
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                        exit blockLeaderPostProcessing
                         return
                         ! LCOV_EXCL_STOP
                     end if
@@ -1022,7 +1055,7 @@ contains
             write(self%LogFile%unit,GENERIC_OUTPUT_FORMAT)
             write(self%LogFile%unit,GENERIC_TABBED_FORMAT) self%Stats%LogFuncMode%Loc%verbose
             msg = "This is the location of the first occurrence of the maximum logFunc in the verbose (Markov) chain."
-           call self%reportDesc(msg)
+            call self%reportDesc(msg)
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1177,6 +1210,7 @@ contains
                 ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // self%Err%msg
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                exit blockLeaderPostProcessing
                 return
                 ! LCOV_EXCL_STOP
             end if
@@ -1347,6 +1381,7 @@ contains
                         ! LCOV_EXCL_START
                         self%Err%msg = PROCEDURE_NAME // self%Err%msg
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                        exit blockLeaderPostProcessing
                         return
                         ! LCOV_EXCL_STOP
                     end if
@@ -1369,6 +1404,7 @@ contains
                     ! LCOV_EXCL_START
                     self%Err%msg = PROCEDURE_NAME//": Error occurred while opening the "//self%name//" "//self%SampleFile%suffix//" file='"//self%SampleFile%Path%original//"'. "
                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                    exit blockLeaderPostProcessing
                     return
                     ! LCOV_EXCL_STOP
                 end if
@@ -1582,6 +1618,7 @@ contains
                             self%Err%occurred = .true.
                             self%Err%msg = PROCEDURE_NAME//RefinedChainThisImage%Err%msg
                             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                            exit blockLeaderPostProcessing
                             return
                             ! LCOV_EXCL_STOP
                         end if
@@ -1597,6 +1634,7 @@ contains
                                 ! LCOV_EXCL_START
                                 self%Err%msg = PROCEDURE_NAME//self%Err%msg
                                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                                exit blockLeaderPostProcessing
                                 return
                                 ! LCOV_EXCL_STOP
                             end if
@@ -1629,6 +1667,7 @@ contains
                                     self%Err%occurred = .true.
                                     self%Err%msg = PROCEDURE_NAME//RefinedChainThatImage%Err%msg
                                     call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                                    exit blockLeaderPostProcessing
                                     return
                                     ! LCOV_EXCL_STOP
                                 end if
@@ -1645,6 +1684,7 @@ contains
                                         ! LCOV_EXCL_START
                                         self%Err%msg = PROCEDURE_NAME//self%Err%msg
                                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                                        exit blockLeaderPostProcessing
                                         return
                                         ! LCOV_EXCL_STOP
                                     end if
@@ -1749,6 +1789,11 @@ contains
             close(self%LogFile%unit)
 
         end if blockLeaderPostProcessing
+
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+#endif
+        if (self%Err%occurred) return ! LCOV_EXCL_LINE
 
         !nullify(self%Proposal)
 #if defined CAF_ENABLED || defined MPI_ENABLED

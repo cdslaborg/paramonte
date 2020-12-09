@@ -2200,57 +2200,71 @@ if [ "${isMacOS}" = "true" ]; then ParaMonte_CAF_SETUP_PATH_CMD=""; fi
 #### call cmake
 ####################################################################################################################################
 
-if [ "${DRYRUN_ENABLED}" != "true" ]; then
-
 if [ "${CODECOV_ENABLED}" = "true" ]; then
     CODECOV_ENABLED_FLAG="-DCODECOV_ENABLED=${CODECOV_ENABLED}"
+    ParaMonteTest_RUN_ENABLED=true
+    if [ -z ${TTYPE+x} ]; then
+        BASIC_TEST_ENABLED_FLAG="-DBASIC_TEST_ENABLED=true"
+        SAMPLER_TEST_ENABLED_FLAG="-DSAMPLER_TEST_ENABLED=true"
+        export BASIC_TEST_ENABLED_FLAG
+        export SAMPLER_TEST_ENABLED_FLAG
+    elif [[ ${TTYPE} == [nN][oO][nN][eE] ]]; then
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - FATAL: Testing must be activated to generate code coverage."
+        echo >&2 "-- ${BUILD_NAME} - FATAL: Drop the \"-t none\" from the script options and rerun the build/install script."
+        echo >&2
+        usage
+        exit 1
+    fi
 else
     CODECOV_ENABLED_FLAG=""
 fi
 
-# determine whether the current system is a Windows Subsystem for Linux (WSL).
-# The ParaMonte tests that contain internal procedure calls from outside the parent procedure
-# fail with static builds on WSL for code coverage purposes.
-# This GFortran bug does not exist when the program is compiled as a shared library.
-# However, the same bug happens also with shared library files at the time of code coverage generation. 
-# The only resolution left is to fence the internal function calls in the code when the code is being 
-# built on WSL. This is done by enabling the preprocessor flag OS_IS_WSL.
+if [ "${DRYRUN_ENABLED}" != "true" ]; then
 
-if [ "${isWSL}" = "true" ]; then
-    OS_IS_WSL_FLAG="-DOS_IS_WSL=${isWSL}"
-else
-    OS_IS_WSL_FLAG=""
-fi
+    # determine whether the current system is a Windows Subsystem for Linux (WSL).
+    # The ParaMonte tests that contain internal procedure calls from outside the parent procedure
+    # fail with static builds on WSL for code coverage purposes.
+    # This GFortran bug does not exist when the program is compiled as a shared library.
+    # However, the same bug happens also with shared library files at the time of code coverage generation. 
+    # The only resolution left is to fence the internal function calls in the code when the code is being 
+    # built on WSL. This is done by enabling the preprocessor flag OS_IS_WSL.
 
-(cd ${ParaMonte_BLD_DIR} && \
-${ParaMonte_CAF_SETUP_PATH_CMD} && \
-cmake \
---verbose=1 \
-"${FC_OPTION}" \
-"${MPIEXEC_OPTION}" \
-"${MATLAB_ROOT_DIR_OPTION}" \
--DINTERFACE_LANGUAGE=${INTERFACE_LANGUAGE} \
--DPMCS=${PMCS} \
--DMPI_ENABLED=${MPI_ENABLED} \
--DCAFTYPE=${CAFTYPE} \
--DBTYPE=${BTYPE} \
--DLTYPE=${LTYPE} \
--DHEAP_ARRAY_ENABLED=${HEAP_ARRAY_ENABLED} \
--DCFI_ENABLED=${CFI_ENABLED} \
--DOMP_ENABLED=${OMP_ENABLED} \
-${SAMPLER_TEST_ENABLED_FLAG} \
-${BASIC_TEST_ENABLED_FLAG} \
-${CODECOV_ENABLED_FLAG} \
-${OS_IS_WSL_FLAG} \
-${ParaMonte_ROOT_DIR} \
-)
-verify $? "build with cmake"
+    if [ "${isWSL}" = "true" ]; then
+        OS_IS_WSL_FLAG="-DOS_IS_WSL=${isWSL}"
+    else
+        OS_IS_WSL_FLAG=""
+    fi
 
-(cd ${ParaMonte_BLD_DIR} && make)
-verify $? "build with make"
+    (cd ${ParaMonte_BLD_DIR} && \
+    ${ParaMonte_CAF_SETUP_PATH_CMD} && \
+    cmake \
+    --verbose=1 \
+    "${FC_OPTION}" \
+    "${MPIEXEC_OPTION}" \
+    "${MATLAB_ROOT_DIR_OPTION}" \
+    -DINTERFACE_LANGUAGE=${INTERFACE_LANGUAGE} \
+    -DPMCS=${PMCS} \
+    -DMPI_ENABLED=${MPI_ENABLED} \
+    -DCAFTYPE=${CAFTYPE} \
+    -DBTYPE=${BTYPE} \
+    -DLTYPE=${LTYPE} \
+    -DHEAP_ARRAY_ENABLED=${HEAP_ARRAY_ENABLED} \
+    -DCFI_ENABLED=${CFI_ENABLED} \
+    -DOMP_ENABLED=${OMP_ENABLED} \
+    ${SAMPLER_TEST_ENABLED_FLAG} \
+    ${BASIC_TEST_ENABLED_FLAG} \
+    ${CODECOV_ENABLED_FLAG} \
+    ${OS_IS_WSL_FLAG} \
+    ${ParaMonte_ROOT_DIR} \
+    )
+    verify $? "build with cmake"
 
-(cd ${ParaMonte_BLD_DIR} && make install)
-verify $? "installation"
+    (cd ${ParaMonte_BLD_DIR} && make)
+    verify $? "build with make"
+
+    (cd ${ParaMonte_BLD_DIR} && make install)
+    verify $? "installation"
 
 fi
 
@@ -2268,6 +2282,8 @@ ParaMonteTest_OBJ_DIR="${ParaMonteTest_BLD_DIR}/obj"
 ParaMonteTest_BIN_DIR="${ParaMonteTest_BLD_DIR}/bin"
 ParaMonteTest_SRC_INPUT_DIR="${ParaMonteTest_SRC_DIR}/input"
 ParaMonteTest_BIN_INPUT_DIR="${ParaMonteTest_BIN_DIR}/input"
+
+# When generating code coverage, the tests MUST be performed.
 
 if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
 

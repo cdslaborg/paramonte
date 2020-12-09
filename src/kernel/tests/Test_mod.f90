@@ -335,7 +335,7 @@ contains
 
             Message%value = mc_failedString
             mv_nfail = mv_nfail + 1
-error stop
+
             ! set up the allocation for the names of failed tests
 
             if (mv_nfail==mv_nfailMax) then
@@ -366,15 +366,7 @@ error stop
 #if defined CAF_ENABLED || MPI_ENABLED
             call execute_command_line(" ", cmdstat = Test%Err%stat)
             flush(output_unit)
-#if defined CAF_ENABLED
-            sync all
-#elif defined MPI_ENABLED
-            block
-                use mpi
-                integer :: ierrMPI
-                call mpi_barrier(mpi_comm_world,ierrMPI)
-            end block
-#endif
+            call Test%Image%sync()
 #endif
 
         end do

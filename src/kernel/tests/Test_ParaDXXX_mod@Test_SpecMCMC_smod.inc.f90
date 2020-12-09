@@ -785,7 +785,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test `randomStartPointRequested = true`, the use must also specify domain of either the target or the random start point.
+    !> When `randomStartPointRequested = true`, the user must also specify domain of either the target or the random start point.
     module function test_SpecMCMC_RandomStartPointRequested_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
@@ -812,7 +812,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test `randomStartPointRequested = true`, the use must also specify domain of either the target or the random start point.
+    !> When `randomStartPointRequested = true`, the user must also specify domain of either the target or the random start point.
     module function test_SpecMCMC_RandomStartPointRequested_type_4() result(assertion)
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
@@ -831,6 +831,7 @@ contains
                             , inputFile = ParaDXXX_NML//" randomStartPointRequested = true /" &
                             , DomainLowerLimitVec = DomainLowerLimitVec &
                             , DomainUpperLimitVec = DomainUpperLimitVec &
+                            , chainSize = 100_IK &
                             )
         assertion = assertion .and. .not. PD%Err%occurred .and. PD%SpecMCMC%RandomStartPointRequested%val
 #endif

@@ -48,8 +48,8 @@ FILE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 #echo "Configuring ParaMonte Build..."
 #echo "Configuration File: " $FILE_DIR
 
-BASIC_TEST_ENABLED_FLAG=""
-SAMPLER_TEST_ENABLED_FLAG=""
+unset BASIC_TEST_ENABLED_FLAG
+unset SAMPLER_TEST_ENABLED_FLAG
 ParaMonteTest_RUN_ENABLED=false
 
 if [[ -z ${TTYPE+x} || ${TTYPE} == [nN][oO][nN][eE] ]]; then
@@ -57,10 +57,10 @@ if [[ -z ${TTYPE+x} || ${TTYPE} == [nN][oO][nN][eE] ]]; then
 else
     ParaMonteTest_RUN_ENABLED=true
     if [[ ${TTYPE} == [aA][lL][lL] || ${TTYPE} == [bB][aA][sS][iI][cC] ]]; then
-        BASIC_TEST_ENABLED_FLAG="-DBASIC_TEST_ENABLED=${TTYPE}"
+        BASIC_TEST_ENABLED_FLAG="-DBASIC_TEST_ENABLED=true"
     fi
     if [[ ${TTYPE} == [aA][lL][lL] || ${TTYPE} == [sS][aA][mM][pP][lL][eE][rR] ]]; then
-        SAMPLER_TEST_ENABLED_FLAG="-DSAMPLER_TEST_ENABLED=${TTYPE}"
+        SAMPLER_TEST_ENABLED_FLAG="-DSAMPLER_TEST_ENABLED=true"
     fi
 fi
 

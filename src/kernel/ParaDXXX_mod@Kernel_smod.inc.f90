@@ -66,9 +66,10 @@
 
     use, intrinsic :: iso_fortran_env, only: output_unit
     !use Constants_mod, only: IK, RK ! gfortran 9.3 compile crashes with this line
-#if defined CODECOV_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
     use ParaDXXXProposalAbstract_mod, only: ProposalErr
 #endif
+
 #if defined MPI_ENABLED
     use mpi
 #endif
@@ -151,7 +152,7 @@ contains
         real(RK)    , allocatable           :: AdaptationMeasure(:), adaptationMeasurePlaceHolder(:)
         integer(IK)                         :: adaptationMeasureLen
         integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
-        integer(IK)                         :: imageID, dummy
+        integer(IK)                         :: imageID, dumint
         integer(IK)                         :: nd
         integer(IK), parameter              :: STDOUT_SEGLEN = 25
         character(4*STDOUT_SEGLEN+2*3+1)    :: txt
@@ -278,6 +279,7 @@ contains
                     if (self%Err%occurred) then
                         self%Err%msg = PROCEDURE_NAME//self%Err%msg
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                        exit blockLeaderSetup
                         return
                     end if
 
@@ -296,6 +298,7 @@ contains
                     if (self%Err%occurred) then
                         self%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//self%name//" "//self%ChainFile%suffix//" file='"//self%ChainFile%Path%original//"'."
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+                        exit blockLeaderSetup
                         return
                     end if
 
@@ -319,6 +322,11 @@ contains
                 adaptationMeasureLen = maxval(self%Chain%Weight(1:self%Chain%Count%compact-CHAIN_RESTART_OFFSET))
 
             end if blockLeaderSetup
+
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+            block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+#endif
+            if (self%Err%occurred) return
 
         end if blockDryRunSetup
 
@@ -572,7 +580,7 @@ contains
 
                         ! the order in the following two MUST be preserved as occasionally self%Stats%NumFunCall%accepted = numFunCallAcceptedLastAdaptation
 
-                        dummy = self%Chain%Weight(self%Stats%NumFunCall%accepted) ! needed for the restart mode, not needed in the fresh run
+                        dumint = self%Chain%Weight(self%Stats%NumFunCall%accepted) ! needed for the restart mode, not needed in the fresh run
                         if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then    ! no new point has been accepted since last time
                             self%Chain%Weight(numFunCallAcceptedLastAdaptation) = currentStateWeight - lastStateWeight
 #if defined DBG_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
@@ -598,20 +606,20 @@ contains
                                                         , samplerUpdateIsGreedy     = samplerUpdateIsGreedy                                                                     &
                                                         , meanAccRateSinceStart     = meanAccRateSinceStart                                                                     &
                                                         , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                    &
-                                                        , adaptationMeasure         = AdaptationMeasure(dummy)                                                                  &
+                                                        , adaptationMeasure         = AdaptationMeasure(dumint)                                                                 &
                                                         )
-#if defined CODECOV_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
-                        if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
+                        if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; exit loopMarkovChain; return; end if
 #endif
                         if (self%isDryRun) SumAccRateSinceStart%acceptedRejected = meanAccRateSinceStart * real(self%Stats%NumFunCall%acceptedRejected,kind=RK)
 
-                        self%Chain%Weight(self%Stats%NumFunCall%accepted) = dummy   ! needed for the restart mode, not needed in the fresh run
+                        self%Chain%Weight(self%Stats%NumFunCall%accepted) = dumint   ! needed for the restart mode, not needed in the fresh run
                         if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then
                             !adaptationMeasure = adaptationMeasure + adaptationMeasureDummy ! this is the worst-case upper-bound
-                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = min(1._RK, self%Chain%Adaptation(self%Stats%NumFunCall%accepted) + AdaptationMeasure(dummy)) ! this is the worst-case upper-bound
+                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = min(1._RK, self%Chain%Adaptation(self%Stats%NumFunCall%accepted) + AdaptationMeasure(dumint)) ! this is the worst-case upper-bound
                         else
                             !adaptationMeasure = adaptationMeasureDummy
-                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = AdaptationMeasure(dummy)
+                            self%Chain%Adaptation(self%Stats%NumFunCall%accepted) = AdaptationMeasure(dumint)
                             self%Chain%Weight(numFunCallAcceptedLastAdaptation) = self%Chain%Weight(numFunCallAcceptedLastAdaptation) + lastStateWeight
                         end if
                         if (samplerUpdateSucceeded) then
@@ -787,6 +795,11 @@ contains
 
         end do loopMarkovChain
 
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+        block; use Err_mod, only: bcastErr; call bcastErr(ProposalErr); end block
+#endif
+        if (self%Err%occurred) return
+
         call self%Timer%toc()
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -832,17 +845,20 @@ contains
             !call execute_command_line(" ")
             flush(output_unit)
         end if
+
 #if defined CAF_ENABLED || defined MPI_ENABLED
         if (self%SpecBase%ParallelizationModel%isMultiChain) then
 #endif
             self%Stats%avgCommTimePerFunCall = 0._RK
             self%Stats%NumFunCall%acceptedRejectedDelayedUnused = self%Stats%NumFunCall%acceptedRejectedDelayed
-            self%Stats%avgTimePerFunCalInSec =  self%Stats%avgTimePerFunCalInSec / (self%Stats%NumFunCall%acceptedRejectedDelayedUnused-acceptedRejectedDelayedUnusedRestartMode)
+            dumint = self%Stats%NumFunCall%acceptedRejectedDelayedUnused - acceptedRejectedDelayedUnusedRestartMode ! this is needed to avoid division-by-zero undefined behavior
+            if (dumint/=0_IK) self%Stats%avgTimePerFunCalInSec =  self%Stats%avgTimePerFunCalInSec / dumint
 #if defined CAF_ENABLED || defined MPI_ENABLED
         elseif(self%Image%isFirst) then
             self%Stats%avgCommTimePerFunCall =  self%Stats%avgCommTimePerFunCall / self%Stats%NumFunCall%acceptedRejectedDelayed
-            self%Stats%avgTimePerFunCalInSec = (self%Stats%avgTimePerFunCalInSec / (self%Stats%NumFunCall%acceptedRejectedDelayedUnused-acceptedRejectedDelayedUnusedRestartMode)) * self%Image%count
-            return
+            dumint = self%Stats%NumFunCall%acceptedRejectedDelayedUnused - acceptedRejectedDelayedUnusedRestartMode ! this is needed to avoid division-by-zero undefined behavior
+            if (dumint/=0_IK) self%Stats%avgTimePerFunCalInSec = (self%Stats%avgTimePerFunCalInSec / dumint) * self%Image%count
+            !return
         end if
 #endif
 

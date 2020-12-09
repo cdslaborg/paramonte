@@ -639,8 +639,17 @@ elseif (gnu_compiler)
     set( FPP_FLAGS -cpp )
 endif()
 set(FPP_FLAGS 
-    "${FPP_PARAMONTE_VERSION_FLAG}" "${FPP_FLAGS}" "${FPP_OS_FLAG}" "${FPP_CFI_FLAG}" "${FPP_LANG_FLAG}" "${FPP_BUILD_FLAGS}" "${FPP_FCL_FLAGS}" "${FPP_DLL_FLAGS}" "${USER_PREPROCESSOR_MACROS}"
-    CACHE STRING "Fortran compiler preprocessor flags" FORCE )
+    "${FPP_PARAMONTE_VERSION_FLAG}" 
+    "${FPP_FLAGS}" 
+    "${FPP_OS_FLAG}" 
+    "${FPP_CFI_FLAG}" 
+    "${FPP_LANG_FLAG}" 
+    "${FPP_BUILD_FLAGS}" 
+    "${FPP_FCL_FLAGS}" 
+    "${FPP_DLL_FLAGS}" 
+    "${USER_PREPROCESSOR_MACROS}"
+    )
+    #CACHE STRING "Fortran compiler preprocessor flags" FORCE 
 #add_definitions(${FPP_FLAGS})
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -648,6 +657,10 @@ set(FPP_FLAGS
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if (BASIC_TEST_ENABLED)
+message( STATUS "${pmattn} requested BASIC_TEST_ENABLED: ${BASIC_TEST_ENABLED}" )
+message( STATUS "${pmattn} requested BASIC_TEST_ENABLED: ${BASIC_TEST_ENABLED}" )
+message( STATUS "${pmattn} requested BASIC_TEST_ENABLED: ${BASIC_TEST_ENABLED}" )
+message( STATUS "${pmattn} requested BASIC_TEST_ENABLED: ${BASIC_TEST_ENABLED}" )
     set(FPP_FLAGS "${FPP_FLAGS}" -DBASIC_TEST_ENABLED )
 endif()
 

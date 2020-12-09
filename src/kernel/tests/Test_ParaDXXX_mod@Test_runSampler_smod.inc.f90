@@ -188,7 +188,16 @@ contains
                             , chainSize = 1000_IK &
                             )
         assertion = assertion .and. .not. PD1%Err%occurred
-        if (.not. assertion) return ! LCOV_EXCL_LINE
+        if (.not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,' '))")
+            write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+            write(Test%outputUnit,"(*(g0,:,' '))")
+            return
+        end if
+        ! LCOV_EXCL_STOP
+
+        call Test%Image%sync()
 
         ! delete the sample file
 
@@ -196,6 +205,8 @@ contains
             open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
             close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
         endif
+
+        call Test%Image%sync()
 
         ! restart the simulation with the same configuration
 
@@ -209,12 +220,28 @@ contains
                             , chainSize = 1000_IK &
                             )
         assertion = assertion .and. .not. PD2%Err%occurred
-        if (.not. assertion) return ! LCOV_EXCL_LINE
+        if (.not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0,:,' '))")
+            write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+            write(Test%outputUnit,"(*(g0,:,' '))")
+            return
+        end if
+        ! LCOV_EXCL_STOP
 
         if (PD2%Image%isLeader) then
-            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK )
-        endif
-
+            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
+            if (.not. assertion) then
+                ! LCOV_EXCL_START
+                if (Test%Image%isFirst) then
+                    write(Test%outputUnit,"(*(g0,:,' '))")
+                    write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
+                    write(Test%outputUnit,"(*(g0,:,' '))")
+                end if
+                return
+                ! LCOV_EXCL_STOP
+            end if
+        end if
 #endif
     end function test_runSampler_6
 
@@ -295,6 +322,8 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
+        call Test%Image%sync()
+
         ! Run the fresh simulation
 
         call PD1%runSampler ( ndim = 2_IK &
@@ -316,10 +345,14 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
+        call Test%Image%sync()
+
         ! delete the sample file
 
         open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
         close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
+
+        call Test%Image%sync()
 
         ! restart the simulation with the same configuration
 
@@ -336,8 +369,7 @@ contains
         if (.not. assertion) then
         ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0,:,' '))")
-            write(Test%outputUnit,"(*(g0,:,' '))")   "PD2%Err%occurred:", PD1%Err%occurred
-            write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred", Test%Image%id, PD2%Err%occurred
+            write(Test%outputUnit,"(*(g0,:,' '))") "process, PD2%Err%occurred", Test%Image%id, PD2%Err%occurred
             write(Test%outputUnit,"(*(g0,:,' '))")
             return
         end if
@@ -386,6 +418,8 @@ contains
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
+        call Test%Image%sync()
+
         ! Run the fresh simulation
 
         call PD1%runSampler ( ndim = 2_IK &
@@ -401,12 +435,16 @@ contains
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
+        call Test%Image%sync()
+
         ! delete the sample file
 
         if (PD1%Image%isLeader) then
             open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
             close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
         endif
+
+        call Test%Image%sync()
 
         ! restart the simulation with the same configuration
 
@@ -459,6 +497,8 @@ contains
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
+        call Test%Image%sync()
+
         ! Run the fresh simulation
 
         call PD1%runSampler ( ndim = 2_IK &
@@ -475,12 +515,16 @@ contains
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
+        call Test%Image%sync()
+
         ! delete the sample file
 
         if (PD1%Image%isLeader) then
             open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
             close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
         endif
+
+        call Test%Image%sync()
 
         ! restart the simulation with the same configuration
 
@@ -533,6 +577,8 @@ contains
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
+        call Test%Image%sync()
+
         ! Run the fresh simulation
 
         call PD1%runSampler ( ndim = 2_IK &
@@ -549,12 +595,16 @@ contains
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
+        call Test%Image%sync()
+
         ! delete the sample file
 
         if (PD1%Image%isLeader) then
             open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
             close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
         endif
+
+        call Test%Image%sync()
 
         ! restart the simulation with the same configuration
 
@@ -677,10 +727,6 @@ contains
                 return
             end if
             ! LCOV_EXCL_STOP
-
-        end if
-
-        if (PD%Image%isLeader) then
 
             Difference = abs(RefinedChain%LogFuncState-PD%RefinedChain%LogFuncState)
             assertion = assertion .and. all(Difference < tolerance)

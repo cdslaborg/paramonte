@@ -497,6 +497,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCrossCorrFFT
 #endif
+        use iso_fortran_env, only: output_unit
         use Constants_mod, only: IK, RK, CK
 
         implicit none
@@ -510,7 +511,7 @@ contains
         integer(IK)                             :: paddedLenHalf, paddedLenQuarter
 
         if (iand(paddedLen,paddedLen-1) /= 0) then
-            write(*,*) PROCEDURE_NAME//": paddedLen must be a power of 2."
+            write(output_unit,"(A)") PROCEDURE_NAME//": paddedLen must be a power of 2."
             error stop
         end if
 
@@ -552,6 +553,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getCrossCorrWeightedFFT
 #endif
+        use iso_fortran_env, only: output_unit
         use Constants_mod, only: IK, RK, CK
         implicit none
         integer(IK), intent(in)                 :: lenCompactData1, lenCompactData2, paddedLen
@@ -565,7 +567,7 @@ contains
         integer(IK)                             :: paddedLenHalf, paddedLenQuarter
 
         if (iand(paddedLen,paddedLen-1) /= 0) then
-            write(*,*) PROCEDURE_NAME//": paddedLen must be a power of 2."
+            write(output_unit,"(A)") PROCEDURE_NAME//": paddedLen must be a power of 2."
             error stop
         end if
 

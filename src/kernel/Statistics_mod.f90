@@ -1647,6 +1647,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: getMVNDev
 #endif
 
+        use iso_fortran_env, only: output_unit
         use Matrix_mod, only: getCholeskyFactor
 
         implicit none
@@ -1660,7 +1661,7 @@ contains
         call getCholeskyFactor(nd,CholeskyLower,Diagonal)
         if (Diagonal(1)<0._RK) then
         ! LCOV_EXCL_START
-            write(*,*) 'getCholeskyFactor() failed in getMVNDev()'
+            write(output_unit,"(A)") "getCholeskyFactor() failed in getMVNDev()"
             error stop
         end if
         ! LCOV_EXCL_STOP

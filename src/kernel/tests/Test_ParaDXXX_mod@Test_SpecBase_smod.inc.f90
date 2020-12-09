@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -40,8 +40,8 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This include file contains the body of the submodules 
-!>  [ParaDRAM_mod@Test_SpecBase_smod](@ref paradram_mod@test_specbase_smod) and 
+!>  \brief This include file contains the body of the submodules
+!>  [ParaDRAM_mod@Test_SpecBase_smod](@ref paradram_mod@test_specbase_smod) and
 !>  [ParaDISE_mod@@Test_SpecBase_smod](@ref paradise_mod@@test_specbase_smod).
 !>  \author Amir Shahmoradi
 
@@ -240,7 +240,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with an input value for `domainUpperLimitVec` 
+    !> Test the ParaDXXX sampler with an input value for `domainUpperLimitVec`
     !> that is smaller than the input value for `domainLowerLimitVec`.
     module function test_SpecBase_DomainUpperLimitVec_type_3() result(assertion)
         use Constants_mod, only: IK, RK
@@ -265,7 +265,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> Test the ParaDXXX sampler with an input value for `domainUpperLimitVec` 
+    !> Test the ParaDXXX sampler with an input value for `domainUpperLimitVec`
     !> that is equal to the input value for `domainLowerLimitVec`.
     module function test_SpecBase_DomainUpperLimitVec_type_4() result(assertion)
         use Constants_mod, only: IK, RK
@@ -367,18 +367,24 @@ contains
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `maxNumDomainCheckToStop < 1`.
+    !>
+    !> \todo
+    !> When run in parallel, it is essential for the tests on `MaxNumDomainCheckToStop_type` to use `multichain` parallelism
+    !> since fatal error communication and the subsequent exit from the simulation by all images is currently not implemented.
+    !> This testing weakness, although rather insignificant can be fixed in the future.
     module function test_SpecBase_MaxNumDomainCheckToStop_type_1() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
-        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-2_RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e-2_RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
+                            , parallelizationModel = "multi chain" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_MaxNumDomainCheckToStop_type_1" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
@@ -392,18 +398,24 @@ contains
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
+    !>
+    !> \todo
+    !> When run in parallel, it is essential for the tests on `MaxNumDomainCheckToStop_type` to use `multichain` parallelism
+    !> since fatal error communication and the subsequent exit from the simulation by all images is currently not implemented.
+    !> This testing weakness, although rather insignificant can be fixed in the future.
     module function test_SpecBase_MaxNumDomainCheckToStop_type_2() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
-        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-2_RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e-2_RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
+                            , parallelizationModel = "multi chain" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_MaxNumDomainCheckToStop_type_2" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
@@ -417,18 +429,24 @@ contains
 
     !> \brief
     !> Test whether the ParaDXXX sampler quits with an error message when `maxNumDomainCheckToStop` has reached.
+    !>
+    !> \todo
+    !> When run in parallel, it is essential for the tests on `MaxNumDomainCheckToStop_type` to use `multichain` parallelism
+    !> since fatal error communication and the subsequent exit from the simulation by all images is currently not implemented.
+    !> This testing weakness, although rather insignificant can be fixed in the future.
     module function test_SpecBase_MaxNumDomainCheckToStop_type_3() result(assertion)
         use Constants_mod, only: IK, RK
         implicit none
         logical             :: assertion
-        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-1_RK]
-        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e+1_RK]
+        real(RK), parameter :: domainLowerLimitVec(*) = [-1.e-2_RK]
+        real(RK), parameter :: domainUpperLimitVec(*) = [+1.e-2_RK]
         type(ParaDXXX_type) :: PD
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
         call PD%runSampler  ( ndim = 1_IK &
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
+                            , parallelizationModel = "multi chain" &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"@SpecBase/test_SpecBase_MaxNumDomainCheckToStop_type_3" &
                             , domainLowerLimitVec = domainLowerLimitVec &
                             , domainUpperLimitVec = domainUpperLimitVec &
