@@ -335,7 +335,7 @@ contains
 
             Message%value = mc_failedString
             mv_nfail = mv_nfail + 1
-
+error stop
             ! set up the allocation for the names of failed tests
 
             if (mv_nfail==mv_nfailMax) then
@@ -395,8 +395,6 @@ contains
         use String_mod, only: num2str, padString
         implicit none
         class(Test_type), intent(inout) :: Test
-!write(*,*) "mv_Image%id : ", mv_Image%id
-!if (mv_Image%isFirst) read(*,*)
         if (Test%Image%isFirst) then
             Test%Err%msg = "["//adjustr(num2str(mv_testCounter-mv_testCounterOld,minLen=4_IK))//"] testing " &
                          //padString(Test%moduleName//" ",".",79)//" isdone in " &

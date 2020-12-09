@@ -770,7 +770,6 @@ contains
                     integer, parameter :: NCOL = 40
                     character(:), allocatable :: formatInteger
                     formatInteger = "('"//INDENT//"',"//num2str(NCOL)//"(I0,:,' '))"
-write(*,*) ForkJoin%Contribution%Frequency, ForkJoin%Contribution%count
                     do imageCount = 1, ForkJoin%Contribution%count, NCOL
                         write(self%LogFile%unit,formatInteger) ForkJoin%Contribution%Frequency( imageCount : min( imageCount+NCOL-1, ForkJoin%Contribution%count ) )
                     end do
@@ -1590,7 +1589,6 @@ write(*,*) ForkJoin%Contribution%Frequency, ForkJoin%Contribution%count
                         ! sort the refined chain on the current image
 
                         do i = 0, ndim
-write(*,*) self%Image%id, RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose, size(RefinedChainThisImage%LogFuncState(:,i))
                             call sortAscending  ( np = RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose &
                                                 , Point = RefinedChainThisImage%LogFuncState(1:RefinedChainThisImage%Count(RefinedChainThisImage%numRefinement)%verbose,i) &
                                                 , Err = self%Err &

@@ -532,7 +532,7 @@ contains
             end do
             if (aamax == 0._RK) then
             ! LCOV_EXCL_START
-                write(*,*) "Statistics@getLU() failed. Singular matrix detected."
+                write(output_unit,"(A)") "Statistics@getLU() failed. Singular matrix detected."
                 error stop
                 !errorOccurred = .true.
                 !return
@@ -611,7 +611,7 @@ contains
             colsC = colsB
         ! LCOV_EXCL_START
         else
-            write(*,*) 'Matrix@multiplyMatrix() failed. dimensions of matrices do not match.'
+            write(output_unit,"(A)") "Matrix@multiplyMatrix() failed. dimensions of matrices do not match."
             stop
             !call abortProgram( output_unit , 1 , 1 , 'Statistics@multiplyMatrix() failed. dimensions of matrices do not match.' )
         ! LCOV_EXCL_STOP

@@ -1661,7 +1661,7 @@ contains
         if (Diagonal(1)<0._RK) then
         ! LCOV_EXCL_START
             write(*,*) 'getCholeskyFactor() failed in getMVNDev()'
-            stop
+            error stop
         end if
         ! LCOV_EXCL_STOP
         do i=1,nd

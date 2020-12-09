@@ -1010,7 +1010,6 @@ contains
         implicit none
         class(File_type), intent(inout) :: File
         character(*)    , parameter     :: PROCEDURE_NAME = "@close()"
-        write(*,*) File%Path%modified
         inquire( file   = File%Path%modified    &
                , exist  = File%exists           &
                , opened = File%isOpen           &
@@ -1094,13 +1093,6 @@ contains
                 File%unit = File%number
                 return
             else
-                    write(*,*) File%status
-                    write(*,*) File%Action%value
-                    write(*,*) File%Access%value
-                    write(*,*) File%Delim%value
-                    write(*,*) File%Form%value
-                    write(*,*) File%Position%value
-                read(*,*)
                 open( newunit  = File%unit              &
                     , file     = File%Path%modified     &
                     , form     = File%Form%value        &
@@ -1132,13 +1124,6 @@ contains
                     File%unit = File%number
                     return
                 else
-                    write(*,*) File%status
-                    write(*,*) File%Action%value
-                    write(*,*) File%Access%value
-                    write(*,*) File%Delim%value
-                    write(*,*) File%Form%value
-                    write(*,*) File%Position%value
-                    read(*,*)
                     open( newunit  = File%unit              &
                         , form     = File%Form%value        &
                         , delim    = File%Delim%value       &
