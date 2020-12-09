@@ -97,7 +97,7 @@ MatDRAM_ENABLED="false"
 shared_enabled="true"
 codecov_flag=""
 dryrun_flag=""
-TTYPE=""
+unset TTYPE=""
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -377,8 +377,19 @@ if ! [ -z ${MEMORY_LIST+x} ]; then
     fi
 fi
 
-# Check the value of Testing TYPE.
-if [[ $TTYPE == [nN][oO][nN][eE] || $TTYPE == [aA][lL][lL] || $TTYPE == [bB][aA][sS][iI][cC] || $TTYPE == [sS][aA][mM][pP][lL][eE][rR] ]]; then
+# Check the value of Testing TYPE. Normally, especially when build is for production, 
+# NO testing should be done since testing enables the error handling which requires MPI/CAF 
+# communications when the library is built for parallel simulations.
+# However, when code coverage analysis is done, 
+# all tests must be enabled.
+
+if [ "${TTYPE}" = "" ]; then
+    if [ "${codecov_flag}" = "" ]; then
+        test_type_flag="--test none"
+    else
+        test_type_flag="--test all"
+    fi
+elif [[ $TTYPE == [nN][oO][nN][eE] || $TTYPE == [aA][lL][lL] || $TTYPE == [bB][aA][sS][iI][cC] || $TTYPE == [sS][aA][mM][pP][lL][eE][rR] ]]; then
     test_type_flag="--test $TTYPE"
 else
     reportBadValue "-t or --test" $TTYPE

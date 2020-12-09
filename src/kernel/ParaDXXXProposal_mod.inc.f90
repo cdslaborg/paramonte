@@ -937,15 +937,15 @@ contains
         comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0) = comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)[1]
         if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower()  ! update the higher-stage delayed-rejection Cholesky Lower matrices
 #elif defined MPI_ENABLED
-        use mpi
+        use mpi ! LCOV_EXCL_LINE
         implicit none
         integer :: ierrMPI
-        call mpi_bcast  ( comv_CholDiagLower    &   ! buffer: XXX: first element need not be shared. This may need a fix in future.
-                        , mc_ndimSqPlusNdim     &   ! count
-                        , mpi_double_precision  &   ! datatype
-                        , 0                     &   ! root: broadcasting rank
-                        , mpi_comm_world        &   ! comm
-                        , ierrMPI               &   ! ierr
+        call mpi_bcast  ( comv_CholDiagLower    & ! LCOV_EXCL_LINE ! buffer: XXX: first element need not be shared. This may need a fix in future.
+                        , mc_ndimSqPlusNdim     & ! LCOV_EXCL_LINE ! count
+                        , mpi_double_precision  & ! LCOV_EXCL_LINE ! datatype
+                        , 0                     & ! LCOV_EXCL_LINE ! root: broadcasting rank
+                        , mpi_comm_world        & ! LCOV_EXCL_LINE ! comm
+                        , ierrMPI               & ! LCOV_EXCL_LINE ! ierr
                         )
         ! It is essential for the following to be exclusively done by the rooter images. The leaders have had their updates in `doAdaptation()`.
         if (mc_Image%isRooter .and. mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
