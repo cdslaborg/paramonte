@@ -379,7 +379,7 @@ fi
 
 # Check the value of Testing TYPE.
 
-if [ [[ $TTYPE != [nN][oO][nN][eE] || $TTYPE != [aA][lL][lL] || ${TTYPE} == [bB][aA][sS][iI][cC] || ${TTYPE} == [sS][aA][mM][pP][lL][eE][rR] ]]; then
+if [[ $TTYPE != [nN][oO][nN][eE] || $TTYPE != [aA][lL][lL] || ${TTYPE} == [bB][aA][sS][iI][cC] || ${TTYPE} == [sS][aA][mM][pP][lL][eE][rR] ]]; then
     reportBadValue "-t or --test" $TTYPE
 fi
 
