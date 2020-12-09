@@ -97,7 +97,7 @@ MatDRAM_ENABLED="false"
 shared_enabled="true"
 codecov_flag=""
 dryrun_flag=""
-test_type_flag=""
+TTYPE=""
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -120,7 +120,7 @@ while [ "$1" != "" ]; do
                                 MEMORY_LIST="$1"
                                 ;;
         -t | --test )           shift
-                                test_type_flag="--test $1"
+                                TTYPE="$1"
                                 ;;
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED="$1"
@@ -378,8 +378,9 @@ if ! [ -z ${MEMORY_LIST+x} ]; then
 fi
 
 # Check the value of Testing TYPE.
-
-if ! ([[ $TTYPE == [nN][oO][nN][eE] || $TTYPE == [aA][lL][lL] || $TTYPE == [bB][aA][sS][iI][cC] || $TTYPE == [sS][aA][mM][pP][lL][eE][rR] ]]); then
+if [[ $TTYPE == [nN][oO][nN][eE] || $TTYPE == [aA][lL][lL] || $TTYPE == [bB][aA][sS][iI][cC] || $TTYPE == [sS][aA][mM][pP][lL][eE][rR] ]]; then
+    test_type_flag="--test $TTYPE"
+else
     reportBadValue "-t or --test" $TTYPE
 fi
 

@@ -2862,15 +2862,20 @@ contains
         integer(IK) , intent(in)    :: SuccessStep(numTrial)
         real(RK)                    :: LogProbGeoCyclic(numTrial)
         real(RK)                    :: failureProb, logProbSuccess, logProbFailure, logDenominator, exponentiation
-        if (successProb>0._RK .and. successProb<1._RK) then
+        if (successProb>0._RK .and. successProb<1._RK) then ! tolerate log(0)
             failureProb = 1._RK - successProb
             logProbSuccess = log(successProb)
             logProbFailure = log(failureProb)
             exponentiation = maxNumTrial * logProbFailure
-            if (exponentiation<NEGLOGINF_RK) then
+            if (exponentiation<NEGLOGINF_RK) then ! tolerate underflow
                 logDenominator = 0._RK
             else
-                logDenominator = log(1._RK-exp(exponentiation))
+                exponentiation = exp(exponentiation)
+                if (exponentiation<1._RK) then ! tolerate log(0)
+                    logDenominator = log(1._RK-exponentiation)
+                else
+                    logDenominator = NEGLOGINF_RK
+                end if
             end if
             LogProbGeoCyclic = logProbSuccess + (SuccessStep-1) * logProbFailure - logDenominator
         elseif (successProb==0._RK) then
