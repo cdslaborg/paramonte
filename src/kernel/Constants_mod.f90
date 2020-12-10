@@ -99,8 +99,8 @@ module Constants_mod
     real(RK)    , parameter :: LOGTINY_RK = log(TINY_RK)                                !< @public log of the smallest number of kind RK
     real(RK)    , parameter :: POSINF_RK =  HUGE_RK / 1.e1_RK                           !< @public the division is done to avoid overflow in output
     real(RK)    , parameter :: POSINF_IK =  HUGE_IK / 2_IK                              !< @public the division is done to avoid overflow in output
-    real(RK)    , parameter :: LOGINF_RK =  log(POSINF_RK)
-    real(RK)    , parameter :: NEGLOGINF_RK = -LOGINF_RK
+    real(RK)    , parameter :: LOGINF_RK =  log(POSINF_RK)                              !< @public represents the logarithm of the largest representable number
+    real(RK)    , parameter :: NEGLOGINF_RK = -LOGINF_RK                                !< @public represents the logarithm of the smallest representable number
     real(RK)    , parameter :: LOGINF_IK =  log(POSINF_IK)
     real(RK)    , parameter :: NEGINF_RK = -POSINF_RK
     real(RK)    , parameter :: NEGINF_IK = -POSINF_IK
