@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.4.2** -- November 27, 2020
+### **Version 1.4.2** -- Dec xx, 2020 - Work in Progress
 
 **Enhancements**  
 
@@ -30,7 +30,8 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 **Compiler / MPI library used for this binary release**  
 
 +   **Windows**: Intel Parallel Studio Version 19.0.4.245 Build 20190417 / Intel(R) MPI Library 2019 Update 4 for Windows  
-+   **Linux**: Intel Parallel Studio Version 18.0.2 20180210 / Intel(R) MPI Library for Linux OS, Version 2018 Update 2 Build 20180125  
++   **Linux**: Intel Parallel Studio Version 19.1.1.217 20200306 / Intel(R) MPI Library for Linux OS, Version 2019 Update 7 Build 20200312
++   **Linux**: GNU 10.2.0 / Open-MPI 4.0.3  
 +   **Linux**: GNU 10.1.0 / MPICH 3.2  
 +   **macOS**: Intel Parallel Studio Version 19.1.0.216 20200306  
 +   **macOS**: GNU 10.2.0 / Open-MPI 4.0.5  
