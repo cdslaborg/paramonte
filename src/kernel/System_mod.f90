@@ -970,7 +970,7 @@ contains
         elseif (CmdArg%Err%stat==-1) then
             CmdArg%Err%occurred = .true.
             CmdArg%Err%msg = PROCEDURE_NAME // ": Unbelievable error occurred while fetching the command line: &
-                           & The length of the command line is longer than " // num2str(MAX_REC_LEN) // "!"
+                             &The length of the command line is longer than " // num2str(MAX_REC_LEN) // "!"
             return
         ! LCOV_EXCL_STOP
         end if
