@@ -55,14 +55,14 @@ module SpecDRAM_DelayedRejectionScaleFactorVec_mod
         real(RK)                    :: null
         character(:), allocatable   :: desc
     contains
-        procedure, pass             :: set => setDelayedRejectionScaleFactorVec, checkForSanity, nullifyNameListVar
+        procedure, pass             :: set, checkForSanity, nullifyNameListVar
     end type DelayedRejectionScaleFactorVec_type
 
     interface DelayedRejectionScaleFactorVec_type
         module procedure            :: construct
     end interface DelayedRejectionScaleFactorVec_type
 
-    private :: construct, setDelayedRejectionScaleFactorVec, checkForSanity, nullifyNameListVar
+    private :: construct, set, checkForSanity, nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -110,24 +110,30 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    pure subroutine setDelayedRejectionScaleFactorVec(self,DelayedRejectionScaleFactorVec,delayedRejectionCount)
+    pure subroutine set(self,delayedRejectionCount, DelayedRejectionScaleFactorVec)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: setDelayedRejectionScaleFactorVec
+        !DEC$ ATTRIBUTES DLLEXPORT :: set
 #endif
         use Constants_mod, only: IK, RK
         implicit none
         class(DelayedRejectionScaleFactorVec_type), intent(inout)   :: self
-        real(RK)    , intent(in)                                    :: DelayedRejectionScaleFactorVec(:) ! This must remain colon
         integer(IK) , intent(in)                                    :: delayedRejectionCount
-        integer(IK)                                                 :: i
-        self%Val = pack( DelayedRejectionScaleFactorVec, mask = DelayedRejectionScaleFactorVec /= self%null )
-        if ( size(self%Val) == 0 .and. delayedRejectionCount > 0 ) then
-            deallocate(self%Val); allocate(self%Val(delayedRejectionCount))
-            do i = 1, delayedRejectionCount
-                self%Val(i) = self%def
-            end do
+        real(RK)    , intent(in), optional                          :: DelayedRejectionScaleFactorVec(:) ! This must remain colon
+        if (present(DelayedRejectionScaleFactorVec)) then
+            self%Val = pack( DelayedRejectionScaleFactorVec, mask = DelayedRejectionScaleFactorVec /= self%null )
+            if (size(self%Val) == 0) then
+                deallocate(self%Val)
+                allocate(self%Val(delayedRejectionCount), source = self%def)
+            end if
+        else
+            if (allocated(self%Val)) then
+                if (size(self%Val) == 0) then
+                    deallocate(self%Val)
+                    allocate(self%Val(delayedRejectionCount), source = self%def)
+                end if
+            end if
         end if
-    end subroutine setDelayedRejectionScaleFactorVec
+    end subroutine set
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

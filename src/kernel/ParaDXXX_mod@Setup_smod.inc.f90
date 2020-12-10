@@ -1608,6 +1608,7 @@ contains
                         character(:), allocatable   :: inputSamplePath
 
                         minProbKS = huge(minProbKS)
+                        if (allocated(ProbKS)) deallocate(ProbKS) ! LCOV_EXCL_LINE
                         allocate(ProbKS(0:ndim))
 
                         ! read the refined chain on the current image

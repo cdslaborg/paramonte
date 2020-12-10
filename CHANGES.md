@@ -24,7 +24,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
 | GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
-| Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
+| Intel Parallel Studio > 19.1.1    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
 **Compiler / MPI library used for this binary release**  

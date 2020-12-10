@@ -172,7 +172,6 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
-        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -184,27 +183,29 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_6" &
                             , outputRealPrecision = 16_IK &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 500_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
+
         assertion = assertion .and. .not. PD1%Err%occurred
+
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            write(Test%outputUnit,"(*(g0,:,' '))")
-            write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
-            write(Test%outputUnit,"(*(g0,:,' '))")
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
             return
         end if
         ! LCOV_EXCL_STOP
 
         call Test%Image%sync()
 
-        ! delete the sample file
-
-        if (PD1%Image%isLeader) then
-            open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-            close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
-        endif
+        block
+            use System_mod, only: removeFile
+            call removeFile(PD1%SampleFile%Path%original, PD1%Err) ! delete the sample file
+        end block
 
         call Test%Image%sync()
 
@@ -216,32 +217,36 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_6" &
                             , outputRealPrecision = 16_IK &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 500_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
+
         assertion = assertion .and. .not. PD2%Err%occurred
+
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            write(Test%outputUnit,"(*(g0,:,' '))")
-            write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
-            write(Test%outputUnit,"(*(g0,:,' '))")
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
             return
         end if
         ! LCOV_EXCL_STOP
 
         if (PD2%Image%isLeader) then
+        ! LCOV_EXCL_START
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
             if (.not. assertion) then
-                ! LCOV_EXCL_START
-                if (Test%Image%isFirst) then
+                if (Test%isDebugMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
                 end if
                 return
-                ! LCOV_EXCL_STOP
             end if
         end if
+        ! LCOV_EXCL_STOP
 #endif
     end function test_runSampler_6
 
@@ -297,7 +302,6 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
-        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -309,15 +313,18 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_9.ref" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 50_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD1%Err%occurred
+
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            write(Test%outputUnit,"(*(g0,:,' '))")
-            write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
-            write(Test%outputUnit,"(*(g0,:,' '))")
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
             return
         end if
         ! LCOV_EXCL_STOP
@@ -332,25 +339,29 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_9" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 50_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
+
         assertion = assertion .and. .not. PD1%Err%occurred
+
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            write(Test%outputUnit,"(*(g0,:,' '))")
-            write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(2)", Test%Image%id, PD1%Err%occurred
-            write(Test%outputUnit,"(*(g0,:,' '))")
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(2)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
             return
         end if
         ! LCOV_EXCL_STOP
 
         call Test%Image%sync()
 
-        ! delete the sample file
-
-        open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-        close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
+        block
+            use System_mod, only: removeFile
+            call removeFile(PD1%SampleFile%Path%original, PD1%Err) ! delete the sample file
+        end block
 
         call Test%Image%sync()
 
@@ -362,31 +373,52 @@ contains
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_9" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 50_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
+
         assertion = assertion .and. .not. PD2%Err%occurred
+
         if (.not. assertion) then
         ! LCOV_EXCL_START
-            write(Test%outputUnit,"(*(g0,:,' '))")
-            write(Test%outputUnit,"(*(g0,:,' '))") "process, PD2%Err%occurred", Test%Image%id, PD2%Err%occurred
-            write(Test%outputUnit,"(*(g0,:,' '))")
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))") "process, PD2%Err%occurred", Test%Image%id, PD2%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
             return
         end if
         ! LCOV_EXCL_STOP
 
         if (PD2%Image%isLeader) then
-            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
+
+            assertion = assertion .and. all(shape(PD2%RefinedChain%LogFuncState) == shape(PD1%RefinedChain%LogFuncState))
+
             if (.not. assertion) then
-                ! LCOV_EXCL_START
-                if (Test%Image%isFirst) then
+            ! LCOV_EXCL_START
+                if (Test%isDebugMode) then
+                    write(*,"(10(g0,:,', '))")
+                    write(*,"(10(g0,:,', '))") "shape(PD1%RefinedChain%LogFuncState)", shape(PD1%RefinedChain%LogFuncState)
+                    write(*,"(10(g0,:,', '))") "shape(PD2%RefinedChain%LogFuncState)", shape(PD2%RefinedChain%LogFuncState)
+                    write(*,"(10(g0,:,', '))")
+                end if
+                return
+            end if
+            ! LCOV_EXCL_STOP
+
+            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
+
+            if (.not. assertion) then
+            ! LCOV_EXCL_START
+                if (Test%isDebugMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
                     write(Test%outputUnit,"(*(g0,:,' '))")
                 end if
                 return
-                ! LCOV_EXCL_STOP
             end if
+            ! LCOV_EXCL_STOP
+
         end if
 #endif
     end function test_runSampler_9
@@ -399,7 +431,6 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
-        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -413,7 +444,7 @@ contains
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
                             , sampleSize = 50_IK &
-                            , chainSize = 1000_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
@@ -430,19 +461,17 @@ contains
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
                             , sampleSize = 50_IK &
-                            , chainSize = 1000_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
         call Test%Image%sync()
 
-        ! delete the sample file
-
-        if (PD1%Image%isLeader) then
-            open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-            close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
-        endif
+        block
+            use System_mod, only: removeFile
+            call removeFile(PD1%SampleFile%Path%original, PD1%Err) ! delete the sample file
+        end block
 
         call Test%Image%sync()
 
@@ -456,7 +485,7 @@ contains
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
                             , sampleSize = 50_IK &
-                            , chainSize = 1000_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
@@ -477,7 +506,6 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
-        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -491,8 +519,8 @@ contains
                             , chainFileFormat = "verbose" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 500_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
@@ -509,20 +537,18 @@ contains
                             , chainFileFormat = "verbose" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 500_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
         call Test%Image%sync()
 
-        ! delete the sample file
-
-        if (PD1%Image%isLeader) then
-            open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-            close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
-        endif
+        block
+            use System_mod, only: removeFile
+            call removeFile(PD1%SampleFile%Path%original, PD1%Err) ! delete the sample file
+        end block
 
         call Test%Image%sync()
 
@@ -536,8 +562,8 @@ contains
                             , chainFileFormat = "verbose" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 500_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
@@ -557,7 +583,6 @@ contains
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
-        integer             :: iostat
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -571,8 +596,8 @@ contains
                             , chainFileFormat = "binary" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 500_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
@@ -589,20 +614,18 @@ contains
                             , chainFileFormat = "binary" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 500_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD1%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
         call Test%Image%sync()
 
-        ! delete the sample file
-
-        if (PD1%Image%isLeader) then
-            open(newunit = PD1%SampleFile%unit, file = PD1%SampleFile%Path%original, status = "replace")
-            close(PD1%SampleFile%unit, status = "delete", iostat = iostat) ! parallel processes cannot delete the same file
-        endif
+        block
+            use System_mod, only: removeFile
+            call removeFile(PD1%SampleFile%Path%original, PD1%Err) ! delete the sample file
+        end block
 
         call Test%Image%sync()
 
@@ -616,8 +639,8 @@ contains
                             , chainFileFormat = "binary" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
-                            , sampleSize = 500_IK &
-                            , chainSize = 1000_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
                             )
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
@@ -707,23 +730,27 @@ contains
 
             assertion = assertion .and. RefinedChain%numRefinement == 0_IK
 
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (.not. assertion) then
             ! LCOV_EXCL_START
-                write(*,"(10(g0,:,', '))")
-                write(*,"(10(g0,:,', '))") "RefinedChain%numRefinement", RefinedChain%numRefinement
-                write(*,"(10(g0,:,', '))")
+                if (Test%isDebugMode) then
+                    write(*,"(10(g0,:,', '))")
+                    write(*,"(10(g0,:,', '))") "RefinedChain%numRefinement", RefinedChain%numRefinement
+                    write(*,"(10(g0,:,', '))")
+                end if
                 return
             end if
             ! LCOV_EXCL_STOP
 
             assertion = assertion .and. all(shape(RefinedChain%LogFuncState) == shape(PD%RefinedChain%LogFuncState))
 
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (.not. assertion) then
             ! LCOV_EXCL_START
-                write(*,"(10(g0,:,', '))")
-                write(*,"(10(g0,:,', '))") "shape(PD%RefinedChain%LogFuncState) ", shape(PD%RefinedChain%LogFuncState)
-                write(*,"(10(g0,:,', '))") "shape(RefinedChain%LogFuncState)    ", shape(RefinedChain%LogFuncState)
-                write(*,"(10(g0,:,', '))")
+                if (Test%isDebugMode) then
+                    write(*,"(10(g0,:,', '))")
+                    write(*,"(10(g0,:,', '))") "shape(PD%RefinedChain%LogFuncState) ", shape(PD%RefinedChain%LogFuncState)
+                    write(*,"(10(g0,:,', '))") "shape(RefinedChain%LogFuncState)    ", shape(RefinedChain%LogFuncState)
+                    write(*,"(10(g0,:,', '))")
+                end if
                 return
             end if
             ! LCOV_EXCL_STOP
@@ -731,13 +758,15 @@ contains
             Difference = abs(RefinedChain%LogFuncState-PD%RefinedChain%LogFuncState)
             assertion = assertion .and. all(Difference < tolerance)
 
-            if (Test%isDebugMode .and. .not. assertion) then
+            if (.not. assertion) then
             ! LCOV_EXCL_START
-                write(*,"(10(g0,:,', '))")
-                write(*,"(10(g0,:,', '))") "PD%RefinedChain%LogFuncState", PD%RefinedChain%LogFuncState
-                write(*,"(10(g0,:,', '))") "RefinedChain%LogFuncState   ", RefinedChain%LogFuncState
-                write(*,"(10(g0,:,', '))") "Difference                  ", Difference
-                write(*,"(10(g0,:,', '))")
+                if (Test%isDebugMode) then
+                    write(*,"(10(g0,:,', '))")
+                    write(*,"(10(g0,:,', '))") "PD%RefinedChain%LogFuncState", PD%RefinedChain%LogFuncState
+                    write(*,"(10(g0,:,', '))") "RefinedChain%LogFuncState   ", RefinedChain%LogFuncState
+                    write(*,"(10(g0,:,', '))") "Difference                  ", Difference
+                    write(*,"(10(g0,:,', '))")
+                end if
                 return
             end if
             ! LCOV_EXCL_STOP
@@ -746,5 +775,189 @@ contains
 
 #endif
     end function test_runSampler_15
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file, in multichain parallelism.
+    module function test_runSampler_16() result(assertion)
+        implicit none
+        logical             :: assertion
+        type(ParaDXXX_type) :: PD1, PD2
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        ! Run the fresh simulation
+
+        call PD1%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_16" &
+                            , parallelizationModel = "multi chain" &
+                            , outputRealPrecision = 16_IK &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
+                            )
+        assertion = assertion .and. .not. PD1%Err%occurred
+
+        if (.not. assertion) then
+        ! LCOV_EXCL_START
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
+            return
+        end if
+        ! LCOV_EXCL_STOP
+
+        call Test%Image%sync()
+
+        block
+            use System_mod, only: removeFile
+            call removeFile(PD1%SampleFile%Path%original, PD1%Err) ! delete the sample file
+        end block
+
+        call Test%Image%sync()
+
+        ! restart the simulation with the same configuration
+
+        call PD2%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_16" &
+                            , parallelizationModel = "multi chain" &
+                            , outputRealPrecision = 16_IK &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
+                            )
+
+        assertion = assertion .and. .not. PD2%Err%occurred
+
+        if (.not. assertion) then
+        ! LCOV_EXCL_START
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
+            return
+        end if
+        ! LCOV_EXCL_STOP
+
+        if (PD2%Image%isLeader) then
+        ! LCOV_EXCL_START
+            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
+            if (.not. assertion) then
+            ! LCOV_EXCL_START
+                if (Test%isDebugMode) then
+                    write(Test%outputUnit,"(*(g0,:,' '))")
+                    write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
+                    write(Test%outputUnit,"(*(g0,:,' '))")
+                end if
+                return
+            end if
+        end if
+        ! LCOV_EXCL_STOP
+#endif
+    end function test_runSampler_16
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file, in multichain parallelism.
+    !> Also, ensure the delayed rejection sampling is activated by setting a low value for `adaptiveUpdatePeriod` and
+    !> a large value for `scaleFactor`.
+    module function test_runSampler_17() result(assertion)
+        implicit none
+        logical             :: assertion
+        type(ParaDXXX_type) :: PD1, PD2
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        ! Run the fresh simulation
+
+        call PD1%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_17" &
+                            , parallelizationModel = "single chain" &
+                            , delayedRejectionCount = 4_IK &
+                            , adaptiveUpdatePeriod = 1_IK &
+                            , outputRealPrecision = 16_IK &
+                            , scaleFactor = "5 * gelman" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
+                            )
+        assertion = assertion .and. .not. PD1%Err%occurred
+
+        if (.not. assertion) then
+        ! LCOV_EXCL_START
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
+            return
+        end if
+        ! LCOV_EXCL_STOP
+
+        call Test%Image%sync()
+
+        block
+            use System_mod, only: removeFile
+            call removeFile(PD1%SampleFile%Path%original, PD1%Err) ! delete the sample file
+        end block
+
+        call Test%Image%sync()
+
+        ! restart the simulation with the same configuration
+
+        call PD2%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_17" &
+                            , parallelizationModel = "single chain" &
+                            , delayedRejectionCount = 4_IK &
+                            , adaptiveUpdatePeriod = 1_IK &
+                            , outputRealPrecision = 16_IK &
+                            , scaleFactor = "5 * gelman" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = 250_IK &
+                            , chainSize = 500_IK &
+                            )
+
+        assertion = assertion .and. .not. PD2%Err%occurred
+
+        if (.not. assertion) then
+        ! LCOV_EXCL_START
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
+            return
+        end if
+        ! LCOV_EXCL_STOP
+
+        if (PD2%Image%isLeader) then
+        ! LCOV_EXCL_START
+            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
+            if (.not. assertion) then
+            ! LCOV_EXCL_START
+                if (Test%isDebugMode) then
+                    write(Test%outputUnit,"(*(g0,:,' '))")
+                    write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
+                    write(Test%outputUnit,"(*(g0,:,' '))")
+                end if
+                return
+            end if
+        end if
+        ! LCOV_EXCL_STOP
+#endif
+    end function test_runSampler_17
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
