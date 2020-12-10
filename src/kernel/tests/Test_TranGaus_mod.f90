@@ -112,6 +112,9 @@ contains
             write(fileUnit5,*) getTranGaus(lowerLim=9999.8_RK,upperLim=9999.9_RK,avg=avg,std=std)
             write(fileUnit5,*) getTranGaus(lowerLim=-9999.9_RK,upperLim=-9999.8_RK,avg=avg,std=std)
             write(fileUnit5,*) getTranGaus(lowerLim=-.001_RK,upperLim=.001_RK,avg=avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=9999.8_RK,upperLim=9999.9_RK,avg=-avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=-9999.9_RK,upperLim=-9999.8_RK,avg=-avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=-.001_RK,upperLim=.001_RK,avg=-avg,std=std)
         end do
         close(fileUnit1)
         close(fileUnit2)
