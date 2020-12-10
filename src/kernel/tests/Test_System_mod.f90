@@ -113,10 +113,8 @@ contains
         logical                 :: assertion
         type(SystemInfo_type)   :: SystemInfo
         assertion = .true.
-        if (Test%Image%isFirst) then
-            SystemInfo = SystemInfo_type()
-            assertion = .not. SystemInfo%Err%occurred .and. allocated(SystemInfo%Records) .and. size(SystemInfo%Records) > 0
-        end if
+        SystemInfo = SystemInfo_type(pid = Test%Image%id)
+        assertion = .not. SystemInfo%Err%occurred .and. allocated(SystemInfo%Records) .and. size(SystemInfo%Records) > 0
     end function test_SystemInfo_type_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

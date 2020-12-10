@@ -194,16 +194,22 @@ contains
     !> \param[in]   OS      :   An object of class [OS_type](@ref os_type) loaded with `OS%query()` results (**optional**).
     !> \param[in]   path    :   A string representing the path to file that has the system information already cached (**optional**).
     !>                          If the path is provided and the file exists, then the system information will be read from that file.
+    !> \param[in]   pid     :   An input integer representing the ID of the current process (**optional**). If present, it will be used
+    !>                          to generate processor-unique systeminfo cache files. This is mostly useful for parallel code coverage analysis.
     !>
     !> \return
     !> `SystemInfo` : An object of class [SystemInfo_type](@ref systeminfo_type) containing the system information.
-    function constructSystemInfo(OS, path) result(SystemInfo)
+    !>
+    !> \warning
+    !> Note that `pid` is used only when the input `path` is missing.
+    function constructSystemInfo(OS, path, pid) result(SystemInfo)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSystemInfo
 #endif
         use FileContents_mod, only: getFileContents
         use DateTime_mod, only: DateTime_type
-        use Constants_mod, only: NLC
+        use Constants_mod, only: NLC, IK
+        use String_mod, only: num2str
         implicit none
 
         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME // "@constructSystemInfo()"
@@ -211,6 +217,7 @@ contains
         type(SystemInfo_type)               :: SystemInfo
         type(OS_type), intent(in), optional :: OS
         character(*), intent(in), optional  :: path
+        integer(IK), intent(in), optional   :: pid
         type(DateTime_type)                 :: DateTime
         character(:), allocatable           :: cacheFile
         logical                             :: fileIsOpen, fileExists
@@ -222,7 +229,12 @@ contains
             cacheFile = path
         else ! construct the default cache file name
             call DateTime%query()
-            cacheFile = ".paramonte.sysinfo."//DateTime%year//DateTime%month//DateTime%day//".cache"
+            if (present(pid)) then
+                cacheFile = num2str(pid)
+            else
+                cacheFile = ""
+            end if
+            cacheFile = ".paramonte.sysinfo."//DateTime%year//DateTime%month//DateTime%day//".cache."//cacheFile
         end if
 
         ! check if the cache file exists
