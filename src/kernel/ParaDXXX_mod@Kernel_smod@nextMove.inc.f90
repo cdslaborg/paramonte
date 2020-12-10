@@ -116,7 +116,6 @@
                                     else
                                         co_AccRate(counterDRS) = exp(co_AccRate(counterDRS))
                                     end if
-                                                                 )
                                 end if
 
                                 if (uniformRnd<co_AccRate(counterDRS)) then ! accept the proposed state
