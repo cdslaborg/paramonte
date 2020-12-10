@@ -50,7 +50,7 @@
         -t | --test             : the ParaMonte library test type: none, basic, sampler, all
                                   If basic, only the auxiliary non-sampler routines will be tested.
                                   If sampler, the ParaMonte sampler routines will be tested.
-                                  If all, all tests will be performed.
+                                  If all, then all tests will be performed.
                                   The default is none.
         -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
                                   the default is true.

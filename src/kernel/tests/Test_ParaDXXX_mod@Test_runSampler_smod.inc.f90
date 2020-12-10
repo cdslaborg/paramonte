@@ -391,11 +391,11 @@ contains
         ! LCOV_EXCL_STOP
 
         if (PD2%Image%isLeader) then
+        ! LCOV_EXCL_START
 
             assertion = assertion .and. all(shape(PD2%RefinedChain%LogFuncState) == shape(PD1%RefinedChain%LogFuncState))
 
             if (.not. assertion) then
-            ! LCOV_EXCL_START
                 if (Test%isDebugMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "shape(PD1%RefinedChain%LogFuncState)", shape(PD1%RefinedChain%LogFuncState)
@@ -404,12 +404,10 @@ contains
                 end if
                 return
             end if
-            ! LCOV_EXCL_STOP
 
             assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
 
             if (.not. assertion) then
-            ! LCOV_EXCL_START
                 if (Test%isDebugMode) then
                     write(Test%outputUnit,"(*(g0,:,' '))")
                     write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
@@ -417,9 +415,9 @@ contains
                 end if
                 return
             end if
-            ! LCOV_EXCL_STOP
 
         end if
+        ! LCOV_EXCL_STOP
 #endif
     end function test_runSampler_9
 
@@ -490,9 +488,7 @@ contains
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
-        if (PD2%Image%isLeader) then
-            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
-        endif
+        if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! LCOV_EXCL_LINE ! by default, the output precision is only 8 digits
 
 #endif
     end function test_runSampler_10
@@ -568,9 +564,7 @@ contains
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
-        if (PD2%Image%isLeader) then
-            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
-        endif
+        if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! LCOV_EXCL_LINE ! by default, the output precision is only 8 digits
 #endif
     end function test_runSampler_11
 
@@ -645,9 +639,7 @@ contains
         assertion = assertion .and. .not. PD2%Err%occurred
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
-        if (PD2%Image%isLeader) then
-            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! by default, the output precision is only 8 digits
-        endif
+        if (PD2%Image%isLeader) assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-6_RK ) ! LCOV_EXCL_LINE ! by default, the output precision is only 8 digits
 
 #endif
     end function test_runSampler_12
@@ -725,13 +717,13 @@ contains
         if (.not. assertion) return ! LCOV_EXCL_LINE
 
         if (PD%Image%isLeader) then
+        ! LCOV_EXCL_START
 
             RefinedChain = readRefinedChain( sampleFilePath = PD%SampleFile%Path%original, delimiter = PD%SpecBase%OutputDelimiter%val, ndim = PD%nd%val )
 
             assertion = assertion .and. RefinedChain%numRefinement == 0_IK
 
             if (.not. assertion) then
-            ! LCOV_EXCL_START
                 if (Test%isDebugMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "RefinedChain%numRefinement", RefinedChain%numRefinement
@@ -739,12 +731,10 @@ contains
                 end if
                 return
             end if
-            ! LCOV_EXCL_STOP
 
             assertion = assertion .and. all(shape(RefinedChain%LogFuncState) == shape(PD%RefinedChain%LogFuncState))
 
             if (.not. assertion) then
-            ! LCOV_EXCL_START
                 if (Test%isDebugMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "shape(PD%RefinedChain%LogFuncState) ", shape(PD%RefinedChain%LogFuncState)
@@ -756,13 +746,11 @@ contains
                 end if
                 return
             end if
-            ! LCOV_EXCL_STOP
 
             Difference = abs(RefinedChain%LogFuncState-PD%RefinedChain%LogFuncState)
             assertion = assertion .and. all(Difference < tolerance)
 
             if (.not. assertion) then
-            ! LCOV_EXCL_START
                 if (Test%isDebugMode) then
                     write(*,"(10(g0,:,', '))")
                     write(*,"(10(g0,:,', '))") "PD%RefinedChain%LogFuncState", PD%RefinedChain%LogFuncState
@@ -772,9 +760,9 @@ contains
                 end if
                 return
             end if
-            ! LCOV_EXCL_STOP
 
         end if
+        ! LCOV_EXCL_STOP
 
 #endif
     end function test_runSampler_15
@@ -992,6 +980,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_18" &
                             , mpiFinalizeRequested = .false. &
+                            , sampleRefineMentMethod = "batchMeans-med" &
                             , outputRealPrecision = 15_IK &
                             , outputDelimiter = DELIM &
                             , sampleSize = 10_IK &
@@ -1007,7 +996,11 @@ contains
                                             , ndim = PD%nd%val & ! LCOV_EXCL_LINE
                                             )
 
-            RefinedChain%LogFuncState = transpose(RefinedChain%LogFuncState)
+            RefinedChain = readRefinedChain ( sampleFilePath = PD%SampleFile%Path%original & ! LCOV_EXCL_LINE
+                                            , delimiter = PD%SpecBase%OutputDelimiter%val & ! LCOV_EXCL_LINE
+                                            , tenabled = .false. & ! LCOV_EXCL_LINE
+                                            , ndim = PD%nd%val & ! LCOV_EXCL_LINE
+                                            )
 
             assertion = assertion .and. RefinedChain%numRefinement == 0_IK
 

@@ -14,7 +14,11 @@
         --lib           : the ParaMonte library type. Possible values: static, dynamic
         --par           : the ParaMonte library parallelism type. Possible values: none mpi cafsingle cafshared
         --mem           : the ParaMonte library memory type for array allocations. Possible values: stack heap
-        --test_enabled  : the ParaMonte library testing enabled? Possible values: true, false. If true, tests will be performed where possible.
+        --test          : the ParaMonte library test type: none, basic, sampler, all
+                          If basic, only the auxiliary non-sampler routines will be tested.
+                          If sampler, the ParaMonte sampler routines will be tested.
+                          If all, then all tests will be performed.
+                          The default is none.
         --exam_enabled  : the ParaMonte library example runs enabled? Possible values: true, false. If true, exmaples will be run where possible.
         --matdram       : enables the ParaMonte MatDRAM MATLAB library build. If specified, it will disable all other specified flags.
         --nproc         : the default number of processes on which the ParaMonte examples/tests (if any) will be run. Possible values: positive integers

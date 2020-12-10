@@ -69,6 +69,9 @@ contains
         call Test%run(test_query_1, "test_query_1")
         call Test%run(test_query_2, "test_query_2")
         call Test%run(test_query_3, "test_query_3")
+        call Test%run(test_mkdir_1, "test_mkdir_1")
+        call Test%run(test_mkdir_2, "test_mkdir_2")
+        call Test%run(test_mkdir_3, "test_mkdir_3")
         call Test%run(test_modify_1, "test_modify_1")
         call Test%run(test_winify_1, "test_winify_1")
         call Test%run(test_winify_2, "test_winify_2")
@@ -573,6 +576,88 @@ contains
         ! LCOV_EXCL_STOP
 
     end function test_modify_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether all processors are capable of generating directories.
+    function test_mkdir_1() result(assertion)
+
+        use Constants_mod, only: RK
+        use System_mod, only: RandomFileName_type, OS_type
+        implicit none
+        logical                     :: assertion
+        type(RandomFileName_type)   :: RFN
+        type(OS_type)               :: OS
+        logical                     :: fileExists
+        integer                     :: fileUnit
+
+        RFN = RandomFileName_type(key="test_mkdir_1")
+        assertion = .not. RFN%Err%occurred
+        if (.not. assertion) return
+
+        call OS%query()
+        assertion = .not. OS%Err%occurred
+        if (.not. assertion) return
+
+        RFN%Err = mkdir(RFN%path, OS%Shell%isUnix, .true.)
+        assertion = .not. RFN%Err%occurred
+        if (.not. assertion) return
+
+    end function test_mkdir_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether all processors are capable of generating directories.
+    function test_mkdir_2() result(assertion)
+
+        use Constants_mod, only: RK
+        use System_mod, only: RandomFileName_type, OS_type
+        implicit none
+        logical                     :: assertion
+        type(RandomFileName_type)   :: RFN
+        type(OS_type)               :: OS
+        logical                     :: fileExists
+        integer                     :: fileUnit
+
+        RFN = RandomFileName_type(key="test_mkdir_2")
+        assertion = .not. RFN%Err%occurred
+        if (.not. assertion) return
+
+        call OS%query()
+        assertion = .not. OS%Err%occurred
+        if (.not. assertion) return
+
+        RFN%Err = mkdir(RFN%path, OS%Shell%isUnix, .false.)
+        assertion = .not. RFN%Err%occurred
+        if (.not. assertion) return
+
+    end function test_mkdir_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether all processors are capable of generating directories, without the input optional arguments
+    function test_mkdir_3() result(assertion)
+
+        use System_mod, only: RandomFileName_type
+        use Constants_mod, only: RK
+        implicit none
+        logical                     :: assertion
+        type(RandomFileName_type)   :: RFN
+        logical                     :: fileExists
+        integer                     :: fileUnit
+
+        RFN = RandomFileName_type(key="test_mkdir_3")
+        assertion = .not. RFN%Err%occurred
+        if (.not. assertion) return
+
+        RFN%Err = mkdir(RFN%path)
+        assertion = .not. RFN%Err%occurred
+        if (.not. assertion) return
+
+    end function test_mkdir_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

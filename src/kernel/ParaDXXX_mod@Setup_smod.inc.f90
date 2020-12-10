@@ -347,22 +347,7 @@ contains
         ! Now depending on the requested parallelism type, determine the process leader/rooter type and open output files
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        self%Image%isLeader = .false.
-        if (self%SpecBase%ParallelizationModel%isSinglChain) then
-            if (self%Image%isFirst) self%Image%isLeader = .true.
-        elseif (self%SpecBase%ParallelizationModel%isMultiChain) then
-            self%Image%isLeader = .true.
-        else
-            self%Err%occurred = .true.
-        end if
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
-        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
-#endif
-        if (self%Err%occurred) then
-            self%Err%msg = PROCEDURE_NAME//": Error occurred. Unknown parallelism requested via the input variable parallelizationModel='"//self%SpecBase%ParallelizationModel%val//"'."
-            call self%abort( Err = self%Err, prefix = self%brand, newline = "\n", outputUnit = self%LogFile%unit )
-            return
-        end if
+        self%Image%isLeader = self%Image%isFirst .or. self%SpecBase%ParallelizationModel%isMultiChain
         self%Image%isRooter = .not. self%Image%isLeader
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
