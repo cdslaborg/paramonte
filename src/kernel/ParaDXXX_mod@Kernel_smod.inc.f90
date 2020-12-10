@@ -104,7 +104,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
-        use Constants_mod, only: RK, IK, NEGINF_RK, NLC, LOGTINY_RK
+        use Constants_mod, only: RK, IK, NEGINF_RK, NLC, LOGTINY_RK, NEGLOGINF_RK
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
         use Math_mod, only: getLogSubExp
         use Decoration_mod, only: write

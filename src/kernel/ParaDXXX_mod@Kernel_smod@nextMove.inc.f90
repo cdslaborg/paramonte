@@ -103,14 +103,20 @@
 
                                 if ( counterDRS == 0_IK ) then ! This should be equivalent to maxLogFuncRejectedProposal == NEGINF_RK
                                     logFuncDiff = co_LogFuncState(0,counterDRS) - co_LogFuncState(0,-1)
-                                    if (logFuncDiff<LOGTINY_RK) then ! xxx should the condition for LOGHUGE_RK be also added?
+                                    if (logFuncDiff < NEGLOGINF_RK) then ! xxx should the condition for LOGHUGE_RK be also added?
                                         co_AccRate(counterDRS) = 0._RK
                                     else
                                         co_AccRate(counterDRS) = exp( logFuncDiff )
                                     end if
                                 else    ! ensure no arithmetic overflow/underflow. ATT: co_LogFuncState(0,-1) > co_LogFuncState(0,counterDRS) > maxLogFuncRejectedProposal
-                                    co_AccRate(counterDRS) = exp( getLogSubExp( co_LogFuncState(0,counterDRS)   , maxLogFuncRejectedProposal ) & ! LCOV_EXCL_LINE
-                                                                - getLogSubExp( co_LogFuncState(0,-1)           , maxLogFuncRejectedProposal ) )
+                                    co_AccRate(counterDRS)  = getLogSubExp( co_LogFuncState(0,counterDRS)   , maxLogFuncRejectedProposal ) & ! LCOV_EXCL_LINE
+                                                            - getLogSubExp( co_LogFuncState(0,-1)           , maxLogFuncRejectedProposal )
+                                    if (co_AccRate(counterDRS) < NEGLOGINF_RK) then
+                                        co_AccRate(counterDRS) = 0._RK
+                                    else
+                                        co_AccRate(counterDRS) = exp(co_AccRate(counterDRS))
+                                    end if
+                                                                 )
                                 end if
 
                                 if (uniformRnd<co_AccRate(counterDRS)) then ! accept the proposed state
