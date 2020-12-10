@@ -75,7 +75,7 @@ contains
 
     function test_getTranGaus_1() result(assertion)
 
-        use Constants_mod, only: RK, IK
+        use Constants_mod, only: RK, IK ! , NEGINF_RK, POSINF_RK
         use String_mod, only: num2str
 
         implicit none
@@ -105,6 +105,13 @@ contains
             write(fileUnit3,*) getTranGaus(lowerLim=-15._RK,upperLim=4._RK,avg=avg,std=std)
             write(fileUnit4,*) getTranGaus(lowerLim=50._RK,upperLim=55._RK,avg=avg,std=std)
             write(fileUnit5,*) getTranGaus(lowerLim=-50._RK,upperLim=55._RK,avg=avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=0._RK,upperLim=500._RK,avg=avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=-5.e2_RK,upperLim=5.e2_RK,avg=avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=-5.e2_RK,upperLim=0._RK,avg=avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=100._RK,upperLim=100.1_RK,avg=avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=9999.8_RK,upperLim=9999.9_RK,avg=avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=-9999.9_RK,upperLim=-9999.8_RK,avg=avg,std=std)
+            write(fileUnit5,*) getTranGaus(lowerLim=-.001_RK,upperLim=.001_RK,avg=avg,std=std)
         end do
         close(fileUnit1)
         close(fileUnit2)

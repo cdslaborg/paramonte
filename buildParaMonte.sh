@@ -2723,7 +2723,14 @@ fi
 if [ "${CODECOV_ENABLED}" = "true" ]; then
 
     htmlDir="${ParaMonte_ROOT_DIR}/codecov/${PMLIB_BASE_NAME}"
-    titleCodeCov="ParaMonte :: kernel - LCOV code coverage report"
+    if [ "${MPI_ENABLED}" = "true" ]; then
+        parallelismText="MPI Parallel"
+    elif [ "${CAF_ENABLED}" = "true" ]; then
+        parallelismText="Coarray Parallel"
+    else
+        parallelismText="Serial"
+    fi
+    titleCodeCov="ParaMonte :: ${parallelismText} Kernel - Code Coverage Report"
 
     if [[ ${PMCS} == [gG][nN][uU] ]]; then
 
