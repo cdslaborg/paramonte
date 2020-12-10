@@ -247,9 +247,11 @@ contains
                                 , delimiter = self%SpecBase%OutputDelimiter%val     &
                                 )
             if (self%Err%occurred) then
+                ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME//self%Err%msg
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
+                ! LCOV_EXCL_STOP
             end if
 
             if (self%Chain%Count%compact<=CHAIN_RESTART_OFFSET) then
@@ -277,40 +279,44 @@ contains
                     RFN = RandomFileName_type(dir = "", key = self%ChainFile%Path%original//".rst", ext="") ! temporary_restart_copy
                     call copyFile(pathOld=self%ChainFile%Path%original,pathNew=RFN%path,isUnixShell=self%OS%Shell%isUnix,Err=self%err)
                     if (self%Err%occurred) then
+                        ! LCOV_EXCL_START
                         self%Err%msg = PROCEDURE_NAME//self%Err%msg
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                         exit blockLeaderSetup
                         return
+                        ! LCOV_EXCL_STOP
                     end if
 
                     ! reopen the chain file to resume the simulation
 
-                    open( newunit = self%ChainFile%unit             &
-                        , file = self%ChainFile%Path%original       &
-                        , form = self%ChainFile%Form%value          &
-                        , status = self%ChainFile%status            &
-                        , iostat = self%ChainFile%Err%stat          &
+                    open( newunit = self%ChainFile%unit             & ! LCOV_EXCL_LINE
+                        , file = self%ChainFile%Path%original       & ! LCOV_EXCL_LINE
+                        , form = self%ChainFile%Form%value          & ! LCOV_EXCL_LINE
+                        , status = self%ChainFile%status            & ! LCOV_EXCL_LINE
+                        , iostat = self%ChainFile%Err%stat          & ! LCOV_EXCL_LINE
 #if defined IFORT_ENABLED && defined OS_IS_WINDOWS
-                        , SHARED                                    &
+                        , SHARED                                    & ! LCOV_EXCL_LINE
 #endif
                         , position = self%ChainFile%Position%value  )
                     self%Err = self%ChainFile%getOpenErr(self%ChainFile%Err%stat)
                     if (self%Err%occurred) then
+                        ! LCOV_EXCL_START
                         self%Err%msg = PROCEDURE_NAME//": Error occurred while opening "//self%name//" "//self%ChainFile%suffix//" file='"//self%ChainFile%Path%original//"'."
                         call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                         exit blockLeaderSetup
                         return
+                        ! LCOV_EXCL_STOP
                     end if
 
                     ! rewrite the chain file
 
-                    call self%Chain%writeChainFile  ( ndim = nd &
-                                                    , compactStartIndex = 1_IK &
-                                                    , compactEndIndex = self%Chain%Count%compact-CHAIN_RESTART_OFFSET &
-                                                    , chainFileUnit = self%ChainFile%unit &
-                                                    , chainFileForm = self%SpecBase%ChainFileFormat%val &
-                                                    , chainFileFormat = self%ChainFile%format &
-                                                    , adaptiveUpdatePeriod = self%SpecDRAM%AdaptiveUpdatePeriod%val &
+                    call self%Chain%writeChainFile  ( ndim = nd & ! LCOV_EXCL_LINE
+                                                    , compactStartIndex = 1_IK & ! LCOV_EXCL_LINE
+                                                    , compactEndIndex = self%Chain%Count%compact-CHAIN_RESTART_OFFSET & ! LCOV_EXCL_LINE
+                                                    , chainFileUnit = self%ChainFile%unit & ! LCOV_EXCL_LINE
+                                                    , chainFileForm = self%SpecBase%ChainFileFormat%val & ! LCOV_EXCL_LINE
+                                                    , chainFileFormat = self%ChainFile%format & ! LCOV_EXCL_LINE
+                                                    , adaptiveUpdatePeriod = self%SpecDRAM%AdaptiveUpdatePeriod%val & ! LCOV_EXCL_LINE
                                                     )
 
                     ! remove the temporary copy of the chain file
@@ -355,6 +361,7 @@ contains
         self%Stats%LogFuncMode%Loc%compact = 0_IK
 
         if (self%Image%isFirst) then
+            ! LCOV_EXCL_START
             txt =   repeat(" ",STDOUT_SEGLEN) &
                 //  "Accepted/Total Func. Call   " &
                 //  "Dynamic/Overall Acc. Rate   " &
@@ -367,6 +374,7 @@ contains
             call write(string=txt)
             !call execute_command_line(" ")
             flush(output_unit)
+            ! LCOV_EXCL_STOP
         end if
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
@@ -598,15 +606,15 @@ contains
                         end if
 
                         meanAccRateSinceStart = self%Chain%MeanAccRate(self%Stats%NumFunCall%accepted) ! used only in fresh run, but not worth putting it in a conditional block.
-                        call self%Proposal%doAdaptation ( nd                        = nd                                                                                        &
-                                                        , chainSize                 = self%Stats%NumFunCall%accepted - numFunCallAcceptedLastAdaptation + 1_IK                  &
-                                                        , Chain                     = self%Chain%State(1:nd,numFunCallAcceptedLastAdaptation:self%Stats%NumFunCall%accepted)    &
-                                                        , ChainWeight               = self%Chain%Weight(numFunCallAcceptedLastAdaptation:self%Stats%NumFunCall%accepted)        &
-                                                        , isFreshRun                = self%isFreshRun                                                                           &
-                                                        , samplerUpdateIsGreedy     = samplerUpdateIsGreedy                                                                     &
-                                                        , meanAccRateSinceStart     = meanAccRateSinceStart                                                                     &
-                                                        , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                    &
-                                                        , adaptationMeasure         = AdaptationMeasure(dumint)                                                                 &
+                        call self%Proposal%doAdaptation ( nd                        = nd                                                                                        & ! LCOV_EXCL_LINE
+                                                        , chainSize                 = self%Stats%NumFunCall%accepted - numFunCallAcceptedLastAdaptation + 1_IK                  & ! LCOV_EXCL_LINE
+                                                        , Chain                     = self%Chain%State(1:nd,numFunCallAcceptedLastAdaptation:self%Stats%NumFunCall%accepted)    & ! LCOV_EXCL_LINE
+                                                        , ChainWeight               = self%Chain%Weight(numFunCallAcceptedLastAdaptation:self%Stats%NumFunCall%accepted)        & ! LCOV_EXCL_LINE
+                                                        , isFreshRun                = self%isFreshRun                                                                           & ! LCOV_EXCL_LINE
+                                                        , samplerUpdateIsGreedy     = samplerUpdateIsGreedy                                                                     & ! LCOV_EXCL_LINE
+                                                        , meanAccRateSinceStart     = meanAccRateSinceStart                                                                     & ! LCOV_EXCL_LINE
+                                                        , samplerUpdateSucceeded    = samplerUpdateSucceeded                                                                    & ! LCOV_EXCL_LINE
+                                                        , adaptationMeasure         = AdaptationMeasure(dumint)                                                                 & ! LCOV_EXCL_LINE
                                                         )
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
                         if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; exit loopMarkovChain; return; end if
@@ -648,6 +656,7 @@ contains
 
 #if defined MPI_ENABLED
                 if (self%SpecBase%ParallelizationModel%isSinglChain .and. co_proposalFound_samplerUpdateOccurred(1)==0_IK) then
+                    ! LCOV_EXCL_START
                     imageID = 0_IK  ! broadcast rank # 0 to all processes, indicating unsuccessful sampling
                     call mpi_bcast  ( imageID           &   ! buffer
                                     , 1                 &   ! count
@@ -656,6 +665,7 @@ contains
                                     , mpi_comm_world    &   ! comm
                                     , ierrMPI           &   ! ierr
                                     )
+                    ! LCOV_EXCL_STOP
                 end if
 #endif
 
@@ -706,12 +716,12 @@ contains
                 ! fetch the winning rank from the main process
 
                 call self%Timer%toc()
-                call mpi_bcast  ( imageID           &   ! buffer
-                                , 1                 &   ! count
-                                , mpi_integer       &   ! datatype
-                                , 0                 &   ! root: broadcasting rank
-                                , mpi_comm_world    &   ! comm
-                                , ierrMPI           &   ! ierr
+                call mpi_bcast  ( imageID           & ! LCOV_EXCL_LINE ! buffer
+                                , 1                 & ! LCOV_EXCL_LINE ! count
+                                , mpi_integer       & ! LCOV_EXCL_LINE ! datatype
+                                , 0                 & ! LCOV_EXCL_LINE ! root: broadcasting rank
+                                , mpi_comm_world    & ! LCOV_EXCL_LINE ! comm
+                                , ierrMPI           & ! LCOV_EXCL_LINE ! ierr
                                 )
                 call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
 
@@ -720,12 +730,12 @@ contains
                     ! broadcast co_LogFuncState from the winning image to all others
 
                     call self%Timer%toc()
-                    call mpi_bcast  ( co_LogFuncState(0:nd,-1)  &   ! buffer
-                                    , ndPlusOne                 &   ! count
-                                    , mpi_double_precision      &   ! datatype
-                                    , imageID - 1               &   ! root: broadcasting rank
-                                    , mpi_comm_world            &   ! comm
-                                    , ierrMPI                   &   ! ierr
+                    call mpi_bcast  ( co_LogFuncState(0:nd,-1)  & ! LCOV_EXCL_LINE ! buffer
+                                    , ndPlusOne                 & ! LCOV_EXCL_LINE ! count
+                                    , mpi_double_precision      & ! LCOV_EXCL_LINE ! datatype
+                                    , imageID - 1               & ! LCOV_EXCL_LINE ! root: broadcasting rank
+                                    , mpi_comm_world            & ! LCOV_EXCL_LINE ! comm
+                                    , ierrMPI                   & ! LCOV_EXCL_LINE ! ierr
                                     )
                     call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
 
@@ -841,9 +851,11 @@ contains
         endif
 
         if (self%Image%isFirst) then
+            ! LCOV_EXCL_START
             call write()
             !call execute_command_line(" ")
             flush(output_unit)
+            ! LCOV_EXCL_STOP
         end if
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
@@ -855,10 +867,11 @@ contains
             if (dumint/=0_IK) self%Stats%avgTimePerFunCalInSec =  self%Stats%avgTimePerFunCalInSec / dumint
 #if defined CAF_ENABLED || defined MPI_ENABLED
         elseif(self%Image%isFirst) then
+            ! LCOV_EXCL_START
             self%Stats%avgCommTimePerFunCall =  self%Stats%avgCommTimePerFunCall / self%Stats%NumFunCall%acceptedRejectedDelayed
             dumint = self%Stats%NumFunCall%acceptedRejectedDelayedUnused - acceptedRejectedDelayedUnusedRestartMode ! this is needed to avoid division-by-zero undefined behavior
             if (dumint/=0_IK) self%Stats%avgTimePerFunCalInSec = (self%Stats%avgTimePerFunCalInSec / dumint) * self%Image%count
-            !return
+            ! LCOV_EXCL_STOP
         end if
 #endif
 
@@ -981,6 +994,7 @@ contains
 
             ! report progress in the standard output
             if (self%Image%isFirst) then
+                ! LCOV_EXCL_START
                 write( &
 #if defined MEXPRINT_ENABLED
                 txt, &
@@ -998,6 +1012,7 @@ contains
                 !call execute_command_line(" ")
                 flush(output_unit)
 #endif
+                ! LCOV_EXCL_STOP
             end if
 
             numFunCallAcceptedRejectedLastReport = self%Stats%NumFunCall%acceptedRejected
@@ -1045,7 +1060,7 @@ contains
         integer(IK)             :: burninLoc
         negLogIncidenceProb = log( real(lenLogFunc,kind=RK) )
         burninLoc = 0_IK
-        do
+        do ! LCOV_EXCL_LINE
             burninLoc = burninLoc + 1_IK
             if ( burninLoc<lenLogFunc .and. refLogFunc-LogFunc(burninLoc)>negLogIncidenceProb ) cycle
             !burninLoc = burninLoc - 1
