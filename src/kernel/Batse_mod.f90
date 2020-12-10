@@ -210,7 +210,7 @@ contains
             ! write the converted data to output file
 
             if (Image%isFirst) then
-                write(outFileUnit,"(I30,8E30.6)") Trigger(igrb)                                     &
+                write(outFileUnit,"(I30,8E30.6)") Trigger(igrb)                                     & ! LCOV_EXCL_LINE
                                                 , GRB%Event(igrb)%logPbol                           &
                                                 , GRB%Event(igrb)%logSbol                           &
                                                 , GRB%Event(igrb)%logEpk                            &

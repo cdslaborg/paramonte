@@ -871,9 +871,11 @@ contains
     !> Also, ensure the delayed rejection sampling is activated by setting a low value for `adaptiveUpdatePeriod` and
     !> a large value for `scaleFactor`.
     module function test_runSampler_17() result(assertion)
+        use Constants_mod, only: RK
         implicit none
         logical             :: assertion
         type(ParaDXXX_type) :: PD1, PD2
+        real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -883,7 +885,9 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_17" &
+                            , targetAcceptanceRate = targetAcceptanceRate &
                             , parallelizationModel = "single chain" &
+                            , greedyAdaptationCount = 30_IK & ! This must remain larger than adaptiveUpdatePeriod
                             , delayedRejectionCount = 4_IK &
                             , adaptiveUpdatePeriod = 1_IK &
                             , outputRealPrecision = 16_IK &
@@ -920,7 +924,9 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_17" &
+                            , targetAcceptanceRate = targetAcceptanceRate &
                             , parallelizationModel = "single chain" &
+                            , greedyAdaptationCount = 30_IK & ! This must remain larger than adaptiveUpdatePeriod
                             , delayedRejectionCount = 4_IK &
                             , adaptiveUpdatePeriod = 1_IK &
                             , outputRealPrecision = 16_IK &

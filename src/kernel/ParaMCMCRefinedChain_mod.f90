@@ -454,7 +454,7 @@ contains
                         ip = offset
                         sumSkips = skip
                         if (offset/=1_IK) sumSkips = sumSkips + CumSumWeight(ip-1)
-                        cycle loopOverAllSample
+                        cycle loopOverAllSample ! LCOV_EXCL_LINE
                     end if
                 end if
                 exit loopOverAllSample
