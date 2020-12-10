@@ -111,16 +111,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setOutputDelimiter(OutputDelimiterObj,outputDelimiter,outputColumnWidth)
+    pure subroutine setOutputDelimiter(OutputDelimiterObj, outputColumnWidth, outputDelimiter)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setOutputDelimiter
 #endif
         use Constants_mod, only: TAB
         implicit none
         class(OutputDelimiter_type), intent(inout)  :: OutputDelimiterObj
-        character(*), intent(in)                    :: outputDelimiter
         integer(IK) , intent(in)                    :: outputColumnWidth
-        OutputDelimiterObj%val = trim(adjustl(outputDelimiter))
+        character(*), intent(in), optional          :: outputDelimiter
+        if (present(outputDelimiter)) OutputDelimiterObj%val = trim(adjustl(outputDelimiter))
         if (OutputDelimiterObj%val==OutputDelimiterObj%null) then
             if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
             if (outputColumnWidth==0_IK) then
@@ -140,7 +140,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(OutputDelimiterObj,Err,methodName)
+    subroutine checkForSanity(OutputDelimiterObj, Err, methodName)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif

@@ -144,7 +144,7 @@ contains
         call SpecDRAM%GreedyAdaptationCount         %set(greedyAdaptationCount)
         call SpecDRAM%DelayedRejectionCount         %set(delayedRejectionCount)
         call SpecDRAM%BurninAdaptationMeasure       %set(burninAdaptationMeasure)
-        call SpecDRAM%DelayedRejectionScaleFactorVec%set(delayedRejectionScaleFactorVec,delayedRejectionCount)
+        call SpecDRAM%DelayedRejectionScaleFactorVec%set(delayedRejectionCount, delayedRejectionScaleFactorVec)
     end subroutine setFromInputFile
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -179,7 +179,7 @@ contains
         if (present(greedyAdaptationCount))             call SpecDRAM%GreedyAdaptationCount         %set(greedyAdaptationCount)
         if (present(delayedRejectionCount))             call SpecDRAM%DelayedRejectionCount         %set(delayedRejectionCount)
         if (present(burninAdaptationMeasure))           call SpecDRAM%BurninAdaptationMeasure       %set(burninAdaptationMeasure)
-        if (present(delayedRejectionScaleFactorVec))    call SpecDRAM%delayedRejectionScaleFactorVec%set(delayedRejectionScaleFactorVec,SpecDRAM%DelayedRejectionCount%val)
+        call SpecDRAM%delayedRejectionScaleFactorVec%set(SpecDRAM%DelayedRejectionCount%val, delayedRejectionScaleFactorVec)
 
     end subroutine setFromInputArgs
 

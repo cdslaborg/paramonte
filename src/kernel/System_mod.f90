@@ -1090,11 +1090,11 @@ contains
         ! LCOV_EXCL_START
             Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to write the system info to external file." // NLC // Err%msg
             ! WARNING: XXX TODO
-            ! WARNING: On some platforms, such Windows Subsystem for Linux, the CMD exit status 
+            ! WARNING: On some platforms, such Windows Subsystem for Linux, the CMD exit status
             ! WARNING: might not be returned reliably and therefore, cause `executeCmd()` to return
             ! WARNING: an error. In such a case, no error for copy file should be really raised.
             ! WARNING: If the file already exists upon copy action, no error should be raised.
-            ! WARNING: Note that this method may have some vulnerabilities, for example, when  
+            ! WARNING: Note that this method may have some vulnerabilities, for example, when
             ! WARNING: a file copy is created, but the copy action did not accomplish the
             ! WARNING: task successfully and the copied file is broken.
             ! WARNING: This needs a more robust solution in the future.
@@ -1204,8 +1204,8 @@ contains
         ! LCOV_EXCL_STOP
 
         ! now, allocate the memory and read the contents of the file.
-        ! NOTE: The performance of code can be improved here by merging 
-        ! the line counting, allocating memory, and reopening of the file 
+        ! NOTE: The performance of code can be improved here by merging
+        ! the line counting, allocating memory, and reopening of the file
         ! to read the contents. But is it really significant at all to care?
 
         allocate(List(nRecord))
@@ -1371,11 +1371,11 @@ contains
             ! LCOV_EXCL_START
                 Err%msg = PROCEDURE_NAME // ": Error occurred while executing command "// cmd // "'." // NLC
                 ! WARNING: XXX
-                ! WARNING: On some platforms, such Windows Subsystem for Linux, the CMD exit status 
+                ! WARNING: On some platforms, such Windows Subsystem for Linux, the CMD exit status
                 ! WARNING: might not be returned reliably and therefore, cause `executeCmd()` to return
                 ! WARNING: an error. In such a case, no error for copy file should be really raised.
                 ! WARNING: If the file already exists upon copy action, no error should be raised.
-                ! WARNING: Note that this method may have some vulnerabilities, for example, when  
+                ! WARNING: Note that this method may have some vulnerabilities, for example, when
                 ! WARNING: a file copy is created, but the copy action did not accomplish the
                 ! WARNING: task successfully and the copied file is broken.
                 ! WARNING: This needs a more robust solution in the future.
@@ -1420,8 +1420,19 @@ contains
     !!                              indicating whether any error has occurred before, during, or after the sleep.
     !>
     !> \warning
-    !> This subroutine can become extremely dangerous if one does understands the
-    !! scopes of the removal of the requested file or pattern. **Use with caution**.
+    !> This subroutine can become extremely dangerous if one does not fully understands
+    !! the scopes of the removal of the requested file or pattern. **Use with caution**.
+    !>
+    !> \warning
+    !> Parallel processes cannot simultaneously delete the same file. So make sure
+    !> to provide the optional output `Err` argument to properly handle any exceptions.
+    !>
+    !> \remark
+    !> This procedure has been written as a subroutine vs. function to provide
+    !> the flexibility of passing `Err` as an *optional* input argument.
+    !>
+    !> \remark
+    !> Provide the output optional argument `Err`, to properly handle errors and exceptions.
     subroutine removeFile(path,Err)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: removeFile
@@ -1433,30 +1444,96 @@ contains
         character(*), intent(in)                :: path
         type(Err_type), intent(out), optional   :: Err
        !logical     , intent(in), optional      :: isWindows
-        integer                                 :: iostat
-        logical                                 :: fileExists
-        logical                                 :: isPresentErr
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@removeFile()"
+        integer                                 :: fileUnit, iostat, i
+        logical                                 :: isPresentErr
+        logical                                 :: fileExists
+        logical                                 :: isOpen
 
+        fileExists = .true.
         isPresentErr = present(Err)
 
-        ! First check whether file exists.
+        ! attempt to delete the file repeatedly
 
-        if (isPresentErr) then
-            Err%occurred = .false.
-            inquire(file=path,exist=fileExists,iostat=Err%stat)    ! check if the file already exists
-            if (Err%stat/=0) then
-            ! LCOV_EXCL_START
-                Err%occurred = .true.
-                Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file = '" // path // "'."
-                return
+        loopDeleteFile: do i = 1, 100
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            ! First check whether file exists.
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            if (isPresentErr) then
+                Err%occurred = .false.
+                inquire(file=path, opened=isOpen, exist=fileExists, iostat=Err%stat)
+                if (Err%stat/=0) then
+                ! LCOV_EXCL_START
+                    Err%occurred = .true.
+                    Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file = '" // path // "'."
+                    return
+                end if
+                ! LCOV_EXCL_STOP
+            else
+                inquire(file=path, opened=isOpen, exist=fileExists)
             end if
-            ! LCOV_EXCL_STOP
-        else
-            inquire(file=path,exist=fileExists) ! check if the file already exists
-        end if
 
-        if (.not. fileExists) return
+            ! If the file does not exist, return.
+
+            if (.not. fileExists) return
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            ! If the file is closed, open it.
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            if (.not. isOpen) then
+
+                if (isPresentErr) then
+                    Err%occurred = .false.
+                    open(newunit = fileUnit, file = path, status = "replace", iostat = Err%stat)
+                    if (Err%stat/=0) then
+                    ! LCOV_EXCL_START
+                        Err%occurred = .true.
+                        Err%msg = PROCEDURE_NAME // ": Error occurred while opening the file = '" // path // "'."
+                        return
+                    end if
+                    ! LCOV_EXCL_STOP
+                else
+                    open(newunit = fileUnit, file = path, status = "replace")
+                end if
+
+            end if
+
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            ! Delete the file by closing it.
+            !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            if (isPresentErr) then
+
+                Err%occurred = .false.
+
+                close(fileUnit, status="delete", iostat = Err%stat)
+
+                if (Err%stat/=0) then
+                ! LCOV_EXCL_START
+                    Err%occurred = .true.
+                    Err%msg = PROCEDURE_NAME // ": Error occurred while opening the file = '" // path // "'."
+                    return
+                end if
+                ! LCOV_EXCL_STOP
+
+            else
+
+                close(fileUnit, status="delete")
+
+            end if
+
+        end do loopDeleteFile
+
+        if (isPresentErr .and. fileExists) Then
+        ! LCOV_EXCL_START
+            Err%occurred = .true.
+            Err%msg = PROCEDURE_NAME // ": Failed to delete file = '" // path // "'."
+            return
+        end if
+        ! LCOV_EXCL_STOP
 
         !if (isPresentErr .and. present(isWindows)) then
         !
@@ -1498,16 +1575,16 @@ contains
         !    end block blockBrittle
         !
         !else
-
-            blockRobust: block
-                logical :: isOpen
-                integer :: fileUnit
-                inquire(file=path,opened=isOpen)
-                if (.not. isOpen) open(newunit = fileUnit, file = path, status = "replace")
-                close(fileUnit, status="delete", iostat = iostat) ! parallel processes cannot delete the same file
-                if (isPresentErr) Err%stat = iostat
-            end block blockRobust
-
+        !
+        !   blockRobust: block
+        !       logical :: isOpen
+        !       integer :: fileUnit
+        !       inquire(file=path,opened=isOpen)
+        !       if (.not. isOpen) open(newunit = fileUnit, file = path, status = "replace")
+        !       close(fileUnit, status="delete", iostat = iostat) ! parallel processes cannot delete the same file
+        !       if (isPresentErr) Err%stat = iostat
+        !   end block blockRobust
+        !
         !end if
 
     end subroutine removeFile

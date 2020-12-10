@@ -315,7 +315,7 @@ contains
 
                     ! remove the temporary copy of the chain file
 
-                    call removeFile(RFN%path)
+                    call removeFile(RFN%path, self%Err) ! Passing the optional Err argument, handles exceptions should any occur.
 
                 end block
 

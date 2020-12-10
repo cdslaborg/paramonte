@@ -74,6 +74,8 @@
         module function test_runSampler_13() result(assertion); logical :: assertion; end
         module function test_runSampler_14() result(assertion); logical :: assertion; end
         module function test_runSampler_15() result(assertion); logical :: assertion; end
+        module function test_runSampler_16() result(assertion); logical :: assertion; end
+        module function test_runSampler_17() result(assertion); logical :: assertion; end
     end interface
 
     interface
@@ -244,6 +246,8 @@ contains
         call Test%run(test_runSampler_13, "test_runSampler_13")
         call Test%run(test_runSampler_14, "test_runSampler_14")
         call Test%run(test_runSampler_15, "test_runSampler_15")
+        call Test%run(test_runSampler_16, "test_runSampler_16")
+        call Test%run(test_runSampler_17, "test_runSampler_17")
 
         call Test%run(test_SpecBase_RandomSeed_type_1, "test_SpecBase_RandomSeed_type_1")
         call Test%run(test_SpecBase_RandomSeed_type_2, "test_SpecBase_RandomSeed_type_2")

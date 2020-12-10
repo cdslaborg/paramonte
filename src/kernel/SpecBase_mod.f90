@@ -239,7 +239,7 @@ contains
 
         ! do not change the order with outputDelimiter
         call SpecBase%OutputColumnWidth             %set(outputColumnWidth)
-        call SpecBase%OutputDelimiter               %set(outputDelimiter,SpecBase%OutputColumnWidth%val)
+        call SpecBase%OutputDelimiter               %set(SpecBase%OutputColumnWidth%val, outputDelimiter)
 
         call SpecBase%OverwriteRequested            %set(overwriteRequested)
         call SpecBase%OutputRealPrecision           %set(outputRealPrecision)
@@ -330,7 +330,7 @@ contains
 
         ! do not change the order with outputDelimiter
         if (present(outputColumnWidth))             call SpecBase%OutputColumnWidth             %set(outputColumnWidth)
-        if (present(outputDelimiter))               call SpecBase%OutputDelimiter               %set(outputDelimiter,SpecBase%OutputColumnWidth%val)
+        call SpecBase%OutputDelimiter%set(SpecBase%OutputColumnWidth%val, outputDelimiter)
 
         if (present(overwriteRequested))            call SpecBase%OverwriteRequested            %set(overwriteRequested)
         if (present(parallelizationModel))          call SpecBase%ParallelizationModel          %set(parallelizationModel)
