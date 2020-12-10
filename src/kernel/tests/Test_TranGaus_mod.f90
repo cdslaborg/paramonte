@@ -80,7 +80,7 @@ contains
 
         implicit none
         logical                 :: assertion
-        integer(IK), parameter  :: NSIM = 100_IK
+        integer(IK), parameter  :: NSIM = 5000_IK
         real(RK), parameter     :: avg = 2._RK
         real(RK), parameter     :: std = 3._RK
         integer(IK)             :: isim, fileUnit1, fileUnit2, fileUnit3, fileUnit4, fileUnit5

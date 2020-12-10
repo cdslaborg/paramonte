@@ -47,8 +47,11 @@
                                   the default is "stack heap" resulting in builds for both stack and heap memory allocations.
         -p | --par              : the ParaMonte library parallelism type: none mpi cafsingle cafshared cafdistributed
                                   the default is all parallelism options resulting in serial, MPI, and Coarray-parallel library builds.
-        -t | --test_enabled     : the ParaMonte library test run enabled?: true, false
-                                  the default is true.
+        -t | --test             : the ParaMonte library test type: none, basic, sampler, all
+                                  If basic, only the auxiliary non-sampler routines will be tested.
+                                  If sampler, the ParaMonte sampler routines will be tested.
+                                  If all, all tests will be performed.
+                                  The default is none.
         -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
                                   the default is true.
         -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
