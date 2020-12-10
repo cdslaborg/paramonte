@@ -252,8 +252,8 @@ module ParaMonte_mod
         procedure, pass                 :: addCompilerPlatformInfo
         procedure, pass                 :: warnUserAboutInputFilePresence
         procedure, pass                 :: setWarnAboutProcArgHasPriority
+        procedure, pass                 :: warnUserAboutMissingNamelist
         procedure, nopass               :: informUser, note, warn, abort
-        procedure, nopass               :: warnUserAboutMissingNamelist
     end type ParaMonte_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -351,10 +351,12 @@ contains
 
         ! This is where SystemInfo used to live, but not anymore.
 
+#if ! (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         blockSplashByFirstImage: if (self%Image%isFirst) then
             call self%addSplashScreen()
             call self%noteUserAboutEnvSetup()
         end if blockSplashByFirstImage
+#endif
 
         ! check if input file exists by all images
 
@@ -610,25 +612,30 @@ contains
     !> @param[inout]    name        :   The sampler method name.
     !> @param[inout]    namelist    :   The name of the missing namelist.
     !> @param[inout]    outputUnit  :   The file unit to which the message must be output.
-    subroutine warnUserAboutMissingNamelist(prefix,name,namelist,outputUnit)
+    subroutine warnUserAboutMissingNamelist(self, namelist)
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutMissingNamelist
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
+        use Constants_mod, only: NLC ! LCOV_EXCL_LINE
         use Constants_mod, only: IK
         use Err_mod, only: warn
         implicit none
-        character(*), intent(in)    :: prefix, name, namelist
-        integer(IK) , intent(in)    :: outputUnit
-        character(:), allocatable   :: msg
-        msg = "No namelist group of variables named "//namelist//" was detected in user's input file for "//name//" options.\n"//&
-              "All " // name // " options will be assigned appropriate default values."
-        call warn( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = msg )
-        if (outputUnit/=output_unit) then
-        ! LCOV_EXCL_START
-            call warn( prefix = prefix, outputUnit = output_unit, newline = "\n", msg = msg )
+        class(ParaMonte_type), intent(inout)    :: self
+        character(*), intent(in)                :: namelist
+        character(:), allocatable               :: msg
+        if (self%Image%isFirst .or. self%Image%isLeader) then
+            msg = "No namelist group of variables named "//namelist//" was detected in user's input file for "//self%name//" options."//NLC//&
+                  "All " // self%name // " options will be assigned appropriate default values."
+            call warn( prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg )
+            if (self%LogFile%unit == output_unit) then ! only the first image gets to print on the stdout
+                if (self%Image%isFirst) call warn( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg ) ! LCOV_EXCL_LINE
+            ! LCOV_EXCL_START
+            else
+                call warn( prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg )
+            end if
+            ! LCOV_EXCL_STOP
         end if
-        ! LCOV_EXCL_STOP
     end subroutine warnUserAboutMissingNamelist
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -921,12 +921,14 @@ contains
             ! LCOV_EXCL_STOP
             end if
 
+        ! LCOV_EXCL_START
         else
 
             call execute_command_line( command, wait=waitDefault, exitstat=exitstatDefault )
             return
 
         end if
+        ! LCOV_EXCL_STOP
 
     end subroutine executeCmd
 

@@ -187,8 +187,8 @@ contains
 
                         ! search for the paradxxx namelist group in the file.
 
-                        call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
-                        read(self%InputFile%Path%original,nml=paradxxx,iostat=self%InputFile%Err%stat) ! WARNING: "paradxxx" is NOT the same as fpp macro name "ParaDXXX"
+                        call self%warnUserAboutMissingNamelist(namelist = self%name)
+                        read(self%InputFile%Path%original,nml=paradxxx,iostat=self%InputFile%Err%stat) ! WARNING: "paradxxx" is NOT the same as fpp macro name "ParaDXXX". This is a real namelist name.
                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 
                     end if
@@ -197,7 +197,7 @@ contains
 
                         if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
 
-                            call self%warnUserAboutMissingNamelist(self%brand,self%name,"ParaDXXX",self%LogFile%unit)
+                            call self%warnUserAboutMissingNamelist(namelist = "ParaDXXX")
 
                         else
 
@@ -260,7 +260,7 @@ contains
                         ! search for the paradxxx namelist group in the file.
 
                         rewind(self%InputFile%unit)
-                        call self%warnUserAboutMissingNamelist(self%brand,self%name,self%name,self%LogFile%unit)
+                        call self%warnUserAboutMissingNamelist(namelist = self%name)
                         read(self%InputFile%unit, nml=paradxxx, iostat=self%InputFile%Err%stat) ! WARNING: "paradxxx" is NOT the same as fpp macro name "ParaDXXX"
                         self%Err = self%InputFile%getReadErr(self%InputFile%Err%stat,self%InputFile%Path%modified)
 
@@ -270,7 +270,7 @@ contains
 
                         if (is_iostat_end(self%Err%stat) .or. is_iostat_eor(self%Err%stat)) then
 
-                            call self%warnUserAboutMissingNamelist(self%brand,self%name,"ParaDXXX",self%LogFile%unit)
+                            call self%warnUserAboutMissingNamelist(namelist = "ParaDXXX")
 
                         else ! attempt to read the file one more time, without error handling, so that the compiler prints out the error message.
 

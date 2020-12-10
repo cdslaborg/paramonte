@@ -167,6 +167,7 @@ contains
         open(newunit=inFileUnit,file=inFilePath,status="old")
 
         if (Image%isFirst) then
+        ! LCOV_EXCL_START
             open(newunit=outFileUnit,file=outFilePath,status="replace")
             write(outFileUnit,"(9a30)"  ) "trigger"             &
                                         , "logPbol_1eV_20MeV"   &
@@ -178,6 +179,7 @@ contains
                                         , "logT90"              &
                                         , "logEffPF53"
         end if
+        ! LCOV_EXCL_STOP
 
         ! skip the header row in the input file
         read(inFileUnit,*)
@@ -185,7 +187,7 @@ contains
         ! read BATSE GRB data
         do igrb = 1, GRB%count
 
-            read(inFileUnit,*   ) Trigger(igrb)             &
+            read(inFileUnit,*   ) Trigger(igrb)             & ! LCOV_EXCL_LINE
                                 , GRB%Event(igrb)%logPF53   &
                                 , GRB%Event(igrb)%logEpk    &
                                 , GRB%Event(igrb)%logSbol   &
@@ -210,7 +212,8 @@ contains
             ! write the converted data to output file
 
             if (Image%isFirst) then
-                write(outFileUnit,"(I30,8E30.6)") Trigger(igrb)                                     & ! LCOV_EXCL_LINE
+            ! LCOV_EXCL_START
+                write(outFileUnit,"(I30,8E30.6)") Trigger(igrb)                                     &
                                                 , GRB%Event(igrb)%logPbol                           &
                                                 , GRB%Event(igrb)%logSbol                           &
                                                 , GRB%Event(igrb)%logEpk                            &
@@ -221,6 +224,7 @@ contains
                                                 , GRB%Event(igrb)%logPF53
 
             end if
+            ! LCOV_EXCL_STOP
 
         end do
 
