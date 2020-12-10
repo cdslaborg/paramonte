@@ -1091,6 +1091,7 @@ contains
                             , greedyAdaptationCount = 2_IK & ! This must remain larger than adaptiveUpdatePeriod
                             , adaptiveUpdatePeriod = 1_IK &
                             , outputRealPrecision = 16_IK &
+                            , chainFileFormat = "verbose" &
                             , scaleFactor = "5 * gelman" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
@@ -1131,6 +1132,7 @@ contains
                             , greedyAdaptationCount = 2_IK & ! This must remain larger than adaptiveUpdatePeriod
                             , adaptiveUpdatePeriod = 1_IK &
                             , outputRealPrecision = 16_IK &
+                            , chainFileFormat = "verbose" &
                             , scaleFactor = "5 * gelman" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
@@ -1197,6 +1199,7 @@ contains
                             , greedyAdaptationCount = 2_IK & ! This must remain larger than adaptiveUpdatePeriod
                             , adaptiveUpdatePeriod = 1_IK &
                             , outputRealPrecision = 16_IK &
+                            , chainFileFormat = "binary" &
                             , scaleFactor = "5 * gelman" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
@@ -1237,6 +1240,7 @@ contains
                             , greedyAdaptationCount = 2_IK & ! This must remain larger than adaptiveUpdatePeriod
                             , adaptiveUpdatePeriod = 1_IK &
                             , outputRealPrecision = 16_IK &
+                            , chainFileFormat = "binary" &
                             , scaleFactor = "5 * gelman" &
                             , proposalModel = "uniform" &
                             , randomSeed = 12345_IK &
