@@ -238,6 +238,8 @@ contains
 
         if (fileExists) then
 
+            ! read the system info from cache file.
+
             if (fileIsOpen) close(fileUnit)
 
             call getFileContents(cacheFile, SystemInfo%Records, SystemInfo%nRecord, SystemInfo%Err)
