@@ -1085,7 +1085,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_19" &
-                            , sampleRefinementMethod = "MaxCumSumAutoCorr" &
+                            , sampleRefinementMethod = "MaxCumSumAutoCorr-median" &
                             , targetAcceptanceRate = targetAcceptanceRate &
                             , parallelizationModel = "multi chain" &
                             , greedyAdaptationCount = 2_IK & ! This must remain larger than adaptiveUpdatePeriod
@@ -1125,7 +1125,7 @@ contains
                             , getLogFunc = getLogFuncMVN &
                             , mpiFinalizeRequested = .false. &
                             , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_19" &
-                            , sampleRefinementMethod = "MaxCumSumAutoCorr" &
+                            , sampleRefinementMethod = "MaxCumSumAutoCorr-median" &
                             , targetAcceptanceRate = targetAcceptanceRate &
                             , parallelizationModel = "multi chain" &
                             , greedyAdaptationCount = 2_IK & ! This must remain larger than adaptiveUpdatePeriod
@@ -1171,10 +1171,116 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
+    !> Test the ParaDXXX sampler to restart a complete simulation without an output sample file, in multichain parallelism.
+    !> Also, ensure the delayed rejection sampling is activated by setting a low value for `adaptiveUpdatePeriod` and
+    !> a large value for `scaleFactor`.
+    !> Also, avoid delayed rejection, as opposed to what is done in `test_runSampler_17()`.
+    !> Also, request the `cutoffAutoCorr` sample refinement and count method.
+    module function test_runSampler_20() result(assertion)
+        use Constants_mod, only: RK
+        implicit none
+        logical             :: assertion
+        type(ParaDXXX_type) :: PD1, PD2
+        real(RK), parameter :: targetAcceptanceRate(*) = [0.2_RK, 0.23_RK]
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        ! Run the fresh simulation
+
+        call PD1%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_20" &
+                            , sampleRefinementMethod = "cutoffAutoCorr-maximum" &
+                            , targetAcceptanceRate = targetAcceptanceRate &
+                            , parallelizationModel = "multi chain" &
+                            , greedyAdaptationCount = 2_IK & ! This must remain larger than adaptiveUpdatePeriod
+                            , adaptiveUpdatePeriod = 1_IK &
+                            , outputRealPrecision = 16_IK &
+                            , scaleFactor = "5 * gelman" &
+                            , proposalModel = "uniform" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = -50_IK &
+                            , chainSize = 700_IK &
+                            )
+        assertion = assertion .and. .not. PD1%Err%occurred
+
+        if (.not. assertion) then
+        ! LCOV_EXCL_START
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD1%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
+            return
+        end if
+        ! LCOV_EXCL_STOP
+
+        call Test%Image%sync()
+
+        block
+            use System_mod, only: removeFile
+            call removeFile(PD1%SampleFile%Path%original, PD1%Err) ! delete the sample file
+        end block
+
+        call Test%Image%sync()
+
+        ! restart the simulation with the same configuration
+
+        call PD2%runSampler ( ndim = 2_IK &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_20" &
+                            , sampleRefinementMethod = "cutoffAutoCorr-maximum" &
+                            , targetAcceptanceRate = targetAcceptanceRate &
+                            , parallelizationModel = "multi chain" &
+                            , greedyAdaptationCount = 2_IK & ! This must remain larger than adaptiveUpdatePeriod
+                            , adaptiveUpdatePeriod = 1_IK &
+                            , outputRealPrecision = 16_IK &
+                            , scaleFactor = "5 * gelman" &
+                            , proposalModel = "uniform" &
+                            , randomSeed = 12345_IK &
+                            , sampleSize = -50_IK &
+                            , chainSize = 700_IK &
+                            )
+
+        assertion = assertion .and. .not. PD2%Err%occurred
+
+        if (.not. assertion) then
+        ! LCOV_EXCL_START
+            if (Test%isDebugMode) then
+                write(Test%outputUnit,"(*(g0,:,' '))")
+                write(Test%outputUnit,"(*(g0,:,' '))")   "process, PD2%Err%occurred(1)", Test%Image%id, PD1%Err%occurred
+                write(Test%outputUnit,"(*(g0,:,' '))")
+            end if
+            return
+        end if
+        ! LCOV_EXCL_STOP
+
+        if (PD2%Image%isLeader) then
+        ! LCOV_EXCL_START
+            assertion = assertion .and. all( abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState) < 1.e-12_RK ) ! by default, the output precision is only 8 digits
+            if (.not. assertion) then
+            ! LCOV_EXCL_START
+                if (Test%isDebugMode) then
+                    write(Test%outputUnit,"(*(g0,:,' '))")
+                    write(Test%outputUnit,"(*(g0,:,' '))")   "process, Difference:", Test%Image%id, abs(PD2%RefinedChain%LogFuncState - PD1%RefinedChain%LogFuncState)
+                    write(Test%outputUnit,"(*(g0,:,' '))")
+                end if
+                return
+            end if
+        end if
+        ! LCOV_EXCL_STOP
+#endif
+    end function test_runSampler_20
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
     !> Test whether the read method of the `ParaMCMCRefinedChain_type` class can successfully read an external sample file.
     !> \remark
     !> This is similar to test #15, except that it also verifies the functionality of the optional argument `tenabled` to `readRefinedChain()`.
-    module function test_runSampler_20() result(assertion)
+    module function test_runSampler_21() result(assertion)
         use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type
         implicit none
         logical                 :: assertion
@@ -1189,7 +1295,7 @@ contains
 
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_20" &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_21" &
                             , mpiFinalizeRequested = .false. &
                             , sampleRefineMentMethod = "batchMeans-med" &
                             , outputRealPrecision = 15_IK &
@@ -1262,6 +1368,6 @@ contains
         end if
 
 #endif
-    end function test_runSampler_20
+    end function test_runSampler_21
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
