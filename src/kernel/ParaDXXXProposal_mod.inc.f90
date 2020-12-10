@@ -518,7 +518,7 @@ contains
 
         use Statistics_mod, only: getSamCovUpperMeanTrans, getWeiSamCovUppMeanTrans, mergeMeanCovUpper ! LCOV_EXCL_LINE
         use Matrix_mod, only: getCholeskyFactor, getLogSqrtDetPosDefMat
-        use Constants_mod, only: RK, IK, EPS_RK
+        use Constants_mod, only: RK, IK ! , EPS_RK
         use String_mod, only: num2str
         use Err_mod, only: abort, warn
         implicit none
@@ -803,7 +803,17 @@ contains
             end if
 
             !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
-            adaptationMeasure = sqrt( 1._RK - exp( 0.5*(mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum ) ) ! totalVariationUpperBound
+            adaptationMeasure = 1._RK - exp( 0.5*(mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum ) ! totalVariationUpperBound
+            if (adaptationMeasure>0._RK) then
+                adaptationMeasure = sqrt(adaptationMeasure) ! totalVariationUpperBound
+            ! LCOV_EXCL_START
+            elseif (adaptationMeasure<0._RK) then
+                call warn   ( prefix = mc_methodBrand &
+                            , outputUnit = mc_logFileUnit &
+                            , msg = mc_negativeTotalVariationMsg//num2str(adaptationMeasure) )
+                adaptationMeasure = 0._RK
+            end if
+            ! LCOV_EXCL_STOP
             mv_logSqrtDetOld_save = logSqrtDetNew
 
 !block
@@ -820,15 +830,6 @@ contains
 !write(*,*)
 !end if
 !end block
-
-            if (adaptationMeasure<0._RK) then
-                ! LCOV_EXCL_START
-                call warn   ( prefix = mc_methodBrand &
-                            , outputUnit = mc_logFileUnit &
-                            , msg = mc_negativeTotalVariationMsg//num2str(adaptationMeasure) )
-                adaptationMeasure = 0._RK
-                ! LCOV_EXCL_STOP
-            end if
 
             ! update the higher-stage delayed-rejection Cholesky Lower matrices
 
