@@ -1445,7 +1445,7 @@ contains
         type(Err_type), intent(out), optional   :: Err
        !logical     , intent(in), optional      :: isWindows
         character(*), parameter                 :: PROCEDURE_NAME = MODULE_NAME // "@removeFile()"
-        integer                                 :: fileUnit, iostat, i
+        integer                                 :: fileUnit, i
         logical                                 :: isPresentErr
         logical                                 :: fileExists
         logical                                 :: isOpen
