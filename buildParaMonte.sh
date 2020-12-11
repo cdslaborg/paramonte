@@ -92,7 +92,7 @@ pmattn=" ${pmcolor}-- ${BUILD_NAME} -${ColorReset}"
 pmnote="${pmattn} ${BoldMagenta}NOTE:${ColorReset}"
 pmwarn="${pmattn} ${BoldYellow}WARNING:${ColorReset}"
 pmfatal="${pmattn} ${BoldRed}FATAL:${ColorReset}"
-warning="${pmattn} ${BoldYellow}WARNING${ColorReset}"
+warning="${BoldYellow}WARNING${ColorReset}"
 
 workingDir="$(pwd)"
 sourceFileDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -1007,17 +1007,17 @@ if [ "${CAF_ENABLED}" = "true" ]; then
 
         if [ -z "${intelFortranMpiWrapperPath+x}" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: Failed to identify the Intel MPI library."
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The Intel MPI library is required to compile"
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: Coarray Fortran applications via Intel compilers."
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The ParaMonte build will continue at the risk of failing..."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Failed to identify the Intel MPI library."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The Intel MPI library is required to compile"
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Coarray Fortran applications via Intel compilers."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The ParaMonte build will continue at the risk of failing..."
             echo >&2
         elif [ -z "${intelFortranCompilerPath+x}" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: Failed to identify the Intel Fortran compiler path."
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The Intel MPI library and Fortran compiler are required"
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: to compile Coarray Fortran applications via Intel compilers."
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The ParaMonte build will continue at the risk of failing..."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Failed to identify the Intel Fortran compiler path."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The Intel MPI library and Fortran compiler are required"
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: to compile Coarray Fortran applications via Intel compilers."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The ParaMonte build will continue at the risk of failing..."
             echo >&2
         else
             cafCompilerPath="${intelFortranCompilerPath}"
@@ -1042,8 +1042,8 @@ if [ "${CAF_ENABLED}" = "true" ]; then
             compareVersions "$cafVersion" "$cafVersionRequired"
             if [ "$?" = "2" ]; then
                 echo >&2
-                echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The existing OpenCoarrays caf compiler wrapper version is not ParaMonte compatible."
-                echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: A fresh installation of the OpenCoarrays library might be needed."
+                echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The existing OpenCoarrays caf compiler wrapper version is not ParaMonte compatible."
+                echo >&2 "-- ${BUILD_NAME}CAF - WARNING: A fresh installation of the OpenCoarrays library might be needed."
                 echo >&2
                 cafInstallEnabled=true
                 #mpiInstallEnabled=true
@@ -1053,8 +1053,8 @@ if [ "${CAF_ENABLED}" = "true" ]; then
             fi
         else
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The OpenCoarrays caf compiler wrapper was not found on your system."
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: A fresh installation of the OpenCoarrays library might be needed."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The OpenCoarrays caf compiler wrapper was not found on your system."
+            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: A fresh installation of the OpenCoarrays library might be needed."
             echo >&2
             cafInstallEnabled=true
             #mpiInstallEnabled=true
@@ -1110,10 +1110,10 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
                     else
                         if [ -z ${MPIEXEC_PATH_USER+x} ]; then
                             echo >&2
-                            echo >&2 "-- ${BUILD_NAME} - ${warning}: Failed to identify the Intel MPI library."
-                            echo >&2 "-- ${BUILD_NAME} - ${warning}: The Intel MPI library is required to compile"
-                            echo >&2 "-- ${BUILD_NAME} - ${warning}: the parallel ParaMonte library via Intel compilers."
-                            echo >&2 "-- ${BUILD_NAME} - ${warning}: The library build will continue at the risk of failing..."
+                            echo >&2 "-- ${BUILD_NAME} - WARNING: Failed to identify the Intel MPI library."
+                            echo >&2 "-- ${BUILD_NAME} - WARNING: The Intel MPI library is required to compile"
+                            echo >&2 "-- ${BUILD_NAME} - WARNING: the parallel ParaMonte library via Intel compilers."
+                            echo >&2 "-- ${BUILD_NAME} - WARNING: The library build will continue at the risk of failing..."
                             echo >&2
                         fi
                     fi
@@ -1153,9 +1153,9 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
         else
             gnuInstallEnabled=true
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: The GNU Fortran compiler could not be found on your system."
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: If you do not have GNU compiler suite installed on your system,"
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte may be able to install the GNU compiler suite for you."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: The GNU Fortran compiler could not be found on your system."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have GNU compiler suite installed on your system,"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install the GNU compiler suite for you."
             echo >&2
         fi
 
@@ -1186,9 +1186,9 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
             # enable usage of the local installation of the GNU compiler for MPI-GNUcompiler compatibility
             gnuInstallEnabled=true
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: The mpiexec executable could not be found on your system."
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: If you do not have an MPI library installed on your system,"
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte may be able to install the MPICH MPI library for you."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install the MPICH MPI library for you."
             echo >&2
         fi
 
@@ -1249,10 +1249,10 @@ if ! [ -z ${MPIEXEC_PATH_USER+x} ]; then
     if [ -f "${MPIEXEC_PATH_USER}" ]; then
         if ! [ -z ${MPIEXEC_PATH+x} ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: The specified mpiexec path via the input flag -M | --mpiexec"
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: will overwrite the inferred mpiexec path by the build script."
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: user-specified mpiexec path: ${MPIEXEC_PATH_USER}"
-            echo >&2 "-- ${BUILD_NAME} - ${warning}:       inferred mpiexec path: ${MPIEXEC_PATH}"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: The specified mpiexec path via the input flag -M | --mpiexec"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: will overwrite the inferred mpiexec path by the build script."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: user-specified mpiexec path: ${MPIEXEC_PATH_USER}"
+            echo >&2 "-- ${BUILD_NAME} - WARNING:       inferred mpiexec path: ${MPIEXEC_PATH}"
             echo >&2
             echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
             echo >&2
@@ -1344,11 +1344,11 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
     if [ ! -d "${ParaMonte_REQ_DIR}" ] || [ ! "$(ls -A ${ParaMonte_REQ_DIR})" ]; then
 
         echo >&2
-        echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte build with the requested configuration requires the installations"
-        echo >&2 "-- ${BUILD_NAME} - ${warning}: of either OpenCoarrays, MPICH MPI library (on Linux) or Open-MPI MPI library (on macOS),"
-        echo >&2 "-- ${BUILD_NAME} - ${warning}: GNU compilers, or CMAKE on your system."
-        echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte can install all  prerequisites on your system from the web, if needed."
-        echo >&2 "-- ${BUILD_NAME} - ${warning}: The prerequisite build objects may occupy up to 5Gb of your system's memory."
+        echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte build with the requested configuration requires the installations"
+        echo >&2 "-- ${BUILD_NAME} - WARNING: of either OpenCoarrays, MPICH MPI library (on Linux) or Open-MPI MPI library (on macOS),"
+        echo >&2 "-- ${BUILD_NAME} - WARNING: GNU compilers, or CMAKE on your system."
+        echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte can install all  prerequisites on your system from the web, if needed."
+        echo >&2 "-- ${BUILD_NAME} - WARNING: The prerequisite build objects may occupy up to 5Gb of your system's memory."
         echo >&2
 
         ############################################################################################################################
@@ -1404,7 +1404,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
             else
 
-                echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte installation will proceed with no guarantee of success."
+                echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte installation will proceed with no guarantee of success."
                 echo >&2
                 #exit 1
 
@@ -2159,23 +2159,23 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         else
             EXAMPLE_MATLAB_ROOT_DIR="/usr/local/MATLAB/${EXAMPLE_MATLAB_VERSION}"
         fi
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Please add MATLAB to your environmental variable PATH and rerun the install script."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: For example, in your current terminal, try:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Operating Systems is a string like the following:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: find the installation location of MATLAB by typing the following command in your MATLAB session:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     matlabroot"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Please add MATLAB to your environmental variable PATH and rerun the install script."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: For example, in your current terminal, try:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Operating Systems is a string like the following:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: find the installation location of MATLAB by typing the following command in your MATLAB session:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     matlabroot"
         echo >&2
         if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
             answerNotGiven=true
@@ -2199,7 +2199,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB dynamic library build..."
+            echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: skipping the ParaMonte MATLAB dynamic library build..."
             echo >&2
         else
             echo >&2
@@ -2405,10 +2405,10 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
             if [ "${MPIEXEC_PATH_RESET_ENABLED}" = "true" ]; then unset MPIEXEC_PATH; fi
         else
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: No tests of the ParaMonte library will be performed."
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: The mpiexec executable could not be found on your system."
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: If you do not have an MPI library installed on your system,"
-            echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte may be able to install one for you."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: No tests of the ParaMonte library will be performed."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
+            echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
+            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install one for you."
             echo >&2
         fi
     else
@@ -2547,23 +2547,23 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         else
             EXAMPLE_MATLAB_ROOT_DIR="/usr/local/MATLAB/${EXAMPLE_MATLAB_VERSION}"
         fi
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Please add MATLAB to your environmental variable PATH and rerun the install script."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: For example, in your current terminal, try:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Operating Systems is a string like the following:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: find the installation location of MATLAB by typing the following command in your MATLAB session:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     matlabroot"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Please add MATLAB to your environmental variable PATH and rerun the install script."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: For example, in your current terminal, try:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Operating Systems is a string like the following:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: find the installation location of MATLAB by typing the following command in your MATLAB session:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     matlabroot"
         echo >&2
         if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
             answerNotGiven=true
@@ -2587,7 +2587,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB dynamic library build..."
+            echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: skipping the ParaMonte MATLAB dynamic library build..."
             echo >&2
         else
             echo >&2
@@ -2914,9 +2914,9 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                 else
 
                     echo >&2
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: the directory for the *.gcda *.gcno codecov data files does not exist."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: the expected directory path: ${gcovKernelTestDataDir}"
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: skipping code coverage report generation for the test files..."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: the directory for the *.gcda *.gcno codecov data files does not exist."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: the expected directory path: ${gcovKernelTestDataDir}"
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: skipping code coverage report generation for the test files..."
                     echo >&2
 
                 fi
@@ -2978,8 +2978,8 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         } || {
 
                             echo >&2
-                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: Code Coverage report generation for the ParaMonte test source files via lcov tool failed."
-                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: skipping..."
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: Code Coverage report generation for the ParaMonte test source files via lcov tool failed."
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: skipping..."
                             echo >&2
 
                         }
@@ -2987,10 +2987,10 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     else
 
                         echo >&2
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: Failed to detect the *.gcda *.gcno codecov data files for the ParaMonte test source files."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: the expected directory path for the files: ${gcovKernelTestDir}"
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: The coverage report for the ParaMonte test source file will not be included."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: skipping the lcov code coverage report generation for the test files..."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: Failed to detect the *.gcda *.gcno codecov data files for the ParaMonte test source files."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: the expected directory path for the files: ${gcovKernelTestDir}"
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: The coverage report for the ParaMonte test source file will not be included."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: skipping the lcov code coverage report generation for the test files..."
                         echo >&2
 
                     fi

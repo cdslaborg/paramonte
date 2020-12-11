@@ -456,15 +456,15 @@ contains
         "https://www.cdslab.org/paramonte/\n"// &
         "\n"
 
-        call self%Decor%writeDecoratedText  ( text=self%Decor%text &
-                                            , symbol="*" &
-                                            , width=132 &
-                                            , thicknessHorz=4 &
-                                            , thicknessVert=2 &
-                                            , marginTop=1 &
-                                            , marginBot=2 &
-                                            , outputUnit=self%LogFile%unit &
-                                            , newLine="\n" &
+        call self%Decor%writeDecoratedText  ( text=self%Decor%text & ! LCOV_EXCL_LINE
+                                            , symbol="*" & ! LCOV_EXCL_LINE
+                                            , width=132 & ! LCOV_EXCL_LINE
+                                            , thicknessHorz=4 & ! LCOV_EXCL_LINE
+                                            , thicknessVert=2 & ! LCOV_EXCL_LINE
+                                            , marginTop=1 & ! LCOV_EXCL_LINE
+                                            , marginBot=2 & ! LCOV_EXCL_LINE
+                                            , outputUnit=self%LogFile%unit & ! LCOV_EXCL_LINE
+                                            , newLine="\n" & ! LCOV_EXCL_LINE
                                             )
 
     end subroutine addSplashScreen
@@ -709,17 +709,15 @@ contains
         self%procArgNeeded = self%procArgHasPriority .or. (.not.self%inputFileArgIsPresent)
 
 #if defined FORTRAN_ENABLED
-        if (self%Image%isFirst) then
-            if (self%procArgHasPriority) then
-                msg =   "Variable inputFileHasPriority = .false.\n&
-                        &All variable values will be overwritten by the corresponding procedure argument values,\n&
-                        &only if provided as procedure arguments."
-            else
-                msg =   "Variable inputFileHasPriority = .true.\n&
-                        &All variable values will be read from the user-provided input file"
-            end if
-            call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg )
+        if (self%procArgHasPriority) then
+            msg =   "Variable inputFileHasPriority = .false.\n&
+                    &All variable values will be overwritten by the corresponding procedure argument values,\n&
+                    &only if provided as procedure arguments."
+        else
+            msg =   "Variable inputFileHasPriority = .true.\n&
+                    &All variable values will be read from the user-provided input file"
         end if
+        if (self%Image%isFirst) call self%note(prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg) ! LCOV_EXCL_LINE
 #endif
     end subroutine setWarnAboutProcArgHasPriority
 
@@ -812,15 +810,7 @@ contains
 
         ! in parallel mode, ensure the directory exists before moving on
 
-#if defined CAF_ENABLED
-        sync all
-#elif defined MPI_ENABLED
-        block
-            use mpi
-            integer :: ierrMPI
-            call mpi_barrier(mpi_comm_world,ierrMPI)
-        end block
-#endif
+        call self%Image%sync()
 
         if (len_trim(adjustl(self%SpecBase%OutputFileName%namePrefix))==0) then
             msg = msg //NLC//NLC// "No user-input filename prefix for " // self%name // " output files detected."//NLC//&
@@ -832,9 +822,7 @@ contains
 
         ! Variable msg will be used down this subroutine, so it should not be changed beyond this point
         msg  =  msg //NLC//NLC// self%name // " output files will be prefixed with:"//NLC// self%SpecBase%OutputFileName%pathPrefix
-        if (self%Image%isFirst) then
-            call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg )
-        end if
+        if (self%Image%isFirst) call self%note(prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg) ! LCOV_EXCL_LINE
 
         ! Generate the output filenames, search for pre-existing runs, and open the report file:
 
@@ -997,7 +985,9 @@ contains
         ! print the stdout message for generating / appending the output report file
 
         blockLogFileListByFirstImage: if (self%Image%isFirst) then
-
+#if defined CAF_ENABLED || defined MPI_ENABLED
+! LCOV_EXCL_START
+#endif
             ! print the stdout message for generating / appending the output report file(s)
 
             call self%note  ( prefix = self%brand               &
@@ -1044,18 +1034,13 @@ contains
                             )
 
         end if blockLogFileListByFirstImage
+#if defined CAF_ENABLED || defined MPI_ENABLED
+! LCOV_EXCL_STOP
+#endif
 
         ! ensure all images sync here to avoid wrong inquire result for the existence of the files
 
-#if defined CAF_ENABLED
-        sync all
-#elif defined MPI_ENABLED
-        block
-            use mpi
-            integer :: ierrMPI
-            call mpi_barrier(mpi_comm_world,ierrMPI)
-        end block
-#endif
+        call self%Image%sync()
 
         ! open the output files
         ! Intel ifort SHARED attribute is essential for file unlocking

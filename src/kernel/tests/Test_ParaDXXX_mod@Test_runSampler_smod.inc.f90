@@ -733,7 +733,7 @@ contains
             end if
 
             ! NOTE: Keep in mind that `PD%RefinedChain` is a weighted chain internally, but unweighted when read from the external file.
-            assertion = assertion .and. size(RefinedChain%LogFuncState(:,1))==size(PD%RefinedChain%LogFuncState(:,1)) .and. sum(PD%RefinedChain%Weight)==size(PD%RefinedChain%LogFuncState(1,:))
+            assertion = assertion .and. size(RefinedChain%LogFuncState(:,1))==size(PD%RefinedChain%LogFuncState(:,1)) .and. sum(PD%RefinedChain%Weight)==size(RefinedChain%LogFuncState(1,:))
 
             if (.not. assertion) then
                 if (Test%isDebugMode) then
@@ -1339,7 +1339,7 @@ contains
             ! LCOV_EXCL_STOP
 
             ! NOTE: Keep in mind that `PD%RefinedChain` is a weighted chain internally, but unweighted when read from the external file.
-            assertion = assertion .and. size(RefinedChain%LogFuncState(:,1))==size(PD%RefinedChain%LogFuncState(:,1)) .and. sum(PD%RefinedChain%Weight)==size(PD%RefinedChain%LogFuncState(1,:))
+            assertion = assertion .and. size(RefinedChain%LogFuncState(:,1))==size(PD%RefinedChain%LogFuncState(:,1)) .and. sum(PD%RefinedChain%Weight)==size(RefinedChain%LogFuncState(1,:))
 
             if (.not. assertion) then
             ! LCOV_EXCL_START

@@ -114,8 +114,8 @@ endif()
 
 set(pmcolor "${BoldCyan}")
 set(pmattn  " ${pmcolor}ParaMonte -${ColorReset}")
-set(pmnote  "${pmattn} ${BoldMagenta}NOTE:${ColorReset}")
-set(pmwarn  "${pmattn} ${BoldYellow}WARNING:${ColorReset}")
+set(pmnote  "${pmattn} ${BoldYellow}NOTE:${ColorReset}")
+set(pmwarn  "${pmattn} ${BoldMagenta}WARNING:${ColorReset}")
 set(pmfatal "${pmattn} ${BoldRed}FATAL ERROR:${ColorReset}")
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
