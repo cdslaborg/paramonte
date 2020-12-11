@@ -63,7 +63,7 @@ intelVersionParaMonteCompatible="18.0.0"
 #### set up color coding
 ####################################################################################################################################
 
-Esc="\e"
+asciiEscVal=27; Esc="$(printf "\\$(printf "%o" "${asciiEscVal}")")";
 ColorReset="${Esc}[m"
 ColorBold="${Esc}[1m"
 Red="${Esc}[31m"
