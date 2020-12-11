@@ -694,6 +694,7 @@ contains
     !> Test whether the read method of the `ParaMCMCRefinedChain_type` class can successfully read an external sample file.
     module function test_runSampler_15() result(assertion)
         use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type
+        use Statistics_mod, only: flatten
         implicit none
         logical                 :: assertion
         real(RK)    , parameter :: tolerance = 1.e-10_RK
@@ -702,6 +703,7 @@ contains
         type(ParaDXXX_type)     :: PD
         type(RefinedChain_type) :: RefinedChain
         real(RK), allocatable   :: Difference(:,:)
+        real(RK), allocatable   :: FlattenedLogFuncState(:,:)
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -733,7 +735,8 @@ contains
             end if
 
             ! NOTE: Keep in mind that `PD%RefinedChain` is a weighted chain internally, but unweighted when read from the external file.
-            assertion = assertion .and. size(RefinedChain%LogFuncState(:,1))==size(PD%RefinedChain%LogFuncState(:,1)) .and. sum(PD%RefinedChain%Weight)==size(RefinedChain%LogFuncState(1,:))
+            FlattenedLogFuncState = flatten(nd = PD%nd%val + 1, np = PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%compact, Point = PD%RefinedChain%LogFuncState, Weight = PD%RefinedChain%Weight)
+            assertion = assertion .and. all( shape(FlattenedLogFuncState) == shape(RefinedChain%LogFuncState) )
 
             if (.not. assertion) then
                 if (Test%isDebugMode) then
@@ -748,7 +751,7 @@ contains
                 return
             end if
 
-            Difference = abs(RefinedChain%LogFuncState-PD%RefinedChain%LogFuncState)
+            Difference = abs(FlattenedLogFuncState - RefinedChain%LogFuncState)
             assertion = assertion .and. all(Difference < tolerance)
 
             if (.not. assertion) then
@@ -1287,6 +1290,7 @@ contains
     !> This is similar to test #15, except that it also verifies the functionality of the optional argument `tenabled` to `readRefinedChain()`.
     module function test_runSampler_21() result(assertion)
         use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type
+        use Statistics_mod, only: flatten
         implicit none
         logical                 :: assertion
         real(RK)    , parameter :: tolerance = 1.e-10_RK
@@ -1295,6 +1299,7 @@ contains
         type(ParaDXXX_type)     :: PD
         type(RefinedChain_type) :: RefinedChain
         real(RK), allocatable   :: Difference(:,:)
+        real(RK), allocatable   :: FlattenedLogFuncState(:,:)
         assertion = .true.
 #if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
 
@@ -1339,7 +1344,8 @@ contains
             ! LCOV_EXCL_STOP
 
             ! NOTE: Keep in mind that `PD%RefinedChain` is a weighted chain internally, but unweighted when read from the external file.
-            assertion = assertion .and. size(RefinedChain%LogFuncState(:,1))==size(PD%RefinedChain%LogFuncState(:,1)) .and. sum(PD%RefinedChain%Weight)==size(RefinedChain%LogFuncState(1,:))
+            FlattenedLogFuncState = flatten(nd = PD%nd%val + 1, np = PD%RefinedChain%Count(PD%RefinedChain%numRefinement)%compact, Point = PD%RefinedChain%LogFuncState, Weight = PD%RefinedChain%Weight)
+            assertion = assertion .and. all( shape(FlattenedLogFuncState) == shape(RefinedChain%LogFuncState) )
 
             if (.not. assertion) then
             ! LCOV_EXCL_START
@@ -1356,7 +1362,7 @@ contains
             end if
             ! LCOV_EXCL_STOP
 
-            Difference = abs(RefinedChain%LogFuncState-PD%RefinedChain%LogFuncState)
+            Difference = abs(FlattenedLogFuncState - RefinedChain%LogFuncState)
             assertion = assertion .and. all(Difference < tolerance)
 
             if (.not. assertion) then

@@ -74,6 +74,10 @@ module Statistics_mod
         module procedure :: getMean_2D
     end interface getMean
 
+    interface flatten
+        module procedure :: flatten_2D
+    end interface flatten
+
     interface getNormData
         module procedure :: getNormData_2D, normalizeWeightedData_2d
     end interface getNormData
@@ -705,6 +709,49 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
+    !> Flatten the input `Point` array such that each element of the output 
+    !> `FlattenedPoint` array has the same unity weight as elements in the array.
+    !>
+    !> \param[in]       nd      :   The number of dimensions of the input sample.
+    !> \param[in]       np      :   The number of points in the sample.
+    !> \param[in]       Point   :   The array of shape `(nd,np)` containing the sample.
+    !> \param[in]       Weight  :   The vector of length `np` containing the weights of points in the sample.
+    !>                              The values of elements of Weight are allowed to be negative, in which case,
+    !>                              the corresponding elements will be excluded from the output `FlattenedPoint`.
+    !>
+    !> \warning
+    !> Note the shape of the input argument `Point(nd,np)`.
+    !>
+    !> \return
+    !> `FlattenedPoint` : The flattened array whose elements all have the same weight.
+    pure function flatten_2D(nd,np,Point,Weight) result(FlattenedPoint)
+#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+        !DEC$ ATTRIBUTES DLLEXPORT :: flatten_2D
+#endif
+        ! the implementation for one-dimension is very concise and nice: mean = sum(Weight*Point) / sum(Weight)
+        implicit none
+        integer(IK), intent(in) :: np,nd            ! np: number of observations, nd: number of variables for each observation
+        real(RK)   , intent(in) :: Point(nd,np)     ! Point is the data matrix
+        integer(IK), intent(in) :: Weight(np)       ! sample weight
+        integer(IK)             :: ip, iweight, sumWeight, counter
+        real(RK), allocatable   :: FlattenedPoint(:,:)
+        sumWeight = 0_IK
+        do ip = 1, np
+            if (Weight(ip)>0_IK) sumWeight = sumWeight + Weight(ip)
+        end do
+        allocate(FlattenedPoint(nd,sumWeight))
+        counter = 0_IK
+        do ip = 1, np
+            do iweight = 1, Weight(ip)
+                counter = counter + 1_IK
+                FlattenedPoint(1:nd,counter) = Point(1:nd,ip)
+            end do
+        end do
+    end function flatten_2D
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
     !> Return the mean of a sample of multidimensional points.
     !>
     !> \param[in]       nd      :   The number of dimensions of the input sample.
@@ -713,7 +760,7 @@ contains
     !> \param[in]       Weight  :   The vector of length `np` containing the weights of points in the sample (**optional**, default = vector of ones).
     !>
     !> \warning
-    !> Note the shape of the input argument `Point(nd,np)
+    !> Note the shape of the input argument `Point(nd,np)`.
     !>
     !> \return
     !> `Mean` : The output mean vector of length `nd`.
