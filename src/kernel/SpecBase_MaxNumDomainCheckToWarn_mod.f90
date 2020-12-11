@@ -91,7 +91,7 @@ contains
         &When out-of-domain sampling happens frequently, it is a strong indication of something fundamentally wrong in the &
         &simulation. It is, therefore, important to closely inspect and monitor for such frequent out-of-domain samplings. &
         &This can be done by setting maxNumDomainCheckToWarn to an appropriate value determined by the user. &
-        The default value is " // num2str(MaxNumDomainCheckToWarnObj%def) // "."
+        &The default value is " // num2str(MaxNumDomainCheckToWarnObj%def) // "."
     end function constructMaxNumDomainCheckToWarn
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

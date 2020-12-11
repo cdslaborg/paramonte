@@ -156,6 +156,7 @@ else()
     -fbacktrace                         # trace back for debugging
    #--pedantic                          # issue warnings for uses of extensions to the Fortran standard. Gfortran10 with MPICH 3.2 in debug mode crashes with this flag at mpi_bcast. Excluded until MPICH upgraded.
     -fmax-errors=10                     # max diagnostic error count
+    -Wno-maybe-uninitialized            # avoid warning of no array pre-allocation.
     -Wall                               # enable all warnings: 
                                         # -Waliasing, -Wampersand, -Wconversion, -Wsurprising, -Wc-binding-type, -Wintrinsics-std, -Wtabs, -Wintrinsic-shadow,
                                         # -Wline-truncation, -Wtarget-lifetime, -Winteger-division, -Wreal-q-constant, -Wunused, -Wundefined-do-loop

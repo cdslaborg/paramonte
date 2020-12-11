@@ -217,7 +217,7 @@ contains
         type(String_type)                               :: Record
         integer(IK)                                     :: chainFileUnit, i, iState, delimiterLen, chainSizeDefault
         integer(IK)                                     :: irowLastUniqueSample
-        integer(IK)                                     :: numColTot, lenColHeader
+        integer(IK)                                     :: numColTot
         logical                                         :: fileExists, fileIsOpen, delimHasBegun, delimHasEnded, isBinary, isCompact, isVerbose
 
         Err%occurred = .false.

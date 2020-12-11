@@ -532,8 +532,8 @@ contains
         implicit none
         logical                     :: assertion
         integer(IK) , parameter     :: n = 5, nn = 10
-        integer(CK) , parameter     :: Zroots_ref(nn) = [1._CK, 0._CK, 0._CK, 0._CK, 0._CK, 1._CK, 0._CK, 0._CK, 0._CK, 0._CK]
-        integer(CK), allocatable    :: Zroots(:)
+        complex(CK) , parameter     :: Zroots_ref(nn) = [1._CK, 0._CK, 0._CK, 0._CK, 0._CK, 1._CK, 0._CK, 0._CK, 0._CK, 0._CK]
+        complex(CK), allocatable    :: Zroots(:)
         Zroots = zroots_unity(n,nn)
         assertion = all(real(Zroots) == real(Zroots_ref))! .and. all(aimag(Zroots) == aimag(Zroots_ref))
         if (Test%isDebugMode .and. .not. assertion) then

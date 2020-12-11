@@ -92,21 +92,23 @@ module Constants_mod
     real(RK)    , parameter :: LOG10NAPIER = log10(NAPIER)                              !< @public Log10 of Napier constant (= 0.434294481903259_RK).
     real(RK)    , parameter :: EPS_RK = epsilon(1._RK)                                  !< @public the smallest representable real increment (highest precision) by the machine
     real(RK)    , parameter :: SQRT_EPS_RK = sqrt(EPS_RK)                               !< @public the smallest representable real increment (highest precision) by the machine
-    real(RK)    , parameter :: HUGE_IK = huge(1_IK)                                     !< @public largest number of kind RK
     real(RK)    , parameter :: HUGE_RK = huge(1._RK)                                    !< @public largest number of kind RK
     real(RK)    , parameter :: TINY_RK = tiny(1._RK)                                    !< @public tiniest number of kind RK
     real(RK)    , parameter :: LOGHUGE_RK = log(HUGE_RK)                                !< @public log of the largest number of kind RK
     real(RK)    , parameter :: LOGTINY_RK = log(TINY_RK)                                !< @public log of the smallest number of kind RK
-    real(RK)    , parameter :: POSINF_RK =  HUGE_RK / 1.e1_RK                           !< @public the division is done to avoid overflow in output
-    real(RK)    , parameter :: POSINF_IK =  HUGE_IK / 2_IK                              !< @public the division is done to avoid overflow in output
+    real(RK)    , parameter :: POSINF_RK =  HUGE_RK / 1.e1_RK                           !< @public positive virtual infinite real. The division is done to avoid overflow in output
+    real(RK)    , parameter :: NEGINF_RK = -POSINF_RK                                   !< @public negative virtual infinite real. Defined to avoid underflow/overflow and compatibility with Dynamic languages.
     real(RK)    , parameter :: LOGINF_RK =  log(POSINF_RK)                              !< @public represents the logarithm of the largest representable number
     real(RK)    , parameter :: NEGLOGINF_RK = -LOGINF_RK                                !< @public represents the logarithm of the smallest representable number
-    real(RK)    , parameter :: LOGINF_IK =  log(POSINF_IK)
-    real(RK)    , parameter :: NEGINF_RK = -POSINF_RK
-    real(RK)    , parameter :: NEGINF_IK = -POSINF_IK
-    real(RK)    , parameter :: NULL_RK = -HUGE_RK
+    integer(IK) , parameter :: HUGE_IK = huge(1_IK)                                     !< @public largest number of kind RK
+    integer(IK) , parameter :: POSINF_IK =  HUGE_IK / 2_IK                              !< @public positive virtually-infinite integer. the division is done to avoid overflow in output
+    integer(IK) , parameter :: NEGINF_IK = -POSINF_IK                                   !< @public negative virtually-infinite integer.
+    real(RK)    , parameter :: LOGINF_IK =  log(real(POSINF_IK,RK))                     !< @public the natural logarithm of the positive virtually-infinite integer.
+
+    real(RK)    , parameter :: NULL_RK = -HUGE_RK                                       !< @public the value used to represent unassigned variables.
     integer(IK) , parameter :: NULL_IK = -HUGE_IK
     character(1), parameter :: NULL_SK = achar(30)                                      ! This must remain a single character as it is assumed to be so in multiple routines: Record separator
+
     character(1), parameter :: NLC = achar(10)                                          ! the New Line Character
     character(1), parameter :: TAB = achar(9)                                           ! the TAB Character
     character(*), parameter :: UNDEFINED = "UNDEFINED"

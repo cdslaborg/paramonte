@@ -589,8 +589,6 @@ contains
         logical                     :: assertion
         type(RandomFileName_type)   :: RFN
         type(OS_type)               :: OS
-        logical                     :: fileExists
-        integer                     :: fileUnit
 
         RFN = RandomFileName_type(key="test_mkdir_1")
         assertion = .not. RFN%Err%occurred
@@ -618,8 +616,6 @@ contains
         logical                     :: assertion
         type(RandomFileName_type)   :: RFN
         type(OS_type)               :: OS
-        logical                     :: fileExists
-        integer                     :: fileUnit
 
         RFN = RandomFileName_type(key="test_mkdir_2")
         assertion = .not. RFN%Err%occurred
@@ -646,8 +642,6 @@ contains
         implicit none
         logical                     :: assertion
         type(RandomFileName_type)   :: RFN
-        logical                     :: fileExists
-        integer                     :: fileUnit
 
         RFN = RandomFileName_type(key="test_mkdir_3")
         assertion = .not. RFN%Err%occurred

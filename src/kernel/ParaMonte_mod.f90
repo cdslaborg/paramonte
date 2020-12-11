@@ -127,7 +127,7 @@ module ParaMonte_mod
     use System_mod, only: SystemInfo_type
     use Parallelism_mod, only: Image_type
     use Decoration_mod, only: Decoration_type
-    use Constants_mod, only: RK, IK, CIK, CRK, HUGE_IK, HUGE_RK
+    use Constants_mod, only: RK, IK, HUGE_IK, HUGE_RK
     use String_mod, only: IntStr_type
     use System_mod, only: OS_type
     use Timer_mod, only: Timer_type

@@ -414,7 +414,7 @@ contains
         implicit none
         real(RK), intent(in)    :: logT90
         real(RK)                :: logEffectivePeakPhotonFluxCorrection
-        logEffectivePeakPhotonFluxCorrection    = THRESH_ERFC_AMP * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))
+        logEffectivePeakPhotonFluxCorrection    = real(THRESH_ERFC_AMP,RK) * erfc(real((logT90-THRESH_ERFC_AVG)/THRESH_ERFC_STD,kind=RK))
                                               ! + THRESH_ERFC_BASE ! adding this term will make the effective peak flux equivalent to PF1024ms
     end function getLogEffectivePeakPhotonFluxCorrection_SPR
 

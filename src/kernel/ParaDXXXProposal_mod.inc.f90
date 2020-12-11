@@ -150,7 +150,6 @@
     real(RK)        , save  , allocatable   :: mc_DelayedRejectionScaleFactorVec(:)
     real(RK)        , save  , allocatable   :: mc_DomainLowerLimitVec(:)
     real(RK)        , save  , allocatable   :: mc_DomainUpperLimitVec(:)
-    real(RK)        , save  , allocatable   :: mc_negLogVolUnitBall
     logical         , save  , allocatable   :: mc_isAsciiRestartFileFormat
     logical         , save  , allocatable   :: mc_isBinaryRestartFileFormat
     character(:)    , save  , allocatable   :: mc_MaxNumDomainCheckToWarnMsg
@@ -159,6 +158,9 @@
     character(:)    , save  , allocatable   :: mc_restartFileFormat
     character(:)    , save  , allocatable   :: mc_methodBrand
     character(:)    , save  , allocatable   :: mc_methodName
+#if defined UNIFORM
+    real(RK)        , save  , allocatable   :: mc_negLogVolUnitBall
+#endif
 
     ! the following had to be defined globally for the sake of restart file generation
 
@@ -431,6 +433,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if defined PARADISE
     !> \brief
     !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
     !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
@@ -477,6 +480,7 @@ contains
 #endif
     end function getLogProb
     ! LCOV_EXCL_STOP
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -854,6 +858,7 @@ contains
 
     ! LCOV_EXCL_START
     ! ATTN: This routine needs further correction for the delayed rejection method
+#if false
     subroutine doAutoTune   ( adaptationMeasure &
                             , AutoTuneScaleSq   &
                             )
@@ -905,6 +910,7 @@ contains
 
     end subroutine doAutoTune
     ! LCOV_EXCL_STOP
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -81,7 +81,6 @@ contains
         integer(IK), intent(in)         :: nd
         character(*), intent(in)        :: methodName
         type(ProposalStartCorMat_type)  :: self
-        integer(IK)                     :: i, j
         allocate( self%Def(nd,nd) )
         self%Def    = getEye(nd,nd)
         self%null   = NULL_RK
