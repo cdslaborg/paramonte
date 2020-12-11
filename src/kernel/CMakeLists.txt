@@ -259,27 +259,27 @@ endfunction()
 
 if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
 
-    add_library(${PMLIB} STATIC ${ParaMonte_SOURCE_FILES})
+    add_library(${PMLIB_NAME} STATIC ${ParaMonte_SOURCE_FILES})
 
 elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 
-    add_library(${PMLIB} SHARED ${ParaMonte_SOURCE_FILES})
-   #add_library(${PMLIB} MODULE ${ParaMonte_SOURCE_FILES})
+    add_library(${PMLIB_NAME} SHARED ${ParaMonte_SOURCE_FILES})
+   #add_library(${PMLIB_NAME} MODULE ${ParaMonte_SOURCE_FILES})
 
     if (gnu_compiler)
-        #set_target_properties( ${PMLIB} PROPERTIES COMPILE_FLAGS "-static-libgfortran" )
-        #set_target_properties( ${PMLIB} PROPERTIES LINK_FLAGS "-static-libgfortran" )
-        #set_target_properties( ${PMLIB} PROPERTIES COMPILE_FLAGS "-Wl,--whole-archive -lgfortran -static -lgfortran" )
+        #set_target_properties( ${PMLIB_NAME} PROPERTIES COMPILE_FLAGS "-static-libgfortran" )
+        #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-libgfortran" )
+        #set_target_properties( ${PMLIB_NAME} PROPERTIES COMPILE_FLAGS "-Wl,--whole-archive -lgfortran -static -lgfortran" )
         #set(CMAKE_SHARED_LINKER_FLAGS "-static-libgfortran")
-        #set_target_properties( ${PMLIB} PROPERTIES LINK_FLAGS "-static-libgfortran" )
+        #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-libgfortran" )
         #if (APPLE)
-            #set_target_properties( ${PMLIB} PROPERTIES LINK_FLAGS "-Wl,--whole-archive" )
+            #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-Wl,--whole-archive" )
         #elseif(UNIX)
-            #set_target_properties( ${PMLIB} PROPERTIES LINK_FLAGS "-Wl,-static-libgfortran" )
+            #set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-Wl,-static-libgfortran" )
         #endif()
     elseif(intel_compiler)
         if (UNIX OR APPLE)
-            set_target_properties( ${PMLIB} PROPERTIES LINK_FLAGS "-static-intel" )
+            set_target_properties( ${PMLIB_NAME} PROPERTIES LINK_FLAGS "-static-intel" )
         endif()
     endif()
 
@@ -287,18 +287,18 @@ elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
    #    find_static_library(libgfortran LIBGFORTRAN_PATH)
    #    find_static_library(libquadmath LIBQUADMATH_PATH)
    #    if (${BTYPE} MATCHES "[dD][eE][bB][uU][gG]")
-   #        target_link_libraries(${PMLIB} debug ${LIBGFORTRAN_PATH})
-   #        target_link_libraries(${PMLIB} debug ${LIBQUADMATH_PATH})
+   #        target_link_libraries(${PMLIB_NAME} debug ${LIBGFORTRAN_PATH})
+   #        target_link_libraries(${PMLIB_NAME} debug ${LIBQUADMATH_PATH})
    #    else() #if (${BTYPE} MATCHES "[rR][eE][lL][eE][aA][sS][eE]")
-   #        target_link_libraries(${PMLIB} optimized ${LIBGFORTRAN_PATH})
-   #        target_link_libraries(${PMLIB} optimized ${LIBQUADMATH_PATH})
+   #        target_link_libraries(${PMLIB_NAME} optimized ${LIBGFORTRAN_PATH})
+   #        target_link_libraries(${PMLIB_NAME} optimized ${LIBQUADMATH_PATH})
    #    endif()
    #elseif(intel_compiler)
    #    find_static_library(libifport LIBIFPORT_PATH)
    #    if (${BTYPE} MATCHES "[dD][eE][bB][uU][gG]")
-   #        target_link_libraries(${PMLIB} debug ${LIBIFPORT_PATH})
+   #        target_link_libraries(${PMLIB_NAME} debug ${LIBIFPORT_PATH})
    #    else() #if (${BTYPE} MATCHES "[rR][eE][lL][eE][aA][sS][eE]")
-   #        target_link_libraries(${PMLIB} optimized ${LIBIFPORT_PATH})
+   #        target_link_libraries(${PMLIB_NAME} optimized ${LIBIFPORT_PATH})
    #    endif()
    #endif()
 
@@ -317,18 +317,18 @@ endif()
 
 if (MPI_ENABLED)
     #include_directories(${MPI_Fortran_INCLUDE_PATH})
-    target_include_directories(${PMLIB} PUBLIC ${MPI_Fortran_INCLUDE_PATH})
-    target_link_libraries(${PMLIB} PUBLIC ${MPI_Fortran_LIBRARIES})
+    target_include_directories(${PMLIB_NAME} PUBLIC ${MPI_Fortran_INCLUDE_PATH})
+    target_link_libraries(${PMLIB_NAME} PUBLIC ${MPI_Fortran_LIBRARIES})
 endif()
 
 #if (NOT WIN32)
 #    if (DEFINED MATLAB_ROOT_DIR)
-#        target_include_directories(${PMLIB} PUBLIC "${MATLAB_ROOT_DIR}/extern/include")
-#        target_link_directories(${PMLIB} BEFORE 
+#        target_include_directories(${PMLIB_NAME} PUBLIC "${MATLAB_ROOT_DIR}/extern/include")
+#        target_link_directories(${PMLIB_NAME} BEFORE 
 #        PUBLIC "$(MATLAB_ROOT_DIR)/bin/${MATLAB_PLATFORM_SUBDIR}"
 #        PUBLIC "$(MATLAB_ROOT_DIR)/extern/bin/${MATLAB_PLATFORM_SUBDIR}"
 #        )
-#        target_link_libraries(${PMLIB} PUBLIC mx PUBLIC mex PUBLIC mat PUBLIC m PUBLIC stdc++)
+#        target_link_libraries(${PMLIB_NAME} PUBLIC mx PUBLIC mex PUBLIC mat PUBLIC m PUBLIC stdc++)
 #    endif()
 #endif()
 
@@ -336,25 +336,25 @@ endif()
 
 # define the output modules directory
 
-set_target_properties( ${PMLIB} PROPERTIES Fortran_MODULE_DIRECTORY "${ParaMonte_MOD_DIR}" )
-# target_compile_definitions( ${PMLIB} INTERFACE "${FPP_FLAGS}" ) # cmake currently does not add preprocessor automatically
+set_target_properties( ${PMLIB_NAME} PROPERTIES Fortran_MODULE_DIRECTORY "${ParaMonte_MOD_DIR}" )
+# target_compile_definitions( ${PMLIB_NAME} INTERFACE "${FPP_FLAGS}" ) # cmake currently does not add preprocessor automatically
 
 #string(REPLACE ";" " " FCL_FLAGS ${FCL_FLAGS})
 #string(REPLACE ";" " " FC_LIB_FLAGS ${FC_LIB_FLAGS})
 message( STATUS "${pmattn} ParaMonte library build compile flags: ${FCL_FLAGS} ${FC_LIB_FLAGS}" )
-#target_compile_options( ${PMLIB} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
-target_compile_options( ${PMLIB} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
+#target_compile_options( ${PMLIB_NAME} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
+target_compile_options( ${PMLIB_NAME} BEFORE PRIVATE "${FCL_FLAGS}" "${FC_LIB_FLAGS}" )
 
 #message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS}" )
-#target_link_options( ${PMLIB} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS} )
+#target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}}${MATLAB_LINKER_FLAGS} )
 message( STATUS "${pmattn} ParaMonte library build linker flags: ${${FCL_FLAGS}${FL_LIB_FLAGS}}" )
-target_link_options( ${PMLIB} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}} )
+target_link_options( ${PMLIB_NAME} BEFORE PRIVATE ${${FCL_FLAGS}${FL_LIB_FLAGS}} )
 
 if (CODECOV_ENABLED AND gnu_compiler)
-    target_link_libraries(${PMLIB} PUBLIC gcov)
+    target_link_libraries(${PMLIB_NAME} PUBLIC gcov)
 endif()
 
-install(TARGETS ${PMLIB} 
+install(TARGETS ${PMLIB_NAME} 
         CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
         DESTINATION "${ParaMonte_LIB_DIR}/"
         )

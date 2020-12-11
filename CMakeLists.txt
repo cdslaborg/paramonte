@@ -590,7 +590,27 @@ endif()
 set(ParaMonteTest_EXE_NAME testParaMonte)
 
 # Define the library name
-if (NOT DEFINED PMLIB)
+if (NOT DEFINED PMLIB_NAME)
+
+    # \todo
+    # This library name definition requires further enhancement to match the name defined by the bash installer, whenever cmake is used directly.
+
+    message ( WARNING 
+            " \n"
+            " ${pmwarn}\n"
+            " ${pmattn} The ParaMonte Library is not predefined.\n"
+            " ${pmattn} This is highly unusual and should not happen.\n"
+            " ${pmattn} Normally, the library name is defined by the ParaMonte installer \n"
+            " ${pmattn} or passed to cmake for abuild via cmake. The most likely cause of this\n"
+            " ${pmattn} warning message is that you are either building the library directly via\n"
+            " ${pmattn} cmake and forgot to predefine the library name or, the Bash installation that you\n"
+            " ${pmattn} are using is corrupted. If the latter is the case, please report the issue at:\n"
+            " ${pmattn} \n"
+            " ${pmattn} https://github.com/cdslaborg/paramonte/issues,\n"
+            " ${pmattn} \n"
+            " ${pmattn} to resolve it. Note that even if the library might be properly built, the naming \n"
+            " ${pmattn} used might not follow the conventional naming rules of the ParaMonte library.\n"
+            )
 
     if (HEAP_ARRAY_ENABLED)
         set(MEMORY_ALLOCATION heap)
@@ -611,22 +631,22 @@ if (NOT DEFINED PMLIB)
     else()
         set(LANG_ABBR ${INTERFACE_LANGUAGE})
     endif()
-    set(PMLIB paramonte_${LANG_ABBR}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION} )
+    set(PMLIB_NAME paramonte_${LANG_ABBR}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION} )
 
     if (CAF_ENABLED)
-        set(PMLIB ${PMLIB}_caf${CAFTYPE})
+        set(PMLIB_NAME ${PMLIB_NAME}_caf${CAFTYPE})
     endif()
 
     if (MPI_ENABLED)
-        set(PMLIB ${PMLIB}_mpi)
+        set(PMLIB_NAME ${PMLIB_NAME}_mpi)
     endif()
 
     if (OMP_ENABLED)
-        set(PMLIB ${PMLIB}_omp)
+        set(PMLIB_NAME ${PMLIB_NAME}_omp)
     endif()
 
     #if (MT_ENABLED)
-    #    set(PMLIB ${PMLIB}_mt)
+    #    set(PMLIB_NAME ${PMLIB_NAME}_mt)
     #endif()
 
 endif()

@@ -95,7 +95,7 @@ set_source_files_properties(${ParaMonteTest_SRC_DIR}/Test_ParaDXXX_mod@Test_runS
 #unset(CMAKE_Fortran_MODULE_DIRECTORY)
 #set(CMAKE_Fortran_MODULE_DIRECTORY "${ParaMonteTest_MOD_DIR}")
 
-#find_library(PMLIB_PATH ${PMLIB} PATHS ${ParaMonte_OBJ_DIR})
+#find_library(PMLIB_PATH ${PMLIB_NAME} PATHS ${ParaMonte_OBJ_DIR})
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #: add test target
@@ -108,9 +108,9 @@ if (CODECOV_ENABLED AND gnu_compiler)
 endif()
 
 if (${LTYPE} MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
-    target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC ${PMLIB})
+    target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC ${PMLIB_NAME})
 elseif (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
-    target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC ${PMLIB})
+    target_link_libraries(${ParaMonteTest_EXE_NAME} PUBLIC ${PMLIB_NAME})
 endif()
 
 set_target_properties(${ParaMonteTest_EXE_NAME} PROPERTIES Fortran_MODULE_DIRECTORY "${ParaMonteTest_MOD_DIR}" )
@@ -158,7 +158,7 @@ install(TARGETS ${ParaMonteTest_EXE_NAME}
 
 #if (${LTYPE} MATCHES "[Dd][Yy][Nn][Aa][Mm][Ii][Cc]")
 #    set(CMAKE_INSTALL_PREFIX "${ParaMonteTest_BIN_DIR}/")
-#    install(TARGETS ${PMLIB} 
+#    install(TARGETS ${PMLIB_NAME} 
 #            CONFIGURATIONS "${CMAKE_BUILD_TYPE}"
 #            DESTINATION "${CMAKE_INSTALL_PREFIX}"
 #            )
