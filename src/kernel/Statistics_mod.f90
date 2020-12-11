@@ -712,6 +712,9 @@ contains
     !> \param[in]       Point   :   The array of shape `(nd,np)` containing the sample.
     !> \param[in]       Weight  :   The vector of length `np` containing the weights of points in the sample (**optional**, default = vector of ones).
     !>
+    !> \warning
+    !> Note the shape of the input argument `Point(nd,np)
+    !>
     !> \return
     !> `Mean` : The output mean vector of length `nd`.
     pure function getMean_2D(nd,np,Point,Weight) result(Mean)
@@ -1210,8 +1213,8 @@ contains
     !> \param[out]      CovMatUpper         :   The output matrix of shape `(nd,nd)` whose upper triangle represents the covariance matrix of the input data.
     !> \param[out]      Mean                :   The output mean vector of the sample.
     !>
-    !> \remark
-    !> Note the shape of the input `Point(nd,np)`.
+    !> \warning
+    !> Note the shape of the input argument `Point(nd,np)`.
     !>
     !> \remark
     !> This subroutine has the same functionality as [getSamCovUpperMeanTrans](@ref getsamcovuppermeantrans), with the only difference

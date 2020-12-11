@@ -1431,12 +1431,11 @@ contains
 
                 if (allocated(self%Stats%Sample%Mean)) deallocate(self%Stats%Sample%Mean); allocate(self%Stats%Sample%Mean(ndim))
                 if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat); allocate(self%Stats%Sample%CovMat(ndim,ndim))
-                ContiguousChain = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) ! avoid temporary array creation and the warning message in debug mode
                 if (self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact > ndim + 1_IK) then
                     call getWeiSamCovUppMeanTrans   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
                                                     , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &
                                                     , nd = ndim & ! LCOV_EXCL_LINE
-                                                    , Point = ContiguousChain & ! LCOV_EXCL_LINE
+                                                    , Point = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) & ! LCOV_EXCL_LINE
                                                     , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) & ! LCOV_EXCL_LINE
                                                     , CovMatUpper = self%Stats%Sample%CovMat & ! LCOV_EXCL_LINE
                                                     , Mean = self%Stats%Sample%Mean & ! LCOV_EXCL_LINE
@@ -1449,7 +1448,7 @@ contains
                     self%Stats%Sample%CorMat = getEye(ndim,ndim)
                     self%Stats%Sample%Mean   = getMean  ( nd = ndim &
                                                         , np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
-                                                        , Point = ContiguousChain & ! LCOV_EXCL_LINE
+                                                        , Point = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) & ! LCOV_EXCL_LINE
                                                         , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) &
                                                         )
                 end if
@@ -1464,6 +1463,7 @@ contains
 
                 ! compute the quantiles
 
+                ContiguousChain = transpose(self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)) ! avoid temporary array creation and the warning message in debug mode
                 if (allocated(self%Stats%Sample%Quantile)) deallocate(self%Stats%Sample%Quantile)
                 allocate(self%Stats%Sample%Quantile(QPROB%count,ndim))
                 do i = 1, ndim
