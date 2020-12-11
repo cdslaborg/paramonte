@@ -89,8 +89,8 @@ BUILD_NAME="ParaMonte"; export BUILD_NAME
 
 pmcolor="${BoldCyan}"
 pmattn=" ${pmcolor}-- ${BUILD_NAME} -${ColorReset}"
-pmnote="${pmattn} ${BoldMagenta}NOTE:${ColorReset}"
-pmwarn="${pmattn} ${BoldYellow}WARNING:${ColorReset}"
+pmnote="${pmattn} ${BoldYellow}NOTE:${ColorReset}"
+pmwarn="${pmattn} ${BoldMagenta}WARNING:${ColorReset}"
 pmfatal="${pmattn} ${BoldRed}FATAL:${ColorReset}"
 warning="${BoldMagenta}WARNING${ColorReset}"
 
