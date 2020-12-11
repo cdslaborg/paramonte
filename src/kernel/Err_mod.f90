@@ -390,8 +390,12 @@ contains
             integer(IK)                 :: i
             imageID     = this_image()
             imageCount  = num_images()
-            allocate(ErrorOccurred(Image%count)[*])
-            error stop "work needs to be done here!"
+            allocate(ErrorOccurred(imageCount)[*])
+            ErrorOccurred(imageID) = Err%occurred
+            sync all
+            do i = 1, imageCount
+                ErrorOccurred(i) = ErrorOccurred(i)[i]
+            end do
             Err%occurred = any(ErrorOccurred)
             deallocate(ErrorOccurred)
         end block
