@@ -732,7 +732,8 @@ contains
                 return
             end if
 
-            assertion = assertion .and. all(shape(RefinedChain%LogFuncState) == shape(PD%RefinedChain%LogFuncState))
+            ! NOTE: Keep in mind that `PD%RefinedChain` is a weighted chain internally, but unweighted when read from the external file.
+            assertion = assertion .and. size(RefinedChain%LogFuncState(:,1))==size(PD%RefinedChain%LogFuncState(:,1)) .and. sum(PD%RefinedChain%Weight)==size(PD%RefinedChain%LogFuncState(1,:))
 
             if (.not. assertion) then
                 if (Test%isDebugMode) then
@@ -1299,9 +1300,10 @@ contains
 
         call PD%runSampler  ( ndim = NDIM &
                             , getLogFunc = getLogFuncMVN &
-                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_21" &
                             , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_21" &
                             , sampleRefineMentMethod = "batchMeans-med" &
+                            , parallelizationModel = "multichain" &
                             , outputRealPrecision = 15_IK &
                             , outputDelimiter = DELIM &
                             , sampleSize = 10_IK &
@@ -1336,7 +1338,8 @@ contains
             end if
             ! LCOV_EXCL_STOP
 
-            assertion = assertion .and. all(shape(RefinedChain%LogFuncState) == shape(PD%RefinedChain%LogFuncState))
+            ! NOTE: Keep in mind that `PD%RefinedChain` is a weighted chain internally, but unweighted when read from the external file.
+            assertion = assertion .and. size(RefinedChain%LogFuncState(:,1))==size(PD%RefinedChain%LogFuncState(:,1)) .and. sum(PD%RefinedChain%Weight)==size(PD%RefinedChain%LogFuncState(1,:))
 
             if (.not. assertion) then
             ! LCOV_EXCL_START
@@ -1373,5 +1376,68 @@ contains
 
 #endif
     end function test_runSampler_21
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Test whether an object of [ChainFileContents_type](@ref paramcmcrefinedchain_mod::chainfilecontents_type)
+    !> class can handle zero-count input MCMC chain for refinement.
+    !> \remark
+    module function test_runSampler_22() result(assertion)
+        use ParaMCMCRefinedChain_mod, only: readRefinedChain, RefinedChain_type
+        implicit none
+        logical                 :: assertion
+        real(RK)    , parameter :: tolerance = 1.e-10_RK
+        character(*), parameter :: DELIM = "delim"
+        integer(IK) , parameter :: NDIM = 2_IK
+        type(ParaDXXX_type)     :: PD
+        type(RefinedChain_type) :: RefinedChain
+        assertion = .true.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+
+        call PD%runSampler  ( ndim = NDIM &
+                            , getLogFunc = getLogFuncMVN &
+                            , mpiFinalizeRequested = .false. &
+                            , outputFileName = Test%outDir//"/"//MODULE_NAME//"/test_runSampler_22" &
+                            , sampleRefineMentMethod = "maxCumSumAutoCorr-minimum" &
+                            , parallelizationModel = "multi chain" &
+                            , chainSize = NDIM + 1_IK &
+                            )
+        assertion = assertion .and. .not. PD%Err%occurred
+        if (.not. assertion) return ! LCOV_EXCL_LINE
+
+        if (PD%Image%isLeader) then
+        ! LCOV_EXCL_START
+
+            ! Now, set PD%Chain%ndim and PD%Chain%Count%Compact and to zero. 
+            ! This should lead to the use of shape(PD%Chain%State(:,:)) to infer 
+            ! ndim and Compact chain length.
+            ! To test the behavior of the procedure in the presence of 1 point in the chain,
+            ! we will also resize the input PD%Chain%State(1:ndim,1:PD%Chain%Count%Compact) to PD%Chain%State(1:ndim,1:1)
+
+            PD%Chain%ndim = 0
+            PD%Chain%Count%compact = 0
+            PD%Chain%State = PD%Chain%State(1:NDIM, 1:1)
+
+            call PD%RefinedChain%get(CFC = PD%Chain, Err = PD%Err)
+
+            assertion = assertion .and. .not. PD%Err%occurred .and. all(PD%RefinedChain%IAC==0_IK) .and. size(PD%RefinedChain%Count)==1_IK .and. PD%RefinedChain%numRefinement==0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
+
+            if (.not. assertion) then
+                if (Test%isDebugMode) then
+                    write(*,"(10(g0,:,', '))")
+                    write(*,"(10(g0,:,', '))") "Test%Image%id, RefinedChain%numRefinement", RefinedChain%numRefinement
+                    write(*,"(10(g0,:,', '))") "Test%Image%id, RefinedChain%IAC", RefinedChain%IAC
+                    write(*,"(10(g0,:,', '))")
+                end if
+                return
+            end if
+
+        end if
+        ! LCOV_EXCL_STOP
+
+#endif
+    end function test_runSampler_22
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
