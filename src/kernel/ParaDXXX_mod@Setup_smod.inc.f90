@@ -1432,10 +1432,11 @@ contains
                 if (allocated(self%Stats%Sample%Mean)) deallocate(self%Stats%Sample%Mean); allocate(self%Stats%Sample%Mean(ndim))
                 if (allocated(self%Stats%Sample%CovMat)) deallocate(self%Stats%Sample%CovMat); allocate(self%Stats%Sample%CovMat(ndim,ndim))
                 if (self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact > ndim + 1_IK) then
+                    ContiguousChain = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact)
                     call getWeiSamCovUppMeanTrans   ( np = self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact &
                                                     , sumWeight = self%RefinedChain%Count(self%RefinedChain%numRefinement)%verbose &
                                                     , nd = ndim & ! LCOV_EXCL_LINE
-                                                    , Point = self%RefinedChain%LogFuncState(1:ndim,1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) & ! LCOV_EXCL_LINE
+                                                    , Point = ContiguousChain & ! LCOV_EXCL_LINE
                                                     , Weight = self%RefinedChain%Weight(1:self%RefinedChain%Count(self%RefinedChain%numRefinement)%compact) & ! LCOV_EXCL_LINE
                                                     , CovMatUpper = self%Stats%Sample%CovMat & ! LCOV_EXCL_LINE
                                                     , Mean = self%Stats%Sample%Mean & ! LCOV_EXCL_LINE
