@@ -124,35 +124,39 @@ matrix:
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
         - ./install.sh --codecov ${FCFLAG} ${mpiexecFlag}
 
-    - &macOS
-      os: osx
-      osx_image: xcode12
-      addons:
-        homebrew:
-          packages:
-            - cmake
-            - mpich
-            - gcc@10
-            - shellcheck
-          update: true
-      before_install:
-        - brew install gcc@10 || brew upgrade gcc
-        - brew install cmake || brew upgrade cmake
-        - brew install mpich || brew upgrade mpich
-        - brew link gcc
-        - brew link cmake
-        - brew link mpich
-      script:
-        - cmake --version
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
-        - pmRootDir=$(pwd)
-        - ls ${pmRootDir}/bin/
-        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
-        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
-        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
-        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ls && ./build.sh && ./run.sh --nproc 2
-        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ls && ./build.sh && ./run.sh --nproc 2
-        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ls && ./build.sh && ./run.sh --nproc 2
+#    - &macOS
+#      os: osx
+#      osx_image: xcode12
+#      addons:
+#        homebrew:
+#          packages:
+#            - cmake
+#            - mpich
+#            - gcc@10
+#            - shellcheck
+#          update: true
+#      before_install:
+#        - brew install gcc@10 || brew upgrade gcc
+#        - brew install cmake || brew upgrade cmake
+#        - brew install mpich || brew upgrade mpich
+#        - brew link gcc
+#        - brew link cmake
+#        - brew link mpich
+#      script:
+#        - cmake --version
+#        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none mpi" #-s gnu
+#        - pmRootDir=$(pwd)
+#        - ls ${pmRootDir}/bin/
+#        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ls && ./build.sh && ./run.sh --nproc 2
+#        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ls && ./build.sh && ./run.sh --nproc 2
+#        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ls && ./build.sh && ./run.sh --nproc 2
+
+####################################################################################################################################
+#### OTHER
+####################################################################################################################################
 
 #    - &macOS
 #      os: osx
