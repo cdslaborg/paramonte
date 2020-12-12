@@ -185,7 +185,7 @@ contains
         allocate(co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val)[*])                         ! the negative element will contain counterDRS
 #else
         allocate(co_LogFuncState(0:nd,-1:self%SpecDRAM%DelayedRejectionCount%val))
-        allocate(co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val))
+        allocate(co_AccRate(-1:self%SpecDRAM%DelayedRejectionCount%val))                            ! the negative element will contain counterDRS
 #endif
         co_AccRate(-1)  = 0._RK                                                                     ! the real-value counterDRS, indicating the initial delayed rejection stage at which the first point is sampled
         co_AccRate(0)   = 1._RK                                                                     ! initial acceptance rate for the first zeroth DR stage.
@@ -259,11 +259,7 @@ contains
                 self%isDryRun = .not. self%isFreshRun
             end if
 
-#if defined CAF_ENABLED
-            sync all
-#elif defined MPI_ENABLED
-            call mpi_barrier(mpi_comm_world,ierrMPI)
-#endif
+            call self%Image%sync()
 
             blockLeaderSetup: if (self%Image%isLeader) then
 
@@ -591,7 +587,7 @@ contains
                         dumint = self%Chain%Weight(self%Stats%NumFunCall%accepted) ! needed for the restart mode, not needed in the fresh run
                         if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then    ! no new point has been accepted since last time
                             self%Chain%Weight(numFunCallAcceptedLastAdaptation) = currentStateWeight - lastStateWeight
-#if defined DBG_ENABLED && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || defined DBG_ENABLED || defined TESTING_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
                             if (mod(self%Chain%Weight(numFunCallAcceptedLastAdaptation),self%SpecDRAM%AdaptiveUpdatePeriod%val)/=0) then
                                 write(output_unit,"(*(g0,:,' '))"   ) PROCEDURE_NAME//": Internal error occurred: ", self%SpecDRAM%AdaptiveUpdatePeriod%val &
                                                                     , self%Chain%Weight(numFunCallAcceptedLastAdaptation), currentStateWeight, lastStateWeight

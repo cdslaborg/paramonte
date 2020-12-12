@@ -395,12 +395,12 @@ contains
         complex(CK)              :: zroots_unity(nn)
         integer(IK)              :: k
         real(RK)                 :: theta
-        zroots_unity(1) = 1.0
+        zroots_unity(1) = 1._RK
         theta = TWOPI / n
         k = 1
         do
             if (k >= nn) exit
-            zroots_unity(k+1) = cmplx(cos(k*theta),sin(k*theta),CK)
+            zroots_unity(k+1) = cmplx(cos(k*theta),sin(k*theta),kind=RK)
             zroots_unity(k+2:min(2*k,nn)) = zroots_unity(k+1) * zroots_unity(2:min(k,nn-k))
             k = 2 * k
         end do

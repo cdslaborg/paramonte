@@ -531,17 +531,27 @@ contains
         use Constants_mod, only: IK, RK, CK
         implicit none
         logical                     :: assertion
+        complex(CK) , allocatable   :: Zroots(:)
         integer(IK) , parameter     :: n = 5, nn = 10
-        complex(CK) , parameter     :: Zroots_ref(nn) = [1._CK, 0._CK, 0._CK, 0._CK, 0._CK, 1._CK, 0._CK, 0._CK, 0._CK, 0._CK]
-        complex(CK), allocatable    :: Zroots(:)
+        real(RK)    , parameter     :: tolerance = 1.e-10_RK
+        complex(CK) , parameter     :: Zroots_ref(nn) = [ (1.000000000000000_RK, 0.000000000000000_RK) &
+                                                        , (0.3090169943749475_RK, 0.9510565162951535_RK) &
+                                                        , (-0.8090169943749473_RK, 0.5877852522924732_RK) &
+                                                        , (-0.8090169943749476_RK, -0.5877852522924730_RK) &
+                                                        , (0.3090169943749472_RK, -0.9510565162951536_RK) &
+                                                        , (1.000000000000000_RK, -0.2775557561562891E-15_RK) &
+                                                        , (0.3090169943749478_RK, 0.9510565162951534_RK) &
+                                                        , (-0.8090169943749472_RK, 0.5877852522924734_RK) &
+                                                        , (-0.8090169943749477_RK, -0.5877852522924728_RK) &
+                                                        , (0.3090169943749470_RK, -0.9510565162951536_RK) ]
         Zroots = zroots_unity(n,nn)
-        assertion = all(real(Zroots) == real(Zroots_ref))! .and. all(aimag(Zroots) == aimag(Zroots_ref))
+        assertion = all(abs(real(Zroots) - real(Zroots_ref)) < tolerance) .and. all(abs(aimag(Zroots) - aimag(Zroots_ref)) < tolerance)
         if (Test%isDebugMode .and. .not. assertion) then
         ! LCOV_EXCL_START
-            write(Test%outputUnit,"(*(g0,:,' '))")
-            write(Test%outputUnit,"(*(g0,:,' '))") "Zroots_ref   =", Zroots_ref
-            write(Test%outputUnit,"(*(g0,:,' '))") "Zroots       =", Zroots
-            write(Test%outputUnit,"(*(g0,:,' '))")
+            write(Test%outputUnit,"(*(g0.16,' '))")
+            write(Test%outputUnit,"(*(g0.16,' '))") "Zroots_ref   =", Zroots_ref
+            write(Test%outputUnit,"(*(g0.16,' '))") "Zroots       =", Zroots
+            write(Test%outputUnit,"(*(g0.16,' '))")
         end if
         ! LCOV_EXCL_STOP
     end function test_zroots_unity_1
