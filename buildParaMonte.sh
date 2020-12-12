@@ -2836,7 +2836,7 @@ fi
 
 if [ "${CODECOV_ENABLED}" = "true" ]; then
 
-    htmlDir="${ParaMonte_ROOT_DIR}/codecov/${PMLIB_BASE_NAME}"
+    htmlDir="${ParaMonte_ROOT_DIR}/codecov/kernel/${ParaMonteVersion}/${PMLIB_BASE_NAME}"
     if [ "${MPI_ENABLED}" = "true" ]; then
         parallelismText="MPI Parallel"
     elif [ "${CAF_ENABLED}" = "true" ]; then
@@ -2844,7 +2844,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
     else
         parallelismText="Serial"
     fi
-    titleCodeCov="ParaMonte :: ${parallelismText} Kernel - Code Coverage Report"
+    titleCodeCov="ParaMonte ${ParaMonteVersion} :: ${parallelismText} Kernel - Code Coverage Report"
 
     if [[ ${PMCS} == [gG][nN][uU] ]]; then
 
