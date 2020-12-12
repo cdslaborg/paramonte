@@ -238,13 +238,13 @@ contains
 
             ! load the existing Chain file into self%Chain components
 
-            call self%Chain%get ( chainFilePath = self%ChainFile%Path%original      &
-                                , chainFileForm = self%SpecBase%ChainFileFormat%val &
-                                , Err = self%Err                                    &
-                                , targetChainSize = self%SpecMCMC%ChainSize%val     &
-                                , lenHeader = self%Chain%lenHeader                  &
-                                , ndim = nd                                         &
-                                , delimiter = self%SpecBase%OutputDelimiter%val     &
+            call self%Chain%get ( chainFilePath = self%ChainFile%Path%original      & ! LCOV_EXCL_LINE
+                                , chainFileForm = self%SpecBase%ChainFileFormat%val & ! LCOV_EXCL_LINE
+                                , Err = self%Err                                    & ! LCOV_EXCL_LINE
+                                , targetChainSize = self%SpecMCMC%ChainSize%val     & ! LCOV_EXCL_LINE
+                                , lenHeader = self%Chain%lenHeader                  & ! LCOV_EXCL_LINE
+                                , ndim = nd                                         & ! LCOV_EXCL_LINE
+                                , delimiter = self%SpecBase%OutputDelimiter%val     & ! LCOV_EXCL_LINE
                                 )
             if (self%Err%occurred) then
                 ! LCOV_EXCL_START

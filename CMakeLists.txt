@@ -139,7 +139,7 @@ if ("${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
             "       $ buildDir=$(uname -s)$(uname -m) # set build folder to OS name + architecture\n"
             "       $ mkdir $\{buildDir\}\n"
             "       $ cd $\{buildDir\}\n"
-            "       $ CC=gcc FC=gfortran cmake -DBUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/install/dir /path/to/ParaMonte/kernel/src/dir\n\n"
+            "       $ CC=gcc CMAKE_Fortran_COMPILER=gfortran cmake -DBUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/install/dir /path/to/ParaMonte/kernel/src/dir\n\n"
             "   substituting the appropriate syntax for your shell (the above line assumes the bash shell)."
             )
 endif()
@@ -254,7 +254,7 @@ else()
 endif()
 string(TOLOWER ${COMPILER_SUITE} COMPILER_SUITE)
 
-message(STATUS "CMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}")
+message(STATUS "${pmattn} CMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}")
 
 #if(DEFINED CMAKE_BUILD_TYPE AND "${CMAKE_BUILD_TYPE}" MATCHES "[Rr][Ee][Ll]") # release mode requested
 #    if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
@@ -597,19 +597,18 @@ if (NOT DEFINED PMLIB_NAME)
 
     message ( WARNING 
             " \n"
-            " ${pmwarn}\n"
-            " ${pmattn} The ParaMonte Library is not predefined.\n"
-            " ${pmattn} This is highly unusual and should not happen.\n"
-            " ${pmattn} Normally, the library name is defined by the ParaMonte installer \n"
-            " ${pmattn} or passed to cmake for abuild via cmake. The most likely cause of this\n"
-            " ${pmattn} warning message is that you are either building the library directly via\n"
-            " ${pmattn} cmake and forgot to predefine the library name or, the Bash installation that you\n"
-            " ${pmattn} are using is corrupted. If the latter is the case, please report the issue at:\n"
-            " ${pmattn} \n"
-            " ${pmattn} https://github.com/cdslaborg/paramonte/issues,\n"
-            " ${pmattn} \n"
-            " ${pmattn} to resolve it. Note that even if the library might be properly built, the naming \n"
-            " ${pmattn} used might not follow the conventional naming rules of the ParaMonte library.\n"
+            " ${pmwarn} The ParaMonte Library name is not predefined.\n"
+            " ${pmwarn} This is highly unusual and should not happen.\n"
+            " ${pmwarn} Normally, the library name is defined by the ParaMonte installer \n"
+            " ${pmwarn} or passed to cmake for abuild via cmake. The most likely cause of this\n"
+            " ${pmwarn} warning message is that you are either building the library directly via\n"
+            " ${pmwarn} cmake and forgot to predefine the library name or, the Bash installation that you\n"
+            " ${pmwarn} are using is corrupted. If the latter is the case, please report the issue at:\n"
+            " ${pmwarn} \n"
+            " ${pmwarn} https://github.com/cdslaborg/paramonte/issues,\n"
+            " ${pmwarn} \n"
+            " ${pmwarn} to resolve it. Note that even if the library might be properly built, the naming \n"
+            " ${pmwarn} used might not follow the conventional naming rules of the ParaMonte library.\n"
             )
 
     if (HEAP_ARRAY_ENABLED)

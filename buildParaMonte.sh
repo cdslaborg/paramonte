@@ -1065,6 +1065,8 @@ if [ "${CAF_ENABLED}" = "true" ]; then
 
 fi
 
+echo >&2 
+
 ####################################################################################################################################
 #### set the ParaMonte compiler suite
 ####################################################################################################################################
@@ -2000,7 +2002,7 @@ if [ -f "${MPIEXEC_PATH}" ]; then
     fi
 fi
 
-if [ -z ${MPILIB_NAME+x} ]; then
+if [ -z ${MPILIB_NAME+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
     MPILIB_NAME="mpi"
     echo >&2
     echo >&2 "${pmwarn} The make of the MPI library could be identified."
@@ -2260,7 +2262,7 @@ fi
 if [ -z ${Fortran_COMPILER_PATH+x} ]; then
     FC_OPTION=""
 else
-    FC_OPTION="-DFC=${Fortran_COMPILER_PATH}"
+    FC_OPTION="-DCMAKE_Fortran_COMPILER=${Fortran_COMPILER_PATH}"
     export Fortran_COMPILER_PATH
 fi
 if [ -z ${MPIEXEC_PATH+x} ]; then
@@ -2356,6 +2358,7 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
     "${FC_OPTION}" \
     "${MPIEXEC_OPTION}" \
     "${MATLAB_ROOT_DIR_OPTION}" \
+    -DPMLIB_NAME=${PMLIB_NAME} \
     -DINTERFACE_LANGUAGE=${INTERFACE_LANGUAGE} \
     -DPMCS=${PMCS} \
     -DMPI_ENABLED=${MPI_ENABLED} \
@@ -2363,7 +2366,6 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
     -DBTYPE=${BTYPE} \
     -DLTYPE=${LTYPE} \
     -DHEAP_ARRAY_ENABLED=${HEAP_ARRAY_ENABLED} \
-    -DPMLIB_NAME=${PMLIB_NAME} \
     -DCFI_ENABLED=${CFI_ENABLED} \
     -DOMP_ENABLED=${OMP_ENABLED} \
     ${SAMPLER_TEST_ENABLED_FLAG} \
@@ -3190,8 +3192,8 @@ else
 fi
 
 echo >&2
-echo >&2 "-- ${BUILD_NAME} - ParaMonte binary/library directory: ${ParaMonte_BIN_DIR_CURRENT}"
 echo >&2 "-- ${BUILD_NAME} - ParaMonte build directory: ${ParaMonte_BLD_DIR}"
+echo >&2 "-- ${BUILD_NAME} - ParaMonte install directory: ${ParaMonte_BIN_DIR_CURRENT}"
 echo >&2
 echo >&2 "-- ${BUILD_NAME} - mission accomplished"
 echo >&2

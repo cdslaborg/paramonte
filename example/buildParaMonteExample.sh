@@ -543,17 +543,17 @@ if ! [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then
     verify $? "recursive directory creation"
 fi
 
-echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte ${LANG_NAME} library binary directory: ${ParaMonteExample_BIN_DIR_CURRENT}"
+echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte ${LANG_NAME} library install directory: ${ParaMonteExample_BIN_DIR_CURRENT}"
 
 if [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then
-    echo >&2 "-- ParaMonteExample${LANG_NAME} - ParaMonte binary/library directory already exists. skipping..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte install directory already exists. skipping..."
 else
-    echo >&2 "-- ParaMonteExample${LANG_NAME} - generating ParaMonte binary/library directory..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - generating ParaMonte install directory..."
     mkdir -p "${ParaMonteExample_BIN_DIR_CURRENT}"
     verify $? "recursive directory creation"
 fi
 
-echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files to the bin folder..."
+echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files to the install directory..."
 echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_BLD_DIR_CURRENT}"
 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BIN_DIR_CURRENT}"
 cp -R "${ParaMonteExample_BLD_DIR_CURRENT}"/* "${ParaMonteExample_BIN_DIR_CURRENT}" || printCopyFailMsg
