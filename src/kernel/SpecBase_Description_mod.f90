@@ -114,7 +114,7 @@ contains
         implicit none
         class(Description_type), intent(inout)  :: DescriptionObj
         character(*), intent(in)                :: description
-        if (allocated(DescriptionObj%val)) deallocate(DescriptionObj%val)
+        if (allocated(DescriptionObj%val)) deallocate(DescriptionObj%val) ! LCOV_EXCL_LINE
         DescriptionObj%val = trim(adjustl(description))
         if (DescriptionObj%val==trim(adjustl(DescriptionObj%null))) DescriptionObj%val=trim(adjustl(DescriptionObj%def))
     end subroutine setDescription

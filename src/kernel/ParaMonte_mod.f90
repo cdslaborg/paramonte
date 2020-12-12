@@ -124,7 +124,7 @@
 
 module ParaMonte_mod
 
-    use System_mod, only: SystemInfo_type
+    use System_mod, only: SystemInfo_type ! LCOV_EXCL_LINE
     use Parallelism_mod, only: Image_type
     use Decoration_mod, only: Decoration_type
     use Constants_mod, only: RK, IK, HUGE_IK, HUGE_RK

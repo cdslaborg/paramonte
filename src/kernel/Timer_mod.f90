@@ -121,9 +121,11 @@ contains
         Err%msg = ""
         call system_clock( count=Timer%Count%start, count_rate=Timer%Count%rate, count_max=Timer%Count%max )
         if ( Timer%Count%start==-huge(0) .or. Timer%Count%rate==0._RK .or. Timer%Count%max==0 ) then
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Error occurred. There is no processor clock."
             return
+            ! LCOV_EXCL_STOP
         end if
         call Timer%tic()
     end function constructTimer

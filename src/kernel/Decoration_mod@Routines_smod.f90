@@ -600,11 +600,13 @@ contains
         ! ensure the line count makes sense
 
         if ( lineCount /= size(EndOfLineLoc) ) then
+            ! LCOV_EXCL_START
             write(output_unit,"(*(g0,:,' '))")  MODULE_NAME // PROCEDURE_NAME // &
                                                 ": Internal error occurred. lineCount /= size(EndOfLineLoc):", &
                                                 lineCount, "/=", size(EndOfLineLoc), EndOfLineLoc
             write(output_unit,"(*(g0,:,' '))")  EndOfSplitLoc
             error stop
+            ! LCOV_EXCL_STOP
         end if
 
         ! construct the wrappings
@@ -614,12 +616,14 @@ contains
         ListOfLines(indx)%record = string(1:EndOfLineLoc(indx))
         do indx = 2, lineCount
             if ( padLength==0 .and. EndOfLineLoc(indx-1)+1>EndOfLineLoc(indx) ) then
+                ! LCOV_EXCL_START
                 write(output_unit,"(*(g0,:,' '))")  MODULE_NAME // PROCEDURE_NAME // &
                                                     ": Fatal error occurred. " // &
                                                     "padLength==0 .and. EndOfLineLoc(indx-1)+1>EndOfLineLoc(indx) " // &
                                                     "for string: "
                 write(output_unit,"(A)")            string
                 error stop
+                ! LCOV_EXCL_STOP
             end if
             ListOfLines(indx)%record = string(1:padLength) // string(EndOfLineLoc(indx-1)+1:EndOfLineLoc(indx))
         end do
