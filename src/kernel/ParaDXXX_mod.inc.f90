@@ -66,7 +66,7 @@
 #error "Unrecognized sampler in ParaDRAM_mod.inc.f90"
 #endif
 
-    use Constants_mod, only: IK, RK, CK
+    use Constants_mod, only: IK, RK, CK ! LCOV_EXCL_LINE
     use ParaMonte_mod, only: ParaMonteNumFunCall_type
     use ParaMCMC_mod, only: ParaMCMC_type, ParaMCMC_Statistics_type, ParaMCMC_Chain_type
     use SpecDRAM_mod, only: SpecDRAM_type

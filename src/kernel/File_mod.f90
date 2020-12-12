@@ -1149,7 +1149,7 @@ contains
 #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getWriteErr
 #endif
-        use Err_mod, only: Err_type
+        use Err_mod, only: Err_type ! LCOV_EXCL_LINE
         implicit none
         integer, intent(in)     :: stat
         type(Err_type)          :: Err
