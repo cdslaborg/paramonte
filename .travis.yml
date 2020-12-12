@@ -23,84 +23,84 @@ after_success:
 matrix:
   include:
 
-    - os: linux
-      dist: trusty
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - cmake
-            - gfortran-9
-            - libmpich-dev
-            - mpich
-      script:
-        - pmRootDir="$(pwd)"
-        - pmBinDir="${pmRootDir}/bin/"
-        - echo "pmRootDir = ${pmRootDir}"
-        - echo "pmBinDir = ${pmBinDir}"
-        - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
-        - echo "$(dpkg -L libopenmpi-dev)"
-        - echo "$(dpkg -L mpich)"
-        - MPIEXEC_PATH="$(dpkg -L mpich | egrep bin/mpiexec.mpich)"
-        - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
-        - PATH="${MPI_BIN_DIR}:${PATH}"
-        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
-        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
-        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
-        - ls libparamonte*.tar.gz* | xargs -i tar xvzf {}
-        - cd libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2 && cd ..
-        - cd libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2 && cd ..
-        - cd libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2 && cd ..
+#    - os: linux
+#      dist: trusty
+#      addons:
+#        apt:
+#          sources:
+#            - ubuntu-toolchain-r-test
+#          packages:
+#            - cmake
+#            - gfortran-9
+#            - libmpich-dev
+#            - mpich
+#      script:
+#        - pmRootDir="$(pwd)"
+#        - pmBinDir="${pmRootDir}/bin/"
+#        - echo "pmRootDir = ${pmRootDir}"
+#        - echo "pmBinDir = ${pmBinDir}"
+#        - if ! [ -d "${pmBinDir}" ]; then mkdir -p ${pmRootDir}/bin/; fi
+#        - echo "$(dpkg -L libopenmpi-dev)"
+#        - echo "$(dpkg -L mpich)"
+#        - MPIEXEC_PATH="$(dpkg -L mpich | egrep bin/mpiexec.mpich)"
+#        - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
+#        - PATH="${MPI_BIN_DIR}:${PATH}"
+#        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
+#        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
+#        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
+#        - ls libparamonte*.tar.gz* | xargs -i tar xvzf {}
+#        - cd libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2 && cd ..
+#        - cd libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2 && cd ..
+#        - cd libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2 && cd ..
 
-    - os: linux
-      dist: trusty
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - cmake
-            - gfortran-9
-            - libblas-dev
-            - liblapack-dev
-            - libopenmpi-dev
-            - openmpi-bin
-            #- mpich
-            #- libmpich-dev
-            #- libblas-dev
-            #- liblapack-dev
-            #- libopenmpi-dev
-            #- openmpi-bin
-      script:
-        #- chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
-        #- export PATH="/usr/local/cmake-3.16.3/bin:${PATH}"
-        #- echo "The MPIEXEC binary path: $(which mpiexec)" || echo "MPI library not found...skipping"
-        #- ls /usr/bin/
-        #- echo "$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*mpifort*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)"
-        #- echo "$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*mpicc*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)"
-        #- sudo apt install openmpi-bin
-        #- echo $(which mpicc)
-        #- echo $(which mpif90)
-        #- echo $(which mpifort)
-        #- echo $(which mpiexec)
-        #- echo $(which mpirun)
-        #- mpiexecFlag="$(command -v mpiexec.openmpi)"
-        #- if [ -f "${mpiexecFlag}" ]; then mpiexecFlag="--mpiexec ${mpiexecFlag}"; else unset mpiexecFlag; echo "mpiexec not found..."; fi
-        #- echo "mpiexecFlag = ${mpiexecFlag}"
-        - echo "FCFLAG = ${FCFLAG}"
-        - cmake --version || echo "cmake not found..."
-        - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
-        - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
-        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" --yes-to-all ${FCFLAG} ${mpiexecFlag}
-        - pmRootDir="$(pwd)"
-        - ls ${pmRootDir}/bin/
-        - cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
-        - cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
-        - cd ${pmRootDir}/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
-        #- cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
-        #- cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
-        #- cd ${pmRootDir}/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
+#    - os: linux
+#      dist: trusty
+#      addons:
+#        apt:
+#          sources:
+#            - ubuntu-toolchain-r-test
+#          packages:
+#            - cmake
+#            - gfortran-9
+#            - libblas-dev
+#            - liblapack-dev
+#            - libopenmpi-dev
+#            - openmpi-bin
+#            #- mpich
+#            #- libmpich-dev
+#            #- libblas-dev
+#            #- liblapack-dev
+#            #- libopenmpi-dev
+#            #- openmpi-bin
+#      script:
+#        #- chmod +x ./.travis/install_cmake.sh && ./.travis/install_cmake.sh
+#        #- export PATH="/usr/local/cmake-3.16.3/bin:${PATH}"
+#        #- echo "The MPIEXEC binary path: $(which mpiexec)" || echo "MPI library not found...skipping"
+#        #- ls /usr/bin/
+#        #- echo "$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*mpifort*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)"
+#        #- echo "$(( IFS=:; for p in $PATH; do unset lsout; lsout=$(ls -dm "$p"/*mpicc*); if ! [[ -z "${lsout// }" ]]; then echo "${lsout}, "; fi; done ) 2>/dev/null)"
+#        #- sudo apt install openmpi-bin
+#        #- echo $(which mpicc)
+#        #- echo $(which mpif90)
+#        #- echo $(which mpifort)
+#        #- echo $(which mpiexec)
+#        #- echo $(which mpirun)
+#        #- mpiexecFlag="$(command -v mpiexec.openmpi)"
+#        #- if [ -f "${mpiexecFlag}" ]; then mpiexecFlag="--mpiexec ${mpiexecFlag}"; else unset mpiexecFlag; echo "mpiexec not found..."; fi
+#        #- echo "mpiexecFlag = ${mpiexecFlag}"
+#        - echo "FCFLAG = ${FCFLAG}"
+#        - cmake --version || echo "cmake not found..."
+#        - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
+#        - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
+#        - ./install.sh --lang "C C++ Fortran" --build release --lib dynamic --mem heap --par "none" --yes-to-all ${FCFLAG} ${mpiexecFlag}
+#        - pmRootDir="$(pwd)"
+#        - ls ${pmRootDir}/bin/
+#        - cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
+#        - cd ${pmRootDir}/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
+#        #- cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
+#        #- cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
+#        #- cd ${pmRootDir}/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
 
     # code coverage
 
