@@ -621,37 +621,128 @@ fi
 
 ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"; export ParaMonte_REQ_DIR
 ParaMonte_REQ_INSTALL_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations"; export ParaMonte_REQ_INSTALL_DIR
-ParaMonte_GNU_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/gnu/${gnuVersionOpenCoarrays}"; export ParaMonte_GNU_ROOT_DIR
-ParaMonte_MPI_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/mpich/${mpichVersionOpenCoarrays}"; export ParaMonte_MPI_ROOT_DIR
-#ParaMonte_CAF_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/opencoarrays/${openCoarraysVersion}"; export ParaMonte_CAF_ROOT_DIR
 ParaMonte_CMAKE_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/cmake/${cmakeVersionParaMonteCompatible}"; export ParaMonte_CMAKE_ROOT_DIR
 
-ParaMonte_GNU_BIN_DIR="${ParaMonte_GNU_ROOT_DIR}/bin";          export ParaMonte_GNU_BIN_DIR
-ParaMonte_MPI_BIN_DIR="${ParaMonte_MPI_ROOT_DIR}/bin";          export ParaMonte_MPI_BIN_DIR
 ParaMonte_CMAKE_BIN_DIR="${ParaMonte_CMAKE_ROOT_DIR}/bin";      export ParaMonte_CMAKE_BIN_DIR
 
-ParaMonte_GNU_LIB_DIR="${ParaMonte_GNU_ROOT_DIR}/lib64";        export ParaMonte_GNU_LIB_DIR
-ParaMonte_MPI_LIB_DIR="${ParaMonte_MPI_ROOT_DIR}/lib";          export ParaMonte_MPI_LIB_DIR
+#############################################
+#### set up the local CMAKE installation path
+#############################################
 
-ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake";        export ParaMonte_CMAKE_PATH
+CMAKE_LOCAL_INSTALLATION_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/" -path **/bin/cmake)"
 
-#### set up local CAF installation paths
-
-ParaMonte_CAF_ROOT_DIR="$(dirname $(find "${ParaMonte_REQ_INSTALL_DIR}"/opencoarrays/ -name cafrun))"
-ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_ROOT_DIR}/caf"
-
-if [ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]; then
-    ParaMonte_CAF_BIN_DIR="${ParaMonte_CAF_ROOT_DIR}/bin"; export ParaMonte_CAF_BIN_DIR
-    ParaMonte_CAF_LIB_DIR="${ParaMonte_CAF_ROOT_DIR}/lib64"; export ParaMonte_CAF_LIB_DIR
-    ParaMonte_CAF_SETUP_PATH="${ParaMonte_CAF_ROOT_DIR}/setup.sh";
-    if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
-        export ParaMonte_CAF_SETUP_PATH
-    else
-        unset ParaMonte_CAF_SETUP_PATH
-    fi
+if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
+    CMAKE_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CMAKE_LOCAL_INSTALLATION_PATH}")"
+    export CMAKE_LOCAL_INSTALLATION_PATH
+    export CMAKE_LOCAL_INSTALLATION_BIN_DIR
+    CMAKE_LOCAL_INSTALLATION_VERSION="$(cmake --version)"
+    CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY=($CMAKE_LOCAL_INSTALLATION_VERSION)
+    CMAKE_LOCAL_INSTALLATION_VERSION="${CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY[2]}"
+    unset CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY
 else
-    unset ParaMonte_CAF_WRAPPER_PATH
-    unset ParaMonte_CAF_ROOT_DIR
+    unset CMAKE_LOCAL_INSTALLATION_PATH
+fi
+
+############################################
+#### set up the local GNU installation paths
+############################################
+
+GNU_LOCAL_INSTALLATION_GFORTRAN_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/gnu" -name gfortran)"
+
+if [ -f "${GNU_LOCAL_INSTALLATION_GFORTRAN_PATH}" ]; then
+
+    GNU_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${GNU_LOCAL_INSTALLATION_GFORTRAN_PATH}")"
+    export GNU_LOCAL_INSTALLATION_GFORTRAN_PATH
+    export GNU_LOCAL_INSTALLATION_BIN_DIR
+
+    GNU_LOCAL_INSTALLATION_LIB_DIR="${GNU_LOCAL_INSTALLATION_BIN_DIR}/../lib"
+    if [ -d "${GNU_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+        export GNU_LOCAL_INSTALLATION_LIB_DIR
+    else
+        unset GNU_LOCAL_INSTALLATION_LIB_DIR
+    fi
+
+    GNU_LOCAL_INSTALLATION_LIB64_DIR="${GNU_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
+    if [ -d "${GNU_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+        export GNU_LOCAL_INSTALLATION_LIB64_DIR
+    else
+        unset GNU_LOCAL_INSTALLATION_LIB64_DIR
+    fi
+
+else
+
+    unset GNU_LOCAL_INSTALLATION_GFORTRAN_PATH
+
+fi
+
+############################################
+#### set up the local MPI installation paths
+############################################
+
+MPI_LOCAL_INSTALLATION_MPIEXEC_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}"/ -name mpiexec)"
+
+if [ -f "${MPI_LOCAL_INSTALLATION_MPIEXEC_PATH}" ]; then
+
+    MPI_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${MPI_LOCAL_INSTALLATION_MPIEXEC_PATH}")"
+    export MPI_LOCAL_INSTALLATION_MPIEXEC_PATH
+    export MPI_LOCAL_INSTALLATION_BIN_DIR
+
+    MPI_LOCAL_INSTALLATION_LIB_DIR="${MPI_LOCAL_INSTALLATION_BIN_DIR}/../lib"
+    if [ -d "${MPI_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+        export MPI_LOCAL_INSTALLATION_LIB_DIR
+    else
+        unset MPI_LOCAL_INSTALLATION_LIB_DIR
+    fi
+
+    MPI_LOCAL_INSTALLATION_LIB64_DIR="${MPI_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
+    if [ -d "${MPI_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+        export MPI_LOCAL_INSTALLATION_LIB64_DIR
+    else
+        unset MPI_LOCAL_INSTALLATION_LIB64_DIR
+    fi
+
+else
+
+    unset MPI_LOCAL_INSTALLATION_MPIEXEC_PATH
+
+fi
+
+############################################
+#### set up the local CAF installation paths
+############################################
+
+CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}"/opencoarrays/ -path **/bin/caf)"
+
+if [ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]; then
+
+    CAF_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}")"
+    export CAF_LOCAL_INSTALLATION_BIN_DIR
+
+    CAF_LOCAL_INSTALLATION_LIB_DIR="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../lib"
+    if [ -d "${CAF_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+        export CAF_LOCAL_INSTALLATION_LIB_DIR
+    else
+        unset CAF_LOCAL_INSTALLATION_LIB_DIR
+    fi
+
+    CAF_LOCAL_INSTALLATION_LIB64_DIR="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
+    if [ -d "${CAF_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+        export CAF_LOCAL_INSTALLATION_LIB64_DIR
+    else
+        unset CAF_LOCAL_INSTALLATION_LIB64_DIR
+    fi
+
+    CAF_LOCAL_INSTALLATION_SETUP_FILE="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../setup.sh";
+    if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
+        export CAF_LOCAL_INSTALLATION_SETUP_FILE
+    else
+        unset CAF_LOCAL_INSTALLATION_SETUP_FILE
+    fi
+
+else
+
+    unset CAF_LOCAL_INSTALLATION_WRAPPER_PATH
+
 fi
 
 ####################################################################################################################################
@@ -1016,9 +1107,9 @@ fi
 echo >&2
 if [ "${CAF_ENABLED}" = "true" ]; then
 
-    unset ParaMonte_CAF_WRAPPER_PATH
+    #unset CAF_LOCAL_INSTALLATION_WRAPPER_PATH
 
-    if [ -z "${ParaMonte_CAF_WRAPPER_PATH+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"intel".* ]] ); then
+    if [ -z "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"intel".* ]] ); then
 
         if [ -z "${intelFortranMpiWrapperPath+x}" ]; then
             echo >&2
@@ -1035,24 +1126,24 @@ if [ "${CAF_ENABLED}" = "true" ]; then
             echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The ParaMonte build will continue at the risk of failing..."
             echo >&2
         else
-            ParaMonte_CAF_WRAPPER_PATH="${intelFortranCompilerPath}"
-            echo >&2 "-- ${BUILD_NAME}CAF - The inferred Coarray Fortran compiler wrapper path: ${ParaMonte_CAF_WRAPPER_PATH}"
+            CAF_LOCAL_INSTALLATION_WRAPPER_PATH="${intelFortranCompilerPath}"
+            echo >&2 "-- ${BUILD_NAME}CAF - The inferred Coarray Fortran compiler wrapper path: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
         fi
 
     fi
 
-    if [ -z "${ParaMonte_CAF_WRAPPER_PATH+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"gnu".* ]] ); then
+    if [ -z "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"gnu".* ]] ); then
 
         # assume OpenCoarrays
 
         PMCS=gnu
 
         if command -v caf >/dev/null 2>&1; then
-            ParaMonte_CAF_WRAPPER_PATH="$(command -v caf)"
+            CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(command -v caf)"
         fi
 
-        if [ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]; then
-            echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper detected at: ${ParaMonte_CAF_WRAPPER_PATH}"
+        if [ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]; then
+            echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper detected at: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
             cafVersion="$(caf -dumpversion)"
             cafVersionRequired="${gnuVersionParaMonteCompatible}"
             echo >&2 "-- ${BUILD_NAME}CAF - caf version: ${cafVersion}"
@@ -1214,9 +1305,9 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
         fi
 
         if [ "${CAF_ENABLED}" = "true" ]; then
-            if [ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]; then
+            if [ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]; then
                 COMPILER_VERSION="unknown"
-                Fortran_COMPILER_PATH="${ParaMonte_CAF_WRAPPER_PATH}"
+                Fortran_COMPILER_PATH="${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
                 cafInstallEnabled=false
             else
                 cafInstallEnabled=true
@@ -1355,7 +1446,7 @@ echo >&2
 if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${gnuInstallEnabled}" = "true" ] || [ "${cmakeInstallEnabled}" = "true" ]; then
 
     #ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
-    #ParaMonte_CAF_SETUP_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/${openCoarraysVersion}/setup.sh"
+    #CAF_LOCAL_INSTALLATION_SETUP_FILE="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/${openCoarraysVersion}/setup.sh"
 
     if [ "${freshInstallEnabled}" = "true" ]; then
         rm -rf "${ParaMonte_REQ_DIR}"
@@ -1461,7 +1552,8 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         ############################################################################################################################
 
         if [ "${cmakeInstallEnabled}" = "true" ]; then
-            if [[ -f "${ParaMonte_CMAKE_PATH}" ]]; then
+            if [ -z "${CMAKE_LOCAL_INSTALLATION_PATH+x}" ] && [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
+                #\todo the cmake version extraction needs enhancement.
                 echo >&2 "-- ${BUILD_NAME} - cmake ${cmakeVersionParaMonteCompatible} detected."
             else
                 echo >&2 "-- ${BUILD_NAME} - cmake ${cmakeVersionParaMonteCompatible} missing."
@@ -1475,16 +1567,16 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} )
                     verify $? "installation of cmake"
                     cmakeFound=false
-                    if [ -f "${ParaMonte_CMAKE_PATH}" ]; then
+                    if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
                         cmakeFound=true
                     else
-                        ParaMonte_CMAKE_BIN_DIR="${ParaMonte_REQ_INSTALL_DIR}/bin"; export ParaMonte_CMAKE_BIN_DIR
-                        ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"; export ParaMonte_CMAKE_PATH
-                        if [ -f "${ParaMonte_CMAKE_PATH}" ]; then
+                        CMAKE_LOCAL_INSTALLATION_BIN_DIR="${ParaMonte_REQ_INSTALL_DIR}/bin"; export CMAKE_LOCAL_INSTALLATION_BIN_DIR
+                        CMAKE_LOCAL_INSTALLATION_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"; export CMAKE_LOCAL_INSTALLATION_PATH
+                        if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
                             cmakeFound=true
                         else
                             unset ParaMonte_CMAKE_BIN_DIR
-                            unset ParaMonte_CMAKE_PATH
+                            unset CMAKE_LOCAL_INSTALLATION_PATH
                         fi
                     fi
                     if [ "${cmakeFound}" = "true" ]; then
@@ -1495,7 +1587,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                         cmakeVersion="$(cmake --version)"
                         cmakeVersionArray=($cmakeVersion)
                         cmakeVersion="${cmakeVersionArray[2]}"
-                        echo >&2 "-- ${BUILD_NAME} -       cmake binary path: ${ParaMonte_CMAKE_PATH}"
+                        echo >&2 "-- ${BUILD_NAME} -       cmake binary path: ${CMAKE_LOCAL_INSTALLATION_PATH}"
                         echo >&2 "-- ${BUILD_NAME} - cmake installed version: ${cmakeVersion}"
                     fi
                 fi
@@ -1518,18 +1610,18 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         else
             CURRENT_PKG="the MPICH library"
             if [ "${mpiInstallEnabled}" = "true" ]; then
-                MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
+                MPIEXEC_PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}/mpiexec"
                 if [[ -f "${MPIEXEC_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_MPI_BIN_DIR}"
+                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${MPI_LOCAL_INSTALLATION_BIN_DIR}"
                     localMpiInstallationDetected=true
-                    if [[ ":$PATH:" != *":${ParaMonte_MPI_BIN_DIR}:"* ]]; then
-                        PATH="${ParaMonte_MPI_BIN_DIR}:${PATH}"
+                    if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                        PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
                     fi
-                    if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_MPI_LIB_DIR}:"* ]]; then
-                        LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
+                    if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                        LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
                         export LD_LIBRARY_PATH
                     fi
-                    PATH="${ParaMonte_MPI_LIB_DIR}:${PATH}"
+                    PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
                     export PATH
                 else
                     ##########################################################################
@@ -1587,15 +1679,15 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
         CURRENT_PKG="the GNU compiler collection"
         if [ "${gnuInstallEnabled}" = "true" ]; then # || [ "${localMpiInstallationDetected}" = "false" ]); then
-            Fortran_COMPILER_PATH="${ParaMonte_GNU_BIN_DIR}/gfortran"
+            Fortran_COMPILER_PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}/gfortran"
             if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
-                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_GNU_BIN_DIR}"
-                if [[ ":$PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
-                    PATH="${ParaMonte_GNU_LIB_DIR}:${PATH}"
+                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${GNU_LOCAL_INSTALLATION_BIN_DIR}"
+                if [[ ":$PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                    PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
                     export PATH
                 fi
-                if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
-                    LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
+                if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                    LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
                     export LD_LIBRARY_PATH
                 fi
                 #gnuInstallEnabled=false
@@ -1661,8 +1753,8 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
         CURRENT_PKG="the OpenCoarrays compiler wrapper"
         if [ "${CAF_ENABLED}" = "true" ] && [ "${cafInstallEnabled}" = "true" ]; then
-            if [[ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]]; then
-                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_CAF_WRAPPER_PATH}"
+            if [[ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]]; then
+                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
             else
                 ##########################################################################
                 echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
@@ -1671,7 +1763,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     (brew install opencoarrays && brew link opencoarrays )
                     (command -v caf >/dev/null 2>&1 )
                     verify $? "installation of ${CURRENT_PKG}"
-                    ParaMonte_CAF_WRAPPER_PATH="$(command -v caf)"
+                    CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(command -v caf)"
                 else
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
                     (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
@@ -1717,14 +1809,14 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                 fi
                 ##########################################################################
             fi
-            Fortran_COMPILER_PATH="${ParaMonte_CAF_WRAPPER_PATH}"
+            Fortran_COMPILER_PATH="${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
         fi
 
-        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
-            source "${ParaMonte_CAF_SETUP_PATH}"
+        if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
+            source "${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
             # source "${SETUP_FILE_PATH}"
             # echo "" >> ${SETUP_FILE_PATH}
-            # echo "source ${ParaMonte_CAF_SETUP_PATH}" >> ${SETUP_FILE_PATH}
+            # echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}" >> ${SETUP_FILE_PATH}
             # echo "" >> ${SETUP_FILE_PATH}
         fi
 
@@ -1760,28 +1852,28 @@ fi
 # export SETUP_FILE_PATH
 #
 # {
-#     echo "if ! [[ \"${PATH}\" =~ .*\"${ParaMonte_GNU_BIN_DIR}\".* ]]; then"
-#     echo "    export PATH=\"${ParaMonte_GNU_BIN_DIR}:${PATH}\""
+#     echo "if ! [[ \"${PATH}\" =~ .*\"${GNU_LOCAL_INSTALLATION_BIN_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${GNU_LOCAL_INSTALLATION_BIN_DIR}:${PATH}\""
 #     echo "fi"
 #     echo ""
-#     echo "if ! [[ \"${PATH}\" =~ .*\"${ParaMonte_MPI_BIN_DIR}\".* ]]; then"
-#     echo "    export PATH=\"${ParaMonte_MPI_BIN_DIR}:${PATH}\""
+#     echo "if ! [[ \"${PATH}\" =~ .*\"${MPI_LOCAL_INSTALLATION_BIN_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}\""
 #     echo "fi"
 #     echo ""
-#     echo "if ! [[ \"${PATH}\" =~ .*\"${ParaMonte_CAF_BIN_DIR}\".* ]]; then"
-#     echo "    export PATH=\"${ParaMonte_CAF_BIN_DIR}:${PATH}\""
+#     echo "if ! [[ \"${PATH}\" =~ .*\"${CAF_LOCAL_INSTALLATION_BIN_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}:${PATH}\""
 #     echo "fi"
 #     echo ""
-#     echo "if ! [[ \"${LD_LIBRARY_PATH}\" =~ .*\"${ParaMonte_GNU_LIB_DIR}\".* ]]; then"
-#     echo "    export PATH=\"${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}\""
+#     echo "if ! [[ \"${LD_LIBRARY_PATH}\" =~ .*\"${GNU_LOCAL_INSTALLATION_LIB_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}\""
 #     echo "fi"
 #     echo ""
-#     echo "if ! [[ \"${LD_LIBRARY_PATH}\" =~ .*\"${ParaMonte_MPI_LIB_DIR}\".* ]]; then"
-#     echo "    export PATH=\"${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}\""
+#     echo "if ! [[ \"${LD_LIBRARY_PATH}\" =~ .*\"${MPI_LOCAL_INSTALLATION_LIB_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}\""
 #     echo "fi"
 #     echo ""
-#     echo "if ! [[ \"${LD_LIBRARY_PATH}\" =~ .*\"${ParaMonte_CAF_LIB_DIR}\".* ]]; then"
-#     echo "    export PATH=\"${ParaMonte_CAF_LIB_DIR}:${LD_LIBRARY_PATH}\""
+#     echo "if ! [[ \"${LD_LIBRARY_PATH}\" =~ .*\"${CAF_LOCAL_INSTALLATION_LIB_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}\""
 #     echo "fi"
 # } > ${SETUP_FILE_PATH}
 
@@ -1800,136 +1892,190 @@ if [ "${PMCS}" = "gnu" ] && ! [ "${isMacOS}" = "true" ]; then
     } > ${SETUP_FILE_PATH}
     chmod +x ${SETUP_FILE_PATH}
 
-    if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
-
-        if [[ -f "${SETUP_FILE_PATH}" ]]; then
-            {
+    if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
+        {
             echo ""
-            echo "source ${ParaMonte_CAF_SETUP_PATH}"
+            echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
+            echo ""
+        } >> ${SETUP_FILE_PATH}
+        if [ "${LTYPE}" = "dynamic" ]; then
+            {
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    LD_LIBRARY_PATH=."
+            echo "else"
+            echo "    sourceFileDir=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${sourceFileDir}:\"* ]]; then"
+            echo "        LD_LIBRARY_PATH=\"${sourceFileDir}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+            echo "export LD_LIBRARY_PATH"
             echo ""
             } >> ${SETUP_FILE_PATH}
-            if [ "${LTYPE}" = "dynamic" ]; then
-                {
-                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-                echo "    LD_LIBRARY_PATH=."
-                echo "else"
-                echo "    sourceFileDir=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
-                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${sourceFileDir}:\"* ]]; then"
-                echo "        LD_LIBRARY_PATH=\"${sourceFileDir}:\${LD_LIBRARY_PATH}\""
-                echo "    fi"
-                echo "fi"
-                echo "export LD_LIBRARY_PATH"
-                echo ""
-                } >> ${SETUP_FILE_PATH}
-            fi
         fi
     fi
 
-    # add the GNU installation paths to the setup file
+    #####################################################
+    #### add the GNU installation paths to the setup file
+    #####################################################
 
-    if [ -d "${ParaMonte_GNU_BIN_DIR}" ]; then
+    if [ -d "${GNU_LOCAL_INSTALLATION_BIN_DIR}" ]; then
         if [ -z ${PATH+x} ]; then
-            PATH="${ParaMonte_GNU_BIN_DIR}"
+            PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}"
         else
-            if [[ ":$PATH:" != *":${ParaMonte_GNU_BIN_DIR}:"* ]]; then
-                PATH="${ParaMonte_GNU_BIN_DIR}:${PATH}"
+            if [[ ":$PATH:" != *":${GNU_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
             fi
         fi
-        if [ -z ${LD_LIBRARY_PATH+x} ]; then
-            LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}"
-        else
-            if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
-                LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
-            fi
-        fi
-        #if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
-            {
+        {
             echo "if [ -z \${PATH+x} ]; then"
-            echo "    export PATH=\"${ParaMonte_GNU_BIN_DIR}\""
+            echo "    export PATH=\"${GNU_LOCAL_INSTALLATION_BIN_DIR}\""
             echo "else"
-            echo "    if [[ \":\$PATH:\" != *\":${ParaMonte_GNU_BIN_DIR}:\"* ]]; then"
-            echo "        export PATH=\"${ParaMonte_GNU_BIN_DIR}:\${PATH}\""
+            echo "    if [[ \":\$PATH:\" != *\":${GNU_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
+            echo "        export PATH=\"${GNU_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
             echo "    fi"
             echo "fi"
-            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-            echo "    export LD_LIBRARY_PATH=\"${ParaMonte_GNU_LIB_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${ParaMonte_GNU_LIB_DIR}:\"* ]]; then"
-            echo "        export LD_LIBRARY_PATH=\"${ParaMonte_GNU_LIB_DIR}:\${LD_LIBRARY_PATH}\""
-            echo "    fi"
-            echo "fi"
-            } >> ${SETUP_FILE_PATH}
-        #fi
+        } >> ${SETUP_FILE_PATH}
     fi
 
-    if [ -d "${ParaMonte_MPI_BIN_DIR}" ]; then
-        if [ -z ${PATH+x} ]; then
-            PATH="${ParaMonte_MPI_BIN_DIR}"
-        else
-            if [[ ":$PATH:" != *":${ParaMonte_MPI_BIN_DIR}:"* ]]; then
-                PATH="${ParaMonte_MPI_BIN_DIR}:${PATH}"
-            fi
-        fi
+    if [ -d "${GNU_LOCAL_INSTALLATION_LIB_DIR}" ]; then
         if [ -z ${LD_LIBRARY_PATH+x} ]; then
-            LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}"
+            LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}"
         else
-            if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_MPI_LIB_DIR}:"* ]]; then
-                LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
+            if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
             fi
         fi
-        #if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
-            {
-            echo "if [ -z \${PATH+x} ]; then"
-            echo "    export PATH=\"${ParaMonte_MPI_BIN_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$PATH:\" != *\":${ParaMonte_MPI_BIN_DIR}:\"* ]]; then"
-            echo "        export PATH=\"${ParaMonte_MPI_BIN_DIR}:\${PATH}\""
-            echo "    fi"
-            echo "fi"
+        {
             echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-            echo "    export LD_LIBRARY_PATH=\"${ParaMonte_MPI_LIB_DIR}\""
+            echo "    export LD_LIBRARY_PATH=\"${GNU_LOCAL_INSTALLATION_LIB_DIR}\""
             echo "else"
-            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${ParaMonte_MPI_LIB_DIR}:\"* ]]; then"
-            echo "        export LD_LIBRARY_PATH=\"${ParaMonte_MPI_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${GNU_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${GNU_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
             echo "    fi"
             echo "fi"
-            } >> ${SETUP_FILE_PATH}
-        #fi
+        } >> ${SETUP_FILE_PATH}
     fi
 
-    if [ -d "${ParaMonte_CAF_BIN_DIR}" ]; then
-        if [ -z ${PATH+x} ]; then
-            PATH="${ParaMonte_CAF_BIN_DIR}"
-        else
-            if [[ ":$PATH:" != *":${ParaMonte_CAF_BIN_DIR}:"* ]]; then
-                PATH="${ParaMonte_CAF_BIN_DIR}:${PATH}"
-            fi
-        fi
+    if [ -d "${GNU_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
         if [ -z ${LD_LIBRARY_PATH+x} ]; then
-            LD_LIBRARY_PATH="${ParaMonte_CAF_LIB_DIR}"
+            LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB64_DIR}"
         else
-            if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_CAF_LIB_DIR}:"* ]]; then
-                LD_LIBRARY_PATH="${ParaMonte_CAF_LIB_DIR}:${LD_LIBRARY_PATH}"
+            if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB64_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB64_DIR}:${LD_LIBRARY_PATH}"
             fi
         fi
-        #if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
-            {
-            echo "if [ -z \${PATH+x} ]; then"
-            echo "    export PATH=\"${ParaMonte_CAF_BIN_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$PATH:\" != *\":${ParaMonte_CAF_BIN_DIR}:\"* ]]; then"
-            echo "        export PATH=\"${ParaMonte_CAF_BIN_DIR}:\${PATH}\""
-            echo "    fi"
-            echo "fi"
+        {
             echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-            echo "    export LD_LIBRARY_PATH=\"${ParaMonte_CAF_LIB_DIR}\""
+            echo "    export LD_LIBRARY_PATH=\"${GNU_LOCAL_INSTALLATION_LIB64_DIR}\""
             echo "else"
-            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${ParaMonte_CAF_LIB_DIR}:\"* ]]; then"
-            echo "        export LD_LIBRARY_PATH=\"${ParaMonte_CAF_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${GNU_LOCAL_INSTALLATION_LIB64_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${GNU_LOCAL_INSTALLATION_LIB64_DIR}:\${LD_LIBRARY_PATH}\""
             echo "    fi"
             echo "fi"
-            } >> ${SETUP_FILE_PATH}
-        #fi
+        } >> ${SETUP_FILE_PATH}
+    fi
+
+    ##########################
+    #### add path to local MPI
+    ##########################
+
+    if [ -d "${MPI_LOCAL_INSTALLATION_BIN_DIR}" ]; then
+        if [ -z ${PATH+x} ]; then
+            PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}"
+        else
+            if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+            fi
+        fi
+        {
+            echo "if [ -z \${PATH+x} ]; then"
+            echo "    export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$PATH:\" != *\":${MPI_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
+            echo "        export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
+            echo "    fi"
+            echo "fi"
+        } >> ${SETUP_FILE_PATH}
+    fi
+
+    if [ -d "${MPI_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+        if [ -z ${LD_LIBRARY_PATH+x} ]; then
+            LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}"
+        else
+            if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+            fi
+        fi
+        {
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${MPI_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+        } >> ${SETUP_FILE_PATH}
+    fi
+
+    if [ -d "${MPI_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+        if [ -z ${LD_LIBRARY_PATH+x} ]; then
+            LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB64_DIR}"
+        else
+            if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB64_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB64_DIR}:${LD_LIBRARY_PATH}"
+            fi
+        fi
+        {
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB64_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${MPI_LOCAL_INSTALLATION_LIB64_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB64_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+        } >> ${SETUP_FILE_PATH}
+    fi
+
+    ############################
+    #### add path to caf wrapper
+    ############################
+
+    if [ -d "${CAF_LOCAL_INSTALLATION_BIN_DIR}" ]; then
+        if [ -z ${PATH+x} ]; then
+            PATH="${CAF_LOCAL_INSTALLATION_BIN_DIR}"
+        else
+            if [[ ":$PATH:" != *":${CAF_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                PATH="${CAF_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+            fi
+        fi
+        {
+            echo "if [ -z \${PATH+x} ]; then"
+            echo "    export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$PATH:\" != *\":${CAF_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
+            echo "        export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
+            echo "    fi"
+            echo "fi"
+        } >> ${SETUP_FILE_PATH}
+    fi
+
+    if [ -d "${CAF_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+        if [ -z ${LD_LIBRARY_PATH+x} ]; then
+            LD_LIBRARY_PATH="${CAF_LOCAL_INSTALLATION_LIB_DIR}"
+        else
+            if [[ ":$LD_LIBRARY_PATH:" != *":${CAF_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${CAF_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+            fi
+        fi
+        {
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    export LD_LIBRARY_PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${CAF_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+        } >> ${SETUP_FILE_PATH}
     fi
 
     export PATH
@@ -2295,12 +2441,12 @@ echo >&2 "-- ${BUILD_NAME} - CMAKE Fortran compiler option: ${FC_OPTION}"
 echo >&2 "-- ${BUILD_NAME} - CMAKE mpiexec option: ${MPIEXEC_OPTION}"
 echo >&2
 
-if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && ([ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${cafInstallEnabled}" = "true" ]); then
-    ParaMonte_CAF_SETUP_PATH_CMD="source ${ParaMonte_CAF_SETUP_PATH}"
+if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ] && ([ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${cafInstallEnabled}" = "true" ]); then
+    CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD="source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
 else
-    ParaMonte_CAF_SETUP_PATH_CMD=""
+    CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD=""
 fi
-if [ "${isMacOS}" = "true" ]; then ParaMonte_CAF_SETUP_PATH_CMD=""; fi
+if [ "${isMacOS}" = "true" ]; then CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD=""; fi
 
 ####################################################################################################################################
 #### generate the current paramonte library name
@@ -2371,7 +2517,7 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
     fi
 
     (cd ${ParaMonte_BLD_DIR} && \
-    ${ParaMonte_CAF_SETUP_PATH_CMD} && \
+    ${CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD} && \
     cmake \
     --verbose=1 \
     "${FC_OPTION}" \

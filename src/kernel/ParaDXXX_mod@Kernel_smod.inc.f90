@@ -78,9 +78,9 @@
 
     character(*), parameter :: SUBMODULE_NAME = MODULE_NAME // "@Kernel_smod"
 
-    type            :: SumAccRateSinceStart_type
-        real(RK)    :: acceptedRejected
-        real(RK)    :: acceptedRejectedDelayed
+    type                    :: SumAccRateSinceStart_type
+        real(RK)            :: acceptedRejected
+        real(RK)            :: acceptedRejectedDelayed
     end type SumAccRateSinceStart_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,10 +158,9 @@ contains
         character(4*STDOUT_SEGLEN+2*3+1)    :: txt
 #if defined CAF_ENABLED || defined MPI_ENABLED
         integer(IK)                         :: imageStartID, imageEndID
-#if defined CAF_ENABLED
-        logical     , save                  :: co_proposalFoundSinglChainMode[*]                    ! used in the delayed rejection section
-#elif defined MPI_ENABLED
-        logical                             :: co_proposalFoundSinglChainMode                       ! used in the delayed rejection section
+        integer(IK)                         :: proposalFoundSinglChainMode                          ! used in singlChain delayed rejection. zero if the proposal is not accepted. 1 if the proposal is accepted.
+#if defined MPI_ENABLED
+        integer(IK)                         :: proposalFoundSinglChainModeReduced                   ! the reduced value by summing proposalFoundSinglChainModeReduced over all images.
         real(RK)    , allocatable           :: AccRateMatrix(:,:)                                   ! matrix of size (-1:self%SpecDRAM%DelayedRejectionCount%val,1:self%Image%count)
         integer(IK)                         :: ndPlusOne
         integer(IK)                         :: ierrMPI
@@ -325,7 +324,7 @@ contains
 
             end if blockLeaderSetup
 
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
             block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
             if (self%Err%occurred) return
@@ -650,21 +649,6 @@ contains
                 end do loopOverImages
 #endif
 
-#if defined MPI_ENABLED
-                if (self%SpecBase%ParallelizationModel%isSinglChain .and. co_proposalFound_samplerUpdateOccurred(1)==0_IK) then
-                    ! LCOV_EXCL_START
-                    imageID = 0_IK  ! broadcast rank # 0 to all processes, indicating unsuccessful sampling
-                    call mpi_bcast  ( imageID           &   ! buffer
-                                    , 1                 &   ! count
-                                    , mpi_integer       &   ! datatype
-                                    , 0                 &   ! root: broadcasting rank
-                                    , mpi_comm_world    &   ! comm
-                                    , ierrMPI           &   ! ierr
-                                    )
-                    ! LCOV_EXCL_STOP
-                end if
-#endif
-
 #if defined CAF_ENABLED
 
                 if (self%SpecBase%ParallelizationModel%isSinglChain) then
@@ -706,6 +690,19 @@ contains
             end if blockLeaderImage
 
 #elif defined MPI_ENABLED
+
+                if (self%SpecBase%ParallelizationModel%isSinglChain .and. co_proposalFound_samplerUpdateOccurred(1)==0_IK) then
+                    ! LCOV_EXCL_START
+                    imageID = 0_IK  ! broadcast rank # 0 to all processes, indicating unsuccessful sampling
+                    call mpi_bcast  ( imageID           &   ! buffer
+                                    , 1                 &   ! count
+                                    , mpi_integer       &   ! datatype
+                                    , 0                 &   ! root: broadcasting rank
+                                    , mpi_comm_world    &   ! comm
+                                    , ierrMPI           &   ! ierr
+                                    )
+                    ! LCOV_EXCL_STOP
+                end if
 
             else blockLeaderImage   ! This block should be executed only when singlChain parallelizationModel is requested
 
@@ -764,7 +761,9 @@ contains
 
             if (self%SpecBase%ParallelizationModel%isSinglChain) then
                 call self%Timer%toc()
-                call mpi_bcast  ( co_proposalFound_samplerUpdateOccurred  &   ! buffer: XXX: first element not needed except to end the simulation.
+                ! buffer: XXX: first element of co_proposalFound_samplerUpdateOccurred not needed except to end the simulation.
+                ! This could perhaps be enhanced in the further to only pass one elemtn.
+                call mpi_bcast  ( co_proposalFound_samplerUpdateOccurred & ! buffer
                                 , 2                     &   ! count
                                 , mpi_integer           &   ! datatype
                                 , 0                     &   ! root: broadcasting rank
@@ -779,7 +778,7 @@ contains
 
             if (co_proposalFound_samplerUpdateOccurred(1) == -1_IK) exit loopMarkovChain   ! we are done: co_missionAccomplished = .true.
 
-            co_AccRate(-1) = -1._RK ! counterDRS at which new proposal is accepted. this is essential for all serial and parallel modes
+            co_AccRate(-1) = -1._RK ! counterDRS at which new proposal is accepted. This initialization is essential for all serial and parallel modes
             maxLogFuncRejectedProposal = NEGINF_RK
 
 #if defined CAF_ENABLED || defined MPI_ENABLED
@@ -801,7 +800,7 @@ contains
 
         end do loopMarkovChain
 
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(ProposalErr); end block
 #endif
         if (self%Err%occurred) return

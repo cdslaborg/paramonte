@@ -364,7 +364,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
     !> \brief
     !> Broadcast the error condition from all images to all images. 
     !> 
@@ -376,7 +376,7 @@ contains
     !> \warning
     !> This function solely exist for soft handling of fatal errors in parallel testing mode and 
     !> should therefore must never be defined and used in production builds. This function is defined 
-    !> by either `CODECOVE_ENABLED` or `SAMPLER_TEST_ENABLED` preprocessor flags in parallel builds and if 
+    !> by either `CODECOV_ENABLED` or `SAMPLER_TEST_ENABLED` preprocessor flags in parallel builds and if 
     !> defined, it will SIGNIFICANTLY degrade the parallel performance of the code. 
     !> Therefore, **`SAMPLER_TEST_ENABLED` should never be defined when building for production**.
     subroutine bcastErr(Err)

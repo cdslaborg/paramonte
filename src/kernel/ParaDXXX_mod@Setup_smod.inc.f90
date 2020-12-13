@@ -243,7 +243,7 @@ contains
                                 , name = PMSM%ParaDXXX  &
                                 , inputFile = inputFile &
                                 )
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
         if (self%Err%occurred) then
@@ -272,7 +272,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call self%getSpecFromInputFile(ndim)
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
         if (self%Err%occurred) then
@@ -332,7 +332,7 @@ contains
                                                 , delayedRejectionScaleFactorVec        = delayedRejectionScaleFactorVec        & ! LCOV_EXCL_LINE
                                                 )
         end if
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
         if (self%Err%occurred) then
@@ -355,7 +355,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         call self%setupOutputFiles()
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
         if (self%Err%occurred) then
@@ -388,7 +388,7 @@ contains
         call self%SpecDRAM%checkForSanity(Err = self%Err, methodName = self%name, nd = ndim)
 
         !if (self%Image%isLeader) then
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
         if (self%Err%occurred) then
@@ -508,7 +508,7 @@ contains
                 use ParaDXXXProposalAbstract_mod, only: ProposalErr
 #endif
 
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
                 block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
                 if (ProposalErr%occurred) then
@@ -533,7 +533,7 @@ contains
         end if
 
         call self%runKernel( getLogFunc = getLogFunc )
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
         ! relevant only for MATLAB / Python
@@ -1777,7 +1777,7 @@ contains
 
         end if blockLeaderPostProcessing
 
-#if (defined MPI_ENABLED || defined CAF_ENABLED) && (CODECOVE_ENABLED || SAMPLER_TEST_ENABLED)
+#if (defined MPI_ENABLED || defined CAF_ENABLED) && (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
         if (self%Err%occurred) return ! LCOV_EXCL_LINE
