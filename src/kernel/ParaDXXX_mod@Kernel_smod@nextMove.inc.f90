@@ -72,22 +72,21 @@
                                                                             , counterDRS    = counterDRS & ! LCOV_EXCL_LINE
                                                                             , StateOld      = co_LogFuncState(1:nd,counterDRS-1) & ! LCOV_EXCL_LINE
                                                                             )
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+#if (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
+                    if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
+#elif defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
                     ! This block is exclusively used to test the deterministic restart functionality of ParaDXXX samplers. 
                     ! This block must not be activated under any other circumstances.
                     ! This block must be executed by all images.
                     self%testSamplingCounter = self%testSamplingCounter + 1_IK
-                    if (self%testSamplingCounter > self%testSamplingCountTarget) then
-                        self%Err%occurred = .true.
-                        self%Err%msg = "The simulation was interrupted at the requested sampling count for restart testing purposes."
-                    end if
+                    self%Err%occurred = self%Err%occurred .or. self%testSamplingCounter > self%testSamplingCountTarget
+                    if (self%Err%occurred) then
+                        if (self%testSamplingCounter > self%testSamplingCountTarget) self%Err%msg = "The simulation was interrupted at the requested sampling count for restart testing purposes."
 #if defined MPI_ENABLED || defined CAF_ENABLED
-                    block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
+                        block; use Err_mod, only: bcastErr; call bcastErr(self%Err); end block
 #endif
-                    if (self%Err%occurred) return
-#endif
-#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || ( (defined MATLAB_ENABLED || defined PYTHON_ENABLED || defined R_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED )
-                    if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
+                        return
+                    end if
 #endif
 
                     ! The following random function call is only needed fresh runs to evaluate the acceptance of a proposal.

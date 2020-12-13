@@ -62,7 +62,7 @@ echo >&2
 BUILD_NAME="buildParaMonteExample"
 verify() {
     if [ $1 -eq 0 ]; then
-        echo >&2 "-- ${BUILD_NAME} - ParaMonte $2 appears to have succeeded."
+        echo >&2 "-- ${pmattn} ${BoldGreen}The ParaMonte library $2 appears to have succeeded.${ColorReset}"
     else
         echo >&2
         echo >&2 "    -- ${BUILD_NAME} - FATAL: ParaMonte $2 appears to have failed."

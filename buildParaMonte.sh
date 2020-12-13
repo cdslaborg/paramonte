@@ -177,7 +177,7 @@ function compareVersions() {
 
 verify() {
     if [ $1 -eq 0 ]; then
-        echo >&2 "-- ${BUILD_NAME} - ParaMonte $2 appears to have succeeded."
+        echo >&2 "-- ${pmattn} ${BoldGreen}The ParaMonte $2 appears to have succeeded.${ColorReset}"
     else
         echo >&2
         echo >&2 "    -- ParaMonte - FATAL: ParaMonte $2 appears to have failed."
@@ -2530,7 +2530,7 @@ if [ "${DRYRUN_ENABLED}" != "true" ]; then
     ${OS_IS_WSL_FLAG} \
     ${ParaMonte_ROOT_DIR} \
     )
-    verify $? "build with cmake"
+    verify $? "configuration with cmake"
 
     (cd ${ParaMonte_BLD_DIR} && make)
     verify $? "build with make"
@@ -2816,10 +2816,10 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             cd "${ParaMonteMATLAB_BLD_LIB_DIR}"
             "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${CFLAGS}" "${LINKFLAGS}" "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
-                echo >&2 "-- ${BUILD_NAME}MATLAB - The ParaMonte MATLAB dynamic library build appears to have succeeded."
+                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldGreen}The ParaMonte MATLAB dynamic library build appears to have succeeded.${ColorReset}"
             else
                 echo >&2
-                echo >&2 "-- ${BUILD_NAME}MATLAB - Fatal Error: The ParaMonte MATLAB library build failed."
+                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldRed}Fatal Error${ColorReset}: The ParaMonte MATLAB library build failed."
                 echo >&2 "-- ${BUILD_NAME}MATLAB - Please make sure you have the following components installed"
                 echo >&2 "-- ${BUILD_NAME}MATLAB - on your system before rerunning the installation script:"
                 echo >&2 "-- ${BUILD_NAME}MATLAB - "
