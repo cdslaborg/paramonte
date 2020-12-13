@@ -621,9 +621,6 @@ fi
 
 ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"; export ParaMonte_REQ_DIR
 ParaMonte_REQ_INSTALL_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations"; export ParaMonte_REQ_INSTALL_DIR
-ParaMonte_CMAKE_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/cmake/${cmakeVersionParaMonteCompatible}"; export ParaMonte_CMAKE_ROOT_DIR
-
-ParaMonte_CMAKE_BIN_DIR="${ParaMonte_CMAKE_ROOT_DIR}/bin";      export ParaMonte_CMAKE_BIN_DIR
 
 #############################################
 #### set up the local CMAKE installation path
@@ -1566,29 +1563,23 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
                     (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} )
                     verify $? "installation of cmake"
-                    cmakeFound=false
+                    CMAKE_LOCAL_INSTALLATION_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/" -path **/bin/cmake)"
                     if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
-                        cmakeFound=true
-                    else
-                        CMAKE_LOCAL_INSTALLATION_BIN_DIR="${ParaMonte_REQ_INSTALL_DIR}/bin"; export CMAKE_LOCAL_INSTALLATION_BIN_DIR
-                        CMAKE_LOCAL_INSTALLATION_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"; export CMAKE_LOCAL_INSTALLATION_PATH
-                        if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
-                            cmakeFound=true
-                        else
-                            unset ParaMonte_CMAKE_BIN_DIR
-                            unset CMAKE_LOCAL_INSTALLATION_PATH
-                        fi
-                    fi
-                    if [ "${cmakeFound}" = "true" ]; then
-                        if [[ ":$PATH:" != *":${ParaMonte_CMAKE_BIN_DIR}:"* ]]; then
-                            PATH="${ParaMonte_CMAKE_BIN_DIR}:${PATH}"
+                        CMAKE_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CMAKE_LOCAL_INSTALLATION_PATH}")"
+                        export CMAKE_LOCAL_INSTALLATION_BIN_DIR
+                        export CMAKE_LOCAL_INSTALLATION_PATH
+                        if [[ ":$PATH:" != *":${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                            PATH="${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
                             export PATH
                         fi
-                        cmakeVersion="$(cmake --version)"
+                        cmakeVersion="$(${CMAKE_LOCAL_INSTALLATION_PATH} --version)"
                         cmakeVersionArray=($cmakeVersion)
                         cmakeVersion="${cmakeVersionArray[2]}"
                         echo >&2 "-- ${BUILD_NAME} -       cmake binary path: ${CMAKE_LOCAL_INSTALLATION_PATH}"
                         echo >&2 "-- ${BUILD_NAME} - cmake installed version: ${cmakeVersion}"
+                    else
+                        unset CMAKE_LOCAL_INSTALLATION_PATH
+                        unset CMAKE_LOCAL_INSTALLATION_BIN_DIR
                     fi
                 fi
             fi
@@ -1834,12 +1825,12 @@ fi
 #### set up PATH & LD_LIBRARY_PATH
 ####################################################################################################################################
 
-if [ -d "${ParaMonte_CMAKE_BIN_DIR}" ]; then
+if [ -d "${CMAKE_LOCAL_INSTALLATION_BIN_DIR}" ]; then
     if [ -z ${PATH+x} ]; then
-        PATH="${ParaMonte_CMAKE_BIN_DIR}"
+        PATH="${CMAKE_LOCAL_INSTALLATION_BIN_DIR}"
     else
-        if [[ ":$PATH:" != *":${ParaMonte_CMAKE_BIN_DIR}:"* ]]; then
-            PATH="${ParaMonte_CMAKE_BIN_DIR}:${PATH}"
+        if [[ ":$PATH:" != *":${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+            PATH="${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
         fi
     fi
 fi
