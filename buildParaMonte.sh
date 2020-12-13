@@ -3128,9 +3128,9 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     --output-file "${lcovOutputKernelFilePath}" \
                     || {
                         echo >&2
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage report generation via lcov tool failed."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Code Coverage report generation via LCOV tool failed."
                         echo >&2
-                        exit 1
+                        #exit 1
                     }
 
                     #### generate the kernel code coverage report file
@@ -3192,13 +3192,13 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         if ! [ -f "${lcovOutputCombinedFilePath}" ]; then
                             cp "${lcovOutputKernelFilePath}" "${lcovOutputCombinedFilePath}" || {
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: copy action failed:"
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - from: ${lcovOutputKernelFilePath}"
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage -   to: ${lcovOutputCombinedFilePath}"
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
-                                echo >&2
-                                exit 1
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} copy action failed:"
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} from: ${lcovOutputKernelFilePath}"
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn}   to: ${lcovOutputCombinedFilePath}"
+                                #echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                                #echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
+                                #echo >&2
+                                #exit 1
                             }
                         fi
 
@@ -3222,9 +3222,9 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
 
                         } || {
                             echo >&2
-                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage report generation via genhtml failed."
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Code Coverage report generation via genhtml failed."
                             echo >&2
-                            exit 1
+                            #exit 1
                         }
                         # "${branchCoverageFlag}" \
                         #--title "<a href=\"https://github.com/cdslaborg/paramonte\" target=\"_blank\">ParaMonte::kernel</a> code coverage report" \
@@ -3244,31 +3244,31 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
 
                     else
                         echo >&2
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Failed to find the GNU genhtml test coverage summarizer."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - The genhtml program is required to generate the coverage report."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - If you believe genhtml is already installed on your system,"
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - please make sure the path its directory is added to the"
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - PATH environmental variable of your terminal."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - Once added, rerun the ParaMonte code coverage."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
-                        echo >&2
-                        exit 1
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Failed to find the GENHTML test coverage summarizer."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} The genhtml program is required to generate the coverage report."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} If you believe genhtml is already installed on your system,"
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} please make sure the path its directory is added to the"
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} PATH environmental variable of your terminal."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Once added, rerun the ParaMonte code coverage."
+                        #echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                        #echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
+                        #echo >&2
+                        #exit 1
                     fi
 
                 else
 
                     echo >&2
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Failed to find the GNU lcov test coverage summarizer."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - The lcov program is required to generate the coverage report."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - If you believe lcov is already installed on your system,"
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - please make sure the path its directory is added to the"
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - PATH environmental variable of your terminal."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - Once added, rerun the ParaMonte code coverage."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
-                    echo >&2
-                    exit 1
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Failed to find the LCOV test coverage summarizer."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} The lcov program is required to generate the coverage report."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} If you believe lcov is already installed on your system,"
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} please make sure the path its directory is added to the"
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} PATH environmental variable of your terminal."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Once added, rerun the ParaMonte code coverage."
+                    #echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                    #echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
+                    #echo >&2
+                    #exit 1
 
                 fi
 
