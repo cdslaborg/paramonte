@@ -111,6 +111,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - lcov
             - cmake
             - gfortran-9
             - libblas-dev
