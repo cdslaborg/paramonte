@@ -249,8 +249,8 @@ module ParaMonte_mod
     !> Under normal testing conditions (other than testing the restart functionality, self%testSamplingCountTarget > self%testSamplingCounter must always hold.
     !> To test the restart functionality under any serial or distributed parallelization schemes, set self%testSamplingCountTarget < chainSize.
     !> The simulation will automatically, but gracefully, interrupt when this target value is reached or surpassed.
-    integer(IK)                         :: self%testSamplingCountTarget = huge(1_IK)  !< The external user-specified target count at which the code will break with a simulation interruption error message.
-    integer(IK), private                :: self%testSamplingCounter = 0_IK            !< The sampling counter defined by all images
+    integer(IK)                         :: testSamplingCountTarget = huge(1_IK)  !< The external user-specified target count at which the code will break with a simulation interruption error message.
+    integer(IK), private                :: testSamplingCounter = 0_IK            !< The sampling counter defined by all images
 #endif
     contains
         procedure, pass                 :: reportDesc
