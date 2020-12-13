@@ -623,21 +623,36 @@ ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"; export ParaMonte_
 ParaMonte_REQ_INSTALL_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations"; export ParaMonte_REQ_INSTALL_DIR
 ParaMonte_GNU_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/gnu/${gnuVersionOpenCoarrays}"; export ParaMonte_GNU_ROOT_DIR
 ParaMonte_MPI_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/mpich/${mpichVersionOpenCoarrays}"; export ParaMonte_MPI_ROOT_DIR
-ParaMonte_CAF_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/opencoarrays/${openCoarraysVersion}"; export ParaMonte_CAF_ROOT_DIR
+#ParaMonte_CAF_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/opencoarrays/${openCoarraysVersion}"; export ParaMonte_CAF_ROOT_DIR
 ParaMonte_CMAKE_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/cmake/${cmakeVersionParaMonteCompatible}"; export ParaMonte_CMAKE_ROOT_DIR
 
 ParaMonte_GNU_BIN_DIR="${ParaMonte_GNU_ROOT_DIR}/bin";          export ParaMonte_GNU_BIN_DIR
-ParaMonte_CAF_BIN_DIR="${ParaMonte_CAF_ROOT_DIR}/bin";          export ParaMonte_CAF_BIN_DIR
 ParaMonte_MPI_BIN_DIR="${ParaMonte_MPI_ROOT_DIR}/bin";          export ParaMonte_MPI_BIN_DIR
 ParaMonte_CMAKE_BIN_DIR="${ParaMonte_CMAKE_ROOT_DIR}/bin";      export ParaMonte_CMAKE_BIN_DIR
 
 ParaMonte_GNU_LIB_DIR="${ParaMonte_GNU_ROOT_DIR}/lib64";        export ParaMonte_GNU_LIB_DIR
-ParaMonte_CAF_LIB_DIR="${ParaMonte_CAF_ROOT_DIR}/lib64";        export ParaMonte_CAF_LIB_DIR
 ParaMonte_MPI_LIB_DIR="${ParaMonte_MPI_ROOT_DIR}/lib";          export ParaMonte_MPI_LIB_DIR
 
-ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_BIN_DIR}/caf";      export ParaMonte_CAF_WRAPPER_PATH
-ParaMonte_CAF_SETUP_PATH="${ParaMonte_CAF_ROOT_DIR}/setup.sh";  export ParaMonte_CAF_SETUP_PATH
 ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake";        export ParaMonte_CMAKE_PATH
+
+#### set up local CAF installation paths
+
+ParaMonte_CAF_ROOT_DIR="$(dirname $(find "${ParaMonte_REQ_INSTALL_DIR}"/opencoarrays/ -name cafrun))"
+ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_ROOT_DIR}/caf"
+
+if [ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]; then
+    ParaMonte_CAF_BIN_DIR="${ParaMonte_CAF_ROOT_DIR}/bin"; export ParaMonte_CAF_BIN_DIR
+    ParaMonte_CAF_LIB_DIR="${ParaMonte_CAF_ROOT_DIR}/lib64"; export ParaMonte_CAF_LIB_DIR
+    ParaMonte_CAF_SETUP_PATH="${ParaMonte_CAF_ROOT_DIR}/setup.sh";
+    if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
+        export ParaMonte_CAF_SETUP_PATH
+    else
+        unset ParaMonte_CAF_SETUP_PATH
+    fi
+else
+    unset ParaMonte_CAF_WRAPPER_PATH
+    unset ParaMonte_CAF_ROOT_DIR
+fi
 
 ####################################################################################################################################
 #### check cmake version
@@ -1001,9 +1016,9 @@ fi
 echo >&2
 if [ "${CAF_ENABLED}" = "true" ]; then
 
-    unset cafCompilerPath
+    unset ParaMonte_CAF_WRAPPER_PATH
 
-    if [ -z "${cafCompilerPath+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"intel".* ]] ); then
+    if [ -z "${ParaMonte_CAF_WRAPPER_PATH+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"intel".* ]] ); then
 
         if [ -z "${intelFortranMpiWrapperPath+x}" ]; then
             echo >&2
@@ -1020,21 +1035,24 @@ if [ "${CAF_ENABLED}" = "true" ]; then
             echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The ParaMonte build will continue at the risk of failing..."
             echo >&2
         else
-            cafCompilerPath="${intelFortranCompilerPath}"
-            echo >&2 "-- ${BUILD_NAME}CAF - The inferred Coarray Fortran compiler wrapper path: ${cafCompilerPath}"
+            ParaMonte_CAF_WRAPPER_PATH="${intelFortranCompilerPath}"
+            echo >&2 "-- ${BUILD_NAME}CAF - The inferred Coarray Fortran compiler wrapper path: ${ParaMonte_CAF_WRAPPER_PATH}"
         fi
 
     fi
 
-    if [ -z "${cafCompilerPath+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"gnu".* ]] ); then
+    if [ -z "${ParaMonte_CAF_WRAPPER_PATH+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"gnu".* ]] ); then
 
         # assume OpenCoarrays
 
         PMCS=gnu
 
         if command -v caf >/dev/null 2>&1; then
-            cafCompilerPath="$(command -v caf)"
-            echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper detected at: ${cafCompilerPath}"
+            ParaMonte_CAF_WRAPPER_PATH="$(command -v caf)"
+        fi
+
+        if [ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]; then
+            echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper detected at: ${ParaMonte_CAF_WRAPPER_PATH}"
             cafVersion="$(caf -dumpversion)"
             cafVersionRequired="${gnuVersionParaMonteCompatible}"
             echo >&2 "-- ${BUILD_NAME}CAF - caf version: ${cafVersion}"
@@ -1053,7 +1071,8 @@ if [ "${CAF_ENABLED}" = "true" ]; then
             fi
         else
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The OpenCoarrays caf compiler wrapper was not found on your system."
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The OpenCoarrays caf compiler wrapper was not found on your system or at least,"
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: the path containing the OpenCoarrays caf compiler wrapper is not in the PATH environmental variable."
             echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: A fresh installation of the OpenCoarrays library might be needed."
             echo >&2
             cafInstallEnabled=true
@@ -1065,7 +1084,7 @@ if [ "${CAF_ENABLED}" = "true" ]; then
 
 fi
 
-echo >&2 
+echo >&2
 
 ####################################################################################################################################
 #### set the ParaMonte compiler suite
@@ -1194,17 +1213,17 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
             echo >&2
         fi
 
-        #if [ "${CAF_ENABLED}" = "true" ]; then
-        #    if ! ${cafCompilerPath+false}; then
-        #        COMPILER_VERSION="unknown"
-        #        Fortran_COMPILER_PATH="${cafCompilerPath}"
-        #        cafInstallEnabled=false
-        #    else
-        #        cafInstallEnabled=true
-        #        mpiInstallEnabled=true
-        #        gnuInstallEnabled=true
-        #    fi
-        #fi
+        if [ "${CAF_ENABLED}" = "true" ]; then
+            if [ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]; then
+                COMPILER_VERSION="unknown"
+                Fortran_COMPILER_PATH="${ParaMonte_CAF_WRAPPER_PATH}"
+                cafInstallEnabled=false
+            else
+                cafInstallEnabled=true
+                mpiInstallEnabled=true
+                gnuInstallEnabled=true
+            fi
+        fi
 
     fi
 
@@ -1739,7 +1758,7 @@ fi
 
 # SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
 # export SETUP_FILE_PATH
-# 
+#
 # {
 #     echo "if ! [[ \"${PATH}\" =~ .*\"${ParaMonte_GNU_BIN_DIR}\".* ]]; then"
 #     echo "    export PATH=\"${ParaMonte_GNU_BIN_DIR}:${PATH}\""
