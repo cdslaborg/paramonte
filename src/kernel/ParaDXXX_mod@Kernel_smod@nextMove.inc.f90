@@ -46,6 +46,18 @@
 #define LOOP_NEXT_MOVE loopNextMove
 #endif
 
+#if defined SINGLCHAIN_PARALLELISM && defined CAF_ENABLED
+                ! This syncing is necessary since the co_LogFuncState has to be fetched from the 
+                ! first image by all other images before it is updated below by the first image.
+                if (self%Image%isLeader) then
+                    call self%Timer%toc()
+                    sync images(*)
+                    call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
+                else
+                    sync images(1)
+                end if
+#endif
+
                 LOOP_NEXT_MOVE : do counterDRS = 0, self%SpecDRAM%DelayedRejectionCount%val
 
 #if defined SINGLCHAIN_PARALLELISM
@@ -61,18 +73,11 @@
                     if(ProposalErr%occurred) then; self%Err%occurred = .true.; self%Err%msg = ProposalErr%msg; return; end if
 #endif
 
-                    call random_number(uniformRnd) ! only for the purpose of restart mode reproducibility
+                    ! The following random function call is only needed fresh runs to evaluate the acceptance of a proposal.
+                    ! However, it is taken out of the subsequent loops to achieve 100% deterministic reproducibility when
+                    ! a simulation is restarted.
 
-#if defined SINGLCHAIN_PARALLELISM && defined CAF_ENABLED
-                    ! this is necessary to avoid racing condition on co_LogFuncState and co_proposalFoundSinglChainMode
-                    if (self%Image%isLeader) then
-                        call self%Timer%toc()
-                        sync images(*)
-                        call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
-                    else
-                        sync images(1)
-                    end if
-#endif
+                    call random_number(uniformRnd)
 
                     if (self%isFreshRun .or. numFunCallAcceptedPlusOne==self%Chain%Count%compact) then
 
@@ -157,17 +162,17 @@
 
 #if defined SINGLCHAIN_PARALLELISM
                     co_proposalFoundSinglChainMode = co_AccRate(-1) > -1._RK
-                    if (delayedRejectionRequested) then ! broadcast the sampling status from the first image to all others
 #if defined CAF_ENABLED
-                        if (self%Image%isLeader) then ! this is necessary to avoid racing condition on the value of co_proposalFoundSinglChainMode
-                            call self%Timer%toc()
-                            sync images(*)
-                            call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
-                        else
-                            sync images(1)
-                        end if
-                        co_proposalFoundSinglChainMode = co_proposalFoundSinglChainMode[1]
+                    if (self%Image%isLeader) then ! this is necessary to avoid racing condition on the value of co_proposalFoundSinglChainMode
+                        call self%Timer%toc()
+                        sync images(*)
+                        call self%Timer%toc(); self%Stats%avgCommTimePerFunCall = self%Stats%avgCommTimePerFunCall + self%Timer%Time%delta
+                    else
+                        sync images(1)
+                    end if
+                    co_proposalFoundSinglChainMode = co_proposalFoundSinglChainMode[1]
 #elif defined MPI_ENABLED
+                    if (delayedRejectionRequested) then ! broadcast the sampling status from the first image to all others
                         ! broadcast winning image to all processes
                         call mpi_bcast  ( co_proposalFoundSinglChainMode    &   ! buffer
                                         , 1                                 &   ! count
@@ -176,8 +181,8 @@
                                         , mpi_comm_world                    &   ! comm
                                         , ierrMPI                           &   ! ierr
                                         )
-#endif
                     end if
+#endif
                     if (co_proposalFoundSinglChainMode) exit LOOP_NEXT_MOVE
 #endif
 
