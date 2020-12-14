@@ -125,7 +125,7 @@ matrix:
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-10 --version && FCFLAG="-f $(which gfortran-10)" || echo "gfortran-10 not found..."
-        - ./install.sh --codecov --par none --yes-to-all ${FCFLAG} ${mpiexecFlag}
+        - ./install.sh --codecov --par none --yes-to-all -t basic ${FCFLAG} ${mpiexecFlag}
 
 #    - &macOS
 #      os: osx
