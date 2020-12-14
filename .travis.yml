@@ -133,10 +133,7 @@ matrix:
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
-        - MPIEXEC_PATH="$(dpkg -L libmpich-dev | egrep bin/mpiexec.mpich)"
-        - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
-        - PATH="${MPI_BIN_DIR}:${PATH}"
-        - ./install.sh --codecov --par "none mpi" --yes-to-all --nproc 2 ${FCFLAG}
+        - ./install.sh --codecov --par "none mpi" --yes-to-all ${FCFLAG}
 
     ################################################################################################################################
     #### macOS
