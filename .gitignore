@@ -132,6 +132,7 @@ Thumbs.db
 # ParaMonte temp files
 #########################
 
+*sc.html
 *_log.txt
 *_time.txt
 *_chain.txt

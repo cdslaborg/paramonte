@@ -318,9 +318,8 @@ Citing ParaMonte
 readme["citation"]["main"] = readme["citation"]["title"] + """
 The ParaMonte library is an honor-ware and its currency is acknowledgment and citations.  
   
-As per the ParaMonte library license agreement terms, if you use any parts of this library for any purposes, 
-kindly acknowledge the use of the ParaMonte library in your work (education/research/industry/development/...) 
-by citing the ParaMonte library's main publications as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md).  
+If you use ParaMonte, please acknowledge it by citing the ParaMonte library's main publications 
+as listed in [ACKNOWLEDGMENT.md](https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md).  
 
 Visit [the ParaMonte library homepage](https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work) 
 to access the PDF version of these files free of charge.  

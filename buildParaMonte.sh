@@ -1500,8 +1500,17 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
                 tarFileName="OpenCoarrays-${openCoarraysVersion}.tar.gz"
                 tarFileWeb="https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${openCoarraysVersion}/${tarFileName}"
-                wget -P "${ParaMonte_REQ_DIR}/.." "${tarFileWeb}"
-                verify $? "download of the prerequisites"
+                if command -v wget >/dev/null 2>&1; then
+                    echo >&2
+                    echo >&2 "-- ${BUILD_NAME} - ${fatal}: The GNU Wget software is required to download the ParaMonte prerequisites."
+                    echo >&2 "-- ${BUILD_NAME} - ${fatal}: Please install this wget application and rerun the install/build script."
+                    echo >&2
+                    echo >&2 "Gracefully exiting..."
+                    exit 1
+                else
+                    wget -P "${ParaMonte_REQ_DIR}/.." "${tarFileWeb}"
+                    verify $? "download of the prerequisites"
+                fi
 
                 #tarFileName="prerequisites.tar.gz"
                 #cp -rv "${ParaMonte_ROOT_DIR}/auxil/${tarFileName}" "${ParaMonte_REQ_DIR}/../"
@@ -1513,7 +1522,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
             else
 
-                echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte installation will proceed with no guarantee of success."
+                echo >&2 "-- ${BUILD_NAME} - ${warning}: The ParaMonte installation will proceed with no guarantee of success."
                 echo >&2
                 #exit 1
 
@@ -2994,15 +3003,28 @@ fi
 
 if [ "${CODECOV_ENABLED}" = "true" ]; then
 
-    htmlDir="${ParaMonte_ROOT_DIR}/codecov/kernel/${ParaMonteVersion}/${PMLIB_BASE_NAME}"
+    # This version extraction relies on "version " appearing before the lcov version number.
+    # This must be adjusted to any potential future changes in the LCOV version string.
+    if command -v lcov >/dev/null 2>&1; then
+        lcovVersion=$(lcov -v | grep -Po '(?<=version )[^;]+')
+    else
+        unset lcovVersion
+    fi
+
+    unset htmlSubDir
     if [ "${MPI_ENABLED}" = "true" ]; then
         parallelismText="MPI Parallel"
+        htmlSubDir="mpi"
     elif [ "${CAF_ENABLED}" = "true" ]; then
         parallelismText="Coarray Parallel"
+        htmlSubDir="caf"
     else
         parallelismText="Serial"
+        htmlSubDir="serial"
     fi
-    titleCodeCov="ParaMonte ${ParaMonteVersion} :: ${parallelismText} Kernel - Code Coverage Report"
+    htmlDir="${ParaMonte_ROOT_DIR}/codecov/kernel/${htmlSubDir}"
+    #htmlDir="${ParaMonte_ROOT_DIR}/codecov/kernel/${ParaMonteVersion}/${PMLIB_BASE_NAME}"
+    htmlTitleCodeCov="ParaMonte ${ParaMonteVersion} :: ${parallelismText} Kernel - Code Coverage Report"
 
     if [[ ${PMCS} == [gG][nN][uU] ]]; then
 
@@ -3206,7 +3228,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         "${lcovOutputCombinedFilePath}" \
                         --output-directory "${htmlDir}" \
                         --legend \
-                        --title "${titleCodeCov}" \
+                        --title "${htmlTitleCodeCov}" \
                         && {
 
                             echo >&2
@@ -3215,10 +3237,47 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                             echo >&2
 
                             # postprocess the html files
+
+                            pmlinkopen='<a href="https:\/\/www.cdslab.org\/paramonte\/" target="_blank">'
+                            pmlinklogo='<img alt="The ParaMonte Documentation Website" src="https:\/\/www.cdslab.org\/paramonte\/notes\/api\/kernel\/logo.png"\/>'
+                            pmlinkclose='<\/a>'
+
+                            original='<tr><td class="title">LCOV - code coverage report<\/td><\/tr>'
+                            modified='<tr><td class="title">'
+                            modified+="${pmlinkopen}"
+                            modified+="${pmlinklogo}"
+                            modified+="${pmlinkclose}"
+                            modified+='<\/td><\/tr>'
+
+                            footer='<tr><td class="versionInfo">'
+                            footer+='<a href="https:\/\/www.cdslab.org\/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library<\/b><\/a>&nbsp;<br>'
+                            footer+='<a href="https:\/\/www.cdslab.org" target="_blank"><b>The Computational Data Science Lab<\/b><\/a><br>'
+                            footer+="&copy; Copyright 2012 - $(date +%Y)"
+                            footer+='<\/td><\/tr>'
+
                             shopt -s globstar
                             for htmlFilePath in "${htmlDir}"/**/*.html; do # Whitespace-safe and recursive
-                                sed -i 's/<tr><td class="title">LCOV - code coverage report<\/td><\/tr>/<tr><td class="title"><a href="https:\/\/www.cdslab.org\/paramonte\/" target="_blank"><img alt="ParaMonte Kernel" src="https:\/\/www.cdslab.org\/paramonte\/notes\/api\/kernel\/logo.png"\/><\/a><\/td><\/tr>/g' "${htmlFilePath}"
+                                sed -i "s/${original}/${modified}/g" "${htmlFilePath}"
+                                sed -i "/<tr><td class=\"versionInfo\">/c\\${footer}" "${htmlFilePath}"
                             done
+
+                            #scfile="${ParaMonte_ROOT_DIR}/auxil/sc.html"
+                            #if [ -f "${scfile}" ]; then
+                            #    echo >&2
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - processing the sc file contents..."
+                            #    echo >&2
+                            #    sccontents=`cat "${ParaMonte_ROOT_DIR}/auxil/sc.html"`
+                            #    sed -e '/<\/body>/r${scfile}' "${htmlFilePath}"
+                            #else
+                            #    echo >&2
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} ${ParaMonte_ROOT_DIR}/auxil/sc.html is missing in your clone."
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} This is not critical, unless you are a ParaMonte developer and"
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} aim to publicly release this code coverage report. To obtain a "
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} copy of the file, contact the ParaMonte lead developer at"
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} "
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} shahmoradi@utexas.edu"
+                            #    echo >&2
+                            #fi
 
                         } || {
                             echo >&2

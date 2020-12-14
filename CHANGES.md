@@ -5,7 +5,16 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.5** -- Dec 12, 2020
+### **Version 1.5** -- Dec 15, 2020
+
+**Major Enhancements**  
+
++   This version introduces numerous performance and accuracy enhancements to the ParaMonte library.
++   The entire kernel library is now fully documented and verified with over 866 tests that cover close 
+    to 100% of all lines and functions in the kernel.
++   New prebuilt libraries with GNU compilers and Open-MPI on Linux are added.
++   New flags are now added to the build scripts of the library that automate the process of code coverage generation.
++   The `testing` builds are now removed from the ParaMonte release page as this build is mostly useful for development purposes.  
 
 **Enhancements**  
 
@@ -17,9 +26,10 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     build the library with `stack` memory allocation by specifying the appropriate build flags with
     the `install.sh` on Unix or `install.bat` script on Windows systems. For further information, 
     see the installation guidelines on the ParaMonte documentation website.
-+   The temporary array creations in debug mode are now resolved.
++   All temporary array creations in debug mode are now resolved, 
+    except when Intel compilers are used, in which case, the debug warning messages are silenced.
 
-**Compiler support**  
+**Compiler Compatibility**  
   
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
