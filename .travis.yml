@@ -114,8 +114,8 @@ matrix:
           packages:
             - lcov
             - cmake
-            - gcc-9
-            - gfortran-9
+            - gcc
+            - gfortran
             - libblas-dev
             - liblapack-dev
             - libopenmpi-dev
