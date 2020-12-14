@@ -14,5 +14,5 @@ codecov:
     range: 30..100
     round: nearest
     precision: 2
-  fixes:
-    - "/home/travis/build/cdslaborg/::"
+fixes:
+  - "/home/travis/build/::"
