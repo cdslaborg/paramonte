@@ -163,7 +163,7 @@ matrix:
         - pmRootDir=$(pwd)
         - ls ${pmRootDir}/bin/
         - |
-          for dir in */; do
+          for dir in ${pmRootDir}/bin/; do
             fullDirName="${pmRootDir}/${dir}"
             echo "Running example in ${fullDirName}"
             if [[ "${dir}" =~ .*"_impi".* || "${dir}" =~ .*"_mpich".* || "${dir}" =~ .*"_openmpi".* ]]; then
