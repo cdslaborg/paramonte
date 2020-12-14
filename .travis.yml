@@ -18,7 +18,8 @@ cache:
     - /usr/local/Homebrew
 
 after_success:
- - bash <(curl -s https://codecov.io/bash)
+ #- bash <(curl -s https://codecov.io/bash)
+ - bash <(curl --connect-timeout 10 --retry 10 --retry-max-time 0 https://codecov.io/bash) || (sleep 30 && bash <(curl --connect-timeout 10 --retry 10 --retry-max-time 0 https://codecov.io/bash))
 
 matrix:
   include:
@@ -113,7 +114,8 @@ matrix:
           packages:
             - lcov
             - cmake
-            - gfortran-9
+            - gcc-10
+            - gfortran-10
             - libblas-dev
             - liblapack-dev
             - libopenmpi-dev
@@ -122,7 +124,7 @@ matrix:
         - echo "FCFLAG = ${FCFLAG}"
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
-        - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
+        - gfortran-10 --version && FCFLAG="-f $(which gfortran-10)" || echo "gfortran-10 not found..."
         - ./install.sh --codecov --par none --yes-to-all ${FCFLAG} ${mpiexecFlag}
 
 #    - &macOS

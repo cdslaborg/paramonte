@@ -11,7 +11,7 @@ codecov:
     after_n_builds: 2
     wait_for_ci: yes
   coverage:
-    range: 70..100
+    range: 30..100
     round: nearest
     precision: 2
   fixes:
