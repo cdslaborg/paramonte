@@ -1500,7 +1500,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
                 tarFileName="OpenCoarrays-${openCoarraysVersion}.tar.gz"
                 tarFileWeb="https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${openCoarraysVersion}/${tarFileName}"
-                if command -v wget >/dev/null 2>&1; then
+                if ! command -v wget >/dev/null 2>&1; then
                     echo >&2
                     echo >&2 "-- ${BUILD_NAME} - ${fatal}: The GNU Wget software is required to download the ParaMonte prerequisites."
                     echo >&2 "-- ${BUILD_NAME} - ${fatal}: Please install this wget application and rerun the install/build script."
