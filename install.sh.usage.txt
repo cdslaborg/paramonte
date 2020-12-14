@@ -8,8 +8,9 @@
         -l <library type: static dynamic> \
         -p <parallelism type: none mpi cafsingle cafshared cafdistributed> \
         -m <memory allocation type: stack heap>
-        -t <ParaMonte test run enabled: true false>
+        -t <ParaMonte test type: none basic sampler all>
         -x <ParaMonte example run enabled: true false>
+        -c <generate code coverage report> \
         -f <path to Fortran compiler>
         -M <path to mpiexec>
         -F <purge the existing prerequisite library installations and perform a fresh installation>
@@ -47,7 +48,7 @@
                                   the default is "stack heap" resulting in builds for both stack and heap memory allocations.
         -p | --par              : the ParaMonte library parallelism type: none mpi cafsingle cafshared cafdistributed
                                   the default is all parallelism options resulting in serial, MPI, and Coarray-parallel library builds.
-        -t | --test             : the ParaMonte library test type: none, basic, sampler, all
+        -t | --test             : the ParaMonte library test type: none, basic, sampler, all.
                                   If basic, only the auxiliary non-sampler routines will be tested.
                                   If sampler, the ParaMonte sampler routines will be tested.
                                   If all, then all tests will be performed.
