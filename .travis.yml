@@ -113,9 +113,10 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - lcov
+            - gcov
             - cmake
-            - gcc
-            - gfortran
+            - gcc-9
+            - gfortran-9
             - libblas-dev
             - liblapack-dev
             - libopenmpi-dev
