@@ -113,7 +113,6 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - lcov
-            - gcov
             - cmake
             - gcc-9
             - gfortran-9
