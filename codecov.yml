@@ -1,0 +1,18 @@
+codecov:
+  token: 31f8cb3e-39da-4921-9e25-f9e84de49cfe
+  bot: "codecov-io"
+  ci:
+    - "travis.org"
+  strict_yaml_branch: "yaml-config"
+  max_report_age: 24
+  disable_default_path_fixes: no
+  require_ci_to_pass: yes
+  notify:
+    after_n_builds: 2
+    wait_for_ci: yes
+  coverage:
+    range: 70..100
+    round: nearest
+    precision: 2
+fixes:
+  - "/home/travis/build/cdslaborg/::"
