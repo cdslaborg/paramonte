@@ -126,16 +126,17 @@ matrix:
             - cmake
             - gcc-9
             - gfortran-9
-            - libblas-dev
-            - liblapack-dev
-            - libopenmpi-dev
-            - openmpi-bin
+            - libmpich-dev
+            - mpich
       script:
         - echo "FCFLAG = ${FCFLAG}"
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
         - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
-        - ./install.sh --codecov --par "none mpi" --yes-to-all --nproc 2 ${FCFLAG} ${mpiexecFlag}
+        - MPIEXEC_PATH="$(dpkg -L mpich | egrep bin/mpiexec.mpich)"
+        - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
+        - PATH="${MPI_BIN_DIR}:${PATH}"
+        - ./install.sh --codecov --par "none mpi" --yes-to-all --nproc 2 ${FCFLAG}
 
     ################################################################################################################################
     #### macOS
