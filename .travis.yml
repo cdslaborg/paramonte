@@ -163,14 +163,14 @@ matrix:
         - pmRootDir=$(pwd)
         - ls ${pmRootDir}/bin/
         - |
-          for dir in ${pmRootDir}/bin/; do
-            fullDirName="${pmRootDir}/${dir}"
-            echo "Running example in ${fullDirName}"
+          for buildDir in ${pmRootDir}/bin/*; do
+            echo "Running example in ${buildDir}"
             if [[ "${dir}" =~ .*"_impi".* || "${dir}" =~ .*"_mpich".* || "${dir}" =~ .*"_openmpi".* ]]; then
-                - cd ${fullDirName} && ls && ./build.sh && ./run.sh --nproc 2
+                cd ${buildDir} && ls && ./build.sh && ./run.sh --nproc 2
             else
-                - cd ${fullDirName} && ls && ./build.sh && ./run.sh
+                cd ${buildDir} && ls && ./build.sh && ./run.sh
             fi
+            cd "${pmRootDir}"
           done
 
 ####################################################################################################################################
