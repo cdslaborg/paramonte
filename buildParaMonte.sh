@@ -626,49 +626,54 @@ ParaMonte_REQ_INSTALL_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations"; ex
 #### set up the local CMAKE installation path
 #############################################
 
-CMAKE_LOCAL_INSTALLATION_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/" -path **/bin/cmake)"
-
-if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
-    CMAKE_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CMAKE_LOCAL_INSTALLATION_PATH}")"
-    export CMAKE_LOCAL_INSTALLATION_PATH
-    export CMAKE_LOCAL_INSTALLATION_BIN_DIR
-    CMAKE_LOCAL_INSTALLATION_VERSION="$(cmake --version)"
-    CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY=($CMAKE_LOCAL_INSTALLATION_VERSION)
-    CMAKE_LOCAL_INSTALLATION_VERSION="${CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY[2]}"
-    unset CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY
-else
-    unset CMAKE_LOCAL_INSTALLATION_PATH
+if [ -d "${ParaMonte_REQ_INSTALL_DIR}" ]; then
+    CMAKE_LOCAL_INSTALLATION_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/" -path **/bin/cmake)"
+    if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
+        CMAKE_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CMAKE_LOCAL_INSTALLATION_PATH}")"
+        export CMAKE_LOCAL_INSTALLATION_PATH
+        export CMAKE_LOCAL_INSTALLATION_BIN_DIR
+        CMAKE_LOCAL_INSTALLATION_VERSION="$(cmake --version)"
+        CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY=($CMAKE_LOCAL_INSTALLATION_VERSION)
+        CMAKE_LOCAL_INSTALLATION_VERSION="${CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY[2]}"
+        unset CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY
+    else
+        unset CMAKE_LOCAL_INSTALLATION_PATH
+    fi
 fi
 
 ############################################
 #### set up the local GNU installation paths
 ############################################
 
-GNU_LOCAL_INSTALLATION_GFORTRAN_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/gnu" -name gfortran)"
+if [ -d "${ParaMonte_REQ_INSTALL_DIR}/gnu" ]; then
 
-if [ -f "${GNU_LOCAL_INSTALLATION_GFORTRAN_PATH}" ]; then
+    GNU_LOCAL_INSTALLATION_GFORTRAN_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/gnu" -name gfortran)"
 
-    GNU_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${GNU_LOCAL_INSTALLATION_GFORTRAN_PATH}")"
-    export GNU_LOCAL_INSTALLATION_GFORTRAN_PATH
-    export GNU_LOCAL_INSTALLATION_BIN_DIR
+    if [ -f "${GNU_LOCAL_INSTALLATION_GFORTRAN_PATH}" ]; then
 
-    GNU_LOCAL_INSTALLATION_LIB_DIR="${GNU_LOCAL_INSTALLATION_BIN_DIR}/../lib"
-    if [ -d "${GNU_LOCAL_INSTALLATION_LIB_DIR}" ]; then
-        export GNU_LOCAL_INSTALLATION_LIB_DIR
+        GNU_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${GNU_LOCAL_INSTALLATION_GFORTRAN_PATH}")"
+        export GNU_LOCAL_INSTALLATION_GFORTRAN_PATH
+        export GNU_LOCAL_INSTALLATION_BIN_DIR
+
+        GNU_LOCAL_INSTALLATION_LIB_DIR="${GNU_LOCAL_INSTALLATION_BIN_DIR}/../lib"
+        if [ -d "${GNU_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            export GNU_LOCAL_INSTALLATION_LIB_DIR
+        else
+            unset GNU_LOCAL_INSTALLATION_LIB_DIR
+        fi
+
+        GNU_LOCAL_INSTALLATION_LIB64_DIR="${GNU_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
+        if [ -d "${GNU_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+            export GNU_LOCAL_INSTALLATION_LIB64_DIR
+        else
+            unset GNU_LOCAL_INSTALLATION_LIB64_DIR
+        fi
+
     else
-        unset GNU_LOCAL_INSTALLATION_LIB_DIR
+
+        unset GNU_LOCAL_INSTALLATION_GFORTRAN_PATH
+
     fi
-
-    GNU_LOCAL_INSTALLATION_LIB64_DIR="${GNU_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
-    if [ -d "${GNU_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
-        export GNU_LOCAL_INSTALLATION_LIB64_DIR
-    else
-        unset GNU_LOCAL_INSTALLATION_LIB64_DIR
-    fi
-
-else
-
-    unset GNU_LOCAL_INSTALLATION_GFORTRAN_PATH
 
 fi
 
@@ -676,31 +681,35 @@ fi
 #### set up the local MPI installation paths
 ############################################
 
-MPI_LOCAL_INSTALLATION_MPIEXEC_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}"/ -name mpiexec)"
+if [ -d "${ParaMonte_REQ_INSTALL_DIR}" ]; then
 
-if [ -f "${MPI_LOCAL_INSTALLATION_MPIEXEC_PATH}" ]; then
+    MPI_LOCAL_INSTALLATION_MPIEXEC_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}"/ -name mpiexec)"
 
-    MPI_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${MPI_LOCAL_INSTALLATION_MPIEXEC_PATH}")"
-    export MPI_LOCAL_INSTALLATION_MPIEXEC_PATH
-    export MPI_LOCAL_INSTALLATION_BIN_DIR
+    if [ -f "${MPI_LOCAL_INSTALLATION_MPIEXEC_PATH}" ]; then
 
-    MPI_LOCAL_INSTALLATION_LIB_DIR="${MPI_LOCAL_INSTALLATION_BIN_DIR}/../lib"
-    if [ -d "${MPI_LOCAL_INSTALLATION_LIB_DIR}" ]; then
-        export MPI_LOCAL_INSTALLATION_LIB_DIR
+        MPI_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${MPI_LOCAL_INSTALLATION_MPIEXEC_PATH}")"
+        export MPI_LOCAL_INSTALLATION_MPIEXEC_PATH
+        export MPI_LOCAL_INSTALLATION_BIN_DIR
+
+        MPI_LOCAL_INSTALLATION_LIB_DIR="${MPI_LOCAL_INSTALLATION_BIN_DIR}/../lib"
+        if [ -d "${MPI_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            export MPI_LOCAL_INSTALLATION_LIB_DIR
+        else
+            unset MPI_LOCAL_INSTALLATION_LIB_DIR
+        fi
+
+        MPI_LOCAL_INSTALLATION_LIB64_DIR="${MPI_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
+        if [ -d "${MPI_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+            export MPI_LOCAL_INSTALLATION_LIB64_DIR
+        else
+            unset MPI_LOCAL_INSTALLATION_LIB64_DIR
+        fi
+
     else
-        unset MPI_LOCAL_INSTALLATION_LIB_DIR
+
+        unset MPI_LOCAL_INSTALLATION_MPIEXEC_PATH
+
     fi
-
-    MPI_LOCAL_INSTALLATION_LIB64_DIR="${MPI_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
-    if [ -d "${MPI_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
-        export MPI_LOCAL_INSTALLATION_LIB64_DIR
-    else
-        unset MPI_LOCAL_INSTALLATION_LIB64_DIR
-    fi
-
-else
-
-    unset MPI_LOCAL_INSTALLATION_MPIEXEC_PATH
 
 fi
 
@@ -708,37 +717,41 @@ fi
 #### set up the local CAF installation paths
 ############################################
 
-CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}"/opencoarrays/ -path **/bin/caf)"
+if [ -d "${ParaMonte_REQ_INSTALL_DIR}/opencoarrays" ]; then
 
-if [ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]; then
+    CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}"/opencoarrays/ -path **/bin/caf)"
 
-    CAF_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}")"
-    export CAF_LOCAL_INSTALLATION_BIN_DIR
+    if [ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]; then
 
-    CAF_LOCAL_INSTALLATION_LIB_DIR="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../lib"
-    if [ -d "${CAF_LOCAL_INSTALLATION_LIB_DIR}" ]; then
-        export CAF_LOCAL_INSTALLATION_LIB_DIR
+        CAF_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}")"
+        export CAF_LOCAL_INSTALLATION_BIN_DIR
+
+        CAF_LOCAL_INSTALLATION_LIB_DIR="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../lib"
+        if [ -d "${CAF_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            export CAF_LOCAL_INSTALLATION_LIB_DIR
+        else
+            unset CAF_LOCAL_INSTALLATION_LIB_DIR
+        fi
+
+        CAF_LOCAL_INSTALLATION_LIB64_DIR="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
+        if [ -d "${CAF_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+            export CAF_LOCAL_INSTALLATION_LIB64_DIR
+        else
+            unset CAF_LOCAL_INSTALLATION_LIB64_DIR
+        fi
+
+        CAF_LOCAL_INSTALLATION_SETUP_FILE="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../setup.sh";
+        if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
+            export CAF_LOCAL_INSTALLATION_SETUP_FILE
+        else
+            unset CAF_LOCAL_INSTALLATION_SETUP_FILE
+        fi
+
     else
-        unset CAF_LOCAL_INSTALLATION_LIB_DIR
+
+        unset CAF_LOCAL_INSTALLATION_WRAPPER_PATH
+
     fi
-
-    CAF_LOCAL_INSTALLATION_LIB64_DIR="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
-    if [ -d "${CAF_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
-        export CAF_LOCAL_INSTALLATION_LIB64_DIR
-    else
-        unset CAF_LOCAL_INSTALLATION_LIB64_DIR
-    fi
-
-    CAF_LOCAL_INSTALLATION_SETUP_FILE="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../setup.sh";
-    if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
-        export CAF_LOCAL_INSTALLATION_SETUP_FILE
-    else
-        unset CAF_LOCAL_INSTALLATION_SETUP_FILE
-    fi
-
-else
-
-    unset CAF_LOCAL_INSTALLATION_WRAPPER_PATH
 
 fi
 
@@ -1572,23 +1585,25 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
                     (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} )
                     verify $? "installation of cmake"
-                    CMAKE_LOCAL_INSTALLATION_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/" -path **/bin/cmake)"
-                    if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
-                        CMAKE_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CMAKE_LOCAL_INSTALLATION_PATH}")"
-                        export CMAKE_LOCAL_INSTALLATION_BIN_DIR
-                        export CMAKE_LOCAL_INSTALLATION_PATH
-                        if [[ ":$PATH:" != *":${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
-                            PATH="${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
-                            export PATH
+                    if [ -d "${ParaMonte_REQ_INSTALL_DIR}" ]; then
+                        CMAKE_LOCAL_INSTALLATION_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/" -path **/bin/cmake)"
+                        if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
+                            CMAKE_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CMAKE_LOCAL_INSTALLATION_PATH}")"
+                            export CMAKE_LOCAL_INSTALLATION_BIN_DIR
+                            export CMAKE_LOCAL_INSTALLATION_PATH
+                            if [[ ":$PATH:" != *":${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                                PATH="${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+                                export PATH
+                            fi
+                            cmakeVersion="$(${CMAKE_LOCAL_INSTALLATION_PATH} --version)"
+                            cmakeVersionArray=($cmakeVersion)
+                            cmakeVersion="${cmakeVersionArray[2]}"
+                            echo >&2 "-- ${BUILD_NAME} -       cmake binary path: ${CMAKE_LOCAL_INSTALLATION_PATH}"
+                            echo >&2 "-- ${BUILD_NAME} - cmake installed version: ${cmakeVersion}"
+                        else
+                            unset CMAKE_LOCAL_INSTALLATION_PATH
+                            unset CMAKE_LOCAL_INSTALLATION_BIN_DIR
                         fi
-                        cmakeVersion="$(${CMAKE_LOCAL_INSTALLATION_PATH} --version)"
-                        cmakeVersionArray=($cmakeVersion)
-                        cmakeVersion="${cmakeVersionArray[2]}"
-                        echo >&2 "-- ${BUILD_NAME} -       cmake binary path: ${CMAKE_LOCAL_INSTALLATION_PATH}"
-                        echo >&2 "-- ${BUILD_NAME} - cmake installed version: ${cmakeVersion}"
-                    else
-                        unset CMAKE_LOCAL_INSTALLATION_PATH
-                        unset CMAKE_LOCAL_INSTALLATION_BIN_DIR
                     fi
                 fi
             fi
