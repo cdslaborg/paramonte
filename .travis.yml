@@ -114,8 +114,8 @@ matrix:
           packages:
             - lcov
             - cmake
-            - gcc-10
-            - gfortran-10
+            - gcc-9
+            - gfortran-9
             - libblas-dev
             - liblapack-dev
             - libopenmpi-dev
@@ -124,7 +124,7 @@ matrix:
         - echo "FCFLAG = ${FCFLAG}"
         - cmake --version || echo "cmake not found..."
         - gfortran --version && FCFLAG="-f $(which gfortran)" || echo "gfortran not found..."
-        - gfortran-10 --version && FCFLAG="-f $(which gfortran-10)" || echo "gfortran-10 not found..."
+        - gfortran-9 --version && FCFLAG="-f $(which gfortran-9)" || echo "gfortran-9 not found..."
         - ./install.sh --codecov --par none --yes-to-all -t basic ${FCFLAG} ${mpiexecFlag}
 
 #    - &macOS
