@@ -182,7 +182,7 @@ if ! [ "${codecov_flag}" = "" ]; then
         MEMORY_LIST="heap"
     fi
     if [ -z ${PARALLELISM_LIST+x} ]; then
-        PARALLELISM_LIST="none mpi"
+        PARALLELISM_LIST="none"
     fi
 fi
 

@@ -164,7 +164,9 @@ matrix:
         - ls ${pmRootDir}/bin/
         - |
           for buildDir in ${pmRootDir}/bin/*; do
+            echo ""
             echo "Running example in ${buildDir}"
+            echo ""
             if [[ "${dir}" =~ .*"_impi".* || "${dir}" =~ .*"_mpich".* || "${dir}" =~ .*"_openmpi".* ]]; then
                 cd ${buildDir} && ls && ./build.sh && ./run.sh --nproc 2
             else
