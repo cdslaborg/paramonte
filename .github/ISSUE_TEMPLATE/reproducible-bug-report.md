@@ -8,11 +8,13 @@ assignees: ''
 
 ---
 
-**The programming language (all/C/C++/Fortran/Julia/MATLAB/Python/R/...)**: 
+**The programming language (e.g., all/C/C++/Fortran/Julia/MATLAB/Python/R/...)**: 
 
-**The operating system (all/Windows/Linux/macOS/WSL1/WSL2/...)**: 
+**The compiler/interprerter (e.g., none/GNU/Intel/IBM/NAG/Cray/PGI-NVIDIA/Anaconda/...)**: 
 
-**The architecture (all/x86_x64/Intelx64/ARM/POWER9/...)**: 
+**The operating system (e.g., all/Windows/Linux/macOS/WSL1/WSL2/...)**: 
+
+**The architecture (e.g., all/x86_x64/Intelx64/ARM/POWER9/...)**: 
 
 **Describe the bug**
 A clear and concise description of what the bug is.
