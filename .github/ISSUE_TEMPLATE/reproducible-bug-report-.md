@@ -8,11 +8,11 @@ assignees: ''
 
 ---
 
-**The programming language (C/C++/Fortran/Julia/MATLAB/Python/R/...)**: 
+**The programming language (all/C/C++/Fortran/Julia/MATLAB/Python/R/...)**: 
 
-**The operating system (Windows/Linux/macOS/WSL1/WSL2/...)**: 
+**The operating system (all/Windows/Linux/macOS/WSL1/WSL2/...)**: 
 
-**The architecture (x86_x64/Intelx64/ARM/POWER9/...)**: 
+**The architecture (all/x86_x64/Intelx64/ARM/POWER9/...)**: 
 
 **Describe the bug**
 A clear and concise description of what the bug is.
