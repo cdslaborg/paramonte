@@ -902,7 +902,8 @@ if (HEAP_ARRAY_ENABLED)
         endif()
     elseif(gnu_compiler)
         #set(FCL_FLAGS "${FCL_FLAGS}" -fmax-stack-var-size=10 )
-        set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" -fmax-stack-var-size=10 )
+        # -frecursive overwrites -fmax-stack-var-size=10 and causes all allocations to happen on stack.
+        set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" -frecursive ) # -fmax-stack-var-size=10
     endif()
 endif()
 
