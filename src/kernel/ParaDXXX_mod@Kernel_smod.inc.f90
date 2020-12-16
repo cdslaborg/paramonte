@@ -101,7 +101,7 @@ contains
     module subroutine runKernel ( self          &
                                 , getLogFunc    &
                                 )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
         use Constants_mod, only: RK, IK, NEGINF_RK, NLC, LOGTINY_RK, NEGLOGINF_RK
@@ -289,7 +289,7 @@ contains
                         , form = self%ChainFile%Form%value          & ! LCOV_EXCL_LINE
                         , status = self%ChainFile%status            & ! LCOV_EXCL_LINE
                         , iostat = self%ChainFile%Err%stat          & ! LCOV_EXCL_LINE
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                         , SHARED                                    & ! LCOV_EXCL_LINE
 #endif
                         , position = self%ChainFile%Position%value  )
@@ -586,7 +586,7 @@ contains
                         dumint = self%Chain%Weight(self%Stats%NumFunCall%accepted) ! needed for the restart mode, not needed in the fresh run
                         if (self%Stats%NumFunCall%accepted==numFunCallAcceptedLastAdaptation) then    ! no new point has been accepted since last time
                             self%Chain%Weight(numFunCallAcceptedLastAdaptation) = currentStateWeight - lastStateWeight
-#if (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || defined DBG_ENABLED || defined TESTING_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
+#if (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED || defined DEBUG_ENABLED || defined TESTING_ENABLED) && !defined CAF_ENABLED && !defined MPI_ENABLED
                             if (mod(self%Chain%Weight(numFunCallAcceptedLastAdaptation),self%SpecDRAM%AdaptiveUpdatePeriod%val)/=0) then
                                 write(output_unit,"(*(g0,:,' '))"   ) PROCEDURE_NAME//": Internal error occurred: ", self%SpecDRAM%AdaptiveUpdatePeriod%val &
                                                                     , self%Chain%Weight(numFunCallAcceptedLastAdaptation), currentStateWeight, lastStateWeight
@@ -681,7 +681,7 @@ contains
                     else
                         currentStateWeight = currentStateWeight + self%Image%count
                     end if
-#if defined DBG_ENABLED
+#if defined DEBUG_ENABLED
                 elseif (co_proposalFound_samplerUpdateOccurred(1)==1_IK) then
                     self%Stats%NumFunCall%accepted = self%Stats%NumFunCall%accepted + 1_IK
 #endif
@@ -746,7 +746,7 @@ contains
                     else
                         currentStateWeight = currentStateWeight + self%Image%count
                     end if
-#if defined DBG_ENABLED
+#if defined DEBUG_ENABLED
                 elseif (co_proposalFound_samplerUpdateOccurred(1)==1_IK) then
                     self%Stats%NumFunCall%accepted = self%Stats%NumFunCall%accepted + 1_IK
 #endif

@@ -85,7 +85,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure elemental subroutine swap_CK(a,b)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: swap_CK
 #endif
         use Constants_mod, only: CK
@@ -98,7 +98,7 @@ contains
     end subroutine swap_CK
 
     pure elemental subroutine swap_RK(a,b)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: swap_RK
 #endif
         use Constants_mod, only: RK
@@ -111,7 +111,7 @@ contains
     end subroutine swap_RK
 
     pure elemental subroutine swap_IK(a,b)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: swap_IK
 #endif
         use Constants_mod, only: IK
@@ -126,7 +126,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure elemental subroutine swap_SPI(a,b)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: swap_SPI
 #endif
         use Constants_mod, only: SPI
@@ -139,7 +139,7 @@ contains
     end subroutine swap_SPI
 
     pure elemental subroutine swap_DPI(a,b)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: swap_DPI
 #endif
         use Constants_mod, only: DPI
@@ -152,7 +152,7 @@ contains
     end subroutine swap_DPI
 
     pure elemental subroutine swap_SPR(a,b)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: swap_SPR
 #endif
         use Constants_mod, only: SPR
@@ -165,7 +165,7 @@ contains
     end subroutine swap_SPR
 
     pure elemental subroutine swap_DPR(a,b)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: swap_DPR
 #endif
         use Constants_mod, only: DPR
@@ -188,7 +188,7 @@ contains
     !end subroutine swap_rv
 
     pure elemental subroutine swap_SPC(a,b)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: swap_SPC
 #endif
         use Constants_mod, only: SPC
@@ -201,7 +201,7 @@ contains
     end subroutine swap_SPC
 
     pure elemental subroutine swap_DPC(a,b)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: swap_DPC
 #endif
         use Constants_mod, only: DPC
@@ -264,7 +264,7 @@ contains
     !end subroutine swap_zm
 
     pure subroutine masked_swap_SPR(a,b,mask)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: masked_swap_SPR
 #endif
         use Constants_mod, only: SPR
@@ -280,7 +280,7 @@ contains
     end subroutine masked_swap_SPR
 
     pure subroutine masked_swap_SPRV(a,b,mask)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: masked_swap_SPRV
 #endif
         use Constants_mod, only: SPR
@@ -296,7 +296,7 @@ contains
     end subroutine masked_swap_SPRV
 
     pure subroutine masked_swap_SPRM(a,b,mask)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: masked_swap_SPRM
 #endif
         use Constants_mod, only: SPR
@@ -316,7 +316,7 @@ contains
     !> \brief
     !> Return an arithmetic progression as an array
     pure function arth_RK(first,increment,n) result(arth)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: arth_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -352,7 +352,7 @@ contains
     !> \brief
     !> Return an arithmetic progression as an array.
     pure function arth_IK(first,increment,n) result(arth)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: arth_IK
 #endif
         use Constants_mod, only: IK, RK
@@ -386,7 +386,7 @@ contains
     !> \brief
     !> Return `nn` consecutive powers of the `n`th root of unity.
     pure function zroots_unity(n,nn)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: zroots_unity
 #endif
         use Constants_mod, only: IK, RK, CK, TWOPI
@@ -409,7 +409,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure subroutine copyArray_IK(Source,Destination,numCopied,numNotCopied)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: copyArray_IK
 #endif
         use Constants_mod, only: IK
@@ -425,7 +425,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure subroutine copyArray_RK(Source,Destination,numCopied,numNotCopied)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: copyArray_RK
 #endif
         use Constants_mod, only: IK, RK
@@ -449,7 +449,7 @@ contains
     !> @param[out]      UniqueCount :   The counts of each unique value in the input vector.
     !> @param[out]      lenUnique   :   The length of `UniqueValue`, that is, the total number of unique values.
     pure subroutine findUnique_IK(lenVector, Vector, UniqueValue, UniqueCount, lenUnique)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: findUnique_IK
 #endif
         use Constants_mod, only: IK

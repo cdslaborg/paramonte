@@ -85,7 +85,7 @@ contains
     !> \return
     !> FileList : An object of [FileList_type](@ref filelist_type) class.
     function constructFileList(searchStr,orderStr,excludeStr,OS) result(FileList)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructFileList
 #endif
         use System_mod, only: OS_type
@@ -127,7 +127,7 @@ contains
     !> \return
     !> FileList : An object of [FileList_type](@ref filelist_type) class.
     subroutine getFileList(FileList,Err,count,searchStr,orderStr,excludeStr,OS)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileList
 #endif
 

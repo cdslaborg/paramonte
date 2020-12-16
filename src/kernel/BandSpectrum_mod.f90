@@ -63,7 +63,7 @@ module BandSpectrum_mod
 
     interface
     module subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
@@ -80,7 +80,7 @@ module BandSpectrum_mod
 
     interface
     module subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence
 #endif
 
@@ -111,7 +111,7 @@ contains
     !> \return
     !> `ebrk` : The spectral break energy in units of [keV].
     pure function getEbreak(epk,alpha,beta) result(ebrk)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getEbreak
 #endif
         use Constants_mod, only: RK
@@ -136,7 +136,7 @@ contains
     !> \param[out]  coef            :   The spectral continuity coefficient.
     !> \param[out]  alphaPlusTwo    :   The lower spectral exponent of the Band model plus two.
     pure subroutine getBandParam(epk,alpha,beta,ebrk,coef,alphaPlusTwo)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandParam
 #endif
         use Constants_mod, only: IK, RK
@@ -173,7 +173,7 @@ contains
     !> The input energy values `energy`, `epk`, `ebrk`, must all have the same units.
     !> It is expected that the input energy is in units of keV, although it does not affect the accuracy of the results.
     pure function getPhotonFlux(energy,epk,alpha,beta,ebrk,coef,alphaPlusTwo) result(photonFlux)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFlux
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
@@ -208,7 +208,7 @@ contains
     !> \warning
     !> The input `energy` values must be less than `ebrk`.
     pure function getPhotonFluxLower(energy,alpha,alphaPlusTwoOverEpk) result(photonFluxLower)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluxLower
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK
@@ -236,7 +236,7 @@ contains
 !WSL_GFORTRAN_BUG     !> \param[out]  photonFluence   :   The fluence in units of photon counts within the input energy range.
 !WSL_GFORTRAN_BUG     !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
 !WSL_GFORTRAN_BUG     subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)
-!WSL_GFORTRAN_BUG #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!WSL_GFORTRAN_BUG #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
 !WSL_GFORTRAN_BUG         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence
 !WSL_GFORTRAN_BUG #endif
 !WSL_GFORTRAN_BUG 
@@ -384,7 +384,7 @@ contains
 !WSL_GFORTRAN_BUG     !> \param[out]  energyFluence   :   The fluence in units of the input energy (keV) within the input energy range.
 !WSL_GFORTRAN_BUG     !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
 !WSL_GFORTRAN_BUG     subroutine getEnergyFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,energyFluence,Err)
-!WSL_GFORTRAN_BUG #if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!WSL_GFORTRAN_BUG #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
 !WSL_GFORTRAN_BUG         !DEC$ ATTRIBUTES DLLEXPORT :: getEnergyFluence
 !WSL_GFORTRAN_BUG #endif
 !WSL_GFORTRAN_BUG 
@@ -509,7 +509,7 @@ contains
     !> If the optional `[lowerLimNew, upperLimNew]` are provided, each will replace the
     !> corresponding input `[lowerLim, upperLim]` in the computation of the output `photonFluence`.
     subroutine getPhotonFluenceFromEnergyFluence( energyFluence, lowerLim, upperLim, epk, alpha, beta, tolerance, photonFluence, Err, lowerLimNew, upperLimNew )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluenceFromEnergyFluence
 #endif
         use Constants_mod, only: IK, RK, HUGE_RK

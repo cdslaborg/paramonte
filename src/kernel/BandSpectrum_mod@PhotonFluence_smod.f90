@@ -23,7 +23,7 @@ contains
     !> \param[out]  photonFluence   :   The fluence in units of photon counts within the input energy range.
     !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
     module subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence
 #endif
 

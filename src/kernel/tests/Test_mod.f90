@@ -71,7 +71,7 @@ module Test_mod
     type(Image_type)                :: mv_Image
 
     type :: Test_type
-#if defined DBG_ENABLED || defined TESTING_ENABLD || defined CODECOV_ENABLD
+#if defined DEBUG_ENABLED || defined TESTING_ENABLD || defined CODECOV_ENABLD
         logical                     :: isDebugMode = .true.
 #else
         logical                     :: isDebugMode = .false.
@@ -189,7 +189,7 @@ contains
                 write(output_unit, "(*(g0,:,' '))") style("Errors occurred while running the ParaMonte tests. Please report this issue at:", "bright", "red")
                 write(output_unit, "(*(g0,:,' '))")
                 write(output_unit, "(*(g0,:,' '))") style("    https://github.com/cdslaborg/paramonte/issues", "bright", "cyan")
-#if ! defined DBG_ENABLED
+#if ! defined DEBUG_ENABLED
                 write(output_unit, "(*(g0,:,' '))")
                 write(output_unit, "(*(g0,:,' '))") style("To get more information about the failure, you may also compile and run the test in debug mode.", "bright", "red")
 #endif

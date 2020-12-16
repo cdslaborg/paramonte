@@ -1,7 +1,7 @@
 # ParaMonte MATLAB release notes
 
 This project follows [Semantic Versioning](https://semver.org/). 
-To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
+To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases) or [the ParaMonte page on MathWorks FileExchange central package repository](https://www.mathworks.com/matlabcentral/fileexchange/78946-paramonte).  
 
 ## **Version 2.x.x**  
 
@@ -10,11 +10,11 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 **Major enhancements**  
 
 +   This update presents several major performance, accuracy, 
-    and verification enhancements to the ParaMonte kernel routines,
-    in particular, to the ParaDRAM sampler.
+    and verification enhancements to the ParaMonte kernel routines, 
+    in particular, to the ParaDRAM sampler.  
 
 +   An extensive set of over 866 tests have been added 
-    that test all aspects of the ParaMonte kernel library.
+    that test all aspects of the ParaMonte kernel library.  
 
 ### Version  2.2.1 -- November 15, 2020  
 

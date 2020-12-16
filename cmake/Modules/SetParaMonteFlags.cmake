@@ -607,7 +607,7 @@ message( STATUS "${pmattn} dynamic-library build linker flags: ${FL_LIB_FLAGS}" 
 
 if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
     set(FPP_BUILD_FLAGS 
-        -DDBG_ENABLED 
+        -DDEBUG_ENABLED 
         CACHE STRING "ParaMonete build preprocessor flags" FORCE)
 elseif (CMAKE_BUILD_TYPE MATCHES "Testing|TESTING|testing")
     set(FPP_BUILD_FLAGS 
@@ -621,11 +621,11 @@ endif()
 
 if (intel_compiler)
     set(FPP_FCL_FLAGS 
-        -DIFORT_ENABLED 
+        -DINTEL_COMPILER_ENABLED 
         CACHE STRING "compiler-specific preprocessor definitions" FORCE)
 else(gnu_compiler)
     set(FPP_FCL_FLAGS 
-        -DGNU_ENABLED 
+        -DGNU_COMPILER_ENABLED 
         CACHE STRING "compiler-specific preprocessor definitions" FORCE)
 endif()
 

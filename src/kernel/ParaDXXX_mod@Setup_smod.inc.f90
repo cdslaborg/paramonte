@@ -144,7 +144,7 @@ contains
                                 , burninAdaptationMeasure               &
                                 , delayedRejectionScaleFactorVec        &
                                 ) !  result(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDXXX_type
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
 #endif
@@ -1380,7 +1380,7 @@ contains
                     , file      = self%SampleFile%Path%original   &
                     , status    = self%SampleFile%status          &
                     , iostat    = self%SampleFile%Err%stat        &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                     , SHARED &
 #endif
                     , position  = self%SampleFile%Position%value  )

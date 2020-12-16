@@ -328,7 +328,7 @@ echo.
 
 if !COMPILER_SUITE!==intel (
     set FPP_BUILD_FLAGS=/define:OS_IS_WINDOWS
-    if !BTYPE!==debug set FPP_BUILD_FLAGS=!FPP_BUILD_FLAGS! /define:DBG_ENABLED
+    if !BTYPE!==debug set FPP_BUILD_FLAGS=!FPP_BUILD_FLAGS! /define:DEBUG_ENABLED
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -339,7 +339,7 @@ set FPP_FCL_FLAGS=
 if !COMPILER_SUITE!==intel (
     set CCL=icl
     set FCL=ifort
-    set FPP_FCL_FLAGS=/define:IFORT_ENABLED
+    set FPP_FCL_FLAGS=/define:INTEL_COMPILER_ENABLED
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

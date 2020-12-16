@@ -65,7 +65,7 @@ contains
     !> \return
     !> Decoration : An object of class [Decoration_type](@ref decoration_type).
     module function constructDecoration(tabStr,symbol,text,List) result(Decoration)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: constructDecoration
 #endif
         use JaggedArray_mod, only: CharVec_type
@@ -101,7 +101,7 @@ contains
     !> @param[in]   outputUnit      : The file unit to which the wrapper text must be written (**optional**).
     !> @param[in]   newLine         : The string that represent the new line in the input text (**optional**).
     module subroutine writeDecoratedText(text,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit,newLine)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedText
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -139,7 +139,7 @@ contains
     !> @param[in]   marginBot       : The number of empty lines between the bottom symbol line and the text start (**optional**).
     !> @param[in]   outputUnit      : The file unit to which the wrapper text must be written (**optional**).
     module subroutine writeDecoratedList(List,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedList
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -173,7 +173,7 @@ contains
     !> \return
     !> `line` : A string of the requested pattern.
     pure module function drawLine(symbol,width) result(line)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: drawLine
 #endif
         use Constants_mod, only: IK
@@ -224,7 +224,7 @@ contains
     !> \return
     !> `sandwichedText` : A string of the requested pattern.
     pure module function sandwich(text,symbol,width,thicknessHorz) result(sandwichedText)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: sandwich
 #endif
         use Constants_mod, only: IK
@@ -359,7 +359,7 @@ contains
                             , advance       &
 #endif
                             )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: write
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -465,7 +465,7 @@ contains
     !> \return
     !> ListOfLines : The list of lines that are wrapped to fit within the requested input width.
     module function wrapText(string,width,split,pad) result(ListOfLines)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: wrapText
 #endif
 
@@ -643,7 +643,7 @@ contains
     !> \remark
     !> The escape sequence "\n" can be passed as the input value of `delimiter` to separate the lines.
     module function getListOfLines(string,delimiter) result(ListOfLines)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getListOfLines
 #endif
         use Constants_mod, only: IK

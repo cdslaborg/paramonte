@@ -288,7 +288,7 @@ contains
     !> \warning
     !> This routine has to be called by all images (processes).
     subroutine setupParaMonte(self,nd,name,inputFile)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMonte
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -321,7 +321,7 @@ contains
 
         self%name     = name
         self%brand    = INDENT // self%name
-#if defined IFORT_ENABLED || __GFORTRAN__
+#if defined INTEL_COMPILER_ENABLED || GNU_COMPILER_ENABLED
         self%date     = "Build: " // __TIMESTAMP__
 #else
         self%date     = "Unknown Release Date"
@@ -415,7 +415,7 @@ contains
     !> \remark
     !> This routine has to be called by all master images (processes).
     subroutine addSplashScreen(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: addSplashScreen
 #endif
         implicit none
@@ -491,7 +491,7 @@ contains
     !> \remark
     !> This routine has to be called by all leader images (processes).
     subroutine addCompilerPlatformInfo(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: addCompilerPlatformInfo
 #endif
         use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
@@ -600,7 +600,7 @@ contains
     !> \remark
     !> This routine has to be called by all master images (processes).
     subroutine noteUserAboutEnvSetup(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: noteUserAboutEnvSetup
 #endif
         implicit none
@@ -622,7 +622,7 @@ contains
     !> @param[inout]    namelist    :   The name of the missing namelist.
     !> @param[inout]    outputUnit  :   The file unit to which the message must be output.
     subroutine warnUserAboutMissingNamelist(self, namelist)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutMissingNamelist
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -655,7 +655,7 @@ contains
     !>
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     subroutine warnUserAboutInputFilePresence(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutInputFilePresence
 #endif
         use Constants_mod, only: NLC ! LCOV_EXCL_LINE
@@ -706,7 +706,7 @@ contains
     !>
     !> @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).
     subroutine setWarnAboutProcArgHasPriority(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnAboutProcArgHasPriority
 #endif
         implicit none
@@ -738,7 +738,7 @@ contains
     !>
     !> @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).
     subroutine setupOutputFiles(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: setupOutputFiles
 #endif
         use Decoration_mod, only: getGenericFormat, INDENT
@@ -777,10 +777,10 @@ contains
         if (allocated(currentWorkingDir)) deallocate(currentWorkingDir)
         allocate( character(MAX_FILE_PATH_LEN) :: currentWorkingDir )
         block
-#if defined IFORT_ENABLED
+#if defined INTEL_COMPILER_ENABLED
             use ifport ! only: getcwd
 #endif
-#if defined IFORT_ENABLED || __GFORTRAN__
+#if defined INTEL_COMPILER_ENABLED || GNU_COMPILER_ENABLED
             self%Err%stat = getcwd(currentWorkingDir)
             currentWorkingDir = trim(adjustl(currentWorkingDir))
 #else
@@ -1061,7 +1061,7 @@ contains
                 , file = self%LogFile%Path%original     &
                 , status = self%LogFile%status          &
                 , iostat = self%LogFile%Err%stat        &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                &
 #endif
                 , position = self%LogFile%Position%value)
@@ -1100,7 +1100,7 @@ contains
                 , file = self%TimeFile%Path%original        &
                 , status = self%TimeFile%status             &
                 , iostat = self%TimeFile%Err%stat           &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                    &
 #endif
                 , position = self%TimeFile%Position%value   )
@@ -1121,7 +1121,7 @@ contains
                 , form = self%ChainFile%Form%value          &
                 , status = self%ChainFile%status            &
                 , iostat = self%ChainFile%Err%stat          &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                    &
 #endif
                 , position = self%ChainFile%Position%value  )
@@ -1140,7 +1140,7 @@ contains
                 , form = self%RestartFile%Form%value        &
                 , status = self%RestartFile%status          &
                 , iostat = self%RestartFile%Err%stat        &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                    &
 #endif
                 , position = self%RestartFile%Position%value)
@@ -1186,7 +1186,7 @@ contains
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     !> @param[inout]    msg     :   The message to be output.
     subroutine reportDesc(self, msg) !, marginTop, marginBot)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: reportDesc
 #endif
         use Constants_mod, only: IK, NLC

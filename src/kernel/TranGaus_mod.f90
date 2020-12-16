@@ -2550,7 +2550,7 @@ contains
     !> \return
     !> `tranGaus`   :   The output truncated random Gaussian number.
     function getTranGaus(lowerLim,upperLim,avg,std) result(tranGaus)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getTranGaus
 #endif
     ! getTranGaus    Pseudorandom numbers from a truncated Gaussian distribution.
@@ -2638,7 +2638,7 @@ contains
     !> \return
     !> `tranGaus`   :   The output truncated random Standard Gaussian number.
     recursive function getStdTranGaus(lowerLim,upperLim) result(stdTranGaus)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
         !DEC$ ATTRIBUTES DLLEXPORT :: getStdTranGaus
 #endif
 
