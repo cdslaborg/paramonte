@@ -195,7 +195,7 @@ contains
                                         , RestartFile &
                                         , isFreshRun &
                                         ) result(Proposal)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalSymmetric
 #endif
         use Constants_mod, only: IK, RK, NULL_RK
@@ -382,7 +382,7 @@ contains
                     , counterDRS    &
                     , StateOld      &
                     ) result (StateNew)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNew
 #endif
         use Statistics_mod, only: GET_RANDOM_PROPOSAL
@@ -452,6 +452,9 @@ contains
                             , StateOld          &
                             , StateNew          &
                             ) result(logProb)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogProb
+#endif
 #if defined NORMAL
         use Statistics_mod, only: getLogProbMVN
 #elif defined UNIFORM
@@ -516,7 +519,7 @@ contains
                             , samplerUpdateSucceeded    &
                             , adaptationMeasure         &
                             )
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: doAdaptation
 #endif
 
@@ -862,7 +865,7 @@ contains
     subroutine doAutoTune   ( adaptationMeasure &
                             , AutoTuneScaleSq   &
                             )
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: doAutoTune
 #endif
         use Matrix_mod, only: getLogSqrtDetPosDefMat
@@ -936,7 +939,7 @@ contains
     !> When MPI parallelism is used, this routine must be called by all images.
 #if defined CAF_ENABLED || MPI_ENABLED
     subroutine bcastAdaptation()
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: bcastAdaptation
 #endif
 #if defined CAF_ENABLED
@@ -978,7 +981,7 @@ contains
     !> the corresponding argument of [getInvMatFromCholFac](ref matrix_mod::getinvmatfromcholfac) to guarantee it to the compiler.
     !> More than improving performance, this would turn off the pesky compiler warnings about temporary array creation.
     subroutine getInvCovMat()
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvCovMat
 #endif
         use Matrix_mod, only: getInvMatFromCholFac ! LCOV_EXCL_LINE
@@ -1014,7 +1017,7 @@ contains
     !> The performance of this update could be improved by only updating the higher-stage covariance, only when needed.
     !> However, the gain will be likely minimal, especially in low-dimensions.
     subroutine updateDelRejCholDiagLower()
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: updateDelRejCholDiagLower
 #endif
         implicit none
@@ -1039,7 +1042,7 @@ contains
     !>
     !> @param[in]   meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
     subroutine writeRestartFile(meanAccRateSinceStart)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFile
 #endif
         implicit none
@@ -1077,7 +1080,7 @@ contains
     !>
     !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
     subroutine readRestartFile(meanAccRateSinceStart)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFile
 #endif
         implicit none

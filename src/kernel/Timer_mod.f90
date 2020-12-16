@@ -108,7 +108,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function constructTimer(Err) result(Timer)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructTimer
 #endif
         use Constants_mod, only: RK
@@ -141,7 +141,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine setTic(Timer)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setTic
 #endif
         use Constants_mod, only: RK
@@ -178,7 +178,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine setToc(Timer)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setToc
 #endif
         implicit none
@@ -209,7 +209,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function getTimeSinceLastCall(Timer) result(timeSinceLastCall)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTimeSinceLastCall
 #endif
         implicit none
@@ -233,7 +233,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function getTimeSinceStart(Timer) result(timeSinceStart)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTimeSinceStart
 #endif
         implicit none

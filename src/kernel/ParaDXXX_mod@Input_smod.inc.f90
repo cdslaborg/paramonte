@@ -153,7 +153,7 @@ contains
     !> \remark
     !> This procedure requires preprocessing.
     module subroutine getSpecFromInputFile(self,nd)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile
 #endif
         use Constants_mod, only: IK, RK

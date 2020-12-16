@@ -129,7 +129,9 @@ contains
     !> \warning
     !> This routine must not contain any synchronization statements under any circumstances.
     subroutine queryImage(Image)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: queryImage
+#endif
         use Constants_mod, only: RK, IK
         use String_mod, only: num2str
         implicit none
@@ -173,6 +175,9 @@ contains
     !> This routine global Coarray and MPI synchronization barriers and
     !> therefore, must be called by all processes in the current simulation.
     subroutine syncImages()
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: syncImages
+#endif
         implicit none
 #if defined MPI_ENABLED
         block
@@ -198,6 +203,9 @@ contains
     !> \warning
     !> MPI communications will be shut down upon calling this routine and further interprocess communications will be impossible.
     subroutine finalizeImages() ! LCOV_EXCL_LINE
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: finalizeImages
+#endif
 #if defined CAF_ENABLED
         sync all
 #elif defined MPI_ENABLED
@@ -230,7 +238,9 @@ contains
     !> \return
     !> `ForkJoin` : An object of class [ForkJoin_type](@ref forkjoin_type) containing the parallelization speedup.
     function constructForkJoin(processCount, lenProcessID, ProcessID, successProb, seqSecTime, parSecTime, comSecTime) result(ForkJoin) ! nonpure
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: constructForkJoin
+#endif
         use GeoCyclicFit_mod, only: fitGeoCyclicLogPDF ! LCOV_EXCL_LINE
         use Constants_mod, only: IK, RK, SQRT_EPS_RK, NEGINF_RK
         use String_mod, only: num2str
@@ -402,7 +412,9 @@ contains
     !> @param[out]  maxSpeedup          :   The maximum speedup for any number of processors.
     !> @param[out]  Err                 :   An object of [Err_type](@ref err_mod::err_type) class indicating whether and error has occurred upon return.
     subroutine getForkJoinSpeedup(successProb, seqSecTime, parSecTime, comSecTimePerProc, minMaxNumProc, Speedup, lenSpeedup, maxSpeedupNumProc, maxSpeedup, Err)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getForkJoinSpeedup
+#endif
         use Statistics_mod, only: getLogProbGeoCyclic
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str

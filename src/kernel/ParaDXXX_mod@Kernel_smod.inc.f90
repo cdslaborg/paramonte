@@ -101,7 +101,7 @@ contains
     module subroutine runKernel ( self          &
                                 , getLogFunc    &
                                 )
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
         use Constants_mod, only: RK, IK, NEGINF_RK, NLC, LOGTINY_RK, NEGLOGINF_RK
@@ -1047,6 +1047,9 @@ contains
     !> \return
     !> `burninLoc` : The location of burnin in the input `LogFunc` vector.
     pure function getBurninLoc(lenLogFunc,refLogFunc,LogFunc) result(burninLoc)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getBurninLoc
+#endif
         use Constants_mod, only: IK, RK
         implicit none
         integer(IK), intent(in) :: lenLogFunc

@@ -109,7 +109,7 @@
 
     interface
     module subroutine getSpecFromInputFile( self, nd )
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile
 #endif
         use Constants_mod, only: IK
@@ -120,7 +120,7 @@
 
     interface
     module subroutine runKernel( self, getLogFunc )
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -176,7 +176,7 @@
                                 , burninAdaptationMeasure               &
                                 , delayedRejectionScaleFactorVec        &
                                 ) ! result(self)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDXXX_type
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
 #endif

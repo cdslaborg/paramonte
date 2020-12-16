@@ -65,7 +65,7 @@ contains
     !> \return
     !> `eye` : A matrix of rank n * m whose diagonal elements are set to the input `diag` value or, if not provided, to `1.`.
     pure function getEye(n,m,diag) result(eye)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEye
 #endif
         use Constants_mod, only: RK, IK
@@ -105,7 +105,7 @@ contains
     !> Returns in the lower triangle of `PosDefMat`, the Cholesky factorization L of \f$\texttt{PosDefMat} = L.L^T\f$.
     !> On input, the upper upper triangle of `PosDefMat` should be given, which remains intact on output.
     pure subroutine getCholeskyFactor(nd,PosDefMat,Diagonal)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCholeskyFactor
 #endif
         use Constants_mod, only: RK, IK
@@ -141,7 +141,7 @@ contains
     !> `PosDefMat` and `Diagonal` are the output of subroutine [getCholeskyFactor](@ref getcholeskyfactor)
     !> (i.g., only the lower triangle of `PosDefMat` is used).
     subroutine solveLinearPosDefSystem(nd,PosDefMat,Diagonal,Intercept,InputSolution)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: solveLinearPosDefSystem
 #endif
         use Constants_mod, only: RK, IK
@@ -180,7 +180,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
     pure subroutine getInvPosDefMatSqrtDet(nd,MatInvMat,sqrtDetInvPosDefMat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvPosDefMatSqrtDet
 #endif
         use Constants_mod, only: RK, IK ! LCOV_EXCL_LINE
@@ -245,7 +245,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
     pure function getInvMatFromCholFac(nd,CholeskyLower,Diagonal) result(InvMatFromCholFac)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMatFromCholFac
 #endif
         use Constants_mod, only: RK, IK
@@ -314,7 +314,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, UT Austin
     pure function getInvPosDefMat(nd,PosDefMat) result(InvPosDefMat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvPosDefMat
 #endif
         use Constants_mod, only: RK, IK
@@ -379,7 +379,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 18, 2009, 1:54 AM, MTU
     subroutine getInvMatDet(nd,MatrixLU,InverseMatrix,detInvMat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMatDet
 #endif
         use Constants_mod, only: RK, IK
@@ -423,7 +423,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 8, 2017, 1:54 PM, MTU
     function getInvMat(nd,Matrix) result(InverseMatrix)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvMat
 #endif
         use Constants_mod, only: RK, IK
@@ -468,7 +468,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 8, 2017, 1:54 PM, MTU
     subroutine solveLinearSystem(nd, LU, Permutation, InputSolution)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: solveLinearSystem
 #endif
         use Constants_mod, only: RK, IK
@@ -510,7 +510,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 1:43 PM, ICES, UT Austin
     subroutine getLU(nd,MatrixLU,Permutation,parity) ! ,errorOccurred)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLU
 #endif
         use Constants_mod, only: RK, IK
@@ -594,7 +594,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 20, 2009, 10:56 PM, MTU
     subroutine multiplyMatrix(A,rowsA,colsA,B,rowsB,colsB,C)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: multiplyMatrix
 #endif
         use Constants_mod, only: RK, IK
@@ -646,7 +646,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Oct 18, 2009, 4:10 PM, MTU
     function getDeterminant(nd,Matrix) result(determinant)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDeterminant
 #endif
         use Constants_mod, only: RK, IK
@@ -680,7 +680,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     function getSqrtDetPosDefMat(nd,PosDefMat) result(sqrtDetPosDefMat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtDetPosDefMat
 #endif
         use Constants_mod, only: RK, IK
@@ -717,7 +717,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure subroutine getLogSqrtDetPosDefMat(nd,PosDefMat,logSqrtDetPosDefMat,failed)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSqrtDetPosDefMat
 #endif
         use Constants_mod, only: RK, IK
@@ -760,7 +760,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure logical function isPosDef(nd,Matrix)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPosDef
 #endif
         use Constants_mod, only: RK, IK
@@ -804,7 +804,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure function getOuterProd(Vector1,Vector2) result(OuterProd)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getOuterProd
 #endif
         use Constants_mod, only: RK, IK
@@ -850,7 +850,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure function sortPosDefMat(rank,PosDefMatUpper,lenColIndx,ColIndx,ColIndxMap) result(SortedPosDefMatUpper)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: sortPosDefMat
 #endif
         use Constants_mod, only: RK, IK
@@ -894,6 +894,9 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure subroutine symmetrizeUpperSquareMatrix(nd,UpperSquareMatrix)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: symmetrizeUpperSquareMatrix
+#endif
         use Constants_mod, only: RK, IK
         implicit none
         integer(IK) , intent(in)    :: nd
@@ -934,7 +937,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT
     pure subroutine getRegresCoef(rankPDM,rankS11,rankS22,PosDefMat,RegresCoefMat,SchurComplement)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRegresCoef
 #endif
         use Constants_mod, only: RK, IK ! LCOV_EXCL_LINE

@@ -87,7 +87,7 @@ module Path_mod
 
 #else
 
-    ! stupid gfortran gives error on the above syntax
+    ! stupid gfortran (possibly version 8.3) gives error on the above syntax
     character(*), parameter :: SHELL_ESCAPE_CHAR = " !"//'"#$&'//"'()*,;<=>?[\]^`{|}~"
 
 #endif
@@ -131,7 +131,7 @@ contains
     !> \return
     !> `Path` : An object of class [Path_type](@ref path_type) containing the path properties and methods.
     function constructPath(inputPath,OS) result(Path)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructPath
 #endif
         use System_mod, only: OS_type
@@ -155,7 +155,7 @@ contains
     !> \warning
     !> On output, do not forget to check the value `Path%%Err%%occurred` before using the output `Path`.
     subroutine query(Path,inputPath,OS)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: query
 #endif
         use Err_mod, only: Err_type
@@ -244,7 +244,7 @@ contains
     !> This routine strictly assumes that there is no dangling `\` in the input Linux path, and if there is,
     !> then either it is used to escape the special shell characters, or otherwise, the path is a Windows path.
     pure function winify(inputPath) result(outputPath) !,Err)!,ignoreWindowsReservedChars)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: winify
 #endif
        !use Err_mod, only: Err_type
@@ -346,7 +346,7 @@ contains
     !> \return
     !> `outputPath` : The output modified path which conforms to the rules of the Unix OS.
     pure function linify(inputPath) result(outputPath)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: linify
 #endif
         use Constants_mod, only: IK
@@ -395,7 +395,7 @@ contains
     !> \param[out]      outputPath  :   The output modified path which conforms to the rules of the current OS.
     !> \param[out]      Err         :   An object of class [Err_type](@ref err_mod::err_type) containing error handling tools.
     subroutine modify(inputPath,outputPath,Err)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: modify
 #endif
         use Err_mod, only: Err_type
@@ -448,7 +448,7 @@ contains
     !> \param[out]      name    :   The base file name segment of the path.
     !> \param[out]      ext     :   The file extension segment of the path.
     subroutine getDirNameExt(path,slash,dir,name,ext)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirNameExt
 #endif
         implicit none
@@ -471,7 +471,7 @@ contains
     !> \param[out]      dir         :   The directory segment of the path.
     !> \param[out]      fullName    :   The full file name and extension segment of the path.
     subroutine getDirFullName(path,slash,dir,fullName)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirFullName
 #endif
         use Constants_mod, only: IK
@@ -515,7 +515,7 @@ contains
     !> \param[out]      name        :   The name segment of the file.
     !> \param[out]      ext         :   The extension segment of the file (including the dot separator).
     subroutine getNameExt(fullName,name,ext)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNameExt
 #endif
         use Constants_mod, only: IK
@@ -557,7 +557,7 @@ contains
     !> \author
     !> Last updated by Amir Shahmoradi, Tuesday 3:09 AM, Dec 8, 2020, Dallas, TX
     function mkdir(dirPath,isUnixShell,wait) result(Err)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: mkdir
 #endif
         use Constants_mod, only: IK, NLC
@@ -634,7 +634,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Tuesday 3:09 AM, Dec 8, 2020, Dallas, TX
     function isdir(path) result(pathIsDir)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: isdir
 #endif
         implicit none

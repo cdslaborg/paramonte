@@ -166,6 +166,17 @@ if !TEMP_DYNAMIC_OR_CFI!==true (
 endlocal
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: set the library testing preprocessor flags. These must be defined for all source files (not only the test files)
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+set "FPP_TEST_FLAGS="
+if !COMPILER_SUITE!==intel (
+    if !BASIC_TEST_ENABLED!==true set FPP_TEST_FLAGS=!FPP_TEST_FLAGS! /define:BASIC_TEST_ENABLED
+    if !SAMPLER_TEST_ENABLED!==true set FPP_TEST_FLAGS=!FPP_TEST_FLAGS! /define:SAMPLER_TEST_ENABLED
+    if !CODECOV_ENALBED!==true set FPP_TEST_FLAGS=!FPP_TEST_FLAGS! /define:CODECOV_ENABLED
+)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: set language interface preprocessor's flag
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -225,6 +236,10 @@ if not defined COMPILER_VERSION (
 
 )
 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: report the current build configuration
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 echo. -- !BUILD_SCRIPT_NAME! - COMPILER_VERSION: !COMPILER_VERSION!
 echo. -- !BUILD_SCRIPT_NAME! - TEST_RUN_ENABLED: !ParaMonteTest_RUN_ENABLED!
 echo. -- !BUILD_SCRIPT_NAME! - CODECOV_ENALBED: !CODECOV_ENALBED!
@@ -232,7 +247,9 @@ echo. -- !BUILD_SCRIPT_NAME! - CFI_ENABLED: !CFI_ENABLED!
 echo. -- !BUILD_SCRIPT_NAME! - build type: !BTYPE!
 echo. -- !BUILD_SCRIPT_NAME! - link type: !LTYPE!
 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: set shared library Fortran linker flags
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 REM set FC_LIB_FLAGS=/libs:dll /threads %= these flags are actually included by default in recent ifort implementations =%
 set FC_LIB_FLAGS=/threads /libs:static
@@ -329,6 +346,7 @@ echo.
 if !COMPILER_SUITE!==intel (
     set FPP_BUILD_FLAGS=/define:OS_IS_WINDOWS
     if !BTYPE!==debug set FPP_BUILD_FLAGS=!FPP_BUILD_FLAGS! /define:DEBUG_ENABLED
+    if !BTYPE!==testing set FPP_BUILD_FLAGS=!FPP_BUILD_FLAGS! /define:TESTING_ENABLED
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -348,7 +366,7 @@ if !COMPILER_SUITE!==intel (
 REM echo. FPP_FLAGS_USER = !FPP_FLAGS_USER!
 REM /define:IS_ENABLED
 if !COMPILER_SUITE!==intel (
-    set FPP_FLAGS=/fpp /define:PARAMONTE_VERSION=^"'!ParaMonteVersion!'^" !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !FPP_FLAGS_USER!
+    set FPP_FLAGS=/fpp /define:PARAMONTE_VERSION=^"'!ParaMonteVersion!'^" !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !FPP_TEST_FLAGS! !FPP_FLAGS_USER!
 )
 REM set FPP_FLAGS=/fpp !FPP_CFI_FLAG! !FPP_LANG_FLAG! !FPP_BUILD_FLAGS! !FPP_FCL_FLAGS! !FPP_DLL_FLAGS! !USER_PREPROCESSOR_MACROS! !FPP_FLAGS_USER!
 :: to save the intermediate files use this on the command line: FPP /Qsave_temps <original file> <intermediate file>
@@ -469,7 +487,7 @@ set FCL_FLAGS=!FCL_FLAGS_DEFAULT! !FCL_PARALLELIZATION_FLAGS! !FCL_BUILD_FLAGS!
 
 if !COMPILER_SUITE!==intel (
     if !HEAP_ARRAY_ENABLED!==true set FCL_FLAGS=!FCL_FLAGS! /heap-arrays
-    if !CODECOV_ENALBED!==true set FCL_FLAGS=!FCL_FLAGS! /Qprof-gen:srcpos /Qcov-gen:paramonte
+    if !CODECOV_ENALBED!==true set FCL_FLAGS=!FCL_FLAGS! /Qprof-gen:srcpos /Qcov-gen
 )
 
 

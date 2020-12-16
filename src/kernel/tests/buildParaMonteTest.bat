@@ -295,7 +295,7 @@ echo.
 :: if !ParaMonteTest_RUN_ENABLED! NEQ true goto LABEL_EXAMPLE_ENABLED
 if !ParaMonteTest_RUN_ENABLED! NEQ true (
     echo.
-    echo. -- ParaMonteTest - Warning: skipping ParaMonte library test run...
+    echo. -- ParaMonteTest - NOTE: skipping ParaMonte library test run...
     echo.
     goto :eof
 )

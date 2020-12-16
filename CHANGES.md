@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.5** -- Dec 15, 2020
+### **Version 1.5** -- Dec 16, 2020
 
 **Major Enhancements**  
 
@@ -15,8 +15,10 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 +   New prebuilt libraries with GNU compilers and Open-MPI on Linux are added.
 +   New flags are now added to the build scripts of the library that automate the process of code coverage generation.
 +   The `testing` builds are now removed from the ParaMonte release page as this build is mostly useful for development purposes.  
++   The issue of Windows file locking, that led to the occasional crashes of the 
+    ParaDRAM and ParaDISE simulations in `multiChain` parallelism mode, is now resolved.
 
-**Enhancements**  
+**Minor Enhancements**  
 
 +   Minor enhancements to the ParaMonte C/C++/Fortran example build scripts `build.sh` and `build.bat`.  
 +   The default build settings are now limited to `heap` memory allocation with `dynamic` library builds
@@ -39,7 +41,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 **Compiler / MPI library used for this binary release**  
 
-+   **Windows**: Intel Parallel Studio Version 19.0.4.245 Build 20190417 / Intel(R) MPI Library 2019 Update 4 for Windows  
++   **Windows**: Intel Parallel Studio Version 19.1.1.216 Build 20200306 / Intel(R) MPI Library 2019 Update 7 for Windows  
 +   **Linux**: Intel Parallel Studio Version 19.1.1.217 20200306 / Intel(R) MPI Library for Linux OS, Version 2019 Update 7 Build 20200312
 +   **Linux**: GNU 10.2.0 / Open-MPI 4.0.3  
 +   **Linux**: GNU 10.1.0 / MPICH 3.2  

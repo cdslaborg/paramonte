@@ -427,7 +427,13 @@ contains
         if (allocated(WeightedData%Weight)) deallocate(WeightedData%Weight); allocate(WeightedData%Weight(WeightedData%np))
         if (allocated(WeightedData%Data)) deallocate(WeightedData%Data); allocate(WeightedData%Data(WeightedData%nd,WeightedData%np))
 
-        open(newunit=fileUnit,file=Test%inDir//"/Test_CrossCorr_mod@WeightedData.txt",status="old")
+        open( file = Test%inDir//"/Test_CrossCorr_mod@WeightedData.txt" & ! LCOV_EXCL_LINE
+            , newunit = fileUnit & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         do ip = 1, WeightedData%np
             read(fileUnit,*) WeightedData%Weight(ip), WeightedData%Data(1:WeightedData%nd,ip)
         end do
@@ -548,7 +554,13 @@ contains
 
             ! write data to output for further investigation
 
-            open(newunit=fileUnit,file=Test%outDir//"/Test_CrossCorr_mod@WeightedData@AutoCorr@getAutoCorrDirect."//num2str(Test%Image%id)//".txt",status="replace")
+            open( file = Test%outDir//"/Test_CrossCorr_mod@WeightedData@AutoCorr@getAutoCorrDirect."//num2str(Test%Image%id)//".txt" & ! LCOV_EXCL_LINE
+                , status = "replace" & ! LCOV_EXCL_LINE
+                , newunit = fileUnit & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                , SHARED & ! LCOV_EXCL_LINE
+#endif
+                )
             do ilag = 1, AutoCorr%nlag + 1_IK
                 write(fileUnit,"(*(g0.15,:,' '))") AutoCorr%Lag(ilag), AutoCorr%AutoCorrDirect(1:WeightedData%nd,ilag)
             end do
@@ -642,7 +654,13 @@ contains
 
             ! write data to output for further investigation
 
-            open(newunit=fileUnit,file=Test%outDir//"/WeightedDataAutoCorrDirect.Without.InverseSumNormedDataSq."//num2str(Test%Image%id)//".txt",status="replace")
+            open( file = Test%outDir//"/WeightedDataAutoCorrDirect.Without.InverseSumNormedDataSq."//num2str(Test%Image%id)//".txt" & ! LCOV_EXCL_LINE
+                , newunit = fileUnit & ! LCOV_EXCL_LINE
+                , status = "replace" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                , SHARED & ! LCOV_EXCL_LINE
+#endif
+                )
             do ilag = 1, AutoCorr%nlag + 1_IK
                 write(fileUnit,"(*(g0.15,:,' '))") AutoCorr%Lag(ilag), AutoCorr%AutoCorrDirect(1:WeightedData%nd,ilag)
             end do
@@ -712,7 +730,13 @@ contains
 
         ! read reference AutoCorrFFT_ref from the input data
 
-        open(newunit=fileUnit,file=Test%inDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Compact.txt",status="old")
+        open( file = Test%inDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Compact.txt" & ! LCOV_EXCL_LINE
+            , newunit = fileUnit & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         do ip = 1, AutoCorr%paddedLen
             read(fileUnit,*) ilag, AutoCorr%AutoCorrFFT_ref(ip,1)
         end do
@@ -729,7 +753,13 @@ contains
 
             ! write data to output for further investigation
 
-            open(newunit=fileUnit,file=Test%outDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Compact@getCrossCorrFFT."//num2str(Test%Image%id)//".out",status="replace")
+            open( file = Test%outDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Compact@getCrossCorrFFT."//num2str(Test%Image%id)//".out" & ! LCOV_EXCL_LINE
+                , newunit = fileUnit & ! LCOV_EXCL_LINE
+                , status = "replace" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                , SHARED & ! LCOV_EXCL_LINE
+#endif
+                )
             do ip = 1, AutoCorr%paddedLen
                 write(fileUnit,"(*(g0.15,:,' '))") ip-1, AutoCorr%AutoCorrFFT(ip,1)
             end do
@@ -760,7 +790,13 @@ contains
 
         call WeightedData%read()
 
-        ! open(newunit=fileUnit,file=Test%outDir//"/NormedData.compact."//num2str(Test%Image%id)//".txt",status="replace")
+        ! open( file = Test%outDir//"/NormedData.compact."//num2str(Test%Image%id)//".txt" & ! LCOV_EXCL_LINE
+        !     , newunit = fileUnit & ! LCOV_EXCL_LINE
+        !     , status = "replace" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+        !     , SHARED & ! LCOV_EXCL_LINE
+#endif
+        !     )
         ! write(fileUnit,"(*(g0.15,:,/))") WeightedData%NormedData
         ! close(fileUnit)
 
@@ -789,7 +825,13 @@ contains
 
             ! write data to output for further investigation
 
-            open(newunit=fileUnit,file=Test%outDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Compact@getCrossCorrWeightedFFT."//num2str(Test%Image%id)//".out",status="replace")
+            open( file = Test%outDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Compact@getCrossCorrWeightedFFT."//num2str(Test%Image%id)//".out" & ! LCOV_EXCL_LINE
+                , newunit = fileUnit & ! LCOV_EXCL_LINE
+                , status = "replace" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                , SHARED & ! LCOV_EXCL_LINE
+#endif
+                )
             do ip = 1, AutoCorr%paddedLen
                 write(fileUnit,"(*(g0.15,:,' '))") ip-1, AutoCorr%AutoCorrWeightedFFT(ip,1)
             end do
@@ -867,7 +909,13 @@ contains
 
         ! read reference AutoCorrFFT_ref from the input data
 
-        open(newunit=fileUnit,file=Test%inDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Verbose.txt",status="old")
+        open( file = Test%inDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Verbose.txt" & ! LCOV_EXCL_LINE
+            , newunit = fileUnit & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         do ip = 1, AutoCorr%paddedLen
             read(fileUnit,*) ilag, AutoCorr%AutoCorrFFT_ref(ip,1)
         end do
@@ -884,7 +932,13 @@ contains
 
             ! write data to output for further investigation
 
-            open(newunit=fileUnit,file=Test%outDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Verbose@getCrossCorrWeightedFFT."//num2str(Test%Image%id)//".out",status="replace")
+            open( file = Test%outDir//"/Test_CrossCorr_mod@WeightedData@AutoCorrFFT@Verbose@getCrossCorrWeightedFFT."//num2str(Test%Image%id)//".out" & ! LCOV_EXCL_LINE
+                , newunit = fileUnit & ! LCOV_EXCL_LINE
+                , status = "replace" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                , SHARED & ! LCOV_EXCL_LINE
+#endif
+                )
             do ip = 1, AutoCorr%paddedLen
                 write(fileUnit,"(*(g0.15,:,' '))") ip-1, AutoCorr%AutoCorrWeightedFFT(ip,1)
             end do
@@ -962,7 +1016,13 @@ contains
 
         if (allocated(AutoCorr%AutoCorrFFT_ref)) deallocate(AutoCorr%AutoCorrFFT_ref)
         allocate( AutoCorr%AutoCorrFFT_ref(AutoCorr%paddedLen, WeightedData%nd) )
-        open(newunit=fileUnit,file=Test%inDir//"/Test_CrossCorr_mod@AutoCorrFFT@Identity.txt",status="old")
+        open( file = Test%inDir//"/Test_CrossCorr_mod@AutoCorrFFT@Identity.txt" & ! LCOV_EXCL_LINE
+            , newunit = fileUnit & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         do ip = 1, AutoCorr%paddedLen
             read(fileUnit,*) ilag, AutoCorr%AutoCorrFFT_ref(ip,1)
         end do
@@ -979,7 +1039,13 @@ contains
 
             ! write data to output for further investigation
 
-            open(newunit=fileUnit,file=Test%outDir//"/Test_CrossCorr_mod@AutoCorrFFT@Identity@getCrossCorrWeightedFFT."//num2str(Test%Image%id)//".out",status="replace")
+            open( file = Test%outDir//"/Test_CrossCorr_mod@AutoCorrFFT@Identity@getCrossCorrWeightedFFT."//num2str(Test%Image%id)//".out" & ! LCOV_EXCL_LINE
+                , newunit = fileUnit & ! LCOV_EXCL_LINE
+                , status="replace" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                , SHARED & ! LCOV_EXCL_LINE
+#endif
+                )
             do ip = 1, AutoCorr%paddedLen
                 write(fileUnit,"(*(g0.15,:,' '))") ip-1, AutoCorr%AutoCorrWeightedFFT(ip,1)
             end do

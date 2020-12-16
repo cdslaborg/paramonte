@@ -81,7 +81,7 @@ contains
     !> \return
     !> `logdvdz` : The natural logarithm of the differential comoving volume of cosmos.
     pure function getlogdvdz(zplus1,logzplus1,twiceLogLumDisMpc) result(logdvdz)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getlogdvdz
 #endif
         use Constants_mod, only: RK, PI
@@ -110,7 +110,7 @@ contains
     !> \remark
     !> The distance is calculated according to approximate algorithm of Wickramasinghe & Okwatta (2010).
     pure function getLogLumDisWicMpc(zplus1) result(logLumDisWicMpc)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogLumDisWicMpc
 #endif
         use Constants_mod, only: RK
@@ -151,7 +151,7 @@ contains
     !> except for the fact that it return the natural value, as opposed to the natural logarithm.
     !> It is kept only for legacy reasons and should not be used in new code.
     pure function ldiswickram(zplus1)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: ldiswickram
 #endif
         use Constants_mod, only: RK
@@ -188,7 +188,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
     function getLookBackTime(zplus1,maxRelativeError,nRefinement) result(lookBackTime)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLookBackTime
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -275,7 +275,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sunday 2:31 PM, January 6, 2013, IFS, The University of Texas at Austin.
     pure function getUniverseAgeDerivative(zplus1) result(universeAgeDerivative)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUniverseAgeDerivative
 #endif
         use Constants_mod, only: RK

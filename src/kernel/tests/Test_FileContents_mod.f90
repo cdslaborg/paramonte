@@ -94,7 +94,11 @@ contains
             ! LCOV_EXCL_STOP
         end if
 
-        open(newunit = fileUnit, file = RandomFileName%path, status = "new", iostat = iostat)
+        open( file = RandomFileName%path & ! LCOV_EXCL_LINE
+            , newunit = fileUnit & ! LCOV_EXCL_LINE
+            , iostat = iostat & ! LCOV_EXCL_LINE
+            , status = "new" & ! LCOV_EXCL_LINE
+            )
         assertion = iostat == 0
         if (.not. assertion) then
             ! LCOV_EXCL_START
@@ -206,7 +210,11 @@ contains
             ! LCOV_EXCL_STOP
         end if
 
-        open(newunit = fileUnit, file = RandomFileName%path, status = "new", iostat = iostat)
+        open( file = RandomFileName%path & ! LCOV_EXCL_LINE
+            , newunit = fileUnit & ! LCOV_EXCL_LINE
+            , iostat = iostat & ! LCOV_EXCL_LINE
+            , status = "new" & ! LCOV_EXCL_LINE
+            )
         assertion = iostat == 0
         if (.not. assertion) then
             ! LCOV_EXCL_START

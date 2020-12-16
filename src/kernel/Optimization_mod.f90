@@ -148,7 +148,7 @@ contains
     !> `BrentMinimum` : An object of class [BrentMinimum_type](@ref brentminimum_type) that contains the minimum of the
     !>                  function (`xmin`) and the function value at the minimum (`fmin`) as well as other relevant information.
     function minimizeBrent(getFunc, x0, x1, x2, xtol) result(BrentMinimum)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: minimizeBrent
 #endif
         use Constants_mod, only: IK, RK
@@ -289,7 +289,9 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getBracket(ax,bx,cx,fa,fb,fc,getFunc)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getBracket
+#endif
         use Constants_mod, only: IK, RK, TINY_RK
         use Misc_mod, only : swap
         implicit none
@@ -369,7 +371,9 @@ contains
 
     !> The constructor of the class [PowellMinimum_type](@ref powellminimum_type).
     function minimizePowell(ndim, getFuncMD, StartVec, DirMat, ftol) result(PowellMinimum)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: minimizePowell
+#endif
         use Constants_mod, only: IK, RK, TINY_RK ! tiny = 1.0e-25_RK
         implicit none
 
@@ -461,6 +465,9 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine linmin(getFuncMD, ndim, StartVec, DirVec, fmin, Err)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: linmin
+#endif
         use Constants_mod, only: IK, RK
         use Err_mod, only: Err_type
         implicit none
@@ -514,6 +521,9 @@ contains
         !> \brief
         !> Bypass the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
         function getFunc1D(x) result(funcVal)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getFunc1D
+#endif
             implicit none
             real(RK), intent(in)    :: x
             real(RK)                :: funcVal

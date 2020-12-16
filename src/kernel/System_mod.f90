@@ -203,7 +203,7 @@ contains
     !> \warning
     !> Note that `pid` is used only when the input `path` is missing.
     function constructSystemInfo(OS, path, pid) result(SystemInfo)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSystemInfo
 #endif
         use FileContents_mod, only: getFileContents
@@ -279,10 +279,9 @@ contains
     !> \param[in]   shellQueryEnabled   :   A logical variable indicating if the type and name of the current
     !>                                      runtime shell should be queried or not (**optional**, default = `.true.`).
     subroutine queryOS(OS, shellQueryEnabled)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: queryOS
 #endif
-
         use String_mod, only: num2str, getLowerCase
         use Constants_mod, only: IK, RK
         use Err_mod, only: Err_type
@@ -427,7 +426,14 @@ contains
                     end if
                     ! LCOV_EXCL_STOP
 
-                    open(newunit=fileUnit,file=RFN%path,status="old",iostat=OS%Err%stat)
+                    open( newunit = fileUnit & ! LCOV_EXCL_LINE
+                        , file = RFN%path & ! LCOV_EXCL_LINE
+                        , status = "old" & ! LCOV_EXCL_LINE
+                        , iostat = OS%Err%stat & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                        , SHARED &
+#endif
+                        )
                     if (OS%Err%stat>0) then
                     ! LCOV_EXCL_START
                         OS%Err%occurred = .true.
@@ -516,7 +522,9 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine queryRuntimeShell(Shell)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: queryRuntimeShell
+#endif
         use FileContents_mod, only: FileContents_type
 
         implicit none
@@ -647,7 +655,7 @@ contains
     !> \return
     !> `RFN` : An object of class [RandomFileName_type](@ref randomfilename_type) containing the attributes of the random file name.
     function getRandomFileName(dir,key,ext) result(RFN)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandomFileName
 #endif
         use Constants_mod, only: IK, RK
@@ -729,7 +737,7 @@ contains
     !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
     !!                          indicating whether any error has occurred during information collection.
     subroutine getEnvVar(name,value,length,Err)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEnvVar
 #endif
         use Constants_mod, only: IK, MAX_REC_LEN
@@ -784,7 +792,7 @@ contains
     !> \return
     !> `SysCmd` : An object of class [SysCmd_type](@ref syscmd_type) containing the attributes and the statistics of the system command execution.
     function constructSysCmd(cmd,wait) result(SysCmd)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSysCmd
 #endif
         implicit none
@@ -810,7 +818,7 @@ contains
     !> \param[inout] SysCmd : An object of class [SysCmd_type](@ref syscmd_type) containing the attributes and
     !!                        the statistics of the system command execution.
     subroutine runSysCmd(SysCmd)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: runSysCmd
 #endif
         use Constants_mod, only: MAX_REC_LEN
@@ -866,7 +874,7 @@ contains
     !> This is the procedural implementation of the object-oriented [runSysCmd](@ref runsyscmd) method,
     !! kept here only for legacy usage.
     subroutine executeCmd(command,wait,exitstat,Err)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: executeCmd
 #endif
         use Constants_mod, only: MAX_REC_LEN
@@ -942,7 +950,7 @@ contains
     !> \remark
     !> This is a method of the class [CmdArg_type](@ref cmdarg_type).
     subroutine queryCmdArg(CmdArg)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: queryCmdArg
 #endif
         use String_mod, only: num2str
@@ -1016,7 +1024,7 @@ contains
     !> \todo
     !> This code can be improved. See the extensive note in the body of the procedure.
     subroutine getSystemInfo(List,Err,OS,count,cacheFile)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSystemInfo
 #endif
         use Err_mod, only: Err_type
@@ -1154,7 +1162,14 @@ contains
 
         ! open the file to count the number of lines in it.
 
-        open(newunit=fileUnit,file=RFN%path,status="old",iostat=Err%stat)
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , file = RFN%path & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+            , iostat = Err%stat & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED &
+#endif
+            )
         if (Err%stat>0) then
         ! LCOV_EXCL_START
             Err%occurred = .true.
@@ -1210,7 +1225,14 @@ contains
 
         ! reopen the file, this time to read the contents.
 
-        open(newunit=fileUnit,file=RFN%path,status="old",iostat=Err%stat)
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , file = RFN%path & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+            , iostat = Err%stat & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED &
+#endif
+            )
         if (Err%stat>0) then
         ! LCOV_EXCL_START
             Err%occurred = .true.
@@ -1246,7 +1268,14 @@ contains
 
         ! delete the stderr file
 
-        open(newunit=fileUnit,file=stdErr,status="replace",iostat=Err%stat)
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , status = "replace" & ! LCOV_EXCL_LINE
+            , iostat = Err%stat & ! LCOV_EXCL_LINE
+            , file = stdErr & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED &
+#endif
+            )
         close(fileUnit, status="delete", iostat = Err%stat) ! parallel processes cannot delete the same file
         !if (Err%stat/=0) then
         !! LCOV_EXCL_START
@@ -1269,7 +1298,7 @@ contains
     !> \param[out]  Err     :   An object of class [Err_type](@ref err_mod::err_type)
     !!                          indicating whether any error has occurred before, during, or after the sleep.
     subroutine sleep(seconds,Err)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: sleep
 #endif
 
@@ -1326,7 +1355,7 @@ contains
     !> \todo
     !> This code can be improved. See the extensive note in the body of the procedure.
     subroutine copyFile(pathOld,pathNew,isUnixShell,Err)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: copyFile
 #endif
 
@@ -1450,7 +1479,7 @@ contains
     !> \remark
     !> Provide the output optional argument `Err`, to properly handle errors and exceptions.
     subroutine removeFile(path,Err)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: removeFile
 #endif
 
@@ -1503,7 +1532,14 @@ contains
 
                 if (isPresentErr) then
                     Err%occurred = .false.
-                    open(newunit = fileUnit, file = path, status = "replace", iostat = Err%stat)
+                    open( newunit = fileUnit & ! LCOV_EXCL_LINE
+                        , status = "replace" & ! LCOV_EXCL_LINE
+                        , iostat = Err%stat & ! LCOV_EXCL_LINE
+                        , file = path & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                        , SHARED & ! LCOV_EXCL_LINE
+#endif
+                        )
                     if (Err%stat/=0) then
                     ! LCOV_EXCL_START
                         Err%occurred = .true.
@@ -1512,7 +1548,13 @@ contains
                     end if
                     ! LCOV_EXCL_STOP
                 else
-                    open(newunit = fileUnit, file = path, status = "replace")
+                    open( newunit = fileUnit & ! LCOV_EXCL_LINE
+                        , status = "replace" & ! LCOV_EXCL_LINE
+                        , file = path & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+                        , SHARED & ! LCOV_EXCL_LINE
+#endif
+                        )
                 end if
 
             end if

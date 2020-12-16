@@ -169,8 +169,20 @@ function runSampler(self,ndim,getLogFunc,varargin)
         self.Err.abort();
     end
 
+    % xxx @todo: The MPI runtime library determination here needs improvement
+
     if self.mpiEnabled
         parallelism = "_mpi";
+        if strcmp(stype,"intel"):
+            parallelism = "_impi"
+        elif stype=="gnu":
+            import subprocess
+            output = subprocess.getoutput("mpiexec --version").lower()
+            if "openrte" in output or "open-mpi" in output or "openmpi" in output:
+                parallelism = "_openmpi"
+            elif "hydra" in output or "mpich" in output:
+                parallelism = "_mpich"
+
     else
         parallelism = "";
         if self.reportEnabled

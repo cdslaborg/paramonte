@@ -91,7 +91,7 @@ contains
     !> `RandomSeed` : An object of class [RandomSeed_type](@ref randomseed_type) containing the information and methods for
     !> setting and resetting the random seed.
     function constructRandomSeed(imageID, inputSeed, isRepeatable, isImageDistinct) result(RandomSeed)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructRandomSeed
 #endif
         implicit none
@@ -140,7 +140,7 @@ contains
     !>
     !> @param[inout]    RandomSeed  :   An object of class [RandomSeed_type](@ref randomseed_type).
     subroutine getRandomSeed(RandomSeed)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandomSeed
 #endif
         implicit none
@@ -166,7 +166,7 @@ contains
     !> \warning
     !> Upon return from this procedure, the value of `RandomSeed%Err%occurred` must be checked for the occurrence of any potential errors.
     subroutine setRandomSeed(RandomSeed,inputSeed)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRandomSeed
 #endif
         use Constants_mod, only: IK, RK, HUGE_IK

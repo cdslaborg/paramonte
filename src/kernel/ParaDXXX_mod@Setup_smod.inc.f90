@@ -144,7 +144,7 @@ contains
                                 , burninAdaptationMeasure               &
                                 , delayedRejectionScaleFactorVec        &
                                 ) !  result(self)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDXXX_type
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
 #endif

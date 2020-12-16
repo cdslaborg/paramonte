@@ -110,8 +110,8 @@ contains
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function fitGeoCyclicLogPDF(maxNumTrial, numTrial, SuccessStep, LogCount) result(PowellMinimum)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoCyclicLogPDF
 #endif
         use Optimization_mod, only: PowellMinimum_type
         use Constants_mod, only: IK, RK
@@ -195,6 +195,9 @@ contains
     !> Although `successProbFisherTransNormFac` is a vector on input, it is expected to have a length of one at all times.
     !> This is solely to fullfile the interface restrictions of [PowellMinimum_type](@ref optimization_mod::powellminimum_type).
     pure function getSumDistSq(ndim,successProbFisherTransNormFac) result(sumDistSq)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getSumDistSq
+#endif
         use Statistics_mod, only: getLogProbGeoCyclic
         use Constants_mod, only: IK, RK
         implicit none
@@ -232,7 +235,7 @@ contains
 !    !> \author
 !    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
 !    function fitGeoLogPDF_old(numTrial, SuccessStep, LogCount) result(PowellMinimum)
-!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF_old
 !#endif
 !        use Optimization_mod, only: PowellMinimum_type

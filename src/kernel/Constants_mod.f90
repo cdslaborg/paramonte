@@ -199,6 +199,9 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getPosInf_RK() result(posInf)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPosInf_RK
+#endif
         !> \brief Return IEEE positive infinity.
         !> @param[out] posInf The positive infinity.
         use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_positive_inf
@@ -210,6 +213,9 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getNegInf_RK() result(negInf)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getNegInf_RK
+#endif
         !> \brief Return IEEE negative infinity.
         !> @param[out] posInf The negative infinity.
         use, intrinsic :: ieee_arithmetic, only: ieee_value, ieee_negative_inf

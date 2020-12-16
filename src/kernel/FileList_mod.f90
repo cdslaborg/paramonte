@@ -85,7 +85,7 @@ contains
     !> \return
     !> FileList : An object of [FileList_type](@ref filelist_type) class.
     function constructFileList(searchStr,orderStr,excludeStr,OS) result(FileList)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructFileList
 #endif
         use System_mod, only: OS_type
@@ -127,7 +127,7 @@ contains
     !> \return
     !> FileList : An object of [FileList_type](@ref filelist_type) class.
     subroutine getFileList(FileList,Err,count,searchStr,orderStr,excludeStr,OS)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileList
 #endif
 
@@ -307,7 +307,13 @@ contains
 
         ! delete the stderr file
 
-        open(newunit = fileUnit, file = stdErr, status = "replace")
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , status = "replace" & ! LCOV_EXCL_LINE
+            , file = stdErr & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         close(fileUnit, status = "delete", iostat = Err%stat) ! parallel processes cannot delete the same file
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -342,7 +348,14 @@ contains
 
         ! open the list file
 
-        open(newunit=fileUnit,file=filename,status="old",iostat=Err%stat)
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , iostat = Err%stat & ! LCOV_EXCL_LINE
+            , file = filename & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         ! LCOV_EXCL_START
         if (Err%stat>0) then
             Err%occurred = .true.
@@ -395,7 +408,14 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
-        open(newunit=fileUnit,file=filename,status="old",iostat=Err%stat)
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , iostat = Err%stat & ! LCOV_EXCL_LINE
+            , file = filename & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         if (Err%stat>0) then
         ! LCOV_EXCL_START
             Err%occurred = .true.

@@ -112,7 +112,7 @@ contains
                                 , sampleRefinementCount     &
                                 , sampleRefinementMethod    &
                                 )
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRefinedChain
 #endif
 
@@ -414,7 +414,7 @@ contains
     !> RefinedWeight: 2, 0, 0, 1, 1
     !> ```
     pure function getRefinedWeight(np,Weight,skip,refinedChainSize) result(RefinedWeight)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRefinedWeight
 #endif
         use Math_mod, only: getCumSum
@@ -479,7 +479,7 @@ contains
     !> \param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,
     !>                                      then the requested sample is directly generated based on the input size.
     pure subroutine refineWeightedSample(nd,np,skip,Sample,Weight,RefinedChain,RefinedWeight,PointCount,refinedChainSize)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: refineWeightedSample
 #endif
         use Constants_mod, only: IK, RK
@@ -521,7 +521,7 @@ contains
     !> The condition `oldSampleSize >= newSampleSize` must always hold,
     !> otherwise a negative value for `skip4NewSampleSize` will be returned to indicate the occurrence of an error.
     pure function getSkip4NewSampleSize(oldSampleSize,newSampleSize) result(skip4NewSampleSize)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSkip4NewSampleSize
 #endif
         use Constants_mod, only: IK, RK
@@ -548,7 +548,7 @@ contains
     !> \param[in]   sampleFileHeaderFormat      :   The IO format of the header of the sample file.
     !> \param[in]   sampleFileContentsFormat    :   The IO format of the contents (sampled states) in the sample file.
     subroutine writeRefinedChain(RefinedChain,sampleFileUnit,sampleFileHeaderFormat,sampleFileContentsFormat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRefinedChain
 #endif
         implicit none
@@ -584,7 +584,7 @@ contains
     !> `RefinedChain` : An object of class [RefinedChain_type](@ref refinedchain_type) containing
     !>                  the sampled states read from the specified input file.
     function readRefinedChain(sampleFilePath,delimiter,ndim,tenabled) result(RefinedChain)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: readRefinedChain
 #endif
         use FileContents_mod, only: getNumRecordInFile

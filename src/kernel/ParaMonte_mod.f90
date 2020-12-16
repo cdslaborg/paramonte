@@ -288,7 +288,7 @@ contains
     !> \warning
     !> This routine has to be called by all images (processes).
     subroutine setupParaMonte(self,nd,name,inputFile)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMonte
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -415,7 +415,7 @@ contains
     !> \remark
     !> This routine has to be called by all master images (processes).
     subroutine addSplashScreen(self)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: addSplashScreen
 #endif
         implicit none
@@ -491,7 +491,7 @@ contains
     !> \remark
     !> This routine has to be called by all leader images (processes).
     subroutine addCompilerPlatformInfo(self)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: addCompilerPlatformInfo
 #endif
         use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
@@ -600,7 +600,7 @@ contains
     !> \remark
     !> This routine has to be called by all master images (processes).
     subroutine noteUserAboutEnvSetup(self)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: noteUserAboutEnvSetup
 #endif
         implicit none
@@ -622,7 +622,7 @@ contains
     !> @param[inout]    namelist    :   The name of the missing namelist.
     !> @param[inout]    outputUnit  :   The file unit to which the message must be output.
     subroutine warnUserAboutMissingNamelist(self, namelist)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutMissingNamelist
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -655,7 +655,7 @@ contains
     !>
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     subroutine warnUserAboutInputFilePresence(self)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutInputFilePresence
 #endif
         use Constants_mod, only: NLC ! LCOV_EXCL_LINE
@@ -706,7 +706,7 @@ contains
     !>
     !> @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).
     subroutine setWarnAboutProcArgHasPriority(self)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnAboutProcArgHasPriority
 #endif
         implicit none
@@ -738,7 +738,7 @@ contains
     !>
     !> @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).
     subroutine setupOutputFiles(self)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setupOutputFiles
 #endif
         use Decoration_mod, only: getGenericFormat, INDENT
@@ -1186,7 +1186,7 @@ contains
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     !> @param[inout]    msg     :   The message to be output.
     subroutine reportDesc(self, msg) !, marginTop, marginBot)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: reportDesc
 #endif
         use Constants_mod, only: IK, NLC

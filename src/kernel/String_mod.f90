@@ -120,7 +120,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure recursive function replaceStr(string,search,substitute) result(modifiedString)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: replaceStr
 #endif
         implicit none
@@ -179,7 +179,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Friday Dec 4, 2020, 11:40 PM, Dallas, TX
     function split(string,delim,npart) result(Parts)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: split
 #endif
         implicit none
@@ -268,7 +268,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function splitStr(string,delimiter,nPart) result(Parts)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: splitStr
 #endif
 
@@ -356,7 +356,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function isDigit(singleChar) result(stringIsDigit)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDigit
 #endif
         character(1), intent(in)    :: singleChar
@@ -388,7 +388,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function isInteger(string) result(stringIsInteger)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInteger
 #endif
         character(*), intent(in)    :: string
@@ -423,7 +423,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function getLowerCase(string) result(output)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCase
 #endif
         character(*), intent(in) :: string
@@ -454,7 +454,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function getUpperCase(string) result(output)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCase
 #endif
         character(*), intent(in) :: string
@@ -473,7 +473,7 @@ contains
 
 !    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to lower case
 !    pure function getLowerCaseOld(string)
-!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCaseOld
 !#endif
 !        implicit None
@@ -492,7 +492,7 @@ contains
 !
 !    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to upper case
 !    pure function getUpperCaseOld(string)
-!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCaseOld
 !#endif
 !        implicit None
@@ -523,7 +523,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function log2str(logicalIn)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: log2str
 #endif
         implicit none
@@ -559,7 +559,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function int322str(integerIn,formatIn,minLen)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: int322str
 #endif
         use, intrinsic :: iso_fortran_env, only: int32
@@ -604,7 +604,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function int642str(integerIn,formatIn,minLen)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: int642str
 #endif
         use, intrinsic :: iso_fortran_env, only: int64
@@ -645,7 +645,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real322str(realIn,formatIn,minLen)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: real322str
 #endif
         use, intrinsic :: iso_fortran_env, only: real32
@@ -695,7 +695,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real642str(realIn,formatIn,minLen)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: real642str
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
@@ -745,7 +745,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real642str_1D(RealIn,formatIn,minLen)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: real642str_1D
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
@@ -795,7 +795,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real642str_2D(RealIn,formatIn,minLen)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: real642str_2D
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
@@ -845,7 +845,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2int(str,iostat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2int
 #endif
         use Constants_mod, only: IK
@@ -879,7 +879,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2int32(str,iostat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2int32
 #endif
         use, intrinsic :: iso_fortran_env, only: int32
@@ -913,7 +913,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2int64(str,iostat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2int64
 #endif
         use, intrinsic :: iso_fortran_env, only: int64
@@ -947,7 +947,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2real(str,iostat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real
 #endif
         use Constants_mod, only: RK ! LCOV_EXCL_LINE
@@ -981,7 +981,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2real32(str,iostat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real32
 #endif
         use, intrinsic :: iso_fortran_env, only: real32
@@ -1015,7 +1015,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2real64(str,iostat)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real64
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
@@ -1047,6 +1047,9 @@ contains
     !> Note that `symbol` can be a string of any length. However, if the full lengths of symbols do not fit
     !> at the end of the padded output string, the symbol will be cut at the end of the output padded string.
     pure function padString(string, symbol, paddedLen) result(paddedString)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: padString
+#endif
         use Constants_mod, only: IK
         implicit none
         character(*), intent(in)            :: string

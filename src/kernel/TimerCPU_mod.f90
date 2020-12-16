@@ -98,7 +98,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function constructTimerCPU() result(TimerCPU)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructTimerCPU
 #endif
         use Constants_mod, only: RK
@@ -130,7 +130,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine setTicCPU(TimerCPU)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setTicCPU
 #endif
         implicit none
@@ -158,7 +158,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine setTocCPU(TimerCPU)
-#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setTocCPU
 #endif
         use Constants_mod, only: RK

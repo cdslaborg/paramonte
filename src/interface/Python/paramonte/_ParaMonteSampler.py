@@ -9,30 +9,30 @@
 ####
 ####   This file is part of the ParaMonte library.
 ####
-####   Permission is hereby granted, free of charge, to any person obtaining a 
-####   copy of this software and associated documentation files (the "Software"), 
-####   to deal in the Software without restriction, including without limitation 
-####   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-####   and/or sell copies of the Software, and to permit persons to whom the 
+####   Permission is hereby granted, free of charge, to any person obtaining a
+####   copy of this software and associated documentation files (the "Software"),
+####   to deal in the Software without restriction, including without limitation
+####   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+####   and/or sell copies of the Software, and to permit persons to whom the
 ####   Software is furnished to do so, subject to the following conditions:
 ####
-####   The above copyright notice and this permission notice shall be 
+####   The above copyright notice and this permission notice shall be
 ####   included in all copies or substantial portions of the Software.
 ####
-####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+####   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+####   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+####   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+####   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+####   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+####   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 ####   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ####
 ####   ACKNOWLEDGMENT
 ####
 ####   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-####   As per the ParaMonte library license agreement terms, if you use any parts of 
-####   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-####   work (education/research/industry/development/...) by citing the ParaMonte 
+####   As per the ParaMonte library license agreement terms, if you use any parts of
+####   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+####   work (education/research/industry/development/...) by citing the ParaMonte
 ####   library as described on this page:
 ####
 ####       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -72,7 +72,7 @@ class ParaMonteSampler:
 
             methodName
 
-                A string representing the name of the ParaMonte sampler 
+                A string representing the name of the ParaMonte sampler
                 that is to be instantiated.
 
         **Attributes**
@@ -118,8 +118,8 @@ class ParaMonteSampler:
 
                 **WARNING**
 
-                Specifying an input file will cause the sampler to ignore 
-                all other simulation specifications set by the user via 
+                Specifying an input file will cause the sampler to ignore
+                all other simulation specifications set by the user via
                 sampler instance's `spec`-component attributes.
 
             spec
@@ -133,7 +133,7 @@ class ParaMonteSampler:
                 If you need help on any of the simulation specifications, try
                 the supplied ``helpme()`` function in this component.
 
-                If you wish to reset some specifications to the default values, 
+                If you wish to reset some specifications to the default values,
                 simply set them to ``None``.
 
         **Methods**
@@ -368,7 +368,7 @@ class ParaMonteSampler:
 
         buildMode = "release" if self.buildMode is None else self.buildMode
 
-        stype = None
+        cstype = None
         dummyList = None
         errorOccurred = True
         if isinstance(buildMode,str):
@@ -376,10 +376,10 @@ class ParaMonteSampler:
             if "-" in buildMode:
                 dummyList = buildMode.split("-")
                 buildMode = dummyList[0] # build type
-                stype = dummyList[1] # compiler suite
+                cstype = dummyList[1] # compiler suite
 
         if not errorOccurred: errorOccurred = buildMode not in ["release", "testing", "debug"]
-        if not errorOccurred and stype is not None: errorOccurred = not (stype=="gnu" or stype=="intel")
+        if not errorOccurred and cstype is not None: errorOccurred = not (cstype=="gnu" or cstype=="intel")
         if errorOccurred:
             if dummyList is not None: buildMode = "-".join(dummyList)
             pm.abort( msg   = "The object attribute ``buildMode`` must be of type ``str``." + newline
@@ -421,8 +421,19 @@ class ParaMonteSampler:
 
         inputFileVec_pntr, inputFileLen = self._getInputFile(inputFile)
 
+        # xxx @todo: The MPI runtime library determination here needs improvement
+
         if self.mpiEnabled:
             parallelism = "_mpi"
+            if cstype=="intel":
+                parallelism = "_impi"
+            elif cstype=="gnu":
+                import subprocess
+                output = subprocess.getoutput("mpiexec --version").lower()
+                if "openrte" in output or "open-mpi" in output or "openmpi" in output:
+                    parallelism = "_openmpi"
+                elif "hydra" in output or "mpich" in output:
+                    parallelism = "_mpich"
         else:
             parallelism = ""
             pm.note( msg   = "Running the " + self._methodName + " sampler in serial mode..." + newline
@@ -536,9 +547,9 @@ class ParaMonteSampler:
         buildModeList.pop(buildModeList.index(buildMode))
         buildModeList.insert(0,buildMode)
         pmcsList = ["intel","gnu"]
-        if stype is not None:
-            pmcsList.pop(pmcsList.index(stype))
-            pmcsList.insert(0,stype)
+        if cstype is not None:
+            pmcsList.pop(pmcsList.index(cstype))
+            pmcsList.insert(0,cstype)
 
         libNameSuffix = parallelism +   { "windows" : ".dll"
                                         , "cygwin"  : ".dll"
@@ -947,17 +958,17 @@ class ParaMonteSampler:
 
                     The path only needs to uniquely identify the simulation
                     to which the tabular file belongs. For example, specifying
-                    ``"./mydir/mysim"`` as input will lead to a search for a 
-                    file that begins with ``"mysim"`` and ends with the tabular file 
-                    name's prefix, such as, ``"_sample.txt"``, inside the directory 
-                    ``"./mydir/"``. If there are multiple files with such name, 
+                    ``"./mydir/mysim"`` as input will lead to a search for a
+                    file that begins with ``"mysim"`` and ends with the tabular file
+                    name's prefix, such as, ``"_sample.txt"``, inside the directory
+                    ``"./mydir/"``. If there are multiple files with such name,
                     then all of them will be read and returned as a list.
 
                     The path can be also a world wide web address.
 
                     If this input argument is not provided by the user, the
-                    value of the object attribute ``outputFileName`` will be 
-                    used instead. At least one of the two mentioned routes 
+                    value of the object attribute ``outputFileName`` will be
+                    used instead. At least one of the two mentioned routes
                     must provide the path to the tabular file otherwise,
                     this method will break by calling ``sys.exit()``.
 
@@ -983,19 +994,19 @@ class ParaMonteSampler:
 
                 renabled
 
-                    If set to ``False``, the contents of the file(s) will be 
+                    If set to ``False``, the contents of the file(s) will be
                     stored as a list in a (new) component of the object with a
-                    name that ends with the prefix ``List``. Otherwise, ``None`` 
-                    will be the return value of the method. If set to ``True``, 
+                    name that ends with the prefix ``List``. Otherwise, ``None``
+                    will be the return value of the method. If set to ``True``,
                     the reverse will done. The default value is ``False``.
 
             **Returns**
 
                 List
 
-                    A Python list of ``TabularFileContents`` objects, each 
-                    of which corresponds to the contents of a unique restart 
-                    file. The contents of each object is dependent on the 
+                    A Python list of ``TabularFileContents`` objects, each
+                    of which corresponds to the contents of a unique restart
+                    file. The contents of each object is dependent on the
                     type of the file that has been parsed.
 
         """
@@ -1137,7 +1148,7 @@ class ParaMonteSampler:
 
                     The path only needs to uniquely identify the simulation
                     to which the output file belongs. For example, specifying
-                    ``"./mydir/mysim"`` as input will lead to a search for a 
+                    ``"./mydir/mysim"`` as input will lead to a search for a
                     file that begins with ``"mysim"`` and ends with ``"_sample.txt"``
                     inside the directory ``"./mydir/"``. If there are multiple
                     files with such name, then all of them will be read
@@ -1155,10 +1166,10 @@ class ParaMonteSampler:
 
                     Optional input string representing the delimiter used in the
                     output output file. If it is not provided as input argument,
-                    the value of the corresponding output object's attribute 
-                    ``outputDelimiter`` will be used instead. If none of the two 
-                    are available, the default comma delimiter ``","`` will be 
-                    assumed and used. 
+                    the value of the corresponding output object's attribute
+                    ``outputDelimiter`` will be used instead. If none of the two
+                    are available, the default comma delimiter ``","`` will be
+                    assumed and used.
 
                 parseContents (optional)
 
@@ -1168,9 +1179,9 @@ class ParaMonteSampler:
 
                 renabled (optional)
 
-                    If set to ``False``, the contents of the file(s) will be 
-                    stored as a list in a (new) component of the ParaDRAM object 
-                    named ``sampleList`` and ``None`` will be the return value 
+                    If set to ``False``, the contents of the file(s) will be
+                    stored as a list in a (new) component of the ParaDRAM object
+                    named ``sampleList`` and ``None`` will be the return value
                     of the method. If set to ``True``, the reverse will done.
                     The default value is ``False``.
 
@@ -1178,8 +1189,8 @@ class ParaMonteSampler:
 
                 sampleList (optional)
 
-                    A Python list of ``TabularFileContents`` objects, each 
-                    of which corresponds to the contents of a unique restart 
+                    A Python list of ``TabularFileContents`` objects, each
+                    of which corresponds to the contents of a unique restart
                     file. Each object has the following components:
 
                         file
@@ -1192,7 +1203,7 @@ class ParaMonteSampler:
 
                         ndim
 
-                            The number of dimensions of the domain of the objective 
+                            The number of dimensions of the domain of the objective
                             function from which the output has been drawn.
 
                         count
@@ -1201,7 +1212,7 @@ class ParaMonteSampler:
 
                         plot
 
-                            A structure containing the graphics tools for the 
+                            A structure containing the graphics tools for the
                             visualization of the contents of the file.
 
                         df
@@ -1214,7 +1225,7 @@ class ParaMonteSampler:
                             corresponding to each column in the progress file, a property
                             with the same name as the column header is also created
                             for the object which contains the data stored in that column
-                            of the progress file. These properties are all stored in the 
+                            of the progress file. These properties are all stored in the
                             attribute ``contents``.
 
                 If ``renabled = True``, the list of objects will be returned as the
@@ -1276,10 +1287,10 @@ class ParaMonteSampler:
 
                     Optional input string representing the delimiter used in the
                     output output file. If it is not provided as input argument,
-                    the value of the corresponding output object's attribute 
-                    ``outputDelimiter`` will be used instead. If none of the two 
-                    are available, the default comma delimiter ``","`` will be 
-                    assumed and used. 
+                    the value of the corresponding output object's attribute
+                    ``outputDelimiter`` will be used instead. If none of the two
+                    are available, the default comma delimiter ``","`` will be
+                    assumed and used.
 
                 parseContents (optional)
 
@@ -1289,9 +1300,9 @@ class ParaMonteSampler:
 
                 renabled (optional)
 
-                    If set to ``False``, the contents of the file(s) will be 
-                    stored as a list in a (new) component of the ParaDRAM object 
-                    named ``chainList`` and ``None`` will be the return value 
+                    If set to ``False``, the contents of the file(s) will be
+                    stored as a list in a (new) component of the ParaDRAM object
+                    named ``chainList`` and ``None`` will be the return value
                     of the method. If set to ``True``, the reverse will done.
                     The default value is ``False``.
 
@@ -1299,8 +1310,8 @@ class ParaMonteSampler:
 
                 chainList (optional)
 
-                    A Python list of ``TabularFileContents`` objects, each 
-                    of which corresponds to the contents of a unique restart 
+                    A Python list of ``TabularFileContents`` objects, each
+                    of which corresponds to the contents of a unique restart
                     file. Each object has the following components:
 
                         file
@@ -1313,7 +1324,7 @@ class ParaMonteSampler:
 
                         ndim
 
-                            The number of dimensions of the domain of the objective 
+                            The number of dimensions of the domain of the objective
                             function from which the output has been drawn.
 
                         count
@@ -1322,7 +1333,7 @@ class ParaMonteSampler:
 
                         plot
 
-                            A structure containing the graphics tools for the 
+                            A structure containing the graphics tools for the
                             visualization of the contents of the file.
 
                         df
@@ -1335,7 +1346,7 @@ class ParaMonteSampler:
                             corresponding to each column in the progress file, a property
                             with the same name as the column header is also created
                             for the object which contains the data stored in that column
-                            of the progress file. These properties are all stored in the 
+                            of the progress file. These properties are all stored in the
                             attribute ``contents``.
 
                 If ``renabled = True``, the list of objects will be returned as the
@@ -1433,7 +1444,7 @@ class ParaMonteSampler:
 
                     plot
 
-                        A structure containing the graphics tools for the 
+                        A structure containing the graphics tools for the
                         visualization of the contents of the file.
 
                     df
@@ -1446,7 +1457,7 @@ class ParaMonteSampler:
                         corresponding to each column in the progress file, a property
                         with the same name as the column header is also created
                         for the object which contains the data stored in that column
-                        of the progress file. These properties are all stored in the 
+                        of the progress file. These properties are all stored in the
                         attribute ``contents``.
 
                 If ``renabled = True``, the list of objects will be returned as the
@@ -1472,38 +1483,38 @@ class ParaMonteSampler:
                     ) -> tp.List[RestartFileContents] :
         """
 
-        Return a list of the contents of a set of the simulation(s) 
-        output restart files whose names begin the user-provided input 
-        file prefix, or as specified by the input simulation specification 
-        ``SAMPLER.spec.outputFileName``, where SAMPLER can be an instance 
+        Return a list of the contents of a set of the simulation(s)
+        output restart files whose names begin the user-provided input
+        file prefix, or as specified by the input simulation specification
+        ``SAMPLER.spec.outputFileName``, where SAMPLER can be an instance
         of any one of the ParaMonte's sampler classes, such as ``ParaDRAM()``.
 
             **NOTE**
 
-            Only restart output files in **ASCII format** can be read 
-            via this method. The binary restart files are NOT meant to 
-            be parsed via this method. To request for ASCII restart 
-            output files in simulations, set the input simulation 
+            Only restart output files in **ASCII format** can be read
+            via this method. The binary restart files are NOT meant to
+            be parsed via this method. To request for ASCII restart
+            output files in simulations, set the input simulation
             specification
 
             .. code-block:: python
 
                 SAMPLER.spec.restartFileFormat = "ascii",
 
-            where ``SAMPLER`` can be an instance of any one of the 
+            where ``SAMPLER`` can be an instance of any one of the
             ParaMonte's sampler classes, such as ``ParaDRAM()``.
 
             **WARNING**
-            
+
             Avoid using this routine for very large long simulations.
-            Reading the full restart file of a large-scale simulation 
+            Reading the full restart file of a large-scale simulation
             problem can be extremely memory-intensive.
 
             **WARNING**
 
-            This method is to be only used for post-processing of the 
-            output restart file(s) of an already finished simulation. 
-            It is NOT meant to be called by all processes in parallel 
+            This method is to be only used for post-processing of the
+            output restart file(s) of an already finished simulation.
+            It is NOT meant to be called by all processes in parallel
             mode, although it is possible.
 
             **Parameters**
@@ -1513,7 +1524,7 @@ class ParaMonteSampler:
                     A string representing the path to the restart file with the
                     default value of []. The path only needs to uniquely identify
                     the name of the simulation to which the restart file belongs.
-                    For example, specifying ``"./mydir/mysim"`` as input will lead 
+                    For example, specifying ``"./mydir/mysim"`` as input will lead
                     to a search for a file that begins with ``"mysim"`` and ends with
                     ``"_restart.txt"`` inside the directory ``"./mydir/"``.
                     If there are multiple files with such name, then all of them
@@ -1546,9 +1557,9 @@ class ParaMonteSampler:
 
                 renabled (optional)
 
-                    If set to ``False``, the contents of the file(s) will be 
-                    stored as a list in a (new) component of the sampler object 
-                    named ``restartList`` and ``None`` will be the return value 
+                    If set to ``False``, the contents of the file(s) will be
+                    stored as a list in a (new) component of the sampler object
+                    named ``restartList`` and ``None`` will be the return value
                     of the method. If set to ``True``, the reverse will done.
                     The default value is ``False``.
 
@@ -1556,8 +1567,8 @@ class ParaMonteSampler:
 
                 restartList (optional)
 
-                    A Python list of ``RestartFileContents`` objects, each 
-                    of which corresponds to the contents of a unique restart 
+                    A Python list of ``RestartFileContents`` objects, each
+                    of which corresponds to the contents of a unique restart
                     file. Each object has the following components:
 
                         file
@@ -1566,7 +1577,7 @@ class ParaMonteSampler:
 
                         ndim
 
-                            The number of dimensions of the domain of the objective 
+                            The number of dimensions of the domain of the objective
                             function for which the restart file was generated.
 
                         count
@@ -1575,7 +1586,7 @@ class ParaMonteSampler:
 
                         plot
 
-                            A structure containing the graphics tools for the 
+                            A structure containing the graphics tools for the
                             visualization of the contents of the file.
 
                         df
@@ -1585,7 +1596,7 @@ class ParaMonteSampler:
 
                         contents
 
-                            A structure whose components contain the information 
+                            A structure whose components contain the information
                             retrieved about each of the entities in the file.
 
                         propNameList
@@ -1681,10 +1692,10 @@ class ParaMonteSampler:
         """
 
         Return a list of the contents of a set of the simulation(s) output
-        report files whose names begin the user-provided input file prefix, 
-        or as specified by the input simulation specification 
-        ``SAMPLER.spec.outputFileName``, where SAMPLER can be 
-        an instance of any one of the ParaMonte's sampler 
+        report files whose names begin the user-provided input file prefix,
+        or as specified by the input simulation specification
+        ``SAMPLER.spec.outputFileName``, where SAMPLER can be
+        an instance of any one of the ParaMonte's sampler
         classes, such as ``ParaDRAM()``.
 
         **NOTE**
@@ -1734,10 +1745,10 @@ class ParaMonteSampler:
 
                 renabled (optional)
 
-                    If set to ``False``, the contents of the file(s) will be 
+                    If set to ``False``, the contents of the file(s) will be
                     stored as a list in a (new) component of the object with a
-                    name that ends with the prefix ``List``. Otherwise, ``None`` 
-                    will be the return value of the method. If set to ``True``, 
+                    name that ends with the prefix ``List``. Otherwise, ``None``
+                    will be the return value of the method. If set to ``True``,
                     the reverse will done. The default value is ``False``.
 
             **Returns**
@@ -1848,8 +1859,8 @@ class ParaMonteSampler:
 
                 topic
 
-                    A string value that is the name of a component of the current 
-                    sample object for which help is needed. For example:  
+                    A string value that is the name of a component of the current
+                    sample object for which help is needed. For example:
 
                     Example usage:
 
