@@ -1892,7 +1892,7 @@ fi
 #     echo "fi"
 # } > ${SETUP_FILE_PATH}
 
-if [ "${PMCS}" = "gnu" ] && ! [ "${isMacOS}" = "true" ]; then
+if [ "${PMCS}" = "gnu" ] && ( [[ "${Fortran_COMPILER_PATH}" =~ .*"build/prerequisites/prerequisites/installations".* ]] || [[ "${MPIEXEC_PATH}" =~ .*"build/prerequisites/prerequisites/installations".* ]] ) && ! [ "${isMacOS}" = "true" ]; then
 
     SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
     export SETUP_FILE_PATH
