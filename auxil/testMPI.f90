@@ -47,12 +47,16 @@ program testMPI
 
     integer(IK) :: ierrMPI, imageID, imageCount
     logical     :: isInitialized
-
-
+    logical     :: isFinalized
 
     call mpi_initialized( isInitialized, ierrMPI )
     if (.not. isInitialized) call mpi_init(ierrMPI)
     call mpi_comm_rank(mpi_comm_world, imageID, ierrMPI)
     call mpi_comm_size(mpi_comm_world, imageCount, ierrMPI)
+    call mpi_finalized( isFinalized, ierrMPI )
+    if (.not. isFinalized) then
+        call mpi_barrier(mpi_comm_world,ierrMPI)
+        call mpi_finalize(ierrMPI)
+    end if
 
 end program testMPI
