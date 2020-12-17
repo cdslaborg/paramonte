@@ -47,6 +47,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 +   **Linux**: GNU 10.1.0 / MPICH 3.2  
 +   **macOS**: Intel Parallel Studio Version 19.1.0.216 20200306  
 +   **macOS**: GNU 10.2.0 / Open-MPI 4.0.5  
++   **macOS**: GNU 10.2.0 / MPICH 3.3.2  
 
 ### **Version 1.4.1** -- November 15, 2020
 
