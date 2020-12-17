@@ -227,7 +227,7 @@ module ParaMonte_mod
         type(OS_type)                   :: OS                       !< An object of class [OS_type](@ref system_mod::os_type) containing information about the Operating System.
         type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
                                                                     !< about error occurrence and message during the simulation setup and runtime.
-        type(Image_type)                :: Image                    !< An object of type [Image_type](@ref image_type) containing information about
+        type(Image_type)                :: Image                    !< An object of type [Image_type](@ref parallelism_mod::image_type) containing information about
                                                                     !< the processor count and types in the simulation.
         type(SpecBase_type)             :: SpecBase                 !< An object of class [SpecBase_type](@ref specbase_mod::specbase_type) containing information
                                                                     !< about the basic simulation specification properties.
@@ -617,10 +617,8 @@ contains
     !> \brief
     !> If the relevant method name is missing in the namelist input file, then warn the user about this issue.
     !>
-    !> @param[inout]    prefix      :   The prefix of the warning message.
-    !> @param[inout]    name        :   The sampler method name.
+    !> @param[in]       self        :   An object of class [ParaMonte_type](@ref paramonte_type).
     !> @param[inout]    namelist    :   The name of the missing namelist.
-    !> @param[inout]    outputUnit  :   The file unit to which the message must be output.
     subroutine warnUserAboutMissingNamelist(self, namelist)
 #if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutMissingNamelist
@@ -630,9 +628,9 @@ contains
         use Constants_mod, only: IK
         use Err_mod, only: warn
         implicit none
-        class(ParaMonte_type), intent(inout)    :: self
-        character(*), intent(in)                :: namelist
-        character(:), allocatable               :: msg
+        class(ParaMonte_type), intent(in)   :: self
+        character(*), intent(in)            :: namelist
+        character(:), allocatable           :: msg
         if (self%Image%isFirst .or. self%Image%isLeader) then
             msg = "No namelist group of variables named "//namelist//" was detected in user's input file for "//self%name//" options."//NLC//&
                   "All " // self%name // " options will be assigned appropriate default values."

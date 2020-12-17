@@ -811,7 +811,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getLowerGamma](@ref matho_mod::getlowergamma) with a small `tolerance` input optional argument.
+    !> Test [getLowerGamma](@ref math_mod::getlowergamma) with a small `tolerance` input optional argument.
     function test_getLowerGamma_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
@@ -846,7 +846,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getLowerGamma](@ref matho_mod::getlowergamma) with a medium `tolerance` input optional argument.
+    !> Test [getLowerGamma](@ref math_mod::getlowergamma) with a medium `tolerance` input optional argument.
     function test_getLowerGamma_2() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
@@ -881,7 +881,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getLowerGamma](@ref matho_mod::getlowergamma) with a large `tolerance` input optional argument.
+    !> Test [getLowerGamma](@ref math_mod::getlowergamma) with a large `tolerance` input optional argument.
     function test_getLowerGamma_3() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
@@ -916,7 +916,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getLowerGamma](@ref matho_mod::getlowergamma) without the `tolerance` input optional argument, 
+    !> Test [getLowerGamma](@ref math_mod::getlowergamma) without the `tolerance` input optional argument, 
     !> in which case, the procedure should default to `epsilon` for the value of tolerance.
     function test_getLowerGamma_4() result(assertion)
         use Constants_mod, only: RK, IK
@@ -951,7 +951,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getLowerGamma](@ref matho_mod::getlowergamma) with a wrong positive value for the input argument `upperLim`.
+    !> Test [getLowerGamma](@ref math_mod::getlowergamma) with a wrong positive value for the input argument `upperLim`.
     function test_getLowerGamma_5() result(assertion)
         use Constants_mod, only: RK, IK, HUGE_RK
         implicit none
@@ -978,7 +978,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getUpperGamma](@ref matho_mod::getuppergamma) with a small `tolerance` input optional argument.
+    !> Test [getUpperGamma](@ref math_mod::getuppergamma) with a small `tolerance` input optional argument.
     function test_getUpperGamma_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
@@ -1013,7 +1013,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getUpperGamma](@ref matho_mod::getuppergamma) with a medium `tolerance` input optional argument.
+    !> Test [getUpperGamma](@ref math_mod::getuppergamma) with a medium `tolerance` input optional argument.
     function test_getUpperGamma_2() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
@@ -1048,7 +1048,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getUpperGamma](@ref matho_mod::getuppergamma) with a coarse `tolerance` input optional argument.
+    !> Test [getUpperGamma](@ref math_mod::getuppergamma) with a coarse `tolerance` input optional argument.
     function test_getUpperGamma_3() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
@@ -1083,7 +1083,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getUpperGamma](@ref matho_mod::getuppergamma) without the `tolerance` input optional argument, in which case
+    !> Test [getUpperGamma](@ref math_mod::getuppergamma) without the `tolerance` input optional argument, in which case
     !> the procedure should default to `epsilon` for the value of tolerance.
     function test_getUpperGamma_4() result(assertion)
         use Constants_mod, only: RK, IK
@@ -1118,7 +1118,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getUpperGamma](@ref matho_mod::getuppergamma) with a wrong positive value for the input argument `lowerLim`.
+    !> Test [getUpperGamma](@ref math_mod::getuppergamma) with a wrong positive value for the input argument `lowerLim`.
     function test_getUpperGamma_5() result(assertion)
         use Constants_mod, only: RK, IK, HUGE_RK
         implicit none
@@ -1147,7 +1147,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getGammaSeries](@ref matho_mod::getgammaseries) with a zero value for the input argument `upperLim`.
+    !> Test [getGammaSeries](@ref math_mod::getgammaseries) with a zero value for the input argument `upperLim`.
     function test_getGammaSeries_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
@@ -1179,7 +1179,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test [getGammaContFrac](@ref matho_mod::getgammacontfrac) with a zero value for the input argument `lowerLim`.
+    !> Test [getGammaContFrac](@ref math_mod::getgammacontfrac) with a zero value for the input argument `lowerLim`.
     function test_getGammaContFrac_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
@@ -1211,7 +1211,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test the accuracy of [getLogGammaHalfInt](@ref matho_mod::getloggammahalfint).
+    !> Test the accuracy of [getLogGammaHalfInt](@ref math_mod::getloggammahalfint).
     function test_getGammaHalfInt_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none
@@ -1239,7 +1239,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief 
-    !> Test the accuracy of [getLogGammaHalfInt](@ref matho_mod::getloggammahalfint).
+    !> Test the accuracy of [getLogGammaHalfInt](@ref math_mod::getloggammahalfint).
     function test_getLogGammaHalfInt_1() result(assertion)
         use Constants_mod, only: RK, IK
         implicit none

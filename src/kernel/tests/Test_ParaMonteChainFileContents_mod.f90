@@ -40,7 +40,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [ParaMonteChainFileContents_mod](@ref ParaMonteChainFileContents_mod).
+!>  \brief This module contains tests of the module [ParaMonteChainFileContents_mod](@ref paramontechainfilecontents_mod).
 !>  \author Amir Shahmoradi
 
 module Test_ParaMonteChainFileContents_mod

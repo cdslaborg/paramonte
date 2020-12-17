@@ -416,7 +416,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> The [getFileList](@ref FileList_mod::getfilelist) procedure must be able to automatically set the missing optional arguments.
+    !> The [getFileList](@ref filelist_mod::getfilelist) procedure must be able to automatically set the missing optional arguments.
     function test_getFileList_1() result(assertion)
         use Constants_mod, only: IK
         use String_mod, only: num2str

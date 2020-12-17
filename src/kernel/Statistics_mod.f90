@@ -2969,13 +2969,13 @@ contains
     !> \brief
     !> Return the non-standard normal distribution PDF value.
     !>
-    !> \param[in]   mean        :   The mean of the Normal distribution.
-    !> \param[in]   stdev       :   The standard deviation of the Normal distribution.
-    !> \param[in]   variance    :   The variance of the Normal distribution.
-    !> \param[in]   x           :   The point at which the PDF will be computed.
+    !> \param[in]   avg :   The mean of the Normal distribution.
+    !> \param[in]   std :   The standard deviation of the Normal distribution.
+    !> \param[in]   var :   The variance of the Normal distribution.
+    !> \param[in]   x   :   The point at which the PDF will be computed.
     !>
     !> \return
-    !> `normPDF`   :   The normal distribution PDF value at the given input point.
+    !> `normPDF`        :   The normal distribution PDF value at the given input point.
     !>
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
@@ -2995,12 +2995,12 @@ contains
     !> \brief
     !> Return the non-standard normal distribution Cumulative Probability Density function (CDF) value.
     !>
-    !> \param[in]   mean        :   The mean of the Normal distribution.
-    !> \param[in]   stdev       :   The standard deviation of the Normal distribution.
-    !> \param[in]   x           :   The point at which the PDF will be computed.
+    !> \param[in]   avg :   The mean of the Normal distribution.
+    !> \param[in]   std :   The standard deviation of the Normal distribution.
+    !> \param[in]   x   :   The point at which the PDF will be computed.
     !>
     !> \return
-    !> `normCDF`   :   The normal distribution CDF value at the given input point.
+    !> `normCDF`        :   The normal distribution CDF value at the given input point.
     !>
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
@@ -3626,6 +3626,7 @@ contains
     !> \param[out]      Xbin            :   The vector of length `nxbin` of values representing the bin centers.
     !> \param[out]      Ybin            :   The vector of length `nybin` of values representing the bin centers.
     !> \param[out]      Density         :   The array of shape `(nybin,nxbin)` of values representing the densities per bin.
+    !> \param[out]      errorOccurred   :   A logical output value indicating whether an error has occurred.
     !>
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin

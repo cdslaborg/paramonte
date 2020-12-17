@@ -40,7 +40,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!>  \brief This module contains tests of the module [ParaMCMCRefinedChain_mod](@ref ParaMCMCRefinedChain_mod).
+!>  \brief This module contains tests of the module [ParaMCMCRefinedChain_mod](@ref paramcmcrefinedchain_mod).
 !>  \author Amir Shahmoradi
 
 module Test_ParaMCMCRefinedChain_mod

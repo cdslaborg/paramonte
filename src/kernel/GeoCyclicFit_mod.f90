@@ -103,9 +103,13 @@ contains
     !> The current implementation of the objective function relies on the definitions of module variables.
     !> Although inefficient and ugly, this was necessary to resolve the viscous Segmentation Fault error
     !> that happens with internal function calls on Windows Subsystem for Linux Ubuntu with GFortran.
-    !> Once this error of unknown origin is resolved, the function [getSumDistSq](@ref getsumdistsq)
+    !> Once this error of unknown origin is resolved, the external module function `getSumDistSq()`
     !> must be converted back to an internal function within [fitGeoCyclicLogPDF](@ref fitgeocycliclogpdf)
     !> and subsequently, all module variables must be removed.
+    !> update (Dec 16, 2020):  
+    !> The source of the error was identified to be a bug in WSL1. 
+    !> This problem is now resolved in WSL2. However, the code will 
+    !> be kept intact for future compatibility with WSL1 and those who still use it.
     !>
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
