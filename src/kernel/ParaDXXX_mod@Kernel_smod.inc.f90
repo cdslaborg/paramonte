@@ -516,6 +516,16 @@ contains
 
                     counterAUP = counterAUP + 1_IK
                     counterPRP = counterPRP + 1_IK
+
+                    ! It is critical for this if block to occur before updating `self%Stats%NumFunCall%acceptedRejected` otherwise,
+                    ! `numFunCallAcceptedRejectedLastReport` will be updated to `self%Stats%NumFunCall%acceptedRejected`
+                    ! which can lead to "Floating-point exception - erroneous arithmetic operation" in the computation
+                    ! of `inverseProgressReportPeriod` when `blockLastSample` happens to be activated.
+                    if (counterPRP == self%SpecBase%ProgressReportPeriod%val) then
+                        counterPRP = 0_IK
+                        call reportProgress()
+                    end if
+
                     currentStateWeight = currentStateWeight + 1_IK
                     self%Stats%NumFunCall%acceptedRejected = self%Stats%NumFunCall%acceptedRejected + 1_IK
 
@@ -541,15 +551,11 @@ contains
 #endif
                     end if
 
-                    if (counterPRP == self%SpecBase%ProgressReportPeriod%val) then
-                        counterPRP = 0_IK
-                        call reportProgress()
-                    end if
-
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% last output write %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                    ! in paradise mode, it is imperative to finish the simulation before any further redundant sampler updates.
+                    ! in paradise mode, it is imperative to finish the simulation before any further redundant sampler updates occurs.
+                    ! This is the reason why blockLastSample appears before blockSamplerAdaptation.
                     blockLastSample: if (self%Stats%NumFunCall%accepted==self%SpecMCMC%ChainSize%val) then !co_missionAccomplished = .true.
 
                         ! on 3 images Windows, substituting co_missionAccomplished with the following leads to 10% less communication overhead for 1D Gaussian example
