@@ -5,7 +5,7 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 2.x.x**  
 
-### Version  2.3.0 -- December 16, 2020  
+### Version  2.3.0 -- December 17, 2020  
 
 **Major enhancements**  
 
@@ -18,6 +18,11 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 +   The issue of Windows file locking, that led to the occasional crashes of the 
     ParaDRAM and ParaDISE simulations in `multiChain` parallelism mode, is now resolved.  
+
++   The `ParaDRAM` class in `paramonte` is now also available 
+    as `Paradram` and `paradram`, although the original label 
+    will remain the default preferred method of ParaDRAM 
+    object instantiation.  
 
 ### Version  2.2.1 -- November 15, 2020  
 

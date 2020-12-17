@@ -206,6 +206,12 @@ classdef paramonte %< dynamicprops
         %               isMacOS : true if the operating system is macOS (Darwin)
         %
         platform = struct();
+        %
+        % This is simply an alias for the ParaDRAM class.
+        Paradram        = [];
+        %
+        % This is simply an alias for the ParaDRAM class.
+        paradram        = [];
     end
 
     properties(Access = protected, Hidden)
@@ -472,7 +478,7 @@ classdef paramonte %< dynamicprops
                 self.Err.abort()
             end
 
-            % set ParaDRAM sampler
+            %%%% Set ParaDRAM sampler
 
             if self.matdramKernelEnabled
                 self.ParaDRAM = ParaDRAM_class(self.platform,self.website,self.version.interface.dump);
@@ -480,7 +486,13 @@ classdef paramonte %< dynamicprops
                 self.ParaDRAM = ParaDRAM(self.platform,self.website);
             end
 
-            % verify prereqs
+            % Set the ParaDRAM aliases. These are solely generated for the convenience of the users in accessing the ParaDRAM() class.
+            % These are hidden components and the user does not have access to them, however, if mistakenly typed, they won't be disappointed.
+
+            self.Paradram = self.ParaDRAM;
+            self.paradram = self.ParaDRAM;
+
+            %%%% verify prereqs
 
             self.verify("reset",false);
 

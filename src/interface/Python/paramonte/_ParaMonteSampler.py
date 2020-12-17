@@ -434,6 +434,8 @@ class ParaMonteSampler:
                     parallelism = "_openmpi"
                 elif "hydra" in output or "mpich" in output:
                     parallelism = "_mpich"
+                else:
+                    parallelism = "_mpich"
         else:
             parallelism = ""
             pm.note( msg   = "Running the " + self._methodName + " sampler in serial mode..." + newline

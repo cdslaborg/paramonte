@@ -173,16 +173,20 @@ function runSampler(self,ndim,getLogFunc,varargin)
 
     if self.mpiEnabled
         parallelism = "_mpi";
-        if strcmp(stype,"intel"):
-            parallelism = "_impi"
-        elif stype=="gnu":
-            import subprocess
-            output = subprocess.getoutput("mpiexec --version").lower()
-            if "openrte" in output or "open-mpi" in output or "openmpi" in output:
-                parallelism = "_openmpi"
-            elif "hydra" in output or "mpich" in output:
-                parallelism = "_mpich"
-
+        if strcmp(cstype,"intel")
+            parallelism = "_impi";
+        elseif strcmp(cstype,"gnu")
+            [status,cmdout] = system("mpiexec --version");
+            if status==0
+                if contains(cmdout,"openrte") || contains(cmdout,"open-mpi") || contains(cmdout,"openmpi")
+                    parallelism = "_openmpi";
+                elseif contains(cmdout,"hydra") || contains(cmdout,"mpich")
+                    parallelism = "_mpich";
+                end
+            else
+                parallelism = "_mpich";
+            end
+        end
     else
         parallelism = "";
         if self.reportEnabled
