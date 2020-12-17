@@ -2323,8 +2323,8 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         MATLAB_ROOT_DIR=$(dirname $MATLAB_BIN_DIR)
         # echo >&2 "-- ${BUILD_NAME} - MATLAB detected at: ${MATLAB_EXE_PATH}"
     else
-        echo >&2 "-- ${BUILD_NAME} - MATLAB could not be found in among the search paths."
-        echo >&2 "-- ${BUILD_NAME} - searching for MATLAB in the default installation directories..."
+        echo >&2 "-- ${BUILD_NAME} - ${warning}: MATLAB could not be found in among the search paths."
+        echo >&2 "-- ${BUILD_NAME} - ${warning}: searching for MATLAB in the default installation directories..."
     fi
 
     if [ -z ${MATLAB_EXE_PATH+x} ]; then
