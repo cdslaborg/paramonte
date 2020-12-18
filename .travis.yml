@@ -50,13 +50,13 @@ matrix:
         - MPIEXEC_PATH="$(dpkg -L mpich | egrep bin/mpiexec.mpich)"
         - MPI_BIN_DIR="$(dirname "${MPIEXEC_PATH}")"
         - PATH="${MPI_BIN_DIR}:${PATH}"
-        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
-        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
-        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi.tar.gz"
+        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpich.tar.gz"
+        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpich.tar.gz"
+        - "wget https://github.com/cdslaborg/paramonte/releases/latest/download/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpich.tar.gz"
         - ls libparamonte*.tar.gz* | xargs -i tar xvzf {}
-        - cd libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2 && cd ..
-        - cd libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2 && cd ..
-        - cd libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2 && cd ..
+        - cd libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpich && ./build.sh && ./run.sh --nproc 2 && cd ..
+        - cd libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpich && ./build.sh && ./run.sh --nproc 2 && cd ..
+        - cd libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpich && ./build.sh && ./run.sh --nproc 2 && cd ..
 
     ################################################################################################################################
     ####  linux complete build
@@ -107,9 +107,9 @@ matrix:
         - cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
         - cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
         - cd ${pmRootDir}/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap && ls && ./build.sh && ./run.sh
-        #- cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
-        #- cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
-        #- cd ${pmRootDir}/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
+        #- cd ${pmRootDir}/bin/libparamonte_c_linux_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+        #- cd ${pmRootDir}/bin/libparamonte_cpp_linux_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+        #- cd ${pmRootDir}/bin/libparamonte_fortran_linux_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2
 
     ################################################################################################################################
     #### code coverage
@@ -210,9 +210,9 @@ matrix:
 #        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
 #        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
 #        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
-#        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
-#        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
+#        - cd ${pmRootDir}/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+#        - cd ${pmRootDir}/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2
+#        - cd ${pmRootDir}/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_openmpi && ./build.sh && ./run.sh --nproc 2
 
 #    - &ubuntu
 #      os: linux
@@ -244,9 +244,9 @@ matrix:
 #        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
 #        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
 #        - cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap && ./build.sh && ./run.sh
-#        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
-#        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
-#        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpi && ./build.sh && ./run.sh --nproc 2
+#        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_c_darwin_x64_gnu_release_dynamic_heap_mpich && ./build.sh && ./run.sh --nproc 2
+#        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_cpp_darwin_x64_gnu_release_dynamic_heap_mpich && ./build.sh && ./run.sh --nproc 2
+#        #- cd /Users/travis/build/cdslaborg/paramonte/bin/libparamonte_fortran_darwin_x64_gnu_release_dynamic_heap_mpich && ./build.sh && ./run.sh --nproc 2
 
 #    - os: linux
 #      addons:
