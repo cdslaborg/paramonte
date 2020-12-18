@@ -421,35 +421,6 @@ class ParaMonteSampler:
 
         inputFileVec_pntr, inputFileLen = self._getInputFile(inputFile)
 
-        # xxx @todo: The MPI runtime library determination here needs improvement
-
-        if self.mpiEnabled:
-            parallelism = "_mpi"
-            if cstype=="intel":
-                parallelism = "_impi"
-            elif cstype=="gnu":
-                import subprocess
-                output = subprocess.getoutput("mpiexec --version").lower()
-                if "openrte" in output or "open-mpi" in output or "openmpi" in output:
-                    parallelism = "_openmpi"
-                elif "hydra" in output or "mpich" in output:
-                    parallelism = "_mpich"
-                else:
-                    parallelism = "_mpich"
-        else:
-            parallelism = ""
-            pm.note( msg   = "Running the " + self._methodName + " sampler in serial mode..." + newline
-                            + "To run the " + self._methodName + " sampler in parallel mode visit:" + newline
-                            + newline
-                            + "    " + pm.website.home.url + newline
-                            + newline
-                            + "If you are using Jupyter notebook, check the Jupyter's " + newline
-                            + "terminal window for realtime simulation progress and report."
-                    , methodName = self._methodName
-                    , marginTop = 1
-                    , marginBot = 1
-                    )
-
         #if len(sys.argv)>1:
         #    if sys.argv[1]=="p":
         #        pm.note( msg = Running sampler in parallel mode...
@@ -553,11 +524,25 @@ class ParaMonteSampler:
             pmcsList.pop(pmcsList.index(cstype))
             pmcsList.insert(0,cstype)
 
-        libNameSuffix = parallelism +   { "windows" : ".dll"
-                                        , "cygwin"  : ".dll"
-                                        , "darwin"  : ".dylib"
-                                        , "linux"   : ".so"
-                                        }.get(pm.platform.osname, ".so")
+        libNameSuffix = { "windows" : ".dll"
+                        , "cygwin"  : ".dll"
+                        , "darwin"  : ".dylib"
+                        , "linux"   : ".so"
+                        }.get(pm.platform.osname, ".so")
+
+        parallelism = ""
+        if not self.mpiEnabled:
+            pm.note( msg   = "Running the " + self._methodName + " sampler in serial mode..." + newline
+                            + "To run the " + self._methodName + " sampler in parallel mode visit:" + newline
+                            + newline
+                            + "    " + pm.website.home.url + newline
+                            + newline
+                            + "If you are using Jupyter notebook, check the Jupyter's " + newline
+                            + "terminal window for realtime simulation progress and report."
+                    , methodName = self._methodName
+                    , marginTop = 1
+                    , marginBot = 1
+                    )
 
         libPath = None
         libFound = False
@@ -567,7 +552,25 @@ class ParaMonteSampler:
 
             for pmcs in pmcsList:
 
-                libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + libNameSuffix
+                #### Determine the parallelism. xxx @todo: The MPI runtime library determination here needs improvement
+
+                if self.mpiEnabled:
+                    parallelism = "_mpi"
+                    if pmcs=="intel":
+                        parallelism = "_impi"
+                    elif pmcs=="gnu":
+                        import subprocess
+                        output = subprocess.getoutput("mpiexec --version").lower()
+                        if "openrte" in output or "open-mpi" in output or "openmpi" in output:
+                            parallelism = "_openmpi"
+                        elif "hydra" in output or "mpich" in output:
+                            parallelism = "_mpich"
+                        else:
+                            parallelism = "_mpich"
+
+                #### Build the library name
+
+                libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism + libNameSuffix
                 libPath = find_library(libName)
                 if libPath is None: libPath = os.path.join( pm.path.root, libName )
 
