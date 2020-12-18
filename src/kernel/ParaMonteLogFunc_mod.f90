@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> This module defines the abstract interface of the objective function to be called by ParaMonte routines to sample it.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module ParaMonteLogFunc_mod
 

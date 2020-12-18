@@ -82,13 +82,13 @@ set FPP_FLAGS_USER=
 set LANG_LIST=
 set BTYPE_LIST=
 set LTYPE_LIST=
+set TTYPE_LIST=
 set MEMORY_LIST=
 set PARALLELISM_LIST=
 set FOR_COARRAY_NUM_IMAGES=
 set ParaMonte_INSTALL_CLEANUP_ENABLED=true
 set DRY_RUN=false
 set "LIB_ENABLED="
-set TEST_ENABLED=true
 set EXAM_ENABLED=true
 set FAST_ENABLED=false
 set CODECOV_ENALBED=false
@@ -207,15 +207,18 @@ if not "%1"=="" (
         shift
     )
 
-    REM --test_enabled
+    REM --test
 
-    if "!FLAG!"=="--test_enabled" (
+    if "!FLAG!"=="--test" (
         set FLAG_SUPPORTED=true
-        set "TEST_ENABLED=!VALUE!"
-        set VALUE_SUPPORTED=false
-        if !TEST_ENABLED!==true set "VALUE_SUPPORTED=true"
-        if !TEST_ENABLED!==false set "VALUE_SUPPORTED=true"
-        if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
+        for %%a in ("!VALUE:/=" "!") do (
+            set DELIM=
+            if defined TTYPE_LIST set DELIM=/
+            set TTYPE_LIST=!TTYPE_LIST!!DELIM!%%~a
+            set VALUE_SUPPORTED=false
+            for %%V in ( "none" "basic" "sampler" "all" ) do ( if /I "%%~a"=="%%~V" set "VALUE_SUPPORTED=true" )
+            if not !VALUE_SUPPORTED!==true goto LABEL_REPORT_ERR
+        )
         shift
     )
 
@@ -512,7 +515,31 @@ for %%G in ("!LANG_LIST:/=" "!") do (
 )
 set LANG_LIST=!TEMP!
 
-REM build
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: set the testing mode
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+set TEST_ENABLED=false
+set BASIC_TEST_ENABLED=false
+set SAMPLER_TEST_ENABLED=false
+
+if defined TTYPE_LIST (
+    for %%T in ("!TTYPE_LIST:/=" "!") do (
+        if %%~T==all (
+            set BASIC_TEST_ENABLED=true
+            set SAMPLER_TEST_ENABLED=true
+        )
+        if %%~T==basic set BASIC_TEST_ENABLED=true
+        if %%~T==sampler set SAMPLER_TEST_ENABLED=true
+    )
+)
+
+if !BASIC_TEST_ENABLED!==true set TEST_ENABLED=true
+if !SAMPLER_TEST_ENABLED!==true set TEST_ENABLED=true
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: build the library for all requested configurations
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if !DRY_RUN!==true (
     set FRESH_RUN=false

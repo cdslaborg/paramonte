@@ -119,20 +119,22 @@ Thumbs.db
 #########################
 
 **/src/kernel/ParaMonte_mod@version@kernel.inc.f90
+**/paramonte-kernel-doc
+**/.ipynb_checkpoints
+**/benchmark
 **/codecov
-**/.ipynb_checkpoints/*
-**/benchmark/*
-**/build/*
-**/trash/*
-**/temp/*
-**/bin/*
-**/R/*
-**/___*___/*
+**/build
+**/trash
+**/temp
+**/bin
+**/R
+**/___*___
 
 #########################
 # ParaMonte temp files
 #########################
 
+*sc.html
 *_log.txt
 *_time.txt
 *_chain.txt
@@ -189,8 +191,8 @@ _deps
 # documentation
 #########################
 
+**/paramonte-kernel-doc/*
 **/devscripts/*
-**/doxygen/*
 **/draft/*
 **/doc/*
 

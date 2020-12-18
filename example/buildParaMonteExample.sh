@@ -62,7 +62,7 @@ echo >&2
 BUILD_NAME="buildParaMonteExample"
 verify() {
     if [ $1 -eq 0 ]; then
-        echo >&2 "-- ${BUILD_NAME} - ParaMonte $2 appears to have succeeded."
+        echo >&2 "-- ${pmattn} ${BoldGreen}The ParaMonte library $2 appears to have succeeded.${ColorReset}"
     else
         echo >&2
         echo >&2 "    -- ${BUILD_NAME} - FATAL: ParaMonte $2 appears to have failed."
@@ -284,7 +284,11 @@ do
 
             #### copy MPI shared library files
 
-            if ! [ -z ${MPIEXEC_PATH+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
+            if ! [ -z ${MPIEXEC_PATH+x} ] && ! [ "${MPILIB_NAME}" = "openmpi" ] && [ "${MPI_ENABLED}" = "true" ]; then
+
+                # copy files only if it is not openMPI. OpenMPI files interfer for local installations of the library on the user system. Example:
+                # mpiexec: Error: unknown option "-np"
+                # mpiexec: Error: unknown option "--oversubscribe"
 
                 #echo >&2
                 #echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the the mpiexec executable file..."
@@ -543,17 +547,17 @@ if ! [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then
     verify $? "recursive directory creation"
 fi
 
-echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte ${LANG_NAME} library binary directory: ${ParaMonteExample_BIN_DIR_CURRENT}"
+echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte ${LANG_NAME} library install directory: ${ParaMonteExample_BIN_DIR_CURRENT}"
 
 if [ -d "${ParaMonteExample_BIN_DIR_CURRENT}" ]; then
-    echo >&2 "-- ParaMonteExample${LANG_NAME} - ParaMonte binary/library directory already exists. skipping..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - The ParaMonte install directory already exists. skipping..."
 else
-    echo >&2 "-- ParaMonteExample${LANG_NAME} - generating ParaMonte binary/library directory..."
+    echo >&2 "-- ParaMonteExample${LANG_NAME} - generating ParaMonte install directory..."
     mkdir -p "${ParaMonteExample_BIN_DIR_CURRENT}"
     verify $? "recursive directory creation"
 fi
 
-echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files to the bin folder..."
+echo >&2 "-- ParaMonteExample${LANG_NAME} - copying the ParaMonte library files to the install directory..."
 echo >&2 "-- ParaMonteExample${LANG_NAME} - from: ${ParaMonteExample_BLD_DIR_CURRENT}"
 echo >&2 "-- ParaMonteExample${LANG_NAME} -   to: ${ParaMonteExample_BIN_DIR_CURRENT}"
 cp -R "${ParaMonteExample_BLD_DIR_CURRENT}"/* "${ParaMonteExample_BIN_DIR_CURRENT}" || printCopyFailMsg

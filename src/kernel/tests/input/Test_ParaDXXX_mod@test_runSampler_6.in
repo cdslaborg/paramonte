@@ -51,37 +51,25 @@
 ! All vectors and arrays in the input file begin with index 1, following the convention of the majority 
 ! of science-oriented programming languages: Fortran, MATLAB, Julia, R, Mathematica
 
-&ParaDRAM
+&ParaDXXX
 
     ! Base
 
-    description                         = "
-This\n
-    is a\n
-        test\n
-            run."
-   !outputColumnWidth			        = 25
-    outputRealPrecision			        = 17
-   !outputDelimiter			            = ","
-    outputFileName                      = "./out/"
-   !sampleSize                          = 111
-    randomSeed                          = 2136275,
-    chainFileFormat                     = "compact"
-   !variableNameList                    = "x","y"
-    domainLowerLimitVec                 = 1*-1.e300
-    domainUpperLimitVec                 = 1*1.e300
-    parallelizationModel                = "single chain"
-    targetAcceptanceRate                = 0.23e0
-    progressReportPeriod                = 1000
-    maxNumDomainCheckToWarn             = 100
-    maxNumDomainCheckToStop             = 1000
+    domainLowerLimitVec                 = 1*-1.7e308
+    domainUpperLimitVec                 = 1*+1.7e308
+    parallelizationModel                = "several chain"
+    targetAcceptanceRate                = -1.e0
+    progressReportPeriod                = -1000
+    maxNumDomainCheckToWarn             = -100
+    maxNumDomainCheckToStop             = -1000
     inputFileHasPriority                = false
-    restartFileFormat                   = "binary"
-    silentModeRequested                 = false
+    restartFileFormat                   = "random"
+    silentModeRequested                 = true
+    mpiFinalizeRequested                = false
 
     ! MCMC
 
-    chainSize                           = 1000
+    chainSize                           = 100
     startPointVec                       = 1*1.e0
    !sampleRefinementCount               = 10
     sampleRefinementMethod              = "BatchMeans"    ! MaxCumSumAutoCorr
@@ -104,62 +92,3 @@ This\n
    !proposalStartCovMat                 = 1 !,0,0,0.1
 
 /
-
-
-&ParaDISE
-
-    ! Base
-
-    description                         = "
-This\n
-    is a\n
-        test\n
-            run."
-   !outputColumnWidth			        = 25
-    outputRealPrecision			        = 17
-   !outputDelimiter			            = ","
-    outputFileName                      = "./out/"
-   !sampleSize                          = 111
-    randomSeed                          = 2136275,
-    chainFileFormat                     = "compact"
-   !variableNameList                    = "x","y"
-    domainLowerLimitVec                 = 1*-1.e300
-    domainUpperLimitVec                 = 1*1.e300
-    parallelizationModel                = "single chain"
-    targetAcceptanceRate                = 0.23e0
-    progressReportPeriod                = 1000
-    maxNumDomainCheckToWarn             = 100
-    maxNumDomainCheckToStop             = 1000
-    inputFileHasPriority                = false
-    restartFileFormat                   = "binary"
-    overwriteRequested                  = false
-    silentModeRequested                 = false
-    
-
-    ! MCMC
-
-    chainSize                           = 1000
-    startPointVec                       = 1*1.e0
-   !sampleRefinementCount               = 10
-    sampleRefinementMethod              = "BatchMeans"    ! MaxCumSumAutoCorr
-    randomStartPointDomainLowerLimitVec = -100.e0
-    randomStartPointDomainUpperLimitVec = 100.0
-    randomStartPointRequested           = true
-
-    ! DRAM
-
-    scaleFactor                         = "Gelman"
-    proposalModel                       = "normal"
-    adaptiveUpdateCount                 = 10000000
-    adaptiveUpdatePeriod                = 35
-    greedyAdaptationCount               = 0
-   !delayedRejectionCount               = 20
-   !delayedRejectionScaleFactorVec      = 20*1.
-   !burninAdaptationMeasure             = 1.
-   !proposalStartStdVec                 = 1*0.0001e6
-   !proposalStartCorMat                 = 1000,0,0,1000
-   !proposalStartCovMat                 = 1 !,0,0,0.1
-
-/
-
-

@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [FileContents_mod](@ref filecontents_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_FileContents_mod
 
@@ -81,7 +81,7 @@ contains
         type(OS_type)               :: OS
         integer                     :: fileUnit, i, iostat
 
-        RandomFileName = RandomFileName_type(key = Test%outDir//"Test_FileContents_mod@test_constructFileContents")
+        RandomFileName = RandomFileName_type(key = Test%outDir//"/Test_FileContents_mod@test_constructFileContents")
         assertion = .not. RandomFileName%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
@@ -94,7 +94,11 @@ contains
             ! LCOV_EXCL_STOP
         end if
 
-        open(newunit = fileUnit, file = RandomFileName%path, status = "new", iostat = iostat)
+        open( file = RandomFileName%path & ! LCOV_EXCL_LINE
+            , newunit = fileUnit & ! LCOV_EXCL_LINE
+            , iostat = iostat & ! LCOV_EXCL_LINE
+            , status = "new" & ! LCOV_EXCL_LINE
+            )
         assertion = iostat == 0
         if (.not. assertion) then
             ! LCOV_EXCL_START
@@ -193,7 +197,7 @@ contains
         integer                     :: fileUnit, i, iostat
         logical                     :: exist
 
-        RandomFileName = RandomFileName_type(key = Test%outDir//"Test_FileContents_mod@test_constructFileContents")
+        RandomFileName = RandomFileName_type(key = Test%outDir//"/Test_FileContents_mod@test_constructFileContents")
         assertion = .not. RandomFileName%Err%occurred
         if (.not. assertion) then
             ! LCOV_EXCL_START
@@ -206,7 +210,11 @@ contains
             ! LCOV_EXCL_STOP
         end if
 
-        open(newunit = fileUnit, file = RandomFileName%path, status = "new", iostat = iostat)
+        open( file = RandomFileName%path & ! LCOV_EXCL_LINE
+            , newunit = fileUnit & ! LCOV_EXCL_LINE
+            , iostat = iostat & ! LCOV_EXCL_LINE
+            , status = "new" & ! LCOV_EXCL_LINE
+            )
         assertion = iostat == 0
         if (.not. assertion) then
             ! LCOV_EXCL_START

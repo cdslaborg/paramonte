@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains classes and procedures to obtain a list of files in a given directory.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module FileList_mod
 
@@ -77,15 +77,15 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> The constructor of the [FileList_type](@ref filelist_type) class.
-    !> @param[in]   searchStr   :   The pattern for the file search (optional).
-    !> @param[in]   orderStr    :   The order by which the search results will be listed (optional, default = "name").
-    !> @param[in]   excludeStr  :   The string which the listed files should not contain (optional, default = "").
-    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (optional).
+    !> @param[in]   searchStr   :   The pattern for the file search (**optional**).
+    !> @param[in]   orderStr    :   The order by which the search results will be listed (**optional**, default = "name").
+    !> @param[in]   excludeStr  :   The string which the listed files should not contain (**optional**, default = "").
+    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (**optional**).
     !>
     !> \return
     !> FileList : An object of [FileList_type](@ref filelist_type) class.
     function constructFileList(searchStr,orderStr,excludeStr,OS) result(FileList)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructFileList
 #endif
         use System_mod, only: OS_type
@@ -116,18 +116,18 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> Return a list of files that match `searchStr`.
-    !> @param[out]  FileList    :   The list of files matching the requested search pattern (optional).
-    !> @param[out]  count       :   The number of files (optional).
+    !> @param[out]  FileList    :   The list of files matching the requested search pattern (**optional**).
+    !> @param[out]  count       :   The number of files (**optional**).
     !> @param[out]  Err         :   The error object indicating the occurrence of error.
-    !> @param[in]   searchStr   :   The pattern for the file search (optional). It can be the path of the folder of interest to be searched.
-    !> @param[in]   orderStr    :   The order by which the search results will be listed (optional, default = "name").
-    !> @param[in]   excludeStr  :   The string which the listed files should not contain (optional, default = "").
-    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (optional).
+    !> @param[in]   searchStr   :   The pattern for the file search (**optional**). It can be the path of the folder of interest to be searched.
+    !> @param[in]   orderStr    :   The order by which the search results will be listed (**optional**, default = "name").
+    !> @param[in]   excludeStr  :   The string which the listed files should not contain (**optional**, default = "").
+    !> @param[in]   OS          :   An object of class [OS_type](@ref system_mod::os_type) indicating the OS type (**optional**).
     !>
     !> \return
     !> FileList : An object of [FileList_type](@ref filelist_type) class.
     subroutine getFileList(FileList,Err,count,searchStr,orderStr,excludeStr,OS)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileList
 #endif
 
@@ -135,7 +135,6 @@ contains
         use System_mod, only: OS_type, executeCmd, sleep !, removeFile
         use Constants_mod, only: IK, RK, MAX_REC_LEN
         use String_mod, only: getLowerCase, num2str
-        !use Path_mod, only: winifyPath, linifyPath
         use JaggedArray_mod, only: CharVec_type
         use DateTime_mod, only: DateTime_type
         use Err_mod, only: Err_type
@@ -195,12 +194,10 @@ contains
         if (present(OS)) then
             if ( OS%isWindows .and. .not. (OS%Shell%isCMD .or. OS%Shell%isPowershell) ) then
             ! LCOV_EXCL_START
-                call OS%Shell%query(isWindowsOS = OS%isWindows)
+                call OS%Shell%query()
                 if (OS%Shell%Err%occurred) then
                     Err = OS%Shell%Err
-                    Err%msg =   PROCEDURE_NAME // &
-                                ": Error occurred while attempting to query OS type in search of files containing '" // &
-                                search // "'.\n" // Err%msg
+                    Err%msg = PROCEDURE_NAME//": Error occurred while attempting to query OS type in search of files containing '"//search//"'.\n"//Err%msg
                     return
                 end if
             end if
@@ -221,9 +218,7 @@ contains
                 end if
                 if (Err%occurred) then
                 ! LCOV_EXCL_START
-                    Err%msg =   PROCEDURE_NAME // &
-                                ": Error occurred while attempting to query OS type in search of files containing '" // &
-                                search // "'.\n" // Err%msg
+                    Err%msg = PROCEDURE_NAME//": Error occurred while attempting to query OS type in search of files containing '"//search//"'.\n"//Err%msg
                     return
                 ! LCOV_EXCL_STOP
                 end if
@@ -233,7 +228,7 @@ contains
 
         if (isWindowsShell) then
 
-            !call winifyPath(search,searchModified,Err)
+            !call winify(search,searchModified,Err)
             !if (Err%occurred) then
             !    Err%msg =   PROCEDURE_NAME // ": Error occurred while attempting to modify searchStr='" // search // &
             !                "' according to the OS type.\n" // Err%msg
@@ -312,8 +307,14 @@ contains
 
         ! delete the stderr file
 
-        open(newunit = fileUnit, file = stdErr, status = "replace")
-        close(fileUnit, status = "delete")
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , status = "replace" & ! LCOV_EXCL_LINE
+            , file = stdErr & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
+        close(fileUnit, status = "delete", iostat = Err%stat) ! parallel processes cannot delete the same file
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         ! now count the number of records in file:
@@ -347,7 +348,14 @@ contains
 
         ! open the list file
 
-        open(newunit=fileUnit,file=filename,status="old",iostat=Err%stat)
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , iostat = Err%stat & ! LCOV_EXCL_LINE
+            , file = filename & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         ! LCOV_EXCL_START
         if (Err%stat>0) then
             Err%occurred = .true.
@@ -400,7 +408,14 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
-        open(newunit=fileUnit,file=filename,status="old",iostat=Err%stat)
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , iostat = Err%stat & ! LCOV_EXCL_LINE
+            , file = filename & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         if (Err%stat>0) then
         ! LCOV_EXCL_START
             Err%occurred = .true.
@@ -436,14 +451,15 @@ contains
 
         if (present(count)) count = fileCounter
 
-        close(fileUnit, iostat = Err%stat, status = "delete")
-        if (Err%stat/=0) then
-        ! LCOV_EXCL_START
-            Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // filename // "'."
-            return
-        end if
-        ! LCOV_EXCL_STOP
+        close(fileUnit, status = "delete", iostat = Err%stat) ! parallel processes cannot delete the same file
+
+        !if (Err%stat/=0) then
+        !! LCOV_EXCL_START
+        !    Err%occurred = .true.
+        !    Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to close the open file='" // filename // "'."
+        !    return
+        !end if
+        !! LCOV_EXCL_STOP
 
         ! remove the files
         !call removeFile(filename,isWindowsShell,Err)

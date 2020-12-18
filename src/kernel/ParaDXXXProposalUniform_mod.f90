@@ -48,7 +48,7 @@
 !> \remark
 !> This module requires preprocessing prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 module ParaDRAMProposalUniform_mod
 #define PARADRAM ParaDRAM
@@ -62,7 +62,7 @@ end module ParaDRAMProposalUniform_mod ! LCOV_EXCL_LINE
 !> \remark
 !> This module requires preprocessing prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 module ParaDISEProposalUniform_mod
 #define PARADISE ParaDISE

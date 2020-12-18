@@ -74,7 +74,7 @@ module SpecBase_mod
     use SpecBase_Description_mod                    , only: description
     use SpecBase_OutputFileName_mod                 , only: outputFileName
     use SpecBase_OutputDelimiter_mod                , only: outputDelimiter
-    use SpecBase_ChainFileFormat_mod                , only: ChainFileFormat
+    use SpecBase_ChainFileFormat_mod                , only: chainFileFormat
     use SpecBase_VariableNameList_mod               , only: variableNameList
     use SpecBase_RestartFileFormat_mod              , only: restartFileFormat
     use SpecBase_OutputColumnWidth_mod              , only: outputColumnWidth
@@ -140,7 +140,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructSpecBase(nd,methodName,imageID,imageCount) result(SpecBase)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSpecBase
 #endif
         use Constants_mod, only: IK
@@ -177,7 +177,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar( SpecBase, nd )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK
@@ -213,7 +213,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setFromInputFile( SpecBase, Err )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFromInputFile
 #endif
 
@@ -239,7 +239,7 @@ contains
 
         ! do not change the order with outputDelimiter
         call SpecBase%OutputColumnWidth             %set(outputColumnWidth)
-        call SpecBase%OutputDelimiter               %set(outputDelimiter,SpecBase%OutputColumnWidth%val)
+        call SpecBase%OutputDelimiter               %set(SpecBase%OutputColumnWidth%val, outputDelimiter)
 
         call SpecBase%OverwriteRequested            %set(overwriteRequested)
         call SpecBase%OutputRealPrecision           %set(outputRealPrecision)
@@ -282,7 +282,7 @@ contains
                                 , maxNumDomainCheckToWarn &
                                 , maxNumDomainCheckToStop &
                                 )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFromInputArgs
 #endif
 
@@ -330,7 +330,7 @@ contains
 
         ! do not change the order with outputDelimiter
         if (present(outputColumnWidth))             call SpecBase%OutputColumnWidth             %set(outputColumnWidth)
-        if (present(outputDelimiter))               call SpecBase%OutputDelimiter               %set(outputDelimiter,SpecBase%OutputColumnWidth%val)
+        call SpecBase%OutputDelimiter%set(SpecBase%OutputColumnWidth%val, outputDelimiter)
 
         if (present(overwriteRequested))            call SpecBase%OverwriteRequested            %set(overwriteRequested)
         if (present(parallelizationModel))          call SpecBase%ParallelizationModel          %set(parallelizationModel)
@@ -349,7 +349,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine reportValues(SpecBase,prefix,outputUnit,isLeaderImage)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: reportValues
 #endif
         use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
@@ -575,7 +575,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine checkForSanity(SpecBase,Err,methodName)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Err_mod, only: Err_type

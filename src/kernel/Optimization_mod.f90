@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains numerical optimization procedures.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Optimization_mod
 
@@ -134,13 +134,13 @@ contains
     !> @param[in]   getFunc :   The 1-dimensional function which will have to be minimized.
     !> @param[in]   x0      :   The lower point in the set of optional bracketing triplet of abscissas that
     !>                          bracket the minimum of the function such that, `x0 < x1 < x2` and
-    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (optional).
+    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (**optional**).
     !> @param[in]   x1      :   The middle point in the set of optional bracketing triplet of abscissas that
     !>                          bracket the minimum of the function such that, `x0 < x1 < x2` and
-    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (optional).
+    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (**optional**).
     !> @param[in]   x2      :   The upper point in the set of optional bracketing triplet of abscissas that
     !>                          bracket the minimum of the function such that, `x0 < x1 < x2` and
-    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (optional).
+    !>                          `getFunc(x0) > getFunc(x1) < getFunc(x2)` (**optional**).
     !> @param[in]   xtol    :   An optional fractional precision within which is the minimum is returned.
     !>                          The default value is sqrt(epsilon(1._RK)).
     !>
@@ -148,7 +148,7 @@ contains
     !> `BrentMinimum` : An object of class [BrentMinimum_type](@ref brentminimum_type) that contains the minimum of the
     !>                  function (`xmin`) and the function value at the minimum (`fmin`) as well as other relevant information.
     function minimizeBrent(getFunc, x0, x1, x2, xtol) result(BrentMinimum)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: minimizeBrent
 #endif
         use Constants_mod, only: IK, RK
@@ -266,8 +266,10 @@ contains
             end if
         end do
 
+        ! LCOV_EXCL_START
         BrentMinimum%Err%occurred = .true.
         BrentMinimum%Err%msg = PROCEDURE_NAME//": maximum number of iterations exceeded."
+        ! LCOV_EXCL_STOP
         return
 
     contains
@@ -287,7 +289,9 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine getBracket(ax,bx,cx,fa,fb,fc,getFunc)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getBracket
+#endif
         use Constants_mod, only: IK, RK, TINY_RK
         use Misc_mod, only : swap
         implicit none
@@ -367,7 +371,9 @@ contains
 
     !> The constructor of the class [PowellMinimum_type](@ref powellminimum_type).
     function minimizePowell(ndim, getFuncMD, StartVec, DirMat, ftol) result(PowellMinimum)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: minimizePowell
+#endif
         use Constants_mod, only: IK, RK, TINY_RK ! tiny = 1.0e-25_RK
         implicit none
 
@@ -414,9 +420,11 @@ contains
                 fptt = PowellMinimum%fmin
                 call linmin(getFuncMD, ndim, PowellMinimum%xmin, xit, PowellMinimum%fmin, PowellMinimum%Err)
                 if (PowellMinimum%Err%occurred) then
+                ! LCOV_EXCL_START
                     PowellMinimum%Err%msg = PROCEDURE_NAME//PowellMinimum%Err%msg
                     return
                 end if
+                ! LCOV_EXCL_STOP
                 if (fptt - PowellMinimum%fmin > del) then
                     del = fptt - PowellMinimum%fmin
                     ibig = i
@@ -426,10 +434,12 @@ contains
             if ( 2._RK*(fp-PowellMinimum%fmin) <= PowellMinimum%ftol*(abs(fp)+abs(PowellMinimum%fmin)) + TINY_RK ) return
 
             if (PowellMinimum%niter == ITMAX) then
+            ! LCOV_EXCL_START
                 PowellMinimum%Err%occurred = .true.
                 PowellMinimum%Err%msg = PROCEDURE_NAME//": maximum number of iterations exceeded."
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             ptt = 2._RK * PowellMinimum%xmin - pt
             xit = PowellMinimum%xmin - pt
@@ -440,9 +450,11 @@ contains
             if (t >= 0.0) cycle
             call linmin(getFuncMD, ndim, PowellMinimum%xmin, xit, PowellMinimum%fmin, PowellMinimum%Err)
             if (PowellMinimum%Err%occurred) then
+            ! LCOV_EXCL_START
                 PowellMinimum%Err%msg = PROCEDURE_NAME//PowellMinimum%Err%msg
                 return
             end if
+            ! LCOV_EXCL_STOP
             PowellMinimum%DirMat(1:ndim,ibig) = PowellMinimum%DirMat(1:ndim,ndim)
             PowellMinimum%DirMat(1:ndim,ndim) = xit
 
@@ -453,6 +465,9 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine linmin(getFuncMD, ndim, StartVec, DirVec, fmin, Err)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: linmin
+#endif
         use Constants_mod, only: IK, RK
         use Err_mod, only: Err_type
         implicit none
@@ -475,8 +490,10 @@ contains
         call getBracket(ax,xx,bx,fa,fx,fb,getFunc1D)
         BrentMinimum = minimizeBrent(getFunc1D, ax, xx, bx, XTOL)
         if (BrentMinimum%Err%occurred) then
+        ! LCOV_EXCL_START
             Err = BrentMinimum%Err
             return
+        ! LCOV_EXCL_STOP
         else
             Err%occurred = .false.
         end if
@@ -504,6 +521,9 @@ contains
         !> \brief
         !> Bypass the Microsoft Subsystem for Linux Internal Function call GFortran Segmentation Fault error.
         function getFunc1D(x) result(funcVal)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getFunc1D
+#endif
             implicit none
             real(RK), intent(in)    :: x
             real(RK)                :: funcVal

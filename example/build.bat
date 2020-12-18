@@ -236,9 +236,9 @@ if !TARGET_LANG!==Fortran (
     set LINKER_FLAGS=/link /out:!EXE_NAME!
     set SRC_FILES=paramonte.!SEXT! !SRC_FILES!
 
-    REM if !PTYPE!==mpi (
-    REM     set COMPILER_NAME=mpiifort -fc=ifort
-    REM )
+    if !PTYPE!==mpi (
+        if !LTYPE!==static set COMPILER_NAME=mpiifort -fc=ifort
+    )
 
     set COMPILER_FLAGS=/fpp
     REM set COMPILER_FLAGS=/fpp /DIS_COMPATIBLE_COMPILER

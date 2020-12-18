@@ -9,30 +9,30 @@
 !!!!
 !!!!   This file is part of the ParaMonte library.
 !!!!
-!!!!   Permission is hereby granted, free of charge, to any person obtaining a 
-!!!!   copy of this software and associated documentation files (the "Software"), 
-!!!!   to deal in the Software without restriction, including without limitation 
-!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-!!!!   and/or sell copies of the Software, and to permit persons to whom the 
+!!!!   Permission is hereby granted, free of charge, to any person obtaining a
+!!!!   copy of this software and associated documentation files (the "Software"),
+!!!!   to deal in the Software without restriction, including without limitation
+!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+!!!!   and/or sell copies of the Software, and to permit persons to whom the
 !!!!   Software is furnished to do so, subject to the following conditions:
 !!!!
-!!!!   The above copyright notice and this permission notice shall be 
+!!!!   The above copyright notice and this permission notice shall be
 !!!!   included in all copies or substantial portions of the Software.
 !!!!
-!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
-!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+!!!!   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 !!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 !!!!
 !!!!   ACKNOWLEDGMENT
 !!!!
 !!!!   ParaMonte is an honor-ware and its currency is acknowledgment and citations.
-!!!!   As per the ParaMonte library license agreement terms, if you use any parts of 
-!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-!!!!   work (education/research/industry/development/...) by citing the ParaMonte 
+!!!!   As per the ParaMonte library license agreement terms, if you use any parts of
+!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your
+!!!!   work (education/research/industry/development/...) by citing the ParaMonte
 !!!!   library as described on this page:
 !!!!
 !!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md
@@ -54,14 +54,14 @@ module SpecMCMC_RandomStartPointDomainLowerLimitVec_mod
         real(RK)                    :: null
         character(:), allocatable   :: desc
     contains
-        procedure, pass             :: set => setRandomStartPointDomainLowerLimitVec, checkForSanity, nullifyNameListVar
+        procedure, pass             :: set, checkForSanity, nullifyNameListVar
     end type RandomStartPointDomainLowerLimitVec_type
 
     interface RandomStartPointDomainLowerLimitVec_type
-        module procedure            :: constructRandomStartPointDomainLowerLimitVec
+        module procedure            :: construct
     end interface RandomStartPointDomainLowerLimitVec_type
 
-    private :: constructRandomStartPointDomainLowerLimitVec, setRandomStartPointDomainLowerLimitVec, checkForSanity, nullifyNameListVar
+    private :: construct, set, checkForSanity, nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -69,17 +69,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function constructRandomStartPointDomainLowerLimitVec(methodName) result(RandomStartPointDomainLowerLimitVecObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructRandomStartPointDomainLowerLimitVec
+    function construct(methodName) result(self)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: construct
 #endif
         use Constants_mod, only: NULL_RK
         use String_mod, only: num2str
         implicit none
         character(*), intent(in)                        :: methodName
-        type(RandomStartPointDomainLowerLimitVec_type)  :: RandomStartPointDomainLowerLimitVecObj
-        RandomStartPointDomainLowerLimitVecObj%null = NULL_RK
-        RandomStartPointDomainLowerLimitVecObj%desc = &
+        type(RandomStartPointDomainLowerLimitVec_type)  :: self
+        self%null = NULL_RK
+        self%desc = &
         "RandomStartPointDomainLowerLimitVec represents the lower boundaries of the cubical domain from which the starting point(s) of &
         &the MCMC chain(s) will be initialized randomly (only if requested via the input variable randomStartPointRequested. &
         &This happens only when some or all of the elements of the input variable StartPoint are missing. &
@@ -102,69 +102,84 @@ contains
                     &the lower limits for the missing dimensions will be automatically set to the default value.\n\n&
         &The default values for all elements of RandomStartPointDomainLowerLimitVec are taken from the corresponding values in the input &
         &variable domainLowerLimitVec."
-    end function constructRandomStartPointDomainLowerLimitVec
+    end function construct
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine nullifyNameListVar(RandomStartPointDomainLowerLimitVecObj,nd)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine nullifyNameListVar(self,nd)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(RandomStartPointDomainLowerLimitVec_type), intent(in)  :: RandomStartPointDomainLowerLimitVecObj
-        integer(IK), intent(in)                             :: nd
+        class(RandomStartPointDomainLowerLimitVec_type), intent(in) :: self
+        integer(IK), intent(in)                                     :: nd
         if (allocated(randomStartPointDomainLowerLimitVec)) deallocate(randomStartPointDomainLowerLimitVec)
         allocate(randomStartPointDomainLowerLimitVec(nd))
-        randomStartPointDomainLowerLimitVec = RandomStartPointDomainLowerLimitVecObj%null
+        randomStartPointDomainLowerLimitVec(:) = self%null
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setRandomStartPointDomainLowerLimitVec(RandomStartPointDomainLowerLimitVecObj,randomStartPointDomainLowerLimitVec,domainLowerLimitVec)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: setRandomStartPointDomainLowerLimitVec
+    subroutine set(self, randomStartPointDomainLowerLimitVec)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: set
 #endif
         use Constants_mod, only: IK, RK
         implicit none
-        class(RandomStartPointDomainLowerLimitVec_type), intent(inout)  :: RandomStartPointDomainLowerLimitVecObj
-        real(RK), intent(in)                                            :: randomStartPointDomainLowerLimitVec(:)
-        real(RK), intent(in)                                            :: domainLowerLimitVec(:)
-        RandomStartPointDomainLowerLimitVecObj%Val = randomStartPointDomainLowerLimitVec
-        where (RandomStartPointDomainLowerLimitVecObj%Val==RandomStartPointDomainLowerLimitVecObj%null)
-            RandomStartPointDomainLowerLimitVecObj%Val = domainLowerLimitVec
-        end where
-    end subroutine setRandomStartPointDomainLowerLimitVec
+        class(RandomStartPointDomainLowerLimitVec_type), intent(inout)  :: self
+        real(RK), intent(in), optional                                  :: randomStartPointDomainLowerLimitVec(:)
+        if (present(randomStartPointDomainLowerLimitVec)) self%Val = randomStartPointDomainLowerLimitVec
+    end subroutine set
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(RandomStartPointDomainLowerLimitVecObj,Err,methodName,domainLowerLimitVec)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine checkForSanity(self,Err,methodName,SpecBase,randomStartPointRequested)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
+        use SpecBase_mod, only: SpecBase_type
         use Constants_mod, only: RK
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(RandomStartPointDomainLowerLimitVec_type), intent(in) :: RandomStartPointDomainLowerLimitVecObj
-        real(RK), intent(in)                                        :: domainLowerLimitVec(:)
-        character(*), intent(in)                                    :: methodName
-        type(Err_type), intent(inout)                               :: Err
-        character(*), parameter                                     :: PROCEDURE_NAME = "@checkForSanity()"
-        integer                                                     :: i
-        do i = 1,size(RandomStartPointDomainLowerLimitVecObj%Val(:))
-            if ( RandomStartPointDomainLowerLimitVecObj%Val(i)<domainLowerLimitVec(i) ) then
+        class(RandomStartPointDomainLowerLimitVec_type), intent(inout)  :: self
+        type(Err_type), intent(inout)                                   :: Err
+        type(SpecBase_type), intent(in)                                 :: SpecBase
+        character(*), intent(in)                                        :: methodName
+        logical     , intent(in)                                        :: randomStartPointRequested
+        character(*), parameter                                         :: PROCEDURE_NAME = "@checkForSanity()"
+        integer                                                         :: i
+        do i = 1,size(self%Val(:))
+
+            if (self%Val(i)==self%null) self%Val(i) = SpecBase%DomainLowerLimitVec%Val(i)
+
+            ! check if the domain is set when random start point is requested
+
+            if ( randomStartPointRequested .and. self%Val(i)==SpecBase%DomainLowerLimitVec%def ) then
                 Err%occurred = .true.
                 Err%msg =   Err%msg // &
                             MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                            &The component " // num2str(i) // " of the variable RandomStartPointDomainLowerLimitVec (" // &
-                            num2str(RandomStartPointDomainLowerLimitVecObj%Val(i)) // &
-                            ") cannot be smaller than the corresponding component of the variable &
-                            &domainLowerLimitVec (" // num2str(domainLowerLimitVec(i)) // "). If you don't know &
-                            &an appropriate value to set for RandomStartPointDomainLowerLimitVec, drop it from the input list. " // &
-                            methodName // " will automatically assign an appropriate value to it.\n\n"
+                            &You have requested a random start point by setting randomStartPointRequested to TRUE while the &
+                            &element #"//num2str(i)//" of RandomStartPointDomainLowerLimitVec has not been preset to a finite value. &
+                            &This information is essential otherwise, how could the sampler draw points randomly from within an unspecified domain?\n\n"
             end if
+
+            ! check if the random start point domain is within the boundaries of the domain of the target.
+
+            if ( self%Val(i)<SpecBase%DomainLowerLimitVec%Val(i) ) then
+                Err%occurred = .true.
+                Err%msg =   Err%msg // &
+                            MODULE_NAME // PROCEDURE_NAME // ": Error occurred. The component " // num2str(i) // &
+                            " of the variable RandomStartPointDomainLowerLimitVec (" // num2str(self%Val(i)) // &
+                            ") cannot be smaller than the corresponding component of the variable domainLowerLimitVec (" // &
+                            num2str(SpecBase%DomainLowerLimitVec%Val(i)) // "). If you don't know &an appropriate value to " // & ! LCOV_EXCL_LINE
+                            "set for RandomStartPointDomainLowerLimitVec, drop it from the input list. " // methodName // " will &
+                            &automatically assign an appropriate value to it.\n\n"
+            end if
+
         end do
+        deallocate(randomStartPointDomainLowerLimitVec)
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

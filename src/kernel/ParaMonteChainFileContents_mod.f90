@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains the classs and procedures for chain IO and manipulation.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module ParaMonteChainFileContents_mod
 
@@ -110,13 +110,13 @@ contains
     !> Return an object of class [ChainFileContents_type](@ref chainfilecontents_type) given the input specifications.
     !>
     !> @param[in]   ndim                : The number of dimensions of the domain of the objective function.
-    !> @param[in]   variableNameList    : The list of variable names corresponding to each axis of the domain of the objective function (optional).
-    !> @param[in]   chainFilePath       : The list of variable names corresponding to each axis of the domain of the objective function (optional).
-    !> @param[in]   chainSize           : The size of the chain in the chain file specified by the input `chainFilePath` (optional).
-    !> @param[in]   chainFileForm       : The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`) (optional).
-    !> @param[in]   lenHeader           : The full length of the first line in the input file (the header line) (optional).
-    !> @param[in]   delimiter           : The delimiter symbol used in the chain file (optional).
-    !> @param[in]   targetChainSize     : The final target size of the chain (in case the chain file is an interrupted simulation) (optional).
+    !> @param[in]   variableNameList    : The list of variable names corresponding to each axis of the domain of the objective function (**optional**).
+    !> @param[in]   chainFilePath       : The list of variable names corresponding to each axis of the domain of the objective function (**optional**).
+    !> @param[in]   chainSize           : The size of the chain in the chain file specified by the input `chainFilePath` (**optional**).
+    !> @param[in]   chainFileForm       : The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`) (**optional**).
+    !> @param[in]   lenHeader           : The full length of the first line in the input file (the header line) (**optional**).
+    !> @param[in]   delimiter           : The delimiter symbol used in the chain file (**optional**).
+    !> @param[in]   targetChainSize     : The final target size of the chain (in case the chain file is an interrupted simulation) (**optional**).
     !>
     !> \return
     !> `CFC` : An object of class [ChainFileContents_type](@ref chainfilecontents_type) containing the chain.
@@ -124,14 +124,14 @@ contains
     !> \warning
     !> If `chainFilePath` is given, then the rest of the optional arguments *must be also given*.
     function constructChainFileContents(ndim,variableNameList,chainFilePath,chainSize,chainFileForm,lenHeader,delimiter,targetChainSize) result(CFC)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructChainFileContents
 #endif
         implicit none
         integer(IK) , intent(in)            :: ndim
+        character(*), intent(in), optional  :: chainFileForm
         character(*), intent(in), optional  :: variableNameList(ndim)
         character(*), intent(in), optional  :: chainFilePath
-        character(*), intent(in), optional  :: chainFileForm
         character(*), intent(in), optional  :: delimiter
         integer(IK) , intent(in), optional  :: lenHeader, chainSize, targetChainSize
         type(ChainFileContents_type)        :: CFC
@@ -161,12 +161,14 @@ contains
 
         ! read the chain file if the path is given
 
-        if (present(chainFilePath)) call CFC%get(chainFilePath,chainFileForm,Err,chainSize,lenHeader,ndim,delimiter,targetChainSize)
+        if (present(chainFilePath) .and. present(chainFileForm)) call CFC%get(chainFilePath,chainFileForm,Err,chainSize,lenHeader,ndim,delimiter,targetChainSize)
         if (Err%occurred) then
+        ! LCOV_EXCL_START
             CFC%Err%occurred = .true.
             CFC%Err%msg = Err%msg
             return
         end if
+        ! LCOV_EXCL_STOP
 
     end function constructChainFileContents
 
@@ -181,11 +183,11 @@ contains
     !> @param[in]       chainFilePath   : The list of variable names corresponding to each axis of the domain of the objective function.
     !> @param[in]       chainFileForm   : The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`).
     !> @param[out]      Err             : An object of class [Err_type](@ref err_mod::err_type) containing information about whether an error has occurred.
-    !> @param[in]       chainSize       : The size of the chain in the chain file specified by the input `chainFilePath` (optional).
-    !> @param[in]       lenHeader       : The full length of the first line in the input file (the header line) (optional).
-    !> @param[in]       ndim            : The number of dimensions of the domain of the objective function (optional).
-    !> @param[in]       delimiter       : The delimiter symbol used in the chain file (optional).
-    !> @param[in]       targetChainSize : The final target size of the chain (in case the chain file is an interrupted simulation) (optional).
+    !> @param[in]       chainSize       : The size of the chain in the chain file specified by the input `chainFilePath` (**optional**).
+    !> @param[in]       lenHeader       : The full length of the first line in the input file (the header line) (**optional**).
+    !> @param[in]       ndim            : The number of dimensions of the domain of the objective function (**optional**).
+    !> @param[in]       delimiter       : The delimiter symbol used in the chain file (**optional**).
+    !> @param[in]       targetChainSize : The final target size of the chain (in case the chain file is an interrupted simulation) (**optional**).
     !>
     !> \warning
     !> `targetChainSize` must be `>= chainSize`, if provided. It is used for the allocation of the chain components.
@@ -194,7 +196,7 @@ contains
     !> `chainSize` must be `<= targetChainSize`. The first `chainSize` elements of the `CFC` components will contain
     !> the chain information read from the chain file. The chain component elements beyond `chainSize` will be set to zero.
     subroutine getChainFileContents(CFC,chainFilePath,chainFileForm,Err,chainSize,lenHeader,ndim,delimiter,targetChainSize)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChainFileContents
 #endif
         use FileContents_mod, only: getNumRecordInFile
@@ -211,12 +213,12 @@ contains
         type(Err_type)  , intent(out)                   :: Err
         character(*)    , intent(in), optional          :: delimiter
         integer(IK)     , intent(in), optional          :: chainSize, lenHeader, ndim, targetChainSize
-        logical                                         :: fileExists, fileIsOpen, delimHasBegun, delimHasEnded, isBinary, isCompact, isVerbose
-        integer(IK)                                     :: chainFileUnit, i, iState, delimiterLen, chainSizeDefault
+        character(:)    , allocatable                   :: chainFilePathTrimmed, thisForm
         type(String_type)                               :: Record
-        character(:), allocatable                       :: chainFilePathTrimmed, thisForm
+        integer(IK)                                     :: chainFileUnit, i, iState, delimiterLen, chainSizeDefault
         integer(IK)                                     :: irowLastUniqueSample
         integer(IK)                                     :: numColTot
+        logical                                         :: fileExists, fileIsOpen, delimHasBegun, delimHasEnded, isBinary, isCompact, isVerbose
 
         Err%occurred = .false.
         chainFilePathTrimmed = trim(adjustl(chainFilePath))
@@ -236,17 +238,21 @@ contains
             elseif (getLowerCase(chainFileForm)=="verbose") then
                 isVerbose = .false.
             else
+                ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME//": Unrecognized chain file form: "//chainFileForm
                 return
+                ! LCOV_EXCL_STOP
             end if
 
             if (isBinary) then
                 thisForm = "unformatted"
                 if (.not. present(ndim) .or. .not. present(lenHeader) .or. .not. present(delimiter)) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": If the chain file is in binary form, chainSize, lenHeader, delimiter, and ndim must be provided by the user."
                     return
+                    ! LCOV_EXCL_STOP
                 end if
             else
                 thisForm = "formatted"
@@ -254,9 +260,11 @@ contains
 
             if (fileIsOpen) then
                 if (chainFileUnit==-1) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": The file located at: "//chainFilePathTrimmed//NLC//"is open, but no unit is connected to the file."//NLC
                     return
+                    ! LCOV_EXCL_STOP
                 else
                     close(chainFileUnit)
                 end if
@@ -273,28 +281,30 @@ contains
                         , status = "old" &
                         , form = thisForm &
                         , iostat = Err%stat &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                         , SHARED &
 #endif
                         )
                     if (Err%stat/=0) then
+                        ! LCOV_EXCL_START
                         Err%occurred = .true.
                         Err%msg = PROCEDURE_NAME//": Unable to open the file located at: "//chainFilePathTrimmed//NLC
                         return
+                        ! LCOV_EXCL_STOP
                     end if
                     if (allocated(Record%value)) deallocate(Record%value)
                     allocate( character(lenHeader) :: Record%value )
                     read(chainFileUnit) Record%value
                     block
-                        integer(IK)             :: processID
-                        integer(IK)             :: delRejStage
-                        real(RK)                :: meanAccRate
-                        real(RK)                :: adaptation
-                        integer(IK)             :: burninLoc
-                        integer(IK)             :: weight
-                        real(RK)                :: logFunc
-                        real(RK), allocatable   :: State(:)
-                        allocate(State(ndim))
+                        integer(IK)             :: processID ! LCOV_EXCL_LINE
+                        integer(IK)             :: delRejStage ! LCOV_EXCL_LINE
+                        real(RK)                :: meanAccRate ! LCOV_EXCL_LINE
+                        real(RK)                :: adaptation ! LCOV_EXCL_LINE
+                        integer(IK)             :: burninLoc ! LCOV_EXCL_LINE
+                        integer(IK)             :: weight ! LCOV_EXCL_LINE
+                        real(RK)                :: logFunc ! LCOV_EXCL_LINE
+                        real(RK), allocatable   :: State(:) ! LCOV_EXCL_LINE
+                        if (allocated(State)) deallocate(State); allocate(State(ndim))
                         chainSizeDefault = 0_IK
                         loopFindChainSizeDefault: do
                             read(chainFileUnit,iostat=Err%stat) processID, delRejStage, meanAccRate, adaptation, burninLoc, weight, logFunc, State
@@ -302,6 +312,7 @@ contains
                                 chainSizeDefault = chainSizeDefault + 1_IK
                             elseif (is_iostat_end(Err%stat)) then
                                 exit loopFindChainSizeDefault
+                            ! LCOV_EXCL_START
                             elseif (is_iostat_eor(Err%stat)) then
                                 Err%occurred = .true.
                                 Err%msg = PROCEDURE_NAME//": Incomplete record detected while reading the input binary chain file at: "//chainFilePathTrimmed//NLC
@@ -310,6 +321,7 @@ contains
                                 Err%occurred = .true.
                                 Err%msg = PROCEDURE_NAME//": IO error occurred while reading the input binary chain file at: "//chainFilePathTrimmed//NLC
                                 return
+                            ! LCOV_EXCL_STOP
                             end if
                         end do loopFindChainSizeDefault
                     end block
@@ -317,9 +329,11 @@ contains
                 else ! is not binary
                     call getNumRecordInFile(chainFilePathTrimmed,chainSizeDefault,Err,exclude="")
                     if (Err%occurred) then
+                    ! LCOV_EXCL_START
                         Err%msg = PROCEDURE_NAME//Err%msg
                         return
                     end if
+                    ! LCOV_EXCL_STOP
                     chainSizeDefault = chainSizeDefault - 1_IK ! subtract header
                 end if
             end if
@@ -376,15 +390,17 @@ contains
                     , status = "old" &
                     , form = thisForm &
                     , iostat = Err%stat &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                     , SHARED &
 #endif
                     )
                 if (Err%stat/=0) then
+                ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": Unable to open the file located at: "//chainFilePathTrimmed//"."//NLC
                     return
                 end if
+                ! LCOV_EXCL_STOP
 
                 read(chainFileUnit,*)   ! skip the header
                 read(chainFileUnit,"(A)") Record%value  ! read the first numeric row in string format
@@ -401,16 +417,20 @@ contains
                         if (delimHasBegun) then
                             delimHasEnded = .true.
                         else
+                            ! LCOV_EXCL_START
                             Err%occurred = .true.
                             Err%msg = PROCEDURE_NAME//": The file located at: " // chainFilePathTrimmed //NLC//&
                             "has unrecognizable format. Found "//Record%value(i:i)//" in the first column, while expecting positive integer."//NLC
                             return
+                            ! LCOV_EXCL_STOP
                         end if
                     else
                         if (i==1) then  ! here it is assumed that the first column in chain file always contains integers
+                            ! LCOV_EXCL_START
                             Err%occurred = .true.
                             Err%msg = PROCEDURE_NAME//": The file located at: "//chainFilePathTrimmed//NLC//"has unrecognizable format."//NLC
                             return
+                            ! LCOV_EXCL_STOP
                         else
                             delimHasBegun = .true.
                             delimiterLen = delimiterLen + 1
@@ -421,9 +441,11 @@ contains
                 end do loopSearchDelimiter
 
                 if (.not.(delimHasBegun.and.delimHasEnded)) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": The file located at: "//chainFilePathTrimmed//NLC//"has unrecognizable format. Could not identify the column delimiter."//NLC
                     return
+                    ! LCOV_EXCL_STOP
                 else
                     CFC%delimiter = trim(adjustl(CFC%delimiter(1:delimiterLen)))
                     delimiterLen = len(CFC%delimiter)
@@ -440,7 +462,7 @@ contains
             if (present(ndim)) then
                 CFC%ndim = ndim
             else
-                Record%Parts = Record%SplitStr(Record%value,CFC%delimiter,Record%nPart)
+                Record%Parts = Record%split(Record%value,CFC%delimiter,Record%nPart)
                 CFC%numDefCol = 0_IK
                 loopFindNumDefCol: do i = 1, Record%nPart
                     if ( index(string=Record%Parts(i)%record,substring="LogFunc") > 0 ) then
@@ -449,9 +471,11 @@ contains
                     end if
                 end do loopFindNumDefCol
                 if (CFC%numDefCol/=NUM_DEF_COL .or. CFC%numDefCol==0_IK) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg = PROCEDURE_NAME//": Internal error occurred. CFC%numDefCol/=NUM_DEF_COL: " // num2str(CFC%numDefCol) // num2str(NUM_DEF_COL)
                     return
+                    ! LCOV_EXCL_STOP
                 end if
                 CFC%ndim = Record%nPart - NUM_DEF_COL
             end if
@@ -463,14 +487,16 @@ contains
                 , status = "old" &
                 , form = thisForm &
                 , iostat = Err%stat &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                 , SHARED &
 #endif
                 )
             if (Err%stat/=0) then
+                ! LCOV_EXCL_START
                 Err%occurred = .true.
                 Err%msg = PROCEDURE_NAME//": Unable to open the file located at: "//chainFilePathTrimmed //"."//NLC
                 return
+                ! LCOV_EXCL_STOP
             end if
 
             ! first read the column headers
@@ -480,11 +506,11 @@ contains
                 allocate( character(lenHeader) :: Record%value )
                 read(chainFileUnit) Record%value
             else
-                allocate( character(99999) :: Record%value )    ! such huge allocation is rather redundant
+                allocate( character(99999) :: Record%value ) ! such huge allocation is rather redundant and is good for a ~4000 dimensional objective function.
                 read(chainFileUnit, "(A)" ) Record%value
             end if
-            CFC%ColHeader = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter)
-            do i = 1,size(CFC%ColHeader)
+            CFC%ColHeader = Record%split(trim(adjustl(Record%value)), CFC%delimiter, Record%npart)
+            do i = 1, Record%npart ! xxx is this trimming necessary?
                 CFC%ColHeader(i)%record = trim(adjustl(CFC%ColHeader(i)%record))
             end do
 
@@ -509,9 +535,11 @@ contains
                                                         , CFC%LogFunc                  (iState)    &
                                                         , CFC%State         (1:CFC%ndim,iState)
                     if (is_iostat_eor(Err%stat) .or. is_iostat_end(Err%stat)) then
+                    ! LCOV_EXCL_START
                         call warnUserAboutCorruptChainFile(iState)
                         exit loopReadBinary
                     end if
+                    ! LCOV_EXCL_STOP
                     CFC%Count%verbose = CFC%Count%verbose + CFC%Weight(iState)
                 end do loopReadBinary
 
@@ -519,10 +547,12 @@ contains
 
                 loopReadCompact: do iState = 1, chainSizeDefault
                     read(chainFileUnit, "(A)" ) Record%value
-                    Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
+                    Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
                     if (Record%nPart<numColTot) then
+                        ! LCOV_EXCL_START
                         call warnUserAboutCorruptChainFile(iState)
                         exit loopReadCompact
+                        ! LCOV_EXCL_STOP
                     else
                         read(Record%Parts(1)%record,*) CFC%ProcessID    (iState)
                         read(Record%Parts(2)%record,*) CFC%DelRejStage  (iState)
@@ -554,20 +584,22 @@ contains
                         integer(IK)             :: weight
                         real(RK)                :: logFunc
                         real(RK), allocatable   :: State(:)
-                        allocate(State(ndim))
+                        if (allocated(State)) deallocate(State); allocate(State(ndim))
 
                         irowLastUniqueSample = 0_IK
 
                         ! read the first sample
 
                         read(chainFileUnit, "(A)" ) Record%value
-                        Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
+                        Record%Parts = Record%split(trim(adjustl(Record%value)),CFC%delimiter,Record%nPart)
                         if (Record%nPart<numColTot) then
+                            ! LCOV_EXCL_START
                             call warnUserAboutCorruptChainFile(iState)
                             !exit blockChainSizeDefault
                             ! intel 2018 to 2019.05 yields internal compiler error with the above exit. Intel 19.1 and gnu 9.1 are fine.
                             ! The following is a workaround for now.
                             exit blockReadVerbose
+                            ! LCOV_EXCL_STOP
                         else
                             read(Record%Parts(1)%record,*) CFC%ProcessID(CFC%Count%compact)
                             read(Record%Parts(2)%record,*) CFC%DelRejStage(CFC%Count%compact)
@@ -587,10 +619,12 @@ contains
                         loopOverChainfFileContents: do iState = 2, chainSizeDefault
 
                             read(chainFileUnit, "(A)" ) Record%value
-                            Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),CFC%delimiter)
+                            Record%Parts = Record%split(trim(adjustl(Record%value)), CFC%delimiter, Record%nPart)
                             if (Record%nPart<numColTot) then
+                                ! LCOV_EXCL_START
                                 call warnUserAboutCorruptChainFile(iState)
                                 exit loopOverChainfFileContents
+                                ! LCOV_EXCL_STOP
                             else
                                 read(Record%Parts(1)%record,*) ProcessID
                                 read(Record%Parts(2)%record,*) DelRejStage
@@ -659,11 +693,13 @@ contains
             else
                 CFC%Count%verbose = chainSizeDefault
                 if (CFC%Count%verbose/=sum(CFC%Weight(1:CFC%Count%compact))) then
+                    ! LCOV_EXCL_START
                     Err%occurred = .true.
                     Err%msg =   PROCEDURE_NAME//": Internal error occurred. CountVerbose/=sum(Weight): "// &
                                 num2str(CFC%Count%verbose)//" /= "//num2str(sum(CFC%Weight(1:CFC%Count%compact)))// &
                                 ", CFC%Count%compact = "//num2str(CFC%Count%compact)
                     return
+                    ! LCOV_EXCL_STOP
                 elseif (.not. present(targetChainSize)) then
                     CFC%ProcessID     = CFC%ProcessID   (1:CFC%Count%compact)
                     CFC%DelRejStage   = CFC%DelRejStage (1:CFC%Count%compact)
@@ -684,14 +720,17 @@ contains
 
         else blockFileExistence
 
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME//": The chain file does not exist in the given file path: "//chainFilePathTrimmed
             return
+            ! LCOV_EXCL_STOP
 
         end if blockFileExistence
 
     contains
 
+        ! LCOV_EXCL_START
         subroutine warnUserAboutCorruptChainFile(lineNumber)
             implicit none
             integer(IK) :: lineNumber
@@ -708,6 +747,7 @@ contains
                         , msg = "An end-of-file or end-of-record condition occurred while parsing the contents of the chain file at line = "//num2str(lineNumber)//" with iostat = "//num2str(Err%stat)// &
                                 ". Assuming the previous line as the last line of the chain file..." &
                         )
+        ! LCOV_EXCL_STOP
         end subroutine warnUserAboutCorruptChainFile
 
     end subroutine getChainFileContents
@@ -723,7 +763,7 @@ contains
     !> @param[in]       startIndex      : The beginning index beyond which the component values will be reset.
     !> @param[in]       endIndex        : The ending index below which the component values will be reset.
     subroutine nullifyChainFileContents(CFC,startIndex,endIndex)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyChainFileContents
 #endif
         implicit none
@@ -748,13 +788,13 @@ contains
     !> @param[inout]    CFC             :   The object of class [ChainFileContents_type](@ref chainfilecontents_type).
     !> @param[in]       ndim            :   The number of dimensions of the domain of the objective function.
     !> @param[in]       isBinary        :   The logical flag indicating whether the file is in `binary` format.
-    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
+    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (**optional**).
     !>                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
     subroutine getLenHeader(CFC,ndim,isBinary,chainFileFormat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLenHeader
 #endif
-        use Constants_mod, only: IK
+        use Constants_mod, only: IK ! LCOV_EXCL_LINE
         use Err_mod, only: abort
         implicit none
         class(ChainFileContents_type), intent(inout)    :: CFC
@@ -772,9 +812,13 @@ contains
             if ( present(chainFileFormat) ) then
                 write(record,chainFileFormat) (CFC%ColHeader(i)%record, i=1,CFC%numDefCol+ndim)
             else
+                ! LCOV_EXCL_START
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
                 call abort(CFC%Err)
+                error stop
+                return
+                ! LCOV_EXCL_STOP
             end if
         end if
         CFC%lenHeader = len_trim(adjustl(record))
@@ -791,10 +835,10 @@ contains
     !> @param[in]       ndim            :   The number of dimensions of the domain of the objective function.
     !> @param[in]       chainFileUnit   :   The unit ID of the chain file to which the header should be written.
     !> @param[in]       isBinary        :   The logical flag indicating whether the file is in `binary` format.
-    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
+    !> @param[in]       chainFileFormat :   The Fortran IO formatting string to be used to read the contents of the chain file (**optional**).
     !>                                      This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
     subroutine writeHeader(CFC,ndim,chainFileUnit,isBinary,chainFileFormat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeHeader
 #endif
         use Constants_mod, only: IK
@@ -817,9 +861,13 @@ contains
             if ( present(chainFileFormat) ) then
                 write(chainFileUnit,chainFileFormat) (CFC%ColHeader(i)%record, i=1,CFC%numDefCol+ndim)
             else
+                ! LCOV_EXCL_START
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
                 call abort(CFC%Err)
+                error stop
+                return
+                ! LCOV_EXCL_STOP
             end if
         end if
     end subroutine writeHeader
@@ -836,11 +884,11 @@ contains
     !> @param[in]       compactEndIndex         :   The ending index of the compact chain below which the elements of the chain will be written to the output file.
     !> @param[in]       chainFileUnit           :   The unit ID of the chain file to which the header should be written.
     !> @param[in]       chainFileForm           :   The file format of the chain file (`"binary"` vs. `"compact"` vs. `"verbose"`).
-    !> @param[in]       chainFileFormat         :   The Fortran IO formatting string to be used to read the contents of the chain file (optional).
+    !> @param[in]       chainFileFormat         :   The Fortran IO formatting string to be used to read the contents of the chain file (**optional**).
     !>                                              This argument is only required with a non-binary chain file, i.e., when `isBinary = .false.`.
-    !> @param[in]       adaptiveUpdatePeriod    :   The adaptive update period (optional). It must be provided if `chainFileForm = "verbose"`.
+    !> @param[in]       adaptiveUpdatePeriod    :   The adaptive update period (**optional**). It must be provided if `chainFileForm = "verbose"`.
     subroutine writeChainFile(CFC,ndim,compactStartIndex,compactEndIndex,chainFileUnit,chainFileForm,chainFileFormat,adaptiveUpdatePeriod)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeChainFile
 #endif
         use Constants_mod, only: IK, RK
@@ -868,23 +916,31 @@ contains
         elseif (chainFileForm=="verbose") then
             isVerbose = .true.
         else
+            ! LCOV_EXCL_START
             CFC%Err%occurred = .true.
             CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. Unknown chain file format: "//chainFileForm
+            ! LCOV_EXCL_STOP
         end if
 
         if ( .not. isBinary .and. .not. present(chainFileFormat) ) then
+                ! LCOV_EXCL_START
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For formatted chain files, chainFileFormat must be given."
+                ! LCOV_EXCL_STOP
         end if
 
         if ( isVerbose .and. .not. present(adaptiveUpdatePeriod) ) then
+                ! LCOV_EXCL_START
                 CFC%Err%occurred = .true.
                 CFC%Err%msg = PROCEDURE_NAME//"Internal error occurred. For verbose chain files, adaptiveUpdatePeriod must be given."
+                ! LCOV_EXCL_STOP
         end if
 
         if (CFC%Err%occurred) then
+            ! LCOV_EXCL_START
             call abort(CFC%Err)
             return
+            ! LCOV_EXCL_STOP
         end if
 
         call CFC%writeHeader(ndim,chainFileUnit,isBinary,chainFileFormat)

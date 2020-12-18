@@ -1,9 +1,6 @@
 **The ParaMonte library is an honor-ware and its currency is acknowledgment and citations**.  
   
-As per the ParaMonte library license agreement terms, if you use any parts of 
-this library for any purposes, kindly acknowledge the use of ParaMonte in your 
-work (education/research/industry/development/...) by citing the ParaMonte 
-library's main publications as listed here:  
+If you use ParaMonte, please acknowledge it by citing the ParaMonte library's main publications as listed here:  
 
 ### The ParaMonte Python library  
 

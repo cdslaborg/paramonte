@@ -89,7 +89,7 @@ contains
                                 , methodName &
                                 !, chainSizeDef
                                 ) result(SpecDRAM)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSpecDRAM
 #endif
         use Constants_mod, only: IK
@@ -110,7 +110,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar( SpecDRAM , nd )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK
@@ -129,7 +129,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setFromInputFile( SpecDRAM, Err )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFromInputFile
 #endif
         use Constants_mod, only: IK, RK
@@ -144,7 +144,7 @@ contains
         call SpecDRAM%GreedyAdaptationCount         %set(greedyAdaptationCount)
         call SpecDRAM%DelayedRejectionCount         %set(delayedRejectionCount)
         call SpecDRAM%BurninAdaptationMeasure       %set(burninAdaptationMeasure)
-        call SpecDRAM%DelayedRejectionScaleFactorVec%set(delayedRejectionScaleFactorVec,delayedRejectionCount)
+        call SpecDRAM%DelayedRejectionScaleFactorVec%set(delayedRejectionCount, delayedRejectionScaleFactorVec)
     end subroutine setFromInputFile
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -158,7 +158,7 @@ contains
                                 , burninAdaptationMeasure           &
                                 , delayedRejectionScaleFactorVec    &
                                 )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFromInputArgs
 #endif
 
@@ -179,7 +179,7 @@ contains
         if (present(greedyAdaptationCount))             call SpecDRAM%GreedyAdaptationCount         %set(greedyAdaptationCount)
         if (present(delayedRejectionCount))             call SpecDRAM%DelayedRejectionCount         %set(delayedRejectionCount)
         if (present(burninAdaptationMeasure))           call SpecDRAM%BurninAdaptationMeasure       %set(burninAdaptationMeasure)
-        if (present(delayedRejectionScaleFactorVec))    call SpecDRAM%delayedRejectionScaleFactorVec%set(delayedRejectionScaleFactorVec,SpecDRAM%DelayedRejectionCount%val)
+        call SpecDRAM%delayedRejectionScaleFactorVec%set(SpecDRAM%DelayedRejectionCount%val, delayedRejectionScaleFactorVec)
 
     end subroutine setFromInputArgs
 
@@ -191,7 +191,7 @@ contains
                             , isLeaderImage         &
                             , splashModeRequested   &
                             )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: reportValues
 #endif
         use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
@@ -261,7 +261,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine checkForSanity(SpecDRAM,Err,methodName,nd)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Constants_mod, only: IK, RK

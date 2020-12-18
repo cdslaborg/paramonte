@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains procedures for computing the parallel performance of the parallel algorithms.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Parallelism_mod
 
@@ -69,37 +69,38 @@ module Parallelism_mod
     end type Image_type
 
     type, private :: Maximum_type
-        real(RK)                    :: value
-        integer(IK)                 :: nproc
+        real(RK)                    :: value            !<  The maximum speedup attained (or attainable).
+        integer(IK)                 :: nproc            !<  The required number of processes for maximum speedup.
     end type Maximum_type
 
     type, private :: Speedup_type
-        integer(IK)                 :: count
-        real(RK)                    :: current
-        type(Maximum_type)          :: Maximum
-        real(RK)    , allocatable   :: Scaling(:)
+        integer(IK)                 :: count            !<  The size of the `Scaling` vector.
+        real(RK)                    :: current          !<  The speedup given the current available number of processes.
+        type(Maximum_type)          :: Maximum          !<  An object of type [Maximum_type](@ref maximum_type), containing the predicted maximum speedup and process count.
+        real(RK)    , allocatable   :: Scaling(:)       !<  A real vector of length `Speedup_type%count` containing the predicted speedup for a range process counts.
     end type Speedup_type
 
     type, private :: UniqueProcess_type
-        integer(IK)                 :: count
-        integer(IK) , allocatable   :: Identity(:)
-        integer(IK) , allocatable   :: Frequency(:)
+        integer(IK)                 :: count            !<  The sizes of the two vector components `Identity` and `Frequency` of `UniqueProcess_type`.
+        integer(IK) , allocatable   :: Identity(:)      !<  A vector of size `UniqueProcess_type%count` containing the unique IDs of processes, i.e., the ranks of processes, starting from 1.
+        integer(IK) , allocatable   :: Frequency(:)     !<  The frequency with which the process IDs have contributed to the simulation at hand.
     end type UniqueProcess_type
 
     type, private, extends(UniqueProcess_type) :: Contribution_type
-        real(RK) , allocatable      :: LogFrequency(:)
+        real(RK) , allocatable      :: LogFrequency(:)  !<  The natural logarithm of the `Frequency` vector component of the type [UniqueProcess_type](@ref uniqueprocess_type).
     end type Contribution_type
 
     type, private :: SuccessProb_type
-        real(RK)                    :: current
-        real(RK)                    :: effective
-        type(PowellMinimum_type)    :: PowellMinimum
+        real(RK)                    :: current          !<  The probability of success in the Bernoulli trial. For example, the sampling efficiency of the ParaDRAM sampler.
+        real(RK)                    :: effective        !<  The computed effective probability of success inferred from fitting the Cyclic Geometric distribution.
+        type(PowellMinimum_type)    :: PowellMinimum    !<  An object of class [PowellMinimum_type](@ref optimization_mod::powellminimum_type) containing
+                                                        !<  information about the Cyclic Geometric fit to process contribution data.
     end type SuccessProb_type
 
     !> The `ForkJoin_type` class.
     type :: ForkJoin_type
         type(UniqueProcess_type)    :: UniqueProcess
-        type(Contribution_type)     :: Contribution ! similar to UniqueProcess, but including all processes, including zero contributors
+        type(Contribution_type)     :: Contribution     !<  Contains information similar to `UniqueProcess`, but including all processes, even zero contributors.
         type(SuccessProb_type)      :: SuccessProb
         type(Speedup_type)          :: Speedup
         type(Err_type)              :: Err
@@ -128,7 +129,9 @@ contains
     !> \warning
     !> This routine must not contain any synchronization statements under any circumstances.
     subroutine queryImage(Image)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: queryImage
+#endif
         use Constants_mod, only: RK, IK
         use String_mod, only: num2str
         implicit none
@@ -172,16 +175,19 @@ contains
     !> This routine global Coarray and MPI synchronization barriers and
     !> therefore, must be called by all processes in the current simulation.
     subroutine syncImages()
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: syncImages
+#endif
         implicit none
 #if defined MPI_ENABLED
         block
             use mpi
             integer(IK) :: ierrMPI
-            logical     :: isFinalized
-            call mpi_finalized( isFinalized, ierrMPI )
-            if (.not. isFinalized) then
+            !logical     :: isFinalized
+            !call mpi_finalized( isFinalized, ierrMPI )
+            !if (.not. isFinalized) then
                 call mpi_barrier(mpi_comm_world,ierrMPI)
-            end if
+            !end if
         end block
 #elif defined CAF_ENABLED
         sync all
@@ -196,8 +202,13 @@ contains
     !>
     !> \warning
     !> MPI communications will be shut down upon calling this routine and further interprocess communications will be impossible.
-    subroutine finalizeImages()
-#if defined MPI_ENABLED
+    subroutine finalizeImages() ! LCOV_EXCL_LINE
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: finalizeImages
+#endif
+#if defined CAF_ENABLED
+        sync all
+#elif defined MPI_ENABLED
         use mpi
         implicit none
         integer(IK) :: ierrMPI
@@ -227,9 +238,11 @@ contains
     !> \return
     !> `ForkJoin` : An object of class [ForkJoin_type](@ref forkjoin_type) containing the parallelization speedup.
     function constructForkJoin(processCount, lenProcessID, ProcessID, successProb, seqSecTime, parSecTime, comSecTime) result(ForkJoin) ! nonpure
-
-        use GeoCyclicFit_mod, only: fitGeoCyclicLogPDF
-        use Constants_mod, only: RK, IK
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: constructForkJoin
+#endif
+        use GeoCyclicFit_mod, only: fitGeoCyclicLogPDF ! LCOV_EXCL_LINE
+        use Constants_mod, only: IK, RK, SQRT_EPS_RK, NEGINF_RK
         use String_mod, only: num2str
         use Misc_mod, only: findUnique
         use Sort_mod, only: indexArray
@@ -238,7 +251,6 @@ contains
 
         integer(IK) , intent(in)    :: processCount, lenProcessID, ProcessID(lenProcessID)
         real(RK)    , intent(in)    :: successProb, seqSecTime, parSecTime, comSecTime
-        real(RK)                    :: targetSuccessProb
         type(ForkJoin_type)         :: ForkJoin
 
         character(*), parameter     :: PROCEDURE_NAME = MODULE_NAME // "@constructForkJoin()"
@@ -253,31 +265,35 @@ contains
 
         ForkJoin%Err%occurred = .false.
 
-        if (successProb<0._RK) then
+        if (successProb<-SQRT_EPS_RK .or. successProb>1._RK+SQRT_EPS_RK) then
             ForkJoin%Err%occurred = .true.
             ForkJoin%Err%msg = PROCEDURE_NAME // ": successProb must be a number between zero and one. The input value is: " // num2str(successProb)
             return
         end if
 
-        if (processCount==1_IK) then
+        if (processCount<1_IK) then
+            ForkJoin%Err%occurred = .true.
+            ForkJoin%Err%msg = PROCEDURE_NAME // ": processCount cannot be less than one. The input value is: " // num2str(processCount)
+            return
+        end if
+
+        if (processCount==1_IK .or. successProb <= SQRT_EPS_RK .or. successProb >= 1._RK+SQRT_EPS_RK) then
             ForkJoin%Speedup%Maximum%value = 1._RK
             ForkJoin%Speedup%Maximum%nproc = 1_IK
             ForkJoin%Speedup%current = 1._RK
             ForkJoin%Speedup%count = 1_IK
             ForkJoin%Speedup%Scaling = [1._RK]
             ForkJoin%Contribution%count = processCount
-            ForkJoin%Contribution%Identity = [1_IK]
-            ForkJoin%Contribution%Frequency = [lenProcessID]
-            ForkJoin%Contribution%LogFrequency = log(real(ForkJoin%Contribution%Frequency,kind=RK))
+            ForkJoin%Contribution%Identity = [( i, i = 1, processCount )]
+            allocate(ForkJoin%Contribution%Frequency(processCount), source = 0_IK)
+            ForkJoin%Contribution%Frequency(1) = lenProcessID
+            allocate(ForkJoin%Contribution%LogFrequency(processCount), source = NEGINF_RK)
+            ForkJoin%Contribution%LogFrequency(1) = log(real(ForkJoin%Contribution%Frequency(1),kind=RK))
             ForkJoin%UniqueProcess%count = 1_IK
             ForkJoin%UniqueProcess%Identity = [1_IK]
             ForkJoin%UniqueProcess%Frequency = [lenProcessID]
             ForkJoin%SuccessProb%current = successProb
             ForkJoin%SuccessProb%effective = successProb
-            return
-        elseif (processCount<1_IK) then
-            ForkJoin%Err%occurred = .true.
-            ForkJoin%Err%msg = PROCEDURE_NAME // ": processCount cannot be less than one. The input value is: " // num2str(processCount)
             return
         end if
 
@@ -299,25 +315,35 @@ contains
         allocate(Indx(ForkJoin%UniqueProcess%count))
         call indexArray( n = ForkJoin%UniqueProcess%count, Array = ForkJoin%UniqueProcess%Identity, Indx = Indx, Err = ForkJoin%Err )
         if (ForkJoin%Err%occurred) then
+            ! LCOV_EXCL_START
             ForkJoin%Err%msg = PROCEDURE_NAME // ForkJoin%Err%msg
             return
+            ! LCOV_EXCL_STOP
         end if
 
         ! get all processes contributions
 
         ForkJoin%UniqueProcess%Identity(:) = ForkJoin%UniqueProcess%Identity(Indx)
         ForkJoin%UniqueProcess%Frequency(:) = ForkJoin%UniqueProcess%Frequency(Indx)
+
         deallocate(Indx)
+
         ForkJoin%Contribution%count = processCount
-        if (allocated(ForkJoin%Contribution%LogFrequency)) deallocate(ForkJoin%Contribution%LogFrequency); allocate(ForkJoin%Contribution%LogFrequency(ForkJoin%Contribution%count), source = 0._RK)
-        if (allocated(ForkJoin%Contribution%Frequency)) deallocate(ForkJoin%Contribution%Frequency); allocate(ForkJoin%Contribution%Frequency(ForkJoin%Contribution%count), source = 0_IK)
-        if (allocated(ForkJoin%Contribution%Identity)) deallocate(ForkJoin%Contribution%Identity); allocate(ForkJoin%Contribution%Identity(ForkJoin%Contribution%count))
+        if (allocated(ForkJoin%Contribution%LogFrequency)) deallocate(ForkJoin%Contribution%LogFrequency);
+        allocate(ForkJoin%Contribution%LogFrequency(ForkJoin%Contribution%count), source = 0._RK)
+        if (allocated(ForkJoin%Contribution%Frequency)) deallocate(ForkJoin%Contribution%Frequency);
+        allocate(ForkJoin%Contribution%Frequency(ForkJoin%Contribution%count), source = 0_IK)
+        if (allocated(ForkJoin%Contribution%Identity)) deallocate(ForkJoin%Contribution%Identity);
+        allocate(ForkJoin%Contribution%Identity(ForkJoin%Contribution%count))
+
         ForkJoin%Contribution%Frequency(ForkJoin%UniqueProcess%Identity) = ForkJoin%UniqueProcess%Frequency
         ForkJoin%Contribution%Identity = [(i, i = 1, ForkJoin%Contribution%count)]
         if (ForkJoin%Contribution%Frequency(1)==0_IK) then
+            ! LCOV_EXCL_START
             ForkJoin%Err%occurred = .true.
             ForkJoin%Err%msg = PROCEDURE_NAME//": The contribution of the first process to the simulation is zero. This is highly unusual and requires further investigation."
             return
+            ! LCOV_EXCL_STOP
         end if
         do i = 1, ForkJoin%Contribution%count
             ! TODO: xxx a better solution instead of this ad-hoc approach would be to fit for the GeoCyclicCDF. Amir.
@@ -329,51 +355,42 @@ contains
         end do
 
         ForkJoin%SuccessProb%current = successProb
-        if (ForkJoin%SuccessProb%current>0._RK .and. ForkJoin%SuccessProb%current<1._RK) then
-
-            ! fit for the effective successProb
-
-            ForkJoin%SuccessProb%PowellMinimum = fitGeoCyclicLogPDF ( maxNumTrial = processCount &
-                                                                    , numTrial = ForkJoin%Contribution%count &
-                                                                    , SuccessStep = ForkJoin%Contribution%Identity &
-                                                                    , LogCount = ForkJoin%Contribution%LogFrequency &
-                                                                    )
-            if (ForkJoin%SuccessProb%PowellMinimum%Err%occurred) then
-                ForkJoin%Err = ForkJoin%SuccessProb%PowellMinimum%Err
-                ForkJoin%Err%msg = PROCEDURE_NAME // ForkJoin%Err%msg
-                return
-            end if
-
-            targetSuccessProb = ForkJoin%SuccessProb%PowellMinimum%xmin(1)
-
-        elseif (ForkJoin%SuccessProb%current==0._RK .or. ForkJoin%SuccessProb%current==1._RK) then
-
-            targetSuccessProb = ForkJoin%SuccessProb%current
-
-        else
-
-            ForkJoin%Err%occurred = .true.
-            ForkJoin%Err%msg = PROCEDURE_NAME // ": The input successProb cannot be larger than one or less than zero. The current input value is "//num2str(ForkJoin%SuccessProb%current)
-            return
-
-        end if
 
         ! fit for the effective successProb
 
-        call getForkJoinSpeedup ( successProb = targetSuccessProb &                             ! max(mcmcSamplingEfficiency, ForkJoin%SuccessProb%PowellMinimum%xmin(1)) & ! avoid unstable estimates of the effective efficiency.
+        ForkJoin%SuccessProb%PowellMinimum = fitGeoCyclicLogPDF ( maxNumTrial = processCount & ! LCOV_EXCL_LINE
+                                                                , numTrial = ForkJoin%Contribution%count & ! LCOV_EXCL_LINE
+                                                                , SuccessStep = ForkJoin%Contribution%Identity & ! LCOV_EXCL_LINE
+                                                                , LogCount = ForkJoin%Contribution%LogFrequency & ! LCOV_EXCL_LINE
+                                                                )
+        if (ForkJoin%SuccessProb%PowellMinimum%Err%occurred) then
+            ! LCOV_EXCL_START
+            ForkJoin%Err = ForkJoin%SuccessProb%PowellMinimum%Err
+            ForkJoin%Err%msg = PROCEDURE_NAME // ForkJoin%Err%msg
+            return
+            ! LCOV_EXCL_STOP
+        end if
+
+        ForkJoin%SuccessProb%effective = ForkJoin%SuccessProb%PowellMinimum%xmin(1)
+
+        ! fit for the effective successProb
+
+        call getForkJoinSpeedup ( successProb = ForkJoin%SuccessProb%effective &                ! max(mcmcSamplingEfficiency, ForkJoin%SuccessProb%PowellMinimum%xmin(1)) & ! avoid unstable estimates of the effective efficiency.
                                 , seqSecTime = epsilon(seqSecTime) &                            ! time cost of the sequential section of the code, which is negligible here.
                                 , parSecTime = parSecTime &                                     ! the serial runtime for the parallel section of the code.
                                 , comSecTimePerProc = comSecTime / (processCount - 1) &         ! the communication overhead for each additional image beyond master.
                                 , minMaxNumProc = 2 * processCount &                            ! speedup will be computed at least up to this process count, if not more.
                                 , Speedup = ForkJoin%Speedup%Scaling &                          ! returned Speedup.
-                                , lenSpeedup = ForkJoin%Speedup%count &                         ! length of the returned Speedup vector.
+                                , lenSpeedup = ForkJoin%Speedup%count &                         ! length of the returned `Speedup%Scaling` vector.
                                 , maxSpeedup = ForkJoin%Speedup%Maximum%value &                 ! returned maximum speedup.
                                 , maxSpeedupNumProc = ForkJoin%Speedup%Maximum%nproc &          ! returned number of processes for maximum speedup.
                                 , Err = ForkJoin%Err &
                                 )
         if (ForkJoin%Err%occurred) then
+            ! LCOV_EXCL_START
             ForkJoin%Err%msg = PROCEDURE_NAME // ForkJoin%Err%msg
             return
+            ! LCOV_EXCL_STOP
         end if
         ForkJoin%Speedup%current = ForkJoin%Speedup%Scaling(processCount)
 
@@ -395,7 +412,9 @@ contains
     !> @param[out]  maxSpeedup          :   The maximum speedup for any number of processors.
     !> @param[out]  Err                 :   An object of [Err_type](@ref err_mod::err_type) class indicating whether and error has occurred upon return.
     subroutine getForkJoinSpeedup(successProb, seqSecTime, parSecTime, comSecTimePerProc, minMaxNumProc, Speedup, lenSpeedup, maxSpeedupNumProc, maxSpeedup, Err)
-
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getForkJoinSpeedup
+#endif
         use Statistics_mod, only: getLogProbGeoCyclic
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
@@ -418,6 +437,7 @@ contains
         real(RK)                                    :: serialRuntime, parSecTimePerProc, comSecTime
         integer(IK)                                 :: numProc, lenSpeedupNew !, maxNumProc
         logical                                     :: maxSpeedupFound, isPresentErr
+        integer(IK), parameter                      :: SuccessStep(*) = [1_IK]
 
         isPresentErr = present(Err)
         if (isPresentErr) Err%occurred = .false.
@@ -445,16 +465,16 @@ contains
                 lenSpeedup = lenSpeedupNew
             end if
 
-
             ! compute the fraction of work done by the first image
 
             if (successProb==0._RK) then
                 FirstImageContribution(1) = 1._RK / numProc
             else
+
                 FirstImageContribution = exp(getLogProbGeoCyclic( successProb = successProb &
                                                                 , maxNumTrial = numProc &
                                                                 , numTrial = 1_IK &
-                                                                , SuccessStep = [1_IK] &
+                                                                , SuccessStep = SuccessStep &
                                                                 ) )
             end if
 
@@ -474,8 +494,9 @@ contains
                 maxSpeedupFound = .true.
             end if
 
-            if (numProc<ABS_MAX_NUM_PROC) cycle loopOverProc
+            if (numProc<ABS_MAX_NUM_PROC) cycle loopOverProc ! LCOV_EXCL_LINE
 
+            ! LCOV_EXCL_START
             if (isPresentErr) then
                 Err%occurred = .true.
                 Err%msg =   PROCEDURE_NAME // &
@@ -483,6 +504,7 @@ contains
                             num2str(ABS_MAX_NUM_PROC) // " processes."
             end if
             return
+            ! LCOV_EXCL_STOP
 
         end do loopOverProc
 

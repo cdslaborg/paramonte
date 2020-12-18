@@ -46,7 +46,7 @@
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 #if defined UNIFORM
 
@@ -102,7 +102,9 @@
        !type(AccRate_type)          :: AccRate
     contains
         procedure   , nopass        :: getNew
+#if defined PARADISE
         procedure   , nopass        :: getLogProb
+#endif
         procedure   , nopass        :: doAdaptation
        !procedure   , nopass        :: readRestartFile
        !procedure   , nopass        :: writeRestartFile
@@ -148,7 +150,6 @@
     real(RK)        , save  , allocatable   :: mc_DelayedRejectionScaleFactorVec(:)
     real(RK)        , save  , allocatable   :: mc_DomainLowerLimitVec(:)
     real(RK)        , save  , allocatable   :: mc_DomainUpperLimitVec(:)
-    real(RK)        , save  , allocatable   :: mc_negLogVolUnitBall
     logical         , save  , allocatable   :: mc_isAsciiRestartFileFormat
     logical         , save  , allocatable   :: mc_isBinaryRestartFileFormat
     character(:)    , save  , allocatable   :: mc_MaxNumDomainCheckToWarnMsg
@@ -157,6 +158,9 @@
     character(:)    , save  , allocatable   :: mc_restartFileFormat
     character(:)    , save  , allocatable   :: mc_methodBrand
     character(:)    , save  , allocatable   :: mc_methodName
+#if defined UNIFORM
+    real(RK)        , save  , allocatable   :: mc_negLogVolUnitBall
+#endif
 
     ! the following had to be defined globally for the sake of restart file generation
 
@@ -191,7 +195,7 @@ contains
                                         , RestartFile &
                                         , isFreshRun &
                                         ) result(Proposal)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructProposalSymmetric
 #endif
         use Constants_mod, only: IK, RK, NULL_RK
@@ -201,6 +205,7 @@ contains
         use SpecBase_mod, only: SpecBase_type
         use SpecMCMC_mod, only: SpecMCMC_type
         use SpecDRAM_mod, only: SpecDRAM_type
+        use Matrix_mod, only: getCholeskyFactor
         use String_mod, only: num2str
         use Err_mod, only: abort
 #if defined UNIFORM
@@ -302,36 +307,23 @@ contains
 
         ! Now get the Cholesky Factor of the Covariance Matrix. Lower comv_CholDiagLower will be the CholFac
 
-        block
-            use Matrix_mod, only: getCholeskyFactor
-            !real(RK), allocatable :: CholeskyLower(:,:) ! dummy variable to avoid copy in / copy out
-            !CholeskyLower = comv_CholDiagLower(1:ndim,1:ndim,0)
-            !call getCholeskyFactor( ndim, CholeskyLower, comv_CholDiagLower(1:ndim,0,0) )
-            !comv_CholDiagLower(1:ndim,1:ndim,0) = CholeskyLower
-            ! The colon indexing avoids temporary array creation
-            call getCholeskyFactor( ndim, comv_CholDiagLower(:,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) )
-            call getInvCovMat()
-        end block
+        call getCholeskyFactor( ndim, comv_CholDiagLower(:,1:ndim,0), comv_CholDiagLower(1:ndim,0,0) ) ! The `:` instead of `1:ndim` avoids temporary array creation.
         if (comv_CholDiagLower(1,0,0)<0._RK) then
+        ! LCOV_EXCL_START
             ProposalErr%msg = mc_Image%name // PROCEDURE_NAME // ": Singular input covariance matrix by user was detected. This is strange.\nCovariance matrix lower triangle:"
             do j = 1, ndim
                 do i = 1, j
                     ProposalErr%msg = ProposalErr%msg // "\n" // num2str(comv_CholDiagLower(1:i,j,0))
                 end do
             end do
-#if defined CAF_ENABLED
-            sync all
-#elif defined MPI_ENABLED
-            block
-                use mpi
-                integer :: ierrMPI
-                call mpi_barrier(mpi_comm_world,ierrMPI)
-            end block
-#endif
             ProposalErr%occurred = .true.
             call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
             return
+        ! LCOV_EXCL_STOP
         end if
+
+        if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
+        call getInvCovMat()
         mv_logSqrtDetOld_save = sum(log( comv_CholDiagLower(1:ndim,0,0) ))
 
         ! Scale the higher-stage delayed-rejection Cholesky Lower matrices
@@ -390,7 +382,7 @@ contains
                     , counterDRS    &
                     , StateOld      &
                     ) result (StateNew)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNew
 #endif
         use Statistics_mod, only: GET_RANDOM_PROPOSAL
@@ -412,11 +404,11 @@ contains
 
         loopBoundaryCheck: do ! Check for the support Region consistency:
 #if defined UNIFORM || defined NORMAL
-            StateNew(1:nd) = GET_RANDOM_PROPOSAL( nd                                    &
-                                                , StateOld                              &
+            StateNew(1:nd) = GET_RANDOM_PROPOSAL( nd                                    & ! LCOV_EXCL_LINE
+                                                , StateOld                              & ! LCOV_EXCL_LINE
                                                 ! ATTN: The colon index in place of 1:nd below avoids the temporary array creation
-                                                , comv_CholDiagLower(:,1:nd,counterDRS) &
-                                                , comv_CholDiagLower(1:nd,0,counterDRS) &
+                                                , comv_CholDiagLower(:,1:nd,counterDRS) & ! LCOV_EXCL_LINE
+                                                , comv_CholDiagLower(1:nd,0,counterDRS) & ! LCOV_EXCL_LINE
                                                 )
 #endif
             if ( any(StateNew(1:nd)<=mc_DomainLowerLimitVec) .or. any(StateNew(1:nd)>=mc_DomainUpperLimitVec) ) then
@@ -427,7 +419,9 @@ contains
                 if (domainCheckCounter==mc_MaxNumDomainCheckToStop) then
                     ProposalErr%occurred = .true.
                     ProposalErr%msg = mc_MaxNumDomainCheckToStopMsg
+#if !defined CODECOV_ENABLED && ((!defined MATLAB_ENABLED && !defined PYTHON_ENABLED && !defined R_ENABLED) || defined CAF_ENABLED && defined MPI_ENABLED )
                     call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
+#endif
                     return
                 end if
                 cycle loopBoundaryCheck
@@ -439,6 +433,7 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+#if defined PARADISE
     !> \brief
     !> This procedure is a static method of the [ParaDXXXProposalNormal_type](@ref paradxxxproposalnormal_type)
     !> or [ParaDXXXProposalUniform_type](@ref paradxxxproposaluniform_type) classes.\n
@@ -451,11 +446,15 @@ contains
     !>
     !> \return
     !> `logProb` : The log probability of obtaining obtaining the new sample given the old sample.
+    ! LCOV_EXCL_START
     pure function getLogProb( nd                &
                             , counterDRS        &
                             , StateOld          &
                             , StateNew          &
                             ) result(logProb)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getLogProb
+#endif
 #if defined NORMAL
         use Statistics_mod, only: getLogProbMVN
 #elif defined UNIFORM
@@ -483,6 +482,8 @@ contains
                                     )
 #endif
     end function getLogProb
+    ! LCOV_EXCL_STOP
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -502,6 +503,9 @@ contains
     !> @param[out]      adaptationMeasure       :   The output real number in the range `[0,1]` indicating the amount of adaptation,
     !>                                              with zero indicating no adaptation and one indicating extreme adaptation to the extent
     !>                                              that the new adapted proposal distribution is completely different from the previous proposal.
+    !> \warning
+    !> This routine must be exclusively called by the leader images.
+    !>
     !> \remark
     !> For information on the meaning of `adaptationMeasure`, see the paper by Shahmoradi and Bagheri, 2020, whose PDF is available at:
     !> [https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler](https://www.cdslab.org/paramonte/notes/overview/preface/#the-paradram-sampler)
@@ -515,13 +519,13 @@ contains
                             , samplerUpdateSucceeded    &
                             , adaptationMeasure         &
                             )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: doAdaptation
 #endif
 
-        use Statistics_mod, only: getSamCovUpperMeanTrans, getWeiSamCovUppMeanTrans, mergeMeanCovUpper!, combineMeanCovUpper
+        use Statistics_mod, only: getSamCovUpperMeanTrans, getWeiSamCovUppMeanTrans, mergeMeanCovUpper ! LCOV_EXCL_LINE
         use Matrix_mod, only: getCholeskyFactor, getLogSqrtDetPosDefMat
-        use Constants_mod, only: RK, IK, EPS_RK
+        use Constants_mod, only: RK, IK ! , EPS_RK
         use String_mod, only: num2str
         use Err_mod, only: abort, warn
         implicit none
@@ -612,15 +616,15 @@ contains
                 ! Do not set the full boundaries' range `(1:nd)` for `comv_CholDiagLower` in the following subroutine call.
                 ! Setting the boundaries forces the compiler to generate a temporary array.
 
-                call mergeMeanCovUpper  ( nd            = nd                            &
-                                        , npA           = mv_sampleSizeOld_save         &
-                                        , MeanVecA      = mv_MeanOld_save               &
-                                        , CovMatUpperA  = CovMatUpperOld                &
-                                        , npB           = sampleSizeCurrent             &
-                                        , MeanVecB      = MeanCurrent                   &
-                                        , CovMatUpperB  = CovMatUpperCurrent            &
-                                        , MeanVecAB     = MeanNew                       &
-                                        , CovMatUpperAB = comv_CholDiagLower(:,1:nd,0)  &
+                call mergeMeanCovUpper  ( nd            = nd                            & ! LCOV_EXCL_LINE
+                                        , npA           = mv_sampleSizeOld_save         & ! LCOV_EXCL_LINE
+                                        , MeanVecA      = mv_MeanOld_save               & ! LCOV_EXCL_LINE
+                                        , CovMatUpperA  = CovMatUpperOld                & ! LCOV_EXCL_LINE
+                                        , npB           = sampleSizeCurrent             & ! LCOV_EXCL_LINE
+                                        , MeanVecB      = MeanCurrent                   & ! LCOV_EXCL_LINE
+                                        , CovMatUpperB  = CovMatUpperCurrent            & ! LCOV_EXCL_LINE
+                                        , MeanVecAB     = MeanNew                       & ! LCOV_EXCL_LINE
+                                        , CovMatUpperAB = comv_CholDiagLower(:,1:nd,0)  & ! LCOV_EXCL_LINE
                                         )
                 mv_MeanOld_save(1:nd) = MeanNew
 
@@ -642,6 +646,7 @@ contains
                 adaptationMeasureComputationNeeded = .true.
                 mv_sampleSizeOld_save = mv_sampleSizeOld_save + sampleSizeCurrent
 
+            ! LCOV_EXCL_START
             else blockPosDefCheck
 
                 adaptationMeasure = 0._RK
@@ -652,11 +657,11 @@ contains
 
                 ! it may be a good idea to add a warning message printed out here for the singularity occurrence
 
-                call warn   ( prefix = mc_methodBrand &
-                            , outputUnit = mc_logFileUnit &
-                            , marginTop = 0_IK &
-                            , marginBot = 0_IK &
-                            , msg = "Singularity occurred while updating the proposal distribution's covariance matrix." &
+                call warn   ( prefix = mc_methodBrand       & ! LCOV_EXCL_LINE
+                            , outputUnit = mc_logFileUnit   & ! LCOV_EXCL_LINE
+                            , marginTop = 0_IK              & ! LCOV_EXCL_LINE
+                            , marginBot = 0_IK              & ! LCOV_EXCL_LINE
+                            , msg = "Singularity occurred while updating the proposal distribution's covariance matrix." & ! LCOV_EXCL_LINE
                             )
 
                 ! recover the old upper covariance matrix
@@ -697,6 +702,7 @@ contains
                 end if
 
             end if blockPosDefCheck
+            ! LCOV_EXCL_STOP
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -780,6 +786,7 @@ contains
             end do
             call getLogSqrtDetPosDefMat(nd,CovMatUpperCurrent,logSqrtDetSum,singularityOccurred)
             if (singularityOccurred) then
+                ! LCOV_EXCL_START
                 write(mc_logFileUnit,"(A)")
                 write(mc_logFileUnit,"(A)") "Singular covariance matrix detected while computing the Adaptation measure:"
                 write(mc_logFileUnit,"(A)")
@@ -799,10 +806,23 @@ contains
                                 &Otherwise, restarting the simulation might resolve the error."
                 call abort( Err = ProposalErr, prefix = mc_methodBrand, newline = "\n", outputUnit = mc_logFileUnit )
                 return
+                ! LCOV_EXCL_STOP
             end if
+
             !adaptationMeasure = 1._RK - exp( 0.5_RK*(mv_logSqrtDetOld_save+logSqrtDetNew) - logSqrtDetSum )
-            adaptationMeasure = sqrt( 1._RK - exp( 0.5*(mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum ) ) ! totalVariationUpperBound
+            adaptationMeasure = 1._RK - exp( 0.5*(mv_logSqrtDetOld_save + logSqrtDetNew) - logSqrtDetSum ) ! totalVariationUpperBound
+            if (adaptationMeasure>0._RK) then
+                adaptationMeasure = sqrt(adaptationMeasure) ! totalVariationUpperBound
+            ! LCOV_EXCL_START
+            elseif (adaptationMeasure<0._RK) then
+                call warn   ( prefix = mc_methodBrand &
+                            , outputUnit = mc_logFileUnit &
+                            , msg = mc_negativeTotalVariationMsg//num2str(adaptationMeasure) )
+                adaptationMeasure = 0._RK
+            end if
+            ! LCOV_EXCL_STOP
             mv_logSqrtDetOld_save = logSqrtDetNew
+
 !block
 !integer, save :: counter = 0
 !counter = counter + 1
@@ -817,13 +837,6 @@ contains
 !write(*,*)
 !end if
 !end block
-
-            if (adaptationMeasure<0._RK) then
-                call warn   ( prefix = mc_methodBrand &
-                            , outputUnit = mc_logFileUnit &
-                            , msg = mc_negativeTotalVariationMsg//num2str(adaptationMeasure) )
-                adaptationMeasure = 0._RK
-            end if
 
             ! update the higher-stage delayed-rejection Cholesky Lower matrices
 
@@ -846,11 +859,13 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    ! LCOV_EXCL_START
     ! ATTN: This routine needs further correction for the delayed rejection method
+#if false
     subroutine doAutoTune   ( adaptationMeasure &
                             , AutoTuneScaleSq   &
                             )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: doAutoTune
 #endif
         use Matrix_mod, only: getLogSqrtDetPosDefMat
@@ -897,11 +912,13 @@ contains
         adaptationMeasure = 1._RK - exp( 0.5_RK*(logSqrtDetOld+logSqrtDetNew) - logSqrtDetSum )
 
     end subroutine doAutoTune
+    ! LCOV_EXCL_STOP
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! Note: based on some benchmarks with ndim = 1, the new design with merging cholesky diag and lower is faster than the original
-    ! Note: double communication. Here are some timings on 4 images:
+    ! Note: double-communication, implementation. Here are some timings on 4 images:
     ! Note: new single communication:
     ! Note: image 2: avgTime =  6.960734060198531E-006
     ! Note: image 3: avgTime =  7.658279491640721E-006
@@ -914,10 +931,15 @@ contains
     ! Note: avg(avgTime): 1.532153060760448e-05
     ! Note: avg(speedup): 1.924798889020109
     ! Note: One would expect this speed up to diminish as ndim goes to infinity,
-    ! Note: since data transfer will dominate communication overhead.
-    ! broadcast adaptation to all images
+    ! Note: since data transfer will dominate the communication overhead.
+    !> \brief
+    !> Broadcast adaptation to all images.
+    !> \warning
+    !> When CAF parallelism is used, this routine must be exclusively called by the rooter images.
+    !> When MPI parallelism is used, this routine must be called by all images.
+#if defined CAF_ENABLED || MPI_ENABLED
     subroutine bcastAdaptation()
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: bcastAdaptation
 #endif
 #if defined CAF_ENABLED
@@ -925,20 +947,22 @@ contains
         comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0) = comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)[1]
         if (mc_delayedRejectionRequested) call updateDelRejCholDiagLower()  ! update the higher-stage delayed-rejection Cholesky Lower matrices
 #elif defined MPI_ENABLED
-        use mpi
+        use mpi ! LCOV_EXCL_LINE
         implicit none
         integer :: ierrMPI
-        call mpi_bcast  ( comv_CholDiagLower    &   ! buffer: XXX: first element is not needed to be shared. This may need a fix in future
-                        , mc_ndimSqPlusNdim     &   ! count
-                        , mpi_double_precision  &   ! datatype
-                        , 0                     &   ! root: broadcasting rank
-                        , mpi_comm_world        &   ! comm
-                        , ierrMPI               &   ! ierr
+        call mpi_bcast  ( comv_CholDiagLower    & ! LCOV_EXCL_LINE ! buffer: XXX: first element need not be shared. This may need a fix in future.
+                        , mc_ndimSqPlusNdim     & ! LCOV_EXCL_LINE ! count
+                        , mpi_double_precision  & ! LCOV_EXCL_LINE ! datatype
+                        , 0                     & ! LCOV_EXCL_LINE ! root: broadcasting rank
+                        , mpi_comm_world        & ! LCOV_EXCL_LINE ! comm
+                        , ierrMPI               & ! LCOV_EXCL_LINE ! ierr
                         )
+        ! It is essential for the following to be exclusively done by the rooter images. The leaders have had their updates in `doAdaptation()`.
         if (mc_Image%isRooter .and. mc_delayedRejectionRequested) call updateDelRejCholDiagLower()
 #endif
         call getInvCovMat()
     end subroutine bcastAdaptation
+#endif
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -957,19 +981,19 @@ contains
     !> the corresponding argument of [getInvMatFromCholFac](ref matrix_mod::getinvmatfromcholfac) to guarantee it to the compiler.
     !> More than improving performance, this would turn off the pesky compiler warnings about temporary array creation.
     subroutine getInvCovMat()
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInvCovMat
 #endif
-        use Matrix_mod, only: getInvMatFromCholFac
+        use Matrix_mod, only: getInvMatFromCholFac ! LCOV_EXCL_LINE
         implicit none
         integer(IK) :: istage
         ! update the inverse covariance matrix of the proposal from the computed Cholesky factor
         do concurrent(istage=0:mc_DelayedRejectionCount)
             ! WARNING: Do not set the full boundaries' range `(1:mc_ndim)` for the first index of `comv_CholDiagLower` in the following subroutine call.
             ! WARNING: Setting the boundaries forces the compiler to generate a temporary array.
-            mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim &
-                                                                            , CholeskyLower = comv_CholDiagLower(:,1:mc_ndim,istage) &
-                                                                            , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) &
+            mv_InvCovMat(1:mc_ndim,1:mc_ndim,istage) = getInvMatFromCholFac ( nd = mc_ndim & ! LCOV_EXCL_LINE
+                                                                            , CholeskyLower = comv_CholDiagLower(:,1:mc_ndim,istage) & ! LCOV_EXCL_LINE
+                                                                            , Diagonal = comv_CholDiagLower(1:mc_ndim,0,istage) & ! LCOV_EXCL_LINE
                                                                             )
             mv_logSqrtDetInvCovMat(istage) = -sum(log( comv_CholDiagLower(1:mc_ndim,0,istage) ))
         end do
@@ -993,7 +1017,7 @@ contains
     !> The performance of this update could be improved by only updating the higher-stage covariance, only when needed.
     !> However, the gain will be likely minimal, especially in low-dimensions.
     subroutine updateDelRejCholDiagLower()
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: updateDelRejCholDiagLower
 #endif
         implicit none
@@ -1016,9 +1040,9 @@ contains
     !> This procedure is called by the sampler kernel routines.\n
     !> Write the restart information to the output file.
     !>
-    !> @param[in]   meanAccRateSinceStart : The current mean acceptance rate of the sampling (optional).
+    !> @param[in]   meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
     subroutine writeRestartFile(meanAccRateSinceStart)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRestartFile
 #endif
         implicit none
@@ -1038,7 +1062,7 @@ contains
                                                             , "adaptiveScaleFactorSquared" & ! adaptiveScaleFactorSq
                                                             , mv_adaptiveScaleFactorSq_save * mc_defaultScaleFactorSq &
                                                             , "meanVec" & ! MeanOld(1:ndim)
-                                                            , mv_MeanOld_save(1:mc_ndim) &
+                                                            , mv_MeanOld_save(1:mc_ndim) & ! LCOV_EXCL_LINE
                                                             , "covMat" & ! CholDiagLower(1:ndim,0:ndim,0)
                                                             , ((comv_CholDiagLower(i,j,0),i=1,j),j=1,mc_ndim)
                                                            !, (comv_CholDiagLower(1:mc_ndim,0:mc_ndim,0)
@@ -1054,9 +1078,9 @@ contains
     !> This procedure is called by the sampler kernel routines.\n
     !> Read the restart information from the restart file.
     !>
-    !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (optional).
+    !> @param[out]  meanAccRateSinceStart : The current mean acceptance rate of the sampling (**optional**).
     subroutine readRestartFile(meanAccRateSinceStart)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: readRestartFile
 #endif
         implicit none

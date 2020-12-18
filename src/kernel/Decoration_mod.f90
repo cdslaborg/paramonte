@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains classes and procedures for decorating and outputting text.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Decoration_mod
 
@@ -100,7 +100,7 @@ module Decoration_mod
 
     interface
     module function constructDecoration(tabStr,symbol,text,List) result(Decoration)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructDecoration
 #endif
         use JaggedArray_mod, only: CharVec_type
@@ -115,7 +115,7 @@ module Decoration_mod
 
     interface
     module subroutine writeDecoratedText(text,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit,newLine)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedText
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -132,7 +132,7 @@ module Decoration_mod
 
     interface
     module subroutine writeDecoratedList(List,symbol,width,thicknessHorz,thicknessVert,marginTop,marginBot,outputUnit)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeDecoratedList
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -149,7 +149,7 @@ module Decoration_mod
 
     interface
     pure module function drawLine(symbol,width) result(line)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: drawLine
 #endif
         use Constants_mod, only: IK
@@ -164,7 +164,7 @@ module Decoration_mod
 
     interface
     pure module function sandwich(text,symbol,width,thicknessHorz) result(sandwichedText)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: sandwich
 #endif
         use Constants_mod, only: IK
@@ -187,7 +187,7 @@ module Decoration_mod
                             , advance       &
 #endif
                             )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: write
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -206,7 +206,7 @@ module Decoration_mod
 
     interface
     module function getListOfLines(string,delimiter) result(ListOfLines)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getListOfLines
 #endif
         implicit none
@@ -220,7 +220,7 @@ module Decoration_mod
 
     interface
     module function wrapText(string,width,split, pad) result(ListOfLines)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: wrapText
 #endif
         use Constants_mod, only: IK
@@ -236,8 +236,8 @@ module Decoration_mod
 
 !    interface
 !    module function style(string, attr, clbg, clfg, isUnixShell) result(modifiedString)
-!#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-!        !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat
+!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+!        !DEC$ ATTRIBUTES DLLEXPORT :: style
 !#endif
 !        implicit none
 !        character(*), intent(in)            :: string
@@ -257,7 +257,7 @@ contains
     !> Wrap the input text with ANSI/VT100 Control sequences to stylize and color the string.
     !>
     !> @param[in]   string      : The input string to be stylized.
-    !> @param[in]   attr        : The requested attribute (optional). It can be:
+    !> @param[in]   attr        : The requested attribute (**optional**). It can be:
     !>                            + `"off"`         : All attributes off (0).
     !>                            + `"bold"`        : Boldface text (1)
     !>                            + `"bright"`      : Bright text (1)
@@ -267,8 +267,8 @@ contains
     !>                            + `"reverse"`     : Reversed attributes text (7)
     !>                            + `"hidden"`      : Hidden text (8)
     !>                            The **default** value is "off".
-    !> @param[in]   clfg        : The Foreground color of the text (optional, see below for possible colors).
-    !> @param[in]   clbg        : The Background color of the text (optional, see below for possible colors).
+    !> @param[in]   clfg        : The Foreground color of the text (**optional**, see below for possible colors).
+    !> @param[in]   clbg        : The Background color of the text (**optional**, see below for possible colors).
     !>
     !> \return
     !> `modifiedString` : The output string wrapped with the requested style and coloring.
@@ -294,8 +294,8 @@ contains
     !
     !  For more information, see: https://misc.flogisoft.com/bash/tip_colors_and_formatting
     function style(string, attr, clfg, clbg) result(modifiedString)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: style
 #endif
         use Constants_mod, only: ESC
         implicit none
@@ -397,15 +397,15 @@ contains
 
     !> \brief
     !> Return an IO Fortran format given the input characteristics.
-    !> @param[in]   width       :   The width of the target IO record (optional, default = dynamically set).
-    !> @param[in]   precision   :   The precision of the target IO record if it happens to be a real number (optional, default = dynamically set).
-    !> @param[in]   delim       :   The delimiter of the target IO record if it happens multiple entries (optional, default = "").
-    !> @param[in]   prefix      :   The prefix of the target IO record (optional, default = "").
+    !> @param[in]   width       :   The width of the target IO record (**optional**, default = dynamically set).
+    !> @param[in]   precision   :   The precision of the target IO record if it happens to be a real number (**optional**, default = dynamically set).
+    !> @param[in]   delim       :   The delimiter of the target IO record if it happens multiple entries (**optional**, default = "").
+    !> @param[in]   prefix      :   The prefix of the target IO record (**optional**, default = "").
     !>
     !> \return
     !> `formatStr` : The output format string to be used in IO.
     pure function getGenericFormat(width,precision,delim,prefix) result(formatStr)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGenericFormat
 #endif
         ! generates IO format strings, primarily for use in the output report files of ParaMonte

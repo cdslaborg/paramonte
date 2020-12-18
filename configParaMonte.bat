@@ -112,7 +112,7 @@ if not defined                     COMPILER_SUITE set                    COMPILE
 REM if not defined                   COMPILER_VERSION set                  COMPILER_VERSION=19.0.4.245
 
 :: Intel Fortran compiler/linker debug build flags. Will be used only when compiler is intel and build mode BTYPE is set to debug.
-if not defined          INTEL_FORTRAN_DEBUG_FLAGS set         INTEL_FORTRAN_DEBUG_FLAGS=/debug:full /Zi /CB /Od /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /check:bounds /fpe-all:0 /Qdiag-error-limit:10 /Qdiag-disable:5268 /Qdiag-disable:7025 /Qtrapuv /check:noarg_temp_created
+if not defined          INTEL_FORTRAN_DEBUG_FLAGS set         INTEL_FORTRAN_DEBUG_FLAGS=/debug:full /Zi /CB /Od /Qinit:snan,arrays /warn:all /gen-interfaces /traceback /check:all /check:bounds /fpe-all:0 /Qdiag-error-limit:10 /Qdiag-disable:5268 /Qdiag-disable:7025 /Qdiag-disable:406 /Qtrapuv /check:noarg_temp_created
 
 :: Intel Fortran compiler/linker release build flags. Will be used only when compiler is intel and build mode BTYPE is set to release. /Qipo-c generates a single object file, containing all object files.
 REM if not defined        INTEL_FORTRAN_RELEASE_FLAGS set       INTEL_FORTRAN_RELEASE_FLAGS=/fast /O3 /Qip /Qipo /Qunroll /Qunroll-aggressive /inline:all /Ob2 /Qparallel /Qinline-dllimport

@@ -45,9 +45,9 @@
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 set(COMPILER_IS_PREDEFINED FALSE)
-if (DEFINED FC)
-    set (CMAKE_Fortran_COMPILER "${FC}")
+if (DEFINED CMAKE_Fortran_COMPILER)
     set (COMPILER_IS_PREDEFINED TRUE)
+    message ( STATUS "${pmnote} Setting the compiler choice to the user-requested compiler path: ${CMAKE_Fortran_COMPILER}" )
 endif()
 
 # if (DEFINED MPI_Fortran_COMPILER)

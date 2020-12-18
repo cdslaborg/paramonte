@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains the class and procedures for setting or resetting the random seed of the processor(s).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module RandomSeed_mod
 
@@ -83,15 +83,15 @@ contains
     !> containing the information and methods for setting and resetting the random seed.
     !>
     !> @param[in]   imageID         :   The ID of the current process.
-    !> @param[in]   inputSeed       :   The optional scalar integer based upon which the seed of the random number generator will be set (optional).
-    !> @param[in]   isRepeatable    :   The logical flag indicating whether the random number sequence must be repeatable upon each restart (optional).
-    !> @param[in]   isImageDistinct :   The logical flag indicating whether the random seed must be distinct on each processor from others (optional).
+    !> @param[in]   inputSeed       :   The optional scalar integer based upon which the seed of the random number generator will be set (**optional**).
+    !> @param[in]   isRepeatable    :   The logical flag indicating whether the random number sequence must be repeatable upon each restart (**optional**).
+    !> @param[in]   isImageDistinct :   The logical flag indicating whether the random seed must be distinct on each processor from others (**optional**).
     !>
     !> \return
     !> `RandomSeed` : An object of class [RandomSeed_type](@ref randomseed_type) containing the information and methods for
     !> setting and resetting the random seed.
     function constructRandomSeed(imageID, inputSeed, isRepeatable, isImageDistinct) result(RandomSeed)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructRandomSeed
 #endif
         implicit none
@@ -108,10 +108,12 @@ contains
 
         RandomSeed%imageID = imageID
         if (RandomSeed%imageID<1_IK) then
+        ! LCOV_EXCL_START
             RandomSeed%Err%occurred = .true.
             RandomSeed%Err%msg = PROCEDURE_NAME // ": Internal error occurred. imageID cannot be less than 1."
             return
         end if
+        ! LCOV_EXCL_STOP
 
         RandomSeed%isRepeatable = .false.
         if (present(isRepeatable)) RandomSeed%isRepeatable = isRepeatable
@@ -120,8 +122,8 @@ contains
         if (present(isImageDistinct)) RandomSeed%isImageDistinct = isImageDistinct
 
         call RandomSeed%set(inputSeed)
-        ! LCOV_EXCL_START
         if (RandomSeed%Err%occurred) then
+        ! LCOV_EXCL_START
             RandomSeed%Err%msg = PROCEDURE_NAME // RandomSeed%Err%msg
             return
         end if
@@ -138,7 +140,7 @@ contains
     !>
     !> @param[inout]    RandomSeed  :   An object of class [RandomSeed_type](@ref randomseed_type).
     subroutine getRandomSeed(RandomSeed)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRandomSeed
 #endif
         implicit none
@@ -159,12 +161,12 @@ contains
     !> Get the size and value of the current random seed.
     !>
     !> @param[inout]    RandomSeed  :   An object of class [RandomSeed_type](@ref randomseed_type).
-    !> @param[in]       inputSeed   :   The optional scalar integer based upon which the seed of the random number generator will be set (optional).
+    !> @param[in]       inputSeed   :   The optional scalar integer based upon which the seed of the random number generator will be set (**optional**).
     !>
     !> \warning
     !> Upon return from this procedure, the value of `RandomSeed%Err%occurred` must be checked for the occurrence of any potential errors.
     subroutine setRandomSeed(RandomSeed,inputSeed)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRandomSeed
 #endif
         use Constants_mod, only: IK, RK, HUGE_IK
@@ -195,8 +197,8 @@ contains
                 if (scalarSeed<=huge(scalarSeed) ) exit
                 scalarSeed = scalarSeed - huge(scalarSeed)
             end do
-            ! LCOV_EXCL_START
             if (scalarSeed==0_IK) then
+            ! LCOV_EXCL_START
                 RandomSeed%Err%occurred = .true.
                 RandomSeed%Err%msg = PROCEDURE_NAME // ": Random seed cannot be zero."
                 return
@@ -281,7 +283,7 @@ contains
 !    subroutine random_init(repeatable, image_distinct, info, Err, ProcessID)
 !
 !        use iso_fortran_env, only: int64
-!#if defined IFORT_ENABLED
+!#if defined INTEL_COMPILER_ENABLED
 !        use ifport
 !#endif
 !        use Err_mod, only: Err_type

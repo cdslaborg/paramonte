@@ -23,10 +23,9 @@ contains
     !> \param[out]  photonFluence   :   The fluence in units of photon counts within the input energy range.
     !> \param[out]  Err             :   An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
     module subroutine getPhotonFluence(lowerLim,upperLim,epk,alpha,beta,tolerance,photonFluence,Err)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPhotonFluence
 #endif
-
        !use Integration_mod, only: doQuadRombClosed
         use Constants_mod, only: IK, RK, HUGE_RK
         use QuadPackSPR_mod, only: qag
@@ -143,6 +142,9 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getBandCompLowPhoton(energy) result(bandCompLow)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getBandCompLowPhoton
+#endif
         implicit none
         real(RK), intent(in)    :: energy
         real(RK)                :: bandCompLow

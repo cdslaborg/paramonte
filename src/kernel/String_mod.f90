@@ -80,7 +80,7 @@ module String_mod
         type(CharVec_type), allocatable   :: Parts(:)       !< The string parts.
         integer(IK)                       :: nPart = 0_IK   !< The number of parts in the string.
     contains
-        procedure, nopass :: splitStr, replaceStr, getLowerCase, getUpperCase, isInteger, isDigit
+        procedure, nopass :: split, replaceStr, getLowerCase, getUpperCase, isInteger, isDigit
         procedure, nopass :: str2int, str2real, str2int32, str2int64, str2real32, str2real64
         procedure, nopass :: pad => padString
     end type String_type
@@ -120,7 +120,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure recursive function replaceStr(string,search,substitute) result(modifiedString)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: replaceStr
 #endif
         implicit none
@@ -156,9 +156,99 @@ contains
     !> \brief
     !> Split the input string string with the input `substitute` in the input `string` and return the result.
     !>
+    !> \param[in]       string  :   The input string.
+    !> \param[in]       delim   :   The delimiter to be used to split the input string.
+    !> \param[out]      npart   :   The number of substrings resulting from splitting the string (**optional**).
+    !>
+    !> \return
+    !> `Parts` : An allocatable array of type [CharVec_type](@ref jaggedarray_mod::charvec_type)
+    !> containing the split parts of the input string.
+    !>
+    !> \remark
+    !> When `delim = ""`, this routine returns a jagged array of strings, each element of which is one
+    !> character of the input string.
+    !>
+    !> \remark
+    !> This procedure is a static method of the class [String_type](@ref string_type).
+    !>
+    !> \remark
+    !> This procedure should be preferred over the the legacy implementation [splitStr()](@ref splitstr)
+    !> that is kept only for legacy support. This routine is significantly faster than the legacy implementation
+    !> and its semantic behavior is identical to the Python3's `split()` string method, except when `delim` is empty.
+    !>
+    !> \author
+    ! Amir Shahmoradi, Friday Dec 4, 2020, 11:40 PM, Dallas, TX
+    function split(string,delim,npart) result(Parts)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: split
+#endif
+        implicit none
+        character(len=*)    , intent(in)            :: string, delim
+        integer(IK)         , intent(out), optional :: npart
+        type(CharVec_type)  , allocatable           :: Parts(:)
+        integer(IK)         , allocatable           :: PartEnd(:)
+        integer(IK)         , allocatable           :: PartBegin(:)
+        integer(IK)                                 :: dlmlenMinusOne
+        integer(IK)                                 :: strlen, dlmlen, npartMax, ipart, ibeg, iend, i
+        logical                                     :: npartIsPresent
+
+        dlmlen = len(delim)
+        strlen = len(string)
+        npartIsPresent = present(npart)
+
+        ! if dlm is empty, return the whole string split character by character
+
+        if (dlmlen==0_IK) then
+            allocate(Parts(strlen))
+            do ipart = 1, strlen
+                Parts(ipart)%record = string(ipart:ipart)
+            end do
+            if (npartIsPresent) npart = strlen
+            return
+        end if
+
+        npartMax = 1_IK + strlen / dlmlen ! There can be at most strlen + 1 splits
+        allocate(PartBegin(npartMax), PartEnd(npartMax)) ! This will contain the beginning and the ends of the splits.
+        dlmlenMinusOne = dlmlen - 1_IK
+
+        ibeg = 0_IK
+        ipart = 1_IK
+        PartBegin(ipart) = 1_IK
+        loopParseString: do
+
+            ibeg = ibeg + 1_IK
+            iend = ibeg + dlmlenMinusOne
+
+            if (strlen<iend) then ! the remaining part of the string is shorter than the delim
+                PartEnd(ipart) = strlen
+                exit loopParseString
+            elseif ( string(ibeg:iend) == delim ) then
+                PartEnd(ipart) = ibeg - 1_IK
+                ipart = ipart + 1_IK
+                PartBegin(ipart) = iend + 1_IK
+                ibeg = iend
+            end if
+
+        end do loopParseString
+
+        allocate(Parts(ipart))
+        do i = 1, ipart
+            Parts(i)%record = string(PartBegin(i):PartEnd(i))
+        end do
+        if (present(npart)) npart = ipart
+
+        deallocate(PartBegin, PartEnd)
+
+    end function split
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> Split the input string string with the input `substitute` in the input `string` and return the result.
+    !>
     !> \param[in]       string      :   The input string.
     !> \param[in]       delimiter   :   The delimiter to be used to split the input string.
-    !> \param[out]      nPart       :   The number of substrings resulting from splitting the string (optional).
+    !> \param[out]      nPart       :   The number of substrings resulting from splitting the string (**optional**).
     !>
     !> \return
     !> `Parts` : An allocatable array of type [CharVec_type](@ref jaggedarray_mod::charvec_type)
@@ -167,10 +257,18 @@ contains
     !> \remark
     !> This procedure is a static method of the class [String_type](@ref string_type).
     !>
+    !> \warning
+    !> This algorithm is only kept for archival purposes and should not be used in new development, unless the
+    !> implications and the behavior of this algorithm are fully understood. Use instead [split()](@ref split).
+    !>
+    !> \warning
+    !> The semantic behavior of this algorithm is different from [split()](@ref split).
+    !> Furthermore, this algorithm is slower than the alternative implementation in [split()](@ref split).
+    !>
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function splitStr(string,delimiter,nPart) result(Parts)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: splitStr
 #endif
 
@@ -189,6 +287,7 @@ contains
         if (delimLen==0) then
             allocate(Parts(1))
             Parts(1)%record = string
+            if (present(nPart)) nPart = 1_IK
             return
         end if
 
@@ -257,7 +356,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function isDigit(singleChar) result(stringIsDigit)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDigit
 #endif
         character(1), intent(in)    :: singleChar
@@ -289,7 +388,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function isInteger(string) result(stringIsInteger)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInteger
 #endif
         character(*), intent(in)    :: string
@@ -324,7 +423,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function getLowerCase(string) result(output)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCase
 #endif
         character(*), intent(in) :: string
@@ -355,7 +454,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function getUpperCase(string) result(output)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCase
 #endif
         character(*), intent(in) :: string
@@ -374,7 +473,7 @@ contains
 
 !    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to lower case
 !    pure function getLowerCaseOld(string)
-!#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLowerCaseOld
 !#endif
 !        implicit None
@@ -393,7 +492,7 @@ contains
 !
 !    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to upper case
 !    pure function getUpperCaseOld(string)
-!#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getUpperCaseOld
 !#endif
 !        implicit None
@@ -424,7 +523,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function log2str(logicalIn)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: log2str
 #endif
         implicit none
@@ -444,7 +543,7 @@ contains
     !> Convert the input 32-bit integer value to string, with the requested format, if provided.
     !>
     !> \param[in]   integerIn   :   The input integer value.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -453,10 +552,14 @@ contains
     !> \remark
     !> This procedure is a static method of the class [String_type](@ref string_type).
     !>
+    !> \todo
+    !> Currently, `minLen` must be smaller than `NUM2STR_MAXLEN`, for the code to function properly.
+    !> This has to be improved, similar to the `real2str` procedures.
+    !>
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function int322str(integerIn,formatIn,minLen)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: int322str
 #endif
         use, intrinsic :: iso_fortran_env, only: int32
@@ -485,7 +588,7 @@ contains
     !> Convert the input 64-bit integer value to string, with the requested format, if provided.
     !>
     !> \param[in]   integerIn   :   The input integer value.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the integer value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -494,10 +597,14 @@ contains
     !> \remark
     !> This procedure is a static method of the class [String_type](@ref string_type).
     !>
+    !> \todo
+    !> Currently, `minLen` must be smaller than `NUM2STR_MAXLEN`, for the code to function properly.
+    !> This has to be improved, similar to the `real2str` procedures.
+    !>
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function int642str(integerIn,formatIn,minLen)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: int642str
 #endif
         use, intrinsic :: iso_fortran_env, only: int64
@@ -526,7 +633,7 @@ contains
     !> Convert the input 32-bit real value to string, with the requested format, if provided.
     !>
     !> \param[in]   realIn      :   The input real value.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -538,16 +645,18 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real322str(realIn,formatIn,minLen)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: real322str
 #endif
         use, intrinsic :: iso_fortran_env, only: real32
         implicit none
-        real(real32), intent(in)           :: realIn
-        character(*), intent(in), optional :: formatIn
-        integer(IK) , intent(in), optional :: minLen
-        character(:), allocatable          :: real322str
-        allocate(character(NUM2STR_MAXLEN) :: real322str)
+        real(real32), intent(in)            :: realIn
+        character(*), intent(in), optional  :: formatIn
+        integer(IK) , intent(in), optional  :: minLen
+        character(:), allocatable           :: dumstr
+        character(:), allocatable           :: real322str
+        integer(IK)                         :: len_real322str
+        allocate(character(NUM2STR_MAXLEN)  :: real322str)
         if (present(formatIn)) then
             write(real322str,formatIn) realIn
         else
@@ -555,7 +664,14 @@ contains
         end if
         if (present(minLen)) then
             real322str = adjustl(real322str)
-            real322str = real322str(1:minLen)
+            len_real322str = len(real322str)
+            if (minLen>len_real322str) then
+                allocate(character(minLen) :: dumstr)
+                dumstr(1:len_real322str) = real322str
+                call move_alloc(from = dumstr, to = real322str)
+            else
+                real322str = real322str(1:minLen)
+            end if
         else
             real322str = trim(adjustl(real322str))
         end if
@@ -567,7 +683,7 @@ contains
     !> Convert the input 64-bit real value to string, with the requested format, if provided.
     !>
     !> \param[in]   realIn      :   The input real value.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -579,16 +695,18 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real642str(realIn,formatIn,minLen)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: real642str
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
         implicit none
-        real(real64), intent(in)           :: realIn
-        character(*), intent(in), optional :: formatIn
-        integer(IK) , intent(in), optional :: minLen
-        character(:), allocatable          :: real642str
-        allocate(character(NUM2STR_MAXLEN) :: real642str)
+        real(real64), intent(in)            :: realIn
+        character(*), intent(in), optional  :: formatIn
+        integer(IK) , intent(in), optional  :: minLen
+        character(:), allocatable           :: dumstr
+        character(:), allocatable           :: real642str
+        integer(IK)                         :: len_real642str
+        allocate(character(NUM2STR_MAXLEN)  :: real642str)
         if (present(formatIn)) then
             write(real642str,formatIn) realIn
         else
@@ -596,7 +714,14 @@ contains
         end if
         if (present(minLen)) then
             real642str = adjustl(real642str)
-            real642str = real642str(1:minLen)
+            len_real642str = len(real642str)
+            if (minLen>len_real642str) then
+                allocate(character(minLen) :: dumstr)
+                dumstr(1:len_real642str) = real642str
+                call move_alloc(from = dumstr, to = real642str)
+            else
+                real642str = real642str(1:minLen)
+            end if
         else
             real642str = trim(adjustl(real642str))
         end if
@@ -608,7 +733,7 @@ contains
     !> Convert an input vector of  64-bit real values to string, with the requested format, if provided.
     !>
     !> \param[in]   RealIn      :   The input vector of real values.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -620,15 +745,17 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real642str_1D(RealIn,formatIn,minLen)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: real642str_1D
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
         implicit none
-        real(real64), intent(in)           :: RealIn(:)
-        character(*), intent(in), optional :: formatIn
-        integer(IK) , intent(in), optional :: minLen
-        character(:), allocatable          :: real642str_1D
+        real(real64), intent(in)            :: RealIn(:)
+        character(*), intent(in), optional  :: formatIn
+        integer(IK) , intent(in), optional  :: minLen
+        character(:), allocatable           :: dumstr
+        character(:), allocatable           :: real642str_1D
+        integer(IK)                         :: len_real642str_1D
         allocate(character(NUM2STR_MAXLEN*size(RealIn)) :: real642str_1D)
         if (present(formatIn)) then
             write(real642str_1D,formatIn) RealIn
@@ -637,7 +764,14 @@ contains
         end if
         if (present(minLen)) then
             real642str_1D = adjustl(real642str_1D)
-            real642str_1D = real642str_1D(1:minLen)
+            len_real642str_1D = len(real642str_1D)
+            if (minLen>len_real642str_1D) then
+                allocate(character(minLen) :: dumstr)
+                dumstr(1:len_real642str_1D) = real642str_1D
+                call move_alloc(from = dumstr, to = real642str_1D)
+            else
+                real642str_1D = real642str_1D(1:minLen)
+            end if
         else
             real642str_1D = trim(adjustl(real642str_1D))
         end if
@@ -649,7 +783,7 @@ contains
     !> Convert an input 2D matrix of  64-bit real values to string, with the requested format, if provided.
     !>
     !> \param[in]   RealIn      :   The input 2D matrix of real values.
-    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (optional).
+    !> \param[in]   formatIn    :   The Fortran IO format to be used when writing the real value to the string (**optional**).
     !> \param[in]   minLen      :   The minimum length of the output string, adjusted to the left.
     !>
     !> \return
@@ -661,15 +795,17 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     pure function real642str_2D(RealIn,formatIn,minLen)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: real642str_2D
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
         implicit none
-        real(real64), intent(in)           :: RealIn(:,:)
-        character(*), intent(in), optional :: formatIn
-        integer(IK) , intent(in), optional :: minLen
-        character(:), allocatable          :: real642str_2D
+        real(real64), intent(in)            :: RealIn(:,:)
+        character(*), intent(in), optional  :: formatIn
+        integer(IK) , intent(in), optional  :: minLen
+        character(:), allocatable           :: real642str_2D
+        character(:), allocatable           :: dumstr
+        integer(IK)                         :: len_real642str_2D
         allocate(character(NUM2STR_MAXLEN*size(RealIn,1)*size(RealIn,2)) :: real642str_2D)
         if (present(formatIn)) then
             write(real642str_2D,formatIn) RealIn
@@ -678,7 +814,14 @@ contains
         end if
         if (present(minLen)) then
             real642str_2D = adjustl(real642str_2D)
-            real642str_2D = real642str_2D(1:minLen)
+            len_real642str_2D = len(real642str_2D)
+            if (minLen>len_real642str_2D) then
+                allocate(character(minLen) :: dumstr)
+                dumstr(1:len_real642str_2D) = real642str_2D
+                call move_alloc(from = dumstr, to = real642str_2D)
+            else
+                real642str_2D = real642str_2D(1:minLen)
+            end if
         else
             real642str_2D = trim(adjustl(real642str_2D))
         end if
@@ -702,7 +845,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2int(str,iostat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2int
 #endif
         use Constants_mod, only: IK
@@ -736,7 +879,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2int32(str,iostat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2int32
 #endif
         use, intrinsic :: iso_fortran_env, only: int32
@@ -770,7 +913,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2int64(str,iostat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2int64
 #endif
         use, intrinsic :: iso_fortran_env, only: int64
@@ -804,10 +947,10 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2real(str,iostat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real
 #endif
-        use Constants_mod, only: RK
+        use Constants_mod, only: RK ! LCOV_EXCL_LINE
         implicit none
         character(*), intent(in)        :: str
         integer, optional, intent(out)  :: iostat
@@ -838,7 +981,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2real32(str,iostat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real32
 #endif
         use, intrinsic :: iso_fortran_env, only: real32
@@ -860,8 +1003,8 @@ contains
     !> Convert an input string to 64-bit real value.
     !>
     !> \param[in]   str         :   The input string.
-    !> \param[in]   iostat      :   The Fortran IO status integer of default kind. Refer to the Fortran `read/write` functions
-    !>                              for the meaning of different output values for `iostat`.
+    !> \param[in]   iostat      :   The optional output Fortran IO status integer of default kind. Refer to the Fortran `read/write`
+    !>                              functions for the meaning of different output values for `iostat` (**optional**).
     !>
     !> \return
     !> `str2int` : The inferred 64-bit real value from the input string.
@@ -872,7 +1015,7 @@ contains
     !> \author
     ! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function str2real64(str,iostat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: str2real64
 #endif
         use, intrinsic :: iso_fortran_env, only: real64
@@ -883,6 +1026,7 @@ contains
         if (present(iostat)) then
             iostat = 0
             read(str,*,iostat=iostat) str2real64
+            if (iostat/=0) str2real64 = -huge(1._real64)
         else
             read(str,*) str2real64
         endif
@@ -902,7 +1046,10 @@ contains
     !> \remark
     !> Note that `symbol` can be a string of any length. However, if the full lengths of symbols do not fit
     !> at the end of the padded output string, the symbol will be cut at the end of the output padded string.
-    function padString(string, symbol, paddedLen) result(paddedString)
+    pure function padString(string, symbol, paddedLen) result(paddedString)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: padString
+#endif
         use Constants_mod, only: IK
         implicit none
         character(*), intent(in)            :: string
@@ -910,9 +1057,9 @@ contains
         integer(IK) , intent(in)            :: paddedLen
         character(paddedLen)                :: paddedString
         character(:), allocatable           :: pad
-        integer(IK)                         :: stringLen, symbolLen, symbolCount, diff
-        stringLen = len(string)
-        if (stringLen>paddedLen) then
+        integer(IK)                         :: stringLen, symbolLen, symbolCount, diff ! LCOV_EXCL_LINE
+        stringLen = len(string) ! LCOV_EXCL_LINE
+        if (stringLen>=paddedLen) then
             paddedString = string
             return
         end if
