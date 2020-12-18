@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains procedures for computing the cross-correlation of time series data.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module CrossCorr_mod
 
@@ -64,8 +64,8 @@ contains
     !>
     !> @param[in]   np              : The number of data points in the input time series data.
     !> @param[in]   Point           : The input data series data vector.
-    !> @param[in]   Weight          : The vector of weights of the input data points (optional, default = array of ones).
-    !> @param[in]   batchSize       : The batch size (optional, default = computed from the input parameters).
+    !> @param[in]   Weight          : The vector of weights of the input data points (**optional**, default = array of ones).
+    !> @param[in]   batchSize       : The batch size (**optional**, default = computed from the input parameters).
     !>
     !> \return
     !> `iac` : The integrated autocorrelation (IAC) via the BatchMeans method.
@@ -73,7 +73,7 @@ contains
     !> \remark
     !> Note that np must be large enough to get a meaningful answer.
     function getBatchMeansIAC(np,Point,Weight,batchSize) result(iac)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBatchMeansIAC
 #endif
         use Constants_mod, only: IK, RK
@@ -206,14 +206,14 @@ contains
     !>
     !> @param[in]   np              :   The number of data points in the input time series data.
     !> @param[in]   Point           :   The input data series data vector.
-    !> @param[in]   Weight          :   The vector of weights of the input data points (optional, default = array of ones).
+    !> @param[in]   Weight          :   The vector of weights of the input data points (**optional**, default = array of ones).
     !> @param[in]   significance    :   The significance in units of standard deviation below which the autocorrelation is
-    !>                                  considered noise (optional, default = 2).
+    !>                                  considered noise (**optional**, default = 2).
     !>
     !> \return
     !> `iac` : The integrated autocorrelation (IAC).
     function getCumSumIAC(np,Point,Weight,significance) result(iac)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSumIAC
 #endif
         use Constants_mod, only: IK, RK
@@ -266,12 +266,12 @@ contains
     !>
     !> @param[in]   np              : The number of data points in the input time series data.
     !> @param[in]   Point           : The input data series data vector.
-    !> @param[in]   Weight          : The vector of weights of the input data points (optional, default = array of ones).
+    !> @param[in]   Weight          : The vector of weights of the input data points (**optional**, default = array of ones).
     !>
     !> \return
     !> `maxIAC` : The integrated autocorrelation (IAC).
     function getMaxCumSumIAC(np,Point,Weight) result(maxIAC)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxCumSumIAC
 #endif
         use Constants_mod, only: IK, RK
@@ -311,7 +311,7 @@ contains
     !> Return the smallest length of a vector that is a power of `base` and at least `base**2` times larger than the input length `actualLen`.
     !>
     !> @param[in]   actualLen   : The input vector length.
-    !> @param[in]   base        : The integer-valued base of the exponentiation (optional, default = `2`).
+    !> @param[in]   base        : The integer-valued base of the exponentiation (**optional**, default = `2`).
     !>
     !> \return
     !> `paddedLen` : The minimum power-of-`base` length given `actualLen`.
@@ -327,8 +327,8 @@ contains
     !> For weighted-data cross-correlation computation, try,
     !> `actualLen = max( sum(Weight1(1:actualLen1)), sum(Weight2(1:actualLen2)) )`.
     pure function getPaddedLen_IK(actualLen,base) result(paddedLen)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedLen
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedLen_IK
 #endif
         use Constants_mod, only: IK, RK
         integer(IK) , intent(in)            :: actualLen
@@ -346,7 +346,7 @@ contains
     !> Return the smallest length of a vector that is a power of `base` and at least `base**2` times larger than the input length `actualLen`.
     !>
     !> @param[in]   actualLen   : The real-valued input vector length.
-    !> @param[in]   base        : The real-valued base of the exponentiation (optional, default = `2.`).
+    !> @param[in]   base        : The real-valued base of the exponentiation (**optional**, default = `2.`).
     !>
     !> \return
     !> `paddedLen` : The minimum power-of-`base` length given `actualLen`.
@@ -362,8 +362,8 @@ contains
     !> For weighted-data cross-correlation computation, try,
     !> `actualLen = max( sum(Weight1(1:actualLen1)), sum(Weight2(1:actualLen2)) )`.
     pure function getPaddedLen_RK(actualLen,base) result(paddedLen)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedLen
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedLen_RK
 #endif
         use Constants_mod, only: IK, RK
         real(RK)    , intent(in)            :: actualLen
@@ -381,7 +381,7 @@ contains
     !> Return the exponent that yields the largest real number smaller than **or equal to** the input number `absoluteValue`.
     !>
     !> @param[in]   absoluteValue   : The input real number.
-    !> @param[in]   base            : The base of the exponentiation (optional, default = `2`).
+    !> @param[in]   base            : The base of the exponentiation (**optional**, default = `2`).
     !>
     !> \return
     !> `previousExponent` : The output minimum integer exponent.
@@ -389,7 +389,7 @@ contains
     !> \warning
     !> The input values for `absoluteValue` and `base` must be both larger than 1.
     pure function getPreviousExponent(absoluteValue,base) result(previousExponent)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPreviousExponent
 #endif
         use Constants_mod, only: IK, RK, INVLN2
@@ -409,7 +409,7 @@ contains
     !> Return the exponent that yields the smallest real number larger than **or equal to** the input number `absoluteValue`.
     !>
     !> @param[in]   absoluteValue   : The input real number.
-    !> @param[in]   base            : The base of the exponentiation (optional, default = `2`).
+    !> @param[in]   base            : The base of the exponentiation (**optional**, default = `2`).
     !>
     !> \warning
     !> The input values for `absoluteValue` and `base` must be both larger than 1.
@@ -417,7 +417,7 @@ contains
     !> \return
     !> `nextExponent` : The output minimum integer exponent.
     pure function getNextExponent(absoluteValue,base) result(nextExponent)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNextExponent
 #endif
         use Constants_mod, only: IK, RK, INVLN2
@@ -447,7 +447,7 @@ contains
     !> The input variable `paddedLen` must be a power of two, such that \f$2^\texttt{paddedLen}\f$
     !> represents the smallest integer larger than both `ndata1` and `ndata2`.
     pure function padZero(currentLen,Array,paddedLen) result(ArrayPadded)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: padZero
 #endif
         use Constants_mod, only: IK, RK
@@ -494,9 +494,10 @@ contains
     !> For autocorrelation, under the assumption of a completely random series,
     !> the ACF standard error reduces to: \f$\sqrt{ 1 / \texttt{paddedLen} }\f$
     function getCrossCorrFFT(paddedLen, PaddedData1, PaddedData2) result(CrossCorrFFT)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCrossCorrFFT
 #endif
+        use iso_fortran_env, only: output_unit
         use Constants_mod, only: IK, RK, CK
 
         implicit none
@@ -510,7 +511,7 @@ contains
         integer(IK)                             :: paddedLenHalf, paddedLenQuarter
 
         if (iand(paddedLen,paddedLen-1) /= 0) then
-            write(*,*) PROCEDURE_NAME//": paddedLen must be a power of 2."
+            write(output_unit,"(A)") PROCEDURE_NAME//": paddedLen must be a power of 2."
             error stop
         end if
 
@@ -549,9 +550,10 @@ contains
     !> Unlike [getCrossCorrFFT](@ref getcrosscorrfft), the input arguments `CompactData1`
     !> and `CompactData2` to this function can be the same arrays, as the `intent` of both is `in`.
     function getCrossCorrWeightedFFT(lenCompactData1, lenCompactData2, paddedLen, CompactData1, CompactData2, Weight1, Weight2) result(CrossCorrFFT)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCrossCorrWeightedFFT
 #endif
+        use iso_fortran_env, only: output_unit
         use Constants_mod, only: IK, RK, CK
         implicit none
         integer(IK), intent(in)                 :: lenCompactData1, lenCompactData2, paddedLen
@@ -565,7 +567,7 @@ contains
         integer(IK)                             :: paddedLenHalf, paddedLenQuarter
 
         if (iand(paddedLen,paddedLen-1) /= 0) then
-            write(*,*) PROCEDURE_NAME//": paddedLen must be a power of 2."
+            write(output_unit,"(A)") PROCEDURE_NAME//": paddedLen must be a power of 2."
             error stop
         end if
 
@@ -583,7 +585,7 @@ contains
 
     ! Here, `paddedLenQuarter` is 1/4 of the length of the input array, which is already padded with zeros.
     subroutine realft(paddedLen, paddedLenHalf, paddedLenQuarter, PaddedData, isign, Zdata)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: realft
 #endif
         use Constants_mod, only: IK, RK, CK
@@ -650,7 +652,7 @@ contains
 
     ! The `lenCompactData` is the length of the compact input array `CompactData`, which is NOT padded by default.
     subroutine realftWeighted(lenCompactData, paddedLen, paddedLenHalf, paddedLenQuarter, CompactData, Zdata, Weight)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: realftWeighted
 #endif
         use Constants_mod, only: IK, RK, CK
@@ -732,7 +734,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine four1(ndata,Data,isign)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: four1
 #endif
         use Constants_mod, only: IK, RK, CK, TWOPI
@@ -765,7 +767,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine fourrow(Data,isign)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: fourrow
 #endif
         use Constants_mod, only: IK, RK, CK, PI
@@ -817,7 +819,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     pure function getInverseSumNormedDataSq(nd,np,NormedData) result(InverseSumNormedDataSq)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInverseSumNormedDataSq
 #endif
         use Constants_mod, only: IK, RK
@@ -845,7 +847,7 @@ contains
     !> \param[in]   nlag                    :   The length of the input vector of lags.
     !> \param[in]   Lag                     :   The input vector of lags at which the autocorrelation must be computed.
     !> \param[out]  AutoCorr                :   The output AutoCorrelation matrix of shape `(nd,nlag)`.
-    !> \param[in]   InverseSumNormedDataSq  :   The inverse sum of the square of the input normalized data (optional).
+    !> \param[in]   InverseSumNormedDataSq  :   The inverse sum of the square of the input normalized data (**optional**).
     !>
     !> \remark
     !> If `InverseSumNormedDataSq` is provided, the computations will be slightly faster.
@@ -855,7 +857,7 @@ contains
     !> It is therefore highly inefficient and not recommended for use in HPC solutions.
     !> Use instead, [getCrossCorrFFT](@ref getcrosscorrfft) or [getCrossCorrWeightedFFT](@ref getcrosscorrweightedfft).
     pure subroutine getAutoCorrDirect(nd, np, NormedData, nlag, Lag, AutoCorr, InverseSumNormedDataSq)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAutoCorrDirect
 #endif
 

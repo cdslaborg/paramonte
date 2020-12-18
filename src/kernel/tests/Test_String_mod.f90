@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [String_mod](@ref string_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_String_mod
 
@@ -65,6 +65,11 @@ contains
         implicit none
 
         Test = Test_type(moduleName=MODULE_NAME)
+        call Test%run(test_split_1, "test_split_1")
+        call Test%run(test_split_2, "test_split_2")
+        call Test%run(test_split_3, "test_split_3")
+        call Test%run(test_split_4, "test_split_4")
+        call Test%run(test_split_5, "test_split_5")
         call Test%run(test_num2str_1, "test_num2str_1")
         call Test%run(test_num2str_2, "test_num2str_2")
         call Test%run(test_isDigit_1, "test_isDigit_1")
@@ -78,8 +83,10 @@ contains
         call Test%run(test_splitStr_2, "test_splitStr_2")
         call Test%run(test_splitStr_3, "test_splitStr_3")
         call Test%run(test_splitStr_4, "test_splitStr_4")
+        call Test%run(test_splitStr_5, "test_splitStr_5")
         call Test%run(test_padString_1, "test_padString_1")
         call Test%run(test_padString_2, "test_padString_2")
+        call Test%run(test_padString_3, "test_padString_3")
         call Test%run(test_isInteger_1, "test_isInteger_1")
         call Test%run(test_str2int32_1, "test_str2int32_1")
         call Test%run(test_str2int32_2, "test_str2int32_2")
@@ -94,9 +101,11 @@ contains
         call Test%run(test_real322str_1, "test_real322str_1")
         call Test%run(test_real322str_2, "test_real322str_2")
         call Test%run(test_real322str_3, "test_real322str_3")
+        call Test%run(test_real322str_4, "test_real322str_4")
         call Test%run(test_real642str_1, "test_real642str_1")
         call Test%run(test_real642str_2, "test_real642str_2")
         call Test%run(test_real642str_3, "test_real642str_3")
+        call Test%run(test_real642str_4, "test_real642str_4")
         call Test%run(test_str2real32_1, "test_str2real32_1")
         call Test%run(test_str2real32_2, "test_str2real32_2")
         call Test%run(test_str2real64_1, "test_str2real64_1")
@@ -112,9 +121,140 @@ contains
         call Test%run(test_real642str_1D_1, "test_real642str_1D_1")
         call Test%run(test_real642str_1D_2, "test_real642str_1D_2")
         call Test%run(test_real642str_1D_3, "test_real642str_1D_3")
+        call Test%run(test_real642str_1D_4, "test_real642str_1D_4")
+        call Test%run(test_real642str_2D_1, "test_real642str_2D_1")
+        call Test%run(test_real642str_2D_2, "test_real642str_2D_2")
+        call Test%run(test_real642str_2D_3, "test_real642str_2D_3")
+        call Test%run(test_real642str_2D_4, "test_real642str_2D_4")
         call Test%finalize()
 
     end subroutine test_String
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_split_1() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "  StringString "
+        String%Parts  = split(string=String%value,delim="String")
+        assertion = String%Parts(1)%record == "  " .and. String%Parts(2)%record == " "
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim='String') = ", (String%Parts(i)%record,i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_split_2() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "  Stringstring "
+        String%Parts  = split(string=String%value,delim='str')
+        assertion = String%Parts(1)%record == "  String" .and. String%Parts(2)%record == "ing "
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim='str') = ", (String%Parts(i)%record,i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_split_3() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "   "
+        String%Parts  = split(string=String%value,delim=' ')
+        assertion = String%Parts(1)%record == ""
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(A,*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_split_4() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "   "
+        String%Parts  = split(string = String%value, delim = " ", nPart = String%nPart)
+        assertion = String%nPart == 4_IK
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "String%nPart = ", String%nPart
+            write(Test%outputUnit,"(A,*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> When the input delim is empty, the whole string, split character by character, should be returned.
+    function test_split_5() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "ParaMonte"
+        String%Parts  = split(string = String%value, delim = "", nPart = String%nPart)
+        assertion = String%nPart == len(String%value)
+        do i = 1, len(String%value)
+            assertion = assertion .and. string%parts(i)%record == string%value(i:i)
+        end do
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "split(string=String%value,delim=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "String%nPart = ", String%nPart
+            write(Test%outputUnit,"(A,*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_split_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -126,14 +266,14 @@ contains
         integer             :: i
 
         String%value = "  StringString "
-        String%Parts  = String%splitStr(string=String%value,delimiter="String")
+        String%Parts  = splitStr(string=String%value,delimiter="String")
         assertion = String%Parts(1)%record == "  " .and. String%Parts(2)%record == " "
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
-            write(Test%outputUnit,"(*(g0))") "String%splitStr(string=String%value,delimiter='String') = ", (String%Parts(i)%record,i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delimiter='String') = ", (String%Parts(i)%record,i=1,size(String%Parts))
             write(Test%outputUnit,"(*(g0))")
         end if
         ! LCOV_EXCL_STOP
@@ -150,14 +290,14 @@ contains
         integer             :: i
 
         String%value = "  Stringstring "
-        String%Parts  = String%splitStr(string=String%value,delimiter='str')
+        String%Parts  = splitStr(string=String%value,delimiter='str')
         assertion = String%Parts(1)%record == "  String" .and. String%Parts(2)%record == "ing "
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
-            write(Test%outputUnit,"(*(g0))") "String%splitStr(string=String%value,delimiter='str') = ", (String%Parts(i)%record,i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delimiter='str') = ", (String%Parts(i)%record,i=1,size(String%Parts))
             write(Test%outputUnit,"(*(g0))")
         end if
         ! LCOV_EXCL_STOP
@@ -174,14 +314,14 @@ contains
         integer             :: i
 
         String%value = "   "
-        String%Parts  = String%splitStr(string=String%value,delimiter=' ')
+        String%Parts  = splitStr(string=String%value,delimiter=' ')
         assertion = String%Parts(1)%record == ""
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
-            write(Test%outputUnit,"(*(g0))") "String%splitStr(string=String%value,delimiter=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delimiter=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
             write(Test%outputUnit,"(A,*(g0))")
         end if
         ! LCOV_EXCL_STOP
@@ -198,20 +338,46 @@ contains
         integer             :: i
 
         String%value = "   "
-        String%Parts  = String%splitStr(string = String%value, delimiter = " ", nPart = String%nPart)
+        String%Parts  = splitStr(string = String%value, delimiter = " ", nPart = String%nPart)
         assertion = String%nPart == 1_IK
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
-            write(Test%outputUnit,"(*(g0))") "String%splitStr(string=String%value,delimiter=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delimiter=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
             write(Test%outputUnit,"(*(g0))") "String%nPart = ", String%nPart
             write(Test%outputUnit,"(A,*(g0))")
         end if
         ! LCOV_EXCL_STOP
 
     end function test_splitStr_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> When the input delim is empty, the whole string should be returned.
+    function test_splitStr_5() result(assertion)
+
+        implicit none
+        logical             :: assertion
+        type(String_type)   :: String
+        integer             :: i
+
+        String%value = "ParaMonte"
+        String%Parts  = splitStr(string = String%value, delimiter = "", nPart = String%nPart)
+        assertion = String%nPart == 1_IK .and. string%parts(1)%record == string%value
+
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "String%value = '", String%value, "'"
+            write(Test%outputUnit,"(*(g0))") "splitStr(string=String%value,delim=' ') = ", ("'"//String%Parts(i)%record//"'",i=1,size(String%Parts))
+            write(Test%outputUnit,"(*(g0))") "String%nPart = ", String%nPart
+            write(Test%outputUnit,"(A,*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+
+    end function test_splitStr_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -227,8 +393,8 @@ contains
         this = str2int(this_str)
         assertion = this == this_ref
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -254,8 +420,8 @@ contains
         this = str2int(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -277,11 +443,11 @@ contains
         integer(IK) , parameter :: this_ref = 123456_IK
         integer(IK)             :: this
 
-        this = str2int(this_str)
+        this = str2int32(this_str)
         assertion = this == this_ref
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -304,11 +470,11 @@ contains
         integer(IK)             :: this
         integer                 :: iostat
 
-        this = str2int(this_str, iostat)
+        this = str2int32(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -330,11 +496,11 @@ contains
         integer(IK) , parameter :: this_ref = 123456_IK
         integer(IK)             :: this
 
-        this = str2int(this_str)
+        this = str2int64(this_str)
         assertion = this == this_ref
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -357,11 +523,11 @@ contains
         integer(IK)             :: this
         integer                 :: iostat
 
-        this = str2int(this_str, iostat)
+        this = str2int64(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -386,8 +552,8 @@ contains
         this = str2real(this_str)
         assertion = this == this_ref
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -413,8 +579,8 @@ contains
         this = str2real(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -439,8 +605,8 @@ contains
         this = str2real32(this_str)
         assertion = this == this_ref
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -466,8 +632,8 @@ contains
         this = str2real32(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -492,8 +658,8 @@ contains
         this = str2real64(this_str)
         assertion = this == this_ref
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -519,8 +685,8 @@ contains
         this = str2real64(this_str, iostat)
         assertion = iostat /= 0 .or. (iostat == 0 .and. this == this_ref)
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_str  = '", this_str, "'"
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
@@ -637,8 +803,8 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int)
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
             write(Test%outputUnit,"(*(g0))") "this_str  = " , this_int
@@ -659,8 +825,8 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int,"(1I10.10)")
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
             write(Test%outputUnit,"(*(g0))") "this_str  = " , this_int
@@ -681,8 +847,8 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int,minlen=10_IK)
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
             write(Test%outputUnit,"(*(g0))") "this_str  = " , this_int
@@ -703,8 +869,8 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int)
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
             write(Test%outputUnit,"(*(g0))") "this_str  = " , this_int
@@ -725,8 +891,8 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int,"(1I20.20)")
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
             write(Test%outputUnit,"(*(g0))") "this_str  = " , this_int
@@ -747,8 +913,8 @@ contains
         character(:), allocatable   :: this
         this = num2str(this_int,minlen=20_int32)
         assertion = this == this_ref .and. len(this) == len(this_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = '", this_ref, "'"
             write(Test%outputUnit,"(*(g0))") "this_str  = " , this_int
@@ -768,8 +934,8 @@ contains
         real(RK)                    :: this
         this = str2real32( num2str(this_ref) )
         assertion = this == this_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
             write(Test%outputUnit,"(*(g0))") "this      = ", this
@@ -788,8 +954,8 @@ contains
         real(RK)                    :: this
         this = str2real32( num2str(this_ref,"(g0)") )
         assertion = this == this_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
             write(Test%outputUnit,"(*(g0))") "this      = ", this
@@ -808,8 +974,8 @@ contains
         real(RK)                    :: this
         this = str2real32( num2str(this_ref,"(g0)",20_IK) )
         assertion = this == this_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
             write(Test%outputUnit,"(*(g0))") "this      = ", this
@@ -817,6 +983,28 @@ contains
         end if
         ! LCOV_EXCL_STOP
     end function test_real322str_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> minLen can be larger than the length of the constructed string.
+    function test_real322str_4() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real32, IK => int32
+        implicit none
+        logical                     :: assertion
+        real(RK)    , parameter     :: this_ref = 1.23456798e-30_RK
+        real(RK)                    :: this
+        this = str2real32( num2str(this_ref,"(g0)",263_IK) )
+        assertion = this == this_ref
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
+            write(Test%outputUnit,"(*(g0))") "this      = ", this
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_real322str_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -828,8 +1016,8 @@ contains
         real(RK)                    :: this
         this = str2real64( num2str(this_ref) )
         assertion = this == this_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
             write(Test%outputUnit,"(*(g0))") "this      = ", this
@@ -848,8 +1036,8 @@ contains
         real(RK)                    :: this
         this = str2real64( num2str(this_ref,"(g0)") )
         assertion = this == this_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
             write(Test%outputUnit,"(*(g0))") "this      = ", this
@@ -868,8 +1056,8 @@ contains
         real(RK)                    :: this
         this = str2real64( num2str(this_ref,"(g0)",30_IK) )
         assertion = this == this_ref
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
             write(Test%outputUnit,"(*(g0))") "this      = ", this
@@ -877,6 +1065,28 @@ contains
         end if
         ! LCOV_EXCL_STOP
     end function test_real642str_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> minLen can be larger than the length of the constructed string.
+    function test_real642str_4() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64, IK => int32
+        implicit none
+        logical                     :: assertion
+        real(RK)    , parameter     :: this_ref = 1.23456798e-30_RK
+        real(RK)                    :: this
+        this = str2real64( num2str(this_ref,"(g0)",263_IK) )
+        assertion = this == this_ref
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
+            write(Test%outputUnit,"(*(g0))") "this      = ", this
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_real642str_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -892,8 +1102,8 @@ contains
         string = num2str(this_ref)
         read(string,*) this
         assertion = all(this == this_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
             write(Test%outputUnit,"(*(g0))") "this      = ", this
@@ -916,8 +1126,8 @@ contains
         string = num2str(this_ref,"(*(g0,:,' '))")
         read(string,*) this
         assertion = all(this == this_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
             write(Test%outputUnit,"(*(g0))") "this      = ", this
@@ -940,8 +1150,8 @@ contains
         string = num2str(this_ref,"(*(g0,:,' '))",63_IK)
         read(string,*) this
         assertion = all(this == this_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
             write(Test%outputUnit,"(*(g0))") "this      = ", this
@@ -949,6 +1159,130 @@ contains
         end if
         ! LCOV_EXCL_STOP
     end function test_real642str_1D_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> minLen can be larger than the length of the constructed string.
+    function test_real642str_1D_4() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64, IK => int32
+        implicit none
+        logical                     :: assertion
+        integer     , parameter     :: nthis = 2
+        real(RK)    , parameter     :: this_ref(nthis) = [1.23456798e-30_RK, 2.32456798e+30_RK]
+        real(RK)                    :: this(nthis)
+        character(:), allocatable   :: string
+        assertion = .true.
+        string = num2str(this_ref,"(*(g0,:,' '))",263_IK)
+        read(string,*) this
+        assertion = all(this == this_ref)
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
+            write(Test%outputUnit,"(*(g0))") "this      = ", this
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_real642str_1D_4
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_real642str_2D_1() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64
+        implicit none
+        logical                     :: assertion
+        integer     , parameter     :: nthis = 2
+        real(RK)    , parameter     :: this_ref(nthis,nthis) = reshape([1.23456798e-30_RK, 2.32456798e+30_RK, 1.23456798e-30_RK, 2.32456798e+30_RK], shape=shape(this_ref))
+        real(RK)                    :: this(nthis,nthis)
+        character(:), allocatable   :: string
+        assertion = .true.
+        string = num2str(this_ref)
+        read(string,*) this
+        assertion = all(this == this_ref)
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
+            write(Test%outputUnit,"(*(g0))") "this      = ", this
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_real642str_2D_1
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_real642str_2D_2() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64
+        implicit none
+        logical                     :: assertion
+        integer     , parameter     :: nthis = 2
+        real(RK)    , parameter     :: this_ref(nthis,nthis) = reshape([1.23456798e-30_RK, 2.32456798e+30_RK, 1.23456798e-30_RK, 2.32456798e+30_RK], shape=shape(this_ref))
+        real(RK)                    :: this(nthis,nthis)
+        character(:), allocatable   :: string
+        assertion = .true.
+        string = num2str(this_ref,"(*(g0,:,' '))")
+        read(string,*) this
+        assertion = all(this == this_ref)
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
+            write(Test%outputUnit,"(*(g0))") "this      = ", this
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_real642str_2D_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    function test_real642str_2D_3() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64, IK => int32
+        implicit none
+        logical                     :: assertion
+        integer     , parameter     :: nthis = 2
+        real(RK)    , parameter     :: this_ref(nthis,nthis) = reshape([1.23456798e-30_RK, 2.32456798e+30_RK, 1.23456798e-30_RK, 2.32456798e+30_RK], shape=shape(this_ref))
+        real(RK)                    :: this(nthis,nthis)
+        character(:), allocatable   :: string
+        assertion = .true.
+        string = num2str(this_ref,"(*(g0,:,' '))",128_IK)
+        read(string,*) this
+        assertion = all(this == this_ref)
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
+            write(Test%outputUnit,"(*(g0))") "this      = ", this
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_real642str_2D_3
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> minLen can be larger than the length of the constructed string.
+    function test_real642str_2D_4() result(assertion)
+        use, intrinsic :: iso_fortran_env, only: RK => real64, IK => int32
+        implicit none
+        logical                     :: assertion
+        integer     , parameter     :: nthis = 2
+        real(RK)    , parameter     :: this_ref(nthis,nthis) = reshape([1.23456798e-30_RK, 2.32456798e+30_RK, 1.23456798e-30_RK, 2.32456798e+30_RK], shape=shape(this_ref))
+        real(RK)                    :: this(nthis,nthis)
+        character(:), allocatable   :: string
+        assertion = .true.
+        string = num2str(this_ref,"(*(g0,:,' '))",256_IK)
+        read(string,*) this
+        assertion = all(this == this_ref)
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "this_ref  = ", this_ref
+            write(Test%outputUnit,"(*(g0))") "this      = ", this
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_real642str_2D_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1005,8 +1339,8 @@ contains
         type(RealStr_type)          :: RealStr
         RealStr%str = RealStr%real2str(123._real32,"(F10.4)",15)
         assertion = RealStr%str == "123.0000       "
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Number=123_real32"
             write(Test%outputUnit,"(*(g0))") "RealStr%str = '", RealStr%str, "'"
@@ -1024,8 +1358,8 @@ contains
         type(RealStr_type)          :: RealStr
         RealStr%str = RealStr%real2str(123._real64,"(F10.4)",15)
         assertion = RealStr%str == "123.0000       "
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "Number=123_real64"
             write(Test%outputUnit,"(*(g0))") "RealStr%str = '", RealStr%str, "'"
@@ -1037,18 +1371,18 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_padString_1() result(assertion)
-        use, intrinsic :: iso_fortran_env, only: int32, int64, real32, real64
+        use Constants_mod, only: IK
         implicit none
         logical                     :: assertion
-        integer     , parameter     :: paddedLen = 30
+        integer(IK) , parameter     :: paddedLen = 30_IK
         character(*), parameter     :: string_nonPadded = "ParaMonte"
         character(*), parameter     :: stringPadded_ref = "ParaMonte....................."
         character(*), parameter     :: symbol = "."
         character(:), allocatable   :: stringPadded
         stringPadded = padString(string_nonPadded, symbol, paddedLen)
         assertion = stringPadded == stringPadded_ref .and. len(stringPadded) == len(stringPadded_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "string_nonPadded  : '", string_nonPadded, "'"
             write(Test%outputUnit,"(*(g0))") "stringPadded_ref  : '", stringPadded_ref, "'"
@@ -1061,18 +1395,18 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function test_padString_2() result(assertion)
-        use, intrinsic :: iso_fortran_env, only: int32, int64, real32, real64
+        use Constants_mod, only: IK
         implicit none
         logical                     :: assertion
-        integer     , parameter     :: paddedLen = 9
+        integer(IK) , parameter     :: paddedLen = 9_IK
         character(*), parameter     :: string_nonPadded = "ParaMonte"
         character(*), parameter     :: stringPadded_ref = "ParaMonte"
         character(*), parameter     :: symbol = "."
         character(:), allocatable   :: stringPadded
         stringPadded = padString(string_nonPadded, symbol, paddedLen)
         assertion = stringPadded == stringPadded_ref .and. len(stringPadded) == len(stringPadded_ref)
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))") "string_nonPadded  : '", string_nonPadded, "'"
             write(Test%outputUnit,"(*(g0))") "stringPadded_ref  : '", stringPadded_ref, "'"
@@ -1081,6 +1415,32 @@ contains
         end if
         ! LCOV_EXCL_STOP
     end function test_padString_2
+
+!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    !> \brief
+    !> When `len(string) > paddedLen`, the full string must be returned without any padding.
+    function test_padString_3() result(assertion)
+        use Constants_mod, only: IK
+        implicit none
+        logical                     :: assertion
+        integer     , parameter     :: paddedLen = 5_IK
+        character(*), parameter     :: string_nonPadded = "ParaMonte"
+        character(*), parameter     :: stringPadded_ref = "ParaM"
+        character(*), parameter     :: symbol = "."
+        character(:), allocatable   :: stringPadded
+        stringPadded = padString(string_nonPadded, symbol, paddedLen)
+        assertion = stringPadded == stringPadded_ref .and. len(stringPadded) == paddedLen .and. stringPadded == stringPadded_ref
+        if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
+            write(Test%outputUnit,"(*(g0))")
+            write(Test%outputUnit,"(*(g0))") "string_nonPadded  : '", string_nonPadded, "'"
+            write(Test%outputUnit,"(*(g0))") "stringPadded_ref  : '", stringPadded_ref, "'"
+            write(Test%outputUnit,"(*(g0))") "stringPadded      : '", stringPadded, "'"
+            write(Test%outputUnit,"(*(g0))")
+        end if
+        ! LCOV_EXCL_STOP
+    end function test_padString_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

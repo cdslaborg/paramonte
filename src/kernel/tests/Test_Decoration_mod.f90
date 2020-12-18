@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [Decoration_mod](@ref decoration_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_Decoration_mod
 
@@ -276,24 +276,24 @@ contains
         Decoration%List(3)%record = "What is the origin of mass and matter?"
         Decoration%List(4)%record = "What is the origin of life?"
 
-        Decoration%text =   "\n\n" // &
-                            Decoration%List(1)%record // "\n\n" // &
-                            Decoration%List(2)%record // "\n\n" // &
-                            Decoration%List(3)%record // "\n\n" // &
+        Decoration%text =   "\n\n" // & ! LCOV_EXCL_LINE
+                            Decoration%List(1)%record // "\n\n" // & ! LCOV_EXCL_LINE
+                            Decoration%List(2)%record // "\n\n" // & ! LCOV_EXCL_LINE
+                            Decoration%List(3)%record // "\n\n" // & ! LCOV_EXCL_LINE
                             Decoration%List(4)%record // "\n\n\n"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Decoration_mod@test_writeDecoratedText_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Decoration_mod@test_writeDecoratedText_1."//num2str(Test%Image%id)//".out", status = "replace")
 
-        call Decoration%writeDecoratedText  ( Decoration%text &
-                                            , newLine="\n" &
-                                            , width = 32_IK &
-                                            , symbol = "&" &
-                                            , thicknessHorz = 4_IK &
-                                            , thicknessVert = 2_IK &
-                                            , marginTop = 2_IK &
-                                            , marginBot = 1_IK &
-                                            , outputUnit = fileUnit &
+        call Decoration%writeDecoratedText  ( Decoration%text & ! LCOV_EXCL_LINE
+                                            , newLine="\n" & ! LCOV_EXCL_LINE
+                                            , width = 32_IK & ! LCOV_EXCL_LINE
+                                            , symbol = "&" & ! LCOV_EXCL_LINE
+                                            , thicknessHorz = 4_IK & ! LCOV_EXCL_LINE
+                                            , thicknessVert = 2_IK & ! LCOV_EXCL_LINE
+                                            , marginTop = 2_IK & ! LCOV_EXCL_LINE
+                                            , marginBot = 1_IK & ! LCOV_EXCL_LINE
+                                            , outputUnit = fileUnit & ! LCOV_EXCL_LINE
                                             )
 
         rewind(fileUnit)
@@ -303,10 +303,8 @@ contains
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
             OutputList(i)%record = trim(adjustl(OutputList(i)%record))
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
@@ -368,18 +366,18 @@ contains
         Decoration%List(3)%record = "What is the origin of mass and matter?"
         Decoration%List(4)%record = "What is the origin of life?"
 
-        Decoration%text =   NLC//NLC// &
-                            Decoration%List(1)%record // NLC//NLC// &
-                            Decoration%List(2)%record // NLC//NLC// &
-                            Decoration%List(3)%record // NLC//NLC// &
+        Decoration%text =   NLC//NLC// & ! LCOV_EXCL_LINE
+                            Decoration%List(1)%record // NLC//NLC// & ! LCOV_EXCL_LINE
+                            Decoration%List(2)%record // NLC//NLC// & ! LCOV_EXCL_LINE
+                            Decoration%List(3)%record // NLC//NLC// & ! LCOV_EXCL_LINE
                             Decoration%List(4)%record // NLC//NLC//NLC
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Decoration_mod@test_writeDecoratedText_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Decoration_mod@test_writeDecoratedText_2."//num2str(Test%Image%id)//".out", status = "replace")
 
-        call Decoration%writeDecoratedText  ( Decoration%text &
-                                            , newLine = NLC &
-                                            , outputUnit = fileUnit &
+        call Decoration%writeDecoratedText  ( Decoration%text & ! LCOV_EXCL_LINE
+                                            , newLine = NLC & ! LCOV_EXCL_LINE
+                                            , outputUnit = fileUnit & ! LCOV_EXCL_LINE
                                             )
 
         rewind(fileUnit)
@@ -389,10 +387,8 @@ contains
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
             OutputList(i)%record = trim(adjustl(OutputList(i)%record))
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
@@ -447,7 +443,7 @@ contains
         Decoration%List(4)%record = "What is the origin of life?"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Decoration_mod@test_writeDecoratedList_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Decoration_mod@test_writeDecoratedList_1."//num2str(Test%Image%id)//".out", status = "replace")
 
         call Decoration%writeDecoratedList(Decoration%List, outputUnit = fileUnit)
 
@@ -458,10 +454,8 @@ contains
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
             OutputList(i)%record = trim(adjustl(OutputList(i)%record))
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
@@ -521,7 +515,7 @@ contains
         Decoration%List(4)%record = "What is the origin of life?"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Decoration_mod@test_writeDecoratedList_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Decoration_mod@test_writeDecoratedList_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         call Decoration%writeDecoratedList  ( Decoration%List &
                                             , symbol = "%" &
@@ -540,10 +534,8 @@ contains
             if(allocated(OutputList(i)%record)) deallocate(OutputList(i)%record)
             allocate(character(132) :: OutputList(i)%record)
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
             OutputList(i)%record = trim(adjustl(OutputList(i)%record))
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
@@ -769,26 +761,10 @@ contains
 
         assertion = nline == nline_ref
 
-        if (.not. assertion) then
-
-            if (Test%isDebugMode .and. .not. assertion) then
-            ! LCOV_EXCL_START
-                write(Test%outputUnit,"(*(g0))")
-                write(Test%outputUnit,"(*(g0))") "nline_ref = ", nline_ref
-                write(Test%outputUnit,"(*(g0))") "nline     = ", nline
-                write(Test%outputUnit,"(*(g0))")
-            end if
-            ! LCOV_EXCL_STOP
-
-            return
-
-        else
-
+        if (assertion) then
             do i = 1, nline
-
                 assertionCurrent = ListOfLines(i)%record == ListOfLines_ref(i)%record
                 assertion = assertion .and. assertionCurrent
-
                 if (Test%isDebugMode .and. .not. assertionCurrent) then
                 ! LCOV_EXCL_START
                     write(Test%outputUnit,"(*(g0))")
@@ -797,10 +773,18 @@ contains
                     write(Test%outputUnit,"(*(g0))")
                 end if
                 ! LCOV_EXCL_STOP
-
             end do
-
+        ! LCOV_EXCL_START
+        else
+            if (Test%isDebugMode .and. .not. assertion) then
+                write(Test%outputUnit,"(*(g0))")
+                write(Test%outputUnit,"(*(g0))") "nline_ref = ", nline_ref
+                write(Test%outputUnit,"(*(g0))") "nline     = ", nline
+                write(Test%outputUnit,"(*(g0))")
+            end if
+            return
         end if
+        ! LCOV_EXCL_STOP
 
     end function test_wrapText
 

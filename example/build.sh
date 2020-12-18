@@ -313,7 +313,11 @@ echo >&2 "-- ParaMonteExample${EXAMPLE_LANGUAGE} - MPI_ENABLED: ${MPI_ENABLED}"
 
 if [ "${MPI_ENABLED}" = "true" ] && [ "${PM_LIB_TYPE}" = "static" ]; then
     if [ "${EXAMPLE_LANGUAGE}" = "Fortran" ]; then
-        declare -a COMPILER_LIST=("mpiifort" "mpifort")
+        if [ "${PM_COMPILER_SUITE}" = "intel" ]; then
+            declare -a COMPILER_LIST=("mpiifort" "mpifort")
+        elif [ "${PM_COMPILER_SUITE}" = "gnu" ]; then
+            declare -a COMPILER_LIST=("mpifort" "mpiifort")
+        fi
     fi
     if [ "${EXAMPLE_LANGUAGE}" = "C" ]; then
         declare -a COMPILER_LIST=("mpiicc" "mpicc")
@@ -429,6 +433,10 @@ fi
 ####################################################################################################################################
 # build example
 ####################################################################################################################################
+
+if [ -f "${FILE_DIR}/setup.sh" ]; then
+    source "${FILE_DIR}/setup.sh"
+fi
 
 if [ -z ${LD_LIBRARY_PATH+x} ]; then
     LD_LIBRARY_PATH="${FILE_DIR}"
@@ -588,8 +596,8 @@ do
                     echo ""
                     } >> ${RUN_FILE_NAME}
 
-                    if [ -f "./setup.sh" ]; then
-                        echo "source ./setup.sh" >> ${RUN_FILE_NAME}
+                    if [ -f "${FILE_DIR}/setup.sh" ]; then
+                        echo "source ${FILE_DIR}/setup.sh" >> ${RUN_FILE_NAME}
                         echo "" >> ${RUN_FILE_NAME}
                     fi
 

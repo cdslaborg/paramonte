@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !> \brief This module contains procedures for computing various statistical correlation coefficients.
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 module CorrCoef_mod
 
@@ -82,7 +82,7 @@ contains
     !> \remark
     !> A small value of either `dStarStarProb` or `rhoProb` indicates a significant correlation.
     subroutine getCorrCoefSpearman(ndata,Data1,Data2,rho,rhoProb,dStarStar,dStarStarSignif,dStarStarProb,Err)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorrCoefSpearman
 #endif
         use Constants_mod, only: IK, RK, SQRT2, SPR

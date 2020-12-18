@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains the classes and procedures for refining MCMC output chains.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module ParaMCMCRefinedChain_mod
 
@@ -55,7 +55,7 @@ module ParaMCMCRefinedChain_mod
 
     implicit none
 
-    character(*), parameter :: MODULE_NAME = "@ParaMCMCRefinedChain_mod"
+    character(*), parameter :: MODULE_NAME = "\paramCMCRefinedChain_mod"
 
     !> The `RefinedChain_type` class.
     type                                    :: RefinedChain_type
@@ -93,17 +93,17 @@ contains
     !> Return the refined Markov chain, given the input Markov chain and its specifications.
     !> This procedure is a method of the [RefinedChain_type](@ref refinedchain_type) class.
     !>
-    !> @param[inout] RefinedChain           :   An object of class [RefinedChain_type](@ref refinedchain_type).
-    !> @param[inout] CFC                    :   An object of type [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type)
+    !> \param[inout] RefinedChain           :   An object of class [RefinedChain_type](@ref refinedchain_type).
+    !> \param[inout] CFC                    :   An object of type [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type)
     !!                                          containing the Markov chain.
-    !> @param[out]   Err                    :   An object of class [Err_type](@ref err_mod::err_type) indicating whether any error has occurred or not.
-    !> @param[in]    burninLoc              :   The estimated location of burnin point in the Markov chain (optional).
+    !> \param[out]   Err                    :   An object of class [Err_type](@ref err_mod::err_type) indicating whether any error has occurred or not.
+    !> \param[in]    burninLoc              :   The estimated location of burnin point in the Markov chain (**optional**).
     !!                                          If not provided, it will be extracted from the components of the input `CFC`.
-    !> @param[in]    refinedChainSize       :   The requested refined sample size (optional). If the size of the refined sample is given as input,
+    !> \param[in]    refinedChainSize       :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,
     !!                                          then the requested sample is directly generated based on the input size.
-    !> @param[in]    sampleRefinementCount  :   The maximum number of times the sample can be refined (optional, default = `Infinity`).
+    !> \param[in]    sampleRefinementCount  :   The maximum number of times the sample can be refined (**optional**, default = `Infinity`).
     !!                                      :   For example, if set to 1, then only one round of refinement will be performed on the Markov chain.
-    !> @param[in]    sampleRefinementMethod :   The requested method of refining the sample (optional, default = "BatchMeans").
+    !> \param[in]    sampleRefinementMethod :   The requested method of refining the sample (**optional**, default = "BatchMeans").
     subroutine getRefinedChain  ( RefinedChain              &
                                 , CFC                       &
                                 , Err                       &
@@ -112,7 +112,7 @@ contains
                                 , sampleRefinementCount     &
                                 , sampleRefinementMethod    &
                                 )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRefinedChain
 #endif
 
@@ -197,9 +197,11 @@ contains
         elseif (index(sampleRefinementMethodDefaultLowerCase,getLowerCase(MAX_CUMSUM_AUTOCORR_METHOD_NAME))>0 .or. index(sampleRefinementMethodDefaultLowerCase,"cumsum")>0) then
             Method%isMaxCumSumAutoCorr = .true.
         else
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Unknown unsupported IAC computation method name: " // sampleRefinementMethodDefault
             return
+            ! LCOV_EXCL_STOP
         end if
 
         ! define the chain types to use for the AIC computation
@@ -235,9 +237,11 @@ contains
                 RefinedChain%ColHeader(i)%record = CFC%ColHeader(i+NUM_DEF_COL)%record
             end do
         else
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": Internal error occurred. CFC%ColHeader is NULL."
             return
+            ! LCOV_EXCL_STOP
         end if
 
         if (present(burninLoc)) then
@@ -255,9 +259,11 @@ contains
         ! check if there are more than 1 sample points in the burnin-subtracted CFC
 
         if (RefinedChain%Count(RefinedChain%numRefinement)%compact==0_IK) then
+            ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = PROCEDURE_NAME // ": The size of the refined sample is zero."
             return
+            ! LCOV_EXCL_STOP
         elseif (RefinedChain%Count(RefinedChain%numRefinement)%compact==1_IK) then
             if (allocated(RefinedChain%Weight)) deallocate(RefinedChain%Weight)
             allocate(RefinedChain%Weight(RefinedChain%Count(RefinedChain%numRefinement)%compact))
@@ -297,18 +303,18 @@ contains
                 DumVec = RefinedChain%LogFuncState(i,1:RefinedChain%Count(RefinedChain%numRefinement)%compact)
                 if (Method%isBatchMeans) then
                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getBatchMeansIAC   ( np        = countCompact  &
-                                                                                        , Point     = DumVec        &
-                                                                                        , Weight    = SampleWeight  &
+                                                                                        , Point     = DumVec        & ! LCOV_EXCL_LINE
+                                                                                        , Weight    = SampleWeight  & ! LCOV_EXCL_LINE
                                                                                         )
                 elseif (Method%isCutoffAutoCorr) then
                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getCumSumIAC       ( np        = countCompact  &
-                                                                                        , Point     = DumVec        &
-                                                                                        , Weight    = SampleWeight  &
+                                                                                        , Point     = DumVec        & ! LCOV_EXCL_LINE
+                                                                                        , Weight    = SampleWeight  & ! LCOV_EXCL_LINE
                                                                                         )
                 elseif (Method%isMaxCumSumAutoCorr) then
                     RefinedChain%IAC(i,RefinedChain%numRefinement) = getMaxCumSumIAC    ( np        = countCompact  &
-                                                                                        , Point     = DumVec        &
-                                                                                        , Weight    = SampleWeight  &
+                                                                                        , Point     = DumVec        & ! LCOV_EXCL_LINE
+                                                                                        , Weight    = SampleWeight  & ! LCOV_EXCL_LINE
                                                                                         )
                 end if
             end do
@@ -321,8 +327,10 @@ contains
                 elseif (Method%isMed) then
                     call getMedian(lenArray=ndimPlusOne,Array=RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement),median=integratedAutoCorrTime,Err=Err)
                     if (Err%occurred) then
+                        ! LCOV_EXCL_START
                         Err%msg = PROCEDURE_NAME//Err%msg
                         return
+                        ! LCOV_EXCL_STOP
                     end if
                 elseif (Method%isMax) then
                     integratedAutoCorrTime = maxval( RefinedChain%IAC(0:RefinedChain%ndim,RefinedChain%numRefinement) )
@@ -362,15 +370,15 @@ contains
 
             if (integratedAutoCorrTime<2._RK) cycle loopRefinement ! no need for refinement. should happen only when transitioning from compact to verbose
 
-            call refineWeightedSample   ( nd = RefinedChain%ndim                                        &
-                                        , np = countCompact                                             &
-                                        , skip = integratedAutoCorrTime                                 &
-                                        , Sample = RefinedChain%LogFuncState                            &
-                                        , Weight = RefinedChain%Weight                                  &
-                                        , RefinedChain = DumCFC%State                                   &
-                                        , RefinedWeight = DumCFC%Weight                                 &
+            call refineWeightedSample   ( nd = RefinedChain%ndim                                        & ! LCOV_EXCL_LINE
+                                        , np = countCompact                                             & ! LCOV_EXCL_LINE
+                                        , skip = integratedAutoCorrTime                                 & ! LCOV_EXCL_LINE
+                                        , Sample = RefinedChain%LogFuncState                            & ! LCOV_EXCL_LINE
+                                        , Weight = RefinedChain%Weight                                  & ! LCOV_EXCL_LINE
+                                        , RefinedChain = DumCFC%State                                   & ! LCOV_EXCL_LINE
+                                        , RefinedWeight = DumCFC%Weight                                 & ! LCOV_EXCL_LINE
                                         , PointCount = RefinedChain%Count(RefinedChain%numRefinement)   &
-                                        , refinedChainSize = refinedChainSize                           &
+                                        , refinedChainSize = refinedChainSize                           & ! LCOV_EXCL_LINE
                                         )
             RefinedChain%Weight        = DumCFC%Weight
             RefinedChain%LogFuncState  = DumCFC%State
@@ -385,10 +393,10 @@ contains
 
     !> Return the refined vector of weights of the vector of weights of a weighted Markov chain.
     !>
-    !> @param[in]   np                  :   The number of elements of the `Weight` vector.
-    !> @param[in]   Weight              :   The input vector of weights.
-    !> @param[in]   skip                :   The size of the jumps that have to be made through the weighted Markov chain.
-    !> @param[in]   refinedChainSize    :   The requested refined sample size (optional). If present, then the refined chain (represented by the
+    !> \param[in]   np                  :   The number of elements of the `Weight` vector.
+    !> \param[in]   Weight              :   The input vector of weights.
+    !> \param[in]   skip                :   The size of the jumps that have to be made through the weighted Markov chain.
+    !> \param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If present, then the refined chain (represented by the
     !>                                  :   vector `Weight`) will be refined such that the resulting refined chain has the size `refinedChainSize`.
     !>
     !> \return
@@ -406,7 +414,7 @@ contains
     !> RefinedWeight: 2, 0, 0, 1, 1
     !> ```
     pure function getRefinedWeight(np,Weight,skip,refinedChainSize) result(RefinedWeight)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRefinedWeight
 #endif
         use Math_mod, only: getCumSum
@@ -446,7 +454,7 @@ contains
                         ip = offset
                         sumSkips = skip
                         if (offset/=1_IK) sumSkips = sumSkips + CumSumWeight(ip-1)
-                        cycle loopOverAllSample
+                        cycle loopOverAllSample ! LCOV_EXCL_LINE
                     end if
                 end if
                 exit loopOverAllSample
@@ -459,19 +467,19 @@ contains
 
     !> Refined an input weighted sample according to the new requested weights.
     !>
-    !> @param[in]   nd                  :   The number of dimensions of the input `Sample(0:nd,np)`.
-    !> @param[in]   np                  :   The number of points in the input `Sample(0:nd,np)`.
-    !> @param[in]   skip                :   The jump size with which the input chain has to be refined.
-    !> @param[in]   Sample              :   The input 2-dimensional array of sampled states which has to be refined.
-    !> @param[in]   Weight              :   The weights of the sampled points.
-    !> @param[out]  RefinedChain        :   The refined array.
-    !> @param[out]  RefinedWeight       :   The vector of refined weights corresponding to the output refined array.
-    !> @param[out]  PointCount          :   An object of derived type [Count_type](@ref paramontechainfilecontents_mod::count_type)
+    !> \param[in]   nd                  :   The number of dimensions of the input `Sample(0:nd,np)`.
+    !> \param[in]   np                  :   The number of points in the input `Sample(0:nd,np)`.
+    !> \param[in]   skip                :   The jump size with which the input chain has to be refined.
+    !> \param[in]   Sample              :   The input 2-dimensional array of sampled states which has to be refined.
+    !> \param[in]   Weight              :   The weights of the sampled points.
+    !> \param[out]  RefinedChain        :   The refined array.
+    !> \param[out]  RefinedWeight       :   The vector of refined weights corresponding to the output refined array.
+    !> \param[out]  PointCount          :   An object of derived type [Count_type](@ref paramontechainfilecontents_mod::count_type)
     !>                                      containing the number of points in the refined sample.
-    !> @param[in]   refinedChainSize    :   The requested refined sample size (optional). If the size of the refined sample is given as input,
+    !> \param[in]   refinedChainSize    :   The requested refined sample size (**optional**). If the size of the refined sample is given as input,
     !>                                      then the requested sample is directly generated based on the input size.
     pure subroutine refineWeightedSample(nd,np,skip,Sample,Weight,RefinedChain,RefinedWeight,PointCount,refinedChainSize)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: refineWeightedSample
 #endif
         use Constants_mod, only: IK, RK
@@ -482,7 +490,7 @@ contains
         integer(IK)     , intent(out), allocatable  :: RefinedWeight(:)
         integer(IK)     , intent(in) , optional     :: refinedChainSize
         type(Count_type), intent(out)               :: PointCount
-        integer(IK)                                 :: ip, ipRefined, npRefined, UpdatedWeight(np)
+        integer(IK)                                 :: ip, ipRefined, npRefined, UpdatedWeight(np) ! LCOV_EXCL_LINE
         UpdatedWeight = getRefinedWeight(np,Weight,skip,refinedChainSize)
         npRefined = count(UpdatedWeight>0)
         allocate( RefinedChain(0:nd,npRefined) , RefinedWeight(npRefined) )
@@ -503,19 +511,27 @@ contains
 
     !> Return the best skip size through a Markov chain to refined it to the optimal requested size.
     !>
-    !> @param[in]   oldSampleSize   :   The original size of the Markov chain.
-    !> @param[in]   newSampleSize   :   The final desired size of the refined sample.
+    !> \param[in]   oldSampleSize   :   The original size of the Markov chain.
+    !> \param[in]   newSampleSize   :   The final desired size of the refined sample.
     !>
     !> \return
     !> `skip4NewSampleSize` : The computed skip size.
+    !>
+    !> \warning
+    !> The condition `oldSampleSize >= newSampleSize` must always hold,
+    !> otherwise a negative value for `skip4NewSampleSize` will be returned to indicate the occurrence of an error.
     pure function getSkip4NewSampleSize(oldSampleSize,newSampleSize) result(skip4NewSampleSize)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSkip4NewSampleSize
 #endif
         use Constants_mod, only: IK, RK
         implicit none
         integer(IK) , intent(in)    :: oldSampleSize,newSampleSize
         integer(IK)                 :: skip4NewSampleSize, addition, quotient
+        if (oldSampleSize < newSampleSize) then
+            skip4NewSampleSize = -1_IK
+            return
+        end if
         addition = 1
         quotient = oldSampleSize / newSampleSize
         if (mod(oldSampleSize,newSampleSize)==0) addition = 0
@@ -526,13 +542,13 @@ contains
 
     !> Write the computed refined chain to the specified output file.
     !>
-    !> @param[in]   RefinedChain                :   An object of class [RefinedChain_type](@ref refinedchain_type)
+    !> \param[in]   RefinedChain                :   An object of class [RefinedChain_type](@ref refinedchain_type)
     !>                                              containing the refined sample to be written to the output file.
-    !> @param[in]   sampleFileUnit              :   The unit of the file to which the sample must be written.
-    !> @param[in]   sampleFileHeaderFormat      :   The IO format of the header of the sample file.
-    !> @param[in]   sampleFileContentsFormat    :   The IO format of the contents (sampled states) in the sample file.
+    !> \param[in]   sampleFileUnit              :   The unit of the file to which the sample must be written.
+    !> \param[in]   sampleFileHeaderFormat      :   The IO format of the header of the sample file.
+    !> \param[in]   sampleFileContentsFormat    :   The IO format of the contents (sampled states) in the sample file.
     subroutine writeRefinedChain(RefinedChain,sampleFileUnit,sampleFileHeaderFormat,sampleFileContentsFormat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: writeRefinedChain
 #endif
         implicit none
@@ -547,22 +563,28 @@ contains
             end do
         end do
         flush(sampleFileUnit)
-    end subroutine writeRefinedChain
+    end subroutine writeRefinedChain ! LCOV_EXCL_LINE
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> Write the computed refined chain to the specified output file.
     !>
-    !> @param[in]   sampleFilePath      :   The path to the input chain file that must be read.
-    !> @param[in]   delimiter           :   The delimiter used in the file.
-    !> @param[in]   ndim                :   The number of dimensions of the sampled states in the sample file.
+    !> \param[in]   sampleFilePath      :   The path to the input chain file that must be read.
+    !> \param[in]   delimiter           :   The delimiter used in the file.
+    !> \param[in]   ndim                :   The number of dimensions of the sampled states in the sample file.
     !>                                      This is basically, the size of the domain of the objective function.
+    !> \param[in]   tenabled            :   An optional input logical value standing for `transpose-enabled`. If `.false.`,
+    !>                                      the input data will be naturally read according to Fortran column-wise data storage
+    !>                                      rule as a matrix of rank `0:nd * 1:np`. If `.false.`, the input sample file will be
+    !>                                      read as a matrix of rank `1:np * 0:nd`. Note that `np` represents the number of rows
+    !>                                      in the files (that is, the number of sampled points, whereas `nd` represents the
+    !>                                      number of columns in the input file (**optional**, default = `.false.`).
     !>
     !> \return
     !> `RefinedChain` : An object of class [RefinedChain_type](@ref refinedchain_type) containing
     !>                  the sampled states read from the specified input file.
-    function readRefinedChain(sampleFilePath,delimiter,ndim) result(RefinedChain)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    function readRefinedChain(sampleFilePath,delimiter,ndim,tenabled) result(RefinedChain)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: readRefinedChain
 #endif
         use FileContents_mod, only: getNumRecordInFile
@@ -570,33 +592,36 @@ contains
         implicit none
         integer(IK) , intent(in)            :: ndim
         character(*), intent(in)            :: sampleFilePath, delimiter
+        logical     , intent(in), optional  :: tenabled
         type(RefinedChain_type)             :: RefinedChain
         character(*), parameter             :: PROCEDURE_NAME = MODULE_NAME//"@readRefinedChain()"
         integer(IK)                         :: sampleFileUnit, isample, i
+        logical                             :: tenabledDefault
         type(String_type)                   :: Record
 
-        if (allocated(Record%value)) deallocate(Record%value)
+        if (allocated(Record%value)) deallocate(Record%value) ! LCOV_EXCL_LINE
         allocate( character(99999) :: Record%value )
 
-        RefinedChain%numRefinement = 0_IK
         RefinedChain%ndim = ndim
-        allocate(RefinedChain%Count(RefinedChain%numRefinement:RefinedChain%numRefinement))
+        RefinedChain%numRefinement = 0_IK
+        allocate(RefinedChain%Count(RefinedChain%numRefinement:RefinedChain%numRefinement)) ! allocate just the zeroth level of `RefinedChain`.
 
         ! find the number of lines in the sample file
 
-        call getNumRecordInFile(filePath=sampleFilePath,numRecord=RefinedChain%Count(RefinedChain%numRefinement)%verbose,Err=RefinedChain%Err)
+        call getNumRecordInFile(filePath=sampleFilePath, numRecord=RefinedChain%Count(RefinedChain%numRefinement)%verbose, Err=RefinedChain%Err)
         if (RefinedChain%Err%occurred) then
+            ! LCOV_EXCL_START
             RefinedChain%Err%msg = PROCEDURE_NAME // RefinedChain%Err%msg
             return
+            ! LCOV_EXCL_STOP
         end if
 
         RefinedChain%Count(RefinedChain%numRefinement)%verbose = RefinedChain%Count(RefinedChain%numRefinement)%verbose - 1_IK ! remove header from the count
-        allocate( RefinedChain%LogFuncState(RefinedChain%Count(RefinedChain%numRefinement)%verbose,0:ndim) )
 
         open( newunit = sampleFileUnit &
             , file = sampleFilePath &
             , status = "old" &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
             , SHARED &
 #endif
             )
@@ -604,11 +629,13 @@ contains
         ! read header
 
         read(sampleFileUnit,"(A)") Record%value
-        Record%Parts = Record%SplitStr(Record%value,delimiter,Record%nPart)
+        Record%Parts = Record%split(Record%value,delimiter,Record%nPart)
         if (Record%nPart/=ndim+1_IK) then
+            ! LCOV_EXCL_START
             RefinedChain%Err%occurred = .true.
-            RefinedChain%Err%msg = PROCEDURE_NAME // ": The number of column headers ("//num2str(Record%nPart)//") is not equal to ndim + 1: "//num2str(ndim+1_IK)
+            RefinedChain%Err%msg = PROCEDURE_NAME // ": The number of header columns ("//num2str(Record%nPart)//") is not equal to ndim + 1: "//num2str(ndim+1_IK)
             return
+            ! LCOV_EXCL_STOP
         end if
 
         allocate(RefinedChain%ColHeader(0:ndim))
@@ -618,13 +645,32 @@ contains
 
         ! read contents
 
-        do isample = 1, RefinedChain%Count(RefinedChain%numRefinement)%verbose
-            read(sampleFileUnit, "(A)") Record%value
-            Record%Parts = Record%SplitStr(trim(adjustl(Record%value)),delimiter)
-            do i = 0, ndim
-                read(Record%Parts(i+1)%record,*) RefinedChain%LogFuncState(isample,i)
+        tenabledDefault = .false.
+        if (present(tenabled)) tenabledDefault = tenabled
+
+        if (tenabledDefault) then
+
+            allocate( RefinedChain%LogFuncState(RefinedChain%Count(RefinedChain%numRefinement)%verbose, 0:ndim) )
+            do isample = 1, RefinedChain%Count(RefinedChain%numRefinement)%verbose
+                read(sampleFileUnit, "(A)") Record%value
+                Record%Parts = Record%split(trim(adjustl(Record%value)),delimiter)
+                do i = 0, ndim
+                    read(Record%Parts(i+1)%record,*) RefinedChain%LogFuncState(isample,i)
+                end do
             end do
-        end do
+
+        else
+
+            allocate( RefinedChain%LogFuncState(0:ndim, RefinedChain%Count(RefinedChain%numRefinement)%verbose) )
+            do isample = 1, RefinedChain%Count(RefinedChain%numRefinement)%verbose
+                read(sampleFileUnit, "(A)") Record%value
+                Record%Parts = Record%split(trim(adjustl(Record%value)),delimiter)
+                do i = 0, ndim
+                    read(Record%Parts(i+1)%record,*) RefinedChain%LogFuncState(i,isample)
+                end do
+            end do
+
+        end if
 
         close(sampleFileUnit)
 

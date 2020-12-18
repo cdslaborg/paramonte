@@ -120,14 +120,14 @@
 !-------------------------------------------------------------------------------
 
 !>  \brief This module contains the base class of all ParaMonte samplers and its associated methods.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module ParaMonte_mod
 
-    use System_mod, only: SystemInfo_type
+    use System_mod, only: SystemInfo_type ! LCOV_EXCL_LINE
     use Parallelism_mod, only: Image_type
     use Decoration_mod, only: Decoration_type
-    use Constants_mod, only: RK, IK, CIK, CRK, HUGE_IK, HUGE_RK
+    use Constants_mod, only: RK, IK, HUGE_IK, HUGE_RK
     use String_mod, only: IntStr_type
     use System_mod, only: OS_type
     use Timer_mod, only: Timer_type
@@ -227,7 +227,7 @@ module ParaMonte_mod
         type(OS_type)                   :: OS                       !< An object of class [OS_type](@ref system_mod::os_type) containing information about the Operating System.
         type(Err_type)                  :: Err                      !< An object of class [Err_type](@ref err_mod::err_type) containing error-handling information.
                                                                     !< about error occurrence and message during the simulation setup and runtime.
-        type(Image_type)                :: Image                    !< An object of type [Image_type](@ref image_type) containing information about
+        type(Image_type)                :: Image                    !< An object of type [Image_type](@ref parallelism_mod::image_type) containing information about
                                                                     !< the processor count and types in the simulation.
         type(SpecBase_type)             :: SpecBase                 !< An object of class [SpecBase_type](@ref specbase_mod::specbase_type) containing information
                                                                     !< about the basic simulation specification properties.
@@ -243,6 +243,15 @@ module ParaMonte_mod
         type(RestartFile_type)          :: RestartFile              !< An object of class [RestartFile_type](@ref restartfile_type) containing information about the simulation output restart.
         type(ChainFileContents_type)    :: Chain                    !< An object of class [ChainFileContents_type](@ref paramontechainfilecontents_mod::chainfilecontents_type) containing information and methods for chain IO.
         type(Decoration_type)           :: Decor                    !< An object of class [Decoration_type](@ref decoration_mod::decoration_type) containing IO decoration tools.
+#if defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED
+    !> These variables are exclusively used for testing the deterministic restart functionality of ParaDXXX samplers. 
+    !> This block must not be activated under any other circumstances.
+    !> Under normal testing conditions (other than testing the restart functionality, self%testSamplingCountTarget > self%testSamplingCounter must always hold.
+    !> To test the restart functionality under any serial or distributed parallelization schemes, set self%testSamplingCountTarget < chainSize.
+    !> The simulation will automatically, but gracefully, interrupt when this target value is reached or surpassed.
+    integer(IK)                         :: testSamplingCountTarget = huge(1_IK)  !< The external user-specified target count at which the code will break with a simulation interruption error message.
+    integer(IK)                         :: testSamplingCounter = 0_IK            !< The sampling counter defined by all images. This is a private component not to be changed by the user.
+#endif
     contains
         procedure, pass                 :: reportDesc
         procedure, pass                 :: setupParaMonte
@@ -252,8 +261,8 @@ module ParaMonte_mod
         procedure, pass                 :: addCompilerPlatformInfo
         procedure, pass                 :: warnUserAboutInputFilePresence
         procedure, pass                 :: setWarnAboutProcArgHasPriority
+        procedure, pass                 :: warnUserAboutMissingNamelist
         procedure, nopass               :: informUser, note, warn, abort
-        procedure, nopass               :: warnUserAboutMissingNamelist
     end type ParaMonte_type
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -279,7 +288,7 @@ contains
     !> \warning
     !> This routine has to be called by all images (processes).
     subroutine setupParaMonte(self,nd,name,inputFile)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setupParaMonte
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -300,17 +309,19 @@ contains
 
         self%Timer = Timer_type(self%Err)
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while setting up the " // self%name // "timer."//NLC// self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         self%nd%val = nd
         self%Decor = Decoration_type()    ! initialize the TAB character and decoration symbol to the default values.
 
         self%name     = name
         self%brand    = INDENT // self%name
-#if defined IFORT_ENABLED || __GFORTRAN__
+#if defined INTEL_COMPILER_ENABLED || GNU_COMPILER_ENABLED
         self%date     = "Build: " // __TIMESTAMP__
 #else
         self%date     = "Unknown Release Date"
@@ -339,18 +350,22 @@ contains
 
         call self%OS%query()
         if (self%OS%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err = self%OS%Err
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while querying OS type."//NLC//self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         ! This is where SystemInfo used to live, but not anymore.
 
+#if ! (defined CODECOV_ENABLED || defined SAMPLER_TEST_ENABLED)
         blockSplashByFirstImage: if (self%Image%isFirst) then
             call self%addSplashScreen()
             call self%noteUserAboutEnvSetup()
         end if blockSplashByFirstImage
+#endif
 
         ! check if input file exists by all images
 
@@ -359,11 +374,13 @@ contains
         blockInputFileExistence: if (self%inputFileArgIsPresent) then
             self%InputFile = File_type( path=inputFile, status="old", OS=self%OS )
             if (self%InputFile%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err = self%InputFile%Err
                 self%Err%msg = PROCEDURE_NAME//": Error occurred while attempting to setup the user's input file='"//inputFile//"'."//NLC//self%Err%msg
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
             ! determine if the file is internal
             self%InputFile%isInternal = self%inputFileArgIsPresent .and. .not.self%InputFile%exists .and. index(getLowerCase(inputFile),"&"//getLowerCase(self%name)) > 0
             if (.not.(self%InputFile%isInternal .or. self%InputFile%exists)) then
@@ -398,7 +415,7 @@ contains
     !> \remark
     !> This routine has to be called by all master images (processes).
     subroutine addSplashScreen(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: addSplashScreen
 #endif
         implicit none
@@ -448,15 +465,15 @@ contains
         "https://www.cdslab.org/paramonte/\n"// &
         "\n"
 
-        call self%Decor%writeDecoratedText  ( text=self%Decor%text &
-                                            , symbol="*" &
-                                            , width=132 &
-                                            , thicknessHorz=4 &
-                                            , thicknessVert=2 &
-                                            , marginTop=1 &
-                                            , marginBot=2 &
-                                            , outputUnit=self%LogFile%unit &
-                                            , newLine="\n" &
+        call self%Decor%writeDecoratedText  ( text=self%Decor%text & ! LCOV_EXCL_LINE
+                                            , symbol="*" & ! LCOV_EXCL_LINE
+                                            , width=132 & ! LCOV_EXCL_LINE
+                                            , thicknessHorz=4 & ! LCOV_EXCL_LINE
+                                            , thicknessVert=2 & ! LCOV_EXCL_LINE
+                                            , marginTop=1 & ! LCOV_EXCL_LINE
+                                            , marginBot=2 & ! LCOV_EXCL_LINE
+                                            , outputUnit=self%LogFile%unit & ! LCOV_EXCL_LINE
+                                            , newLine="\n" & ! LCOV_EXCL_LINE
                                             )
 
     end subroutine addSplashScreen
@@ -464,15 +481,17 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !> \brief
-    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
-    !> Add information about the compiler and the platform/OS to the output report file.
+    !> Add information about the compiler and the platform/OS to the output report file(s).
     !>
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     !>
     !> \remark
-    !> This routine has to be called by all master images (processes).
+    !> This procedure is a method of the [ParaMonte_type](@ref paramonte_type) class.
+    !>
+    !> \remark
+    !> This routine has to be called by all leader images (processes).
     subroutine addCompilerPlatformInfo(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: addCompilerPlatformInfo
 #endif
         use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
@@ -548,41 +567,24 @@ contains
         ! the creation of thousands of files on the system, simultaneously.
         ! this is not needed by any process other than the masters.
 
-        if (allocated(self%SpecBase%SystemInfoFilePath%val)) then
-            block
-                use FileContents_mod, only: FileContents_type
-                type(FileContents_type) :: FileContents
-                FileContents = FileContents_type(filePath = self%SpecBase%SystemInfoFilePath%val)
-                if (FileContents%Err%occurred) then
-                    self%Err = FileContents%Err
-                    self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
-                    call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
-                    return
-                else
-                    do j = 1, FileContents%numRecord
-                        self%Decor%List = self%Decor%wrapText( FileContents%Line(j)%record , 132 )
-                        do i = 1,size(self%Decor%List)
-                            write(self%LogFile%unit,"(A)") self%Decor%List(i)%record
-                        end do
-                    end do
-                    deallocate(self%SpecBase%SystemInfoFilePath%val)
-                end if
-            end block
-        else
-            self%SystemInfo = SystemInfo_type(OS=self%OS)
-            if (self%SystemInfo%Err%occurred) then
-                self%Err = self%SystemInfo%Err
-                self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
-                call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
-                return
-            end if
-            do j = 1, self%SystemInfo%nRecord
-                self%Decor%List = self%Decor%wrapText( self%SystemInfo%List(j)%record , 132 )
-                do i = 1,size(self%Decor%List)
-                    write(self%LogFile%unit,"(A)") self%Decor%List(i)%record
-                end do
-            end do
+        self%SystemInfo = SystemInfo_type(OS = self%OS, path = self%SpecBase%SystemInfoFilePath%val)
+        if (self%SystemInfo%Err%occurred) then
+        ! LCOV_EXCL_START
+            self%Err = self%SystemInfo%Err
+            self%Err%msg = PROCEDURE_NAME//": Error occurred while collecting system info."//NLC//self%Err%msg
+            call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
+            return
         end if
+        ! LCOV_EXCL_STOP
+
+        ! write the system info to the output file
+
+        do j = 1, self%SystemInfo%nRecord
+            self%Decor%List = self%Decor%wrapText( self%SystemInfo%Records(j)%record , 132 )
+            do i = 1,size(self%Decor%List)
+                write(self%LogFile%unit,"(A)") self%Decor%List(i)%record
+            end do
+        end do
         call self%Decor%write(self%LogFile%unit)
 
     end subroutine addCompilerPlatformInfo
@@ -598,7 +600,7 @@ contains
     !> \remark
     !> This routine has to be called by all master images (processes).
     subroutine noteUserAboutEnvSetup(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: noteUserAboutEnvSetup
 #endif
         implicit none
@@ -615,26 +617,31 @@ contains
     !> \brief
     !> If the relevant method name is missing in the namelist input file, then warn the user about this issue.
     !>
-    !> @param[inout]    prefix      :   The prefix of the warning message.
-    !> @param[inout]    name        :   The sampler method name.
+    !> @param[in]       self        :   An object of class [ParaMonte_type](@ref paramonte_type).
     !> @param[inout]    namelist    :   The name of the missing namelist.
-    !> @param[inout]    outputUnit  :   The file unit to which the message must be output.
-    subroutine warnUserAboutMissingNamelist(prefix,name,namelist,outputUnit)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine warnUserAboutMissingNamelist(self, namelist)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutMissingNamelist
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
+        use Constants_mod, only: NLC ! LCOV_EXCL_LINE
         use Constants_mod, only: IK
         use Err_mod, only: warn
         implicit none
-        character(*), intent(in)    :: prefix, name, namelist
-        integer(IK) , intent(in)    :: outputUnit
-        character(:), allocatable   :: msg
-        msg = "No namelist group of variables named "//namelist//" was detected in user's input file for "//name//" options.\n"//&
-              "All " // name // " options will be assigned appropriate default values."
-        call warn( prefix = prefix, outputUnit = outputUnit, newline = "\n", msg = msg )
-        if (outputUnit/=output_unit) then
-            call warn( prefix = prefix, outputUnit = output_unit, newline = "\n", msg = msg )
+        class(ParaMonte_type), intent(in)   :: self
+        character(*), intent(in)            :: namelist
+        character(:), allocatable           :: msg
+        if (self%Image%isFirst .or. self%Image%isLeader) then
+            msg = "No namelist group of variables named "//namelist//" was detected in user's input file for "//self%name//" options."//NLC//&
+                  "All " // self%name // " options will be assigned appropriate default values."
+            call warn( prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg )
+            if (self%LogFile%unit == output_unit) then ! only the first image gets to print on the stdout
+                if (self%Image%isFirst) call warn( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg ) ! LCOV_EXCL_LINE
+            ! LCOV_EXCL_START
+            else
+                call warn( prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg )
+            end if
+            ! LCOV_EXCL_STOP
         end if
     end subroutine warnUserAboutMissingNamelist
 
@@ -646,48 +653,47 @@ contains
     !>
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     subroutine warnUserAboutInputFilePresence(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: warnUserAboutInputFilePresence
 #endif
-        use Constants_mod, only: NLC
+        use Constants_mod, only: NLC ! LCOV_EXCL_LINE
         implicit none
-        class(ParaMonte_type), intent(inout) :: self
-#if defined CFI_ENABLED
-        if (self%SpecBase%InterfaceType%isPython) then
-            call self%note  ( prefix     = self%brand &
-                            , outputUnit = self%LogFile%unit &
-                            , newline    = NLC &
-                            , msg        = "Interfacing Python with "// self%name //"..." )
-        elseif (self%SpecBase%InterfaceType%isClang) then
-#else
-            if (self%inputFileArgIsPresent) then
-                if (self%InputFile%exists) then
-                    call self%note  ( prefix     = self%brand &
-                                    , outputUnit = self%LogFile%unit &
-                                    , newline    = NLC &
-                                    , msg        = "The user's input file for " // self%name // " options was detected."// NLC // &
-                                                   "All " // self%name // " options will be read from the input file."// NLC // &
-                                                   "Here is " // self%name // " input options file:"// NLC // self%inputFile%Path%modified )
-                elseif (self%InputFile%isInternal) then
-                    call self%note  ( prefix     = self%brand &
-                                    , outputUnit = self%LogFile%unit &
-                                    , newline    = NLC &
-                                    , msg        = "No external file corresponding to the user's input file for "//self%name//" options &
-                                                   &could be found."//NLC//"The user-provided input file will be processed as an input &
-                                                   &string of "//self%name//" options." )
-                end if
-            else
-                call self%note  ( prefix     = self%brand &
-                                , outputUnit = self%LogFile%unit &
-                                , newline    = NLC &
-                                , msg        = "No " // self%name  // " input file is provided by the user."//NLC//&
-                                               "Variable values from the procedure arguments will be used instead, where provided."//NLC//&
-                                               "Otherwise, the default options will be used." )
+        class(ParaMonte_type), intent(inout)    :: self
+        character(:), allocatable               :: msg
+#if defined JULIA_ENABLED
+        msg = "Interfacing Julia with "// self%name //"..."
+#elif defined MATLAB_ENABLED
+        msg = "Interfacing MATLAB with "// self%name //"..."
+#elif defined MATTHEMATICA_ENABLED
+        msg = "Interfacing Mathematica with "// self%name //"..."
+#elif defined PYTHON_ENABLED
+        msg = "Interfacing Python with "// self%name //"..."
+#elif defined R_ENABLED
+        msg = "Interfacing R with "// self%name //"..."
+#elif defined C_ENABLED || defined CPP_ENABLED || defined FORTRAN_ENABLED
+        if (self%inputFileArgIsPresent) then
+            if (self%InputFile%exists) then
+                msg =   "The user's input file for " // self%name // " options was detected."// NLC // &
+                        "All " // self%name // " specifications will be read from the input file."// NLC // &
+                        "Here is " // self%name // " input specifications file:"// NLC // self%inputFile%Path%modified
+            elseif (self%InputFile%isInternal) then
+                msg =   "No external file corresponding to the user's input file for "//self%name//" options could be found."//NLC// &
+                        "The user-provided input file will be processed as an input string of "//self%name//" options."
             end if
+        else
+                msg =   "No " // self%name  // " input file is provided by the user."//NLC// &
+#if defined FORTRAN_ENABLED
+                        "Variable values from the procedure arguments will be used instead, where provided."//NLC//"Otherwise, "// &
+#else
+                        "Where needed, "// &
 #endif
-#if defined CFI_ENABLED
+                        "the default options will be used."
         end if
 #endif
+        call self%note  ( prefix     = self%brand &
+                        , outputUnit = self%LogFile%unit &
+                        , newline    = NLC &
+                        , msg        = msg )
     end subroutine warnUserAboutInputFilePresence
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -698,7 +704,7 @@ contains
     !>
     !> @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).
     subroutine setWarnAboutProcArgHasPriority(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnAboutProcArgHasPriority
 #endif
         implicit none
@@ -710,17 +716,15 @@ contains
         self%procArgNeeded = self%procArgHasPriority .or. (.not.self%inputFileArgIsPresent)
 
 #if defined FORTRAN_ENABLED
-        if (self%Image%isFirst) then
-            if (self%procArgHasPriority) then
-                msg =   "Variable inputFileHasPriority = .false.\n&
-                        &All variable values will be overwritten by the corresponding procedure argument values,\n&
-                        &only if provided as procedure arguments."
-            else
-                msg =   "Variable inputFileHasPriority = .true.\n&
-                        &All variable values will be read from the user-provided input file"
-            end if
-            call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg )
+        if (self%procArgHasPriority) then
+            msg =   "Variable inputFileHasPriority = .false.\n&
+                    &All variable values will be overwritten by the corresponding procedure argument values,\n&
+                    &only if provided as procedure arguments."
+        else
+            msg =   "Variable inputFileHasPriority = .true.\n&
+                    &All variable values will be read from the user-provided input file"
         end if
+        if (self%Image%isFirst) call self%note(prefix = self%brand, outputUnit = self%LogFile%unit, newline = "\n", msg = msg) ! LCOV_EXCL_LINE
 #endif
     end subroutine setWarnAboutProcArgHasPriority
 
@@ -732,7 +736,7 @@ contains
     !>
     !> @param[inout]    self    :   An object of class [RefinedChain_type](@ref paramcmcrefinedchain_mod::refinedchain_type).
     subroutine setupOutputFiles(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setupOutputFiles
 #endif
         use Decoration_mod, only: getGenericFormat, INDENT
@@ -756,11 +760,13 @@ contains
         call self%SpecBase%OutputFileName%query(OS=self%OS)
 
         if (self%SpecBase%OutputFileName%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err = self%SpecBase%OutputFileName%Err
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while attempting to construct OutputFileName path type." //NLC// self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         self%SpecBase%OutputFileName%namePrefix = self%SpecBase%OutputFileName%name // self%SpecBase%OutputFileName%ext
 
@@ -769,10 +775,10 @@ contains
         if (allocated(currentWorkingDir)) deallocate(currentWorkingDir)
         allocate( character(MAX_FILE_PATH_LEN) :: currentWorkingDir )
         block
-#if defined IFORT_ENABLED
+#if defined INTEL_COMPILER_ENABLED
             use ifport ! only: getcwd
 #endif
-#if defined IFORT_ENABLED || __GFORTRAN__
+#if defined INTEL_COMPILER_ENABLED || GNU_COMPILER_ENABLED
             self%Err%stat = getcwd(currentWorkingDir)
             currentWorkingDir = trim(adjustl(currentWorkingDir))
 #else
@@ -781,14 +787,16 @@ contains
 #endif
         end block
         if (self%Err%stat/=0) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME//": Error occurred while fetching the current working directory via getcwd()."//NLC
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
         msg = msg //NLC//NLC// "Absolute path to the current working directory:"//NLC//currentWorkingDir
 
         if (len_trim(adjustl(self%SpecBase%OutputFileName%dir))==0) then
-            self%SpecBase%OutputFileName%dir = trim(adjustl(currentWorkingDir)) // self%SpecBase%OutputFileName%slashOS
+            self%SpecBase%OutputFileName%dir = trim(adjustl(currentWorkingDir)) // self%SpecBase%OutputFileName%shellSlash
             msg = msg //NLC//NLC// "All output files will be written to the current working directory:"//NLC//self%SpecBase%OutputFileName%dir
         else
             msg = msg //NLC//NLC// "Generating the requested directory for the "//self%name//" output files:"//NLC//self%SpecBase%OutputFileName%dir
@@ -797,25 +805,19 @@ contains
         ! Generate the output files directory:
 
         if (self%Image%isFirst) then
-            self%Err = mkdir( dirPath = self%SpecBase%OutputFileName%dir, isWindows = self%OS%isWindows )
+            self%Err = mkdir( dirPath = self%SpecBase%OutputFileName%dir, isUnixShell = self%OS%Shell%isUnix )
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME//": Error occurred while making directory = '"//self%SpecBase%OutputFileName%dir//"'."//NLC//self%Err%msg
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
         end if
 
         ! in parallel mode, ensure the directory exists before moving on
 
-#if defined CAF_ENABLED
-        sync all
-#elif defined MPI_ENABLED
-        block
-            use mpi
-            integer :: ierrMPI
-            call mpi_barrier(mpi_comm_world,ierrMPI)
-        end block
-#endif
+        call self%Image%sync()
 
         if (len_trim(adjustl(self%SpecBase%OutputFileName%namePrefix))==0) then
             msg = msg //NLC//NLC// "No user-input filename prefix for " // self%name // " output files detected."//NLC//&
@@ -827,9 +829,7 @@ contains
 
         ! Variable msg will be used down this subroutine, so it should not be changed beyond this point
         msg  =  msg //NLC//NLC// self%name // " output files will be prefixed with:"//NLC// self%SpecBase%OutputFileName%pathPrefix
-        if (self%Image%isFirst) then
-            call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg )
-        end if
+        if (self%Image%isFirst) call self%note(prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = msg) ! LCOV_EXCL_LINE
 
         ! Generate the output filenames, search for pre-existing runs, and open the report file:
 
@@ -878,42 +878,52 @@ contains
         inquire( file = self%LogFile%Path%original, exist = self%LogFile%exists, iostat = self%LogFile%Err%stat )
         self%Err = self%LogFile%getInqErr( self%LogFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%LogFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         inquire( file = self%SampleFile%Path%original, exist = self%SampleFile%exists, iostat = self%SampleFile%Err%stat )
         self%Err = self%SampleFile%getInqErr( self%SampleFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%SampleFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         inquire( file = self%TimeFile%Path%original, exist = self%TimeFile%exists, iostat = self%TimeFile%Err%stat )
         self%Err = self%TimeFile%getInqErr( self%TimeFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%TimeFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         inquire( file = self%ChainFile%Path%original, exist = self%ChainFile%exists, iostat = self%ChainFile%Err%stat )
         self%Err = self%ChainFile%getInqErr( self%ChainFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%ChainFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         inquire( file = self%RestartFile%Path%original, exist = self%RestartFile%exists, iostat = self%RestartFile%Err%stat )
         self%Err = self%RestartFile%getInqErr( self%RestartFile%Err%stat )
         if (self%Err%occurred) then
+        ! LCOV_EXCL_START
             self%Err%msg = PROCEDURE_NAME // ": Error occurred while inquiring the existence of file='" // self%RestartFile%Path%original // self%Err%msg
             call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
             return
         end if
+        ! LCOV_EXCL_STOP
 
         self%isDryRun = (.not. self%SpecBase%OverwriteRequested%val) .and. & ! not fresh, if any file exists
                         (self%LogFile%exists .or. self%TimeFile%exists .or. self%RestartFile%exists .or. self%ChainFile%exists .or. self%SampleFile%exists)
@@ -925,7 +935,7 @@ contains
             if (self%Image%isFirst) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = "Previous run of "//self%name//" detected."//NLC//"Searching for restart files..." )
             if (self%SampleFile%exists) then ! sampling is already complete
                 self%Err%occurred = .true.
-                self%Err%msg =    PROCEDURE_NAME//": Error occurred. Output sample file detected: "//self%SampleFile%Path%original//&
+                self%Err%msg =  PROCEDURE_NAME//": Error occurred. Output sample file detected: "//self%SampleFile%Path%original//&
                                 NLC//self%name//" cannot overwrite an already-completed simulation."//&
                                 NLC//"Please provide an alternative file name for the new simulation outputs."
             elseif (self%LogFile%exists .and. self%TimeFile%exists .and. self%RestartFile%exists .and. self%ChainFile%exists) then  ! restart mode
@@ -982,7 +992,9 @@ contains
         ! print the stdout message for generating / appending the output report file
 
         blockLogFileListByFirstImage: if (self%Image%isFirst) then
-
+#if defined CAF_ENABLED || defined MPI_ENABLED
+! LCOV_EXCL_START
+#endif
             ! print the stdout message for generating / appending the output report file(s)
 
             call self%note  ( prefix = self%brand               &
@@ -1029,18 +1041,13 @@ contains
                             )
 
         end if blockLogFileListByFirstImage
+#if defined CAF_ENABLED || defined MPI_ENABLED
+! LCOV_EXCL_STOP
+#endif
 
         ! ensure all images sync here to avoid wrong inquire result for the existence of the files
 
-#if defined CAF_ENABLED
-        sync all
-#elif defined MPI_ENABLED
-        block
-            use mpi
-            integer :: ierrMPI
-            call mpi_barrier(mpi_comm_world,ierrMPI)
-        end block
-#endif
+        call self%Image%sync()
 
         ! open the output files
         ! Intel ifort SHARED attribute is essential for file unlocking
@@ -1052,12 +1059,13 @@ contains
                 , file = self%LogFile%Path%original     &
                 , status = self%LogFile%status          &
                 , iostat = self%LogFile%Err%stat        &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                &
 #endif
                 , position = self%LogFile%Position%value)
             self%Err = self%LogFile%getOpenErr(self%LogFile%Err%stat)
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%LogFile%suffix // " file='" // self%LogFile%Path%original // "'. "
                 if (scan(" ",trim(adjustl(self%LogFile%Path%original)))/=0) then
                     self%Err%msg = self%Err%msg // "It appears that absolute path used for the output files contains whitespace characters. " &
@@ -1068,6 +1076,7 @@ contains
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             ! rewrite the same old stuff to all report files
 
@@ -1089,16 +1098,18 @@ contains
                 , file = self%TimeFile%Path%original        &
                 , status = self%TimeFile%status             &
                 , iostat = self%TimeFile%Err%stat           &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                    &
 #endif
                 , position = self%TimeFile%Position%value   )
             self%Err = self%TimeFile%getOpenErr(self%TimeFile%Err%stat)
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%TimeFile%suffix // " file='" // self%TimeFile%Path%original // "'. "
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             if (self%isFreshRun) call self%note( prefix = self%brand, outputUnit = self%LogFile%unit, newline = NLC, msg = workingOn//self%ChainFile%suffix//"file:"//NLC//self%ChainFile%Path%original )
 
@@ -1108,16 +1119,18 @@ contains
                 , form = self%ChainFile%Form%value          &
                 , status = self%ChainFile%status            &
                 , iostat = self%ChainFile%Err%stat          &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                    &
 #endif
                 , position = self%ChainFile%Position%value  )
             self%Err = self%ChainFile%getOpenErr(self%ChainFile%Err%stat)
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%ChainFile%suffix // " file='" // self%ChainFile%Path%original // "'. "
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             self%RestartFile%unit = 3000001  ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
             open( unit = self%RestartFile%unit              &
@@ -1125,16 +1138,18 @@ contains
                 , form = self%RestartFile%Form%value        &
                 , status = self%RestartFile%status          &
                 , iostat = self%RestartFile%Err%stat        &
-#if defined IFORT_ENABLED && defined OS_IS_WINDOWS
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
                 , SHARED                                    &
 #endif
                 , position = self%RestartFile%Position%value)
             self%Err = self%RestartFile%getOpenErr(self%RestartFile%Err%stat)
             if (self%Err%occurred) then
+            ! LCOV_EXCL_START
                 self%Err%msg = PROCEDURE_NAME // ": Error occurred while opening the " // self%name // " " // self%RestartFile%suffix // " file='" // self%RestartFile%Path%original // "'. "
                 call self%abort( Err = self%Err, prefix = self%brand, newline = NLC, outputUnit = self%LogFile%unit )
                 return
             end if
+            ! LCOV_EXCL_STOP
 
             if (self%isFreshRun) then
                 call self%Decor%writeDecoratedText  ( text = NLC // self%name // " simulation specifications" // NLC &
@@ -1169,7 +1184,7 @@ contains
     !> @param[inout]    self    :   An object of class [ParaMonte_type](@ref paramonte_type).
     !> @param[inout]    msg     :   The message to be output.
     subroutine reportDesc(self, msg) !, marginTop, marginBot)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: reportDesc
 #endif
         use Constants_mod, only: IK, NLC

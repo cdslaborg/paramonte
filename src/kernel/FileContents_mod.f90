@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains classes and procedures contents of external files.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module FileContents_mod
 
@@ -75,12 +75,12 @@ contains
     !> The constructor of the [FileContents_type](@ref filecontents_type) class.
     !>
     !> @param[in] filePath      :   The path to the file.
-    !> @param[in] delEnabled    :   A logical flag indicating whether the file should be deleted upon return (optional, default = `.false.`).
+    !> @param[in] delEnabled    :   A logical flag indicating whether the file should be deleted upon return (**optional**, default = `.false.`).
     !>
     !> \return
     !> `FileContents` : An object of [FileContents_type](@ref filecontents_type) class.
     function constructFileContents(filePath,delEnabled) result(FileContents)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructFileContents
 #endif
         implicit none
@@ -102,7 +102,7 @@ contains
     !> @param[out]  Err         :   An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
     !> @param[out]  delEnabled  :   An optional logical value indicating whether the file should be deleted upon successful reading of it.
     subroutine getFileContents(path,Contents,numRecord,Err,delEnabled)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileContents
 #endif
         use JaggedArray_mod, only: CharVec_type
@@ -139,7 +139,13 @@ contains
 
         allocate(Contents(numRecord))
 
-        open(newunit=fileUnit,file=path,status="old")
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+            , file = path & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         do irecord = 1,numRecord
             read(fileUnit,"(A)",iostat=Err%stat) record
             if (Err%stat==0) then
@@ -164,14 +170,15 @@ contains
             ! LCOV_EXCL_STOP
         end do
 
-        close(fileUnit,iostat=Err%stat,status=closeStatus)
-        if (Err%stat>0) then
-        ! LCOV_EXCL_START
-            Err%occurred = .true.
-            Err%msg = PROCEDURE_NAME // "Error occurred while attempting to close or delete the open file='" // path // "'."
-            return
-        end if
-        ! LCOV_EXCL_STOP
+        close(fileUnit,status=closeStatus, iostat = Err%stat) ! parallel processes cannot delete the same file
+
+        !if (Err%stat>0) then
+        !! LCOV_EXCL_START
+        !    Err%occurred = .true.
+        !    Err%msg = PROCEDURE_NAME // "Error occurred while attempting to close or delete the open file='" // path // "'."
+        !    return
+        !end if
+        !! LCOV_EXCL_STOP
 
     end subroutine getFileContents
 
@@ -185,7 +192,7 @@ contains
     !> @param[out]  Err         :   An object of [Err_type](@ref err_mod::err_type) indicating whether error has occurred during the file IO.
     !> @param[in]   exclude     :   A string. If any line matches `exclude`, it will NOT be counted.
     subroutine getNumRecordInFile(filePath,numRecord,Err,exclude)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumRecordInFile
 #endif
         use Constants_mod, only: IK
@@ -234,7 +241,14 @@ contains
         end if
         ! LCOV_EXCL_STOP
 
-        open(newunit=fileUnit,file=filePath,status="old",iostat=Err%stat)
+        open( newunit = fileUnit & ! LCOV_EXCL_LINE
+            , iostat = Err%stat & ! LCOV_EXCL_LINE
+            , file = filePath & ! LCOV_EXCL_LINE
+            , status = "old" & ! LCOV_EXCL_LINE
+#if defined INTEL_COMPILER_ENABLED && defined OS_IS_WINDOWS
+            , SHARED & ! LCOV_EXCL_LINE
+#endif
+            )
         if (Err%stat>0) then
         ! LCOV_EXCL_START
             Err%occurred = .true.

@@ -72,8 +72,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function constructDelayedRejectionCount(methodName) result(DelayedRejectionCountObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    function constructDelayedRejectionCount(methodName) result(self)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructDelayedRejectionCount
 #endif
         use Constants_mod, only: IK, NULL_IK
@@ -81,10 +81,10 @@ contains
         use Decoration_mod, only: TAB
         implicit none
         character(*), intent(in)            :: methodName
-        type(DelayedRejectionCount_type)    :: DelayedRejectionCountObj
-        DelayedRejectionCountObj%def    = 0_IK
-        DelayedRejectionCountObj%null   = NULL_IK
-        DelayedRejectionCountObj%desc   = &
+        type(DelayedRejectionCount_type)    :: self
+        self%def    = 0_IK
+        self%null   = NULL_IK
+        self%desc   = &
         num2str(MIN_DELAYED_REJECTION_COUNT) // " <= delayedRejectionCount <= " // num2str(MAX_DELAYED_REJECTION_COUNT) // &
         " is an integer that represents the total number of stages for which rejections of new proposals &
         &will be tolerated by "//methodName//" before going back to the previously accepted point (state). &
@@ -99,63 +99,61 @@ contains
         &tolerate further rejections, because the maximum number of rejections to be tolerated has been set by the user to be &
         &delayedRejectionCount = 1. The algorithm then goes back to the original last-accepted state and will begin proposing &
         &new states from that location. &
-        &The default value is delayedRejectionCount = "// num2str(DelayedRejectionCountObj%def) // "."
+        &The default value is delayedRejectionCount = "// num2str(self%def) // "."
     end function constructDelayedRejectionCount
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine nullifyNameListVar(DelayedRejectionCountObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine nullifyNameListVar(self)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
-        class(DelayedRejectionCount_type), intent(in)  :: DelayedRejectionCountObj
-        delayedRejectionCount = DelayedRejectionCountObj%null
+        class(DelayedRejectionCount_type), intent(in)  :: self
+        delayedRejectionCount = self%null
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setDelayedRejectionCount(DelayedRejectionCountObj,delayedRejectionCount)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    pure subroutine setDelayedRejectionCount(self,delayedRejectionCount)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDelayedRejectionCount
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(DelayedRejectionCount_type), intent(inout)    :: DelayedRejectionCountObj
+        class(DelayedRejectionCount_type), intent(inout)    :: self
         integer(IK), intent(in)                             :: delayedRejectionCount
-        DelayedRejectionCountObj%val = delayedRejectionCount
-        if (DelayedRejectionCountObj%val==DelayedRejectionCountObj%null) DelayedRejectionCountObj%val = DelayedRejectionCountObj%def
+        self%val = delayedRejectionCount
+        if (self%val==self%null) self%val = self%def
     end subroutine setDelayedRejectionCount
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(DelayedRejectionCountObj,Err,methodName)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine checkForSanity(self,Err,methodName)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Constants_mod, only: IK
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(DelayedRejectionCount_type), intent(in)   :: DelayedRejectionCountObj
+        class(DelayedRejectionCount_type), intent(in)   :: self
         character(*), intent(in)            :: methodName
         type(Err_type), intent(inout)       :: Err
         character(*), parameter             :: PROCEDURE_NAME = "@checkForSanity()"
-        if ( DelayedRejectionCountObj%val<MIN_DELAYED_REJECTION_COUNT) then
+        if ( self%val < MIN_DELAYED_REJECTION_COUNT ) then
             Err%occurred = .true.
-            Err%msg =   Err%msg // &
-                        MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &The input requested value for delayedRejectionCount (" // num2str(DelayedRejectionCountObj%val) // ") &
-                        &can not be negative. If you are not sure of the appropriate value for delayedRejectionCount, drop it &
-                        &from the input list. " // methodName // " will automatically assign an appropriate value to it.\n\n"
-        elseif ( DelayedRejectionCountObj%val>MAX_DELAYED_REJECTION_COUNT) then
-            Err%occurred = .true.
-            Err%msg =   Err%msg // &
-                        MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &The input requested value for delayedRejectionCount (" // num2str(DelayedRejectionCountObj%val) // ") &
-                        &can not be > " // num2str(MAX_DELAYED_REJECTION_COUNT) // &
-                        ". If you are not sure of the appropriate value for delayedRejectionCount, drop it &
-                        &from the input list. " // methodName // " will automatically assign an appropriate value to it.\n\n"
+            Err%msg =   Err%msg // MODULE_NAME // PROCEDURE_NAME // ": Error occurred. " // & ! LCOV_EXCL_LINE
+                        "The input requested value for delayedRejectionCount (" // num2str(self%val) // & ! LCOV_EXCL_LINE
+                        ") can not be negative. If you are not sure of the appropriate value for delayedRejectionCount, drop it " // & ! LCOV_EXCL_LINE
+                        "from the input list. " // methodName // " will automatically assign an appropriate value to it.\n\n" ! LCOV_EXCL_LINE
+        elseif ( self%val > MAX_DELAYED_REJECTION_COUNT ) then
+            Err%occurred = .true. ! LCOV_EXCL_LINE
+            Err%msg =   Err%msg // MODULE_NAME // PROCEDURE_NAME // ": Error occurred. " // & ! LCOV_EXCL_LINE
+                        "The input requested value for delayedRejectionCount (" // num2str(self%val) // & ! LCOV_EXCL_LINE
+                        ") can not be > " // num2str(MAX_DELAYED_REJECTION_COUNT) // & ! LCOV_EXCL_LINE
+                        ". If you are not sure of the appropriate value for delayedRejectionCount, drop it " // & ! LCOV_EXCL_LINE
+                        "from the input list. " // methodName // " will automatically assign an appropriate value to it.\n\n" ! LCOV_EXCL_LINE
         end if
     end subroutine checkForSanity
 

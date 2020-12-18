@@ -60,10 +60,39 @@ cmakeVersionParaMonteCompatible="3.14.0"
 intelVersionParaMonteCompatible="18.0.0"
 
 ####################################################################################################################################
+#### set up color coding
+####################################################################################################################################
+
+asciiEscVal=27; Esc="$(printf "\\$(printf "%o" "${asciiEscVal}")")";
+ColorReset="${Esc}[m"
+ColorBold="${Esc}[1m"
+Red="${Esc}[31m"
+Green="${Esc}[32m"
+Yellow="${Esc}[33m"
+Blue="${Esc}[34m"
+Magenta="${Esc}[35m"
+Cyan="${Esc}[36m"
+White="${Esc}[37m"
+BoldRed="${Esc}[1;31m"
+BoldGreen="${Esc}[1;32m"
+BoldYellow="${Esc}[1;33m"
+BoldBlue="${Esc}[1;34m"
+BoldMagenta="${Esc}[1;35m"
+BoldCyan="${Esc}[1;36m"
+BoldWhite="${Esc}[1;37m"
+
+####################################################################################################################################
 #### set up the main root paths
 ####################################################################################################################################
 
 BUILD_NAME="ParaMonte"; export BUILD_NAME
+
+pmcolor="${BoldCyan}"
+pmattn=" ${pmcolor}-- ${BUILD_NAME} -${ColorReset}"
+pmnote="${pmattn} ${BoldYellow}NOTE:${ColorReset}"
+pmwarn="${pmattn} ${BoldMagenta}WARNING:${ColorReset}"
+pmfatal="${pmattn} ${BoldRed}FATAL:${ColorReset}"
+warning="${BoldMagenta}WARNING${ColorReset}"
 
 workingDir="$(pwd)"
 sourceFileDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -80,9 +109,9 @@ fi
 
 if [[ ! -f "$(pwd)/build${BUILD_NAME}.sh" ]]; then
     echo >&2
-    echo >&2 "-- ${BUILD_NAME} - FATAL: Build failed."
-    echo >&2 "-- ${BUILD_NAME} - FATAL: Please run this script inside the top-level ParaMonte library root directory."
-    echo >&2 "-- ${BUILD_NAME} - FATAL: This is the directory which contains this file in the GitHub repository of ParaMonte."
+    echo >&2 "${pmfatal} Build failed."
+    echo >&2 "${pmfatal} Please run this script inside the top-level ParaMonte library root directory."
+    echo >&2 "${pmfatal} This is the directory which contains this file in the GitHub repository of ParaMonte."
     echo >&2
     exit 1
 fi
@@ -148,44 +177,44 @@ function compareVersions() {
 
 verify() {
     if [ $1 -eq 0 ]; then
-        echo >&2 "-- ${BUILD_NAME} - ParaMonte $2 appears to have succeeded."
+        echo >&2 "-- ${pmattn} ${BoldGreen}The ParaMonte $2 appears to have succeeded.${ColorReset}"
     else
         echo >&2
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: ParaMonte $2 appears to have failed."
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: If the source of the error cannot be identified,"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: consider a fresh installation of ParaMonte's required compilers by calling"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --fresh"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: If the error happens during the installation of ParaMonte prerequisites,"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: it is possible that the current existing GNU compiler collection installed"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: on your system cannot compile the downloaded version of GNU that is required"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: for ParaMonte build. In such case, make sure you have a GNU compiler collection"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: version ${gnuVersionParaMonteCompatible} or newer installed on your system, with an updated PATH environmental"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: variable, then reinstall ParaMonte."
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: If the error is solely due to the failures of some ParaMonte tests, then"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: you may want to skip the testing of the library by specifying \"-t false\" or"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: \"--test_enabled false\" when calling the ParaMonte installation script."
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --test_enabled false"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: or,"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --t false"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: To get more help on the usage of the optional install flags, try:"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL:     ./install.sh --help"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: If all ParaMonte installation attempts fail, please report this issue at"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL:     https://github.com/shahmoradi/paramonte/issues"
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: "
-        echo >&2 "    -- ${BUILD_NAME} - FATAL: or by contacting the ParaMonte authors directly (e.g., shahmoradi@utexas.edu)."
+        echo >&2 "    -- ParaMonte - FATAL: ParaMonte $2 appears to have failed."
+        echo >&2 "    -- ParaMonte - FATAL: If the source of the error cannot be identified,"
+        echo >&2 "    -- ParaMonte - FATAL: consider a fresh installation of ParaMonte's required compilers by calling"
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL:     ./install.sh --fresh"
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL: If the error happens during the installation of ParaMonte prerequisites,"
+        echo >&2 "    -- ParaMonte - FATAL: it is possible that the current existing GNU compiler collection installed"
+        echo >&2 "    -- ParaMonte - FATAL: on your system cannot compile the downloaded version of GNU that is required"
+        echo >&2 "    -- ParaMonte - FATAL: for ParaMonte build. In such case, make sure you have a GNU compiler collection"
+        echo >&2 "    -- ParaMonte - FATAL: version ${gnuVersionParaMonteCompatible} or newer installed on your system, with an updated PATH environmental"
+        echo >&2 "    -- ParaMonte - FATAL: variable, then reinstall ParaMonte."
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL: If the error is solely due to the failures of some ParaMonte tests, then"
+        echo >&2 "    -- ParaMonte - FATAL: you may want to skip the testing of the library by specifying \"-t none\" or"
+        echo >&2 "    -- ParaMonte - FATAL: \"--test none\" when calling the ParaMonte installation script."
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL:     ./install.sh --test none"
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL: or,"
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL:     ./install.sh --t none"
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL: To get more help on the usage of the optional install flags, try:"
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL:     ./install.sh --help"
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL: If all ParaMonte installation attempts fail, please report this issue at"
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL:     https://github.com/shahmoradi/paramonte/issues"
+        echo >&2 "    -- ParaMonte - FATAL: "
+        echo >&2 "    -- ParaMonte - FATAL: or by contacting the ParaMonte authors directly (e.g., shahmoradi@utexas.edu)."
         echo >&2
         echo >&2
-        echo >&2 "    -- ${BUILD_NAME} - gracefully exiting."
+        echo >&2 "    ${pmattn} gracefully exiting."
         echo >&2
         exit 1
     fi
@@ -338,7 +367,7 @@ cat << EndOfMessage
         -m <mpi enabled: true/false>
         -i <C-Fortran interface enabled: true/false>
         -e <heap allocation enabled: true/false>
-        -t <ParaMonte test run enabled: true/false>
+        -t <ParaMonte test run enabled: none/all/pm/nopm>
         -x <ParaMonte example run enabled: true/false>
         -f <path to Fortran compiler>
         -M <path to mpiexec>
@@ -363,7 +392,7 @@ cat << EndOfMessage
         -m | --mpi_enabled      : the ParaMonte library MPI parallelism enabled?: true, false
         -i | --cfi_enabled      : the ParaMonte library C-Fortran interface enabled? must be true if the library is to be called from non-Fortran languages: true, false
         -e | --heap_enabled     : the ParaMonte library heap array allocation enabled?: true, false
-        -t | --test_enabled     : the ParaMonte library test run enabled?: true, false
+        -t | --test             : the ParaMonte library test run enabled?: none, all, pm, nopm
         -x | --exam_enabled     : the ParaMonte library examples run enabled?: true, false
         -S | --shared_enabled   : release the shared library dependencies in the binary release of the ParaMonte library: true, false
         -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
@@ -391,6 +420,7 @@ mpiInstallEnabled=false
 unset PMCS
 unset BTYPE
 unset LTYPE
+unset TTYPE
 unset CAFTYPE
 unset MPI_ENABLED
 unset CFI_ENABLED
@@ -402,7 +432,6 @@ unset FOR_COARRAY_NUM_IMAGES
 unset Fortran_COMPILER_PATH_USER
 ParaMonteExample_RUN_ENABLED=true
 localInstallationEnabled=false
-ParaMonteTest_RUN_ENABLED=true
 freshInstallEnabled=false
 YES_TO_ALL_DISABLED=true
 CODECOV_ENABLED=false
@@ -444,8 +473,8 @@ while [ "$1" != "" ]; do
         -e | --heap_enabled )   shift
                                 HEAP_ARRAY_ENABLED=$1; export HEAP_ARRAY_ENABLED
                                 ;;
-        -t | --test_enabled )   shift
-                                ParaMonteTest_RUN_ENABLED=$1; export ParaMonteTest_RUN_ENABLED
+        -t | --test )           shift
+                                TTYPE=$1; export TTYPE
                                 ;;
         -x | --exam_enabled )   shift
                                 ParaMonteExample_RUN_ENABLED=$1; export ParaMonteExample_RUN_ENABLED
@@ -592,23 +621,139 @@ fi
 
 ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"; export ParaMonte_REQ_DIR
 ParaMonte_REQ_INSTALL_DIR="${ParaMonte_REQ_DIR}/prerequisites/installations"; export ParaMonte_REQ_INSTALL_DIR
-ParaMonte_GNU_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/gnu/${gnuVersionOpenCoarrays}"; export ParaMonte_GNU_ROOT_DIR
-ParaMonte_MPI_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/mpich/${mpichVersionOpenCoarrays}"; export ParaMonte_MPI_ROOT_DIR
-ParaMonte_CAF_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/opencoarrays/${openCoarraysVersion}"; export ParaMonte_CAF_ROOT_DIR
-ParaMonte_CMAKE_ROOT_DIR="${ParaMonte_REQ_INSTALL_DIR}/cmake/${cmakeVersionParaMonteCompatible}"; export ParaMonte_CMAKE_ROOT_DIR
 
-ParaMonte_GNU_BIN_DIR="${ParaMonte_GNU_ROOT_DIR}/bin";          export ParaMonte_GNU_BIN_DIR
-ParaMonte_CAF_BIN_DIR="${ParaMonte_CAF_ROOT_DIR}/bin";          export ParaMonte_CAF_BIN_DIR
-ParaMonte_MPI_BIN_DIR="${ParaMonte_MPI_ROOT_DIR}/bin";          export ParaMonte_MPI_BIN_DIR
-ParaMonte_CMAKE_BIN_DIR="${ParaMonte_CMAKE_ROOT_DIR}/bin";      export ParaMonte_CMAKE_BIN_DIR
+#############################################
+#### set up the local CMAKE installation path
+#############################################
 
-ParaMonte_GNU_LIB_DIR="${ParaMonte_GNU_ROOT_DIR}/lib64";        export ParaMonte_GNU_LIB_DIR
-ParaMonte_CAF_LIB_DIR="${ParaMonte_CAF_ROOT_DIR}/lib64";        export ParaMonte_CAF_LIB_DIR
-ParaMonte_MPI_LIB_DIR="${ParaMonte_MPI_ROOT_DIR}/lib";          export ParaMonte_MPI_LIB_DIR
+if [ -d "${ParaMonte_REQ_INSTALL_DIR}" ]; then
+    CMAKE_LOCAL_INSTALLATION_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/" -path **/bin/cmake)"
+    if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
+        CMAKE_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CMAKE_LOCAL_INSTALLATION_PATH}")"
+        export CMAKE_LOCAL_INSTALLATION_PATH
+        export CMAKE_LOCAL_INSTALLATION_BIN_DIR
+        CMAKE_LOCAL_INSTALLATION_VERSION="$(cmake --version)"
+        CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY=($CMAKE_LOCAL_INSTALLATION_VERSION)
+        CMAKE_LOCAL_INSTALLATION_VERSION="${CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY[2]}"
+        unset CMAKE_LOCAL_INSTALLATION_VERSION_ARRAY
+    else
+        unset CMAKE_LOCAL_INSTALLATION_PATH
+    fi
+fi
 
-ParaMonte_CAF_WRAPPER_PATH="${ParaMonte_CAF_BIN_DIR}/caf";      export ParaMonte_CAF_WRAPPER_PATH
-ParaMonte_CAF_SETUP_PATH="${ParaMonte_CAF_ROOT_DIR}/setup.sh";  export ParaMonte_CAF_SETUP_PATH
-ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake";        export ParaMonte_CMAKE_PATH
+############################################
+#### set up the local GNU installation paths
+############################################
+
+if [ -d "${ParaMonte_REQ_INSTALL_DIR}/gnu" ]; then
+
+    GNU_LOCAL_INSTALLATION_GFORTRAN_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/gnu" -name gfortran)"
+
+    if [ -f "${GNU_LOCAL_INSTALLATION_GFORTRAN_PATH}" ]; then
+
+        GNU_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${GNU_LOCAL_INSTALLATION_GFORTRAN_PATH}")"
+        export GNU_LOCAL_INSTALLATION_GFORTRAN_PATH
+        export GNU_LOCAL_INSTALLATION_BIN_DIR
+
+        GNU_LOCAL_INSTALLATION_LIB_DIR="${GNU_LOCAL_INSTALLATION_BIN_DIR}/../lib"
+        if [ -d "${GNU_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            export GNU_LOCAL_INSTALLATION_LIB_DIR
+        else
+            unset GNU_LOCAL_INSTALLATION_LIB_DIR
+        fi
+
+        GNU_LOCAL_INSTALLATION_LIB64_DIR="${GNU_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
+        if [ -d "${GNU_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+            export GNU_LOCAL_INSTALLATION_LIB64_DIR
+        else
+            unset GNU_LOCAL_INSTALLATION_LIB64_DIR
+        fi
+
+    else
+
+        unset GNU_LOCAL_INSTALLATION_GFORTRAN_PATH
+
+    fi
+
+fi
+
+############################################
+#### set up the local MPI installation paths
+############################################
+
+if [ -d "${ParaMonte_REQ_INSTALL_DIR}" ]; then
+
+    MPI_LOCAL_INSTALLATION_MPIEXEC_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}"/ -name mpiexec)"
+
+    if [ -f "${MPI_LOCAL_INSTALLATION_MPIEXEC_PATH}" ]; then
+
+        MPI_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${MPI_LOCAL_INSTALLATION_MPIEXEC_PATH}")"
+        export MPI_LOCAL_INSTALLATION_MPIEXEC_PATH
+        export MPI_LOCAL_INSTALLATION_BIN_DIR
+
+        MPI_LOCAL_INSTALLATION_LIB_DIR="${MPI_LOCAL_INSTALLATION_BIN_DIR}/../lib"
+        if [ -d "${MPI_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            export MPI_LOCAL_INSTALLATION_LIB_DIR
+        else
+            unset MPI_LOCAL_INSTALLATION_LIB_DIR
+        fi
+
+        MPI_LOCAL_INSTALLATION_LIB64_DIR="${MPI_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
+        if [ -d "${MPI_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+            export MPI_LOCAL_INSTALLATION_LIB64_DIR
+        else
+            unset MPI_LOCAL_INSTALLATION_LIB64_DIR
+        fi
+
+    else
+
+        unset MPI_LOCAL_INSTALLATION_MPIEXEC_PATH
+
+    fi
+
+fi
+
+############################################
+#### set up the local CAF installation paths
+############################################
+
+if [ -d "${ParaMonte_REQ_INSTALL_DIR}/opencoarrays" ]; then
+
+    CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}"/opencoarrays/ -path **/bin/caf)"
+
+    if [ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]; then
+
+        CAF_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}")"
+        export CAF_LOCAL_INSTALLATION_BIN_DIR
+
+        CAF_LOCAL_INSTALLATION_LIB_DIR="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../lib"
+        if [ -d "${CAF_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            export CAF_LOCAL_INSTALLATION_LIB_DIR
+        else
+            unset CAF_LOCAL_INSTALLATION_LIB_DIR
+        fi
+
+        CAF_LOCAL_INSTALLATION_LIB64_DIR="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../lib64"
+        if [ -d "${CAF_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+            export CAF_LOCAL_INSTALLATION_LIB64_DIR
+        else
+            unset CAF_LOCAL_INSTALLATION_LIB64_DIR
+        fi
+
+        CAF_LOCAL_INSTALLATION_SETUP_FILE="${CAF_LOCAL_INSTALLATION_BIN_DIR}/../setup.sh";
+        if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
+            export CAF_LOCAL_INSTALLATION_SETUP_FILE
+        else
+            unset CAF_LOCAL_INSTALLATION_SETUP_FILE
+        fi
+
+    else
+
+        unset CAF_LOCAL_INSTALLATION_WRAPPER_PATH
+
+    fi
+
+fi
 
 ####################################################################################################################################
 #### check cmake version
@@ -972,40 +1117,43 @@ fi
 echo >&2
 if [ "${CAF_ENABLED}" = "true" ]; then
 
-    unset cafCompilerPath
+    #unset CAF_LOCAL_INSTALLATION_WRAPPER_PATH
 
-    if [ -z "${cafCompilerPath+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"intel".* ]] ); then
+    if [ -z "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"intel".* ]] ); then
 
         if [ -z "${intelFortranMpiWrapperPath+x}" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Failed to identify the Intel MPI library."
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The Intel MPI library is required to compile"
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Coarray Fortran applications via Intel compilers."
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The ParaMonte build will continue at the risk of failing..."
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: Failed to identify the Intel MPI library."
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The Intel MPI library is required to compile"
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: Coarray Fortran applications via Intel compilers."
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The ParaMonte build will continue at the risk of failing..."
             echo >&2
         elif [ -z "${intelFortranCompilerPath+x}" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: Failed to identify the Intel Fortran compiler path."
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The Intel MPI library and Fortran compiler are required"
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: to compile Coarray Fortran applications via Intel compilers."
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The ParaMonte build will continue at the risk of failing..."
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: Failed to identify the Intel Fortran compiler path."
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The Intel MPI library and Fortran compiler are required"
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: to compile Coarray Fortran applications via Intel compilers."
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The ParaMonte build will continue at the risk of failing..."
             echo >&2
         else
-            cafCompilerPath="${intelFortranCompilerPath}"
-            echo >&2 "-- ${BUILD_NAME}CAF - The inferred Coarray Fortran compiler wrapper path: ${cafCompilerPath}"
+            CAF_LOCAL_INSTALLATION_WRAPPER_PATH="${intelFortranCompilerPath}"
+            echo >&2 "-- ${BUILD_NAME}CAF - The inferred Coarray Fortran compiler wrapper path: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
         fi
 
     fi
 
-    if [ -z "${cafCompilerPath+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"gnu".* ]] ); then
+    if [ -z "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH+x}" ] && ( [ -z ${PMCS+x} ] || [[ "${PMCS}" =~ .*"gnu".* ]] ); then
 
         # assume OpenCoarrays
 
         PMCS=gnu
 
         if command -v caf >/dev/null 2>&1; then
-            cafCompilerPath="$(command -v caf)"
-            echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper detected at: ${cafCompilerPath}"
+            CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(command -v caf)"
+        fi
+
+        if [ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]; then
+            echo >&2 "-- ${BUILD_NAME}CAF - OpenCoarrays Fortran compiler wrapper detected at: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
             cafVersion="$(caf -dumpversion)"
             cafVersionRequired="${gnuVersionParaMonteCompatible}"
             echo >&2 "-- ${BUILD_NAME}CAF - caf version: ${cafVersion}"
@@ -1013,8 +1161,8 @@ if [ "${CAF_ENABLED}" = "true" ]; then
             compareVersions "$cafVersion" "$cafVersionRequired"
             if [ "$?" = "2" ]; then
                 echo >&2
-                echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The existing OpenCoarrays caf compiler wrapper version is not ParaMonte compatible."
-                echo >&2 "-- ${BUILD_NAME}CAF - WARNING: A fresh installation of the OpenCoarrays library might be needed."
+                echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The existing OpenCoarrays caf compiler wrapper version is not ParaMonte compatible."
+                echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: A fresh installation of the OpenCoarrays library might be needed."
                 echo >&2
                 cafInstallEnabled=true
                 #mpiInstallEnabled=true
@@ -1024,8 +1172,9 @@ if [ "${CAF_ENABLED}" = "true" ]; then
             fi
         else
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: The OpenCoarrays caf compiler wrapper was not found on your system."
-            echo >&2 "-- ${BUILD_NAME}CAF - WARNING: A fresh installation of the OpenCoarrays library might be needed."
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: The OpenCoarrays caf compiler wrapper was not found on your system or at least,"
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: the path containing the OpenCoarrays caf compiler wrapper is not in the PATH environmental variable."
+            echo >&2 "-- ${BUILD_NAME}CAF - ${warning}: A fresh installation of the OpenCoarrays library might be needed."
             echo >&2
             cafInstallEnabled=true
             #mpiInstallEnabled=true
@@ -1035,6 +1184,8 @@ if [ "${CAF_ENABLED}" = "true" ]; then
     fi
 
 fi
+
+echo >&2
 
 ####################################################################################################################################
 #### set the ParaMonte compiler suite
@@ -1081,10 +1232,10 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
                     else
                         if [ -z ${MPIEXEC_PATH_USER+x} ]; then
                             echo >&2
-                            echo >&2 "-- ${BUILD_NAME} - WARNING: Failed to identify the Intel MPI library."
-                            echo >&2 "-- ${BUILD_NAME} - WARNING: The Intel MPI library is required to compile"
-                            echo >&2 "-- ${BUILD_NAME} - WARNING: the parallel ParaMonte library via Intel compilers."
-                            echo >&2 "-- ${BUILD_NAME} - WARNING: The library build will continue at the risk of failing..."
+                            echo >&2 "-- ${BUILD_NAME} - ${warning}: Failed to identify the Intel MPI library."
+                            echo >&2 "-- ${BUILD_NAME} - ${warning}: The Intel MPI library is required to compile"
+                            echo >&2 "-- ${BUILD_NAME} - ${warning}: the parallel ParaMonte library via Intel compilers."
+                            echo >&2 "-- ${BUILD_NAME} - ${warning}: The library build will continue at the risk of failing..."
                             echo >&2
                         fi
                     fi
@@ -1124,9 +1275,9 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
         else
             gnuInstallEnabled=true
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - WARNING: The GNU Fortran compiler could not be found on your system."
-            echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have GNU compiler suite installed on your system,"
-            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install the GNU compiler suite for you."
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: The GNU Fortran compiler could not be found on your system."
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: If you do not have GNU compiler suite installed on your system,"
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte may be able to install the GNU compiler suite for you."
             echo >&2
         fi
 
@@ -1157,23 +1308,23 @@ if [ -z ${Fortran_COMPILER_PATH_USER+x} ]; then
             # enable usage of the local installation of the GNU compiler for MPI-GNUcompiler compatibility
             gnuInstallEnabled=true
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
-            echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
-            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install the MPICH MPI library for you."
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: The mpiexec executable could not be found on your system."
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: If you do not have an MPI library installed on your system,"
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte may be able to install the MPICH MPI library for you."
             echo >&2
         fi
 
-        #if [ "${CAF_ENABLED}" = "true" ]; then
-        #    if ! ${cafCompilerPath+false}; then
-        #        COMPILER_VERSION="unknown"
-        #        Fortran_COMPILER_PATH="${cafCompilerPath}"
-        #        cafInstallEnabled=false
-        #    else
-        #        cafInstallEnabled=true
-        #        mpiInstallEnabled=true
-        #        gnuInstallEnabled=true
-        #    fi
-        #fi
+        if [ "${CAF_ENABLED}" = "true" ]; then
+            if [ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]; then
+                COMPILER_VERSION="unknown"
+                Fortran_COMPILER_PATH="${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
+                cafInstallEnabled=false
+            else
+                cafInstallEnabled=true
+                mpiInstallEnabled=true
+                gnuInstallEnabled=true
+            fi
+        fi
 
     fi
 
@@ -1220,10 +1371,10 @@ if ! [ -z ${MPIEXEC_PATH_USER+x} ]; then
     if [ -f "${MPIEXEC_PATH_USER}" ]; then
         if ! [ -z ${MPIEXEC_PATH+x} ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - WARNING: The specified mpiexec path via the input flag -M | --mpiexec"
-            echo >&2 "-- ${BUILD_NAME} - WARNING: will overwrite the inferred mpiexec path by the build script."
-            echo >&2 "-- ${BUILD_NAME} - WARNING: user-specified mpiexec path: ${MPIEXEC_PATH_USER}"
-            echo >&2 "-- ${BUILD_NAME} - WARNING:       inferred mpiexec path: ${MPIEXEC_PATH}"
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: The specified mpiexec path via the input flag -M | --mpiexec"
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: will overwrite the inferred mpiexec path by the build script."
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: user-specified mpiexec path: ${MPIEXEC_PATH_USER}"
+            echo >&2 "-- ${BUILD_NAME} - ${warning}:       inferred mpiexec path: ${MPIEXEC_PATH}"
             echo >&2
             echo >&2 "-- ${BUILD_NAME} - gracefully exiting."
             echo >&2
@@ -1305,7 +1456,7 @@ echo >&2
 if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${gnuInstallEnabled}" = "true" ] || [ "${cmakeInstallEnabled}" = "true" ]; then
 
     #ParaMonte_REQ_DIR="${ParaMonte_ROOT_DIR}/build/prerequisites"
-    #ParaMonte_CAF_SETUP_PATH="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/${openCoarraysVersion}/setup.sh"
+    #CAF_LOCAL_INSTALLATION_SETUP_FILE="${ParaMonte_REQ_DIR}/prerequisites/installations/opencoarrays/${openCoarraysVersion}/setup.sh"
 
     if [ "${freshInstallEnabled}" = "true" ]; then
         rm -rf "${ParaMonte_REQ_DIR}"
@@ -1315,11 +1466,11 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
     if [ ! -d "${ParaMonte_REQ_DIR}" ] || [ ! "$(ls -A ${ParaMonte_REQ_DIR})" ]; then
 
         echo >&2
-        echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte build with the requested configuration requires the installations"
-        echo >&2 "-- ${BUILD_NAME} - WARNING: of either OpenCoarrays, MPICH MPI library (on Linux) or Open-MPI MPI library (on macOS),"
-        echo >&2 "-- ${BUILD_NAME} - WARNING: GNU compilers, or CMAKE on your system."
-        echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte can install all  prerequisites on your system from the web, if needed."
-        echo >&2 "-- ${BUILD_NAME} - WARNING: The prerequisite build objects may occupy up to 5Gb of your system's memory."
+        echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte build with the requested configuration requires the installations"
+        echo >&2 "-- ${BUILD_NAME} - ${warning}: of either OpenCoarrays, MPICH MPI library (on Linux) or Open-MPI MPI library (on macOS),"
+        echo >&2 "-- ${BUILD_NAME} - ${warning}: GNU compilers, or CMAKE on your system."
+        echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte can install all  prerequisites on your system from the web, if needed."
+        echo >&2 "-- ${BUILD_NAME} - ${warning}: The prerequisite build objects may occupy up to 5Gb of your system's memory."
         echo >&2
 
         ############################################################################################################################
@@ -1362,8 +1513,17 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
                 tarFileName="OpenCoarrays-${openCoarraysVersion}.tar.gz"
                 tarFileWeb="https://github.com/sourceryinstitute/OpenCoarrays/releases/download/${openCoarraysVersion}/${tarFileName}"
-                wget -P "${ParaMonte_REQ_DIR}/.." "${tarFileWeb}"
-                verify $? "download of the prerequisites"
+                if command -v wget >/dev/null 2>&1; then
+                    wget -P "${ParaMonte_REQ_DIR}/.." "${tarFileWeb}"
+                    verify $? "download of the prerequisites"
+                else
+                    echo >&2
+                    echo >&2 "-- ${BUILD_NAME} - ${fatal}: The GNU Wget software is required to download the ParaMonte prerequisites."
+                    echo >&2 "-- ${BUILD_NAME} - ${fatal}: Please install this wget application and rerun the install/build script."
+                    echo >&2
+                    echo >&2 "Gracefully exiting..."
+                    exit 1
+                fi
 
                 #tarFileName="prerequisites.tar.gz"
                 #cp -rv "${ParaMonte_ROOT_DIR}/auxil/${tarFileName}" "${ParaMonte_REQ_DIR}/../"
@@ -1375,7 +1535,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
             else
 
-                echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte installation will proceed with no guarantee of success."
+                echo >&2 "-- ${BUILD_NAME} - ${warning}: The ParaMonte installation will proceed with no guarantee of success."
                 echo >&2
                 #exit 1
 
@@ -1411,7 +1571,8 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         ############################################################################################################################
 
         if [ "${cmakeInstallEnabled}" = "true" ]; then
-            if [[ -f "${ParaMonte_CMAKE_PATH}" ]]; then
+            if [ -z "${CMAKE_LOCAL_INSTALLATION_PATH+x}" ] && [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
+                #\todo the cmake version extraction needs enhancement.
                 echo >&2 "-- ${BUILD_NAME} - cmake ${cmakeVersionParaMonteCompatible} detected."
             else
                 echo >&2 "-- ${BUILD_NAME} - cmake ${cmakeVersionParaMonteCompatible} missing."
@@ -1424,29 +1585,25 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
                     (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh --yes-to-all --package cmake --install-version ${cmakeVersionParaMonteCompatible} )
                     verify $? "installation of cmake"
-                    cmakeFound=false
-                    if [ -f "${ParaMonte_CMAKE_PATH}" ]; then
-                        cmakeFound=true
-                    else
-                        ParaMonte_CMAKE_BIN_DIR="${ParaMonte_REQ_INSTALL_DIR}/bin"; export ParaMonte_CMAKE_BIN_DIR
-                        ParaMonte_CMAKE_PATH="${ParaMonte_CMAKE_BIN_DIR}/cmake"; export ParaMonte_CMAKE_PATH
-                        if [ -f "${ParaMonte_CMAKE_PATH}" ]; then
-                            cmakeFound=true
+                    if [ -d "${ParaMonte_REQ_INSTALL_DIR}" ]; then
+                        CMAKE_LOCAL_INSTALLATION_PATH="$(find "${ParaMonte_REQ_INSTALL_DIR}/" -path **/bin/cmake)"
+                        if [ -f "${CMAKE_LOCAL_INSTALLATION_PATH}" ]; then
+                            CMAKE_LOCAL_INSTALLATION_BIN_DIR="$(dirname "${CMAKE_LOCAL_INSTALLATION_PATH}")"
+                            export CMAKE_LOCAL_INSTALLATION_BIN_DIR
+                            export CMAKE_LOCAL_INSTALLATION_PATH
+                            if [[ ":$PATH:" != *":${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                                PATH="${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+                                export PATH
+                            fi
+                            cmakeVersion="$(${CMAKE_LOCAL_INSTALLATION_PATH} --version)"
+                            cmakeVersionArray=($cmakeVersion)
+                            cmakeVersion="${cmakeVersionArray[2]}"
+                            echo >&2 "-- ${BUILD_NAME} -       cmake binary path: ${CMAKE_LOCAL_INSTALLATION_PATH}"
+                            echo >&2 "-- ${BUILD_NAME} - cmake installed version: ${cmakeVersion}"
                         else
-                            unset ParaMonte_CMAKE_BIN_DIR
-                            unset ParaMonte_CMAKE_PATH
+                            unset CMAKE_LOCAL_INSTALLATION_PATH
+                            unset CMAKE_LOCAL_INSTALLATION_BIN_DIR
                         fi
-                    fi
-                    if [ "${cmakeFound}" = "true" ]; then
-                        if [[ ":$PATH:" != *":${ParaMonte_CMAKE_BIN_DIR}:"* ]]; then
-                            PATH="${ParaMonte_CMAKE_BIN_DIR}:${PATH}"
-                            export PATH
-                        fi
-                        cmakeVersion="$(cmake --version)"
-                        cmakeVersionArray=($cmakeVersion)
-                        cmakeVersion="${cmakeVersionArray[2]}"
-                        echo >&2 "-- ${BUILD_NAME} -       cmake binary path: ${ParaMonte_CMAKE_PATH}"
-                        echo >&2 "-- ${BUILD_NAME} - cmake installed version: ${cmakeVersion}"
                     fi
                 fi
             fi
@@ -1468,18 +1625,18 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
         else
             CURRENT_PKG="the MPICH library"
             if [ "${mpiInstallEnabled}" = "true" ]; then
-                MPIEXEC_PATH="${ParaMonte_MPI_BIN_DIR}/mpiexec"
+                MPIEXEC_PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}/mpiexec"
                 if [[ -f "${MPIEXEC_PATH}" ]]; then
-                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_MPI_BIN_DIR}"
+                    echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${MPI_LOCAL_INSTALLATION_BIN_DIR}"
                     localMpiInstallationDetected=true
-                    if [[ ":$PATH:" != *":${ParaMonte_MPI_BIN_DIR}:"* ]]; then
-                        PATH="${ParaMonte_MPI_BIN_DIR}:${PATH}"
+                    if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                        PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
                     fi
-                    if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_MPI_LIB_DIR}:"* ]]; then
-                        LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
+                    if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                        LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
                         export LD_LIBRARY_PATH
                     fi
-                    PATH="${ParaMonte_MPI_LIB_DIR}:${PATH}"
+                    PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
                     export PATH
                 else
                     ##########################################################################
@@ -1537,15 +1694,15 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
 
         CURRENT_PKG="the GNU compiler collection"
         if [ "${gnuInstallEnabled}" = "true" ]; then # || [ "${localMpiInstallationDetected}" = "false" ]); then
-            Fortran_COMPILER_PATH="${ParaMonte_GNU_BIN_DIR}/gfortran"
+            Fortran_COMPILER_PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}/gfortran"
             if [[ -f "${Fortran_COMPILER_PATH}" ]]; then
-                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_GNU_BIN_DIR}"
-                if [[ ":$PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
-                    PATH="${ParaMonte_GNU_LIB_DIR}:${PATH}"
+                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${GNU_LOCAL_INSTALLATION_BIN_DIR}"
+                if [[ ":$PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                    PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${PATH}"
                     export PATH
                 fi
-                if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
-                    LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
+                if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                    LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
                     export LD_LIBRARY_PATH
                 fi
                 #gnuInstallEnabled=false
@@ -1605,25 +1762,14 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
             fi
         fi
 
-        # # set up setup.sh file
-
-        # SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
-        # export SETUP_FILE_PATH
-
-        # echo "# ParaMonte runtime environment setup script." > ${SETUP_FILE_PATH}
-        # echo "# Source this Bash script in your Bash environment like," >> ${SETUP_FILE_PATH}
-        # echo "#     source ./setup.sh" >> ${SETUP_FILE_PATH}
-        # echo "# before compiling your source files and linking with ParaMonte library." >> ${SETUP_FILE_PATH}
-        # echo "" >> ${SETUP_FILE_PATH}
-
         ############################################################################################################################
         #### check caf
         ############################################################################################################################
 
         CURRENT_PKG="the OpenCoarrays compiler wrapper"
         if [ "${CAF_ENABLED}" = "true" ] && [ "${cafInstallEnabled}" = "true" ]; then
-            if [[ -f "${ParaMonte_CAF_WRAPPER_PATH}" ]]; then
-                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${ParaMonte_CAF_WRAPPER_PATH}"
+            if [[ -f "${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}" ]]; then
+                echo >&2 "-- ${BUILD_NAME} - Local installation of ${CURRENT_PKG} detected: ${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
             else
                 ##########################################################################
                 echo >&2 "-- ${BUILD_NAME} - ${CURRENT_PKG} missing."
@@ -1632,7 +1778,7 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                     (brew install opencoarrays && brew link opencoarrays )
                     (command -v caf >/dev/null 2>&1 )
                     verify $? "installation of ${CURRENT_PKG}"
-                    ParaMonte_CAF_WRAPPER_PATH="$(command -v caf)"
+                    CAF_LOCAL_INSTALLATION_WRAPPER_PATH="$(command -v caf)"
                 else
                     chmod +x "${ParaMonte_REQ_DIR}/install.sh"
                     (cd ${ParaMonte_REQ_DIR} && yes | ./install.sh ${GCC_BOOTSTRAP} --yes-to-all) ||
@@ -1678,13 +1824,14 @@ if [ "${cafInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] ||
                 fi
                 ##########################################################################
             fi
-            Fortran_COMPILER_PATH="${ParaMonte_CAF_WRAPPER_PATH}"
+            Fortran_COMPILER_PATH="${CAF_LOCAL_INSTALLATION_WRAPPER_PATH}"
         fi
 
-        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
-            source "${ParaMonte_CAF_SETUP_PATH}"
+        if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ]; then
+            source "${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
+            # source "${SETUP_FILE_PATH}"
             # echo "" >> ${SETUP_FILE_PATH}
-            # echo "source ${ParaMonte_CAF_SETUP_PATH}" >> ${SETUP_FILE_PATH}
+            # echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}" >> ${SETUP_FILE_PATH}
             # echo "" >> ${SETUP_FILE_PATH}
         fi
 
@@ -1702,12 +1849,12 @@ fi
 #### set up PATH & LD_LIBRARY_PATH
 ####################################################################################################################################
 
-if [ -d "${ParaMonte_CMAKE_BIN_DIR}" ]; then
+if [ -d "${CMAKE_LOCAL_INSTALLATION_BIN_DIR}" ]; then
     if [ -z ${PATH+x} ]; then
-        PATH="${ParaMonte_CMAKE_BIN_DIR}"
+        PATH="${CMAKE_LOCAL_INSTALLATION_BIN_DIR}"
     else
-        if [[ ":$PATH:" != *":${ParaMonte_CMAKE_BIN_DIR}:"* ]]; then
-            PATH="${ParaMonte_CMAKE_BIN_DIR}:${PATH}"
+        if [[ ":$PATH:" != *":${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+            PATH="${CMAKE_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
         fi
     fi
 fi
@@ -1716,147 +1863,245 @@ fi
 ##### set up setup.sh file
 ####################################################################################################################################
 
-if [ "${PMCS}" = "gnu" ] && ! [ "${isMacOS}" = "true" ]; then
+# SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
+# export SETUP_FILE_PATH
+#
+# {
+#     echo "if ! [[ \"${PATH}\" =~ .*\"${GNU_LOCAL_INSTALLATION_BIN_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${GNU_LOCAL_INSTALLATION_BIN_DIR}:${PATH}\""
+#     echo "fi"
+#     echo ""
+#     echo "if ! [[ \"${PATH}\" =~ .*\"${MPI_LOCAL_INSTALLATION_BIN_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}\""
+#     echo "fi"
+#     echo ""
+#     echo "if ! [[ \"${PATH}\" =~ .*\"${CAF_LOCAL_INSTALLATION_BIN_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}:${PATH}\""
+#     echo "fi"
+#     echo ""
+#     echo "if ! [[ \"${LD_LIBRARY_PATH}\" =~ .*\"${GNU_LOCAL_INSTALLATION_LIB_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}\""
+#     echo "fi"
+#     echo ""
+#     echo "if ! [[ \"${LD_LIBRARY_PATH}\" =~ .*\"${MPI_LOCAL_INSTALLATION_LIB_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}\""
+#     echo "fi"
+#     echo ""
+#     echo "if ! [[ \"${LD_LIBRARY_PATH}\" =~ .*\"${CAF_LOCAL_INSTALLATION_LIB_DIR}\".* ]]; then"
+#     echo "    export PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}\""
+#     echo "fi"
+# } > ${SETUP_FILE_PATH}
 
-    if [ -f "${ParaMonte_CAF_SETUP_PATH}" ]; then
-        SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
-        export SETUP_FILE_PATH
+if [ "${PMCS}" = "gnu" ] && ( [[ "${Fortran_COMPILER_PATH}" =~ .*"build/prerequisites/prerequisites/installations".* ]] || [[ "${MPIEXEC_PATH}" =~ .*"build/prerequisites/prerequisites/installations".* ]] ) && ! [ "${isMacOS}" = "true" ]; then
+
+    SETUP_FILE_PATH="${ParaMonte_ROOT_DIR}/build/setup.sh"
+    export SETUP_FILE_PATH
+
+    # add the default OpenCoarrays setup file
+    {
+    echo "# ParaMonte runtime environment setup script."
+    echo "# Source this Bash script in your Bash environment like,"
+    echo "#     source ./setup.sh"
+    echo "# before compiling your source files and linking with ParaMonte library."
+    echo ""
+    } > ${SETUP_FILE_PATH}
+    chmod +x ${SETUP_FILE_PATH}
+
+    if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ] && [ "${CAF_ENABLED}" = "true" ]; then
         {
-        echo "# ParaMonte runtime environment setup script."
-        echo "# Source this Bash script in your Bash environment like,"
-        echo "#     source ./setup.sh"
-        echo "# before compiling your source files and linking with ParaMonte library."
-        echo ""
-        } > ${SETUP_FILE_PATH}
-        chmod +x ${SETUP_FILE_PATH}
-
-        if [[ -f "${SETUP_FILE_PATH}" ]]; then
-            {
             echo ""
-            echo "source ${ParaMonte_CAF_SETUP_PATH}"
+            echo "source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
+            echo ""
+        } >> ${SETUP_FILE_PATH}
+        if [ "${LTYPE}" = "dynamic" ]; then
+            {
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    LD_LIBRARY_PATH=."
+            echo "else"
+            echo "    sourceFileDir=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${sourceFileDir}:\"* ]]; then"
+            echo "        LD_LIBRARY_PATH=\"${sourceFileDir}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+            echo "export LD_LIBRARY_PATH"
             echo ""
             } >> ${SETUP_FILE_PATH}
-            if [ "${LTYPE}" = "dynamic" ]; then
-                {
-                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-                echo "    LD_LIBRARY_PATH=."
+        fi
+    fi
+
+    #####################################################
+    #### add the GNU installation paths to the setup file
+    #####################################################
+
+    if [ -d "${GNU_LOCAL_INSTALLATION_BIN_DIR}" ] && [[ "${Fortran_COMPILER_PATH}" =~ .*"build/prerequisites/prerequisites/installations".* ]]; then
+        if [ -z ${PATH+x} ]; then
+            PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}"
+        else
+            if [[ ":$PATH:" != *":${GNU_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                PATH="${GNU_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+            fi
+        fi
+        {
+            echo "if [ -z \${PATH+x} ]; then"
+            echo "    export PATH=\"${GNU_LOCAL_INSTALLATION_BIN_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$PATH:\" != *\":${GNU_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
+            echo "        export PATH=\"${GNU_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
+            echo "    fi"
+            echo "fi"
+        } >> ${SETUP_FILE_PATH}
+    fi
+
+    if [ -d "${GNU_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+        if [ -z ${LD_LIBRARY_PATH+x} ]; then
+            LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}"
+        else
+            if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+            fi
+        fi
+        {
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    export LD_LIBRARY_PATH=\"${GNU_LOCAL_INSTALLATION_LIB_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${GNU_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${GNU_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+        } >> ${SETUP_FILE_PATH}
+    fi
+
+    if [ -d "${GNU_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+        if [ -z ${LD_LIBRARY_PATH+x} ]; then
+            LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB64_DIR}"
+        else
+            if [[ ":$LD_LIBRARY_PATH:" != *":${GNU_LOCAL_INSTALLATION_LIB64_DIR}:"* ]]; then
+                LD_LIBRARY_PATH="${GNU_LOCAL_INSTALLATION_LIB64_DIR}:${LD_LIBRARY_PATH}"
+            fi
+        fi
+        {
+            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+            echo "    export LD_LIBRARY_PATH=\"${GNU_LOCAL_INSTALLATION_LIB64_DIR}\""
+            echo "else"
+            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${GNU_LOCAL_INSTALLATION_LIB64_DIR}:\"* ]]; then"
+            echo "        export LD_LIBRARY_PATH=\"${GNU_LOCAL_INSTALLATION_LIB64_DIR}:\${LD_LIBRARY_PATH}\""
+            echo "    fi"
+            echo "fi"
+        } >> ${SETUP_FILE_PATH}
+    fi
+
+    ##########################
+    #### add path to local MPI
+    ##########################
+
+    if [[ "${MPIEXEC_PATH}" =~ .*"build/prerequisites/prerequisites/installations".* ]]; then
+
+        if [ -d "${MPI_LOCAL_INSTALLATION_BIN_DIR}" ]; then
+            if [ -z ${PATH+x} ]; then
+                PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}"
+            else
+                if [[ ":$PATH:" != *":${MPI_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                    PATH="${MPI_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+                fi
+            fi
+            {
+                echo "if [ -z \${PATH+x} ]; then"
+                echo "    export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}\""
                 echo "else"
-                echo "    sourceFileDir=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" >/dev/null 2>&1 && pwd )\""
-                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${sourceFileDir}:\"* ]]; then"
-                echo "        LD_LIBRARY_PATH=\"${sourceFileDir}:\${LD_LIBRARY_PATH}\""
+                echo "    if [[ \":\$PATH:\" != *\":${MPI_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
+                echo "        export PATH=\"${MPI_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
                 echo "    fi"
                 echo "fi"
-                echo "export LD_LIBRARY_PATH"
-                echo ""
-                } >> ${SETUP_FILE_PATH}
-            fi
-        fi
-    fi
-
-    if [ -d "${ParaMonte_GNU_BIN_DIR}" ]; then
-        if [ -z ${PATH+x} ]; then
-            PATH="${ParaMonte_GNU_BIN_DIR}"
-        else
-            if [[ ":$PATH:" != *":${ParaMonte_GNU_BIN_DIR}:"* ]]; then
-                PATH="${ParaMonte_GNU_BIN_DIR}:${PATH}"
-            fi
-        fi
-        if [ -z ${LD_LIBRARY_PATH+x} ]; then
-            LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}"
-        else
-            if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_GNU_LIB_DIR}:"* ]]; then
-                LD_LIBRARY_PATH="${ParaMonte_GNU_LIB_DIR}:${LD_LIBRARY_PATH}"
-            fi
-        fi
-        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
-            {
-            echo "if [ -z \${PATH+x} ]; then"
-            echo "    export PATH=\"${ParaMonte_GNU_BIN_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$PATH:\" != *\":${ParaMonte_GNU_BIN_DIR}:\"* ]]; then"
-            echo "        export PATH=\"${ParaMonte_GNU_BIN_DIR}:\${PATH}\""
-            echo "    fi"
-            echo "fi"
-            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-            echo "    export LD_LIBRARY_PATH=\"${ParaMonte_GNU_LIB_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${ParaMonte_GNU_LIB_DIR}:\"* ]]; then"
-            echo "        export LD_LIBRARY_PATH=\"${ParaMonte_GNU_LIB_DIR}:\${LD_LIBRARY_PATH}\""
-            echo "    fi"
-            echo "fi"
             } >> ${SETUP_FILE_PATH}
         fi
-    fi
 
-    if [ -d "${ParaMonte_MPI_BIN_DIR}" ]; then
-        if [ -z ${PATH+x} ]; then
-            PATH="${ParaMonte_MPI_BIN_DIR}"
-        else
-            if [[ ":$PATH:" != *":${ParaMonte_MPI_BIN_DIR}:"* ]]; then
-                PATH="${ParaMonte_MPI_BIN_DIR}:${PATH}"
+        if [ -d "${MPI_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            if [ -z ${LD_LIBRARY_PATH+x} ]; then
+                LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}"
+            else
+                if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                    LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+                fi
             fi
-        fi
-        if [ -z ${LD_LIBRARY_PATH+x} ]; then
-            LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}"
-        else
-            if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_MPI_LIB_DIR}:"* ]]; then
-                LD_LIBRARY_PATH="${ParaMonte_MPI_LIB_DIR}:${LD_LIBRARY_PATH}"
-            fi
-        fi
-        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
             {
-            echo "if [ -z \${PATH+x} ]; then"
-            echo "    export PATH=\"${ParaMonte_MPI_BIN_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$PATH:\" != *\":${ParaMonte_MPI_BIN_DIR}:\"* ]]; then"
-            echo "        export PATH=\"${ParaMonte_MPI_BIN_DIR}:\${PATH}\""
-            echo "    fi"
-            echo "fi"
-            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-            echo "    export LD_LIBRARY_PATH=\"${ParaMonte_MPI_LIB_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${ParaMonte_MPI_LIB_DIR}:\"* ]]; then"
-            echo "        export LD_LIBRARY_PATH=\"${ParaMonte_MPI_LIB_DIR}:\${LD_LIBRARY_PATH}\""
-            echo "    fi"
-            echo "fi"
+                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+                echo "    export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}\""
+                echo "else"
+                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${MPI_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
+                echo "        export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+                echo "    fi"
+                echo "fi"
             } >> ${SETUP_FILE_PATH}
         fi
-    fi
 
-    if [ -d "${ParaMonte_CAF_BIN_DIR}" ]; then
-        if [ -z ${PATH+x} ]; then
-            PATH="${ParaMonte_CAF_BIN_DIR}"
-        else
-            if [[ ":$PATH:" != *":${ParaMonte_CAF_BIN_DIR}:"* ]]; then
-                PATH="${ParaMonte_CAF_BIN_DIR}:${PATH}"
+        if [ -d "${MPI_LOCAL_INSTALLATION_LIB64_DIR}" ]; then
+            if [ -z ${LD_LIBRARY_PATH+x} ]; then
+                LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB64_DIR}"
+            else
+                if [[ ":$LD_LIBRARY_PATH:" != *":${MPI_LOCAL_INSTALLATION_LIB64_DIR}:"* ]]; then
+                    LD_LIBRARY_PATH="${MPI_LOCAL_INSTALLATION_LIB64_DIR}:${LD_LIBRARY_PATH}"
+                fi
             fi
-        fi
-        if [ -z ${LD_LIBRARY_PATH+x} ]; then
-            LD_LIBRARY_PATH="${ParaMonte_CAF_LIB_DIR}"
-        else
-            if [[ ":$LD_LIBRARY_PATH:" != *":${ParaMonte_CAF_LIB_DIR}:"* ]]; then
-                LD_LIBRARY_PATH="${ParaMonte_CAF_LIB_DIR}:${LD_LIBRARY_PATH}"
-            fi
-        fi
-        if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && [ -f "${SETUP_FILE_PATH}" ]; then
             {
-            echo "if [ -z \${PATH+x} ]; then"
-            echo "    export PATH=\"${ParaMonte_CAF_BIN_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$PATH:\" != *\":${ParaMonte_CAF_BIN_DIR}:\"* ]]; then"
-            echo "        export PATH=\"${ParaMonte_CAF_BIN_DIR}:\${PATH}\""
-            echo "    fi"
-            echo "fi"
-            echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
-            echo "    export LD_LIBRARY_PATH=\"${ParaMonte_CAF_LIB_DIR}\""
-            echo "else"
-            echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${ParaMonte_CAF_LIB_DIR}:\"* ]]; then"
-            echo "        export LD_LIBRARY_PATH=\"${ParaMonte_CAF_LIB_DIR}:\${LD_LIBRARY_PATH}\""
-            echo "    fi"
-            echo "fi"
+                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+                echo "    export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB64_DIR}\""
+                echo "else"
+                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${MPI_LOCAL_INSTALLATION_LIB64_DIR}:\"* ]]; then"
+                echo "        export LD_LIBRARY_PATH=\"${MPI_LOCAL_INSTALLATION_LIB64_DIR}:\${LD_LIBRARY_PATH}\""
+                echo "    fi"
+                echo "fi"
             } >> ${SETUP_FILE_PATH}
         fi
+
     fi
+
+    ############################
+    #### add path to caf wrapper
+    ############################
+
+    if [ "${CAF_ENABLED}" = "true" ]; then
+
+        if [ -d "${CAF_LOCAL_INSTALLATION_BIN_DIR}" ]; then
+            if [ -z ${PATH+x} ]; then
+                PATH="${CAF_LOCAL_INSTALLATION_BIN_DIR}"
+            else
+                if [[ ":$PATH:" != *":${CAF_LOCAL_INSTALLATION_BIN_DIR}:"* ]]; then
+                    PATH="${CAF_LOCAL_INSTALLATION_BIN_DIR}:${PATH}"
+                fi
+            fi
+            {
+                echo "if [ -z \${PATH+x} ]; then"
+                echo "    export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}\""
+                echo "else"
+                echo "    if [[ \":\$PATH:\" != *\":${CAF_LOCAL_INSTALLATION_BIN_DIR}:\"* ]]; then"
+                echo "        export PATH=\"${CAF_LOCAL_INSTALLATION_BIN_DIR}:\${PATH}\""
+                echo "    fi"
+                echo "fi"
+            } >> ${SETUP_FILE_PATH}
+        fi
+
+        if [ -d "${CAF_LOCAL_INSTALLATION_LIB_DIR}" ]; then
+            if [ -z ${LD_LIBRARY_PATH+x} ]; then
+                LD_LIBRARY_PATH="${CAF_LOCAL_INSTALLATION_LIB_DIR}"
+            else
+                if [[ ":$LD_LIBRARY_PATH:" != *":${CAF_LOCAL_INSTALLATION_LIB_DIR}:"* ]]; then
+                    LD_LIBRARY_PATH="${CAF_LOCAL_INSTALLATION_LIB_DIR}:${LD_LIBRARY_PATH}"
+                fi
+            fi
+            {
+                echo "if [ -z \${LD_LIBRARY_PATH+x} ]; then"
+                echo "    export LD_LIBRARY_PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}\""
+                echo "else"
+                echo "    if [[ \":\$LD_LIBRARY_PATH:\" != *\":${CAF_LOCAL_INSTALLATION_LIB_DIR}:\"* ]]; then"
+                echo "        export LD_LIBRARY_PATH=\"${CAF_LOCAL_INSTALLATION_LIB_DIR}:\${LD_LIBRARY_PATH}\""
+                echo "    fi"
+                echo "fi"
+            } >> ${SETUP_FILE_PATH}
+        fi
+
+    fi
+
+    ######################################
 
     export PATH
     export LD_LIBRARY_PATH
@@ -1925,6 +2170,39 @@ if [ "${PMCS}" = "gnu" ] || [ "${COMPILER_VERSION}" = "unknown" ]; then
 fi
 
 ####################################################################################################################################
+#### determine the MPI library name to used in the ParaMonte library name and build directory
+####################################################################################################################################
+
+unset MPILIB_NAME
+if [ -f "${MPIEXEC_PATH}" ]; then
+
+    mpiVersionInfo="$(${MPIEXEC_PATH} --version)"
+
+    if [[ "${mpiVersionInfo}" =~ .*"Intel".* ]]; then
+        MPILIB_NAME="impi"
+    elif [[ "${mpiVersionInfo}" =~ .*[oO][pP][eE][nN][rR][tT][eE].* ]] || [[ "${mpiVersionInfo}" =~ .*[oO][pP][eE][nN]-?[mM][pP][iI].* ]]; then
+        MPILIB_NAME="openmpi"
+    elif [[ "${mpiVersionInfo}" =~ .*[mM][pP][iI][cC][hH].* ]]; then
+        MPILIB_NAME="mpich"
+    else # look for mpichversion
+        mpichversion_PATH="$(dirname ${MPIEXEC_PATH})"/mpichversion
+        if [ -f "${mpichversion_PATH}" ] && [[ "$(mpichversion_PATH)" =~ .*[mM][pP][iI][cC][hH].* ]]; then
+            MPILIB_NAME="mpich"
+        fi
+    fi
+fi
+
+if [ -z ${MPILIB_NAME+x} ] && [ "${MPI_ENABLED}" = "true" ]; then
+    MPILIB_NAME="mpi"
+    echo >&2
+    echo >&2 "${pmwarn} The make of the MPI library could be identified."
+    echo >&2 "${pmwarn} The MPI library's behavior does not match the Intel, MPICH, or OpenMPI libraries."
+    echo >&2 "${pmwarn} The ParaMonte library name will be suffixed with the generic \"${MPILIB_NAME}\" label."
+    echo >&2
+fi
+export MPILIB_NAME
+
+####################################################################################################################################
 # set ParaMonte build dir
 ####################################################################################################################################
 
@@ -1935,7 +2213,7 @@ echo >&2 "-- ${BUILD_NAME} - selected compiler version: ${COMPILER_VERSION}"
 
 unset PARALLELIZATION_DIR
 if [ "${OMP_ENABLED}" = "true" ]; then PARALLELIZATION_DIR=${PARALLELIZATION_DIR}omp; fi
-if [ "${MPI_ENABLED}" = "true" ]; then PARALLELIZATION_DIR=${PARALLELIZATION_DIR}mpi; fi
+if [ "${MPI_ENABLED}" = "true" ]; then PARALLELIZATION_DIR=${PARALLELIZATION_DIR}${MPILIB_NAME}; fi
 if [ "${CAF_ENABLED}" = "true" ]; then PARALLELIZATION_DIR=${PARALLELIZATION_DIR}caf${CAFTYPE}; fi
 if [ -z ${PARALLELIZATION_DIR+x} ]; then PARALLELIZATION_DIR=serial; fi
 export PARALLELIZATION_DIR
@@ -2056,8 +2334,8 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         MATLAB_ROOT_DIR=$(dirname $MATLAB_BIN_DIR)
         # echo >&2 "-- ${BUILD_NAME} - MATLAB detected at: ${MATLAB_EXE_PATH}"
     else
-        echo >&2 "-- ${BUILD_NAME} - MATLAB could not be found in among the search paths."
-        echo >&2 "-- ${BUILD_NAME} - searching for MATLAB in the default installation directories..."
+        echo >&2 "-- ${BUILD_NAME} - ${warning}: MATLAB could not be found in among the search paths."
+        echo >&2 "-- ${BUILD_NAME} - ${warning}: searching for MATLAB in the default installation directories..."
     fi
 
     if [ -z ${MATLAB_EXE_PATH+x} ]; then
@@ -2098,23 +2376,23 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         else
             EXAMPLE_MATLAB_ROOT_DIR="/usr/local/MATLAB/${EXAMPLE_MATLAB_VERSION}"
         fi
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Please add MATLAB to your environmental variable PATH and rerun the install script."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: For example, in your current terminal, try:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Operating Systems is a string like the following:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: find the installation location of MATLAB by typing the following command in your MATLAB session:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     matlabroot"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Please add MATLAB to your environmental variable PATH and rerun the install script."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: For example, in your current terminal, try:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Operating Systems is a string like the following:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: find the installation location of MATLAB by typing the following command in your MATLAB session:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     matlabroot"
         echo >&2
         if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
             answerNotGiven=true
@@ -2138,7 +2416,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: skipping the ParaMonte MATLAB dynamic library build..."
+            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB dynamic library build..."
             echo >&2
         else
             echo >&2
@@ -2175,7 +2453,7 @@ fi
 if [ -z ${Fortran_COMPILER_PATH+x} ]; then
     FC_OPTION=""
 else
-    FC_OPTION="-DFC=${Fortran_COMPILER_PATH}"
+    FC_OPTION="-DCMAKE_Fortran_COMPILER=${Fortran_COMPILER_PATH}"
     export Fortran_COMPILER_PATH
 fi
 if [ -z ${MPIEXEC_PATH+x} ]; then
@@ -2189,66 +2467,111 @@ echo >&2 "-- ${BUILD_NAME} - CMAKE Fortran compiler option: ${FC_OPTION}"
 echo >&2 "-- ${BUILD_NAME} - CMAKE mpiexec option: ${MPIEXEC_OPTION}"
 echo >&2
 
-if [ -f "${ParaMonte_CAF_SETUP_PATH}" ] && ([ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${cafInstallEnabled}" = "true" ]); then
-    ParaMonte_CAF_SETUP_PATH_CMD="source ${ParaMonte_CAF_SETUP_PATH}"
+if [ -f "${CAF_LOCAL_INSTALLATION_SETUP_FILE}" ] && ([ "${gnuInstallEnabled}" = "true" ] || [ "${mpiInstallEnabled}" = "true" ] || [ "${cafInstallEnabled}" = "true" ]); then
+    CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD="source ${CAF_LOCAL_INSTALLATION_SETUP_FILE}"
 else
-    ParaMonte_CAF_SETUP_PATH_CMD=""
+    CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD=""
 fi
-if [ "${isMacOS}" = "true" ]; then ParaMonte_CAF_SETUP_PATH_CMD=""; fi
+if [ "${isMacOS}" = "true" ]; then CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD=""; fi
+
+####################################################################################################################################
+#### generate the current paramonte library name
+####################################################################################################################################
+
+if [ "${INTERFACE_LANGUAGE}" = "c++" ] || [ "${INTERFACE_LANGUAGE}" = "C++" ]; then
+    LANG_ABBR="cpp"
+else
+    LANG_ABBR="${INTERFACE_LANGUAGE}"
+fi
+
+PMLIB_NAME="paramonte_${LANG_ABBR}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION}"
+
+if [ "${CAF_ENABLED}" = "true" ]; then
+    PMLIB_NAME="${PMLIB_NAME}_caf${CAFTYPE}"
+fi
+
+if [ "${MPI_ENABLED}" = "true" ]; then
+    PMLIB_NAME="${PMLIB_NAME}_${MPILIB_NAME}"
+fi
+
+if [ "${OMP_ENABLED}" = "true" ]; then
+    PMLIB_NAME="${PMLIB_NAME}_omp"
+fi
+
+echo >&2
+echo >&2 "-- ${BUILD_NAME} - NOTE: The current ParaMonte library build will tagged with: ${PMLIB_NAME}"
+echo >&2
 
 ####################################################################################################################################
 #### call cmake
 ####################################################################################################################################
 
-if [ "${DRYRUN_ENABLED}" != "true" ]; then
-
 if [ "${CODECOV_ENABLED}" = "true" ]; then
     CODECOV_ENABLED_FLAG="-DCODECOV_ENABLED=${CODECOV_ENABLED}"
+    ParaMonteTest_RUN_ENABLED=true
+    if [ -z ${TTYPE+x} ]; then
+        BASIC_TEST_ENABLED_FLAG="-DBASIC_TEST_ENABLED=true"
+        SAMPLER_TEST_ENABLED_FLAG="-DSAMPLER_TEST_ENABLED=true"
+        export BASIC_TEST_ENABLED_FLAG
+        export SAMPLER_TEST_ENABLED_FLAG
+    elif [[ ${TTYPE} == [nN][oO][nN][eE] ]]; then
+        echo >&2
+        echo >&2 "-- ${BUILD_NAME} - FATAL: Testing must be activated to generate code coverage."
+        echo >&2 "-- ${BUILD_NAME} - FATAL: Drop the \"-t none\" from the script options and rerun the build/install script."
+        echo >&2
+        usage
+        exit 1
+    fi
 else
     CODECOV_ENABLED_FLAG=""
 fi
 
-# determine whether the current system is a Windows Subsystem for Linux (WSL).
-# The ParaMonte tests that contain internal procedure calls from outside the parent procedure
-# fail with static builds on WSL for code coverage purposes.
-# This GFortran bug does not exist when the program is compiled as a shared library.
-# However, the same bug happens also with shared library files at the time of code coverage generation. 
-# The only resolution left is to fence the internal function calls in the code when the code is being 
-# built on WSL. This is done by enabling the preprocessor flag OS_IS_WSL.
+if [ "${DRYRUN_ENABLED}" != "true" ]; then
 
-if [ "${isWSL}" = "true" ]; then
-    OS_IS_WSL_FLAG="-DOS_IS_WSL=${isWSL}"
-else
-    OS_IS_WSL_FLAG=""
-fi
+    # determine whether the current system is a Windows Subsystem for Linux (WSL).
+    # The ParaMonte tests that contain internal procedure calls from outside the parent procedure
+    # fail with static builds on WSL for code coverage purposes.
+    # This GFortran bug does not exist when the program is compiled as a shared library.
+    # However, the same bug happens also with shared library files at the time of code coverage generation.
+    # The only resolution left is to fence the internal function calls in the code when the code is being
+    # built on WSL. This is done by enabling the preprocessor flag OS_IS_WSL.
 
-(cd ${ParaMonte_BLD_DIR} && \
-${ParaMonte_CAF_SETUP_PATH_CMD} && \
-cmake \
---verbose=1 \
-"${FC_OPTION}" \
-"${MPIEXEC_OPTION}" \
-"${MATLAB_ROOT_DIR_OPTION}" \
--DINTERFACE_LANGUAGE=${INTERFACE_LANGUAGE} \
--DPMCS=${PMCS} \
--DMPI_ENABLED=${MPI_ENABLED} \
--DCAFTYPE=${CAFTYPE} \
--DBTYPE=${BTYPE} \
--DLTYPE=${LTYPE} \
--DHEAP_ARRAY_ENABLED=${HEAP_ARRAY_ENABLED} \
--DCFI_ENABLED=${CFI_ENABLED} \
--DOMP_ENABLED=${OMP_ENABLED} \
-${CODECOV_ENABLED_FLAG} \
-${OS_IS_WSL_FLAG} \
-${ParaMonte_ROOT_DIR} \
-)
-verify $? "build with cmake"
+    if [ "${isWSL}" = "true" ]; then
+        OS_IS_WSL_FLAG="-DOS_IS_WSL=${isWSL}"
+    else
+        OS_IS_WSL_FLAG=""
+    fi
 
-(cd ${ParaMonte_BLD_DIR} && make)
-verify $? "build with make"
+    (cd ${ParaMonte_BLD_DIR} && \
+    ${CAF_LOCAL_INSTALLATION_SETUP_FILE_CMD} && \
+    cmake \
+    --verbose=1 \
+    "${FC_OPTION}" \
+    "${MPIEXEC_OPTION}" \
+    "${MATLAB_ROOT_DIR_OPTION}" \
+    -DPMLIB_NAME=${PMLIB_NAME} \
+    -DINTERFACE_LANGUAGE=${INTERFACE_LANGUAGE} \
+    -DPMCS=${PMCS} \
+    -DMPI_ENABLED=${MPI_ENABLED} \
+    -DCAFTYPE=${CAFTYPE} \
+    -DBTYPE=${BTYPE} \
+    -DLTYPE=${LTYPE} \
+    -DHEAP_ARRAY_ENABLED=${HEAP_ARRAY_ENABLED} \
+    -DCFI_ENABLED=${CFI_ENABLED} \
+    -DOMP_ENABLED=${OMP_ENABLED} \
+    ${SAMPLER_TEST_ENABLED_FLAG} \
+    ${BASIC_TEST_ENABLED_FLAG} \
+    ${CODECOV_ENABLED_FLAG} \
+    ${OS_IS_WSL_FLAG} \
+    ${ParaMonte_ROOT_DIR} \
+    )
+    verify $? "configuration with cmake"
 
-(cd ${ParaMonte_BLD_DIR} && make install)
-verify $? "installation"
+    (cd ${ParaMonte_BLD_DIR} && make)
+    verify $? "build with make"
+
+    (cd ${ParaMonte_BLD_DIR} && make install)
+    verify $? "installation"
 
 fi
 
@@ -2258,7 +2581,29 @@ fi
 
 LD_LIBRARY_PATH=${ParaMonte_BLD_DIR}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH
+
+# set test object/module/lib files directories
+
+ParaMonteTest_BLD_DIR="${ParaMonte_BLD_DIR}/test"
+ParaMonteTest_OBJ_DIR="${ParaMonteTest_BLD_DIR}/obj"
+ParaMonteTest_BIN_DIR="${ParaMonteTest_BLD_DIR}/bin"
+ParaMonteTest_SRC_INPUT_DIR="${ParaMonteTest_SRC_DIR}/input"
+ParaMonteTest_BIN_INPUT_DIR="${ParaMonteTest_BIN_DIR}/input"
+
+# When generating code coverage, the tests MUST be performed.
+
 if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
+
+    # first ensure the test input files exist in the test runtime bin folder
+
+    if ! [ -d "${ParaMonteTest_BIN_INPUT_DIR}" ]; then
+        mkdir "${ParaMonteTest_BIN_INPUT_DIR}"
+    fi
+
+    cp "${ParaMonteTest_SRC_INPUT_DIR}"/* "${ParaMonteTest_BIN_INPUT_DIR}"/
+
+    # run the tests
+
     if [ "${MPI_ENABLED}" = "true" ]; then
         # first attempt to find an installation of the mpiexec on the system
         if [ -z ${MPIEXEC_PATH+x} ]; then
@@ -2277,10 +2622,10 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
             if [ "${MPIEXEC_PATH_RESET_ENABLED}" = "true" ]; then unset MPIEXEC_PATH; fi
         else
             echo >&2
-            echo >&2 "-- ${BUILD_NAME} - WARNING: No tests of the ParaMonte library will be performed."
-            echo >&2 "-- ${BUILD_NAME} - WARNING: The mpiexec executable could not be found on your system."
-            echo >&2 "-- ${BUILD_NAME} - WARNING: If you do not have an MPI library installed on your system,"
-            echo >&2 "-- ${BUILD_NAME} - WARNING: ParaMonte may be able to install one for you."
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: No tests of the ParaMonte library will be performed."
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: The mpiexec executable could not be found on your system."
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: If you do not have an MPI library installed on your system,"
+            echo >&2 "-- ${BUILD_NAME} - ${warning}: ParaMonte may be able to install one for you."
             echo >&2
         fi
     else
@@ -2306,7 +2651,9 @@ if [ "${ParaMonteTest_RUN_ENABLED}" = "true" ]; then
             fi
         fi
     fi
-    #verify $? "test run"
+    #if [ "${CODECOV_ENABLED}" = "true" ]; then # stop on test failure when code coverage analysis is being performed.
+    #    verify $? "test run"
+    #fi
 else
     echo >&2 "skipping ParaMonte library test run..."
 fi
@@ -2417,23 +2764,23 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         else
             EXAMPLE_MATLAB_ROOT_DIR="/usr/local/MATLAB/${EXAMPLE_MATLAB_VERSION}"
         fi
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Please add MATLAB to your environmental variable PATH and rerun the install script."
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: For example, in your current terminal, try:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: Operating Systems is a string like the following:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: find the installation location of MATLAB by typing the following command in your MATLAB session:"
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: "
-        echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING:     matlabroot"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Exhausted all possible search paths for a MATLAB installation, but failed to find MATLAB."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: The ParaMonte MATLAB kernel will not be functional without building the required DLL libraries."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Please add MATLAB to your environmental variable PATH and rerun the install script."
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: For example, in your current terminal, try:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     export PATH=\"PATH_TO_MATLAB_BIN_DIR:$PATH\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where PATH_TO_MATLAB_BIN_DIR must be replaced with path to the bin folder of the current"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: installation of MATLAB on your system. Typical MATLAB bin installation path on a 64-bit ${OSNAME}"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: Operating Systems is a string like the following:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     \"${EXAMPLE_MATLAB_ROOT_DIR}/bin\""
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: where ${EXAMPLE_MATLAB_VERSION} in the path points to the MATLAB ${EXAMPLE_MATLAB_VERSION} version installation on the system. You can also "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: find the installation location of MATLAB by typing the following command in your MATLAB session:"
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: "
+        echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}:     matlabroot"
         echo >&2
         if [ "${YES_TO_ALL_DISABLED}" = "true" ]; then
             answerNotGiven=true
@@ -2457,7 +2804,7 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
         fi
         if [ "${answer}" = "y" ]; then
             echo >&2
-            echo >&2 "-- ${BUILD_NAME}MATLAB - WARNING: skipping the ParaMonte MATLAB dynamic library build..."
+            echo >&2 "-- ${BUILD_NAME}MATLAB - ${warning}: skipping the ParaMonte MATLAB dynamic library build..."
             echo >&2
         else
             echo >&2
@@ -2504,10 +2851,10 @@ if [ "${INTERFACE_LANGUAGE}" = "matlab" ] && [ "${LTYPE}" = "dynamic" ] && [ "${
             cd "${ParaMonteMATLAB_BLD_LIB_DIR}"
             "${MATLAB_BIN_DIR}/mex" ${MEX_FLAGS} "${CFLAGS}" "${LINKFLAGS}" "${ParaMonteKernel_SRC_DIR}/paramonte.m.c" ${PMLIB_FULL_PATH} -output ${PMLIB_MATLAB_NAME}
             if [ $? -eq 0 ]; then
-                echo >&2 "-- ${BUILD_NAME}MATLAB - The ParaMonte MATLAB dynamic library build appears to have succeeded."
+                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldGreen}The ParaMonte MATLAB dynamic library build appears to have succeeded.${ColorReset}"
             else
                 echo >&2
-                echo >&2 "-- ${BUILD_NAME}MATLAB - Fatal Error: The ParaMonte MATLAB library build failed."
+                echo >&2 "-- ${BUILD_NAME}MATLAB - ${BoldRed}Fatal Error${ColorReset}: The ParaMonte MATLAB library build failed."
                 echo >&2 "-- ${BUILD_NAME}MATLAB - Please make sure you have the following components installed"
                 echo >&2 "-- ${BUILD_NAME}MATLAB - on your system before rerunning the installation script:"
                 echo >&2 "-- ${BUILD_NAME}MATLAB - "
@@ -2682,13 +3029,28 @@ fi
 
 if [ "${CODECOV_ENABLED}" = "true" ]; then
 
-    # set test object/module/lib files directories
+    # This version extraction relies on "version " appearing before the lcov version number.
+    # This must be adjusted to any potential future changes in the LCOV version string.
+    if command -v lcov >/dev/null 2>&1; then
+        lcovVersion=$(lcov -v | grep -Po '(?<=version )[^;]+')
+    else
+        unset lcovVersion
+    fi
 
-    ParaMonteTest_BLD_DIR="${ParaMonte_BLD_DIR}/test"
-    ParaMonteTest_OBJ_DIR="${ParaMonteTest_BLD_DIR}/obj"
-
-    htmlDir="${ParaMonte_ROOT_DIR}/codecov/${PMLIB_BASE_NAME}"
-    titleCodeCov="ParaMonte :: kernel - LCOV code coverage report"
+    unset htmlSubDir
+    if [ "${MPI_ENABLED}" = "true" ]; then
+        parallelismText="MPI Parallel"
+        htmlSubDir="mpi"
+    elif [ "${CAF_ENABLED}" = "true" ]; then
+        parallelismText="Coarray Parallel"
+        htmlSubDir="caf"
+    else
+        parallelismText="Serial"
+        htmlSubDir="serial"
+    fi
+    htmlDir="${ParaMonte_ROOT_DIR}/codecov/kernel/${htmlSubDir}"
+    #htmlDir="${ParaMonte_ROOT_DIR}/codecov/kernel/${ParaMonteVersion}/${PMLIB_BASE_NAME}"
+    htmlTitleCodeCov="ParaMonte ${ParaMonteVersion} :: ${parallelismText} Kernel - Code Coverage Report"
 
     if [[ ${PMCS} == [gG][nN][uU] ]]; then
 
@@ -2754,6 +3116,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                 if [ -d "${gcovKernelTestDataDir}" ]; then
 
                     gcovKernelTestDir="${ParaMonteTest_BLD_DIR}"/gcov
+                    rm -rf "${gcovKernelTestDir}"
                     if ! [ -d "${gcovKernelTestDir}" ]; then
                         mkdir -p "${gcovKernelTestDir}"
                     fi
@@ -2781,9 +3144,9 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                 else
 
                     echo >&2
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: the directory for the *.gcda *.gcno codecov data files does not exist."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: the expected directory path: ${gcovKernelTestDataDir}"
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: skipping code coverage report generation for the test files..."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: the directory for the *.gcda *.gcno codecov data files does not exist."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: the expected directory path: ${gcovKernelTestDataDir}"
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: skipping code coverage report generation for the test files..."
                     echo >&2
 
                 fi
@@ -2797,6 +3160,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     #### generate the kernel code coverage report file
 
                     lcovKernelDir="${ParaMonte_BLD_DIR}"/lcov
+                    rm -rf "${lcovKernelDir}"
                     mkdir -p "${lcovKernelDir}"
                     cd "${lcovKernelDir}"
 
@@ -2812,9 +3176,9 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     --output-file "${lcovOutputKernelFilePath}" \
                     || {
                         echo >&2
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage report generation via lcov tool failed."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Code Coverage report generation via LCOV tool failed."
                         echo >&2
-                        exit 1
+                        #exit 1
                     }
 
                     #### generate the kernel code coverage report file
@@ -2844,8 +3208,8 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         } || {
 
                             echo >&2
-                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: Code Coverage report generation for the ParaMonte test source files via lcov tool failed."
-                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: skipping..."
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: Code Coverage report generation for the ParaMonte test source files via lcov tool failed."
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: skipping..."
                             echo >&2
 
                         }
@@ -2853,10 +3217,10 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                     else
 
                         echo >&2
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: Failed to detect the *.gcda *.gcno codecov data files for the ParaMonte test source files."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: the expected directory path for the files: ${gcovKernelTestDir}"
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: The coverage report for the ParaMonte test source file will not be included."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - WARNING: skipping the lcov code coverage report generation for the test files..."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: Failed to detect the *.gcda *.gcno codecov data files for the ParaMonte test source files."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: the expected directory path for the files: ${gcovKernelTestDir}"
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: The coverage report for the ParaMonte test source file will not be included."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning}: skipping the lcov code coverage report generation for the test files..."
                         echo >&2
 
                     fi
@@ -2876,13 +3240,13 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         if ! [ -f "${lcovOutputCombinedFilePath}" ]; then
                             cp "${lcovOutputKernelFilePath}" "${lcovOutputCombinedFilePath}" || {
                                 echo >&2
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: copy action failed:"
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - from: ${lcovOutputKernelFilePath}"
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage -   to: ${lcovOutputCombinedFilePath}"
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
-                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
-                                echo >&2
-                                exit 1
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} copy action failed:"
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} from: ${lcovOutputKernelFilePath}"
+                                echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn}   to: ${lcovOutputCombinedFilePath}"
+                                #echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                                #echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
+                                #echo >&2
+                                #exit 1
                             }
                         fi
 
@@ -2890,7 +3254,7 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                         "${lcovOutputCombinedFilePath}" \
                         --output-directory "${htmlDir}" \
                         --legend \
-                        --title "${titleCodeCov}" \
+                        --title "${htmlTitleCodeCov}" \
                         && {
 
                             echo >&2
@@ -2899,16 +3263,53 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
                             echo >&2
 
                             # postprocess the html files
+
+                            pmlinkopen='<a href="https:\/\/www.cdslab.org\/paramonte\/" target="_blank">'
+                            pmlinklogo='<img alt="The ParaMonte Documentation Website" src="https:\/\/www.cdslab.org\/paramonte\/notes\/api\/kernel\/logo.png"\/>'
+                            pmlinkclose='<\/a>'
+
+                            original='<tr><td class="title">LCOV - code coverage report<\/td><\/tr>'
+                            modified='<tr><td class="title">'
+                            modified+="${pmlinkopen}"
+                            modified+="${pmlinklogo}"
+                            modified+="${pmlinkclose}"
+                            modified+='<\/td><\/tr>'
+
+                            footer='<tr><td class="versionInfo">'
+                            footer+='<a href="https:\/\/www.cdslab.org\/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library<\/b><\/a>&nbsp;<br>'
+                            footer+='<a href="https:\/\/www.cdslab.org" target="_blank"><b>The Computational Data Science Lab<\/b><\/a><br>'
+                            footer+="&copy; Copyright 2012 - $(date +%Y)"
+                            footer+='<\/td><\/tr>'
+
                             shopt -s globstar
                             for htmlFilePath in "${htmlDir}"/**/*.html; do # Whitespace-safe and recursive
-                                sed -i 's/<tr><td class="title">LCOV - code coverage report<\/td><\/tr>/<tr><td class="title"><a href="https:\/\/www.cdslab.org\/paramonte\/" target="_blank"><img alt="ParaMonte Kernel" src="https:\/\/www.cdslab.org\/paramonte\/notes\/api\/kernel\/logo.png"\/><\/a><\/td><\/tr>/g' "${htmlFilePath}"
+                                sed -i "s/${original}/${modified}/g" "${htmlFilePath}"
+                                sed -i "/<tr><td class=\"versionInfo\">/c\\${footer}" "${htmlFilePath}"
                             done
+
+                            #scfile="${ParaMonte_ROOT_DIR}/auxil/sc.html"
+                            #if [ -f "${scfile}" ]; then
+                            #    echo >&2
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - processing the sc file contents..."
+                            #    echo >&2
+                            #    sccontents=`cat "${ParaMonte_ROOT_DIR}/auxil/sc.html"`
+                            #    sed -e '/<\/body>/r${scfile}' "${htmlFilePath}"
+                            #else
+                            #    echo >&2
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} ${ParaMonte_ROOT_DIR}/auxil/sc.html is missing in your clone."
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} This is not critical, unless you are a ParaMonte developer and"
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} aim to publicly release this code coverage report. To obtain a "
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} copy of the file, contact the ParaMonte lead developer at"
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} "
+                            #    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${warning} shahmoradi@utexas.edu"
+                            #    echo >&2
+                            #fi
 
                         } || {
                             echo >&2
-                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Code Coverage report generation via genhtml failed."
+                            echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Code Coverage report generation via genhtml failed."
                             echo >&2
-                            exit 1
+                            #exit 1
                         }
                         # "${branchCoverageFlag}" \
                         #--title "<a href=\"https://github.com/cdslaborg/paramonte\" target=\"_blank\">ParaMonte::kernel</a> code coverage report" \
@@ -2928,31 +3329,31 @@ if [ "${CODECOV_ENABLED}" = "true" ]; then
 
                     else
                         echo >&2
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Failed to find the GNU genhtml test coverage summarizer."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - The genhtml program is required to generate the coverage report."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - If you believe genhtml is already installed on your system,"
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - please make sure the path its directory is added to the"
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - PATH environmental variable of your terminal."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - Once added, rerun the ParaMonte code coverage."
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
-                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
-                        echo >&2
-                        exit 1
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Failed to find the GENHTML test coverage summarizer."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} The genhtml program is required to generate the coverage report."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} If you believe genhtml is already installed on your system,"
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} please make sure the path its directory is added to the"
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} PATH environmental variable of your terminal."
+                        echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Once added, rerun the ParaMonte code coverage."
+                        #echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                        #echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
+                        #echo >&2
+                        #exit 1
                     fi
 
                 else
 
                     echo >&2
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - Fatal Error: Failed to find the GNU lcov test coverage summarizer."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - The lcov program is required to generate the coverage report."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - If you believe lcov is already installed on your system,"
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - please make sure the path its directory is added to the"
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - PATH environmental variable of your terminal."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - Once added, rerun the ParaMonte code coverage."
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
-                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
-                    echo >&2
-                    exit 1
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Failed to find the LCOV test coverage summarizer."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} The lcov program is required to generate the coverage report."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} If you believe lcov is already installed on your system,"
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} please make sure the path its directory is added to the"
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} PATH environmental variable of your terminal."
+                    echo >&2 "-- ${BUILD_NAME}CodeCoverage - ${pmwarn} Once added, rerun the ParaMonte code coverage."
+                    #echo >&2 "-- ${BUILD_NAME}CodeCoverage - "
+                    #echo >&2 "-- ${BUILD_NAME}CodeCoverage - gracefully exiting The ParaMonte build script."
+                    #echo >&2
+                    #exit 1
 
                 fi
 
@@ -3032,8 +3433,8 @@ else
 fi
 
 echo >&2
-echo >&2 "-- ${BUILD_NAME} - ParaMonte binary/library directory: ${ParaMonte_BIN_DIR_CURRENT}"
 echo >&2 "-- ${BUILD_NAME} - ParaMonte build directory: ${ParaMonte_BLD_DIR}"
+echo >&2 "-- ${BUILD_NAME} - ParaMonte install directory: ${ParaMonte_BIN_DIR_CURRENT}"
 echo >&2
 echo >&2 "-- ${BUILD_NAME} - mission accomplished"
 echo >&2

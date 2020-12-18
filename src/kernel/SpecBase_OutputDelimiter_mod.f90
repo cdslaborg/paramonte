@@ -72,7 +72,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructOutputDelimiter(methodName) result(OutputDelimiterObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructOutputDelimiter
 #endif
         use Constants_mod, only: NULL_SK
@@ -100,7 +100,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar(DescriptionObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
@@ -111,16 +111,16 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setOutputDelimiter(OutputDelimiterObj,outputDelimiter,outputColumnWidth)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    pure subroutine setOutputDelimiter(OutputDelimiterObj, outputColumnWidth, outputDelimiter)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setOutputDelimiter
 #endif
         use Constants_mod, only: TAB
         implicit none
         class(OutputDelimiter_type), intent(inout)  :: OutputDelimiterObj
-        character(*), intent(in)                    :: outputDelimiter
         integer(IK) , intent(in)                    :: outputColumnWidth
-        OutputDelimiterObj%val = trim(adjustl(outputDelimiter))
+        character(*), intent(in), optional          :: outputDelimiter
+        if (present(outputDelimiter)) OutputDelimiterObj%val = trim(adjustl(outputDelimiter))
         if (OutputDelimiterObj%val==OutputDelimiterObj%null) then
             if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
             if (outputColumnWidth==0_IK) then
@@ -129,7 +129,7 @@ contains
                 OutputDelimiterObj%val = " "
             end if
         elseif (OutputDelimiterObj%val=="") then
-            if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
+            !if (allocated(OutputDelimiterObj%val)) deallocate(OutputDelimiterObj%val)
             OutputDelimiterObj%val = " "
         elseif (OutputDelimiterObj%val=="\t") then
             OutputDelimiterObj%val = TAB
@@ -140,8 +140,8 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(OutputDelimiterObj,Err,methodName)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine checkForSanity(OutputDelimiterObj, Err, methodName)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Err_mod, only: Err_type

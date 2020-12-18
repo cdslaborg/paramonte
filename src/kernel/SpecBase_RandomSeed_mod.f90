@@ -86,7 +86,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructRandomSeed(methodName,imageID,imageCount) result(RandomSeedObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructRandomSeed
 #endif
         use Constants_mod, only: IK, NULL_IK
@@ -115,7 +115,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar(RandomSeedObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
@@ -126,7 +126,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setRandomSeed(RandomSeedObj,randomSeed,Err)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRandomSeed
 #endif
 
@@ -160,28 +160,30 @@ contains
 #endif
 
         if ( RandomSeedObj%userSeed == RandomSeedObj%nullSeed ) then
-            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         &
-                                                , isRepeatable       = RandomSeedObj%isRepeatable    &
-                                                , isImageDistinct    = RandomSeedObj%isImageDistinct &
+            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         & ! LCOV_EXCL_LINE
+                                                , isRepeatable       = RandomSeedObj%isRepeatable    & ! LCOV_EXCL_LINE
+                                                , isImageDistinct    = RandomSeedObj%isImageDistinct & ! LCOV_EXCL_LINE
                                                 )
         else
-            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         &
-                                                , isRepeatable       = RandomSeedObj%isRepeatable    &
-                                                , isImageDistinct    = RandomSeedObj%isImageDistinct &
-                                                , inputSeed          = RandomSeedObj%userSeed        &
+            comv_RandomSeed(1) = RandomSeed_t   ( imageID            = RandomSeedObj%imageID         & ! LCOV_EXCL_LINE
+                                                , isRepeatable       = RandomSeedObj%isRepeatable    & ! LCOV_EXCL_LINE
+                                                , isImageDistinct    = RandomSeedObj%isImageDistinct & ! LCOV_EXCL_LINE
+                                                , inputSeed          = RandomSeedObj%userSeed        & ! LCOV_EXCL_LINE
                                                 )
         end if
 
-#if defined GNU_ENABLED && CAF_ENABLED
+#if defined GNU_COMPILER_ENABLED && CAF_ENABLED
         ! opencoarrays crashes without this, by somehow setting comv_RandomSeed(1)%Err%occurred = TRUE
         ! likely a result of memory corruption
         !if (comv_RandomSeed(1)%Err%occurred) write(*,*) ""
 #endif
 
         if (comv_RandomSeed(1)%Err%occurred) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg = Err%msg // PROCEDURE_NAME // comv_RandomSeed(1)%Err%msg
             return
+        ! LCOV_EXCL_STOP
         end if
 
         call comv_RandomSeed(1)%get()
@@ -194,14 +196,14 @@ contains
 #elif defined MPI_ENABLED
         allocate(Seed(RandomSeedObj%sizeSeed,RandomSeedObj%imageCount))
         call mpi_barrier(mpi_comm_world,ierrMPI) ! allow all images to set the seed first, then fetch the values
-        call mpi_allgather  ( RandomSeedObj%Seed(:,RandomSeedObj%imageID)   &   ! send buffer
-                            , RandomSeedObj%sizeSeed                        &   ! send count
-                            , mpi_integer                                   &   ! send datatype
-                            , Seed(:,:)                                     &   ! receive buffer
-                            , RandomSeedObj%sizeSeed                        &   ! receive count
-                            , mpi_integer                                   &   ! receive datatype
-                            , mpi_comm_world                                &   ! comm
-                            , ierrMPI                                       &   ! ierr
+        call mpi_allgather  ( RandomSeedObj%Seed(:,RandomSeedObj%imageID)   &   ! LCOV_EXCL_LINE : send buffer
+                            , RandomSeedObj%sizeSeed                        &   ! LCOV_EXCL_LINE : send count
+                            , mpi_integer                                   &   ! LCOV_EXCL_LINE : send datatype
+                            , Seed(:,:)                                     &   ! LCOV_EXCL_LINE : receive buffer
+                            , RandomSeedObj%sizeSeed                        &   ! LCOV_EXCL_LINE : receive count
+                            , mpi_integer                                   &   ! LCOV_EXCL_LINE : receive datatype
+                            , mpi_comm_world                                &   ! LCOV_EXCL_LINE : comm
+                            , ierrMPI                                       &   ! LCOV_EXCL_LINE : ierr
                             )
         RandomSeedObj%Seed(:,:) = Seed
         deallocate(Seed)

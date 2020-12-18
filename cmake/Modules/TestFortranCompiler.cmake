@@ -98,8 +98,10 @@ else()
     #####################################################################################
     # Test for Fortran 90 support by using an F2008-specific construct.
     if(NOT DEFINED CMAKE_Fortran_COMPILER_SUPPORTS_F2008)
-        message(STATUS "Checking whether ${CMAKE_Fortran_COMPILER} supports Fortran 2008")
-        file(WRITE ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/testFortranCompilerF2008.f90
+        set(FortranExamplePath "${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/testFortranCompilerF2008.f90")
+        message(STATUS "${pmattn} Generating compiler test file: ${FortranExamplePath}")
+        message(STATUS "${pmattn} Checking whether ${CMAKE_Fortran_COMPILER} supports Fortran 2008")
+        file(WRITE "${FortranExamplePath}"
         "
             PROGRAM TESTFortran2008
             block; integer stop ; stop = 1 ; do while ( stop == 0 ) ; end do; end block;
@@ -109,13 +111,13 @@ else()
                     ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/testFortranCompilerF2008.f90
                     OUTPUT_VARIABLE OUTPUT)
         if(CMAKE_Fortran_COMPILER_SUPPORTS_F2008)
-            message(STATUS "Checking whether ${CMAKE_Fortran_COMPILER} supports Fortran 2008 -- yes")
+            message(STATUS "${pmattn} Checking whether ${CMAKE_Fortran_COMPILER} supports Fortran 2008 -- yes")
             file(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeOutput.log
                 "Determining if the Fortran compiler supports Fortran 2008 passed with "
                 "the following output:\n${OUTPUT}\n\n")
             set(CMAKE_Fortran_COMPILER_SUPPORTS_F2008 1)
         else()
-            message(STATUS "Checking whether ${CMAKE_Fortran_COMPILER} supports Fortran 2008 -- no")
+            message(STATUS "${pmattn} Checking whether ${CMAKE_Fortran_COMPILER} supports Fortran 2008 -- no")
             file(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeError.log
                 "Determining if the Fortran compiler supports Fortran 2008 failed with "
                 "the following output:\n${OUTPUT}\n\n")
@@ -139,7 +141,7 @@ else()
            set(CMAKE_Fortran_FLAGS "-ffree-form -fcoarray=single")
         endif()
 
-        message(STATUS "Checking whether ${CMAKE_Fortran_COMPILER} supports Coarray Fortran (CAF) 2008")
+        message(STATUS "${pmattn} Checking whether ${CMAKE_Fortran_COMPILER} supports Coarray Fortran (CAF) 2008")
         file(WRITE ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/testFortranCompilerCAF.f90
             "
             program testFortranCompilerCAF
@@ -161,13 +163,13 @@ else()
         endif()
 
         if(CMAKE_Fortran_COMPILER_SUPPORTS_CAF)
-            message(STATUS "Checking whether ${CMAKE_Fortran_COMPILER} supports Coarray Fortran (CAF) 2008 -- yes")
+            message(STATUS "${pmattn} Checking whether ${CMAKE_Fortran_COMPILER} supports Coarray Fortran (CAF) 2008 -- yes")
             file(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeOutput.log
                 "Determining if the Fortran compiler supports Coarray Fortran 2008 passed with "
                 "the following output:\n${OUTPUT}\n\n")
             set(CMAKE_Fortran_COMPILER_SUPPORTS_CAF 1)
         else()
-            message(STATUS "Checking whether ${CMAKE_Fortran_COMPILER} supports Coarray Fortran (CAF) 2008 -- no")
+            message(STATUS "${pmattn} Checking whether ${CMAKE_Fortran_COMPILER} supports Coarray Fortran (CAF) 2008 -- no")
             file(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeError.log
                 "Determining if the Fortran compiler supports Coarray Fortran (CAF) 2008 failed with "
                 "the following output:\n${OUTPUT}\n\n")

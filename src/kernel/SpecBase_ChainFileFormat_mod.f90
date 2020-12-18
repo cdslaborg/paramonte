@@ -79,7 +79,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructChainFileFormat(methodName) result(ChainFileFormatObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructChainFileFormat
 #endif
         use Constants_mod, only: NULL_SK, FILE_EXT, FILE_TYPE
@@ -129,7 +129,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar(ChainFileFormatObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
@@ -140,32 +140,34 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setChainFileFormat(ChainFileFormatObj,chainFileFormat)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChainFileFormat
 #endif
         use String_mod, only: getLowerCase
         implicit none
-        class(ChainFileFormat_type), intent(inout)    :: ChainFileFormatObj
-        character(*), intent(in)                      :: chainFileFormat
+        class(ChainFileFormat_type), intent(inout)  :: ChainFileFormatObj
+        character(*), intent(in)                    :: chainFileFormat
+        character(:), allocatable                   :: lowerCaseVal
         ChainFileFormatObj%val = trim(adjustl(chainFileFormat))
         if ( ChainFileFormatObj%val==trim(adjustl(ChainFileFormatObj%null)) ) then
             ChainFileFormatObj%val = trim(adjustl(ChainFileFormatObj%def))
         end if
-        if (getLowerCase(ChainFileFormatObj%val)==getLowerCase(ChainFileFormatObj%compact)) ChainFileFormatObj%iscompact = .true.
-        if (getLowerCase(ChainFileFormatObj%val)==getLowerCase(ChainFileFormatObj%verbose)) ChainFileFormatObj%isverbose = .true.
-        if (getLowerCase(ChainFileFormatObj%val)==getLowerCase(ChainFileFormatObj%binary)) ChainFileFormatObj%isBinary = .true.
+        lowerCaseVal = getLowerCase(ChainFileFormatObj%val)
+        ChainFileFormatObj%iscompact = lowerCaseVal == getLowerCase(ChainFileFormatObj%compact)
+        ChainFileFormatObj%isverbose = lowerCaseVal == getLowerCase(ChainFileFormatObj%verbose)
+        ChainFileFormatObj%isBinary  = lowerCaseVal == getLowerCase(ChainFileFormatObj%binary)
     end subroutine setChainFileFormat
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine checkForSanity(ChainFileFormat,Err,methodName)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(ChainFileFormat_type), intent(in)   :: ChainFileFormat
+        class(ChainFileFormat_type), intent(in)     :: ChainFileFormat
         character(*), intent(in)                    :: methodName
         type(Err_type), intent(inout)               :: Err
         character(*), parameter                     :: PROCEDURE_NAME = "@checkForSanity()"

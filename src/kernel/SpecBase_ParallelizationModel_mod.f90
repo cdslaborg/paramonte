@@ -78,7 +78,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function constructParallelizationModel(methodName) result(ParallelizationModelObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructParallelizationModel
 #endif
         use, intrinsic :: iso_fortran_env, only: output_unit
@@ -114,6 +114,7 @@ contains
             &image (processor, core, or thread). &
             &The default value is parallelizationModel = '" // ParallelizationModelObj%def // "'. &
             &Note that the input values are case-insensitive and white-space characters are ignored."
+        ! LCOV_EXCL_START
         else
             block
                 use Err_mod, only: Err_type, abort
@@ -121,14 +122,16 @@ contains
                 Err%occurred = .true.
                 Err%msg = MODULE_NAME//": Catastrophic internal error occurred. The simulation method name is not recognized."
                 call abort(Err)
+                error stop
             end block
+        ! LCOV_EXCL_STOP
         end if
     end function constructParallelizationModel
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar(ParallelizationModelObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
@@ -139,23 +142,25 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine setParallelizationModel(ParallelizationModelObj,parallelizationModel)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParallelizationModel
 #endif
         use String_mod, only: getLowerCase, replaceStr
         implicit none
         class(ParallelizationModel_type), intent(inout) :: ParallelizationModelObj
         character(*), intent(in)                        :: parallelizationModel
+        character(:), allocatable                       :: parallelizationModelLowerCase
         ParallelizationModelObj%val = trim(adjustl(replaceStr(parallelizationModel," ", "")))
         if (ParallelizationModelObj%val==trim(adjustl(ParallelizationModelObj%null))) ParallelizationModelObj%val = trim(adjustl(ParallelizationModelObj%def))
-        if (getLowerCase(ParallelizationModelObj%val)==getLowerCase(ParallelizationModelObj%singlChain)) ParallelizationModelObj%isSinglChain = .true.
-        if (getLowerCase(ParallelizationModelObj%val)==getLowerCase(ParallelizationModelObj%multiChain)) ParallelizationModelObj%isMultiChain = .true.
+        parallelizationModelLowerCase = getLowerCase(ParallelizationModelObj%val)
+        ParallelizationModelObj%isSinglChain = parallelizationModelLowerCase == getLowerCase(ParallelizationModelObj%singlChain)
+        ParallelizationModelObj%isMultiChain = parallelizationModelLowerCase == getLowerCase(ParallelizationModelObj%multiChain)
     end subroutine setParallelizationModel
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine checkForSanity(ParallelizationModel,Err,methodName)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Err_mod, only: Err_type
@@ -166,6 +171,7 @@ contains
         type(Err_type), intent(inout)                   :: Err
         character(*), parameter                         :: PROCEDURE_NAME = "@checkForSanity()"
         if ( .not.(ParallelizationModel%isSinglChain .or. ParallelizationModel%isMultiChain) ) then
+        ! LCOV_EXCL_START
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
@@ -175,6 +181,7 @@ contains
                         &for ParallelizationModel, drop it from the input list. " // methodName // &
                         " will automatically assign an appropriate value to it.\n\n"
         end if
+        ! LCOV_EXCL_STOP
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

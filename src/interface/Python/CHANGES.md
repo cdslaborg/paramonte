@@ -7,6 +7,27 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ### Version  2.x.x -- Work in progress
 
+### Version  2.4.0 -- December 17, 2020  
+
+**Major enhancements**  
+
++   This update presents several major performance, accuracy, 
+    and verification enhancements to the ParaMonte kernel routines,
+    in particular, to the ParaDRAM sampler.
+
++   An extensive set of over 866 tests have been added 
+    that test all aspects of the ParaMonte kernel library.
+
++   The issue of Windows file locking, that led to the occasional crashes of the 
+    ParaDRAM and ParaDISE simulations in `multiChain` parallelism mode, is now resolved.
+
++   All overflow / underflow exceptions are now properly handled.  
+
++   The `ParaDRAM` class in `paramonte` is now also available 
+    as `Paradram` and `paradram`, although the original label 
+    will remain the default preferred method of ParaDRAM 
+    object instantiation.  
+
 **Minor enhancements**  
 
 +   The interactive mode for displaying plots is now automatically on. 

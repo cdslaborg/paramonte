@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [File_mod](@ref file_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_File_mod
 
@@ -224,15 +224,15 @@ contains
         assertion = assertion .and. File%Err%occurred   .eqv. .false.
         assertion = assertion .and. File%Err%msg        == ""
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "File%Path%original  : ", File%Path%original
             write(Test%outputUnit,"(*(g0))")   "File%Path%modified  : ", File%Path%modified
             write(Test%outputUnit,"(*(g0))")   "File%Path%dir       : ", File%Path%dir
             write(Test%outputUnit,"(*(g0))")   "File%Path%name      : ", File%Path%name
             write(Test%outputUnit,"(*(g0))")   "File%Path%ext       : ", File%Path%ext
-            write(Test%outputUnit,"(*(g0))")   "File%Path%slashOS   : ", File%Path%slashOS
+            write(Test%outputUnit,"(*(g0))")   "File%Path%shellSlash: ", File%Path%shellSlash
             write(Test%outputUnit,"(*(g0))")   "File%unit           : ", File%unit
             write(Test%outputUnit,"(*(g0))")   "File%number         : ", File%number
             write(Test%outputUnit,"(*(g0))")   "File%recl           : ", File%recl
@@ -290,18 +290,19 @@ contains
 
         assertion = assertion .and. File%Path%original  == "./test_File_mod/\test_File_mod\-"
 
-        if (File%Path%slashOS=="/") then
+        if (File%Path%shellSlash=="/") then
             assertion = assertion .and. File%Path%modified  == "./test_File_mod/\test_File_mod\-"
             assertion = assertion .and. File%Path%dir       == "./test_File_mod/"
             assertion = assertion .and. File%Path%name      == "\test_File_mod\-"
             assertion = assertion .and. File%Path%ext       == ""
+#if defined OS_IS_WINDOWS
         else
             assertion = assertion .and. File%Path%modified  == ".\test_File_mod\\test_File_mod\-"
             assertion = assertion .and. File%Path%dir       == ".\test_File_mod\\test_File_mod\"
             assertion = assertion .and. File%Path%name      == "-"
             assertion = assertion .and. File%Path%ext       == ""
+#endif
         end if
-
         assertion = assertion .and. File%unit           == 13
         assertion = assertion .and. File%number         == -2147483647
         assertion = assertion .and. File%recl           == 9999
@@ -325,15 +326,15 @@ contains
         assertion = assertion .and. File%Err%occurred   .eqv. .false.
         assertion = assertion .and. File%Err%msg        == ""
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "File%Path%original  : ", File%Path%original
             write(Test%outputUnit,"(*(g0))")   "File%Path%modified  : ", File%Path%modified
             write(Test%outputUnit,"(*(g0))")   "File%Path%dir       : ", File%Path%dir
             write(Test%outputUnit,"(*(g0))")   "File%Path%name      : ", File%Path%name
             write(Test%outputUnit,"(*(g0))")   "File%Path%ext       : ", File%Path%ext
-            write(Test%outputUnit,"(*(g0))")   "File%Path%slashOS   : ", File%Path%slashOS
+            write(Test%outputUnit,"(*(g0))")   "File%Path%shellSlash: ", File%Path%shellSlash
             write(Test%outputUnit,"(*(g0))")   "File%unit           : ", File%unit
             write(Test%outputUnit,"(*(g0))")   "File%number         : ", File%number
             write(Test%outputUnit,"(*(g0))")   "File%recl           : ", File%recl
@@ -392,16 +393,18 @@ contains
 
         assertion = assertion .and. File%Path%original  == "./test_File_mod/\test_File_mod\-"
 
-        if (File%Path%slashOS=="/") then
+        if (File%Path%shellSlash=="/") then
             assertion = assertion .and. File%Path%modified  == "./test_File_mod/\test_File_mod\-"
             assertion = assertion .and. File%Path%dir       == "./test_File_mod/"
             assertion = assertion .and. File%Path%name      == "\test_File_mod\-"
             assertion = assertion .and. File%Path%ext       == ""
+#if defined OS_IS_WINDOWS
         else
             assertion = assertion .and. File%Path%modified  == ".\test_File_mod\\test_File_mod\-"
             assertion = assertion .and. File%Path%dir       == ".\test_File_mod\\test_File_mod\"
             assertion = assertion .and. File%Path%name      == "-"
             assertion = assertion .and. File%Path%ext       == ""
+#endif
         end if
 
         assertion = assertion .and. File%unit           == 13
@@ -427,15 +430,15 @@ contains
         assertion = assertion .and. File%Err%occurred   .eqv. .false.
         assertion = assertion .and. File%Err%msg        == ""
 
-        ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "File%Path%original  : ", File%Path%original
             write(Test%outputUnit,"(*(g0))")   "File%Path%modified  : ", File%Path%modified
             write(Test%outputUnit,"(*(g0))")   "File%Path%dir       : ", File%Path%dir
             write(Test%outputUnit,"(*(g0))")   "File%Path%name      : ", File%Path%name
             write(Test%outputUnit,"(*(g0))")   "File%Path%ext       : ", File%Path%ext
-            write(Test%outputUnit,"(*(g0))")   "File%Path%slashOS   : ", File%Path%slashOS
+            write(Test%outputUnit,"(*(g0))")   "File%Path%shellSlash: ", File%Path%shellSlash
             write(Test%outputUnit,"(*(g0))")   "File%unit           : ", File%unit
             write(Test%outputUnit,"(*(g0))")   "File%number         : ", File%number
             write(Test%outputUnit,"(*(g0))")   "File%recl           : ", File%recl
@@ -1263,8 +1266,10 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        assertion = .true.
-        Err = getWriteErr(1)
+        integer :: stat
+        stat = 1
+        Err = getWriteErr(stat) ! LCOV_EXCL_LINE
+        assertion = Err%occurred
     end function test_getWriteErr_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1274,8 +1279,10 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        assertion = .true.
-        Err = getWriteErr(0)
+        integer :: stat
+        stat = 0
+        Err = getWriteErr(stat) ! LCOV_EXCL_LINE
+        assertion = .not. Err%occurred
     end function test_getWriteErr_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1285,8 +1292,10 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        assertion = .true.
-        Err = getWriteErr(-1)
+        integer :: stat
+        stat = -1
+        Err = getWriteErr(stat) ! LCOV_EXCL_LINE
+        assertion = Err%occurred
     end function test_getWriteErr_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1296,8 +1305,10 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        assertion = .true.
-        Err = getReadErr(1,"./path")
+        integer :: stat
+        stat = 1
+        Err = getReadErr(stat,"./path") ! LCOV_EXCL_LINE
+        assertion = Err%occurred
     end function test_getReadErr_1
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1307,8 +1318,10 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        assertion = .true.
-        Err = getReadErr(1)
+        integer :: stat
+        stat = 1
+        Err = getReadErr(stat) ! LCOV_EXCL_LINE
+        assertion = Err%occurred
     end function test_getReadErr_2
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1318,8 +1331,10 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        assertion = .true.
-        Err = getReadErr(0,"./path")
+        integer :: stat
+        stat = 0
+        Err = getReadErr(stat,"./path") ! LCOV_EXCL_LINE
+        assertion = .not. Err%occurred
     end function test_getReadErr_3
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1329,8 +1344,10 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        assertion = .true.
-        Err = getReadErr(0)
+        integer :: stat
+        stat = 0
+        Err = getReadErr(stat) ! LCOV_EXCL_LINE
+        assertion = .not. Err%occurred
     end function test_getReadErr_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1340,8 +1357,10 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        assertion = .true.
-        Err = getReadErr(-1,"./path")
+        integer :: stat
+        stat = -1
+        Err = getReadErr(stat,"./path") ! LCOV_EXCL_LINE
+        assertion = Err%occurred
     end function test_getReadErr_5
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1351,8 +1370,10 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        assertion = .true.
-        Err = getReadErr(-1)
+        integer :: stat
+        stat = -1
+        Err = getReadErr(stat) ! LCOV_EXCL_LINE
+        assertion = Err%occurred
     end function test_getReadErr_6
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1362,7 +1383,9 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        Err = getCloseErr(0)
+        integer :: stat
+        stat = 0
+        Err = getCloseErr(stat) ! LCOV_EXCL_LINE
         assertion = .not. Err%occurred
     end function test_getCloseErr_1
 
@@ -1373,7 +1396,9 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        Err = getCloseErr(1)
+        integer :: stat
+        stat = 1
+        Err = getCloseErr(stat) ! LCOV_EXCL_LINE
         assertion = Err%occurred
     end function test_getCloseErr_2
 
@@ -1384,7 +1409,7 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        Err = getCloseErr(-1)
+        Err = getCloseErr(-1) ! LCOV_EXCL_LINE
         assertion = .not. Err%occurred
     end function test_getCloseErr_3
 
@@ -1395,7 +1420,7 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        Err = getOpenErr(0)
+        Err = getOpenErr(0) ! LCOV_EXCL_LINE
         assertion = .not. Err%occurred
     end function test_getOpenErr_1
 
@@ -1406,7 +1431,7 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        Err = getOpenErr(1)
+        Err = getOpenErr(1) ! LCOV_EXCL_LINE
         assertion = Err%occurred
     end function test_getOpenErr_2
 
@@ -1417,7 +1442,7 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        Err = getOpenErr(-1)
+        Err = getOpenErr(-1) ! LCOV_EXCL_LINE
         assertion = .not. Err%occurred
     end function test_getOpenErr_3
 
@@ -1428,7 +1453,7 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        Err = getInqErr(0)
+        Err = getInqErr(0) ! LCOV_EXCL_LINE
         assertion = .not. Err%occurred
     end function test_getInqErr_1
 
@@ -1439,7 +1464,7 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        Err = getInqErr(1)
+        Err = getInqErr(1) ! LCOV_EXCL_LINE
         assertion = Err%occurred
     end function test_getInqErr_2
 
@@ -1450,7 +1475,7 @@ contains
         implicit none
         logical :: assertion
         type(Err_type) :: Err
-        Err = getInqErr(-1)
+        Err = getInqErr(-1) ! LCOV_EXCL_LINE
         assertion = Err%occurred
     end function test_getInqErr_3
 
@@ -2050,11 +2075,13 @@ contains
         call getAction(action, Err, file = "nonexisting.file")
         assertion = .not. Err%occurred !.and. action == "undefined"
         if (Test%isDebugMode .and. .not. assertion) then
+        ! LCOV_EXCL_START
             write(Test%outputUnit,"(*(g0))")
             write(Test%outputUnit,"(*(g0))")   "Err%occurred : ", Err%occurred
             write(Test%outputUnit,"(*(g0))")   "action : ", action
             write(Test%outputUnit,"(*(g0))")
         end if
+        ! LCOV_EXCL_STOP
     end function test_getAction_4
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

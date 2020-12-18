@@ -48,7 +48,7 @@
 !> \remark
 !> This module requires preprocessing prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 module ParaDRAMProposalNormal_mod
 !use Statistics_mod
@@ -63,7 +63,7 @@ end module ParaDRAMProposalNormal_mod ! LCOV_EXCL_LINE
 !> \remark
 !> This module requires preprocessing prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 module ParaDISEProposalNormal_mod
 #define PARADISE ParaDISE

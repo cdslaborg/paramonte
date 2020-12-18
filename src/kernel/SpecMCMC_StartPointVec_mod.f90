@@ -54,14 +54,14 @@ module SpecMCMC_StartPointVec_mod
         real(RK)                    :: null
         character(:), allocatable   :: desc
     contains
-        procedure, pass             :: set => setStartPointVec, checkForSanity, nullifyNameListVar
+        procedure, pass             :: set, checkForSanity, nullifyNameListVar
     end type StartPointVec_type
 
     interface StartPointVec_type
-        module procedure            :: constructStartPointVec
+        module procedure            :: construct
     end interface StartPointVec_type
 
-    private :: constructStartPointVec, setStartPointVec, checkForSanity, nullifyNameListVar
+    private :: construct, set, checkForSanity, nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -69,98 +69,94 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    function constructStartPointVec() result(StartPointVecObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: constructStartPointVec
+    function construct() result(self)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: construct
 #endif
         use Constants_mod, only: NULL_RK
         use String_mod, only: num2str
         implicit none
-        type(StartPointVec_type) :: StartPointVecObj
-        StartPointVecObj%null   = NULL_RK
-        StartPointVecObj%desc   = &
+        type(StartPointVec_type) :: self
+        self%null   = NULL_RK
+        self%desc   = &
         "startPointVec is a 64bit real-valued vector of length ndim (the dimension of the domain of the input objective function). &
         &For every element of startPointVec that is not provided as input, the default value will be the center of the domain of &
         &startPointVec as specified by domainLowerLimitVec and domainUpperLimitVec input variables. &
         &If the input variable randomStartPointRequested=TRUE (or true or t, all case-insensitive), then the missing &
         &elements of startPointVec will be initialized to values drawn randomly from within the corresponding &
         &ranges specified by the input variables randomStartPointDomainLowerLimitVec and randomStartPointDomainUpperLimitVec."
-    end function constructStartPointVec
+    end function construct
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine nullifyNameListVar(StartPointVecObj,nd)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine nullifyNameListVar(self,nd)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(StartPointVec_type), intent(in)   :: StartPointVecObj
+        class(StartPointVec_type), intent(in)   :: self
         integer(IK), intent(in)                 :: nd
         if (allocated(startPointVec)) deallocate(startPointVec)
-        allocate(startPointVec(nd), source = StartPointVecObj%null)
+        allocate(startPointVec(nd), source = self%null)
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setStartPointVec (StartPointVecObj,startPointVec &
-                                ,randomStartPointDomainLowerLimitVec,randomStartPointDomainUpperLimitVec,randomStartPointRequested &
-                                ,domainLowerLimitVec,domainUpperLimitVec)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: setStartPointVec
+    pure subroutine set(self, startPointVec)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: set
 #endif
         use Constants_mod, only: IK, RK
         implicit none
-        class(StartPointVec_type), intent(inout)    :: StartPointVecObj
-        real(RK), intent(in)                        :: startPointVec(:)
-        real(RK), intent(in)                        :: randomStartPointDomainLowerLimitVec(:), randomStartPointDomainUpperLimitVec(:)
-        real(RK), intent(in)                        :: domainLowerLimitVec(:), domainUpperLimitVec(:)
-        logical, intent(in)                         :: randomStartPointRequested
-        real(RK)                                    :: unifrnd
-        integer(IK)                                 :: i
-        StartPointVecObj%Val = startPointVec
-        do i = 1, size(startPointVec)
-            if (startPointVec(i)==StartPointVecObj%null) then
-                if (randomStartPointRequested) then
-                    call random_number(unifrnd)
-                    StartPointVecObj%Val(i) = randomStartPointDomainLowerLimitVec(i) + unifrnd * (randomStartPointDomainUpperLimitVec(i)-randomStartPointDomainLowerLimitVec(i))
-                else
-                    StartPointVecObj%Val(i) = 0.5_RK * ( domainLowerLimitVec(i) + domainUpperLimitVec(i) )
-                end if
-            end if
-        end do
-    end subroutine setStartPointVec
+        class(StartPointVec_type), intent(inout)    :: self
+        real(RK), intent(in), optional              :: startPointVec(:)
+        if (present(startPointVec)) self%Val = startPointVec
+    end subroutine set
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(StartPointVecObj,Err,methodName,DomainLowerLimitVec,DomainUpperLimitVec)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine checkForSanity(self, Err, methodName, SpecBase, randomStartPointRequested, randomStartPointDomainLowerLimitVec, randomStartPointDomainUpperLimitVec)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
+        use SpecBase_mod, only: SpecBase_type
         use Constants_mod, only: IK, RK
         use String_mod, only: num2str
         use Err_mod, only: Err_type
         implicit none
-        class(StartPointVec_type), intent(in)   :: StartPointVecObj
-        real(RK), intent(in)                    :: DomainLowerLimitVec(:), DomainUpperLimitVec(:)
-        character(*), intent(in)                :: methodName
-        type(Err_type), intent(inout)           :: Err
-        character(*), parameter                 :: PROCEDURE_NAME = "@checkForSanity()"
-        integer(IK)                             :: i
-        do i = 1, size(StartPointVecObj%Val)
-            if ( StartPointVecObj%Val(i)<DomainLowerLimitVec(i) .or. StartPointVecObj%Val(i)>DomainUpperLimitVec(i) ) then
+        class(StartPointVec_type), intent(inout)    :: self
+        type(Err_type), intent(inout)               :: Err
+        type(SpecBase_type), intent(in)             :: SpecBase
+        character(*), intent(in)                    :: methodName
+        logical, intent(in)                         :: randomStartPointRequested
+        real(RK), intent(in)                        :: randomStartPointDomainLowerLimitVec(:)
+        real(RK), intent(in)                        :: randomStartPointDomainUpperLimitVec(:)
+        character(*), parameter                     :: PROCEDURE_NAME = "@checkForSanity()"
+        real(RK)                                    :: unifrnd
+        integer(IK)                                 :: i
+        do i = 1, size(self%Val)
+            if (self%Val(i)==self%null) then
+                if (randomStartPointRequested) then
+                    call random_number(unifrnd)
+                    self%Val(i) = randomStartPointDomainLowerLimitVec(i) + unifrnd * (randomStartPointDomainUpperLimitVec(i)-randomStartPointDomainLowerLimitVec(i))
+                else
+                    self%Val(i) = 0.5_RK * ( SpecBase%DomainLowerLimitVec%Val(i) + SpecBase%DomainUpperLimitVec%Val(i) )
+                end if
+            elseif ( self%Val(i)<SpecBase%DomainLowerLimitVec%Val(i) .or. self%Val(i)>SpecBase%DomainUpperLimitVec%Val(i) ) then
                 Err%occurred = .true.
                 Err%msg =   Err%msg // &
                             MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
                             &The input requested value for the component " // num2str(i) // " of the vector startPointVec (" // &
-                            num2str(StartPointVecObj%Val(i)) // ") must be within the range of the sampling Domain defined &
-                            &in the program: (" &
-                            // num2str(DomainLowerLimitVec(i)) // "," &
-                            // num2str(DomainUpperLimitVec(i)) // "). If you don't &
-                            &know an appropriate value for startPointVec, drop it from the input list. " // &
+                            num2str(self%Val(i)) // ") must be within the range of the sampling Domain defined &
+                            &in the program: (" // &
+                            num2str(SpecBase%DomainLowerLimitVec%Val(i)) // "," // & ! LCOV_EXCL_LINE
+                            num2str(SpecBase%DomainUpperLimitVec%Val(i)) // & ! LCOV_EXCL_LINE
+                            "). If you don't know an appropriate value for startPointVec, drop it from the input list. " // &
                             methodName // " will automatically assign an appropriate value to it.\n\n"
             end if
         end do
+        deallocate(startPointVec)
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

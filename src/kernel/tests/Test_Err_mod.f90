@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [Err_mod](@ref err_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_Err_mod
 
@@ -111,7 +111,7 @@ contains
         OutputList_ref(5)%record = "        ParaMonte - NOTE: I don't pretend to understand the universe - it's much bigger than I am.    Thomas Carlyle"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_note_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_note_1."//num2str(Test%Image%id)//".out", status = "replace")
 
         call note   ( msg = mc_msg &
                     , prefix  = mc_prefix &
@@ -129,18 +129,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -182,7 +180,7 @@ contains
         OutputList_ref(7)%record = ""
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_note_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_note_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         call note   ( msg = replaceStr(mc_msg, "\n", NLC) &
                     , outputUnit = fileUnit &
@@ -197,18 +195,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -248,7 +244,7 @@ contains
         OutputList_ref(5)%record = "        ParaMonte - WARNING: I don't pretend to understand the universe - it's much bigger than I am.    Thomas Carlyle"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_warn_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_warn_1."//num2str(Test%Image%id)//".out", status = "replace")
 
         call warn   ( msg = mc_msg &
                     , prefix  = mc_prefix &
@@ -266,18 +262,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -319,7 +313,7 @@ contains
         OutputList_ref(7)%record = ""
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_warn_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_warn_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         call warn   ( msg = replaceStr(mc_msg, "\n", NLC) &
                     , outputUnit = fileUnit &
@@ -334,18 +328,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -388,7 +380,7 @@ contains
         OutputList_ref(6)%record = "        ParaMonte - FATAL: I don't pretend to understand the universe - it's much bigger than I am.    Thomas Carlyle"
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_abort_1."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_abort_1."//num2str(Test%Image%id)//".out", status = "replace")
 
         Err%msg = mc_msg
         call abort  ( Err = Err &
@@ -406,18 +398,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = ", OutputList_ref(i)%record
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = ", OutputList(i)%record
@@ -464,7 +454,7 @@ contains
         OutputList_ref(7)%record = " - FATAL: Error Code: 123."
 
         open(newunit = fileUnit, status = "scratch")
-        !open(newunit = fileUnit, file = Test%outDir//"Test_Err_mod@test_abort_2."//num2str(Test%Image%id)//".out", status = "replace")
+        !open(newunit = fileUnit, file = Test%outDir//"/Test_Err_mod@test_abort_2."//num2str(Test%Image%id)//".out", status = "replace")
 
         Err%msg = replaceStr(mc_msg, "\n", NLC)
         Err%stat = 123_IK
@@ -480,18 +470,16 @@ contains
             allocate(character(132) :: OutputList(i)%record)
 
             read(fileUnit,"(A132)", iostat = iostat) OutputList(i)%record
-            if (iostat/=0_IK) then
-                assertion = .false.
-                return
-            end if
+            assertion = iostat == 0_IK
+            if (.not. assertion) return ! LCOV_EXCL_LINE
 
             OutputList(i)%record = trim(OutputList(i)%record)
 
             assertionCurrent = OutputList(i)%record == OutputList_ref(i)%record
             assertion = assertion .and. assertionCurrent
 
-            ! LCOV_EXCL_START
             if (Test%isDebugMode .and. .not. assertionCurrent) then
+            ! LCOV_EXCL_START
                 write(Test%outputUnit,"(*(g0))")
                 write(Test%outputUnit,"(*(g0))") "OutputList_ref(",num2str(i),")%record = '", OutputList_ref(i)%record, "'"
                 write(Test%outputUnit,"(*(g0))") "OutputList    (",num2str(i),")%record = '", OutputList(i)%record, "'"

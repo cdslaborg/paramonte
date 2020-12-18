@@ -265,7 +265,7 @@ if !INTERFACE_LANGUAGE!==c++ (
 
 set PMLIB_NAME=libparamonte_!LANG_ABBR!_windows_!PLATFORM!_!COMPILER_SUITE!_!BTYPE!_!LTYPE!_!MEMORY_ALLOCATION!
 if !CAF_ENABLED!==true set PMLIB_NAME=!PMLIB_NAME!_caf!CAFTYPE!
-if !MPI_ENABLED!==true set PMLIB_NAME=!PMLIB_NAME!_mpi
+if !MPI_ENABLED!==true set PMLIB_NAME=!PMLIB_NAME!_impi
 if !OMP_ENABLED!==true set PMLIB_NAME=!PMLIB_NAME!_omp
 
 :: if not !ParaMonte_LIB_ENABLED!==true goto LABEL_ParaMonteTest_OBJ_ENABLED

@@ -77,10 +77,29 @@
 # unset flags
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+unset(INTEL_Fortran_RELEASE_FLAGS)
+unset(INTEL_Fortran_TESTING_FLAGS)
+unset(INTEL_Fortran_DEBUG_FLAGS)
+unset(GNU_Fortran_RELEASE_FLAGS)
+unset(GNU_Fortran_TESTING_FLAGS)
+unset(GNU_Fortran_DEBUG_FLAGS)
+
+unset(INTEL_CXX_RELEASE_FLAGS)
+unset(INTEL_CXX_TESTING_FLAGS)
+unset(INTEL_CXX_DEBUG_FLAGS)
+unset(GNU_CXX_RELEASE_FLAGS)
+unset(GNU_CXX_TESTING_FLAGS)
+unset(GNU_CXX_DEBUG_FLAGS)
+
+unset(FCL_PARALLELIZATION_FLAGS)
 unset(FCL_FLAGS_DEFAULT)
 unset(CCL_FLAGS_DEFAULT)
 unset(FCL_BUILD_FLAGS)
 unset(CCL_BUILD_FLAGS)
+unset(FPP_OS_FLAG)
+unset(CCL_FLAGS)
+unset(FCL_FLAGS)
+unset(FPP_FLAGS)
 unset(FL_FLAGS)
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -137,6 +156,7 @@ else()
     -fbacktrace                         # trace back for debugging
    #--pedantic                          # issue warnings for uses of extensions to the Fortran standard. Gfortran10 with MPICH 3.2 in debug mode crashes with this flag at mpi_bcast. Excluded until MPICH upgraded.
     -fmax-errors=10                     # max diagnostic error count
+    -Wno-maybe-uninitialized            # avoid warning of no array pre-allocation.
     -Wall                               # enable all warnings: 
                                         # -Waliasing, -Wampersand, -Wconversion, -Wsurprising, -Wc-binding-type, -Wintrinsics-std, -Wtabs, -Wintrinsic-shadow,
                                         # -Wline-truncation, -Wtarget-lifetime, -Winteger-division, -Wreal-q-constant, -Wunused, -Wundefined-do-loop
@@ -587,7 +607,7 @@ message( STATUS "${pmattn} dynamic-library build linker flags: ${FL_LIB_FLAGS}" 
 
 if (CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
     set(FPP_BUILD_FLAGS 
-        -DDBG_ENABLED 
+        -DDEBUG_ENABLED 
         CACHE STRING "ParaMonete build preprocessor flags" FORCE)
 elseif (CMAKE_BUILD_TYPE MATCHES "Testing|TESTING|testing")
     set(FPP_BUILD_FLAGS 
@@ -601,11 +621,11 @@ endif()
 
 if (intel_compiler)
     set(FPP_FCL_FLAGS 
-        -DIFORT_ENABLED 
+        -DINTEL_COMPILER_ENABLED 
         CACHE STRING "compiler-specific preprocessor definitions" FORCE)
 else(gnu_compiler)
     set(FPP_FCL_FLAGS 
-        -DGNU_ENABLED 
+        -DGNU_COMPILER_ENABLED 
         CACHE STRING "compiler-specific preprocessor definitions" FORCE)
 endif()
 
@@ -620,9 +640,34 @@ elseif (gnu_compiler)
     set( FPP_FLAGS -cpp )
 endif()
 set(FPP_FLAGS 
-    "${FPP_PARAMONTE_VERSION_FLAG}" "${FPP_FLAGS}" "${FPP_OS_FLAG}" "${FPP_CFI_FLAG}" "${FPP_LANG_FLAG}" "${FPP_BUILD_FLAGS}" "${FPP_FCL_FLAGS}" "${FPP_DLL_FLAGS}" "${USER_PREPROCESSOR_MACROS}"
-    CACHE STRING "Fortran compiler preprocessor flags" FORCE )
+    "${FPP_PARAMONTE_VERSION_FLAG}" 
+    "${FPP_FLAGS}" 
+    "${FPP_OS_FLAG}" 
+    "${FPP_CFI_FLAG}" 
+    "${FPP_LANG_FLAG}" 
+    "${FPP_BUILD_FLAGS}" 
+    "${FPP_FCL_FLAGS}" 
+    "${FPP_DLL_FLAGS}" 
+    "${USER_PREPROCESSOR_MACROS}"
+    )
+    #CACHE STRING "Fortran compiler preprocessor flags" FORCE 
 #add_definitions(${FPP_FLAGS})
+
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#: set the testing type
+#:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if (BASIC_TEST_ENABLED)
+message( STATUS "${pmattn} requested BASIC_TEST_ENABLED: ${BASIC_TEST_ENABLED}" )
+message( STATUS "${pmattn} requested BASIC_TEST_ENABLED: ${BASIC_TEST_ENABLED}" )
+message( STATUS "${pmattn} requested BASIC_TEST_ENABLED: ${BASIC_TEST_ENABLED}" )
+message( STATUS "${pmattn} requested BASIC_TEST_ENABLED: ${BASIC_TEST_ENABLED}" )
+    set(FPP_FLAGS "${FPP_FLAGS}" -DBASIC_TEST_ENABLED )
+endif()
+
+if (SAMPLER_TEST_ENABLED)
+    set(FPP_FLAGS "${FPP_FLAGS}" -DSAMPLER_TEST_ENABLED )
+endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #: set code coverage preprocessor flag
@@ -703,7 +748,6 @@ else()
     set(OMP_FLAGS  CACHE STRING "OpenMP parallelism compiler flags")
 endif()
 
-unset(FCL_PARALLELIZATION_FLAGS)
 if (CAF_ENABLED)
     message( STATUS "${pmattn} CAF flags: ${CAF_FLAGS}" )
     set(FCL_PARALLELIZATION_FLAGS "${CAF_FLAGS}")
@@ -812,8 +856,8 @@ elseif (gnu_compiler)
     # The problem still persists in debug mode. Therefore, when gfortran is 10, debug mode is disabled.
     #set(FCL_FLAGS_DEFAULT -std=gnu -ffree-line-length-none -fallow-argument-mismatch CACHE STRING "GNU Fortran default compiler flags" )
 
-    set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none CACHE STRING "GNU Fortran default compiler flags" )
-    set(CCL_FLAGS_DEFAULT -ffree-line-length-none  CACHE STRING "GNU CXX default compiler flags" )
+    set(FCL_FLAGS_DEFAULT -std=legacy -ffree-line-length-none ) # CACHE STRING "GNU Fortran default compiler flags" )
+    set(CCL_FLAGS_DEFAULT -ffree-line-length-none )# CACHE STRING "GNU CXX default compiler flags" )
 
     set(FL_FLAGS -fopt-info-all=GFortranOptReport.txt ) # set Fortran linker flags for release mode
 
@@ -842,10 +886,10 @@ elseif (gnu_compiler)
 
 endif()
 
-set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" CACHE STRING "Fortran default compiler flags" FORCE)
-set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" CACHE STRING "CXX default compiler flags" FORCE)
-set(FCL_FLAGS "${FCL_FLAGS_DEFAULT}" "${FCL_PARALLELIZATION_FLAGS}" "${FCL_BUILD_FLAGS}" )
-set(CCL_FLAGS "${CCL_FLAGS_DEFAULT}" "${CCL_BUILD_FLAGS}" )
+# set(FCL_FLAGS_DEFAULT "${FCL_FLAGS_DEFAULT}" CACHE STRING "Fortran default compiler flags" FORCE)
+# set(CCL_FLAGS_DEFAULT "${CCL_FLAGS_DEFAULT}" CACHE STRING "CXX default compiler flags" FORCE)
+set(FCL_FLAGS "${FCL_FLAGS_DEFAULT}" "${FCL_PARALLELIZATION_FLAGS}" "${FCL_BUILD_FLAGS}" CACHE STRING "Fortran default compiler/linker flags" FORCE)
+set(CCL_FLAGS "${CCL_FLAGS_DEFAULT}" "${CCL_BUILD_FLAGS}" CACHE STRING "CXX default compiler/linker flags" FORCE)
 
 if (HEAP_ARRAY_ENABLED)
     if (intel_compiler)
@@ -858,7 +902,8 @@ if (HEAP_ARRAY_ENABLED)
         endif()
     elseif(gnu_compiler)
         #set(FCL_FLAGS "${FCL_FLAGS}" -fmax-stack-var-size=10 )
-        set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" -fmax-stack-var-size=10 )
+        # -frecursive overwrites -fmax-stack-var-size=10 and causes all allocations to happen on stack.
+        set(FC_LIB_FLAGS "${FC_LIB_FLAGS}" -frecursive ) # -fmax-stack-var-size=10
     endif()
 endif()
 

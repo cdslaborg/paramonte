@@ -5,9 +5,20 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
 
 ## **Version 1.x.x**  
 
-### **Version 1.4.2** -- November 27, 2020
+### **Version 1.5** -- Dec 17, 2020
 
-**Enhancements**  
+**Major Enhancements**  
+
++   This version introduces numerous performance and accuracy enhancements to the ParaMonte library.
++   The entire kernel library is now fully documented and verified with over 866 tests that cover close 
+    to 100% of all lines and functions in the kernel.
++   New prebuilt libraries with GNU compilers and Open-MPI on Linux are added.
++   New flags are now added to the build scripts of the library that automate the process of code coverage generation.
++   The `testing` builds are now removed from the ParaMonte release page as this build is mostly useful for development purposes.  
++   The issue of Windows file locking, that led to the occasional crashes of the 
+    ParaDRAM and ParaDISE simulations in `multiChain` parallelism mode, is now resolved.
+
+**Minor Enhancements**  
 
 +   Minor enhancements to the ParaMonte C/C++/Fortran example build scripts `build.sh` and `build.bat`.  
 +   The default build settings are now limited to `heap` memory allocation with `dynamic` library builds
@@ -17,23 +28,26 @@ To access the latest release of the package, visit [the ParaMonte GitHub reposit
     build the library with `stack` memory allocation by specifying the appropriate build flags with
     the `install.sh` on Unix or `install.bat` script on Windows systems. For further information, 
     see the installation guidelines on the ParaMonte documentation website.
-+   The temporary array creations in debug mode are now resolved.
++   All temporary array creations in debug mode are now resolved, 
+    except when Intel compilers are used, in which case, the debug warning messages are silenced.
 
-**Compiler support**  
+**Compiler Compatibility**  
   
 | Compiler Suite                    | Windows (64bit) | Linux | macOS |  
 |----------------------------------:|:---------------:|:-----:|:-----:|  
 | GNU Compiler Collection > 8.4     | ✅              | ✅    | ✅    |  
-| Intel Parallel Studio > 18.0.0    | ✅              | ✅    | ✅    |  
+| Intel Parallel Studio > 19.1.1    | ✅              | ✅    | ✅    |  
 | Microsoft C/C++ Compiler > 16.0.0 | ✅              | ❌    | ❌    |  
 
 **Compiler / MPI library used for this binary release**  
 
-+   **Windows**: Intel Parallel Studio Version 19.0.4.245 Build 20190417 / Intel(R) MPI Library 2019 Update 4 for Windows  
-+   **Linux**: Intel Parallel Studio Version 18.0.2 20180210 / Intel(R) MPI Library for Linux OS, Version 2018 Update 2 Build 20180125  
++   **Windows**: Intel Parallel Studio Version 19.1.1.216 Build 20200306 / Intel(R) MPI Library 2019 Update 7 for Windows  
++   **Linux**: Intel Parallel Studio Version 19.1.1.217 20200306 / Intel(R) MPI Library for Linux OS, Version 2019 Update 7 Build 20200312
++   **Linux**: GNU 10.2.0 / Open-MPI 4.0.3  
 +   **Linux**: GNU 10.1.0 / MPICH 3.2  
 +   **macOS**: Intel Parallel Studio Version 19.1.0.216 20200306  
 +   **macOS**: GNU 10.2.0 / Open-MPI 4.0.5  
++   **macOS**: GNU 10.2.0 / MPICH 3.3.2  
 
 ### **Version 1.4.1** -- November 15, 2020
 

@@ -114,8 +114,8 @@ endif()
 
 set(pmcolor "${BoldCyan}")
 set(pmattn  " ${pmcolor}ParaMonte -${ColorReset}")
-set(pmnote  "${pmattn} ${BoldMagenta}NOTE:${ColorReset}")
-set(pmwarn  "${pmattn} ${BoldYellow}WARNING:${ColorReset}")
+set(pmnote  "${pmattn} ${BoldYellow}NOTE:${ColorReset}")
+set(pmwarn  "${pmattn} ${BoldMagenta}WARNING:${ColorReset}")
 set(pmfatal "${pmattn} ${BoldRed}FATAL ERROR:${ColorReset}")
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -139,7 +139,7 @@ if ("${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
             "       $ buildDir=$(uname -s)$(uname -m) # set build folder to OS name + architecture\n"
             "       $ mkdir $\{buildDir\}\n"
             "       $ cd $\{buildDir\}\n"
-            "       $ CC=gcc FC=gfortran cmake -DBUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/install/dir /path/to/ParaMonte/kernel/src/dir\n\n"
+            "       $ CC=gcc CMAKE_Fortran_COMPILER=gfortran cmake -DBUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/path/to/install/dir /path/to/ParaMonte/kernel/src/dir\n\n"
             "   substituting the appropriate syntax for your shell (the above line assumes the bash shell)."
             )
 endif()
@@ -254,7 +254,7 @@ else()
 endif()
 string(TOLOWER ${COMPILER_SUITE} COMPILER_SUITE)
 
-message(STATUS "CMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}")
+message(STATUS "${pmattn} CMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER}")
 
 #if(DEFINED CMAKE_BUILD_TYPE AND "${CMAKE_BUILD_TYPE}" MATCHES "[Rr][Ee][Ll]") # release mode requested
 #    if(CMAKE_Fortran_COMPILER_ID MATCHES "GNU")
@@ -447,6 +447,10 @@ set(ParaMonteTest_SRC_DIR
     "${CMAKE_SOURCE_DIR}/src/kernel/tests"
     CACHE PATH "ParaMonte test source files directory" )
 
+set(ParaMonteTest_SRC_INPUT_DIR
+    "${ParaMonteTest_SRC_DIR}/input"
+    CACHE PATH "ParaMonte test source files directory" )
+
 # set the ParaMonte interface source files directory and loop over them to ensure their existence
 
 set(ParaMonteInterface_SRC_DIR
@@ -561,16 +565,17 @@ endif()
 #set(ParaMonteTest_BIN_DIR "${ParaMonteTest_BLD_DIR}")
 set(ParaMonteTest_BIN_DIR "${ParaMonteTest_BLD_DIR}/bin")
 message( STATUS "${pmattn} ParaMonteTest_BIN_DIR: ${ParaMonteTest_BIN_DIR}" )
+file(REMOVE_RECURSE "${ParaMonteTest_BIN_DIR}/")
 if (NOT EXISTS "${ParaMonteTest_BIN_DIR}/")
     file(MAKE_DIRECTORY "${ParaMonteTest_BIN_DIR}")
 endif()
 
 # set up test bin directory
 
-set(ParaMonteTest_INPUT_DIR "${ParaMonteTest_BIN_DIR}/input")
-message( STATUS "${pmattn} ParaMonteTest_INPUT_DIR: ${ParaMonteTest_INPUT_DIR}" )
-if (NOT EXISTS "${ParaMonteTest_INPUT_DIR}/")
-    file(MAKE_DIRECTORY "${ParaMonteTest_INPUT_DIR}")
+set(ParaMonteTest_BIN_INPUT_DIR "${ParaMonteTest_BIN_DIR}/input")
+message( STATUS "${pmattn} ParaMonteTest_BIN_INPUT_DIR: ${ParaMonteTest_BIN_INPUT_DIR}" )
+if (NOT EXISTS "${ParaMonteTest_BIN_INPUT_DIR}/")
+    file(MAKE_DIRECTORY "${ParaMonteTest_BIN_INPUT_DIR}")
 endif()
 
 #:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -585,7 +590,26 @@ endif()
 set(ParaMonteTest_EXE_NAME testParaMonte)
 
 # Define the library name
-if (NOT DEFINED PMLIB)
+if (NOT DEFINED PMLIB_NAME)
+
+    # \todo
+    # This library name definition requires further enhancement to match the name defined by the bash installer, whenever cmake is used directly.
+
+    message ( WARNING 
+            " \n"
+            " ${pmwarn} The ParaMonte Library name is not predefined.\n"
+            " ${pmwarn} This is highly unusual and should not happen.\n"
+            " ${pmwarn} Normally, the library name is defined by the ParaMonte installer \n"
+            " ${pmwarn} or passed to cmake for abuild via cmake. The most likely cause of this\n"
+            " ${pmwarn} warning message is that you are either building the library directly via\n"
+            " ${pmwarn} cmake and forgot to predefine the library name or, the Bash installation that you\n"
+            " ${pmwarn} are using is corrupted. If the latter is the case, please report the issue at:\n"
+            " ${pmwarn} \n"
+            " ${pmwarn} https://github.com/cdslaborg/paramonte/issues,\n"
+            " ${pmwarn} \n"
+            " ${pmwarn} to resolve it. Note that even if the library might be properly built, the naming \n"
+            " ${pmwarn} used might not follow the conventional naming rules of the ParaMonte library.\n"
+            )
 
     if (HEAP_ARRAY_ENABLED)
         set(MEMORY_ALLOCATION heap)
@@ -606,22 +630,22 @@ if (NOT DEFINED PMLIB)
     else()
         set(LANG_ABBR ${INTERFACE_LANGUAGE})
     endif()
-    set(PMLIB paramonte_${LANG_ABBR}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION} )
+    set(PMLIB_NAME paramonte_${LANG_ABBR}_${PLATFORM}_${ARCHITECTURE}_${PMCS}_${BTYPE}_${LTYPE}_${MEMORY_ALLOCATION} )
 
     if (CAF_ENABLED)
-        set(PMLIB ${PMLIB}_caf${CAFTYPE})
+        set(PMLIB_NAME ${PMLIB_NAME}_caf${CAFTYPE})
     endif()
 
     if (MPI_ENABLED)
-        set(PMLIB ${PMLIB}_mpi)
+        set(PMLIB_NAME ${PMLIB_NAME}_mpi)
     endif()
 
     if (OMP_ENABLED)
-        set(PMLIB ${PMLIB}_omp)
+        set(PMLIB_NAME ${PMLIB_NAME}_omp)
     endif()
 
     #if (MT_ENABLED)
-    #    set(PMLIB ${PMLIB}_mt)
+    #    set(PMLIB_NAME ${PMLIB_NAME}_mt)
     #endif()
 
 endif()

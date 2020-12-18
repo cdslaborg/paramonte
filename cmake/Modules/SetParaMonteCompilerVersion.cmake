@@ -93,7 +93,7 @@ if ( NOT CMAKE_Fortran_COMPILER_VERSION )
 endif()
 
 # if(CMAKE_BUILD_TYPE MATCHES "Debug|DEBUG|debug")
-#     add_definitions(-DDBG_ENABLED)
+#     add_definitions(-DDEBUG_ENABLED)
 # endif()
 
 # We have populated CMAKE_Fortran_COMPILER_VERSION if it was missing

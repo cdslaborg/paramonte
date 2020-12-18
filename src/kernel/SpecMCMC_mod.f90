@@ -106,7 +106,7 @@ contains
     function constructSpecMCMC  ( nd &
                                 , methodName &
                                 ) result(SpecMCMC)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructSpecMCMC
 #endif
         use Constants_mod, only: IK, RK
@@ -131,7 +131,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     subroutine nullifyNameListVar( SpecMCMC, nd )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         use Constants_mod, only: IK, RK
@@ -154,18 +154,17 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setFromInputFile( SpecMCMC, Err, nd, domainLowerLimitVec, domainUpperLimitVec )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine setFromInputFile(SpecMCMC, Err) ! domainLowerLimitVec, domainUpperLimitVec )
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFromInputFile
 #endif
-
+        use SpecBase_mod, only: SpecBase_type
         use Constants_mod, only: IK, RK
         use Err_mod, only: Err_type
+
         implicit none
+
         class(SpecMCMC_type), intent(inout)     :: SpecMCMC
-        integer(IK) , intent(in)                :: nd
-        real(RK)    , intent(in)                :: domainLowerLimitVec(nd)
-        real(RK)    , intent(in)                :: domainUpperLimitVec(nd)
         type(Err_type), intent(out)             :: Err
 
         Err%occurred = .false.
@@ -180,25 +179,15 @@ contains
         call SpecMCMC%SampleRefinementCount                 %set(sampleRefinementCount)
         call SpecMCMC%SampleRefinementMethod                %set(sampleRefinementMethod)
         call SpecMCMC%RandomStartPointRequested             %set(randomStartPointRequested)
-        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(randomStartPointDomainLowerLimitVec, domainLowerLimitVec)
-        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(randomStartPointDomainUpperLimitVec, domainUpperLimitVec)
-        call SpecMCMC%startPointVec                         %set(startPointVec &
-                                                                ,randomStartPointDomainLowerLimitVec    = SpecMCMC%RandomStartPointDomainLowerLimitVec%val  &
-                                                                ,randomStartPointDomainUpperLimitVec    = SpecMCMC%RandomStartPointDomainUpperLimitVec%val  &
-                                                                ,randomStartPointRequested              = SpecMCMC%RandomStartPointRequested%val            &
-                                                                ,domainLowerLimitVec                    = domainLowerLimitVec                               &
-                                                                ,domainUpperLimitVec                    = domainUpperLimitVec                               )
-
-
-        deallocate(randomStartPointDomainLowerLimitVec)
-        deallocate(randomStartPointDomainUpperLimitVec)
-        deallocate(startPointVec)
+        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(randomStartPointDomainLowerLimitVec)
+        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(randomStartPointDomainUpperLimitVec)
+        call SpecMCMC%startPointVec                         %set(startPointVec)
 
     end subroutine setFromInputFile
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setFromInputArgs ( SpecMCMC, domainLowerLimitVec, domainUpperLimitVec &
+    subroutine setFromInputArgs ( SpecMCMC &
                                 ! ParaMCMC variables
                                 , chainSize                             &
                                 , scaleFactor                           &
@@ -213,14 +202,14 @@ contains
                                 , randomStartPointDomainLowerLimitVec   &
                                 , randomStartPointDomainUpperLimitVec   &
                                 )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFromInputArgs
 #endif
 
+        use SpecBase_mod, only: SpecBase_type
         use Constants_mod, only: IK, RK
         implicit none
         class(SpecMCMC_type), intent(inout) :: SpecMCMC
-        real(RK), intent(in)                :: domainLowerLimitVec(:), domainUpperLimitVec(:)
 
         ! ParaMCMC variables
         integer(IK) , intent(in), optional  :: chainSize
@@ -244,6 +233,7 @@ contains
         proposalStartCorMatIsPresent = present(proposalStartCorMat)
         proposalStartCovMatIsPresent = present(proposalStartCovMat) .or. proposalStartCorMatIsPresent .or. proposalStartStdVecIsPresent
 
+
         if (present(chainSize))                             call SpecMCMC%ChainSize                             %set(chainSize)
         if (present(scaleFactor))                           call SpecMCMC%ScaleFactor                           %set(scaleFactor)
         if (present(proposalModel))                         call SpecMCMC%ProposalModel                         %set(trim(adjustl(proposalModel)))
@@ -253,14 +243,10 @@ contains
         if (present(sampleRefinementCount))                 call SpecMCMC%SampleRefinementCount                 %set(sampleRefinementCount)
         if (present(sampleRefinementMethod))                call SpecMCMC%SampleRefinementMethod                %set(sampleRefinementMethod)
         if (present(randomStartPointRequested))             call SpecMCMC%RandomStartPointRequested             %set(randomStartPointRequested)
-        if (present(randomStartPointDomainLowerLimitVec))   call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(randomStartPointDomainLowerLimitVec, domainLowerLimitVec)
-        if (present(randomStartPointDomainUpperLimitVec))   call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(randomStartPointDomainUpperLimitVec, domainUpperLimitVec)
-        if (present(startPointVec))                         call SpecMCMC%startPointVec                         %set(startPointVec &
-                                                                                                                ,randomStartPointDomainLowerLimitVec    = SpecMCMC%RandomStartPointDomainLowerLimitVec%val  &
-                                                                                                                ,randomStartPointDomainUpperLimitVec    = SpecMCMC%RandomStartPointDomainUpperLimitVec%val  &
-                                                                                                                ,randomStartPointRequested              = SpecMCMC%RandomStartPointRequested%val            &
-                                                                                                                ,domainLowerLimitVec                    = domainLowerLimitVec                               &
-                                                                                                                ,domainUpperLimitVec                    = domainUpperLimitVec                               )
+
+        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %set(randomStartPointDomainLowerLimitVec)
+        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %set(randomStartPointDomainUpperLimitVec)
+        call SpecMCMC%startPointVec                         %set(startPointVec)
 
     end subroutine setFromInputArgs
 
@@ -273,7 +259,7 @@ contains
                             , isLeaderImage         &
                             , splashModeRequested   &
                             )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: reportValues
 #endif
         use Decoration_mod, only: GENERIC_OUTPUT_FORMAT
@@ -408,18 +394,20 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(SpecMCMC,Err,methodName,nd,domainLowerLimitVec,domainUpperLimitVec)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine checkForSanity(SpecMCMC, SpecBase, methodName, nd, Err) ! ,domainLowerLimitVec,domainUpperLimitVec)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
+        use SpecBase_mod, only: SpecBase_type
         use Constants_mod, only: IK, RK
         use Err_mod, only: Err_type
         implicit none
         class(SpecMCMC_type), intent(inout) :: SpecMCMC
-        integer(IK), intent(in)             :: nd
-        real(RK), intent(in)                :: domainLowerLimitVec(:), domainUpperLimitVec(:)
+        type(SpecBase_type) , intent(in)    :: SpecBase
         character(*), intent(in)            :: methodName
+        integer(IK), intent(in)             :: nd
         type(Err_type), intent(inout)       :: Err
+        !real(RK), intent(in)                :: domainLowerLimitVec(:), domainUpperLimitVec(:)
         call SpecMCMC%ChainSize                             %checkForSanity(Err,methodName,nd)
         call SpecMCMC%ScaleFactor                           %checkForSanity(Err,methodName)
         call SpecMCMC%ProposalModel                         %checkForSanity(Err,methodName)
@@ -428,12 +416,12 @@ contains
         call SpecMCMC%proposalStartStdVec                   %checkForSanity(Err,methodName,nd)
         call SpecMCMC%SampleRefinementCount                 %checkForSanity(Err,methodName)
         call SpecMCMC%SampleRefinementMethod                %checkForSanity(Err,methodName)
-        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %checkForSanity(Err,methodName,domainLowerLimitVec)
-        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %checkForSanity(Err,methodName,randomStartPointDomainLowerLimitVec=SpecMCMC%RandomStartPointDomainLowerLimitVec%val,domainUpperLimitVec=domainUpperLimitVec)
-        call SpecMCMC%startPointVec                         %checkForSanity(Err,methodName &
-                                                                           ,domainLowerLimitVec = domainLowerLimitVec &
-                                                                           ,domainUpperLimitVec = domainUpperLimitVec )
-
+        call SpecMCMC%RandomStartPointDomainLowerLimitVec   %checkForSanity(Err,methodName, SpecBase, randomStartPointRequested = SpecMCMC%RandomStartPointRequested%val )
+        call SpecMCMC%RandomStartPointDomainUpperLimitVec   %checkForSanity(Err,methodName, SpecBase, randomStartPointRequested = SpecMCMC%RandomStartPointRequested%val &
+                                                                                                    , randomStartPointDomainLowerLimitVec = SpecMCMC%RandomStartPointDomainLowerLimitVec%val )
+        call SpecMCMC%startPointVec                         %checkForSanity(Err,methodName, SpecBase, randomStartPointRequested = SpecMCMC%RandomStartPointRequested%val &
+                                                                                                    , randomStartPointDomainLowerLimitVec = SpecMCMC%RandomStartPointDomainLowerLimitVec%Val & ! LCOV_EXCL_LINE
+                                                                                                    , randomStartPointDomainUpperLimitVec = SpecMCMC%RandomStartPointDomainUpperLimitVec%val )
     end subroutine checkForSanity
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

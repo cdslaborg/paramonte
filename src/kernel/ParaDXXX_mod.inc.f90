@@ -46,7 +46,7 @@
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 !#define CAT(a,b) a##b
 !#define XCAT(a,b) CAT(a,b)
@@ -66,7 +66,7 @@
 #error "Unrecognized sampler in ParaDRAM_mod.inc.f90"
 #endif
 
-    use Constants_mod, only: IK, RK, CK
+    use Constants_mod, only: IK, RK, CK ! LCOV_EXCL_LINE
     use ParaMonte_mod, only: ParaMonteNumFunCall_type
     use ParaMCMC_mod, only: ParaMCMC_type, ParaMCMC_Statistics_type, ParaMCMC_Chain_type
     use SpecDRAM_mod, only: SpecDRAM_type
@@ -109,7 +109,7 @@
 
     interface
     module subroutine getSpecFromInputFile( self, nd )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSpecFromInputFile
 #endif
         use Constants_mod, only: IK
@@ -120,7 +120,7 @@
 
     interface
     module subroutine runKernel( self, getLogFunc )
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: runKernel
 #endif
         use ParaMonteLogFunc_mod, only: getLogFunc_proc
@@ -176,7 +176,7 @@
                                 , burninAdaptationMeasure               &
                                 , delayedRejectionScaleFactorVec        &
                                 ) ! result(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !!DEC$ ATTRIBUTES DLLEXPORT :: ParaDXXX_type
         !DEC$ ATTRIBUTES DLLEXPORT :: runSampler
 #endif

@@ -103,15 +103,19 @@ contains
     !> The current implementation of the objective function relies on the definitions of module variables.
     !> Although inefficient and ugly, this was necessary to resolve the viscous Segmentation Fault error
     !> that happens with internal function calls on Windows Subsystem for Linux Ubuntu with GFortran.
-    !> Once this error of unknown origin is resolved, the function [getSumDistSq](@ref getsumdistsq)
+    !> Once this error of unknown origin is resolved, the external module function `getSumDistSq()`
     !> must be converted back to an internal function within [fitGeoCyclicLogPDF](@ref fitgeocycliclogpdf)
     !> and subsequently, all module variables must be removed.
+    !> update (Dec 16, 2020):  
+    !> The source of the error was identified to be a bug in WSL1. 
+    !> This problem is now resolved in WSL2. However, the code will 
+    !> be kept intact for future compatibility with WSL1 and those who still use it.
     !>
     !> \author
     !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
     function fitGeoCyclicLogPDF(maxNumTrial, numTrial, SuccessStep, LogCount) result(PowellMinimum)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
-        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoCyclicLogPDF
 #endif
         use Optimization_mod, only: PowellMinimum_type
         use Constants_mod, only: IK, RK
@@ -164,11 +168,14 @@ contains
             implicit none
             integer(IK) , intent(in)    :: ndim
             real(RK)    , intent(in)    :: successProbFisherTransNormFac(ndim)
-            real(RK)                    :: sumDistSq, successProb
-            successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK ! reverse Fisher-transform
+            real(RK)                    :: sumDistSq
             !sumDistSq = sum( (LogCount - getGeoLogPDF(successProb=successProb,seqLen=numTrial) - successProbFisherTransNormFac(2) )**2 )
-            sumDistSq = sum(    ( LogCount &
-                                - getLogProbGeoCyclic(successProb=successProb, maxNumTrial=maxNumTrial, numTrial=numTrial, SuccessStep=SuccessStep) &
+            sumDistSq = sum(    ( LogCount & ! LCOV_EXCL_LINE
+                                - getLogProbGeoCyclic   ( successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK & ! reverse Fisher-transform ! LCOV_EXCL_LINE
+                                                        , maxNumTrial = maxNumTrial & ! LCOV_EXCL_LINE
+                                                        , numTrial = numTrial & ! LCOV_EXCL_LINE
+                                                        , SuccessStep = SuccessStep & ! LCOV_EXCL_LINE
+                                                        ) &
                                 - successProbFisherTransNormFac(2) &
                                 )**2 &
                             )
@@ -192,16 +199,22 @@ contains
     !> Although `successProbFisherTransNormFac` is a vector on input, it is expected to have a length of one at all times.
     !> This is solely to fullfile the interface restrictions of [PowellMinimum_type](@ref optimization_mod::powellminimum_type).
     pure function getSumDistSq(ndim,successProbFisherTransNormFac) result(sumDistSq)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
+        !DEC$ ATTRIBUTES DLLEXPORT :: getSumDistSq
+#endif
         use Statistics_mod, only: getLogProbGeoCyclic
         use Constants_mod, only: IK, RK
         implicit none
         integer(IK) , intent(in)    :: ndim
         real(RK)    , intent(in)    :: successProbFisherTransNormFac(ndim)
-        real(RK)                    :: sumDistSq, successProb
-        successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK ! reverse Fisher-transform
+        real(RK)                    :: sumDistSq
         !sumDistSq = sum( (LogCount - getGeoLogPDF(successProb=successProb,seqLen=numTrial) - successProbFisherTransNormFac(2) )**2 )
-        sumDistSq = sum(    ( LogCount_WSL &
-                            - getLogProbGeoCyclic(successProb=successProb, maxNumTrial=maxNumTrial_WSL, numTrial=numTrial_WSL, SuccessStep=SuccessStep_WSL) &
+        sumDistSq = sum(    ( LogCount_WSL & ! LCOV_EXCL_LINE
+                            - getLogProbGeoCyclic   ( successProb = 0.5_RK * tanh(successProbFisherTransNormFac(1)) + 0.5_RK & ! reverse Fisher-transform ! LCOV_EXCL_LINE
+                                                    , maxNumTrial=maxNumTrial_WSL & ! LCOV_EXCL_LINE
+                                                    , numTrial=numTrial_WSL & ! LCOV_EXCL_LINE
+                                                    , SuccessStep=SuccessStep_WSL & ! LCOV_EXCL_LINE
+                                                    ) &
                             - successProbFisherTransNormFac(2) &
                             )**2 &
                         )
@@ -226,7 +239,7 @@ contains
 !    !> \author
 !    !> Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.
 !    function fitGeoLogPDF_old(numTrial, SuccessStep, LogCount) result(PowellMinimum)
-!#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+!#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: fitGeoLogPDF_old
 !#endif
 !        use Optimization_mod, only: PowellMinimum_type

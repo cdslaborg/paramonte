@@ -70,21 +70,20 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-   !function constructAdaptiveUpdateCount(methodName,chainSizeDef,adaptiveUpdatePeriodDef) result(AdaptiveUpdateCountObj)
-    function constructAdaptiveUpdateCount(methodName) result(AdaptiveUpdateCountObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    function constructAdaptiveUpdateCount(methodName) result(self)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructAdaptiveUpdateCount
 #endif
         use Constants_mod, only: IK, NULL_IK, POSINF_IK
         use String_mod, only: num2str
         implicit none
         character(*), intent(in)        :: methodName
-        type(AdaptiveUpdateCount_type)  :: AdaptiveUpdateCountObj
+        type(AdaptiveUpdateCount_type)  :: self
        !integer(IK), intent(in)         :: chainSizeDef, adaptiveUpdatePeriodDef
-       !AdaptiveUpdateCountObj%def  = chainSizeDef / ( 2 * adaptiveUpdatePeriodDef )  
-        AdaptiveUpdateCountObj%def  = POSINF_IK
-        AdaptiveUpdateCountObj%null = NULL_IK
-        AdaptiveUpdateCountObj%desc = &
+       !self%def  = chainSizeDef / ( 2 * adaptiveUpdatePeriodDef )  
+        self%def  = POSINF_IK
+        self%null = NULL_IK
+        self%desc = &
         "adaptiveUpdateCount represents the total number of adaptive updates that will be made &
         &to the parameters of the proposal distribution to increase the efficiency of the sampler &
         &thus increasing the overall sampling efficiency of " // methodName // ". &
@@ -95,53 +94,53 @@ contains
         &to ensure ergodicity and stationarity of the MCMC sampler. &
         &If adaptiveUpdateCount=0, then the proposal distribution parameters will be fixed to &
         &the initial input values throughout the entire MCMC sampling. &
-        &The default value is " // num2str(AdaptiveUpdateCountObj%def) // "."
+        &The default value is " // num2str(self%def) // "."
     end function constructAdaptiveUpdateCount
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine nullifyNameListVar(AdaptiveUpdateCountObj)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine nullifyNameListVar(self)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar
 #endif
         implicit none
-        class(AdaptiveUpdateCount_type), intent(in)  :: AdaptiveUpdateCountObj
-        adaptiveUpdateCount = AdaptiveUpdateCountObj%null
+        class(AdaptiveUpdateCount_type), intent(in)  :: self
+        adaptiveUpdateCount = self%null
     end subroutine nullifyNameListVar
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine setAdaptiveUpdateCount(AdaptiveUpdateCountObj,adaptiveUpdateCount)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine setAdaptiveUpdateCount(self,adaptiveUpdateCount)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAdaptiveUpdateCount
 #endif
         use Constants_mod, only: IK
         implicit none
-        class(AdaptiveUpdateCount_type), intent(inout)  :: AdaptiveUpdateCountObj
+        class(AdaptiveUpdateCount_type), intent(inout)  :: self
         integer(IK), intent(in)                         :: adaptiveUpdateCount
-        AdaptiveUpdateCountObj%val = adaptiveUpdateCount
-        if ( AdaptiveUpdateCountObj%val==AdaptiveUpdateCountObj%null ) AdaptiveUpdateCountObj%val = AdaptiveUpdateCountObj%def
+        self%val = adaptiveUpdateCount
+        if ( self%val==self%null ) self%val = self%def
     end subroutine setAdaptiveUpdateCount
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine checkForSanity(AdaptiveUpdateCountObj,Err,methodName)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+    subroutine checkForSanity(self,Err,methodName)
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: checkForSanity
 #endif
         use Constants_mod, only: IK
         use Err_mod, only: Err_type
         use String_mod, only: num2str
         implicit none
-        class(AdaptiveUpdateCount_type), intent(in)   :: AdaptiveUpdateCountObj
+        class(AdaptiveUpdateCount_type), intent(in)   :: self
         character(*), intent(in)            :: methodName
         type(Err_type), intent(inout)       :: Err
         character(*), parameter             :: PROCEDURE_NAME = "@checkForSanity()"
-        if ( AdaptiveUpdateCountObj%val<0) then
+        if ( self%val<0) then
             Err%occurred = .true.
             Err%msg =   Err%msg // &
                         MODULE_NAME // PROCEDURE_NAME // ": Error occurred. &
-                        &The input requested value for adaptiveUpdateCount (" // num2str(AdaptiveUpdateCountObj%val) // ") &
+                        &The input requested value for adaptiveUpdateCount (" // num2str(self%val) // ") &
                         &can not be negative. If you are not sure of the appropriate value for adaptiveUpdateCount, drop it &
                         &from the input list. " // methodName // " will automatically assign an appropriate value to it.\n\n"
         end if

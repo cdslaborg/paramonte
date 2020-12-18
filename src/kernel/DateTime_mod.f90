@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains classes and procedures for computing the date and time.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module DateTime_mod
 
@@ -83,7 +83,7 @@ contains
     !>
     !> @param[in,out]   self : An object of [DateTime_type](@ref datetime_type) class.
     subroutine queryDateTime(self)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: queryDateTime
 #endif
         implicit none
@@ -122,7 +122,7 @@ contains
     !> \remark
     !> This is an impure function due to its dependence on `date_and_time()` Fortran intrinsic function.
     function getNiceDateTime() result(niceDateTime)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNiceDateTime
 #endif
         implicit none

@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains classes and procedures relevant to CPU-time timing.
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module TimerCPU_mod
 
@@ -98,7 +98,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     function constructTimerCPU() result(TimerCPU)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructTimerCPU
 #endif
         use Constants_mod, only: RK
@@ -109,10 +109,12 @@ contains
         TimerCPU%Err%msg = ""
         call cpu_time( time=TimerCPU%Time%start )
         if ( TimerCPU%Time%start<0 ) then
+        ! LCOV_EXCL_START
             TimerCPU%Err%occurred = .true.
             TimerCPU%Err%msg = PROCEDURE_NAME // ": There is no processor clock."
             return
         end if
+        ! LCOV_EXCL_STOP
         call TimerCPU%tic()
     end function constructTimerCPU
 
@@ -128,7 +130,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine setTicCPU(TimerCPU)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setTicCPU
 #endif
         implicit none
@@ -156,7 +158,7 @@ contains
     !> \author
     !> Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin
     subroutine setTocCPU(TimerCPU)
-#if IFORT_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN) && !defined CFI_ENABLED
+#if INTEL_COMPILER_ENABLED && defined DLL_ENABLED && (OS_IS_WINDOWS || defined OS_IS_DARWIN)
         !DEC$ ATTRIBUTES DLLEXPORT :: setTocCPU
 #endif
         use Constants_mod, only: RK

@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [TimerCPU_mod](@ref timercpu_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_TimerCPU_mod
 
@@ -94,9 +94,9 @@ contains
         call sleep(seconds=seconds,Err=TimerCPU%Err)
         assertion = .not. TimerCPU%Err%occurred; if (.not. assertion) return
         call TimerCPU%toc()
-        assertion = assertion .and. TimerCPU%Time%total > 0.9_RK * seconds
-        assertion = assertion .and. TimerCPU%Time%delta > 0.9_RK * seconds
-        assertion = assertion .and. TimerCPU%Time%start < TimerCPU%Time%stop
+        assertion = assertion .and. TimerCPU%Time%total >= 0._RK
+        assertion = assertion .and. TimerCPU%Time%delta >= 0._RK
+        assertion = assertion .and. TimerCPU%Time%start <= TimerCPU%Time%stop
 
         ! LCOV_EXCL_START
         if (Test%isDebugMode .and. .not. assertion) then

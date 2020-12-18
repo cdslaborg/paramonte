@@ -1,9 +1,28 @@
 # ParaMonte MATLAB release notes
 
 This project follows [Semantic Versioning](https://semver.org/). 
-To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases).  
+To access the latest release of the package, visit [the ParaMonte GitHub repository release page](https://github.com/cdslaborg/paramonte/releases) or [the ParaMonte page on MathWorks FileExchange central package repository](https://www.mathworks.com/matlabcentral/fileexchange/78946-paramonte).  
 
 ## **Version 2.x.x**  
+
+### Version  2.3.0 -- December 17, 2020  
+
+**Major enhancements**  
+
++   This update presents several major performance, accuracy, 
+    and verification enhancements to the ParaMonte kernel routines, 
+    in particular, to the ParaDRAM sampler.  
+
++   An extensive set of over 866 tests have been added 
+    that test all aspects of the ParaMonte kernel library.  
+
++   The issue of Windows file locking, that led to the occasional crashes of the 
+    ParaDRAM and ParaDISE simulations in `multiChain` parallelism mode, is now resolved.  
+
++   The `ParaDRAM` class in `paramonte` is now also available 
+    as `Paradram` and `paradram`, although the original label 
+    will remain the default preferred method of ParaDRAM 
+    object instantiation.  
 
 ### Version  2.2.1 -- November 15, 2020  
 

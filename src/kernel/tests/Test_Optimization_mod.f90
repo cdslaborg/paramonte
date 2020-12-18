@@ -41,7 +41,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !>  \brief This module contains tests of the module [Optimization_mod](@ref optimization_mod).
-!>  @author Amir Shahmoradi
+!>  \author Amir Shahmoradi
 
 module Test_Optimization_mod
 
@@ -114,15 +114,15 @@ contains
 
         assertion = .not. BrentMinimum%Err%occurred
         if (.not. assertion) then
-            ! LCOV_EXCL_START
+        ! LCOV_EXCL_START
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0,:,', '))")
                 write(Test%outputUnit,"(*(g0,:,', '))") BrentMinimum%Err%msg
                 write(Test%outputUnit,"(*(g0,:,', '))")
             end if
-            ! LCOV_EXCL_STOP
             return
         end if
+        ! LCOV_EXCL_STOP
 
         assertion = assertion .and. abs(BrentMinimum%xmin-TestFuncRosenBrock1D%XMIN_REF) / abs(TestFuncRosenBrock1D%XMIN_REF) < 1.e-6_RK
         assertion = assertion .and. abs(BrentMinimum%fmin-TestFuncRosenBrock1D%FMIN_REF) / abs(TestFuncRosenBrock1D%FMIN_REF) < 1.e-6_RK
@@ -172,8 +172,8 @@ contains
                 write(Test%outputUnit,"(*(g0,:,', '))") BrentMinimum%Err%msg
                 write(Test%outputUnit,"(*(g0,:,', '))")
             end if
-            ! LCOV_EXCL_STOP
             return
+            ! LCOV_EXCL_STOP
         end if
 
         assertion = abs(BrentMinimum%xmin-TestFuncRosenBrock1D%XMIN_REF) / abs(TestFuncRosenBrock1D%XMIN_REF) < 1.e-6_RK
@@ -214,22 +214,22 @@ contains
 
         PowellMinimum = PowellMinimum_type  ( ndim = 2_IK &
                                             , getFuncMD = getTestFuncRosenBrock2D &
-                                            , StartVec = StartVec &
+                                            , StartVec = StartVec & ! LCOV_EXCL_LINE
                                             !, DirMat = reshape([1._RK, 0._RK, 0._RK, 1._RK], shape = [2,2])
                                             !, ftol = 1.e-8_RK &
                                             )
 
         assertion = .not. PowellMinimum%Err%occurred
         if (.not. assertion) then
-            ! LCOV_EXCL_START
+        ! LCOV_EXCL_START
             if (Test%isDebugMode) then
                 write(Test%outputUnit,"(*(g0,:,', '))")
                 write(Test%outputUnit,"(*(g0,:,', '))") PowellMinimum%Err%msg
                 write(Test%outputUnit,"(*(g0,:,', '))")
             end if
-            ! LCOV_EXCL_STOP
             return
         end if
+        ! LCOV_EXCL_STOP
 
         assertion = assertion .and. any(abs(PowellMinimum%xmin-TestFuncRosenBrock2D%XMIN_REF) / abs(TestFuncRosenBrock2D%XMIN_REF) < 1.e-6_RK)
         assertion = assertion .and. abs(PowellMinimum%fmin-TestFuncRosenBrock2D%FMIN_REF) / abs(TestFuncRosenBrock2D%FMIN_REF) < 1.e-6_RK

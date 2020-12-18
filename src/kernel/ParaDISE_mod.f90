@@ -46,11 +46,10 @@
 !> \remark
 !> This module requires preprocessing, prior to compilation.
 !>
-!> @author Amir Shahmoradi
+!> \author Amir Shahmoradi
 
 module ParaDISE_mod
 #define PARADISE ParaDISE
 #include "ParaDXXX_mod.inc.f90"
 #undef PARADISE
-end module ParaDISE_mod
-
+end module ParaDISE_mod ! LCOV_EXCL_LINE
