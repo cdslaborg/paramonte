@@ -514,24 +514,29 @@ class ParaMonteSampler:
                         os.environ["LD_LIBRARY_PATH"] = object.path + os.pathsep + os.environ["LD_LIBRARY_PATH"]
                 if localInstallDir.mpi.lib is not None: os.environ["LD_LIBRARY_PATH"] = localInstallDir.mpi.lib + os.pathsep + os.environ["LD_LIBRARY_PATH"]
 
-        # import ParaMonte dll define result (None) AND argument (pointer to a c function) type
+        #### determine the mpi library brand. @todo: This must be later moved to pmreqs as it does not need to be executed every time.
 
-        buildModeList = ["release","testing","debug"]
-        buildModeList.pop(buildModeList.index(buildMode))
-        buildModeList.insert(0,buildMode)
-        pmcsList = ["intel","gnu"]
-        if cstype is not None:
-            pmcsList.pop(pmcsList.index(cstype))
-            pmcsList.insert(0,cstype)
-
-        libNameSuffix = { "windows" : ".dll"
-                        , "cygwin"  : ".dll"
-                        , "darwin"  : ".dylib"
-                        , "linux"   : ".so"
-                        }.get(pm.platform.osname, ".so")
-
-        parallelism = ""
-        if not self.mpiEnabled:
+        if self.mpiEnabled:
+            import subprocess
+            cmdout = subprocess.getoutput("mpiexec --version").lower()
+            if "intel" in cmdout:
+                parallelism = "_impi"
+            elif "hydra" in cmdout or "mpich" in cmdout:
+                parallelism = "_mpich"
+            elif "openrte" in cmdout or "open-mpi" in cmdout or "openmpi" in cmdout:
+                parallelism = "_openmpi"
+            else: # assume defaults
+                if self.platform.isWin32 or self.platform.isLinux:
+                    parallelism = "_impi"
+                elif self.platform.isMacOS:
+                    parallelism = "_openmpi"
+            if cstype is None:
+                if parallelism=="_impi":
+                    cstype = "intel"
+                else:
+                    cstype = "gnu"
+        else:
+            parallelism = ""
             pm.note( msg   = "Running the " + self._methodName + " sampler in serial mode..." + newline
                             + "To run the " + self._methodName + " sampler in parallel mode visit:" + newline
                             + newline
@@ -544,6 +549,23 @@ class ParaMonteSampler:
                     , marginBot = 1
                     )
 
+        # import ParaMonte dll define result (None) AND argument (pointer to a c function) type
+
+        buildModeList = ["release","testing","debug"]
+        buildModeList.pop(buildModeList.index(buildMode))
+        buildModeList.insert(0,buildMode)
+        pmcsList = ["intel","gnu"]
+
+        if cstype is not None:
+            pmcsList.pop(pmcsList.index(cstype))
+            pmcsList.insert(0,cstype)
+
+        libNameSuffix = { "windows" : ".dll"
+                        , "cygwin"  : ".dll"
+                        , "darwin"  : ".dylib"
+                        , "linux"   : ".so"
+                        }.get(pm.platform.osname, ".so")
+
         libPath = None
         libFound = False
         libNamePrefix = "libparamonte_python_" + pm.platform.osname.lower() + "_" + pm.platform.arch + "_"
@@ -551,22 +573,6 @@ class ParaMonteSampler:
         for buildMode in buildModeList:
 
             for pmcs in pmcsList:
-
-                #### Determine the parallelism. xxx @todo: The MPI runtime library determination here needs improvement
-
-                if self.mpiEnabled:
-                    parallelism = "_mpi"
-                    if pmcs=="intel":
-                        parallelism = "_impi"
-                    elif pmcs=="gnu":
-                        import subprocess
-                        output = subprocess.getoutput("mpiexec --version").lower()
-                        if "openrte" in output or "open-mpi" in output or "openmpi" in output:
-                            parallelism = "_openmpi"
-                        elif "hydra" in output or "mpich" in output:
-                            parallelism = "_mpich"
-                        else:
-                            parallelism = "_mpich"
 
                 #### Build the library name
 

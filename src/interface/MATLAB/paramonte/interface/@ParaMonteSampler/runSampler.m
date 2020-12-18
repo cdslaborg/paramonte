@@ -142,9 +142,10 @@ function runSampler(self,ndim,getLogFunc,varargin)
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    errorOccurred = ~isa(self.buildMode,"string");
     cstype = [];
+    errorOccurred = ~ischar(self.buildMode) && ~isstring(self.buildMode);
     if ~errorOccurred
+        self.buildMode = string(self.buildMode);
         buildModeSplitList = strsplit(lower(self.buildMode),"-");
         if strcmp(buildModeSplitList(1),"release") || strcmp(buildModeSplitList(1),"testing") || strcmp(buildModeSplitList(1),"debug")
             if length(buildModeSplitList) > 1
@@ -169,6 +170,54 @@ function runSampler(self,ndim,getLogFunc,varargin)
         self.Err.abort();
     end
 
+    %%%% set the MPI library name. @todo: The MPI runtime library determination here needs improvement. This must be moved out of this method.
+
+    if self.mpiEnabled
+
+        [status,cmdout] = system("mpiexec --version");
+        if status==0 || ischar(cmdout) || isstring(cmdout)
+            cmdout = lower(string(cmdout));
+        else
+            cmdout = "";
+        end
+
+        if contains(cmdout,"openrte") || contains(cmdout,"open-mpi") || contains(cmdout,"openmpi")
+            parallelism = "_openmpi";
+        elseif contains(cmdout,"hydra") || contains(cmdout,"mpich")
+            parallelism = "_mpich";
+        elseif contains(cmdout,"intel")
+            parallelism = "_impi";
+        else
+            if self.platform.isWin32 || self.platform.isLinux
+                parallelism = "_impi";
+            elseif self.platform.isMacOS
+                parallelism = "_openmpi";
+            end
+        end
+
+        if isempty(cstype)
+            if strcmp(parallelism,"_impi")
+                cstype = "intel";
+            else
+                cstype = "gnu";
+            end
+        end
+
+    else
+
+        parallelism = "";
+        if ~self.mpiEnabled
+            if self.reportEnabled
+                self.Err.msg    = "Running the ParaDRAM sampler in serial mode..." + newline ...
+                                + "To run the ParaDRAM sampler in parallel mode visit: cdslab.org/pm";
+                self.Err.note();
+            end
+        end
+
+    end
+
+    %%%% set build mode
+
     buildModeListRef = ["release","testing","debug"];
     buildModeList = buildModeListRef;
     if ~strcmp(self.buildMode,"release")
@@ -192,39 +241,10 @@ function runSampler(self,ndim,getLogFunc,varargin)
 
     %%%% set the library name
 
-    parallelism = "";
-    if ~self.mpiEnabled
-        if self.reportEnabled
-            self.Err.msg    = "Running the ParaDRAM sampler in serial mode..." + newline ...
-                            + "To run the ParaDRAM sampler in parallel mode visit: cdslab.org/pm";
-            self.Err.note();
-        end
-    end
-
     libFound = false;
     libNamePrefix = "libparamonte_" + lower(self.platform.osname) + "_" + getArch() + "_";
     for buildMode = buildModeList
         for pmcs = pmcsList
-
-            %%%% xxx @todo: The MPI runtime library determination here needs improvement
-
-            if self.mpiEnabled
-                parallelism = "_mpi";
-                if strcmp(pmcs,"intel")
-                    parallelism = "_impi";
-                elseif strcmp(pmcs,"gnu")
-                    [status,cmdout] = system("mpiexec --version");
-                    if status==0
-                        if contains(cmdout,"openrte") || contains(cmdout,"open-mpi") || contains(cmdout,"openmpi")
-                            parallelism = "_openmpi";
-                        elseif contains(cmdout,"hydra") || contains(cmdout,"mpich")
-                            parallelism = "_mpich";
-                        end
-                    else
-                        parallelism = "_mpich";
-                    end
-                end
-            end
 
             libName = libNamePrefix + pmcs + "_" + buildMode + "_dynamic_heap" + parallelism;
             if exist(libName,'file')==3; libFound = true; break; end
